@@ -15,12 +15,15 @@ sampling uses an explicit importance correction, not fabricated supervision.
 
 36 scoped tests pass, including an exact synthetic uninterrupted/resumed training
 comparison, held-label preprocessing exclusion and the objective expectation.
-No real fit or gain is claimed at this registration checkpoint. Native arm64
-CPU4/inter-op1/workers0 is selected for a measured real pilot. Local free disk is
+The subsequent real100-update pilot passed in1.94fit seconds and saved its
+checkpoint. The fixed24-fit continuation is running locally; held scores remain
+closed until every endpoint finishes. No gain is claimed from the pilot or
+training loss. Native arm64 CPU4/inter-op1/workers0 is in use. Local free disk is
 about62GiB; no active related local training was found in the process check.
 No CREATE job is submitted or remote-job absence inferred. All final endpoints
 must complete before held-source evaluation; no threshold search or deployment.
 [Design and limitations](outputs/publication_readiness_2026_09/native_forecast_v1/registration.md).
+[Real launch and measured resource choice](outputs/publication_readiness_2026_09/native_forecast_v1/runtime_launch.md).
 
 ## Native-Coordinate Amendment Adopted (2026-09-21)
 

@@ -16,7 +16,12 @@ First run --trial coupa_native_coordinate_seed17 --stop-at100 (space before100),
 then --resume to finish all endpoints. --evaluate requires all24complete receipts;
 --verify reproduces metrics from cached predictions. Native CPU4,interop1,workers0.
 Checkpoint identity binds registration/code/data; never edit those mid-run.
-36scopedtests pass incl exact synthetic resume. First real run not started yet.
+36scopedtests pass incl exact synthetic resume. Realpilot100updates completes
+1.9383fit seconds,P ID59924/session11705 exit0 (PID has no embedded space:59924).
+Fullcontinuation livePID59969/session12888, --resume. At4m37s:3of24complete,
+nativecoupa seed29step1000,CPU192.2%,RSS1.1GiB. Do not restart based on this stale
+snapshot; pollsession12888 or livePID and completed receipts. Heldscoresclosed.
+Expected30-60min plus eval. Registered c6c25a4d before fitting,pushedGitHub.
 Localrelatedprocesscheck empty,62GiBfree;noCREATEjob or remote absence claim.
 Preserve all old results,closedroles,unrelatedstagedwork;Stage5C/SMC remain off.
 
