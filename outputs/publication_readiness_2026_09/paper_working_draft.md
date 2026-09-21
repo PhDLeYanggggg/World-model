@@ -87,6 +87,18 @@ offline diagnostics, not calibrated online policies or independent confirmation.
 No nontrivial policy passes strict protection; this negative result is retained.
 [Fixed count comparison and support](native_matched_coverage_v1/conclusions.md).
 
+The registered protected-risk follow-up completes another 24 matched Torch heads
+and 72,000 updates. Separating an exact-zero-reference harm event from general
+harm produces strong event ranking (AUROC0.866-0.985) but not safe intervention:
+the fixed online rule gains5.5723% ADE, degrades the positive-easy diagnostic
+7.1601%, and harms25zero-reference query/seed instances. It does not improve on
+the simple past-stop control. A common-count contrast collapses to eight
+interventions because the general-harm arm nearly always abstains; protected,
+net-only and past-stop matched identities coincide. This is negative mechanism
+evidence, not a new safe model or independent confirmation. All checkpoints,
+training labels and policy choices pass replay and independent arithmetic.
+[Protected-risk experiment](native_protected_risk_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

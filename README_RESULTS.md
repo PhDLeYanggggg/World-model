@@ -5,7 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Separate Protected-Risk Training Registered (2026-09-21)
+## Protected-Risk Training Completed, Safety Not Solved (2026-09-21)
+
+`fresh_run`: all 24 real Torch risk heads, 72,000 updates, 18,432,000 draws.
+`cached_verified`: native predictors/nested training views/gain heads.
+`not_run`: independent calibration, confirmation, new deployment.
+
+The protected-risk online rule improves source ADE 5.5723%, but positive-easy
+diagnostic degradation is 7.1601% and 25 zero-CV query/seed instances are harmed.
+It does not outperform the simple past-stop veto (5.5746% gain, 17 harmed).
+Event AUROC 0.866-0.985 does not certify safety in the selected low-score region.
+
+The general-harm guard nearly stops all intervention: only 8 eligible instances
+across the 12 scene/seed views. Common-count matching collapses from 4,437 requested
+switches to 8. Protected/net-only/stop-veto matched choices are identical; the
+small positive contrast versus the broad-risk guard is not a new mechanism win.
+All source scenes remain design-exposed. No threshold/risk-rule changes.
+
+402 bindings, 24 checkpoint replays/1,054,536 score rows and 12 paired samplers pass.
+Independent verification checks 132 choices, 792 scene reductions, 3,163,608 repeated
+training-target rows and 48 event metrics. 116 related tests pass. All required
+processes terminate normally. 56.279 summed fit seconds is cached-head fitting,
+not full-model compute. Independent calibration/confirmation remain missing.
+No deployment/Stage5C/SMC. Publication readiness remains unmet.
+[Results](outputs/publication_readiness_2026_09/native_protected_risk_v1/conclusions.md).
+[Failure analysis](outputs/publication_readiness_2026_09/native_protected_risk_v1/failure_analysis.md).
+[Reproduction](outputs/publication_readiness_2026_09/native_protected_risk_v1/execution_notes.md).
+
+## Protected-Risk Preregistration Snapshot (2026-09-21)
 
 The next fixed comparison separates expected gain from the risk of damaging an
 exactly CV-predictable query. Two matched heads predict an event and its expected
@@ -15,8 +42,8 @@ and 3,000-update budget. Partial outcomes remain unknown rather than safe labels
 The trajectory and gain heads stay frozen. Three seeds and four outer source
 scenes require 24 new heads / 72,000 updates.
 
-402 bindings and 52 scoped tests pass; no new risk head has been fitted at this
-registration snapshot. Readout uses one fixed diagnostic event-score cut and
+402 bindings and 52 scoped tests passed; no new risk head had been fitted at this
+registration snapshot, now superseded by the completion above. Readout uses one fixed diagnostic event-score cut and
 both row-local and common-count controls, including a simple past-stop veto.
 The score cut is not a calibrated failure allowance. No risk tolerance, data
 role or test threshold is changed. Local arm64 CPU4/workers0 is sufficient for

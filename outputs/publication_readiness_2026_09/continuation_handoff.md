@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Protected-Risk Heads Completed (2026-09-21)
+
+Goal active/unmet. Real24head fits,72kupdates,18,432,000draws complete; no unknown
+risk labels sampled. Same357causal inputs,initialization,paired draws,fullfuture
+support for general/protected event+expectedcost heads. Registration8a74fff5
+pushed before fitting. DO NOT EDIT bound config/code/tests/registration now.
+
+Pilot81226/PID74463, full93936/PID74520, eval42690/PID74763, replay29123/PID74841
+exit0. Independent3443exit0 after unboundverifier rounding fixes; tests89855
+116pass2.42s. All24heads replay1,054,536scores;402bindings,12normalizers,
+12pairedsamplers. Independent132choicehashes/792reductions/3,163,608repeated
+targetrows/48eventmetrics pass. Fit56.279seconds is cachedhead time only.
+All required processes terminal. No newCREATEjob/remotequeueclaim.
+
+ProtectedonlineADE5.5723%,easypositiveq25degradation7.1601%,zeroCVharms25;
+seeds8/8/9,worst15.7288px. Simplepaststopgain5.5746%,zeroCVharms17.
+AUROC0.866-0.985 but riskhead costMSE onlybetterconstant4/12views. Broadguard
+admits8total versus4437requested; matchedcapacity collapses. Protected/net/stop
+matchedchoicesidentical. Do not celebrate +0.017ppovergeneralguard as newmethod.
+ProtectedonlineunknownADE2176, incompletefuture-risk30511query/seedinstances.
+Fourdesignexposedscenes, noindependentcalibration/confirmation/deployment.
+Originalval/test/main/external/bookstoreclosed. Stage5C/SMCoff.
+
+Next: training-onlyconditional false-negative/severity-tail/event-support
+diagnosis; then register support-aware severity control against simplecausal
+veto with samefrozenpredictor. Do not sweep displayed outcomes, relaxrisk, choose
+bestseed or enlargearchitecture bydefault. Clean producerlineage needed before
+futureindependentcalibration. Scientificprotocolchoices remain resolved.
+
+Results: native_protected_risk_v1/conclusions.md, failure_analysis.md,
+execution_notes.md, analysis.json, results.csv, verification.json,
+independent_verification.json, failure_slices.json. AnalysisSHA
+3d6785b3558cebd945d4115787bd2b88f55059d7a04eb5d240c6bebe2380bc7c.
+Preserve unrelated3019stagedfiles/fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Older status blocks below are historical, not live jobs.
+
 ## Matched Coverage Completed (2026-09-21)
 
 Goal active/unmet; previous turn progress, this turn completed new fixed matched

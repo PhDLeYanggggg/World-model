@@ -3,6 +3,30 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：独立保护风险头
+
+24 个真实神经风险头全部完成，共 72,000 次更新；原轨迹预测器和收益头不变。
+100 步试跑计入总预算。使用 arm64 CPU4/inter-op1/workers0，缓存特征上的
+风险头拟合累计 56.279 秒，不是完整世界模型训练耗时。不需要新 CREATE 任务。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_protected_risk.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_native_protected_risk.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_protected_risk.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_protected_risk.py
+```
+
+完成后 resume 只验证产物，不会重复训练。保持冻结代码/配置/登记文件不变。
+24 个检查点精确重放 1,054,536 条风险预测。独立核验 132 个选择结果、792 个
+场景指标、3,163,608 条重复训练标签记录。116 项相关测试通过，未重跑全部历史测试。
+训练、评价、验证进程均正常退出，不要重启历史 PID。
+
+保护头保留 ADE 改善 5.572%，但正误差 easy 诊断组退化 7.160%，25 个零 CV
+误差样本/种子实例受损。普通风险头几乎不介入；共同预算从 4,437 次缩到 8 次，
+不能把这种近乎全回退写成有效保护。仅有完整未来标签的行用于风险监督，缺失
+标签仍未知。详见 native_protected_risk_v1/conclusions.md。没有新部署或独立确认。
+下一步只在训练数据内诊断低风险分数漏报与伤害尾部，再登记有对照的修复实验。
+
 ## 已完成：同切换率对照
 
 这次不重训模型，而是复用冻结预测，对每个场景/种子固定相同切换数量。

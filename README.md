@@ -64,10 +64,21 @@ rate, asymmetric ratio ranking improves ADE by 0.34%, ordinary MSE ratio ranking
 by 0.43%, and MSE net-gain ranking by 1.19%. The asymmetric loss harms fewer
 exact-zero-CV outcomes, but sacrifices accuracy; every nontrivial control still
 fails strict protection. This separates the value of ranking from simply doing
-less. I will test net-gain allocation with an explicit easy-harm risk target,
-rather than treat a benefit/harm ratio as a safety certificate. These are fixed
+less. This motivated separating net-gain allocation from an explicit protected-risk
+target instead of treating a benefit/harm ratio as a safety certificate. These are fixed
 offline controls on explored sources, not online deployment or untouched tests.
 [Matched counts, paired contrasts and limits](outputs/publication_readiness_2026_09/native_matched_coverage_v1/conclusions.md).
+
+That protected-risk experiment is now complete: 24 matched neural heads and
+72,000 updates. The new guard retains 5.57% source ADE improvement, but still
+harms 25 zero-reference query/seed instances and degrades the positive-easy
+diagnostic by 7.16%. A simple past-stop veto does slightly better. The broader
+harm guard avoids these observed zero-reference harms by almost never switching;
+matching its capacity leaves only eight decisions. I do not count abstention or
+a high event AUROC as a successful safety mechanism. The next question is how to
+learn reliable harm estimates specifically where intervention is proposed, with
+clean calibration and enough event support. No new policy is deployed.
+[Protected-risk results and reproducible negative evidence](outputs/publication_readiness_2026_09/native_protected_risk_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
