@@ -3,6 +3,27 @@
 最近更新：2026-09-22。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 固定中间损失：训练前准备
+
+成本拟合诊断已两次得到相同结果：高分歧样本的误排序在训练内就存在，不只是迁移问题。
+下一轮仅把原生成本误差平方的分歧权重改为固定指数1；原先对照是指数0和2。
+不修改模型、采样或阈值。12个新头仍用4个研究场景、3个种子、每头3000次更新。
+23项针对性测试和904个依赖绑定预检通过，正式训练在登记时尚未开始。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_tempered_cost.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_tempered_cost.py --view coupa_seed17 --stop-at 100
+.venv-pytorch/bin/python scripts/run_m3w_tempered_cost.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_tempered_cost.py --evaluate
+.venv-pytorch/bin/python scripts/run_m3w_tempered_cost.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_tempered_cost.py
+```
+
+pilot仅用于首次启动。中断恢复必须先确认原进程已退出；不能因观察超时重复启动。
+每500步保存原子检查点，每100步记录PID和进度；CPU4线程、interop1、workers0。
+结果、预测重放、另写算术核验是三个不同步骤。原始保留数据仍不读取。
+缓存训练不需要新增CREATE任务；这里没有核验新的远程调度状态。
+
 ## EqMotion 专用成本头：已训练，主比较失败
 
 18个排除双场景的预测器、缓存、固定块回放和逐行算术核验已全部完成。随后登记

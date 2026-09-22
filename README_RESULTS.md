@@ -5,15 +5,27 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Fit Support Diagnosis Registered (2026-09-22)
+## Fixed Intermediate Loss Prepared (2026-09-22)
 
-The next read-only checkpoint diagnostic fixes fitting-defined positive q50/q90/
-q99 speed/disagreement strata before measuring their outcomes. It compares all
-36existing heads on fitting and held-source rows, including native/fraction
-fit errors, fixed policy slices and training-only constant controls. Seven new
-tests pass. Real diagnostic readout is not_run at registration; no model,
-threshold, data role or outcome claim changes.
-[Fixed diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/design.md).
+The completed fitting diagnostic motivates one fixed exponent-one cost loss,
+between the existing native and fraction objectives. Twelve new heads retain
+the same forecasts, features, initialization, sampling, budget and thresholds.
+Preflight passes 904 bindings; 23 scoped tests pass, including real tiny Torch
+training, exact resume, matched draws, outcome-excluding inference and separate
+choice/bootstrap checks. Real 12-head fitting is not_run at registration.
+No original closed roles, calibration, deployment, Stage5C or SMC.
+[Prospective comparison](outputs/publication_readiness_2026_09/tempered_cost_v1/registration.md).
+
+## Cost-Fit Support Diagnosis Completed (2026-09-22)
+
+The read-only diagnostic fixes fitting-defined q50/q90/q99 speed/disagreement
+strata. Both executions reproduce 1,080 records and all36held score views.
+For the deathCircle high-disagreement fitting tail, fraction-head benefit is
+underpredicted18-20pixels and harm overpredicted10-12pixels; held errors are
+larger. Native-loss ranking is better there but its existing protection fails.
+Thus the issue is not solely transfer shift. No model, threshold, data role or
+choice changed. Seven diagnostic tests pass; source results remain exploratory.
+[Diagnosis, numeric evidence and limits](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
 
 ## EqMotion Cost Refit: Protection Recovers, Primary Gain Test Fails (2026-09-22)
 

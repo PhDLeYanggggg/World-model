@@ -1,5 +1,23 @@
 # Real-Experiment Continuation Handoff
 
+## Intermediate Loss Prepared (2026-09-22)
+
+Goal remains active/unmet. Cost-fit diagnostic completes twice with identical
+SHA9664d1a0628f4b5371636600313c9dea3b167b525c222666010dabd31802bfce.
+Its fixed train-q99 tail exposes benefit underprediction/harm overprediction
+already in fitting. No model or threshold changed; 1080records/36head replays.
+Diagnostic sessions94361and30087exit0. New head unit session53529exit0.
+
+Next one-factor experiment: configs/m3w_tempered_cost_v1.json and
+scripts/run_m3w_tempered_cost.py. Twelve heads/exponent1/same samples and
+thresholds. 23scopedtests session29570exit0. Preflight49494/PID79599exit0,
+904bindings. Real training NOT RUN at registration. Freeze code/config/tests/
+registration before100step pilot, resume12fits, evaluate, replay, separate
+scripts/verify_m3w_tempered_cost.py. Primarystrict versus refitfractionstrict;
+matched-count anchor remains ORIGINAL frozenfractionstrict. No thresholdsearch,
+closedroles, independentcalibration, deployment, Stage5C or SMC. All4sites
+designexposed. Preserve unrelated staged fingerprint recorded below.
+
 ## EqMotion Cost Refit Completed (2026-09-22)
 
 Goal active/unmet. Latest turn is progress, not a blocker: completed18producer

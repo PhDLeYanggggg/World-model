@@ -210,6 +210,17 @@ query/seed instances. Full-grid average-gain bounds do not imply subgroup or
 out-of-distribution safety. No threshold or primary arm was changed after
 readout. [Complete comparison and failure analysis](eqmotion_cost_refit_v1/conclusions.md).
 
+The subsequent training-defined cost-fit audit finds that the high-disagreement
+failure begins in fitting, rather than only on transfer. In the deathCircle
+outer view's fitting-q99 tail, fraction-head net-gain Spearman is .210-.353 in
+fitting and .095-.148 held-source; native-cost fitting gives .634-.643 and
+.582-.634, respectively. Fraction fitting underestimates benefit and overstates
+harm in this stratum, while its own selected population still understates harm.
+This is descriptive diagnosis of different conditional populations, not a
+global calibration solution. One fixed intermediate loss exponent is prepared
+as a controlled follow-up. Its outcome remains unmeasured at registration.
+[Diagnostic design and evidence](eqmotion_cost_fit_forensics_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

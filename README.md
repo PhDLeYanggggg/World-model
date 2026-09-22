@@ -170,6 +170,15 @@ underestimates harm. This is a narrower protected development tradeoff, not a
 solved risk model or a new deployment.
 [Predictor-specific results and remaining failure](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/conclusions.md).
 
+I checked whether that failure begins only on an unfamiliar scene. It does not:
+the fraction-based cost loss already understates benefit and overstates harm on
+high-disagreement fitting examples. Native-error training ranks those examples
+better but has failed protection elsewhere. I am testing one fixed intermediate
+loss weighting, keeping forecasts, sampling and decision thresholds unchanged.
+This is a controlled attempt to recover useful interventions, not a new result
+or permission to tune against the held-out outcomes.
+[Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict
