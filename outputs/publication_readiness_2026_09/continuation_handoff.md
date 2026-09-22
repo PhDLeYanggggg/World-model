@@ -1,5 +1,60 @@
 # Real-Experiment Continuation Handoff
 
+## Temporal Intervention Trained and Verified: Tradeoff, Not Promotion (2026-09-22)
+
+The preceding user turn checked status, not new research progress. This goal turn
+ran the preregistered d5f6d12f experiment: 24 real Torch scalar risk heads, fixed
+readout, replay, separate formulas and twice-run action/choice diagnosis. Full
+goal active/unmet; Stage5C/SMC off, no new deployment or independent claim.
+
+Config configs/m3w_temporal_intervention_v1.json. Entry
+scripts/run_m3w_temporal_intervention.py. Two arms ramp/uniform per four-site/three-seed
+view. Frozen forecasts and complete fitting support; 356 inputs, 45,954 parameters,
+12k steps/head, batch256, same draws and old fixed emphasis. Native arm64 CPU4/
+interop1/workers0. Pilot PID19597 resumed by PID19637; all24 complete, 288000 updates,
+73728000 draws, unknown0, 241.35955 recorded fit seconds. Live sample 3.47GiB RSS.
+Evaluation PID20250, replay PID20346, separate verifier session21064, diagnosis
+37470 and exact repeat45213 all exited0. No required experiment session remains live.
+
+Primary ramp ADE3.39755978 vs uniform3.64449147, difference-.24693169pp,
+CI[-.29914239,-.19472098]. Versus original scalar-log4.18872962, difference
+-.79116984pp CI[-1.23722026,-.45840270]. Hard3.67549402, FDE4.90029466.
+Worst scene/seed easy .91148511 passes2, aggregate -1.24934811 (improvement).
+But exact-zero-CV harm1, hyang17, ADE3.90668828pixels, not roundoff. Both arms
+switch that case with predicted harm .18957/.15362. Primary conjunction fails.
+No promotion of better secondary FDE or equal-count ranking (easy unsafe).
+
+Fixed crossover diagnosis separates -.12474076pp action effect at ramp choices
+and -.12219092pp choice effect using uniform action. Both heads underestimate
+selected complete-label harm in12/12views. Smoothing helps easy but costs useful
+early correction; per-query displacement matched, not total displacement for
+different selected rows. Strict ramp switches33793 repeatedseedinstances,
+incomplete5210, unknown575. Full-grid lower bounds negative in gates allseeds.
+No unknown outcomes counted safe. Same four exposed sites, not independent data.
+
+All24 checkpoints replay;1,054,536 score rows. Separate formulas verify3,163,608
+fitting-arm instances,84choices,672scene reductions and bounds. Prefix/interaction
+diagnostics replayed only, not independently reimplemented. Additional diagnosis
+checks fixed gates separately. Eight new diagnostic tests pass;21 unchanged
+experiment tests reused, not fulllegacy suite. Frozen config/code unchanged.
+AnalysisSHA d89afb790c9846ed6519b970a89e5f4b5eb8fc5325b8d082b90fccdde0e3d4b8.
+DiagnosisSHA 2db314ad7dc40ff34f13303cce771c4c154a121b3fb048b52e62fea7929a6617.
+
+Reports temporal_intervention_v1/{conclusions.md,execution_notes.md,analysis.json,
+replay.json,separate_verification.json,action_choice_diagnosis.json}. New readonly
+script scripts/audit_m3w_temporal_intervention.py and tests/test_m3w_temporal_diagnosis.py.
+Private model/decision artifacts under data/stage_cvpr2027_experiments/temporal_intervention_v1/.
+Pinned manuscript unchanged, follow-up linked from README and results ledger.
+
+Next: fit-versus-held conditional harm and exact-zero moving-row support diagnosis
+before another registered targeted repair; no schedule/threshold/exclusion sweep.
+Do not treat a smoother curve or better endpoint as a passed primary method.
+Independent-source admission/role decisions still pending, do not repeat questions
+or bypass download warning. CREATE alias/project absent from current SSH config;
+remote assets/queue/auth unverified, not absent. No new HPC job. Local run was cheap.
+Preserve unrelated3019 staged changes fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Matched Prefix-Risk Training Completed and Rejected (2026-09-22)
 
 Previous goal turn was a status reply, not new progress. This goal continuation

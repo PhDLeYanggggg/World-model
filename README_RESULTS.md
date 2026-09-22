@@ -5,7 +5,29 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Temporal Partial Intervention Registered (2026-09-22)
+## Temporal Intervention Completed: Easy Protection Improves, Primary Fails (2026-09-22)
+
+Twenty-four fresh Torch cost-head fits completed 288,000 updates and 73,728,000
+draws in 241.36 recorded fitting seconds. Temporal ramp strict gains **3.39756%
+ADE** versus **3.64449%** for displacement-matched uniform strict; primary
+difference **-0.24693 pp**, site-bootstrap CI **[-0.29914, -0.19472] pp**.
+It also loses 0.79117 pp to the verified original scalar-log reference. FDE
+improves more, but cannot replace the registered ADE criterion after readout.
+
+Worst scene/seed positive-error easy degradation is **0.91149%**, passing that
+ceiling. However, one complete exact-zero-CV case incurs **3.90669 pixel ADE**,
+so the separate zero-error guard fails. No new model is deployed. At identical
+choices the ramp action loses 0.12474 pp but protects easy better; choice changes
+account for another -0.12219 pp. Both arms still underestimate selected complete
+harm in all twelve held-source/seed views. Unknown outcomes remain unverified.
+
+All 24 checkpoints replay; separate formulas verify 84 choices and 672 scene
+reductions. Eight new diagnostic tests pass; 21 unchanged scoped tests are reused.
+The fixed-choice diagnosis reproduces exactly. Only four development-exposed
+sites support the 3,000 site resamples; no independent calibration, confirmation,
+external readout or raw-frame t+50 was run. [Full results and reproduction](outputs/publication_readiness_2026_09/temporal_intervention_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 The next fixed experiment tests a twelve-step linear transition from causal CV
 to the existing neural forecast, against a uniform blend matched to its mean

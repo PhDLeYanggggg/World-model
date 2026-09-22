@@ -79,14 +79,18 @@ analysis](outputs/publication_readiness_2026_09/prefix_cost_v1/conclusions.md) k
 this tradeoff explicit. I have not deployed the repair. Independent calibration
 and confirmation remain unresolved.
 
-My next controlled test changes the available action, not the risk threshold.
-The neural forecast is introduced gradually over the twelve prediction steps;
-the first point stays with the causal baseline. A uniform blend is matched to
-the same average displacement from that baseline for each query. I will compare
-their learned switching rules, equal switch counts and identical-choice controls,
-including smoothness and the existing interaction proxy. This [fixed temporal
-intervention study](outputs/publication_readiness_2026_09/temporal_intervention_v1/registration.md)
-is registered before fitting; it is not yet evidence of improvement.
+I have also tested changing the action rather than the risk threshold: introduce
+the neural forecast gradually, keeping the first point at the causal baseline.
+A uniform blend is matched to the same forecast displacement per query. All 24
+new risk-head fits are complete. The gradual intervention preserves the positive-error
+easy ceiling in every scene and seed, but gains 3.40% ADE versus 3.64% for uniform
+blending. It also harms one case where CV was exact. Identical-choice controls show
+that both the temporal shape and the learned choices cost useful accuracy; risk
+is still underestimated on accepted cases. This is a documented protection/accuracy
+tradeoff, not a new deployable winner. The [verified results and failure diagnosis](outputs/publication_readiness_2026_09/temporal_intervention_v1/conclusions.md)
+remain separate from the pinned manuscript. Independent confirmation is still
+missing; I have not replaced the primary ADE criterion with the better endpoint
+result or changed the deployment.
 
 ## Research Question
 
