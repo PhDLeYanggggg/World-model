@@ -8,6 +8,22 @@ The same fit is resumed, not restarted with an easier budget.
 
 ## Initial Live Run, 2026-09-22
 
+At the first hour checkpoint, two full fits have accepted completion receipts:
+8,000 updates,3,046.57 recorded fitting seconds and zero excluded-site draws.
+The third seed continues from update1,950. This is partial progress, not a
+completed18-fit matrix. A separately written verification program is now added
+and its lineage rejection tests pass; the full cost-cache audit is still not_run
+because caches require every producer first. The combined scoped suite has47tests.
+
+```bash
+.venv-pytorch/bin/python scripts/verify_m3w_eqmotion_nested.py
+```
+
+Run this final audit only after cache construction and fixed-block replay. It
+independently reduces native errors/costs, checks every pair's fitting weights
+and draws, and reconstructs all12 view memberships. Same-agent verification is
+not independent research replication. The registered trainer/config is unchanged.
+
 The full18-fit invocation was launched as PID23846, terminal session63559.
 An observed training heartbeat advanced to update150 after resuming update100.
 These identifiers are historical observations; check live state before deciding

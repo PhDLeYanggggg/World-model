@@ -11,11 +11,14 @@ The next prerequisite fixes18 new EqMotion fits, six two-site exclusions and
 three seeds, with72,000 total updates. Each future cost-training row's predictor
 excludes both its own scene and the head's outer held scene. Existing12 outer
 EqMotion models and18 Transformer nested samplers are hash-verified references;
-no old model is relabeled as a new fit.366 dependency bindings and37 targeted
+no old model is relabeled as a new fit.366 dependency bindings and47 targeted
 tests pass, including actual small Torch training/resume and future-invariance
 checks. Registration`fcce08cb` preceded fitting. The real100-update pilot
 completed in38.49seconds with zero excluded-site draws; the same fit is now
-resumed in the full18-fit invocation. The matrix/cache remain incomplete, not
+resumed in the full18-fit invocation. Two full fits now have accepted receipts
+(8,000updates,zero excluded draws); the third is active. A separate cache
+arithmetic/lineage verifier is implemented, but its real cache audit awaits
+all18producers. The matrix/cache remain incomplete, not
 a model gain. Estimated local fitting time is7-8hours, plus cache/verification.
 No new data role, threshold search, risk calibration or deployment.
 [Fixed matrix and lineage rules](outputs/publication_readiness_2026_09/eqmotion_nested_v1/registration.md).
