@@ -5,6 +5,37 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost Forests Completed: Better Empirical Protection, Superiority Unproven (2026-09-22)
+
+**fresh_run:** 24 ExtraTrees cost regressors, 3,072 trees, fixed readout,
+checkpoint replay and separate arithmetic. **cached_verified:** the same nested
+forecasts and temporal neural risk heads. No new trajectory model was fitted.
+
+Primary ramp forest ADE gain **3.53029%** vs neural **3.39756%**; difference
+**+0.13273 pp**, paired 3,000-site-bootstrap CI **[-0.06206, +0.48134] pp**.
+Worst site/seed easy degradation **-0.13424%**, complete exact-zero-CV harmed **0**.
+Observed protection passes, but the registered superiority gate fails. Uniform
+forest is secondary and still fails easy at **2.07770%**; no winner substitution.
+
+Forest switches **22,539** repeated seed instances vs neural **33,793**. At the
+same count, neural net-gain ranking gives **3.82776%** gain but worst easy
+degradation **2.55829%**. Forest-selected harm is conservatively estimated in all
+12 held views; on the neural selection it still underestimates in 6/12. Fitting/
+held selected-harm ratio medians are **0.3074/0.6093** for the forest versus
+**0.8874/2.7861** for neural. This is not a calibration certificate.
+
+All site/seed full-grid absolute gain lower bounds are positive despite missing
+future labels; **2,663** selected incomplete instances include **190** unknown.
+This is aggregate bounded gain, not unknown easy-case safety. The conventional
+forest is retained as a protected development comparator, not deployed.
+
+Fits took **619.66 recorded seconds**, about **404 MiB** of local checkpoints.
+24 endpoints replay; separate code checks 1,054,536 tree-score rows, 72 choices,
+576 reductions and gate/bound arithmetic. 26 scoped tests pass, not the full
+legacy suite. Independent calibration/confirmation and t+50 supplement remain
+not_run. Stage5C/SMC remain off. **Not yet a CVPR submission candidate.**
+See [full evidence and limitations](outputs/publication_readiness_2026_09/forest_cost_v1/conclusions.md).
+
 ## Fit/Held Diagnosis and Registered Cost-Forest Comparator (2026-09-22)
 
 Fresh read-only replay: ramp selected harm underpredicted13/36fitting groups

@@ -1,5 +1,54 @@
 # Real-Experiment Continuation Handoff
 
+## Cost Forests Trained: Empirical Protection Passes, Superiority Unproven (2026-09-22)
+
+Meaningful progress: registered/pushed1985a3bc before fitting; all24standard
+ExtraTrees regressors completed, fixed evaluation, exact replay, separate
+arithmetic verification and fit/held diagnosis. Goal remains active/unmet.
+No new trajectory predictor, role assignment, deployment, Stage5C or SMC.
+
+Config configs/m3w_forest_cost_v1.json; entry scripts/run_m3w_forest_cost.py.
+Private data/stage_cvpr2027_experiments/forest_cost_v1/.24forests*128trees=3072;
+4161296nodes;619.66090recordedfitseconds;424060784checkpointbytes,localonly.
+Positiveweightfitrows67489..128572; allfittingrows retained, notquicksubsample.
+Pilot16PID23059 complete, matrixPID23130 resumed and exited0. EvalPID24232,
+replayPID24328 and separateverifier session39418 exited0. CPU4/predict1/workers0,
+nativearm64 sklearn1.8.0; liveRSS~3.8GiB. NoHPCneeded; remoteassetsstillunverified.
+
+Primary rampforest ADE3.53028759 vs rampneural3.39755978; difference+.13272780pp
+CI[-.06206315,+.48133633]. Pointgainfromcoupa; other3scenedeltasnegative.
+FDE5.16627599;hard3.76413773;worstsite/seedeasy-.13423741;zeroCVharm0.
+Observedprotectionpasses,butprimarysuperiorityfailsandconjunctionfalse.
+Forestswitches22539 (4.2747%), neural33793. Samecountneuralnetgain3.82775746
+butworsteasy2.55829279fails. Uniformforest3.87322731secondary,worsteasy2.0777
+fails. Do notpromote a secondary winner or retrofit significance.
+
+Forestselectedharmratio fitmedian.30744,held.60927,underprediction0/36and0/12.
+Neuralfit.88743,held2.78610. Onneuralchoices forestunderpredicts6/12ratio1.0231;
+onforestchoices neuralunderpredicts1/12ratio.5855. ThusestimatesANDselection
+matter; ownselectedmean conservatism is not calibration or proof shift is gone.
+Selected incomplete instances: exactly2663, including190unknownADE. Allsite/seed
+deterministicfullgridgainlowerboundspositive,min.02584076gates43. This is
+aggregate12stepgain undertrianglebounds,notunknowneasyorindividualsafety.
+Context/smoothnessproxieslowerinaggregate,notphysicalmetricsorjointmechanism.
+
+All24endpointsreplay over1054536scores. Separateverifier independentlysums
+treepredictionsand checks3163608fit-arminstances,72choices,576reductions,bounds
+andgates. Context/smoothness/conditionalqualityreplayedonly.26scopedtestspass,
+notfulllegacysuite. AnalysisSHA7e03c0e49beea6ad526d10e1b542c0967b6287435f3c9c04d05d59437e32bb90.
+Fitdiagnosis firstsession46654 and exactrepeat63695 both exited0. No required
+experiment session remains live. Source/model/configfrozen; newreadonlyverifier
+andfitdiagnosis scripts bindtheirowncodehashes.
+
+Report outputs/publication_readiness_2026_09/forest_cost_v1/conclusions.md,
+execution_notes.md,analysis.json,replay.json,separate_verification.json,
+fit_held_diagnosis.json. README/results/stateupdated. Pinnedmanuscriptunchanged.
+Next: fixedsame-count neuralrisk-ratio versusnet-gain andforest ranking controls
+beforemoretraining; currentmatchednetgain doesnotexhaustconservatismcontrols.
+Do notchoosea multiplier/thresholdfromheldoutcomes. Independentdata/roles
+remainpending; no formalcalibration orCVPRcandidateclaim. Preserve unrelated
+3019stagedpaths fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Fit/Support Diagnosis and Cost-Forest Registration (2026-09-22)
 
 Status reply did not start a new experiment. The fit/support audit's exact replay
