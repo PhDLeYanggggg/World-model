@@ -1,5 +1,23 @@
 # Real-Experiment Continuation Handoff
 
+## Fixed Cross-Objective Review Registration (2026-09-22)
+
+Previous turn made genuine experimental progress: adaptive-region repair failed,
+26a56235 pushed. This continuation registers a different mechanism control, not
+a refresh/threshold sweep: frozen-region nominations reviewed by the existing
+equal-budget native/fraction harm scores at the unchanged0.1ratio. Same-count
+nomination net-gain ranking is the primary comparator per site/seed. The critics
+share data and are NOT independent calibration. 38scopedtests pass; no real new
+policy readout at registration. Existing scores/checkpoints reused and replayed;
+no new training. All original roles and pending acquisition/role questions remain.
+
+Code run_m3w_cross_objective_review.py and verify_m3w_cross_objective_review.py.
+Preflight then explicit-path registration commit/push before evaluate; then
+36checkpoint replay and separate choices/metrics verification. Positive matched
+CI alone is insufficient: every scene/seed easy<=2 and zero-reference protection
+also required. Local53GiBfree; GitHubmain26a56235 verified. No CREATE job or new
+remote-queue claim. Preserve unrelatedstagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Adaptive Region Repair Complete, Negative (2026-09-22)
 
 Registration6e4bfb88 pushed before real fitting. All12freshTorchheads complete

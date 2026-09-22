@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed Cross-Objective Review Registered (2026-09-22)
+
+After the adaptive fitting repair failed, I am testing whether other cost
+objectives can review a frozen head's nominations more reliably than that head
+alone. The reviewers use the same fitting data; they are not independent
+calibration. The harm ratio stays at 0.1. A nomination-only control makes exactly
+the same number of switches in every site/seed, separating review quality from
+simply intervening less. No threshold or reviewer-subset search is allowed.
+
+38 scoped tests pass. New policy readout is not_run at registration; no new model
+training or data-role assignment is planned. The existing scene-wise protection
+failure and independent-evidence gap remain open.
+[Fixed comparison](outputs/publication_readiness_2026_09/cross_objective_review_v1/registration.md).
+
 ## Adaptive Fitting-Region Repair Completed: No Protection Gain (2026-09-22)
 
 Registration `6e4bfb88` preceded twelve fresh Torch fits. All 144,000 updates,
