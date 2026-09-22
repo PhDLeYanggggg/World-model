@@ -1,5 +1,34 @@
 # Real-Experiment Continuation Handoff
 
+## Adaptive Region Repair Complete, Negative (2026-09-22)
+
+Registration6e4bfb88 pushed before real fitting. All12freshTorchheads complete
+144000updates/36864000draws/276refreshes, head-fit177.97723s including36.91395s
+refresh inference. Same source roles, model, draws, objective and thresholds.
+46scopedtests passed; preflight1108bindings; real100step pilot resumed. Invalid
+initialviewhold_coupa_seed17 rejected before fitting; correctedcoupa_seed17.
+Training90453,eval27236,replay13085,verifier52480 allterminalexit0.
+
+Strict ADE4.03014% CI[2.42595,5.91586] vsfixedregion4.09764. Primary contrast
+-0.06749pp CI[-.19875,.09748]; no superiority. Hard4.09887, FDE4.31490, aggregate
+easydegradation-.96935. deathCircleeasy2.96260, gatesseed17easy2.20393: failed
+scene/seed gate. ExactzeroCVharms0,selected27740,unknown375,incomplete3709.
+Matchedcountdifference+.02152pp CI[-.12910,.13003],easy6.34172fail. No deployment.
+Adaptive own-selected fitting harm underestimated6/12;held12/12. Do not claim
+region-lag cause solved. Noheldthreshold/refresh sweep. Independent roles pending.
+
+Replay527268scores; separate formulas verify276refreshes,36choices,288reductions,
+1581804supervisionrows. AnalysisSHA
+d1c06439e16a12fa339a72158820a8df9be4a1dfdb06da3a9d2523f61aca620b.
+Reports adaptive_region_cost_v1/conclusions.md and execution_notes.md. Existing
+manuscript is the prior pinned snapshot; README links new negative evidence
+separately. No new literature novelty claim, independent calibration or CREATE job.
+Two earlier acquisition/role questions still pending; do not repeat or bypass.
+Preserve unrelated staged fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Next: independent role support remains necessary before conditional calibration;
+do not relabel source development as independent evidence. Goalactive/unmet.
+Stage5C/SMCoff. Current missing main contribution/safety/generalization unchanged.
+
 ## Adaptive Region Registration (2026-09-22)
 
 The previous status-answer turn was no new scientific progress. This continuation

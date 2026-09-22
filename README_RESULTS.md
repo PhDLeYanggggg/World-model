@@ -5,7 +5,29 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Adaptive Fitting-Region Experiment Registered (2026-09-22)
+## Adaptive Fitting-Region Repair Completed: No Protection Gain (2026-09-22)
+
+Registration `6e4bfb88` preceded twelve fresh Torch fits. All 144,000 updates,
+36,864,000 draws and 276 fitting-region refreshes completed. Recorded head-fit
+time was 177.98 seconds, including 36.91 seconds of refresh inference, excluding
+upstream training and I/O/verification. Forecasts and prior heads were reused
+with hashes checked; this is not full world-model retraining.
+
+Strict ADE improvement is **4.03014%**, CI [2.42595%, 5.91586%], versus the fixed
+region's 4.09764%. The primary paired contrast is **-0.06749 percentage points**,
+CI [-0.19875, +0.09748]. Overall easy improves 0.96935%, but deathCircle degrades
+2.96260% and gates seed17 degrades 2.20393%. The combined gate fails. Equal-count
+ranking gain is also inconclusive; no secondary winner or new model is deployed.
+
+Harm remains underestimated in all twelve newly selected held-source regions.
+The refreshed training emphasis did not solve this conditional generalization
+failure. All 527,268 endpoint scores replay; separate arithmetic verifies 276
+refreshes, 36 policy choices, 288 scene reductions and 1,581,804 supervision rows.
+The 46 unchanged scoped tests pass; full legacy suite not rerun. Independent
+calibration/confirmation remain not_run and Stage5C/SMC remain off.
+[Results and remaining gaps](outputs/publication_readiness_2026_09/adaptive_region_cost_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 The next controlled test changes only when fitting emphasis is refreshed: every
 500 updates instead of a frozen old selection region. It retains the same four

@@ -15,13 +15,24 @@ I have brought the completed development experiments into one
 with [reproducible tables and a figure](outputs/publication_readiness_2026_09/evidence_manuscript_v1/tables.md).
 The central result is mixed: neural predictors improve average motion error,
 but learning when to use them has not yet met the scene-wise protection target.
-The latest conservative policy gains 4.10% in average site-relative ADE, while
+The earlier conservative policy gains 4.10% in average site-relative ADE, while
 easy errors still rise beyond 2% in two sites. These are explored SDD development
 results, not independent test evidence or a new deployment.
 
 The manuscript keeps the failed equal-count and joint-decision controls visible.
 Its tables are reconstructed from fixed result files, not another training run.
 Independent calibration and confirmation remain the next scientific requirements.
+
+My latest controlled experiment tests whether the risk head is trained on an
+outdated set of switching decisions. I retrained twelve heads with the same
+budget, updating that training emphasis every 500 steps. ADE gain was 4.03%
+versus 4.10% for fixed emphasis; the paired difference interval includes zero.
+Easy protection still fails in deathCircle and one gates seed. This does not
+support adopting the repair: learning the selected training cases better has
+not made switching reliable on another scene. I keep the negative result and
+the existing deployment unchanged. The manuscript above is the preceding fixed
+evidence snapshot; the [new experiment and reproducible results](outputs/publication_readiness_2026_09/adaptive_region_cost_v1/conclusions.md)
+are reported separately, without changing its original comparisons.
 
 ## Research Question
 

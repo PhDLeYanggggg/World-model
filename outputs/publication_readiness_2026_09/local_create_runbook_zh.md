@@ -1,5 +1,33 @@
 # M3W 本地与 CREATE 操作记录
 
+## 动态训练重点实验完成，但未修复保护失败（2026-09-22）
+
+这次只改变一个因素：每 500 次更新，用当前模型重新确定重点训练的切换样本。
+模型、数据用途、采样、损失、阈值均不变。登记版本为 `6e4bfb88`，早于真实训练。
+12 个预测头完成 144,000 次更新和 276 次刷新；记录的训练耗时约 178 秒，包含
+约 37 秒刷新推理，不含上游预测器训练、读盘、哈希和评价成本。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_adaptive_region_cost.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_adaptive_region_cost.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_adaptive_region_cost.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_adaptive_region_cost.py
+```
+
+`--resume` 会核对已完成产物，不重复训练；中断时从最近的原子检查点恢复。
+首次训练的试跑、固定读出和针对性测试命令见
+[execution_notes.md](adaptive_region_cost_v1/execution_notes.md)。运行使用 arm64、
+CPU 4 线程、interop 1、workers 0。本轮未使用 CREATE，也未核验当前远程队列。
+
+结果：ADE 改善 4.03%，未胜过旧方案的 4.10%；差值区间跨零。deathCircle 的
+easy 退化仍为 2.96%，gates 的一个种子退化 2.20%，不能部署。平均 easy 变好
+不能替代逐场景要求。527,268 个分数回放一致；276 次刷新以及标签、策略、聚合
+通过另一套公式核验。这是同一执行者的代码核验，不是独立科研复现。
+
+独立校准和最终确认仍未运行。不要继续用这些留出开发结果挑刷新周期或阈值；
+下一步需落实独立数据与用途。完整结论见
+[conclusions.md](adaptive_region_cost_v1/conclusions.md)。Stage5C/SMC 仍关闭。
+
 ## 连贯论文稿与图表重建（2026-09-22）
 
 当前英文稿入口改为 [manuscript.md](evidence_manuscript_v1/manuscript.md)。旧的
