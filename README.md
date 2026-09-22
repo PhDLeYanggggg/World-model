@@ -10,6 +10,11 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+The next controlled experiment matches the neural head to the tree comparator's
+weighted squared-cost objective, keeping the neural architecture and training
+budget fixed. The [experiment is registered](outputs/publication_readiness_2026_09/fraction_square_v1/registration.md);
+training and readout are pending, not a claimed improvement.
+
 My latest [fixed-count comparison](outputs/publication_readiness_2026_09/risk_ranking_v1/conclusions.md)
 separates risk ranking from simply making fewer switches. With the same forecasts
 and exactly the same switch counts, relative-risk ranking protects observed easy

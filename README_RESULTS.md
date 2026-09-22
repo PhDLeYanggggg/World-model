@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Forest-Objective Neural Control Registered (2026-09-22)
+
+Planned12 Torch risk-head fits on the same ramp actions,356 causal inputs,
+128hidden units,12k updates and exact prior sampler stream. Only the data-fit
+objective changes from compositional log loss to distance/region-weighted
+two-cost fraction square. This matches the forest empirical loss up to a fixed
+normalization and float precision, not capacity/optimizer/regularization.
+Preflight1,317bindings,27scoped tests pass including real resume equality.
+Training/readout not_run at registration. No roles/thresholds/deployment changed.
+See [registration](outputs/publication_readiness_2026_09/fraction_square_v1/registration.md).
+
 ## Fixed-Count Risk Ranking Completed (2026-09-22)
 
 **fresh_run:** fixed decisions/readout, exact replay and separate arithmetic.
