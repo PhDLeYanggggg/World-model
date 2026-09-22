@@ -1,0 +1,20 @@
+{
+  "scope": "source_only_fixed_temporal_partial_intervention",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "arms": ["ramp", "uniform"],
+  "policies": ["ramp_strict", "uniform_strict", "uniform_matched", "ramp_at_uniform", "uniform_at_ramp", "ramp_uncontrolled", "uniform_uncontrolled"],
+  "region_multiplier": 4.0,
+  "bootstrap_resamples": 3000,
+  "training": {
+    "steps": 12000, "batch_size": 256, "learning_rate": 0.001,
+    "width": 128, "checkpoint_every": 500, "heartbeat_every": 100,
+    "gradient_clip": 5.0
+  },
+  "registration": "outputs/publication_readiness_2026_09/temporal_intervention_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/temporal_intervention_v1",
+  "reports": "outputs/publication_readiness_2026_09/temporal_intervention_v1",
+  "threshold_search": false, "model_selection": false, "closed_role_readout": false,
+  "risk_calibration": false, "independent_confirmation": false, "deployment": false,
+  "stage5c_executed": false, "smc_enabled": false
+}

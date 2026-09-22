@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Temporal Partial Intervention Registered (2026-09-22)
+
+The next fixed experiment tests a twelve-step linear transition from causal CV
+to the existing neural forecast, against a uniform blend matched to its mean
+forecast displacement per query. Twenty-four new scalar risk heads are planned,
+with unchanged nested source producers, complete fitting rows, loss, emphasis,
+seeds and update budget. Candidate-derived train-only preprocessing is recomputed
+under the same rule, not borrowed from held outcomes.
+
+Primary improvement must exceed both the matched uniform strict policy and the
+verified original scalar-log reference, while every scene/seed preserves easy
+cases. Equal-count and identical-choice crossover controls are fixed; smoothness
+and known-context proximity proxies will also be reported. Twenty-one targeted
+transform/protocol/log-loss checks passed. Real training/readout are not_run at
+this registration snapshot. [Protocol and commands](outputs/publication_readiness_2026_09/temporal_intervention_v1/registration.md).
+
 ## Prefix-Risk Training Completed: Protection and Gain Still Fail (2026-09-22)
 
 Twenty-four fresh Torch fits completed 288,000 updates and 73,728,000 draws in

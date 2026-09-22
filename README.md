@@ -79,6 +79,15 @@ analysis](outputs/publication_readiness_2026_09/prefix_cost_v1/conclusions.md) k
 this tradeoff explicit. I have not deployed the repair. Independent calibration
 and confirmation remain unresolved.
 
+My next controlled test changes the available action, not the risk threshold.
+The neural forecast is introduced gradually over the twelve prediction steps;
+the first point stays with the causal baseline. A uniform blend is matched to
+the same average displacement from that baseline for each query. I will compare
+their learned switching rules, equal switch counts and identical-choice controls,
+including smoothness and the existing interaction proxy. This [fixed temporal
+intervention study](outputs/publication_readiness_2026_09/temporal_intervention_v1/registration.md)
+is registered before fitting; it is not yet evidence of improvement.
+
 ## Research Question
 
 My primary task is **eight observed annotation steps to twelve predicted steps**.
