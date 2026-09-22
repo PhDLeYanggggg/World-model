@@ -170,6 +170,18 @@ new risk head, independent confirmation, deployment or best-of-20 reproduction.
 The comparison matches training exposure and budget, not parameter count or output
 wrappers; it cannot isolate equivariance. [Fixed comparator and limitations](native_eqmotion_v1/conclusions.md).
 
+The frozen cost-head transfer follow-up is also complete. Thirty-six heads
+trained on Transformer forecasts are applied to EqMotion without refitting or
+threshold selection. The predeclared fraction-strict policy gives3.32610% ADE
+gain but3.78188% positive-easy degradation. Its contrast against direct-strict
+is0.14597 pp, conditional scene CI[-0.55555,0.98260]; the combined criterion
+fails. All12 site/seed views underpredict conditional switching harm. Past-only
+forensics locates support shift in candidate-dependent features, including rows
+actually selected, without establishing causality. Unknown future outcomes
+remain explicit. A predictor-specific clean cross-fitting experiment is needed;
+the negative transfer does not rule out retraining. No independent confirmation
+or deployment is claimed. [Readout and feature diagnosis](cost_head_transfer_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

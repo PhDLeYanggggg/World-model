@@ -5,17 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Registered: Frozen Cost-Head Transfer (2026-09-22)
+## Frozen Cost-Head Transfer: Completed, Protection Fails (2026-09-22)
 
-The next fixed test applies all36 existing Transformer cost heads to the twelve
-verified EqMotion predictions, without refitting, new normalization or threshold
-search. It checks whether learned intervention transfers across predictor families
-before a new EqMotion-specific nested training matrix. All controls and three
-seeds are retained; matched-count diagnostics distinguish ranking from abstention.
-690 provenance bindings and44 related tests pass. Transferred outcome readout is
-not_run at registration. These engineering checks are not method improvement.
-No closed roles, deployment, Stage5C or SMC.
-[Fixed experiment](outputs/publication_readiness_2026_09/cost_head_transfer_v1/registration.md).
+`fresh_run`: fixed transfer, readout, replay and feature/support forensics.
+`cached_verified`: 36 Transformer-trained cost heads and 12 EqMotion predictors.
+No new fitting, normalization or threshold selection. The registered
+bounded-fraction strict policy gives3.32610% equal-site ADE gain over CV, but
+positive-easy degradation is3.78188%; two seeds exceed2%. Its contrast with
+direct-strict is+0.14597 pp, scene CI[-0.55555,0.98260]. The combined gate fails.
+No observed complete exact-CV harm is not full protection:818 unknown-ADE and
+7,479 incomplete-future selected query/seed instances remain. All12 conditional
+views underestimate actual switching harm. Candidate-dependent features shift
+outside the old fitting distribution even among selected rows; this is a
+diagnostic association, not proof of causality or a normalization fix.
+
+All36 heads replay,144 policy choices and1,152 scene reductions pass a separate
+arithmetic implementation.45 distinct scoped tests cover this work. The four
+source sites remain design-exposed. EqMotion-specific cost training and
+independent calibration are not_run. No deployment, Stage5C or SMC.
+[Complete results and next experiment](outputs/publication_readiness_2026_09/cost_head_transfer_v1/conclusions.md).
 
 ## Matched EqMotion Readout: Stronger Forecasts, Failed Easy Protection (2026-09-22)
 

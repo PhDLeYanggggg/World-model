@@ -3,6 +3,26 @@
 最近更新：2026-09-22。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 冻结成本头迁移到 EqMotion
+
+登记提交`76cf3536`先于迁移结果读取。36个已有成本头、12个EqMotion预测器，
+没有重新训练、改标准化或搜阈值。迁移评估、全部成本头重放和另写算术验证已完成。
+预定fraction-strict策略ADE改善3.33%，但easy退化3.78%，联合gate失败，不部署。
+与direct-strict的优势区间跨零。后续因果输入诊断发现候选预测特征分布偏移，
+不是行错位或恒定列错误；不能据此直接宣称找到了唯一原因或已修好。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_cost_head_transfer.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_cost_head_transfer.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_cost_head_transfer.py
+.venv-pytorch/bin/python scripts/audit_m3w_cost_transfer_features.py
+.venv-pytorch/bin/python scripts/audit_m3w_cost_transfer_support.py
+```
+
+结果与缺失结局限制见[报告](cost_head_transfer_v1/conclusions.md)。诊断不是独立测试。
+下一步先训练排除外层场景与行所属场景的EqMotion预测器，再构造新成本头训练数据。
+不得直接把见过训练行的预测器输出当折外监督，也不据本轮结果重新挑种子或阈值。
+
 ## 原生损失 EqMotion 强基线对照
 
 登记提交 `33ecf02b` 先于训练。4个场景、3个种子的12个真实端点已经完成，

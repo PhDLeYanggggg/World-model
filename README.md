@@ -146,6 +146,17 @@ This fixed-head comparison is not reproduction of the author's best-of-20
 benchmark, and the explored scenes are not independent confirmation.
 [Strong comparator, failures and scope](outputs/publication_readiness_2026_09/native_eqmotion_v1/conclusions.md).
 
+I then transferred the existing cost heads to EqMotion without retraining or
+changing their thresholds. The fixed fraction-based rule retains 3.33% ADE
+improvement, but easy error rises 3.78%, above the 2% limit. Its small advantage
+over direct cost regression is not resolved by the scene interval. The heads
+underestimate switching harm in every site/seed view, and candidate-rollout
+features move outside the distribution on which those heads were trained.
+This is a failed transfer, not a safe model. My next step is to build properly
+cross-fitted EqMotion training predictions before learning its intervention
+costs; changing a threshold on these outcomes would not answer that question.
+[Frozen transfer, feature diagnosis and limits](outputs/publication_readiness_2026_09/cost_head_transfer_v1/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict
