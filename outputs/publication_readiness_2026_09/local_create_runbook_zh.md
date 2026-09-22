@@ -1,5 +1,27 @@
 # M3W 本地与 CREATE 操作记录
 
+## 2026-09-22 外部独立场景接入检查
+
+本轮不是训练。TRAF 原始文件审计、精确重算和另一套 CSV/窗口计数实现均已完成，
+74 项相关测试通过。30 个文件不是 30 个独立地点；27 个录像存在身份或类别待审问题，
+坐标框定义与实际数值冲突。没有自动清洗后纳入模型，没有改变训练、校准或测试用途。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_traf_intake.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_traf_intake.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_traf_intake.py tests/test_m3w_traf_verification.py tests/test_m3w_external_source_audit.py tests/test_m3w_intake_admission.py
+```
+
+核对 [结果与限制](traf_intake_v1/conclusions.md)，不要把原始窗口数量当作独立样本量。
+DroneCrowd 官方目录已经核实有可单独获取的 41.3 MB 标注包，README 也明确了学术、
+非商业条件。但其 val 来自 test，不能沿用为独立校准/确认数据。标注下载目前停在
+Google 无法扫描病毒的确认提示，等待用户许可；未下载图像或运行包内代码。
+详见 [来源记录](traf_intake_v1/source_candidates.md)。下载完成后先做成员、哈希和
+原始标注来源检查，不能直接开始训练或看测试分数。
+
+本机剩余约 54 GiB，适合这类小文件审计。不需要新 CREATE 作业；本轮未核验远程
+队列，旧认证失败不能代替当前远程状态。历史训练和 checkpoint 保留，Stage5C/SMC 关闭。
+
 最近更新：2026-09-22。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 

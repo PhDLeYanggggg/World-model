@@ -1,5 +1,47 @@
 # Real-Experiment Continuation Handoff
 
+## TRAF Intake and DroneCrowd Acquisition Progress (2026-09-22)
+
+Previous user-facing status turn was read-only. This goal turn implements a real
+raw-intake parser/refusal path, tests and independent recount, not another fit.
+All 30 local TRAF files are screened; 55,526 input lines, 468 repeated-ID lines
+refused, 592,266 parsed boxes/2,713 local tracks. Only 159 explicit ped tracks;
+1,638 untyped IDs. Unknown/nontarget labels are not silently mapped. 27 clips
+need identity/type review; all 30 remain unadmitted because geometry, source
+conditions, camera/site grouping and exposure are unresolved. 587,251 boxes
+contradict documented xyxy ordering. No centers, velocities, goals or roles made.
+
+Audit session62977 exit0, exact rerun94627 exit0, separate verification65271 exit0;
+74 scoped tests86332 exit0 in1.71s. Analysis SHA
+52d789c7d2514029c58493904c96890e01f9d9be9634bb9845dd3c07257d6b99.
+See traf_intake_v1/conclusions.md, availability.md, analysis.json and
+separate_verification.json. No needed session is live. All old scores unchanged.
+
+Concrete new independent source lead: official DroneCrowd Drive folder opened in
+CUA tab1, browser2/iab, dcTab binding; handoff marked. Full-release README viewed:
+validation is sampled from test, academic/noncommercial terms, original XML with
+frame/ID/box and derived point formats. It resolves the previously missing usage
+description but not full admission. Annotations.zip41.3MB is separate from
+train_data7.72GB/test_data2.63GB/val_data107.9MB. No images downloaded. Annotation
+download reached Google's cannot-virus-scan warning; it was NOT accepted, and
+no completed local download is claimed. The tab retains that confirmation.
+Async question asks user permission to continue only local archive/schema audit.
+Official file IDs and links are in traf_intake_v1/source_candidates.md.
+
+Existing route question (independent-scenes first vs strict nested development)
+also remains pending. Neither question permits silently assigning new roles.
+After approved acquisition: pin hashes, inspect members without execution,
+audit XML interpolation/visibility/IDs and camera/site grouping. Do not copy
+supplied val/test folders into independent roles. Do not count 70 scenarios as
+70 independent physical sites without checking. No forecast readout yet.
+
+Local54GiB free. No new CREATE job or fresh remote queue inspection; current SSH
+config has no CREATE alias, previous publickey/MFA problem is historical. Do not
+claim no remote assets. Preserve3019unrelatedstaged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Goal active; independent evidence, protection and publication gates unmet.
+Stage5C/SMC off. README/results/state updated; explicit-path commit/push only.
+
 ## Calibration Support Audit Completed (2026-09-22)
 
 Previous goal turn concrete progress: conditional training/results pushed1ff42f93.

@@ -235,6 +235,15 @@ yet still offers one calibration site per policy. Independent scene support is
 the priority; a source rotation cannot be relabeled as independent safety evidence.
 [Calibration feasibility and remaining decisions](outputs/publication_readiness_2026_09/calibration_support_v1/conclusions.md).
 
+I am now checking independent data support before claiming that this protection
+transfers. A fresh audit of all 30 local TRAF annotation files finds unresolved
+box conventions, class identities and camera/site grouping; none is admitted
+to a new experiment. I also located DroneCrowd's separate annotation archive
+and its academic-use terms. Its release README explicitly says validation is
+sampled from test, so I will not treat those folders as independent calibration
+and confirmation. No new external score is reported from this intake work.
+[Source audit and acquisition status](outputs/publication_readiness_2026_09/traf_intake_v1/conclusions.md).
+
 [Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).
 [Registered fitting repair](outputs/publication_readiness_2026_09/conditional_cost_v1/registration.md).
 [Completed repair, negative safety result and verification](outputs/publication_readiness_2026_09/conditional_cost_v1/conclusions.md).

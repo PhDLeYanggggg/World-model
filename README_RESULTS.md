@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Independent Data Intake: TRAF Audited, DroneCrowd Source Located (2026-09-22)
+
+Fresh structural screening covers all 30 local TRAF annotation files. Of 55,526
+frame lines, 468 have repeated IDs within a frame; 55,058 parsed lines contain
+592,266 raw boxes and 2,713 recording-local tracks. Twenty-seven recordings need
+identity/type review. Of parsed boxes, 587,251 conflict with the README's xyxy
+ordering. No coordinate conversion, class guessing, interpolation or new split
+is performed. All 74 scoped tests pass, the audit reruns exactly, and a separate
+CSV/window implementation verifies all 30 files. New admissions: zero.
+
+The official DroneCrowd folder and release README were inspected live. Its
+41.3 MB annotation archive is separate from the image archives; the README
+provides academic/non-commercial conditions and explicitly says validation is
+sampled from test. Annotation acquisition awaits permission to accept Google's
+cannot-virus-scan warning. No archive contents or new model scores are claimed.
+Independent roles, camera/annotation provenance and scene grouping remain open.
+The prior 4.10% development ADE gain and failed per-scene easy gate are unchanged.
+[Audit, reproduction and acquisition record](outputs/publication_readiness_2026_09/traf_intake_v1/conclusions.md).
+
 ## Calibration Reuse Audit: Further Producer Exclusion Required (2026-09-22)
 
 A fresh metadata audit and exact verification validate 1,104 bindings and 12
