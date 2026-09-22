@@ -1,0 +1,25 @@
+{
+  "scope": "source_only_fixed_compositional_log_loss",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "objective": "distance_weighted_compositional_log",
+  "loss_exponent": 1,
+  "region_multiplier": 4.0,
+  "region_reference": "tempered_strict_stop",
+  "primary_reference": "frozen_region_strict_stop",
+  "policies": ["net_stop", "strict_stop", "matched_count"],
+  "matched_count_reference": "frozen_bounded_fraction_strict_stop",
+  "bootstrap_resamples": 3000,
+  "training": {
+    "steps": 12000, "batch_size": 256, "learning_rate": 0.001,
+    "width": 128, "checkpoint_every": 500, "heartbeat_every": 100,
+    "gradient_clip": 5.0
+  },
+  "motivation": "outputs/publication_readiness_2026_09/cross_objective_review_v1/veto_diagnosis.json",
+  "registration": "outputs/publication_readiness_2026_09/log_cost_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/log_cost_v1",
+  "reports": "outputs/publication_readiness_2026_09/log_cost_v1",
+  "threshold_search": false, "model_selection": false, "closed_role_readout": false,
+  "risk_calibration": false, "independent_confirmation": false, "deployment": false,
+  "stage5c_executed": false, "smc_enabled": false
+}

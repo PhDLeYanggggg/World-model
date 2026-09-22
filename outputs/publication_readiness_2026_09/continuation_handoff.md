@@ -1,5 +1,24 @@
 # Real-Experiment Continuation Handoff
 
+## Log-Loss Training Registration (2026-09-22)
+
+Previous turn completed real diagnostic progress and pushed7395b7ac. This turn
+tests a new single factor: distance-weighted compositional log loss instead of
+square loss, preserving model/initialization/features/frozen weights/draws/budget
+and strict inference. No critic/threshold sweep, new calibration roles or dataset.
+35scopedtests pass, including same-forward, simplex/gradient and exactresume.
+Registration log_cost_v1/registration.md; priorobjectiveunchanged, derivedsoft
+costfractions are not failure probabilities. Gneiting/Raftery2007 examples read,
+not claimednovel/fullread. Realtraining/readoutnot_run atregistration.
+
+Next preflight; explicit-pathregistrationcommit/push;100stepcoupa_seed17pilot;
+resume12fits; fixed readout; checkpointreplay; separate arithmetic. Record failures
+without changing threshold or primary comparison. Existing independent-role and
+downloadwarning questions stillpending; do notbypass. LocalCPU4/workers0 is fit
+for small downstreamheads; no newCREATEinspectionorjobsclaimed. Preserveunrelated
+stagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Goalactive/unmet; Stage5C/SMCoff.
+
 ## Cross-Objective Review Verified, Primary Failed (2026-09-22)
 
 Previous turn answered status and terminally verified the existing replay; it did

@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Compositional Log-Loss Test Registered (2026-09-22)
+
+I am testing one training change after the unsuccessful risk-review experiment:
+logarithmic rather than squared loss on the bounded benefit/harm composition.
+The existing network, forecasts, feature schema, frozen fitting weights, three
+seeds, sample draws and 12,000-update budget stay fixed. The unchanged strict
+policy must beat the frozen-region square-loss control while preserving every
+scene/seed easy case. No threshold or critic-subset search is planned.
+
+Thirty-five scoped tests pass, including finite near-zero-cost gradients, target
+bound checks, unchanged forward parameterization and exact interrupted resume.
+Real fitting/readout are not_run at registration. This known scoring rule is
+not a novelty or calibration claim. Independent data roles remain unresolved.
+[Fixed hypothesis and reproduction](outputs/publication_readiness_2026_09/log_cost_v1/registration.md).
+
 ## Cross-Objective Review Completed: Protection Costs Useful Gain (2026-09-22)
 
 The fixed review has now been evaluated and verified, without new training.
