@@ -1,7 +1,37 @@
 # M3W 本地与 CREATE 操作记录
 
-最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
+最近更新：2026-09-22。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
+
+## 原生损失 EqMotion 强基线对照
+
+登记提交 `33ecf02b` 先于训练。4个场景、3个种子的12个真实端点已经完成，
+共48,000次更新、3,072,000次采样，记录训练耗时4.92小时。使用原生arm64环境、
+CPU4线程、interop1、workers0，没有因慢而减少预算。每200步保存检查点、每50步
+更新心跳。527,268条预测及指标、全部检查点重放和另写算术核验均完成。后者核对
+1,581,804个重复计入的训练行和320个场景指标，不是独立团队复现。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_eqmotion.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_native_eqmotion.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_eqmotion.py --evaluate
+.venv-pytorch/bin/python scripts/run_m3w_native_eqmotion.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_eqmotion.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_native_eqmotion.py tests/test_m3w_eqmotion_adapter.py tests/test_m3w_native_forecast.py tests/test_m3w_context_conditioning.py
+```
+
+恢复前先核对本地心跳和是否仍有运行进程，不要启动重复训练。已完成端点只核验，
+未完成端点从包含优化器、采样器和随机状态的检查点恢复。身份或作者源码发生变化
+会拒绝复用；不要为了恢复通过而改旧身份。真实训练PID89125和评价PID14504均已退出，
+重放PID18201也正常退出，另写算术核验同样退出码0。PID是本次记录，不应在以后
+机械地对同号进程执行停止操作。
+
+EqMotion的ADE改善11.04%，Transformer为7.63%，但前者easy误差增加35.25%，
+后者增加21.71%，两者都未通过保护。因此这次是强对照和负安全证据，不是新部署。
+这里是固定head0/K=1，不是作者best-of-20复现；参数量和输出约束也不是严格匹配。
+35项针对性测试通过，未重跑会改写历史报告的全套旧测试。缓存、预测、检查点和
+第三方代码不入Git。未运行新CREATE任务；独立确认、Stage5C和SMC均未执行。
+[完整结果和限制](native_eqmotion_v1/conclusions.md)。
 
 ## 已完成：36 个有界成本头的固定对照
 

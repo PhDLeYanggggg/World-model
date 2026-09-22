@@ -130,6 +130,22 @@ all four sites have informed model design. I am keeping the failed primary
 protection result alongside that favorable secondary result.
 [Matched cost heads, uncertainty and limits](outputs/publication_readiness_2026_09/bounded_cost_v1/conclusions.md).
 
+I also completed a matched native-loss run of the public EqMotion core: four
+source sites, three seeds, identical training rows, draws and update budgets.
+It improves ADE by 11.04% over CV, compared with 7.63% for my local Transformer.
+The paired difference is 3.41 percentage points, with a conditional site interval
+of [0.94, 6.07]. I therefore cannot claim that my Transformer is the stronger
+prediction architecture in this setting.
+
+EqMotion also increases positive-easy error by 35.25% and harms many paths that
+CV predicts exactly. That keeps the central research question open: a better
+average forecast still needs reliable intervention control. The first readout
+and complete checkpoint replay pass a separate arithmetic check; neither model
+is newly deployed.
+This fixed-head comparison is not reproduction of the author's best-of-20
+benchmark, and the explored scenes are not independent confirmation.
+[Strong comparator, failures and scope](outputs/publication_readiness_2026_09/native_eqmotion_v1/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict

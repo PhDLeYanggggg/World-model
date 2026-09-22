@@ -1,6 +1,6 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-21. Method proposal with completed three-seed development
+Working draft, evidence reconciled 2026-09-22. Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
 tiny guarded development gains. None supports a new deployment or the proposed
@@ -155,6 +155,20 @@ tradeoff, not a new primary outcome, deployment or an independent result. The
 ordinary triangle bound is not new theory. The paper direction is now narrowed
 to reliable baseline-relative intervention; coupling is retained as a negative
 control. [Full readout and remaining gaps](bounded_cost_v1/conclusions.md).
+
+The subsequent native-loss EqMotion comparison completes twelve real fits,
+48,000 updates and 527,268 predictions. Identical fitting IDs, draw counts and
+native-loss factors produce 11.04350% ADE gain over CV, compared with 7.63308%
+for the frozen Transformer. EqMotion-minus-Transformer is +3.41042 pp, conditional
+four-site CI [0.93607, 6.06916]. The local Transformer therefore does not establish
+architecture superiority. EqMotion degrades positive-easy ADE by 35.24968% and
+harms 11,528 complete zero-CV outcomes per seed; Transformer degrades easy ADE by
+21.70968% and harms 3,000. Both fail strict protection. All checkpoints/predictions
+replay and a separate implementation verifies sampling, errors and intervals;
+this same-agent check is not independent research replication. There is no
+new risk head, independent confirmation, deployment or best-of-20 reproduction.
+The comparison matches training exposure and budget, not parameter count or output
+wrappers; it cannot isolate equivariance. [Fixed comparator and limitations](native_eqmotion_v1/conclusions.md).
 
 ## Abstract
 

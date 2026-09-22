@@ -5,16 +5,40 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched EqMotion Readout: Stronger Forecasts, Failed Easy Protection (2026-09-22)
+
+`fresh_run`: all twelve native-loss EqMotion K=1 fits, 48,000 updates,
+3,072,000 draws and 527,268 predictions. Recorded fitting took 4.92 hours.
+`cached_verified`: frozen native Transformer and causal inputs.
+`not_run`: a new EqMotion risk head, independent calibration/confirmation or
+deployment. Full replay of all twelve checkpoints and 527,268 predictions passes.
+Separate arithmetic checks pass for 1,581,804 repeated fitting rows and 320 scene
+reductions. All 35 related tests pass and required processes exited normally.
+The separate implementation is not an independent research replication.
+
+EqMotion gives 11.04350% equal-site ADE gain over causal CV, versus 7.63308%
+for the local native Transformer. The registered paired difference is +3.41042
+percentage points, four-site bootstrap CI [0.93607, 6.06916]. All three seed
+aggregates improve over CV; EqMotion beats Transformer in three of four site
+means. This is not evidence that the local Transformer beats the public family.
+
+The accuracy result does not pass protection: EqMotion's positive-easy error
+increases 35.24968%, versus 21.70968% for Transformer. EqMotion harms 11,528
+complete zero-CV rows per seed; Transformer harms 3,000. No denominator epsilon,
+seed selection or new deployment. Missing outcomes remain unknown. The four
+sites are design-exposed, and parameter/output-wrapper differences prevent an
+isolated equivariance claim. This is not published best-of-20 reproduction.
+[Complete results and next evidence](outputs/publication_readiness_2026_09/native_eqmotion_v1/conclusions.md).
+[Execution and recovery](outputs/publication_readiness_2026_09/native_eqmotion_v1/execution_notes.md).
+
 ## Bounded Cost Study Completed: Accuracy Lift, Primary Protection Failure (2026-09-21)
 
-Next comparator, registered before fitting: twelve EqMotion K=1 native-loss
-fits will use the same source rows, draws and update budget as the frozen native
-Transformer. The old EqMotion result is not a matched native-loss comparison.
-Update: the real 100-step pilot completed and the full fixed matrix is now
-training from that checkpoint. Estimated local fit time is 5-6 hours; no held-site
-accuracy has been read. [Live execution and recovery](outputs/publication_readiness_2026_09/native_eqmotion_v1/execution_notes.md).
-No new data roles or closed outcomes are opened. This registration is not a
-training result or reproduction of the author's best-of-20 benchmark.
+Historical registration: twelve EqMotion K=1 native-loss fits were fixed to use
+the same source rows, draws and update budget as the frozen native Transformer.
+The completed first readout is recorded above; the earlier 100-step pilot and
+5-6 hour estimate are not substituted for final training evidence. No new data
+roles or closed outcomes are opened. This is not reproduction of the author's
+best-of-20 benchmark.
 [Fixed design](outputs/publication_readiness_2026_09/native_eqmotion_v1/registration.md).
 
 `fresh_run`: all 36 Torch fits, 108,000 updates, 27,648,000 draws and the fixed readout.
