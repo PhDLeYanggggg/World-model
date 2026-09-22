@@ -157,6 +157,15 @@ cross-fitted EqMotion training predictions before learning its intervention
 costs; changing a threshold on these outcomes would not answer that question.
 [Frozen transfer, feature diagnosis and limits](outputs/publication_readiness_2026_09/cost_head_transfer_v1/conclusions.md).
 
+The eighteen pair-excluded EqMotion fits needed for that follow-up have now
+finished, taking 7.75 hours locally without reducing the registered budget.
+Their prediction caches are still being assembled and checked. I have fixed the
+next comparison in advance: refit the same three cost-head families on these
+clean forecasts, retain the previous thresholds, and compare against the frozen
+transfer at common intervention counts. The new cost heads have not been trained
+yet; this preparation is not evidence of improved safety.
+[Predictor-specific cost experiment](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/registration.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict

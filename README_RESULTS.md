@@ -7,6 +7,15 @@ or evidence status.
 
 ## EqMotion Pair-Excluded Training Complete; Cache In Progress (2026-09-22)
 
+Predictor-specific cost refitting is now implemented with separate supervision
+archives, physical outer-row exclusion, unchanged three-arm training settings,
+and a fixed frozen-fraction intervention-count reference.43 targeted tests pass
+for assembly/support, phase rules, common-count selection, tiny real Torch
+training/resume and the separate verification checks. No new cost-head fitting
+or readout has occurred. The next36 fits are conditional on completed cache
+replay and lineage/arithmetic verification, not merely training completion.
+[Fixed refit design](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/registration.md).
+
 The next prerequisite fixes18 new EqMotion fits, six two-site exclusions and
 three seeds, with72,000 total updates. Each future cost-training row's predictor
 excludes both its own scene and the head's outer held scene. Existing12 outer

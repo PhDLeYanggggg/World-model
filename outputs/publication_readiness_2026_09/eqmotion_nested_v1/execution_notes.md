@@ -8,7 +8,13 @@ fits:72,000updates,4,608,000draws and27,903.47 recorded fitting seconds
 to its Transformer counterpart; excluded-site draws total zero. There was no
 budget reduction or training restart. The initial100-update pilot was resumed.
 
-Cache construction is now running in session8833. Cache completion, checkpoint
+The initial cache invocation (session8833/PID56809) was interrupted. A current
+process check confirmed that PID absent, and the same registered cache command
+resumed in session78894/PID61496. Seven complete producers were verified and
+reused; the interrupted producer cache is recomputed because its partial chunks
+were not an atomic completion. No model fit was restarted.
+
+Cache completion, checkpoint
 replay and the separate real arithmetic audit are not yet established at this
 entry. Cost-head fitting remains not_run. Earlier partial snapshots below are
 dated execution history, not the current training status.

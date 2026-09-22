@@ -3,6 +3,28 @@
 最近更新：2026-09-22。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## EqMotion 专用成本头：固定对照，尚未训练
+
+18个排除双场景的预测器已完成，缓存恢复进程保留7个完整产物，只重算中断时未保存的
+预测缓存，不重训模型。必须等缓存结束、固定块回放和逐行算术核验全部通过，才能执行
+下面的新实验。它仍使用4个已经用于研究设计的场景，不是独立最终测试。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_eqmotion_nested.py --verify --replay
+.venv-pytorch/bin/python scripts/verify_m3w_eqmotion_nested.py
+.venv-pytorch/bin/python scripts/run_m3w_eqmotion_cost_refit.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_eqmotion_cost_refit.py --view coupa_seed17 --arm direct_native --stop-at 100
+.venv-pytorch/bin/python scripts/run_m3w_eqmotion_cost_refit.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_eqmotion_cost_refit.py --evaluate
+.venv-pytorch/bin/python scripts/run_m3w_eqmotion_cost_refit.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_eqmotion_cost_refit.py
+```
+
+36个新成本头固定相同架构、预算、阈值和样本抽取规则。所有匹配介入数量对照都使用旧
+冻结fraction策略的数量，不能各挑自己的数量。收益/伤害是连续误差成本，不是校准概率。
+启动前记录提交与hash；中断先查原进程，再用resume。训练、模型分数冻结和结果读取分开。
+本节写入时新成本头训练与结果读取均为not_run，43项针对性检查通过不等于研究假设成立。
+
 ## 冻结成本头迁移到 EqMotion
 
 登记提交`76cf3536`先于迁移结果读取。36个已有成本头、12个EqMotion预测器，
