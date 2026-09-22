@@ -159,7 +159,8 @@ costs; changing a threshold on these outcomes would not answer that question.
 
 The eighteen pair-excluded EqMotion fits needed for that follow-up have now
 finished, taking 7.75 hours locally without reducing the registered budget.
-Their prediction caches are still being assembled and checked. I have fixed the
+Their prediction caches now pass the row-level cost and source-exclusion audit,
+with fixed-block checkpoint replay. I have fixed the
 next comparison in advance: refit the same three cost-head families on these
 clean forecasts, retain the previous thresholds, and compare against the frozen
 transfer at common intervention counts. The new cost heads have not been trained

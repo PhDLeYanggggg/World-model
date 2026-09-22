@@ -1,6 +1,15 @@
 # Nested EqMotion Execution Record
 
-## Training Completed, Cache Pending
+## Completed and Verified
+
+Latest: session78894 exited0 with18/18cache producers and12head views.
+Fixed-block replay session77078 and separate arithmetic session23799 both
+exited0. All1,581,804cost rows and36ordered exclusions pass;5,484fixed rows
+replay exactly. This is not full-cache checkpoint replay. The completed evidence
+is in`conclusions.md`, `analysis.json`, `verification_with_replay.json` and
+`independent_verification.json`. Earlier progress snapshots below are history.
+
+## Training Completed, Cache Pending (Historical Snapshot)
 
 The full training process (session63559/PID23846) exited0 after all18fixed
 fits:72,000updates,4,608,000draws and27,903.47 recorded fitting seconds

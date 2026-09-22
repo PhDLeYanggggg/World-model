@@ -5,7 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## EqMotion Pair-Excluded Training Complete; Cache In Progress (2026-09-22)
+## EqMotion Pair-Excluded Training and Cache Verified (2026-09-22)
+
+Latest: all18producer caches and12head views complete;1,581,804cost rows and
+36ordered exclusions pass separate arithmetic verification. All5,484fixed
+checkpoint replay rows match. This is not full-cache replay or independent
+research replication.25,191unknown-cost instances are preserved. Cache recovery
+reused seven complete archives, regenerated one unfinished cache and did not
+repeat model fitting. Cache/replay/audit processes exited0. The expanded upstream
+and downstream-preparation suite passes89tests. New cost-head outcomes are still
+not_run at this prerequisite's completion.
+[Completed prerequisite](outputs/publication_readiness_2026_09/eqmotion_nested_v1/conclusions.md).
+
+Earlier training and preparation snapshots follow.
 
 Predictor-specific cost refitting is now implemented with separate supervision
 archives, physical outer-row exclusion, unchanged three-arm training settings,

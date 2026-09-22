@@ -182,6 +182,16 @@ remain explicit. A predictor-specific clean cross-fitting experiment is needed;
 the negative transfer does not rule out retraining. No independent confirmation
 or deployment is claimed. [Readout and feature diagnosis](cost_head_transfer_v1/conclusions.md).
 
+The clean cross-fitting prerequisite is now complete: eighteen pair-excluded
+EqMotion models,72,000updates and12outer head views. Each fitting row's producer
+excludes its own site and the outer evaluation site. Separate arithmetic checks
+1,581,804repeated cost rows and36ordered exclusions;25,191unknown outcomes remain
+unknown. Fixed-block replay covers5,484rows, not the full cache. These are data
+and lineage results, not new intervention gains. The predictor-specific36-head
+cost comparison is registered separately, with thresholds and common-count
+controls fixed in advance. All four sites remain design-exposed.
+[Verified prerequisite](eqmotion_nested_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well
