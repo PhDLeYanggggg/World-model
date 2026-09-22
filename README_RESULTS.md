@@ -15,8 +15,9 @@ no old model is relabeled as a new fit.366 dependency bindings and47 targeted
 tests pass, including actual small Torch training/resume and future-invariance
 checks. Registration`fcce08cb` preceded fitting. The real100-update pilot
 completed in38.49seconds with zero excluded-site draws; the same fit is now
-resumed in the full18-fit invocation. Two full fits now have accepted receipts
-(8,000updates,zero excluded draws); the third is active. A separate cache
+resumed in the full18-fit invocation. Nine full fits now have hash-verified
+receipts (36,000updates,zero excluded draws); the tenth is active. Recorded
+fitting across these nine is3.84hours. A separate cache
 arithmetic/lineage verifier is implemented, but its real cache audit awaits
 all18producers. The matrix/cache remain incomplete, not
 a model gain. Estimated local fitting time is7-8hours, plus cache/verification.

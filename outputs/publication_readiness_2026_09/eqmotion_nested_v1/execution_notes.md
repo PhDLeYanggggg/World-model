@@ -8,6 +8,12 @@ The same fit is resumed, not restarted with an easier budget.
 
 ## Initial Live Run, 2026-09-22
 
+Midpoint update:9of18full fits now have hash-verified completion receipts,
+36,000updates and13,834.31 recorded fitting seconds, with zero excluded-site
+draws. The tenth is active in the same invocation. The lightweight
+`training_progress.json` records exact checkpoint hashes without uploading
+checkpoints. The matrix and downstream cost-head repair are not complete.
+
 At the first hour checkpoint, two full fits have accepted completion receipts:
 8,000 updates,3,046.57 recorded fitting seconds and zero excluded-site draws.
 The third seed continues from update1,950. This is partial progress, not a
