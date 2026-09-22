@@ -1,0 +1,20 @@
+{
+  "scope": "source_only_standard_cost_regression_comparator",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "arms": ["ramp", "uniform"],
+  "policies": ["ramp_forest", "ramp_neural", "ramp_neural_matched", "uniform_forest", "uniform_neural", "uniform_neural_matched"],
+  "forest": {
+    "trees": 128, "max_depth": 16, "min_samples_leaf": 64,
+    "max_features": 0.3333333333333333, "checkpoint_every": 16,
+    "fit_threads": 4
+  },
+  "bootstrap_resamples": 3000,
+  "registration": "outputs/publication_readiness_2026_09/forest_cost_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/forest_cost_v1",
+  "reports": "outputs/publication_readiness_2026_09/forest_cost_v1",
+  "threshold_search": false, "model_selection": false,
+  "closed_role_readout": false, "risk_calibration": false,
+  "independent_confirmation": false, "deployment": false,
+  "stage5c_executed": false, "smc_enabled": false
+}

@@ -1,5 +1,31 @@
 # Real-Experiment Continuation Handoff
 
+## Fit/Support Diagnosis and Cost-Forest Registration (2026-09-22)
+
+Status reply did not start a new experiment. The fit/support audit's exact replay
+session69395 completed exit0. New diagnosis supports held-scene selected-risk
+underprediction (ramp ratio median2.7861 vs0.8874 fitting), not obvious range
+extrapolation or missing sampler draws. Private rows unchanged; diagnostic JSON
+and code verified. See temporal_intervention_v1/fit_support_conclusions.md.
+
+Next fixed strong comparator implemented in scripts/run_m3w_forest_cost.py and
+configs/m3w_forest_cost_v1.json.24ExtraTrees cost forests,128trees,depth16,leaf64,
+maxfeatures1/3,CPU4/predict1/workers0; nativearm64/sklearn1.8.0. Same causal356
+features, nested producers, old neural draws and loss emphasis; joint fraction
+squared regression, not matched loss/capacity/compute. Primary rampforest vs
+rampneural, unchanged strict policy, same-count control,3000sitebootstrap.
+No newroles, threshold search, model promotion, calibration, Stage5C or SMC.
+
+24scoped tests passed, including exact resume. Preflight PID22912 exit0 with1249
+sourcebindings. No real forest fit/readout yet at this registration boundary.
+Next: commit/push these explicit files before pilot, run one16tree full-rowpilot,
+then resume all24 if localcost reasonable. Readout only at fullbudget. Keepall
+negative results and incompletefuture support. Independent scene/role decision
+and CREATEpath/auth remainpending; no newHPCjob or remoteabsenceclaim.
+
+Preserve3019 unrelated stagedpaths and fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Temporal Intervention Trained and Verified: Tradeoff, Not Promotion (2026-09-22)
 
 The preceding user turn checked status, not new research progress. This goal turn

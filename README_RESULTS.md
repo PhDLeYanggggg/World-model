@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fit/Held Diagnosis and Registered Cost-Forest Comparator (2026-09-22)
+
+Fresh read-only replay: ramp selected harm underpredicted13/36fitting groups
+versus12/12held groups; realized/predicted median0.8874versus2.7861. The harmed
+zero-CV case is within all356fitting feature ranges. Moving exact-zero queries
+are rare (7of11,566), but all5available fitting examples for the harmed view were
+sampled197times. This supports conditional-risk shift, not a pure missing-sampler
+or obvious outlier explanation. Both audit executions match exactly;7new tests
+pass. No held-case-specific veto or policy change.
+
+Registered next:24standard ExtraTrees cost regressors, same frozen predictions,
+features, nested exclusions and actual sampler exposure weights;128trees each,
+depth16,leaf64. This is not a matched architecture/loss/compute experiment. A
+fixed same-switch-count comparator and site bootstrap are included. Newforest
+training/readout **not_run** at registration;24scoped tests pass across forest,
+fit-support and unchanged temporal helpers. No deployment or independent claim.
+See [diagnosis](outputs/publication_readiness_2026_09/temporal_intervention_v1/fit_support_conclusions.md)
+and [fixed experiment](outputs/publication_readiness_2026_09/forest_cost_v1/registration.md).
+
 ## Temporal Intervention Completed: Easy Protection Improves, Primary Fails (2026-09-22)
 
 Twenty-four fresh Torch cost-head fits completed 288,000 updates and 73,728,000

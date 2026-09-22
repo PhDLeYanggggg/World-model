@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+The latest diagnosis narrows the problem to risk estimates on accepted forecasts
+in a different scene. Typical fitting-scene harm estimates are close to observed
+harm, but held-scene harm is about2.79times the prediction for the gradual policy.
+The remaining exact-baseline failure is not an obvious feature-range outlier.
+I have [documented that diagnosis](outputs/publication_readiness_2026_09/temporal_intervention_v1/fit_support_conclusions.md)
+and fixed a [standard tree-regression comparison](outputs/publication_readiness_2026_09/forest_cost_v1/registration.md)
+before training. It tests whether the neural risk head earns its complexity on
+the same forecasts and features. It is not a new world model or a calibration
+claim; results are pending and the deployment remains unchanged.
+
 I have brought the completed development experiments into one
 [English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v1/manuscript.md),
 with [reproducible tables and a figure](outputs/publication_readiness_2026_09/evidence_manuscript_v1/tables.md).
