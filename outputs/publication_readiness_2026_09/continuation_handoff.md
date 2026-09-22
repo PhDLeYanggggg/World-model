@@ -1,5 +1,52 @@
 # Real-Experiment Continuation Handoff
 
+## Portable Reproduction Draft Executed (2026-09-22)
+
+Previous status response was no research progress. This continuation completed
+a new standalone aggregate reproduction artifact, not a new manuscript rewrite
+or model result. Goal remains active/unmet. All processes terminal; no training
+waiting. No new source role, calibration, targets, fit, deployment or Stage5C/SMC.
+
+Started with local/GitHub main2c52e119. Primary TRAF source tracing failed to
+resolve raw box geometry: author TrackNPred3cf1dfca7e98f86e67561b6327c210d84a50cdd4
+visualizer concerns Alibaba, formatter concerns tracker outputs; manual scale
+example lacks local recording bindings. Author issue8 confirms paper used only
+some TRAF videos. Dedicated old repository/data-page404; coauthor spectral repo
+contains other-dataset adapters. No converter guard weakened, no site admitted.
+See blinded_reproduction_v1/source_followup.md for exact links. Do not repeat
+this same source lookup or infer geometry from apparently plausible numbers.
+
+Implemented scripts/build_m3w_blinded_reproduction.py and standalone
+src/evaluation/m3w_portable_evidence.py. Thirteen-member305464-byte local archive
+data/stage_cvpr2027_experiments/blinded_reproduction_v1/evidence_bundle.zip,
+SHA0ab7306e051a0f1d62a9f071c92146f5341dd994ef457017ee435e75384a3b7d.
+It allowlists aggregate fields from16pinned reports;1062outputfields match v2.
+Eightpolicies/32sitesummaries/96site-seedrows/14contrasts/3joint-supportrows.
+Extracted temporary-directory Python3.11.1 -I -S -B rebuilds7outputs exactly.
+Sitepackagesdisabled, temporaryhome, audit-hookfile/network/subprocessguards.
+Not an OSsandbox/securitycert. TwoSVGs are referencehashchecks, not generated
+by standalonecommand. No raw/weights/third-partycode/gitinfointhearchive.
+
+42scopedtests pass (25new+17prior); exactbuilder --verify passes. Firstnewtest
+used guessed >1200fieldcount and failed; correctedtoactual1062, no value/tolerance
+change. Earlier -I-onlydraft retainedprivately; finalalso-S. Sourceexperiments,
+oldmanuscripts andcheckpoints unchanged. README/results/state updated.
+No guaranteeof anonymityagainst public-numberrecognition. No submission or
+fulltrainingreproduction. Scientificprimarygates stillfail; archive islocalonly.
+
+Highest-valuescientificstep still sourceadmission+agreedindependentroles. Pending
+DUTsource-use/exposure,DroneCrowdwarningpermission and independent-scene-first
+versusstrictnesteddevelopment remainunanswered. Don'trepeatunchangedquestions,
+don'tassignroles,don'tperformmoregenericheldsitegridsormerelyrepeatpackaging.
+CREATEproject/authnotverified; localSSHconfigcontainsnounambiguousCREATEtarget;
+remoteassetsunknownnotabsent. LocalnoGPUneededforthissubtask. Thisturnprogress
+isdeliverablereproducibility, not hypothesis confirmation or independentdata.
+
+Preserve unrelated3019stagedpaths fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Commitonlyexplicitnewbundlecode/tests/lightreports/README/state/handoff; donot
+addprivatearchive, sourcefiles, cachesorcheckpoints. No activeprocess needswait.
+
 ## Evidence Manuscript v2 Completed (2026-09-22)
 
 The preceding status answer was no research progress. This continuation completed

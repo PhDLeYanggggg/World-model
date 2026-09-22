@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have added a [portable reproduction draft](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md)
+for the current evidence tables. It runs from an extracted archive with Python's
+standard library, without my workspace, raw data or model weights. The isolated
+run reproduces all seven result files and preserves the negative comparisons.
+Direct identifying details are removed, but this is not certified anonymous or
+a full model-retraining package. It improves reproducibility, not model accuracy;
+independent calibration and confirmation are still missing.
+
 The [revised evidence draft](outputs/publication_readiness_2026_09/evidence_manuscript_v2/manuscript.md)
 brings the neural-versus-tree risk experiments and joint-support diagnosis into
 one account. It keeps the failed primary comparisons alongside the positive

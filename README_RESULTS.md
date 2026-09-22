@@ -5,6 +5,31 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Portable Reproduction Draft Verified (2026-09-22)
+
+**fresh_run:** allowlisted package construction, isolated extraction/execution,
+exact rebuild and regression tests. **cached_verified:** sixteen completed
+aggregate analyses and archived bootstrap intervals. No new model fit, target
+readout, bootstrap, independent confirmation or deployment.
+
+The local-only 305,464-byte archive has thirteen files and reconstructs seven
+outputs without repository imports, site packages, network or raw/checkpoint
+access. All 1,062 portable export fields match the original evidence; 42 scoped
+tests pass, not the full legacy suite. Fixed ZIP metadata and identifier scanning
+remove direct identifiers, but recognition against earlier public work remains
+possible. This is an aggregate reproduction draft, not an anonymous-submission
+certificate or full training replication. No archive was uploaded/submitted.
+
+The primary-source TRAF follow-up did not establish the local box convention or
+per-recording calibration. The conversion refusal remains; no additional site
+was admitted. Source-use/exposure and calibration/confirmation decisions are
+still pending. CREATE remote assets/jobs were not newly verified. Scientific
+gates are unchanged; Stage5C/SMC off; not submission-ready.
+
+[Verification and use](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md),
+[machine receipt](outputs/publication_readiness_2026_09/blinded_reproduction_v1/verification.json),
+[TRAF evidence](outputs/publication_readiness_2026_09/blinded_reproduction_v1/source_followup.md).
+
 ## Evidence Manuscript v2: Current Controls Integrated (2026-09-22)
 
 **fresh_run:** English manuscript revision, aggregate exports, source/code hash
