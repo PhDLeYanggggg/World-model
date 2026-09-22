@@ -1,5 +1,32 @@
 # Real-Experiment Continuation Handoff
 
+## Conditional Cost Repair Prepared (2026-09-22)
+
+Goal active/unmet. Previous turn completed matched-budget comparison and pushed
+12ef3e4f. This turn freshsamepopulationfit/helddiagnosis2016records completed,
+session66679exit0;5tests pass. SHA4917cd97cf25b66d221231473103411edf7a811f8c2a5d8292ac066018737459.
+Native ownfitselectedunderharm12/12,tempered8/12;heldownselectedall36underharm.
+On same temperedselectedfitpopulation otherheads0/12underharm;this isselection-
+conditioned evidence,notjustglobalmeanorprovenmechanism. Originalrolesclosed.
+
+Newconfigs/m3w_conditional_cost_v1.json, run/eval/verifier/tests,registration.
+One fixed4xlossweightonfrozen temperedstrict fitting selections,normalizedunder
+same sceneuniformsampler. Both benefit/harm sameweight. No inferencefeature,
+threshold,capacity,draw or target change. Samewidth128/12000,batch256,3seeds,
+4sites;12newfits/144000updates/36864000draws. Not calibrationguarantee.
+39scopedtests74542exit0;8earlytests25468exit0. Preflight2057/PID87922exit0,
+1074bindings. No real newtrainingyet, norequiredprocesslive atregistration.
+
+Commit/pushregistrationbeforecoupa17pilot100;thenresume12fits. Run
+scripts/run_m3w_conditional_cost.py --evaluate, --verify, then
+scripts/verify_m3w_conditional_cost.py. Mainvsoldtemperedstrict mustCIpositive,
+allseedpositiveCV,everyseedaggregateeasy<=2,EVERYscene/seedeasy<=2,exactzero0.
+No choosingfractionweakerreference. Retainfitandheldold/newselectedcostmeans,
+missingfutures,bounds,all3policies and3oldobjectivecontrols. No new CREATEjob;
+localcachedheadsfeasible54GiBfree. Allparentregisteredfileshashfrozen.
+Preserve3019unrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Equal-Budget Controls Completed (2026-09-22)
 
 Goal remains active/unmet. The latest user asked for status; live verification

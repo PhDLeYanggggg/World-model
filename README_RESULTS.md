@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Fitting Diagnosis and Fixed Repair Registered (2026-09-22)
+
+Fresh2016-record common-population diagnosis finds that globally conservative
+fitting harm estimates become optimistic on each head's own choices. Native
+underestimates12/12own-selected fitting views, intermediate8/12; all objectives
+underestimate12/12own-selected held views. This is not fixed by global scaling.
+Same-row comparison and incomplete outcomes are retained.
+[Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).
+
+One fixed repair is registered:4xloss emphasis on frozen intermediate-selected
+fitting rows, renormalized under the same sampler.12newheads, samewidth128,
+12000updates/seed,356causalfeatures,targets,draws and inference rules.39scoped
+tests and1074bindingspass. At registration, real new fitting is not_run.
+The primary must improve the previous intermediate strict policy AND preserve
+each scene/seed easy<=2%, not merely the aggregate. No threshold/multiplier
+sweep, original role opening, calibration guarantee or deployment.
+[Fixed experiment](outputs/publication_readiness_2026_09/conditional_cost_v1/registration.md).
+
 ## Equal-Budget Controls Completed: Primary Contribution Check Fails (2026-09-22)
 
 Registration06f9a635 preceded24 fresh native/fraction fits at width128/12000.

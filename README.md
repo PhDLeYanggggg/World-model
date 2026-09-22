@@ -207,6 +207,16 @@ Selected harm is still underestimated under every objective; the deathCircle
 easy failure remains. I keep the candidate as developmental evidence, not a
 new deployment or proof that the proposed loss is generally superior.
 Independent calibration and final confirmation are still missing.
+
+I have also traced the remaining harm error on the same samples, not just each
+model's different selections. Global fitting estimates are usually conservative,
+but the model becomes optimistic on the rows it chooses to replace. This is
+visible even during fitting and gets worse on an excluded scene. The next fixed
+experiment puts more fitting weight on that decision region, keeping the model,
+budget and deployment rule unchanged. I will check both the old and newly
+selected regions; reducing training error alone will not count as a repair.
+[Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).
+[Registered fitting repair](outputs/publication_readiness_2026_09/conditional_cost_v1/registration.md).
 [Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
 [Fixed intermediate-loss result](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
 [Fixed capacity/duration design](outputs/publication_readiness_2026_09/cost_capacity_v1/registration.md).
