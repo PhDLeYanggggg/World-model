@@ -10,11 +10,17 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am checking whether the tree comparator's protection comes from better risk
-ranking or simply fewer switches. The [fixed-count control](outputs/publication_readiness_2026_09/risk_ranking_v1/registration.md)
-keeps the forecasts and switch counts unchanged and compares relative harm with
-net-gain ranking. Its readout is pending; it is not another training run or a
-new deployment.
+My latest [fixed-count comparison](outputs/publication_readiness_2026_09/risk_ranking_v1/conclusions.md)
+separates risk ranking from simply making fewer switches. With the same forecasts
+and exactly the same switch counts, relative-risk ranking protects observed easy
+cases for both the neural and tree heads. The tree retains 3.53% ADE gain over
+constant velocity; the neural head retains 2.81%. Their paired difference is
+0.72 percentage points, with a development-scene interval of [0.61, 0.83]. Ranking
+by net gain improves average accuracy but breaks the worst-scene easy limit for
+both heads. This narrows the problem to useful risk ordering as well as score
+calibration, not just model size. It does not establish independent safety or a
+new neural contribution; the earlier primary gate remains failed and deployment
+is unchanged.
 
 My latest comparison uses ordinary tree regression to estimate intervention costs
 from the same forecasts and causal features. All 24 fits are complete. The gradual

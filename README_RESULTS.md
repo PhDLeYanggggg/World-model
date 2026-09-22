@@ -5,6 +5,33 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Count Risk Ranking Completed (2026-09-22)
+
+**fresh_run:** fixed decisions/readout, exact replay and separate arithmetic.
+**cached_verified:** parent scores, forecasts and source lineage; no new fit.
+Registered/pushed259b2144 before this readout. All controls use22,539 switches
+across repeated query/seed instances, except the original neural strict context.
+
+Forest ratio ADE gain3.53029% versus neural ratio2.80697%; difference+0.72331pp,
+3,000 paired physical-site bootstrapCI[+0.61059,+0.82728]. All12site/seed
+contrasts positive. Worst easy degradation-.13424%/.16376%, both within2%;
+complete exact-CV harms0/0. Thus neural risk ranking also protects observed easy,
+but the tree retains more gain at the same count. Counts do not match causal
+displacement mass; four design-exposed sites are not independent confirmation.
+
+Forest/neural net-gain ranking give4.07418%/3.82776% gain but worst easy
+degradation2.70229%/2.55829% fails. Risk versus gain is a tradeoff, not a new
+deployment winner. Neural own-risk choices still underpredict mean harm12/12,
+realized/predicted median3.84045. Passing empirical checks is not calibration.
+Forest alone has positive full-grid gain lower bounds in every site/seed; neural
+ratio gates bounds remain negative. Missing-label easy safety is unverified.
+
+72choices replay,576scene reductions and96selected-harm groups separately
+checked;22scoped tests pass. Original forest-vs-original-neural primaryCI still
+crosses0 and is not replaced. No independent calibration, external confirmation,
+raw-t50 or new trajectory training. Not CVPR-ready; Stage5C/SMC off.
+See [full evidence](outputs/publication_readiness_2026_09/risk_ranking_v1/conclusions.md).
+
 ## Fixed-Count Risk Ranking Registered (2026-09-22)
 
 No new fit. Fixed ramp proposals, same per-site/seed forest count, forest/neural

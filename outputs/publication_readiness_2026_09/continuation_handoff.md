@@ -1,5 +1,49 @@
 # Real-Experiment Continuation Handoff
 
+## Fixed-Count Risk Ranking Completed (2026-09-22)
+
+Previous status turn was no new research progress. This continuation registered
+and pushed259b2144, ran allfixed causal-ranking controls, exact replay and
+separate verification. Goal remains active/unmet, no new fit or deployment.
+Entryscripts/run_m3w_risk_ranking.py configconfigs/m3w_risk_ranking_v1.json.
+Reportoutputs/publication_readiness_2026_09/risk_ranking_v1/conclusions.md.
+Private data/stage_cvpr2027_experiments/risk_ranking_v1/ ignored.
+
+Same ramp actions and sameforestcount22539 repeatedquery/seedchoices.
+Forest ratio=strict ADE3.53028759 vsneuralratio2.80697335;
+difference+.72331424pp CI[.61058553,.82727728], all12site/seedpositive,
+min+.47963597pp. Worsteasy-.13423741 vs .16376245; completezeroCVharm0both.
+Forest/neural netgain4.07418415/3.82775746, worsteasy2.70229112/2.55829279fail.
+Thus neural relative-risk ranking ALSO protectsobservedeasy,atlowerutility.
+Notonlycounts,butnotproofofarchitecture:loss/capacity/optimizerstilldifferent.
+Originalforestprimarygate vsoriginalneuralSTILLFAILED; don'treplaceit.
+
+Forest/neuralratio share14120 with8419uniqueeach;neuralratio isstrictNNsubset,
+drops11254. Neuralrisk ownharmunderpred12/12ratio3.84044689;forestown0/12ratio
+.6092733. Onneuralrisk forestunder4/12,onforestrisk NNunder1/12. Notcalibration.
+Incomplete/unknownforest2663/190,NNratio3023/353. NNratiofullgridlowernegative
+gatesallseeds,min-.08234554;forestpositiveall,min+.02584076. Samecountnotmass:
+forestdisagreement502232.15vsNNratio440867.75. Context/smoothnessmixedbetween
+ratioarms;donotclaimforestdominateseveryproxyorjointmechanism.
+
+72choicesreplayed,576scenereductions,96conditionalharmgroupsseparatelychecked.
+22scopedtestspass(14new+8unchanged),notfulllegacy. PreflightPID25782exit0,
+evaluation25931exit0,replay25999exit0,separateverifier session61308exit0.
+Noexperimentprocessleftlive. Sourcebindings1295; noHPCneeded. CREATEproject/auth
+stillunverified;local49GiBavailable. Git remotechecked5f6b688fbeforeprereg.
+AnalysisSHA54575f34fc6c0d0ea79a78b89ff98658ccb66433f7b7f05c6f12ac9e3605fcfc.
+ReplaySHA4e17cd406251648954c78f084e834c25f512c18fd246087a14d7b749b49c3266.
+SeparateSHA3554a3a1f505c44723967f7ba11779f100bc12201f53cd948937fce6c1b51582.
+
+Nextpotentialminimalfit: matchforestfraction-squaredtargetandweightsinaneural
+headonthesamerampaction,isolatingloss-versus-estimatorconfoundbeforearchitectures.
+Priorboundedfractionhadotheraction/weights/budget,notmatchedanswer. Registerfirst,
+noheldthresholdsearch. Independentnewsceneadmission/calibrationrolesstillpending;
+do notreuseexposedproducerchains. Earlierjointcontrolwasstructural/weakcoupling
+null;don'trepeatpairweightgridwithouttraining-supportedmechanism. Pinnedmanuscript
+unchanged. NotCVPRcandidate, noStage5C/SMC. Preserve3019unrelatedstagedpaths
+fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Cost Forests Trained: Empirical Protection Passes, Superiority Unproven (2026-09-22)
 
 Meaningful progress: registered/pushed1985a3bc before fitting; all24standard
