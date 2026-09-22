@@ -194,12 +194,16 @@ There are important limits. Easy error still rises by **2.95% in deathCircle**,
 selected harm is underestimated, and missing future labels prevent a complete
 safety assessment. The old fraction control also had a smaller training budget,
 so I cannot attribute the whole gain to the loss function. My next comparison
-gives native and fraction losses the same wider head and longer budget.
+gives native and fraction losses the same wider head and longer budget. That
+comparison is now registered: 24 new control fits, with the intermediate-loss
+heads retained as frozen references. The candidate must beat both matched
+controls; I will not select whichever objective looks best after evaluation.
 Independent calibration and final confirmation are still missing.
 [Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
 [Fixed intermediate-loss result](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
 [Fixed capacity/duration design](outputs/publication_readiness_2026_09/cost_capacity_v1/registration.md).
 [Completed factorial, positive primary result and remaining failures](outputs/publication_readiness_2026_09/cost_capacity_v1/conclusions.md).
+[Equal-budget objective controls](outputs/publication_readiness_2026_09/cost_budget_matched_v1/registration.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm

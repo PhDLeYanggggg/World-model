@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Equal-Budget Objective Controls Registered (2026-09-22)
+
+The capacity study's positive primary comparison does not isolate objective
+merit because its fraction reference used width64/3000updates. A fixed follow-up
+now prepares24new native/fraction controls at width128/12000updates, with12
+verified intermediate-loss reference heads. Planned new288,000updates and
+73,728,000draws; same architecture, initialization, features, forecasts, sampling
+and policies. The candidate must beat BOTH controls in fixed strict-policy
+paired contrasts; no post-readout winner or threshold selection.
+
+43scoped tests and1023dependency bindings pass. Real new fitting is not_run at
+registration. Conditional risk and independent confirmation remain unresolved.
+No original role opening, deployment, Stage5C or SMC.
+[Prospective matched comparison](outputs/publication_readiness_2026_09/cost_budget_matched_v1/registration.md).
+
 ## Capacity/Duration Factorial Completed: Positive Development Gain (2026-09-22)
 
 Registered621a6eb2 before fitting.12new wide paths and12narrow continuations

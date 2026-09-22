@@ -1,5 +1,30 @@
 # Real-Experiment Continuation Handoff
 
+## Equal-Budget Objective Controls Prepared (2026-09-22)
+
+Goal active/unmet. Prior turn completed capacity results and pushed450f996f;
+this turn implements the fixed fair native/fraction controls, not a wait/blocker.
+New config/run/eval/verifier/test andregistration under cost_budget_matched_v1.
+43scopedtests19720exit0; preflight12606/PID85067exit0,1023bindings.
+At registration no real new fit has run and no required process is live.
+
+Register/push before pilot native coupa_seed17stop100, then resume24fits.
+Width128/12000,batch256,same3seeds/4sites/forecasts/features/draws/policies.
+24newfits/288000updates/73728000draws;12existingtemperedwide_longCPs are
+cached_verified refs. Same bounded forward; onlynative/exponent0vsfraction/
+exponent2cost objectives added. Referenceexponent1unchanged. Primarycandidate
+must beat BOTH matched strict controls with CI low>0, positiveeveryseedCV,
+easy<=2%,exactcompletezeroCVharms0; keepknownper-sceneeasyfailuresvisible.
+No winnerpromotion. All four sites remain design-exposed, no independenttest.
+
+Aftertrainingrun scripts/run_m3w_cost_budget_matched.py --evaluate, --verify,
+then scripts/verify_m3w_cost_budget_matched.py. AuditfullCPscorematching,
+parenttemperedsummaryexact,trainingdraws/normalizers/labelhashes. Parentfiles
+remain hash-frozen; no edits to existing runners. No originalclosedroles,
+independentcalibration,deployment,Stage5C/SMC. Localheadcompute feasible,
+no new CREATE job or current remotequeue claim. Preserveunrelated3019staged
+fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Capacity/Duration Completed (2026-09-22)
 
 Goal active/unmet. This continuation completes real readout/replay/separate
