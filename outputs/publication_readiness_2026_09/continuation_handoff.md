@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Intermediate Loss Completed (2026-09-22)
+
+Goal active/unmet; this continuation is progress, not a blocker. Registered
+5a9d02ab then trained12heads,36,000updates,9,216,000draws. All904bindings,
+matched draws and0unknown-supervision draws pass.22,978parameters/head,
+28.07731head-fitseconds excluding prior7.75hour producer training.
+Preflight49494/PID79599,pilot77677/PID79855,full39504/PID79902,
+eval55742/PID80046,replay28315/PID80121,independent79607,tests43409(99pass),
+forensics62432all exit0. Push48114ofregistrationexit0. No required task live,
+new CREATE job or current scheduler claim. All registered files are hash-frozen.
+
+Primarystrict ADE1.098186%,CI[.561864,1.998717],FDE1.200196%,hard1.494196%,
+easydegrade.545116%,completezeroCVharms0. But contrastversusrefitfraction
+-.511119ppCI[-2.490109,1.249070]fails. Seed29deathCircleeasy3.203267%also
+fails per-scene preservation although registered seed aggregate passes.
+Selections4763/unknown92/incomplete940;gatesfull-gridlowerboundsnegativeallseeds.
+Matchednativecontrast+.123225ppCI[.061997,.197016]witheasy7.496587%not promoted.
+Netgain12.1743%buteasy25.0953%and21zeroCVharmsfails.
+Analysisa332cd3d84537524e1dc0d262061b77c6734a708b623f5e19f53547ec69f4388.
+12scoreheads/527268scoresreplay; separate1581804trainingcosts/36choices/288reductions.
+
+Post-readout312fitrecords/120samepopulationcomparisons:
+forensicssha5c7b812fae4bd296369afc969d05054ccfa45b6d2997d6f70adf2e674212465a.
+deathCircletailheldSpearman.595/.593/.601vsfraction.095/.148/.146. Losschange
+doesfixthatproblem.Butcoupaold-onlycomplete2200/1970/2164rowswith~5.4pxnetgain
+lost, replacedby55/52/87rows. Newharm~.8-1.0vsactual~.5onold-onlypopulation.
+Strictscenecontrasts[-3.26105,+1.80121,-.17729,-.40735]pp. No newbestdeployable.
+
+Next: finite-model fitting capacity/convergence is the actionable uncertainty;
+past-onlyDweighting does not change the unrestricted conditional-mean target.
+Do not sweep more exponents/held thresholds or select a favorable secondary.
+Register a fixed capacity/budget contrast only after checking fitting evidence;
+both low- and high-disagreement regimes matter. Four sources remain exposed;
+original closed roles untouched, independent calibration/final evidence missing.
+No metric/seconds, deployment, Stage5C or SMC. Preserve unrelated staged hash
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+Earlier prepared snapshots follow; they are not the current live process state.
+
 ## Intermediate Loss Prepared (2026-09-22)
 
 Goal remains active/unmet. Cost-fit diagnostic completes twice with identical

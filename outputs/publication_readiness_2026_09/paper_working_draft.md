@@ -217,9 +217,17 @@ fitting and .095-.148 held-source; native-cost fitting gives .634-.643 and
 .582-.634, respectively. Fraction fitting underestimates benefit and overstates
 harm in this stratum, while its own selected population still understates harm.
 This is descriptive diagnosis of different conditional populations, not a
-global calibration solution. One fixed intermediate loss exponent is prepared
-as a controlled follow-up. Its outcome remains unmeasured at registration.
+global calibration solution. A fixed intermediate exponent-one loss was then
+registered and trained in twelve matched heads. Strict-policy ADE gain is
+1.09819%, but the primary difference against fraction loss is -0.51112 pp,
+CI [-2.49011, 1.24907]. Its high-disagreement ranking improves, while low-risk
+coupa opportunities are lost. At common counts it beats native loss by 0.12322 pp,
+CI [0.06200, 0.19702], but easy degradation is 7.49659%. This secondary ranking
+result is not protected success. The strict aggregate easy degradation is
+0.54512%, yet one scene/seed reaches 3.20327%. Missing-outcome lower bounds
+also permit harm. No new deployment or independent confirmation follows.
 [Diagnostic design and evidence](eqmotion_cost_fit_forensics_v1/conclusions.md).
+[Registered loss comparison and failure](tempered_cost_v1/conclusions.md).
 
 ## Abstract
 

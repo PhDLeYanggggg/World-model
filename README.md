@@ -173,11 +173,18 @@ solved risk model or a new deployment.
 I checked whether that failure begins only on an unfamiliar scene. It does not:
 the fraction-based cost loss already understates benefit and overstates harm on
 high-disagreement fitting examples. Native-error training ranks those examples
-better but has failed protection elsewhere. I am testing one fixed intermediate
-loss weighting, keeping forecasts, sampling and decision thresholds unchanged.
-This is a controlled attempt to recover useful interventions, not a new result
-or permission to tune against the held-out outcomes.
+better but has failed protection elsewhere. I tested one fixed intermediate
+loss weighting across all twelve scene/seed combinations, keeping forecasts,
+sampling and thresholds unchanged. It repairs much of that tail-ranking error,
+but loses many modest low-risk opportunities in another scene. Strict-policy
+ADE gain falls from 1.61% to 1.10%, so the primary comparison fails again.
+Matching intervention counts shows a small ranking gain over native loss, but
+easy degradation is still 7.50% there. I do not promote that secondary result
+or relax the threshold to make the experiment pass. The next question is whether
+the remaining tradeoff reflects limited fitting capacity or incomplete
+optimization. Independent calibration and final confirmation are still missing.
 [Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
+[Fixed intermediate-loss result](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm

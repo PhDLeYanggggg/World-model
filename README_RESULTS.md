@@ -5,14 +5,35 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Intermediate Loss Prepared (2026-09-22)
+## Fixed Intermediate Loss Completed: Tail Repair, Primary Failure (2026-09-22)
+
+Registration5a9d02ab preceded12newhead fits/36,000updates/9,216,000draws.
+Fresh readout/replay/separate arithmetic; predictors and previous controls are
+cached_verified. No independent confirmation or deployment. Head fitting
+28.08seconds excludes earlier7.75hour upstream training.99scoped tests pass.
+
+Tempered strict ADE+1.09819%, CI[.56186,1.99872], FDE+1.20020%, hard+1.49420%,
+easy degradation.54512%, complete exact-CV harms0. Its registered contrast
+against refitted fraction is-.51112pp, CI[-2.49011,1.24907]:primaryfails.
+One scene/seed has3.20327%easy degradation; aggregate protection does not hide it.
+Strict selections fall20,703to4,763with92unknown/940incomplete outcomes.
+Incomplete-label lower bounds are negative in gates for everyseed.
+
+Matched-count ranking improves.12322ppover native, CI[.06200,.19702], but easy
+degradation7.49659%fails. The net rule gains12.17432%with25.09532%easy degradation
+and21complete exact-CV harms. Neither is promoted. Post-readout diagnosis finds
+repaired high-disagreement ranking and lost low-risk coupa opportunities.
+No exponent/threshold sweep or new deployment claim.
+[Full comparison, failure taxonomy and next test](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 The completed fitting diagnostic motivates one fixed exponent-one cost loss,
 between the existing native and fraction objectives. Twelve new heads retain
 the same forecasts, features, initialization, sampling, budget and thresholds.
 Preflight passes 904 bindings; 23 scoped tests pass, including real tiny Torch
 training, exact resume, matched draws, outcome-excluding inference and separate
-choice/bootstrap checks. Real 12-head fitting is not_run at registration.
+choice/bootstrap checks. Real 12-head fitting was not_run at registration.
 No original closed roles, calibration, deployment, Stage5C or SMC.
 [Prospective comparison](outputs/publication_readiness_2026_09/tempered_cost_v1/registration.md).
 
