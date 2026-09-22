@@ -18,6 +18,11 @@ internal targets below, and no claim that format compliance is complete.
 
 ## Official Dates and Current Policy Availability
 
+2026-09-22 live recheck: the official CFP still lists Nov10/16/23 (AoE) for
+registration, paper and supplement. Its linked2027 AuthorGuidelines returns404
+both directly and through the CFP link; exact2027 formatting remains unverified.
+No submission action was taken. [Official CFP](https://cvpr.thecvf.com/Conferences/2027/CallForPapers).
+
 2026-09-21 live recheck: the official dates remain Nov10/16/23 (AoE). The
 linked2027 AuthorGuidelines still returns404; LLM-use details remain unfinished.
 This verifies dates and the availability gap, not formatting compliance. Current
@@ -60,6 +65,17 @@ or independent confirmation remain absent, report the shortfall rather than
 call the paper ready. The user retains the final submission decision.
 
 ## Current Priority Gaps
+
+### Latest Status, 2026-09-22
+
+The twelve EqMotion native-loss fits are now complete:11.04% ADE gain over CV
+versus7.63% for the local Transformer, with both failing protection. Frozen
+cost-head transfer also completes and fails:3.33% ADE gain with3.78% easy
+degradation and no resolved advantage over direct-strict. The next prerequisite
+is18 pair-excluded EqMotion producers, now training after a38.49s/100-update
+pilot. This prepares clean model-specific risk training, not independent
+calibration. No new test roles or threshold changes. The historical status below
+is retained as dated history, not a claim that the old12-fit run is still active.
 
 ### Latest Status, 2026-09-21
 

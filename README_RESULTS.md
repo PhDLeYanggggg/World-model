@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Registered: EqMotion Pair-Excluded Producers (2026-09-22)
+## In Progress: EqMotion Pair-Excluded Producers (2026-09-22)
 
 The next prerequisite fixes18 new EqMotion fits, six two-site exclusions and
 three seeds, with72,000 total updates. Each future cost-training row's predictor
@@ -13,9 +13,13 @@ excludes both its own scene and the head's outer held scene. Existing12 outer
 EqMotion models and18 Transformer nested samplers are hash-verified references;
 no old model is relabeled as a new fit.366 dependency bindings and37 targeted
 tests pass, including actual small Torch training/resume and future-invariance
-checks. New real-data training and costs are not_run at registration. No new
-data role, threshold search, risk calibration or deployment.
+checks. Registration`fcce08cb` preceded fitting. The real100-update pilot
+completed in38.49seconds with zero excluded-site draws; the same fit is now
+resumed in the full18-fit invocation. The matrix/cache remain incomplete, not
+a model gain. Estimated local fitting time is7-8hours, plus cache/verification.
+No new data role, threshold search, risk calibration or deployment.
 [Fixed matrix and lineage rules](outputs/publication_readiness_2026_09/eqmotion_nested_v1/registration.md).
+[Runtime and recovery](outputs/publication_readiness_2026_09/eqmotion_nested_v1/execution_notes.md).
 
 ## Frozen Cost-Head Transfer: Completed, Protection Fails (2026-09-22)
 
