@@ -1,5 +1,49 @@
 # Real-Experiment Continuation Handoff
 
+## Evidence Manuscript v2 Completed (2026-09-22)
+
+The preceding status answer was no research progress. This continuation completed
+an evidence-bearing English revision, source-derived tables/figures, Chinese
+reproduction tutorial and fresh official venue checks. Goal remains active/unmet.
+No new fit, target readout, bootstrap, calibration, data-role assignment or model
+promotion. Stage5C/SMC off. All current commands terminal; no training waiting.
+
+New builder `scripts/build_m3w_evidence_manuscript_v2.py` pins 16 aggregate reports
+and four producer/action scripts. It verifies 8 main rows, 32 site rows, 96
+site/seed rows, 14 paired contrasts and 3 joint-support summaries. The optional
+local lineage check validates 12 outer views/36 inner groups against manifest
+4d5318b334810db6ccc0921a9bf1fee6e0b745af7712bb5d489b3dbe03451d2b.
+Suspected EqMotion-label defect was ruled out: cost_head_transfer replaces the
+early Transformer predictions with native EqMotion; eqmotion_cost_refit supplies
+the appropriate excluded training producers. Do not issue a false erratum.
+
+17 scoped tests pass (6 prior +11 new); ten generated exports including SVGs
+reconstruct exactly. Both figures visually inspected. First build stopped on
+an absent CV-p99 field; unsupported field removed without changing source results.
+Draft reference author typo corrected from official proceedings before tests.
+Old evidence_manuscript_v1 and original analyses untouched. Public package remains
+identifiable, not an anonymous release or external review. Existing private
+checkpoints and full replay evidence reused, not rerun or called fresh.
+
+Outputs: `evidence_manuscript_v2/manuscript.md`, `tables.md`, two SVG figures,
+light CSV/JSON exports, `evidence_review.md`, `reproduction_zh.md`, `venue_status.md`.
+CVPR official registration/full/supplement dates verified Nov10/16/23 AoE.
+2027 AuthorGuidelines linked page404; detailed format/LLM policies not final.
+Internal schedule is planning only, not scientific readiness or new permissions.
+
+Next highest-value research action is independent source admission and agreed
+calibration/confirmation roles. Prior pending decisions remain unchanged; do not
+repeat identical questions or assign roles silently. Existing metadata/source
+audits identify DUT source-use/prior-exposure and DroneCrowd download-warning
+conditions; CREATE project/auth still not verified. Local SSH config checked,
+no current remote queue or absence-of-assets claim. Avoid another broad held-site
+loss/weight grid and avoid repeated manuscript polishing as a substitute for
+missing scientific evidence. Original primary gates remain failed.
+
+Git start/remote412f96d7. Preserve unrelated3019 staged paths fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Commit only the named revision/builder/tests/README/state/handoff files.
+
 ## Protected Joint Support Rechecked, Very Sparse (2026-09-22)
 
 Concreteprogress: finalized matchedlossreports and pushed01d719a9; then new

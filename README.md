@@ -10,6 +10,18 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+The [revised evidence draft](outputs/publication_readiness_2026_09/evidence_manuscript_v2/manuscript.md)
+brings the neural-versus-tree risk experiments and joint-support diagnosis into
+one account. It keeps the failed primary comparisons alongside the positive
+same-count result, with worst-scene/seed easy damage rather than only an average.
+The [tables and figures](outputs/publication_readiness_2026_09/evidence_manuscript_v2/tables.md)
+can be regenerated from sixteen pinned reports; the
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/evidence_manuscript_v2/reproduction_zh.md)
+separates paper reconstruction, checkpoint replay and independent validation.
+This is an updated research manuscript, not a new model result or a claim that
+the paper is ready to submit. Independent calibration and a supported method
+contribution are still the most important missing evidence.
+
 I also checked whether the protected forecasts leave meaningful joint-agent
 choices. Exhaustive comparison finds only three changed forest-policy decisions,
 all from one recording/frame repeated over three seeds. The neural pools change

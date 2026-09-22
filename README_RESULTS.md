@@ -5,6 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Evidence Manuscript v2: Current Controls Integrated (2026-09-22)
+
+**fresh_run:** English manuscript revision, aggregate exports, source/code hash
+checks, producer metadata check, two scientific SVGs and Chinese reproduction
+tutorial. **cached_verified:** 16 completed aggregate analyses, earlier bootstrap
+intervals and EqMotion producer lineage. No new fitting, target readout, bootstrap,
+independent calibration, final confirmation or deployment.
+
+Eight risk-policy rows, 32 site summaries, 96 site/seed summaries and 14 paired
+contrasts retain both original primary failures and the positive fixed-count
+diagnostic. The three new joint-support rows are explicitly not predictive
+outcomes. The forecast family was checked through the transfer/refit chain:
+EqMotion ramp candidates, not Transformer merely because utilities are shared.
+Twelve outer views and 36 inner groups match their excluded producer metadata.
+
+17 scoped manuscript/export tests pass; 10 generated files, including both SVGs,
+reconstruct exactly. Figures inspected visually. The v1 snapshot and all source
+analyses remain unchanged. These are packaging/provenance checks, not the full
+legacy suite or external scientific replication. CVPR 2027 dates were checked;
+the linked 2027 Author Guidelines currently return 404, so full format/policy
+compliance remains unverified. No CREATE queue access or new job is claimed.
+
+[Manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v2/manuscript.md),
+[evidence review](outputs/publication_readiness_2026_09/evidence_manuscript_v2/evidence_review.md),
+[tutorial](outputs/publication_readiness_2026_09/evidence_manuscript_v2/reproduction_zh.md),
+[venue check](outputs/publication_readiness_2026_09/evidence_manuscript_v2/venue_status.md).
+Submission readiness remains false; Stage5C and SMC remain off.
+
 ## Protected Joint Support Completed: Sparse, Not Predictive Evidence (2026-09-22)
 
 **fresh_run:** causal-only exhaustive opportunity check and exact replay.
