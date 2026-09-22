@@ -159,13 +159,16 @@ costs; changing a threshold on these outcomes would not answer that question.
 
 The eighteen pair-excluded EqMotion fits needed for that follow-up have now
 finished, taking 7.75 hours locally without reducing the registered budget.
-Their prediction caches now pass the row-level cost and source-exclusion audit,
-with fixed-block checkpoint replay. I have fixed the
-next comparison in advance: refit the same three cost-head families on these
-clean forecasts, retain the previous thresholds, and compare against the frozen
-transfer at common intervention counts. The new cost heads have not been trained
-yet; this preparation is not evidence of improved safety.
-[Predictor-specific cost experiment](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/registration.md).
+Their prediction caches pass the row-level cost and source-exclusion audit,
+with fixed-block checkpoint replay. The 36 predictor-specific cost-head fits are also complete,
+with the same thresholds and a comparison at common intervention counts.
+Refitting improves positive-easy error by 1.79% and retains 1.61% ADE gain over CV,
+but it does not beat the old transferred rule's 3.33% gain. The registered primary
+comparison therefore fails. On one scene it rejects high-benefit predictions
+because it overestimates their harm; on its own selected rows it still
+underestimates harm. This is a narrower protected development tradeoff, not a
+solved risk model or a new deployment.
+[Predictor-specific results and remaining failure](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm

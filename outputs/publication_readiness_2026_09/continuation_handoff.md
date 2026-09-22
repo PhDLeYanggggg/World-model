@@ -1,5 +1,54 @@
 # Real-Experiment Continuation Handoff
 
+## EqMotion Cost Refit Completed (2026-09-22)
+
+Goal active/unmet. Latest turn is progress, not a blocker: completed18producer
+caches, replayed fixed blocks and checked all1,581,804cost rows; then registered
+and trained36newcost heads, fixed readout/replay/separate arithmetic and120
+same-population diagnostic records. Original closed roles remain unopened.
+
+Nested prerequisite registrationfcce08cb; completion commitb03e849b.
+Analysis8367e7bd5628e01fa04d1c5451ec2c8816ddbee60dac07b1cd36a16b0eb05f77.
+18fits/72,000updates/4,608,000draws/27,903.47fitseconds; cache1,581,804repeated
+rows/25,191unknowns/36exclusions/12views.5484fixed replay rows, NOT full replay.
+Cache interruption recovery confirmed oldPID56809absent and reused7complete
+archives, without model retraining.78894/77078/23799all exit0.
+
+Cost refit registered1a9d26ed before fitting,841bindings. Preflight12598,
+pilot49228/PID75878, full53690/PID75911, evaluate33089, replay2774,
+independent35308 and forensics69680all exit0.36heads/108,000updates/
+27,648,000draws/76.64547head-fitseconds; source forecast fitting separate.
+Each22,978parameters. All36score replays,252choice checks,2016scene reductions
+pass.91targeted tests pass (session89556exit0). No required experiment still live.
+No new CREATE job or live remote scheduler claim.
+
+Refit fraction strict primary:ADE1.609305%,CI[.716268,3.039281], FDE1.730640%,
+hard.508466%, easy IMPROVEMENT1.788028%, zero complete exact-CV harms allseeds.
+But primary refit-minus-frozen=-1.716798pp,CI[-3.785246,.311858]:jointgatefalse.
+Selected20,703vs42,422; unknown104/incomplete1729. Matched-count fraction
+contrast=-.859343pp,CI[-3.309985,.593132]. Bounded-native matched secondary
++.463371ppCI[.176682,.834414]still easy degradation7.463807%,not promoted.
+Analysis260700b79a0e0bda415fc54b4e09df66ca3c2b4c2732573ec5c32d2d7985dd9d.
+All registered experiment code/config/tests/registration now hash-frozen.
+
+Diagnosis: support extremes shrink, but every new selected view underestimates
+harm1.56-2.85x. Same-population checks show deathCircle high-benefit rows suffer
+overestimated harm and underestimated benefit. Matched frozen-only complete
+groups gain80.45/62.97/49.47pixels versus replacement9.22/13.01/4.61. This is
+not solely fewer interventions. Do not fix it by reading a new test threshold.
+
+Next useful step: determine whether the ranking failure occurs already in
+complete fitting predictions versus held-source transfer using TRAIN-defined
+speed/disagreement strata and existing fixed checkpoints. New loss/feature
+experiments require prospective registration, not changing this frozen run.
+Four sources are design-exposed; no independent calibration/confirmation or
+deployment. Keep strict exact-zero/easy criteria, 8observed/12predicted SDDstride12,
+annotation pixels. Stage5C/SMCoff. Source joint-coupling remains a negative result.
+CVPR readiness unmet. Retain3019unrelated staged edits with fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+Earlier handoffs below are historical, not present active-task instructions.
+
 ## Scene Context Repaired (2026-09-21)
 
 Goal active/unmet. Previous turn progress; this turn builds reusable common-frame

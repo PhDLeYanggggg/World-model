@@ -1,6 +1,9 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-22. Method proposal with completed three-seed development
+Working draft, evidence reconciled 2026-09-22. Latest predictor-specific cost
+refitting restores observed easy preservation but fails its registered gain
+contrast; it is neither independent confirmation nor a new deployed method.
+Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
 tiny guarded development gains. None supports a new deployment or the proposed
@@ -191,6 +194,21 @@ and lineage results, not new intervention gains. The predictor-specific36-head
 cost comparison is registered separately, with thresholds and common-count
 controls fixed in advance. All four sites remain design-exposed.
 [Verified prerequisite](eqmotion_nested_v1/conclusions.md).
+
+The registered predictor-specific cost experiment subsequently completes all
+36 heads and 108,000 updates, retaining identical predictors and thresholds.
+Refitted fraction-strict gives 1.60931% ADE gain over CV, scene CI
+[0.71627%, 3.03928%], and improves positive-easy ADE by 1.78803%, with no
+observed complete exact-CV harm. However, its primary contrast against frozen
+transfer is -1.71680 pp, CI [-3.78525, 0.31186], so the combined criterion fails.
+The matched-count fraction contrast also fails to establish better ranking.
+Same-population diagnostics find overestimated harm on high-benefit deathCircle
+rows alongside underestimated harm on the new head's selected rows. Refitting
+reduces feature-support shift without resolving conditional cost reliability.
+The primary rule still selects 104 unknown-ADE and 1,729 incomplete-future
+query/seed instances. Full-grid average-gain bounds do not imply subgroup or
+out-of-distribution safety. No threshold or primary arm was changed after
+readout. [Complete comparison and failure analysis](eqmotion_cost_refit_v1/conclusions.md).
 
 ## Abstract
 

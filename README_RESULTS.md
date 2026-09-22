@@ -5,6 +5,31 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## EqMotion Cost Refit: Protection Recovers, Primary Gain Test Fails (2026-09-22)
+
+`fresh_run`:36heads/108,000updates/27,648,000draws, fixed readout, replay and
+same-population forensics. Registration`1a9d26ed`preceded fitting. Predictor
+and frozen-cost references are`cached_verified`; independent confirmation,
+calibration and deployment remain`not_run`. Recorded head fitting76.65seconds
+excludes upstream7.75hour producer training. No unknown-supervision draw.
+
+Primary fraction-strict:ADE+1.60931%, CI[0.71627,3.03928], FDE+1.73064%,
+hard+0.50847%, positive-easy improvement1.78803%, complete exact-CV harms0.
+Every seed improves CV and passes easy preservation. But refit-minus-frozen is
+-1.71680pp, CI[-3.78525,0.31186]:the combined primary gate fails. Selected
+instances drop42,422to20,703;104unknown-ADE and1,729incomplete outcomes remain.
+At common counts the fraction contrast is-0.85934pp, CI[-3.30999,0.59313].
+No demonstrated superior ranking. The bounded-native matched secondary improves
+0.46337pp but has7.46381%easy degradation; it is not promoted to primary success.
+
+All12new selected populations still underestimate harm. Same-population
+forensics also locates overestimated harm and missed high-benefit motion in
+deathCircle. Feature-support shift shrinks but does not solve prediction value.
+All36heads replay; separate arithmetic checks252choices/2,016scene reductions;
+91scoped tests pass. Same-agent verification is not independent replication.
+No changed roles, test threshold tuning, deployment, Stage5C or SMC.
+[Complete fixed comparison and failure taxonomy](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/conclusions.md).
+
 ## EqMotion Pair-Excluded Training and Cache Verified (2026-09-22)
 
 Latest: all18producer caches and12head views complete;1,581,804cost rows and
