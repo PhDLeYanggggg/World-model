@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Count Risk Ranking Registered (2026-09-22)
+
+No new fit. Fixed ramp proposals, same per-site/seed forest count, forest/neural
+relative-risk and net-gain controls. Scores and all source artifacts verified
+through 1,295 bindings; 21 scoped tests pass at registration. Readout not_run.
+No threshold search, new scientific role, deployment or independent claim.
+See [registration](outputs/publication_readiness_2026_09/risk_ranking_v1/registration.md).
+
 ## Cost Forests Completed: Better Empirical Protection, Superiority Unproven (2026-09-22)
 
 **fresh_run:** 24 ExtraTrees cost regressors, 3,072 trees, fixed readout,

@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am checking whether the tree comparator's protection comes from better risk
+ranking or simply fewer switches. The [fixed-count control](outputs/publication_readiness_2026_09/risk_ranking_v1/registration.md)
+keeps the forecasts and switch counts unchanged and compares relative harm with
+net-gain ranking. Its readout is pending; it is not another training run or a
+new deployment.
+
 My latest comparison uses ordinary tree regression to estimate intervention costs
 from the same forecasts and causal features. All 24 fits are complete. The gradual
 policy gains 3.53% ADE over constant velocity, versus 3.40% with the neural risk
