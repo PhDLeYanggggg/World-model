@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Adaptive Fitting-Region Experiment Registered (2026-09-22)
+
+The next controlled test changes only when fitting emphasis is refreshed: every
+500 updates instead of a frozen old selection region. It retains the same four
+development sites, three seeds, forecasts, 12,000 updates/head, draws, loss and
+inference thresholds. Its primary comparator is the completed frozen-region head.
+Positive paired accuracy gain must also preserve every scene/seed easy case;
+an aggregate-only improvement is a failure. No calibration or deployment claim.
+
+All 46 scoped tests pass, including exact interrupted/resumed fitting, unchanged
+draws and first-block equality to the old trainer. Real fitting/readout are
+not_run at registration. The new code records each refresh for replay. Independent
+data roles remain pending; this fitting experiment does not bypass that gap.
+[Fixed registration](outputs/publication_readiness_2026_09/adaptive_region_cost_v1/registration.md).
+
 ## Coherent Manuscript and Reconstructed Evidence (2026-09-22)
 
 A new English manuscript replaces chronological stage reporting with one explicit

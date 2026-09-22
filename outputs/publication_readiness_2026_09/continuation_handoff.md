@@ -1,5 +1,21 @@
 # Real-Experiment Continuation Handoff
 
+## Adaptive Region Registration (2026-09-22)
+
+The previous status-answer turn was no new scientific progress. This continuation
+implements the next one-factor fitting test: refresh the same4xloss emphasis
+every500updates using current fitting predictions only. Same12heads/seeds/draws,
+targets/thresholds/roles, primary against frozen-region conditional_cost_v1.
+46scopedtests pass; exact first-block/reference and interrupted resume checked.
+Before real fits: preflight, explicit-path registration commit/push,100step pilot,
+resume12fit matrix, fixed readout/replay/separate-formula checks. No independent
+data-role changes. Original pending acquisition/role decisions remain pending.
+
+Local54GiBfree. CREATE asset inventory remains historically auth-blocked; no
+current queue/remote asset query or submission claimed. LocalCPU4is appropriate
+for this small downstream experiment. Preserve all3019unrelatedstagedchanges.
+Stage5C/SMCoff; previous paper/protection failure remains unchanged at registration.
+
 ## Evidence Manuscript Reconstructed (2026-09-22)
 
 Previous goal turn: genuine source-provenance progress, pushede9c18a41. This turn
