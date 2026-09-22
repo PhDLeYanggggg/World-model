@@ -1,5 +1,38 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Neural Objective Completed, Primary Failed (2026-09-22)
+
+Previous status turn completed the separate verifier and40scopedtests; progress,
+not a live training wait. All12fraction-square Torch fits terminal,144000updates,
+36864000draws,unknown0,123.27743recordedfitseconds,80138108checkpointbytes private.
+Preregistered/pusheda9292047; frozen model/config/evaluation unchanged.
+TrainingPID39835,evaluation40339,replay40488 exit0. Pilot27096handlelost but
+terminalevent/checkpoint100/PIDabsence verified. No required task processlive.
+
+NewstrictADE3.44707451 vsold3.39755978;delta+.04951473pp
+CI[-.00526684,+.13863957],primaryfalse. Other4observedgatespass;
+worsteasy1.09155085%,completezeroCVharm0. Samecount22539:
+square_ratio2.59969613 vslog_ratio2.80697335 vsforest3.53028759.
+New-oldriskdelta-.20727722ppCI[-.25325225,-.14071108],all4sitesnegative.
+Squareownriskharmunderpred12/12,ratio5.75454782. Newfitobjectivebetter9/12,
+equalviewmean.08215949vsold.08293925;not a heldrankingrepair.
+
+Separate verifier initialexit1fromalternativefloatarithmetic. Only verifierfixed:
+exactmanualfloat32forward plus separate alternative algebra check, not relaxed
+tolerance. Session77192exit0.96choices,768reductions,527268scores,
+1581804fitting-viewrowsverified.40tests session67160exit0 in2.39s.
+AnalysisSHAfb56409613d2aba1950bb6d7c8f2db64a5bb4430181b4c691e0693bee45dc5f4.
+Reportsfraction_square_v1/conclusions.md,execution_notes.md,replay.json,
+separate_verification.json. README/results/stateupdated thiscontinuation.
+
+No new deployment/trajectoryfit/calibration/confirmation. Four alreadyexplored
+sites. Pinnedmanuscriptunchanged. PriorStage37notrecertified. Stage5C/SMCoff.
+Nextsafeaction: causal-only interaction-support audit of newer protected candidate
+pool before another joint model; no labels, threshold/pairweight grid or newrole.
+Independent-source admission/calibration decision and CREATEproject/auth still
+pending. RemoteHEADa9292047 verified before edits; no newHPCjob. Preserve3019
+unrelatedstagedpaths fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Fixed-Count Risk Ranking Completed (2026-09-22)
 
 Previous status turn was no new research progress. This continuation registered

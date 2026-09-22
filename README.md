@@ -10,10 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-The next controlled experiment matches the neural head to the tree comparator's
-weighted squared-cost objective, keeping the neural architecture and training
-budget fixed. The [experiment is registered](outputs/publication_readiness_2026_09/fraction_square_v1/registration.md);
-training and readout are pending, not a claimed improvement.
+I have completed a controlled test of whether the neural risk head's training
+loss explains its gap to a simple tree comparator. Twelve new fits improve the
+fitting objective in nine views, but do not repair held-scene risk ranking. The
+fixed policy gains 3.45% ADE over constant velocity versus 3.40% previously; their
+paired difference interval crosses zero. At equal switch counts, the new head
+falls to 2.60%, versus 2.81% for the old head and 3.53% for the forest. Learning
+the average cost better has not made the selected cases reliably safer. The
+[full result and verification](outputs/publication_readiness_2026_09/fraction_square_v1/conclusions.md)
+retain the failed primary gate and unchanged deployment. These are development
+results, not independent confirmation or submission readiness.
 
 My latest [fixed-count comparison](outputs/publication_readiness_2026_09/risk_ranking_v1/conclusions.md)
 separates risk ranking from simply making fewer switches. With the same forecasts

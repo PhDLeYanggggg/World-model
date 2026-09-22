@@ -5,7 +5,33 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Forest-Objective Neural Control Registered (2026-09-22)
+## Forest-Objective Neural Control Completed: Primary Gate Failed (2026-09-22)
+
+**fresh_run:** 12 Torch cost heads, 144,000 updates, 36,864,000 draws; fixed
+evaluation, exact checkpoint replay and separate arithmetic. **cached_verified:**
+forecasts, prior neural/forest controls and source lineage. New trajectory
+training, independent calibration/confirmation and raw-t50 supplement not_run.
+
+Square-loss strict ADE gain3.44707% vs old-log3.39756%; difference+0.04951pp,
+paired3,000site-bootstrapCI[-0.00527,+0.13864]. Primary superiority fails.
+Worst site/seed easy1.09155% passes2%; complete exact-zero-CV harmed0 vs old1.
+At the same22,539switches, new-risk2.59970% vs old-risk2.80697% vs forest3.53029%.
+New minus old risk-0.20728pp,CI[-0.25325,-0.14071]; all4sitesnegative.
+All net-gain controls still violate the worst-site/seed easy ceiling.
+
+Full-fitting objective improves9/12views, but selected mean harm is underestimated
+12/12heldviews: median realized/predicted5.75455 for new-risk vs3.84045 old-risk.
+Objective matching alone does not solve conditional risk ordering. Four exposed
+sites do not give independent confirmation. Missing-label easy safety unverified.
+
+All12checkpoints and96choices replay; separate verification checks527,268scores,
+1,581,804fitting-view rows and768scene reductions.40scopedtests pass, not full
+legacy suite. Initial verifier arithmetic-order discrepancy repaired in verifier
+only; model/config/results unchanged and exact float32 replay now passes.
+123.28recordedfitseconds;80,138,108checkpointbytes localonly. Not deployed or
+CVPR-ready; Stage5C/SMCoff. [Results and limits](outputs/publication_readiness_2026_09/fraction_square_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 Planned12 Torch risk-head fits on the same ramp actions,356 causal inputs,
 128hidden units,12k updates and exact prior sampler stream. Only the data-fit
