@@ -224,6 +224,17 @@ optimistic on its own new selections. At equal intervention counts, its accuracy
 is slightly worse than the previous head. I therefore do not deploy it or claim
 that weighting alone solves risk estimation. Independent calibration and final
 confirmation remain open requirements.
+
+I have now checked what an honest calibration split would require. Removing one
+site from the cost-head rows is insufficient: the predictors that generated the
+remaining targets still learned from that site. All 36 proposed inner reuse cases
+fail this check. A new refusal guard catches this before calibration reads. The
+existing outer-held fitting exclusion remains valid; these are different claims.
+A fully nested repair needs twelve new predictor fits and thirty-six cost heads,
+yet still offers one calibration site per policy. Independent scene support is
+the priority; a source rotation cannot be relabeled as independent safety evidence.
+[Calibration feasibility and remaining decisions](outputs/publication_readiness_2026_09/calibration_support_v1/conclusions.md).
+
 [Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).
 [Registered fitting repair](outputs/publication_readiness_2026_09/conditional_cost_v1/registration.md).
 [Completed repair, negative safety result and verification](outputs/publication_readiness_2026_09/conditional_cost_v1/conclusions.md).

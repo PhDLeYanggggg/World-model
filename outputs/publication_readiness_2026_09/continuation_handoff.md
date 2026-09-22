@@ -1,5 +1,34 @@
 # Real-Experiment Continuation Handoff
 
+## Calibration Support Audit Completed (2026-09-22)
+
+Previous goal turn concrete progress: conditional training/results pushed1ff42f93.
+This turn: tested calibration-exclusion guard and fresh metadata audit, no new
+training/calibration/roles. All12current outer fitting exclusions pass. All36
+proposed inner reuses fail direct/scoring/indirect target producer exclusion.
+Removing C rows + using pair(O,C) scorer still leaves two target teachers trained
+on C (72 incidences). Strict2fit/1calibration/1outer design needs12new triple-
+excluded predictors and36heads; these are not_run, not approved. Hypothetical
+graph passes36checks but each policy has only1calibration site. All4sites remain
+design-exposed; original roles stay closed.
+
+63tests25748exit0 in17.91s; audit94315/verify62432exit0,1104bindings.
+Analysis7905e86a27e61d42b9b024b1868c97b4569dcbe452c6c9164951daeff7a20fd0.
+Fresh DUT screen/refusals under calibration_support_v1:112refusals,0admissions,
+0label API calls. No new source approval or historical exposure clearance.
+Localfree54GiB; no CREATEjob/currentqueue claim; all task processes terminal.
+
+Async author question pending: independent-scene-first(recommended) vs strict
+nested development. Do not silently execute new calibration roles. Independent
+source eligibility/literature/engineering work can continue. No blockedthreshold.
+Existing calibration backend uses past-normalized bounded risk, not the native
+ADE or2%easy-relative rule. Synthetic zero-loss1/2/4cluster upper limits are
+1/.8654/.6119 at illustrative delta.05, not a new risk tolerance or real calibration.
+LTT sections1.1/2.1-2.2 read, Multicalibration abstract only. CVPR CFP refreshed
+Nov10/16/23AoE; AuthorGuidelines404, LLM policy pending. Reports/README/state/
+paper/runbook updated. Preserve3019unrelatedstaged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Conditional Cost Repair Completed (2026-09-22)
 
 Goal active/unmet. Latest user asked current status. Fresh training50713/PID88275

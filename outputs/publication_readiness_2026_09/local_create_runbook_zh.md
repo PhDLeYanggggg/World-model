@@ -3,6 +3,21 @@
 最近更新：2026-09-22。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 校准支持审计：检查完整上游关系
+
+本轮未训练模型，而是核验12个现有成本头及教师关系。现有外层排除仍成立；
+36种拟议内层校准复用均被拒绝，删除校准场景训练行不能消除教师的间接暴露。
+63项针对性测试通过，1104个依赖绑定核验，两次审计结果一致。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_calibration_support.py --verify
+.venv-pytorch/bin/python -m pytest tests/test_m3w_calibration_support.py tests/test_m3w_experiment_contract.py tests/test_m3w_risk_calibration.py -q
+```
+
+严格嵌套方案还需12个预测器和36个成本头，目前未运行，数据角色未变。
+一个场景里的重叠窗口不能充当大量独立校准样本。DUT元数据资格检查仍拒绝
+112次未批准用途，实际新纳入数为0。详见`calibration_support_v1/conclusions.md`。
+
 ## 决策区域加权：准确率改善，局部保护未通过
 
 登记提交`623e02b0`先于训练。12个新Torch成本头完成144,000次更新、

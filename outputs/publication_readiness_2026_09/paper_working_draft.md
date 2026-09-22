@@ -9,6 +9,14 @@ not a successful protection repair or new deployment. Independent calibration
 and confirmation remain missing.
 [Complete result and limitations](conditional_cost_v1/conclusions.md).
 
+A subsequent calibration-support audit rejects 36 proposed source-internal
+reuses: removing calibration-site cost rows does not remove that site's exposure
+in the teachers of retained rows. Existing outer-held fitting exclusion remains
+valid but cannot become independent calibration or confirmation. A strict nested
+repair requires new triple-excluded producers and still leaves only one
+calibration site per policy. No new calibration role or guarantee is claimed.
+[Lineage audit and support limits](calibration_support_v1/conclusions.md).
+
 The preceding budget-matched objective
 study completes24new control fits. The intermediate loss beats the fraction
 control, but its native-control contrast includes zero, failing the joint

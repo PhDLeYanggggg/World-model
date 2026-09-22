@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Calibration Reuse Audit: Further Producer Exclusion Required (2026-09-22)
+
+A fresh metadata audit and exact verification validate 1,104 bindings and 12
+current heads. Their outer fitting exclusion remains valid. But all 36 proposed
+inner calibration reuses fail even after removing the site's head-training rows
+and replacing its scoring predictor: 72 retained target-producer incidences still
+expose the proposed calibration site. A tested guard now rejects these paths
+before calibration reads. All 63 scoped tests pass; no new training or score.
+
+A strict nested repair would need 12 triple-excluded predictors and 36 new heads;
+these remain not_run. Each policy still has only one calibration site, and all
+four sites are design-exposed. A synthetic cluster-bound example is not the 2%
+easy-ADE criterion. Fresh DUT screening refuses 112 unapproved role uses. No roles
+changed; author choice is pending on independent scenes versus nested development.
+Stage5C/SMC remain off; submission is not ready.
+[Audit and reproducibility](outputs/publication_readiness_2026_09/calibration_support_v1/conclusions.md).
+
 ## Conditional Repair Completed: Accuracy Gain, Protection Still Fails (2026-09-22)
 
 Registered623e02b0 before real fitting. Twelve fresh Torch heads complete144,000
