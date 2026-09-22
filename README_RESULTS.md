@@ -5,6 +5,26 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Coherent Manuscript and Reconstructed Evidence (2026-09-22)
+
+A new English manuscript replaces chronological stage reporting with one explicit
+task, method, controlled comparison, failure analysis and limitations. Six analysis
+files are SHA256-pinned; the new builder reconstructs eight main-table methods,
+32 method/site native-error and tail records, five fixed paired contrasts, and
+all12 latest easy scene/seed values. Figure1 displays average gains alongside
+scene-level protection failures. The old draft remains an archive, not a second
+current abstract. Source pointers and scope accompany each exported result.
+
+Six focused tests pass, all four generated textual exports replay exactly, and
+the figure was visually inspected. This is fresh paper reconstruction of cached
+verified aggregates, not fresh training, label evaluation or bootstrap. Prior
+model failures and independent-evidence gaps are unchanged. The latest4.10%gain
+still fails per-scene protection; matched-count repair is negative and joint
+versus unary geometry remains a null. No new deployment or submission-ready claim.
+
+[Manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v1/manuscript.md)
+and [scope/reproduction](outputs/publication_readiness_2026_09/evidence_manuscript_v1/reproduction.md).
+
 ## Annotation Producer Audit: Original XML Is Not Automatically Causal (2026-09-22)
 
 The DroneCrowd paper identifies VATIC as its annotation tool. A fresh review of

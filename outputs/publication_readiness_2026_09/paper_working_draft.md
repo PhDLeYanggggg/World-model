@@ -1,5 +1,11 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
+Chronological research archive. The current coherent English manuscript is
+[Learning When to Intervene](evidence_manuscript_v1/manuscript.md), with tables
+reconstructed from six pinned result files. This archive retains old populations,
+metrics and successive narratives; it must not be read as one pooled experiment
+or a submission-ready manuscript. No historical result is overwritten.
+
 Working draft, evidence reconciled 2026-09-22. A fixed decision-region fitting
 repair now completes12freshcost heads. Strict ADE gain rises3.72892%to4.09764%,
 paired difference0.36871pp[0.17316,0.60302]. However, every-scene/seed easy
@@ -278,7 +284,7 @@ arithmetic pass. These are source-development comparisons, not newly independent
 results or evidence for promoting a post-hoc winner.
 [Fair controls and remaining failures](cost_budget_matched_v1/conclusions.md).
 
-## Abstract
+## Archived Abstract (Before Decision-Region Weighting)
 
 Neural trajectory predictors can improve average accuracy while degrading paths
 already well predicted by a causal motion baseline. We study baseline-relative

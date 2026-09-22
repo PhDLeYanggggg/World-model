@@ -8,6 +8,21 @@ The question behind the project is simple:
 
 I started this repo to answer that question carefully, not just to collect a nice-looking demo. The work here includes the models that improved results, the ones that failed, the leakage checks, the safety rules, and the notes that keep me honest about what the evidence does and does not prove.
 
+## Read the Current Study
+
+I have brought the completed development experiments into one
+[English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v1/manuscript.md),
+with [reproducible tables and a figure](outputs/publication_readiness_2026_09/evidence_manuscript_v1/tables.md).
+The central result is mixed: neural predictors improve average motion error,
+but learning when to use them has not yet met the scene-wise protection target.
+The latest conservative policy gains 4.10% in average site-relative ADE, while
+easy errors still rise beyond 2% in two sites. These are explored SDD development
+results, not independent test evidence or a new deployment.
+
+The manuscript keeps the failed equal-count and joint-decision controls visible.
+Its tables are reconstructed from fixed result files, not another training run.
+Independent calibration and confirmation remain the next scientific requirements.
+
 ## Research Question
 
 My primary task is **eight observed annotation steps to twelve predicted steps**.

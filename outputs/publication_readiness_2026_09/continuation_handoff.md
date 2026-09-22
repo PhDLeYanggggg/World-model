@@ -1,5 +1,39 @@
 # Real-Experiment Continuation Handoff
 
+## Evidence Manuscript Reconstructed (2026-09-22)
+
+Previous goal turn: genuine source-provenance progress, pushede9c18a41. This turn
+completes a coherent English evidence-bearing manuscript and generated scientific
+figure/tables rather than another model/threshold run. Current entry:
+evidence_manuscript_v1/manuscript.md. Oldpaper_working_draft is marked chronological
+archive and its oldabstract marked historical. No historicalresultdeleted.
+
+scripts/build_m3w_evidence_manuscript.py reads six hash-pinned aggregate analyses
+only. It verifies per-site and equal-site arithmetic and exports8tablemethods,
+32method/site native ADE/FDE/tail/support rows,5fixedpairedcontrasts,12scene/seed
+easyvalues,sourcepointers,andfalse new-training/calibration/deploymentflags.
+EvidenceSHA31f2e2144ff9ce1785acb7726cc75304b094ceeac0606845a36d8fedcd3c7f0e.
+6focusedtests pass0.10s;4textoutputs exactreplay. FigureSVG built;localPNG visually
+checked. Firstattempt had2pointer-key testfailures, correctedwithoutsourcechanges.
+Rendering66705and57509terminalexit0.Fontcachewarningswerenottraininghangs.
+
+Main finding remains4.09764%developmentgain,deathCircle2.93332%/gates2.15061%easy
+degradation,failedper-scene/seedgate. Equal-countrepairnegative,jointnullretained.
+Clarified5.55831%native-vs-oldrelativegainisnotCVpercentagesubtraction. Newcitation
+checkreopenedauthor/proceedingspagesandMao4,Shah2.2/3.1,LTT1.1. EqMotionCVF403;
+usedauthorarXivmetadata. SDDPDF11.9MBreaderrefused;metadataonlyforcitation. No full
+paperreadattestation. Manuscriptnotanonymous/submission-ready;no newmodelclaim.
+
+Local54GiBfree;SSHconfignoCREATEalias;no newremoteauth/scheduler/assetinspection.
+Do notclaimremoteassetsabsent. Allneededprocessesterminal. Bothpriorquestions
+stillpending;do notrepeat,bypassdownloadwarning,orassignnewroles. Nextindependent
+dataacquisition/provenance/roledecisionbeforeconditional-riskcalibration. Don't
+keep polishing documents instead of missing scientific evidence. Goalactive/unmet.
+Preserve3019unrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Explicitpathcommit/pushonly;no raw/cache/checkpoint/media/thirdpartysourceadded.
+OnlyscientificaggregateSVGincluded.Stage5C/SMCoff.
+
 ## Annotation Export Provenance Review (2026-09-22)
 
 Previous goal turn was concrete metadata acquisition/verification, pushedab82fed8.

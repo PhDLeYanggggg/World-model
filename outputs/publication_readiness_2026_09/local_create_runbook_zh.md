@@ -1,5 +1,28 @@
 # M3W 本地与 CREATE 操作记录
 
+## 连贯论文稿与图表重建（2026-09-22）
+
+当前英文稿入口改为 [manuscript.md](evidence_manuscript_v1/manuscript.md)。旧的
+paper_working_draft 保留完整阶段历史，不再作为当前摘要。新稿只组织已完成的
+SDD 开发实验，不把不同协议、外部历史分数或元数据检查混成正式结果。
+
+本轮没有训练或新标签读取。6份结果文件按SHA256校验后，重建8行主表、32行
+逐场景原生ADE/FDE与尾部指标、5个成对比较，以及12个场景/种子的easy退化值。
+统计区间来自原实验，没有重新bootstrap。6项针对性测试通过；4个文本产物
+精确重建通过，图已检查。完整旧测试集未重跑。
+
+```bash
+.venv-pytorch/bin/python scripts/build_m3w_evidence_manuscript.py
+.venv-pytorch/bin/python scripts/build_m3w_evidence_manuscript.py --verify
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_evidence_manuscript.py
+```
+
+本地空闲约54GiB。本轮无需CREATE计算；当前SSH配置未发现CREATE别名，没有
+核验远程目录或队列，不能据此说远程没有结果。独立数据下载和科研用途的两个
+问题继续等待回答；不绕过下载警告，不新增calibration/test用途。
+4.10%开发集平均增益仍未通过逐场景保护，联合贡献也未证明。下一步仍是补齐
+独立来源与用途后检验条件伤害，不是把论文整理当作研究完成。
+
 ## 2026-09-22 标注生成时间与帧号边界
 
 新核实的风险：论文提到的 VATIC 工具在已固定的公开版本中先插值，再写出没有
