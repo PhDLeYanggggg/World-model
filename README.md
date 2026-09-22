@@ -241,7 +241,13 @@ box conventions, class identities and camera/site grouping; none is admitted
 to a new experiment. I also located DroneCrowd's separate annotation archive
 and its academic-use terms. Its release README explicitly says validation is
 sampled from test, so I will not treat those folders as independent calibration
-and confirmation. No new external score is reported from this intake work.
+and confirmation. I have now pinned the five small official metadata files and
+checked all 112 clip IDs. The conversion code also shifts frame/agent indices
+and removes visibility information, so a derived MAT cannot stand in for a
+verified causal history. Those checks are implemented; original XML, camera
+motion and independent physical sites still need review. No new external score
+is reported from this intake work.
+[Metadata evidence, tested checks and remaining limits](outputs/publication_readiness_2026_09/dronecrowd_metadata_v1/conclusions.md).
 [Source audit and acquisition status](outputs/publication_readiness_2026_09/traf_intake_v1/conclusions.md).
 
 [Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).

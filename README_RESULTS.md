@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Metadata Frozen: Clip IDs Verified, Raw Admission Pending (2026-09-22)
+
+Five official small files (6,649 bytes) are now acquired and SHA256-bound. Fresh
+list analysis and a separate CSV recount confirm 82 train/30 test sequence IDs,
+no ID overlap, and exact coverage 1..112. This is not physical-site independence:
+the official val is sampled from test. Original XML and camera/site grouping
+remain unread/unverified; the archive download confirmation is still pending.
+
+Source reading identifies XML-to-derived frame/agent offsets of +1, box-center
+semantics, visibility filtering and unbound MAT reuse. New checks refuse mixed
+identity conventions, dependent release roles and altered metadata. The XML
+structural screen passes synthetic fixtures only, not an actual data conversion.
+121 scoped tests pass, offline replay agrees, and no new training, calibration,
+forecast score or data admission is claimed. Per-scene easy protection still
+fails in the latest development model. Stage5C/SMC remain off; not CVPR-ready.
+[Evidence and reproduction](outputs/publication_readiness_2026_09/dronecrowd_metadata_v1/conclusions.md).
+
 ## Independent Data Intake: TRAF Audited, DroneCrowd Source Located (2026-09-22)
 
 Fresh structural screening covers all 30 local TRAF annotation files. Of 55,526

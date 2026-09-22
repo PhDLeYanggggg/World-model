@@ -1,5 +1,43 @@
 # Real-Experiment Continuation Handoff
 
+## DroneCrowd Metadata Acquired and Verified (2026-09-22)
+
+Prior user-facing turn was a read-only status reply (no scientific progress).
+This goal turn makes concrete data-interface progress while the two earlier
+author questions remain unanswered. Do not repeat the questions or silently
+assign new roles. Active goal remains unmet, not blocked while progress exists.
+
+Five actual official metadata files, 6,649 bytes, acquired under ignored
+external_data/DroneCrowd_release_metadata. Fixed allowlist excludes annotations,
+images and videos; no third-party code execution. source_manifest.json and
+analysis.json under dronecrowd_metadata_v1 bind exact bytes. Lists confirm82/30,
+112 unique IDs, no overlap. This does not prove independent physical sites.
+Official val remains a subset of test by release description, actual membership
+not read. saveGT shifts XML frame/ID+1, uses box centers. xml2mat filters visibility
+and reuses unbound MAT; six-column derivative cannot establish causal provenance.
+
+Code: src/evaluation/m3w_dronecrowd_intake.py;
+scripts/audit_m3w_dronecrowd_metadata.py; scripts/verify_m3w_dronecrowd_metadata.py.
+New synthetic-fixture tests54; full scoped intake+contract set121 pass in2.02s,
+session67055exit0. Metadata acquisition34795exit0. Offline primary replay and
+separate CSV/hash recount both terminal/pass; actual XML screen NOT RUN.
+Analysis1328fd4e7945c10f9bb8cb60bd48e3f1299415b9dd9617f96fd0e68bff34f6b8.
+Manifest1856dee2577647342a975a1ef449a8f2b52bdbb1fc56f324a6e38170cc2334ee.
+No required live process; no new Torch training or CREATE job/current queue check.
+Conditional-cost4.09764%development gain/per-scene easy failure unchanged.
+
+The old browser tab was gone, so a fresh tab2 on existing browser2/iab opens the
+official folder. dcTab binding valid, handoff marked. No warning accepted, no
+annotation archive download. Earlier warning was canceled, not left open.
+Pending confirmation still governs annotation acquisition; small metadata fetch
+does not bypass it. Next: after permission inspect actual XML/provenance/camera
+and site groups, then obtain role decision before any model scores. XML screen
+is provisional and tested only on fixtures, not a completed conversion.
+
+Preserve3019unrelatedstaged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Update README/state/runbook and explicit-path commit/push only. Stage5C/SMC off.
+
 ## TRAF Intake and DroneCrowd Acquisition Progress (2026-09-22)
 
 Previous user-facing status turn was read-only. This goal turn implements a real

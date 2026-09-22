@@ -1,5 +1,25 @@
 # M3W 本地与 CREATE 操作记录
 
+## 2026-09-22 DroneCrowd 元数据与编号规则
+
+本轮实际获取的是五个官方小文件，共 6,649 字节，不是标注压缩包。
+82 个训练与 30 个测试序列 ID 无交集，但 val 来自 test，不能据此分成独立用途。
+转换代码确认 XML 到派生文件的帧号、agent ID 均加 1，坐标是框中心，且会过滤
+遮挡与离场记录。新读取检查保留这些差别，不从 MAT 推断原始标注因果性。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_dronecrowd_metadata.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_dronecrowd_metadata.py --verify
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_dronecrowd_intake.py tests/test_m3w_dronecrowd_verification.py tests/test_m3w_intake_admission.py tests/test_m3w_experiment_contract.py
+```
+
+首次获取仅用 `--download-metadata`，入口没有下载压缩包的选项。
+121 项相关测试通过，包括 54 项新增测试；原始 XML 检查器只通过合成样例，
+真实 XML、插值来源、镜头移动及物理地点划分仍未核实。不能称外部转换或训练完成。
+标注包下载仍等待此前确认，不绕过 Google 提示；已关闭该确认框，保留官方目录。
+源字节留在 Git 忽略目录，仅代码、哈希清单和报告提交。详见
+[本轮证据](dronecrowd_metadata_v1/conclusions.md)。没有新 CREATE 作业，也没有新模型分数。
+
 ## 2026-09-22 外部独立场景接入检查
 
 本轮不是训练。TRAF 原始文件审计、精确重算和另一套 CSV/窗口计数实现均已完成，
