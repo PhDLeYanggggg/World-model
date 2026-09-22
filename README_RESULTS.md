@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Fit Support Diagnosis Registered (2026-09-22)
+
+The next read-only checkpoint diagnostic fixes fitting-defined positive q50/q90/
+q99 speed/disagreement strata before measuring their outcomes. It compares all
+36existing heads on fitting and held-source rows, including native/fraction
+fit errors, fixed policy slices and training-only constant controls. Seven new
+tests pass. Real diagnostic readout is not_run at registration; no model,
+threshold, data role or outcome claim changes.
+[Fixed diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/design.md).
+
 ## EqMotion Cost Refit: Protection Recovers, Primary Gain Test Fails (2026-09-22)
 
 `fresh_run`:36heads/108,000updates/27,648,000draws, fixed readout, replay and
