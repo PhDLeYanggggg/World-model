@@ -1,5 +1,24 @@
 # Real-Experiment Continuation Handoff
 
+## Capacity/Duration Factorial Prepared (2026-09-22)
+
+Goal active/unmet. Previous turn completed verified intermediate-loss study,
+not a wait or blocker. New fixed width64/128 x step3000/12000 matrix retains
+old64short checkpoints, continues12narrow paths and fits12wide paths with
+immutable3000step prefixes.36new endpoints,252000new updates,64512000new draws.
+No outcomes or thresholds changed. Primary wide-long strict vs refitfraction
+strict, not vs weaker temperedstrict. All4sites remain design-exposed.
+
+New files: configs/m3w_cost_capacity_v1.json; scripts/run_m3w_cost_capacity.py;
+scripts/verify_m3w_cost_capacity.py; src/world_model/m3w_cost_capacity.py;
+src/evaluation/m3w_cost_capacity_eval.py and2tests.33scoped tests42267exit0;
+native continuation equals uninterrupted synthetic fit, parent file unchanged.
+Preflight72678/PID82334exit0;942bindings. No live required process at registration.
+Real fitting not_run at this registration snapshot. Hash-freeze these files
+before fitting. Pilotwidecoupa_seed17at100, then resume full paths; evaluate,
+verify and separate verifier afterward. Keep old roles closed, Stage5C/SMCoff.
+No deployment, independent calibration or submission-ready claim.
+
 ## Intermediate Loss Completed (2026-09-22)
 
 Goal active/unmet; this continuation is progress, not a blocker. Registered

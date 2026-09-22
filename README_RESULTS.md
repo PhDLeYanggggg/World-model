@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Capacity/Duration Factorial Prepared (2026-09-22)
+
+The next fixed comparison tests width 64/128 and 3,000/12,000 updates with the
+same intermediate loss, causal features, forecasts, preprocessing and rules.
+Twelve existing narrow checkpoints are continued; twelve wide paths retain
+both endpoints. Planned new compute is 252,000 updates and 64,512,000 draws,
+not 36 independent new fits. Thirty-three scoped tests pass, including exact
+continuation versus uninterrupted training, parent preservation and sampler
+matching; preflight verifies 942 dependency bindings. No real new fit or
+continuation has run at registration.
+
+The primary remains wide/long strict versus the stronger refitted fraction
+strict rule; there is no winner selection or easier replacement comparator.
+All factorial contrasts, source slices, missing outcomes and protection failures
+will be retained. Independent calibration, confirmation and deployment remain
+not_run. [Fixed design](outputs/publication_readiness_2026_09/cost_capacity_v1/registration.md).
+
 ## Fixed Intermediate Loss Completed: Tail Repair, Primary Failure (2026-09-22)
 
 Registration5a9d02ab preceded12newhead fits/36,000updates/9,216,000draws.
