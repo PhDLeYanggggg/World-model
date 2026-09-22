@@ -1,5 +1,38 @@
 # Real-Experiment Continuation Handoff
 
+## Protected Joint Support Rechecked, Very Sparse (2026-09-22)
+
+Concreteprogress: finalized matchedlossreports and pushed01d719a9; then new
+causal-onlyjointdiagnostic prereg188170f7, fullrun and exactreplay. No newfit,
+predictionerrorreadout, roleassignment, deployment orStage5C/SMC. Goalactive/unmet.
+Configconfigs/m3w_protected_joint_support_v1.json,entry
+scripts/audit_m3w_protected_joint_support.py.1349bindings.37scopedtestspass.
+Preflight41710,audit41762,replay41859allterminal0. Noneleftlive.
+
+62796queries/poolincluding3seeds,188388poolrecordsreplayexact. Threepools
+forestratio/logstrict/squarestrict=22539/33793/37030eligibleinstances.
+Nonadditiveopportunities62/91/113; all266enumerated,61024subsets/18521feasible,
+zeroenumerationblockers(max6435). Productrangebelowunarygap56/66/84.
+Changedjointunaryqueries3/4/3;forest3ALLhyang/video0frame11184across3seeds.
+Only1distinctrecordingframeforforest,allpoolsunion6. Thisisproxy-objective
+opportunity,NOTactualADE/safetyimprovement;nooutcomesread. Unsupportedcontextedges
+21897in5400queries,unpricednotcertifiedsafe. Fixedhalfcount,weight1,radius.1;
+nochangedthresholds. Don'tturn3seedsinto3interactionevents.
+
+AnalysisSHAd4165112eab6f47bfc77fdabed6b2054051ccfa01026eaaf6ee844c32b7c92b8.
+Reportprotected_joint_support_v1/conclusions.md,execution_notes.md,analysis.json,
+replay.json.99privateper-view/recordingJSONreceiptsignored;publicaggregateonly.
+README/results/stateupdated. Pinnedmanuscriptunchanged. No confirmation or new
+deployment. Latest loss-fix remains negative, no reason for generic pairweightgrid.
+
+Nextmeaningfulpriority: independent-source eligibility and calibration/confirmation
+roles. Existingpendingquestion independent-scene-first vsstrictnesteddevelopment
+stillunanswered;donotrepeatunchangedquestionsorassignrolesimplicitly. DroneCrowd
+downloadwarning andDUTsource-use/exposure remainpending;CREATEproject/authunverified.
+Do notclaimalljointmodelsfail; thisfixedprotectedpool/geometryisinsufficiently
+representative. Preserve3019unrelatedstagedpaths fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Matched Neural Objective Completed, Primary Failed (2026-09-22)
 
 Previous status turn completed the separate verifier and40scopedtests; progress,

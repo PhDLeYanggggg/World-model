@@ -5,7 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Protected Joint Support Registered (2026-09-22)
+## Protected Joint Support Completed: Sparse, Not Predictive Evidence (2026-09-22)
+
+**fresh_run:** causal-only exhaustive opportunity check and exact replay.
+**cached_verified:** frozen forecasts/scores/context. No new training or target
+readout. All62,796scene/seedqueries per pool retained; four exposed physicalsites.
+Forest/log/square pools have62/91/113nonadditive opportunities and3/4/3changed
+joint-versus-unary queries. Forest's3changes are one hyang/video0frame11184 across
+three seeds. Allpools together cover only6unique changed recording/frames.
+Actual predictive lift not_run; this is not a new deployment or safety result.
+
+All266opportunities/61,024subsets/18,521feasible subsets enumerated;0capblockers.
+Productrangebelowunarygap56/62forest,66/91log,84/113square.21,897unsupported
+context-forecast edges remain unpriced, not safe.62,796queries/188,388poolrecords
+replay exactly;37scoped tests pass. No future arrays, role/threshold/weight changes,
+Stage5C or SMC. Independent scene admission/calibration still pending. Not ready
+for submission. [Full diagnosis](outputs/publication_readiness_2026_09/protected_joint_support_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 Fixed causal-only opportunity check: forest-ratio, log-strict and square-strict
 pools on the same ramp forecasts. Inherited half-count/harm budget/geometry,

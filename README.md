@@ -10,10 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-Before another joint-model experiment, I am checking whether the existing
-protected forecasts leave meaningful interacting-agent choices at all. This
-[fixed causal-only diagnosis](outputs/publication_readiness_2026_09/protected_joint_support_v1/registration.md)
-uses no future outcomes and cannot establish better prediction by itself.
+I also checked whether the protected forecasts leave meaningful joint-agent
+choices. Exhaustive comparison finds only three changed forest-policy decisions,
+all from one recording/frame repeated over three seeds. The neural pools change
+a few other frames, but this is still very sparse support for a joint mechanism.
+This [causal-only diagnosis](outputs/publication_readiness_2026_09/protected_joint_support_v1/conclusions.md)
+uses no future outcomes: improving the designed interaction objective is not
+evidence of better trajectory prediction. Independent scene support remains more
+important than another broad interaction-weight search.
 
 I have completed a controlled test of whether the neural risk head's training
 loss explains its gap to a simple tree comparator. Twelve new fits improve the
