@@ -1,5 +1,18 @@
 # Nested EqMotion Execution Record
 
+## Training Completed, Cache Pending
+
+The full training process (session63559/PID23846) exited0 after all18fixed
+fits:72,000updates,4,608,000draws and27,903.47 recorded fitting seconds
+(7.75hours). Every final checkpoint passed exact sampler/loss-factor matching
+to its Transformer counterpart; excluded-site draws total zero. There was no
+budget reduction or training restart. The initial100-update pilot was resumed.
+
+Cache construction is now running in session8833. Cache completion, checkpoint
+replay and the separate real arithmetic audit are not yet established at this
+entry. Cost-head fitting remains not_run. Earlier partial snapshots below are
+dated execution history, not the current training status.
+
 Registration `fcce08cb` was pushed before real-data fitting. The initial
 100-update pilot for coupa/deathCircle seed17 completed in38.49seconds;
 6,400 draws cover6,123 training rows, with zero excluded-site draws. This is a

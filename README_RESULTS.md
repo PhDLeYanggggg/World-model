@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## In Progress: EqMotion Pair-Excluded Producers (2026-09-22)
+## EqMotion Pair-Excluded Training Complete; Cache In Progress (2026-09-22)
 
 The next prerequisite fixes18 new EqMotion fits, six two-site exclusions and
 three seeds, with72,000 total updates. Each future cost-training row's predictor
@@ -15,12 +15,11 @@ no old model is relabeled as a new fit.366 dependency bindings and47 targeted
 tests pass, including actual small Torch training/resume and future-invariance
 checks. Registration`fcce08cb` preceded fitting. The real100-update pilot
 completed in38.49seconds with zero excluded-site draws; the same fit is now
-resumed in the full18-fit invocation. Nine full fits now have hash-verified
-receipts (36,000updates,zero excluded draws); the tenth is active. Recorded
-fitting across these nine is3.84hours. A separate cache
-arithmetic/lineage verifier is implemented, but its real cache audit awaits
-all18producers. The matrix/cache remain incomplete, not
-a model gain. Estimated local fitting time is7-8hours, plus cache/verification.
+resumed in the full18-fit invocation. All18 fits have now completed72,000updates
+and4,608,000draws, with zero excluded-site draws and matching reference samplers.
+Recorded fitting time is27,903.47seconds (7.75hours); training exited normally.
+Cost-cache construction is running; fixed-block replay and its separate
+arithmetic/lineage audit are still pending. No new cost head or model gain yet.
 No new data role, threshold search, risk calibration or deployment.
 [Fixed matrix and lineage rules](outputs/publication_readiness_2026_09/eqmotion_nested_v1/registration.md).
 [Runtime and recovery](outputs/publication_readiness_2026_09/eqmotion_nested_v1/execution_notes.md).
