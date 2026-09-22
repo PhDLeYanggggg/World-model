@@ -5,7 +5,33 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Compositional Log-Loss Test Registered (2026-09-22)
+## Compositional Log-Loss Test Completed: Conditional Protection Still Fails (2026-09-22)
+
+Twelve fresh Torch risk heads completed 144,000 updates and 36,864,000 draws.
+Strict ADE gain is **4.18873%** versus the frozen-region square-loss control's
+4.09764%. The primary paired contrast is **+0.09109 percentage points**, CI
+[-0.00454, +0.21899]. Its superiority gate fails. Aggregate easy improves, but
+deathCircle degrades **3.38121%** and gates **2.19213%** on seed average;
+worst scene/seed degradation is 4.10386%. No new model is deployed.
+
+The new loss raises mean harm estimates on every old held-source selection region,
+but underestimation remains in all 12 old and all 12 new regions. A fresh fixed
+turnover audit finds 22,908 retained, 6,760 dropped and 6,054 added decisions across
+repeated seeds. deathCircle's retained decisions alone contribute 2.41647 pp of
+easy degradation, with another 0.96474 pp from added decisions. These are diagnostic
+contributions, not a retrospectively selected deployable intersection policy.
+
+All 12 checkpoint endpoints replay; separate formulas check 36 choices, 288 scene
+reductions and 1,581,804 supervision rows. The 35 unchanged training checks remain
+valid; 19 diagnostic tests pass, including 9 new cases. Diagnosis replay is exact.
+Strict policy selects 446 entirely unknown outcomes, not counted as safe. Only
+four development-exposed physical sites support the 3,000-site-resample interval.
+The full legacy suite, independent calibration/confirmation and new external
+readout were not run. Stage5C/SMC remain off. Registration and pinned manuscript
+are unchanged; the new [results and reproduction](outputs/publication_readiness_2026_09/log_cost_v1/conclusions.md)
+are a separate negative follow-up.
+
+### Preserved Registration Snapshot
 
 I am testing one training change after the unsuccessful risk-review experiment:
 logarithmic rather than squared loss on the bounded benefit/harm composition.

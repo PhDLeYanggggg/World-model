@@ -45,6 +45,15 @@ I have kept the [fixed comparison, negative result and veto diagnosis](outputs/p
 separate from the earlier manuscript snapshot. Independent confirmation is still
 missing, and no deployment has changed.
 
+My latest controlled test changes the risk head's loss rather than its architecture.
+Twelve fresh fits raise ADE gain from 4.10% to 4.19%, but the difference interval
+includes zero and easy errors still exceed the ceiling in deathCircle and gates.
+The head estimates more harm on the old decisions, yet still underestimates the
+decisions it now selects. A fixed turnover audit shows that harmful decisions
+retained by both versions are part of the problem, not just new switches. I keep
+the [verified experiment and negative finding](outputs/publication_readiness_2026_09/log_cost_v1/conclusions.md)
+as development evidence; there is no new deployment or calibration claim.
+
 ## Research Question
 
 My primary task is **eight observed annotation steps to twelve predicted steps**.

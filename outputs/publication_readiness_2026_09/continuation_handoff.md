@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Log-Loss Experiment Verified, Turnover Diagnosed (2026-09-22)
+
+Previous user turn was a status reply plus terminal confirmation of checkpoint
+replay70604; no new fitting or method evidence. This continuation completed the
+separate verifier50889exit0 and new fixed turnover diagnosis35628/replay34849exit0.
+All needed sessions terminal. No new model fit this continuation: twelve heads
+were freshly trained after registration173b6ce3 in the preceding goal experiment.
+144000updates/36864000draws/146.90830s recordedheadfit,45,954parameters/head.
+
+Primarystrict ADE4.18873%vsfrozen4.09764; difference+.09109pp
+CI[-.00454,+.21899]. Superiority fails; easydeathCircle3.38121/gates2.19213
+and worstdeathCircleseed17 4.10386fail. Ownheldselectedharm underestimated12/12.
+Net-only easy21.98927 and21zeroCVharms; matchedcountdifference-.01574pp
+CI[-.06636,+.03487],easy6.23477fail. No secondary policy promotion.
+
+Fresh turnover records22908retained/6760dropped/6054added across repeated seeds.
+deathCircleeasy retained contribution-2.41647pp,dropped-.51685,added-.96474:
+newdegradation3.38121vsold2.93332. Underprediction persists12/12 retained
+and12/12added. Not merely newly added decisions, not permission to deploy a
+post-hoc intersection. Readonly script audit_m3w_log_cost_turnover.py;19diagnostic
+tests pass0.16s including9new;35unchangedtrainingtests reused,notfullsuite.
+
+AnalysisSHAe344fa115e4ea0a5e73b7a367e691a2a6f2a7527df5ca50e5438f9d78860cf46.
+Replay12heads/527268scores; separateformulas36choices/288reductions/1581804fitrows.
+Sameagent/sharedpreprocessandforward,notindependentresearchconfirmation.
+Reports log_cost_v1/conclusions.md and execution_notes.md; original registration
+and pinned manuscript unchanged. README/results/state updated; sync explicitpaths.
+
+GitHubmain173b6ce3 verified before results sync;53GiBfree. SSHstillnoCREATEalias;
+no newremoteauth/scheduler/assets/job claimed. Historicalauthfailure is not a fresh
+check; remoteassetsunknownnotabsent. Localcost didnotjustifyHPC. Preserve3019old
+stagedchanges fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+Highest gap independentroledecision/acquisitionstillpending;donotreaskorbypass
+downloadwarning. No new calibration,closed-role readout or tolerancerelaxation.
+Next work must address conditional risk on retained cases/support, not another
+threshold sweep or document-only progress. Jointcontribution/externalconfirmation
+stillmissing; goalactive/unmet,notcomplete. Stage5C/SMCoff.
+
 ## Log-Loss Training Registration (2026-09-22)
 
 Previous turn completed real diagnostic progress and pushed7395b7ac. This turn
