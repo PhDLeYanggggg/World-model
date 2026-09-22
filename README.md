@@ -250,6 +250,14 @@ is reported from this intake work.
 [Metadata evidence, tested checks and remaining limits](outputs/publication_readiness_2026_09/dronecrowd_metadata_v1/conclusions.md).
 [Source audit and acquisition status](outputs/publication_readiness_2026_09/traf_intake_v1/conclusions.md).
 
+I also checked the annotation tool named in the DroneCrowd paper. One pinned
+VATIC exporter interpolates tracks before writing XML without the generated
+flag. This does not establish what happened in DroneCrowd's actual release, but
+it means an original XML is not automatically evidence of sensor-time causality.
+I keep offline annotated-position forecasting distinct from that stronger claim;
+the next intake check must trace the actual annotation producer, not just frames.
+[Source evidence and a tested dependency counterexample](outputs/publication_readiness_2026_09/annotation_export_provenance_v1/conclusions.md).
+
 [Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).
 [Registered fitting repair](outputs/publication_readiness_2026_09/conditional_cost_v1/registration.md).
 [Completed repair, negative safety result and verification](outputs/publication_readiness_2026_09/conditional_cost_v1/conclusions.md).

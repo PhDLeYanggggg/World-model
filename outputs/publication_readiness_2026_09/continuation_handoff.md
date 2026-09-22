@@ -1,5 +1,39 @@
 # Real-Experiment Continuation Handoff
 
+## Annotation Export Provenance Review (2026-09-22)
+
+Previous goal turn was concrete metadata acquisition/verification, pushedab82fed8.
+This turn adds source evidence that changes the next intake requirement, not a
+new model fit. DroneCrowd papersections3.1/3.2 read; reports VATIC annotation.
+Fixed VATIC7de990ac0f7882dc0420b0f529b08951ae0f1230 authorcli/README/models fetched
+as text only,3files76122bytes,Gitblob+SHA256verified underignoredexternal_data.
+cli442-448 LinearFill precedes XML export;649-668 omitgenerated/keyframeflags.
+Otherexportpathspreservegenerated. ActualDroneCrowdversion/rowsunknown, do not
+claimactualleakageorcopysuppliedcountsasindependentphysicalsites.
+
+scripts/audit_m3w_annotation_export_provenance.py is the bounded source-review
+and syntheticwitness entry. It never imports/executes authorcode. Constructed
+q8history1..8 depends on control10; perturb changes8historyrowsandbackwardv1to2.
+Directdense/interpolatedpositionsserializeidenticallywithoutflags. This is a
+counterexample,notdatasetmeasurement. Existingstructuralscreenrightlyleaves
+provenanceunknown andexports0rows.65scopedtests pass0.22s,5newtests;actualsource
+auditandexactreplayexit0. PriorDroneCrowdmetadataanalysisstillverifiesunchanged.
+Analysis7a4a9b36fcbe79980a01ab00b56ddb7ada8d549ba189f4a1674367b7c472dd07.
+
+README/results/state/paper/runbook updated. No needed process live, no new Torch
+fit/CREATEjob/remotequeueclaim. Goalactive/unmet. Current4.10%developmentgainand
+per-sceneeasyfailureunchanged. Original scientificroles unchanged. SDDadapter
+explicitlyoffline_annotated;do notretroactivelyupgradeorinvalidatescoresfromthis
+sourceinspection. Afterpendingdownloadpermissioninspectactualproducerprovenance,
+notmerelyXMLstructure;controlpoints/exportrouteorverifiedpast-onlyobservation
+maybeneeded. No newthirdquestionorroleapproval;existingtwoquestionsunanswered.
+
+BrowserdcTab was retained lastturn;this turndoesnotuseit. Mark again only if
+retaining viafreshstate later. Do notaccept outstandingdownloadwarningwithout
+answer. Preserve3019unrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Explicitpathcommit/push;no authorcode/raw/cache committed.Stage5C/SMCoff.
+
 ## DroneCrowd Metadata Acquired and Verified (2026-09-22)
 
 Prior user-facing turn was a read-only status reply (no scientific progress).

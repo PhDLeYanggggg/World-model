@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Annotation Producer Audit: Original XML Is Not Automatically Causal (2026-09-22)
+
+The DroneCrowd paper identifies VATIC as its annotation tool. A fresh review of
+three Git-blob/SHA256-pinned author files shows a VATIC exporter applying linear
+fill before XML serialization without a generated/keyframe flag. The actual
+DroneCrowd export version and raw rows remain unverified, so this is a concrete
+provenance risk, not a measured leakage rate or a reason to relabel old results.
+
+A synthetic witness verifies that all eight nominal past inputs and backward
+velocity can depend on a later interpolation control, while unflagged XML cannot
+distinguish direct and interpolated positions.65 scoped tests pass; source/witness
+replay agrees. No annotation archive, training, calibration, new score or admitted
+recording. The original download and scientific-role questions remain pending.
+Offline annotated-position and sensor-time claims stay distinct; Stage5C/SMC off.
+[Evidence, source locators and next acquisition requirement](outputs/publication_readiness_2026_09/annotation_export_provenance_v1/conclusions.md).
+
 ## DroneCrowd Metadata Frozen: Clip IDs Verified, Raw Admission Pending (2026-09-22)
 
 Five official small files (6,649 bytes) are now acquired and SHA256-bound. Fresh

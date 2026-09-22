@@ -1,5 +1,23 @@
 # M3W 本地与 CREATE 操作记录
 
+## 2026-09-22 标注生成时间与帧号边界
+
+新核实的风险：论文提到的 VATIC 工具在已固定的公开版本中先插值，再写出没有
+generated 标记的 XML。不能据此断言 DroneCrowd 实际泄露，但也不能把原始 XML
+直接当作实时观测来源。合成反例中，改变第 10 帧控制点会改变第 8 帧查询的全部
+8 个历史输入和后向速度；这不是真实数据污染率或性能结果。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_annotation_export_provenance.py --verify
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_annotation_export_provenance.py tests/test_m3w_dronecrowd_intake.py tests/test_m3w_dronecrowd_verification.py tests/test_m3w_zara_media_lineage.py
+```
+
+65 项相关测试通过，源码和反例离线复核一致。首次只获取固定源码文本用
+`--download-source`，不导入或执行这些作者文件，不下载待确认的标注包。
+下一步接入检查还要问清生成来源及控制点，不能只查 XML 能否解析。
+当前 SDD 的 offline_annotated 边界、数据角色与模型分数均未改变。
+详见 [证据与限制](annotation_export_provenance_v1/conclusions.md)。
+
 ## 2026-09-22 DroneCrowd 元数据与编号规则
 
 本轮实际获取的是五个官方小文件，共 6,649 字节，不是标注压缩包。

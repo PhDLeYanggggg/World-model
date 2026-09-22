@@ -1994,6 +1994,20 @@ The subsequent [DUT diagnostic intake](dut_causal_intake/implementation_and_limi
 
 A separate [admission check](intake_admission/implementation_and_limits.md) now prevents a scientific-role declaration from clearing pending source review or a bound annotation quarantine. It follows the source, conversion and quality evidence and checks role-specific review declarations before opening new-source data through the experiment contract. These engineering controls do not authenticate permission or establish independent sampling, and they are not offered as a methodological contribution or evidence of forecasting improvement.
 
+A subsequent [annotation-producer review](annotation_export_provenance_v1/conclusions.md)
+clarifies another boundary for prospective external validation. DroneCrowd's
+paper names VATIC as its annotation tool; a pinned public VATIC exporter fills
+intermediate positions before writing XML without a generated flag. The exact
+producer of the released DroneCrowd XML remains unknown. A constructive example
+shows why nominal past-frame access and backward finite differences alone do
+not establish observation-time causality: a later interpolation control can
+change both. This is not a measured leakage rate in DroneCrowd or a new method
+result. We distinguish offline annotated-position prediction from the stronger
+sensor-causal claim, and require actual producer provenance before making the
+latter. Clip IDs, annotation volume and engineering checks cannot substitute
+for independent scene support. [DroneCrowd, section 3.1](https://arxiv.org/pdf/2105.02440);
+[fixed author exporter](https://github.com/cvondrick/vatic/blob/7de990ac0f7882dc0420b0f529b08951ae0f1230/cli.py#L442).
+
 ## 6. Reproducibility
 
 This revision reuses the stored reports; it performs no new fitting, image
