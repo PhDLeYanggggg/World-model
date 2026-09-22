@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Equal-Budget Controls Completed (2026-09-22)
+
+Goal remains active/unmet. The latest user asked for status; live verification
+confirmed training86017/PID85257exit0, then completed readout and checks. Real
+progress, not a waiting/blocked turn. Registered06f9a635 before pilot44960/PID85220;
+24newnative/fractionfits/288000updates/73728000draws,245.01177recordedfitseconds.
+12cachedtemperedwide_longrefs144000updates/36864000draws remain separate.
+Allarmswidth128/12000steps/45954parameters with exact same preprocessing/draws.
+No unknown-supervision draws, new forecasts, new CREATE job or remotequeue claim.
+
+Readout57227/PID85817,replay62378/PID85925,separate76581,tests85999all exit0.
+48scopedtests pass.36CPs/1581804scoresreplay;108choices/864reductions/
+1581804supervisionrows separately checked.792fitdiagnostics,36conditionalcost
+records. Registration-bound files unchanged;1023bindingspass. No taskprocess live.
+Analysis956d3fb8b3c346b59d33f159fdb5d78d17ab6dd9945fe5c7fcf2a83dffabc057.
+
+StrictADEtempered3.728922/native3.067190/fraction1.657669%. Maincandidate
+minusnative+.661732ppCI[-.272284,2.185556]FAIL;minusfraction+2.071253pp
+CI[.662612,4.319002]pass. BOTH required;primaryjointfails. No posthocwinner.
+Candidateexactlyequalspreviouscapacitywide_longscore/choice/summary. Its
+aggregateeasyimproves.813949%,butdeathCircleeasy2.947235%failsallseeds.
+Nativestricteasy2.499768%failsaggregate,gatesseed43easy10.011016%;fraction
+strictnoobservedsite/seedeasyfailure butnotpromoted. All36selectedcomplete
+viewsharmunderestimated. Candidate398unknown/3917incomplete,overlapping.
+Matchedcounttempered5.550011ADE/easy6.160057fails; do notpromotehugeunsafe
+netgain11.991340/easy21.522993/21exactzeroharms. Originalrolesstillclosed.
+
+NEXT: budgetconfoundresolved; conditionalriskremains. Comparefixedheadsonsame
+causalsupport usingfitting-onlystrata todiagnoseunderharm/missedgain, then
+registeroneevidence-ledrepair, notheldthreshold/exponentsweep. Independent
+scene calibration andfinalconfirmation remainmissing. All4sitesdesignexposed;
+3000resamplesnot3000sites. Nometric/seconds, deployment,Stage5C/SMCclaim.
+Preserve3019unrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+Earlier snapshots are historical; the following prepared section is not live status.
+
 ## Equal-Budget Objective Controls Prepared (2026-09-22)
 
 Goal active/unmet. Prior turn completed capacity results and pushed450f996f;

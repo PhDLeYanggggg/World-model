@@ -193,17 +193,26 @@ is harmed. This is a real development gain, not a new deployment.
 There are important limits. Easy error still rises by **2.95% in deathCircle**,
 selected harm is underestimated, and missing future labels prevent a complete
 safety assessment. The old fraction control also had a smaller training budget,
-so I cannot attribute the whole gain to the loss function. My next comparison
-gives native and fraction losses the same wider head and longer budget. That
-comparison is now registered: 24 new control fits, with the intermediate-loss
-heads retained as frozen references. The candidate must beat both matched
-controls; I will not select whichever objective looks best after evaluation.
+so I could not attribute the whole gain to the loss function. I have now
+completed the fair follow-up: 24 new native/fraction control fits with the
+same wider head, longer budget and training samples. The intermediate objective
+retains **3.73%** ADE gain, versus **3.07%** for native cost and **1.66%** for
+fraction cost. Its advantage over fraction is supported by the conditional
+scene interval, but its **0.66-point** advantage over native has an interval
+of **[-0.27, 2.19]**. The registered claim required both, so it has not passed.
+
+This result removes the budget mismatch without hiding the remaining failure.
+All 36 checkpoints replay exactly, and separate arithmetic confirms the scores.
+Selected harm is still underestimated under every objective; the deathCircle
+easy failure remains. I keep the candidate as developmental evidence, not a
+new deployment or proof that the proposed loss is generally superior.
 Independent calibration and final confirmation are still missing.
 [Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
 [Fixed intermediate-loss result](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
 [Fixed capacity/duration design](outputs/publication_readiness_2026_09/cost_capacity_v1/registration.md).
 [Completed factorial, positive primary result and remaining failures](outputs/publication_readiness_2026_09/cost_capacity_v1/conclusions.md).
 [Equal-budget objective controls](outputs/publication_readiness_2026_09/cost_budget_matched_v1/registration.md).
+[Completed fair comparison and its limits](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm

@@ -1,9 +1,10 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-22. The latest fixed capacity-duration
-study passes its registered development gain contrast, but fails per-scene easy
-preservation and lacks budget-matched loss controls and independent confirmation.
-It is not a new deployed method or a submission-ready result.
+Working draft, evidence reconciled 2026-09-22. The latest budget-matched objective
+study completes24new control fits. The intermediate loss beats the fraction
+control, but its native-control contrast includes zero, failing the joint
+contribution check. Per-scene easy preservation and independent confirmation
+remain unresolved. It is not a new deployed method or a submission-ready result.
 Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
@@ -244,8 +245,21 @@ independent confirmation. Longer fitting has a larger effect than width in
 the factorial; matched-count ranking gains are much smaller. The old fraction
 reference uses a smaller budget and width, so the comparison cannot establish
 superiority of the intermediate loss itself. Capacity/budget-matched native
-and fraction controls are required next. No deployment, threshold change or
+and fraction controls were therefore required. No deployment, threshold change or
 new data role. [Full factorial, diagnostics and limits](cost_capacity_v1/conclusions.md).
+
+That fair comparison is now complete:24fresh native/fraction fits at the same
+width128/12000budget, with12cached-verified intermediate heads. Strict ADE
+gains are3.06719%,1.65767%,3.72892%, respectively. Intermediate-minus-native
+is+.66173pp, conditional site CI[-.27228,2.18556]; intermediate-minus-fraction
+is+2.07125pp [.66261,4.31900]. Both lower bounds were required to be positive,
+so the registered objective-contribution check fails. Native fails aggregate
+easy protection, fraction retains lower gain with no observed site/seed easy
+violation, and intermediate still fails deathCircle easy. All36selected complete
+views underestimate harm. Full36checkpoint replay and separate cost/policy/error
+arithmetic pass. These are source-development comparisons, not newly independent
+results or evidence for promoting a post-hoc winner.
+[Fair controls and remaining failures](cost_budget_matched_v1/conclusions.md).
 
 ## Abstract
 
@@ -257,18 +271,20 @@ conservative rule. Our development task observes eight annotation steps and
 predicts twelve on four explored SDD physical sites, using annotation-pixel
 errors and equal-site relative ADE gains. A matched predictor comparison gives
 11.04% ADE improvement over constant velocity for EqMotion, versus7.63%for a
-Transformer, but both degrade easy trajectories. A subsequent capacity-duration
-factorial isolates the effects of cost-head width and fitting budget. The
-registered wider, longer-trained policy yields3.73%ADE improvement, exceeding
-an earlier protected control by2.12percentage points (conditional site-bootstrap
-interval[0.52,4.53]). Aggregate easy error improves0.81%, with no observed harm
+Transformer, but both degrade easy trajectories. Capacity-duration and matched
+objective controls separate fitting budget from cost-loss weighting. With equal
+capacity and budget, the fixed intermediate-loss policy yields3.73%ADE gain,
+versus3.07%for native-cost and1.66%for fraction-cost regression. Its paired
+advantage over fraction is2.07percentage points (conditional site-bootstrap
+interval[0.66,4.32]), but the native contrast is0.66points[-0.27,2.19], failing
+the registered joint contribution criterion. Aggregate easy error improves0.81%, with no observed harm
 on complete exactly baseline-predicted futures. However, one site's easy error
 increases2.95%, selected harm remains underestimated, and incomplete outcomes
 limit safety assessment. Matched-count controls show much smaller ranking
 changes than fixed-gate gains. These results identify optimization and
 conditional-risk limitations rather than establish a new safe world model.
-Budget-matched objective controls, independent calibration and untouched
-confirmation are required before a deployment or generalization claim.
+Conditional harm calibration and untouched confirmation remain necessary
+before a deployment or generalization claim.
 
 ### Archived Development Narrative (Not the Current Abstract)
 

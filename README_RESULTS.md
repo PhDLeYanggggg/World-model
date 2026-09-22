@@ -5,7 +5,32 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Equal-Budget Objective Controls Registered (2026-09-22)
+## Equal-Budget Controls Completed: Primary Contribution Check Fails (2026-09-22)
+
+Registration06f9a635 preceded24 fresh native/fraction fits at width128/12000.
+All288,000 updates and73,728,000 draws complete, with245.01 recorded head-fit
+seconds excluding upstream/I/O/verification.12 intermediate references remain
+cached_verified, not new fits.36 checkpoints replay1,581,804scores; separate
+arithmetic verifies108choices/864scene reductions/1,581,804supervision rows.
+48 scoped tests pass. The legacy nonhermetic full suite was not rerun.
+
+Strict ADE gain: intermediate3.72892%, native3.06719%, fraction1.65767%.
+Intermediate-minus-fraction:+2.07125pp,CI[.66261,4.31900].
+Intermediate-minus-native:+.66173pp,CI[-.27228,2.18556]. Both positive lower
+bounds were required, so the objective-contribution check fails. No post-readout
+winner promotion. The candidate's aggregate easy improves.81395%, but
+deathCircleeasy worsens2.94724%; all three seeds fail there. All36selected
+complete views across objectives underestimate harm. Missing futures remain
+unknown. Same-count policies still degrade easy5.58-6.98% and are not deployed.
+
+Four explored source sites, three seeds,3000paired site resamples: developmental
+uncertainty, not independent confirmation. Next: conditional-risk diagnosis on
+fixed same-population support, then a prospectively fixed repair; no held-out
+threshold sweep. Independent calibration/final roles remain unopened.
+Stage5C/SMCoff, submission not ready.
+[Results and complete verification](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 The capacity study's positive primary comparison does not isolate objective
 merit because its fraction reference used width64/3000updates. A fixed follow-up
