@@ -54,6 +54,16 @@ retained by both versions are part of the problem, not just new switches. I keep
 the [verified experiment and negative finding](outputs/publication_readiness_2026_09/log_cost_v1/conclusions.md)
 as development evidence; there is no new deployment or calibration claim.
 
+The latest failure audit points to a more specific mismatch: the risk head learns
+one cost over twelve future steps, while some evaluated tracks have only a short
+labelled future prefix. In the retained easy-case errors, incomplete futures
+account for about 77% of gross harm in deathCircle and 75% in gates. Many complete
+training trajectories also benefit overall while being worse over their first
+few steps. I have implemented and checked prefix-level supervision without using
+future label availability as an input. Retraining and a fixed policy comparison
+come next; this [diagnosis and target-interface repair](outputs/publication_readiness_2026_09/log_cost_v1/conditional_support_diagnosis.md)
+does not yet improve a deployed model or justify excluding short tracks.
+
 ## Research Question
 
 My primary task is **eight observed annotation steps to twelve predicted steps**.

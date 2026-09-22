@@ -5,6 +5,27 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Prefix-Cost Support Mismatch Located and Label Interface Repaired (2026-09-22)
+
+Fresh frozen-decision diagnosis identifies incomplete future support as a major
+part of retained-easy gross harm: **76.80% in deathCircle and 74.70% in gates**.
+The share from only one future labelled point is 46.44% and 57.54%, respectively.
+These are within-site harm shares, not new accuracy gains or causal estimates.
+Most harm in these failed sites repeats on the same queries across three seeds.
+
+The current head learns full-12-step scalar costs on complete labels. In existing
+nested fitting views, 44.94%-63.15% of full-horizon nonharmful cases have harm on
+some shorter prefix. The new prefix target interface preserves terminal scalar
+labels and separates loss-only targets/masks from causal forecast disagreement.
+It is implemented but has not yet trained or changed an intervention model.
+
+Thirty new scoped tests pass. Real-array checks cover 24 fitting/held views,
+288 prefix reductions and 408 target-perturbation queries. No new rows, independent
+scenes, deployment, calibration, metric change or future-mask inference input.
+The immutable registration's feature-count typo is documented: actual inputs
+were always 356, not 355. The 4.19% scalar gain and failed protection gate remain.
+[Evidence, target repair, limitations and reproduction](outputs/publication_readiness_2026_09/log_cost_v1/conditional_support_diagnosis.md).
+
 ## Compositional Log-Loss Test Completed: Conditional Protection Still Fails (2026-09-22)
 
 Twelve fresh Torch risk heads completed 144,000 updates and 36,864,000 draws.

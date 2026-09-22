@@ -1,5 +1,54 @@
 # Real-Experiment Continuation Handoff
 
+## Prefix Target-Support Mismatch Located and Interface Repaired (2026-09-22)
+
+Previous goal turn was meaningful progress: log-loss verification/turnover and
+cc654121 synced. This turn adds actual support/concentration evidence plus a
+label-interface repair, not another scalar loss/threshold fit. No new training,
+closed-role readout or deployment. Parent4.18873%ADE/easyfailure unchanged.
+
+Retained easy gross harm is76.8049%partial in deathCircle and74.6960%in gates;
+one-labelled-future-step shares46.4439%/57.5368%. All768partial retained-easy
+instances are contiguous prefixes;34of2605partial retained-all have gaps.
+Three-seed shared harmful rows contribute76.0541%/59.0911%ofretainedeasyharm
+in deathCircle/gates. Not solely seedvariance. Two tracks dominate >50%in each;
+do not delete them or claim independent events from overlapping windows.
+Training draws matchintendedsceneweights; longtrackmass exists but no samplerbug.
+
+Across36nestedfittingscene/viewgroups,44.9445%-63.1521% of full-horizon
+nonharmful cases have someprefixharm. Scalarfull12cost=0cannotrepresentthat
+profile. Concrete new hypothesis: terminal risk is insufficient for observed
+prefix ADE. Do not change primarymetric or remove partialrows to fixscores.
+
+Implemented src/world_model/m3w_prefix_cost_targets.py: causal_prefix_disagreement
+accepts predictions/causal scale only; supervised_prefix_costs emits12pairs,
+prefixavailability,NaNmissinglabels. No futuremaskinference. K12matchesoldscalar.
+Newmodeltrainingnotrun. Actualfeaturewidth356=355base+log1pD; immutable
+registration355prosetypoisdocumented,notedited. No feature/weightchange.
+
+Newtests12concentration+9support+9target=30passed. Realverify61894terminalexit0:
+24views/288prefixreductions/408targetperturbations,1,581,804fittinginstances,
+527,268heldinstances. Diagnose70472/22927terminalexit0; concentrationreplay63807
+terminalexit0. Horizon-supportreplay49916andtarget-verifierreplay10762also
+terminalexit0;allthreeoutputsreplayexactly.Allneededprocessesfinished.
+Reports log_cost_v1/conditional_support_diagnosis.md and three newJSONartifacts.
+ConcentrationSHAba7542e4796cb5be858cc680774ceec7f47406790924ca66a074f1a0c7fc6721;
+supportSHAe304ff776bbd2df92c30e47bd0a4e121b28bddb34007bb20828623e5a6878b65;
+targetverifySHA1b9c15016c375883d064ecab600ab2a230e363e9136df5bf8e7ea83dc21c653b.
+
+Next: register a matched prefix-profile vs scalar-log cost fit, retain complete
+fitrows/sampling/preprocessing/forecasts/seeds/budget/tolerance, compare terminal
+only vs fixedallprefixrule plus equalcountcontrol. Do not read futuremask to
+chooseinferenceprefix; gappedmasklimitations explicit. Registered primarymust
+precede newfitting/readout. This is supervision repair,not CRCcertificate.
+Read CRC ICLR2024 Sec1.1/Thm1/2.3; monotonic boundedexchangeableloss assumptions
+notestablishedhere. Howard2021abstractscreenonly,nofullreadclaim.
+
+Independent role/acquisition decisions stillpending;donotreaskorbypasswarning.
+No new CREATEauth/queue/assets/job; localexistingdata sufficient, noHPCneeded.
+Preserveunrelatedstagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Goalactive/unmet; original fullscope retained; Stage5C/SMCoff.
+
 ## Log-Loss Experiment Verified, Turnover Diagnosed (2026-09-22)
 
 Previous user turn was a status reply plus terminal confirmation of checkpoint
