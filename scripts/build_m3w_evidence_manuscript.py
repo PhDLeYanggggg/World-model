@@ -207,7 +207,9 @@ def plot(evidence, path, preview=None):
         ax.spines[["top", "right"]].set_visible(False)
         ax.grid(axis="x" if ax is axes[0] else "y", alpha=.15)
     fig.suptitle("SDD development only: 4 explored sites, 8 observed / 12 predicted annotation steps", fontsize=12)
-    fig.savefig(path, metadata={"Date": None})
+    svg = io.StringIO()
+    fig.savefig(svg, format="svg", metadata={"Date": None})
+    path.write_text("\n".join(line.rstrip() for line in svg.getvalue().splitlines())+"\n")
     if preview:
         fig.savefig(preview, dpi=150)
     plt.close(fig)
