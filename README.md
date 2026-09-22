@@ -64,6 +64,14 @@ future label availability as an input. Retraining and a fixed policy comparison
 come next; this [diagnosis and target-interface repair](outputs/publication_readiness_2026_09/log_cost_v1/conditional_support_diagnosis.md)
 does not yet improve a deployed model or justify excluding short tracks.
 
+I have now fixed the next comparison before training: two equally sized risk
+heads learn either twelve copies of the full-trajectory cost or twelve distinct
+prefix costs. The same forecasts, fitting rows, seeds and training budget are
+used in both arms. Equal-switch-count controls will test whether any protection
+comes from better risk discrimination rather than simply switching less often.
+The [registered experiment](outputs/publication_readiness_2026_09/prefix_cost_v1/registration.md)
+is still pending real fitting/readout; independent calibration remains separate.
+
 ## Research Question
 
 My primary task is **eight observed annotation steps to twelve predicted steps**.

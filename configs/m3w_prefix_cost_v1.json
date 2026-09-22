@@ -1,0 +1,22 @@
+{
+  "scope": "source_only_matched_prefix_risk_supervision",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "arms": ["terminal_repeat", "prefix"],
+  "policies": ["control_terminal", "profile_terminal", "profile_guard", "control_matched", "profile_matched"],
+  "region_multiplier": 4.0,
+  "bootstrap_resamples": 3000,
+  "primary_policy": "profile_guard",
+  "primary_reference": "control_terminal",
+  "training": {
+    "steps": 12000, "batch_size": 256, "learning_rate": 0.001,
+    "width": 128, "checkpoint_every": 500, "heartbeat_every": 100,
+    "gradient_clip": 5.0
+  },
+  "registration": "outputs/publication_readiness_2026_09/prefix_cost_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/prefix_cost_v1",
+  "reports": "outputs/publication_readiness_2026_09/prefix_cost_v1",
+  "threshold_search": false, "model_selection": false, "closed_role_readout": false,
+  "risk_calibration": false, "independent_confirmation": false, "deployment": false,
+  "stage5c_executed": false, "smc_enabled": false
+}

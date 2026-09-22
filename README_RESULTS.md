@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Prefix-Risk Experiment Registered (2026-09-22)
+
+Two capacity-matched 48,792-parameter risk heads per source/seed will compare
+repeated terminal cost supervision against prefix-profile supervision. Forecasts,
+356 inputs, complete fitting rows, fixed weights, three seeds and 12,000-update
+budget remain unchanged. The primary all-prefix policy must beat the terminal
+control and preserve easy cases in every scene/seed; matched-count controls
+separate risk discrimination from fewer interventions. No threshold search.
+
+Sixteen scoped tests passed (seven new head/protocol cases plus nine unchanged
+prefix-target cases), including exact resume and same draws. Real fitting/readout
+are not_run at this registration snapshot. These are existing development sites,
+not independent calibration/confirmation. [Frozen comparison and commands](outputs/publication_readiness_2026_09/prefix_cost_v1/registration.md).
+
 ## Prefix-Cost Support Mismatch Located and Label Interface Repaired (2026-09-22)
 
 Fresh frozen-decision diagnosis identifies incomplete future support as a major
