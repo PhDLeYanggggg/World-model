@@ -5,7 +5,28 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Conditional Fitting Diagnosis and Fixed Repair Registered (2026-09-22)
+## Conditional Repair Completed: Accuracy Gain, Protection Still Fails (2026-09-22)
+
+Registered623e02b0 before real fitting. Twelve fresh Torch heads complete144,000
+updates/36,864,000draws in133.80recorded head-fit seconds; old forecasts/controls
+are cached_verified. New12checkpoint replay covers527,268scores. Separate
+arithmetic validates weights, labels, choices and metric reductions.39unchanged
+scoped tests pass; the nonhermetic full legacy suite was not rerun.
+
+Strict ADE improvement is4.09764%,CI[2.62300,5.99397], versus prior3.72892%.
+Fixed primary difference:+0.36871pp,CI[0.17316,0.60302]. FDE+4.41091%,hard+4.25956%,
+aggregate easy improves0.57490%,complete exact-zero-CV harms0. But deathCircle
+easy degrades2.93332% and gates2.15061% on seed average. The required per-scene/
+seed gate fails; combined primary fails and no new model is deployed.
+
+Fitting harm is underestimated on11/12new-selected regions, held harm on12/12.
+Old-region fitting MSE improves11/12, so better targeted fitting does not resolve
+selection-conditioned optimism. Equal-count ADE contrast is-0.04374pp, not an
+improved-ranking result.423selected unknown-ADE/4,194incomplete instances remain.
+Original roles stay closed; independent calibration/confirmation remain not_run.
+Stage5C/SMCoff. [Results and limits](outputs/publication_readiness_2026_09/conditional_cost_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 Fresh2016-record common-population diagnosis finds that globally conservative
 fitting harm estimates become optimistic on each head's own choices. Native

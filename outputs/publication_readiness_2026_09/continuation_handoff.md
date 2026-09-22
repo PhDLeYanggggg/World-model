@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Conditional Cost Repair Completed (2026-09-22)
+
+Goal active/unmet. Latest user asked current status. Fresh training50713/PID88275
+completed12heads/144000updates/36864000draws,133.80316recordedfitseconds; pilot100
+resumed once. Registration623e02b0 was pushed before training. Eval62078/PID88973,
+replay99054/PID89100,separate91177 all exited0. No required process live.
+New12CPs replay527268scores. Separate36choices/288reductions/1581804supervision
+rows/12weightvectors verified.39scopedtests from unchanged registered code reused;
+legacy nonhermetic full suite not rerun. All1074bindings preserved.
+
+Analysis52bef548c000a24c1c99b0e33081371bd5caf78be42ea60525383619e285788e.
+StrictADE4.097636%,CI[2.622996,5.993974],FDE4.410906,hard4.259564,easydegrade
+-.574900,zeroCVharms0. Vsoldtempered+.368714ppCI[.173158,.603023]passes accuracy.
+BUTdeathCircleeasy2.933318 andgateseasy2.150607 onseedaverage;deathCircleallseeds
+andgatesseed17(3.854317)fail2%gate. Combinedprimaryfalse,no deployment.
+Matchedcountcontrast-.043739ppCI[-.073762,-.013716],easy6.129995fails.
+Netgain11.950777,easy21.681722,21zeroCVharms;notpromoted.
+Strictselected29668,unknown423,incomplete4194;gatesmissingoutcomelowernegative17/29.
+
+Oldregion fittingMSE improves11/12,butnewregion fittingunderharm11/12;held12/12
+underharmonoldandnewregions. Better allocation doesnotfixselection-conditioned
+optimism. Do notsweepmultiplier/thresholds. Nextauditcostreliabilityonout-of-fitting
+selectionregionsandseparatecalibrationsupport;newscientificrolesrequiredecision.
+Originalrolesclosed,4sourcesdesignexposed,independentconfirmationnot_run.
+No newCREATEjob/currentqueueclaim;Stage5C/SMCoff. Preserve3019unrelatedstaged
+fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Conclusions/execution/statisticalscope,README/ledger/state/paper/runbook updated.
+
+Earlier snapshots below are historical, not live status.
+
 ## Conditional Cost Repair Prepared (2026-09-22)
 
 Goal active/unmet. Previous turn completed matched-budget comparison and pushed

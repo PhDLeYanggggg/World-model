@@ -1,6 +1,15 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-22. The latest budget-matched objective
+Working draft, evidence reconciled 2026-09-22. A fixed decision-region fitting
+repair now completes12freshcost heads. Strict ADE gain rises3.72892%to4.09764%,
+paired difference0.36871pp[0.17316,0.60302]. However, every-scene/seed easy
+preservation fails: deathCircle2.93332%and gates2.15061%degradation on seed average.
+Equal-count ranking is slightly worse. This is a development accuracy gain,
+not a successful protection repair or new deployment. Independent calibration
+and confirmation remain missing.
+[Complete result and limitations](conditional_cost_v1/conclusions.md).
+
+The preceding budget-matched objective
 study completes24new control fits. The intermediate loss beats the fraction
 control, but its native-control contrast includes zero, failing the joint
 contribution check. Per-scene easy preservation and independent confirmation
