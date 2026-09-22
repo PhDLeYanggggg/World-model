@@ -1,5 +1,48 @@
 # Real-Experiment Continuation Handoff
 
+## Capacity/Duration Completed (2026-09-22)
+
+Goal active/unmet. This continuation completes real readout/replay/separate
+verification and post-readout diagnosis; progress, not wait or blocker.
+Previous status turn confirmed training77942/PID82560exit0. Registration621a6eb2
+preceded12wide paths/12narrow continuations.252000newupdates/64512000newdraws,
+36newendpoints/12cachedshort. Recorded newfit247.80623s; oldnarrow36000updates
+and upstream7.75hour producer compute separate. Runtimearm64CPU4/inter-op1/workers0.
+No new CREATE job or fresh remote scheduler claim. No required process live.
+
+Eval18198/PID83650,replay24804/PID83766,separate25115,audit14646,tests18137
+(50pass)all exit0.48endpoints/2109072scoresreplay;144policychoices/1152scene
+reductions/1581804supervision rows separately verified.1056fitdiagnosticrecords,
+960post-readout samepopulationrecords. Source bindings942unchanged. Newaudit
+scripts/audit_m3w_cost_capacity.py and3tests; frozen training files not changed.
+
+Analysis089b589f17010f89eedbeb0b3c68f79a615d2eb4ebae4b1ada07f9a5ace8c027.
+Auditc1963df53086da6e3b6e41a71597f82c785710076d6f024254f64c4043b8468d.
+Primarywide_longstrictADE3.728922%CI[2.293035,5.390952],FDE4.030887%,
+hard3.743861%,easydegrade-.813949%,exactzero0. Primaryvsfraction+2.119617pp
+CI[.516800,4.534864]passesregisteredempiricalchecks. NOTindependentconfirmation.
+deathCircleeasy2.947235%mean,3.342061/2.527191/2.972454%byseedfailsper-scene.
+Selected28565/unknown398/incomplete3917;gatesfullgridlowernegativeallseeds.
+All12selectedcompleteviewsharmunderestimated. No deployment or lossnoveltyclaim.
+
+Factorialstrictduration64+2.08046pp,duration128+2.40024pp,widthlong+.55028pp.
+Matched-countdurationwide+.12326ppCI[-.10417,.35806],easy6.16006%fails.
+Longertrainingrecoverslowriskcoupaopportunities butunderestimatesconditionalharm.
+Do notpromote hugeunsafe netgain11.99134%(easy21.52299%,21exactzeroharms).
+
+NEXT highest-value comparison: oldnative/fraction controls at SAME width128,
+12000updates,inputs/forecasts/initialization/draws/policies. Current primary's
+fraction comparator is width64/3000; positive result does not isolate loss merit.
+Reuse existing bounded_cost_head trainer without changing frozen code; register
+24newcontrolfits+12cachedverifiedtemperedwide_longrefs, fixed comparisons, no
+new exponent or threshold sweep. Conditional risk calibration/final confirmation
+still missing; original val/test/main/external/bookstore roles remain closed.
+No metric/seconds, true3D/foundation, independentconfirmation or deployment.
+Stage5C/SMCoff. Preserve3019unrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+Earlier registration snapshots below are historical, not the live process state.
+
 ## Capacity/Duration Factorial Prepared (2026-09-22)
 
 Goal active/unmet. Previous turn completed verified intermediate-loss study,

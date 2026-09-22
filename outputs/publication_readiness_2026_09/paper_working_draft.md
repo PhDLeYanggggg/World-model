@@ -1,8 +1,9 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-22. Latest predictor-specific cost
-refitting restores observed easy preservation but fails its registered gain
-contrast; it is neither independent confirmation nor a new deployed method.
+Working draft, evidence reconciled 2026-09-22. The latest fixed capacity-duration
+study passes its registered development gain contrast, but fails per-scene easy
+preservation and lacks budget-matched loss controls and independent confirmation.
+It is not a new deployed method or a submission-ready result.
 Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
@@ -229,7 +230,47 @@ also permit harm. No new deployment or independent confirmation follows.
 [Diagnostic design and evidence](eqmotion_cost_fit_forensics_v1/conclusions.md).
 [Registered loss comparison and failure](tempered_cost_v1/conclusions.md).
 
+A fixed capacity-duration factorial then completes12 new width128 paths and12
+width64 continuations, retaining3000/12000 endpoints with matched sampling.
+The registered wide-long strict policy improves ADE3.72892%over CV, compared
+with1.60931%for the old fraction-strict reference. The paired difference is
+2.11962pp, conditional physical-site interval[.51680,4.53486]. All seed
+aggregates preserve easy cases and no complete exact-CV outcome is harmed.
+However, deathCircleeasy worsens2.94724%on average; every seed exceeds2%there.
+All12selected complete populations underestimate mean harm, and398unknown-ADE
+plus3,917incomplete selected instances prevent a full-population safety claim.
+The latter categories overlap. This is positive development evidence, not
+independent confirmation. Longer fitting has a larger effect than width in
+the factorial; matched-count ranking gains are much smaller. The old fraction
+reference uses a smaller budget and width, so the comparison cannot establish
+superiority of the intermediate loss itself. Capacity/budget-matched native
+and fraction controls are required next. No deployment, threshold change or
+new data role. [Full factorial, diagnostics and limits](cost_capacity_v1/conclusions.md).
+
 ## Abstract
+
+Neural trajectory predictors can improve average accuracy while degrading paths
+already well predicted by a causal motion baseline. We study baseline-relative
+intervention for multi-agent forecasting: learning continuous benefit and harm
+from scene-excluded forecasts and selecting neural replacements under a fixed
+conservative rule. Our development task observes eight annotation steps and
+predicts twelve on four explored SDD physical sites, using annotation-pixel
+errors and equal-site relative ADE gains. A matched predictor comparison gives
+11.04% ADE improvement over constant velocity for EqMotion, versus7.63%for a
+Transformer, but both degrade easy trajectories. A subsequent capacity-duration
+factorial isolates the effects of cost-head width and fitting budget. The
+registered wider, longer-trained policy yields3.73%ADE improvement, exceeding
+an earlier protected control by2.12percentage points (conditional site-bootstrap
+interval[0.52,4.53]). Aggregate easy error improves0.81%, with no observed harm
+on complete exactly baseline-predicted futures. However, one site's easy error
+increases2.95%, selected harm remains underestimated, and incomplete outcomes
+limit safety assessment. Matched-count controls show much smaller ranking
+changes than fixed-gate gains. These results identify optimization and
+conditional-risk limitations rather than establish a new safe world model.
+Budget-matched objective controls, independent calibration and untouched
+confirmation are required before a deployment or generalization claim.
+
+### Archived Development Narrative (Not the Current Abstract)
 
 Average forecasting gains can conceal degradation on trajectories already well
 predicted by a simple motion baseline. We study baseline-relative selective

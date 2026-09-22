@@ -5,7 +5,31 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Capacity/Duration Factorial Prepared (2026-09-22)
+## Capacity/Duration Factorial Completed: Positive Development Gain (2026-09-22)
+
+Registered621a6eb2 before fitting.12new wide paths and12narrow continuations
+complete252,000new updates/64,512,000draws,36new endpoints plus12old references.
+Recorded new head fitting247.81seconds excludes inherited and upstream compute.
+All48endpoints replay2,109,072scores; separate arithmetic checks144choices,
+1,152scene reductions and1,581,804supervision rows.50scoped tests pass.
+
+Primary wide12000strict:ADE+3.72892%,CI[2.29303,5.39095],FDE+4.03089%,
+hard+3.74386%,easy improvement0.81395%,complete exact-CV harms0.
+Versus old refitted fraction-strict:+2.11962pp,CI[.51680,4.53486]. The fixed
+primary empirical gate passes; no independent confirmation or deployment.
+deathCircleeasy worsens2.94724%on seed average and exceeds2%for everyseed.
+398unknown-ADE/3,917incomplete selected instances remain; gates full-grid
+lower bounds remain negative. All12selected complete populations underpredict
+harm. No broad easy-safety claim is supported.
+
+Longer fitting contributes more than width in the fixed factorial. At matched
+counts its ranking benefit is much smaller and easy still fails. The old
+fraction reference uses width64/3000updates, so the next needed control gives
+native/fraction losses the same width128/12000budget before claiming objective
+superiority. No new threshold sweep, role opening, Stage5C or SMC.
+[Results, all arms, conditional risks and verification](outputs/publication_readiness_2026_09/cost_capacity_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 The next fixed comparison tests width 64/128 and 3,000/12,000 updates with the
 same intermediate loss, causal features, forecasts, preprocessing and rules.

@@ -182,14 +182,24 @@ Matching intervention counts shows a small ranking gain over native loss, but
 easy degradation is still 7.50% there. I do not promote that secondary result
 or relax the threshold to make the experiment pass. The next question is whether
 the remaining tradeoff reflects limited fitting capacity or incomplete
-optimization. I have fixed a width-by-training-duration comparison to test
-those explanations, reusing the original narrow checkpoints and preserving
-both short and long endpoints. Its primary comparison stays against the
-stronger protected fraction-loss control, not whichever old result is easiest
-to beat. Independent calibration and final confirmation are still missing.
+optimization. That fixed comparison is now complete. Increasing the training
+budget has a larger effect than simply widening the head: the registered
+wide/long policy improves ADE by **3.73%** over CV, versus **1.61%** for the
+earlier protected fraction-loss control. The paired improvement is **2.12
+percentage points**, with a conditional scene interval of **[0.52, 4.53]**.
+All three seed aggregates preserve easy cases, and no complete zero-CV query
+is harmed. This is a real development gain, not a new deployment.
+
+There are important limits. Easy error still rises by **2.95% in deathCircle**,
+selected harm is underestimated, and missing future labels prevent a complete
+safety assessment. The old fraction control also had a smaller training budget,
+so I cannot attribute the whole gain to the loss function. My next comparison
+gives native and fraction losses the same wider head and longer budget.
+Independent calibration and final confirmation are still missing.
 [Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
 [Fixed intermediate-loss result](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
 [Fixed capacity/duration design](outputs/publication_readiness_2026_09/cost_capacity_v1/registration.md).
+[Completed factorial, positive primary result and remaining failures](outputs/publication_readiness_2026_09/cost_capacity_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
