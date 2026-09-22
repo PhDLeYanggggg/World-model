@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Registered: Frozen Cost-Head Transfer (2026-09-22)
+
+The next fixed test applies all36 existing Transformer cost heads to the twelve
+verified EqMotion predictions, without refitting, new normalization or threshold
+search. It checks whether learned intervention transfers across predictor families
+before a new EqMotion-specific nested training matrix. All controls and three
+seeds are retained; matched-count diagnostics distinguish ranking from abstention.
+690 provenance bindings and44 related tests pass. Transferred outcome readout is
+not_run at registration. These engineering checks are not method improvement.
+No closed roles, deployment, Stage5C or SMC.
+[Fixed experiment](outputs/publication_readiness_2026_09/cost_head_transfer_v1/registration.md).
+
 ## Matched EqMotion Readout: Stronger Forecasts, Failed Easy Protection (2026-09-22)
 
 `fresh_run`: all twelve native-loss EqMotion K=1 fits, 48,000 updates,
