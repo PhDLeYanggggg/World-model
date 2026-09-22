@@ -1,5 +1,59 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Prefix-Risk Training Completed and Rejected (2026-09-22)
+
+Previous goal turn was a status reply, not new progress. This goal continuation
+implemented, preregistered/pushed 562b41d1, trained and verified 24 real Torch heads.
+Full goal remains active/unmet. Stage5C/SMC off. No deployment or independent claim.
+
+New config configs/m3w_prefix_cost_v1.json; entry scripts/run_m3w_prefix_cost.py.
+Two capacity-matched arms terminal_repeat/prefix, 48,792 parameters each, 356 inputs,
+same complete rows, forecasts, source exclusions, seeds17/29/43, 12k steps, batch256.
+Native arm64 CPU4/interop1/workers0. 288000 updates/73728000 draws, unknown0,
+403.41033 recorded fit seconds. Pilot100 resumed. All training and evaluation,
+replay, versioned verifier and twice-run diagnosis returned exit0. No jobs live.
+
+Primary profile_guard ADE1.20187148 vs matched terminal control4.19346653;
+difference -2.99159505pp, CI[-3.70942765,-2.41675268]. Equal-count control1.92842266,
+difference-.72655118pp CI[-1.05392463,-.39234738]. Profile_terminal4.08940894,
+profile_matched1.94323294. No secondary winner promotion. Worst scene/seed easy
+gates17 2.32961730 fails2%; aggregate easy .60966848 degradation. Hard1.60045461.
+Primary guard 993 decisions across repeated seeds; incomplete285, unknown41,
+zero-CV complete harm0; full-grid lower bounds still negative in multiple slices.
+Four exposed sites only, not independent calibration/confirmation; t50 not_run.
+
+All24 checkpoints replay; 1,054,536 scored profiles. Separate formulas check
+144 prefix reductions,1,581,804 reused fit rows,60 decisions,480 scene reductions,
+draws/bounds/gates. Versioned scripts/verify_m3w_prefix_cost_readout.py fixes the
+frozen original verifier's wrong check_contrast argument shape; original untouched
+so training identities are valid. Tests26head/target/log +2verifier +4veto =32.
+Original scripts/verify_m3w_prefix_cost.py is superseded, do not use for completion.
+Analysis SHA732d6726d011a0f46101a0d8424a9b10baefbfa3c6c77f790a078cf263f561c4.
+
+Fresh fixed veto audit: profile_terminal nominates27964, vetoes26971, retains993.
+26952 vetoes first trigger at k1 (99.93%). Vetoed complete23348; beneficial19890,
+beneficial but someprefixharm7645; complete entirelyprefixnonharmful12245.
+Retained complete708:605beneficial/103harmful;313anyprefixharm. First-prefix
+harm underprediction21/36fitting groups and8/12held; terminal17/36fit,12/12held.
+Counts are repeated correlated instances, not independent events. No decisions
+changed. scripts/audit_m3w_prefix_cost_veto.py ran twice with exact immutable output.
+
+Next high-value method test: preregister deterministic temporal partial
+intervention (protect first steps, introduce neural later) versus matched uniform
+shrinkage, same predictors/support/budget; no future-mask choice, no easy-tolerance
+relaxation, no posthoc threshold winner. Check smoothness/interaction as well as
+native errors. This is proposed, not implemented/trained; inspect current state
+before acting. Do not repeat scalar loss or all-prefix threshold sweeps. Separate
+independent-source role/acquisition decisions remain pending; do not bypass or
+relabel development data. CREATE alias/project still unavailable locally; remote
+assets unknown, not absent. Current head cost did not justify HPC.
+
+Reports outputs/publication_readiness_2026_09/prefix_cost_v1/{conclusions.md,
+execution_notes.md,analysis.json,replay.json,separate_verification.json,
+veto_diagnosis.json}. Pinned manuscript remains unchanged; negative follow-up linked
+from human-voice README and result ledger. Preserve unrelated 3019 staged changes:
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Prefix Target-Support Mismatch Located and Interface Repaired (2026-09-22)
 
 Previous goal turn was meaningful progress: log-loss verification/turnover and

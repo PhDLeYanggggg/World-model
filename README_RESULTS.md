@@ -5,7 +5,30 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched Prefix-Risk Experiment Registered (2026-09-22)
+## Prefix-Risk Training Completed: Protection and Gain Still Fail (2026-09-22)
+
+Twenty-four fresh Torch fits completed 288,000 updates and 73,728,000 draws in
+403.41 recorded fitting seconds. The all-prefix guard gains **1.20187% ADE**,
+against **4.19347%** for the capacity-matched terminal-repeat control. Primary
+difference **-2.99160 pp**, site-bootstrap CI **[-3.70943, -2.41675] pp**. At equal
+switch count the guard loses **0.72655 pp**, CI **[-1.05392, -0.39235] pp**.
+Worst scene/seed easy degradation is **2.32962%**; the conjunctive gate fails.
+
+The guard retains 993 of 27,964 profile-terminal nominations. Of 26,971 vetoes,
+26,952 first occur at the first predicted step. About 85.2% of vetoed complete
+outcomes would improve the full trajectory, while retained harm persists. This
+fresh frozen-decision diagnosis does not justify retuning a threshold or promoting
+another policy. Some full-versus-prefix tension is real, but the learned rule is
+not reliably discriminating it. There are 285 selected incomplete and 41 entirely
+unknown outcomes, not certified safe.
+
+All 24 checkpoints replay; separate arithmetic verifies 144 prefix reductions,
+60 policy choices, 480 scene reductions, draw matching, bounds and gates. A
+versioned verifier transparently fixes a contrast-argument wiring error without
+changing frozen training/evaluation code. No full-suite or independent confirmation
+claim. [Results, limits and next method test](outputs/publication_readiness_2026_09/prefix_cost_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 Two capacity-matched 48,792-parameter risk heads per source/seed will compare
 repeated terminal cost supervision against prefix-profile supervision. Forecasts,

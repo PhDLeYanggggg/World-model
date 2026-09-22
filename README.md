@@ -70,7 +70,14 @@ prefix costs. The same forecasts, fitting rows, seeds and training budget are
 used in both arms. Equal-switch-count controls will test whether any protection
 comes from better risk discrimination rather than simply switching less often.
 The [registered experiment](outputs/publication_readiness_2026_09/prefix_cost_v1/registration.md)
-is still pending real fitting/readout; independent calibration remains separate.
+has now completed all 24 fits. The result is negative: guarding every prefix
+reduces ADE gain to 1.20%, versus 4.19% for the matched terminal-cost control;
+it also loses at the same switch count. One scene/seed still exceeds the easy
+ceiling. Almost every added veto triggers at the first predicted step, rejecting
+many forecasts that would improve the full trajectory. The [results and failure
+analysis](outputs/publication_readiness_2026_09/prefix_cost_v1/conclusions.md) keep
+this tradeoff explicit. I have not deployed the repair. Independent calibration
+and confirmation remain unresolved.
 
 ## Research Question
 
