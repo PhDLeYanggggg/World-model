@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Independent-Data Decision Checkpoint (2026-09-22)
+
+Current execution is blocked pending a material research decision or a source
+access change, not completed and not stopped for training speed. The same
+independent-role condition remained unresolved through the manuscript revision,
+portable reproduction package and this fresh check. The previous two turns
+completed deliverable work; this check adds no experiment or scientific result.
+
+Local/GitHub main matched `cefb0fc1`; the current records still lack an approved
+new calibration/confirmation design. No relevant live local training was found.
+CREATE remote contents/queue remain unverified, not absent. No new job or SSH
+login is claimed. The research-route, DroneCrowd annotation-warning and optional
+CREATE account/project questions were consolidated for the author. No existing
+data roles, risk tolerances or exposure history were changed.
+
+All reported model results and failed primary gates are retained. No new tests
+or training are claimed for this status-only checkpoint. Stage5C/SMC remain off;
+submission readiness is false. See [resume conditions](outputs/publication_readiness_2026_09/execution_decision_checkpoint.md).
+
 ## Portable Reproduction Draft Verified (2026-09-22)
 
 **fresh_run:** allowlisted package construction, isolated extraction/execution,

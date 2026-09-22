@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+The next scientific run is [waiting on independent-data decisions](outputs/publication_readiness_2026_09/execution_decision_checkpoint.md).
+The current SDD scenes remain development material; I will not reuse them as
+untouched confirmation data. The completed experiments and reproduction draft
+are preserved. Further training needs a registered data-role design, not another
+round of selecting thresholds on these same results.
+
 I have added a [portable reproduction draft](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md)
 for the current evidence tables. It runs from an extracted archive with Python's
 standard library, without my workspace, raw data or model weights. The isolated

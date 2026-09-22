@@ -1,5 +1,31 @@
 # Real-Experiment Continuation Handoff
 
+## Execution Blocked Pending Material Decision (2026-09-22)
+
+Current checkpoint: execution_decision_checkpoint.md. No new experiment or
+scientific progress this turn. Prior portable reproduction was deliverable
+progress. Same independent-scene/calibration-confirmation prerequisite persisted
+through 2c52e119, cefb0fc1 and current revalidation. Other independent packaging
+work is finished for this evidence version; do not manufacture more status-only
+or document-only activity. Goal blocked, not complete. No relevant local train
+or submission process found; no healthy process was terminated.
+
+Asked a consolidated research-route question (independent new scenes recommended
+vs strict nested SDD development), DroneCrowd annotation-download warning
+confirmation, and optional CREATE account/alias/project path. Await actual reply;
+do not repeat questions or treat this checkpoint as approval. Source-use/quality/
+exposure and scientific roles remain separate. Eight-to-twelve main horizon and
+current native-ADE decisions are already resolved; don't reopen old superseded
+questions. Strict nesting could repair fitting ancestry but would not make the
+four explored sites independent confirmation. Remote assets/jobs still unknown.
+
+Local/GitHub main verifiedcefb0fc1 at entry. Unrelated staged fingerprint remains
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Only README/results/state/handoff/checkpoint updated. No tests rerun or newdata
+readout claimed. Stage5C/SMCoff; submissionnotready. Resume when a relevant
+decision/access change supplies meaningful work; no requirement to answer all
+questions before an independently unblocked local task can proceed.
+
 ## Portable Reproduction Draft Executed (2026-09-22)
 
 Previous status response was no research progress. This continuation completed
