@@ -1,5 +1,40 @@
 # Real-Experiment Continuation Handoff
 
+## Cross-Objective Review Verified, Primary Failed (2026-09-22)
+
+Previous turn answered status and terminally verified the existing replay; it did
+not start a new experiment. This turn completes the separate formulas plus a new
+post-readout veto diagnosis. New evidence: review rejects 14,719 beneficial of
+17,875 complete outcomes (82.34%), and accepted-region mean harm is underestimated
+in10/12views despite overestimation on all original nomination regions. Harm-ratio
+AUROC averages .5822 for maxreview vs .5113native/.6364fraction. Do not use this to
+select a critic after readout. No new policy, threshold sweep, or training.
+
+Review ADE .83413% CI[.49806,1.37543]; matchedcount3.04656%; primarydifference
+-2.21244pp CI[-4.51520,-.76060]. Reviewedhard .56793%; easydegradation-.73023%;
+worstscene/seed .48136% passes, but primaryjointfails. Matchedworsteasy4.29167%
+fails. This is a tradeoff, not dominance or deployment. Reviewselected8627,
+unknown101,incomplete1028; exactzeroharms0. All4sitesdesignexposed, notcalibration.
+
+Replay68684 and formulas70006 terminalexit0,36heads/1581804scores/36choices/
+288scenereductions. Diagnosis78525andexactreplay70979terminalexit0. Allrequired
+sessionsfinished. Ten newaudit tests pass0.12s;
+reuse38unchangedexperimenttests, nofullsuiteclaim. MainanalysisSHA
+1883a8501170b81b42b32dee1b4820a0396bb7e80f1f84d680e46fad864ef15a;
+diagnosisSHA1b18ddf55e14273eb547595ac13842d76c1724d05efd34913dc3487464ec1a02.
+Reports cross_objective_review_v1/conclusions.md and execution_notes.md. Prior
+manuscript remains pinned; latest results linked separately. Goalactive/unmet.
+
+Priority: independent-scene/data-role decision before any risk-calibration claim;
+conditional risk/ranking repair needs prospectively fixed control, not another
+threshold sweep or retrospective critic choice. Pending acquisition/role questions
+are not answered by this continuation. Keep oldclosedrolesclosed, no downloadwarning
+bypass. Local53GiBfree, GitHubmain27443938 verified before results sync. SSHconfig
+still noCREATEalias; no new remoteauth/scheduler/asset inspection or jobsubmission.
+Remoteassetsunknownnotabsent. Stage5C/SMCoff. Preserve3019unrelatedstagedchanges;
+fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Use explicitpathscommit/push; caches/checkpoints/rawdata remain ignored.
+
 ## Fixed Cross-Objective Review Registration (2026-09-22)
 
 Previous turn made genuine experimental progress: adaptive-region repair failed,

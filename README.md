@@ -23,7 +23,7 @@ The manuscript keeps the failed equal-count and joint-decision controls visible.
 Its tables are reconstructed from fixed result files, not another training run.
 Independent calibration and confirmation remain the next scientific requirements.
 
-My latest controlled experiment tests whether the risk head is trained on an
+One controlled experiment tested whether the risk head was trained on an
 outdated set of switching decisions. I retrained twelve heads with the same
 budget, updating that training emphasis every 500 steps. ADE gain was 4.03%
 versus 4.10% for fixed emphasis; the paired difference interval includes zero.
@@ -33,6 +33,17 @@ not made switching reliable on another scene. I keep the negative result and
 the existing deployment unchanged. The manuscript above is the preceding fixed
 evidence snapshot; the [new experiment and reproducible results](outputs/publication_readiness_2026_09/adaptive_region_cost_v1/conclusions.md)
 are reported separately, without changing its original comparisons.
+
+I then tested whether two existing risk heads could review that policy's proposed
+switches. The review meets the observed easy-case ceiling in every scene and seed,
+but retains only 0.83% ADE gain. At exactly the same number of switches, the original
+head's ranking retains 3.05%, although it still fails easy protection. This is a
+real tradeoff, not a new deployable winner. A closer audit shows that the review
+rejects many useful forecasts and still underestimates harm among the decisions
+it accepts. Simply taking the largest risk estimate is not reliable calibration.
+I have kept the [fixed comparison, negative result and veto diagnosis](outputs/publication_readiness_2026_09/cross_objective_review_v1/conclusions.md)
+separate from the earlier manuscript snapshot. Independent confirmation is still
+missing, and no deployment has changed.
 
 ## Research Question
 

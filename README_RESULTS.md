@@ -5,7 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Cross-Objective Review Registered (2026-09-22)
+## Cross-Objective Review Completed: Protection Costs Useful Gain (2026-09-22)
+
+The fixed review has now been evaluated and verified, without new training.
+Reviewed ADE gain is **0.83413%**, compared with **3.04656%** from nomination-only
+ranking at identical site/seed switch counts. The primary paired difference is
+**-2.21244 percentage points**, CI [-4.51520, -0.76060], from 3,000 physical-site
+resamples. The joint gate fails. All four sites remain development-exposed.
+
+Review does pass the empirical scene/seed easy ceiling (worst 0.48136% degradation)
+and has no harmed complete exact-zero-CV outcomes. The matched ranking fails easy
+protection (worst 4.29167%); it is not a deployable alternative. Review retains
+8,627 of 29,668 nominations, including 101 entirely unknown future outcomes.
+Do not mistake abstention, missing labels or average improvement for a certificate.
+
+A fresh read-only diagnosis finds 82.34% of rejected complete outcomes would have
+benefited. Maximum predicted harm is conservative on all twelve nomination regions
+but underestimates accepted-region mean harm in ten. Review harm-ratio event AUROC
+averages 0.5822 within views; max aggregation does not establish calibration.
+The diagnosis is post-readout, not a new hypothesis test or permission to change
+reviewer subsets using these outcomes.
+
+All 36 checkpoint endpoints replay (1,581,804 scores); separate formulas verify
+36 decisions and 288 scene reductions. Ten new audit tests pass; the prior 38
+unchanged scoped checks remain valid. No new deployment, independent calibration,
+Stage5C, SMC or submission-ready claim.
+[Results, conditional failure and reproduction](outputs/publication_readiness_2026_09/cross_objective_review_v1/conclusions.md).
+
+### Preserved Registration Snapshot
 
 After the adaptive fitting repair failed, I am testing whether other cost
 objectives can review a frozen head's nominations more reliably than that head
