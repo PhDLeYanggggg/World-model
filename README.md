@@ -10,6 +10,11 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+Before another joint-model experiment, I am checking whether the existing
+protected forecasts leave meaningful interacting-agent choices at all. This
+[fixed causal-only diagnosis](outputs/publication_readiness_2026_09/protected_joint_support_v1/registration.md)
+uses no future outcomes and cannot establish better prediction by itself.
+
 I have completed a controlled test of whether the neural risk head's training
 loss explains its gap to a simple tree comparator. Twelve new fits improve the
 fitting objective in nine views, but do not repair held-scene risk ranking. The

@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Protected Joint Support Registered (2026-09-22)
+
+Fixed causal-only opportunity check: forest-ratio, log-strict and square-strict
+pools on the same ramp forecasts. Inherited half-count/harm budget/geometry,
+no future target arrays, no outcome readout, no new training or threshold search.
+37scoped tests pass,1,349sourcebindings preflight. Real audit not_run at this
+registration boundary. [Scope](outputs/publication_readiness_2026_09/protected_joint_support_v1/registration.md).
+
 ## Forest-Objective Neural Control Completed: Primary Gate Failed (2026-09-22)
 
 **fresh_run:** 12 Torch cost heads, 144,000 updates, 36,864,000 draws; fixed
