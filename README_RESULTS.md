@@ -24,6 +24,15 @@ The final result is not complete at this checkpoint. The aggregate reducer and
 method addendum are implemented;229 scoped tests pass. No frozen inference
 code changed, no threshold selection, and no DroneCrowd predictions occurred.
 
+An independent raw-CSV recount now identifies 9,147 query times and 420,364
+past-eligible target instances across the 27 admitted recordings. Only 399,729
+have all twelve future labels; 18,898 have partial labels and 1,737 have none.
+All remain in the inference population. This count is not a completed accuracy
+result: receipt-by-receipt coverage will be checked after inference terminates.
+Five additional coverage tests pass. A separate primary-source review finds
+disjoint author-reported DUT/DroneCrowd collection cities, without claiming
+GPS-level independence, matched forecast duration or risk transport.
+
 ## Complete Inference Chain Frozen and Replayed (2026-09-23)
 
 The fixed predictors, cost estimators, strict guard and scene-level joint controls

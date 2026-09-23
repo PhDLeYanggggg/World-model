@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Full DUT Readout Running (2026-09-23)
+
+Supersedes admission-pending text below. Registration ded982f5 pushed before
+forecast errors; 3b572615 adds reducer/methods. Frozen readout manifest binds846
+dependencies and admits27 DUT clips/two sites, excluding intersection04. Only
+descriptive calibration-domain readout; no training, winner/threshold selection,
+independent confirmation, risk certificate or deployment. DroneCrowd unopened.
+
+PID38967 / unified session71291 is actively evaluating the full workload using
+native arm64 Torch CPU4/interop1/workers0. Preserve it and its frozen code/config.
+Latest checked receipt: intersection07 complete327/327 at1977.435elapsedseconds.
+Heartbeat: data/stage_cvpr2027_experiments/dut_frozen_readout_v1/heartbeat.json.
+Atomic128query chunks resume via run_m3w_dut_readout.py --run, only after an actual
+interruption; do not start a duplicate. Real CPU activity confirmed, not SHM hang.
+
+Independent CSV-only recount:432573raw rows/1746tracks;9147queries;420364past-only
+targets;399729complete,18898partial,1737zero-future targets. Predictions never
+condition on future availability. New verifier/test files do not change bound
+inference code.229 prior scoped tests plus5coverage tests pass, not full suite.
+After run terminal: report_m3w_dut_readout.py; run_m3w_dut_readout.py --verify
+(first/mid/last128query chunks perclip); reporter --verify; independent population
+verifier --check-results. Wait for required processes, preserve all negative views.
+
+New primary-source geography review: DUT Dalian vs DroneCrowd Tianjin/Guangzhou/
+Daqing/Hong Kong. Author-supported city separation, not GPS/IID/exposure or risk
+transport certification. File external_source_geography_review_20260923.md.
+Do not retroactively change frozenmanifest or claim seconds from declaredFPS.
+Goalactive/unmet; Stage5C/SMCoff. No CREATE or simulation-project changes.
+Unrelated index fingerprint remains c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Complete Inference Chain Frozen and Replayed (2026-09-23)
 
 Supersedes the prior missing-controller task. Registration9925db48pushed before
