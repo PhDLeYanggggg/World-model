@@ -1,5 +1,26 @@
 # Real-Experiment Continuation Handoff
 
+## Lazy Cache Verified; Multi-view Audit Running (2026-09-23)
+
+Newest authorization remains delegated; no routine user audit is needed.
+112 original XML recordings converted losslessly to mmap arrays in ignored
+data/stage_cvpr2027_experiments/dronecrowd_recordings_v1. Report under matching
+public folder. 20,800 tracks / 4,864,280 visible rows /112,543,744arraybytes.
+31,472shared8/12stride1queries. Full array equality,336cachedprefix checks,
+and independent --resume source/XML comparison pass. Analysis SHA
+1bb9946fa1bb62c720b40acb5aa7348dc4e8bf852a44c0d35b8765f36e98e9be.
+Fresh39.259s; replay38.638s; no episodes materialized. All recordings remain
+unassigned_quarantine, not admitted/trained/evaluated. Eleven cache tests and
+222scoped tests pass. Attempt1 JSON tuple/list replay failure preserved in
+ignored dronecrowd_recordings_v1_attempt1; fixed schema and atomic publication
+have regressions. Do not rerun unchanged conversion except --resume verification.
+
+At this checkpoint the multi-view grouping run PID19315/session12489 is active,
+not stalled. Preserve its code/config identity and wait for completion. Its
+heartbeat is data/stage_cvpr2027_experiments/dronecrowd_grouping_v2/heartbeat.json.
+This paragraph is a launch snapshot; later completed evidence supersedes it.
+The research goal remains active and unmet. Stage5C/SMC are off.
+
 ## Delegated Authorization Executed: Images Audited (2026-09-23)
 
 Newest user: all currently pending permissions approved; routine auditing is

@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Lazy Cache Verified (2026-09-23)
+
+`fresh_run`: 112 lossless mmap recording caches, 20,800 tracks, 4,864,280 visible
+rows and 107.33 MiB of arrays. The eight-to-twelve stride-1 reader exposes 31,472
+shared query times without storing expanded episodes. Full source-array equality
+and 336 cached-prefix checks pass. A separate `cached_verified` replay rebuilds
+the identical analysis. An initial JSON tuple/list replay bug was fixed with a
+regression test; the failed attempt is preserved locally. The final conversion
+took 39.26 seconds. Eleven cache tests and 222 scoped integration tests pass.
+
+No roles, model forecasts, training or metric/seconds claims are introduced.
+Recordings remain quarantined for experimental admission; raw arrays are ignored
+by Git. [Results, failure record and reproduction](outputs/publication_readiness_2026_09/dronecrowd_recordings_v1/conclusions.md).
+
 ## Delegated Audit Authorization and Image Intake (2026-09-23)
 
 The author authorized the pending image acquisition and delegated routine

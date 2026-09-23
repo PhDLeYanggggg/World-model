@@ -30,6 +30,12 @@ Acquisition and routine protocol decisions are authorized; further source review
 is technical work, not another manual approval. No forecast result is claimed
 from this audit.
 
+The annotations now also have a [lossless lazy reader](outputs/publication_readiness_2026_09/dronecrowd_recordings_v1/conclusions.md):
+112 compact recording caches replace repeated XML parsing without storing millions
+of expanded episodes. Every array matches the source, and past inputs stay separate
+from future supervision. The reader is ready for protocol integration, but its
+recordings remain unassigned until the scene and role checks are complete.
+
 The annotation audit also found a practical input-construction risk: filtering
 observed agents by future label availability would discard agents with complete
 past histories in about 72% of the stride-1 eight-to-twelve queries. I have added a
