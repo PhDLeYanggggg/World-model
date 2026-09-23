@@ -26,9 +26,13 @@ three per clip, without downloading the full image archives. Background matching
 finds a shared road scene across the supplied train/test folders and apparent
 camera motion in many clips. The 68 automatic overlap groups are not verified
 independent sites, so I am extending the grouping before freezing research roles.
-Acquisition and routine protocol decisions are authorized; further source review
-is technical work, not another manual approval. No forecast result is claimed
-from this audit.
+The [extended multi-view audit](outputs/publication_readiness_2026_09/dronecrowd_grouping_v2/conclusions.md)
+has now checked all 6,216 recording pairs using three views, finding 66 stronger
+and 46 ambiguous associations. Keeping these and the visual-review constraints
+produces 45 exclusion groups, five of which cross the supplied train/test split.
+I will keep each related group in a single experimental role; these groups are
+not certified independent locations. Acquisition and routine research decisions
+are authorized, and no forecast result is claimed from this source audit.
 
 The annotations now also have a [lossless lazy reader](outputs/publication_readiness_2026_09/dronecrowd_recordings_v1/conclusions.md):
 112 compact recording caches replace repeated XML parsing without storing millions

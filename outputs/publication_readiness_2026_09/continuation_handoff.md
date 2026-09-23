@@ -1,5 +1,41 @@
 # Real-Experiment Continuation Handoff
 
+## Multi-view Audit Complete; Conservative Constraints Frozen (2026-09-23)
+
+Supersedes the running snapshot below. PID19315/session12489 exited0:
+6,216recordingpairs/55,482framepairattempts,66strong/46ambiguouspairs.
+2strong+19ambiguous crossrelease links.64oldpositiveedges retained.
+47automaticconservativegroups;4selfaudited imageconstraints yield45groups,
+five mixing originaltrain/test. NOT45verifiedindependentphysicalsites.
+Seven contact sheets and named fullresolution pairs visually reviewed.
+Manualreviewlinks config m3w_dronecrowd_visual_constraints_v1.json are explicit
+selfaudit, nothuman gold. Matchfailure doesn'tproveindependence.
+
+Report dronecrowd_grouping_v2/conclusions.md, analysis SHA
+896c9f64937c3bab5ee59af5fdbd78fca2b0b1f8a688c7754bf66d68bcc50cd6.
+Constraintmanifest SHA
+12c8479daf35215d47bde4111aaf74c56849947b1c0d8c43476d9c5778353976.
+All roleassignments stillunassigned; originalrelease splitexplicitlyrejected.
+Next: resolve remaining possible sharedsites or conservativelyexclude, bind
+exclusionconstraints into producer/admission contract, freeze roles before
+forecasterrors. No further routineuserapproval needed. Don't certify physical
+independence from automaticgroups or read forecastlosses to decide data roles.
+
+Freshpilot54.07s (336features+50pairs), continuation1277.29s(6166newpairs).
+About22.2localminutes total. All112recordings cached separately as below.
+Completedgroupreplay firstfailed JSONtuple/listequality, not scientific output.
+Originalproducercontroller preserved in ca2af46b, SHA4dd2ba84538dc1175d42c4e56fcf807cb6d44e5cfab6554387672411f8f6353d.
+Pinnedcompleted-onlycompatibilityfix keeps source/config/algorithm/runtime
+identity; refuses missingpair/featurecaches. Replayexit0,0.555s,0newfeatures/
+pairs,6216receipts/336imagefeaturehashes andexactanalysis verified. Controller
+hashseparate in verification_execution.json. Notsecondfreshgeometryrun.
+Finalscopedtests230passed3.81s; notfulllegacysuite.
+
+Cachecommit ef28b6cc andproducer ca2af46b pushed. Finalreports/fixfollow.
+Keep unrelatedstagedfingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+No newCREATEaccess/job; no training/forecasterrors/calibration/confirmation.
+Goalactive/unmet; Stage5C/SMCoff. All required runs have terminated.
+
 ## Lazy Cache Verified; Multi-view Audit Running (2026-09-23)
 
 Newest authorization remains delegated; no routine user audit is needed.

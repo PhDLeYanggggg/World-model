@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Multi-view Grouping Complete (2026-09-23)
+
+`fresh_run`: 6,216 recording pairs / 55,482 frame-pair attempts, 66 strong
+multi-view associations and 46 ambiguous associations. Two strong and nineteen
+ambiguous relations cross the official train/test folders. Preserving prior
+positive edges and ambiguities gives 47 automatic components; four self-audited
+visual constraints reduce the permitted exclusion groups to 45, including five
+mixed-release groups. Neither number is a verified independent-site count.
+
+The full source work took about 22.2 local minutes including the timing pilot.
+No training was run. All image/feature hashes, cached pair receipts and group
+aggregation replay exactly after a JSON-stability fix; this is `cached_verified`,
+not a second full matching run. The final scoped suite passes 230 tests. The
+official release split is explicitly rejected
+for independent-scene admission. Scientific roles remain unassigned pending
+remaining site evidence, not routine user permission. [Methods, caveats, evidence
+and reproduction](outputs/publication_readiness_2026_09/dronecrowd_grouping_v2/conclusions.md).
+
 ## DroneCrowd Lazy Cache Verified (2026-09-23)
 
 `fresh_run`: 112 lossless mmap recording caches, 20,800 tracks, 4,864,280 visible

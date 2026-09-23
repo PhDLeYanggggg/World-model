@@ -25,6 +25,29 @@ from src.evaluation.m3w_dronecrowd_intake import sha
 from scripts.audit_m3w_dronecrowd_metadata import plain_path
 
 
+LEGACY_COMPLETED_RUN = "75964ea92e0ffbe4d6330543bd20dd5be591a44f20e88efa0a1c48f96f9890c5"
+LEGACY_CONTROLLER_SHA = "4dd2ba84538dc1175d42c4e56fcf807cb6d44e5cfab6554387672411f8f6353d"
+
+
+def json_stable(value):
+    return json.loads(json.dumps(value, sort_keys=True, allow_nan=False))
+
+
+def checked_resume_identity(saved, current, completed):
+    if saved == current:
+        return current["run_id"], False
+    # Only this already-completed producer (Git ca2af46b) predates the JSON
+    # tuple/list replay fix. Scientific inputs, algorithms and runtime must match.
+    name = "scripts/audit_m3w_dronecrowd_grouping.py"
+    candidate = json_stable(current)
+    candidate["run_id"] = saved["run_id"]
+    candidate["code_sha256"][name] = LEGACY_CONTROLLER_SHA
+    if (not completed or saved["run_id"] != LEGACY_COMPLETED_RUN
+            or saved["code_sha256"].get(name) != LEGACY_CONTROLLER_SHA or saved != candidate):
+        raise ValueError("Resume input/config/code/runtime identity mismatch")
+    return saved["run_id"], True
+
+
 def atomic_json(path, value):
     temporary = path.with_suffix(path.suffix+".tmp")
     temporary.write_text(json.dumps(value,sort_keys=True,indent=2,allow_nan=False)+"\n")
@@ -79,11 +102,12 @@ def main():
                 "opencv":cv2.__version__,"numpy":np.__version__,"threads":1}
     run_id = sha(json.dumps(identity,sort_keys=True).encode())
     identity_path = cache/"identity.json"
+    compatibility_replay = False
     if identity_path.exists():
         if not args.resume:
             raise SystemExit("Existing audit state; use --resume, never overwrite")
-        if json.loads(identity_path.read_text())!={"run_id":run_id,**identity}:
-            raise ValueError("Resume input/config/code/runtime identity mismatch")
+        run_id, compatibility_replay = checked_resume_identity(
+            json.loads(identity_path.read_text()), {"run_id":run_id,**identity}, (report/"analysis.json").is_file())
     else:
         atomic_json(identity_path,{"run_id":run_id,**identity})
         atomic_json(report/"run_identity.json",{"run_id":run_id,**identity,"config":config})
@@ -125,6 +149,8 @@ def main():
                             item["descriptors"] = None
                     feature_sources.append("cached_verified")
                 else:
+                    if compatibility_replay:
+                        raise ValueError("Completed-run compatibility replay cannot create missing features")
                     if boxes is None:
                         name = f"annotations/{scene}.xml"
                         data = archive.read(name)
@@ -159,6 +185,8 @@ def main():
                 raise ValueError("Cached pair identity mismatch")
             cached_pairs += 1
         else:
+            if compatibility_replay:
+                raise ValueError("Completed-run compatibility replay cannot compute missing pairs")
             result = {"run_id":run_id,"left":a,"right":b,
                       "cross_release_split":records[a,1]["release_split"]!=records[b,1]["release_split"],
                       **compare_clip_views(features[a],features[b],config)}
@@ -188,6 +216,7 @@ def main():
               "pair_receipt_sha256":sha(json.dumps(pair_checksums,sort_keys=True).encode()),
               "physical_site_count":None,"scientific_roles_assigned":False,
               "forecast_errors_read":False,"training_run":False,"stage5c_executed":False,"smc_enabled":False}
+    result = json_stable(result)
     result_path = report/"analysis.json"
     if result_path.exists():
         if json.loads(result_path.read_text())!=result:
@@ -200,6 +229,8 @@ def main():
                  "new_feature_frames":feature_sources.count("fresh_run"),
                  "cached_feature_frames":feature_sources.count("cached_verified"),
                  "analysis_sha256":digest_file(result_path),"run_id":run_id,
+                 "completed_run_json_compatibility_replay":compatibility_replay,
+                 "controller_sha256":digest_file(Path(__file__)),
                  "completed_utc":datetime.now(timezone.utc).isoformat(),
                  "session_seconds":round(time.monotonic()-started,3)}
     execution_path = report/("verification_execution.json" if result_source=="cached_verified" else "execution.json")
