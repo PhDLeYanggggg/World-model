@@ -21,6 +21,12 @@ roles. The next step is to resolve scene identity and observation provenance,
 then freeze an independent protocol. Existing SDD sites remain development data;
 I will not reuse them as untouched confirmation.
 
+The next validation experiment is blocked pending the image-based site/camera
+audit and independent data-role decisions, not by slow training. Annotation
+auditing is complete; image acquisition is still pending approval. The
+[current checkpoint](outputs/publication_readiness_2026_09/execution_decision_checkpoint.md)
+records what is verified and what is needed to resume.
+
 The annotation audit also found a practical input-construction risk: filtering
 observed agents by future label availability would discard agents with complete
 past histories in about 72% of the stride-1 eight-to-twelve queries. I have added a

@@ -1,6 +1,61 @@
 # Research Execution Decision Checkpoint
 
-## September 23 Update
+## Current Checkpoint: September 23, 10:47 UTC
+
+The research goal remains unmet and is blocked on independent-source evidence
+and its scientific use, not on training speed or an active computation. CREATE
+connection information is now verified through the authorized `simulation model`
+handoff. Only M3W's own remote project location remains unknown; this does not
+prevent local data auditing. The simulation project is not a substitute and was
+not scanned, modified or used for M3W.
+
+The author approved independent new scenes first and official DroneCrowd
+**annotations**. The separate image-audit request remains unanswered. No new
+image data was found in the project's DroneCrowd source directories. Annotation
+clip IDs alone do not resolve physical-site independence, camera motion or
+observation provenance. No calibration/confirmation roles have been assigned.
+
+### Revalidation Evidence
+
+- Before this documentation update, local and remote main matched
+  `99dce48574d9b8f42f511088a6a771c16d83d9d0`.
+- The completed annotation-window analysis matches SHA256
+  `3a42fc7557e9c2ad5e1b6e4aabc1d77803a9f0f1b57f5b1a93814857193295dc`.
+- The completed synthetic bound-feasibility analysis matches SHA256
+  `683a31959109b8e38f105b14787a3dcc1ccb39cbdfe8d3847b5a114d8d17bd2e`.
+- No matching local M3W training/audit process was found. This is a scoped
+  process observation, not an inventory of arbitrarily named or remote jobs.
+- No new remote query, experiment, test, data role or prediction was produced
+  by this checkpoint. Existing verified results are reused, not relabelled fresh.
+
+### Repeated Prerequisite Audit
+
+| Consecutive continuation | Actual progress | Remaining prerequisite |
+|---|---|---|
+| Window separation (`c6c2502a`) | Full annotation-only window audit and input/label reader checks | Independent site/camera and observation evidence; scientific roles |
+| Risk-bound feasibility (`99dce485`) | Existing-method implementation and exact/synthetic checks | Same prerequisite; no real calibration admission |
+| Current revalidation | No new scientific result | Same prerequisite, with no new authorization or source evidence |
+
+The first two continuations completed finite independent work. Another status
+package, synthetic table or exposed-SDD threshold sweep would not supply the
+missing independent evidence. The goal is blocked, not completed or paused for
+convenience. No healthy training process has been stopped.
+
+The next actionable prerequisite is the existing image-audit authorization
+request: sparse official frames where possible, or the official train/test
+archives up to approximately 10.35 GB if necessary, excluding val and training.
+Do not repeat the question or infer approval from the CREATE handoff. Once
+authorized, audit site/camera grouping, resolve source-format and observation
+assumptions, then obtain approval for independent scientific roles before
+predictive readout. Image permission alone does not authorize those roles.
+An explicit M3W remote path independently permits the corresponding read-only
+asset inventory; it is not required before local image auditing can proceed.
+
+The 8-observed/12-predicted development route, supplemental raw t+50, and 2%
+empirical easy-error condition remain unchanged. Existing development exposure
+cannot be erased. Stage5C and SMC remain off; submission readiness is not claimed.
+
+## Earlier September 23 Authorization Update
 
 The author has now approved **independent external scenes first** and the
 **official DroneCrowd annotation download/audit**, including the previously
@@ -9,7 +64,8 @@ again. The [authorization and completed audit](dronecrowd_annotations_v1/conclus
 supersede the route/download portion of this historical checkpoint. The archive
 is acquired and fully screened. Scientific roles are not assigned: physical
 scene grouping and annotation provenance still require resolution. CREATE
-account/project information remains optional and unresolved. No model was trained.
+connection information has since been verified; M3W's remote project path is
+still unresolved. No model was trained.
 
 ## Historical Checkpoint
 

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Current Execution Checkpoint (2026-09-23)
+
+CREATE connection information is resolved through the verified read-only
+`simulation model` handoff; M3W's remote asset path remains unknown. Official
+DroneCrowd annotations and the independent window/bound audits are complete.
+Image-audit authorization, physical-site/observation evidence and independent
+scientific roles remain pending. No new experiment or test was run in this
+checkpoint; the research goal is blocked, not achieved or stopped for slowness.
+Existing scores and deployment are unchanged. See the
+[precise resume conditions](outputs/publication_readiness_2026_09/execution_decision_checkpoint.md).
+
 ## Scene-Risk Bound Feasibility (2026-09-23)
 
 Implemented the published Hoeffding-Bentkus/Bonferroni bounded-risk screen as

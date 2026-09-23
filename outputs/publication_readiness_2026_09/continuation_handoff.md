@@ -1,5 +1,30 @@
 # Real-Experiment Continuation Handoff
 
+## Blocked Prerequisite Revalidated (2026-09-23, 10:47 UTC)
+
+Current checkpoint supersedes stale connection/download blockers in
+execution_decision_checkpoint.md and research_state.json. Local/remote main
+matched 99dce485 before this documentation update. Window-analysis and
+bound-analysis hashes match their completed receipts. No new image data or
+matching local M3W training/audit process was found; no new remote query ran.
+This is not a new scientific result or test run.
+
+Three consecutive continuations retain the same independent-source/site/role
+prerequisite: window audit c6c2502a, synthetic bound work 99dce485, current
+revalidation. The first two made finite progress; independent work is now
+exhausted without new evidence/authorization. Record the goal as blocked, not
+complete. Do not manufacture another packaging or exposed-SDD tuning loop.
+
+The original annotation permission is honored and fulfilled. The separate
+DroneCrowd image question remains unanswered; do not repeat or infer consent.
+After permission, audit sites/camera and observation semantics before asking
+for scientific role approval. No predictive readout until the relevant protocol
+is approved. CREATE access works; only an explicit M3W remote directory is
+missing. Never scan or reuse the protected simulation project. That path is
+optional for local source auditing. No training was stopped; Stage5C/SMC off.
+Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Scene-Risk Bound Feasibility Verified (2026-09-23)
 
 Preceding annotation-window turn was progress. This continuation read original
