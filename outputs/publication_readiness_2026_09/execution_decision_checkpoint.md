@@ -1,5 +1,17 @@
 # Research Execution Decision Checkpoint
 
+## Superseding Authorization: September 23
+
+The author's new instruction authorizes all currently pending M3W acquisition
+and audit decisions and delegates future routine research auditing. The
+[scoped receipt](delegated_research_authorization_20260923.json) resolves the
+image-permission/manual-approval blocker. Work has resumed. Scene identity,
+camera and observation checks remain technical requirements to execute, not
+questions to repeat to the author. Independent roles must be evidence-based
+and frozen before predictive outcomes are inspected. This does not waive
+leakage gates or authorize Stage5C, SMC, manuscript submission or changes to
+the protected simulation workload. The entries below remain historical.
+
 ## Current Checkpoint: September 23, 10:47 UTC
 
 The research goal remains unmet and is blocked on independent-source evidence

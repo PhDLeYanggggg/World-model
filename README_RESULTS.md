@@ -5,7 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Current Execution Checkpoint (2026-09-23)
+## Delegated Audit Authorization and Image Intake (2026-09-23)
+
+The author authorized the pending image acquisition and delegated routine
+technical auditing and evidence-based protocol decisions. The previous manual
+approval blocker is resolved, not a passed scientific gate. Data-role freezing,
+no-leakage checks and the prohibition on Stage5C/SMC remain in force.
+
+A range-based reader now acquires fixed first/middle/last frames without
+materializing the full image archives. The official test archive has yielded
+90 verified JPEGs from 30 clips, with about 48 MB transferred. The train archive
+is being acquired separately. This is source-audit progress, not forecasting,
+training, confirmation or a new deployment. No images are committed to Git.
+
+## Historical Execution Checkpoint (2026-09-23)
 
 CREATE connection information is resolved through the verified read-only
 `simulation model` handoff; M3W's remote asset path remains unknown. Official
