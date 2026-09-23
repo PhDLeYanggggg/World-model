@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have registered the [DUT calibration-domain readout](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/registration.md)
+for the complete frozen model chain. It covers all past-eligible native8/12
+queries in27 non-quarantined recordings, not a quick sample. DUT contributes
+two physical locations, not27 independent sites. The readout will report every
+fixed model view and missing-label support without tuning thresholds or selecting
+a winner. It is descriptive calibration-domain evidence, not a risk guarantee;
+DroneCrowd confirmation remains closed and deployment is unchanged.
+
 I have completed [six fixed source-only predictor fits](outputs/publication_readiness_2026_09/external_predictor_refit_v1/conclusions.md):
 the existing Transformer and EqMotion control, each with three seeds on the
 already-used SDD source sites. All 24,000 registered updates completed locally in

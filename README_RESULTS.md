@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DUT Readout Registered Before Forecast Errors (2026-09-23)
+
+The [readout contract](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/registration.md)
+admits27 audited DUT recordings only for descriptive calibration-domain use.
+Two physical sites; intersection04 stays excluded. Native8/12, query stride1,
+past-only membership, all12 frozen model/head/seed views,11 controller arms and
+seven causal baseline controls. No future-conditioned window eligibility, model
+selection or threshold search. Missing labels remain explicit with paired gain
+bounds; no independent risk certificate, confirmation or deployment claim.
+The manifest verifies846 bindings.106 scoped tests pass, not a full-suite claim.
+Predictive readout is not_run at this registration checkpoint. No new training.
+
 ## Complete Inference Chain Frozen and Replayed (2026-09-23)
 
 The fixed predictors, cost estimators, strict guard and scene-level joint controls
