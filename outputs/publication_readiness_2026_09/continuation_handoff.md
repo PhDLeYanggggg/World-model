@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Complete Inference Chain Frozen and Replayed (2026-09-23)
+
+Supersedes the prior missing-controller task. Registration9925db48pushed before
+model-chain probes. Config m3w_external_policy_chain_v1.json; module
+src/world_model/m3w_frozen_policy_chain.py; runner freeze_m3w_external_policy_chain.py.
+No newfits: sixfixedsourcepredictors+twelvecostheads nowcompose with native strict
+guard and full/half exact-count independent/unary/joint/sceneuniform controls.
+Stoppedagents protected; invalidmodeloutputs fallback; solverfailures unmatched.
+AllvisiblecontextretainedwithCVsupport,unknownedgesunpriced/notphysicalsafety.
+Sourceadapterstride12; externalprefixstride1; noequalphysicaltimeclaim.
+
+Frozenmanifest b8a2e41fd1a440dd25be2c4ca5b2198539b94bf12a397d9d91ade4c955164b73
+binds693files,weights,codeandconfig. First/mid/lastsourcequeryper33recordings:
+99uniquequeries,12views=1188queryviewinstances;9396target/17244visibleinstances,
+168unknownCVcontextinstances retained. Registrationparametersunchanged. No future
+targetarraysloaded; noDUT/DroneCrowdinputs. All endpoint costsfinite/bounded.
+
+PID34815/session54191run exited0; probe loops27.708seconds excludingloading.
+PID34888/session85855verify exited0; everyforecast/score/decisionreceipt exact.
+12syntheticstride1futuretailperturbationchecks unchanged.189scopedtests3.19s;
+notfulllegacysuite. Allrequiredprocessesterminal. AnalysisSHA
+bba84451de5856896199ed07ad798d37eaba119d2cae6ebb7a141ff245dff2a2.
+Reports external_policy_chain_v1/{conclusions,operation_zh}.md plus manifests,
+analysis/replay/execution/mechanism_probe_summary.json. Summarizer --verifypasses.
+
+Negative:181strict/33halfcountinterventions; independent/unary/joint identical
+onall99fixedprobes;0nonadditiveeligiblequeries at halfcount. Notaccuracyorfull
+opportunityaudit. Do notretune thresholds justtoforcecouplingeffects. Noexternal
+generalization/safety/newdeployment/CCFAclaim. Prior developmentnegativeevidence
+and OOF3-site to final4-site shift remain. Goalactive/unmet; Stage5C/SMCoff.
+
+Next meaningfulwork: external source-specific admission/observation and readout
+contract bound to this frozenchain; notanotherpredictorrefit or repeatedsource
+probe. DUT2locationsnot27sites; DroneCrowd45exclusiongroupsnotcertifiedindependent
+sites. Ifcalibrationsupportinsufficient,retainfallback/reportuncertified; donot
+changecriteriatosimplypass. Routinereviewdelegated,no repeated userpermission.
+CREATE/simulationuntouched. Gitunrelatedindexfingerprintstill
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Source-Only Cost Bank Complete and Replayed (2026-09-23)
 
 Registration d24ebec4 committed/pushed before fitting. Pilot PID32221/session12342

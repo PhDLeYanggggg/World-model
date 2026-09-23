@@ -25,8 +25,11 @@ Their cost targets come from models that excluded each row's source site, not
 from the new predictors' in-sample errors. All twelve checkpoints reproduce their
 fixed-input scores; the [loss records and limitations](outputs/publication_readiness_2026_09/external_cost_bank_v1/training_losses.md)
 are available. This is source-only fitting, not held-out evaluation of the complete
-policy. Independent external calibration and confirmation remain unfinished,
-and I have not changed deployment on the strength of training loss.
+policy. I have now frozen and replayed the [complete inference chain](outputs/publication_readiness_2026_09/external_policy_chain_v1/conclusions.md),
+including the joint-choice controls and fallback rules. All twelve views reproduce
+on 99 fixed source-scene queries. Joint selection changes no decisions in those
+probes, so this step does not establish an interaction contribution. Independent
+external calibration and confirmation remain unfinished, and deployment is unchanged.
 
 I am prioritizing independent external scenes for the next validation study.
 The [DroneCrowd annotation audit](outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/conclusions.md)
