@@ -1,0 +1,23 @@
+{
+  "scope": "development_only_matched_protected_causal_motion_controls",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "actions": ["constant_position", "damped_velocity_005", "damped_velocity_010", "damped_velocity_020", "constant_acceleration_causal", "constant_turn_rate", "transformer"],
+  "heads": ["neural", "forest"],
+  "training": {"steps": 3000, "batch_size": 256, "learning_rate": 0.001, "width": 64, "checkpoint_every": 500, "heartbeat_every": 100, "gradient_clip": 5.0},
+  "forest": {"trees": 128, "max_depth": 16, "min_samples_leaf": 64, "max_features": 0.3333333333333333, "fit_threads": 4, "checkpoint_every": 16},
+  "policies": ["net_stop", "strict_stop"],
+  "bootstrap_resamples": 3000,
+  "reference_analysis_sha256": "19bc91b35db63de0ce626f92f78094a05dccacf79d4426c119ea50a63d6858d5",
+  "registration": "outputs/publication_readiness_2026_09/protected_motion_controls_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/protected_motion_controls_v1",
+  "reports": "outputs/publication_readiness_2026_09/protected_motion_controls_v1",
+  "threshold_search": false,
+  "model_selection": false,
+  "external_readout": false,
+  "independent_confirmation": false,
+  "risk_calibration": false,
+  "deployment": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

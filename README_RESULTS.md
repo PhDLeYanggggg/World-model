@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Protected Motion Controls (2026-09-24)
+
+The next source-only experiment separates forecasting from intervention control:
+six simple causal motion alternatives receive the same bounded gain/harm learner
+and conservative fallback as the full Transformer. The fixed matrix covers four
+development-exposed sites, three seeds, neural and sampler-matched forest heads.
+All six alternatives are reported; no DUT-selected winner or threshold tuning.
+Twelve existing Transformer heads will be hash-verified rather than retrained.
+New training and outcome readout are **not_run** at this registration checkpoint.
+The [registered comparison](outputs/publication_readiness_2026_09/protected_motion_controls_v1/registration.md)
+keeps DroneCrowd closed and changes no deployment decision. The earlier exhaustive
+joint-support audit is already complete and is not repeated as a new experiment.
+
 ## DUT Readout Registered Before Forecast Errors (2026-09-23)
 
 **Completed and replay-verified (2026-09-24):** All 27 registered recordings finished
