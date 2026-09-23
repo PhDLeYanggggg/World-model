@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## CREATE Read-Only Handoff and Live Access Verified (2026-09-23)
+
+User directed consultation with `simulation model` and strict compliance with
+its limitations. Contacted existing task 019f18cf-90b0-7640-b113-5ca73a0bd2ba;
+received explicit instructions. The current connection blocker is resolved:
+hostname and queue/biomed/reservation queries all exited zero. Last three read
+queries ran 10:07:54-10:08:00 UTC. This is not a job/runtime/model result.
+
+Before future CREATE use, read local ignored receipt
+data/stage_cvpr2027_experiments/create_handoff_20260923/observations.json for
+exact SSH arguments, identity reference (never read key contents), protected
+project/jobs and source documentation. SHA256
+1cb4dd58246332030b4157fa860119c8dfe2158d716e2a0a98b97ed0b4b86bd6.
+Public summary: create_readonly_handoff_20260923.md. No protected simulation
+files or jobs modified; no remote writes, uploads, installs, submissions or
+restarts. All local query sessions terminal. Do not reopen old account questions.
+
+No verified M3W remote directory was provided or found in targeted own-project
+records; do not scan the simulation tree or assume its environment is reusable.
+Current queue has two simulation tasks running, four pending for maintenance,
+and one CPU audit pending dependency. biomed MaxTime48h verified. All-node
+maintenance Sep24 07:00 to Sep25 23:59:59 scheduler/UK time; do not infer launch
+ETA, free capacity or universal GPU quota. Long partition access is not allowed.
+Retain 10s connect/60s parent limits, serial checks, no persistent auth changes
+or ControlMaster assumptions. No scientific work on login nodes. No new
+calibration, independent evidence, Stage5C/SMC or submission-ready claim.
+
+DroneCrowd image acquisition is a separate unanswered authorization request;
+this CREATE message does not approve it. Preserve all existing data-role gates.
+
 ## DroneCrowd Authorization Executed and Full Audit Complete (2026-09-23)
 
 User explicitly approved independent-new-scenes-first and official annotation

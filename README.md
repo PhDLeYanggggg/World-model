@@ -21,6 +21,11 @@ roles. The next step is to resolve scene identity and observation provenance,
 then freeze an independent protocol. Existing SDD sites remain development data;
 I will not reuse them as untouched confirmation.
 
+I have also verified [read-only CREATE access](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
+through the existing account setup. No M3W job was submitted, and the separate
+simulation workload is untouched. M3W's own remote project directory still needs
+to be identified before its historical assets can be checked.
+
 I have added a [portable reproduction draft](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md)
 for the current evidence tables. It runs from an extracted archive with Python's
 standard library, without my workspace, raw data or model weights. The isolated

@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## CREATE Read-Only Access Verified (2026-09-23)
+
+Following the author's requested handoff from `simulation model`, four short
+read-only SSH queries succeeded: hostname, current queue, biomed partition and
+reservations. The protected simulation workload has two running training tasks,
+four maintenance-pending elements and a dependency-pending CPU audit. The
+48-hour biomed limit and September 24-25 all-node maintenance reservation were
+read live. No simulation files, jobs, environment or authentication settings
+were changed. No M3W job was submitted and no model was trained or evaluated.
+
+The connection-information blocker is resolved, but M3W's remote project path
+remains unknown; no remote directory scan was performed. Detailed account/key
+paths and scheduler output stay in an ignored local receipt. Only this sanitized
+[handoff and operating restrictions](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
+are public. SSH success is not a compute allocation, model result or evidence of
+independent validation. Stage5C/SMC remain off.
+
 ## DroneCrowd Full Annotation Audit (2026-09-23)
 
 The independent-new-scene route and official annotation download were explicitly
