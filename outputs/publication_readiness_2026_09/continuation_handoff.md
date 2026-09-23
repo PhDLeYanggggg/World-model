@@ -1,6 +1,51 @@
 # Real-Experiment Continuation Handoff
 
-## Execution Blocked Pending Material Decision (2026-09-22)
+## DroneCrowd Authorization Executed and Full Audit Complete (2026-09-23)
+
+User explicitly approved independent-new-scenes-first and official annotation
+download/audit. Do not repeat those questions. Receipt and finalized evidence:
+dronecrowd_annotations_v1/{authorization,analysis,execution,verification}.json
+and conclusions.md. Model/scientific role approval is separate and still absent.
+
+Official archive is local-only external_data/DroneCrowd_annotations/annotations.zip,
+43,337,913 bytes, SHA256
+2a000ccf37422dd4e32408d8e5b181e974b07eab2b51c96ad68670513094f668.
+255 members; sequentially read, never extracted/executed. 112 XML/112 MAT/30 TXT.
+All XML structure passed: 20,800 human tracks, 6,240,000 padded raw boxes,
+4,864,280 visible/non-occluded records. Every track raw range is 0..299, not
+necessarily 300 visible observations. 361 tracks have no visible records.
+8/12 structural windows: 4,458,777 stride1; 930,714 stride12. These overlap,
+include quality-flagged boxes, and are neither admitted samples nor seconds.
+
+106 MAT files exactly match XML; six each differ by one coordinate scalar.
+All 30 clean text files match visible frame/agent IDs but 263,021 rows differ
+in reconstructed box corners. Never silently mix formats. All 6,240,000 boxes
+lack keyframe/generated provenance. 7,854 visible boxes cross nominal image
+bounds. No cross-sequence exact >=20-row track/XML duplicates found; this is
+not scene independence or a full deduplication guarantee. No physical-site map
+or images in annotation archive; no new source-time causality claim.
+
+144 scoped tests passed, full audit --verify exact, old metadata --verify exact.
+Separate streaming iterparse count agrees. Final analysis SHA256
+b680ca560c2dc73f2db70a64c12ec1d23b0b62d96deecb6cc999d8628732407a.
+Preliminary within-turn audit retained privately before extended format checks.
+All processes terminal. No training, forecast scores, roles, calibration or
+confirmation; no Stage5C/SMC. Current goal remains unmet, but this is material
+data evidence progress, not a repeated no-progress status check.
+
+Next: resolve physical-site/camera grouping and pin source-format/observation
+mode, then register calibration/confirmation roles before predictive readout.
+Official folder inspected live: train_data.zip 7.72 GB, test_data.zip 2.63 GB,
+val_data.zip 107.9 MB, lists/converters; no separately exposed site map observed.
+No images downloaded under annotation-only permission.
+Follow-up async question asks sparse official frames first or train/test archives
+up to approximately 10.35 GB for site/camera audit only; no answer yet. Do not
+confuse the approved annotation download with this new image scope. CREATE is optional
+and no new remote connection/job was attempted. Existing SDD protocol unchanged.
+Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+## Historical Execution Blocked Pending Material Decision (2026-09-22)
 
 Current checkpoint: execution_decision_checkpoint.md. No new experiment or
 scientific progress this turn. Prior portable reproduction was deliverable

@@ -10,11 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-The next scientific run is [waiting on independent-data decisions](outputs/publication_readiness_2026_09/execution_decision_checkpoint.md).
-The current SDD scenes remain development material; I will not reuse them as
-untouched confirmation data. The completed experiments and reproduction draft
-are preserved. Further training needs a registered data-role design, not another
-round of selecting thresholds on these same results.
+I am prioritizing independent external scenes for the next validation study.
+The [DroneCrowd annotation audit](outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/conclusions.md)
+now covers the complete official annotation archive: 112 clips, 20,800 tracks
+and 4.86 million visible records. There is enough structural history support,
+but clip IDs do not establish independent physical scenes. The audit also finds
+coordinate differences between supplied formats and missing interpolation
+provenance. I have not trained on these annotations or assigned calibration/test
+roles. The next step is to resolve scene identity and observation provenance,
+then freeze an independent protocol. Existing SDD sites remain development data;
+I will not reuse them as untouched confirmation.
 
 I have added a [portable reproduction draft](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md)
 for the current evidence tables. It runs from an extracted archive with Python's

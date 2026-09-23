@@ -5,9 +5,36 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Independent-Data Decision Checkpoint (2026-09-22)
+## DroneCrowd Full Annotation Audit (2026-09-23)
 
-Current execution is blocked pending a material research decision or a source
+The independent-new-scene route and official annotation download were explicitly
+approved. **fresh_run:** 43,337,913-byte archive acquired and all 112 XML, 112 MAT
+and 30 text files audited without extraction or third-party code execution.
+**cached_verified:** prior metadata and exact full re-audit. **not_run:** model
+training, forecast-error evaluation, calibration, independent confirmation and
+image/video acquisition. This resolves the old download/route decision blocker;
+it does not approve new scientific roles.
+
+Measured support is 20,800 declared tracks, 6,240,000 raw boxes and 4,864,280
+visible/non-occluded rows. There are 4,458,777 overlapping structural 8/12 windows
+at raw stride 1, or 930,714 at stride 12; neither count is independent sample
+size or a time-equivalent external protocol. Six MAT files each differ from XML
+in one coordinate value. All 30 text files retain the same frame/agent identities
+but 263,021 rows differ in box geometry. All XML boxes lack keyframe/generated
+provenance. There are 7,854 visible boxes beyond nominal image bounds.
+
+144 scoped tests and a separate streaming recount pass. Physical-site mapping,
+camera motion and observation-time provenance remain unresolved; the author's
+validation folder is sampled from test. No data is admitted for forecasting,
+no model score or deployment changes, and no metric/seconds claim is made.
+Stage5C/SMC remain off. [Audit, limitations and reproduction](outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/conclusions.md).
+
+## Historical Independent-Data Decision Checkpoint (2026-09-22)
+
+The route/download questions below were answered on September 23; the new
+annotation audit above supersedes that part of the historical blocked status.
+
+At this checkpoint execution was blocked pending a material research decision or a source
 access change, not completed and not stopped for training speed. The same
 independent-role condition remained unresolved through the manuscript revision,
 portable reproduction package and this fresh check. The previous two turns

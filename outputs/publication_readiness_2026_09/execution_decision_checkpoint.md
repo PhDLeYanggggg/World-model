@@ -1,5 +1,18 @@
 # Research Execution Decision Checkpoint
 
+## September 23 Update
+
+The author has now approved **independent external scenes first** and the
+**official DroneCrowd annotation download/audit**, including the previously
+described provider warning. Those two questions are answered; do not ask them
+again. The [authorization and completed audit](dronecrowd_annotations_v1/conclusions.md)
+supersede the route/download portion of this historical checkpoint. The archive
+is acquired and fully screened. Scientific roles are not assigned: physical
+scene grouping and annotation provenance still require resolution. CREATE
+account/project information remains optional and unresolved. No model was trained.
+
+## Historical Checkpoint
+
 Checked 2026-09-22. This is a blocked-execution record, not an experiment, a
 scientific gate pass or completion of the research goal. Existing valid results,
 code, checkpoints and negative conclusions are preserved.
