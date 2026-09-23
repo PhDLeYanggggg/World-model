@@ -1,0 +1,38 @@
+{
+  "scope": "fixed_all_development_source_refit_before_external_calibration",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "families": ["transformer", "eqmotion"],
+  "objective": "native_coordinate",
+  "architecture_sources": {
+    "transformer": "configs/m3w_native_forecast_v1.json",
+    "eqmotion": "configs/m3w_native_eqmotion_v1.json"
+  },
+  "training": {
+    "steps": 4000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "gradient_clip": 5.0,
+    "checkpoint_every": 200,
+    "heartbeat_every": 50
+  },
+  "runtime": {"torch_threads": 4, "interop_threads": 1, "num_workers": 0, "device": "cpu"},
+  "reserved_sources": {
+    "path": "configs/m3w_external_source_reservations_v1.json",
+    "sha256": "cff9232f8cf50537f44afe047678c0d465d6459b3041741fe063a422a3cfed9b"
+  },
+  "registration": "outputs/publication_readiness_2026_09/external_predictor_refit_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/external_predictor_refit_v1",
+  "reports": "outputs/publication_readiness_2026_09/external_predictor_refit_v1",
+  "model_selection": false,
+  "threshold_search": false,
+  "reserved_inputs_read": false,
+  "reserved_labels_read": false,
+  "independent_calibration": false,
+  "independent_confirmation": false,
+  "deployment": false,
+  "stage5c_execution": false,
+  "smc_enabled": false
+}

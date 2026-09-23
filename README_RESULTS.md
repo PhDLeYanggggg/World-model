@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed Predictors Registered for External Work (2026-09-23)
+
+I am refitting the existing native-loss Transformer and deterministic EqMotion
+control on the four already-exposed SDD source sites, with seeds17/29/43 and
+4,000 updates per fit. The six endpoints and budgets are fixed before training;
+this avoids choosing among development folds using external performance. DUT
+and DroneCrowd remain closed. Registration and source-loss/resume tests are
+complete; real fitting and external evaluation are not yet results in this
+checkpoint. [Registered design](outputs/publication_readiness_2026_09/external_predictor_refit_v1/registration.md).
+
 ## External Collections Reserved Before Predictive Use (2026-09-23)
 
 I have frozen DroneCrowd as a whole-source confirmation candidate rather than
