@@ -17,6 +17,13 @@ bounds; no independent risk certificate, confirmation or deployment claim.
 The manifest verifies846 bindings.106 scoped tests pass, not a full-suite claim.
 Predictive readout is not_run at this registration checkpoint. No new training.
 
+Subsequent launch: the registered full readout is now in progress, PID38967,
+with atomic128-query checkpoints. DUT now has predictive exposure from this
+declared calibration diagnostic; it must not later be called untouched.
+The final result is not complete at this checkpoint. The aggregate reducer and
+method addendum are implemented;229 scoped tests pass. No frozen inference
+code changed, no threshold selection, and no DroneCrowd predictions occurred.
+
 ## Complete Inference Chain Frozen and Replayed (2026-09-23)
 
 The fixed predictors, cost estimators, strict guard and scene-level joint controls
