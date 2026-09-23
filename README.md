@@ -28,6 +28,12 @@ past histories in about 72% of the stride-1 eight-to-twelve queries. I have adde
 and verified it across all 112 clips. This is a data-pipeline check, not evidence
 of better forecasts or independent scene coverage.
 
+I am also separating empirical easy-case protection from statistical risk claims.
+A [source-checked calibration diagnostic](outputs/publication_readiness_2026_09/scene_risk_bound_feasibility_v1/conclusions.md)
+implements an existing, tighter bounded-risk method without changing the frozen
+experiments. It improves the feasibility calculation, not the model: independent
+scenes are still required, and the 2% easy-error criterion is not a certificate.
+
 I have also verified [read-only CREATE access](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
 through the existing account setup. No M3W job was submitted, and the separate
 simulation workload is untouched. M3W's own remote project directory still needs

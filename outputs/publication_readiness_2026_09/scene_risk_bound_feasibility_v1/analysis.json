@@ -1,0 +1,991 @@
+{
+  "schema_version": 1,
+  "result_source": "fresh_run_analytical_and_synthetic_only",
+  "sources": {
+    "ltt": {
+      "url": "https://arxiv.org/abs/2110.01052v5",
+      "version": "v5",
+      "title": "Learn then Test: Calibrating Predictive Algorithms to Achieve Risk Control",
+      "authors": [
+        "Anastasios N. Angelopoulos",
+        "Stephen Bates",
+        "Emmanuel J. Candes",
+        "Michael I. Jordan",
+        "Lihua Lei"
+      ],
+      "read_scope": "sections 1.1, 2.1-2.3; Proposition 1 equation 1 and Bonferroni Proposition 2",
+      "use": "existing bounded-mean p-value and family-wise error method; not new M3W theory"
+    },
+    "crc": {
+      "url": "https://arxiv.org/abs/2208.02814v4",
+      "version": "v4",
+      "title": "Conformal Risk Control",
+      "authors": [
+        "Anastasios N. Angelopoulos",
+        "Stephen Bates",
+        "Adam Fisch",
+        "Lihua Lei",
+        "Tal Schuster"
+      ],
+      "read_scope": "sections 1.1 and 2.1; Theorem 1 assumptions and expectation guarantee",
+      "use": "distinguish monotone expectation control from high-probability fixed-family screening"
+    }
+  },
+  "implementation_sha256": {
+    "src/evaluation/m3w_scene_risk_bounds.py": "1dd06e08b946bf43992933b1ff36bfaa21707c60f122b70b7f60d438d65f09bc",
+    "scripts/audit_m3w_scene_risk_bounds.py": "1ca58f9101552d0b5af37f57e5e9475060e91b0a85daf58b2da17dea49302151",
+    "tests/test_m3w_scene_risk_bounds.py": "4dca24432c2842811765f4a6e170702e37e21de995e7edbdb5beda64a92582fa",
+    "src/world_model/m3w_joint_intervention.py": "bd89a7b0ba53d28f1f767665335cb2bba3cefa6d76073f66db01d057e85d8195"
+  },
+  "zero_loss_scene_requirements": [
+    {
+      "family_size": 1,
+      "risk_count": 1,
+      "illustrative_tolerance": 0.02,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 3745,
+      "hb_required_independent_scenes": 149
+    },
+    {
+      "family_size": 1,
+      "risk_count": 1,
+      "illustrative_tolerance": 0.1,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 150,
+      "hb_required_independent_scenes": 29
+    },
+    {
+      "family_size": 1,
+      "risk_count": 1,
+      "illustrative_tolerance": 0.2,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 38,
+      "hb_required_independent_scenes": 14
+    },
+    {
+      "family_size": 5,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.02,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 6623,
+      "hb_required_independent_scenes": 263
+    },
+    {
+      "family_size": 5,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.1,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 265,
+      "hb_required_independent_scenes": 51
+    },
+    {
+      "family_size": 5,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.2,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 67,
+      "hb_required_independent_scenes": 24
+    },
+    {
+      "family_size": 10,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.02,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 7490,
+      "hb_required_independent_scenes": 297
+    },
+    {
+      "family_size": 10,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.1,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 300,
+      "hb_required_independent_scenes": 57
+    },
+    {
+      "family_size": 10,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.2,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 75,
+      "hb_required_independent_scenes": 27
+    },
+    {
+      "family_size": 20,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.02,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 8356,
+      "hb_required_independent_scenes": 331
+    },
+    {
+      "family_size": 20,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.1,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 335,
+      "hb_required_independent_scenes": 64
+    },
+    {
+      "family_size": 20,
+      "risk_count": 2,
+      "illustrative_tolerance": 0.2,
+      "delta": 0.05,
+      "observed_loss": 0.0,
+      "hoeffding_required_independent_scenes": 84,
+      "hb_required_independent_scenes": 30
+    }
+  ],
+  "zero_loss_upper_bounds": [
+    {
+      "assumed_independent_scenes": 4,
+      "family_size": 1,
+      "risk_count": 1,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.6119367076702041,
+      "hb_upper": 0.5271291954984121
+    },
+    {
+      "assumed_independent_scenes": 6,
+      "family_size": 1,
+      "risk_count": 1,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.49964422955689103,
+      "hb_upper": 0.39303776899708276
+    },
+    {
+      "assumed_independent_scenes": 30,
+      "family_size": 1,
+      "risk_count": 1,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.2234476923709436,
+      "hb_upper": 0.09503385285530414
+    },
+    {
+      "assumed_independent_scenes": 70,
+      "family_size": 1,
+      "risk_count": 1,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.14628085202186508,
+      "hb_upper": 0.041893344066888584
+    },
+    {
+      "assumed_independent_scenes": 112,
+      "family_size": 1,
+      "risk_count": 1,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.11564516761478512,
+      "hb_upper": 0.02639306042365302
+    },
+    {
+      "assumed_independent_scenes": 149,
+      "family_size": 1,
+      "risk_count": 1,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.10026361685215199,
+      "hb_upper": 0.019904816220685084
+    },
+    {
+      "assumed_independent_scenes": 4,
+      "family_size": 5,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.8138118153593646,
+      "hb_upper": 0.7340852051527506
+    },
+    {
+      "assumed_independent_scenes": 6,
+      "family_size": 5,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.6644745647595071,
+      "hb_upper": 0.5864814457999863
+    },
+    {
+      "assumed_independent_scenes": 30,
+      "family_size": 5,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.2971620592243688,
+      "hb_upper": 0.16189390280673965
+    },
+    {
+      "assumed_independent_scenes": 70,
+      "family_size": 5,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.19453823286637434,
+      "hb_upper": 0.07289666588684324
+    },
+    {
+      "assumed_independent_scenes": 112,
+      "family_size": 5,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.15379597696049238,
+      "hb_upper": 0.04620489483224267
+    },
+    {
+      "assumed_independent_scenes": 149,
+      "family_size": 5,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.13334012328758782,
+      "hb_upper": 0.03493437710639734
+    },
+    {
+      "assumed_independent_scenes": 4,
+      "family_size": 10,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.8654091913011427,
+      "hb_upper": 0.7763932022500211
+    },
+    {
+      "assumed_independent_scenes": 6,
+      "family_size": 10,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.7066036458008114,
+      "hb_upper": 0.6315968501359613
+    },
+    {
+      "assumed_independent_scenes": 30,
+      "family_size": 10,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.3160027570319596,
+      "hb_upper": 0.18103627252208468
+    },
+    {
+      "assumed_independent_scenes": 70,
+      "family_size": 10,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.2068723648448134,
+      "hb_upper": 0.08203163585667046
+    },
+    {
+      "assumed_independent_scenes": 112,
+      "family_size": 10,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.16354696446373895,
+      "hb_upper": 0.052089527208779435
+    },
+    {
+      "assumed_independent_scenes": 149,
+      "family_size": 10,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.14179416676489295,
+      "hb_upper": 0.03941343073259092
+    },
+    {
+      "assumed_independent_scenes": 4,
+      "family_size": 20,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.9140987178409621,
+      "hb_upper": 0.8119698453456803
+    },
+    {
+      "assumed_independent_scenes": 6,
+      "family_size": 20,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.7463584777475637,
+      "hb_upper": 0.6717901060272646
+    },
+    {
+      "assumed_independent_scenes": 30,
+      "family_size": 20,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.33378165836536333,
+      "hb_upper": 0.19974142990888785
+    },
+    {
+      "assumed_independent_scenes": 70,
+      "family_size": 20,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.21851138786388108,
+      "hb_upper": 0.09107659679160464
+    },
+    {
+      "assumed_independent_scenes": 112,
+      "family_size": 20,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.17274842008358476,
+      "hb_upper": 0.05793785315218465
+    },
+    {
+      "assumed_independent_scenes": 149,
+      "family_size": 20,
+      "risk_count": 2,
+      "observed_loss": 0.0,
+      "delta": 0.05,
+      "hoeffding_upper": 0.14977176963216876,
+      "hb_upper": 0.043871696216599754
+    }
+  ],
+  "exact_two_point_null_checks": [
+    {
+      "n": 5,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 5,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0.005252187499999998,
+      "rejected_high_counts": [
+        0
+      ],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0,
+      "rejected_high_counts": [],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.01,
+      "exact_rejection_probability": 4.994088707168194e-05,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0.0015206617860111205,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pass": true
+    },
+    {
+      "n": 20,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0.006015269958176856,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0.002160470060780771,
+      "rejected_high_counts": [
+        0,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0.010683672797443988,
+      "rejected_high_counts": [
+        0,
+        1,
+        2
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.0,
+        1.0
+      ],
+      "high_probability": 0.1,
+      "null_mean": 0.1,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0.03530625848113773,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.01,
+      "exact_rejection_probability": 1.0113490511326748e-10,
+      "rejected_high_counts": [
+        0
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.05,
+      "exact_rejection_probability": 3.460574251370164e-07,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.02,
+        0.4
+      ],
+      "high_probability": 0.25,
+      "null_mean": 0.115,
+      "error_level": 0.1,
+      "exact_rejection_probability": 1.2326072103196921e-05,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.01,
+      "exact_rejection_probability": 0.0001984554203095608,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.05,
+      "exact_rejection_probability": 0.000991206045553709,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "pass": true
+    },
+    {
+      "n": 80,
+      "loss_support": [
+        0.1,
+        0.9
+      ],
+      "high_probability": 0.65,
+      "null_mean": 0.62,
+      "error_level": 0.1,
+      "exact_rejection_probability": 0.007815733889112674,
+      "rejected_high_counts": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ],
+      "pass": true
+    }
+  ],
+  "familywise_fixture": {
+    "assumed_iid_scenes": 300,
+    "frozen_policy_risk_pairs": 10,
+    "illustrative_tolerance": 0.02,
+    "true_risk": 0.02001,
+    "delta": 0.05,
+    "seed": 273,
+    "synthetic_replicates": 20000,
+    "exact_single_pair_size": 0.0023253762260819467,
+    "exact_independent_pairs_fwer": 0.023011933182545245,
+    "exact_identical_pairs_fwer": 0.0023253762260819467,
+    "arbitrary_pair_dependence_union_upper": 0.023253762260819467,
+    "simulated_independent_pairs_fwer": 0.02255,
+    "simulated_identical_pairs_fwer": 0.00215,
+    "simulation_is_not_proof_or_real_risk_estimate": true
+  },
+  "dependence_witness": {
+    "real_independent_synthetic_units": 6,
+    "copies_per_unit": 1000,
+    "true_risk": 0.2,
+    "illustrative_tolerance": 0.1,
+    "delta": 0.05,
+    "valid_cluster_size": 0,
+    "invalid_copied_window_size": 0.2621440000000001,
+    "exact_enumeration_not_observed_m3w_failure": true
+  },
+  "joint_nonmonotonicity_witness": {
+    "scope": "synthetic_two_agent_one_step_endpoint_proxy",
+    "baseline": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        4.0,
+        0.0
+      ]
+    ],
+    "candidate": [
+      [
+        4.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "switch_masks": [
+      [
+        true,
+        true
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        false,
+        false
+      ]
+    ],
+    "switch_counts": [
+      2,
+      1,
+      0
+    ],
+    "pair_distances": [
+      4.0,
+      0.0,
+      4.0
+    ],
+    "proximity_events": [
+      0,
+      1,
+      0
+    ],
+    "monotone_in_decreasing_intervention": false,
+    "physical_collision_claim": false,
+    "measured_m3w_failure": false
+  },
+  "all_exact_checks_pass": true,
+  "real_source_arrays_read": false,
+  "real_losses_read": false,
+  "scientific_roles_assigned": false,
+  "risk_tolerance_changed": false,
+  "approved_easy_relative_error_ceiling_percent": 2,
+  "illustrative_unit_risk_is_relative_easy_error": false,
+  "legacy_calibration_implementation_changed": false,
+  "new_bound_wired_into_calibration": false,
+  "independent_sites_verified": false,
+  "training_or_forecasting": "not_run",
+  "real_calibration": "not_run",
+  "independent_confirmation": "not_run",
+  "deployment": false,
+  "method_novelty_established": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

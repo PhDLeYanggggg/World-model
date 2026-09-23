@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Scene-Risk Bound Feasibility Verified (2026-09-23)
+
+Preceding annotation-window turn was progress. This continuation read original
+LTTv5Prop1/2 and CRCv4Thm1, implemented a separate HB/Bonferroni diagnostic and
+ran exact/synthetic checks. src/evaluation/m3w_scene_risk_bounds.py does not
+replace or modify the frozen calibration runner or screen_cluster_risks.
+No realarrays/checkpoints/forecastlosses/roles/calibration/confirmation read.
+
+Report:scene_risk_bound_feasibility_v1/conclusions.md; analysis SHA256
+683a31959109b8e38f105b14787a3dcc1ccb39cbdfe8d3847b5a114d8d17bd2e.
+42scopedtests(19new),27exactbinary/fractionalnullcases,20,000syntheticFWERreps;
+exact--verify succeeds. Allprocesses terminal. Fractionalloss usesceil(n*mean),
+e*BinomialCDF andKLterm, notunadjustedbinomialtail. Risks/policies useBonferroni.
+Newbound notregistered/approvedforrealcalibration; oldresultsunchanged.
+
+Zeroobservedunitloss,onepolicy/on risk,delta.05,tolerance.02 requires149units
+versus3745oldHoeffding. Theseare optimisticindependent-unit examples, NOT2%easyADE.
+112hypotheticalindependentunits gives.026393upper; actualclipIDsnotindependence.
+SixBernoulliunitscopied1000times stillgives26.2144%invalidfalseacceptance.
+Twoagentjointproxy goes0,1,0with2,1,0switches:monotoneCRCdoesnotapplyautomatically.
+ExistingstatisticalmethodnotM3Wnovelty, no observedmodelgain/safetycertificate.
+
+Next essentialdatawork remains physicalsite/camera evidence, dispositionof
+observationprovenance and sourceformat, then explicitindependentroles. Pending
+DroneCrowdimageauthorization unchanged; don'trepeat question or infer approval
+fromCREATE. Do not inventmorestatisticstables as a replacementfor missingdata.
+No newCREATEquery/job; simulationuntouched. Stage5C/SMCoff, goalstillunmet.
+Preserveunrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## DroneCrowd Input/Label Separation Executed (2026-09-23)
 
 Previous CREATE turn was material access progress. This continuation adds a

@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Scene-Risk Bound Feasibility (2026-09-23)
+
+Implemented the published Hoeffding-Bentkus/Bonferroni bounded-risk screen as
+an isolated diagnostic. The existing calibration runner/protocol stays unchanged.
+42 scoped tests, 27 exact two-point null cases and a 20,000-replicate synthetic
+family-wise check passed; the complete numerical report replays exactly.
+
+At zero observed [0,1] loss, one frozen policy/risk, delta=0.05 and illustrative
+tolerance 0.02, required independent units fall from 3,745 under the old loose
+bound to 149. This is not a relative easy-ADE guarantee or an achieved dataset
+result. Repeating six synthetic units into 6,000 fake independent windows still
+gives 26.2144% false acceptance in the dependence witness. A two-agent example
+also shows that fewer interventions need not monotonically reduce joint proximity
+risk. Neither example is observed M3W performance or new statistical theory.
+
+No real losses, training, forecasts, data-role assignments, calibration or
+confirmation were run. The 2% empirical easy criterion and failed primary model
+results remain unchanged. [Method sources, checks and limitations](outputs/publication_readiness_2026_09/scene_risk_bound_feasibility_v1/conclusions.md).
+
 ## DroneCrowd Window Separation and Multi-Agent Support (2026-09-23)
 
 A fresh full-archive structural run now distinguishes 31,472 shared 8/12
