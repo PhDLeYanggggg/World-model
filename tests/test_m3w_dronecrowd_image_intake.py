@@ -101,3 +101,56 @@ def test_ranges_refuse_unbounded_archive_materialization():
     with MemoryRanges(b"x" * (33 * 1024**2)) as source:
         with pytest.raises(ValueError, match="memory bound"):
             source.read()
+
+
+class Response:
+    def __init__(self, status, byte_range, payload, url="https://drive.usercontent.google.com/download"):
+        self.status_code, self.headers, self.url = status, {"Content-Range":byte_range}, url
+        self.raw = io.BytesIO(payload)
+
+    def raise_for_status(self):
+        pass
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        pass
+
+
+class Session:
+    def __init__(self, response):
+        self.response = response
+
+    def get(self, *args, **kwargs):
+        return self.response
+
+    def close(self):
+        pass
+
+
+@pytest.mark.parametrize("status,byte_range,payload,url", [
+    (200,"bytes 10-19/100",b"0123456789","https://drive.usercontent.google.com/download"),
+    (206,"bytes 11-20/100",b"0123456789","https://drive.usercontent.google.com/download"),
+    (206,"bytes 10-19/101",b"0123456789","https://drive.usercontent.google.com/download"),
+    (206,"bytes 10-19/100",b"short","https://drive.usercontent.google.com/download"),
+    (206,"bytes 10-19/100",b"01234567890","https://drive.usercontent.google.com/download"),
+    (206,"bytes 10-19/100",b"0123456789","https://example.org/download"),
+])
+def test_transport_rejects_ignored_range_changed_source_or_bad_body(status,byte_range,payload,url):
+    source = MemoryRanges(bytes(range(100)))
+    source.session = Session(Response(status,byte_range,payload,url))
+    source.url, source.params = "https://drive.usercontent.google.com/download", {}
+    source.transferred_bytes = source.range_requests = 0
+    with pytest.raises(ValueError):
+        RangeArchive._fetch(source,"bytes=10-19")
+    assert source.transferred_bytes == source.range_requests == 0
+
+
+def test_transport_exact_response_and_suffix_are_counted():
+    source = MemoryRanges(bytes(range(100)))
+    source.session = Session(Response(206,"bytes 90-99/100",b"0123456789"))
+    source.url, source.params = "https://drive.usercontent.google.com/download", {}
+    source.transferred_bytes = source.range_requests = 0
+    assert RangeArchive._fetch(source,"bytes=-10") == b"0123456789"
+    assert source.transferred_bytes==10 and source.range_requests==1

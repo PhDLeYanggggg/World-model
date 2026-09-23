@@ -31,13 +31,14 @@ def main():
     ref_path = ROOT / "outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/analysis.json"
     reference = json.loads(ref_path.read_text())
     hashes = {m["name"]:m["sha256"] for m in reference["members"]}
-    records, manifest_hashes = {}, {}
+    records, manifest_hashes, acquisitions = {}, {}, {}
     for split in ("train", "test"):
         path = raw / f"{split}_sparse_manifest.json"
         manifest = json.loads(path.read_text())
         if not manifest["status"].startswith("complete_sparse"):
             raise ValueError("Sparse acquisition not complete")
         manifest_hashes[split] = sha(path.read_bytes())
+        acquisitions[split] = {k:v for k,v in manifest.items() if k != "frames"}
         for row in manifest["frames"]:
             if sha((raw / row["local_name"]).read_bytes()) != row["sha256"]:
                 raise ValueError("Modified sampled image")
@@ -47,6 +48,12 @@ def main():
     scenes = sorted({s for s,_ in records})
     if len(scenes)!=112 or set(records)!={(s,f) for s in scenes for f in (1,150,300)}:
         raise ValueError("Incomplete frozen sparse inventory")
+    source_manifest = {"scope":"public_image_metadata_only_no_images",
+                       "acquisitions":acquisitions,
+                       "frames":[records[key] for key in sorted(records)]}
+    source_manifest_path = report/"source_manifest.json"
+    with source_manifest_path.open("x") as stream:
+        stream.write(json.dumps(source_manifest,indent=2)+"\n")
     features, feature_summary, first_images = {}, [], {}
     with zipfile.ZipFile(ROOT / "external_data/DroneCrowd_annotations/annotations.zip") as archive:
         for scene in scenes:
@@ -95,6 +102,7 @@ def main():
     groups = candidate_components(scenes,[(p["left"],p["right"]) for p in edges])
     reliable = [p for p in within if p["overlap_candidate"]]
     result = {"result_source":"fresh_run", "image_manifest_sha256":manifest_hashes,
+              "public_source_manifest_sha256":sha(source_manifest_path.read_bytes()),
               "annotation_analysis_sha256":sha(ref_path.read_bytes()), "images_verified":len(records),
               "recordings":len(scenes), "cross_clip_first_frame_pairs_checked":len(scenes)*(len(scenes)-1)//2,
               "feature_summary":feature_summary,"within_clip_registration":within,

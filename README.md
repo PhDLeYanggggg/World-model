@@ -21,11 +21,14 @@ roles. The next step is to resolve scene identity and observation provenance,
 then freeze an independent protocol. Existing SDD sites remain development data;
 I will not reuse them as untouched confirmation.
 
-I am now extending the annotation audit with official images to check shared
-sites and camera motion. Acquisition and routine protocol decisions are
-authorized; the remaining requirements are technical evidence, not another
-manual approval. I will freeze data roles before predictive readout and keep
-unresolved sources out of independent confirmation.
+I have now [audited 336 official images](outputs/publication_readiness_2026_09/dronecrowd_image_audit_v1/conclusions.md),
+three per clip, without downloading the full image archives. Background matching
+finds a shared road scene across the supplied train/test folders and apparent
+camera motion in many clips. The 68 automatic overlap groups are not verified
+independent sites, so I am extending the grouping before freezing research roles.
+Acquisition and routine protocol decisions are authorized; further source review
+is technical work, not another manual approval. No forecast result is claimed
+from this audit.
 
 The annotation audit also found a practical input-construction risk: filtering
 observed agents by future label availability would discard agents with complete

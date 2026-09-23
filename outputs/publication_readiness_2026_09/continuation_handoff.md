@@ -1,5 +1,49 @@
 # Real-Experiment Continuation Handoff
 
+## Delegated Authorization Executed: Images Audited (2026-09-23)
+
+Newest user: all currently pending permissions approved; routine auditing is
+delegated. Receipt delegated_research_authorization_20260923.json supersedes
+the historical image/manual-role-approval blocker. Goal active, not blocked.
+Do not ask the same permissions again. Keep technical evidence gates, Stage5C/
+SMC prohibition, formal-submission confirmation and protected simulation rules.
+
+Fresh sparse acquisition: official train/test ZIP ranges, frames 1/150/300 per
+clip, 336 verified JPEGs from all 112 clips. Raw external_data/DroneCrowd_images
+contains images, resume/hash manifests and seven local contact sheets. Only
+185,796,200 range bytes transferred; sampled JPEGs total110,778,495bytes.
+No full11.11GB archive, val duplicate folder or third-party code acquired.
+Official train/test archive IDs and lightweight image hashes in public
+dronecrowd_image_audit_v1/source_manifest.json. Fullarchive SHAunknown;
+central_directory_sha256 means canonical JSON inventory, not full ZIPbytes.
+
+Real audit101.336s:6216firstframepairs,64overlapcandidates,68components.
+Train00009/00010 and test00065 share background with698/565inliers and broad
+coverage. Seven contact sheets inspected; selfaudit nothuman gold. Rotated/
+adjacent/lighting-different campus and street views remain: components NOT
+verified independent physical sites. Refine multiview/partialoverlap and
+conservative ambiguity handling, then freeze roles without another user audit.
+
+224withinclipregistrations,223supported;97median grid motions>5px,5>20px.
+00017first-to-lastunsupported(22inliers). These are image-motion proxies,
+notphysicalcalibration or all-framecamera estimates. Original XML provenance
+stillunknown. New observationdisposition selects offline historical annotation
+forecasting, notstrict sensor-time online inputs. Main8/12steps with explicit
+datasetstride, rawt50supplemental, 2%empiricaleasyrule unchanged.
+
+194scopedtests pass;336/336SHA/dimensions separate replay; artifact/code hashes
+and saved-pair group aggregation pass. Notsecondfullgeometryrun,notfulllegacy
+suite. OpenCVheadless4.14.0.94 installed localarm64 --no-deps; noTorch/NumPy
+dependency change or remoteenv modification. All download/audit/test sessions
+terminal. No model training,predictions,realcalibration,roleassignment or
+deployment. No newCREATEquery/job; M3Wremotepath stillunknown, not a prerequisite
+for this local source work. Analysis SHA256:
+d39f4c1bdb384cb90b0f1d9f95ac0ead74b2e278e2622d691d3f1ad50b167f3d.
+
+First commit e5702ab1 pushed authorization + intake code; final audit evidence
+follows. Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Blocked Prerequisite Revalidated (2026-09-23, 10:47 UTC)
 
 Current checkpoint supersedes stale connection/download blockers in

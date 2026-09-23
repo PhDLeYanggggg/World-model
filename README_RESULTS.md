@@ -12,11 +12,19 @@ technical auditing and evidence-based protocol decisions. The previous manual
 approval blocker is resolved, not a passed scientific gate. Data-role freezing,
 no-leakage checks and the prohibition on Stage5C/SMC remain in force.
 
-A range-based reader now acquires fixed first/middle/last frames without
-materializing the full image archives. The official test archive has yielded
-90 verified JPEGs from 30 clips, with about 48 MB transferred. The train archive
-is being acquired separately. This is source-audit progress, not forecasting,
-training, confirmation or a new deployment. No images are committed to Git.
+A range-based reader acquired 336 fixed first/middle/last frames from all 112
+clips, transferring 185.8 MB rather than both complete archives (11.11 GB).
+All sampled JPEGs pass CRC, hash and dimension checks. Across 6,216 first-frame
+pairs, 64 background-overlap candidates form 68 components, not verified
+independent sites. Train clips 00009/00010 and test clip 00065 share large areas
+of static background. Of 224 within-clip registrations, 223 meet the support
+screen; 97 exceed 5 pixels and five exceed 20 pixels of apparent grid motion.
+
+194 scoped tests pass; all 336 image hashes/dimensions were separately checked.
+This is source-audit progress, not forecasting, training, confirmation, metric
+calibration or deployment. The offline observation disposition is recorded;
+further grouping proceeds under delegated authority without another routine
+approval. No images are committed to Git. [Evidence and limitations](outputs/publication_readiness_2026_09/dronecrowd_image_audit_v1/conclusions.md).
 
 ## Historical Execution Checkpoint (2026-09-23)
 
