@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source-Only Gain/Harm Heads Registered (2026-09-23)
+
+I am completing the cost estimators for the six fixed external-study predictors.
+The new [registered fit](outputs/publication_readiness_2026_09/external_cost_bank_v1/registration.md)
+uses verified whole-site-out predictions from 24 existing source predictors,
+never the new full-source models' in-sample costs. Each family/seed gets a bounded
+neural gain/harm head and an ExtraTrees control with matching fractional targets
+and neural sampling-count weights. The input, exclusion, weighting and resume
+tests pass; fitting and independent external readout are not yet results in this
+registration checkpoint. The full-source risk fit itself is not an OOF evaluation.
+
 ## Fixed External-Study Predictors Trained and Replayed (2026-09-23)
 
 I have refitted the existing native-loss Transformer and deterministic EqMotion

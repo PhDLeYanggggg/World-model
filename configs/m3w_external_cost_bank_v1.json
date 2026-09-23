@@ -1,0 +1,31 @@
+{
+  "scope": "fixed_source_oof_gain_harm_bank_before_external_readout",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "families": ["transformer", "eqmotion"],
+  "heads": ["bounded_fraction", "matched_fraction_forest"],
+  "feature_dim": 356,
+  "training": {"steps": 3000, "batch_size": 256, "learning_rate": 0.001, "width": 64, "checkpoint_every": 500, "heartbeat_every": 100, "gradient_clip": 5.0},
+  "forest": {"trees": 128, "max_depth": 16, "min_samples_leaf": 64, "max_features": 0.3333333333333333, "checkpoint_every": 16, "fit_threads": 4},
+  "source_predictor_analysis": {
+    "path": "outputs/publication_readiness_2026_09/external_predictor_refit_v1/analysis.json",
+    "sha256": "494af734ba3ddd9f18369c7485e28252d860b804e7db81776b1bc77713beb0a5"
+  },
+  "oof_analyses": {
+    "transformer": {"path": "outputs/publication_readiness_2026_09/native_forecast_v1/analysis.json", "sha256": "e685f0afc94149a5bc2fe231cabacea6ca108a0e52843546a1519dbc6a4198b3", "replay": "outputs/publication_readiness_2026_09/native_forecast_v1/verification_with_replay.json"},
+    "eqmotion": {"path": "outputs/publication_readiness_2026_09/native_eqmotion_v1/analysis.json", "sha256": "4e5c3a274fa73b3e63d704732d4e474e7b738c859b5bf198a3f510fb78db5d21", "replay": "outputs/publication_readiness_2026_09/native_eqmotion_v1/replay.json"}
+  },
+  "registration": "outputs/publication_readiness_2026_09/external_cost_bank_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/external_cost_bank_v1",
+  "reports": "outputs/publication_readiness_2026_09/external_cost_bank_v1",
+  "future_labels_input": false,
+  "full_source_in_sample_cost_targets": false,
+  "threshold_search": false,
+  "model_selection": false,
+  "reserved_source_readout": false,
+  "independent_calibration": false,
+  "independent_confirmation": false,
+  "deployment": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
