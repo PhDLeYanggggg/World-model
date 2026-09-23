@@ -1,5 +1,40 @@
 # Real-Experiment Continuation Handoff
 
+## DroneCrowd Input/Label Separation Executed (2026-09-23)
+
+Previous CREATE turn was material access progress. This continuation adds a
+real, annotation-only multi-agent support audit and diagnostic reader, not a
+new model experiment. Source download/audit was authorized; no image download,
+forecast score, learned transform, scientific role or protocol was assigned.
+
+New src/evaluation/m3w_dronecrowd_windows.py separates current-visible-agent
+past inputs from future positions/availability. Future-complete targets must
+never define observed neighbor inventories. Partial histories are masked, not
+interpolated; backward velocity is masked across every raw gap. XML alone is an
+audit reference; final source-format and offline/source-time decision remain open.
+Reader is not registered in the training contract; intake refusal is unchanged.
+
+Full 112-recording run took39.966s. Report folder dronecrowd_window_separation_v1:
+analysis/execution/schema/conclusions. Analysis SHA256
+3a42fc7557e9c2ad5e1b6e4aabc1d77803a9f0f1b57f5b1a93814857193295dc.
+All672recording/profile counts match previous run-length implementation.
+8/12stride1:31,472 shared query frames;4,458,777agentwindows;1,680 disjoint raw
+intervals, not independent scenes. Allqueries>=10complete targets. Naivefuture
+filter would lose62,135completehistory agent-queryinstances across22,658queries
+(71.99%). At rawt50,214,585instances across25,612queries(94.11%). This is a
+hypothetical construction's measured effect, not proof of a historical modelbug.
+336realprefixes x2futureperturbations:0inputmismatches; notsource-timecausality.
+162scopedtests pass; complete offline--verify reproduces result. First tests
+found missingnewmodule then malformedXMLexceptiontype; fixed, notmodelfailure.
+
+Do not confuse millions of overlappingagentwindows with independent N. No
+scientific data-role admission, time/metric claim, Stage5C/SMC or newbestmodel.
+Highestpriority remains physicalsite/camera grouping and observationformat,
+then approved independentroles beforemodelreadout. Imagequestion remains
+unanswered; CREATEhandoffnotapproval. Do notrepeatunchangedquestions or start
+anotherpredictiveSDDgrid. CREATE pathunknown; simulationuntouched. Preserve
+unrelatedstaged fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## CREATE Read-Only Handoff and Live Access Verified (2026-09-23)
 
 User directed consultation with `simulation model` and strict compliance with

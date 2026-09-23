@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "diagnostic_reader_not_approved_training_schema",
+  "source_format": "XML alone, used as an audit reference only",
+  "point_semantics": "head bounding-box center, not a ground contact point",
+  "agent_identity": "sequence-local XML track ID",
+  "input_inventory": "all currently visible, non-occluded agents; never restricted by future availability",
+  "input_fields": {
+    "sequence_id": "recording identity; not a verified physical-site ID",
+    "query_frame": "current raw annotation frame",
+    "observation_frames": "current and past raw frame indices",
+    "agent_ids": "current agent inventory only",
+    "positions": "N by K by 2, image-pixel box centers; invalid entries zero-masked",
+    "history_mask": "N by K, observed visibility at sampled past frames",
+    "history_complete": "N, visibility at every raw frame in the past interval",
+    "in_bounds_mask": "N by K, valid boxes within nominal 1920 by 1080; diagnostic flag, no clipping",
+    "velocities": "N by K by 2, backward differences in pixels per raw frame",
+    "velocity_mask": "false initially and across any raw-frame visibility gap",
+    "agent_type": "human",
+    "coordinate_unit": "image_pixel",
+    "velocity_unit": "image_pixel_per_raw_annotation_frame",
+    "observation_mode": "offline_annotated_source_time_provenance_unresolved"
+  },
+  "separate_label_fields": {
+    "future_frames": "requested positive offsets from query frame",
+    "future_positions": "loss/evaluation only",
+    "future_mask": "loss/evaluation only",
+    "complete_target": "loss/evaluation only; requires full contiguous raw history/future span"
+  },
+  "not_in_input": [
+    "future_positions", "future_mask", "complete_target", "total_clip_track_count",
+    "future_track_lifetime", "central_velocity", "future_endpoint_goal"
+  ],
+  "probes_do_not_choose_forecasting_protocol": true,
+  "observation_length": 8,
+  "prediction_length_main_probes": 12,
+  "tested_observation_strides": [1, 12],
+  "supplemental_raw_endpoint_horizons": [10, 25, 50, 100],
+  "effective_seconds": "unknown",
+  "metric_status": "unverified",
+  "source_time_causality": "not_proven_by_exported_prefix_invariance",
+  "scientific_roles_assigned": false,
+  "admitted_recordings": 0,
+  "model_feature_rows_exported": 0,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

@@ -21,6 +21,13 @@ roles. The next step is to resolve scene identity and observation provenance,
 then freeze an independent protocol. Existing SDD sites remain development data;
 I will not reuse them as untouched confirmation.
 
+The annotation audit also found a practical input-construction risk: filtering
+observed agents by future label availability would discard agents with complete
+past histories in about 72% of the stride-1 eight-to-twelve queries. I have added a
+[past-input / future-label separation check](outputs/publication_readiness_2026_09/dronecrowd_window_separation_v1/conclusions.md)
+and verified it across all 112 clips. This is a data-pipeline check, not evidence
+of better forecasts or independent scene coverage.
+
 I have also verified [read-only CREATE access](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
 through the existing account setup. No M3W job was submitted, and the separate
 simulation workload is untouched. M3W's own remote project directory still needs

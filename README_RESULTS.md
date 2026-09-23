@@ -5,6 +5,26 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Window Separation and Multi-Agent Support (2026-09-23)
+
+A fresh full-archive structural run now distinguishes 31,472 shared 8/12
+stride-1 query times from 4,458,777 overlapping per-agent windows. Each query
+has at least ten complete targets; only 1,680 raw intervals are temporally
+disjoint within clips, and none is thereby an independent physical scene.
+
+Using future completeness to construct observed neighbors would remove
+62,135 complete-history agent-query instances across 22,658 queries (71.99%).
+The new diagnostic reader keeps all currently visible agents, masks past gaps,
+and separates future labels from inputs. All 672 real-prefix perturbation
+checks passed; all 672 recording/profile counts match the earlier run-length
+audit. 162 scoped tests passed. This verifies exported-row dependencies, not
+unknown annotation interpolation provenance. No model rows, predictions,
+training, image download, role assignment or calibration were produced.
+
+See [results, limitations and next priorities](outputs/publication_readiness_2026_09/dronecrowd_window_separation_v1/conclusions.md).
+Independent site grouping and the pending image-audit authorization remain
+unresolved. Stage5C/SMC remain off; no new model or readiness claim follows.
+
 ## CREATE Read-Only Access Verified (2026-09-23)
 
 Following the author's requested handoff from `simulation model`, four short
