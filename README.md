@@ -10,13 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have registered the [DUT calibration-domain readout](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/registration.md)
-for the complete frozen model chain. It covers all past-eligible native8/12
-queries in27 non-quarantined recordings, not a quick sample. DUT contributes
-two physical locations, not27 independent sites. The readout will report every
-fixed model view and missing-label support without tuning thresholds or selecting
-a winner. It is descriptive calibration-domain evidence, not a risk guarantee;
-DroneCrowd confirmation remains closed and deployment is unchanged.
+I have completed the [full DUT frozen-model readout](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/conclusions.md):
+27 recordings, two locations and 420,364 past-eligible target windows, including
+those with incomplete future labels. This is a fixed external diagnostic, not
+a quick sample or a new model-selection round. Protected neural policies improve
+average ADE over constant velocity by about 1.6% and 1.7% across three seeds for
+Transformer and EqMotion respectively, with no observed degradation in the small
+predefined easy subset. Unprotected models gain more on average but harm easy cases.
+
+The limitations matter: a damped-motion control has better overall ADE but fails
+easy preservation, and joint selection adds almost nothing beyond unary selection.
+Only two sites and 922 easy targets support this comparison, so it is not a safety
+guarantee or a confirmed world-model contribution. All fixed views remain reported;
+no external winner is deployed. Independent raw-row coverage and aggregate replay
+pass; fresh-process prediction replay is being checked separately. DroneCrowd
+confirmation remains closed.
 
 I have completed [six fixed source-only predictor fits](outputs/publication_readiness_2026_09/external_predictor_refit_v1/conclusions.md):
 the existing Transformer and EqMotion control, each with three seeds on the

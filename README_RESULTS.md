@@ -7,6 +7,22 @@ or evidence status.
 
 ## DUT Readout Registered Before Forecast Errors (2026-09-23)
 
+**Completed readout, replay in progress:** All 27 registered recordings finished
+in 13,717.031 seconds, with 9,147 query times and 420,364 targets. Independent raw
+CSV coverage matches every model view; aggregate replay is exact. The protected
+Transformer/neural and EqMotion/neural seed means improve CV ADE by 1.591% and
+1.708%, with zero empirical easy degradation. Matched forests yield 1.086% and
+0.720%. These are descriptive two-site results, not confirmation or deployment.
+
+The negative comparison stays visible: damped_velocity_005 gains 5.428% overall
+but has 504.128% worst-site easy degradation. Uncontrolled neural gains likewise
+fail easy preservation. The source-frozen easy subset contains only 922 targets.
+Half-count joint decisions differ from unary on 21/109,764 query/view instances,
+with negligible, mixed-sign ADE differences. No meaningful joint contribution
+or population safety is established. See the [full conclusions](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/conclusions.md)
+and [all fixed results](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/results.md).
+Fresh-process chunk verification is running; the following launch notes are history.
+
 The [readout contract](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/registration.md)
 admits27 audited DUT recordings only for descriptive calibration-domain use.
 Two physical sites; intersection04 stays excluded. Native8/12, query stride1,
