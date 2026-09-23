@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## External Collections Reserved Before Predictive Use (2026-09-23)
+
+I have frozen DroneCrowd as a whole-source confirmation candidate rather than
+splitting unresolved co-located views across roles. DUT is reserved for candidate
+calibration: 27 recordings plus one excluded duplicate-annotation recording.
+These are reservations, not an independence certificate or predictive admission.
+
+The production admission path now enforces these restrictions, including known
+renamed geometry copies. A fresh check covers 140 recordings and 560 payload
+hashes: all 421 cross-role attempts are refused, while 139 correctly reserved
+records still need the separate admission requirements. Exact replay passes;
+347 scoped integration tests pass. Unrelated portable experiments do not require
+these protected raw datasets. No new training, forecast evaluation, calibration
+or confirmation was run. [Decision, scope, checks and remaining work](outputs/publication_readiness_2026_09/external_role_reservations_v1/conclusions.md).
+
 ## DroneCrowd Multi-view Grouping Complete (2026-09-23)
 
 `fresh_run`: 6,216 recording pairs / 55,482 frame-pair attempts, 66 strong

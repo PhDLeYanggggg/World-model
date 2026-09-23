@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 
 from src.evaluation.m3w_recording_lineage import sha256
+from src.evaluation.m3w_source_reservations import check_source_reservation
 
 
 ACTIVE_ROLES = {'fit', 'development', 'calibration', 'confirmation'}
@@ -44,14 +45,15 @@ def validate_admission(root, name, record, metadata, role):
     """Refuse pending sources before opening recording arrays or future labels."""
     if role == 'excluded':
         return {}
+    reservation_bindings = check_source_reservation(root, name, record, metadata, role)
     reference = record.get('intake_screen')
-    if 'source_conditions_review' not in metadata and reference is None:
+    if not reservation_bindings and 'source_conditions_review' not in metadata and reference is None:
         # Preserve the existing canonical protocol's declaration-based contract.
         # This does not retroactively approve every legacy source's conditions.
         return {}
     require(role in ACTIVE_ROLES, 'Unknown intake data role')
     require(reference is not None, f'{name}: source intake screen required')
-    root, bindings = Path(root).resolve(), {}
+    root, bindings = Path(root).resolve(), dict(reservation_bindings)
     screen = load_bound(root, reference, bindings)
     require(screen.get('schema_version') == 1 and screen.get('kind') == 'm3w_diagnostic_intake_screen',
             'Unsupported intake screen schema')

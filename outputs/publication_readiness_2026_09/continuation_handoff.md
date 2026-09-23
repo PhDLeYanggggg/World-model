@@ -1,5 +1,38 @@
 # Real-Experiment Continuation Handoff
 
+## Whole-Source Reservations Enforced (2026-09-23)
+
+Supersedes the earlier unassigned-role next step. Under delegated authority,
+DroneCrowd's entire112clips are confirmation-reserved; DUT27calibration-reserved
+plus dut_intersection_04excluded. Noneadmittedforprediction. This avoids splitting
+unresolvedDroneCrowdsitesacrossroles;45groupsnotindependentsites; DUTnot28sites.
+Do not return to more automaticgrouping simply to manufacture independentN.
+
+Config configs/m3w_external_source_reservations_v1.json SHA
+cff9232f8cf50537f44afe047678c0d465d6459b3041741fe063a422a3cfed9b.
+Report external_role_reservations_v1/conclusions.md; analysis SHA
+4b69baf31c813cfee56c05717c2b3653d51c19d6b4654e81285ea9a88b10f098.
+Fresh560payloadhashes209752578bytes,140metadataidentities verified;421wrongroles
+refused;139matchingrolesstillrequireseparateadmission. No arraysdeserialized/model
+errors/training/realcalibration/confirmation. Unchangedanalysis exactreplay passes.
+
+New m3w_source_reservations.py is wired before m3w_intake_admission's legacy
+branch. Exactsource/geometryaliases blocked; genericmasks/IDsnotduplicates.
+Unrelatedportableexperimentsmustnotrequireprotectedraw/caches. It is a supported
+pipelineguard, not filesystemsecurity. Lowlevelauditreadersstillnotadmission.
+347scopedtests passed19.56s,notfulllegacysuite. All requiredprocesses terminal.
+
+Next substantive task: resolve source-use/exposure with existing source evidence,
+freeze complete matched-predictor/policy producerchain on developmentonly, integrate
+supportedsourceadaptersandone-shotclaims. No newuserauditneeded. SmallcalibrationN
+remainsreal:2DUTlocationscannotcertify2%easyerror; DroneCrowdwholecollectionisnot
+anIIDcalibrationpopulation. No admission by inventing physical IDs. Keep main8/12
+nativesteps,rawt50supplemental,andreportexchangeabilitygap honestly.
+
+No newCREATEaccess/job,protectedsimulationuntouched. Goalactive/unmet;Stage5C/SMCoff.
+Preserve unrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Multi-view Audit Complete; Conservative Constraints Frozen (2026-09-23)
 
 Supersedes the running snapshot below. PID19315/session12489 exited0:

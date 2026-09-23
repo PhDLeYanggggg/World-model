@@ -16,29 +16,33 @@ now covers the complete official annotation archive: 112 clips, 20,800 tracks
 and 4.86 million visible records. There is enough structural history support,
 but clip IDs do not establish independent physical scenes. The audit also finds
 coordinate differences between supplied formats and missing interpolation
-provenance. I have not trained on these annotations or assigned calibration/test
-roles. The next step is to resolve scene identity and observation provenance,
-then freeze an independent protocol. Existing SDD sites remain development data;
+provenance. I have not trained on these annotations. I now reserve the entire
+collection for candidate external confirmation, without claiming that its
+physical sites are already independent. Existing SDD sites remain development data;
 I will not reuse them as untouched confirmation.
 
 I have now [audited 336 official images](outputs/publication_readiness_2026_09/dronecrowd_image_audit_v1/conclusions.md),
 three per clip, without downloading the full image archives. Background matching
 finds a shared road scene across the supplied train/test folders and apparent
 camera motion in many clips. The 68 automatic overlap groups are not verified
-independent sites, so I am extending the grouping before freezing research roles.
+independent sites. The initial grouping has since been extended:
 The [extended multi-view audit](outputs/publication_readiness_2026_09/dronecrowd_grouping_v2/conclusions.md)
 has now checked all 6,216 recording pairs using three views, finding 66 stronger
 and 46 ambiguous associations. Keeping these and the visual-review constraints
 produces 45 exclusion groups, five of which cross the supplied train/test split.
-I will keep each related group in a single experimental role; these groups are
-not certified independent locations. Acquisition and routine research decisions
-are authorized, and no forecast result is claimed from this source audit.
+I keep the entire collection in one reserved role, rather than relying on these
+groups as certified independent locations. No forecast result is claimed from
+this source audit.
 
 The annotations now also have a [lossless lazy reader](outputs/publication_readiness_2026_09/dronecrowd_recordings_v1/conclusions.md):
 112 compact recording caches replace repeated XML parsing without storing millions
 of expanded episodes. Every array matches the source, and past inputs stay separate
-from future supervision. The reader is ready for protocol integration, but its
-recordings remain unassigned until the scene and role checks are complete.
+from future supervision. The source caches retain their original quarantine
+status; a separate [frozen reservation and admission guard](outputs/publication_readiness_2026_09/external_role_reservations_v1/conclusions.md)
+prevents training or threshold selection on DroneCrowd. DUT is reserved for
+calibration, with one duplicate-annotation clip excluded. These reservations
+protect future evaluation; they do not grant predictive access or solve the
+limited number of independent calibration sites.
 
 The annotation audit also found a practical input-construction risk: filtering
 observed agents by future label availability would discard agents with complete
