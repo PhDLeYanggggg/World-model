@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am fitting two fixed predictors for the next external study: the existing
+Transformer and EqMotion control, each with three seeds on the already-used SDD
+source sites. All three Transformer fits have completed; EqMotion is still
+running under the same registered sampling budget. These are source-only refits,
+not external validation results. The [registered experiment](outputs/publication_readiness_2026_09/external_predictor_refit_v1/registration.md)
+and [past-only input interface](outputs/publication_readiness_2026_09/external_prefix_adapter_v1.md)
+keep external observations and future labels outside training.
+
 I am prioritizing independent external scenes for the next validation study.
 The [DroneCrowd annotation audit](outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/conclusions.md)
 now covers the complete official annotation archive: 112 clips, 20,800 tracks

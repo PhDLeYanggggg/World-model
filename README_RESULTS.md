@@ -12,8 +12,18 @@ control on the four already-exposed SDD source sites, with seeds17/29/43 and
 4,000 updates per fit. The six endpoints and budgets are fixed before training;
 this avoids choosing among development folds using external performance. DUT
 and DroneCrowd remain closed. Registration and source-loss/resume tests are
-complete; real fitting and external evaluation are not yet results in this
-checkpoint. [Registered design](outputs/publication_readiness_2026_09/external_predictor_refit_v1/registration.md).
+complete. All three Transformer fits have now completed; EqMotion is running
+from its atomic checkpoint under native arm64 Torch. This is an in-progress
+training snapshot, not a completed six-model experiment or external result.
+[Registered design](outputs/publication_readiness_2026_09/external_predictor_refit_v1/registration.md).
+
+The [past-only external input adapter](outputs/publication_readiness_2026_09/external_prefix_adapter_v1.md)
+passes 126 scoped regression tests, including future perturbations, incomplete
+neighbors and source-role restrictions. It has not opened a reserved dataset.
+The [source-use disposition](outputs/publication_readiness_2026_09/external_source_use_disposition_20260923.md)
+records local attributed research use separately from redistribution conditions,
+historical exposure and predictive admission. No further routine user audit is
+required; these evidence requirements remain in force.
 
 ## External Collections Reserved Before Predictive Use (2026-09-23)
 

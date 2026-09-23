@@ -1,5 +1,29 @@
 # Real-Experiment Continuation Handoff
 
+## Fixed Source Refit Running (2026-09-23)
+
+Registration committed before training as cdff798e. PID25166 / local session12310
+is fitting six fixed models: Transformer and EqMotion, seeds17/29/43, each4000
+updates of64 rows, all175756 source rows from33 recordings/four exposedSDDsites.
+All three Transformer endpoints are complete; EqMotion continues. Preserve the
+active process and234 bound code/config/source files. No external source readout.
+Native arm64 Torch2.12.0, CPU4threads, interop1, workers0. Checkpoint every200steps,
+heartbeat every50. The initial100-step EqMotion timing run continues in place.
+
+Resume: `.venv-pytorch/bin/python scripts/run_m3w_external_predictor_refit.py --resume`.
+Only after all six endpoints finish, run the same script with `--verify`; inspect
+analysis.json and replay.json under external_predictor_refit_v1, update the running
+snapshot in README and research_state, then commit/push exact files. Training loss
+is not a held-out score, convergence claim or independent confirmation.
+
+Independent interface work: m3w_external_prefix_adapter.py and21 synthetic tests;
+126 scoped tests pass. No reserved dataset opened. Source-use disposition reviewed
+under delegated authorization; it does not waive source admission/exposure rules.
+Next predictive work still needs the frozen complete policy/producer chain and
+source-specific external contract. Do not use full-source in-sample model costs
+as out-of-fold risk-head training targets. Reuse existing pair-excluded producers.
+Goal active; Stage5C/SMC off. CREATE and simulation project untouched.
+
 ## Whole-Source Reservations Enforced (2026-09-23)
 
 Supersedes the earlier unassigned-role next step. Under delegated authority,
