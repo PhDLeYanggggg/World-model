@@ -5,16 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Source-Only Gain/Harm Heads Registered (2026-09-23)
+## Source-Only Gain/Harm Heads Trained and Replayed (2026-09-23)
 
-I am completing the cost estimators for the six fixed external-study predictors.
-The new [registered fit](outputs/publication_readiness_2026_09/external_cost_bank_v1/registration.md)
-uses verified whole-site-out predictions from 24 existing source predictors,
-never the new full-source models' in-sample costs. Each family/seed gets a bounded
-neural gain/harm head and an ExtraTrees control with matching fractional targets
-and neural sampling-count weights. The input, exclusion, weighting and resume
-tests pass; fitting and independent external readout are not yet results in this
-registration checkpoint. The full-source risk fit itself is not an OOF evaluation.
+The [registered bank](outputs/publication_readiness_2026_09/external_cost_bank_v1/registration.md)
+has completed six neural heads and six matched ExtraTrees controls. Cost targets
+use 24 verified whole-site-out predictors, never the new full-source predictors'
+in-sample errors. The 143,918 complete-supervision source rows support 18,000
+neural updates / 4,608,000 draws and six 128-tree fits. Another 31,838 rows remain
+indexed but are not given invented complete labels or removed at inference.
+
+All 319 dependencies verify; twelve checkpoints reproduce 768 fixed-input cost
+rows exactly. Separate arithmetic checks recompute labels and neural samplers;
+158 scoped tests pass. Summed head fitting takes 209.47 seconds locally, excluding
+preparation/checks and the previous forecasting-model training. The losses are
+fitting diagnostics, not a validation gain or convergence proof. Complete-case
+bias and the OOF-to-full-source predictor shift remain limitations.
+
+This fit is not OOF evaluation of the composite policy. The complete controller,
+external admission, calibration and confirmation remain pending; there is no
+new deployment. [Results, loss records and reproduction](outputs/publication_readiness_2026_09/external_cost_bank_v1/conclusions.md).
 
 ## Fixed External-Study Predictors Trained and Replayed (2026-09-23)
 

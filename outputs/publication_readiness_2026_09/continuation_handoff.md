@@ -1,5 +1,40 @@
 # Real-Experiment Continuation Handoff
 
+## Source-Only Cost Bank Complete and Replayed (2026-09-23)
+
+Registration d24ebec4 committed/pushed before fitting. Pilot PID32221/session12342
+finished its registered Transformer seed17 neural head and16trees; resumed in
+place. PID32281/session58809 exited0: six bounded_fraction heads, six matched
+ExtraTrees controls;18000updates/4608000draws/768trees. Summedfit209.470seconds.
+This is head fitting, not the preceding74.55minute forecast training. Pool175756;
+143918complete-cost-supervision rows;31838partial/unknown,neverinference-filtered.
+Complete-case bias remains. Same nativearm64Torch2.12.0 CPU4/interop1/workers0.
+
+24existing whole-site-out source producers verified, including checkpoint train
+IDs/normalizers/sampler exclusions. Their predictions are cached_verified, not
+fresh training. New full-source predictor in-sample costs never enter head fitting.
+The new heads fit allsource sites; do not call this OOF composite-policy evaluation.
+Pair-excluded producers remain necessary for an outer held-site policy evaluation.
+OOF3-site to final4-site forecast distribution shift remains a real limitation.
+
+Replay PID32767/session47017 exited0:319bindings,12checkpoints,768fixedsourcecost
+rows exact. Separate verify_m3w_external_cost_bank.py independently recomputes
+Euclidean costs/support and samplers;all12 checks pass. Same agent verification,
+not independent researcher or research confirmation. AnalysisSHA
+6ba6b6b7bfd1751bd79ef7c65566a2b8d3ce472bae449ea9b26f3635fc64d228.
+Reports external_cost_bank_v1/{conclusions,training_losses}.md and
+{analysis,replay,independent_verification,execution}.json. Export234trace rows;
+158scopedtests,notfulllegacysuite. All required processes terminal.
+
+Do not retrain or edit bound code/config to change this experiment. Loss decline
+not validation, convergence, calibration or deployment. All12heads retained; no
+family/seed/threshold search. DUT/DroneCrowd reserved inference not_run. Complete
+joint controller stillunfrozen; independentadmission/calibration/confirmation not
+complete. Next:bind that fixed chain and supported input-only source adapter,
+then carry out permitted evaluation without calling2DUTsites or45DroneCrowd
+exclusiongroups independent calibration evidence. No further routine user audit
+required. Goalactive/unmet; Stage5C/SMCoff; CREATE/simulationprojectuntouched.
+
 ## Fixed Source Refit Complete and Verified (2026-09-23)
 
 Registration committed before training as cdff798e. PID25166/session12310 exited0;

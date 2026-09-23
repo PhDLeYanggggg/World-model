@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-23",
+  "result_source": "fresh_run_then_cached_verified",
+  "registration_commit": "d24ebec451ddb3132b8adf3f5c0c22c22e8e6810",
+  "analysis_sha256": "6ba6b6b7bfd1751bd79ef7c65566a2b8d3ce472bae449ea9b26f3635fc64d228",
+  "timing_pilot": {
+    "pid": 32221,
+    "command": ".venv-pytorch/bin/python scripts/run_m3w_external_cost_bank.py --trial transformer_seed17 --stop-at-trees 16",
+    "neural_updates": 3000,
+    "forest_trees": 16,
+    "exit_code": 0,
+    "continued_in_place": true
+  },
+  "training": {
+    "pid": 32281,
+    "command": ".venv-pytorch/bin/python scripts/run_m3w_external_cost_bank.py --resume",
+    "exit_code": 0,
+    "neural_heads": 6,
+    "forests": 6,
+    "optimizer_updates": 18000,
+    "neural_draws": 4608000,
+    "total_trees": 768,
+    "summed_fit_seconds": 209.47008395800003,
+    "eligible_rows": 175756,
+    "complete_supervision_rows": 143918,
+    "partial_or_unknown_supervision_rows": 31838,
+    "future_mask_used_to_select_inference_agents": false,
+    "downgraded_budget": false
+  },
+  "replay": {
+    "pid": 32767,
+    "command": ".venv-pytorch/bin/python scripts/run_m3w_external_cost_bank.py --verify",
+    "exit_code": 0,
+    "cost_heads_reloaded": 12,
+    "fixed_source_cost_rows_replayed": 768,
+    "matched_sampler_pairs": 6,
+    "source_bindings_verified": 319,
+    "oof_producers_verified": 24,
+    "reserved_source_rows": 0
+  },
+  "independent_arithmetic": {
+    "command": ".venv-pytorch/bin/python scripts/verify_m3w_external_cost_bank.py",
+    "exit_code": 0,
+    "all_checks_passed": true,
+    "independent_implementation_same_agent": true,
+    "independent_research_confirmation": false,
+    "new_training": false
+  },
+  "scoped_tests": {
+    "passed": 158,
+    "full_legacy_suite_run": false
+  },
+  "all_required_processes_terminal": true,
+  "heldout_cost_head_accuracy_evaluation": "not_run",
+  "reserved_source_inference": "not_run",
+  "independent_calibration": "not_run",
+  "independent_confirmation": "not_run",
+  "joint_controller_frozen": false,
+  "new_deployment": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

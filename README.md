@@ -17,8 +17,16 @@ already-used SDD source sites. All 24,000 registered updates completed locally i
 reproduce exactly; the [training losses](outputs/publication_readiness_2026_09/external_predictor_refit_v1/training_losses.md)
 are available rather than just a completion status. These are trained predictors,
 not external validation results. The [past-only input interface](outputs/publication_readiness_2026_09/external_prefix_adapter_v1.md)
-keeps observation construction separate from future labels. The complete risk
-policy and independent calibration/confirmation still need to be completed.
+keeps observation construction separate from future labels.
+
+I have also completed the [gain/harm estimation bank](outputs/publication_readiness_2026_09/external_cost_bank_v1/conclusions.md)
+for these predictors: six neural heads and six sampling-matched tree controls.
+Their cost targets come from models that excluded each row's source site, not
+from the new predictors' in-sample errors. All twelve checkpoints reproduce their
+fixed-input scores; the [loss records and limitations](outputs/publication_readiness_2026_09/external_cost_bank_v1/training_losses.md)
+are available. This is source-only fitting, not held-out evaluation of the complete
+policy. Independent external calibration and confirmation remain unfinished,
+and I have not changed deployment on the strength of training loss.
 
 I am prioritizing independent external scenes for the next validation study.
 The [DroneCrowd annotation audit](outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/conclusions.md)
