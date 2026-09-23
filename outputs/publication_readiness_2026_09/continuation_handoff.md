@@ -1,5 +1,45 @@
 # Real-Experiment Continuation Handoff
 
+## DUT Full Readout and Replay Complete (2026-09-24)
+
+Supersedes running entries below. Full PID38967/session71291 exited0 after
+13717.031 evaluator-loop seconds, initialization/bind checks excluded. All27
+recordings/two physical sites;9147queries;420364past targets;399729complete,
+18898partial and1737no-future targets;426337visible/855unknown-CV contexts.
+Independent raw-CSV recount matches every view's receipt.234scoped tests pass,
+not full legacy suite. No new training, threshold/seed selection or deployment.
+
+Verification PID53271/session94927 exited0:66fixed chunks/6715query times across
+all27records/all12views exact;11219.410replay-loop seconds. Notsecondfullrun or
+independent researcher verification. Aggregate reducer --verify exact. All required
+processes terminal. No need to repeat the unchanged full readout/replay.
+
+Public evidence: dut_frozen_readout_v1/{analysis,metrics,evidence_summary,
+population_verification,verification,execution}.json and {results,conclusions,
+operation_zh,manuscript_addendum}.md. ManifestSHA4764366b5082dfee6161bb45eb570ece085bd3b2ec41d7f3afe9759c5f830d7b;
+metricsSHA559755775c8be451742268bcf56ef925276a12e684bf0fd47e2acba0f04b9e3d.
+Code/registration committed before readout; results c14ec599 pushed. Follow-up
+verification documentation is the final commit of this turn. Preserve frozen code.
+
+Observed results: strict Transformer/neural seedmean CV-ADEgain1.5907%, EqMotion/
+neural1.7078%; matchedforest1.0863%/0.7199%. Empiricaleasydegradation0; easyN922
+(0.231%complete), only2sites, notriskcertificate. Uncontrolledneuralmean17.1945%/
+41.4468% gains butworstsite/seedeasy78.6076%/82.0183% harms. Damped005allgain5.428%
+butworsteasy504.128%, vehicledegradation; notsafealternativeorselectedwinner.
+Jointvsunary halfcountchanges21/109764query/viewinstances;effect<.00025pp,
+mixedsigns. Fullcountnoidentityfreedombyconstruction. Jointcontributionunsupported.
+Allstrict fullpopulationmissing-label gainlowerboundspositive; notabsoluteADEorCI.
+
+Nextmeaningfulwork: source-only nonadditive opportunity audit and comparably
+protected simple-motion controls under matchedbudgets. No DUT retuning/reselection.
+Do not open DroneCrowd simply to seek positive averages; whole-source confirmation
+remains closed and needs its separate preregistered contract.2DUTsitesnot27IIDsites;
+45DroneCrowdexclusiongroupsnotcertifiedIID. Authorcityseparation documented butnot
+GPS/IIDproof. Native8/12,SDDstride12vsDUTstride1notmatchedseconds. No metric/true3D/
+foundation/safetyclaim. HistoricalStage35/37/43/44remainexploratory. Goalactive/unmet.
+Userdelegatedroutineauditing; no repeatedauthorization. Stage5C/SMCoff; no CREATE/
+simulationchanges. Unrelatedindexfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Full DUT Readout Running (2026-09-23)
 
 Supersedes admission-pending text below. Registration ded982f5 pushed before

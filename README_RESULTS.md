@@ -7,7 +7,7 @@ or evidence status.
 
 ## DUT Readout Registered Before Forecast Errors (2026-09-23)
 
-**Completed readout, replay in progress:** All 27 registered recordings finished
+**Completed and replay-verified (2026-09-24):** All 27 registered recordings finished
 in 13,717.031 seconds, with 9,147 query times and 420,364 targets. Independent raw
 CSV coverage matches every model view; aggregate replay is exact. The protected
 Transformer/neural and EqMotion/neural seed means improve CV ADE by 1.591% and
@@ -21,7 +21,10 @@ Half-count joint decisions differ from unary on 21/109,764 query/view instances,
 with negligible, mixed-sign ADE differences. No meaningful joint contribution
 or population safety is established. See the [full conclusions](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/conclusions.md)
 and [all fixed results](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/results.md).
-Fresh-process chunk verification is running; the following launch notes are history.
+Fresh-process replay passed all 66 fixed chunks / 6,715 query times across all
+27 recordings and all twelve views. Its evaluator loop took 11,219.410 seconds;
+this is not a second full readout. All required processes have exited successfully.
+The following registration and launch notes are historical, not current blockers.
 
 The [readout contract](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/registration.md)
 admits27 audited DUT recordings only for descriptive calibration-domain use.

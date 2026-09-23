@@ -13,6 +13,8 @@
 .venv-pytorch/bin/python scripts/report_m3w_dut_readout.py
 .venv-pytorch/bin/python scripts/run_m3w_dut_readout.py --verify
 .venv-pytorch/bin/python scripts/report_m3w_dut_readout.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_dut_population.py --check-results
+.venv-pytorch/bin/python scripts/summarize_m3w_dut_evidence.py
 ```
 
 只有上一运行进程确实结束后，才再次执行第一条。运行器使用文件锁防止重叠，
@@ -27,7 +29,10 @@
 
 `--verify` 在新进程中重放每个录像第一、中间、最后的固定128查询块，
 逐一对照输入、预测、决策和标签哈希。它不是第二次全量评估，也不是独立研究者验证。
-最后一条单独验证汇总算术和报告与冻结记录完全一致。
+报告脚本的 `--verify` 单独验证汇总算术和报告与冻结记录完全一致。
+原始样本核对脚本不使用模型或窗口索引，直接读取哈希绑定的原始 CSV，
+检查每个录像、每个固定模型的过去合格目标和未来标签覆盖数量。
+最后一条只汇总所有固定模型，重复运行会拒绝不同的已有结果，不用于选最好种子。
 
 ## 如何解释结果
 

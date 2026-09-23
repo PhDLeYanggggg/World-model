@@ -3,8 +3,9 @@
 ## What Was Run
 
 The registered full readout completed, not a pilot: 27 recordings, two physical
-sites, 9,147 query times and 420,364 past-eligible target windows. Inference took
-13,717.031 seconds (3.81 hours), using the fixed arm64 CPU path. No interruption,
+sites, 9,147 query times and 420,364 past-eligible target windows. The inference
+loop took 13,717.031 seconds (3.81 hours), excluding initialization and binding
+checks, using the fixed arm64 CPU path. No interruption,
 sample reduction, model refit, external threshold search or seed selection was
 used. The independent original-CSV recount matches every model's complete receipt.
 
@@ -14,8 +15,12 @@ complete-path native ADE with equal weight per physical site; it is not the
 older SDD available-point ADE. Future labels are used only after decisions.
 Existing source checkpoints are hash-verified, not freshly trained here.
 
-Aggregate replay is exact. Fresh-process model/decision chunk replay is running
-at this reporting checkpoint; its final status must be checked in verification.json.
+Aggregate replay is exact. Fresh-process model/decision replay completed on
+2026-09-24 local time: all 66 fixed chunks / 6,715 query times across 27 recordings
+and twelve views reproduce exactly. The replay loop took 11,219.410 seconds,
+excluding initialization and binding checks. This is not a second full readout
+or an independent researcher verification. Both processes exited successfully.
+The raw-CSV check independently implements population counting, not prediction.
 The 234 scoped tests are not a claim that the entire legacy suite was run.
 
 ## Fixed Three-Seed Results
@@ -49,8 +54,10 @@ strongest observed average-error control. No DUT winner is selected for deployme
 1. **Joint selection has negligible incremental effect.** At half intervention
    count, joint differs from unary geometry on only 21 of 109,764 query/view
    instances. The changes in overall improvement are below 0.00025 percentage
-   points in magnitude and have mixed signs. Full-count arms coincide. This does
-   not establish a useful multi-agent joint-decision contribution.
+   points in magnitude and have mixed signs. At full count all eligible candidates
+   are required, leaving no identity-selection freedom; coincidence there is
+   structural, not an independent demonstration that interactions never matter.
+   The half-count comparison does not establish a useful joint contribution.
 2. **Easy support is narrow.** Source-frozen easy cuts identify only 922 complete
    targets, about 0.231% of the complete population, across two sites. Zero observed
    easy degradation is not broad robustness or a 2% population-risk certificate.
@@ -93,5 +100,6 @@ and limits of two-site risk calibration; no prediction-based regrouping is allow
 
 This is a dataset-local annotated-history 2.5D trajectory study, not true 3D,
 metric or seconds-level prediction, foundation-model success or a safety proof.
+It does not demonstrate a new scene-image, goal or multimodal ablation contribution.
 Historical selection-exposed Stage37/43/44 results do not become independent
 evidence because this new run completed. Stage5C and SMC remain disabled.

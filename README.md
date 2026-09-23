@@ -23,8 +23,9 @@ easy preservation, and joint selection adds almost nothing beyond unary selectio
 Only two sites and 922 easy targets support this comparison, so it is not a safety
 guarantee or a confirmed world-model contribution. All fixed views remain reported;
 no external winner is deployed. Independent raw-row coverage and aggregate replay
-pass; fresh-process prediction replay is being checked separately. DroneCrowd
-confirmation remains closed.
+pass. A fresh process also reproduces all twelve views on 6,715 fixed query times
+across 66 registered chunks from all 27 recordings. This is chunk verification,
+not a second full run. DroneCrowd confirmation remains closed.
 
 I have completed [six fixed source-only predictor fits](outputs/publication_readiness_2026_09/external_predictor_refit_v1/conclusions.md):
 the existing Transformer and EqMotion control, each with three seeds on the
