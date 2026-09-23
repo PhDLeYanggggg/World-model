@@ -1,8 +1,11 @@
 import copy
+import hashlib
+import json
 
 import pytest
 
 from scripts.summarize_m3w_external_refit import summarize
+from scripts import summarize_m3w_external_refit as exporter
 
 
 def fixture():
@@ -50,3 +53,17 @@ def test_incomplete_or_misclaimed_fit_rejected(change):
         data["external_gain_established"] = True
     with pytest.raises(ValueError):
         summarize(data)
+
+
+def test_export_uses_repository_line_endings_without_changing_records(tmp_path, monkeypatch):
+    monkeypatch.setattr(exporter, "REPORTS", tmp_path)
+    raw = json.dumps(fixture()).encode()
+    (tmp_path / "analysis.json").write_bytes(raw)
+    (tmp_path / "replay.json").write_text(json.dumps(dict(
+        analysis_sha256=hashlib.sha256(raw).hexdigest(), models_replayed=6,
+        all_checks_passed=True, reserved_source_rows=0)))
+    exporter.main()
+    csv = (tmp_path / "training_loss.csv").read_bytes()
+    assert b"\r" not in csv and len(csv.splitlines()) == 487
+    report = json.loads((tmp_path / "training_summary.json").read_text())
+    assert report["sampled_loss_records"] == 486

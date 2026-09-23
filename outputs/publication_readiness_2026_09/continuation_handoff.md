@@ -13,7 +13,8 @@ Separate --verify PID30487/session69518 exited0: sixcheckpointreloads,234binding
 384fixedsourceprediction hashesexact. AnalysisSHA
 494af734ba3ddd9f18369c7485e28252d860b804e7db81776b1bc77713beb0a5.
 Report external_predictor_refit_v1/conclusions.md, replay.json, execution.json,
-training_losses.md andtraining_loss.csv.156scopedtests pass4.05s; nofulllegacysuite.
+training_losses.md andtraining_loss.csv.157scopedtests pass3.59s; nofulllegacysuite.
+CSVexportLFfix preservesall486parsedrecords; no modeloranalysischange.
 No process requiredbythis taskisstillrunning. No external source readout.
 Checkpointseach200steps/heartbeat50; --resume validates completedrun,notretraining.
 Do not change bound code/configand pretend sameexperiment. Traininglossnotheldout

@@ -14,7 +14,7 @@ needed or submitted.
 process reloaded all six checkpoints, verified 234 bound dependencies, matched
 per-seed sampling counts, and reproduced all 384 fixed source-input predictions
 exactly by hash. Loss aggregation is cached-log analysis, not a second training
-run. The 156 scoped regression tests pass. The broad unrelated legacy suite was
+run. The 157 scoped regression tests pass. The broad unrelated legacy suite was
 not run as part of this change.
 
 This completes a fixed predictor bank, not independent external validation or
@@ -104,6 +104,11 @@ self-contained training-data distribution.
 
 Analysis SHA256:
 `494af734ba3ddd9f18369c7485e28252d860b804e7db81776b1bc77713beb0a5`.
+
+The initial CSV export used CRLF line endings, which the repository whitespace
+check rejects. The exporter now writes LF; a regression test and parsed-record
+comparison confirm all 486 log records are unchanged. No checkpoint, training
+analysis or scientific result was modified by this formatting repair.
 
 Next substantive step: complete the source-only gain/harm policy using proper
 out-of-fold producers, bind the past-only external adapter and source admission,

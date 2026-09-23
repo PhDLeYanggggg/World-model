@@ -18,7 +18,7 @@ the fixed stochastic budget is not a full-epoch coverage claim.
 
 A second process reloaded all six checkpoints and reproduced 384 fixed source
 predictions by hash. Per-seed family sampling counts match, 234 bound dependencies
-verify, and 156 scoped tests pass. The [training losses](outputs/publication_readiness_2026_09/external_predictor_refit_v1/training_losses.md)
+verify, and 157 scoped tests pass. The [training losses](outputs/publication_readiness_2026_09/external_predictor_refit_v1/training_losses.md)
 are minibatch logs, not validation results or convergence evidence. No external
 forecasts, calibration, confirmation or new deployment were run.
 [Results, limits and reproduction](outputs/publication_readiness_2026_09/external_predictor_refit_v1/conclusions.md).

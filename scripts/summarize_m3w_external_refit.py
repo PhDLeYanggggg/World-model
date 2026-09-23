@@ -65,7 +65,7 @@ def main():
     fields = ["family", "seed", "step", "loss", "gradient_norm", "learning_rate",
               "supported_batch_rows", "mean_past_normalized_ADE"]
     with (REPORTS / "training_loss.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for model in analysis["models"]:
             for row in model["fit"]["losses"]:
