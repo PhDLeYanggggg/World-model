@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Complete Inference Chain Registered (2026-09-23)
+
+I have connected the fixed source predictors and cost estimators to the existing
+strict guard and scene-level joint controls. The [registration](outputs/publication_readiness_2026_09/external_policy_chain_v1/registration.md)
+keeps the prior thresholds, same-count comparisons and solver fallback unchanged.
+187 scoped tests pass, and past-only input validation covers 99 fixed query times
+from 33 source recordings. End-to-end model probes and replay are pending at this
+registration checkpoint. DUT/DroneCrowd admission and predictive evaluation have
+not occurred; neither a frozen interface nor synthetic checks establish safety.
+
 ## Source-Only Gain/Harm Heads Trained and Replayed (2026-09-23)
 
 The [registered bank](outputs/publication_readiness_2026_09/external_cost_bank_v1/registration.md)
