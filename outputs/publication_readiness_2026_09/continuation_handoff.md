@@ -1,20 +1,23 @@
 # Real-Experiment Continuation Handoff
 
-## Fixed Source Refit Running (2026-09-23)
+## Fixed Source Refit Complete and Verified (2026-09-23)
 
-Registration committed before training as cdff798e. PID25166 / local session12310
-is fitting six fixed models: Transformer and EqMotion, seeds17/29/43, each4000
-updates of64 rows, all175756 source rows from33 recordings/four exposedSDDsites.
-All three Transformer endpoints are complete; EqMotion continues. Preserve the
-active process and234 bound code/config/source files. No external source readout.
-Native arm64 Torch2.12.0, CPU4threads, interop1, workers0. Checkpoint every200steps,
-heartbeat every50. The initial100-step EqMotion timing run continues in place.
+Registration committed before training as cdff798e. PID25166/session12310 exited0;
+all six fixed models completed: Transformer and EqMotion, seeds17/29/43, each4000
+updates of64 rows.175756 eligible source rows,33recordings/four exposedSDDsites;
+unique sampled rows byseed121070/120874/120922. Allfamilies matched per-seed draws.
+24000updates,1536000draws,4473.199fitseconds. The EqMotion100-step pilot continued
+in place. Native arm64Torch2.12.0 CPU4/interop1/workers0; no hang or budget downgrade.
 
-Resume: `.venv-pytorch/bin/python scripts/run_m3w_external_predictor_refit.py --resume`.
-Only after all six endpoints finish, run the same script with `--verify`; inspect
-analysis.json and replay.json under external_predictor_refit_v1, update the running
-snapshot in README and research_state, then commit/push exact files. Training loss
-is not a held-out score, convergence claim or independent confirmation.
+Separate --verify PID30487/session69518 exited0: sixcheckpointreloads,234bindings,
+384fixedsourceprediction hashesexact. AnalysisSHA
+494af734ba3ddd9f18369c7485e28252d860b804e7db81776b1bc77713beb0a5.
+Report external_predictor_refit_v1/conclusions.md, replay.json, execution.json,
+training_losses.md andtraining_loss.csv.156scopedtests pass4.05s; nofulllegacysuite.
+No process requiredbythis taskisstillrunning. No external source readout.
+Checkpointseach200steps/heartbeat50; --resume validates completedrun,notretraining.
+Do not change bound code/configand pretend sameexperiment. Traininglossnotheldout
+score, convergence orindependentconfirmation. Source-only endpoints notdeployable.
 
 Independent interface work: m3w_external_prefix_adapter.py and21 synthetic tests;
 126 scoped tests pass. No reserved dataset opened. Source-use disposition reviewed

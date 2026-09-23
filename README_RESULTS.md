@@ -5,17 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Predictors Registered for External Work (2026-09-23)
+## Fixed External-Study Predictors Trained and Replayed (2026-09-23)
 
-I am refitting the existing native-loss Transformer and deterministic EqMotion
+I have refitted the existing native-loss Transformer and deterministic EqMotion
 control on the four already-exposed SDD source sites, with seeds17/29/43 and
 4,000 updates per fit. The six endpoints and budgets are fixed before training;
 this avoids choosing among development folds using external performance. DUT
-and DroneCrowd remain closed. Registration and source-loss/resume tests are
-complete. All three Transformer fits have now completed; EqMotion is running
-from its atomic checkpoint under native arm64 Torch. This is an in-progress
-training snapshot, not a completed six-model experiment or external result.
-[Registered design](outputs/publication_readiness_2026_09/external_predictor_refit_v1/registration.md).
+and DroneCrowd remain closed. All six real Torch fits completed: 24,000 updates,
+1,536,000 sampled rows and 74.55 minutes of summed local fitting time. Each seed
+samples about 121,000 distinct rows from the 175,756-row eligible source pool;
+the fixed stochastic budget is not a full-epoch coverage claim.
+
+A second process reloaded all six checkpoints and reproduced 384 fixed source
+predictions by hash. Per-seed family sampling counts match, 234 bound dependencies
+verify, and 156 scoped tests pass. The [training losses](outputs/publication_readiness_2026_09/external_predictor_refit_v1/training_losses.md)
+are minibatch logs, not validation results or convergence evidence. No external
+forecasts, calibration, confirmation or new deployment were run.
+[Results, limits and reproduction](outputs/publication_readiness_2026_09/external_predictor_refit_v1/conclusions.md).
 
 The [past-only external input adapter](outputs/publication_readiness_2026_09/external_prefix_adapter_v1.md)
 passes 126 scoped regression tests, including future perturbations, incomplete
