@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am auditing the [European Squares release](outputs/publication_readiness_2026_09/european_squares_intake_v1/provenance.md)
+as a possible source of independent trajectory support. The official metadata
+lists 39 squares, but I have already found conflicting scene IDs and a mismatch
+between the described and implemented position convention. A raw, past-only
+reader passes the publisher demo and 45 scoped tests. Full data acquisition and
+recording-level verification are still in progress. No new forecast scores have
+been opened, no new policy has been selected, and these sites are not yet
+admitted as independent evidence.
+
 I have completed the [causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/conclusions.md)
 following the failed zero-reference guard. All 36 views reproduce exactly. The
 seven moving zero-CV windows come from only three tracks; none has a matching

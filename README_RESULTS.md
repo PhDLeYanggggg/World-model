@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## European Squares Intake (2026-09-24, In Progress)
+
+Fresh acquisition verifies official metadata and pinned author code for Zenodo
+18267205, dataset license CC-BY-4.0. The overview has 39 nominal square IDs and
+the statistics tables have 391 recording records, not yet verified archive
+counts. Seven Biberach season records are tagged with Varberg's ID; malformed
+coordinate strings and the box-center/footpoint discrepancy remain explicit.
+The source stays quarantined and unassigned. No prediction errors are opened.
+
+The raw adapter preserves short tracks, current-frame agents and partial future
+label support. It completes the official 5,241-row demo with six prefix checks.
+45 scoped tests pass; these are not full-source admission or a full legacy test
+suite. The 9.45 GB trajectory download continues with checksum verification,
+resume and heartbeat. No neural training or policy change occurs.
+[Provenance](outputs/publication_readiness_2026_09/european_squares_intake_v1/provenance.md),
+[scope](outputs/publication_readiness_2026_09/european_squares_intake_v1/scope.md),
+[CREATE observation](outputs/publication_readiness_2026_09/european_squares_intake_v1/create_status.md).
+
 ## Moving Zero-CV Neighborhood Diagnostic (2026-09-24, Complete)
 
 The [registered follow-up](outputs/publication_readiness_2026_09/moving_zero_support_v1/registration.md)
