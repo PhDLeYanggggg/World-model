@@ -10,6 +10,8 @@
 .venv-pytorch/bin/python scripts/audit_m3w_moving_zero_support.py --view coupa_seed17 --action transformer
 .venv-pytorch/bin/python scripts/audit_m3w_moving_zero_support.py --resume
 .venv-pytorch/bin/python scripts/audit_m3w_moving_zero_support.py --verify
+.venv-pytorch/bin/python scripts/check_m3w_moving_zero_support.py
+.venv-pytorch/bin/python scripts/report_m3w_moving_zero_support.py
 .venv-pytorch/bin/python -m pytest tests/test_m3w_moving_zero_support.py tests/test_m3w_causal_motion_support.py tests/test_m3w_zero_atom.py -q
 ```
 

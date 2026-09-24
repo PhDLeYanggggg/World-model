@@ -10,12 +10,22 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am following the failed zero-reference guard with a
-[causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/registration.md).
-The first real-data view is complete and the full 36-view diagnostic is running.
-It keeps the predictor, risk limits and evaluation grid fixed, and asks whether
-the rare failure cases have relevant training support or misleadingly similar
-past contexts. This is not a new trained model or a deployment improvement.
+I have completed the [causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/conclusions.md)
+following the failed zero-reference guard. All 36 views reproduce exactly. The
+seven moving zero-CV windows come from only three tracks; none has a matching
+zero-event label among its nearest 512 effective source neighbors in either
+tested feature bank. Ordinary similar histories are present, so this is a
+relevant-event support gap, not proof that prediction is impossible.
+
+Raw annotations also expose a limit to the causal claim: six of the seven
+histories include generated points bracketed by later controls beyond the query.
+That is a provenance concern, not proof of a particular interpolation algorithm.
+The fixed sampled labels are correct, but strict online sensor-as-of causality
+is not established. I am keeping the evaluation grid, risk limits and deployment
+unchanged. The next priority is admissible independent trajectory support and
+annotation-time provenance, not another threshold sweep on these same tracks.
+[Tables and figure](outputs/publication_readiness_2026_09/moving_zero_support_v1/tables.md),
+[execution record](outputs/publication_readiness_2026_09/moving_zero_support_v1/execution_notes.md).
 
 I have completed the [explicit zero-reference risk experiment](outputs/publication_readiness_2026_09/zero_atom_v1/conclusions.md).
 Separately estimating when constant velocity is exactly correct does not repair

@@ -5,20 +5,45 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Moving Zero-CV Neighborhood Diagnostic (2026-09-24, In Progress)
+## Moving Zero-CV Neighborhood Diagnostic (2026-09-24, Complete)
 
 The [registered follow-up](outputs/publication_readiness_2026_09/moving_zero_support_v1/registration.md)
 uses the actual frozen source fitting rows, two feature banks, all seven moving
-zero-CV cases and 32 outcome-blind metadata controls per held view. The first
-coupa/seed17/Transformer view completed; the full 36-view run is in progress.
-35 scoped tests pass, including nine new helper tests. No training, policy change,
-threshold search or external forecast readout is performed.
+zero-CV cases and 32 outcome-blind metadata controls per held view. All 36 views
+completed and reproduce exactly, including the original real-data pilot. The
+175756 histories match native annotation coordinates. Separate SciPy arithmetic
+checks all 126 case/feature/action/seed comparisons; ranks and label counts match
+exactly, with maximum nearest-distance difference 4.17e-17. 35 scoped tests pass,
+including nine new helper tests, not the full legacy suite. No training, policy
+change, threshold search or external forecast readout is performed.
+
+The seven cases represent three scoped tracks in two recordings. None has a
+zero-event label within its nearest 512 moving/effective source rows in either
+feature bank. The nearest relevant label ranks 1330--12720 in history space and
+21025--42774 in full risk space. Ordinary similar histories exist, but there are
+no exact source-feature aliases for these seven cases. This supports a local
+event-support gap, not an impossibility proof or a calibrated safety conclusion.
 
 Fresh raw-annotation checks confirm all seven cases have zero CV error at the
 specified 12 sampled future points, but nonzero dense raw-frame errors between
-those points. All twelve future samples are flagged generated. These are
-annotation/grid findings, not authorization to change the target or call the
-supplied histories online sensor-as-of observations. Deployment remains unchanged.
+those points (0.5--0.8125 annotation pixels ADE). All twelve future samples are
+flagged generated. Six histories include generated rows bracketed by a following
+non-generated control beyond the query. Bracketing is not a record of the
+annotation algorithm, but strict online sensor-as-of causality is not established.
+These findings do not authorize changing the fixed target, dropping the cases
+or relaxing the zero-reference guard. Deployment remains unchanged.
+
+The full run resumed one pilot view and computed the other 35; complete replay
+then recalculated all 36. Main elapsed time was 60.47 seconds for the pilot and
+224.19 seconds for the resumed matrix; full replay took 229.37 seconds, excluding
+separate arithmetic and reporting. All required processes finished.
+Next: admissible independent trajectory support and annotation-time provenance,
+not repeated threshold tuning. DroneCrowd remains closed confirmation; IMPTC
+remains quarantined. The four SDD sites remain development-exposed.
+[Conclusions](outputs/publication_readiness_2026_09/moving_zero_support_v1/conclusions.md),
+[tables](outputs/publication_readiness_2026_09/moving_zero_support_v1/tables.md),
+[manuscript addendum](outputs/publication_readiness_2026_09/moving_zero_support_v1/manuscript_addendum.md),
+[execution record](outputs/publication_readiness_2026_09/moving_zero_support_v1/execution_notes.md).
 [Operation/recovery](outputs/publication_readiness_2026_09/moving_zero_support_v1/operation_zh.md).
 
 ## Explicit Zero-Reference Risk Readout (2026-09-24)
