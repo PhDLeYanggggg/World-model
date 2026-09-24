@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing a [versioned CV-reference repair](outputs/publication_readiness_2026_09/european_cv_reference_v1/registration.md)
+after identifying that the previous fallback violated the easy-case criterion.
+The neural forecasts stay frozen; only the decision reference and its necessary
+gain/harm supervision change. The real 100-update pilot has completed and the
+full cost-head matrix is continuing. This is source-only development, not a
+new deployment result. Strong-baseline comparisons and the original risk limits
+remain in place.
+
 I have completed the [European Squares source-only experiment](outputs/publication_readiness_2026_09/european_source_forecast_v1/conclusions.md):
 18 real Transformer fits, three seeds and 72,000 optimizer updates. Mean-seed
 ADE improves by 4.11% over the baseline selected on other fitting localities,

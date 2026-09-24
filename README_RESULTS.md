@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## European CV-Reference Repair (2026-09-24, Running)
+
+The new version changes only the decision reference from the fitting-selected
+baseline to causal CV and rebuilds its necessary cost features/targets/scales.
+All18neural forecasts, source splits, seeds, query subsets and policy settings
+remain frozen. The first100real training updates pass and resume inside the
+fixed budget. Nine ridge and nine neural heads are running; no new predictive
+result or safety improvement is claimed yet.62scoped tests pass, not a full-suite
+or independent scientific validation. Reserved data roles remain closed.
+
+[Registration](outputs/publication_readiness_2026_09/european_cv_reference_v1/registration.md),
+[matrix](outputs/publication_readiness_2026_09/european_cv_reference_v1/matrix.json).
+
 ## European Source Forecast and Intervention (2026-09-24, Completed, Not Deployable)
 
 Fresh run: 18 real Torch predictors, 4,000 updates each, three seeds; nine ridge
