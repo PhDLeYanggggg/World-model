@@ -10,15 +10,22 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [net easy-risk targets](outputs/publication_readiness_2026_09/net_easy_moment_v1/registration.md)
-after a [fixed-output diagnosis](outputs/publication_readiness_2026_09/easy_risk_definition_diagnosis_v1/report.md)
-showed that positive harm and net degradation can give very different decisions.
-This run fits 36 risk heads on unchanged forecasts, compares both rules using the
-same fitted moments, and keeps the 2% evaluation ceiling unchanged. Training is
-in progress; no new-policy outcome or deployment claim is available yet. The
-[method note](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/method_note.md)
-explains why allowing improvements to offset harm is a weaker constraint, not a
-new safety guarantee. Independent confirmation remains closed.
+I have completed the [net easy-risk study](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/conclusions.md):
+36 new risk heads on unchanged forecasts, with three seeds and all registered
+source windows. Accounting for both improvement and harm recovers average ADE
+gains of 2.94% for Transformer and 2.83% for EqMotion over constant velocity.
+Transformer's improvement over the previous strict rule remains uncertain;
+EqMotion has a positive nominal development contrast, but worse easy-case
+performance. Both policies harm some zero-error baseline cases, so I am not
+changing deployment or claiming a safety guarantee.
+
+These are four-site, development-exposed results under the 8-observed/12-predicted
+annotation-step protocol, not the historical t+50 scores or independent
+confirmation. The [full comparisons](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/results.md),
+[training losses](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/training_losses.md)
+and [method note](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/method_note.md)
+retain the negative controls and explain why net-risk accounting is a weaker
+constraint. Independent confirmation remains closed.
 
 I have completed the [same-query risk allocation study](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/conclusions.md)
 on the full registered source population. Pooling risk across targets recovers

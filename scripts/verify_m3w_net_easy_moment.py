@@ -43,6 +43,7 @@ def main():
             group[target][ids] = z[source]
         np.testing.assert_array_equal(z['choices'][:, 4], z['support'] & (z['positive_risk'] <= .02*z['denominator']))
         np.testing.assert_array_equal(z['choices'][:, 5], z['support'] & (z['net_risk'] <= .02*z['denominator']))
+        assert not (z['choices'][:, 4] & ~z['choices'][:, 5]).any()
         for qr in r['queries']:
             rows = np.flatnonzero((data['recordings'][ids] == qr['recording']) & (data['frames'][ids] == qr['frame']))
             assert len(rows)
@@ -64,6 +65,11 @@ def main():
                     assert not b.any()
                     solver_fallbacks += 1
                 numeric += 1
+            if qr['positive']['optimal']:
+                reference_gain = math.fsum(gain[bits[:, 6]])
+                for col, name in [(7, 'net'), (8, 'matched')]:
+                    if qr[name]['optimal']:
+                        assert math.fsum(gain[bits[:, col]]) >= reference_gain - 1e-8*(1+abs(reference_gain))
             # Fixed audit selection depends on identities and causal support only.
             slot = (r['view'], r['action'], qr['recording'])
             if slot not in seen_small:

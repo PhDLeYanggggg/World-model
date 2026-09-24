@@ -7,23 +7,49 @@ or evidence status.
 
 ## Net Easy-Risk Target Experiment (2026-09-24)
 
-**Training in progress; outcomes not yet read.** The frozen-output diagnosis
-separates positive easy harm from net easy degradation. This motivates a fixed
-36-head, three-seed experiment with unchanged forecasts, source draws, features,
-forest budget and rho=.02. Positive and signed risk use the same new four-output
-forest; an exact-count contrast tests whether any gain is only greater coverage.
-All four sites remain design-exposed. No new forecaster, test threshold tuning,
-independent calibration, confirmation or deployment.
+**Completed and replay-verified; development lift, no deployment change.** All
+36 four-output forests completed 128 trees, covering three seeds and four
+design-exposed source sites. Forecasts, features, source draws and rho=.02 remain
+fixed. Positive and signed risk use the same new fitted moments. Fitting-loop
+time totals 918.990 seconds; this is not whole-pipeline runtime. Unknown-label
+training draws: zero. No new forecaster or test threshold search.
+
+Net-population ADE gains over CV are 1.0945% for damping, 2.9392% for Transformer
+and 2.8268% for EqMotion. Worst site/seed positive-easy degradations are 0%,
+0.8636% and 1.8384%. Transformer exceeds old strict by 0.5024 pp, but its paired
+site-bootstrap CI95 [-1.2057, 2.2104] includes zero. EqMotion's difference is
+1.2175 pp, nominal CI95 [0.1528, 2.5668]; damping loses 2.5402 pp. EqMotion's easy
+performance worsens, and the neural policies harm three and six zero-CV
+query/seed instances. This is not a safe deployment or independent confirmation.
+
+Same-head matched-count contrasts shrink to 0.1061/0.4167/0.0985 pp, so much of
+the unrestricted effect is associated with additional intervention. One
+Transformer query fails exact-count matching; its maximum primary-gain impact
+is bounded below 0.001 pp. Three numerical solver checks fail closed. No saved
+new budget-constrained decision violates its predicted budget, but not all
+queries were solved optimally. The prior negligible interaction effect is not
+repaired by this experiment.
+
+The [full conclusions](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/conclusions.md),
+[all 27 controls](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/results.md),
+[losses](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/training_losses.md),
+[figure](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/risk_tradeoff.svg)
+and [execution record](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/execution_notes.md)
+retain adverse results. Obs8/pred12 native annotation steps, stride 12, annotation
+pixels; not historical t+50, metric coordinates or verified seconds.
 
 The [registration](outputs/publication_readiness_2026_09/net_easy_moment_v1/registration.md),
 [pre-readout numerical/provenance repair](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/pre_readout_repair.md),
 [bounded code review](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/code_review.md)
 and [recovery guide](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/operation_zh.md)
-are available. Native CPU4/workers0 pilot resumed to the full fixed budget.
-At the latest verified progress check, 24/36 fits had completed128 trees and no
-unknown-label rows were sampled. 144 scoped tests pass; the legacy suite was not
-rerun. This is engineering/training progress, not an empirical policy result.
-Stage5C/SMC remain off; DroneCrowd remains closed.
+are available. Full decision and aggregate replay are exact. Separate arithmetic
+passes 565,164 constraint checks, 882 fixed small-query optima, 1,620 scene
+reductions and 54 paired contrasts; three large exhaustive checks are explicitly
+skipped. This is same-agent verification, not independent research confirmation.
+144 scoped tests pass; the legacy suite was not rerun. All required processes
+finished. Stage5C/SMC remain off; DroneCrowd remains closed. Next: causal support
+diagnosis for zero-CV-sensitive intervention and admissible independent risk
+calibration, not an exposed-outcome threshold sweep.
 
 ## Same-Query Easy-Risk Allocation (2026-09-24)
 

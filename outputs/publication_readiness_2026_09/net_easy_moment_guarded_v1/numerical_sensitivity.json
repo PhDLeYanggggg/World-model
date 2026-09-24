@@ -1,0 +1,149 @@
+{
+  "result_source": "fresh_run_postdecision_sensitivity_no_policy_change",
+  "analysis_sha256": "6780efc6c4b4a3759229ad157866a5fb1ed894ade1e0b30af99c7e9ebd004a31",
+  "source_bindings": {
+    "scripts/audit_m3w_net_risk_numerics.py": "07c760338d5fea52c8f95f52bd54618bd42f077167939123c2d9f538b8972a61"
+  },
+  "failed_query_arm_instances": 3,
+  "records": [
+    {
+      "view": "deathCircle_seed29",
+      "action": "damped_velocity_005",
+      "recording": "deathCircle/video1",
+      "frame": 504,
+      "policy": "positive",
+      "solver": {
+        "status": "original_unit_check_floor",
+        "optimal": false,
+        "selected": 0,
+        "predicted_risk": 0.0,
+        "budget": 0.049017039971382355,
+        "constraint_pass": true,
+        "exact_count_pass": true,
+        "numerical": {
+          "primal": -0.051484114266217317,
+          "reported": -0.05148411426621732,
+          "dual": -0.051484154945347665,
+          "gain_scale": 105.15555260413944,
+          "risk_scale": 1.6193260489379484
+        },
+        "original_unit_check": "fsum_no_allowance_relaxation"
+      },
+      "target_count": 7,
+      "eligible_count": 5,
+      "intended_count": null,
+      "bounds": {
+        "all": {
+          "max_absolute_native_error_sum": 18.23044069086083,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0001712299422029104,
+          "single_site_seed_gain_shift_bound_pp": 0.0020547593064349245
+        },
+        "hard": {
+          "max_absolute_native_error_sum": 0.0,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0,
+          "single_site_seed_gain_shift_bound_pp": 0.0
+        },
+        "positive_easy": {
+          "max_absolute_native_error_sum": 6.817207912276548,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.004641094950189609,
+          "single_site_seed_gain_shift_bound_pp": 0.05569313940227531
+        }
+      },
+      "downstream_count_control_affected": true
+    },
+    {
+      "view": "hyang_seed43",
+      "action": "transformer",
+      "recording": "hyang/video4",
+      "frame": 4728,
+      "policy": "matched",
+      "solver": {
+        "status": "original_unit_check_floor",
+        "optimal": false,
+        "selected": 0,
+        "predicted_risk": 0.0,
+        "budget": 0.18547830489260583,
+        "constraint_pass": true,
+        "exact_count_pass": false,
+        "numerical": {
+          "primal": -0.9445470894751476,
+          "reported": -0.9445470894751475,
+          "dual": -0.9445471486311238,
+          "gain_scale": 12.648608012411412,
+          "risk_scale": 0.30488606498243986
+        },
+        "original_unit_check": "fsum_no_allowance_relaxation"
+      },
+      "target_count": 38,
+      "eligible_count": 26,
+      "intended_count": 3,
+      "bounds": {
+        "all": {
+          "max_absolute_native_error_sum": 161.3737100505962,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0009469667298325714,
+          "single_site_seed_gain_shift_bound_pp": 0.011363600757990856
+        },
+        "hard": {
+          "max_absolute_native_error_sum": 95.64071242851438,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0009857070515646522,
+          "single_site_seed_gain_shift_bound_pp": 0.011828484618775828
+        },
+        "positive_easy": {
+          "max_absolute_native_error_sum": 3.716971796573521,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0005916304089586544,
+          "single_site_seed_gain_shift_bound_pp": 0.0070995649075038525
+        }
+      },
+      "downstream_count_control_affected": false
+    },
+    {
+      "view": "hyang_seed43",
+      "action": "eqmotion",
+      "recording": "hyang/video4",
+      "frame": 4296,
+      "policy": "net",
+      "solver": {
+        "status": "original_unit_check_floor",
+        "optimal": false,
+        "selected": 0,
+        "predicted_risk": 0.0,
+        "budget": 0.1824317920423187,
+        "constraint_pass": true,
+        "exact_count_pass": true,
+        "numerical": {
+          "primal": -1.2288296229659665,
+          "reported": -1.2288296229659663,
+          "dual": -1.2288298614948108,
+          "gain_scale": 9.467794829653082,
+          "risk_scale": 0.24781890906785467
+        },
+        "original_unit_check": "fsum_no_allowance_relaxation"
+      },
+      "target_count": 32,
+      "eligible_count": 29,
+      "intended_count": null,
+      "bounds": {
+        "all": {
+          "max_absolute_native_error_sum": 157.45818900194078,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0009239898263340196,
+          "single_site_seed_gain_shift_bound_pp": 0.011087877916008234
+        },
+        "hard": {
+          "max_absolute_native_error_sum": 58.88310707352719,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0006068701537934976,
+          "single_site_seed_gain_shift_bound_pp": 0.007282441845521972
+        },
+        "positive_easy": {
+          "max_absolute_native_error_sum": 9.538329348833289,
+          "equal_site_seed_mean_gain_shift_bound_pp": 0.0015182159032346462,
+          "single_site_seed_gain_shift_bound_pp": 0.018218590838815756
+        }
+      },
+      "downstream_count_control_affected": false
+    }
+  ],
+  "interpretation": "Upper bound on possible metric shift if these query decisions changed; not a repaired optimum or proposed policy.",
+  "no_forecast_retraining": true,
+  "no_threshold_search": true,
+  "deployment": false
+}
