@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have now completed a [matched comparison against protected simple motion](outputs/publication_readiness_2026_09/protected_motion_controls_v1/conclusions.md),
+with 156 new control-head fits and twelve verified existing heads. Giving damping
+the same learned protection improves its average source result beyond the
+Transformer, but damages easy cases beyond the specified ceiling. With forest
+protection, their average difference is uncertain. Transformer retains a useful
+observed gain/easy-degradation tradeoff, but I cannot yet claim that neural
+forecasting is indispensable. These are four-site development results, not a new
+external test or deployment decision. All actions, losses and negative results
+remain in the report; DroneCrowd confirmation remains closed.
+
 I have completed the [full DUT frozen-model readout](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/conclusions.md):
 27 recordings, two locations and 420,364 past-eligible target windows, including
 those with incomplete future labels. This is a fixed external diagnostic, not

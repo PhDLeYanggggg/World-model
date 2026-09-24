@@ -13,15 +13,25 @@ and conservative fallback as the full Transformer. The fixed matrix covers four
 development-exposed sites, three seeds, neural and sampler-matched forest heads.
 All six alternatives are reported; no DUT-selected winner or threshold tuning.
 Twelve existing Transformer heads will be hash-verified rather than retrained.
-At registration, training and readout were **not_run**. Training is now active
-(PID65550): 85/168 completed fit/reuse receipts at 2026-09-24 02:37 UTC. No new
-outer outcome readout has occurred. Atomic checkpoints and explicit resume are
-available; 61 scoped tests pass. This progress count is not a completed result.
+**Completed and replay-verified:** all 168 fit/reuse receipts, comprising 72 new
+neural formula-control heads, 84 new forests and 12 cached-verified Transformer
+heads. Full inference/aggregate replay and independent arithmetic pass; 61 scoped
+tests pass. All required processes are terminal, with no sample or budget downgrade.
+The [full conclusions](outputs/publication_readiness_2026_09/protected_motion_controls_v1/conclusions.md)
+report a tradeoff, not neural dominance: Transformer/neural gains 2.437% with
+1.067% worst-site/seed easy degradation; neural-protected damping gains
+3.635%--3.745% but degrades easy by 2.494%--3.737%. Under forest protection the
+Transformer/damping005 difference remains uncertain. Matched-count controls
+retain damping's utility advantage but do not repair its easy degradation.
+No indispensable neural forecasting contribution or new deployment is established.
 The [registered comparison](outputs/publication_readiness_2026_09/protected_motion_controls_v1/registration.md)
 keeps DroneCrowd closed and changes no deployment decision. The earlier exhaustive
 joint-support audit is already complete and is not repeated as a new experiment.
 The [operation guide](outputs/publication_readiness_2026_09/protected_motion_controls_v1/operation_zh.md)
 documents local training, exact decision replay and independent arithmetic checks.
+The [loss record](outputs/publication_readiness_2026_09/protected_motion_controls_v1/training_losses.md)
+and [matched-count safety table](outputs/publication_readiness_2026_09/protected_motion_controls_v1/matched_count_safety.md)
+keep fit completion separate from convergence and observed safety.
 
 ## DUT Readout Registered Before Forecast Errors (2026-09-23)
 

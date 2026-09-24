@@ -69,7 +69,7 @@ def main():
     cv, cf = distances(base, y, mask, data['scale'])
     subsets = dict(complete=mask.all(1), zero_CV=mask.all(1) & (cv == 0),
                    hard=np.zeros(n, bool), positive_easy=np.zeros(n, bool))
-    errors, endpoints, lower, upper, choices = {}, {}, {}, {}, {}
+    errors, endpoints, lower, upper, choices, matched_choices = {}, {}, {}, {}, {}, {}
     budgets, policies, matched_pairs = 0, 0, 0
     for seed in cfg['seeds']:
         for action in cfg['actions']:
@@ -78,6 +78,9 @@ def main():
             for head in cfg['heads']:
                 for policy in cfg['policies']:
                     choices[seed, action, head, policy] = np.zeros(n, bool)
+                if action != 'transformer':
+                    for side in ('transformer', 'causal'):
+                        matched_choices[seed, action, head, side] = np.zeros(n, bool)
     for key, meta in views.items():
         seed, held = meta['seed'], meta['outer_site']
         ids, train = np.flatnonzero(data['sites'] == held), np.flatnonzero(data['sites'] != held)
@@ -148,6 +151,7 @@ def main():
                     ranked = sorted(pool, key=lambda i:(float(score[i, 1]-score[i, 0]), int(ids[i])))
                     selected = np.zeros(len(ids), bool); selected[ranked[:count]] = True
                     np.testing.assert_array_equal(selected, stored[action+'__'+head+'__'+suffix])
+                    matched_choices[seed, action, head, suffix.removeprefix('matched_')][ids] = selected
                 matched_pairs += 1
         print(json.dumps(dict(state='verified_view', view=key, budgets=budgets)), flush=True)
     reductions = 0
@@ -174,9 +178,41 @@ def main():
         reductions += check_metrics(np.mean(fdes, 0), cf, data['sites'], cfg['sites'], report['FDE'])
         for k, m in subsets.items():
             reductions += check_metrics(np.mean(ades, 0)[m], cv[m], data['sites'][m], cfg['sites'], report['subsets'][k])
+    matched_safety = {}
+    for action in cfg['actions'][:-1]:
+        for head in cfg['heads']:
+            pair = {}
+            for side in ('transformer', 'causal'):
+                seed_rows = []
+                for seed in cfg['seeds']:
+                    use = matched_choices[seed, action, head, side]
+                    a = 'transformer' if side == 'transformer' else action
+                    e = np.where(use, errors[seed, a], cv)
+                    sites = {}
+                    for site in cfg['sites']:
+                        stats = {}
+                        for group, eligible in {'all':np.ones(n, bool), **subsets}.items():
+                            m = eligible & (data['sites'] == site) & np.isfinite(cv)
+                            ref = cv[m].mean() if m.any() else np.nan
+                            value = e[m].mean() if m.any() else np.nan
+                            stats[group] = dict(rows=int(m.sum()),
+                                gain_percent=float(100*(1-value/ref)) if ref > 0 else None,
+                                absolute_harm=float(value-ref) if m.any() else None,
+                                harmed_rows=int((e[m] > cv[m]).sum()))
+                        sites[site] = stats
+                    seed_rows.append(dict(seed=seed, selected=int(use.sum()), by_scene=sites))
+                easy = [s['positive_easy']['gain_percent'] for r in seed_rows for s in r['by_scene'].values()]
+                pair[side] = dict(seeds=seed_rows,
+                    worst_site_seed_easy_degradation_percent=max(0., -min(v for v in easy if v is not None)),
+                    mean_equal_scene_ADE_gain_percent=float(np.mean([
+                        s['all']['gain_percent'] for r in seed_rows for s in r['by_scene'].values()])),
+                    mean_equal_scene_hard_gain_percent=float(np.mean([
+                        s['hard']['gain_percent'] for r in seed_rows for s in r['by_scene'].values()])))
+            matched_safety[action+'__'+head] = pair
     out = dict(all_checks_passed=True, analysis_sha256=file_digest(ap),
         verifier_sha256=file_digest(Path(__file__)), matched_fit_budgets_checked=budgets,
         policy_checks=policies, matched_pairs=matched_pairs, scene_reductions=reductions,
+        matched_count_safety_supplement=matched_safety,
         independent_arithmetic_same_agent=True, independent_research_confirmation=False,
         external_readout=False, deployment=False)
     assert_current(identity)

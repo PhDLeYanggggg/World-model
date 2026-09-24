@@ -36,6 +36,7 @@ CPU4、interop1、workers0。不使用默认 x86 Conda。无需 GPU 或 CREATE
 .venv-pytorch/bin/python scripts/run_m3w_protected_motion_controls.py --evaluate
 .venv-pytorch/bin/python scripts/run_m3w_protected_motion_controls.py --verify
 .venv-pytorch/bin/python scripts/verify_m3w_protected_motion_controls.py
+.venv-pytorch/bin/python scripts/summarize_m3w_protected_motion_controls.py
 .venv-pytorch/bin/python -m pytest -q tests/test_m3w_protected_motion_controls.py tests/test_m3w_protected_motion_verification.py tests/test_m3w_bounded_cost_head.py tests/test_m3w_external_cost_bank.py
 ```
 
