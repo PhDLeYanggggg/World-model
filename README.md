@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have found a [coordinate-unit dependency in the frozen risk heads](outputs/publication_readiness_2026_09/imptc_input_contract_v1/conclusions.md).
+Holding the motion and normalized predictions fixed, changing only two native-unit
+features flips the Transformer head's predicted net-gain sign in 369 of 754
+diagnostic windows. I have added a separate unit-free input contract, but it
+requires new source-only head training and still has three strict numerical
+tolerance failures in EqMotion. This is an input-mechanism result, not forecasting
+improvement: no external prediction errors were opened, no model was retrained,
+and deployment is unchanged. The run and replay are verified; DroneCrowd remains
+closed for confirmation.
+
 I have added a [verified IMPTC source adapter](outputs/publication_readiness_2026_09/imptc_intake_v1/conclusions.md)
 to work toward independent-site evidence. The official sample package contains
 142,361 observations across four recordings, but only one physical intersection

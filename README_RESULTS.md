@@ -5,6 +5,39 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## External Unit Contract Diagnostic (2026-09-24)
+
+**Completed and replay-verified; partial input repair, no training or forecast
+error readout.** On 58 fixed-modulus IMPTC queries / 754 past-eligible agent
+windows, real frozen Transformer/EqMotion forwards and three risk heads expose
+unit dependence. In a two-column-only control with normalized geometry and
+forecasts fixed, 100x native coordinates change predicted net-gain signs in
+411 damping / 369 Transformer / 325 EqMotion windows. These are not deployed
+switch counts or observed improvements.
+
+The separate unit-free adapter and new 355-column cost schema remove direct
+native-scale inputs, require refitting, and leave old checkpoints untouched.
+Transformer meets the registered 1e-5 normalized tolerance; EqMotion fails in
+3/754 windows (maximum 1.1754e-4). Restored-coordinate checks reduce the apparent
+difference, but the original strict gate remains false. All 2,262 damping
+formula checks and 64 scoped tests pass; unchanged legacy tests were not rerun.
+
+All 2,937 current producer bindings (6.107 GB), 24 predictor fits and 36 risk-head
+receipts/checkpoints were verified. The bounded local fit chain is SDD-only,
+not proof of project-wide or remote non-exposure to related VRU sources. IMPTC
+covariates are now explicitly design-exposed under input diagnostics; the source
+is not admitted for independent calibration/confirmation. Source time/geometry
+claims and the primary SDD stride12 protocol are unchanged. No external outcome,
+threshold selection, deployment, Stage5C or SMC. No predictive-lift claim.
+
+[Conclusions](outputs/publication_readiness_2026_09/imptc_input_contract_v1/conclusions.md),
+[registration](outputs/publication_readiness_2026_09/imptc_input_contract_v1/registration.md),
+[measured comparisons](outputs/publication_readiness_2026_09/imptc_input_contract_v1/analysis.json),
+[producer chain](outputs/publication_readiness_2026_09/imptc_input_contract_v1/producer_chain.json),
+[unit-feature control](outputs/publication_readiness_2026_09/imptc_input_contract_v1/cost_unit_mechanism_check.json),
+[inverse arithmetic](outputs/publication_readiness_2026_09/imptc_input_contract_v1/restored_coordinate_check.json)
+and [operation guide](outputs/publication_readiness_2026_09/imptc_input_contract_v1/operation_zh.md).
+
 ## IMPTC Source Conversion and Support Audit (2026-09-24)
 
 **Real source acquisition and conversion completed; forecasting not run.**
