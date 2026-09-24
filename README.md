@@ -10,11 +10,22 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am running a [matched risk-head training experiment](outputs/publication_readiness_2026_09/dimensionless_risk_v1/registration.md)
-to test whether removing native-unit features preserves useful intervention.
-The full matrix has 72 source-only fits, with three seeds, four excluded sites,
-unchanged predictors and matched training draws. The comparison is registered
-before its new readout; training progress is not a result or a deployment change.
+I have completed a [matched dimensionless risk-head study](outputs/publication_readiness_2026_09/dimensionless_risk_v1/conclusions.md):
+72 fresh fits with unchanged predictors, matched source draws and three seeds.
+Removing explicit native-unit features increases the population policy's average
+ADE gain over constant velocity from 3.57% to 4.99% for Transformer and 3.30% to
+5.97% for EqMotion. But their worst easy-case degradation rises to 4.45% and 9.01%,
+above the 2% ceiling. Better average prediction is not enough to justify deployment.
+
+A more restrictive Transformer control gives 2.99% ADE gain, 0.94% worst
+positive-easy degradation and no observed zero-CV harms. Its advantage over the
+old strict control remains uncertain across physical sites, so I am retaining
+it as a research signal, not selecting a new deployable winner. The
+[tradeoff figure](outputs/publication_readiness_2026_09/dimensionless_risk_v1/risk_tradeoff.svg),
+[all controls](outputs/publication_readiness_2026_09/dimensionless_risk_v1/results.md)
+and [training losses](outputs/publication_readiness_2026_09/dimensionless_risk_v1/training_losses.md)
+show both gains and failures. These are four-site development results under the
+native 8/12 protocol, not external confirmation, historical t50 or a safety guarantee.
 
 I have found a [coordinate-unit dependency in the frozen risk heads](outputs/publication_readiness_2026_09/imptc_input_contract_v1/conclusions.md).
 Holding the motion and normalized predictions fixed, changing only two native-unit

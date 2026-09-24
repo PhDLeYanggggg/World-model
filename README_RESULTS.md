@@ -5,21 +5,50 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched Dimensionless Risk Heads (In Progress, 2026-09-24)
+## Matched Dimensionless Risk Heads (2026-09-24)
 
-The [registered experiment](outputs/publication_readiness_2026_09/dimensionless_risk_v1/registration.md)
-compares 72 fresh six-output forests: native vs dimensionless inputs, three
-actions, four outer source sites and three seeds. Predictors, source-only draws,
-cutoffs and rho=.02 are unchanged. The 16-tree pilot completed and full training
-resumed successfully on arm64 CPU4/workers0. There is no aggregate result yet.
-41 scoped tests pass, including exact resume and unknown-label exclusion.
+**Full training and readout completed; no promotion.** The
+[registered experiment](outputs/publication_readiness_2026_09/dimensionless_risk_v1/registration.md)
+contains 72 fresh six-output forests: native vs dimensionless inputs, three
+actions, four outer source sites and three seeds. Each has 128 trees and the same
+768,000 source draws; unknown-label draws are zero. The 16-tree pilot resumed
+into the full matrix on arm64 CPU4/workers0. Fitting-loop time totals 27.78 minutes,
+excluding preparation, decision solving and verification. Predictors, cutoffs
+and rho=.02 remain unchanged. All 175,756 windows were retained.
+
+Transformer population ADE gain rises from 3.5746% to 4.9881%; EqMotion from
+3.2976% to 5.9727%. Their dimensionless-minus-native paired-site contrasts are
++1.4135 pp [0.5718, 2.0620] and +2.6751 pp [0.7877, 5.5628]. But worst positive-easy
+degradation becomes 4.4503% and 9.0097%, with 5/6 zero-CV harmed row/seed instances.
+These population policies fail easy preservation despite feasible predicted risk.
+
+The registered restrictive Transformer control gives 2.9862% ADE / 2.7917% hard
+gain, 0.9437% worst easy degradation and zero observed zero-CV harms. Relative to
+old strict, the +0.5493 pp contrast has CI [-1.0682, 1.7457]; it is not a confirmed
+improvement. Equivalent EqMotion easy degradation is 3.5298%, still failing.
+Exact-count controls fail closed in 12,569 query instances, so their aggregate is
+not a fully equal-coverage comparison. All negatives and unknown futures remain.
+
+Intervals use 3,000 resamples of four already design-exposed physical sites,
+not independent windows or untouched confirmation. Six-moment held-source MSE
+does not improve with average utility; easy-risk estimation remains a weakness.
+Separate arithmetic checks 72 fits, 36 matched target/draw pairs, 753,552
+constraints and 600 scene reductions. The two scoped test batches pass 41 and 63
+tests, with overlapping coverage; they are not 104 unique tests or a full legacy run.
+Full decision-array/record replay and full aggregate replay are exact. All required
+processes finished. [Execution record](outputs/publication_readiness_2026_09/dimensionless_risk_v1/execution_notes.md).
 
 This fixes a prior terminology error: the old four-output head's first two
 columns represent easy harm/benefit, not total gain/harm. The new experiment
 learns both explicitly and includes a fresh matched native-feature control.
 Neither external errors nor independent confirmation are opened. Old deployment,
 Stage5C/SMC and all time/unit claims remain unchanged.
-[Recovery and verification](outputs/publication_readiness_2026_09/dimensionless_risk_v1/operation_zh.md).
+[Conclusions](outputs/publication_readiness_2026_09/dimensionless_risk_v1/conclusions.md),
+[all controls](outputs/publication_readiness_2026_09/dimensionless_risk_v1/results.md),
+[method](outputs/publication_readiness_2026_09/dimensionless_risk_v1/method.md),
+[losses](outputs/publication_readiness_2026_09/dimensionless_risk_v1/training_losses.md),
+[tradeoff](outputs/publication_readiness_2026_09/dimensionless_risk_v1/risk_tradeoff.svg),
+and [recovery/verification](outputs/publication_readiness_2026_09/dimensionless_risk_v1/operation_zh.md).
 
 ## External Unit Contract Diagnostic (2026-09-24)
 
