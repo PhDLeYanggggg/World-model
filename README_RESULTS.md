@@ -5,6 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Dense External Source Intake (2026-09-24)
+
+**Fresh acquisition and structural audit, not new training:** the official
+HT21/CroHD labels archive contains 1,188,496 released GT rows in four recordings,
+with 2,752 recording-namespaced tracks. The
+[full report](outputs/publication_readiness_2026_09/ht21_annotations_v1/conclusions.md)
+records K8/16/32/64 support and raw-stride 1/5/10 sensitivity. K8 stride-1 has
+1,085,273 past-eligible queries, including 1,025,577 with complete future-12 labels;
+overlapping queries are not independent samples.
+
+Full audit and cadence replay are exact. Separate CSV/set arithmetic verifies
+all raw rows and 28 window groups. Ninety-six real-history prefix checks and
+36 scoped tests pass; the legacy suite was not rerun. The intake role guard
+refuses scientific training, calibration and evaluation until admission is
+resolved. Three GT recordings declare camera motion, annotations contain
+interpolation, and physical-site independence remains unverified. Static motion
+tags are merged rather than used as input or whole-video exclusion criteria.
+The five supplied test recordings lack released GT; detectors are not targets.
+
+No forecast errors, fitting, independent calibration or confirmation were run on
+HT21. CrowdTraj remains `not_run`: no verified official download endpoint was
+located in the bounded search. These are source/provenance constraints, not a
+request for routine user audit. No deployment change; DroneCrowd remains closed,
+Stage5C/SMC off. All required local processes finished. Raw archives and other
+third-party data are excluded from Git; only code, aggregate evidence and reports
+are synchronized. The next step is evidence-compatible independent-site intake,
+not another prediction fit on exposed data.
+
 ## Full EqMotion Matched Controls (2026-09-24)
 
 **Completed and verified:** twelve new full-EqMotion forest heads and twelve

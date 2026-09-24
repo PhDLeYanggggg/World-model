@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have acquired and audited the [official HT21/CroHD annotations](outputs/publication_readiness_2026_09/ht21_annotations_v1/conclusions.md)
+to investigate denser external interactions. All 1,188,496 released GT rows and
+the history-support counts reproduce, but I have not admitted them as a new
+forecasting benchmark: three of four labelled recordings report camera motion,
+the annotations include interpolation, and independent physical sites remain
+unverified. The input reader preserves static people without using their
+whole-video motion label. This is a verified data asset, not a new model result
+or independent calibration. DroneCrowd remains closed for confirmation.
+
 I have extended the protected-motion comparison to
 [full EqMotion forecasts](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/conclusions.md),
 reusing the existing excluded-site predictors and fitting the missing matched
