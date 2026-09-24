@@ -10,14 +10,23 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am separating two mechanisms behind the latest easy-case failures:
-credit from other agents' predicted improvements, and budget contributed by
-agents whose forecasts are left unchanged. The [fixed comparison](outputs/publication_readiness_2026_09/risk_subsidy_v1/registration.md)
-keeps all fitted models and the 2% ceiling unchanged. The
-[failure diagnosis](outputs/publication_readiness_2026_09/zero_reference_support_v2/report.md)
-also rules out an exact-past-velocity veto as a direct fix for these cases.
-The new comparison is registered but has no outcome readout yet; it is not a
-deployment change or an independent confirmation study.
+I have completed a [fixed comparison of shared risk budgets](outputs/publication_readiness_2026_09/risk_subsidy_v1/conclusions.md).
+It separates credit from other agents' predicted improvements from budget
+contributed by agents whose forecasts stay unchanged. Removing both eliminates
+the observed zero-error-baseline harms, but reduces Transformer ADE gain from
+2.94% to 1.40% and EqMotion from 2.83% to 1.30%. The restricted rules also trail
+the old strict control. I am retaining this as a mechanism result, not promoting
+a new policy or claiming safety.
+
+The comparison keeps every fitted model and the 2% ceiling unchanged, includes
+all 175,756 source windows, and reports all 33 controls. Equal-intervention
+comparisons show that the restrictions change which useful targets are admitted,
+not just the intervention rate. Unknown futures and numerical limitations remain
+explicit in the [results](outputs/publication_readiness_2026_09/risk_subsidy_v1/results.md).
+These are development-exposed native8/12 results, not historical t+50 or independent
+confirmation. The [method positioning note](outputs/publication_readiness_2026_09/risk_subsidy_v1/literature_and_claim_limits.md)
+explains why a predicted-risk constraint is not a statistical safety guarantee.
+Deployment is unchanged and reserved confirmation data remain closed.
 
 I have completed the [net easy-risk study](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/conclusions.md):
 36 new risk heads on unchanged forecasts, with three seeds and all registered

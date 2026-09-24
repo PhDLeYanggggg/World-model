@@ -7,26 +7,49 @@ or evidence status.
 
 ## Query Risk Credit and Denominator Controls (2026-09-24)
 
-**Registered; outcome readout not run.** Fresh diagnosis of the preceding study
-finds nine repeated zero-CV harms, only four unique windows and three tracks.
-None has exactly constant past velocity; all fail the individual signed-risk
-condition. The exact-history-CV veto is not pursued as their direct fix.
+**Completed and replay-verified; no policy promotion.** All 175,756 windows
+and 188,388 query/action/seed instances were processed. The 36 fitted risk heads,
+forecasts, causal features and rho=.02 are unchanged. No new training, threshold
+sweep, independent calibration or outcome-selected deployment winner.
 
-The fixed 2x2 compares signed versus clipped expected net risk, and full-query
-versus selected-only denominator. All four use one solver/strict arithmetic
-contract, with retained parent decisions and matched-count controls. Frozen
-36-head bank, forecasts, features, rho=.02 and all source windows are unchanged.
-No new training, threshold sweep, outcome-selected winner or independent
-calibration. Selected-only pooling can still transfer budget between selected
-agents; clipping expected net harm is not expected positive harm or certified
-safety. Every rule and numerical failure must be reported.
+The 2x2 isolates signed-risk credit and unselected-denominator budget. Transformer
+ADE gain falls from 2.9392% to 1.3954% when both are removed; EqMotion falls from
+2.8268% to 1.2995%. Observed zero-CV harms fall from 3/6 repeated row/seed instances
+to 0/0, and worst positive-easy degradation becomes zero, but hard gains shrink
+to 0.5954%/0.0497%. Single restrictions do not eliminate all neural zero-CV harms.
+The double restriction trails old strict by 1.0414 pp for Transformer and
+0.3098 pp for EqMotion, with negative nominal paired-site intervals.
 
-[Diagnosis](outputs/publication_readiness_2026_09/zero_reference_support_v2/report.md),
+At identical query-specific intervention counts, signed-population allocation
+outperforms the double restriction by 0.4596 pp for Transformer and 0.2262 pp for
+EqMotion. All counts match. Thus lost utility is not explained only by lower
+coverage. This does not authorize post-readout selection or establish an
+indispensable neural or interaction contribution.
+
+Two EqMotion query/policy instances fail closed, each with primary observed-ADE
+impact bounded below 0.000948 pp. 74,410 instances lack certified canonical
+optimality; feasible numerical solutions are not confused with failed fallbacks.
+Missing future labels remain unknown, including selected unknown-label cases.
+The source bootstrap uses 3,000 resamples of four already design-exposed physical
+sites, not overlapping windows as independent observations.
+
+[Conclusions](outputs/publication_readiness_2026_09/risk_subsidy_v1/conclusions.md),
+[all controls](outputs/publication_readiness_2026_09/risk_subsidy_v1/results.md),
+[diagnosis](outputs/publication_readiness_2026_09/zero_reference_support_v2/report.md),
 [registration](outputs/publication_readiness_2026_09/risk_subsidy_v1/registration.md),
+[method positioning](outputs/publication_readiness_2026_09/risk_subsidy_v1/literature_and_claim_limits.md),
+[execution record](outputs/publication_readiness_2026_09/risk_subsidy_v1/execution_notes.md),
+[figure](outputs/publication_readiness_2026_09/risk_subsidy_v1/risk_tradeoff.svg)
 and [recovery commands](outputs/publication_readiness_2026_09/risk_subsidy_v1/operation_zh.md).
-63 scoped tests pass. Four source sites remain design-exposed; DroneCrowd is
-closed. No Stage5C/SMC or new deployment. This is a source-only mechanism
-experiment, not another neural-training completion claim.
+Decision and aggregate replay are exact. Separate arithmetic verifies 1,318,716
+constraints, 1,939 small-query optima, 1,980 reductions and 126 paired contrasts;
+three large-query and 119 uncertified-arm exhaustive checks are explicitly skipped.
+All required processes finished. The resumed decision event interval was 539.969
+seconds, not training or full pipeline time.
+63 scoped tests pass. DroneCrowd remains closed; no deployment, Stage5C/SMC,
+metric/seconds or submission-readiness claim. Obs8/pred12 native annotation
+steps, stride12, pixels; not historical t+50. Next: independent-source support
+and a precisely defined calibration loss, not another exposed-threshold search.
 
 ## Net Easy-Risk Target Experiment (2026-09-24)
 

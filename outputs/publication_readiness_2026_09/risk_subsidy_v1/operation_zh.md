@@ -24,11 +24,16 @@
 .venv-pytorch/bin/python scripts/run_m3w_risk_subsidy.py --phase decide --verify
 .venv-pytorch/bin/python scripts/run_m3w_risk_subsidy.py --phase evaluate --verify
 .venv-pytorch/bin/python scripts/verify_m3w_risk_subsidy.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_risk_subsidy.py
+.venv-pytorch/bin/python scripts/plot_m3w_risk_subsidy.py
 ```
 
 第一批试运行属于完整预算的一部分，不代替全量计算。每个批次原子保存结果与
 来源 hash；恢复时必须使用 `--resume`，不会重新选择阈值。`--verify` 必须读取
 已经存在的原始结果，不能把首次计算写成复现。
+已经完成本轮时，应使用两个 `--verify` 命令重放，不要再次运行首次试跑命令。
+`diagnose_m3w_risk_subsidy.py` 只核对数值回退的影响上界，不修改任何策略；
+图表包含全部对照，不只展示平均分最高的规则。
 
 ## 监控与证据
 
@@ -51,3 +56,13 @@ CPU 线程 4、interop 1、workers 0，不做资源探测。记录 PID、事件�
 
 运行完成、指标重放一致、独立算术检查均只证明相应计算环节；不意味着已建立
 独立泛化、真实物理安全或论文录用保证。
+
+## 本轮结论如何读
+
+两项限制同时加入后，Transformer 的 ADE 提升从 2.9392% 降到 1.3954%，
+EqMotion 从 2.8268% 降到 1.2995%；可评价样本中的零误差基线伤害降为零。
+但困难样本收益明显下降，而且仍有未知未来标签。因此本轮定位了机制，
+没有产生值得替换现有策略的新方案，不更新部署策略。
+
+详细解释见 `conclusions.md`，全部结果见 `results.md`。当前完成状态与检查记录
+以 `execution_notes.md` 和对应 JSON 证据为准，不能把运行命令列表当成已完成证据。
