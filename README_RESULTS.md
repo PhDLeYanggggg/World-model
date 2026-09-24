@@ -5,20 +5,51 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cutoff-Relative Risk Context (In Progress, 2026-09-24)
+## Cutoff-Relative Risk Context (2026-09-24)
 
 The [fixed follow-up](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/registration.md)
 restores history-scale and forecast-disagreement information relative to the
 frozen source easy cutoff. It does not change the cutoff, risk tolerance,
-forecasts, targets or sampling. 36 fresh forests are registered against the
+forecasts, targets or sampling. All 36 fresh forests completed against the
 previous 72 verified controls; all four sites remain development-exposed.
-The actual16-tree pilot completed and full training resumed on arm64 CPU4/workers0.
-48 scoped tests pass. There is no new aggregate result yet and no deployment change.
+The real 16-tree pilot resumed into all 128-tree fits on arm64 CPU4/workers0.
+Fitting-loop time totals 13.81 minutes. All 175756 windows remain and 188388
+query/action/seed decisions were frozen before aggregate readout. The full
+training/decision/readout process finished in 20.83 minutes, excluding the
+pilot's setup and subsequent verification. 48 scoped tests pass.
+
+Population Transformer ADE gain is 3.6046%, hard gain 3.0823%, worst positive-easy
+degradation 1.2732%. EqMotion gives 3.3370%, 2.0532% and 1.4580%, respectively.
+Both recover easy protection relative to the dimensionless arm but lose average
+utility. Gains over the matched native controls are only +0.0300 pp
+[-0.0260, 0.0996] and +0.0394 pp [-0.0122, 0.0910]. These nominal four-site
+development intervals do not establish a new best model.
+
+Population Transformer still harms two unique zero-CV windows, five repeated
+window/seed instances; EqMotion harms three windows, six instances. Their ADE
+ranges are 1.4141--2.7050 and 3.0648--6.1752 annotation pixels, not roundoff.
+Even Transformer point/selected rules harm one window at 1.8527 pixels. Positive
+easy averages below 2% therefore do not establish individual protection.
+
+All 30 old aggregate rows reproduce exactly. Separate arithmetic checks 36
+matched fits, 376776 query constraints and 180 scene reductions. Five proposals
+fail the strict original-unit check and return the baseline, with no budget
+relaxation. All 72 metadata unit probes are exact, but do not prove full-controller
+or external invariance. The prior 12569 failed exact-count controls remain failed.
+Unknown-future selections remain explicit; no outcome-based filtering or new
+threshold search was performed. Deployment is unchanged.
+Full decision-array/record replay and aggregate replay are exact; all required
+processes finished. [Execution record](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/execution_notes.md).
 
 The scale-loss witness is synthetic, not empirical proof of the prior failure's
 cause. The repair is a representation reparameterization, not added neural capacity
 or external calibration. All future errors on IMPTC/DroneCrowd remain unopened.
-[Operation and recovery](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/operation_zh.md).
+[Conclusions](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/conclusions.md),
+[all controls](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/results.md),
+[losses](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/training_losses.md),
+[harm diagnostics](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/postreadout_diagnostics.json),
+[interpretation](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/statistical_interpretation.md)
+and [operation/recovery](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/operation_zh.md).
 
 ## Matched Dimensionless Risk Heads (2026-09-24)
 

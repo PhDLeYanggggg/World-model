@@ -10,11 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [cutoff-relative risk features](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/registration.md)
-to address the easy-case failure below without changing the risk limit. The full
-36-fit matrix keeps the previous predictors, targets and source draws fixed;
-the 72 existing heads remain verified controls. The real pilot has resumed into
-full training. No new predictive result or deployment decision is claimed yet.
+I have completed the [cutoff-relative risk study](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/conclusions.md):
+36 fresh fits with the same predictors, targets, source draws and risk limit.
+Restoring motion scale relative to the training error cutoff reduces the preceding
+dimensionless population policy's worst easy degradation from 4.45% to 1.27% for
+Transformer and 9.01% to 1.46% for EqMotion. But their average ADE gains over
+constant velocity fall to 3.60% and 3.34%, close to the native-feature controls.
+The tiny advantages over those controls remain uncertain, and some zero-error
+baseline cases are still harmed. I am not changing deployment.
+
+The [full table](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/results.md),
+[training losses](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/training_losses.md)
+and [tradeoff figure](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/risk_tradeoff.svg)
+retain all controls. This is a partial risk-representation repair on four
+development-exposed SDD sites, not new neural dynamics, independent confirmation
+or a calibrated safety guarantee.
 
 I have completed a [matched dimensionless risk-head study](outputs/publication_readiness_2026_09/dimensionless_risk_v1/conclusions.md):
 72 fresh fits with unchanged predictors, matched source draws and three seeds.

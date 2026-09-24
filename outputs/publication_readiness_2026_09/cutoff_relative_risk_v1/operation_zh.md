@@ -11,6 +11,8 @@
 .venv-pytorch/bin/python scripts/run_m3w_cutoff_relative_risk.py --phase evaluate --verify
 .venv-pytorch/bin/python scripts/check_m3w_cutoff_relative_risk.py
 .venv-pytorch/bin/python scripts/report_m3w_cutoff_relative_risk.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_cutoff_relative_risk.py
+.venv-pytorch/bin/python scripts/plot_m3w_cutoff_relative_risk.py
 .venv-pytorch/bin/python -m pytest tests/test_m3w_cutoff_relative_risk.py tests/test_m3w_dimensionless_risk.py tests/test_m3w_net_easy_guard.py tests/test_m3w_net_easy_risk.py tests/test_m3w_native_metrics.py -q
 ```
 
@@ -36,3 +38,7 @@ cutoff也必须同单位换算；这不能把SDD像素cutoff直接赋给另一�
 本轮没有混入新的prefix精度修复，也不打开IMPTC／DroneCrowd预测误差。无法满足
 easy保护或CI不能支持优势时继续保留负结果，不升级部署。Stage5C、SMC关闭。
 源数据、特征、权重和决策缓存不提交Git；只提交代码、配置、报告和轻量统计。
+
+实际结果见`conclusions.md`：相对上一轮dimensionless输入，easy退化下降，但平均
+收益也下降，且仍存在零CV误差样本被误伤。`postreadout_diagnostics.json`只描述
+冻结结果中的误伤幅度，不重新选阈值、删样本或修改策略。图表只使用聚合结果。
