@@ -1,0 +1,20 @@
+{
+  "scope": "source_training_only_nested_locality_crossfit_not_confirmation",
+  "source_manifest": "outputs/publication_readiness_2026_09/european_squares_source_v1/analysis.json",
+  "source_manifest_sha256": "6ed8f16f7f5557bbd88fbaa72778bb79b7893d6a91146945f0f76ced376d16a6",
+  "roles": "outputs/publication_readiness_2026_09/european_squares_roles_v1/roles.json",
+  "roles_sha256": "858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435",
+  "registration": "outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md",
+  "fold_salt": "m3w-european-source-crossfit-v1-2026-09-24",
+  "seeds": [17, 29, 43],
+  "architecture": {"width": 64, "heads": 4, "layers": 2, "neighbor_policy": "complete_aligned_history", "input_conditioning": "observed_joint_max_norm", "output_parameterization": "motion_bounded"},
+  "baselines": ["constant_position", "constant_velocity_causal_fd", "damped_velocity_090", "damped_velocity_097", "history_ols4_velocity", "history_ols8_velocity"],
+  "training": {"steps": 4000, "batch_size": 64, "learning_rate": 0.0003, "minimum_lr_ratio": 0.01, "weight_decay": 0.0001, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 50},
+  "runtime": {"device": "cpu", "torch_threads": 4, "interop_threads": 1, "num_workers": 0},
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 39271,
+  "independent_reserved_readout": false,
+  "deployment_promotion": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

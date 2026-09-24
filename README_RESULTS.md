@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## European Source Forecast and Intervention (2026-09-24, Running)
+
+The fixed matrix trains eighteen real Torch predictors with 4,000 updates each,
+three seeds and source-locality exclusions. The real 100-update pilot completes
+and resumes inside that budget. Native arm64 CPU4/inter-op1/workers0 is running;
+no NumPy substitute, CREATE submission or silent budget reduction. Predictive
+readout is not yet complete, so no efficacy claim is made at this checkpoint.
+
+The separate nested gain/harm and matched-query control experiment is registered
+before forecasting readout. It cannot use an outer locality to train either its
+cost labels' producer or its cost head. Its predicted harm budget is explicitly
+not a certified easy-risk guarantee. All reserved roles remain closed. 72 scoped
+tests pass, not the full legacy suite. Checkpoints/caches remain private.
+
+[Forecast registration](outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md),
+[intervention registration](outputs/publication_readiness_2026_09/european_source_intervention_v1/registration.md).
+
 ## European Squares Roles and Source Cohort (2026-09-24)
 
 The partial-clip audit covers all376raw recordings and152,372,066rows, with

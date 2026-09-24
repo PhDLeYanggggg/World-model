@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am now training the [registered European Squares source-only models](outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md).
+The matrix contains 18 fresh Transformer fits: three seeds, three source folds,
+and separate predictors for nested cost supervision. The first real Torch
+checkpoint resumes correctly; the full run is in progress, not a reported model
+improvement. Strong controls include past-history OLS velocity and two fixed
+velocity decays. The follow-on [gain/harm study](outputs/publication_readiness_2026_09/european_source_intervention_v1/registration.md)
+compares pointwise and joint intervention at matched coverage. Reserved source
+roles and DroneCrowd confirmation remain closed, and deployment is unchanged.
+
 I have frozen [locality-level roles for European Squares](outputs/publication_readiness_2026_09/european_squares_roles_v1/conclusions.md)
 before looking at prediction errors: 12 training groups, 6 for model selection,
 12 for risk calibration and 6 for confirmation. All recordings from a locality
