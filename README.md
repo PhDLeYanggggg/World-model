@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am now testing [same-query risk allocation](outputs/publication_readiness_2026_09/easy_allocation_v1/registration.md)
+with those frozen forecasts and risk estimates. The controls distinguish
+pointwise protection, selected-set budgets, population budgets, whole-scene
+switching and matched-count pair decisions. No model or threshold is being
+refitted; this source-only development readout is in progress.
+
 I have completed the [conditional easy-risk experiment](outputs/publication_readiness_2026_09/easy_moment_v1/conclusions.md):
 36 new risk heads on frozen damping, Transformer and EqMotion forecasts. Directly
 learning easy-weighted harm protects the observed easy cases but rejects nearly

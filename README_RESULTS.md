@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Same-Query Easy-Risk Allocation (2026-09-24)
+
+Registered and executing; no result claim yet. Nine fixed decision controls on
+three frozen predictors distinguish pointwise, selected-denominator and
+population-denominator protection, plus same-count unary/joint pair objectives.
+The 2% surrogate multiplier and geometry parameters are unchanged. A 256-query
+real pilot completed in 0.61 seconds; the full matrix has 188,388 query/action/seed
+instances. It is not 188,388 independent scenes. 69 scoped tests pass, including
+exhaustive small-problem solver comparisons. No new fitting or threshold search.
+See the [registration](outputs/publication_readiness_2026_09/easy_allocation_v1/registration.md).
+Inference chunks are saved before any new outcome readout; no external source or
+reserved confirmation data are opened. Stage5C/SMC stay off.
+
 ## Conditional Easy-Moment Experiment (2026-09-24)
 
 **Completed, replay-verified negative result.** Three fixed predictors x four
