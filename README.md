@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am following the failed zero-reference guard with a
+[causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/registration.md).
+The first real-data view is complete and the full 36-view diagnostic is running.
+It keeps the predictor, risk limits and evaluation grid fixed, and asks whether
+the rare failure cases have relevant training support or misleadingly similar
+past contexts. This is not a new trained model or a deployment improvement.
+
 I have completed the [explicit zero-reference risk experiment](outputs/publication_readiness_2026_09/zero_atom_v1/conclusions.md).
 Separately estimating when constant velocity is exactly correct does not repair
 protection: Transformer ADE gain falls from 3.60% to 2.97%, with the same five

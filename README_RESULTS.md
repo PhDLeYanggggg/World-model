@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Moving Zero-CV Neighborhood Diagnostic (2026-09-24, In Progress)
+
+The [registered follow-up](outputs/publication_readiness_2026_09/moving_zero_support_v1/registration.md)
+uses the actual frozen source fitting rows, two feature banks, all seven moving
+zero-CV cases and 32 outcome-blind metadata controls per held view. The first
+coupa/seed17/Transformer view completed; the full 36-view run is in progress.
+35 scoped tests pass, including nine new helper tests. No training, policy change,
+threshold search or external forecast readout is performed.
+
+Fresh raw-annotation checks confirm all seven cases have zero CV error at the
+specified 12 sampled future points, but nonzero dense raw-frame errors between
+those points. All twelve future samples are flagged generated. These are
+annotation/grid findings, not authorization to change the target or call the
+supplied histories online sensor-as-of observations. Deployment remains unchanged.
+[Operation/recovery](outputs/publication_readiness_2026_09/moving_zero_support_v1/operation_zh.md).
+
 ## Explicit Zero-Reference Risk Readout (2026-09-24)
 
 All 36 source-only leaf-frequency readouts have completed on 36 cached-verified
