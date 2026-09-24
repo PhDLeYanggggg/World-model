@@ -5,15 +5,33 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Dimensionless Risk Heads (In Progress, 2026-09-24)
+
+The [registered experiment](outputs/publication_readiness_2026_09/dimensionless_risk_v1/registration.md)
+compares 72 fresh six-output forests: native vs dimensionless inputs, three
+actions, four outer source sites and three seeds. Predictors, source-only draws,
+cutoffs and rho=.02 are unchanged. The 16-tree pilot completed and full training
+resumed successfully on arm64 CPU4/workers0. There is no aggregate result yet.
+41 scoped tests pass, including exact resume and unknown-label exclusion.
+
+This fixes a prior terminology error: the old four-output head's first two
+columns represent easy harm/benefit, not total gain/harm. The new experiment
+learns both explicitly and includes a fresh matched native-feature control.
+Neither external errors nor independent confirmation are opened. Old deployment,
+Stage5C/SMC and all time/unit claims remain unchanged.
+[Recovery and verification](outputs/publication_readiness_2026_09/dimensionless_risk_v1/operation_zh.md).
+
 ## External Unit Contract Diagnostic (2026-09-24)
 
 **Completed and replay-verified; partial input repair, no training or forecast
 error readout.** On 58 fixed-modulus IMPTC queries / 754 past-eligible agent
 windows, real frozen Transformer/EqMotion forwards and three risk heads expose
 unit dependence. In a two-column-only control with normalized geometry and
-forecasts fixed, 100x native coordinates change predicted net-gain signs in
+forecasts fixed, 100x native coordinates change predicted signed easy-risk signs in
 411 damping / 369 Transformer / 325 EqMotion windows. These are not deployed
-switch counts or observed improvements.
+switch counts or observed improvements. The earlier JSON field name `net_gain_sign_changed`
+was imprecise; the [terminology correction](outputs/publication_readiness_2026_09/imptc_input_contract_v1/terminology_correction.md)
+preserves the numerical artifacts and distinguishes easy risk from overall gain.
 
 The separate unit-free adapter and new 355-column cost schema remove direct
 native-scale inputs, require refitting, and leave old checkpoints untouched.

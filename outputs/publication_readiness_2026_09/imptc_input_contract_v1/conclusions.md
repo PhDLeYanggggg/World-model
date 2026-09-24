@@ -1,5 +1,9 @@
 # IMPTC Input Contract: A Measured Unit-Dependence Failure
 
+Terminology correction: references below to a frozen head's "net-gain sign"
+mean the sign of **signed easy risk**, not overall gain. See the
+[correction and unchanged artifact interpretation](terminology_correction.md).
+
 ## What Was Actually Run
 
 This is an engineering-input experiment, not an external forecast benchmark.
