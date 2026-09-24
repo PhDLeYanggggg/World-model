@@ -7,15 +7,29 @@ or evidence status.
 
 ## Full EqMotion Matched Controls (2026-09-24)
 
-The [asset inventory correction](outputs/publication_readiness_2026_09/protected_motion_controls_v1/asset_inventory_correction.md)
-records that EqMotion's pair-excluded producers and neural heads already exist;
-they will not be retrained. The missing comparison is twelve full-forecast forest
-heads and a common-protocol comparison with all protected simple controls and
-Transformer. Its [registration](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/registration.md)
-fixes sampling, protection and matched-count analysis before new fits. Current
-preflight verifies 1,075 bindings; 34 scoped tests pass. New training/readout are
-not_run at this checkpoint. No external tuning or new deployment is permitted.
-CREATE authentication currently fails; the local arm64 runtime is sufficient.
+**Completed and verified:** twelve new full-EqMotion forest heads and twelve
+cached-verified neural heads, using existing pair-excluded predictors without
+retraining them. Exact inference/aggregate replay, separate arithmetic and all
+87 paired-contrast checks pass; 73 scoped tests pass. New fitting-loop time totals
+317.433 seconds, not end-to-end runtime. All required processes are terminal.
+
+The [complete conclusions](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/conclusions.md)
+do not establish neural forecasting dominance. EqMotion/neural strict protection
+gains 1.609% ADE with 0.452% worst-site/seed easy degradation; its matched forest
+gains 1.263% with 0.000%. At equal intervention counts, neural-protected damping005
+gains 2.668% with 1.622% easy degradation; the paired superiority interval crosses
+zero. Neural versus forest cost learning shows a positive development contrast,
+but this is not independent confirmation, a new deployed model, or the historical
+raw-frame t+50 result. Four exposed sites, three seeds, native8/12 annotation pixels.
+
+The [registration](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/registration.md),
+[losses](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/training_losses.md),
+[complete comparison table](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/paired_controls.csv)
+and [manuscript addendum](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/manuscript_addendum.md)
+preserve all adverse results. No DUT retuning; DroneCrowd stays closed. CREATE's
+latest read-only refresh failed authentication, without establishing queue status.
+The next gap is conditional risk control with independent support, not another
+duplicate predictor fit. Stage5C and SMC remain off; submission readiness is unmet.
 
 ## Matched Protected Motion Controls (2026-09-24)
 

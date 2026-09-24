@@ -10,6 +10,18 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have extended the protected-motion comparison to
+[full EqMotion forecasts](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/conclusions.md),
+reusing the existing excluded-site predictors and fitting the missing matched
+forest heads. Strict neural protection gives 1.61% average ADE gain with 0.45%
+worst-site/seed easy degradation. At equal intervention counts, protected simple
+damping gives 2.67% gain and 1.62% easy degradation, although their paired
+difference remains uncertain. This has narrowed my claim: learning when to
+intervene is useful, but I have not shown that neural forecasting is indispensable.
+The comparison is replay-verified development evidence, not an independent test
+or a new deployment decision. Losses, complete controls and negative results are
+in the report; reserved confirmation data remain closed.
+
 I have now completed a [matched comparison against protected simple motion](outputs/publication_readiness_2026_09/protected_motion_controls_v1/conclusions.md),
 with 156 new control-head fits and twelve verified existing heads. Giving damping
 the same learned protection improves its average source result beyond the
@@ -105,10 +117,11 @@ implements an existing, tighter bounded-risk method without changing the frozen
 experiments. It improves the feasibility calculation, not the model: independent
 scenes are still required, and the 2% easy-error criterion is not a certificate.
 
-I have also verified [read-only CREATE access](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
-through the existing account setup. No M3W job was submitted, and the separate
-simulation workload is untouched. M3W's own remote project directory still needs
-to be identified before its historical assets can be checked.
+The earlier [read-only CREATE connection](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
+worked, but the [latest refresh](outputs/publication_readiness_2026_09/create_readonly_refresh_20260924.md)
+failed authentication, so I cannot report a current queue state. No M3W job was
+submitted, and the separate simulation workload is untouched. The matched-control
+experiments completed locally; M3W's remote project directory remains unidentified.
 
 I have added a [portable reproduction draft](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md)
 for the current evidence tables. It runs from an extracted archive with Python's
