@@ -10,13 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing an [explicit zero-reference risk readout](outputs/publication_readiness_2026_09/zero_atom_v1/registration.md)
-on the frozen risk forests. All 36 source-only leaf readouts have finished fitting;
-the full decision and evaluation run is still in progress. The test asks whether
-separately representing cases where constant velocity is exactly correct can
-protect them without discarding useful intervention. It changes neither the
-2% easy-case limit nor the exact-zero protection rule. It is not new neural
-forecast training, independent confirmation or a deployment result.
+I have completed the [explicit zero-reference risk experiment](outputs/publication_readiness_2026_09/zero_atom_v1/conclusions.md).
+Separately estimating when constant velocity is exactly correct does not repair
+protection: Transformer ADE gain falls from 3.60% to 2.97%, with the same five
+harmed window/seed cases; EqMotion gain falls from 3.34% to 2.80%, with harms
+increasing from six to eight after joint reallocation. Matched-intervention
+controls also outperform the added guard. I am retaining this negative result,
+not changing deployment.
+
+The [support audit](outputs/publication_readiness_2026_09/zero_atom_v1/fit_support.md)
+finds only 2--7 relevant moving zero-reference training windows per readout,
+despite thousands of stopped examples. An empirical probability of zero is not
+a safety guarantee. The [full controls and paired intervals](outputs/publication_readiness_2026_09/zero_atom_v1/results.md)
+and [figure](outputs/publication_readiness_2026_09/zero_atom_v1/risk_tradeoff.svg)
+show the utility/protection tradeoff. These are 36 new leaf readouts on frozen
+forests, not new neural forecasts; the four source sites remain development-exposed.
 
 I have completed the [cutoff-relative risk study](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/conclusions.md):
 36 fresh fits with the same predictors, targets, source draws and risk limit.

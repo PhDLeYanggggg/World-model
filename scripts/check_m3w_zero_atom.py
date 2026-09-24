@@ -62,7 +62,7 @@ def main():
             for col in (2,5): assert math.fsum(rr[bits[q,col]])<=0; risk_checks+=1
             for col in range(3):
                 assert math.fsum(gain[q][bits[q,col+3]])>=math.fsum(gain[q][bits[q,col]])
-    reductions=0
+    reductions=0; harm_details=[]; event_diagnostics=[]; unique_harms={}
     for action in cfg['actions']:
         errors={p:[] for p in a['policies'] if p.startswith(('atom_','matched_'))}
         for seed in cfg['seeds']:
@@ -70,13 +70,38 @@ def main():
             assert run.base.file_digest(ROOT/ref['path'])==ref['sha256']
             with np.load(ROOT/ref['path'],allow_pickle=False) as z: o={k:z[k] for k in z.files}
             bits=np.zeros((len(data['sites']),6),bool)
+            original=np.zeros((len(data['sites']),3),bool)
+            probability=np.zeros(len(bits)); distance=np.zeros(len(bits))
             for site in cfg['sites']:
-                with np.load(ROOT/archives[f'{site}_seed{seed}',action],allow_pickle=False) as z: bits[z['ids']]=z['choices']
+                view=f'{site}_seed{seed}'
+                with np.load(ROOT/archives[view,action],allow_pickle=False) as z:
+                    bits[z['ids']]=z['choices']; probability[z['ids']]=z['probability']
+                    original[z['ids']]=z['original']
+                with np.load(ROOT/ctx['decisions'][view,action]['path'],allow_pickle=False) as z:
+                    distance[z['ids']]=z['distance']
+            h=data['geometry'][:,:16].reshape(-1,8,2)
+            moving=np.any(h[:,-1]!=h[:,-2],axis=1)
+            use=o['complete']&moving&(distance>0)
+            zero=use&o['zero_CV']
+            event_diagnostics.append(dict(action=action,seed=seed,complete_moving_effective=int(use.sum()),
+                zero_moving_effective=int(zero.sum()),zero_predicted_absent=int((zero&(probability==0)).sum()),
+                brier_complete_moving_effective=float(np.mean((probability[use]-o['zero_CV'][use])**2))))
             for col,p in enumerate(errors):
                 e=np.where(bits[:,col],o['candidate_ade'],o['cv']); errors[p].append(e)
                 r=a['summary'][action+'__'+p]['seeds'][str(seed)]
                 assert r['selected']==int(bits[:,col].sum())
                 assert r['zero_CV_harmed']==int((bits[:,col]&o['zero_CV']&(e>0)).sum())
+                harmed=bits[:,col]&o['zero_CV']&(e>0)
+                reference_harmed=original[:,col%3]&o['zero_CV']&(o['candidate_ade']>0)
+                key=action+'__'+p
+                unique_harms.setdefault(key,set()).update(np.flatnonzero(harmed).tolist())
+                for site in cfg['sites']:
+                    ix=harmed&(data['sites']==site)
+                    if not ix.any(): continue
+                    harm_details.append(dict(action=action,policy=p,seed=seed,site=site,count=int(ix.sum()),
+                        not_harmed_by_original=int((ix&~reference_harmed).sum()),
+                        harm_ade_range=[float(e[ix].min()),float(e[ix].max())],
+                        zero_probability_range=[float(probability[ix].min()),float(probability[ix].max())]))
         for p,arrays in errors.items():
             e=np.mean(arrays,axis=0); r=a['summary'][action+'__'+p]
             for subset,mask in [('all',np.ones(len(e),bool))]+[(k,o[k]) for k in ('complete','hard','positive_easy','zero_CV')]:
@@ -94,6 +119,12 @@ def main():
         analysis_sha256=run.base.file_digest(public/'analysis.json'),code_sha256=run.base.file_digest(Path(__file__)),
         fits=fits,matched_query_counts=counts,risk_checks=risk_checks,scene_reductions=reductions,
         original_rows_exact=12,exhaustive_optimality='not_run',independent_confirmation=False)
+    diagnostic=dict(result_source='fresh_run',analysis_sha256=report['analysis_sha256'],
+        scope='descriptive_postreadout_no_policy_change',unique_harmed_windows={k:len(v) for k,v in unique_harms.items()},
+        harm_details=harm_details,event_diagnostics=event_diagnostics,
+        full_complete_brier_in_analysis_includes_stopped_rows_outside_policy_support=True,
+        low_brier_is_not_rare_event_recall_or_calibration_guarantee=True)
+    run.base.immutable_json(public/'postreadout_diagnostics.json',diagnostic)
     run.base.immutable_json(public/'separate_checks.json',report); print(json.dumps(report))
 
 

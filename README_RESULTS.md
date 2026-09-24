@@ -5,13 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Explicit Zero-Reference Risk Readout (2026-09-24, In Progress)
+## Explicit Zero-Reference Risk Readout (2026-09-24)
 
 All 36 source-only leaf-frequency readouts have completed on 36 cached-verified
 cutoff-relative forests, 128 trees each. The real 16-tree pilot resumed into the
 full matrix. These are new probability readouts, not new forests or neural
-predictors. Full decision freezing and readout are still running; no result or
-promotion is claimed. 53 scoped tests pass, including the 13 new tests; these
+predictors. All 175756 windows and 188388 query/action/seed decisions were retained,
+and the complete 30-row readout is finished. 53 scoped tests pass, including the 13 new tests; these
 are overlapping totals, not 66 unique tests or a full legacy suite.
 
 The [registered experiment](outputs/publication_readiness_2026_09/zero_atom_v1/registration.md)
@@ -20,7 +20,45 @@ tolerance. Original easy targets already included zero-CV cases; the hypothesis
 is conditional averaging/support failure, not missing labels. Unknown futures,
 all controls and same-query matched intervention counts are retained. Four source
 sites remain development-exposed, and independent confirmation remains closed.
-[Operation and recovery](outputs/publication_readiness_2026_09/zero_atom_v1/operation_zh.md).
+
+**Negative result, no promotion.** Population Transformer ADE gain falls from
+3.6046% to 2.9702%; hard gain is 2.4535%, worst positive-easy degradation 1.0152%,
+and zero-CV harms remain five window/seed instances over two unique windows.
+Population EqMotion ADE gain falls from 3.3370% to 2.7964%; hard gain is 1.5117%,
+worst positive-easy degradation 1.2015%, and harms rise from six to eight
+instances over three unique windows. These are equal-site gains over CV under
+obs8/pred12 stride12 annotation pixels, not historical raw t50 or external metrics.
+
+At equal intervention counts in each recording/frame/seed, guarded-minus-control
+ADE contrasts are -0.2634 pp [-0.3817, -0.1820] for Transformer and -0.2939 pp
+[-0.5176, -0.1261] for EqMotion. All nine guarded rules have lower ADE point
+estimates than their same-count controls. The 54 registered subset intervals use
+3000 four-site paired resamples and are nominal development uncertainty only.
+
+Every guarded harm receives empirical probability zero. Each fitted readout has
+only 2--7 effective moving zero-reference source windows, despite thousands of
+stopped zero-reference examples for neural actions. The seven moving evaluation
+events are reused across seeds, not 21 independent events. Joint reallocation
+avoids one previous EqMotion harmed instance but introduces three. Low overall
+event Brier and feasible predicted budgets do not establish rare-event protection.
+
+Separate arithmetic verifies 36 fits, 565164 per-query equal-count comparisons,
+753552 risk checks, 360 scene reductions and 12 exact previous aggregate rows.
+Two solver statuses are not certified optimal; no risk/count violations or
+retained matched incumbents occur. Unknown/incomplete outcomes remain explicit:
+guarded population Transformer selects 349--387 unknown and 4249--4833 incomplete
+windows per seed, EqMotion 201--225 and 2858--3094. They are not counted as safe.
+Full decision-array/record and aggregate replays are exact; all required processes
+finished. Main execution took 12.16 minutes, with 3.76 minutes in the readout fit
+and in-source prediction/support loops. This excludes subsequent verification.
+[Execution record](outputs/publication_readiness_2026_09/zero_atom_v1/execution_notes.md).
+
+[Conclusions](outputs/publication_readiness_2026_09/zero_atom_v1/conclusions.md),
+[all controls](outputs/publication_readiness_2026_09/zero_atom_v1/results.md),
+[support/losses](outputs/publication_readiness_2026_09/zero_atom_v1/fit_support.md),
+[harm audit](outputs/publication_readiness_2026_09/zero_atom_v1/postreadout_diagnostics.json),
+[statistical limits](outputs/publication_readiness_2026_09/zero_atom_v1/statistical_interpretation.md)
+and [operation/recovery](outputs/publication_readiness_2026_09/zero_atom_v1/operation_zh.md).
 
 ## Cutoff-Relative Risk Context (2026-09-24)
 
