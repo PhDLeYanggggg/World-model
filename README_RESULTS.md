@@ -5,20 +5,33 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Squares Intake (2026-09-24, In Progress)
+## European Squares Intake (2026-09-24, Raw Audit Complete; Replay Running)
 
-Fresh acquisition verifies official metadata and pinned author code for Zenodo
-18267205, dataset license CC-BY-4.0. The overview has 39 nominal square IDs and
-the statistics tables have 391 recording records, not yet verified archive
-counts. Seven Biberach season records are tagged with Varberg's ID; malformed
-coordinate strings and the box-center/footpoint discrepancy remain explicit.
-The source stays quarantined and unassigned. No prediction errors are opened.
+Official acquisition and the full V2 raw audit complete: 376 raw CSVs,
+152372066 rows, 514615 scoped tracker IDs and 39 nominal square IDs. The
+9.45 GB archive matches publisher MD5 and retained SHA256. Main audit elapsed
+time is 603.39 seconds, peak RSS 4.47 GB; complete replay is running.
+2256 future-mutation/truncation prefix checks pass. No exact complete-track
+geometry aliases are found within or across recordings; partial clip and
+physical-site independence are not established by this screen.
 
-The raw adapter preserves short tracks, current-frame agents and partial future
-label support. It completes the official 5,241-row demo with six prefix checks.
-45 scoped tests pass; these are not full-source admission or a full legacy test
-suite. The 9.45 GB trajectory download continues with checksum verification,
-resume and heartbeat. No neural training or policy change occurs.
+V1 stopped at the fifth recording because 60 official files omit the text class
+name. Its failure and four successful records remain intact; V2 freshly reads
+all 376 with this field explicitly optional. 52 scoped tests pass, not the full
+legacy suite. No short-track or future-label filter is used.
+
+The seasonal metadata have 244 records but 236 unique city/date/slot keys, eight
+repeated keys and seven unique keys without raw CSV matches. Raw seasonal
+members total 229, not 244. Five available Biberach recordings have inconsistent
+IDs in the statistics table. No absent raw file is replaced by processed data.
+
+K8/stride12 has 90701631 past-supported windows: 54070558 complete future labels,
+35021410 partial and 1609663 absent. These overlapping counts are not independent
+samples, common seconds or a new forecasting protocol. The source stays
+quarantined and unassigned; no prediction errors, training or policy change.
+[Schema repair and inventory](outputs/publication_readiness_2026_09/european_squares_intake_v2/versioned_repair.md),
+[raw audit](outputs/publication_readiness_2026_09/european_squares_intake_v2/analysis.json),
+[operation](outputs/publication_readiness_2026_09/european_squares_intake_v2/operation_zh.md).
 [Provenance](outputs/publication_readiness_2026_09/european_squares_intake_v1/provenance.md),
 [scope](outputs/publication_readiness_2026_09/european_squares_intake_v1/scope.md),
 [CREATE observation](outputs/publication_readiness_2026_09/european_squares_intake_v1/create_status.md).

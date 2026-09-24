@@ -1,6 +1,9 @@
 # Source Provenance and Admission Limits
 
-2026-09-24. Status: fresh metadata/code audit; complete trajectory audit pending.
+2026-09-24. Status: fresh metadata/code audit. Archive acquisition later completed;
+the V1 raw audit stopped at its fifth recording on an optional text-field schema.
+The separate [V2 repair](../european_squares_intake_v2/versioned_repair.md) retains
+this failure and handles both observed export variants.
 No prediction errors, model selection or calibration outcomes are opened.
 
 ## Why This Source
@@ -15,7 +18,7 @@ The official [v1.1 Zenodo record](https://zenodo.org/records/18267205) identifie
 the dataset as CC-BY-4.0. Its overview lists 39 square IDs; the two statistics
 tables contain 147 comparative and 244 seasonal recording records. These are
 metadata counts, not a local count of valid trajectories or independent sites.
-The 9,451,499,010-byte trajectory archive is being acquired with resume and a
+The 9,451,499,010-byte trajectory archive was acquired with resume and a
 15 GB free-space reserve. Dataset identity, MD5 and SHA256 are retained.
 
 ## Metadata Problems Found Before Admission
@@ -49,7 +52,10 @@ weights, videos or live webcams are executed or accessed.
 - `calc_center.py:23` and `:27` compute and round the bounding-box center in both
   axes. The repository's prose describes the bottom of the box instead. Our
   input explicitly names its representation `box_center`, retains all four box
-  edges, and does not substitute processed positions.
+  edges, and does not substitute processed positions. A further code check shows
+  that `calc_geo_df.py` does use `(center_x, y_max)` when applying homography.
+  Thus the center and projected footpoint fields differ by design in code; the
+  discrepancy must not be described as proof that all projected points are wrong.
 - `calc_center.py:41` applies a trailing rolling median. Prose describes a moving
   average. The median is not central velocity, but neither smoother is needed
   by the raw adapter. It uses no interpolation or smoothing.
