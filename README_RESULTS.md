@@ -5,18 +5,52 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European CV-Reference Repair (2026-09-24, Running)
+## European CV-Reference Repair (2026-09-24, Completed, Partial Repair Only)
 
-The new version changes only the decision reference from the fitting-selected
-baseline to causal CV and rebuilds its necessary cost features/targets/scales.
-All18neural forecasts, source splits, seeds, query subsets and policy settings
-remain frozen. The first100real training updates pass and resume inside the
-fixed budget. Nine ridge and nine neural heads are running; no new predictive
-result or safety improvement is claimed yet.62scoped tests pass, not a full-suite
-or independent scientific validation. Reserved data roles remain closed.
+Fresh run: nine ridge and nine neural cost fits, 18,000 Torch optimizer updates,
+three seeds and three nested source folds. The previous 18 neural forecasters
+remain frozen and cached_verified. Only the fallback reference and necessary
+derived gain/harm features, labels and fitting scales change to causal CV.
+No future-label filter, independent role opening or post-readout selection.
 
-[Registration](outputs/publication_readiness_2026_09/european_cv_reference_v1/registration.md),
-[matrix](outputs/publication_readiness_2026_09/european_cv_reference_v1/matrix.json).
+| Neural cost-head seed | ADE gain vs CV, 95% conditional locality CI | Gain vs fixed damping 0.97 | Mean easy degradation | Worst-locality easy degradation | Zero-CV cases harmed |
+|---|---|---:|---:|---:|---:|
+| 17 | 4.3015% [2.4717%, 6.1509%] | 0.1980% | 1.9050% | 8.7108% | 1 / 4 |
+| 29 | 4.1848% [2.1895%, 6.2669%] | 0.0903% | 2.3297% | 12.5388% | 1 / 4 |
+| 43 | 4.4308% [2.3761%, 6.4805%] | 0.3568% | 2.3757% | 11.2869% | 1 / 4 |
+
+All three damping-relative intervals include zero. Mean easy degradation falls
+from 12.81--13.38%, but the unchanged worst-locality and zero-CV rules still
+fail. Ridge gains more ADE but degrades easy by 9.50--9.77%. No head or seed is
+promoted. Per-locality percentage gains are averaged with equal locality weight;
+they are not pooled pixel-error ratios or differences between table columns.
+
+The same 318,969 target population is retained: 311,922 have some future labels,
+7,047 have none. Final-step FDE has 240,269 supported targets. A complete-future
+sensitivity uses 193,705 targets; it does not replace the registered population.
+All four zero-CV cases occur in locality 008, have only 2/12 observed labels and
+no final endpoint. Their outer fit has no zero-CV training events. This is a
+support/missing-label diagnostic, not an inference filter or a proof of safety.
+
+Joint inference remains a fixed 1,152-query / 6,116-target pilot, with no zero-CV
+cases. Neural joint gain versus CV is 0.59--1.06%, below the training-selected
+baseline on this population. There is no stable matched-count joint advantage;
+two seed contrasts are undefined because a declared locality has no supported
+nonzero-match population. Undefined is not zero and that locality is not dropped.
+
+The complete metric replay passes; all 18 cost checkpoints reproduce 4,096
+sampled predictions each exactly. Independent count accounting passes for all
+18 decision receipts. 145 scoped tests pass, not the full legacy suite. All
+required local processes finished. The intervals use 3,000 locality resamples
+and remain conditional source-development evidence, not independent confirmation.
+No deployment change, metric/seconds claim, Stage5C or SMC.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_cv_reference_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cv_reference_v1/failure_analysis.md),
+[results](outputs/publication_readiness_2026_09/european_cv_reference_v1/results.md),
+[losses](outputs/publication_readiness_2026_09/european_cv_reference_v1/training_losses.md),
+[execution](outputs/publication_readiness_2026_09/european_cv_reference_v1/execution_notes.md),
+[operation](outputs/publication_readiness_2026_09/european_cv_reference_v1/operation_zh.md).
 
 ## European Source Forecast and Intervention (2026-09-24, Completed, Not Deployable)
 

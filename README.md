@@ -10,13 +10,25 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing a [versioned CV-reference repair](outputs/publication_readiness_2026_09/european_cv_reference_v1/registration.md)
-after identifying that the previous fallback violated the easy-case criterion.
-The neural forecasts stay frozen; only the decision reference and its necessary
-gain/harm supervision change. The real 100-update pilot has completed and the
-full cost-head matrix is continuing. This is source-only development, not a
-new deployment result. Strong-baseline comparisons and the original risk limits
-remain in place.
+I have completed the [CV-reference repair](outputs/publication_readiness_2026_09/european_cv_reference_v1/conclusions.md):
+nine ridge and nine neural cost heads, with the original forecasts frozen.
+Changing the fallback and its gain/harm supervision to causal constant velocity
+reduces the neural policy's mean easy-case degradation from 12.81--13.38% to
+1.90--2.38%. Its ADE gain over CV is 4.18--4.43% across three seeds, but the
+advantage over fixed damping 0.97 remains uncertain. This is a partial repair,
+not a deployment result.
+
+The remaining failure is specific: worst-locality easy degradation is still
+8.71--12.54%, and each seed harms one of the four zero-error CV cases. Those
+four cases have only two observed future labels and come from a held source
+fold with no fitting examples of that event. I keep them in the evaluation;
+removing difficult safety cases would not solve the problem. The joint-control
+pilot contains none of them and cannot validate zero-event protection.
+[All controls and intervals](outputs/publication_readiness_2026_09/european_cv_reference_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cv_reference_v1/failure_analysis.md)
+and the [repair figure](outputs/publication_readiness_2026_09/european_cv_reference_v1/repair_contrasts.svg)
+are retained. All 18 cost checkpoints reproduce sampled predictions exactly;
+145 scoped tests pass. Independent data roles and deployment remain unchanged.
 
 I have completed the [European Squares source-only experiment](outputs/publication_readiness_2026_09/european_source_forecast_v1/conclusions.md):
 18 real Transformer fits, three seeds and 72,000 optimizer updates. Mean-seed
