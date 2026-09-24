@@ -7,16 +7,34 @@ or evidence status.
 
 ## Same-Query Easy-Risk Allocation (2026-09-24)
 
-Registered and executing; no result claim yet. Nine fixed decision controls on
-three frozen predictors distinguish pointwise, selected-denominator and
-population-denominator protection, plus same-count unary/joint pair objectives.
-The 2% surrogate multiplier and geometry parameters are unchanged. A 256-query
-real pilot completed in 0.61 seconds; the full matrix has 188,388 query/action/seed
-instances. It is not 188,388 independent scenes. 69 scoped tests pass, including
-exhaustive small-problem solver comparisons. No new fitting or threshold search.
-See the [registration](outputs/publication_readiness_2026_09/easy_allocation_v1/registration.md).
-Inference chunks are saved before any new outcome readout; no external source or
-reserved confirmation data are opened. Stage5C/SMC stay off.
+**Complete, repaired and verified; no policy promotion.** All 175,756 windows and
+188,388 query/action/seed instances were processed for nine fixed controls and
+three frozen predictors. Selected-set pooling barely repairs the near-zero
+pointwise result. Population-denominator allocation gives ADE gains of 0.9213%,
+1.2802% and 0.9556% for damping, Transformer and EqMotion; worst site/seed easy
+degradation is 0%, 0.1120% and 0.0381%. Transformer still trails old strict by
+1.1567 pp, paired CI95 [-2.0064, -0.5223]. Joint versus unary adds only 0.00004811
+pp for Transformer, CI including zero. Two zero-CV query/seed instances are harmed.
+These are native8/12 development metrics, not historical t+50 or certified safety.
+
+The [complete conclusions](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/conclusions.md),
+[all controls](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/results.md),
+[execution record](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/execution_notes.md)
+and [manuscript addendum](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/manuscript_addendum.md)
+retain the negative comparisons. V1 had 127 fail-closed numerical solver queries;
+an equivalent cost-unit repair fixes these while preserving all 188,261 other
+queries and the original risk threshold. Both versions remain available. All
+repaired counts are matched; no new-rule predicted-budget violation remains.
+
+Decision/aggregate replay and independent arithmetic pass: 1,190 small-query
+optima, 2,592 scene reductions and 45 paired contrasts. 115 scoped tests pass;
+the unrelated legacy suite was not rerun. An independently reviewed provenance
+gap is addressed by a guarded replay entrypoint; historical sources stay frozen.
+Allocation loop time was 293.34 seconds,
+not training time or total pipeline runtime. All required processes finished.
+No new training, threshold search, external prediction, calibration, confirmation
+or deployment. Next: diagnose source-excluded conditional-risk reliability before
+any new target/representation repair. DroneCrowd stays closed; Stage5C/SMC off.
 
 ## Conditional Easy-Moment Experiment (2026-09-24)
 
@@ -47,8 +65,8 @@ arithmetic pass: 216 decision arrays, 36 matched pairs, 1,728 scene reductions a
 27 paired contrasts. 56 scoped tests pass; the unrelated legacy suite was not
 rerun. All required processes finished. No new external readout, risk certificate,
 confirmation or deployment. DroneCrowd remains closed; Stage5C and SMC off.
-Submission readiness remains unmet. Next: distinguish pointwise conservatism from
-aggregate risk allocation without retuning this readout or reopening confirmation.
+Submission readiness remains unmet. The subsequent aggregate-risk allocation
+experiment above is complete; it did not establish a new best policy.
 
 ## Dense External Source Intake (2026-09-24)
 

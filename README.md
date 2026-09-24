@@ -10,11 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now testing [same-query risk allocation](outputs/publication_readiness_2026_09/easy_allocation_v1/registration.md)
-with those frozen forecasts and risk estimates. The controls distinguish
-pointwise protection, selected-set budgets, population budgets, whole-scene
-switching and matched-count pair decisions. No model or threshold is being
-refitted; this source-only development readout is in progress.
+I have completed the [same-query risk allocation study](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/conclusions.md)
+on the full registered source population. Pooling risk across targets recovers
+some useful intervention: Transformer ADE gain reaches 1.280%, with 0.112%
+worst-site/seed easy degradation. It still trails the previous strict rule's
+2.437% gain, and the nonadditive interaction term adds almost nothing beyond
+the matched unary control. I am not promoting this as a new best policy.
+The study also exposed and repaired a small-risk numerical solver issue without
+loosening the risk limit; both versions and all negative results are retained.
+Full replay, separate arithmetic and 115 scoped tests pass. No predictor was
+retrained, no threshold was tuned, and independent confirmation remains closed.
 
 I have completed the [conditional easy-risk experiment](outputs/publication_readiness_2026_09/easy_moment_v1/conclusions.md):
 36 new risk heads on frozen damping, Transformer and EqMotion forecasts. Directly
