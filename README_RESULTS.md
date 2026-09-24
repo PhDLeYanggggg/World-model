@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Easy-Moment Experiment (2026-09-24)
+
+Registered and training, not a result yet. Three fixed predictors x four source
+sites x three seeds give 36 small joint-moment forests. The existing forecast
+models and neural gain/harm heads are reused and hash-verified. The new comparison
+uses the same fitted head for joint easy harm and a product-of-marginals control,
+with shared historical reporting cutoffs, identical source draw counts and no
+threshold selection. The original strict and net-positive policies remain controls.
+
+The [registration](outputs/publication_readiness_2026_09/easy_moment_v1/registration.md)
+records the hypothesis, all reporting requirements and rejection criteria.
+Pre-fit schema/cutoff errors were stopped and repaired before any model fit;
+the [execution record](outputs/publication_readiness_2026_09/easy_moment_v1/execution_notes.md)
+preserves both. A 16-tree pilot checkpoint is resumed to the full 128-tree budget.
+56 scoped tests pass, including exact fixture resume. No new forecasting model,
+external readout, risk certification, confirmation or deployment. DroneCrowd
+remains closed; Stage5C and SMC off. Run completion requires all 36 fits, final
+outcome readout, exact replay and separate arithmetic, not a live heartbeat alone.
+
 ## Dense External Source Intake (2026-09-24)
 
 **Fresh acquisition and structural audit, not new training:** the official

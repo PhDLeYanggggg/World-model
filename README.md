@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing a [conditional easy-risk head](outputs/publication_readiness_2026_09/easy_moment_v1/registration.md)
+on the frozen damping, Transformer and EqMotion predictions. The question is
+whether learning easy-weighted harm directly protects simple cases better than
+multiplying separately predicted difficulty and harm. The 36-head source-only
+experiment is running with fixed budgets and thresholds. It changes neither
+the predictors nor the evaluation protocol; no external result or deployment
+decision is implied by fitting completion.
+
 I have acquired and audited the [official HT21/CroHD annotations](outputs/publication_readiness_2026_09/ht21_annotations_v1/conclusions.md)
 to investigate denser external interactions. All 1,188,496 released GT rows and
 the history-support counts reproduce, but I have not admitted them as a new
