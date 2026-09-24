@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cutoff-Relative Risk Context (In Progress, 2026-09-24)
+
+The [fixed follow-up](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/registration.md)
+restores history-scale and forecast-disagreement information relative to the
+frozen source easy cutoff. It does not change the cutoff, risk tolerance,
+forecasts, targets or sampling. 36 fresh forests are registered against the
+previous 72 verified controls; all four sites remain development-exposed.
+The actual16-tree pilot completed and full training resumed on arm64 CPU4/workers0.
+48 scoped tests pass. There is no new aggregate result yet and no deployment change.
+
+The scale-loss witness is synthetic, not empirical proof of the prior failure's
+cause. The repair is a representation reparameterization, not added neural capacity
+or external calibration. All future errors on IMPTC/DroneCrowd remain unopened.
+[Operation and recovery](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/operation_zh.md).
+
 ## Matched Dimensionless Risk Heads (2026-09-24)
 
 **Full training and readout completed; no promotion.** The

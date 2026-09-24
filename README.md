@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing [cutoff-relative risk features](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/registration.md)
+to address the easy-case failure below without changing the risk limit. The full
+36-fit matrix keeps the previous predictors, targets and source draws fixed;
+the 72 existing heads remain verified controls. The real pilot has resumed into
+full training. No new predictive result or deployment decision is claimed yet.
+
 I have completed a [matched dimensionless risk-head study](outputs/publication_readiness_2026_09/dimensionless_risk_v1/conclusions.md):
 72 fresh fits with unchanged predictors, matched source draws and three seeds.
 Removing explicit native-unit features increases the population policy's average
