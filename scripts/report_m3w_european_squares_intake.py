@@ -23,6 +23,16 @@ def main():
     records = a['recordings']
     if independent['total_rows_replayed'] != a['rows'] or len(independent['records']) != len(records):
         raise ValueError('Incomplete independent replay')
+    overlap = 0
+    prior = PRIVATE.with_name('european_squares_intake_v1')/'records'
+    by_member = {r['source_member']: r for r in records}
+    for p in prior.glob('*.json'):
+        if p.name.endswith('_track_hashes.json'):
+            continue
+        old = json.loads(p.read_text())
+        if {k:v for k,v in old.items() if k!='identity'} != by_member[old['source_member']]:
+            raise ValueError('V2 changed a previously verified full-schema recording')
+        overlap += 1
     support = {}
     for key in records[0]['support']:
         support[key] = {name:sum(r['support'][key][name] for r in records) for name in
@@ -55,6 +65,7 @@ def main():
         within_recording_exact_full_relative_track_aliases=sum(r['duplicate_full_relative_track_geometries'] for r in records),
         cross_recording_exact_full_relative_track_groups=a['cross_recording_exact_relative_track_duplicate_groups'],
         prefix_checks=a['prefix_checks'],exact_replay=True,separate_arithmetic=True,
+        v1_full_schema_recordings_reproduced=overlap,
         direct_past_membership_checks=sum(r['past_membership_checks'] for r in independent['records']),
         independent_future_count_checks=sum(r['complete_future_count_checks'] for r in independent['records']),
         independent_velocity_checks=sum(r['direct_velocity_checks'] for r in independent['records']),

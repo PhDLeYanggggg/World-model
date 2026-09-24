@@ -44,7 +44,29 @@ have no raw match. The exact differences are retained in
 No processed file is substituted for absent raw support and no source metadata
 is silently corrected. A later role manifest must record any adopted mapping.
 
+The comparative tables and raw archive both total 147, but the correspondence
+is not exact. Square 67 (Trencin-Mierove) has four metadata records and three raw
+files; its 3 July evening raw file is absent. Square 82 (Villamartin) has three
+metadata records but four raw files, including a 3 July evening recording not
+listed in that table. Varberg's three weekday records are dated 5 July in the
+statistics and 9 July in their raw filenames. All comparative filenames have
+parseable dates; these mismatches are retained in
+[comparative_correspondence.json](comparative_correspondence.json).
+No date or identity is silently changed to force agreement.
+
+Four repeatedly sampled sites (4, 8, 9, 74) contribute 121,938,811 of the
+152,372,066 raw rows, or 80.027%. More rows do not establish balanced physical-site
+support. Any later role allocation, training sampler and uncertainty calculation
+must keep locality and recording reuse explicit rather than treating all windows
+as independent.
+
 These are source inventory findings, not independent calibration admission,
 forecast improvement or proof of causal tracking. The new source remains
 quarantined and unassigned until the complete structural and provenance work is
 reviewed. DroneCrowd confirmation remains closed.
+
+This source uses fixed webcam views; raw image boxes are not themselves a
+verified top-down ground-plane representation. No scene images are acquired in
+this task. A raw trajectory-only support study must not be described as a newly
+validated multimodal or metric top-down benchmark. The geometric transforms and
+their point/projection conventions need separate verification before that claim.

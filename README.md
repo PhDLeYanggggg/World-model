@@ -12,12 +12,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 I have read all 376 released raw recordings in the European Squares dataset:
 152,372,066 rows and 514,615 recording-scoped tracker IDs across 39 nominal square
-IDs. The [versioned adapter](outputs/publication_readiness_2026_09/european_squares_intake_v2/versioned_repair.md)
-handles both official schemas without deleting short tracks or incomplete
-futures. Its 52 scoped tests pass; full replay and separate arithmetic checks
-are running. The metadata contain duplicate recording records and scene-ID
-conflicts, so the data are not yet admitted as independent evidence. No new
-forecast scores, training or policy selection have occurred.
+IDs. The [completed intake](outputs/publication_readiness_2026_09/european_squares_intake_v2/conclusions.md)
+reproduces exactly on a full raw-data replay and passes a separate arithmetic
+check. Short tracks and incomplete futures are retained. I have also built
+[locality isolation keys](outputs/publication_readiness_2026_09/european_squares_site_groups_v1/conclusions.md),
+merging nearby same-city squares into 37 provisional groups before any split.
+58 scoped tests pass. Metadata conflicts and prior-source exposure still need
+admission decisions, so I am not yet treating these groups as independent
+evidence. No new forecast scores, training or policy selection have occurred.
 
 I have completed the [causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/conclusions.md)
 following the failed zero-reference guard. All 36 views reproduce exactly. The

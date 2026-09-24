@@ -10,6 +10,7 @@ V1 的局部成功包装成完整结果。
 ```bash
 .venv-pytorch/bin/python scripts/audit_m3w_european_squares_v2.py
 .venv-pytorch/bin/python scripts/reconcile_m3w_european_squares_members.py
+.venv-pytorch/bin/python scripts/audit_m3w_european_squares_correspondence.py
 .venv-pytorch/bin/python scripts/audit_m3w_european_squares_v2.py --verify
 .venv-pytorch/bin/python scripts/verify_m3w_european_squares_arithmetic.py
 .venv-pytorch/bin/python -m pytest tests/test_m3w_european_squares_intake.py tests/test_m3w_european_squares_raw_v2.py tests/test_m3w_imptc_intake.py -q

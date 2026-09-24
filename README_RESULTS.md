@@ -5,36 +5,54 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Squares Intake (2026-09-24, Raw Audit Complete; Replay Running)
+## European Squares Intake (2026-09-24, Full Audit and Replay Verified)
 
 Official acquisition and the full V2 raw audit complete: 376 raw CSVs,
 152372066 rows, 514615 scoped tracker IDs and 39 nominal square IDs. The
 9.45 GB archive matches publisher MD5 and retained SHA256. Main audit elapsed
-time is 603.39 seconds, peak RSS 4.47 GB; complete replay is running.
+time is 603.39 seconds, peak RSS 4.47 GB. Complete replay finishes in 612.86
+seconds and reproduces every recording and summary exactly. Separate arithmetic
+finishes in 234.36 seconds, replays all rows and checks 362760 fixed past-support
+cases, 9024 future-support counts and 3104 direct velocities. Its first attempt
+was interrupted without a completion artifact; it was not credited as complete.
 2256 future-mutation/truncation prefix checks pass. No exact complete-track
 geometry aliases are found within or across recordings; partial clip and
 physical-site independence are not established by this screen.
 
 V1 stopped at the fifth recording because 60 official files omit the text class
 name. Its failure and four successful records remain intact; V2 freshly reads
-all 376 with this field explicitly optional. 52 scoped tests pass, not the full
-legacy suite. No short-track or future-label filter is used.
+all 376 with this field explicitly optional. The four completed V1 recording
+summaries reproduce exactly. 52 intake-related tests and 6 additional locality
+tests pass together, 58 total, not the full legacy suite. No short-track or
+future-label filter is used.
 
 The seasonal metadata have 244 records but 236 unique city/date/slot keys, eight
 repeated keys and seven unique keys without raw CSV matches. Raw seasonal
 members total 229, not 244. Five available Biberach recordings have inconsistent
 IDs in the statistics table. No absent raw file is replaced by processed data.
+The comparative total also masks site-specific differences: Trencin-Mierove has
+one fewer raw recording, Villamartin one more, and Varberg weekday dates differ.
+About 80.027% of raw rows come from four repeatedly recorded sites.
 
 K8/stride12 has 90701631 past-supported windows: 54070558 complete future labels,
 35021410 partial and 1609663 absent. These overlapping counts are not independent
 samples, common seconds or a new forecasting protocol. The source stays
 quarantined and unassigned; no prediction errors, training or policy change.
+[Final intake conclusions](outputs/publication_readiness_2026_09/european_squares_intake_v2/conclusions.md),
+[execution record](outputs/publication_readiness_2026_09/european_squares_intake_v2/execution_notes.md),
 [Schema repair and inventory](outputs/publication_readiness_2026_09/european_squares_intake_v2/versioned_repair.md),
 [raw audit](outputs/publication_readiness_2026_09/european_squares_intake_v2/analysis.json),
 [operation](outputs/publication_readiness_2026_09/european_squares_intake_v2/operation_zh.md).
 [Provenance](outputs/publication_readiness_2026_09/european_squares_intake_v1/provenance.md),
 [scope](outputs/publication_readiness_2026_09/european_squares_intake_v1/scope.md),
 [CREATE observation](outputs/publication_readiness_2026_09/european_squares_intake_v1/create_status.md).
+
+Outcome-blind [locality keys](outputs/publication_readiness_2026_09/european_squares_site_groups_v1/conclusions.md)
+now bind all 376 recording identities to 37 provisional groups. Trencin 67/68
+and Brzesko 104/105 cannot be separated by the working grouping. A 1 km screen
+also yields 37 groups, while 10 km yields 36. These metadata distances are not
+trajectory calibration, and grouping does not establish source independence or
+allocate train/calibration/test roles. Forecast readout remains unopened.
 
 ## Moving Zero-CV Neighborhood Diagnostic (2026-09-24, Complete)
 
