@@ -5,24 +5,43 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Source Forecast and Intervention (2026-09-24, Running)
+## European Source Forecast and Intervention (2026-09-24, Completed, Not Deployable)
 
-The fixed matrix trains eighteen real Torch predictors with 4,000 updates each,
-three seeds and source-locality exclusions. The real 100-update pilot completes
-and resumes inside that budget. Native arm64 CPU4/inter-op1/workers0 is running;
-no NumPy substitute, CREATE submission or silent budget reduction. Predictive
-readout is not yet complete, so no efficacy claim is made at this checkpoint.
+Fresh run: 18 real Torch predictors, 4,000 updates each, three seeds; nine ridge
+and nine neural gain/harm heads, the latter with 2,000 updates each. The complete
+registered source cohort has 318,969 targets across 12 opened training localities.
+The joint-control pilot has 6,116 targets at 1,152 queries, not the full cohort.
 
-The separate nested gain/harm and matched-query control experiment is registered
-before forecasting readout. It cannot use an outer locality to train either its
-cost labels' producer or its cost head. Its predicted harm budget is explicitly
-not a certified easy-risk guarantee. All reserved roles remain closed. 72 scoped
-tests pass, not the full legacy suite. Checkpoints/caches remain private.
+Mean-seed ADE gain against the training-selected baseline is +4.1135%, with
+3,000-locality-bootstrap CI [1.3672%, 6.9485%]. This averages separate seed errors,
+not ensemble predictions. Against CV, the neural gain is +2.1576%, below the
+fixed damping-0.97 control's +3.9755% on the same equal-locality scale. The
+training-selected baseline must not be relabelled the retrospective best control.
 
-[Forecast registration](outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md),
-[intervention registration](outputs/publication_readiness_2026_09/european_source_intervention_v1/registration.md).
+Safety fails: neural positive-easy degradation is 13.65--14.39%; all four
+zero-CV cases are harmed in every seed. The chosen fallback itself has 15.48%
+positive-easy degradation. Nested cost gating does not resolve that floor defect.
+On the joint pilot, the neural cost head's joint rule gives +0.307%, +0.484%
+and +0.526% over the floor, but easy degradation remains 10.81--11.10%.
+Matched-count joint versus independent gains are exactly zero for that head
+in all three seeds. Nonadditive interaction value is not established.
 
-## European Squares Roles and Source Cohort (2026-09-24)
+Cached verification reproduces both full readouts. Fresh checkpoint inference
+reproduces 128 held rows for each of 18 predictors and 4,096 held rows for each
+of 18 cost heads exactly. 127 scoped tests pass, not the full legacy suite.
+No held locality was used anywhere in its nested producer/head fitting chain;
+reserved selection/calibration/confirmation remain closed. These intervals are
+conditional source-development evidence, not an independent safety certificate.
+No deployment change, metric/seconds claim, Stage5C or SMC. Private data and
+checkpoints are not committed. Historical Stage37 scores remain exploratory
+because the later lineage audit found duplicate sources and test-based selection.
+
+[Audit entry](outputs/publication_readiness_2026_09/audit_entry_20260924.md),
+[forecast conclusions](outputs/publication_readiness_2026_09/european_source_forecast_v1/conclusions.md),
+[intervention conclusions](outputs/publication_readiness_2026_09/european_source_intervention_v1/conclusions.md),
+[matched contrasts](outputs/publication_readiness_2026_09/european_source_intervention_v1/paired_joint_contrasts.md).
+
+## European Squares Roles and Source Cohort (2026-09-24, Historical Pre-Forecast Snapshot)
 
 The partial-clip audit covers all376raw recordings and152,372,066rows, with
 8,421,186exact and8,327,929integer-pixel dynamic eight-frame blocks. There are

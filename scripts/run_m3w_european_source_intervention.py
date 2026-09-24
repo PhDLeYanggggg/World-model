@@ -78,6 +78,10 @@ def assert_identity(identity):
     parent.assert_identity(identity['parent_identity'])
 
 
+def artifacts_ok(receipt):
+    return all(digest(ROOT/v['path'])==v['sha256'] for v in receipt['artifacts'].values())
+
+
 def prediction(key,ids):
     path = parent.PRIVATE/'predictions'/(key+'.npz')
     r = json.loads(path.with_suffix('.json').read_text())
@@ -152,7 +156,7 @@ def train(reg,data,identity,designs,resume):
             hid = dict(identity=identity,lineage=a['lineage'],arm=arm)
             if receipt_path.exists():
                 r = json.loads(receipt_path.read_text())
-                if r['identity']!=hid or any(digest(ROOT/v['path'])!=v['sha256'] for v in r['artifacts'].values()):
+                if r['identity']!=hid or not artifacts_ok(r):
                     raise ValueError('Completed cost head differs')
                 beat('verified_completed_cost_head',trial=name)
                 continue
@@ -229,8 +233,7 @@ def evaluate(reg,data,identity,designs,qmask,verify):
         for arm in reg['arms']:
             path = PRIVATE/'heads'/(key+'_'+arm)/'complete.json'
             r = json.loads(path.read_text())
-            if r['identity']['identity']!=identity or any(
-                    digest(ROOT[v['path']])!=v['sha256'] for v in r['artifacts'].values()):
+            if r['identity']['identity']!=identity or not artifacts_ok(r):
                 raise ValueError('Missing or changed fixed-endpoint cost head')
             reports[key+'_'+arm] = r
     n = len(data['sites'])

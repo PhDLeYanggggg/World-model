@@ -10,14 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now training the [registered European Squares source-only models](outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md).
-The matrix contains 18 fresh Transformer fits: three seeds, three source folds,
-and separate predictors for nested cost supervision. The first real Torch
-checkpoint resumes correctly; the full run is in progress, not a reported model
-improvement. Strong controls include past-history OLS velocity and two fixed
-velocity decays. The follow-on [gain/harm study](outputs/publication_readiness_2026_09/european_source_intervention_v1/registration.md)
-compares pointwise and joint intervention at matched coverage. Reserved source
-roles and DroneCrowd confirmation remain closed, and deployment is unchanged.
+I have completed the [European Squares source-only experiment](outputs/publication_readiness_2026_09/european_source_forecast_v1/conclusions.md):
+18 real Transformer fits, three seeds and 72,000 optimizer updates. Mean-seed
+ADE improves by 4.11% over the baseline selected on other fitting localities,
+with a conditional locality-bootstrap interval of [1.37%, 6.95%]. But easy-case
+degradation is 13.65--14.39%, and every seed harms the four zero-error CV cases.
+This is a useful prediction signal, not a safe deployable model.
+
+The comparison needs care: fixed damping 0.97 achieves 3.98% gain over CV,
+versus 2.16% for the neural predictor on the same scale. I cannot claim that
+the neural model beats every strong baseline. The training-selected fallback
+also fails easy preservation; a fallback is not automatically a safety floor.
+
+The [nested gain/harm study](outputs/publication_readiness_2026_09/european_source_intervention_v1/conclusions.md)
+adds nine ridge and nine neural cost heads. Joint intervention does not show a
+stable advantage over independent decisions at the same intervention count.
+I am retaining these negative controls and changing neither deployment nor the
+risk limits. The [audit entry](outputs/publication_readiness_2026_09/audit_entry_20260924.md)
+links results, losses, checkpoint replays and limitations. All 36 checkpoint
+checks reproduce sampled predictions exactly; 127 scoped tests pass. Reserved
+selection, calibration and confirmation roles, including DroneCrowd, remain closed.
 
 I have frozen [locality-level roles for European Squares](outputs/publication_readiness_2026_09/european_squares_roles_v1/conclusions.md)
 before looking at prediction errors: 12 training groups, 6 for model selection,

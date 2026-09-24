@@ -81,3 +81,14 @@ def test_control_batch_report_is_serializable_and_preserves_unknown_population(m
     assert choices['ids'].tolist()==[0,1,2]
     assert len(report)==2
     json.dumps(report,allow_nan=False)
+
+
+def test_completed_artifact_check_resolves_relative_path_and_detects_mutation(tmp_path,monkeypatch):
+    from scripts import run_m3w_european_source_intervention as runner
+    monkeypatch.setattr(runner,'ROOT',tmp_path)
+    path = tmp_path/'saved.bin'
+    path.write_bytes(b'fixed')
+    r = {'artifacts':{'checkpoint':{'path':'saved.bin','sha256':runner.digest(path)}}}
+    assert runner.artifacts_ok(r)
+    path.write_bytes(b'changed')
+    assert not runner.artifacts_ok(r)
