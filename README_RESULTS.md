@@ -5,6 +5,41 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## IMPTC Source Conversion and Support Audit (2026-09-24)
+
+**Real source acquisition and conversion completed; forecasting not run.**
+The publisher's 347,692,691-byte sample archive matches its MD5. All 142,361
+observations and 371 tracks were converted with exact master-clock joins;
+the private derived cache is 6,897,122 bytes. There are four recordings at one
+intersection, not four independent sites. The person-labelled audit subset has
+61 tracks and 56,374 observations. Whole-track class is excluded from inference.
+
+Native-index K8 support is 139,764 past-eligible windows, including 135,312 with
+full future12 labels, 4,081 partial and 371 absent. At diagnostic stride10, the
+corresponding counts are 116,538 / 85,648 / 27,327 / 3,563. Eligibility never
+requires future support. Neither stride is an assertion of matched SDD physical
+time; the primary SDD obs8/pred12 stride12 protocol is unchanged.
+
+Full source reparse and cache/aggregate replay pass. Separate set arithmetic
+checks every source row and all K8/16/32/64 support counts. 136 actual-data
+prefix-invariance comparisons and 59 scoped tests pass. This verifies the
+adapter, not upstream online causality, scientific independence or model lift.
+The unchanged full legacy suite was not rerun. This is only the official sample
+package, not the full dataset or an external benchmark run.
+
+The source remains quarantined without training/calibration/confirmation roles:
+IMM tracking provenance, related OpenTraj VRU site exposure and sufficient
+independent-site support must be resolved. TGSIM Foggy Bottom and AerialMPT were
+rejected as untouched candidates after locating historical use. No thresholds,
+models or deployment changed; DroneCrowd remains closed, Stage5C/SMC off.
+
+[Report](outputs/publication_readiness_2026_09/imptc_intake_v1/conclusions.md),
+[manifest](outputs/publication_readiness_2026_09/imptc_intake_v1/source_manifest.json),
+[support](outputs/publication_readiness_2026_09/imptc_intake_v1/analysis.json),
+[replay](outputs/publication_readiness_2026_09/imptc_intake_v1/verification.json),
+[separate checks](outputs/publication_readiness_2026_09/imptc_intake_v1/separate_checks.json)
+and [operation guide](outputs/publication_readiness_2026_09/imptc_intake_v1/operation_zh.md).
+
 ## Query Risk Credit and Denominator Controls (2026-09-24)
 
 **Completed and replay-verified; no policy promotion.** All 175,756 windows

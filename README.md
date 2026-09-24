@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have added a [verified IMPTC source adapter](outputs/publication_readiness_2026_09/imptc_intake_v1/conclusions.md)
+to work toward independent-site evidence. The official sample package contains
+142,361 observations across four recordings, but only one physical intersection
+and 61 person-labelled tracks. Every converted row and history-support count has
+been replayed and checked. No forecast errors have been opened and no model has
+been fitted on it. Source-processing provenance and related-site exposure still
+need resolving before admission; this is not independent calibration or a new
+model result. DroneCrowd confirmation stays closed.
+
 I have completed a [fixed comparison of shared risk budgets](outputs/publication_readiness_2026_09/risk_subsidy_v1/conclusions.md).
 It separates credit from other agents' predicted improvements from budget
 contributed by agents whose forecasts stay unchanged. Removing both eliminates
