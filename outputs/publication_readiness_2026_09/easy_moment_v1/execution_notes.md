@@ -41,3 +41,8 @@ decision. Generated figure labels were visually checked for legibility.
 
 Registration/start commit: `3e2b232557edf2a160ea19ee3e8804177d89869d`.
 Analysis SHA256: `51f3a8fb50b21ec1c02e7aaee37baf42ebd4e52310d05573ca7f3c75f064800c`.
+
+The first exported CSVs used the standard csv writer's CRLF terminator, which
+the repository whitespace check flagged. The exporter now uses LF and a fixed
+SVG identifier salt. Parsed CSV values and the pinned analysis remain identical;
+this post-fit formatting repair changes no policy or numerical result.

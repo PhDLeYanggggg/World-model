@@ -23,7 +23,7 @@ def main():
             mean_switch_rate_percent=100*sum(r['selected'] for r in s['seeds'].values())/(3*a['rows']),
             zero_CV_harmed_total=sum(r['zero_CV_harmed'] for r in s['seeds'].values())))
     with (PUBLIC/'results.csv').open('w',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+        writer=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');writer.writeheader();writer.writerows(rows)
     lines=['# Conditional Easy-Moment Results','','Development only; equal-site relative ADE gain over CV. Three seeds, four exposed sites.',
         'No metric/seconds, independent safety, confirmation or deployment claim. All fixed policies retained.','',
         '| Policy | ADE gain % [CI95] | Hard gain % | Worst easy degradation % | Switch % | Zero-CV harmed, summed seeds |',
@@ -63,7 +63,7 @@ def detailed_tables(a):
                     site_rows.append(dict(policy=policy,seed=seed,subset=subset,site=site,**m))
     fields=list(dict.fromkeys(k for r in site_rows for k in r))
     with (PUBLIC/'site_seed_results.csv').open('w',newline='') as f:
-        w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(site_rows)
+        w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');w.writeheader();w.writerows(site_rows)
     lines=['# Easy-Moment Reliability on Complete Labels','',
         'Post-fit descriptive diagnostics, not threshold selection or calibration. Each row uses',
         'only complete-path outcome labels; inference and intervention never use that mask.',
@@ -86,7 +86,7 @@ def detailed_tables(a):
                 display=['undefined' if v is None else f'{v:.4f}' for v in ratios]
                 lines.append(f"| {key} | {policy} | {s['count']} | {display[0]} | {display[1]} |")
     with (PUBLIC/'conditional_reliability.csv').open('w',newline='') as f:
-        w=csv.DictWriter(f,fieldnames=list(quality[0]));w.writeheader();w.writerows(quality)
+        w=csv.DictWriter(f,fieldnames=list(quality[0]),lineterminator='\n');w.writeheader();w.writerows(quality)
     (PUBLIC/'conditional_reliability.md').write_text('\n'.join(lines)+'\n')
 
 
@@ -125,7 +125,7 @@ def rejection_diagnostics(a):
                     complete_net_beneficial_hard_gain_sum=float(gain[useful].sum()),
                     complete_joint_beneficial_hard_gain_sum=float(gain[useful&joint].sum())))
     with (PUBLIC/'rejection_diagnostics.csv').open('w',newline='') as f:
-        w=csv.DictWriter(f,fieldnames=list(records[0]));w.writeheader();w.writerows(records)
+        w=csv.DictWriter(f,fieldnames=list(records[0]),lineterminator='\n');w.writeheader();w.writerows(records)
     summary={}
     for action in ('damped_velocity_005','transformer','eqmotion'):
         subset=[r for r in records if r['action']==action]
@@ -144,6 +144,7 @@ def rejection_diagnostics(a):
 def figure(rows):
     import matplotlib
     matplotlib.use('Agg')
+    matplotlib.rcParams['svg.hashsalt']='m3w-easy-moment-v1'
     import matplotlib.pyplot as plt
     import numpy as np
     actions=['damped_velocity_005','transformer','eqmotion']
@@ -175,7 +176,9 @@ def figure(rows):
     axes[0,0].set_ylabel('Equal-site ADE gain over CV (%)')
     axes[1,0].set_ylabel('Worst-site/seed easy degradation (%)')
     fig.suptitle('Fixed policies on four development-exposed SDD sites\nTop: paired-site CI95; bottom: observed easy harm, not certified risk',fontsize=12)
-    fig.savefig(PUBLIC/'fixed_policy_tradeoff.svg',metadata={'Date':None})
+    svg=PUBLIC/'fixed_policy_tradeoff.svg'
+    fig.savefig(svg,metadata={'Date':None})
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     preview=ROOT/'data/stage_cvpr2027_experiments/easy_moment_v1/tradeoff_preview.png'
     fig.savefig(preview,dpi=130)
     plt.close(fig)
