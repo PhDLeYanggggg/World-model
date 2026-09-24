@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Full EqMotion Matched Controls (2026-09-24)
+
+The [asset inventory correction](outputs/publication_readiness_2026_09/protected_motion_controls_v1/asset_inventory_correction.md)
+records that EqMotion's pair-excluded producers and neural heads already exist;
+they will not be retrained. The missing comparison is twelve full-forecast forest
+heads and a common-protocol comparison with all protected simple controls and
+Transformer. Its [registration](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/registration.md)
+fixes sampling, protection and matched-count analysis before new fits. Current
+preflight verifies 1,075 bindings; 34 scoped tests pass. New training/readout are
+not_run at this checkpoint. No external tuning or new deployment is permitted.
+CREATE authentication currently fails; the local arm64 runtime is sufficient.
+
 ## Matched Protected Motion Controls (2026-09-24)
 
 The next source-only experiment separates forecasting from intervention control:

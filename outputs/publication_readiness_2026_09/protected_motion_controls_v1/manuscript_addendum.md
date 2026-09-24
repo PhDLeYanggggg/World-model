@@ -46,7 +46,9 @@ different claims.
 All intervals are nominal, unadjusted four-site development bootstraps, not
 confirmation. No physical safety, metric/seconds, image/goal contribution, joint
 benefit or foundation-world-model claim follows. EqMotion is not included in
-this nested comparison until pair-excluded source producers are available.
+this comparison. The subsequent inventory correction establishes that its
+pair-excluded producers already exist; a matched full-forecast extension remains
+to be evaluated. No retraining of those existing producers is implied.
 Existing external readouts are not reused for tuning. The complete tables,
 negative controls, matched-count safety analysis, loss records and replay
 evidence are linked from [conclusions.md](conclusions.md).

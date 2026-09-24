@@ -1,5 +1,10 @@
 # What Remains After Protecting the Simple Controls?
 
+**Inventory correction, 2026-09-24:** the pair-excluded EqMotion bank and neural
+cost heads already exist. They were omitted from this comparison, not absent.
+See [the correction](asset_inventory_correction.md). The missing addition is a
+matched full-forecast forest comparison. No predictor retraining is needed.
+
 ## Completed Evidence
 
 This registered source-only experiment is complete. It adds **72 neural cost
@@ -110,7 +115,7 @@ M3W a submission-ready world model.
 - Result origins: new causal and forest fitting / outer evaluation are
   `fresh_run`; twelve existing neural cost heads are `cached_verified` with
   exact input/label/preprocessing/support/hash checks. Nested EqMotion comparison
-  is `not_run` here, pending pair-excluded forecasting producers.
+  is `not_run` here; existing producers can support a separate matched extension.
 - The registered training run spans approximately four hours of wall-clock log
   timestamps. Summed new fitting-loop time is 1,741.19 seconds (29.02 minutes).
   The latter excludes loading, inter-fit overhead and wall-clock interruptions;
@@ -132,9 +137,9 @@ M3W a submission-ready world model.
 
 ## Next Concrete Step
 
-Build the missing **pair-excluded full-EqMotion source producer/control bank**
-under the same fixed population and budgets, with a local runtime pilot before
-deciding whether CREATE is warranted. This tests whether the present forecasting
+Reuse the verified **pair-excluded full-EqMotion source producer/neural-head bank**
+and fit the missing matched full-forecast forest heads under the same fixed
+population and budgets. This tests whether the present forecasting
 limit is specific to the small Transformer, without selecting a new DUT winner.
 Do not spend another round merely tuning the 0.1 threshold on exposed outcomes.
 
