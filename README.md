@@ -19,9 +19,10 @@ before its new readout; training progress is not a result or a deployment change
 I have found a [coordinate-unit dependency in the frozen risk heads](outputs/publication_readiness_2026_09/imptc_input_contract_v1/conclusions.md).
 Holding the motion and normalized predictions fixed, changing only two native-unit
 features flips the Transformer head's predicted signed easy-risk sign in 369 of 754
-diagnostic windows. I have added a separate unit-free input contract, but it
-requires new source-only head training and still has three strict numerical
-tolerance failures in EqMotion. This is an input-mechanism result, not forecasting
+diagnostic windows. I have added a separate unit-free input contract. Its initial
+three EqMotion numerical failures are retained, and a [versioned precision repair](outputs/publication_readiness_2026_09/imptc_precision_v2/conclusions.md)
+now passes the same probes; predictive value still requires source-only training.
+This is an input-mechanism result, not forecasting
 improvement: no external prediction errors were opened, no model was retrained,
 and deployment is unchanged. The run and replay are verified; DroneCrowd remains
 closed for confirmation.

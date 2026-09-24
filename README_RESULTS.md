@@ -23,6 +23,13 @@ Stage5C/SMC and all time/unit claims remain unchanged.
 
 ## External Unit Contract Diagnostic (2026-09-24)
 
+A [separate precision version](outputs/publication_readiness_2026_09/imptc_precision_v2/conclusions.md)
+now passes the fixed 754-window unit probes exactly for both frozen predictors.
+The original three EqMotion failures below remain the v1 result; they are not
+rewritten as a pass. No future errors were opened and this repair is not included
+in the separate matched risk-head training experiment. Four additional
+regression tests pass; predictive value and external admission are not established.
+
 **Completed and replay-verified; partial input repair, no training or forecast
 error readout.** On 58 fixed-modulus IMPTC queries / 754 past-eligible agent
 windows, real frozen Transformer/EqMotion forwards and three risk heads expose
