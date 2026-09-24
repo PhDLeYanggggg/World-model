@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing an [explicit zero-reference risk readout](outputs/publication_readiness_2026_09/zero_atom_v1/registration.md)
+on the frozen risk forests. All 36 source-only leaf readouts have finished fitting;
+the full decision and evaluation run is still in progress. The test asks whether
+separately representing cases where constant velocity is exactly correct can
+protect them without discarding useful intervention. It changes neither the
+2% easy-case limit nor the exact-zero protection rule. It is not new neural
+forecast training, independent confirmation or a deployment result.
+
 I have completed the [cutoff-relative risk study](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/conclusions.md):
 36 fresh fits with the same predictors, targets, source draws and risk limit.
 Restoring motion scale relative to the training error cutoff reduces the preceding

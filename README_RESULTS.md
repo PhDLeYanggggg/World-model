@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Explicit Zero-Reference Risk Readout (2026-09-24, In Progress)
+
+All 36 source-only leaf-frequency readouts have completed on 36 cached-verified
+cutoff-relative forests, 128 trees each. The real 16-tree pilot resumed into the
+full matrix. These are new probability readouts, not new forests or neural
+predictors. Full decision freezing and readout are still running; no result or
+promotion is claimed. 53 scoped tests pass, including the 13 new tests; these
+are overlapping totals, not 66 unique tests or a full legacy suite.
+
+The [registered experiment](outputs/publication_readiness_2026_09/zero_atom_v1/registration.md)
+tests a separate zero-CV event component under the unchanged exact-zero harm
+tolerance. Original easy targets already included zero-CV cases; the hypothesis
+is conditional averaging/support failure, not missing labels. Unknown futures,
+all controls and same-query matched intervention counts are retained. Four source
+sites remain development-exposed, and independent confirmation remains closed.
+[Operation and recovery](outputs/publication_readiness_2026_09/zero_atom_v1/operation_zh.md).
+
 ## Cutoff-Relative Risk Context (2026-09-24)
 
 The [fixed follow-up](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/registration.md)
