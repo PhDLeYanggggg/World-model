@@ -1,0 +1,67 @@
+{
+  "cache_bytes": 488937,
+  "full_registered_source_cohort": false,
+  "identity": {
+    "archive_sha256": "068e584db8895447516d548de7cd3a7b67b1ceaae16afdf76c677602e5e8235f",
+    "data_role": "source_training",
+    "input_fields": [
+      "query_frame",
+      "agent_id",
+      "class_id",
+      "history_xy",
+      "history_boxes",
+      "history_valid",
+      "velocity_causal_fd",
+      "velocity_valid",
+      "target_eligible",
+      "baseline_cv",
+      "query_offsets"
+    ],
+    "label_fields": [
+      "future_xy",
+      "future_valid"
+    ],
+    "per_recording_query_cap": 256,
+    "roles_sha256": "858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435",
+    "source_code": {
+      "scripts/build_m3w_european_squares_source.py": "8b83d72324ea2fc856ccb6ace94a39f7eb319ab285cfbaf0da43199201eeea22",
+      "src/data_unification/m3w_european_squares_source.py": "1fd35b2274513469ebe2b83db5f50ee5814cca5d64f8c6f9c95247f89915c7f5",
+      "src/evaluation/m3w_european_squares_intake.py": "7ddac70b7178e9ff52f11ae06e160ba88148cd434e48b708a1183bc3d11d0267",
+      "src/evaluation/m3w_european_squares_raw_v2.py": "b9769b6c1e252d50669cec07e5802350bb80660df5dcc404313de6c5aacd1611",
+      "src/evaluation/m3w_european_squares_roles.py": "f952eabe6949abb4f61e72318e8f70dfcdded3489abe2ec8424fe35c6e8aee04",
+      "tests/test_m3w_european_squares_source.py": "077205fee6e96e9353b6d92ecac713c366a02a265336d00d18afc7466c5c33a3"
+    },
+    "source_task": "eight_observed_twelve_requested_raw_stride12_unsmoothed_box_center"
+  },
+  "locality_groups": 1,
+  "metric_claim": false,
+  "no_future_input": true,
+  "no_future_label_filter": true,
+  "prediction_errors_opened": false,
+  "raw_recordings": 1,
+  "record_receipts": [
+    {
+      "directory": "data/stage_cvpr2027_experiments/european_squares_source_v1/records/c95162e34a32be72d674ae8ba0007e76134475aff9dedd3117201dcd83a4056c",
+      "locality_group": "eu-locality-007",
+      "receipt_sha256": "a5deabda8bb9c6053fda239106753065d7dac8933d8902566c40bdd64ed834c3",
+      "role": "source_training",
+      "source_member": "01.Trajectories/01.Trajectories_raw/01.Trajectories_comparative/07_2024-07-04-08h00m47s-Bevagna_15_30min_yolov10l_final.csv"
+    }
+  ],
+  "reserved_roles_read": false,
+  "result_source": "fresh_run",
+  "seconds_claim": false,
+  "smc_enabled": false,
+  "stage5c_executed": false,
+  "totals": {
+    "future_truncation_checks": 3,
+    "incomplete_history_context_rows": 217,
+    "selected_query_frames": 256,
+    "target_complete_future": 46,
+    "target_no_future": 21,
+    "target_partial_future": 225,
+    "target_rows": 292,
+    "visible_agent_query_rows": 509
+  },
+  "training_executed": false
+}

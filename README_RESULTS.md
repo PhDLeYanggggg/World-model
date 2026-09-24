@@ -5,7 +5,48 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Squares Intake (2026-09-24, Full Audit and Replay Verified)
+## European Squares Roles and Source Cohort (2026-09-24)
+
+The partial-clip audit covers all376raw recordings and152,372,066rows, with
+8,421,186exact and8,327,929integer-pixel dynamic eight-frame blocks. There are
+no exact shared signatures and no cross-locality matches. All240quantized
+candidate groups stay within their locality; a fresh raw review of625instances
+in27recordings finds single detections with less than one pixel center excursion.
+These are bounded duplicate screens, not proof of universal independence.
+
+The pre-intake text search has no source-alias matches across the specified
+3,083tracked paths and91local identity receipts. Unknown remote assets and
+publisher detector pretraining remain outside that claim. The simulation task
+confirmed it has no exact M3W remote directory; no remote scan or job change.
+
+Roles are now frozen using36conservative locality groups:12source training,
+6model selection,12risk calibration and6confirmation. The last three remain
+closed. This is an outcome-blind retrospective detector-track source admission,
+not verified sensor-online, metric, seconds-level or human-gold data. The
+separate external8/12raw-stride12grid does not change the primary SDD protocol.
+
+The complete registered source-only cohort is built and freshly replayed from
+all163training recordings:41,550queries,518,488visible agent/query rows and
+318,969complete-past targets. Of those,193,705have complete future labels,
+118,217partial and7,047none; all are retained. Inputs and labels are separate.
+489real future-truncation checks pass. Private arrays total493MB. Build113.77s;
+complete raw replay115.40s;79scoped tests pass, not the full legacy suite.
+
+No predictor fitting, prediction errors, threshold selection or deployment
+change occurred. The next experiment must fit/cross-fit only within the opened
+training groups and be registered before predictive readout. Twelve reserved
+calibration groups do not automatically certify a tight population risk bound.
+The2%positive-easy and zero-reference limits remain unchanged. Stage5C and SMC
+remain disabled. DroneCrowd remains closed confirmation.
+
+[Role decision](outputs/publication_readiness_2026_09/european_squares_roles_v1/conclusions.md),
+[source cohort](outputs/publication_readiness_2026_09/european_squares_source_v1/conclusions.md),
+[execution record](outputs/publication_readiness_2026_09/european_squares_source_v1/execution_record.md),
+[operation](outputs/publication_readiness_2026_09/european_squares_source_v1/operation_zh.md),
+[partial-clip audit](outputs/publication_readiness_2026_09/european_squares_overlap_v1/conclusions.md),
+[prior-exposure scope](outputs/publication_readiness_2026_09/european_squares_exposure_v1/conclusions.md).
+
+## European Squares Intake (2026-09-24, Historical Pre-Admission State)
 
 Official acquisition and the full V2 raw audit complete: 376 raw CSVs,
 152372066 rows, 514615 scoped tracker IDs and 39 nominal square IDs. The

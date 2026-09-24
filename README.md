@@ -10,16 +10,27 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have read all 376 released raw recordings in the European Squares dataset:
-152,372,066 rows and 514,615 recording-scoped tracker IDs across 39 nominal square
-IDs. The [completed intake](outputs/publication_readiness_2026_09/european_squares_intake_v2/conclusions.md)
-reproduces exactly on a full raw-data replay and passes a separate arithmetic
-check. Short tracks and incomplete futures are retained. I have also built
-[locality isolation keys](outputs/publication_readiness_2026_09/european_squares_site_groups_v1/conclusions.md),
-merging nearby same-city squares into 37 provisional groups before any split.
-58 scoped tests pass. Metadata conflicts and prior-source exposure still need
-admission decisions, so I am not yet treating these groups as independent
-evidence. No new forecast scores, training or policy selection have occurred.
+I have frozen [locality-level roles for European Squares](outputs/publication_readiness_2026_09/european_squares_roles_v1/conclusions.md)
+before looking at prediction errors: 12 training groups, 6 for model selection,
+12 for risk calibration and 6 for confirmation. All recordings from a locality
+stay together. Only the training groups are open. The first registered source
+cohort is built from all 163 training recordings, with 318,969 prediction targets
+and incomplete-history neighbors retained. It
+[reproduces exactly from the raw recordings](outputs/publication_readiness_2026_09/european_squares_source_v1/conclusions.md);
+489 future-truncation checks and 79 scoped tests pass. Future labels are stored
+separately from past-only model inputs; missing futures do not remove targets.
+
+The [full raw intake](outputs/publication_readiness_2026_09/european_squares_intake_v2/conclusions.md)
+covers 152,372,066 rows in 376 recordings. The new
+[partial-clip screen](outputs/publication_readiness_2026_09/european_squares_overlap_v1/conclusions.md)
+finds no exact eight-frame dynamic matches or cross-locality integer-pixel matches.
+Near-static quantized matches remain within their locality. The
+[prior-exposure search](outputs/publication_readiness_2026_09/european_squares_exposure_v1/conclusions.md)
+is explicitly bounded; it does not prove universal independence or locate
+unknown remote assets. These are source-data improvements, not new model scores.
+The task uses released detector tracks in image pixels and raw frame indices,
+not verified online ground truth, meters or seconds. Reserved prediction errors
+and DroneCrowd confirmation remain closed; deployment is unchanged.
 
 I have completed the [causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/conclusions.md)
 following the failed zero-reference guard. All 36 views reproduce exactly. The
