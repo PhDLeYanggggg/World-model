@@ -13,10 +13,15 @@ and conservative fallback as the full Transformer. The fixed matrix covers four
 development-exposed sites, three seeds, neural and sampler-matched forest heads.
 All six alternatives are reported; no DUT-selected winner or threshold tuning.
 Twelve existing Transformer heads will be hash-verified rather than retrained.
-New training and outcome readout are **not_run** at this registration checkpoint.
+At registration, training and readout were **not_run**. Training is now active
+(PID65550): 85/168 completed fit/reuse receipts at 2026-09-24 02:37 UTC. No new
+outer outcome readout has occurred. Atomic checkpoints and explicit resume are
+available; 61 scoped tests pass. This progress count is not a completed result.
 The [registered comparison](outputs/publication_readiness_2026_09/protected_motion_controls_v1/registration.md)
 keeps DroneCrowd closed and changes no deployment decision. The earlier exhaustive
 joint-support audit is already complete and is not repeated as a new experiment.
+The [operation guide](outputs/publication_readiness_2026_09/protected_motion_controls_v1/operation_zh.md)
+documents local training, exact decision replay and independent arithmetic checks.
 
 ## DUT Readout Registered Before Forecast Errors (2026-09-23)
 
