@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing [event-conditional risk learning](outputs/publication_readiness_2026_09/european_conditional_risk_v1/registration.md)
+after the partial CV-reference repair. The forecast bank stays fixed while
+matched risk heads learn either all-sample or easy-event harm. A separate
+training-support abstention control measures whether protection comes from
+better risk estimates or simply less intervention. The real training pilot has
+passed; the fixed 36-head matrix is now running. No predictive or safety success
+is claimed before its complete readout.
+
 I have completed the [CV-reference repair](outputs/publication_readiness_2026_09/european_cv_reference_v1/conclusions.md):
 nine ridge and nine neural cost heads, with the original forecasts frozen.
 Changing the fallback and its gain/harm supervision to causal constant velocity

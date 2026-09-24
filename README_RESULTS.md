@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## European Conditional Risk (2026-09-25 London, Running)
+
+Registered source-only factorial experiment: all-event versus positive-easy
+baseline-error/harm moments, with and without fitting-zero-event-support
+abstention. All 18 forecasts, frozen utility heads, source folds, cutoffs and
+query populations remain unchanged. This is not independent calibration.
+
+Expected matrix: 18 ridge and 18 neural risk fits, 2,000 updates per neural fit.
+The 100-update real pilot completed on native arm64/CPU4/workers0 and resumes
+within the fixed 36,000-update budget. 51 scoped preflight tests passed. No
+predictive readout is claimed yet. The previous safety limits, complete target
+population and unopened independent roles are preserved.
+
+[Registration](outputs/publication_readiness_2026_09/european_conditional_risk_v1/registration.md),
+[matrix](outputs/publication_readiness_2026_09/european_conditional_risk_v1/matrix.json).
+
 ## European CV-Reference Repair (2026-09-24, Completed, Partial Repair Only)
 
 Fresh run: nine ridge and nine neural cost fits, 18,000 Torch optimizer updates,
