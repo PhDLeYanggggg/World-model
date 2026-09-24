@@ -5,6 +5,29 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Query Risk Credit and Denominator Controls (2026-09-24)
+
+**Registered; outcome readout not run.** Fresh diagnosis of the preceding study
+finds nine repeated zero-CV harms, only four unique windows and three tracks.
+None has exactly constant past velocity; all fail the individual signed-risk
+condition. The exact-history-CV veto is not pursued as their direct fix.
+
+The fixed 2x2 compares signed versus clipped expected net risk, and full-query
+versus selected-only denominator. All four use one solver/strict arithmetic
+contract, with retained parent decisions and matched-count controls. Frozen
+36-head bank, forecasts, features, rho=.02 and all source windows are unchanged.
+No new training, threshold sweep, outcome-selected winner or independent
+calibration. Selected-only pooling can still transfer budget between selected
+agents; clipping expected net harm is not expected positive harm or certified
+safety. Every rule and numerical failure must be reported.
+
+[Diagnosis](outputs/publication_readiness_2026_09/zero_reference_support_v2/report.md),
+[registration](outputs/publication_readiness_2026_09/risk_subsidy_v1/registration.md),
+and [recovery commands](outputs/publication_readiness_2026_09/risk_subsidy_v1/operation_zh.md).
+63 scoped tests pass. Four source sites remain design-exposed; DroneCrowd is
+closed. No Stage5C/SMC or new deployment. This is a source-only mechanism
+experiment, not another neural-training completion claim.
+
 ## Net Easy-Risk Target Experiment (2026-09-24)
 
 **Completed and replay-verified; development lift, no deployment change.** All
