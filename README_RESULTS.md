@@ -5,6 +5,26 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Net Easy-Risk Target Experiment (2026-09-24)
+
+**Training in progress; outcomes not yet read.** The frozen-output diagnosis
+separates positive easy harm from net easy degradation. This motivates a fixed
+36-head, three-seed experiment with unchanged forecasts, source draws, features,
+forest budget and rho=.02. Positive and signed risk use the same new four-output
+forest; an exact-count contrast tests whether any gain is only greater coverage.
+All four sites remain design-exposed. No new forecaster, test threshold tuning,
+independent calibration, confirmation or deployment.
+
+The [registration](outputs/publication_readiness_2026_09/net_easy_moment_v1/registration.md),
+[pre-readout numerical/provenance repair](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/pre_readout_repair.md),
+[bounded code review](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/code_review.md)
+and [recovery guide](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/operation_zh.md)
+are available. Native CPU4/workers0 pilot resumed to the full fixed budget.
+At the latest verified progress check, 24/36 fits had completed128 trees and no
+unknown-label rows were sampled. 144 scoped tests pass; the legacy suite was not
+rerun. This is engineering/training progress, not an empirical policy result.
+Stage5C/SMC remain off; DroneCrowd remains closed.
+
 ## Same-Query Easy-Risk Allocation (2026-09-24)
 
 **Complete, repaired and verified; no policy promotion.** All 175,756 windows and

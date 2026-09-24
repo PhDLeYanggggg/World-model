@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing [net easy-risk targets](outputs/publication_readiness_2026_09/net_easy_moment_v1/registration.md)
+after a [fixed-output diagnosis](outputs/publication_readiness_2026_09/easy_risk_definition_diagnosis_v1/report.md)
+showed that positive harm and net degradation can give very different decisions.
+This run fits 36 risk heads on unchanged forecasts, compares both rules using the
+same fitted moments, and keeps the 2% evaluation ceiling unchanged. Training is
+in progress; no new-policy outcome or deployment claim is available yet. The
+[method note](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/method_note.md)
+explains why allowing improvements to offset harm is a weaker constraint, not a
+new safety guarantee. Independent confirmation remains closed.
+
 I have completed the [same-query risk allocation study](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/conclusions.md)
 on the full registered source population. Pooling risk across targets recovers
 some useful intervention: Transformer ADE gain reaches 1.280%, with 0.112%
