@@ -33,6 +33,7 @@ def main():
     choices={(s,act,pol):np.zeros(n,bool) for s in cfg['seeds'] for act in cfg['actions'] for pol in policies}
     costs={(s,act):np.full(n,np.nan) for s in cfg['seeds'] for act in cfg['actions']}
     ends={key:val.copy() for key,val in costs.items()}
+    lower={key:np.zeros(n) for key in costs};upper={key:np.zeros(n) for key in costs}
     groups=dict(complete=mask.all(1),zero_CV=mask.all(1)&(cv==0),positive_easy=np.zeros(n,bool),hard=np.zeros(n,bool))
     counts=dict(fit_budgets=0,decision_arrays=0,matched_pairs=0,scene_reductions=0,contrasts=0)
     for key,meta in ev.items():
@@ -87,6 +88,12 @@ def main():
                 np.testing.assert_array_equal(bits,q[act+'__'+pol]);choices[seed,act,pol][ids]=bits
                 counts['decision_arrays']+=1
             costs[seed,act][ids],ends[seed,act][ids]=distances(prediction,truth[ids],mask[ids],data['scale'][ids])
+            point_distance=np.sqrt(np.sum((prediction.astype(float)-base[ids].astype(float))**2,axis=2))*data['scale'][ids,None]
+            point_gain=np.sqrt(np.sum((base[ids].astype(float)-truth[ids].astype(float))**2,axis=2))
+            point_gain-=np.sqrt(np.sum((prediction.astype(float)-truth[ids].astype(float))**2,axis=2))
+            observed=np.where(mask[ids],point_gain*data['scale'][ids,None],0).sum(1)/12
+            radius=np.where(mask[ids],0,point_distance).sum(1)/12
+            lower[seed,act][ids],upper[seed,act][ids]=observed-radius,observed+radius
         print(json.dumps(dict(view=key,state='independent_view_verified',**counts)),flush=True)
     for act in cfg['actions']:
         for pol in policies:
@@ -97,6 +104,9 @@ def main():
                 assert r['selected']==bits.sum() and r['selected_unknown']==(bits&~mask.any(1)).sum()
                 assert r['selected_incomplete']==(bits&~mask.all(1)).sum()
                 assert r['zero_CV_harmed']==(ade[groups['zero_CV']]>0).sum()
+                for site in cfg['sites']:
+                    bounds=[np.where(bits,b[seed,act],0)[data['sites']==site].mean() for b in (lower,upper)]
+                    np.testing.assert_allclose(bounds,r['full_grid_gain_bounds'][site],rtol=1e-10,atol=1e-10)
                 counts['scene_reductions']+=check_metrics(ade,cv,data['sites'],cfg['sites'],r['ADE'])
                 counts['scene_reductions']+=check_metrics(fde,cf,data['sites'],cfg['sites'],r['FDE'])
                 for name,m in groups.items():

@@ -10,13 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing a [conditional easy-risk head](outputs/publication_readiness_2026_09/easy_moment_v1/registration.md)
-on the frozen damping, Transformer and EqMotion predictions. The question is
-whether learning easy-weighted harm directly protects simple cases better than
-multiplying separately predicted difficulty and harm. The 36-head source-only
-experiment is running with fixed budgets and thresholds. It changes neither
-the predictors nor the evaluation protocol; no external result or deployment
-decision is implied by fitting completion.
+I have completed the [conditional easy-risk experiment](outputs/publication_readiness_2026_09/easy_moment_v1/conclusions.md):
+36 new risk heads on frozen damping, Transformer and EqMotion forecasts. Directly
+learning easy-weighted harm protects the observed easy cases but rejects nearly
+all useful neural intervention. Transformer ADE gain falls from 2.437% under
+the previous strict rule to 0.013%; EqMotion falls from 1.609% to 0.001%.
+Equal-intervention comparisons also favor the simpler product-of-marginals
+control. I am retaining this as a negative result, not replacing the current
+policy. The complete run, losses, source exclusions and independent arithmetic
+checks are documented; these remain four-site development results, not external
+confirmation or a safety guarantee.
 
 I have acquired and audited the [official HT21/CroHD annotations](outputs/publication_readiness_2026_09/ht21_annotations_v1/conclusions.md)
 to investigate denser external interactions. All 1,188,496 released GT rows and

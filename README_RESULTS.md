@@ -7,22 +7,35 @@ or evidence status.
 
 ## Conditional Easy-Moment Experiment (2026-09-24)
 
-Registered and training, not a result yet. Three fixed predictors x four source
-sites x three seeds give 36 small joint-moment forests. The existing forecast
-models and neural gain/harm heads are reused and hash-verified. The new comparison
-uses the same fitted head for joint easy harm and a product-of-marginals control,
-with shared historical reporting cutoffs, identical source draw counts and no
-threshold selection. The original strict and net-positive policies remain controls.
+**Completed, replay-verified negative result.** Three fixed predictors x four
+source sites x three seeds give 36 freshly fitted 128-tree moment forests.
+Forecasts and neural cost heads are cached-verified, not retrained. Direct joint
+easy-harm estimation yields only 0.1241%, 0.0134% and 0.0013% ADE gain for damping,
+Transformer and EqMotion, respectively, despite zero observed worst-site/seed
+easy degradation. The new gates almost eliminate useful hard interventions.
+Both unrestricted and equal-count direct-versus-product contrasts favor product;
+all nominal paired-site intervals are negative. This does not establish a useful
+new policy, a neural forecasting contribution or calibrated safety.
+
+The [conclusions and diagnosis](outputs/publication_readiness_2026_09/easy_moment_v1/conclusions.md),
+[full fixed table](outputs/publication_readiness_2026_09/easy_moment_v1/results.md),
+[losses](outputs/publication_readiness_2026_09/easy_moment_v1/training_losses.md)
+and [manuscript addendum](outputs/publication_readiness_2026_09/easy_moment_v1/manuscript_addendum.md)
+retain all outcomes. The same fitted head supplies both new gates, with identical
+source draws, shared historical cutoffs and no threshold tuning.
 
 The [registration](outputs/publication_readiness_2026_09/easy_moment_v1/registration.md)
 records the hypothesis, all reporting requirements and rejection criteria.
 Pre-fit schema/cutoff errors were stopped and repaired before any model fit;
 the [execution record](outputs/publication_readiness_2026_09/easy_moment_v1/execution_notes.md)
-preserves both. A 16-tree pilot checkpoint is resumed to the full 128-tree budget.
-56 scoped tests pass, including exact fixture resume. No new forecasting model,
-external readout, risk certification, confirmation or deployment. DroneCrowd
-remains closed; Stage5C and SMC off. Run completion requires all 36 fits, final
-outcome readout, exact replay and separate arithmetic, not a live heartbeat alone.
+preserves both. The 16-tree pilot resumed to the full 128-tree budget. Summed
+fit-loop time was 876.812 seconds, not total wall time. Exact replay and separate
+arithmetic pass: 216 decision arrays, 36 matched pairs, 1,728 scene reductions and
+27 paired contrasts. 56 scoped tests pass; the unrelated legacy suite was not
+rerun. All required processes finished. No new external readout, risk certificate,
+confirmation or deployment. DroneCrowd remains closed; Stage5C and SMC off.
+Submission readiness remains unmet. Next: distinguish pointwise conservatism from
+aggregate risk allocation without retuning this readout or reopening confirmation.
 
 ## Dense External Source Intake (2026-09-24)
 
