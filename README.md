@@ -10,6 +10,34 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed the next [support-factorization experiment](outputs/publication_readiness_2026_09/european_support_factorization_v1/conclusions.md).
+It separates support for observed motion, support for model disagreement, and
+the requirement that the same training sources support both. The forecasts,
+learned heads and thresholds stayed fixed. All 936 registered development
+comparisons are reported, including the unchanged-policy replay controls.
+
+The result rules out a simple fix. None of the four support filters has a positive
+all-ADE confidence interval against the unchanged stopping-protected controller.
+The historical-motion rejection alone removes more benefit than harm in every
+view under both target families. Dropping parts of the joint filter recovers
+some accuracy, but recovering a loss is not a new model improvement. Matching
+intervention counts within each current frame also gives no consistent ranking
+advantage.
+
+The [full results](outputs/publication_readiness_2026_09/european_support_factorization_v1/results.md),
+[figure](outputs/publication_readiness_2026_09/european_support_factorization_v1/factor_changes.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_support_factorization_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_support_factorization_v1/operation_zh.md)
+retain the negative comparisons and locality failures. The worst observed
+positive-easy degradation remains 0.437%, and the small stopping repair is intact.
+There are 326 passing scoped tests and a complete independent arithmetic check,
+but no new neural training, deployment or independent confirmation. Next I will
+test producer-matched gain/harm learning rather than keep tuning support cutoffs.
+These remain image-pixel, raw-frame 8/12 development results, not physical safety
+or a submission-ready world model.
+
+### Preceding Causal Abstention Study
+
 I have finished a [causal abstention comparison](outputs/publication_readiness_2026_09/european_causal_abstention_v1/conclusions.md)
 on the frozen forecasting system. I tested whether recent stopping and support
 from the fitting scenes can reject harmful neural predictions. Each rule has
@@ -36,8 +64,8 @@ and [reproduction guide](outputs/publication_readiness_2026_09/european_causal_a
 retain the tradeoffs and negative results. All decision and arithmetic checks pass,
 with 314 scoped tests. These are image-pixel 8/12 results on opened development
 scenes, not a new dynamics model or independent confirmation. Deployment stays
-unchanged. Next I will separate historical-motion support from changes in the
-models producing the forecasts, rather than search more thresholds on these results.
+unchanged. This motivated the support-factorization study above rather than
+another threshold search on the same results.
 
 ### Preceding Target-Learning Study
 

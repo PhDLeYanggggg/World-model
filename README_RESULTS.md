@@ -5,15 +5,51 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Support Factorization (2026-09-25, Registered, Not Yet Evaluated)
+## Support Factorization (2026-09-25, Completed, Repair Not Supported)
 
-The next test separates observed-history support, model-generated disagreement
-support and requiring the same fitting sources to support both. Exact existing
-quantiles, predictors and stopped-state protection stay fixed. The 936-view
-comparison includes unchanged stop/joint anchors and current-frame count-matched
-controls; no new neural training, threshold search or deployment selection.
-Both decision banks must freeze before readout. Independent roles remain closed.
-[Protocol](outputs/publication_readiness_2026_09/european_support_factorization_v1/registration.md).
+All 936 views completed: 288 old stop/joint/control replay anchors plus 648 new
+factor/control views. Registration `8f2aca43` was pushed before decisions; both
+banks froze before new readout. Forecasts/heads/data are cached_verified; fixed-box
+decisions and evaluations are fresh_run. No new training, threshold search or
+producer change. Both normalization modes, three folds, three seeds, two event
+targets and both target-parent families are retained.
+
+| Guard | CV-target all gain vs stop | Negative / positive CI | Floor-target all gain vs stop | Negative / positive CI |
+|---|---:|---:|---:|---:|
+| History | -0.10475% to -0.01530% | 30 / 0 | -0.10413% to +0.00587% | 28 / 0 |
+| Disagreement | -0.06695% to +0.00551% | 27 / 0 | -0.06418% to +0.00543% | 26 / 0 |
+| Separate marginal support | -0.12444% to -0.01791% | 31 / 0 | -0.11902% to -0.01490% | 29 / 0 |
+| Joint support | -0.12791% to -0.01813% | 36 / 0 | -0.12255% to -0.01490% | 33 / 0 |
+
+Each cell spans 36 dependent development views, not independent tests. No factor
+has a positive hard-subset interval against stop either. All relaxed factors
+usually improve over the harmful joint guard, but this is recovery of rejected
+benefit, not a new neural gain. Same-frame count-matched controls remain mixed.
+History-only rejection loses net benefit in 36/36 views per parent; disagreement-
+only rejection loses in 36/36 and 34/36. Same-source-overlap rejection adds net
+loss in 36/36 and 34/36. Producer shift was not manipulated and is not proven causal.
+
+Worst positive-easy degradation across every arm/control is 0.43686%; supported
+zero-CV harm remains zero, with only four unique short-label examples. The floor-
+target stop controller still has a worst hard-locality loss of 2.80551% vs floor.
+Pre-existing stop-controller all-ADE gains vs floor are not credited to this study.
+
+936 scalar policies, 288 old decision arrays, 144 coordinate arrays, 12,528 metric
+reductions, 1,728 old metric matches and 4,608 partition equalities verify. 326 tests
+in 53 scoped files pass; full legacy suite not_run. Evaluations took 664/693 seconds
+locally, without downscaling. CREATE was checked read-only; no remote job changed.
+The authorized M3W remote-artifact directory remains unknown, not proven absent.
+
+Next: source-excluded, producer-matched gain/harm learning, not another percentile
+search. No deployment change; independent roles closed; not submission-ready.
+Image-pixel rawstride12 obs8/pred12 only, not historical raw-t50, metric/seconds,
+human gold, physical safety, true 3D or foundation. Stage5C/SMC remain off.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_support_factorization_v1/conclusions.md),
+[full matrix](outputs/publication_readiness_2026_09/european_support_factorization_v1/results.md),
+[gates](outputs/publication_readiness_2026_09/european_support_factorization_v1/gates.md),
+[method](outputs/publication_readiness_2026_09/european_support_factorization_v1/method_note.md),
+[literature](outputs/publication_readiness_2026_09/european_support_factorization_v1/literature_position.md).
 
 ## Causal Abstention (2026-09-25, Completed, Support Filtering Negative)
 
