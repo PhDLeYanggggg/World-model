@@ -5,16 +5,37 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Opportunity Diagnosis (2026-09-25, Registered)
+## European Opportunity Diagnosis (2026-09-25, Completed, No New Fitting)
 
-The source-only diagnostic freezes all 48 policies and attributes missed
-candidate gain to support, motion, utility, event-mass and risk gates. Both
-four-locality producer controls are retained on the same held rows as the
-eight-locality producer. No new fitting, threshold selection or reserved data
-access. Six new accounting tests pass; the predictive decomposition is not_run
-until the frozen diagnostic executes.
+Fresh diagnostic arithmetic and exact full replay on cached_verified source
+models. All 48 frozen pointwise decisions reproduce; 144 all/easy/hard ledgers
+and 1,728 locality accounting blocks conserve target counts, gain and harm.
+The same 318,969 targets remain, including 7,047 without future labels.
+All 170 tests across 21 scoped files pass; this is not the full legacy suite.
 
-[Diagnostic specification](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/diagnosis_plan.md).
+Neural hindsight oracle gain is 17.16--17.36%, versus 8.73% for damping. This
+uses unavailable future information for diagnosis, not inference. In easy-event
+neural-risk views without source guard, neural captures only 1.44%, 1.04%, 2.78%
+of gross oracle opportunity, versus 23.31%, 25.34%, 24.46% for damping. Utility
+rejection accounts for 10.20, 10.54, 10.17 CV-relative percentage points; risk
+veto accounts for 6.91, 6.52, 6.51 points. Actual neural net gains remain only
+0.2382%, 0.1663%, 0.4310%. Ordered attribution is not a causal gate-removal effect.
+
+Eight-locality producers lose to one fixed four-locality control in all seeds,
+while comparisons with the other include zero. Source composition, internal
+baseline, preprocessing and fixed update budget also differ; this is not proof
+that additional data hurts. Both controls exclude the evaluated source sites.
+
+Code-level objective tests show that underharm4 regression can reverse a
+positive mean utility score. This is objective semantics, not empirical repair.
+The next single-factor fit changes utility loss only, holding risk learning and
+limits fixed. That fit is not_run in this package. Independent roles remain
+closed; no deployment promotion, Stage5C, SMC, metric/seconds or readiness claim.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/conclusions.md),
+[all tables](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/tables.md),
+[light metrics](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/summary_metrics.json),
+[Chinese guide](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/operation_zh.md).
 
 ## European Protected Motion (2026-09-25, Completed, Neural Advantage Failed)
 

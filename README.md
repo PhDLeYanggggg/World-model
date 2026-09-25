@@ -10,12 +10,22 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now tracing where the protected neural candidate loses useful predictions:
-candidate opportunity, utility estimates, risk vetoes and support abstention.
-The [fixed diagnostic](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/diagnosis_plan.md)
-uses only already opened source scenes and compares four- and eight-locality
-producers on identical held rows. It does not fit a new model or select a new
-threshold; hindsight opportunity is not an inference result.
+I have completed the [opportunity diagnosis](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/conclusions.md).
+The neural candidate has more hindsight opportunity than fixed damping, but its
+protected controller captures much less of it. In the easy-event neural-risk
+views, about 59--61% of attainable neural benefit is rejected first by utility
+scoring; most remaining misses occur at the risk gate. The controller captures
+only 1.04--2.78% of gross neural opportunity, versus 23.31--25.34% for damping.
+This does not mean the hindsight gains are learnable from past observations.
+
+The diagnostic reproduces all 48 frozen policies without fitting a model or
+opening reserved data. It points to a specific next experiment: the utility
+head currently uses a conservative harm loss, then feeds a second conservative
+risk gate. I will test a symmetric utility objective with the risk heads and
+limits unchanged, rather than relax protection or choose a threshold from
+these outcomes. The [attribution figure](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/opportunity_attribution.svg)
+and [all tables](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/tables.md)
+keep the missed opportunities, harms and producer differences visible.
 
 I have completed the [matched risk-protected motion study](outputs/publication_readiness_2026_09/european_protected_motion_v1/conclusions.md).
 The result challenges the current neural-trajectory hypothesis: when fixed
