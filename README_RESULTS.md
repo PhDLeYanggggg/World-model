@@ -18,7 +18,14 @@ the 2% predicted-risk rule and are explicitly offline diagnostics. No new
 outcomes at registration; neither anchor will be chosen from these outcomes.
 Existing forecasts, thresholds and reserved roles remain unchanged.
 
-[Registered comparison](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/registration.md).
+Before new readout, the common-support guard stopped two damping groups with
+zero predicted reference mass under one head only. The registered amendment
+retains full anchors plus common-pool anchors and reports support effects
+separately: 36 groups, 216 views. It does not silently drop the affected rows
+or alter the risk limit. Original failed-attempt artifacts remain preserved.
+
+[Registered comparison](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/registration.md),
+[pre-readout support amendment](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/amendment_support_v2.md).
 
 ## Hurdle Risk Heads (2026-09-25, Completed, Partial Protection Benefit)
 
