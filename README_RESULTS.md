@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Ranking-Auxiliary Risk Heads (2026-09-25, Registered)
+
+The next controlled fit adds within-locality, margin-weighted pairwise ranking
+to the existing occurrence/severity objective. Forecasts, capacity, causal
+features, training-only scalers, minibatch draws and 2% risk limits stay fixed.
+The plan is 36 new Torch heads,72,000 updates,three seeds,with all216 full/common
+and matched-count views retained. No coefficient sweep or outcome-selected arm.
+This is source-development work, not independent confirmation or a deployment
+upgrade. No new results are claimed at registration. Reserved roles stay closed.
+
+[Frozen experiment](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/registration.md).
+
 ## Hurdle Risk Ranking at Matched Coverage (2026-09-25, Completed)
 
 Fresh frozen-score diagnosis separates ordering, intervention count and support;
