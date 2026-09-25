@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Support Factorization (2026-09-25, Registered, Not Yet Evaluated)
+
+The next test separates observed-history support, model-generated disagreement
+support and requiring the same fitting sources to support both. Exact existing
+quantiles, predictors and stopped-state protection stay fixed. The 936-view
+comparison includes unchanged stop/joint anchors and current-frame count-matched
+controls; no new neural training, threshold search or deployment selection.
+Both decision banks must freeze before readout. Independent roles remain closed.
+[Protocol](outputs/publication_readiness_2026_09/european_support_factorization_v1/registration.md).
+
 ## Causal Abstention (2026-09-25, Completed, Support Filtering Negative)
 
 Fresh support construction, decisions and evaluation on cached_verified predictions
