@@ -92,6 +92,42 @@ def moment_transport(rows, bank, pid):
 def fmt(v): return 'undefined' if v is None else f'{v[0]:+.6f}% to {v[1]:+.6f}%'
 
 
+def plot_transport(aggregate):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    names = [k for k in sorted(aggregate['views']) if not k.endswith('__reference')]
+    y = np.arange(len(names)); values = [aggregate['views'][k] for k in names]
+    with plt.rc_context({'font.size': 9, 'svg.hashsalt': 'm3w-bridge-calibration'}):
+        fig, (left, right) = plt.subplots(1, 2, figsize=(12, 8), sharey=True)
+        left.barh(y-.16, [v['calibration_complete_risk_pass'] for v in values], .3,
+                  color='#23856d', label='Four-source calibration C')
+        left.barh(y+.16, [v['complete_risk_pass'] for v in values], .3,
+                  color='#bb4962', label='Six-locality development readout')
+        left.set_yticks(y, [k.replace('__', ' / ') for k in names]); left.invert_yaxis()
+        left.set_xlim(0, 19); left.set_xticks([0, 6, 12, 18])
+        left.set_xlabel('Settings passing all observed constraints (of 18)')
+        left.set_title('Empirical calibration does not establish transport')
+        left.legend(loc='lower left', bbox_to_anchor=(0, -0.16), frameon=False)
+        for i, v in enumerate(values):
+            lo, hi = v['all_gain_vs_raw']
+            right.plot([lo, hi], [i, i], color='#335a98', linewidth=3)
+            right.scatter([lo, hi], [i, i], color='#335a98', s=12)
+        right.axvline(0, color='#555555', linewidth=.8)
+        right.set_xlabel('All-ADE gain over the same raw rule (%)')
+        right.set_title('Range across all 18 settings, not a confidence interval')
+        for ax in (left, right):
+            ax.spines[['top', 'right']].set_visible(False)
+            ax.grid(axis='x', color='#e6e6e6'); ax.set_axisbelow(True)
+        fig.suptitle('Fixed reference-aligned calibration: neural and ridge controls', fontsize=13)
+        fig.text(.02, .025, 'Opened development only. Settings share localities; they are not independent trials. '
+                 'No deployment or risk certificate.', fontsize=9)
+        fig.tight_layout(rect=(0, .09, 1, .96))
+        fig.savefig(run.PUBLIC/'calibration_transport.svg', metadata={'Date': None})
+        fig.savefig(run.PRIVATE/'calibration_transport_preview.png', dpi=130)
+        plt.close(fig)
+
+
 def main():
     cfg, bank, pid, identity = run.registration()
     done = json.loads((run.PUBLIC/'completion_checks.json').read_text()); assert done['all_passed']
@@ -101,6 +137,7 @@ def main():
         rows.append(json.loads((ROOT/ref['path']).read_text()))
     seeds = json.loads((run.PUBLIC/'seed_averaged_metrics.json').read_text()); aggregate = summarize(rows, seeds)
     run.immutable_json(run.PUBLIC/'aggregate_metrics.json', aggregate)
+    plot_transport(aggregate)
     gate = dict(source_C_exclusion_verified=True, empirical_maps_fitted=True, decisions_frozen_before_readout=True,
         calibrated_full_neural_easy_preserved=aggregate['views']['full__neural__selected_risk_grid']['easy_pass'] == 18,
         calibrated_full_neural_observed_harm_pass=aggregate['views']['full__neural__selected_risk_grid']['complete_risk_pass'] == 18,

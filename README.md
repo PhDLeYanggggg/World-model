@@ -10,12 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [source-held calibration of the fixed bridge](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/registration.md).
-A third source group, excluded from both forecast and scoring-model training,
-has fitted 72 conservative calibration maps. All 288 decision views are frozen
-before the new outcome readout. I will compare their transport with the unchanged
-rules; reserved calibration and confirmation data stay closed. No new neural
-training or independent risk guarantee is claimed.
+I completed [source-held calibration of the fixed bridge](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/conclusions.md).
+The result exposes a gap between fitting a risk threshold and transporting it:
+the neural grid passes all 18 source-calibration settings, but none of the 18
+settings meets every harm constraint across the six opened evaluation localities.
+Average easy-case error remains within the 2% limit. That does not mean the
+positive harm on individual examples is controlled.
+
+I fitted 72 calibration maps and froze 288 decision views before readout, with
+three seeds, ridge controls and locality-bootstrap intervals. The stricter grid
+reduces violations but usually loses accuracy; population rescaling is more
+conservative and still fails some conditional constraints. No new deployment
+or neural-dynamics contribution is promoted. Independent calibration and
+confirmation remain closed.
+
+The [full comparison](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/results.md),
+[transport figure](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/calibration_transport.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/failure_analysis.md)
+show the tradeoff. My next step is to test whether source-only feature-support
+and selected-harm modeling can repair it, rather than keep tuning thresholds
+on the same opened outcomes.
 
 ### Completed Attribution Test
 

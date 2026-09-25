@@ -5,23 +5,50 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Aligned Source-C Calibration (2026-09-25, Decisions Frozen)
+## Aligned Source-C Calibration (2026-09-25, Completed, Transport Failed)
 
-The next fixed experiment compares uncalibrated rules, conservative population
-rescaling and an empirical selected-risk grid on exactly the same delivered
-R/P policies. A produces forecasts, B fits scoring, and the remaining four-source
-roster C fits calibration. C excludes both fitted model chains. All72 maps and
-288 readout views will be retained across three seeds, both full/motion-only
-pairs and neural/ridge scoring. No new neural training is planned.
+Fresh source-C inference and all 72 calibration maps / 288 fixed readout views
+completed across three seeds. A produces forecasts, B fits scoring, C is the
+remaining four-locality source roster excluded from both chains. The 144 scoring
+models are cached_verified, with no new neural updates. Registration 530d16ca
+preceded fitting; decision freeze 34ca0233 was pushed before outcome readout.
+Six reused selection localities remain development. The 12 reserved calibration
+and six confirmation localities stay closed; the 0.02 tolerance is unchanged.
 
-The CV-defined easy event is separate from the delivered-reference harm
-denominator. Calibration may only tighten the0.02 score budget. Six already
-opened model-selection localities provide the readout; the12 reserved calibration
-and6 confirmation localities stay closed. This is empirical source-held
-calibration, not a risk certificate. Registration 530d16ca preceded the source-C
-fits. All 72 maps and 288 views are now frozen; outcome evaluation is not_run
-at this freeze. Nine targeted tests pass. Neural weights are unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/registration.md).
+The CV-defined easy event and delivered-R harm denominator are now separated
+correctly. The full neural grid is feasible in 18/18 source-C settings, but
+0/18 complete selection settings. It reduces easy positive-harm violations
+from 68 to 52 of 108 dependent locality/setting views, not independent scenes.
+Net easy passes remain 18/18; worst degradation is 0.379671%. Three-seed all-ADE
+changes versus the unchanged full-neural rule are -1.378161% to +0.000124%:
+five negative locality-bootstrap intervals, one overlap, zero positive.
+
+Population rescaling has 2/18 complete observed passes and 38/108 easy-harm
+violations, although all-event harm passes throughout. Its three-seed all-ADE
+changes are -2.378341% to -0.433005%, all six intervals negative. Full ridge
+rescaling has 5/18 complete passes; motion-only ridge 10/18, still not universal.
+No favorable setting is selected as a deployment. Reference-only fallback
+passes observed risk but adds no new intervention and gives up accuracy.
+
+Matched-support diagnostics find median raw selected-harm prediction / actual
+harm of 0.300808 and predicted / actual R mass of 1.494471 for full neural.
+After population correction, selected-harm coverage is still only 0.541182.
+The within-C diagnostic passes 59/72 full-neural held-locality views and 66/72
+ridge views; these overlap. Neither moment scaling nor source feasibility is
+an independent risk certificate. The separate finite-scene analysis does not
+reinterpret positive ADE ratios as bounded losses or relax the scientific target.
+
+Readout includes 156 independent coordinate checks and 4,176 metric reductions.
+Independent verification restores 144 model prefixes, replays all 72 calibration
+maps and 288 scalar decision views. All 420 scoped tests pass in 71 files;
+the full legacy suite is not_run. The study's verification manifest binds the
+public artifacts and implementation. No new neural dynamics or submission readiness is
+claimed; Stage5C and SMC remain off.
+[Conclusions](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/conclusions.md),
+[all rules](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/results.md),
+[verification](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/verification.json),
+[statistical feasibility](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/finite_scene_feasibility.md),
+[reproduction](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/operation_zh.md).
 
 ## Bridge Attribution (2026-09-25, Completed, Neural Attribution Mixed)
 
