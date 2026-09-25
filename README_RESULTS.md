@@ -5,16 +5,58 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Reference-Consistent Targets (2026-09-25, Registered)
+## Reference-Consistent Targets (2026-09-25, Completed, Repair Not Supported)
 
-The next matched fit learns gain/harm relative to the actual protected floor.
-Both CV-target and floor-target controls receive identical past-only inputs.
-The floor is first cross-fitted within the four fitting localities; all eight
-outer localities remain excluded from every producer. Both predecessor modes
-are retained. Planned:234 heads,468,000 updates; new training/readout not yet run.
-No threshold selection, reserved-role access, deployment, Stage5C or SMC.
+Fresh training/evaluation: 234 Torch heads, 468,000 updates, 36 groups and four
+matched target arms plus the frozen preceding control. Registration `1049876b`
+was pushed before fitting. Both decision banks froze before either readout.
+Trajectory forecasts and the population are cached_verified, not freshly trained.
 
-[Registered experiment](outputs/publication_readiness_2026_09/european_floor_relative_v1/registration.md).
+| Mode / event | Both-floor all-ADE gain vs protected floor | Gain vs matched CV targets | Positive / negative matched intervals |
+|---|---:|---:|---:|
+| Batch / all | 0.2651% to 1.6409% | -0.4413% to -0.0967% | 0 / 7 |
+| Batch / easy | 0.1270% to 0.2979% | -0.0675% to 0.0021% | 0 / 2 |
+| Fitting / all | 0.2650% to 1.6254% | -0.5394% to -0.0569% | 0 / 8 |
+| Fitting / easy | 0.1225% to 0.3187% | -0.0650% to 0.0065% | 0 / 3 |
+
+Each cell has nine dependent development views, not nine independent tests.
+Both-floor targets lose to matched CV targets in 33/36 all-ADE points, with
+20 negative and no positive paired intervals. Utility-only changes have 2/21
+positive/negative intervals; risk-only changes have 0/13. No consistent target
+repair. Every both-floor all-ADE, complete-label ADE and endpoint FDE interval
+vs the actual floor is positive; hard has 33/36 positive intervals. Those gains
+also occur in the matched control and do not establish target-change efficacy.
+
+All 144 new-policy positive-easy checks meet 2%; worst degradation is 0.3001%.
+Each arm still harms zero-CV cases in 24/36 views; the other 12 lack examples.
+Four unique rows from one locality, two future labels each, no endpoint. Fresh
+post-hoc history forensics: all four have zero latest displacement but earlier
+movement, so the existing guard admits them. Both evaluating folds have zero
+zero-CV fitting rows. No outcome-derived rule was deployed. The both-floor arm's
+worst hard locality loses 2.8055% / 1.8413% in batch/fitting.
+
+All 234 checkpoint prefixes replay; full score arrays are hash-bound. Matched
+samplers/preprocessors pass in all 36 groups. Zero unknown supervised draws.
+144 causal decisions, 144 coordinate arrays, 2,160 metric reductions and 180
+preceding-control metrics verify. 301 tests in 47 scoped files pass; full legacy
+suite not_run. Risk fixed-training loss falls in 129/144 heads, not validation.
+The 2-to-4 source floor-producer shift remains a limitation. No new forecaster.
+
+Next: register a support-aware stop/start abstention comparison with matched
+coverage and lost-benefit reporting; do not tune these held-out development
+results. Independent selection/calibration/confirmation remains closed.
+Deployment unchanged; not submission-ready. Image pixels, obs8/pred12 rawstride12,
+not historical raw-t50 recertification, metric/seconds, human gold or physical
+safety. Stage5C and SMC remain off.
+
+[Registration](outputs/publication_readiness_2026_09/european_floor_relative_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_floor_relative_v1/conclusions.md),
+[full results](outputs/publication_readiness_2026_09/european_floor_relative_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_floor_relative_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_floor_relative_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_floor_relative_v1/execution_notes.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_floor_relative_v1/paper_addendum.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_floor_relative_v1/operation_zh.md).
 
 ## Incremental Neural Opportunity (2026-09-25, Completed Diagnostic)
 

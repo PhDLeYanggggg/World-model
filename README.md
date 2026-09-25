@@ -10,32 +10,42 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have completed a [protected-baseline diagnosis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/conclusions.md)
-that explains part of the neural policy's failure. When the controller rejected
-a neural forecast, it reverted to constant velocity, even when the stronger
-protected damping policy could help. That mixed two different questions: whether
-the neural forecast was useful, and whether the fallback action was good enough.
+I have completed a [matched target-learning experiment](outputs/publication_readiness_2026_09/european_floor_relative_v1/conclusions.md).
+The question was whether the controller would make better decisions if it learned
+gain and harm relative to its actual strong fallback, rather than constant
+velocity. I trained 234 small Torch heads with 468,000 updates, keeping causal
+inputs, capacity and sampling matched. Training targets came from models that
+excluded the locality being scored, not from in-sample teacher predictions.
 
-I kept both model versions, all three seeds and every neural decision fixed.
-Changing only the fallback in an offline comparison turned all 36 overall ADE
-comparisons positive, with gains of 0.13% to 2.07% over protected damping and
-positive conditional locality-bootstrap intervals. The signal also appears in
-complete-label and partial-label samples. No new model was trained for this
-diagnosis; the [preceding study](outputs/publication_readiness_2026_09/european_cross_moment_v1/conclusions.md)
-contains the 72 matched Torch risk-head fits.
+The result is informative but negative for that particular repair. Both-target
+controllers improve overall ADE over the protected fallback by 0.12% to 1.64%,
+with positive conditional locality-bootstrap intervals in all 36 views. Yet the
+matched CV-target control is better in 33 of those views. Twenty paired intervals
+favor the control; none favor the new target. A model can beat a baseline without
+its proposed change explaining the improvement.
 
-This is not yet a safe model. Some localities still worsen, and the same neural
-switches still harm zero-error reference cases. The risk head was trained against
-constant velocity, not the new fallback. I am keeping deployment unchanged and
-will test gain/harm learning against the actual strong baseline next, with
-source-cross-fitted targets rather than in-sample teacher scores.
+The remaining safety issue is also more specific now. Positive-easy degradation
+stays below 2%, but some interventions still harm zero-error reference cases.
+The four underlying examples have stopped at the latest observed step, while
+the existing guard only checks whether there was movement anywhere in the past.
+They also come from one locality absent from the corresponding fitting sets.
+That points toward support-aware stop/start abstention, not another round of
+threshold selection on these results. The labels cover only two future steps
+for those cases, so they cannot establish full-horizon safety either.
 
-The [paired figure](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/floor_rebase.svg),
-[complete results](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/results.md)
-and [failure analysis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/failure_analysis.md)
-retain the limits alongside the positive finding. Independent arithmetic checks
-and 282 scoped tests pass. These are opened-development, image-pixel 8/12 results,
-not independent confirmation, physical safety or a deployable neural world model.
+The [complete comparison](outputs/publication_readiness_2026_09/european_floor_relative_v1/results.md),
+[paired figure](outputs/publication_readiness_2026_09/european_floor_relative_v1/reference_targets.svg),
+[training losses](outputs/publication_readiness_2026_09/european_floor_relative_v1/training_losses.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_floor_relative_v1/failure_analysis.md)
+keep every arm visible. Checkpoint checks and independent arithmetic pass, along
+with 301 scoped tests. These remain opened-development, image-pixel 8/12 results,
+not independent confirmation or a safe neural deployment. The trajectory
+forecaster was frozen; this was controller training, not new dynamics learning.
+I am keeping deployment unchanged.
+
+The [preceding frozen-fallback diagnosis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/conclusions.md)
+explains why this experiment was worth testing. Reproduction and recovery are
+documented in the [Chinese operation guide](outputs/publication_readiness_2026_09/european_floor_relative_v1/operation_zh.md).
 
 ### Earlier Source Experiments
 
