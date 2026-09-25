@@ -1,4 +1,5 @@
 """Separate-process sampling, checkpoint, decision and reporting replay."""
+import argparse
 import json
 from pathlib import Path
 import subprocess
@@ -8,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_european_easy_harm_sampling as run
 from scripts.report_m3w_european_easy_harm_sampling import summarize, diagnostics
 from scripts.evaluate_m3w_european_bridge_attribution import seed_summary
+from scripts.audit_m3w_easy_harm_fitting import summarize_fit
 import numpy as np
 import torch
 
@@ -24,10 +26,16 @@ def replay_draws(q, state, seed, settings):
     return dict(exact_draw_histogram=True, exact_final_rng=True, draws=int(draws.sum()))
 
 
-def main():
-    torch.set_num_threads(4); torch.set_num_interop_threads(1)
-    cfg, identity = run.registration(); run.checked_training(identity)
-    replays = []; decisions = 0; mass_checks = 0
+def replay(cfg, identity):
+    path = run.PUBLIC/'replay_receipt.json'
+    binding = {p:run.digest(ROOT/p) for p in [*run.FILES,
+        'scripts/verify_m3w_european_easy_harm_sampling.py','scripts/audit_m3w_easy_harm_fitting.py']}
+    if path.exists():
+        result = json.loads(path.read_text())
+        assert result['identity']==identity and result['bindings']==binding and result['all_passed']
+        assert result['training'] == run.artifact(run.PRIVATE/'training_complete.json')
+        return result
+    replays = []; fitting = []; decisions = 0; mass_checks = 0
     for g,data,pairs in run.parent.contexts(identity['parent']):
         name = g['group']; seed = int(name.split('_seed')[1].split('_')[0])
         bi,ci = pairs['B']['ids'],pairs['C']['ids']
@@ -40,7 +48,7 @@ def main():
             assert not set(meta['training_sites']) & set(meta['readout_sites'])
             model,state = run.parent.restore(run.PRIVATE/'heads'/(name+'_'+pair))
             assert state['step'] == 2000
-            _,control = run.parent.restore(run.parent.PRIVATE/'heads'/(name+'_'+pair+'_mean'))
+            old_model,control = run.parent.restore(run.parent.PRIVATE/'heads'/(name+'_'+pair+'_mean'))
             for k in ('mean','std','known','weights'):
                 np.testing.assert_array_equal(pr[k], state['preprocess'][k])
             assert pr['cost_scale'] == state['preprocess']['cost_scale']
@@ -53,6 +61,11 @@ def main():
             np.testing.assert_array_equal(rms,control['loss_scales'])
             assert state['trace'][0]['moment_mse'] == control['trace'][0]['moment_mse']
             assert run.expectation_check(by,data['sites'][bi],pr,control) == receipt['expectation']
+            fitting.append(dict(group=name,pair=pair,result_source='fresh_run_full_B_inference',
+                corrected=summarize_fit(run.parent.method.predict(model,bx,be,pr),by,pr['weights'],
+                    pr['cost_scale'],rms,masks[:,2]),
+                uniform=summarize_fit(run.parent.method.predict(old_model,bx,be,pr),by,pr['weights'],
+                    pr['cost_scale'],rms,masks[:,2])))
             draws = replay_draws(q,state,seed,cfg['head_training'])
             assert state['draws'][~pr['known']].sum() == 0
             with np.load(run.PRIVATE/'heads'/(name+'_'+pair)/'scores.npz',allow_pickle=False) as z:
@@ -79,6 +92,20 @@ def main():
             replays.append(dict(group=name,pair=pair,prefix_rows=n,exact=True,sampling=draws,
                 expected_loss_identity=True,training_role='B_only'))
             run.beat('verified_sampling_pair',group=name,pair=pair)
+    result = dict(identity=identity,bindings=binding,training=run.artifact(run.PRIVATE/'training_complete.json'),
+        checkpoints=replays,decisions=decisions,mass_checks=mass_checks,B_fitting=fitting,
+        all_passed=True,result_source='fresh_run_replay_and_B_fitting_audit',decisions_changed=False)
+    run.immutable_json(path,result)
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(); parser.add_argument('--replay-only',action='store_true'); args=parser.parse_args()
+    torch.set_num_threads(4); torch.set_num_interop_threads(1)
+    cfg, identity = run.registration(); run.checked_training(identity)
+    replayed = replay(cfg,identity)
+    if args.replay_only:
+        print(json.dumps(dict(checkpoints=len(replayed['checkpoints']),decisions=replayed['decisions'],all_passed=True))); return
     checked = json.loads((run.PUBLIC/'completion_checks.json').read_text()); assert checked['all_passed']
     rows = {p:[] for p in cfg['pairs']}
     for ref in checked['groups']:
@@ -106,14 +133,15 @@ def main():
         if p.is_file() and p.name!='verification.json'}
     assert all((run.PUBLIC/f).stat().st_size<1024**2 for f in artifacts)
     bindings = [*run.FILES,*tests,'scripts/report_m3w_european_easy_harm_sampling.py',
-        'scripts/plot_m3w_european_easy_harm_sampling.py',str(Path(__file__).relative_to(ROOT))]
+        'scripts/plot_m3w_european_easy_harm_sampling.py','scripts/audit_m3w_easy_harm_fitting.py',
+        str(Path(__file__).relative_to(ROOT))]
     run.immutable_json(run.PUBLIC/'verification.json',dict(all_passed=True,artifacts=artifacts,
-        source_bindings={p:run.digest(ROOT/p) for p in bindings},checkpoint_replays=replays,
-        decision_views=decisions,independent_event_mass_checks=mass_checks,
+        source_bindings={p:run.digest(ROOT/p) for p in bindings},checkpoint_replays=replayed['checkpoints'],
+        decision_views=replayed['decisions'],independent_event_mass_checks=replayed['mass_checks'],
         tests=count,test_files=tests,full_legacy_suite='not_run',
         result_source='fresh_run_verification_cached_verified_frozen_models',
         independent_confirmation=False,deployment_changed=False))
-    print(json.dumps(dict(checkpoints=len(replays),decisions=decisions,mass_checks=mass_checks,
+    print(json.dumps(dict(checkpoints=len(replayed['checkpoints']),decisions=replayed['decisions'],mass_checks=replayed['mass_checks'],
         tests=count,test_files=len(tests),all_passed=True)))
 
 

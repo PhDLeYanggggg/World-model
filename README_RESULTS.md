@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Easy-Harm Sampling (2026-09-25, Trained, Readout Not Run)
+## Easy-Harm Sampling (2026-09-25, Completed, Repair Failed)
 
 The new source-only comparison changes only training sampling. It retains the
 previous mean-moment head, B-only preprocessing, initialization, 2,000-step
@@ -13,16 +13,16 @@ budget and loss target. A half-uniform, half-easy-harm-mass draw distribution
 has unmodified importance weights p/q bounded by two. Expected loss and
 unclipped stochastic gradient match the original objective; no unbiased Adam
 update or variance-reduction claim is made. Thirty-six new heads, 72,000
-updates and 504 readout views are registered, including cached verified
-controls. No forecaster retraining, threshold search or reserved-data access.
+updates and 504 readout views completed: 180 fresh new-policy views and 324
+cached_verified controls. No forecaster retraining, threshold search or
+reserved-data access.
 
 Training-source diagnostics find 4.75-8.51 positive easy-harm examples per
 balanced batch of 256 in full groups, versus 0.65-2.11 in motion-only groups.
 The median top-1% share of easy-harm mass is 89.65% and 100%, respectively.
-These overlapping group/seed views are not independent samples. Four targeted
-tests pass, including loss/gradient identity and exact interrupted resume.
-The new repair has no outcome result yet. Parent artifacts and all 83 final
-source bindings were verified before registration.
+These overlapping group/seed views are not independent samples. Nine targeted
+tests cover loss/gradient identity, exact interrupted resume and reporting.
+Parent artifacts and all 83 final source bindings were verified before registration.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/registration.md),
 [B-only diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/training_support.md).
 
@@ -30,8 +30,38 @@ Registration `49124cf1` preceded the real pilot. All 36 heads now completed
 72,000 updates, including the resumed 100-step pilot, and 504 decisions are
 frozen before source-C readout. Summed fitting time is 73.45 seconds, not total
 wall time (source reconstruction and policy replay also take time). Unknown-label
-training draws are zero. Seven targeted tests pass. This is actual native-arm64
+training draws are zero. This is actual native-arm64
 Torch CPU4 training; no fallback, new forecaster or favorable-seed selection.
+
+Decision freeze `8bb149e6` preceded all C readout. Full corrected-joint versus
+uniform mean-joint all-ADE changes -0.1691% to +0.4865% across six three-seed
+assignments: two positive CIs, two negative, two overlaps. Complete observed
+risk passes fall from 6/18 to 4/18; easy-positive-harm violations rise from
+15 to 21 of 72 dependent locality views. Net easy passes remain 18/18. Motion
+joint risk passes fall from 12/18 to 8/18. No deployment is promoted.
+
+Joint versus independent dual gating improves full all ADE 0.8446%-2.6287%
+and hard ADE 0.8960%-3.4332%, with six positive intervals each. Against the
+query-count-matched hash control, full all-ADE gains 0.0948%-0.6227%, all six
+intervals positive. Counts are matched, not realized harm. Against old raw
+neural, only one interval is positive, two negative and three overlap.
+
+The whole-B audit finds easy-harm component MSE improves in 13/18 full and
+18/18 motion fits, but both reference components worsen in all 18 fits for
+both pairs. On C, easy-harm MSE improves in only 4/18 and 3/18, respectively.
+Fixed-action full-C harm coverage remains about 58%; corrected-joint's own
+selected population has median coverage 43.42%. Those action sets differ.
+[Conclusions](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/conclusions.md),
+[fitting versus transport](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/fitting_transport_analysis.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/failure_analysis.md).
+
+Verification: 440 tests in 75 scoped files, 36 checkpoint-prefix and full
+sampling-histogram/RNG replays, all 504 decision views, 144 coordinate checks,
+2,952 paired metric checks and 288 independent locality/event mass checks.
+No full legacy-suite pass is claimed. No opened selection readout, reserved
+calibration, confirmation, Stage5C or SMC.
+[Verification](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/verification.json),
+[reproduction](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/operation_zh.md).
 
 ## Selected-Risk Learning (2026-09-25, Completed, No Promotion)
 

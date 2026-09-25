@@ -10,18 +10,27 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing whether rare, costly easy-case harms are underexposed during
-training. The [registered sampling experiment](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/registration.md)
-changes only how training examples are drawn, with importance weights preserving
-the original expected loss. The architecture, forecasts, risk limits and source
-roles stay fixed. Training-source diagnostics show that the largest 1% of
-easy-harm rows carry about 90% of that harm in the full-model groups. This is a
-reason to test sampling, not evidence that the repair works. Calibration and
-confirmation data remain closed.
+I completed a [controlled sampling experiment](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/conclusions.md)
+to test whether the risk model was seeing too few costly easy-case errors.
+I trained 36 risk heads with three seeds, keeping the forecasts, architecture
+and expected loss fixed, and froze 504 policy views before reading source-C
+outcomes. The sampling change did not repair the problem: complete observed
+risk passes fell from 6/18 to 4/18, although average easy-case error stayed
+within the limit. I am not deploying this change.
 
-The 36 risk heads have now completed their fixed training budget. I have frozen
-all 504 policy views before reading source-C outcomes; no result is being
-promoted at this checkpoint.
+The useful distinction is between fitting and transport. More exposure slightly
+improves easy-harm fitting on the training source, but worsens other cost
+components and rarely improves easy-harm error in the held source role.
+The [fixed-action diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/fitting_transport_analysis.md)
+shows that this is not just a change in which agents are selected.
+
+Joint allocation still improves all ADE by 0.84%-2.63% over independent dual
+gates, with positive locality-bootstrap intervals across all six source
+assignments. That is a promising allocation result, not a safety certificate
+or new dynamics result. The [paired comparisons](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/source_contrasts.svg)
+and [training losses](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/training_loss.svg)
+retain the negative evidence. Independent calibration and confirmation remain
+closed; 440 scoped tests and frozen model/decision replays pass.
 
 ### Completed Risk-Learning Test
 
