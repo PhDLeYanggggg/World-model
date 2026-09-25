@@ -5,15 +5,52 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Incremental Neural Opportunity (2026-09-25, Registered)
+## Incremental Neural Opportunity (2026-09-25, Completed Diagnostic)
 
-I am separating neural prediction value from a controller default-action error:
-does rejecting a neural forecast lose useful damping by reverting to CV? Both
-frozen cross-moment versions are retained. This is a protected-damping-relative
-diagnosis with label-completeness sensitivity, not a new training result or
-deployment change. The readout is not yet run.
+Fresh error accounting on both cached_verified cross-moment versions separates
+neural forecast value from the cost of reverting to CV instead of protected
+damping. No new training, threshold adjustment, reserved-role access or deployment.
+Registration `77e610eb` was pushed before readout; 36 groups, eight support slices,
+three seeds and 3,000 paired locality-bootstrap draws per view are retained.
 
-[Registered protocol](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/registration.md).
+| Mode / event | Rebased all-ADE gain vs protected damping | Positive all intervals | Hard-ADE gain | Positive hard intervals |
+|---|---:|---:|---:|---:|
+| Batch / all | 0.3435% to 2.0713% | 9/9 | 0.3279% to 1.6359% | 9/9 |
+| Batch / easy | 0.1270% to 0.3303% | 9/9 | 0.0117% to 0.0813% | 9/9 |
+| Fitting / all | 0.3231% to 2.0317% | 9/9 | 0.3067% to 1.5823% | 8/9 |
+| Fitting / easy | 0.1278% to 0.3768% | 9/9 | 0.0233% to 0.0911% | 8/9 |
+
+Original policies remain negative (-3.0628% to -0.1497%). Rebase keeps every
+neural decision fixed; it only changes the rejected-candidate default. Its
+positive overall signal persists in complete and partial label slices. The
+offline floor/neural oracle is 12.8927%--23.9804%, not learned performance.
+
+Positive-easy worst degradation is 0.5070%/0.7221%, but zero-CV harm remains in
+12/18 views per mode; the other six have no zero-CV examples. Only four underlying
+zero rows, one locality, two future labels each and no endpoint. Locality-level
+hard degradation reaches 3.0515% against the floor despite positive average gain.
+The new default action is not risk-calibrated. No promotion or safe-neural claim.
+
+Unique indexed population: 318,969 overlapping rows, including 193,705 complete future labels,
+118,217 partial and 7,047 unknown. Twelve opened-development localities, four fitting
+and eight complete-chain-excluded per fit. These are not independent test claims.
+All 144 coordinate arrays, 72 saved decisions, 396 parent metrics, 3,312 metric
+reductions and 288 ledgers pass. 282 tests across 44 files pass; full legacy suite
+not run. No new training; local native arm64 CPU4/inter-op1/workers0.
+
+Next: learn benefit/harm relative to the frozen protected floor using source-
+cross-fitted targets; preserve zero-event support and the 2% budget. Independent
+calibration/confirmation remains required. Image pixels, obs8/pred12 rawstride12,
+not historical t50, metric/seconds, human gold, physical safety, true3D or foundation.
+Historical Stage37 not recertified. Deployment unchanged; Stage5C/SMC off.
+
+[Protocol](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/execution_notes.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/paper_addendum.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/operation_zh.md).
 
 ## Cross-Moment Risk Ordering (2026-09-25, Completed, No Safe Neural Gain)
 

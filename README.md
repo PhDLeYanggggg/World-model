@@ -10,34 +10,32 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have completed the [cross-moment risk-target study](outputs/publication_readiness_2026_09/european_cross_moment_v1/conclusions.md).
-The previous experiment showed that more training pairs were not enough. This
-time I tested what the risk head should learn: first changing its pair weights,
-then separating that change from batch normalization. I trained 72 matched
-Torch heads, with 144,000 updates across three seeds. Both sets of decisions
-were frozen before evaluating either one.
+I have completed a [protected-baseline diagnosis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/conclusions.md)
+that explains part of the neural policy's failure. When the controller rejected
+a neural forecast, it reverted to constant velocity, even when the stronger
+protected damping policy could help. That mixed two different questions: whether
+the neural forecast was useful, and whether the fallback action was good enough.
 
-There is a useful but limited positive result. The new target improves the
-all-event damping controller in all nine comparisons, including when intervention
-counts are held equal. It does not consistently improve the neural candidate.
-With either normalizer, all 18 overall and hard-subset neural comparisons still
-favor equally protected damping. A better risk controller is not the same as
-better neural dynamics, so I am keeping deployment unchanged.
+I kept both model versions, all three seeds and every neural decision fixed.
+Changing only the fallback in an offline comparison turned all 36 overall ADE
+comparisons positive, with gains of 0.13% to 2.07% over protected damping and
+positive conditional locality-bootstrap intervals. The signal also appears in
+complete-label and partial-label samples. No new model was trained for this
+diagnosis; the [preceding study](outputs/publication_readiness_2026_09/european_cross_moment_v1/conclusions.md)
+contains the 72 matched Torch risk-head fits.
 
-The neural policies meet the observed 2% positive-easy limit, but still harm
-some zero-reference cases. Those cases are particularly weak evidence: there
-are only four, from one locality, with two future labels each and no endpoint.
-They cannot establish full-horizon protection. Fixed normalization helps some
-easy-event comparisons, not every split or seed.
+This is not yet a safe model. Some localities still worsen, and the same neural
+switches still harm zero-error reference cases. The risk head was trained against
+constant velocity, not the new fallback. I am keeping deployment unchanged and
+will test gain/harm learning against the actual strong baseline next, with
+source-cross-fitted targets rather than in-sample teacher scores.
 
-The [target-weighting figure](outputs/publication_readiness_2026_09/european_cross_moment_v1/batch/ranking_comparison.svg),
-[normalizer figure](outputs/publication_readiness_2026_09/european_cross_moment_v1/fitting/ranking_comparison.svg)
-and [training curves](outputs/publication_readiness_2026_09/european_cross_moment_v1/fitting/training_loss.svg)
-retain the negative findings. All 72 checkpoints and 432 views reproduce;
-264 scoped tests pass. These remain opened-development, image-pixel 8/12 results,
-not independent confirmation, physical safety or a new deployable world model.
-Next I will separate the neural candidate's attainable advantage from controller
-mistakes before trying another loss variant.
+The [paired figure](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/floor_rebase.svg),
+[complete results](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/results.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/failure_analysis.md)
+retain the limits alongside the positive finding. Independent arithmetic checks
+and 282 scoped tests pass. These are opened-development, image-pixel 8/12 results,
+not independent confirmation, physical safety or a deployable neural world model.
 
 ### Earlier Source Experiments
 
