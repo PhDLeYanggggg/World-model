@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cross-Moment Risk Ordering (2026-09-25, Registered)
+
+Two controlled fits will separate cross-moment target weighting from loss
+normalization. The first compares cross-moment batch-normalized ranking with
+the frozen supported-pair head; the second uses a fixed fitting-only normalizer
+against the first. Both modes will finish fitting and freeze decisions before
+any new evaluation. Total: 72 Torch heads, 144,000 updates, 432 views. No new
+trajectory fitting, threshold selection or deployment change. No new results
+are claimed at registration.
+
+[Frozen registration](outputs/publication_readiness_2026_09/european_cross_moment_v1/registration.md).
+
 ## Supported-Event Pairing (2026-09-25, Completed, No Safe Neural Gain)
 
 Fresh fitting changes only pair construction: filter undefined event mass before
