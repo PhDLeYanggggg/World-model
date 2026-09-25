@@ -19,6 +19,10 @@ easy-harm rows carry about 90% of that harm in the full-model groups. This is a
 reason to test sampling, not evidence that the repair works. Calibration and
 confirmation data remain closed.
 
+The 36 risk heads have now completed their fixed training budget. I have frozen
+all 504 policy views before reading source-C outcomes; no result is being
+promoted at this checkpoint.
+
 ### Completed Risk-Learning Test
 
 I completed a [controlled test of risk learning and scene-query allocation](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/conclusions.md):

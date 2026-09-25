@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Easy-Harm Sampling (2026-09-25, Registered, Training Not Run)
+## Easy-Harm Sampling (2026-09-25, Trained, Readout Not Run)
 
 The new source-only comparison changes only training sampling. It retains the
 previous mean-moment head, B-only preprocessing, initialization, 2,000-step
@@ -25,6 +25,13 @@ The new repair has no outcome result yet. Parent artifacts and all 83 final
 source bindings were verified before registration.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/registration.md),
 [B-only diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/training_support.md).
+
+Registration `49124cf1` preceded the real pilot. All 36 heads now completed
+72,000 updates, including the resumed 100-step pilot, and 504 decisions are
+frozen before source-C readout. Summed fitting time is 73.45 seconds, not total
+wall time (source reconstruction and policy replay also take time). Unknown-label
+training draws are zero. Seven targeted tests pass. This is actual native-arm64
+Torch CPU4 training; no fallback, new forecaster or favorable-seed selection.
 
 ## Selected-Risk Learning (2026-09-25, Completed, No Promotion)
 
