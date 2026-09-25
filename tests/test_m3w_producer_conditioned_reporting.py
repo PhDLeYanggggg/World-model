@@ -1,5 +1,5 @@
 import pytest
-from scripts.report_m3w_european_producer_conditioned import EXPECTED, POLICIES, COMPARISONS, safety, reliability_summary
+from scripts.report_m3w_european_producer_conditioned import EXPECTED, POLICIES, COMPARISONS, safety, reliability_summary, easy_decomposition
 
 
 def view(easy=-1., zero=0, ratio=.03, predicted=.01):
@@ -34,3 +34,18 @@ def test_harm_ratio_not_net_gain_and_counts_not_independent():
     assert r['dependent_locality_views'] == 3 and r['selected_supported_views'] == 2
     assert r['realized_above_2pct'] == 1 and r['underpredicted_views'] == 1
     assert r['realized_harm_ratio_range'] == pytest.approx([.005, .03])
+
+
+def test_easy_error_attribution_uses_common_denominator():
+    v = dict(easy_vs_CV={'by_scene': {'a': dict(rows=5, model_error=104., reference_error=100., gain_percent=-4.)}},
+        ADE_vs_floor2={'easy': {'by_scene': {'a': dict(rows=5, model_error=104., reference_error=106.)}}})
+    r = easy_decomposition(v)['a']
+    assert r['floor2_degradation_vs_CV'] == 6.
+    assert r['controller_added_degradation_pp'] == -2.
+    assert r['violation_despite_controller_improvement'] and not r['controller_created_violation']
+
+
+def test_easy_attribution_rejects_different_populations():
+    v = dict(easy_vs_CV={'by_scene': {'a': dict(rows=5, model_error=104., reference_error=100., gain_percent=-4.)}},
+        ADE_vs_floor2={'easy': {'by_scene': {'a': dict(rows=6, model_error=104., reference_error=106.)}}})
+    with pytest.raises(AssertionError): easy_decomposition(v)

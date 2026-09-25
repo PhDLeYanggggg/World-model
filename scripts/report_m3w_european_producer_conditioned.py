@@ -99,8 +99,29 @@ def reliability_summary(views):
         semantics='Positive-harm moment ratio, not net easy degradation; dependent locality/view counts, no safety guarantee.')
 
 
+def easy_decomposition(view):
+    """Post-readout accounting on already-frozen metrics, never a new policy."""
+    result = {}
+    for site, cv_metric in view['easy_vs_CV']['by_scene'].items():
+        floor_metric = view['ADE_vs_floor2']['easy']['by_scene'][site]
+        assert cv_metric['rows'] == floor_metric['rows']
+        model, cv, floor = cv_metric['model_error'], cv_metric['reference_error'], floor_metric['reference_error']
+        if cv is None or cv <= 0:
+            result[site] = dict(supported=False, rows=cv_metric['rows']); continue
+        np.testing.assert_allclose(model, floor_metric['model_error'], rtol=1e-10, atol=1e-10)
+        base = 100*(floor-cv)/cv; change = 100*(model-floor)/cv; total = -cv_metric['gain_percent']
+        np.testing.assert_allclose(base+change, total, rtol=1e-10, atol=1e-10)
+        result[site] = dict(supported=True, rows=cv_metric['rows'], floor2_degradation_vs_CV=base,
+            controller_added_degradation_pp=change, total_degradation_vs_CV=total,
+            already_bad_floor=base > 2., controller_created_violation=base <= 2. and total > 2.,
+            violation_despite_controller_improvement=total > 2. and change <= 0.)
+    return result
+
+
 def publish(rows, heads):
+    decomposition = {}
     for group, r in rows.items():
+        decomposition[group] = {name: easy_decomposition(v) for name, v in r['views'].items()}
         compact = {}
         for name, v in r['views'].items():
             compact[name] = dict(**{f: {s: compact_metric(m) for s, m in v[f].items()} for f in FAMILIES},
@@ -139,6 +160,18 @@ def publish(rows, heads):
         bootstrap_seed=39271, new_threshold_selection=False, independent_confirmation=False, deployment_changed=False,
         policies=pooled, producer_vs_controls=paired, event_and_branch=strata, raw_producer_change=raw,
         reliability={p: reliability_summary([r['views'][f'half{h}__{p}'] for r in rows.values() for h in (0, 1)]) for p in POLICIES})
+    attribution = {}
+    for p in POLICIES:
+        rr = [r for g in decomposition.values() for h in (0, 1) for r in g[f'half{h}__{p}'].values() if r['supported']]
+        attribution[p] = dict(dependent_locality_views=len(rr),
+            **{k: sum(r[k] for r in rr) for k in ('already_bad_floor', 'controller_created_violation', 'violation_despite_controller_improvement')},
+            total_violations=sum(r['total_degradation_vs_CV'] > 2. for r in rr),
+            floor_degradation_range=[min(r['floor2_degradation_vs_CV'] for r in rr), max(r['floor2_degradation_vs_CV'] for r in rr)],
+            controller_added_degradation_range_pp=[min(r['controller_added_degradation_pp'] for r in rr), max(r['controller_added_degradation_pp'] for r in rr)])
+    out['posthoc_easy_attribution'] = attribution
+    dump(run.PUBLIC/'easy_attribution.json', dict(status='posthoc_exploratory_accounting_not_policy_selection',
+        identity='total_easy_degradation = branch_floor_degradation + controller_added_degradation; common CV denominator',
+        groups=decomposition, summary=attribution))
     dump(run.PUBLIC/'summary_metrics.json', out)
     for name, h in heads.items(): dump(run.PUBLIC/'training'/(name+'.json'), h)
     return out
@@ -188,6 +221,10 @@ def documents(summary, heads, counts, barrier, rows):
         'Predicted positive-harm ratio is not a calibrated safety certificate. Realized positive harm and net easy degradation are different quantities.', '',
         '| Policy | Supported selected locality/views | Above 2% realized harm ratio | Underpredicted | Realized ratio range | Predicted ratio range |', '|---|---:|---:|---:|---:|---:|']
     for p, r in summary['reliability'].items(): lines.append(f"| {p} | {r['selected_supported_views']} | {r['realized_above_2pct']} | {r['underpredicted_views']} | {fmt(r['realized_harm_ratio_range'])} | {fmt(r['predicted_harm_ratio_range'])} |")
+    lines += ['', '## Post-Readout Easy-Error Attribution', '',
+        'Exploratory arithmetic on frozen metrics, not a newly selected policy. For each locality, total degradation versus CV equals branch-floor degradation plus the controller increment, with one common CV denominator.', '',
+        '| Policy | Locality/view violations | Already-bad floor locality/views | Violations newly introduced by controller | Violations despite controller improvement |', '|---|---:|---:|---:|---:|']
+    for p, r in summary['posthoc_easy_attribution'].items(): lines.append(f"| {p} | {r['total_violations']} | {r['already_bad_floor']} | {r['controller_created_violation']} | {r['violation_despite_controller_improvement']} |")
     lines += ['', 'Every event, branch, fold, seed and locality is retained in groups/*.json and *_localities.csv, including tail errors.',
         'Partial trajectories only contribute observed labels; missing labels are not zero error. Complete-window ADE and endpoint FDE use their actual support.',
         'EuropeanSquares released detector tracks, image-pixel obs8/pred12, raw annotation stride12. Not historical raw-t50, metric, seconds, human gold, true3D or foundation evidence.',

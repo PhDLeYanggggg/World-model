@@ -19,6 +19,11 @@ source lineage and checkpoint-prefix replay have been verified. The two-source
 protected-floor predictions on excluded localities are computed afresh. The
 four-source protected floor and stopping controller remain common evaluation
 references. This separates changing the fallback from improving the controller.
+The cached trajectory forecasters retain their parent's masked-loss sampler,
+which included unknown-future draws with zero supervised loss. Those draws are
+not counted as labeled examples. The newly trained controller sampler instead
+excludes unknown targets entirely; this does not retroactively change the
+forecaster training protocol.
 
 ## Matched Heads
 

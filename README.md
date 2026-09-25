@@ -10,7 +10,34 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have completed the next [support-factorization experiment](outputs/publication_readiness_2026_09/european_support_factorization_v1/conclusions.md).
+I have finished a [producer-conditioned controller experiment](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/conclusions.md).
+I trained 108 small Torch gain/harm heads to test whether knowing which model
+produced a trajectory improves the decision to use it. Global, real-tag and
+placebo-tag heads have the same capacity and training budget, and their primary
+comparisons use identical forecasts. All 180 development views are reported.
+
+The result is mixed, not a deployment upgrade. The real tag changes all-ADE gain
+by -0.50% to +0.94% versus the global head. The controller consistently improves
+over its own two-source fallback, but that fallback can be worse than the existing
+system. Worst-locality easy degradation reaches 8.03%. The error breakdown shows
+that all seven easy violations already have a weak fallback; six remain violations
+even after the neural controller helps. A learned risk score is not a safety
+guarantee either: realized harm often exceeds the predicted budget.
+
+The [full matrix](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/results.md),
+[loss curves](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/training_losses.svg),
+[paired comparisons](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/paired_changes.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/failure_analysis.md)
+include the adverse branches and scenes. The 216,000 updates completed, checkpoint
+replays match, and 344 scoped tests pass. These are newly trained controllers,
+not newly trained trajectory forecasters or independent confirmation. Deployment
+stays unchanged. My next experiment will keep the stronger producing models fixed
+and separate the sources used for producer fitting, controller supervision and
+readout. These remain image-pixel, raw-frame 8/12 development results.
+
+### Preceding Support-Factorization Study
+
+I completed a [support-factorization experiment](outputs/publication_readiness_2026_09/european_support_factorization_v1/conclusions.md).
 It separates support for observed motion, support for model disagreement, and
 the requirement that the same training sources support both. The forecasts,
 learned heads and thresholds stayed fixed. All 936 registered development
@@ -31,8 +58,8 @@ and [reproduction guide](outputs/publication_readiness_2026_09/european_support_
 retain the negative comparisons and locality failures. The worst observed
 positive-easy degradation remains 0.437%, and the small stopping repair is intact.
 There are 326 passing scoped tests and a complete independent arithmetic check,
-but no new neural training, deployment or independent confirmation. Next I will
-test producer-matched gain/harm learning rather than keep tuning support cutoffs.
+but no new neural training, deployment or independent confirmation. That negative
+result motivated the producer-conditioned refit above instead of more support-cutoff tuning.
 These remain image-pixel, raw-frame 8/12 development results, not physical safety
 or a submission-ready world model.
 

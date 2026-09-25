@@ -5,22 +5,52 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Producer-Conditioned Controllers (2026-09-25, Trained, Readout Pending)
+## Producer-Conditioned Controllers (2026-09-25, Completed, Not Promoted)
 
-The earlier frozen-producer replacement experiment already failed, so it is not
-being repeated as a proposed repair. The next study trains equal-dimension global,
-producer-tagged and outcome-independent placebo-tagged gain/harm heads. Candidate
-and floor forecasts are held identical within the main comparisons; each of the
-two source-excluded producer bundles is evaluated separately. Original four-source
-floor/stop policies remain common anchors.
+I trained 108 equal-capacity Torch gain/harm heads with 216,000 updates and three
+seeds: global, actual producer-tagged and outcome-independent placebo-tagged.
+Training and 180 decision/evaluation views are fresh_run; trajectory forecasters
+and source data are cached_verified. No new trajectory-dynamics training.
+All decisions froze before outcome readout. Registration `3f5f134a` and the
+training-completion milestone `c228fae7` were pushed before new evaluation.
 
-All 108 heads completed 216,000 updates across three seeds. Both producer-prefix
-checkpoint replays match for every head, with zero unknown-label supervised draws.
-The 180 policy views use the existing fitting-fixed normalizer and unchanged 2% risk budget.
-All decisions must freeze before new readout; performance is not yet reported. No forecaster training, independent
-confirmation, threshold search or deployment change. Producer tags are confounded
-with fitting cohorts; the protocol records that attribution limit.
-[Protocol](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/registration.md).
+| Producer-tagged comparison | All-ADE gain range | Positive / negative CI |
+|---|---:|---:|
+| Same forecasts, global head | -0.50256% to +0.93933% | 13 / 9 |
+| Same forecasts, placebo head | -0.32664% to +1.02026% | 10 / 9 |
+| Unchanged four-source stop controller | -1.03775% to +2.27628% | 15 / 10 |
+
+The tagged controller improves over its own two-source floor in all36 views,
+by 0.03472% to 2.40571%, with positive conditional intervals. But replacing the
+stronger floor changes the problem: worst positive-easy degradation is 8.02939%,
+and worst hard-locality loss versus the old stop controller is 15.12363%.
+The source tag does not deliver a stable gain over global/placebo controls.
+Each range covers dependent development views, not independent tests.
+
+Post-readout error accounting locates all seven easy locality/view violations
+in already-bad two-source floors; six persist despite a helpful neural increment.
+All seven are repeated views of one locality. In the worst case, the floor's
+10.04054% degradation improves by 2.01115 percentage points but remains 8.02939%.
+102/288 selected locality/views exceed the predicted 2% positive-harm budget in
+realized outcomes;233 underpredict harm. This budget is not calibrated safety.
+
+All216 new checkpoint prefixes replay.180 scalar policies,216 coordinate arrays,
+3,402 metric reductions and90 old metrics verify.344 tests in56 scoped files
+pass; full legacy suite not_run. Training took547 seconds, evaluation445 seconds;
+no runtime failure or budget reduction. CREATE queue access was checked read-only;
+the authorized M3W remote-artifact directory remains unknown, not proven absent.
+
+Deployment remains unchanged. Next: keep a four-source producer/floor fixed and
+separate producer fitting, controller supervision and readout within the opened
+development sources; register before running. Independent roles remain closed.
+Image-pixel obs8/pred12 rawstride12 only, not historical raw-t50, metric/seconds,
+human gold, physical safety, true3D or foundation. Stage5C/SMC remain off.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/conclusions.md),
+[complete matrix](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/results.md),
+[training loss](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/training_losses.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/gates.md).
 
 ## Support Factorization (2026-09-25, Completed, Repair Not Supported)
 
