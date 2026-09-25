@@ -10,6 +10,31 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed a [matched-coverage diagnosis](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/conclusions.md)
+to answer a question left by the last experiment: does the new risk head choose
+better interventions, or mainly change how often the model intervenes?
+
+I kept every forecast and fitted head frozen and compared the two risk rankings
+at the same intervention counts in each locality. The answer depends on the
+event target and scene split. There is no consistent ranking advantage. Some
+accuracy gains come from making more switches; much of the easy-event protection
+comes with making fewer. At the old intervention counts, the new neural ranking
+breaks the 2% easy-degradation limit in six of nine comparisons. The old ranking
+at the new, lower counts stays below that limit, but still harms some cases
+where constant velocity was already exact.
+
+The [complete results](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/results.md)
+and [all-comparison figure](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/matched_ranking.svg)
+retain both count anchors and the unequal-support cases. All 216 views reproduce,
+with a separate arithmetic implementation and 227 scoped tests. This was a new
+diagnostic, not another training run or a deployable policy. Forced-count controls
+can violate their predicted-risk limit, so I am not selecting one for deployment.
+These remain image-pixel 8/12 development results, not independent confirmation.
+Next I will target ordering and unsupported cases separately, with the same
+strong damping control and no relaxation of the safety limit.
+
+### Earlier Source Experiments
+
 I have completed the [occurrence-severity experiment](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/conclusions.md).
 Instead of asking a risk head to learn only an average error increase, I also
 teach it whether a harmful switch occurs and how large that harm is when it
@@ -29,10 +54,8 @@ and [failure analysis](outputs/publication_readiness_2026_09/european_hurdle_ris
 retain the tradeoffs and the stronger controls. All 72 checkpoint replays and
 144 metric views reproduce; 218 scoped tests pass. These are image-pixel 8/12
 development results, not independent final-test evidence or physical safety.
-Next I will separate better risk ranking from simply making fewer switches,
-while keeping the reserved data and current deployment unchanged.
-
-### Earlier Source Experiments
+This led to the matched-coverage diagnosis above. Reserved data and current
+deployment remain unchanged.
 
 I have completed a [matched cost-head experiment](outputs/publication_readiness_2026_09/european_geometric_cost_v1/conclusions.md).
 The question is whether a controller makes better decisions when its predicted

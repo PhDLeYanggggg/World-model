@@ -5,27 +5,60 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Hurdle Risk Ranking at Matched Coverage (2026-09-25, Registered)
+## Hurdle Risk Ranking at Matched Coverage (2026-09-25, Completed)
 
-The next frozen-score diagnostic separates risk ordering from intervention
-count. For each candidate, fold, seed, event and excluded locality, compare
-product-MSE and hurdle rankings at both original counts. All 36 groups and 144
-views remain in the matrix. Counts are fixed before future-label filtering;
-both additive error decompositions use the same CV denominator.
+Fresh frozen-score diagnosis separates ordering, intervention count and support;
+no new model training, threshold search or deployment. The first registered
+attempt correctly stopped before new readout at a common-support guard. The
+committed pre-readout amendment retains full and common anchors rather than
+dropping rows: 36 groups, 216 views, 72 matched-ranking contrasts.
 
-No new fitting or deployment rule. Forced equal-count controls may violate
-the 2% predicted-risk rule and are explicitly offline diagnostics. No new
-outcomes at registration; neither anchor will be chosen from these outcomes.
-Existing forecasts, thresholds and reserved roles remain unchanged.
+| Candidate / risk event | Positive / negative all-ADE ranking CIs at product counts | At hurdle counts |
+|---|---:|---:|
+| Neural / all | 3 / 4 | 1 / 1 |
+| Neural / easy | 2 / 5 | 3 / 4 |
+| Damping / all | 0 / 8 | 0 / 6 |
+| Damping / easy | 3 / 1 | 2 / 3 |
 
-Before new readout, the common-support guard stopped two damping groups with
-zero predicted reference mass under one head only. The registered amendment
-retains full anchors plus common-pool anchors and reports support effects
-separately: 36 groups, 216 views. It does not silently drop the affected rows
-or alter the risk limit. Original failed-attempt artifacts remain preserved.
+Each cell uses nine fold-seed comparisons; zero-spanning intervals are not listed
+as positive or negative. No uniform ordering advantage is established. Both
+all-event coverage components improve all-ADE in all nine comparisons for both
+candidates; these arms generally intervene more, not less. Neural/easy's full
+all-ADE difference is negative in all nine views, from -2.5232 to -1.0494 pp of
+CV-normalized gain. Its reduced coverage trades accuracy for protection.
 
-[Registered comparison](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/registration.md),
-[pre-readout support amendment](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/amendment_support_v2.md).
+At original product counts, hurdle neural/easy ordering fails the positive-easy
+limit in 6/9 views, with worst degradation 13.7083%. Product ordering at hurdle
+counts passes that limit in all nine views, with worst degradation 1.2078%, but
+still harms zero-CV rows in five views. The original hurdle worst value remains
+0.6746%; this result alone does not establish universal ranking or zero-error
+protection. Forced high-count neural/easy controls violate predicted risk in all
+nine views and are offline diagnostics, not deployable improvements.
+
+The two unequal-support contributions are +0.004401 and +0.000796 pp of all-ADE
+gain, retained separately. Exact additive accounting is not unique causal
+attribution. All216 views and72 parent controls reproduce. A separate scalar
+sorting/coordinate implementation verifies216 decisions,864 reductions and108
+decompositions. 227 tests in36 scoped files pass, not the full legacy suite.
+All necessary local phases have finished.
+
+Each fit uses four fitting/eight complete-chain-excluded localities; all twelve
+are opened development. Three seeds,3,000 paired locality-bootstrap draws,
+dependent views and unadjusted intervals. Detector-track image pixels,
+obs8/pred12 rawstride12; not historical t50,seconds,metric,human gold,physical
+safety,true3D or foundation. Reserved roles,deployment,Stage5C andSMC remain
+unchanged. No stable safe neural advantage or submission-ready claim. Next:
+fitting-only ordering-specific learning and support-aware abstention controls.
+
+[Registration](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/registration.md),
+[pre-readout amendment](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/amendment_support_v2.md),
+[conclusions](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/execution_notes.md),
+[English addendum](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/paper_addendum.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/operation_zh.md).
 
 ## Hurdle Risk Heads (2026-09-25, Completed, Partial Protection Benefit)
 
