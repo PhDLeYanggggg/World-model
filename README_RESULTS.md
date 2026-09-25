@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Dual-Event Policy Bridge (2026-09-25, Registered, Not Yet Evaluated)
+
+I am testing whether a shared-reference controller can retain the stronger
+all-event policy's accuracy while limiting both pooled and easy-event harm.
+The frozen conservative policy remains the reference. The new comparison fits
+three cost heads on producer-excluded source localities, with three seeds and
+matched single-risk, dual-risk and ridge controls. The six already-opened
+selection localities remain development data, not independent confirmation.
+No deployment or risk-calibration claim follows from this registration.
+[Protocol](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/registration.md).
+
 ## Six-Locality Model-Selection Readout (2026-09-25, Completed, No Deployment)
 
 I evaluated the existing 36 producer/controller/seed/event groups for a first
