@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Reference Protection (2026-09-25, Training Complete, Readout Not Run)
+## Reference Protection (2026-09-25, Completed, Repair Not Established)
 
 Two warm-started arms test whether freezing reference moments removes the
 observed cost-fitting tradeoff. Both receive the same additional 2,000-update
@@ -24,8 +24,53 @@ round's C outcome readout. Summed fitting time is 156.28 seconds, not total
 wall time. Unknown-label training draws are zero. Both arms use identical
 continuation draw counts and final sampler RNG; the protected C reference
 predictions remain bit-identical to the preceding mean head. Six targeted
-model/reporting tests pass. This is real native-arm64 Torch CPU4 training,
-not a fallback or new neural trajectory result. No outcome claim yet.
+model/reporting tests passed before readout. This is real native-arm64 Torch
+CPU4 training, not a fallback or new neural trajectory result.
+
+Decision freeze `81fec73d` preceded C outcome readout. Full protected-joint
+versus continued-joint all-ADE changes -0.0543% to +0.2267%, with all six
+three-seed locality-bootstrap intervals crossing zero. Complete observed
+risk passes 5/18 protected, 4/18 continued and 6/18 original-mean settings.
+Net easy passes all 18 in the full pair, but easy-positive-harm violations
+remain 16/72 dependent locality views for both new arms. No deployment.
+
+The motion-only protected/continued/original risk counts are 6/18, 9/18 and
+12/18. Motion continued also fails one net-easy setting (worst 2.0119%);
+protected worst net-easy degradation is 1.8602%. These are not hidden by
+reporting the full pair alone. Protected versus old raw neural full all-ADE
+has one positive, two negative and three overlapping intervals.
+
+Secondary accuracy effects do not rescue the primary result: protected dual
+versus continued dual improves full all ADE 0.1145%-0.6192% across all six
+positive intervals, but risk passes drop 15/18 to 14/18. Protected joint
+versus its dual gates improves all ADE 0.5318%-2.7373% and hard ADE
+0.5543%-3.7551%, with six positive intervals each; risk passes drop from
+14/18 to 5/18. The query-count-matched hash contrast has five positive all-ADE
+intervals and one overlap; it does not match realized risk.
+[Conclusions](outputs/publication_readiness_2026_09/european_reference_protection_v1/conclusions.md),
+[full results](outputs/publication_readiness_2026_09/european_reference_protection_v1/results.md).
+
+Full-B protected easy-harm MSE improves over continuation in 17/18 settings,
+but only 3/18 improve on C. Against the original checkpoint, all 18 full-B
+fits improve this MSE, yet fixed-action easy-harm coverage falls 0.61847 to
+0.54905 on B and 0.58180 to 0.52150 on C. Protected-joint's own selected
+easy-harm is underpredicted in 66/72 full locality views. In the worst
+locality074 example, predicted supported harm is 203.91 versus actual
+2,020.02; observed harm ratio is 6.1784% versus predicted 0.5318%.
+[Fitting versus transport](outputs/publication_readiness_2026_09/european_reference_protection_v1/fitting_transport_analysis.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_reference_protection_v1/failure_analysis.md).
+
+Final verification passes: 72 checkpoint prefix replays, 576 decision replays,
+144 independent coordinate reductions, 5,184 paired metric checks and 576
+independent event-mass checks. All 3,827,628 protected C row-views preserve
+reference predictions exactly; these are dependent views, not unique rows.
+The 447 scoped tests across 77 files pass; the entire legacy suite was not
+run. Sixty public artifacts and 86 source bindings are sealed. Two figure
+previews were visually checked. CREATE was inspected read-only; no job was
+modified or submitted. Remote M3W asset inventory remains not_run. No reserved
+data opened, deployment change, Stage5C execution or SMC enablement.
+[Verification](outputs/publication_readiness_2026_09/european_reference_protection_v1/verification.json),
+[next controlled step](outputs/publication_readiness_2026_09/european_reference_protection_v1/project_gap.md).
 
 ## Easy-Harm Sampling (2026-09-25, Completed, Repair Failed)
 

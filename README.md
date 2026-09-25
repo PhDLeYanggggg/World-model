@@ -10,14 +10,27 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am following the failed sampling repair with a
-[matched reference-protection experiment](outputs/publication_readiness_2026_09/european_reference_protection_v1/registration.md).
-Both arms start from the same risk head and receive the same extra training
-budget. One continues joint learning; the other freezes reference-cost
-predictions while updating harm predictions. This tests a specific fitting
-tradeoff without changing forecasts, risk tolerance or source roles. It has
-72 completed risk-head continuations and 576 frozen decision views, but no
-new outcome readout yet. The protected branch carries extra inference cost.
+I completed a [matched reference-protection experiment](outputs/publication_readiness_2026_09/european_reference_protection_v1/conclusions.md)
+to test whether separating reference-cost and harm learning repairs the risk
+model. Both arms start from the same checkpoint and receive the same extra
+training, so the comparison does not confuse a new mechanism with more updates.
+
+The repair did not hold up. Across six source assignments, the protected joint
+policy changes all ADE by -0.054% to +0.227% relative to shared continuation;
+all six locality-bootstrap intervals include zero. Complete observed risk
+passes only 5/18 settings, even though net easy error passes all 18. I am not
+deploying the change. The experiment includes 72 real Torch continuations,
+three seeds and 576 frozen policy views.
+
+Joint allocation still improves accuracy over independent gates, but also
+violates harm constraints more often. My next priority is reliable estimation
+of selected easy-case harm, not another threshold sweep or a larger model.
+The [loss curves](outputs/publication_readiness_2026_09/european_reference_protection_v1/training_loss.svg)
+and [paired comparisons](outputs/publication_readiness_2026_09/european_reference_protection_v1/source_contrasts.svg)
+show both the useful and negative findings. These are source-development
+results; independent calibration and confirmation remain closed. Frozen
+model/decision replay and 447 scoped tests pass; that verifies the experiment,
+not the rejected scientific claim.
 
 ### Completed Sampling Test
 

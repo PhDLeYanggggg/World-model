@@ -106,6 +106,9 @@ def main():
     assert {p:summarize(v,seeds[p]) for p,v in rows.items()}==json.loads((run.PUBLIC/'aggregate_metrics.json').read_text())
     fits=json.loads((run.PUBLIC/'training_metrics.json').read_text())
     assert matched_fit_summary(fits)==json.loads((run.PUBLIC/'fitting_diagnostics.json').read_text())
+    transport=json.loads((run.PUBLIC/'fitting_transport_audit.json').read_text())
+    assert run.artifact(ROOT/transport['source_binding']['path'])==transport['source_binding']
+    for ref in transport['inputs']: assert run.artifact(ROOT/ref['path'])==ref
     pv=json.loads((run.prior.PUBLIC/'verification.json').read_text())
     tests=sorted(set(pv['test_files'])|{'tests/test_m3w_reference_protection.py','tests/test_m3w_reference_protection_reporting.py'})
     xml=run.PRIVATE/'tests.xml'
@@ -120,7 +123,8 @@ def main():
     artifacts={str(p.relative_to(run.PUBLIC)):run.digest(p) for p in run.PUBLIC.rglob('*') if p.is_file() and p.name!='verification.json'}
     assert all((run.PUBLIC/f).stat().st_size<1024**2 for f in artifacts)
     bindings=[*run.FILES,*tests,'scripts/report_m3w_european_reference_protection.py',
-        'scripts/plot_m3w_european_reference_protection.py',str(Path(__file__).relative_to(ROOT))]
+        'scripts/plot_m3w_european_reference_protection.py',
+        'scripts/audit_m3w_reference_protection_transport.py',str(Path(__file__).relative_to(ROOT))]
     run.immutable_json(run.PUBLIC/'verification.json',dict(all_passed=True,artifacts=artifacts,
         source_bindings={f:run.digest(ROOT/f) for f in bindings},checkpoint_replays=r['checkpoints'],
         decisions=r['decisions'],independent_event_mass_checks=r['mass_checks'],protected_C_row_views=r['protected_C_row_views'],
