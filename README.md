@@ -10,6 +10,30 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed the [occurrence-severity experiment](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/conclusions.md).
+Instead of asking a risk head to learn only an average error increase, I also
+teach it whether a harmful switch occurs and how large that harm is when it
+occurs. I trained 72 small Torch heads across three seeds, with 144,000 updates,
+against an otherwise identical control. Forecasts and safety limits stayed fixed.
+
+This helps one important failure mode: the largest positive-easy degradation
+across neural views falls from 17.25% to 0.67%. It does not solve the whole
+problem. The new controllers still damage some cases where constant velocity
+has zero error, and none of the 18 all-ADE comparisons establishes an advantage
+over equally protected damping. Two hard-subset comparisons improve slightly,
+but they come from one split; most favor damping. I am not promoting the model.
+
+The [complete results](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/results.md),
+[comparison figure](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/objective_comparison.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/failure_analysis.md)
+retain the tradeoffs and the stronger controls. All 72 checkpoint replays and
+144 metric views reproduce; 218 scoped tests pass. These are image-pixel 8/12
+development results, not independent final-test evidence or physical safety.
+Next I will separate better risk ranking from simply making fewer switches,
+while keeping the reserved data and current deployment unchanged.
+
+### Earlier Source Experiments
+
 I have completed a [matched cost-head experiment](outputs/publication_readiness_2026_09/european_geometric_cost_v1/conclusions.md).
 The question is whether a controller makes better decisions when its predicted
 gain and harm are constrained by how far a candidate forecast moves from the
@@ -32,8 +56,6 @@ deployment or claiming a successful neural dynamics model. These are
 opened-source, image-pixel 8/12 development results, not independent final-test
 evidence. My next experiment will separate event support from conditional harm
 rather than relax the safety limit to make the current results look better.
-
-### Earlier Source Experiments
 
 I have completed the [frozen producer-transport diagnostic](outputs/publication_readiness_2026_09/european_producer_transport_v1/conclusions.md).
 It tests a specific explanation for the controller's failures: the gain/risk

@@ -5,22 +5,69 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Hurdle Risk Heads (2026-09-25, Registered, Outcomes Pending)
+## Hurdle Risk Heads (2026-09-25, Completed, Partial Protection Benefit)
 
-The next controlled experiment separates positive event-harm occurrence from
-conditional normalized severity. It keeps forecasts, original utility heads,
-source roles, causal features and2% risk limits fixed. Two matched three-output
-networks compare product-moment MSE against the same MSE plus occurrence BCE
-and positive-only severity MSE. The fitting-only support audit finds positive
-labels in every locality/event slice; easy-event labels are sparse, not absent.
+Fresh training separates event-harm occurrence from conditional severity while
+keeping forecasts, original utility heads, causal inputs, source roles and the
+2% risk rule fixed. Two matched three-output networks compare product-moment
+MSE with the same MSE plus occurrence BCE and positive-only severity MSE.
+The fitting-only audit finds positive labels in all 144 locality/event slices.
+The established two-part modeling idea is not claimed as structural novelty.
 
-Plan:72 small risk heads,144,000 updates,three seeds;144 views retain old and
-geometric controls as well as both new objectives. Both new networks have22,979
-parameters; an architecture-matched product-MSE arm is required. No new outcomes,
-calibration or deployment claim at registration. The two-part idea is established
-methodology, not asserted novelty. All sources remain opened development.
+72 Torch heads, 144,000 updates, three seeds, 22,979 parameters/head. All fits
+and replays precede new outcome readout; all 144 registered views are retained.
 
-[Registration](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/registration.md).
+| Risk arm | Neural observed safety | Worst positive-easy degradation | Damping observed safety |
+|---|---:|---:|---:|
+| Original | 9/18 | 5.5327% | 16/18 |
+| Geometric envelope | 8/18 | 17.8014% | 18/18 |
+| Matched product MSE | 6/18 | 17.2546% | 18/18 |
+| Occurrence-severity hurdle | 6/18 | 0.6746% | 18/18 |
+
+All 18 neural hurdle views meet the positive-easy limit, but 12 harm zero-CV
+cases. The other six have no zero-CV readout examples, not demonstrated
+zero-error protection. A fresh posthoc audit finds just four distinct zero-CV
+rows, all in one locality; the two folds evaluating them have none in fitting.
+Each affected view harms one to three, with added ADE 0.05294-0.92109 pixels.
+No definition, tolerance or decision threshold was changed.
+
+Hurdle supervision improves all-ADE over its matched MSE control in 8/9 neural
+all-event comparisons (seven positive conditional intervals), but worsens all
+nine easy-event comparisons (nine negative intervals). Against equally protected
+damping, there are zero positive all-ADE intervals and 15 negative intervals
+out of 18. The lone positive point is +0.2451%, CI [-0.1032%, +0.6369%]. Two
+hard-subset intervals favor neural by +0.5874% and +0.3308%, both in one fold;
+15/18 hard intervals favor damping. No stable safe neural advantage is established.
+
+Posthoc harm-occurrence Brier comparisons against a fitting-only constant prior
+improve in 9/9 neural easy-event views (eight positive intervals) and 6/9 all-
+event views. This is learned auxiliary signal, not a dynamics or safety claim.
+
+72 checkpoint replays (first 4,096 excluded-index rows/head), 72 sampler matches,
+144 complete metric views and 72 old/geometric controls reproduce. There are
+218 passing tests across 34 scoped files, not the full legacy suite. Summed
+head-fit time is 114.05s, excluding preparation/inference/replay/reporting.
+Native arm64 CPU4/inter-op1/workers0; all required phases have finished.
+
+Each fit uses four fitting/eight producer-excluded localities; all twelve are
+opened development sources. Three seeds and 3,000 locality-bootstrap draws are
+conditional, dependent across views and not multiplicity corrected. Released
+detector tracks, image pixels, obs8/pred12 rawstride12; not historical t50,
+seconds, metric, human gold, physical safety, true3D or foundation. Reserved
+data, deployment, Stage5C and SMC remain unchanged. Historical Stage37 is not
+recertified. Next: matched-coverage risk ranking and support-aware protection.
+
+CREATE read-only query at 09:47:01 UTC succeeded with no matching queue rows;
+this does not prove old jobs completed. No remote jobs changed. Remote M3W
+assets remain unverified; local resources sufficed.
+
+[Registration](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/execution_notes.md),
+[English addendum](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/paper_addendum.md).
 
 ## Geometric Cost Heads (2026-09-25, Completed, No Safe Neural Advantage)
 
