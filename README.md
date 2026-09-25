@@ -13,8 +13,9 @@ I started this repo to answer that question carefully, not just to collect a nic
 I am now testing [what the policy bridge actually contributes](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/registration.md).
 The experiment compares neural and ridge scoring on identical forecasts and
 matches intervention counts at each query. A separately retrained motion-only
-version tests whether neural trajectory candidates are necessary. The protocol
-is fixed before new training and readout; no new result or deployment is claimed.
+version tests whether neural trajectory candidates are necessary. All 36 new
+neural heads and 36 ridge controls have finished training. All 396 policy views
+are frozen before outcome readout; no new accuracy result or deployment is claimed.
 
 I trained a [policy bridge](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/conclusions.md)
 to learn when a conservative forecast should give way to a more accurate, but
