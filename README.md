@@ -10,6 +10,27 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have now run the [symmetric-utility experiment](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/conclusions.md).
+It changes one factor: the utility head estimates gain and harm with symmetric
+MSE, while every risk head and risk limit stays frozen. I trained 18 new heads
+across three seeds and retained all 48 policy comparisons. This substantially
+reduces harm-estimation bias, but it does not establish a neural dynamics advantage.
+
+In the fixed easy-event neural-risk views, neural ADE gain over CV is now
+0.27%, 0.20% and 0.42%; the equally protected damping control reaches
+2.09%, 2.20% and 2.16%. All 24 direct neural-versus-damping intervals still favor
+damping. Some other views fail easy or zero-error preservation, and one joint
+solver call safely falls back. I keep these negative results in the
+[complete comparison](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/results.md).
+The [all-view figure](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/utility_ablation.svg)
+shows why a better cost estimate is not yet a better neural controller.
+
+All new checkpoints and complete metrics reproduce, and 179 scoped tests pass.
+These remain opened-source development results, not independent calibration
+or confirmation. I am not changing deployment. The next question is how much
+of the remaining limitation comes from risk estimation versus neural errors
+that the available history cannot reliably distinguish.
+
 I have completed the [opportunity diagnosis](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/conclusions.md).
 The neural candidate has more hindsight opportunity than fixed damping, but its
 protected controller captures much less of it. In the easy-event neural-risk
@@ -21,9 +42,9 @@ This does not mean the hindsight gains are learnable from past observations.
 The diagnostic reproduces all 48 frozen policies without fitting a model or
 opening reserved data. It points to a specific next experiment: the utility
 head currently uses a conservative harm loss, then feeds a second conservative
-risk gate. I will test a symmetric utility objective with the risk heads and
-limits unchanged, rather than relax protection or choose a threshold from
-these outcomes. The [attribution figure](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/opportunity_attribution.svg)
+risk gate. That motivated the symmetric-utility experiment above, with risk
+heads and limits unchanged, not a relaxed threshold selected from these
+outcomes. The [attribution figure](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/opportunity_attribution.svg)
 and [all tables](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/tables.md)
 keep the missed opportunities, harms and producer differences visible.
 

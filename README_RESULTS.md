@@ -5,18 +5,40 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Symmetric Utility, Fixed Risk (2026-09-25, Registered)
+## Symmetric Utility, Fixed Risk (2026-09-25, Completed, No Neural Advantage)
 
-The next controlled experiment changes only utility-head loss from asymmetric
-underharm4 to symmetric MSE. Both frozen neural and damping candidates receive
-the same refit: 18 heads, three seeds and three source folds, 36,000 updates.
-All 72 event-risk heads, forecasts, 2% budgets and support guards stay frozen.
-The 100-update runtime pilot resumes within that budget. All fits must finish
-before the fixed 48-view readout; no winner or threshold is selected from it.
+Fresh fit: 18 Torch utility heads, three seeds/folds, 36,000 updates. Only
+underharm4 utility loss changes to symmetric MSE, for both candidates. All 72
+event-risk heads, forecasts, 2% budgets and support guards stay frozen. Exact
+draws, preprocessing and initialization constants match each old head. The
+100-update runtime pilot resumes within budget; all fits finish before readout.
 
-Preflight: 24 focused tests pass. Training and outcome verification are pending;
-this entry claims neither a repair nor new dynamics. Reserved roles stay closed.
-[Registration](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/registration.md).
+In the fixed easy-event neural-risk unguarded views, ADE gain vs CV is
+0.2719/0.1982/0.4188%, versus old 0.2382/0.1663/0.4310%. New protected damping
+gains are 2.0901/2.1974/2.1559%. All 24 paired pointwise neural-versus-damping
+gains remain negative, range -2.0768% to -0.2228%, with negative conditional CIs.
+All 24 hard and 24 joint contrasts also favor damping. Symmetric utility improves
+18/24 neural views (10 positive CIs) and 21/24 damping views (15 positive CIs).
+No view, seed, checkpoint or threshold is selected as a deployment winner.
+
+Neural harm-estimate bias falls from about 4.47--4.62 pixels to 0.11--0.35 pixels,
+but downstream improvement remains small/inconsistent across seeds. Full
+observed safety passes 22/24 neural and 21/24 damping views. Failures retain
+zero-CV harm and worst-locality easy degradation; joint passes 12/24 and 20/24.
+No defined matched-count joint-versus-unary CI is strictly positive. One exact
+joint solve returns an invalid-solution safe floor and is not called optimal.
+
+Complete metric replay, 18 exact checkpoint replays (4,096 rows each), 144
+independently reconstructed pointwise decisions and frozen-control accounting
+pass. All 179 tests across 23 scoped files pass, not the full legacy suite.
+Source development only; reserved roles remain closed. No new forecaster,
+deployment promotion, metric/seconds claim, Stage5C, SMC or submission readiness.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/results.md),
+[light metrics](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/summary_metrics.json),
+[execution evidence](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/execution_notes.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/operation_zh.md).
 
 ## European Opportunity Diagnosis (2026-09-25, Completed, No New Fitting)
 
