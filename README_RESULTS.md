@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Reference Protection (2026-09-25, Registered, Training Not Run)
+## Reference Protection (2026-09-25, Training Complete, Readout Not Run)
 
 Two warm-started arms test whether freezing reference moments removes the
 observed cost-fitting tradeoff. Both receive the same additional 2,000-update
@@ -17,6 +17,15 @@ updates and 576 policy views are registered before readout. Four targeted
 tests pass, including exact resume in both arms and absent reference gradients.
 No new forecaster, threshold search or independent-data access.
 [Protocol](outputs/publication_readiness_2026_09/european_reference_protection_v1/registration.md).
+
+Registration `dcc3cf7b` preceded training. All 72 heads completed 144,000
+additional updates; 36 decision groups / 576 views are frozen before this
+round's C outcome readout. Summed fitting time is 156.28 seconds, not total
+wall time. Unknown-label training draws are zero. Both arms use identical
+continuation draw counts and final sampler RNG; the protected C reference
+predictions remain bit-identical to the preceding mean head. Six targeted
+model/reporting tests pass. This is real native-arm64 Torch CPU4 training,
+not a fallback or new neural trajectory result. No outcome claim yet.
 
 ## Easy-Harm Sampling (2026-09-25, Completed, Repair Failed)
 

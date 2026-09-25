@@ -16,7 +16,8 @@ Both arms start from the same risk head and receive the same extra training
 budget. One continues joint learning; the other freezes reference-cost
 predictions while updating harm predictions. This tests a specific fitting
 tradeoff without changing forecasts, risk tolerance or source roles. It has
-no new result yet, and the protected branch carries extra inference cost.
+72 completed risk-head continuations and 576 frozen decision views, but no
+new outcome readout yet. The protected branch carries extra inference cost.
 
 ### Completed Sampling Test
 
