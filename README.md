@@ -10,14 +10,31 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing a [fixed-producer controller design](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/registration.md).
-The original four-source forecaster and fallback remain unchanged. Separate
-groups of opened development localities supply producer fitting, controller
-supervision and readout. All144 new Torch heads and72 fixed ridge fits are now
-complete, with288,000 neural updates. The matched-producer and cross-fitted
-controls will operate on the same final forecasts. Decisions are being frozen
-before comparison readout; training completion is not an improvement claim.
-No reserved evaluation role is being opened.
+I have completed a [fixed-producer controller study](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/conclusions.md).
+The idea is to keep the stronger trajectory forecaster and fallback unchanged,
+then train the intervention controller on predictions from that same forecaster.
+Separate groups of development scenes supply producer fitting, controller
+supervision and readout. I trained 144 small Torch heads and 72 ridge controls,
+froze every decision, and evaluated all 180 registered views.
+
+This repairs an important problem: worst-locality easy degradation is now 0.238%
+for matched supervision, compared with 7.85% for the cross-fitted-supervision
+control. Both operate on identical final forecasts. But it is not a deployment
+upgrade. Against the existing stopping-protected controller, all-ADE gains range
+from -0.90% to +1.65%, with 12 positive and 3 negative confidence intervals.
+The negative cases mainly lose useful switches the original controller made.
+The next target is therefore the value of overriding the existing policy, not
+relearning the whole floor-versus-neural choice.
+
+The [full results](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/results.md),
+[loss curves](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/training_losses.svg),
+[changed-action accounting](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/changed_action_accounting.json)
+and [failure analysis](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/failure_analysis.md)
+retain the adverse branches. All 288,000 updates completed and 362 scoped tests
+pass. The same opened scenes recur across views; these are not independent tests.
+No new trajectory forecaster was trained, reserved sources remain closed, and
+deployment is unchanged. Results use image pixels and raw-frame 8/12 prediction,
+not metric units, physical safety or submission-ready world-model evidence.
 
 ### Completed Producer-Conditioned Study
 
@@ -42,9 +59,9 @@ and [failure analysis](outputs/publication_readiness_2026_09/european_producer_c
 include the adverse branches and scenes. The 216,000 updates completed, checkpoint
 replays match, and 344 scoped tests pass. These are newly trained controllers,
 not newly trained trajectory forecasters or independent confirmation. Deployment
-stays unchanged. My next experiment will keep the stronger producing models fixed
-and separate the sources used for producer fitting, controller supervision and
-readout. These remain image-pixel, raw-frame 8/12 development results.
+stays unchanged. This motivated the fixed-producer study above, separating
+producer fitting, controller supervision and readout. These remain image-pixel,
+raw-frame 8/12 development results.
 
 ### Preceding Support-Factorization Study
 

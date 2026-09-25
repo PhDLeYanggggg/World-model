@@ -5,21 +5,48 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Four-Source Producer Roles (2026-09-25, Trained, Readout Pending)
+## Fixed Four-Source Producer Roles (2026-09-25, Completed, Easy Repair, Not Promoted)
 
 I registered a development-only test of controller-supervision mismatch with
 the stronger four-source neural candidate and fallback held fixed. Six ordered
 A/B/C source-role rotations, three seeds and two event targets give36 groups.
-All144 fresh Torch heads /288,000 updates and72 fixed ridge fits completed.
-Training took795 seconds; checkpoint/score hashes and zero unknown-label draws
-verify. All180 decision views must freeze before new outcome readout.
+All 144 fresh Torch heads /288,000 updates,72 fixed ridge fits and180 readouts
+completed. Training took795 seconds and evaluation172 seconds. All decisions
+froze at16:51:57 UTC, before new readout began at16:52:17 UTC. Registration8dd1dd2d
+and training milestonee629fc29 were pushed before that readout.
+
+| Matched controller comparison | All-ADE gain range | Positive / negative CI |
+|---|---:|---:|
+| Same forecasts, OOF supervision | -0.98010% to+1.12547% |21 /6|
+| Same forecasts, fixed ridge | -3.08454% to+2.76633% |14 /15|
+| Unchanged stopping controller | -0.90074% to+1.64708% |12 /3|
+
+Matched worst positive-easy degradation is0.23767%, compared with7.85031% for OOF
+and8.23348% for ridge. Matched has no easy locality/view violations. All36 matched
+views improve over the common floor by0.06143%-2.56760%, with positive conditional
+intervals. They are correlated development views, not independent replications.
+Against the stronger stopping controller,3 all and5 hard intervals remain negative.
+
+All3 negative all-ADE cases gain from new switches but lose more by removing useful
+original switches. The next hypothesis is matched incremental learning relative to
+the incumbent, not more threshold search. It has not yet been trained. Risk is not
+calibrated:66/144 selected locality/views exceed the predicted2% harm ratio;122
+underpredict it. Net easy preservation is not a positive-harm safety guarantee.
+
+All144 neural checkpoint prefixes,72 full ridge arrays,180 frozen policies,
+144 coordinate arrays and2,376 reductions verify.362 tests in60 scoped files pass;
+full legacy suite not_run. No unknown-label supervised draws. No new trajectory
+training, reserved-role opening, deployment, Stage5C or SMC. CREATE query succeeded
+read-only; the authorized remote M3W artifact directory remains unknown.
 An initial recovery check caught a wrong baseline index in the new replay script;
 the checkpoint's original selection now supplies that index. No existing model or
-prediction was modified. New training is verified, but comparative improvement
-is not yet evaluated. Registration8dd1dd2d was pushed before training.
+prediction was modified. The exact replay check was rerun, not relaxed.
 
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/registration.md),
-[preflight repair](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/preflight_repair.md).
+[preflight repair](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/preflight_repair.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/conclusions.md),
+[matrix](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/failure_analysis.md).
 
 ## Producer-Conditioned Controllers (2026-09-25, Completed, Not Promoted)
 
