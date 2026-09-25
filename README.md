@@ -10,6 +10,17 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing whether rare, costly easy-case harms are underexposed during
+training. The [registered sampling experiment](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/registration.md)
+changes only how training examples are drawn, with importance weights preserving
+the original expected loss. The architecture, forecasts, risk limits and source
+roles stay fixed. Training-source diagnostics show that the largest 1% of
+easy-harm rows carry about 90% of that harm in the full-model groups. This is a
+reason to test sampling, not evidence that the repair works. Calibration and
+confirmation data remain closed.
+
+### Completed Risk-Learning Test
+
 I completed a [controlled test of risk learning and scene-query allocation](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/conclusions.md):
 72 new Torch heads, three seeds and 432 frozen source-held decision views.
 Keeping the forecasts fixed let me separate a loss-function change from a

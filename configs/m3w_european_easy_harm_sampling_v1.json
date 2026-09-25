@@ -1,0 +1,23 @@
+{
+  "name": "european_easy_harm_sampling_v1",
+  "pairs": ["full", "motion_only"],
+  "seeds": [17, 29, 43],
+  "new_heads": 36,
+  "updates": 72000,
+  "views": 504,
+  "harm_mixture": 0.5,
+  "head_training": {"width": 64, "steps": 2000, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "policies": ["reference", "raw_neural", "raw_ridge", "mean_all", "mean_dual", "mean_scene", "mean_joint", "selected_dual", "selected_joint", "corrected_all", "corrected_dual", "corrected_scene", "corrected_joint", "corrected_hash_matched"],
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 39271,
+  "risk_budget": 0.02,
+  "easy_limit_percent": 2.0,
+  "new_forecaster_training": false,
+  "threshold_refit": false,
+  "selection_access": false,
+  "reserved_calibration_access": false,
+  "confirmation_access": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

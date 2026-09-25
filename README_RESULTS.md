@@ -5,6 +5,27 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Easy-Harm Sampling (2026-09-25, Registered, Training Not Run)
+
+The new source-only comparison changes only training sampling. It retains the
+previous mean-moment head, B-only preprocessing, initialization, 2,000-step
+budget and loss target. A half-uniform, half-easy-harm-mass draw distribution
+has unmodified importance weights p/q bounded by two. Expected loss and
+unclipped stochastic gradient match the original objective; no unbiased Adam
+update or variance-reduction claim is made. Thirty-six new heads, 72,000
+updates and 504 readout views are registered, including cached verified
+controls. No forecaster retraining, threshold search or reserved-data access.
+
+Training-source diagnostics find 4.75-8.51 positive easy-harm examples per
+balanced batch of 256 in full groups, versus 0.65-2.11 in motion-only groups.
+The median top-1% share of easy-harm mass is 89.65% and 100%, respectively.
+These overlapping group/seed views are not independent samples. Four targeted
+tests pass, including loss/gradient identity and exact interrupted resume.
+The new repair has no outcome result yet. Parent artifacts and all 83 final
+source bindings were verified before registration.
+[Protocol](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/registration.md),
+[B-only diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/training_support.md).
+
 ## Selected-Risk Learning (2026-09-25, Completed, No Promotion)
 
 This source-only experiment holds R/P forecasts and utility scoring fixed.
