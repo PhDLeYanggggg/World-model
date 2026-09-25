@@ -5,17 +5,63 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Ranking-Auxiliary Risk Heads (2026-09-25, Registered)
+## Ranking-Auxiliary Risk Heads (2026-09-25, Completed, No Safe Neural Gain)
 
-The next controlled fit adds within-locality, margin-weighted pairwise ranking
-to the existing occurrence/severity objective. Forecasts, capacity, causal
-features, training-only scalers, minibatch draws and 2% risk limits stay fixed.
-The plan is 36 new Torch heads,72,000 updates,three seeds,with all216 full/common
-and matched-count views retained. No coefficient sweep or outcome-selected arm.
-This is source-development work, not independent confirmation or a deployment
-upgrade. No new results are claimed at registration. Reserved roles stay closed.
+Fresh training added within-locality, margin-weighted pairwise ranking to the
+occurrence/severity objective: 36 Torch heads, 72,000 updates, three seeds,
+22,979 parameters per head. Forecasts, capacity, causal features, training-only
+scalers, minibatch draws and 2% risk limits stayed fixed. The coefficient was
+registered before training; there was no sweep or readout-selected arm.
 
-[Frozen experiment](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/registration.md).
+| Candidate / event | Positive / negative full-policy all-ADE CIs | Ranking at control counts | Ranking at new counts |
+|---|---:|---:|---:|
+| Neural / all | 5 / 0 | 1 / 5 | 1 / 3 |
+| Neural / easy | 2 / 5 | 3 / 4 | 3 / 2 |
+| Damping / all | 7 / 1 | 0 / 4 | 0 / 4 |
+| Damping / easy | 6 / 1 | 5 / 3 | 1 / 2 |
+
+Each cell covers nine fold-seed comparisons; intervals containing zero are not
+counted as positive or negative. Full-policy gains do not establish a uniform
+same-count ranking improvement. Against equally protected damping, all 18 neural
+all-ADE point contrasts are negative, with 17 negative conditional intervals;
+relative gains range from -4.6057% to -0.2753%. All 18 hard-subset intervals favor
+damping. Some easy-subset comparisons favor neural, but not overall superiority.
+
+All 18 new neural views meet the positive-easy 2% limit. Twelve still harm cases
+where constant velocity has zero error; the other six have no such examples,
+not demonstrated zero-error protection. Three new damping/easy views also fail
+the easy limit, with worst degradation 4.9464%. No deployment promotion.
+
+The completed fits contain 4,471,012 valid repeated rank-pair draws and no
+unknown-label draws. Neural/easy receives 167,291 valid pairs across 18,000
+updates, versus 2,355,302 for neural/all. This suggests weak easy-event ordering
+supervision, not a proven sole cause. First/last stochastic training losses are
+not fixed-validation convergence evidence. Next: change supported-pair formation
+only, with thresholds and evaluation roles unchanged; separately investigate
+causal abstention for unsupported zero-reference cases.
+
+All 36 checkpoint replays and 216 metric views reproduce; 36 old controls match
+exactly. A separate implementation verifies 216 sorts, 864 coordinate reductions
+and 108 decompositions. 234 tests in 37 scoped files pass, not the full legacy
+suite. Summed head-fitting time is 149.734 seconds, excluding preparation,
+inference and verification. All required phases finished; no new forecaster fit.
+
+Four fitting/eight complete-chain-excluded localities per fit, all twelve already
+opened development sources. Three seeds and 3,000 paired locality-bootstrap
+draws give conditional, dependent, unadjusted intervals. Detector-track image
+pixels, obs8/pred12 rawstride12; not historical t50, seconds, metric, human gold,
+physical safety, true 3D or foundation evidence. Historical Stage37 is not
+recertified. Reserved roles and deployment remain unchanged. Stage5C/SMC stay
+off; independent confirmation and submission readiness remain unestablished.
+
+[Frozen experiment](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/gates.md),
+[execution notes](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/execution_notes.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/paper_addendum.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/operation_zh.md).
 
 ## Hurdle Risk Ranking at Matched Coverage (2026-09-25, Completed)
 

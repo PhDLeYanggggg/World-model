@@ -10,6 +10,35 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed a [ranking-supervision experiment](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/conclusions.md)
+following the coverage diagnosis below. I trained 36 new Torch risk heads across
+three seeds, with 72,000 updates. The only change was a loss that explicitly
+teaches the controller to order interventions by risk. Forecasts, model capacity,
+training samples and safety limits stayed fixed.
+
+This did not establish a safe neural advantage. Some full-policy scores improve,
+but comparisons at the same intervention counts show no consistent ordering gain.
+Against equally protected damping, all 18 neural all-ADE comparisons are negative;
+17 conditional confidence intervals favor damping. The neural policies meet the
+2% positive-easy degradation limit, yet still harm zero-error constant-velocity
+cases in 12 views. I am keeping deployment unchanged.
+
+The [complete results](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/results.md),
+[matched-ranking figure](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/ranking_comparison.svg)
+and [training losses](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/training_loss.svg)
+retain every registered comparison. All 36 checkpoint replays, 216 metric views
+and separate arithmetic checks pass; 234 scoped tests pass. These checks establish
+computational reproducibility, not scientific success or independent confirmation.
+
+Training traces identify a concrete next test: easy-event ranking receives far
+fewer valid training pairs than all-event ranking. I will test pairing supported
+event rows first, without changing the samples, risk limit or evaluation roles.
+That may address weak supervision; it is not yet a demonstrated explanation for
+the whole failure. These remain image-pixel 8/12 development results, not metric
+prediction, physical safety or a new deployment model.
+
+### Earlier Source Experiments
+
 I have completed a [matched-coverage diagnosis](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/conclusions.md)
 to answer a question left by the last experiment: does the new risk head choose
 better interventions, or mainly change how often the model intervenes?
@@ -32,8 +61,6 @@ can violate their predicted-risk limit, so I am not selecting one for deployment
 These remain image-pixel 8/12 development results, not independent confirmation.
 Next I will target ordering and unsupported cases separately, with the same
 strong damping control and no relaxation of the safety limit.
-
-### Earlier Source Experiments
 
 I have completed the [occurrence-severity experiment](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/conclusions.md).
 Instead of asking a risk head to learn only an average error increase, I also
