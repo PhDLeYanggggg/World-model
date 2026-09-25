@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## European Opportunity Diagnosis (2026-09-25, Registered)
+
+The source-only diagnostic freezes all 48 policies and attributes missed
+candidate gain to support, motion, utility, event-mass and risk gates. Both
+four-locality producer controls are retained on the same held rows as the
+eight-locality producer. No new fitting, threshold selection or reserved data
+access. Six new accounting tests pass; the predictive decomposition is not_run
+until the frozen diagnostic executes.
+
+[Diagnostic specification](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/diagnosis_plan.md).
+
 ## European Protected Motion (2026-09-25, Completed, Neural Advantage Failed)
 
 Fresh run: 45 damping heads, comprising 18 ridge and 27 real Torch fits with

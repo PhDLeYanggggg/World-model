@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am now tracing where the protected neural candidate loses useful predictions:
+candidate opportunity, utility estimates, risk vetoes and support abstention.
+The [fixed diagnostic](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/diagnosis_plan.md)
+uses only already opened source scenes and compares four- and eight-locality
+producers on identical held rows. It does not fit a new model or select a new
+threshold; hindsight opportunity is not an inference result.
+
 I have completed the [matched risk-protected motion study](outputs/publication_readiness_2026_09/european_protected_motion_v1/conclusions.md).
 The result challenges the current neural-trajectory hypothesis: when fixed
 damping receives the same gain/harm learning and risk rules, it outperforms
