@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Bridge Attribution (2026-09-25, Registered, Not Yet Evaluated)
+
+I am separating two possible explanations for the previous gain: better cost
+scoring, and access to neural trajectory candidates. The fixed comparison reuses
+36 verified full-pair heads and fits 36 new motion-only heads, plus matched ridge
+controls. Eleven policies per pair include crossed utility/risk heads and
+per-query equal-count rankings. There are three seeds and 18 source-role groups.
+No new training is complete at registration. Six opened model-selection
+localities are reused; calibration and confirmation stay closed. No change to
+the 2% risk budget, obs8/pred12 protocol or deployment.
+[Protocol](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/registration.md).
+
 ## Dual-Event Policy Bridge (2026-09-25, Completed, Development Gain Only)
 
 I tested whether a shared-reference controller can retain the stronger
