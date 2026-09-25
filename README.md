@@ -10,12 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now testing [what the policy bridge actually contributes](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/registration.md).
-The experiment compares neural and ridge scoring on identical forecasts and
-matches intervention counts at each query. A separately retrained motion-only
-version tests whether neural trajectory candidates are necessary. All 36 new
-neural heads and 36 ridge controls have finished training. All 396 policy views
-are frozen before outcome readout; no new accuracy result or deployment is claimed.
+I completed a [closer test of what the policy bridge contributes](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/conclusions.md).
+The earlier accuracy gain holds, but the attribution is more limited than I had
+hoped. Neural scoring does not consistently beat ridge when both see the same
+forecasts and intervene on the same number of agents. A retrained motion-only
+version retains most of the overall gain. Neural trajectory candidates help on
+the easy subset, but their all/hard advantage is not yet robust.
+
+This comparison includes 36 new neural heads, 36 new ridge fits, three seeds,
+396 frozen policy views and locality-bootstrap intervals. I keep the
+[negative comparisons](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/results.md)
+alongside the positive results. My next priority is reliable risk calibration
+and intervention coverage, with ridge retained as a strong control. No new
+deployment is promoted; independent calibration and confirmation remain closed.
+
+### Preceding Policy Bridge
 
 I trained a [policy bridge](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/conclusions.md)
 to learn when a conservative forecast should give way to a more accurate, but

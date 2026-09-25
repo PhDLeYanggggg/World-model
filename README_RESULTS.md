@@ -5,22 +5,48 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Bridge Attribution (2026-09-25, Trained and Frozen, Not Yet Evaluated)
+## Bridge Attribution (2026-09-25, Completed, Neural Attribution Mixed)
 
-I am separating two possible explanations for the previous gain: better cost
-scoring, and access to neural trajectory candidates. The fixed comparison reuses
-36 verified full-pair heads and fits 36 new motion-only heads, plus matched ridge
+I separated two possible explanations for the previous gain: better cost
+scoring, and access to neural trajectory candidates. The fixed comparison reused
+36 verified full-pair heads and fitted 36 new motion-only heads, plus matched ridge
 controls. Eleven policies per pair include crossed utility/risk heads and
 per-query equal-count rankings. There are three seeds and 18 source-role groups.
 All 36 new neural heads completed 2,000 updates (72,000 total); 36 new ridge
 fits completed. The real 100-step pilot resumed inside the first head's budget.
 Training draws, known-label support and CV cost scales match the corresponding
-full-pair fits. All 396 policy views are frozen with scalar decision replay;
-the full neural arm exactly reproduces the preceding bridge. Outcome readout
-has not started. Registration b6bb367e was pushed before training.
+full-pair fits. All 396 policy views were frozen with scalar decision replay;
+the full neural arm exactly reproduces the preceding bridge. All readouts are
+complete. Registration b6bb367e preceded training and freeze89f359a9 preceded
+readout, both pushed before their dependent execution.
 Six opened model-selection localities are reused; calibration and confirmation stay closed. No change to
 the 2% risk budget, obs8/pred12 protocol or deployment.
 [Protocol](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/registration.md).
+
+Full neural scoring versus ridge has three-seed all-ADE gains ranging from
+-0.145470% to +3.099757% across six source-role assignments: 3 positive CIs,
+2 negative and 1 overlap. At matched per-query intervention counts, the range
+shrinks to -0.090299% to +0.071141%, with no positive CI and two negative.
+Motion-only neural ranking loses to ridge in all six matched-count comparisons
+(-0.146654% to -0.008130%, six negative CIs).
+
+Full neural versus retrained motion-only has -0.322571% to +0.560254% all gain
+(2 positive CIs, 4 overlap), and no positive hard interval. The narrower easy
+benefit is supported in all six seed means: +0.778339% to +4.293073%. Both systems
+retain 18/18 net-easy passes against CV. Full neural worst easy degradation is
+0.730345%; motion-only neural is zero. Positive-harm calibration still fails:
+68/108 dependent full-neural locality/views exceed the easy-harm ratio; ridge
+also fails in 41/108. These are not 108 independent observations.
+
+The result supports useful forecast selection, not robustly superior neural
+ranking or a new general dynamics contribution. No deployment is selected.
+411 scoped tests pass in69 files;72 separate-process checkpoint prefix replays,
+396 scalar policy replays,156 independent coordinate checks and4,752 metric
+reductions pass. The full legacy suite is not_run. See
+[conclusions](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/conclusions.md),
+[all controls](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/failure_analysis.md),
+and [reproduction guide](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/operation_zh.md).
 
 ## Dual-Event Policy Bridge (2026-09-25, Completed, Development Gain Only)
 
