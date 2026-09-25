@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Six-Locality Model-Selection Readout (2026-09-25, Registered, Not Yet Evaluated)
+
+I have frozen the existing 36 producer/controller/seed/event groups for a first
+readout on six preassigned model-selection localities (28 recordings). The source
+replay is exact for predictions, motion floors, causal features and eight policies
+on 4,096 previously opened rows per group. Forty-five scoped tests pass. There is
+no new training or threshold search, and no candidate is selected in this readout.
+All seeds will be reported; the twelve calibration and six confirmation localities
+remain closed. These six selection localities cannot later become confirmation.
+
+[Registered question and rules](outputs/publication_readiness_2026_09/european_selection_readout_v1/registration.md).
+The latest completed method result is the negative joint-control study below.
+
 ## Incremental Joint Control (2026-09-25, Completed, Negative Method Result)
 
 The [registered comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/registration.md)
