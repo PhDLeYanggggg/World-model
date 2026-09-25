@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Selected-Risk Learning (2026-09-25, Registered)
+
+The next source-only experiment holds R/P forecasts and utility scoring fixed.
+It compares coherent all/easy moment regression with the same network plus
+selected-population mean constraints, followed by individual, uniform scene
+and greedy query-budget decisions. The mean/selected arms match initialization,
+training draws and fixed B-only scales. There are 72 planned new neural heads,
+144,000 updates, three seeds and 432 source-C policy views. A real 100-update
+pilot resumes within that budget. No new forecaster or threshold search.
+
+Previous percentile support filters had negative net value, so support bins
+are descriptive rather than another rejection rule. B trains; disjoint C is
+the source-only readout, with A producing forecasts. No six-locality selection
+readout, reserved calibration or confirmation is opened this round. Seven
+targeted tests pass, including exact interrupted-training resume and independent
+query-budget replay. Real fits are not_run at registration. CREATE queue was
+checked read-only; other jobs were not touched. No deployment or risk certificate.
+[Registered comparison](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/registration.md).
+
 ## Aligned Source-C Calibration (2026-09-25, Completed, Transport Failed)
 
 Fresh source-C inference and all 72 calibration maps / 288 fixed readout views
