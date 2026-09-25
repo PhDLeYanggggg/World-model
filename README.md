@@ -10,13 +10,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [event-conditional risk learning](outputs/publication_readiness_2026_09/european_conditional_risk_v1/registration.md)
-after the partial CV-reference repair. The forecast bank stays fixed while
-matched risk heads learn either all-sample or easy-event harm. A separate
-training-support abstention control measures whether protection comes from
-better risk estimates or simply less intervention. The real training pilot has
-passed; the fixed 36-head matrix is now running. No predictive or safety success
-is claimed before its complete readout.
+I have completed the [event-conditional risk study](outputs/publication_readiness_2026_09/european_conditional_risk_v1/conclusions.md):
+36 fitted risk heads and 24 fixed policy views, with the forecast bank unchanged.
+The new easy-event neural heads reduce worst-locality easy degradation to
+0--0.82% and harm none of the four observed zero-error CV cases in the full
+pointwise evaluation. But their ADE gain over CV falls to 0.17--0.43%, well
+below the preceding policy and the strong fixed-damping accuracy control.
+This is a protection/utility tradeoff, not a new deployment result.
+
+The matched controls show that easy-event targets help within the neural risk
+model, but a simple ridge risk head remains competitive. Joint decisions still
+lack a stable same-intervention-count advantage, and two unguarded neural seeds
+exceed the 2% worst-locality easy limit on the joint pilot. I retain every seed
+and negative control in the [results](outputs/publication_readiness_2026_09/european_conditional_risk_v1/results.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_conditional_risk_v1/failure_analysis.md).
+All 36 checkpoints reproduce sampled predictions exactly; 152 tests pass in
+the completion scope. Independent selection, calibration and confirmation stay
+closed. The next comparison is risk-protected simple motion versus neural
+prediction under the same budget, not another increase in model size.
+
+The [tradeoff figure](outputs/publication_readiness_2026_09/european_conditional_risk_v1/risk_utility_tradeoff.svg)
+and [operation guide](outputs/publication_readiness_2026_09/european_conditional_risk_v1/operation_zh.md)
+make the result reproducible. These are source-development image-pixel 8/12
+results, not historical t50, calibrated physical safety or independent proof.
 
 I have completed the [CV-reference repair](outputs/publication_readiness_2026_09/european_cv_reference_v1/conclusions.md):
 nine ridge and nine neural cost heads, with the original forecasts frozen.

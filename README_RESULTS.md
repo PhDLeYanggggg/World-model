@@ -5,21 +5,56 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Conditional Risk (2026-09-25 London, Running)
+## European Conditional Risk (2026-09-25 London, Completed, No Promotion)
 
-Registered source-only factorial experiment: all-event versus positive-easy
-baseline-error/harm moments, with and without fitting-zero-event-support
-abstention. All 18 forecasts, frozen utility heads, source folds, cutoffs and
-query populations remain unchanged. This is not independent calibration.
+Fresh run: 18 ridge and 18 real Torch moment heads, 36,000 neural updates and all
+24 registered policy views. All 18 forecasts and CV-reference utility heads are
+frozen and cached_verified. Matched all-event and positive-easy-event targets
+use the same fitting draws; source-zero-support abstention is a separate factor.
+No new forecaster, reserved-role opening, population filtering or winner selection.
 
-Expected matrix: 18 ridge and 18 neural risk fits, 2,000 updates per neural fit.
-The 100-update real pilot completed on native arm64/CPU4/workers0 and resumes
-within the fixed 36,000-update budget. 51 scoped preflight tests passed. No
-predictive readout is claimed yet. The previous safety limits, complete target
-population and unopened independent roles are preserved.
+| Easy-event neural seed, no source guard | ADE gain vs CV, 95% conditional locality CI | Worst-locality easy degradation | Zero-CV harmed | Intervention rate | ADE gain vs damping 0.97 |
+|---|---|---:|---:|---:|---:|
+| 17 | 0.2382% [0.1250%, 0.3595%] | 0.0225% | 0 / 4 | 1.2456% | -4.1289% |
+| 29 | 0.1663% [0.0618%, 0.2875%] | 0.0000% | 0 / 4 | 0.2944% | -4.2026% |
+| 43 | 0.4310% [0.1468%, 0.7766%] | 0.8170% | 0 / 4 | 0.5345% | -3.9205% |
 
-[Registration](outputs/publication_readiness_2026_09/european_conditional_risk_v1/registration.md),
-[matrix](outputs/publication_readiness_2026_09/european_conditional_risk_v1/matrix.json).
+Observed full-pointwise protection improves, but most of the previous policy's
+4.18--4.43% gain disappears. All three damping-relative intervals are negative;
+fixed damping itself is not a safe deployment winner. All-event ridge achieves
+0.48--0.61% gain with observed pointwise safety, so neural head complexity has
+not established an advantage. With the source-support guard, easy-neural gains
+are 0.2141%, 0.1661% and 0.4275%. Matched easy-versus-all target contrasts are
+positive in all three guarded neural seeds, a partial mechanism signal only.
+
+Joint-pilot easy-neural gains are 1.2301%, 0.7572% and 1.1436%, but seeds 29 / 43
+have worst-locality easy degradation of 2.1034% / 2.0391%. The guarded joint
+views preserve observed easy scores but cannot validate zero-event protection:
+the pilot contains no zero-CV cases. Matched-count graph contributions remain
+zero, tiny or undefined. Do not compare the pilot's gain with full-population
+gain as though they used the same samples.
+
+Full pointwise population: 318,969 targets, 311,922 ADE-supported, 7,047 unknown,
+240,269 final-step-supported. Joint pilot: 1,152 queries / 6,116 targets. All four
+zero-CV cases have 2/12 future labels, no final endpoint, and one locality; their
+outer fitting fold has no zero-event support. Missingness and source boundaries
+are unchanged. All intervals use 3,000 conditional locality resamples.
+
+Complete metric reconstruction passes. All 36 checkpoints reproduce 4,096 sampled
+rows each exactly. Accounting verifies 15 unchanged reference views, nine matched
+sampler/preprocessing pairs and 72 decision receipts. 152 scoped completion tests
+pass, not the full legacy suite. Ten tiny-denominator singleton solver-failure
+views are repaired by exact infeasibility pruning with zero decision changes;
+that separate helper does not alter frozen V1 metrics or constitute a full rerun.
+All required local processes finished. Independent confirmation remains not_run.
+No deployment change, metric/seconds, true-3D, foundation, Stage5C or SMC claim.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_conditional_risk_v1/conclusions.md),
+[results](outputs/publication_readiness_2026_09/european_conditional_risk_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_conditional_risk_v1/failure_analysis.md),
+[losses](outputs/publication_readiness_2026_09/european_conditional_risk_v1/training_losses.md),
+[execution](outputs/publication_readiness_2026_09/european_conditional_risk_v1/execution_notes.md),
+[operation](outputs/publication_readiness_2026_09/european_conditional_risk_v1/operation_zh.md).
 
 ## European CV-Reference Repair (2026-09-24, Completed, Partial Repair Only)
 
