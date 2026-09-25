@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing [source-held calibration of the fixed bridge](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/registration.md).
+A third source group, excluded from both forecast and scoring-model training,
+will fit conservative calibration maps. I will compare their transport with the
+unchanged rules before opening reserved calibration or confirmation data. The
+protocol is registered; this new comparison has no result yet.
+
+### Completed Attribution Test
+
 I completed a [closer test of what the policy bridge contributes](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/conclusions.md).
 The earlier accuracy gain holds, but the attribution is more limited than I had
 hoped. Neural scoring does not consistently beat ridge when both see the same

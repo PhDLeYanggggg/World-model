@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Aligned Source-C Calibration (2026-09-25, Registered)
+
+The next fixed experiment compares uncalibrated rules, conservative population
+rescaling and an empirical selected-risk grid on exactly the same delivered
+R/P policies. A produces forecasts, B fits scoring, and the remaining four-source
+roster C fits calibration. C excludes both fitted model chains. All72 maps and
+288 readout views will be retained across three seeds, both full/motion-only
+pairs and neural/ridge scoring. No new neural training is planned.
+
+The CV-defined easy event is separate from the delivered-reference harm
+denominator. Calibration may only tighten the0.02 score budget. Six already
+opened model-selection localities provide the readout; the12 reserved calibration
+and6 confirmation localities stay closed. This is empirical source-held
+calibration, not a risk certificate. No new fit/readout is complete at registration.
+[Protocol](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/registration.md).
+
 ## Bridge Attribution (2026-09-25, Completed, Neural Attribution Mixed)
 
 I separated two possible explanations for the previous gain: better cost
