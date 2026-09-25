@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Incremental Joint Control (2026-09-25, Decisions Frozen, Not Yet Evaluated)
+## Incremental Joint Control (2026-09-25, Completed, Negative Method Result)
 
 The [registered comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/registration.md)
 uses frozen forecasts, heads and original actions. Seven policies across36
@@ -17,9 +17,39 @@ unknown future labels. This is not the full parent-row population or all visible
 people. No new training, parameter sweep, reserved readout or deployment.
 All252 policy views froze at18:02:42 UTC:6,116 unique indexed rows at1,152
 queries, repeated across13,824 query/views. There are73 query/views with
-non-additive support, six with changed joint/unary identities and one failed
-solver certificate. That query retained the independent reference as registered;
-it is not counted as a certified matched solve. New outcome scoring is not_run.
+non-additive support, six with changed joint/unary identities (three unique
+queries) and one failed hash-solver certificate. That query retained the
+independent reference as registered; it is not a certified matched solve.
+
+| Joint vs comparator | All ADE gain range | Positive / negative CI |
+|---|---:|---:|
+| Independent predicted-gain ranking | -0.012203% to +0.003400% | 0 / 0 |
+| Unary geometry | -0.000553% to +0.001953% | 0 / 0 |
+| Hash priority | -0.032315% to +0.297163% | 10 / 1 |
+| Full-add diagnostic | -0.677313% to -0.008783% | 0 / 27 |
+
+The pairwise contribution is unsupported. Easy degradation reaches2.254973%,
+versus1.394771% for full-add on the same subset. The failed locality's67 easy
+rows lose21 beneficial additions while avoiding six harmful ones: lost benefit
+1.873247 minus avoided harm1.013044 gives0.860202 percentage points more error.
+This is not a change to the earlier full-population0.0% summary: populations differ.
+
+Inference took73 seconds; outcome evaluation65 seconds. All144 coordinate arrays,
+4,176 metric reductions and55,296 action/cap checks independently verify.
+417 tests in66 scoped files pass; full legacy suite not_run.
+The new replay checker initially divided float32 scores before converting them;
+the production path converts to float64 first. Matching production arithmetic
+fixed a5.84e-11 budget discrepancy; no inference, tolerance or result was changed.
+Decisions were committed before
+readout (registrationa0d63f52, freeze24b31c96). No new neural fitting or outcome
+threshold search. Full scoped checks and hashes are in completion_checks.json.
+No deployment, independent confirmation, Stage5C or SMC. Next: incremental risk
+reliability and independent calibration, not a post-readout proximity-weight sweep.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_incremental_joint_v1/conclusions.md),
+[results](outputs/publication_readiness_2026_09/european_incremental_joint_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_incremental_joint_v1/failure_analysis.md),
+[remaining gaps](outputs/publication_readiness_2026_09/european_incremental_joint_v1/project_gap.md).
 
 ## Incumbent-Relative Intervention (2026-09-25, Completed, Progress Without Promotion)
 

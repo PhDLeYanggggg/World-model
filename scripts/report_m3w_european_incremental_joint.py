@@ -114,7 +114,7 @@ def main():
         np.datetime64(min(e['utc'].removesuffix('Z') for e in events if e['state'] == 'phase_started' and e.get('phase') == p)))/np.timedelta64(1, 's')) for p in ('decide', 'evaluate')}
     dump(run.PUBLIC/'compute_receipt.json', dict(counts=counts, seconds=durations, frozen_at=frozen_at, readout_at=readout_at,
         decisions=run.artifact(run.PRIVATE/'decisions_complete.json'), evaluation=run.artifact(run.PRIVATE/'evaluation_complete.json'),
-        new_training=False, runtime='native_arm64_CPU4_interop1_workers0', independent_queries=s['queries']['unique_queries'],
+        new_training=False, runtime='native_arm64_CPU4_interop1_workers0', unique_queries=s['queries']['unique_queries'],
         create_queue_receipt_sha256=run.digest(run.PRIVATE/'create_queue.json'), remote_jobs_submitted=0))
     lines = ['# Incremental Joint Control: All Registered Results', '',
         'Frozen forecasters and cost heads; no new training. Restricted past-hash query population, not full parent rows.',

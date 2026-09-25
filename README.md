@@ -10,14 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have registered a [joint incremental-control comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/registration.md).
-It keeps every existing useful decision protected and asks whether coordinating
-the extra interventions improves hard cases. The predictors and learned scores
-are frozen. Independent, unary-geometry, joint and hash-priority controls share
-the same number of additions and predicted-risk cap. This is an opened-source
-development comparison. All252 policy views are now frozen on6,116 unique
-indexed rows at1,152 current queries. Only six repeated query/views distinguish
-joint from unary decisions; scoring is pending, so this is not an accuracy result.
+I completed a [joint incremental-control comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/conclusions.md)
+to test whether coordinating extra interventions improves the existing controller.
+All 252 policy views use frozen predictions and scores. Independent, unary,
+joint and hash-priority controls share the same addition count and predicted-risk cap.
+
+This version does not help enough. Joint selection has no supported accuracy
+advantage over independent gain ranking or unary geometry. It changes only three
+unique queries relative to the unary control. Restricting additions also loses
+useful predictions: worst-locality easy degradation reaches 2.255%, above the
+2% gate. The [failure analysis](outputs/publication_readiness_2026_09/european_incremental_joint_v1/failure_analysis.md)
+shows exactly where removing beneficial choices outweighs avoiding harmful ones.
+
+The [full comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/results.md)
+covers 6,116 rows at 1,152 fixed queries, not the full parent population.
+These are dependent development views, not independent confirmation or new
+neural training. Deployment stays unchanged. I am prioritizing incremental
+risk reliability and independent calibration over further tuning of this
+proximity penalty. All 417 scoped tests pass, alongside independent checks of
+55,296 decision-budget constraints. Reserved sources remain closed; no metric
+or safety claim.
 
 ### Completed Incumbent-Relative Study
 
