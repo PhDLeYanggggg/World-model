@@ -5,23 +5,58 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Geometric Cost Heads (2026-09-25, Registered, Outcomes Pending)
+## Geometric Cost Heads (2026-09-25, Completed, No Safe Neural Advantage)
 
 The frozen-head diagnostic did not support training-constant feature explosion
-as the main cause. The next matched refit changes only cost parameterization:
+as the main cause. The completed matched refit changes only cost parameterization:
 predicted gain/harm must lie inside a causal envelope determined by candidate
 versus baseline rollout distance. The maximum over requested steps protects
 the mathematical bound even when future labels are only partially available;
 no future label mask enters that envelope.
 
-Plan:54 small score heads,108,000 updates,three seeds,with all forecasts,355
-features,training-only scalers,samplers and2% risk limits fixed. All144 views
-retain old,utility-only,risk-only and both-head controls. Unit tests include
-partial-label bounds and exact checkpoint resume. No new outcome, calibrated
-safety, deployment or submission-readiness claim is made at registration.
+Fresh training:54 score heads,108,000 updates,three seeds,with all forecasts,355
+features,training-only scalers,samplers and2% risk limits fixed. Each head has
+22,914 parameters, matching its original. All144 views retain old,utility-only,
+risk-only and both-head controls. No new forecaster training or joint solver.
+
+| Arm | Neural observed safety | Damping observed safety | Positive neural-vs-damping ADE intervals |
+|---|---:|---:|---:|
+| Old | 9/18 | 16/18 | 1/18, unsafe |
+| Utility only | 11/18 | 16/18 | 0/18 |
+| Risk only | 8/18 | 18/18 | 4/18, all unsafe |
+| Both | 7/18 | 18/18 | 2/18, both unsafe |
+
+The largest positive neural contrast is+1.7979%, conditional95%CI
+[+0.8246%,+2.8320%], but its worst-locality easy degradation is17.6432%.
+Across risk-only views the worst easy degradation is17.8014%. Other positive
+contrasts harm zero-CV-error rows. Risk heads release useful predictions but
+underestimate harm on their selected subsets. Bounding costs does not solve
+conditional calibration. No outcome selects a deployment arm.
+
+All54 checkpoint replays (first4,096 excluded-index rows each),54 matched
+samplers,36 old-policy views and full144-view metrics reproduce. Unknown-label
+training draws=0. 210tests across32scoped files pass, not the full legacy suite.
+Summed head-fit time137.23seconds excludes preparation,inference,replay,metrics
+and reporting. Native arm64 CPU4/inter-op1/workers0. All phases terminated
+successfully, with resumable checkpoints and heartbeat logs.
+
+Three seeds and3,000 locality-bootstrap draws are retained. Each fit has four
+fitting/eight producer-excluded localities, but all twelve are opened development
+sources. Views are dependent and intervals are not multiplicity corrected.
+Source-only detector tracks,imagepixels,obs8/pred12 rawstride12; not legacyt50,
+seconds,metric,human-gold,physical safety,true3D orfoundation. Historical Stage37
+is not recertified. Reserved roles,deployment,Stage5C andSMC remain unchanged.
+
+Next:source-only event-support and conditional-harm factorization with matched
+controls, not outcome-selected threshold relaxation. No submission-ready claim.
 
 [Registration](outputs/publication_readiness_2026_09/european_geometric_cost_v1/registration.md),
-[scaling diagnosis](outputs/publication_readiness_2026_09/european_score_scaling_v1/conclusions.md).
+[scaling diagnosis](outputs/publication_readiness_2026_09/european_score_scaling_v1/conclusions.md),
+[conclusions](outputs/publication_readiness_2026_09/european_geometric_cost_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_geometric_cost_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_geometric_cost_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_geometric_cost_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_geometric_cost_v1/execution_notes.md).
 
 ## Producer Transport Diagnosis (2026-09-25, Completed, Replacement Not a Repair)
 

@@ -10,6 +10,31 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed a [matched cost-head experiment](outputs/publication_readiness_2026_09/european_geometric_cost_v1/conclusions.md).
+The question is whether a controller makes better decisions when its predicted
+gain and harm are constrained by how far a candidate forecast moves from the
+causal baseline. I kept the forecasts and risk limits fixed and trained 54
+small neural heads across three seeds, with 108,000 optimizer updates in total.
+
+The answer is mixed, and not yet safe enough. The new risk heads allow more
+useful neural predictions through. Six new comparisons have a positive ADE
+interval against equally protected damping, but all six fail the safety checks.
+The strongest positive comparison has 17.64% worst-scene easy degradation.
+Bounding the size of a predicted cost does not make that cost well calibrated
+on the samples the controller chooses to change.
+
+The [complete comparison](outputs/publication_readiness_2026_09/european_geometric_cost_v1/head_ablation.svg),
+[training losses](outputs/publication_readiness_2026_09/european_geometric_cost_v1/training_loss.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_geometric_cost_v1/failure_analysis.md)
+retain every arm, including the stronger damping controls. All 54 checkpoints
+and 144 policy views reproduce; 210 scoped tests pass. I am not changing
+deployment or claiming a successful neural dynamics model. These are
+opened-source, image-pixel 8/12 development results, not independent final-test
+evidence. My next experiment will separate event support from conditional harm
+rather than relax the safety limit to make the current results look better.
+
+### Earlier Source Experiments
+
 I have completed the [frozen producer-transport diagnostic](outputs/publication_readiness_2026_09/european_producer_transport_v1/conclusions.md).
 It tests a specific explanation for the controller's failures: the gain/risk
 head learns from smaller forecasting models, then controls a different final
@@ -31,8 +56,6 @@ reproduce and 201 scoped tests pass. Deployment and reserved data stay unchanged
 These are opened-source, image-pixel 8/12 development results, not independent
 confirmation. My next repair targets candidate-specific gain and harm learning,
 not choosing a favorable producer after seeing its evaluation results.
-
-### Earlier Source Experiments
 
 I have completed the [nested source-calibration study](outputs/publication_readiness_2026_09/european_nested_calibration_v1/conclusions.md).
 I trained 18 inner forecasting models and 54 gain/risk heads with the calibration
