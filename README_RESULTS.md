@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Symmetric Utility, Fixed Risk (2026-09-25, Registered)
+
+The next controlled experiment changes only utility-head loss from asymmetric
+underharm4 to symmetric MSE. Both frozen neural and damping candidates receive
+the same refit: 18 heads, three seeds and three source folds, 36,000 updates.
+All 72 event-risk heads, forecasts, 2% budgets and support guards stay frozen.
+The 100-update runtime pilot resumes within that budget. All fits must finish
+before the fixed 48-view readout; no winner or threshold is selected from it.
+
+Preflight: 24 focused tests pass. Training and outcome verification are pending;
+this entry claims neither a repair nor new dynamics. Reserved roles stay closed.
+[Registration](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/registration.md).
+
 ## European Opportunity Diagnosis (2026-09-25, Completed, No New Fitting)
 
 Fresh diagnostic arithmetic and exact full replay on cached_verified source
