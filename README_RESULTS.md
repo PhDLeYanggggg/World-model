@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Hurdle Risk Ranking at Matched Coverage (2026-09-25, Registered)
+
+The next frozen-score diagnostic separates risk ordering from intervention
+count. For each candidate, fold, seed, event and excluded locality, compare
+product-MSE and hurdle rankings at both original counts. All 36 groups and 144
+views remain in the matrix. Counts are fixed before future-label filtering;
+both additive error decompositions use the same CV denominator.
+
+No new fitting or deployment rule. Forced equal-count controls may violate
+the 2% predicted-risk rule and are explicitly offline diagnostics. No new
+outcomes at registration; neither anchor will be chosen from these outcomes.
+Existing forecasts, thresholds and reserved roles remain unchanged.
+
+[Registered comparison](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/registration.md).
+
 ## Hurdle Risk Heads (2026-09-25, Completed, Partial Protection Benefit)
 
 Fresh training separates event-harm occurrence from conditional severity while
