@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am running a [matched risk-protected motion control](outputs/publication_readiness_2026_09/european_protected_motion_v1/registration.md).
+The question is whether neural trajectories still add value when fixed damping
+gets the same gain/harm learning and safety rules. Existing neural forecasts and
+heads remain frozen; only the corresponding damping heads are newly fitted.
+The real Torch pilot passed. No predictive result is claimed before the full
+registered comparison finishes, and independent data roles remain closed.
+
 I have completed the [event-conditional risk study](outputs/publication_readiness_2026_09/european_conditional_risk_v1/conclusions.md):
 36 fitted risk heads and 24 fixed policy views, with the forecast bank unchanged.
 The new easy-event neural heads reduce worst-locality easy degradation to

@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## European Protected Motion (2026-09-25, Registered, Running)
+
+Same-risk control: fixed damping 0.97 versus the frozen neural candidate, both
+relative to CV. Same source populations, 355-feature schema, fitting row draws,
+cost scale, three seeds, risk limits and intervention controls. Necessary
+candidate-derived features and supervised costs differ; no candidate tuning.
+
+The matrix has 45 new damping heads (18 ridge, 27 neural, 54,000 neural updates)
+and 45 cached_verified neural-candidate heads. Both candidates' decisions are
+re-executed using exact-feasibility pruning. All 48 fixed policy views will be
+reported. No new trajectory model, reserved outcomes or deployment change.
+The 100-update native arm64 CPU4/workers0 pilot passed and resumes inside the
+fixed budget. 72 scoped preflight tests pass; no predictive readout yet.
+
+[Registration](outputs/publication_readiness_2026_09/european_protected_motion_v1/registration.md),
+[matrix](outputs/publication_readiness_2026_09/european_protected_motion_v1/matrix.json).
+
 ## European Conditional Risk (2026-09-25 London, Completed, No Promotion)
 
 Fresh run: 18 ridge and 18 real Torch moment heads, 36,000 neural updates and all

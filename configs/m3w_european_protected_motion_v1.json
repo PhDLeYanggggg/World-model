@@ -1,0 +1,22 @@
+{
+  "scope": "source_development_matched_risk_protected_motion_vs_frozen_neural",
+  "seeds": [17, 29, 43],
+  "candidates": ["neural", "damping097"],
+  "events": ["all", "easy"],
+  "arms": ["ridge", "neural_underharm4"],
+  "support_controls": ["no_guard", "source_zero_guard"],
+  "ridge_alpha": 0.1,
+  "training": {"width": 64, "steps": 2000, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "utility_head": "candidate_specific_neural_underharm4_same_budget",
+  "predicted_risk_budget": 0.02,
+  "pair_weight": 0.1,
+  "edge_radius_bbox_widths": 3.0,
+  "proximity_threshold_bbox_widths": 0.5,
+  "solver_seconds": 2.0,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 39271,
+  "independent_reserved_readout": false,
+  "deployment_promotion": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
