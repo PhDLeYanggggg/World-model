@@ -5,13 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Nested Source Calibration (2026-09-25, Registered, Outcomes Pending)
+## Nested Source Calibration (2026-09-25, Completed, No Neural Advantage)
 
-The next experiment isolates fitting, calibration and outer source readout
+This experiment isolates fitting, calibration and outer source readout
 across the complete producer chain. Existing eight-locality heads cannot serve
 as calibration-independent models without additional producer exclusion.
-The fixed plan adds 18 two-locality inner predictors (72,000 updates), reuses
-nine verified four-locality final predictors, then fits 54 source-only heads.
+The completed plan adds 18 two-locality inner predictors (72,000 updates), reuses
+nine verified four-locality final predictors, then fits 54 source-only heads
+(108,000 updates).
 Both assignments of the other folds to calibration/readout are retained.
 
 The matched uncalibrated, population-rescaled and selected-risk calibration
@@ -24,11 +25,35 @@ fit time is 1,731.75 seconds; this excludes verification, inference and idle
 wall time. The 100-update pilot took 1.7844 seconds and resumed inside budget.
 The unchanged producer sampler drew 129,241 future-unknown rows with zero
 supervised loss, not labeled examples. No held locality was sampled in fitting.
-Calibration/head code and nonselective reporting are implemented; 196 scoped
-tests pass. The 54 score heads, calibration and outer performance readout are
-not yet complete, so the safety repair remains unproven.
+All 54 score heads completed, with no unknown-label draws. All 72 calibration
+maps froze before outer readout. Every head replays exactly; nine fold/seed
+groups have identical six-head sampling exposure. All 216 decisions independently
+reconstruct, full metrics reproduce, and 196 tests across 28 scoped files pass.
+The full legacy test suite was not run.
 
-[Registration](outputs/publication_readiness_2026_09/european_nested_calibration_v1/registration.md),
+Neural observed safety passes 2/12 uncalibrated views, 5/12 population-rescaled
+views and 5/12 selected-grid views. Matched damping passes 10/12, 12/12 and
+11/12. The grid's neural ADE gain over CV is 0.1467--0.5308%, but every one
+of 36 direct neural-versus-damping gains is negative (-3.0763% to -0.6859%);
+34 conditional intervals are strictly negative. All 36 hard and 36 easy point
+estimates also favor damping. No neural advantage or deployment promotion.
+
+The grid satisfies positive-harm constraints in 36/36 calibration assignments,
+but only 27/36 outer assignments, for each candidate. These stricter positive
+harm checks differ from net easy degradation. Neural outer positive easy harm
+reaches 6.4081% in one locality; the corresponding worst net easy degradation is
+5.8425%. Rare zero-CV harm remains. Two neural maps abstain entirely.
+
+All intervals use 3,000 conditional locality resamples. Both rotations share
+the 12 development sources; they are not independent confirmation. No new
+joint optimization, reserved-role readout, Stage37 recertification, metric,
+seconds, human-gold, physical-safety, true3D, foundation, Stage5C or SMC claim.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_nested_calibration_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_nested_calibration_v1/results.md),
+[gates](outputs/publication_readiness_2026_09/european_nested_calibration_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_nested_calibration_v1/execution_notes.md),
+[registration](outputs/publication_readiness_2026_09/european_nested_calibration_v1/registration.md),
 [producer matrix](outputs/publication_readiness_2026_09/european_nested_calibration_v1/producer_matrix.json),
 [completed producer bank](outputs/publication_readiness_2026_09/european_nested_calibration_v1/producer_report.md).
 

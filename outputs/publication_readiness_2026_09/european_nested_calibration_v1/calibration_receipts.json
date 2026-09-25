@@ -1,0 +1,539 @@
+{
+  "identity": {
+    "bindings": {
+      "scripts/run_m3w_european_nested_calibration.py": "b486fc78a4fd6cb20782d8e2f48e2eebdeb96232c9e96d7242187f883a25cd66",
+      "src/evaluation/m3w_source_risk_calibration.py": "4449c5995a803dfa0a0124d21b0d9689a92e1e4d12faebcc4ab7beb1e8c4b02c",
+      "tests/test_m3w_source_risk_calibration.py": "a720752327450c7313123b476ca5f82c0884cd0cc56d7b693d8684ec95528a06",
+      "src/world_model/m3w_native_gain_harm.py": "9a5fda08657a138db385ec73c59d52f5c1dc5844655a87f6e3018adc1d0dc710",
+      "src/world_model/m3w_european_source_intervention.py": "1189d303ee5fd48a6f15f8b78f7100bbf3a1f4bc8c5b57bc3a7a63f2d29c2dc2",
+      "src/world_model/m3w_european_conditional_risk.py": "0692367590be2aee2916694e03dd45c25e69bc8598eb422321336ef32f51242e",
+      "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+      "src/evaluation/m3w_native_metrics.py": "7876c44b092ca21fd4c50f2d2c1dd23906e3b51231e97e3ea591641f22afca38"
+    },
+    "producer_identity": {
+      "bindings": {
+        "configs/m3w_european_nested_calibration_v1.json": "1f2ce8e9ac2037136264da20bf183ae2d6e92709a35371458960626c45167f2e",
+        "scripts/run_m3w_european_nested_producers.py": "ab321e051316e9e7154d2147eee8c8817d7c02561b5401f02f8df6dcb43d41b1",
+        "src/evaluation/m3w_nested_calibration.py": "a9fba740167707a79fb2dbb75af4820e71886cd30be6b7017a4006f0745d341f",
+        "tests/test_m3w_nested_calibration.py": "d4f76490f75b02a46c241bc102e9c56785e725654e56816c26d859162b43eb02",
+        "outputs/publication_readiness_2026_09/european_nested_calibration_v1/registration.md": "bd4fb9eced9cdac58bf54a719ed3a6d8d629130e7331a2829e73b9be435d789c"
+      },
+      "parent_identity": {
+        "bindings": {
+          "configs/m3w_european_source_forecast_v1.json": "526add4d014200534a4d2ee6880600d6abd41db5d56cdd30e7ab64267cd0a85f",
+          "scripts/run_m3w_european_source_forecast.py": "3439a19515bd10f23e878122533aa7948fb1baa3d61554ad41c88613146ee7a3",
+          "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+          "tests/test_m3w_european_source_forecast.py": "f90465eb46e839a6769cb750c16a02b468a1222817c2c2ffbf9c11ca180a2a13",
+          "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+          "scripts/run_m3w_native_forecast.py": "b8b02340c0515c7dc2a32c1db724a8edd236a70e8b3d7974d7bc0cfbcff5a443",
+          "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+          "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+          "src/world_model/m3w_baseline_relative_forecaster.py": "333fc13769381bb9eca9bc3c8462b90f340b8ccbe9ed30df3d94d425d401c45a",
+          "src/evaluation/m3w_native_metrics.py": "7876c44b092ca21fd4c50f2d2c1dd23906e3b51231e97e3ea591641f22afca38",
+          "src/evaluation/m3w_european_squares_roles.py": "f952eabe6949abb4f61e72318e8f70dfcdded3489abe2ec8424fe35c6e8aee04",
+          "outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md": "c58e85486e35cc872fff6e35d28ee9ed3573e1bf66fb9ff0757c4c64c0953717"
+        },
+        "source_manifest_sha256": "6ed8f16f7f5557bbd88fbaa72778bb79b7893d6a91146945f0f76ced376d16a6",
+        "source_roles_sha256": "858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435",
+        "folds": {
+          "eu-locality-074": 0,
+          "eu-locality-110": 1,
+          "eu-locality-008": 2,
+          "eu-locality-126": 0,
+          "eu-locality-119": 1,
+          "eu-locality-048": 2,
+          "eu-locality-112": 0,
+          "eu-locality-124": 1,
+          "eu-locality-067": 2,
+          "eu-locality-082": 0,
+          "eu-locality-007": 1,
+          "eu-locality-020": 2
+        },
+        "numpy": "2.4.6",
+        "torch": "2.12.0",
+        "architecture": "arm64",
+        "runtime": {
+          "device": "cpu",
+          "torch_threads": 4,
+          "interop_threads": 1,
+          "num_workers": 0
+        }
+      },
+      "prior_analysis_sha256": "7f8523e5919c4793e7238f01c7a41d861454f8c6e736854acf9cd98427504404",
+      "halves": {
+        "0": [
+          [
+            "eu-locality-074",
+            "eu-locality-112"
+          ],
+          [
+            "eu-locality-082",
+            "eu-locality-126"
+          ]
+        ],
+        "1": [
+          [
+            "eu-locality-007",
+            "eu-locality-119"
+          ],
+          [
+            "eu-locality-110",
+            "eu-locality-124"
+          ]
+        ],
+        "2": [
+          [
+            "eu-locality-008",
+            "eu-locality-020"
+          ],
+          [
+            "eu-locality-048",
+            "eu-locality-067"
+          ]
+        ]
+      },
+      "frozen_final_producers": {
+        "single0_seed17": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single0_seed17/checkpoint.pt",
+            "sha256": "4d50f3491fb9d05955b72bcb539a1598345e7278f9e50dab0beaee5ace80c27e"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single0_seed17.npz",
+            "sha256": "a870f96535255c44faed3312fa76ad7a6ec439bc0329ab6db02ee7676acfcff0"
+          },
+          "training_sites": [
+            "eu-locality-074",
+            "eu-locality-082",
+            "eu-locality-112",
+            "eu-locality-126"
+          ]
+        },
+        "single0_seed29": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single0_seed29/checkpoint.pt",
+            "sha256": "c9c413edf29fa7ab52a937491a4ab2921ed31722458dacf6cccb4399a864de9c"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single0_seed29.npz",
+            "sha256": "eba58f365c00658f4f8cff283e8fd63eb56d2313c81f9eff6bb21c3428941c23"
+          },
+          "training_sites": [
+            "eu-locality-074",
+            "eu-locality-082",
+            "eu-locality-112",
+            "eu-locality-126"
+          ]
+        },
+        "single0_seed43": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single0_seed43/checkpoint.pt",
+            "sha256": "ce208c54f6a842f21556027f6167b7bd7437615abf542c71d064ce9a7d024688"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single0_seed43.npz",
+            "sha256": "6a171edc78838117fd980f606010c1608bbd00d91e40cbd664496dc6d420cfca"
+          },
+          "training_sites": [
+            "eu-locality-074",
+            "eu-locality-082",
+            "eu-locality-112",
+            "eu-locality-126"
+          ]
+        },
+        "single1_seed17": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single1_seed17/checkpoint.pt",
+            "sha256": "17b20069f5ab21b94ef6fbe813b7875b80b29d3d1b11d9b0a5b519b58416d4cd"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single1_seed17.npz",
+            "sha256": "66f5ce8daa6bafb00baddf9af84d55af8588a4d1547826608faf99ddbde57c40"
+          },
+          "training_sites": [
+            "eu-locality-007",
+            "eu-locality-110",
+            "eu-locality-119",
+            "eu-locality-124"
+          ]
+        },
+        "single1_seed29": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single1_seed29/checkpoint.pt",
+            "sha256": "9339bed5f74bff7459aef7c5cddb0678a8ca9b883dafe762eba33506e84020ba"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single1_seed29.npz",
+            "sha256": "c1c567c039070a49e7306e4b5edcc942021f9923b3228ac7f718ac88f74d8daa"
+          },
+          "training_sites": [
+            "eu-locality-007",
+            "eu-locality-110",
+            "eu-locality-119",
+            "eu-locality-124"
+          ]
+        },
+        "single1_seed43": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single1_seed43/checkpoint.pt",
+            "sha256": "8177ba5e53197fe5082d824eaed4c5a87b9f7dd2c1c2a5c8b87f7a65e893b3eb"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single1_seed43.npz",
+            "sha256": "cad9032983e069131a844089c0984564ec0b3e1b06160ac704a3931a97bf334a"
+          },
+          "training_sites": [
+            "eu-locality-007",
+            "eu-locality-110",
+            "eu-locality-119",
+            "eu-locality-124"
+          ]
+        },
+        "single2_seed17": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single2_seed17/checkpoint.pt",
+            "sha256": "6595e99847b9e315558773ada15962ca926306fb3daf6bab48150f829cd4fa47"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single2_seed17.npz",
+            "sha256": "f066003f8d9d35adcf8c37ba6dc2a94282a3228f45a3cec756b06245b818c376"
+          },
+          "training_sites": [
+            "eu-locality-008",
+            "eu-locality-020",
+            "eu-locality-048",
+            "eu-locality-067"
+          ]
+        },
+        "single2_seed29": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single2_seed29/checkpoint.pt",
+            "sha256": "3979e3eb1502bbc129d77e326b04bea989aa769582c21c074cb6f1458c39c2e8"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single2_seed29.npz",
+            "sha256": "8bad7fe8eb038015494e166a63307b78a470794c10fcaab04f0c1ad6d9ba2eca"
+          },
+          "training_sites": [
+            "eu-locality-008",
+            "eu-locality-020",
+            "eu-locality-048",
+            "eu-locality-067"
+          ]
+        },
+        "single2_seed43": {
+          "checkpoint": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single2_seed43/checkpoint.pt",
+            "sha256": "0c5411a77f0b2679e5ec1a2a07a867934455d278d0e7ff35d3242bbeebd29a34"
+          },
+          "prediction": {
+            "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single2_seed43.npz",
+            "sha256": "f3bfc248d779506c680bcc4dc7092285dd6e1d09398d8b4fa355af1e405a998d"
+          },
+          "training_sites": [
+            "eu-locality-008",
+            "eu-locality-020",
+            "eu-locality-048",
+            "eu-locality-067"
+          ]
+        }
+      },
+      "numpy": "2.4.6",
+      "torch": "2.12.0"
+    },
+    "producer_replay_sha256": "b9fd7e3f4e5ce5489dab2f09a8abda8d1b6916d19f714665270ef7affc0e3f54"
+  },
+  "receipts": [
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed17_all_cal1.json",
+      "sha256": "ea3cb3608060ad7d33e63d4dad8d4e5585321ddfe8c3fda806128e299b4d4e6a"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed17_easy_cal1.json",
+      "sha256": "8e5e0e82e6eb3bf96e962a87103057df4570a105ef7f66632e6257741dd15c22"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed17_all_cal2.json",
+      "sha256": "91f5c8539bc1265a3379a3cfb55db3f273b82276b947ef4ccd2269570cef0250"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed17_easy_cal2.json",
+      "sha256": "bec768c6f2c53897492b5247063196ee8e8b88bcc15b39a22efbead301e29bc1"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed17_all_cal1.json",
+      "sha256": "994c401450946e9f600c20511b1abe2b5daf013a0b113cf6bf71b0e2fc30864f"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed17_easy_cal1.json",
+      "sha256": "c9fb161c2b2e216b474312baa5902be62b26adaaada601174edee987aea4ee64"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed17_all_cal2.json",
+      "sha256": "f266c2264a1e2abff814f0aa40a847b04b2bf66c099bf542ae742516464d4ccb"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed17_easy_cal2.json",
+      "sha256": "d4e618d89e9e9234e6821acc3be94e9abcb0ca672b5a8f9c2527f04c09820f72"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed29_all_cal1.json",
+      "sha256": "91a05d1eab9afbb5611ce059fd9b8a77d63874f6d578189f2b3586b5b8837730"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed29_easy_cal1.json",
+      "sha256": "8e1c3c8c2341555e97cb975f096445d3a58f8312d299041dfb905538d0419b5d"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed29_all_cal2.json",
+      "sha256": "60a4bafea5384bec747faa60cf4d98c2673562302137bd437a182a7826e86031"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed29_easy_cal2.json",
+      "sha256": "2aedfea3e0805d1d762a76796d5b2d33e8aa810fe2becdef0c11320ec3054bb6"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed29_all_cal1.json",
+      "sha256": "fda1d3092fdd1395cbf84f30598e7bda452a97bbe7e60c948ab592b4811d1d07"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed29_easy_cal1.json",
+      "sha256": "315bd70205e5d88507f30062ddd1e22b47b48759370616afd9f2c79f9a3e31d1"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed29_all_cal2.json",
+      "sha256": "0c7fd4bdd3e97fb12b0259e16acd566b1f31caf9e027638f122b13ccb4480e10"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed29_easy_cal2.json",
+      "sha256": "5cb5834a61c91e2c74814ddbabf75cf039ae6e7ed58fe5dbece64f4b603f6ad7"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed43_all_cal1.json",
+      "sha256": "4e36a9d2ba7a81a1dd1447c85a45c1cf812ae6e1ecc33ee55d402e109e439529"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed43_easy_cal1.json",
+      "sha256": "efaba3601d857349145748d69084757992dbc72e2873493fde096e089d3f5592"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed43_all_cal2.json",
+      "sha256": "aab376c17b8ed2b96a55fdb1083cdf9e6060c3825dfe12027f45c4521c02a4a4"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold0_seed43_easy_cal2.json",
+      "sha256": "4c53cad06acc7e16ad457333e516913a16d3d50bc67d5991cc99af30634b2e18"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed43_all_cal1.json",
+      "sha256": "823cb62d954b5e0bcf33a36b750e5ce63d8f82b6893eb8cacd167188e42c802d"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed43_easy_cal1.json",
+      "sha256": "c8b12efc2b5a7d93e03b891ae4087525114e5c347998647f0e9d1a861f90b6be"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed43_all_cal2.json",
+      "sha256": "8564a6cb0ee2b82118ea56556aaecd4702934205c1c4796291d3288252cd8faf"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold0_seed43_easy_cal2.json",
+      "sha256": "65662a0f0a460735a31e9aec14bacb6af45f6319c9ddaeef960d5d00481051c5"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed17_all_cal0.json",
+      "sha256": "fc9d9d23db0eb20314997a7291e16ca8192b5ee59991050ea90a29ee628ccd63"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed17_easy_cal0.json",
+      "sha256": "e40b31da395d1483efdf12a9a53361fa38de3735508014729540597ac985cb36"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed17_all_cal2.json",
+      "sha256": "6276508ccca0cea1651aae805fa78ed5f3715deea6da968ebb674c6baec52238"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed17_easy_cal2.json",
+      "sha256": "4c6338bd4b5859c2e777161571eaa82633132db86e5d841522f472564dbb3a07"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed17_all_cal0.json",
+      "sha256": "f3cf40484f502f4fc75924724ab99dcb655bde10d7c5807a357133181e9f0401"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed17_easy_cal0.json",
+      "sha256": "fad58357330eedca6a858662380ce44f4aadb4ead2f2cd49307818ba3aa79442"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed17_all_cal2.json",
+      "sha256": "5ffaea5a226d3814df6c0aac9ed1fc6e4a5da2695f5724799d98d00c50032a5b"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed17_easy_cal2.json",
+      "sha256": "0c0d7fba43dc858a8bd537592ce79a45d6d57bd2c534b17f148cfce1636fe560"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed29_all_cal0.json",
+      "sha256": "a478e0b129f12f1ddb8b6b6eae7489f004a3206e01efaf1ed2e94cac8746ef7e"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed29_easy_cal0.json",
+      "sha256": "f9112223a7af45d03739071e781de78aac2e18e6cf573d12776585995e1671a9"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed29_all_cal2.json",
+      "sha256": "77e4c8f577bba449d6884da6f7011ea7965b0ad23ca7d989e3b9279d043ebc48"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed29_easy_cal2.json",
+      "sha256": "b2e79eb13c3ddec19a2d15086b00b4621f69bae36f0d5c633367c4fe8c74c9d8"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed29_all_cal0.json",
+      "sha256": "3c4cad6f3501c4bb0f3358dd958eba0aa0db3937e3b666391b0c8531f214be41"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed29_easy_cal0.json",
+      "sha256": "19eade0a00fa1c52248b134371c481831f091cbcc57ddb1502fda6c8361a4418"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed29_all_cal2.json",
+      "sha256": "a9e140dd7cab9e88023d8a3bda10ec26711c5bbc22563fcf92f768b3ed27bb23"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed29_easy_cal2.json",
+      "sha256": "e5d20cbf90554df77b56582d00a4b96a09067e2f30fc0124054f0ef6c9226a03"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed43_all_cal0.json",
+      "sha256": "89e853cd03e58b175dc3fdb741300d03c3554f9fc5757ba6d0e2d02c0a30ca56"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed43_easy_cal0.json",
+      "sha256": "77dd87ddca603e245f6e96dc3d9403d25b28835c11157eff92358c62f25cadf0"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed43_all_cal2.json",
+      "sha256": "84ae5a38bdf3a4c85eccd559b770d51ef549d8de38dcd3d8797eabf02b538b6b"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold1_seed43_easy_cal2.json",
+      "sha256": "ea3840f2caf23b79e4d5729c49d7e2b43a8954edd38a68e672873cd8f2be3da6"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed43_all_cal0.json",
+      "sha256": "731b45198d9f086aa64693d1b1fd427a73090acac1ea7ae5372d35605bba6c5c"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed43_easy_cal0.json",
+      "sha256": "17c93a65218ff0dcef3d03049e65b21739550dc0901c0bec2c8214991d5b878b"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed43_all_cal2.json",
+      "sha256": "ab1f01918cc7b306ff7d8802274a7a0e8454f74867d1677ae15b61c019d1ba4a"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold1_seed43_easy_cal2.json",
+      "sha256": "ab6074660007c220967abcde9ada280deeff92a6f2b8f0dc496a270d47dd6861"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed17_all_cal0.json",
+      "sha256": "2bfa71012d02da22f8e08471afee923877034e6aca31d0dc0c95f5775ebb2469"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed17_easy_cal0.json",
+      "sha256": "5da03fcd5133660a45af9791fda8aca65ec5f4c752a7bd3e9624b34ec5b7be0d"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed17_all_cal1.json",
+      "sha256": "b9f5770b4856488d816eecdb94d9e623188148988cc06fbc20a254ed5a7f7623"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed17_easy_cal1.json",
+      "sha256": "c55dc2dbdc6a92c865480f20d287aeddd82a9542b9d39d86aa9a7a0367799cf5"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed17_all_cal0.json",
+      "sha256": "a9afc47e52081d99d8c60c7677efc4f5a27a59951620afadb639315d6eb9e317"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed17_easy_cal0.json",
+      "sha256": "8d0a62c2c4e3b771cd4b455bf10c4e643fbfdfcce083536c5e601fda74e64ec4"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed17_all_cal1.json",
+      "sha256": "beba06195410b81a0ae0fc0588843157a193eca69ff9dbc754832d5fc9a4f162"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed17_easy_cal1.json",
+      "sha256": "dec21cbe27bc2997acbf451a63bf38edbaa2f441603cd87f6abfb217664da501"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed29_all_cal0.json",
+      "sha256": "d65fc0a06fa9bc83111ff3067672c31183e35a59c54828d1d6276099ee66939e"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed29_easy_cal0.json",
+      "sha256": "6c776c0542f670593137885a41bbd4499d4b8191ac3fd63a3bd7064e69912b29"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed29_all_cal1.json",
+      "sha256": "d58a3c4bab419de49eb7017d263f1e40fee8e688da4b44847b3962d6a08530c8"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed29_easy_cal1.json",
+      "sha256": "0d20a229762e7cb9967acd3e2f9a76a820cc16b7ab4d9a3e7afe57881da05361"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed29_all_cal0.json",
+      "sha256": "6e572fe289ecab24b6f9ae6582401ea2719ecbe9c9ccae980ea69455fe03835e"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed29_easy_cal0.json",
+      "sha256": "136481a290da88c8ccd6cf3090becac3e739e84bbd64590a84c918fe327d9e89"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed29_all_cal1.json",
+      "sha256": "1adc26a7a84a516e337be4a8197d5030511bacd27704743c9d79a27aa5e32757"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed29_easy_cal1.json",
+      "sha256": "3a884742e32986946ab0997b42f0c3dd83819323f31e65b155a8a613724efa2f"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed43_all_cal0.json",
+      "sha256": "69d0ace8b77051ed897d9e24e66026a303f47f4df792d5dbaed7ceb0a9f6d113"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed43_easy_cal0.json",
+      "sha256": "457850b8ea1a3ea2168e2cda16a9315dc981af25dd61ee2a486d89c1707b64e6"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed43_all_cal1.json",
+      "sha256": "90271ec6b9167ce37cae5f163ba9ada58dc68de2ba09323a67f595218a69971e"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/neural_fold2_seed43_easy_cal1.json",
+      "sha256": "ca0e6baf208813b1de872ed98077667acda0f8e97148de9a13c76d93f9c4a3ec"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed43_all_cal0.json",
+      "sha256": "19996cc5574726c67f77df24f2ff601a53c967c1d7d39b8d47dd31ed4c911d1d"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed43_easy_cal0.json",
+      "sha256": "7e696258c9f4941668d645b4a7ba3ac0f29968810468d8316015010d29750f37"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed43_all_cal1.json",
+      "sha256": "425958e63078af4a9f2cb0132a8eb051b1dc012a1bfc85edbd9ed8217c379dd1"
+    },
+    {
+      "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/calibration/damping097_fold2_seed43_easy_cal1.json",
+      "sha256": "6622b2a2a79686838befa817f50934295a034f03126d5e0274d30d9d5e75d3b4"
+    }
+  ],
+  "count": 72,
+  "outer_metrics_read": false,
+  "formal_guarantee": false
+}

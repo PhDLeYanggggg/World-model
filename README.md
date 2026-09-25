@@ -10,6 +10,28 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed the [nested source-calibration study](outputs/publication_readiness_2026_09/european_nested_calibration_v1/conclusions.md).
+I trained 18 inner forecasting models and 54 gain/risk heads with the calibration
+scenes excluded from their complete training chain. Three seeds, both predefined
+scene-role rotations and all 72 policy views are retained.
+
+Calibration helps some safety checks, but the neural model still does not beat
+equally protected causal damping. All 36 direct ADE comparisons favor damping;
+34 conditional intervals are strictly negative. Neural observed safety improves
+from 2/12 views without calibration to 5/12 under each calibration method,
+compared with 12/12 and 11/12 for the matched damping controls.
+
+The distinction matters: a rule can satisfy the risk limits on its calibration
+scenes and still fail on another scene. The [all-view figure](outputs/publication_readiness_2026_09/european_nested_calibration_v1/calibration_comparison.svg)
+and [calibration-to-readout audit](outputs/publication_readiness_2026_09/european_nested_calibration_v1/calibration_transport.md)
+show that gap. All new checkpoints, decisions and metrics reproduce; 196 scoped
+tests pass. I am not promoting a new model or claiming independent risk control.
+These remain opened-source, image-pixel 8/12 development results. Next I will
+separate producer-training shift from prediction and ranking errors before
+committing to another model change.
+
+### Earlier Source Experiments
+
 I have completed the [symmetric-risk follow-up](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/conclusions.md).
 Keeping the forecasts and utility heads fixed, I trained 36 new risk heads
 with a symmetric loss. Neural ADE gain over constant velocity rises to

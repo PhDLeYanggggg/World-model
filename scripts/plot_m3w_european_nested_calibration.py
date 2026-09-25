@@ -8,6 +8,7 @@ sys.path.insert(0, str(ROOT))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 from scripts.report_m3w_european_cv_reference import sha
 
@@ -49,7 +50,11 @@ def main():
         ax.spines[['top', 'right']].set_visible(False)
     axes[2].axvline(2, color='#b34f32', linestyle='--', label='2% limit')
     axes[2].set_xscale('symlog', linthresh=2)
-    fig.legend(*axes[2].get_legend_handles_labels(), loc='outside lower center', ncols=4)
+    handles = [Line2D([], [], color=color, marker='o', linestyle='none', label=f'Seed {seed}')
+        for color, seed in zip(colors, (17, 29, 43))]
+    handles += [Line2D([], [], color='#444444', marker='x', linestyle='none', label='Zero-CV harmed'),
+        Line2D([], [], color='#b34f32', linestyle='--', label='2% limit')]
+    fig.legend(handles=handles, loc='outside lower center', ncols=5)
     fig.suptitle('Nested source calibration: all 36 neural views\n'
         '3,000 conditional locality bootstrap resamples; x means a zero-CV case was harmed', fontsize=13)
     svg = PUBLIC/'calibration_comparison.svg'

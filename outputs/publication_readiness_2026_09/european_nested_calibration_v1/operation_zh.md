@@ -37,6 +37,7 @@
 .venv-pytorch/bin/python scripts/report_m3w_european_nested_calibration.py
 .venv-pytorch/bin/python scripts/report_m3w_european_calibration_transport.py
 .venv-pytorch/bin/python scripts/plot_m3w_european_nested_calibration.py
+.venv-pytorch/bin/python scripts/complete_m3w_european_nested_calibration.py
 ```
 
 18个内部预测器各4,000步，共72,000步；54个收益/风险头各2,000步，共108,000步。
@@ -59,3 +60,17 @@
 
 图像像素、观察8步/预测12步、原始帧间隔12。不是t50，不是秒、米、物理安全、
 人工gold、true3D或foundation。Stage5C和SMC不执行。
+
+## 本轮已核验结论
+
+18个预测器、54个收益/风险头全部完成，共180,000次更新。18份预测器和54份
+头的检查点均精确重放；216份推理决策独立重构；196项针对性测试通过。
+
+但神经模型没有超过同样受保护的阻尼基线：36组直接ADE比较的点估计全部为负，
+其中34组条件区间完全为负。神经策略的观察性安全通过数从未校准的2/12提高到
+两种校准各5/12；对应阻尼对照为12/12和11/12。这只是部分保护改善，不可部署。
+
+校准组满足限制不等于外层场景满足限制：网格法的正向伤害约束在36/36校准
+组合上通过，外层只有27/36。它与“净easy退化”不是同一个指标，不能混报。
+下一步先定位预测器训练规模变化、源场景变化与收益排序误差，不继续利用这些
+外层结果调阈值，也不打开保留确认集来挽救本轮失败。
