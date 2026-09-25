@@ -18,13 +18,19 @@ The matched uncalibrated, population-rescaled and selected-risk calibration
 rules share the same predictors and 2% risk constraint. Calibration is empirical
 development, not a conformal guarantee; four calibration localities per rotation
 cannot certify broad deployment. No reserved role, primary metric or forecast
-time unit changes. The resumed predictor bank is actively training under local
-PID36827; its100-update pilot completed in1.77seconds. Calibration/head code and
-nonselective reporting are implemented;196 scoped tests pass. Predictive readout
-and the safety repair are not yet complete.
+time unit changes. All 18 new predictors finished their 72,000 updates under
+local PID36827 and all opposite-half prediction banks replay exactly. Summed
+fit time is 1,731.75 seconds; this excludes verification, inference and idle
+wall time. The 100-update pilot took 1.7844 seconds and resumed inside budget.
+The unchanged producer sampler drew 129,241 future-unknown rows with zero
+supervised loss, not labeled examples. No held locality was sampled in fitting.
+Calibration/head code and nonselective reporting are implemented; 196 scoped
+tests pass. The 54 score heads, calibration and outer performance readout are
+not yet complete, so the safety repair remains unproven.
 
 [Registration](outputs/publication_readiness_2026_09/european_nested_calibration_v1/registration.md),
-[producer matrix](outputs/publication_readiness_2026_09/european_nested_calibration_v1/producer_matrix.json).
+[producer matrix](outputs/publication_readiness_2026_09/european_nested_calibration_v1/producer_matrix.json),
+[completed producer bank](outputs/publication_readiness_2026_09/european_nested_calibration_v1/producer_report.md).
 
 ## Symmetric Risk, Frozen Utility (2026-09-25, Completed, Safety Repair Failed)
 

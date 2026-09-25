@@ -33,6 +33,10 @@
 .venv-pytorch/bin/python scripts/run_m3w_european_nested_calibration.py --pilot
 .venv-pytorch/bin/python scripts/run_m3w_european_nested_calibration.py --train --resume --calibrate --evaluate
 .venv-pytorch/bin/python scripts/run_m3w_european_nested_calibration.py --verify --replay
+.venv-pytorch/bin/python scripts/report_m3w_european_nested_producers.py
+.venv-pytorch/bin/python scripts/report_m3w_european_nested_calibration.py
+.venv-pytorch/bin/python scripts/report_m3w_european_calibration_transport.py
+.venv-pytorch/bin/python scripts/plot_m3w_european_nested_calibration.py
 ```
 
 18个内部预测器各4,000步，共72,000步；54个收益/风险头各2,000步，共108,000步。

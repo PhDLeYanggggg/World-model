@@ -339,6 +339,7 @@ def evaluate(reg, data, identity, verify):
 
 def replay(reg, data, identity):
     rows = []
+    samplers = {}
     all_heads(reg, data, identity)
     for name, candidate, fold, seed, design in jobs(reg, data, identity):
         a = assemble(candidate, fold, seed, design, data, identity)
@@ -351,14 +352,24 @@ def replay(reg, data, identity):
                 raise ValueError('Invalid score-head checkpoint exposure')
             for field in ('mean', 'std', 'weights', 'known', 'constant'):
                 np.testing.assert_array_equal(pr[field], state['preprocess'][field])
+            group = (fold, seed)
+            if group not in samplers:
+                samplers[group] = dict(draws=state['draws'].copy(), rng=state['sampler_rng'].clone(), heads=0)
+            np.testing.assert_array_equal(state['draws'], samplers[group]['draws'])
+            if not torch.equal(state['sampler_rng'], samplers[group]['rng']):
+                raise ValueError('Candidate/event fitting exposure differs')
+            samplers[group]['heads'] += 1
             model = build_head(reg['head_training']['width'], pr, seed)
             model.load_state_dict(state['model'])
             raw = predict_neural(model, a['x'][ids], a['same'][ids] if task == 'utility' else np.zeros(len(ids), bool), pr)
             fresh = np.maximum(raw, 0) if task == 'utility' else nonnegative_moments(raw, a['same'][ids])
             np.testing.assert_array_equal(fresh, scores(r, ids))
             rows.append(dict(head=name+'_'+task, rows=len(ids), exact=True, supervised_draws=512000, unknown_draws=0))
+    if len(samplers) != 9 or any(s['heads'] != 6 for s in samplers.values()):
+        raise ValueError('Every candidate/task exposure comparison required')
     immutable_json(PUBLIC/'checkpoint_replay.json', dict(analysis_sha256=digest(PUBLIC/'analysis.json'),
-        checks=rows, all_passed=True, result_source='fresh_run_checkpoint_replay'))
+        checks=rows, matched_sampler_groups=9, heads_per_sampler_group=6,
+        all_passed=True, result_source='fresh_run_checkpoint_replay'))
     beat('head_replay_complete', heads=len(rows))
 
 

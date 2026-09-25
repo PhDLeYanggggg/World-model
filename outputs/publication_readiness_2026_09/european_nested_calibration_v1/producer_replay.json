@@ -1,0 +1,492 @@
+{
+  "identity": {
+    "bindings": {
+      "configs/m3w_european_nested_calibration_v1.json": "1f2ce8e9ac2037136264da20bf183ae2d6e92709a35371458960626c45167f2e",
+      "scripts/run_m3w_european_nested_producers.py": "ab321e051316e9e7154d2147eee8c8817d7c02561b5401f02f8df6dcb43d41b1",
+      "src/evaluation/m3w_nested_calibration.py": "a9fba740167707a79fb2dbb75af4820e71886cd30be6b7017a4006f0745d341f",
+      "tests/test_m3w_nested_calibration.py": "d4f76490f75b02a46c241bc102e9c56785e725654e56816c26d859162b43eb02",
+      "outputs/publication_readiness_2026_09/european_nested_calibration_v1/registration.md": "bd4fb9eced9cdac58bf54a719ed3a6d8d629130e7331a2829e73b9be435d789c"
+    },
+    "parent_identity": {
+      "bindings": {
+        "configs/m3w_european_source_forecast_v1.json": "526add4d014200534a4d2ee6880600d6abd41db5d56cdd30e7ab64267cd0a85f",
+        "scripts/run_m3w_european_source_forecast.py": "3439a19515bd10f23e878122533aa7948fb1baa3d61554ad41c88613146ee7a3",
+        "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+        "tests/test_m3w_european_source_forecast.py": "f90465eb46e839a6769cb750c16a02b468a1222817c2c2ffbf9c11ca180a2a13",
+        "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+        "scripts/run_m3w_native_forecast.py": "b8b02340c0515c7dc2a32c1db724a8edd236a70e8b3d7974d7bc0cfbcff5a443",
+        "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+        "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+        "src/world_model/m3w_baseline_relative_forecaster.py": "333fc13769381bb9eca9bc3c8462b90f340b8ccbe9ed30df3d94d425d401c45a",
+        "src/evaluation/m3w_native_metrics.py": "7876c44b092ca21fd4c50f2d2c1dd23906e3b51231e97e3ea591641f22afca38",
+        "src/evaluation/m3w_european_squares_roles.py": "f952eabe6949abb4f61e72318e8f70dfcdded3489abe2ec8424fe35c6e8aee04",
+        "outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md": "c58e85486e35cc872fff6e35d28ee9ed3573e1bf66fb9ff0757c4c64c0953717"
+      },
+      "source_manifest_sha256": "6ed8f16f7f5557bbd88fbaa72778bb79b7893d6a91146945f0f76ced376d16a6",
+      "source_roles_sha256": "858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435",
+      "folds": {
+        "eu-locality-074": 0,
+        "eu-locality-110": 1,
+        "eu-locality-008": 2,
+        "eu-locality-126": 0,
+        "eu-locality-119": 1,
+        "eu-locality-048": 2,
+        "eu-locality-112": 0,
+        "eu-locality-124": 1,
+        "eu-locality-067": 2,
+        "eu-locality-082": 0,
+        "eu-locality-007": 1,
+        "eu-locality-020": 2
+      },
+      "numpy": "2.4.6",
+      "torch": "2.12.0",
+      "architecture": "arm64",
+      "runtime": {
+        "device": "cpu",
+        "torch_threads": 4,
+        "interop_threads": 1,
+        "num_workers": 0
+      }
+    },
+    "prior_analysis_sha256": "7f8523e5919c4793e7238f01c7a41d861454f8c6e736854acf9cd98427504404",
+    "halves": {
+      "0": [
+        [
+          "eu-locality-074",
+          "eu-locality-112"
+        ],
+        [
+          "eu-locality-082",
+          "eu-locality-126"
+        ]
+      ],
+      "1": [
+        [
+          "eu-locality-007",
+          "eu-locality-119"
+        ],
+        [
+          "eu-locality-110",
+          "eu-locality-124"
+        ]
+      ],
+      "2": [
+        [
+          "eu-locality-008",
+          "eu-locality-020"
+        ],
+        [
+          "eu-locality-048",
+          "eu-locality-067"
+        ]
+      ]
+    },
+    "frozen_final_producers": {
+      "single0_seed17": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single0_seed17/checkpoint.pt",
+          "sha256": "4d50f3491fb9d05955b72bcb539a1598345e7278f9e50dab0beaee5ace80c27e"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single0_seed17.npz",
+          "sha256": "a870f96535255c44faed3312fa76ad7a6ec439bc0329ab6db02ee7676acfcff0"
+        },
+        "training_sites": [
+          "eu-locality-074",
+          "eu-locality-082",
+          "eu-locality-112",
+          "eu-locality-126"
+        ]
+      },
+      "single0_seed29": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single0_seed29/checkpoint.pt",
+          "sha256": "c9c413edf29fa7ab52a937491a4ab2921ed31722458dacf6cccb4399a864de9c"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single0_seed29.npz",
+          "sha256": "eba58f365c00658f4f8cff283e8fd63eb56d2313c81f9eff6bb21c3428941c23"
+        },
+        "training_sites": [
+          "eu-locality-074",
+          "eu-locality-082",
+          "eu-locality-112",
+          "eu-locality-126"
+        ]
+      },
+      "single0_seed43": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single0_seed43/checkpoint.pt",
+          "sha256": "ce208c54f6a842f21556027f6167b7bd7437615abf542c71d064ce9a7d024688"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single0_seed43.npz",
+          "sha256": "6a171edc78838117fd980f606010c1608bbd00d91e40cbd664496dc6d420cfca"
+        },
+        "training_sites": [
+          "eu-locality-074",
+          "eu-locality-082",
+          "eu-locality-112",
+          "eu-locality-126"
+        ]
+      },
+      "single1_seed17": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single1_seed17/checkpoint.pt",
+          "sha256": "17b20069f5ab21b94ef6fbe813b7875b80b29d3d1b11d9b0a5b519b58416d4cd"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single1_seed17.npz",
+          "sha256": "66f5ce8daa6bafb00baddf9af84d55af8588a4d1547826608faf99ddbde57c40"
+        },
+        "training_sites": [
+          "eu-locality-007",
+          "eu-locality-110",
+          "eu-locality-119",
+          "eu-locality-124"
+        ]
+      },
+      "single1_seed29": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single1_seed29/checkpoint.pt",
+          "sha256": "9339bed5f74bff7459aef7c5cddb0678a8ca9b883dafe762eba33506e84020ba"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single1_seed29.npz",
+          "sha256": "c1c567c039070a49e7306e4b5edcc942021f9923b3228ac7f718ac88f74d8daa"
+        },
+        "training_sites": [
+          "eu-locality-007",
+          "eu-locality-110",
+          "eu-locality-119",
+          "eu-locality-124"
+        ]
+      },
+      "single1_seed43": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single1_seed43/checkpoint.pt",
+          "sha256": "8177ba5e53197fe5082d824eaed4c5a87b9f7dd2c1c2a5c8b87f7a65e893b3eb"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single1_seed43.npz",
+          "sha256": "cad9032983e069131a844089c0984564ec0b3e1b06160ac704a3931a97bf334a"
+        },
+        "training_sites": [
+          "eu-locality-007",
+          "eu-locality-110",
+          "eu-locality-119",
+          "eu-locality-124"
+        ]
+      },
+      "single2_seed17": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single2_seed17/checkpoint.pt",
+          "sha256": "6595e99847b9e315558773ada15962ca926306fb3daf6bab48150f829cd4fa47"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single2_seed17.npz",
+          "sha256": "f066003f8d9d35adcf8c37ba6dc2a94282a3228f45a3cec756b06245b818c376"
+        },
+        "training_sites": [
+          "eu-locality-008",
+          "eu-locality-020",
+          "eu-locality-048",
+          "eu-locality-067"
+        ]
+      },
+      "single2_seed29": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single2_seed29/checkpoint.pt",
+          "sha256": "3979e3eb1502bbc129d77e326b04bea989aa769582c21c074cb6f1458c39c2e8"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single2_seed29.npz",
+          "sha256": "8bad7fe8eb038015494e166a63307b78a470794c10fcaab04f0c1ad6d9ba2eca"
+        },
+        "training_sites": [
+          "eu-locality-008",
+          "eu-locality-020",
+          "eu-locality-048",
+          "eu-locality-067"
+        ]
+      },
+      "single2_seed43": {
+        "checkpoint": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/trials/single2_seed43/checkpoint.pt",
+          "sha256": "0c5411a77f0b2679e5ec1a2a07a867934455d278d0e7ff35d3242bbeebd29a34"
+        },
+        "prediction": {
+          "path": "data/stage_cvpr2027_experiments/european_source_forecast_v1/predictions/single2_seed43.npz",
+          "sha256": "f3bfc248d779506c680bcc4dc7092285dd6e1d09398d8b4fa355af1e405a998d"
+        },
+        "training_sites": [
+          "eu-locality-008",
+          "eu-locality-020",
+          "eu-locality-048",
+          "eu-locality-067"
+        ]
+      }
+    },
+    "numpy": "2.4.6",
+    "torch": "2.12.0"
+  },
+  "checks": [
+    {
+      "trial": "fold0_half0_seed17",
+      "prediction_rows": 7339,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half0_seed17/checkpoint.pt",
+        "sha256": "963ed7107b4af704815498c686a270a12381777bc4378320d806f284fb7c2230"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half0_seed17/opposite_half.npz",
+        "sha256": "671f852d51458614f8aec0802a0b89618594317b5dffb701b3c471c75a6e6b3a"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold0_half0_seed29",
+      "prediction_rows": 7339,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half0_seed29/checkpoint.pt",
+        "sha256": "4f0a2ffaded88193d7910188805078e8b3a8c6c5f253b8eb8008edc355ef1162"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half0_seed29/opposite_half.npz",
+        "sha256": "c315f3cf075779a9100d40c040b0dfc569ce5c695aeb1d178f092334205d0566"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold0_half0_seed43",
+      "prediction_rows": 7339,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half0_seed43/checkpoint.pt",
+        "sha256": "923156f5e6850d1c9bea19ab6d462ece121a039638d0f4e7116b5630897bfc41"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half0_seed43/opposite_half.npz",
+        "sha256": "f1d354d17d446b8bb2cf99803079478ec5a512fdb94f83992961620c1c0fd65b"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold0_half1_seed17",
+      "prediction_rows": 109484,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half1_seed17/checkpoint.pt",
+        "sha256": "f99fe052e3d9c5f28c74007f49f902645c88fa2b2a135a577300ff0c8b655c56"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half1_seed17/opposite_half.npz",
+        "sha256": "6a39a17e12d96c6e454e1eb225aeef373464c48d5a9c48ea5067fdabeacbda4f"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold0_half1_seed29",
+      "prediction_rows": 109484,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half1_seed29/checkpoint.pt",
+        "sha256": "c7251d15fc9f61d535007a3bcfed96510fcdcf5558fac11e0f7fee3bc4030bd9"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half1_seed29/opposite_half.npz",
+        "sha256": "59d07b50e46593f5e7e95634544da02f6cbf138ac94288c76e905b34ac6782e0"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold0_half1_seed43",
+      "prediction_rows": 109484,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half1_seed43/checkpoint.pt",
+        "sha256": "4974bc6554c0766a581ce4bb0bce85a95d54ce22a2be8b40f4c35b8097731b89"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold0_half1_seed43/opposite_half.npz",
+        "sha256": "4d31f6ba30c85c3e71519e3c0ea6ac6bf473c9f538450b03d89f32d9a0a03cff"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold1_half0_seed17",
+      "prediction_rows": 12311,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half0_seed17/checkpoint.pt",
+        "sha256": "6028dea8e34e525d310f01893f49e71bb49d064045530ac151cba11a944c75c6"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half0_seed17/opposite_half.npz",
+        "sha256": "72b288a46d93817d8d03da10a8a834381e3ad002fc876a40c766722b9a0acca7"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold1_half0_seed29",
+      "prediction_rows": 12311,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half0_seed29/checkpoint.pt",
+        "sha256": "5e549f3b8ef70381b4a81dddb273d506300156a49e64f880ce060d0d14fb5fbc"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half0_seed29/opposite_half.npz",
+        "sha256": "544cefbb9ca3f04daa7cf22484a133f25dfacf13dc25a45986d8c6b482cd6463"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold1_half0_seed43",
+      "prediction_rows": 12311,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half0_seed43/checkpoint.pt",
+        "sha256": "1f7a020190da57dffdd99d9149a893b10e696d9539830e6a572ecebf7bf51cff"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half0_seed43/opposite_half.npz",
+        "sha256": "0d7ab33965c591f4eea5e3a49309dcb935c56ee23fea6150d2ddeeb88d19a23c"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold1_half1_seed17",
+      "prediction_rows": 11451,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half1_seed17/checkpoint.pt",
+        "sha256": "1c455b85a31cf2450e1007eb146019df7a0c07ec9252aad7bb874c7bbecab1e8"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half1_seed17/opposite_half.npz",
+        "sha256": "750e79632956f8422493d31d99323059f37ae1d3cc630813f728c574b3d7341c"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold1_half1_seed29",
+      "prediction_rows": 11451,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half1_seed29/checkpoint.pt",
+        "sha256": "7b63de81f91b19467bc1f15f4b4e77cbcfd4b31adc2e05a5c3acec8adf020bab"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half1_seed29/opposite_half.npz",
+        "sha256": "d2c4db6bd8f3473fb24379137e6492fafb9aa6c737e1089c6c80af4b23e00834"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold1_half1_seed43",
+      "prediction_rows": 11451,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half1_seed43/checkpoint.pt",
+        "sha256": "24ac34dbf2c3d6cf7390840cc2f7a44aa74ca7f22e256db610dfe7dbd8d39bfc"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold1_half1_seed43/opposite_half.npz",
+        "sha256": "a1c9d7d370618b70922a547d4bac69ce542ff0bb397006f6cebd2362dc6f0b97"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold2_half0_seed17",
+      "prediction_rows": 15449,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half0_seed17/checkpoint.pt",
+        "sha256": "3bf437a305d696214bbe6e0b8335651d32ef2e82f0821ab90df74f4e7f3df9a5"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half0_seed17/opposite_half.npz",
+        "sha256": "b21d3d9a25adafdb28c8b92227f35105b80496a01b8f9f967c5f57cc8843ecc8"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold2_half0_seed29",
+      "prediction_rows": 15449,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half0_seed29/checkpoint.pt",
+        "sha256": "a2052635945128c9704ab243dfb730c831da23cf763c92719c9f7d82a5dcb62e"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half0_seed29/opposite_half.npz",
+        "sha256": "2686ee35a2f2ba1a99db000d2ee1679a83685e901898fa0482bd8eca9ba05e8c"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold2_half0_seed43",
+      "prediction_rows": 15449,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half0_seed43/checkpoint.pt",
+        "sha256": "9d1e5d3629af154c664df9d7f4163470e5b521801bcf48f750c9a662c6c989fc"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half0_seed43/opposite_half.npz",
+        "sha256": "66f0c89dbb1388aa796127881e56d22dbc4705776a48ab92b17f023868798917"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold2_half1_seed17",
+      "prediction_rows": 162935,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half1_seed17/checkpoint.pt",
+        "sha256": "a21b4444be7d15a8bffb1ebcbaed4dcbba05952aecce92ce0f40533e4d28a27b"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half1_seed17/opposite_half.npz",
+        "sha256": "4eff6543c4d6def684391677b843c9389727320afb1db890c39ead729eaeef70"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold2_half1_seed29",
+      "prediction_rows": 162935,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half1_seed29/checkpoint.pt",
+        "sha256": "136b4ca33434a25f487ff70e269a43f815f103fb241ff1fb760e890b50918c08"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half1_seed29/opposite_half.npz",
+        "sha256": "ea3e6d5eb1ab155c9346898dd69e26b7493105e15313bfd0cffb6f735a5161e8"
+      },
+      "exact": true
+    },
+    {
+      "trial": "fold2_half1_seed43",
+      "prediction_rows": 162935,
+      "replay_rows": 4096,
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half1_seed43/checkpoint.pt",
+        "sha256": "fc0ed2ac6747c7603cff8c6f95d5d8d6c837293a0d65cf5956aeac355d2beb39"
+      },
+      "prediction": {
+        "path": "data/stage_cvpr2027_experiments/european_nested_calibration_v1/producers/fold2_half1_seed43/opposite_half.npz",
+        "sha256": "acd75269b95d9d2745674f182fb05d1ddf5dd58e8c06098027986818bbee5980"
+      },
+      "exact": true
+    }
+  ],
+  "result_source": "fresh_run_checkpoint_replay",
+  "all_passed": true,
+  "predictors": 18,
+  "updates": 72000,
+  "calibration_or_outer_error_readout": false
+}
