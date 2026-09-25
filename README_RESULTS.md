@@ -5,13 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Dual-Event Policy Bridge (2026-09-25, Registered, Not Yet Evaluated)
+## Dual-Event Policy Bridge (2026-09-25, Trained and Frozen, Readout Pending)
 
 I am testing whether a shared-reference controller can retain the stronger
 all-event policy's accuracy while limiting both pooled and easy-event harm.
 The frozen conservative policy remains the reference. The new comparison fits
 three cost heads on producer-excluded source localities, with three seeds and
-matched single-risk, dual-risk and ridge controls. The six already-opened
+matched single-risk, dual-risk and ridge controls. All 54 neural heads completed
+2,000 updates each (108,000 total), with 54 ridge fits. The 100-step real pilot
+resumed inside the same fixed budget. All 126 decisions are frozen before the
+new outcome calculation. The six already-opened
 selection localities remain development data, not independent confirmation.
 No deployment or risk-calibration claim follows from this registration.
 [Protocol](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/registration.md).
