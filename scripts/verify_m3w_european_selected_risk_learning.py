@@ -6,7 +6,7 @@ import sys
 import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_european_selected_risk_learning as run
-from scripts.report_m3w_european_selected_risk_learning import summarize
+from scripts.report_m3w_european_selected_risk_learning import summarize, fitting_and_transport_diagnostics
 from scripts.evaluate_m3w_european_bridge_attribution import seed_summary
 import numpy as np
 import torch
@@ -55,6 +55,8 @@ def main():
     seeds = {p:seed_summary(r, cfg) for p,r in rows.items()}
     assert seeds == json.loads((run.PUBLIC/'seed_averaged_metrics.json').read_text())
     assert {p:summarize(r, seeds[p]) for p,r in rows.items()} == json.loads((run.PUBLIC/'aggregate_metrics.json').read_text())
+    fit_rows = json.loads((run.PUBLIC/'training_metrics.json').read_text())
+    assert fitting_and_transport_diagnostics(fit_rows, rows) == json.loads((run.PUBLIC/'diagnostic_summary.json').read_text())
     parent = json.loads((run.previous.PUBLIC/'verification.json').read_text())
     files = sorted(set(parent['test_files']) | {'tests/test_m3w_selected_risk_learning.py', 'tests/test_m3w_selected_risk_reporting.py'})
     xml = run.PRIVATE/'tests.xml'
@@ -71,6 +73,7 @@ def main():
     assert all((run.PUBLIC/n).stat().st_size < 1024**2 for n in artifacts)
     bindings = [*run.FILES, *files, 'scripts/report_m3w_european_selected_risk_learning.py',
                 'scripts/plot_m3w_european_selected_risk_learning.py',
+                'scripts/audit_m3w_selected_query_budget.py',
                 'scripts/verify_m3w_european_selected_risk_learning.py']
     run.immutable_json(run.PUBLIC/'verification.json', dict(all_passed=True, artifacts=artifacts,
         source_bindings={p:run.digest(ROOT/p) for p in bindings}, checkpoint_replays=replays,

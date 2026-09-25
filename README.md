@@ -10,14 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [selected-population cost learning and scene-query allocation](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/registration.md).
-The comparison keeps the forecasts fixed and retrains only small risk
-heads, separating the loss-function change from the decision rule. It uses
-three seeds and source-only held rosters; the six opened model-selection
-localities and the reserved roles are not evaluated in this round. The
-72 Torch heads have completed 144,000 updates. I have frozen all 432 decision
-views before the new source-held readout. Training completion is not yet a
-positive result, and deployment is unchanged.
+I completed a [controlled test of risk learning and scene-query allocation](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/conclusions.md):
+72 new Torch heads, three seeds and 432 frozen source-held decision views.
+Keeping the forecasts fixed let me separate a loss-function change from a
+decision-rule change.
+
+Joint allocation improves ADE by 1.49%-2.86% over individual all/easy gates
+across the six source assignments, with positive locality-bootstrap intervals.
+But the new selected-group loss does not improve accuracy, and the joint rule
+passes every observed harm constraint in only 9/18 settings. It does not
+reliably beat the old neural rule. I am not promoting it to deployment.
+
+The [paired comparisons](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/source_contrasts.svg)
+and [training losses](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/training_loss.svg)
+show both sides of that result. The next concrete problem is conditional harm:
+at the worst locality, predicted easy-case harm is about one tenth of what is
+observed. I will target that estimation error, not keep adjusting thresholds
+on opened outcomes. This is source-development evidence; the separate
+calibration and confirmation localities remain closed.
 
 ### Completed Calibration Test
 
@@ -38,9 +48,9 @@ confirmation remain closed.
 The [full comparison](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/results.md),
 [transport figure](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/calibration_transport.svg)
 and [failure analysis](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/failure_analysis.md)
-show the tradeoff. My next step is to test whether source-only feature-support
-and selected-harm modeling can repair it, rather than keep tuning thresholds
-on the same opened outcomes.
+show the tradeoff. This motivated the source-only cost-learning experiment
+above. Neither repeated threshold tuning nor earlier generic history-support
+rejection established the missing transport guarantee.
 
 ### Completed Attribution Test
 

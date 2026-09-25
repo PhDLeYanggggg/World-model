@@ -15,6 +15,8 @@
 ```sh
 .venv-pytorch/bin/python scripts/run_m3w_european_selected_risk_learning.py --phase evaluate
 .venv-pytorch/bin/python scripts/report_m3w_european_selected_risk_learning.py
+.venv-pytorch/bin/python scripts/plot_m3w_european_selected_risk_learning.py
+.venv-pytorch/bin/python scripts/audit_m3w_selected_query_budget.py
 .venv-pytorch/bin/python scripts/verify_m3w_european_selected_risk_learning.py
 ```
 

@@ -37,6 +37,34 @@ def summarize(rows, seed_metrics):
 def fmt(x): return 'undefined' if x is None else f'{x[0]:+.5f} to {x[1]:+.5f}'
 
 
+def fitting_and_transport_diagnostics(training, rows):
+    paired = {}
+    for row in training:
+        paired.setdefault(row['identity']['path'], {})[row['arm']] = row['fit']['trace'][-1]
+    assert len(paired) == 36 and all(set(v) == {'mean', 'selected'} for v in paired.values())
+    fitting = {}
+    for field in ('moment_mse', 'selected_group_mse'):
+        values = np.array([v['selected'][field]/v['mean'][field] for v in paired.values()])
+        fitting[field] = dict(selected_lower_count=int((values < 1).sum()), matched_pairs=len(values),
+            median_selected_over_mean=float(np.median(values)), range=[float(values.min()), float(values.max())])
+    transport = {}
+    for pair, group in rows.items():
+        transport[pair] = {}
+        for arm in ('raw', 'mean', 'selected'):
+            ratios = []
+            for row in group:
+                for site in row['diagnostics'][arm].values():
+                    actual = sum(v['true_selected_harm'] for v in site.values())
+                    predicted = sum(v['predicted_selected_harm'] for v in site.values())
+                    if actual > 0: ratios.append(predicted/actual)
+            transport[pair][arm] = dict(supported_locality_views=len(ratios),
+                median_predicted_over_actual_selected_harm=float(np.median(ratios)) if ratios else None,
+                underestimated_locality_views=sum(v < 1 for v in ratios))
+    return dict(fixed_training_batch=fitting, source_C_selected_harm=transport,
+        training_batch_not_validation=True, posthoc_descriptive_only=True,
+        changed_decisions=False, differing_arm_action_sets_not_calibration_ablation=True)
+
+
 def main():
     cfg, identity = run.registration(); done = run.checked_training(identity)
     checks = json.loads((run.PUBLIC/'completion_checks.json').read_text()); assert checks['all_passed']
@@ -53,6 +81,7 @@ def main():
         training.append(dict(path=ref['path'], identity=r['identity']['inputs'], arm=r['identity']['arm'],
             seed=r['identity']['seed'], fit=f, checkpoint=r['artifacts']['checkpoint']))
     run.immutable_json(run.PUBLIC/'training_metrics.json', training)
+    run.immutable_json(run.PUBLIC/'diagnostic_summary.json', fitting_and_transport_diagnostics(training, rows))
     gates = dict(real_torch_training_complete=len(training) == 72 and all(v['fit']['complete'] for v in training),
         B_only_fit_C_excluded=True, decisions_frozen_before_readout=True,
         full_selected_joint_observed_risk=aggregate['full']['views']['selected_joint']['risk_passes'] == 18,

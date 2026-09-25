@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_selected_risk_learning_v1'
+PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_selected_risk_learning_v1'
 COLORS = {'mean': '#1d718f', 'selected': '#b63e55'}
 
 
@@ -33,7 +34,8 @@ def main():
                 if row == 1: ax.set_xlabel('Optimizer updates')
         axes[0, 0].legend(frameon=False)
         fig.suptitle('Training diagnostics, not held-scene performance')
-        fig.tight_layout(rect=(0, 0, 1, .95)); fig.savefig(PUBLIC/'training_loss.svg'); plt.close(fig)
+        fig.tight_layout(rect=(0, 0, 1, .95)); fig.savefig(PUBLIC/'training_loss.svg')
+        fig.savefig(PRIVATE/'training_loss_preview.png', dpi=120); plt.close(fig)
 
         comparisons = [('selected_joint_vs_mean_joint__all', 'Selected loss vs mean loss'),
                        ('selected_joint_vs_selected_dual__all', 'Query allocation vs individual'),
@@ -58,7 +60,8 @@ def main():
             ax.grid(axis='x', alpha=.2); ax.spines[['top', 'right']].set_visible(False)
         axes[0].set_yticks(range(len(labels)), labels); axes[0].invert_yaxis()
         fig.suptitle('Three-seed means, 3,000 locality resamples; overlapping source roles')
-        fig.tight_layout(rect=(0, 0, 1, .95)); fig.savefig(PUBLIC/'source_contrasts.svg'); plt.close(fig)
+        fig.tight_layout(rect=(0, 0, 1, .95)); fig.savefig(PUBLIC/'source_contrasts.svg')
+        fig.savefig(PRIVATE/'source_contrasts_preview.png', dpi=120); plt.close(fig)
 
 
 if __name__ == '__main__': main()

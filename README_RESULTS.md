@@ -5,29 +5,64 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Selected-Risk Learning (2026-09-25, Trained, Decisions Frozen)
+## Selected-Risk Learning (2026-09-25, Completed, No Promotion)
 
 This source-only experiment holds R/P forecasts and utility scoring fixed.
 It compares coherent all/easy moment regression with the same network plus
 selected-population mean constraints, followed by individual, uniform scene
 and greedy query-budget decisions. The mean/selected arms match initialization,
-training draws and fixed B-only scales. There are 72 planned new neural heads,
+training draws and fixed B-only scales. There are 72 completed new neural heads,
 144,000 updates, three seeds and 432 source-C policy views. A real 100-update
 pilot resumes within that budget. No new forecaster or threshold search.
 
 Previous percentile support filters had negative net value, so support bins
 are descriptive rather than another rejection rule. B trains; disjoint C is
 the source-only readout, with A producing forecasts. No six-locality selection
-readout, reserved calibration or confirmation is opened this round. Nine
+readout, reserved calibration or confirmation is opened this round. Eleven
 targeted tests pass, including exact interrupted-training resume and independent
 query-budget replay. All 72 native-arm64 Torch heads have completed 144,000
 updates; 432 decision views are frozen before the source-C outcome readout.
 Each head has 24,836 parameters. Summed fitting time is 214.75 seconds, excluding
 source reconstruction and inference; this is not total wall time. No unknown
-future label was sampled for fitting. Source-C readout is not_run at this
-decision freeze. CREATE queue was
+future label was sampled for fitting. Source-C readout was not_run at decision
+freeze `522131d7` and is now complete. CREATE queue was
 checked read-only; other jobs were not touched. No deployment or risk certificate.
 [Registered comparison](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/registration.md).
+
+Full selected-joint versus selected-dual gains 1.4882%-2.8571% all ADE and
+1.5225%-3.6262% hard ADE across six three-seed source assignments; all six
+locality-bootstrap intervals are positive for both subsets. Against the
+query-count-matched hash control, four intervals are positive and two overlap
+zero. This is source-only allocation evidence, not a neural dynamics result.
+
+The added selected-group loss fails: selected-joint versus mean-joint all-ADE
+changes -0.4997% to -0.0324%, with five negative intervals and one overlap.
+Selected-joint versus old neural has no positive interval. Full selected-joint
+passes complete observed risk in only 9/18 settings, despite net easy passing
+18/18. Fourteen of 72 dependent locality views violate conditional easy harm.
+Motion-only selected-dual passes 18/18 but loses accuracy versus old neural;
+this control does not establish a new learned dynamics contribution.
+
+Posthoc query accounting identifies conditional numerator underprediction:
+the worst locality predicts 184.75 supported easy harm against actual 1,862.20;
+unknown futures supply just 1.4% of its predicted easy mass. Decisions do not
+change. The next repair must address this error, not repeat threshold fitting.
+[Conclusions](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/failure_analysis.md),
+[budget accounting](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/query_budget_audit.md).
+
+Verification: 431 tests across 73 relevant files passed; 72 checkpoint-prefix
+replays and all 432 scalar/vector decision views agree. Coordinate errors have
+144 independent checks and paired metrics 5,760. The posthoc accounting adds
+576 independent locality/event mass checks. After adding these accounting
+checks, four reporting tests were repeated; they are part of 431, not four
+additional scientific experiments. No full legacy-suite pass is claimed.
+The [final verification](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/final_verification.json)
+preserves the original replay receipt and explicitly rebinds the audit-only
+source update. For the already sealed study, use
+`.venv-pytorch/bin/python scripts/verify_m3w_selected_risk_closeout.py` to
+recheck final bindings and the changed reporting surface, rather than overwrite
+the historical first-pass verification receipt.
 
 ## Aligned Source-C Calibration (2026-09-25, Completed, Transport Failed)
 
