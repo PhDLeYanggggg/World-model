@@ -5,14 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Incumbent-Relative Intervention (2026-09-25, Registered, Training Not Yet Run)
+## Incumbent-Relative Intervention (2026-09-25, Trained And Frozen, Readout Not Yet Run)
 
 The new comparison tests whether learning the incremental value of overriding
 the original controller avoids losing its useful actions. Both new arms receive
 the same381 causal inputs, same four-source forecasts, same supervised draws and
 the same2,000-update budget. Six source rotations, three seeds, two risk events:
 144 Torch heads,72 fixed ridge fits,288 predeclared development views. All heads
-and decisions must freeze before comparative readout. Independent roles stay
+finished288,000 updates in712 seconds; every decision froze at17:34:56 UTC before
+comparative readout. Shared feature statistics/draw counts and144 checkpoint
+prefix replays pass;379 tests in63 scoped files pass. Independent roles stay
 closed; deployment stays unchanged. No new trajectory training, Stage5C or SMC.
 
 [Registered protocol](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/registration.md).

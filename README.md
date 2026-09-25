@@ -13,8 +13,9 @@ I started this repo to answer that question carefully, not just to collect a nic
 I am testing [incumbent-relative intervention](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/registration.md):
 can a controller learn when to override an existing useful decision without
 discarding it unnecessarily? The comparison uses identical forecasts, causal
-inputs, source roles and training budgets. The new experiment is registered;
-results are not yet available. No deployment or independent-test claim changes.
+inputs, source roles and training budgets. All144 Torch heads and72 ridge fits
+are complete; all288 decisions froze before comparative readout. Results are
+not yet available. No deployment or independent-test claim changes.
 
 ### Completed Fixed-Producer Study
 
