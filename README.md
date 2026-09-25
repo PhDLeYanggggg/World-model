@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing [incumbent-relative intervention](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/registration.md):
+can a controller learn when to override an existing useful decision without
+discarding it unnecessarily? The comparison uses identical forecasts, causal
+inputs, source roles and training budgets. The new experiment is registered;
+results are not yet available. No deployment or independent-test claim changes.
+
+### Completed Fixed-Producer Study
+
 I have completed a [fixed-producer controller study](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/conclusions.md).
 The idea is to keep the stronger trajectory forecaster and fallback unchanged,
 then train the intervention controller on predictions from that same forecaster.

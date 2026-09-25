@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Incumbent-Relative Intervention (2026-09-25, Registered, Training Not Yet Run)
+
+The new comparison tests whether learning the incremental value of overriding
+the original controller avoids losing its useful actions. Both new arms receive
+the same381 causal inputs, same four-source forecasts, same supervised draws and
+the same2,000-update budget. Six source rotations, three seeds, two risk events:
+144 Torch heads,72 fixed ridge fits,288 predeclared development views. All heads
+and decisions must freeze before comparative readout. Independent roles stay
+closed; deployment stays unchanged. No new trajectory training, Stage5C or SMC.
+
+[Registered protocol](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/registration.md).
+Prior239 evidence hashes and local/remote GitHEAD were verified. CREATE queue
+query succeeded read-only; no job submitted. The local arm64 environment and
+19.2GiB free disk support this workload. Routine audits and safe sync are handled
+within the existing authorization, without repetitive approval requests.
+
 ## Fixed Four-Source Producer Roles (2026-09-25, Completed, Easy Repair, Not Promoted)
 
 I registered a development-only test of controller-supervision mismatch with
