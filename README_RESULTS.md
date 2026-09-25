@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Producer Transport Diagnosis (2026-09-25, Registered, Outcomes Pending)
+
+The next diagnostic keeps score heads, preprocessing,2% risk rules and excluded
+rows fixed, replacing the final four-locality predictor with each of its two
+source-excluded half-fold predictors. All folds,seeds and both halves are kept;
+no threshold is refitted. The plan calls for18 new inference banks from existing
+checkpoints, not new training. It tests producer-identity transport, not a pure
+training-size causal effect. Reserved source roles remain closed.
+
+CREATE's authorized read-only connection succeeded this round; its queue showed
+two running tasks and one pending task. No remote work was modified. M3W's
+remote asset directory remains unverified; local resources suffice for this run.
+
+[Registered diagnosis](outputs/publication_readiness_2026_09/european_producer_transport_v1/diagnosis_plan.md),
+[CREATE observation](outputs/publication_readiness_2026_09/european_producer_transport_v1/create_readonly.md).
+
 ## Nested Source Calibration (2026-09-25, Completed, No Neural Advantage)
 
 This experiment isolates fitting, calibration and outer source readout
