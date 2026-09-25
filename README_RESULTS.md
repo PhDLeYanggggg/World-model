@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed Four-Source Producer Roles (2026-09-25, Registered, Not Yet Trained)
+
+I registered a development-only test of controller-supervision mismatch with
+the stronger four-source neural candidate and fallback held fixed. Six ordered
+A/B/C source-role rotations, three seeds and two event targets give36 groups.
+The plan is144 fresh Torch heads /288,000 updates,72 fixed ridge fits and180
+decision views. All models and decisions must freeze before new outcome readout.
+An initial recovery check caught a wrong baseline index in the new replay script;
+the checkpoint's original selection now supplies that index. No existing model or
+prediction was modified. No optimizer update or result is claimed here.
+
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/registration.md),
+[preflight repair](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/preflight_repair.md).
+
 ## Producer-Conditioned Controllers (2026-09-25, Completed, Not Promoted)
 
 I trained 108 equal-capacity Torch gain/harm heads with 216,000 updates and three

@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing a [fixed-producer controller design](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/registration.md).
+The original four-source forecaster and fallback remain unchanged. Separate
+groups of opened development localities supply producer fitting, controller
+supervision and readout. I will compare newly trained matched-producer and
+cross-fitted-supervision heads on the same final forecasts, with a fixed ridge
+control. This is registered work in progress, not a new result or independent
+confirmation. No reserved evaluation role is being opened.
+
+### Completed Producer-Conditioned Study
+
 I have finished a [producer-conditioned controller experiment](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/conclusions.md).
 I trained 108 small Torch gain/harm heads to test whether knowing which model
 produced a trajectory improves the decision to use it. Global, real-tag and
