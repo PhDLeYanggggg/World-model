@@ -10,12 +10,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [incumbent-relative intervention](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/registration.md):
-can a controller learn when to override an existing useful decision without
-discarding it unnecessarily? The comparison uses identical forecasts, causal
-inputs, source roles and training budgets. All144 Torch heads and72 ridge fits
-are complete; all288 decisions froze before comparative readout. Results are
-not yet available. No deployment or independent-test claim changes.
+I completed an [incumbent-relative intervention study](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/conclusions.md):
+can a controller learn when an existing decision is worth overriding, without
+discarding useful predictions? I trained 144 small Torch cost heads and 72 ridge
+controls on identical forecasts and causal inputs, then evaluated all 288 frozen
+policy views across three seeds and six source-role rotations.
+
+Preserving the original decision helps. All-ADE changes against the incumbent
+range from -0.0089% to +1.1520%, with 33 positive and one negative confidence
+interval. A predeclared rule that only adds interventions has positive all-ADE
+point estimates in every view, from +0.0074% to +1.1750%. It still has a negative
+hard-subset interval, though, and the learned harm scores are not calibrated.
+Both variants preserve the observed easy-case mean errors; neither is being
+promoted to deployment from these development results.
+
+The [complete comparison](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/results.md),
+[loss curves](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/training_losses.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/reproducibility.md)
+retain every adverse branch. All 288,000 updates completed and 379 scoped tests
+pass. These are overlapping development views, not independent confirmation or
+new trajectory-dynamics training. The next question is whether scene-level joint
+control can make the extra interventions more reliable. Reserved sources remain
+closed; image-pixel, raw-frame 8/12 results are not metric or physical-safety claims.
 
 ### Completed Fixed-Producer Study
 

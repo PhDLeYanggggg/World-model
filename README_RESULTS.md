@@ -5,23 +5,48 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Incumbent-Relative Intervention (2026-09-25, Trained And Frozen, Readout Not Yet Run)
+## Incumbent-Relative Intervention (2026-09-25, Completed, Progress Without Promotion)
 
-The new comparison tests whether learning the incremental value of overriding
-the original controller avoids losing its useful actions. Both new arms receive
-the same381 causal inputs, same four-source forecasts, same supervised draws and
-the same2,000-update budget. Six source rotations, three seeds, two risk events:
-144 Torch heads,72 fixed ridge fits,288 predeclared development views. All heads
-finished288,000 updates in712 seconds; every decision froze at17:34:56 UTC before
-comparative readout. Shared feature statistics/draw counts and144 checkpoint
-prefix replays pass;379 tests in63 scoped files pass. Independent roles stay
-closed; deployment stays unchanged. No new trajectory training, Stage5C or SMC.
+I trained 144 Torch heads and 72 fixed ridge controls: same 381 causal inputs,
+four-source forecasts, supervised draws, capacity and 2,000-update budgets.
+Six source rotations, three seeds and two risk events give 36 dependent groups,
+not independent replications. All 288 policy views were frozen before readout.
 
-[Registered protocol](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/registration.md).
-Prior239 evidence hashes and local/remote GitHEAD were verified. CREATE queue
-query succeeded read-only; no job submitted. The local arm64 environment and
-19.2GiB free disk support this workload. Routine audits and safe sync are handled
-within the existing authorization, without repetitive approval requests.
+| Policy vs original stopping controller | All-ADE gain range | Positive / negative CI |
+|---|---:|---:|
+| New matched-input floor-reference control | -0.76264% to +1.68534% | 14 / 5 |
+| Incumbent-relative policy | -0.00893% to +1.15195% | 33 / 1 |
+| Predeclared add-only diagnostic | +0.00743% to +1.17500% | 33 / 0 |
+| Predeclared remove-only diagnostic | -0.04610% to +0.000013% | 0 / 30 |
+
+The remaining negative all case again gains from added switches but loses more
+from removals. Add-only avoids that mechanism, but still has one negative hard
+interval and worst-locality hard loss 0.18781%. The primary incremental policy
+also fails consistent superiority over the matched floor-reference control:
+19 positive and eight negative all intervals. No post-readout winner promotion.
+
+Incumbent-relative and add-only worst positive-easy mean degradation versus CV
+are both 0.0% over all 36 defined views; no observed zero-CV harm. This is not
+zero individual error or calibrated safety. Of 139 supported selected
+locality/views, 65 exceed 2% realized positive-harm ratio and 110 underpredict it.
+The maximum ratio is 23.409%. Five views have undefined event-reference ratios.
+
+All 288,000 updates completed in 712 seconds; readout took 241 seconds. Decision
+freeze17:34:56 UTC precedes readout17:36:02 UTC. Registration2ebde873 and milestone
+631604b5 were pushed before readout. All 144 checkpoint prefixes, 72 full ridge
+arrays, 144 independent coordinate arrays and 3,600 reductions verify. 379 tests
+in 63 scoped files pass; full legacy suite not_run. Zero unknown-label draws.
+
+Next: a registered comparison of joint versus per-agent incremental additions
+at matched counts/risk, with residual hard failures retained. No new trajectory
+forecaster, reserved-role opening, deployment, Stage5C or SMC. CREATE query was
+read-only; local native arm64 CPU4 training completed without downgrade. No
+metric/seconds, physical safety, human gold, true3D or foundation claim.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/conclusions.md),
+[full matrix](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/failure_analysis.md),
+[action accounting](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/changed_action_accounting.json).
 
 ## Fixed Four-Source Producer Roles (2026-09-25, Completed, Easy Repair, Not Promoted)
 

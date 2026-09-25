@@ -101,6 +101,21 @@ def publish(rows, heads):
             accounting=r['accounting'], **{k: r[k] for k in ('producer', 'controller', 'readout', 'seed', 'event')}))
     for name, h in heads.items(): dump(run.PUBLIC/'training'/(name+'.json'), h)
     dump(run.PUBLIC/'summary_metrics.json', summary)
+    accounting = {}
+    for group, r in rows.items():
+        accounting[group] = {}
+        for p, subsets in r['accounting'].items():
+            accounting[group][p] = {}
+            for subset, localities in subsets.items():
+                terms = [v['percent_terms'] for v in localities.values() if v.get('percent_terms') is not None]
+                if len(terms) != 4:
+                    accounting[group][p][subset] = dict(status='incomplete_locality_support'); continue
+                avg = {k: float(np.mean([v[k] for v in terms])) for k in terms[0]}
+                net = avg['added_harm']-avg['added_benefit']+avg['removed_lost_benefit']-avg['removed_avoided_harm']
+                m = r['views'][p]['ADE_vs_old_stop4'][subset]
+                np.testing.assert_allclose(net, -m['equal_scene_gain_percent'], rtol=1e-9, atol=1e-9)
+                accounting[group][p][subset] = dict(percent_terms=avg, net_degradation_percent=net, gain_ci=m['scene_bootstrap_ci95'])
+    dump(run.PUBLIC/'changed_action_accounting.json', dict(status='posthoc_arithmetic_frozen_choices_not_new_policy', groups=accounting))
     return summary
 
 
