@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Nested Source Calibration (2026-09-25, Registered, Outcomes Pending)
+
+The next experiment isolates fitting, calibration and outer source readout
+across the complete producer chain. Existing eight-locality heads cannot serve
+as calibration-independent models without additional producer exclusion.
+The fixed plan adds 18 two-locality inner predictors (72,000 updates), reuses
+nine verified four-locality final predictors, then fits 54 source-only heads.
+Both assignments of the other folds to calibration/readout are retained.
+
+The matched uncalibrated, population-rescaled and selected-risk calibration
+rules share the same predictors and 2% risk constraint. Calibration is empirical
+development, not a conformal guarantee; four calibration localities per rotation
+cannot certify broad deployment. No reserved role, primary metric or forecast
+time unit changes. Twenty targeted preflight tests pass. Training and predictive
+readout are not yet complete.
+
+[Registration](outputs/publication_readiness_2026_09/european_nested_calibration_v1/registration.md),
+[producer matrix](outputs/publication_readiness_2026_09/european_nested_calibration_v1/producer_matrix.json).
+
 ## Symmetric Risk, Frozen Utility (2026-09-25, Completed, Safety Repair Failed)
 
 Fresh fit:36 Torch event-risk heads,72,000 updates. Only risk loss changes from
