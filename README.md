@@ -10,12 +10,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am running a [matched risk-protected motion control](outputs/publication_readiness_2026_09/european_protected_motion_v1/registration.md).
-The question is whether neural trajectories still add value when fixed damping
-gets the same gain/harm learning and safety rules. Existing neural forecasts and
-heads remain frozen; only the corresponding damping heads are newly fitted.
-The real Torch pilot passed. No predictive result is claimed before the full
-registered comparison finishes, and independent data roles remain closed.
+I have completed the [matched risk-protected motion study](outputs/publication_readiness_2026_09/european_protected_motion_v1/conclusions.md).
+The result challenges the current neural-trajectory hypothesis: when fixed
+damping receives the same gain/harm learning and risk rules, it outperforms
+the neural candidate in all 24 paired pointwise comparisons. Each conditional
+locality-bootstrap interval favors protected damping. Both candidates use the
+same risk budget, but they need not intervene on the same number of agents.
+
+With easy-event neural risk heads, protected damping improves ADE over CV by
+1.81--1.94% across three seeds, versus 0.17--0.43% for the neural trajectories.
+This suggests useful intervention learning, not yet a neural dynamics advantage.
+Other controls still fail local easy preservation, joint decisions lack a stable
+matched-count benefit, and independent calibration remains untested. I am not
+changing deployment or claiming submission readiness.
+
+The experiment fitted 45 new control heads, including 54,000 real Torch updates,
+and verified 45 existing neural-candidate heads. All 48 policy views are retained;
+all 90 checkpoints reproduce sampled predictions exactly. The
+[full comparison](outputs/publication_readiness_2026_09/european_protected_motion_v1/results.md),
+[contrast figure](outputs/publication_readiness_2026_09/european_protected_motion_v1/candidate_contrasts.svg)
+and [operation guide](outputs/publication_readiness_2026_09/european_protected_motion_v1/operation_zh.md)
+record the result and its limits. My next step is to separate forecast quality,
+risk-estimation error and producer-training shift on the opened source scenes,
+not to tune on reserved outcomes or simply increase model size.
 
 I have completed the [event-conditional risk study](outputs/publication_readiness_2026_09/european_conditional_risk_v1/conclusions.md):
 36 fitted risk heads and 24 fixed policy views, with the forecast bank unchanged.
@@ -33,8 +50,7 @@ and negative control in the [results](outputs/publication_readiness_2026_09/euro
 and [failure analysis](outputs/publication_readiness_2026_09/european_conditional_risk_v1/failure_analysis.md).
 All 36 checkpoints reproduce sampled predictions exactly; 152 tests pass in
 the completion scope. Independent selection, calibration and confirmation stay
-closed. The next comparison is risk-protected simple motion versus neural
-prediction under the same budget, not another increase in model size.
+closed. The protected-motion comparison above now completes that follow-up.
 
 The [tradeoff figure](outputs/publication_readiness_2026_09/european_conditional_risk_v1/risk_utility_tradeoff.svg)
 and [operation guide](outputs/publication_readiness_2026_09/european_conditional_risk_v1/operation_zh.md)

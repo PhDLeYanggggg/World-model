@@ -5,22 +5,59 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## European Protected Motion (2026-09-25, Registered, Running)
+## European Protected Motion (2026-09-25, Completed, Neural Advantage Failed)
 
-Same-risk control: fixed damping 0.97 versus the frozen neural candidate, both
-relative to CV. Same source populations, 355-feature schema, fitting row draws,
-cost scale, three seeds, risk limits and intervention controls. Necessary
-candidate-derived features and supervised costs differ; no candidate tuning.
+Fresh run: 45 damping heads, comprising 18 ridge and 27 real Torch fits with
+54,000 updates. The other 45 neural-candidate heads are cached_verified, not
+new training. All 48 registered policy views are complete. Both candidates use
+the same CV reference, source populations, 355-feature schema, fitting draws,
+cost scale, seeds and risk rules. Candidate-derived features and costs differ.
+Equal predicted-risk budgets are not equal realized intervention counts.
 
-The matrix has 45 new damping heads (18 ridge, 27 neural, 54,000 neural updates)
-and 45 cached_verified neural-candidate heads. Both candidates' decisions are
-re-executed using exact-feasibility pruning. All 48 fixed policy views will be
-reported. No new trajectory model, reserved outcomes or deployment change.
-The 100-update native arm64 CPU4/workers0 pilot passed and resumes inside the
-fixed budget. 72 scoped preflight tests pass; no predictive readout yet.
+Every one of the 24 paired full-pointwise neural-versus-protected-damping gains
+is negative (-1.8329% to -0.2226%) with a negative conditional locality interval.
+All 24 hard-subset and all 24 joint-pilot contrasts also favor protected damping.
+These correlated source-development intervals are not independent confirmation.
 
-[Registration](outputs/publication_readiness_2026_09/european_protected_motion_v1/registration.md),
-[matrix](outputs/publication_readiness_2026_09/european_protected_motion_v1/matrix.json).
+| Easy-event neural-risk seed, no source guard | Neural trajectory ADE gain vs CV | Protected damping ADE gain vs CV, conditional 95% CI | Direct neural gain vs protected damping | Damping switch rate |
+|---|---:|---|---:|---:|
+| 17 | 0.2382% | 1.8108% [0.9706%, 2.6765%] | -1.6240% | 21.0287% |
+| 29 | 0.1663% | 1.9388% [1.0465%, 2.8589%] | -1.8329% | 21.9661% |
+| 43 | 0.4310% | 1.8975% [1.0439%, 2.7661%] | -1.5127% | 18.7746% |
+
+Those damping views improve easy ADE in every observed locality and harm none
+of four zero-CV cases. Guarded damping gains are 1.7827%, 1.8991%, 1.8661%.
+They are not selected as deployment winners. Across all fixed views, observed
+full-pointwise safety passes 22/24 neural and 21/24 damping cases. Damping
+easy-ridge unguarded fails the worst-locality easy limit in all three seeds;
+neural easy-ridge unguarded harms a zero-CV case in two seeds.
+
+No defined within-candidate matched-count joint interval is strictly positive.
+Fifteen neural and twelve damping exact-count contrasts are undefined for lack
+of supported nonzero-match localities; none is silently replaced by zero.
+The joint pilot has no zero-CV cases and cannot validate rare-event safety.
+Populations remain 318,969 full targets and 1,152 queries / 6,116 joint targets;
+7,047 future-unknown targets are retained, not used as supervision.
+
+Complete metric reconstruction passes; 90 checkpoints each reproduce 4,096
+sampled rows exactly. Accounting verifies 12 old reference views, 24 unchanged
+neural pointwise views, nine matched six-head sampler groups and 144 decision
+receipts. All current solver calls succeed after exact-feasibility pruning,
+with no old neural decision changes. All 162 scoped completion tests pass; no claim
+about the full legacy suite. All required local processes finished.
+
+No trajectory/JEPA retraining, reserved outcome access, deployment promotion,
+metric/seconds claim, true-3D/foundation claim, Stage5C or SMC execution. The
+remaining question is candidate quality versus risk learnability and producer
+shift, not whether an unprotected baseline received an unfair advantage.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_protected_motion_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_protected_motion_v1/results.md),
+[light metrics](outputs/publication_readiness_2026_09/european_protected_motion_v1/summary_metrics.json),
+[failure analysis](outputs/publication_readiness_2026_09/european_protected_motion_v1/failure_analysis.md),
+[losses](outputs/publication_readiness_2026_09/european_protected_motion_v1/training_losses.md),
+[execution](outputs/publication_readiness_2026_09/european_protected_motion_v1/execution_notes.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_protected_motion_v1/operation_zh.md).
 
 ## European Conditional Risk (2026-09-25 London, Completed, No Promotion)
 
