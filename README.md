@@ -10,6 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed the [symmetric-risk follow-up](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/conclusions.md).
+Keeping the forecasts and utility heads fixed, I trained 36 new risk heads
+with a symmetric loss. Neural ADE gain over constant velocity rises to
+1.13%, 1.58% and 2.09% across three seeds, but worst-locality easy degradation
+rises to 2.46%, 7.29% and 16.71%. All exceed the 2% limit.
+
+The result clarifies a real tradeoff: the earlier conservative risk estimate
+blocked some useful predictions, but also prevented genuine harm. The new heads
+underestimate harm specifically on the samples they choose to change. They do
+not establish a stable accuracy advantage over equally protected causal damping,
+so I am not changing deployment or claiming a safe neural dynamics model.
+
+The [all-view figure](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/risk_ablation.svg),
+[complete comparisons](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/results.md)
+and [risk reliability tables](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/risk_reliability_table.md)
+retain both the gains and failures. All 36 checkpoints and full metrics reproduce;
+185 scoped tests pass. These are source-development pixel-space 8/12 results,
+not independent confirmation. The next question is whether risk can be calibrated
+on the selected samples without losing the useful neural interventions.
+
 I have now run the [symmetric-utility experiment](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/conclusions.md).
 It changes one factor: the utility head estimates gain and harm with symmetric
 MSE, while every risk head and risk limit stays frozen. I trained 18 new heads

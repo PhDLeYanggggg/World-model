@@ -5,16 +5,51 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Symmetric Risk, Frozen Utility (2026-09-25, Registered)
+## Symmetric Risk, Frozen Utility (2026-09-25, Completed, Safety Repair Failed)
 
-Source-only single-factor follow-up: change event-risk neural loss from underharm4
-to symmetric MSE for both trajectory candidates. All utility heads, forecasts,
-features, splits, sampling and 2% risk budgets remain fixed. The matrix has 36
-new heads / 72,000 updates; ridge heads and decisions are cached_verified controls.
-Population harm bias motivates the test but does not prove safe intervention.
-All48 policy views will be retained, including safety and solver failures.
-Preflight:31 scoped tests pass. No outcome readout or deployment claim yet.
-[Registration](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/registration.md).
+Fresh fit:36 Torch event-risk heads,72,000 updates. Only risk loss changes from
+underharm4 to symmetric MSE for both neural forecasts and damping0.97. All18
+utility heads, forecasts,355 causal features, exposure and2% risk budgets stay
+fixed. Ridge heads/decisions are cached_verified; all48 views are retained.
+
+Fixed easy-event neural-risk, unguarded ADE gains vs CV rise from
+0.2719/0.1982/0.4188% to1.1341/1.5810/2.0901%. Conditional95% intervals are
+[0.6461,1.6465], [0.6950,2.8064], [0.6028,4.0246]%. However, worst-locality
+easy degradation becomes2.4644/7.2891/16.7135%; seed29 also harms one of four
+zero-CV cases. All six new easy-event neural views fail safety, guarded or not.
+All-event neural views preserve full observed safety but achieve smaller gains.
+
+Of12 new neural-versus-protected-damping pointwise contrasts, four point
+estimates are positive but no interval is strictly positive. Two hard-subset
+positive intervals belong to the same unsafe seed29 family. All12 new damping
+views pass full safety. Full safety across all views:neural16/24,damping21/24;
+exact-count joint safety:5/24,20/24. These are observed development checks,
+not independently calibrated guarantees or deployment selection.
+
+MSE changes neural easy-event harm estimates from overestimation to
+underestimation: new population means0.0986/0.0937/0.0756 vs realized
+0.1782/0.1776/0.1832. On selected rows of the worst locality110, predicted
+event-harm ratios are1.27/0.84/0.44%, versus realized55.95/70.02/65.61%.
+These selected positive-harm ratios are NOT net easy-degradation percentages.
+Population regression accuracy alone does not establish selection safety.
+
+One tiny matched-count damping joint benefit has a positive interval in seed17;
+another ordinary neural joint contrast is positive in seed43 but not count
+matched. Neither is a stable contribution across seeds. One failed cached
+ridge solve retains its safe floor; all fresh neural-risk solves succeed.
+
+All metrics and36 checkpoints reproduce;144 pointwise decisions independently
+reconstruct.185 tests across25 scoped files pass, not the full legacy suite.
+Source-development obs8/pred12 image-pixel rawstride12 only. Reserved roles
+stay closed. No new forecaster/JEPA training, deployment promotion, metric,
+seconds, true3D, foundation, submission-readiness, Stage5C or SMC claim.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/results.md),
+[gates](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/gates.md),
+[reliability](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/risk_reliability_table.md),
+[execution](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/execution_notes.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/operation_zh.md).
 
 ## Symmetric Utility, Fixed Risk (2026-09-25, Completed, No Neural Advantage)
 
