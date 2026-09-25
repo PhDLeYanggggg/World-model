@@ -1,10 +1,43 @@
 {
+  "current_evidence_record": "cvpr2027_research_track.european_causal_abstention_v1",
   "cvpr2027_research_track": {
     "european_causal_abstention_v1": {
-      "status": "registered_not_run",
+      "status": "completed_stopping_defect_repaired_support_filter_negative_no_deployment",
       "registration": "outputs/publication_readiness_2026_09/european_causal_abstention_v1/registration.md",
+      "registration_commit": "3ff17937",
+      "result_source": "fresh_run_support_decisions_and_evaluation_on_cached_verified_heads_forecasts_population",
       "new_neural_training": false,
       "planned_views": 720,
+      "completed_views": 720,
+      "original_control_views": 72,
+      "conclusions": "outputs/publication_readiness_2026_09/european_causal_abstention_v1/conclusions.md",
+      "completion_checks": "outputs/publication_readiness_2026_09/european_causal_abstention_v1/completion_checks.json",
+      "summary_sha256": "de5013f25a363031219d4fe6ce7d48f3929f8f818532c2ad63dea4fc368378dc",
+      "stop_guard_zero_harm_views_per_parent": 0,
+      "zero_reference_supported_views_per_parent": 24,
+      "unique_zero_reference_rows": 4,
+      "zero_reference_limit": "one_locality_two_labels_per_row_no_endpoint_not_full_horizon_safety",
+      "stop_vs_original_all_gain_range_percent": [-0.0000038366161914105135, 0.00011855051276626893],
+      "stop_vs_original_positive_negative_CIs": [0, 0],
+      "stop_free_choice_queries_all_views": 0,
+      "support_same_as_combined_all_views": true,
+      "support_vs_original_all_gain_cv_percent": [-0.1277948899201603, -0.018133233030843965],
+      "support_vs_original_all_gain_floor_percent": [-0.1224297172803368, -0.014898323892885423],
+      "support_vs_original_negative_CIs_cv_floor": [36, 33],
+      "support_vs_matched_random_easy_positive_CIs_cv_floor": [27, 23],
+      "support_vs_matched_random_all_positive_negative_CIs_cv_floor": [[5, 5], [4, 4]],
+      "worst_positive_easy_degradation_percent": 0.43685578696353033,
+      "floor_target_worst_hard_locality_degradation_percent": 2.805512840507851,
+      "saved_decisions_verified": 720,
+      "independent_coordinate_arrays": 144,
+      "independent_metric_reductions": 8208,
+      "original_metrics_exact": 432,
+      "tests_passed": 314,
+      "scoped_test_files_count": 50,
+      "full_legacy_suite_run": false,
+      "evaluation_seconds_batch_fitting": [525, 531],
+      "all_required_processes_finished": true,
+      "next_action": "separate_history_support_from_producer_disagreement_no_threshold_search_no_confirmation_opening",
       "parents": ["cv_targets", "floor_both"],
       "comparison": "stop_support_combined_vs_same_current_frame_count_matched_risk_and_random",
       "reserved_roles_opened": false,
@@ -7279,11 +7312,11 @@
     "legacy_cache_training_blocked": true,
     "stage44_selection_repaired_to_validation_only": true,
     "historical_model_artifacts_replaced": false,
-    "updated_at": "2026-09-17",
+    "updated_at": "2026-09-25",
     "target": "CVPR 2027 main conference full paper",
     "target_selected_by_user": true,
     "aamas_not_current_target": true,
-    "status": "matched_forecasting_and_sampling_studies_complete_negative_limited_candidate_ceiling_not_submission_ready",
+    "status": "causal_abstention_complete_stopping_defect_repaired_support_filter_negative_not_submission_ready",
     "official_deadlines_aoe": {
       "registration": "2026-11-10",
       "paper": "2026-11-16",
@@ -7703,7 +7736,7 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "cvpr2027_cutoff_relative_risk_source_study_partial_easy_repair_zero_cv_harms_no_promotion",
+  "current_stage": "cvpr2027_causal_abstention_stopping_defect_repaired_support_filter_negative_no_promotion",
   "current_verdict": "not_submission_ready_no_new_deployment_independent_confirmation_pending",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
@@ -10579,7 +10612,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_t50_row_level_context_objective.py",
+  "last_successful_command": ".venv-pytorch/bin/python scripts/report_m3w_european_causal_abstention.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -20590,7 +20623,7 @@
     }
   },
   "current_best_deployable": "Historical M3W-Neural v1 / Stage37 artifacts retained; external deployability and generalization claims require independent revalidation. SDD not reaudited in this turn.",
-  "last_updated": "2026-05-27",
+  "last_updated": "2026-09-25",
   "stage5c_ready": false,
   "true_3d_world_model": false,
   "large_scale_foundation_world_model": false,
@@ -22172,7 +22205,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 weighted pairwise source switching upweighted hard/tail/positive-gain rows but still did not replace fixed composer: ETH_UCY remains below fixed and TrajNet t50 remains below fixed, so simple label imbalance is not the blocker.",
+  "latest_evidence": "Causal abstention: all 720 opened-development views evaluated. Latest-step stopping fixes four partial-label zero-CV cases without measurable accuracy lift. Support filtering loses all-ADE against the unchanged parent in every view; matched easy gains retained but overall ranking not robust. No new neural training or deployment; independent calibration/confirmation closed.",
   "stage41_domain_local_full_trajectory_repair": {
     "two_domain_repair_gate": false,
     "positive_domains": [
@@ -29219,7 +29252,7 @@
     }
   },
   "latest_stage42_source_support_summary": "Stage42-CI fresh-ran context contribution forensics. Gates 13/13. It confirms baseline-family rollout context as the dominant mechanism, history tokens as a supported core component, domain expert as a guarded secondary component, and keeps goal/scene, neighbor/interaction, JEPA, and Transformer out of independent main-claim status. No automatic download, no legal conversion, no metric/seconds overclaim, no Stage5C, no SMC.",
-  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 552 passed after Stage42-CI context contribution forensics",
+  "latest_verification": "314 scoped tests in 50 source-track files; 720 decision replays, 144 coordinate arrays, 8208 metric reductions and 432 original metrics exact. Full unrelated legacy suite not_run.",
   "stage42_by_t50_floor_relaxability_repair": {
     "source": "fresh_stage42_by_t50_floor_relaxability_repair",
     "verdict": "stage42_by_t50_floor_relaxability_repair_pass",
@@ -29373,8 +29406,8 @@
       "full": "python3 -m pytest tests passed with 511 tests in 63.61s"
     }
   },
-  "last_test_command": ".venv-pytorch/bin/python -m pytest tests",
-  "last_test_result": "552 passed in 30.82s",
+  "last_test_command": "pytest -q over the 50 explicit files listed in outputs/publication_readiness_2026_09/european_causal_abstention_v1/completion_checks.json:scoped_test_files",
+  "last_test_result": "314 passed in 4.51s; scoped suite only",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
@@ -44379,7 +44412,7 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T08:28:10.179305+00:00",
+  "last_updated_utc": "2026-09-25T14:41:35Z",
   "stage43_a_safety_floor_replay": {
     "source": "fresh_stage43_a_safety_floor_replay",
     "verdict": "stage43_a_safety_floor_replay_pass",

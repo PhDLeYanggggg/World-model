@@ -5,15 +5,51 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Causal Abstention (2026-09-25, Registered, Not Yet Evaluated)
+## Causal Abstention (2026-09-25, Completed, Support Filtering Negative)
 
-The next comparison asks whether observed stopping and fitting-source support
-can reject harmful neural interventions without merely reducing intervention
-counts. Both CV-target and floor-target controllers remain frozen. Stop, support
-and combined guards each receive same-recording, same-current-frame count-matched
-risk-ranked and random controls: 720 development views, no new neural training.
-Both decision banks will freeze before readout. No deployment or reserved-role
-change. [Registered protocol](outputs/publication_readiness_2026_09/european_causal_abstention_v1/registration.md).
+Fresh support construction, decisions and evaluation on cached_verified predictions
+and learned heads. No new neural training. Registration `3ff17937` was pushed before
+decisions; both full banks froze before readout. All 720 views completed, including
+72 original controls. Three guards each have same-recording/current-frame count-
+matched risk and fixed-random controls, two target families and both normalizers.
+
+The latest-step stop guard removes observed zero-CV harm in all 24 supported views
+per target family; twelve views have no such examples. Four unique rows, one locality,
+two future labels each, no endpoint. Stop-versus-original all-ADE changes range
+-0.00000384% to +0.00011856%, with no paired interval excluding zero. Its same-frame
+controls are identical in every view, with no flexible query quota. This is a
+targeted decision-defect repair, not a new neural or joint-allocation contribution.
+
+| Support filter parent | All-ADE gain vs original | Negative / positive intervals |
+|---|---:|---:|
+| CV targets | -0.1278% to -0.0181% | 36 / 0 |
+| Both-floor targets | -0.1224% to -0.0149% | 33 / 0 |
+
+Support removes more benefit than harm in every view. Combined equals support
+because no fold has sufficient stopped-state support from two fitting sources.
+At matched random counts, some positive-easy gains remain: 27/36 and 23/36 positive
+easy intervals. All-ADE evidence is mixed (5/5 and 4/4 positive/negative intervals),
+and hard worsens against the original in 35/36 points per parent. These are dependent
+development views, not independent tests. Worst positive-easy degradation is 0.4369%.
+The floor-target controller's worst hard locality still loses 2.8055% vs the floor.
+
+720 causal policies, 144 coordinate arrays, 8,208 metric reductions and 432 unchanged
+original metrics verify. 314 scoped tests in 50 files pass; full legacy suite not_run.
+The two local evaluation phases took 525/531 seconds, without resource failure or
+downscaling. CREATE queue was checked read-only; no job submitted or altered.
+
+Next: separate history-support rejection from producer-dependent disagreement;
+do not tune percentile boxes on these outcomes. Deployment unchanged, independent
+selection/calibration/confirmation closed. Image pixels, obs8/pred12 rawstride12,
+not historical raw-t50 recertification, metric/seconds, human gold, true 3D,
+foundation or physical safety. Stage5C and SMC remain off. Not submission-ready.
+
+[Protocol](outputs/publication_readiness_2026_09/european_causal_abstention_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_causal_abstention_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_causal_abstention_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_causal_abstention_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_causal_abstention_v1/gates.md),
+[primary literature](outputs/publication_readiness_2026_09/european_causal_abstention_v1/literature_position.md).
 
 ## Reference-Consistent Targets (2026-09-25, Completed, Repair Not Supported)
 

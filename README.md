@@ -10,6 +10,37 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have finished a [causal abstention comparison](outputs/publication_readiness_2026_09/european_causal_abstention_v1/conclusions.md)
+on the frozen forecasting system. I tested whether recent stopping and support
+from the fitting scenes can reject harmful neural predictions. Each rule has
+controls that intervene on exactly the same number of agents in the same current
+frame. All 720 development views are reported; there was no new neural training.
+
+Checking the latest observed step fixes the known stopping defect: none of the
+four zero-error reference examples is harmed after this guard. But these examples
+have only two future labels each, and the overall accuracy change is negligible.
+The same-frame controls make identical decisions, so this is a small robustness
+repair, not evidence of better joint-agent reasoning.
+
+The broader support filter does not work as hoped. It lowers all-ADE performance
+against the unchanged controller in every view, by about 0.015% to 0.128%. The
+accounting shows why: it discards more useful than harmful interventions. There
+are some positive-easy gains at matched intervention counts, but no robust overall
+ranking advantage. The worst positive-easy degradation remains below 2%; that is
+not a physical-safety certificate or independent confirmation.
+
+The [full comparison](outputs/publication_readiness_2026_09/european_causal_abstention_v1/results.md),
+[figure](outputs/publication_readiness_2026_09/european_causal_abstention_v1/guard_changes.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_causal_abstention_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_causal_abstention_v1/operation_zh.md)
+retain the tradeoffs and negative results. All decision and arithmetic checks pass,
+with 314 scoped tests. These are image-pixel 8/12 results on opened development
+scenes, not a new dynamics model or independent confirmation. Deployment stays
+unchanged. Next I will separate historical-motion support from changes in the
+models producing the forecasts, rather than search more thresholds on these results.
+
+### Preceding Target-Learning Study
+
 I have completed a [matched target-learning experiment](outputs/publication_readiness_2026_09/european_floor_relative_v1/conclusions.md).
 The question was whether the controller would make better decisions if it learned
 gain and harm relative to its actual strong fallback, rather than constant
