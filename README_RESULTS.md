@@ -5,17 +5,64 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Supported-Event Pairing (2026-09-25, Registered)
+## Supported-Event Pairing (2026-09-25, Completed, No Safe Neural Gain)
 
-The next controlled experiment changes only training pair construction: filter
-undefined event-mass labels before forming within-locality pairs. The original
-minibatches and all other losses remain intact. The planned 36 heads, 72,000
-updates and 216 views match the preceding study. Fixed fitting-batch diagnostics
-are added without changing sampler state. There are no new results at
-registration, no threshold relaxation and no deployment change. Reserved roles
-remain closed.
+Fresh fitting changes only pair construction: filter undefined event mass before
+forming within-locality pairs. All original minibatches and other losses remain
+intact. 36 Torch heads, 72,000 updates, three seeds and 216 registered views
+completed. Neural/easy pair exposure rises from 167,291 to 541,866 (3.24 times),
+with lower fixed fitting total loss in all nine heads. This is training support,
+not an increase in independent observations or proof of validation improvement.
 
-[Frozen registration](outputs/publication_readiness_2026_09/european_supported_pairs_v1/registration.md).
+| Candidate / event | Positive / negative full-policy all-ADE CIs | Ordering at old counts | Ordering at new counts |
+|---|---:|---:|---:|
+| Neural / all | 0 / 0, exactly unchanged | 0 / 0 | 0 / 0 |
+| Neural / easy | 2 / 1 | 1 / 1 | 2 / 1 |
+| Damping / all | 0 / 0 | 0 / 0 | 0 / 0 |
+| Damping / easy | 0 / 7 | 0 / 6 | 0 / 6 |
+
+Each cell covers nine fold-seed comparisons. Neural/easy full-policy differences
+are -0.0616 to +0.1588 pp of CV-normalized gain, with mixed ordering evidence.
+Damping/easy worsens in all nine points, so a smaller neural-to-damping gap is
+not evidence of better neural dynamics. All 18 neural all-ADE comparisons remain
+negative against equally protected damping; 17 intervals are negative. Relative
+gain ranges from -2.1912% to -0.1995%. Hard has no positive interval and 16 negative
+intervals; its lone positive point (+0.0309%) is not a supported improvement.
+
+All 18 neural positive-easy checks stay within 2%, worst degradation 0.0606%.
+Eleven views still harm zero-CV rows; six other views have no zero-CV examples.
+Observed neural preservation is 7/18 versus 6/18 before, not general protection.
+Supported-pair damping preserves 16/18 views, with two easy failures and worst
+degradation 2.4671%. No model is promoted.
+
+The [constructed counterexample](outputs/publication_readiness_2026_09/european_supported_pairs_v1/estimand_counterexample.md)
+uses no real outcomes and proves only a possible estimand mismatch: the sample
+H/(B+H) ordering loss can prefer underestimating an unsafe state despite correct
+conditional moments being available. It does not prove the full empirical cause.
+Next: a separately controlled conditional-risk target comparison, not more pair
+variants or threshold relaxation. Zero-reference support remains unresolved.
+
+All 36 checkpoint replays, 216 views and 36 old controls reproduce. Separate
+scalar sorting and coordinate arithmetic verify 216 decisions, 864 reductions
+and 108 decompositions. 247 tests across 39 scoped files pass; full legacy suite
+not run. Native arm64 CPU4/inter-op1/workers0; all phases finished. Summed fit
+time 111.802 seconds, excluding preparation/inference/evaluation. No new forecaster.
+
+All twelve localities are opened development, with four fitting/eight complete-
+chain-excluded per fit. Three seeds and 3,000 paired locality-bootstrap draws are
+conditional, dependent and unadjusted. Detector-track pixels, obs8/pred12
+rawstride12; no historical t50, metric/seconds, human-gold, physical-safety,
+true-3D or foundation claim. Historical Stage37 is not recertified. Reserved
+roles and deployment unchanged; Stage5C/SMC off; not submission ready.
+
+[Registration](outputs/publication_readiness_2026_09/european_supported_pairs_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_supported_pairs_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_supported_pairs_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_supported_pairs_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_supported_pairs_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_supported_pairs_v1/execution_notes.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_supported_pairs_v1/paper_addendum.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_supported_pairs_v1/operation_zh.md).
 
 ## Ranking-Auxiliary Risk Heads (2026-09-25, Completed, No Safe Neural Gain)
 
