@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Symmetric Risk, Frozen Utility (2026-09-25, Registered)
+
+Source-only single-factor follow-up: change event-risk neural loss from underharm4
+to symmetric MSE for both trajectory candidates. All utility heads, forecasts,
+features, splits, sampling and 2% risk budgets remain fixed. The matrix has 36
+new heads / 72,000 updates; ridge heads and decisions are cached_verified controls.
+Population harm bias motivates the test but does not prove safe intervention.
+All48 policy views will be retained, including safety and solver failures.
+Preflight:31 scoped tests pass. No outcome readout or deployment claim yet.
+[Registration](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/registration.md).
+
 ## Symmetric Utility, Fixed Risk (2026-09-25, Completed, No Neural Advantage)
 
 Fresh fit: 18 Torch utility heads, three seeds/folds, 36,000 updates. Only
