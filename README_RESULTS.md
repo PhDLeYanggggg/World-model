@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Supported-Event Pairing (2026-09-25, Registered)
+
+The next controlled experiment changes only training pair construction: filter
+undefined event-mass labels before forming within-locality pairs. The original
+minibatches and all other losses remain intact. The planned 36 heads, 72,000
+updates and 216 views match the preceding study. Fixed fitting-batch diagnostics
+are added without changing sampler state. There are no new results at
+registration, no threshold relaxation and no deployment change. Reserved roles
+remain closed.
+
+[Frozen registration](outputs/publication_readiness_2026_09/european_supported_pairs_v1/registration.md).
+
 ## Ranking-Auxiliary Risk Heads (2026-09-25, Completed, No Safe Neural Gain)
 
 Fresh training added within-locality, margin-weighted pairwise ranking to the
