@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Reference-Consistent Targets (2026-09-25, Registered)
+
+The next matched fit learns gain/harm relative to the actual protected floor.
+Both CV-target and floor-target controls receive identical past-only inputs.
+The floor is first cross-fitted within the four fitting localities; all eight
+outer localities remain excluded from every producer. Both predecessor modes
+are retained. Planned:234 heads,468,000 updates; new training/readout not yet run.
+No threshold selection, reserved-role access, deployment, Stage5C or SMC.
+
+[Registered experiment](outputs/publication_readiness_2026_09/european_floor_relative_v1/registration.md).
+
 ## Incremental Neural Opportunity (2026-09-25, Completed Diagnostic)
 
 Fresh error accounting on both cached_verified cross-moment versions separates
