@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Aligned Source-C Calibration (2026-09-25, Registered)
+## Aligned Source-C Calibration (2026-09-25, Decisions Frozen)
 
 The next fixed experiment compares uncalibrated rules, conservative population
 rescaling and an empirical selected-risk grid on exactly the same delivered
@@ -18,7 +18,9 @@ The CV-defined easy event is separate from the delivered-reference harm
 denominator. Calibration may only tighten the0.02 score budget. Six already
 opened model-selection localities provide the readout; the12 reserved calibration
 and6 confirmation localities stay closed. This is empirical source-held
-calibration, not a risk certificate. No new fit/readout is complete at registration.
+calibration, not a risk certificate. Registration 530d16ca preceded the source-C
+fits. All 72 maps and 288 views are now frozen; outcome evaluation is not_run
+at this freeze. Nine targeted tests pass. Neural weights are unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/registration.md).
 
 ## Bridge Attribution (2026-09-25, Completed, Neural Attribution Mixed)

@@ -12,9 +12,10 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 I am testing [source-held calibration of the fixed bridge](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/registration.md).
 A third source group, excluded from both forecast and scoring-model training,
-will fit conservative calibration maps. I will compare their transport with the
-unchanged rules before opening reserved calibration or confirmation data. The
-protocol is registered; this new comparison has no result yet.
+has fitted 72 conservative calibration maps. All 288 decision views are frozen
+before the new outcome readout. I will compare their transport with the unchanged
+rules; reserved calibration and confirmation data stay closed. No new neural
+training or independent risk guarantee is claimed.
 
 ### Completed Attribution Test
 
