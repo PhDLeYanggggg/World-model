@@ -5,19 +5,43 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Dual-Event Policy Bridge (2026-09-25, Trained and Frozen, Readout Pending)
+## Dual-Event Policy Bridge (2026-09-25, Completed, Development Gain Only)
 
-I am testing whether a shared-reference controller can retain the stronger
+I tested whether a shared-reference controller can retain the stronger
 all-event policy's accuracy while limiting both pooled and easy-event harm.
 The frozen conservative policy remains the reference. The new comparison fits
 three cost heads on producer-excluded source localities, with three seeds and
 matched single-risk, dual-risk and ridge controls. All 54 neural heads completed
 2,000 updates each (108,000 total), with 54 ridge fits. The 100-step real pilot
 resumed inside the same fixed budget. All 126 decisions are frozen before the
-new outcome calculation. The six already-opened
+new outcome calculation. Registration 99c1e9de and freeze edef8139 were pushed
+before readout. The six already-opened
 selection localities remain development data, not independent confirmation.
 No deployment or risk-calibration claim follows from this registration.
 [Protocol](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/registration.md).
+
+The aligned all-risk-only bridge improves over the old easy add_only controller
+by +3.947701% to +5.566952% all-ADE and +4.390476% to +6.286272% hard ADE;
+18/18 locality-bootstrap intervals for all-ADE are positive. Worst easy
+degradation is 0.730345%, with 18/18 net-easy passes and no zero-CV harm.
+Gains vs the producer-training-selected motion baseline are +2.893989% to
++11.358978%. These are dependent development comparisons, not 18 independent
+replications. All six three-seed-averaged comparisons have positive intervals.
+
+The dual-risk bridge is safer in positive-harm accounting but less accurate:
+all-ADE improvement is +0.000610% to +1.778578%, and hard can fall by 0.042511%.
+It loses to easy-risk-only in all six seed-mean comparisons (five negative CIs).
+It does not consistently beat ridge. Even dual risk exceeds its realized easy
+positive-harm cap in 3/108 dependent locality/views; all-risk-only does so in
+68/108. Net easy preservation is not a calibrated positive-harm guarantee.
+
+Most pooled error reduction comes from motion-to-motion switches, not new neural
+trajectories. No backbone was retrained and no deployable winner was selected.
+403 scoped tests pass in 67 files, with 54 separate-process checkpoint replays,
+192 independent coordinate checks and 2,778 metric reductions. The full legacy
+suite is not_run. [Conclusions](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/conclusions.md),
+[full comparison](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/failure_analysis.md).
 
 ## Six-Locality Model-Selection Readout (2026-09-25, Completed, No Deployment)
 

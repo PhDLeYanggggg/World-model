@@ -10,6 +10,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I trained a [policy bridge](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/conclusions.md)
+to learn when a conservative forecast should give way to a more accurate, but
+riskier, alternative. The key change is that predicted gain and harm now refer
+to exactly the same pair of delivered forecasts.
+
+On the six opened model-selection localities, the single-risk bridge improves
+ADE over the previous conservative controller by **3.95%-5.57%** across all
+18 source-role/seed settings. All settings preserve easy cases within the 2%
+net-degradation limit; the worst is 0.73%. The experiment includes three seeds,
+54 real Torch cost-head fits, matched ablations and locality-level bootstrap.
+[Full results](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/results.md).
+
+There are two important limits. Adding a second risk constraint is too
+conservative and removes useful predictions. More importantly, good net error
+does not certify individual harm: realized conditional harm still exceeds the
+predicted cap in some scene views. Most of the improvement comes from choosing
+between existing motion forecasts, so I am not calling this a new neural
+dynamics result. I am keeping the [negative ablations and failure accounting](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/failure_analysis.md)
+alongside the gains. Independent calibration and confirmation remain closed;
+no deployment is promoted. These are pixel-coordinate, annotation-step results.
+
+### Preceding Six-Locality Readout
+
 I evaluated the [frozen policy family on six new model-selection localities](outputs/publication_readiness_2026_09/european_selection_readout_v1/conclusions.md),
 using 28 recordings and 38,102 indexed targets. Predictions and decisions were
 committed before outcome evaluation. No model or threshold was refitted.
@@ -26,8 +49,8 @@ The [results](outputs/publication_readiness_2026_09/european_selection_readout_v
 include all three seeds, locality-level bootstrap intervals and every adverse
 configuration. The [failure accounting](outputs/publication_readiness_2026_09/european_selection_readout_v1/failure_analysis.md)
 shows why counting successful interventions is insufficient: a few larger errors
-can outweigh many small gains. My next priority is conditional risk and a stronger
-motion floor, not selecting a favorable seed. Twelve calibration localities and
+can outweigh many small gains. That failure motivated the policy-bridge study
+above, not a search for a favorable seed. Twelve calibration localities and
 six confirmation localities remain closed. These six opened selection localities
 can never become confirmation data. No deployment or physical-safety claim.
 

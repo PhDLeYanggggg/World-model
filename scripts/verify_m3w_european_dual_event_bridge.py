@@ -52,6 +52,12 @@ def main():
     assert a == json.loads((run.PUBLIC/'paired_ablations.json').read_text())
     seed = json.loads((run.PUBLIC/'seed_averaged_metrics.json').read_text())
     assert gates(aggregate, seed, a) == json.loads((run.PUBLIC/'gates.json').read_text())
+    diagnostic = json.loads((run.PUBLIC/'diagnostic_accounting.json').read_text())
+    assert len(diagnostic['groups']) == 18 and not diagnostic['thresholds_changed']
+    for r in diagnostic['groups'].values():
+        assert len(r['by_locality']) == 6
+        for v in r['by_locality'].values():
+            np.testing.assert_allclose(v['dual_added_ADE_sum'], v['positive_gain']-v['positive_harm'], atol=1e-7)
     previous = json.loads((run.parent.PUBLIC/'verification.json').read_text())
     files = sorted(set(previous['test_files']) | {'tests/test_m3w_dual_event_bridge.py',
                                                  'tests/test_m3w_dual_event_bridge_reporting.py'})
@@ -77,7 +83,8 @@ def main():
         result_source='fresh_run_checks_cached_verified_frozen_assets',
         independent_calibration=False, independent_confirmation=False, deployment_changed=False,
         source_bindings={f: run.digest(ROOT/f) for f in [*run.FILES, *files,
-            'scripts/report_m3w_european_dual_event_bridge.py', 'scripts/verify_m3w_european_dual_event_bridge.py']}))
+            'scripts/report_m3w_european_dual_event_bridge.py', 'scripts/verify_m3w_european_dual_event_bridge.py',
+            'scripts/diagnose_m3w_european_dual_event_bridge.py']}))
     print(json.dumps(dict(tests=count, files=len(files), replayed_heads=54, complete=True)))
 
 

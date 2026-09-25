@@ -116,6 +116,21 @@ def main():
         total_head_training_seconds=sum(r['seconds'] for r in records),
         loss_scale='train-source CV scale; not raw FDE; random minibatch losses not monotonic',
         new_forecaster_training=False, real_torch_training=True, pilot_in_fixed_budget=True))
+    queue = json.loads((run.PRIVATE/'create_queue.json').read_text())
+    events = [json.loads(line) for line in (run.PRIVATE/'events.jsonl').read_text().splitlines()]
+    training_pids = sorted({e['pid'] for e in events if e['state'] == 'head_started' and not e.get('pilot', False)})
+    dump(run.PUBLIC/'compute_receipt.json', dict(runtime='native_arm64_torch_cpu',
+        compute_threads=4, interop_threads=1, dataloader_workers=0,
+        training_pids=training_pids, fitting_completed=True, checkpoint_every=200, heartbeat_every=200,
+        real_training_steps=108000, neural_heads=54, ridge_fits=54,
+        total_head_training_seconds=sum(r['seconds'] for r in records),
+        runtime_pilot=run.artifact(run.PRIVATE/'pilot.json'), first_head_resumed_updates=1900,
+        unknown_rows_sampled=sum(r['unknown_rows_sampled'] for r in records),
+        create_queue_readonly_returncode=queue['response']['returncode'],
+        create_queue_checked_at=queue['completed_utc'], create_jobs_submitted=0,
+        remote_modified=False, remote_project_inventory='not_run',
+        placement_reason='Data local; real native pilot and complete cost-head budget fit local resources',
+        no_new_forecaster_training=True, selection_data='cached_verified', new_cost_training='fresh_run'))
     print(json.dumps(dict(aggregate=s, gates=gate), indent=2))
 
 
