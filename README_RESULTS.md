@@ -5,22 +5,39 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Six-Locality Model-Selection Readout (2026-09-25, Inference Frozen, Not Yet Evaluated)
+## Six-Locality Model-Selection Readout (2026-09-25, Completed, No Deployment)
 
-I have frozen the existing 36 producer/controller/seed/event groups for a first
+I evaluated the existing 36 producer/controller/seed/event groups for a first
 readout on six preassigned model-selection localities (28 recordings). The source
 replay is exact for predictions, motion floors, causal features and eight policies
-on 4,096 previously opened rows per group. Forty-five scoped tests pass. There is
+on 4,096 previously opened rows per group. 394 tests in 65 scoped files pass; the
+full legacy suite was not rerun. There is
 no new training or threshold search, and no candidate is selected in this readout.
-All seeds will be reported; the twelve calibration and six confirmation localities
+All seeds are reported; the twelve calibration and six confirmation localities
 remain closed. These six selection localities cannot later become confirmation.
-The new cohort has38,102 indexed targets at7,087 queries:21,434 complete,
-15,820 partial and848 unknown future-label rows. All84 future-truncation input
-checks pass. All36 groups and288 policy views are frozen before reading prediction
-errors; no future support was used to select targets or actions.
+The new cohort has 38,102 indexed targets at 7,087 queries: 21,434 complete,
+15,820 partial and 848 unknown future-label rows. All 84 future-truncation input
+checks pass. All 36 groups and 288 policy views were frozen before reading prediction
+errors; no future support was used to select targets or actions. Registration
+3d8ee3d1 and decision freeze c78fc812 were pushed before readout.
 
 [Registered question and rules](outputs/publication_readiness_2026_09/european_selection_readout_v1/registration.md).
-The latest completed method result is the negative joint-control study below.
+[Full results](outputs/publication_readiness_2026_09/european_selection_readout_v1/results.md),
+[failure accounting](outputs/publication_readiness_2026_09/european_selection_readout_v1/failure_analysis.md).
+
+Add-only gains against the old controller are +0.010488% to +0.778997% all-ADE,
+with 33 positive and no negative locality-bootstrap intervals. Hard gains range
+from -0.004323% to +1.355692%. The full family fails easy preservation: 29/36 views
+pass, worst degradation 8.216907%. These 36 views reuse six localities and are not
+independent replications; intervals are exploratory, not multiplicity-adjusted.
+
+The 18 easy-risk add-only views all preserve easy means, but the all-risk branch
+fails in 7/18 views. Easy-risk all gains versus the training-selected classical
+baseline range from -1.773321% to +6.636237%, so neither an automatic winner nor a
+deployment is selected. The worst easy slice has 283 new interventions: 146 useful
+and 137 harmful; harmful magnitude dominates, adding 12.563547 percentage points
+of CV-relative error to the old decision. Raw neural predictions fail easy in all
+36 views. No new training, calibration, confirmation, Stage5C or SMC.
 
 ## Incremental Joint Control (2026-09-25, Completed, Negative Method Result)
 

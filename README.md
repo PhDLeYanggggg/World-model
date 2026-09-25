@@ -10,6 +10,32 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I evaluated the [frozen policy family on six new model-selection localities](outputs/publication_readiness_2026_09/european_selection_readout_v1/conclusions.md),
+using 28 recordings and 38,102 indexed targets. Predictions and decisions were
+committed before outcome evaluation. No model or threshold was refitted.
+
+The rule that only adds interventions improves average ADE over the old controller
+in all 36 configurations, by +0.0105% to +0.7790%. But the full family is not ready
+to deploy: seven configurations fail the easy-case guard, with worst-locality
+degradation reaching 8.22%. The distinction between risk targets matters. All 18
+easy-risk configurations preserve the observed easy means, while seven of the 18
+all-risk configurations do not. The conservative branch still sometimes loses to
+the training-selected motion baseline, so I am not treating this as a solved problem.
+
+The [results](outputs/publication_readiness_2026_09/european_selection_readout_v1/results.md)
+include all three seeds, locality-level bootstrap intervals and every adverse
+configuration. The [failure accounting](outputs/publication_readiness_2026_09/european_selection_readout_v1/failure_analysis.md)
+shows why counting successful interventions is insufficient: a few larger errors
+can outweigh many small gains. My next priority is conditional risk and a stronger
+motion floor, not selecting a favorable seed. Twelve calibration localities and
+six confirmation localities remain closed. These six opened selection localities
+can never become confirmation data. No deployment or physical-safety claim.
+
+Earlier sections below describe the data-access state at the time of each study;
+only the new selection role has since been opened.
+
+### Completed Joint-Control Study
+
 I completed a [joint incremental-control comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/conclusions.md)
 to test whether coordinating extra interventions improves the existing controller.
 All 252 policy views use frozen predictions and scores. Independent, unary,
