@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Reference Protection (2026-09-25, Registered, Training Not Run)
+
+Two warm-started arms test whether freezing reference moments removes the
+observed cost-fitting tradeoff. Both receive the same additional 2,000-update
+budget, uniform draws, optimizer reset, B-only preprocessing and initialization.
+The protected arm keeps delivered D_all/D_easy exactly fixed while updating
+H_all/H_easy. It has an extra frozen network and extra inference cost; no
+equal-total-memory or architecture-novelty claim. Seventy-two fits, 144,000
+updates and 576 policy views are registered before readout. Four targeted
+tests pass, including exact resume in both arms and absent reference gradients.
+No new forecaster, threshold search or independent-data access.
+[Protocol](outputs/publication_readiness_2026_09/european_reference_protection_v1/registration.md).
+
 ## Easy-Harm Sampling (2026-09-25, Completed, Repair Failed)
 
 The new source-only comparison changes only training sampling. It retains the

@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am following the failed sampling repair with a
+[matched reference-protection experiment](outputs/publication_readiness_2026_09/european_reference_protection_v1/registration.md).
+Both arms start from the same risk head and receive the same extra training
+budget. One continues joint learning; the other freezes reference-cost
+predictions while updating harm predictions. This tests a specific fitting
+tradeoff without changing forecasts, risk tolerance or source roles. It has
+no new result yet, and the protected branch carries extra inference cost.
+
+### Completed Sampling Test
+
 I completed a [controlled sampling experiment](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/conclusions.md)
 to test whether the risk model was seeing too few costly easy-case errors.
 I trained 36 risk heads with three seeds, keeping the forecasts, architecture
