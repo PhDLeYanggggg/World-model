@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Producer-Conditioned Controllers (2026-09-25, Registered, Not Yet Trained)
+## Producer-Conditioned Controllers (2026-09-25, Trained, Readout Pending)
 
 The earlier frozen-producer replacement experiment already failed, so it is not
 being repeated as a proposed repair. The next study trains equal-dimension global,
@@ -14,9 +14,10 @@ and floor forecasts are held identical within the main comparisons; each of the
 two source-excluded producer bundles is evaluated separately. Original four-source
 floor/stop policies remain common anchors.
 
-The registered budget is 108 heads, 216,000 updates, three seeds and 180 policy
-views, with the existing fitting-fixed normalizer and unchanged 2% risk budget.
-All decisions must freeze before new readout. No forecaster training, independent
+All 108 heads completed 216,000 updates across three seeds. Both producer-prefix
+checkpoint replays match for every head, with zero unknown-label supervised draws.
+The 180 policy views use the existing fitting-fixed normalizer and unchanged 2% risk budget.
+All decisions must freeze before new readout; performance is not yet reported. No forecaster training, independent
 confirmation, threshold search or deployment change. Producer tags are confounded
 with fitting cohorts; the protocol records that attribution limit.
 [Protocol](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/registration.md).
