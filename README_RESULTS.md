@@ -5,17 +5,67 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cross-Moment Risk Ordering (2026-09-25, Registered)
+## Cross-Moment Risk Ordering (2026-09-25, Completed, No Safe Neural Gain)
 
-Two controlled fits will separate cross-moment target weighting from loss
-normalization. The first compares cross-moment batch-normalized ranking with
-the frozen supported-pair head; the second uses a fixed fitting-only normalizer
-against the first. Both modes will finish fitting and freeze decisions before
-any new evaluation. Total: 72 Torch heads, 144,000 updates, 432 views. No new
-trajectory fitting, threshold selection or deployment change. No new results
-are claimed at registration.
+Two controlled fits separate target weighting from normalization. Batch mode
+changes observed-share weights to cross-moment weights; fitting mode changes
+only the denominator to a fixed training-only scale. Both decision banks were
+frozen before either new readout. Fresh: 72 Torch heads, 144,000 updates, three
+seeds, 432 views. No new trajectory fit, threshold selection or deployment change.
 
-[Frozen registration](outputs/publication_readiness_2026_09/european_cross_moment_v1/registration.md).
+Cells below count positive / negative conditional all-ADE intervals among nine
+fold-seed comparisons, in pp of CV-normalized gain. Event is the head's target.
+
+| Comparison | Candidate / event | Full policy | Ordering at control counts | Ordering at treatment counts |
+|---|---|---:|---:|---:|
+| Cross vs share weights | Neural / all | 4 / 4 | 2 / 3 | 4 / 3 |
+| Cross vs share weights | Neural / easy | 0 / 4 | 0 / 2 | 0 / 3 |
+| Cross vs share weights | Damping / all | 9 / 0 | 9 / 0 | 9 / 0 |
+| Cross vs share weights | Damping / easy | 0 / 9 | 0 / 5 | 0 / 5 |
+| Fixed vs batch scale | Neural / all | 2 / 0 | 1 / 2 | 2 / 2 |
+| Fixed vs batch scale | Neural / easy | 5 / 1 | 4 / 2 | 5 / 2 |
+| Fixed vs batch scale | Damping / all | 2 / 2 | 1 / 2 | 0 / 2 |
+| Fixed vs batch scale | Damping / easy | 4 / 2 | 6 / 1 | 5 / 1 |
+
+Batch damping/all full-policy gain is +0.5105 to +1.1595 pp; both matched-count
+anchors improve in all nine comparisons. This is a scoped controller effect,
+not neural dynamics lift. All 18 neural all-ADE and hard-ADE points remain below
+equally protected damping in each mode. Batch/fixed all-ADE ranges are
+[-3.0628%, -0.1497%] / [-3.0001%, -0.2069%], with 15/13 negative intervals.
+Neither mode has a positive all or hard interval against protected damping.
+
+All 18 neural positive-easy checks pass per mode; worst degradation is 0.1738%
+and 0.1722%. Both modes harm zero-CV cases in twelve views; six have no examples.
+Freshly checked: only four zero cases, one locality, two future labels each and
+no endpoint. They do not establish full-horizon safety. Damping preserves 18/18
+observed views per mode, worst easy degradation 1.8602%, not independent safety.
+
+Both modes retain 5,049,993 pair draws and all original sampling sequences.
+Fixed fitting total loss decreases in 30/36 and 33/36 heads; ranking loss in
+25/36 and 28/36. Weight concentration reaches 87.83% on one audited neural/easy
+pair. Lower fitting loss does not establish generalization. Summed per-head
+fitting time is 310.477 seconds, excluding assembly, inference and evaluation.
+
+All 72 checkpoint replays, 432 views and 72 predecessor controls reproduce.
+Separate checks cover 432 sorts, 1,728 reductions and 216 decompositions.
+264 tests across 41 scoped files pass; full legacy suite not run. Native arm64
+CPU4/inter-op1/workers0; all required phases completed and checkpoints retained.
+
+Twelve opened-development localities, four fitting/eight complete-chain-excluded
+per fit. Three seeds and 3,000 paired locality-bootstrap draws are conditional,
+dependent and unadjusted. Image-pixel obs8/pred12 rawstride12, not historical
+t50, metric/seconds, human gold, physical safety, true 3D or foundation evidence.
+Historical Stage37 is not recertified. Reserved roles remain closed; no promotion,
+Stage5C or SMC. Next: attainable neural gain versus protected damping, missed
+benefit/harm and annotation-support diagnosis before another controller fit.
+
+[Registration](outputs/publication_readiness_2026_09/european_cross_moment_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_cross_moment_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cross_moment_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/european_cross_moment_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_cross_moment_v1/execution_notes.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_cross_moment_v1/paper_addendum.md),
+[Chinese guide](outputs/publication_readiness_2026_09/european_cross_moment_v1/operation_zh.md).
 
 ## Supported-Event Pairing (2026-09-25, Completed, No Safe Neural Gain)
 

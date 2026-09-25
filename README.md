@@ -10,31 +10,34 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I have completed the [supported-pair experiment](outputs/publication_readiness_2026_09/european_supported_pairs_v1/conclusions.md).
-It tests a concrete explanation for the previous controller failure: too many
-easy-event training pairs were being discarded. I trained 36 matched Torch heads,
-with 72,000 updates across three seeds, changing only how valid pairs are formed.
+I have completed the [cross-moment risk-target study](outputs/publication_readiness_2026_09/european_cross_moment_v1/conclusions.md).
+The previous experiment showed that more training pairs were not enough. This
+time I tested what the risk head should learn: first changing its pair weights,
+then separating that change from batch normalization. I trained 72 matched
+Torch heads, with 144,000 updates across three seeds. Both sets of decisions
+were frozen before evaluating either one.
 
-The repair produces 3.24 times as many neural easy-event pairs, and fitting losses
-usually fall. It does not establish a stable prediction advantage. All 18 overall
-ADE comparisons still favor equally protected damping; 17 conditional intervals
-exclude zero. The neural policies meet the 2% positive-easy limit, but continue
-to harm some cases where constant velocity was already exact. Deployment stays
-unchanged.
+There is a useful but limited positive result. The new target improves the
+all-event damping controller in all nine comparisons, including when intervention
+counts are held equal. It does not consistently improve the neural candidate.
+With either normalizer, all 18 overall and hard-subset neural comparisons still
+favor equally protected damping. A better risk controller is not the same as
+better neural dynamics, so I am keeping deployment unchanged.
 
-This rules out pair availability as a sufficient repair under the tested budget.
-I also constructed a [small mathematical counterexample](outputs/publication_readiness_2026_09/european_supported_pairs_v1/estimand_counterexample.md):
-the current sample-ratio ranking loss can prefer an order opposite to the
-conditional mean risk needed at deployment. That is a target-definition problem
-worth testing, not proof that it explains every observed error. The next experiment
-will address the risk target instead of relaxing the safety threshold.
+The neural policies meet the observed 2% positive-easy limit, but still harm
+some zero-reference cases. Those cases are particularly weak evidence: there
+are only four, from one locality, with two future labels each and no endpoint.
+They cannot establish full-horizon protection. Fixed normalization helps some
+easy-event comparisons, not every split or seed.
 
-The [all-comparison figure](outputs/publication_readiness_2026_09/european_supported_pairs_v1/ranking_comparison.svg),
-[fixed fitting losses](outputs/publication_readiness_2026_09/european_supported_pairs_v1/training_loss.svg)
-and [complete results](outputs/publication_readiness_2026_09/european_supported_pairs_v1/results.md)
-retain negative findings. All 36 checkpoint replays and 216 views reproduce;
-247 scoped tests pass. These are opened-development, image-pixel 8/12 results,
+The [target-weighting figure](outputs/publication_readiness_2026_09/european_cross_moment_v1/batch/ranking_comparison.svg),
+[normalizer figure](outputs/publication_readiness_2026_09/european_cross_moment_v1/fitting/ranking_comparison.svg)
+and [training curves](outputs/publication_readiness_2026_09/european_cross_moment_v1/fitting/training_loss.svg)
+retain the negative findings. All 72 checkpoints and 432 views reproduce;
+264 scoped tests pass. These remain opened-development, image-pixel 8/12 results,
 not independent confirmation, physical safety or a new deployable world model.
+Next I will separate the neural candidate's attainable advantage from controller
+mistakes before trying another loss variant.
 
 ### Earlier Source Experiments
 
