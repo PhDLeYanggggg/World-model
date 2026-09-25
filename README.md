@@ -15,7 +15,9 @@ It keeps every existing useful decision protected and asks whether coordinating
 the extra interventions improves hard cases. The predictors and learned scores
 are frozen. Independent, unary-geometry, joint and hash-priority controls share
 the same number of additions and predicted-risk cap. This is an opened-source
-development comparison; inference and evaluation are pending, not a new result.
+development comparison. All252 policy views are now frozen on6,116 unique
+indexed rows at1,152 current queries. Only six repeated query/views distinguish
+joint from unary decisions; scoring is pending, so this is not an accuracy result.
 
 ### Completed Incumbent-Relative Study
 

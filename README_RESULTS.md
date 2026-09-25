@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Incremental Joint Control (2026-09-25, Registered, Not Yet Evaluated)
+## Incremental Joint Control (2026-09-25, Decisions Frozen, Not Yet Evaluated)
 
 The [registered comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/registration.md)
 uses frozen forecasts, heads and original actions. Seven policies across36
@@ -15,7 +15,11 @@ hash-selected queries per locality define a restricted, outcome-independent
 population. All history-eligible agents at those queries are kept, including
 unknown future labels. This is not the full parent-row population or all visible
 people. No new training, parameter sweep, reserved readout or deployment.
-Inference and scoring are not_run until their completion receipts exist.
+All252 policy views froze at18:02:42 UTC:6,116 unique indexed rows at1,152
+queries, repeated across13,824 query/views. There are73 query/views with
+non-additive support, six with changed joint/unary identities and one failed
+solver certificate. That query retained the independent reference as registered;
+it is not counted as a certified matched solve. New outcome scoring is not_run.
 
 ## Incumbent-Relative Intervention (2026-09-25, Completed, Progress Without Promotion)
 
