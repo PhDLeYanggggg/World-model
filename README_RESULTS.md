@@ -5,9 +5,9 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Selected-Risk Learning (2026-09-25, Registered)
+## Selected-Risk Learning (2026-09-25, Trained, Decisions Frozen)
 
-The next source-only experiment holds R/P forecasts and utility scoring fixed.
+This source-only experiment holds R/P forecasts and utility scoring fixed.
 It compares coherent all/easy moment regression with the same network plus
 selected-population mean constraints, followed by individual, uniform scene
 and greedy query-budget decisions. The mean/selected arms match initialization,
@@ -18,9 +18,14 @@ pilot resumes within that budget. No new forecaster or threshold search.
 Previous percentile support filters had negative net value, so support bins
 are descriptive rather than another rejection rule. B trains; disjoint C is
 the source-only readout, with A producing forecasts. No six-locality selection
-readout, reserved calibration or confirmation is opened this round. Seven
+readout, reserved calibration or confirmation is opened this round. Nine
 targeted tests pass, including exact interrupted-training resume and independent
-query-budget replay. Real fits are not_run at registration. CREATE queue was
+query-budget replay. All 72 native-arm64 Torch heads have completed 144,000
+updates; 432 decision views are frozen before the source-C outcome readout.
+Each head has 24,836 parameters. Summed fitting time is 214.75 seconds, excluding
+source reconstruction and inference; this is not total wall time. No unknown
+future label was sampled for fitting. Source-C readout is not_run at this
+decision freeze. CREATE queue was
 checked read-only; other jobs were not touched. No deployment or risk certificate.
 [Registered comparison](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/registration.md).
 

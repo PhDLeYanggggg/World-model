@@ -11,11 +11,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 ## Read the Current Study
 
 I am testing [selected-population cost learning and scene-query allocation](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/registration.md).
-The next comparison keeps the forecasts fixed and retrains only small risk
+The comparison keeps the forecasts fixed and retrains only small risk
 heads, separating the loss-function change from the decision rule. It uses
 three seeds and source-only held rosters; the six opened model-selection
 localities and the reserved roles are not evaluated in this round. The
-experiment is registered, not yet a new positive result.
+72 Torch heads have completed 144,000 updates. I have frozen all 432 decision
+views before the new source-held readout. Training completion is not yet a
+positive result, and deployment is unchanged.
 
 ### Completed Calibration Test
 
