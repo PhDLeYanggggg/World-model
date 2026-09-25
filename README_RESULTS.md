@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Incremental Neural Opportunity (2026-09-25, Registered)
+
+I am separating neural prediction value from a controller default-action error:
+does rejecting a neural forecast lose useful damping by reverting to CV? Both
+frozen cross-moment versions are retained. This is a protected-damping-relative
+diagnosis with label-completeness sensitivity, not a new training result or
+deployment change. The readout is not yet run.
+
+[Registered protocol](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/registration.md).
+
 ## Cross-Moment Risk Ordering (2026-09-25, Completed, No Safe Neural Gain)
 
 Two controlled fits separate target weighting from normalization. Batch mode
