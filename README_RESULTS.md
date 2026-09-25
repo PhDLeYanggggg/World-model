@@ -5,20 +5,49 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Producer Transport Diagnosis (2026-09-25, Registered, Outcomes Pending)
+## Producer Transport Diagnosis (2026-09-25, Completed, Replacement Not a Repair)
 
-The next diagnostic keeps score heads, preprocessing,2% risk rules and excluded
-rows fixed, replacing the final four-locality predictor with each of its two
-source-excluded half-fold predictors. All folds,seeds and both halves are kept;
-no threshold is refitted. The plan calls for18 new inference banks from existing
-checkpoints, not new training. It tests producer-identity transport, not a pure
-training-size causal effect. Reserved source roles remain closed.
+The completed diagnostic keeps score heads, preprocessing,2% risk rules and
+excluded rows fixed, replacing each final four-locality predictor with both
+source-excluded half-fold predictors. All folds,seeds and halves are retained.
+18 new inference banks contain3,827,628 predictor-row pairs, not new independent
+examples. No new training, threshold refitting or calibration. It tests producer
+identity transport, not a pure causal effect of training-set size.
+
+Only9/36 protected all-ADE replacement estimates improve. Five conditional
+intervals are strictly positive and15 strictly negative, with gains ranging
+from-3.0360% to+0.9573%. Hard comparisons have11 positive points,5 positive
+intervals and15 negative intervals. Among18 distinct raw-predictor pairs,
+6 estimates improve but no interval is strictly positive;8 are negative.
+
+Observed safety passes9/18 full4 views,9/18 half0 views,10/18 half1 views and
+16/18 matched damping views. This is a per-fold eight-locality diagnostic,
+not the previous pooled calibration view roster. The smaller predictors do not
+reliably resolve selected-harm underestimation. The larger positive replacements
+still fail easy preservation. No new neural deployment or submission claim.
+
+All18 checkpoints reproduce their first4,096 held-index predictions exactly;
+all72 original decision receipts reconstruct; unchanged full4/damping scores and
+the complete72-view metrics reproduce. Raw ADE/FDE accounting retains differing
+label support. 201 tests across30 scoped files pass, not the full legacy suite.
+Summed bank inference/cache-write time is582.22seconds; setup,replay,metrics and
+reporting are additional. No fresh optimizer updates. Source-locality CIs use
+3,000 resamples and remain conditional on12 opened development localities.
 
 CREATE's authorized read-only connection succeeded this round; its queue showed
 two running tasks and one pending task. No remote work was modified. M3W's
 remote asset directory remains unverified; local resources suffice for this run.
 
-[Registered diagnosis](outputs/publication_readiness_2026_09/european_producer_transport_v1/diagnosis_plan.md),
+Source-only detector tracks,image pixels,obs8/pred12 rawstride12; not historical
+t50,seconds,metric,human-gold,physical safety,true3D or foundation. Stage37 is
+not recertified. Reserved roles,deployment,Stage5C andSMC remain unchanged.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_producer_transport_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_producer_transport_v1/results.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_producer_transport_v1/failure_taxonomy.md),
+[gates](outputs/publication_readiness_2026_09/european_producer_transport_v1/gates.md),
+[execution](outputs/publication_readiness_2026_09/european_producer_transport_v1/execution_notes.md),
+[registered diagnosis](outputs/publication_readiness_2026_09/european_producer_transport_v1/diagnosis_plan.md),
 [CREATE observation](outputs/publication_readiness_2026_09/european_producer_transport_v1/create_readonly.md).
 
 ## Nested Source Calibration (2026-09-25, Completed, No Neural Advantage)

@@ -10,6 +10,30 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have completed the [frozen producer-transport diagnostic](outputs/publication_readiness_2026_09/european_producer_transport_v1/conclusions.md).
+It tests a specific explanation for the controller's failures: the gain/risk
+head learns from smaller forecasting models, then controls a different final
+forecaster. I kept the heads, risk limits and excluded evaluation rows fixed,
+and replaced the final predictor with each of its two smaller counterparts.
+
+That replacement is not a reliable repair. Only 9 of 36 controlled ADE
+comparisons improve; five conditional intervals favor replacement and fifteen
+favor the original predictor. The smaller models still miss substantial harm
+on selected samples. Some changes help, but their effects depend on the fitting
+scenes and do not establish a consistent safe neural advantage.
+
+The [all-comparison figure](outputs/publication_readiness_2026_09/european_producer_transport_v1/producer_comparison.svg),
+[raw trajectory results](outputs/publication_readiness_2026_09/european_producer_transport_v1/raw_forecast_results.md)
+and [failure taxonomy](outputs/publication_readiness_2026_09/european_producer_transport_v1/failure_taxonomy.md)
+separate forecast quality from intervention errors. The experiment generated
+18 inference banks from frozen checkpoints, not new training. All 72 views
+reproduce and 201 scoped tests pass. Deployment and reserved data stay unchanged.
+These are opened-source, image-pixel 8/12 development results, not independent
+confirmation. My next repair targets candidate-specific gain and harm learning,
+not choosing a favorable producer after seeing its evaluation results.
+
+### Earlier Source Experiments
+
 I have completed the [nested source-calibration study](outputs/publication_readiness_2026_09/european_nested_calibration_v1/conclusions.md).
 I trained 18 inner forecasting models and 54 gain/risk heads with the calibration
 scenes excluded from their complete training chain. Three seeds, both predefined
@@ -29,8 +53,6 @@ tests pass. I am not promoting a new model or claiming independent risk control.
 These remain opened-source, image-pixel 8/12 development results. Next I will
 separate producer-training shift from prediction and ranking errors before
 committing to another model change.
-
-### Earlier Source Experiments
 
 I have completed the [symmetric-risk follow-up](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/conclusions.md).
 Keeping the forecasts and utility heads fixed, I trained 36 new risk heads
