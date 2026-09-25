@@ -13,10 +13,11 @@ I started this repo to answer that question carefully, not just to collect a nic
 I am testing a [fixed-producer controller design](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/registration.md).
 The original four-source forecaster and fallback remain unchanged. Separate
 groups of opened development localities supply producer fitting, controller
-supervision and readout. I will compare newly trained matched-producer and
-cross-fitted-supervision heads on the same final forecasts, with a fixed ridge
-control. This is registered work in progress, not a new result or independent
-confirmation. No reserved evaluation role is being opened.
+supervision and readout. All144 new Torch heads and72 fixed ridge fits are now
+complete, with288,000 neural updates. The matched-producer and cross-fitted
+controls will operate on the same final forecasts. Decisions are being frozen
+before comparison readout; training completion is not an improvement claim.
+No reserved evaluation role is being opened.
 
 ### Completed Producer-Conditioned Study
 
