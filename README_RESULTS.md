@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Hurdle Risk Heads (2026-09-25, Registered, Outcomes Pending)
+
+The next controlled experiment separates positive event-harm occurrence from
+conditional normalized severity. It keeps forecasts, original utility heads,
+source roles, causal features and2% risk limits fixed. Two matched three-output
+networks compare product-moment MSE against the same MSE plus occurrence BCE
+and positive-only severity MSE. The fitting-only support audit finds positive
+labels in every locality/event slice; easy-event labels are sparse, not absent.
+
+Plan:72 small risk heads,144,000 updates,three seeds;144 views retain old and
+geometric controls as well as both new objectives. Both new networks have22,979
+parameters; an architecture-matched product-MSE arm is required. No new outcomes,
+calibration or deployment claim at registration. The two-part idea is established
+methodology, not asserted novelty. All sources remain opened development.
+
+[Registration](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/registration.md).
+
 ## Geometric Cost Heads (2026-09-25, Completed, No Safe Neural Advantage)
 
 The frozen-head diagnostic did not support training-constant feature explosion

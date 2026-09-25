@@ -1,0 +1,23 @@
+{
+  "scope": "opened_source_development_not_independent_confirmation",
+  "seeds": [17, 29, 43],
+  "candidates": ["neural", "damping097"],
+  "events": ["all", "easy"],
+  "training_arms": ["product_mse", "hurdle"],
+  "variants": ["old", "envelope", "product_mse", "hurdle"],
+  "head_training": {"width": 64, "steps": 2000, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "hurdle_objective": "native_moment_mse_plus_unweighted_binary_cross_entropy_plus_positive_conditional_fraction_mse",
+  "probability_target": "event_and_positive_harm",
+  "severity_target": "positive_event_harm_divided_by_causal_rollout_envelope",
+  "risk_budget": 0.02,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 39271,
+  "replay_rows": 4096,
+  "new_forecaster_training": false,
+  "threshold_refit": false,
+  "calibration_refit": false,
+  "reserved_roles_opened": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
