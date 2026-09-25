@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal Abstention (2026-09-25, Registered, Not Yet Evaluated)
+
+The next comparison asks whether observed stopping and fitting-source support
+can reject harmful neural interventions without merely reducing intervention
+counts. Both CV-target and floor-target controllers remain frozen. Stop, support
+and combined guards each receive same-recording, same-current-frame count-matched
+risk-ranked and random controls: 720 development views, no new neural training.
+Both decision banks will freeze before readout. No deployment or reserved-role
+change. [Registered protocol](outputs/publication_readiness_2026_09/european_causal_abstention_v1/registration.md).
+
 ## Reference-Consistent Targets (2026-09-25, Completed, Repair Not Supported)
 
 Fresh training/evaluation: 234 Torch heads, 468,000 updates, 36 groups and four
