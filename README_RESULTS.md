@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Incremental Joint Control (2026-09-25, Registered, Not Yet Evaluated)
+
+The [registered comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/registration.md)
+uses frozen forecasts, heads and original actions. Seven policies across36
+dependent source-role/seed/event groups include half-count independent, hash,
+unary and joint controls under one predicted-harm cap. The existing96
+hash-selected queries per locality define a restricted, outcome-independent
+population. All history-eligible agents at those queries are kept, including
+unknown future labels. This is not the full parent-row population or all visible
+people. No new training, parameter sweep, reserved readout or deployment.
+Inference and scoring are not_run until their completion receipts exist.
+
 ## Incumbent-Relative Intervention (2026-09-25, Completed, Progress Without Promotion)
 
 I trained 144 Torch heads and 72 fixed ridge controls: same 381 causal inputs,

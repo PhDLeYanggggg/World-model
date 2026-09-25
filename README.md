@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I have registered a [joint incremental-control comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/registration.md).
+It keeps every existing useful decision protected and asks whether coordinating
+the extra interventions improves hard cases. The predictors and learned scores
+are frozen. Independent, unary-geometry, joint and hash-priority controls share
+the same number of additions and predicted-risk cap. This is an opened-source
+development comparison; inference and evaluation are pending, not a new result.
+
+### Completed Incumbent-Relative Study
+
 I completed an [incumbent-relative intervention study](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/conclusions.md):
 can a controller learn when an existing decision is worth overriding, without
 discarding useful predictions? I trained 144 small Torch cost heads and 72 ridge
