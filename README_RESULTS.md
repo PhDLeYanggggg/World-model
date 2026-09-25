@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Geometric Cost Heads (2026-09-25, Registered, Outcomes Pending)
+
+The frozen-head diagnostic did not support training-constant feature explosion
+as the main cause. The next matched refit changes only cost parameterization:
+predicted gain/harm must lie inside a causal envelope determined by candidate
+versus baseline rollout distance. The maximum over requested steps protects
+the mathematical bound even when future labels are only partially available;
+no future label mask enters that envelope.
+
+Plan:54 small score heads,108,000 updates,three seeds,with all forecasts,355
+features,training-only scalers,samplers and2% risk limits fixed. All144 views
+retain old,utility-only,risk-only and both-head controls. Unit tests include
+partial-label bounds and exact checkpoint resume. No new outcome, calibrated
+safety, deployment or submission-readiness claim is made at registration.
+
+[Registration](outputs/publication_readiness_2026_09/european_geometric_cost_v1/registration.md),
+[scaling diagnosis](outputs/publication_readiness_2026_09/european_score_scaling_v1/conclusions.md).
+
 ## Producer Transport Diagnosis (2026-09-25, Completed, Replacement Not a Repair)
 
 The completed diagnostic keeps score heads, preprocessing,2% risk rules and
