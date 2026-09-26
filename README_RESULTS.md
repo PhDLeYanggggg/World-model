@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Auxiliary Gradient Diagnostic (2026-09-27, Registered, Not Run)
+
+The strong-base failure is verified at f1d011aa; its 20 public artifacts and
+23 source bindings still match. I am testing task interference with 17,280
+isolated AdamW updates from the 432 frozen models, not starting another broad
+architecture search. True/shuffled auxiliary labels and one-sided projection
+are compared at the same model and optimizer state. All probes use previously
+exposed fitting data and cannot establish generalization. No independent role
+is opened. CREATE read-only access works; no remote jobs were submitted or
+modified. Local arm64 CPU4/interop1/workers0 is appropriate for this diagnostic.
+Real diagnostic and repair decision are not_run at registration.
+
+[Fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
+
 ## Strong-Base Cap Auxiliary (2026-09-26, Readout Complete, No Promotion)
 
 All432 Torch heads/864000 updates and144 source-held readouts complete.

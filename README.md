@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**In progress:** I am testing whether the auxiliary loss interferes with the
+main cost estimator. The [registered diagnostic](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md)
+compares isolated updates from identical model and optimizer states, including
+true labels, shuffled labels and a main-task gradient projection control.
+This uses exposed fitting data only; it cannot establish held-scene lift.
+The previous negative result and deployment status remain unchanged.
+
 **Latest result:** keeping the strong original estimator intact does not make
 the auxiliary risk label a reliable cost improvement. I completed the
 [strong-base study](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/conclusions.md)
