@@ -18,9 +18,13 @@ unknown-label exclusion and original-control agreement. Training/readout
 not_run at registration. Parent 9987ba4b is pushed; no independent roles,
 thresholds, policies or deployment changes. Registration cadc04df preceded
 the real100-update cost-only pilot (0.090075 fitting seconds). It resumed
-within the fixed budget; PID36589 is running with checkpoint/heartbeat.
+within the fixed budget; PID36589 completed normally with checkpoint/heartbeat.
 Initial cost-only projection518.83 fitting seconds excludes loading/inference
-and does not yet measure auxiliary runtime. Outcome readout stays not_run.
+and does not yet measure auxiliary runtime. All288 heads /576,000 updates
+are complete; checkpoint/prediction hashes are verified before freezing and
+new held readout. Summed fitting time is541.7740seconds, excluding loading,
+inference and verification; unknown-label draws are zero. Outcome readout
+stays not_run until freeze is committed.
 [Protocol](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/registration.md).
 
 ## Cost-Factor Attribution (2026-09-26, Completed And Verified)
