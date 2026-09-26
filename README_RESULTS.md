@@ -5,7 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Auxiliary Gradient Diagnostic (2026-09-27, Frozen Before Readout)
+## Auxiliary Gradient Diagnostic (2026-09-27, Readout Complete, No Repair Promotion)
+
+Fresh17280 isolated AdamW steps,432 frozen final states,144 views,three seeds.
+In full-input cap-auxiliary states, shared four-cost gradient conflicts occur
+in120/576 dependent batches;easy-harm conflicts63/576. Removing cost conflicts
+improves the actual easy-harm fitting probe54/120 and worsens66/120. Projection
+vs true auxiliary gives easy-harm locality intervals1 positive/1 negative/4
+overlap;vs projected shuffled1/2/3. All four registered repair screens fail.
+The tiny one-step fitting effects are not new trajectory or generalization
+gains. No new fully trained model,held readout,independent access or deployment
+change. Complete numerical replay and final regression checks are pending.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_aux_gradient_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_aux_gradient_v1/failure_analysis.md),
+[next discriminating experiment](outputs/publication_readiness_2026_09/european_aux_gradient_v1/project_gap.md).
+
+### Chronological Run Record
 
 The strong-base failure is verified at f1d011aa; its 20 public artifacts and
 23 source bindings still match. I am testing task interference with 17,280

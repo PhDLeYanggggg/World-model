@@ -10,14 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**In progress:** I am testing whether the auxiliary loss interferes with the
-main cost estimator. The [registered diagnostic](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md)
-compares isolated updates from identical model and optimizer states, including
-true labels, shuffled labels and a main-task gradient projection control.
-This uses exposed fitting data only; it cannot establish held-scene lift.
-The previous negative result and deployment status remain unchanged.
+**Latest diagnosis:** removing conflicting auxiliary gradients is not a
+supported repair yet. I completed 17,280 isolated AdamW updates from 432 frozen
+models under a [fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
+In the main full-input diagnostic, 120 of 576 batches had conflicting task
+gradients. Projection improved the easy-harm probe in 54 of those batches
+but worsened it in 66. Across six locality comparisons, the easy-harm intervals
+are one positive, one negative and four overlapping. All four repair-screen
+conditions fail. These are dependent fitting-data measurements, not trajectory
+gains or independent tests, and no new complete model was trained.
 
-**Latest result:** keeping the strong original estimator intact does not make
+I am keeping deployment unchanged and leaving independent selection,
+calibration and confirmation closed. The next question is whether the failure
+develops earlier in training or reflects a mismatch between binary risk labels
+and cost severity. The [conclusions](outputs/publication_readiness_2026_09/european_aux_gradient_v1/conclusions.md)
+and [complete figure](outputs/publication_readiness_2026_09/european_aux_gradient_v1/adamw_probe_effects.svg)
+retain the small effects, negative comparisons and limits of this diagnosis.
+
+**Preceding result:** keeping the strong original estimator intact does not make
 the auxiliary risk label a reliable cost improvement. I completed the
 [strong-base study](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/conclusions.md)
 with 432 Torch models, 864,000 updates and three seeds. All 144 no-auxiliary

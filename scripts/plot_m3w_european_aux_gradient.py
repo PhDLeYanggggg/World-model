@@ -7,6 +7,7 @@ from scripts import run_m3w_european_aux_gradient as run
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 import numpy as np
 
 
@@ -32,6 +33,8 @@ def main():
         ax.set_yticks(np.arange(len(labels)), labels)
         ax.set_title(contrast.replace('_', ' ')+'\n'+metric.replace('_', ' '))
         ax.set_xlabel('Actual fitting-probe MSE reduction (%)')
+        ax.xaxis.set_major_locator(MaxNLocator(5))
+        ax.ticklabel_format(axis='x', style='sci', scilimits=(-3, 3), useMathText=True)
         ax.grid(axis='x', alpha=.2); ax.invert_yaxis()
     fig.suptitle('Same-state AdamW interventions: full inputs, frozen cap-auxiliary models\n'
                  'Three seeds; 3000 descriptive locality resamples; exposed fitting data, not held-out lift', fontsize=12)

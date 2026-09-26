@@ -21,10 +21,11 @@ def execute(args, label):
 
 def main():
     logs = [execute(['scripts/run_m3w_european_aux_gradient.py', '--phase', 'verify'], 'replay')]
-    names = ['aggregate_metrics.json', 'results.md', 'adamw_probe_effects.svg']
+    names = ['aggregate_metrics.json', 'results.md', 'adamw_probe_effects.svg', 'secondary_diagnosis.json']
     before = {n: run.digest(run.PUBLIC/n) for n in names}
     logs.append(execute(['scripts/report_m3w_european_aux_gradient.py'], 'report_replay'))
     logs.append(execute(['scripts/plot_m3w_european_aux_gradient.py'], 'figure_replay'))
+    logs.append(execute(['scripts/diagnose_m3w_european_aux_gradient.py'], 'diagnosis_replay'))
     assert all(run.digest(run.PUBLIC/n) == h for n, h in before.items())
     xml = run.PRIVATE/'tests.xml'
     logs.append(execute(['-m', 'pytest', '-q', *TESTS, '--junitxml', str(xml)], 'tests'))
@@ -44,7 +45,7 @@ def main():
                 unknown += repeat['update_unknown_rows']; overlap += repeat['row_overlap_count']
     assert updates == 17280 and unknown == overlap == 0
     source = sorted(set(run.FILES + TESTS + ['scripts/plot_m3w_european_aux_gradient.py',
-                                           'scripts/verify_m3w_european_aux_gradient.py']))
+        'scripts/verify_m3w_european_aux_gradient.py', 'scripts/diagnose_m3w_european_aux_gradient.py']))
     doc = dict(all_passed=True, exact_virtual_update_replay=True, virtual_updates=updates,
         views=144, final_states=432, unknown_update_rows=unknown, update_probe_row_overlap=overlap,
         scoped_tests_passed=len(cases), scoped_test_files=len(TESTS), full_legacy_suite='not_run',
