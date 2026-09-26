@@ -15,7 +15,8 @@ failed residual repair: its inner training labels and outer task define
 "easy" differently. The [common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/protocol.md)
 changes only the fitting-side residual labels, with the models, causal inputs,
 outer evaluation rule and deployment frozen. It does not open independent
-calibration or confirmation. Results are pending; no improvement is claimed.
+calibration or confirmation. All864 fixed probes are now fitted and predictions
+are frozen before readout. Results are pending; no improvement is claimed.
 
 **Latest completed study:** the
 [nested-locality experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md)
