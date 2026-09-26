@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Harm Readout (2026-09-26, Training Complete, Readout Pending)
+## Frozen Harm Readout (2026-09-26, Readout Complete, Magnitude Gate Failed)
 
 Fresh label-only decomposition finds outside-easy rows dominate35/39 full and
 34/38 motion-only worsening views. The four categories retain non-easy cases
@@ -13,7 +13,7 @@ with positive all-harm, not just harmless easy examples. Cached parent source
 files, predictions and58 public artifacts/92 bindings are verified. Four new
 diagnostic tests pass; no policy or independent-data access.
 
-The next registered test freezes both risk-head encoders and compares matched
+The registered test freezes both risk-head encoders and compares matched
 linear bounded harm readouts on mean versus fractional64-dimensional features.
 Original mean D_all/D_easy are unchanged. Two arms, six source assignments,
 three seeds, two forecast pairs, four held localities:288 heads,576,000updates.
@@ -26,9 +26,40 @@ unknown-label training draws. Summed fitting time excludes loading, feature
 extraction and verification. Both readout arms share identical initial losses,
 draw counts and final sampler states. Prediction hashes are frozen before
 held-locality outcome readout; checkpoints and per-row outputs stay private.
-No evaluation improvement or deployment is claimed at this point.
+Prediction freeze `cf479a70` preceded all 36 group readouts. Full conditional
+easy-harm MSE fractional-versus-matched has zero positive and six overlapping
+locality-bootstrap intervals, with role points -9.357% to +2.373%.
+Fractional-versus-original has zero positive, three negative and three
+overlapping intervals, with points -39.789% to +1.411%. The primary gate fails.
+The matched-mean refit also has no positive interval against original_mean.
+These are MSE contrasts, not ADE/FDE gains or deployment results.
+
+Full conditional AUROC is median 0.56228 versus matched 0.47697, with five
+positive paired intervals. Conditional top10 harm capture has three positive
+intervals, but the stronger original fractional ranking is not fully retained.
+Median coverage approaches one without repairing per-row expected-cost MSE.
+Motion-only has two negative matched MSE intervals and four negative original
+comparisons. Neither secondary ranking nor better average coverage overrides
+the failed expected-cost gate.
+
+Fractional versus matched full training MSE improves in 62/72 dependent views,
+held MSE in 39/72; 27 improve only on fitting data. Against original_mean,
+42 full views worsen, and outside-easy partitions dominate 36 of these.
+The error is not merely harmless easy rows or a failed runtime. Next isolate
+easy-membership transport, distinct from the already failed positive-harm
+hurdle, before another registered cost-factorization experiment.
+No policy was evaluated, no thresholds changed, and independent roles stay
+closed. Stage5C/SMC remain off; no metric/seconds or submission-ready claim.
+All 288 checkpoint prediction-prefix replays and 5,184 independent rank/tail
+checks pass. The prefixes contain up to 4,096 held rows per head; reference
+moments are compared over all held rows. Final verification passes 478 tests
+in 85 scoped files and binds 94 public artifacts / 95 source files. The full
+legacy suite is not_run. Both figure previews were visually checked. This
+verifies a completed negative experiment, not a positive policy result.
 [Diagnosis](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/membership_diagnosis.md),
-[registration](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md).
+[registration](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md),
+[conclusions](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/conclusions.md),
+[project gap](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/project_gap.md).
 
 ## Support-Fractional Harm (2026-09-26, Verified, Magnitude Gate Failed)
 

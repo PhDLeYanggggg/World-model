@@ -10,13 +10,33 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I traced the fractional head's main magnitude error to easy-event membership:
-outside-easy rows dominate 35/39 full views whose error increased. I have
-completed training for a [matched frozen-feature readout test](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md)
-to separate useful representation from cost fitting. Both arms keep the
-original reference-cost path unchanged. All 288 readouts and 576,000 updates
-are complete. I froze the prediction hashes before opening this round's
-held-locality outcome readout. No policy change or positive result is implied.
+I completed a [matched frozen-feature readout experiment](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/conclusions.md)
+to test whether the fractional head's useful ranking signal could support
+more accurate expected-harm estimates. Both feature sources received the
+same small readout, training budget and sampled rows, while reference costs
+stayed fixed. All 288 readouts and 576,000 updates are complete, with
+prediction hashes committed before this round's outcome readout.
+
+The repair did not pass. None of the six full-pair magnitude intervals is
+positive against the matched control; three are negative against the original
+mean head. Ranking improves in five matched comparisons, but that does not
+make the expected costs reliable. I am keeping deployment unchanged.
+
+The [failure analysis](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/failure_analysis.md)
+shows a persistent problem: predictions assign easy-case harm to non-easy
+rows. Those rows dominate 36/42 full views with worse MSE against the original
+head. My next step is to separate the predictability of easy membership from
+harm inside easy cases, not to tune another intervention threshold. The
+[loss curves](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/training_loss.svg)
+and [paired intervals](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/paired_contrasts.svg)
+retain all roles and the adverse motion-only comparison. This is source
+development, not a new trajectory gain or independent confirmation.
+
+Verification covers 288 checkpoint prediction-prefix replays, 5,184
+independent ranking/tail checks and 478 tests in 85 scoped files. All 94
+public artifacts and 95 source bindings match their recorded hashes. The
+full legacy suite was not rerun. These checks verify the experiment, not a
+deployment improvement; the research goal remains ongoing.
 
 ### Completed Fractional-Harm Test
 
