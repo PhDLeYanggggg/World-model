@@ -19,7 +19,13 @@ families. Severity bins and gradient measurements use fitting data only.
 Independent selection, reserved calibration and confirmation stay unopened.
 CREATE was checked read-only; this modest experiment uses the native arm64
 local environment with four compute threads and no DataLoader workers.
-Training and trajectory readout are not yet complete; deployment is unchanged.
+Registration commit `0dc819d7` preceded the real pilot. Its 200 updates took
+0.1606 seconds of training and 17.71 seconds including input preparation,
+excluding ancestry preflight. The projection of 693.68 training seconds does
+not include snapshot diagnostics or I/O. The full fixed-budget reconstruction
+has started. Training and trajectory readout are not yet complete; deployment
+is unchanged. Twenty-seven scoped tests cover exact segmented replay,
+serialization, missing support and additive severity accounting.
 
 [Registered protocol](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/protocol.md).
 
