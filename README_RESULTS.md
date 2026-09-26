@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Direct Easy Membership (2026-09-26, Registered, Training Not Run)
+## Direct Easy Membership (2026-09-26, Registered, Training Running)
 
 The last frozen readout failed the magnitude gate. This diagnostic directly
 predicts E = 1(0 < CV_error <= three-fitting-locality easy cut), including
@@ -20,7 +20,14 @@ only prevalence constant, with AUROC and log-loss guards. No threshold search,
 policy readout or independent calibration/confirmation. This new diagnostic
 does not alter the main forecasting endpoint or the 2% risk tolerance.
 Parent 94 public artifacts/95 source bindings and local/GitHub commit5b7c097a
-were verified before registration. Real training remains not_run here.
+were verified before registration. Registration `4bdbc117` preceded fitting.
+The real 100-update pilot completed and resumed within the fixed budget;
+full training is running. First 32 linear and 32 MLP fits completed, with
+18.22 and 38.28 summed fitting seconds respectively; this is an intermediate
+runtime observation, not a final result. Checkpoints/heartbeats are private.
+Before any new held readout, sensitivity commit `c493cf1f` adds a constant
+from training positive-disagreement prevalence. It cannot rescue the primary
+gate and does not fit held labels. Nine targeted tests pass in total.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_membership_v1/registration.md).
 
 ## Frozen Harm Readout (2026-09-26, Readout Complete, Magnitude Gate Failed)

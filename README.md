@@ -14,9 +14,11 @@ I am testing [direct prediction of easy membership](outputs/publication_readines
 after the frozen-readout repair failed. This separates whether the baseline
 is likely to be accurate from whether an alternative harms it. A linear
 classifier and a small MLP receive identical causal inputs and training
-budgets. The registered scope is 288 fits, three seeds and 576,000 updates;
-training and current outcome readout have not run yet. No new policy or
-independent-data access is implied.
+budgets. The registered scope is 288 fits, three seeds and 576,000 updates.
+The real pilot completed and full training is running; current outcome
+readout has not run. A pre-readout sensitivity adds a training-only
+conditional-prevalence control without changing the primary test. No new
+policy or independent-data access is implied.
 
 ### Completed Frozen-Readout Test
 
