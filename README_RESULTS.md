@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Causal Context Residual (2026-09-26, Predictions Frozen, Readout Not Run)
+## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 
 Previous goal turn: progress. Parent8cdc8de0 verified locally and on GitHub;
 48 artifacts/9 bindings match. Native arm64 and14.18GiB free disk verified.
@@ -21,8 +21,20 @@ completed in13.9611 group seconds excluding registration/parent preflight.
 The full fit reused it;PID49301 completed normally. All864 closed-form fits
 on432 estimators are complete;313.8133 run seconds exclude parent preflight
 and reuse the pilot. Prediction hashes are frozen before source-held readout.
+Prediction freeze3ac1ae56 was pushed before the new held readout. All36 groups
+are complete. Full original-context vs original:2 positive,0 negative,4
+overlapping MSE intervals;points -1.8796% to +0.9351%. Vs global bias:2/0/4;
+points -1.1155% to +0.6679%. Motion-only vs original:0/0/6, all points negative
+(-16.5327% to -0.5338%). Registered primary false;tail/coverage guard true,
+not a noninferiority or safety guarantee. Full original AUROC:4 positive
+intervals, not magnitude or trajectory success. Closing-speed dependent
+cells:120 consistent fitting signs,102 same/18 opposite held;speed-change
+125,96/29. No held-guided feature selection. Full replay verification running.
+Next: nested fitting-locality-OOF residual provenance with fixed seven
+features and controls, auditing all inner target/preprocessing dependencies.
 No independent-role access, policy change, Stage5C or SMC.
 [Protocol](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md).
 
 ## Frozen Severity Transport (2026-09-26, Complete, Broad Repair Triggers Unsupported)
 

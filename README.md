@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current status, 26 September:** the latest past-context cost repair has
+completed but has not passed its cross-locality improvement gate. I am keeping
+the original model unchanged. The [current conclusions](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md)
+separate recurring error patterns from actual model improvement; independent
+calibration and final confirmation remain reserved. The sequence below
+explains how the experiments led to that decision.
+
 I completed a [frozen-model error attribution](outputs/publication_readiness_2026_09/european_cost_attribution_v1/conclusions.md).
 Even substituting the realized easy label offline produces no consistently
 positive comparison against the original cost model across the six source
@@ -112,14 +119,27 @@ match, and the figure reproduces byte-for-byte. Previous checks remain
 cached_verified; the full legacy suite was not rerun. Reproducible diagnosis
 is not proof of a repaired model.
 
-My next [controlled context probe](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md)
-tests whether past motion, neighbor context and frozen-rollout disagreement
-explain transferable cost bias. It compares a global-intercept correction
-with a fixed additive context model, retaining the original strong estimator.
-Seven past-only summaries, training-only cuts and 864 planned closed-form fits
-are fixed before readout. Thirteen scoped tests pass. This is not new neural
-training or independent risk calibration: the residual-fitting base predictions
-are in-sample, and all independent roles remain unopened. No deployment change.
+I completed the [controlled context probe](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md):
+864 fixed closed-form fits on 432 frozen estimators, with zero new neural
+updates. Seven past-only summaries test whether motion, neighbor context and
+forecast disagreement explain transferable cost bias. Predictions were frozen
+in commit 3ac1ae56 before the new source-held readout.
+
+The primary gate fails. Context correction produces two positive and four
+overlapping full-input MSE intervals against both the original estimator and
+a global-bias control, not the required six. Against the original, assignment
+points range -1.88% to +0.94%; motion-only points are all negative. These are
+cost-estimation errors, not trajectory gains. The tail/coverage no-negative-
+interval guard passes, which does not prove deployment safety.
+
+The [context figure](outputs/publication_readiness_2026_09/european_context_residual_v1/context_probe.svg)
+shows that some relative bias directions repeat, especially speed change and
+closing speed, without stable magnitude improvement. The residual-fitting
+base predictions are in-sample, not independent calibration. I retain the
+original model and all reserved roles; the next controlled question is a
+properly nested OOF residual construction, with unchanged features and strong
+controls. Related [post-processing work](outputs/publication_readiness_2026_09/european_context_residual_v1/literature_position.md)
+also makes clear that this probe alone is not a method novelty claim.
 
 ### Completed Conditional-Cost Experiment
 
