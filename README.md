@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current experiment:** I am testing whether the cap-event signal improves
+expected forecasting-cost estimates, rather than only classification scores.
+The [registered auxiliary-cost study](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/protocol.md)
+matches cost-only, true-event auxiliary and locality-shuffled auxiliary models
+on inputs, initialization, sampling and training budget. It keeps the original
+cost estimator as a strong comparison and changes no deployment rule. At
+registration, 32 targeted tests pass; real-data fitting and readout have not
+yet run. Independent selection, calibration and confirmation remain unopened.
+
 **Latest experiment:** causal history contains useful information about rare
 forecasting errors above a frozen risk estimate. I completed the
 [cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/conclusions.md)

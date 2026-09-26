@@ -5,6 +5,27 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cap-Event Auxiliary Costs (2026-09-26, Registered, Training Not Run)
+
+Previous goal turn:progress. Local/GitHub parent ebf198f3 match; its288 model
+prediction replays,144 readouts and46 scoped tests are cached_verified.
+CREATE was freshly queried read-only successfully,receipt
+9d08d0786e1c141bb4568bd570c40cff791bed3f3fd32bc20064ed34683d2d81.
+No remote jobs changed. Local arm64 Python3.11.1 and19GiB free support a pilot.
+New code passes32 scoped tests, including matched initialization/sampling,
+exact resume and no event-probability multiplication into expected costs.
+
+The new fixed experiment has144 views,432 Torch heads and864000 updates.
+Cost-only,true-event auxiliary and locality-shuffled auxiliary share inputs,
+architecture,budget and samples. Original frozen costs remain a strong
+comparison. No in-sample classifier stacking, threshold tuning or independent
+data access. Support,training and readout are not_run at registration. The
+primary question is cost-magnitude improvement; positive classification alone
+cannot pass. Main gaps remain expected-risk transfer, controlled scene-joint
+utility, independent calibration/confirmation and complete paper evidence.
+
+[Protocol](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/protocol.md).
+
 ## Causal Cap-Event Learnability (2026-09-26, Readout Complete, No Promotion)
 
 The complete fresh experiment has 288 native-Torch heads, 576,000 updates and
