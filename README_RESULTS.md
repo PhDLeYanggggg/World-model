@@ -26,6 +26,10 @@ not include snapshot diagnostics or I/O. The full fixed-budget reconstruction
 has started. Training and trajectory readout are not yet complete; deployment
 is unchanged. Twenty-seven scoped tests cover exact segmented replay,
 serialization, missing support and additive severity accounting.
+At the first progress checkpoint, 144 of 432 heads and 720 of 2,160 snapshots
+were complete. All 144 final numerical states matched their originals.
+PID 44662 continues the remaining fixed-budget reconstructions; no aggregate
+scientific readout or repair selection has been made.
 
 [Registered protocol](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/protocol.md).
 
