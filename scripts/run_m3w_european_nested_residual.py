@@ -44,16 +44,15 @@ def registration(create=False):
     else:
         registered = json.loads(path.read_text())
         if registered != identity:
-            amended = PUBLIC/'implementation_amendment.json'
-            change = json.loads(amended.read_text())
             runner = 'scripts/run_m3w_european_nested_residual.py'
-            assert change['registration_sha256'] == digest(path)
-            assert change['changed_file'] == runner and change['scientific_changes'] is False
-            assert change['old_sha256'] == registered['bindings'][runner]
-            assert change['new_sha256'] == identity['bindings'][runner]
-            registered['bindings'][runner] = change['new_sha256']
+            for amended in sorted(PUBLIC.glob('implementation_amendment*.json')):
+                change = json.loads(amended.read_text())
+                assert change['registration_sha256'] == digest(path)
+                assert change['changed_file'] == runner and change['scientific_changes'] is False
+                assert change['old_sha256'] == registered['bindings'][runner]
+                registered['bindings'][runner] = change['new_sha256']
+                base.previous.require_committed(amended)
             assert registered == identity
-            base.previous.require_committed(amended)
         base.previous.require_committed(path)
     return cfg, identity
 
@@ -180,6 +179,15 @@ def checked_training():
     return doc
 
 
+def fit_residual_bank(context,p,y,w,sites,outer,*,ridge,variant):
+    if variant not in method.VARIANTS: raise ValueError('Registered residual bank required')
+    models = residual.fit(context,p,y,w,sites,outer,ridge=ridge)
+    for model in models.values():
+        model['fitted_with_in_sample_base_predictions'] = variant != 'oof'
+        model['residual_prediction_source'] = variant
+    return models
+
+
 def probes(cfg,identity,verify=False):
     checked_training(); parent.check_frozen(identity['parent'])
     base.previous.require_committed(PUBLIC/'inner_prediction_freeze.json'); refs=[]
@@ -201,7 +209,7 @@ def probes(cfg,identity,verify=False):
         w = np.where(v['env'] > 0,v['pr']['weights'],0)
         for variant in cfg['residual_variants']:
             p,y,cuts,producers = method.assemble(bank,v['raw'],v['cv'],v['sites'],v['outer'],variant)
-            models[variant] = residual.fit(v['context'],p,y,w,v['sites'],v['outer'],ridge=cfg['ridge'])
+            models[variant] = fit_residual_bank(v['context'],p,y,w,v['sites'],v['outer'],ridge=cfg['ridge'],variant=variant)
             drift[variant] = method.cut_drift(v['cv'],cuts,v['pr']['positive_easy_cut'])
             alignment[variant] = dict(prediction_sha256=array_hash(p),target_sha256=array_hash(y),
                 row_producer_sha256=array_hash(producers),cut_sha256=array_hash(cuts))

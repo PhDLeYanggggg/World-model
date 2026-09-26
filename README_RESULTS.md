@@ -36,6 +36,11 @@ PID54473 completed normally:432/432 heads,864000 updates. The private completion
 manifest is6c44efee04fa47ebe57f95576a534a96ca68a9f812efe8c89f9c4fdb903618a5.
 Original parent checkpoints remain unchanged. Inner predictions are frozen;
 residual probes, new outer readout and full checkpoint replay remain not_run.
+Inner freeze9259a611 precedes the second implementation-only amendment:
+the legacy residual fitter's unconditional in-sample flag is replaced with
+actual OOF/cyclic provenance. Numerical fitting/prediction remain identical;
+completed heads and checkpoint identities are unchanged. No probes/readout
+had run. Both amendments are preserved in a committed hash chain.
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 
