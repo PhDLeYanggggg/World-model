@@ -45,6 +45,10 @@ Amendment4d8b75b7 and29 tests preceded the probe fit. PID56345 completed normall
 864 closed-form fits /144 outer-view predictions frozen before outcome readout.
 Risk-head fit time787.943793s; median initial/final fixed-batch loss0.651791 /
 0.433402; unknown draws0. Loss decline is not held improvement.
+Prediction freeze94442ac2 preceded all36 new readout groups. Aggregate statistics
+were written, then a receipt-path typo interrupted report rendering. A third
+implementation-only amendment fixes receipt loading, with no change to metrics,
+predictions, bootstrap or gates. Completed training/readout are not rerun.
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 

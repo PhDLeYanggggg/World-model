@@ -29,6 +29,8 @@ Before residual fitting, I corrected a legacy provenance field that otherwise
 would incorrectly label OOF predictions as in-sample. The second recorded
 amendment changes metadata only; all coefficients and predictions are tested
 for equality, and the completed risk-head checkpoints remain untouched.
+The 36-group readout is complete. A report-only path error is being repaired;
+the completed predictions and aggregate statistics are preserved, not retrained.
 
 **Current status, 26 September:** the latest past-context cost repair has
 completed but has not passed its cross-locality improvement gate. I am keeping

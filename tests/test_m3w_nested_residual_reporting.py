@@ -20,6 +20,15 @@ def test_support_report_serializes_numpy_comparison(tmp_path, monkeypatch):
     assert all(type(r['numerically_supported']) is bool for r in doc['rows'])
 
 
+def test_completed_receipts_resolve_paths(tmp_path,monkeypatch):
+    folder=tmp_path/'heads'; folder.mkdir()
+    doc={'fit':{'step':2000}}
+    (folder/'one.json').write_text(json.dumps(doc))
+    monkeypatch.setattr(run,'ROOT',tmp_path)
+    monkeypatch.setattr(run,'checked_training',lambda:{'heads':[{'path':'heads/one.json'}]})
+    assert run.completed_heads()==[doc]
+
+
 @pytest.mark.parametrize('variant',run.method.VARIANTS)
 def test_probe_provenance_metadata_does_not_change_numbers(variant):
     rng=np.random.default_rng(5); n=60

@@ -33,7 +33,7 @@ def main():
         ax.set_title('OOF context repair vs\n'+title)
         ax.set_xlabel('Easy-harm MSE improvement (%)\n95% locality bootstrap CI; three-seed means')
         ax.grid(axis='x', alpha=.18); ax.legend(frameon=False, fontsize=8)
-    heads = [json.loads((ROOT[a['path']]).read_text()) for a in run.checked_training()['heads']]
+    heads = run.completed_heads()
     ax = axes.flat[5]
     steps = list(range(200, 2001, 200))
     for pair, color in (('full', '#267b91'), ('motion_only', '#ba4657')):

@@ -274,6 +274,10 @@ def evaluate(cfg,identity,verify=False):
     immutable_json(PUBLIC/('eval_replay.json' if verify else 'completion_checks.json'),dict(all_passed=True,groups=refs))
 
 
+def completed_heads():
+    return [json.loads((ROOT/a['path']).read_text()) for a in checked_training()['heads']]
+
+
 def report(cfg,identity):
     rows=[]
     for a in json.loads((PUBLIC/'completion_checks.json').read_text())['groups']:
@@ -301,7 +305,7 @@ def report(cfg,identity):
         independent_calibration=False,independent_confirmation=False,policy_evaluated=False,
         deployment_changed=False,stage5c_executed=False,smc_enabled=False)
     immutable_json(PUBLIC/'aggregate_metrics.json',dict(contrasts=contrasts,summary=summary,cut_drift=drift,gates=gates))
-    heads=[json.loads((ROOT[a['path']]).read_text()) for a in checked_training()['heads']]
+    heads=completed_heads()
     compute=dict(heads=len(heads),updates=sum(h['fit']['step'] for h in heads),
         summed_fit_seconds=sum(h['fit']['seconds'] for h in heads),unknown_draws=sum(h['fit']['unknown_rows_sampled'] for h in heads),
         median_initial_cost_loss=float(np.median([h['fit']['trace'][0]['cost_loss'] for h in heads])),
