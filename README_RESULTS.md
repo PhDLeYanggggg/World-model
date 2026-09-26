@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Severity Auxiliary (2026-09-26, Registered, Support And Training Pending)
+## Severity Auxiliary (2026-09-26, Support Checked, Training Pending)
 
 Previous turn: progress. Parent27a8c53b is verified locally and on GitHub;
 47 artifacts/10 bindings match. Native arm64 and13.43GiB free disk verified.
@@ -17,7 +17,13 @@ probability-times-cost composition.144 planned new heads /288,000 updates;
 cached original, cost-only and ordinary auxiliary are required controls.
 Eight targeted tests pass including the weighted-log-loss optimum, exact
 resume, matched draws, unknown exclusion and strong-comparator guards.
-Fitting support, real training and outcome readout are not_run at registration.
+Registration c3d74244 was pushed before fresh fitting-only support calculation.
+All144 views have positive mean harm; all72 full views have harm in both easy
+strata. Weak flags0 in both pairs. Minimum easy-harm tracks full165/motion23,
+minimum supported localities3 in both. Median ordinary easy prevalence0.27994;
+harm-weighted fraction full0.07413/motion0.02794. Median easy-harm track mass
+concentration ESS68.56/15.71 and recording ESS7.79/4.97, not independent sample
+sizes or a power guarantee. Real training and outcome readout remain not_run.
 No independent role, threshold, policy, Stage5C or SMC change.
 [Protocol](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
 

@@ -69,7 +69,10 @@ I have now registered a [severity-weighted auxiliary comparison](outputs/publica
 It changes one supervision term while keeping the model, initialization,
 sampler and budget fixed. Fitting-only support is checked before training;
 new predictions must be frozen before source-held evaluation. The comparison
-is pending, not a claimed improvement.
+has passed its fitting-support check, not its outcome gate. Every full-input
+fit has easy-harm support in three localities and at least165 distinct
+recording-agent tracks. Mass remains concentrated, so this is not a power
+claim. Training is next; no improvement is claimed yet.
 
 ### Completed Conditional-Cost Experiment
 
