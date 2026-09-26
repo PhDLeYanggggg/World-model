@@ -10,15 +10,38 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing [direct prediction of easy membership](outputs/publication_readiness_2026_09/european_easy_membership_v1/registration.md)
-after the frozen-readout repair failed. This separates whether the baseline
-is likely to be accurate from whether an alternative harms it. A linear
-classifier and a small MLP receive identical causal inputs and training
-budgets. The registered scope is 288 fits, three seeds and 576,000 updates.
-The real pilot completed and full training is running; current outcome
-readout has not run. A pre-readout sensitivity adds a training-only
-conditional-prevalence control without changing the primary test. No new
-policy or independent-data access is implied.
+I completed a [direct easy-membership experiment](outputs/publication_readiness_2026_09/european_easy_membership_v1/conclusions.md)
+after the frozen-readout repair failed. It asks whether the baseline is likely
+to be accurate, separately from how much an alternative might harm it.
+All 288 classifiers, three seeds and 576,000 updates are complete, with
+prediction hashes committed before held-locality readout.
+
+The full-input MLP passes the registered component diagnostic. Its Brier
+skill over a training-prevalence constant is 27.85% to 52.60% across six
+source assignments, with all six locality-bootstrap intervals positive.
+Median conditional AUROC is 0.862. A stronger training-only conditional-
+prevalence control retains the result, with skill 25.47% to 50.53%.
+These are membership probability scores, not trajectory improvements.
+
+The [stricter-control figure](outputs/publication_readiness_2026_09/european_easy_membership_v1/conditional_sensitivity.svg)
+also shows the limitation: motion-only MLP has only one positive interval,
+one negative and four overlapping intervals. The linear full-input model
+misses a log-loss guard. I retain both negative findings rather than changing
+the criterion. Full and motion-only disagreement populations differ, so this
+is not proof of a scene or interaction contribution.
+
+My next test separates membership from conditional harm severity. Membership
+alone does not establish accurate expected costs or safe intervention; no
+policy changes or independent-data access were made. The research goal is
+still ongoing. [Failure analysis](outputs/publication_readiness_2026_09/european_easy_membership_v1/failure_analysis.md)
+and [remaining gap](outputs/publication_readiness_2026_09/european_easy_membership_v1/project_gap.md)
+set out that boundary.
+
+Verification passes 288 checkpoint prediction-prefix replays, 2,304 independent
+probability/ranking checks and 487 tests in 88 scoped files. All 56 public
+artifacts and 96 source bindings match their recorded hashes; the full legacy
+suite was not rerun. The three figures reproduce byte-for-byte. These checks
+verify this component experiment, not a deployable world-model improvement.
 
 ### Completed Frozen-Readout Test
 

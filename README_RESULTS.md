@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Direct Easy Membership (2026-09-26, Training Complete, Readout Pending)
+## Direct Easy Membership (2026-09-26, Component Signal Positive)
 
 The last frozen readout failed the magnitude gate. This diagnostic directly
 predicts E = 1(0 < CV_error <= three-fitting-locality easy cut), including
@@ -25,13 +25,44 @@ The real 100-update pilot completed and resumed within the fixed budget.
 All 288 fits and 576,000 updates are complete, with 298.20 summed fitting
 seconds and zero unknown-label training draws. This excludes loading,
 prediction and verification time. Checkpoints/heartbeats are private.
-Training artifacts and their prediction-freeze manifest are hash-verified;
-held-locality outcome readout has not started. The freeze is committed before
-evaluation, and no result-dependent model selection is permitted.
+Training artifacts and their prediction-freeze manifest are hash-verified.
+Freeze commit 269d7ec0 preceded all 36 held-locality group readouts.
+No result-dependent model selection was performed.
 Before any new held readout, sensitivity commit `c493cf1f` adds a constant
 from training positive-disagreement prevalence. It cannot rescue the primary
 gate and does not fit held labels. Nine targeted tests pass in total.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_membership_v1/registration.md).
+
+Full-input MLP passes the registered membership diagnostic: all six assignment
+intervals are positive for conditional Brier skill, AUROC above chance and
+log-loss gain. Primary Brier-skill points range 27.85% to 52.60%; the stronger
+training-conditional-prevalence sensitivity retains six positive intervals,
+with points 25.47% to 50.53%. Median full conditional AUROC is 0.86203, AUPRC
+0.59012, Brier 0.10332 and ECE 0.04539. These are classifier metrics, not
+ADE/FDE or policy gains. Both full arms improve fitting and held Brier over
+the registered constant in all 72 dependent views.
+
+Negative findings remain: full linear misses one log-loss guard; motion-only
+MLP against the stronger conditional constant has one positive, one negative
+and four overlapping Brier intervals. Its six log-loss intervals overlap zero.
+Full MLP ECE reaches 0.22652 on one held view; probability calibration is not
+uniformly solved. Full/motion-only disagreement populations differ and cannot
+be treated as a matched-population modality ablation.
+
+Membership information exists in the full causal inputs. The next test is a
+matched source-only conditional-harm factorization, not another threshold
+sweep or deployment promotion. Policy, independent-data and Stage5C/SMC
+statuses remain unchanged. [Conclusions](outputs/publication_readiness_2026_09/european_easy_membership_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_easy_membership_v1/failure_analysis.md),
+[stronger-control figure](outputs/publication_readiness_2026_09/european_easy_membership_v1/conditional_sensitivity.svg).
+
+Final verification passes all 288 checkpoint prediction-prefix replays (up to
+4,096 held rows each), 2,304 independent probability/ranking checks, and 487
+tests in 88 scoped files. Training and held metrics are recomputed over their
+full applicable rows. The receipt binds 56 public artifacts and 96 source
+files; both sets were rehashed successfully. The full legacy suite is not_run.
+All three figure previews were visually checked and SVG rerenders match
+byte-for-byte. This completes the diagnostic, not the long-term research goal.
 
 ## Frozen Harm Readout (2026-09-26, Readout Complete, Magnitude Gate Failed)
 
