@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Now testing:** does the auxiliary risk label help when I keep the strong
+original estimator intact? The preceding experiment changed more than its
+auxiliary loss: its width, cost outputs and sampling support also differed
+from the original. The [new protocol](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/protocol.md)
+preserves the original native inputs, GELU network, four-cost objective and
+all-known sampling. A no-auxiliary control must reproduce the original before
+true and shuffled auxiliary labels are compared. The planned 432 heads use
+three seeds. Real-data fitting and readout have not yet run; no improvement
+or deployment change is claimed.
+
 **Latest result:** learning which cases are risky does not yet give me better
 estimates of how much error they will cause. I completed the
 [auxiliary-cost experiment](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/conclusions.md)

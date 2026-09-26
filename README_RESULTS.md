@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Strong-Base Cap Auxiliary (2026-09-26, Registered, Not Yet Trained)
+
+Parent c6666ce0 and its sealed artifacts/bindings were reverified. New native
+arm64 code passes18 scoped tests, including exact synthetic original-control
+reconstruction and checkpoint resume. CREATE read-only query succeeded with
+receipt b14c2f1174a724e67ddf0e180e91d430503ee0b28280d21b4b3ddd12e67bbe29;
+no remote jobs changed. Local free disk16.08GiB; real pilot still required.
+
+The next fixed study retains383 native features,GELU64,four-cost loss and
+all-known support. It adds a masked event auxiliary only; envelope-zero costs
+remain sampled. All144 cost-only controls must reconstruct the original at
+rtol1e-6/atol1e-7 before their auxiliary comparisons. Three matched arms and
+three seeds give432 heads/864000 updates. Registration precedes support and
+training; readout follows committed predictions. Real support,pilot,training
+and readout are not_run. Independent roles remain unopened; no deployment,
+Stage5C or SMC change. Previous goal turn made verified experimental progress.
+
+[Protocol](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/protocol.md).
+
 ## Cap-Event Auxiliary Costs (2026-09-26, Readout Complete, No Promotion)
 
 Fresh432 Torch heads /864000 updates and144 source-held readouts complete.
