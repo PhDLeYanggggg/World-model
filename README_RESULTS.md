@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Common-Event Residual Transport (2026-09-26, Registered Follow-Up)
+
+One-factor response-label test, not a new trajectory model. All144 views,
+864 fixed ridge fits, three seeds and all old controls retained. Existing432
+Torch heads are frozen; common labels use only the three meta-fitting
+localities and never enter inner teacher fitting or inference inputs. Outer
+targets and held role boundaries do not change. Freeze predictions before
+new source-development readout; no independent-data access or deployment.
+
+Local/GitHub parent c621fa0a matches. CREATE queue was freshly queried read-only
+at06:49UTC; unrelated jobs unchanged. Native arm64 environment passed18 scoped
+tests, including exact event-projection identity and unknown-label handling.
+Fit/readout not_run at registration. Original scientific failure is retained.
+
+[Protocol](outputs/publication_readiness_2026_09/european_event_transport_v1/protocol.md).
+
 ## Nested Locality Residual (2026-09-26, Readout Complete, Gate Failed)
 
 Fresh run: 432 native-arm64 Torch risk heads, 864,000 updates, 864 fixed

@@ -10,7 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current status, 26 September:** the latest
+**Current work, 26 September:** I am testing one specific explanation for the
+failed residual repair: its inner training labels and outer task define
+"easy" differently. The [common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/protocol.md)
+changes only the fitting-side residual labels, with the models, causal inputs,
+outer evaluation rule and deployment frozen. It does not open independent
+calibration or confirmation. Results are pending; no improvement is claimed.
+
+**Latest completed study:** the
 [nested-locality experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md)
 is complete, but its improvement gate failed. I trained 432 native-Torch risk
 heads and fitted 864 fixed residual corrections to test whether learning from
