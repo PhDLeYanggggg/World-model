@@ -25,6 +25,14 @@ report and figure. This is diagnostic replay, not a second independent fit.
 The pilot completed 120 virtual updates over one view in 16.431732 seconds
 including that view's data preparation, excluding ancestry preflight.
 
+Before aggregate readout, the integer producer/controller display IDs needed
+explicit string formatting. The public implementation amendment records the
+old/new hashes of that one-line report fix and the runner's strict amendment
+validation. The original registration is retained, not rewritten. The
+running experiment had loaded the registered original runner; no numerical
+diagnostic, source data, model, loss, probe or allocation rule changed. Replay
+uses the amended validation and must reproduce every diagnostic byte-for-byte.
+
 Private files, PID heartbeat, events and receipts live under
 data/stage_cvpr2027_experiments/european_aux_gradient_v1/. Keep all row-level
 diagnostics private. No data, images, histories, latent cache or checkpoints

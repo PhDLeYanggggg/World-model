@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_european_aux_gradient as run
 from scripts.verify_m3w_european_strong_cap_auxiliary import TESTS as PARENT_TESTS
-TESTS = ['tests/test_m3w_aux_gradient.py', *PARENT_TESTS]
+TESTS = ['tests/test_m3w_aux_gradient.py', 'tests/test_m3w_aux_gradient_report.py', *PARENT_TESTS]
 
 
 def execute(args, label):

@@ -20,6 +20,10 @@ Registration1a5db084 preceded the real pilot. PID39945 completed one view and
 excluding ancestry preflight. Full144-view run PID40235 is running; aggregate
 readout and repair decision are not_run. These are controlled fitting updates,
 not newly trained deployable heads or generalization gains.19 scoped tests pass.
+Before readout, integer assignment IDs required a report-format correction;
+the original registration is retained with an explicit before/after source
+hash amendment. No numerical or scientific rule changed.21 scoped tests now
+pass, including rejection of unrelated amendments. Full run remains active.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
 

@@ -30,7 +30,7 @@ def interval(values, cfg):
 def aggregate(rows, cfg):
     cell = defaultdict(lambda: defaultdict(list)); grad = defaultdict(list); unsupported = 0
     for row in rows:
-        assignment = row['producer']+'__'+row['controller']
+        assignment = f"P{row['producer']}__C{row['controller']}"
         for state in row['states']:
             key = (row['pair'], state['arm'], assignment)
             for repeat in state['repeats']:

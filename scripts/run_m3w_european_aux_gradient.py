@@ -36,6 +36,18 @@ def beat(state, **kwargs):
     print(json.dumps(row), flush=True)
 
 
+def validate_display_amendment(locked, current, amendment):
+    allowed = {'scripts/report_m3w_european_aux_gradient.py', 'scripts/run_m3w_european_aux_gradient.py'}
+    assert set(amendment['changes']) == allowed
+    assert amendment['scientific_protocol_changed'] is False
+    expected = json.loads(json.dumps(locked))
+    for path, hashes in amendment['changes'].items():
+        assert expected['bindings'][path] == hashes['before']
+        assert current['bindings'][path] == hashes['after']
+        expected['bindings'][path] = hashes['after']
+    assert expected == current
+
+
 def registration(create=False):
     cfg = json.loads((ROOT/CONFIG).read_text())
     _, previous = parent.registration()
@@ -56,7 +68,13 @@ def registration(create=False):
     path = PUBLIC/'registration_lock.json'
     if create: immutable_json(path, identity)
     else:
-        assert json.loads(path.read_text()) == identity
+        locked = json.loads(path.read_text())
+        if locked != identity:
+            amendment_path = PUBLIC/'implementation_amendment.json'
+            parent.risk.base.previous.require_committed(amendment_path)
+            amendment = json.loads(amendment_path.read_text())
+            assert amendment['original_registration'] == artifact(path)
+            validate_display_amendment(locked, identity, amendment)
         parent.risk.base.previous.require_committed(path)
     return cfg, previous
 
