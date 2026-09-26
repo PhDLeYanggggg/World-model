@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Nested Locality Residual (2026-09-26, Inner Training Complete, Readout Not Run)
+## Nested Locality Residual (2026-09-26, Predictions Frozen, Readout Not Run)
 
 Previous goal turn: progress. Parent b631bf80 verified locally/on GitHub;
 51 artifacts and10 source bindings match. Native arm64;12.6578GiB free disk.
@@ -41,6 +41,10 @@ the legacy residual fitter's unconditional in-sample flag is replaced with
 actual OOF/cyclic provenance. Numerical fitting/prediction remain identical;
 completed heads and checkpoint identities are unchanged. No probes/readout
 had run. Both amendments are preserved in a committed hash chain.
+Amendment4d8b75b7 and29 tests preceded the probe fit. PID56345 completed normally:
+864 closed-form fits /144 outer-view predictions frozen before outcome readout.
+Risk-head fit time787.943793s; median initial/final fixed-batch loss0.651791 /
+0.433402; unknown draws0. Loss decline is not held improvement.
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 

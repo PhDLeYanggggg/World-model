@@ -23,6 +23,8 @@ subset has just five easy-harm rows, so this is not a statistical-power claim.
 All 432 native-Torch risk heads and 864,000 updates are now complete, including
 the resumed pilot. Their predictions are frozen before residual fitting and
 held readout. No new cross-locality improvement result is available yet.
+All 864 fixed residual fits are also complete; their 144 outer-view
+predictions are frozen before the new source-development readout.
 Before residual fitting, I corrected a legacy provenance field that otherwise
 would incorrectly label OOF predictions as in-sample. The second recorded
 amendment changes metadata only; all coefficients and predictions are tested
