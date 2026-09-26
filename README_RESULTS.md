@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Auxiliary Gradient Diagnostic (2026-09-27, Registered, Not Run)
+## Auxiliary Gradient Diagnostic (2026-09-27, Running)
 
 The strong-base failure is verified at f1d011aa; its 20 public artifacts and
 23 source bindings still match. I am testing task interference with 17,280
@@ -15,7 +15,11 @@ are compared at the same model and optimizer state. All probes use previously
 exposed fitting data and cannot establish generalization. No independent role
 is opened. CREATE read-only access works; no remote jobs were submitted or
 modified. Local arm64 CPU4/interop1/workers0 is appropriate for this diagnostic.
-Real diagnostic and repair decision are not_run at registration.
+Registration1a5db084 preceded the real pilot. PID39945 completed one view and
+120 virtual AdamW updates in16.431732 seconds including view preparation,
+excluding ancestry preflight. Full144-view run PID40235 is running; aggregate
+readout and repair decision are not_run. These are controlled fitting updates,
+not newly trained deployable heads or generalization gains.19 scoped tests pass.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
 

@@ -1,0 +1,34 @@
+# Running and Resuming the Gradient Diagnostic
+
+Use the native arm64 environment from the project root. Entry checks reject
+Rosetta before importing Torch. Runtime is CPU4, interop1, DataLoader workers0.
+No remote jobs are required. The fresh CREATE read-only receipt was obtained
+without changing existing jobs; its hash is in registration_lock.json.
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_european_aux_gradient.py --phase run
+.venv-pytorch/bin/python scripts/report_m3w_european_aux_gradient.py
+.venv-pytorch/bin/python scripts/plot_m3w_european_aux_gradient.py
+.venv-pytorch/bin/python scripts/verify_m3w_european_aux_gradient.py
+```
+
+Registration was committed and pushed in 1a5db084 before the real-data pilot.
+The runner verifies original inputs, labels, source bindings, model states
+and optimizer receipts. It reuses complete per-view receipts on resume.
+An interrupted current view is recomputed from immutable source checkpoints;
+no partial diagnostic changes its source model. The file lock prevents a
+duplicate runner. Parent full training is not repeated by these commands.
+
+Commit the diagnostic_freeze.json before aggregate readout. Verification
+recomputes every isolated update and requires byte-identical diagnostics,
+report and figure. This is diagnostic replay, not a second independent fit.
+The pilot completed 120 virtual updates over one view in 16.431732 seconds
+including that view's data preparation, excluding ancestry preflight.
+
+Private files, PID heartbeat, events and receipts live under
+data/stage_cvpr2027_experiments/european_aux_gradient_v1/. Keep all row-level
+diagnostics private. No data, images, histories, latent cache or checkpoints
+are committed. Preserve 10GiB free disk and all unrelated staged work.
+
+Fitting probes are not validation or final tests. No deployment, calibration,
+threshold, final-test role, Stage5C or SMC is changed by this experiment.
