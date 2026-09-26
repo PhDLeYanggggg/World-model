@@ -91,6 +91,13 @@ figures reproduce byte-for-byte. The parent's same-version 509 tests remain
 cached_verified, not rerun; the full legacy suite was not run. These checks
 do not reverse the failed cost gate.
 
+The next [frozen transport diagnostic](outputs/publication_readiness_2026_09/european_severity_transport_v1/protocol.md)
+asks whether excess error and training gradients concentrate in a few
+recordings, or whether held inputs fall outside a coarse training-feature
+range. It retains signed improvements and harms, all source assignments and
+the unchanged models. Seven targeted tests pass; real-data calculation has
+not started at registration. This is diagnosis, not a new deployment claim.
+
 ### Completed Conditional-Cost Experiment
 
 I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)
