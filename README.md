@@ -112,6 +112,15 @@ match, and the figure reproduces byte-for-byte. Previous checks remain
 cached_verified; the full legacy suite was not rerun. Reproducible diagnosis
 is not proof of a repaired model.
 
+My next [controlled context probe](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md)
+tests whether past motion, neighbor context and frozen-rollout disagreement
+explain transferable cost bias. It compares a global-intercept correction
+with a fixed additive context model, retaining the original strong estimator.
+Seven past-only summaries, training-only cuts and 864 planned closed-form fits
+are fixed before readout. Thirteen scoped tests pass. This is not new neural
+training or independent risk calibration: the residual-fitting base predictions
+are in-sample, and all independent roles remain unopened. No deployment change.
+
 ### Completed Conditional-Cost Experiment
 
 I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)

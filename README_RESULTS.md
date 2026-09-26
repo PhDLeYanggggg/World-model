@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal Context Residual (2026-09-26, Registered, Fit Not Yet Run)
+
+Previous goal turn: progress. Parent8cdc8de0 verified locally and on GitHub;
+48 artifacts/9 bindings match. Native arm64 and14.18GiB free disk verified.
+Fresh CREATE read-only query20260926_045102UTC succeeded; jobs untouched.
+Seven fixed past-only summaries, fitting terciles and explicit missing bins.
+Original, ordinary and severity estimators remain frozen. Global-bias and
+additive-context ridge probes:864 planned closed-form fits,0 neural updates.
+All144 views /36 groups retained. Thirteen scoped tests pass. Prediction
+freeze must be committed before new held readout. Residual fitting uses
+in-sample base predictions, not independent calibration or OOF stacking.
+No independent-role access, policy change, Stage5C or SMC.
+[Protocol](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md).
+
 ## Frozen Severity Transport (2026-09-26, Complete, Broad Repair Triggers Unsupported)
 
 Previous goal turn: progress, completed negative supervision experiment.
