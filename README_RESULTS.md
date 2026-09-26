@@ -41,8 +41,14 @@ Full fitting/held MSE improve42/72 and34/72 vs original;25 fitting-only,
 not a magnitude, trajectory or deployment success. Motion-only retains0
 positive/1 negative vs original and0 positive/2 negative vs ordinary.
 All diagnostics use three seeds and3,000 resamples of four localities per
-assignment; dependent, exploratory, not multiplicity-adjusted. Replay and
-targeted verification are running; no independent confirmation claimed.
+assignment; dependent, exploratory, not multiplicity-adjusted. All144 model
+prediction-prefix replays,144 support replays and1,152 independent cost/ranking
+checks pass. Twenty-two tests in5 relevant files pass freshly; prior509
+same-version tests in94 files remain cached_verified. Full legacy suite
+not_run. All57 public artifacts and12 source bindings match; both figures
+are visually checked and byte-reproducible. Scientific gates remain failed.
+Next: frozen recording/track-level excess-error and fitting influence/support
+diagnosis before one evidence-based repair. No independent confirmation.
 No independent role, threshold, policy, Stage5C or SMC change.
 [Protocol](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
 [Conclusions](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/conclusions.md).

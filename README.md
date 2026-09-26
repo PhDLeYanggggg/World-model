@@ -84,7 +84,12 @@ MSE against the original, 25 do not improve held MSE. My next check is frozen
 recording-level error and training influence/support, before another training
 change. I retain [all source contrasts](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/paired_contrasts.svg),
 including adverse motion-only results. No deployment or independent-data
-access changed; numerical replay and scoped tests are being checked separately.
+access changed. Verification passes all 144 prediction-prefix replays, 1,152
+independent cost/ranking checks, 144 support replays and 22 tests in five
+relevant files. All 57 public artifacts and 12 source bindings match; both
+figures reproduce byte-for-byte. The parent's same-version 509 tests remain
+cached_verified, not rerun; the full legacy suite was not run. These checks
+do not reverse the failed cost gate.
 
 ### Completed Conditional-Cost Experiment
 
