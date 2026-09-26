@@ -24,6 +24,13 @@ Stage5C or SMC change. Previous goal turn made verified experimental progress.
 
 [Protocol](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/protocol.md).
 
+Registration de88a1b8 was pushed before fresh support. PID32925 completed144
+views with matching original inputs,targets and preprocessing. Known cost
+rows12162-172922 per view; positive cap events132-3868(full),15-1632(motion).
+Known zero-envelope costs remain included. This is numerical training
+support,not evidence of adequate statistical power. No held labels were used.
+Pilot and training remain not_run at this checkpoint.
+
 ## Cap-Event Auxiliary Costs (2026-09-26, Readout Complete, No Promotion)
 
 Fresh432 Torch heads /864000 updates and144 source-held readouts complete.
