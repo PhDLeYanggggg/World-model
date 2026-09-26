@@ -65,6 +65,12 @@ exactly. Seventeen relevant tests pass; 47 public artifacts and 10 source
 bindings are sealed, and the figure is byte-reproducible. Prior same-version
 checks are reused with hashes rather than described as fresh training.
 
+I have now registered a [severity-weighted auxiliary comparison](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
+It changes one supervision term while keeping the model, initialization,
+sampler and budget fixed. Fitting-only support is checked before training;
+new predictions must be frozen before source-held evaluation. The comparison
+is pending, not a claimed improvement.
+
 ### Completed Conditional-Cost Experiment
 
 I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)

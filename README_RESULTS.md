@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Severity Auxiliary (2026-09-26, Registered, Support And Training Pending)
+
+Previous turn: progress. Parent27a8c53b is verified locally and on GitHub;
+47 artifacts/10 bindings match. Native arm64 and13.43GiB free disk verified.
+CREATE queue read-only observation20260926_035853UTC succeeded; no jobs changed.
+One registered change: replace ordinary membership BCE by H/fit_mean_H-weighted
+BCE; all cost losses, architecture, initialization, sampler and budget stay
+fixed. Future H/E are loss supervision only, never inference inputs. No
+probability-times-cost composition.144 planned new heads /288,000 updates;
+cached original, cost-only and ordinary auxiliary are required controls.
+Eight targeted tests pass including the weighted-log-loss optimum, exact
+resume, matched draws, unknown exclusion and strong-comparator guards.
+Fitting support, real training and outcome readout are not_run at registration.
+No independent role, threshold, policy, Stage5C or SMC change.
+[Protocol](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
+
 ## Frozen Task Gradients (2026-09-26, Complete, Broad Conflict Unsupported)
 
 The next diagnostic examines 288 frozen cost-only/auxiliary heads on their
