@@ -24,16 +24,30 @@ causal shares. All 36 groups / 144 held folds replay exactly; 1,728 algebra
 checks and 501 tests in 92 scoped files pass. The figure reproduces byte-for-byte.
 This remains source-development evidence, not independent confirmation.
 
-I have registered the next [matched auxiliary-supervision experiment](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/registration.md).
-It retains direct nested costs and adds easy-membership supervision to the
-shared encoder, without multiplying probability into costs. Both new arms
-have identical capacity and sampling budgets; eight focused tests pass,
-including exact resume and agreement with the original direct-cost control.
-Registration cadc04df preceded the real100-update pilot (0.09008 fitting
-seconds). All288 heads and576,000 updates completed with checkpoint and
-heartbeat; the pilot counts toward the frozen budget. Predictions are being
-hash-verified and frozen before new held readout, which remains not_run.
-No policy or independent-data access is changed.
+I then completed the [matched auxiliary-supervision experiment](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/conclusions.md):
+direct nested costs, with easy-membership supervision added to the shared
+encoder but never multiplied into predicted costs. All 288 native-Torch heads
+and 576,000 updates are complete. Registration cadc04df preceded training;
+prediction freeze 8daab80d was pushed before the new held readout.
+
+The control reproduces the original costs exactly. The auxiliary repair
+fails: against both strong controls, six full-input MSE intervals contain
+one positive, one negative and four overlaps; points range -8.13% to +1.04%.
+Tail harm capture also fails a guard. Membership itself is learned (descriptive
+median held AUROC 0.861), but that is not stable cost or trajectory improvement.
+The [loss curves](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/training_loss.svg)
+and [all-source contrasts](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/paired_contrasts.svg)
+retain the negative evidence. No policy or independent-data access changed.
+
+Verification passes 288 checkpoint prediction-prefix replays, 2,304 independent
+cost/ranking checks and 509 tests in 94 scoped files. All 54 public artifacts
+and 101 source bindings match their recorded hashes; both figures reproduce
+byte-for-byte. The full legacy suite was not rerun. These engineering checks
+do not reverse the failed scientific gate.
+
+Next I will examine cost/classification gradient alignment on frozen fitting
+batches before choosing a controlled repair. I am not tuning thresholds or
+selecting a favorable held-scene result. The research goal remains ongoing.
 
 ### Completed Conditional-Cost Experiment
 

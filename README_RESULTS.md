@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Membership Auxiliary Cost (2026-09-26, Registered)
+## Membership Auxiliary Cost (2026-09-26, Completed, Primary Gate Failed)
 
 The completed factor attribution motivates a single controlled repair:
 direct nested costs plus auxiliary easy-membership BCE, without composing
@@ -24,7 +24,34 @@ and does not yet measure auxiliary runtime. All288 heads /576,000 updates
 are complete; checkpoint/prediction hashes are verified before freezing and
 new held readout. Summed fitting time is541.7740seconds, excluding loading,
 inference and verification; unknown-label draws are zero. Outcome readout
-stays not_run until freeze is committed.
+was not_run until prediction freeze8daab80d was committed and pushed.
+All36 result groups /144 held folds have now been read out.
+
+The cost-only control reproduces original held predictions exactly(max error0).
+Auxiliary vs both control and original has1 positive,1 negative,4 overlapping
+full easy-harm MSE intervals; points range -8.1329% to +1.0446%. Full top10
+harm-capture has2 positive,1 negative,3 overlapping intervals, so the tail
+guard also fails. All-harm intervals all overlap zero, not a noninferiority
+proof. Motion-only retains2 positive,2 negative,2 overlaps(-10.58% to +5.18%).
+Against the weaker failed conditional model, full has3 positive,0 negative,
+3 overlaps; that does not rescue the strong-comparator gate.
+
+Full fitting/held MSE improves in21/72 and40/72 dependent views;12 fitting
+improvements do not transfer. The auxiliary learns membership (median held
+AUROC0.86123/Brier0.10529), but this is not a cost, trajectory or policy gain.
+Three seeds averaged per locality, then3,000 resamples of four localities;
+source roles/windows are dependent and exploratory. No independent roles
+opened. Next: frozen fitting-batch gradient alignment before a registered
+decoupling or target-information repair, not a coefficient/threshold sweep.
+[Conclusions](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/failure_analysis.md),
+[remaining gap](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/project_gap.md).
+
+Final verification:288 checkpoint prediction-prefix replays,2,304 independent
+cost/ranking checks and509 tests in94 scoped files pass. All54 public
+artifacts/101 source bindings are rehashed; figures visually reviewed and
+byte-reproducible. Full legacy suite not_run. This verifies the failed
+experiment, not a new deployable model or world-dynamics contribution.
 [Protocol](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/registration.md).
 
 ## Cost-Factor Attribution (2026-09-26, Completed And Verified)
