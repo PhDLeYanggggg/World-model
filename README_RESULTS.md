@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Factor Attribution (2026-09-26, Registered, Readout Not Run)
+
+Previous goal turn: progress. Parent 406fb9d6 and all 55 public artifacts/97
+bindings match local/GitHub records. Native arm64 and 11.76GiB free disk are
+verified. Four diagnostic tests pass. A new CREATE read-only queue observation
+succeeded; no jobs submitted or modified, M3W remote path still unverified.
+The attribution separates membership/severity/cross terms using frozen heads.
+All six source roles and three seeds are retained, with no policy or threshold
+change. Label-assisted E/H substitutions are unavailable at inference and
+cannot pass a model gate. Independent roles remain closed.
+[Protocol](outputs/publication_readiness_2026_09/european_cost_attribution_v1/protocol.md).
+
 ## Membership-Conditional Cost (2026-09-26, Completed, Primary Gate Failed)
 
 The prior membership diagnostic is positive; expected-harm improvement is still

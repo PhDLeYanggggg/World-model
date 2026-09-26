@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am now attributing the failed cost estimator's error to membership,
+conditional severity and their signed cross term. This
+[frozen-model diagnostic](outputs/publication_readiness_2026_09/european_cost_attribution_v1/protocol.md)
+uses labels only for offline analysis; label-assisted substitutions are not
+deployable models. No new policy or independent-data access is included.
+
+### Completed Conditional-Cost Experiment
+
 I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)
 to test whether recognizing easy cases makes intervention costs more reliable.
 All 288 native-Torch cost heads and 576,000 updates are complete. Registration
