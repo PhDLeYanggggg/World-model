@@ -29,10 +29,15 @@ Mechanism,primary and tail/coverage gates all fail. No promotion.
 
 The864 exact preclip factor identities have maximum coefficient error8.1411e-15.
 Direct MSE arithmetic checks1728 pass. This proves implementation isolation,
-not causal sufficiency or trajectory utility. Full replay is running;28 scoped
-pre-readout tests passed. Figure visually checked. All views retained, no
+not causal sufficiency or trajectory utility. Full replay reproduces all864
+fits/predictions and36 readout groups,including1728 direct MSE checks. Fresh28
+tests across five scoped files pass;parent432 neural replays and35 tests remain
+cached_verified,full legacy suite not_run. All50 public artifacts and11 source
+bindings are sealed. Figure visually checked and byte-reproducible. Results
+commitcc686b8a precedes this final verification record. All views retained, no
 independent-role access or held-tuned policy. Next:fixed common-event producer
-residual location/scale diagnosis before one producer-matched repair.
+residual location/scale diagnosis before a repair that is not algebraically
+equivalent to the already-failed in-sample control.
 
 [Protocol](outputs/publication_readiness_2026_09/european_event_transport_v1/protocol.md).
 [Conclusions](outputs/publication_readiness_2026_09/european_event_transport_v1/conclusions.md).

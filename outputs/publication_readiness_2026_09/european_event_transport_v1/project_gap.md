@@ -12,6 +12,11 @@ tested and is insufficient. A fitting-only producer-mismatch diagnostic is the
 next step; it must lead to one controlled repair or a justified rejection, not
 another unrestricted architecture/threshold search.
 
+A producer-matching proposal must first be checked against the old in-sample
+control:subtracting the outer head's fitting predictions simply reproduces
+that already-tested method. The next design must address an identified
+support/transport limitation without this equivalence or held-guided selection.
+
 Even a successful risk-head repair would still need demonstrated trajectory
 utility against strong causal controls, scene-joint intervention/conflict
 evaluation at matched budgets, and genuinely independent calibration and

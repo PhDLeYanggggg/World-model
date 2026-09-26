@@ -42,6 +42,13 @@ location and scale using the common event, preserving all views and the
 original strong control. Distinguish changed producer calibration from sparse
 feature support before registering one producer-matched residual design.
 
+Merely replacing the inner prediction by the three-locality head's in-sample
+prediction reduces to the prior context control, which already failed its
+primary gate. Likewise, adding their prediction difference algebraically
+cancels back to that same failed residual. Check this equivalence and existing
+support-aware experiments before proposing any new model. A renamed replay
+of that control is not another repair or a contribution.
+
 Do not choose a shrinkage, feature subset, site or risk budget from the held
 outcomes. Do not open independent calibration to compensate for a failed
 development method. Keep deployment unchanged and retain negative evidence.
