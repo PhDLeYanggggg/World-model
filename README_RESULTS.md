@@ -5,17 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Task Gradients (2026-09-26, Registered, Calculation Pending)
+## Frozen Task Gradients (2026-09-26, Complete, Broad Conflict Unsupported)
 
 The next diagnostic examines 288 frozen cost-only/auxiliary heads on their
 existing supported fitting batches. It measures shared gradients and two
 disposable AdamW steps per head using saved momentum, not new training or
 held-out selection. Six targeted tests pass, including manual optimizer
 agreement, finite differences, unchanged checkpoint state/RNG and unknown/
-held-row rejection. Calculation and interpretation are not_run until the
-registration is committed. Parent a9d49e5c is verified locally and on GitHub.
+held-row rejection. Registration b12c9cc9 was committed/pushed before all
+288 heads and576 disposable updates were calculated in156.665 seconds.
+Parent a9d49e5c is verified locally and on GitHub.
 A fresh CREATE read-only query succeeded; existing jobs remain untouched.
 No independent role, forecast, policy, threshold or deployment change.
+Full auxiliary views: total-cost cosine negative5/72, median+0.18696;
+virtual total cost better68/72, worse4/72. Motion-only negative2/72,
+median+0.21129; better70/72, worse2/72. Broad interference trigger false.
+Full all-harm component worsens45/72; easy-harm worsens30, improves42.
+Total fitting cost is not retained risk accuracy or held-out improvement.
+Cost-only shared membership gradients are zero; seven non-tied virtual
+controls are explained by different global clipping factors. All288 diagnostics
+and576 disposable optimizer steps replay exactly. Seventeen tests in3 relevant
+files pass freshly; the parent's509 same-version tests in94 files remain
+cached_verified, not rerun or relabeled fresh. All47 public artifacts and10
+source bindings are sealed. Figure visually checked and byte-reproducible.
+Full legacy suite not_run. No new persisted model training or checkpoint change.
+Next: fitting-only harm-support check before one severity-aware auxiliary
+comparison, not PCGrad/task-weight/threshold sweeps. Prior plain harm-only
+negative results remain required controls.
+[Conclusions](outputs/publication_readiness_2026_09/european_task_gradients_v1/conclusions.md).
 [Protocol](outputs/publication_readiness_2026_09/european_task_gradients_v1/protocol.md).
 
 ## Membership Auxiliary Cost (2026-09-26, Completed, Primary Gate Failed)

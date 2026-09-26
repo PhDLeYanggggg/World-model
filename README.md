@@ -45,11 +45,25 @@ and 101 source bindings match their recorded hashes; both figures reproduce
 byte-for-byte. The full legacy suite was not rerun. These engineering checks
 do not reverse the failed scientific gate.
 
-I have registered a [frozen fitting-batch diagnostic](outputs/publication_readiness_2026_09/european_task_gradients_v1/protocol.md)
-before choosing a controlled repair. It checks both gradient alignment and
-disposable updates with saved AdamW momentum; gradient conflict alone does
-not establish optimizer harm. No threshold search or new held-out readout
-is involved. Calculations are pending; the research goal remains ongoing.
+I completed the [frozen fitting-batch diagnostic](outputs/publication_readiness_2026_09/european_task_gradients_v1/conclusions.md).
+It does not support broad optimizer conflict as the explanation: only 5/72
+full-input auxiliary views have negative total-cost gradient alignment, and
+68/72 virtual AdamW updates improve total cost relative to a cost-only step.
+All-harm loss still worsens in 45/72 comparisons. Lower total fitting loss
+is therefore not the same as a useful, transported risk estimate.
+
+All 288 checkpoints remain frozen. The [diagnostic figure](outputs/publication_readiness_2026_09/european_task_gradients_v1/gradient_optimizer.svg)
+is not a new held-out improvement. I am not launching a gradient-surgery or
+weight sweep on this result. The next question is whether supervision should
+reflect harm magnitude rather than ordinary easy-class membership, with
+fitting-only support checked before another controlled experiment. Plain
+harm-only regression has already failed and is retained as negative evidence.
+No policy or independent-data role changes. The research goal remains ongoing.
+
+Verification replays all 288 diagnostics and 576 disposable optimizer steps
+exactly. Seventeen relevant tests pass; 47 public artifacts and 10 source
+bindings are sealed, and the figure is byte-reproducible. Prior same-version
+checks are reused with hashes rather than described as fresh training.
 
 ### Completed Conditional-Cost Experiment
 
