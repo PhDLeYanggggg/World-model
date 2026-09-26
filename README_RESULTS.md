@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Strong-Base Cap Auxiliary (2026-09-26, Registered, Not Yet Trained)
+## Strong-Base Cap Auxiliary (2026-09-26, Pilot Complete, Full Training Next)
 
 Parent c6666ce0 and its sealed artifacts/bindings were reverified. New native
 arm64 code passes18 scoped tests, including exact synthetic original-control
@@ -30,6 +30,13 @@ rows12162-172922 per view; positive cap events132-3868(full),15-1632(motion).
 Known zero-envelope costs remain included. This is numerical training
 support,not evidence of adequate statistical power. No held labels were used.
 Pilot and training remain not_run at this checkpoint.
+
+Support6f1d1b8b preceded real pilot PID33553. The100 updates took0.149321s
+fitting;phase wall16.136413s excludes ancestry preflight. Parameters24901,
+fixed-batch cost loss0.529177 to0.463507,unknown draws0,known zero-envelope
+draws12930. Fit-only extrapolation1290s excludes loading,inference and slower
+auxiliary training;it is not a completion promise. Native local training is
+viable. Resume the pilot to2000 and finish432 heads; no held result yet.
 
 ## Cap-Event Auxiliary Costs (2026-09-26, Readout Complete, No Promotion)
 
