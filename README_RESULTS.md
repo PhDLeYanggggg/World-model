@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Membership-Conditional Cost (2026-09-26, Training Complete, Readout Pending)
+## Membership-Conditional Cost (2026-09-26, Completed, Primary Gate Failed)
 
 The prior membership diagnostic is positive; expected-harm improvement is still
 unproven. Two new equal-size cost heads compare direct nested harm regression
@@ -30,9 +30,41 @@ draws. Summed fitting time is 459.5835 seconds: direct 225.7003, conditional
 233.8832; loading, inference and verification are excluded. Training artifacts
 and the prediction-freeze manifest are hash-verified. At 219 completed heads,
 a live snapshot showed about 11.13 GiB RSS; the process finished normally.
-Held readout remains not_run at this freeze checkpoint.
+Prediction freeze a5746d3c was pushed before all 36 group readouts. The full
+registered readout is complete; all arms and source assignments are retained.
 Independent roles, deployment, Stage5C/SMC remain unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_membership_cost_v1/registration.md).
+
+Conditional full positive-disagreement easy-harm MSE has zero positive, one
+negative and five overlapping intervals versus direct; versus original it
+has zero positive, four negative and two overlapping intervals. Assignment
+points range -82.52% to +6.90% and -88.84% to +3.81%, respectively. Against
+the fixed-probability composition, all six intervals are positive (+51.12%
+to +81.60%). That is a component signal against a weaker control, not a
+strong-baseline or trajectory gain. New direct itself loses five intervals
+against original_mean. All-harm and tail guards also fail.
+
+Conditional improves original fitting/held MSE in 14/72 and 19/72 dependent
+full views; 13 fitting improvements fail to transfer. Outside-easy rows
+dominate excess error in 50/53 worsening held views, with 92.90% of positive
+excess contributions. Full conditional median harm-event AUROC is 0.56160,
+but median top10 harm capture 25.91% is below original 27.40%. Motion-only
+has no positive original-comparison MSE interval and 30 weak-support views.
+
+Each interval averages three seeds within locality, then uses 3,000 resamples
+of four localities. Repeated roles/windows are not independent evidence.
+No new policy, thresholds or independent-data access. Next: source-only
+membership-versus-severity attribution before a registered objective repair.
+[Conclusions](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_membership_cost_v1/failure_analysis.md),
+[remaining gap](outputs/publication_readiness_2026_09/european_membership_cost_v1/project_gap.md).
+
+Final verification passes 288 cost-checkpoint prefix replays, 4,608 independent
+cost/ranking checks and 495 tests in 90 scoped files. Fitting/held metrics are
+recomputed over their full applicable rows. The receipt binds 55 public
+artifacts and 97 source files; both sets were rehashed successfully. Both
+figures were visually reviewed and rerender byte-identically. The full legacy
+suite is not_run. Verification does not reverse the failed scientific gate.
 
 ## Direct Easy Membership (2026-09-26, Component Signal Positive)
 

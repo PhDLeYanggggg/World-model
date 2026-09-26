@@ -10,18 +10,35 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now testing [membership-conditional expected harm](outputs/publication_readiness_2026_09/european_membership_cost_v1/registration.md).
-The full-input membership result below is positive, but it does not yet make
-intervention costs reliable. This experiment compares a direct cost head with
-separate easy/non-easy harm experts composed using the frozen membership MLP.
-A constant-membership control tests whether the learned probability adds value.
-The registered budget is 288 new fits and 576,000 updates; eight targeted tests
-pass. Registration 2c321649 preceded fitting. The real 100-update pilot has
-completed and resumed within the budget. All 288 heads and 576,000 updates
-are complete, with 459.58 summed fitting seconds and zero unknown-label
-training draws. Prediction hashes are verified and frozen before current
-held readout, which has not run yet. No new forecasting model, policy or
-independent-data access is included.
+I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)
+to test whether recognizing easy cases makes intervention costs more reliable.
+All 288 native-Torch cost heads and 576,000 updates are complete. Registration
+2c321649 preceded fitting; prediction freeze a5746d3c was pushed before readout.
+
+The primary gate failed. Against the original cost model, none of the six
+full-input MSE intervals is positive and four are negative. Against the new
+direct head, none is positive and one is negative. Learned membership does
+beat a fixed-probability composition in all six comparisons, but that weaker
+control cannot establish overall improvement. These are cost-estimation
+results, not new trajectory gains.
+
+The [failure analysis](outputs/publication_readiness_2026_09/european_membership_cost_v1/failure_analysis.md)
+localizes the problem: outside-easy rows dominate excess error in 50/53
+worsening full views. The conditional fit also beats the original in only
+14/72 fitting views, so this is not just held-scene overfitting. My next step
+is to separate cost-weighted membership error from severity error before
+another fit. I am not changing the policy or opening independent data.
+
+The [comparison figure](outputs/publication_readiness_2026_09/european_membership_cost_v1/paired_contrasts.svg)
+retains the negative results; [loss curves](outputs/publication_readiness_2026_09/european_membership_cost_v1/training_loss.svg)
+show arm-specific objectives, which are not directly comparable across arms.
+This remains source development. The extra membership model also means equal
+new-head budgets are not equal total system cost. The research goal is ongoing.
+
+Verification passes 288 checkpoint prediction-prefix replays, 4,608 independent
+cost/ranking checks and 495 tests in 90 scoped files. All 55 public artifacts
+and 97 source bindings match their recorded hashes. The full legacy suite was
+not rerun. These checks validate the experiment, not its failed method claim.
 
 ### Completed Membership Diagnostic
 
@@ -45,7 +62,7 @@ misses a log-loss guard. I retain both negative findings rather than changing
 the criterion. Full and motion-only disagreement populations differ, so this
 is not proof of a scene or interaction contribution.
 
-My next test separates membership from conditional harm severity. Membership
+This motivated the conditional-harm test above. Membership
 alone does not establish accurate expected costs or safe intervention; no
 policy changes or independent-data access were made. The research goal is
 still ongoing. [Failure analysis](outputs/publication_readiness_2026_09/european_easy_membership_v1/failure_analysis.md)
