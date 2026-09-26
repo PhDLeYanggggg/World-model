@@ -36,6 +36,7 @@ def main():
                             ax.text(.97, j+offset, arm+': missing support', ha='right', va='center', fontsize=7,
                                     transform=ax.get_yaxis_transform(), color=color)
                 ax.set_yticks(range(6), [f'P{p} / C{c}' for p, c in assignments])
+                ax.set_ylim(-.65, 5.65)
                 ax.set_title(pair.replace('_', ' ')); ax.set_xlabel(label); ax.grid(axis='x', alpha=.15)
                 ax.spines[['top', 'right']].set_visible(False)
                 if ri == 0: ax.legend(loc='best')

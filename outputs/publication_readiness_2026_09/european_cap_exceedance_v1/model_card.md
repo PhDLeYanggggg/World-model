@@ -40,6 +40,13 @@ Public prediction-freeze receipts bind each completed checkpoint and score
 file. They are not training data or weights in the public repository.
 
 ## Evidence Boundary
+All 288 heads have completed and predictions were frozen in commit882a170f
+before readout. Full-input linear proper-score and AP contrasts are favorable
+in all six assignment intervals, but the full registered MLP gate fails.
+The MLP does not consistently improve on linear, and tail capture is not
+uniformly supported. Motion-only one-class views remain not_estimable.
+See conclusions.md for exact results and failure_analysis.md for limitations.
+
 Fixed-batch loss decreases are optimization evidence only. Source-held
 classification,ranking and probability scores are evaluated after prediction
 freeze;none alone demonstrates trajectory improvement. Four-locality

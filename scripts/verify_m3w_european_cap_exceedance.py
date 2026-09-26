@@ -28,10 +28,12 @@ def main():
     for phase in ['verify_training', 'verify_eval']:
         logs.append(execute(['scripts/run_m3w_european_cap_exceedance.py', '--phase', phase], phase))
     before = {name: run.digest(run.PUBLIC/name) for name in ['aggregate_metrics.json', 'results.md', 'cap_event_contrasts.svg',
-                                                          'training_loss_endpoints.csv', 'training_summary.json']}
+                                                          'training_loss_endpoints.csv', 'training_summary.json',
+                                                          'view_metrics.csv', 'post_readout_diagnosis.json']}
     logs.append(execute(['scripts/run_m3w_european_cap_exceedance.py', '--phase', 'report'], 'report_replay'))
     logs.append(execute(['scripts/plot_m3w_european_cap_exceedance.py'], 'figure_replay'))
     logs.append(execute(['scripts/summarize_m3w_cap_event_training.py'], 'training_summary_replay'))
+    logs.append(execute(['scripts/analyze_m3w_cap_event_readout.py'], 'diagnosis_replay'))
     for name, h in before.items():
         assert run.digest(run.PUBLIC/name) == h
     xml = run.PRIVATE/'tests.xml'
@@ -44,6 +46,7 @@ def main():
     reread = json.loads((run.PUBLIC/'readout_replay.json').read_text())
     assert reread['views'] == 144 and reread['exact']
     source_paths = set(run.FILES+TESTS+['scripts/plot_m3w_european_cap_exceedance.py',
+                                      'scripts/analyze_m3w_cap_event_readout.py',
                                       'scripts/summarize_m3w_cap_event_training.py',
                                       'scripts/verify_m3w_european_cap_exceedance.py'])
     doc = dict(all_passed=True, heads_replayed=288, readout_views_replayed=144,

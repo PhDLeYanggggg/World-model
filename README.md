@@ -10,16 +10,28 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing whether rare outcomes above a frozen
-risk estimate can be identified from causal history in a different locality.
-The [registered cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/protocol.md)
-compares matched linear and small neural probes, with all three seeds and all
-source-development localities retained. All288 models have now completed
-576,000 fixed updates;held results are not yet read. All144 fitting views pass numerical support checks; the full-input
-views have at least132 event rows, but some motion-only localities have none.
-That support difference will be retained rather than hidden. Predictions
-are frozen before the new readout; independent
-selection, calibration, confirmation and deployment remain unchanged.
+**Latest experiment:** causal history contains useful information about rare
+forecasting errors above a frozen risk estimate. I completed the
+[cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/conclusions.md)
+with 288 matched linear and small neural models, 576,000 updates and three
+seeds. With full inputs, all six locality-bootstrap comparisons support the
+linear model over a constant-prior probability estimate and a simple
+disagreement ranking. AP gains over that ranking range from 22.77 to 32.65
+percentage points. These are six point estimates, not one confidence interval.
+
+That is a positive risk-learning result, but not yet a forecasting gain.
+The neural model does not consistently beat linear, and its complete
+registered gate fails because one log-loss and one tail-capture interval
+overlap zero. The [full figure](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/cap_event_contrasts.svg)
+retains negative and unsupported motion-only comparisons. The assignments
+overlap and use four development localities; they are not independent tests.
+
+Next I will test whether this event signal helps a matched expected-cost
+model, while preserving the existing cost constraints and fallback rules.
+No deployment changes follow from event classification alone. Predictions
+were frozen before readout; independent selection, calibration and confirmation
+remain unopened. Full checkpoint and result replay is the current verification
+step, separate from the scientific gate.
 
 **Latest completed diagnosis:** the risk estimator's frozen output range limits many
 realized-label corrections, but simply raising that range is not a supported
@@ -33,9 +45,9 @@ unweighted records has mean easy harm above the mean predicted harm cap.
 These are dependent fitting summaries, not model gains or independent tests.
 A label-assisted projection can see the outcome; a large floor does not prove
 conditional bias. The [all-view figure](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/fixed_cap_diagnostic.svg)
-retains the variation and both weighting schemes. Next I will test whether
-rare cap-exceedance events have transferable causal signal before changing
-the joint cost model. Independent data roles and deployment remain unchanged.
+retains the variation and both weighting schemes. That diagnosis motivated
+the cap-event study above rather than an unsupported global cap increase.
+Independent data roles and deployment remain unchanged.
 Full replay reproduces all 144 views and 2,304 arithmetic identities. Fifty-one
 tests in seven scoped files pass; the figure is visually checked and
 byte-reproducible. Sixteen public artifacts and 13 source bindings are sealed.

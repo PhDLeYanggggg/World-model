@@ -5,7 +5,38 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Causal Cap-Event Learnability (2026-09-26, Registered, Not Yet Trained)
+## Causal Cap-Event Learnability (2026-09-26, Readout Complete, No Promotion)
+
+The complete fresh experiment has 288 native-Torch heads, 576,000 updates and
+144 source-held readouts. Predictions were frozen in882a170f before readout.
+Full-input linear probes improve log loss and Brier over fitting-only prior
+in all six locality-bootstrap contrasts; AP over disagreement also improves
+in all six, with point gains22.77-32.65 percentage points. Frozen risk-ranking
+controls are also beaten in all six AP contrasts. This is useful event signal,
+not expected-harm accuracy, a new trajectory gain or a deployable policy.
+
+Full-input MLP has5/6 favorable log-loss and5/6 favorable overshoot-capture
+intervals; each remaining interval overlaps zero. The registered complete
+signal gate is false. Against linear, all six MLP log-loss intervals overlap;
+AP has2 positive/1 negative/3 overlap. Motion-only MLP probability scores often
+deteriorate; three held views have no positive event and ranking is correctly
+not_estimable. No negative or unsupported result is discarded.
+
+Intervals average three seeds within each of four localities, then use3000
+paired locality resamples. Six assignments overlap and have prior source
+development exposure; no multiplicity-adjusted or confirmatory claim. Full
+versus motion-only changes forecasts and event populations, not a matched
+feature ablation. Two-to-three-locality producer transport remains explicit.
+
+Next: registered matched joint-cost auxiliary-label experiment, not in-sample
+score stacking, threshold tuning or independent-role access. Replay of all
+frozen models/readouts and the six-file test scope is pending at this record.
+Deployment, Stage5C and SMC remain unchanged/off. The full legacy suite is
+not_run. [Conclusions](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/failure_analysis.md),
+[project gap](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/project_gap.md).
+
+### Chronological Run Record
 
 The previous conversational turn only acknowledged authorization and made no
 research progress. Local and GitHub parent c895ed8f match. CREATE was queried
