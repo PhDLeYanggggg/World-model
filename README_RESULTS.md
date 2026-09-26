@@ -38,6 +38,14 @@ Fixed-batch BCE0.084219396 to0.076875404,unknown rows sampled0. This establishes
 real native-Torch execution,not held performance. Local placement is supported;
 PID18461 continues the same checkpoint and starts the full288-head run.
 
+PID18461 finished all288 heads /576000 effective updates normally;phase wall
+635.348488458s including source loading and inference,excluding ancestry
+preflight. The first MLP resumed100 to2000 with1900 new updates. Private
+checkpoints/scores occupy523MiB and are not committed. All held predictions
+are frozen before the new source-development readout. No new policy evaluation
+or independent-role access. Training-loss endpoints are exported separately
+from generalization metrics.
+
 ## Fixed-Cap Fitting Diagnostic (2026-09-26, Completed, No Promotion)
 
 Previous goal turn:progress. Parent dbceb8d4 matches local/GitHub; the full

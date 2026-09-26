@@ -28,3 +28,11 @@ Completed head receipts freeze the final model and held causal predictions.
 The local data position,small heads,pilot cost and memory support local CPU
 execution. No need to occupy CREATE GPU capacity for this fixed experiment.
 Forecasts,independent data roles,policy thresholds and deployment are unchanged.
+
+Full training PID18461 subsequently completed288 heads /576000 effective
+updates normally. Phase wall635.348488458s includes source loading,inference
+and final checkpoints,excluding ancestry preflight. First MLP resumed100 to
+2000 with1900 new updates. Private artifacts occupy523MiB. Observed training
+RSS was about12GiB. The process is terminal,not a background-running claim.
+No held outcome readout occurred during training. Final scores are frozen
+before the separate evaluation phase.
