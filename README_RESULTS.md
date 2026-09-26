@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Membership-Conditional Cost (2026-09-26, Registered, Training Running)
+## Membership-Conditional Cost (2026-09-26, Training Complete, Readout Pending)
 
 The prior membership diagnostic is positive; expected-harm improvement is still
 unproven. Two new equal-size cost heads compare direct nested harm regression
@@ -25,8 +25,12 @@ Registration commit 2c321649 preceded the real 100-update direct pilot, which
 completed in 0.09689 summed fitting seconds and resumed within the fixed
 budget. The initial direct-only projection is 558.11 fitting seconds, excluding
 loading/inference and not an estimate of conditional total runtime. Full
-training is running. At 25 completed heads, a live process snapshot showed
-about 9.15 GiB RSS and 12.24 GiB free disk. Held readout remains not_run.
+training is complete: 288 heads / 576,000 updates and zero unknown-label
+draws. Summed fitting time is 459.5835 seconds: direct 225.7003, conditional
+233.8832; loading, inference and verification are excluded. Training artifacts
+and the prediction-freeze manifest are hash-verified. At 219 completed heads,
+a live snapshot showed about 11.13 GiB RSS; the process finished normally.
+Held readout remains not_run at this freeze checkpoint.
 Independent roles, deployment, Stage5C/SMC remain unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_membership_cost_v1/registration.md).
 

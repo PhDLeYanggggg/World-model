@@ -17,9 +17,11 @@ separate easy/non-easy harm experts composed using the frozen membership MLP.
 A constant-membership control tests whether the learned probability adds value.
 The registered budget is 288 new fits and 576,000 updates; eight targeted tests
 pass. Registration 2c321649 preceded fitting. The real 100-update pilot has
-completed and resumed within the budget; full training is running. Current
-held readout has not run. No new forecasting model, policy or independent-data
-access is included.
+completed and resumed within the budget. All 288 heads and 576,000 updates
+are complete, with 459.58 summed fitting seconds and zero unknown-label
+training draws. Prediction hashes are verified and frozen before current
+held readout, which has not run yet. No new forecasting model, policy or
+independent-data access is included.
 
 ### Completed Membership Diagnostic
 
