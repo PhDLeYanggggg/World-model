@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Membership Auxiliary Cost (2026-09-26, Registered)
+
+The completed factor attribution motivates a single controlled repair:
+direct nested costs plus auxiliary easy-membership BCE, without composing
+probability into costs. Matched cost-only and auxiliary heads each have
+24,901 parameters. Six assignments, three seeds, full/motion-only and four
+held localities give 288 fits / 576,000 updates. The original cached model
+is retained as a strong comparator; improving the failed conditional model
+alone is insufficient. Eight targeted tests pass including exact resume,
+unknown-label exclusion and original-control agreement. Training/readout
+not_run at registration. Parent 9987ba4b is pushed; no independent roles,
+thresholds, policies or deployment changes.
+[Protocol](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/registration.md).
+
 ## Cost-Factor Attribution (2026-09-26, Completed And Verified)
 
 Previous goal turn: progress. Parent 406fb9d6 and all 55 public artifacts/97

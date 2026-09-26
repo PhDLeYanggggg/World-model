@@ -24,9 +24,13 @@ causal shares. All 36 groups / 144 held folds replay exactly; 1,728 algebra
 checks and 501 tests in 92 scoped files pass. The figure reproduces byte-for-byte.
 This remains source-development evidence, not independent confirmation.
 
-Next I will test easy-membership as an auxiliary representation task while
-retaining direct nested cost targets. I will not multiply its probability into
-cost predictions. No policy or independent-data access is changed.
+I have registered the next [matched auxiliary-supervision experiment](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/registration.md).
+It retains direct nested costs and adds easy-membership supervision to the
+shared encoder, without multiplying probability into costs. Both new arms
+have identical capacity and sampling budgets; eight focused tests pass,
+including exact resume and agreement with the original direct-cost control.
+Training and outcome readout are not_run at registration. No policy or
+independent-data access is changed.
 
 ### Completed Conditional-Cost Experiment
 
