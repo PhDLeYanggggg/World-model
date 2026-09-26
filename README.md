@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I traced the fractional head's main magnitude error to easy-event membership:
+outside-easy rows dominate 35/39 full views whose error increased. I have
+registered a [matched frozen-feature readout test](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md)
+to separate useful representation from cost fitting. Both arms keep the
+original reference-cost path unchanged. The protocol specifies288 new small
+readouts and576,000updates; training and new outcome readout have not run yet.
+No policy change or positive result is implied.
+
+### Completed Fractional-Harm Test
+
 I tested a [support-conditional fractional-harm objective](outputs/publication_readiness_2026_09/european_support_fractional_v1/conclusions.md)
 with 144 fresh Torch heads and matched initialization, sampled rows and update
 budgets. It improved an important secondary result: median harm-event AUROC
