@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Harm Tail Crossfit (2026-09-26, Registered, Training Not Run)
+
+The next diagnostic uses leave-one-B-locality-out mean-moment fitting with
+all six source assignments, three seeds and full/motion-only pairs: 144 heads,
+288,000 updates. The inner fold recomputes normalization, cost scale and easy
+event cut using only three fitting localities. Its event definition is not
+silently pooled with the existing whole-B-cut C endpoint. B-fitted teacher
+selection masks are not used. Six targeted tests check held-locality exclusion,
+unknown labels, train-only bins, tied-score mass and zero-event interpretation.
+Training, held-out results and any deployment gain remain not_run.
+[Protocol](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/registration.md).
+
 ## Reference Protection (2026-09-25, Completed, Repair Not Established)
 
 Two warm-started arms test whether freezing reference moments removes the

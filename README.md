@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am now testing [harm ranking with locality-excluded fitting](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/registration.md).
+Each risk head is fitted on three source localities and checked on a fourth,
+with preprocessing and the diagnostic event definition fitted on the same
+three. This separates recognizing costly cases from predicting their cost.
+The experiment is registered; training and outcome readout are not complete.
+It does not alter the deployed policy or open reserved evaluation data.
+
+### Completed Reference-Protection Test
+
 I completed a [matched reference-protection experiment](outputs/publication_readiness_2026_09/european_reference_protection_v1/conclusions.md)
 to test whether separating reference-cost and harm learning repairs the risk
 model. Both arms start from the same checkpoint and receive the same extra
