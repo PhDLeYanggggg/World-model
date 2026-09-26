@@ -65,16 +65,26 @@ exactly. Seventeen relevant tests pass; 47 public artifacts and 10 source
 bindings are sealed, and the figure is byte-reproducible. Prior same-version
 checks are reused with hashes rather than described as fresh training.
 
-I have now registered a [severity-weighted auxiliary comparison](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
+I completed the [severity-weighted auxiliary comparison](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/conclusions.md).
 It changes one supervision term while keeping the model, initialization,
-sampler and budget fixed. Fitting-only support is checked before training;
-new predictions must be frozen before source-held evaluation. The comparison
-has passed its fitting-support check, not its outcome gate. Every full-input
-fit has easy-harm support in three localities and at least 165 distinct
-recording-agent tracks. Mass remains concentrated, so this is not a power
-claim. All 144 native-Torch heads and 288,000 updates are now complete after
-the resumable pilot. I am freezing the saved predictions before reading the
-new source-held outcomes; no improvement is claimed yet.
+sampler and budget fixed. All 144 native-Torch heads and 288,000 updates are
+complete. Prediction freeze 41a478ca was pushed before the new source-held
+readout. Fitting support is present but concentrated; it is not a power claim.
+
+The repair fails its cost gate. Against the original and matching cost-only
+control, none of six full-input easy-harm MSE intervals is positive, one is
+negative and five overlap zero; source points range -20.14% to +2.38%.
+Against ordinary auxiliary supervision, all six intervals overlap zero.
+Tail capture and coverage also fail guards. Some event-ranking comparisons
+improve, but that does not mean the model estimates harm magnitude reliably.
+
+The [loss curves](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/training_loss.svg)
+show genuine optimization. Of 42/72 full fitting views that improve easy-harm
+MSE against the original, 25 do not improve held MSE. My next check is frozen
+recording-level error and training influence/support, before another training
+change. I retain [all source contrasts](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/paired_contrasts.svg),
+including adverse motion-only results. No deployment or independent-data
+access changed; numerical replay and scoped tests are being checked separately.
 
 ### Completed Conditional-Cost Experiment
 

@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Severity Auxiliary (2026-09-26, Training Complete, Outcomes Unread)
+## Severity Auxiliary (2026-09-26, Complete, Cost Gate Failed)
 
 Previous turn: progress. Parent27a8c53b is verified locally and on GitHub;
 47 artifacts/10 bindings match. Native arm64 and13.43GiB free disk verified.
@@ -30,10 +30,22 @@ PID42824 completed normally:144 heads /288,000 updates. CPU4/interop1/workers0,
 checkpoint and heartbeat were active. All prior288 control-head artifacts
 were rehashed successfully. All144 new checkpoint/prediction receipts match;
 unknown-label draws0, summed fitting273.4563seconds excluding loading,
-inference and verification. Outcome readout remains not_run pending the
-pushed prediction freeze.
+inference and verification. Prediction freeze41a478ca was pushed before the
+new readout. All36 groups /144 source-held folds are now evaluated.
+Full easy-harm MSE vs original/control:0 positive,1 negative,5 overlapping
+intervals; points -20.1401% to +2.3801%. Vs ordinary auxiliary:0 positive,
+0 negative,6 overlap; -11.5653% to +1.0416%. Tail and coverage guards fail.
+Full top10 capture has1 negative interval vs original and3 vs ordinary.
+Full fitting/held MSE improve42/72 and34/72 vs original;25 fitting-only,
+17 both. Full positive-disagreement AUROC has4 positive intervals vs original,
+not a magnitude, trajectory or deployment success. Motion-only retains0
+positive/1 negative vs original and0 positive/2 negative vs ordinary.
+All diagnostics use three seeds and3,000 resamples of four localities per
+assignment; dependent, exploratory, not multiplicity-adjusted. Replay and
+targeted verification are running; no independent confirmation claimed.
 No independent role, threshold, policy, Stage5C or SMC change.
 [Protocol](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/conclusions.md).
 
 ## Frozen Task Gradients (2026-09-26, Complete, Broad Conflict Unsupported)
 
