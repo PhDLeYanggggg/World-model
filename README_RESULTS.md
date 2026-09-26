@@ -23,6 +23,15 @@ joint intervention,then independent calibration/confirmation and paper.
 
 [Protocol](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/protocol.md).
 
+Registration21299404 was pushed before fresh support. PID17378 completed all144
+views with399 causal inputs. Minimum fitting event rows:full132,motion15.
+Full-input per-locality support includes at least10 event-bearing tracks and
+three recordings;some motion localities have zero events. This is numerical
+support,not statistical power. No outer outcomes read. Before training/readout,
+an implementation amendment enforces the already registered rule that one-class
+ranking metrics are not_estimable. No scientific rule changed. Fresh33 scoped
+tests pass. Support is frozen before pilot/resumable288-head fitting.
+
 ## Fixed-Cap Fitting Diagnostic (2026-09-26, Completed, No Promotion)
 
 Previous goal turn:progress. Parent dbceb8d4 matches local/GitHub; the full

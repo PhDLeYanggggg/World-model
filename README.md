@@ -15,7 +15,10 @@ risk estimate can be identified from causal history in a different locality.
 The [registered cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/protocol.md)
 compares matched linear and small neural probes, with all three seeds and all
 source-development localities retained. Training and results are not yet
-complete. Predictions will be frozen before the new readout; independent
+complete. All144 fitting views pass numerical support checks; the full-input
+views have at least132 event rows, but some motion-only localities have none.
+That support difference will be retained rather than hidden. Predictions
+will be frozen before the new readout; independent
 selection, calibration, confirmation and deployment remain unchanged.
 
 **Latest completed diagnosis:** the risk estimator's frozen output range limits many

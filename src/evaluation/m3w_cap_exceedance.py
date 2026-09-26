@@ -32,8 +32,8 @@ def measures(target, score, overshoot, prior):
     w = np.full(len(y), 1/len(y))
     out = dict(status='measured', rows=len(y), positive=int(y.sum()), prevalence=rate,
                AUROC=float(roc_auc_score(y, s)) if both else None,
-               AP=float(average_precision_score(y, s)) if y.sum() else None,
-               top10_overshoot_mass=top_mass_share(s, h, w, .1))
+               AP=float(average_precision_score(y, s)) if both else None,
+               top10_overshoot_mass=top_mass_share(s, h, w, .1) if both else None)
     if prior is not None:
         if not 0 < prior < 1 or ((s < 0) | (s > 1)).any():
             raise ValueError('Probabilistic scoring requires training prior and probability scores')

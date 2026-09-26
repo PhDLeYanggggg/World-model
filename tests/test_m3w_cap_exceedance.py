@@ -82,6 +82,8 @@ def test_probabilistic_metrics_and_missing_class():
     assert row['top10_overshoot_mass'] == pytest.approx(.8/3)
     one = e.measures(np.zeros(4), np.ones(4)*.1, np.zeros(4), .1)
     assert one['AUROC'] is None and one['AP'] is None and one['top10_overshoot_mass'] is None
+    all_positive = e.measures(np.ones(4), np.ones(4)*.9, np.ones(4), .1)
+    assert all_positive['AP'] is None and all_positive['top10_overshoot_mass'] is None
     with pytest.raises(ValueError): e.measures(y, p+2, np.zeros(5), .5)
 
 

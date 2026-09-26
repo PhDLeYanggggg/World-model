@@ -56,7 +56,16 @@ def registration(create=False):
     if create:
         immutable_json(path, identity)
     else:
-        assert json.loads(path.read_text()) == identity
+        registered = json.loads(path.read_text())
+        amended = PUBLIC/'implementation_amendment.json'
+        if amended.exists():
+            change = json.loads(amended.read_text())
+            assert change['registration_sha256'] == digest(path) and change['scientific_changes'] is False
+            for file, hashes in change['bindings'].items():
+                assert registered['bindings'][file] == hashes['old_sha256']
+                registered['bindings'][file] = hashes['new_sha256']
+            risk.base.previous.require_committed(amended)
+        assert registered == identity
         risk.base.previous.require_committed(path)
     return cfg, identity
 
@@ -115,7 +124,8 @@ def training(cfg, identity, *, pilot=False, resume=False, verify=False):
         seed = int(v['g']['group'].split('_seed')[1].split('_')[0])
         for arm in (['mlp'] if pilot else cfg['arms']):
             home = PRIVATE/'heads'/v['tag']/arm; path = home/'complete.json'
-            hid = dict(registration=artifact(PUBLIC/'registration_lock.json'), input=record, seed=seed, arm=arm)
+            hid = dict(registration=artifact(PUBLIC/'registration_lock.json'), input=record, seed=seed, arm=arm,
+                       implementation_amendment=artifact(PUBLIC/'implementation_amendment.json'))
             if path.exists():
                 receipt = json.loads(path.read_text()); assert receipt['identity'] == hid
                 for ref in receipt['artifacts'].values():
