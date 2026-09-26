@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Direct Easy Membership (2026-09-26, Registered, Training Running)
+## Direct Easy Membership (2026-09-26, Training Complete, Readout Pending)
 
 The last frozen readout failed the magnitude gate. This diagnostic directly
 predicts E = 1(0 < CV_error <= three-fitting-locality easy cut), including
@@ -21,10 +21,13 @@ policy readout or independent calibration/confirmation. This new diagnostic
 does not alter the main forecasting endpoint or the 2% risk tolerance.
 Parent 94 public artifacts/95 source bindings and local/GitHub commit5b7c097a
 were verified before registration. Registration `4bdbc117` preceded fitting.
-The real 100-update pilot completed and resumed within the fixed budget;
-full training is running. First 32 linear and 32 MLP fits completed, with
-18.22 and 38.28 summed fitting seconds respectively; this is an intermediate
-runtime observation, not a final result. Checkpoints/heartbeats are private.
+The real 100-update pilot completed and resumed within the fixed budget.
+All 288 fits and 576,000 updates are complete, with 298.20 summed fitting
+seconds and zero unknown-label training draws. This excludes loading,
+prediction and verification time. Checkpoints/heartbeats are private.
+Training artifacts and their prediction-freeze manifest are hash-verified;
+held-locality outcome readout has not started. The freeze is committed before
+evaluation, and no result-dependent model selection is permitted.
 Before any new held readout, sensitivity commit `c493cf1f` adds a constant
 from training positive-disagreement prevalence. It cannot rescue the primary
 gate and does not fit held labels. Nine targeted tests pass in total.
