@@ -34,9 +34,14 @@ outer prediction freeze 94442ac2 were committed before their dependent phases.
 Three explicit implementation amendments preserve the registration: JSON
 Boolean conversion, correct OOF provenance metadata and report receipt paths.
 Training, predictions, scientific settings and metrics are unchanged by those fixes.
-Full checkpoint/probe/arithmetic replay is in progress; 29 pre-readout scoped
-tests plus the subsequent report/accounting checks pass. No policy, independent
-roles, new trajectory training, Stage5C or SMC.
+Results commit188535a6 preceded the final verification. All432 checkpoint
+predictions,864 residual fits and36 readout groups replay exactly. Independent
+arithmetic passes1728 MSE checks and432 error decompositions. Fresh tests35 in
+six files; parent25 and ancestor509 remain cached_verified, full legacy suite
+not_run. All63 public artifacts and13 source bindings are sealed; figure
+visually checked and byte-reproducible. Original checkpoints unchanged.
+Next: frozen event-cut versus residual-transport diagnosis, not a held-tuned
+shrinkage sweep. No policy, independent roles, new trajectory training, Stage5C or SMC.
 
 [Conclusions](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md).
 [Failure analysis](outputs/publication_readiness_2026_09/european_nested_residual_v1/failure_analysis.md).

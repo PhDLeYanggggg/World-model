@@ -26,9 +26,13 @@ model unchanged and independent calibration and confirmation unopened.
 The [all-view results and training curves](outputs/publication_readiness_2026_09/european_nested_residual_v1/nested_residual.svg)
 retain the negative comparisons. The [method note](outputs/publication_readiness_2026_09/european_nested_residual_v1/method_note.md)
 documents target-cut transport, matched controls and limited locality support.
-Full checkpoint/probe replay and descriptive error accounting are being
-completed before the final verification receipt. Earlier studies below
-explain how the project reached this point.
+Full verification now replays 432 checkpoints, 864 residual fits and all 36
+readout groups, with 1,728 direct MSE checks and 432 error decompositions.
+Thirty-five tests in six scoped files pass; 63 public artifacts and 13 source
+bindings are sealed. The figure is visually checked and byte-reproducible.
+These checks establish reproducibility, not a passed improvement gate. The
+full legacy suite was not rerun. Earlier studies below explain how the project
+reached this point.
 
 I completed a [frozen-model error attribution](outputs/publication_readiness_2026_09/european_cost_attribution_v1/conclusions.md).
 Even substituting the realized easy label offline produces no consistently
