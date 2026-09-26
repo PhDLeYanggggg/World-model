@@ -10,15 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am checking how much fitting error remains
-unavoidable inside the risk estimator's frozen output range. This is a
-[fitting-only diagnostic](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/protocol.md),
-not another trajectory model or a claim of improvement. A label-assisted
-projection is only an offline reference; it cannot be used for inference and
-does not by itself diagnose conditional bias. Independent data roles and
-deployment remain unchanged.
+**Latest diagnosis:** the risk estimator's frozen output range limits many
+realized-label corrections, but simply raising that range is not a supported
+repair. I completed the
+[fitting-only cap study](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/conclusions.md)
+across 144 views and four prediction sources. With full inputs, the median
+empirical floor accounts for 63.75% of the original estimator's fitting MSE
+and 68.26% for the inner OOF estimator. Yet none of the 1,152 weighted or
+unweighted records has mean easy harm above the mean predicted harm cap.
 
-**Latest result:** adding the frozen estimator's own risk scores does not
+These are dependent fitting summaries, not model gains or independent tests.
+A label-assisted projection can see the outcome; a large floor does not prove
+conditional bias. The [all-view figure](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/fixed_cap_diagnostic.svg)
+retains the variation and both weighting schemes. Next I will test whether
+rare cap-exceedance events have transferable causal signal before changing
+the joint cost model. Independent data roles and deployment remain unchanged.
+All 2,304 arithmetic identities pass; full artifact replay is in progress.
+
+**Previous experiment:** adding the frozen estimator's own risk scores does not
 repair the risk-correction model. I completed the
 [risk-conditioned experiment](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/conclusions.md)
 with 864 fixed probes and all matched controls. Against the original estimator,

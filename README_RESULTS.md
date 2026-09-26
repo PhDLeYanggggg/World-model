@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed-Cap Fitting Diagnostic (2026-09-26, Registered Before Computation)
+## Fixed-Cap Fitting Diagnostic (2026-09-26, Completed, No Promotion)
 
 Previous goal turn:progress. Parent dbceb8d4 matches local/GitHub; the full
 risk-conditioned replay passed while its improvement gates failed. Priority
@@ -17,10 +17,28 @@ No model fit, new held readout or policy selection. Fresh23 scoped tests pass.
 CREATE read-only query succeeded,receipt
 7984d619ca760521d679e0c15742dc087173bb7c318d4d5a07ad6023eb3ba011;
 jobs unchanged. Local native arm64 inputs and20GiB free disk support this work.
-A one-view pilot precedes the full accounting run. A large realized-label
+A one-view pilot preceded the full accounting run. A large realized-label
 floor is not conditional bias; the explicit counterexample is unit-tested.
 
+Registration06511693 pushed before pilot14.846347 seconds and full144-view
+run201.085832 seconds,including source loading but excluding ancestry checks,
+plotting and replay. No new neural fitting. All2304 identities pass,max error
+1.136868e-13. Full original median floor share63.7546% uniform/60.9854% weighted;
+full OOF68.2613%/67.2560%;motion original66.6523%/62.7160%;motion OOF79.4729%/
+79.4934%. Envelope-cap projection floors are zero,not deployable predictions.
+No positive whole-view mean(y-H) among1152 records;full original positive
+score-bin counts0/216 uniform and1/216 weighted;full OOF11/216 and5/216.
+All variants/views retained. These are dependent fitting summaries,not CIs.
+Global upward cap adjustment is not supported by these descriptive means.
+Next:nested fitting-locality cap-exceedance learnability before a joint-cost
+repair,not another generic any-harm or threshold sweep. Fresh51 targeted tests
+pass;figure visually checked;complete artifact replay is pending. Prior failed
+scientific gates and deployment remain unchanged. Current CVPR dates were
+rechecked;2027 Author Guidelines still404,format details remain unverified.
+
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/protocol.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/conclusions.md).
+[Method limits](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/method_note.md).
 
 ## Risk-Conditioned Residual (2026-09-26, Readout Complete, Gate Failed)
 
