@@ -16,8 +16,10 @@ The [registered auxiliary-cost study](outputs/publication_readiness_2026_09/euro
 matches cost-only, true-event auxiliary and locality-shuffled auxiliary models
 on inputs, initialization, sampling and training budget. It keeps the original
 cost estimator as a strong comparison and changes no deployment rule. At
-registration, 32 targeted tests pass; real-data fitting and readout have not
-yet run. Independent selection, calibration and confirmation remain unopened.
+registration, 32 targeted tests pass. All 144 fitting views now pass numerical
+support checks, with at least 132 full-input and 15 motion-only event rows.
+That is support, not statistical power. Fitting/readout have not yet run;
+independent selection, calibration and confirmation remain unopened.
 
 **Latest experiment:** causal history contains useful information about rare
 forecasting errors above a frozen risk estimate. I completed the

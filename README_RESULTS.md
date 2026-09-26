@@ -26,6 +26,13 @@ utility, independent calibration/confirmation and complete paper evidence.
 
 [Protocol](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/protocol.md).
 
+Registration1b8f5800 was pushed before fresh support. PID24112 completed144
+views. Minimum event rows:full132,motion15. Minimum normalized output loss
+scales0.00381283/0.00258384;all valid. This is numerical support,not power.
+Support is frozen before the native-Torch pilot and full resumable fitting.
+No outer labels used for fitting. Plotting/replay helpers are implemented;
+their real outputs remain not_run until predictions and readout exist.
+
 ## Causal Cap-Event Learnability (2026-09-26, Readout Complete, No Promotion)
 
 The complete fresh experiment has 288 native-Torch heads, 576,000 updates and
