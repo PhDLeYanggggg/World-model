@@ -10,6 +10,17 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am now testing [membership-conditional expected harm](outputs/publication_readiness_2026_09/european_membership_cost_v1/registration.md).
+The full-input membership result below is positive, but it does not yet make
+intervention costs reliable. This experiment compares a direct cost head with
+separate easy/non-easy harm experts composed using the frozen membership MLP.
+A constant-membership control tests whether the learned probability adds value.
+The registered budget is 288 new fits and 576,000 updates; eight targeted tests
+pass. Training and current outcome readout have not run at registration. No
+new forecasting model, policy or independent-data access is included.
+
+### Completed Membership Diagnostic
+
 I completed a [direct easy-membership experiment](outputs/publication_readiness_2026_09/european_easy_membership_v1/conclusions.md)
 after the frozen-readout repair failed. It asks whether the baseline is likely
 to be accurate, separately from how much an alternative might harm it.

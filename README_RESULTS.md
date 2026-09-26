@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Membership-Conditional Cost (2026-09-26, Registered, Training Pending)
+
+The prior membership diagnostic is positive; expected-harm improvement is still
+unproven. Two new equal-size cost heads compare direct nested harm regression
+with conditional easy/non-easy harm estimation. The latter composes its outputs
+with the frozen causal membership MLP only after fitting. True membership is
+supervision, never an inference input or a fitted stacked-probability feature.
+An additional fixed-training-prevalence composition retains the same experts.
+
+There are six source assignments, three seeds, two forecast pairs and four
+held-locality folds: 288 new fits / 576,000 updates. Eight targeted tests pass.
+The conditional system additionally uses the prior membership model; equal new
+head capacity does not mean equal total model/pretraining cost. Local/GitHub
+parent d9891a87 and its public/source hashes are verified. A fresh read-only
+CREATE queue check succeeded; no jobs submitted or modified, remote M3W path
+still unverified. Training and new outcome readout are not_run at registration.
+Independent roles, deployment, Stage5C/SMC remain unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_membership_cost_v1/registration.md).
+
 ## Direct Easy Membership (2026-09-26, Component Signal Positive)
 
 The last frozen readout failed the magnitude gate. This diagnostic directly
