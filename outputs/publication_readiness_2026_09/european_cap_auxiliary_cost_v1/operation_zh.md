@@ -50,6 +50,7 @@
 .venv-pytorch/bin/python scripts/run_m3w_european_cap_auxiliary_cost.py --phase evaluate
 .venv-pytorch/bin/python scripts/report_m3w_european_cap_auxiliary_cost.py
 .venv-pytorch/bin/python scripts/plot_m3w_european_cap_auxiliary_cost.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_european_cap_auxiliary_cost.py
 ```
 
 图表检查及结论文档完成后运行最终复现：
@@ -59,7 +60,7 @@
 ```
 
 该入口检查来源缓存哈希、全部432个检查点推理、144个留出结果、三组
-抽样匹配、图表与报告字节一致性，以及8个限定测试文件。只有实际终止
+抽样匹配、图表与报告字节一致性，以及9个限定测试文件。只有实际终止
 成功且 verification.json 中 all_passed=true 才能声称这次复现通过。
 这不是完整历史测试套件，也不是独立场景确认。
 

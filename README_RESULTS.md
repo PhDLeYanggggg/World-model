@@ -5,7 +5,29 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cap-Event Auxiliary Costs (2026-09-26, Trained, Readout Not Run)
+## Cap-Event Auxiliary Costs (2026-09-26, Readout Complete, No Promotion)
+
+Fresh432 Torch heads /864000 updates and144 source-held readouts complete.
+Predictions frozen in f4bc6c2d before readout;1152 direct MSE checks pass.
+Full-input easy-harm MSE intervals are2 positive/0 negative/4 overlap versus
+matched cost-only,0/3/3 versus original and1/1/4 versus shuffled. The original-
+comparison point range is-37.74% to+0.68%,not a pooled score or interval.
+All primary, guard and task-information gates fail. Ranking AUROC improves
+in all six comparisons against both matched controls, but magnitude does not
+reliably transfer. Full-input fit-positive/held-negative counts:19/72 versus
+cost-only,24/72 versus shuffled; these dependent counts are not extra tests.
+Motion-only negative results and three unsupported event rankings are retained.
+
+No promotion, new policy evaluation or independent-role access. Three seeds,
+3000 paired resamples of four localities; six assignments overlap and use
+development-exposed source data. Full/motion is not a feature ablation.
+The secondary diagnostic's legacy fitting-subset mismatch was repaired and
+covered by three tests; no primary result changed. Full replay remains pending.
+[Conclusions](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/failure_analysis.md),
+[project gap](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/project_gap.md).
+
+### Chronological Run Record
 
 Previous goal turn:progress. Local/GitHub parent ebf198f3 match; its288 model
 prediction replays,144 readouts and46 scoped tests are cached_verified.

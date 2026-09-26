@@ -25,8 +25,13 @@ Full/motion comparisons change forecast pairs and targets, so they cannot
 identify a scene/interaction/JEPA feature effect. The frozen original has
 different inputs/objective; only new arms are strictly matched controls.
 
-Results are not available at registration. Final results belong in results.md
-and conclusions.md; verify the completion receipt before claiming execution.
+## Observed Outcome
+All432 heads completed. Full-input easy-harm cost intervals versus cost-only:
+2 favorable/0 adverse/4 overlap; versus original:0/3/3; versus shuffled:1/1/4.
+All registered cost-contribution gates fail. Ranking improves versus new
+controls but not consistently versus the original strong cost model. The
+model is not promoted. Results are in results.md and conclusions.md; final
+replay status belongs to verification.json and is not an independent retrain.
 Obs8/pred12 native annotation steps and detector pixels; no metric/seconds,
 human-gold, physical safety, true3D or foundation-model interpretation.
 No deployment change, no independent-role access, Stage5C/SMC disabled.

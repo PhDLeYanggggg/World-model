@@ -10,22 +10,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing whether the cap-event signal improves
-expected forecasting-cost estimates, rather than only classification scores.
-The [registered auxiliary-cost study](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/protocol.md)
-matches cost-only, true-event auxiliary and locality-shuffled auxiliary models
-on inputs, initialization, sampling and training budget. It keeps the original
-cost estimator as a strong comparison and changes no deployment rule. At
-registration, 32 targeted tests pass. All 144 fitting views now pass numerical
-support checks, with at least 132 full-input and 15 motion-only event rows.
-That is support, not statistical power. A real 100-update Torch pilot completed
-normally and supports local resumable training. All 432 models have now
-completed 864,000 fixed updates, with matched initialization and sampling.
-The pilot checkpoint resumed correctly; prediction freezing precedes the
-held readout, which has not run at this checkpoint. Independent
-selection, calibration and confirmation remain unopened.
+**Latest result:** learning which cases are risky does not yet give me better
+estimates of how much error they will cause. I completed the
+[auxiliary-cost experiment](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/conclusions.md)
+with 432 real Torch models, 864,000 updates and three seeds. True-event
+supervision, shuffled labels and no auxiliary supervision use the same inputs,
+initialization and training samples. Predictions were frozen before readout.
 
-**Latest experiment:** causal history contains useful information about rare
+The auxiliary improves ranking against the two matched controls, but fails
+the expected-cost test against the original strong estimator: none of six
+full-input locality intervals supports improvement, three support deterioration
+and three overlap zero. Point estimates range from -37.74% to +0.68% MSE
+improvement. These are not trajectory gains or one pooled result. The
+[complete figure](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/cap_auxiliary_cost_contrasts.svg)
+retains every assignment, including the adverse motion-only results.
+
+I am keeping deployment unchanged. The next task is to preserve and reproduce
+the strong original cost model before testing further auxiliary changes, and
+to diagnose why training gains fail to transfer across localities. Independent
+selection, calibration and confirmation remain unopened. Checkpoint/result
+verification is in progress; completed training alone is not reproducibility
+or submission readiness.
+
+**Preceding experiment:** causal history contains useful information about rare
 forecasting errors above a frozen risk estimate. I completed the
 [cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/conclusions.md)
 with 288 matched linear and small neural models, 576,000 updates and three
@@ -41,8 +48,8 @@ overlap zero. The [full figure](outputs/publication_readiness_2026_09/european_c
 retains negative and unsupported motion-only comparisons. The assignments
 overlap and use four development localities; they are not independent tests.
 
-Next I will test whether this event signal helps a matched expected-cost
-model, while preserving the existing cost constraints and fallback rules.
+This event signal motivated the matched expected-cost experiment above,
+which retained the existing cost constraints and fallback rules.
 No deployment changes follow from event classification alone. Predictions
 were frozen before readout; independent selection, calibration and confirmation
 remain unopened. Full verification now reproduces predictions from all 288

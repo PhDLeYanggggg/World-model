@@ -36,3 +36,14 @@ training RSS was about12GiB;this is not continuous peak-memory profiling.
 Prediction freeze is committed before held readout. Training completion is
 not a cost-improvement result. Evaluation and full replay remain not_run at
 this checkpoint; their measured completion must be recorded separately.
+
+## Completed Readout
+Prediction freeze f4bc6c2d was pushed before PID27665 evaluated144 views in36
+groups. The process exited0;1152 direct component-MSE identities passed.
+Aggregate reports and the full comparison figure were generated; the PNG
+was visually inspected for labels, interval visibility and negative results.
+The secondary diagnostic initially hit a legacy fitting-schema KeyError;
+the corrected reader retains incomparable fitting subsets as unavailable.
+Three focused diagnostic tests pass and the real diagnostic completes. No
+training restart or change to the primary outcome followed that reader fix.
+Full checkpoint/result replay is the next step, not yet implied by these checks.

@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_european_cap_auxiliary_cost as run
 
 TESTS = ['tests/test_m3w_cap_auxiliary_cost.py', 'tests/test_m3w_cap_auxiliary_cost_reporting.py',
+    'tests/test_m3w_cap_auxiliary_cost_diagnosis.py',
     'tests/test_m3w_cap_exceedance.py', 'tests/test_m3w_cap_exceedance_reporting.py',
     'tests/test_m3w_membership_auxiliary.py', 'tests/test_m3w_membership_auxiliary_reporting.py',
     'tests/test_m3w_nested_residual.py', 'tests/test_m3w_risk_conditioned_residual.py']
@@ -40,10 +41,12 @@ def main():
     for phase in ['verify_training', 'verify_eval']:
         logs.append(execute(['scripts/run_m3w_european_cap_auxiliary_cost.py', '--phase', phase], phase))
     names = ['aggregate_metrics.json', 'results.md', 'cap_auxiliary_cost_contrasts.svg',
-             'training_metrics.json', 'training_loss_endpoints.csv', 'compute_receipt.json']
+             'training_metrics.json', 'training_loss_endpoints.csv', 'compute_receipt.json',
+             'fit_held_diagnosis.json', 'fit_held_diagnosis.md']
     before = {name: run.digest(run.PUBLIC/name) for name in names}
     logs.append(execute(['scripts/report_m3w_european_cap_auxiliary_cost.py'], 'report_replay'))
     logs.append(execute(['scripts/plot_m3w_european_cap_auxiliary_cost.py'], 'figure_replay'))
+    logs.append(execute(['scripts/diagnose_m3w_european_cap_auxiliary_cost.py'], 'diagnosis_replay'))
     for name, digest in before.items(): assert run.digest(run.PUBLIC/name) == digest
     xml = run.PRIVATE/'tests.xml'
     logs.append(execute(['-m', 'pytest', '-q', *TESTS, '--junitxml', str(xml)], 'tests'))
@@ -54,6 +57,7 @@ def main():
     assert a['heads'] == 432 and a['updates'] == 864000 and a['matched_arm_checks'] == 288
     assert b['groups'] == 36 and b['views'] == 144 and b['exact'] and b['direct_component_MSE_checks'] == 1152
     sources = set(run.FILES+TESTS+['scripts/plot_m3w_european_cap_auxiliary_cost.py',
+                                 'scripts/diagnose_m3w_european_cap_auxiliary_cost.py',
                                  'scripts/verify_m3w_european_cap_auxiliary_cost.py'])
     doc = dict(all_passed=True, heads_replayed=432, readout_views_replayed=144,
         matched_arm_checks=288, direct_component_MSE_checks=1152, tests_passed=len(cases),
