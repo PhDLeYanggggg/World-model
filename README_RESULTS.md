@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Easy Membership (2026-09-26, Registered, Training Not Run)
+
+The last frozen readout failed the magnitude gate. This diagnostic directly
+predicts E = 1(0 < CV_error <= three-fitting-locality easy cut), including
+easy cases with zero harm. It is distinct from positive-harm hurdle labels.
+A linear classifier and width-64 MLP share causal features, known-row support,
+locality-balanced draws and 2,000-update budgets. Six source assignments,
+three seeds, full/motion-only and four held localities give 288 fits and
+576,000 planned updates. Eight targeted tests pass, including exact resume.
+
+The primary diagnostic is full conditional MLP Brier skill versus a fitting-
+only prevalence constant, with AUROC and log-loss guards. No threshold search,
+policy readout or independent calibration/confirmation. This new diagnostic
+does not alter the main forecasting endpoint or the 2% risk tolerance.
+Parent 94 public artifacts/95 source bindings and local/GitHub commit5b7c097a
+were verified before registration. Real training remains not_run here.
+[Protocol](outputs/publication_readiness_2026_09/european_easy_membership_v1/registration.md).
+
 ## Frozen Harm Readout (2026-09-26, Readout Complete, Magnitude Gate Failed)
 
 Fresh label-only decomposition finds outside-easy rows dominate35/39 full and

@@ -1,0 +1,22 @@
+{
+  "name": "european_easy_membership_v1",
+  "pairs": ["full", "motion_only"],
+  "seeds": [17, 29, 43],
+  "arms": ["linear", "mlp"],
+  "head_training": {"steps": 2000, "width": 64, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "new_heads": 288,
+  "updates": 576000,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 47131,
+  "primary_diagnostic": "full_mlp_conditional_Brier_skill_against_train_prevalence",
+  "required_diagnostics": ["conditional_AUROC_above_chance", "conditional_log_loss_gain"],
+  "new_forecaster_training": false,
+  "new_policy_evaluation": false,
+  "threshold_refit": false,
+  "selection_access": false,
+  "reserved_calibration_access": false,
+  "confirmation_access": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

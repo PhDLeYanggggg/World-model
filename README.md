@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing [direct prediction of easy membership](outputs/publication_readiness_2026_09/european_easy_membership_v1/registration.md)
+after the frozen-readout repair failed. This separates whether the baseline
+is likely to be accurate from whether an alternative harms it. A linear
+classifier and a small MLP receive identical causal inputs and training
+budgets. The registered scope is 288 fits, three seeds and 576,000 updates;
+training and current outcome readout have not run yet. No new policy or
+independent-data access is implied.
+
+### Completed Frozen-Readout Test
+
 I completed a [matched frozen-feature readout experiment](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/conclusions.md)
 to test whether the fractional head's useful ranking signal could support
 more accurate expected-harm estimates. Both feature sources received the
