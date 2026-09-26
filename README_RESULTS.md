@@ -22,7 +22,14 @@ No promotion, new policy evaluation or independent-role access. Three seeds,
 3000 paired resamples of four localities; six assignments overlap and use
 development-exposed source data. Full/motion is not a feature ablation.
 The secondary diagnostic's legacy fitting-subset mismatch was repaired and
-covered by three tests; no primary result changed. Full replay remains pending.
+covered by three tests; no primary result changed. Results f9c3259a preceded
+full verification. All432 checkpoint predictions and144 readouts reproduce
+exactly,with288 matched-arm and1152 direct-MSE checks. Reports,diagnostics and
+figure reproduce byte-for-byte. Fresh45 tests in nine scoped files pass;
+25 public artifacts and20 source bindings match their sealed hashes. The
+reference audit checks144 receipts and288 private artifacts. Full legacy suite
+not_run; this is inference/result replay,not independent retraining. Failed
+scientific gates and unchanged deployment remain unchanged by verification.
 [Conclusions](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/failure_analysis.md),
 [project gap](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/project_gap.md).

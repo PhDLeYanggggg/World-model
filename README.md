@@ -28,9 +28,12 @@ retains every assignment, including the adverse motion-only results.
 I am keeping deployment unchanged. The next task is to preserve and reproduce
 the strong original cost model before testing further auxiliary changes, and
 to diagnose why training gains fail to transfer across localities. Independent
-selection, calibration and confirmation remain unopened. Checkpoint/result
-verification is in progress; completed training alone is not reproducibility
-or submission readiness.
+selection, calibration and confirmation remain unopened. Full verification
+now reproduces all 432 checkpoint predictions and 144 readouts. Reports,
+diagnostics and the figure match byte-for-byte; 45 tests in nine scoped files
+pass. Twenty-five public artifacts and 20 source bindings are hash-sealed.
+The full legacy suite was not rerun. These checks establish reproducibility,
+not a passed scientific gate or submission readiness.
 
 **Preceding experiment:** causal history contains useful information about rare
 forecasting errors above a frozen risk estimate. I completed the
