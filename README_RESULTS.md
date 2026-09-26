@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal Cap-Event Learnability (2026-09-26, Registered, Not Yet Trained)
+
+The previous conversational turn only acknowledged authorization and made no
+research progress. Local and GitHub parent c895ed8f match. CREATE was queried
+read-only successfully;receipt837b662e4a3915dcbd54e524ca4fe2c99123f48f2192f5a3aa3b762eb1221f0b.
+No remote jobs were changed. Native arm64 Python3.11.1/Torch2.12.0 are available,
+with19GiB disk free. The planned matched linear/MLP study has144 views,288 heads,
+576000 fixed updates,checkpoint/resume and source-held readout after prediction
+freeze. Fresh32 targeted tests pass. Full legacy suite not_run. Existing
+fixed-cap diagnosis and risk-head lineage are cached_verified,not fresh training.
+New fitting/support/readout remain not_run at registration. This target is
+producer-relative cap exceedance,not the already studied any-harm label.
+Two-to-three-locality teacher transport remains a limitation. No policy or
+independent-role changes. Priority:transferable risk estimation,controlled
+joint intervention,then independent calibration/confirmation and paper.
+
+[Protocol](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/protocol.md).
+
 ## Fixed-Cap Fitting Diagnostic (2026-09-26, Completed, No Promotion)
 
 Previous goal turn:progress. Parent dbceb8d4 matches local/GitHub; the full

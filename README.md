@@ -10,7 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Latest diagnosis:** the risk estimator's frozen output range limits many
+**Current experiment:** I am testing whether rare outcomes above a frozen
+risk estimate can be identified from causal history in a different locality.
+The [registered cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/protocol.md)
+compares matched linear and small neural probes, with all three seeds and all
+source-development localities retained. Training and results are not yet
+complete. Predictions will be frozen before the new readout; independent
+selection, calibration, confirmation and deployment remain unchanged.
+
+**Latest completed diagnosis:** the risk estimator's frozen output range limits many
 realized-label corrections, but simply raising that range is not a supported
 repair. I completed the
 [fitting-only cap study](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/conclusions.md)
