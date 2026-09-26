@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Membership-Conditional Cost (2026-09-26, Registered, Training Pending)
+## Membership-Conditional Cost (2026-09-26, Registered, Training Running)
 
 The prior membership diagnostic is positive; expected-harm improvement is still
 unproven. Two new equal-size cost heads compare direct nested harm regression
@@ -20,7 +20,13 @@ The conditional system additionally uses the prior membership model; equal new
 head capacity does not mean equal total model/pretraining cost. Local/GitHub
 parent d9891a87 and its public/source hashes are verified. A fresh read-only
 CREATE queue check succeeded; no jobs submitted or modified, remote M3W path
-still unverified. Training and new outcome readout are not_run at registration.
+still unverified. Training and new outcome readout were not_run at registration.
+Registration commit 2c321649 preceded the real 100-update direct pilot, which
+completed in 0.09689 summed fitting seconds and resumed within the fixed
+budget. The initial direct-only projection is 558.11 fitting seconds, excluding
+loading/inference and not an estimate of conditional total runtime. Full
+training is running. At 25 completed heads, a live process snapshot showed
+about 9.15 GiB RSS and 12.24 GiB free disk. Held readout remains not_run.
 Independent roles, deployment, Stage5C/SMC remain unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_membership_cost_v1/registration.md).
 

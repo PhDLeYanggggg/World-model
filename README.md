@@ -16,8 +16,10 @@ intervention costs reliable. This experiment compares a direct cost head with
 separate easy/non-easy harm experts composed using the frozen membership MLP.
 A constant-membership control tests whether the learned probability adds value.
 The registered budget is 288 new fits and 576,000 updates; eight targeted tests
-pass. Training and current outcome readout have not run at registration. No
-new forecasting model, policy or independent-data access is included.
+pass. Registration 2c321649 preceded fitting. The real 100-update pilot has
+completed and resumed within the budget; full training is running. Current
+held readout has not run. No new forecasting model, policy or independent-data
+access is included.
 
 ### Completed Membership Diagnostic
 
