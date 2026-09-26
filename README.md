@@ -14,13 +14,15 @@ My next [registered experiment](outputs/publication_readiness_2026_09/european_n
 tests locality-out-of-fold residual supervision, with two fixed in-sample
 controls trained on the same number of localities. All inner preprocessing,
 easy cuts and loss scales are rebuilt without the inner-held labels. The
-planned 432 neural risk heads do not change the trajectory forecasters or
-deployment; 19 targeted tests pass, but experimental fitting has not started.
+432 neural risk heads do not change the trajectory forecasters or deployment.
+The pre-training tests pass, including an exact checkpoint-resume check.
 The initial support pass hit a NumPy-boolean JSON error. A hash-bound
 implementation amendment preserves the registration and scientific rules.
 The rerun passes all 432 fitting-support checks; the weakest motion-only
 subset has just five easy-harm rows, so this is not a statistical-power claim.
-Experimental fitting has not started.
+The real 100-update pilot completed and the full 432-head fit is now running
+from that checkpoint. Its estimated 14 minutes of optimizer work excludes
+data loading, predictions and verification; no new held result is available.
 
 **Current status, 26 September:** the latest past-context cost repair has
 completed but has not passed its cross-locality improvement gate. I am keeping

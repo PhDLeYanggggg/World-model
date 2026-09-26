@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Nested Locality Residual (2026-09-26, Support Passed, Training Not Run)
+## Nested Locality Residual (2026-09-26, Training Running, Readout Not Run)
 
 Previous goal turn: progress. Parent b631bf80 verified locally/on GitHub;
 51 artifacts and10 source bindings match. Native arm64;12.6578GiB free disk.
@@ -27,6 +27,11 @@ Amendment5ab3e94b was pushed before the support rerun. PID53730 completed
 all432 views normally. Minimum known rows6372; minimum easy-harm rows full72,
 motion-only5. Numerical support passes, statistical power is not established.
 No difficult slice excluded. Pilot/training/readout remain not_run.
+Support91ae5899 was pushed before the true Torch pilot. PID54233 completed
+100 updates in0.095353 fit seconds; fixed-batch cost loss0.657745 to0.593593.
+Projected full fit823.85 seconds excludes loading/inference/verification and
+is not a completion promise. PID54473 now resumes the full864000-update budget;
+the pilot is included, not an extra trial. Outer readout remains not_run.
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 
