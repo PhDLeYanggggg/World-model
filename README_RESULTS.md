@@ -5,50 +5,42 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Nested Locality Residual (2026-09-26, Predictions Frozen, Readout Not Run)
+## Nested Locality Residual (2026-09-26, Readout Complete, Gate Failed)
 
-Previous goal turn: progress. Parent b631bf80 verified locally/on GitHub;
-51 artifacts and10 source bindings match. Native arm64;12.6578GiB free disk.
-Fresh CREATE read-only query20260926_052857UTC succeeded; jobs untouched.
-Fixed design:432 two-locality Torch risk heads /864000 updates, followed by
-864 fixed global/context probes. OOF versus two cyclic in-sample controls;
-original three-locality estimator and prior correction remain strong controls.
-Inner cuts/scales/initialization are inner-fitting-only; outer target unchanged.
-All144 views /36 groups /three seeds retained. Nineteen scoped tests pass,
-including label perturbation, producer exposure and exact resume. Real-data
-support/pilot/training/readout not_run. No policy or independent-role access.
-[Protocol](outputs/publication_readiness_2026_09/european_nested_residual_v1/protocol.md).
-Registration ee70eb8e was pushed before support. PID53128 traversed432 views
-but failed writing strict JSON due to a NumPy boolean. The implementation-only
-amendment records the old/new runner hashes; original registration is retained,
-all scientific settings unchanged,0 training updates and0 outer readouts.
-The failure was reproduced in an isolated synthetic support regression test.
-Amendment5ab3e94b was pushed before the support rerun. PID53730 completed
-all432 views normally. Minimum known rows6372; minimum easy-harm rows full72,
-motion-only5. Numerical support passes, statistical power is not established.
-No difficult slice excluded. Pilot/training/readout remain not_run.
-Support91ae5899 was pushed before the true Torch pilot. PID54233 completed
-100 updates in0.095353 fit seconds; fixed-batch cost loss0.657745 to0.593593.
-Projected full fit823.85 seconds excludes loading/inference/verification and
-is not a completion promise. PID54473 now resumes the full864000-update budget;
-the pilot is included, not an extra trial. Outer readout remains not_run.
-PID54473 completed normally:432/432 heads,864000 updates. The private completion
-manifest is6c44efee04fa47ebe57f95576a534a96ca68a9f812efe8c89f9c4fdb903618a5.
-Original parent checkpoints remain unchanged. Inner predictions are frozen;
-residual probes, new outer readout and full checkpoint replay remain not_run.
-Inner freeze9259a611 precedes the second implementation-only amendment:
-the legacy residual fitter's unconditional in-sample flag is replaced with
-actual OOF/cyclic provenance. Numerical fitting/prediction remain identical;
-completed heads and checkpoint identities are unchanged. No probes/readout
-had run. Both amendments are preserved in a committed hash chain.
-Amendment4d8b75b7 and29 tests preceded the probe fit. PID56345 completed normally:
-864 closed-form fits /144 outer-view predictions frozen before outcome readout.
-Risk-head fit time787.943793s; median initial/final fixed-batch loss0.651791 /
-0.433402; unknown draws0. Loss decline is not held improvement.
-Prediction freeze94442ac2 preceded all36 new readout groups. Aggregate statistics
-were written, then a receipt-path typo interrupted report rendering. A third
-implementation-only amendment fixes receipt loading, with no change to metrics,
-predictions, bootstrap or gates. Completed training/readout are not rerun.
+Fresh run: 432 native-arm64 Torch risk heads, 864,000 updates, 864 fixed
+residual fits, all 144 views / 36 groups / three seeds. The original trajectory
+producers and outer estimators remain cached_verified. Parent b631bf80's
+51 artifacts and ten bindings matched. CREATE was queried read-only; no jobs changed.
+
+Full-input OOF context versus original: 0 positive, 0 negative, 6 overlapping
+easy-harm MSE intervals, with point estimates -5.0019% to +0.1976%. Against
+prior context: 0/1/5; OOF global: 1/0/5; matched next: 0/1/5; matched previous:
+0/0/6. Motion-only versus original: all six point estimates negative
+(-22.0430% to -3.2028%). Primary and tail/coverage gates both fail. No promotion.
+
+Post-freeze error accounting, 72 dependent full-input OOF views: 39 improve;
+18 worsen with a non-helpful aggregate direction and 15 with a helpful but
+excessive shift. Motion-only: 35 / 29 / 8. These are not independent trials or
+causal root causes. OOF inner/outer easy-cut disagreement: median 2.5245%,
+maximum 15.0120%; matched control medians 0.9878% and 1.2659%.
+
+Fit time totals 787.943793 seconds, excluding surrounding I/O and verification.
+Median initial/final fixed-fitting-batch cost loss: 0.651791 / 0.433402;
+unknown-label draws: zero. Minimum easy-harm support: full 72, motion-only 5.
+Optimization and numerical support are not held improvement or statistical power.
+
+Registration ee70eb8e, support 91ae5899, inner prediction freeze 9259a611 and
+outer prediction freeze 94442ac2 were committed before their dependent phases.
+Three explicit implementation amendments preserve the registration: JSON
+Boolean conversion, correct OOF provenance metadata and report receipt paths.
+Training, predictions, scientific settings and metrics are unchanged by those fixes.
+Full checkpoint/probe/arithmetic replay is in progress; 29 pre-readout scoped
+tests plus the subsequent report/accounting checks pass. No policy, independent
+roles, new trajectory training, Stage5C or SMC.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md).
+[Failure analysis](outputs/publication_readiness_2026_09/european_nested_residual_v1/failure_analysis.md).
+[All-view figure](outputs/publication_readiness_2026_09/european_nested_residual_v1/nested_residual.svg).
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 

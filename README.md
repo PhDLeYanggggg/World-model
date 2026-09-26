@@ -10,34 +10,25 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-My next [registered experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/protocol.md)
-tests locality-out-of-fold residual supervision, with two fixed in-sample
-controls trained on the same number of localities. All inner preprocessing,
-easy cuts and loss scales are rebuilt without the inner-held labels. The
-432 neural risk heads do not change the trajectory forecasters or deployment.
-The pre-training tests pass, including an exact checkpoint-resume check.
-The initial support pass hit a NumPy-boolean JSON error. A hash-bound
-implementation amendment preserves the registration and scientific rules.
-The rerun passes all 432 fitting-support checks; the weakest motion-only
-subset has just five easy-harm rows, so this is not a statistical-power claim.
-All 432 native-Torch risk heads and 864,000 updates are now complete, including
-the resumed pilot. Their predictions are frozen before residual fitting and
-held readout. No new cross-locality improvement result is available yet.
-All 864 fixed residual fits are also complete; their 144 outer-view
-predictions are frozen before the new source-development readout.
-Before residual fitting, I corrected a legacy provenance field that otherwise
-would incorrectly label OOF predictions as in-sample. The second recorded
-amendment changes metadata only; all coefficients and predictions are tested
-for equality, and the completed risk-head checkpoints remain untouched.
-The 36-group readout is complete. A report-only path error is being repaired;
-the completed predictions and aggregate statistics are preserved, not retrained.
+**Current status, 26 September:** the latest
+[nested-locality experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md)
+is complete, but its improvement gate failed. I trained 432 native-Torch risk
+heads and fitted 864 fixed residual corrections to test whether learning from
+unseen-locality errors would transfer better than learning from training errors.
+It did not produce a stable gain over the original estimator.
 
-**Current status, 26 September:** the latest past-context cost repair has
-completed but has not passed its cross-locality improvement gate. I am keeping
-the original model unchanged. The [current conclusions](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md)
-separate recurring error patterns from actual model improvement; independent
-calibration and final confirmation remain reserved. The sequence below
-explains how the experiments led to that decision.
+With full inputs, all six paired easy-harm MSE intervals against the original
+overlap zero; point estimates range from -5.00% to +0.20%. Motion-only results
+are worse at every point estimate. Training loss falls, but that is not
+cross-locality accuracy or trajectory improvement. I am keeping the original
+model unchanged and independent calibration and confirmation unopened.
+
+The [all-view results and training curves](outputs/publication_readiness_2026_09/european_nested_residual_v1/nested_residual.svg)
+retain the negative comparisons. The [method note](outputs/publication_readiness_2026_09/european_nested_residual_v1/method_note.md)
+documents target-cut transport, matched controls and limited locality support.
+Full checkpoint/probe replay and descriptive error accounting are being
+completed before the final verification receipt. Earlier studies below
+explain how the project reached this point.
 
 I completed a [frozen-model error attribution](outputs/publication_readiness_2026_09/european_cost_attribution_v1/conclusions.md).
 Even substituting the realized easy label offline produces no consistently

@@ -27,11 +27,12 @@ The original outer cost estimators and trajectory forecasters are unchanged.
 No independent model selection, risk calibration, confirmation, policy
 deployment, Stage5C or SMC was performed.
 
-Two implementation records remain visible: support-report Boolean
+Three implementation records remain visible: support-report Boolean
 serialization was fixed before training; the reused fitter's in-sample
-provenance flag was corrected before residual fitting. Neither changes the
-scientific specification. The second change has explicit numerical-equivalence
-tests and does not alter the completed checkpoints.
+provenance flag was corrected before residual fitting; receipt-path loading
+was repaired after readout. None changes the scientific specification.
+The second change has explicit numerical-equivalence tests; all preserve
+the completed checkpoints and predictions.
 
 Scope remains eight observed/twelve predicted annotation steps, image pixels,
 source-development evidence. No metric/seconds, human-gold, physical-safety,
