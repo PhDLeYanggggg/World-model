@@ -29,8 +29,10 @@ It retains direct nested costs and adds easy-membership supervision to the
 shared encoder, without multiplying probability into costs. Both new arms
 have identical capacity and sampling budgets; eight focused tests pass,
 including exact resume and agreement with the original direct-cost control.
-Training and outcome readout are not_run at registration. No policy or
-independent-data access is changed.
+Registration cadc04df preceded the real100-update pilot (0.09008 fitting
+seconds). Training is now running with exact resume, checkpoint and heartbeat;
+the pilot counts toward the frozen budget. Outcome readout remains not_run.
+No policy or independent-data access is changed.
 
 ### Completed Conditional-Cost Experiment
 

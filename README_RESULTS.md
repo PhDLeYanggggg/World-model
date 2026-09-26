@@ -16,7 +16,11 @@ is retained as a strong comparator; improving the failed conditional model
 alone is insufficient. Eight targeted tests pass including exact resume,
 unknown-label exclusion and original-control agreement. Training/readout
 not_run at registration. Parent 9987ba4b is pushed; no independent roles,
-thresholds, policies or deployment changes.
+thresholds, policies or deployment changes. Registration cadc04df preceded
+the real100-update cost-only pilot (0.090075 fitting seconds). It resumed
+within the fixed budget; PID36589 is running with checkpoint/heartbeat.
+Initial cost-only projection518.83 fitting seconds excludes loading/inference
+and does not yet measure auxiliary runtime. Outcome readout stays not_run.
 [Protocol](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/registration.md).
 
 ## Cost-Factor Attribution (2026-09-26, Completed And Verified)
