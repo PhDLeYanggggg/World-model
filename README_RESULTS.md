@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Strong-Base Cap Auxiliary (2026-09-26, Full Training Running)
+## Strong-Base Cap Auxiliary (2026-09-26, Training Complete, Readout Next)
 
 Parent c6666ce0 and its sealed artifacts/bindings were reverified. New native
 arm64 code passes18 scoped tests, including exact synthetic original-control
@@ -42,6 +42,14 @@ Full training PID33899 resumed after4538fa7b. At the recorded progress check,
 66/432 heads were complete and22 original controls reconstructed bit-exactly.
 All budgets and comparisons remain fixed;source-held readout is not_run.
 This is a running checkpoint,not completed training or model efficacy.
+
+PID33899 completed432 heads/864000 updates normally. All144 strong controls
+reconstruct bit-exactly;288 matched-arm checks pass. Unknown draws0;known
+zero-envelope draws145837119 across all repeated minibatches. Each model
+has24901 parameters. The pilot resumed with1900 new steps. Phase wall1265.980923s
+excludes ancestry preflight;summed fit852.554926s. Private artifacts1.4GiB
+remain local. Predictions are frozen before source-held readout;efficacy is
+not_run at this commit. Independent roles and deployment remain unchanged.
 
 ## Cap-Event Auxiliary Costs (2026-09-26, Readout Complete, No Promotion)
 

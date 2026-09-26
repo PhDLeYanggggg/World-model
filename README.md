@@ -17,9 +17,9 @@ from the original. The [new protocol](outputs/publication_readiness_2026_09/euro
 preserves the original native inputs, GELU network, four-cost objective and
 all-known sampling. A no-auxiliary control must reproduce the original before
 true and shuffled auxiliary labels are compared. The planned 432 heads use
-three seeds. Real fitting is now running after the native pilot; the first22
-original controls reconstruct exactly. Held source readout remains unopened
-for the new experiment. No improvement or deployment change is claimed.
+three seeds. All 432 models now complete 864,000 updates, and all 144 original
+controls reconstruct exactly. Predictions are frozen before held source
+readout. No improvement or deployment change is claimed at this checkpoint.
 
 **Latest result:** learning which cases are risky does not yet give me better
 estimates of how much error they will cause. I completed the
