@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Risk-Conditioned Residual (2026-09-26, Registration)
+## Risk-Conditioned Residual (2026-09-26, Support Complete)
 
 Previous goal turn: progress, negative common-event experiment fully verified.
 Parent ca08670b matches local/GitHub. CREATE queue checked read-only, receipt
@@ -17,6 +17,14 @@ inferences,432 producer-difference projection checks and864 fixed ridge fits.
 No fresh neural training, held readout or improvement claim yet. Original
 models and all independent data roles remain frozen. Registration precedes
 support extraction; support precedes fitting; predictions precede readout.
+
+Registration4646c395 pushed before fresh support. PID67405 completed144 frozen
+Torch fitting inferences and432 projection checks; maximum identity error
+1.0613e-14. All views supported; minimum risk-score std0.0029414. Minimum
+positive easy-harm fitting rows:full245,motion-only24. Full OOF median producer
+score-gap RMS0.0774954; this is diagnostic scale, not an effect size or safety
+certificate. Fresh35 tests in six scoped files passed. Support is frozen before
+the864 new fixed probes. No labels from the outer locality used for fitting.
 
 [Protocol](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md).
 
