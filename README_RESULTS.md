@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Causal Context Residual (2026-09-26, Fitting)
+## Causal Context Residual (2026-09-26, Predictions Frozen, Readout Not Run)
 
 Previous goal turn: progress. Parent8cdc8de0 verified locally and on GitHub;
 48 artifacts/9 bindings match. Native arm64 and14.18GiB free disk verified.
@@ -18,7 +18,9 @@ freeze must be committed before new held readout. Residual fitting uses
 in-sample base predictions, not independent calibration or OOF stacking.
 Registration b7a829eb was pushed before the actual six-probe pilot, which
 completed in13.9611 group seconds excluding registration/parent preflight.
-The full fit reuses it;PID49301 observed alive with receipt/resume and heartbeat.
+The full fit reused it;PID49301 completed normally. All864 closed-form fits
+on432 estimators are complete;313.8133 run seconds exclude parent preflight
+and reuse the pilot. Prediction hashes are frozen before source-held readout.
 No independent-role access, policy change, Stage5C or SMC.
 [Protocol](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md).
 
