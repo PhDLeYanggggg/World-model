@@ -26,6 +26,10 @@ develops earlier in training or reflects a mismatch between binary risk labels
 and cost severity. The [conclusions](outputs/publication_readiness_2026_09/european_aux_gradient_v1/conclusions.md)
 and [complete figure](outputs/publication_readiness_2026_09/european_aux_gradient_v1/adamw_probe_effects.svg)
 retain the small effects, negative comparisons and limits of this diagnosis.
+All 17,280 interventions now reproduce exactly. The reports and figure match
+byte-for-byte, and 67 tests in twelve scoped files pass. Sixteen public artifacts
+and twenty source bindings are hash-sealed. The full legacy suite was not rerun.
+These checks establish repeatability, not a model improvement.
 
 **Preceding result:** keeping the strong original estimator intact does not make
 the auxiliary risk label a reliable cost improvement. I completed the

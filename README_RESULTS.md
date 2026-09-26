@@ -15,7 +15,14 @@ vs true auxiliary gives easy-harm locality intervals1 positive/1 negative/4
 overlap;vs projected shuffled1/2/3. All four registered repair screens fail.
 The tiny one-step fitting effects are not new trajectory or generalization
 gains. No new fully trained model,held readout,independent access or deployment
-change. Complete numerical replay and final regression checks are pending.
+change. Complete numerical replay now reproduces all17280 interventions and
+144 view records exactly. Unknown-label update rows0;update/probe row overlap0.
+Reports,secondary diagnosis and figure match byte-for-byte. Fresh67 tests in
+12 scoped files pass;16 public artifacts and20 source bindings are hash-sealed
+in verification1d640f60b5506a30624d509633b56a4e9b6225b0ef22457a590330753747c134.
+Full legacy suite not_run. Results d42f03f6 preceded verification PID42143.
+The original registration and both type-only report repairs remain auditable.
+Scientific screens stay0/4;no new full training or generalization claim.
 
 [Conclusions](outputs/publication_readiness_2026_09/european_aux_gradient_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_aux_gradient_v1/failure_analysis.md),

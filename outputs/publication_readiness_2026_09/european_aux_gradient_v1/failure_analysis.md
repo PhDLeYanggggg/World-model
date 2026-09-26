@@ -29,6 +29,11 @@ repair direction. It does not pass the registered allocation screen.
 
 ## Remaining Unknowns
 
+Earlier easy-membership gradient and severity-transport diagnostics already
+failed to justify a broad conflict/resampling repair. This cap-event study
+uses different labels and paired projection interventions; it is not evidence
+that no one previously tested task interference. Prior negative results remain.
+
 - Early/middle training gradients were not saved in the parent checkpoints.
   The final-state diagnostic cannot rule out a conflict earlier in training.
 - The relative contributions of rare-label severity, squared-loss tail

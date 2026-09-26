@@ -16,24 +16,35 @@ calling generic gradient projection the solution or enlarging the model.
 
 ## Next Experiment, Not Yet Run
 
-Preregister a fitting-only training-stage and cost-severity diagnostic:
+The earlier [membership task-gradient study](../european_task_gradients_v1/conclusions.md)
+already rejected a broad final-state conflict repair for easy-membership BCE.
+The [severity transport study](../european_severity_transport_v1/conclusions.md)
+already examined recording concentration and radial support. Do not repeat
+those summaries as new discoveries, or revive ordinary harm-only regression
+as though it had not been tested. This cap-event study adds a different label,
+eight paired probe batches and an actual projection intervention; it also
+fails to support the generic repair.
+
+Preregister a genuinely new fitting-only training-stage diagnostic:
 
 1. Reconstruct the same seeded trajectories while capturing intermediate
    states and loss/gradient measurements. Verify final states against the
    existing exact controls. This tests whether final-only measurements missed
    an early or middle optimization problem; it is new instrumentation, not
    an independent replication or new test set.
-2. Quantify how the known, locality-excluded four-cost target error is
-   distributed across zero/positive harm and severity bins fixed on fitting
-   data. Keep targets, supports and all-known zero-envelope rows unchanged.
+2. Reuse the existing severity/support findings. At the newly captured time
+   points only, track zero/positive-harm and fitting-fixed severity-bin loss
+   trajectories. Keep targets, supports and all-known zero-envelope rows
+   unchanged. The new quantity is when errors emerge, not another final-state
+   concentration tally.
 3. Choose a loss/budget repair only if this identifies a repeatable fitting
    limitation. Register its matched true/shuffled/control comparisons before
    full training. Do not tune any threshold on previously read outer results.
 
-This sequence discriminates optimization-stage failure from a mismatch between
-binary risk labels and cost severity. It does not assume either explanation
-has already been proved. Reuse existing valid evidence; do not redo forecasts
-or collect another full architecture grid to avoid a negative result.
+This sequence can test whether an optimization-stage limitation was missed;
+it cannot by itself prove target insufficiency. It does not assume either
+explanation has already been proved. Reuse existing valid evidence; do not
+redo forecasts or collect another architecture grid to avoid a negative result.
 
 ## Still Needed for a Main Claim
 

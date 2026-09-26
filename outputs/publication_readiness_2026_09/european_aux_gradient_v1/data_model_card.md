@@ -36,6 +36,14 @@ overlapping models and windows are not additional independent test units.
 
 ## Claims and Limitations
 
+The legacy per-view field outer_outcomes_read=false means no outer-outcome
+diagnostic evaluation or use in updates. It is not a filesystem-level blinding
+claim: the shared source loader exposes source containers, and fitting_inputs
+slices fitting IDs before indexing target_eval and baseline-error labels.
+Source localities also rotate fitting/excluded roles across contexts. This
+does not open the separate independent selection/calibration/confirmation
+assets and does not make the already exposed source data independent.
+
 The reported uncertainty is descriptive locality variation of fitting-probe
 effects. It is not evidence of external transfer, risk calibration, general
 causal attribution, physical safety or deployment readiness. Final-state
