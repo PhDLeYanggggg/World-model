@@ -29,9 +29,15 @@ points -1.1155% to +0.6679%. Motion-only vs original:0/0/6, all points negative
 not a noninferiority or safety guarantee. Full original AUROC:4 positive
 intervals, not magnitude or trajectory success. Closing-speed dependent
 cells:120 consistent fitting signs,102 same/18 opposite held;speed-change
-125,96/29. No held-guided feature selection. Full replay verification running.
+125,96/29. No held-guided feature selection. Full verification passes864
+closed-form fit/prediction replays,36 readout groups and1,728 direct MSE checks.
+Fresh tests25 across4 files;parent19 and ancestor509 remain cached_verified,
+full legacy suite not_run. All51 public artifacts/10 bindings are sealed;
+figure visually checked and byte-reproducible. Original checkpoints unchanged.
+Readout/results commit79d1282c preceded this final verification receipt.
 Next: nested fitting-locality-OOF residual provenance with fixed seven
-features and controls, auditing all inner target/preprocessing dependencies.
+features and controls. Fresh source inspection confirms the easy cut, loss
+scales and initialization must also be inner-fitting-only; new OOF fits not_run.
 No independent-role access, policy change, Stage5C or SMC.
 [Protocol](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md).
 [Conclusions](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md).

@@ -141,6 +141,13 @@ properly nested OOF residual construction, with unchanged features and strong
 controls. Related [post-processing work](outputs/publication_readiness_2026_09/european_context_residual_v1/literature_position.md)
 also makes clear that this probe alone is not a method novelty claim.
 
+Verification replays all 864 closed-form fits and predictions and all 36
+readout groups. All 1,728 direct MSE checks and 25 tests in four relevant files
+pass; 51 public artifacts and ten source bindings are sealed. The figure is
+visually checked and byte-reproducible. Prior same-version tests remain
+cached_verified, and the full legacy suite was not rerun. These checks do not
+reverse the failed improvement gate.
+
 ### Completed Conditional-Cost Experiment
 
 I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)
