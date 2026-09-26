@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Severity Transport (2026-09-26, Calculation Running)
+## Frozen Severity Transport (2026-09-26, Complete, Broad Repair Triggers Unsupported)
 
 Previous goal turn: progress, completed negative supervision experiment.
 Parent d42b8c40 verified locally and on GitHub;57 artifacts/12 bindings match.
@@ -16,9 +16,28 @@ saved fitting-batch group gradients, fitting-only radial support proxy.
 Seven targeted tests pass. Registration6527b13f was pushed before calculation.
 Real four-view pilot completes in15.5903 group seconds, excluding interpreter
 startup/full parent verification. It is reused by the full calculation;
-PID46388 observed alive. Per-group receipt/resume and heartbeat active.
-No retraining, policy/threshold change or independent-data access.
+PID46388 completed normally; all144 frozen views /36 groups are calculated.
+Recorded237.9788 run seconds exclude parent preflight and reuse the pilot.
+Full/original:38/72 views worsen;24/38 have >=50% positive row excess in one
+recording, but only11/72 fitting weighted gradients meet50% concentration.
+Median full recording gradient norm shares:ordinary16.19%,weighted30.25%,
+easy-harm cost46.02%. Joint recording-influence flag false. Full radial
+enrichment in10/38 worsening views; broad radial flag false. Motion-only
+retains44/72 worsening vs original,30/44 concentrated errors and26/72
+concentrated weighted gradients. Comparisons with ordinary auxiliary also
+remain in the record; no weak-comparator substitution. Gradient batch means
+the saved diagnostic batch at final parameters, not the final optimizer draw.
+These dependent diagnostics prove no causal root cause or method gain.
+All144 diagnostics replay exactly. Fresh verification passes3,456 grouped-mass
+checks,432 gradient-additivity checks and19 tests in3 relevant files. All48
+public artifacts and9 source bindings match; figure visually checked and
+byte-reproducible. Parent22 tests and ancestor509 tests remain cached_verified;
+full legacy suite not_run. Original checkpoints unchanged, new updates0.
+No retraining, policy/threshold change or independent-data access. Next:
+fitting-defined causal-context residual diagnosis before one targeted repair,
+not unsupported gradient surgery, recording removal or a threshold sweep.
 [Protocol](outputs/publication_readiness_2026_09/european_severity_transport_v1/protocol.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_severity_transport_v1/conclusions.md).
 
 ## Severity Auxiliary (2026-09-26, Complete, Cost Gate Failed)
 

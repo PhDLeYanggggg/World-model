@@ -91,13 +91,26 @@ figures reproduce byte-for-byte. The parent's same-version 509 tests remain
 cached_verified, not rerun; the full legacy suite was not run. These checks
 do not reverse the failed cost gate.
 
-The next [frozen transport diagnostic](outputs/publication_readiness_2026_09/european_severity_transport_v1/protocol.md)
-asks whether excess error and training gradients concentrate in a few
-recordings, or whether held inputs fall outside a coarse training-feature
-range. It retains signed improvements and harms, all source assignments and
-the unchanged models. Seven targeted tests pass. Registration 6527b13f
-preceded a real four-view pilot; full calculation is now running with
-per-group resume. This is diagnosis, not a new deployment claim.
+I completed the [frozen transport diagnostic](outputs/publication_readiness_2026_09/european_severity_transport_v1/conclusions.md)
+across all 144 unchanged heads, with zero training updates. Of 38 worsening
+full-input views against the original model, 24 concentrate at least half of
+their positive excess error in one recording. But only 11/72 fitting views
+have equally concentrated weighted auxiliary gradients. The registered joint
+trigger fails. A coarse radial support proxy also fails its broad trigger
+(10/38 worsening views), without ruling out local or conditional domain shift.
+
+The [figure](outputs/publication_readiness_2026_09/european_severity_transport_v1/transport_diagnostic.svg)
+keeps these distinct observations separate. Gradient calculations use the
+saved diagnostic batch at final parameters, not the full training path.
+This result does not justify dropping recordings or launching a sampling/
+gradient-surgery sweep. My next question is whether errors recur in identifiable
+past-only motion/interaction contexts. The parent cost gate remains failed;
+independent data and deployment are unchanged. All 144 diagnostics replay
+exactly; 3,456 grouped-mass checks, 432 gradient-additivity checks and 19 tests
+in three relevant files pass. The 48 public artifacts and nine source bindings
+match, and the figure reproduces byte-for-byte. Previous checks remain
+cached_verified; the full legacy suite was not rerun. Reproducible diagnosis
+is not proof of a repaired model.
 
 ### Completed Conditional-Cost Experiment
 
