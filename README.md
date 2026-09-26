@@ -45,9 +45,11 @@ and 101 source bindings match their recorded hashes; both figures reproduce
 byte-for-byte. The full legacy suite was not rerun. These engineering checks
 do not reverse the failed scientific gate.
 
-Next I will examine cost/classification gradient alignment on frozen fitting
-batches before choosing a controlled repair. I am not tuning thresholds or
-selecting a favorable held-scene result. The research goal remains ongoing.
+I have registered a [frozen fitting-batch diagnostic](outputs/publication_readiness_2026_09/european_task_gradients_v1/protocol.md)
+before choosing a controlled repair. It checks both gradient alignment and
+disposable updates with saved AdamW momentum; gradient conflict alone does
+not establish optimizer harm. No threshold search or new held-out readout
+is involved. Calculations are pending; the research goal remains ongoing.
 
 ### Completed Conditional-Cost Experiment
 
