@@ -29,8 +29,12 @@ versus motion-only changes forecasts and event populations, not a matched
 feature ablation. Two-to-three-locality producer transport remains explicit.
 
 Next: registered matched joint-cost auxiliary-label experiment, not in-sample
-score stacking, threshold tuning or independent-role access. Replay of all
-frozen models/readouts and the six-file test scope is pending at this record.
+score stacking, threshold tuning or independent-role access. Results commit
+c0912ba2 preceded verification. All288 frozen checkpoint predictions and144
+readouts reproduce exactly; reports, tables, training summaries and figure
+match byte-for-byte. Fresh46 tests in six scoped files pass. Twenty-two public
+artifacts and15 source bindings are sealed with no hash mismatches. This is
+checkpoint inference/result replay, not a second independent training run.
 Deployment, Stage5C and SMC remain unchanged/off. The full legacy suite is
 not_run. [Conclusions](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/failure_analysis.md),

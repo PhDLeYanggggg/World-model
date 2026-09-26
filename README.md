@@ -30,8 +30,11 @@ Next I will test whether this event signal helps a matched expected-cost
 model, while preserving the existing cost constraints and fallback rules.
 No deployment changes follow from event classification alone. Predictions
 were frozen before readout; independent selection, calibration and confirmation
-remain unopened. Full checkpoint and result replay is the current verification
-step, separate from the scientific gate.
+remain unopened. Full verification now reproduces predictions from all 288
+checkpoints and all 144 readouts. Reports and the figure match byte-for-byte;
+46 tests in six scoped files pass. Twenty-two public artifacts and 15 source
+bindings are hash-sealed. The full legacy suite was not rerun. Reproducibility
+does not reverse the failed complete scientific gate.
 
 **Latest completed diagnosis:** the risk estimator's frozen output range limits many
 realized-label corrections, but simply raising that range is not a supported
