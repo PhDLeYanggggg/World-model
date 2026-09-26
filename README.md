@@ -10,18 +10,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Now testing:** does the auxiliary risk label help when I keep the strong
-original estimator intact? The preceding experiment changed more than its
-auxiliary loss: its width, cost outputs and sampling support also differed
-from the original. The [new protocol](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/protocol.md)
-preserves the original native inputs, GELU network, four-cost objective and
-all-known sampling. A no-auxiliary control must reproduce the original before
-true and shuffled auxiliary labels are compared. The planned 432 heads use
-three seeds. All 432 models now complete 864,000 updates, and all 144 original
-controls reconstruct exactly. Predictions are frozen before held source
-readout. No improvement or deployment change is claimed at this checkpoint.
+**Latest result:** keeping the strong original estimator intact does not make
+the auxiliary risk label a reliable cost improvement. I completed the
+[strong-base study](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/conclusions.md)
+with 432 Torch models, 864,000 updates and three seeds. All 144 no-auxiliary
+controls reproduce the original parameters and predictions exactly. The
+auxiliary task is now compared without changing the base architecture,
+inputs, four-cost objective or sampling support.
 
-**Latest result:** learning which cases are risky does not yet give me better
+With full inputs, one of six locality intervals supports lower easy-harm
+MSE, one supports deterioration and four overlap zero. Point estimates range
+from -14.85% to +0.65%. Against shuffled labels, none supports improvement
+and two support deterioration. These are cost-estimation results, not
+trajectory gains. The [complete figure](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/strong_cap_auxiliary_contrasts.svg)
+keeps all assignments and negative motion-only results.
+
+The auxiliary often learns which events are risky, but not their magnitude
+well enough. Fitting cost is already worse in 52 of 72 full-input views, so
+I cannot attribute everything to a held-scene distribution shift. Gradient
+interference is a hypothesis to test, not a proven explanation. Deployment
+stays unchanged; independent selection, calibration and confirmation remain
+unopened. Complete checkpoint/readout replay is the next verification step.
+
+**Preceding result:** learning which cases are risky does not yet give me better
 estimates of how much error they will cause. I completed the
 [auxiliary-cost experiment](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/conclusions.md)
 with 432 real Torch models, 864,000 updates and three seeds. True-event

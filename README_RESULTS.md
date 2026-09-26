@@ -5,7 +5,27 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Strong-Base Cap Auxiliary (2026-09-26, Training Complete, Readout Next)
+## Strong-Base Cap Auxiliary (2026-09-26, Readout Complete, No Promotion)
+
+All432 Torch heads/864000 updates and144 source-held readouts complete.
+All144 original controls reconstruct bit-exactly;predictions were frozen in
+df49e670 before PID36218 readout.1152 direct-MSE checks pass. Full primary
+intervals:1 positive/1 negative/4 overlap versus original/control,0/2/4 versus
+shuffled. Original-comparison points range-14.8538% to+0.6485%,not a pooled
+gain or CI. All primary,guard and task-information gates fail. Full fitting
+MSE worsens52/72;29 fit-negative/held-negative and14 fit-positive/held-negative
+views. These are dependent diagnostics,not causal proof or independent tests.
+Event probability is learnable (descriptive full median AUROC0.84617),but
+does not establish expected-cost or policy improvement. Motion negatives
+and3 unsupported event-ranking views remain. Three-seed averages and3000
+four-locality resamples;overlapping assignments and prior source exposure.
+Deployment and independent roles unchanged. Full replay pending.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/failure_analysis.md),
+[project gap](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/project_gap.md).
+
+### Chronological Run Record
 
 Parent c6666ce0 and its sealed artifacts/bindings were reverified. New native
 arm64 code passes18 scoped tests, including exact synthetic original-control
