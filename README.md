@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+My next [registered experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/protocol.md)
+tests locality-out-of-fold residual supervision, with two fixed in-sample
+controls trained on the same number of localities. All inner preprocessing,
+easy cuts and loss scales are rebuilt without the inner-held labels. The
+planned 432 neural risk heads do not change the trajectory forecasters or
+deployment; 19 targeted tests pass, but experimental fitting has not started.
+
 **Current status, 26 September:** the latest past-context cost repair has
 completed but has not passed its cross-locality improvement gate. I am keeping
 the original model unchanged. The [current conclusions](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md)

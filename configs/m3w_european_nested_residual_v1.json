@@ -1,0 +1,23 @@
+{
+  "name": "european_nested_residual_v1",
+  "pairs": ["full", "motion_only"],
+  "seeds": [17, 29, 43],
+  "residual_variants": ["oof", "in_sample_next", "in_sample_prev"],
+  "probe_arms": ["global_bias", "context_bias"],
+  "head_training": {"steps": 2000, "width": 64, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "outer_views": 144,
+  "new_inner_heads": 432,
+  "updates": 864000,
+  "closed_form_fits": 864,
+  "ridge": 0.1,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 38113,
+  "threshold_refit": false,
+  "selection_access": false,
+  "reserved_calibration_access": false,
+  "confirmation_access": false,
+  "new_forecaster_training": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

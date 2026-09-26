@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Nested Locality Residual (2026-09-26, Registered, Support Not Run)
+
+Previous goal turn: progress. Parent b631bf80 verified locally/on GitHub;
+51 artifacts and10 source bindings match. Native arm64;12.6578GiB free disk.
+Fresh CREATE read-only query20260926_052857UTC succeeded; jobs untouched.
+Fixed design:432 two-locality Torch risk heads /864000 updates, followed by
+864 fixed global/context probes. OOF versus two cyclic in-sample controls;
+original three-locality estimator and prior correction remain strong controls.
+Inner cuts/scales/initialization are inner-fitting-only; outer target unchanged.
+All144 views /36 groups /three seeds retained. Nineteen scoped tests pass,
+including label perturbation, producer exposure and exact resume. Real-data
+support/pilot/training/readout not_run. No policy or independent-role access.
+[Protocol](outputs/publication_readiness_2026_09/european_nested_residual_v1/protocol.md).
+
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 
 Previous goal turn: progress. Parent8cdc8de0 verified locally and on GitHub;
