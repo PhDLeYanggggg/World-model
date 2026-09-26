@@ -39,6 +39,12 @@ loss0.513690 to0.333273,unknown draws0. This is runtime/optimization evidence,
 not held accuracy. Local placement is supported;resume the pilot checkpoint
 to2000 and complete all432 heads before freezing the readout.
 
+Full resumable fitting started under PID25156 after e7422597. At the recorded
+progress check,90/432 models were complete, the process was live and private
+artifacts occupied248MiB. This is progress,not completion or a held result.
+The method note separates event probability,expected cost and deployment
+utility;the data card preserves teacher exclusion and prior source exposure.
+
 ## Causal Cap-Event Learnability (2026-09-26, Readout Complete, No Promotion)
 
 The complete fresh experiment has 288 native-Torch heads, 576,000 updates and
