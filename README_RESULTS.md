@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Auxiliary Training Trajectories (2026-09-27, Registered Diagnostic)
+
+The final-state projection experiment did not justify a projection repair.
+The next question is when the auxiliary cost deficit appears during training.
+I will reconstruct the same 432 heads and retain measurements at updates
+200, 600, 1000, 1400 and 2000. This adds observation, not a new model variant.
+Final parameters, optimizer states and sample streams must exactly reproduce
+the original experiment. No checkpoint will be selected from these curves.
+
+The protocol retains all three seeds, all six assignments and both feature
+families. Severity bins and gradient measurements use fitting data only.
+Independent selection, reserved calibration and confirmation stay unopened.
+CREATE was checked read-only; this modest experiment uses the native arm64
+local environment with four compute threads and no DataLoader workers.
+Training and trajectory readout are not yet complete; deployment is unchanged.
+
+[Registered protocol](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/protocol.md).
+
 ## Auxiliary Gradient Diagnostic (2026-09-27, Readout Complete, No Repair Promotion)
 
 Fresh17280 isolated AdamW steps,432 frozen final states,144 views,three seeds.
