@@ -20,9 +20,9 @@ The initial support pass hit a NumPy-boolean JSON error. A hash-bound
 implementation amendment preserves the registration and scientific rules.
 The rerun passes all 432 fitting-support checks; the weakest motion-only
 subset has just five easy-harm rows, so this is not a statistical-power claim.
-The real 100-update pilot completed and the full 432-head fit is now running
-from that checkpoint. Its estimated 14 minutes of optimizer work excludes
-data loading, predictions and verification; no new held result is available.
+All 432 native-Torch risk heads and 864,000 updates are now complete, including
+the resumed pilot. Their predictions are frozen before residual fitting and
+held readout. No new cross-locality improvement result is available yet.
 
 **Current status, 26 September:** the latest past-context cost repair has
 completed but has not passed its cross-locality improvement gate. I am keeping
