@@ -14,7 +14,8 @@ I am now testing [harm ranking with locality-excluded fitting](outputs/publicati
 Each risk head is fitted on three source localities and checked on a fourth,
 with preprocessing and the diagnostic event definition fitted on the same
 three. This separates recognizing costly cases from predicting their cost.
-The experiment is registered; training and outcome readout are not complete.
+All 144 risk heads have completed 288,000 updates. Predictions are frozen;
+held-locality outcome readout has not started. Nine targeted tests pass.
 It does not alter the deployed policy or open reserved evaluation data.
 
 ### Completed Reference-Protection Test

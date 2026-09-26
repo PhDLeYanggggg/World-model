@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Harm Tail Crossfit (2026-09-26, Registered, Training Not Run)
+## Harm Tail Crossfit (2026-09-26, Trained, Readout Not Run)
 
 The next diagnostic uses leave-one-B-locality-out mean-moment fitting with
 all six source assignments, three seeds and full/motion-only pairs: 144 heads,
@@ -14,7 +14,11 @@ event cut using only three fitting localities. Its event definition is not
 silently pooled with the existing whole-B-cut C endpoint. B-fitted teacher
 selection masks are not used. Six targeted tests check held-locality exclusion,
 unknown labels, train-only bins, tied-score mass and zero-event interpretation.
-Training, held-out results and any deployment gain remain not_run.
+Registration `c666dac7` preceded training. All 144 heads completed 288,000
+updates; summed fit time is 363.10 seconds, not total pipeline wall time.
+Unknown-label draws are zero. Nine targeted tests pass. The held predictions
+and training-only bins are frozen before readout. Held-out results and any
+deployment gain remain not_run. Native-arm64 Torch CPU4, no new forecaster.
 [Protocol](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/registration.md).
 
 ## Reference Protection (2026-09-25, Completed, Repair Not Established)
