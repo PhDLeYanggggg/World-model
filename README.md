@@ -18,8 +18,9 @@ on inputs, initialization, sampling and training budget. It keeps the original
 cost estimator as a strong comparison and changes no deployment rule. At
 registration, 32 targeted tests pass. All 144 fitting views now pass numerical
 support checks, with at least 132 full-input and 15 motion-only event rows.
-That is support, not statistical power. Fitting/readout have not yet run;
-independent selection, calibration and confirmation remain unopened.
+That is support, not statistical power. A real 100-update Torch pilot completed
+normally and supports local resumable training; full fitting and readout are
+not complete. Independent selection, calibration and confirmation remain unopened.
 
 **Latest experiment:** causal history contains useful information about rare
 forecasting errors above a frozen risk estimate. I completed the

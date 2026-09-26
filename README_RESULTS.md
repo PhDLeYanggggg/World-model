@@ -33,6 +33,12 @@ Support is frozen before the native-Torch pilot and full resumable fitting.
 No outer labels used for fitting. Plotting/replay helpers are implemented;
 their real outputs remain not_run until predictions and readout exist.
 
+Support fca1dcbf preceded pilot PID24814. Real100-update cost-only fitting took
+0.116041s;phase wall15.771428s excluding ancestry preflight. Fixed-batch cost
+loss0.513690 to0.333273,unknown draws0. This is runtime/optimization evidence,
+not held accuracy. Local placement is supported;resume the pilot checkpoint
+to2000 and complete all432 heads before freezing the readout.
+
 ## Causal Cap-Event Learnability (2026-09-26, Readout Complete, No Promotion)
 
 The complete fresh experiment has 288 native-Torch heads, 576,000 updates and
