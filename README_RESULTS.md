@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Auxiliary Gradient Diagnostic (2026-09-27, Running)
+## Auxiliary Gradient Diagnostic (2026-09-27, Frozen Before Readout)
 
 The strong-base failure is verified at f1d011aa; its 20 public artifacts and
 23 source bindings still match. I am testing task interference with 17,280
@@ -23,7 +23,10 @@ not newly trained deployable heads or generalization gains.19 scoped tests pass.
 Before readout, integer assignment IDs required a report-format correction;
 the original registration is retained with an explicit before/after source
 hash amendment. No numerical or scientific rule changed.21 scoped tests now
-pass, including rejection of unrelated amendments. Full run remains active.
+pass, including rejection of unrelated amendments. PID40235 completed all144
+views,432 final states,3456 final batch diagnostics and17280 isolated AdamW
+steps. Phase wall289.911976s excludes ancestry preflight and reuses the pilot
+view. Results are frozen before aggregate readout; repair efficacy not_run.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
 
