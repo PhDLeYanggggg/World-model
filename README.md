@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current experiment:** I am checking how much fitting error remains
+unavoidable inside the risk estimator's frozen output range. This is a
+[fitting-only diagnostic](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/protocol.md),
+not another trajectory model or a claim of improvement. A label-assisted
+projection is only an offline reference; it cannot be used for inference and
+does not by itself diagnose conditional bias. Independent data roles and
+deployment remain unchanged.
+
 **Latest result:** adding the frozen estimator's own risk scores does not
 repair the risk-correction model. I completed the
 [risk-conditioned experiment](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/conclusions.md)

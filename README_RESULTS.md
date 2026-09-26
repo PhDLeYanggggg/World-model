@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Cap Fitting Diagnostic (2026-09-26, Registered Before Computation)
+
+Previous goal turn:progress. Parent dbceb8d4 matches local/GitHub; the full
+risk-conditioned replay passed while its improvement gates failed. Priority
+gaps remain transferable risk estimation, controlled scene-level intervention
+utility, then independent calibration/confirmation and a complete paper.
+The next diagnostic measures the empirical output-box floor before another
+model change, retaining all144 fitting views/four banks/two weightings.
+No model fit, new held readout or policy selection. Fresh23 scoped tests pass.
+CREATE read-only query succeeded,receipt
+7984d619ca760521d679e0c15742dc087173bb7c318d4d5a07ad6023eb3ba011;
+jobs unchanged. Local native arm64 inputs and20GiB free disk support this work.
+A one-view pilot precedes the full accounting run. A large realized-label
+floor is not conditional bias; the explicit counterexample is unit-tested.
+
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/protocol.md).
+
 ## Risk-Conditioned Residual (2026-09-26, Readout Complete, Gate Failed)
 
 Previous goal turn: progress, negative common-event experiment fully verified.
