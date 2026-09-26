@@ -18,6 +18,11 @@ All144 views /36 groups /three seeds retained. Nineteen scoped tests pass,
 including label perturbation, producer exposure and exact resume. Real-data
 support/pilot/training/readout not_run. No policy or independent-role access.
 [Protocol](outputs/publication_readiness_2026_09/european_nested_residual_v1/protocol.md).
+Registration ee70eb8e was pushed before support. PID53128 traversed432 views
+but failed writing strict JSON due to a NumPy boolean. The implementation-only
+amendment records the old/new runner hashes; original registration is retained,
+all scientific settings unchanged,0 training updates and0 outer readouts.
+The failure was reproduced in an isolated synthetic support regression test.
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 

@@ -42,7 +42,19 @@ def registration(create=False):
     path = PUBLIC/'registration_lock.json'
     if create: immutable_json(path, identity)
     else:
-        assert json.loads(path.read_text()) == identity; base.previous.require_committed(path)
+        registered = json.loads(path.read_text())
+        if registered != identity:
+            amended = PUBLIC/'implementation_amendment.json'
+            change = json.loads(amended.read_text())
+            runner = 'scripts/run_m3w_european_nested_residual.py'
+            assert change['registration_sha256'] == digest(path)
+            assert change['changed_file'] == runner and change['scientific_changes'] is False
+            assert change['old_sha256'] == registered['bindings'][runner]
+            assert change['new_sha256'] == identity['bindings'][runner]
+            registered['bindings'][runner] = change['new_sha256']
+            assert registered == identity
+            base.previous.require_committed(amended)
+        base.previous.require_committed(path)
     return cfg, identity
 
 
@@ -81,7 +93,7 @@ def support(cfg,identity):
             rows.append(dict(tag=v['tag'],pair=v['pair'],inner=inner,training_sites=pr['training_sites'],
                 known=int(known.sum()),easy=int(np.nansum(e)),easy_harm_rows=positive,
                 cut=pr['positive_easy_cut'],train_ids_sha256=array_hash(v['ids'][take]),
-                target_sha256=array_hash(y),numerically_supported=positive>0 and 0<np.nansum(e)<known.sum()))
+                target_sha256=array_hash(y),numerically_supported=bool(positive>0 and 0<np.nansum(e)<known.sum())))
         beat('support',inner_views=len(rows),tag=v['tag'])
     assert len(rows) == 432
     doc = dict(registration=artifact(PUBLIC/'registration_lock.json'),rows=rows,
@@ -117,7 +129,8 @@ def train(cfg,identity,pilot=False,resume=False,verify=False):
             take,pr,y,e = method.inner_inputs(v['x'],v['raw'],v['cv'],v['sites'],v['outer'],inner)
             inp = input_record(v,inner,take,pr,y)
             ipath = PRIVATE/'inputs'/v['tag']/(inner+'.json'); immutable_json(ipath,inp)
-            hid = dict(registration=artifact(PUBLIC/'registration_lock.json'),input=artifact(ipath),seed=seed)
+            hid = dict(registration=artifact(PUBLIC/'registration_lock.json'),input=artifact(ipath),seed=seed,
+                       implementation_amendment=artifact(PUBLIC/'implementation_amendment.json'))
             if receipt.exists():
                 row = json.loads(receipt.read_text()); assert row['identity'] == hid and row['input']==inp
                 for a in row['artifacts'].values(): assert artifact(ROOT/a['path']) == a
