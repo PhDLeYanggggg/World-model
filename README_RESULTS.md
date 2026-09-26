@@ -32,6 +32,12 @@ an implementation amendment enforces the already registered rule that one-class
 ranking metrics are not_estimable. No scientific rule changed. Fresh33 scoped
 tests pass. Support is frozen before pilot/resumable288-head fitting.
 
+Support commit7ae3939d preceded pilot PID18169. First MLP100 updates completed
+in0.088315125s fitting time;wall15.978738167s excluding ancestry preflight.
+Fixed-batch BCE0.084219396 to0.076875404,unknown rows sampled0. This establishes
+real native-Torch execution,not held performance. Local placement is supported;
+PID18461 continues the same checkpoint and starts the full288-head run.
+
 ## Fixed-Cap Fitting Diagnostic (2026-09-26, Completed, No Promotion)
 
 Previous goal turn:progress. Parent dbceb8d4 matches local/GitHub; the full
