@@ -10,13 +10,30 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now testing [harm ranking with locality-excluded fitting](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/registration.md).
-Each risk head is fitted on three source localities and checked on a fourth,
-with preprocessing and the diagnostic event definition fitted on the same
-three. This separates recognizing costly cases from predicting their cost.
-All 144 risk heads have completed 288,000 updates. Predictions are frozen;
-held-locality outcome readout has not started. Nine targeted tests pass.
-It does not alter the deployed policy or open reserved evaluation data.
+I completed a [locality-excluded harm diagnosis](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/conclusions.md)
+with 144 fresh risk heads, three seeds and 288,000 training updates. Each head
+fits on three source localities and is evaluated on a fourth; preprocessing
+and the diagnostic event definition use only the three fitting localities.
+
+The important finding is that aggregate risk ranking can hide the difficult
+part of the decision. The full model's median harm-event AUROC is 0.792 over
+all rows, but 0.486 where the two forecasts actually disagree. Learned scores
+still capture costly tails better than a simple disagreement control in four
+of six all-row locality-bootstrap comparisons. Both facts matter: the head is
+not devoid of information, but its aggregate AUROC does not justify using it
+as a reliable switching rule. It also underestimates harm in 50/72 dependent
+held-locality views.
+
+I am not deploying a change. The [full results](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/results.md),
+[paired ranking figure](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/harm_ranking.svg)
+and [loss curves](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/training_loss.svg)
+retain every source assignment and the motion-only control. The next test
+must improve risk prediction where intervention is possible, rather than
+inflate an all-row score or rescale every prediction. Independent calibration
+and confirmation remain closed; the current study is source-development
+evidence, not a new trajectory improvement or a submission-ready claim.
+All 144 checkpoint replays, 2,592 independent ranking/tail checks and 457
+scoped tests pass. This verifies the experiment, not a deployment improvement.
 
 ### Completed Reference-Protection Test
 

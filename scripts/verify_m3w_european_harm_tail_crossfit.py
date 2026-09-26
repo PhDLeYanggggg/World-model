@@ -105,7 +105,10 @@ def replay(cfg,identity):
                             metric_checks+=1
                         actual=top_share(s[valid],h,.1)
                         if actual is None: assert expected['top10_harm_mass_share'] is None
-                        else: np.testing.assert_allclose(actual,expected['top10_harm_mass_share'],rtol=1e-12,atol=1e-12)
+                        else:
+                            # Weighted cumulative mass and uniform-row sums accumulate differently.
+                            np.testing.assert_allclose(actual,expected['top10_harm_mass_share'],
+                                rtol=1e-10,atol=1e-10,err_msg=tag+'/'+subset+'/'+key)
                         metric_checks+=1
                 records.append(dict(group=name,pair=pair,held=held,checkpoint=run.artifact(directory/'checkpoint.pt'),
                     prefix_rows=int(count),fold_exclusion=True,train_bins_replayed=True,sampler_replayed=True))

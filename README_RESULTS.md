@@ -5,9 +5,9 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Harm Tail Crossfit (2026-09-26, Trained, Readout Not Run)
+## Harm Tail Crossfit (2026-09-26, Completed Diagnosis, No Promotion)
 
-The next diagnostic uses leave-one-B-locality-out mean-moment fitting with
+The diagnostic uses leave-one-B-locality-out mean-moment fitting with
 all six source assignments, three seeds and full/motion-only pairs: 144 heads,
 288,000 updates. The inner fold recomputes normalization, cost scale and easy
 event cut using only three fitting localities. Its event definition is not
@@ -16,10 +16,47 @@ selection masks are not used. Six targeted tests check held-locality exclusion,
 unknown labels, train-only bins, tied-score mass and zero-event interpretation.
 Registration `c666dac7` preceded training. All 144 heads completed 288,000
 updates; summed fit time is 363.10 seconds, not total pipeline wall time.
-Unknown-label draws are zero. Nine targeted tests pass. The held predictions
-and training-only bins are frozen before readout. Held-out results and any
-deployment gain remain not_run. Native-arm64 Torch CPU4, no new forecaster.
+Unknown-label draws are zero. Prediction freeze `97df3dcb` preceded readout.
+Native-arm64 Torch CPU4, no new forecaster or changed deployment policy.
 [Protocol](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/registration.md).
+
+All 36 role/seed/pair groups are read out. Full moment-versus-envelope top10%
+harm capture improves +8.11 to +75.77 percentage points across six all-row
+assignments: four positive locality-bootstrap intervals and two overlaps.
+Motion-only has two positive intervals and four overlaps, with points
+-5.60 to +29.51 pp. Within positive disagreement, full has three positive
+intervals/three overlaps; motion-only has five positive/one overlap. These
+are harm-retrieval diagnostics, not ADE gains or risk guarantees.
+
+Full all-row event AUROC has median 0.79177, but conditional AUROC is 0.48578
+where forecast disagreement is positive. Conditional AP/prevalence is 1.08796.
+Structural zero-disagreement negatives make the all-row task easier. Full
+held harm coverage is below one in 50/72 dependent views, median 0.66266;
+oracle top1% harm concentration is 90.773%. Motion-only has weak event
+support in 30/72 views and conditional AUROC 0.55792. No favorable seed or
+source assignment is selected.
+
+The three-site-cut inner targets and original whole-B-cut B/C targets are
+not target-matched. Original full-model conditional top10 harm capture is
+34.866% on fitting B versus 22.655% on C, descriptively; C is historically
+opened development, not independent confirmation. Source labels/forecasts
+are cached_verified; the 144 new fits, held metrics and original B bins are
+fresh_run. New policy gains and independent confirmation are not_run.
+
+Checkpoint/sampling/preprocessing replay passes for all 144 heads, with
+2,592 independent ranking/tail checks, 72 coordinate reductions and 576
+original-population diagnostic checks. All 457 tests in 80 scoped files pass;
+the full legacy suite is not_run. Reporting Path
+indexing and weighted-sum roundoff were repaired without changing predictions.
+[Conclusions](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/failure_analysis.md),
+[paper evidence note](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/paper_evidence_note.md).
+
+Next: distinguish a support-conditional objective from the already failed
+hurdle/ranked-hurdle and sampling repairs before another controlled fit.
+Keep forecasts, primary endpoints and risk tolerance fixed. Do not replace
+the policy with a global rescale or another C threshold sweep. No independent
+data access, Stage5C, SMC, metric/seconds or foundation claim.
 
 ## Reference Protection (2026-09-25, Completed, Repair Not Established)
 

@@ -68,7 +68,7 @@ def main():
                 'inner_held_B':summarize_population([f['held_metrics'][subset] for r in group for f in r['folds']]),
                 'original_fit_B':summarize_population([v[subset] for r in group for v in r['original_metrics']['B'].values()]),
                 'original_held_C':summarize_population([v[subset] for r in group for v in r['original_metrics']['C'].values()])}
-    fits=[json.loads((ROOT[r['path']]).read_text()) for r in done['heads']]
+    fits=[json.loads((ROOT/r['path']).read_text()) for r in done['heads']]
     run.immutable_json(run.PUBLIC/'aggregate_metrics.json',dict(summary=summary,contrasts=ci))
     run.immutable_json(run.PUBLIC/'training_metrics.json',[dict(group=r['input']['group']['group'],pair=r['input']['pair'],
         held=r['input']['held'],fit=r['fit']) for r in fits])

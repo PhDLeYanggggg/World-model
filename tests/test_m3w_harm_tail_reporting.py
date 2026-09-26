@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 from scripts.report_m3w_european_harm_tail_crossfit import ci_by_assignment
 from scripts.verify_m3w_european_harm_tail_crossfit import rank_metrics,top_share
+from src.evaluation.m3w_harm_tail_diagnostics import top_mass_share
 
 
 def fixture():
@@ -33,3 +34,11 @@ def test_independent_ranking_and_mass_ties():
     assert auc==pytest.approx(.875) and ap==pytest.approx(5/6)
     assert top_share(np.ones(4),harm,.1)==pytest.approx(.1)
     assert rank_metrics(score,np.zeros(4))==(None,None)
+
+
+def test_long_population_tail_sum_roundoff():
+    rng=np.random.default_rng(71); n=50003
+    score=np.round(rng.normal(size=n),3)
+    harm=np.where(rng.random(n)<.02,rng.exponential(size=n),0)
+    weighted=top_mass_share(score,harm,np.full(n,1/n),.1)
+    assert top_share(score,harm,.1)==pytest.approx(weighted,rel=1e-10,abs=1e-10)

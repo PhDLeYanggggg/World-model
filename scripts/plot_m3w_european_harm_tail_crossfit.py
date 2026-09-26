@@ -14,19 +14,18 @@ def main():
     fits=json.loads((PUBLIC/'training_metrics.json').read_text()); assert len(fits)==144
     contrasts=json.loads((PUBLIC/'aggregate_metrics.json').read_text())['contrasts']
     with plt.rc_context({'font.family':'DejaVu Sans','font.size':10,'svg.fonttype':'none'}):
-        fig,axes=plt.subplots(2,2,figsize=(11,7),sharex=True)
+        fig,axes=plt.subplots(1,2,figsize=(11,4),sharex=True)
         for i,pair in enumerate(('full','motion_only')):
             traces=[r['fit']['trace'] for r in fits if r['pair']==pair]
             steps=sorted(set.intersection(*[{v['step'] for v in t} for t in traces]))
-            for j,(component,title) in enumerate(((0,'All-reference cost'),(3,'Easy-positive harm'))):
-                ax=axes[i,j]; color='#1d718f' if i==0 else '#b63e55'
-                values=np.array([[{v['step']:v['component_mse'][component] for v in t}[s] for s in steps] for t in traces])
-                for v in values: ax.plot(steps,v,color=color,alpha=.12,linewidth=.6)
-                ax.plot(steps,np.median(values,axis=0),color=color,linewidth=2,label='Median / 72 heads')
-                ax.set_title(pair+' / '+title); ax.set_ylabel('Fixed-batch normalized MSE')
-                ax.grid(alpha=.2); ax.spines[['top','right']].set_visible(False)
-                if i==1: ax.set_xlabel('Optimizer updates')
-        axes[0,0].legend(frameon=False)
+            ax=axes[i]; color='#1d718f' if i==0 else '#b63e55'
+            values=np.array([[{v['step']:v['moment_mse'] for v in t}[s] for s in steps] for t in traces])
+            for v in values: ax.plot(steps,v,color=color,alpha=.12,linewidth=.6)
+            ax.plot(steps,np.median(values,axis=0),color=color,linewidth=2,label='Median / 72 heads')
+            ax.set_title(pair); ax.set_ylabel('Fixed-batch normalized four-moment MSE')
+            ax.grid(alpha=.2); ax.spines[['top','right']].set_visible(False)
+            ax.set_xlabel('Optimizer updates')
+        axes[0].legend(frameon=False)
         fig.suptitle('Locality-excluded fitting, not a policy-improvement result')
         fig.tight_layout(rect=(0,0,1,.95)); fig.savefig(PUBLIC/'training_loss.svg')
         fig.savefig(PRIVATE/'training_loss_preview.png',dpi=120); plt.close(fig)
