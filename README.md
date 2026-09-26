@@ -72,8 +72,9 @@ new predictions must be frozen before source-held evaluation. The comparison
 has passed its fitting-support check, not its outcome gate. Every full-input
 fit has easy-harm support in three localities and at least 165 distinct
 recording-agent tracks. Mass remains concentrated, so this is not a power
-claim. Native-Torch training is underway after a successful resumable pilot;
-no outcome improvement is claimed yet.
+claim. All 144 native-Torch heads and 288,000 updates are now complete after
+the resumable pilot. I am freezing the saved predictions before reading the
+new source-held outcomes; no improvement is claimed yet.
 
 ### Completed Conditional-Cost Experiment
 

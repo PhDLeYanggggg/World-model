@@ -43,6 +43,8 @@ def replay(cfg,identity):
                 sup=run.method.support(y,easy,pr,sites[tr],data['recordings'][bi[tr]],data['agents'][bi[tr]])
                 assert sup==supported[name,pair,held]['support']
                 tref,href,oldstate,_=run.parent.parent.reference(tag,x,tr,te,pr,env,bi)
+                with np.load(run.parent.PRIVATE/'heads'/tag/'cost_only'/'scores.npz',allow_pickle=False) as z:
+                    np.testing.assert_array_equal(z['ids'],bi[te]); np.testing.assert_array_equal(z['scores'],href)
                 for k in ('draws','fixed_ids','loss_scales'): np.testing.assert_array_equal(s[k],oldstate[k])
                 assert torch.equal(s['sampler_rng'],oldstate['sampler_rng']) and s['draws'][~pr['known']].sum()==0
                 _,ordinary=run.parent.method.restore(run.parent.PRIVATE/'heads'/tag/'membership_aux')
@@ -84,6 +86,7 @@ def replay(cfg,identity):
 def main():
     torch.set_num_threads(4); torch.set_num_interop_threads(1)
     cfg,identity=run.registration(); run.base.previous.require_committed(run.PUBLIC/'prediction_freeze.json')
+    run.parent.checked_training(identity['parent']['parent'])
     done=run.checked_training(identity); receipt=replay(cfg,identity)
     rows=[]
     for ref in json.loads((run.PUBLIC/'completion_checks.json').read_text())['groups']:

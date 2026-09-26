@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Severity Auxiliary (2026-09-26, Training Running, Outcomes Unread)
+## Severity Auxiliary (2026-09-26, Training Complete, Outcomes Unread)
 
 Previous turn: progress. Parent27a8c53b is verified locally and on GitHub;
 47 artifacts/10 bindings match. Native arm64 and13.43GiB free disk verified.
@@ -26,8 +26,12 @@ concentration ESS68.56/15.71 and recording ESS7.79/4.97, not independent sample
 sizes or a power guarantee. Support commit176640d7 preceded the real100-step
 pilot:0.13337 fitting seconds, initial projection384.11 fitting seconds excluding
 loading/inference/verification. The pilot resumes within the fixed budget.
-PID42824 is observed alive and fitting; CPU4/interop1/workers0, checkpoint and
-heartbeat active. Outcome readout remains not_run pending prediction freeze.
+PID42824 completed normally:144 heads /288,000 updates. CPU4/interop1/workers0,
+checkpoint and heartbeat were active. All prior288 control-head artifacts
+were rehashed successfully. All144 new checkpoint/prediction receipts match;
+unknown-label draws0, summed fitting273.4563seconds excluding loading,
+inference and verification. Outcome readout remains not_run pending the
+pushed prediction freeze.
 No independent role, threshold, policy, Stage5C or SMC change.
 [Protocol](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/registration.md).
 
