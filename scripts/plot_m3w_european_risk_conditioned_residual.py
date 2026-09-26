@@ -30,7 +30,7 @@ def main():
         ax.axvline(0, color='#666666', ls='--', lw=1); ax.grid(axis='x', alpha=.18)
         ax.set_title('Risk-conditioned OOF vs\n'+title)
         ax.set_xlabel('Easy-harm MSE improvement (%)\n95% locality bootstrap CI; three-seed means')
-        ax.legend(frameon=False, fontsize=8); ax.spines[['top', 'right']].set_visible(False)
+        ax.spines[['top', 'right']].set_visible(False)
     axes.flat[-1].axis('off')
     axes.flat[-1].text(0, .95,
         'Evidence boundaries\n\n864 fixed ridge probes; no new neural training.\n'
@@ -41,7 +41,9 @@ def main():
         'Independent selection/calibration/confirmation unopened.\n'
         'Cost estimation is not trajectory utility or deployment.', va='top', linespacing=1.6)
     fig.suptitle('Risk-conditioned residual transfer: source-development comparisons, all retained')
-    fig.tight_layout(rect=(0, 0, 1, .97))
+    handles, labels = axes.flat[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5, .967), ncol=2, frameon=False)
+    fig.tight_layout(rect=(0, 0, 1, .945))
     fig.savefig(run.PUBLIC/'risk_conditioned_residual.svg', metadata={'Date': None})
     fig.savefig(run.PRIVATE/'risk_conditioned_residual_preview.png', dpi=100)
     plt.close(fig)

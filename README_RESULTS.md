@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Risk-Conditioned Residual (2026-09-26, Predictions Frozen)
+## Risk-Conditioned Residual (2026-09-26, Readout Complete, Gate Failed)
 
 Previous goal turn: progress, negative common-event experiment fully verified.
 Parent ca08670b matches local/GitHub. CREATE queue checked read-only, receipt
@@ -30,9 +30,21 @@ Support commit1fb49d0d preceded all864 fixed fits /144 views, completed normally
 under PID67898. Summed per-view fit/inference57.873162 seconds, excluding source
 loading, preflight and verification. This is not end-to-end runtime or neural
 training time. Prediction hashes are frozen before the new source-held readout.
-Post-freeze error accounting will retain all arms without held-tuned parameters.
+Prediction freeze c33fa80c pushed before36 fresh source-held groups and1728
+direct MSE checks. Full-input OOF risk-context versus original:0 positive,
+0 negative,6 overlapping intervals,all points negative(-2.21597% to-0.19363%).
+Versus common context:0/0/6,points-0.24669% to+2.09815%;inner-event0/2/4;
+prior in-sample context0/3/3;risk-only2/1/3;cyclic next0/2/4;previous0/3/3.
+Motion-only versus original1/0/5,points-14.26863% to+1.61107%;versus common
+context3/0/3. No favorable-arm selection. Mechanism,primary,tail/coverage gates
+all fail. No promotion. All1728 post-freeze error identities pass. Full OOF
+risk-context vs original:39 improved/14 non-helpful direction/19 excessive
+magnitude among72 dependent views;vs common context38/21/13. This is algebraic,
+not causal attribution or an independent success rate. Complete replay pending.
 
 [Protocol](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/conclusions.md).
+[Failure analysis](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/failure_analysis.md).
 
 ## Common-Event Residual Transport (2026-09-26, Readout Complete, Gate Failed)
 

@@ -10,17 +10,22 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**In progress:** I am testing whether the residual correction needs the frozen
-estimator's own causal risk scores, not just seven motion/context summaries.
-The [fixed risk-conditioned experiment](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md)
-first checks fitting-only producer differences, then compares 864 fixed probes
-against the original and all matched controls. The fitting-only support check
-passed all 144 views and 432 projection identities; neither new risk feature
-is constant. All 864 probes have now been fitted and their predictions frozen
-before the new source-held readout. This is not held-out improvement.
-Independent calibration and confirmation remain unopened.
+**Latest result:** adding the frozen estimator's own risk scores does not
+repair the risk-correction model. I completed the
+[risk-conditioned experiment](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/conclusions.md)
+with 864 fixed probes and all matched controls. Against the original estimator,
+all six full-input point estimates are negative (-2.22% to -0.19% MSE
+improvement), with intervals overlapping zero. The registered improvement and
+tail/coverage gates fail; deployment is unchanged.
 
-**Current result, 26 September:** aligning the residual labels' definition of
+Some comparisons with weaker corrections improve, particularly with motion-only
+inputs. The [full comparison figure](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/risk_conditioned_residual.svg)
+keeps those signals alongside the negative strong-control results. They are not
+trajectory gains or grounds to select a favorable arm after readout. No new
+neural training was run, and independent calibration and confirmation remain
+unopened. Complete artifact replay is in progress.
+
+**Previous result, 26 September:** aligning the residual labels' definition of
 "easy" does not repair cross-locality risk estimation. I completed the
 [common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/conclusions.md)
 with 864 fixed probes, keeping the neural models, causal inputs, outer evaluation
