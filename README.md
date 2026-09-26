@@ -10,11 +10,23 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am now attributing the failed cost estimator's error to membership,
-conditional severity and their signed cross term. This
-[frozen-model diagnostic](outputs/publication_readiness_2026_09/european_cost_attribution_v1/protocol.md)
-uses labels only for offline analysis; label-assisted substitutions are not
-deployable models. No new policy or independent-data access is included.
+I completed a [frozen-model error attribution](outputs/publication_readiness_2026_09/european_cost_attribution_v1/conclusions.md).
+Even substituting the realized easy label offline produces no consistently
+positive comparison against the original cost model across the six source
+assignments. Conditional severity is also inaccurate: fixing membership alone
+does not repair the estimator. These label-assisted calculations cannot be
+used at inference or presented as model gains.
+
+Outside-easy rows explain much of the *additional* error against the original,
+but only 6.36-31.27% of total current easy-harm MSE across full-input assignments.
+Signed error cross terms are negative and must not be treated as independent
+causal shares. All 36 groups / 144 held folds replay exactly; 1,728 algebra
+checks and 501 tests in 92 scoped files pass. The figure reproduces byte-for-byte.
+This remains source-development evidence, not independent confirmation.
+
+Next I will test easy-membership as an auxiliary representation task while
+retaining direct nested cost targets. I will not multiply its probability into
+cost predictions. No policy or independent-data access is changed.
 
 ### Completed Conditional-Cost Experiment
 
@@ -34,8 +46,8 @@ The [failure analysis](outputs/publication_readiness_2026_09/european_membership
 localizes the problem: outside-easy rows dominate excess error in 50/53
 worsening full views. The conditional fit also beats the original in only
 14/72 fitting views, so this is not just held-scene overfitting. My next step
-is to separate cost-weighted membership error from severity error before
-another fit. I am not changing the policy or opening independent data.
+was to separate cost-weighted membership error from severity error. The
+completed attribution above does not rescue the failed cost gate.
 
 The [comparison figure](outputs/publication_readiness_2026_09/european_membership_cost_v1/paired_contrasts.svg)
 retains the negative results; [loss curves](outputs/publication_readiness_2026_09/european_membership_cost_v1/training_loss.svg)

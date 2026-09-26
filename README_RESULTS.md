@@ -5,16 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Factor Attribution (2026-09-26, Registered, Readout Not Run)
+## Cost-Factor Attribution (2026-09-26, Completed And Verified)
 
 Previous goal turn: progress. Parent 406fb9d6 and all 55 public artifacts/97
 bindings match local/GitHub records. Native arm64 and 11.76GiB free disk are
 verified. Four diagnostic tests pass. A new CREATE read-only queue observation
 succeeded; no jobs submitted or modified, M3W remote path still unverified.
-The attribution separates membership/severity/cross terms using frozen heads.
-All six source roles and three seeds are retained, with no policy or threshold
-change. Label-assisted E/H substitutions are unavailable at inference and
-cannot pass a model gate. Independent roles remain closed.
+Registration 165bc0a4 preceded 36 fresh attribution groups / 144 held folds.
+Full replay matches exactly. Six source roles and three seeds are retained,
+with no new fit, policy or threshold change. Label-assisted E/H substitutions
+are unavailable at inference and cannot pass a model gate.
+
+Full positive-disagreement E-assisted easy-harm MSE versus original has zero
+positive, one negative and five overlapping intervals (points -172.45% to
++8.53%). H-assisted has zero positive, two negative and four overlapping
+intervals; all six points are negative. Fixing either realized factor alone
+does not repair the conditional estimator. The signed cross term is negative
+in all full point estimates and is not an independent causal contribution.
+Outside-easy absolute MSE share is 6.36-31.27%; this differs from the previous
+92.90% share of positive *excess* contributions against original. Motion-only
+negative findings are retained in the full tables.
+
+Verification: 501 tests / 92 scoped files, 1,728 independent algebra checks,
+144 full frozen expert and fitting-percentile replays, 45 public artifacts
+and 98 source bindings. Figure inspected and byte-reproducible. Full legacy
+suite not_run. Independent roles remain closed. Next: registered direct
+nested-cost control versus the same model with easy-membership auxiliary
+supervision, without probability-times-cost composition.
+[Conclusions](outputs/publication_readiness_2026_09/european_cost_attribution_v1/conclusions.md).
 [Protocol](outputs/publication_readiness_2026_09/european_cost_attribution_v1/protocol.md).
 
 ## Membership-Conditional Cost (2026-09-26, Completed, Primary Gate Failed)
