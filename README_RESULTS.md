@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Common-Event Residual Transport (2026-09-26, Predictions Frozen)
+## Common-Event Residual Transport (2026-09-26, Readout Complete, Gate Failed)
 
 One-factor response-label test, not a new trajectory model. All144 views,
 864 fixed ridge fits, three seeds and all old controls retained. Existing432
@@ -20,10 +20,23 @@ tests, including exact event-projection identity and unknown-label handling.
 Registration08f94699 was pushed before fitting. All864 fits /144 views completed
 normally under PID61812. Summed per-view fit/inference time80.064750 seconds,
 excluding source loading and preflight. All864 preclip event identities pass.
-No new neural updates. Prediction freeze precedes new readout; readout not_run
-at this checkpoint. Original scientific failure is retained.
+No new neural updates. Prediction freeze328856c8 was pushed before all36 fresh
+readout groups. Against original,full-input MSE intervals0 positive/1 negative/
+5 overlaps,points-3.9629% to+0.0504%. Against old OOF:0/1/5,points-3.9816% to
++1.8992%. Prior context0/4/2;common global1/1/4;cyclic next0/2/4;previous0/1/5.
+Motion-only vs original0/0/6,all points negative(-19.9452% to-1.6391%).
+Mechanism,primary and tail/coverage gates all fail. No promotion.
+
+The864 exact preclip factor identities have maximum coefficient error8.1411e-15.
+Direct MSE arithmetic checks1728 pass. This proves implementation isolation,
+not causal sufficiency or trajectory utility. Full replay is running;28 scoped
+pre-readout tests passed. Figure visually checked. All views retained, no
+independent-role access or held-tuned policy. Next:fixed common-event producer
+residual location/scale diagnosis before one producer-matched repair.
 
 [Protocol](outputs/publication_readiness_2026_09/european_event_transport_v1/protocol.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_event_transport_v1/conclusions.md).
+[Failure analysis](outputs/publication_readiness_2026_09/european_event_transport_v1/failure_analysis.md).
 
 ## Nested Locality Residual (2026-09-26, Readout Complete, Gate Failed)
 

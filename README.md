@@ -10,13 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current work, 26 September:** I am testing one specific explanation for the
-failed residual repair: its inner training labels and outer task define
-"easy" differently. The [common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/protocol.md)
-changes only the fitting-side residual labels, with the models, causal inputs,
-outer evaluation rule and deployment frozen. It does not open independent
-calibration or confirmation. All864 fixed probes are now fitted and predictions
-are frozen before readout. Results are pending; no improvement is claimed.
+**Current result, 26 September:** aligning the residual labels' definition of
+"easy" does not repair cross-locality risk estimation. I completed the
+[common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/conclusions.md)
+with864 fixed probes, keeping the neural models, causal inputs, outer evaluation
+rule and deployment frozen. Against the original estimator, zero of six
+full-input MSE intervals support improvement, one supports deterioration and
+five overlap zero. Point estimates range from-3.96% to+0.05%.
+
+The [complete comparisons](outputs/publication_readiness_2026_09/european_event_transport_v1/event_transport.svg)
+also retain the failed matched controls and motion-only results. This rules
+out response relabeling as a sufficient repair, not all event-aware modeling.
+The next unresolved issue is transferring errors from a two-locality teacher
+to a different three-locality estimator. No trajectory improvement is claimed.
+Independent calibration and confirmation remain unopened. Full replay is
+running; the scientific gate has failed regardless of engineering verification.
 
 **Latest completed study:** the
 [nested-locality experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md)
