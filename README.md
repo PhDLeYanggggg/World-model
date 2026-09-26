@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**In progress:** I am testing whether the residual correction needs the frozen
+estimator's own causal risk scores, not just seven motion/context summaries.
+The [fixed risk-conditioned experiment](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md)
+first checks fitting-only producer differences, then compares 864 fixed probes
+against the original and all matched controls. No new result or deployment is
+claimed yet. Independent calibration and confirmation remain unopened.
+
 **Current result, 26 September:** aligning the residual labels' definition of
 "easy" does not repair cross-locality risk estimation. I completed the
 [common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/conclusions.md)

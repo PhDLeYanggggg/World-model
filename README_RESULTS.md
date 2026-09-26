@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Risk-Conditioned Residual (2026-09-26, Registration)
+
+Previous goal turn: progress, negative common-event experiment fully verified.
+Parent ca08670b matches local/GitHub. CREATE queue checked read-only, receipt
+e4ef5ac677cd860833fa18e871fd5f088711c6162f92997cf8b2a527e3fabff2; jobs untouched.
+New hypothesis: seven causal context summaries omit the corrected model's own
+risk scores. Add H/envelope and H_E/H, never realized error or event membership.
+Fresh25 tests pass in four scoped files. Plan:144 fitting-only original Torch
+inferences,432 producer-difference projection checks and864 fixed ridge fits.
+No fresh neural training, held readout or improvement claim yet. Original
+models and all independent data roles remain frozen. Registration precedes
+support extraction; support precedes fitting; predictions precede readout.
+
+[Protocol](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md).
+
 ## Common-Event Residual Transport (2026-09-26, Readout Complete, Gate Failed)
 
 One-factor response-label test, not a new trajectory model. All144 views,
