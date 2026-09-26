@@ -41,8 +41,15 @@
 
 verify_fit重新拟合全部探针并逐项核对系数、训练标签/特征哈希与 held预测；
 verify_eval重新计算全部36组指标。检查D/H/D_E逐项不变，H_E仍在[0,H]。
-未来完整验证脚本会串联这些步骤和作用范围匹配的测试，不能只跑语法检查
-就称实验复现成功。
+完整验证脚本串联这些步骤、1728项直接MSE核算和作用范围匹配的测试：
+
+```bash
+.venv-pytorch/bin/python scripts/plot_m3w_european_context_residual.py
+.venv-pytorch/bin/python scripts/verify_m3w_european_context_residual.py
+```
+
+不能只跑语法检查就称实验复现成功。首个视图真实试跑约13.96秒，包含组内
+数据载入和检查，但不含注册及完整父级预检；6个拟合计入864个总预算。
 
 每个角色组合先在地点内平均3个seed对比值，再对4个地点重采样3000次。
 这是已暴露来源开发证据，窗口、角色组合和情境分组有依赖，不能作为独立

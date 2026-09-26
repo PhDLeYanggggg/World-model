@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Causal Context Residual (2026-09-26, Registered, Fit Not Yet Run)
+## Causal Context Residual (2026-09-26, Fitting)
 
 Previous goal turn: progress. Parent8cdc8de0 verified locally and on GitHub;
 48 artifacts/9 bindings match. Native arm64 and14.18GiB free disk verified.
@@ -16,6 +16,9 @@ additive-context ridge probes:864 planned closed-form fits,0 neural updates.
 All144 views /36 groups retained. Thirteen scoped tests pass. Prediction
 freeze must be committed before new held readout. Residual fitting uses
 in-sample base predictions, not independent calibration or OOF stacking.
+Registration b7a829eb was pushed before the actual six-probe pilot, which
+completed in13.9611 group seconds excluding registration/parent preflight.
+The full fit reuses it;PID49301 observed alive with receipt/resume and heartbeat.
 No independent-role access, policy change, Stage5C or SMC.
 [Protocol](outputs/publication_readiness_2026_09/european_context_residual_v1/protocol.md).
 
