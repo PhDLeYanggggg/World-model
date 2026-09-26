@@ -74,3 +74,15 @@ all strong controls and independent roles. No held-selected shrinkage sweep.
 Main protocol: observed 8 / predicted 12 native annotation steps, detector
 image pixels. No metric, seconds, physical-safety, human-gold, true-3D,
 foundation or publication-success claim. The research goal remains active.
+
+## Reproducibility Scope
+
+The [verification receipt](verification.json) records the full replay outcome:
+144 frozen-head fitting inferences, 432 producer projections, 864 probe fits
+and predictions, 36 readout groups, 1,728 direct MSE checks and 1,728 descriptive
+error identities. The six scoped test files cover the new score features,
+causal prediction interface, unknown-label exclusion, residual provenance and
+existing error accounting. Parent checkpoint replays are reused only with
+matching hashes. The full legacy suite is not rerun. Figure rendering was
+visually checked; the verifier also checks byte reproducibility. Passing these
+engineering checks does not change the failed scientific gates.

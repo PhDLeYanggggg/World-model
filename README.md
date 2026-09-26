@@ -23,7 +23,11 @@ inputs. The [full comparison figure](outputs/publication_readiness_2026_09/europ
 keeps those signals alongside the negative strong-control results. They are not
 trajectory gains or grounds to select a favorable arm after readout. No new
 neural training was run, and independent calibration and confirmation remain
-unopened. Complete artifact replay is in progress.
+unopened. Full replay now reproduces 144 fitting-row inferences, 864 probes
+and all 36 readout groups, with 1,728 direct MSE checks and 35 targeted tests
+passing. The figure reproduces byte-for-byte; 58 public artifacts and 14
+code/configuration bindings are hash-sealed. The full legacy test suite was
+not rerun. These checks establish reproducibility, not a passed research gate.
 
 **Previous result, 26 September:** aligning the residual labels' definition of
 "easy" does not repair cross-locality risk estimation. I completed the
@@ -45,7 +49,7 @@ hash-sealed; the figure is visually checked and byte-reproducible. The full
 legacy test suite was not rerun. Reproducibility does not reverse the failed
 scientific gate.
 
-**Latest completed study:** the
+**Earlier controlled study:** the
 [nested-locality experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md)
 is complete, but its improvement gate failed. I trained 432 native-Torch risk
 heads and fitted 864 fixed residual corrections to test whether learning from

@@ -12,9 +12,10 @@ Parent ca08670b matches local/GitHub. CREATE queue checked read-only, receipt
 e4ef5ac677cd860833fa18e871fd5f088711c6162f92997cf8b2a527e3fabff2; jobs untouched.
 New hypothesis: seven causal context summaries omit the corrected model's own
 risk scores. Add H/envelope and H_E/H, never realized error or event membership.
-Fresh25 tests pass in four scoped files. Plan:144 fitting-only original Torch
-inferences,432 producer-difference projection checks and864 fixed ridge fits.
-No fresh neural training, held readout or improvement claim yet. Original
+At registration,25 tests passed in four scoped files. The fixed plan was144
+fitting-only original Torch inferences,432 producer-difference projection
+checks and864 fixed ridge fits. No neural training was planned and no new held
+readout had run at that point. Original
 models and all independent data roles remain frozen. Registration precedes
 support extraction; support precedes fitting; predictions precede readout.
 
@@ -40,7 +41,20 @@ context3/0/3. No favorable-arm selection. Mechanism,primary,tail/coverage gates
 all fail. No promotion. All1728 post-freeze error identities pass. Full OOF
 risk-context vs original:39 improved/14 non-helpful direction/19 excessive
 magnitude among72 dependent views;vs common context38/21/13. This is algebraic,
-not causal attribution or an independent success rate. Complete replay pending.
+not causal attribution or an independent success rate.
+
+Results commit4009207d preceded full verification. Replay reproduces all144
+frozen-head fitting inferences,432 producer projections,864 fixed fits and
+predictions,36 readout groups,1728 direct MSE checks and1728 error identities.
+Fresh35 tests in six scoped files pass;58 public artifacts and14 source
+bindings are sealed. The figure is visually checked and byte-reproducible.
+Parent432 neural replays and28 tests remain cached_verified;the full legacy
+suite is not_run. CREATE was checked again read-only at19:41UTC,receipt
+d15c0be021bfa41f9686b3c84500300eb745f9058a44f3e67bfef1f00290dc3e;
+no remote jobs changed. No deployment, independent-role access or new neural
+training. Next:fitting-only fixed-cap empirical error accounting, explicitly
+not a test of conditional bias or justification to relax expected-cost bounds.
+The failed scientific gates remain false after successful verification.
 
 [Protocol](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md).
 [Conclusions](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/conclusions.md).

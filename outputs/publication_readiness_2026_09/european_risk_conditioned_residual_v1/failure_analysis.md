@@ -51,6 +51,10 @@ common-event context the counts are 38 / 21 / 13. Motion-only versus original
 is 41 / 16 / 15. These are dependent seed/locality views, not independent
 success probabilities. Both direction and size errors remain, so a blanket
 shrinkage adjustment is not an established solution.
+Counting improved views ignores the size of each gain or loss. It is therefore
+consistent to see 39 improved views but six negative assignment-level average
+point estimates against the original; the counts do not reverse the primary
+paired comparison.
 
 ## Next Test
 
@@ -58,7 +62,13 @@ Do not repeat label-cut, score-bin or held-optimal threshold sweeps. On fitting
 localities only, quantify the best feasible H_E error under frozen H and causal
 envelope bounds, explicitly labeling any realized-label projection as an
 offline diagnostic, never inference. Compare that constraint floor with
-unexplained conditional error and existing producer-support evidence. Check
+remaining empirical error and existing producer-support evidence. A realized-
+label projection floor does not identify conditional bias: an individual
+future outcome can exceed a correct conditional-mean prediction. In particular,
+E[H_E | x] <= E[H | x] remains a valid ordering for the expected nested costs,
+even when a realized H_E exceeds predicted H. Singleton futures cannot by
+themselves separate conditional bias from irreducible future variation. Do not
+relax that ordering based only on a label-assisted projection. Check
 the prior attribution studies to avoid rebranding their substitutions as a
 new experiment. Only a differentiated finding should trigger new joint-cost
 training or a representation change.
