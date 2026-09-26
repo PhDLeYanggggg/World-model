@@ -25,7 +25,11 @@ conditional bias. The [all-view figure](outputs/publication_readiness_2026_09/eu
 retains the variation and both weighting schemes. Next I will test whether
 rare cap-exceedance events have transferable causal signal before changing
 the joint cost model. Independent data roles and deployment remain unchanged.
-All 2,304 arithmetic identities pass; full artifact replay is in progress.
+Full replay reproduces all 144 views and 2,304 arithmetic identities. Fifty-one
+tests in seven scoped files pass; the figure is visually checked and
+byte-reproducible. Sixteen public artifacts and 13 source bindings are sealed.
+The full legacy test suite was not rerun. This establishes reproducibility,
+not a new trajectory gain or a passed deployment gate.
 
 **Previous experiment:** adding the frozen estimator's own risk scores does not
 repair the risk-correction model. I completed the

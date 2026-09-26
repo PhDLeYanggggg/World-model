@@ -32,9 +32,15 @@ All variants/views retained. These are dependent fitting summaries,not CIs.
 Global upward cap adjustment is not supported by these descriptive means.
 Next:nested fitting-locality cap-exceedance learnability before a joint-cost
 repair,not another generic any-harm or threshold sweep. Fresh51 targeted tests
-pass;figure visually checked;complete artifact replay is pending. Prior failed
-scientific gates and deployment remain unchanged. Current CVPR dates were
+pass;figure visually checked. Prior failed scientific gates and deployment
+remain unchanged. Current CVPR dates were
 rechecked;2027 Author Guidelines still404,format details remain unverified.
+
+Results commitc380a373 preceded final verification. Full144-view replay and2304
+error identities match exactly;summary,CSV tables and figure reproduce byte-
+for-byte. Fresh51 tests in seven scoped files pass;16 public artifacts and13
+source bindings sealed. Parent replays/tests remain cached_verified;full legacy
+suite not_run. No new fit,held-label readout,conditional-bias proof or promotion.
 
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/protocol.md).
 [Conclusions](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/conclusions.md).

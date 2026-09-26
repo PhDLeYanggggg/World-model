@@ -5,6 +5,8 @@ appropriate. No GPU or new neural fitting was needed. Native arm64 Python,
 CPU threads 4, interop 1 and workers 0; the actual diagnostic ran, not merely
 a runtime import. About 20 GiB was available at start, above the 10 GiB reserve.
 Observed full-run PID13955 used about 10 GiB RSS and sustained CPU activity.
+Observed runtime:Python3.11.1,NumPy2.4.6,Torch2.12.0,Matplotlib3.10.9 on arm64.
+These are this environment's versions,not a claim about upstream latest releases.
 
 Registration06511693 was pushed before the first pilot. PID13710 completed
 one fitting view in14.846347 seconds including source loading after ancestry
