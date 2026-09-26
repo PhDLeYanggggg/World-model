@@ -24,5 +24,15 @@ and before measuring auxiliary-arm runtime. It is not an end-to-end ETA.
 Local execution is reasonable; checkpoint/resume and heartbeats are active.
 The100-update pilot is continued to2000, not counted as a separate full model.
 
-Full training and held readout are not complete at this observation. Results
-and final measured runtime will be recorded after authoritative termination.
+## Completed Fitting
+PID25156 exited normally after all432 heads and864000 effective updates.
+The first checkpoint resumed100 to2000 with1900 new updates. All288 matched
+arm comparisons pass;unknown-label draws0;every head has12899 parameters.
+Phase wall1277.0533868329949 seconds includes loading and prediction but
+excludes ancestry preflight. Summed fitting673.1696836791234 seconds includes
+the original pilot work. The private cache occupies about1.3GiB. Sampled
+training RSS was about12GiB;this is not continuous peak-memory profiling.
+
+Prediction freeze is committed before held readout. Training completion is
+not a cost-improvement result. Evaluation and full replay remain not_run at
+this checkpoint; their measured completion must be recorded separately.

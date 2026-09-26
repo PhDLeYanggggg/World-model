@@ -25,6 +25,18 @@ def execute(args, name):
 
 def main():
     logs = []
+    source = run.parent.risk.PUBLIC/'support_report.json'
+    references = json.loads(source.read_text())['receipts']
+    assert len(references) == 144
+    checked = 0
+    for ref in references:
+        assert run.artifact(ROOT/ref['path']) == ref
+        receipt = json.loads((ROOT/ref['path']).read_text())
+        for artifact in receipt['artifacts'].values():
+            assert run.artifact(ROOT/artifact['path']) == artifact
+            checked += 1
+    run.immutable_json(run.PUBLIC/'reference_source_audit.json', dict(all_passed=True,
+        receipt_count=len(references), private_artifacts_checked=checked, source_report=run.artifact(source)))
     for phase in ['verify_training', 'verify_eval']:
         logs.append(execute(['scripts/run_m3w_european_cap_auxiliary_cost.py', '--phase', phase], phase))
     names = ['aggregate_metrics.json', 'results.md', 'cap_auxiliary_cost_contrasts.svg',

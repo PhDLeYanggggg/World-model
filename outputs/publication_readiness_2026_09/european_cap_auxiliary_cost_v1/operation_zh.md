@@ -44,6 +44,30 @@
 复现入口逐值核对全部检查点预测与全部结果，再重现图表和运行限定测试。
 恢复检查点做推理不等于另一轮独立重训；合成单元测试不等于真实泛化。
 
+在全部模型正常结束、prediction_freeze.json 已提交之后，依次执行：
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_european_cap_auxiliary_cost.py --phase evaluate
+.venv-pytorch/bin/python scripts/report_m3w_european_cap_auxiliary_cost.py
+.venv-pytorch/bin/python scripts/plot_m3w_european_cap_auxiliary_cost.py
+```
+
+图表检查及结论文档完成后运行最终复现：
+
+```bash
+.venv-pytorch/bin/python scripts/verify_m3w_european_cap_auxiliary_cost.py
+```
+
+该入口检查来源缓存哈希、全部432个检查点推理、144个留出结果、三组
+抽样匹配、图表与报告字节一致性，以及8个限定测试文件。只有实际终止
+成功且 verification.json 中 all_passed=true 才能声称这次复现通过。
+这不是完整历史测试套件，也不是独立场景确认。
+
+最终验证会绑定本目录报告和相关代码的哈希。若之后改动已绑定内容，
+旧验证不再证明新版本；应记录新版本并重新核查，不覆盖旧证据记录。
+不要删除检查点来强行重跑；已完成模型由记录校验，未完成模型从最新
+完整检查点恢复。任何身份或输入哈希不一致都应先诊断。
+
 ## CREATE 与版本
 本轮已只读查询CREATE队列，未提交、取消或修改远程作业。
 训练放置依据本地真实试跑成本。若内存或运行成本不合适才转授权HPC。

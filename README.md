@@ -19,8 +19,10 @@ cost estimator as a strong comparison and changes no deployment rule. At
 registration, 32 targeted tests pass. All 144 fitting views now pass numerical
 support checks, with at least 132 full-input and 15 motion-only event rows.
 That is support, not statistical power. A real 100-update Torch pilot completed
-normally and supports local resumable training. The full 432-model run is in
-progress, with checkpointed continuation; held readout has not run. Independent
+normally and supports local resumable training. All 432 models have now
+completed 864,000 fixed updates, with matched initialization and sampling.
+The pilot checkpoint resumed correctly; prediction freezing precedes the
+held readout, which has not run at this checkpoint. Independent
 selection, calibration and confirmation remain unopened.
 
 **Latest experiment:** causal history contains useful information about rare

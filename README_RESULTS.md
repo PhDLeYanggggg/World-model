@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cap-Event Auxiliary Costs (2026-09-26, Registered, Training Not Run)
+## Cap-Event Auxiliary Costs (2026-09-26, Trained, Readout Not Run)
 
 Previous goal turn:progress. Local/GitHub parent ebf198f3 match; its288 model
 prediction replays,144 readouts and46 scoped tests are cached_verified.
@@ -44,6 +44,13 @@ progress check,90/432 models were complete, the process was live and private
 artifacts occupied248MiB. This is progress,not completion or a held result.
 The method note separates event probability,expected cost and deployment
 utility;the data card preserves teacher exclusion and prior source exposure.
+
+PID25156 completed all432 heads /864000 effective updates normally, with288
+matched-arm checks and zero unknown-label draws. Every model has12899
+parameters. The pilot resumed100 to2000 with1900 new updates. Training phase
+wall1277.053387s includes source loading/inference but excludes ancestry
+preflight; summed fitting673.169684s. Private artifacts occupy1.3GiB and are
+not uploaded. Prediction freezing precedes held readout; no efficacy claim yet.
 
 ## Causal Cap-Event Learnability (2026-09-26, Readout Complete, No Promotion)
 
