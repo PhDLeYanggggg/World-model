@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+I am testing a [support-conditional fractional-harm objective](outputs/publication_readiness_2026_09/european_support_fractional_v1/registration.md).
+It keeps the forecasting pair and model size fixed, but adds direct supervision
+of harm relative to the causal disagreement bound where the forecasts differ.
+The protocol is registered; training and outcome readout have not run yet.
+This is a controlled loss experiment, not a new deployment claim.
+
+### Completed Locality-Held Diagnosis
+
 I completed a [locality-excluded harm diagnosis](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/conclusions.md)
 with 144 fresh risk heads, three seeds and 288,000 training updates. Each head
 fits on three source localities and is evaluated on a fourth; preprocessing

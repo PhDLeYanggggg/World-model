@@ -1,0 +1,23 @@
+{
+  "name": "european_support_fractional_v1",
+  "pairs": ["full", "motion_only"],
+  "seeds": [17, 29, 43],
+  "head_training": {"width": 64, "steps": 2000, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "coefficient": 1.0,
+  "new_heads": 144,
+  "updates": 288000,
+  "score_bin_quantiles": [0.5, 0.9, 0.95, 0.99],
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 47131,
+  "inner_split": "leave_one_B_locality_out",
+  "primary": "held_positive_disagreement_easy_harm_MSE_vs_matched_mean",
+  "new_forecaster_training": false,
+  "new_policy_evaluation": false,
+  "threshold_refit": false,
+  "selection_access": false,
+  "reserved_calibration_access": false,
+  "confirmation_access": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

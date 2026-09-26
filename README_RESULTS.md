@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Support-Fractional Harm (2026-09-26, Registered, Training Not Run)
+
+One fixed intervention adds locality-balanced fractional Bernoulli loss on
+H/e and H_easy/e, only where the causal disagreement envelope e is positive.
+The original four-moment MSE remains. Unlike earlier hurdle supervision, this
+does not classify event occurrence or fit severity only on positive events.
+Unlike ranked hurdle, it does not order a realized risk-ratio label.
+
+The design matches 144 cached mean controls in architecture, initialization,
+sampler draws and 2,000-update budget; 288,000 new updates are planned. Five
+tests pass, including exact original-model equivalence with coefficient zero
+and exact interruption/resume. The primary endpoint is conditional easy-harm
+MSE on locality-held B, with three seeds and 3,000 locality bootstrap draws.
+No C policy, threshold search, forecast training or independent-data access.
+[Registration](outputs/publication_readiness_2026_09/european_support_fractional_v1/registration.md).
+
 ## Harm Tail Crossfit (2026-09-26, Completed Diagnosis, No Promotion)
 
 The diagnostic uses leave-one-B-locality-out mean-moment fitting with
