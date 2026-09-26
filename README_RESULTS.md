@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Severity Transport (2026-09-26, Registered)
+## Frozen Severity Transport (2026-09-26, Calculation Running)
 
 Previous goal turn: progress, completed negative supervision experiment.
 Parent d42b8c40 verified locally and on GitHub;57 artifacts/12 bindings match.
@@ -13,7 +13,10 @@ Native arm64,12.15GiB free disk. Fresh CREATE read-only queue check succeeded
 at20260926_043048UTC; no existing jobs changed and no new jobs submitted.
 Registered144 frozen views: recording/track signed excess-error accounting,
 saved fitting-batch group gradients, fitting-only radial support proxy.
-Seven targeted tests pass. Calculation not_run until pushed registration.
+Seven targeted tests pass. Registration6527b13f was pushed before calculation.
+Real four-view pilot completes in15.5903 group seconds, excluding interpreter
+startup/full parent verification. It is reused by the full calculation;
+PID46388 observed alive. Per-group receipt/resume and heartbeat active.
 No retraining, policy/threshold change or independent-data access.
 [Protocol](outputs/publication_readiness_2026_09/european_severity_transport_v1/protocol.md).
 

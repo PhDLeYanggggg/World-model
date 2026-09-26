@@ -95,8 +95,9 @@ The next [frozen transport diagnostic](outputs/publication_readiness_2026_09/eur
 asks whether excess error and training gradients concentrate in a few
 recordings, or whether held inputs fall outside a coarse training-feature
 range. It retains signed improvements and harms, all source assignments and
-the unchanged models. Seven targeted tests pass; real-data calculation has
-not started at registration. This is diagnosis, not a new deployment claim.
+the unchanged models. Seven targeted tests pass. Registration 6527b13f
+preceded a real four-view pilot; full calculation is now running with
+per-group resume. This is diagnosis, not a new deployment claim.
 
 ### Completed Conditional-Cost Experiment
 
