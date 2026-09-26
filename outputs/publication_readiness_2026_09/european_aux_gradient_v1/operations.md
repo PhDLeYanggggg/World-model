@@ -32,6 +32,11 @@ validation. The original registration is retained, not rewritten. The
 running experiment had loaded the registered original runner; no numerical
 diagnostic, source data, model, loss, probe or allocation rule changed. Replay
 uses the amended validation and must reproduce every diagnostic byte-for-byte.
+The first aggregate save subsequently exposed a NumPy-boolean serialization
+failure. Native-float conversion preserves the numeric value and produces
+standard Python comparisons. The public amendment links its predecessor;
+a complete synthetic aggregate test covers this failure. No scientific
+threshold, metric, grouping, probe, model or real update was changed.
 
 Private files, PID heartbeat, events and receipts live under
 data/stage_cvpr2027_experiments/european_aux_gradient_v1/. Keep all row-level

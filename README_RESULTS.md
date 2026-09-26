@@ -27,6 +27,10 @@ pass, including rejection of unrelated amendments. PID40235 completed all144
 views,432 final states,3456 final batch diagnostics and17280 isolated AdamW
 steps. Phase wall289.911976s excludes ancestry preflight and reuses the pilot
 view. Results are frozen before aggregate readout; repair efficacy not_run.
+The first aggregate save encountered a NumPy-boolean JSON error. A synthetic
+complete-aggregate test reproduced it; native-float serialization fixes it
+without changing numerical values.22 tests pass. The amendment retains the
+previous hash and original protocol; no experiment was discarded or rerun.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
 

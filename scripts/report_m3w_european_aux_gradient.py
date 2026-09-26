@@ -22,7 +22,7 @@ def interval(values, cfg):
     means = array[draws].mean(1)
     if np.any(means[:, 1] <= 0): return dict(status='not_estimable', localities=len(array))
     dist = 100*(means[:, 1]-means[:, 0])/means[:, 1]
-    return dict(status='fitting_diagnostic_only', point=100*(array[:, 1].mean()-array[:, 0].mean())/array[:, 1].mean(),
+    return dict(status='fitting_diagnostic_only', point=float(100*(array[:, 1].mean()-array[:, 0].mean())/array[:, 1].mean()),
                 CI=np.quantile(dist, [.025, .975]).tolist(), localities=4,
                 mean_candidate=float(array[:, 0].mean()), mean_reference=float(array[:, 1].mean()))
 
