@@ -19,7 +19,13 @@ Event probability is learnable (descriptive full median AUROC0.84617),but
 does not establish expected-cost or policy improvement. Motion negatives
 and3 unsupported event-ranking views remain. Three-seed averages and3000
 four-locality resamples;overlapping assignments and prior source exposure.
-Deployment and independent roles unchanged. Full replay pending.
+Deployment and independent roles unchanged. Results392bb18f preceded final
+verification. All432 checkpoint predictions and144 readouts reproduce exactly,
+with144 bit-exact original controls,288 matched-arm checks and1152 direct-MSE
+checks. Reports,diagnostics and figure reproduce byte-for-byte. Fresh52 tests
+in ten scoped files pass;20 public artifacts and23 source bindings match their
+sealed hashes. Full legacy suite not_run. This is inference/result replay,
+not a second independent training run. Scientific gates remain failed.
 
 [Conclusions](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/failure_analysis.md),

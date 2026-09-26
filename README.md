@@ -30,7 +30,11 @@ well enough. Fitting cost is already worse in 52 of 72 full-input views, so
 I cannot attribute everything to a held-scene distribution shift. Gradient
 interference is a hypothesis to test, not a proven explanation. Deployment
 stays unchanged; independent selection, calibration and confirmation remain
-unopened. Complete checkpoint/readout replay is the next verification step.
+unopened. Final verification now reproduces all 432 checkpoint predictions
+and 144 readouts exactly. Reports and the figure match byte-for-byte; 52 tests
+in ten scoped files pass, with 20 public artifacts and 23 source bindings
+hash-sealed. The full legacy suite was not rerun. Reproducibility does not
+turn the failed scientific gates into a model improvement.
 
 **Preceding result:** learning which cases are risky does not yet give me better
 estimates of how much error they will cause. I completed the
