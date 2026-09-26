@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Support-Fractional Harm (2026-09-26, Trained, Readout Not Run)
+## Support-Fractional Harm (2026-09-26, Verified, Magnitude Gate Failed)
 
 One fixed intervention adds locality-balanced fractional Bernoulli loss on
 H/e and H_easy/e, only where the causal disagreement envelope e is positive.
@@ -24,9 +24,36 @@ No C policy, threshold search, forecast training or independent-data access.
 Registration `467c10ad` preceded fitting. All 144 native-arm64 Torch heads
 completed successfully, with 417.74 summed fitting seconds, zero unknown-label
 draws and zero numerical target clamps. This is summed fit time, not end-to-end
-wall time. The prediction freeze precedes held-locality outcome readout;
-no policy or scientific improvement is claimed at this point. Checkpoints,
-optimizer state and private predictions stay local. Seven targeted tests pass.
+wall time. Prediction freeze `d9aae4c1` preceded held-locality outcome readout.
+Checkpoints, optimizer state and private predictions stay local.
+
+Full conditional easy-harm MSE has zero positive, one negative and five
+overlapping locality-bootstrap intervals. Role-level point gains range from
+-25.741% to +0.783%. The development-advance gate fails. No new policy was
+evaluated and deployment is unchanged. Full conditional event AUROC nevertheless
+rises from median 0.48578 to 0.61971, with five positive paired intervals.
+Coverage improves in three role intervals; conditional tail capture in one.
+These secondary findings cannot override the failed primary gate. Two reference
+D_all MSE intervals also worsen. Motion-only remains an adverse robustness check.
+
+Full training MSE improves in 56/72 dependent views but held MSE in 33/72;
+29 improve only in fitting. Of 39 full worsening views, zero-easy-harm targets
+dominate excess squared error in 37, and the upper envelope partition in 5.
+Zero easy-harm includes non-easy rows, not only harmless easy rows. Next isolate
+that membership/magnitude distinction before a registered frozen-feature readout
+experiment. Do not rescale held outcomes or reopen policy threshold search.
+
+Verification covers 58 public artifacts, 92 source bindings, 144 checkpoint
+replays, 5,184 independent rank/tail checks and 72 coordinate reductions.
+All 466 tests in 82 scoped files pass; the full legacy suite is not_run.
+Both figure previews were visually checked. A reporting-key collision was
+caught and fixed before real diagnostic execution; training and predictions
+were unchanged. Six source assignments, three seeds and 3,000 locality resamples
+remain development evidence, not independent confirmation. No reserved-role
+access, Stage5C, SMC, metric/seconds claim or submission-ready claim.
+[Conclusions](outputs/publication_readiness_2026_09/european_support_fractional_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_support_fractional_v1/failure_analysis.md),
+[project gap](outputs/publication_readiness_2026_09/european_support_fractional_v1/project_gap.md).
 
 ## Harm Tail Crossfit (2026-09-26, Completed Diagnosis, No Promotion)
 

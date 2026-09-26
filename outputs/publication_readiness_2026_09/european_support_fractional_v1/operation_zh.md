@@ -17,6 +17,7 @@
 ```bash
 .venv-pytorch/bin/python scripts/evaluate_m3w_european_support_fractional.py
 .venv-pytorch/bin/python scripts/report_m3w_european_support_fractional.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_european_support_fractional.py
 .venv-pytorch/bin/python scripts/plot_m3w_european_support_fractional.py
 .venv-pytorch/bin/python scripts/verify_m3w_european_support_fractional.py --replay-only
 .venv-pytorch/bin/python scripts/verify_m3w_european_support_fractional.py
@@ -25,6 +26,10 @@
 核验包括旧/新采样一致、预处理一致、检查点预测重放、训练分箱重放、
 逐坐标误差和另一套排序/尾部指标计算。最后运行当前链路相关测试，
 不把这些范围化测试说成整个旧项目都已通过。
+
+本轮主门槛失败，禁止据此切换部署。新增诊断和误差分解只用于定位拟合与
+跨场景泛化问题，不修改主门槛。已生成的冻结产物是不可变记录；重复执行
+前核对源文件绑定，不能通过覆盖结果来掩盖版本变化。
 
 当前训练成本适合本机，没有提交CREATE作业。引用的队列记录是带时间的
 历史只读观察，不代表当前空闲资源。尚未核实M3W远程项目目录，不得把

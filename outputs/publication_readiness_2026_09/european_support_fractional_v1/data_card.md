@@ -5,8 +5,8 @@
 The study reuses the verified European source-development data and forecast
 lineage from european_harm_tail_crossfit_v1. Its original mean controls,
 normalization definitions, splits and causal schema are cached_verified.
-The new fractional heads and their paired diagnostics are fresh_run when
-completed. No independent confirmation or deployed policy result is implied.
+The new fractional heads and their completed paired diagnostics are fresh_run.
+No independent confirmation or deployed policy result is implied.
 
 Source A supplies the previously trained prediction/causal feature chain.
 Within four B localities, train on three and hold one out. Refit normalization,

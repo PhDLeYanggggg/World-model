@@ -9,6 +9,8 @@ ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_european_support_fractional as run
 from scripts.evaluate_m3w_european_support_fractional import measure
 from scripts.report_m3w_european_support_fractional import paired_contrasts,summarize_population
+from scripts.diagnose_m3w_european_support_fractional import fit_transport_summary
+from src.evaluation.m3w_harm_error_decomposition import error_decomposition
 from scripts.verify_m3w_european_harm_tail_crossfit import rank_metrics,top_share
 import numpy as np
 import torch
@@ -57,9 +59,11 @@ def replay(cfg,identity):
                 assert run.previous.diagnostic.summarize(train_score,y,env[tr],sites[tr],fit['edges'])==fit['training']
                 f=next(f for f in row['folds'] if f['held']==held)
                 assert f['target_sha256']==run.array_hash(target) and f['held_ids_sha256']==run.array_hash(bi[te])
+                arm_predictions={}
                 for arm,home in (('mean',run.previous.PRIVATE),('fractional',run.PRIVATE)):
                     d=home/'heads'/tag
                     with np.load(d/'scores.npz',allow_pickle=False) as z: pred=z['scores'].copy()
+                    arm_predictions[arm]=pred
                     edges=json.loads((d/'fit_diagnosis.json').read_text())['edges']
                     metrics=measure(pred,target,env[te],sites[te],edges)
                     assert metrics==f['metrics'][arm]
@@ -74,8 +78,13 @@ def replay(cfg,identity):
                                 if actual is None: assert wanted is None
                                 else: np.testing.assert_allclose(actual,wanted,rtol=1e-10,atol=1e-10)
                                 independent+=1
+                breakdown=error_decomposition(arm_predictions['mean'],arm_predictions['fractional'],
+                    target,env[te],fit['edges']['envelope'][-1])
+                for arm in ('mean','fractional'):
+                    np.testing.assert_allclose(breakdown[arm+'_MSE'],f['metrics'][arm]['envelope_positive']['harm_MSE'],
+                        rtol=1e-10,atol=1e-10)
                 records.append(dict(group=name,pair=pair,held=held,checkpoint=run.artifact(directory/'checkpoint.pt'),
-                    prefix_rows=int(n),matching_sampler=True,training_bins_replayed=True))
+                    prefix_rows=int(n),matching_sampler=True,training_bins_replayed=True,error_decomposition=breakdown))
                 run.beat('verified_head',group=name,pair=pair,held=held,completed=len(records))
     assert len(records)==144
     r=dict(identity=identity,source_binding=source,training=run.artifact(run.PRIVATE/'training_complete.json'),
@@ -93,6 +102,9 @@ def main():
         assert run.artifact(ROOT/ref['path'])==ref; rows.append(json.loads((ROOT/ref['path']).read_text()))
     assert run.artifact(ROOT/checks['source_binding']['path'])==checks['source_binding']
     aggregate=json.loads((run.PUBLIC/'aggregate_metrics.json').read_text())
+    diagnosis=json.loads((run.PUBLIC/'fit_transport_diagnosis.json').read_text())
+    assert diagnosis['summary']==fit_transport_summary(rows)
+    assert run.artifact(ROOT/diagnosis['source_binding']['path'])==diagnosis['source_binding']
     assert paired_contrasts(rows,cfg)==aggregate['contrasts']
     for pair in cfg['pairs']:
         group=[r for r in rows if r['pair']==pair]
@@ -123,7 +135,9 @@ def main():
     artifacts={str(p.relative_to(run.PUBLIC)):run.digest(p) for p in run.PUBLIC.rglob('*') if p.is_file() and p.name!='verification.json'}
     assert all((run.PUBLIC/f).stat().st_size<1024**2 for f in artifacts)
     bindings=[*run.FILES,*tests,'scripts/evaluate_m3w_european_support_fractional.py',
-        'scripts/report_m3w_european_support_fractional.py','scripts/plot_m3w_european_support_fractional.py',str(Path(__file__).relative_to(ROOT))]
+        'scripts/report_m3w_european_support_fractional.py','scripts/plot_m3w_european_support_fractional.py',
+        'scripts/diagnose_m3w_european_support_fractional.py',
+        'src/evaluation/m3w_harm_error_decomposition.py',str(Path(__file__).relative_to(ROOT))]
     run.immutable_json(run.PUBLIC/'verification.json',dict(all_passed=True,artifacts=artifacts,
         source_bindings={p:run.digest(ROOT/p) for p in bindings},tests=count,test_files=tests,full_legacy_suite='not_run',
         checkpoint_replays=len(r['records']),rank_tail_checks=r['independent_rank_tail_checks'],

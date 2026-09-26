@@ -45,6 +45,12 @@ Extra loss computation means equal optimization budget, not equal wall time.
 
 ## Limits
 
+Observed result: the full-pair primary easy-harm MSE gate fails, with zero
+positive, one negative and five overlapping source-assignment intervals.
+Conditional event ranking improves in five assignments, but this does not
+establish accurate magnitude or a policy benefit. Deployment is unchanged.
+All negative results and reference-cost tradeoffs are retained in conclusions.
+
 The 144 fits are repeated development views, not independent scenes. Their
 train-fitted easy cuts differ. Primary MSE changes and tail/coverage guards
 are only a gate for a subsequent policy experiment, never deployment approval.

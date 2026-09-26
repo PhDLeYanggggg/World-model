@@ -10,13 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-I am testing a [support-conditional fractional-harm objective](outputs/publication_readiness_2026_09/european_support_fractional_v1/registration.md).
-It keeps the forecasting pair and model size fixed, but adds direct supervision
-of harm relative to the causal disagreement bound where the forecasts differ.
-All 144 native-Torch heads have completed 288,000 updates. Their predictions
-are frozen before this round's held-locality readout. The matched controls
-use the same initialization, draws and update budget. No outcome improvement
-is claimed yet; this is a controlled loss experiment, not a new deployment.
+I tested a [support-conditional fractional-harm objective](outputs/publication_readiness_2026_09/european_support_fractional_v1/conclusions.md)
+with 144 fresh Torch heads and matched initialization, sampled rows and update
+budgets. It improved an important secondary result: median harm-event AUROC
+where the forecasts disagree rose from 0.486 to 0.620, with positive paired
+intervals in five of six source assignments. But it did not pass the primary
+harm-magnitude gate: none of the six MSE intervals was positive, and one was
+negative. Better ranking is not yet reliable expected-cost prediction.
+
+I am keeping the deployment policy unchanged. The [failure analysis](outputs/publication_readiness_2026_09/european_support_fractional_v1/failure_analysis.md)
+shows that excess predictions on zero easy-harm targets dominate 37/39 full
+views with worse held MSE. Those zero targets include non-easy cases, so this
+does not mean every affected row was harmless. The next repair needs to
+separate easy-event membership from harm magnitude, not tune another threshold.
+
+All 288,000 updates completed. Predictions were frozen before readout; 144
+checkpoint replays, 5,184 independent ranking/tail checks and 466 scoped tests
+pass. The [paired contrasts](outputs/publication_readiness_2026_09/european_support_fractional_v1/paired_contrasts.svg)
+and [loss curves](outputs/publication_readiness_2026_09/european_support_fractional_v1/training_loss.svg)
+retain the negative findings. These are source-development diagnostics, not
+new trajectory gains or independent confirmation. The research goal is ongoing.
 
 ### Completed Locality-Held Diagnosis
 
