@@ -13,8 +13,10 @@ I started this repo to answer that question carefully, not just to collect a nic
 I am testing a [support-conditional fractional-harm objective](outputs/publication_readiness_2026_09/european_support_fractional_v1/registration.md).
 It keeps the forecasting pair and model size fixed, but adds direct supervision
 of harm relative to the causal disagreement bound where the forecasts differ.
-The protocol is registered; training and outcome readout have not run yet.
-This is a controlled loss experiment, not a new deployment claim.
+All 144 native-Torch heads have completed 288,000 updates. Their predictions
+are frozen before this round's held-locality readout. The matched controls
+use the same initialization, draws and update budget. No outcome improvement
+is claimed yet; this is a controlled loss experiment, not a new deployment.
 
 ### Completed Locality-Held Diagnosis
 

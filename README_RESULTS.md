@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Support-Fractional Harm (2026-09-26, Registered, Training Not Run)
+## Support-Fractional Harm (2026-09-26, Trained, Readout Not Run)
 
 One fixed intervention adds locality-balanced fractional Bernoulli loss on
 H/e and H_easy/e, only where the causal disagreement envelope e is positive.
@@ -14,12 +14,19 @@ does not classify event occurrence or fit severity only on positive events.
 Unlike ranked hurdle, it does not order a realized risk-ratio label.
 
 The design matches 144 cached mean controls in architecture, initialization,
-sampler draws and 2,000-update budget; 288,000 new updates are planned. Five
+sampler draws and 2,000-update budget; 288,000 new updates are complete. Five
 tests pass, including exact original-model equivalence with coefficient zero
 and exact interruption/resume. The primary endpoint is conditional easy-harm
 MSE on locality-held B, with three seeds and 3,000 locality bootstrap draws.
 No C policy, threshold search, forecast training or independent-data access.
 [Registration](outputs/publication_readiness_2026_09/european_support_fractional_v1/registration.md).
+
+Registration `467c10ad` preceded fitting. All 144 native-arm64 Torch heads
+completed successfully, with 417.74 summed fitting seconds, zero unknown-label
+draws and zero numerical target clamps. This is summed fit time, not end-to-end
+wall time. The prediction freeze precedes held-locality outcome readout;
+no policy or scientific improvement is claimed at this point. Checkpoints,
+optimizer state and private predictions stay local. Seven targeted tests pass.
 
 ## Harm Tail Crossfit (2026-09-26, Completed Diagnosis, No Promotion)
 
