@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Risk-Conditioned Residual (2026-09-26, Support Complete)
+## Risk-Conditioned Residual (2026-09-26, Predictions Frozen)
 
 Previous goal turn: progress, negative common-event experiment fully verified.
 Parent ca08670b matches local/GitHub. CREATE queue checked read-only, receipt
@@ -25,6 +25,12 @@ positive easy-harm fitting rows:full245,motion-only24. Full OOF median producer
 score-gap RMS0.0774954; this is diagnostic scale, not an effect size or safety
 certificate. Fresh35 tests in six scoped files passed. Support is frozen before
 the864 new fixed probes. No labels from the outer locality used for fitting.
+
+Support commit1fb49d0d preceded all864 fixed fits /144 views, completed normally
+under PID67898. Summed per-view fit/inference57.873162 seconds, excluding source
+loading, preflight and verification. This is not end-to-end runtime or neural
+training time. Prediction hashes are frozen before the new source-held readout.
+Post-freeze error accounting will retain all arms without held-tuned parameters.
 
 [Protocol](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/protocol.md).
 

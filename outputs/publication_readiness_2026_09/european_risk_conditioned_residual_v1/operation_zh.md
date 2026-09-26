@@ -34,6 +34,7 @@
 # 提交 prediction_freeze.json 后：
 .venv-pytorch/bin/python scripts/run_m3w_european_risk_conditioned_residual.py --phase evaluate
 .venv-pytorch/bin/python scripts/run_m3w_european_risk_conditioned_residual.py --phase report
+.venv-pytorch/bin/python scripts/diagnose_m3w_european_risk_conditioned_residual.py
 .venv-pytorch/bin/python scripts/plot_m3w_european_risk_conditioned_residual.py
 ```
 

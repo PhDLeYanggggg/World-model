@@ -16,8 +16,9 @@ The [fixed risk-conditioned experiment](outputs/publication_readiness_2026_09/eu
 first checks fitting-only producer differences, then compares 864 fixed probes
 against the original and all matched controls. The fitting-only support check
 passed all 144 views and 432 projection identities; neither new risk feature
-is constant. This is not held-out improvement. Independent calibration and
-confirmation remain unopened.
+is constant. All 864 probes have now been fitted and their predictions frozen
+before the new source-held readout. This is not held-out improvement.
+Independent calibration and confirmation remain unopened.
 
 **Current result, 26 September:** aligning the residual labels' definition of
 "easy" does not repair cross-locality risk estimation. I completed the

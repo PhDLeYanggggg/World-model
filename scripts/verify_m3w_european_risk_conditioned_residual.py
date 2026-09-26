@@ -22,6 +22,9 @@ def main():
     assert support['projection_checks'] == len(support['rows']) == 432
     check = json.loads((run.PUBLIC/'eval_replay.json').read_text())
     assert check['direct_MSE_checks'] == 1728 and len(check['groups']) == 36
+    before_accounting = run.digest(run.PUBLIC/'error_accounting.json')
+    subprocess.run([sys.executable, 'scripts/diagnose_m3w_european_risk_conditioned_residual.py'], cwd=ROOT, check=True)
+    assert run.digest(run.PUBLIC/'error_accounting.json') == before_accounting
     tests = ['tests/test_m3w_risk_conditioned_residual.py', 'tests/test_m3w_event_transport.py',
              'tests/test_m3w_context_residual.py', 'tests/test_m3w_nested_residual.py',
              'tests/test_m3w_nested_residual_reporting.py', 'tests/test_m3w_nested_residual_accounting.py']
@@ -37,10 +40,13 @@ def main():
         assert (run.PUBLIC/f).is_file()
     files = {str(p.relative_to(run.PUBLIC)): run.digest(p) for p in run.PUBLIC.rglob('*') if p.is_file() and p.name != 'verification.json'}
     assert all((run.PUBLIC/f).stat().st_size < 2**20 for f in files)
-    bindings = sorted(set(run.FILES+tests+['scripts/plot_m3w_european_risk_conditioned_residual.py', str(Path(__file__).relative_to(ROOT))]))
+    bindings = sorted(set(run.FILES+tests+['scripts/plot_m3w_european_risk_conditioned_residual.py',
+        'scripts/diagnose_m3w_european_risk_conditioned_residual.py',
+        'scripts/diagnose_m3w_european_nested_residual.py', str(Path(__file__).relative_to(ROOT))]))
     doc = dict(all_passed=True, artifacts=files, source_bindings={f: run.digest(ROOT/f) for f in bindings},
         fitting_only_Torch_inference_replays=144, producer_projection_checks=432, probe_fit_prediction_replays=864,
         readout_groups_replayed=36, direct_MSE_checks=1728, fresh_tests=count, test_files=tests,
+        post_freeze_error_identities=1728,
         parent_432_neural_head_replays='cached_verified', parent28_tests='cached_verified', full_legacy_suite='not_run',
         figure_byte_reproducible=True, architecture=platform.machine(), threads=4, workers=0,
         new_neural_updates=0, new_trajectory_updates=0, independent_confirmation=False, deployment_changed=False)
