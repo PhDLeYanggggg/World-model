@@ -12,11 +12,11 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 I traced the fractional head's main magnitude error to easy-event membership:
 outside-easy rows dominate 35/39 full views whose error increased. I have
-registered a [matched frozen-feature readout test](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md)
+completed training for a [matched frozen-feature readout test](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md)
 to separate useful representation from cost fitting. Both arms keep the
-original reference-cost path unchanged. The protocol specifies288 new small
-readouts and576,000updates; training and new outcome readout have not run yet.
-No policy change or positive result is implied.
+original reference-cost path unchanged. All 288 readouts and 576,000 updates
+are complete. I froze the prediction hashes before opening this round's
+held-locality outcome readout. No policy change or positive result is implied.
 
 ### Completed Fractional-Harm Test
 

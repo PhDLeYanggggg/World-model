@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Harm Readout (2026-09-26, Registered, Training Not Run)
+## Frozen Harm Readout (2026-09-26, Training Complete, Readout Pending)
 
 Fresh label-only decomposition finds outside-easy rows dominate35/39 full and
 34/38 motion-only worsening views. The four categories retain non-easy cases
@@ -19,7 +19,14 @@ Original mean D_all/D_easy are unchanged. Two arms, six source assignments,
 three seeds, two forecast pairs, four held localities:288 heads,576,000updates.
 Five targeted model tests pass, including exact resume and frozen-feature checks.
 The primary and required original-mean comparisons must both improve before
-considering any later policy experiment. Training is not_run at registration.
+considering any later policy experiment. Training was not_run at registration.
+Registration `fa128423` preceded the real pilot and fitting. All 288 heads and
+576,000 updates are now complete, with 184.69 summed fitting seconds and zero
+unknown-label training draws. Summed fitting time excludes loading, feature
+extraction and verification. Both readout arms share identical initial losses,
+draw counts and final sampler states. Prediction hashes are frozen before
+held-locality outcome readout; checkpoints and per-row outputs stay private.
+No evaluation improvement or deployment is claimed at this point.
 [Diagnosis](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/membership_diagnosis.md),
 [registration](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/registration.md).
 
