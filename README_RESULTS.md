@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Nested Locality Residual (2026-09-26, Registered, Support Not Run)
+## Nested Locality Residual (2026-09-26, Support Passed, Training Not Run)
 
 Previous goal turn: progress. Parent b631bf80 verified locally/on GitHub;
 51 artifacts and10 source bindings match. Native arm64;12.6578GiB free disk.
@@ -23,6 +23,10 @@ but failed writing strict JSON due to a NumPy boolean. The implementation-only
 amendment records the old/new runner hashes; original registration is retained,
 all scientific settings unchanged,0 training updates and0 outer readouts.
 The failure was reproduced in an isolated synthetic support regression test.
+Amendment5ab3e94b was pushed before the support rerun. PID53730 completed
+all432 views normally. Minimum known rows6372; minimum easy-harm rows full72,
+motion-only5. Numerical support passes, statistical power is not established.
+No difficult slice excluded. Pilot/training/readout remain not_run.
 
 ## Causal Context Residual (2026-09-26, Readout Complete, Primary Gate Failed)
 

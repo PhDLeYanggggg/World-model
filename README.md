@@ -16,9 +16,11 @@ controls trained on the same number of localities. All inner preprocessing,
 easy cuts and loss scales are rebuilt without the inner-held labels. The
 planned 432 neural risk heads do not change the trajectory forecasters or
 deployment; 19 targeted tests pass, but experimental fitting has not started.
-The first support pass reached all 432 views but hit a NumPy-boolean JSON
-serialization error. A hash-bound implementation amendment preserves the
-original registration and scientific rules; training has not started.
+The initial support pass hit a NumPy-boolean JSON error. A hash-bound
+implementation amendment preserves the registration and scientific rules.
+The rerun passes all 432 fitting-support checks; the weakest motion-only
+subset has just five easy-harm rows, so this is not a statistical-power claim.
+Experimental fitting has not started.
 
 **Current status, 26 September:** the latest past-context cost repair has
 completed but has not passed its cross-locality improvement gate. I am keeping
