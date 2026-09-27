@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Auxiliary Training Trajectories (2026-09-27, Registered Diagnostic)
+## Auxiliary Training Trajectories (2026-09-27, Training Frozen)
 
 The final-state projection experiment did not justify a projection repair.
 The next question is when the auxiliary cost deficit appears during training.
@@ -30,6 +30,13 @@ At the first progress checkpoint, 144 of 432 heads and 720 of 2,160 snapshots
 were complete. All 144 final numerical states matched their originals.
 PID 44662 continues the remaining fixed-budget reconstructions; no aggregate
 scientific readout or repair selection has been made.
+
+The fixed run is now complete: 432 heads, 864,000 optimizer updates and 2,160
+snapshots. Every final numerical state matches the original. Recorded fit time
+is 807.07 seconds; full run-phase wall time is 1,518.36 seconds, excluding
+ancestry preflight and reusing the pilot's first 200 updates. The freeze is
+committed before aggregate readout. These are exact reconstructions, not new
+model variants or independent replications. Scientific readout is pending.
 
 [Registered protocol](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/protocol.md).
 
