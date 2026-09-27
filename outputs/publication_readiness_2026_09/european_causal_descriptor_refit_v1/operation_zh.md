@@ -20,6 +20,7 @@ CPU计算线程4、interop1、DataLoader workers0，不进行资源探测或多�
 .venv-pytorch/bin/python scripts/replay_m3w_causal_descriptor_training.py --phase causal
 .venv-pytorch/bin/python scripts/run_m3w_european_causal_descriptor_refit.py --phase replay_evaluate
 .venv-pytorch/bin/python scripts/report_m3w_causal_descriptor_refit.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_causal_descriptor_refit.py
 .venv-pytorch/bin/python scripts/verify_m3w_causal_descriptor_refit.py
 ```
 
@@ -33,6 +34,8 @@ CPU计算线程4、interop1、DataLoader workers0，不进行资源探测或多�
 - `results.md`：固定主检验、全部对照、三种子和最差来源结果。
 - `training_summary.json`：真实更新数、参数量、训练损失与未知标签抽样检查。
 - `conclusions.md`：有效与无效的部分，不把训练完成当部署成功。
+- `failure_analysis.md`：冻结读出后的配对误差与逐来源失败诊断，不改主检验。
+- `operations.md`：本机真实运行耗时、内存、重放与存储记录。
 - `verification.json`：重算、匹配、复现、针对性测试证据。
 - 私有心跳和checkpoint位于`data/stage_cvpr2027_experiments/european_causal_descriptor_refit_v1/`。
 

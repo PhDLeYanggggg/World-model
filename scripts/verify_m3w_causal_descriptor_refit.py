@@ -12,7 +12,8 @@ from scripts.verify_m3w_fixed_floor_tail import independently_match, reduce_chec
 TESTS = ['tests/test_m3w_causal_descriptor_head.py','tests/test_m3w_causal_descriptor_protocol.py',
     'tests/test_m3w_fixed_floor_excess.py','tests/test_m3w_fixed_floor_excess_protocol.py',
     'tests/test_m3w_fixed_floor_probe.py','tests/test_m3w_fixed_floor_tail.py',
-    'tests/test_m3w_fixed_floor_slices.py','tests/test_m3w_fixed_floor_slices_protocol.py']
+    'tests/test_m3w_fixed_floor_slices.py','tests/test_m3w_fixed_floor_slices_protocol.py',
+    'tests/test_m3w_causal_descriptor_diagnosis.py']
 
 
 def main():
@@ -56,18 +57,24 @@ def main():
         for policy,metrics in policies.items():
             rr=[r for r in details['rows'] if r['policy']==policy and r['seed']==int(seed)]
             for key,value in metrics.items(): count += reduce_check(value,rr,key,cfg['bootstrap_seed'],cfg['bootstrap_resamples'])
+    from scripts.diagnose_m3w_causal_descriptor_refit import paired_quality
+    diagnosis = json.loads((run.PUBLIC/'post_readout_diagnosis.json').read_text())
+    rr = paired_quality(details['quality'])
+    for key, value in diagnosis['quality_difference'].items():
+        count += reduce_check(value,rr,key,cfg['bootstrap_seed'],cfg['bootstrap_resamples'])
     log=run.PRIVATE/'scoped_pytest.txt'
     proc=subprocess.run([sys.executable,'-m','pytest','-q',*TESTS],cwd=ROOT,capture_output=True,text=True)
     log.write_text(proc.stdout+proc.stderr)
     if proc.returncode: raise RuntimeError(proc.stdout+proc.stderr)
     tests=int(re.search(r'(\d+) passed',proc.stdout).group(1))
     artifacts={p.name:run.base.digest(p) for p in run.PUBLIC.iterdir() if p.suffix in ('.json','.md','.png') and p.name!='verification.json'}
-    proc=subprocess.run([sys.executable,'scripts/report_m3w_causal_descriptor_refit.py'],cwd=ROOT,capture_output=True,text=True)
-    if proc.returncode: raise RuntimeError(proc.stderr)
+    for script in ('report_m3w_causal_descriptor_refit.py', 'diagnose_m3w_causal_descriptor_refit.py'):
+        proc=subprocess.run([sys.executable,'scripts/'+script],cwd=ROOT,capture_output=True,text=True)
+        if proc.returncode: raise RuntimeError(proc.stderr)
     assert artifacts=={p:run.base.digest(run.PUBLIC/p) for p in artifacts}
     seal=json.loads((run.diagnosis.PUBLIC/'verification.json').read_text()); bindings=dict(seal['source_bindings']); bindings.update(identity['bindings'])
     extras=['scripts/report_m3w_causal_descriptor_refit.py','scripts/replay_m3w_causal_descriptor_training.py',
-        'scripts/verify_m3w_causal_descriptor_refit.py',*TESTS]
+        'scripts/diagnose_m3w_causal_descriptor_refit.py', 'scripts/verify_m3w_causal_descriptor_refit.py',*TESTS]
     bindings.update({p:run.base.digest(ROOT/p) for p in extras})
     run.base.immutable_json(run.PUBLIC/'verification.json',dict(source_bindings=bindings,artifacts=artifacts,
         tests=tests,test_files=len(TESTS),test_log=run.base.artifact(log),matched_cached_controls=cached_controls,

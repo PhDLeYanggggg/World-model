@@ -12,13 +12,13 @@ from scripts.report_m3w_fixed_floor_tail import ci
 def main():
     d = json.loads((run.PUBLIC/'summary.json').read_text())
     lines = ['# Causal-Descriptor Risk-Head Results', '', '## Material Passport', '',
-        'Fresh108risk heads,216,000updates. Cached_verified108signed-excess controls, original forecasting/floor/utility chain.',
+        'Fresh training: 108 risk heads, 216,000 updates. Cached_verified: 108 signed-excess controls and the original forecasting/floor/utility chain.',
         'Twelve opened development localities, three forecaster seeds. Independent roles stay closed.',
-        'Six causal features and384zero-initialized branch parameters added; no loss, budget, draw or deployment change.', '',
+        'Six causal features and 384 zero-initialized branch parameters added; no loss, budget, draw or deployment change.', '',
         '## Prespecified Primary', '',
         'Count-matched control minus new selected harm (pp): **'+ci(d['paired']['control_matched_count']['positive_harm_reduction_pp'])+'**.',
         'Equal-current-query-count ADE advantage (%): **'+ci(d['paired']['control_matched_count']['ADE_gain_percent'])+'**.',
-        'Undefined fixed-roster risk is not zero risk. Count matching is diagnostic, not a certified2%policy.', '',
+        'Undefined fixed-roster risk is not zero risk. Count matching is diagnostic, not a certified 2% policy.', '',
         '| Policy | ADE / floor gain % | Hard / floor gain % | Easy / CV gain % | FDE / floor gain % | Intervention % | Selected harm % |',
         '|---|---:|---:|---:|---:|---:|---:|']
     for p, m in d['summary'].items():
@@ -38,10 +38,10 @@ def main():
         '## Three Forecaster Seeds', '', '| Seed | New ADE/floor gain % | Control ADE/floor gain % | New harm % |', '|---|---:|---:|---:|']
     for seed, m in d['by_seed'].items(): lines.append('| '+seed+' | '+ci(m['descriptor']['all_gain_floor'])+' | '+ci(m['control']['all_gain_floor'])+' | '+ci(m['descriptor']['selected_positive_harm_ratio'],100)+' |')
     lines += ['', '## Gates', '', *[f'- {k}: {v}' for k,v in d['gates'].items()], '',
-        'Bootstrap3,000draws over12locality means after dependent producer/fit/seed averaging. Overlapping windows are not independent.',
+        'Bootstrap: 3,000 draws over 12 locality means after dependent producer/fit/seed averaging. Overlapping windows are not independent.',
         'Per-source values are in summary.json. No source is dropped to rescue undefined risk. Development intervals are not safety certificates.',
-        'This tests six extra descriptors/384parameters together, not their individual semantic value under equal capacity.',
-        'Image-local detector silver; obs8/pred12 rawstride12. No metric/seconds/physical-safety/true3D/foundation claim.',
+        'This tests six extra descriptors and 384 parameters together, not their individual semantic value under equal capacity.',
+        'Image-local detector silver; obs8/pred12 rawstride12. No metric, seconds, physical-safety, true3D or foundation claim.',
         'No independent confirmation, deployment, Stage5C or SMC.']
     (run.PUBLIC/'results.md').write_text('\n'.join(lines)+'\n')
     freeze = json.loads((run.PUBLIC/'decision_freeze.json').read_text()); infos = []; weights = []

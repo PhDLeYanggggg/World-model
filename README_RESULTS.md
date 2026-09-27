@@ -5,25 +5,50 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Causal-Descriptor Refit (2026-09-27, Registered)
+## Causal-Descriptor Refit (2026-09-27, Primary Failed)
 
-Planned108new risk heads versus108verified signed-excess controls. Six causal
-descriptors enter a zero-initialized branch; shared initialization, objective,
-draws,2,000updates, preprocessing of original features, floor/utility and2%risk
-screen stay fixed. Descriptor standardization uses fitting sources only.
-Primary is equal-current-query-count harm reduction, with unchanged ADE/easy/
-risk/nonempty gates. No held tuning or independent-role access. Native CPU4,
-workers0, atomic compressed checkpoints and prediction-hash freeze; no large
-score-bank duplication. CREATE queue checked read-only, no job submitted.
-Registration`fe3a39f6`preceded a real100-update pilot:7.24process seconds,
-6.09GBpeak RSS,25,028parameters, zero unknown-label training draws. The
-443,949byte checkpoint implies a conservative96MBfor108compressed checkpoints;
-free disk11.06GiBat the pilot. Resume includes the100updates in the2,000budget.
-All108new heads completed216,000updates in314.49process seconds, peak RSS11.13GB,
-PID34588. Shared initialization, full draws/RNG and unchanged settings match
-every frozen control. New predictions and actions are frozen before readout;
-training completion is not a downstream success.31scoped technical tests pass.
-[Protocol](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/protocol.md).
+Fresh 108 matched risk heads and 216,000 updates; 108 hash-verified signed-excess
+controls. Six causal descriptors enter a zero-initialized branch, adding 384
+parameters. Shared initialization, objective, draws, 2,000-update budget,
+original-feature preprocessing, floor/utility and 2% risk screen stay fixed.
+Descriptor scaling uses fitting sources only. No held tuning or independent
+selection/calibration/confirmation access.
+
+Registration `fe3a39f6` preceded the native CPU4 pilot. The 100 pilot updates
+are included in the resumed budget. Complete training took 314.49 process
+seconds, peak RSS 11.13 GB, PID 34588. Decisions were frozen in `a432f1a5`
+before readout. CREATE was checked read-only; no remote job was submitted.
+
+ADE gain over the protected floor: **0.2594% [0.1632%, 0.3687%]**, versus
+control 0.1848%. Paired gain over control: **0.0749% [0.0309%, 0.1382%]**.
+Intervention rises from 6.7818% to 8.0235%. Equal-current-query-count ADE
+contrast: **-0.013876% [-0.029773%, -0.002236%]**. The mean improvement does
+not establish better ordering. Four locality contrasts are positive, seven
+negative and one zero.
+
+The fixed-roster harm primary is undefined: **10 empty views**. **82/216 views
+exceed the 2% budget**. Worst defined harm is 43.734% on only one known selected
+row. Worst easy gain is +0.3716% over CV; no zero-CV harm. Easy net preservation
+is not positive-harm control. All 108 training monitors decline; a paired
+post-readout diagnostic finds a small held signed-MSE reduction:
+**-0.002588 [-0.006177, -0.000148]**. This does not repair ranking or certify
+risk. The added capacity prevents an isolated descriptor-semantics claim.
+
+All 108 prediction/decision groups replay exactly, as do the first complete
+fit and the full evaluation. The first real inference also matches with
+future fields removed. **35 tests across nine scoped files pass**; 747,900
+current-query count matches and 7,135 locality reductions are independently
+verified. Reports, diagnosis and figure are byte-reproducible. The seal binds
+180 source files and 20 public artifacts. The full legacy suite and
+cold raw rebuild remain not_run. No deployment upgrade, Stage5C or SMC.
+Next: frozen same-query benefit/harm exchange diagnosis, then one targeted
+ordering repair; not another blind feature/threshold sweep. These are twelve
+opened development localities, image-local silver, obs8/pred12 rawstride12.
+
+[Results](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/verification.json).
 
 ## Fixed-Model Source-Gap Slices (2026-09-27, Verified Diagnostic)
 

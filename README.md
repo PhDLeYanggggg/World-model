@@ -10,12 +10,38 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** a matched risk-head refit adds six explicit past-motion,
-neighbor-context and forecast-disagreement descriptors. The new branch starts
-at zero, preserving the control's initial predictions. Loss, samples, fallback,
-source exclusions and the 2% budget remain fixed. This tests the preceding
-diagnosis; there is no improvement or deployment claim before readout.
-[Protocol](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/protocol.md).
+**Latest result:** explicit causal features improve average error, but do not
+yet make neural intervention safer. I trained 108 matched risk heads with six
+past-motion, neighbor-context and forecast-disagreement descriptors. Shared
+initial predictions, training draws, loss, fallback and the 2% risk budget
+stay fixed; the added branch has 384 parameters.
+
+ADE gain over the protected floor rises from **0.185% to 0.259%**. However,
+intervention also rises from **6.78% to 8.02%**. At the same number of switches
+within each current frame, the new model is **worse by 0.0139%
+[-0.0298%, -0.0022%]** than the control. Better average error here is not
+evidence of better selection.
+
+Held-source risk-score error improves slightly, but **82 of 216 dependent
+views still exceed the harm budget**, and ten have an undefined risk ratio.
+Easy net error is preserved; positive-harm safety is not. I am retaining this
+as a negative development result, with **no deployment change**. Independent
+confirmation sources remain closed.
+
+All 108 prediction/decision groups and the full readout reproduce exactly.
+**35 scoped tests pass**, alongside 747,900 independent query-count checks and
+7,135 locality-metric reductions. These checks verify the experiment; they do
+not turn its failed safety hypothesis into a positive result.
+
+The next question is concrete: among predictions exchanged with the
+same-budget control, am I missing useful gains or admitting harmful ones?
+That diagnosis will determine the next gain/harm training target, without
+loosening the budget or selecting a favorable held-source slice.
+[Results](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/verification.json).
 
 **Latest diagnosis:** the risk head fails inside its existing input-support
 guard, not just on obviously unfamiliar inputs. I froze all models and actions
@@ -29,9 +55,9 @@ eligible pool retains **16.27% diagnostic oracle opportunity**, but the policy
 captures only **1.08% of available positive-benefit mass**. Opportunity is not
 the same as a learned result.
 
-My next test is a matched causal-descriptor augmentation, with the loss,
-fallback and risk budget fixed. I will not use future label completeness as
-an input, select a favorable subgroup, or loosen the budget. All 108 groups
+This diagnosis motivated the matched causal-descriptor augmentation above,
+with the loss, fallback and risk budget fixed. Future label completeness was
+not an input and no favorable subgroup was selected. All 108 diagnostic groups
 replay exactly; **24 scoped tests**, 217,728 additive checks and 2,448 independent
 reductions pass. No new model was trained in this diagnostic, and no independent
 confirmation data were opened. Deployment is unchanged.
