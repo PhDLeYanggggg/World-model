@@ -27,11 +27,13 @@ Runtime-only job37560603 failed127 because a non-login batch shell lacked
 login shell; runtime-only job37560918 completed0:0. Its200synthetic optimizer
 updates and checkpoint-resume comparison passed exactly; Torch2.12.0+cpu,
 NumPy2.4.6,4CPUthreads. Neither job is the216-head scientific experiment.
-Fitting-only packet transfer is now underway. The portable runner calls the unchanged registered fit API;
+Fitting-only packet transfer is complete:108groups,4,909,669,199bytes.
+The final invocation rehashed89existing packets and streamed19new ones.
+The portable runner calls the unchanged registered fit API;
 local large temporary files and held-role training inputs are excluded.
 Intermittent SSH disconnects were preserved as transport failures, not model
-failures.89/108packets were acknowledged before the latest restart; resume
-rehashes existing remote packets. The new single-process stream avoids opening
+failures.89/108packets were acknowledged before the successful final restart;
+resume rehashed all of them. The new single-process stream avoids opening
 a separate connection for every remaining packet; authentication errors are
 not blindly retried and persistent SSH configuration is unchanged.
 [Current status](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md).
