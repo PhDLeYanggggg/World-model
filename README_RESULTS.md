@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen Query Utility Allocation (2026-09-27, Registered)
+
+Compare protected floor, independent admission, matched risk ranking,
+utility-top-k diagnostic, whole-query uniform and constrained joint utility.
+All estimators are frozen. Joint utility keeps the independent action count
+within each current query and the same predicted all/easy 2% excess budgets.
+HiGHS optimum/certificate failure retains the anchor. No outcome-based tuning
+or independent data access. Six solver tests, including exhaustive small
+problems and failure fallback, pass. Outcomes are not yet read.
+[Protocol](outputs/publication_readiness_2026_09/european_query_utility_v1/protocol.md).
+
 ## Frozen Selection Exchanges (2026-09-27, Verified Diagnostic)
 
 The descriptor policy loses at matched current-query intervention counts.
