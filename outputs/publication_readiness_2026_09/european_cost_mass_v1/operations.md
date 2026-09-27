@@ -15,7 +15,7 @@ are verified before reuse. Partial unsealed outputs are recomputed. Preserve
 .venv-pytorch/bin/python scripts/run_m3w_european_cost_mass.py --phase fit
 # Commit prediction_freeze.json before evaluate.
 .venv-pytorch/bin/python scripts/run_m3w_european_cost_mass.py --phase evaluate
-.venv-pytorch/bin/python scripts/report_m3w_european_cost_mass.py
+.venv-pytorch/bin/python scripts/report_m3w_european_cost_mass_native.py
 .venv-pytorch/bin/python scripts/plot_m3w_european_cost_mass.py
 .venv-pytorch/bin/python scripts/verify_m3w_european_cost_mass.py
 ```
@@ -28,3 +28,7 @@ The verification script repeats exactly the frozen readout; it does not select
 another configuration. The source-held data are already exposed development
 data. Neither this replay nor a good source interval constitutes independent
 confirmation or permission to deploy.
+
+The native report entrypoint repairs one diagnostic NumPy integer serialization
+without changing the hash-bound scientific implementation. See
+report_serialization_amendment.md for the exact boundary and regression tests.

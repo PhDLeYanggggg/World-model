@@ -35,6 +35,11 @@ moment constraints,765 match and99 are infeasible at the fixed slope bound8;
 333/432 readouts match both moments. Bound failures remain included. No held
 scoring has run yet, and these fitting equalities are not calibration guarantees.
 
+Held-source scoring is now running. A diagnostic JSON count-type error was
+caught before aggregate reporting and repaired through a serialization-only
+entrypoint, leaving all hash-bound scientific code and frozen predictions
+unchanged. Seventeen current-study tests cover the fix and the readout rules.
+
 ## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
 
 I separated fitting-row regime from the training-derived easy cut while
