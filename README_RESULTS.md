@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Anchored Subset Supervision (2026-09-27, Registration)
+
+A new development experiment retains individual supervision while comparing
+pointwise versus aggregate error within three frozen causal subset masks.
+216 new heads /432,000 updates planned; same initialization, queries, known-row
+draws, protected floor and2%selected-risk screen. Twenty tests across the new
+and parent training modules pass. Unknown labels cannot change causal subset
+membership; architecture guards run before Torch; resume is exact on tests.
+
+Ten inherited zero-action views keep their undefined selected-risk ratio.
+An added all-reference-denominator harm diagnostic measures abstention without
+changing the old primary or applying its2%threshold to a different denominator.
+No new training result yet. Independent roles remain closed; deployment,
+Stage5C and SMC unchanged. CREATE read-only queue check succeeded; no jobs
+submitted. Source-role and artifact hashes are checked before registration.
+[Protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md).
+
 ## Paired Query-Excess Training (2026-09-27, Verified Negative Result)
 
 Registration `646082b3`, training freeze `53c1b594`, action freeze `e4703640`
