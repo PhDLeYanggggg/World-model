@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current experiment:** I am testing whether retaining partial neighbor histories
+improves neural forecasting. The
+[matched refit](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md)
+fixes the original three seeds, training localities, loss and 4,000-update
+budget. One old model must reproduce exactly before nine new models are fitted.
+Predictions will be frozen before comparison. This is source-development work;
+independent selection, calibration and confirmation remain closed.
+
 **Current finding:** the model has been excluding many visible neighbors.
 The [source observation audit](outputs/publication_readiness_2026_09/european_observation_quality_v1/conclusions.md)
 traced 318,969 target histories back to the raw records. In 88.58% of queries,

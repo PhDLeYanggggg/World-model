@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Partial-Neighbor Refit (2026-09-27, Registered)
+
+The input audit motivates one versioned neural repair, not a smoothing or
+threshold sweep. Nine new models retain the old initialization, parameter
+budget, loss, training-locality sampling and 4,000-update schedule. A fresh
+legacy control must reproduce the original endpoint exactly. All predictions
+are frozen before source comparative scoring. Primary uncertainty resamples
+12 localities after averaging seeds and producer contexts; overlapping windows
+are not independent samples. Training and predictive lift are not_run at this
+registration point. No independent-role access or deployment change.
+[Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md).
+
 ## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 
 Registration f639b969 precedes the source-only pilot and full raw audit.
