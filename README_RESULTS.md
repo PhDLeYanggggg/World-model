@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen Selection Exchanges (2026-09-27, Registered Diagnostic)
+
+The descriptor policy loses at matched current-query intervention counts.
+The next check partitions frozen decisions into common, new-only, control-only,
+eligible-unselected and excluded sets. An exact benefit-minus-harm identity
+must reconstruct the parent ADE contrast. All 108 groups, unknown-label rows
+and twelve development localities remain; no tuning or independent-role access.
+Six focused accounting tests pass. This is not new training or a new primary.
+[Protocol](outputs/publication_readiness_2026_09/european_selection_exchange_v1/protocol.md).
+
 ## Causal-Descriptor Refit (2026-09-27, Primary Failed)
 
 Fresh 108 matched risk heads and 216,000 updates; 108 hash-verified signed-excess

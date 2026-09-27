@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current check:** I am decomposing the predictions exchanged between the
+frozen descriptor policy and its same-query-count control. This separates
+lost benefit from added harm before changing the training objective again.
+No policy, threshold or independent-source role is changing.
+[Protocol](outputs/publication_readiness_2026_09/european_selection_exchange_v1/protocol.md).
+
 **Latest result:** explicit causal features improve average error, but do not
 yet make neural intervention safer. I trained 108 matched risk heads with six
 past-motion, neighbor-context and forecast-disagreement descriptors. Shared
