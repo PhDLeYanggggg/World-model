@@ -23,6 +23,11 @@ not evidence of predictive improvement. Registration commit:b6ea4f8e.
 Mid-run check:147/288 heads and294000 completed updates; matched initialization
 and sampling checks continue to pass. Source-held readout has not started.
 
+Training is now complete:288 heads,576000 updates,288 matched sampler and
+intercept-isolation checks. The run phase took933.51 seconds after ancestry
+preflight. All predictions are frozen before readout; predictive efficacy is
+still untested at this milestone.
+
 [Protocol](outputs/publication_readiness_2026_09/european_aux_prior_v1/protocol.md).
 
 ## Auxiliary Training Trajectories (2026-09-27, No Model Promotion)
