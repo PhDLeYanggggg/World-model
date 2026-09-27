@@ -20,7 +20,11 @@ Initial weights and sampler states/draw counts match every grouped control;
 held fitting draws are zero. All nine prediction pairs are frozen in `c686ae06`
 before comparative scoring; 1,913,814 query forecasts per arm are dependent
 views, not independent samples. Fresh grouped-control inference matches every
-cache exactly. Scoring took 9.77 process seconds. Full prediction replay is running.
+cache exactly. Scoring took 9.77 process seconds. Full nine-pair prediction replay
+is exact (452.44 process seconds), as is the 576-view scoring replay (9.66 seconds).
+Reports, diagnostics and the figure reproduce exactly; **81 tests in 17 scoped
+files pass**. The final seal binds 31 public artifacts and 68 source files.
+The full historical suite and cold raw-download rebuild were not run.
 A full from-initialization replay of the fixed first endpoint reproduced all
 weights, optimizer states, logged losses and sampler/RNG states exactly. It used
 another 4,000 verification-only updates (62.58 process seconds), not a tenth
@@ -55,6 +59,8 @@ cannot isolate invariance from changed optimization. No new policy is evaluated.
 [failure analysis](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/failure_analysis.md),
 [paper addendum](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/paper_addendum.md),
 [operation guide](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/verification.json),
+[execution record](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/operations.md),
 [next priorities](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/project_gap.md).
 
 ## Agent-Track Topology Refit (2026-09-27, Modest Source Gain)

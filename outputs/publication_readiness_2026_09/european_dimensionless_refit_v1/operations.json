@@ -1,0 +1,135 @@
+{
+  "result_source": "fresh_run_log_readout",
+  "phases": [
+    {
+      "phase": "pilot",
+      "pid": 12728,
+      "started_utc": "2026-09-27T09:07:28Z",
+      "completed_utc": "2026-09-27T09:07:31Z",
+      "wall_seconds": 3.98,
+      "user_seconds": 3.87,
+      "system_seconds": 0.94,
+      "peak_RSS_bytes": 578076672,
+      "log": {
+        "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/pilot.log",
+        "sha256": "bef75786e6b760018109bab620f8f0a90cd6e3cbe64d03557dc216ec888c050e"
+      },
+      "completion_observed": true
+    },
+    {
+      "phase": "train",
+      "pid": 12768,
+      "started_utc": "2026-09-27T09:07:57Z",
+      "completed_utc": "2026-09-27T09:17:10Z",
+      "wall_seconds": 553.82,
+      "user_seconds": 576.92,
+      "system_seconds": 302.64,
+      "peak_RSS_bytes": 1635450880,
+      "log": {
+        "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/train.log",
+        "sha256": "68a27d9fa1f503c9a4cbe5c8cd988fa01a0bc194e8fe45fcb1cb5a10df625acc"
+      },
+      "completion_observed": true
+    },
+    {
+      "phase": "predict",
+      "pid": 13664,
+      "started_utc": "2026-09-27T09:17:17Z",
+      "completed_utc": "2026-09-27T09:25:02Z",
+      "wall_seconds": 466.64,
+      "user_seconds": 501.93,
+      "system_seconds": 125.72,
+      "peak_RSS_bytes": 1635827712,
+      "log": {
+        "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/predict.log",
+        "sha256": "25e85dec44c74391463fea7e25a3bad00d4037072b1bd14ea9d7909f255c9464"
+      },
+      "completion_observed": true
+    },
+    {
+      "phase": "evaluate",
+      "pid": 14333,
+      "started_utc": "2026-09-27T09:25:31Z",
+      "completed_utc": "2026-09-27T09:25:40Z",
+      "wall_seconds": 9.77,
+      "user_seconds": 8.01,
+      "system_seconds": 1.68,
+      "peak_RSS_bytes": 2837331968,
+      "log": {
+        "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/evaluate.log",
+        "sha256": "849483507bb0213b3b72c9c7ce998017d547d2b6b6c8d3dee7a8e18787b6f120"
+      },
+      "completion_observed": true
+    },
+    {
+      "phase": "replay",
+      "pid": 14361,
+      "started_utc": "2026-09-27T09:25:49Z",
+      "completed_utc": "2026-09-27T09:33:20Z",
+      "wall_seconds": 452.44,
+      "user_seconds": 493.56,
+      "system_seconds": 117.9,
+      "peak_RSS_bytes": 1635565568,
+      "log": {
+        "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/replay.log",
+        "sha256": "4cfb2fa90345c51b030b5a5f8d52d5cf6c4f7587fa66565c2c59eec7eee28f70"
+      },
+      "completion_observed": true
+    },
+    {
+      "phase": "verify_eval",
+      "pid": 14984,
+      "started_utc": "2026-09-27T09:33:32Z",
+      "completed_utc": "2026-09-27T09:33:41Z",
+      "wall_seconds": 9.66,
+      "user_seconds": 7.97,
+      "system_seconds": 1.64,
+      "peak_RSS_bytes": 2835251200,
+      "log": {
+        "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/verify_eval.log",
+        "sha256": "691157e291d91460a3545c83ad0bb9b7cb64b48aea3dfa705e4ee3c44c5957f9"
+      },
+      "completion_observed": true
+    }
+  ],
+  "new_models": 9,
+  "updates": 36000,
+  "fit_seconds": 551.7428255849518,
+  "pilot_in_same_training_budget": true,
+  "held_training_draws": 0,
+  "create_receipt": {
+    "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/create_queue.json",
+    "sha256": "9a5ea6b884b71f903fb06af1dcca42b91644213b92e1ee6bd21cea8e535ae7e0"
+  },
+  "create_readonly_query_returncode": 0,
+  "create_jobs_submitted": 0,
+  "remote_modified": false,
+  "independent_roles_read": false,
+  "private_data_committed": false,
+  "training_replication": {
+    "steps": 4000,
+    "fit_seconds": 59.33347558300011,
+    "process_seconds": 62.58,
+    "peak_RSS_bytes": 1109377024,
+    "log": {
+      "path": "data/stage_cvpr2027_experiments/european_dimensionless_refit_v1/train_replay.log",
+      "sha256": "dc4e2f8ee496c3cf6a18da834f04876b9ba476f8476af87af4d38de46de15d80"
+    },
+    "parameters_optimizer_losses_sampler_exact": true,
+    "new_candidate": false,
+    "child_pid": "not_recorded_by_replay_log",
+    "concurrent_with_prediction_generation": true
+  },
+  "total_optimizer_updates_including_verification": 40000,
+  "environment": {
+    "python": "3.11.1 (v3.11.1:a7a450f84a, Dec  6 2022, 15:24:06) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "architecture": "arm64",
+    "system": "Darwin",
+    "torch": "2.12.0",
+    "numpy": "2.4.6",
+    "compute_threads": 4,
+    "interop_threads": 1,
+    "dataloader_workers": 0,
+    "hardware_resource_probing": false
+  }
+}

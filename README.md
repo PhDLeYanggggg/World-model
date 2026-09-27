@@ -23,8 +23,10 @@ historical Stage37 raw-t+50 result or independent confirmation.
 Nine fresh fits retain the same data, initialization, sampler, loss and budget;
 only output-unit handling changes. Predictions were frozen before scoring.
 The fixed first model reproduces exactly from initialization, and 36/36
-observed-input scaling checks pass (0/36 for the matched control). Full forecast
-replay is running. Independent selection, calibration and confirmation remain
+observed-input scaling checks pass (0/36 for the matched control). All nine
+forecast pairs and 576 scoring views replay exactly; 81 tests in 17 scoped files
+pass. Reports, diagnostics and the figure reproduce exactly. Independent
+selection, calibration and confirmation remain
 closed. The next priority is reliable gain/harm learning and scene-joint
 intervention with the frozen improved forecast bank, not another architecture stack.
 
