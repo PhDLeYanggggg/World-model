@@ -18,9 +18,10 @@ The [crossed study](outputs/publication_readiness_2026_09/european_regime_transp
 keeps the outer evaluation definition fixed, reuses the two native controls
 and trains only the missing combinations. This is a mechanism test, not a new
 deployment claim. Independent selection, calibration and confirmation stay closed.
-All 1,728 fitting cells now have supported labels. I am first checking that the
-new entry point exactly retrains an original control before training the crossed
-heads. [Execution and recovery](outputs/publication_readiness_2026_09/european_regime_transport_v1/operations.md)
+All 1,728 fitting cells now have supported labels. A fresh 2,000-update native
+control matches every original parameter, and the crossed pilot has passed.
+Full training now uses the fixed budget without reducing its scope.
+[Execution and recovery](outputs/publication_readiness_2026_09/european_regime_transport_v1/operations.md)
 records the fixed training budget and reproducibility boundaries.
 
 **Previous experiment:** I tested whether a model that ranks harmful

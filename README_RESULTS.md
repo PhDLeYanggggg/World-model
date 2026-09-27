@@ -20,8 +20,12 @@ additional 2,000-update native reproduction check. It reuses 432 two-site and
 144 three-site controls plus frozen magnitude readouts. Eighteen scoped tests
 pass. Support now passes for all 1,728 cells: the minimum known-row count is
 6,372 and the minimum positive easy-harm count is 5. This is numerical support,
-not a power calculation. The real pilot, full training and held scoring remain
-pending. Native arm64 is available and 54 parent public/source bindings
+not a power calculation. The real pilot is complete: a fresh 2,000-update native
+bridge exactly matches all
+original parameters, and a 200-update crossed pilot has finite losses and zero
+unknown-label draws. Projected pure fitting is 1,750 seconds, excluding I/O
+and evaluation. Full training and held scoring remain pending. Native arm64 is
+available and 54 parent public/source bindings
 were rechecked; GitHub and local parent commit match. CREATE was inspected
 read-only, with three unrelated pending jobs and no job modification.
 
