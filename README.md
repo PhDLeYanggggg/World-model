@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current experiment:** a matched risk-head refit adds six explicit past-motion,
+neighbor-context and forecast-disagreement descriptors. The new branch starts
+at zero, preserving the control's initial predictions. Loss, samples, fallback,
+source exclusions and the 2% budget remain fixed. This tests the preceding
+diagnosis; there is no improvement or deployment claim before readout.
+[Protocol](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/protocol.md).
+
 **Latest diagnosis:** the risk head fails inside its existing input-support
 guard, not just on obviously unfamiliar inputs. I froze all models and actions
 and recomputed 108 paired source groups using fitting-defined motion,

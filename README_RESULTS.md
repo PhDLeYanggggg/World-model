@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal-Descriptor Refit (2026-09-27, Registered)
+
+Planned108new risk heads versus108verified signed-excess controls. Six causal
+descriptors enter a zero-initialized branch; shared initialization, objective,
+draws,2,000updates, preprocessing of original features, floor/utility and2%risk
+screen stay fixed. Descriptor standardization uses fitting sources only.
+Primary is equal-current-query-count harm reduction, with unchanged ADE/easy/
+risk/nonempty gates. No held tuning or independent-role access. Native CPU4,
+workers0, atomic compressed checkpoints and prediction-hash freeze; no large
+score-bank duplication. CREATE queue checked read-only, no job submitted.
+Training and outcomes pending.
+[Protocol](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/protocol.md).
+
 ## Fixed-Model Source-Gap Slices (2026-09-27, Verified Diagnostic)
 
 Matched signed-excess/MSE heads and all deployment decisions stay frozen.
