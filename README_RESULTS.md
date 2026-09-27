@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Floor Signed-Excess Heads (2026-09-27, Registered)
+
+The next matched contrast directly supervises all/easy positive harm minus2%
+of the SAME protected-floor reference error.108 new heads,108 hash-verified
+moment-MSE controls. Architecture, initialization, source-balanced draws,
+preprocessing, source roles, utility, fallback and thresholds stay fixed.
+Individual output components are score bases, not identified calibrated costs.
+This differs from the earlier CV-reference excess failure. Primary: selected
+positive-harm reduction at matched current-query counts, with net/easy/risk
+and nonempty-coverage gates unchanged. No held threshold tuning or reserved
+role opening. Local native CPU4 is appropriate based on the completed predecessor
+fit; keep10GiB free disk and checkpoint every500updates. No results claimed yet.
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/protocol.md).
+
 ## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Verified, Primary Failed)
 
 216 matched bounded neural risk heads,108 four/four/two/two source groups.
