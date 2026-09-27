@@ -24,6 +24,11 @@ and zero unknown-label sampling. Estimated auxiliary fitting time is29.2 minutes
 excluding references,loading and diagnostics. Full training follows the same
 fixed budget with resume; source-held readout remains not_run. Independent roles
 stay closed. Registration35a05b87 and supportbf1ab738 preceded this pilot.
+Training PID57873 is active; the progress checkpoint records20 completed
+single-site references and108/864 auxiliary heads. A further held-locality
+perturbation test passes, bringing scoped preflight coverage to26 tests.
+These are execution facts, not a scientific result. The fitting diagnostics
+are fixed before readout and will retain sparse-event and easy-cut drift.
 [Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
 
 ## Auxiliary Prior Repair (2026-09-27, No Model Promotion)

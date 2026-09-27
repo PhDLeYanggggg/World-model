@@ -43,3 +43,23 @@ def test_magnitude_readout_respects_units_and_scene_balance():
     take = np.array([0, 1, 0, 1, 2])
     duplicate = m.fit_magnitude(p[take], y[take], env[take], sites[take], 'c')
     np.testing.assert_allclose(head['slopes'], duplicate['slopes'])
+
+
+def test_inner_auxiliary_event_excludes_held_locality(monkeypatch):
+    from scripts import run_m3w_european_oof_magnitude as run
+    import pytest
+    sites = np.array(['a', 'a', 'b', 'b', 'c', 'c'])
+    v = dict(sites=sites, x=np.arange(12).reshape(6, 2).astype(float),
+        env=np.ones(6)*10, outer='d', g=dict(producer_roster=['e']))
+    take = sites != 'c'
+    target = np.array([[3., 2., 1., 0.], [3., 2., 1., 2.]]*2)
+    refs = {s:(s, dict(training_sites=[s]), dict(test=s)) for s in ['a', 'b']}
+    def predict(model, x, env, pr):
+        return np.tile([3., 1., 1., .5], (len(x), 1)), np.full(len(x), .2)
+    monkeypatch.setattr(run.neural, 'predict', predict)
+    a = run.inner_event(v, 'c', take, target, refs)
+    v['x'][~take] = 1e16; v['env'][~take] = 1e17
+    b = run.inner_event(v, 'c', take, target, refs)
+    np.testing.assert_array_equal(a[0], b[0]); assert a[1:] == b[1:]
+    refs['b'] = ('b', dict(training_sites=['b', 'c']), dict(test='b'))
+    with pytest.raises(ValueError): run.inner_event(v, 'c', take, target, refs)

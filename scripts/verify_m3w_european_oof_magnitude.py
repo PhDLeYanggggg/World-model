@@ -23,10 +23,12 @@ def main():
     logs = []
     for phase in ('verify_training', 'verify_readouts', 'verify_eval'):
         logs.append(execute(['scripts/run_m3w_european_oof_magnitude.py', '--phase', phase], phase))
-    names = ['aggregate_metrics.json', 'compute_receipt.json', 'results.md', 'source_held_costs.svg']
+    names = ['aggregate_metrics.json', 'compute_receipt.json', 'results.md', 'source_held_costs.svg',
+        'fitting_diagnostics.json', 'fitting_diagnostics.md']
     before = {p:run.digest(run.PUBLIC/p) for p in names}
     logs.append(execute(['scripts/report_m3w_european_oof_magnitude.py'], 'report_replay'))
     logs.append(execute(['scripts/plot_m3w_european_oof_magnitude.py'], 'plot_replay'))
+    logs.append(execute(['scripts/diagnose_m3w_european_oof_magnitude.py'], 'fitting_diagnostics_replay'))
     assert all(run.digest(run.PUBLIC/p) == h for p,h in before.items())
     xml = run.PRIVATE/'tests.xml'
     logs.append(execute(['-m', 'pytest', '-q', *TESTS, '--junitxml', str(xml)], 'tests'))
@@ -35,7 +37,7 @@ def main():
     for name in ('training_replay.json', 'magnitude_replay.json', 'evaluation_replay.json'):
         assert json.loads((run.PUBLIC/name).read_text())['exact']
     sources = sorted(set(run.FILES+TESTS+['scripts/verify_m3w_european_oof_magnitude.py',
-        'scripts/plot_m3w_european_oof_magnitude.py']))
+        'scripts/plot_m3w_european_oof_magnitude.py', 'scripts/diagnose_m3w_european_oof_magnitude.py']))
     run.immutable_json(run.PUBLIC/'verification.json', dict(all_passed=True,
         reference_lineages_replayed=144, inner_checkpoints_replayed=864,
         magnitude_fits_replayed=432, source_held_views_replayed=144,
