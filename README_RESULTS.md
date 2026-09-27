@@ -14,19 +14,19 @@ reference layer excludes both inner and outer held localities; older references
 cannot be reused there because they include the inner held locality.
 
 The fixed design includes 1,008 new small Torch heads and 432 cached control
-heads. Support is now checked for all144 outer views,144 unique single-site
-references and432 two-site controllers. Minimum single-site supported rows:
-1,225; minimum positive easy-harm rows:0. Numerical support is not statistical
+heads. Support is now checked for all 144 outer views, 144 unique single-site
+references and 432 two-site controllers. Minimum single-site supported rows:
+1,225; minimum positive easy-harm rows: 0. Numerical support is not statistical
 power. Twenty-five scoped preflight tests pass, including real synthetic Torch
 training/resume and lossless archive replay. The real-data pilot completed three
-reference heads and200 auxiliary updates with finite losses, matched provenance
-and zero unknown-label sampling. Estimated auxiliary fitting time is29.2 minutes,
-excluding references,loading and diagnostics. Full training follows the same
+reference heads and 200 auxiliary updates with finite losses, matched provenance
+and zero unknown-label sampling. Estimated auxiliary fitting time is 29.2 minutes,
+excluding references, loading and diagnostics. Full training follows the same
 fixed budget with resume; source-held readout remains not_run. Independent roles
-stay closed. Registration35a05b87 and supportbf1ab738 preceded this pilot.
-Training PID57873 is active; the progress checkpoint records20 completed
-single-site references and108/864 auxiliary heads. A further held-locality
-perturbation test passes, bringing scoped preflight coverage to26 tests.
+stay closed. Registration `35a05b87` and support `bf1ab738` preceded this pilot.
+Training PID 57873 is active; the progress checkpoint records 44 completed
+single-site references and 252/864 auxiliary heads. A further held-locality
+perturbation test passes, bringing scoped preflight coverage to 26 tests.
 These are execution facts, not a scientific result. The fitting diagnostics
 are fixed before readout and will retain sparse-event and easy-cut drift.
 [Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).

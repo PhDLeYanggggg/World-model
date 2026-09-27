@@ -13,19 +13,19 @@ I started this repo to answer that question carefully, not just to collect a nic
 **Current experiment:** I am testing whether a model that ranks harmful
 interventions better can also learn their expected magnitude. The previous
 [prior-repair experiment](outputs/publication_readiness_2026_09/european_aux_prior_v1/conclusions.md)
-completed288 small Torch heads and576,000 updates. It improved harm-presence
+completed 288 small Torch heads and 576,000 updates. It improved harm-presence
 ranking, but did not consistently improve expected-harm costs: against the
 strong cost-only control, the six full-input intervals are one positive,
 two negative and three overlapping zero. No model was promoted.
 
 The [new experiment](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md)
 uses fitting-only out-of-fold predictions to learn a simple magnitude readout,
-applied equally to cost-only,true-auxiliary and shuffled-auxiliary controls.
-Every reference model,preprocessing step and label producer excludes its held
+applied equally to cost-only, true-auxiliary and shuffled-auxiliary controls.
+Every reference model, preprocessing step and label producer excludes its held
 locality. Real training is in progress; the result is not known yet. Independent
-selection,calibration and confirmation remain closed. The
+selection, calibration and confirmation remain closed. The
 [results ledger](README_RESULTS.md) records the current execution state and
-links to the complete evidence,including negative results.
+links to the complete evidence, including negative results.
 
 **Earlier diagnosis:** removing conflicting auxiliary gradients is not a
 supported repair yet. I completed 17,280 isolated AdamW updates from 432 frozen
