@@ -19,7 +19,8 @@ or independent test is being opened. Two calibration sources cannot establish
 a finite-sample safety guarantee. Forty-four scoped preflight tests pass.
 All36 causal score groups are now frozen after fresh native Torch inference;
 108 existing guard-head predictions and36 old point policies reproduce exactly.
-Calibration and held readout are still pending.
+All216 calibration groups and their held actions are now frozen; held outcome
+scoring is still pending. No threshold uses its corresponding held labels.
 [Protocol](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/protocol.md).
 
 **Latest completed experiment:** I changed the risk-head loss to learn positive harm minus
