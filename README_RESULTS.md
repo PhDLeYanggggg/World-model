@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Mass Readout Study (2026-09-27, Registered)
+
+I am testing a narrower explanation for the failed risk heads: whether an
+origin-only squared-error fit and its nested clipping reduce predicted harm
+mass even on honest fitting-only OOF records. The new control matches the two
+training harm moments under the same projection, using exactly two bounded
+slopes. It does not change the primary expected easy-harm MSE or its guards.
+
+The fixed experiment has 432 scalar fits across 144 source-held views, with
+three seeds and 3,000 locality-level bootstrap draws. Existing neural heads
+and raw/L2 outputs are hash-verified controls, not fresh neural training.
+Twenty-two targeted tests pass. The parent evidence seal was rechecked and
+CREATE inspected read-only; no remote job was submitted or changed. Predictions
+will be frozen and committed before held-source scoring. Independent selection,
+reserved calibration and confirmation remain closed. Deployment is unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_cost_mass_v1/protocol.md).
+
 ## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
 
 I separated fitting-row regime from the training-derived easy cut while
