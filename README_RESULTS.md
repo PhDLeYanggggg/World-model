@@ -15,7 +15,11 @@ Primary is equal-current-query-count harm reduction, with unchanged ADE/easy/
 risk/nonempty gates. No held tuning or independent-role access. Native CPU4,
 workers0, atomic compressed checkpoints and prediction-hash freeze; no large
 score-bank duplication. CREATE queue checked read-only, no job submitted.
-Training and outcomes pending.
+Registration`fe3a39f6`preceded a real100-update pilot:7.24process seconds,
+6.09GBpeak RSS,25,028parameters, zero unknown-label training draws. The
+443,949byte checkpoint implies a conservative96MBfor108compressed checkpoints;
+free disk11.06GiBat the pilot. Resume includes the100updates in the2,000budget.
+Full training/readout pending;16scoped preflight tests passed.
 [Protocol](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/protocol.md).
 
 ## Fixed-Model Source-Gap Slices (2026-09-27, Verified Diagnostic)
