@@ -38,8 +38,10 @@ def main():
         heads_replayed=288, initialization_checks=288, source_held_views_replayed=144,
         reports_byte_reproducible=True, scoped_tests_passed=len(cases), scoped_test_files=len(TESTS),
         full_legacy_suite='not_run', independent_confirmation=False, deployment_changed=False,
-        logs=logs, artifacts={str(p.relative_to(run.PUBLIC)):run.digest(p) for p in sorted(run.PUBLIC.rglob('*'))
-            if p.is_file() and p.name != 'verification.json'}, source_bindings={p:run.digest(ROOT/p) for p in sources}))
+        logs=logs, local_detailed_metrics=[run.artifact(run.PUBLIC/'readout.json')],
+        artifacts={str(p.relative_to(run.PUBLIC)):run.digest(p) for p in sorted(run.PUBLIC.rglob('*'))
+            if p.is_file() and p.name not in ('verification.json', 'readout.json')},
+        source_bindings={p:run.digest(ROOT/p) for p in sources}))
     print(json.dumps(dict(all_passed=True, heads_replayed=288, source_held_views_replayed=144,
         scoped_tests_passed=len(cases), scoped_test_files=len(TESTS), full_legacy_suite='not_run')))
 

@@ -5,30 +5,40 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Auxiliary Prior Repair (2026-09-27, Registered Experiment)
+## Auxiliary Prior Repair (2026-09-27, No Model Promotion)
 
-I am testing the initialization mismatch found in the preceding reconstruction.
-Only the auxiliary intercept changes to the fitting cap-event prior; all other
-training conditions remain matched. The fixed run has288 new heads and576000
-updates,with previously verified cost-only and auxiliary controls reused.
-Predictions will be frozen before the exposed source-held cost readout.
-Independent selection,calibration and confirmation remain closed; there is
-no deployment change or demonstrated improvement at registration.
+I tested whether the wrong initial event probability explained the auxiliary
+head's failure. Only that intercept changed. All 288 heads completed 576,000
+updates, with matched inputs, targets, initialization and sampling. Fitting
+improved in several comparisons, but the repair did not solve cost transport.
 
-The real200-update arm64 pilot passed and training resumed from its checkpoint.
-Its auxiliary prior changed from24.62% to2.90%; shared and cost initialization
-did not change. Sixteen scoped tests pass. The projected pure fitting time is
-about515 seconds,excluding data loading and diagnostics. This runtime check is
-not evidence of predictive improvement. Registration commit:b6ea4f8e.
-Mid-run check:147/288 heads and294000 completed updates; matched initialization
-and sampling checks continue to pass. Source-held readout has not started.
+For full inputs, source-held easy-harm MSE intervals versus the strong
+cost-only control are 1 positive, 2 negative and 3 overlapping zero. The six
+assignment point estimates range from -12.41% to +0.92%, not a pooled score.
+Against the old auxiliary, the counts are 2/0/4; against matched shuffled
+labels, 0/1/5. Motion-only has no positive interval against cost-only.
+Primary, guard and task-information cost gates fail, so nothing is deployed.
 
-Training is now complete:288 heads,576000 updates,288 matched sampler and
-intercept-isolation checks. The run phase took933.51 seconds after ancestry
-preflight. All predictions are frozen before readout; predictive efficacy is
-still untested at this milestone.
+There is a narrower signal worth retaining: harm-presence ranking improves
+over cost-only in all six full-input AUROC intervals, while expected severity
+remains unreliable. Better ranking is not better trajectory prediction or
+a calibrated safety guarantee. The next question is whether honest
+fitting-only out-of-fold magnitude estimation can use this information under
+the same strong control, not whether a favorable assignment can be selected.
 
-[Protocol](outputs/publication_readiness_2026_09/european_aux_prior_v1/protocol.md).
+Registration `b6ea4f8e` preceded training and `9eb1ca68` froze all predictions
+before readout. Recorded fitting time was 587.67 seconds; the run phase took
+933.51 seconds after ancestry preflight. All 144 views and 1,440 direct MSE
+checks completed, with old metrics reproduced exactly. The 3,000-resample
+four-locality intervals are descriptive source-development evidence, not
+independent confirmation. Replay verification is in progress. Independent
+roles, deployment, Stage5C and SMC remain unchanged. Detailed metrics and
+checkpoints stay local; Git receives lightweight aggregates and reports.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_aux_prior_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_aux_prior_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_aux_prior_v1/failure_analysis.md),
+[next controlled test](outputs/publication_readiness_2026_09/european_aux_prior_v1/project_gap.md).
 
 ## Auxiliary Training Trajectories (2026-09-27, No Model Promotion)
 

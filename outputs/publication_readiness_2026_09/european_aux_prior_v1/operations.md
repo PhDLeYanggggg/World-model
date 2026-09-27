@@ -7,7 +7,8 @@ All18 public artifacts and23 source bindings of the preceding trajectory study
 matched its verification seal before edits. Existing staged work was preserved.
 
 ## Runtime and CREATE
-Native arm64 .venv-pytorch,CPU4,interop1,workers0. Free disk14.28GiB at preflight;
+Native arm64 .venv-pytorch,Python3.11.1,NumPy2.4.6,PyTorch2.12.0,
+CPU4,interop1,workers0. Free disk14.28GiB at preflight;
 runner retains10GiB. Exclusive lock,atomic checkpoint and heartbeat every200
 updates. No resource-probing or multiprocessing path. Runtime adequacy is judged
 by the real200-update pilot,not import success.
@@ -40,3 +41,17 @@ cannot recreate private source data. Git contains no raw rows or weights.
 Scoped preflight:16 tests passed across3 files,including exact legacy numerical
 identity for3 arms,intercept isolation,matched true/shuffled priors,resume and
 gate guards. This is not the full historical test suite or empirical efficacy.
+
+## Completed Training
+Pilot PID50870 completed200 updates and resumed in training PID51197. The full
+run completed288 heads/576000 updates,with zero unknown-label draws and288
+intercept-isolation/matched-sampler checks. Pure recorded fitting time was
+587.67093 seconds;run-phase wall time933.50591 seconds excludes ancestry
+preflight and reuses the pilot. No training was skipped or reduced.
+Memory snapshots stayed below13GiB and free disk stayed above10GiB.
+Prediction-freeze commit9eb1ca68 preceded the source-held readout (PID52832).
+
+The detailed9.2MiB readout.json is kept locally and excluded through this
+repository's local exclude file. The verification receipt hashes it separately
+as local_detailed_metrics. Git receives aggregate contrasts,all assignment
+intervals,figures,receipts and reports,not this repetitive detailed metric file.
