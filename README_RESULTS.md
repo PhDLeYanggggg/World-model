@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Centered-Risk Policy (Registered, Outcomes Not Read)
+## Centered-Risk Policy (Actions Frozen, Outcomes Not Read)
 
 The fitting-only offsets are frozen before a new policy readout. Both existing
 head families, all108groups and the original2%screen are retained. Centered
@@ -14,6 +14,11 @@ same retained count in every query. No new neural training, parameter fitting,
 threshold search, deployment or independent-source access is authorized by
 this registration. Sixteen focused policy/solver tests pass. A real one-group
 pilot must confirm the unchanged10GiB disk reserve before completing the run.
+Registration350d73f0 preceded inference. The real pilot passed and all108action
+groups completed in318.997s, peakRSS11,418,370,048bytes, PID54244. All31scoped
+tests in6files pass, including a separate constraint/count checker. CREATE was
+queried read-only successfully; no job submitted. The next step is to commit
+this frozen action manifest, then read held-development costs without tuning.
 [Protocol](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/protocol.md).
 
 ## Frozen-Action Residual Diagnosis (2026-09-27, Fresh Readout)
