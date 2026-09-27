@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen-Cap Attribution (2026-09-27, Registered)
+## Frozen-Cap Attribution (2026-09-27, Predictions Frozen)
 
 The next fixed experiment separates the output constraint from the information
 in already fitted temporal probes. No parameters are refitted. Four feature
@@ -13,8 +13,12 @@ arms retain matched frozen-cap, nonnegative, causal-envelope and nested coupled
 outputs. The signed score is an algebra diagnostic only. All 432 views keep
 their existing fitting-only exclusions and independent roles remain closed.
 
-Eleven focused tests pass. CREATE was checked read-only; no job was submitted
-or modified. The local pilot and complete scoring are not_run at registration.
+Registration efa546f3 preceded a15.30s local pilot. All1728 unprojected score
+vectors across432 inner views are now hash-bound; the original clipped
+predictions match exactly. Recovery took313s between heartbeat start/end,
+excluding ancestry preflight. No refitting occurred. Eleven new tests and
+ten parent-context tests pass. CREATE was checked read-only; no job was
+submitted or modified. New projection scoring is not_run at this freeze.
 A large label-aware ceiling floor is not evidence of a biased predicted mean;
 the counterfactual comparisons can favor the current constraint. No model
 promotion, metric/seconds or physical-safety claim. Stage5C and SMC remain off.
