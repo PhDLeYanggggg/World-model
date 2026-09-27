@@ -60,6 +60,12 @@ observed. That limited success does not rescue the undefined/violating risk
 screen. Neither the floor-relative ADE gain nor the harm diagnostic substitutes
 for the original primary risk requirement.
 
+The ungated neural diagnostic still improves mean ADE by7.73%and hard ADE
+by12.99%over the protected floor, but its worst-view easy degradation is67.73%
+and all216views violate selected-risk2%. It also acts outside the gated
+eligibility set. This is evidence of heterogeneous benefit and harm, not proof
+that a deployable policy meeting the fixed budget exists.
+
 ## Narrower Research Conclusion
 
 A global offset can fix a weighted mean residual on fitting sources without

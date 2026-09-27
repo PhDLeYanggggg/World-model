@@ -47,13 +47,21 @@ the 2% selected-harm screen. Easy cases were preserved, but this is **not a safe
 deployment upgrade**. Lower fitting loss and fewer harmful switches are not
 enough when useful switches disappear too.
 
-Full replay and independent arithmetic checks are in progress. A replay-only
-JSON identity-format defect was isolated; original code, policy arrays and
-readout are preserved. This remains evidence from twelve opened development
-localities, not independent selection, calibration or confirmation.
+All 108 action groups and their evaluation replay exactly. **34 scoped tests
+pass**; separate arithmetic checks cover 1,495,800 query/head constraints,
+3,456 cost views and 23,714 locality reductions. These repeated contexts are
+not independent samples. A replay-only JSON identity-format defect was fixed
+without changing original code or scientific outputs.
+
+Most rejected original admissions triggered the easy-risk constraint. The next
+question is whether its conditional error scale is modeled correctly, not
+whether easy protection should be relaxed. This remains evidence from twelve
+opened development localities; independent selection, calibration and
+confirmation stay closed.
 
 - [Centered-risk experiment and failure analysis](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/conclusions.md)
 - [All controls, intervals and risk failures](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/results.md)
+- [Frozen verification record](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/verification.json)
 - [Current reproduction guide](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/operation_zh.md)
 
 - [What the frozen decisions reveal](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/conclusions.md)
@@ -116,7 +124,7 @@ thread and 0 DataLoader workers, with atomic checkpoints, heartbeat and resume.
 A focused check for the latest experiment:
 
 ```sh
-.venv-pytorch/bin/python -m pytest -q tests/test_m3w_subset_excess.py tests/test_m3w_subset_excess_verification.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_centered_risk_policy.py tests/test_m3w_centered_risk_verification.py tests/test_m3w_centered_identity_replay.py
 ```
 
 The reproduction guide above documents the frozen fit, action and evaluation
@@ -128,8 +136,9 @@ reports; it is not an isolated read-only smoke test.
 
 Which conditional errors make useful and harmful interventions hard to separate
 across sources? The global-offset experiment now has a negative answer even at
-matched counts. The next repair must preserve benefit while learning risk at
-the appropriate error scale, and must retain an original-score control at the same
+matched counts. I will first inspect easy-risk exposure and error scale within
+source-excluded fitting data. Any repair must preserve benefit and easy
+protection, retaining an original-score control at the same
 intervention count, freezing decisions before readout. No conditional repair
 has been trained yet. I will not tune thresholds on these diagnostics or open independent
 confirmation data to rescue the method.

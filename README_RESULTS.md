@@ -5,7 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Centered-Risk Policy (Fresh Negative Readout, Verification In Progress)
+## Centered-Risk Policy (Verified Negative Result, 2026-09-27)
+
+All108action groups and the full evaluation replay exactly.34scoped tests in
+7files pass. Independent code checks1,495,800query/head constraints,
+3,456cost views,1,296benefit/harm exchanges and23,714locality reductions.
+The query count repeats source-role/seed contexts, not independent samples.
+Frozen233source files and20public artifacts; verification SHA256:
+`7193fd508ec85c678765a1fc2b1f0ae4edad598c3331abf06df36d4f8c9b8558`.
+Original cached controls and generated reports/figures are unchanged or
+byte-reproducible. Full legacy integration tests and cold raw reconstruction
+remain not_run. The research goal is active and not submission-ready.
+
+Posthoc causal admission accounting finds486,502aggregate original admissions
+across repeated contexts,10,900retained,3,773rejected on all-risk alone,
+202,935on easy-risk alone,268,894on both. Thus easy-risk participates in99.207%
+of rejections. These are repeated-row descriptive counts, not a locality-weighted
+rate or proof of conditional calibration. Next: fitting-only source-excluded
+inspection of easy-risk exposure/scale and structural-zero behavior, preserving
+the2%budget and both matched controls. No new threshold chosen from this readout.
 
 Aggregate centered versus same-count raw ADE gain is-0.005225%
 [-0.011821%,-0.000433%]; pointwise-0.003354%[-0.008823%,-0.000168%].
@@ -14,7 +32,7 @@ Aggregate intervention falls7.7985%to0.6717%;200/216views abstain and6violate
 selected-risk2%. Pointwise203abstentions/5violations. Both exploratory screens
 fail, despite preserved easy error. No model or deployment upgrade.
 Decision freeze237a4dd9 preceded readout. First readout48.29s,peakRSS8.46GB.
-Full replay and independent accounting are underway. First replay stopped on
+Full replay and independent accounting now pass. First replay stopped on
 a JSON tuple/list identity mismatch after exact first-group arrays; a separate
 canonical-identity adapter preserves registered code and scientific outputs.
 The failure and repair are retained, not silently overwritten.
@@ -29,8 +47,8 @@ pilot must confirm the unchanged10GiB disk reserve before completing the run.
 Registration350d73f0 preceded inference. The real pilot passed and all108action
 groups completed in318.997s, peakRSS11,418,370,048bytes, PID54244. All31scoped
 tests in6files pass, including a separate constraint/count checker. CREATE was
-queried read-only successfully; no job submitted. The next step is to commit
-this frozen action manifest, then read held-development costs without tuning.
+queried read-only successfully; no job submitted. The action manifest was
+committed before reading held-development costs without tuning.
 [Protocol](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/protocol.md).
 
 ## Frozen-Action Residual Diagnosis (2026-09-27, Fresh Readout)
@@ -76,9 +94,10 @@ Source checkpoint/artifact hashes, split roles and unknown-label exclusions
 are preserved. Seal223sources/8artifacts:
 `de8cf03f765db504a89f0be37054a1ec1c1405a0f25131b56f5254c6e86a62f8`.
 
-Next: preregister centered-score joint actions and original-score joint actions
-at equal retained counts. This has not_run, and no threshold was selected from
-the readout. Independent roles remain closed; deployment, Stage5C and SMC stay
+At the end of the probe, the next action was a preregistered centered-score
+versus equal-count original-score policy test. That successor is now complete
+as recorded above; no threshold was selected from its readout. Independent
+roles remain closed; deployment, Stage5C and SMC stay
 unchanged/disabled. CREATE was checked read-only; no job submitted. Raw data,
 caches, neural checkpoints and unrelated staged files are not part of this sync.
 [Probe conclusions](outputs/publication_readiness_2026_09/european_signed_bias_probe_v1/conclusions.md),

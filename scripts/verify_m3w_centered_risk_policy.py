@@ -1,9 +1,12 @@
 """Independently check retained counts, signed constraints and outcome accounting."""
 import json
+import os
 from pathlib import Path
 import re
+import resource
 import subprocess
 import sys
+import time
 import numpy as np
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_centered_risk_policy as run
@@ -41,6 +44,7 @@ def validate_actions(a,q,delta,utility,sites,recordings,frames,arm):
 
 
 def main():
+    started=time.monotonic();run.beat('verification_started')
     run.base.torch.set_num_threads(4);run.base.torch.set_num_interop_threads(1)
     cfg,ident,data,jobs,oid,pid,parents,biases=run.load()
     causal={k:data[k] for k in run.parent.CAUSAL_KEYS}
@@ -102,7 +106,7 @@ def main():
                             np.testing.assert_allclose(m[key+'_'+cost+'_over_floor_pp'],100*value/den,rtol=1e-10,atol=1e-9)
                     exchange_views+=1
             groups+=1
-            if groups%18==0:print(json.dumps(dict(state='independent_verified',groups=groups,query_arm_checks=queries)),flush=True)
+            if groups%18==0:run.beat('independent_verified',groups=groups,query_arm_checks=queries)
     for row in details['contrasts']:
         new,old=row['policy'].split('_vs_');x=readout[(row['group'],row['site'],new)];y=readout[(row['group'],row['site'],old)]
         np.testing.assert_allclose(row['metric']['ADE_gain_percent'],100*(y['error_sum']-x['error_sum'])/y['error_sum'],rtol=1e-10,atol=1e-12)
@@ -130,6 +134,9 @@ def main():
         counts_are_repeated_context_rows_not_independent_samples=True,summary=reject_summary,groups=rejections))
     report=subprocess.run([sys.executable,'scripts/report_m3w_centered_risk_policy.py'],cwd=ROOT,capture_output=True,text=True)
     if report.returncode:raise RuntimeError(report.stderr)
+    runtime=run.PUBLIC/'verification_runtime.json'
+    if not runtime.exists():run.base.immutable_json(runtime,dict(pid=os.getpid(),seconds=time.monotonic()-started,
+        peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,groups=groups,scope='first independent verification'))
     artifacts={p.name:run.base.digest(p) for p in run.PUBLIC.iterdir() if p.suffix in ('.md','.json','.png') and p.name!='verification.json'}
     report=subprocess.run([sys.executable,'scripts/report_m3w_centered_risk_policy.py'],cwd=ROOT,capture_output=True,text=True)
     if report.returncode:raise RuntimeError(report.stderr)
@@ -144,6 +151,7 @@ def main():
         full_legacy_suite='not_run',cold_raw_rebuild='not_run',independent_confirmation=False,
         calibration_certificate=False,deployment_changed=False,stage5c_executed=False,smc_enabled=False))
     print(json.dumps(dict(verified=True,tests=tests,groups=groups,queries=queries,changed_queries=changed,views=views,reductions=reductions)))
+    run.beat('verification_complete',groups=groups,tests=tests)
 
 
 if __name__=='__main__':main()

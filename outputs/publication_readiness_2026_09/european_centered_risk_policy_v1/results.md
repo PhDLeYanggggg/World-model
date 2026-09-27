@@ -76,6 +76,15 @@ All contributions use the same total floor-error denominator within each view. T
 | subset_aggregate_centered_utility_topk | -0.809617 | 0.998717 [0.996917, 0.999893] | 1.421296 [0.300810, 2.916667] | 200 |
 | subset_aggregate_centered_query_uniform | 0.121432 | 0.999920 [0.999775, 1.000000] | 0.175926 [0.000000, 0.481481] | 206 |
 
+## Admission Collapse: Posthoc Causal Accounting
+
+Counts repeat rows across source-role/seed contexts; they are not independent observations. No outcome or threshold is used in this decomposition.
+
+| Arm | Old independent admitted | Retained | Rejected all axis only | Rejected easy axis only | Rejected both |
+|---|---:|---:|---:|---:|---:|
+| subset_pointwise | 479517 | 9215 | 1224 | 205991 | 263087 |
+| subset_aggregate | 486502 | 10900 | 3773 | 202935 | 268894 |
+
 ## Gate Results
 
 ```json
@@ -115,5 +124,7 @@ Passing a numeric development contrast does not certify future selected-set risk
 |---|---:|---:|---:|
 | decision_runtime | 319.00 | 11418370048 | 54244 |
 | evaluation_runtime | 48.29 | 8462811136 | 54906 |
+| prediction_replay | 347.52 | 11189370880 | 55284 |
+| evaluation_replay | 86.95 | 8667873280 | 55929 |
 
 No new checkpoint is necessary: parent checkpoints and fitted offsets are immutable references. Actions, group hashes and heartbeat are saved locally. Full legacy integration tests and cold raw reconstruction remain not_run; scoped verification is recorded separately.
