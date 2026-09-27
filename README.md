@@ -61,8 +61,8 @@ real-data pilot initially stopped because local storage crossed the10GiB
 reserve. A separate CREATE CPU environment now passes actual optimizer and
 checkpoint-resume checks; all 108 fitting-only input packets are transferred
 and hash-verified (4.91 GB). The real fitting pilot has also passed: two paired
-heads,100updates each,9.36seconds of fitting. Full training and held readout
-remain pending. The first
+heads,100updates each,9.36seconds of fitting. Full216head training is now running
+on CREATE; held readout remains pending. The first
 batch-shell startup failure is preserved alongside its successful repair.
 Transfers are resumable with per-packet hashes; intermittent SSH disconnects
 do not erase completed packets or justify reducing the experiment.

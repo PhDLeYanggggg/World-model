@@ -26,3 +26,15 @@ def test_refuses_incomplete_leaky_or_misaligned_receipts(bad):
     if bad=='duplicate':r['receipt']['artifacts'][1]=r['receipt']['artifacts'][0]
     if bad=='wrong_phase':phase='train'
     with pytest.raises(AssertionError):validate(r,m,phase)
+
+
+def test_verification_receipt_requires_exact_replay_not_just_training():
+    r,m=fixture()
+    r['receipt'].update(groups=108,heads=216,model_updates=432000,
+        paired_initialization_and_sample_chain_exact=True,all_checkpoints_finite_and_hash_verified=True,
+        first_group_full_training_replay_exact_except_elapsed=True,replay_heads=2,replay_updates=4000,
+        full_216head_retraining_replay=False,scientific_efficacy_evaluated=False)
+    r['verified_checkpoint_files']=216
+    validate(r,m,'verify')
+    r['receipt']['first_group_full_training_replay_exact_except_elapsed']=False
+    with pytest.raises(AssertionError):validate(r,m,'verify')

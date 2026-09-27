@@ -13,6 +13,13 @@ def validate(result, manifest, phase):
     assert r['manifest_sha256']==hashlib.sha256(expected.encode()).hexdigest()
     assert not r['held_outcomes_used'] and not r['independent_roles_read']
     assert result['scheduler_state']=='COMPLETED|0:0'
+    if phase=='verify':
+        assert r['groups']==108 and r['heads']==216 and r['model_updates']==432000
+        assert r['paired_initialization_and_sample_chain_exact'] and r['all_checkpoints_finite_and_hash_verified']
+        assert r['first_group_full_training_replay_exact_except_elapsed']
+        assert r['replay_heads']==2 and r['replay_updates']==4000 and not r['full_216head_retraining_replay']
+        assert result['verified_checkpoint_files']==216 and not r['scientific_efficacy_evaluated']
+        return r
     expected_groups=1 if phase=='pilot' else 108
     assert r['groups']==expected_groups and len(r['artifacts'])==expected_groups*2
     assert r['pilot']==(phase=='pilot') and r['complete']==(phase=='train')
@@ -23,36 +30,39 @@ def validate(result, manifest, phase):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train'],required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train','verify'],required=True);a=p.parse_args()
     manifest=json.loads((run.PRIVATE/'remote_input_manifest.json').read_text())
     ssh=json.loads((HANDOFF/'observations.json').read_text())['ssh_arguments']
     code=r'''
 import hashlib,json,pathlib,subprocess,sys
-home=pathlib.Path(sys.argv[1]);phase=sys.argv[2];assert phase in ('pilot','train')
+home=pathlib.Path(sys.argv[1]);phase=sys.argv[2];assert phase in ('pilot','train','verify')
 assert json.loads((home/'.owner.json').read_text())['experiment']=='european_easy_hurdle_v1'
-p=home/('pilot.json' if phase=='pilot' else 'training_complete.json');r=json.loads(p.read_text())
-job=r['environment']['job_id'];assert job.isdigit()
+p=home/({'pilot':'pilot.json','train':'training_complete.json','verify':'training_audit.json'}[phase]);r=json.loads(p.read_text())
+job=r['job_id'] if phase=='verify' else r['environment']['job_id'];assert job.isdigit()
 q=subprocess.run(['sacct','-j',job,'-X','--noheader','--parsable2','--format=State,ExitCode'],capture_output=True,text=True,timeout=20)
 assert q.returncode==0 and q.stdout.strip()=='COMPLETED|0:0'
 assert hashlib.sha256((home/'input_manifest.json').read_bytes()).hexdigest()==r['manifest_sha256']
 size=0
-for ref in r['artifacts']:
+artifacts=(json.loads((home/'training_complete.json').read_text()) if phase=='verify' else r)['artifacts']
+for ref in artifacts:
     rel=pathlib.PurePosixPath(ref['path']);assert not rel.is_absolute() and '..' not in rel.parts
     assert rel==pathlib.PurePosixPath('heads')/ref['group']/ref['arm']/'checkpoint.pt.gz'
     pth=home/ref['path'];assert hashlib.sha256(pth.read_bytes()).hexdigest()==ref['sha256'];size+=pth.stat().st_size
 print(json.dumps({'receipt':r,'receipt_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
-    'scheduler_state':q.stdout.strip(),'verified_checkpoint_files':len(r['artifacts']),'checkpoint_bytes':size}))
+    'scheduler_state':q.stdout.strip(),'verified_checkpoint_files':len(artifacts),'checkpoint_bytes':size}))
 '''
     result=remote(ssh,code,[manifest['remote_path'],a.phase]);r=validate(result,manifest,a.phase)
+    if a.phase=='verify':
+        assert r['verifier_sha256']==run.base.digest(run.ROOT/'scripts/verify_m3w_easy_hurdle_portable_training.py')
     out=dict(result_source='fresh_run_training_with_fresh_remote_hash_verification',**result,
         registration=run.base.artifact(run.PUBLIC/'registration.json'),
         updates_per_head=100 if a.phase=='pilot' else 2000,
         total_model_updates=200 if a.phase=='pilot' else 432000,
         held_development_readout='not_run',independent_confirmation='not_run',deployment_changed=False,
         stage5c_executed=False,smc_enabled=False)
-    name='create_pilot_result.json' if a.phase=='pilot' else 'create_training_freeze.json'
+    name={'pilot':'create_pilot_result.json','train':'create_training_freeze.json','verify':'create_training_verification.json'}[a.phase]
     run.base.immutable_json(run.PUBLIC/name,out)
-    print(json.dumps(dict(groups=r['groups'],heads=len(r['artifacts']),fit_seconds=r['seconds'],
+    print(json.dumps(dict(groups=r['groups'],heads=result['verified_checkpoint_files'],phase_seconds=r['seconds'],
         checkpoint_bytes=result['checkpoint_bytes'],public_receipt=name)))
 
 
