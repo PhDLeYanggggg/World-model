@@ -18,6 +18,19 @@
    ten effective event tracks, including three zero-event views. Undefined
    coverage/tail quantities remain missing. Repeated windows cannot fix this.
 
+The ceiling calculation uses realized costs, whereas the model predicts an
+expected cost. Even an unbiased expected all-harm prediction is not an upper
+confidence bound on every realized event. A large pointwise ceiling floor
+therefore does not prove bias in the predicted conditional mean, nor does it
+distinguish stochastic label variation from a harmful modeling constraint.
+That distinction needs the next matched causal attribution, not a label oracle.
+
+A synthetic arithmetic check makes the distinction explicit. Let realized
+harm be 10 once and 0 nineteen times, with both predicted means fixed at 0.5.
+The predicted and realized means agree exactly. Yet MSE is 4.75 and the
+pointwise ceiling floor is 4.5125, or 95% of that MSE. This is a mathematical
+counterexample to the bias interpretation, not an additional real-data result.
+
 ## Plausible Mechanisms, Not Identified Causes
 High-dimensional linear features fitted on two localities can overfit or
 transport poorly. Single-locality nuisance heads and two-locality scoring

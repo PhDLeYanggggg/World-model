@@ -48,7 +48,9 @@ The fixed all-harm cap also creates a substantial error floor. Its unavoidable
 easy-harm MSE is a median 65.18% of raw MSE in full-input views and 70.75% in
 motion-only views. It exceeds half of raw MSE in 154/216 and 141/216 views,
 respectively. This establishes a limitation of this easy-only clipped probe,
-not that removing a safety constraint would improve generalization.
+not that removing a safety constraint would improve generalization. A predicted
+expected cost is not an upper confidence bound on individual realized costs;
+the pointwise floor alone does not establish bias in the predicted mean.
 
 Primary and protection screens fail. No outer conditional-head study is
 promoted, no deployment changes and no independent confirmation is claimed.

@@ -21,6 +21,11 @@ coverage and causal observation quality, including box-center motion noise.
 Raw row count and repeated windows are not the required new evidence. Preserve
 the current source assignments, outcome definitions and independent roles.
 
+The realized-cost ceiling floor is not proof that the expected all-harm mean
+is biased low: a predicted mean is not an upper bound on every random event.
+The attribution must allow the possibility that the current cap is beneficial
+and that label variation, not the cap, explains much of the realized error.
+
 This next attribution is not_run this turn. It is motivated by the measured
 65.18% full-input median cap-limited raw-MSE floor, not a new generic shape,
 slope, penalty or decision-threshold search. A positive fitting attribution

@@ -28,9 +28,16 @@ Full and motion-only have 35/216 and 158/216 dependent views with fewer than ten
 harm-mass effective event tracks. The frozen all-harm cap leaves a median
 65.18% and 70.75% of raw easy-harm MSE unavoidable. This is a limitation of the
 fixed clipped probe, not evidence that removing a safety constraint would work.
+A predicted mean is not an upper bound on each realized event, so this
+pointwise floor does not by itself establish bias in the predicted mean.
 
-The prior cost-shape seal and bound artifacts still match. Ten new focused
-tests pass; full numerical replay is in progress at this results checkpoint.
+The prior cost-shape seal and bound artifacts still match. Full numerical
+replay reproduces all 1,728 fits and 432 inner scoring views exactly. Reports,
+support diagnostics and both figures match byte-for-byte. All 160 tests in
+32 scoped files pass. The verification seal binds 19 public artifacts, 41
+source files and one local detailed metric file; its six log receipts also
+match. The full legacy suite and a cold raw-data rebuild were not run.
+These engineering checks do not reverse the failed scientific screens.
 Fitting/scoring heartbeat spans are 646/177s. CREATE was inspected read-only; no jobs
 were submitted or modified. Independent selection, calibration and confirmation
 remain closed. No new neural training or trajectory deployment is claimed.
@@ -38,6 +45,7 @@ remain closed. No new neural training or trajectory deployment is claimed.
 [complete results](outputs/publication_readiness_2026_09/european_temporal_support_v1/results.md),
 [support and cap diagnosis](outputs/publication_readiness_2026_09/european_temporal_support_v1/support_diagnostics.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_temporal_support_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_temporal_support_v1/verification.json),
 [next boundary](outputs/publication_readiness_2026_09/european_temporal_support_v1/project_gap.md).
 
 ## Cost-Shape Study (2026-09-27, Scientific Screens Failed)

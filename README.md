@@ -21,11 +21,15 @@ not new neural training or a trajectory improvement.
 
 The experiment explains why more windows and more features are not enough.
 Some events are concentrated in very few tracks, and the frozen all-harm cap
-creates a large error floor for an easy-only correction. The
+creates a large realized-cost error floor for an easy-only correction. This
+pointwise floor does not establish bias in the predicted mean. The
 [support and ceiling analysis](outputs/publication_readiness_2026_09/european_temporal_support_v1/support_diagnostics.md)
 keeps those limits separate from the negative feature result. I am not changing
-deployment or opening independent outcomes to choose a repair. Numerical replay
-is in progress; the [results ledger](README_RESULTS.md) records verification.
+deployment or opening independent outcomes to choose a repair. All 1,728 fits
+and 432 scoring views replay exactly; reports and figures match byte-for-byte.
+All 160 tests in 32 scoped files pass. This establishes reproducibility, not
+a passed scientific gate. The [results ledger](README_RESULTS.md) records
+verification and its limits.
 
 **Previous readout result:** more flexible risk readouts fix the fitting constraint,
 but not the held-scene prediction problem. I completed
