@@ -1,11 +1,14 @@
 """Completed resource receipts from timed logs, not runtime estimates."""
 import json
 from pathlib import Path
+import platform
 import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_european_dimensionless_refit as run
+import numpy as np
+import torch
 
 
 def main():
@@ -42,6 +45,9 @@ def main():
         parameters_optimizer_losses_sampler_exact=True,new_candidate=False,
         child_pid='not_recorded_by_replay_log',concurrent_with_prediction_generation=True)
     doc['total_optimizer_updates_including_verification']=doc['updates']+4000
+    doc['environment']=dict(python=sys.version,architecture=platform.machine(),system=platform.system(),
+        torch=torch.__version__,numpy=np.__version__,compute_threads=4,interop_threads=1,
+        dataloader_workers=0,hardware_resource_probing=False)
     run.immutable_json(run.PUBLIC/'operations.json',doc)
     lines=['# Execution and Resource Record','',
         'Native arm64 Torch CPU, four compute threads, one interop thread, zero workers.',
@@ -64,6 +70,8 @@ def main():
         'New training, predictions, scoring and replay: fresh_run.',
         'Independent confirmation, full historical test suite and cold raw-download rebuild: not_run.',
         'No new risk policy, deployment change, Stage5C execution or SMC.']
+    lines+=['',f"Verified runtime: Python {sys.version.split()[0]}, Torch {torch.__version__}, NumPy {np.__version__}, {platform.system()} {platform.machine()}.",
+        'These versions accompany actual training and exact inference replay, not import-only validation.']
     (run.PUBLIC/'operations.md').write_text('\n'.join(lines)+'\n')
     print(json.dumps(dict(phases=len(phases),updates=doc['updates'],fit_seconds=doc['fit_seconds'])))
 

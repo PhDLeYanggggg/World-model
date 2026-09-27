@@ -10,7 +10,25 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current result:** preserving agent-track association produces a small matched
+**Current result:** fixing coordinate units inside the bounded correction
+improves the matched neural forecaster's ADE by **4.72%**, with an exploratory
+locality interval of **[2.53%, 7.89%]**. All three seed intervals are positive.
+Against constant velocity, all-ADE improves 8.46% and hard-ADE 13.36%, but easy
+error remains **11.17% worse** and reference-exact cases get worse. I am not
+deploying it. This is European-source obs8/pred12 development evidence, not the
+historical Stage37 raw-t+50 result or independent confirmation.
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/results.md),
+[failures](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/failure_analysis.md).
+
+Nine fresh fits retain the same data, initialization, sampler, loss and budget;
+only output-unit handling changes. Predictions were frozen before scoring.
+The fixed first model reproduces exactly from initialization, and 36/36
+observed-input scaling checks pass (0/36 for the matched control). Full forecast
+replay is running. Independent selection, calibration and confirmation remain
+closed. The next priority is reliable gain/harm learning and scene-joint
+intervention with the frozen improved forecast bank, not another architecture stack.
+
+**Previous result:** preserving agent-track association produces a small matched
 forecast gain. Nine new neural fits improve ADE by **0.447%** over the same-input
 flat encoder, with an exploratory locality interval of [0.156%, 0.748%]. Hard
 gain is 0.502%. All nine producer/seed point gains are positive, but one seed's
@@ -24,14 +42,9 @@ closed. Predictions were frozen before scoring. All nine prediction pairs and
 figures and diagnostics reproduce exactly. These checks verify the experiment,
 not deployment safety or independent generalization.
 
-The diagnosis also found coordinate-unit sensitivity in the bounded correction
-wrapper. I have now registered a separate dimensionless-fraction experiment,
-holding the nine folds/seeds and training budgets fixed. The real native-arm64
-pilot resumed into all nine completed fits (36,000 updates). Forecast generation
-and fresh control verification are running; no comparative outcome has been
-scored. Existing checkpoints remain unchanged.
-[Registered contrast](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md),
-[failure analysis and limits](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/failure_analysis.md).
+That diagnosis motivated the now-trained dimensionless contrast above. The old
+checkpoints remain unchanged; [the registered contrast](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md)
+isolates one repair rather than silently substituting a different model.
 
 **Previous result:** keeping partial neighbor histories has not produced a
 reliable added forecasting gain. I trained

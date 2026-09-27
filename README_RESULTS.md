@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Dimensionless Fraction Refit (2026-09-27, Trained, Unscored)
+## Dimensionless Fraction Refit (2026-09-27, Predictor Gain, Safety Still Fails)
 
 The next controlled experiment removes coordinate-scale restoration inside the
 bounded correction fraction. I retain the grouped encoder, source geometry,
@@ -17,19 +17,45 @@ CREATE was checked read-only; no jobs were changed or submitted. The real
 and resumed into the nine fixed endpoints. All nine fits completed 36,000 updates
 in 551.74 cumulative fit seconds (553.82 process seconds; peak RSS 1.64 GB).
 Initial weights and sampler states/draw counts match every grouped control;
-held fitting draws are zero. Forecast generation and fresh control verification
-are running. Reporting and the observation-only unit probe are fixed before
-comparative outcome scoring. No gain is claimed yet.
+held fitting draws are zero. All nine prediction pairs are frozen in `c686ae06`
+before comparative scoring; 1,913,814 query forecasts per arm are dependent
+views, not independent samples. Fresh grouped-control inference matches every
+cache exactly. Scoring took 9.77 process seconds. Full prediction replay is running.
 A full from-initialization replay of the fixed first endpoint reproduced all
 weights, optimizer states, logged losses and sampler/RNG states exactly. It used
 another 4,000 verification-only updates (62.58 process seconds), not a tenth
-independent model. Comparative forecast outcomes remain unscored.
+independent model. Reporting and observation-only probes were fixed before outcomes.
 Independent selection, calibration and confirmation stay closed.
 [Protocol](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md).
 An input-only check finds 317,587/318,969 histories support all declared
 rescaling factors without crossing the inherited conditioning clamp; 700
 have a strictly active clamp in their original units. No training/scoring rows
 were removed. This is scope evidence, not forecast accuracy.
+
+**Fresh comparative result:** matched ADE gain **4.7209% [2.5308%, 7.8854%]**;
+FDE gain **6.4922% [3.3758%, 11.0994%]**; hard ADE gain **3.8739% [2.5654%, 5.0828%]**.
+All nine producer/seed point gains and all three seed intervals are positive.
+Eleven of twelve locality ADE means improve; locality119 loses 0.4527%.
+The registered exploratory predictor screen passes.
+
+Against CV, all ADE improves **8.4616% [1.9118%, 12.9795%]**, but easy ADE gain
+is **-11.1692% [-21.2576%, -3.1438%]**. Locality082 easy loses 4.1239% even
+against the old neural control. Four zero-CV-error queries worsen in all six
+dependent views. These prevent deployment; undefined zero-reference ratios
+are reported as absolute costs, not hidden. This is obs8/pred12 at raw stride12,
+not Stage37 or a raw-t+50 score. Independent roles stay closed.
+
+All 36 trained dimensionless unit checks pass; all 36 matched grouped checks
+fail the same tolerance. Clipping occurs in 3/729 recorded new gradients versus
+729/729 controls. These logs are not all optimizer updates, and the comparison
+cannot isolate invariance from changed optimization. No new policy is evaluated.
+
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/results.md),
+[absolute costs](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/absolute_costs.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/paper_addendum.md),
+[operation guide](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/operation_zh.md),
+[next priorities](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/project_gap.md).
 
 ## Agent-Track Topology Refit (2026-09-27, Modest Source Gain)
 

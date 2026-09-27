@@ -1,0 +1,79 @@
+# Numerical Motion Proxies
+
+Raw-step second differences do not establish physical smoothness or collision safety.
+This per-target deterministic forecaster does not impose scene-joint trajectory consistency.
+
+| Trial | Locality | Queries | Recordings | Finite | Dimensionless second difference | Grouped second difference |
+|---|---|---:|---:|---|---:|---:|
+| single0_seed17 | eu-locality-007 | 5664 | 7 | True | 0.258019 | 0.254213 |
+| single0_seed17 | eu-locality-008 | 161653 | 55 | True | 0.439266 | 0.445641 |
+| single0_seed17 | eu-locality-020 | 1282 | 4 | True | 0.250098 | 0.271514 |
+| single0_seed17 | eu-locality-048 | 8344 | 4 | True | 0.684554 | 0.748206 |
+| single0_seed17 | eu-locality-067 | 7105 | 7 | True | 0.570883 | 0.649807 |
+| single0_seed17 | eu-locality-110 | 8660 | 4 | True | 0.368892 | 0.359879 |
+| single0_seed17 | eu-locality-119 | 5787 | 4 | True | 0.452313 | 0.504234 |
+| single0_seed17 | eu-locality-124 | 3651 | 4 | True | 0.688021 | 0.681492 |
+| single0_seed29 | eu-locality-007 | 5664 | 7 | True | 0.241378 | 0.254851 |
+| single0_seed29 | eu-locality-008 | 161653 | 55 | True | 0.399476 | 0.424395 |
+| single0_seed29 | eu-locality-020 | 1282 | 4 | True | 0.261492 | 0.273112 |
+| single0_seed29 | eu-locality-048 | 8344 | 4 | True | 0.650784 | 0.718620 |
+| single0_seed29 | eu-locality-067 | 7105 | 7 | True | 0.584118 | 0.622227 |
+| single0_seed29 | eu-locality-110 | 8660 | 4 | True | 0.353081 | 0.335128 |
+| single0_seed29 | eu-locality-119 | 5787 | 4 | True | 0.397583 | 0.463932 |
+| single0_seed29 | eu-locality-124 | 3651 | 4 | True | 0.617918 | 0.592000 |
+| single0_seed43 | eu-locality-007 | 5664 | 7 | True | 0.266219 | 0.255409 |
+| single0_seed43 | eu-locality-008 | 161653 | 55 | True | 0.456140 | 0.429028 |
+| single0_seed43 | eu-locality-020 | 1282 | 4 | True | 0.252001 | 0.285428 |
+| single0_seed43 | eu-locality-048 | 8344 | 4 | True | 0.733980 | 0.686323 |
+| single0_seed43 | eu-locality-067 | 7105 | 7 | True | 0.618241 | 0.580215 |
+| single0_seed43 | eu-locality-110 | 8660 | 4 | True | 0.398314 | 0.324579 |
+| single0_seed43 | eu-locality-119 | 5787 | 4 | True | 0.450282 | 0.436056 |
+| single0_seed43 | eu-locality-124 | 3651 | 4 | True | 0.695115 | 0.581236 |
+| single1_seed17 | eu-locality-008 | 161653 | 55 | True | 0.483518 | 0.590349 |
+| single1_seed17 | eu-locality-020 | 1282 | 4 | True | 0.293656 | 0.349194 |
+| single1_seed17 | eu-locality-048 | 8344 | 4 | True | 0.829347 | 0.958943 |
+| single1_seed17 | eu-locality-067 | 7105 | 7 | True | 0.666063 | 0.756431 |
+| single1_seed17 | eu-locality-074 | 104353 | 62 | True | 0.396926 | 0.413887 |
+| single1_seed17 | eu-locality-082 | 1448 | 4 | True | 0.450157 | 0.554334 |
+| single1_seed17 | eu-locality-112 | 5131 | 4 | True | 0.399005 | 0.414756 |
+| single1_seed17 | eu-locality-126 | 5891 | 4 | True | 0.415557 | 0.486897 |
+| single1_seed29 | eu-locality-008 | 161653 | 55 | True | 0.477264 | 0.511677 |
+| single1_seed29 | eu-locality-020 | 1282 | 4 | True | 0.332453 | 0.343605 |
+| single1_seed29 | eu-locality-048 | 8344 | 4 | True | 0.785882 | 0.892995 |
+| single1_seed29 | eu-locality-067 | 7105 | 7 | True | 0.656389 | 0.738047 |
+| single1_seed29 | eu-locality-074 | 104353 | 62 | True | 0.376940 | 0.400957 |
+| single1_seed29 | eu-locality-082 | 1448 | 4 | True | 0.506467 | 0.511404 |
+| single1_seed29 | eu-locality-112 | 5131 | 4 | True | 0.362961 | 0.379614 |
+| single1_seed29 | eu-locality-126 | 5891 | 4 | True | 0.387415 | 0.437624 |
+| single1_seed43 | eu-locality-008 | 161653 | 55 | True | 0.483937 | 0.591147 |
+| single1_seed43 | eu-locality-020 | 1282 | 4 | True | 0.315869 | 0.340289 |
+| single1_seed43 | eu-locality-048 | 8344 | 4 | True | 0.736685 | 0.960779 |
+| single1_seed43 | eu-locality-067 | 7105 | 7 | True | 0.627424 | 0.759611 |
+| single1_seed43 | eu-locality-074 | 104353 | 62 | True | 0.368283 | 0.411178 |
+| single1_seed43 | eu-locality-082 | 1448 | 4 | True | 0.463461 | 0.514000 |
+| single1_seed43 | eu-locality-112 | 5131 | 4 | True | 0.365918 | 0.404518 |
+| single1_seed43 | eu-locality-126 | 5891 | 4 | True | 0.380863 | 0.485979 |
+| single2_seed17 | eu-locality-007 | 5664 | 7 | True | 0.143229 | 0.125245 |
+| single2_seed17 | eu-locality-074 | 104353 | 62 | True | 0.169136 | 0.189894 |
+| single2_seed17 | eu-locality-082 | 1448 | 4 | True | 0.179750 | 0.409707 |
+| single2_seed17 | eu-locality-110 | 8660 | 4 | True | 0.149109 | 0.274462 |
+| single2_seed17 | eu-locality-112 | 5131 | 4 | True | 0.116346 | 0.189979 |
+| single2_seed17 | eu-locality-119 | 5787 | 4 | True | 0.201712 | 0.357824 |
+| single2_seed17 | eu-locality-124 | 3651 | 4 | True | 0.301474 | 0.761643 |
+| single2_seed17 | eu-locality-126 | 5891 | 4 | True | 0.167195 | 0.300927 |
+| single2_seed29 | eu-locality-007 | 5664 | 7 | True | 0.132977 | 0.136498 |
+| single2_seed29 | eu-locality-074 | 104353 | 62 | True | 0.156272 | 0.197323 |
+| single2_seed29 | eu-locality-082 | 1448 | 4 | True | 0.168390 | 0.333054 |
+| single2_seed29 | eu-locality-110 | 8660 | 4 | True | 0.135541 | 0.268287 |
+| single2_seed29 | eu-locality-112 | 5131 | 4 | True | 0.106804 | 0.159559 |
+| single2_seed29 | eu-locality-119 | 5787 | 4 | True | 0.187391 | 0.410533 |
+| single2_seed29 | eu-locality-124 | 3651 | 4 | True | 0.272899 | 0.713472 |
+| single2_seed29 | eu-locality-126 | 5891 | 4 | True | 0.161398 | 0.316850 |
+| single2_seed43 | eu-locality-007 | 5664 | 7 | True | 0.136678 | 0.136141 |
+| single2_seed43 | eu-locality-074 | 104353 | 62 | True | 0.157074 | 0.217068 |
+| single2_seed43 | eu-locality-082 | 1448 | 4 | True | 0.172296 | 0.356230 |
+| single2_seed43 | eu-locality-110 | 8660 | 4 | True | 0.140606 | 0.285912 |
+| single2_seed43 | eu-locality-112 | 5131 | 4 | True | 0.102942 | 0.184620 |
+| single2_seed43 | eu-locality-119 | 5787 | 4 | True | 0.186393 | 0.440526 |
+| single2_seed43 | eu-locality-124 | 3651 | 4 | True | 0.268932 | 0.772975 |
+| single2_seed43 | eu-locality-126 | 5891 | 4 | True | 0.163993 | 0.323095 |
