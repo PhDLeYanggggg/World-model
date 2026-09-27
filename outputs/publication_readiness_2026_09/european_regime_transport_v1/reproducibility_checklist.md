@@ -11,7 +11,7 @@
 - Prediction freeze must be committed before held scoring.
 - All registered contrasts, guards and negative/missing cells remain reported.
 - Replica/seed averaging precedes locality bootstrap; windows are not independent.
-- Final checkpoint, metric, report and figure replay: pending.
+- Final replay completed:864 crossed heads,432 replicas,144 held views; reports, figures and mass diagnostic byte-match;113 tests in23 scoped files pass.
 - Full legacy test suite: not_run; scoped suite is recorded by final verification.
 - Independent confirmation: not_run and remains closed.
 - Public artifacts omit raw data, feature/latent caches, models and row-level scores.

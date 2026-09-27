@@ -29,6 +29,10 @@ This narrows the failure diagnosis but does not promote a model. The
 [conclusions](outputs/publication_readiness_2026_09/european_regime_transport_v1/conclusions.md)
 and [complete comparisons](outputs/publication_readiness_2026_09/european_regime_transport_v1/crossed_raw.svg)
 retain conditional improvements, negative results and uncertainty.
+Final verification replays all 864 crossed checkpoint predictions and 144 held
+readouts exactly. Reports, figures and the mass diagnostic reproduce byte-for-byte;
+113 tests in 23 scoped files pass. These checks do not change the failed
+scientific screens or establish independent confirmation.
 [Execution and recovery](outputs/publication_readiness_2026_09/european_regime_transport_v1/operations.md)
 records the fixed training budget and reproducibility boundaries.
 

@@ -52,11 +52,17 @@ ratio falls from 0.631 to 0.097 in the native two-site cell. It is descriptive,
 not an independent sample estimate or a replacement gate.
 
 Three seeds and 3,000 four-locality resamples retain all assignments, including
-negative motion-only results. Model promotion remains false. Exact full replay
-and final scoped verification are the remaining checks, not additional tuning.
+negative motion-only results. Model promotion remains false. Final verification
+now replays all 864 crossed checkpoints, 432 prediction replicas and 144 held
+views exactly, including 13,824 direct MSE checks. Reports, figures and the
+post-hoc mass diagnostic reproduce byte-for-byte. All 113 tests in 23 scoped
+files pass; the full legacy suite was not run. The seal binds 24 public
+artifacts, 32 source files and 1 local detailed metric file. Reproducibility
+does not change the failed scientific screens or prove independent confirmation.
 [Conclusions](outputs/publication_readiness_2026_09/european_regime_transport_v1/conclusions.md),
 [all intervals](outputs/publication_readiness_2026_09/european_regime_transport_v1/results.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_regime_transport_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_regime_transport_v1/verification.json),
 [next question](outputs/publication_readiness_2026_09/european_regime_transport_v1/project_gap.md).
 
 ## Honest OOF Magnitude Study (2026-09-27, No Model Promotion)
