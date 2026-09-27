@@ -10,7 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Latest experiment:** I changed the risk-head loss to learn positive harm minus
+**Current experiment:** I am testing source-separated calibration with the
+frozen forecast and risk heads. Two sources calibrate the intervention rule;
+two different sources test it, and all four are excluded from the complete
+fitting chain. The fixed comparisons retain stationary, utility and easy
+guards, and separate calibration from fitting-defined support. No new network
+or independent test is being opened. Two calibration sources cannot establish
+a finite-sample safety guarantee. Forty scoped preflight tests pass.
+[Protocol](outputs/publication_readiness_2026_09/european_nested_calibration_v1/protocol.md).
+
+**Latest completed experiment:** I changed the risk-head loss to learn positive harm minus
 2% of the constant-velocity reference error directly. The matched comparison
 keeps the same forecasting models, architecture, causal inputs, initial weights,
 sampling and three seeds. All 144 heads completed 288,000 updates, and their

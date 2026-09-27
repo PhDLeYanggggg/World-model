@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source-Separated Calibration (2026-09-27, Registered, Results Pending)
+
+The next registered experiment reuses all nine forecast banks and both matched
+risk-head families. Four-component ensembles are fixed, never selected from
+held outcomes. Utility/easy heads fit four controller sources. For every role
+assignment, the remaining four sources are excluded from the complete fitting
+chain and split two-calibration/two-readout in all six fixed rotations.
+Support is a fitting-weighted 99th percentile in standardized causal feature
+space. Calibration retains the 2% budget, movement/utility/easy guards and a
+fixed nonpositive score grid. Report uncalibrated, support-only, calibration-only
+and combined policies against matched damping, including empty coverage.
+No training or independent-role opening. Forty tests across five files pass.
+This is empirical two-source calibration, not a conformal guarantee.
+[Protocol](outputs/publication_readiness_2026_09/european_nested_calibration_v1/protocol.md).
+
 ## Signed Risk-Budget Objective (2026-09-27, Verified, Neural Benefit Fails)
 
 The matched repair changes only the loss from two independent moment errors to
