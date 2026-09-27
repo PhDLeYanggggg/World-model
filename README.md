@@ -56,12 +56,17 @@ without changing original code or scientific outputs.
 Most rejected original admissions triggered the easy-risk constraint. My next
 paired experiment separates easy occurrence from conditional error, with the
 same architecture, training queries and common-count controls in both arms.
-It is registered before training, not yet a positive result. I am not relaxing
-easy protection. This remains evidence from twelve
+The fitting-source audit is complete: all108pairs contain easy labels. The new
+real-data training has not started because local storage crossed the10GiB
+reserve. I am preparing a separate CREATE CPU environment, with the first
+batch-shell startup failure preserved and a login-shell repair submitted.
+Neither an environment probe nor a synthetic test is a positive model result.
+I am not relaxing easy protection. This remains evidence from twelve
 opened development localities; independent selection, calibration and
 confirmation stay closed.
 
 - [Centered-risk experiment and failure analysis](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/conclusions.md)
+- [New paired repair: audit, execution status and remaining work](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [All controls, intervals and risk failures](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/results.md)
 - [Frozen verification record](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/verification.json)
 - [Current reproduction guide](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/operation_zh.md)

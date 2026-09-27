@@ -5,7 +5,30 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Easy Occurrence / Conditional-Risk Repair (Registered, 2026-09-27)
+## Easy Occurrence / Conditional-Risk Repair (Fitting Audit Complete, 2026-09-27)
+
+Registration `dfa9ee53` preceded the fresh audit of all108 fitting pairs. Each
+pair has1,084-54,326easy labels; easy prevalence16.412%-37.469%; every source
+has at least513easy labels. Thus complete absence of easy supervision is not
+the problem. The5,741,442row accesses repeat roles/seeds and are not independent
+examples;126,846unknown accesses are excluded from fitting.23scoped tests in
+5files pass, including exact synthetic resume, matching sample chains, packet
+integrity, rejection of held rows and independent probability arithmetic.
+
+**New real-data head training and held evaluation remain not_run.** Local pilot
+PID59030 exited before an update because free storage10,685,153,280bytes was
+below the unchanged10,737,418,240byte reserve. This is not a model failure or
+slow-training downgrade. No old artifacts were deleted. An isolated M3W CREATE
+CPU environment is being prepared under the existing research authorization;
+simulation directories, environment and jobs are not reused or changed.
+Runtime-only job37560603 failed127 because a non-login batch shell lacked
+`module`, before importing Torch. The repair uses a separatev2directory and
+login shell; runtime-only job37560918 was submitted. Neither job is the216-head
+scientific experiment. Inspect actual optimizer/resume evidence before exporting
+training packets. The portable runner calls the unchanged registered fit API;
+local large temporary files and held-role training inputs are excluded.
+[Current status](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md).
+[Compute addendum](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/compute_addendum.md).
 
 The next paired experiment keeps the forecaster, floor, all-risk score, utility,
 eligibility and2%budget fixed. Both new easy-risk heads have identical networks,
@@ -13,10 +36,11 @@ initialization and source-balanced query draws. One learns the marginal signed
 risk; the other adds explicit easy-occurrence and conditional-cost supervision.
 The old score components were not identified probabilities or cost moments.
 Both arms and the original aggregate head receive same-count controls.
-Training and development readout are not_run at registration. Independent
+Training and development readout are not_run. Independent
 selection/calibration/confirmation remain closed; no deployment change.
-CREATE readonly query succeeded; no remote job submitted. Full training requires
-a real fitting-only support/resource pilot, retaining the10GiB reserve.
+CREATE readonly query succeeded; only the two environment-probe jobs described
+above were submitted. Full training requires an actual fitting-only resource
+pilot and a working independent runtime, retaining the10GiB local reserve.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/protocol.md).
 
 ## Centered-Risk Policy (Verified Negative Result, 2026-09-27)
