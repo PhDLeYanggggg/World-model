@@ -16,19 +16,29 @@ step200. Full-input easy-harm intervals never establish a consistent benefit
 over cost-only. Some early true-vs-shuffled gains do not change that result.
 
 The curves also expose a testable post-hoc initialization hypothesis: the
-auxiliary inherits an easy-membership prior of roughly28%, while the median
-fitting cap-event prior is5.1% for full inputs and1.1% for motion-only inputs.
+auxiliary inherits an easy-membership prior of roughly 28%, while the median
+fitting cap-event prior is 5.1% for full inputs and 1.1% for motion-only inputs.
 This is not a proved cause or repaired model. The next minimal intervention
 will change only that intercept with matched true/shuffled/control training.
 No checkpoint was selected from these fitting curves.
 
 Registration `0dc819d7` preceded training; `6de58cf8` froze results before
-readout. Recorded fit time was807.07 seconds; run-phase wall time1518.36 seconds
+readout. Recorded fit time was 807.07 seconds; run-phase wall time 1518.36 seconds
 excludes ancestry preflight and reuses the pilot. Local arm64 CPU4/interop1,
-workers0 was sufficient; CREATE was checked read-only. All1,920 comparison
-cells are retained, including420 unsupported strata. The3,000-resample
+workers0 was sufficient; CREATE was checked read-only. All 1,920 comparison
+cells are retained, including 420 unsupported strata. The 3,000-resample
 four-locality intervals are descriptive, not confirmation. Independent roles,
-deployment, Stage5C and SMC are unchanged. Snapshot/report replay is pending.
+deployment, Stage5C and SMC are unchanged.
+
+Verification is complete: all 2,160 snapshot diagnostics replay exactly, all
+432 original final numerical states match, and reports, both figures and the
+post-hoc metadata check reproduce byte-for-byte. Seventy-seven tests in 15
+scoped files pass; the full legacy suite was not run. The verification seal
+binds 18 public artifacts and 23 source files:
+`f1e53c411d58da47bde7fce9362dbd80e8e855648adb3a725346eacefcd57a85`.
+Results commit `9bc77a2f` preceded verification. Private checkpoints and logs
+occupy about 1.8 GiB and are not committed. This is a verified negative
+mechanism diagnostic, not a new deployment or submission-readiness result.
 
 [Conclusions](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/failure_analysis.md),
