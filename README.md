@@ -10,25 +10,34 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Training and decisions frozen; readout pending:** a paired risk-learning experiment tests the aggregation unit.
-Both new heads see the same source-balanced batches of current queries. One
-minimizes individual signed-risk error; the other minimizes aggregate query
-error. Models, features, source roles, training budget and risk tolerance stay
-matched. All 216 heads completed the fixed 2,000-update budget, with 432,000
-updates total. Checkpoints were frozen before action generation; all 108 action
-groups are now fixed before readout. The first complete paired fit replays exactly.
-This tests whether query supervision helps the allocation failure
-below; it does not grant independent calibration or open confirmation data.
-[Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
+**Latest result: query-aggregate risk training did not repair selection.**
+I trained 216 matched risk heads, holding features, initialization, training
+draws and budget fixed. All 432,000 updates completed. The only experimental
+change was individual versus current-query aggregate signed-risk supervision.
+
+At the same intervention count, query training gains only **0.009%
+[-0.014%, 0.042%]** over pointwise training, with no supported advantage.
+Its joint policy is **worse by 0.155% [-0.306%, -0.046%]** at the same nominal
+risk budget, although intervention rates differ. Held-query risk prediction
+also fails to improve. Easy net error is preserved, but **98/216 dependent
+views violate the observed harm budget**, and twelve ratios are undefined.
+This is a negative development result, not a deployment upgrade.
+
+Training and actions were committed before readout. The first complete paired
+fit replays exactly; full action/evaluation replay and independent verification
+are in progress. Independent selection/calibration/confirmation remain closed.
+[Results](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/failure_analysis.md),
+[training curves](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/training_curves.png).
 
 Before readout I found a limitation in the registered primary: ten parent
 views have zero interventions, which makes their selected-risk ratios
 undefined under the matched-count design. The primary cannot pass on its full
-roster. I will retain that failure and report the predeclared secondary
+roster. I retain that failure and report the predeclared secondary
 comparisons without promoting them to a replacement primary.
 [Pre-readout disclosure](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/primary_feasibility_addendum.md).
 
-**Latest experiment:** choosing where to intervene jointly improves accuracy,
+**Previous experiment:** choosing where to intervene jointly improves accuracy,
 but does not yet control harm. I kept every predictor fixed and allowed exactly
 the same number of interventions in each current query. Utility-aware allocation
 improves ADE over independent selection by **0.232% [0.122%, 0.359%]**; all

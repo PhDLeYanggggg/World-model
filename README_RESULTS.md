@@ -5,7 +5,37 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Paired Query-Excess Training (2026-09-27, Registered)
+## Paired Query-Excess Training (2026-09-27, Negative Readout)
+
+Registration `646082b3`, training freeze `53c1b594`, action freeze `e4703640`
+all precede the corresponding fitting or outcome steps. Fresh readout took
+142.92 seconds, peak RSS 11.29 GB. No selection or confirmation data were opened.
+
+Same-count query versus pointwise ranking ADE gain: **+0.009026%
+[-0.013970%, +0.041750%]**, only five of twelve locality contrasts positive.
+The risk primary remains structurally incomplete, with ten zero-action views.
+Query joint versus pointwise joint: **-0.154680%
+[-0.305732%, -0.046464%]**; intervention 7.4297% versus 8.1507%, so this
+secondary contrast is not rate matched. Query joint versus frozen parent joint
+is also negative: -0.120229% [-0.227899%, -0.038637%].
+
+Pointwise/query joint ADE gain over floor is 0.5201%/0.3706%. Observed-risk
+violations are 89/98 of216 dependent views; undefined ratios14/12. Worst query
+joint easy gain over CV +0.145638%, zero exact-CV harm. Held-query MSE point
+estimates worsen under query supervision by1.32%all and3.61%easy. These are
+descriptive errors, not extra registered significance tests. Own fitting loss
+falls in108/108 pointwise and104/108 query heads. No deployment promotion.
+
+Full action/evaluation replay and independent verification are in progress.
+The experiment rejects this pure aggregation repair, not every possible
+query-aware method. Next: separately preregister a valid abstention/coverage
+diagnostic and selected-subset supervision with an individual-error anchor,
+keeping the protected floor and2%screen fixed. No post-readout primary change.
+[Results](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/failure_analysis.md).
+
+Registration and resource record:
 
 108 paired groups, 216 fresh risk heads, 432,000 planned updates. Both arms
 share initialization, causal descriptors, fitting preprocessing, query-balanced
