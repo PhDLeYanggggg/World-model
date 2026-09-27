@@ -15,6 +15,14 @@ primary, training, seeds or forecast selection. No threshold is tuned.
    This isolates an output-support limitation but cannot prove that unbounding
    would improve prediction. Never feed the oracle bound back into inference.
 
+3. Coordinate-unit sensitivity: rescale causal geometry by0.25/0.5/2/4 and undo
+   scaling on output. Use the first256 held-prefix cases among the first4096
+   whose observed extent is at least4, keeping the one-unit clamp inactive.
+   Check causal-baseline equivariance and compare both model families. This
+   input-only check has no accuracy claim and does not change the registered
+   bound. It follows inspection of the conditioner/squash composition, before
+   any comparative outcome readout.
+
 Report every fixed producer/locality/seed and easy/hard subset. Do not select
 a new main endpoint or a deployment policy from these diagnostics. No independent
 selection/calibration/confirmation access, retraining, Stage5C execution or SMC.

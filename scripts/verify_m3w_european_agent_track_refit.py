@@ -10,7 +10,8 @@ ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_european_agent_track_refit as run
 from scripts.verify_m3w_european_partial_neighbor_refit import TESTS as PARENT_TESTS
 
-TESTS=PARENT_TESTS+['tests/test_m3w_agent_track_refit.py','tests/test_m3w_motion_envelope_diagnostic.py']
+TESTS=PARENT_TESTS+['tests/test_m3w_agent_track_refit.py','tests/test_m3w_motion_envelope_diagnostic.py',
+                  'tests/test_m3w_motion_unit_sensitivity.py']
 
 
 def main():
@@ -24,10 +25,12 @@ def main():
         assert d['all_exact'] and d[key]==run.digest(run.PUBLIC/target)
     names=['results.md','absolute_costs.md','causal_slices.md','motion_proxies.md',
            'training.md','conclusions.md','matched_topology.png','operations.json','operations.md',
-           'association_probe.json','association_probe.md','envelope_diagnostic.json','envelope_diagnostic.md']
+           'association_probe.json','association_probe.md','envelope_diagnostic.json','envelope_diagnostic.md',
+           'unit_sensitivity.json','unit_sensitivity.md']
     before={n:run.digest(run.PUBLIC/n) for n in names}
     for script in ('report_m3w_european_agent_track_refit.py','report_m3w_agent_track_operations.py',
-                   'probe_m3w_trained_agent_track.py','diagnose_m3w_agent_track_envelope.py'):
+                   'probe_m3w_trained_agent_track.py','diagnose_m3w_agent_track_envelope.py',
+                   'probe_m3w_motion_unit_sensitivity.py'):
         subprocess.run([sys.executable,'scripts/'+script],cwd=ROOT,check=True)
     assert all(run.digest(run.PUBLIC/n)==h for n,h in before.items())
     home=run.PRIVATE/'verification_runs'/str(time.time_ns()); home.mkdir(parents=True)
@@ -41,7 +44,8 @@ def main():
     sources=sorted(set(list(parent['source_bindings'])+run.FILES+TESTS+[
         'scripts/report_m3w_european_agent_track_refit.py','scripts/report_m3w_agent_track_operations.py',
         'scripts/verify_m3w_european_agent_track_refit.py','scripts/probe_m3w_trained_agent_track.py',
-        'scripts/diagnose_m3w_agent_track_envelope.py','src/evaluation/m3w_motion_envelope_diagnostic.py']))
+        'scripts/diagnose_m3w_agent_track_envelope.py','src/evaluation/m3w_motion_envelope_diagnostic.py',
+        'scripts/probe_m3w_motion_unit_sensitivity.py']))
     run.immutable_json(path,dict(new_models=9,updates_per_model=4000,initial_parameters_and_sampling_matched=True,
         nine_pair_full_inference_replay_exact=True,readout_replay_exact=True,reports_figure_byte_reproducible=True,
         scoped_tests_passed=len(cases),scoped_test_files=len(TESTS),
