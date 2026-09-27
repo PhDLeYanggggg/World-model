@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Producer Floor Probes (2026-09-27, Registered)
+
+The prior floor-relative experiment failed with older forecast banks and a
+two-source fitting floor versus four-source readout floor. This controlled
+follow-up uses the coordinate-unit-repaired banks and the SAME frozen floor
+producer family on two probe-fitting and two held localities. The forecaster's
+four sources and floor controller's four sources are disjoint from both.
+108 closed-form ridge fits,216 matched five-output heads, fixed thresholds,
+three forecaster seeds,3,000 locality-bootstrap draws. No new neural forecaster,
+threshold sweep, independent-role opening or deployment. Compare incremental
+oracle opportunity, original/rebased defaults, CV-relative/floor-relative probes
+and actual selected harm separately from easy net degradation.
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/protocol.md).
+
 ## Source-Separated Calibration (2026-09-27, Verified, Neural Benefit Fails)
 
 This completed registered experiment reuses all nine forecast banks and both matched

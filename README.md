@@ -10,7 +10,17 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Latest result:** source-separated calibration protects easy cases, but still
+**In progress:** I am testing whether the repaired neural forecasts offer useful
+incremental predictions over a fixed protected-damping floor. The same frozen
+floor generates both training and held labels for small cost probes. Four
+sources fit the forecaster, four fit its safety floor, two fit the probe, and
+two evaluate it. This removes the inner/outer floor-producer mismatch in an
+earlier negative target-reference experiment. Both CV-target and floor-target
+heads, original/rebased defaults and the diagnostic oracle are retained; no
+independent confirmation sources or deployment changes are involved.
+[Registered protocol](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/protocol.md).
+
+**Latest completed result:** source-separated calibration protects easy cases, but still
 does not recover a neural advantage. I kept the forecast and risk networks
 frozen, restored stationary/utility/easy guards, and tested a fixed calibration
 and input-support comparison. Two sources calibrate each rule; two different
