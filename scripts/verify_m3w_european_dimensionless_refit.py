@@ -31,10 +31,12 @@ def main():
         assert d['all_exact'] and d[key]==run.digest(run.PUBLIC/target)
     names=['results.md','absolute_costs.md','causal_slices.md','motion_proxies.md','training.md',
            'conclusions.md','matched_fraction.png','operations.json','operations.md',
-           'unit_sensitivity.json','unit_sensitivity.md','scale_support.json','scale_support.md']
+           'unit_sensitivity.json','unit_sensitivity.md','scale_support.json','scale_support.md',
+           'gradient_diagnostic.json','gradient_diagnostic.md']
     before={n:run.digest(run.PUBLIC/n) for n in names}
     scripts=['report_m3w_european_dimensionless_refit.py','report_m3w_dimensionless_operations.py',
-             'probe_m3w_dimensionless_units.py','report_m3w_dimensionless_scale_support.py']
+             'probe_m3w_dimensionless_units.py','report_m3w_dimensionless_scale_support.py',
+             'report_m3w_dimensionless_gradients.py']
     for script in scripts:
         subprocess.run([sys.executable,'scripts/'+script],cwd=ROOT,check=True)
     assert all(run.digest(run.PUBLIC/n)==h for n,h in before.items())
