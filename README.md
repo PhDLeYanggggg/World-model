@@ -123,6 +123,9 @@ reports; it is not an isolated read-only smoke test.
 Why does better risk prediction on fixed proxy groups fail to control harm on
 the groups actually chosen by the optimizer? The next step is a frozen-action
 residual and support diagnosis, followed by one preregistered targeted repair.
+The [diagnostic protocol](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/protocol.md)
+is now specified; it measures selected-row residuals, fitting-source support,
+and added harm versus lost benefit without changing any frozen decision.
 I will not tune thresholds on these readouts or open independent confirmation
 data to rescue the method.
 

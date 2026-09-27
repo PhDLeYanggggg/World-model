@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen-Action Residual Diagnosis (2026-09-27, Registered)
+
+The next diagnostic is fixed before readout: all108 existing groups, both
+subset-trained heads, joint and matched-count rank actions. It separates
+selected-set risk optimism, causal proxy overlap, six-descriptor support, and
+added harm versus lost benefit. No policy, threshold or deployment changes;
+no independent data opened. Fifteen targeted tests pass. Parent210sourcefiles
+and21publicartifacts were rehashed successfully. New diagnostic results are
+not_run at registration; cached parent models are not new training.
+[Protocol](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/protocol.md).
+
 ## Anchored Subset Supervision (2026-09-27, Verified Negative Result)
 
 **44 scoped tests pass in eight files.** First paired fit, all216 predictions,
