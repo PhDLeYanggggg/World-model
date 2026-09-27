@@ -15,7 +15,10 @@ Individual output components are score bases, not identified calibrated costs.
 This differs from the earlier CV-reference excess failure. Primary: selected
 positive-harm reduction at matched current-query counts, with net/easy/risk
 and nonempty-coverage gates unchanged. No held threshold tuning or reserved
-role opening. Local native CPU4 is appropriate based on the completed predecessor
+role opening. Registration `51a70c04` preceded a real100-update native pilot:
+6.29process seconds,4.79GB peak RSS.23 scoped preflight tests pass. The pilot
+is resumed into the full2,000-update budget for all108heads.
+Local native CPU4 is appropriate based on the completed predecessor
 fit; keep10GiB free disk and checkpoint every500updates. No results claimed yet.
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/protocol.md).
 
