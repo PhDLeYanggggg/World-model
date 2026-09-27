@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Auxiliary Prior Repair (2026-09-27, Registered Experiment)
+
+I am testing the initialization mismatch found in the preceding reconstruction.
+Only the auxiliary intercept changes to the fitting cap-event prior; all other
+training conditions remain matched. The fixed run has288 new heads and576000
+updates,with previously verified cost-only and auxiliary controls reused.
+Predictions will be frozen before the exposed source-held cost readout.
+Independent selection,calibration and confirmation remain closed; there is
+no deployment change or demonstrated improvement at registration.
+
+[Protocol](outputs/publication_readiness_2026_09/european_aux_prior_v1/protocol.md).
+
 ## Auxiliary Training Trajectories (2026-09-27, No Model Promotion)
 
 I reconstructed all 432 original heads, with 864,000 updates and 2,160 fixed
