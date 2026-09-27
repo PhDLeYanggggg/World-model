@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Query Utility Allocation (2026-09-27, Decisions Frozen)
+## Frozen Query Utility Allocation (2026-09-27, Readout Complete)
 
 Compare protected floor, independent admission, matched risk ranking,
 utility-top-k diagnostic, whole-query uniform and constrained joint utility.
@@ -13,12 +13,26 @@ All estimators are frozen. Joint utility keeps the independent action count
 within each current query and the same predicted all/easy 2% excess budgets.
 HiGHS optimum/certificate failure retains the anchor. No outcome-based tuning
 or independent data access. Six solver tests, including exhaustive small
-problems and failure fallback, pass. Outcomes are not yet read.
+problems and failure fallback, pass. Action freeze `18801109` preceded readout.
 All108groups completed:747,900 dependent current-query views,181,683 MILP
 queries,22 solver-check fallbacks,66,258 changed query views and236,626
 changed agent-view decisions. Private action masks occupy11.32MB. Resumed
 decision run370.14seconds, peak RSS11.16GB; the included first-group pilot
-took5.94seconds. Frozen actions are committed before readout.
+took5.94seconds. Fresh readout:42.08seconds, peak RSS7.77GB.
+
+Same-count joint versus independent ADE gain: **0.232172%
+[0.122483%,0.358574%]**, positive in all twelve development localities.
+ADE/floor improves from0.2594%to0.4882%; hard/floor from0.1923%to0.4996%.
+Intervention remains8.0235%. Risk violations rise from82to99/216views;
+ten ratios remain undefined. Worst easy gain versus CV+0.3716%, zero-CV harm0.
+The primary accuracy contrast passes, but the observed-risk screen fails.
+Unsafe top-k obtains1.6807%ADE/floor with worst easy-3.2797%and186violations.
+Uniform-query admission is lower coverage and not count matched.
+
+No deployment change. Complete replay and independent verification pending.
+This is fresh allocation/readout with cached_verified estimators, not training
+or independent confirmation. Next: query-level risk learning and calibration
+on fitting/controller sources with this allocation fixed, not a looser budget.
 [Protocol](outputs/publication_readiness_2026_09/european_query_utility_v1/protocol.md).
 
 ## Frozen Selection Exchanges (2026-09-27, Verified Diagnostic)

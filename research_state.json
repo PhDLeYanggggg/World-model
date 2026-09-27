@@ -1,5 +1,5 @@
 {
-  "current_evidence_record": "cvpr2027_research_track.european_selection_exchange_v1",
+  "current_evidence_record": "cvpr2027_research_track.european_query_utility_v1",
   "active_experiment": "cvpr2027_research_track.european_query_utility_v1",
   "audit_delegation": {
     "user_authorized_routine_research_audits_and_repairs": true,
@@ -12,9 +12,25 @@
   },
   "cvpr2027_research_track": {
     "european_query_utility_v1": {
-      "status": "all_108_current_query_decisions_frozen_before_readout",
+      "status": "readout_complete_primary_accuracy_pass_risk_fail_replay_pending",
       "groups": 108,
       "registration_commit": "0cffde4a",
+      "decision_freeze_commit": "18801109",
+      "result_source": "fresh_causal_query_utility_allocation_cached_verified_estimators",
+      "same_count_ADE_gain_percent": 0.2321720407423453,
+      "same_count_ADE_CI95": [0.12248330854592512, 0.3585735339200721],
+      "positive_locality_contrasts": 12,
+      "joint_ADE_gain_over_floor_percent": 0.4882,
+      "independent_ADE_gain_over_floor_percent": 0.2594,
+      "risk_violating_views": 99,
+      "independent_risk_violating_views": 82,
+      "undefined_risk_views": 10,
+      "primary_accuracy_pass": true,
+      "observed_risk_pass": false,
+      "exploratory_joint_screen_pass": false,
+      "evaluation_pid": 38418,
+      "evaluation_seconds": 42.08,
+      "evaluation_peak_RSS_bytes": 7767687168,
       "decision_pid": 37752,
       "decision_process_seconds": 370.14,
       "decision_peak_RSS_bytes": 11163058176,
@@ -23,7 +39,7 @@
       "solver_fallback_query_views": 22,
       "changed_query_views": 66258,
       "action_mask_bytes": 11323780,
-      "outcome_readout": "not_run",
+      "outcome_readout": "fresh_run",
       "focused_solver_tests_passed": 6,
       "risk_budget": 0.02,
       "current_query_count_matched": true,
@@ -32,7 +48,7 @@
       "deployment_changed": false,
       "stage5c_executed": false,
       "smc_enabled": false,
-      "next_action": "Commit all108frozen groups before readout, evaluate actual risk and net benefit, replay decisions/readout and independently verify"
+      "next_action": "Complete decision and readout replays, independently verify; keep allocation fixed for fitting/controller-source query-level risk repair with unchanged2%budget and reserved roles closed"
     },
     "european_selection_exchange_v1": {
       "status": "verified_lost_benefit_outweighs_reduced_harm",

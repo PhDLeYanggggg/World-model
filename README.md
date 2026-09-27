@@ -10,14 +10,25 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Readout pending:** a frozen-estimator allocation test compares independent
-admission, whole-query admission and constrained utility maximization. The
-main comparison keeps exactly the same switch count in every current query.
-The 2% predicted all/easy constraints remain fixed; actual harm must still
-pass separately. All 108 groups are now frozen before outcome readout:
-66,258 dependent query views change allocation, with 22 solver failures
-retaining the original action. No new forecaster or head was trained.
-[Protocol](outputs/publication_readiness_2026_09/european_query_utility_v1/protocol.md).
+**Latest experiment:** choosing where to intervene jointly improves accuracy,
+but does not yet control harm. I kept every predictor fixed and allowed exactly
+the same number of interventions in each current query. Utility-aware allocation
+improves ADE over independent selection by **0.232% [0.122%, 0.359%]**; all
+twelve development-locality contrasts are positive.
+
+That gain is useful, but it is not a deployment result. **99 of 216 dependent
+views exceed the observed 2% harm budget**, up from 82 under independent
+selection, and ten risk ratios remain undefined. Easy net error is preserved.
+The unconstrained utility ranking gains more accuracy but damages easy cases.
+This separates the two problems: better allocation is possible, while reliable
+risk prediction still needs repair. No independent confirmation data were opened
+and the protected deployment policy remains unchanged.
+
+All 108 action groups were committed before readout. Complete replay and
+independent verification are in progress; no new model was trained in this test.
+[Results](outputs/publication_readiness_2026_09/european_query_utility_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_query_utility_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_utility_v1/failure_analysis.md).
 
 **Latest diagnosis:** at the same intervention count, the descriptor policy
 reduces harm by **0.00638%**, but sacrifices **0.02026%** in benefit, both
@@ -27,10 +38,8 @@ on the exchanged selections; a sign-only admission rule loses that magnitude
 information. All 108 groups replay, with 19 scoped tests and 747,900 query
 checks. This is a diagnosis, not a deployment change.
 
-My next test keeps every estimator frozen and compares independent admission,
-whole-query admission and utility-aware joint allocation under the same
-predicted risk budget. Outcome risk, not predicted feasibility, decides
-whether that repair is useful.
+That diagnosis motivated the allocation experiment above. Outcome risk,
+not predicted feasibility, decides whether the repair is deployable.
 [Results](outputs/publication_readiness_2026_09/european_selection_exchange_v1/results.md),
 [conclusions](outputs/publication_readiness_2026_09/european_selection_exchange_v1/conclusions.md),
 [verification](outputs/publication_readiness_2026_09/european_selection_exchange_v1/verification.json).
@@ -58,10 +67,9 @@ All 108 prediction/decision groups and the full readout reproduce exactly.
 7,135 locality-metric reductions. These checks verify the experiment; they do
 not turn its failed safety hypothesis into a positive result.
 
-The next question is concrete: among predictions exchanged with the
-same-budget control, am I missing useful gains or admitting harmful ones?
-That diagnosis will determine the next gain/harm training target, without
-loosening the budget or selecting a favorable held-source slice.
+The follow-up exchange diagnosis and allocation test above locate part of this
+failure. Further gain/harm training must retain the risk budget and source roles,
+without selecting a favorable held-source slice.
 [Results](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/results.md),
 [conclusions](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/failure_analysis.md),

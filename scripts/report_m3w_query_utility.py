@@ -53,7 +53,7 @@ def main():
     for i,p in enumerate(policies):
         v=d['summary'][p]['all_gain_floor'];lo,hi=v['ci95'];pt=v['point']
         ax.errorbar(pt,i,xerr=[[pt-lo],[hi-pt]],fmt='o',capsize=4,color='#197b75' if p=='joint_utility' else '#62666a')
-    ax.set_yticks(range(4),['Independent','Joint utility','Top-k (no risk)','Whole-query uniform'])
+    ax.set_yticks(range(4),['Independent','Joint utility','Top-k (unconstrained)','Whole-query uniform'])
     ax.set_ylim(3.5,-.5);ax.axvline(0,color='#af4242',linestyle='--')
     ax.set_xlabel('ADE gain over protected floor (%)');ax.set_title('Frozen allocation: mean gains do not certify risk')
     ax.spines[['top','right']].set_visible(False)
