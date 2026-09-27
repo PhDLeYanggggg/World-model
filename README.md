@@ -10,7 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing whether a model that ranks harmful
+**Current experiment:** I am separating fitting-regime changes from changes
+in the definition of easy cases. The previous magnitude readout failed its
+cost and coverage gates. Comparing its native two-locality and three-locality
+heads cannot explain why, because both their fitting data and target cut changed.
+The [crossed study](outputs/publication_readiness_2026_09/european_regime_transport_v1/protocol.md)
+keeps the outer evaluation definition fixed, reuses the two native controls
+and trains only the missing combinations. This is a mechanism test, not a new
+deployment claim. Independent selection, calibration and confirmation stay closed.
+
+**Previous experiment:** I tested whether a model that ranks harmful
 interventions better can also learn their expected magnitude. The previous
 [prior-repair experiment](outputs/publication_readiness_2026_09/european_aux_prior_v1/conclusions.md)
 completed 288 small Torch heads and 576,000 updates. It improved harm-presence

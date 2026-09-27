@@ -1,0 +1,17 @@
+{
+  "name": "european_regime_transport_v1", "views": 144,
+  "replicas_per_view": 3, "new_heads": 864, "new_updates": 1728000,
+  "pilot_native_bridge_heads": 1, "pilot_native_bridge_updates": 2000,
+  "cells": ["two_cut2", "two_cut3", "three_cut2", "three_cut3"],
+  "pairs": ["full", "motion_only"], "seeds": [17, 29, 43],
+  "head_training": {"steps": 2000, "width": 64, "batch_size": 256, "learning_rate": 0.0003,
+    "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 200},
+  "bootstrap_resamples": 3000, "bootstrap_seed": 71429,
+  "primary_evaluation_cut": "outer_three_locality",
+  "secondary_evaluation_cut": "two_locality_diagnostic_only",
+  "magnitude_readout": "frozen_parent_cost_only_no_refit",
+  "new_forecaster_training": false, "new_policy_evaluation": false,
+  "threshold_refit": false, "selection_access": false,
+  "reserved_calibration_access": false, "confirmation_access": false,
+  "deployment_changed": false, "stage5c_executed": false, "smc_enabled": false
+}

@@ -5,6 +5,28 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Crossed Fitting-Regime Study (2026-09-27, Registered)
+
+I am separating fitting-row regime from the training-derived easy cut while
+keeping the outer evaluation endpoint unchanged. The native two-site and
+three-site controls change both factors; the two missing crossed combinations
+will be trained under a fixed budget. A two-row-site model using a three-site
+cut explicitly includes the third site in its label-definition provenance.
+It will predict only the outer excluded locality, never masquerade as an
+inner-OOF model for that third site.
+
+The planned run has 864 fresh crossed cost heads, 1,728,000 updates and one
+additional 2,000-update native reproduction check. It reuses 432 two-site and
+144 three-site controls plus frozen magnitude readouts. Eighteen scoped tests
+pass. Support, real pilot, full training and held scoring remain pending at
+registration. Native arm64 is available and 54 parent public/source bindings
+were rechecked; GitHub and local parent commit match. CREATE was inspected
+read-only, with three unrelated pending jobs and no job modification.
+
+This is source-development diagnosis, not independent validation or a new
+trajectory policy. No deployment, Stage5C or SMC change.
+[Protocol](outputs/publication_readiness_2026_09/european_regime_transport_v1/protocol.md).
+
 ## Honest OOF Magnitude Study (2026-09-27, No Model Promotion)
 
 I am testing whether the auxiliary head's ranking signal can support better
