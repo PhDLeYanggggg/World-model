@@ -27,8 +27,9 @@ not deployment safety or independent generalization.
 The diagnosis also found coordinate-unit sensitivity in the bounded correction
 wrapper. I have now registered a separate dimensionless-fraction experiment,
 holding the nine folds/seeds and training budgets fixed. The real native-arm64
-pilot completed and resumed into the nine-model training run; no comparative
-outcome has been scored. Existing checkpoints remain unchanged.
+pilot resumed into all nine completed fits (36,000 updates). Forecast generation
+and fresh control verification are running; no comparative outcome has been
+scored. Existing checkpoints remain unchanged.
 [Registered contrast](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md),
 [failure analysis and limits](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/failure_analysis.md).
 

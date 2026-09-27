@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Dimensionless Fraction Refit (2026-09-27, Training, Unscored)
+## Dimensionless Fraction Refit (2026-09-27, Trained, Unscored)
 
 The next controlled experiment removes coordinate-scale restoration inside the
 bounded correction fraction. I retain the grouped encoder, source geometry,
@@ -14,8 +14,12 @@ previous grouped fits are sealed controls. Twelve scoped preflight tests pass,
 including exact interrupted resume and future-label poisoning invariance.
 CREATE was checked read-only; no jobs were changed or submitted. The real
 100-update pilot took 1.06 fit seconds (3.98 process seconds, 0.58 GB peak RSS)
-and resumed into the nine fixed endpoints. Reporting and the observation-only
-unit probe are fixed before comparative outcome scoring. No gain is claimed yet.
+and resumed into the nine fixed endpoints. All nine fits completed 36,000 updates
+in 551.74 cumulative fit seconds (553.82 process seconds; peak RSS 1.64 GB).
+Initial weights and sampler states/draw counts match every grouped control;
+held fitting draws are zero. Forecast generation and fresh control verification
+are running. Reporting and the observation-only unit probe are fixed before
+comparative outcome scoring. No gain is claimed yet.
 Independent selection, calibration and confirmation stay closed.
 [Protocol](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md).
 An input-only check finds 317,587/318,969 histories support all declared
