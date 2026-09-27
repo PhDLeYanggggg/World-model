@@ -10,12 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Running next:** a paired risk-learning experiment tests the aggregation unit.
+**Training complete; readout pending:** a paired risk-learning experiment tests the aggregation unit.
 Both new heads see the same source-balanced batches of current queries. One
 minimizes individual signed-risk error; the other minimizes aggregate query
 error. Models, features, source roles, training budget and risk tolerance stay
-matched. The real paired pilot passed and both arms are resuming to the full
-2,000-update budget per head. This tests whether query supervision helps the allocation failure
+matched. All 216 heads completed the fixed 2,000-update budget, with 432,000
+updates total. Checkpoints are frozen before action generation and readout.
+This tests whether query supervision helps the allocation failure
 below; it does not grant independent calibration or open confirmation data.
 [Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
 

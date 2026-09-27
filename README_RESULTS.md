@@ -24,7 +24,10 @@ native CPU4 fitting completed in 8.95 process seconds, peak RSS 6.10 GB.
 Both arms drew exactly 20,816 known rows in 3,200 queries; unknown draws 0.
 The pilot's paired checkpoints occupy 1,139,964 bytes. A threefold extrapolation
 for 108 pairs is about 369 MB, within current free space above the 10 GiB reserve.
-Full 216-head training has started with resume; the pilot updates are included.
+Full 216-head training completed, including the pilot updates: 432,000 updates,
+551.63 process seconds and 10,342,105,088 bytes peak RSS. All 108 paired groups
+and checkpoint identities are frozen before decision generation. No held
+outcome evaluation has run yet.
 Pre-readout feasibility check: ten parent independent views have zero actions.
 Both count-matched ranks inherit zero actions, so the registered full-roster
 selected-risk primary is structurally incomplete. This design error was caught
