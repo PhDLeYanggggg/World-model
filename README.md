@@ -25,9 +25,11 @@ figures and diagnostics reproduce exactly. These checks verify the experiment,
 not deployment safety or independent generalization.
 
 The diagnosis also found coordinate-unit sensitivity in the bounded correction
-wrapper. A separate dimensionless-fraction candidate passes structural tests
-but is untrained. I will test it as a matched change, not silently substitute
-it into trained checkpoints. [Failure analysis and limits](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/failure_analysis.md).
+wrapper. I have now registered a separate dimensionless-fraction experiment,
+holding the nine folds/seeds and training budgets fixed. Training has not started;
+the candidate is not silently substituted into existing checkpoints.
+[Registered contrast](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md),
+[failure analysis and limits](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/failure_analysis.md).
 
 **Previous result:** keeping partial neighbor histories has not produced a
 reliable added forecasting gain. I trained
@@ -39,8 +41,8 @@ the small improvement over the old neural model does not make this deployable.
 
 The experiment also exposes a representation gap: flattened neighbor tokens
 discard supplied track associations. A separate agent-wise temporal then
-interaction encoder passes structural tests, but has not been trained or shown
-predictive benefit. That is the next matched hypothesis, not a new result.
+interaction encoder then passed structural tests; its subsequent matched
+training is reported in the current result above.
 Predictions were committed before scoring. All nine prediction pairs and 576
 scoring views now replay exactly; reports and the figure are byte-reproducible.
 All 67 tests in 12 scoped files pass. This verifies the experiment, not the

@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Dimensionless Fraction Refit (2026-09-27, Registered, Not Yet Trained)
+
+The next controlled experiment removes coordinate-scale restoration inside the
+bounded correction fraction. I retain the grouped encoder, source geometry,
+three producer folds, seeds 17/29/43, 4,000 updates, loss and sampler. All nine
+previous grouped fits are sealed controls. Twelve scoped preflight tests pass,
+including exact interrupted resume and future-label poisoning invariance.
+CREATE was checked read-only; no jobs were changed or submitted. A real local
+pilot will resume into the full budget. No forecast gain is claimed yet.
+Independent selection, calibration and confirmation stay closed.
+[Protocol](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md).
+
 ## Agent-Track Topology Refit (2026-09-27, Modest Source Gain)
 
 I tested a matched encoder change: temporal attention
