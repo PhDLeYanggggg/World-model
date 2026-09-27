@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Agent-Track Topology Refit (2026-09-27, Training)
+## Agent-Track Topology Refit (2026-09-27, Trained and Unscored)
 
 The next matched contrast changes only the encoder topology: temporal attention
 within each agent, followed by interaction attention across agents. The same
@@ -17,8 +17,11 @@ All nine new predictions must freeze before comparative outcome scoring.
 Twenty-five scoped tests pass, including grouped-model exact interrupted resume
 and future-label poisoning invariance. Registration7c2386a9 precedes training.
 The real native-arm64 pilot completed100 updates in1.29 fit seconds (4.21 process
-seconds, peak RSS0.59GB) and resumes into the full budget. The nine fixed fits
-are running; comparative scores have not been read. CREATE was checked
+seconds, peak RSS0.59GB) and resumed into the full budget. All nine fixed fits
+completed 36,000 updates in 590.28 cumulative training seconds (592.13-second
+training process, peak RSS1.62GB). Every final sampler state and draw-count
+vector matches its paired control; held fitting draws are zero. Prediction
+freezing is in progress; comparative scores have not been read. CREATE was checked
 read-only; its existing jobs are untouched. Independent
 selection/calibration/confirmation remain closed; no deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md),
