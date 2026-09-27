@@ -57,10 +57,12 @@ Most rejected original admissions triggered the easy-risk constraint. My next
 paired experiment separates easy occurrence from conditional error, with the
 same architecture, training queries and common-count controls in both arms.
 The fitting-source audit is complete: all108pairs contain easy labels. The new
-real-data training has not started because local storage crossed the10GiB
+real-data pilot initially stopped because local storage crossed the10GiB
 reserve. A separate CREATE CPU environment now passes actual optimizer and
-checkpoint-resume checks; all 108 fitting-only input packets are now transferred
-and hash-verified (4.91 GB). The first
+checkpoint-resume checks; all 108 fitting-only input packets are transferred
+and hash-verified (4.91 GB). The real fitting pilot has also passed: two paired
+heads,100updates each,9.36seconds of fitting. Full training and held readout
+remain pending. The first
 batch-shell startup failure is preserved alongside its successful repair.
 Transfers are resumable with per-packet hashes; intermittent SSH disconnects
 do not erase completed packets or justify reducing the experiment.

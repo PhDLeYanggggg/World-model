@@ -8,8 +8,10 @@ from scripts.prepare_m3w_create_runtime import PRIVATE, HANDOFF
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train'],required=True);a=p.parse_args()
-    s=json.loads((PRIVATE/('create_head_'+a.phase+'_submission.json')).read_text())
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train'],required=True)
+    p.add_argument('--attempt',type=int,choices=range(1,4),default=1);a=p.parse_args()
+    suffix='' if a.attempt==1 else '_attempt'+str(a.attempt)
+    s=json.loads((PRIVATE/('create_head_'+a.phase+'_submission'+suffix+'.json')).read_text())
     r=json.loads(s['response']['stdout']);job=r['job_id'];assert job.isdigit()
     home=json.loads((PRIVATE/'remote_input_manifest.json').read_text())['remote_path']
     ssh=json.loads((HANDOFF/'observations.json').read_text())['ssh_arguments']

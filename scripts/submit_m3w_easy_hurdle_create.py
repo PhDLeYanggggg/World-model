@@ -9,14 +9,21 @@ from scripts.prepare_m3w_create_runtime import ROOT, PRIVATE, HANDOFF
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train'],required=True);a=p.parse_args()
-    receipt=PRIVATE/('create_head_'+a.phase+'_submission.json')
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train'],required=True)
+    p.add_argument('--attempt',type=int,choices=range(1,4),default=1);a=p.parse_args()
+    suffix='' if a.attempt==1 else '_attempt'+str(a.attempt)
+    receipt=PRIVATE/('create_head_'+a.phase+'_submission'+suffix+'.json')
+    for n in range(1,a.attempt):
+        prev_suffix='' if n==1 else '_attempt'+str(n)
+        prev=json.loads((PRIVATE/('create_head_'+a.phase+'_submission'+prev_suffix+'.json')).read_text())
+        assert prev['response']['returncode'] in (255,None), 'Only a failed/unknown SSH attempt can be investigated again'
     if receipt.exists():
         raise ValueError('Existing or uncertain submission: inspect it, never duplicate')
     subprocess.run(['git','check-ignore','--quiet',str(receipt)],cwd=ROOT,check=True)
     manifest=json.loads((PRIVATE/'remote_input_manifest.json').read_text());home=manifest['remote_path']
     assert len(manifest['groups'])==108 and not manifest['held_rows_transferred']
     flags='--pilot' if a.phase=='pilot' else '--resume'
+    walltime='02:00:00' if a.phase=='pilot' else '08:00:00'
     script=f'''#!/bin/bash -l
 #SBATCH --job-name=m3w_easy_head_{a.phase}
 #SBATCH --partition=cpu
@@ -24,7 +31,7 @@ def main():
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=02:00:00
+#SBATCH --time={walltime}
 #SBATCH --output={a.phase}-%j.out
 #SBATCH --error={a.phase}-%j.err
 set -euo pipefail
@@ -48,7 +55,7 @@ if phase=='train':
     result=subprocess.run(['sacct','-j',pilot['environment']['job_id'],'-X','--noheader','--parsable2','--format=State,ExitCode'],capture_output=True,text=True,timeout=20)
     assert result.returncode==0 and result.stdout.strip()=='COMPLETED|0:0','Successful real pilot required'
 intent=home/('submit_'+phase+'_intent.json');done=home/('submit_'+phase+'_receipt.json')
-assert not intent.exists() and not done.exists(),'Prior attempt requires inspection, not resubmission'
+assert not intent.exists() and not done.exists(),'Remote submission intent/receipt exists: do not resubmit; inspect it'
 q=subprocess.run(['squeue','--me','-h','-o','%i|%j|%T'],capture_output=True,text=True,timeout=20)
 assert q.returncode==0 and 'm3w_easy_head_' not in q.stdout,'Queue failed or fitting job exists'
 script=home/('run_'+phase+'.sh');assert not script.exists();script.write_text(p['script'])
@@ -71,7 +78,8 @@ done.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))
     except subprocess.TimeoutExpired:
         response=dict(returncode=None,observation_timeout=True,retry_requires_remote_intent_inspection=True)
     record=dict(started_utc=start,completed_utc=datetime.now(timezone.utc).isoformat(),response=response,phase=a.phase,
-        script_sha256=hashlib.sha256(script.encode()).hexdigest(),held_rows_used=False,simulation_touched=False)
+        script_sha256=hashlib.sha256(script.encode()).hexdigest(),held_rows_used=False,simulation_touched=False,
+        attempt=a.attempt,remote_no_intent_and_no_receipt_required_before_submit=True)
     with receipt.open('x') as f:
         f.write(json.dumps(record,indent=2)+'\n')
     print(json.dumps(dict(returncode=response['returncode'],phase=a.phase,receipt_sha256=hashlib.sha256(receipt.read_bytes()).hexdigest())))

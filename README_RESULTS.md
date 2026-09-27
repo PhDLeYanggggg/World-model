@@ -11,12 +11,12 @@ Registration `dfa9ee53` preceded the fresh audit of all108 fitting pairs. Each
 pair has1,084-54,326easy labels; easy prevalence16.412%-37.469%; every source
 has at least513easy labels. Thus complete absence of easy supervision is not
 the problem. The5,741,442row accesses repeat roles/seeds and are not independent
-examples;126,846unknown accesses are excluded from fitting.29scoped tests in
-6files pass, including exact synthetic resume, matching sample chains, packet
+examples;126,846unknown accesses are excluded from fitting.35scoped tests in
+7files pass, including exact synthetic resume, matching sample chains, packet
 integrity, rejection of held rows, bounded transport retry, temporary serial
 stream transfer and independent probability arithmetic.
 
-**New real-data head training and held evaluation remain not_run.** Local pilot
+**The real fitting-only pilot is complete; full training and held evaluation remain not_run.** Local pilot
 PID59030 exited before an update because free storage10,685,153,280bytes was
 below the unchanged10,737,418,240byte reserve. This is not a model failure or
 slow-training downgrade. No old artifacts were deleted. An isolated M3W CREATE
@@ -29,6 +29,14 @@ updates and checkpoint-resume comparison passed exactly; Torch2.12.0+cpu,
 NumPy2.4.6,4CPUthreads. Neither job is the216-head scientific experiment.
 Fitting-only packet transfer is complete:108groups,4,909,669,199bytes.
 The final invocation rehashed89existing packets and streamed19new ones.
+Real-data pilot job37563466 completed0:0: two heads each100updates,9.3602seconds
+of fitting,34seconds scheduler elapsed,peakRSS2,606,264KiB. Both checkpoint
+hashes were freshly checked;829,275bytes total. The paired initialization and
+sampling check passed. Two failed SSH submission attempts had no remote intent,
+script or queue entry; that absence was freshly verified before the successful
+submission. They did not launch duplicate jobs. Full training retains432,000
+total model updates,CPU4/16GiB; its8hour ceiling preserves time for variable
+query sizes without changing the experiment. No held accuracy claim follows.
 The portable runner calls the unchanged registered fit API;
 local large temporary files and held-role training inputs are excluded.
 Intermittent SSH disconnects were preserved as transport failures, not model
@@ -45,11 +53,11 @@ initialization and source-balanced query draws. One learns the marginal signed
 risk; the other adds explicit easy-occurrence and conditional-cost supervision.
 The old score components were not identified probabilities or cost moments.
 Both arms and the original aggregate head receive same-count controls.
-Training and development readout are not_run. Independent
+Full training and development readout are not_run. Independent
 selection/calibration/confirmation remain closed; no deployment change.
-CREATE readonly query succeeded; only the two environment-probe jobs described
-above were submitted. Full training requires an actual fitting-only resource
-pilot; the independent runtime is now verified, retaining the10GiB local reserve.
+CREATE readonly query succeeded; two environment jobs and one real pilot were
+submitted. The fitting-only resource pilot now passes while retaining the10GiB
+local reserve.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/protocol.md).
 
 ## Centered-Risk Policy (Verified Negative Result, 2026-09-27)
