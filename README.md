@@ -24,11 +24,17 @@ This separates the two problems: better allocation is possible, while reliable
 risk prediction still needs repair. No independent confirmation data were opened
 and the protected deployment policy remains unchanged.
 
-All 108 action groups were committed before readout. Complete replay and
-independent verification are in progress; no new model was trained in this test.
+All 108 action groups were committed before readout and replay exactly, as does
+the full evaluation. **25 scoped tests pass**, with 747,900 independently checked
+current-query constraints and 6,897 locality-metric reductions. Reports and the
+figure reproduce byte for byte. These verify the experiment, not safety.
+No new model was trained in this test. My next repair keeps this allocation
+fixed and targets source-separated query-level harm prediction and calibration.
 [Results](outputs/publication_readiness_2026_09/european_query_utility_v1/results.md),
 [conclusions](outputs/publication_readiness_2026_09/european_query_utility_v1/conclusions.md),
-[failure analysis](outputs/publication_readiness_2026_09/european_query_utility_v1/failure_analysis.md).
+[failure analysis](outputs/publication_readiness_2026_09/european_query_utility_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_query_utility_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_query_utility_v1/verification.json).
 
 **Latest diagnosis:** at the same intervention count, the descriptor policy
 reduces harm by **0.00638%**, but sacrifices **0.02026%** in benefit, both

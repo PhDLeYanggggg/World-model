@@ -18,7 +18,7 @@ def main():
     run.parent.base.torch.set_num_threads(4);run.parent.base.torch.set_num_interop_threads(1)
     cfg,data,jobs,oid,identity=run.load()
     freeze=json.loads((run.PUBLIC/'decision_freeze.json').read_text());assert freeze['identity']==identity
-    refs={Path(r['path']).parent.name:r for r in freeze['groups']};queries=changed=0
+    refs={Path(r['path']).parent.name:r for r in freeze['groups']};queries=changed=checked_groups=0
     causal={k:data[k] for k in ('sites','history','origin','geometry','frames','recordings')}
     for c in run.parent.base.floor_api.contexts(causal,jobs,oid):
         for pair in range(6):
@@ -57,7 +57,9 @@ def main():
                 if uniform.any():
                     assert a['eligible'][at].all() and np.all((q[at]/scale).sum(0)<=1e-10)
             assert len(groups)==d['queries']['queries'] and qc==d['queries']['changed_queries']
-            queries+=len(groups);changed+=qc
+            queries+=len(groups);changed+=qc;checked_groups+=1
+            if checked_groups%18==0:
+                print(json.dumps(dict(state='independent_constraints_checked',groups=checked_groups,queries=queries)),flush=True)
     assert json.loads((run.PUBLIC/'decision_replay.json').read_text())['exact']
     ev=json.loads((run.PUBLIC/'evaluation_replay.json').read_text());assert ev['exact']
     for key in ('summary','details'):assert run.parent.base.artifact(ROOT/ev[key]['path'])==ev[key]

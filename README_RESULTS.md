@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Query Utility Allocation (2026-09-27, Readout Complete)
+## Frozen Query Utility Allocation (2026-09-27, Verified Accuracy Gain, Risk Failed)
 
 Compare protected floor, independent admission, matched risk ranking,
 utility-top-k diagnostic, whole-query uniform and constrained joint utility.
@@ -14,26 +14,41 @@ within each current query and the same predicted all/easy 2% excess budgets.
 HiGHS optimum/certificate failure retains the anchor. No outcome-based tuning
 or independent data access. Six solver tests, including exhaustive small
 problems and failure fallback, pass. Action freeze `18801109` preceded readout.
-All108groups completed:747,900 dependent current-query views,181,683 MILP
-queries,22 solver-check fallbacks,66,258 changed query views and236,626
-changed agent-view decisions. Private action masks occupy11.32MB. Resumed
-decision run370.14seconds, peak RSS11.16GB; the included first-group pilot
-took5.94seconds. Fresh readout:42.08seconds, peak RSS7.77GB.
+All 108 groups completed: 747,900 dependent current-query views, 181,683 MILP
+queries, 22 solver-check fallbacks, 66,258 changed query views and 236,626
+changed agent-view decisions. Private action masks occupy 11.32 MB. Resumed
+decision run: 370.14 seconds, peak RSS 11.16 GB; the included first-group pilot
+took 5.94 seconds. Fresh readout: 42.08 seconds, peak RSS 7.77 GB.
 
 Same-count joint versus independent ADE gain: **0.232172%
 [0.122483%,0.358574%]**, positive in all twelve development localities.
-ADE/floor improves from0.2594%to0.4882%; hard/floor from0.1923%to0.4996%.
-Intervention remains8.0235%. Risk violations rise from82to99/216views;
-ten ratios remain undefined. Worst easy gain versus CV+0.3716%, zero-CV harm0.
+ADE/floor improves from 0.2594% to 0.4882%; hard/floor from 0.1923% to 0.4996%.
+Intervention remains 8.0235%. Risk violations rise from 82 to 99/216 views;
+ten ratios remain undefined. Worst easy gain versus CV +0.3716%, zero-CV harm 0.
 The primary accuracy contrast passes, but the observed-risk screen fails.
-Unsafe top-k obtains1.6807%ADE/floor with worst easy-3.2797%and186violations.
+Unsafe top-k obtains 1.6807% ADE/floor with worst easy -3.2797% and 186 violations.
 Uniform-query admission is lower coverage and not count matched.
 
-No deployment change. Complete replay and independent verification pending.
+All 108 decisions and the full readout replay exactly. **25 tests in five scoped
+files pass**; 747,900 current-query constraints and 6,897 locality reductions
+are independently verified. Frozen parent controls match exactly. Reports and
+figure are byte-reproducible. The seal binds 194 source files and 15 artifacts.
+Decision replay: 372.33 seconds, peak RSS 10.85 GB; evaluation replay: 42.52
+seconds, peak RSS 7.85 GB; independent verification: 98.40 seconds, 10.59 GB.
+Full legacy suite and cold raw rebuild remain not_run.
+
+A first replay stopped at the registered 10 GiB disk reserve. Only disposable
+virtual-environment Python bytecode was cleared; no package source, model,
+data, environment configuration or unrelated file was removed. The reserve
+was not lowered, and a complete replay then passed. No CREATE jobs submitted.
+
+No deployment change.
 This is fresh allocation/readout with cached_verified estimators, not training
 or independent confirmation. Next: query-level risk learning and calibration
 on fitting/controller sources with this allocation fixed, not a looser budget.
-[Protocol](outputs/publication_readiness_2026_09/european_query_utility_v1/protocol.md).
+[Protocol](outputs/publication_readiness_2026_09/european_query_utility_v1/protocol.md),
+[results](outputs/publication_readiness_2026_09/european_query_utility_v1/results.md),
+[verification](outputs/publication_readiness_2026_09/european_query_utility_v1/verification.json).
 
 ## Frozen Selection Exchanges (2026-09-27, Verified Diagnostic)
 
