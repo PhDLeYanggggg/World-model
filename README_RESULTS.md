@@ -19,7 +19,11 @@ The pilot ran 100 updates in 2.24 training seconds, then resumed to the
 parameter and the sampling state match the cached control exactly. Nine new
 models are now training; predictive lift is not_run until prediction freeze.
 No independent-role access or deployment change.
-[Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md).
+[Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md),
+[data/model scope](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/data_model_card.md),
+[recovery and reproduction](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/reproducibility.md).
+Reporting code and changed/unchanged-input diagnostic slices are fixed before
+comparative readout. The slices do not change the primary or select a model.
 
 ## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 
