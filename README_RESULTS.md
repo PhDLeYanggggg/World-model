@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Agent-Track Topology Refit (2026-09-27, Registered)
+## Agent-Track Topology Refit (2026-09-27, Training)
 
 The next matched contrast changes only the encoder topology: temporal attention
 within each agent, followed by interaction attention across agents. The same
@@ -15,12 +15,18 @@ The cached flat models are hash-verified controls, not newly trained results.
 All nine new predictions must freeze before comparative outcome scoring.
 
 Twenty-five scoped tests pass, including grouped-model exact interrupted resume
-and future-label poisoning invariance. No research model has been trained in
-this experiment yet. CREATE was checked read-only; its existing jobs are
-untouched. The real local pilot will determine resource suitability. Independent
+and future-label poisoning invariance. Registration7c2386a9 precedes training.
+The real native-arm64 pilot completed100 updates in1.29 fit seconds (4.21 process
+seconds, peak RSS0.59GB) and resumes into the full budget. The nine fixed fits
+are running; comparative scores have not been read. CREATE was checked
+read-only; its existing jobs are untouched. Independent
 selection/calibration/confirmation remain closed; no deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md),
 [registration](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/registration.json).
+Reporting and observation-only association probes are fixed before comparative
+outcomes. The topology is established forecasting practice, not a claimed new
+method; [method context](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/method_context.md)
+distinguishes this predictor repair from the intended calibrated intervention contribution.
 
 ## Matched Partial-Neighbor Refit (2026-09-27, Benefit Screen Failed)
 

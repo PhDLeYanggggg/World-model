@@ -13,7 +13,8 @@ I started this repo to answer that question carefully, not just to collect a nic
 **In progress:** a matched agent-track encoder experiment now tests whether
 preserving each neighbor's temporal association adds predictive value. Data,
 initial weights, parameter budget, loss and sampled training queries stay fixed.
-The nine-model design is registered before fitting; it has no result yet.
+The nine-model design was registered before fitting. Real arm64 Torch training
+is running after a successful 100-update pilot; it has no comparative result yet.
 Independent outcomes remain closed. [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md).
 
 **Current result:** keeping partial neighbor histories has not produced a
