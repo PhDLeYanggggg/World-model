@@ -52,6 +52,6 @@ Memory snapshots stayed below13GiB and free disk stayed above10GiB.
 Prediction-freeze commit9eb1ca68 preceded the source-held readout (PID52832).
 
 The detailed9.2MiB readout.json is kept locally and excluded through this
-repository's local exclude file. The verification receipt hashes it separately
+study directory's scoped .gitignore. The verification receipt hashes it separately
 as local_detailed_metrics. Git receives aggregate contrasts,all assignment
 intervals,figures,receipts and reports,not this repetitive detailed metric file.

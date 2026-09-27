@@ -31,9 +31,13 @@ before readout. Recorded fitting time was 587.67 seconds; the run phase took
 933.51 seconds after ancestry preflight. All 144 views and 1,440 direct MSE
 checks completed, with old metrics reproduced exactly. The 3,000-resample
 four-locality intervals are descriptive source-development evidence, not
-independent confirmation. Replay verification is in progress. Independent
-roles, deployment, Stage5C and SMC remain unchanged. Detailed metrics and
-checkpoints stay local; Git receives lightweight aggregates and reports.
+independent confirmation. All 288 checkpoint predictions and 144 held
+readouts replay exactly; reports and the figure reproduce byte-for-byte.
+Eighty-six tests in 17 scoped files pass; the full legacy suite was not run.
+The verification seal binds 17 public artifacts, 24 source files and one
+local detailed metric file. Independent roles, deployment, Stage5C and SMC
+remain unchanged. Detailed metrics and checkpoints stay local; Git receives
+lightweight aggregates and reports.
 
 [Conclusions](outputs/publication_readiness_2026_09/european_aux_prior_v1/conclusions.md),
 [all results](outputs/publication_readiness_2026_09/european_aux_prior_v1/results.md),
