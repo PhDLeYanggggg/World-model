@@ -41,15 +41,19 @@ def main():
     if not (run.PUBLIC/'summary.json').exists():
         completed = (run.PUBLIC/'training_freeze.json').exists()
         checkpoints = len(list((run.PRIVATE/'heads').glob('*/*/checkpoint.pt.gz')))
-        status = 'complete_training_freeze_exists' if completed else 'partial' if checkpoints else 'not_run'
-        text += (f'## Execution Status\n\nReal neural training: **{status}**; checkpoints: {checkpoints}. '
+        execution = json.loads((run.PUBLIC/'execution_status.json').read_text()) if (run.PUBLIC/'execution_status.json').exists() else {}
+        status = 'complete_training_freeze_exists' if completed else execution.get('real_training', 'partial' if checkpoints else 'not_run')
+        text += (f'## Execution Status\n\nReal neural training: **{status}**; local checkpoints: {checkpoints}. '
                  'Held-development policy readout: **not_run**. No model comparison or accuracy result '
                  'exists for these new heads. Synthetic regression tests are not real training.\n\n'
                  'A fitting-only support audit completed; lack of easy supervision is not '
                  'the blocker. Inspect execution_status.json for the last resource check. '
-                 'Storage and a permitted compute placement must be resolved '
-                 'without deleting old experiments, lowering the reserve, reducing scope '
-                 'or using unapproved remote paths. Completed sources and reports remain preserved.\n\n')
+                 'The isolated CREATE runtime passed an actual optimizer/resume probe; '
+                 'its batch-shell startup failure is preserved. Large fitting packets '
+                 'are streamed and hash-checked without local temporary files. This '
+                 'does not delete old experiments, lower the reserve, reduce scope '
+                 'or borrow the simulation project. Neither queued jobs nor completed '
+                 'environment probes constitute scientific results.\n\n')
     else:
         s = json.loads((run.PUBLIC/'summary.json').read_text()); assert s['identity'] == identity
         text += '## Fresh Development Readout\n\n'
@@ -97,6 +101,26 @@ replay_fit只对第一组两头完整重训；其余组是推理重放，不写�
 独立算术检查使用scripts/verify_m3w_easy_hurdle.py。冻结前生成报告使用
 scripts/report_m3w_easy_hurdle.py。检查点、行级数据和原始调度器输出不进Git。
 旧完整测试集有写报告/真实训练副作用；先运行本轮scoped tests，不宣称全仓库通过。
+
+## 当前 CREATE 路径
+
+本地 pilot 因10GiB保留空间不足，在第一次真实更新前退出。不得删旧结果或降保留线。
+独立 M3W CREATE CPU环境已通过真实优化器和精确恢复合成检查；不借 simulation 环境。
+训练数据按组从内存上传，重启时逐一检查已有远端hash。连接中断不是训练失败。
+
+```sh
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.export_m3w_easy_hurdle_create --resume
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_easy_hurdle_create --phase pilot
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.inspect_m3w_easy_hurdle_create --phase pilot
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_easy_hurdle_create --phase train
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.inspect_m3w_easy_hurdle_create --phase train
+```
+
+这些是分阶段操作，不是可盲目重复的命令串。只有108组传输完成才提交pilot；只有真实
+pilot完成且调度器exit0才提交train。已存在submission receipt或不确定提交时只检查，
+不重复提交。训练使用已登记的同一fit实现、CPU4/interop1/workers0和原432,000更新预算。
+远端训练完成不等于开发评价完成。模型与动作必须分别hash冻结并提交后才读取对应结果。
+本地磁盘不足期间，远端模型和行级数组不批量回传。独立确认仍关闭。
 ''')
 
 

@@ -1,6 +1,7 @@
 """Stream fitting-only packets to isolated M3W storage without local large files."""
 import argparse
 import ast
+from contextlib import ExitStack
 import hashlib
 import io
 import json
@@ -9,9 +10,11 @@ import re
 import shlex
 import subprocess
 import tarfile
+import time
 import numpy as np
 from scripts import run_m3w_easy_hurdle as run
 from scripts.prepare_m3w_create_runtime import HANDOFF
+from scripts.m3w_packet_stream import PacketStream
 
 
 def closure(root, modules):
@@ -39,13 +42,21 @@ def closure(root, modules):
 
 
 def remote(ssh, code, args=(), payload=b''):
-    p=subprocess.run(ssh+[shlex.join(['/usr/bin/python3','-c',code,*args])],input=payload,capture_output=True,timeout=60)
-    if p.returncode:
-        raise RuntimeError(p.stderr.decode(errors='replace')[-1500:])
-    return json.loads(p.stdout)
+    # Export operations are immutable/hash-checked; never use this retry for sbatch.
+    for attempt in range(3):
+        p=subprocess.run(ssh+[shlex.join(['/usr/bin/python3','-c',code,*args])],input=payload,capture_output=True,timeout=60)
+        if not p.returncode:
+            return json.loads(p.stdout)
+        error=p.stderr.decode(errors='replace')[-1500:]
+        transient=any(s in error for s in ('Connection closed', 'Connection reset'))
+        if not transient or attempt==2:
+            raise RuntimeError(error)
+        delay=(30,90)[attempt]
+        print(json.dumps(dict(state='idempotent_transfer_retry', attempt=attempt+1, wait_seconds=delay)),flush=True)
+        time.sleep(delay)
 
 
-def main():
+def export(stack):
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--resume',action='store_true')
     p.add_argument('--runtime-revision',type=int,choices=[1,2],default=2);a=p.parse_args()
     ssh=json.loads((HANDOFF/'observations.json').read_text())['ssh_arguments']
@@ -86,13 +97,32 @@ print(json.dumps({'bindings':checks}))
 '''
     out=remote(ssh,code,[target,run.base.digest(run.PUBLIC/'registration.json')],bundle.getvalue())
     assert out['bindings']==bindings
-    refs=[]
+    completed={}
+    if a.resume:
+        prior=[json.loads(p.read_text()) for p in sorted((run.PRIVATE/'remote_inputs').glob('*.json'))]
+        code=r'''
+import hashlib,json,pathlib,sys
+root=pathlib.Path(sys.argv[1]);assert json.loads((root/'.owner.json').read_text())['experiment']=='european_easy_hurdle_v1'
+refs=json.loads(sys.stdin.read())
+for ref in refs:
+    name=ref['group'];assert name.replace('_','').isalnum();p=root/'inputs'/(name+'.npz')
+    assert p.stat().st_size==ref['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==ref['sha256']
+print(json.dumps({'verified':refs}))
+'''
+        verified=remote(ssh,code,[target],json.dumps(prior).encode())['verified']
+        assert verified==prior
+        completed={r['group']:r for r in verified}
+    refs=[];reused=0;stream=None
     for c in run.base.floor_api.contexts({k:data[k] for k in run.parent.CAUSAL_KEYS},jobs,oid):
         for pair in range(6):
             name=c['name']+f'_pair{pair}';assert re.fullmatch(r'[A-Za-z0-9_]+',name)
             path=run.PRIVATE/'remote_inputs'/(name+'.json')
             if path.exists() and not a.resume:
                 raise ValueError('Existing transfer receipt requires resume')
+            if name in completed:
+                refs.append(completed[name]);reused+=1
+                run.beat('fitting_packet_cached_verified',group=name,complete=len(refs))
+                continue
             fit,ids,u,y,pr,fid=run.fitting(c,data,pair,fits[name],pid)
             pr_scalars={k:pr[k] for k in ('clip','cost_scale','training_sites')}
             buf=io.BytesIO()
@@ -101,20 +131,9 @@ print(json.dumps({'bindings':checks}))
                 **{'pr_'+k:pr[k] for k in ('known','weights','mean','std')},
                 identity_json=np.array(json.dumps(fid)),preprocess_json=np.array(json.dumps(pr_scalars)))
             payload=buf.getvalue();sha=hashlib.sha256(payload).hexdigest()
-            code=r'''
-import hashlib,json,os,pathlib,sys
-root=pathlib.Path(sys.argv[1]); assert json.loads((root/'.owner.json').read_text())['experiment']=='european_easy_hurdle_v1'
-name=sys.argv[2]; assert name.replace('_','').isalnum()
-content=sys.stdin.buffer.read(); assert hashlib.sha256(content).hexdigest()==sys.argv[3]
-p=root/'inputs'/(name+'.npz');p.parent.mkdir(exist_ok=True)
-if p.exists(): assert hashlib.sha256(p.read_bytes()).hexdigest()==sys.argv[3]
-else:
-    tmp=p.with_suffix('.tmp')
-    with tmp.open('wb') as f: f.write(content);f.flush();os.fsync(f.fileno())
-    os.replace(tmp,p)
-print(json.dumps({'group':name,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}))
-'''
-            ref=remote(ssh,code,[target,name,sha],payload);assert ref==dict(group=name,sha256=sha,bytes=len(payload))
+            if stream is None:
+                stream=stack.enter_context(PacketStream(ssh,target))
+            ref=stream.send(name,payload);assert ref==dict(group=name,sha256=sha,bytes=len(payload))
             run.base.immutable_json(path,ref);refs.append(ref)
             run.beat('fitting_packet_streamed',group=name,complete=len(refs),bytes=len(payload))
     assert len(refs)==108
@@ -133,7 +152,14 @@ print(json.dumps({'complete':True}))
     run.base.immutable_json(run.PRIVATE/'remote_input_manifest.json',dict(remote_path=target,**manifest))
     run.base.immutable_json(run.PUBLIC/'remote_input_transfer.json',dict(groups=108,bytes=sum(r['bytes'] for r in refs),
         code_bindings=bindings,groups_manifest=refs,held_rows_transferred=False,independent_roles_read=False,
-        result_source='fresh_run_fitting_only_streamed_export',large_local_temporary_files=False))
+        result_source='fresh_run_fitting_only_streamed_export_with_cached_verified_resume',
+        cached_verified_groups_this_invocation=reused,new_groups_this_invocation=len(refs)-reused,
+        large_local_temporary_files=False))
+
+
+def main():
+    with ExitStack() as stack:
+        export(stack)
 
 
 if __name__=='__main__':

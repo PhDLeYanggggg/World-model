@@ -11,9 +11,10 @@ Registration `dfa9ee53` preceded the fresh audit of all108 fitting pairs. Each
 pair has1,084-54,326easy labels; easy prevalence16.412%-37.469%; every source
 has at least513easy labels. Thus complete absence of easy supervision is not
 the problem. The5,741,442row accesses repeat roles/seeds and are not independent
-examples;126,846unknown accesses are excluded from fitting.23scoped tests in
-5files pass, including exact synthetic resume, matching sample chains, packet
-integrity, rejection of held rows and independent probability arithmetic.
+examples;126,846unknown accesses are excluded from fitting.29scoped tests in
+6files pass, including exact synthetic resume, matching sample chains, packet
+integrity, rejection of held rows, bounded transport retry, temporary serial
+stream transfer and independent probability arithmetic.
 
 **New real-data head training and held evaluation remain not_run.** Local pilot
 PID59030 exited before an update because free storage10,685,153,280bytes was
@@ -28,6 +29,11 @@ updates and checkpoint-resume comparison passed exactly; Torch2.12.0+cpu,
 NumPy2.4.6,4CPUthreads. Neither job is the216-head scientific experiment.
 Fitting-only packet transfer is now underway. The portable runner calls the unchanged registered fit API;
 local large temporary files and held-role training inputs are excluded.
+Intermittent SSH disconnects were preserved as transport failures, not model
+failures.89/108packets were acknowledged before the latest restart; resume
+rehashes existing remote packets. The new single-process stream avoids opening
+a separate connection for every remaining packet; authentication errors are
+not blindly retried and persistent SSH configuration is unchanged.
 [Current status](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md).
 [Compute addendum](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/compute_addendum.md).
 

@@ -61,6 +61,8 @@ real-data training has not started because local storage crossed the10GiB
 reserve. A separate CREATE CPU environment now passes actual optimizer and
 checkpoint-resume checks; I am streaming fitting-only inputs there. The first
 batch-shell startup failure is preserved alongside its successful repair.
+Transfers are resumable with per-packet hashes; intermittent SSH disconnects
+do not erase completed packets or justify reducing the experiment.
 Neither an environment probe nor a synthetic test is a positive model result.
 I am not relaxing easy protection. This remains evidence from twelve
 opened development localities; independent selection, calibration and

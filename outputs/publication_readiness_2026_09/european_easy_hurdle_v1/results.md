@@ -8,9 +8,9 @@ Repeated-role row accesses: 5,741,442; known 5,614,596; unknown excluded from fi
 
 ## Execution Status
 
-Real neural training: **not_run**; checkpoints: 0. Held-development policy readout: **not_run**. No model comparison or accuracy result exists for these new heads. Synthetic regression tests are not real training.
+Real neural training: **not_run**; local checkpoints: 0. Held-development policy readout: **not_run**. No model comparison or accuracy result exists for these new heads. Synthetic regression tests are not real training.
 
-A fitting-only support audit completed; lack of easy supervision is not the blocker. Inspect execution_status.json for the last resource check. Storage and a permitted compute placement must be resolved without deleting old experiments, lowering the reserve, reducing scope or using unapproved remote paths. Completed sources and reports remain preserved.
+A fitting-only support audit completed; lack of easy supervision is not the blocker. Inspect execution_status.json for the last resource check. The isolated CREATE runtime passed an actual optimizer/resume probe; its batch-shell startup failure is preserved. Large fitting packets are streamed and hash-checked without local temporary files. This does not delete old experiments, lower the reserve, reduce scope or borrow the simulation project. Neither queued jobs nor completed environment probes constitute scientific results.
 
 ## Boundaries
 

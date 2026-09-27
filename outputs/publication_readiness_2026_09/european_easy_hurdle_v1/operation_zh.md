@@ -24,3 +24,23 @@ replay_fit只对第一组两头完整重训；其余组是推理重放，不写�
 独立算术检查使用scripts/verify_m3w_easy_hurdle.py。冻结前生成报告使用
 scripts/report_m3w_easy_hurdle.py。检查点、行级数据和原始调度器输出不进Git。
 旧完整测试集有写报告/真实训练副作用；先运行本轮scoped tests，不宣称全仓库通过。
+
+## 当前 CREATE 路径
+
+本地 pilot 因10GiB保留空间不足，在第一次真实更新前退出。不得删旧结果或降保留线。
+独立 M3W CREATE CPU环境已通过真实优化器和精确恢复合成检查；不借 simulation 环境。
+训练数据按组从内存上传，重启时逐一检查已有远端hash。连接中断不是训练失败。
+
+```sh
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.export_m3w_easy_hurdle_create --resume
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_easy_hurdle_create --phase pilot
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.inspect_m3w_easy_hurdle_create --phase pilot
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_easy_hurdle_create --phase train
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.inspect_m3w_easy_hurdle_create --phase train
+```
+
+这些是分阶段操作，不是可盲目重复的命令串。只有108组传输完成才提交pilot；只有真实
+pilot完成且调度器exit0才提交train。已存在submission receipt或不确定提交时只检查，
+不重复提交。训练使用已登记的同一fit实现、CPU4/interop1/workers0和原432,000更新预算。
+远端训练完成不等于开发评价完成。模型与动作必须分别hash冻结并提交后才读取对应结果。
+本地磁盘不足期间，远端模型和行级数组不批量回传。独立确认仍关闭。
