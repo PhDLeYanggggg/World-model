@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen-Cap Attribution (2026-09-27, Predictions Frozen)
+## Frozen-Cap Attribution (2026-09-27, Scientific Screens Failed)
 
 The next fixed experiment separates the output constraint from the information
 in already fitted temporal probes. No parameters are refitted. Four feature
@@ -18,11 +18,34 @@ vectors across432 inner views are now hash-bound; the original clipped
 predictions match exactly. Recovery took313s between heartbeat start/end,
 excluding ancestry preflight. No refitting occurred. Eleven new tests and
 ten parent-context tests pass. CREATE was checked read-only; no job was
-submitted or modified. New projection scoring is not_run at this freeze.
-A large label-aware ceiling floor is not evidence of a biased predicted mean;
-the counterfactual comparisons can favor the current constraint. No model
-promotion, metric/seconds or physical-safety claim. Stage5C and SMC remain off.
-[Protocol](outputs/publication_readiness_2026_09/european_cap_attribution_v1/protocol.md).
+submitted or modified. Freeze dff8cf9e precedes the now-complete432-view
+scoring, which took334s between heartbeat start/end.
+
+For full history-neighbor, relaxing the cap has0 positive /5 negative /1
+overlapping primary intervals, with point gains-11.82% to-0.20%. Under the
+same relaxed constraint, context versus score-only has2/3/1; versus old
+summaries0/2/4; versus history alone1/3/2. Motion-only versus summaries has
+0/6/0, retaining its worst point-163.83%. No favorable assignment is selected.
+
+Raising all-harm to preserve nested output ordering improves all-harm MSE in
+four full and five motion-only intervals versus the capped version. This small
+secondary signal does not pass the primary/context/tail requirements. In141
+of216 dependent full history-neighbor views, event-label error improves but
+zero easy-harm label costs outweigh it. Zero easy-harm is not synonymous with
+an easy agent. These are expected-cost errors, not trajectory gains.
+
+All1728 exact error-decomposition identities pass, maximum discrepancy3.31e-13.
+The large prior label-aware ceiling floor did not prove a biased predicted
+mean. The direct counterfactual instead supports retaining the constraint for
+these fixed scores. All scientific screens fail; stop cap/temporal readout
+sweeps and investigate observation quality and event support. No deployment
+changes or independent-role access. Full numerical replay is in progress.
+No metric/seconds or physical-safety claim. Stage5C and SMC remain off.
+[Conclusions](outputs/publication_readiness_2026_09/european_cap_attribution_v1/conclusions.md),
+[all contrasts](outputs/publication_readiness_2026_09/european_cap_attribution_v1/results.md),
+[absolute costs](outputs/publication_readiness_2026_09/european_cap_attribution_v1/absolute_costs.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cap_attribution_v1/failure_analysis.md),
+[next boundary](outputs/publication_readiness_2026_09/european_cap_attribution_v1/project_gap.md).
 
 ## Temporal Context Screen (2026-09-27, Scientific Screens Failed)
 

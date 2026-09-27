@@ -18,10 +18,12 @@ def main():
     logs = []
     for phase in ('verify_predictions', 'verify_eval'):
         logs.append(execute(['scripts/run_m3w_european_cap_attribution.py', '--phase', phase], phase, directory))
-    names = ['aggregate_metrics.json', 'gates.json', 'results.md', 'cap_attribution.svg']
+    names = ['aggregate_metrics.json', 'gates.json', 'results.md', 'cap_attribution.svg',
+        'absolute_costs.json', 'absolute_costs.md', 'mechanism_counts.json']
     before = {p:run.digest(run.PUBLIC/p) for p in names}
     logs.append(execute(['scripts/report_m3w_european_cap_attribution.py'], 'report_replay', directory))
     logs.append(execute(['scripts/plot_m3w_european_cap_attribution.py'], 'plot_replay', directory))
+    logs.append(execute(['scripts/diagnose_m3w_european_cap_attribution.py'], 'absolute_cost_replay', directory))
     assert all(run.digest(run.PUBLIC/p) == h for p,h in before.items())
     xml = directory/'tests.xml'
     logs.append(execute(['-m', 'pytest', '-q', *TESTS, '--junitxml', str(xml)], 'tests', directory))
@@ -30,7 +32,7 @@ def main():
     for name in ('prediction_replay.json','evaluation_replay.json'):
         assert json.loads((run.PUBLIC/name).read_text())['exact']
     sources = sorted(set(run.FILES+TESTS+['scripts/plot_m3w_european_cap_attribution.py',
-        'scripts/verify_m3w_european_cap_attribution.py']))
+        'scripts/verify_m3w_european_cap_attribution.py', 'scripts/diagnose_m3w_european_cap_attribution.py']))
     run.immutable_json(run.PUBLIC/'verification.json', dict(all_passed=True, views_replayed=432,
         unprojected_vectors_replayed=1728, prior_scores_exact=True, new_fits=0, new_neural_heads=0,
         reports_and_figure_byte_reproducible=True, scoped_tests_passed=len(cases), scoped_test_files=len(TESTS),

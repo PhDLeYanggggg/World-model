@@ -31,6 +31,9 @@ twelve-step forecasts, not their mean distance. It therefore bounds the
 matched ADE error difference for any evaluated subset of future steps by
 the triangle inequality, without reading that future-validity subset at
 inference. This geometric error bound is not a physical-safety guarantee.
+Past-only checks concern the exported annotation rows and model access. They
+do not establish the annotations' sensor-time availability or an online
+perception guarantee.
 
 ## Model Intervention
 Recover 1728 unprojected scalar score vectors from fixed ridge models. Compare

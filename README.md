@@ -10,12 +10,20 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing whether the frozen all-harm ceiling
-suppresses useful temporal information or protects against unstable corrections.
-The [fixed attribution](outputs/publication_readiness_2026_09/european_cap_attribution_v1/protocol.md)
-keeps all fitted models unchanged and compares their original outputs with
-causal-envelope alternatives, including the effect on total risk prediction.
-This uses development data only, with no new neural training or deployment change.
+**Current result:** relaxing the risk ceiling does not recover a reliable
+history or interaction gain. In the
+[frozen-model attribution](outputs/publication_readiness_2026_09/european_cap_attribution_v1/conclusions.md),
+five of six full-input intervals show worse easy-harm prediction after the cap
+is relaxed; none shows a clear improvement. Under the same relaxed constraint,
+history plus neighbors still does not beat the earlier summary features.
+
+The constraint often protects against unstable corrections. A small secondary
+gain in total-risk prediction does not offset the easy-harm failure. I am
+keeping deployment unchanged and stopping this cap/readout sweep. The next
+question concerns causal observation quality and useful event support.
+This is a completed development analysis, not new neural training or an
+independent trajectory result. Full replay is in progress; the
+[results ledger](README_RESULTS.md) records its scope and evidence.
 
 **Previous context result:** adding ordered motion and neighbor history has not repaired
 the expected-risk model. I completed
