@@ -17,6 +17,9 @@ three forecaster seeds,3,000 locality-bootstrap draws. No new neural forecaster,
 threshold sweep, independent-role opening or deployment. Compare incremental
 oracle opportunity, original/rebased defaults, CV-relative/floor-relative probes
 and actual selected harm separately from easy net degradation.
+Registration `3b09d834` preceded fitting. All108 groups /216 linear heads finished
+in89.60seconds, peak RSS9.85GB, PID26023. Scores and all fixed actions are now
+frozen before readout. New neural forecasters and neural gradient updates:0.
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/protocol.md).
 
 ## Source-Separated Calibration (2026-09-27, Verified, Neural Benefit Fails)
