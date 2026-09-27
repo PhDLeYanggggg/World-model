@@ -1,4 +1,4 @@
-"""Source-separated empirical calibration, not a conformal risk certificate."""
+"""Frozen-score source calibration, not a conformal risk certificate."""
 from itertools import combinations
 import numpy as np
 

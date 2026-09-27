@@ -16,9 +16,12 @@ Support is a fitting-weighted 99th percentile in standardized causal feature
 space. Calibration retains the 2% budget, movement/utility/easy guards and a
 fixed nonpositive score grid. Report uncalibrated, support-only, calibration-only
 and combined policies against matched damping, including empty coverage.
-No training or independent-role opening. Forty tests across five files pass.
+No training or independent-role opening. Forty-four tests across six files pass.
 This is empirical two-source calibration, not a conformal guarantee.
-[Protocol](outputs/publication_readiness_2026_09/european_nested_calibration_v1/protocol.md).
+An initial namespace collision was corrected before inference: three historical
+files are restored byte-for-byte to `15768a5d`, and this study uses a distinct
+`score_support_calibration` namespace. No historical model or result was replaced.
+[Protocol](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/protocol.md).
 
 ## Signed Risk-Budget Objective (2026-09-27, Verified, Neural Benefit Fails)
 

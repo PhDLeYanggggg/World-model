@@ -1,4 +1,4 @@
-# Strictly Source-Separated Calibration and Support
+# Frozen-Score Source Calibration and Support
 
 ## Question and Scope
 
