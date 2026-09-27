@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Registered)
+## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Trained, Readout Pending)
 
 216 matched bounded neural risk heads,108 four/four/two/two source groups.
 Treatment upweights each harm target's fitting-only positive90th-percentile tail
@@ -20,6 +20,10 @@ Registration `c6b1c784` preceded the real100-update pilot:0.104fit seconds,
 6.83process seconds, peak RSS4.80GB, no unknown-label training draws. Native
 arm64 CPU4 is stable; all216 heads remain the target. Local execution is
 reasonable, with checkpoint resume rather than a smaller experiment.
+All216 heads completed432,000updates in411.32process seconds, peak RSS9.51GB,
+PID28294. The100-update pilot resumed exactly into its prescribed budget.
+Predictions and108 same-query matched decision sets are frozen before readout;
+training completion is not a downstream success claim.
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/protocol.md),
 [method positioning](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/method_positioning.md).
 
