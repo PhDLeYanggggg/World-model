@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Honest OOF Magnitude Study (2026-09-27, Nested Training Complete)
+## Honest OOF Magnitude Study (2026-09-27, Predictions Frozen)
 
 I am testing whether the auxiliary head's ranking signal can support better
 expected-harm magnitudes. The same two-slope readout is applied to cost-only,
@@ -30,8 +30,9 @@ seconds; the training phase took 2,480.92 seconds after ancestry preflight.
 Unknown-label draws are zero; no incomplete archive remains. A further held-locality
 perturbation test passes. Two archive-recovery corner tests bring scoped
 preflight coverage to 28 tests; no interruption occurred in this run.
-The inner prediction freeze precedes all 432 magnitude fits and any new
-source-held readout. These are execution facts, not a scientific result. The fitting diagnostics
+Inner freeze `e27681e3` preceded all 432 magnitude fits. Their 144 outer views
+are now frozen before new source-held readout. These are execution facts, not
+a scientific result. The fitting diagnostics
 are fixed before readout and will retain sparse-event and easy-cut drift.
 [Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
 
