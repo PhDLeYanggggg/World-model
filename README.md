@@ -12,10 +12,11 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 **In progress: learning risk on causal selection subsets.** I am testing whether
 individual-error supervision plus fixed, past-only subgroup supervision repairs
-the selection mismatch below. Two matched arms will train216 risk heads, with
+the selection mismatch below. Two matched arms have trained216 risk heads, with
 unchanged predictors, source roles and2%selected-risk screen. No new independent
 data are opened. Empty interventions remain explicit abstentions, not passing
-risk ratios. This is a registered development experiment, not a new result.
+risk ratios. All432,000 updates completed; actions and outcome readout are
+pending. This is a registered development experiment, not a positive result.
 [Protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md).
 
 **Latest result: query-aggregate risk training did not repair selection.**

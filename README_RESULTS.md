@@ -5,11 +5,11 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Anchored Subset Supervision (2026-09-27, Registration)
+## Anchored Subset Supervision (2026-09-27, Training Frozen)
 
 A new development experiment retains individual supervision while comparing
 pointwise versus aggregate error within three frozen causal subset masks.
-216 new heads /432,000 updates planned; same initialization, queries, known-row
+216 new heads /432,000 updates completed; same initialization, queries, known-row
 draws, protected floor and2%selected-risk screen. Twenty tests across the new
 and parent training modules pass. Unknown labels cannot change causal subset
 membership; architecture guards run before Torch; resume is exact on tests.
@@ -17,7 +17,12 @@ membership; architecture guards run before Torch; resume is exact on tests.
 Ten inherited zero-action views keep their undefined selected-risk ratio.
 An added all-reference-denominator harm diagnostic measures abstention without
 changing the old primary or applying its2%threshold to a different denominator.
-No new training result yet. Independent roles remain closed; deployment,
+Training completed in556.69seconds, peakRSS11,142,692,864bytes, PID45723.
+Native CPU4 pilot took8.53seconds; its100updates were included in the final
+budget. All108 pairs match each other and the previous pointwise control on
+initialization, queries, row draws and runtime RNG. Unknown supervised draws0.
+Forty-four scoped tests pass across eight files. Training identities are frozen
+before decisions; no held outcome readout has run. Independent roles remain closed; deployment,
 Stage5C and SMC unchanged. CREATE read-only queue check succeeded; no jobs
 submitted. Source-role and artifact hashes are checked before registration.
 [Protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md).
