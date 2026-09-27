@@ -5,17 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Crossed Fitting-Regime Study (2026-09-27, Predictions Frozen)
+## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
 
-I am separating fitting-row regime from the training-derived easy cut while
+I separated fitting-row regime from the training-derived easy cut while
 keeping the outer evaluation endpoint unchanged. The native two-site and
-three-site controls change both factors; the two missing crossed combinations
-will be trained under a fixed budget. A two-row-site model using a three-site
+three-site controls change both factors; I trained the two missing crossed
+combinations under a fixed budget. A two-row-site model using a three-site
 cut explicitly includes the third site in its label-definition provenance.
 It will predict only the outer excluded locality, never masquerade as an
 inner-OOF model for that third site.
 
-The planned run has 864 fresh crossed cost heads, 1,728,000 updates and one
+The completed run has 864 fresh crossed cost heads, 1,728,000 updates and one
 additional 2,000-update native reproduction check. It reuses 432 two-site and
 144 three-site controls plus frozen magnitude readouts. Eighteen scoped tests
 pass. Support now passes for all 1,728 cells: the minimum known-row count is
@@ -24,12 +24,12 @@ not a power calculation. The real pilot is complete: a fresh 2,000-update native
 bridge exactly matches all
 original parameters, and a 200-update crossed pilot has finite losses and zero
 unknown-label draws. Projected pure fitting is 1,750 seconds, excluding I/O
-and evaluation. PID69266 completed all864 crossed heads,1,728,000 updates and
-432 frozen prediction replicas. Every one of864 within-regime sampler checks
-passes; unknown-label draws are zero. Crossed fitting took1,701.43 seconds;
-the training heartbeats span43m35s after ancestry preflight. The extra native
-bridge took2.08 fitting seconds. Held scoring remains unopened until the
-prediction manifest is committed. Native arm64 is
+and evaluation. PID 69266 completed all 864 crossed heads, 1,728,000 updates and
+432 frozen prediction replicas. Every one of 864 within-regime sampler checks
+passes; unknown-label draws are zero. Crossed fitting took 1,701.43 seconds;
+the training heartbeats span 43m35s after ancestry preflight. The extra native
+bridge took 2.08 fitting seconds. Manifest commit 23b75ca6 preceded the
+complete 144-view readout and 13,824 direct component-MSE checks. Native arm64 is
 available and 54 parent public/source bindings
 were rechecked; GitHub and local parent commit match. CREATE was inspected
 read-only, with three unrelated pending jobs and no job modification.
@@ -37,6 +37,27 @@ read-only, with three unrelated pending jobs and no job modification.
 This is source-development diagnosis, not independent validation or a new
 trajectory policy. No deployment, Stage5C or SMC change.
 [Protocol](outputs/publication_readiness_2026_09/european_regime_transport_v1/protocol.md).
+
+None of the cut, larger-regime, size-matched-magnitude or interaction screens
+passes. With full inputs, changing the easy cut at either fixed row regime
+gives 1 positive, 1 negative and 4 overlapping-zero primary intervals. Increasing
+the fitting regime gives 4/0/2 at cut2 but 1/0/5 at cut3, so it is not a uniform
+repair. The raw interaction has 1/0/5; scaled has 0/0/6.
+
+Even the native two-site magnitude readout has only 3/0/3 primary intervals,
+while its coverage-log guard worsens in all 6 full-input assignments and its
+top10 capture guard worsens in 1. This is a squared-cost versus harm-mass
+tradeoff, not a trajectory gain. The post-hoc median predicted/observed harm
+ratio falls from 0.631 to 0.097 in the native two-site cell. It is descriptive,
+not an independent sample estimate or a replacement gate.
+
+Three seeds and 3,000 four-locality resamples retain all assignments, including
+negative motion-only results. Model promotion remains false. Exact full replay
+and final scoped verification are the remaining checks, not additional tuning.
+[Conclusions](outputs/publication_readiness_2026_09/european_regime_transport_v1/conclusions.md),
+[all intervals](outputs/publication_readiness_2026_09/european_regime_transport_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_regime_transport_v1/failure_analysis.md),
+[next question](outputs/publication_readiness_2026_09/european_regime_transport_v1/project_gap.md).
 
 ## Honest OOF Magnitude Study (2026-09-27, No Model Promotion)
 

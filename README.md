@@ -18,10 +18,17 @@ The [crossed study](outputs/publication_readiness_2026_09/european_regime_transp
 keeps the outer evaluation definition fixed, reuses the two native controls
 and trains only the missing combinations. This is a mechanism test, not a new
 deployment claim. Independent selection, calibration and confirmation stay closed.
-All 1,728 fitting cells now have supported labels. A fresh 2,000-update native
-control matches every original parameter, and the crossed pilot has passed.
-Full training has completed864 crossed heads and1,728,000 updates. All432
-prediction replicas are frozen before held scoring; no scope was reduced.
+All 1,728 fitting cells have supported labels. A fresh 2,000-update native
+control matches every original parameter. Full training completed 864 crossed
+heads and 1,728,000 updates. All 432 prediction replicas were frozen before
+the 144-view held readout. None of the
+mechanism screens passes: cut changes have mixed effects, and the larger
+fitting regime is not uniformly better. Even the size-matched magnitude
+readout worsens the coverage-error guard in all six full-input comparisons.
+This narrows the failure diagnosis but does not promote a model. The
+[conclusions](outputs/publication_readiness_2026_09/european_regime_transport_v1/conclusions.md)
+and [complete comparisons](outputs/publication_readiness_2026_09/european_regime_transport_v1/crossed_raw.svg)
+retain conditional improvements, negative results and uncertainty.
 [Execution and recovery](outputs/publication_readiness_2026_09/european_regime_transport_v1/operations.md)
 records the fixed training budget and reproducibility boundaries.
 

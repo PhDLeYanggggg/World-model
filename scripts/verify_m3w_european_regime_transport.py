@@ -28,10 +28,12 @@ def main():
     for phase in ('verify_training', 'verify_eval'):
         logs.append(execute(['scripts/run_m3w_european_regime_transport.py', '--phase', phase], phase))
     names = ['aggregate_metrics.json', 'compute_receipt.json', 'results.md',
-        'crossed_raw.svg', 'crossed_scaled.svg', 'magnitude_transport.svg']
+        'crossed_raw.svg', 'crossed_scaled.svg', 'magnitude_transport.svg',
+        'mass_diagnostic.json', 'mass_diagnostic.md']
     before = {p: run.digest(run.PUBLIC/p) for p in names}
     logs.append(execute(['scripts/report_m3w_european_regime_transport.py'], 'report_replay'))
     logs.append(execute(['scripts/plot_m3w_european_regime_transport.py'], 'plot_replay'))
+    logs.append(execute(['scripts/diagnose_m3w_european_regime_transport.py'], 'mass_diagnostic_replay'))
     assert all(run.digest(run.PUBLIC/p) == h for p, h in before.items())
     xml = run.PRIVATE/'tests.xml'
     logs.append(execute(['-m', 'pytest', '-q', *TESTS, '--junitxml', str(xml)], 'tests'))
@@ -44,9 +46,17 @@ def main():
     assert support['training_allowed'] and len(support['rows']) == 1728
     rows = json.loads((run.PUBLIC/'readout.json').read_text())['rows']
     assert len(rows) == 144 and sum(len(r['replicas']) for r in rows) == 432
+    checklist = run.PUBLIC/'reproducibility_checklist.md'
+    pending = '- Final checkpoint, metric, report and figure replay: pending.'
+    passed = (f'- Final replay completed:864 crossed heads,432 replicas,144 held views;'
+        f' reports, figures and mass diagnostic byte-match;{len(cases)} tests in{len(TESTS)} scoped files pass.')
+    content = checklist.read_text()
+    assert pending in content or passed in content
+    checklist.write_text(content.replace(pending, passed))
     sources = sorted(set(run.FILES+TESTS+[
         'scripts/verify_m3w_european_regime_transport.py',
         'scripts/plot_m3w_european_regime_transport.py',
+        'scripts/diagnose_m3w_european_regime_transport.py',
         'scripts/recover_m3w_oof_magnitude_checkpoint.py']))
     run.immutable_json(run.PUBLIC/'verification.json', dict(all_passed=True,
         fresh_crossed_checkpoints_replayed=864, outer_prediction_replicas_replayed=432,
