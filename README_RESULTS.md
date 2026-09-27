@@ -29,6 +29,12 @@ comparative readout. The slices do not change the primary or select a model.
 The input-only check finds54.10 versus50.51 valid neighbor-history slots per
 query: nearer incomplete neighbors can displace complete histories. Coverage
 and information are not interchangeable; no outcome-based adjustment is made.
+An observation-only
+[association probe](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/association_probe.md)
+also shows that independently reassigning neighbor positions across past times
+barely changes the trained model when each time's point set is unchanged. The
+flattened representation discards supplied track associations. This is a
+structural limitation, not evidence that an identity-aware repair improves accuracy.
 
 ## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 
