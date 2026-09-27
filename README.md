@@ -53,9 +53,11 @@ pass**; separate arithmetic checks cover 1,495,800 query/head constraints,
 not independent samples. A replay-only JSON identity-format defect was fixed
 without changing original code or scientific outputs.
 
-Most rejected original admissions triggered the easy-risk constraint. The next
-question is whether its conditional error scale is modeled correctly, not
-whether easy protection should be relaxed. This remains evidence from twelve
+Most rejected original admissions triggered the easy-risk constraint. My next
+paired experiment separates easy occurrence from conditional error, with the
+same architecture, training queries and common-count controls in both arms.
+It is registered before training, not yet a positive result. I am not relaxing
+easy protection. This remains evidence from twelve
 opened development localities; independent selection, calibration and
 confirmation stay closed.
 

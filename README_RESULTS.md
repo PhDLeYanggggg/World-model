@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Easy Occurrence / Conditional-Risk Repair (Registered, 2026-09-27)
+
+The next paired experiment keeps the forecaster, floor, all-risk score, utility,
+eligibility and2%budget fixed. Both new easy-risk heads have identical networks,
+initialization and source-balanced query draws. One learns the marginal signed
+risk; the other adds explicit easy-occurrence and conditional-cost supervision.
+The old score components were not identified probabilities or cost moments.
+Both arms and the original aggregate head receive same-count controls.
+Training and development readout are not_run at registration. Independent
+selection/calibration/confirmation remain closed; no deployment change.
+CREATE readonly query succeeded; no remote job submitted. Full training requires
+a real fitting-only support/resource pilot, retaining the10GiB reserve.
+[Protocol](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/protocol.md).
+
 ## Centered-Risk Policy (Verified Negative Result, 2026-09-27)
 
 All108action groups and the full evaluation replay exactly.34scoped tests in

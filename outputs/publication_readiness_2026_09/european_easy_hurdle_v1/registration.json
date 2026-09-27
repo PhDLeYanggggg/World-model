@@ -1,0 +1,60 @@
+{
+  "parent_seal": {
+    "path": "outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/verification.json",
+    "sha256": "7193fd508ec85c678765a1fc2b1f0ae4edad598c3331abf06df36d4f8c9b8558"
+  },
+  "bindings": {
+    "configs/m3w_european_easy_hurdle_v1.json": "161acf644989007b12b0fc32fc84cf126a415071a543cf53ebf47c00afdcd98e",
+    "src/world_model/m3w_easy_hurdle.py": "827c6a96052254fcba96a622a72d9474c76fc43cb6d71da400fc3faa39406586",
+    "scripts/run_m3w_easy_hurdle.py": "ed8697462f9b3ca2b1a7062c9ac4785c2b928d9a4a09c06d8cfd4f9a3232500f",
+    "tests/test_m3w_easy_hurdle.py": "20e10dd5dca594db4820e6465f60778b0741e8d5154866e031014f41b95a6b6b",
+    "outputs/publication_readiness_2026_09/european_easy_hurdle_v1/protocol.md": "0595ce75265d9826fd8e8f9bf9c7d1d6a70dfe55dcd3d1fa0e04f6e5f1662f14"
+  },
+  "policies": [
+    "floor",
+    "common_anchor",
+    "raw_independent",
+    "raw_joint",
+    "raw_matched",
+    "marginal_independent",
+    "marginal_joint",
+    "marginal_matched",
+    "supervised_independent",
+    "supervised_joint",
+    "supervised_matched"
+  ],
+  "contrasts": [
+    [
+      "supervised_matched",
+      "marginal_matched"
+    ],
+    [
+      "marginal_matched",
+      "raw_matched"
+    ],
+    [
+      "supervised_matched",
+      "raw_matched"
+    ],
+    [
+      "marginal_joint",
+      "raw_joint"
+    ],
+    [
+      "supervised_joint",
+      "raw_joint"
+    ]
+  ],
+  "causal_keys": [
+    "sites",
+    "history",
+    "origin",
+    "geometry",
+    "recordings",
+    "frames"
+  ],
+  "groups": 108,
+  "heads": 216,
+  "independent_roles_read": false,
+  "formal_primary_replaced": false
+}
