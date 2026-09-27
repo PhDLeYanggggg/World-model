@@ -10,7 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current result:** adding ordered motion and neighbor history has not repaired
+**Current experiment:** I am testing whether the frozen all-harm ceiling
+suppresses useful temporal information or protects against unstable corrections.
+The [fixed attribution](outputs/publication_readiness_2026_09/european_cap_attribution_v1/protocol.md)
+keeps all fitted models unchanged and compares their original outputs with
+causal-envelope alternatives, including the effect on total risk prediction.
+This uses development data only, with no new neural training or deployment change.
+
+**Previous context result:** adding ordered motion and neighbor history has not repaired
 the expected-risk model. I completed
 [1,728 fixed contextual probes](outputs/publication_readiness_2026_09/european_temporal_support_v1/conclusions.md)
 using frozen neural predictions and strict nested locality exclusions.

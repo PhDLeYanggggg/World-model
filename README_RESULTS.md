@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen-Cap Attribution (2026-09-27, Registered)
+
+The next fixed experiment separates the output constraint from the information
+in already fitted temporal probes. No parameters are refitted. Four feature
+arms retain matched frozen-cap, nonnegative, causal-envelope and nested coupled
+outputs. The signed score is an algebra diagnostic only. All 432 views keep
+their existing fitting-only exclusions and independent roles remain closed.
+
+Eleven focused tests pass. CREATE was checked read-only; no job was submitted
+or modified. The local pilot and complete scoring are not_run at registration.
+A large label-aware ceiling floor is not evidence of a biased predicted mean;
+the counterfactual comparisons can favor the current constraint. No model
+promotion, metric/seconds or physical-safety claim. Stage5C and SMC remain off.
+[Protocol](outputs/publication_readiness_2026_09/european_cap_attribution_v1/protocol.md).
+
 ## Temporal Context Screen (2026-09-27, Scientific Screens Failed)
 
 The next experiment tests information missing from the global risk readout,
