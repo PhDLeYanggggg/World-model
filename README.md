@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**In progress:** a matched agent-track encoder experiment now tests whether
+preserving each neighbor's temporal association adds predictive value. Data,
+initial weights, parameter budget, loss and sampled training queries stay fixed.
+The nine-model design is registered before fitting; it has no result yet.
+Independent outcomes remain closed. [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md).
+
 **Current result:** keeping partial neighbor histories has not produced a
 reliable added forecasting gain. I trained
 [nine matched neural models](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/conclusions.md)

@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Agent-Track Topology Refit (2026-09-27, Registered)
+
+The next matched contrast changes only the encoder topology: temporal attention
+within each agent, followed by interaction attention across agents. The same
+sealed partial geometry, three producer folds, three seeds, 4,000 updates,
+initial weights, parameter budget, loss, masks and training sampler are retained.
+The cached flat models are hash-verified controls, not newly trained results.
+All nine new predictions must freeze before comparative outcome scoring.
+
+Twenty-five scoped tests pass, including grouped-model exact interrupted resume
+and future-label poisoning invariance. No research model has been trained in
+this experiment yet. CREATE was checked read-only; its existing jobs are
+untouched. The real local pilot will determine resource suitability. Independent
+selection/calibration/confirmation remain closed; no deployment change.
+[Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md),
+[registration](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/registration.json).
+
 ## Matched Partial-Neighbor Refit (2026-09-27, Benefit Screen Failed)
 
 The input audit motivates one versioned neural repair, not a smoothing or
