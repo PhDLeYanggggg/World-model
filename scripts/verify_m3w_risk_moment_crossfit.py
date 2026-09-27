@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_european_risk_moment_crossfit as run
 
 TESTS = ['tests/test_m3w_risk_moment_crossfit.py', 'tests/test_m3w_geometric_cost_head.py',
+    'tests/test_m3w_risk_moment_reporting.py',
     'tests/test_m3w_native_gain_harm.py', 'tests/test_m3w_fixed_producer_roles.py',
     'tests/test_m3w_floor_relative.py', 'tests/test_m3w_dimensionless_intervention.py']
 
@@ -25,9 +26,9 @@ def main():
     for key in ('summary','detail'): assert run.artifact(ROOT/ev[key]['path']) == ev[key]
     before = {p.name: run.digest(p) for p in run.PUBLIC.iterdir()
               if p.suffix in ('.json','.md','.png') and p.name != 'verification.json'}
-    report = subprocess.run([sys.executable, 'scripts/report_m3w_risk_moment_crossfit.py'],
-                            cwd=ROOT, capture_output=True, text=True)
-    if report.returncode: raise RuntimeError(report.stderr)
+    for script in ('report_m3w_risk_moment_crossfit.py', 'plot_m3w_risk_moment_crossfit.py'):
+        report = subprocess.run([sys.executable, 'scripts/'+script], cwd=ROOT, capture_output=True, text=True)
+        if report.returncode: raise RuntimeError(report.stderr)
     assert before == {name: run.digest(run.PUBLIC/name) for name in before}
     proc = subprocess.run([sys.executable, '-m', 'pytest', '-q', *TESTS],
                           cwd=ROOT, capture_output=True, text=True)
@@ -37,6 +38,7 @@ def main():
     parent = json.loads((run.parent.PUBLIC/'verification.json').read_text())
     bindings = dict(parent['source_bindings']); bindings.update(identity['bindings'])
     extra = ['scripts/replay_m3w_risk_moment_training.py', 'scripts/report_m3w_risk_moment_crossfit.py',
+             'scripts/plot_m3w_risk_moment_crossfit.py',
              'scripts/verify_m3w_risk_moment_crossfit.py', *TESTS]
     bindings.update({p: run.digest(ROOT/p) for p in extra})
     for p, h in bindings.items(): assert run.digest(ROOT/p) == h

@@ -10,15 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am separating two possible risk-head failures:
-underestimated intervention harm and overestimated reference error. A fixed
-three-source-fit/one-source-held diagnostic retains the same forecaster, features,
-loss and 2% risk screen. It does not tune a deployment policy or open independent
-evaluation roles. All144 heads completed288,000 updates; the process took394.95s
-with peak RSS8.12GB. Predictions are frozen before outcome scoring.43 scoped
-preflight tests pass. [Protocol](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/protocol.md).
+**Latest diagnosis:** the risk heads learn useful average predictions, but that
+does not make their chosen interventions reliable. I trained 144 matched heads
+with three-source fitting and one-source holdout. On held sources, the neural
+head reduces reference-error MSE by **13.41%** and harm MSE by **14.88%** against
+fitting-only constants. Yet its nominal 2% risk screen accepts a subset with
+**4.87% [3.19%, 6.92%]** observed positive harm relative to CV error. Even inside
+fitting sources that ratio is 2.85%. This is not net ADE or easy degradation,
+and the diagnostic screen is not the complete deployment policy.
 
-**Latest result:** protecting easy cases is now possible in this source study,
+Both overestimated reference error and underestimated harm contribute to the
+mismatch. I am keeping deployment unchanged and testing a direct risk-budget
+objective next, followed by strictly source-separated calibration. Independent
+evaluation roles remain closed. The 288,000-update run, all 144 prediction
+replays and a full first-head training replay are complete; **48 scoped tests
+pass**. Reports and the aggregate figure reproduce byte-for-byte.
+[Results](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/failure_analysis.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/operation_zh.md).
+
+**Latest trajectory comparison:** protecting easy cases is now possible in this source study,
 but the protected neural model still loses to equally protected damping. I froze
 the improved forecaster and trained 108 matched gain/harm heads across three
 seeds. Protected neural ADE improves **0.33% over CV**, compared with **0.70%**

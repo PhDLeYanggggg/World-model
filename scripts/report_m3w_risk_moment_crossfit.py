@@ -34,6 +34,12 @@ def main():
         '|---|---:|---:|---:|---:|']
     for arm, s in d['by_candidate'].items():
         rows.append(f"| {arm} | {interval(s['fit_harm_MSE_skill_percent'])} | {interval(s['held_harm_MSE_skill_percent'])} | {interval(s['held_screen_rate'])} | {interval(s['held_screen_actual_harm_ratio'])} |")
+    rows += ['', '| Candidate | Fit predicted ratio | Fit actual ratio | Held predicted ratio | Held actual ratio |',
+        '|---|---:|---:|---:|---:|']
+    for arm, s in d['by_candidate'].items():
+        keys = ['fit_screen_predicted_harm_ratio','fit_screen_actual_harm_ratio',
+                'held_screen_predicted_harm_ratio','held_screen_actual_harm_ratio']
+        rows.append('| '+arm+' | '+' | '.join(interval(s[k]) for k in keys)+' |')
     rows += ['', 'The all-risk screen omits utility/easy heads on purpose, preventing the other heads',
         'from seeing the held controller source. It is not a proposed deployable policy. An empirical',
         'ratio over2% diagnoses a miscalibrated predicted screen; it does not invalidate a nonexistent',
@@ -61,7 +67,7 @@ def main():
         'claim. No Stage5C execution, SMC or deployment change.', '']
     (run.PUBLIC/'results.md').write_text('\n'.join(rows))
     frozen = json.loads((run.PUBLIC/'prediction_freeze.json').read_text())
-    records = [json.loads((ROOT[r['path']]).read_text()) for r in frozen['heads']]
+    records = [json.loads((ROOT/r['path']).read_text()) for r in frozen['heads']]
     training = dict(heads=len(records), updates=sum(r['fit']['step'] for r in records),
         fit_seconds=sum(r['fit']['seconds'] for r in records),
         unknown_training_draws=sum(r['fit']['unknown_rows_sampled'] for r in records),

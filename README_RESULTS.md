@@ -5,20 +5,50 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Moment Cross-Fit (2026-09-27, Trained, Predictions Frozen)
+## Cost-Moment Cross-Fit (2026-09-27, Verified, Conditional Risk Fails)
 
-The next diagnostic separates reference-cost calibration from positive-harm
+This completed diagnostic separates reference-cost calibration from positive-harm
 calibration in the matched controller. For each producer/seed/candidate and
 four-locality controller roster, fit the same all-risk head on three localities
-and hold one out. Planned144 heads at2000 updates, no architecture or loss change.
+and hold one out.144 heads at2000 updates, no architecture or loss change.
 Fitting-only normalization and score bins; bootstrap at the locality level.
 The fixed2% screen is a diagnostic, not the full deployment policy.
 Registration `3aec1c5e` preceded the native Torch training. All144 heads now
-complete288,000 updates; elapsed394.95s, peak RSS8.12GB. The100-update pilot
-resumed within the fixed budget. All predictions are frozen before scoring.
+complete288,000 updates; cumulative fitting291.78s, elapsed394.95s, peak RSS8.12GB.
+The100-update pilot resumed within the fixed budget. Prediction freeze `42d75f5f`
+was committed before scoring. Unknown-label training draws are zero.
 43 tests in five scoped files pass before training. The outer readout and
 independent roles are not scored. Deployment, Stage5C and SMC remain unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/protocol.md).
+
+Neural reference-cost MSE skill over fitting constants is45.37% in fitting sources
+and **13.41% [3.75%,22.14%]** on held sources; harm skill falls from31.01% to
+**14.88% [10.74%,19.01%]**. Useful average prediction survives source holdout, but
+does not calibrate the selected subset. The fixed all-risk screen predicts
+1.019% harm/reference on fitting sources and0.995% on held sources; actual ratios
+are **2.850% [2.383%,3.292%]** and **4.867% [3.190%,6.916%]**. Ten of twelve held
+locality means exceed2%. On held screened rows, actual/predicted reference is
+0.419 and actual/predicted harm1.804: both budget inflation and harm underprediction.
+These are not net ADE degradation or easy degradation. This screen intentionally
+omits the prior complete policy's utility/easy guards; it is not a deployment result.
+Damping's held screen ratio is2.602% [0.967%,5.379%], with four locality means above2%.
+
+All144 head predictions replay exactly. A full first-head training replay matches
+parameters, optimizer, sampling, RNG and logged losses. Scoring replay is exact;
+reports/figure reproduce byte-for-byte. **48 tests in seven scoped files pass**.
+The seal binds17 public artifacts and105 source files. The full historical suite
+and cold raw rebuild remain not_run. A report-only path-join typo was repaired
+with a regression test; no numeric evaluation, weights or thresholds changed.
+
+The next controlled repair is a signed risk-budget-excess target, not threshold
+relaxation or another model stack. Any calibration must exclude the held locality
+from the whole fitting chain, including producers of meta-predictions. No new
+safe neural advantage or independent confirmation is claimed.
+[Results](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/failure_analysis.md),
+[figure](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/moment_evidence.png),
+[project gap](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/project_gap.md),
+[verification](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/verification.json).
 
 ## Matched Intervention Refit (2026-09-27, Safe Mean Behavior, Primary Benefit Fails)
 
