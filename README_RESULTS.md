@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Shape Study (2026-09-27, Registered Implementation)
+
+The next controlled experiment compares fixed monotone readouts with and
+without fitting-only mean constraints. It retains all 144 source views,
+three seeds, true/shuffled controls, the existing primary and every guard.
+Fifteen targeted tests pass, including an independent numerical solver
+comparison. Real-data fitting and held scoring have not yet run. CREATE was
+checked read-only; no job was submitted or modified. Independent roles and
+deployment stay unchanged. [Protocol](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md).
+
 ## Cost-Mass Readout Study (2026-09-27, Scientific Screens Failed)
 
 I completed 432 scalar moment-matching fits across 144 source-held views.

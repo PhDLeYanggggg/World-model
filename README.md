@@ -10,7 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current result:** matching the average predicted harm is not enough to
+**Current experiment:** I am testing whether a small monotone risk readout can
+preserve expected harm while reducing prediction error. The
+[shape study](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md)
+keeps the original metrics and controls, uses only honest fitting-side OOF
+scores, and freezes predictions before source-held scoring. Independent roles
+remain closed. Fifteen targeted implementation tests pass; real-data fitting
+and its scientific result are still pending. This is not new neural training.
+
+**Previous result:** matching the average predicted harm is not enough to
 estimate which interventions will be harmful. I completed a fixed
 [cost-mass readout study](outputs/publication_readiness_2026_09/european_cost_mass_v1/conclusions.md)
 with 432 two-parameter fits and 144 source-held views, reusing verified neural
