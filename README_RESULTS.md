@@ -5,27 +5,57 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched Intervention Refit (2026-09-27, Registered)
+## Matched Intervention Refit (2026-09-27, Safe Mean Behavior, Primary Benefit Fails)
 
-The next experiment freezes the improved dimensionless predictor and fits
+This experiment freezes the improved dimensionless predictor and fits
 the same utility/all-risk/easy-risk controllers to it and to fixed damping.
 Six disjoint producer/controller/readout assignments and three seeds give
 108 Torch heads at 2,000 updates each. All-source pointwise selection and fixed
 96-query-per-locality scene controls are separate populations. Joint, unary and
 independent controls have an explicit matched-count comparison. Forty-six scoped
 preflight tests pass, including exact resumed fitting and causal input isolation.
-Registration `7194f8a3` precedes training. All108heads now completed216000updates
-in152.75cumulative fit seconds; the full training process took237.85seconds,
-peak RSS7.57GB. Unknown-label training draws are zero. The first100-update
+Registration `7194f8a3` precedes training. All 108 heads completed 216,000 updates
+in 152.75 cumulative fit seconds; the full training process took 237.85 seconds,
+peak RSS 7.57 GB. Unknown-label training draws are zero. The first 100-update
 pilot resumed inside the budget. This is completed training, not a safety result.
-All36candidate/role/seed decision groups are frozen before outcome readout;
-decision construction took62.59seconds, peak RSS1.30GB. Both full-bank pointwise
+All 36 candidate/role/seed decision groups were frozen in `06f93eeb` before outcome readout;
+decision construction took 62.59 seconds, peak RSS 1.30 GB. Both full-bank pointwise
 and the fixed scene-query controls are preserved, without selecting a winner.
 A fresh read-only CREATE queue query succeeds;
 no remote jobs are submitted or changed. The preceding authorization-only turn
-did not produce experimental progress. No new learned result is claimed here.
+did not produce experimental progress.
 Independent selection/calibration/confirmation, deployment, Stage5C and SMC
 are unchanged. [Protocol](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/protocol.md).
+
+The fresh readout is negative on its primary matched comparison: protected
+neural vs protected damping ADE gain **-0.3707% [-0.6136%, -0.1252%]**. Against CV,
+protected neural improves **0.3342% [0.2547%, 0.4224%]**, while protected damping
+improves **0.6994% [0.4878%, 0.9297%]**. Neural easy ADE improves 3.9961%; all locality
+means preserve easy, and the worst single locality/role/seed easy degradation is
+0.6108%. Four reference-exact queries remain untouched in all six dependent views.
+Hard gain is only 0.1549%. These are observed development results, not a deployment
+certificate. None of the three seed primary point estimates favors neural.
+
+The fixed joint-query comparison has only 41 supported nonadditive neural query-views
+out of 6,912 dependent views; joint changes 14. Verified matched-count neural joint
+vs independent gain is approximately -0.000032%, with an interval crossing zero.
+All-query controls retain 53 neural/145 damping numerical solver floors. The apparent
+damping joint-vs-unary gain shrinks from 0.0368% to 0.000382% on matched queries;
+it does not beat independent selection. No neural interaction contribution follows.
+
+The head forecasts, decisions and scoring replay exactly. A fresh first-head
+training replay matches parameters, optimizer, sampling and every logged loss.
+**120 tests in 13 scoped files pass**; reports and the aggregate figure reproduce
+byte-for-byte. The seal binds 23 public artifacts and 95 source files. Detailed
+query evaluation remains local and Git-ignored. A float32 boundary discrepancy
+was repaired only in the diagnostic, not in any frozen policy or score.
+
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/results.md),
+[risk diagnosis](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/risk_diagnosis.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/paper_addendum.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/verification.json).
 
 ## Dimensionless Fraction Refit (2026-09-27, Predictor Gain, Safety Still Fails)
 

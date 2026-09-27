@@ -13,6 +13,17 @@ def ratio(a, b):
     return float(np.sum(a)/np.sum(b)) if np.sum(b)>0 else None
 
 
+def fallback_reasons(utility, all_risk, easy_risk, moving, budget):
+    # Replay the frozen policy's float64 comparisons, including boundary cases.
+    u, a, e = (np.asarray(v, dtype=float) for v in (utility, all_risk, easy_risk))
+    reasons = np.zeros(len(moving), np.int8)
+    reasons[moving] = 1
+    reasons[moving & (u[:,0]>u[:,1])] = 2
+    reasons[(reasons==2) & (a[:,1]<=budget*a[:,0])] = 3
+    reasons[(reasons==3) & (e[:,1]<=budget*e[:,0])] = 4
+    return reasons
+
+
 def main():
     run.torch.set_num_threads(4); run.torch.set_num_interop_threads(1)
     cfg, data, jobs, identity, _ = run.load()
@@ -31,11 +42,7 @@ def main():
                                      data['valid'][ids], np.ones(len(ids)))[0]
                 moving = np.linalg.norm(data['history'][ids,-1]-data['history'][ids,-2], axis=1)>0
                 u, a, e = (s[k] for k in ('utility','all','easy'))
-                reasons = np.zeros(len(ids), np.int8)
-                reasons[moving] = 1
-                reasons[moving & (u[:,0]>u[:,1])] = 2
-                reasons[(reasons==2) & (a[:,1]<=cfg['risk_budget']*a[:,0])] = 3
-                reasons[(reasons==3) & (e[:,1]<=cfg['risk_budget']*e[:,0])] = 4
+                reasons = fallback_reasons(u,a,e,moving,cfg['risk_budget'])
                 with np.load(run.PRIVATE/'decisions'/(name+'.npz'), allow_pickle=False) as z:
                     np.testing.assert_array_equal(z['ids'], ids)
                     np.testing.assert_array_equal(z['point'], reasons==4)

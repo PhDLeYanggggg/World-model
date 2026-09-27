@@ -66,13 +66,13 @@ def main():
     primary = next(r['metrics']['gain_vs_legacy_percent'] for r in d['neural_vs_protected_damping'] if
                    r['scope']=='full' and r['policy']=='point' and r['endpoint']=='ADE' and r['subset']=='all')
     text = ['# Matched Frozen-Predictor Intervention Results', '',
-        'Result provenance: fresh108Torch cost heads and causal decisions; cached_verified frozen forecasts.',
-        'Exploratory opened European source-development only. Obs8/pred12 at raw stride12.',
+        'Result provenance: 108 fresh Torch cost heads and causal decisions; cached_verified frozen forecasts.',
+        'Exploratory opened European source-development only. Obs8/pred12 at raw stride 12.',
         'Detector-derived silver image-local trajectories, not human gold, metric, calibrated seconds,',
         'independent confirmation, physical safety, true3D or foundation evidence. No deployment change.', '',
         '## Full-Bank Pointwise and Unprotected Comparisons', '',
-        'Positive values mean lower error. Equal-locality percent gains;3000paired locality-bootstrap draws.',
-        'Average seed/producer contexts inside each of12localities before resampling; overlapping windows',
+        'Positive values mean lower error. Equal-locality percent gains; 3,000 paired locality-bootstrap draws.',
+        'Average seed/producer contexts inside each of 12 localities before resampling; overlapping windows',
         'are not independent samples. CV is the fixed fallback; training-selected causal references are',
         'reported separately, not silently called CV the strongest.', '',
         '| Candidate | Policy | ADE vs CV | Easy ADE vs CV | Hard ADE vs CV | FDE vs CV |',
@@ -90,7 +90,7 @@ def main():
     easy_site=get('dimensionless','point','ADE','positive_easy')['gain_vs_CV_percent']['by_site']
     text += [f'| {s} | {fmt(all_site[s])} | {fmt(easy_site[s])} |' for s in sites]
     text += ['', '## Joint Query Subset', '',
-        '96hash-selected recording/frame queries per locality; all indexed query agents retained.',
+        '96 hash-selected recording/frame queries per locality; all indexed query agents retained.',
         'This is not full-bank joint evaluation. Exact-count diagnostics retain solver failures and',
         'zero matches. A zero intervention rate or lower proximity proxy alone is not neural gain.', '',
         '| Candidate | Dependent query views | Nonzero matched | Active nonadditive | Joint changes | Solver floors |',
@@ -102,6 +102,16 @@ def main():
               r['control']==control and r['endpoint']=='ADE' and r['subset']=='all' and r['population']=='all_queries')
               for control in ('half_independent','half_unary')]
         text.append('| '+c+' | '+' | '.join(map(fmt,vals))+' |')
+    text += ['', 'The preceding table retains solver-floor outcomes. It is not necessarily matched coverage.',
+        'Restricting to queries with verified equal nonfailed counts gives:', '',
+        '| Candidate | Matched joint vs independent ADE | Matched joint vs unary ADE |', '|---|---:|---:|']
+    for c in ('dimensionless','damped'):
+        vals=[next(r['metrics']['gain_vs_legacy_percent'] for r in d['joint_contrasts'] if r['candidate']==c and
+              r['control']==control and r['endpoint']=='ADE' and r['subset']=='all' and r['population']=='matched')
+              for control in ('half_independent','half_unary')]
+        text.append('| '+c+' | '+' | '.join(map(fmt,vals))+' |')
+    text += ['', 'Matched zero-action queries remain present. The matched-nonadditive population is',
+        'separate in summary_metrics.json; missing locality support is not silently dropped.']
     text += ['', '## Zero-Reference Costs', '',
         'Reference-exact rows have undefined percentage gains. These are repeated producer/seed views,',
         'not additional independent queries. The complete supported absolute-cost table follows.', '',
@@ -115,29 +125,29 @@ def main():
     write('model_data_card.md', '''# Model and Data Card
 
 Frozen dimensionless forecast bank, plus separate three-moment envelope heads
-for it and fixed damping. Heads are22914parameters each,64wide GELU,2000updates.
+for it and fixed damping. Heads have 22,914 parameters each, width 64, GELU, and 2,000 updates.
 Source-only controller preprocessing; twelve opened source localities, three
-producer groups, six ordered role assignments, seeds17/29/43. No readout fitting.
-All108heads are fresh training; forecasters are hash-verified cached results.
+producer groups, six ordered role assignments, seeds 17/29/43. No readout fitting.
+All 108 heads are fresh training; forecasters are hash-verified cached results.
 
-Input355causal features contain target/neighbor histories, full predicted
+The 355 causal features contain target/neighbor histories, full predicted
 candidate/CV rollouts and observed scale. No future endpoint, mask, target latent,
 central velocity, test endpoint goal or test-fitted statistics. Label-derived
 hard/easy events are evaluation/training labels, not inference features.
 
-Fixed2% predicted all/easy moment screens, no readout threshold tuning. Their
+Fixed 2% predicted all/easy moment screens, no readout threshold tuning. Their
 predicted ratios are not realized guarantees. Joint controls optimize an image
 proximity proxy at a matched count; it is not a physical collision measure.
 Nonadditive geometry support and numerical solver failures must accompany claims.
 
-318969 source-training target histories; recordings and localities are not new
+318,969 source-training target histories; recordings and localities are not new
 confirmation datasets. Silver detector tracks, image-local coordinates,
-obs8/pred12 rawstride12. Independent roles remain closed. No deployment,
+obs8/pred12 raw stride 12. Independent roles remain closed. No deployment,
 Stage5C, SMC, metric/seconds, true3D, human-gold or foundation claim.
 ''')
     write('reproducibility.md', '''# Reproduction
 
-Use the existing native arm64 .venv-pytorch; CPU4/interop1, workers0. No resource
+Use the existing native arm64 .venv-pytorch; CPU 4/interop 1, workers 0. No resource
 probing, multiprocessing or NumPy replacement for training. Private data and
 checkpoint caches are not distributed. Registration binds source and parent
 seals; original fitting states, forecasts and split lineage must be available.
@@ -155,8 +165,8 @@ seals; original fitting states, forecasts and split lineage must be available.
 
 Register before fresh training; commit decision_freeze.json before readout.
 On completed artifacts use replay phases; do not delete checkpoints to restart.
-The first pilot resumes inside its2000-update budget. Checkpoint every200updates,
-heartbeat and PIDs in the private event log. At least10GiB free before each fit.
+The first pilot resumes inside its 2,000-update budget. Checkpoint every 200 updates,
+heartbeat and PIDs in the private event log. At least 10 GiB free before each fit.
 Resume skips hash-verified completed heads and completed decision groups.
 Shared simulation jobs/environment must never be modified. Local fit is measured
 to fit the machine. CREATE queue readout is not M3W remote training evidence.

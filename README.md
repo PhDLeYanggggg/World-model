@@ -10,14 +10,28 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**In progress:** I am fitting matched gain/harm heads to the frozen improved
-neural forecasts and to damping, then comparing pointwise and scene-joint
-intervention. Both candidates receive the same training budget and risk rules.
-The protocol uses only opened source-development localities; independent roles
-remain closed. There is no new safety result yet.
-[Registered comparison](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/protocol.md).
+**Latest result:** protecting easy cases is now possible in this source study,
+but the protected neural model still loses to equally protected damping. I froze
+the improved forecaster and trained 108 matched gain/harm heads across three
+seeds. Protected neural ADE improves **0.33% over CV**, compared with **0.70%**
+for protected damping. The direct neural advantage is **-0.37% [-0.61%, -0.13%]**.
+Easy ADE improves 4.00%, and four reference-exact queries are left untouched,
+but these source-development checks are not independent safety guarantees.
+Matched-count joint decisions add no demonstrated neural accuracy gain.
+I am not changing deployment or opening independent evaluation roles.
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/results.md),
+[failure diagnosis](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/operation_zh.md).
 
-**Current result:** fixing coordinate units inside the bounded correction
+All 108 head predictions, 36 decision groups and the full readout reproduce
+exactly. The fixed first head also reproduces from initialization, including
+optimizer, sampling and loss traces. **120 tests in 13 scoped files pass**;
+reports and the aggregate figure are byte-reproducible. These checks verify
+the experiment, not the failed primary benefit hypothesis. The remaining issue
+is selected-set risk: useful actions are vetoed while some accepted neural
+actions have much greater harm than predicted.
+
+**Predictor-only result:** fixing coordinate units inside the bounded correction
 improves the matched neural forecaster's ADE by **4.72%**, with an exploratory
 locality interval of **[2.53%, 7.89%]**. All three seed intervals are positive.
 Against constant velocity, all-ADE improves 8.46% and hard-ADE 13.36%, but easy
