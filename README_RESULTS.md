@@ -24,8 +24,8 @@ and zero unknown-label sampling. Estimated auxiliary fitting time is 29.2 minute
 excluding references, loading and diagnostics. Full training follows the same
 fixed budget with resume; source-held readout remains not_run. Independent roles
 stay closed. Registration `35a05b87` and support `bf1ab738` preceded this pilot.
-Training PID 57873 is active; the midpoint checkpoint records 75 completed
-single-site references and 434/864 auxiliary heads, totaling 1,018,000 completed
+Training PID 57873 is active; the two-thirds checkpoint records 96 completed
+single-site references and 576/864 auxiliary heads, totaling 1,344,000 completed
 updates. Unknown-label draws remain zero. A further held-locality
 perturbation test passes, bringing scoped preflight coverage to 26 tests.
 These are execution facts, not a scientific result. The fitting diagnostics
