@@ -10,11 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current check:** I am decomposing the predictions exchanged between the
-frozen descriptor policy and its same-query-count control. This separates
-lost benefit from added harm before changing the training objective again.
-No policy, threshold or independent-source role is changing.
-[Protocol](outputs/publication_readiness_2026_09/european_selection_exchange_v1/protocol.md).
+**Latest diagnosis:** at the same intervention count, the descriptor policy
+reduces harm by **0.00638%**, but sacrifices **0.02026%** in benefit, both
+relative to the control's total error. The larger benefit loss explains the
+negative net result. The frozen utility model already predicts lower utility
+on the exchanged selections; a sign-only admission rule loses that magnitude
+information. All 108 groups replay, with 19 scoped tests and 747,900 query
+checks. This is a diagnosis, not a deployment change.
+
+My next test keeps every estimator frozen and compares independent admission,
+whole-query admission and utility-aware joint allocation under the same
+predicted risk budget. Outcome risk, not predicted feasibility, decides
+whether that repair is useful.
+[Results](outputs/publication_readiness_2026_09/european_selection_exchange_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_selection_exchange_v1/conclusions.md),
+[verification](outputs/publication_readiness_2026_09/european_selection_exchange_v1/verification.json).
 
 **Latest result:** explicit causal features improve average error, but do not
 yet make neural intervention safer. I trained 108 matched risk heads with six

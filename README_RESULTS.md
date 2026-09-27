@@ -5,15 +5,28 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Selection Exchanges (2026-09-27, Registered Diagnostic)
+## Frozen Selection Exchanges (2026-09-27, Verified Diagnostic)
 
 The descriptor policy loses at matched current-query intervention counts.
 The next check partitions frozen decisions into common, new-only, control-only,
 eligible-unselected and excluded sets. An exact benefit-minus-harm identity
 must reconstruct the parent ADE contrast. All 108 groups, unknown-label rows
 and twelve development localities remain; no tuning or independent-role access.
-Six focused accounting tests pass. This is not new training or a new primary.
-[Protocol](outputs/publication_readiness_2026_09/european_selection_exchange_v1/protocol.md).
+Fresh computation and full replay agree. Benefit change is -0.020256%
+[-0.037960%, -0.006774%], harm change -0.006380% [-0.011866%, -0.001827%],
+and their difference reconstructs -0.013876% ADE. Predicted utility also falls
+by 0.013826% [-0.023990%, -0.005768%]. The failure is benefit loss outweighing
+harm reduction, supporting a frozen utility-aware allocation test before
+another head fit. No causal root-mechanism or deployment claim follows.
+
+19 scoped tests pass; 747,900 current-query checks, 3,672 partition/accounting
+checks and 108 locality reductions independently verified. 20,242 dependent
+query views change selections. Reports/figure reproduce. Runtime 44.22 seconds,
+peak RSS 8.45 GB; replay 44.40 seconds, 8.21 GB. CREATE queue read-only pass,
+no jobs submitted. No new training, independent role access or deployment.
+[Results](outputs/publication_readiness_2026_09/european_selection_exchange_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_selection_exchange_v1/conclusions.md),
+[verification](outputs/publication_readiness_2026_09/european_selection_exchange_v1/verification.json).
 
 ## Causal-Descriptor Refit (2026-09-27, Primary Failed)
 
