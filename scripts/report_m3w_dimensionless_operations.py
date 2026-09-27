@@ -31,6 +31,17 @@ def main():
         create_receipt=run.artifact(run.PRIVATE/'create_queue.json'),
         create_readonly_query_returncode=queue['response']['returncode'],create_jobs_submitted=0,
         remote_modified=False,independent_roles_read=False,private_data_committed=False)
+    replay=json.loads((run.PUBLIC/'training_replay.json').read_text())
+    replay_log=run.PRIVATE/'train_replay.log'
+    text=replay_log.read_text()
+    wall=re.search(r'^\s*([\d.]+) real\s+([\d.]+) user\s+([\d.]+) sys\s*$',text,re.M)
+    rss=re.search(r'^\s*(\d+)\s+maximum resident set size\s*$',text,re.M)
+    assert wall and rss and replay['all_parameters_exact'] and replay['steps']==4000
+    doc['training_replication']=dict(steps=4000,fit_seconds=replay['fit_seconds'],
+        process_seconds=float(wall[1]),peak_RSS_bytes=int(rss[1]),log=run.artifact(replay_log),
+        parameters_optimizer_losses_sampler_exact=True,new_candidate=False,
+        child_pid='not_recorded_by_replay_log',concurrent_with_prediction_generation=True)
+    doc['total_optimizer_updates_including_verification']=doc['updates']+4000
     run.immutable_json(run.PUBLIC/'operations.json',doc)
     lines=['# Execution and Resource Record','',
         'Native arm64 Torch CPU, four compute threads, one interop thread, zero workers.',
@@ -44,6 +55,11 @@ def main():
         'CREATE was checked read-only, no remote job submitted, cancelled or modified.',
         'The local pilot fit the resource envelope; no remote migration was necessary.',
         'Checkpoints, private predictions, raw data and detailed logs are not committed.','',
+        f"Separate fixed-first training replay: 4,000 updates, {float(wall[1]):.2f} process seconds, peak RSS {int(rss[1])/1e9:.3f}GB.",
+        'Weights, optimizer, logged losses and sampler/RNG states reproduce exactly.',
+        'This is not an extra candidate or independent replication. Total work including verification:40,000 updates.',
+        'The replay overlapped prediction generation, so timings are operational receipts, not isolated speed benchmarks.',
+        'Its child PID was not recorded by that short verification runner; the nine-model main run has PID/heartbeat logs.','',
         'Existing geometry, control checkpoints and controls: cached_verified, with fresh control inference.',
         'New training, predictions, scoring and replay: fresh_run.',
         'Independent confirmation, full historical test suite and cold raw-download rebuild: not_run.',
