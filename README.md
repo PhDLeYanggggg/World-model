@@ -11,7 +11,7 @@ and deciding which agents should receive a neural prediction.
 ## Research Question
 
 The main observation protocol is **8 observed steps and 12 predicted steps**.
-The current European-source experiment uses a stride of12 raw frames;
+The current European-source experiment uses a stride of 12 raw frames;
 raw-frame `t+50` is a separate historical supplement, not the same task.
 
 I am testing three linked questions:
@@ -27,7 +27,7 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 **Anchored subset-risk training did not repair safe selection.**
 
-I trained216 matched risk heads with432,000updates. Both arms use identical
+I trained 216 matched risk heads with 432,000 updates. Both arms use identical
 features, initialization, query and row draws, and optimizer budgets. They
 differ only in how an auxiliary loss supervises three causal selection subsets.
 The trajectory predictors, protected floor and utility model stay frozen.
@@ -35,19 +35,24 @@ The trajectory predictors, protected floor and utility model stay frozen.
 At the same per-query intervention count, aggregate subset supervision gains
 **0.00068% ADE [-0.00870%, +0.01049%]** over its pointwise control. That does
 not support an accuracy advantage. Its total-reference harm diagnostic
-**increases by0.00228percentage points [0.00014,0.00472]**.
+**increases by 0.00228 percentage points [0.00014, 0.00472]**.
 
-The joint policy gains0.5079%ADE over the protected floor, but84of216 dependent
-views exceed the selected-harm screen and16ratios are undefined. Easy net error
+The joint policy gains 0.5079% ADE over the protected floor, but 84 of 216 dependent
+views exceed the selected-harm screen and 16 ratios are undefined. Easy net error
 is preserved; this is still **not a deployment upgrade**. A tiny secondary
 gain against an older ranking control does not change that conclusion.
 
 These are results from twelve already-opened development localities, with
-three forecasting seeds and3,000locality-bootstrap draws. Training and actions
-were committed before readout. Full replay and independent verification are
-in progress. Independent selection, calibration and confirmation remain closed.
+three forecasting seeds and 3,000 locality-bootstrap draws. Training and actions
+were committed before readout. The first complete paired fit, all 216 predictions,
+all 108 action groups and the full evaluation replay exactly. **44 scoped tests
+pass**, with 747,900 query checks, 2,592 independently accounted error views
+and 17,083 locality-statistic checks. Independent selection, calibration and
+confirmation remain closed. These checks verify the experiment, not deployment.
 
 - [Experiment conclusions](outputs/publication_readiness_2026_09/european_subset_excess_v1/conclusions.md)
+- [Full results and losses](outputs/publication_readiness_2026_09/european_subset_excess_v1/results.md)
+- [Verification record](outputs/publication_readiness_2026_09/european_subset_excess_v1/verification.json)
 - [Failure analysis](outputs/publication_readiness_2026_09/european_subset_excess_v1/failure_analysis.md)
 - [Registered protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md)
 - [Method positioning and limits](outputs/publication_readiness_2026_09/european_subset_excess_v1/method_positioning.md)
@@ -61,7 +66,7 @@ better allocation, better prediction loss and reliable risk control.
 ## Evidence Boundaries
 
 The project currently remains a **2.5D multi-agent trajectory/world-state
-research system**, not a true3D or foundation world model. Coordinates are
+research system**, not a true 3D or foundation world model. Coordinates are
 image-local, pixel-space or dataset-local unless separately verified. Raw-frame
 horizons are not seconds. Detector, inferred and self-audited labels are not
 human gold, and statistical harm diagnostics are not physical-safety guarantees.
@@ -99,8 +104,8 @@ third-party images and local virtual environments stay out of Git.
 ## Running Locally
 
 On Apple Silicon, use the native arm64 PyTorch environment, not Intel Conda
-under Rosetta. Current risk-head experiments use4compute threads,1interop
-thread and0DataLoader workers, with atomic checkpoints, heartbeat and resume.
+under Rosetta. Current risk-head experiments use 4 compute threads, 1 interop
+thread and 0 DataLoader workers, with atomic checkpoints, heartbeat and resume.
 
 A focused check for the latest experiment:
 

@@ -5,7 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Anchored Subset Supervision (2026-09-27, Negative Readout; Verification Pending)
+## Anchored Subset Supervision (2026-09-27, Verified Negative Result)
+
+**44 scoped tests pass in eight files.** First paired fit, all216 predictions,
+all108 action groups and full evaluation replay exactly. Independent code
+checks747,900queries,1,913,814causal-bank rows across repeated contexts,
+2,592cost-accounting views and17,083locality reductions. The causal-bank count
+is not a unique-data-row count. Cached controls and report/figure bytes match.
+Verification binds210source files and21public artifacts; SHA256:
+`b855b36149323d05e41d82f6d63dad91636a42f84afc559d5ce85b1f8ef4cb2b`.
+Action replay702.34s; evaluation replay174.47s; independent verification255.18s,
+peakRSS11,322,114,048bytes. Full legacy suite and cold raw reconstruction remain
+not_run. These engineering checks verify a negative method experiment, not
+independent generalization, calibration or deployment. The research goal stays
+active; next is frozen-action residual/support diagnosis before a new repair.
 
 Same-count subset-aggregate versus subset-pointwise ADE gain is
 **+0.000678% [-0.008701%,+0.010486%]**, positive in5/12localities.
@@ -24,7 +37,8 @@ intervals, and does not repair safety. No deployment or confirmation claim.
 Held controller-subset all-risk MSE falls3.49%descriptively, while whole-query
 easy-risk MSE rises1.64%. Better proxy MSE did not establish better selected-set
 risk. Both new arms' own fitting loss falls108/108heads. First readout168.29s,
-peakRSS11,169,103,872bytes, PID47334; full replay/independent verification pending.
+peakRSS11,169,103,872bytes, PID47334; full replay and independent verification
+are now complete as recorded above.
 Registration f39d5aa4,training freeze36923606,action freezeb959c128 precede their
 corresponding experimental steps. Independent roles remain closed.
 [Conclusions](outputs/publication_readiness_2026_09/european_subset_excess_v1/conclusions.md),
