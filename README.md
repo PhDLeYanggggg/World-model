@@ -16,7 +16,8 @@ improves neural forecasting. The
 fixes the original three seeds, training localities, loss and 4,000-update
 budget. The old control now reproduces every parameter exactly after checkpoint
 resume; all nine new models have completed 4,000 updates. Their predictions
-are being generated and verified before freezing and comparison. This is source-development work;
+are now frozen, with all nine legacy controls reproduced by fresh inference.
+Comparative scoring is next. This is source-development work;
 independent selection, calibration and confirmation remain closed.
 
 **Current finding:** the model has been excluding many visible neighbors.

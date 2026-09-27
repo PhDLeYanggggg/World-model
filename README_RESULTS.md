@@ -19,7 +19,10 @@ The pilot ran 100 updates in 2.24 training seconds, then resumed to the
 parameter and the sampling state match the cached control exactly. Nine new
 models have now completed 36,000 updates in 899.93 cumulative training seconds
 (902.94-second training process, peak RSS1.66GB). Each has88,514 parameters;
-no held-locality row was sampled. Predictive lift is not_run until prediction freeze.
+no held-locality row was sampled. All nine prediction pairs are now frozen:
+1,913,814 query-forecast pairs per arm, not independent samples. Fresh inference
+matches every legacy prediction exactly. Generation/verification took669.15
+process seconds. Comparative predictive lift remains not_run at this freeze.
 No independent-role access or deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md),
 [data/model scope](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/data_model_card.md),
