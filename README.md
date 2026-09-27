@@ -10,11 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Running next:** a frozen-estimator allocation test compares independent
+**Readout pending:** a frozen-estimator allocation test compares independent
 admission, whole-query admission and constrained utility maximization. The
 main comparison keeps exactly the same switch count in every current query.
 The 2% predicted all/easy constraints remain fixed; actual harm must still
-pass separately. No new forecaster or head is being trained in this test.
+pass separately. All 108 groups are now frozen before outcome readout:
+66,258 dependent query views change allocation, with 22 solver failures
+retaining the original action. No new forecaster or head was trained.
 [Protocol](outputs/publication_readiness_2026_09/european_query_utility_v1/protocol.md).
 
 **Latest diagnosis:** at the same intervention count, the descriptor policy
