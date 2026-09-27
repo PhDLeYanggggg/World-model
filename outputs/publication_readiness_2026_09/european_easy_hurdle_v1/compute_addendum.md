@@ -18,6 +18,14 @@ installation/import. Its script, directory and logs remain preserved. A separate
 v2directory uses a login shell plus phase logging; job37560918 was submitted.
 This is a startup repair, not a package/model downgrade or a research success.
 
+The v2job subsequently completed0:0 in1m39s. Torch2.12.0+cpu / NumPy2.4.6
+executed200synthetic optimizer updates; resumed and uninterrupted parameters
+and losses matched exactly. The optimizer portion took2.533s, scheduler peakRSS
+1,490,848KiB. This verifies that specific runtime probe, not216real-data fits.
+A later live Ceph quota attribute read showed50,000,000,000byte limit and
+17,119,567,782bytes used while fitting-only packet transfer was underway.
+No simulation environment, source, job or result was modified.
+
 CREATE exposes a Python3.11.6 module. User-home quota metadata reports50GB and
 the login quota table reports about15GB used/35GBavailable, timestamped earlier
 the same day; the latter is a dated observation, not a real-time space guarantee.

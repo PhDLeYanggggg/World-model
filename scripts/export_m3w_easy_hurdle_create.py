@@ -56,6 +56,9 @@ def main():
     check=remote(ssh,"import json,pathlib,sys;print((pathlib.Path(sys.argv[1])/'runtime_receipt.json').read_text())",[runtime])
     assert check['checkpoint_resume_exact'] and not check['research_training']
     assert check['torch'].split('+')[0]=='2.12.0' and check['numpy']=='2.4.6'
+    account=remote(ssh,"import json,subprocess,sys;r=subprocess.run(['sacct','-j',sys.argv[1],'-X','--noheader','--parsable2','--format=State,ExitCode'],capture_output=True,text=True,timeout=20);print(json.dumps({'code':r.returncode,'state':r.stdout.strip()}))",[check['job_id']])
+    assert account['code']==0 and account['state']=='COMPLETED|0:0','Runtime job must complete successfully before fitting input export'
+    run.base.torch.set_num_threads(4);run.base.torch.set_num_interop_threads(1)
     cfg,ident,data,jobs,oid,pid,fits,actions=run.load()
     target=str(Path(runtime).parent/cfg['name'])
     paths=closure(run.ROOT,['scripts.train_m3w_easy_hurdle_portable'])

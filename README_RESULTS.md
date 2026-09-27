@@ -23,9 +23,10 @@ CPU environment is being prepared under the existing research authorization;
 simulation directories, environment and jobs are not reused or changed.
 Runtime-only job37560603 failed127 because a non-login batch shell lacked
 `module`, before importing Torch. The repair uses a separatev2directory and
-login shell; runtime-only job37560918 was submitted. Neither job is the216-head
-scientific experiment. Inspect actual optimizer/resume evidence before exporting
-training packets. The portable runner calls the unchanged registered fit API;
+login shell; runtime-only job37560918 completed0:0. Its200synthetic optimizer
+updates and checkpoint-resume comparison passed exactly; Torch2.12.0+cpu,
+NumPy2.4.6,4CPUthreads. Neither job is the216-head scientific experiment.
+Fitting-only packet transfer is now underway. The portable runner calls the unchanged registered fit API;
 local large temporary files and held-role training inputs are excluded.
 [Current status](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md).
 [Compute addendum](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/compute_addendum.md).
@@ -40,7 +41,7 @@ Training and development readout are not_run. Independent
 selection/calibration/confirmation remain closed; no deployment change.
 CREATE readonly query succeeded; only the two environment-probe jobs described
 above were submitted. Full training requires an actual fitting-only resource
-pilot and a working independent runtime, retaining the10GiB local reserve.
+pilot; the independent runtime is now verified, retaining the10GiB local reserve.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/protocol.md).
 
 ## Centered-Risk Policy (Verified Negative Result, 2026-09-27)

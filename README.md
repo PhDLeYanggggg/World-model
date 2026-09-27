@@ -58,8 +58,9 @@ paired experiment separates easy occurrence from conditional error, with the
 same architecture, training queries and common-count controls in both arms.
 The fitting-source audit is complete: all108pairs contain easy labels. The new
 real-data training has not started because local storage crossed the10GiB
-reserve. I am preparing a separate CREATE CPU environment, with the first
-batch-shell startup failure preserved and a login-shell repair submitted.
+reserve. A separate CREATE CPU environment now passes actual optimizer and
+checkpoint-resume checks; I am streaming fitting-only inputs there. The first
+batch-shell startup failure is preserved alongside its successful repair.
 Neither an environment probe nor a synthetic test is a positive model result.
 I am not relaxing easy protection. This remains evidence from twelve
 opened development localities; independent selection, calibration and
