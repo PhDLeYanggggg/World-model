@@ -16,7 +16,10 @@ Engineering checks and source-development scientific conclusions are separate.
 - Original primary,guards,three seeds and3000 paired locality resamples retained.
 - Every source assignment and missing-support outcome retained.
 - Absolute costs accompany ratios;source exposure and dependence disclosed.
-- Final exact replay: pending.
+- Final exact replay:864 fits,144 held views,1728 direct MSE checks; reports,absolute costs and six figures byte-match;150 tests in30 scoped files pass.
 - Full historical test suite:not_run;scope-specific tests do not imply full-suite success.
+- Exact replay requires the local hash-bound parent caches;Git contains only
+  code,config and light evidence. A cold rebuild from new raw downloads is
+  not_run this turn and is not implied by successful cached-asset replay.
 - No raw data,large caches,checkpoints,third-party images/videos or virtualenv in Git.
 - Independent roles,new policy,deployment,Stage5C and SMC remain closed/off.

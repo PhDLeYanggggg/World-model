@@ -30,9 +30,18 @@ explains the small denominator without removing that failure.
 
 All1728 direct MSE checks pass. Fitting/scoring heartbeat spans are363/240s,
 excluding ancestry preflight. CREATE was inspected read-only; no remote job
-was submitted or modified. Seventeen new scoped tests pass; the dependency
-suite also passed148 tests before the last two diagnostic tests were added.
-Full exact fitting/scoring/report replay is currently running.
+was submitted or modified. Full replay reproduces all864 fits and144 held
+views exactly, including1728 direct MSE checks. Reports,absolute-cost and
+fitting-transport summaries,and six figures match byte-for-byte. All150 tests
+in30 scoped files pass; the full historical suite was not run. The verification
+seal binds28 public artifacts,38 source files and one local detailed metric
+file; its log receipts were also checked. This verifies existing hash-bound
+assets, not a cold rebuild from new raw downloads.
+
+The verification manifest is an immutable single-run attestation. Further
+numerical checks use the runner's `--phase verify_fit` and `--phase verify_eval`
+without overwriting the attestation's log files. Completed unchanged checks
+can be reused after their hashes are validated.
 
 Only fitting feasibility passes; primary,guard,auxiliary-information and
 development screens fail. Global readout shape/scale tuning stops under the
@@ -44,6 +53,7 @@ independent confirmation or deployment gain is claimed. Stage5C/SMC stay off.
 [absolute costs](outputs/publication_readiness_2026_09/european_cost_shape_v1/absolute_cost_context.md),
 [fitting versus held](outputs/publication_readiness_2026_09/european_cost_shape_v1/fitting_transport.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cost_shape_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_cost_shape_v1/verification.json),
 [next question](outputs/publication_readiness_2026_09/european_cost_shape_v1/project_gap.md).
 
 ## Cost-Mass Readout Study (2026-09-27, Scientific Screens Failed)

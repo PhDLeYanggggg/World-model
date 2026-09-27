@@ -26,8 +26,11 @@ These are expected-risk costs, not a new trajectory gain or new neural training.
 
 I am not changing deployment or continuing a global-readout parameter sweep.
 The next question concerns causal context and effective rare-event support.
-Independent selection, calibration and confirmation remain closed. Exact
-replay is running; the [results ledger](README_RESULTS.md) records its status.
+Independent selection, calibration and confirmation remain closed. All 864
+fits and 144 held views replay exactly; reports and six figures reproduce
+byte-for-byte. All 150 tests in 30 scoped files pass. This verifies replay
+from the existing hash-bound assets, not a cold rebuild or scientific success.
+The [results ledger](README_RESULTS.md) records the complete evidence.
 
 **Previous result:** matching the average predicted harm is not enough to
 estimate which interventions will be harmful. I completed a fixed

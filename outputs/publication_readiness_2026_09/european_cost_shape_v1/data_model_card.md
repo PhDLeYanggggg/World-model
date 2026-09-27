@@ -7,6 +7,11 @@ readout on frozen neural risk scores,not a new neural world-dynamics model.
 The previous checkpoint weights,causal forecasts and feature schemas remain
 unchanged. The result does not change the deployed trajectory policy.
 
+Reproducibility here means exact replay from locally available,hash-bound
+parent assets. Raw data and caches are intentionally absent from Git. A cold
+rebuild from fresh downloads is not_run this turn;do not infer it from the
+cached-asset replay certificate.
+
 ## Data and Units
 
 Observation8 and prediction12 native annotation steps,detector image pixels.
