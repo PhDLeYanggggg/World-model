@@ -61,8 +61,11 @@ real-data pilot initially stopped because local storage crossed the10GiB
 reserve. A separate CREATE CPU environment now passes actual optimizer and
 checkpoint-resume checks; all 108 fitting-only input packets are transferred
 and hash-verified (4.91 GB). The real fitting pilot has also passed: two paired
-heads,100updates each,9.36seconds of fitting. Full216head training is now running
-on CREATE; held readout remains pending. The first
+heads,100updates each,9.36seconds of fitting. Full training has now completed:
+216 heads with 2,000 updates each, in 24min32s. All checkpoint and paired-sampling
+checks pass; the first pair also reproduces exactly from scratch apart from
+elapsed time. Held readout remains pending, so this is not evidence of improved
+prediction or safer deployment. The first
 batch-shell startup failure is preserved alongside its successful repair.
 Transfers are resumable with per-packet hashes; intermittent SSH disconnects
 do not erase completed packets or justify reducing the experiment.
@@ -73,6 +76,7 @@ confirmation stay closed.
 
 - [Centered-risk experiment and failure analysis](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/conclusions.md)
 - [New paired repair: audit, execution status and remaining work](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
+- [Completed training and exact replay evidence](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/training_result.md)
 - [All controls, intervals and risk failures](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/results.md)
 - [Frozen verification record](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/verification.json)
 - [Current reproduction guide](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/operation_zh.md)

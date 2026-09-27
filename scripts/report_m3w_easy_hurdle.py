@@ -78,7 +78,7 @@ def main():
     put('operation_zh.md', '''# 复现与恢复说明
 
 本轮是两种 easy 风险监督目标的配对实验，不重训预测器。既有产物按 hash 复用；
-训练源审计是本轮重新计算。未生成 summary 时，真实训练和开发评价都不得写成完成。
+训练源审计是本轮重新计算。未生成 summary 时，不得把训练完成写成开发评价完成。
 
 使用仓库根目录的 arm64 `.venv-pytorch/bin/python`。CPU4、interop1、workers0。
 保留10GiB空闲，入口会拒绝越过这一底线；不要更改配置绕过。CREATE 需先确认独立
@@ -114,6 +114,9 @@ env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_eas
 env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.inspect_m3w_easy_hurdle_create --phase pilot
 env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_easy_hurdle_create --phase train
 env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.inspect_m3w_easy_hurdle_create --phase train
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.collect_m3w_easy_hurdle_training --phase train
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.submit_m3w_easy_hurdle_verification
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.collect_m3w_easy_hurdle_training --phase verify
 ```
 
 这些是分阶段操作，不是可盲目重复的命令串。只有108组传输完成才提交pilot；只有真实
@@ -121,6 +124,12 @@ pilot完成且调度器exit0才提交train。已存在submission receipt或不�
 不重复提交。训练使用已登记的同一fit实现、CPU4/interop1/workers0和原432,000更新预算。
 远端训练完成不等于开发评价完成。模型与动作必须分别hash冻结并提交后才读取对应结果。
 本地磁盘不足期间，远端模型和行级数组不批量回传。独立确认仍关闭。
+
+本轮pilot前两次SSH在握手时失败，保留原receipt。远端只读确认无intent、receipt、脚本
+或排队作业后，第3次实际提交成功；查看它需`--phase pilot --attempt 3`，不重新提交。
+完整训练只提交一次。`create_training_freeze.json`记录远端216个checkpoint的hash；
+核验job重新核对全部头，第一组两头从头重训4,000更新，并逐字段对比，耗时字段除外。
+这不是全216头重复训练，也不是held预测重放；后两者的状态不得混写。
 ''')
 
 

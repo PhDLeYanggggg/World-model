@@ -50,3 +50,18 @@ schema, loss weights, initialization, sampling budget and scientific controls
 remain unchanged. Hardware/runtime provenance is reported, not disguised as the
 local CPU result. Remote training and cross-runtime equivalence are not_run at
 this addendum's creation. No deployment, Stage5C or SMC change.
+
+## Completed Execution Update
+
+All108fitting packets subsequently transferred with hash verification; the
+real pilot passed, followed by all216heads and432,000cumulative updates on
+allocated CPU nodes. Full-fit job37563607 completed0:0 in24min32s,peakRSS
+6,222,164KiB. Audit job37564122 verified every checkpoint and replayed the first
+pair's4,000updates exactly apart from elapsed time. No cross-architecture
+equivalence claim follows. The checkpoint files remain remote and private;
+the local10GiB reserve and all previous artifacts were preserved.
+
+See [training_result.md](training_result.md) and the two hash-bound training
+receipts. Held-development action/effectiveness evaluation remains not_run.
+Remote action transport is still to be implemented; this update does not
+pretend the whole scientific experiment or research goal is complete.

@@ -8,21 +8,22 @@ from scripts.prepare_m3w_create_runtime import PRIVATE, HANDOFF
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train'],required=True)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--phase',choices=['pilot','train','verify'],required=True)
     p.add_argument('--attempt',type=int,choices=range(1,4),default=1);a=p.parse_args()
     suffix='' if a.attempt==1 else '_attempt'+str(a.attempt)
-    s=json.loads((PRIVATE/('create_head_'+a.phase+'_submission'+suffix+'.json')).read_text())
-    r=json.loads(s['response']['stdout']);job=r['job_id'];assert job.isdigit()
+    name='create_verification_submission' if a.phase=='verify' else 'create_head_'+a.phase+'_submission'
+    s=json.loads((PRIVATE/(name+suffix+'.json')).read_text())
+    r=json.loads(s['stdout'] if a.phase=='verify' else s['response']['stdout']);job=r['job_id'];assert job.isdigit()
     home=json.loads((PRIVATE/'remote_input_manifest.json').read_text())['remote_path']
     ssh=json.loads((HANDOFF/'observations.json').read_text())['ssh_arguments']
     code=r'''
 import json,pathlib,subprocess,sys
 home=pathlib.Path(sys.argv[1]);job=sys.argv[2];phase=sys.argv[3]
-assert job.isdigit() and phase in ('pilot','train') and json.loads((home/'.owner.json').read_text())['experiment']=='european_easy_hurdle_v1'
+assert job.isdigit() and phase in ('pilot','train','verify') and json.loads((home/'.owner.json').read_text())['experiment']=='european_easy_hurdle_v1'
 r={}
 for name,cmd in [('queue',['squeue','-j',job,'-h','-o','%i|%T|%M|%R']),('accounting',['sacct','-j',job,'--noheader','--parsable2','--format=JobID,State,Elapsed,ExitCode,MaxRSS'])]:
     q=subprocess.run(cmd,capture_output=True,text=True,timeout=20);r[name]={'returncode':q.returncode,'stdout':q.stdout,'stderr':q.stderr}
-for name in ['heartbeat.json','pilot.json','training_complete.json',phase+'-'+job+'.out',phase+'-'+job+'.err']:
+for name in ['heartbeat.json','verification_heartbeat.json','pilot.json','training_complete.json','training_audit.json',phase+'-'+job+'.out',phase+'-'+job+'.err']:
     p=home/name;r[name]=p.read_text()[-30000:] if p.is_file() else None
 if (home/'training_complete.json').is_file():r['training_complete.json']=(home/'training_complete.json').read_text()
 r['checkpoint_count']=len(list((home/'heads').glob('*/*/checkpoint.pt.gz')))
@@ -37,9 +38,11 @@ print(json.dumps(r))
     with path.open('x') as f:
         f.write(json.dumps(dict(job_id=job,response=out,remote_modified=False),indent=2)+'\n')
     if out['returncode']==0:
-        r=json.loads(out['stdout']);print(json.dumps(dict(job_id=job,queue=r['queue']['stdout'],accounting=r['accounting']['stdout'],
-            heartbeat=json.loads(r['heartbeat.json']) if r['heartbeat.json'] else None,checkpoints=r['checkpoint_count'],
-            training_receipt_present=r['training_complete.json'] is not None)))
+        r=json.loads(out['stdout']);h=r['verification_heartbeat.json'] if a.phase=='verify' else r['heartbeat.json']
+        print(json.dumps(dict(job_id=job,queue=r['queue']['stdout'],accounting=r['accounting']['stdout'],
+            heartbeat=json.loads(h) if h else None,checkpoints=r['checkpoint_count'],
+            training_receipt_present=r['training_complete.json'] is not None,
+            verification_receipt_present=r['training_audit.json'] is not None)))
     else:print(json.dumps(dict(job_id=job,observation_unavailable=True)))
 
 

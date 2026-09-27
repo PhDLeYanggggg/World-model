@@ -5,18 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Easy Occurrence / Conditional-Risk Repair (Fitting Audit Complete, 2026-09-27)
+## Easy Occurrence / Conditional-Risk Repair (Training Verified, 2026-09-27)
 
 Registration `dfa9ee53` preceded the fresh audit of all108 fitting pairs. Each
 pair has1,084-54,326easy labels; easy prevalence16.412%-37.469%; every source
 has at least513easy labels. Thus complete absence of easy supervision is not
 the problem. The5,741,442row accesses repeat roles/seeds and are not independent
-examples;126,846unknown accesses are excluded from fitting.35scoped tests in
-7files pass, including exact synthetic resume, matching sample chains, packet
+examples;126,846unknown accesses are excluded from fitting.42scoped tests in
+8files pass, including exact synthetic resume, matching sample chains, packet
 integrity, rejection of held rows, bounded transport retry, temporary serial
 stream transfer and independent probability arithmetic.
 
-**The real fitting-only pilot is complete; full training is running and held evaluation remains not_run.** Local pilot
+**Full fitting-only training and first-pair exact replay are complete; held evaluation remains not_run.** Local pilot
 PID59030 exited before an update because free storage10,685,153,280bytes was
 below the unchanged10,737,418,240byte reserve. This is not a model failure or
 slow-training downgrade. No old artifacts were deleted. An isolated M3W CREATE
@@ -37,11 +37,16 @@ script or queue entry; that absence was freshly verified before the successful
 submission. They did not launch duplicate jobs. Full training retains432,000
 total model updates,CPU4/16GiB; its8hour ceiling preserves time for variable
 query sizes without changing the experiment. No held accuracy claim follows.
-Full job37563607 is now RUNNING; the fresh22:18UTC observation showed29saved
-checkpoints,not29completed heads. The final216-head completion receipt does not
-yet exist.42scoped tests in8files now pass, including completion-receipt and
-checkpoint checks. Exact first-group real training replay is implemented but
-not_run until full training terminates. No independent data is opened.
+Job37563607 COMPLETED0:0,24min32s scheduler time,1,466.504seconds
+runner time,peakRSS6,222,164KiB. All216final checkpoint hashes were verified,
+89,517,817bytes total; cumulative432,000model updates include the200pilot updates
+resumed into the full job. All108matched pairs completed. No held scores exist
+yet. Verification job37564122 completed0:0 in35scheduler seconds. All216heads
+passed source,finite-value,budget and paired-sampling checks. The first two
+heads retrained4,000updates from scratch and matched every state field except
+elapsed time. This is not all216heads retrained and not an Apple-vs-Linux
+equivalence claim. All216own fitting-monitor objectives decreased, not proof
+of held lift. [Training evidence](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/training_result.md).
 The portable runner calls the unchanged registered fit API;
 local large temporary files and held-role training inputs are excluded.
 Intermittent SSH disconnects were preserved as transport failures, not model
@@ -58,10 +63,11 @@ initialization and source-balanced query draws. One learns the marginal signed
 risk; the other adds explicit easy-occurrence and conditional-cost supervision.
 The old score components were not identified probabilities or cost moments.
 Both arms and the original aggregate head receive same-count controls.
-Full training is running; development readout is not_run. Independent
+Full training is complete; development readout is not_run. Independent
 selection/calibration/confirmation remain closed; no deployment change.
 CREATE readonly query succeeded; two environment jobs, one real pilot and one
-full training job were submitted. The fitting-only resource pilot passes while retaining the10GiB
+full training job were submitted; one additional verification job completed.
+The fitting-only resource pilot passes while retaining the10GiB
 local reserve.
 [Protocol](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/protocol.md).
 
