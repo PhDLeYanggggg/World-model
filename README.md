@@ -14,8 +14,9 @@ I started this repo to answer that question carefully, not just to collect a nic
 improves neural forecasting. The
 [matched refit](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md)
 fixes the original three seeds, training localities, loss and 4,000-update
-budget. One old model must reproduce exactly before nine new models are fitted.
-Predictions will be frozen before comparison. This is source-development work;
+budget. The old control now reproduces every parameter exactly after checkpoint
+resume; nine new models are being fitted. Predictions will be frozen before
+comparison. This is source-development work;
 independent selection, calibration and confirmation remain closed.
 
 **Current finding:** the model has been excluding many visible neighbors.
