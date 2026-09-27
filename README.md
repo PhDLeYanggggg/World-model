@@ -10,7 +10,36 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Latest result:** putting more training weight on large errors does not yet
+**Latest result:** directly learning the risk-budget error improves the fit to
+training sources, but does not yet solve safe selection on different sources.
+I trained 108 new risk heads against 108 verified moment-MSE controls, keeping
+the forecasting models, protected fallback, architecture, sampling and source
+roles fixed. The only training change was the signed-risk objective.
+
+The new policy gains **0.185% ADE over the protected floor**, but its advantage
+over ordinary MSE is uncertain: **0.031% [-0.033%, 0.109%]**. With the same
+number of interventions in each current frame, the contrast is **-0.017%
+[-0.054%, 0.017%]**. Fourteen held views completely abstain and another 79
+exceed the 2% positive-harm budget. Easy net error is preserved; that alone
+does not make the policy safe or deployable.
+
+This rules out a simple objective-only repair under the current setup. The
+risk-score error falls on fitting sources but shows no supported improvement
+on held sources. My next step is to locate that gap by causal feature support,
+motion scale and annotation completeness before training another loss variant.
+Independent confirmation data remain closed, and deployment is unchanged.
+All 108 prediction/decision groups replay exactly, along with a complete
+first-head refit and the readout. **43 scoped tests pass**; 747,900 current-query
+count checks and 7,199 locality reductions are independently verified. Reports,
+diagnosis and the figure are reproducible. These checks verify the experiment,
+not the failed safety hypothesis.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/verification.json).
+
+**Previous loss result:** putting more training weight on large errors does not yet
 make the neural selector reliably safer. I trained 216 bounded risk heads
 with matched initialization, sampling, source roles and 432,000 updates.
 The forecasts, protected fallback and utility head stayed frozen.
@@ -26,7 +55,7 @@ preserved, but that is not the same as controlling positive harm.
 This is a completed training experiment with a negative central result, not
 a deployment upgrade. Nonnegative outputs remove the old clipping problem
 but still overestimate reference error, making predicted risk look too small.
-Next I will test the fixed-floor budget excess directly, without opening
+That motivated the fixed-floor budget-excess comparison above, without opening
 independent sources or searching held thresholds. All current results remain
 development-only and use image-local detector silver, obs8/pred12 rawstride12.
 All216 predictions and108 decisions replay exactly; two complete training

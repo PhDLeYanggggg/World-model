@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed-Floor Signed-Excess Heads (2026-09-27, Registered)
+## Fixed-Floor Signed-Excess Heads (2026-09-27, Verified, Primary Failed)
 
 The next matched contrast directly supervises all/easy positive harm minus2%
 of the SAME protected-floor reference error.108 new heads,108 hash-verified
@@ -19,12 +19,41 @@ role opening. Registration `51a70c04` preceded a real100-update native pilot:
 6.29process seconds,4.79GB peak RSS.23 scoped preflight tests pass. The pilot
 is resumed into the full2,000-update budget for all108heads.
 Local native CPU4 is appropriate based on the completed predecessor
-fit; keep10GiB free disk and checkpoint every500updates. No results claimed yet.
+fit; keep10GiB free disk and checkpoint every500updates. No result was claimed
+before the decision freeze.
 All108new heads completed216,000updates in240.02process seconds, peak RSS9.71GB,
 PID30724. Every head matches its frozen MSE control's initial model, optimizer
 settings, complete training draws/RNG and preprocessing. Decisions are frozen
 before readout. The latest approved CREATE queue query succeeded read-only;
 no remote job or environment was changed.
+Decision freeze `6876aaf0` preceded fresh readout. Direct-excess ADE gain over
+floor is0.1848% [0.1101%,0.2753%], versus MSE0.1544%. The paired advantage
+over MSE is0.0306% [-0.0334%,0.1086%], and the equal-current-query-count
+contrast is-0.0168% [-0.0539%,0.0169%]. Neither establishes reliable superiority.
+The registered harm primary is undefined:14empty views across localities082,
+112,124.79/216views violate2%; worst51.6175% on5known selected rows in110.
+Worst easy gain is+0.2431% versusCV; no zero-CV harm. Do not conflate easy net
+preservation with positive-harm safety. No deployment change.
+
+All108fixed training monitors improve. Fitting signed-risk MSE falls0.1053 to
+0.0730 (paired difference-0.03230 [-0.03575,-0.02861]); held MSE is0.1836
+versus0.1900 (difference+0.00636 [-0.00227,+0.01801]), showing no supported
+held improvement. New score bases are not separately identified cost moments.
+All three forecaster seeds retain small positive floor gains, but relative
+gains versus MSE are inconsistent.14empty views cannot be dropped to repair
+the primary. Next: fitting-defined causal-support/motion/label-quality gap
+decomposition before another head-loss variant; reserved roles remain closed.
+All108new predictions, matched cached controls, fitting-score diagnostics and
+decisions replay exactly. First full training matches parameters/optimizer/RNG/
+draws/losses; first real inference also replays with future fields removed.
+Full evaluation replays exactly.43tests in ten scoped files pass;747,900 query
+views and7,199 locality reductions independently checked. Reports/diagnosis/
+figure reproduce byte-for-byte. The seal binds22artifacts and161source files.
+Full legacy suite/cold raw rebuild remain not_run; research goal not complete.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/verification.json).
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/protocol.md).
 
 ## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Verified, Primary Failed)

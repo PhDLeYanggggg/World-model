@@ -1,0 +1,17 @@
+# Training Completion
+
+## Material Passport
+
+Fresh risk-head training, cached matched controls. Training loss is not downstream success.
+
+- new_heads: 108
+- updates: 216000
+- fit_seconds: 150.257181119523
+- unknown_supervised_draws: 0
+- declining_fixed_loss_heads: 108
+- mean_initial_fixed_loss: 0.07609239798384132
+- mean_final_fixed_loss: 0.038315037243861566
+- cached_controls: 108
+- new_forecasters: 0
+
+Fixed2,000updates, native CPU4, workers0, checkpoint500. Pilot included, no held checkpoint selection.
