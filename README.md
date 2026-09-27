@@ -45,7 +45,8 @@ A fitting-only follow-up found a small remaining score bias under the exact
 original loss weights. Two nonnegative offsets per frozen head reduced median
 training loss by about **0.10%**. This is an analytic fit, not new neural training
 or evidence of downstream improvement. The offsets have not been deployed or
-evaluated as a new held policy.
+evaluated as a new held policy. A fixed, count-matched development test is now
+registered to check their effect; its outcomes remain unread.
 All 216 analytic fits replay exactly. Across the diagnosis and bias probe,
 43 unique scoped tests pass; the full legacy integration suite was not rerun.
 

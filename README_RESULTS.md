@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Centered-Risk Policy (Registered, Outcomes Not Read)
+
+The fitting-only offsets are frozen before a new policy readout. Both existing
+head families, all108groups and the original2%screen are retained. Centered
+joint selection is compared with uncentered joint selection at exactly the
+same retained count in every query. No new neural training, parameter fitting,
+threshold search, deployment or independent-source access is authorized by
+this registration. Sixteen focused policy/solver tests pass. A real one-group
+pilot must confirm the unchanged10GiB disk reserve before completing the run.
+[Protocol](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/protocol.md).
+
 ## Frozen-Action Residual Diagnosis (2026-09-27, Fresh Readout)
 
 The next diagnostic is fixed before readout: all108 existing groups, both
