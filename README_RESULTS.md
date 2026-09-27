@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Honest OOF Magnitude Study (2026-09-27, Registered Work in Progress)
+
+I am testing whether the auxiliary head's ranking signal can support better
+expected-harm magnitudes. The same two-slope readout is applied to cost-only,
+true auxiliary and shuffled auxiliary controls. A new deepest fitting-only
+reference layer excludes both inner and outer held localities; older references
+cannot be reused there because they include the inner held locality.
+
+The fixed design includes 1,008 new small Torch heads and 432 cached control
+heads. Training and new readout are not_run at registration. Twenty-one scoped
+preflight tests pass. Independent roles remain closed; no deployment change.
+[Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
+
 ## Auxiliary Prior Repair (2026-09-27, No Model Promotion)
 
 I tested whether the wrong initial event probability explained the auxiliary
