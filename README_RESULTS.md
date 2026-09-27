@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Observation Quality and Partial Neighbors (2026-09-27, Registered)
+
+The next input-only audit preserves the 318,969 source targets and all reserved
+roles. A versioned masked-neighbor repair is implemented; legacy packing and
+deployment are unchanged. Sixteen scoped tests pass, including future
+truncation invariance and complete-neighbor equivalence. The new audit is
+registered before raw observation summaries; no future outcome arrays are
+opened. Prediction lift and matched retraining remain not_run. CREATE was
+checked read-only, with no job submitted or modified.
+[Protocol](outputs/publication_readiness_2026_09/european_observation_quality_v1/protocol.md).
+
 ## Frozen-Cap Attribution (2026-09-27, Scientific Screens Failed)
 
 The next fixed experiment separates the output constraint from the information

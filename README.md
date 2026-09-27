@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current work:** I am checking the original source observations after the
+negative cap result. The old neighbor packer admits only agents with complete
+eight-step histories. A separate masked-neighbor implementation now retains
+currently visible agents with partial histories, without changing targets or
+the deployed model. The [registered input audit](outputs/publication_readiness_2026_09/european_observation_quality_v1/protocol.md)
+will measure the omission and observation quality on the same source cohort.
+Coverage is not prediction lift; matched retraining has not run.
+
 **Current result:** relaxing the risk ceiling does not recover a reliable
 history or interaction gain. In the
 [frozen-model attribution](outputs/publication_readiness_2026_09/european_cap_attribution_v1/conclusions.md),
