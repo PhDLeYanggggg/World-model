@@ -5,14 +5,39 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed-Model Source-Gap Slices (2026-09-27, Registered Diagnostic)
+## Fixed-Model Source-Gap Slices (2026-09-27, Verified Diagnostic)
 
 Matched signed-excess/MSE heads and all deployment decisions stay frozen.
 Eight causal axes use equal-source fitting25th/75th percentiles, plus the
 existing support guard. Separate evaluation-only strata cover future-label
 completeness and reference-error scale. All108groups/12openedlocalities are
 retained, including unknown-label actions and empty strata. No new training,
-held threshold search or independent-role opening. Results pending.
+held threshold search or independent-role opening.
+Fresh108-group computation and complete replay agree exactly.24tests across
+six files pass;217,728additive checks,3,024parent metric checks and2,448independent
+locality reductions pass. Reports/figure are byte-reproducible. The verification
+seal binds169source files and15public artifacts. Full legacy suite/cold raw
+rebuild remain not_run.
+
+All observed selected harm remains inside the existing radial guard. Complete
+labels contribute61.2841% [52.5767%,68.1811%] of harm, with2.2698%selected risk.
+High rollout disagreement has5.2664% [2.6756%,8.0658%] selected harm; low0.9562%.
+Low mean-turn samples have7.5134%harm, but detector jitter and source/motion
+composition preclude a causal interpretation. Partial labels do not explain
+all failures. The eligible causal pool still contains16.2717%oracle opportunity;
+only1.0804%of available positive-benefit mass is captured. Oracle is diagnostic.
+Fitting-quantile ties and missing fixed-roster bins remain explicit.
+
+These diagnostic ratios pool dependent views within locality and do NOT replace
+the parent's failed mean-of-view-ratios primary. No subgroup filter or deployment
+upgrade is inferred. Next: a matched continuous causal-descriptor augmentation,
+not another blind loss or threshold sweep. The new feature model is not_run.
+Full run210.88seconds, peak RSS11.41GB; replay219.94seconds, peak RSS12.08GB.
+Private aggregates about31MiB, no large cache duplication. Disk is close to the
+10GiBreserve, requiring a fresh preflight before another checkpoint bank.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/conclusions.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/verification.json).
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/protocol.md).
 
 ## Fixed-Floor Signed-Excess Heads (2026-09-27, Verified, Primary Failed)
