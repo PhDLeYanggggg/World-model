@@ -18,8 +18,12 @@ heads. Support is now checked for all144 outer views,144 unique single-site
 references and432 two-site controllers. Minimum single-site supported rows:
 1,225; minimum positive easy-harm rows:0. Numerical support is not statistical
 power. Twenty-five scoped preflight tests pass, including real synthetic Torch
-training/resume and lossless archive replay. Real-data pilot/training/readout
-remain not_run at this support commit. Independent roles stay closed.
+training/resume and lossless archive replay. The real-data pilot completed three
+reference heads and200 auxiliary updates with finite losses, matched provenance
+and zero unknown-label sampling. Estimated auxiliary fitting time is29.2 minutes,
+excluding references,loading and diagnostics. Full training follows the same
+fixed budget with resume; source-held readout remains not_run. Independent roles
+stay closed. Registration35a05b87 and supportbf1ab738 preceded this pilot.
 [Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
 
 ## Auxiliary Prior Repair (2026-09-27, No Model Promotion)
