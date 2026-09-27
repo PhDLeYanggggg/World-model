@@ -42,3 +42,17 @@ Hashes and exact forecast/scoring replay verify this version, not independent
 generalization. Report scoped test coverage separately from the unrun full
 historical suite. CREATE access is read-only for this local-sized experiment;
 existing remote jobs are not evidence that M3W itself trained remotely.
+
+Before comparative outcomes are scored, an additional verification-only replay
+is fixed to the first endpoint (fold0, seed17), not chosen by performance:
+
+```sh
+.venv-pytorch/bin/python scripts/replay_m3w_dimensionless_training.py
+```
+
+It trains from initialization for another4,000 updates in a separate private
+directory. All weights, optimizer state, logged losses and sampler/RNG states
+must match the frozen original. It is computational replication, not an extra
+candidate, independent seed or cold raw-data rebuild. Account for its compute
+separately from the nine-model experimental budget. The script refuses to
+overwrite an existing replay checkpoint.

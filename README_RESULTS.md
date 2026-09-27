@@ -20,6 +20,8 @@ Initial weights and sampler states/draw counts match every grouped control;
 held fitting draws are zero. Forecast generation and fresh control verification
 are running. Reporting and the observation-only unit probe are fixed before
 comparative outcome scoring. No gain is claimed yet.
+I have also fixed a full training replay to the first endpoint, before seeing
+forecast outcomes. It is a reproducibility check, not a tenth independent model.
 Independent selection, calibration and confirmation stay closed.
 [Protocol](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md).
 An input-only check finds 317,587/318,969 histories support all declared

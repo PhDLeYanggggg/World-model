@@ -20,6 +20,11 @@ def main():
         raise ValueError('Validate the existing seal, never replace it')
     _,_,_,jobs,_=run.load()
     run.endpoints(jobs)
+    training=json.loads((run.PUBLIC/'training_replay.json').read_text())
+    assert training['steps']==4000 and training['all_parameters_exact'] and training['optimizer_exact']
+    assert training['all_logged_losses_exact'] and training['sampler_counts_and_rng_exact']
+    assert training['torch_rng_exact'] and not training['new_candidate']
+    assert run.artifact(ROOT/training['checkpoint']['path'])==training['checkpoint']
     for name,key,target in [('prediction_replay.json','prediction_freeze_sha256','prediction_freeze.json'),
                             ('evaluation_replay.json','evaluation_sha256','evaluation.json')]:
         d=json.loads((run.PUBLIC/name).read_text())
@@ -44,10 +49,12 @@ def main():
     assert cases and not any(suite.findall('.//'+k) for k in ('failure','error','skipped'))
     parent=json.loads((run.previous.PUBLIC/'verification.json').read_text())
     sources=sorted(set(list(parent['source_bindings'])+run.FILES+TESTS+
-        ['scripts/'+s for s in scripts]+['scripts/verify_m3w_european_dimensionless_refit.py']))
+        ['scripts/'+s for s in scripts]+['scripts/verify_m3w_european_dimensionless_refit.py',
+        'scripts/replay_m3w_dimensionless_training.py']))
     run.immutable_json(path,dict(new_models=9,updates_per_model=4000,
         initial_parameters_and_sampling_matched=True,nine_pair_full_inference_replay_exact=True,
         readout_replay_exact=True,reports_figure_byte_reproducible=True,
+        fixed_first_full_training_replay_exact=True,replay_training_updates=4000,
         scoped_tests_passed=len(cases),scoped_test_files=len(TESTS),
         source_bindings={p:run.digest(ROOT/p) for p in sources},
         artifacts={p.name:run.digest(p) for p in sorted(run.PUBLIC.iterdir()) if p.is_file()},
