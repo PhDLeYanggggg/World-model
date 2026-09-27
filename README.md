@@ -25,37 +25,36 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Current Result
 
-**Risk prediction remains the bottleneck, not simply lack of model capacity.**
+**Correcting average risk bias did not produce a better deployment policy.**
 
-The latest matched neural experiment trained 216 risk heads. Aggregate subset
-supervision changed ADE by only **+0.00068% [-0.00870%, +0.01049%]** against
-its pointwise control, while increasing harm. The joint policy's average error
-improved over its protected floor, but 84 of 216 dependent views still violated
-the selected-harm screen. It is **not a deployment upgrade**.
+After training 216 risk heads, I tested whether their remaining fitting-only
+score bias explained unsafe switching. The forecasts and learned utilities
+were frozen; only two already-fitted risk offsets changed. All 108 action groups
+were committed before the new development readout.
 
-I then froze every model and decision and examined what was actually selected.
-Risk was underpredicted across the twelve development localities, but the
-selected rows did not have greater average optimism than unselected eligible
-rows. Only about **0.95%** of selected rows lay outside the inspected
-six-descriptor support. Adding useful switches and adding harmful switches
-largely canceled each other. These findings do not support fixing the problem
-by simply rejecting unusual-looking inputs or enlarging the model.
+The offsets greatly reduced intervention, but also removed useful predictions.
+At exactly the same intervention count in each query, centered risk was worse
+than the original-risk control:
 
-A fitting-only follow-up found a small remaining score bias under the exact
-original loss weights. Two nonnegative offsets per frozen head reduced median
-training loss by about **0.10%**. This is an analytic fit, not new neural training
-or evidence of downstream improvement. The offsets have not been deployed or
-evaluated as a new held policy. A fixed, count-matched development test is now
-registered to check their effect. All108action groups are now frozen; their
-outcomes remain unread until the action manifest is committed.
-All 216 analytic fits replay exactly. Across the diagnosis and bias probe,
-43 unique scoped tests pass; the full legacy integration suite was not rerun.
+| Frozen risk head | ADE gain versus same-count control | Nominal 95% locality interval |
+|---|---:|---:|
+| Pointwise | -0.00335% | [-0.00882%, -0.00017%] |
+| Subset aggregate | -0.00523% | [-0.01182%, -0.00043%] |
 
-The frozen-action diagnosis replays exactly on all 108 groups. **34 scoped tests
-pass**; independent checks cover 158,976 residual fields, 432 benefit/harm
-exchanges, 3,456 support distances and 13,440 locality reductions. All results
-remain development evidence. Empty slices and undefined risks are reported;
-independent selection, calibration and confirmation remain closed.
+For the aggregate head, intervention fell from 7.80% to 0.67%. Two hundred of 216
+dependent views then entirely abstained; six remaining views still violated
+the 2% selected-harm screen. Easy cases were preserved, but this is **not a safe
+deployment upgrade**. Lower fitting loss and fewer harmful switches are not
+enough when useful switches disappear too.
+
+Full replay and independent arithmetic checks are in progress. A replay-only
+JSON identity-format defect was isolated; original code, policy arrays and
+readout are preserved. This remains evidence from twelve opened development
+localities, not independent selection, calibration or confirmation.
+
+- [Centered-risk experiment and failure analysis](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/conclusions.md)
+- [All controls, intervals and risk failures](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/results.md)
+- [Current reproduction guide](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/operation_zh.md)
 
 - [What the frozen decisions reveal](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/conclusions.md)
 - [Residual and support results](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/results.md)
@@ -127,11 +126,12 @@ reports; it is not an isolated read-only smoke test.
 
 ## Next Question
 
-Does correcting the fitting-only score bias actually reduce harmful
-interventions, or does it merely switch less often? The next experiment will
-compare the centered policy with an original-score policy at the same retained
-intervention count, freezing decisions before readout. That comparison has not
-run yet. I will not tune thresholds on these diagnostics or open independent
+Which conditional errors make useful and harmful interventions hard to separate
+across sources? The global-offset experiment now has a negative answer even at
+matched counts. The next repair must preserve benefit while learning risk at
+the appropriate error scale, and must retain an original-score control at the same
+intervention count, freezing decisions before readout. No conditional repair
+has been trained yet. I will not tune thresholds on these diagnostics or open independent
 confirmation data to rescue the method.
 
 The larger goal remains useful neural dynamics with reproducible, independent

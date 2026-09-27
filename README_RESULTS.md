@@ -5,7 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Centered-Risk Policy (Actions Frozen, Outcomes Not Read)
+## Centered-Risk Policy (Fresh Negative Readout, Verification In Progress)
+
+Aggregate centered versus same-count raw ADE gain is-0.005225%
+[-0.011821%,-0.000433%]; pointwise-0.003354%[-0.008823%,-0.000168%].
+Fixed-denominator harm falls0.001010pp/0.000995pp, but lost benefit is larger.
+Aggregate intervention falls7.7985%to0.6717%;200/216views abstain and6violate
+selected-risk2%. Pointwise203abstentions/5violations. Both exploratory screens
+fail, despite preserved easy error. No model or deployment upgrade.
+Decision freeze237a4dd9 preceded readout. First readout48.29s,peakRSS8.46GB.
+Full replay and independent accounting are underway. First replay stopped on
+a JSON tuple/list identity mismatch after exact first-group arrays; a separate
+canonical-identity adapter preserves registered code and scientific outputs.
+The failure and repair are retained, not silently overwritten.
 
 The fitting-only offsets are frozen before a new policy readout. Both existing
 head families, all108groups and the original2%screen are retained. Centered

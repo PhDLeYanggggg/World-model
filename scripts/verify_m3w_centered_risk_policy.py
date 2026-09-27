@@ -13,6 +13,7 @@ from scripts.verify_m3w_fixed_floor_tail import reduce_check
 TESTS=['tests/test_m3w_centered_risk_policy.py','tests/test_m3w_centered_risk_verification.py',
        'tests/test_m3w_query_utility.py','tests/test_m3w_signed_bias_probe.py',
        'tests/test_m3w_signed_bias_verification.py','tests/test_m3w_query_excess_verification.py']
+TESTS.append('tests/test_m3w_centered_identity_replay.py')
 
 
 def validate_actions(a,q,delta,utility,sites,recordings,frames,arm):
@@ -47,7 +48,8 @@ def main():
     refs={Path(r['path']).stem:r for r in frozen['groups']}
     details=json.loads((run.PRIVATE/'details.json').read_text())
     readout={(r['group'],r['site'],r['policy']):r['metric'] for r in details['rows']}
-    queries=changed=views=groups=0
+    exchange={(r['group'],r['site'],r['policy']):r['metric'] for r in details['exchanges']}
+    queries=changed=views=groups=exchange_views=0;rejections=[]
     for c in run.base.floor_api.contexts(causal,jobs,oid):
         cv,_,(floor,_),(neural,_)=run.base.floor_api.costs(c,data,np.arange(len(c['ids'])))
         for pair in range(6):
@@ -73,6 +75,13 @@ def main():
                 q=np.column_stack((v[:,1]-.02*v[:,0],v[:,3]-.02*v[:,2]))/pr['cost_scale']
                 n,chg=validate_actions(a,q,b['fits'][arm]['nonnegative_offset'],u,data['sites'][a['ids']],data['recordings'][a['ids']],data['frames'][a['ids']],arm)
                 queries+=n;changed+=chg
+                raw=a[arm+'_raw_independent'];risk=q+np.asarray(b['fits'][arm]['nonnegative_offset'])
+                fail_all=risk[:,0]>0;fail_easy=risk[:,1]>0
+                rejections.append(dict(group=name,arm=arm,raw_admitted=int(raw.sum()),
+                    centered_retained=int((raw & ~fail_all & ~fail_easy).sum()),
+                    rejected_all_only=int((raw & fail_all & ~fail_easy).sum()),
+                    rejected_easy_only=int((raw & ~fail_all & fail_easy).sum()),
+                    rejected_both=int((raw & fail_all & fail_easy).sum())))
             for site in roles['held_sites']:
                 at=data['sites'][a['ids']]==site;ix=held[at]
                 for policy in run.POLICIES:
@@ -80,6 +89,18 @@ def main():
                     m=readout[(name,site,policy)]
                     check_selected_costs(m,cv[ix],floor[ix],neural[ix],take)
                     check_fixed_denominator(m,floor[ix],neural[ix],np.isfinite(cv[ix]),take);views+=1
+                for new,old in run.CONTRASTS:
+                    m=exchange[(name,site,new+'_vs_'+old)];before=a[old][at];after=a[new][at]
+                    f,n=floor[ix],neural[ix];known=np.isfinite(f);den=sum(float(v) for v in f[known])
+                    for key,mask in [('added',after & ~before),('removed',before & ~after),('shared',before & after)]:
+                        selected=[j for j in range(len(mask)) if mask[j] and known[j]]
+                        assert m[key+'_count']==sum(bool(v) for v in mask)
+                        assert m[key+'_unknown']==sum(bool(mask[j] and not known[j]) for j in range(len(mask)))
+                        for cost,sign in [('benefit',1),('harm',-1)]:
+                            value=sum(max(sign*(float(f[j])-float(n[j])),0.) for j in selected)
+                            np.testing.assert_allclose(m[key+'_'+cost],value,rtol=1e-10,atol=1e-9)
+                            np.testing.assert_allclose(m[key+'_'+cost+'_over_floor_pp'],100*value/den,rtol=1e-10,atol=1e-9)
+                    exchange_views+=1
             groups+=1
             if groups%18==0:print(json.dumps(dict(state='independent_verified',groups=groups,query_arm_checks=queries)),flush=True)
     for row in details['contrasts']:
@@ -103,6 +124,10 @@ def main():
     log=run.PRIVATE/'scoped_pytest.txt';log.write_text(proc.stdout+proc.stderr)
     if proc.returncode:raise RuntimeError(proc.stdout+proc.stderr)
     tests=int(re.search(r'(\d+) passed',proc.stdout).group(1))
+    reject_summary={arm:{k:sum(r[k] for r in rejections if r['arm']==arm) for k in ('raw_admitted','centered_retained','rejected_all_only','rejected_easy_only','rejected_both')} for arm in run.ARMS}
+    for m in reject_summary.values():assert m['raw_admitted']==sum(v for k,v in m.items() if k!='raw_admitted')
+    run.base.immutable_json(run.PUBLIC/'admission_diagnosis.json',dict(result_source='posthoc_causal_score_accounting_no_policy_change',
+        counts_are_repeated_context_rows_not_independent_samples=True,summary=reject_summary,groups=rejections))
     report=subprocess.run([sys.executable,'scripts/report_m3w_centered_risk_policy.py'],cwd=ROOT,capture_output=True,text=True)
     if report.returncode:raise RuntimeError(report.stderr)
     artifacts={p.name:run.base.digest(p) for p in run.PUBLIC.iterdir() if p.suffix in ('.md','.json','.png') and p.name!='verification.json'}
@@ -110,10 +135,10 @@ def main():
     if report.returncode:raise RuntimeError(report.stderr)
     assert all(run.base.digest(run.PUBLIC/p)==h for p,h in artifacts.items())
     parent=json.loads((run.bias.PUBLIC/'verification.json').read_text());bindings=dict(parent['source_bindings']);bindings.update(ident['bindings'])
-    bindings.update({p:run.base.digest(ROOT/p) for p in ['scripts/verify_m3w_centered_risk_policy.py','scripts/report_m3w_centered_risk_policy.py',*TESTS]})
+    bindings.update({p:run.base.digest(ROOT/p) for p in ['scripts/verify_m3w_centered_risk_policy.py','scripts/report_m3w_centered_risk_policy.py','scripts/replay_m3w_centered_risk_policy.py',*TESTS]})
     run.base.immutable_json(run.PUBLIC/'verification.json',dict(source_bindings=bindings,artifacts=artifacts,
         tests=tests,test_files=len(TESTS),test_log=run.base.artifact(log),groups=108,query_arm_checks=queries,
-        changed_same_count_queries=changed,independent_cost_views=views,independent_locality_checks=reductions,
+        changed_same_count_queries=changed,independent_cost_views=views,independent_exchange_views=exchange_views,independent_locality_checks=reductions,
         all_action_replay_exact=True,evaluation_replay_exact=True,raw_controls_unchanged=True,
         reports_byte_reproducible=True,new_neural_training=False,new_parameter_fitting=False,
         full_legacy_suite='not_run',cold_raw_rebuild='not_run',independent_confirmation=False,

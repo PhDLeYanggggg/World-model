@@ -22,8 +22,8 @@ Git不包含这些大文件；仅从公开代码仓库克隆不能独立重建�
 ## 已完成版本的复验
 
 ```sh
-env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_centered_risk_policy.py --phase replay
-env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_centered_risk_policy.py --phase replay_evaluate
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/replay_m3w_centered_risk_policy.py --phase replay
+env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/replay_m3w_centered_risk_policy.py --phase replay_evaluate
 env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_centered_risk_policy.py
 ```
 
@@ -31,6 +31,10 @@ env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_center
 若同一路径已有回执，应核验已有字节，不要为了重新计时改写封存文件。
 代码、动作或统计结果不一致会报错，不能跳过比较后称为复现成功。
 以后如需额外冷启动复验，应建立单独回执目录，保留本轮证据。
+
+首次直接复验在第一组报错：动作数组一致，但身份记录里的元组与JSON列表
+直接比较失败。复验适配器只将身份容器规范化为JSON形式，不改变数组、
+模型、阈值或原始注册代码。该故障和修复回执保留，不能把首次失败隐去。
 
 ## 中断恢复
 
