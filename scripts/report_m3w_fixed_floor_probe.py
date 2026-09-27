@@ -79,8 +79,10 @@ def main():
     for i,p in enumerate(labels):
         m=d['summary'][p]['all_gain_floor']; pt=m['point']; lo,hi=m['ci95']
         ax.errorbar(pt,i,xerr=[[pt-lo],[hi-pt]],fmt='o',color='#167d73' if pt>0 else '#ba4340',capsize=3)
-    ax.axvline(0,color='#666666',lw=1); ax.set_yticks(range(len(labels)),labels); ax.invert_yaxis()
-    ax.set_xlabel('ADE gain over protected damping (%)\n3,000 locality-bootstrap draws; development only')
+    names=['Parent: CV fallback','Parent: damping fallback','Calibrated parent: damping fallback',
+           'CV targets: gain only','Floor targets: gain only','CV targets: screened','Floor targets: screened']
+    ax.axvline(0,color='#666666',lw=1); ax.set_yticks(range(len(labels)),names); ax.invert_yaxis()
+    ax.set_xlabel('ADE gain over protected damping (%)\n3,000 locality-bootstrap draws; development only\nAverage gains do not establish selected-harm safety')
     ax.set_title('Incremental value with the same frozen floor producer')
     ax.spines[['top','right']].set_visible(False)
     fig.savefig(run.PUBLIC/'incremental_probe.png',dpi=150,metadata={'Software':'M3W registered aggregate report'})

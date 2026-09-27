@@ -10,17 +10,40 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**In progress:** I am testing whether the repaired neural forecasts offer useful
-incremental predictions over a fixed protected-damping floor. The same frozen
-floor generates both training and held labels for small cost probes. Four
-sources fit the forecaster, four fit its safety floor, two fit the probe, and
-two evaluate it. This removes the inner/outer floor-producer mismatch in an
-earlier negative target-reference experiment. Both CV-target and floor-target
-heads, original/rebased defaults and the diagnostic oracle are retained; no
-independent confirmation sources or deployment changes are involved.
-[Registered protocol](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/protocol.md).
+**Latest result:** the neural forecasts do contain useful incremental predictions,
+but the model still underestimates the harm of its chosen interventions.
+I fixed the same protected-damping fallback for both training and held scenes,
+then fitted 216 small linear cost heads with strict four/four/two/two source
+separation. These are cost probes, not another round of neural dynamics training.
 
-**Latest completed result:** source-separated calibration protects easy cases, but still
+The floor-target screened policy improves ADE by **0.523% [0.368%, 0.686%]**
+over protected damping. Every locality-average point is positive and observed
+easy error is preserved. Yet selected positive harm is **4.91% [3.89%, 5.98%]**,
+above the fixed 2% budget. The matched CV-target probe does slightly better:
+the floor-target ablation loses **0.0169% [-0.0218%, -0.0115%]**. Changing the
+target reference alone is not the source of improvement.
+
+The failure is concrete: about **65%** of selected harm predictions are clipped
+to zero, but about **24%** of those predictions actually incur harm. Predicted
+reference cost is also roughly twice its observed value. Merely loosening the
+screen gives larger average gains but damages easy cases. I am keeping
+deployment unchanged and targeting this conditional harm error next.
+
+All results remain development-only: twelve already-opened localities, three
+forecaster seeds and 3,000 locality-bootstrap draws. Independent confirmation
+sources remain closed. The oracle's 21.25% opportunity is a diagnostic upper
+bound, not a learned result.
+All 108 inference groups reproduce with future fields removed; a full first-fit
+replay and complete evaluation replay also match. **43 scoped tests pass**, and
+3,133 locality metric reductions are independently checked. Reports and the
+figure are byte-reproducible. This verifies the experiment, not deployment safety.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/conclusions.md),
+[conditional-risk diagnosis](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/conditional_moment_diagnosis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/verification.json).
+
+**Previous calibration result:** source-separated calibration protects easy cases, but still
 does not recover a neural advantage. I kept the forecast and risk networks
 frozen, restored stationary/utility/easy guards, and tested a fixed calibration
 and input-support comparison. Two sources calibrate each rule; two different

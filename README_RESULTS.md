@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed-Producer Floor Probes (2026-09-27, Registered)
+## Fixed-Producer Floor Probes (2026-09-27, Verified, Risk Gate Fails)
 
 The prior floor-relative experiment failed with older forecast banks and a
 two-source fitting floor versus four-source readout floor. This controlled
@@ -20,6 +20,44 @@ and actual selected harm separately from easy net degradation.
 Registration `3b09d834` preceded fitting. All108 groups /216 linear heads finished
 in89.60seconds, peak RSS9.85GB, PID26023. Scores and all fixed actions are now
 frozen before readout. New neural forecasters and neural gradient updates:0.
+Decision freeze `18c0b38d` preceded readout. The registered floor-target versus
+CV-target screened contrast is **-0.01686% [-0.02177%, -0.01152%]**, failing the
+target-reference hypothesis. All twelve locality-average points favor CV targets.
+The floor-target screen still improves over protected damping by **0.5233%
+[0.3684%,0.6858%]**, and over CV by1.3434%. Its hard gain over floor is0.5379%,
+FDE gain0.6817%, intervention5.63%; all three seed intervals versus floor are
+positive. Worst held-view easy gain over CV is+0.2475%, with no zero-CV harm.
+
+This is not deployment success. Selected positive incremental harm is **4.9104%
+[3.8888%,5.9751%]** versus the2% budget;171/216 dependent views violate it.
+All twelve locality-average ratios exceed2%. Positive-only selection gives
+9.1083% average gain over floor but damages easy3.5629% on average and38.3137%
+in the worst view. A locality-average all-ADE result is-6.2794%. Keep all negatives.
+
+Oracle incremental opportunity is21.2459%, never inference input. Exact
+decomposition shows the parent default-action change alone gives+0.1674% over
+floor instead of-0.6034%. The new floor screen captures0.7054 floor-normalized
+benefit points, pays0.1821 harm points and misses20.5405 oracle points. Its
+floor-gain AUROC is0.5353; easy-harm MSE skill is negative. Post-readout diagnosis
+finds65.36% of selected harm predictions clipped to zero,23.89% actually harmful
+within that subset, and reference overprediction2.03-fold. No threshold changed.
+
+The same floor checkpoint family is used on fitting/readout, removing the old
+inner/outer floor-producer mismatch. This does not prove that nonlinear cost
+heads cannot improve; it rejects this matched reference-only repair. Next:
+matched nonnegative harm-head training with fit-only tail weighting, unchanged
+producer chain, sources, candidates, thresholds and2% budget. Keep reserved
+roles closed and deployment unchanged. No Stage5C/SMC or metric/seconds claim.
+All108 prediction groups replay exactly with future fields removed; first-group
+full refitting and complete evaluation also replay.43 tests in seven files pass;
+3,133 locality reductions and the bootstrap are independently checked. Reports,
+the post-readout moment diagnosis and figure reproduce byte-for-byte. The seal
+binds19 artifacts and139 source files. Full legacy suite/cold raw rebuild are
+not_run. Fresh bounded CREATE queue query succeeded read-only; no job changes.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/verification.json).
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/protocol.md).
 
 ## Source-Separated Calibration (2026-09-27, Verified, Neural Benefit Fails)
