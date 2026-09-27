@@ -14,16 +14,48 @@ added harm versus lost benefit. No policy, threshold or deployment changes;
 no independent data opened. Fifteen targeted tests pass. Parent210sourcefiles
 and21publicartifacts were rehashed successfully. New diagnostic results are
 not_run at registration; now all108groups have run and replayed exactly.
-Independent arithmetic verification is running. Aggregate-joint selected
+Independent arithmetic verification passed:34tests in4files,158,976residual
+fields,432benefit/harm exchanges,3,456brute-force support distances and13,440
+locality reductions. Seal217sources/10artifacts:
+`17c1de49059a68930019b5d170596e447db8333642bc4d48dde9dfa23c1df1f9`.
+Aggregate-joint selected
 all-risk optimism is0.011099 fitting-cost-scale units; only0.945%selected rows
 fall outside both inspected descriptor radii, and64.008%overlap the old proxy.
 Selected optimism is not larger than eligible-unselected optimism on average.
 These conditional development means retain all undefined-view counts.
 Matched-rank added benefit0.047020pp and added harm0.013598pp nearly offset
 removed benefit0.044038pp and removed harm0.011319pp. No deployment change.
-An exact fitting-objective intercept probe is registered separately, not_run
-at this commit; eight tests pass. Fitting loss reduction will not count as lift.
+An exact fitting-objective intercept probe was registered separately before
+running (8bc0eece); see the completed result below. Fitting loss reduction
+does not count as downstream lift.
 [Protocol](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/protocol.md).
+
+## Exact Fitting-Only Bias Probe (2026-09-27, Verified)
+
+**216analytic two-axis fits completed; no new neural training or held policy
+evaluation.** Both parent neural families retain all original parameters.
+For aggregate heads,91/108all-risk and106/108easy-risk nonnegative offsets are
+positive, averaging0.007033/0.003367fitting-cost units. Median original weighted
+fitting objective reduction is0.106876%; pointwise control0.103412%.
+The analytic minimum guarantees this training-loss reduction. It is not
+generalization, deployment, calibration or a new world-dynamics contribution.
+
+All108groups replay exactly.24scoped tests in3files and1,080independent parameter
+checks pass. The objective is checked against the actual parent Torch loss and
+autograd. Across both new tracks,43unique scoped tests pass in6files; no full
+legacy integration run. Fresh fit146.97s/9.73GBpeakRSS, replay250.58s/10.66GB.
+Source checkpoint/artifact hashes, split roles and unknown-label exclusions
+are preserved. Seal223sources/8artifacts:
+`de8cf03f765db504a89f0be37054a1ec1c1405a0f25131b56f5254c6e86a62f8`.
+
+Next: preregister centered-score joint actions and original-score joint actions
+at equal retained counts. This has not_run, and no threshold was selected from
+the readout. Independent roles remain closed; deployment, Stage5C and SMC stay
+unchanged/disabled. CREATE was checked read-only; no job submitted. Raw data,
+caches, neural checkpoints and unrelated staged files are not part of this sync.
+[Probe conclusions](outputs/publication_readiness_2026_09/european_signed_bias_probe_v1/conclusions.md),
+[full fit report](outputs/publication_readiness_2026_09/european_signed_bias_probe_v1/results.md),
+[verification](outputs/publication_readiness_2026_09/european_signed_bias_probe_v1/verification.json).
 
 ## Anchored Subset Supervision (2026-09-27, Verified Negative Result)
 

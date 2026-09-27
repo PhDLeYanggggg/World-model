@@ -25,38 +25,43 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Current Result
 
-**Anchored subset-risk training did not repair safe selection.**
+**Risk prediction remains the bottleneck, not simply lack of model capacity.**
 
-I trained 216 matched risk heads with 432,000 updates. Both arms use identical
-features, initialization, query and row draws, and optimizer budgets. They
-differ only in how an auxiliary loss supervises three causal selection subsets.
-The trajectory predictors, protected floor and utility model stay frozen.
+The latest matched neural experiment trained 216 risk heads. Aggregate subset
+supervision changed ADE by only **+0.00068% [-0.00870%, +0.01049%]** against
+its pointwise control, while increasing harm. The joint policy's average error
+improved over its protected floor, but 84 of 216 dependent views still violated
+the selected-harm screen. It is **not a deployment upgrade**.
 
-At the same per-query intervention count, aggregate subset supervision gains
-**0.00068% ADE [-0.00870%, +0.01049%]** over its pointwise control. That does
-not support an accuracy advantage. Its total-reference harm diagnostic
-**increases by 0.00228 percentage points [0.00014, 0.00472]**.
+I then froze every model and decision and examined what was actually selected.
+Risk was underpredicted across the twelve development localities, but the
+selected rows did not have greater average optimism than unselected eligible
+rows. Only about **0.95%** of selected rows lay outside the inspected
+six-descriptor support. Adding useful switches and adding harmful switches
+largely canceled each other. These findings do not support fixing the problem
+by simply rejecting unusual-looking inputs or enlarging the model.
 
-The joint policy gains 0.5079% ADE over the protected floor, but 84 of 216 dependent
-views exceed the selected-harm screen and 16 ratios are undefined. Easy net error
-is preserved; this is still **not a deployment upgrade**. A tiny secondary
-gain against an older ranking control does not change that conclusion.
+A fitting-only follow-up found a small remaining score bias under the exact
+original loss weights. Two nonnegative offsets per frozen head reduced median
+training loss by about **0.10%**. This is an analytic fit, not new neural training
+or evidence of downstream improvement. The offsets have not been deployed or
+evaluated as a new held policy.
+All 216 analytic fits replay exactly. Across the diagnosis and bias probe,
+43 unique scoped tests pass; the full legacy integration suite was not rerun.
 
-These are results from twelve already-opened development localities, with
-three forecasting seeds and 3,000 locality-bootstrap draws. Training and actions
-were committed before readout. The first complete paired fit, all 216 predictions,
-all 108 action groups and the full evaluation replay exactly. **44 scoped tests
-pass**, with 747,900 query checks, 2,592 independently accounted error views
-and 17,083 locality-statistic checks. Independent selection, calibration and
-confirmation remain closed. These checks verify the experiment, not deployment.
+The frozen-action diagnosis replays exactly on all 108 groups. **34 scoped tests
+pass**; independent checks cover 158,976 residual fields, 432 benefit/harm
+exchanges, 3,456 support distances and 13,440 locality reductions. All results
+remain development evidence. Empty slices and undefined risks are reported;
+independent selection, calibration and confirmation remain closed.
 
-- [Experiment conclusions](outputs/publication_readiness_2026_09/european_subset_excess_v1/conclusions.md)
-- [Full results and losses](outputs/publication_readiness_2026_09/european_subset_excess_v1/results.md)
-- [Verification record](outputs/publication_readiness_2026_09/european_subset_excess_v1/verification.json)
-- [Failure analysis](outputs/publication_readiness_2026_09/european_subset_excess_v1/failure_analysis.md)
-- [Registered protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md)
-- [Method positioning and limits](outputs/publication_readiness_2026_09/european_subset_excess_v1/method_positioning.md)
-- [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_subset_excess_v1/operation_zh.md)
+- [What the frozen decisions reveal](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/conclusions.md)
+- [Residual and support results](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/results.md)
+- [Diagnostic verification](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/verification.json)
+- [Fitting-only bias probe](outputs/publication_readiness_2026_09/european_signed_bias_probe_v1/conclusions.md)
+- [Bias-fit results and verification](outputs/publication_readiness_2026_09/european_signed_bias_probe_v1/results.md)
+- [Parent neural experiment](outputs/publication_readiness_2026_09/european_subset_excess_v1/results.md)
+- [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/operation_zh.md)
 
 The earlier fixed-predictor allocation experiment did improve ADE at matched
 counts, but failed observed-risk control. The subsequent pure query-aggregate
@@ -120,16 +125,12 @@ reports; it is not an isolated read-only smoke test.
 
 ## Next Question
 
-Why does better risk prediction on fixed proxy groups fail to control harm on
-the groups actually chosen by the optimizer? The next step is a frozen-action
-residual and support diagnosis, followed by one preregistered targeted repair.
-The [diagnostic protocol](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/protocol.md)
-has now run and replayed exactly on all 108 groups. Selected risks are
-underpredicted even within inspected descriptor support; average optimism is
-not higher than on unselected eligible rows. The next fitting-only probe checks
-the exact loss-weighted score bias before changing any policy.
-I will not tune thresholds on these readouts or open independent confirmation
-data to rescue the method.
+Does correcting the fitting-only score bias actually reduce harmful
+interventions, or does it merely switch less often? The next experiment will
+compare the centered policy with an original-score policy at the same retained
+intervention count, freezing decisions before readout. That comparison has not
+run yet. I will not tune thresholds on these diagnostics or open independent
+confirmation data to rescue the method.
 
 The larger goal remains useful neural dynamics with reproducible, independent
 evidence. More stages, more overlapping windows or a lower training loss are
