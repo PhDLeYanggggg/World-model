@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Honest OOF Magnitude Study (2026-09-27, Registered Work in Progress)
+## Honest OOF Magnitude Study (2026-09-27, Nested Training Complete)
 
 I am testing whether the auxiliary head's ranking signal can support better
 expected-harm magnitudes. The same two-slope readout is applied to cost-only,
@@ -24,12 +24,14 @@ and zero unknown-label sampling. Estimated auxiliary fitting time is 29.2 minute
 excluding references, loading and diagnostics. Full training follows the same
 fixed budget with resume; source-held readout remains not_run. Independent roles
 stay closed. Registration `35a05b87` and support `bf1ab738` preceded this pilot.
-Training PID 57873 is active; the progress checkpoint records 120 completed
-single-site references and 703/864 auxiliary heads, totaling 1,646,000 completed
-updates. Unknown-label draws remain zero. A further held-locality
+Training PID 57873 completed normally: 144 single-site references and 864
+auxiliary heads, totaling 2,016,000 updates. Recorded fitting took 1,981.76
+seconds; the training phase took 2,480.92 seconds after ancestry preflight.
+Unknown-label draws are zero; no incomplete archive remains. A further held-locality
 perturbation test passes. Two archive-recovery corner tests bring scoped
 preflight coverage to 28 tests; no interruption occurred in this run.
-These are execution facts, not a scientific result. The fitting diagnostics
+The inner prediction freeze precedes all 432 magnitude fits and any new
+source-held readout. These are execution facts, not a scientific result. The fitting diagnostics
 are fixed before readout and will retain sparse-event and easy-cut drift.
 [Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
 

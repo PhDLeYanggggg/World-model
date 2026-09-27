@@ -22,7 +22,9 @@ The [new experiment](outputs/publication_readiness_2026_09/european_oof_magnitud
 uses fitting-only out-of-fold predictions to learn a simple magnitude readout,
 applied equally to cost-only, true-auxiliary and shuffled-auxiliary controls.
 Every reference model, preprocessing step and label producer excludes its held
-locality. Real training is in progress; the result is not known yet. Independent
+locality. All 1,008 nested reference/auxiliary heads have finished 2,016,000
+updates; magnitude fitting and source-held evaluation are next. The scientific
+result is not known yet. Independent
 selection, calibration and confirmation remain closed. The
 [results ledger](README_RESULTS.md) records the current execution state and
 links to the complete evidence, including negative results.
