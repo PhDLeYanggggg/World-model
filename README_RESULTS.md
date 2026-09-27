@@ -19,6 +19,12 @@ resume, matched draws, grouping boundaries and pre-Torch Rosetta rejection.
 The uncommitted registration was regenerated after this pretraining guard fix;
 no model had been fitted. CREATE queue check returned 0, no job submission.
 No outcome, calibration or deployment success is claimed at registration.
+Registration commit `646082b3` preceded the paired 100-update pilot. Real
+native CPU4 fitting completed in 8.95 process seconds, peak RSS 6.10 GB.
+Both arms drew exactly 20,816 known rows in 3,200 queries; unknown draws 0.
+The pilot's paired checkpoints occupy 1,139,964 bytes. A threefold extrapolation
+for 108 pairs is about 369 MB, within current free space above the 10 GiB reserve.
+Full 216-head training has started with resume; the pilot updates are included.
 [Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
 
 ## Frozen Query Utility Allocation (2026-09-27, Verified Accuracy Gain, Risk Failed)

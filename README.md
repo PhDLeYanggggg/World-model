@@ -14,7 +14,8 @@ I started this repo to answer that question carefully, not just to collect a nic
 Both new heads see the same source-balanced batches of current queries. One
 minimizes individual signed-risk error; the other minimizes aggregate query
 error. Models, features, source roles, training budget and risk tolerance stay
-matched. This tests whether query supervision helps the allocation failure
+matched. The real paired pilot passed and both arms are resuming to the full
+2,000-update budget per head. This tests whether query supervision helps the allocation failure
 below; it does not grant independent calibration or open confirmation data.
 [Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
 
