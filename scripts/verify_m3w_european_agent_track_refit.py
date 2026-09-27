@@ -11,7 +11,7 @@ from scripts import run_m3w_european_agent_track_refit as run
 from scripts.verify_m3w_european_partial_neighbor_refit import TESTS as PARENT_TESTS
 
 TESTS=PARENT_TESTS+['tests/test_m3w_agent_track_refit.py','tests/test_m3w_motion_envelope_diagnostic.py',
-                  'tests/test_m3w_motion_unit_sensitivity.py']
+                  'tests/test_m3w_motion_unit_sensitivity.py','tests/test_m3w_dimensionless_correction.py']
 
 
 def main():
@@ -45,7 +45,7 @@ def main():
         'scripts/report_m3w_european_agent_track_refit.py','scripts/report_m3w_agent_track_operations.py',
         'scripts/verify_m3w_european_agent_track_refit.py','scripts/probe_m3w_trained_agent_track.py',
         'scripts/diagnose_m3w_agent_track_envelope.py','src/evaluation/m3w_motion_envelope_diagnostic.py',
-        'scripts/probe_m3w_motion_unit_sensitivity.py']))
+        'scripts/probe_m3w_motion_unit_sensitivity.py','src/world_model/m3w_dimensionless_correction.py']))
     run.immutable_json(path,dict(new_models=9,updates_per_model=4000,initial_parameters_and_sampling_matched=True,
         nine_pair_full_inference_replay_exact=True,readout_replay_exact=True,reports_figure_byte_reproducible=True,
         scoped_tests_passed=len(cases),scoped_test_files=len(TESTS),

@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Agent-Track Topology Refit (2026-09-27, Trained and Unscored)
+## Agent-Track Topology Refit (2026-09-27, Modest Source Gain)
 
 The next matched contrast changes only the encoder topology: temporal attention
 within each agent, followed by interaction attention across agents. The same
@@ -23,8 +23,8 @@ training process, peak RSS1.62GB). Every final sampler state and draw-count
 vector matches its paired control; held fitting draws are zero. All nine prediction
 pairs are frozen: 1,913,814 query forecasts per arm, not independent samples.
 Fresh control inference exactly matches the old cache in all nine pairs.
-Prediction generation took576.87 process seconds, peak RSS1.67GB. Comparative
-scores have not been read. CREATE was checked
+Prediction generation took576.87 process seconds, peak RSS1.67GB. Freeze94978a1f
+precedes the9.77-second comparative readout (peak RSS2.88GB). CREATE was checked
 read-only; its existing jobs are untouched. Independent
 selection/calibration/confirmation remain closed; no deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md),
@@ -33,6 +33,32 @@ Reporting and observation-only association probes are fixed before comparative
 outcomes. The topology is established forecasting practice, not a claimed new
 method; [method context](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/method_context.md)
 distinguishes this predictor repair from the intended calibrated intervention contribution.
+
+Primary ADE gain vs matched flat is **0.4465% [0.1559%,0.7480%]**; hard gain
+is0.5024% [0.2515%,0.8163%], FDE gain0.4615% [0.0711%,0.8686%]. All nine
+producer/seed point gains are positive. Seed17's interval still crosses zero.
+Ten locality gains are positive and two negative. The registered exploratory
+forecaster screen passes; no model is deployed.
+
+Easy degrades0.161% vs the flat control, within that screen's2% guard, but
+degrades **13.080% vs CV**. The all-query CV interval crosses zero. Versus the
+original complete-neighbor neural bank, ADE gain0.459% also has an interval
+crossing zero. These limits prevent a stronger or independent success claim.
+All576 endpoint/subset views and360 prespecified causal slices are retained.
+Full prediction/scoring replay is in progress; not a model-selection step.
+
+The trained grouped models respond to supplied track association. Flat responses
+are rounding-scale; one exceeds the fixed approximate tolerance and is retained.
+All72 coordinate-rescaling checks show sensitivity in the existing bounded
+wrapper despite verified baseline equivariance. The oracle envelope diagnostic
+also identifies unreachable targets, but mean radius usage is only7.31%.
+This does not justify blindly relaxing the bound. A separate dimensionless
+correction-fraction candidate passes three synthetic tests but is untrained.
+
+[Results](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/results.md),
+[error and tails](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/absolute_costs.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/failure_analysis.md),
+[next priorities](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/project_gap.md).
 
 ## Matched Partial-Neighbor Refit (2026-09-27, Benefit Screen Failed)
 

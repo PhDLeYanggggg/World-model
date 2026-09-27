@@ -10,15 +10,23 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**In progress:** a matched agent-track encoder experiment now tests whether
-preserving each neighbor's temporal association adds predictive value. Data,
-initial weights, parameter budget, loss and sampled training queries stay fixed.
-The nine-model design was registered before fitting. All nine real arm64 Torch
-fits have completed 36,000 updates. All nine prediction pairs are frozen and
-the flat controls reproduce exactly; comparative outcomes have not yet been scored.
-Independent outcomes remain closed. [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md).
+**Current result:** preserving agent-track association produces a small matched
+forecast gain. Nine new neural fits improve ADE by **0.447%** over the same-input
+flat encoder, with an exploratory locality interval of [0.156%, 0.748%]. Hard
+gain is 0.502%. All nine producer/seed point gains are positive, but one seed's
+interval still crosses zero. [Results](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/results.md).
 
-**Current result:** keeping partial neighbor histories has not produced a
+This passes a predictor-development screen, not a deployment gate. Easy error
+is still **13.08% worse than CV**, and the comparison with the earlier
+complete-neighbor neural model remains uncertain. Independent outcomes stay
+closed. Predictions were frozen before scoring; full replay is in progress.
+
+The diagnosis also found coordinate-unit sensitivity in the bounded correction
+wrapper. A separate dimensionless-fraction candidate passes structural tests
+but is untrained. I will test it as a matched change, not silently substitute
+it into trained checkpoints. [Failure analysis and limits](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/failure_analysis.md).
+
+**Previous result:** keeping partial neighbor histories has not produced a
 reliable added forecasting gain. I trained
 [nine matched neural models](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/conclusions.md)
 with three seeds and 4,000 updates each. Against the old neural control,
