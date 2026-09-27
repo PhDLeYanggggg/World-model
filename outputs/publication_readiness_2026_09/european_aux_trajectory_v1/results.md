@@ -1,0 +1,83 @@
+# Training-Time Auxiliary Diagnostics
+
+fresh_run: 432 exact reconstructions, 864,000 optimizer updates and 2,160 intermediate measurements.
+cached_verified: unchanged training features, nested labels, initializations, samplers and original final states.
+not_run: new model variant, checkpoint selection, outer policy readout or independent evaluation.
+
+These are normalized fitting losses, not ADE/FDE gains. Positive percentages mean lower fitting loss.
+All final model, optimizer, sampling and random-number states match the original experiment exactly.
+Three seeds and three fitting contexts are averaged within each of four localities; 3,000 paired locality
+resamples give descriptive fitting intervals. These are not independent replication or confirmation.
+
+## Full-Input Positive-Envelope Easy-Harm Loss
+
+| Assignment | Contrast | Update | Reduction (%) | Descriptive 95% interval |
+|---|---|---:|---:|---|
+| P0__C1 | true_vs_cost | 200 | -0.1194514295900196 | [-0.17209614275371227, 0.06802639254162593] |
+| P0__C1 | true_vs_shuffled | 200 | 0.002885844996208568 | [-0.00801888494320344, 0.032939611650572784] |
+| P0__C1 | true_vs_cost | 600 | 0.025727276604143152 | [-0.11716188190534053, 0.08688897633809432] |
+| P0__C1 | true_vs_shuffled | 600 | 0.12159605256007468 | [0.023220404153063638, 0.2069457514922706] |
+| P0__C1 | true_vs_cost | 1000 | 0.023276235680048985 | [-0.06919064190293746, 0.09067230581989129] |
+| P0__C1 | true_vs_shuffled | 1000 | -0.058908978386657845 | [-0.1188667781852133, 0.0058594707587894] |
+| P0__C1 | true_vs_cost | 1400 | -0.11536200225954665 | [-0.3322850268073717, 0.24950529084912898] |
+| P0__C1 | true_vs_shuffled | 1400 | 0.921767691120508 | [-0.07808468138933247, 2.0485934174287213] |
+| P0__C1 | true_vs_cost | 2000 | 0.5707846988158986 | [-0.01988256776634101, 1.2212924423076703] |
+| P0__C1 | true_vs_shuffled | 2000 | 0.602386851819697 | [-0.057837852518986974, 1.3218797155689699] |
+| P0__C2 | true_vs_cost | 200 | -3.9567967627296206 | [-4.8260643886633705, 3.1985008270256072] |
+| P0__C2 | true_vs_shuffled | 200 | -0.2329175872832181 | [-0.31956441137524555, 1.012933326979798] |
+| P0__C2 | true_vs_cost | 600 | -3.617953213224808 | [-4.409884129768464, 0.25142743660974726] |
+| P0__C2 | true_vs_shuffled | 600 | 1.8399675756394236 | [-0.3539665590819659, 2.2213060477845694] |
+| P0__C2 | true_vs_cost | 1000 | -7.084430705005579 | [-9.115301265083119, 1.2742424283739981] |
+| P0__C2 | true_vs_shuffled | 1000 | 0.23564015011923986 | [-0.02448862927244049, 0.29236252810944074] |
+| P0__C2 | true_vs_cost | 1400 | -7.1119604092873425 | [-9.447271196794636, 1.5465736811396247] |
+| P0__C2 | true_vs_shuffled | 1400 | -0.4734798584467133 | [-0.5899859896399431, 0.027351011609956084] |
+| P0__C2 | true_vs_cost | 2000 | -0.698344560682476 | [-1.3214000324216817, 4.225974130502184] |
+| P0__C2 | true_vs_shuffled | 2000 | 2.176028300586395 | [-0.025069455756857328, 3.150540217655048] |
+| P1__C0 | true_vs_cost | 200 | -0.1852012902560139 | [-0.24556694713430335, 0.254672892982561] |
+| P1__C0 | true_vs_shuffled | 200 | 0.07177170844683035 | [0.0478965866009527, 0.11090465714449439] |
+| P1__C0 | true_vs_cost | 600 | -0.37537101364146064 | [-0.9228548994074348, -0.031051126465120548] |
+| P1__C0 | true_vs_shuffled | 600 | 0.03263529270026784 | [-0.026367503457387417, 0.41248344670960435] |
+| P1__C0 | true_vs_cost | 1000 | -0.7422023151266587 | [-2.261135213523007, 0.40628976960547203] |
+| P1__C0 | true_vs_shuffled | 1000 | -0.22847004429180418 | [-0.7057547964740001, 0.8616710759548992] |
+| P1__C0 | true_vs_cost | 1400 | -0.9990972112204092 | [-2.826822936955303, 0.5927362824513353] |
+| P1__C0 | true_vs_shuffled | 1400 | -0.3633404906531014 | [-1.26729756312343, 1.7848324245243599] |
+| P1__C0 | true_vs_cost | 2000 | -1.508177693339161 | [-4.854378841373708, 2.3551459700466864] |
+| P1__C0 | true_vs_shuffled | 2000 | -0.2401500099371553 | [-1.4569126101092553, 3.6986778977303545] |
+| P1__C2 | true_vs_cost | 200 | -0.6552907428054462 | [-1.0717904150611983, -0.00890691745511017] |
+| P1__C2 | true_vs_shuffled | 200 | 0.024979129975392898 | [-0.03531049566947902, 0.22569711115074556] |
+| P1__C2 | true_vs_cost | 600 | -2.199106541132028 | [-3.910622696445776, 0.3153149590514489] |
+| P1__C2 | true_vs_shuffled | 600 | 0.8567555310350872 | [-0.36470109862683525, 1.636242252119601] |
+| P1__C2 | true_vs_cost | 1000 | -2.0046371893605803 | [-3.5561184223604347, -0.02964250695191535] |
+| P1__C2 | true_vs_shuffled | 1000 | 2.0903054671003782 | [-0.3815895327031481, 3.888343231413177] |
+| P1__C2 | true_vs_cost | 1400 | -0.5465906027219823 | [-1.6289790989422401, 1.2449893793453728] |
+| P1__C2 | true_vs_shuffled | 1400 | 1.9591522450346215 | [-0.8956440661490401, 3.9954843256120602] |
+| P1__C2 | true_vs_cost | 2000 | -2.203177730202086 | [-5.60899901732723, 2.017400233522623] |
+| P1__C2 | true_vs_shuffled | 2000 | 0.44059566283541546 | [-5.56625591092077, 4.01701549804559] |
+| P2__C0 | true_vs_cost | 200 | 1.6257073224435232 | [-0.43943291674383084, 3.4123980702227095] |
+| P2__C0 | true_vs_shuffled | 200 | 0.3739846491989671 | [0.1392463441515567, 0.673249309099904] |
+| P2__C0 | true_vs_cost | 600 | -0.8261141213569996 | [-7.923050136625211, 3.0115415433569934] |
+| P2__C0 | true_vs_shuffled | 600 | 1.5311149468910843 | [0.49279287261732224, 3.3164932720488047] |
+| P2__C0 | true_vs_cost | 1000 | -6.08596627470776 | [-17.475224762686615, -1.1337041192083053] |
+| P2__C0 | true_vs_shuffled | 1000 | 3.4162342843156677 | [-1.3753953011889382, 11.995741647650528] |
+| P2__C0 | true_vs_cost | 1400 | -7.201027676487965 | [-26.04481565598616, -0.8075304662326122] |
+| P2__C0 | true_vs_shuffled | 1400 | 3.0890889267934214 | [-0.836040611077875, 11.153209001170252] |
+| P2__C0 | true_vs_cost | 2000 | -3.747998433930052 | [-15.761395354928663, -0.4482162338406682] |
+| P2__C0 | true_vs_shuffled | 2000 | 3.1486919316754043 | [-0.030067474764554618, 12.633096068892602] |
+| P2__C1 | true_vs_cost | 200 | 0.023851084047616444 | [-0.528829479565932, 0.44963865523908114] |
+| P2__C1 | true_vs_shuffled | 200 | 0.21263886653789857 | [0.14828360448591285, 0.3321564960680927] |
+| P2__C1 | true_vs_cost | 600 | -3.6730528197103136 | [-6.260539528392614, -1.9994078937110646] |
+| P2__C1 | true_vs_shuffled | 600 | 0.8911438841620303 | [0.08398274868418172, 1.7774119860740614] |
+| P2__C1 | true_vs_cost | 1000 | -3.7145063606935547 | [-5.298449052833443, -1.7949171617482615] |
+| P2__C1 | true_vs_shuffled | 1000 | 0.3429642563945423 | [-0.18016734614779897, 0.7195618935340197] |
+| P2__C1 | true_vs_cost | 1400 | -5.155918233696454 | [-12.403950853665693, -1.6344869026827535] |
+| P2__C1 | true_vs_shuffled | 1400 | -0.4452061934088969 | [-2.196789839065908, 1.2859653941359628] |
+| P2__C1 | true_vs_cost | 2000 | -5.286075775567453 | [-14.946116692232271, -1.686516853384987] |
+| P2__C1 | true_vs_shuffled | 2000 | -1.2955711213095051 | [-3.0143423028828775, 0.22747909534355842] |
+
+Every family, assignment, severity stratum and gradient result is retained in aggregate_metrics.json.
+Stratum thresholds use fitting-only equal-locality weights. Empty or incomplete strata are not_estimable.
+First observed adverse intervals are coarse time diagnostics, not exact onset or causal attribution.
+The shared source loader is not a filesystem blind; fitting rows are selected before label indexing.
+Independent selection, reserved calibration and confirmation remain unopened.
+Obs8/pred12 native annotation steps in detector pixels. No seconds/metric, physical-safety, human-gold,
+true3D/foundation claim. Stage5C and SMC remain disabled. No deployment change.

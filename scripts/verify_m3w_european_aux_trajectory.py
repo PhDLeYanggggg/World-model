@@ -7,7 +7,8 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_european_aux_trajectory as run
 from scripts.verify_m3w_european_aux_gradient import TESTS as PREVIOUS_TESTS
-TESTS = ['tests/test_m3w_aux_trajectory.py', 'tests/test_m3w_aux_trajectory_diagnosis.py', *PREVIOUS_TESTS]
+TESTS = ['tests/test_m3w_aux_trajectory.py', 'tests/test_m3w_aux_trajectory_diagnosis.py',
+         'tests/test_m3w_aux_initial_prior.py', *PREVIOUS_TESTS]
 
 
 def execute(args, label):
@@ -21,10 +22,11 @@ def execute(args, label):
 def main():
     logs = [execute(['scripts/run_m3w_european_aux_trajectory.py', '--phase', 'verify'], 'replay')]
     names = ['aggregate_metrics.json', 'results.md', 'training_time_effects.svg',
-             'secondary_diagnosis.json', 'gradient_time_effects.svg']
+             'secondary_diagnosis.json', 'gradient_time_effects.svg', 'initial_prior_posthoc.json']
     before = {n: run.digest(run.PUBLIC/n) for n in names}
     logs.append(execute(['scripts/report_m3w_european_aux_trajectory.py'], 'report_replay'))
     logs.append(execute(['scripts/diagnose_m3w_european_aux_trajectory.py'], 'diagnosis_replay'))
+    logs.append(execute(['scripts/inspect_m3w_aux_initial_prior.py'], 'prior_metadata_replay'))
     assert all(run.digest(run.PUBLIC/n) == h for n, h in before.items())
     xml = run.PRIVATE/'tests.xml'
     logs.append(execute(['-m', 'pytest', '-q', *TESTS, '--junitxml', str(xml)], 'tests'))
@@ -37,7 +39,7 @@ def main():
         k:v for k,v in freeze.items() if k != 'exact_diagnostic_replay'}
     assert freeze['heads'] == 432 and freeze['snapshots'] == 2160 and freeze['updates'] == 864000
     source = sorted(set(run.FILES+TESTS+['scripts/diagnose_m3w_european_aux_trajectory.py',
-                                        'scripts/verify_m3w_european_aux_trajectory.py']))
+        'scripts/verify_m3w_european_aux_trajectory.py', 'scripts/inspect_m3w_aux_initial_prior.py']))
     doc = dict(all_passed=True, reconstructed_heads=432, optimizer_updates=864000, snapshots_replayed=2160,
         exact_original_final_states=True, reports_figures_byte_reproducible=True,
         scoped_tests_passed=len(cases), scoped_test_files=len(TESTS), full_legacy_suite='not_run',

@@ -5,40 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Auxiliary Training Trajectories (2026-09-27, Training Frozen)
+## Auxiliary Training Trajectories (2026-09-27, No Model Promotion)
 
-The final-state projection experiment did not justify a projection repair.
-The next question is when the auxiliary cost deficit appears during training.
-I will reconstruct the same 432 heads and retain measurements at updates
-200, 600, 1000, 1400 and 2000. This adds observation, not a new model variant.
-Final parameters, optimizer states and sample streams must exactly reproduce
-the original experiment. No checkpoint will be selected from these curves.
+I reconstructed all 432 original heads, with 864,000 updates and 2,160 fixed
+snapshots. Every final numerical state matches the original. The new evidence
+is when the cost deficit appears, not a new model or independent replication.
+In both feature families, all six assignment-level cost4 point estimates are
+worse than cost-only at all five times, including the first observation at
+step200. Full-input easy-harm intervals never establish a consistent benefit
+over cost-only. Some early true-vs-shuffled gains do not change that result.
 
-The protocol retains all three seeds, all six assignments and both feature
-families. Severity bins and gradient measurements use fitting data only.
-Independent selection, reserved calibration and confirmation stay unopened.
-CREATE was checked read-only; this modest experiment uses the native arm64
-local environment with four compute threads and no DataLoader workers.
-Registration commit `0dc819d7` preceded the real pilot. Its 200 updates took
-0.1606 seconds of training and 17.71 seconds including input preparation,
-excluding ancestry preflight. The projection of 693.68 training seconds does
-not include snapshot diagnostics or I/O. The full fixed-budget reconstruction
-has started. Training and trajectory readout are not yet complete; deployment
-is unchanged. Twenty-seven scoped tests cover exact segmented replay,
-serialization, missing support and additive severity accounting.
-At the first progress checkpoint, 144 of 432 heads and 720 of 2,160 snapshots
-were complete. All 144 final numerical states matched their originals.
-PID 44662 continues the remaining fixed-budget reconstructions; no aggregate
-scientific readout or repair selection has been made.
+The curves also expose a testable post-hoc initialization hypothesis: the
+auxiliary inherits an easy-membership prior of roughly28%, while the median
+fitting cap-event prior is5.1% for full inputs and1.1% for motion-only inputs.
+This is not a proved cause or repaired model. The next minimal intervention
+will change only that intercept with matched true/shuffled/control training.
+No checkpoint was selected from these fitting curves.
 
-The fixed run is now complete: 432 heads, 864,000 optimizer updates and 2,160
-snapshots. Every final numerical state matches the original. Recorded fit time
-is 807.07 seconds; full run-phase wall time is 1,518.36 seconds, excluding
-ancestry preflight and reusing the pilot's first 200 updates. The freeze is
-committed before aggregate readout. These are exact reconstructions, not new
-model variants or independent replications. Scientific readout is pending.
+Registration `0dc819d7` preceded training; `6de58cf8` froze results before
+readout. Recorded fit time was807.07 seconds; run-phase wall time1518.36 seconds
+excludes ancestry preflight and reuses the pilot. Local arm64 CPU4/interop1,
+workers0 was sufficient; CREATE was checked read-only. All1,920 comparison
+cells are retained, including420 unsupported strata. The3,000-resample
+four-locality intervals are descriptive, not confirmation. Independent roles,
+deployment, Stage5C and SMC are unchanged. Snapshot/report replay is pending.
 
-[Registered protocol](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/protocol.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/failure_analysis.md),
+[next controlled repair](outputs/publication_readiness_2026_09/european_aux_trajectory_v1/project_gap.md).
 
 ## Auxiliary Gradient Diagnostic (2026-09-27, Readout Complete, No Repair Promotion)
 
