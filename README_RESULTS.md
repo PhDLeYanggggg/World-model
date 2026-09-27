@@ -20,6 +20,8 @@ Its auxiliary prior changed from24.62% to2.90%; shared and cost initialization
 did not change. Sixteen scoped tests pass. The projected pure fitting time is
 about515 seconds,excluding data loading and diagnostics. This runtime check is
 not evidence of predictive improvement. Registration commit:b6ea4f8e.
+Mid-run check:147/288 heads and294000 completed updates; matched initialization
+and sampling checks continue to pass. Source-held readout has not started.
 
 [Protocol](outputs/publication_readiness_2026_09/european_aux_prior_v1/protocol.md).
 
