@@ -10,30 +10,36 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing whether retaining partial neighbor histories
-improves neural forecasting. The
-[matched refit](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md)
-fixes the original three seeds, training localities, loss and 4,000-update
-budget. The old control now reproduces every parameter exactly after checkpoint
-resume; all nine new models have completed 4,000 updates. Their predictions
-are now frozen, with all nine legacy controls reproduced by fresh inference.
-Comparative scoring is next. This is source-development work;
-independent selection, calibration and confirmation remain closed.
+**Current result:** keeping partial neighbor histories has not produced a
+reliable added forecasting gain. I trained
+[nine matched neural models](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/conclusions.md)
+with three seeds and 4,000 updates each. Against the old neural control,
+ADE gain is just 0.012%, with an exploratory interval of [-0.374%, +0.412%].
+The main benefit screen fails. Easy error is still 12.89% worse than CV;
+the small improvement over the old neural model does not make this deployable.
 
-**Current finding:** the model has been excluding many visible neighbors.
+The experiment also exposes a representation gap: flattened neighbor tokens
+discard supplied track associations. A separate agent-wise temporal then
+interaction encoder passes structural tests, but has not been trained or shown
+predictive benefit. That is the next matched hypothesis, not a new result.
+Predictions were committed before scoring. Full replay is in progress;
+independent selection, calibration and confirmation remain closed, and I am
+not changing deployment. [Failure analysis](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/failure_analysis.md).
+
+**Previous input finding:** the model has been excluding many visible neighbors.
 The [source observation audit](outputs/publication_readiness_2026_09/european_observation_quality_v1/conclusions.md)
 traced 318,969 target histories back to the raw records. In 88.58% of queries,
 the nearest-eight pool contains an agent whose incomplete history excludes it
 from the old input. I implemented a separate masked-neighbor packer and neural
 adapter that retain valid observations without inventing missing positions.
 
-All raw-history checks replay exactly and 37 scoped tests pass. This repairs
-an input restriction, not a demonstrated prediction failure: matched neural
-retraining is next and deployment is unchanged. The same audit found no uniform
+All raw-history checks replay exactly and 37 scoped tests pass. This repaired
+an input restriction; the matched refit above now tests its predictive value.
+Deployment is unchanged. The same audit found no uniform
 benefit from smoothing. Independent selection, calibration and confirmation
 remain closed; neither more tokens nor passing tests establish model lift.
 
-**Current result:** relaxing the risk ceiling does not recover a reliable
+**Previous risk result:** relaxing the risk ceiling does not recover a reliable
 history or interaction gain. In the
 [frozen-model attribution](outputs/publication_readiness_2026_09/european_cap_attribution_v1/conclusions.md),
 five of six full-input intervals show worse easy-harm prediction after the cap

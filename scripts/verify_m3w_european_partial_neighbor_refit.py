@@ -32,7 +32,7 @@ def main():
     assert control['parameters_exact'] and control['sampling_exact']
     assert run.artifact(ROOT/control['complete']['path'])==control['complete']
     names=['results.md','absolute_costs.md','motion_proxies.md','training.md','conclusions.md','gates.json','matched_refit.png',
-           'input_slices.json','input_slices.md','association_probe.json']
+           'input_slices.json','input_slices.md','association_probe.json','metric_direction_note.md']
     before={n:run.digest(run.PUBLIC/n) for n in names}
     subprocess.run([sys.executable,'scripts/report_m3w_european_partial_neighbor_refit.py'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,'scripts/diagnose_m3w_european_partial_neighbor_refit.py'],cwd=ROOT,check=True)

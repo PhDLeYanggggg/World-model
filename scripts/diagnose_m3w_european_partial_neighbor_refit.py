@@ -65,6 +65,7 @@ def main():
     lines += ['', 'An unchanged input row can still change prediction because training changed shared model weights.',
         'A contrast between these groups cannot separate normalization, nearest-agent membership, mask support,',
         'detector noise or the true usefulness of interactions. Undefined fixed-roster percentages stay undefined.',
+        'Slice percentage gains have different denominators and locality weights; they are not additive components of the primary.',
         'There is no seed selection, threshold search, risk-policy refitting or independent-role access.']
     lines += ['', '## Observed Support', '', '| Quantity | Value |', '|---|---:|']
     lines += [f'| {k} | {v} |' for k,v in support.items()]

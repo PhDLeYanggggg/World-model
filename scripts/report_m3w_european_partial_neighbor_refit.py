@@ -83,6 +83,18 @@ def report():
         motion.append(f"| {r['trial']} | {r['site']} | {r['rows']} | {r['recordings']} | {r['finite_output']} | {r['raw_step_acceleration_new']:.6f} | {r['raw_step_acceleration_legacy']:.6f} |")
     (run.PUBLIC/'motion_proxies.md').write_text('\n'.join(motion)+'\n')
 
+    direction=['# Metric Direction Note', '',
+        'The registered generic aggregator stores the minimum locality statistic in its',
+        '`worst_locality` field. This names the worst gain correctly, but for absolute',
+        'harm it is only the minimum, not the worst harm. No harm-minimum field is used',
+        'in a gate or a safety conclusion. The correct maxima are shown below without',
+        'altering the frozen evaluation file, primary gains, intervals or training.', '',
+        '| Endpoint/subset | Maximum locality mean harm vs legacy |', '|---|---:|']
+    for key,v in summaries.items():
+        values=list(v['absolute_harm_vs_legacy']['by_site'].values())
+        direction.append(f"| {key} | {fmt(max(values) if all(x is not None for x in values) else None)} |")
+    (run.PUBLIC/'metric_direction_note.md').write_text('\n'.join(direction)+'\n')
+
     endpoints=[]
     for ref in freeze['training']:
         assert run.artifact(ROOT/ref['path']) == ref

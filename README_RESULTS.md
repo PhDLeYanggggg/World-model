@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched Partial-Neighbor Refit (2026-09-27, Trained; Unscored)
+## Matched Partial-Neighbor Refit (2026-09-27, Benefit Screen Failed)
 
 The input audit motivates one versioned neural repair, not a smoothing or
 threshold sweep. Nine new models retain the old initialization, parameter
@@ -18,18 +18,20 @@ The pilot ran 100 updates in 2.24 training seconds, then resumed to the
 4,000-update legacy endpoint in 91.87 cumulative training seconds. Every
 parameter and the sampling state match the cached control exactly. Nine new
 models have now completed 36,000 updates in 899.93 cumulative training seconds
-(902.94-second training process, peak RSS1.66GB). Each has88,514 parameters;
+(902.94-second training process, peak RSS 1.66 GB). Each has 88,514 parameters;
 no held-locality row was sampled. All nine prediction pairs are now frozen:
 1,913,814 query-forecast pairs per arm, not independent samples. Fresh inference
-matches every legacy prediction exactly. Generation/verification took669.15
-process seconds. Comparative predictive lift remains not_run at this freeze.
+matches every legacy prediction exactly. Generation/verification took 669.15
+process seconds. Freeze 39607e9e precedes the 6.20-second comparative readout.
+All 576 endpoint/subset views are retained. Full inference/scoring replay is
+in progress; it is not an additional model-selection step.
 No independent-role access or deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md),
 [data/model scope](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/data_model_card.md),
 [recovery and reproduction](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/reproducibility.md).
 Reporting code and changed/unchanged-input diagnostic slices are fixed before
 comparative readout. The slices do not change the primary or select a model.
-The input-only check finds54.10 versus50.51 valid neighbor-history slots per
+The input-only check finds 54.10 versus 50.51 valid neighbor-history slots per
 query: nearer incomplete neighbors can displace complete histories. Coverage
 and information are not interchangeable; no outcome-based adjustment is made.
 An observation-only
@@ -41,6 +43,24 @@ structural limitation, not evidence that an identity-aware repair improves accur
 A separate grouped-history candidate passes three structural tests with the
 same parameter shapes and initial causal floor. It is not trained and is not
 part of the registered nine-model comparison.
+
+Primary ADE gain versus matched legacy neural forecasts is **+0.012%**
+[-0.374%, +0.412%]; hard gain is -0.152% [-0.628%, +0.324%], and FDE gain
+is -0.181% [-0.604%, +0.258%]. Seed gains -0.122%, +0.137%, +0.021% all have
+intervals crossing zero. The preregistered benefit screen fails. Easy gains
+0.335% versus legacy, but degrades 12.888% versus CV. Against the fitting-selected
+baseline, all-query ADE gain is 2.927% [0.708%, 5.355%]; that is not evidence
+of this repair's incremental contribution. No model is promoted.
+
+The 12-locality bootstrap is conditional source-development evidence, not
+independent confirmation. Changed-input ADE gain is -0.050%; unchanged-input
+gain is -0.382%. The grouping cannot isolate membership, conditioning and
+track-association effects. Do not mix these obs8/pred12 raw-stride12 results
+with historical t+50 scores. Stage5C and SMC remain off.
+[Results](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/results.md),
+[absolute costs and tails](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/absolute_costs.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/failure_analysis.md),
+[next boundary](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/project_gap.md).
 
 ## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 
