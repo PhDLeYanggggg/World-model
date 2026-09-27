@@ -5,7 +5,36 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Anchored Subset Supervision (2026-09-27, Training Frozen)
+## Anchored Subset Supervision (2026-09-27, Negative Readout; Verification Pending)
+
+Same-count subset-aggregate versus subset-pointwise ADE gain is
+**+0.000678% [-0.008701%,+0.010486%]**, positive in5/12localities.
+All-reference-denominator harm reduction is **-0.002279pp
+[-0.004717,-0.000135]**: harm increases. Joint ADE contrast is
++0.003497%[-0.011473%,+0.017681%], not rate matched; joint harm reduction
+-0.010914pp[-0.020107,-0.003440]. The exploratory screen fails.
+
+Aggregate joint ADE/floor0.507865%,hard/floor0.557981%,intervention7.7985%.
+It has84/216risk violations and16undefined selected-risk views; pointwise
+subset joint has82and13. Worst aggregate easy gain/CV+0.176646%,zero-CVharm0.
+A tiny secondary same-count gain over the cached older pointwise rank is
++0.004553%[+0.000081%,+0.009690%], but this changes weighting too, uses nominal
+intervals, and does not repair safety. No deployment or confirmation claim.
+
+Held controller-subset all-risk MSE falls3.49%descriptively, while whole-query
+easy-risk MSE rises1.64%. Better proxy MSE did not establish better selected-set
+risk. Both new arms' own fitting loss falls108/108heads. First readout168.29s,
+peakRSS11,169,103,872bytes, PID47334; full replay/independent verification pending.
+Registration f39d5aa4,training freeze36923606,action freezeb959c128 precede their
+corresponding experimental steps. Independent roles remain closed.
+[Conclusions](outputs/publication_readiness_2026_09/european_subset_excess_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_subset_excess_v1/failure_analysis.md).
+
+The project README was shortened without losing history: its exact b959c128
+snapshot is README_RESEARCH_HISTORY_2026_09_27.md. This changes presentation,
+not metric or evidence status.
+
+Registration and resource record:
 
 A new development experiment retains individual supervision while comparing
 pointwise versus aggregate error within three frozen causal subset masks.
@@ -25,7 +54,7 @@ Forty-four scoped tests pass across eight files. Training identities are frozen
 before decisions. All108 action groups now complete in702.43seconds,
 peakRSS11,228,987,392bytes, PID46464. First full paired fit replay is exact
 (13.04seconds); models, optimizer, RNG, draws, losses and predictions match.
-Actions are committed before readout; no held outcome readout has run.
+Actions were committed before the first held readout.
 Independent roles remain closed; deployment,
 Stage5C and SMC unchanged. CREATE read-only queue check succeeded; no jobs
 submitted. Source-role and artifact hashes are checked before registration.

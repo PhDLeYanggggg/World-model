@@ -1,0 +1,2665 @@
+# M3W: Real-World Multimodal Agent-Scene World Model
+
+M3W is my research project on top-down multi-agent world modeling.
+
+The question behind the project is simple:
+
+> If I can see a scene, the agents in it, their recent motion, and their local interactions, can I predict what happens next more reliably than strong causal motion baselines?
+
+I started this repo to answer that question carefully, not just to collect a nice-looking demo. The work here includes the models that improved results, the ones that failed, the leakage checks, the safety rules, and the notes that keep me honest about what the evidence does and does not prove.
+
+## Read the Current Study
+
+**In progress: learning risk on causal selection subsets.** I am testing whether
+individual-error supervision plus fixed, past-only subgroup supervision repairs
+the selection mismatch below. Two matched arms have trained216 risk heads, with
+unchanged predictors, source roles and2%selected-risk screen. No new independent
+data are opened. Empty interventions remain explicit abstentions, not passing
+risk ratios. All432,000 updates and108 action groups are complete and frozen;
+outcome readout is pending. This is a development experiment, not a positive result.
+[Protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md).
+
+**Latest result: query-aggregate risk training did not repair selection.**
+I trained 216 matched risk heads, holding features, initialization, training
+draws and budget fixed. All 432,000 updates completed. The only experimental
+change was individual versus current-query aggregate signed-risk supervision.
+
+At the same intervention count, query training gains only **0.009%
+[-0.014%, 0.042%]** over pointwise training, with no supported advantage.
+Its joint policy is **worse by 0.155% [-0.306%, -0.046%]** at the same nominal
+risk budget, although intervention rates differ. Held-query risk prediction
+also fails to improve. Easy net error is preserved, but **98/216 dependent
+views violate the observed harm budget**, and twelve ratios are undefined.
+This is a negative development result, not a deployment upgrade.
+
+Training and actions were committed before readout. The first complete paired
+fit, all 216 predictions, all108 action groups and the full evaluation replay
+exactly. **30 scoped tests pass**, with747,900 query checks,2,160 independently
+accounted cost views and11,625 locality-statistic checks. Reports and figures
+reproduce byte for byte. These verify a negative experiment, not safe deployment.
+Independent selection/calibration/confirmation remain closed.
+[Results](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/failure_analysis.md),
+[training curves](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/training_curves.png),
+[verification](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/verification.json),
+[reproduction guide](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/operation_zh.md).
+
+Before readout I found a limitation in the registered primary: ten parent
+views have zero interventions, which makes their selected-risk ratios
+undefined under the matched-count design. The primary cannot pass on its full
+roster. I retain that failure and report the predeclared secondary
+comparisons without promoting them to a replacement primary.
+[Pre-readout disclosure](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/primary_feasibility_addendum.md).
+
+**Previous experiment:** choosing where to intervene jointly improves accuracy,
+but does not yet control harm. I kept every predictor fixed and allowed exactly
+the same number of interventions in each current query. Utility-aware allocation
+improves ADE over independent selection by **0.232% [0.122%, 0.359%]**; all
+twelve development-locality contrasts are positive.
+
+That gain is useful, but it is not a deployment result. **99 of 216 dependent
+views exceed the observed 2% harm budget**, up from 82 under independent
+selection, and ten risk ratios remain undefined. Easy net error is preserved.
+The unconstrained utility ranking gains more accuracy but damages easy cases.
+This separates the two problems: better allocation is possible, while reliable
+risk prediction still needs repair. No independent confirmation data were opened
+and the protected deployment policy remains unchanged.
+
+All 108 action groups were committed before readout and replay exactly, as does
+the full evaluation. **25 scoped tests pass**, with 747,900 independently checked
+current-query constraints and 6,897 locality-metric reductions. Reports and the
+figure reproduce byte for byte. These verify the experiment, not safety.
+No new model was trained in this test. My next repair keeps this allocation
+fixed and targets source-separated query-level harm prediction and calibration.
+[Results](outputs/publication_readiness_2026_09/european_query_utility_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_query_utility_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_utility_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_query_utility_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_query_utility_v1/verification.json).
+
+**Latest diagnosis:** at the same intervention count, the descriptor policy
+reduces harm by **0.00638%**, but sacrifices **0.02026%** in benefit, both
+relative to the control's total error. The larger benefit loss explains the
+negative net result. The frozen utility model already predicts lower utility
+on the exchanged selections; a sign-only admission rule loses that magnitude
+information. All 108 groups replay, with 19 scoped tests and 747,900 query
+checks. This is a diagnosis, not a deployment change.
+
+That diagnosis motivated the allocation experiment above. Outcome risk,
+not predicted feasibility, decides whether the repair is deployable.
+[Results](outputs/publication_readiness_2026_09/european_selection_exchange_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_selection_exchange_v1/conclusions.md),
+[verification](outputs/publication_readiness_2026_09/european_selection_exchange_v1/verification.json).
+
+**Latest result:** explicit causal features improve average error, but do not
+yet make neural intervention safer. I trained 108 matched risk heads with six
+past-motion, neighbor-context and forecast-disagreement descriptors. Shared
+initial predictions, training draws, loss, fallback and the 2% risk budget
+stay fixed; the added branch has 384 parameters.
+
+ADE gain over the protected floor rises from **0.185% to 0.259%**. However,
+intervention also rises from **6.78% to 8.02%**. At the same number of switches
+within each current frame, the new model is **worse by 0.0139%
+[-0.0298%, -0.0022%]** than the control. Better average error here is not
+evidence of better selection.
+
+Held-source risk-score error improves slightly, but **82 of 216 dependent
+views still exceed the harm budget**, and ten have an undefined risk ratio.
+Easy net error is preserved; positive-harm safety is not. I am retaining this
+as a negative development result, with **no deployment change**. Independent
+confirmation sources remain closed.
+
+All 108 prediction/decision groups and the full readout reproduce exactly.
+**35 scoped tests pass**, alongside 747,900 independent query-count checks and
+7,135 locality-metric reductions. These checks verify the experiment; they do
+not turn its failed safety hypothesis into a positive result.
+
+The follow-up exchange diagnosis and allocation test above locate part of this
+failure. Further gain/harm training must retain the risk budget and source roles,
+without selecting a favorable held-source slice.
+[Results](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/verification.json).
+
+**Latest diagnosis:** the risk head fails inside its existing input-support
+guard, not just on obviously unfamiliar inputs. I froze all models and actions
+and recomputed 108 paired source groups using fitting-defined motion,
+neighborhood and rollout-disagreement slices.
+
+Complete-label samples contribute **61.28% of observed harm**. High rollout
+disagreement has **5.27% selected harm**, compared with **0.96%** in the low
+slice. These are development associations, not safe deployment rules. The
+eligible pool retains **16.27% diagnostic oracle opportunity**, but the policy
+captures only **1.08% of available positive-benefit mass**. Opportunity is not
+the same as a learned result.
+
+This diagnosis motivated the matched causal-descriptor augmentation above,
+with the loss, fallback and risk budget fixed. Future label completeness was
+not an input and no favorable subgroup was selected. All 108 diagnostic groups
+replay exactly; **24 scoped tests**, 217,728 additive checks and 2,448 independent
+reductions pass. No new model was trained in this diagnostic, and no independent
+confirmation data were opened. Deployment is unchanged.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/results.md),
+[interpretation](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/conclusions.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/verification.json).
+
+**Preceding training result:** directly learning the risk-budget error improves the fit to
+training sources, but does not yet solve safe selection on different sources.
+I trained 108 new risk heads against 108 verified moment-MSE controls, keeping
+the forecasting models, protected fallback, architecture, sampling and source
+roles fixed. The only training change was the signed-risk objective.
+
+The new policy gains **0.185% ADE over the protected floor**, but its advantage
+over ordinary MSE is uncertain: **0.031% [-0.033%, 0.109%]**. With the same
+number of interventions in each current frame, the contrast is **-0.017%
+[-0.054%, 0.017%]**. Fourteen held views completely abstain and another 79
+exceed the 2% positive-harm budget. Easy net error is preserved; that alone
+does not make the policy safe or deployable.
+
+This rules out a simple objective-only repair under the current setup. The
+risk-score error falls on fitting sources but shows no supported improvement
+on held sources. My next step is to locate that gap by causal feature support,
+motion scale and annotation completeness before training another loss variant.
+Independent confirmation data remain closed, and deployment is unchanged.
+All 108 prediction/decision groups replay exactly, along with a complete
+first-head refit and the readout. **43 scoped tests pass**; 747,900 current-query
+count checks and 7,199 locality reductions are independently verified. Reports,
+diagnosis and the figure are reproducible. These checks verify the experiment,
+not the failed safety hypothesis.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/verification.json).
+
+**Previous loss result:** putting more training weight on large errors does not yet
+make the neural selector reliably safer. I trained 216 bounded risk heads
+with matched initialization, sampling, source roles and 432,000 updates.
+The forecasts, protected fallback and utility head stayed frozen.
+
+Ordinary moment loss gives **0.154% ADE gain over the protected floor**;
+tail-weighted loss gives **0.067%**. Tail weighting reduces intervention from
+7.82% to 4.92%. At the same intervention count within each current frame, its
+gain is only **0.0033% [-0.0025%, 0.0121%]**: better ordering is not established.
+Three held views completely abstain, leaving the registered harm-ratio primary
+undefined. Another 95 views exceed the 2% harm budget. Easy net error is
+preserved, but that is not the same as controlling positive harm.
+
+This is a completed training experiment with a negative central result, not
+a deployment upgrade. Nonnegative outputs remove the old clipping problem
+but still overestimate reference error, making predicted risk look too small.
+That motivated the fixed-floor budget-excess comparison above, without opening
+independent sources or searching held thresholds. All current results remain
+development-only and use image-local detector silver, obs8/pred12 rawstride12.
+All216 predictions and108 decisions replay exactly; two complete training
+replays match parameters, optimizer, draws and losses. **38 scoped tests pass**,
+with5,999 independent locality reductions and747,900 same-query count checks.
+The reports and figure are reproducible. These are technical checks, not a
+passed research hypothesis or certified deployment.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/conclusions.md),
+[failure localization](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/failure_localization.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/verification.json).
+
+**Preceding fixed-floor result:** the neural forecasts do contain useful incremental predictions,
+but the model still underestimates the harm of its chosen interventions.
+I fixed the same protected-damping fallback for both training and held scenes,
+then fitted 216 small linear cost heads with strict four/four/two/two source
+separation. These are cost probes, not another round of neural dynamics training.
+
+The floor-target screened policy improves ADE by **0.523% [0.368%, 0.686%]**
+over protected damping. Every locality-average point is positive and observed
+easy error is preserved. Yet selected positive harm is **4.91% [3.89%, 5.98%]**,
+above the fixed 2% budget. The matched CV-target probe does slightly better:
+the floor-target ablation loses **0.0169% [-0.0218%, -0.0115%]**. Changing the
+target reference alone is not the source of improvement.
+
+The failure is concrete: about **65%** of selected harm predictions are clipped
+to zero, but about **24%** of those predictions actually incur harm. Predicted
+reference cost is also roughly twice its observed value. Merely loosening the
+screen gives larger average gains but damages easy cases. I am keeping
+deployment unchanged and targeting this conditional harm error next.
+
+All results remain development-only: twelve already-opened localities, three
+forecaster seeds and 3,000 locality-bootstrap draws. Independent confirmation
+sources remain closed. The oracle's 21.25% opportunity is a diagnostic upper
+bound, not a learned result.
+All 108 inference groups reproduce with future fields removed; a full first-fit
+replay and complete evaluation replay also match. **43 scoped tests pass**, and
+3,133 locality metric reductions are independently checked. Reports and the
+figure are byte-reproducible. This verifies the experiment, not deployment safety.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/conclusions.md),
+[conditional-risk diagnosis](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/conditional_moment_diagnosis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_probe_v1/verification.json).
+
+**Previous calibration result:** source-separated calibration protects easy cases, but still
+does not recover a neural advantage. I kept the forecast and risk networks
+frozen, restored stationary/utility/easy guards, and tested a fixed calibration
+and input-support comparison. Two sources calibrate each rule; two different
+sources evaluate it, and all four are excluded from the complete fitting chain.
+
+The calibrated-supported neural policy improves ADE by **0.167% over constant
+velocity**, while equally protected damping improves **0.826%**. The direct
+neural advantage is **-0.670% [-0.974%, -0.396%]**, with all three seed intervals
+favoring damping. Neural easy error is preserved in every observed held view,
+and reference-exact cases remain untouched. But 9 of 216 dependent views still
+exceed the selected positive-harm budget. There is no new deployment or safety
+certificate, and these development sources are not independent confirmation.
+
+Calibration often opts out: 45 of 108 neural calibration groups fall back
+completely. The generic input-distance support filter also removes some useful
+actions without reliably identifying risk. I will not keep sweeping cutoffs.
+The next question is what incremental opportunity the neural forecast has over
+the stronger protected damping floor, and whether past information identifies it.
+
+All 36 score groups, 216 calibration decisions and the readout replay exactly.
+**46 tests in seven scoped files pass**; reports and the figure are reproducible.
+The first real inference group also reproduces with future-label fields removed.
+No networks were retrained in this experiment, and independent roles stay closed.
+[Results](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/results.md),
+[factor diagnosis](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/factor_diagnosis.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/verification.json).
+
+**Preceding loss experiment:** I changed the risk-head loss to learn positive harm minus
+2% of the constant-velocity reference error directly. The matched comparison
+keeps the same forecasting models, architecture, causal inputs, initial weights,
+sampling and three seeds. All 144 heads completed 288,000 updates, and their
+predictions were frozen before scoring.
+
+The change helps the strong damping control, but does not establish a neural
+benefit. Neural held-source risk-score MSE changes by **-3.06% improvement
+[-12.32%, 3.91%]**; the interval crosses zero. Damping improves by **7.18%
+[2.65%, 12.27%]**. Under the fixed diagnostic screen, damping's ADE gain over
+constant velocity rises from 2.23% to 4.60%; the paired increase is **2.38
+percentage points [1.65, 3.31]**. The neural paired increase is only 0.23 points
+[-0.18, 0.77], so there is no demonstrated neural selection lift.
+
+Safety remains unresolved. Neural screened positive harm is **3.52%
+[2.49%, 4.64%]** of reference error despite a nominal 2% budget. The worst
+individual neural source/seed view degrades easy ADE by **5.61%**. Damping also
+has unsafe individual views. These risk-only screens omit the complete policy's
+stationary, utility and easy guards; they are not deployable policies.
+
+All 144 new and 144 control predictions replay exactly, as does a complete
+first-head training run. **56 tests in eight scoped files pass**; reports and
+the aggregate figure reproduce byte-for-byte. I am keeping deployment unchanged.
+This motivated the source-separated calibration comparison above, retaining
+damping as a strong control. Independent evaluation roles remain closed.
+[Results](outputs/publication_readiness_2026_09/european_risk_excess_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_excess_v1/failure_analysis.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_risk_excess_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_risk_excess_v1/verification.json).
+
+**Preceding diagnosis:** the risk heads learn useful average predictions, but that
+does not make their chosen interventions reliable. I trained 144 matched heads
+with three-source fitting and one-source holdout. On held sources, the neural
+head reduces reference-error MSE by **13.41%** and harm MSE by **14.88%** against
+fitting-only constants. Yet its nominal 2% risk screen accepts a subset with
+**4.87% [3.19%, 6.92%]** observed positive harm relative to CV error. Even inside
+fitting sources that ratio is 2.85%. This is not net ADE or easy degradation,
+and the diagnostic screen is not the complete deployment policy.
+
+Both overestimated reference error and underestimated harm contribute to the
+mismatch. This motivated the direct risk-budget objective evaluated above;
+strictly source-separated calibration remains next. Independent
+evaluation roles remain closed. The 288,000-update run, all 144 prediction
+replays and a full first-head training replay are complete; **48 scoped tests
+pass**. Reports and the aggregate figure reproduce byte-for-byte.
+[Results](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/failure_analysis.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/operation_zh.md).
+
+**Latest trajectory comparison:** protecting easy cases is now possible in this source study,
+but the protected neural model still loses to equally protected damping. I froze
+the improved forecaster and trained 108 matched gain/harm heads across three
+seeds. Protected neural ADE improves **0.33% over CV**, compared with **0.70%**
+for protected damping. The direct neural advantage is **-0.37% [-0.61%, -0.13%]**.
+Easy ADE improves 4.00%, and four reference-exact queries are left untouched,
+but these source-development checks are not independent safety guarantees.
+Matched-count joint decisions add no demonstrated neural accuracy gain.
+I am not changing deployment or opening independent evaluation roles.
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/results.md),
+[failure diagnosis](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/operation_zh.md).
+
+All 108 head predictions, 36 decision groups and the full readout reproduce
+exactly. The fixed first head also reproduces from initialization, including
+optimizer, sampling and loss traces. **120 tests in 13 scoped files pass**;
+reports and the aggregate figure are byte-reproducible. These checks verify
+the experiment, not the failed primary benefit hypothesis. The remaining issue
+is selected-set risk: useful actions are vetoed while some accepted neural
+actions have much greater harm than predicted.
+
+**Predictor-only result:** fixing coordinate units inside the bounded correction
+improves the matched neural forecaster's ADE by **4.72%**, with an exploratory
+locality interval of **[2.53%, 7.89%]**. All three seed intervals are positive.
+Against constant velocity, all-ADE improves 8.46% and hard-ADE 13.36%, but easy
+error remains **11.17% worse** and reference-exact cases get worse. I am not
+deploying it. This is European-source obs8/pred12 development evidence, not the
+historical Stage37 raw-t+50 result or independent confirmation.
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/results.md),
+[failures](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/failure_analysis.md).
+
+Nine fresh fits retain the same data, initialization, sampler, loss and budget;
+only output-unit handling changes. Predictions were frozen before scoring.
+The fixed first model reproduces exactly from initialization, and 36/36
+observed-input scaling checks pass (0/36 for the matched control). All nine
+forecast pairs and 576 scoring views replay exactly; 81 tests in 17 scoped files
+pass. Reports, diagnostics and the figure reproduce exactly. Independent
+selection, calibration and confirmation remain
+closed. The next priority is reliable gain/harm learning and scene-joint
+intervention with the frozen improved forecast bank, not another architecture stack.
+
+**Previous result:** preserving agent-track association produces a small matched
+forecast gain. Nine new neural fits improve ADE by **0.447%** over the same-input
+flat encoder, with an exploratory locality interval of [0.156%, 0.748%]. Hard
+gain is 0.502%. All nine producer/seed point gains are positive, but one seed's
+interval still crosses zero. [Results](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/results.md).
+
+This passes a predictor-development screen, not a deployment gate. Easy error
+is still **13.08% worse than CV**, and the comparison with the earlier
+complete-neighbor neural model remains uncertain. Independent outcomes stay
+closed. Predictions were frozen before scoring. All nine prediction pairs and
+576 scoring views now replay exactly; 79 tests in 16 scoped files pass. Reports,
+figures and diagnostics reproduce exactly. These checks verify the experiment,
+not deployment safety or independent generalization.
+
+That diagnosis motivated the now-trained dimensionless contrast above. The old
+checkpoints remain unchanged; [the registered contrast](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md)
+isolates one repair rather than silently substituting a different model.
+
+**Previous result:** keeping partial neighbor histories has not produced a
+reliable added forecasting gain. I trained
+[nine matched neural models](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/conclusions.md)
+with three seeds and 4,000 updates each. Against the old neural control,
+ADE gain is just 0.012%, with an exploratory interval of [-0.374%, +0.412%].
+The main benefit screen fails. Easy error is still 12.89% worse than CV;
+the small improvement over the old neural model does not make this deployable.
+
+The experiment also exposes a representation gap: flattened neighbor tokens
+discard supplied track associations. A separate agent-wise temporal then
+interaction encoder then passed structural tests; its subsequent matched
+training is reported in the current result above.
+Predictions were committed before scoring. All nine prediction pairs and 576
+scoring views now replay exactly; reports and the figure are byte-reproducible.
+All 67 tests in 12 scoped files pass. This verifies the experiment, not the
+benefit hypothesis. Independent selection, calibration and confirmation remain
+closed, and I am not changing deployment.
+[Failure analysis](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/failure_analysis.md),
+[verification record](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/verification.json).
+
+**Previous input finding:** the model has been excluding many visible neighbors.
+The [source observation audit](outputs/publication_readiness_2026_09/european_observation_quality_v1/conclusions.md)
+traced 318,969 target histories back to the raw records. In 88.58% of queries,
+the nearest-eight pool contains an agent whose incomplete history excludes it
+from the old input. I implemented a separate masked-neighbor packer and neural
+adapter that retain valid observations without inventing missing positions.
+
+All raw-history checks replay exactly and 37 scoped tests pass. This repaired
+an input restriction; the matched refit above now tests its predictive value.
+Deployment is unchanged. The same audit found no uniform
+benefit from smoothing. Independent selection, calibration and confirmation
+remain closed; neither more tokens nor passing tests establish model lift.
+
+**Previous risk result:** relaxing the risk ceiling does not recover a reliable
+history or interaction gain. In the
+[frozen-model attribution](outputs/publication_readiness_2026_09/european_cap_attribution_v1/conclusions.md),
+five of six full-input intervals show worse easy-harm prediction after the cap
+is relaxed; none shows a clear improvement. Under the same relaxed constraint,
+history plus neighbors still does not beat the earlier summary features.
+
+The constraint often protects against unstable corrections. A small secondary
+gain in total-risk prediction does not offset the easy-harm failure. I am
+keeping deployment unchanged and stopping this cap/readout sweep. The next
+question concerns causal observation quality and useful event support.
+This is a completed development analysis, not new neural training or an
+independent trajectory result. All 1,728 recovered vectors and 432 scoring
+views replay exactly; reports and the figure are byte-reproducible. All 171
+tests in 34 scoped files pass. These checks do not reverse the failed
+scientific screens. The [results ledger](README_RESULTS.md) records the evidence.
+
+**Previous context result:** adding ordered motion and neighbor history has not repaired
+the expected-risk model. I completed
+[1,728 fixed contextual probes](outputs/publication_readiness_2026_09/european_temporal_support_v1/conclusions.md)
+using frozen neural predictions and strict nested locality exclusions.
+Against a matched readout with the earlier seven summary features, the main
+family has no positive, two negative and four overlapping primary intervals.
+Adding neighbor history is also inconsistent. This is fresh risk-probe fitting,
+not new neural training or a trajectory improvement.
+
+The experiment explains why more windows and more features are not enough.
+Some events are concentrated in very few tracks, and the frozen all-harm cap
+creates a large realized-cost error floor for an easy-only correction. This
+pointwise floor does not establish bias in the predicted mean. The
+[support and ceiling analysis](outputs/publication_readiness_2026_09/european_temporal_support_v1/support_diagnostics.md)
+keeps those limits separate from the negative feature result. I am not changing
+deployment or opening independent outcomes to choose a repair. All 1,728 fits
+and 432 scoring views replay exactly; reports and figures match byte-for-byte.
+All 160 tests in 32 scoped files pass. This establishes reproducibility, not
+a passed scientific gate. The [results ledger](README_RESULTS.md) records
+verification and its limits.
+
+**Previous readout result:** more flexible risk readouts fix the fitting constraint,
+but not the held-scene prediction problem. I completed
+[864 monotone readout fits](outputs/publication_readiness_2026_09/european_cost_shape_v1/conclusions.md)
+and 144 source-held evaluations on verified frozen neural predictions.
+Every mean-constrained model matches both training harm means. None of the
+six primary intervals favors the main repair over the raw or origin-L2
+control; two and three intervals, respectively, favor those controls.
+
+Adding mean constraints to the same shape model worsens the primary in five
+of six full-input comparisons. Coverage can improve while tail capture gets
+worse. The [failure analysis](outputs/publication_readiness_2026_09/european_cost_shape_v1/failure_analysis.md)
+keeps those tradeoffs and the negative motion-only results visible.
+These are expected-risk costs, not a new trajectory gain or new neural training.
+
+I am not changing deployment or continuing a global-readout parameter sweep.
+The next question concerns causal context and effective rare-event support.
+Independent selection, calibration and confirmation remain closed. All 864
+fits and 144 held views replay exactly; reports and six figures reproduce
+byte-for-byte. All 150 tests in 30 scoped files pass. This verifies replay
+from the existing hash-bound assets, not a cold rebuild or scientific success.
+The [results ledger](README_RESULTS.md) records the complete evidence.
+
+**Previous result:** matching the average predicted harm is not enough to
+estimate which interventions will be harmful. I completed a fixed
+[cost-mass readout study](outputs/publication_readiness_2026_09/european_cost_mass_v1/conclusions.md)
+with 432 two-parameter fits and 144 source-held views, reusing verified neural
+predictions. This is fresh risk-readout fitting, not new neural training.
+
+The repair fails its scientific screens. In the main full-input comparison,
+none of the six primary intervals favors mass matching over the raw control;
+three favor the control and three overlap zero. Against the L2 readout, four
+intervals favor L2 and two overlap. Coverage improves in some comparisons,
+but expected-cost accuracy and other guards do not improve consistently.
+Ninety-nine bounded easy-harm fitting constraints also remain unsatisfied.
+
+I am keeping deployment unchanged. The
+[absolute costs](outputs/publication_readiness_2026_09/european_cost_mass_v1/absolute_cost_context.md)
+show why large negative percentages are not trajectory scores; the
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_mass_v1/failure_analysis.md)
+distinguishes fitting tradeoffs from scene-dependent transport. Independent
+selection, calibration and confirmation remain closed. All 432 fits and 144
+held views replay exactly; reports and six figures reproduce byte-for-byte.
+All 133 tests in 27 scoped files pass. The full legacy suite was not run.
+These engineering checks do not change the failed scientific screens.
+The [results ledger](README_RESULTS.md) records the verified status.
+
+**Previous crossed study:** I separated fitting-regime changes from changes
+in the definition of easy cases. The previous magnitude readout failed its
+cost and coverage gates. Comparing its native two-locality and three-locality
+heads cannot explain why, because both their fitting data and target cut changed.
+The [crossed study](outputs/publication_readiness_2026_09/european_regime_transport_v1/protocol.md)
+keeps the outer evaluation definition fixed, reuses the two native controls
+and trains only the missing combinations. This is a mechanism test, not a new
+deployment claim. Independent selection, calibration and confirmation stay closed.
+All 1,728 fitting cells have supported labels. A fresh 2,000-update native
+control matches every original parameter. Full training completed 864 crossed
+heads and 1,728,000 updates. All 432 prediction replicas were frozen before
+the 144-view held readout. None of the
+mechanism screens passes: cut changes have mixed effects, and the larger
+fitting regime is not uniformly better. Even the size-matched magnitude
+readout worsens the coverage-error guard in all six full-input comparisons.
+This narrows the failure diagnosis but does not promote a model. The
+[conclusions](outputs/publication_readiness_2026_09/european_regime_transport_v1/conclusions.md)
+and [complete comparisons](outputs/publication_readiness_2026_09/european_regime_transport_v1/crossed_raw.svg)
+retain conditional improvements, negative results and uncertainty.
+Final verification replays all 864 crossed checkpoint predictions and 144 held
+readouts exactly. Reports, figures and the mass diagnostic reproduce byte-for-byte;
+113 tests in 23 scoped files pass. These checks do not change the failed
+scientific screens or establish independent confirmation.
+[Execution and recovery](outputs/publication_readiness_2026_09/european_regime_transport_v1/operations.md)
+records the fixed training budget and reproducibility boundaries.
+
+**Previous experiment:** I tested whether a model that ranks harmful
+interventions better can also learn their expected magnitude. The previous
+[prior-repair experiment](outputs/publication_readiness_2026_09/european_aux_prior_v1/conclusions.md)
+completed 288 small Torch heads and 576,000 updates. It improved harm-presence
+ranking, but did not consistently improve expected-harm costs: against the
+strong cost-only control, the six full-input intervals are one positive,
+two negative and three overlapping zero. No model was promoted.
+
+The [new experiment](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/conclusions.md)
+has now completed 1,008 nested Torch heads, 2,016,000 updates and 432 matched
+magnitude readouts. Every reference, preprocessing step and label producer
+excludes its held locality. The readout improves some squared-cost errors,
+but does not pass the scientific gates. Against identically scaled cost-only
+and shuffled controls, each full-input comparison has two positive intervals
+and four overlapping zero. Scaling also worsens the coverage-error guard
+against the raw true-auxiliary model in four of six comparisons.
+
+These are expected-cost results, not trajectory gains. The
+[complete figure](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/source_held_costs.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/failure_analysis.md)
+retain every assignment, including negative motion-only comparisons. No model
+is promoted. The next controlled question is whether producer training-size
+and easy-label definition changes explain the cost-transport deficit.
+Independent selection, calibration and confirmation remain closed. The
+[results ledger](README_RESULTS.md) records the current execution state and
+links to the complete evidence, including negative results.
+
+Final verification reproduces all 864 fresh auxiliary predictions, 432
+magnitude fits and 144 held readouts exactly. Reports and the figure match
+byte-for-byte; 100 tests in 21 scoped files pass. The full historical suite
+was not rerun. This establishes repeatability, not passed scientific gates.
+
+**Earlier diagnosis:** removing conflicting auxiliary gradients is not a
+supported repair yet. I completed 17,280 isolated AdamW updates from 432 frozen
+models under a [fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).
+In the main full-input diagnostic, 120 of 576 batches had conflicting task
+gradients. Projection improved the easy-harm probe in 54 of those batches
+but worsened it in 66. Across six locality comparisons, the easy-harm intervals
+are one positive, one negative and four overlapping. All four repair-screen
+conditions fail. These are dependent fitting-data measurements, not trajectory
+gains or independent tests, and no new complete model was trained.
+
+I am keeping deployment unchanged and leaving independent selection,
+calibration and confirmation closed. The next question is whether the failure
+develops earlier in training or reflects a mismatch between binary risk labels
+and cost severity. The [conclusions](outputs/publication_readiness_2026_09/european_aux_gradient_v1/conclusions.md)
+and [complete figure](outputs/publication_readiness_2026_09/european_aux_gradient_v1/adamw_probe_effects.svg)
+retain the small effects, negative comparisons and limits of this diagnosis.
+All 17,280 interventions now reproduce exactly. The reports and figure match
+byte-for-byte, and 67 tests in twelve scoped files pass. Sixteen public artifacts
+and twenty source bindings are hash-sealed. The full legacy suite was not rerun.
+These checks establish repeatability, not a model improvement.
+
+**Preceding result:** keeping the strong original estimator intact does not make
+the auxiliary risk label a reliable cost improvement. I completed the
+[strong-base study](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/conclusions.md)
+with 432 Torch models, 864,000 updates and three seeds. All 144 no-auxiliary
+controls reproduce the original parameters and predictions exactly. The
+auxiliary task is now compared without changing the base architecture,
+inputs, four-cost objective or sampling support.
+
+With full inputs, one of six locality intervals supports lower easy-harm
+MSE, one supports deterioration and four overlap zero. Point estimates range
+from -14.85% to +0.65%. Against shuffled labels, none supports improvement
+and two support deterioration. These are cost-estimation results, not
+trajectory gains. The [complete figure](outputs/publication_readiness_2026_09/european_strong_cap_auxiliary_v1/strong_cap_auxiliary_contrasts.svg)
+keeps all assignments and negative motion-only results.
+
+The auxiliary often learns which events are risky, but not their magnitude
+well enough. Fitting cost is already worse in 52 of 72 full-input views, so
+I cannot attribute everything to a held-scene distribution shift. Gradient
+interference is a hypothesis to test, not a proven explanation. Deployment
+stays unchanged; independent selection, calibration and confirmation remain
+unopened. Final verification now reproduces all 432 checkpoint predictions
+and 144 readouts exactly. Reports and the figure match byte-for-byte; 52 tests
+in ten scoped files pass, with 20 public artifacts and 23 source bindings
+hash-sealed. The full legacy suite was not rerun. Reproducibility does not
+turn the failed scientific gates into a model improvement.
+
+**Preceding result:** learning which cases are risky does not yet give me better
+estimates of how much error they will cause. I completed the
+[auxiliary-cost experiment](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/conclusions.md)
+with 432 real Torch models, 864,000 updates and three seeds. True-event
+supervision, shuffled labels and no auxiliary supervision use the same inputs,
+initialization and training samples. Predictions were frozen before readout.
+
+The auxiliary improves ranking against the two matched controls, but fails
+the expected-cost test against the original strong estimator: none of six
+full-input locality intervals supports improvement, three support deterioration
+and three overlap zero. Point estimates range from -37.74% to +0.68% MSE
+improvement. These are not trajectory gains or one pooled result. The
+[complete figure](outputs/publication_readiness_2026_09/european_cap_auxiliary_cost_v1/cap_auxiliary_cost_contrasts.svg)
+retains every assignment, including the adverse motion-only results.
+
+I am keeping deployment unchanged. The next task is to preserve and reproduce
+the strong original cost model before testing further auxiliary changes, and
+to diagnose why training gains fail to transfer across localities. Independent
+selection, calibration and confirmation remain unopened. Full verification
+now reproduces all 432 checkpoint predictions and 144 readouts. Reports,
+diagnostics and the figure match byte-for-byte; 45 tests in nine scoped files
+pass. Twenty-five public artifacts and 20 source bindings are hash-sealed.
+The full legacy suite was not rerun. These checks establish reproducibility,
+not a passed scientific gate or submission readiness.
+
+**Preceding experiment:** causal history contains useful information about rare
+forecasting errors above a frozen risk estimate. I completed the
+[cap-event study](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/conclusions.md)
+with 288 matched linear and small neural models, 576,000 updates and three
+seeds. With full inputs, all six locality-bootstrap comparisons support the
+linear model over a constant-prior probability estimate and a simple
+disagreement ranking. AP gains over that ranking range from 22.77 to 32.65
+percentage points. These are six point estimates, not one confidence interval.
+
+That is a positive risk-learning result, but not yet a forecasting gain.
+The neural model does not consistently beat linear, and its complete
+registered gate fails because one log-loss and one tail-capture interval
+overlap zero. The [full figure](outputs/publication_readiness_2026_09/european_cap_exceedance_v1/cap_event_contrasts.svg)
+retains negative and unsupported motion-only comparisons. The assignments
+overlap and use four development localities; they are not independent tests.
+
+This event signal motivated the matched expected-cost experiment above,
+which retained the existing cost constraints and fallback rules.
+No deployment changes follow from event classification alone. Predictions
+were frozen before readout; independent selection, calibration and confirmation
+remain unopened. Full verification now reproduces predictions from all 288
+checkpoints and all 144 readouts. Reports and the figure match byte-for-byte;
+46 tests in six scoped files pass. Twenty-two public artifacts and 15 source
+bindings are hash-sealed. The full legacy suite was not rerun. Reproducibility
+does not reverse the failed complete scientific gate.
+
+**Latest completed diagnosis:** the risk estimator's frozen output range limits many
+realized-label corrections, but simply raising that range is not a supported
+repair. I completed the
+[fitting-only cap study](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/conclusions.md)
+across 144 views and four prediction sources. With full inputs, the median
+empirical floor accounts for 63.75% of the original estimator's fitting MSE
+and 68.26% for the inner OOF estimator. Yet none of the 1,152 weighted or
+unweighted records has mean easy harm above the mean predicted harm cap.
+
+These are dependent fitting summaries, not model gains or independent tests.
+A label-assisted projection can see the outcome; a large floor does not prove
+conditional bias. The [all-view figure](outputs/publication_readiness_2026_09/european_fixed_cap_diagnostic_v1/fixed_cap_diagnostic.svg)
+retains the variation and both weighting schemes. That diagnosis motivated
+the cap-event study above rather than an unsupported global cap increase.
+Independent data roles and deployment remain unchanged.
+Full replay reproduces all 144 views and 2,304 arithmetic identities. Fifty-one
+tests in seven scoped files pass; the figure is visually checked and
+byte-reproducible. Sixteen public artifacts and 13 source bindings are sealed.
+The full legacy test suite was not rerun. This establishes reproducibility,
+not a new trajectory gain or a passed deployment gate.
+
+**Previous experiment:** adding the frozen estimator's own risk scores does not
+repair the risk-correction model. I completed the
+[risk-conditioned experiment](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/conclusions.md)
+with 864 fixed probes and all matched controls. Against the original estimator,
+all six full-input point estimates are negative (-2.22% to -0.19% MSE
+improvement), with intervals overlapping zero. The registered improvement and
+tail/coverage gates fail; deployment is unchanged.
+
+Some comparisons with weaker corrections improve, particularly with motion-only
+inputs. The [full comparison figure](outputs/publication_readiness_2026_09/european_risk_conditioned_residual_v1/risk_conditioned_residual.svg)
+keeps those signals alongside the negative strong-control results. They are not
+trajectory gains or grounds to select a favorable arm after readout. No new
+neural training was run, and independent calibration and confirmation remain
+unopened. Full replay now reproduces 144 fitting-row inferences, 864 probes
+and all 36 readout groups, with 1,728 direct MSE checks and 35 targeted tests
+passing. The figure reproduces byte-for-byte; 58 public artifacts and 14
+code/configuration bindings are hash-sealed. The full legacy test suite was
+not rerun. These checks establish reproducibility, not a passed research gate.
+
+**Previous result, 26 September:** aligning the residual labels' definition of
+"easy" does not repair cross-locality risk estimation. I completed the
+[common-event experiment](outputs/publication_readiness_2026_09/european_event_transport_v1/conclusions.md)
+with 864 fixed probes, keeping the neural models, causal inputs, outer evaluation
+rule and deployment frozen. Against the original estimator, zero of six
+full-input MSE intervals support improvement, one supports deterioration and
+five overlap zero. Point estimates range from -3.96% to +0.05%.
+
+The [complete comparisons](outputs/publication_readiness_2026_09/european_event_transport_v1/event_transport.svg)
+also retain the failed matched controls and motion-only results. This rules
+out response relabeling as a sufficient repair, not all event-aware modeling.
+The next unresolved issue is transferring errors from a two-locality teacher
+to a different three-locality estimator. No trajectory improvement is claimed.
+Independent calibration and confirmation remain unopened. Full replay now
+reproduces all 864 fits and 36 readout groups, with 1,728 direct MSE checks and
+28 targeted tests passing. Fifty public artifacts and 11 source bindings are
+hash-sealed; the figure is visually checked and byte-reproducible. The full
+legacy test suite was not rerun. Reproducibility does not reverse the failed
+scientific gate.
+
+**Earlier controlled study:** the
+[nested-locality experiment](outputs/publication_readiness_2026_09/european_nested_residual_v1/conclusions.md)
+is complete, but its improvement gate failed. I trained 432 native-Torch risk
+heads and fitted 864 fixed residual corrections to test whether learning from
+unseen-locality errors would transfer better than learning from training errors.
+It did not produce a stable gain over the original estimator.
+
+With full inputs, all six paired easy-harm MSE intervals against the original
+overlap zero; point estimates range from -5.00% to +0.20%. Motion-only results
+are worse at every point estimate. Training loss falls, but that is not
+cross-locality accuracy or trajectory improvement. I am keeping the original
+model unchanged and independent calibration and confirmation unopened.
+
+The [all-view results and training curves](outputs/publication_readiness_2026_09/european_nested_residual_v1/nested_residual.svg)
+retain the negative comparisons. The [method note](outputs/publication_readiness_2026_09/european_nested_residual_v1/method_note.md)
+documents target-cut transport, matched controls and limited locality support.
+Full verification now replays 432 checkpoints, 864 residual fits and all 36
+readout groups, with 1,728 direct MSE checks and 432 error decompositions.
+Thirty-five tests in six scoped files pass; 63 public artifacts and 13 source
+bindings are sealed. The figure is visually checked and byte-reproducible.
+These checks establish reproducibility, not a passed improvement gate. The
+full legacy suite was not rerun. Earlier studies below explain how the project
+reached this point.
+
+I completed a [frozen-model error attribution](outputs/publication_readiness_2026_09/european_cost_attribution_v1/conclusions.md).
+Even substituting the realized easy label offline produces no consistently
+positive comparison against the original cost model across the six source
+assignments. Conditional severity is also inaccurate: fixing membership alone
+does not repair the estimator. These label-assisted calculations cannot be
+used at inference or presented as model gains.
+
+Outside-easy rows explain much of the *additional* error against the original,
+but only 6.36-31.27% of total current easy-harm MSE across full-input assignments.
+Signed error cross terms are negative and must not be treated as independent
+causal shares. All 36 groups / 144 held folds replay exactly; 1,728 algebra
+checks and 501 tests in 92 scoped files pass. The figure reproduces byte-for-byte.
+This remains source-development evidence, not independent confirmation.
+
+I then completed the [matched auxiliary-supervision experiment](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/conclusions.md):
+direct nested costs, with easy-membership supervision added to the shared
+encoder but never multiplied into predicted costs. All 288 native-Torch heads
+and 576,000 updates are complete. Registration cadc04df preceded training;
+prediction freeze 8daab80d was pushed before the new held readout.
+
+The control reproduces the original costs exactly. The auxiliary repair
+fails: against both strong controls, six full-input MSE intervals contain
+one positive, one negative and four overlaps; points range -8.13% to +1.04%.
+Tail harm capture also fails a guard. Membership itself is learned (descriptive
+median held AUROC 0.861), but that is not stable cost or trajectory improvement.
+The [loss curves](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/training_loss.svg)
+and [all-source contrasts](outputs/publication_readiness_2026_09/european_membership_auxiliary_v1/paired_contrasts.svg)
+retain the negative evidence. No policy or independent-data access changed.
+
+Verification passes 288 checkpoint prediction-prefix replays, 2,304 independent
+cost/ranking checks and 509 tests in 94 scoped files. All 54 public artifacts
+and 101 source bindings match their recorded hashes; both figures reproduce
+byte-for-byte. The full legacy suite was not rerun. These engineering checks
+do not reverse the failed scientific gate.
+
+I completed the [frozen fitting-batch diagnostic](outputs/publication_readiness_2026_09/european_task_gradients_v1/conclusions.md).
+It does not support broad optimizer conflict as the explanation: only 5/72
+full-input auxiliary views have negative total-cost gradient alignment, and
+68/72 virtual AdamW updates improve total cost relative to a cost-only step.
+All-harm loss still worsens in 45/72 comparisons. Lower total fitting loss
+is therefore not the same as a useful, transported risk estimate.
+
+All 288 checkpoints remain frozen. The [diagnostic figure](outputs/publication_readiness_2026_09/european_task_gradients_v1/gradient_optimizer.svg)
+is not a new held-out improvement. I am not launching a gradient-surgery or
+weight sweep on this result. The next question is whether supervision should
+reflect harm magnitude rather than ordinary easy-class membership, with
+fitting-only support checked before another controlled experiment. Plain
+harm-only regression has already failed and is retained as negative evidence.
+No policy or independent-data role changes. The research goal remains ongoing.
+
+Verification replays all 288 diagnostics and 576 disposable optimizer steps
+exactly. Seventeen relevant tests pass; 47 public artifacts and 10 source
+bindings are sealed, and the figure is byte-reproducible. Prior same-version
+checks are reused with hashes rather than described as fresh training.
+
+I completed the [severity-weighted auxiliary comparison](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/conclusions.md).
+It changes one supervision term while keeping the model, initialization,
+sampler and budget fixed. All 144 native-Torch heads and 288,000 updates are
+complete. Prediction freeze 41a478ca was pushed before the new source-held
+readout. Fitting support is present but concentrated; it is not a power claim.
+
+The repair fails its cost gate. Against the original and matching cost-only
+control, none of six full-input easy-harm MSE intervals is positive, one is
+negative and five overlap zero; source points range -20.14% to +2.38%.
+Against ordinary auxiliary supervision, all six intervals overlap zero.
+Tail capture and coverage also fail guards. Some event-ranking comparisons
+improve, but that does not mean the model estimates harm magnitude reliably.
+
+The [loss curves](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/training_loss.svg)
+show genuine optimization. Of 42/72 full fitting views that improve easy-harm
+MSE against the original, 25 do not improve held MSE. My next check is frozen
+recording-level error and training influence/support, before another training
+change. I retain [all source contrasts](outputs/publication_readiness_2026_09/european_severity_auxiliary_v1/paired_contrasts.svg),
+including adverse motion-only results. No deployment or independent-data
+access changed. Verification passes all 144 prediction-prefix replays, 1,152
+independent cost/ranking checks, 144 support replays and 22 tests in five
+relevant files. All 57 public artifacts and 12 source bindings match; both
+figures reproduce byte-for-byte. The parent's same-version 509 tests remain
+cached_verified, not rerun; the full legacy suite was not run. These checks
+do not reverse the failed cost gate.
+
+I completed the [frozen transport diagnostic](outputs/publication_readiness_2026_09/european_severity_transport_v1/conclusions.md)
+across all 144 unchanged heads, with zero training updates. Of 38 worsening
+full-input views against the original model, 24 concentrate at least half of
+their positive excess error in one recording. But only 11/72 fitting views
+have equally concentrated weighted auxiliary gradients. The registered joint
+trigger fails. A coarse radial support proxy also fails its broad trigger
+(10/38 worsening views), without ruling out local or conditional domain shift.
+
+The [figure](outputs/publication_readiness_2026_09/european_severity_transport_v1/transport_diagnostic.svg)
+keeps these distinct observations separate. Gradient calculations use the
+saved diagnostic batch at final parameters, not the full training path.
+This result does not justify dropping recordings or launching a sampling/
+gradient-surgery sweep. My next question is whether errors recur in identifiable
+past-only motion/interaction contexts. The parent cost gate remains failed;
+independent data and deployment are unchanged. All 144 diagnostics replay
+exactly; 3,456 grouped-mass checks, 432 gradient-additivity checks and 19 tests
+in three relevant files pass. The 48 public artifacts and nine source bindings
+match, and the figure reproduces byte-for-byte. Previous checks remain
+cached_verified; the full legacy suite was not rerun. Reproducible diagnosis
+is not proof of a repaired model.
+
+I completed the [controlled context probe](outputs/publication_readiness_2026_09/european_context_residual_v1/conclusions.md):
+864 fixed closed-form fits on 432 frozen estimators, with zero new neural
+updates. Seven past-only summaries test whether motion, neighbor context and
+forecast disagreement explain transferable cost bias. Predictions were frozen
+in commit 3ac1ae56 before the new source-held readout.
+
+The primary gate fails. Context correction produces two positive and four
+overlapping full-input MSE intervals against both the original estimator and
+a global-bias control, not the required six. Against the original, assignment
+points range -1.88% to +0.94%; motion-only points are all negative. These are
+cost-estimation errors, not trajectory gains. The tail/coverage no-negative-
+interval guard passes, which does not prove deployment safety.
+
+The [context figure](outputs/publication_readiness_2026_09/european_context_residual_v1/context_probe.svg)
+shows that some relative bias directions repeat, especially speed change and
+closing speed, without stable magnitude improvement. The residual-fitting
+base predictions are in-sample, not independent calibration. I retain the
+original model and all reserved roles; the next controlled question is a
+properly nested OOF residual construction, with unchanged features and strong
+controls. Related [post-processing work](outputs/publication_readiness_2026_09/european_context_residual_v1/literature_position.md)
+also makes clear that this probe alone is not a method novelty claim.
+
+Verification replays all 864 closed-form fits and predictions and all 36
+readout groups. All 1,728 direct MSE checks and 25 tests in four relevant files
+pass; 51 public artifacts and ten source bindings are sealed. The figure is
+visually checked and byte-reproducible. Prior same-version tests remain
+cached_verified, and the full legacy suite was not rerun. These checks do not
+reverse the failed improvement gate.
+
+### Completed Conditional-Cost Experiment
+
+I completed a [membership-conditional cost experiment](outputs/publication_readiness_2026_09/european_membership_cost_v1/conclusions.md)
+to test whether recognizing easy cases makes intervention costs more reliable.
+All 288 native-Torch cost heads and 576,000 updates are complete. Registration
+2c321649 preceded fitting; prediction freeze a5746d3c was pushed before readout.
+
+The primary gate failed. Against the original cost model, none of the six
+full-input MSE intervals is positive and four are negative. Against the new
+direct head, none is positive and one is negative. Learned membership does
+beat a fixed-probability composition in all six comparisons, but that weaker
+control cannot establish overall improvement. These are cost-estimation
+results, not new trajectory gains.
+
+The [failure analysis](outputs/publication_readiness_2026_09/european_membership_cost_v1/failure_analysis.md)
+localizes the problem: outside-easy rows dominate excess error in 50/53
+worsening full views. The conditional fit also beats the original in only
+14/72 fitting views, so this is not just held-scene overfitting. My next step
+was to separate cost-weighted membership error from severity error. The
+completed attribution above does not rescue the failed cost gate.
+
+The [comparison figure](outputs/publication_readiness_2026_09/european_membership_cost_v1/paired_contrasts.svg)
+retains the negative results; [loss curves](outputs/publication_readiness_2026_09/european_membership_cost_v1/training_loss.svg)
+show arm-specific objectives, which are not directly comparable across arms.
+This remains source development. The extra membership model also means equal
+new-head budgets are not equal total system cost. The research goal is ongoing.
+
+Verification passes 288 checkpoint prediction-prefix replays, 4,608 independent
+cost/ranking checks and 495 tests in 90 scoped files. All 55 public artifacts
+and 97 source bindings match their recorded hashes. The full legacy suite was
+not rerun. These checks validate the experiment, not its failed method claim.
+
+### Completed Membership Diagnostic
+
+I completed a [direct easy-membership experiment](outputs/publication_readiness_2026_09/european_easy_membership_v1/conclusions.md)
+after the frozen-readout repair failed. It asks whether the baseline is likely
+to be accurate, separately from how much an alternative might harm it.
+All 288 classifiers, three seeds and 576,000 updates are complete, with
+prediction hashes committed before held-locality readout.
+
+The full-input MLP passes the registered component diagnostic. Its Brier
+skill over a training-prevalence constant is 27.85% to 52.60% across six
+source assignments, with all six locality-bootstrap intervals positive.
+Median conditional AUROC is 0.862. A stronger training-only conditional-
+prevalence control retains the result, with skill 25.47% to 50.53%.
+These are membership probability scores, not trajectory improvements.
+
+The [stricter-control figure](outputs/publication_readiness_2026_09/european_easy_membership_v1/conditional_sensitivity.svg)
+also shows the limitation: motion-only MLP has only one positive interval,
+one negative and four overlapping intervals. The linear full-input model
+misses a log-loss guard. I retain both negative findings rather than changing
+the criterion. Full and motion-only disagreement populations differ, so this
+is not proof of a scene or interaction contribution.
+
+This motivated the conditional-harm test above. Membership
+alone does not establish accurate expected costs or safe intervention; no
+policy changes or independent-data access were made. The research goal is
+still ongoing. [Failure analysis](outputs/publication_readiness_2026_09/european_easy_membership_v1/failure_analysis.md)
+and [remaining gap](outputs/publication_readiness_2026_09/european_easy_membership_v1/project_gap.md)
+set out that boundary.
+
+Verification passes 288 checkpoint prediction-prefix replays, 2,304 independent
+probability/ranking checks and 487 tests in 88 scoped files. All 56 public
+artifacts and 96 source bindings match their recorded hashes; the full legacy
+suite was not rerun. The three figures reproduce byte-for-byte. These checks
+verify this component experiment, not a deployable world-model improvement.
+
+### Completed Frozen-Readout Test
+
+I completed a [matched frozen-feature readout experiment](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/conclusions.md)
+to test whether the fractional head's useful ranking signal could support
+more accurate expected-harm estimates. Both feature sources received the
+same small readout, training budget and sampled rows, while reference costs
+stayed fixed. All 288 readouts and 576,000 updates are complete, with
+prediction hashes committed before this round's outcome readout.
+
+The repair did not pass. None of the six full-pair magnitude intervals is
+positive against the matched control; three are negative against the original
+mean head. Ranking improves in five matched comparisons, but that does not
+make the expected costs reliable. I am keeping deployment unchanged.
+
+The [failure analysis](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/failure_analysis.md)
+shows a persistent problem: predictions assign easy-case harm to non-easy
+rows. Those rows dominate 36/42 full views with worse MSE against the original
+head. My next step is to separate the predictability of easy membership from
+harm inside easy cases, not to tune another intervention threshold. The
+[loss curves](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/training_loss.svg)
+and [paired intervals](outputs/publication_readiness_2026_09/european_frozen_harm_readout_v1/paired_contrasts.svg)
+retain all roles and the adverse motion-only comparison. This is source
+development, not a new trajectory gain or independent confirmation.
+
+Verification covers 288 checkpoint prediction-prefix replays, 5,184
+independent ranking/tail checks and 478 tests in 85 scoped files. All 94
+public artifacts and 95 source bindings match their recorded hashes. The
+full legacy suite was not rerun. These checks verify the experiment, not a
+deployment improvement; the research goal remains ongoing.
+
+### Completed Fractional-Harm Test
+
+I tested a [support-conditional fractional-harm objective](outputs/publication_readiness_2026_09/european_support_fractional_v1/conclusions.md)
+with 144 fresh Torch heads and matched initialization, sampled rows and update
+budgets. It improved an important secondary result: median harm-event AUROC
+where the forecasts disagree rose from 0.486 to 0.620, with positive paired
+intervals in five of six source assignments. But it did not pass the primary
+harm-magnitude gate: none of the six MSE intervals was positive, and one was
+negative. Better ranking is not yet reliable expected-cost prediction.
+
+I am keeping the deployment policy unchanged. The [failure analysis](outputs/publication_readiness_2026_09/european_support_fractional_v1/failure_analysis.md)
+shows that excess predictions on zero easy-harm targets dominate 37/39 full
+views with worse held MSE. Those zero targets include non-easy cases, so this
+does not mean every affected row was harmless. The next repair needs to
+separate easy-event membership from harm magnitude, not tune another threshold.
+
+All 288,000 updates completed. Predictions were frozen before readout; 144
+checkpoint replays, 5,184 independent ranking/tail checks and 466 scoped tests
+pass. The [paired contrasts](outputs/publication_readiness_2026_09/european_support_fractional_v1/paired_contrasts.svg)
+and [loss curves](outputs/publication_readiness_2026_09/european_support_fractional_v1/training_loss.svg)
+retain the negative findings. These are source-development diagnostics, not
+new trajectory gains or independent confirmation. The research goal is ongoing.
+
+### Completed Locality-Held Diagnosis
+
+I completed a [locality-excluded harm diagnosis](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/conclusions.md)
+with 144 fresh risk heads, three seeds and 288,000 training updates. Each head
+fits on three source localities and is evaluated on a fourth; preprocessing
+and the diagnostic event definition use only the three fitting localities.
+
+The important finding is that aggregate risk ranking can hide the difficult
+part of the decision. The full model's median harm-event AUROC is 0.792 over
+all rows, but 0.486 where the two forecasts actually disagree. Learned scores
+still capture costly tails better than a simple disagreement control in four
+of six all-row locality-bootstrap comparisons. Both facts matter: the head is
+not devoid of information, but its aggregate AUROC does not justify using it
+as a reliable switching rule. It also underestimates harm in 50/72 dependent
+held-locality views.
+
+I am not deploying a change. The [full results](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/results.md),
+[paired ranking figure](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/harm_ranking.svg)
+and [loss curves](outputs/publication_readiness_2026_09/european_harm_tail_crossfit_v1/training_loss.svg)
+retain every source assignment and the motion-only control. The next test
+must improve risk prediction where intervention is possible, rather than
+inflate an all-row score or rescale every prediction. Independent calibration
+and confirmation remain closed; the current study is source-development
+evidence, not a new trajectory improvement or a submission-ready claim.
+All 144 checkpoint replays, 2,592 independent ranking/tail checks and 457
+scoped tests pass. This verifies the experiment, not a deployment improvement.
+
+### Completed Reference-Protection Test
+
+I completed a [matched reference-protection experiment](outputs/publication_readiness_2026_09/european_reference_protection_v1/conclusions.md)
+to test whether separating reference-cost and harm learning repairs the risk
+model. Both arms start from the same checkpoint and receive the same extra
+training, so the comparison does not confuse a new mechanism with more updates.
+
+The repair did not hold up. Across six source assignments, the protected joint
+policy changes all ADE by -0.054% to +0.227% relative to shared continuation;
+all six locality-bootstrap intervals include zero. Complete observed risk
+passes only 5/18 settings, even though net easy error passes all 18. I am not
+deploying the change. The experiment includes 72 real Torch continuations,
+three seeds and 576 frozen policy views.
+
+Joint allocation still improves accuracy over independent gates, but also
+violates harm constraints more often. My next priority is reliable estimation
+of selected easy-case harm, not another threshold sweep or a larger model.
+The [loss curves](outputs/publication_readiness_2026_09/european_reference_protection_v1/training_loss.svg)
+and [paired comparisons](outputs/publication_readiness_2026_09/european_reference_protection_v1/source_contrasts.svg)
+show both the useful and negative findings. These are source-development
+results; independent calibration and confirmation remain closed. Frozen
+model/decision replay and 447 scoped tests pass; that verifies the experiment,
+not the rejected scientific claim.
+
+### Completed Sampling Test
+
+I completed a [controlled sampling experiment](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/conclusions.md)
+to test whether the risk model was seeing too few costly easy-case errors.
+I trained 36 risk heads with three seeds, keeping the forecasts, architecture
+and expected loss fixed, and froze 504 policy views before reading source-C
+outcomes. The sampling change did not repair the problem: complete observed
+risk passes fell from 6/18 to 4/18, although average easy-case error stayed
+within the limit. I am not deploying this change.
+
+The useful distinction is between fitting and transport. More exposure slightly
+improves easy-harm fitting on the training source, but worsens other cost
+components and rarely improves easy-harm error in the held source role.
+The [fixed-action diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/fitting_transport_analysis.md)
+shows that this is not just a change in which agents are selected.
+
+Joint allocation still improves all ADE by 0.84%-2.63% over independent dual
+gates, with positive locality-bootstrap intervals across all six source
+assignments. That is a promising allocation result, not a safety certificate
+or new dynamics result. The [paired comparisons](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/source_contrasts.svg)
+and [training losses](outputs/publication_readiness_2026_09/european_easy_harm_sampling_v1/training_loss.svg)
+retain the negative evidence. Independent calibration and confirmation remain
+closed; 440 scoped tests and frozen model/decision replays pass.
+
+### Completed Risk-Learning Test
+
+I completed a [controlled test of risk learning and scene-query allocation](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/conclusions.md):
+72 new Torch heads, three seeds and 432 frozen source-held decision views.
+Keeping the forecasts fixed let me separate a loss-function change from a
+decision-rule change.
+
+Joint allocation improves ADE by 1.49%-2.86% over individual all/easy gates
+across the six source assignments, with positive locality-bootstrap intervals.
+But the new selected-group loss does not improve accuracy, and the joint rule
+passes every observed harm constraint in only 9/18 settings. It does not
+reliably beat the old neural rule. I am not promoting it to deployment.
+
+The [paired comparisons](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/source_contrasts.svg)
+and [training losses](outputs/publication_readiness_2026_09/european_selected_risk_learning_v1/training_loss.svg)
+show both sides of that result. The next concrete problem is conditional harm:
+at the worst locality, predicted easy-case harm is about one tenth of what is
+observed. I will target that estimation error, not keep adjusting thresholds
+on opened outcomes. This is source-development evidence; the separate
+calibration and confirmation localities remain closed.
+
+### Completed Calibration Test
+
+I completed [source-held calibration of the fixed bridge](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/conclusions.md).
+The result exposes a gap between fitting a risk threshold and transporting it:
+the neural grid passes all 18 source-calibration settings, but none of the 18
+settings meets every harm constraint across the six opened evaluation localities.
+Average easy-case error remains within the 2% limit. That does not mean the
+positive harm on individual examples is controlled.
+
+I fitted 72 calibration maps and froze 288 decision views before readout, with
+three seeds, ridge controls and locality-bootstrap intervals. The stricter grid
+reduces violations but usually loses accuracy; population rescaling is more
+conservative and still fails some conditional constraints. No new deployment
+or neural-dynamics contribution is promoted. Independent calibration and
+confirmation remain closed.
+
+The [full comparison](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/results.md),
+[transport figure](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/calibration_transport.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_bridge_calibration_v1/failure_analysis.md)
+show the tradeoff. This motivated the source-only cost-learning experiment
+above. Neither repeated threshold tuning nor earlier generic history-support
+rejection established the missing transport guarantee.
+
+### Completed Attribution Test
+
+I completed a [closer test of what the policy bridge contributes](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/conclusions.md).
+The earlier accuracy gain holds, but the attribution is more limited than I had
+hoped. Neural scoring does not consistently beat ridge when both see the same
+forecasts and intervene on the same number of agents. A retrained motion-only
+version retains most of the overall gain. Neural trajectory candidates help on
+the easy subset, but their all/hard advantage is not yet robust.
+
+This comparison includes 36 new neural heads, 36 new ridge fits, three seeds,
+396 frozen policy views and locality-bootstrap intervals. I keep the
+[negative comparisons](outputs/publication_readiness_2026_09/european_bridge_attribution_v1/results.md)
+alongside the positive results. My next priority is reliable risk calibration
+and intervention coverage, with ridge retained as a strong control. No new
+deployment is promoted; independent calibration and confirmation remain closed.
+
+### Preceding Policy Bridge
+
+I trained a [policy bridge](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/conclusions.md)
+to learn when a conservative forecast should give way to a more accurate, but
+riskier, alternative. The key change is that predicted gain and harm now refer
+to exactly the same pair of delivered forecasts.
+
+On the six opened model-selection localities, the single-risk bridge improves
+ADE over the previous conservative controller by **3.95%-5.57%** across all
+18 source-role/seed settings. All settings preserve easy cases within the 2%
+net-degradation limit; the worst is 0.73%. The experiment includes three seeds,
+54 real Torch cost-head fits, matched ablations and locality-level bootstrap.
+[Full results](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/results.md).
+
+There are two important limits. Adding a second risk constraint is too
+conservative and removes useful predictions. More importantly, good net error
+does not certify individual harm: realized conditional harm still exceeds the
+predicted cap in some scene views. Most of the improvement comes from choosing
+between existing motion forecasts, so I am not calling this a new neural
+dynamics result. I am keeping the [negative ablations and failure accounting](outputs/publication_readiness_2026_09/european_dual_event_bridge_v1/failure_analysis.md)
+alongside the gains. Independent calibration and confirmation remain closed;
+no deployment is promoted. These are pixel-coordinate, annotation-step results.
+
+### Preceding Six-Locality Readout
+
+I evaluated the [frozen policy family on six new model-selection localities](outputs/publication_readiness_2026_09/european_selection_readout_v1/conclusions.md),
+using 28 recordings and 38,102 indexed targets. Predictions and decisions were
+committed before outcome evaluation. No model or threshold was refitted.
+
+The rule that only adds interventions improves average ADE over the old controller
+in all 36 configurations, by +0.0105% to +0.7790%. But the full family is not ready
+to deploy: seven configurations fail the easy-case guard, with worst-locality
+degradation reaching 8.22%. The distinction between risk targets matters. All 18
+easy-risk configurations preserve the observed easy means, while seven of the 18
+all-risk configurations do not. The conservative branch still sometimes loses to
+the training-selected motion baseline, so I am not treating this as a solved problem.
+
+The [results](outputs/publication_readiness_2026_09/european_selection_readout_v1/results.md)
+include all three seeds, locality-level bootstrap intervals and every adverse
+configuration. The [failure accounting](outputs/publication_readiness_2026_09/european_selection_readout_v1/failure_analysis.md)
+shows why counting successful interventions is insufficient: a few larger errors
+can outweigh many small gains. That failure motivated the policy-bridge study
+above, not a search for a favorable seed. Twelve calibration localities and
+six confirmation localities remain closed. These six opened selection localities
+can never become confirmation data. No deployment or physical-safety claim.
+
+Earlier sections below describe the data-access state at the time of each study;
+only the new selection role has since been opened.
+
+### Completed Joint-Control Study
+
+I completed a [joint incremental-control comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/conclusions.md)
+to test whether coordinating extra interventions improves the existing controller.
+All 252 policy views use frozen predictions and scores. Independent, unary,
+joint and hash-priority controls share the same addition count and predicted-risk cap.
+
+This version does not help enough. Joint selection has no supported accuracy
+advantage over independent gain ranking or unary geometry. It changes only three
+unique queries relative to the unary control. Restricting additions also loses
+useful predictions: worst-locality easy degradation reaches 2.255%, above the
+2% gate. The [failure analysis](outputs/publication_readiness_2026_09/european_incremental_joint_v1/failure_analysis.md)
+shows exactly where removing beneficial choices outweighs avoiding harmful ones.
+
+The [full comparison](outputs/publication_readiness_2026_09/european_incremental_joint_v1/results.md)
+covers 6,116 rows at 1,152 fixed queries, not the full parent population.
+These are dependent development views, not independent confirmation or new
+neural training. Deployment stays unchanged. I am prioritizing incremental
+risk reliability and independent calibration over further tuning of this
+proximity penalty. All 417 scoped tests pass, alongside independent checks of
+55,296 decision-budget constraints. Reserved sources remain closed; no metric
+or safety claim.
+
+### Completed Incumbent-Relative Study
+
+I completed an [incumbent-relative intervention study](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/conclusions.md):
+can a controller learn when an existing decision is worth overriding, without
+discarding useful predictions? I trained 144 small Torch cost heads and 72 ridge
+controls on identical forecasts and causal inputs, then evaluated all 288 frozen
+policy views across three seeds and six source-role rotations.
+
+Preserving the original decision helps. All-ADE changes against the incumbent
+range from -0.0089% to +1.1520%, with 33 positive and one negative confidence
+interval. A predeclared rule that only adds interventions has positive all-ADE
+point estimates in every view, from +0.0074% to +1.1750%. It still has a negative
+hard-subset interval, though, and the learned harm scores are not calibrated.
+Both variants preserve the observed easy-case mean errors; neither is being
+promoted to deployment from these development results.
+
+The [complete comparison](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/results.md),
+[loss curves](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/training_losses.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_incumbent_relative_v1/reproducibility.md)
+retain every adverse branch. All 288,000 updates completed and 379 scoped tests
+pass. These are overlapping development views, not independent confirmation or
+new trajectory-dynamics training. The next question is whether scene-level joint
+control can make the extra interventions more reliable. Reserved sources remain
+closed; image-pixel, raw-frame 8/12 results are not metric or physical-safety claims.
+
+### Completed Fixed-Producer Study
+
+I have completed a [fixed-producer controller study](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/conclusions.md).
+The idea is to keep the stronger trajectory forecaster and fallback unchanged,
+then train the intervention controller on predictions from that same forecaster.
+Separate groups of development scenes supply producer fitting, controller
+supervision and readout. I trained 144 small Torch heads and 72 ridge controls,
+froze every decision, and evaluated all 180 registered views.
+
+This repairs an important problem: worst-locality easy degradation is now 0.238%
+for matched supervision, compared with 7.85% for the cross-fitted-supervision
+control. Both operate on identical final forecasts. But it is not a deployment
+upgrade. Against the existing stopping-protected controller, all-ADE gains range
+from -0.90% to +1.65%, with 12 positive and 3 negative confidence intervals.
+The negative cases mainly lose useful switches the original controller made.
+The next target is therefore the value of overriding the existing policy, not
+relearning the whole floor-versus-neural choice.
+
+The [full results](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/results.md),
+[loss curves](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/training_losses.svg),
+[changed-action accounting](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/changed_action_accounting.json)
+and [failure analysis](outputs/publication_readiness_2026_09/european_fixed_producer_roles_v1/failure_analysis.md)
+retain the adverse branches. All 288,000 updates completed and 362 scoped tests
+pass. The same opened scenes recur across views; these are not independent tests.
+No new trajectory forecaster was trained, reserved sources remain closed, and
+deployment is unchanged. Results use image pixels and raw-frame 8/12 prediction,
+not metric units, physical safety or submission-ready world-model evidence.
+
+### Completed Producer-Conditioned Study
+
+I have finished a [producer-conditioned controller experiment](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/conclusions.md).
+I trained 108 small Torch gain/harm heads to test whether knowing which model
+produced a trajectory improves the decision to use it. Global, real-tag and
+placebo-tag heads have the same capacity and training budget, and their primary
+comparisons use identical forecasts. All 180 development views are reported.
+
+The result is mixed, not a deployment upgrade. The real tag changes all-ADE gain
+by -0.50% to +0.94% versus the global head. The controller consistently improves
+over its own two-source fallback, but that fallback can be worse than the existing
+system. Worst-locality easy degradation reaches 8.03%. The error breakdown shows
+that all seven easy violations already have a weak fallback; six remain violations
+even after the neural controller helps. A learned risk score is not a safety
+guarantee either: realized harm often exceeds the predicted budget.
+
+The [full matrix](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/results.md),
+[loss curves](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/training_losses.svg),
+[paired comparisons](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/paired_changes.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_producer_conditioned_v1/failure_analysis.md)
+include the adverse branches and scenes. The 216,000 updates completed, checkpoint
+replays match, and 344 scoped tests pass. These are newly trained controllers,
+not newly trained trajectory forecasters or independent confirmation. Deployment
+stays unchanged. This motivated the fixed-producer study above, separating
+producer fitting, controller supervision and readout. These remain image-pixel,
+raw-frame 8/12 development results.
+
+### Preceding Support-Factorization Study
+
+I completed a [support-factorization experiment](outputs/publication_readiness_2026_09/european_support_factorization_v1/conclusions.md).
+It separates support for observed motion, support for model disagreement, and
+the requirement that the same training sources support both. The forecasts,
+learned heads and thresholds stayed fixed. All 936 registered development
+comparisons are reported, including the unchanged-policy replay controls.
+
+The result rules out a simple fix. None of the four support filters has a positive
+all-ADE confidence interval against the unchanged stopping-protected controller.
+The historical-motion rejection alone removes more benefit than harm in every
+view under both target families. Dropping parts of the joint filter recovers
+some accuracy, but recovering a loss is not a new model improvement. Matching
+intervention counts within each current frame also gives no consistent ranking
+advantage.
+
+The [full results](outputs/publication_readiness_2026_09/european_support_factorization_v1/results.md),
+[figure](outputs/publication_readiness_2026_09/european_support_factorization_v1/factor_changes.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_support_factorization_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_support_factorization_v1/operation_zh.md)
+retain the negative comparisons and locality failures. The worst observed
+positive-easy degradation remains 0.437%, and the small stopping repair is intact.
+There are 326 passing scoped tests and a complete independent arithmetic check,
+but no new neural training, deployment or independent confirmation. That negative
+result motivated the producer-conditioned refit above instead of more support-cutoff tuning.
+These remain image-pixel, raw-frame 8/12 development results, not physical safety
+or a submission-ready world model.
+
+### Preceding Causal Abstention Study
+
+I have finished a [causal abstention comparison](outputs/publication_readiness_2026_09/european_causal_abstention_v1/conclusions.md)
+on the frozen forecasting system. I tested whether recent stopping and support
+from the fitting scenes can reject harmful neural predictions. Each rule has
+controls that intervene on exactly the same number of agents in the same current
+frame. All 720 development views are reported; there was no new neural training.
+
+Checking the latest observed step fixes the known stopping defect: none of the
+four zero-error reference examples is harmed after this guard. But these examples
+have only two future labels each, and the overall accuracy change is negligible.
+The same-frame controls make identical decisions, so this is a small robustness
+repair, not evidence of better joint-agent reasoning.
+
+The broader support filter does not work as hoped. It lowers all-ADE performance
+against the unchanged controller in every view, by about 0.015% to 0.128%. The
+accounting shows why: it discards more useful than harmful interventions. There
+are some positive-easy gains at matched intervention counts, but no robust overall
+ranking advantage. The worst positive-easy degradation remains below 2%; that is
+not a physical-safety certificate or independent confirmation.
+
+The [full comparison](outputs/publication_readiness_2026_09/european_causal_abstention_v1/results.md),
+[figure](outputs/publication_readiness_2026_09/european_causal_abstention_v1/guard_changes.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_causal_abstention_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_causal_abstention_v1/operation_zh.md)
+retain the tradeoffs and negative results. All decision and arithmetic checks pass,
+with 314 scoped tests. These are image-pixel 8/12 results on opened development
+scenes, not a new dynamics model or independent confirmation. Deployment stays
+unchanged. This motivated the support-factorization study above rather than
+another threshold search on the same results.
+
+### Preceding Target-Learning Study
+
+I have completed a [matched target-learning experiment](outputs/publication_readiness_2026_09/european_floor_relative_v1/conclusions.md).
+The question was whether the controller would make better decisions if it learned
+gain and harm relative to its actual strong fallback, rather than constant
+velocity. I trained 234 small Torch heads with 468,000 updates, keeping causal
+inputs, capacity and sampling matched. Training targets came from models that
+excluded the locality being scored, not from in-sample teacher predictions.
+
+The result is informative but negative for that particular repair. Both-target
+controllers improve overall ADE over the protected fallback by 0.12% to 1.64%,
+with positive conditional locality-bootstrap intervals in all 36 views. Yet the
+matched CV-target control is better in 33 of those views. Twenty paired intervals
+favor the control; none favor the new target. A model can beat a baseline without
+its proposed change explaining the improvement.
+
+The remaining safety issue is also more specific now. Positive-easy degradation
+stays below 2%, but some interventions still harm zero-error reference cases.
+The four underlying examples have stopped at the latest observed step, while
+the existing guard only checks whether there was movement anywhere in the past.
+They also come from one locality absent from the corresponding fitting sets.
+That points toward support-aware stop/start abstention, not another round of
+threshold selection on these results. The labels cover only two future steps
+for those cases, so they cannot establish full-horizon safety either.
+
+The [complete comparison](outputs/publication_readiness_2026_09/european_floor_relative_v1/results.md),
+[paired figure](outputs/publication_readiness_2026_09/european_floor_relative_v1/reference_targets.svg),
+[training losses](outputs/publication_readiness_2026_09/european_floor_relative_v1/training_losses.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_floor_relative_v1/failure_analysis.md)
+keep every arm visible. Checkpoint checks and independent arithmetic pass, along
+with 301 scoped tests. These remain opened-development, image-pixel 8/12 results,
+not independent confirmation or a safe neural deployment. The trajectory
+forecaster was frozen; this was controller training, not new dynamics learning.
+I am keeping deployment unchanged.
+
+The [preceding frozen-fallback diagnosis](outputs/publication_readiness_2026_09/european_floor_opportunity_v1/conclusions.md)
+explains why this experiment was worth testing. Reproduction and recovery are
+documented in the [Chinese operation guide](outputs/publication_readiness_2026_09/european_floor_relative_v1/operation_zh.md).
+
+### Earlier Source Experiments
+
+I have completed a [ranking-supervision experiment](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/conclusions.md)
+following the coverage diagnosis below. I trained 36 new Torch risk heads across
+three seeds, with 72,000 updates. The only change was a loss that explicitly
+teaches the controller to order interventions by risk. Forecasts, model capacity,
+training samples and safety limits stayed fixed.
+
+This did not establish a safe neural advantage. Some full-policy scores improve,
+but comparisons at the same intervention counts show no consistent ordering gain.
+Against equally protected damping, all 18 neural all-ADE comparisons are negative;
+17 conditional confidence intervals favor damping. The neural policies meet the
+2% positive-easy degradation limit, yet still harm zero-error constant-velocity
+cases in 12 views. I am keeping deployment unchanged.
+
+The [complete results](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/results.md),
+[matched-ranking figure](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/ranking_comparison.svg)
+and [training losses](outputs/publication_readiness_2026_09/european_ranked_hurdle_v1/training_loss.svg)
+retain every registered comparison. All 36 checkpoint replays, 216 metric views
+and separate arithmetic checks pass; 234 scoped tests pass. These checks establish
+computational reproducibility, not scientific success or independent confirmation.
+
+Training traces identify a concrete next test: easy-event ranking receives far
+fewer valid training pairs than all-event ranking. I will test pairing supported
+event rows first, without changing the samples, risk limit or evaluation roles.
+That may address weak supervision; it is not yet a demonstrated explanation for
+the whole failure. These remain image-pixel 8/12 development results, not metric
+prediction, physical safety or a new deployment model.
+
+I have completed a [matched-coverage diagnosis](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/conclusions.md)
+to answer a question left by the last experiment: does the new risk head choose
+better interventions, or mainly change how often the model intervenes?
+
+I kept every forecast and fitted head frozen and compared the two risk rankings
+at the same intervention counts in each locality. The answer depends on the
+event target and scene split. There is no consistent ranking advantage. Some
+accuracy gains come from making more switches; much of the easy-event protection
+comes with making fewer. At the old intervention counts, the new neural ranking
+breaks the 2% easy-degradation limit in six of nine comparisons. The old ranking
+at the new, lower counts stays below that limit, but still harms some cases
+where constant velocity was already exact.
+
+The [complete results](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/results.md)
+and [all-comparison figure](outputs/publication_readiness_2026_09/european_hurdle_coverage_v1/support_v2/matched_ranking.svg)
+retain both count anchors and the unequal-support cases. All 216 views reproduce,
+with a separate arithmetic implementation and 227 scoped tests. This was a new
+diagnostic, not another training run or a deployable policy. Forced-count controls
+can violate their predicted-risk limit, so I am not selecting one for deployment.
+These remain image-pixel 8/12 development results, not independent confirmation.
+Next I will target ordering and unsupported cases separately, with the same
+strong damping control and no relaxation of the safety limit.
+
+I have completed the [occurrence-severity experiment](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/conclusions.md).
+Instead of asking a risk head to learn only an average error increase, I also
+teach it whether a harmful switch occurs and how large that harm is when it
+occurs. I trained 72 small Torch heads across three seeds, with 144,000 updates,
+against an otherwise identical control. Forecasts and safety limits stayed fixed.
+
+This helps one important failure mode: the largest positive-easy degradation
+across neural views falls from 17.25% to 0.67%. It does not solve the whole
+problem. The new controllers still damage some cases where constant velocity
+has zero error, and none of the 18 all-ADE comparisons establishes an advantage
+over equally protected damping. Two hard-subset comparisons improve slightly,
+but they come from one split; most favor damping. I am not promoting the model.
+
+The [complete results](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/results.md),
+[comparison figure](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/objective_comparison.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_hurdle_risk_v1/failure_analysis.md)
+retain the tradeoffs and the stronger controls. All 72 checkpoint replays and
+144 metric views reproduce; 218 scoped tests pass. These are image-pixel 8/12
+development results, not independent final-test evidence or physical safety.
+This led to the matched-coverage diagnosis above. Reserved data and current
+deployment remain unchanged.
+
+I have completed a [matched cost-head experiment](outputs/publication_readiness_2026_09/european_geometric_cost_v1/conclusions.md).
+The question is whether a controller makes better decisions when its predicted
+gain and harm are constrained by how far a candidate forecast moves from the
+causal baseline. I kept the forecasts and risk limits fixed and trained 54
+small neural heads across three seeds, with 108,000 optimizer updates in total.
+
+The answer is mixed, and not yet safe enough. The new risk heads allow more
+useful neural predictions through. Six new comparisons have a positive ADE
+interval against equally protected damping, but all six fail the safety checks.
+The strongest positive comparison has 17.64% worst-scene easy degradation.
+Bounding the size of a predicted cost does not make that cost well calibrated
+on the samples the controller chooses to change.
+
+The [complete comparison](outputs/publication_readiness_2026_09/european_geometric_cost_v1/head_ablation.svg),
+[training losses](outputs/publication_readiness_2026_09/european_geometric_cost_v1/training_loss.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_geometric_cost_v1/failure_analysis.md)
+retain every arm, including the stronger damping controls. All 54 checkpoints
+and 144 policy views reproduce; 210 scoped tests pass. I am not changing
+deployment or claiming a successful neural dynamics model. These are
+opened-source, image-pixel 8/12 development results, not independent final-test
+evidence. My next experiment will separate event support from conditional harm
+rather than relax the safety limit to make the current results look better.
+
+I have completed the [frozen producer-transport diagnostic](outputs/publication_readiness_2026_09/european_producer_transport_v1/conclusions.md).
+It tests a specific explanation for the controller's failures: the gain/risk
+head learns from smaller forecasting models, then controls a different final
+forecaster. I kept the heads, risk limits and excluded evaluation rows fixed,
+and replaced the final predictor with each of its two smaller counterparts.
+
+That replacement is not a reliable repair. Only 9 of 36 controlled ADE
+comparisons improve; five conditional intervals favor replacement and fifteen
+favor the original predictor. The smaller models still miss substantial harm
+on selected samples. Some changes help, but their effects depend on the fitting
+scenes and do not establish a consistent safe neural advantage.
+
+The [all-comparison figure](outputs/publication_readiness_2026_09/european_producer_transport_v1/producer_comparison.svg),
+[raw trajectory results](outputs/publication_readiness_2026_09/european_producer_transport_v1/raw_forecast_results.md)
+and [failure taxonomy](outputs/publication_readiness_2026_09/european_producer_transport_v1/failure_taxonomy.md)
+separate forecast quality from intervention errors. The experiment generated
+18 inference banks from frozen checkpoints, not new training. All 72 views
+reproduce and 201 scoped tests pass. Deployment and reserved data stay unchanged.
+These are opened-source, image-pixel 8/12 development results, not independent
+confirmation. My next repair targets candidate-specific gain and harm learning,
+not choosing a favorable producer after seeing its evaluation results.
+
+I have completed the [nested source-calibration study](outputs/publication_readiness_2026_09/european_nested_calibration_v1/conclusions.md).
+I trained 18 inner forecasting models and 54 gain/risk heads with the calibration
+scenes excluded from their complete training chain. Three seeds, both predefined
+scene-role rotations and all 72 policy views are retained.
+
+Calibration helps some safety checks, but the neural model still does not beat
+equally protected causal damping. All 36 direct ADE comparisons favor damping;
+34 conditional intervals are strictly negative. Neural observed safety improves
+from 2/12 views without calibration to 5/12 under each calibration method,
+compared with 12/12 and 11/12 for the matched damping controls.
+
+The distinction matters: a rule can satisfy the risk limits on its calibration
+scenes and still fail on another scene. The [all-view figure](outputs/publication_readiness_2026_09/european_nested_calibration_v1/calibration_comparison.svg)
+and [calibration-to-readout audit](outputs/publication_readiness_2026_09/european_nested_calibration_v1/calibration_transport.md)
+show that gap. All new checkpoints, decisions and metrics reproduce; 196 scoped
+tests pass. I am not promoting a new model or claiming independent risk control.
+These remain opened-source, image-pixel 8/12 development results. Next I will
+separate producer-training shift from prediction and ranking errors before
+committing to another model change.
+
+I have completed the [symmetric-risk follow-up](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/conclusions.md).
+Keeping the forecasts and utility heads fixed, I trained 36 new risk heads
+with a symmetric loss. Neural ADE gain over constant velocity rises to
+1.13%, 1.58% and 2.09% across three seeds, but worst-locality easy degradation
+rises to 2.46%, 7.29% and 16.71%. All exceed the 2% limit.
+
+The result clarifies a real tradeoff: the earlier conservative risk estimate
+blocked some useful predictions, but also prevented genuine harm. The new heads
+underestimate harm specifically on the samples they choose to change. They do
+not establish a stable accuracy advantage over equally protected causal damping,
+so I am not changing deployment or claiming a safe neural dynamics model.
+
+The [all-view figure](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/risk_ablation.svg),
+[complete comparisons](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/results.md)
+and [risk reliability tables](outputs/publication_readiness_2026_09/european_symmetric_risk_v1/risk_reliability_table.md)
+retain both the gains and failures. All 36 checkpoints and full metrics reproduce;
+185 scoped tests pass. These are source-development pixel-space 8/12 results,
+not independent confirmation. The next question is whether risk can be calibrated
+on the selected samples without losing the useful neural interventions.
+
+I have now run the [symmetric-utility experiment](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/conclusions.md).
+It changes one factor: the utility head estimates gain and harm with symmetric
+MSE, while every risk head and risk limit stays frozen. I trained 18 new heads
+across three seeds and retained all 48 policy comparisons. This substantially
+reduces harm-estimation bias, but it does not establish a neural dynamics advantage.
+
+In the fixed easy-event neural-risk views, neural ADE gain over CV is now
+0.27%, 0.20% and 0.42%; the equally protected damping control reaches
+2.09%, 2.20% and 2.16%. All 24 direct neural-versus-damping intervals still favor
+damping. Some other views fail easy or zero-error preservation, and one joint
+solver call safely falls back. I keep these negative results in the
+[complete comparison](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/results.md).
+The [all-view figure](outputs/publication_readiness_2026_09/european_symmetric_utility_v1/utility_ablation.svg)
+shows why a better cost estimate is not yet a better neural controller.
+
+All new checkpoints and complete metrics reproduce, and 179 scoped tests pass.
+These remain opened-source development results, not independent calibration
+or confirmation. I am not changing deployment. The next question is how much
+of the remaining limitation comes from risk estimation versus neural errors
+that the available history cannot reliably distinguish.
+
+I have completed the [opportunity diagnosis](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/conclusions.md).
+The neural candidate has more hindsight opportunity than fixed damping, but its
+protected controller captures much less of it. In the easy-event neural-risk
+views, about 59--61% of attainable neural benefit is rejected first by utility
+scoring; most remaining misses occur at the risk gate. The controller captures
+only 1.04--2.78% of gross neural opportunity, versus 23.31--25.34% for damping.
+This does not mean the hindsight gains are learnable from past observations.
+
+The diagnostic reproduces all 48 frozen policies without fitting a model or
+opening reserved data. It points to a specific next experiment: the utility
+head currently uses a conservative harm loss, then feeds a second conservative
+risk gate. That motivated the symmetric-utility experiment above, with risk
+heads and limits unchanged, not a relaxed threshold selected from these
+outcomes. The [attribution figure](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/opportunity_attribution.svg)
+and [all tables](outputs/publication_readiness_2026_09/european_opportunity_diagnosis_v1/tables.md)
+keep the missed opportunities, harms and producer differences visible.
+
+I have completed the [matched risk-protected motion study](outputs/publication_readiness_2026_09/european_protected_motion_v1/conclusions.md).
+The result challenges the current neural-trajectory hypothesis: when fixed
+damping receives the same gain/harm learning and risk rules, it outperforms
+the neural candidate in all 24 paired pointwise comparisons. Each conditional
+locality-bootstrap interval favors protected damping. Both candidates use the
+same risk budget, but they need not intervene on the same number of agents.
+
+With easy-event neural risk heads, protected damping improves ADE over CV by
+1.81--1.94% across three seeds, versus 0.17--0.43% for the neural trajectories.
+This suggests useful intervention learning, not yet a neural dynamics advantage.
+Other controls still fail local easy preservation, joint decisions lack a stable
+matched-count benefit, and independent calibration remains untested. I am not
+changing deployment or claiming submission readiness.
+
+The experiment fitted 45 new control heads, including 54,000 real Torch updates,
+and verified 45 existing neural-candidate heads. All 48 policy views are retained;
+all 90 checkpoints reproduce sampled predictions exactly. The
+[full comparison](outputs/publication_readiness_2026_09/european_protected_motion_v1/results.md),
+[contrast figure](outputs/publication_readiness_2026_09/european_protected_motion_v1/candidate_contrasts.svg)
+and [operation guide](outputs/publication_readiness_2026_09/european_protected_motion_v1/operation_zh.md)
+record the result and its limits. My next step is to separate forecast quality,
+risk-estimation error and producer-training shift on the opened source scenes,
+not to tune on reserved outcomes or simply increase model size.
+
+I have completed the [event-conditional risk study](outputs/publication_readiness_2026_09/european_conditional_risk_v1/conclusions.md):
+36 fitted risk heads and 24 fixed policy views, with the forecast bank unchanged.
+The new easy-event neural heads reduce worst-locality easy degradation to
+0--0.82% and harm none of the four observed zero-error CV cases in the full
+pointwise evaluation. But their ADE gain over CV falls to 0.17--0.43%, well
+below the preceding policy and the strong fixed-damping accuracy control.
+This is a protection/utility tradeoff, not a new deployment result.
+
+The matched controls show that easy-event targets help within the neural risk
+model, but a simple ridge risk head remains competitive. Joint decisions still
+lack a stable same-intervention-count advantage, and two unguarded neural seeds
+exceed the 2% worst-locality easy limit on the joint pilot. I retain every seed
+and negative control in the [results](outputs/publication_readiness_2026_09/european_conditional_risk_v1/results.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_conditional_risk_v1/failure_analysis.md).
+All 36 checkpoints reproduce sampled predictions exactly; 152 tests pass in
+the completion scope. Independent selection, calibration and confirmation stay
+closed. The protected-motion comparison above now completes that follow-up.
+
+The [tradeoff figure](outputs/publication_readiness_2026_09/european_conditional_risk_v1/risk_utility_tradeoff.svg)
+and [operation guide](outputs/publication_readiness_2026_09/european_conditional_risk_v1/operation_zh.md)
+make the result reproducible. These are source-development image-pixel 8/12
+results, not historical t50, calibrated physical safety or independent proof.
+
+I have completed the [CV-reference repair](outputs/publication_readiness_2026_09/european_cv_reference_v1/conclusions.md):
+nine ridge and nine neural cost heads, with the original forecasts frozen.
+Changing the fallback and its gain/harm supervision to causal constant velocity
+reduces the neural policy's mean easy-case degradation from 12.81--13.38% to
+1.90--2.38%. Its ADE gain over CV is 4.18--4.43% across three seeds, but the
+advantage over fixed damping 0.97 remains uncertain. This is a partial repair,
+not a deployment result.
+
+The remaining failure is specific: worst-locality easy degradation is still
+8.71--12.54%, and each seed harms one of the four zero-error CV cases. Those
+four cases have only two observed future labels and come from a held source
+fold with no fitting examples of that event. I keep them in the evaluation;
+removing difficult safety cases would not solve the problem. The joint-control
+pilot contains none of them and cannot validate zero-event protection.
+[All controls and intervals](outputs/publication_readiness_2026_09/european_cv_reference_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cv_reference_v1/failure_analysis.md)
+and the [repair figure](outputs/publication_readiness_2026_09/european_cv_reference_v1/repair_contrasts.svg)
+are retained. All 18 cost checkpoints reproduce sampled predictions exactly;
+145 scoped tests pass. Independent data roles and deployment remain unchanged.
+
+I have completed the [European Squares source-only experiment](outputs/publication_readiness_2026_09/european_source_forecast_v1/conclusions.md):
+18 real Transformer fits, three seeds and 72,000 optimizer updates. Mean-seed
+ADE improves by 4.11% over the baseline selected on other fitting localities,
+with a conditional locality-bootstrap interval of [1.37%, 6.95%]. But easy-case
+degradation is 13.65--14.39%, and every seed harms the four zero-error CV cases.
+This is a useful prediction signal, not a safe deployable model.
+
+The comparison needs care: fixed damping 0.97 achieves 3.98% gain over CV,
+versus 2.16% for the neural predictor on the same scale. I cannot claim that
+the neural model beats every strong baseline. The training-selected fallback
+also fails easy preservation; a fallback is not automatically a safety floor.
+
+The [nested gain/harm study](outputs/publication_readiness_2026_09/european_source_intervention_v1/conclusions.md)
+adds nine ridge and nine neural cost heads. Joint intervention does not show a
+stable advantage over independent decisions at the same intervention count.
+I am retaining these negative controls and changing neither deployment nor the
+risk limits. The [audit entry](outputs/publication_readiness_2026_09/audit_entry_20260924.md)
+links results, losses, checkpoint replays and limitations. All 36 checkpoint
+checks reproduce sampled predictions exactly; 127 scoped tests pass. Reserved
+selection, calibration and confirmation roles, including DroneCrowd, remain closed.
+
+I have frozen [locality-level roles for European Squares](outputs/publication_readiness_2026_09/european_squares_roles_v1/conclusions.md)
+before looking at prediction errors: 12 training groups, 6 for model selection,
+12 for risk calibration and 6 for confirmation. All recordings from a locality
+stay together. Only the training groups are open. The first registered source
+cohort is built from all 163 training recordings, with 318,969 prediction targets
+and incomplete-history neighbors retained. It
+[reproduces exactly from the raw recordings](outputs/publication_readiness_2026_09/european_squares_source_v1/conclusions.md);
+489 future-truncation checks and 79 scoped tests pass. Future labels are stored
+separately from past-only model inputs; missing futures do not remove targets.
+
+The [full raw intake](outputs/publication_readiness_2026_09/european_squares_intake_v2/conclusions.md)
+covers 152,372,066 rows in 376 recordings. The new
+[partial-clip screen](outputs/publication_readiness_2026_09/european_squares_overlap_v1/conclusions.md)
+finds no exact eight-frame dynamic matches or cross-locality integer-pixel matches.
+Near-static quantized matches remain within their locality. The
+[prior-exposure search](outputs/publication_readiness_2026_09/european_squares_exposure_v1/conclusions.md)
+is explicitly bounded; it does not prove universal independence or locate
+unknown remote assets. These are source-data improvements, not new model scores.
+The task uses released detector tracks in image pixels and raw frame indices,
+not verified online ground truth, meters or seconds. Reserved prediction errors
+and DroneCrowd confirmation remain closed; deployment is unchanged.
+
+I have completed the [causal-neighborhood and annotation audit](outputs/publication_readiness_2026_09/moving_zero_support_v1/conclusions.md)
+following the failed zero-reference guard. All 36 views reproduce exactly. The
+seven moving zero-CV windows come from only three tracks; none has a matching
+zero-event label among its nearest 512 effective source neighbors in either
+tested feature bank. Ordinary similar histories are present, so this is a
+relevant-event support gap, not proof that prediction is impossible.
+
+Raw annotations also expose a limit to the causal claim: six of the seven
+histories include generated points bracketed by later controls beyond the query.
+That is a provenance concern, not proof of a particular interpolation algorithm.
+The fixed sampled labels are correct, but strict online sensor-as-of causality
+is not established. I am keeping the evaluation grid, risk limits and deployment
+unchanged. The next priority is admissible independent trajectory support and
+annotation-time provenance, not another threshold sweep on these same tracks.
+[Tables and figure](outputs/publication_readiness_2026_09/moving_zero_support_v1/tables.md),
+[execution record](outputs/publication_readiness_2026_09/moving_zero_support_v1/execution_notes.md).
+
+I have completed the [explicit zero-reference risk experiment](outputs/publication_readiness_2026_09/zero_atom_v1/conclusions.md).
+Separately estimating when constant velocity is exactly correct does not repair
+protection: Transformer ADE gain falls from 3.60% to 2.97%, with the same five
+harmed window/seed cases; EqMotion gain falls from 3.34% to 2.80%, with harms
+increasing from six to eight after joint reallocation. Matched-intervention
+controls also outperform the added guard. I am retaining this negative result,
+not changing deployment.
+
+The [support audit](outputs/publication_readiness_2026_09/zero_atom_v1/fit_support.md)
+finds only 2--7 relevant moving zero-reference training windows per readout,
+despite thousands of stopped examples. An empirical probability of zero is not
+a safety guarantee. The [full controls and paired intervals](outputs/publication_readiness_2026_09/zero_atom_v1/results.md)
+and [figure](outputs/publication_readiness_2026_09/zero_atom_v1/risk_tradeoff.svg)
+show the utility/protection tradeoff. These are 36 new leaf readouts on frozen
+forests, not new neural forecasts; the four source sites remain development-exposed.
+
+I have completed the [cutoff-relative risk study](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/conclusions.md):
+36 fresh fits with the same predictors, targets, source draws and risk limit.
+Restoring motion scale relative to the training error cutoff reduces the preceding
+dimensionless population policy's worst easy degradation from 4.45% to 1.27% for
+Transformer and 9.01% to 1.46% for EqMotion. But their average ADE gains over
+constant velocity fall to 3.60% and 3.34%, close to the native-feature controls.
+The tiny advantages over those controls remain uncertain, and some zero-error
+baseline cases are still harmed. I am not changing deployment.
+
+The [full table](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/results.md),
+[training losses](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/training_losses.md)
+and [tradeoff figure](outputs/publication_readiness_2026_09/cutoff_relative_risk_v1/risk_tradeoff.svg)
+retain all controls. This is a partial risk-representation repair on four
+development-exposed SDD sites, not new neural dynamics, independent confirmation
+or a calibrated safety guarantee.
+
+I have completed a [matched dimensionless risk-head study](outputs/publication_readiness_2026_09/dimensionless_risk_v1/conclusions.md):
+72 fresh fits with unchanged predictors, matched source draws and three seeds.
+Removing explicit native-unit features increases the population policy's average
+ADE gain over constant velocity from 3.57% to 4.99% for Transformer and 3.30% to
+5.97% for EqMotion. But their worst easy-case degradation rises to 4.45% and 9.01%,
+above the 2% ceiling. Better average prediction is not enough to justify deployment.
+
+A more restrictive Transformer control gives 2.99% ADE gain, 0.94% worst
+positive-easy degradation and no observed zero-CV harms. Its advantage over the
+old strict control remains uncertain across physical sites, so I am retaining
+it as a research signal, not selecting a new deployable winner. The
+[tradeoff figure](outputs/publication_readiness_2026_09/dimensionless_risk_v1/risk_tradeoff.svg),
+[all controls](outputs/publication_readiness_2026_09/dimensionless_risk_v1/results.md)
+and [training losses](outputs/publication_readiness_2026_09/dimensionless_risk_v1/training_losses.md)
+show both gains and failures. These are four-site development results under the
+native 8/12 protocol, not external confirmation, historical t50 or a safety guarantee.
+
+I have found a [coordinate-unit dependency in the frozen risk heads](outputs/publication_readiness_2026_09/imptc_input_contract_v1/conclusions.md).
+Holding the motion and normalized predictions fixed, changing only two native-unit
+features flips the Transformer head's predicted signed easy-risk sign in 369 of 754
+diagnostic windows. I have added a separate unit-free input contract. Its initial
+three EqMotion numerical failures are retained, and a [versioned precision repair](outputs/publication_readiness_2026_09/imptc_precision_v2/conclusions.md)
+now passes the same probes; predictive value still requires source-only training.
+This is an input-mechanism result, not forecasting
+improvement: no external prediction errors were opened, no model was retrained,
+and deployment is unchanged. The run and replay are verified; DroneCrowd remains
+closed for confirmation.
+
+I have added a [verified IMPTC source adapter](outputs/publication_readiness_2026_09/imptc_intake_v1/conclusions.md)
+to work toward independent-site evidence. The official sample package contains
+142,361 observations across four recordings, but only one physical intersection
+and 61 person-labelled tracks. Every converted row and history-support count has
+been replayed and checked. No forecast errors have been opened and no model has
+been fitted on it. Source-processing provenance and related-site exposure still
+need resolving before admission; this is not independent calibration or a new
+model result. DroneCrowd confirmation stays closed.
+
+I have completed a [fixed comparison of shared risk budgets](outputs/publication_readiness_2026_09/risk_subsidy_v1/conclusions.md).
+It separates credit from other agents' predicted improvements from budget
+contributed by agents whose forecasts stay unchanged. Removing both eliminates
+the observed zero-error-baseline harms, but reduces Transformer ADE gain from
+2.94% to 1.40% and EqMotion from 2.83% to 1.30%. The restricted rules also trail
+the old strict control. I am retaining this as a mechanism result, not promoting
+a new policy or claiming safety.
+
+The comparison keeps every fitted model and the 2% ceiling unchanged, includes
+all 175,756 source windows, and reports all 33 controls. Equal-intervention
+comparisons show that the restrictions change which useful targets are admitted,
+not just the intervention rate. Unknown futures and numerical limitations remain
+explicit in the [results](outputs/publication_readiness_2026_09/risk_subsidy_v1/results.md).
+These are development-exposed native8/12 results, not historical t+50 or independent
+confirmation. The [method positioning note](outputs/publication_readiness_2026_09/risk_subsidy_v1/literature_and_claim_limits.md)
+explains why a predicted-risk constraint is not a statistical safety guarantee.
+Deployment is unchanged and reserved confirmation data remain closed.
+
+I have completed the [net easy-risk study](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/conclusions.md):
+36 new risk heads on unchanged forecasts, with three seeds and all registered
+source windows. Accounting for both improvement and harm recovers average ADE
+gains of 2.94% for Transformer and 2.83% for EqMotion over constant velocity.
+Transformer's improvement over the previous strict rule remains uncertain;
+EqMotion has a positive nominal development contrast, but worse easy-case
+performance. Both policies harm some zero-error baseline cases, so I am not
+changing deployment or claiming a safety guarantee.
+
+These are four-site, development-exposed results under the 8-observed/12-predicted
+annotation-step protocol, not the historical t+50 scores or independent
+confirmation. The [full comparisons](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/results.md),
+[training losses](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/training_losses.md)
+and [method note](outputs/publication_readiness_2026_09/net_easy_moment_guarded_v1/method_note.md)
+retain the negative controls and explain why net-risk accounting is a weaker
+constraint. Independent confirmation remains closed.
+
+I have completed the [same-query risk allocation study](outputs/publication_readiness_2026_09/easy_allocation_risk_scaled_v1/conclusions.md)
+on the full registered source population. Pooling risk across targets recovers
+some useful intervention: Transformer ADE gain reaches 1.280%, with 0.112%
+worst-site/seed easy degradation. It still trails the previous strict rule's
+2.437% gain, and the nonadditive interaction term adds almost nothing beyond
+the matched unary control. I am not promoting this as a new best policy.
+The study also exposed and repaired a small-risk numerical solver issue without
+loosening the risk limit; both versions and all negative results are retained.
+Full replay, separate arithmetic and 115 scoped tests pass. No predictor was
+retrained, no threshold was tuned, and independent confirmation remains closed.
+
+I have completed the [conditional easy-risk experiment](outputs/publication_readiness_2026_09/easy_moment_v1/conclusions.md):
+36 new risk heads on frozen damping, Transformer and EqMotion forecasts. Directly
+learning easy-weighted harm protects the observed easy cases but rejects nearly
+all useful neural intervention. Transformer ADE gain falls from 2.437% under
+the previous strict rule to 0.013%; EqMotion falls from 1.609% to 0.001%.
+Equal-intervention comparisons also favor the simpler product-of-marginals
+control. I am retaining this as a negative result, not replacing the current
+policy. The complete run, losses, source exclusions and independent arithmetic
+checks are documented; these remain four-site development results, not external
+confirmation or a safety guarantee.
+
+I have acquired and audited the [official HT21/CroHD annotations](outputs/publication_readiness_2026_09/ht21_annotations_v1/conclusions.md)
+to investigate denser external interactions. All 1,188,496 released GT rows and
+the history-support counts reproduce, but I have not admitted them as a new
+forecasting benchmark: three of four labelled recordings report camera motion,
+the annotations include interpolation, and independent physical sites remain
+unverified. The input reader preserves static people without using their
+whole-video motion label. This is a verified data asset, not a new model result
+or independent calibration. DroneCrowd remains closed for confirmation.
+
+I have extended the protected-motion comparison to
+[full EqMotion forecasts](outputs/publication_readiness_2026_09/protected_eqmotion_controls_v1/conclusions.md),
+reusing the existing excluded-site predictors and fitting the missing matched
+forest heads. Strict neural protection gives 1.61% average ADE gain with 0.45%
+worst-site/seed easy degradation. At equal intervention counts, protected simple
+damping gives 2.67% gain and 1.62% easy degradation, although their paired
+difference remains uncertain. This has narrowed my claim: learning when to
+intervene is useful, but I have not shown that neural forecasting is indispensable.
+The comparison is replay-verified development evidence, not an independent test
+or a new deployment decision. Losses, complete controls and negative results are
+in the report; reserved confirmation data remain closed.
+
+I have now completed a [matched comparison against protected simple motion](outputs/publication_readiness_2026_09/protected_motion_controls_v1/conclusions.md),
+with 156 new control-head fits and twelve verified existing heads. Giving damping
+the same learned protection improves its average source result beyond the
+Transformer, but damages easy cases beyond the specified ceiling. With forest
+protection, their average difference is uncertain. Transformer retains a useful
+observed gain/easy-degradation tradeoff, but I cannot yet claim that neural
+forecasting is indispensable. These are four-site development results, not a new
+external test or deployment decision. All actions, losses and negative results
+remain in the report; DroneCrowd confirmation remains closed.
+
+I have completed the [full DUT frozen-model readout](outputs/publication_readiness_2026_09/dut_frozen_readout_v1/conclusions.md):
+27 recordings, two locations and 420,364 past-eligible target windows, including
+those with incomplete future labels. This is a fixed external diagnostic, not
+a quick sample or a new model-selection round. Protected neural policies improve
+average ADE over constant velocity by about 1.6% and 1.7% across three seeds for
+Transformer and EqMotion respectively, with no observed degradation in the small
+predefined easy subset. Unprotected models gain more on average but harm easy cases.
+
+The limitations matter: a damped-motion control has better overall ADE but fails
+easy preservation, and joint selection adds almost nothing beyond unary selection.
+Only two sites and 922 easy targets support this comparison, so it is not a safety
+guarantee or a confirmed world-model contribution. All fixed views remain reported;
+no external winner is deployed. Independent raw-row coverage and aggregate replay
+pass. A fresh process also reproduces all twelve views on 6,715 fixed query times
+across 66 registered chunks from all 27 recordings. This is chunk verification,
+not a second full run. DroneCrowd confirmation remains closed.
+
+I have completed [six fixed source-only predictor fits](outputs/publication_readiness_2026_09/external_predictor_refit_v1/conclusions.md):
+the existing Transformer and EqMotion control, each with three seeds on the
+already-used SDD source sites. All 24,000 registered updates completed locally in
+74.6 minutes of fitting time. Checkpoint reloads and fixed-input predictions
+reproduce exactly; the [training losses](outputs/publication_readiness_2026_09/external_predictor_refit_v1/training_losses.md)
+are available rather than just a completion status. These are trained predictors,
+not external validation results. The [past-only input interface](outputs/publication_readiness_2026_09/external_prefix_adapter_v1.md)
+keeps observation construction separate from future labels.
+
+I have also completed the [gain/harm estimation bank](outputs/publication_readiness_2026_09/external_cost_bank_v1/conclusions.md)
+for these predictors: six neural heads and six sampling-matched tree controls.
+Their cost targets come from models that excluded each row's source site, not
+from the new predictors' in-sample errors. All twelve checkpoints reproduce their
+fixed-input scores; the [loss records and limitations](outputs/publication_readiness_2026_09/external_cost_bank_v1/training_losses.md)
+are available. This is source-only fitting, not held-out evaluation of the complete
+policy. I have now frozen and replayed the [complete inference chain](outputs/publication_readiness_2026_09/external_policy_chain_v1/conclusions.md),
+including the joint-choice controls and fallback rules. All twelve views reproduce
+on 99 fixed source-scene queries. Joint selection changes no decisions in those
+probes, so this step does not establish an interaction contribution. Independent
+external calibration and confirmation remain unfinished, and deployment is unchanged.
+
+I am prioritizing independent external scenes for the next validation study.
+The [DroneCrowd annotation audit](outputs/publication_readiness_2026_09/dronecrowd_annotations_v1/conclusions.md)
+now covers the complete official annotation archive: 112 clips, 20,800 tracks
+and 4.86 million visible records. There is enough structural history support,
+but clip IDs do not establish independent physical scenes. The audit also finds
+coordinate differences between supplied formats and missing interpolation
+provenance. I have not trained on these annotations. I now reserve the entire
+collection for candidate external confirmation, without claiming that its
+physical sites are already independent. Existing SDD sites remain development data;
+I will not reuse them as untouched confirmation.
+
+I have now [audited 336 official images](outputs/publication_readiness_2026_09/dronecrowd_image_audit_v1/conclusions.md),
+three per clip, without downloading the full image archives. Background matching
+finds a shared road scene across the supplied train/test folders and apparent
+camera motion in many clips. The 68 automatic overlap groups are not verified
+independent sites. The initial grouping has since been extended:
+The [extended multi-view audit](outputs/publication_readiness_2026_09/dronecrowd_grouping_v2/conclusions.md)
+has now checked all 6,216 recording pairs using three views, finding 66 stronger
+and 46 ambiguous associations. Keeping these and the visual-review constraints
+produces 45 exclusion groups, five of which cross the supplied train/test split.
+I keep the entire collection in one reserved role, rather than relying on these
+groups as certified independent locations. No forecast result is claimed from
+this source audit.
+
+The annotations now also have a [lossless lazy reader](outputs/publication_readiness_2026_09/dronecrowd_recordings_v1/conclusions.md):
+112 compact recording caches replace repeated XML parsing without storing millions
+of expanded episodes. Every array matches the source, and past inputs stay separate
+from future supervision. The source caches retain their original quarantine
+status; a separate [frozen reservation and admission guard](outputs/publication_readiness_2026_09/external_role_reservations_v1/conclusions.md)
+prevents training or threshold selection on DroneCrowd. DUT is reserved for
+calibration, with one duplicate-annotation clip excluded. These reservations
+protect future evaluation; they do not grant predictive access or solve the
+limited number of independent calibration sites.
+
+The annotation audit also found a practical input-construction risk: filtering
+observed agents by future label availability would discard agents with complete
+past histories in about 72% of the stride-1 eight-to-twelve queries. I have added a
+[past-input / future-label separation check](outputs/publication_readiness_2026_09/dronecrowd_window_separation_v1/conclusions.md)
+and verified it across all 112 clips. This is a data-pipeline check, not evidence
+of better forecasts or independent scene coverage.
+
+I am also separating empirical easy-case protection from statistical risk claims.
+A [source-checked calibration diagnostic](outputs/publication_readiness_2026_09/scene_risk_bound_feasibility_v1/conclusions.md)
+implements an existing, tighter bounded-risk method without changing the frozen
+experiments. It improves the feasibility calculation, not the model: independent
+scenes are still required, and the 2% easy-error criterion is not a certificate.
+
+The earlier [read-only CREATE connection](outputs/publication_readiness_2026_09/create_readonly_handoff_20260923.md)
+worked, but the [latest refresh](outputs/publication_readiness_2026_09/create_readonly_refresh_20260924.md)
+failed authentication, so I cannot report a current queue state. No M3W job was
+submitted, and the separate simulation workload is untouched. The matched-control
+experiments completed locally; M3W's remote project directory remains unidentified.
+
+I have added a [portable reproduction draft](outputs/publication_readiness_2026_09/blinded_reproduction_v1/conclusions.md)
+for the current evidence tables. It runs from an extracted archive with Python's
+standard library, without my workspace, raw data or model weights. The isolated
+run reproduces all seven result files and preserves the negative comparisons.
+Direct identifying details are removed, but this is not certified anonymous or
+a full model-retraining package. It improves reproducibility, not model accuracy;
+independent calibration and confirmation are still missing.
+
+The [revised evidence draft](outputs/publication_readiness_2026_09/evidence_manuscript_v2/manuscript.md)
+brings the neural-versus-tree risk experiments and joint-support diagnosis into
+one account. It keeps the failed primary comparisons alongside the positive
+same-count result, with worst-scene/seed easy damage rather than only an average.
+The [tables and figures](outputs/publication_readiness_2026_09/evidence_manuscript_v2/tables.md)
+can be regenerated from sixteen pinned reports; the
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/evidence_manuscript_v2/reproduction_zh.md)
+separates paper reconstruction, checkpoint replay and independent validation.
+This is an updated research manuscript, not a new model result or a claim that
+the paper is ready to submit. Independent calibration and a supported method
+contribution are still the most important missing evidence.
+
+I also checked whether the protected forecasts leave meaningful joint-agent
+choices. Exhaustive comparison finds only three changed forest-policy decisions,
+all from one recording/frame repeated over three seeds. The neural pools change
+a few other frames, but this is still very sparse support for a joint mechanism.
+This [causal-only diagnosis](outputs/publication_readiness_2026_09/protected_joint_support_v1/conclusions.md)
+uses no future outcomes: improving the designed interaction objective is not
+evidence of better trajectory prediction. Independent scene support remains more
+important than another broad interaction-weight search.
+
+I have completed a controlled test of whether the neural risk head's training
+loss explains its gap to a simple tree comparator. Twelve new fits improve the
+fitting objective in nine views, but do not repair held-scene risk ranking. The
+fixed policy gains 3.45% ADE over constant velocity versus 3.40% previously; their
+paired difference interval crosses zero. At equal switch counts, the new head
+falls to 2.60%, versus 2.81% for the old head and 3.53% for the forest. Learning
+the average cost better has not made the selected cases reliably safer. The
+[full result and verification](outputs/publication_readiness_2026_09/fraction_square_v1/conclusions.md)
+retain the failed primary gate and unchanged deployment. These are development
+results, not independent confirmation or submission readiness.
+
+My latest [fixed-count comparison](outputs/publication_readiness_2026_09/risk_ranking_v1/conclusions.md)
+separates risk ranking from simply making fewer switches. With the same forecasts
+and exactly the same switch counts, relative-risk ranking protects observed easy
+cases for both the neural and tree heads. The tree retains 3.53% ADE gain over
+constant velocity; the neural head retains 2.81%. Their paired difference is
+0.72 percentage points, with a development-scene interval of [0.61, 0.83]. Ranking
+by net gain improves average accuracy but breaks the worst-scene easy limit for
+both heads. This narrows the problem to useful risk ordering as well as score
+calibration, not just model size. It does not establish independent safety or a
+new neural contribution; the earlier primary gate remains failed and deployment
+is unchanged.
+
+My latest comparison uses ordinary tree regression to estimate intervention costs
+from the same forecasts and causal features. All 24 fits are complete. The gradual
+policy gains 3.53% ADE over constant velocity, versus 3.40% with the neural risk
+head. It passes the observed easy-case ceiling in every scene and seed and avoids
+the neural head's exact-baseline failure. However, the paired accuracy difference
+interval crosses zero, and a same-count neural ranking has higher gain but worse
+easy protection. This is a useful conventional comparator, not a new world-model
+contribution or a deployment. The [fixed results and risk diagnosis](outputs/publication_readiness_2026_09/forest_cost_v1/conclusions.md)
+show why a more complex risk head must earn its place. Independent calibration
+and confirmation are still missing, and I have not changed the deployed policy.
+
+I have brought the completed development experiments into one
+[English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v1/manuscript.md),
+with [reproducible tables and a figure](outputs/publication_readiness_2026_09/evidence_manuscript_v1/tables.md).
+The central result is mixed: neural predictors improve average motion error,
+but learning when to use them has not yet met the scene-wise protection target.
+The earlier conservative policy gains 4.10% in average site-relative ADE, while
+easy errors still rise beyond 2% in two sites. These are explored SDD development
+results, not independent test evidence or a new deployment.
+
+The manuscript keeps the failed equal-count and joint-decision controls visible.
+Its tables are reconstructed from fixed result files, not another training run.
+Independent calibration and confirmation remain the next scientific requirements.
+
+One controlled experiment tested whether the risk head was trained on an
+outdated set of switching decisions. I retrained twelve heads with the same
+budget, updating that training emphasis every 500 steps. ADE gain was 4.03%
+versus 4.10% for fixed emphasis; the paired difference interval includes zero.
+Easy protection still fails in deathCircle and one gates seed. This does not
+support adopting the repair: learning the selected training cases better has
+not made switching reliable on another scene. I keep the negative result and
+the existing deployment unchanged. The manuscript above is the preceding fixed
+evidence snapshot; the [new experiment and reproducible results](outputs/publication_readiness_2026_09/adaptive_region_cost_v1/conclusions.md)
+are reported separately, without changing its original comparisons.
+
+I then tested whether two existing risk heads could review that policy's proposed
+switches. The review meets the observed easy-case ceiling in every scene and seed,
+but retains only 0.83% ADE gain. At exactly the same number of switches, the original
+head's ranking retains 3.05%, although it still fails easy protection. This is a
+real tradeoff, not a new deployable winner. A closer audit shows that the review
+rejects many useful forecasts and still underestimates harm among the decisions
+it accepts. Simply taking the largest risk estimate is not reliable calibration.
+I have kept the [fixed comparison, negative result and veto diagnosis](outputs/publication_readiness_2026_09/cross_objective_review_v1/conclusions.md)
+separate from the earlier manuscript snapshot. Independent confirmation is still
+missing, and no deployment has changed.
+
+My latest controlled test changes the risk head's loss rather than its architecture.
+Twelve fresh fits raise ADE gain from 4.10% to 4.19%, but the difference interval
+includes zero and easy errors still exceed the ceiling in deathCircle and gates.
+The head estimates more harm on the old decisions, yet still underestimates the
+decisions it now selects. A fixed turnover audit shows that harmful decisions
+retained by both versions are part of the problem, not just new switches. I keep
+the [verified experiment and negative finding](outputs/publication_readiness_2026_09/log_cost_v1/conclusions.md)
+as development evidence; there is no new deployment or calibration claim.
+
+The latest failure audit points to a more specific mismatch: the risk head learns
+one cost over twelve future steps, while some evaluated tracks have only a short
+labelled future prefix. In the retained easy-case errors, incomplete futures
+account for about 77% of gross harm in deathCircle and 75% in gates. Many complete
+training trajectories also benefit overall while being worse over their first
+few steps. I have implemented and checked prefix-level supervision without using
+future label availability as an input. Retraining and a fixed policy comparison
+come next; this [diagnosis and target-interface repair](outputs/publication_readiness_2026_09/log_cost_v1/conditional_support_diagnosis.md)
+does not yet improve a deployed model or justify excluding short tracks.
+
+I have now fixed the next comparison before training: two equally sized risk
+heads learn either twelve copies of the full-trajectory cost or twelve distinct
+prefix costs. The same forecasts, fitting rows, seeds and training budget are
+used in both arms. Equal-switch-count controls will test whether any protection
+comes from better risk discrimination rather than simply switching less often.
+The [registered experiment](outputs/publication_readiness_2026_09/prefix_cost_v1/registration.md)
+has now completed all 24 fits. The result is negative: guarding every prefix
+reduces ADE gain to 1.20%, versus 4.19% for the matched terminal-cost control;
+it also loses at the same switch count. One scene/seed still exceeds the easy
+ceiling. Almost every added veto triggers at the first predicted step, rejecting
+many forecasts that would improve the full trajectory. The [results and failure
+analysis](outputs/publication_readiness_2026_09/prefix_cost_v1/conclusions.md) keep
+this tradeoff explicit. I have not deployed the repair. Independent calibration
+and confirmation remain unresolved.
+
+I have also tested changing the action rather than the risk threshold: introduce
+the neural forecast gradually, keeping the first point at the causal baseline.
+A uniform blend is matched to the same forecast displacement per query. All 24
+new risk-head fits are complete. The gradual intervention preserves the positive-error
+easy ceiling in every scene and seed, but gains 3.40% ADE versus 3.64% for uniform
+blending. It also harms one case where CV was exact. Identical-choice controls show
+that both the temporal shape and the learned choices cost useful accuracy; risk
+is still underestimated on accepted cases. This is a documented protection/accuracy
+tradeoff, not a new deployable winner. The [verified results and failure diagnosis](outputs/publication_readiness_2026_09/temporal_intervention_v1/conclusions.md)
+remain separate from the pinned manuscript. Independent confirmation is still
+missing; I have not replaced the primary ADE criterion with the better endpoint
+result or changed the deployment.
+
+## Research Question
+
+My primary task is **eight observed annotation steps to twelve predicted steps**.
+Raw-frame `t+50` is a separate supplement. I study when a neural forecast adds
+value over a strong causal baseline, how to estimate the harm from switching,
+and whether decisions for interacting agents should be made together.
+
+I have adopted a transparent evaluation amendment: native-coordinate ADE/FDE
+within each dataset, with relative ADE improvement averaged equally over fixed
+physical scenes. This follows a diagnosed weighting problem, so it is post-hoc
+protocol development, not a new independent test. I retain the old normalized
+scores and every negative result. The change does not establish a model gain.
+[Decision and fixed first readout](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
+
+I have now completed that matched training comparison on the full admitted source
+population: 24 real Torch fits, four excluded source sites and three seeds. With
+the same model, batches and budget, native-loss training improves ADE by **7.63%**
+over causal constant velocity, compared with **2.18%** for the old-loss control.
+The direct improvement over that control is **5.56%**. All four source scenes and
+all three seeds improve; the scene-bootstrap interval against CV is [5.96%, 9.30%].
+
+This is a useful predictor result, but not yet safe intervention. The new model
+also increases error on some paths that CV predicts exactly. Those zero-reference
+errors cannot be hidden behind an undefined percentage. I keep this as a research
+candidate, not a new deployment, and retain all old scores and failed experiments.
+The four scenes have already been explored, so this is not independent confirmation.
+[Controlled result, safety failure and reproduction](outputs/publication_readiness_2026_09/native_forecast_v1/conclusions.md).
+
+I have now completed the training-lineage repair for the intervention head:
+18 additional pair-excluded fits, 72,000 updates and twelve physically separated
+cost-training views. Their upstream predictors exclude both the row's own scene
+and the head's validation scene. All 5,484 fixed checkpoint-replay predictions
+match exactly, and all cost entries pass a separate arithmetic check. The twelve
+existing outer-held predictors are retained. This prepares honest cost-learning
+data; it does not yet establish a safer selector or independent calibration.
+[Completed training and limits](outputs/publication_readiness_2026_09/native_nested_v1/conclusions.md).
+
+The first cost-head comparison is now complete: twelve ridge and twenty-four
+small neural fits, using three seeds and clean nested training views. Penalizing
+harm underestimation reduces harmful interventions, but also gives up most of
+the forecast gain. With the fixed conservative rule, ordinary neural regression
+improves ADE by 1.29%; the asymmetric loss improves it by 0.34%. Neither protects
+every path that CV predicts exactly. The latter harms one such query in one
+seed, so I do not promote it or select only the other two seeds.
+
+This raised the next question: does the cost head rank safe opportunities better,
+or does it merely switch less often? All 36 heads replay, independent arithmetic
+agrees, and the negative safety result is retained. These are developmental
+results on explored source scenes, not a new deployable model or independent
+calibration. [Full comparison and failure analysis](outputs/publication_readiness_2026_09/native_gain_harm_v1/conclusions.md).
+
+The matched-intervention comparison is now complete. At the same 0.84% switching
+rate, asymmetric ratio ranking improves ADE by 0.34%, ordinary MSE ratio ranking
+by 0.43%, and MSE net-gain ranking by 1.19%. The asymmetric loss harms fewer
+exact-zero-CV outcomes, but sacrifices accuracy; every nontrivial control still
+fails strict protection. This separates the value of ranking from simply doing
+less. This motivated separating net-gain allocation from an explicit protected-risk
+target instead of treating a benefit/harm ratio as a safety certificate. These are fixed
+offline controls on explored sources, not online deployment or untouched tests.
+[Matched counts, paired contrasts and limits](outputs/publication_readiness_2026_09/native_matched_coverage_v1/conclusions.md).
+
+That protected-risk experiment is now complete: 24 matched neural heads and
+72,000 updates. The new guard retains 5.57% source ADE improvement, but still
+harms 25 zero-reference query/seed instances and degrades the positive-easy
+diagnostic by 7.16%. A simple past-stop veto does slightly better. The broader
+harm guard avoids these observed zero-reference harms by almost never switching;
+matching its capacity leaves only eight decisions. I do not count abstention or
+a high event AUROC as a successful safety mechanism. The next question is how to
+learn reliable harm estimates specifically where intervention is proposed, with
+clean calibration and enough event support. No new policy is deployed.
+[Protected-risk results and reproducible negative evidence](outputs/publication_readiness_2026_09/native_protected_risk_v1/conclusions.md).
+
+I then tested a more structured risk target. When CV is exactly correct, harm
+from replacing it is simply the known distance between the two forecasts. A
+48-fit feature/loss comparison uses that identity instead of asking a network
+to learn every rare harm magnitude from scratch. Cost MSE improves in every
+comparison with the previous direct head, but safe decision-making does not.
+Extra history-consistency features and the geometric loss add no practical
+selection gain. The useful control is simpler: the existing strict cost rule
+plus a past-stop veto retains 1.29% ADE improvement without observed harm to
+complete zero-reference queries across the three seeds. It still has unobserved
+future outcomes and no independent calibration, so I keep it as a research
+reference, not a new deployed model. Better risk regression alone is not the
+contribution I need to establish.
+[Geometric-risk results, simple control and limits](outputs/publication_readiness_2026_09/native_geometric_risk_v1/conclusions.md).
+
+Before testing joint decisions, I checked that the agents can actually be placed
+in the same scene. This caught 52 false identity links in a position-only assembly
+probe and 3,036 ambiguous neighbor slots. I rebuilt the links from source IDs and
+past observations. The resulting cache covers 175,756 forecast targets and keeps
+145,805 additional context rows explicit rather than pretending every visible
+agent has a neural prediction. Some context has too little history even for CV.
+This fixes an experimental prerequisite, not the model's accuracy or safety.
+It also confirms why observed protection is not a guarantee: the frozen control
+still selects incomplete or absent future outcomes.
+[Scene repair, coverage and limits](outputs/publication_readiness_2026_09/native_scene_context_v2/conclusions.md).
+
+That fixed joint comparison is now complete. At matched intervention counts and
+predicted-harm budgets, joint and unary-geometry decisions are identical across
+all three seeds. Only 88 scene/seed queries have a non-additive opportunity;
+exhaustive checking confirms that this is not a solver failure. The geometry
+proxy gets smaller than independent selection, but forecasting does not improve.
+I therefore keep joint selection as a negative control, not a claimed innovation.
+The simpler conservative reference still gives 1.29% developmental ADE gain,
+with unresolved missing outcomes and no independent safety calibration.
+[Full result and reproducible diagnosis](outputs/publication_readiness_2026_09/native_joint_controls_v1/conclusions.md).
+
+I next tested a smaller, explicit hypothesis: constrain predicted benefit and
+harm by the known disagreement between the frozen forecasts. All 36 matched
+cost-head fits are complete. The primary comparison improves source ADE gain by
+1.47 percentage points, but it still harms perfectly CV-predictable paths and
+fails easy preservation in one seed. At the same intervention count, its
+advantage is only 0.047 points. The bound alone is not a safety mechanism.
+
+A predeclared fraction-loss variant gives 2.44% ADE gain with no observed harm
+on complete zero-CV paths and a 0.56% improvement on the positive-easy diagnostic.
+This is a promising development tradeoff, not a new deployed model: incomplete
+selected outcomes remain unknown, conditional harm is still underestimated, and
+all four sites have informed model design. I am keeping the failed primary
+protection result alongside that favorable secondary result.
+[Matched cost heads, uncertainty and limits](outputs/publication_readiness_2026_09/bounded_cost_v1/conclusions.md).
+
+I also completed a matched native-loss run of the public EqMotion core: four
+source sites, three seeds, identical training rows, draws and update budgets.
+It improves ADE by 11.04% over CV, compared with 7.63% for my local Transformer.
+The paired difference is 3.41 percentage points, with a conditional site interval
+of [0.94, 6.07]. I therefore cannot claim that my Transformer is the stronger
+prediction architecture in this setting.
+
+EqMotion also increases positive-easy error by 35.25% and harms many paths that
+CV predicts exactly. That keeps the central research question open: a better
+average forecast still needs reliable intervention control. The first readout
+and complete checkpoint replay pass a separate arithmetic check; neither model
+is newly deployed.
+This fixed-head comparison is not reproduction of the author's best-of-20
+benchmark, and the explored scenes are not independent confirmation.
+[Strong comparator, failures and scope](outputs/publication_readiness_2026_09/native_eqmotion_v1/conclusions.md).
+
+I then transferred the existing cost heads to EqMotion without retraining or
+changing their thresholds. The fixed fraction-based rule retains 3.33% ADE
+improvement, but easy error rises 3.78%, above the 2% limit. Its small advantage
+over direct cost regression is not resolved by the scene interval. The heads
+underestimate switching harm in every site/seed view, and candidate-rollout
+features move outside the distribution on which those heads were trained.
+This is a failed transfer, not a safe model. My next step is to build properly
+cross-fitted EqMotion training predictions before learning its intervention
+costs; changing a threshold on these outcomes would not answer that question.
+[Frozen transfer, feature diagnosis and limits](outputs/publication_readiness_2026_09/cost_head_transfer_v1/conclusions.md).
+
+The eighteen pair-excluded EqMotion fits needed for that follow-up have now
+finished, taking 7.75 hours locally without reducing the registered budget.
+Their prediction caches pass the row-level cost and source-exclusion audit,
+with fixed-block checkpoint replay. The 36 predictor-specific cost-head fits are also complete,
+with the same thresholds and a comparison at common intervention counts.
+Refitting improves positive-easy error by 1.79% and retains 1.61% ADE gain over CV,
+but it does not beat the old transferred rule's 3.33% gain. The registered primary
+comparison therefore fails. On one scene it rejects high-benefit predictions
+because it overestimates their harm; on its own selected rows it still
+underestimates harm. This is a narrower protected development tradeoff, not a
+solved risk model or a new deployment.
+[Predictor-specific results and remaining failure](outputs/publication_readiness_2026_09/eqmotion_cost_refit_v1/conclusions.md).
+
+I checked whether that failure begins only on an unfamiliar scene. It does not:
+the fraction-based cost loss already understates benefit and overstates harm on
+high-disagreement fitting examples. Native-error training ranks those examples
+better but has failed protection elsewhere. I tested one fixed intermediate
+loss weighting across all twelve scene/seed combinations, keeping forecasts,
+sampling and thresholds unchanged. It repairs much of that tail-ranking error,
+but loses many modest low-risk opportunities in another scene. Strict-policy
+ADE gain falls from 1.61% to 1.10%, so the primary comparison fails again.
+Matching intervention counts shows a small ranking gain over native loss, but
+easy degradation is still 7.50% there. I do not promote that secondary result
+or relax the threshold to make the experiment pass. The next question is whether
+the remaining tradeoff reflects limited fitting capacity or incomplete
+optimization. That fixed comparison is now complete. Increasing the training
+budget has a larger effect than simply widening the head: the registered
+wide/long policy improves ADE by **3.73%** over CV, versus **1.61%** for the
+earlier protected fraction-loss control. The paired improvement is **2.12
+percentage points**, with a conditional scene interval of **[0.52, 4.53]**.
+All three seed aggregates preserve easy cases, and no complete zero-CV query
+is harmed. This is a real development gain, not a new deployment.
+
+There are important limits. Easy error still rises by **2.95% in deathCircle**,
+selected harm is underestimated, and missing future labels prevent a complete
+safety assessment. The old fraction control also had a smaller training budget,
+so I could not attribute the whole gain to the loss function. I have now
+completed the fair follow-up: 24 new native/fraction control fits with the
+same wider head, longer budget and training samples. The intermediate objective
+retains **3.73%** ADE gain, versus **3.07%** for native cost and **1.66%** for
+fraction cost. Its advantage over fraction is supported by the conditional
+scene interval, but its **0.66-point** advantage over native has an interval
+of **[-0.27, 2.19]**. The registered claim required both, so it has not passed.
+
+This result removes the budget mismatch without hiding the remaining failure.
+All 36 checkpoints replay exactly, and separate arithmetic confirms the scores.
+Selected harm is still underestimated under every objective; the deathCircle
+easy failure remains. I keep the candidate as developmental evidence, not a
+new deployment or proof that the proposed loss is generally superior.
+Independent calibration and final confirmation are still missing.
+
+I have also traced the remaining harm error on the same samples, not just each
+model's different selections. Global fitting estimates are usually conservative,
+but the model becomes optimistic on the rows it chooses to replace. This is
+visible even during fitting and gets worse on an excluded scene. I have now
+completed the fixed follow-up: twelve new heads put more fitting weight on that
+decision region, with the same model, budget and inference rule. ADE improvement
+rises from **3.73% to 4.10%**; the paired gain difference is **0.37 points**,
+with a conditional scene interval of **[0.17, 0.60]**.
+
+The accuracy gain is real within this development comparison, but the protection
+repair fails. Easy error still rises **2.93% in deathCircle** and **2.15% in gates**
+on seed average. The model fits the old selection region better but remains
+optimistic on its own new selections. At equal intervention counts, its accuracy
+is slightly worse than the previous head. I therefore do not deploy it or claim
+that weighting alone solves risk estimation. Independent calibration and final
+confirmation remain open requirements.
+
+I have now checked what an honest calibration split would require. Removing one
+site from the cost-head rows is insufficient: the predictors that generated the
+remaining targets still learned from that site. All 36 proposed inner reuse cases
+fail this check. A new refusal guard catches this before calibration reads. The
+existing outer-held fitting exclusion remains valid; these are different claims.
+A fully nested repair needs twelve new predictor fits and thirty-six cost heads,
+yet still offers one calibration site per policy. Independent scene support is
+the priority; a source rotation cannot be relabeled as independent safety evidence.
+[Calibration feasibility and remaining decisions](outputs/publication_readiness_2026_09/calibration_support_v1/conclusions.md).
+
+I am now checking independent data support before claiming that this protection
+transfers. A fresh audit of all 30 local TRAF annotation files finds unresolved
+box conventions, class identities and camera/site grouping; none is admitted
+to a new experiment. I also located DroneCrowd's separate annotation archive
+and its academic-use terms. Its release README explicitly says validation is
+sampled from test, so I will not treat those folders as independent calibration
+and confirmation. I have now pinned the five small official metadata files and
+checked all 112 clip IDs. The conversion code also shifts frame/agent indices
+and removes visibility information, so a derived MAT cannot stand in for a
+verified causal history. Those checks are implemented; original XML, camera
+motion and independent physical sites still need review. No new external score
+is reported from this intake work.
+[Metadata evidence, tested checks and remaining limits](outputs/publication_readiness_2026_09/dronecrowd_metadata_v1/conclusions.md).
+[Source audit and acquisition status](outputs/publication_readiness_2026_09/traf_intake_v1/conclusions.md).
+
+I also checked the annotation tool named in the DroneCrowd paper. One pinned
+VATIC exporter interpolates tracks before writing XML without the generated
+flag. This does not establish what happened in DroneCrowd's actual release, but
+it means an original XML is not automatically evidence of sensor-time causality.
+I keep offline annotated-position forecasting distinct from that stronger claim;
+the next intake check must trace the actual annotation producer, not just frames.
+[Source evidence and a tested dependency counterexample](outputs/publication_readiness_2026_09/annotation_export_provenance_v1/conclusions.md).
+
+[Conditional diagnosis](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conditional_diagnosis.md).
+[Registered fitting repair](outputs/publication_readiness_2026_09/conditional_cost_v1/registration.md).
+[Completed repair, negative safety result and verification](outputs/publication_readiness_2026_09/conditional_cost_v1/conclusions.md).
+[Training-versus-transfer diagnosis](outputs/publication_readiness_2026_09/eqmotion_cost_fit_forensics_v1/conclusions.md).
+[Fixed intermediate-loss result](outputs/publication_readiness_2026_09/tempered_cost_v1/conclusions.md).
+[Fixed capacity/duration design](outputs/publication_readiness_2026_09/cost_capacity_v1/registration.md).
+[Completed factorial, positive primary result and remaining failures](outputs/publication_readiness_2026_09/cost_capacity_v1/conclusions.md).
+[Equal-budget objective controls](outputs/publication_readiness_2026_09/cost_budget_matched_v1/registration.md).
+[Completed fair comparison and its limits](outputs/publication_readiness_2026_09/cost_budget_matched_v1/conclusions.md).
+
+I am prioritizing that focused accuracy-versus-harm question over expanding the
+model's scope. If the reference predicts a group exactly, I report absolute harm
+and do not manufacture a percentage by adding a denominator. I retain strict
+protection there rather than introduce a convenient pixel allowance. This is an
+empirical research criterion, not a guarantee under unseen distribution shift.
+[Research choice and its limits](outputs/publication_readiness_2026_09/native_nested_v1/research_choice.md).
+
+In the preceding cache-only readout, across four already explored SDD source
+sites, causal constant velocity remained the strongest fixed control. A
+future-informed per-query oracle has 28.63% ADE headroom, but the old neural
+predictions still lose on their original static-history subset (three-seed mean
+-5.38%). The oracle is not a model result, and that subset is not full-population
+neural coverage. This gives me a clearer next experiment without hiding the
+failed one. [Paired results and limitations](outputs/publication_readiness_2026_09/native_metric_v1/conclusions.md).
+
+The current paper direction is reliable baseline-relative intervention with
+support-aware fallback. Scene-level coupling remains a tested negative control,
+not an established contribution. A Transformer, JEPA encoder, cost head or
+triangle-inequality bound is not novel just because it is part of this system.
+Each component has to earn its place through matched comparisons and useful
+independent results. M3W remains the longer-term project, not a reason to make a
+broader claim than these experiments support.
+
+I also distinguish training windows from genuinely different situations. A recent
+[event-support audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md)
+maps 15,430 stationary-history windows to 1,457 annotation episodes. The 207
+larger-excursion windows come from only 47 scoped tracks. Nearly all already have
+moving neighbors, so missing neighbor slots do not explain that subset. The
+completed episode-balanced training comparison makes prediction substantially
+worse. It also reveals an important distinction: changing which windows are
+sampled changes the expected training objective, even with the same per-row loss.
+
+## Current Evidence
+
+I have also tightened the test of the proposed interaction mechanism. A joint
+policy can beat a simple selector just because it adds better single-agent
+geometry penalties, even when no true coupling is present. The new matched
+control retains those penalties and removes only the pairwise coupling. Its
+implementation passes exhaustive and real past-input checks, including a
+repaired numerical solver failure. This makes the comparison more informative;
+it does not establish a new forecasting gain.
+[Mechanism control and numerical evidence](outputs/publication_readiness_2026_09/interaction_controls_v1/conclusions.md).
+
+I have now completed that comparison for all 24 fixed Transformer/EqMotion
+seed, cost-head and policy combinations, without retraining or changing the
+evaluation rules. Joint versus geometry-aware independent selection gives
+21 identical, two slightly better and one slightly worse ADE results. None of
+the new controls preserves easy cases within 2%. The evidence does not support
+joint selection as an effective main contribution yet. These are already
+explored development recordings from one physical site, not an independent
+generalization test.
+[Complete comparison, including negative results](outputs/publication_readiness_2026_09/frozen_interaction_v1/conclusions.md).
+
+I then traced why all of those controls passed their predicted harm budget but
+failed easy preservation. Two problems remain: the cost heads often underpredict
+observed harm, and a small average absolute harm over the whole scene does not
+protect a small relative error on easy agents. In one fixed comparison, observed
+labels already prove that 529 of 970 queries exceed the realized budget. In
+another, queries that really are within budget still contribute 57.88% of easy
+harm. Missing selected outcomes remain unknown, not zero. This diagnosis keeps
+all 72 comparisons and changes no model or threshold; a replacement risk target
+still needs a registered experiment and independent calibration data.
+[Risk forensics and its limits](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/conclusions.md).
+
+The follow-up now locates that problem before cross-site transfer. I replayed
+all twelve frozen cost heads on their own fitting rows. Every head beats a
+constant on overall harm MSE, yet 23 of 24 fixed eligibility groups have negative
+realized mean gain despite predicting positive gain. Source-batch replay finds
+no ordering or scale mismatch in the checked samples. The current readout fits
+global costs better than it identifies reliable interventions; simply training
+longer or rescaling the overall mean is not an evidence-backed fix.
+[Fit diagnosis, including the favorable exception](outputs/publication_readiness_2026_09/cost_head_fit_forensics_v1/conclusions.md).
+
+I have checked that diagnosis against work on decision-focused learning and
+conditional calibration. Switching to a ranking loss is not, by itself, a new
+method. The unresolved question is whether costs are reliable for the actual
+scene-level intervention and its easy-case constraint. Four executable
+mathematical examples clarify why global fit, score calibration and a pooled
+risk budget cannot substitute for those checks. They are synthetic explanations,
+not new forecasting gains; the subsequent evaluation amendment is documented above.
+[Prior work, derivations and tested examples](outputs/publication_readiness_2026_09/conditional_decision_v1/prior_work_and_method_boundary.md).
+
+Before the next cost-head experiment, I checked whether the old OOF caches could
+supply a genuinely held-out validation fold. They cannot simply be split again:
+the predictors behind the remaining training rows have already seen that fold.
+All 18 reuse attempts fail this recursive check, even though the original OOF
+forecasts themselves are valid. I added a pre-fit check that rejects this
+shortcut and identifies which outer-held predictors remain reusable. The next
+head comparison needs nested producer exclusion, not just new selector weights.
+This is a validation-design finding, not a forecasting gain.
+[Verified reuse boundaries and the concrete repair](outputs/publication_readiness_2026_09/cost_validation_lineage_v1/conclusions.md).
+
+I also repaired a reproducibility gap: a completed ridge run could report a
+verified resume even after its OOF cache changed. The versioned entrypoint now
+checks the entire completion dependency chain. All six real frozen ridge heads
+match their earlier snapshots; the defect was reproduced and blocked using
+temporary synthetic training. Old weights, source hashes and scores stay intact.
+[Recovery behavior, verified assets and remaining limits](outputs/publication_readiness_2026_09/cost_completion_v2/repair_and_verification.md).
+
+The latest broader source audit changes my diagnosis of the current task. Across
+175,756 past-indexed queries, the old per-query normalization makes 6,864
+static-start windows account for 99.75% of complete-label CV error. The same
+windows account for only 0.67% in annotation pixels. A numerical scale floor is
+therefore making the overall score almost entirely a static-start test.
+Moving-history baseline-oracle headroom is 15.22%, but it falls to 0.038% in the
+full normalized aggregate. This is an evaluation-weighting issue, not a new model
+success. I retain the old metric and results alongside the adopted evaluation
+amendment. That audit itself did not train a model or authorize deployment.
+[Audit, raw checks and implications](outputs/publication_readiness_2026_09/source_population_v1/conclusions.md).
+
+The preceding source experiment asks whether image downsampling hides useful motion.
+I recovered all 25,300 past crops at native resolution, verified their exact
+alignment with the old inputs, and fitted 64 fixed probability probes across
+resolution and motion-window controls. Higher resolution improves measurement
+support, but does not make this readout predict larger future changes reliably.
+Training AUROC is about 0.79-0.80; the held-site average is about 0.48-0.49.
+I retain the small favorable ranking contrasts alongside the worse probability
+errors rather than treating them as a deployment result.
+[Full comparison](outputs/publication_readiness_2026_09/source_motion_resolution_v1/conclusions.md).
+
+The implementation runs, but the clean development experiments have **not yet
+established a deployable neural advantage or a submission-ready method**.
+
+| Question | What the completed evidence shows |
+| --- | --- |
+| Does the aggregate score represent ordinary motion well? | Not under the old normalization: 4.77% of complete windows contribute 99.75% of CV error. The new native-coordinate amendment is explicit; it does not turn old results into independent evidence or model success. |
+| Do neural trajectory models beat strong motion baselines? | The fixed three-seed Transformer and K=1 EqMotion comparisons did not produce safe positive gains on the primary task. |
+| Does longer training help? | Learning-rate decay produces a small source-training gain, but it does not transfer to the excluded source scene. |
+| Does the tested RGB representation help? | The matched source comparison is negative. More input modalities are not automatically more predictive information. |
+| Does cost-aware fallback help? | It reduces neural harm, but the fixed source readout still loses 1.246% to stationary CV. The unprotected control loses 1.744%. |
+| Does satisfying a predicted global harm budget protect easy agents? | No. Frozen-risk forensics finds both observed cost underprediction and a mismatch between global absolute harm and conditional relative easy degradation. All 72 controls still fail the easy requirement. |
+| Do scene-excluded candidate forecasts remain useful? | Twelve fresh fits all lose on their excluded site; equal-site gain is -5.016%. Fixed candidate/CV oracle headroom is below 0.53%, so another gate alone is not the next repair. |
+| Does removing the static-target loss repair them? | No. Twelve matched new fits increase oracle headroom to 3.760%, but actual gain is -98.719% and static-target harm is much larger. |
+| Do raw annotation checks and past-box features explain the failure? | Small changes are common, but >10px queries contribute 53.25% of baseline error and still lose. Forty-eight fixed probability probes find no stable added-box benefit. |
+| Do pretrained image features repair source transfer? | No. Thirty-six matched trajectory heads complete 360,000 updates. Geometry/current-image/eight-frame gains are -0.070%/-1.908%/-6.102%; all held fits are negative. |
+| Does removing shared appearance repair the temporal model? | It reduces harm, but does not beat the baseline. Twenty-four fresh heads give -0.762% for centered input and -1.756% with RMS normalization; all held fits remain negative. |
+| Does balancing exposure across annotation episodes help? | No. Twenty-four fresh heads complete 240,000 updates, but geometry and centered-image gains fall to -37.327% and -54.992%. The sampler changes the effective training objective and greatly increases static-target harm. |
+| Does exact importance correction fix that objective shift? | It removes most of the added harm, but not the prediction gap. Another 24 heads/240,000 updates give -0.032% for geometry and -0.275% for centered images; all held fits remain negative. |
+| Is gradient clipping sending training in the wrong direction? | The fixed-checkpoint training audit does not support a large direction reversal. Train-scale output conditioning removes logged clipping and most jitter, but 24 new heads still lose to CV: -0.000251%/-0.001342%. |
+| Does explicit observed image motion repair the remaining gap? | No. Another 24 heads complete 240,000 updates; quality-only/motion gains are -0.000535%/-0.000840%. Sixteen probability probes show a weak larger-excursion ranking gain but worse probability error. No new deployment. |
+| Does native resolution or a smaller motion window help? | Not with this fixed regional readout. All 64 probability probes complete; larger-excursion Brier worsens when motion is added in all four measurement variants. None beats the training-prevalence reference on that label at any held site. |
+| Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
+| Is scene-level joint intervention validated? | Exact-count and geometry-aware independent controls now isolate the proposed coupling more carefully. Engineering checks pass, but predictive advantage and independent risk calibration remain unproved. |
+
+The latest [fixed deferral readout](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/conclusions.md)
+retains all six trained endpoints and three matched controls. All three
+cost-supervised seeds lose to CV; the conditional recording interval is
+[-4.430%, -0.567%]. It concerns seven recordings of **one previously explored
+site**, not independent confirmation. Exact replay verifies reproducibility,
+not forecasting quality. Complete rejection returns the baseline and is not
+a new prediction success.
+
+The latest [candidate cross-fit experiment](outputs/publication_readiness_2026_09/source_crossfit_v1/conclusions.md)
+completed all 120,000 updates across four internal site folds and three seeds.
+Equal-site gain is -5.016%, conditional interval [-8.397%, -2.488%]. Most excess
+error comes from predicted movement on stationary targets, but the remaining
+moving-target predictions also lose on average. The experiment isolates producer
+exposure, not the causal reason for the transfer gap. Bookstore and the main
+evaluation remain unscored; no new model is deployed.
+
+The [matched loss intervention](outputs/publication_readiness_2026_09/source_motion_candidate_v1/conclusions.md)
+has now completed another 120,000 updates. Removing static-target gradients
+makes the forecast less conservative, but it also worsens moving-target error.
+Rotating its predictions retains most of the oracle headroom, so that headroom
+alone is not evidence of accurate motion direction or usable neural dynamics.
+All twelve models replay exactly; the scientific result is still negative.
+
+The completed [motion-quality diagnostic](outputs/publication_readiness_2026_09/source_motion_quality_v1/conclusions.md)
+aligns all 15,430 source queries to raw annotations. It distinguishes tiny
+coordinate changes from larger excursions without deleting either group.
+Past-box features do not repair cross-site motion probabilities. Interpolation
+controls after the query also occur in 15,316 histories, reinforcing the
+offline-annotation limitation rather than establishing real-time perception.
+
+The completed [pretrained temporal comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/conclusions.md)
+adds frozen visual features without changing the cohort, loss or sampling budget.
+Appearance improves training fit slightly but worsens excluded-scene prediction.
+Eight-frame appearance loses another 4.194 percentage points relative to current
+appearance. All 36 heads replay exactly; this confirms the negative result, not
+a deployable visual dynamics contribution.
+
+I then checked whether the temporal model was mostly fitting shared appearance.
+The input audit found correctly aligned, non-identical historical frames, but
+little within-window variation in the frozen features. The
+[registered centering comparison](outputs/publication_readiness_2026_09/source_temporal_centered_v1/conclusions.md)
+completed all 24 heads and 240,000 updates. Centering reduces the sequence model's
+excess forecast error over CV from 6.102% to 0.762%; normalizing the variation
+still increases error by 1.756% over CV.
+Both remain worse than geometry alone. These are useful negative controls, not a
+new deployable model. The remaining question is whether the observed histories
+provide enough transferable information about independent state-change events.
+
+The [episode-exposure experiment](outputs/publication_readiness_2026_09/source_episode_sampler_v1/conclusions.md)
+keeps those inputs and all evaluation rows, but samples annotation episodes
+equally during training. All 24 new held-site fits are negative. A
+[post-hoc diagnosis](outputs/publication_readiness_2026_09/source_episode_sampler_v1/failure_analysis.md)
+shows why this is not simply a training-runtime problem: every head improves
+its reweighted training risk while worsening the original unweighted risk.
+The sampled proportion of future-changing labels rises from 38.62-47.49% to
+61.71-73.54%. Future labels are used only to describe this shift, never to build
+the sampling groups or inference inputs. Exact replay confirms the failure;
+it does not rescue the model.
+
+I then ran a [matched importance-correction experiment](outputs/publication_readiness_2026_09/source_importance_sampling_v1/conclusions.md)
+with the same episode draws and a loss weight that restores the original
+expected risk. Geometry and centered-image excess errors fall to 0.032% and
+0.275% over CV. This identifies and repairs the large sampling-induced harm,
+but it does not create a useful neural candidate: all 24 new held fits still
+lose, and adding these visual features still hurts. The distinction between
+repairing training and demonstrating a prediction contribution matters here.
+
+## Evidence and Reproduction
+
+The detailed record is kept separately so that the project overview remains
+readable:
+
+- [Results ledger](README_RESULTS.md): complete experiment outcomes, failures and current evidence boundaries.
+- [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
+- [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
+- [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_importance_sampling_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
+
+The current observation contract uses supplied historical annotations. Some
+annotations may have been interpolated using later controls; past-indexed
+access therefore does not prove strict sensor-as-of availability. Future
+targets are kept out of inference features, and previously explored scenes
+cannot become independent tests by renaming their roles.
+
+## What The System Looks At
+
+The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:
+
+- recent agent history;
+- speed, acceleration, heading, curvature, and stop/go behavior;
+- neighbor density and interaction signals;
+- train-only scene or goal context when that context is legally available;
+- causal baseline rollouts;
+- dataset, scene, horizon, and domain metadata;
+- risk heads for failure, gain, harm, and fallback decisions.
+
+I also maintain a neural track with Transformer dynamics, JEPA-style representation learning, hybrid heads, waypoint prediction, and protected residual policies. Guarded selection, causal history windows, full-waypoint structure, domain-aware routing, and safety floors are the most promising routes in the historical experiments. Their external gains remain exploratory until the clean evaluation is complete; neither the selector nor the neural branch has earned a new deployment claim from this audit.
+
+## What This Repo Is For
+
+This repository is a research record. The most important rule in the project is that a result has to survive the boring checks: no future leakage, no test endpoint goals, no central-velocity shortcuts, no easy-case damage hidden inside aggregate gains, and no metric claims without calibration.
+
+For a quick orientation:
+
+| File or directory | What to read it for |
+| --- | --- |
+| [`README_RESULTS.md`](README_RESULTS.md) | Detailed results ledger and current evidence boundaries. |
+| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | Chinese long-form summary of routes tried, failures, causes, and successes. |
+| [`research_state.json`](research_state.json) | Machine-readable snapshot of the current project state. |
+| `outputs/m3w_neural_v1/` | Neural world-model reports and model-card style summaries. |
+| `outputs/stage42_long_research/` | Cross-domain safety, replay, full-waypoint, and paper-claim evidence. |
+| `outputs/stage43_latent_state/` | Latent-state, graph/history/context, and reviewer-style validation reports. |
+
+Large datasets, caches, checkpoints, videos, images, third-party data, and local virtual environments are intentionally kept out of git.
+
+## What I Am Not Claiming
+
+M3W is not a true 3D world model yet. It is not a foundation world model. SDD results are pixel-space unless calibration is verified. External results are dataset-local unless their geometry is verified. `t+50` and `t+100` are raw annotation-frame horizons, not seconds. Self-audited or inferred labels are not human gold labels.
+
+Stage5C latent generative execution has not been enabled. SMC has not been enabled.
+
+The current claim is narrower: this repo contains a protected 2.5D multi-agent world-state research system and an active neural dynamics track. Its historical external evaluation has identified independence failures that I am repairing before making new generalization or deployment claims. This external audit does not establish the status of every SDD experiment.
+
+## Running Locally
+
+On Apple Silicon, training should use the arm64 PyTorch environment:
+
+```bash
+.venv-pytorch/bin/python
+```
+
+Focused checks for the new data and evaluation path:
+
+```bash
+.venv-pytorch/bin/python -m pytest tests/test_m3w_deferral_development.py -q
+.venv-pytorch/bin/python -m pytest tests/test_m3w_cost_sensitive_deferral.py tests/test_m3w_matched_coverage.py tests/test_m3w_citr_recordings.py tests/test_m3w_confirmation_evaluation.py tests/test_m3w_risk_calibration.py tests/test_m3w_eqmotion_adapter.py tests/test_m3w_development_evaluation.py tests/test_m3w_supervised_intervention.py tests/test_m3w_external_source_audit.py tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py
+```
+
+The legacy full suite (`python -m pytest tests`) includes integration training and can rewrite reports in the working directory. It is not yet an isolated, read-only smoke test; preserve existing experiment outputs before running it. The [local/CREATE runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md) records the verified environment and recovery checks.
+
+Training scripts are written around checkpointing, heartbeat logs, resume support, CPU/MPS-safe execution, and single-process dataloading.
+
+## Next Step
+
+Improve candidate utility before fitting another risk head. Exact importance
+correction and output conditioning are now tested. They repair objective shift
+and reduce numerical jitter, but the models still have almost no useful
+candidate/CV oracle headroom. I will not turn that into another threshold sweep.
+The [completed comparison](outputs/publication_readiness_2026_09/source_conditioned_readout_v1/conclusions.md)
+makes the distinction clear: better optimization does not necessarily produce
+better dynamics. The next question is whether raw past visual motion contains
+predictive cues that frozen image pooling loses, after accounting for crop
+movement and occlusion. That input investigation has not yet run. More weight
+on rare windows cannot create independent events or missing cues.
+
+The loss, annotation, visual-feature, temporal-centering and episode-sampling
+controls remain available, including their negative results. No policy or test
+threshold has been changed to rescue them. OOF labels also do not automatically
+permit a second-level validation split: every upstream producer must exclude
+the risk head's validation scene.
+[Provenance boundary](outputs/publication_readiness_2026_09/source_crossfit_v1/method_and_limits.md).
+
+The larger goal is unchanged: demonstrate useful neural dynamics, compare
+independent and joint intervention at matched coverage, preserve easy cases,
+and obtain genuinely independent calibration and confirmation. More overlapping
+windows cannot substitute for more independent scenes. I am working toward
+CVPR 2027, not claiming that implementation progress guarantees a publishable
+result or acceptance.
+
+When a route fails, I keep the evidence. A successful method must show where
+it improves the baseline, where it does not, and how the result can be reproduced.
