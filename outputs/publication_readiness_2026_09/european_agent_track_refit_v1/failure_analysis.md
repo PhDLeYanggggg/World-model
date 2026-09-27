@@ -61,7 +61,7 @@ generally stuck at its cap. Relaxing the bound is not justified by these numbers
 especially while easy error is already unacceptable. These are descriptive
 ratios averaged across dependent producer/seed views, not additive error shares.
 
-## A Separate Unit-Consistency Defect
+## A Separate Coordinate-Unit Sensitivity
 
 All72 input-rescaling cases fail approximate scale equivariance after restoring
 output units. Baselines themselves pass. No future labels are read. For the

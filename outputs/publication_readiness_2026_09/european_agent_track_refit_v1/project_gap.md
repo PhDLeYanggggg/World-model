@@ -32,6 +32,12 @@ deployable: easy performance remains materially worse than CV.
    public strong baselines and contribution ablations. Current source-only
    bootstrap cannot substitute for that chain.
 
+In particular, the gain does not yet isolate neighbor interaction from the
+different ego encoder and temporal pooling; a matched retrained no-neighbor
+control remains necessary. No new image/goal or JEPA downstream contribution
+was established. These gaps matter to the multimodal world-model claim even
+if a trajectory forecaster's exploratory screen passes.
+
 The next candidate lives in `src/world_model/m3w_dimensionless_correction.py`.
 No current checkpoint, policy, risk budget or evaluation rule is changed by
 implementing it. A matching-geometry comparison tests the output parameterization,

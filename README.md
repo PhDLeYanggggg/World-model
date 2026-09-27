@@ -19,7 +19,10 @@ interval still crosses zero. [Results](outputs/publication_readiness_2026_09/eur
 This passes a predictor-development screen, not a deployment gate. Easy error
 is still **13.08% worse than CV**, and the comparison with the earlier
 complete-neighbor neural model remains uncertain. Independent outcomes stay
-closed. Predictions were frozen before scoring; full replay is in progress.
+closed. Predictions were frozen before scoring. All nine prediction pairs and
+576 scoring views now replay exactly; 79 tests in 16 scoped files pass. Reports,
+figures and diagnostics reproduce exactly. These checks verify the experiment,
+not deployment safety or independent generalization.
 
 The diagnosis also found coordinate-unit sensitivity in the bounded correction
 wrapper. A separate dimensionless-fraction candidate passes structural tests
