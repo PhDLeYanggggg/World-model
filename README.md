@@ -37,6 +37,11 @@ Independent selection, calibration and confirmation remain closed. The
 [results ledger](README_RESULTS.md) records the current execution state and
 links to the complete evidence, including negative results.
 
+Final verification reproduces all 864 fresh auxiliary predictions, 432
+magnitude fits and 144 held readouts exactly. Reports and the figure match
+byte-for-byte; 100 tests in 21 scoped files pass. The full historical suite
+was not rerun. This establishes repeatability, not passed scientific gates.
+
 **Earlier diagnosis:** removing conflicting auxiliary gradients is not a
 supported repair yet. I completed 17,280 isolated AdamW updates from 432 frozen
 models under a [fixed protocol](outputs/publication_readiness_2026_09/european_aux_gradient_v1/protocol.md).

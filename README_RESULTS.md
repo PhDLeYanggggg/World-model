@@ -47,12 +47,20 @@ intervals; vs scaled shuffled it has1/2/3. All comparisons remain reported.
 Positive-envelope AUROC still improves in5/6 full-input comparisons against
 each matched scaled control, which supports a narrower ranking signal only.
 Three seeds and3,000 four-locality resamples are descriptive source-development
-evidence. No model is promoted; independent roles stay closed. Exact replay
-and scoped tests are being verified separately from the scientific result.
+evidence. No model is promoted; independent roles stay closed.
+
+Final verification passes: all 144 reference lineages, 864 auxiliary checkpoint
+predictions, 432 magnitude fits and 144 outer readouts replay exactly. All 864
+raw-control component-MSE comparisons match the parent experiment. Reports,
+diagnostics and the figure reproduce byte-for-byte. 100 tests in 21 scoped files
+pass; the full legacy suite was not run. The verification seal binds 24 public
+artifacts, 30 source files and 1 local detailed metric file. These checks do
+not change the failed scientific gates or establish independent confirmation.
 
 [Conclusions](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/conclusions.md),
 [all intervals](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/results.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/verification.json),
 [next discriminating question](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/project_gap.md).
 
 ## Auxiliary Prior Repair (2026-09-27, No Model Promotion)
