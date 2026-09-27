@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Mass Readout Study (2026-09-27, Registered)
+## Cost-Mass Readout Study (2026-09-27, Real Pilot Complete)
 
 I am testing a narrower explanation for the failed risk heads: whether an
 origin-only squared-error fit and its nested clipping reduce predicted harm
@@ -21,6 +21,13 @@ CREATE inspected read-only; no remote job was submitted or changed. Predictions
 will be frozen and committed before held-source scoring. Independent selection,
 reserved calibration and confirmation remain closed. Deployment is unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_cost_mass_v1/protocol.md).
+
+The first real-data view completed all three readouts on 9,019 supported
+fitting rows in 15.69 seconds after ancestry checks. All six moment constraints
+matched within numerical tolerance. Its cost-only easy-harm mass ratio changed
+from 0.500 (raw) or 0.159 (L2) to 1.000, but fitting MSE increased from 0.02155
+(L2) to 0.02224. This is a fitting diagnostic, not held-scene success. The
+full fixed experiment proceeds unchanged; this unfavorable result is retained.
 
 ## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
 
