@@ -19,6 +19,13 @@ matched. The real paired pilot passed and both arms are resuming to the full
 below; it does not grant independent calibration or open confirmation data.
 [Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
 
+Before readout I found a limitation in the registered primary: ten parent
+views have zero interventions, which makes their selected-risk ratios
+undefined under the matched-count design. The primary cannot pass on its full
+roster. I will retain that failure and report the predeclared secondary
+comparisons without promoting them to a replacement primary.
+[Pre-readout disclosure](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/primary_feasibility_addendum.md).
+
 **Latest experiment:** choosing where to intervene jointly improves accuracy,
 but does not yet control harm. I kept every predictor fixed and allowed exactly
 the same number of interventions in each current query. Utility-aware allocation

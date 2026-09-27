@@ -25,6 +25,12 @@ Both arms drew exactly 20,816 known rows in 3,200 queries; unknown draws 0.
 The pilot's paired checkpoints occupy 1,139,964 bytes. A threefold extrapolation
 for 108 pairs is about 369 MB, within current free space above the 10 GiB reserve.
 Full 216-head training has started with resume; the pilot updates are included.
+Pre-readout feasibility check: ten parent independent views have zero actions.
+Both count-matched ranks inherit zero actions, so the registered full-roster
+selected-risk primary is structurally incomplete. This design error was caught
+during fitting, not by reading new outcomes. No primary replacement, roster
+exclusion or zero imputation is allowed. Predeclared secondary results will be
+reported as secondary development evidence only.
 [Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
 
 ## Frozen Query Utility Allocation (2026-09-27, Verified Accuracy Gain, Risk Failed)

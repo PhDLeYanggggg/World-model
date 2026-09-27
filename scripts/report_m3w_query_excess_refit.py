@@ -27,6 +27,7 @@ def main():
         '108 paired groups, 216 new heads, 432,000 updates. Twelve opened development localities; three forecasting seeds.',
         'Independent selection/calibration/confirmation remain closed. No outcome-selected checkpoints or thresholds.','',
         '## Registered Primary','',
+        'Pre-readout disclosure: ten zero-action parent views force undefined selected-risk ratios in both matched-count arms. The full-roster primary is structurally incomplete, not a successful primary test. See primary_feasibility_addendum.md.',
         'Query versus pointwise ranking uses the same frozen-parent count in every current query. These rank arms are diagnostics, not risk-certified policies.',
         'Selected positive-harm reduction (percentage points): **'+ci(d['paired']['query_rank_vs_pointwise_rank']['harm_reduction_pp'])+'**.',
         'Equal-count ADE gain (%): **'+ci(d['paired']['query_rank_vs_pointwise_rank']['ADE_gain_percent'])+'**.','',
@@ -48,6 +49,7 @@ def main():
         lines.append('| '+p+' | '+' | '.join(ci(m[k]) for k in ('pointwise_all_MSE','pointwise_easy_MSE','query_all_MSE','query_easy_MSE','singleton_fraction'))+' |')
     lines+=['','Both objectives are evaluated on both losses. Aggregate MSE is algebraically no larger than individual MSE on a fixed model; that inequality is not a learned improvement. Compare models within the same metric.','',
         '## Training and Gates','',*[f'- {a}: {v}' for a,v in totals.items()],'',*[f'- {k}: {v}' for k,v in d['gates'].items()],
+        '','Training-query totals sum repeated fitting-query occurrences across heads; they are not independent queries or independent data-source counts.',
         '','The four outputs are signed-risk score bases, not identified calibrated moments. Query means are supervised on known labels only, while all causal rows remain in inference.',
         'Unknown outcomes stay unknown; incomplete fixed-roster risk summaries do not become zero risk.',
         'Three thousand locality-bootstrap draws follow averaging of dependent producer/fit/seed views. No IID-window or independent-confirmation claim.',
