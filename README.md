@@ -22,8 +22,10 @@ gain in total-risk prediction does not offset the easy-harm failure. I am
 keeping deployment unchanged and stopping this cap/readout sweep. The next
 question concerns causal observation quality and useful event support.
 This is a completed development analysis, not new neural training or an
-independent trajectory result. Full replay is in progress; the
-[results ledger](README_RESULTS.md) records its scope and evidence.
+independent trajectory result. All 1,728 recovered vectors and 432 scoring
+views replay exactly; reports and the figure are byte-reproducible. All 171
+tests in 34 scoped files pass. These checks do not reverse the failed
+scientific screens. The [results ledger](README_RESULTS.md) records the evidence.
 
 **Previous context result:** adding ordered motion and neighbor history has not repaired
 the expected-risk model. I completed

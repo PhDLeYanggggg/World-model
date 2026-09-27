@@ -16,7 +16,7 @@ Their windows and assignments must not be counted as independent experiments.
 
 ## Data and Inputs
 Eight observed and twelve requested future annotation samples, raw frame-ID
-stride12; image detector-box pixels. The interval is query-84 to query+144,
+stride 12; image detector-box pixels. The interval is query-84 to query+144,
 not verified seconds. Future labels are allowed only for supervised targets
 and retrospective evaluation. Missing paired targets remain missing.
 
@@ -36,7 +36,7 @@ do not establish the annotations' sensor-time availability or an online
 perception guarantee.
 
 ## Model Intervention
-Recover 1728 unprojected scalar score vectors from fixed ridge models. Compare
+Recover 1,728 unprojected scalar score vectors from fixed ridge models. Compare
 four predefined output projections for every input arm. No weights, thresholds,
 ridge penalties or model choices are fitted or selected this turn. Signed
 scores are an algebra diagnostic; nonnegative uncapped scores can exceed the
@@ -53,6 +53,9 @@ The main outcome is expected easy-harm MSE, with tail-mass capture,
 log-coverage and all-harm MSE guards. It is not t50, trajectory ADE/FDE,
 easy-case trajectory degradation or real physical harm. Recovered scores
 are frozen before projection scoring, but this is still development analysis.
+Cost contrasts use finite paired targets and a positive causal envelope,
+exactly as in the parent screen. Unknown targets are not recoded as zero;
+these supported-row results do not establish risk for unobserved outcomes.
 
 The paired bootstrap uses four locality-level values per assignment after
 averaging outer-context and seed replicas. Six assignments overlap, intervals

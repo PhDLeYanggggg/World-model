@@ -8,8 +8,8 @@
 - No refitting, threshold search or independent-role access.
 - Per-view hashes and heartbeat/PID log retained in the ignored private directory.
 - Native arm64, four threads, one interop thread, zero loader workers.
-- At least10GiB disk reserve; completed receipts support non-destructive continuation.
-- Three cached training seeds and3000 paired four-locality bootstrap draws.
+- At least 10GiB disk reserve; completed receipts support non-destructive continuation.
+- Three cached training seeds and 3,000 paired four-locality bootstrap draws.
 - Negative and missing-support comparisons retained; no favorable arm promotion.
 - Projection differences checked by a rowwise squared-error identity.
 - Synthetic counterexample separates realized-event ceilings from expected-mean bias.

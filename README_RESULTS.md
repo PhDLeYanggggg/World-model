@@ -13,38 +13,45 @@ arms retain matched frozen-cap, nonnegative, causal-envelope and nested coupled
 outputs. The signed score is an algebra diagnostic only. All 432 views keep
 their existing fitting-only exclusions and independent roles remain closed.
 
-Registration efa546f3 preceded a15.30s local pilot. All1728 unprojected score
-vectors across432 inner views are now hash-bound; the original clipped
-predictions match exactly. Recovery took313s between heartbeat start/end,
+Registration efa546f3 preceded a 15.30-second local pilot. All 1,728 unprojected score
+vectors across 432 inner views are now hash-bound; the original clipped
+predictions match exactly. Recovery took 313 seconds between heartbeat start/end,
 excluding ancestry preflight. No refitting occurred. Eleven new tests and
 ten parent-context tests pass. CREATE was checked read-only; no job was
-submitted or modified. Freeze dff8cf9e precedes the now-complete432-view
-scoring, which took334s between heartbeat start/end.
+submitted or modified. Freeze dff8cf9e precedes the now-complete 432-view
+scoring, which took 334 seconds between heartbeat start/end.
 
-For full history-neighbor, relaxing the cap has0 positive /5 negative /1
-overlapping primary intervals, with point gains-11.82% to-0.20%. Under the
-same relaxed constraint, context versus score-only has2/3/1; versus old
-summaries0/2/4; versus history alone1/3/2. Motion-only versus summaries has
-0/6/0, retaining its worst point-163.83%. No favorable assignment is selected.
+For full history-neighbor, relaxing the cap has 0 positive / 5 negative / 1
+overlapping primary intervals, with point gains -11.82% to -0.20%. Under the
+same relaxed constraint, context versus score-only has 2/3/1; versus old
+summaries 0/2/4; versus history alone 1/3/2. Motion-only versus summaries has
+0/6/0, retaining its worst point -163.83%. No favorable assignment is selected.
 
 Raising all-harm to preserve nested output ordering improves all-harm MSE in
 four full and five motion-only intervals versus the capped version. This small
-secondary signal does not pass the primary/context/tail requirements. In141
-of216 dependent full history-neighbor views, event-label error improves but
+secondary signal does not pass the primary/context/tail requirements. In 141
+of 216 dependent full history-neighbor views, event-label error improves but
 zero easy-harm label costs outweigh it. Zero easy-harm is not synonymous with
 an easy agent. These are expected-cost errors, not trajectory gains.
 
-All1728 exact error-decomposition identities pass, maximum discrepancy3.31e-13.
+All 1,728 error-decomposition checks pass, maximum discrepancy 3.31e-13.
 The large prior label-aware ceiling floor did not prove a biased predicted
 mean. The direct counterfactual instead supports retaining the constraint for
 these fixed scores. All scientific screens fail; stop cap/temporal readout
 sweeps and investigate observation quality and event support. No deployment
-changes or independent-role access. Full numerical replay is in progress.
+changes or independent-role access. Full replay reproduces all 1,728 recovered
+vectors and 432 scoring views exactly. Reports, the figure, absolute costs
+and mechanism counts match byte-for-byte. All 171 tests in 34 scoped files
+pass. The seal binds 19 public artifacts, 42 source files, one private detailed
+metric file and six verified log receipts. The full historical suite and a
+cold rebuild from downloaded raw data were not run. This is reproducibility,
+not independent confirmation or a scientific gate pass.
 No metric/seconds or physical-safety claim. Stage5C and SMC remain off.
 [Conclusions](outputs/publication_readiness_2026_09/european_cap_attribution_v1/conclusions.md),
 [all contrasts](outputs/publication_readiness_2026_09/european_cap_attribution_v1/results.md),
 [absolute costs](outputs/publication_readiness_2026_09/european_cap_attribution_v1/absolute_costs.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cap_attribution_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_cap_attribution_v1/verification.json),
 [next boundary](outputs/publication_readiness_2026_09/european_cap_attribution_v1/project_gap.md).
 
 ## Temporal Context Screen (2026-09-27, Scientific Screens Failed)
