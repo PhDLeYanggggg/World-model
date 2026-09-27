@@ -18,6 +18,10 @@ and resumed into the nine fixed endpoints. Reporting and the observation-only
 unit probe are fixed before comparative outcome scoring. No gain is claimed yet.
 Independent selection, calibration and confirmation stay closed.
 [Protocol](outputs/publication_readiness_2026_09/european_dimensionless_refit_v1/protocol.md).
+An input-only check finds 317,587/318,969 histories support all declared
+rescaling factors without crossing the inherited conditioning clamp; 700
+have a strictly active clamp in their original units. No training/scoring rows
+were removed. This is scope evidence, not forecast accuracy.
 
 ## Agent-Track Topology Refit (2026-09-27, Modest Source Gain)
 
