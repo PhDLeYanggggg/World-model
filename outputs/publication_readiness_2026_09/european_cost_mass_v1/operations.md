@@ -17,6 +17,7 @@ are verified before reuse. Partial unsealed outputs are recomputed. Preserve
 .venv-pytorch/bin/python scripts/run_m3w_european_cost_mass.py --phase evaluate
 .venv-pytorch/bin/python scripts/report_m3w_european_cost_mass_native.py
 .venv-pytorch/bin/python scripts/plot_m3w_european_cost_mass.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_european_cost_mass.py
 .venv-pytorch/bin/python scripts/verify_m3w_european_cost_mass.py
 ```
 

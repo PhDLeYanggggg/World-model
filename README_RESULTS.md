@@ -5,40 +5,45 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Mass Readout Study (2026-09-27, Predictions Frozen)
+## Cost-Mass Readout Study (2026-09-27, Scientific Screens Failed)
 
-I am testing a narrower explanation for the failed risk heads: whether an
-origin-only squared-error fit and its nested clipping reduce predicted harm
-mass even on honest fitting-only OOF records. The new control matches the two
-training harm moments under the same projection, using exactly two bounded
-slopes. It does not change the primary expected easy-harm MSE or its guards.
+I completed 432 scalar moment-matching fits across 144 source-held views.
+The two slopes preserve the original nested envelope and use honest fitting
+OOF records. Raw and L2 controls are hash-verified cached predictions, not
+fresh neural training. Registration cc1da80e and prediction freeze b9cdd936
+preceded held-source scoring. Three seeds and 3,000 four-locality resamples
+retain all six overlapping assignments and both forecast families.
 
-The fixed experiment has 432 scalar fits across 144 source-held views, with
-three seeds and 3,000 locality-level bootstrap draws. Existing neural heads
-and raw/L2 outputs are hash-verified controls, not fresh neural training.
-Twenty-two targeted tests pass. The parent evidence seal was rechecked and
-CREATE inspected read-only; no remote job was submitted or changed. Predictions
-will be frozen and committed before held-source scoring. Independent selection,
-reserved calibration and confirmation remain closed. Deployment is unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_cost_mass_v1/protocol.md).
+Full-input cost-only mass versus raw has 0 positive, 3 negative and 3
+overlapping primary intervals; versus L2 it has 0/4/2. Coverage-log error
+improves in four comparisons against L2, but top10 capture worsens in one and
+all-harm MSE in two. True auxiliary versus cost-only has 1/1/4 primary intervals;
+versus shuffled it has 0/1/5. These secondary ranking or coverage observations
+cannot substitute for failed expected easy-harm MSE and protection gates.
 
-The first real-data view completed all three readouts on 9,019 supported
-fitting rows in 15.69 seconds after ancestry checks. All six moment constraints
-matched within numerical tolerance. Its cost-only easy-harm mass ratio changed
-from 0.500 (raw) or 0.159 (L2) to 1.000, but fitting MSE increased from 0.02155
-(L2) to 0.02224. This is a fitting diagnostic, not held-scene success. The
-full fixed experiment proceeds unchanged; this unfavorable result is retained.
+The fitting discrepancy is already present before outer transport. Cost-only
+L2 improves MSE but worsens log-mass error in 60/72 full-input views. Median
+harm ratios are 0.551 raw, 0.199 before L2 projection, 0.118 after projection
+and 1.000 with mass matching. The last median is not a guarantee: 99 of 864
+moment constraints hit the fixed bound without matching, all for easy harm.
+Only 333/432 readouts match both moments; full cost-only matches 59/72.
 
-Full fitting has now completed432 readouts and144 frozen source-held views.
-The fitting heartbeat span is404 seconds, excluding ancestry preflight. Of864
-moment constraints,765 match and99 are infeasible at the fixed slope bound8;
-333/432 readouts match both moments. Bound failures remain included. No held
-scoring has run yet, and these fitting equalities are not calibration guarantees.
+All 2,592 direct MSE checks pass and prior raw/L2 metrics match exactly.
+Fitting/scoring heartbeat spans are 404/264 seconds, excluding ancestry
+preflight. CREATE was inspected read-only, with no job submitted or changed.
+A NumPy diagnostic-count JSON error was repaired without changing frozen
+scientific code or predictions. An 864-row absolute-cost companion retains
+the large-error scenes rather than relying on percentages. Six figures retain
+all primary contrasts and guards. Exact replay is running; the full legacy
+test suite has not been run.
 
-Held-source scoring is now running. A diagnostic JSON count-type error was
-caught before aggregate reporting and repaired through a serialization-only
-entrypoint, leaving all hash-bound scientific code and frozen predictions
-unchanged. Seventeen current-study tests cover the fix and the readout rules.
+No new trajectory policy, independent confirmation or deployment improvement
+is established. Independent roles remain closed; Stage5C and SMC remain off.
+[Conclusions](outputs/publication_readiness_2026_09/european_cost_mass_v1/conclusions.md),
+[all intervals](outputs/publication_readiness_2026_09/european_cost_mass_v1/results.md),
+[absolute costs](outputs/publication_readiness_2026_09/european_cost_mass_v1/absolute_cost_context.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_mass_v1/failure_analysis.md),
+[next question](outputs/publication_readiness_2026_09/european_cost_mass_v1/project_gap.md).
 
 ## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
 

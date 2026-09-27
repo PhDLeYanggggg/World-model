@@ -14,23 +14,32 @@ import numpy as np
 
 
 def panels(doc, pairs, metric, title, name):
-    fig, axes = plt.subplots(2, len(pairs), figsize=(6*len(pairs), 9),
-        squeeze=False, constrained_layout=True)
+    fig, axes = plt.subplots(2, len(pairs), figsize=(6*len(pairs), 9), squeeze=False)
+    fig.subplots_adjust(left=.075,right=.985,bottom=.105,top=.875,hspace=.50,wspace=.25)
     for row, family in enumerate(('full', 'motion_only')):
         for col, (contrast, label) in enumerate(pairs):
-            ax = axes[row, col]; values = doc['contrasts'][contrast][family]
+            ax = axes[row, col]; values = doc['contrasts'][contrast][family]; limits = [0.]
             for i, metrics in enumerate(values.values()):
                 m = metrics[metric]
                 if 'CI' not in m:
                     ax.text(0, i, 'not estimable'); continue
                 p, (lo, hi) = m['point'], m['CI']
+                limits.extend((lo,p,hi))
                 ax.errorbar(p, i, xerr=np.array([[p-lo], [hi-p]]), fmt='o',
                     color='#00796b' if lo > 0 else '#b23b3b' if hi < 0 else '#555555', capsize=4)
             ax.axvline(0, color='black', linewidth=.8)
             ax.set_yticks(range(len(values)),
                 [k.replace('producer','P').replace('_controller',' / C') for k in values])
             ax.set_title(f'{family}\n{label}')
-            ax.set_xlabel('Paired improvement (metric-native units)')
+            if metric == PRIMARY:
+                ax.set_xscale('symlog',linthresh=1.)
+                lo, hi = min(limits), max(limits)
+                ax.set_xlim(lo-.1*max(abs(lo),1.),hi+.1*max(abs(hi),1.))
+                ax.set_xlabel('Expected easy-harm MSE gain (%)\nsymlog; linear between -1 and +1')
+            else:
+                ax.set_xlabel({GUARDS[0]:'Top10 harm capture gain (percentage points)',
+                    GUARDS[1]:'Absolute log-coverage error reduction',
+                    GUARDS[2]:'All-envelope H_all MSE gain (%)'}[metric])
             ax.grid(axis='x', alpha=.2)
     fig.suptitle(title+'\n3 seeds; 3,000 four-locality resamples; exposed source development', fontsize=13)
     fig.savefig(run.PUBLIC/(name+'.svg'), metadata={'Date': None})
@@ -51,7 +60,8 @@ def main():
     for i, metric in enumerate(GUARDS):
         panels(doc, [('mass_cost_only_vs_raw_cost_only','Cost-only mass vs raw'),
             ('mass_cost_only_vs_scaled_cost_only','Cost-only mass vs L2')], metric,
-            metric+' (positive favors mass; no physical-safety claim)', f'mass_guard_{i}')
+            ['Tail-capture guard','Coverage-log guard','All-harm MSE guard'][i]
+            +' (positive favors mass; no physical-safety claim)', f'mass_guard_{i}')
 
 
 if __name__ == '__main__': main()

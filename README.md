@@ -10,7 +10,28 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am separating fitting-regime changes from changes
+**Current result:** matching the average predicted harm is not enough to
+estimate which interventions will be harmful. I completed a fixed
+[cost-mass readout study](outputs/publication_readiness_2026_09/european_cost_mass_v1/conclusions.md)
+with 432 two-parameter fits and 144 source-held views, reusing verified neural
+predictions. This is fresh risk-readout fitting, not new neural training.
+
+The repair fails its scientific screens. In the main full-input comparison,
+none of the six primary intervals favors mass matching over the raw control;
+three favor the control and three overlap zero. Against the L2 readout, four
+intervals favor L2 and two overlap. Coverage improves in some comparisons,
+but expected-cost accuracy and other guards do not improve consistently.
+Ninety-nine bounded easy-harm fitting constraints also remain unsatisfied.
+
+I am keeping deployment unchanged. The
+[absolute costs](outputs/publication_readiness_2026_09/european_cost_mass_v1/absolute_cost_context.md)
+show why large negative percentages are not trajectory scores; the
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_mass_v1/failure_analysis.md)
+distinguishes fitting tradeoffs from scene-dependent transport. Independent
+selection, calibration and confirmation remain closed. Exact replay is in
+progress. The [results ledger](README_RESULTS.md) records the verified status.
+
+**Previous crossed study:** I separated fitting-regime changes from changes
 in the definition of easy cases. The previous magnitude readout failed its
 cost and coverage gates. Comparing its native two-locality and three-locality
 heads cannot explain why, because both their fitting data and target cut changed.
