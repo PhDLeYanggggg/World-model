@@ -14,7 +14,14 @@ Six disjoint producer/controller/readout assignments and three seeds give
 96-query-per-locality scene controls are separate populations. Joint, unary and
 independent controls have an explicit matched-count comparison. Forty-six scoped
 preflight tests pass, including exact resumed fitting and causal input isolation.
-Registration precedes training. A fresh read-only CREATE queue query succeeds;
+Registration `7194f8a3` precedes training. All108heads now completed216000updates
+in152.75cumulative fit seconds; the full training process took237.85seconds,
+peak RSS7.57GB. Unknown-label training draws are zero. The first100-update
+pilot resumed inside the budget. This is completed training, not a safety result.
+All36candidate/role/seed decision groups are frozen before outcome readout;
+decision construction took62.59seconds, peak RSS1.30GB. Both full-bank pointwise
+and the fixed scene-query controls are preserved, without selecting a winner.
+A fresh read-only CREATE queue query succeeds;
 no remote jobs are submitted or changed. The preceding authorization-only turn
 did not produce experimental progress. No new learned result is claimed here.
 Independent selection/calibration/confirmation, deployment, Stage5C and SMC
