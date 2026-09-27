@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Easy-Risk Decision Evaluation (2026-09-27, In Progress)
+
+The previous turn completed actual216-head training, not a status-only wait.
+Local and GitHubcbaa5498match; CREATEverification job37564122 is freshly confirmed
+COMPLETED0:0. Local storage recovered to12,079,603,712bytes without this task
+deleting any artifacts. Only89,517,817bytes of own frozen checkpoints were
+restored; all hashes and pair identities match. After restore11,988,320,256bytes
+remain, above the unchanged10GiB reserve, including a600MBaction/report allowance.
+The original local causal decision/evaluation implementation can now run without
+exporting held labels or moving the4.91GBfitting packets. No new fitting,
+held readout or independent-source access occurred during restoration.
+
 ## Easy Occurrence / Conditional-Risk Repair (Training Verified, 2026-09-27)
 
 Registration `dfa9ee53` preceded the fresh audit of all108 fitting pairs. Each

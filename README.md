@@ -70,6 +70,9 @@ batch-shell startup failure is preserved alongside its successful repair.
 Transfers are resumable with per-packet hashes; intermittent SSH disconnects
 do not erase completed packets or justify reducing the experiment.
 Neither an environment probe nor a synthetic test is a positive model result.
+Local capacity has since recovered: I restored only the 89.5 MB frozen
+checkpoints, verified their hashes, and retained the 10 GiB reserve. The next
+step uses the unchanged causal action and held-development evaluation code.
 I am not relaxing easy protection. This remains evidence from twelve
 opened development localities; independent selection, calibration and
 confirmation stay closed.

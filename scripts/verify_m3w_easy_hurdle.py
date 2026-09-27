@@ -15,7 +15,10 @@ from scripts.verify_m3w_subset_excess import check_fixed_denominator
 from scripts.verify_m3w_fixed_floor_tail import reduce_check
 
 TESTS = ['tests/test_m3w_easy_hurdle.py', 'tests/test_m3w_easy_hurdle_verification.py',
-         'tests/test_m3w_query_utility.py', 'tests/test_m3w_query_excess_verification.py']
+         'tests/test_m3w_query_utility.py', 'tests/test_m3w_query_excess_verification.py',
+         'tests/test_m3w_easy_hurdle_portable.py', 'tests/test_m3w_easy_hurdle_transport.py',
+         'tests/test_m3w_easy_hurdle_collection.py', 'tests/test_m3w_easy_hurdle_training_audit.py',
+         'tests/test_m3w_easy_hurdle_restore.py']
 
 
 def check_actions(a, sites, recordings, frames, utility):
@@ -76,6 +79,16 @@ def check_quality(record, pred, truth, recordings, frames):
 def main():
     start = time.monotonic(); run.base.torch.set_num_threads(4); run.base.torch.set_num_interop_threads(1)
     cfg, ident, data, jobs, oid, pid, fits, actions = run.load()
+    restored = json.loads((run.PUBLIC/'local_restore.json').read_text())
+    assert restored['remote_training'] == run.base.artifact(run.PUBLIC/'create_training_freeze.json')
+    assert restored['remote_verification'] == run.base.artifact(run.PUBLIC/'create_training_verification.json')
+    assert restored['adapter'] == run.base.artifact(ROOT/'scripts/restore_m3w_easy_hurdle_heads.py')
+    imported = json.loads((run.PUBLIC/'create_training_freeze.json').read_text())
+    for ref in imported['receipt']['artifacts']:
+        assert run.base.digest(run.PRIVATE/ref['path']) == ref['sha256']
+    replay = json.loads((run.PUBLIC/'fit_replay.json').read_text())
+    assert replay['evidence'] == restored['remote_verification']
+    assert replay['execution_location'] == 'CREATE_same_runtime' and not replay['cross_architecture_training_replay']
     details = json.loads((run.PRIVATE/'details.json').read_text())
     metrics = {(r['group'], r['site'], r['policy']): r['metric'] for r in details['rows']}
     quality = {(r['group'], r['site'], r['policy']): r['metric'] for r in details['qualities']}
@@ -140,7 +153,9 @@ def main():
     tests = int(re.search(r'(\d+) passed', proc.stdout).group(1))
     seal = json.loads((run.previous.PUBLIC/'verification.json').read_text())
     bindings = {**seal['source_bindings'], **ident['bindings']}
-    extra = ['scripts/verify_m3w_easy_hurdle.py', 'scripts/report_m3w_easy_hurdle.py', *TESTS]
+    extra = ['scripts/verify_m3w_easy_hurdle.py', 'scripts/report_m3w_easy_hurdle.py',
+        'scripts/restore_m3w_easy_hurdle_heads.py', 'scripts/verify_m3w_easy_hurdle_portable_training.py',
+        'scripts/collect_m3w_easy_hurdle_training.py', 'scripts/train_m3w_easy_hurdle_portable.py', *TESTS]
     bindings.update({p: run.base.digest(ROOT/p) for p in extra})
     artifact_hashes = {p.name: run.base.digest(p) for p in run.PUBLIC.iterdir()
                       if p.suffix in ('.json', '.md') and p.name != 'verification.json'}
@@ -149,7 +164,9 @@ def main():
         cost_views=cost_views, quality_views=quality_views, locality_reductions=reductions, scoped_tests=tests,
         test_log=run.base.artifact(run.PRIVATE/'scoped_pytest.txt'), pid=os.getpid(), seconds=time.monotonic()-start,
         peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, all_action_replay_exact=True,
-        evaluation_replay_exact=True, first_group_training_replay_exact=True, full_legacy_suite='not_run',
+        evaluation_replay_exact=True, first_group_training_replay_exact=True,
+        training_replay_location='CREATE_same_runtime', inference_location='local_arm64',
+        cross_architecture_training_equivalence=False, full_legacy_suite='not_run',
         cold_raw_rebuild='not_run', independent_confirmation=False, deployment_changed=False,
         stage5c_executed=False, smc_enabled=False))
     run.beat('verification_complete', groups=groups, tests=tests, queries=checks)
