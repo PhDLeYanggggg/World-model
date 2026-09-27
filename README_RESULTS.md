@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Mass Readout Study (2026-09-27, Real Pilot Complete)
+## Cost-Mass Readout Study (2026-09-27, Predictions Frozen)
 
 I am testing a narrower explanation for the failed risk heads: whether an
 origin-only squared-error fit and its nested clipping reduce predicted harm
@@ -28,6 +28,12 @@ matched within numerical tolerance. Its cost-only easy-harm mass ratio changed
 from 0.500 (raw) or 0.159 (L2) to 1.000, but fitting MSE increased from 0.02155
 (L2) to 0.02224. This is a fitting diagnostic, not held-scene success. The
 full fixed experiment proceeds unchanged; this unfavorable result is retained.
+
+Full fitting has now completed432 readouts and144 frozen source-held views.
+The fitting heartbeat span is404 seconds, excluding ancestry preflight. Of864
+moment constraints,765 match and99 are infeasible at the fixed slope bound8;
+333/432 readouts match both moments. Bound failures remain included. No held
+scoring has run yet, and these fitting equalities are not calibration guarantees.
 
 ## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
 
