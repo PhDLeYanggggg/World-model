@@ -21,6 +21,10 @@ This is empirical two-source calibration, not a conformal guarantee.
 An initial namespace collision was corrected before inference: three historical
 files are restored byte-for-byte to `15768a5d`, and this study uses a distinct
 `score_support_calibration` namespace. No historical model or result was replaced.
+All36 score groups completed fresh inference in85.55seconds, peak RSS7.55GB.
+This includes288 risk-component inferences,108 exact old guard-head replays and
+36 exact legacy-point replays. No calibration or held outcomes have selected
+a threshold; the score freeze is committed before calibration.
 [Protocol](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/protocol.md).
 
 ## Signed Risk-Budget Objective (2026-09-27, Verified, Neural Benefit Fails)

@@ -17,6 +17,9 @@ fitting chain. The fixed comparisons retain stationary, utility and easy
 guards, and separate calibration from fitting-defined support. No new network
 or independent test is being opened. Two calibration sources cannot establish
 a finite-sample safety guarantee. Forty-four scoped preflight tests pass.
+All36 causal score groups are now frozen after fresh native Torch inference;
+108 existing guard-head predictions and36 old point policies reproduce exactly.
+Calibration and held readout are still pending.
 [Protocol](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/protocol.md).
 
 **Latest completed experiment:** I changed the risk-head loss to learn positive harm minus
