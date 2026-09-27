@@ -16,6 +16,10 @@ not calibrated expected harm. A same-recording/frame count-matched MSE ranking
 separates selection quality from coverage changes; no later-frame allocation.
 No held threshold search, trajectory retraining, independent-role opening or
 deployment. Pilot100updates will resume into the fixed2,000-update budget.
+Registration `c6b1c784` preceded the real100-update pilot:0.104fit seconds,
+6.83process seconds, peak RSS4.80GB, no unknown-label training draws. Native
+arm64 CPU4 is stable; all216 heads remain the target. Local execution is
+reasonable, with checkpoint resume rather than a smaller experiment.
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/protocol.md),
 [method positioning](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/method_positioning.md).
 
