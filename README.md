@@ -15,8 +15,10 @@ preserve expected harm while reducing prediction error. The
 [shape study](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md)
 keeps the original metrics and controls, uses only honest fitting-side OOF
 scores, and freezes predictions before source-held scoring. Independent roles
-remain closed. Fifteen targeted implementation tests pass; real-data fitting
-and its scientific result are still pending. This is not new neural training.
+remain closed. Fifteen targeted implementation tests pass. The first real-data
+view completed all six fits and its numerical checks without held labels;
+the complete 864-readout matrix is running. Scientific results are pending.
+This is not new neural training.
 
 **Previous result:** matching the average predicted harm is not enough to
 estimate which interventions will be harmful. I completed a fixed

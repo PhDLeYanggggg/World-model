@@ -5,13 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Shape Study (2026-09-27, Registered Implementation)
+## Cost-Shape Study (2026-09-27, Pilot Passed; Full Fitting Running)
 
 The next controlled experiment compares fixed monotone readouts with and
 without fitting-only mean constraints. It retains all 144 source views,
 three seeds, true/shuffled controls, the existing primary and every guard.
 Fifteen targeted tests pass, including an independent numerical solver
-comparison. Real-data fitting and held scoring have not yet run. CREATE was
+comparison. Registration 182c0222 preceded the real-data pilot. Its six fits
+completed on 9,019 supported fitting rows in 15.31 seconds, excluding ancestry
+checks. All three mean-constrained models preserve both moments; all numerical
+optimality checks pass. The full 864-readout matrix is running. Held scoring
+has not yet run. CREATE was
 checked read-only; no job was submitted or modified. Independent roles and
 deployment stay unchanged. [Protocol](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md).
 
