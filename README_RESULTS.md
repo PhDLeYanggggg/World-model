@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Shape Study (2026-09-27, Pilot Passed; Full Fitting Running)
+## Cost-Shape Study (2026-09-27, Full Fitting Complete; Scoring Pending)
 
 The next controlled experiment compares fixed monotone readouts with and
 without fitting-only mean constraints. It retains all 144 source views,
@@ -14,8 +14,12 @@ Fifteen targeted tests pass, including an independent numerical solver
 comparison. Registration 182c0222 preceded the real-data pilot. Its six fits
 completed on 9,019 supported fitting rows in 15.31 seconds, excluding ancestry
 checks. All three mean-constrained models preserve both moments; all numerical
-optimality checks pass. The full 864-readout matrix is running. Held scoring
-has not yet run. CREATE was
+optimality checks pass. The full 864-readout matrix is now complete across
+144 views. All 432 constrained readouts preserve both moments; the maximum
+normalized convex certificate gap is 7.14e-15. Fitting heartbeat span363s,
+PID84730,with per-view recovery receipts. Predictions are frozen before held
+scoring,which has not yet run. These fitting checks do not imply held accuracy.
+CREATE was
 checked read-only; no job was submitted or modified. Independent roles and
 deployment stay unchanged. [Protocol](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md).
 

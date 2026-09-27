@@ -16,8 +16,9 @@ preserve expected harm while reducing prediction error. The
 keeps the original metrics and controls, uses only honest fitting-side OOF
 scores, and freezes predictions before source-held scoring. Independent roles
 remain closed. Fifteen targeted implementation tests pass. The first real-data
-view completed all six fits and its numerical checks without held labels;
-the complete 864-readout matrix is running. Scientific results are pending.
+view completed all six fits and its numerical checks without held labels.
+All 864 readouts are now fitted; all 432 mean-constrained models match both
+training moments. Predictions are frozen before scoring. Scientific results are pending.
 This is not new neural training.
 
 **Previous result:** matching the average predicted harm is not enough to
