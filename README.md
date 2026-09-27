@@ -10,16 +10,37 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**In progress:** I am isolating the next failure mode with matched bounded
-neural risk heads. Ordinary moment loss is compared with extra weight on
-high-harm training examples. Forecasts, fallback, utility, features, source
-roles and thresholds stay fixed. A same-frame, equal-intervention-count
-control distinguishes better ordering from simply rejecting more predictions.
-These are risk heads, not a new trajectory forecaster; independent roles remain
-closed and no deployment changes are planned from development scores alone.
-[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/protocol.md).
+**Latest result:** putting more training weight on large errors does not yet
+make the neural selector reliably safer. I trained 216 bounded risk heads
+with matched initialization, sampling, source roles and 432,000 updates.
+The forecasts, protected fallback and utility head stayed frozen.
 
-**Latest result:** the neural forecasts do contain useful incremental predictions,
+Ordinary moment loss gives **0.154% ADE gain over the protected floor**;
+tail-weighted loss gives **0.067%**. Tail weighting reduces intervention from
+7.82% to 4.92%. At the same intervention count within each current frame, its
+gain is only **0.0033% [-0.0025%, 0.0121%]**: better ordering is not established.
+Three held views completely abstain, leaving the registered harm-ratio primary
+undefined. Another 95 views exceed the 2% harm budget. Easy net error is
+preserved, but that is not the same as controlling positive harm.
+
+This is a completed training experiment with a negative central result, not
+a deployment upgrade. Nonnegative outputs remove the old clipping problem
+but still overestimate reference error, making predicted risk look too small.
+Next I will test the fixed-floor budget excess directly, without opening
+independent sources or searching held thresholds. All current results remain
+development-only and use image-local detector silver, obs8/pred12 rawstride12.
+All216 predictions and108 decisions replay exactly; two complete training
+replays match parameters, optimizer, draws and losses. **38 scoped tests pass**,
+with5,999 independent locality reductions and747,900 same-query count checks.
+The reports and figure are reproducible. These are technical checks, not a
+passed research hypothesis or certified deployment.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/conclusions.md),
+[failure localization](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/failure_localization.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/verification.json).
+
+**Preceding fixed-floor result:** the neural forecasts do contain useful incremental predictions,
 but the model still underestimates the harm of its chosen interventions.
 I fixed the same protected-damping fallback for both training and held scenes,
 then fitted 216 small linear cost heads with strict four/four/two/two source

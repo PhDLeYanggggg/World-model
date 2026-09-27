@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Trained, Readout Pending)
+## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Verified, Primary Failed)
 
 216 matched bounded neural risk heads,108 four/four/two/two source groups.
 Treatment upweights each harm target's fitting-only positive90th-percentile tail
@@ -15,7 +15,7 @@ floor/utility, features and2% risk screens. Weighted outputs are tilted scores,
 not calibrated expected harm. A same-recording/frame count-matched MSE ranking
 separates selection quality from coverage changes; no later-frame allocation.
 No held threshold search, trajectory retraining, independent-role opening or
-deployment. Pilot100updates will resume into the fixed2,000-update budget.
+deployment. Pilot100updates were included in the fixed2,000-update budget.
 Registration `c6b1c784` preceded the real100-update pilot:0.104fit seconds,
 6.83process seconds, peak RSS4.80GB, no unknown-label training draws. Native
 arm64 CPU4 is stable; all216 heads remain the target. Local execution is
@@ -24,6 +24,39 @@ All216 heads completed432,000updates in411.32process seconds, peak RSS9.51GB,
 PID28294. The100-update pilot resumed exactly into its prescribed budget.
 Predictions and108 same-query matched decision sets are frozen before readout;
 training completion is not a downstream success claim.
+Decision freeze `7b334be9` preceded the46.32second fresh readout. Ordinary MSE
+gives0.1544% [0.1154%,0.1952%] ADE gain over floor; tail-weighted0.0670%
+[0.0448%,0.0925%]. Tail loses0.0879% [-0.1113%,-0.0662%] versus MSE and
+0.4607% [-0.6320%,-0.3126%] versus frozen ridge. Intervention falls7.8187% to
+4.9228%. Same-current-query count-matched ADE advantage is only0.0033%
+[-0.0025%,0.0121%]. No stable ranking advantage is established.
+
+The fixed-roster harm primary is undefined: three locality112 held views have
+zero interventions. Do not drop them or report zero risk.95/216 dependent tail
+views exceed2%, versus110/216 ordinary MSE and171/216 ridge. Every tail view
+preserves easy net error, worst+0.3857% versus CV, with no zero-CV harm.
+All216 fixed training monitors improve, but MSE's selected predicted harm is
+0.7169% versus3.1126% observed; selected reference bias is3.6947-fold.
+Nonnegative heads fix clipping, not conditional calibration. Three forecaster
+seeds all retain a small positive mean gain; no safety certificate follows.
+
+Same-query matching is independently inspectable:747,900 dependent query views,
+160,865 rankable query views and28,834 changed selections;273,245 of307,827
+tail interventions also occur in matched MSE. These are repeated views, not
+independent scenes. Unknown-label interventions are reported, never trained on.
+All216 predictions,108 decisions and full scoring replay exactly; two full
+initialization-to-checkpoint fitting replays match optimizer/RNG/draws/losses.
+The first real paired inference reproduces with future fields removed.
+38 tests in eight scoped files pass.5,999 locality-metric reductions and747,900
+query-count views are independently checked; reports/diagnosis/figure reproduce
+byte-for-byte. Verification binds22 public artifacts and151 source files.
+Full legacy suite/cold raw rebuild are not_run. No CREATE job was needed.
+Next: fixed-floor signed-budget-excess objective with matched controls, not
+further threshold sweeps. Reserved roles and deployment remain unchanged.
+[Results](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/results.md),
+[conclusions](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/conclusions.md),
+[failure localization](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/failure_localization.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/verification.json).
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/protocol.md),
 [method positioning](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/method_positioning.md).
 
