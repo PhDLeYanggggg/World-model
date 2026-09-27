@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current diagnostic:** I am tracing the failed risk-score transfer with the
+forecasting models and deployment policy frozen. Motion, neighbor context,
+rollout disagreement and input-support bins use fitting-source observations
+only. Future-label completeness and actual reference error are evaluated
+separately and never used as inference features. This is a source-gap
+diagnosis, not another loss sweep or an independent-test result.
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/protocol.md).
+
 **Latest result:** directly learning the risk-budget error improves the fit to
 training sources, but does not yet solve safe selection on different sources.
 I trained 108 new risk heads against 108 verified moment-MSE controls, keeping

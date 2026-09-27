@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Model Source-Gap Slices (2026-09-27, Registered Diagnostic)
+
+Matched signed-excess/MSE heads and all deployment decisions stay frozen.
+Eight causal axes use equal-source fitting25th/75th percentiles, plus the
+existing support guard. Separate evaluation-only strata cover future-label
+completeness and reference-error scale. All108groups/12openedlocalities are
+retained, including unknown-label actions and empty strata. No new training,
+held threshold search or independent-role opening. Results pending.
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_slices_v1/protocol.md).
+
 ## Fixed-Floor Signed-Excess Heads (2026-09-27, Verified, Primary Failed)
 
 The next matched contrast directly supervises all/easy positive harm minus2%
