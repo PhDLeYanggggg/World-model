@@ -11,7 +11,26 @@ from scripts import run_m3w_european_query_excess_refit as run
 from scripts.verify_m3w_fixed_floor_tail import reduce_check
 TESTS=['tests/test_m3w_query_excess.py','tests/test_m3w_query_utility.py',
     'tests/test_m3w_causal_descriptor_head.py','tests/test_m3w_causal_descriptor_protocol.py',
-    'tests/test_m3w_fixed_floor_probe.py']
+    'tests/test_m3w_fixed_floor_probe.py','tests/test_m3w_query_excess_verification.py']
+
+
+def check_selected_costs(metric, cv, floor, neural, take):
+    """Audit outcome accounting after causal decisions, not during inference."""
+    known=np.isfinite(cv)
+    selected=np.where(take,neural,floor)
+    assert metric['known_rows']==int(known.sum())
+    assert metric['unknown_interventions']==int((take & ~known).sum())
+    for key,values in [('error_sum',selected),('floor_error_sum',floor),('CV_error_sum',cv)]:
+        np.testing.assert_allclose(metric[key],sum(float(v) for v in values[known]),rtol=1e-12,atol=1e-9)
+    np.testing.assert_allclose(metric['intervention_rate'],sum(bool(v) for v in take)/len(take))
+    selected_ids=np.flatnonzero(take & known)
+    denominator=sum(float(floor[i]) for i in selected_ids)
+    if denominator>0:
+        risk=sum(max(float(neural[i])-float(floor[i]),0.) for i in selected_ids)/denominator
+        np.testing.assert_allclose(metric['selected_positive_harm_ratio'],risk,rtol=1e-12,atol=1e-12)
+    else:
+        assert metric['selected_positive_harm_ratio'] is None
+    assert metric['zero_CV_harmed']==sum(cv[i]==0 and selected[i]>0 for i in np.flatnonzero(known))
 
 
 def main():
@@ -20,9 +39,13 @@ def main():
     causal={k:data[k] for k in run.CAUSAL_KEYS}
     frozen=json.loads((run.PUBLIC/'decision_freeze.json').read_text());assert frozen['identity']==identity
     refs={Path(r['path']).stem:r for r in frozen['groups']}
+    raw=json.loads((run.PRIVATE/'details.json').read_text())
+    readout={(r['group'],r['site'],r['policy']):r['metric'] for r in raw['rows']}
+    cost_views=0
     groups_checked=queries=matched_fit_queries=0;training_summary={a:dict(heads=0,updates=0,training_queries=0,
         singleton_queries=0,loss_declined_heads=0,unknown_draws=0) for a in cfg['arms']}
     for c in run.base.floor_api.contexts(causal,jobs,oid):
+        cv,_,(floor,_),(neural,_)=run.base.floor_api.costs(c,data,np.arange(len(c['ids'])))
         for pair in range(6):
             name=c['name']+f'_pair{pair}';r=refs[name];assert run.base.artifact(ROOT/r['path'])==r
             d=json.loads((ROOT/r['path']).read_text());assert d['future_fields_removed'] and not d['held_outcomes_used']
@@ -33,6 +56,12 @@ def main():
             with np.load(ROOT/d['arrays']['path'],allow_pickle=False) as z:a={k:z[k].copy() for k in z.files}
             held,p,pr=run.predictions(c,causal,name,d['fit'],identity)
             np.testing.assert_array_equal(a['ids'],c['ids'][held])
+            for site in roles['held_sites']:
+                at=data['sites'][a['ids']]==site;ix=held[at]
+                for policy in run.POLICIES:
+                    take=np.zeros(len(ix),bool) if policy=='floor' else a[policy][at]
+                    check_selected_costs(readout[(name,site,policy)],cv[ix],floor[ix],neural[ix],take)
+                    cost_views+=1
             fit_ids=c['ids'][np.isin(data['sites'][c['ids']],roles['training_sites'])]
             states={}
             for arm,ref in fit['artifacts'].items():
@@ -97,6 +126,14 @@ def main():
     old=json.loads((run.previous.PUBLIC/'summary.json').read_text())
     for new,parent in [('floor','floor'),('parent_independent','independent'),('parent_joint','joint_utility'),('utility_topk_parent','utility_topk')]:
         assert s['summary'][new]==old['summary'][parent]
+    empty=[r for r in raw['rows'] if r['policy']=='parent_independent' and r['metric']['intervention_rate']==0]
+    assert len(empty)==10
+    for r in empty:
+        for arm in ('pointwise_rank','query_rank'):
+            m=readout[(r['group'],r['site'],arm)]
+            assert m['intervention_rate']==0 and m['selected_positive_harm_ratio'] is None
+    assert not s['gates']['primary_equal_count_harm_reduction']
+    assert s['paired']['query_rank_vs_pointwise_rank']['harm_reduction_pp']['ci95'] is None
     proc=subprocess.run([sys.executable,'-m','pytest','-q',*TESTS],cwd=ROOT,capture_output=True,text=True)
     log=run.PRIVATE/'scoped_pytest.txt';log.write_text(proc.stdout+proc.stderr)
     if proc.returncode:raise RuntimeError(proc.stdout+proc.stderr)
@@ -110,6 +147,7 @@ def main():
     run.base.immutable_json(run.PUBLIC/'verification.json',dict(source_bindings=bindings,artifacts=artifacts,
         test_log=run.base.artifact(log),tests=tests,test_files=len(TESTS),groups=108,heads=216,updates=432000,
         matched_fitting_queries=matched_fit_queries,independent_query_checks=queries,independent_locality_reductions=reductions,
+        independently_accounted_cost_views=cost_views,structurally_undefined_primary_views=10,
         first_paired_fit_replay_exact=True,all_prediction_action_replays_exact=True,evaluation_replay_exact=True,
         parent_controls_exact=True,report_figure_byte_reproducible=True,full_legacy_suite='not_run',cold_raw_rebuild=False,
         independent_confirmation=False,calibration_certificate=False,deployment_changed=False,stage5c_executed=False,smc_enabled=False))

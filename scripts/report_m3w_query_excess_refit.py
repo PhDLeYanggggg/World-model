@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import sys
+import numpy as np
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_european_query_excess_refit as run
@@ -50,6 +51,7 @@ def main():
     lines+=['','Both objectives are evaluated on both losses. Aggregate MSE is algebraically no larger than individual MSE on a fixed model; that inequality is not a learned improvement. Compare models within the same metric.','',
         '## Training and Gates','',*[f'- {a}: {v}' for a,v in totals.items()],'',*[f'- {k}: {v}' for k,v in d['gates'].items()],
         '','Training-query totals sum repeated fitting-query occurrences across heads; they are not independent queries or independent data-source counts.',
+        'The training_curves.png bands are descriptive quartiles across dependent fitted heads, not confidence intervals or held-source generalization evidence.',
         '','The four outputs are signed-risk score bases, not identified calibrated moments. Query means are supervised on known labels only, while all causal rows remain in inference.',
         'Unknown outcomes stay unknown; incomplete fixed-roster risk summaries do not become zero risk.',
         'Three thousand locality-bootstrap draws follow averaging of dependent producer/fit/seed views. No IID-window or independent-confirmation claim.',
@@ -76,6 +78,21 @@ def main():
     ax.set_xlabel('ADE gain over protected floor (%)');ax.set_title('Matched training objectives: accuracy and risk are distinct')
     ax.spines[['top','right']].set_visible(False)
     fig.savefig(run.PUBLIC/'objective_comparison.png',dpi=150,metadata={'Software':'M3W matched query-risk experiment'});plt.close(fig)
+    fig,axes=plt.subplots(1,2,figsize=(10,4),layout='constrained')
+    for ax,metric in zip(axes,('pointwise','query')):
+        for arm,color in [('pointwise','#62666a'),('query','#197b75')]:
+            traces=[r['trace'] for r in training if r['arm']==arm]
+            steps=[r['step'] for r in traces[0]]
+            assert all([r['step'] for r in trace]==steps for trace in traces)
+            values=np.array([[r['monitor'][metric]/trace[0]['monitor'][metric] for r in trace] for trace in traces])
+            lo,median,hi=np.quantile(values,[.25,.5,.75],axis=0)
+            ax.plot(steps,median,label=arm+' objective',color=color)
+            ax.fill_between(steps,lo,hi,color=color,alpha=.15)
+        ax.set_title(metric.capitalize()+' fitting monitor')
+        ax.set_xlabel('Optimizer updates');ax.set_ylabel('Loss / initial loss')
+        ax.spines[['top','right']].set_visible(False);ax.legend(fontsize=8)
+    fig.suptitle('Training loss: median and quartiles across dependent heads')
+    fig.savefig(run.PUBLIC/'training_curves.png',dpi=150,metadata={'Software':'M3W matched query-risk experiment'});plt.close(fig)
     print(json.dumps(dict(primary=d['paired']['query_rank_vs_pointwise_rank'],gates=d['gates'],training=totals)))
 
 
