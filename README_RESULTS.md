@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Signed Risk-Budget Objective (2026-09-27, Registered)
+## Signed Risk-Budget Objective (2026-09-27, Trained, Predictions Frozen)
 
 The matched repair changes only the loss from two independent moment errors to
 the squared error of `positive_harm - 0.02 * CV_error`. The exact architecture,
@@ -15,7 +15,13 @@ the new output components are an internal score basis, not calibrated moments.
 51 scoped preflight tests cover target detachment, zero-reference harm, exact
 resume, matched draws and the distinction between positive harm and net error.
 Predictions will be frozen before scoring. Independent roles, deployment,
-Stage5C and SMC remain unchanged. Training is not yet a result.
+Stage5C and SMC remain unchanged. Registration `304f826c` preceded training.
+All144 new heads completed288,000 updates:232.12 cumulative fit seconds,
+348.65 process seconds, peak RSS8.27GB. All144 sampler states/draw counts match
+their sealed controls, and all144 fresh control inferences match cache.
+Unknown-label training draws are zero. Predictions are frozen before scoring;
+completed training is not an empirical benefit result. A fresh CREATE queue
+query succeeded read-only; no jobs were submitted or changed.
 [Protocol](outputs/publication_readiness_2026_09/european_risk_excess_v1/protocol.md).
 
 ## Cost-Moment Cross-Fit (2026-09-27, Verified, Conditional Risk Fails)
