@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Intervention Refit (2026-09-27, Registered)
+
+The next experiment freezes the improved dimensionless predictor and fits
+the same utility/all-risk/easy-risk controllers to it and to fixed damping.
+Six disjoint producer/controller/readout assignments and three seeds give
+108 Torch heads at 2,000 updates each. All-source pointwise selection and fixed
+96-query-per-locality scene controls are separate populations. Joint, unary and
+independent controls have an explicit matched-count comparison. Forty-six scoped
+preflight tests pass, including exact resumed fitting and causal input isolation.
+Registration precedes training. A fresh read-only CREATE queue query succeeds;
+no remote jobs are submitted or changed. The preceding authorization-only turn
+did not produce experimental progress. No new learned result is claimed here.
+Independent selection/calibration/confirmation, deployment, Stage5C and SMC
+are unchanged. [Protocol](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/protocol.md).
+
 ## Dimensionless Fraction Refit (2026-09-27, Predictor Gain, Safety Still Fails)
 
 The next controlled experiment removes coordinate-scale restoration inside the

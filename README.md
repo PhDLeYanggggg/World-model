@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**In progress:** I am fitting matched gain/harm heads to the frozen improved
+neural forecasts and to damping, then comparing pointwise and scene-joint
+intervention. Both candidates receive the same training budget and risk rules.
+The protocol uses only opened source-development localities; independent roles
+remain closed. There is no new safety result yet.
+[Registered comparison](outputs/publication_readiness_2026_09/european_dimensionless_intervention_v1/protocol.md).
+
 **Current result:** fixing coordinate units inside the bounded correction
 improves the matched neural forecaster's ADE by **4.72%**, with an exploratory
 locality interval of **[2.53%, 7.89%]**. All three seed intervals are positive.
