@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Temporal Context Screen (2026-09-27, Registered)
+## Temporal Context Screen (2026-09-27, Predictions Frozen)
 
 The next experiment tests information missing from the global risk readout,
 not another threshold. I compare frozen-score-only probes with the old seven
@@ -16,8 +16,9 @@ ordinary OOF predictions are not sufficient for this stacked exclusion.
 
 The preceding cost-shape seal, 28 public artifacts, 38 source bindings and
 detailed metrics match their recorded hashes. Ten new focused tests pass.
-CREATE was checked read-only; no jobs were submitted or modified. Fitting and
-scientific results are not complete at this registration checkpoint. Independent
+CREATE was checked read-only; no jobs were submitted or modified. All 1,728
+fits and 432 inner-view predictions are now frozen. The fitting heartbeat spans
+646s; there are no new neural updates. Scoring has not run at this checkpoint. Independent
 selection, calibration and confirmation remain closed; no deployment changes.
 [Protocol](outputs/publication_readiness_2026_09/european_temporal_support_v1/protocol.md).
 
