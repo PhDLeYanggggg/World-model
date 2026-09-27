@@ -5,16 +5,40 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Observation Quality and Partial Neighbors (2026-09-27, Registered)
+## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 
-The next input-only audit preserves the 318,969 source targets and all reserved
-roles. A versioned masked-neighbor repair is implemented; legacy packing and
-deployment are unchanged. Sixteen scoped tests pass, including future
-truncation invariance and complete-neighbor equivalence. The new audit is
-registered before raw observation summaries; no future outcome arrays are
-opened. Prediction lift and matched retraining remain not_run. CREATE was
-checked read-only, with no job submitted or modified.
-[Protocol](outputs/publication_readiness_2026_09/european_observation_quality_v1/protocol.md).
+Registration f639b969 precedes the source-only pilot and full raw audit.
+All 318,969 target histories from 163 recordings in 12 source localities match
+the original packing and 2,551,752 raw observed boxes exactly. The full audit
+took 88.67 seconds excluding preflight; a second 88.73-second raw pass reproduces
+all diagnostic arrays. Peak reported RSS was about 2.86 GB. CREATE was checked
+read-only, with no job submitted or modified. Independent roles remain closed.
+
+282,529 queries (88.58%) have a partial-history neighbor in their nearest-eight
+current-visible pool. Legacy complete-history filtering excludes these agents;
+its attention and conditioning apply the same restriction. The versioned packer
+and neural adapter now preserve observed positions with explicit masks and
+unchanged ego/baseline tokens. Parameter budget and bounded output are preserved.
+The old model is untouched. This is coverage, not a forecast or risk improvement.
+
+Raw-prefix frame presence averages 99.16%; detector error cannot be inferred
+from gaps or jitter proxies alone. OLS4 improves the within-prefix diagnostic
+in only five of twelve localities, with changes ranging -11.67% to +18.95%.
+Two localities supply 83.40% of target queries. These are descriptive observed-
+prefix results, not future ADE, independent confidence intervals or a reason
+to deploy smoothing. Sparse event-stratified quality analysis is not_run.
+
+All 37 tests in seven scoped files pass, including causal invariance, complete-
+neighbor equivalence, masked-value robustness, finite synthetic gradients and
+actual partial-token influence. Reports reproduce byte-for-byte. Full legacy
+tests and research training were not run. The next experiment is matched neural
+legacy-vs-masked-context refitting, preserving producer-chain exclusions and
+freezing predictions before readout. Deployment, Stage5C and SMC remain unchanged.
+[Findings](outputs/publication_readiness_2026_09/european_observation_quality_v1/conclusions.md),
+[per-locality results](outputs/publication_readiness_2026_09/european_observation_quality_v1/results.md),
+[input/model card](outputs/publication_readiness_2026_09/european_observation_quality_v1/data_model_card.md),
+[verification](outputs/publication_readiness_2026_09/european_observation_quality_v1/verification.json),
+[execution](outputs/publication_readiness_2026_09/european_observation_quality_v1/operations.md).
 
 ## Frozen-Cap Attribution (2026-09-27, Scientific Screens Failed)
 
