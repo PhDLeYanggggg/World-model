@@ -32,11 +32,13 @@ def main():
     assert control['parameters_exact'] and control['sampling_exact']
     assert run.artifact(ROOT/control['complete']['path'])==control['complete']
     names=['results.md','absolute_costs.md','motion_proxies.md','training.md','conclusions.md','gates.json','matched_refit.png',
-           'input_slices.json','input_slices.md','association_probe.json','metric_direction_note.md']
+           'input_slices.json','input_slices.md','association_probe.json','metric_direction_note.md',
+           'operations.json','operations.md']
     before={n:run.digest(run.PUBLIC/n) for n in names}
     subprocess.run([sys.executable,'scripts/report_m3w_european_partial_neighbor_refit.py'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,'scripts/diagnose_m3w_european_partial_neighbor_refit.py'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,'scripts/probe_m3w_neighbor_association.py'],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,'scripts/report_m3w_partial_refit_operations.py'],cwd=ROOT,check=True)
     assert all(run.digest(run.PUBLIC/n)==h for n,h in before.items())
     home=run.PRIVATE/'verification_runs'/str(time.time_ns()); home.mkdir(parents=True)
     log=home/'tests.log'; xml=home/'tests.xml'
@@ -50,7 +52,7 @@ def main():
         ['scripts/report_m3w_european_partial_neighbor_refit.py','scripts/verify_m3w_european_partial_neighbor_refit.py',
          'scripts/diagnose_m3w_european_partial_neighbor_refit.py',
          'scripts/probe_m3w_neighbor_association.py','src/evaluation/m3w_neighbor_association_probe.py',
-         'src/world_model/m3w_agent_track_context.py']))
+         'src/world_model/m3w_agent_track_context.py','scripts/report_m3w_partial_refit_operations.py']))
     run.immutable_json(dest,dict(fresh_neural_models=9,updates_per_model=4000,
         legacy_parameter_and_sampler_reproduction_exact=True,
         nine_pair_full_inference_replay_exact=True,readout_replay_exact=True,reports_figure_byte_reproducible=True,

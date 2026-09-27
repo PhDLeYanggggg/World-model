@@ -22,9 +22,13 @@ The experiment also exposes a representation gap: flattened neighbor tokens
 discard supplied track associations. A separate agent-wise temporal then
 interaction encoder passes structural tests, but has not been trained or shown
 predictive benefit. That is the next matched hypothesis, not a new result.
-Predictions were committed before scoring. Full replay is in progress;
-independent selection, calibration and confirmation remain closed, and I am
-not changing deployment. [Failure analysis](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/failure_analysis.md).
+Predictions were committed before scoring. All nine prediction pairs and 576
+scoring views now replay exactly; reports and the figure are byte-reproducible.
+All 67 tests in 12 scoped files pass. This verifies the experiment, not the
+benefit hypothesis. Independent selection, calibration and confirmation remain
+closed, and I am not changing deployment.
+[Failure analysis](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/failure_analysis.md),
+[verification record](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/verification.json).
 
 **Previous input finding:** the model has been excluding many visible neighbors.
 The [source observation audit](outputs/publication_readiness_2026_09/european_observation_quality_v1/conclusions.md)

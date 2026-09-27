@@ -23,8 +23,9 @@ no held-locality row was sampled. All nine prediction pairs are now frozen:
 1,913,814 query-forecast pairs per arm, not independent samples. Fresh inference
 matches every legacy prediction exactly. Generation/verification took 669.15
 process seconds. Freeze 39607e9e precedes the 6.20-second comparative readout.
-All 576 endpoint/subset views are retained. Full inference/scoring replay is
-in progress; it is not an additional model-selection step.
+All 576 endpoint/subset views are retained. Full nine-pair inference replay
+is exact (671.90 process seconds); the separate 6.08-second scoring replay is
+also exact. Neither replay is an additional model-selection step.
 No independent-role access or deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md),
 [data/model scope](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/data_model_card.md),
@@ -51,6 +52,15 @@ intervals crossing zero. The preregistered benefit screen fails. Easy gains
 0.335% versus legacy, but degrades 12.888% versus CV. Against the fitting-selected
 baseline, all-query ADE gain is 2.927% [0.708%, 5.355%]; that is not evidence
 of this repair's incremental contribution. No model is promoted.
+
+Reports, diagnostic slices and the figure reproduce byte-for-byte. All 67
+tests in 12 scoped files pass; the full historical suite was not rerun.
+The verification seal binds 25 public artifacts and 40 source files, plus
+the private test/execution receipts. Checkpoints and prediction caches remain
+local and ignored. The source files and cached inputs, not a fresh raw-data
+download, define this replay boundary.
+[Verification](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/verification.json),
+[execution and resource record](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/operations.md).
 
 The 12-locality bootstrap is conditional source-development evidence, not
 independent confirmation. Changed-input ADE gain is -0.050%; unchanged-input
