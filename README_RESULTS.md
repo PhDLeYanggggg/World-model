@@ -20,8 +20,11 @@ The real native-arm64 pilot completed100 updates in1.29 fit seconds (4.21 proces
 seconds, peak RSS0.59GB) and resumed into the full budget. All nine fixed fits
 completed 36,000 updates in 590.28 cumulative training seconds (592.13-second
 training process, peak RSS1.62GB). Every final sampler state and draw-count
-vector matches its paired control; held fitting draws are zero. Prediction
-freezing is in progress; comparative scores have not been read. CREATE was checked
+vector matches its paired control; held fitting draws are zero. All nine prediction
+pairs are frozen: 1,913,814 query forecasts per arm, not independent samples.
+Fresh control inference exactly matches the old cache in all nine pairs.
+Prediction generation took576.87 process seconds, peak RSS1.67GB. Comparative
+scores have not been read. CREATE was checked
 read-only; its existing jobs are untouched. Independent
 selection/calibration/confirmation remain closed; no deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md),

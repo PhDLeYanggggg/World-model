@@ -14,8 +14,8 @@ I started this repo to answer that question carefully, not just to collect a nic
 preserving each neighbor's temporal association adds predictive value. Data,
 initial weights, parameter budget, loss and sampled training queries stay fixed.
 The nine-model design was registered before fitting. All nine real arm64 Torch
-fits have completed 36,000 updates. Predictions are being frozen; comparative
-outcomes have not yet been scored.
+fits have completed 36,000 updates. All nine prediction pairs are frozen and
+the flat controls reproduce exactly; comparative outcomes have not yet been scored.
 Independent outcomes remain closed. [Protocol](outputs/publication_readiness_2026_09/european_agent_track_refit_v1/protocol.md).
 
 **Current result:** keeping partial neighbor histories has not produced a
