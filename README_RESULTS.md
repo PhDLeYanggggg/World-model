@@ -19,7 +19,10 @@ Registration`fe3a39f6`preceded a real100-update pilot:7.24process seconds,
 6.09GBpeak RSS,25,028parameters, zero unknown-label training draws. The
 443,949byte checkpoint implies a conservative96MBfor108compressed checkpoints;
 free disk11.06GiBat the pilot. Resume includes the100updates in the2,000budget.
-Full training/readout pending;16scoped preflight tests passed.
+All108new heads completed216,000updates in314.49process seconds, peak RSS11.13GB,
+PID34588. Shared initialization, full draws/RNG and unchanged settings match
+every frozen control. New predictions and actions are frozen before readout;
+training completion is not a downstream success.31scoped technical tests pass.
 [Protocol](outputs/publication_readiness_2026_09/european_causal_descriptor_refit_v1/protocol.md).
 
 ## Fixed-Model Source-Gap Slices (2026-09-27, Verified Diagnostic)
