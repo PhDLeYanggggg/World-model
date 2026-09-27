@@ -10,16 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing whether a small monotone risk readout can
-preserve expected harm while reducing prediction error. The
-[shape study](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md)
-keeps the original metrics and controls, uses only honest fitting-side OOF
-scores, and freezes predictions before source-held scoring. Independent roles
-remain closed. Fifteen targeted implementation tests pass. The first real-data
-view completed all six fits and its numerical checks without held labels.
-All 864 readouts are now fitted; all 432 mean-constrained models match both
-training moments. Predictions are frozen before scoring. Scientific results are pending.
-This is not new neural training.
+**Current result:** more flexible risk readouts fix the fitting constraint,
+but not the held-scene prediction problem. I completed
+[864 monotone readout fits](outputs/publication_readiness_2026_09/european_cost_shape_v1/conclusions.md)
+and 144 source-held evaluations on verified frozen neural predictions.
+Every mean-constrained model matches both training harm means. None of the
+six primary intervals favors the main repair over the raw or origin-L2
+control; two and three intervals, respectively, favor those controls.
+
+Adding mean constraints to the same shape model worsens the primary in five
+of six full-input comparisons. Coverage can improve while tail capture gets
+worse. The [failure analysis](outputs/publication_readiness_2026_09/european_cost_shape_v1/failure_analysis.md)
+keeps those tradeoffs and the negative motion-only results visible.
+These are expected-risk costs, not a new trajectory gain or new neural training.
+
+I am not changing deployment or continuing a global-readout parameter sweep.
+The next question concerns causal context and effective rare-event support.
+Independent selection, calibration and confirmation remain closed. Exact
+replay is running; the [results ledger](README_RESULTS.md) records its status.
 
 **Previous result:** matching the average predicted harm is not enough to
 estimate which interventions will be harmful. I completed a fixed

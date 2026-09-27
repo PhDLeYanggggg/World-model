@@ -5,23 +5,46 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cost-Shape Study (2026-09-27, Full Fitting Complete; Scoring Pending)
+## Cost-Shape Study (2026-09-27, Scientific Screens Failed)
 
-The next controlled experiment compares fixed monotone readouts with and
-without fitting-only mean constraints. It retains all 144 source views,
-three seeds, true/shuffled controls, the existing primary and every guard.
-Fifteen targeted tests pass, including an independent numerical solver
-comparison. Registration 182c0222 preceded the real-data pilot. Its six fits
-completed on 9,019 supported fitting rows in 15.31 seconds, excluding ancestry
-checks. All three mean-constrained models preserve both moments; all numerical
-optimality checks pass. The full 864-readout matrix is now complete across
-144 views. All 432 constrained readouts preserve both moments; the maximum
-normalized convex certificate gap is 7.14e-15. Fitting heartbeat span363s,
-PID84730,with per-view recovery receipts. Predictions are frozen before held
-scoring,which has not yet run. These fitting checks do not imply held accuracy.
-CREATE was
-checked read-only; no job was submitted or modified. Independent roles and
-deployment stay unchanged. [Protocol](outputs/publication_readiness_2026_09/european_cost_shape_v1/protocol.md).
+I completed 864 fixed monotone readouts and 144 source-held evaluations,
+retaining three seeds, true/shuffled controls, the existing primary and every
+guard. Registration182c0222 and prediction freeze63136a34 preceded held scoring.
+Neural heads and raw/L2/mass controls are cached-verified; there was no new
+neural training. All432 mean-constrained models match both training moments,
+with maximum normalized convex certificate gap7.14e-15 across1728 solves.
+
+Full-input cost-only shape mass versus raw has0 positive,2 negative and4
+overlapping primary intervals; versus origin L2 it has0/3/3. Against the same
+shape without mean constraints it has0/5/1. Coverage-log error improves in5/6
+comparisons against origin L2, but top10 capture worsens in3/6. True auxiliary
+versus cost-only has1/0/5; versus shuffled2/0/4. These partial signals do not
+satisfy the fixed primary and protection gates.
+
+The fitting/held distinction matters: shape mass improves full-input cost-only
+fitting MSE versus origin mass in66/72 views, but31 of those improvements do
+not carry to held MSE. All1440 absolute locality/method/subset records and72
+descriptive fitting-transport summaries are retained. Motion-only's worst
+registered point gain versus L2 is-27619.23%; the absolute-cost companion
+explains the small denominator without removing that failure.
+
+All1728 direct MSE checks pass. Fitting/scoring heartbeat spans are363/240s,
+excluding ancestry preflight. CREATE was inspected read-only; no remote job
+was submitted or modified. Seventeen new scoped tests pass; the dependency
+suite also passed148 tests before the last two diagnostic tests were added.
+Full exact fitting/scoring/report replay is currently running.
+
+Only fitting feasibility passes; primary,guard,auxiliary-information and
+development screens fail. Global readout shape/scale tuning stops under the
+registered rule. The next work must test causal context or effective event
+support, not another favorable threshold. No new trajectory policy,
+independent confirmation or deployment gain is claimed. Stage5C/SMC stay off.
+[Conclusions](outputs/publication_readiness_2026_09/european_cost_shape_v1/conclusions.md),
+[all intervals](outputs/publication_readiness_2026_09/european_cost_shape_v1/results.md),
+[absolute costs](outputs/publication_readiness_2026_09/european_cost_shape_v1/absolute_cost_context.md),
+[fitting versus held](outputs/publication_readiness_2026_09/european_cost_shape_v1/fitting_transport.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_shape_v1/failure_analysis.md),
+[next question](outputs/publication_readiness_2026_09/european_cost_shape_v1/project_gap.md).
 
 ## Cost-Mass Readout Study (2026-09-27, Scientific Screens Failed)
 

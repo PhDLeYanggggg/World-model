@@ -15,6 +15,14 @@ heartbeats span363s,excluding ancestry checks. Maximum normalized convex
 certificate gap7.14e-15. No held scoring has run at the prediction freeze.
 This is not a scientific success claim. Native arm64,CPU4/interop1,workers0.
 
+Prediction freeze63136a34 preceded evaluation PID85765. Scoring completed144
+views and1728 direct MSE checks;heartbeats span240s. Scientific primary,guard
+and auxiliary-information screens fail;only fitting feasibility passes.
+Verification wrapper PID86851 replays fitting,scoring,aggregate reports,
+absolute/fitting-transport diagnostics and six figures. Its completion status
+is recorded in reproducibility_checklist.md and verification.json,not inferred
+from the wrapper merely starting. No full legacy-suite success is claimed.
+
 CREATE read-only queue receipt SHA256:
 `7ba68bbc93cf8e7db5f413952e7e8a442bc1d02a3df0a83bfb7e301e52fe5a92`.
 Observation2026-09-27T05:22:33Z:37542192 pending Priority;37542492 and37542323

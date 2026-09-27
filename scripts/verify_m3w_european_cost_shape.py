@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]; sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_european_cost_shape as run
 from scripts.verify_m3w_european_cost_mass import TESTS as PARENT_TESTS
-TESTS=['tests/test_m3w_cost_shape.py','tests/test_m3w_cost_shape_report.py',*PARENT_TESTS]
+TESTS=['tests/test_m3w_cost_shape.py','tests/test_m3w_cost_shape_report.py','tests/test_m3w_cost_shape_transport.py',*PARENT_TESTS]
 
 
 def execute(args,label):
@@ -23,7 +23,7 @@ def main():
     for phase in ('verify_fit','verify_eval'):
         logs.append(execute(['scripts/run_m3w_european_cost_shape.py','--phase',phase],phase))
     names=['aggregate_metrics.json','fitting_diagnostics.json','compute_receipt.json','results.md',
-        'absolute_costs.csv','absolute_cost_summary.json','absolute_cost_context.md',
+        'absolute_costs.csv','absolute_cost_summary.json','absolute_cost_context.md','fitting_transport.json','fitting_transport.md',
         'shape_controls.svg','shape_auxiliary.svg','shape_L2_controls.svg',*[f'shape_guard_{i}.svg' for i in range(3)]]
     before={p:run.digest(run.PUBLIC/p) for p in names}
     for script,label in [('report','report_replay'),('diagnose','absolute_cost_replay'),('plot','plot_replay')]:
