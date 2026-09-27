@@ -20,6 +20,11 @@ role opening. Registration `51a70c04` preceded a real100-update native pilot:
 is resumed into the full2,000-update budget for all108heads.
 Local native CPU4 is appropriate based on the completed predecessor
 fit; keep10GiB free disk and checkpoint every500updates. No results claimed yet.
+All108new heads completed216,000updates in240.02process seconds, peak RSS9.71GB,
+PID30724. Every head matches its frozen MSE control's initial model, optimizer
+settings, complete training draws/RNG and preprocessing. Decisions are frozen
+before readout. The latest approved CREATE queue query succeeded read-only;
+no remote job or environment was changed.
 [Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_excess_v1/protocol.md).
 
 ## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Verified, Primary Failed)
