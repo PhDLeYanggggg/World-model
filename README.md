@@ -124,8 +124,10 @@ Why does better risk prediction on fixed proxy groups fail to control harm on
 the groups actually chosen by the optimizer? The next step is a frozen-action
 residual and support diagnosis, followed by one preregistered targeted repair.
 The [diagnostic protocol](outputs/publication_readiness_2026_09/european_selected_risk_diagnosis_v1/protocol.md)
-is now specified; it measures selected-row residuals, fitting-source support,
-and added harm versus lost benefit without changing any frozen decision.
+has now run and replayed exactly on all 108 groups. Selected risks are
+underpredicted even within inspected descriptor support; average optimism is
+not higher than on unselected eligible rows. The next fitting-only probe checks
+the exact loss-weighted score bias before changing any policy.
 I will not tune thresholds on these readouts or open independent confirmation
 data to rescue the method.
 
