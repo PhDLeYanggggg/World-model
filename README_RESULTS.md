@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched Partial-Neighbor Refit (2026-09-27, Training)
+## Matched Partial-Neighbor Refit (2026-09-27, Trained; Unscored)
 
 The input audit motivates one versioned neural repair, not a smoothing or
 threshold sweep. Nine new models retain the old initialization, parameter
@@ -17,13 +17,18 @@ are not independent samples. Registration c2df9fb5 preceded training.
 The pilot ran 100 updates in 2.24 training seconds, then resumed to the
 4,000-update legacy endpoint in 91.87 cumulative training seconds. Every
 parameter and the sampling state match the cached control exactly. Nine new
-models are now training; predictive lift is not_run until prediction freeze.
+models have now completed 36,000 updates in 899.93 cumulative training seconds
+(902.94-second training process, peak RSS1.66GB). Each has88,514 parameters;
+no held-locality row was sampled. Predictive lift is not_run until prediction freeze.
 No independent-role access or deployment change.
 [Protocol](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/protocol.md),
 [data/model scope](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/data_model_card.md),
 [recovery and reproduction](outputs/publication_readiness_2026_09/european_partial_neighbor_refit_v1/reproducibility.md).
 Reporting code and changed/unchanged-input diagnostic slices are fixed before
 comparative readout. The slices do not change the primary or select a model.
+The input-only check finds54.10 versus50.51 valid neighbor-history slots per
+query: nearer incomplete neighbors can displace complete histories. Coverage
+and information are not interchangeable; no outcome-based adjustment is made.
 
 ## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 

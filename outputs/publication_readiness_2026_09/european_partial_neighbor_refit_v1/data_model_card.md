@@ -51,6 +51,8 @@ Seeds17/29/43, nine new models, 4,000 updates each, batch64, unchanged AdamW
 schedule and masked trajectory loss. Equal-locality sampling and factors are
 matched to cached controls. A fresh legacy control verifies the full endpoint
 and pilot-resume path exactly. No best seed, epoch or threshold is selected.
+Reported means average separate producer evaluations; they are not the
+performance of an ensemble selected for deployment.
 
 ## Reporting and Limits
 

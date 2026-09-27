@@ -17,6 +17,17 @@ def main():
     frozen=json.loads(path.read_text())
     changed=np.any(data['geometry'][:,38:294]!=partial['geometry'][:,38:294],axis=1)
     assert int(changed.sum())==282529
+    old_mask=data['geometry'][:,230:294].reshape(-1,8,8)>0
+    new_mask=partial['geometry'][:,230:294].reshape(-1,8,8)>0
+    old_slots=old_mask.sum((1,2)); new_slots=new_mask.sum((1,2))
+    support=dict(old_mean_current_neighbors=float(old_mask.any(2).sum(1).mean()),
+        new_mean_current_neighbors=float(new_mask.any(2).sum(1).mean()),
+        old_mean_valid_neighbor_slots=float(old_slots.mean()),
+        new_mean_valid_neighbor_slots=float(new_slots.mean()),
+        changed_queries=int(changed.sum()),
+        changed_queries_fewer_valid_slots=int(((new_slots<old_slots)&changed).sum()),
+        changed_queries_more_valid_slots=int(((new_slots>old_slots)&changed).sum()),
+        changed_queries_equal_valid_slots=int(((new_slots==old_slots)&changed).sum()))
     roster=sorted(set(data['sites'])); rows=[]
     for job,ref in zip(jobs,frozen['predictions']):
         assert job['key']==ref['key']
@@ -42,7 +53,7 @@ def main():
             summaries[group+'_'+subset]=paired_localities(rr,roster,'gain_vs_legacy_percent',
                 cfg['bootstrap_draws'],cfg['bootstrap_seed'])
     doc=dict(prediction_freeze_sha256=run.digest(path),causal_grouping_only=True,
-        descriptive_not_primary=True,thresholds_selected=False,rows=rows,summaries=summaries)
+        descriptive_not_primary=True,thresholds_selected=False,input_support=support,rows=rows,summaries=summaries)
     run.immutable_json(run.PUBLIC/'input_slices.json',doc)
     lines=['# Input-Support Diagnostic', '',
         'Descriptive source slices, not a new selection criterion or a causal mediation analysis.',
@@ -55,6 +66,9 @@ def main():
         'A contrast between these groups cannot separate normalization, nearest-agent membership, mask support,',
         'detector noise or the true usefulness of interactions. Undefined fixed-roster percentages stay undefined.',
         'There is no seed selection, threshold search, risk-policy refitting or independent-role access.']
+    lines += ['', '## Observed Support', '', '| Quantity | Value |', '|---|---:|']
+    lines += [f'| {k} | {v} |' for k,v in support.items()]
+    lines += ['', 'These counts describe observed inputs, not interaction relevance or annotation accuracy.']
     (run.PUBLIC/'input_slices.md').write_text('\n'.join(lines)+'\n')
     print(json.dumps(dict(rows=len(rows),summaries={k:v['point'] for k,v in summaries.items()})))
 
