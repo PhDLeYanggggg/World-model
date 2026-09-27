@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Moment Cross-Fit (2026-09-27, Registered, Training Pending)
+
+The next diagnostic separates reference-cost calibration from positive-harm
+calibration in the matched controller. For each producer/seed/candidate and
+four-locality controller roster, fit the same all-risk head on three localities
+and hold one out. Planned144 heads at2000 updates, no architecture or loss change.
+Fitting-only normalization and score bins; bootstrap at the locality level.
+The fixed2% screen is a diagnostic, not the full deployment policy.
+43 tests in five scoped files pass before training. The outer readout and
+independent roles are not scored. Deployment, Stage5C and SMC remain unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/protocol.md).
+
 ## Matched Intervention Refit (2026-09-27, Safe Mean Behavior, Primary Benefit Fails)
 
 This experiment freezes the improved dimensionless predictor and fits

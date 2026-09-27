@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Current experiment:** I am separating two possible risk-head failures:
+underestimated intervention harm and overestimated reference error. A fixed
+three-source-fit/one-source-held diagnostic retains the same forecaster, features,
+loss and 2% risk screen. It does not tune a deployment policy or open independent
+evaluation roles. The 144-head design is registered before training;
+43 scoped preflight tests pass. [Protocol](outputs/publication_readiness_2026_09/european_risk_moment_crossfit_v1/protocol.md).
+
 **Latest result:** protecting easy cases is now possible in this source study,
 but the protected neural model still loses to equally protected damping. I froze
 the improved forecaster and trained 108 matched gain/harm heads across three
