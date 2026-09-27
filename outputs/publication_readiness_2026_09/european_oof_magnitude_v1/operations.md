@@ -30,6 +30,14 @@ The support and prediction files enforce ordering. Immutable receipts prevent
 silent replacement. Interrupted, incomplete heads use the same final2000-update
 budget; completed compressed heads are hash-verified and replayed, not retrained.
 
+If interrupted after compression but before the completion receipt, run
+`scripts/recover_m3w_oof_magnitude_checkpoint.py` for a dry inspection, then the
+same command with `--restore` before `--phase train --resume`. The helper takes
+the experiment lock, refuses to modify a running experiment, preserves the gzip
+archive and leaves existing raw or receipt-complete checkpoints untouched.
+Resume still validates identity, inputs and optimizer state in the normal loop.
+This recovery corner is tested, not an observed interruption in the current run.
+
 ## Storage and Git
 
 Private root: `data/stage_cvpr2027_experiments/european_oof_magnitude_v1/`.
