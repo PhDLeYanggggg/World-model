@@ -5,24 +5,66 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Signed Risk-Budget Objective (2026-09-27, Trained, Predictions Frozen)
+## Signed Risk-Budget Objective (2026-09-27, Verified, Neural Benefit Fails)
 
 The matched repair changes only the loss from two independent moment errors to
 the squared error of `positive_harm - 0.02 * CV_error`. The exact architecture,
-initialization, causal355features, sampler, normalizers, seeds and2000-update
-budget stay fixed.144 new heads are compared with the sealed moment controls;
+initialization, 355 causal features, sampler, normalizers, seeds and 2000-update
+budget stay fixed. 144 new heads are compared with the sealed moment controls;
 the new output components are an internal score basis, not calibrated moments.
 51 scoped preflight tests cover target detachment, zero-reference harm, exact
 resume, matched draws and the distinction between positive harm and net error.
-Predictions will be frozen before scoring. Independent roles, deployment,
+Predictions were frozen before scoring. Independent roles, deployment,
 Stage5C and SMC remain unchanged. Registration `304f826c` preceded training.
-All144 new heads completed288,000 updates:232.12 cumulative fit seconds,
-348.65 process seconds, peak RSS8.27GB. All144 sampler states/draw counts match
-their sealed controls, and all144 fresh control inferences match cache.
-Unknown-label training draws are zero. Predictions are frozen before scoring;
-completed training is not an empirical benefit result. A fresh CREATE queue
+All 144 new heads completed 288,000 updates: 232.12 cumulative fit seconds,
+348.65 process seconds, peak RSS 8.27GB. All 144 sampler states/draw counts match
+their sealed controls, and all 144 fresh control inferences match cache.
+Unknown-label training draws are zero. Prediction freeze `5d90b783` preceded
+scoring. A fresh CREATE queue
 query succeeded read-only; no jobs were submitted or changed.
 [Protocol](outputs/publication_readiness_2026_09/european_risk_excess_v1/protocol.md).
+
+The primary neural held-source signed-score MSE improvement is **-3.0567%
+[-12.3214%, 3.9083%]**, despite fitting improvement of 27.25%. This does not
+establish improvement or statistically certain deterioration. Damping improves
+**7.1830% [2.6455%, 12.2670%]**, with positive lower intervals for all three seeds.
+The bootstrap averages dependent views within each of 12 localities before
+3,000 locality resamples; these are development sources, not new confirmation.
+
+At the unchanged risk-only score<=0 screen, neural positive harm/reference falls
+from 4.8669% to **3.5227% [2.4851%, 4.6424%]**, still above the 2% budget.
+Nine locality means exceed 2%. Neural net ADE gain vs CV rises from 0.8591% to
+1.0896%, but the paired change of **0.2306 percentage points [-0.1804, 0.7676]**
+does not establish selection lift. Damping's net gain rises from 2.2262% to
+4.6041%; paired change **2.3779 points [1.6508, 3.3135]** is positive across all
+12 locality point estimates. Damping's mean risk ratio is 1.9357%, but its upper
+interval is 3.2058% and three locality means exceed budget. Neither is certified.
+
+Mean easy gains hide individual failures: neural has 5/72 dependent views worse
+than 2%, worst **5.6144% easy degradation**; damping has 3/72, worst 3.0685%.
+One neural row-view worsens a zero-error CV reference by 0.17435419 image-local
+ADE. Its last observed displacement is zero, so the existing stationary guard
+would deny it. This screen deliberately omits stationary/utility/easy guards;
+no complete-policy reevaluation or safety certificate follows. Positive harm is
+not net ADE degradation, and score components are not calibrated moments.
+
+All 144 new and 144 control forecasts replay exactly. A fixed-first full
+2,000-step training replay matches parameters, optimizer, RNG, sampling and
+losses. Scoring replay is exact, and reports/figure reproduce byte-for-byte.
+**56 tests in eight scoped files pass**. The seal binds 19 public artifacts and
+117 source files. Full legacy suite and cold raw rebuild are not_run.
+
+Next is registered source-separated calibration/support-aware fallback for both
+fixed score families, keeping the 2% tolerance, existing safety guards and strong
+damping control. Held localities must be excluded from the entire producer and
+calibration chain. No independent roles were opened; deployment is unchanged.
+This is silver image-local obs8/pred12 at raw-frame stride12, not historical
+Stage37t50, metric, seconds, physical safety, true3D or foundation evidence.
+[Results](outputs/publication_readiness_2026_09/european_risk_excess_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_excess_v1/failure_analysis.md),
+[worst-view diagnosis](outputs/publication_readiness_2026_09/european_risk_excess_v1/slice_diagnosis.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_risk_excess_v1/paper_addendum.md),
+[verification](outputs/publication_readiness_2026_09/european_risk_excess_v1/verification.json).
 
 ## Cost-Moment Cross-Fit (2026-09-27, Verified, Conditional Risk Fails)
 

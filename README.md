@@ -10,14 +10,37 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Running next:** a registered loss-only comparison directly learns whether a
-candidate exceeds its 2% risk budget. It retains the same forecaster, inputs,
-architecture, sampling and three seeds. This is a 144-head source-development
-experiment, not a new deployment policy. All 144 heads completed 288,000 updates;
-sampling matches and fresh control inferences are exact. Predictions are frozen
-before comparative scoring. [Protocol](outputs/publication_readiness_2026_09/european_risk_excess_v1/protocol.md).
+**Latest experiment:** I changed the risk-head loss to learn positive harm minus
+2% of the constant-velocity reference error directly. The matched comparison
+keeps the same forecasting models, architecture, causal inputs, initial weights,
+sampling and three seeds. All 144 heads completed 288,000 updates, and their
+predictions were frozen before scoring.
 
-**Latest diagnosis:** the risk heads learn useful average predictions, but that
+The change helps the strong damping control, but does not establish a neural
+benefit. Neural held-source risk-score MSE changes by **-3.06% improvement
+[-12.32%, 3.91%]**; the interval crosses zero. Damping improves by **7.18%
+[2.65%, 12.27%]**. Under the fixed diagnostic screen, damping's ADE gain over
+constant velocity rises from 2.23% to 4.60%; the paired increase is **2.38
+percentage points [1.65, 3.31]**. The neural paired increase is only 0.23 points
+[-0.18, 0.77], so there is no demonstrated neural selection lift.
+
+Safety remains unresolved. Neural screened positive harm is **3.52%
+[2.49%, 4.64%]** of reference error despite a nominal 2% budget. The worst
+individual neural source/seed view degrades easy ADE by **5.61%**. Damping also
+has unsafe individual views. These risk-only screens omit the complete policy's
+stationary, utility and easy guards; they are not deployable policies.
+
+All 144 new and 144 control predictions replay exactly, as does a complete
+first-head training run. **56 tests in eight scoped files pass**; reports and
+the aggregate figure reproduce byte-for-byte. I am keeping deployment unchanged.
+Next is strictly source-separated calibration and support-aware fallback, with
+damping retained as a strong control. Independent evaluation roles remain closed.
+[Results](outputs/publication_readiness_2026_09/european_risk_excess_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_excess_v1/failure_analysis.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_risk_excess_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_risk_excess_v1/verification.json).
+
+**Preceding diagnosis:** the risk heads learn useful average predictions, but that
 does not make their chosen interventions reliable. I trained 144 matched heads
 with three-source fitting and one-source holdout. On held sources, the neural
 head reduces reference-error MSE by **13.41%** and harm MSE by **14.88%** against
@@ -27,8 +50,8 @@ fitting sources that ratio is 2.85%. This is not net ADE or easy degradation,
 and the diagnostic screen is not the complete deployment policy.
 
 Both overestimated reference error and underestimated harm contribute to the
-mismatch. I am keeping deployment unchanged and testing a direct risk-budget
-objective next, followed by strictly source-separated calibration. Independent
+mismatch. This motivated the direct risk-budget objective evaluated above;
+strictly source-separated calibration remains next. Independent
 evaluation roles remain closed. The 288,000-update run, all 144 prediction
 replays and a full first-head training replay are complete; **48 scoped tests
 pass**. Reports and the aggregate figure reproduce byte-for-byte.

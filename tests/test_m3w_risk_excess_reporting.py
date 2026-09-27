@@ -9,7 +9,7 @@ def test_report_paths_and_replay(tmp_path, monkeypatch):
     values = metric(np.ones(2), np.ones(2)*2, [[1, 1], [2, 0]], [2, 1], 0, 1, 1.5, 1.8)
     s = {scope+'_'+k: dict(point=v, ci95=[v, v] if v is not None else None)
          for scope in ('fit','held') for k, v in values.items()}
-    (p/'summary.json').write_text(json.dumps(dict(by_candidate=dict(dimensionless=s,damped=s), by_seed={}, gates={'deployment_changed':False})))
+    (p/'summary.json').write_text(json.dumps(dict(by_candidate=dict(dimensionless=s,damped=s), by_seed={}, rows=[], gates={'deployment_changed':False})))
     r = dict(fit=dict(step=2000, seconds=1., unknown_rows_sampled=0), matched_sampling_exact=True, control_inference_exact=True)
     (tmp_path/'complete.json').write_text(json.dumps(r))
     (p/'prediction_freeze.json').write_text(json.dumps(dict(heads=[dict(path='complete.json')])))

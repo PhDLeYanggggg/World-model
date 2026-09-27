@@ -11,7 +11,7 @@ from scripts import run_m3w_european_risk_excess as run
 
 
 def main():
-    d = json.loads((run.PUBLIC/'summary.json').read_text())['by_candidate']
+    doc = json.loads((run.PUBLIC/'summary.json').read_text()); d = doc['by_candidate']
     fig, axes = plt.subplots(2, 2, figsize=(11, 7.8), layout='constrained')
     colors = dict(dimensionless='#167d8d', damped='#a85326')
     def point(ax, value, y, arm, factor=1):
@@ -37,7 +37,9 @@ def main():
     for ax in axes.flat:
         ax.spines[['top','right']].set_visible(False); ax.grid(axis='x', alpha=.15); ax.tick_params(labelsize=8)
     fig.suptitle('A matched risk-objective change: prediction error and screening behavior', fontsize=13)
-    fig.supxlabel('12 opened source localities; 3 seeds; 3,000 locality bootstrap draws. All-risk-only screen, not deployment.', fontsize=9)
+    worst = min(r['metric']['held_new_easy_ADE_gain_vs_CV_percent'] for r in doc['rows'] if r['candidate']=='dimensionless')
+    fig.supxlabel('12 opened source localities; 3 seeds; 3,000 locality bootstrap draws. All-risk-only screen, not deployment.\n'
+        f'Locality means can hide individual failures: worst neural view easy degradation {-worst:.2f}%.', fontsize=8)
     fig.savefig(run.PUBLIC/'risk_excess_evidence.png', dpi=150, metadata={'Software':'M3W fixed aggregate plot'})
     plt.close(fig)
 

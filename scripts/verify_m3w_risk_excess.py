@@ -24,7 +24,7 @@ def main():
     for key in ('summary','detail'): assert run.artifact(ROOT/ev[key]['path']) == ev[key]
     before = {p.name: run.digest(p) for p in run.PUBLIC.iterdir()
               if p.suffix in ('.json','.md','.png') and p.name != 'verification.json'}
-    for script in ('report_m3w_risk_excess.py', 'plot_m3w_risk_excess.py'):
+    for script in ('report_m3w_risk_excess.py', 'plot_m3w_risk_excess.py', 'diagnose_m3w_risk_excess.py'):
         process = subprocess.run([sys.executable, 'scripts/'+script], cwd=ROOT, capture_output=True, text=True)
         if process.returncode: raise RuntimeError(process.stderr)
     assert before == {name: run.digest(run.PUBLIC/name) for name in before}
@@ -35,7 +35,7 @@ def main():
     parent = json.loads((run.parent.PUBLIC/'verification.json').read_text())
     bindings = dict(parent['source_bindings']); bindings.update(identity['bindings'])
     extra = ['scripts/replay_m3w_risk_excess_training.py','scripts/report_m3w_risk_excess.py',
-             'scripts/plot_m3w_risk_excess.py','scripts/verify_m3w_risk_excess.py', *TESTS]
+             'scripts/plot_m3w_risk_excess.py','scripts/diagnose_m3w_risk_excess.py','scripts/verify_m3w_risk_excess.py', *TESTS]
     bindings.update({p: run.digest(ROOT/p) for p in extra})
     for p, h in bindings.items(): assert run.digest(ROOT/p) == h
     run.immutable_json(run.PUBLIC/'verification.json', dict(source_bindings=bindings, artifacts=before,

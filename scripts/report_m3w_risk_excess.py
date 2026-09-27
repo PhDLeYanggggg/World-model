@@ -47,6 +47,14 @@ def main():
     rows += ['', '## Three Seeds', '', '| Candidate | Seed | Held signed-MSE improvement % |', '|---|---:|---:|']
     for arm, seeds in d['by_seed'].items():
         for seed, s in seeds.items(): rows.append(f"| {arm} | {seed} | {interval(s['held_MSE_gain_vs_control_percent'])} |")
+    rows += ['', '## Individual-View Failures', '',
+        'The locality-mean easy gate averages dependent producer/seed views; it does not certify every view.', '',
+        '| Candidate | Worst view easy gain % | Views with easy degradation >2% | Zero-reference harmed row-views |',
+        '|---|---:|---:|---:|']
+    for arm in ('dimensionless','damped'):
+        rr = [r['metric'] for r in d['rows'] if r['candidate'] == arm]
+        if rr:
+            rows.append(f"| {arm} | {min(r['held_new_easy_ADE_gain_vs_CV_percent'] for r in rr):.4f} | {sum(r['held_new_easy_ADE_gain_vs_CV_percent'] < -2 for r in rr)}/{len(rr)} | {sum(r['held_new_zero_reference_harmed'] for r in rr)} |")
     rows += ['', '## Screens and Limitations', '', *[f'- {k}: {v}' for k, v in d['gates'].items()], '',
         'The new two components are an internal parameterization: only their signed combination',
         'is supervised, so interpreting either component as a calibrated moment is invalid.',
