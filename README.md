@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**In progress:** I am isolating the next failure mode with matched bounded
+neural risk heads. Ordinary moment loss is compared with extra weight on
+high-harm training examples. Forecasts, fallback, utility, features, source
+roles and thresholds stay fixed. A same-frame, equal-intervention-count
+control distinguishes better ordering from simply rejecting more predictions.
+These are risk heads, not a new trajectory forecaster; independent roles remain
+closed and no deployment changes are planned from development scores alone.
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/protocol.md).
+
 **Latest result:** the neural forecasts do contain useful incremental predictions,
 but the model still underestimates the harm of its chosen interventions.
 I fixed the same protected-damping fallback for both training and held scenes,

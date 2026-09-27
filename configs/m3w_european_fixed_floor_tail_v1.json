@@ -1,0 +1,23 @@
+{
+  "name": "european_fixed_floor_tail_v1",
+  "parent_seal_sha256": "ccfc04fcfebba5bd4f14122a93b6a5475672b51cba93651bab2be879a810391b",
+  "seeds": [17, 29, 43],
+  "arms": ["mse", "tail4"],
+  "head_count": 216,
+  "groups": 108,
+  "risk_budget": 0.02,
+  "positive_harm_tail_quantile": 0.9,
+  "tail_multiplier": 4.0,
+  "head_training": {"width": 64, "steps": 2000, "batch_size": 256, "learning_rate": 0.0003, "gradient_clip": 5.0, "checkpoint_every": 500, "heartbeat_every": 500},
+  "pilot_updates": 100,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 91531,
+  "primary": "matched_query_count_positive_harm_reduction_tail_vs_mse",
+  "primary_coverage_minimum": "nonzero_each_locality",
+  "threshold_search": false,
+  "new_forecaster_training": false,
+  "independent_roles_read": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

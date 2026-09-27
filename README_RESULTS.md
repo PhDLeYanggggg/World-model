@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Floor Tail-Weighted Risk Heads (2026-09-27, Registered)
+
+216 matched bounded neural risk heads,108 four/four/two/two source groups.
+Treatment upweights each harm target's fitting-only positive90th-percentile tail
+by4, normalizing by fitting mean weight. Control uses ordinary moment MSE.
+Both retain identical architecture, draws,2,000updates, preprocessing, frozen
+floor/utility, features and2% risk screens. Weighted outputs are tilted scores,
+not calibrated expected harm. A same-recording/frame count-matched MSE ranking
+separates selection quality from coverage changes; no later-frame allocation.
+No held threshold search, trajectory retraining, independent-role opening or
+deployment. Pilot100updates will resume into the fixed2,000-update budget.
+[Protocol](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/protocol.md),
+[method positioning](outputs/publication_readiness_2026_09/european_fixed_floor_tail_v1/method_positioning.md).
+
 ## Fixed-Producer Floor Probes (2026-09-27, Verified, Risk Gate Fails)
 
 The prior floor-relative experiment failed with older forecast banks and a
