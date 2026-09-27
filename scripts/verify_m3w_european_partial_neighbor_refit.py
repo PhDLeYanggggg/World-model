@@ -11,7 +11,8 @@ from scripts import run_m3w_european_partial_neighbor_refit as run
 from scripts.verify_m3w_european_observation_quality import TESTS as INPUT_TESTS
 
 TESTS=INPUT_TESTS+['tests/test_m3w_partial_neighbor_refit.py','tests/test_m3w_native_forecast.py',
-                 'tests/test_m3w_native_metrics.py','tests/test_m3w_neighbor_association_probe.py']
+                 'tests/test_m3w_native_metrics.py','tests/test_m3w_neighbor_association_probe.py',
+                 'tests/test_m3w_agent_track_context.py']
 
 
 def main():
@@ -48,7 +49,8 @@ def main():
     sources=sorted(set(list(observation['source_bindings'])+run.FILES+TESTS+
         ['scripts/report_m3w_european_partial_neighbor_refit.py','scripts/verify_m3w_european_partial_neighbor_refit.py',
          'scripts/diagnose_m3w_european_partial_neighbor_refit.py',
-         'scripts/probe_m3w_neighbor_association.py','src/evaluation/m3w_neighbor_association_probe.py']))
+         'scripts/probe_m3w_neighbor_association.py','src/evaluation/m3w_neighbor_association_probe.py',
+         'src/world_model/m3w_agent_track_context.py']))
     run.immutable_json(dest,dict(fresh_neural_models=9,updates_per_model=4000,
         legacy_parameter_and_sampler_reproduction_exact=True,
         nine_pair_full_inference_replay_exact=True,readout_replay_exact=True,reports_figure_byte_reproducible=True,

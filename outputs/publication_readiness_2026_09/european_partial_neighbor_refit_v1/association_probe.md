@@ -30,5 +30,9 @@ geometry. The result does not establish that tracking identity would improve
 forecasting. It does show that this representation cannot directly distinguish
 different supplied track associations with identical per-time observations.
 An agent-wise temporal encoder followed by agent interaction is a specific
-next hypothesis, not a result or an already trained repair. No deployment
-changes follow from this probe.
+next hypothesis. A separate candidate now implements this two-layer topology
+with identical parameter shapes and initial baseline output. Three structural
+tests check association sensitivity, consistent-agent permutation invariance,
+finite gradients and missing-agent robustness. This is not a trained repair
+or predictive gain, and it is excluded from the registered nine-model comparison.
+No deployment changes follow from this probe.

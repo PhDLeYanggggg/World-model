@@ -35,6 +35,9 @@ also shows that independently reassigning neighbor positions across past times
 barely changes the trained model when each time's point set is unchanged. The
 flattened representation discards supplied track associations. This is a
 structural limitation, not evidence that an identity-aware repair improves accuracy.
+A separate grouped-history candidate passes three structural tests with the
+same parameter shapes and initial causal floor. It is not trained and is not
+part of the registered nine-model comparison.
 
 ## Observation Quality and Partial Neighbors (2026-09-27, Verified Input Repair)
 
