@@ -5,10 +5,10 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Honest OOF Magnitude Study (2026-09-27, Predictions Frozen)
+## Honest OOF Magnitude Study (2026-09-27, No Model Promotion)
 
 I am testing whether the auxiliary head's ranking signal can support better
-expected-harm magnitudes. The same two-slope readout is applied to cost-only,
+expected-harm magnitudes. The same two-slope readout was applied to cost-only,
 true auxiliary and shuffled auxiliary controls. A new deepest fitting-only
 reference layer excludes both inner and outer held localities; older references
 cannot be reused there because they include the inner held locality.
@@ -21,20 +21,39 @@ power. Twenty-five scoped preflight tests pass, including real synthetic Torch
 training/resume and lossless archive replay. The real-data pilot completed three
 reference heads and 200 auxiliary updates with finite losses, matched provenance
 and zero unknown-label sampling. Estimated auxiliary fitting time is 29.2 minutes,
-excluding references, loading and diagnostics. Full training follows the same
-fixed budget with resume; source-held readout remains not_run. Independent roles
-stay closed. Registration `35a05b87` and support `bf1ab738` preceded this pilot.
+excluding references, loading and diagnostics. Full training completed that
+fixed budget with resume. Independent roles stay closed. Registration
+`35a05b87` and support `bf1ab738` preceded this pilot.
 Training PID 57873 completed normally: 144 single-site references and 864
 auxiliary heads, totaling 2,016,000 updates. Recorded fitting took 1,981.76
 seconds; the training phase took 2,480.92 seconds after ancestry preflight.
 Unknown-label draws are zero; no incomplete archive remains. A further held-locality
 perturbation test passes. Two archive-recovery corner tests bring scoped
 preflight coverage to 28 tests; no interruption occurred in this run.
-Inner freeze `e27681e3` preceded all 432 magnitude fits. Their 144 outer views
-are now frozen before new source-held readout. These are execution facts, not
-a scientific result. The fitting diagnostics
-are fixed before readout and will retain sparse-event and easy-cut drift.
-[Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
+Inner freeze `e27681e3` preceded all 432 magnitude fits. Outer freeze `1a852ca5`
+preceded the complete 144-view source-held readout and 1,728 direct MSE checks.
+
+The primary, guard, auxiliary-information and advance gates all fail. For
+full inputs, scaled true auxiliary vs scaled cost-only has 2 positive,
+0 negative and 4 overlapping-zero cost intervals, with point estimates
+-2.91% to +1.04%. Against scaled shuffled labels the counts are also2/0/4.
+Against its own raw head, primary MSE has2/0/4 with all positive points, but
+coverage-log error has4 negative intervals and top10 capture has1 negative.
+Ordinary shrinkage helps the matched controls too; this is not a general
+auxiliary-specific improvement or a trajectory/deployment result.
+
+Motion-only true vs scaled cost-only has1 positive,1 negative,4 overlapping
+intervals; vs scaled shuffled it has1/2/3. All comparisons remain reported.
+Positive-envelope AUROC still improves in5/6 full-input comparisons against
+each matched scaled control, which supports a narrower ranking signal only.
+Three seeds and3,000 four-locality resamples are descriptive source-development
+evidence. No model is promoted; independent roles stay closed. Exact replay
+and scoped tests are being verified separately from the scientific result.
+
+[Conclusions](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/conclusions.md),
+[all intervals](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/failure_analysis.md),
+[next discriminating question](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/project_gap.md).
 
 ## Auxiliary Prior Repair (2026-09-27, No Model Promotion)
 

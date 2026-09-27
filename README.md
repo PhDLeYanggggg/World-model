@@ -18,15 +18,22 @@ ranking, but did not consistently improve expected-harm costs: against the
 strong cost-only control, the six full-input intervals are one positive,
 two negative and three overlapping zero. No model was promoted.
 
-The [new experiment](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md)
-uses fitting-only out-of-fold predictions to learn a simple magnitude readout,
-applied equally to cost-only, true-auxiliary and shuffled-auxiliary controls.
-Every reference model, preprocessing step and label producer excludes its held
-locality. All 1,008 nested reference/auxiliary heads have finished 2,016,000
-updates. All 432 matched magnitude readouts and their outer predictions are
-now frozen; source-held evaluation is next. The scientific result is not known
-yet. Independent
-selection, calibration and confirmation remain closed. The
+The [new experiment](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/conclusions.md)
+has now completed 1,008 nested Torch heads, 2,016,000 updates and 432 matched
+magnitude readouts. Every reference, preprocessing step and label producer
+excludes its held locality. The readout improves some squared-cost errors,
+but does not pass the scientific gates. Against identically scaled cost-only
+and shuffled controls, each full-input comparison has two positive intervals
+and four overlapping zero. Scaling also worsens the coverage-error guard
+against the raw true-auxiliary model in four of six comparisons.
+
+These are expected-cost results, not trajectory gains. The
+[complete figure](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/source_held_costs.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/failure_analysis.md)
+retain every assignment, including negative motion-only comparisons. No model
+is promoted. The next controlled question is whether producer training-size
+and easy-label definition changes explain the cost-transport deficit.
+Independent selection, calibration and confirmation remain closed. The
 [results ledger](README_RESULTS.md) records the current execution state and
 links to the complete evidence, including negative results.
 
