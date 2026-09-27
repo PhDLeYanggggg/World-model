@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Crossed Fitting-Regime Study (2026-09-27, Support Checked)
+## Crossed Fitting-Regime Study (2026-09-27, Training)
 
 I am separating fitting-row regime from the training-derived easy cut while
 keeping the outer evaluation endpoint unchanged. The native two-site and
@@ -24,7 +24,9 @@ not a power calculation. The real pilot is complete: a fresh 2,000-update native
 bridge exactly matches all
 original parameters, and a 200-update crossed pilot has finite losses and zero
 unknown-label draws. Projected pure fitting is 1,750 seconds, excluding I/O
-and evaluation. Full training and held scoring remain pending. Native arm64 is
+and evaluation. Full training is now running with resume under PID69266. At the
+03:15UTC progress check,112 of864 crossed heads and224,000 updates were complete,
+with zero unknown-label draws. Held scoring remains unopened. Native arm64 is
 available and 54 parent public/source bindings
 were rechecked; GitHub and local parent commit match. CREATE was inspected
 read-only, with three unrelated pending jobs and no job modification.
