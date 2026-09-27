@@ -10,7 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current result:** more flexible risk readouts fix the fitting constraint,
+**Current result:** adding ordered motion and neighbor history has not repaired
+the expected-risk model. I completed
+[1,728 fixed contextual probes](outputs/publication_readiness_2026_09/european_temporal_support_v1/conclusions.md)
+using frozen neural predictions and strict nested locality exclusions.
+Against a matched readout with the earlier seven summary features, the main
+family has no positive, two negative and four overlapping primary intervals.
+Adding neighbor history is also inconsistent. This is fresh risk-probe fitting,
+not new neural training or a trajectory improvement.
+
+The experiment explains why more windows and more features are not enough.
+Some events are concentrated in very few tracks, and the frozen all-harm cap
+creates a large error floor for an easy-only correction. The
+[support and ceiling analysis](outputs/publication_readiness_2026_09/european_temporal_support_v1/support_diagnostics.md)
+keeps those limits separate from the negative feature result. I am not changing
+deployment or opening independent outcomes to choose a repair. Numerical replay
+is in progress; the [results ledger](README_RESULTS.md) records verification.
+
+**Previous readout result:** more flexible risk readouts fix the fitting constraint,
 but not the held-scene prediction problem. I completed
 [864 monotone readout fits](outputs/publication_readiness_2026_09/european_cost_shape_v1/conclusions.md)
 and 144 source-held evaluations on verified frozen neural predictions.

@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Temporal Context Screen (2026-09-27, Predictions Frozen)
+## Temporal Context Screen (2026-09-27, Scientific Screens Failed)
 
 The next experiment tests information missing from the global risk readout,
 not another threshold. I compare frozen-score-only probes with the old seven
@@ -14,13 +14,31 @@ The fixed design has 1,728 ridge fits in 432 inner fitting-locality screens.
 Every nuisance producer excludes the scoring locality and outer locality;
 ordinary OOF predictions are not sufficient for this stacked exclusion.
 
-The preceding cost-shape seal, 28 public artifacts, 38 source bindings and
-detailed metrics match their recorded hashes. Ten new focused tests pass.
-CREATE was checked read-only; no jobs were submitted or modified. All 1,728
-fits and 432 inner-view predictions are now frozen. The fitting heartbeat spans
-646s; there are no new neural updates. Scoring has not run at this checkpoint. Independent
-selection, calibration and confirmation remain closed; no deployment changes.
-[Protocol](outputs/publication_readiness_2026_09/european_temporal_support_v1/protocol.md).
+All 1,728 fits and 432 inner views are now scored. Registration `7481acc3` and
+prediction freeze `cd61e6dd` preceded scoring. Full-input history plus neighbors
+versus score-only has 1 positive, 1 negative and 4 overlapping primary intervals;
+versus the prior seven-summary features it has 0 / 2 / 4. Adding neighbors to history
+alone has 1 / 3 / 2. Motion-only versus the summary control has 1 / 5 / 0. These are
+expected easy-harm MSE contrasts, not trajectory gains. Both scientific screens
+fail; no outer conditional-head experiment or deployment is promoted.
+
+The support audit finds 240,809 distinct supported positive-envelope agent-query
+keys across 12 localities and 162 recordings, not 240,809 independent observations.
+Full and motion-only have 35/216 and 158/216 dependent views with fewer than ten
+harm-mass effective event tracks. The frozen all-harm cap leaves a median
+65.18% and 70.75% of raw easy-harm MSE unavoidable. This is a limitation of the
+fixed clipped probe, not evidence that removing a safety constraint would work.
+
+The prior cost-shape seal and bound artifacts still match. Ten new focused
+tests pass; full numerical replay is in progress at this results checkpoint.
+Fitting/scoring heartbeat spans are 646/177s. CREATE was inspected read-only; no jobs
+were submitted or modified. Independent selection, calibration and confirmation
+remain closed. No new neural training or trajectory deployment is claimed.
+[Conclusions](outputs/publication_readiness_2026_09/european_temporal_support_v1/conclusions.md),
+[complete results](outputs/publication_readiness_2026_09/european_temporal_support_v1/results.md),
+[support and cap diagnosis](outputs/publication_readiness_2026_09/european_temporal_support_v1/support_diagnostics.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_temporal_support_v1/failure_analysis.md),
+[next boundary](outputs/publication_readiness_2026_09/european_temporal_support_v1/project_gap.md).
 
 ## Cost-Shape Study (2026-09-27, Scientific Screens Failed)
 
