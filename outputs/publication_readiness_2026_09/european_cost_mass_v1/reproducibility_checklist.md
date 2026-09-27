@@ -11,7 +11,7 @@
 - Prediction freeze committed before held-source scoring.
 - Three seeds averaged within locality; 3,000 paired four-locality resamples per assignment.
 - Overlapping assignments are development views, not independent datasets.
-- Final fitting, metric, report and figure replay: pending.
+- Final replay completed:432 scalar fits,144 held views,2592 direct MSE checks; reports and six figures byte-match;133 tests in27 scoped files pass.
 - Full legacy suite not_run; final verification records the scoped dependency tests.
 - No fresh neural training, new forecasting or new deployment policy in this study.
 - Independent selection, reserved calibration and confirmation remain closed.

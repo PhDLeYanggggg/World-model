@@ -28,8 +28,11 @@ I am keeping deployment unchanged. The
 show why large negative percentages are not trajectory scores; the
 [failure analysis](outputs/publication_readiness_2026_09/european_cost_mass_v1/failure_analysis.md)
 distinguishes fitting tradeoffs from scene-dependent transport. Independent
-selection, calibration and confirmation remain closed. Exact replay is in
-progress. The [results ledger](README_RESULTS.md) records the verified status.
+selection, calibration and confirmation remain closed. All 432 fits and 144
+held views replay exactly; reports and six figures reproduce byte-for-byte.
+All 133 tests in 27 scoped files pass. The full legacy suite was not run.
+These engineering checks do not change the failed scientific screens.
+The [results ledger](README_RESULTS.md) records the verified status.
 
 **Previous crossed study:** I separated fitting-regime changes from changes
 in the definition of easy cases. The previous magnitude readout failed its

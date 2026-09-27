@@ -34,8 +34,12 @@ preflight. CREATE was inspected read-only, with no job submitted or changed.
 A NumPy diagnostic-count JSON error was repaired without changing frozen
 scientific code or predictions. An 864-row absolute-cost companion retains
 the large-error scenes rather than relying on percentages. Six figures retain
-all primary contrasts and guards. Exact replay is running; the full legacy
-test suite has not been run.
+all primary contrasts and guards. Final replay reproduces all 432 fits and
+144 held views exactly, including 2,592 direct MSE checks. Reports, six SVGs
+and the absolute-cost table match byte-for-byte. All 133 tests in 27 scoped
+files pass; the full legacy test suite has not been run. The verification
+seal binds 29 public artifacts, 36 source files and one local detailed metric
+file. Reproducibility does not change the failed scientific screens.
 
 No new trajectory policy, independent confirmation or deployment improvement
 is established. Independent roles remain closed; Stage5C and SMC remain off.
@@ -43,6 +47,7 @@ is established. Independent roles remain closed; Stage5C and SMC remain off.
 [all intervals](outputs/publication_readiness_2026_09/european_cost_mass_v1/results.md),
 [absolute costs](outputs/publication_readiness_2026_09/european_cost_mass_v1/absolute_cost_context.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cost_mass_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_cost_mass_v1/verification.json),
 [next question](outputs/publication_readiness_2026_09/european_cost_mass_v1/project_gap.md).
 
 ## Crossed Fitting-Regime Study (2026-09-27, Mechanism Screens Failed)
