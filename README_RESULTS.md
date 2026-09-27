@@ -15,6 +15,12 @@ Predictions will be frozen before the exposed source-held cost readout.
 Independent selection,calibration and confirmation remain closed; there is
 no deployment change or demonstrated improvement at registration.
 
+The real200-update arm64 pilot passed and training resumed from its checkpoint.
+Its auxiliary prior changed from24.62% to2.90%; shared and cost initialization
+did not change. Sixteen scoped tests pass. The projected pure fitting time is
+about515 seconds,excluding data loading and diagnostics. This runtime check is
+not evidence of predictive improvement. Registration commit:b6ea4f8e.
+
 [Protocol](outputs/publication_readiness_2026_09/european_aux_prior_v1/protocol.md).
 
 ## Auxiliary Training Trajectories (2026-09-27, No Model Promotion)
