@@ -5,9 +5,9 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Source-Separated Calibration (2026-09-27, Registered, Results Pending)
+## Source-Separated Calibration (2026-09-27, Verified, Neural Benefit Fails)
 
-The next registered experiment reuses all nine forecast banks and both matched
+This completed registered experiment reuses all nine forecast banks and both matched
 risk-head families. Four-component ensembles are fixed, never selected from
 held outcomes. Utility/easy heads fit four controller sources. For every role
 assignment, the remaining four sources are excluded from the complete fitting
@@ -26,8 +26,47 @@ This includes288 risk-component inferences,108 exact old guard-head replays and
 36 exact legacy-point replays. No calibration or held outcomes have selected
 a threshold; the score freeze is committed before calibration.
 Score freeze `2d13afdc` preceded calibration. All216 two-source calibration
-groups and their held actions are now frozen (153.30seconds, peak RSS7.21GB).
-The held readout remains pending;46 tests in seven scoped files pass.
+groups and their held actions were frozen in `14503fb3` before readout
+(153.30seconds, peak RSS7.21GB). Held scoring completed in39.57seconds.
+The primary neural-versus-protected-damping ADE gain is **-0.6699%
+[-0.9742%, -0.3964%]**. All three seed intervals favor damping;11/12 locality
+point estimates favor damping. Against CV, calibrated-supported neural improves
+**0.1666% [0.1206%,0.2205%]**, damping **0.8259% [0.5478%,1.1164%]**.
+Neural hard gain is0.0478%, FDE gain0.2483%, and intervention rate9.7901%.
+
+Every observed calibrated-supported neural view preserves easy within2%; mean
+easy gain is3.4125%, worst0%, with no reference-exact harm. However,9/216
+dependent views exceed the2% selected positive-harm budget. These are three
+source/seed conditions repeated across calibration pairs, not nine independent
+failures. Calibration-only has6 risk-violating views, guarded75, supported81.
+Positive-harm ratio is not net ADE or easy degradation; empty ratios stay undefined.
+
+Signed neural calibration chooses complete fallback in45/108 groups. With
+support fixed, calibration reduces ADE benefit by0.0663% [0.0306%,0.1064%]
+and coverage by4.17percentage points. Adding the generic fitting99% support
+filter after calibration reduces benefit by0.0130% [0.0056%,0.0209%]. Damping
+keeps cutoff0 in all groups; calibration does not cause its benefit. No observed
+damping risk violation appears with these complete static guards, but this is
+not a finite-sample safety certificate or independent confirmation.
+
+All36 inference groups,216 calibration decisions and the full readout replay
+exactly. A first-group real inference replay with future label/mask/cost fields
+removed is exact. Reports, factor diagnosis and figure reproduce byte-for-byte.
+**46 tests in seven files pass**. The seal binds21 artifacts and130 source files;
+full legacy suite and cold raw rebuild remain not_run. No new neural updates.
+The prior read-only CREATE receipt was hash-verified, not relabeled fresh; local
+compute was sufficient and no jobs changed. Deployment is unchanged; Stage5C
+and SMC remain disabled.
+
+Next: diagnose neural incremental opportunity over protected damping, then
+register a relative-floor learning test only if fitting-excluded evidence supports
+it. Do not continue cutoff sweeps or use oracle choices as inference inputs.
+Independent roles remain closed. This is silver image-local obs8/pred12 at
+raw-frame stride12, not historical Stage37t50, metric, seconds or foundation.
+[Results](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/failure_analysis.md),
+[factor contrasts](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/factor_diagnosis.md),
+[verification](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/verification.json).
 [Protocol](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/protocol.md).
 
 ## Signed Risk-Budget Objective (2026-09-27, Verified, Neural Benefit Fails)

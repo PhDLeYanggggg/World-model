@@ -10,20 +10,37 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
-**Current experiment:** I am testing source-separated calibration with the
-frozen forecast and risk heads. Two sources calibrate the intervention rule;
-two different sources test it, and all four are excluded from the complete
-fitting chain. The fixed comparisons retain stationary, utility and easy
-guards, and separate calibration from fitting-defined support. No new network
-or independent test is being opened. Two calibration sources cannot establish
-a finite-sample safety guarantee. Forty-four scoped preflight tests pass.
-All36 causal score groups are now frozen after fresh native Torch inference;
-108 existing guard-head predictions and36 old point policies reproduce exactly.
-All216 calibration groups and their held actions are now frozen; held outcome
-scoring is still pending. No threshold uses its corresponding held labels.
-[Protocol](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/protocol.md).
+**Latest result:** source-separated calibration protects easy cases, but still
+does not recover a neural advantage. I kept the forecast and risk networks
+frozen, restored stationary/utility/easy guards, and tested a fixed calibration
+and input-support comparison. Two sources calibrate each rule; two different
+sources evaluate it, and all four are excluded from the complete fitting chain.
 
-**Latest completed experiment:** I changed the risk-head loss to learn positive harm minus
+The calibrated-supported neural policy improves ADE by **0.167% over constant
+velocity**, while equally protected damping improves **0.826%**. The direct
+neural advantage is **-0.670% [-0.974%, -0.396%]**, with all three seed intervals
+favoring damping. Neural easy error is preserved in every observed held view,
+and reference-exact cases remain untouched. But 9 of 216 dependent views still
+exceed the selected positive-harm budget. There is no new deployment or safety
+certificate, and these development sources are not independent confirmation.
+
+Calibration often opts out: 45 of 108 neural calibration groups fall back
+completely. The generic input-distance support filter also removes some useful
+actions without reliably identifying risk. I will not keep sweeping cutoffs.
+The next question is what incremental opportunity the neural forecast has over
+the stronger protected damping floor, and whether past information identifies it.
+
+All 36 score groups, 216 calibration decisions and the readout replay exactly.
+**46 tests in seven scoped files pass**; reports and the figure are reproducible.
+The first real inference group also reproduces with future-label fields removed.
+No networks were retrained in this experiment, and independent roles stay closed.
+[Results](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/results.md),
+[factor diagnosis](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/factor_diagnosis.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/operation_zh.md),
+[verification](outputs/publication_readiness_2026_09/european_score_support_calibration_v1/verification.json).
+
+**Preceding loss experiment:** I changed the risk-head loss to learn positive harm minus
 2% of the constant-velocity reference error directly. The matched comparison
 keeps the same forecasting models, architecture, causal inputs, initial weights,
 sampling and three seeds. All 144 heads completed 288,000 updates, and their
@@ -46,8 +63,8 @@ stationary, utility and easy guards; they are not deployable policies.
 All 144 new and 144 control predictions replay exactly, as does a complete
 first-head training run. **56 tests in eight scoped files pass**; reports and
 the aggregate figure reproduce byte-for-byte. I am keeping deployment unchanged.
-Next is strictly source-separated calibration and support-aware fallback, with
-damping retained as a strong control. Independent evaluation roles remain closed.
+This motivated the source-separated calibration comparison above, retaining
+damping as a strong control. Independent evaluation roles remain closed.
 [Results](outputs/publication_readiness_2026_09/european_risk_excess_v1/results.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_risk_excess_v1/failure_analysis.md),
 [reproduction guide](outputs/publication_readiness_2026_09/european_risk_excess_v1/operation_zh.md),

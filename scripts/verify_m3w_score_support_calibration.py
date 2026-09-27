@@ -30,7 +30,8 @@ def main():
     assert run.artifact(ROOT/ev['detail']['path']) == ev['detail']
     artifacts = {p.name:run.digest(p) for p in run.PUBLIC.iterdir()
                  if p.suffix in ('.json','.md','.png') and p.name != 'verification.json'}
-    for script in ('report_m3w_score_support_calibration.py','plot_m3w_score_support_calibration.py'):
+    for script in ('report_m3w_score_support_calibration.py','plot_m3w_score_support_calibration.py',
+                   'diagnose_m3w_score_support_calibration.py'):
         proc = subprocess.run([sys.executable,'scripts/'+script],cwd=ROOT,capture_output=True,text=True)
         if proc.returncode: raise RuntimeError(proc.stderr)
     assert artifacts == {p:run.digest(run.PUBLIC/p) for p in artifacts}
@@ -41,7 +42,7 @@ def main():
     parent = json.loads((run.parent.PUBLIC/'verification.json').read_text())
     bindings = dict(parent['source_bindings']); bindings.update(identity['bindings'])
     extras = ['scripts/report_m3w_score_support_calibration.py','scripts/plot_m3w_score_support_calibration.py',
-              'scripts/verify_m3w_score_support_calibration.py',*TESTS]
+              'scripts/verify_m3w_score_support_calibration.py','scripts/diagnose_m3w_score_support_calibration.py',*TESTS]
     restored = ['configs/m3w_european_nested_calibration_v1.json','scripts/run_m3w_european_nested_calibration.py',
                 'tests/test_m3w_nested_calibration.py']
     for p in restored:

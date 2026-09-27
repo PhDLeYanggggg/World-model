@@ -26,9 +26,11 @@ def main():
         ax.spines[['top','right']].set_visible(False)
     axes[0].legend(loc='best',fontsize=8); axes[2].axvline(-2,color='red',linestyle=':')
     worst = d['worst_views']['dimensionless']['excess_calibrated_supported']['worst_easy_gain_percent']
-    fig.suptitle('Fixed signed-score policies: independent calibration sources within development')
+    violations = d['worst_views']['dimensionless']['excess_calibrated_supported']['risk_violating_views']
+    primary = d['paired_neural_vs_damping']['excess_calibrated_supported']['neural_vs_damping_ADE_gain_percent']['point']
+    fig.suptitle('Fixed signed-score policies: fitting-excluded calibration within development')
     fig.supxlabel('12 development localities; 3 seeds; 3,000 locality-bootstrap draws. No risk certificate or deployment.\n'
-        f'Worst calibrated-supported neural view easy gain: {worst:.2f}%. Both objective families reported in the table.',fontsize=9)
+        f'Worst neural view easy gain: {worst:.2f}%; {violations}/216 neural risk violations remain. Primary neural vs damping: {primary:.2f}%.',fontsize=9)
     fig.savefig(PUBLIC/'calibration_evidence.png',dpi=150,metadata={'Software':'M3W fixed aggregate plot'})
     plt.close(fig)
 
