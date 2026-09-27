@@ -24,11 +24,16 @@ views violate the observed harm budget**, and twelve ratios are undefined.
 This is a negative development result, not a deployment upgrade.
 
 Training and actions were committed before readout. The first complete paired
-fit replays exactly; full action/evaluation replay and independent verification
-are in progress. Independent selection/calibration/confirmation remain closed.
+fit, all 216 predictions, all108 action groups and the full evaluation replay
+exactly. **30 scoped tests pass**, with747,900 query checks,2,160 independently
+accounted cost views and11,625 locality-statistic checks. Reports and figures
+reproduce byte for byte. These verify a negative experiment, not safe deployment.
+Independent selection/calibration/confirmation remain closed.
 [Results](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/results.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/failure_analysis.md),
-[training curves](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/training_curves.png).
+[training curves](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/training_curves.png),
+[verification](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/verification.json),
+[reproduction guide](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/operation_zh.md).
 
 Before readout I found a limitation in the registered primary: ten parent
 views have zero interventions, which makes their selected-risk ratios

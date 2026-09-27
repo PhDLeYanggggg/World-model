@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Paired Query-Excess Training (2026-09-27, Negative Readout)
+## Paired Query-Excess Training (2026-09-27, Verified Negative Result)
 
 Registration `646082b3`, training freeze `53c1b594`, action freeze `e4703640`
 all precede the corresponding fitting or outcome steps. Fresh readout took
@@ -26,7 +26,16 @@ estimates worsen under query supervision by1.32%all and3.61%easy. These are
 descriptive errors, not extra registered significance tests. Own fitting loss
 falls in108/108 pointwise and104/108 query heads. No deployment promotion.
 
-Full action/evaluation replay and independent verification are in progress.
+Full216-head prediction/108-action replay and evaluation replay are exact.
+**30 scoped tests pass in six files**. Separate code checks747,900 current-query
+constraints,2,160 outcome-accounting views and11,625 locality reductions.
+The first full paired fit reproduces model/optimizer/RNG/draws/loss trace;
+all cached parent controls match, and reports/figures are byte-reproducible.
+The verification seal binds202 source files and21 public artifacts.
+Prediction/action replay726.34seconds; evaluation replay144.92seconds;
+independent verification220.70seconds,11.31GB peak RSS. Full legacy suite and
+cold raw reconstruction remain not_run. No independent confirmation or formal
+calibration certificate. Scoped verification is not a passing research gate.
 The experiment rejects this pure aggregation repair, not every possible
 query-aware method. Next: separately preregister a valid abstention/coverage
 diagnostic and selected-subset supervision with an individual-error anchor,
@@ -34,6 +43,12 @@ keeping the protected floor and2%screen fixed. No post-readout primary change.
 [Results](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/results.md),
 [conclusions](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/failure_analysis.md).
+
+Verification SHA256:
+`096f5d21855f7ed12f7224403224c83db27a2bfb7a417a3efd7fa0ebd86ad944`.
+This goal turn made fresh experimental progress but did not complete M3W's
+research/submission objective. Routine audits are delegated; the author need
+not reapprove ordinary checks. Actual submission still needs final confirmation.
 
 Registration and resource record:
 
