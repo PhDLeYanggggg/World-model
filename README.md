@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Running next:** a paired risk-learning experiment tests the aggregation unit.
+Both new heads see the same source-balanced batches of current queries. One
+minimizes individual signed-risk error; the other minimizes aggregate query
+error. Models, features, source roles, training budget and risk tolerance stay
+matched. This tests whether query supervision helps the allocation failure
+below; it does not grant independent calibration or open confirmation data.
+[Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
+
 **Latest experiment:** choosing where to intervene jointly improves accuracy,
 but does not yet control harm. I kept every predictor fixed and allowed exactly
 the same number of interventions in each current query. Utility-aware allocation

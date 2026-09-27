@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Paired Query-Excess Training (2026-09-27, Registered)
+
+108 paired groups, 216 fresh risk heads, 432,000 planned updates. Both arms
+share initialization, causal descriptors, fitting preprocessing, query-balanced
+source sampling and optimizer budget. Only pointwise versus query-aggregate
+signed-excess supervision changes. Independent and joint policies retain the
+2% nominal risk budgets. Equal-current-query-count risk-ranking diagnostics
+retain the frozen parent's count; they are not certified deployment arms.
+
+Nine focused tests and 28 tests across five scoped files pass, including exact
+resume, matched draws, grouping boundaries and pre-Torch Rosetta rejection.
+The uncommitted registration was regenerated after this pretraining guard fix;
+no model had been fitted. CREATE queue check returned 0, no job submission.
+No outcome, calibration or deployment success is claimed at registration.
+[Protocol](outputs/publication_readiness_2026_09/european_query_excess_refit_v1/protocol.md).
+
 ## Frozen Query Utility Allocation (2026-09-27, Verified Accuracy Gain, Risk Failed)
 
 Compare protected floor, independent admission, matched risk ranking,
