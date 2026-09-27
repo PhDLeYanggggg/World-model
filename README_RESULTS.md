@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Signed Risk-Budget Objective (2026-09-27, Registered)
+
+The matched repair changes only the loss from two independent moment errors to
+the squared error of `positive_harm - 0.02 * CV_error`. The exact architecture,
+initialization, causal355features, sampler, normalizers, seeds and2000-update
+budget stay fixed.144 new heads are compared with the sealed moment controls;
+the new output components are an internal score basis, not calibrated moments.
+51 scoped preflight tests cover target detachment, zero-reference harm, exact
+resume, matched draws and the distinction between positive harm and net error.
+Predictions will be frozen before scoring. Independent roles, deployment,
+Stage5C and SMC remain unchanged. Training is not yet a result.
+[Protocol](outputs/publication_readiness_2026_09/european_risk_excess_v1/protocol.md).
+
 ## Cost-Moment Cross-Fit (2026-09-27, Verified, Conditional Risk Fails)
 
 This completed diagnostic separates reference-cost calibration from positive-harm

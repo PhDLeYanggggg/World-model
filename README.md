@@ -10,6 +10,11 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Read the Current Study
 
+**Running next:** a registered loss-only comparison directly learns whether a
+candidate exceeds its 2% risk budget. It retains the same forecaster, inputs,
+architecture, sampling and three seeds. This is a 144-head source-development
+experiment, not a new deployment policy. [Protocol](outputs/publication_readiness_2026_09/european_risk_excess_v1/protocol.md).
+
 **Latest diagnosis:** the risk heads learn useful average predictions, but that
 does not make their chosen interventions reliable. I trained 144 matched heads
 with three-source fitting and one-source holdout. On held sources, the neural
