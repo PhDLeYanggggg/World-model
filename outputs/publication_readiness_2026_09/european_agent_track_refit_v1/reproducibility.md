@@ -34,6 +34,7 @@ run_logged evaluate
 run_logged replay
 run_logged verify_eval
 .venv-pytorch/bin/python scripts/probe_m3w_trained_agent_track.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_agent_track_envelope.py
 .venv-pytorch/bin/python scripts/report_m3w_european_agent_track_refit.py
 .venv-pytorch/bin/python scripts/report_m3w_agent_track_operations.py
 .venv-pytorch/bin/python scripts/verify_m3w_european_agent_track_refit.py
