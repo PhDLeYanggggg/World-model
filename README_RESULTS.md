@@ -28,6 +28,11 @@ Full 216-head training completed, including the pilot updates: 432,000 updates,
 551.63 process seconds and 10,342,105,088 bytes peak RSS. All 108 paired groups
 and checkpoint identities are frozen before decision generation. No held
 outcome evaluation has run yet.
+First full paired fit replay: exact parameters, optimizer, random states,
+draws, query keys, predictions and loss trace; 11.82 seconds, 6.02 GB peak RSS.
+All 108 action groups now frozen before readout: 718.85 seconds, 11.22 GB peak
+RSS. Thirty scoped tests pass in six files, including separate outcome-accounting
+tests. No budget, checkpoint or threshold was selected using held outcomes.
 Pre-readout feasibility check: ten parent independent views have zero actions.
 Both count-matched ranks inherit zero actions, so the registered full-roster
 selected-risk primary is structurally incomplete. This design error was caught
