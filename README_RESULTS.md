@@ -14,8 +14,12 @@ reference layer excludes both inner and outer held localities; older references
 cannot be reused there because they include the inner held locality.
 
 The fixed design includes 1,008 new small Torch heads and 432 cached control
-heads. Training and new readout are not_run at registration. Twenty-one scoped
-preflight tests pass. Independent roles remain closed; no deployment change.
+heads. Support is now checked for all144 outer views,144 unique single-site
+references and432 two-site controllers. Minimum single-site supported rows:
+1,225; minimum positive easy-harm rows:0. Numerical support is not statistical
+power. Twenty-five scoped preflight tests pass, including real synthetic Torch
+training/resume and lossless archive replay. Real-data pilot/training/readout
+remain not_run at this support commit. Independent roles stay closed.
 [Protocol](outputs/publication_readiness_2026_09/european_oof_magnitude_v1/protocol.md).
 
 ## Auxiliary Prior Repair (2026-09-27, No Model Promotion)
