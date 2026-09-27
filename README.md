@@ -15,8 +15,8 @@ individual-error supervision plus fixed, past-only subgroup supervision repairs
 the selection mismatch below. Two matched arms have trained216 risk heads, with
 unchanged predictors, source roles and2%selected-risk screen. No new independent
 data are opened. Empty interventions remain explicit abstentions, not passing
-risk ratios. All432,000 updates completed; actions and outcome readout are
-pending. This is a registered development experiment, not a positive result.
+risk ratios. All432,000 updates and108 action groups are complete and frozen;
+outcome readout is pending. This is a development experiment, not a positive result.
 [Protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md).
 
 **Latest result: query-aggregate risk training did not repair selection.**

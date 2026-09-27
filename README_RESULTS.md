@@ -22,7 +22,11 @@ Native CPU4 pilot took8.53seconds; its100updates were included in the final
 budget. All108 pairs match each other and the previous pointwise control on
 initialization, queries, row draws and runtime RNG. Unknown supervised draws0.
 Forty-four scoped tests pass across eight files. Training identities are frozen
-before decisions; no held outcome readout has run. Independent roles remain closed; deployment,
+before decisions. All108 action groups now complete in702.43seconds,
+peakRSS11,228,987,392bytes, PID46464. First full paired fit replay is exact
+(13.04seconds); models, optimizer, RNG, draws, losses and predictions match.
+Actions are committed before readout; no held outcome readout has run.
+Independent roles remain closed; deployment,
 Stage5C and SMC unchanged. CREATE read-only queue check succeeded; no jobs
 submitted. Source-role and artifact hashes are checked before registration.
 [Protocol](outputs/publication_readiness_2026_09/european_subset_excess_v1/protocol.md).

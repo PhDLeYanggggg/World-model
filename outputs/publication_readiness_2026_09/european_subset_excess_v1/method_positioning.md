@@ -51,3 +51,7 @@ linked author paper. Broader public-method comparisons remain unfinished.
 No model promotion, formal risk guarantee or submission-readiness claim follows
 from completing this experiment. The original raw-frame image-local detector
 silver restrictions, no metric/seconds claims, and Stage5C/SMC prohibitions stay.
+
+These percentages are not directly comparable to historical Stage37 t+50
+figures: the data, observation/prediction protocol and protected reference differ.
+Earlier exposed/contaminated results remain exploratory rather than recertified.
