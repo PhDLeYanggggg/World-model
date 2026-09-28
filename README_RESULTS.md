@@ -7,6 +7,10 @@ or evidence status.
 
 ## Fitting Switch Diagnostic (Verified, No Deployment Change)
 
+Follow-on registration: [internal locality-held separability](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md).
+Planned72 unique paired fits,144 cost heads and216 directional development views;
+training not run at this registration. No new forecaster or deployment change.
+
 All 108 contexts completed in 242.37s and replayed exactly in 248.37s. The readout
 covers 5,741,442 repeated fitting rows, 318,969 unique row IDs and 747,900 dependent
 query occurrences. Overlapping rows and repeated contexts are not independent

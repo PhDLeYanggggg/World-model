@@ -46,6 +46,12 @@ sources. Independent selection, calibration and confirmation data remain closed.
 
 ## Last Model Comparison
 
+The next registered experiment tests gain/risk separation between the two fitting
+localities using identical inputs and losses, comparing affine logits with a
+small nonlinear head. It has not produced a result yet. Independent evaluation
+sources and the deployed policy are unchanged.
+[Internal-transfer protocol](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md).
+
 **Freezing easy-occurrence probabilities did not improve neural selection.**
 
 I tested whether keeping an existing occurrence estimate fixed would protect it
