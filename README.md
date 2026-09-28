@@ -50,7 +50,7 @@ The next registered experiment tests gain/risk separation between the two fittin
 localities using identical inputs and losses, comparing affine logits with a
 small nonlinear head. All 144 heads completed their registered 2,000 updates;
 one complete paired training replay matches exactly, including the resumed pilot.
-Directional decisions and outcome evaluation are pending. Independent evaluation
+All216 directional decisions are now frozen before outcome evaluation. Independent evaluation
 sources and the deployed policy are unchanged.
 [Internal-transfer protocol](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md).
 
