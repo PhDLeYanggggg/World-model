@@ -7,6 +7,32 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
+**Final verified readout: tiny accuracy recovery, risk screen failed.** All108
+actions replay exactly in922.81s; the full evaluation replays in76.21s. Independent
+verification took184.20s and checked4,487,400 query constraints,2,376 cost views,
+432 quality views and15,893 locality reductions. All47 scoped tests in8files pass.
+The seal binds293 source/control files and33 public artifacts:
+`2ded462b6a8995964486fe57dd79a497bddbb553deb1e93dfbf410396fdb80d7`.
+
+The registered matched ADE gain is+0.00374642%, nominal95%CI[+0.00128515%,
++0.00680774%]. However, the repaired arm still loses0.01435295% versus the original
+raw-risk matched control, CI[-0.02330288%, -0.00611054%]. Risk violations rise
+from51 to54/216; both matched arms have25 undefined views. Benefit recovered on
+the full-floor diagnostic denominator is0.00448299pp, offset by0.00073821pp extra
+positive harm. This is not risk reduction or a deployment upgrade.
+
+The disk interruption was resolved by waiting for free space to recover, then
+running the original all108-group replay. No reserve reduction, data deletion,
+smaller experiment or retraining. This experiment has no remaining live process.
+The broader research goal remains active; independent selection/calibration/
+confirmation stay closed. Full legacy integration and cold raw rebuild are not_run.
+[Final results](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/results.md),
+[decision and gap](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/conclusions.md),
+[failure accounting](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/verification_report.md).
+
+### Earlier First Readout and Resource Recovery
+
 Latest development readout, **provisional pending full replay**: the registered
 matched-count ADE contrast is +0.00374642%, nominal 3,000-locality-bootstrap
 95% interval [+0.00128515%, +0.00680774%]. This is a small prediction signal,

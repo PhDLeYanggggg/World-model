@@ -25,69 +25,47 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Current Result
 
-**Better easy-case probabilities did not produce better neural selection.**
+**A small accuracy recovery did not repair selected risk.**
 
-I completed a paired experiment with 216 risk heads, keeping the forecasts,
-causal inputs, initialization and training queries fixed. One arm learned signed
-risk directly; the other also learned easy-case occurrence and conditional costs.
-All 108 action groups were frozen in `96b82ac3` before development readout.
+I tested whether limiting auxiliary gradients could improve risk-constrained
+neural selection. The paired experiment trained 216 risk heads for 2,000 updates
+each, keeping forecasts, architecture, initialization and sampled queries fixed.
+Only the auxiliary-gradient norm cap changed. Every action was frozen before
+the development readout.
 
-| Same-count supervised versus marginal control | Result | Nominal 95% locality interval |
+| Same-count risk-priority comparison | ADE improvement | Nominal 95% locality interval |
 |---|---:|---:|
-| ADE improvement | -0.02047% | [-0.03206%, -0.00957%] |
-| Positive harm reduction, full-floor denominator | +0.00649 pp | [+0.00216, +0.01314] |
+| Versus uncapped auxiliary training | +0.00375% | [+0.00129%, +0.00681%] |
+| Versus the original raw-risk control | -0.01435% | [-0.02330%, -0.00611%] |
 
-Easy-occurrence Brier improved from 0.2621 to 0.1581. However, avoided harm was
-smaller than the benefit lost by the new allocation. The common-count control
-rules out switching less as the only explanation. Easy error stayed within the
-existing limit, but 51 of 216 dependent views violated selected risk and 24 had
-undefined selected risk because they entirely abstained. **No deployment upgrade.**
+The repair retained slightly more useful switches, but also increased positive
+harm. Selected-risk violations rose from 51 to 54 of 216 dependent views; both
+matched policies had 25 views with undefined selected risk. Easy preservation
+passed its developmental screen, but the risk screen did not. The original
+raw-risk control remains more accurate at matched counts. **No deployment upgrade.**
 
-Training completed on CREATE: 216 heads, 2,000 updates each. Checkpoint hashes,
-paired sampling and an exact first-pair training replay passed. All 108 action
-groups and the full readout replay exactly. Independent arithmetic checks and
-51 scoped tests pass; they verify this negative result, not model efficacy. These
-results use twelve already-opened development localities, not independent
-confirmation. I am retaining the failed comparison rather than changing its
-threshold or replacing the original risk denominator.
+This followed an earlier negative result: explicit easy-occurrence supervision
+improved probability estimates but worsened selection. A fitting-only diagnostic
+then measured auxiliary-gradient dominance. The new experiment tests one fixed
+response to that imbalance; it does not establish that optimization imbalance
+explains the remaining generalization or calibration failures.
 
-The fitting-only diagnostic now reproduces exactly. At the final supervised
-states, auxiliary shared-gradient norms have a median ratio of 213 to direct
-risk; 60 of 432 repeated batches have an opposing total gradient. This supports
-testing a fixed auxiliary norm cap, not declaring the cause or repair proven.
-No new held outcomes or independent sources were opened. The next paired fit
-is registered to change only this gradient cap, with all 108 groups and 2,000 updates
-per head retained; the original negative result stays frozen.
-The real-data pilot completed its 200 updates and both checkpoint hashes verify.
-Full training completed on CREATE as job 37576457: 216 heads and 432,000 cumulative
-updates. The first full pair replayed exactly in job 37577264; all 108 uncapped
-controls reproduce the previous states. Only 46 of 108 repaired heads improve
-the direct-risk fitting loss over the control, so the cap is not an established repair.
-The action and evaluation implementation is separately frozen before any new
-readout. Fitting loss and exact training replay do not establish a policy improvement.
-The result checker covers matched query counts, undefined risk, adverse slices
-and locality-level uncertainty; its synthetic checks are not evaluation results.
-The unchanged anchors force at least 19 repeated evaluation views to abstain.
-That prevents the every-view-defined-risk screen from passing here, regardless
-of the cap. I will still complete the registered predictive comparison and
-retain those views, rather than present abstention as a safety result.
+All 108 action groups and the complete readout replay exactly. Independent
+arithmetic checks and 47 scoped tests pass. All uncapped training controls
+reproduce the previous states; the first repaired pair was retrained for exact
+replay. These checks support reproducibility, not efficacy. The experiment uses
+twelve already-opened development localities, not independent confirmation.
+Undefined risk, adverse slices and negative comparisons remain in the results.
 
-The first development readout of that repair is now available, with full replay
-still in progress. At the same query-level intervention count, ADE improves by
-only 0.00375% over the uncapped control. Risk violations rise from 51 to 54 of
-216 dependent views, and both policies leave 25 views with undefined selected
-risk. This does not establish a successful risk repair or a deployment upgrade.
-I am keeping these results separate from the fully verified experiment above.
-
-- [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
-- [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
-- [Locality, seed and tail results](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/locality_seed_quality.md)
-- [Training and exact replay evidence](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/training_result.md)
-- [Final verification scope](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/verification_report.md)
-- [Decision, limitations and next diagnostic](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/conclusions.md)
-- [Actual gradient measurements and limits](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/results.md)
-- [Controlled repair rationale](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/conclusions.md)
-- [Registered paired repair](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/protocol.md)
+- [Results and every control](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/results.md)
+- [Decision, interpretation and limits](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/conclusions.md)
+- [Benefit/harm accounting](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/failure_analysis.md)
+- [Locality, seed and tail results](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/locality_seed_quality.md)
+- [Training evidence](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/training_report.md)
+- [Verification scope](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/verification_report.md)
+- [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/operation_zh.md)
+- [Prior supervision experiment](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/conclusions.md)
+- [Gradient diagnostic](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/results.md)
 
 ## Previous Controlled Result
 
