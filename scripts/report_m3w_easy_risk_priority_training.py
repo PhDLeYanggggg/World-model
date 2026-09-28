@@ -1,4 +1,5 @@
 """Freeze completed paired training without making a held-efficacy claim."""
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -7,6 +8,12 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.manage_m3w_easy_risk_priority import PUBLIC, PRIVATE, registration, digest, immutable
+
+
+def remote_config_digest(path):
+    value = json.loads(Path(path).read_text())
+    encoded = json.dumps(value, indent=2, allow_nan=False)+'\n'
+    return hashlib.sha256(encoded.encode()).hexdigest()
 
 
 def training_summary(receipt):
@@ -49,7 +56,7 @@ def main():
     first, replay = evidence['training_complete.json'], evidence['replay.json']
     for phase, doc in [('train', first), ('replay', replay)]:
         assert doc['registration_sha256'] == digest(PUBLIC/'registration.json')
-        assert doc['config_sha256'] == digest(ROOT/'configs/m3w_european_easy_risk_priority_v1.json')
+        assert doc['config_sha256'] == remote_config_digest(ROOT/'configs/m3w_european_easy_risk_priority_v1.json')
         assert not doc['held_outcomes_used'] and not doc['independent_roles_read']
         accounting = evidence[phase+'_accounting']
         assert accounting['returncode'] == 0

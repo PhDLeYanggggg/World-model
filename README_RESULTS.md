@@ -7,7 +7,25 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
-Continuation: the same pilot job 37575963 is freshly observed RUNNING with no
+Latest: real pilot37575963 completed0:0, two heads x100updates. Both checkpoint
+hashes and matched sampling verify; unknown-label draws0. Runner12.9939seconds,
+Slurm49seconds, batch MaxRSS2,636,492KiB. First-pair full-cost extrapolation
+6,783.80seconds passes the existing guard; it is not measured full runtime.
+Full job37576457 was submitted once, last observed PENDING, with the original
+CPU4/16G/2h envelope and all108pairs retained. Completed pilot is not completed
+full training or a positive scientific result.
+
+A collector hash assertion exposed a JSON formatting mismatch, not changed
+configuration or failed training. The expected remote serialization is now
+checked in the report adapter; registered sources remain untouched. The new
+regression rejects changed content. Twenty-one scoped tests in three files pass;
+the three report tests also passed after the final test-only organization edit.
+[Verified real pilot](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/pilot_result.json),
+[collection fix and limits](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/collector_serialization_fix.md).
+
+### Action Implementation and Pilot Scheduling Record
+
+Earlier continuation: the same pilot job 37575963 was freshly observed RUNNING with no
 stderr. While pending, its walltime was corrected from two hours to fifteen
 minutes, based on the prior 200-update real pilot (9.36 seconds); CPU4/16G,
 the model and all updates are unchanged. This enables shorter backfill but is

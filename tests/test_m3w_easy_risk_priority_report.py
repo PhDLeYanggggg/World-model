@@ -1,5 +1,7 @@
 import pytest
-from scripts.report_m3w_easy_risk_priority_training import training_summary
+import hashlib
+import json
+from scripts.report_m3w_easy_risk_priority_training import training_summary, remote_config_digest
 
 
 def evidence():
@@ -34,3 +36,15 @@ def test_rejects_unknown_sampling_or_missing_parent_reproduction():
     receipt = evidence(); receipt['control_parent_states_exact'] = 107
     with pytest.raises(AssertionError):
         training_summary(receipt)
+
+
+def test_remote_config_hash_matches_serialization_not_compact_file(tmp_path):
+    value = dict(steps=2000, head=dict(width=64, lr=.0003), independent_roles_read=False)
+    compact = tmp_path/'compact.json'; expanded = tmp_path/'expanded.json'
+    compact.write_text(json.dumps(value, separators=(',', ':')))
+    expanded.write_text(json.dumps(value, indent=2)+'\n')
+    assert remote_config_digest(compact) == hashlib.sha256(expanded.read_bytes()).hexdigest()
+    assert remote_config_digest(compact) == remote_config_digest(expanded)
+    assert remote_config_digest(compact) != hashlib.sha256(compact.read_bytes()).hexdigest()
+    value['steps'] = 1999; expanded.write_text(json.dumps(value, indent=2)+'\n')
+    assert remote_config_digest(compact) != remote_config_digest(expanded)

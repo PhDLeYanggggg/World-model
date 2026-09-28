@@ -58,10 +58,11 @@ testing a fixed auxiliary norm cap, not declaring the cause or repair proven.
 No new held outcomes or independent sources were opened. The next paired fit
 is registered to change only this gradient cap, with all 108 groups and 2,000 updates
 per head retained; the original negative result stays frozen.
-The real-data pilot is now running on CREATE (37575963). Its pending request
-was shortened from two hours to fifteen minutes, without changing its 200 updates,
-CPU or memory. Full training retains the original two-hour request. The action
-and evaluation implementation is separately frozen before any new readout.
+The real-data pilot completed its 200 updates and both checkpoint hashes verify.
+Full training is submitted to CREATE as job 37576457, last observed pending.
+It continues the pilot checkpoints and retains the original two-hour request.
+The action and evaluation implementation is separately frozen before any new
+readout. Neither the pilot nor its fitting loss establishes a policy improvement.
 
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
