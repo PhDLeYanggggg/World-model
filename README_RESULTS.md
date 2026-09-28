@@ -5,7 +5,28 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fitting-Only Gradient Diagnostic (2026-09-28, Registered)
+## Fitting-Only Gradient Diagnostic (2026-09-28, Verified)
+
+Fresh CREATE jobs 37569222/37569306 completed and replayed all 108 groups
+exactly. No parameter update or held readout. At supervised-final states,
+shared auxiliary/risk gradient-norm ratio has median 213.257; 60/432 total
+gradients oppose direct risk (all-parameter conflict:92/432). At initialization
+there is no total conflict. This is measured imbalance, not proof of AdamW
+failure or generalization causality. The next repair is one fixed norm cap,
+not another threshold sweep or an unqualified gradient-surgery claim.
+
+Fitting easy prevalence has median0.2889; realized easy harm/reference0.1985.
+Support is heterogeneous and realized low-harm labels are not a causal oracle.
+All 5,184 scalar checks and432 initial-pair checks pass. Reports/SVG reproduce
+byte-for-byte;21 scoped tests in4files pass. Seal binds52source/control files
+and7public artifacts, SHA256
+`e809260e0d8e01afd2dd1f37d1cfc46278671e5a21af483c07e546ffac2a18c7`.
+No independent selection/calibration/confirmation, deployment, Stage5C or SMC.
+[Results](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/results.md),
+[interpretation and repair](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/conclusions.md),
+[verification scope](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/verification_report.md).
+
+### Registration and Preflight Record
 
 Previous turn: substantive progress, with a sealed negative readout and exact
 replays. Local/GitHub `65a30dea` match; all 252 source and 30 artifact hashes

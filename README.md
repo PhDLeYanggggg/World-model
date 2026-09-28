@@ -51,9 +51,12 @@ results use twelve already-opened development localities, not independent
 confirmation. I am retaining the failed comparison rather than changing its
 threshold or replacing the original risk denominator.
 
-The next diagnostic reads only fitting-source packets and frozen model states.
-It measures whether auxiliary losses oppose direct risk learning, separately
-from their numerical size. No new thresholds or evaluation-source fitting.
+The fitting-only diagnostic now reproduces exactly. At the final supervised
+states, auxiliary shared-gradient norms have a median ratio of 213 to direct
+risk; 60 of 432 repeated batches have an opposing total gradient. This supports
+testing a fixed auxiliary norm cap, not declaring the cause or repair proven.
+No new held outcomes or independent sources were opened. The next paired fit
+will change only this gradient cap; the original negative result stays frozen.
 
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
@@ -61,6 +64,8 @@ from their numerical size. No new thresholds or evaluation-source fitting.
 - [Training and exact replay evidence](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/training_result.md)
 - [Final verification scope](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/verification_report.md)
 - [Decision, limitations and next diagnostic](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/conclusions.md)
+- [Actual gradient measurements and limits](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/results.md)
+- [Controlled repair rationale](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/conclusions.md)
 
 ## Previous Controlled Result
 
