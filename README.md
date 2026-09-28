@@ -51,6 +51,10 @@ results use twelve already-opened development localities, not independent
 confirmation. I am retaining the failed comparison rather than changing its
 threshold or replacing the original risk denominator.
 
+The next diagnostic reads only fitting-source packets and frozen model states.
+It measures whether auxiliary losses oppose direct risk learning, separately
+from their numerical size. No new thresholds or evaluation-source fitting.
+
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
 - [Locality, seed and tail results](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/locality_seed_quality.md)

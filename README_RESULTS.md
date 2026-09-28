@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fitting-Only Gradient Diagnostic (2026-09-28, Registered)
+
+Previous turn: substantive progress, with a sealed negative readout and exact
+replays. Local/GitHub `65a30dea` match; all 252 source and 30 artifact hashes
+still verify. CREATE jobs 37563607 and 37564122 are freshly terminal COMPLETED,
+and no M3W job was queued at inspection. Existing fitting packet and checkpoint
+receipt hashes match the sealed records. This is not a new training result.
+
+The next fixed diagnostic covers all 108 paired fits, both arms, initial/final
+states and four shared 32-query batches. It computes actual loss gradients,
+shared/output-layer conflicts and fitting-source risk support, with zero
+parameter updates. Data already resides on CREATE; local storage remains close
+to the unchanged 10 GiB reserve, so no 4.91 GB copy is made. Eighteen scoped
+tests pass, including finite-difference gradient agreement. No held readout,
+independent-role access, threshold tuning, Stage5C or SMC.
+[Diagnostic protocol](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/protocol.md).
+
 ## Easy-Risk Readout (2026-09-28, Verified Negative)
 
 All 108 action groups and the full evaluation replay exactly. Independent
