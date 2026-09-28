@@ -18,6 +18,14 @@ control training and the Euclidean projection bound. Real training and new held
 readout are not_run at registration. The cap is not an AdamW or safety guarantee.
 [Registered repair protocol](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/protocol.md).
 
+Execution update: registration `f22e98c8` is on GitHub. Real pilot37575963 is
+submitted and freshly observed PENDING/Priority, not trained or failed. Verified
+personal CREATE quota50GB,21.458GBused. No duplicate job, quota bypass, data deletion
+or scope reduction. Twenty-one scoped tests in4files now pass, including training
+summary rejection of mismatched samples/unknown labels. Full training and held
+readout remain not_run. [Execution record](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/execution_status.json),
+[Chinese run/recovery guide](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/operation_zh.md).
+
 ## Fitting-Only Gradient Diagnostic (2026-09-28, Verified)
 
 Fresh CREATE jobs 37569222/37569306 completed and replayed all 108 groups

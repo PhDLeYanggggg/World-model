@@ -58,6 +58,8 @@ testing a fixed auxiliary norm cap, not declaring the cause or repair proven.
 No new held outcomes or independent sources were opened. The next paired fit
 is registered to change only this gradient cap, with all108groups and2000updates
 per head retained; the original negative result stays frozen.
+The real-data pilot is submitted to CREATE (37575963), last observed waiting
+for scheduler priority. It has not been counted as training completion.
 
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
