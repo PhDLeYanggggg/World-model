@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Occurrence Experiment (Full Local Training Running)
+## Fixed Occurrence Experiment (Training Complete; Actions Not Yet Read Out)
 
 The next paired experiment tests the verified occurrence-damage hypothesis.
 Both arms split the same warm-start head into identical occurrence/cost branches;
@@ -16,13 +16,25 @@ does not isolate branch splitting versus the original shared trunk.
 Registration `5b885be5` preceded the real local100-update paired pilot. It used
 arm64 Torch2.12.0, CPU4/workers0,6.06GB peak RSS and11.30s elapsed (2.88s fitting).
 The conservative full projection is7,127.95s, not measured runtime; the disk
-projection preserves10GiB. Full local216-head training is running as PID9799,
-resuming the pilot rather than discarding its work. No held outcome readout yet.
+projection preserves10GiB. Full local216-head training completed432,000 updates
+in810.16s, resuming the pilot rather than discarding its work. The first full
+pair retrains exactly in13.99s; the other107 pairs were not independently
+retrained. No held outcome readout yet.
+
+All checkpoints, frozen occurrence parameters and14,904 fitting arithmetic
+checks pass. The fixed arm has worse complete fitting marginal loss
+(0.002507829 versus0.002378599), improving only2/108 groups. Its fitting-only
+sign screen retains more benefit but also more harm. That screen is not the
+registered deployment action; no configuration is selected from these scores.
+[Training record](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/training_report.md),
+[run/recovery guide](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/operation_zh.md).
 
 Seven focused training tests cover initial teacher equivalence, frozen parameters,
 matched queries and exact checkpoint/resume. Seven action/gate tests preserve
 count matching, causal field exclusion and failures for undefined/excess risk.
 The action protocol is registered before any new action or held score is computed.
+The combined63 tests in9 files pass, including rejection of incomplete result
+rosters and refusal to label a failed risk screen as a successful method.
 No deployment changes.
 [Registered protocol](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/protocol.md).
 
