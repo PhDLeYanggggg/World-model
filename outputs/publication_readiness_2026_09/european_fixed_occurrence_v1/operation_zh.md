@@ -47,13 +47,13 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_fixed_occu
 先提交 `training_freeze.json` 和 `fit_replay.json`，再计算动作：
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_fixed_occurrence_policy.py decide --resume
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/recover_m3w_fixed_occurrence_solver.py decide
 ```
 
 全部动作冻结后，先提交 `decision_freeze.json`，再做完整动作重放及评价：
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_fixed_occurrence_policy.py replay_decide
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/recover_m3w_fixed_occurrence_solver.py replay_decide
 PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_fixed_occurrence_policy.py evaluate
 PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_fixed_occurrence_policy.py replay_evaluate
 PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_fixed_occurrence.py readout
@@ -61,6 +61,12 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_fixed_occu
 
 已经存在的最终记录不会被静默覆盖。评价重放是核验同一结果，不是新一轮
 模型选择。训练只重训第一对检查确定性；动作和数值评价重放覆盖全部组。
+
+动作计算曾在完成 95 组后因优化器空诊断字段退出。上面的恢复入口只把
+缺失的 dual certificate 视作无效证书，触发原有可行基线回退；不改变
+目标函数、阈值或搜索预算，不声称修好了底层数值求解器。原版已封存源码
+不修改，95 组已有结果保持不变。恢复登记需先提交，具体证据见
+`solver_recovery_protocol.md` 和 `solver_recovery_registration.json`。
 
 ## 如何解释结果
 

@@ -7,6 +7,14 @@ or evidence status.
 
 ## Fixed Occurrence Experiment (Training Complete; Actions Not Yet Read Out)
 
+Decision construction stopped after95 completed groups because the optimizer
+returned a null dual certificate and the old diagnostic conversion raised a
+TypeError. The registered engineering amendment maps only this missing field to
+NaN, triggering the existing checked-anchor fallback. It does not claim to fix
+the solver's underlying numerical failure. Five regression cases pass; sealed
+algorithms and all95 saved groups are preserved. Full replay is still required.
+[Recovery scope](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/solver_recovery_protocol.md).
+
 The next paired experiment tests the verified occurrence-damage hypothesis.
 Both arms split the same warm-start head into identical occurrence/cost branches;
 only occurrence trainability differs. Both reset AdamW and retain all108 groups,
