@@ -23,7 +23,28 @@ I am testing three linked questions:
 JEPA, Transformer and hybrid models are part of the research track. Combining
 these modules is not, by itself, evidence of a useful world model or a new method.
 
-## Current Result
+## Latest Diagnostic
+
+I traced where useful neural interventions are lost using all 108 frozen fitting
+contexts. Under the registered accounting order, **75.33% of available positive
+benefit lies behind the all-risk screen**, and 15.44% behind a nonpositive utility
+score. This points beyond the easy-occurrence branch tested most recently.
+
+Removing those screens is not a solution. The nonpositive-utility population
+has negative net gain, and useful switches in the all-risk-rejected population
+are mixed with substantial positive harm. Utility-only ordering also worsens the
+existing sign screen in 54,500 of 168,323 informative fitting query occurrences.
+
+The full diagnostic and exact replay are complete; 38 scoped tests and 19,224
+accounting checks pass. These are **in-sample diagnostic findings**, not new
+generalization results, a calibrated safety guarantee or a deployment upgrade.
+The next controlled test concerns causal gain/harm separation within fitting
+sources. Independent selection, calibration and confirmation data remain closed.
+
+- [Diagnostic results and exclusions](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/results.md)
+- [Interpretation and next test](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/failure_analysis.md)
+
+## Last Model Comparison
 
 **Freezing easy-occurrence probabilities did not improve neural selection.**
 
@@ -60,11 +81,6 @@ dynamics result, a safety certificate or a submission-ready system.
 - [Benefit/harm accounting](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/failure_analysis.md)
 - [Verification scope](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/verification_report.md)
 - [Chinese run and recovery guide](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/operation_zh.md)
-
-The next diagnostic is registered on fitting sources only: separate causal
-support, utility ordering and false-safe risk admissions. It does not change
-the deployed policy or reopen independent evaluation data.
-[Diagnostic protocol](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/protocol.md).
 
 ## Earlier Risk-Priority Result
 

@@ -5,13 +5,38 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fitting Switch Diagnostic (Registered, Not Run Yet)
+## Fitting Switch Diagnostic (Verified, No Deployment Change)
 
-The next step separates utility-ranking loss from false-safe risk admissions on
-the two fitting sources in each of108 frozen contexts. No training, threshold
-search, deployment change or new held/independent outcome use is authorized by
-this diagnostic.33 scoped tests pass; this is implementation evidence, not a
-research result. See the [registered protocol](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/protocol.md).
+All 108 contexts completed in 242.37s and replayed exactly in 248.37s. The readout
+covers 5,741,442 repeated fitting rows, 318,969 unique row IDs and 747,900 dependent
+query occurrences. Overlapping rows and repeated contexts are not independent
+observations. Inputs are `cached_verified`; diagnostic computation is `fresh_run`.
+New training and held/independent evaluation are `not_run`.
+
+Under the registered exclusive partition, all-risk rejection contains 75.330% of
+available positive benefit; nonpositive utility contains 15.441%. However, the
+nonpositive-utility population has negative normalized net gain (-0.02769180),
+while the all-risk-rejected population has both positive net gain (0.09737692)
+and material positive harm (0.05765557). These are fitting-cost units, not ADE
+percentage gains. They do not authorize removing either guard.
+
+At the raw sign screen's count, utility ordering misses the realized oracle in
+127,295/168,323 informative queries and worsens the screen in 54,500/168,323.
+91,044 incomplete query occurrences are excluded from the oracle comparison,
+not from the unknown-label accounting. Abstention and zero risk denominators
+remain undefined, not safety passes. This is not the joint deployed policy.
+
+38 scoped tests and 19,224 independent accounting checks pass. The seal binds
+96 source/control files and 10 public artifacts:
+`b60c2dfa4f63f977ddc2ca5680e30d5576e88ccb5eca7b2ccc270c03dd8d89d0`.
+The full legacy suite and cold raw-data rebuild were not run. No new model,
+threshold search, changed risk estimand, independent confirmation or deployment.
+Next: test gain/all-risk separation with fitting-locality-held internal controls;
+do not repeat easy-occurrence or threshold sweeps on the previous readout.
+
+- [Full results](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/results.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/failure_analysis.md)
+- [Run and recovery guide](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/operation.md)
 
 ## Fixed Occurrence Experiment (Verified Negative Result)
 
