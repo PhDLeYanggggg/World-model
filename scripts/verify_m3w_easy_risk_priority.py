@@ -18,7 +18,7 @@ from scripts.verify_m3w_fixed_floor_tail import reduce_check
 TESTS = ['tests/test_m3w_easy_risk_priority.py', 'tests/test_m3w_easy_risk_priority_policy.py',
          'tests/test_m3w_easy_risk_priority_report.py', 'tests/test_m3w_easy_risk_priority_readout.py',
          'tests/test_m3w_easy_hurdle_verification.py', 'tests/test_m3w_query_excess_verification.py',
-         'tests/test_m3w_easy_risk_priority_recovery.py']
+         'tests/test_m3w_easy_risk_priority_recovery.py', 'tests/test_m3w_easy_hurdle_accounting.py']
 
 
 def check_actions(a, sites, recordings, frames, utility):
@@ -164,6 +164,15 @@ def main():
     ref = support_doc['source_details']; assert run.base.artifact(ROOT/ref['path']) == ref
     assert support_doc['support'] == structural_support(json.loads((ROOT/ref['path']).read_text())['rows'])
     report()
+    from scripts.analyze_m3w_easy_risk_priority import main as analyze, exchange
+    analyze()
+    posthoc = json.loads((run.PUBLIC/'posthoc_accounting.json').read_text())
+    for name, metrics in posthoc['comparisons'].items():
+        left, right = name.split('_vs_')
+        rows = [dict(site=r['site'], metric=exchange(r['metric'], metric[r['group'], r['site'], right]))
+                for r in details['rows'] if r['policy'] == left]
+        for key, record in metrics.items():
+            counts['reductions'] += reduce_check(record, rows, key, cfg['bootstrap_seed'], cfg['bootstrap_resamples'])
     proc = subprocess.run([sys.executable, '-m', 'pytest', '-q', *TESTS], cwd=ROOT, capture_output=True, text=True)
     log = run.PRIVATE/'readout_pytest.txt'; log.write_text(proc.stdout+proc.stderr)
     if proc.returncode:
@@ -184,7 +193,7 @@ def main():
     bindings = {**parent_seal['source_bindings'], **ident['bindings']}
     extras = ['scripts/verify_m3w_easy_risk_priority.py', 'scripts/report_m3w_easy_risk_priority.py',
               'scripts/report_m3w_easy_risk_priority_training.py', 'scripts/audit_m3w_easy_risk_priority_support.py',
-              'scripts/recover_m3w_easy_risk_priority_replay.py', *TESTS]
+              'scripts/recover_m3w_easy_risk_priority_replay.py', 'scripts/analyze_m3w_easy_risk_priority.py', *TESTS]
     bindings.update({p: run.digest(ROOT/p) for p in extras})
     for rel, sha in bindings.items():
         assert run.digest(ROOT/rel) == sha

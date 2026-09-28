@@ -16,7 +16,8 @@ existing job was recovered without resubmission. No resource limit was changed.
 The fixed cap activates on215,041/216,000 repaired updates, mean alpha0.03656.
 Direct-risk fitting loss is0.00293361 versus0.00287197 uncapped; only46/108 repaired
 heads improve it. This is neither a held prediction result nor evidence of a
-successful repair. New causal actions and readout remain not_run.
+successful repair. All108 new causal action groups are now frozen; the new
+development readout remains not_run until the action manifest is committed.
 [Training evidence](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/training_report.md),
 [recovered replay receipt](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/replay_receipt_recovery.json).
 Forty-four targeted tests in seven files pass. At11:47:03UTC, local free space
@@ -25,6 +26,8 @@ requirement; no old artifacts were deleted. The original restore route can proce
 The original restore subsequently verified and installed all216 owned checkpoints
 (89,613,260bytes). This is cached_verified recovery, not new local training. The
 local training manifest is frozen before any new action or target readout.
+The decision pass completed on local arm64 at12:08:46UTC, preserving exact old
+raw/uncapped scores and own-count actions. No new target was used for decisions.
 
 Pre-readout support result: the fixed raw anchor abstains in16 dependent views,
 uncapped in6, with3overlapping: at least19/216 views across3localities necessarily
