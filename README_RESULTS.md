@@ -7,6 +7,25 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
+Latest development readout, **provisional pending full replay**: the registered
+matched-count ADE contrast is +0.00374642%, nominal 3,000-locality-bootstrap
+95% interval [+0.00128515%, +0.00680774%]. This is a small prediction signal,
+not a successful risk repair. Selected-risk violations increase from51/216 to
+54/216 dependent views; both matched policies have25 undefined-risk views.
+The full-floor harm-reduction contrast is -0.00073821pp and its interval crosses
+zero. Occurrence Brier and signed-risk MSE are worse. The exploratory screen
+fails; deployment and independent confirmation remain unchanged.
+
+The action manifest was committed in `b0d319cc` before the first evaluation.
+The first full action replay stopped after28 exactly matching groups because
+free local disk fell below the unchanged10GiB reserve. No mismatch, deletion or
+scope reduction occurred. Free space subsequently recovered above the reserve;
+the original all108-group replay has restarted, with no new training or tuning.
+All47 targeted tests in8files pass (5.96s). A fresh readout is not yet a verified
+readout: [interim evidence and recovery record](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/readout_interim.md).
+
+### Earlier Training and Action Freeze
+
 Latest training result: all108groups/216heads/432,000updates completed in
 CREATE37576457 (scheduler21m38s; runner1,251.38s). All checkpoint hashes verify.
 All108 uncapped states reproduce the parent; the first full pair replays exactly

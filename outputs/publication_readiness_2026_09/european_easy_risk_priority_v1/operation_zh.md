@@ -1,6 +1,8 @@
 # 风险优先辅助训练：运行与恢复
 
-本轮只改变辅助梯度上限。108 组、216 个头、每头 2,000 次更新、原有三个种子和数据角色保持不变。完整训练 **37576457** 已正常完成，第一组完整双臂重放 **37577264** 也正常完成。216 个检查点哈希、108 个对照模型状态、首组精确重放均核验通过。新预测评价尚未运行，训练完成不是效果提升。
+本轮只改变辅助梯度上限。108 组、216 个头、每头 2,000 次更新、原有三个种子和数据角色保持不变。完整训练 **37576457** 已正常完成，第一组完整双臂重放 **37577264** 也正常完成。216 个检查点哈希、108 个对照模型状态、首组精确重放均核验通过。108 组因果动作已冻结，首次评价已完成，但完整重放和独立算术检查尚未完成，暂不称最终核验通过。
+
+首次评价显示很小的同数量 ADE 正信号，但风险门槛未通过，部署不变。第一次动作重放在 28/108 组完全匹配后被 10 GiB 磁盘保护检查停止。空间恢复后已使用原命令从头重放，不重训、不删除旧数据、不降低保留线。最近 8 个文件的 47 项针对性测试通过。详情见 `readout_interim.md`。
 
 重放提交曾在调度器回执阶段超时，之后从现有作业恢复了凭据，没有重复提交，也未修改其两小时时限。原失败记录保留。本机磁盘曾不足回传余量，11:47:03 UTC 复查已恢复到 14,236,880,896 字节，超过原来的 10 GiB + 800 MB 要求；未删除旧数据。每次实际回传前仍需复查。
 
@@ -47,7 +49,15 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/restore_m3w_easy_risk
 PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_easy_risk_priority_policy.py decide
 ```
 
-完成后先将 `decision_freeze.json` 安全提交，再运行 `evaluate`。随后使用 `replay_decide` 和 `replay_evaluate` 重放。中断后的动作构建使用 `decide --resume`，保留已有完整组。未来标签只供评价，不进入选择接口。以上实际推理与评价目前尚未执行，合成测试不能替代它们。
+动作清单已在 `b0d319cc` 提交后运行 `evaluate`。当前继续使用 `replay_decide` 和 `replay_evaluate` 重放；动作重放从头逐组验证，不能把中断前的 28 组称为全部通过。中断后的首次动作构建才使用 `decide --resume`。未来标签只供评价，不进入选择接口；底层加载器可将标签数组读入内存，因此不声称未来数据从未被加载。输入接口仅接收已登记的因果字段。
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_easy_risk_priority_policy.py replay_decide
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_easy_risk_priority_policy.py replay_evaluate
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_easy_risk_priority.py
+```
+
+每一步须确认上一项成功结束。完整验证要求两个重放记录都精确匹配；不要为生成报告绕过它们。若空间不足，保留完整文件，等待资源恢复或采用另行核验的计算路径。
 
 ## 中断恢复
 

@@ -72,6 +72,13 @@ That prevents the every-view-defined-risk screen from passing here, regardless
 of the cap. I will still complete the registered predictive comparison and
 retain those views, rather than present abstention as a safety result.
 
+The first development readout of that repair is now available, with full replay
+still in progress. At the same query-level intervention count, ADE improves by
+only 0.00375% over the uncapped control. Risk violations rise from 51 to 54 of
+216 dependent views, and both policies leave 25 views with undefined selected
+risk. This does not establish a successful risk repair or a deployment upgrade.
+I am keeping these results separate from the fully verified experiment above.
+
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
 - [Locality, seed and tail results](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/locality_seed_quality.md)
