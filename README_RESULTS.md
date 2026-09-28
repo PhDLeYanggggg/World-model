@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Occurrence Experiment (Registered, Training Not Yet Run)
+## Fixed Occurrence Experiment (Full Local Training Running)
 
 The next paired experiment tests the verified occurrence-damage hypothesis.
 Both arms split the same warm-start head into identical occurrence/cost branches;
@@ -13,10 +13,17 @@ only occurrence trainability differs. Both reset AdamW and retain all108 groups,
 2000 updates, normalized inputs, source exclusions and sampled queries. This
 does not isolate branch splitting versus the original shared trunk.
 
-Seven focused tests cover initial teacher equivalence, frozen parameters,
-matched queries and exact checkpoint/resume. A real local100-update pilot will
-measure whether the full216-head run fits the approved compute/storage envelope.
-No training or new predictive result is claimed yet. No deployment changes.
+Registration `5b885be5` preceded the real local100-update paired pilot. It used
+arm64 Torch2.12.0, CPU4/workers0,6.06GB peak RSS and11.30s elapsed (2.88s fitting).
+The conservative full projection is7,127.95s, not measured runtime; the disk
+projection preserves10GiB. Full local216-head training is running as PID9799,
+resuming the pilot rather than discarding its work. No held outcome readout yet.
+
+Seven focused training tests cover initial teacher equivalence, frozen parameters,
+matched queries and exact checkpoint/resume. Seven action/gate tests preserve
+count matching, causal field exclusion and failures for undefined/excess risk.
+The action protocol is registered before any new action or held score is computed.
+No deployment changes.
 [Registered protocol](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/protocol.md).
 
 ## Conditional Risk Component Diagnostic (Verified)
