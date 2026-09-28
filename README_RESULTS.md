@@ -9,8 +9,9 @@ or evidence status.
 
 Execution update: registration `b68d127b` is on GitHub; allocated-CPU diagnostic
 37579489 was submitted once and freshly observed PENDING/Priority. No scientific
-result yet. The independent report checker and29 tests in4files pass, including
-rejection of altered factor attributions, objectives and partition sums.
+result yet. The independent report checker and30 tests in4files pass, including
+rejection of altered factor attributions, objectives and partition sums, and
+agreement between the source/query-weighted diagnostic and the actual Torch loss.
 [Execution status](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/execution_status.json),
 [run/recovery guide](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/operation_zh.md).
 
@@ -22,10 +23,10 @@ six-order average attribution is descriptive accounting, not causal importance,
 model selection or new-method evidence. The packet lacks signed benefit, so
 useful-switch ranking is explicitly not_run here.
 
-Local/GitHub parent commit `68e116f5` matches, and a fresh CREATE queue check found
-no M3W job. Existing simulation jobs are untouched. Fitting packets already reside
+The pre-submission CREATE queue check found no M3W job; diagnostic37579489 is now
+pending. Existing simulation jobs are untouched. Fitting packets already reside
 on CREATE; no4.91GB local copy. CPU4/16GiB/30min, group resume, all-group exact
-replay;24 scoped tests pass in4.92s. Training/calibration/deployment claims are
+replay required before accepting results. Training/calibration/deployment claims are
 unchanged. [Protocol](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/protocol.md).
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
