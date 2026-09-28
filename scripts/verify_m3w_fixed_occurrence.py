@@ -20,6 +20,7 @@ from scripts.report_m3w_easy_risk_priority import BOUNDARIES, value
 
 TESTS = ['tests/test_m3w_fixed_occurrence.py', 'tests/test_m3w_fixed_occurrence_policy.py',
     'tests/test_m3w_fixed_occurrence_verification.py',
+    'tests/test_m3w_fixed_occurrence_solver_compat.py',
     'tests/test_m3w_fitting_gain_labels.py', 'tests/test_m3w_easy_component_diagnostic.py',
     'tests/test_m3w_easy_component_report.py', 'tests/test_m3w_easy_hurdle_verification.py',
     'tests/test_m3w_query_excess_verification.py', 'tests/test_m3w_easy_hurdle_accounting.py']
@@ -146,6 +147,17 @@ is selected from them. {BOUNDARIES}
 def readout():
     start = time.monotonic(); run.api.torch.set_num_threads(4); run.api.torch.set_num_interop_threads(1)
     training()
+    from scripts import recover_m3w_fixed_occurrence_solver as recovery
+    amended = recovery.verify_registration()
+    repairs = []
+    for phase in ('decide', 'replay_decide'):
+        receipt = json.loads((run.PUBLIC/('solver_compatibility_'+phase+'.json')).read_text())
+        assert receipt['phase'] == phase and receipt['completed_groups'] == 108
+        assert not receipt['held_outcomes_used']
+        assert receipt['registration'] == run.base.artifact(run.PUBLIC/'solver_recovery_registration.json')
+        if receipt['log'] is not None: assert run.base.artifact(run.ROOT/receipt['log']['path']) == receipt['log']
+        repairs.append(receipt['null_certificates'])
+    assert repairs[0] == repairs[1]
     cfg, ident, data, jobs, oid, pid, fits, actions = run.load()
     details = json.loads((run.PRIVATE/'details.json').read_text()); s = json.loads((run.PUBLIC/'summary.json').read_text())
     check_record_sets(details)
@@ -217,7 +229,9 @@ def readout():
     verdict = verdict_for(ci, s['gates']['exploratory_screen_pass'])
     lines = ['# Fixed Occurrence: Development Readout', '', f'**Verdict: {verdict}. No deployment change.**', '',
         'Fresh paired local Torch training and readout; cached_verified upstream forecasters/floor/utility. '
-        'Actions were committed before outcomes. All108 actions and the numerical readout replay exactly. '
+        'Actions were committed before outcomes. A registered null-certificate compatibility repair '
+        'preserves the original checked-anchor fallback and all95 pre-error groups; it does not '
+        'establish a fix for the optimizer numerical failure. All108 actions and the numerical readout replay exactly. '
         'Only the first training pair was retrained for exact replay.', '',
         '| Registered contrast | ADE gain % [nominal95% CI] | All-floor harm reduction pp | Selected-risk reduction pp |', '|---|---:|---:|---:|']
     for name, m in s['paired'].items(): lines.append(f"| {name} | {value(m['ADE_gain_percent'])} | {value(m['all_reference_harm_reduction_pp'])} | {value(m['selected_harm_reduction_pp'])} |")
@@ -287,12 +301,13 @@ admissions make selected risk undefined, not measured zero risk. {BOUNDARIES}
 '''
     put('statistical_interpretation.md', stats)
     run.train.immutable(run.PUBLIC/'interpretation.json', dict(verdict=verdict, deployment_changed=False, independent_confirmation=False, submission_ready=False))
-    put('verification_report.md', '# Verification Scope\n\n'+json.dumps(counts, indent=2)+f'\n\n{count} tests in{len(TESTS)} files pass. All checkpoints, role exclusions and frozen occurrence parameters checked. Full legacy integration and cold raw rebuild not_run. Engineering verification is not efficacy.\n')
-    sources = {**ident['bindings'], **{str(p.relative_to(ROOT)): run.train.digest(p) for p in train_closure()}}
+    put('verification_report.md', '# Verification Scope\n\n'+json.dumps(counts, indent=2)+f'\n\n{count} tests in{len(TESTS)} files pass. All checkpoints, role exclusions and frozen occurrence parameters checked. All95 pre-error action groups remain byte-identical. The null-certificate event records replay exactly ({len(repairs[0])} events); original checked-anchor fallback, not unverified optimizer success. Full legacy integration and cold raw rebuild not_run. Engineering verification is not efficacy.\n')
+    sources = {**ident['bindings'], **amended['source_bindings'], **{str(p.relative_to(ROOT)): run.train.digest(p) for p in train_closure()}}
     sources.update({p: run.train.digest(ROOT/p) for p in TESTS})
     artifacts = {p.name: run.train.digest(p) for p in run.PUBLIC.iterdir() if p.suffix in ('.json', '.md') and p.name != 'verification.json'}
     run.train.immutable(run.PUBLIC/'verification.json', dict(source_bindings=sources, artifacts=artifacts,
         details=run.base.artifact(run.PRIVATE/'details.json'), counts=counts, tests=count, test_files=len(TESTS),
+        null_solver_certificates=len(repairs[0]), solver_compatibility_replay_exact=True, preserved_prefix_groups=95,
         seconds=time.monotonic()-start, deployment_changed=False))
     print(json.dumps(dict(verified=True, verdict=verdict, checks=counts, tests=count)))
 

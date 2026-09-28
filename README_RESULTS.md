@@ -12,7 +12,10 @@ returned a null dual certificate and the old diagnostic conversion raised a
 TypeError. The registered engineering amendment maps only this missing field to
 NaN, triggering the existing checked-anchor fallback. It does not claim to fix
 the solver's underlying numerical failure. Five regression cases pass; sealed
-algorithms and all95 saved groups are preserved. Full replay is still required.
+algorithms and all95 saved groups are preserved. Recovery completed all108
+action groups; one null-certificate event correctly fell back to its checked
+anchor. All68 scoped tests in10files pass. Full replay is still required, and
+no new development outcome has been read.
 [Recovery scope](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/solver_recovery_protocol.md).
 
 The next paired experiment tests the verified occurrence-damage hypothesis.
