@@ -57,6 +57,16 @@ replay. These checks support reproducibility, not efficacy. The experiment uses
 twelve already-opened development localities, not independent confirmation.
 Undefined risk, adverse slices and negative comparisons remain in the results.
 
+I also checked why the repair underperformed on its own fitting data. Full
+factor accounting shows a2.11% increase in the risk objective: occurrence
+estimation worsened, while changes in the cost factors partly cancelled its
+error. Better combined scores therefore need not mean better component estimates.
+All108 diagnostic groups replay exactly. This narrows the next controlled test;
+it does not establish a generalization mechanism or overturn the failed risk gate.
+
+- [Conditional-risk diagnosis](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/conclusions.md)
+- [Restored fitting-only benefit labels](outputs/publication_readiness_2026_09/european_fitting_gain_labels_v1/results.md)
+
 - [Results and every control](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/results.md)
 - [Decision, interpretation and limits](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/conclusions.md)
 - [Benefit/harm accounting](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/failure_analysis.md)

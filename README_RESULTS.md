@@ -5,18 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Conditional Risk Component Diagnostic (First Run Complete, Replay Running)
+## Conditional Risk Component Diagnostic (Verified)
 
-Execution update: registration `b68d127b` is on GitHub; allocated-CPU diagnostic
-37579489 completed all108 groups in191.83 runner seconds (scheduler3m26s).
-Full replay37579750 is running; interpretation remains pending exact replay and
-independent arithmetic. The report checker and30 tests in4files pass, including
+Registration `b68d127b` preceded execution. CREATE37579489 completed all108
+groups in191.83 runner seconds;37579750 replayed every group exactly in283.23s.
+All15,552 independent arithmetic checks and30 tests in4files pass, including
 rejection of altered factor attributions, objectives and partition sums, and
 agreement between the source/query-weighted diagnostic and the actual Torch loss.
 [Execution status](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/execution_status.json),
 [run/recovery guide](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/operation_zh.md).
 
-The next fitting-only check separates occurrence, conditional reference cost and
+The fitting-only check separates occurrence, conditional reference cost and
 conditional harm in the frozen risk product. It retains108 groups and216 heads,
 with zero updates, no policy actions and no held readout. Exact residual terms
 and all8 predicted-factor combinations are specified before execution. A
@@ -24,11 +23,18 @@ six-order average attribution is descriptive accounting, not causal importance,
 model selection or new-method evidence. The packet lacks signed benefit, so
 useful-switch ranking is explicitly not_run here.
 
-The pre-submission CREATE queue check found no M3W job; the original diagnostic
-has finished and its full replay is running. Simulation jobs are untouched. Fitting packets reside
-on CREATE; no4.91GB local copy. CPU4/16GiB/30min, group resume, all-group exact
-replay required before accepting results. Training/calibration/deployment claims are
-unchanged. [Protocol](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/protocol.md).
+The complete fitting objective worsens2.1147% (0.002780572 to0.002839372), with
+42/108 improved groups. Occurrence replacement contributes+0.000311531 to loss;
+reference and harm replacements contribute-0.000007346 and-0.000245385. Despite
+those compensating product effects, Brier and both conditional MSEs worsen.
+Easy-positive-harm rows contribute84.23% of repaired row-risk MSE. This identifies
+fitting compensation, not the causal mechanism of held generalization.
+
+Both jobs are terminal; simulation jobs were untouched. No4.91GB local packet
+copy. No parameter update, new action, deployment or calibration claim.
+[Interpretation and next controlled question](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/results.md),
+[verification](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/verification_report.md).
 
 ### Fitting Label Completion While CREATE Is Queued
 

@@ -4,7 +4,8 @@
 这不是新模型训练：读取已有216个风险头，对108组拟合数据计算误差分解，不更新参数、
 不搜索阈值、不产生新部署动作，不读取独立 selection/calibration/confirmation。
 
-注册提交 `b68d127b` 在计算前已推送。首次作业 `37579489` 已提交，不能再次提交诊断。
+注册提交 `b68d127b` 在计算前已推送。首次作业 `37579489` 和全量重放 `37579750`
+均已 COMPLETED 0:0，108组精确一致。下面命令保留为复现说明，不能向已封存目录重复提交。
 数据在 CREATE 自有 M3W 目录，未复制4.91GB到本机，未修改 simulation 项目。
 资源为 CPU4、16GiB、30分钟、单进程、workers0。首组耗时仅用于估算，不能冒充完成时长。
 
@@ -20,7 +21,7 @@ PENDING 是排队，不是失败；SSH查询超时不代表作业终止。先查
 
 ## 正常结束后
 
-首次作业 COMPLETED 0:0 且108组齐全后，才提交一次全组重放：
+首次作业 COMPLETED 0:0 且108组齐全后，才提交一次全组重放（本次已完成）：
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/manage_m3w_easy_component_diagnostic.py submit-replay
