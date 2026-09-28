@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Risk Component Diagnostic (Registered, Not Yet Run)
+
+The next fitting-only check separates occurrence, conditional reference cost and
+conditional harm in the frozen risk product. It retains108 groups and216 heads,
+with zero updates, no policy actions and no held readout. Exact residual terms
+and all8 predicted-factor combinations are specified before execution. A
+six-order average attribution is descriptive accounting, not causal importance,
+model selection or new-method evidence. The packet lacks signed benefit, so
+useful-switch ranking is explicitly not_run here.
+
+Local/GitHub parent commit `68e116f5` matches, and a fresh CREATE queue check found
+no M3W job. Existing simulation jobs are untouched. Fitting packets already reside
+on CREATE; no4.91GB local copy. CPU4/16GiB/30min, group resume, all-group exact
+replay;24 scoped tests pass in4.92s. Training/calibration/deployment claims are
+unchanged. [Protocol](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/protocol.md).
+
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
 **Final verified readout: tiny accuracy recovery, risk screen failed.** All108
