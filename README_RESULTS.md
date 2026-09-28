@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Risk-Priority Repair (2026-09-28, Registered Before Training)
+
+The single changed factor caps the aggregate auxiliary gradient norm at half
+the direct-risk norm, with a detached coefficient. Uncapped equal-weight
+supervision is rerun as the matched control. Retain108groups,216heads,2000updates
+each, existing three seeds, identical source-balanced sampling and initialization.
+All forecasts, utility, all-risk scores, role boundaries and the2% budget stay
+fixed. This is an established optimization control, not a novel method claim.
+Nineteen scoped tests pass, including exact interrupted resume, unchanged
+control training and the Euclidean projection bound. Real training and new held
+readout are not_run at registration. The cap is not an AdamW or safety guarantee.
+[Registered repair protocol](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/protocol.md).
+
 ## Fitting-Only Gradient Diagnostic (2026-09-28, Verified)
 
 Fresh CREATE jobs 37569222/37569306 completed and replayed all 108 groups

@@ -56,7 +56,8 @@ states, auxiliary shared-gradient norms have a median ratio of 213 to direct
 risk; 60 of 432 repeated batches have an opposing total gradient. This supports
 testing a fixed auxiliary norm cap, not declaring the cause or repair proven.
 No new held outcomes or independent sources were opened. The next paired fit
-will change only this gradient cap; the original negative result stays frozen.
+is registered to change only this gradient cap, with all108groups and2000updates
+per head retained; the original negative result stays frozen.
 
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
@@ -66,6 +67,7 @@ will change only this gradient cap; the original negative result stays frozen.
 - [Decision, limitations and next diagnostic](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/conclusions.md)
 - [Actual gradient measurements and limits](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/results.md)
 - [Controlled repair rationale](outputs/publication_readiness_2026_09/european_easy_gradient_diagnostic_v1/conclusions.md)
+- [Registered paired repair](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/protocol.md)
 
 ## Previous Controlled Result
 
