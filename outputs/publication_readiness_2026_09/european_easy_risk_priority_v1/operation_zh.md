@@ -1,6 +1,6 @@
 # 风险优先辅助训练：运行与恢复
 
-本轮只改变辅助梯度上限。108 组、216 个头、每头 2,000 次更新、原有三个种子和数据角色保持不变。初始真实试跑作业为 **37575963**；最后核实状态是 `PENDING / Priority`，不能写成已经训练或卡死。
+本轮只改变辅助梯度上限。108 组、216 个头、每头 2,000 次更新、原有三个种子和数据角色保持不变。初始真实试跑作业为 **37575963**；在排队时将试跑时限从两小时调整为十五分钟后，同一个作业已开始运行。CPU4、16 GiB、200 次总更新没有改变，完整训练仍申请两小时。不能把 RUNNING 写成训练完成。
 
 ## 本地环境与检查
 
@@ -34,7 +34,18 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/manage_m3w_easy_risk_
 PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/report_m3w_easy_risk_priority_training.py
 ```
 
-这些命令有先后条件，不能一次无条件全执行。提交器拒绝重复意图；查询超时不代表作业结束。作业配置为 CPU4、单进程、workers0、16 GiB、2 小时，不在登录节点做训练。每 500 次更新保存检查点与心跳，每组结束再记录进度。
+这些命令有先后条件，不能一次无条件全执行。提交器拒绝重复意图；查询超时不代表作业结束。完整训练配置为 CPU4、单进程、workers0、16 GiB、2 小时，试跑只申请十五分钟，不在登录节点做训练。每 500 次更新保存检查点与心跳，每组结束再记录进度。
+
+## 训练之后
+
+`decision_registration.json` 单独冻结了检查点恢复、因果动作与评价代码，不改变训练前已经注册的科学比较。恢复前必须有提交过的完整训练及重放记录；恢复仅接受正确路径和哈希的 216 个自有检查点，保留本机 10 GiB 余量。
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/restore_m3w_easy_risk_priority_heads.py
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_easy_risk_priority_policy.py decide
+```
+
+完成后先将 `decision_freeze.json` 安全提交，再运行 `evaluate`。随后使用 `replay_decide` 和 `replay_evaluate` 重放。中断后的动作构建使用 `decide --resume`，保留已有完整组。未来标签只供评价，不进入选择接口。以上实际推理与评价目前尚未执行，合成测试不能替代它们。
 
 ## 中断恢复
 

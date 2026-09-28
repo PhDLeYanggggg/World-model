@@ -7,6 +7,24 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
+Continuation: the same pilot job 37575963 is freshly observed RUNNING with no
+stderr. While pending, its walltime was corrected from two hours to fifteen
+minutes, based on the prior 200-update real pilot (9.36 seconds); CPU4/16G,
+the model and all updates are unchanged. This enables shorter backfill but is
+not a new job or completed-training claim. Full training keeps its two-hour
+envelope. No unregistered model factor or held outcome was used.
+
+The checkpoint restore and causal action/readout implementation is now bound
+before execution: 91 source/control bindings, with no change to the registered
+scientific contrast. Twenty focused tests in three files pass, including exact
+restore, archive safety, future-field rejection, count-matched controls and
+failure on undefined-risk abstention. These are implementation checks; real
+action replay and new held evaluation remain not_run.
+[Action/readout protocol](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/decision_protocol.md),
+[runtime amendment](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/pilot_walltime_amendment.json).
+
+### Training Registration Record
+
 The single changed factor caps the aggregate auxiliary gradient norm at half
 the direct-risk norm, with a detached coefficient. Uncapped equal-weight
 supervision is rerun as the matched control. Retain108groups,216heads,2000updates
@@ -18,7 +36,7 @@ control training and the Euclidean projection bound. Real training and new held
 readout are not_run at registration. The cap is not an AdamW or safety guarantee.
 [Registered repair protocol](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/protocol.md).
 
-Execution update: registration `f22e98c8` is on GitHub. Real pilot37575963 is
+Earlier execution update: registration `f22e98c8` is on GitHub. Real pilot37575963 was
 submitted and freshly observed PENDING/Priority, not trained or failed. Verified
 personal CREATE quota50GB,21.458GBused. No duplicate job, quota bypass, data deletion
 or scope reduction. Twenty-one scoped tests in4files now pass, including training
