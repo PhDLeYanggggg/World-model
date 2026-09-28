@@ -59,10 +59,12 @@ No new held outcomes or independent sources were opened. The next paired fit
 is registered to change only this gradient cap, with all 108 groups and 2,000 updates
 per head retained; the original negative result stays frozen.
 The real-data pilot completed its 200 updates and both checkpoint hashes verify.
-Full training is submitted to CREATE as job 37576457, last observed pending.
+Full training is running on CREATE as job 37576457, with fresh training heartbeats.
 It continues the pilot checkpoints and retains the original two-hour request.
 The action and evaluation implementation is separately frozen before any new
 readout. Neither the pilot nor its fitting loss establishes a policy improvement.
+The result checker covers matched query counts, undefined risk, adverse slices
+and locality-level uncertainty; its synthetic checks are not evaluation results.
 
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)

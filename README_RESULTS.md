@@ -7,11 +7,23 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
-Latest: real pilot37575963 completed0:0, two heads x100updates. Both checkpoint
+Latest: full job37576457 is RUNNING, freshly observed at00:06:09 with a train-phase
+heartbeat and no stderr. No new held evaluation exists yet. Separate readout
+adapters now check query constraints, contrast signs, undefined risk, all controls,
+locality and seed reductions. All91 registered decision bindings are unchanged;
+33 targeted tests in six files pass. A positive ADE result alone cannot hide
+failed risk/easy gates or establish independent confirmation.
+[Verification preflight](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/readout_adapter_preflight.md).
+
+Local disk is currently below the existing10GiB reserve plus800MB restore allowance.
+Remote fitting continues; recheck before copying artifacts, without deleting old
+data, lowering the reserve or changing scientific scope.
+
+Pilot record: real pilot37575963 completed0:0, two heads x100updates. Both checkpoint
 hashes and matched sampling verify; unknown-label draws0. Runner12.9939seconds,
 Slurm49seconds, batch MaxRSS2,636,492KiB. First-pair full-cost extrapolation
 6,783.80seconds passes the existing guard; it is not measured full runtime.
-Full job37576457 was submitted once, last observed PENDING, with the original
+Full job37576457 was submitted once, initially observed PENDING, with the original
 CPU4/16G/2h envelope and all108pairs retained. Completed pilot is not completed
 full training or a positive scientific result.
 
