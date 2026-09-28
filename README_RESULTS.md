@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fitting Switch Diagnostic (Registered, Not Run Yet)
+
+The next step separates utility-ranking loss from false-safe risk admissions on
+the two fitting sources in each of108 frozen contexts. No training, threshold
+search, deployment change or new held/independent outcome use is authorized by
+this diagnostic.33 scoped tests pass; this is implementation evidence, not a
+research result. See the [registered protocol](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/protocol.md).
+
 ## Fixed Occurrence Experiment (Verified Negative Result)
 
 All108 action groups replay exactly in1,631.16s. The complete numerical readout

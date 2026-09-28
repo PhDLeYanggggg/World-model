@@ -61,6 +61,11 @@ dynamics result, a safety certificate or a submission-ready system.
 - [Verification scope](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/verification_report.md)
 - [Chinese run and recovery guide](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/operation_zh.md)
 
+The next diagnostic is registered on fitting sources only: separate causal
+support, utility ordering and false-safe risk admissions. It does not change
+the deployed policy or reopen independent evaluation data.
+[Diagnostic protocol](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/protocol.md).
+
 ## Earlier Risk-Priority Result
 
 **A small accuracy recovery did not repair selected risk.**
