@@ -5,11 +5,12 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Conditional Risk Component Diagnostic (Registered, Not Yet Run)
+## Conditional Risk Component Diagnostic (First Run Complete, Replay Running)
 
 Execution update: registration `b68d127b` is on GitHub; allocated-CPU diagnostic
-37579489 was submitted once and freshly observed PENDING/Priority. No scientific
-result yet. The independent report checker and30 tests in4files pass, including
+37579489 completed all108 groups in191.83 runner seconds (scheduler3m26s).
+Full replay37579750 is running; interpretation remains pending exact replay and
+independent arithmetic. The report checker and30 tests in4files pass, including
 rejection of altered factor attributions, objectives and partition sums, and
 agreement between the source/query-weighted diagnostic and the actual Torch loss.
 [Execution status](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/execution_status.json),
@@ -23,22 +24,26 @@ six-order average attribution is descriptive accounting, not causal importance,
 model selection or new-method evidence. The packet lacks signed benefit, so
 useful-switch ranking is explicitly not_run here.
 
-The pre-submission CREATE queue check found no M3W job; diagnostic37579489 is now
-pending. Existing simulation jobs are untouched. Fitting packets already reside
+The pre-submission CREATE queue check found no M3W job; the original diagnostic
+has finished and its full replay is running. Simulation jobs are untouched. Fitting packets reside
 on CREATE; no4.91GB local copy. CPU4/16GiB/30min, group resume, all-group exact
 replay required before accepting results. Training/calibration/deployment claims are
 unchanged. [Protocol](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/protocol.md).
 
 ### Fitting Label Completion While CREATE Is Queued
 
-A separately registered local construction restores signed benefit/harm labels
-for the existing108 fitting groups. The old risk packets retain positive harm but
-discard improvement magnitude. The new sidecars will retain that information as
-supervision only, using the original forecasts, roles, row IDs and training scales.
-Ten focused synthetic tests pass. Actual construction/replay is not_run until the
-registration is committed; this is not a new model or a new utility-policy claim.
-The queued component diagnostic and its inputs remain unchanged.
-[Label protocol](outputs/publication_readiness_2026_09/european_fitting_gain_labels_v1/protocol.md).
+The separately registered local construction now restores signed benefit/harm
+labels for all108 fitting groups. Full build90.56s and exact replay86.97s are
+complete. Original IDs and occurrence/reference/positive-harm target hashes
+match every frozen fitting identity. Ten focused synthetic tests pass.
+
+The private186,958,378-byte label cache contains5,741,442 repeated fitting rows,
+5,614,596 known labels and318,969 unique original row IDs. Neither repeated views
+nor overlapping unique windows are independent samples. Unknowns stay NaN.
+This supplies supervision only, not inference features or a new utility-policy
+result. The component diagnostic and its inputs remain unchanged.
+[Verified label results](outputs/publication_readiness_2026_09/european_fitting_gain_labels_v1/results.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_fitting_gain_labels_v1/operation_zh.md).
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
