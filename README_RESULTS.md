@@ -7,6 +7,22 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
+Latest training result: all108groups/216heads/432,000updates completed in
+CREATE37576457 (scheduler21m38s; runner1,251.38s). All checkpoint hashes verify.
+All108 uncapped states reproduce the parent; the first full pair replays exactly
+in37577264 (scheduler22s). Its submission acknowledgement timed out, but the
+existing job was recovered without resubmission. No resource limit was changed.
+
+The fixed cap activates on215,041/216,000 repaired updates, mean alpha0.03656.
+Direct-risk fitting loss is0.00293361 versus0.00287197 uncapped; only46/108 repaired
+heads improve it. This is neither a held prediction result nor evidence of a
+successful repair. New causal actions and readout remain not_run.
+[Training evidence](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/training_report.md),
+[recovered replay receipt](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/replay_receipt_recovery.json).
+Forty-four targeted tests in seven files pass. At11:47:03UTC, local free space
+recovered to14,236,880,896bytes, above the unchanged11,537,418,240byte restore
+requirement; no old artifacts were deleted. The original restore route can proceed.
+
 Pre-readout support result: the fixed raw anchor abstains in16 dependent views,
 uncapped in6, with3overlapping: at least19/216 views across3localities necessarily
 abstain under the new common-query-count policy. This uses hash-verified previous
@@ -16,7 +32,7 @@ continues unchanged, and no view, risk denominator or threshold is changed.
 [Structural support analysis](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/structural_support.md).
 The expanded six-file targeted suite now passes34tests in6.97seconds.
 
-Latest: full job37576457 is RUNNING, freshly observed at00:06:09 with a train-phase
+Earlier progress: full job37576457 was RUNNING at00:06:09 with a train-phase
 heartbeat and no stderr. No new held evaluation exists yet. Separate readout
 adapters now check query constraints, contrast signs, undefined risk, all controls,
 locality and seed reductions. All91 registered decision bindings are unchanged;
@@ -24,9 +40,9 @@ The initial33 targeted tests in six files passed. A positive ADE result alone ca
 failed risk/easy gates or establish independent confirmation.
 [Verification preflight](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/readout_adapter_preflight.md).
 
-Local disk is currently below the existing10GiB reserve plus800MB restore allowance.
-Remote fitting continues; recheck before copying artifacts, without deleting old
-data, lowering the reserve or changing scientific scope.
+During training, local disk temporarily fell below the existing10GiB reserve
+plus800MB restore allowance. This did not interrupt CREATE fitting or cause data
+deletion, a lower reserve, or a scientific-scope change.
 
 Pilot record: real pilot37575963 completed0:0, two heads x100updates. Both checkpoint
 hashes and matched sampling verify; unknown-label draws0. Runner12.9939seconds,

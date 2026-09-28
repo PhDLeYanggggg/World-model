@@ -59,10 +59,12 @@ No new held outcomes or independent sources were opened. The next paired fit
 is registered to change only this gradient cap, with all 108 groups and 2,000 updates
 per head retained; the original negative result stays frozen.
 The real-data pilot completed its 200 updates and both checkpoint hashes verify.
-Full training is running on CREATE as job 37576457, with fresh training heartbeats.
-It continues the pilot checkpoints and retains the original two-hour request.
+Full training completed on CREATE as job 37576457: 216 heads and 432,000 cumulative
+updates. The first full pair replayed exactly in job 37577264; all 108 uncapped
+controls reproduce the previous states. Only 46 of 108 repaired heads improve
+the direct-risk fitting loss over the control, so the cap is not an established repair.
 The action and evaluation implementation is separately frozen before any new
-readout. Neither the pilot nor its fitting loss establishes a policy improvement.
+readout. Fitting loss and exact training replay do not establish a policy improvement.
 The result checker covers matched query counts, undefined risk, adverse slices
 and locality-level uncertainty; its synthetic checks are not evaluation results.
 The unchanged anchors force at least 19 repeated evaluation views to abstain.

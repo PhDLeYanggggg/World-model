@@ -17,7 +17,8 @@ from scripts.verify_m3w_fixed_floor_tail import reduce_check
 
 TESTS = ['tests/test_m3w_easy_risk_priority.py', 'tests/test_m3w_easy_risk_priority_policy.py',
          'tests/test_m3w_easy_risk_priority_report.py', 'tests/test_m3w_easy_risk_priority_readout.py',
-         'tests/test_m3w_easy_hurdle_verification.py', 'tests/test_m3w_query_excess_verification.py']
+         'tests/test_m3w_easy_hurdle_verification.py', 'tests/test_m3w_query_excess_verification.py',
+         'tests/test_m3w_easy_risk_priority_recovery.py']
 
 
 def check_actions(a, sites, recordings, frames, utility):
@@ -182,7 +183,8 @@ def main():
     parent_seal = json.loads((run.original.PUBLIC/'verification.json').read_text())
     bindings = {**parent_seal['source_bindings'], **ident['bindings']}
     extras = ['scripts/verify_m3w_easy_risk_priority.py', 'scripts/report_m3w_easy_risk_priority.py',
-              'scripts/report_m3w_easy_risk_priority_training.py', 'scripts/audit_m3w_easy_risk_priority_support.py', *TESTS]
+              'scripts/report_m3w_easy_risk_priority_training.py', 'scripts/audit_m3w_easy_risk_priority_support.py',
+              'scripts/recover_m3w_easy_risk_priority_replay.py', *TESTS]
     bindings.update({p: run.digest(ROOT/p) for p in extras})
     for rel, sha in bindings.items():
         assert run.digest(ROOT/rel) == sha
