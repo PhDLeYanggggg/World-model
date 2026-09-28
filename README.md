@@ -23,36 +23,39 @@ I am testing three linked questions:
 JEPA, Transformer and hybrid models are part of the research track. Combining
 these modules is not, by itself, evidence of a useful world model or a new method.
 
-## Latest Diagnostic
+## Latest Experiment
 
-I traced where useful neural interventions are lost using all 108 frozen fitting
-contexts. Under the registered accounting order, **75.33% of available positive
-benefit lies behind the all-risk screen**, and 15.44% behind a nonpositive utility
-score. This points beyond the easy-occurrence branch tested most recently.
+I tested whether a more expressive cost head can transfer useful gain and harm
+estimates between development localities. Each head trains on one locality and
+is evaluated on another, with preprocessing confined to the training source.
+Both arms use identical causal inputs, losses and sampled queries. The comparison
+completed 144 heads and 288,000 updates, then froze decisions before readout.
 
-Removing those screens is not a solution. The nonpositive-utility population
-has negative net gain, and useful switches in the all-risk-rejected population
-are mixed with substantial positive harm. Utility-only ordering also worsens the
-existing sign screen in 54,500 of 168,323 informative fitting query occurrences.
+The result is mixed, and **the new head is not promoted**:
 
-The full diagnostic and exact replay are complete; 38 scoped tests and 19,224
-accounting checks pass. These are **in-sample diagnostic findings**, not new
-generalization results, a calibrated safety guarantee or a deployment upgrade.
-The next controlled test concerns causal gain/harm separation within fitting
-sources. Independent selection, calibration and confirmation data remain closed.
+| Comparison | Result | Nominal 95% locality interval |
+|---|---:|---:|
+| Nonlinear minus affine signed-score MSE, lower is better | +0.07709 | [-0.10209, +0.30087] |
+| Same-count nonlinear versus affine ADE improvement | +0.65629% | [+0.34267%, +1.00558%] |
 
-- [Diagnostic results and exclusions](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/results.md)
-- [Interpretation and next test](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/failure_analysis.md)
+Better average selection does not establish reliable risk prediction. At the
+same intervention count, selected all-risk violations increase from 158 to 168
+of 216 dependent views. The nonlinear head's worst easy-case degradation is
+4.18%, beyond the 2% limit. The primary prediction-error comparison does not
+establish an improvement, despite lower training loss.
 
-## Last Model Comparison
+These are internal cross-fitted results on 12 already exposed localities, not
+independent confirmation or a new neural dynamics forecast. Independent
+selection, calibration and confirmation sources remain closed, and deployment
+is unchanged. I report unknown-label interventions rather than counting them
+as harmless.
 
-The next registered experiment tests gain/risk separation between the two fitting
-localities using identical inputs and losses, comparing affine logits with a
-small nonlinear head. All 144 heads completed their registered 2,000 updates;
-one complete paired training replay matches exactly, including the resumed pilot.
-All216 directional decisions are now frozen before outcome evaluation. Independent evaluation
-sources and the deployed policy are unchanged.
-[Internal-transfer protocol](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md).
+- [Results and evidence boundaries](outputs/publication_readiness_2026_09/european_inner_separability_v1/results.md)
+- [Failure analysis and next controlled question](outputs/publication_readiness_2026_09/european_inner_separability_v1/failure_analysis.md)
+- [Training protocol](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md)
+- [Earlier fitting-switch diagnosis](outputs/publication_readiness_2026_09/european_fitting_switch_diagnostic_v1/results.md)
+
+## Previous Model Comparison
 
 **Freezing easy-occurrence probabilities did not improve neural selection.**
 

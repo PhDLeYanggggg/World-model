@@ -5,12 +5,42 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Internal Locality-Held Cost Learning (No Deployment Promotion)
+
+Fresh Torch training completed72 paired fits,144 heads and288,000 updates.
+Training took252.88s; the first paired fit replays exactly. All216 causal action
+views and the numerical readout also replay exactly. The evaluated locality
+supplies neither preprocessing nor labels to its head. Existing forecasters,
+floors and source inputs are `cached_verified`; independent calibration and
+confirmation are `not_run` and remain closed.
+
+The primary nonlinear-minus-affine signed-score MSE is+0.0770902, nominal95%
+locality interval[-0.1020887,0.3008718]; lower is better, so improvement is not
+established. Matched-count ADE improves0.6562856% [0.3426688%,1.0055798%], but
+selected-risk violations worsen158->168/216 and worst easy degradation rises
+2.05786%->4.18009%. Unknown-label matched interventions are7,094 vs8,727 repeated
+occurrences. The original selected-floor denominator and2% budget are unchanged.
+
+The three seed matched-ADE gains are0.79549%,0.64062%,0.53274%. These are dependent
+development comparisons, not three independent external replications. The
+3,000-draw bootstrap aggregates within12 localities first and remains nominal.
+This is a conditional cost-learning result, not a new dynamics predictor or
+calibrated deployment result. Independent accounting verifies37,800 metric values,
+648 query-balanced score vectors and747,900 matched query counts;31 scoped tests
+pass. There are5,614,596 known and126,846 unknown repeated label occurrences,
+318,969 unique row IDs; overlapping rows remain dependent. The verification seal
+binds98 source/control files and18 public artifacts:
+`880d86a5801568cffcfc294fdb1aacc89ad02652dd95bf90ea0bfeba38f062c4`.
+Full legacy tests and cold raw reconstruction are not run.
+
+- [Results](outputs/publication_readiness_2026_09/european_inner_separability_v1/results.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_inner_separability_v1/failure_analysis.md)
+- [Reproduction](outputs/publication_readiness_2026_09/european_inner_separability_v1/operation.md)
+
 ## Fitting Switch Diagnostic (Verified, No Deployment Change)
 
-Follow-on registration: [internal locality-held separability](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md).
-All72 unique paired fits and144 cost heads completed288,000 updates in252.88s.
-One full paired training replay matches exactly;216 directional development
-decisions are frozen before outcome readout. No new forecaster or deployment change.
+The follow-on [internal locality-held experiment](outputs/publication_readiness_2026_09/european_inner_separability_v1/protocol.md)
+is reported above; this earlier diagnosis remains unchanged.
 
 All 108 contexts completed in 242.37s and replayed exactly in 248.37s. The readout
 covers 5,741,442 repeated fitting rows, 318,969 unique row IDs and 747,900 dependent
