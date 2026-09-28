@@ -21,6 +21,62 @@ def value(record):
     return f"{record['point']:.6g}"+(f" [{ci[0]:.6g}, {ci[1]:.6g}]" if ci else '')
 
 
+def detailed_readout(s):
+    lines=['# Locality, Seed and Tail Readout','',
+        'Twelve already-opened development localities. The 3 forecast seeds and repeated source-role views are not independent samples. Intervals use 3,000 nominal paired-locality bootstrap draws, not simultaneous or independent-confirmation intervals. No post-readout selection is performed.','',
+        '| Policy | FDE gain/floor % | Worst-view easy gain/CV % | p95 error ratio/floor | Unknown interventions | Entirely abstaining views |',
+        '|---|---:|---:|---:|---:|---:|']
+    for p in run.POLICIES:
+        m=s['summary'][p];w=s['worst_views'][p]
+        lines.append(f"| {p} | {value(m['FDE_gain_floor'])} | {w['worst_easy_gain_CV']:.6g} | {value(m['p95_ratio_to_floor'])} | {value(m['unknown_interventions'])} | {w['abstaining_views']} |")
+    lines+=['','## Prespecified Primary Contrast','',
+        'Positive ADE gain means lower error; positive harm reduction means less positive harm. Fixed-floor-denominator harm is a diagnostic, not a replacement for selected-risk. Intervention counts are matched within each query, not only on average.','',
+        '| Locality | Supervised vs marginal matched ADE gain % | Fixed-denominator harm reduction pp | Intervention difference pp |',
+        '|---|---:|---:|---:|']
+    paired=s['paired']['supervised_matched_vs_marginal_matched']
+    for site in paired['ADE_gain_percent']['by_site']:
+        vals=[paired[k]['by_site'][site] for k in ('ADE_gain_percent','all_reference_harm_reduction_pp','intervention_difference_pp')]
+        lines.append('| '+site+' | '+' | '.join('undefined' if v is None else f'{v:.8g}' for v in vals)+' |')
+    lines+=['','## All Seeds Retained','','| Seed | Policy | ADE gain/floor % | Hard gain/floor % |','|---|---|---:|---:|']
+    for seed,policies in s['by_seed'].items():
+        for p in ('raw_joint','marginal_joint','supervised_joint','raw_matched','marginal_matched','supervised_matched'):
+            lines.append(f"| {seed} | {p} | {value(policies[p]['all_gain_floor'])} | {value(policies[p]['hard_gain_floor'])} |")
+    lines+=['','## Probability and Conditional Costs','',
+        'Quality scores are query-balanced within known-label held-development data. The marginal arm has no direct occurrence label loss; its probability component need not be calibrated. A better Brier score alone is not proof of better joint allocation or a risk certificate.','',
+        '| Arm | Easy prevalence | Predicted easy probability | Brier | Log loss | Signed MSE | Signed bias | Conditional reference MSE | Conditional harm MSE |',
+        '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+    for arm,m in s['quality'].items():
+        fields=('easy_rate','predicted_easy_probability','Brier','log_loss','signed_MSE','signed_bias','conditional_reference_MSE','conditional_harm_MSE')
+        lines.append('| '+arm+' | '+' | '.join(value(m[k]) for k in fields)+' |')
+    lines+=['','No metric, seconds-level, physical-safety, calibration-guarantee or deployment-upgrade claim is inferred. The original incomplete primary remains incomplete; independent roles stay closed.']
+    put('locality_seed_quality.md','\n'.join(lines)+'\n')
+    import io
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    matplotlib.rcParams['svg.hashsalt']='m3w-easy-hurdle-v1'
+    matplotlib.rcParams['svg.fonttype']='none'
+    names=['supervised_matched_vs_marginal_matched','supervised_matched_vs_raw_matched','marginal_matched_vs_raw_matched']
+    labels=['Supervised vs marginal','Supervised vs original','Marginal vs original']
+    fig,axes=plt.subplots(1,2,figsize=(11,3.8),layout='constrained')
+    for ax,metric,title in zip(axes,('ADE_gain_percent','all_reference_harm_reduction_pp'),('ADE gain at identical counts (%)','Positive harm reduction (pp)')):
+        for i,name in enumerate(names):
+            v=s['paired'][name][metric]
+            if v['point'] is not None and v['ci95'] is not None:
+                point=v['point'];lo,hi=v['ci95']
+                ax.plot([lo,hi],[i,i],color=['#197978','#995366','#666666'][i],linewidth=2)
+                ax.plot(point,i,'o',color=['#197978','#995366','#666666'][i])
+        ax.axvline(0,color='gray',linestyle='--',linewidth=1);ax.set_yticks(range(3),labels);ax.invert_yaxis()
+        ax.set_title(title,fontsize=10);ax.grid(axis='x',alpha=.2);ax.tick_params(labelsize=9)
+    fig.suptitle('Paired easy-risk supervision: frozen common-count controls\n12 development localities; nominal paired bootstrap intervals',fontsize=11)
+    buf=io.BytesIO();fig.savefig(buf,format='svg',metadata={'Date':None,'Creator':'M3W deterministic report'})
+    dest=run.PUBLIC/'matched_contrasts.svg'
+    if (run.PUBLIC/'verification.json').exists():assert dest.read_bytes()==buf.getvalue()
+    else:dest.write_bytes(buf.getvalue())
+    preview=run.PRIVATE/'figures';preview.mkdir(exist_ok=True)
+    fig.savefig(preview/'matched_contrasts.png',dpi=150,metadata={'Software':'M3W deterministic report'});plt.close(fig)
+
+
 def main():
     cfg, identity = run.identity()
     assert json.loads((run.PUBLIC/'registration.json').read_text()) == identity
@@ -30,8 +86,8 @@ def main():
     text = '# Easy Occurrence / Conditional-Risk Experiment\n\n'
     text += ('Registration preceded fitting. Forecasts, floor, utility and all-risk are '
              'cached_verified; fitting-source label audit is fresh_run. The data roles '
-             'and2%risk standard are unchanged.\n\n')
-    text += (f"Audited{len(rows)}groups. Easy labels per pair: {min(r['easy'] for r in rows):,}"
+             'and 2% risk standard are unchanged.\n\n')
+    text += (f"Audited {len(rows)} groups. Easy labels per pair: {min(r['easy'] for r in rows):,}"
              f" to {max(r['easy'] for r in rows):,}. Easy prevalence among known rows: "
              f"{100*min(rates):.3f}% to {100*max(rates):.3f}%. Minimum source easy count: "
              f"{min(n for r in rows for n in r['source_easy_counts'].values())}.\n\n")
@@ -56,6 +112,7 @@ def main():
                  'environment probes constitute scientific results.\n\n')
     else:
         s = json.loads((run.PUBLIC/'summary.json').read_text()); assert s['identity'] == identity
+        detailed_readout(s)
         text += '## Fresh Development Readout\n\n'
         text += '| Policy | ADE gain/floor (%) | Hard gain/floor (%) | Intervention fraction | Violating / undefined views |\n|---|---:|---:|---:|---:|\n'
         for p in run.POLICIES:

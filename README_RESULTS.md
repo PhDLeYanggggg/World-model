@@ -5,7 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Easy-Risk Decision Evaluation (2026-09-27, In Progress)
+## Easy-Risk Decisions Frozen (2026-09-28)
+
+All 108 causal action groups completed without reducing the fixed search budget.
+The first-run receipt records 1,094.895 runner seconds and 13,003,669,504 bytes
+peak RSS; this is not the longer observed wall-clock span across local pauses.
+The `exact: false` runtime field identifies a first computation, not a failed
+replay. Replay is still pending. The complete action manifest is committed
+before any new held-development outcome readout. No threshold was selected
+from those outcomes; independent selection/calibration/confirmation remain closed.
+
+## Easy-Risk Decision Evaluation (2026-09-27, Restoration)
 
 The previous turn completed actual216-head training, not a status-only wait.
 Local and GitHubcbaa5498match; CREATEverification job37564122 is freshly confirmed

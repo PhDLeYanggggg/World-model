@@ -73,6 +73,8 @@ Neither an environment probe nor a synthetic test is a positive model result.
 Local capacity has since recovered: I restored only the 89.5 MB frozen
 checkpoints, verified their hashes, and retained the 10 GiB reserve. The next
 step uses the unchanged causal action and held-development evaluation code.
+All 108 causal action groups are now complete and frozen before outcome
+readout. Exact replay and the new prediction-quality comparison are next.
 I am not relaxing easy protection. This remains evidence from twelve
 opened development localities; independent selection, calibration and
 confirmation stay closed.

@@ -158,7 +158,7 @@ def main():
         'scripts/collect_m3w_easy_hurdle_training.py', 'scripts/train_m3w_easy_hurdle_portable.py', *TESTS]
     bindings.update({p: run.base.digest(ROOT/p) for p in extra})
     artifact_hashes = {p.name: run.base.digest(p) for p in run.PUBLIC.iterdir()
-                      if p.suffix in ('.json', '.md') and p.name != 'verification.json'}
+                      if p.suffix in ('.json', '.md', '.svg') and p.name != 'verification.json'}
     run.base.immutable_json(run.PUBLIC/'verification.json', dict(source_bindings=bindings, artifacts=artifact_hashes,
         groups=groups, neural_heads=216, updates=432000, query_constraint_checks=checks, changed_matched_queries=changes,
         cost_views=cost_views, quality_views=quality_views, locality_reductions=reductions, scoped_tests=tests,
