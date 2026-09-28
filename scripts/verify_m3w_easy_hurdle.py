@@ -151,6 +151,44 @@ def main():
     if proc.returncode:
         raise RuntimeError(proc.stdout+proc.stderr)
     tests = int(re.search(r'(\d+) passed', proc.stdout).group(1))
+    status_path = run.PUBLIC/'execution_status.json'
+    status = json.loads(status_path.read_text())
+    status.update(decision_replay='fresh_run_exact_108groups',
+        evaluation_replay='fresh_run_exact_complete_readout',
+        independent_arithmetic_checks='fresh_run_passed',
+        independent_query_constraint_checks=checks, independent_cost_views=cost_views,
+        independent_quality_views=quality_views, independent_locality_reductions=reductions,
+        scoped_tests_passed=tests, scoped_test_files=len(TESTS),
+        experiment_processes_running=False)
+    if (run.PUBLIC/'verification.json').exists():
+        assert status == json.loads(status_path.read_text()), 'Sealed execution status changed'
+    else:
+        run.base.inter.json_write(status_path, status)
+    from scripts.report_m3w_easy_hurdle import put
+    put('verification_report.md', f'''# Verification Scope
+
+All {groups} action groups and the complete development readout replay exactly.
+Independent arithmetic checks cover {checks:,} query constraints,
+{cost_views:,} policy cost views, {quality_views:,} probability/cost quality views,
+and {reductions:,} locality reductions. Matched policies differ in {changes:,}
+queries despite exactly equal per-query counts. These counts repeat role and
+seed contexts and are not independent sample sizes.
+
+All {tests} scoped tests in {len(TESTS)} files pass. All 216 restored checkpoint
+hashes agree with the committed CREATE manifest. The first pair's 4,000 training
+updates replay exactly on the same CREATE runtime except elapsed time; the
+other 214 heads were verified, not retrained. Local arm64 action and evaluation
+replays do not prove cross-architecture training equivalence.
+
+The full legacy integration suite and a cold raw-data rebuild are not_run.
+The former contains unrelated training/report-writing workflows; a scoped pass
+is not described as a whole-repository pass. These engineering checks confirm
+the negative result's arithmetic and provenance, not scientific efficacy.
+
+The exploratory screen still fails. Independent confirmation remains unopened;
+no deployment change, metric/seconds claim or safety certificate. Stage5C and
+SMC remain disabled. verification.json binds source and public artifact hashes.
+''')
     seal = json.loads((run.previous.PUBLIC/'verification.json').read_text())
     bindings = {**seal['source_bindings'], **ident['bindings']}
     extra = ['scripts/verify_m3w_easy_hurdle.py', 'scripts/report_m3w_easy_hurdle.py',

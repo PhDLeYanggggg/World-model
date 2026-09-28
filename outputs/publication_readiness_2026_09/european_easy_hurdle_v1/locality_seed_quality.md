@@ -2,7 +2,7 @@
 
 Twelve already-opened development localities. The 3 forecast seeds and repeated source-role views are not independent samples. Intervals use 3,000 nominal paired-locality bootstrap draws, not simultaneous or independent-confirmation intervals. No post-readout selection is performed.
 
-| Policy | FDE gain/floor % | Worst-view easy gain/CV % | p95 error ratio/floor | Unknown interventions | Entirely abstaining views |
+| Policy | FDE gain/floor % | Worst-view easy gain/CV % | p95 error ratio/floor | Unknown interventions (mean/view) | Entirely abstaining views |
 |---|---:|---:|---:|---:|---:|
 | floor | 0 [0, 0] | 0.121432 | 1 [1, 1] | 0 [0, 0] | 216 |
 | common_anchor | 0.00521155 [0.00147672, 0.0106108] | 0.176646 | 1.00001 [1, 1.00003] | 3.67593 [0.532407, 9.25463] | 24 |

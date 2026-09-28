@@ -24,7 +24,7 @@ def value(record):
 def detailed_readout(s):
     lines=['# Locality, Seed and Tail Readout','',
         'Twelve already-opened development localities. The 3 forecast seeds and repeated source-role views are not independent samples. Intervals use 3,000 nominal paired-locality bootstrap draws, not simultaneous or independent-confirmation intervals. No post-readout selection is performed.','',
-        '| Policy | FDE gain/floor % | Worst-view easy gain/CV % | p95 error ratio/floor | Unknown interventions | Entirely abstaining views |',
+        '| Policy | FDE gain/floor % | Worst-view easy gain/CV % | p95 error ratio/floor | Unknown interventions (mean/view) | Entirely abstaining views |',
         '|---|---:|---:|---:|---:|---:|']
     for p in run.POLICIES:
         m=s['summary'][p];w=s['worst_views'][p]

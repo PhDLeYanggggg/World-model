@@ -31,6 +31,8 @@ Each entry is the median across 108 paired fits of the same frozen fitting-monit
 | supervised | conditional | 0.23917755 | 0.0027295398 | 108 |
 | supervised | supervised | 1.3407868 | 0.35164933 | 108 |
 
+The ratio of final supervised occurrence-loss and marginal-loss medians is 294.74. Both have unit coefficient in the registered objective. This is a ratio of fitting loss values, not a gradient ratio or proof that one loss caused the downstream failure. The next fitting-only diagnostic must measure gradients directly.
+
 ## Supported Findings and Open Hypotheses
 
 - The occurrence and conditional-cost fits improve, but the composed signed-risk error does not improve in this readout. Proper occurrence scoring alone is not the downstream objective.

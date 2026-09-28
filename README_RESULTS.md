@@ -5,7 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Easy-Risk Readout (2026-09-28, Negative; Replay in Progress)
+## Easy-Risk Readout (2026-09-28, Verified Negative)
+
+All 108 action groups and the full evaluation replay exactly. Independent
+verification checks 4,487,400 query constraints, 2,376 cost views, 432 quality
+views and 4,346 locality reductions. These are dependent repeated contexts,
+not independent samples. All 51 scoped tests in 10 files pass. Source binding
+covers 252 files and 30 public artifacts. Verification SHA256:
+`f8ba209c0853499afd8830ca9e5ff57086c826a36c5ea265e2766fb89c7ecd13`.
+Action replay took 1,365.19 seconds, evaluation replay 92.59 seconds and
+independent verification 237.17 seconds. Full legacy integration and a cold
+raw-data rebuild remain not_run. No research process from this experiment
+remains running; the broader research goal remains active and not ready for submission.
 
 Action freeze `96b82ac3` was committed and pushed before readout. All 108 groups
 and 216 trained heads were evaluated in 73.34 runner seconds; 8.53 GB peak RSS.

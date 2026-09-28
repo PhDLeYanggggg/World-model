@@ -44,8 +44,9 @@ existing limit, but 51 of 216 dependent views violated selected risk and 24 had
 undefined selected risk because they entirely abstained. **No deployment upgrade.**
 
 Training completed on CREATE: 216 heads, 2,000 updates each. Checkpoint hashes,
-paired sampling and an exact first-pair training replay passed. Action and outcome
-replays and independent arithmetic checks are being completed locally. These
+paired sampling and an exact first-pair training replay passed. All 108 action
+groups and the full readout replay exactly. Independent arithmetic checks and
+51 scoped tests pass; they verify this negative result, not model efficacy. These
 results use twelve already-opened development localities, not independent
 confirmation. I am retaining the failed comparison rather than changing its
 threshold or replacing the original risk denominator.
@@ -54,6 +55,8 @@ threshold or replacing the original risk denominator.
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
 - [Locality, seed and tail results](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/locality_seed_quality.md)
 - [Training and exact replay evidence](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/training_result.md)
+- [Final verification scope](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/verification_report.md)
+- [Decision, limitations and next diagnostic](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/conclusions.md)
 
 ## Previous Controlled Result
 

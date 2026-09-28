@@ -81,6 +81,9 @@ def main():
     for arm, components in monitors.items():
         for key, row in components.items():
             lines.append(f"| {arm} | {key} | {row['initial_median']:.8g} | {row['final_median']:.8g} | {row['decreased_heads']} |")
+    supervised = monitors['supervised']
+    ratio = supervised['occurrence']['final_median']/supervised['marginal']['final_median']
+    lines += ['', f'The ratio of final supervised occurrence-loss and marginal-loss medians is {ratio:.2f}. Both have unit coefficient in the registered objective. This is a ratio of fitting loss values, not a gradient ratio or proof that one loss caused the downstream failure. The next fitting-only diagnostic must measure gradients directly.']
     lines += ['', '## Supported Findings and Open Hypotheses', '',
         '- The occurrence and conditional-cost fits improve, but the composed signed-risk error does not improve in this readout. Proper occurrence scoring alone is not the downstream objective.',
         '- Matching every query count excludes intervention volume as the sole explanation for the primary negative result. The decomposition quantifies benefit lost versus harm avoided; it does not establish why the shared representation changed.',
