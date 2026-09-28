@@ -22,6 +22,9 @@ successful repair. New causal actions and readout remain not_run.
 Forty-four targeted tests in seven files pass. At11:47:03UTC, local free space
 recovered to14,236,880,896bytes, above the unchanged11,537,418,240byte restore
 requirement; no old artifacts were deleted. The original restore route can proceed.
+The original restore subsequently verified and installed all216 owned checkpoints
+(89,613,260bytes). This is cached_verified recovery, not new local training. The
+local training manifest is frozen before any new action or target readout.
 
 Pre-readout support result: the fixed raw anchor abstains in16 dependent views,
 uncapped in6, with3overlapping: at least19/216 views across3localities necessarily
