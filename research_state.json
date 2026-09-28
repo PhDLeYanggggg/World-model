@@ -1,7 +1,7 @@
 {
   "current_evidence_record": "cvpr2027_research_track.european_centered_risk_policy_v1",
   "active_experiment": "cvpr2027_research_track.european_easy_hurdle_v1",
-  "next_research_action": "Commit all108 causal action groups before held-development readout, then run frozen evaluation, replays and independent arithmetic verification. Independent roles remain closed",
+  "next_research_action": "Finish exact action/evaluation replays and independent arithmetic checks for the negative easy-risk supervision experiment. Then diagnose component gradient scaling/conflict on fitting sources before registering a remedy. No held threshold tuning; independent roles remain closed",
   "audit_delegation": {
     "user_authorized_routine_research_audits_and_repairs": true,
     "routine_user_reapproval_required": false,
@@ -13,7 +13,14 @@
   },
   "cvpr2027_research_track": {
     "european_easy_hurdle_v1": {
-      "status": "all108_causal_actions_complete_frozen_before_readout",
+      "status": "negative_development_readout_replay_and_verification_in_progress",
+      "decision_freeze_commit": "96b82ac3",
+      "prespecified_primary_ADE_gain_percent": -0.0204671,
+      "prespecified_primary_ADE_CI95_percent": [-0.0320605, -0.00956935],
+      "supervised_matched_risk_violating_views": 51,
+      "supervised_matched_undefined_selected_risk_views": 24,
+      "exploratory_screen_pass": false,
+      "readout_result_source": "fresh_run",
       "previous_goal_turn_classification": "progress_actual216head_training_and_verified_first_pair_replay",
       "local_restored_checkpoint_bytes": 89517817,
       "local_free_bytes_after_restore": 11988320256,
@@ -46,7 +53,7 @@
       "all216_heads_independently_retrained": false,
       "first_pair_replay_heads": 2,
       "first_pair_replay_updates": 4000,
-      "scientific_efficacy_evaluated": false,
+      "scientific_efficacy_evaluated": true,
       "own_fitting_monitor_objective_decreased_heads": 216,
       "last_verified_completed_pilot_updates": 200,
       "full_training_job": "37563607",
@@ -82,7 +89,7 @@
       "arms": ["marginal", "supervised"],
       "new_forecaster_training": false,
       "new_risk_head_training": "fresh_run_completed_with_verified_checkpoint_hashes",
-      "held_development_readout": "not_run",
+      "held_development_readout": "fresh_run_complete_negative_no_deployment_upgrade",
       "independent_roles_read": false,
       "CREATE_readonly_queue_returncode": 0,
       "CREATE_jobs_submitted": 5,

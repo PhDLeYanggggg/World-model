@@ -5,6 +5,25 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Easy-Risk Readout (2026-09-28, Negative; Replay in Progress)
+
+Action freeze `96b82ac3` was committed and pushed before readout. All 108 groups
+and 216 trained heads were evaluated in 73.34 runner seconds; 8.53 GB peak RSS.
+The prespecified supervised-versus-marginal same-count ADE gain is **-0.020467%**
+[-0.032061%, -0.009569%]. Full-floor-denominator positive harm falls 0.006487 pp,
+but selected benefit falls 0.026922 pp. This denominator is diagnostic only.
+Brier improves 0.262075 to 0.158131, while composed signed-risk MSE increases
+0.004190 to 0.004443 and its mean bias increases 0.001657 to 0.008916.
+Eleven of 12 locality primary ADE point contrasts are negative.
+
+The supervised matched policy has 51 selected-risk violations and 24 undefined
+views out of 216 dependent role views. Easy and zero-CV protection pass; the
+registered overall exploratory screen fails. The more permissive marginal
+own-count policy gains accuracy but has 152 risk-violating views; it is not
+promoted. No deployment change or independent confirmation.
+[Full controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md),
+[posthoc loss/accounting](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md).
+
 ## Easy-Risk Decisions Frozen (2026-09-28)
 
 All 108 causal action groups completed without reducing the fixed search budget.

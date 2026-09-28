@@ -18,7 +18,7 @@ TESTS = ['tests/test_m3w_easy_hurdle.py', 'tests/test_m3w_easy_hurdle_verificati
          'tests/test_m3w_query_utility.py', 'tests/test_m3w_query_excess_verification.py',
          'tests/test_m3w_easy_hurdle_portable.py', 'tests/test_m3w_easy_hurdle_transport.py',
          'tests/test_m3w_easy_hurdle_collection.py', 'tests/test_m3w_easy_hurdle_training_audit.py',
-         'tests/test_m3w_easy_hurdle_restore.py']
+         'tests/test_m3w_easy_hurdle_restore.py', 'tests/test_m3w_easy_hurdle_accounting.py']
 
 
 def check_actions(a, sites, recordings, frames, utility):
@@ -155,7 +155,8 @@ def main():
     bindings = {**seal['source_bindings'], **ident['bindings']}
     extra = ['scripts/verify_m3w_easy_hurdle.py', 'scripts/report_m3w_easy_hurdle.py',
         'scripts/restore_m3w_easy_hurdle_heads.py', 'scripts/verify_m3w_easy_hurdle_portable_training.py',
-        'scripts/collect_m3w_easy_hurdle_training.py', 'scripts/train_m3w_easy_hurdle_portable.py', *TESTS]
+        'scripts/collect_m3w_easy_hurdle_training.py', 'scripts/train_m3w_easy_hurdle_portable.py',
+        'scripts/analyze_m3w_easy_hurdle.py', *TESTS]
     bindings.update({p: run.base.digest(ROOT/p) for p in extra})
     artifact_hashes = {p.name: run.base.digest(p) for p in run.PUBLIC.iterdir()
                       if p.suffix in ('.json', '.md', '.svg') and p.name != 'verification.json'}

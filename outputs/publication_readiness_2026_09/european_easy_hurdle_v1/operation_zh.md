@@ -18,8 +18,10 @@ env PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_easy_hurd
 
 全部训练完成后，先将training_freeze.json安全提交，再运行`--phase decide --resume`。
 全部动作完成后，先提交decision_freeze.json，再运行`--phase evaluate`。不得交换顺序。
-然后执行`--phase replay_fit`、`--phase replay_decide`、`--phase replay_evaluate`。
-replay_fit只对第一组两头完整重训；其余组是推理重放，不写成全216头重训复现。
+本轮训练在 CREATE 完成，因此完整训练重放也在相同 CREATE runtime 完成；不要把
+本机不同架构训练当作逐位复现。其他本机训练实验可用`--phase replay_fit`重训首对。
+本轮本机只执行`--phase replay_decide`和`--phase replay_evaluate`。
+训练重放只对第一组两头完整重训；其余组是检查点核对及推理重放，不写成全216头重训。
 
 独立算术检查使用scripts/verify_m3w_easy_hurdle.py。冻结前生成报告使用
 scripts/report_m3w_easy_hurdle.py。检查点、行级数据和原始调度器输出不进Git。
@@ -53,3 +55,10 @@ pilot完成且调度器exit0才提交train。已存在submission receipt或不�
 完整训练只提交一次。`create_training_freeze.json`记录远端216个checkpoint的hash；
 核验job重新核对全部头，第一组两头从头重训4,000更新，并逐字段对比，耗时字段除外。
 这不是全216头重复训练，也不是held预测重放；后两者的状态不得混写。
+
+本地空间恢复后，使用`scripts/restore_m3w_easy_hurdle_heads.py`仅取回216个已冻结的
+检查点，共89,517,817bytes。恢复程序逐文件核对远端已提交清单的hash，不传输4.91GB
+训练包，不覆盖不同产物，不更改10GiB保留线。恢复依赖远端训练/核验记录已提交。
+本地training_freeze提交后才运行原始decide；decision_freeze提交后才运行evaluate。
+fit_replay.json明确引用CREATE首对4,000更新逐字段重放，不称跨架构重训等价。
+prediction_replay和evaluation_replay才是本轮本地重新运行的动作及评价重放。

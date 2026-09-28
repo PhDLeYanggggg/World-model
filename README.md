@@ -25,6 +25,38 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Current Result
 
+**Better easy-case probabilities did not produce better neural selection.**
+
+I completed a paired experiment with 216 risk heads, keeping the forecasts,
+causal inputs, initialization and training queries fixed. One arm learned signed
+risk directly; the other also learned easy-case occurrence and conditional costs.
+All 108 action groups were frozen in `96b82ac3` before development readout.
+
+| Same-count supervised versus marginal control | Result | Nominal 95% locality interval |
+|---|---:|---:|
+| ADE improvement | -0.02047% | [-0.03206%, -0.00957%] |
+| Positive harm reduction, full-floor denominator | +0.00649 pp | [+0.00216, +0.01314] |
+
+Easy-occurrence Brier improved from 0.2621 to 0.1581. However, avoided harm was
+smaller than the benefit lost by the new allocation. The common-count control
+rules out switching less as the only explanation. Easy error stayed within the
+existing limit, but 51 of 216 dependent views violated selected risk and 24 had
+undefined selected risk because they entirely abstained. **No deployment upgrade.**
+
+Training completed on CREATE: 216 heads, 2,000 updates each. Checkpoint hashes,
+paired sampling and an exact first-pair training replay passed. Action and outcome
+replays and independent arithmetic checks are being completed locally. These
+results use twelve already-opened development localities, not independent
+confirmation. I am retaining the failed comparison rather than changing its
+threshold or replacing the original risk denominator.
+
+- [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
+- [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)
+- [Locality, seed and tail results](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/locality_seed_quality.md)
+- [Training and exact replay evidence](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/training_result.md)
+
+## Previous Controlled Result
+
 **Correcting average risk bias did not produce a better deployment policy.**
 
 After training 216 risk heads, I tested whether their remaining fitting-only
@@ -53,31 +85,10 @@ pass**; separate arithmetic checks cover 1,495,800 query/head constraints,
 not independent samples. A replay-only JSON identity-format defect was fixed
 without changing original code or scientific outputs.
 
-Most rejected original admissions triggered the easy-risk constraint. My next
-paired experiment separates easy occurrence from conditional error, with the
-same architecture, training queries and common-count controls in both arms.
-The fitting-source audit is complete: all108pairs contain easy labels. The new
-real-data pilot initially stopped because local storage crossed the10GiB
-reserve. A separate CREATE CPU environment now passes actual optimizer and
-checkpoint-resume checks; all 108 fitting-only input packets are transferred
-and hash-verified (4.91 GB). The real fitting pilot has also passed: two paired
-heads,100updates each,9.36seconds of fitting. Full training has now completed:
-216 heads with 2,000 updates each, in 24min32s. All checkpoint and paired-sampling
-checks pass; the first pair also reproduces exactly from scratch apart from
-elapsed time. Held readout remains pending, so this is not evidence of improved
-prediction or safer deployment. The first
-batch-shell startup failure is preserved alongside its successful repair.
-Transfers are resumable with per-packet hashes; intermittent SSH disconnects
-do not erase completed packets or justify reducing the experiment.
-Neither an environment probe nor a synthetic test is a positive model result.
-Local capacity has since recovered: I restored only the 89.5 MB frozen
-checkpoints, verified their hashes, and retained the 10 GiB reserve. The next
-step uses the unchanged causal action and held-development evaluation code.
-All 108 causal action groups are now complete and frozen before outcome
-readout. Exact replay and the new prediction-quality comparison are next.
-I am not relaxing easy protection. This remains evidence from twelve
-opened development localities; independent selection, calibration and
-confirmation stay closed.
+Most rejected original admissions triggered the easy-risk constraint. This
+motivated the paired easy-occurrence experiment above. It improved probability
+and conditional-cost fit, but did not repair allocation or selected risk.
+Independent selection, calibration and confirmation remain closed.
 
 - [Centered-risk experiment and failure analysis](outputs/publication_readiness_2026_09/european_centered_risk_policy_v1/conclusions.md)
 - [New paired repair: audit, execution status and remaining work](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
