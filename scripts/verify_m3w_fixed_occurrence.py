@@ -17,6 +17,7 @@ from scripts.verify_m3w_query_excess_refit import check_selected_costs
 from scripts.verify_m3w_subset_excess import check_fixed_denominator
 from scripts.verify_m3w_fixed_floor_tail import reduce_check
 from scripts.report_m3w_easy_risk_priority import BOUNDARIES, value
+from scripts.analyze_m3w_easy_hurdle import exchange
 
 TESTS = ['tests/test_m3w_fixed_occurrence.py', 'tests/test_m3w_fixed_occurrence_policy.py',
     'tests/test_m3w_fixed_occurrence_verification.py',
@@ -220,6 +221,24 @@ def readout():
         for policy, metrics in policies.items():
             rows = [r for r in details['rows'] if r['seed'] == int(seed) and r['policy'] == policy]
             for field, result in metrics.items(): counts['reductions'] += reduce_check(result, rows, field, cfg['bootstrap_seed'], cfg['bootstrap_resamples'])
+    decomposition = {}; sites = sorted({r['site'] for r in details['rows']})
+    assert len(sites) == 12
+    for new, old in run.CONTRASTS:
+        rows = [dict(group=r['group'], site=r['site'],
+                     metric=exchange(r['metric'], metric[r['group'], r['site'], old]))
+                for r in details['rows'] if r['policy'] == new]
+        assert len(rows) == 216
+        out = {k: run.base.inter.paired_localities(rows, sites, k, cfg['bootstrap_resamples'],
+                                                cfg['bootstrap_seed']) for k in rows[0]['metric']}
+        for k, result in out.items():
+            counts['reductions'] += reduce_check(result, rows, k, cfg['bootstrap_seed'], cfg['bootstrap_resamples'])
+        decomposition[new+'_vs_'+old] = out
+    run.train.immutable(run.PUBLIC/'posthoc_accounting.json', dict(
+        result_source='fresh_run_descriptive_accounting_of_frozen_development_readout',
+        summary=run.base.artifact(run.PUBLIC/'summary.json'),
+        details=run.base.artifact(run.PRIVATE/'details.json'), comparisons=decomposition,
+        primary_changed=False, thresholds_changed=False, new_training=False,
+        full_floor_denominator_is_diagnostic=True))
     assert s['gates'] == run.gates_for(s['paired'], details['rows'], details['contrasts'])
     proc = subprocess.run([sys.executable, '-m', 'pytest', '-q', *TESTS], cwd=ROOT, capture_output=True, text=True)
     (run.PRIVATE/'verification_pytest.txt').write_text(proc.stdout+proc.stderr)
@@ -300,6 +319,26 @@ or the developmental screen cannot replace independent risk calibration. Zero
 admissions make selected risk undefined, not measured zero risk. {BOUNDARIES}
 '''
     put('statistical_interpretation.md', stats)
+    failures = ['# Fixed Occurrence: Benefit and Harm', '',
+        'Descriptive decomposition of the frozen readout; no model, threshold, '
+        'eligibility or gate changes. For each view, error = floor error - benefit '
+        '+ positive harm. Every column below uses the same full-floor denominator, '
+        'which is not the selected-risk denominator or primary ADE denominator.', '',
+        '| Comparison | Lost benefit pp | Avoided positive harm pp | Net gain/full floor pp |',
+        '|---|---:|---:|---:|']
+    for name, metrics in decomposition.items():
+        failures.append('| '+name+' | '+' | '.join(value(metrics[k]) for k in
+            ('lost_benefit_pp', 'harm_reduction_pp', 'net_gain_full_floor_pp'))+' |')
+    failures += ['', 'Positive lost benefit is unfavorable; positive avoided harm is '
+        'favorable. Their difference equals the net change. Matching each query count '
+        'rules out intervention volume alone as an explanation. These quantities '
+        'do not identify the causal explanation for changed ranking or domain shift.', '',
+        'The unchanged raw anchor forces at least16 views to abstain. All unsupported '
+        'and risk-violating views remain in the evaluation; undefined ratios are not '
+        'zero. The null solver-certificate repair is an engineering fallback, not '
+        'learned risk calibration. See results.md for all policies, quality scores '
+        'and the unchanged gates.', '', BOUNDARIES]
+    put('failure_analysis.md', '\n'.join(failures)+'\n')
     run.train.immutable(run.PUBLIC/'interpretation.json', dict(verdict=verdict, deployment_changed=False, independent_confirmation=False, submission_ready=False))
     put('verification_report.md', '# Verification Scope\n\n'+json.dumps(counts, indent=2)+f'\n\n{count} tests in{len(TESTS)} files pass. All checkpoints, role exclusions and frozen occurrence parameters checked. All95 pre-error action groups remain byte-identical. The null-certificate event records replay exactly ({len(repairs[0])} events); original checked-anchor fallback, not unverified optimizer success. Full legacy integration and cold raw rebuild not_run. Engineering verification is not efficacy.\n')
     sources = {**ident['bindings'], **amended['source_bindings'], **{str(p.relative_to(ROOT)): run.train.digest(p) for p in train_closure()}}

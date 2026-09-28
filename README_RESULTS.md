@@ -5,7 +5,36 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Fixed Occurrence Experiment (Training Complete; Actions Not Yet Read Out)
+## Fixed Occurrence Experiment (Verified Negative Result)
+
+All108 action groups replay exactly in1,631.16s. The complete numerical readout
+replays in79.65s. Independent verification takes188.60s and checks4,487,400 query
+constraints,2,376 cost views,432 quality views and15,933 reductions. All68 tests
+in10files pass. The seal binds119 source/control files and30 public artifacts:
+`9ba2724f8dc7a71c1c92eff81c89a0450c76a2fdb988d7766abf48a359fd39f9`.
+
+The registered matched ADE gain is **-0.0163878%**, nominal95% locality interval
+[-0.0290309%, -0.0059681%]. Versus the original raw matched control it is
+-0.0550033% [-0.1073037%, -0.0044347%]. Fixed occurrence loses0.02145914pp benefit
+while avoiding0.00529482pp positive harm on the full-floor diagnostic denominator.
+Selected-risk violations remain89/216, versus94 for the trainable arm and75 for
+raw; all three matched policies retain22 undefined views. Easy preservation
+passes, but accuracy and selected-risk checks fail. No deployment upgrade.
+
+Held probability/risk MSE point estimates improve slightly despite worse
+selection; fitting loss is worse. This does not prove a generalization mechanism
+or authorize another posthoc threshold sweep. The next question concerns
+utility/risk ranking on the already-available fitting-only benefit/harm labels.
+Independent selection/calibration/confirmation stay closed. All local processes
+for this experiment are terminal; full legacy integration and cold raw rebuild
+remain not_run. The broader research goal remains active.
+[Interpretation](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/conclusions.md),
+[complete results](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/results.md),
+[benefit/harm decomposition](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/failure_analysis.md),
+[locality and seed tables](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/locality_seed_quality.md),
+[verification](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/verification_report.md).
+
+### Earlier Training and Recovery Record
 
 Decision construction stopped after95 completed groups because the optimizer
 returned a null dual certificate and the old diagnostic conversion raised a

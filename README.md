@@ -25,6 +25,44 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Current Result
 
+**Freezing easy-occurrence probabilities did not improve neural selection.**
+
+I tested whether keeping an existing occurrence estimate fixed would protect it
+while learning conditional costs. Both arms used identical split networks, warm
+starts and training queries. The experiment trained 216 heads for 2,000 updates
+each, then froze every decision before reading development outcomes.
+
+| Same-count comparison | ADE improvement | Nominal 95% locality interval |
+|---|---:|---:|
+| Fixed versus trainable occurrence | -0.01639% | [-0.02903%, -0.00597%] |
+| Fixed versus original raw-risk control | -0.05500% | [-0.10730%, -0.00443%] |
+
+The fixed head had slightly better held-development probability and risk-error
+point estimates, but selected worse predictions. It avoided 0.00529 percentage
+points of positive harm while losing 0.02146 points of benefit on the common
+full-floor diagnostic denominator. That tradeoff does not repair selected risk:
+89 of 216 dependent views still violate the risk screen, and 22 remain undefined.
+Easy preservation passes the developmental check. **No deployment upgrade.**
+
+All 108 action groups and the complete readout replay exactly; 68 scoped tests
+pass. A null optimizer certificate was handled through the existing checked
+fallback, preserving the original 95 completed groups and sealed algorithms.
+This repairs an engineering interruption, not the optimizer's underlying numerical
+failure or the model's risk estimates. Independent confirmation remains closed.
+
+This result narrows the next question: how to retain beneficial interventions
+without admitting false-safe ones. Better average probability fit alone is not
+enough. These remain developmental risk-controller experiments, not a new world
+dynamics result, a safety certificate or a submission-ready system.
+
+- [Result, interpretation and next question](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/conclusions.md)
+- [All controls, metrics and gates](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/results.md)
+- [Benefit/harm accounting](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/failure_analysis.md)
+- [Verification scope](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/verification_report.md)
+- [Chinese run and recovery guide](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/operation_zh.md)
+
+## Earlier Risk-Priority Result
+
 **A small accuracy recovery did not repair selected risk.**
 
 I tested whether limiting auxiliary gradients could improve risk-constrained
