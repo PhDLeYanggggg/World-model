@@ -35,6 +35,11 @@ count matching, causal field exclusion and failures for undefined/excess risk.
 The action protocol is registered before any new action or held score is computed.
 The combined63 tests in9 files pass, including rejection of incomplete result
 rosters and refusal to label a failed risk screen as a successful method.
+The original raw anchor already has16 completely abstaining dependent views;
+the common matched anchor cannot restore support there. The unchanged all-view
+defined-risk gate therefore has a structural obstruction. This experiment tests
+a mechanism, not a sufficient route to deployment.
+[Pre-readout mechanism and support limits](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/mechanism_notes.md).
 No deployment changes.
 [Registered protocol](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/protocol.md).
 

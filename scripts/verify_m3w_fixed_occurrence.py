@@ -225,9 +225,67 @@ def readout():
     for policy in run.POLICIES:
         m, w = s['summary'][policy], s['worst_views'][policy]
         lines.append(f"| {policy} | {value(m['all_gain_floor'])} | {value(m['hard_gain_floor'])} | {value(m['intervention_rate'])} | {w['risk_violating_views']} | {w['undefined_selected_risk_views']} | {w['worst_easy_gain_CV']:.7g} |")
+    lines += ['', '## Probability and Cost Quality', '',
+        '| Arm | Brier | Signed-risk MSE | Signed bias | Conditional reference MSE | Conditional harm MSE |',
+        '|---|---:|---:|---:|---:|---:|']
+    for arm, metrics in s['quality'].items():
+        lines.append('| '+arm+' | '+' | '.join(value(metrics[k]) for k in
+            ('Brier', 'signed_MSE', 'signed_bias', 'conditional_reference_MSE', 'conditional_harm_MSE'))+' |')
     lines += ['', '## Every Gate', '']+[f'- {k}: {v}.' for k, v in s['gates'].items()]
     lines += ['', '## Boundaries', '', BOUNDARIES]
     put('results.md', '\n'.join(lines)+'\n')
+    primary = s['paired']['fixed_matched_vs_trainable_matched']
+    local = ['# Locality and Seed Breakdown', '', BOUNDARIES, '',
+        '| Locality | Primary ADE gain % | All-floor harm reduction pp | Intervention difference pp |',
+        '|---|---:|---:|---:|']
+    for site in primary['ADE_gain_percent']['by_site']:
+        values = [primary[k]['by_site'][site] for k in
+            ('ADE_gain_percent', 'all_reference_harm_reduction_pp', 'intervention_difference_pp')]
+        local.append('| '+site+' | '+' | '.join('undefined' if v is None else f'{v:.8g}' for v in values)+' |')
+    local += ['', '| Seed | Policy | ADE gain/floor % | Hard gain/floor % |', '|---|---|---:|---:|']
+    for seed, policies in s['by_seed'].items():
+        for p in run.POLICIES:
+            local.append(f"| {seed} | {p} | {value(policies[p]['all_gain_floor'])} | {value(policies[p]['hard_gain_floor'])} |")
+    put('locality_seed_quality.md', '\n'.join(local)+'\n')
+    site_values = list(primary['ADE_gain_percent']['by_site'].values())
+    pos = sum(v is not None and v > 0 for v in site_values)
+    neg = sum(v is not None and v < 0 for v in site_values)
+    stats = f'''# Statistical Interpretation
+
+## Material Passport
+
+This is a developmental paired comparison on 12 previously opened sources,
+not independent confirmation. Full actions/readout replay and independent
+arithmetic checks are complete. Nominal bootstrap intervals resample localities
+after averaging dependent views; repeated rows, groups and seeds are not
+independent units. There is no multiplicity or adaptive-selection correction.
+
+Primary ADE gain: {value(primary['ADE_gain_percent'])} percent.
+Locality signs: {pos} positive, {neg} negative, out of {len(site_values)} reported.
+All five registered contrasts and all policies remain available; no p-values,
+clinical/practical significance category or safety certificate is inferred.
+
+## Interpretation Checks (11/11 Reviewed)
+
+| Risk | Assessment and boundary |
+|---|---|
+| Simpson reversal | Locality signs and all seed tables are reported; the equal-locality contrast is not pooled-window performance. Heterogeneity is not suppressed. |
+| Ecological inference | Site-level mean evidence does not establish every-agent benefit. |
+| Selection bias | Eligible-switch and known-label populations are restricted; no whole-world claim. |
+| Collider conditioning | Selected risk conditions on policy decisions; no population causal interpretation of that conditional quantity. |
+| Base-rate neglect | Probability quality, intervention mass and risk denominators are retained; Brier alone does not certify calibration. |
+| Regression to mean | Both paired arms share warm starts and queries; this does not erase prior development-driven hypothesis selection. |
+| Survivorship | All108 pairs and216 dependent views stay in the roster, including undefined risk and abstention. |
+| Look-elsewhere | Five registered contrasts plus descriptive slices; intervals are nominal, not simultaneous. |
+| Forking paths | Code/config/actions froze before this readout; earlier development influenced the hypothesis, so no confirmatory claim. |
+| Causal overclaim | Branch freezing is controlled within this implementation, not proof of a real-world causal dynamics mechanism. |
+| Reverse causality | Only causal fields produce actions; future costs are evaluation/label-only. Temporal precedence does not itself prove causality. |
+
+The original selected-risk primary remains incomplete. Passing arithmetic tests
+or the developmental screen cannot replace independent risk calibration. Zero
+admissions make selected risk undefined, not measured zero risk. {BOUNDARIES}
+'''
+    put('statistical_interpretation.md', stats)
     run.train.immutable(run.PUBLIC/'interpretation.json', dict(verdict=verdict, deployment_changed=False, independent_confirmation=False, submission_ready=False))
     put('verification_report.md', '# Verification Scope\n\n'+json.dumps(counts, indent=2)+f'\n\n{count} tests in{len(TESTS)} files pass. All checkpoints, role exclusions and frozen occurrence parameters checked. Full legacy integration and cold raw rebuild not_run. Engineering verification is not efficacy.\n')
     sources = {**ident['bindings'], **{str(p.relative_to(ROOT)): run.train.digest(p) for p in train_closure()}}
