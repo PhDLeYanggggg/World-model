@@ -29,6 +29,17 @@ on CREATE; no4.91GB local copy. CPU4/16GiB/30min, group resume, all-group exact
 replay required before accepting results. Training/calibration/deployment claims are
 unchanged. [Protocol](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/protocol.md).
 
+### Fitting Label Completion While CREATE Is Queued
+
+A separately registered local construction restores signed benefit/harm labels
+for the existing108 fitting groups. The old risk packets retain positive harm but
+discard improvement magnitude. The new sidecars will retain that information as
+supervision only, using the original forecasts, roles, row IDs and training scales.
+Ten focused synthetic tests pass. Actual construction/replay is not_run until the
+registration is committed; this is not a new model or a new utility-policy claim.
+The queued component diagnostic and its inputs remain unchanged.
+[Label protocol](outputs/publication_readiness_2026_09/european_fitting_gain_labels_v1/protocol.md).
+
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
 **Final verified readout: tiny accuracy recovery, risk screen failed.** All108
