@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed Occurrence Experiment (Registered, Training Not Yet Run)
+
+The next paired experiment tests the verified occurrence-damage hypothesis.
+Both arms split the same warm-start head into identical occurrence/cost branches;
+only occurrence trainability differs. Both reset AdamW and retain all108 groups,
+2000 updates, normalized inputs, source exclusions and sampled queries. This
+does not isolate branch splitting versus the original shared trunk.
+
+Seven focused tests cover initial teacher equivalence, frozen parameters,
+matched queries and exact checkpoint/resume. A real local100-update pilot will
+measure whether the full216-head run fits the approved compute/storage envelope.
+No training or new predictive result is claimed yet. No deployment changes.
+[Registered protocol](outputs/publication_readiness_2026_09/european_fixed_occurrence_v1/protocol.md).
+
 ## Conditional Risk Component Diagnostic (Verified)
 
 Registration `b68d127b` preceded execution. CREATE37579489 completed all108
