@@ -7,6 +7,13 @@ or evidence status.
 
 ## Conditional Risk Component Diagnostic (Registered, Not Yet Run)
 
+Execution update: registration `b68d127b` is on GitHub; allocated-CPU diagnostic
+37579489 was submitted once and freshly observed PENDING/Priority. No scientific
+result yet. The independent report checker and29 tests in4files pass, including
+rejection of altered factor attributions, objectives and partition sums.
+[Execution status](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/execution_status.json),
+[run/recovery guide](outputs/publication_readiness_2026_09/european_easy_component_diagnostic_v1/operation_zh.md).
+
 The next fitting-only check separates occurrence, conditional reference cost and
 conditional harm in the frozen risk product. It retains108 groups and216 heads,
 with zero updates, no policy actions and no held readout. Exact residual terms
