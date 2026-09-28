@@ -158,7 +158,10 @@ def main():
         if name == 'evaluation_replay':
             for key in ('summary', 'details'):
                 assert run.base.artifact(ROOT/replay[key]['path']) == replay[key]
-    from scripts.report_m3w_easy_risk_priority import put, main as report
+    from scripts.report_m3w_easy_risk_priority import put, main as report, structural_support
+    support_doc = json.loads((run.PUBLIC/'structural_support.json').read_text())
+    ref = support_doc['source_details']; assert run.base.artifact(ROOT/ref['path']) == ref
+    assert support_doc['support'] == structural_support(json.loads((ROOT/ref['path']).read_text())['rows'])
     report()
     proc = subprocess.run([sys.executable, '-m', 'pytest', '-q', *TESTS], cwd=ROOT, capture_output=True, text=True)
     log = run.PRIVATE/'readout_pytest.txt'; log.write_text(proc.stdout+proc.stderr)
@@ -179,7 +182,7 @@ def main():
     parent_seal = json.loads((run.original.PUBLIC/'verification.json').read_text())
     bindings = {**parent_seal['source_bindings'], **ident['bindings']}
     extras = ['scripts/verify_m3w_easy_risk_priority.py', 'scripts/report_m3w_easy_risk_priority.py',
-              'scripts/report_m3w_easy_risk_priority_training.py', *TESTS]
+              'scripts/report_m3w_easy_risk_priority_training.py', 'scripts/audit_m3w_easy_risk_priority_support.py', *TESTS]
     bindings.update({p: run.digest(ROOT/p) for p in extras})
     for rel, sha in bindings.items():
         assert run.digest(ROOT/rel) == sha

@@ -7,11 +7,20 @@ or evidence status.
 
 ## Risk-Priority Repair (2026-09-28, Registered Before Training)
 
+Pre-readout support result: the fixed raw anchor abstains in16 dependent views,
+uncapped in6, with3overlapping: at least19/216 views across3localities necessarily
+abstain under the new common-query-count policy. This uses hash-verified previous
+actions, not new repair outcomes. Therefore the unchanged every-view-defined-risk
+screen cannot pass; undefined selected risk is not zero. The paired ADE experiment
+continues unchanged, and no view, risk denominator or threshold is changed.
+[Structural support analysis](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/structural_support.md).
+The expanded six-file targeted suite now passes34tests in6.97seconds.
+
 Latest: full job37576457 is RUNNING, freshly observed at00:06:09 with a train-phase
 heartbeat and no stderr. No new held evaluation exists yet. Separate readout
 adapters now check query constraints, contrast signs, undefined risk, all controls,
 locality and seed reductions. All91 registered decision bindings are unchanged;
-33 targeted tests in six files pass. A positive ADE result alone cannot hide
+The initial33 targeted tests in six files passed. A positive ADE result alone cannot hide
 failed risk/easy gates or establish independent confirmation.
 [Verification preflight](outputs/publication_readiness_2026_09/european_easy_risk_priority_v1/readout_adapter_preflight.md).
 

@@ -36,6 +36,27 @@ def interpret(summary):
                 stage5c_executed=False, smc_enabled=False)
 
 
+def structural_support(rows):
+    policies = ('raw_independent', 'supervised_independent')
+    views = {p: {(r['group'], r['site']): r['metric']['intervention_rate']
+                 for r in rows if r['policy'] == p} for p in policies}
+    assert set(views[policies[0]]) == set(views[policies[1]])
+    assert views[policies[0]], 'Missing fixed-control support'
+    for p in policies:
+        assert len(views[p]) == sum(r['policy'] == p for r in rows)
+        assert all(v is not None and 0 <= v <= 1 for v in views[p].values())
+    empty = {p: {key for key, rate in views[p].items() if rate == 0} for p in policies}
+    forced = empty[policies[0]] | empty[policies[1]]
+    return dict(total_dependent_views=len(views[policies[0]]),
+        raw_empty_views=len(empty[policies[0]]), uncapped_empty_views=len(empty[policies[1]]),
+        overlapping_empty_views=len(empty[policies[0]] & empty[policies[1]]),
+        forced_undefined_selected_risk_views=len(forced),
+        affected_localities=sorted({site for _, site in forced}),
+        forced_view_keys=[list(key) for key in sorted(forced)],
+        independent_sample_count=False, based_on_new_repair_outcomes=False,
+        registered_screen_can_pass=not bool(forced))
+
+
 def value(row):
     if row['point'] is None:
         return 'undefined'
@@ -64,6 +85,8 @@ def main():
             for key in ('summary', 'details'):
                 assert run.base.artifact(ROOT/doc[key]['path']) == doc[key]
     result = interpret(s)
+    support = json.loads((run.PUBLIC/'structural_support.json').read_text())['support']
+    assert s['worst_views']['risk_priority_matched']['undefined_selected_risk_views'] >= support['forced_undefined_selected_risk_views']
     run.immutable(run.PUBLIC/'interpretation.json', result)
     lines = ['# Risk-Priority Learning: Registered Development Readout', '',
         'Source: fresh_run paired Torch training, causal actions and development '
@@ -76,6 +99,10 @@ def main():
         'No threshold search or held-outcome model selection was performed. '
         'A pre-optimizer Euclidean gradient bound is not an AdamW-descent or safety guarantee.', '',
         f"**Verdict: {result['verdict']}. No deployment change.**", '',
+        f"The frozen raw/uncapped anchors already force at least{support['forced_undefined_selected_risk_views']} "
+        'dependent views to abstain under common-query-count matching. This was checked before the new '
+        'readout; the defined-selected-risk gate cannot pass merely by changing the auxiliary gradient. '
+        'These views and the registered gates are retained, not excluded after seeing results.', '',
         '## Registered Contrasts', '',
         'Primary: risk_priority_matched versus uncapped_matched. Each query has '
         'the same intervention count. Positive ADE gain and positive harm reduction '

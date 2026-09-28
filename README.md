@@ -65,6 +65,10 @@ The action and evaluation implementation is separately frozen before any new
 readout. Neither the pilot nor its fitting loss establishes a policy improvement.
 The result checker covers matched query counts, undefined risk, adverse slices
 and locality-level uncertainty; its synthetic checks are not evaluation results.
+The unchanged anchors force at least 19 repeated evaluation views to abstain.
+That prevents the every-view-defined-risk screen from passing here, regardless
+of the cap. I will still complete the registered predictive comparison and
+retain those views, rather than present abstention as a safety result.
 
 - [Current paired results and all controls](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/results.md)
 - [Benefit/harm accounting and actual training losses](outputs/publication_readiness_2026_09/european_easy_hurdle_v1/failure_analysis.md)

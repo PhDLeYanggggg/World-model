@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 
 from scripts.verify_m3w_easy_risk_priority import check_actions, check_contrasts
-from scripts.report_m3w_easy_risk_priority import interpret
+from scripts.report_m3w_easy_risk_priority import interpret, structural_support
 from src.world_model import m3w_easy_risk_priority as repair
 
 
@@ -69,3 +69,17 @@ def test_report_does_not_promote_partial_or_undefined_results(ade, screen, expec
     assert result['verdict'] == expected
     assert not result['deployment_changed'] and not result['independent_confirmation']
     assert not result['formal_primary_replaced'] and not result['submission_ready']
+
+
+def test_fixed_anchor_abstention_is_counted_as_union_not_dropped():
+    rows = [dict(group='g'+str(i), site='s', policy=p, metric=dict(intervention_rate=rate))
+        for p, rates in [('raw_independent', [0., 0., 1.]),
+                         ('supervised_independent', [0., 1., 0.])]
+        for i, rate in enumerate(rates)]
+    support = structural_support(rows)
+    assert support['forced_undefined_selected_risk_views'] == 3
+    assert support['overlapping_empty_views'] == 1
+    assert not support['registered_screen_can_pass']
+    assert not support['based_on_new_repair_outcomes']
+    with pytest.raises(AssertionError):
+        structural_support(rows[:-1])
