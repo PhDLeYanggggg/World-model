@@ -9,8 +9,9 @@ or evidence status.
 
 Follow-up: [frozen decision-boundary diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/protocol.md),
 72 fitting and216 transfer views. All288 input packets (796,001,825 bytes) were
-freshly built and verified on isolated CREATE in251.97s. Computation is pending;
-this is input preparation, not a new model result or training.
+freshly built and verified on isolated CREATE in251.97s. Job37602475 is submitted
+and waiting for scheduler priority;29 scoped tests pass. This is input and
+execution preparation, not a new model result or training.
 Local disk is below10GiB, so no new local row cache/checkpoint is allowed. The
 isolated M3W CREATE runtime is available; source roles and policy stay frozen.
 
