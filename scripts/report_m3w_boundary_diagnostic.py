@@ -129,6 +129,8 @@ def main():
         'and register any narrow repair before a replacement submission; no automatic duplicate job.\n\n'
         'Only the independent M3W CREATE directory/runtime are used. Never borrow or change the '
         'simulation project or its jobs. Shared filesystem capacity does not establish personal quota. '
+        'The initial two-hour walltime request was reduced to30 minutes while pending to seek '
+        'backfill (scheduler_amendment.json); no group, replay, CPU or memory allocation was removed. '
         'No row packets, raw data or checkpoints belong in Git. Full legacy tests and raw-data rebuild '
         'are not run in this diagnostic.\n')
     tests=['tests/test_m3w_boundary_diagnostic.py','tests/test_m3w_boundary_report.py',
