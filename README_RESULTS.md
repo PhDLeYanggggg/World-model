@@ -7,6 +7,11 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Next controlled fit: [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/protocol.md).
+A real100-update native-arm64 pilot passed; full72-fit training has started, not
+completed. Transfer localities cannot select checkpoints or thresholds. The
+final-step control is retained. This is not an improvement or deployment claim.
+
 Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 completed locally: all288 reconstructed packet bytes match the committed manifest,
 and every diagnostic replays exactly. Runtime187.98s; peak RSS7.492GiB; zero new
