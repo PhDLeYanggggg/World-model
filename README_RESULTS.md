@@ -7,15 +7,23 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-Follow-up: [frozen decision-boundary diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/protocol.md),
-72 fitting and216 transfer views. All288 input packets (796,001,825 bytes) were
-freshly built and verified on isolated CREATE in251.97s. Job37602475 is submitted
-and waiting for scheduler priority;29 scoped tests pass. This is input and
-execution preparation, not a new model result or training. A registered
-memory-only local readout will reuse the same packets without writing a row
-cache; the CREATE job is retained for cross-environment replication.
-Local disk is below10GiB, so no new local row cache/checkpoint is allowed. The
-isolated M3W CREATE runtime is available; source roles and policy stay frozen.
+Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
+completed locally: all288 reconstructed packet bytes match the committed manifest,
+and every diagnostic replays exactly. Runtime187.98s; peak RSS7.492GiB; zero new
+row-cache bytes.32 scoped tests,64,512 accounting checks,672 summary checks and
+1,728 agreements with the parent risk readout pass. CREATE job37602475 was last
+observed pending; subsequent access timed out. Remote replication is not_run.
+
+Matched nonlinear easy selected positive-harm risk: fitting predicted0.3218%
+versus actual7.9003%; transfer predicted0.3111% versus actual14.0113%. Transfer
+easy excess decomposes as2%-1.1642pp+13.8401pp-0.6646pp. Harm underestimation
+dominates; easy-reference error offsets it. This is not easy ADE degradation.
+Training-defined tail harm explains22.81% of easy harm in the10/12 localities
+with defined matched-transfer tail summaries; undefined sources remain unknown.
+No unique causal failure mechanism, independent safety or model improvement is
+established. Next: source-internal validation-selected checkpoints against the
+same final-step control, without held-locality threshold tuning. Source roles,
+2% budget and deployment remain unchanged.
 
 Fresh Torch training completed72 paired fits,144 heads and288,000 updates.
 Training took252.88s; the first paired fit replays exactly. All216 causal action

@@ -25,12 +25,23 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-A registered follow-up traces selected-risk error back to harm and reference
-cost estimation on the frozen models. All 288 input groups are verified on the
-isolated M3W CREATE environment. While its job waits for resources, the same
-inputs will be read into local memory for analysis without a disk cache. The
-CREATE job remains a cross-environment replication; neither run has a result yet.
-[Frozen-boundary protocol](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/protocol.md).
+The frozen-model diagnosis is complete locally. **Selected easy harm is already
+underestimated on training sources, and transfer makes it worse.** At matched
+intervention counts, the nonlinear head predicts 0.32% easy positive-harm risk
+on fitting sources versus 7.90% observed; on internal transfer, it predicts 0.31%
+versus 14.01% observed. These selected-harm ratios are not overall ADE degradation.
+
+All 288 input packets match the previously committed hashes and replay exactly.
+The computation needed no new row cache. CREATE replication is still unverified
+after a connection timeout; I do not count it as complete. The next controlled
+question is whether source-internal validation can select better cost heads
+without tuning on the transfer locality. No deployment upgrade follows here.
+
+- [Risk decomposition](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/failure_analysis.md)
+- [Execution and evidence boundaries](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_operation.md)
+
+## Previous Capacity Control
 
 I tested whether a more expressive cost head can transfer useful gain and harm
 estimates between development localities. Each head trains on one locality and
