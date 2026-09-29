@@ -27,8 +27,9 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 A registered follow-up traces selected-risk error back to harm and reference
 cost estimation on the frozen models. All 288 input groups are verified on the
-isolated M3W CREATE environment, with no new large local cache. Computation is
-pending; input preparation is not a new model or policy result.
+isolated M3W CREATE environment. While its job waits for resources, the same
+inputs will be read into local memory for analysis without a disk cache. The
+CREATE job remains a cross-environment replication; neither run has a result yet.
 [Frozen-boundary protocol](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/protocol.md).
 
 I tested whether a more expressive cost head can transfer useful gain and harm

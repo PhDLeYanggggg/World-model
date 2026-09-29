@@ -11,7 +11,9 @@ Follow-up: [frozen decision-boundary diagnosis](outputs/publication_readiness_20
 72 fitting and216 transfer views. All288 input packets (796,001,825 bytes) were
 freshly built and verified on isolated CREATE in251.97s. Job37602475 is submitted
 and waiting for scheduler priority;29 scoped tests pass. This is input and
-execution preparation, not a new model result or training.
+execution preparation, not a new model result or training. A registered
+memory-only local readout will reuse the same packets without writing a row
+cache; the CREATE job is retained for cross-environment replication.
 Local disk is below10GiB, so no new local row cache/checkpoint is allowed. The
 isolated M3W CREATE runtime is available; source roles and policy stay frozen.
 
