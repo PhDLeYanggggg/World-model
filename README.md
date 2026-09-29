@@ -25,6 +25,12 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+A registered follow-up will trace selected-risk error back to harm and reference
+cost estimation on the frozen models. New computation is moving to the isolated
+M3W CREATE environment because local disk is below the training/cache reserve.
+No new model or policy result is available from that diagnosis yet.
+[Frozen-boundary protocol](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/protocol.md).
+
 I tested whether a more expressive cost head can transfer useful gain and harm
 estimates between development localities. Each head trains on one locality and
 is evaluated on another, with preprocessing confined to the training source.

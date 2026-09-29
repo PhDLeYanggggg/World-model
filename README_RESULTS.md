@@ -7,6 +7,11 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Follow-up: [frozen decision-boundary diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/protocol.md),
+72 fitting and216 transfer views. Registration only; no new result or training.
+Local disk is below10GiB, so no new local row cache/checkpoint is allowed. The
+isolated M3W CREATE runtime is available; source roles and policy stay frozen.
+
 Fresh Torch training completed72 paired fits,144 heads and288,000 updates.
 Training took252.88s; the first paired fit replays exactly. All216 causal action
 views and the numerical readout also replay exactly. The evaluated locality
