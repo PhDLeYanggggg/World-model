@@ -20,6 +20,12 @@ peak RSS and a26,495-byte parameter record. The24,786,800-byte projected storage
 preserves the10GiB reserve. Full72-group fitting is feasible locally; this is
 empirical calibration of frozen heads, not neural/forest retraining.
 
+All72 source calibrators completed in54.2796s, with348 leave-one-recording-out
+folds.29 full calibrators lack component support. OOF finite-completion source
+screens pass26 harm-only,23 reference-only and23 joint arms; resubstitution
+counts30/27/26 are diagnostic only. Parameters/screens are frozen before transfer.
+No migration/utility/safety result is claimed by this source-fit checkpoint.
+
 Completed `european_crossed_head_seed_v1`:48 fresh128-tree fits with upstream43
 fixed, plus24 cached_verified43 heads. All216 head readouts replay exactly;
 original43 predictions/actions and216 raw/screened/floor metric views are exact.
