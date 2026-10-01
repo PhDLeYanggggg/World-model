@@ -34,6 +34,10 @@ existing packets. Personal quota is unverified; write failures stop export.
 No scientific threshold or local reserve changes. Sixteen collection/portable/
 accounting checks pass; full legacy suite remains not_run.
 
+All216 frozen input packets are now hash-verified on CREATE (878,732,429 bytes),
+with144 existing local result groups bound for exact parity. No local array cache
+was created. This completes input transport only; scheduled computation is next.
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire
