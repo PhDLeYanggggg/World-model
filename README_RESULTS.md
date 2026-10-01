@@ -19,6 +19,10 @@ Estimated incremental storage is 38,560,960 bytes, preserving the 10GiB reserve.
 All 29 scoped tests pass. Full source accounting is running locally; no new
 CREATE submission or neural training. This is not yet a completed readout.
 
+All 72 selected-pool source groups completed in 59.84s and replayed exactly in
+61.78s. Causal actions agree with the existing OOF hashes. Transfer accounting
+is now running; no source or transfer superiority is inferred from replication.
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire

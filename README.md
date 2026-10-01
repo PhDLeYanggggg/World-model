@@ -28,7 +28,8 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 The next registered diagnostic measures how retained and removed harm/reference
 mass differs within source recordings and after locality transfer. It reuses
 all frozen policies, with no new model, threshold search or independent-role
-opening. Real accounting is pending.
+opening. All 72 source groups have completed and replayed exactly; transferred
+accounting is running and is not yet a completed result.
 [Protocol](outputs/publication_readiness_2026_09/european_selected_pool_v1/protocol.md).
 
 **Source-only calibration reduces coverage, but does not solve selected risk.**
