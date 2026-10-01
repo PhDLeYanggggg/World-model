@@ -28,6 +28,12 @@ memory and require exact local parity and complete replay. No job submitted yet;
 partial transfer results are not a completed readout. No source or transfer
 superiority is inferred from replication.
 
+The first stream exceeded its 512 MiB remote packet estimate before submission.
+A storage-only amendment raises that cap to 2 GiB, retaining byte-exact reuse of
+existing packets. Personal quota is unverified; write failures stop export.
+No scientific threshold or local reserve changes. Sixteen collection/portable/
+accounting checks pass; full legacy suite remains not_run.
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire
