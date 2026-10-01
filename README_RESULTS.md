@@ -7,6 +7,16 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+A [standalone numerical reproduction package](reproducibility/selected_pool_source/README.md)
+now rebuilds the source figure's504 values and3,000-draw locality bootstrap from
+verified aggregate moments. An isolated Python/NumPy process reproduces72 views,
+30 defined contrasts and42 undefined contrasts without importing Torch or the
+project. Seven new tests pass. The189,521-byte package is hash-verified on CREATE;
+its numerical files remain remote while local disk is below the10GiB reserve.
+This is aggregate reproduction, not raw-data/checkpoint replay, independent
+confirmation or completed anonymous submission material. No model was trained
+or promoted. Full transfer job37702155 remains queued by Priority.
+
 The completed source diagnostic now has a reproducible [mechanism figure](outputs/publication_readiness_2026_09/european_selected_pool_v1/source_mechanism.svg)
 and [English paper appendix](outputs/publication_readiness_2026_09/european_selected_pool_v1/paper_case_study.md).
 All72 source views,42 undefined contrasts and the same-locality counterexamples

@@ -62,7 +62,33 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/report_m3w_selected_p
 重建远程输入须使用已登记的export_m3w_selected_pool_create_v2.py，
 旧export仍保留其原始512MiB保护限制，不应绕过。该操作不训练新模型。
 
-## 结果解释
+## 独立数值复核包
+
+源域图表现在有一个不依赖项目训练环境的复核工具：
+`reproducibility/selected_pool_source/verify.py`，只需要Python和NumPy。
+它从聚合量重算72个源域joint OOF视图的风险构成、504个图表数值和
+3000次locality bootstrap。仍然是30个有效对比、42个无定义对比；
+不把重复head当独立场景，不把无定义改为0。7项新测试通过。
+
+以下命令在隔离子进程中执行复核，所有数值包只保留在内存，
+不生成本地大缓存、不读取迁移结果，也不需要提交新的计算作业：
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/package_m3w_source_reproduction.py
+```
+
+增加`--store-create`会把同一组4个文件写入已经授权的M3W目录：
+`/users/k24101830/m3w/european_selected_pool_v1/source_reproduction_v1`。
+已有文件必须字节一致，不允许覆盖其他实验。实际总量189,521字节，
+远程文件哈希已经核验；此时本地磁盘仍低于10GiB保留线，未回收数值包。
+单独使用完整包时，在包目录运行`python verify.py evidence.json`。
+
+包内替换了locality/view标识，去除了作者、用户名和本地路径。
+这不保证无法通过公开结果反查作者，不能叫作已通过会议匿名审查。
+复核只覆盖聚合算术和bootstrap，不替代原始轨迹、teacher lineage、
+特征因果性或checkpoint重放，更不等于完整论文可复现。
+
+## 证据边界
 
 29项针对性测试通过仅说明相应实现检查通过，不等于研究成功或全仓库测试通过。
 逐组风险无定义、缺失标签和源支持不足都必须保留，不能记为风险达标。
