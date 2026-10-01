@@ -25,6 +25,34 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**Better global cost prediction did not produce better intervention decisions.**
+I completed a source-internal checkpoint-selection control: 72 Torch fits,
+three seeds, and 216 frozen directional evaluations across 12 development
+localities. Checkpoints were chosen on disjoint recordings from their training
+locality, never on the transfer locality.
+
+| Validation-selected versus final checkpoint | Result | Nominal 95% locality interval |
+|---|---:|---:|
+| Signed-score MSE difference, lower is better | -0.70681 | [-0.97098, -0.45677] |
+| Same-count ADE improvement | -0.53953% | [-0.73862%, -0.34152%] |
+
+The selected head avoids 0.29381 percentage points of harm but loses 0.81194
+points of benefit on the full-floor diagnostic denominator. It still violates
+the original easy selected-harm screen in 148/216 views, with 21 undefined;
+worst-view easy ADE degradation is 21.54%. **No deployment upgrade.** This result
+separates a useful model-selection improvement from an unsuccessful policy.
+
+The first full fit and complete readout replay exactly. Independent arithmetic
+checks 27,000 metric values and 747,900 per-query intervention counts; 27 scoped
+tests pass. These are exposed development results, not independent confirmation.
+Independent selection, calibration and confirmation remain closed.
+
+- [Results](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/failure_analysis.md)
+- [Reproduction](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/operation.md)
+
+## Preceding Risk Diagnosis
+
 The frozen-model diagnosis is complete locally. **Selected easy harm is already
 underestimated on training sources, and transfer makes it worse.** At matched
 intervention counts, the nonlinear head predicts 0.32% easy positive-harm risk
@@ -33,9 +61,8 @@ versus 14.01% observed. These selected-harm ratios are not overall ADE degradati
 
 All 288 input packets match the previously committed hashes and replay exactly.
 The computation needed no new row cache. CREATE replication is still unverified
-after a connection timeout; I do not count it as complete. The next controlled
-question is whether source-internal validation can select better cost heads
-without tuning on the transfer locality. No deployment upgrade follows here.
+after connection timeouts; I do not count it as complete. The checkpoint control
+above follows this diagnosis. Neither result establishes a deployment upgrade.
 
 - [Risk decomposition](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 - [Failure analysis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/failure_analysis.md)

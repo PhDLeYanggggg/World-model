@@ -7,14 +7,28 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-Current controlled fit: [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/protocol.md).
-All 72 native-arm64 Torch fits completed their fixed 2,000 updates (144,000 total).
-The training manifest is frozen before transfer decisions or outcomes are read.
-All source-internal partitions are recording-disjoint. Validation selected step
-0 in 21 fits; those are prior decoders, not learned improvements. Transfer
-localities cannot select checkpoints or thresholds. The first complete fit now
-replays exactly; all 216 causal decision views are frozen before outcome readout.
-Transfer evaluation is next; there is no improvement or deployment claim.
+Completed [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md):
+72 native-arm64 Torch fits, 144,000 updates, recording-disjoint source validation.
+Primary transferred signed-score MSE improves by -0.706815 (nominal locality
+95% CI [-0.970978, -0.456769]), but same-count ADE improvement is -0.539532%
+[-0.738619%, -0.341516%]. All three seed utility contrasts are negative. Step 0
+is selected in 21 fits, which is a prior decoder rather than learned improvement.
+
+Same-count selected easy-risk violations decline 177 to 148/216, but 21 views
+remain undefined and worst easy ADE degradation is 21.5352%. Unknown interventions
+are 15,084 versus 11,887 repeated occurrences. The new policy avoids 0.293811 pp
+of harm while losing 0.811943 pp of benefit on the common full-floor diagnostic
+denominator. The original 2% selected-reference risk budget is unchanged.
+
+The first full fit and full readout replay exactly. Independent verification
+reconstructs 72 preprocessing fits, 144 validation scores, 432 transferred score
+errors, 27,000 metric values and 747,900 query-count matches. There are 318,969
+unique row IDs, not 5,614,596 independent known-label occurrences. 27 scoped tests
+pass. Seal: `d47ea78317acaeff8e71519966e4f58a6e16f70614c88848b4d906dc18e41cf4`.
+This is a negative policy result despite better global cost prediction. No
+deployment promotion; independent selection/calibration/confirmation stay closed.
+Next: a separately registered source-validation decision-utility selection
+control among frozen heads, without transfer-label tuning or a relaxed budget.
 
 Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 completed locally: all288 reconstructed packet bytes match the committed manifest,
