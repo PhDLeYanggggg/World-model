@@ -26,6 +26,12 @@ screens pass26 harm-only,23 reference-only and23 joint arms; resubstitution
 counts30/27/26 are diagnostic only. Parameters/screens are frozen before transfer.
 No migration/utility/safety result is claimed by this source-fit checkpoint.
 
+All72 calibrators now replay exactly, and216 transferred head/action views are
+frozen without outcome-based selection.348 OOF folds reuse58 unique validation
+recordings and are not348 independent samples. The29 unsupported full fits have
+no known raw-eligible source rows, not29 missing source datasets. Outcome readout
+remains not_run until the action freeze is committed.
+
 Completed `european_crossed_head_seed_v1`:48 fresh128-tree fits with upstream43
 fixed, plus24 cached_verified43 heads. All216 head readouts replay exactly;
 original43 predictions/actions and216 raw/screened/floor metric views are exact.
