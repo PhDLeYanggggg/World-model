@@ -31,6 +31,11 @@ not a transfer or safety result. Model hashes and source-only choices are frozen
 before the216 development-transfer action views; transfer readout remains not_run
 at this checkpoint.
 
+The first full128-tree fit replays exactly, including all tree structures and
+source-validation predictions. All216 development-transfer prediction/action
+views are now frozen without reading their outcomes. A separate outcome readout
+and exact replay are next; no transfer claim is made by the action freeze alone.
+
 Completed the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/results.md)
 over 72 frozen fits and 216 source-validation candidate views. Nine of the 41
 unknown-only rejections obtain finite-completion support; 32 fail the easy-risk
