@@ -7,6 +7,15 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Registered `european_source_forest_v1`, a fixed128-tree ExtraTrees five-moment
+cost control on the same72 European optimization/validation partitions. Same
+causal information, query weighting and composite quadratic target scales;
+different estimator, finite-draw regime and decoder/projection placement, so
+this is not a perfectly isolated architecture effect. Pilot and training are
+not_run at registration.10GiB reserve, original2% selected-reference risk,
+native partial-label estimand and closed independent roles remain unchanged.
+No transfer threshold/model sweep; freeze all causal actions before readout.
+
 Completed the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/results.md)
 over 72 frozen fits and 216 source-validation candidate views. Nine of the 41
 unknown-only rejections obtain finite-completion support; 32 fail the easy-risk
