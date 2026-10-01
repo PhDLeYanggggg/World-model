@@ -43,6 +43,12 @@ verified scheduler observation is PENDING, with no stdout or completion receipt;
 this is queueing, not a failed or completed experiment. Preserve the job and
 inspect it before any resubmission. Simulation jobs are untouched.
 
+Source-only finding: two joint OOF views become newly over-budget, but both are
+the same locality074 and both fail the existing source screen. The defined-only
+bias-shift interval crosses zero;42/72 views are undefined. This demonstrates a
+specific composition counterexample, not universally increased optimism or an
+explanation of the six surviving transfer failures. [Source findings](outputs/publication_readiness_2026_09/european_selected_pool_v1/source_findings.md).
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire
