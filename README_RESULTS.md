@@ -49,6 +49,11 @@ bias-shift interval crosses zero;42/72 views are undefined. This demonstrates a
 specific composition counterexample, not universally increased optimism or an
 explanation of the six surviving transfer failures. [Source findings](outputs/publication_readiness_2026_09/european_selected_pool_v1/source_findings.md).
 
+Collection treats JSON key order as formatting while requiring exact parsed
+numerical equality and preserving existing local files. Remote file hashes
+remain verified. A regression test rejects even a1e-11 numerical perturbation;
+no numerical tolerance or scientific criterion was relaxed.
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire

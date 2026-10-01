@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from scripts.collect_m3w_selected_pool_create import validate_bundle
+from scripts.collect_m3w_selected_pool_create import validate_bundle, verify_existing
 
 
 def fixture_bundle():
@@ -24,6 +24,14 @@ def fixture_bundle():
 def test_complete_hash_bound_collection():
     bundle, manifest = fixture_bundle()
     assert validate_bundle(bundle, manifest, 'registered', '123') > 0
+
+
+def test_local_parity_ignores_key_order_but_preserves_exact_numbers(tmp_path):
+    p = tmp_path/'result.json'
+    p.write_text('{"b": 2, "a": 1.25}')
+    assert verify_existing(p, '{"a":1.25,"b":2}') == (True, False)
+    with pytest.raises(AssertionError): verify_existing(p, '{"a":1.25000000001,"b":2}')
+    assert verify_existing(tmp_path/'missing.json', '{}') == (False, False)
 
 
 @pytest.mark.parametrize('mutation', ['failed_job', 'changed_output', 'wrong_registration', 'missing_group', 'no_replay'])

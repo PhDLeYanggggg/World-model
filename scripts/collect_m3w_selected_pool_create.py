@@ -16,6 +16,15 @@ from scripts import run_m3w_selected_pool_accounting as run
 CAP = 32 * 2**20
 
 
+def verify_existing(path, text):
+    if not path.exists():
+        return False, False
+    current = path.read_text()
+    # Packet metadata is sorted JSON; dictionary key order is not a numerical difference.
+    assert json.loads(current) == json.loads(text), 'Existing local values must match exactly'
+    return True, current == text
+
+
 def validate_bundle(bundle, manifest, registration_hash, job_id):
     complete = bundle['complete']
     assert bundle['registration_sha256'] == registration_hash
@@ -80,12 +89,12 @@ print(json.dumps({'payload':base64.b64encode(gzip.compress(data)).decode(),
     assert len(raw) == payload['expanded_bytes'] and hashlib.sha256(raw).hexdigest() == payload['sha256']
     bundle = json.loads(raw)
     total = validate_bundle(bundle, manifest, run.digest(run.PUBLIC/'recovery_registration.json'), job)
-    new_bytes = 0; existing = 0
+    new_bytes = 0; existing = 0; byte_identical = 0
     for name, text in bundle['files'].items():
         path = run.PRIVATE/'transfer'/(name+'.json')
-        if path.exists():
-            assert path.read_text() == text, 'Existing local output must match byte-for-byte'
-            existing += 1
+        present, same_bytes = verify_existing(path, text)
+        if present:
+            existing += 1; byte_identical += int(same_bytes)
         else:
             new_bytes += len(text.encode())
     assert existing >= manifest['local_parity_groups']
@@ -94,16 +103,17 @@ print(json.dumps({'payload':base64.b64encode(gzip.compress(data)).decode(),
     refs = []
     for name, text in bundle['files'].items():
         path = run.PRIVATE/'transfer'/(name+'.json')
-        run.immutable(path, json.loads(text))
+        if not path.exists(): run.immutable(path, json.loads(text))
         refs.append(run.base.artifact(path))
     run.immutable(run.PUBLIC/'transfer_manifest.json', dict(groups=refs, head_views=216, parent_risk_checks=2592))
     run.immutable(run.PUBLIC/'create_complete.json', bundle['complete'])
     run.immutable(run.PUBLIC/'transfer_replay.json', dict(all216_exact_replay=True,
-        method='two allocated-node complete passes plus byte-exact local parity', job_id=job))
+        method='two allocated-node complete passes plus exact parsed-value local parity', job_id=job))
     run.immutable(run.PUBLIC/'transfer_runtime.json', dict(seconds=bundle['complete']['seconds'],
         timing_scope='CREATE_compute_and_replay_combined', result_source='fresh_run', job_id=job))
     receipt = dict(job_id=job, accounting=bundle['accounting'], output_bytes=total,
-        local_parity_groups=manifest['local_parity_groups'], existing_group_bytes_verified=existing,
+        local_parity_groups=manifest['local_parity_groups'], existing_groups_exact_values_verified=existing,
+        existing_groups_also_byte_identical=byte_identical,
         total_groups=216, source_groups_already_verified=72, parent_risk_checks=2592,
         recovery_registration_sha256=run.digest(run.PUBLIC/'recovery_registration.json'),
         collector_sha256=run.digest(__file__), raw_arrays_collected=False, parameter_updates=0)
