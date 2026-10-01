@@ -25,12 +25,34 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-The next registered control separates harm and reference-error calibration.
-It uses only source-validation recordings, with whole-recording cross-fitting,
-and retains harm-only, reference-only and joint controls. The original 2% risk
-budget is unchanged. Real calibration and transfer results are pending; this is
-not a conformal safety guarantee or a new neural dynamics result.
-[Design](outputs/publication_readiness_2026_09/european_component_calibration_v1/protocol.md).
+**Source-only calibration reduces coverage, but does not solve selected risk.**
+I fitted 72 recording-level calibrators on frozen cost heads, comparing harm-only,
+reference-only and joint adjustments. Whole-recording cross-fitting keeps each
+source screening recording out of its own calibration. All 216 transferred
+action sets were frozen before their outcome readout.
+
+Joint calibration reduces easy selected-risk failures from 18/90 to 6/60 defined
+directions, but undefined directions increase from 126 to 156. At matched
+intervention counts, ADE improvement over the unchanged parent is **-0.00309%**
+(nominal locality 95% interval [-0.00567%, -0.00104%]). The worst selected risk
+is still 2.278%, above the unchanged 2% budget. This is not a deployment upgrade.
+
+One direction illustrates the problem: switching less increases actual selected
+risk from 1.65% to 2.10%. The retained group changes, so conservative corrections
+to predictions do not necessarily make that group's harm/reference ratio safe.
+The next diagnostic will separate this selection effect from cross-locality
+drift, using existing source cross-fit assets before fitting another policy.
+
+All 72 calibrators and the full readout replay exactly; 31 scoped tests pass.
+These are exposed-development results, not independent confirmation or a
+conformal safety guarantee. The deployment floor and independent roles remain
+unchanged. No new neural model was trained in this calibration experiment.
+
+- [Component calibration results](outputs/publication_readiness_2026_09/european_component_calibration_v1/results.md)
+- [Failure mechanism and next diagnostic](outputs/publication_readiness_2026_09/european_component_calibration_v1/failure_analysis.md)
+- [Design and reproduction](outputs/publication_readiness_2026_09/european_component_calibration_v1/operation.md)
+
+## Fixed-Upstream Seed Control
 
 **The remaining risk failures are not just an unlucky random seed.** I fixed
 the upstream predictors and trained 48 additional cost heads with different
@@ -44,8 +66,8 @@ zero. The small average ADE gains do not make these policies safe to deploy.
 
 The diagnostic distinguishes underestimated harm from overestimated reference
 error. The latter can make a harmful switch appear safe even when harm itself
-is overpredicted. This gives a concrete next experiment: source-only component
-calibration and support, rather than another seed or threshold search.
+is overpredicted. This motivated the source-only component calibration experiment
+above, rather than another seed or threshold search.
 
 The first full fit and entire readout replay exactly; 34 scoped tests pass.
 These remain exposed-development results. Independent confirmation is closed,

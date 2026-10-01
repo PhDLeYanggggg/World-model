@@ -7,6 +7,39 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Completed `european_component_calibration_v1`: 72 source-only empirical
+calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
+and 216 frozen transferred head/action views. All calibrators and the entire
+readout replay exactly. Frozen models are cached_verified; calibration and
+outcome evaluation are fresh_run. No neural or forest retraining.
+
+Primary same-count joint-versus-parent ADE improvement is -0.0030862%, nominal
+12-locality 95% CI [-0.0056737%, -0.0010450%], with 3,000 bootstrap draws. Nine
+locality means are negative, two positive and one zero. These are already-exposed
+development localities, not independent confirmation or 216 independent scenes.
+
+Joint source-screened ADE gain against the floor is 0.0342003%, compared with
+0.0476049% for the parent and 0.0372819% for its matched-count comparator.
+Easy selected-risk failures change from 18/90 to 6/60 defined views, while
+undefined views rise from 126 to 156. Worst joint risk remains 2.278217%, above
+the original 2% selected-reference budget. Matched parent also fails 6/60;
+coverage reduction is not evidence of better selection or safety.
+
+Whole-easy degradation stays small, but is a different metric. A concrete
+direction rises from 1.65% to 2.10% selected risk after reducing intervention.
+Next: reuse existing selected-subset assets and register source-OOF versus
+transfer accounting of retained/removed harm and reference mass. No target-based
+refit, risk-budget relaxation, deployment promotion or independent-role opening.
+
+Verification: 59,400 native metric checks, 747,900 per-query count checks, 648
+parent metric views exact, 31 scoped tests passed. Full legacy suite not_run.
+Numeric seal `2ea6c547ade4668c8d4f3f8750a13e68e168cf76d53ef0e509abb9bb7ca6f7d4`.
+[Results](outputs/publication_readiness_2026_09/european_component_calibration_v1/results.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_component_calibration_v1/failure_analysis.md).
+
+The following registration, pilot and freeze entries are chronological snapshots;
+their then-pending outcome evaluations are superseded by the completed result above.
+
 Registered `european_component_calibration_v1`: empirical90th-percentile source
 recording component margins, with leave-one-recording-out source screens.
 Harm-only, reference-only and joint arms are fixed before fitting; all72 parent
