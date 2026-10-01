@@ -7,6 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Registered `european_crossed_head_seed_v1`: keep upstream seed43 fixed, train
+head seeds17/29 on all24 source groups (48 new fits), retain24 cached head43
+fits, and report all72 directional views for all three heads. No best-seed or
+threshold selection. Native partial-label accounting, source partitions, causal
+features,128-tree settings and2% selected-reference budget are unchanged.
+34 scoped tests pass; real training/readout are not_run at registration.
+
 Completed and exactly replayed `european_source_forest_v1`. Diagnostic source-val
 signed-MSE difference forest minus selected neural is+0.0210608,
 nominal locality95% CI[-0.0203294,+0.0698637]. Transfer signed-MSE difference

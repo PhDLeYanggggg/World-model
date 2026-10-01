@@ -25,6 +25,11 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+The next registered control freezes the seed43 upstream models and changes only
+the cost-head seed. It adds48 fits and retains24 original heads; all three seeds
+will be reported, without choosing a transfer winner. Results are pending.
+[Design](outputs/publication_readiness_2026_09/european_crossed_head_seed_v1/protocol.md).
+
 **A standard nonlinear cost model improves preservation, but is not a safe
 upgrade.** I trained72 fixed ExtraTrees models on the same European source
 partitions and causal information as the neural cost head. Source-validation
