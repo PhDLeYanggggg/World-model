@@ -12,8 +12,9 @@ All 72 native-arm64 Torch fits completed their fixed 2,000 updates (144,000 tota
 The training manifest is frozen before transfer decisions or outcomes are read.
 All source-internal partitions are recording-disjoint. Validation selected step
 0 in 21 fits; those are prior decoders, not learned improvements. Transfer
-localities cannot select checkpoints or thresholds. Replay and transfer readout
-are pending; there is no improvement or deployment claim.
+localities cannot select checkpoints or thresholds. The first complete fit now
+replays exactly; all 216 causal decision views are frozen before outcome readout.
+Transfer evaluation is next; there is no improvement or deployment claim.
 
 Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 completed locally: all288 reconstructed packet bytes match the committed manifest,
