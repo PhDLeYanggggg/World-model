@@ -31,7 +31,9 @@ Next: a separately registered source-validation decision-utility selection
 control among frozen heads, without transfer-label tuning or a relaxed budget.
 
 The follow-up [decision-utility selection control](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/protocol.md)
-is now registered, not yet evaluated. It reuses the three frozen source heads,
+is registered and source choices are now frozen before transfer evaluation.
+Of 72 source choices, 69 have no supported nonempty candidate and fall back;
+three retain the MSE-selected head. This is not a transfer outcome. It reuses the three frozen source heads,
 keeps the original 2% all/easy selected-risk screen, and uses only source-
 validation labels for model choice. Unsupported choices fall back without being
 called successful neural policies. Five focused rule tests pass. No new neural
