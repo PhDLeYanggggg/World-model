@@ -7,6 +7,26 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Completed `european_crossed_head_seed_v1`:48 fresh128-tree fits with upstream43
+fixed, plus24 cached_verified43 heads. All216 head readouts replay exactly;
+original43 predictions/actions and216 raw/screened/floor metric views are exact.
+Head17/29 matched ADE improvement over43 is+0.000041% /-0.000162%, with nominal
+95% locality intervals[-0.000881%,+0.000922%] /[-0.000730%,+0.000414%]. No
+supported seed utility advantage and no transfer-selected winner.
+
+Screened easy-risk failures are7/30,5/30,6/30;42 directions per head are
+undefined, not passes. Worst risk4.5322%,4.5322%,7.5506%. Three parent failures
+persist under all raw heads; two persist after all source screens. Component
+accounting identifies reference overestimation as well as harm underestimation.
+Whole-easy preservation is not a selected-tail safety certificate. No deployment.
+
+Verification:19,800 native metric checks,498,600 query-count checks,34 scoped
+tests; full legacy suite not_run. Numeric seal
+`6731eb97347a8defcd8abda080b6179d1923e21c9b8d0e80d79bf0a5640e4e71`.
+Next is a separately registered source-recording-only component calibration
+control, keeping the original2% budget and independent roles closed.
+[Results](outputs/publication_readiness_2026_09/european_crossed_head_seed_v1/results.md).
+
 Registered `european_crossed_head_seed_v1`: keep upstream seed43 fixed, train
 head seeds17/29 on all24 source groups (48 new fits), retain24 cached head43
 fits, and report all72 directional views for all three heads. No best-seed or

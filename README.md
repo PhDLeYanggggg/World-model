@@ -25,10 +25,30 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-The next registered control freezes the seed43 upstream models and changes only
-the cost-head seed. It adds48 fits and retains24 original heads; all three seeds
-will be reported, without choosing a transfer winner. Results are pending.
-[Design](outputs/publication_readiness_2026_09/european_crossed_head_seed_v1/protocol.md).
+**The remaining risk failures are not just an unlucky random seed.** I fixed
+the upstream predictors and trained 48 additional cost heads with different
+seeds, keeping data, features, targets and model settings identical. The 24
+original heads remain in the comparison; no seed was selected after evaluation.
+
+The three heads still violate the 2% selected easy-harm budget in 7/30, 5/30 and
+6/30 defined directions. Each has another 42 undefined directions, not passes.
+Same-count utility differences are effectively zero, with intervals crossing
+zero. The small average ADE gains do not make these policies safe to deploy.
+
+The diagnostic distinguishes underestimated harm from overestimated reference
+error. The latter can make a harmful switch appear safe even when harm itself
+is overpredicted. This gives a concrete next experiment: source-only component
+calibration and support, rather than another seed or threshold search.
+
+The first full fit and entire readout replay exactly; 34 scoped tests pass.
+These remain exposed-development results. Independent confirmation is closed,
+the deployment floor is unchanged, and there is no submission-ready claim.
+
+- [Crossed-seed results](outputs/publication_readiness_2026_09/european_crossed_head_seed_v1/results.md)
+- [Six-case failure analysis](outputs/publication_readiness_2026_09/european_crossed_head_seed_v1/failure_analysis.md)
+- [Design and reproduction](outputs/publication_readiness_2026_09/european_crossed_head_seed_v1/operation.md)
+
+## Nonlinear Cost Control
 
 **A standard nonlinear cost model improves preservation, but is not a safe
 upgrade.** I trained72 fixed ExtraTrees models on the same European source
