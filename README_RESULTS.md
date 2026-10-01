@@ -16,6 +16,13 @@ not_run at registration.10GiB reserve, original2% selected-reference risk,
 native partial-label estimand and closed independent roles remain unchanged.
 No transfer threshold/model sweep; freeze all causal actions before readout.
 
+The real16-tree pilot fitted in4.91s, with4.84GB peak RSS and a1.47MB compressed
+checkpoint. Full fitting was blocked by a conservative storage estimate, not a
+training failure. A preregistered resource-only retry replaces a guessed node
+size with the actual128-byte node payload, while retaining worst-case node
+counts, extra copies/metadata and the original10GiB reserve. Scientific settings
+and the resumable pilot are unchanged.30 scoped tests passed before fitting.
+
 Completed the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/results.md)
 over 72 frozen fits and 216 source-validation candidate views. Nine of the 41
 unknown-only rejections obtain finite-completion support; 32 fail the easy-risk
