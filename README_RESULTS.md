@@ -7,10 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-Next controlled fit: [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/protocol.md).
-A real100-update native-arm64 pilot passed; full72-fit training has started, not
-completed. Transfer localities cannot select checkpoints or thresholds. The
-final-step control is retained. This is not an improvement or deployment claim.
+Current controlled fit: [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/protocol.md).
+All 72 native-arm64 Torch fits completed their fixed 2,000 updates (144,000 total).
+The training manifest is frozen before transfer decisions or outcomes are read.
+All source-internal partitions are recording-disjoint. Validation selected step
+0 in 21 fits; those are prior decoders, not learned improvements. Transfer
+localities cannot select checkpoints or thresholds. Replay and transfer readout
+are pending; there is no improvement or deployment claim.
 
 Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 completed locally: all288 reconstructed packet bytes match the committed manifest,
