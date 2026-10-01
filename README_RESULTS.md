@@ -14,6 +14,11 @@ threshold selection. Native partial-label accounting, source partitions, causal
 features,128-tree settings and2% selected-reference budget are unchanged.
 34 scoped tests pass; real training/readout are not_run at registration.
 
+The crossed-seed real16-tree pilot completed in5.06 fitting seconds, with
+6,281,412,608-byte peak RSS and a1,304,550-byte checkpoint. The conservative
+651,489,117-byte remaining-storage bound preserves10GiB; local training is
+feasible. This pilot resumes into the fixed128-tree budget, not a reduced run.
+
 Completed and exactly replayed `european_source_forest_v1`. Diagnostic source-val
 signed-MSE difference forest minus selected neural is+0.0210608,
 nominal locality95% CI[-0.0203294,+0.0698637]. Transfer signed-MSE difference
