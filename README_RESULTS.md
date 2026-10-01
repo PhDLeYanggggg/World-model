@@ -21,7 +21,12 @@ CREATE submission or neural training. This is not yet a completed readout.
 
 All 72 selected-pool source groups completed in 59.84s and replayed exactly in
 61.78s. Causal actions agree with the existing OOF hashes. Transfer accounting
-is now running; no source or transfer superiority is inferred from replication.
+stopped at 144/216 head views when local free disk crossed the unchanged 10GiB
+reserve plus working buffer. Completed artifacts are preserved. A separately
+registered resource-only CREATE continuation will stream frozen inputs from
+memory and require exact local parity and complete replay. No job submitted yet;
+partial transfer results are not a completed readout. No source or transfer
+superiority is inferred from replication.
 
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
