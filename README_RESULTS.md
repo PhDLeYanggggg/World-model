@@ -7,6 +7,18 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+The completed source diagnostic now has a reproducible [mechanism figure](outputs/publication_readiness_2026_09/european_selected_pool_v1/source_mechanism.svg)
+and [English paper appendix](outputs/publication_readiness_2026_09/european_selected_pool_v1/paper_case_study.md).
+All72 source views,42 undefined contrasts and the same-locality counterexamples
+remain visible. Five new figure/provenance tests pass;38 unchanged scoped checks
+were verified earlier. This is paper-evidence preparation, not new training or
+completed transfer. CREATE job37702155 is still pending in the latest check.
+
+The [1 October venue check](outputs/publication_readiness_2026_09/venue_status_2026_10_01.md)
+confirms10/16/23November registration/paper/supplement deadlines. The linked2027
+Author Guidelines still return404, so format and final policy requirements are
+not invented from a previous year. Submission readiness remains unproven.
+
 Registered `european_selected_pool_v1`: fixed source-OOF, source-resubstitution
 and transfer accounting on 72 calibrators and 216 head views. Compare retained
 versus raw envelope-normalized risk bias and exact harm/reference mass removal;
