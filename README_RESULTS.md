@@ -30,7 +30,8 @@ head candidates and known-source-validation utility ranking; freeze choices
 and causal actions before transfer readout. Source choices replay exactly:
 63 fallback, six explicit initial heads, three MSE heads whose selected step is
 zero. No trained checkpoint wins. Compare the parent policy at both native
-coverage and matched per-query counts. New transfer results are pending.
+coverage and matched per-query counts. All216 causal views are frozen before
+readout, and the parent-policy action hashes match exactly. Outcomes pending.
 
 Completed [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md):
 72 native-arm64 Torch fits, 144,000 updates, recording-disjoint source validation.
