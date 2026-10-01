@@ -7,13 +7,22 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-Registered the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/protocol.md)
-over the same 72 frozen fits and 216 source-validation candidate views. It keeps
-known native partial-label costs fixed and bounds wholly unknown selected harm
-by maximum causal forecast disagreement, not full-grid mean disagreement.
-No new training, policy choice, transfer readout or independent-role access is
-authorized by this diagnostic. Real-data bound results are pending; tests alone
-do not establish missing-outcome support or model improvement.
+Completed the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/results.md)
+over 72 frozen fits and 216 source-validation candidate views. Nine of the 41
+unknown-only rejections obtain finite-completion support; 32 fail the easy-risk
+upper screen and ten also fail the all-risk upper screen. All 149 prior
+known-outcome risk failures remain unsupported. Fifteen candidates in nine fit
+groups are supported overall, including duplicate priors. Only three trained
+views pass, and their initial priors have higher known-source utility.
+
+The native partial-label estimand and selected-reference 2% budget are unchanged.
+99,498 unique source-validation IDs include 37,668 partial-mask IDs. Every bound
+replays exactly; 1,512 independent scalar checks and 20 scoped tests pass.
+Initial run: 58.92s, 8,352,546,816-byte peak RSS, no new row cache/checkpoint.
+Seal: `90adbcd53cb2301db7175d6241b4f58ce71fc5da01b7b1ba1fc7964cda1b54f3`.
+New training, new policy choice, transfer evaluation and independent confirmation
+are not_run in this diagnostic. Next is a separately registered policy contrast;
+support bounds alone do not establish predictive or deployment improvement.
 
 Completed [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md):
 72 native-arm64 Torch fits, 144,000 updates, recording-disjoint source validation.

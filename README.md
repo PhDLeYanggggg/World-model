@@ -25,11 +25,22 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-A [fixed-action missing-outcome diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/protocol.md)
-is registered next. It uses causal maximum forecast disagreement to bound
-unknown selected harm without changing native partial-label ADE or the 2% risk
-budget. No new model or deployment policy has been selected by this diagnostic;
-the latest completed evidence remains the negative control below.
+**Missing-outcome bounds recover some source support, not learned superiority.**
+Of 41 frozen candidates rejected only for missing selected labels, nine pass
+a conservative maximum-disagreement bound under the original 2% risk budget.
+The other 32 still lack easy-risk support. All 149 candidates already failing
+known-outcome risk remain unsupported.
+
+The nine recovered views include only three trained-checkpoint views, and their
+initial priors have higher known validation utility. All 216 bound readouts
+replay exactly; 1,512 independent arithmetic checks and 20 scoped tests pass.
+No new policy, transfer gain or deployment success follows from this diagnostic.
+
+- [Missing-outcome results and limitations](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/results.md)
+- [Bound proof and frozen protocol](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/protocol.md)
+- [Reproduction](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/operation.md)
+
+## Decision-Aware Control
 
 **Decision-aware source validation mostly abstains; it does not repair learned
 selection.** I tested a fixed utility-and-risk rule over three frozen heads per
