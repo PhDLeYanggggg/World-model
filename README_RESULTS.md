@@ -26,6 +26,11 @@ Source screens pass11/24 for head17 and11/24 for head29. The24 original head43
 models remain cached_verified. Checkpoints/screens are frozen before transfer;
 transfer readout and safety conclusions are still not_run at this checkpoint.
 
+The first new128-tree fit now replays exactly. All72 directional action sets
+(216 head views) are frozen, including exact agreement with the original43
+predictions/actions. The new outcome readout remains not_run until this freeze
+is committed; no seed or threshold has been selected from transfer outcomes.
+
 Completed and exactly replayed `european_source_forest_v1`. Diagnostic source-val
 signed-MSE difference forest minus selected neural is+0.0210608,
 nominal locality95% CI[-0.0203294,+0.0698637]. Transfer signed-MSE difference
