@@ -23,6 +23,14 @@ size with the actual128-byte node payload, while retaining worst-case node
 counts, extra copies/metadata and the original10GiB reserve. Scientific settings
 and the resumable pilot are unchanged.30 scoped tests passed before fitting.
 
+All72 source fits now completed at128 trees each (9,216 trees),496.78s cumulative
+fit time and161,406,781 checkpoint bytes. All72 retain recording-disjoint source
+optimization/validation.44 source validation losses beat the frozen neural MSE
+checkpoint;28 forests pass the fixed finite-completion source screen. This is
+not a transfer or safety result. Model hashes and source-only choices are frozen
+before the216 development-transfer action views; transfer readout remains not_run
+at this checkpoint.
+
 Completed the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/results.md)
 over 72 frozen fits and 216 source-validation candidate views. Nine of the 41
 unknown-only rejections obtain finite-completion support; 32 fail the easy-risk

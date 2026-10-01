@@ -27,8 +27,9 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 I am now testing a fixed nonlinear cost-regression control on the same European
 source partitions as the neural head. It will help distinguish a neural-fitting
-limitation from a shared feature/target limitation. Training and transfer results
-are not yet available; the independent evaluation remains closed.
+limitation from a shared feature/target limitation. All72 source fits are now
+complete and frozen; cross-scene transfer has not yet been read. The independent
+evaluation remains closed.
 [Registered design](outputs/publication_readiness_2026_09/european_source_forest_v1/protocol.md).
 
 **Handling missing labels restores a little coverage, not a learned or safe
