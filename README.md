@@ -25,6 +25,13 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+The next registered control separates harm and reference-error calibration.
+It uses only source-validation recordings, with whole-recording cross-fitting,
+and retains harm-only, reference-only and joint controls. The original 2% risk
+budget is unchanged. Real calibration and transfer results are pending; this is
+not a conformal safety guarantee or a new neural dynamics result.
+[Design](outputs/publication_readiness_2026_09/european_component_calibration_v1/protocol.md).
+
 **The remaining risk failures are not just an unlucky random seed.** I fixed
 the upstream predictors and trained 48 additional cost heads with different
 seeds, keeping data, features, targets and model settings identical. The 24

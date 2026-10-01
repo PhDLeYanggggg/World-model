@@ -7,6 +7,14 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Registered `european_component_calibration_v1`: empirical90th-percentile source
+recording component margins, with leave-one-recording-out source screens.
+Harm-only, reference-only and joint arms are fixed before fitting; all72 parent
+heads and216 directional head views remain. Quantile90% is not the2% risk budget
+or a coverage guarantee. Source coefficients/actions must be committed before
+transfer readout.31 scoped tests pass; real pilot/calibration/readout not_run at
+registration. No new neural training or independent-role opening.
+
 Completed `european_crossed_head_seed_v1`:48 fresh128-tree fits with upstream43
 fixed, plus24 cached_verified43 heads. All216 head readouts replay exactly;
 original43 predictions/actions and216 raw/screened/floor metric views are exact.
