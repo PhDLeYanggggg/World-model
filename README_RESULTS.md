@@ -24,6 +24,12 @@ New training, new policy choice, transfer evaluation and independent confirmatio
 are not_run in this diagnostic. Next is a separately registered policy contrast;
 support bounds alone do not establish predictive or deployment improvement.
 
+Registered `european_completion_screen_policy_v1`: replace only the old
+source-level unknown-outcome veto with the finite-completion screen. Preserve
+head candidates and known-source-validation utility ranking; freeze choices
+and causal actions before transfer readout. Compare the parent policy at both
+native coverage and matched per-query counts. New transfer results are pending.
+
 Completed [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md):
 72 native-arm64 Torch fits, 144,000 updates, recording-disjoint source validation.
 Primary transferred signed-score MSE improves by -0.706815 (nominal locality
