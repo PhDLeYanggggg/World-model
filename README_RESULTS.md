@@ -7,6 +7,25 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Completed and exactly replayed `european_source_forest_v1`. Diagnostic source-val
+signed-MSE difference forest minus selected neural is+0.0210608,
+nominal locality95% CI[-0.0203294,+0.0698637]. Transfer signed-MSE difference
+is-0.200706, CI[-0.450370,+0.003421]. Neither interval excludes zero.
+Matched-count ADE improvement is-0.148667%, CI[-0.252426%,-0.060646%]; all three
+seed means are negative. Source-screened forest gains0.048206% ADE over floor,
+but hard gain is only0.000404%. Worst whole-easy degradation0.032322% does not
+imply selected-tail safety: all risk fails4/68, easy risk6/68, worst7.550605%,
+with148 undefined views and1,953 unknown selected occurrences. All six easy
+failures use shared seed43; upstream and head seeds are confounded, so no seed
+is discarded. No deployment or independent confirmation.
+
+Verification: first full fit exact; all216 readouts exact;37,800 metric checks,
+936 cost-score checks and747,900 per-query count matches;30 scoped tests passed,
+full legacy suite not_run. Numeric seal
+`aac8bc86b0139d06866a323ee08112d57376c7cb50ab6dd5597fee3ca3de35a9`.
+Next: a preregistered crossed head-seed control with upstream seed43 frozen,
+not another threshold sweep. [Full results](outputs/publication_readiness_2026_09/european_source_forest_v1/results.md).
+
 Registered `european_source_forest_v1`, a fixed128-tree ExtraTrees five-moment
 cost control on the same72 European optimization/validation partitions. Same
 causal information, query weighting and composite quadratic target scales;

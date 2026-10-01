@@ -25,12 +25,27 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am now testing a fixed nonlinear cost-regression control on the same European
-source partitions as the neural head. It will help distinguish a neural-fitting
-limitation from a shared feature/target limitation. All72 source fits are now
-complete and frozen; cross-scene transfer has not yet been read. The independent
-evaluation remains closed.
-[Registered design](outputs/publication_readiness_2026_09/european_source_forest_v1/protocol.md).
+**A standard nonlinear cost model improves preservation, but is not a safe
+upgrade.** I trained72 fixed ExtraTrees models on the same European source
+partitions and causal information as the neural cost head. Source-validation
+cost error is not clearly better. At the same per-query intervention count,
+ADE is worse by0.149% (nominal locality interval[-0.252%,-0.061%]).
+
+Source screening limits worst whole-easy degradation to0.032%, but selected easy
+harm still exceeds the2% budget in6/68 defined directions, with a worst ratio of
+7.55%.148 directions remain undefined. All six failures involve seed43, which
+also affects upstream models; it would be invalid to discard that seed.
+
+All216 development readouts replay exactly;30 scoped tests pass. These are
+exposed-development results, not independent confirmation. I am keeping the
+deployment floor unchanged and isolating cost-head versus upstream seed effects
+next, rather than claiming that another estimator solved the problem.
+
+- [Results and comparisons](outputs/publication_readiness_2026_09/european_source_forest_v1/results.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_source_forest_v1/failure_analysis.md)
+- [Reproduction](outputs/publication_readiness_2026_09/european_source_forest_v1/operation.md)
+
+## Previous Control
 
 **Handling missing labels restores a little coverage, not a learned or safe
 upgrade.** I replaced the blanket missing-outcome veto with a conservative
