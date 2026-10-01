@@ -19,6 +19,13 @@ The crossed-seed real16-tree pilot completed in5.06 fitting seconds, with
 651,489,117-byte remaining-storage bound preserves10GiB; local training is
 feasible. This pilot resumes into the fixed128-tree budget, not a reduced run.
 
+All48 crossed-head fits completed at128 trees. Features, targets, weights,
+known masks and preprocessing match the corresponding original43 heads exactly.
+Fitting took372.8246s cumulatively; checkpoints occupy106,973,492 bytes.
+Source screens pass11/24 for head17 and11/24 for head29. The24 original head43
+models remain cached_verified. Checkpoints/screens are frozen before transfer;
+transfer readout and safety conclusions are still not_run at this checkpoint.
+
 Completed and exactly replayed `european_source_forest_v1`. Diagnostic source-val
 signed-MSE difference forest minus selected neural is+0.0210608,
 nominal locality95% CI[-0.0203294,+0.0698637]. Transfer signed-MSE difference
