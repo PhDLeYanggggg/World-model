@@ -7,6 +7,14 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+The full diagnostic can now be summarized without collecting extra local files:
+a registered memory-only adapter executes the original frozen report function,
+then stores bounded aggregates on CREATE. All44 scoped tests pass, including
+synthetic exact numerical parity with the disk-based report and failure checks.
+This changes storage only: the10GiB local reserve,2%risk budget,3,000 bootstrap
+draws and closed independent roles are unchanged. Real full-summary execution
+remains not_run until job37702155 completes and its216 views/replay verify.
+
 A [standalone numerical reproduction package](reproducibility/selected_pool_source/README.md)
 now rebuilds the source figure's504 values and3,000-draw locality bootstrap from
 verified aggregate moments. An isolated Python/NumPy process reproduces72 views,

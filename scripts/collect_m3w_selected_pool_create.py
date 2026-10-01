@@ -54,8 +54,8 @@ def validate_bundle(bundle, manifest, registration_hash, job_id):
     return total
 
 
-def main():
-    cfg, _ = run.registration()
+def fetch_verified_bundle():
+    run.registration()
     assert manager.registration() == json.loads((run.PUBLIC/'recovery_registration.json').read_text())
     manifest = json.loads((run.PUBLIC/'create_input_manifest.json').read_text())
     submission = json.loads((run.PUBLIC/'create_submission_receipt.json').read_text())
@@ -89,6 +89,12 @@ print(json.dumps({'payload':base64.b64encode(gzip.compress(data)).decode(),
     assert len(raw) == payload['expanded_bytes'] and hashlib.sha256(raw).hexdigest() == payload['sha256']
     bundle = json.loads(raw)
     total = validate_bundle(bundle, manifest, run.digest(run.PUBLIC/'recovery_registration.json'), job)
+    return bundle, manifest, job, total
+
+
+def main():
+    cfg, _ = run.registration()
+    bundle, manifest, job, total = fetch_verified_bundle()
     new_bytes = 0; existing = 0; byte_identical = 0
     for name, text in bundle['files'].items():
         path = run.PRIVATE/'transfer'/(name+'.json')

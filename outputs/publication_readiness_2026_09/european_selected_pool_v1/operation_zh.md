@@ -62,6 +62,25 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/report_m3w_selected_p
 重建远程输入须使用已登记的export_m3w_selected_pool_create_v2.py，
 旧export仍保留其原始512MiB保护限制，不应绕过。该操作不训练新模型。
 
+## 本地空间不足时汇总
+
+已补充登记一条只改变存储位置的路径。它先确认作业COMPLETED0:0，
+核验216组、完整重放、至少144组本地精确对照和2592项原风险值，
+然后在本机内存中执行原先冻结的汇总函数。数值计算不改写，
+仍用相同的风险定义、缺失规则和3000次locality bootstrap。
+原有针对性测试仍真实执行，完整数值汇总再重放一次要求字节一致。
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/report_m3w_selected_pool_memory.py report
+```
+
+只在作业完成后运行，不要在PENDING时反复尝试。代码/资源修订注册文件
+已先行冻结；44项针对性检查通过，其中存储路径对照使用明确标注的
+合成fixture，不能称为真实迁移完成。最多64MiB聚合产物写入CREATE的
+M3W专用`memory_report_v1`目录，不生成本地大结果文件，也不提交新作业。
+本地未来回收仍须满足10GiB保留空间，不能因此降低保护线。
+远程只保存文件，统计计算不在登录节点执行。
+
 ## 独立数值复核包
 
 源域图表现在有一个不依赖项目训练环境的复核工具：
