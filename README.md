@@ -42,7 +42,8 @@ No new policy, transfer gain or deployment success follows from this diagnostic.
 
 The [next registered contrast](outputs/publication_readiness_2026_09/european_completion_screen_policy_v1/protocol.md)
 tests the decision effect of replacing the unknown-label veto with this bound.
-Transfer outcomes are pending; no new neural training or deployment claim.
+Source choices are frozen: 63 fallback, nine step-zero priors, no trained head
+selected. Transfer outcomes are pending; no new training or deployment claim.
 
 ## Decision-Aware Control
 
