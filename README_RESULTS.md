@@ -24,14 +24,29 @@ New training, new policy choice, transfer evaluation and independent confirmatio
 are not_run in this diagnostic. Next is a separately registered policy contrast;
 support bounds alone do not establish predictive or deployment improvement.
 
-Registered `european_completion_screen_policy_v1`: replace only the old
+Completed `european_completion_screen_policy_v1`: replace only the old
 source-level unknown-outcome veto with the finite-completion screen. Preserve
 head candidates and known-source-validation utility ranking; freeze choices
 and causal actions before transfer readout. Source choices replay exactly:
 63 fallback, six explicit initial heads, three MSE heads whose selected step is
-zero. No trained checkpoint wins. Compare the parent policy at both native
-coverage and matched per-query counts. All216 causal views are frozen before
-readout, and the parent-policy action hashes match exactly. Outcomes pending.
+zero. No trained checkpoint wins. Primary own-coverage ADE improvement over the
+parent policy is +0.0304981%, nominal locality95% CI[+0.0106989%,+0.0515714%].
+The same-count contrast is zero with identical actions in all216 views.
+
+Intervention rises0.2635933% ->2.8466638%; ADE gain against floor rises0.0038213%
+->0.0343193%. Hard gain remains only0.0009585%. Whole easy ADE does not degrade,
+but selected all-risk fails3/27 defined views and easy risk5/27, worst4.53891%.
+189 views are undefined, not passes; selected unknown occurrences increase53
+->498. Offline completion bounds support11 of27 nonempty transferred views.
+The new source008 -> locality020 failure appears in all three seeds.
+
+All72 source choices and all216 frozen readouts replay exactly. Independent
+checks cover27,000 native metric values,7,560 completion aggregates and747,900
+query-count matches. 27 scoped tests pass. Evaluation119.24s, replay119.89s.
+Seal: `4915a24c7d553da4d8010fbb386e8dae9f62cc683e8ffaf982d180fe13b5d7c7`.
+No new training, independent-role opening or deployment promotion. Next is a
+registered conventional nonlinear cost-regression control under these same
+European source partitions, not another missing-label/transfer-threshold sweep.
 
 Completed [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md):
 72 native-arm64 Torch fits, 144,000 updates, recording-disjoint source validation.
@@ -81,8 +96,14 @@ Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_bounda
 completed locally: all288 reconstructed packet bytes match the committed manifest,
 and every diagnostic replays exactly. Runtime187.98s; peak RSS7.492GiB; zero new
 row-cache bytes.32 scoped tests,64,512 accounting checks,672 summary checks and
-1,728 agreements with the parent risk readout pass. CREATE job37602475 was last
-observed pending; subsequent access timed out. Remote replication is not_run.
+1,728 agreements with the parent risk readout pass. CREATE job37602475 is now
+verified after fresh1 October access: COMPLETED0:0,107s scheduler runtime.
+All288 remote result hashes check, with64,512 accounting checks and exact remote
+replay. The entire local/remote numeric summary agrees at rtol1e-10/atol1e-9;
+execution-provenance text differs intentionally. Three individual packet proofs
+and1,728 parent risks also agree. See [recovery note](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/create_recovery_20261001.md).
+This is computational replication, not independent scientific confirmation or
+new training. Earlier immutable reports retain the then-unverified remote state.
 
 Matched nonlinear easy selected positive-harm risk: fitting predicted0.3218%
 versus actual7.9003%; transfer predicted0.3111% versus actual14.0113%. Transfer

@@ -25,6 +25,25 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**Handling missing labels restores a little coverage, not a learned or safe
+upgrade.** I replaced the blanket missing-outcome veto with a conservative
+geometric bound, keeping the same candidates and 2% selected-harm budget.
+The frozen follow-up improves ADE by 0.03050% over the previous policy
+(nominal locality interval [0.01070%, 0.05157%]), but the same-count comparison
+is exactly zero. Every retained source head is still a step-zero prior.
+
+Intervention rises from 0.264% to 2.847%. Overall easy ADE stays preserved, yet
+5/27 nonempty views violate easy selected positive-harm risk, with a worst ratio
+of 4.54%. The other 189 views are undefined, not safety passes. This is a small
+coverage gain on exposed development data, not a deployment or neural-model
+improvement. All216 readouts replay exactly and 27 scoped tests pass.
+
+- [Policy contrast results](outputs/publication_readiness_2026_09/european_completion_screen_policy_v1/results.md)
+- [Failure analysis and next control](outputs/publication_readiness_2026_09/european_completion_screen_policy_v1/failure_analysis.md)
+- [Reproduction](outputs/publication_readiness_2026_09/european_completion_screen_policy_v1/operation.md)
+
+## Missing-Outcome Support
+
 **Missing-outcome bounds recover some source support, not learned superiority.**
 Of 41 frozen candidates rejected only for missing selected labels, nine pass
 a conservative maximum-disagreement bound under the original 2% risk budget.
@@ -40,11 +59,9 @@ No new policy, transfer gain or deployment success follows from this diagnostic.
 - [Bound proof and frozen protocol](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/protocol.md)
 - [Reproduction](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/operation.md)
 
-The [next registered contrast](outputs/publication_readiness_2026_09/european_completion_screen_policy_v1/protocol.md)
-tests the decision effect of replacing the unknown-label veto with this bound.
-Source choices are frozen: 63 fallback, nine step-zero priors, no trained head
-selected. All216 causal action views are now frozen and the parent's actions
-match exactly. Transfer outcomes are pending; no new training/deployment claim.
+The follow-up contrast above is complete: 63 fallback and nine step-zero prior
+choices, with no trained head selected. Source support does not by itself
+establish transferred conditional-risk control.
 
 ## Decision-Aware Control
 
@@ -106,14 +123,17 @@ intervention counts, the nonlinear head predicts 0.32% easy positive-harm risk
 on fitting sources versus 7.90% observed; on internal transfer, it predicts 0.31%
 versus 14.01% observed. These selected-harm ratios are not overall ADE degradation.
 
-All 288 input packets match the previously committed hashes and replay exactly.
-The computation needed no new row cache. CREATE replication is still unverified
-after connection timeouts; I do not count it as complete. The checkpoint control
-above follows this diagnosis. Neither result establishes a deployment upgrade.
+All288 input packets match the committed hashes and replay exactly. CREATE
+job37602475 is now collected and verified after access recovered: all numeric
+summary fields agree with the local run within strict roundoff tolerance. Its
+remote replay is exact; the two files retain distinct execution-provenance text.
+No new local row cache or model training. Numerical replication does not turn
+the failed-risk result into a deployment upgrade.
 
 - [Risk decomposition](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 - [Failure analysis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/failure_analysis.md)
 - [Execution and evidence boundaries](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_operation.md)
+- [CREATE recovery and complete-summary verification](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/create_recovery_20261001.md)
 
 ## Previous Capacity Control
 
