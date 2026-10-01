@@ -15,6 +15,11 @@ or a coverage guarantee. Source coefficients/actions must be committed before
 transfer readout.31 scoped tests pass; real pilot/calibration/readout not_run at
 registration. No new neural training or independent-role opening.
 
+The real source-calibration pilot completed in12.9834s, with6,090,293,248-byte
+peak RSS and a26,495-byte parameter record. The24,786,800-byte projected storage
+preserves the10GiB reserve. Full72-group fitting is feasible locally; this is
+empirical calibration of frozen heads, not neural/forest retraining.
+
 Completed `european_crossed_head_seed_v1`:48 fresh128-tree fits with upstream43
 fixed, plus24 cached_verified43 heads. All216 head readouts replay exactly;
 original43 predictions/actions and216 raw/screened/floor metric views are exact.
