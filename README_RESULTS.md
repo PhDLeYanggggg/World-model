@@ -30,6 +30,13 @@ deployment promotion; independent selection/calibration/confirmation stay closed
 Next: a separately registered source-validation decision-utility selection
 control among frozen heads, without transfer-label tuning or a relaxed budget.
 
+The follow-up [decision-utility selection control](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/protocol.md)
+is now registered, not yet evaluated. It reuses the three frozen source heads,
+keeps the original 2% all/easy selected-risk screen, and uses only source-
+validation labels for model choice. Unsupported choices fall back without being
+called successful neural policies. Five focused rule tests pass. No new neural
+training, independent source opening or deployment change is claimed.
+
 Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 completed locally: all288 reconstructed packet bytes match the committed manifest,
 and every diagnostic replays exactly. Runtime187.98s; peak RSS7.492GiB; zero new
