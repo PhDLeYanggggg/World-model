@@ -25,6 +25,30 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**Decision-aware source validation mostly abstains; it does not repair learned
+selection.** I tested a fixed utility-and-risk rule over three frozen heads per
+source, keeping the original 2% selected-reference budget. Of 72 source choices,
+69 fall back. The other three retain a step-zero prior, not a trained improvement.
+
+The resulting policy intervenes on only 0.264% of rows on average, with +0.00382%
+ADE gain over the floor. Same-count actions are identical to its comparator, so
+the primary gain is exactly zero. Whole-population easy ADE is preserved, but
+two of the nine defined easy-risk views still violate the budget; 207 views are
+undefined and 53 selected outcome occurrences are unknown. **No deployment
+upgrade or neural-contribution claim.**
+
+All source choices and all 216 transfer readouts replay exactly, with 27,000
+independent metric checks and 14 scoped tests. Independent calibration and
+confirmation remain closed. The next question is whether causal disagreement
+bounds can resolve any missing-outcome support without ignoring unknown harm;
+known-outcome conditional-risk failures remain a separate problem.
+
+- [Decision-aware control results](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/results.md)
+- [Failure analysis and evidence gap](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/failure_analysis.md)
+- [Reproduction](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/operation.md)
+
+## Checkpoint Control
+
 **Better global cost prediction did not produce better intervention decisions.**
 I completed a source-internal checkpoint-selection control: 72 Torch fits,
 three seeds, and 216 frozen directional evaluations across 12 development

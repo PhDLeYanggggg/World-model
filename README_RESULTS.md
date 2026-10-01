@@ -30,16 +30,26 @@ deployment promotion; independent selection/calibration/confirmation stay closed
 Next: a separately registered source-validation decision-utility selection
 control among frozen heads, without transfer-label tuning or a relaxed budget.
 
-The follow-up [decision-utility selection control](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/protocol.md)
-is registered and source choices are now frozen before transfer evaluation.
-Of 72 source choices, 69 have no supported nonempty candidate and fall back;
-three retain the MSE-selected head. All 72 choices replay exactly and all 216
-transfer decision views are frozen before outcomes. This is not a transfer
-result. It reuses the three frozen source heads,
-keeps the original 2% all/easy selected-risk screen, and uses only source-
-validation labels for model choice. Unsupported choices fall back without being
-called successful neural policies. Five focused rule tests pass. No new neural
-training, independent source opening or deployment change is claimed.
+The follow-up [decision-utility selection control](outputs/publication_readiness_2026_09/european_source_policy_selection_v1/results.md)
+is complete and verified. Of 72 choices, 69 fall back; three retain the same
+step-zero MSE/prior head. No trained head passes source validation. Transfer
+all ADE gain is +0.0038213% with 0.2635933% intervention; same-count actions are
+identical in all 216 views, giving exactly zero primary improvement. Easy ADE
+is preserved, but easy selected risk fails in 2/9 defined views (worst 3.04230%);
+207 are undefined and 53 selected outcome occurrences remain unknown.
+
+Source choices and complete readout replay exactly; independent accounting
+checks 27,000 metric values and 747,900 query counts. 14 scoped tests pass.
+Seal: `d64444cb7fceca2ccbdf22422c1a331ea64569a884f5eb7ef8b271993a4c3722`.
+No new neural training, independent-role opening or deployment promotion.
+The 41 candidate views rejected only for missing selected outcomes motivate
+checking conservative disagreement bounds, not ignoring missing harm. Known-
+outcome risk failures remain separate and cannot be solved by accounting alone.
+
+[CVPR policy refresh, 1 October](outputs/publication_readiness_2026_09/cvpr2027_policy_refresh_20261001.md):
+official dates unchanged; linked 2027 Author Guidelines still return 404.
+Exact format and finalized LLM policy remain unverified. Scientific readiness
+is not established by these engineering and developmental checks.
 
 Follow-up [risk diagnosis](outputs/publication_readiness_2026_09/european_boundary_diagnostic_v1/local_results.md)
 completed locally: all288 reconstructed packet bytes match the committed manifest,
