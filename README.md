@@ -25,6 +25,12 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+The next registered diagnostic measures how retained and removed harm/reference
+mass differs within source recordings and after locality transfer. It reuses
+all frozen policies, with no new model, threshold search or independent-role
+opening. Real accounting is pending.
+[Protocol](outputs/publication_readiness_2026_09/european_selected_pool_v1/protocol.md).
+
 **Source-only calibration reduces coverage, but does not solve selected risk.**
 I fitted 72 recording-level calibrators on frozen cost heads, comparing harm-only,
 reference-only and joint adjustments. Whole-recording cross-fitting keeps each

@@ -7,6 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Registered `european_selected_pool_v1`: fixed source-OOF, source-resubstitution
+and transfer accounting on 72 calibrators and 216 head views. Compare retained
+versus raw envelope-normalized risk bias and exact harm/reference mass removal;
+retain missingness and undefined coverage. Prior subset-risk assets inspected;
+this is not a repeat training run or a deployment change. The original 2% budget
+and closed independent roles remain. Real diagnostic not_run at registration.
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire
