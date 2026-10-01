@@ -25,6 +25,12 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+A [fixed-action missing-outcome diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/protocol.md)
+is registered next. It uses causal maximum forecast disagreement to bound
+unknown selected harm without changing native partial-label ADE or the 2% risk
+budget. No new model or deployment policy has been selected by this diagnostic;
+the latest completed evidence remains the negative control below.
+
 **Decision-aware source validation mostly abstains; it does not repair learned
 selection.** I tested a fixed utility-and-risk rule over three frozen heads per
 source, keeping the original 2% selected-reference budget. Of 72 source choices,

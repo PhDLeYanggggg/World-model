@@ -7,6 +7,14 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+Registered the [missing-outcome bound diagnostic](outputs/publication_readiness_2026_09/european_unknown_outcome_bounds_v1/protocol.md)
+over the same 72 frozen fits and 216 source-validation candidate views. It keeps
+known native partial-label costs fixed and bounds wholly unknown selected harm
+by maximum causal forecast disagreement, not full-grid mean disagreement.
+No new training, policy choice, transfer readout or independent-role access is
+authorized by this diagnostic. Real-data bound results are pending; tests alone
+do not establish missing-outcome support or model improvement.
+
 Completed [source-internal checkpoint selection](outputs/publication_readiness_2026_09/european_source_checkpoint_v1/results.md):
 72 native-arm64 Torch fits, 144,000 updates, recording-disjoint source validation.
 Primary transferred signed-score MSE improves by -0.706815 (nominal locality
