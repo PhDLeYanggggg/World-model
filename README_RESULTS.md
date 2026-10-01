@@ -38,6 +38,11 @@ All216 frozen input packets are now hash-verified on CREATE (878,732,429 bytes),
 with144 existing local result groups bound for exact parity. No local array cache
 was created. This completes input transport only; scheduled computation is next.
 
+CREATE job `37702155` was submitted once (4 CPUs,8 GiB,one-hour limit). The first
+verified scheduler observation is PENDING, with no stdout or completion receipt;
+this is queueing, not a failed or completed experiment. Preserve the job and
+inspect it before any resubmission. Simulation jobs are untouched.
+
 Completed `european_component_calibration_v1`: 72 source-only empirical
 calibrators, 348 whole-recording OOF folds over 58 distinct validation recordings,
 and 216 frozen transferred head/action views. All calibrators and the entire

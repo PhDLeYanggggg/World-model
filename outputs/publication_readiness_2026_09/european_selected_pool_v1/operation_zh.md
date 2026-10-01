@@ -31,8 +31,36 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_selected_pool
 process.lock用于排除重复运行，文件存在本身不能证明进程活着。
 
 真实首组试跑14.10秒，峰值内存5,851,791,360字节，预计新增存储
-38,560,960字节，保留10GiB磁盘底线。该工作适合本地，没有新CREATE任务。
+38,560,960字节。该试跑时本地空间足够；后来机器剩余空间变化，迁移核算在
+144/216组时触发10GiB保留空间限制。72组源域核算及重放已完成，不需要重跑。
 已有CREATE任务37602475的完成记录属于上一实验，不是当前运行的作业。
+
+## CREATE续算
+
+资源修订不改变方法。216组固定输入直接从内存传到M3W专用目录，
+没有本地大数组缓存。最初512MiB传输额度不足，另行登记为2GiB；
+实际878,732,429字节。全部数据包哈希已验证。保留个人配额未知的限制，
+遇到配额或写入错误就停止，不能删除其他项目文件。
+
+当前作业37702155只提交了一次，配置4CPU、8GiB、一小时。首次观察为
+PENDING，不是卡死或完成。不要重发提交命令，不要修改simulation任务。
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/manage_m3w_selected_pool_create.py inspect
+```
+
+只有调度器显示COMPLETED且退出码为0，完整重放及144组本地对照通过后，
+才回收轻量结果。回收仍保留原来的本地磁盘空间要求。
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/collect_m3w_selected_pool_create.py
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/run_m3w_selected_pool_accounting.py report
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/report_m3w_selected_pool_findings.py
+```
+
+上述结果汇总命令在完整核算结束后才能运行；作业已提交不代表汇总已完成。
+重建远程输入须使用已登记的export_m3w_selected_pool_create_v2.py，
+旧export仍保留其原始512MiB保护限制，不应绕过。该操作不训练新模型。
 
 ## 结果解释
 
