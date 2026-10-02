@@ -25,6 +25,11 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+A frozen component diagnosis is registered next. It will isolate the five cost
+corrections and their projection while preserving the original thresholds. It
+does not train or select a new deployment policy.
+[Protocol](outputs/publication_readiness_2026_09/european_quality_components_v1/protocol.md).
+
 **Past observation quality helps prediction, but does not yet make selection
 safe.** I completed all 144 paired auxiliary fits on the 72 frozen cost forests.
 The actual past-quality features outperform a within-recording shuffled control,

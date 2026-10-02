@@ -7,6 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Frozen quality-component attribution registered; real inference pending.**
+All72 quality heads will be read from immutable owned CREATE checkpoints, with
+only-one and leave-one-out interventions on five cost moments plus the explicit
+preprojection diagnostic. No refit, threshold selection or independent-role
+access. This tests why predictive improvement did not preserve selected risk.
+[Protocol](outputs/publication_readiness_2026_09/european_quality_components_v1/protocol.md).
+
 **Past-quality auxiliary completed: predictive information, failed safety screen.**
 All144 paired fits completed with exact refits, serialization and inference replay.
 The test fits centered seven-feature regressions inside the72 frozen forests' leaves.
