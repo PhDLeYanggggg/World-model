@@ -7,6 +7,16 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Forest decoder control registered; scientific readout pending.**
+The current forest projection can reduce predicted harm together with benefit
+when their sum exceeds the causal disagreement envelope. I am testing this
+specific mechanism with all72 frozen source heads and an alternative projection
+that preserves harm first. Models, inputs, splits and thresholds stay fixed.
+This is not another calibration round or a new neural training result.
+Eleven synthetic/regression checks pass; real-data outcomes are not yet read.
+No independent test access, deployment change or new numerical cache.
+[Frozen protocol](outputs/publication_readiness_2026_09/european_forest_projection_v1/protocol.md).
+
 **Recording-deletion stability completed: rejection is not discrimination.**
 All72 source groups completed with exact replay in162.20s on local arm64 CPU,
 peak0.924GB memory. Primary complete support falls23->8; all10,692 removed
