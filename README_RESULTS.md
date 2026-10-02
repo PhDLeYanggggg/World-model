@@ -7,12 +7,16 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Past-quality auxiliary registered; training pending.** The next paired test
+**Past-quality auxiliary: real paired pilot passed; full training running.** The test
 fits centered seven-feature regressions inside the 72 frozen forests' leaves.
 A within-training-recording permutation is the matched placebo control; targets,
 branches, partitions, thresholds and the 2% risk budget remain unchanged.
 No future quality or sample filtering. This tests information value, not whether
 adding parameters can lower training loss.
+The two-arm pilot completed in 72.99 seconds with exact refit and inference,
+peak 6.45 GB RAM. All 72 source groups are now running locally, with weights in
+owned CREATE storage and no new local numeric cache. No performance gate is
+claimed from the pilot; all 144 registered auxiliary fits remain required.
 [Protocol](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/protocol.md).
 
 **Raw-label linkage completed: missing labels do not explain most selected harm.**

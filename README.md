@@ -25,6 +25,13 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+A paired past-quality training experiment is now running. Its real two-arm pilot
+reproduces learned parameters and predictions exactly within local resources;
+the full comparison requires 144 auxiliary fits. I am testing the complete fixed
+past-quality feature set against a within-recording shuffled-feature control,
+without changing the risk budget or using future quality at inference.
+[Registered experiment](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/protocol.md).
+
 **Incomplete labels are not the main explanation for the remaining mistakes.**
 After a relative-target refit failed to improve safety, I traced the frozen
 models' decisions back to the original recordings. All 318,969 source rows and
