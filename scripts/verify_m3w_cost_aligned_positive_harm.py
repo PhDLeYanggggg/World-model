@@ -41,7 +41,7 @@ def main():
     assert sha(PUBLIC/'summary.json') == completed['summary_sha256']
     registration = json.loads((PUBLIC/'registration.json').read_text())
     for path, digest in registration['bindings'].items(): assert sha(ROOT/path) == digest
-    cfg = json.loads((ROOT/'configs/m3w_european_cost_aligned_positive_harm_v1.json').read_text())
+    cfg = json.loads((ROOT/'configs'/('m3w_'+PUBLIC.name+'.json')).read_text())
     prior_complete = json.loads((PRIOR/'complete.json').read_text())
     parent_refs = {r['path']: r['sha256'] for r in prior_complete['groups']}
     rows = []; checks = 0

@@ -5,17 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Internal Locality-Held Cost Learning (No Deployment Promotion)
+## Source-Development Cost Learning (No Deployment Promotion)
 
-**Cost-aligned control: real pilot exposed and isolated a solver failure.**
+**Cost-aligned control: repaired real pilot passed; full72 training running.**
 The first tree did not converge with the Gauss-Newton approximation, even at
 2048 iterations. Exact residual curvature solves the same106,960 known TRAIN
 rows in7 iterations under the original1e-7 tolerance. Eight scoped tests pass.
 A solver-only amendment is registered; the loss, positive form, features,
-partitions, initialization and2% budget stay fixed. Full model performance is
-still unmeasured; no deployment claim. No threshold search or new neural dynamics.
+partitions, initialization and2% budget stay fixed. The complete first-head
+pilot takes287.27s, peak7.187GB, with exact refit/serialization/inference and230
+scalar checks. All72 fits are now running; no full result or deployment claim.
+No threshold search or new neural dynamics. These are recording-held tests
+within source localities, not independent held-locality confirmation.
 [Amendment](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/protocol.md),
-[preserved failure](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/failure.md).
+[preserved failure](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/failure.md),
+[English evidence note](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v2/manuscript_evidence_note.md).
 
 **Frozen positive-harm diagnosis completed: easy-harm tails dominate error.**
 All72 heads replay with unchanged predictions, actions and registered scores.
