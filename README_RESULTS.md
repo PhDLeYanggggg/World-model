@@ -7,19 +7,29 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Positive conditional harm pilot passed; all72 training in progress.**
-The next experiment freezes raw benefit/reference predictions and tree routing,
-and trains only total/easy harm on the same seven past-quality features. A
-training-mean-preserving exponential link is compared with the original and
-cached two-harm additive control. Loss and output form change together; this
-does not isolate positivity alone. Same projection, partitions, thresholds and
-2% selected-risk budget. Twelve targeted tests pass, including an independent
-optimizer check. The real first-head pilot completed in124.42s, peak6.80GB;
-fit/refit, serialization/inference and scalar replay match exactly. Its10.22MB
-checkpoint is hash-verified in owned CREATE storage. No local numeric cache
-or new Slurm job. All72 fixed fits are now running; no full result yet.
-Independent roles remain closed and no deployment changes.
-[Registered protocol](outputs/publication_readiness_2026_09/european_positive_harm_v1/protocol.md).
+**Positive conditional harm completed: partial repair, advance screen fails.**
+All72 fresh fits and exact refits completed. The train-mean-preserving positive
+link removes negative-to-zero harm predictions, freezing raw B/R/ER and tree
+routing. Known-label violations are2 versus20 additive and4 original. Complete
+support is37 versus19 additive and33 original, but upper violations remain11
+versus7 original; worst upper18.028% versus5.406%. Nine upper failures require
+unknown completion; two also fail on known labels. The18.028% bound is not
+observed degradation. Same-query matched support27 is below original33.
+
+Normalized signed-score MSE worsens+0.136161 vs original, nominal95% locality
+CI[0.039763,0.257608], and+0.168307 vs additive. Full/matched conservative utility
+is+0.043821%/+0.022976% of full known reference mass vs original, but negative
+against additive. These are not ADE/FDE gains. Training loss decreases and all
+fits converge, but positive mean preservation is not conditional safety.
+
+Native-arm64 full1322.59s, peak10.087GB;72 remote checkpoints152.40MB rehashed.
+13,248 scalar/parent checks,526 independent aggregate/bootstrap checks and37
+scoped tests pass. No new local numeric cache or Slurm job. No transfer,
+independent-role access, deployment or submission-readiness promotion.
+Next: frozen error decomposition before any cost-aligned positive-loss refit.
+[Results](outputs/publication_readiness_2026_09/european_positive_harm_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_positive_harm_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_positive_harm_v1/README.md).
 
 **Frozen quality-component attribution completed: harm-driven unsafe expansion.**
 All72 quality heads x13 fixed variants replay exactly; original/quality anchors

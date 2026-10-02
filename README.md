@@ -25,13 +25,27 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am now testing a conditional harm head that cannot obtain small harm estimates
-by clipping negative corrections to zero. It preserves each frozen leaf's
-training mean and leaves the original benefit/reference models unchanged before
-the common feasibility projection. The real pilot passed exact fitting and
-inference replay; all72 fixed development heads are being trained. This is a
-test of a combined output-form and loss change, not yet a safety improvement.
-[Training protocol and reproduction](outputs/publication_readiness_2026_09/european_positive_harm_v1/README.md).
+**A positive harm head repairs part of the failure, but still does not pass.**
+I trained all72 fixed conditional harm heads, retaining the original tree routes
+and raw benefit/reference estimates. The new output removes negative-to-zero
+harm clipping, while a training-only normalizer preserves each leaf's mean.
+
+Compared with the same-feature additive control, known-label risk violations
+fall from20 to2. Complete risk support rises from33 to37 relative to the original
+model. However, risk upper violations increase from7 to11, and normalized
+signed-score prediction error worsens by0.1362, nominal95% interval[0.0398,0.2576].
+Nine remaining upper violations involve unknown outcomes; two already fail on
+known labels. Neither better support elsewhere nor lower training loss excuses
+these failures. I am not advancing this model to transfer or deployment.
+
+The full native-arm64 run took22minutes, with exact refits and inference replay.
+All72 checkpoints are verified in owned CREATE storage;37 scoped tests pass.
+This is a combined output-form/loss experiment on exposed development scenes,
+not independent confirmation or new neural trajectory dynamics.
+[Results and limitations](outputs/publication_readiness_2026_09/european_positive_harm_v1/conclusions.md),
+[reproduction](outputs/publication_readiness_2026_09/european_positive_harm_v1/README.md).
+
+### Preceding Component Diagnosis
 
 **The new information helps, but the harm predictions allow unsafe expansion.**
 I completed all 13 fixed component interventions on 72 frozen cost heads.
@@ -41,9 +55,9 @@ localities, above the unchanged 2% budget. Harm underestimation is the main
 average contributor; benefit and reference corrections are not.
 
 Removing the total-harm correction reduces failures, but still does not restore
-the original risk support. It is a diagnostic, not a deployable shortcut. I will
-test a constrained conditional harm head next, preserving the useful past
-features and original benefit/reference estimates rather than loosening thresholds.
+the original risk support. It is a diagnostic, not a deployable shortcut. It
+motivated the conditional harm experiment above, preserving useful past features
+and original benefit/reference estimates without loosening thresholds.
 All frozen inference replays exactly; 14 scoped tests pass. No new model was
 trained in this diagnosis and no independent evaluation was opened.
 [Findings and limitations](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md).
@@ -87,9 +101,10 @@ These are exploratory development results, not independent confirmation or a
 deployment upgrade. The detailed ledger retains the negative calibration,
 neighbor-history and relative-target experiments that motivated this check.
 
-- [Latest findings](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md)
-- [Failure analysis](outputs/publication_readiness_2026_09/european_quality_components_v1/failure_analysis.md)
-- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_quality_components_v1/README.md)
+- [Latest findings](outputs/publication_readiness_2026_09/european_positive_harm_v1/conclusions.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_positive_harm_v1/failure_analysis.md)
+- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_positive_harm_v1/README.md)
+- [Preceding frozen-component diagnosis](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md)
 - [Preceding paired training result](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/conclusions.md)
 - [Preceding raw-label diagnostic](outputs/publication_readiness_2026_09/european_label_support_v1/conclusions.md)
 - [Complete results ledger](README_RESULTS.md)
