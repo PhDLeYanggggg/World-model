@@ -7,6 +7,17 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Positive conditional harm experiment registered; real training pending.**
+The next experiment freezes raw benefit/reference predictions and tree routing,
+and trains only total/easy harm on the same seven past-quality features. A
+training-mean-preserving exponential link is compared with the original and
+cached two-harm additive control. Loss and output form change together; this
+does not isolate positivity alone. Same projection, partitions, thresholds and
+2% selected-risk budget. Twelve targeted tests pass, including an independent
+optimizer check. Pilot and all72 fits are not yet completed. Independent roles
+remain closed and no deployment changes.
+[Registered protocol](outputs/publication_readiness_2026_09/european_positive_harm_v1/protocol.md).
+
 **Frozen quality-component attribution completed: harm-driven unsafe expansion.**
 All72 quality heads x13 fixed variants replay exactly; original/quality anchors
 are unchanged. Quality adds22,805 and removes5,827 repeated occurrences.22,679

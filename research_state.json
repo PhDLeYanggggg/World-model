@@ -1,7 +1,7 @@
 {
   "current_evidence_record": "cvpr2027_research_track.european_quality_components_v1",
-  "active_experiment": null,
-  "next_research_action": "Register and train a targeted conditional harm-head control: freeze original benefit and both reference estimates; compare unchanged original, two-harm additive quality control and positive-link conditional total/easy-harm using the same seven past features and TRAIN-only mean-preserving normalization. Treat output-form and loss changes as a combined hypothesis, not isolated proof. Pilot real fitting, checkpoint/replay all72 source heads, fixed thresholds and 2%risk budget, no threshold/penalty search. Positivity alone does not repair unknown-outcome support. No future filtering, independent-role access, Stage5C or SMC.",
+  "active_experiment": "european_positive_harm_v1",
+  "next_research_action": "Run registered positive conditional harm real pilot then all72 heads with exact refit/checkpoints. Freeze raw B/R/ER, routing, splits and 2%risk; compare original and cached two-harm additive quality control. Same projection may couple projected benefit to harm. No threshold/penalty search or independent-role access. Positivity is not a safety certificate. Stage5C/SMC off.",
   "audit_delegation": {
     "user_authorized_routine_research_audits_and_repairs": true,
     "routine_user_reapproval_required": false,
@@ -12,6 +12,19 @@
     "actual_paper_submission_requires_final_author_confirmation": true
   },
   "cvpr2027_research_track": {
+    "european_positive_harm_v1": {
+      "status": "registered_training_not_yet_completed",
+      "source_heads": 72,
+      "new_conditional_harm_fits_planned": 72,
+      "controls_source": "cached_verified",
+      "training_result_source": "not_run",
+      "targeted_tests_passed": 12,
+      "protocol": "outputs/publication_readiness_2026_09/european_positive_harm_v1/protocol.md",
+      "independent_confirmation": false,
+      "deployment_changed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
     "european_quality_components_v1": {
       "status": "completed936_frozen_component_readouts_harm_failure_localized_no_training_or_promotion",
       "registration_commit": "c65e635b",
