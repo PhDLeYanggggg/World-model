@@ -7,14 +7,25 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Fixed-routing leaf refit registered; real-data result pending.**
-The next paired learning control keeps all tree branches and reference-cost
-outputs fixed, and fits envelope-relative benefit/harm values inside each leaf.
-It tests whether mixing motion scales harms the cost estimator upstream of the
-decoder. This is terminal-value learning, not new neural training, tree search
-or threshold tuning. All 72 original source heads are retained, independent
-roles stay closed, and existing deployment is unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_leaf_geometry_v1/protocol.md).
+**Fixed-routing leaf training completed: relative targets do not repair safety.**
+All 72 heads were refitted and exactly replayed while preserving tree branches,
+source splits and reference predictions. Complete support falls from 33 to 26;
+selected easy-risk violations rise from 7 to 34, including 21 known-label
+violations. The registered advancement gate fails, so no transfer or deployment.
+
+Normalized signed-score MSE changes by +0.07339, nominal 95% locality interval
+[-0.00793, +0.17888]. Conservative utility changes by -0.022884% of full known
+reference mass [-0.054538%, +0.004122%]; same-query count-matched change is
+-0.015382% [-0.034670%, +0.000297%]. These are exposed-development diagnostics,
+not ADE/FDE improvements. The result does not establish useful scale alignment.
+
+Fifteen scoped tests pass; 912,895 original leaf means, 8,280 scalar/parent fields
+and 2,050 aggregate fields are checked. New terminal-value learning is real, but
+there are no new neural updates or tree splits. All checkpoints (42.7MB) are
+verified in owned CREATE storage; only light reports enter Git. A transient SSH
+rejection was recovered using the unchanged authorized connection and resume.
+[Conclusions](outputs/publication_readiness_2026_09/european_leaf_geometry_v1/conclusions.md)
+and [runtime/reproduction](outputs/publication_readiness_2026_09/european_leaf_geometry_v1/README.md).
 
 **Forest decoder control completed: mechanical optimism exists, safety is not repaired.**
 All 72 frozen source heads replay exactly. Keeping harm before benefit in the
