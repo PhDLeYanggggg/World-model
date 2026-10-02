@@ -7,6 +7,27 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Complete selected-pool diagnostic:** CREATE job37702155 finished COMPLETED0:0
+in2m04s. All216 transfer views replay exactly, matching144 existing local groups.
+The full1080-row summary also replays exactly, with82,080 arithmetic checks and
+2592 parent-risk comparisons. No new model was trained. [Complete interpretation](outputs/publication_readiness_2026_09/european_selected_pool_v1/completed_readout.md).
+
+Source-screened joint transfer still fails the original2%budget in6/60 defined
+views;9/69 accepted views are undefined, and147 other views are source-rejected,
+not passes. Worst observed risk is2.278217%. Five of the six failures were already
+unsafe before filtering; only one newly crosses the budget. The sparse020 target
+is reference-overestimation dominated, while067/112 show harm underestimation
+despite hundreds of known retained outcomes. A generic threshold increase is
+not an evidence-backed repair for both mechanisms.
+
+Joint retained-minus-raw bias is0.011883, nominal95% locality interval
+[-0.006850,0.031693], among95/216 defined contrasts. The strict all-view mean
+remains undefined. This does not prove universally increased selection optimism
+or causally isolate domain shift. The numerical package stays hash-verified on
+CREATE because local disk is below reserve. No deployment promotion or independent
+confirmation. The following entries preserve earlier execution checkpoints;
+their queued/not_run status is superseded by this completed readout.
+
 The full diagnostic can now be summarized without collecting extra local files:
 a registered memory-only adapter executes the original frozen report function,
 then stores bounded aggregates on CREATE. All44 scoped tests pass, including
