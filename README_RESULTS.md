@@ -7,11 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Frozen positive-harm error decomposition registered; execution pending.**
-The next read-only replay will separate moment contributions, projection effects,
+**Frozen positive-harm error decomposition pilot passed; full replay running.**
+The read-only replay separates moment contributions, projection effects,
 selected/unselected errors and TRAIN support/rate tails across all72 heads.
 No fitting, policy change, cutoff search or independent-role access. Six new
 targeted tests pass, including independent scalar algebra and frozen inference.
+Real pilot34.22s, peak7.01GB, both checkpoint streams hash-verified and original
+prediction/action/readout anchors matched. No new training or numerical cache.
 [Protocol](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v1/protocol.md).
 
 **Positive conditional harm completed: partial repair, advance screen fails.**
