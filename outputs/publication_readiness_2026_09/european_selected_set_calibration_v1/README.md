@@ -18,6 +18,8 @@ fixed-subset loss or reference-head freeze is not being repeated.
 - Latest scheduler observation: COMPLETED0:0 in2m10s;72-group replay reported.
 - Independent arithmetic/inference reader:13 additional tests passed; real
   input/output verification pending. Initial summary is not a deployment claim.
+- Reader v2:14 tests passed after fixing repeated per-row NPZ decompression;
+  [repair record](readout_io_repair.md). The completed experiment is unchanged.
 - New neural training: not_run; this experiment fits empirical calibrators only.
 - Transfer/independent-role evaluation: not_run and deliberately excluded.
 - Deployment: unchanged. Stage5C and SMC off.

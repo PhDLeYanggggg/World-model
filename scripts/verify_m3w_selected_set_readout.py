@@ -11,8 +11,10 @@ import json
 import math
 from pathlib import Path
 import re
+import shlex
 import subprocess
 import sys
+import time
 
 import numpy as np
 
@@ -22,6 +24,32 @@ PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_selected_set_calib
 PARENT = PUBLIC.parent/'european_component_calibration_v1'
 REMOTE = '/users/k24101830/m3w/european_selected_set_calibration_v1'
 CAP = 128*2**20
+READOUT_REGISTRATION = PUBLIC/'readout_registration_v2.json'
+
+
+def load_packet(raw):
+    # NpzFile.__getitem__ decompresses on every access. Materialize each member
+    # once before per-row sums or held-recording loops, without a disk cache.
+    with np.load(io.BytesIO(raw),allow_pickle=False) as z:
+        assert set(z.files) == {'p','y','env','moving','support','recordings','meta_json'}
+        arrays = {k:z[k] for k in z.files}
+    assert sum(a.nbytes for a in arrays.values()) <= 512*2**20
+    return arrays
+
+
+def read_remote(code,payload):
+    handoff = ROOT/'data/stage_cvpr2027_experiments/create_handoff_20260923'
+    assert digest((handoff/'compute_handoff_20260927.json').read_bytes()) == 'f78d85acb9d51270747e67b7f3533b1bae023d66874d0fa4ef03fdb6f266d1b9'
+    ssh = json.loads((handoff/'observations.json').read_text())['ssh_arguments']
+    assert 'BatchMode=yes' in ssh and 'StrictHostKeyChecking=yes' in ssh
+    try:
+        result = subprocess.run(ssh+[shlex.join(['/usr/bin/python3','-c',code])],
+            input=json.dumps(payload),capture_output=True,text=True,timeout=75)
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError('Read-only observation timed out; do not resubmit the completed experiment') from exc
+    if result.returncode:
+        raise RuntimeError(result.stderr[-2000:])
+    return json.loads(result.stdout)
 
 
 def digest(value):
@@ -244,7 +272,6 @@ def validate_bundle(bundle, manifest, reg_hash, job):
 
 
 def fetch():
-    from scripts.manage_m3w_easy_gradient_diagnostic import call_remote
     manifest = json.loads((PUBLIC/'input_manifest.json').read_text())
     reg_hash = digest((PUBLIC/'registration.json').read_bytes())
     job = json.loads((PUBLIC/'submission_receipt.json').read_text())['job_id']
@@ -271,10 +298,7 @@ b=dict(complete=c,manifest=m,inputs=ins,outputs=outs,summary_text=(r/'summary.js
 raw=json.dumps(b).encode();assert len(raw)<2*p['cap']
 print(json.dumps(dict(payload=base64.b64encode(gzip.compress(raw)).decode(),bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())))
 '''
-    reply = call_remote(code,dict(home=REMOTE,job=job,cap=CAP))
-    if reply['returncode'] != 0:
-        raise RuntimeError(json.dumps(reply))
-    packed = json.loads(reply['stdout'])
+    packed = read_remote(code,dict(home=REMOTE,job=job,cap=CAP))
     assert packed['bytes'] <= 2*CAP
     raw = gzip.decompress(base64.b64decode(packed['payload'],validate=True))
     assert len(raw) == packed['bytes'] and digest(raw) == packed['sha256']
@@ -284,13 +308,14 @@ print(json.dumps(dict(payload=base64.b64encode(gzip.compress(raw)).decode(),byte
 
 
 def register():
-    files = [Path(__file__),ROOT/'tests/test_m3w_selected_set_readout.py',PUBLIC/'readout_verification.md']
+    files = [Path(__file__),ROOT/'tests/test_m3w_selected_set_readout.py',PUBLIC/'readout_verification.md',PUBLIC/'readout_io_repair.md']
     return dict(experiment_registration_sha256=digest((PUBLIC/'registration.json').read_bytes()),
         bindings={str(p.relative_to(ROOT)):digest(p.read_bytes()) for p in files},
         input_manifest_sha256=digest((PUBLIC/'input_manifest.json').read_bytes()),
         parent_calibration_manifest_sha256=digest((PARENT/'calibration_freeze.json').read_bytes()),
+        prior_readout_registration_sha256=digest((PUBLIC/'readout_registration.json').read_bytes()),
         no_training=True,no_policy_change=True,independent_roles_read=False,
-        local_numeric_cache=False,memory_input_cap_bytes=CAP)
+        local_numeric_cache=False,memory_input_cap_bytes=CAP,decoded_packet_cap_bytes=512*2**20)
 
 
 def once(path,value):
@@ -305,20 +330,23 @@ def main():
     parser.add_argument('phase',choices=['register','verify'])
     args = parser.parse_args()
     reg = register()
-    if args.phase == 'register': once(PUBLIC/'readout_registration.json',reg);return
-    assert json.loads((PUBLIC/'readout_registration.json').read_text()) == reg
-    subprocess.run(['git','diff','--exit-code','HEAD','--',str(PUBLIC/'readout_registration.json')],check=True,cwd=ROOT)
-    subprocess.run(['git','cat-file','-e','HEAD:'+str((PUBLIC/'readout_registration.json').relative_to(ROOT))],check=True,cwd=ROOT)
+    if args.phase == 'register': once(READOUT_REGISTRATION,reg);return
+    assert json.loads(READOUT_REGISTRATION.read_text()) == reg
+    subprocess.run(['git','diff','--exit-code','HEAD','--',str(READOUT_REGISTRATION)],check=True,cwd=ROOT)
+    subprocess.run(['git','cat-file','-e','HEAD:'+str(READOUT_REGISTRATION.relative_to(ROOT))],check=True,cwd=ROOT)
+    started = time.monotonic()
     bundle,total = fetch()
     old = {}
     for r in json.loads((PARENT/'calibration_freeze.json').read_text())['groups']:
         raw = (ROOT/r['path']).read_bytes();assert digest(raw) == r['sha256']
         old[Path(r['path']).stem] = json.loads(raw)
     checks, hashes, readout, groups, details = 0, 0, [], [], []
-    for name in bundle['inputs']:
+    for i,name in enumerate(bundle['inputs']):
         group = json.loads(bundle['outputs'][name]);groups.append(group)
-        with np.load(io.BytesIO(base64.b64decode(bundle['inputs'][name])),allow_pickle=False) as z:
-            result = verify_group(z,group,old[name])
+        z = load_packet(base64.b64decode(bundle['inputs'][name]))
+        result = verify_group(z,group,old[name])
+        if i == 0 or (i+1)%12 == 0:
+            print(json.dumps(dict(phase='independent_readout',groups=i+1,seconds=time.monotonic()-started)),flush=True)
         checks += result['scalar_checks'];hashes += result['action_hash_checks']
         readout.extend(result['rows'])
         for r in result['rows']:
@@ -335,10 +363,11 @@ def main():
         frozen_row_comparisons=len(readout),remote_input_and_output_bytes=total,
         remote_complete_sha256=digest(json.dumps(bundle['complete'],sort_keys=True).encode()),
         summary_sha256=bundle['complete']['summary_sha256'],
-        readout_registration_sha256=digest((PUBLIC/'readout_registration.json').read_bytes()),
+        readout_registration_sha256=digest(READOUT_REGISTRATION.read_bytes()),
         numerical_arrays_saved_locally=False,models_fit=False,policy_changed=False,
         independent_roles_read=False,exact_scheduled_replay=True,
         scalar_tolerance=dict(relative=1e-10,absolute=1e-10))
+    assert 'torch' not in sys.modules, 'Verifier and transport must not import Torch'
     # Only lightweight aggregate evidence is persisted, never inputs or folds.
     assert len(bundle['summary_text'].encode()) < 64*2**10
     once(PUBLIC/'verified_summary.json',summary)

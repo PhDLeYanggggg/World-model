@@ -1,6 +1,7 @@
 import base64
 import copy
 import json
+import io
 from pathlib import Path
 import subprocess
 import sys
@@ -71,6 +72,21 @@ def test_unknown_and_zero_denominator_never_certified():
 def test_reader_does_not_import_torch_in_isolated_process():
     code = 'import runpy,sys;runpy.run_path(sys.argv[1],run_name="verifier_test");assert "torch" not in sys.modules'
     subprocess.run([sys.executable,'-I','-B','-c',code,str(Path(audit.__file__).resolve())],check=True)
+
+
+def test_compressed_packet_materialized_once_and_matches_dict(monkeypatch):
+    z,g,old,_ = fixture()
+    buf = io.BytesIO();np.savez_compressed(buf,**z)
+    original = np.lib.npyio.NpzFile.__getitem__
+    calls = {}
+    def counted(self,key):
+        calls[key] = calls.get(key,0)+1
+        return original(self,key)
+    monkeypatch.setattr(np.lib.npyio.NpzFile,'__getitem__',counted)
+    arrays = audit.load_packet(buf.getvalue())
+    assert calls == {key:1 for key in z}
+    assert audit.verify_group(arrays,g,old) == audit.verify_group(z,g,old)
+    assert calls == {key:1 for key in z}
 
 
 def bundle_fixture():

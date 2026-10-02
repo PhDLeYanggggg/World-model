@@ -20,6 +20,10 @@ exact replay. A separate scalar/inference reader is being used to verify its
 actual inputs, decisions and metrics before interpretation. Its13 additional
 checks pass; the original40 remain valid. Transfer and independent roles remain
 closed. Local numeric-cache reserve is unchanged.
+The first independent reader was stopped after identifying repeated whole-NPZ
+decompression inside a per-row sum, not a training hang. A separately registered
+reader v2 loads each packet member once, retains all72groups and tolerances, and
+passes14 scoped tests. The completed CREATE experiment is untouched.
 [Execution and recovery record](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/README.md).
 No deployment change.
 
