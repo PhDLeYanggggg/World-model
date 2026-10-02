@@ -15,9 +15,12 @@ A solver-only amendment is registered; the loss, positive form, features,
 partitions, initialization and2% budget stay fixed. The complete first-head
 pilot takes287.27s, peak7.187GB, with exact refit/serialization/inference and230
 scalar checks. All72 fits are now running; no full result or deployment claim.
+Five additional independent boundary tests pass without changing the registered
+model, including unequal-weight leaf curvature and separate SciPy solutions.
 No threshold search or new neural dynamics. These are recording-held tests
 within source localities, not independent held-locality confirmation.
 [Amendment](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/protocol.md),
+[Chinese run and recovery guide](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/reproduction_zh.md),
 [preserved failure](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/failure.md),
 [English evidence note](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v2/manuscript_evidence_note.md).
 

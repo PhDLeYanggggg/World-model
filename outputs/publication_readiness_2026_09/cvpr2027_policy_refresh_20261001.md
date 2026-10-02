@@ -1,5 +1,10 @@
 # CVPR 2027 Policy and Evidence Check
 
+2 October recheck: the official call still lists the same deadlines and pending
+LLM guidance; its Author Guidelines link still returns 404. No newly verified
+format or policy rule changes the submission requirements below. The research
+status in this dated note is historical; consult README_RESULTS for current work.
+
 Fresh check on 1 October 2026: paper registration remains 10 November, full
 submission 16 November, supplementary 23 November, all AoE. Existing internal
 locks of 9 November, 13 November and 20 November remain earlier than those dates.
