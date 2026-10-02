@@ -7,15 +7,21 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Forest decoder control registered; scientific readout pending.**
-The current forest projection can reduce predicted harm together with benefit
-when their sum exceeds the causal disagreement envelope. I am testing this
-specific mechanism with all72 frozen source heads and an alternative projection
-that preserves harm first. Models, inputs, splits and thresholds stay fixed.
-This is not another calibration round or a new neural training result.
-Eleven synthetic/regression checks pass; real-data outcomes are not yet read.
-No independent test access, deployment change or new numerical cache.
-[Frozen protocol](outputs/publication_readiness_2026_09/european_forest_projection_v1/protocol.md).
+**Forest decoder control completed: mechanical optimism exists, safety is not repaired.**
+All 72 frozen source heads replay exactly. Keeping harm before benefit in the
+feasibility projection removes 1,373 selected occurrences, including 626 known
+harmful ones. However, complete support falls from 33 to 25. The four eliminated risk
+violations all become empty selections, and three violations remain. No failed
+group becomes a complete pass. The original predictor is unchanged.
+
+Conservative utility changes by -0.00011864% of full known reference mass, nominal
+95% locality interval [-0.00031138%, +0.00001530%]. Same-query count-matched expected
+utility changes by +0.00041364% [0.00005418%, 0.00086098%], a small development-only
+discrimination signal, not ADE/FDE or deployment improvement. Fourteen scoped
+tests pass; 6,624 scalar/parent and 3,210 aggregate fields are verified. No new
+model was trained, no independent test was accessed, and no array cache added.
+[Conclusions](outputs/publication_readiness_2026_09/european_forest_projection_v1/conclusions.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_forest_projection_v1/README.md).
 
 **Recording-deletion stability completed: rejection is not discrimination.**
 All72 source groups completed with exact replay in162.20s on local arm64 CPU,
