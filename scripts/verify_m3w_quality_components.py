@@ -66,11 +66,31 @@ def verify_cohorts(row):
         for hi, ri, field in ((1, 2, 'all_selected_risk_upper'), (4, 3, 'easy_selected_risk_upper')):
             value = (moments[hi]+u)/moments[ri] if moments[ri] > 0 else None
             checks += equal(value, full[field])
+        easy_benefit = math.fsum(c['known_easy_benefit_mass'] for c in cs)
+        checks += equal(easy_benefit, full['selected_known_easy_benefit_mass'])
+        numerator = moments[4]-easy_benefit+u
+        if full['unknown_rows']:
+            numerator = max(numerator, 0.)
+        er = full['full_known_easy_reference_mass']
+        easy_upper = numerator/er if er > 0 else None
+        checks += equal(easy_upper, full['easy_degradation_upper'])
+        risk, easy_risk = full['all_selected_risk_upper'], full['easy_selected_risk_upper']
+        reasons = []
+        if risk is None or easy_risk is None: reasons.append('selected_reference_undefined')
+        if risk is not None and risk > .02+1e-12: reasons.append('all_positive_harm_upper_exceeds_budget')
+        if easy_risk is not None and easy_risk > .02+1e-12: reasons.append('easy_positive_harm_upper_exceeds_budget')
+        if moments[0]-moments[1]-u <= 0: reasons.append('positive_completion_utility_not_supported')
+        if easy_upper is None or easy_upper > .02+1e-12: reasons.append('easy_preservation_not_supported')
+        checks += equal(reasons, full['reasons'])
+        checks += equal(not reasons, full['finite_completion_supported'])
         checks += equal(arm['original_matched']['selected_count'], arm['variant_matched']['selected_count'])
         den = row['result']['full_known_reference_mass']
         matched = 100*(arm['variant_matched']['selected_net_gain_lower_mass']-
                       arm['original_matched']['selected_net_gain_lower_mass'])/den
         checks += equal(matched, arm['matched_utility_difference_percent'])
+        full_contrast = 100*(full['selected_net_gain_lower_mass']-
+                       row['result']['arms']['original']['full']['selected_net_gain_lower_mass'])/den
+        checks += equal(full_contrast, arm['full_utility_difference_percent'])
     return checks
 
 
@@ -115,6 +135,8 @@ def main():
                         prior['quality_minus_original_'+mode+'_utility_percent'])
     result = dict(groups=72, variants_per_group=13, independent_scalar_bootstrap_fields_checked=checks,
                   summary_sha256=sha(PUBLIC/'summary.json'), complete_sha256=sha(PUBLIC/'complete.json'),
+                  verifier_source_sha256=sha(Path(__file__)),
+                  verifier_test_sha256=sha(ROOT/'tests/test_m3w_quality_component_verifier.py'),
                   exact_model_inference_replay=complete['exact_inference_replay'],
                   training=False, independent_confirmation=False)
     payload = json.dumps(result, indent=2)+'\n'; path = PUBLIC/'verification.json'

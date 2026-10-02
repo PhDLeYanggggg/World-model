@@ -25,10 +25,22 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-A frozen component diagnosis is registered next. It will isolate the five cost
-corrections and their projection while preserving the original thresholds. It
-does not train or select a new deployment policy.
-[Protocol](outputs/publication_readiness_2026_09/european_quality_components_v1/protocol.md).
+**The new information helps, but the harm predictions allow unsafe expansion.**
+I completed all 13 fixed component interventions on 72 frozen cost heads.
+Nearly all newly accepted actions had previously failed the easy-risk condition.
+Their known-label selected easy-harm ratio averages 7.13% across the development
+localities, above the unchanged 2% budget. Harm underestimation is the main
+average contributor; benefit and reference corrections are not.
+
+Removing the total-harm correction reduces failures, but still does not restore
+the original risk support. It is a diagnostic, not a deployable shortcut. I will
+test a constrained conditional harm head next, preserving the useful past
+features and original benefit/reference estimates rather than loosening thresholds.
+All frozen inference replays exactly; 14 scoped tests pass. No new model was
+trained in this diagnosis and no independent evaluation was opened.
+[Findings and limitations](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md).
+
+### Preceding Training Result
 
 **Past observation quality helps prediction, but does not yet make selection
 safe.** I completed all 144 paired auxiliary fits on the 72 frozen cost forests.
@@ -44,8 +56,8 @@ increase from seven to 41. Twenty already violate the budget using known labels.
 The information signal is useful; this decision rule is not deployable.
 
 All fits, serialized predictions and readouts reproduce exactly. Checkpoints
-are verified in owned CREATE storage; 19 scoped tests pass. The next step is to
-isolate which benefit/harm/reference corrections cause unsafe switches, while
+are verified in owned CREATE storage; 19 scoped tests pass. The component
+diagnosis above now localizes the unsafe expansion, while
 keeping thresholds and independent evaluation roles unchanged.
 
 **Incomplete labels are not the main explanation for the remaining mistakes.**
@@ -67,9 +79,10 @@ These are exploratory development results, not independent confirmation or a
 deployment upgrade. The detailed ledger retains the negative calibration,
 neighbor-history and relative-target experiments that motivated this check.
 
-- [Latest findings](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/conclusions.md)
-- [Failure analysis](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/failure_analysis.md)
-- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/README.md)
+- [Latest findings](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_quality_components_v1/failure_analysis.md)
+- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_quality_components_v1/README.md)
+- [Preceding paired training result](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/conclusions.md)
 - [Preceding raw-label diagnostic](outputs/publication_readiness_2026_09/european_label_support_v1/conclusions.md)
 - [Complete results ledger](README_RESULTS.md)
 

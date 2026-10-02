@@ -7,12 +7,28 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Frozen quality-component attribution registered; real inference pending.**
-All72 quality heads will be read from immutable owned CREATE checkpoints, with
-only-one and leave-one-out interventions on five cost moments plus the explicit
-preprojection diagnostic. No refit, threshold selection or independent-role
-access. This tests why predictive improvement did not preserve selected risk.
-[Protocol](outputs/publication_readiness_2026_09/european_quality_components_v1/protocol.md).
+**Frozen quality-component attribution completed: harm-driven unsafe expansion.**
+All72 quality heads x13 fixed variants replay exactly; original/quality anchors
+are unchanged. Quality adds22,805 and removes5,827 repeated occurrences.22,679
+additions (99.45%) failed the former easy-risk constraint. Known added easy risk
+is7.1334% (12-locality mean), decomposing into2%-0.9154pp predicted excess
++6.2414pp harm underestimation-0.1926pp reference inflation.299 added outcomes
+are unknown and separate from this observed ratio.
+
+Removing total-harm correction reduces known-label violations20->3 and upper
+violations41->13, but support25 remains below original33. Benefit/reference-only
+changes are small. Projection adds2,456 and removes60 actions; dropping it does
+not fix risk and can violate moment constraints. No component intervention was
+selected or deployed; this is not a retrained ablation or an independent result.
+
+Native arm64 full diagnosis134.04s, peak9.38GB.72 owned CREATE checkpoints
+(281.85MB) hash-verified and streamed in memory; no new cache or scheduler job.
+6,624 parent checks,42,624 independent scalar/bootstrap checks,14 scoped tests
+pass. No new training. Next: a separately registered constrained conditional
+harm-head learning control, not another cutoff or global recalibration.
+[Findings](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_quality_components_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_quality_components_v1/README.md).
 
 **Past-quality auxiliary completed: predictive information, failed safety screen.**
 All144 paired fits completed with exact refits, serialization and inference replay.
