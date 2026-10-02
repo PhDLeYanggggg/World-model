@@ -14,9 +14,12 @@ all72 frozen heads and the original2%risk budget are retained. Empty selection
 and undefined reference mass cannot pass. This is not another neural fit,
 fixed-subset loss, reference-head freeze or target threshold search.
 [Protocol and falsification criteria](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/protocol.md).
-Forty scoped tests pass. Real source recalibration is not_run at registration;
-transfer and independent roles remain closed. Inputs will stream directly to
-CREATE because local numeric-cache disk reserve is not met. No deployment change.
+Forty scoped tests pass. All72 source packets (38,137,774bytes) streamed directly
+to CREATE and verified. Job37714473 is submitted; the first scheduler observation
+is PENDING, not a result. Real source recalibration is not yet verified; transfer
+and independent roles remain closed. Local numeric-cache reserve is unchanged.
+[Execution and recovery record](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/README.md).
+No deployment change.
 
 **Complete selected-pool diagnostic:** CREATE job37702155 finished COMPLETED0:0
 in2m04s. All216 transfer views replay exactly, matching144 existing local groups.
