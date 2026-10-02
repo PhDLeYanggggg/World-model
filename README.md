@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am now testing a conditional harm head that cannot obtain small harm estimates
+by clipping negative corrections to zero. It preserves each frozen leaf's
+training mean and leaves the original benefit/reference models unchanged before
+the common feasibility projection. The real pilot passed exact fitting and
+inference replay; all72 fixed development heads are being trained. This is a
+test of a combined output-form and loss change, not yet a safety improvement.
+[Training protocol and reproduction](outputs/publication_readiness_2026_09/european_positive_harm_v1/README.md).
+
 **The new information helps, but the harm predictions allow unsafe expansion.**
 I completed all 13 fixed component interventions on 72 frozen cost heads.
 Nearly all newly accepted actions had previously failed the easy-risk condition.
