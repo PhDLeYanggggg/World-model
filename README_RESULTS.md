@@ -7,6 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Frozen positive-harm error decomposition registered; execution pending.**
+The next read-only replay will separate moment contributions, projection effects,
+selected/unselected errors and TRAIN support/rate tails across all72 heads.
+No fitting, policy change, cutoff search or independent-role access. Six new
+targeted tests pass, including independent scalar algebra and frozen inference.
+[Protocol](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v1/protocol.md).
+
 **Positive conditional harm completed: partial repair, advance screen fails.**
 All72 fresh fits and exact refits completed. The train-mean-preserving positive
 link removes negative-to-zero harm predictions, freezing raw B/R/ER and tree
