@@ -7,14 +7,22 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Next registered source control: recording-deletion stability.** Reuse all72
-frozen heads and test sensitivity to removing an additional calibration recording,
-always excluding the evaluated recording. Compare lost benefit/harm and a
-count-matched expected-utility control; no future-availability gate. A metadata
-audit found48/72heads have only two source recordings, so unsupported nested
-calibration must remain visible. Implementation has11 scoped checks passing;
-real calibration is not_run pending the registered pilot. No deployment change.
-[Protocol and execution](outputs/publication_readiness_2026_09/european_recording_stability_v1/README.md).
+**Recording-deletion stability completed: rejection is not discrimination.**
+All72 source groups completed with exact replay in162.20s on local arm64 CPU,
+peak0.924GB memory. Primary complete support falls23->8; all10,692 removed
+occurrences lack nested calibration support. No supported parent action is
+rejected, and all6 original risk-violating views remain. Conservative utility
+changes-0.05140487% of full known reference mass, nominal95% locality interval
+[-0.11461002%,-0.00736735%]; same-recording count-matched utility lift is zero
+to numerical precision. This is not an ADE/FDE contrast or deployment improvement.
+
+The secondary iterative-calibration arm also fails. Independent aggregate
+reduction checks1802 fields and3371 old anchors;16 scoped tests pass. No new
+neural network, transfer run, local numerical array cache or CREATE job.
+Calibration-only iteration is not supported; return to conditional-cost
+representation/supervision with prior feature/loss controls retained.
+[Conclusions](outputs/publication_readiness_2026_09/european_recording_stability_v1/conclusions.md)
+and [execution](outputs/publication_readiness_2026_09/european_recording_stability_v1/README.md).
 
 **Selected-set calibration completed and numerically verified: no repair.**
 CREATE job37714473 completed72 source calibration groups with exact replay.
