@@ -7,6 +7,15 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Fixed-routing leaf refit registered; real-data result pending.**
+The next paired learning control keeps all tree branches and reference-cost
+outputs fixed, and fits envelope-relative benefit/harm values inside each leaf.
+It tests whether mixing motion scales harms the cost estimator upstream of the
+decoder. This is terminal-value learning, not new neural training, tree search
+or threshold tuning. All 72 original source heads are retained, independent
+roles stay closed, and existing deployment is unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_leaf_geometry_v1/protocol.md).
+
 **Forest decoder control completed: mechanical optimism exists, safety is not repaired.**
 All 72 frozen source heads replay exactly. Keeping harm before benefit in the
 feasibility projection removes 1,373 selected occurrences, including 626 known
