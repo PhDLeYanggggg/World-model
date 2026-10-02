@@ -7,6 +7,15 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Next registered source control: recording-deletion stability.** Reuse all72
+frozen heads and test sensitivity to removing an additional calibration recording,
+always excluding the evaluated recording. Compare lost benefit/harm and a
+count-matched expected-utility control; no future-availability gate. A metadata
+audit found48/72heads have only two source recordings, so unsupported nested
+calibration must remain visible. Implementation has11 scoped checks passing;
+real calibration is not_run pending the registered pilot. No deployment change.
+[Protocol and execution](outputs/publication_readiness_2026_09/european_recording_stability_v1/README.md).
+
 **Selected-set calibration completed and numerically verified: no repair.**
 CREATE job37714473 completed72 source calibration groups with exact replay.
 A separate inference/arithmetic implementation verified19,872 scalar quantities,
