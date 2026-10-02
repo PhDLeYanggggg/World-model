@@ -7,6 +7,15 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Cost-aligned positive-harm control registered; real fitting pending.**
+The next run keeps the positive mean-preserving model form and all input,
+partition and risk rules fixed, changing only the fitted loss to a signed-score
+quadratic surrogate. Six targeted tests pass, including an independent optimizer,
+cross-term identity, exact replay and unknown-label exclusion. It will compare
+all72 new heads against original/additive/Poisson controls. This is not another
+threshold search or a claim of new neural dynamics.
+[Protocol](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/protocol.md).
+
 **Frozen positive-harm diagnosis completed: easy-harm tails dominate error.**
 All72 heads replay with unchanged predictions, actions and registered scores.
 Easy harm explains90.87% of the+0.136161 signed-score MSE increase. Raw error
