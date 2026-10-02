@@ -7,14 +7,22 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Frozen positive-harm diagnosis: precision amendment registered.**
-The v1 full replay stopped on head4 at a5.32e-9 discrepancy with the original
-score reader; its34.22s pilot and first3 reports are preserved. Label-transform
-dtype and scale-product rounding were isolated. The versioned v2 amendment
-retains the original arithmetic without widening tolerances or changing any
-model, prediction, action or gate. Eight targeted tests pass; full replay is
-not yet complete. No new training, threshold search or independent-role access.
-[Amendment](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v2/protocol.md).
+**Frozen positive-harm diagnosis completed: easy-harm tails dominate error.**
+All72 heads replay with unchanged predictions, actions and registered scores.
+Easy harm explains90.87% of the+0.136161 signed-score MSE increase. Raw error
+change is+5.029890; feasibility projection substantially reduces it. Almost all
+remaining increase is outside selected cohorts. Easy-harm ratios>4 and low
+TRAIN event support are implicated, but overlapping strata are not causal
+ablation and selected-policy risk failures remain unresolved.
+
+Full245.54s, peak10.223GB;11,592 scalar and9,209 independent aggregate/bootstrap
+checks. Eight scoped tests pass. v1's5.32e-9 mismatch was scale-product rounding,
+not a changed model. Real labels are float64; the float32-label case is only a
+regression guard. v1 and the interrupted48-head run are preserved. No new
+training, cutoff search, independent-role access or deployment promotion.
+Next: same positive form with a separately registered cost-aligned training loss.
+[Findings](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v2/conclusions.md),
+[reproduction](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v2/README.md).
 
 **Positive conditional harm completed: partial repair, advance screen fails.**
 All72 fresh fits and exact refits completed. The train-mean-preserving positive

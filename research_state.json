@@ -1,7 +1,7 @@
 {
-  "current_evidence_record": "cvpr2027_research_track.european_positive_harm_v1",
+  "current_evidence_record": "cvpr2027_research_track.european_positive_harm_diagnostic_v2",
   "active_experiment": "european_positive_harm_diagnostic_v2",
-  "next_research_action": "Positive harm full72 is a partial repair but fails cost accuracy and upper-risk criteria. First replay frozen original/additive/positive predictions to decompose signed-score errors by H/EH/reference/projection, selected vs unselected regions, TRAIN harm support and target magnitude; include all sources, with110/124 diagnostic slices. Separate two known-label112 violations from nine unknown-completion failures. Only if decomposition supports loss misalignment, register a cost-aligned positive-loss refit with form/features/routing/splits/2%budget fixed. No threshold search, unknown-outcome exclusion, independent-role access, Stage5C or SMC. Goal remains active; not submission ready.",
+  "next_research_action": "Full72 frozen decomposition verified: easy harm explains90.87% of cost-error increase; >4 rates and low TRAIN support implicated; projection mitigates, and most error is unselected. Test cost-aligned squared signed-score surrogate with the same mean-preserving positive link, frozen raw B/R/ER and forest routing, features, partitions and2%budget. Preserve known/unknown selected-risk failures and compare cached Poisson, additive and original controls. No threshold search, future filtering, unknown exclusion or independent-role access. Stage5C/SMC off; goal active, not submission ready.",
   "audit_delegation": {
     "user_authorized_routine_research_audits_and_repairs": true,
     "routine_user_reapproval_required": false,
@@ -13,7 +13,17 @@
   },
   "cvpr2027_research_track": {
     "european_positive_harm_diagnostic_v2": {
-      "status": "precision_amendment_registered_real_replay_pending",
+      "status": "completed72_frozen_replays_easy_harm_tail_error_diagnosed",
+      "registration_commit": "59f41b52",
+      "full_seconds": 245.53569295804482,
+      "full_peak_RSS_bytes": 10222796800,
+      "source_heads": 72,
+      "independent_scalar_checks": 11592,
+      "independent_scalar_bootstrap_checks": 9209,
+      "easy_harm_share_of_error_increase": 0.908681669144957,
+      "raw_MSE_change": 5.0298902441250535,
+      "final_MSE_change": 0.13616104474748916,
+      "actual_v1_numerical_cause": "float32_scale_product_rounding_real_targets_float64",
       "targeted_tests_passed": 8,
       "new_training": false,
       "independent_roles_read": false,
