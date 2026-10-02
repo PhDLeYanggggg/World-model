@@ -7,25 +7,31 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Source-selected-set control registered:** the next bounded experiment refits
-the existing component margins on the policy's actual retained source pool,
-instead of fitting once on its original eligible pool. Whole-recording OOF,
-all72 frozen heads and the original2%risk budget are retained. Empty selection
-and undefined reference mass cannot pass. This is not another neural fit,
-fixed-subset loss, reference-head freeze or target threshold search.
-[Protocol and falsification criteria](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/protocol.md).
-Forty scoped tests pass. All72 source packets (38,137,774bytes) streamed directly
-to CREATE and verified. Job37714473 has now completed0:0 in2m10s and reports72-group
-exact replay. A separate scalar/inference reader is being used to verify its
-actual inputs, decisions and metrics before interpretation. Its13 additional
-checks pass; the original40 remain valid. Transfer and independent roles remain
-closed. Local numeric-cache reserve is unchanged.
-The first independent reader was stopped after identifying repeated whole-NPZ
-decompression inside a per-row sum, not a training hang. A separately registered
-reader v2 loads each packet member once, retains all72groups and tolerances, and
-passes14 scoped tests. The completed CREATE experiment is untouched.
+**Selected-set calibration completed and numerically verified: no repair.**
+CREATE job37714473 completed72 source calibration groups with exact replay.
+A separate inference/arithmetic implementation verified19,872 scalar quantities,
+864 decision hashes and168 summary/bootstrap checks. Forecasts were reused with
+hash verification; calibration and evaluation were newly computed. No new
+neural network or forest was trained.
+
+Primary joint source-OOF complete support remains23/72; defined easy-risk views
+fall30->27. Conservative utility changes by-0.00678063% of full known reference
+mass, nominal95% locality interval[-0.01707456%,-0.00012607%]. This is not FDE
+improvement. Three remaining risk failures reflect unknown-label completion
+support; one fully observed retained set has6.9158% positive harm/reference
+against the unchanged2%budget. Fewer retained samples did not ensure lower risk.
+[Results](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/conclusions.md)
+and [failure decomposition](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/failure_analysis.md).
+
+The readout's repeated-NPZ-decompression defect was fixed and registered
+separately, without modifying the completed experiment. Reader v2 passes14 scoped
+tests;40 unchanged scientific/runner checks remain valid. No full historical
+test-suite claim. Only181,801bytes of aggregate numerical evidence were collected;
+no local array cache was added below the10GiB reserve. Transfer and independent
+roles remain closed, deployment unchanged, Stage5C and SMC off. Next: compare
+source-recording decision stability with prior causal-support/cross-head controls
+before proposing a new source-only learning experiment.
 [Execution and recovery record](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/README.md).
-No deployment change.
 
 **Complete selected-pool diagnostic:** CREATE job37702155 finished COMPLETED0:0
 in2m04s. All216 transfer views replay exactly, matching144 existing local groups.

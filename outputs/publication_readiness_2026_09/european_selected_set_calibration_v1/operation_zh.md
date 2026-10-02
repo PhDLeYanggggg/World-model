@@ -42,6 +42,11 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python scripts/verify_m3w_selected_s
 另一研究团队的独立复现。调度器完成、代码测试通过、算术一致和方法假设成立是
 四件不同的事。
 
+本次 v2 已实际核验成功：19,872 项标量、864 个决策哈希和 168 项汇总/置信区间
+检查一致。首次核验器的逐行重复解压问题已单独修复并登记，不是修改实验来获得
+有利结果。主对照完整通过数仍为 23/72，效用下降；详见
+[结论](conclusions.md)与[失败分类](failure_analysis.md)。没有升级模型部署。
+
 针对性工程检查：
 
 ```bash

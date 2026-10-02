@@ -16,13 +16,33 @@ fixed-subset loss or reference-head freeze is not being repeated.
 - Local numerical array cache: none added;10GiB reserve unchanged.
 - CREATE job:37714473,4CPU/8GiB/1hour, isolated M3W runtime.
 - Latest scheduler observation: COMPLETED0:0 in2m10s;72-group replay reported.
-- Independent arithmetic/inference reader:13 additional tests passed; real
-  input/output verification pending. Initial summary is not a deployment claim.
+- Independent arithmetic/inference reader v2: real verification passed with
+  19,872 scalar comparisons,864 action hashes and168 summary/bootstrap checks.
+  [Verification receipt](readout_verification.json).
 - Reader v2:14 tests passed after fixing repeated per-row NPZ decompression;
   [repair record](readout_io_repair.md). The completed experiment is unchanged.
 - New neural training: not_run; this experiment fits empirical calibrators only.
 - Transfer/independent-role evaluation: not_run and deliberately excluded.
 - Deployment: unchanged. Stage5C and SMC off.
+
+## Result
+
+The primary joint source-OOF complete support remains23/72. Defined easy-risk
+coverage declines30->27 and conservative utility decreases; the nominal
+12-locality bootstrap interval excludes zero in the negative direction. This
+is not a successful method repair. [Full results](conclusions.md),
+[failure analysis](failure_analysis.md), [remaining research gap](project_gap.md)
+and [Chinese operation guide](operation_zh.md).
+
+Four nonempty joint failures remain: three cannot support the2%budget because
+of unknown-label completion mass; one violates it with fully observed labels.
+Unknown upper bounds are not observed error rates. Transfer for this rejected
+arm was not run. Original registration,72heads,OOF roles and2%budget are unchanged.
+
+The light aggregate package totals181,801bytes. The receipt's
+`remote_complete_sha256` hashes sorted, parsed JSON rather than remote file bytes;
+the summary hash is the remote summary file's byte hash. Numerical agreement is
+independent implementation checking, not replication by an independent team.
 
 ## Run and Inspect
 
