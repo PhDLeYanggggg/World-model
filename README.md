@@ -25,12 +25,23 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-A paired past-quality training experiment is now running. Its real two-arm pilot
-reproduces learned parameters and predictions exactly within local resources;
-the full comparison requires 144 auxiliary fits. I am testing the complete fixed
-past-quality feature set against a within-recording shuffled-feature control,
-without changing the risk budget or using future quality at inference.
-[Registered experiment](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/protocol.md).
+**Past observation quality helps prediction, but does not yet make selection
+safe.** I completed all 144 paired auxiliary fits on the 72 frozen cost forests.
+The actual past-quality features outperform a within-recording shuffled control,
+with no future-quality input or change to the risk budget.
+
+Validation cost error decreases, and conservative utility improves even when
+each recording/frame has the same intervention count: +0.0618% of full known
+reference mass versus the original model, nominal interval [0.0204%, 0.1074%].
+This is a decision-utility contrast, not an ADE/FDE improvement. However, complete
+risk support falls from 33 to 21 groups, and selected easy-risk upper violations
+increase from seven to 41. Twenty already violate the budget using known labels.
+The information signal is useful; this decision rule is not deployable.
+
+All fits, serialized predictions and readouts reproduce exactly. Checkpoints
+are verified in owned CREATE storage; 19 scoped tests pass. The next step is to
+isolate which benefit/harm/reference corrections cause unsafe switches, while
+keeping thresholds and independent evaluation roles unchanged.
 
 **Incomplete labels are not the main explanation for the remaining mistakes.**
 After a relative-target refit failed to improve safety, I traced the frozen
@@ -43,19 +54,18 @@ equal weighting across the localities with defined harm, with a nominal 95%
 interval of [61.1%, 84.2%]. Four complete-label groups still exceed the unchanged
 2% selected-harm budget. Dropping incomplete trajectories would not solve this.
 
-Some past trajectory-quality signals are associated with mistakes. My next test
-will ask whether they actually improve risk prediction under the same data
-partitions, rather than use future label quality to filter difficult cases.
-That model has not been trained yet. The completed diagnostic reused frozen
-models, replayed the full analysis, and passed 19 scoped tests.
+The completed diagnostic reused frozen models, replayed the full analysis, and
+passed 19 scoped tests. It motivated the paired training experiment above;
+neither experiment filters cases using future label quality.
 
 These are exploratory development results, not independent confirmation or a
 deployment upgrade. The detailed ledger retains the negative calibration,
 neighbor-history and relative-target experiments that motivated this check.
 
-- [Latest findings](outputs/publication_readiness_2026_09/european_label_support_v1/conclusions.md)
-- [Failure analysis](outputs/publication_readiness_2026_09/european_label_support_v1/failure_analysis.md)
-- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_label_support_v1/README.md)
+- [Latest findings](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/conclusions.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/failure_analysis.md)
+- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/README.md)
+- [Preceding raw-label diagnostic](outputs/publication_readiness_2026_09/european_label_support_v1/conclusions.md)
 - [Complete results ledger](README_RESULTS.md)
 
 ## Fixed-Upstream Seed Control

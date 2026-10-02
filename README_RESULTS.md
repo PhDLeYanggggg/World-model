@@ -7,17 +7,34 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Past-quality auxiliary: real paired pilot passed; full training running.** The test
-fits centered seven-feature regressions inside the 72 frozen forests' leaves.
+**Past-quality auxiliary completed: predictive information, failed safety screen.**
+All144 paired fits completed with exact refits, serialization and inference replay.
+The test fits centered seven-feature regressions inside the72 frozen forests' leaves.
 A within-training-recording permutation is the matched placebo control; targets,
 branches, partitions, thresholds and the 2% risk budget remain unchanged.
 No future quality or sample filtering. This tests information value, not whether
 adding parameters can lower training loss.
-The two-arm pilot completed in 72.99 seconds with exact refit and inference,
-peak 6.45 GB RAM. All 72 source groups are now running locally, with weights in
-owned CREATE storage and no new local numeric cache. No performance gate is
-claimed from the pilot; all 144 registered auxiliary fits remain required.
-[Protocol](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/protocol.md).
+Versus original, normalized signed-score MSE changes -0.035493, nominal95% locality
+CI[-0.067255,-0.011377]. Conservative full utility changes +0.287244% of full known
+reference mass [0.126543,0.490630]; same-query count-matched utility changes
++0.061773% [0.020429,0.107359]. All three analogous contrasts versus placebo also
+support quality. These are development cost/utility results, not ADE/FDE gains.
+
+Complete support falls33->21 and selected easy-risk upper violations rise7->41;
+known-label violations rise4->20. Selected unknown occurrences rise918->1143.
+Even count matching leaves21 upper violations versus6 for original, although
+known-label violations are3 in each matched arm. The registered advance screen
+fails: **no transfer or deployment upgrade**. The worst quality upper1030.81% is
+a completion bound dominated by unknown outcomes, not observed harm; known-label
+failures also exist and are not excused by preserving whole-easy average error.
+
+Full native-arm64 run690.84s, peak9.43GB, all144 remote checkpoints563.74MB verified.
+No new local numeric cache or Slurm jobs. 13,248 scalar/parent checks,440 independent
+aggregate/bootstrap checks and19 scoped tests pass (15 unchanged plus4 new).
+Current evidence remains exposed-source development; independent roles closed.
+[Conclusions](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/conclusions.md),
+[failure decomposition](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/README.md).
 
 **Raw-label linkage completed: missing labels do not explain most selected harm.**
 All 318,969 source rows and 3,221,201 valid future coordinate labels match the
@@ -30,8 +47,8 @@ worst ratio of 7.6756%. There is no detected packing mismatch or safety repair.
 Past motion residual and dense-prefix support show within-query associations;
 most other past-proxy intervals overlap zero. Future confidence/box variation
 are diagnostic only, not inference inputs or proof of annotation noise. Complete
-labels do not certify tracker identity. The next train-only test adds the fixed
-past-quality bundle; it has not run. No sample filtering or label correction.
+labels do not certify tracker identity. The subsequent train-only test of the
+fixed past-quality bundle is now complete above. No sample filtering or label correction.
 
 Nineteen scoped tests, full raw/inference/readout replay, 504 model binding
 checks and 1,786 independent scalar checks pass. No new training or deployment;
