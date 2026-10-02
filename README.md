@@ -25,39 +25,31 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-The next registered diagnostic measures how retained and removed harm/reference
-mass differs within source recordings and after locality transfer. It reuses
-all frozen policies, with no new model, threshold search or independent-role
-opening. All 72 source groups have completed and replayed exactly; transferred
-accounting is running and is not yet a completed result.
-[Protocol](outputs/publication_readiness_2026_09/european_selected_pool_v1/protocol.md).
+**Incomplete labels are not the main explanation for the remaining mistakes.**
+After a relative-target refit failed to improve safety, I traced the frozen
+models' decisions back to the original recordings. All 318,969 source rows and
+their available future coordinates match the tracker exports. This rules out a
+detected packing error, but does not establish that the tracker labels are correct.
 
-**Source-only calibration reduces coverage, but does not solve selected risk.**
-I fitted 72 recording-level calibrators on frozen cost heads, comparing harm-only,
-reference-only and joint adjustments. Whole-recording cross-fitting keeps each
-source screening recording out of its own calibration. All 216 transferred
-action sets were frozen before their outcome readout.
+Most observed harm occurs even when all 12 future labels are present: 73.1% after
+equal weighting across the localities with defined harm, with a nominal 95%
+interval of [61.1%, 84.2%]. Four complete-label groups still exceed the unchanged
+2% selected-harm budget. Dropping incomplete trajectories would not solve this.
 
-Joint calibration reduces easy selected-risk failures from 18/90 to 6/60 defined
-directions, but undefined directions increase from 126 to 156. At matched
-intervention counts, ADE improvement over the unchanged parent is **-0.00309%**
-(nominal locality 95% interval [-0.00567%, -0.00104%]). The worst selected risk
-is still 2.278%, above the unchanged 2% budget. This is not a deployment upgrade.
+Some past trajectory-quality signals are associated with mistakes. My next test
+will ask whether they actually improve risk prediction under the same data
+partitions, rather than use future label quality to filter difficult cases.
+That model has not been trained yet. The completed diagnostic reused frozen
+models, replayed the full analysis, and passed 19 scoped tests.
 
-One direction illustrates the problem: switching less increases actual selected
-risk from 1.65% to 2.10%. The retained group changes, so conservative corrections
-to predictions do not necessarily make that group's harm/reference ratio safe.
-The next diagnostic will separate this selection effect from cross-locality
-drift, using existing source cross-fit assets before fitting another policy.
+These are exploratory development results, not independent confirmation or a
+deployment upgrade. The detailed ledger retains the negative calibration,
+neighbor-history and relative-target experiments that motivated this check.
 
-All 72 calibrators and the full readout replay exactly; 31 scoped tests pass.
-These are exposed-development results, not independent confirmation or a
-conformal safety guarantee. The deployment floor and independent roles remain
-unchanged. No new neural model was trained in this calibration experiment.
-
-- [Component calibration results](outputs/publication_readiness_2026_09/european_component_calibration_v1/results.md)
-- [Failure mechanism and next diagnostic](outputs/publication_readiness_2026_09/european_component_calibration_v1/failure_analysis.md)
-- [Design and reproduction](outputs/publication_readiness_2026_09/european_component_calibration_v1/operation.md)
+- [Latest findings](outputs/publication_readiness_2026_09/european_label_support_v1/conclusions.md)
+- [Failure analysis](outputs/publication_readiness_2026_09/european_label_support_v1/failure_analysis.md)
+- [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_label_support_v1/README.md)
+- [Complete results ledger](README_RESULTS.md)
 
 ## Fixed-Upstream Seed Control
 

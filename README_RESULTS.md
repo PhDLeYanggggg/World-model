@@ -7,12 +7,25 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Label-support diagnostic registered; results pending.** The next experiment
-links all72 frozen forest decisions to original tracker rows and the existing
-observation-quality audit. It checks incomplete future supervision, temporal
-sign sensitivity and quality-proxy associations, without changing labels,
-inference features, thresholds or deployment. Independent roles stay closed.
-[Protocol](outputs/publication_readiness_2026_09/european_label_support_v1/protocol.md).
+**Raw-label linkage completed: missing labels do not explain most selected harm.**
+All 318,969 source rows and 3,221,201 valid future coordinate labels match the
+centers reconstructed from raw tracker records.
+The 72 frozen heads replay exactly. Complete future labels account for 73.11% of
+selected harm, nominal locality interval [61.05%, 84.16%]; the pooled share is
+66.49%. Four complete-label group ratios still violate the 2% budget, with a
+worst ratio of 7.6756%. There is no detected packing mismatch or safety repair.
+
+Past motion residual and dense-prefix support show within-query associations;
+most other past-proxy intervals overlap zero. Future confidence/box variation
+are diagnostic only, not inference inputs or proof of annotation noise. Complete
+labels do not certify tracker identity. The next train-only test adds the fixed
+past-quality bundle; it has not run. No sample filtering or label correction.
+
+Nineteen scoped tests, full raw/inference/readout replay, 504 model binding
+checks and 1,786 independent scalar checks pass. No new training or deployment;
+independent roles remain closed. All reports are source-development evidence.
+[Conclusions](outputs/publication_readiness_2026_09/european_label_support_v1/conclusions.md)
+and [execution details](outputs/publication_readiness_2026_09/european_label_support_v1/README.md).
 
 **Fixed-routing leaf training completed: relative targets do not repair safety.**
 All 72 heads were refitted and exactly replayed while preserving tree branches,
