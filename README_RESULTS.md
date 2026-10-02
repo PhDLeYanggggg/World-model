@@ -7,6 +7,14 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Past-quality auxiliary registered; training pending.** The next paired test
+fits centered seven-feature regressions inside the 72 frozen forests' leaves.
+A within-training-recording permutation is the matched placebo control; targets,
+branches, partitions, thresholds and the 2% risk budget remain unchanged.
+No future quality or sample filtering. This tests information value, not whether
+adding parameters can lower training loss.
+[Protocol](outputs/publication_readiness_2026_09/european_past_quality_auxiliary_v1/protocol.md).
+
 **Raw-label linkage completed: missing labels do not explain most selected harm.**
 All 318,969 source rows and 3,221,201 valid future coordinate labels match the
 centers reconstructed from raw tracker records.
