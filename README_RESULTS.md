@@ -15,9 +15,11 @@ and undefined reference mass cannot pass. This is not another neural fit,
 fixed-subset loss, reference-head freeze or target threshold search.
 [Protocol and falsification criteria](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/protocol.md).
 Forty scoped tests pass. All72 source packets (38,137,774bytes) streamed directly
-to CREATE and verified. Job37714473 is submitted; the first scheduler observation
-is PENDING, not a result. Real source recalibration is not yet verified; transfer
-and independent roles remain closed. Local numeric-cache reserve is unchanged.
+to CREATE and verified. Job37714473 has now completed0:0 in2m10s and reports72-group
+exact replay. A separate scalar/inference reader is being used to verify its
+actual inputs, decisions and metrics before interpretation. Its13 additional
+checks pass; the original40 remain valid. Transfer and independent roles remain
+closed. Local numeric-cache reserve is unchanged.
 [Execution and recovery record](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/README.md).
 No deployment change.
 

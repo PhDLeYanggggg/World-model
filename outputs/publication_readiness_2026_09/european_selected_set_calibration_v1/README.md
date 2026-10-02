@@ -15,7 +15,9 @@ fixed-subset loss or reference-head freeze is not being repeated.
 - Source input packets:72,38,137,774bytes; remote byte hashes verified.
 - Local numerical array cache: none added;10GiB reserve unchanged.
 - CREATE job:37714473,4CPU/8GiB/1hour, isolated M3W runtime.
-- First scheduler observation: PENDING, not a model result or failure.
+- Latest scheduler observation: COMPLETED0:0 in2m10s;72-group replay reported.
+- Independent arithmetic/inference reader:13 additional tests passed; real
+  input/output verification pending. Initial summary is not a deployment claim.
 - New neural training: not_run; this experiment fits empirical calibrators only.
 - Transfer/independent-role evaluation: not_run and deliberately excluded.
 - Deployment: unchanged. Stage5C and SMC off.
