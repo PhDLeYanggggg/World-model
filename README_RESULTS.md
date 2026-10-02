@@ -7,6 +7,17 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Source-selected-set control registered:** the next bounded experiment refits
+the existing component margins on the policy's actual retained source pool,
+instead of fitting once on its original eligible pool. Whole-recording OOF,
+all72 frozen heads and the original2%risk budget are retained. Empty selection
+and undefined reference mass cannot pass. This is not another neural fit,
+fixed-subset loss, reference-head freeze or target threshold search.
+[Protocol and falsification criteria](outputs/publication_readiness_2026_09/european_selected_set_calibration_v1/protocol.md).
+Forty scoped tests pass. Real source recalibration is not_run at registration;
+transfer and independent roles remain closed. Inputs will stream directly to
+CREATE because local numeric-cache disk reserve is not met. No deployment change.
+
 **Complete selected-pool diagnostic:** CREATE job37702155 finished COMPLETED0:0
 in2m04s. All216 transfer views replay exactly, matching144 existing local groups.
 The full1080-row summary also replays exactly, with82,080 arithmetic checks and
