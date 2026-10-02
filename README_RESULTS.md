@@ -7,6 +7,13 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
+**Label-support diagnostic registered; results pending.** The next experiment
+links all72 frozen forest decisions to original tracker rows and the existing
+observation-quality audit. It checks incomplete future supervision, temporal
+sign sensitivity and quality-proxy associations, without changing labels,
+inference features, thresholds or deployment. Independent roles stay closed.
+[Protocol](outputs/publication_readiness_2026_09/european_label_support_v1/protocol.md).
+
 **Fixed-routing leaf training completed: relative targets do not repair safety.**
 All 72 heads were refitted and exactly replayed while preserving tree branches,
 source splits and reference predictions. Complete support falls from 33 to 26;
