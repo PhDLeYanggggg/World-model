@@ -7,14 +7,15 @@ or evidence status.
 
 ## Internal Locality-Held Cost Learning (No Deployment Promotion)
 
-**Cost-aligned positive-harm control registered; real fitting pending.**
-The next run keeps the positive mean-preserving model form and all input,
-partition and risk rules fixed, changing only the fitted loss to a signed-score
-quadratic surrogate. Six targeted tests pass, including an independent optimizer,
-cross-term identity, exact replay and unknown-label exclusion. It will compare
-all72 new heads against original/additive/Poisson controls. This is not another
-threshold search or a claim of new neural dynamics.
-[Protocol](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/protocol.md).
+**Cost-aligned control: real pilot exposed and isolated a solver failure.**
+The first tree did not converge with the Gauss-Newton approximation, even at
+2048 iterations. Exact residual curvature solves the same106,960 known TRAIN
+rows in7 iterations under the original1e-7 tolerance. Eight scoped tests pass.
+A solver-only amendment is registered; the loss, positive form, features,
+partitions, initialization and2% budget stay fixed. Full model performance is
+still unmeasured; no deployment claim. No threshold search or new neural dynamics.
+[Amendment](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/protocol.md),
+[preserved failure](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/failure.md).
 
 **Frozen positive-harm diagnosis completed: easy-harm tails dominate error.**
 All72 heads replay with unchanged predictions, actions and registered scores.
