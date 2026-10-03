@@ -7,6 +7,14 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**Registered next: frozen TRAIN-support and tree/ensemble objective diagnosis.**
+All 72 completed cost heads will be replayed without fitting or changing their
+actions. The analysis separates per-tree training loss, raw ensemble error,
+feasibility projection and recording-held error, and describes sparse TRAIN
+harm events and past-quality support. Pilot and full results are pending.
+No independent roles, new policy selection or deployment change.
+[Frozen protocol](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/protocol.md).
+
 **The 72-head cost-loss experiment is complete, but does not pass the advance screen.**
 Changing the positive harm head from Poisson deviance to squared decision cost
 reduces upper-risk failures from 11 to 7. However, signed-score MSE remains worse
