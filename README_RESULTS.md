@@ -7,13 +7,31 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Registered control: TRAIN-identity leaf-quality extension.**
-The next single-factor experiment clips only past-quality coordinates to each
-fixed leaf's TRAIN range before the existing positive cost link. Known TRAIN
-predictions must remain exact. Four original learned/control arms, risk budgets,
-missing-outcome completion and selection rules remain frozen. Pilot/full results
-are pending; this is neither a newly trained model nor a safety guarantee.
-[Protocol](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/protocol.md).
+**TRAIN-identity extension completed: prediction repair, not policy repair.**
+Clipping past-quality coordinates to each fixed leaf's TRAIN range preserves all
+72 heads' known TRAIN predictions exactly. Validation signed-score MSE improves
+by 0.126005 versus the squared-cost head (nominal 95% locality interval
+[-0.246783, -0.030947]) and by 0.021852 versus the original forest. Almost all
+improvement is on unselected rows. Only 10/72 heads change any actions; selected
+occurrences change from 96,720 to 96,718, with the same 926 unknown outcomes.
+
+The four known-label and seven upper-risk violations remain. Worst selected
+easy-risk upper stays 5.7195%, above the original's 5.4058% and the 2% budget.
+Full and same-count utility differences versus the unextended cost head do not
+have strictly positive interval bounds. All four controls are retained; the
+registered advance screen and absolute risk screen both fail. No deployment
+promotion and no new neural training.
+
+Full replay took 426.82 seconds, peak RSS 10.297 GB. Ten focused tests, 21,528
+run-time scalar checks and 12,660 independent scalar/bootstrap checks pass.
+The 72 heads reuse 12 exposed development localities, not 72 independent sites;
+intervals are nominal and not search-adjusted. Next priority is temporal
+benefit/harm target identifiability on existing TRAIN/development data, not
+another threshold sweep. No new study has been started; independent roles stay
+closed.
+[Conclusions](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/conclusions.md),
+[full tables](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/findings.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/reproduction_zh.md).
 
 **Frozen support diagnosis completed: training fit improves, generalization fails.**
 All 72 cost heads improve both raw and projected ensemble TRAIN error, but 43/72
@@ -31,8 +49,8 @@ the original actions, while unknown outcomes cause separate completion failures.
 Full frozen replay took 478.13 seconds, peak RSS 9.219 GB. All predictions and
 actions are unchanged; 25 focused tests, 6,624 policy scalar checks and 13,390
 independent scalar/bootstrap checks pass. No new fitting or deployment promotion.
-Next: isolate TRAIN-defined leaf-quality extrapolation while preserving TRAIN
-predictions, not another cutoff search. Independent roles remain closed.
+The TRAIN-defined extrapolation control is now complete above; it improves
+prediction error without resolving selected-policy risk. Independent roles remain closed.
 [Full diagnosis](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/conclusions.md),
 [failure slices](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/findings.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/reproduction_zh.md).

@@ -181,6 +181,28 @@ and [verification](../european_cost_support_diagnostic_v1/verification.json).
 The diagnostic uses its preregistered bootstrap seed 20261003; nominal intervals
 therefore differ slightly from the parent while fixed scores remain identical.
 
+## TRAIN-Identity Extrapolation Control
+
+A preregistered extension clips each leaf's seven past-quality coordinates to
+its known TRAIN range before the same frozen positive link. All 72 known TRAIN
+predictions and four controls remain exact. Normalized validation signed-score
+MSE changes -0.126005 versus squared cost, nominal 95% locality interval
+[-0.246783, -0.030947], and -0.021852 versus original [-0.057900, -0.000175].
+No-clipping rows have zero change. This intervention supports a contribution
+from extrapolation to prediction error, without identifying a sufficient policy
+repair or a new method-level contribution.
+
+Almost all error reduction is on unselected rows. Only 10/72 heads change any
+actions, with 96,718 selected occurrences versus 96,720 cost and the same 926
+unknown outcomes. Full and matched-count utility differences versus cost do not
+have strictly positive lower bounds. Four known and seven upper-risk failures
+remain; worst upper is still 5.7195%. The strict screen against all four controls
+and the absolute risk screen fail. Transfer and deployment are not promoted.
+
+See [extension conclusions](../european_leaf_quality_extension_v1/conclusions.md)
+and [independent verification](../european_leaf_quality_extension_v1/verification.json).
+No new fitting or neural dynamics training was performed in this extension.
+
 ## Limits on the Paper Claim
 
 Nominal3000 locality bootstrap intervals describe development comparisons after
