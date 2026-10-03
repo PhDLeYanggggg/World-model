@@ -7,24 +7,32 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Cost-aligned control: 36 heads saved; checkpoint transport recovery registered.**
-The first full run stopped in an outbound SSH checkpoint write, not in Torch
-compute. A fresh connection works; all 36 complete remote checkpoints remain.
-A separately tested transport wrapper adds a write deadline and keepalive before
-resuming the same scientific experiment. No completed head is discarded, and the
-blocked wall-clock period is retained in the operational record.
-The first tree did not converge with the Gauss-Newton approximation, even at
-2048 iterations. Exact residual curvature solves the same106,960 known TRAIN
-rows in7 iterations under the original1e-7 tolerance. Eight scoped tests pass.
-A solver-only amendment is registered; the loss, positive form, features,
-partitions, initialization and2% budget stay fixed. The complete first-head
-pilot takes287.27s, peak7.187GB, with exact refit/serialization/inference and230
-scalar checks. The target remains 72 fits; no full result or deployment claim.
-Five additional independent boundary tests pass without changing the registered
-model, including unequal-weight leaf curvature and separate SciPy solutions.
-No threshold search or new neural dynamics. These are recording-held tests
-within source localities, not independent held-locality confirmation.
-[Amendment](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/protocol.md),
+**The 72-head cost-loss experiment is complete, but does not pass the advance screen.**
+Changing the positive harm head from Poisson deviance to squared decision cost
+reduces upper-risk failures from 11 to 7. However, signed-score MSE remains worse
+than the original forest: +0.104153, nominal 95% locality CI [0.018447, 0.221794].
+Worst selected easy-risk upper is 5.7195%, compared with 5.4058% for the original.
+Four known-label failures retain the original actions; three additional upper
+failures require unknown-outcome completion. Neither reference nor new head is
+risk-certified. Full/same-count utility over original is +0.005740%/+0.002701%
+of known reference error mass, not ADE/FDE gains; both trail the learned controls.
+
+All 144 training head-channel losses decrease and all fits converge. This rules
+out unfinished optimization as the explanation for the final result, but does
+not identify a single scientific cause. The next step is a frozen support and
+shape diagnosis, not another threshold search or deployment upgrade.
+
+An SSH write stall interrupted the first invocation after 36 saved heads.
+Transport-only recovery preserved them and completed the remaining 36 in
+1,538.21 seconds, peak RSS 9.427 GB. All 72 remote checkpoints (152.73 MB) were
+rehashed; completed fit/exact-refit work across invocations totals 2,997.06 seconds.
+The long blocked wall-clock period is separately retained. Seventeen focused
+tests and 7,541 independent scalar/bootstrap checks pass. No new local numerical
+cache, Slurm job, neural dynamics training or independent confirmation.
+These are recording-held comparisons within 12 already exposed development
+localities; the bootstrap intervals are nominal and not search-adjusted.
+[Full results](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/failure_analysis.md),
 [Chinese run and recovery guide](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/reproduction_zh.md),
 [transport diagnosis](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/transport_recovery.md),
 [preserved failure](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/failure.md),

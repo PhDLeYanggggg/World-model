@@ -107,7 +107,7 @@ improve. A slice with low TRAIN effective EH support contributes0.123986.
 These groups overlap and cannot be summed as independent causes. Label-based
 overprediction strata are offline diagnostics only, not deployment filters.
 
-## Controlled Loss Repair Being Tested
+## Completed Controlled Loss Repair
 
 The diagnosis motivates a matched loss control, not a new post-hoc threshold.
 We retain the same positive form, features, mean constraint, routing and budgets,
@@ -131,8 +131,27 @@ The first Gauss-Newton pilot failed stationarity even after a TRAIN-only2048-
 iteration probe. Full analytic residual curvature solved the same failed tree
 in7 iterations with the original1e-7 tolerance. A complete first-head pilot then
 passed exact refitting and serialization checks. These are engineering findings.
-The registered72-head experiment is running; no predictive improvement from the
-new objective is claimed in this note.
+The registered 72-head experiment has now completed across two invocations;
+an intervening SSH write failure was repaired without changing the model.
+
+The squared-cost head reduces Poisson upper-risk failures from 11 to 7 and its
+worst upper from 18.028% to 5.719%. However, known-label failures increase from
+2 to 4, and the original forest's worst upper remains lower at 5.406%. The four
+known failures retain the original actions; the other three require unknown
+completion. Cost-original signed MSE increases 0.104153, nominal 95% locality
+interval [0.018447, 0.221794]. Cost-Poisson MSE changes -0.032008 with interval
+[-0.071937, 0.007322], which does not support a stable accuracy advantage.
+
+Full and same-count utility gains over original are +0.005740% and +0.002701%
+of full known reference mass. Both are lower than the additive and Poisson
+controls, and neither is an ADE/FDE improvement percentage. All 144 training
+head-channel losses decrease and all fits meet the original tolerance. Thus the
+controlled loss replacement alone is insufficient in this mean-preserving
+fixed-leaf model, despite improved intervention behavior relative to Poisson.
+The advance screen fails; no transfer, deployment or confirmation is promoted.
+
+See [complete controlled results](../european_cost_harm_newton_v1/conclusions.md)
+and [independent aggregate verification](../european_cost_harm_newton_v1/verification.json).
 
 ## Limits on the Paper Claim
 

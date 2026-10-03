@@ -1,8 +1,9 @@
 # 欧洲开发域成本头：运行、恢复和核查
 
 更新：2026-10-03。本文对应 `european_cost_harm_newton_v1`，不是旧 SDD
-selector 部署教程。首次完整运行在 36 头后遇到 SSH 写入停滞，已保留检查点，
-采用独立登记的传输修复恢复；下列最终核查步骤须在 72 头完成后执行。
+selector 部署教程。首次完整运行在 36 头后遇到 SSH 写入停滞；独立登记的
+传输修复保留了全部检查点，现已完成 72 头和最终核查。实验未过 advance gate，
+不升级部署；见 [完整结果](conclusions.md)。
 
 ## 本轮到底训练什么
 
@@ -42,7 +43,7 @@ CREATE 只使用已授权的 `/users/k24101830/m3w/`。本轮计算在本地，�
 登记提交为 `6160fcea`，真实单头 pilot 记录在 `pilot.json`。不能原地修改登记
 源码、配置或协议后继续训练。修复须保留旧版本并使用新身份。
 
-3 October 传输修复后的恢复入口：
+以下是 3 October 实际使用的恢复入口。该实验现已完成，不应再次启动 run：
 
 ```bash
 env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
@@ -89,6 +90,11 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
 前两组 8 项在真实 pilot 前已通过；最后 5 项于完整训练期间独立补查并通过，
 未修改注册模型。它们涵盖多叶不等权有限差分、独立 SciPy 对照、叶权重尺度、
 零实际伤害与负等价训练目标、迭代耗尽报错。测试通过不等于研究 gate 通过。
+
+恢复时另增加 4 项真实管道传输测试。最终 17 项定向测试和 7,541 项独立
+汇总/bootstrap 检查通过，不代表历史全量 tests 全部重跑。逐 locality 的失败表
+可用 `scripts/summarize_m3w_cost_harm_failures.py` 从已核验的聚合记录复算；
+它不重新训练，也不读取新的科学数据角色。
 
 ## 如何解释结果
 
