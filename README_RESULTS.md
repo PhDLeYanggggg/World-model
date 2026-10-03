@@ -7,20 +7,26 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Cost-aligned control: repaired real pilot passed; full72 training running.**
+**Cost-aligned control: 36 heads saved; checkpoint transport recovery registered.**
+The first full run stopped in an outbound SSH checkpoint write, not in Torch
+compute. A fresh connection works; all 36 complete remote checkpoints remain.
+A separately tested transport wrapper adds a write deadline and keepalive before
+resuming the same scientific experiment. No completed head is discarded, and the
+blocked wall-clock period is retained in the operational record.
 The first tree did not converge with the Gauss-Newton approximation, even at
 2048 iterations. Exact residual curvature solves the same106,960 known TRAIN
 rows in7 iterations under the original1e-7 tolerance. Eight scoped tests pass.
 A solver-only amendment is registered; the loss, positive form, features,
 partitions, initialization and2% budget stay fixed. The complete first-head
 pilot takes287.27s, peak7.187GB, with exact refit/serialization/inference and230
-scalar checks. All72 fits are now running; no full result or deployment claim.
+scalar checks. The target remains 72 fits; no full result or deployment claim.
 Five additional independent boundary tests pass without changing the registered
 model, including unequal-weight leaf curvature and separate SciPy solutions.
 No threshold search or new neural dynamics. These are recording-held tests
 within source localities, not independent held-locality confirmation.
 [Amendment](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/protocol.md),
 [Chinese run and recovery guide](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/reproduction_zh.md),
+[transport diagnosis](outputs/publication_readiness_2026_09/european_cost_harm_newton_v1/transport_recovery.md),
 [preserved failure](outputs/publication_readiness_2026_09/european_cost_aligned_positive_harm_v1/failure.md),
 [English evidence note](outputs/publication_readiness_2026_09/european_positive_harm_diagnostic_v2/manuscript_evidence_note.md).
 

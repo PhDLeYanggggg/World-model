@@ -1,7 +1,8 @@
 # 欧洲开发域成本头：运行、恢复和核查
 
-更新：2026-10-02。本文对应 `european_cost_harm_newton_v1`，不是旧 SDD
-selector 部署教程。完整 72 头训练正在运行；下列最终核查步骤须在完成后执行。
+更新：2026-10-03。本文对应 `european_cost_harm_newton_v1`，不是旧 SDD
+selector 部署教程。首次完整运行在 36 头后遇到 SSH 写入停滞，已保留检查点，
+采用独立登记的传输修复恢复；下列最终核查步骤须在 72 头完成后执行。
 
 ## 本轮到底训练什么
 
@@ -41,17 +42,18 @@ CREATE 只使用已授权的 `/users/k24101830/m3w/`。本轮计算在本地，�
 登记提交为 `6160fcea`，真实单头 pilot 记录在 `pilot.json`。不能原地修改登记
 源码、配置或协议后继续训练。修复须保留旧版本并使用新身份。
 
-完整训练的实际入口：
+3 October 传输修复后的恢复入口：
 
 ```bash
 env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
-  .venv-pytorch/bin/python scripts/run_m3w_cost_harm_newton.py run --resume
+  .venv-pytorch/bin/python scripts/run_m3w_cost_harm_newton_recovery.py run --resume
 ```
 
 不要在同一实验运行中再启动这一命令。首先检查
 `data/stage_cvpr2027_experiments/european_cost_harm_newton_v1/heartbeat.json`
 中的 PID，查看进程是否存在、CPU 时间是否增长，以及 `events.jsonl` 的阶段变化。
-读取超时不代表训练卡死。初始 full-run PID 为 49738，恢复后以新心跳为准。
+读取超时不代表训练卡死。初始 full-run PID 49738 已在确认 SSH 写入停滞后
+退出，恢复后以新心跳为准。修复只增加发送超时和 keepalive，原模型登记不变。
 
 checkpoint 按完整头保存，不是按每棵树或优化器步保存。中断后 `--resume` 会
 核验并跳过已完成的头；正在拟合、尚未保存的头需要重算。先确认旧进程终止，
