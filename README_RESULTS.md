@@ -7,6 +7,14 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**Registered control: TRAIN-identity leaf-quality extension.**
+The next single-factor experiment clips only past-quality coordinates to each
+fixed leaf's TRAIN range before the existing positive cost link. Known TRAIN
+predictions must remain exact. Four original learned/control arms, risk budgets,
+missing-outcome completion and selection rules remain frozen. Pilot/full results
+are pending; this is neither a newly trained model nor a safety guarantee.
+[Protocol](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/protocol.md).
+
 **Frozen support diagnosis completed: training fit improves, generalization fails.**
 All 72 cost heads improve both raw and projected ensemble TRAIN error, but 43/72
 have worse final recording-held validation error. The mean TRAIN projected change
