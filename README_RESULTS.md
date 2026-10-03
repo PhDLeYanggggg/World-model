@@ -7,13 +7,27 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Registered next: frozen TRAIN-support and tree/ensemble objective diagnosis.**
-All 72 completed cost heads will be replayed without fitting or changing their
-actions. The analysis separates per-tree training loss, raw ensemble error,
-feasibility projection and recording-held error, and describes sparse TRAIN
-harm events and past-quality support. Pilot and full results are pending.
-No independent roles, new policy selection or deployment change.
-[Frozen protocol](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/protocol.md).
+**Frozen support diagnosis completed: training fit improves, generalization fails.**
+All 72 cost heads improve both raw and projected ensemble TRAIN error, but 43/72
+have worse final recording-held validation error. The mean TRAIN projected change
+is -0.124240; validation remains +0.104153. This does not support failed training
+optimization or a tree-to-ensemble TRAIN reversal as the explanation.
+
+Easy harm contributes 82.15% of the final error increase. The outside-TRAIN-quality
+slice contributes +0.104975, versus -0.000822 inside; sparse easy-harm events and
+large positive-link rates overlap with this slice. Raw cost tails are extreme
+before feasibility projection. These are associations, not causal ablation.
+Almost all excess MSE is outside the selected cohort. Known risk failures retain
+the original actions, while unknown outcomes cause separate completion failures.
+
+Full frozen replay took 478.13 seconds, peak RSS 9.219 GB. All predictions and
+actions are unchanged; 25 focused tests, 6,624 policy scalar checks and 13,390
+independent scalar/bootstrap checks pass. No new fitting or deployment promotion.
+Next: isolate TRAIN-defined leaf-quality extrapolation while preserving TRAIN
+predictions, not another cutoff search. Independent roles remain closed.
+[Full diagnosis](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/conclusions.md),
+[failure slices](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/findings.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_cost_support_diagnostic_v1/reproduction_zh.md).
 
 **The 72-head cost-loss experiment is complete, but does not pass the advance screen.**
 Changing the positive harm head from Poisson deviance to squared decision cost
@@ -27,8 +41,8 @@ of known reference error mass, not ADE/FDE gains; both trail the learned control
 
 All 144 training head-channel losses decrease and all fits converge. This rules
 out unfinished optimization as the explanation for the final result, but does
-not identify a single scientific cause. The next step is a frozen support and
-shape diagnosis, not another threshold search or deployment upgrade.
+not identify a single scientific cause. The frozen support and shape diagnosis
+above now localizes the failure; it does not upgrade deployment.
 
 An SSH write stall interrupted the first invocation after 36 saved heads.
 Transport-only recovery preserved them and completed the remaining 36 in

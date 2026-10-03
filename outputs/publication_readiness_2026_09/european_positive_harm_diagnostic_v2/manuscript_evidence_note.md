@@ -153,6 +153,34 @@ The advance screen fails; no transfer, deployment or confirmation is promoted.
 See [complete controlled results](../european_cost_harm_newton_v1/conclusions.md)
 and [independent aggregate verification](../european_cost_harm_newton_v1/verification.json).
 
+## Training Fit Versus Recording-Held Generalization
+
+A further frozen replay separates each tree's raw objective, the raw ensemble
+and the projected ensemble. All 72 heads improve all three TRAIN errors. Mean
+projected TRAIN change is -0.124240, nominal locality interval
+[-0.150777, -0.099481]. Saved loss changes are reconstructed to 1.23e-15. Thus
+neither unfinished optimization nor a tree-to-ensemble TRAIN reversal explains
+this run. In contrast, final recording-held error worsens for 43 of 72 heads.
+
+The positive link has extreme unprojected validation tails: the mean raw score
+MSE increase is 12171.294559, reduced by feasibility projection to 0.104153.
+These are cost prediction errors, not executed trajectory errors. EH contributes
+82.15% of the final increase. Rows outside a majority of TRAIN leaf-quality
+boxes contribute +0.104975, versus -0.000822 inside. Low effective TRAIN EH
+support and multiplicative ratios above four overlap with the high-error slice.
+This is descriptive evidence for an extrapolation control, not causal proof.
+
+Almost all excess MSE is outside the selected cohort. The unchanged known-risk
+failures in 112/124 nevertheless show quality-support shift, without uniformly
+zero TRAIN harm support. In 067, unknown-outcome completion remains a distinct
+failure. Improving global prediction error cannot by itself establish safe
+selection. No new fitting or policy selection occurred in this diagnosis.
+
+See [frozen support findings](../european_cost_support_diagnostic_v1/conclusions.md)
+and [verification](../european_cost_support_diagnostic_v1/verification.json).
+The diagnostic uses its preregistered bootstrap seed 20261003; nominal intervals
+therefore differ slightly from the parent while fixed scores remain identical.
+
 ## Limits on the Paper Claim
 
 Nominal3000 locality bootstrap intervals describe development comparisons after
