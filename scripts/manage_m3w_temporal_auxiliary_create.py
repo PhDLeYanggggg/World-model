@@ -18,7 +18,7 @@ REMOTE = '/users/k24101830/m3w/'+NAME
 RUNTIME = '/users/k24101830/m3w/easy_hurdle_runtime_v2'
 HANDOFF = ROOT/'data/stage_cvpr2027_experiments/create_handoff_20260923/observations.json'
 INPUT_CAP = 4*2**30
-PORT_REGISTRATION = PUBLIC/'create_port_registration_v3.json'
+PORT_REGISTRATION = PUBLIC/'create_port_registration_v4.json'
 
 
 def sha(path):
@@ -84,9 +84,12 @@ def register():
               PUBLIC/'create_port_protocol.md', PUBLIC/'create_port_filename_fix.md',
               PUBLIC/'create_port_root_fix.md',
               ROOT/'scripts/repair_m3w_temporal_create_root.py',
-              ROOT/'tests/test_m3w_temporal_root_repair.py']
-    reg = dict(experiment=NAME, execution_revision=3,
-        previous_port_registration_sha256=sha(PUBLIC/'create_port_registration_v2.json'),
+              ROOT/'tests/test_m3w_temporal_root_repair.py',
+              ROOT/'scripts/repair_m3w_temporal_create_shell.py',
+              ROOT/'tests/test_m3w_temporal_shell_repair.py',
+              PUBLIC/'create_shell_fix.md']
+    reg = dict(experiment=NAME, execution_revision=4,
+        previous_port_registration_sha256=sha(PUBLIC/'create_port_registration_v3.json'),
         original_registration_sha256=sha(PUBLIC/'registration.json'),
         original_config_sha256=sha(CONFIG), bindings={str(p.relative_to(ROOT)):sha(p) for p in paths},
         input_cap_bytes=INPUT_CAP, checkpoint_cap_bytes=268435456, disk_reserve_bytes=10737418240,
@@ -241,7 +244,7 @@ if phase=='train':
 home=root.parent.parent;free=int(os.getxattr(home,'ceph.quota.max_bytes'))-int(os.getxattr(home,'ceph.dir.rbytes'))
 assert free>=10737418240+268435456+2097152
 wall='02:00:00' if phase=='pilot' else '12:00:00'
-script='\n'.join(['#!/bin/bash',f'#SBATCH --job-name=m3w_temporal_{phase}', '#SBATCH --account=kcl',
+script='\n'.join(['#!/bin/bash -l',f'#SBATCH --job-name=m3w_temporal_{phase}', '#SBATCH --account=kcl',
  '#SBATCH --partition=cpu','#SBATCH --qos=normal','#SBATCH --ntasks=1','#SBATCH --cpus-per-task=4',
  '#SBATCH --mem=16G',f'#SBATCH --time={wall}',f'#SBATCH --output={root}/{phase}-%j.out',
  f'#SBATCH --error={root}/{phase}-%j.err','#SBATCH --signal=B:TERM@120','set -euo pipefail',

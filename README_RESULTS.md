@@ -35,9 +35,14 @@ locality IDs and stopped before writing any input file. The separately registere
 transport repair passes 22 targeted checks; numerical code is unchanged.
 All **24 TRAIN packets / 72 source-head identities** are now on CREATE, totaling
 440.82 MB. Each packet was checksum-verified during transfer; no large local
-data cache was created. Pilot job **37790290** was last verified pending for
-priority at **14:20 UTC** on October 5. The latest subsequent SSH check timed
-out, so its current training state is unknown; the job has not been resubmitted.
+data cache was created. Access recovered at **15:22 UTC** on October 5. Pilot
+**37790290** is now verified **FAILED, exit 127:0**, after one second: its batch
+shell could not find `module`, before Python or any optimizer update. This is an
+execution failure, not a negative model result. Revision 4 uses the login-shell
+header from earlier successful CREATE jobs. A live environment probe passed;
+95 related tests pass. The failed job's script, intent, receipt and logs will be
+preserved before a separately tracked same-parameter retry.
+[Login-shell repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_shell_fix.md).
 Access recovered after the earlier SSH timeouts. A fresh read-only whole-export
 audit verified all 24 packet hashes, the configuration and executable code.
 Full training has not been submitted, and no new scientific result is claimed.
@@ -45,7 +50,7 @@ The pending pilot's training entry point had the same mounted-root comparison
 defect as the reader. Execution revision 3 fixes that single path comparison;
 83 related tests pass. The registered repair held only the unstarted owned job,
 archived the previous execution bytes and preserved its job ID. Remote repair
-and release both completed; the last observed queue state had no optimizer updates.
+and release both completed; that repair preceded the later shell-startup failure.
 Only one code binding changed in the input manifests; TRAIN packets and the
 scientific protocol did not change. These are execution repairs, not model lift.
 [Training-root repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_root_fix.md).
