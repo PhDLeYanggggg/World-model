@@ -1,6 +1,7 @@
 import hashlib
 import ast
 from pathlib import Path
+import re
 
 import pytest
 from scripts import train_m3w_temporal_auxiliary_portable as port
@@ -62,3 +63,13 @@ def test_packet_bytes_are_stable_and_future_targets_are_separate():
     decoded[3] = decoded[3]+5
     assert port.packet(tuple(decoded)) != port.packet(args)
     port.run.api.core.exact(decoded[0], args[0])
+
+
+def test_receiver_accepts_registered_locality_names_but_rejects_traversal():
+    from scripts import manage_m3w_temporal_auxiliary_create as manager
+    tree = ast.parse(manager.RECEIVER)
+    pattern = next(n.args[0].value for n in ast.walk(tree) if isinstance(n, ast.Call)
+                   and isinstance(n.func, ast.Attribute) and n.func.attr == 'fullmatch')
+    assert re.fullmatch(pattern, 'single0_seed43_controller1_dimensionless_fit_eu-locality-008')
+    for name in ['../bad', '/tmp/bad', 'source/child', 'bad;touch', 'bad\nname']:
+        assert not re.fullmatch(pattern, name)

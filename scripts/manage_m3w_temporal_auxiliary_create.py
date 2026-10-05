@@ -18,6 +18,7 @@ REMOTE = '/users/k24101830/m3w/'+NAME
 RUNTIME = '/users/k24101830/m3w/easy_hurdle_runtime_v2'
 HANDOFF = ROOT/'data/stage_cvpr2027_experiments/create_handoff_20260923/observations.json'
 INPUT_CAP = 4*2**30
+PORT_REGISTRATION = PUBLIC/'create_port_registration_v2.json'
 
 
 def sha(path):
@@ -79,22 +80,25 @@ print(json.dumps(dict(runtime_receipt=r,runtime_accounting=a.stdout.strip(),quot
 def register():
     from scripts.export_m3w_easy_hurdle_create import closure
     paths = closure(ROOT, ['scripts.train_m3w_temporal_auxiliary_portable'])
-    paths += [Path(__file__).resolve(), ROOT/'tests/test_m3w_temporal_auxiliary_portable.py', PUBLIC/'create_port_protocol.md']
-    reg = dict(experiment=NAME, original_registration_sha256=sha(PUBLIC/'registration.json'),
+    paths += [Path(__file__).resolve(), ROOT/'tests/test_m3w_temporal_auxiliary_portable.py',
+              PUBLIC/'create_port_protocol.md', PUBLIC/'create_port_filename_fix.md']
+    reg = dict(experiment=NAME, execution_revision=2,
+        previous_port_registration_sha256=sha(PUBLIC/'create_port_registration.json'),
+        original_registration_sha256=sha(PUBLIC/'registration.json'),
         original_config_sha256=sha(CONFIG), bindings={str(p.relative_to(ROOT)):sha(p) for p in paths},
         input_cap_bytes=INPUT_CAP, checkpoint_cap_bytes=268435456, disk_reserve_bytes=10737418240,
         runtime=RUNTIME, execution_change_only=True, optimizer_unchanged=True,
         split_unchanged=True, validation_selection_unchanged=True, independent_roles_read=False)
-    once(PUBLIC/'create_port_registration.json', reg)
+    once(PORT_REGISTRATION, reg)
     return reg
 
 
 def verify_registration():
-    reg = json.loads((PUBLIC/'create_port_registration.json').read_text())
+    reg = json.loads(PORT_REGISTRATION.read_text())
     for rel, digest in reg['bindings'].items(): assert sha(ROOT/rel) == digest
     assert sha(CONFIG) == reg['original_config_sha256']
     assert sha(PUBLIC/'registration.json') == reg['original_registration_sha256']
-    for rel in [*reg['bindings'], str((PUBLIC/'create_port_registration.json').relative_to(ROOT))]:
+    for rel in [*reg['bindings'], str(PORT_REGISTRATION.relative_to(ROOT))]:
         q = subprocess.run(['git', 'show', 'HEAD:'+rel], cwd=ROOT, capture_output=True)
         assert q.returncode == 0 and q.stdout == (ROOT/rel).read_bytes(), 'Commit registration before transport'
     return reg
@@ -102,7 +106,8 @@ def verify_registration():
 
 def setup(reg):
     bundle = io.BytesIO()
-    bindings = {k:v for k,v in reg['bindings'].items() if k.endswith('.py') and not k.startswith('tests/')}
+    bindings = {k:v for k,v in reg['bindings'].items() if k.endswith('.py') and not k.startswith('tests/')
+                and k != 'scripts/manage_m3w_temporal_auxiliary_create.py'}
     with tarfile.open(fileobj=bundle, mode='w:gz') as tar:
         for rel in bindings:
             raw = (ROOT/rel).read_bytes(); entry = tarfile.TarInfo(rel); entry.size = len(raw)
@@ -140,7 +145,7 @@ while True:
  line=stream.readline(4097)
  if not line:break
  assert len(line)<=4096 and line.endswith(b'\n');header=json.loads(line);name=header['group'];size=header['bytes']
- assert re.fullmatch(r'[A-Za-z0-9_]+',name) and 0<size<=512*2**20
+ assert re.fullmatch(r'[A-Za-z0-9_-]+',name) and 0<size<=512*2**20
  chunks=[];left=size
  while left:
   chunk=stream.read(min(left,1024*1024));assert chunk;chunks.append(chunk);left-=len(chunk)

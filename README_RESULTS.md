@@ -20,6 +20,9 @@ packets are transported; no validation or independent-role rows. Full training
 requires a successful real-data pilot with exact resume and a feasible measured
 resource estimate. At registration there are still zero new optimizer updates.
 No other project environment or job is modified.
+The first transport attempt exposed a filename allowlist bug with hyphenated
+locality IDs and stopped before writing any input file. The separately registered
+transport repair passes 22 targeted checks; numerical code is unchanged.
 [CREATE execution amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_protocol.md),
 [historical resource blocker](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
 
