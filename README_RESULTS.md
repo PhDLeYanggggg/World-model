@@ -7,21 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Execution is resource-blocked, not complete.** On October 5 at 12:26 UTC,
-the registered local admission check still rejects training: about 1.98 GiB
-additional free space is needed while keeping the 10 GiB reserve and checkpoint
-allowance. The small pytest caches cannot resolve the shortfall. CREATE's
-authorized read-only owner query again timed out, so ownership, quota and jobs
-remain unobserved. The known prior inspection PID is gone; no live training
-handle is being waited on. No existing assets were deleted or safety limits
-relaxed. This same condition has persisted for at least three goal turns after
-the independent trainer/readout and manuscript work was completed.
+**CREATE access recovered; the registered experiment is moving to isolated CPU compute.**
+The October 5 12:55 UTC check verified the M3W owner, personal quota (16.25 GB
+remaining), absence of active M3W jobs, and the existing CPU runtime's successful
+optimizer/resume job. Local checkpoint admission still lacks about 2 GiB;
+the 10 GiB reserve remains unchanged. The earlier SSH-timeout receipt is retained
+as historical evidence, not current remote status.
 
-Resume requires sufficient local storage or restored CREATE access followed by
-the existing ownership/quota/job/runtime checks. The next scientific action is
-the registered matched pilot, not another threshold search or document-only
-claim. Routine research authorization remains in place; the goal is not achieved.
-[Resource evidence and resume condition](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
+The new execution wrapper preserves the original optimizer, three arms, 72 source
+heads, fixed update budget and seven-arm readout. Only lossless source TRAIN
+packets are transported; no validation or independent-role rows. Full training
+requires a successful real-data pilot with exact resume and a feasible measured
+resource estimate. At registration there are still zero new optimizer updates.
+No other project environment or job is modified.
+[CREATE execution amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_protocol.md),
+[historical resource blocker](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
 
 **A coherent current manuscript now separates prediction from policy evidence.**
 The new revision preserves the four-site SDD study and incorporates the later
@@ -39,7 +39,7 @@ The draft remains development evidence, not submission-ready or independently
 confirmed. Existing scientific results and deployment are unchanged.
 [Current manuscript and tables](outputs/publication_readiness_2026_09/evidence_manuscript_v3/README.md).
 
-**Matched temporal-auxiliary trainer and fixed readout verified; real fitting awaits storage.**
+**Prior local engineering checks (before CREATE access recovered).**
 The neural cost-head trainer now compares no auxiliary, row-mean auxiliary and
 stepwise auxiliary with identical primary architecture, initialization, sampler
 draws and update budget. Twenty-eight focused tests pass, including exact
@@ -52,8 +52,8 @@ were zero optimizer updates and no validation prediction scoring. The actual
 pilot command stopped at the storage guard, about 1.67 GiB below its required
 free-space level. No real training checkpoint was created.
 
-Formal fitting preserves the existing 10 GiB storage reserve; CREATE SSH also
-remains unobservable. No old assets were removed and no remote jobs changed.
+Formal fitting preserves the existing 10 GiB storage reserve; CREATE SSH was
+unobservable at that attempt. No old assets were removed or remote jobs changed.
 The separate validation readout is now implemented and registered before any
 new validation predictions. It requires all 216 fixed-final heads and all four
 strong controls; incomplete training or missing controls stop the comparison.
