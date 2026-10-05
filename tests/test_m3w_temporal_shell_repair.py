@@ -29,12 +29,16 @@ def fixture(tmp_path, monkeypatch):
         p.write_text(json.dumps(dict(code_bindings={'runner.py': digest})))
         manifests[p.name] = hashlib.sha256(p.read_bytes()).hexdigest()
     (root/'pilot_submission.json').write_text('{"job_id":"37790290"}')
-    (root/'pilot_submission_intent.json').write_text(json.dumps(dict(manifest_sha256=manifests['pilot_input_manifest.json'])))
+    original_manifest = 'b'*64
+    (root/'pilot_submission_intent.json').write_text(json.dumps(dict(manifest_sha256=original_manifest)))
+    previous_repair = dict(file_hashes={'pilot_input_manifest.json': dict(before=original_manifest, after=manifests['pilot_input_manifest.json'])})
+    (root/'execution_v3_repair.json').write_text(json.dumps(previous_repair))
     (root/'pilot.sbatch').write_text('#!/bin/bash\nmodule load python/3.11.6-gcc-13.2.0\npython run --resume\n')
     (root/'pilot-37790290.err').write_text('slurm_script: line 14: module: command not found\n')
     (root/'pilot-37790290.out').write_bytes(b'')
     payload = dict(failed_job_id='37790290', registration_sha256='a'*64,
-                   pilot_manifest_sha256=manifests['pilot_input_manifest.json'], input_manifest_hashes=manifests)
+                   pilot_manifest_sha256=manifests['pilot_input_manifest.json'], input_manifest_hashes=manifests,
+                   root_repair=previous_repair)
     state = dict(accounting='FAILED|127:0', queue='', commands=[])
 
     def command(argv, **_kwargs):
@@ -69,7 +73,7 @@ def test_exact_failure_archived_without_submitting_or_changing_inputs(tmp_path, 
 
 
 @pytest.mark.parametrize('failure', ['running', 'other_error', 'active_job', 'stdout', 'checkpoint', 'heartbeat',
-                                     'full_submission', 'changed_code', 'manifest', 'other_id'])
+                                     'full_submission', 'changed_code', 'manifest', 'other_id', 'changed_repair', 'changed_intent'])
 def test_wrong_failure_or_existing_work_stops_before_mutation(tmp_path, monkeypatch, failure):
     root, payload, state, execute = fixture(tmp_path, monkeypatch)
     if failure == 'running': state['accounting'] = 'RUNNING|0:0'
@@ -83,5 +87,7 @@ def test_wrong_failure_or_existing_work_stops_before_mutation(tmp_path, monkeypa
     elif failure == 'changed_code': (root/'code/runner.py').write_bytes(b'changed')
     elif failure == 'manifest': payload['input_manifest_hashes']['train_input_manifest.json'] = 'b'*64
     elif failure == 'other_id': payload['failed_job_id'] = '1'
+    elif failure == 'changed_repair': (root/'execution_v3_repair.json').write_text('{}')
+    elif failure == 'changed_intent': (root/'pilot_submission_intent.json').write_text('{"manifest_sha256":"unrelated"}')
     with pytest.raises(AssertionError): execute()
     assert (root/'pilot_submission.json').exists() and not (root/'execution_v3_shell_failure').exists()

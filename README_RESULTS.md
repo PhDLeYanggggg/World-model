@@ -40,7 +40,9 @@ data cache was created. Access recovered at **15:22 UTC** on October 5. Pilot
 shell could not find `module`, before Python or any optimizer update. This is an
 execution failure, not a negative model result. Revision 4 uses the login-shell
 header from earlier successful CREATE jobs. A live environment probe passed;
-95 related tests pass. The failed job's script, intent, receipt and logs will be
+97 related tests pass. Revision 5 also verifies the already-recorded manifest
+amendment chain; the first archival attempt stopped safely on that check. The
+failed job's script, intent, receipt and logs will be
 preserved before a separately tracked same-parameter retry.
 [Login-shell repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_shell_fix.md).
 Access recovered after the earlier SSH timeouts. A fresh read-only whole-export

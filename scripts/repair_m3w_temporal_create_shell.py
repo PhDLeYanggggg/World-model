@@ -39,7 +39,10 @@ assert json.loads(raw['pilot_submission.json'])['job_id']==job
 assert raw['pilot.sbatch'].startswith(b'#!/bin/bash\n')
 assert b'module load python/3.11.6-gcc-13.2.0\n' in raw['pilot.sbatch']
 assert b' --resume\n' in raw['pilot.sbatch']
-assert json.loads(raw['pilot_submission_intent.json'])['manifest_sha256']==a['pilot_manifest_sha256']
+previous=json.loads((root/'execution_v3_repair.json').read_text());assert previous==a['root_repair']
+chain=previous['file_hashes']['pilot_input_manifest.json']
+assert json.loads(raw['pilot_submission_intent.json'])['manifest_sha256']==chain['before']
+assert a['pilot_manifest_sha256']==chain['after']
 for name,h in a['input_manifest_hashes'].items():
  assert name in ('pilot_input_manifest.json','train_input_manifest.json')
  manifest=root/name;assert hashlib.sha256(manifest.read_bytes()).hexdigest()==h
@@ -68,7 +71,8 @@ def main():
     manifests = {phase+'_input_manifest.json': manager.sha(manager.PRIVATE/('create_'+phase+'_input_manifest.json'))
                  for phase in ('pilot', 'train')}
     a = dict(failed_job_id=FAILED_JOB, registration_sha256=manager.sha(manager.PORT_REGISTRATION),
-             pilot_manifest_sha256=manifests['pilot_input_manifest.json'], input_manifest_hashes=manifests)
+             pilot_manifest_sha256=manifests['pilot_input_manifest.json'], input_manifest_hashes=manifests,
+             root_repair=json.loads((manager.PUBLIC/'create_root_repair.json').read_text()))
     result = manager.remote(REMOTE, [manager.REMOTE], json.dumps(a).encode())
     assert result['failed_job_id'] == FAILED_JOB and result['input_manifest_hashes'] == manifests
     manager.once(RECEIPT, result)
