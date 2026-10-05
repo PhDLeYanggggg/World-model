@@ -1,4 +1,4 @@
-# Matched Temporal Auxiliary: Engineering Ready, Real Fit Not Run
+# Matched Temporal Auxiliary: Trainer and Readout Ready, Real Fit Not Run
 
 ## Material Passport
 
@@ -70,10 +70,13 @@ not used to infer current M3W availability. No job was submitted or restarted.
    immediately before fitting because free space changes.
 2. Run the real three-arm pilot and exact interrupted-resume replay. Use its
    measured runtime and memory to place the full fixed-budget 216-fit experiment.
-3. Complete and freeze the separate readout before viewing new validation
-   predictions. Compare all strong controls, primary and selected-cohort error,
-   utility, unknown-label completion and the original 2% selected easy-risk rule.
-   Readout implementation is not claimed complete by this trainer deliverable.
+3. Run the now-implemented [fixed readout](readout/protocol.md) only after the
+   complete training freeze is committed. It retains all four strong controls,
+   full and original-selected error, full/query-matched utility, unknown-label
+   completion and the original 2% selected easy-risk rule. Twenty-eight new
+   readout tests pass, 56 with the existing trainer/target tests. Its scalar
+   verifier separately checks actions, weights, ratios, paired completion and
+   locality bootstrap. Synthetic integration is not real model evaluation.
 4. Only a controlled utility/risk improvement can support further transfer.
    Auxiliary loss or temporal MSE improvement alone is insufficient.
 
@@ -84,3 +87,8 @@ obs8/pred12 only; no metric, seconds, physical-safety, true-3D or foundation cla
 Stage5C and SMC remain off.
 
 See [Chinese run and recovery instructions](reproduction_zh.md).
+
+The October 5 12:05 UTC read-only CREATE retry timed out after 20.05 seconds;
+remote ownership, quota and scheduler state were not observed. The simulation
+chat has no new completion message. No remote write, scientific execution or
+job operation occurred. Resource recovery is still needed for real fitting.

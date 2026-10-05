@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Matched temporal-auxiliary trainer verified; real fitting awaits storage.**
+**Matched temporal-auxiliary trainer and fixed readout verified; real fitting awaits storage.**
 The neural cost-head trainer now compares no auxiliary, row-mean auxiliary and
 stepwise auxiliary with identical primary architecture, initialization, sampler
 draws and update budget. Twenty-eight focused tests pass, including exact
@@ -22,8 +22,23 @@ free-space level. No real training checkpoint was created.
 
 Formal fitting preserves the existing 10 GiB storage reserve; CREATE SSH also
 remains unobservable. No old assets were removed and no remote jobs changed.
-The separate validation readout still needs implementation and freezing before
-use. This is not a trained-result or deployment claim.
+The separate validation readout is now implemented and registered before any
+new validation predictions. It requires all 216 fixed-final heads and all four
+strong controls; incomplete training or missing controls stop the comparison.
+Full and original-selected error, query-matched utility, unknown outcomes and
+the unchanged 2% selected positive easy-risk rule are checked together.
+
+The readout also distinguishes a difference of lower utility bounds from a
+valid paired-completion lower bound. Shared unknown selections cancel, while
+unknown selections exchanged between policies retain their uncertainty.
+Undefined head support invalidates a contrast instead of being dropped from its
+12-locality bootstrap. Twenty-eight new tests pass; 56 pass across the trainer,
+target audit and readout. A separate scalar implementation verifies actions,
+scores, completion bounds and 3,000-draw locality intervals. Optimizer-to-readout
+integration was tested on synthetic fixtures only. No real training or model
+evaluation was completed. CREATE remained unobservable in the October 5 12:05
+UTC read-only check, which says nothing about current scheduler/job state.
+[Fixed readout protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/protocol.md).
 [Engineering evidence and remaining work](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/README.md),
 [Chinese run/recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md).
 
