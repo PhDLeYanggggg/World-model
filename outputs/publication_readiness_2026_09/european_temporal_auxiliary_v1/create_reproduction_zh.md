@@ -58,5 +58,39 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.manage_m3w_tempora
 不得声称时序辅助提高策略效果。部分试跑不是完整实验，checkpoint 不是过 gate。
 同一运行环境内要求精确恢复；不预先声称不同 CPU 架构的训练逐位一致。
 
+### CREATE 检查点的无落盘评估入口
+
+本入口只把最终训练记录带回本地，模型检查点在内存中按哈希读取。
+先做不会读取科学数据或连接远程的本地准入检查：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
+  .venv-pytorch/bin/python -m scripts.read_m3w_temporal_auxiliary_create preflight
+```
+
+当前预期 `readout_allowed=false`，这表示训练尚未完成核验，不是评估通过。
+仅在完整训练实际成功后收集其元数据：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.read_m3w_temporal_auxiliary_create collect
+```
+
+收集器核对完整作业、配置、训练包清单、216 个文件身份和检查点哈希，
+不在登录节点反序列化模型或做推理。缺失、部分完成或冲突产物会被拒绝。
+先检查并安全提交 `training_freeze.json`、`fits/` 轻量记录和
+`create_training_inventory.json`，然后才能运行：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
+  .venv-pytorch/bin/python -m scripts.read_m3w_temporal_auxiliary_create run
+PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
+  .venv-pytorch/bin/python -m scripts.read_m3w_temporal_auxiliary_create verify
+```
+
+中断后确认本地读出进程已终止，再用 `run --resume`。不能重新提交训练。
+四个旧强对照仍必须全部精确重放。CREATE 产物使用这个新入口，原本地
+readout 入口依然要求本地模型文件，不应混用。当前只有合成工程测试通过，
+真实收集、远端神经检查点流和真实验证集读出都尚未运行。
+
 继续使用 image-pixel / raw-frame / detector-silver 的证据范围，
 不声明米、秒、人工金标准、true 3D 或 foundation。Stage5C 和 SMC 不执行。

@@ -32,6 +32,17 @@ An additional whole-export rehash could not run after connectivity dropped.
 Full training has not been submitted, and no new scientific result is claimed.
 [Live execution record](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_execution_status.json),
 [CREATE run and recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md).
+
+**The CREATE-to-readout path now avoids a local checkpoint cache.** A separately
+registered reader collects only exact-byte final-training metadata and streams
+hash-verified neural checkpoints in memory. It requires the successful full job,
+all 216 final heads and a committed training freeze before validation access.
+The original seven-arm evaluator, four controls, scalar verifier and uncertainty
+rules are unchanged. Forty-eight focused tests pass, including synthetic model,
+prediction and action parity; this is not real-data evaluation. Current admission
+still fails closed because the complete training freeze has not been verified.
+[Reader protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/create_reader_protocol.md),
+[engineering evidence](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/create_reader_engineering.json).
 [CREATE execution amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_protocol.md),
 [historical resource blocker](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
 
