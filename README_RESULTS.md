@@ -7,7 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**CREATE access recovered; the registered experiment is moving to isolated CPU compute.**
+**A standalone aggregate replay package now rebuilds the manuscript tables.**
+Eight pinned public inputs reproduce all three tables, eleven European contrasts
+and four separate SDD contrasts byte for byte in an isolated standard-library
+Python process. Thirty-five focused tests pass. The package contains no raw
+trajectories or model weights, and retains negative results and support limits.
+This is aggregate reproducibility, not a training rerun, new bootstrap or
+independent scientific confirmation. Known identifiers are screened, but venue
+anonymity compliance is not certified. The local archive is excluded from Git.
+[Replay instructions and verified scope](outputs/publication_readiness_2026_09/aggregate_replay_v1/README.md).
+
+**The registered experiment is prepared on isolated CREATE CPU compute.**
 The October 5 12:55 UTC check verified the M3W owner, personal quota (16.25 GB
 remaining), absence of active M3W jobs, and the existing CPU runtime's successful
 optimizer/resume job. Local checkpoint admission still lacks about 2 GiB;
@@ -25,8 +35,9 @@ locality IDs and stopped before writing any input file. The separately registere
 transport repair passes 22 targeted checks; numerical code is unchanged.
 All **24 TRAIN packets / 72 source-head identities** are now on CREATE, totaling
 440.82 MB. Each packet was checksum-verified during transfer; no large local
-data cache was created. Pilot job **37790290** remains pending in the
-**14:15 UTC** October 5 scheduler observation, with no confirmed start time.
+data cache was created. Pilot job **37790290** was last verified pending for
+priority at **14:20 UTC** on October 5. The latest subsequent SSH check timed
+out, so its current training state is unknown; the job has not been resubmitted.
 Access recovered after the earlier SSH timeouts. A fresh read-only whole-export
 audit verified all 24 packet hashes, the configuration and executable code.
 Full training has not been submitted, and no new scientific result is claimed.
@@ -34,7 +45,7 @@ The pending pilot's training entry point had the same mounted-root comparison
 defect as the reader. Execution revision 3 fixes that single path comparison;
 83 related tests pass. The registered repair held only the unstarted owned job,
 archived the previous execution bytes and preserved its job ID. Remote repair
-and release both completed; it is back in the queue with no optimizer updates.
+and release both completed; the last observed queue state had no optimizer updates.
 Only one code binding changed in the input manifests; TRAIN packets and the
 scientific protocol did not change. These are execution repairs, not model lift.
 [Training-root repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_root_fix.md).
