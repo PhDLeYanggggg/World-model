@@ -21,7 +21,7 @@ from scripts.run_m3w_quality_components import Reader, read_bytes
 ROOT, PUBLIC, PRIVATE = original.ROOT, original.PUBLIC, original.PRIVATE
 HOME = str(original.training.PUBLIC.relative_to(ROOT))
 HEADS = 'data/stage_cvpr2027_experiments/'+original.training.NAME+'/heads'
-REGISTRATION = PUBLIC/'create_reader_registration.json'
+REGISTRATION = PUBLIC/'create_reader_registration_v2.json'
 INVENTORY = original.training.PUBLIC/'create_training_inventory.json'
 METADATA_CAP = 16*2**20
 CHECKPOINT_CAP = 2*2**20
@@ -89,6 +89,7 @@ COLLECT = r'''
 import base64,gzip,hashlib,json,pathlib,subprocess,sys
 root=pathlib.Path(sys.argv[1]);job=sys.argv[2];home=sys.argv[3];heads=sys.argv[4];cap=int(sys.argv[5])
 assert root==pathlib.Path('/users/k24101830/m3w/european_temporal_auxiliary_v1')
+root=root.resolve()
 owner=json.loads((root/'.owner.json').read_text());assert owner['experiment']==root.name
 assert json.loads((root/'train_submission.json').read_text())['job_id']==job and job.isdigit()
 q=subprocess.run(['sacct','-j',job,'-X','--noheader','--parsable2','--format=State,ExitCode'],capture_output=True,text=True,timeout=20)
@@ -154,6 +155,7 @@ SERVER = r'''
 import hashlib,json,pathlib,sys
 root=pathlib.Path(sys.argv[1]);home=sys.argv[2];heads=sys.argv[3];freeze_hash=sys.argv[4]
 assert root==pathlib.Path('/users/k24101830/m3w/european_temporal_auxiliary_v1')
+root=root.resolve()
 assert json.loads((root/'.owner.json').read_text())['experiment']==root.name
 raw=(root/home/'training_freeze.json').read_bytes();assert hashlib.sha256(raw).hexdigest()==freeze_hash
 allowed={}
@@ -231,8 +233,11 @@ def registration():
     cfg, reg = original.registration()
     assert reg == json.loads((PUBLIC/'registration.json').read_text())
     paths = original.parent.forest.closure(ROOT, ['scripts.read_m3w_temporal_auxiliary_create'])
-    paths += [PUBLIC/'create_reader_protocol.md', ROOT/'tests/test_m3w_temporal_create_reader.py']
-    extension = dict(bindings={str(p.relative_to(ROOT)): original.sha(p) for p in paths},
+    paths += [PUBLIC/'create_reader_protocol.md', PUBLIC/'create_reader_path_fix.md',
+              ROOT/'tests/test_m3w_temporal_create_reader.py']
+    extension = dict(execution_revision=2,
+        previous_reader_registration_sha256=original.sha(PUBLIC/'create_reader_registration.json'),
+        bindings={str(p.relative_to(ROOT)): original.sha(p) for p in paths},
         original_readout_registration_sha256=original.sha(PUBLIC/'registration.json'),
         original_training_registration_sha256=original.sha(original.training.PUBLIC/'registration.json'),
         transport_only=True, original_evaluator_unchanged=True, checkpoint_disk_cache=False,

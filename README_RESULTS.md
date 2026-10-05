@@ -25,10 +25,10 @@ locality IDs and stopped before writing any input file. The separately registere
 transport repair passes 22 targeted checks; numerical code is unchanged.
 All **24 TRAIN packets / 72 source-head identities** are now on CREATE, totaling
 440.82 MB. Each packet was checksum-verified during transfer; no large local
-data cache was created. Pilot job **37790290** was accepted and remained pending
-for priority at the last successful observation, **13:17 UTC**. Later SSH checks
-timed out, so its current training state is unknown, not failed or completed.
-An additional whole-export rehash could not run after connectivity dropped.
+data cache was created. Pilot job **37790290** remains pending for priority in
+the **14:02 UTC** October 5 scheduler observation, with no estimated start time.
+Access recovered after the earlier SSH timeouts. A fresh read-only whole-export
+audit verified all 24 packet hashes, the configuration and executable code.
 Full training has not been submitted, and no new scientific result is claimed.
 [Live execution record](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_execution_status.json),
 [CREATE run and recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md).
@@ -38,11 +38,13 @@ registered reader collects only exact-byte final-training metadata and streams
 hash-verified neural checkpoints in memory. It requires the successful full job,
 all 216 final heads and a committed training freeze before validation access.
 The original seven-arm evaluator, four controls, scalar verifier and uncertainty
-rules are unchanged. Forty-eight focused tests pass, including synthetic model,
+rules are unchanged. Fifty-two focused tests pass, including synthetic model,
 prediction and action parity; this is not real-data evaluation. Current admission
 still fails closed because the complete training freeze has not been verified.
+The mounted-root repair accepts CREATE's verified user-directory mapping into
+Ceph while still rejecting paths that escape the owned experiment.
 [Reader protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/create_reader_protocol.md),
-[engineering evidence](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/create_reader_engineering.json).
+[engineering evidence](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/create_reader_engineering_v2.json).
 [CREATE execution amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_protocol.md),
 [historical resource blocker](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
 

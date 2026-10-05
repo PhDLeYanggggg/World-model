@@ -1,4 +1,5 @@
 import ast
+import gzip
 import hashlib
 import io
 import json
@@ -136,3 +137,48 @@ def test_write_exact_does_not_replace_existing_values(tmp_path):
     reader.write_exact(p, b'{"a":1}\n')
     with pytest.raises(ValueError): reader.write_exact(p, b'{"a":2}\n')
     assert p.read_bytes() == b'{"a":1}\n'
+
+
+@pytest.mark.parametrize('program', ['collect', 'server'])
+@pytest.mark.parametrize('escape', [False, True])
+def test_remote_owned_root_alias_keeps_checkpoint_containment(tmp_path, monkeypatch, capsys, program, escape):
+    root = tmp_path/'storage'/reader.manager.NAME
+    cfg, expected, b = fixture(root)
+    alias = tmp_path/'users'/reader.manager.NAME
+    alias.parent.mkdir(); alias.symlink_to(root, target_is_directory=True)
+    (root/'.owner.json').write_text(json.dumps(dict(experiment=root.name, registration_sha256='a'*64)))
+    (root/'train_submission.json').write_text('{"job_id":"123"}')
+    (root/'config.json').write_bytes(b'{}')
+    (root/'code').mkdir(); (root/'code/safe.py').write_bytes(b'# fixture\n')
+    manifest = dict(registration_sha256='a'*64, config_sha256=reader.digest(b'{}'),
+                    code_bindings={'safe.py': reader.digest(b'# fixture\n')})
+    manifest_raw = json.dumps(manifest).encode()
+    (root/'train_input_manifest.json').write_bytes(manifest_raw)
+    if escape:
+        path = root/next(iter(b['checkpoints']))
+        outside = tmp_path/'foreign.pt.gz'; outside.write_bytes(path.read_bytes())
+        path.unlink(); path.symlink_to(outside)
+    if program == 'collect':
+        code = reader.COLLECT
+        argv = ['', str(alias), '123', reader.HOME, reader.HEADS,
+                str(reader.METADATA_CAP), reader.digest(manifest_raw)]
+        def accounting(command, **_kwargs):
+            assert command == ['sacct', '-j', '123', '-X', '--noheader', '--parsable2', '--format=State,ExitCode']
+            return SimpleNamespace(returncode=0, stdout='COMPLETED|0:0\n')
+        monkeypatch.setattr(reader.subprocess, 'run', accounting)
+    else:
+        code = reader.SERVER
+        argv = ['', str(alias), reader.HOME, reader.HEADS, reader.digest(b['freeze'].encode())]
+        monkeypatch.setattr(reader.sys, 'stdin', SimpleNamespace(buffer=io.BytesIO()))
+    monkeypatch.setattr(reader.sys, 'argv', argv)
+    code = code.replace('/users/k24101830/m3w/european_temporal_auxiliary_v1', str(alias))
+    if escape:
+        with pytest.raises(AssertionError): exec(code, {})
+    else:
+        exec(code, {})
+        result = json.loads(capsys.readouterr().out)
+        if program == 'server':
+            assert result == {'ready': True}
+        else:
+            bundle = json.loads(gzip.decompress(reader.base64.b64decode(result['payload'])))
+            assert len(reader.check_bundle(bundle, expected, cfg, 'a'*64, reader.digest(manifest_raw), '123')) == 3
