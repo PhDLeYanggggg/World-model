@@ -51,7 +51,9 @@ def aggregate(rows, cfg):
 
 
 def main():
-    reg = json.loads((PUBLIC/'registration.json').read_text())
+    registration = PUBLIC/'registration_amended.json'
+    reg = json.loads(registration.read_text())
+    assert reg['original_registration_sha256'] == sha(PUBLIC/'registration.json')
     for path, h in reg['bindings'].items(): assert sha(ROOT/path) == h
     complete = json.loads((PUBLIC/'complete.json').read_text())
     result = json.loads((PUBLIC/'summary.json').read_text())
@@ -67,12 +69,14 @@ def main():
     for ref in complete['groups']:
         assert sha(ROOT/ref['path']) == ref['sha256']
         row = json.loads((ROOT/ref['path']).read_text()); rows.append(row)
-        assert row['registration_sha256'] == sha(PUBLIC/'registration.json')
+        assert row['registration_sha256'] == sha(registration)
         anchor = anchors[row['group'], row['head_seed']]
         assert row['partition'] == anchor['partition']
         for key in ('ids', 'original_prediction', 'original_action'):
             assert row['hashes']['validation'][key] == anchor['hashes'][key.removeprefix('original_')]
         assert row['decomposition']['validation']['selected'] == sum(s['selected'] for s in anchor['cohort']['strata'].values())
+        checks += check(row['decomposition']['validation']['known_selected_easy_harm'],
+                        math.fsum(s['easy_harm'] for s in anchor['cohort']['strata'].values()))
         checks += verify_row(row)+5
     assert len(rows) == len({(r['group'], r['head_seed']) for r in rows}) == 72
     assert len({r['source'] for r in rows}) == 12
@@ -91,7 +95,7 @@ def main():
     receipt = dict(independent_scalar_bootstrap_checks=checks, groups=72,
         original_policy_hashes_preserved=True, primary_target_identity_checked=True,
         summary_sha256=sha(PUBLIC/'summary.json'), complete_sha256=sha(PUBLIC/'complete.json'),
-        registration_sha256=sha(PUBLIC/'registration.json'), verifier_sha256=sha(Path(__file__)),
+        registration_sha256=sha(registration), verifier_sha256=sha(Path(__file__)),
         new_neural_training=False, independent_confirmation=False, deployment_changed=False)
     path = PUBLIC/'verification.json'; text = json.dumps(receipt, indent=2)+'\n'
     if path.exists(): assert path.read_text() == text

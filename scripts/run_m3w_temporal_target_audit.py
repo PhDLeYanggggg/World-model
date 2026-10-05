@@ -24,6 +24,7 @@ NAME = 'european_temporal_target_audit_v1'
 PUBLIC, PRIVATE = labels.PUBLIC.parent/NAME, labels.PRIVATE.parent/NAME
 CONFIG = ROOT/'configs'/('m3w_'+NAME+'.json')
 PREVIOUS = labels.PUBLIC.parent/'european_leaf_quality_extension_v1'
+REGISTRATION = PUBLIC/'registration_amended.json'
 
 
 def registration():
@@ -33,8 +34,10 @@ def registration():
         for key in ('summary', 'complete'):
             assert sha(home/(key+'.json')) == receipt[key+'_sha256']
     files = parent.forest.closure(ROOT, ['scripts.run_m3w_temporal_target_audit'])
-    files += [CONFIG, PUBLIC/'protocol.md', ROOT/'tests/test_m3w_temporal_target_audit.py']
+    files += [CONFIG, PUBLIC/'protocol.md', PUBLIC/'amendment.md',
+              ROOT/'tests/test_m3w_temporal_target_audit.py', ROOT/'tests/test_m3w_temporal_target_reporting.py']
     return dict(bindings={str(p.relative_to(ROOT)): sha(p) for p in files},
+                original_registration_sha256=sha(PUBLIC/'registration.json'),
                 source_label_verification_sha256=sha(labels.PUBLIC/'verification.json'),
                 parent_extension_verification_sha256=sha(PREVIOUS/'verification.json'),
                 source_heads=72, independent_roles_read=False, deployment_changed=False)
@@ -49,7 +52,8 @@ def beat(**kw):
 
 def decomposition(d, y, chosen):
     known = d['valid_steps'] > 0; selected = chosen & known
-    easy = selected & (y[:, 3] > 0)
+    # Positive easy harm can exist when easy reference error is exactly zero.
+    easy = selected & ((y[:, 3] > 0) | (y[:, 4] > 0))
     den = float(y[easy, 3].sum())
     return dict(rows=len(y), unknown_rows=int((~known).sum()),
         full_label_rows=int((d['valid_steps'] == 12).sum()),
@@ -105,10 +109,14 @@ def main():
     p.add_argument('--resume', action='store_true'); args = p.parse_args()
     cfg, reg = json.loads(CONFIG.read_text()), registration()
     if args.phase == 'register':
-        once(PUBLIC/'registration.json', reg); print('Registered temporal target audit'); return
-    assert reg == json.loads((PUBLIC/'registration.json').read_text())
-    parent.base.inter.committed(PUBLIC/'registration.json')
+        once(REGISTRATION, reg); print('Registered amended temporal target audit'); return
+    assert reg == json.loads(REGISTRATION.read_text())
+    parent.base.inter.committed(REGISTRATION)
     if args.phase != 'verify': assert not (PUBLIC/'complete.json').exists()
+    if args.phase == 'run':
+        pilot = json.loads((PUBLIC/'pilot_amended.json').read_text())
+        assert pilot['exact_refit'] and pilot['exact_inference']
+        assert pilot['peak_RSS_bytes'] < 40*2**30 and pilot['seconds']*72 < cfg['hard_runtime_limit_seconds']
     PRIVATE.mkdir(parents=True, exist_ok=True)
     api.forest.core.torch.set_num_threads(cfg['cpu_threads']); api.forest.core.torch.set_num_interop_threads(1)
     start = time.monotonic()
@@ -159,6 +167,8 @@ def main():
                         per_role[role] = api.score(probes, normalized, data['sites'][ix], data['recordings'][ix], data['frames'][ix])
                         rd = {k: v[use] for k, v in d.items()}
                         decomposed[role] = decomposition(rd, y[use], selected)
+                        selected_known = selected & np.isfinite(y[use]).all(1)
+                        np.testing.assert_allclose(decomposed[role]['known_selected_easy_harm'], y[use][selected_known, 4].sum(), atol=1e-8)
                         if role == 'validation':
                             for name, mask in (('complete_validation', rd['valid_steps'] == 12), ('selected_validation', selected)):
                                 per_role[name] = api.score({k: v[mask] for k, v in probes.items()}, normalized[mask],
@@ -172,7 +182,7 @@ def main():
                         fitted_tables_sha256=api.fingerprint(fitted), exact_refit=True, exact_inference=True,
                         original_policy_unchanged=True, policy_changed=False, fresh_analytic_probe_fit=True,
                         result_source='fresh_run', parent_source='cached_verified', new_neural_training=False,
-                        registration_sha256=sha(PUBLIC/'registration.json'))
+                        registration_sha256=sha(REGISTRATION))
                     rows.append(row)
                     if args.phase != 'pilot':
                         path = PUBLIC/'groups'/(group+'_head'+str(seed)+'.json')
@@ -189,7 +199,7 @@ def main():
             cpu_threads=4, num_workers=0, scalar_checks=scalar_checks, exact_refit=True, exact_inference=True,
             new_neural_training=False, new_numerical_cache=False, remote_access=False, policy_changed=False)
         if args.phase == 'pilot':
-            once(PUBLIC/'pilot.json', runtime)
+            once(PUBLIC/'pilot_amended.json', runtime)
         else:
             assert len(rows) == cfg['source_heads']
             once(PUBLIC/'summary.json', summary(rows, cfg))
