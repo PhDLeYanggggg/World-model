@@ -7,19 +7,25 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Matched temporal-auxiliary training registered; real fitting awaits storage.**
+**Matched temporal-auxiliary trainer verified; real fitting awaits storage.**
 The neural cost-head trainer now compares no auxiliary, row-mean auxiliary and
 stepwise auxiliary with identical primary architecture, initialization, sampler
 draws and update budget. Twenty-eight focused tests pass, including exact
 no-auxiliary equivalence and interrupted/resumed training on synthetic fixtures.
 This is engineering verification, not a trained real-data result.
 
-The next read-only real TRAIN forward/backward check has no optimizer updates.
-Formal fitting preserves the existing 10 GiB storage reserve; local free space
-is below it and CREATE SSH remains unobservable. No old assets are removed and
-no remote jobs are changed. The temporal-information result below does not
-waive selected-policy utility or risk requirements.
-[Training protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/protocol.md).
+One real TRAIN source was checked: 109,454 rows, 106,960 known labels, a 141-row
+backpropagation batch and identical initial primary loss for all arms. There
+were zero optimizer updates and no validation prediction scoring. The actual
+pilot command stopped at the storage guard, about 1.67 GiB below its required
+free-space level. No real training checkpoint was created.
+
+Formal fitting preserves the existing 10 GiB storage reserve; CREATE SSH also
+remains unobservable. No old assets were removed and no remote jobs changed.
+The separate validation readout still needs implementation and freezing before
+use. This is not a trained-result or deployment claim.
+[Engineering evidence and remaining work](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/README.md),
+[Chinese run/recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md).
 
 **Temporal target audit completed: predictive structure, not safer decisions.**
 All 72 TRAIN-only analytic probes and exact refits completed. Relative to a
