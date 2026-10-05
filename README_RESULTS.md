@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**Registered next diagnostic: temporal target viability.**
+The goal has resumed. A TRAIN-only analytic probe will test whether frozen causal
+leaves predict stepwise errors beyond global temporal and leaf-constant controls.
+The original whole-trajectory benefit/harm targets and policy remain unchanged:
+mean positive step harm is not the same target. Ten focused tests pass; real
+pilot/full readouts are pending. CREATE SSH timed out on October 5; no remote
+job state or weight availability is inferred. This local study needs no new
+numerical cache, neural training, remote jobs or independent-role access.
+[Protocol](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/protocol.md).
+
 **TRAIN-identity extension completed: prediction repair, not policy repair.**
 Clipping past-quality coordinates to each fixed leaf's TRAIN range preserves all
 72 heads' known TRAIN predictions exactly. Validation signed-score MSE improves
@@ -27,8 +37,8 @@ run-time scalar checks and 12,660 independent scalar/bootstrap checks pass.
 The 72 heads reuse 12 exposed development localities, not 72 independent sites;
 intervals are nominal and not search-adjusted. Next priority is temporal
 benefit/harm target identifiability on existing TRAIN/development data, not
-another threshold sweep. No new study has been started; independent roles stay
-closed.
+another threshold sweep. The next diagnostic is registered above; independent
+roles stay closed.
 [Conclusions](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/conclusions.md),
 [full tables](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/findings.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/reproduction_zh.md).
