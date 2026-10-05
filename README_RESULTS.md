@@ -21,8 +21,11 @@ implemented and registered, retaining all 216 fits and the original 2,000-update
 budget. The 156 related tests pass, including exact serial/sharded optimizer
 equivalence, resume, and rejection of incomplete or changed final artifacts.
 All 127 original scientific bindings are unchanged. Each shard is conservatively
-estimated at 10.86 hours; submission is next and runtime is not guaranteed.
-All four successful tasks and every final fit must verify before readout.
+estimated at 10.86 hours; runtime is not guaranteed. The four-task array
+**37799286** and after-success verification job **37799287** are submitted and
+released. The 17:57 UTC observation records all four tasks pending, zero final
+fits, and no new validation readout. All four successful tasks and every final
+fit must verify before readout. Existing pilot work will resume, not restart.
 [Execution-only amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/parallel_execution_protocol.md).
 [Pilot losses, verification and resource gate](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_pilot_report.md).
 
