@@ -21,8 +21,14 @@ those three packages, preserved all existing versions, passed package consistenc
 and imported the full entry point. It then failed before optimization at exact
 equality between transported and recomputed TRAIN preprocessing statistics.
 No checkpoint or optimizer update exists. A compute-node diagnostic will measure
-every field across all 24 unique TRAIN packets before any comparison rule changes.
-This does not justify weakening resume checks or claiming successful training.
+every field before any comparison rule changes. That diagnostic is now complete:
+all 24 TRAIN packets verify; 15 differ only in the positive float64 scale, by at
+most 7.11e-15 absolute / 3.90e-16 relative. All other fields/shapes/dtypes match
+exactly. Revision 6 checks only that scalar within four ULPs and retains the
+original frozen statistics for training. Exact model/resume checks are unchanged;
+136 related tests pass, including all-arm optimizer/resume equivalence. The real
+pilot must still pass before any training success or model lift is claimed.
+[Measured portability repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/preprocess_portability_repair.md).
 [Dependency repair protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/dependency_repair_protocol.md).
 
 **A standalone aggregate replay package now rebuilds the manuscript tables.**

@@ -1,5 +1,6 @@
 """Run the frozen temporal auxiliary optimizer on immutable TRAIN-only packets."""
 import argparse
+from contextlib import closing
 import fcntl
 import hashlib
 import io
@@ -13,6 +14,7 @@ if __name__ == '__main__' and not os.environ.get('SLURM_JOB_ID'):
 
 import numpy as np
 from scripts import run_m3w_temporal_auxiliary as run
+from src.world_model.m3w_preprocess_portability import frozen_preprocess
 
 ARRAYS = ('x', 'envelope', 'target', 'series', 'sites', 'recordings', 'frames')
 
@@ -55,7 +57,8 @@ def verified_iterator(root, manifest):
         args = unpack(content)
         if ref['identity']['group'] != ref['group']:
             raise ValueError('Packet identity mismatch')
-        yield ref['identity'], args
+        with frozen_preprocess(run.api.core, args[-1]):
+            yield ref['identity'], args
 
 
 def main():
@@ -98,7 +101,8 @@ def main():
             assert not (run.PUBLIC/'pilot.json').exists(), 'Reuse the completed pilot'
         run.beat(state='portable_phase_started', phase=a.phase, job_id=os.environ.get('SLURM_JOB_ID'),
                  optimizer_unchanged=True, validation_labels_scored=False)
-        run.train(cfg, verified_iterator(root, manifest), pilot=a.phase == 'pilot', resume=a.resume)
+        with closing(verified_iterator(root, manifest)) as iterator:
+            run.train(cfg, iterator, pilot=a.phase == 'pilot', resume=a.resume)
         run.beat(state='portable_phase_complete', phase=a.phase)
 
 
