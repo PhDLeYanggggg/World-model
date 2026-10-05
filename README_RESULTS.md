@@ -7,7 +7,22 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**The CREATE pilot now reaches Python but exposed a missing data-audit import.**
+**The real TRAIN pilot now completes with exact resume; the full run is pending.**
+Job **37798513 completed 0:0**: three auxiliary-control branches each trained
+100 updates, and uninterrupted temporal replay exactly matched interrupted
+resume. Peak Python RSS was 1.31 GiB; four checkpoints and the original code
+hashes were verified. This is one source/seed pilot, not the full 216 fits.
+Auxiliary TRAIN loss decreased, but the primary fixed-monitor loss did not
+improve in these 100 steps; no downstream lift or deployment change is claimed.
+
+The registered conservative single-job estimate is **43.45 hours**, so its
+12-hour feasibility gate is false. I am preparing four disjoint execution
+shards, retaining all 216 fits and the original 2,000-update budget. Fresh CPU
+limits support this small parallel layout, but it is not submitted and runtime
+is not guaranteed. All final fits must be verified before validation readout.
+[Pilot losses, verification and resource gate](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_pilot_report.md).
+
+**Resolved execution failures are retained below.**
 The 15:57 UTC October 5 observation verifies job **37795593 FAILED, exit 1:0**:
 `pandas` is missing from the original entry point's transitive imports. No
 heartbeat, optimizer update or checkpoint was created. The earlier shell fix
@@ -20,14 +35,15 @@ The **17:09 UTC** observation confirms that job **37797054** installed exactly
 those three packages, preserved all existing versions, passed package consistency
 and imported the full entry point. It then failed before optimization at exact
 equality between transported and recomputed TRAIN preprocessing statistics.
-No checkpoint or optimizer update exists. A compute-node diagnostic will measure
-every field before any comparison rule changes. That diagnostic is now complete:
+At that failed attempt no checkpoint or optimizer update existed. The subsequent
+compute-node diagnostic is complete:
 all 24 TRAIN packets verify; 15 differ only in the positive float64 scale, by at
 most 7.11e-15 absolute / 3.90e-16 relative. All other fields/shapes/dtypes match
 exactly. Revision 6 checks only that scalar within four ULPs and retains the
 original frozen statistics for training. Exact model/resume checks are unchanged;
 136 related tests pass, including all-arm optimizer/resume equivalence. The real
-pilot must still pass before any training success or model lift is claimed.
+pilot subsequently verified finite training and exact resume, but not model lift
+or the original single-job runtime gate.
 [Measured portability repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/preprocess_portability_repair.md).
 [Dependency repair protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/dependency_repair_protocol.md).
 
