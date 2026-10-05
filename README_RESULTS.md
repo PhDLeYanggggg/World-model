@@ -16,9 +16,13 @@ repair adds only the three missing pinned packages in the owned M3W environment,
 with existing-package preservation and a full-entry import check on an allocated
 node before the same pilot. The combined 112 related tests pass. This is runtime
 engineering, not model improvement; full training remains unsubmitted.
-Repair-and-pilot job **37797054** was accepted and verified pending at
-**16:07 UTC**. The failed job's prior bytes are archived. Dependency installation,
-full-entry import and real training are still unverified, not reported as done.
+The **17:09 UTC** observation confirms that job **37797054** installed exactly
+those three packages, preserved all existing versions, passed package consistency
+and imported the full entry point. It then failed before optimization at exact
+equality between transported and recomputed TRAIN preprocessing statistics.
+No checkpoint or optimizer update exists. A compute-node diagnostic will measure
+every field across all 24 unique TRAIN packets before any comparison rule changes.
+This does not justify weakening resume checks or claiming successful training.
 [Dependency repair protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/dependency_repair_protocol.md).
 
 **A standalone aggregate replay package now rebuilds the manuscript tables.**
