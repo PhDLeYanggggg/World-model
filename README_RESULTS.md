@@ -38,7 +38,11 @@ scores, completion bounds and 3,000-draw locality intervals. Optimizer-to-readou
 integration was tested on synthetic fixtures only. No real training or model
 evaluation was completed. CREATE remained unobservable in the October 5 12:05
 UTC read-only check, which says nothing about current scheduler/job state.
-[Fixed readout protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/protocol.md).
+[Fixed readout protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/protocol.md),
+[verified implementation and resource status](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/README.md).
+The committed admission check found no completed training freeze or model
+readout. Latest local storage shortfall is 1.91 GiB; the earlier 1.67 GiB number
+belongs to the original pilot attempt, not a fixed current capacity.
 [Engineering evidence and remaining work](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/README.md),
 [Chinese run/recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md).
 

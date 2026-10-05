@@ -5,7 +5,8 @@
 
 ## 本轮已验证
 
-- 28 项针对性测试通过；未运行全部历史测试。
+- 训练器及旧 target 测试 28 项通过，新增 readout 测试 28 项通过，合计
+  56 项通过；未运行全部历史测试。
 - 无辅助监督时，训练权重与原主损失实现逐项相同。
 - 三组模型初始化、采样次数与顺序相同，只改变辅助监督。
 - 中断后保留最后一个完整检查点，恢复结果与连续运行精确一致。
@@ -24,8 +25,9 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
   .venv-pytorch/bin/python scripts/run_m3w_temporal_auxiliary.py preflight
 ```
 
-本轮 `allowed=false`：还差约 1.67 GiB。不要跳过检查或删除无关资产。
-释放约 2 GiB 后仍需重新检查，或等 CREATE 恢复后按已授权的独立 M3W
+最初试跑 `allowed=false`：还差约 1.67 GiB。10 月 5 日 12:07 UTC 复查
+差额变为约 1.91 GiB。不要跳过检查或删除无关资产。
+空出约 3 GiB 后仍需重新检查，或等 CREATE 恢复后按已授权的独立 M3W
 环境、存储和调度器边界迁移；本入口不会自动提交 HPC 作业。
 
 ## 正式试跑与继续
@@ -51,8 +53,34 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
 不要修改原协议、输入或超参数来续跑。心跳、日志、锁及检查点在
 `data/stage_cvpr2027_experiments/european_temporal_auxiliary_v1/`，不提交 Git。
 
-正式训练完成后，必须先冻结检查点，再实现、冻结并验证 readout，才能读取
-新的 validation 预测。当前没有已完成的验证比较、独立测试或可部署新模型。
+正式训练完成后，必须先核验并提交 `training_freeze.json` 和轻量训练记录。
+readout 已实现，并在提交 `4b842ae2` 冻结，不需要另行设计阈值或挑检查点。
+当前没有已完成的真实验证比较、独立测试或可部署新模型。
+
+## 已冻结的评估流程
+
+先检查是否具有完整训练结果；这条命令不读取新的验证集预测：
+
+```bash
+env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
+  .venv-pytorch/bin/python scripts/run_m3w_temporal_auxiliary_readout.py preflight
+```
+
+只有 216 个固定最终检查点、训练记录和四个强对照均可核验时才能继续。
+实际新验证预测仅由下面命令读取，当前尚未运行：
+
+```bash
+env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
+  .venv-pytorch/bin/python scripts/run_m3w_temporal_auxiliary_readout.py run
+env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
+  .venv-pytorch/bin/python scripts/run_m3w_temporal_auxiliary_readout.py verify
+```
+
+旧强对照通过已授权的 M3W 只读路径核验；远程不可达时停止比较，不跳过对照。
+每个来源的输出不可覆盖；中断后确认进程终止，再以 `run --resume` 重放并核验
+已有输出。`verify` 重新预测并核验所有数值和独立标量算法，不重新训练。
+缺标签样本保留在策略评估中。未知标签在两种策略共享的选择中相互抵消，
+只在不同选择之间保留不确定性；不能把两个收益下界相减当成提升已获证明。
 
 ## 仅工程检查
 
@@ -60,7 +88,9 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
 env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
   .venv-pytorch/bin/python -m pytest \
   tests/test_m3w_temporal_auxiliary.py tests/test_m3w_temporal_target_audit.py \
-  tests/test_m3w_temporal_target_reporting.py -q -p no:cacheprovider
+  tests/test_m3w_temporal_target_reporting.py \
+  tests/test_m3w_temporal_auxiliary_readout.py \
+  tests/test_m3w_temporal_auxiliary_readout_runner.py -q -p no:cacheprovider
 ```
 
 `inspect` 阶段只做真实 TRAIN 前向/反向传播，不更新权重，不评 validation。
