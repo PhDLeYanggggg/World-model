@@ -103,6 +103,7 @@ def test_saved_exports_match_sources_byte_for_byte(docs):
     expected = artifacts(docs, (folder / "manuscript.template.md").read_text())
     for filename, text in expected.items():
         assert (folder / filename).read_bytes() == text.encode()
+        assert "\r" not in text
     assert json.loads(expected["evidence.json"]) == build(docs)
 
 

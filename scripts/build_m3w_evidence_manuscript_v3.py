@@ -159,7 +159,8 @@ def artifacts(docs, template):
         manuscript = manuscript.replace("{{" + key + "}}", value)
     require("{{" not in manuscript, "Unresolved template marker")
     stream = io.StringIO(newline="")
-    writer = csv.DictWriter(stream, fieldnames=list(evidence["european_contrasts"][0]))
+    writer = csv.DictWriter(stream, fieldnames=list(evidence["european_contrasts"][0]),
+                            lineterminator="\n")
     writer.writeheader()
     writer.writerows(evidence["european_contrasts"])
     return {"evidence.json": json.dumps(evidence, indent=2, allow_nan=False) + "\n",
