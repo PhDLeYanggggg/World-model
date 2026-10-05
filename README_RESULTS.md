@@ -7,15 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**The CREATE pilot startup failure is repaired; the replacement is queued.**
-Job 37790290 failed before Python because its batch shell did not initialize
-environment modules. The fix uses the login shell verified by a live CREATE
-probe. All prior submission records/logs and the manifest amendment chain are
-preserved; 97 related tests pass. Same-parameter pilot **37795593** was verified
-pending at **15:30 UTC** on October 5. Numerical training code, inputs and
-scientific rules are unchanged. No real optimizer update or pilot result has
-yet been observed, and full training remains unsubmitted.
-[Verified repair and retry receipt](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_shell_retry.json).
+**The CREATE pilot now reaches Python but exposed a missing data-audit import.**
+The 15:57 UTC October 5 observation verifies job **37795593 FAILED, exit 1:0**:
+`pandas` is missing from the original entry point's transitive imports. No
+heartbeat, optimizer update or checkpoint was created. The earlier shell fix
+worked; the numerical experiment has still not started. A registered dependency
+repair adds only the three missing pinned packages in the owned M3W environment,
+with existing-package preservation and a full-entry import check on an allocated
+node before the same pilot. The combined 112 related tests pass. This is runtime
+engineering, not model improvement; full training remains unsubmitted.
+[Dependency repair protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/dependency_repair_protocol.md).
 
 **A standalone aggregate replay package now rebuilds the manuscript tables.**
 Eight pinned public inputs reproduce all three tables, eleven European contrasts
@@ -53,7 +54,8 @@ header from earlier successful CREATE jobs. A live environment probe passed;
 97 related tests pass. Revision 5 also verifies the already-recorded manifest
 amendment chain; the first archival attempt stopped safely on that check. The
 failed job's script, intent and receipt have been archived, and its logs remain
-in place. Same-parameter retry 37795593 is queued, not yet a training result.
+in place. Same-parameter retry 37795593 subsequently failed on the missing pandas
+import before training; its original submission is retained for diagnosis.
 [Login-shell repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_shell_fix.md).
 Access recovered after the earlier SSH timeouts. A fresh read-only whole-export
 audit verified all 24 packet hashes, the configuration and executable code.
