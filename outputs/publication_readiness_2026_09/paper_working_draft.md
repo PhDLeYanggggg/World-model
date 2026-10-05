@@ -1,8 +1,9 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
 Chronological research archive. The current coherent English manuscript is
-[Learning When to Intervene](evidence_manuscript_v1/manuscript.md), with tables
-reconstructed from six pinned result files. This archive retains old populations,
+[Learning When Neural Motion Forecasts Help](evidence_manuscript_v3/manuscript.md),
+which separates the SDD and EuropeanSquares development studies and reconstructs
+its tables from pinned aggregates. This archive retains old populations,
 metrics and successive narratives; it must not be read as one pooled experiment
 or a submission-ready manuscript. No historical result is overwritten.
 

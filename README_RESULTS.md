@@ -7,6 +7,22 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**A coherent current manuscript now separates prediction from policy evidence.**
+The new revision preserves the four-site SDD study and incorporates the later
+twelve-locality EuropeanSquares cost-support, TRAIN-identity extension and
+temporal-target studies. Three tables are reconstructed from eight pinned
+aggregate/protocol sources. Eighteen focused checks pass. This is a fresh
+evidence export from cached verified numerical results, not new model training,
+prediction evaluation or bootstrap. The selected temporal contrast remains
+inconclusive and has eleven supported localities, not twelve.
+
+The related-work update resolves the earlier inaccessible Conformal Policy
+Control reference through its author full text. Generic baseline protection is
+not claimed as novel, and its guarantee is not attributed to this selector.
+The draft remains development evidence, not submission-ready or independently
+confirmed. Existing scientific results and deployment are unchanged.
+[Current manuscript and tables](outputs/publication_readiness_2026_09/evidence_manuscript_v3/README.md).
+
 **Matched temporal-auxiliary trainer and fixed readout verified; real fitting awaits storage.**
 The neural cost-head trainer now compares no auxiliary, row-mean auxiliary and
 stepwise auxiliary with identical primary architecture, initialization, sampler
@@ -41,8 +57,11 @@ UTC read-only check, which says nothing about current scheduler/job state.
 [Fixed readout protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/protocol.md),
 [verified implementation and resource status](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/README.md).
 The committed admission check found no completed training freeze or model
-readout. Latest local storage shortfall is 1.91 GiB; the earlier 1.67 GiB number
-belongs to the original pilot attempt, not a fixed current capacity.
+readout. Storage availability fluctuates: the October 5 12:21 UTC snapshot is
+about 1.97 GiB below admission. The earlier 1.67/1.91 GiB shortfalls belong to
+earlier attempts, not fixed current capacity. A further read-only CREATE SSH
+check at 12:11 UTC also timed out; no ownership or scheduler state was obtained.
+[Timestamped resource observation](outputs/publication_readiness_2026_09/evidence_manuscript_v3/resource_observation.json).
 [Engineering evidence and remaining work](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/README.md),
 [Chinese run/recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md).
 

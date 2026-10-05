@@ -25,6 +25,32 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**Temporal error structure is predictable; safer intervention is still unproved.**
+I completed 72 TRAIN-only temporal probes on the frozen EuropeanSquares source
+partitions. Stepwise targets reduce normalized validation error relative to a
+leaf-local trajectory mean by 0.094342, with a nominal locality interval of
+[-0.158824, -0.038614]. But the corresponding result on cases selected by the
+existing policy is inconclusive. I am not treating that as a deployment gain.
+
+The next experiment keeps the same neural cost head, samples and update budget,
+and compares no auxiliary, row-mean auxiliary and temporal auxiliary supervision.
+The trainer and seven-arm readout are frozen and tested. Actual fitting remains
+not_run: local storage is below the registered reserve and CREATE access is
+currently unavailable. No real optimizer updates or new model results exist yet.
+
+The [current English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
+connects the earlier SDD study to these European development results without
+pooling their metrics. It retains strong conventional controls and negative
+findings. The central question remains whether better cost prediction produces
+better decisions on the selected population, not merely a smaller average loss.
+
+- [Completed temporal diagnostic](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/conclusions.md)
+- [Registered training and recovery](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md)
+- [Current paper and reproducible tables](outputs/publication_readiness_2026_09/evidence_manuscript_v3/README.md)
+- [Complete results ledger](README_RESULTS.md)
+
+### Earlier Conditional Harm Result
+
 **A positive harm head repairs part of the failure, but still does not pass.**
 I trained all72 fixed conditional harm heads, retaining the original tree routes
 and raw benefit/reference estimates. The new output removes negative-to-zero
@@ -101,7 +127,7 @@ These are exploratory development results, not independent confirmation or a
 deployment upgrade. The detailed ledger retains the negative calibration,
 neighbor-history and relative-target experiments that motivated this check.
 
-- [Latest findings](outputs/publication_readiness_2026_09/european_positive_harm_v1/conclusions.md)
+- [Conditional harm findings](outputs/publication_readiness_2026_09/european_positive_harm_v1/conclusions.md)
 - [Failure analysis](outputs/publication_readiness_2026_09/european_positive_harm_v1/failure_analysis.md)
 - [Reproduction and evidence status](outputs/publication_readiness_2026_09/european_positive_harm_v1/README.md)
 - [Preceding frozen-component diagnosis](outputs/publication_readiness_2026_09/european_quality_components_v1/conclusions.md)
