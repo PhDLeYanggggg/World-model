@@ -30,6 +30,12 @@ the **14:02 UTC** October 5 scheduler observation, with no estimated start time.
 Access recovered after the earlier SSH timeouts. A fresh read-only whole-export
 audit verified all 24 packet hashes, the configuration and executable code.
 Full training has not been submitted, and no new scientific result is claimed.
+The pending pilot's training entry point had the same mounted-root comparison
+defect as the reader. Execution revision 3 fixes that single path comparison;
+83 related tests pass. The registered repair holds only an unstarted owned job,
+archives the previous execution bytes and preserves the job ID. Remote repair
+and release remain separate verified steps, not evidence of optimizer success.
+[Training-root repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_root_fix.md).
 [Live execution record](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_execution_status.json),
 [CREATE run and recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md).
 

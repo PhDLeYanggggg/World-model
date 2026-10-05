@@ -60,7 +60,7 @@ PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.manage_m3w_tempora
 
 ### CREATE 检查点的无落盘评估入口
 
-当前使用第 2 版执行注册：先核对授权逻辑路径，再解析 Ceph 挂载映射，
+当前使用第 3 版执行注册：先核对授权逻辑路径，再解析 Ceph 挂载映射，
 只允许读取同一项目目录内的产物；指向目录外的检查点链接仍会被拒绝。
 旧注册与失败记录保留，模型训练和科学评价规则没有修改。
 
@@ -95,6 +95,28 @@ PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 \
 四个旧强对照仍必须全部精确重放。CREATE 产物使用这个新入口，原本地
 readout 入口依然要求本地模型文件，不应混用。当前只有合成工程测试通过，
 真实收集、远端神经检查点流和真实验证集读出都尚未运行。
+
+### 已排队试跑的执行修复
+
+试跑入口也需对授权目录的实际挂载路径作一致比较。第 3 版只修复该比较，
+不改训练算法。修复器只接受作业 `37790290`，且必须仍为 PENDING、没有
+检查点和已完成试跑；已开始训练的任务会被拒绝修改。
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.repair_m3w_temporal_create_root repair
+```
+
+修复期间仅暂停该排队作业，旧程序和两份清单保存在
+`execution_v2_before_ceph_fix/`。核对本地与远端修复回执、保存新清单哈希，
+确认注册已提交后，单独释放同一作业：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-pytorch/bin/python -m scripts.repair_m3w_temporal_create_root release
+```
+
+若中断，先读取该作业及修复回执。修复可识别完全一致的已有结果，不新增
+任务；释放结果不明时不得重复释放或提交，先检查原作业。TRAIN 数组、
+训练身份、科学注册及评价标准都不变。修复通过不代表试跑或完整训练完成。
 
 继续使用 image-pixel / raw-frame / detector-silver 的证据范围，
 不声明米、秒、人工金标准、true 3D 或 foundation。Stage5C 和 SMC 不执行。

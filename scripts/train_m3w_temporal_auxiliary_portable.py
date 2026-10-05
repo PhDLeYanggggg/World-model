@@ -64,7 +64,7 @@ def main():
     p.add_argument('--root', type=Path, required=True)
     p.add_argument('--resume', action='store_true')
     a = p.parse_args(); root = a.root.resolve()
-    assert root.parent == Path('/users/k24101830/m3w') and root.name == run.NAME
+    assert root.parent == Path('/users/k24101830/m3w').resolve() and root.name == run.NAME
     owner = json.loads((root/'.owner.json').read_text())
     assert owner['experiment'] == run.NAME
     cfg = json.loads((root/'config.json').read_text())

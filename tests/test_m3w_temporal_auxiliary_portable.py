@@ -2,6 +2,7 @@ import hashlib
 import ast
 from pathlib import Path
 import re
+from types import SimpleNamespace
 
 import pytest
 from scripts import train_m3w_temporal_auxiliary_portable as port
@@ -73,3 +74,25 @@ def test_receiver_accepts_registered_locality_names_but_rejects_traversal():
     assert re.fullmatch(pattern, 'single0_seed43_controller1_dimensionless_fit_eu-locality-008')
     for name in ['../bad', '/tmp/bad', 'source/child', 'bad;touch', 'bad\nname']:
         assert not re.fullmatch(pattern, name)
+
+
+@pytest.mark.parametrize('foreign', [False, True])
+def test_main_root_guard_handles_owned_mount_without_accepting_foreign_root(tmp_path, foreign):
+    actual = tmp_path/'storage'; actual.mkdir()
+    logical = tmp_path/'users'; logical.symlink_to(actual, target_is_directory=True)
+    root = (tmp_path/'foreign' if foreign else logical)/port.run.NAME
+    root.mkdir(parents=True)
+    main = next(n for n in ast.parse(Path(port.__file__).read_text()).body
+                if isinstance(n, ast.FunctionDef) and n.name == 'main')
+    start = next(i for i,n in enumerate(main.body) if isinstance(n, ast.Assign)
+                 and any(isinstance(t, ast.Name) and t.id == 'root' for t in n.targets))
+    guard = ast.Module(body=main.body[start:start+2], type_ignores=[])
+    def expected_parent(value):
+        assert value == '/users/k24101830/m3w'
+        return logical
+    scope = dict(a=SimpleNamespace(root=root), Path=expected_parent, run=port.run)
+    if foreign:
+        with pytest.raises(AssertionError): exec(compile(guard, '<root-guard>', 'exec'), scope)
+    else:
+        exec(compile(guard, '<root-guard>', 'exec'), scope)
+        assert scope['root'] == actual/port.run.NAME

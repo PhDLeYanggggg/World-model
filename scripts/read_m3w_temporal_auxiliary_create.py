@@ -21,7 +21,7 @@ from scripts.run_m3w_quality_components import Reader, read_bytes
 ROOT, PUBLIC, PRIVATE = original.ROOT, original.PUBLIC, original.PRIVATE
 HOME = str(original.training.PUBLIC.relative_to(ROOT))
 HEADS = 'data/stage_cvpr2027_experiments/'+original.training.NAME+'/heads'
-REGISTRATION = PUBLIC/'create_reader_registration_v2.json'
+REGISTRATION = PUBLIC/'create_reader_registration_v3.json'
 INVENTORY = original.training.PUBLIC/'create_training_inventory.json'
 METADATA_CAP = 16*2**20
 CHECKPOINT_CAP = 2*2**20
@@ -235,8 +235,8 @@ def registration():
     paths = original.parent.forest.closure(ROOT, ['scripts.read_m3w_temporal_auxiliary_create'])
     paths += [PUBLIC/'create_reader_protocol.md', PUBLIC/'create_reader_path_fix.md',
               ROOT/'tests/test_m3w_temporal_create_reader.py']
-    extension = dict(execution_revision=2,
-        previous_reader_registration_sha256=original.sha(PUBLIC/'create_reader_registration.json'),
+    extension = dict(execution_revision=3,
+        previous_reader_registration_sha256=original.sha(PUBLIC/'create_reader_registration_v2.json'),
         bindings={str(p.relative_to(ROOT)): original.sha(p) for p in paths},
         original_readout_registration_sha256=original.sha(PUBLIC/'registration.json'),
         original_training_registration_sha256=original.sha(original.training.PUBLIC/'registration.json'),

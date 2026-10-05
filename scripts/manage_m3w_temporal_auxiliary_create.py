@@ -18,7 +18,7 @@ REMOTE = '/users/k24101830/m3w/'+NAME
 RUNTIME = '/users/k24101830/m3w/easy_hurdle_runtime_v2'
 HANDOFF = ROOT/'data/stage_cvpr2027_experiments/create_handoff_20260923/observations.json'
 INPUT_CAP = 4*2**30
-PORT_REGISTRATION = PUBLIC/'create_port_registration_v2.json'
+PORT_REGISTRATION = PUBLIC/'create_port_registration_v3.json'
 
 
 def sha(path):
@@ -81,9 +81,12 @@ def register():
     from scripts.export_m3w_easy_hurdle_create import closure
     paths = closure(ROOT, ['scripts.train_m3w_temporal_auxiliary_portable'])
     paths += [Path(__file__).resolve(), ROOT/'tests/test_m3w_temporal_auxiliary_portable.py',
-              PUBLIC/'create_port_protocol.md', PUBLIC/'create_port_filename_fix.md']
-    reg = dict(experiment=NAME, execution_revision=2,
-        previous_port_registration_sha256=sha(PUBLIC/'create_port_registration.json'),
+              PUBLIC/'create_port_protocol.md', PUBLIC/'create_port_filename_fix.md',
+              PUBLIC/'create_port_root_fix.md',
+              ROOT/'scripts/repair_m3w_temporal_create_root.py',
+              ROOT/'tests/test_m3w_temporal_root_repair.py']
+    reg = dict(experiment=NAME, execution_revision=3,
+        previous_port_registration_sha256=sha(PUBLIC/'create_port_registration_v2.json'),
         original_registration_sha256=sha(PUBLIC/'registration.json'),
         original_config_sha256=sha(CONFIG), bindings={str(p.relative_to(ROOT)):sha(p) for p in paths},
         input_cap_bytes=INPUT_CAP, checkpoint_cap_bytes=268435456, disk_reserve_bytes=10737418240,
