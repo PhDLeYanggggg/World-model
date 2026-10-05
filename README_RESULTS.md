@@ -23,9 +23,13 @@ No other project environment or job is modified.
 The first transport attempt exposed a filename allowlist bug with hyphenated
 locality IDs and stopped before writing any input file. The separately registered
 transport repair passes 22 targeted checks; numerical code is unchanged.
-The first 112.37 MB TRAIN packet is now hash-verified on CREATE. Pilot job
-**37790290** was accepted; at 13:05 UTC it was **pending**, with no checkpoint or
-optimizer update yet observed. This is scheduler progress, not a training result.
+All **24 TRAIN packets / 72 source-head identities** are now on CREATE, totaling
+440.82 MB. Each packet was checksum-verified during transfer; no large local
+data cache was created. Pilot job **37790290** was accepted and remained pending
+for priority at the last successful observation, **13:17 UTC**. Later SSH checks
+timed out, so its current training state is unknown, not failed or completed.
+An additional whole-export rehash could not run after connectivity dropped.
+Full training has not been submitted, and no new scientific result is claimed.
 [Live execution record](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_execution_status.json),
 [CREATE run and recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md).
 [CREATE execution amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_protocol.md),
