@@ -203,6 +203,43 @@ See [extension conclusions](../european_leaf_quality_extension_v1/conclusions.md
 and [independent verification](../european_leaf_quality_extension_v1/verification.json).
 No new fitting or neural dynamics training was performed in this extension.
 
+## Temporal Targets Without Changing the Risk Definition
+
+A further registered study fits analytic temporal means using the same 72 frozen
+forests, three cost-head seeds and recording-held development partitions. On
+TRAIN only, each leaf predicts 12-step neural-minus-reference and reference error.
+Controls are the same leaf's whole-trajectory mean repeated over time and a
+global TRAIN per-step mean. No future label or mask enters probe inference.
+
+Temporal-leaf signed-error MSE changes -0.094342 against the leaf-local mean,
+nominal 95% locality interval [-0.158824, -0.038614], and -0.137388 against global
+time means [-0.232556, -0.047422]. Complete-label signed contrasts are also
+negative. This passes the eight-condition registered auxiliary-design screen.
+However, frozen-selected signed MSE changes +0.000043 against the leaf-local
+mean [-0.000140, +0.000256]. Thus temporal target structure is predictable in
+the development population, but better decisions on selected rows are unproved.
+No neural auxiliary training or deployment change was performed.
+
+For per-step error difference d, mean(max(d,0)) equals max(mean(d),0) plus
+min(mean(max(d,0)), mean(max(-d,0))). In selected repeated head views, this
+cancellation accounts for 39.84% of gross step harm. This is an accounting
+identity, not a gain or new safety theorem. It prevents silently replacing the
+whole-trajectory primary harm target with a more conservative but different
+step-positive target. Similarly, the positive part of a predicted conditional
+mean is not in general expected positive whole-trajectory harm.
+
+These probes support a separately registered temporal auxiliary versus matched
+no-auxiliary and mean-auxiliary training test. The original five-moment objective,
+strong policy controls, selected positive easy-harm budget and unknown-label
+bounds must remain fixed. A temporal-MSE improvement alone cannot authorize
+deployment. Partial-label per-step fitting and per-row scoring have different
+effective weights; the complete-label stratum is not a remedy for selection
+or missingness. All intervals remain nominal exposed-development evidence.
+
+See [temporal study](../european_temporal_target_audit_v1/conclusions.md),
+[tables](../european_temporal_target_audit_v1/results.md) and
+[independent verification](../european_temporal_target_audit_v1/verification.json).
+
 ## Limits on the Paper Claim
 
 Nominal3000 locality bootstrap intervals describe development comparisons after

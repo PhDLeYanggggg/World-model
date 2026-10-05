@@ -7,15 +7,34 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**Registered next diagnostic: temporal target viability.**
-The goal has resumed. A TRAIN-only analytic probe will test whether frozen causal
-leaves predict stepwise errors beyond global temporal and leaf-constant controls.
-The original whole-trajectory benefit/harm targets and policy remain unchanged:
-mean positive step harm is not the same target. Ten focused tests pass; real
-pilot/full readouts are pending. CREATE SSH timed out on October 5; no remote
-job state or weight availability is inferred. This local study needs no new
-numerical cache, neural training, remote jobs or independent-role access.
-[Protocol](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/protocol.md).
+**Temporal target audit completed: predictive structure, not safer decisions.**
+All 72 TRAIN-only analytic probes and exact refits completed. Relative to a
+leaf-local whole-trajectory mean, predicting stepwise signed error reduces
+normalized validation MSE by 0.094342 (nominal 95% locality interval
+[-0.158824, -0.038614]); the complete-label contrast is also negative. The
+global temporal-mean control is retained and beaten on this diagnostic.
+
+The selected cohort tells a more limited story: signed MSE changes +0.000043
+against the leaf-local mean, with interval [-0.000140, +0.000256]. Thus the
+registered temporal-information screen passes, but selected-policy improvement
+is not demonstrated. Original actions and the whole-trajectory risk target are
+unchanged. Averaging positive step errors would silently change that target;
+39.84% of pooled gross step harm cancels against within-trajectory benefits.
+This is an accounting identity, not a 39.84% model improvement.
+
+Full fitting/replay took 279.13 seconds, peak RSS 9.719 GB. Twelve focused tests,
+1,656 run-time checks and 3,696 independent scalar/bootstrap checks pass.
+There are 12 exposed development localities, not 72 independent scenes;
+3,000-resample intervals are nominal, not search-adjusted confirmation.
+No new neural training, policy promotion or independent-role access occurred.
+Next is a separately registered matched temporal-auxiliary training test with
+the primary five-moment objective and 2% selected easy-risk rule held fixed.
+CREATE remained unobservable after two read-only SSH timeouts on October 5;
+no remote job failure or absence is inferred.
+[Conclusions](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/conclusions.md),
+[full tables](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/results.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/reproduction_zh.md),
+[submission evidence gaps](outputs/publication_readiness_2026_09/cvpr2027_feasibility_20261005.md).
 
 **TRAIN-identity extension completed: prediction repair, not policy repair.**
 Clipping past-quality coordinates to each fixed leaf's TRAIN range preserves all
@@ -35,10 +54,9 @@ promotion and no new neural training.
 Full replay took 426.82 seconds, peak RSS 10.297 GB. Ten focused tests, 21,528
 run-time scalar checks and 12,660 independent scalar/bootstrap checks pass.
 The 72 heads reuse 12 exposed development localities, not 72 independent sites;
-intervals are nominal and not search-adjusted. Next priority is temporal
-benefit/harm target identifiability on existing TRAIN/development data, not
-another threshold sweep. The next diagnostic is registered above; independent
-roles stay closed.
+intervals are nominal and not search-adjusted. The temporal benefit/harm
+diagnostic motivated by this result is now complete above; it does not repair
+this extension's policy risk. Independent roles stay closed.
 [Conclusions](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/conclusions.md),
 [full tables](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/findings.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_leaf_quality_extension_v1/reproduction_zh.md).
