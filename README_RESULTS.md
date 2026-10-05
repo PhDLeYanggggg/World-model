@@ -7,6 +7,22 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**Execution is resource-blocked, not complete.** On October 5 at 12:26 UTC,
+the registered local admission check still rejects training: about 1.98 GiB
+additional free space is needed while keeping the 10 GiB reserve and checkpoint
+allowance. The small pytest caches cannot resolve the shortfall. CREATE's
+authorized read-only owner query again timed out, so ownership, quota and jobs
+remain unobserved. The known prior inspection PID is gone; no live training
+handle is being waited on. No existing assets were deleted or safety limits
+relaxed. This same condition has persisted for at least three goal turns after
+the independent trainer/readout and manuscript work was completed.
+
+Resume requires sufficient local storage or restored CREATE access followed by
+the existing ownership/quota/job/runtime checks. The next scientific action is
+the registered matched pilot, not another threshold search or document-only
+claim. Routine research authorization remains in place; the goal is not achieved.
+[Resource evidence and resume condition](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
+
 **A coherent current manuscript now separates prediction from policy evidence.**
 The new revision preserves the four-site SDD study and incorporates the later
 twelve-locality EuropeanSquares cost-support, TRAIN-identity extension and

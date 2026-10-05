@@ -37,6 +37,8 @@ and compares no auxiliary, row-mean auxiliary and temporal auxiliary supervision
 The trainer and seven-arm readout are frozen and tested. Actual fitting remains
 not_run: local storage is below the registered reserve and CREATE access is
 currently unavailable. No real optimizer updates or new model results exist yet.
+Execution is now marked resource-blocked; the [recorded resume conditions](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json)
+preserve the experiment and existing assets. This is not completion of the research goal.
 
 The [current English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
