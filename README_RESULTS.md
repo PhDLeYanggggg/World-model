@@ -23,6 +23,11 @@ No other project environment or job is modified.
 The first transport attempt exposed a filename allowlist bug with hyphenated
 locality IDs and stopped before writing any input file. The separately registered
 transport repair passes 22 targeted checks; numerical code is unchanged.
+The first 112.37 MB TRAIN packet is now hash-verified on CREATE. Pilot job
+**37790290** was accepted; at 13:05 UTC it was **pending**, with no checkpoint or
+optimizer update yet observed. This is scheduler progress, not a training result.
+[Live execution record](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_execution_status.json),
+[CREATE run and recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md).
 [CREATE execution amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_protocol.md),
 [historical resource blocker](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json).
 
