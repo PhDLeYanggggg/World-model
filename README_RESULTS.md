@@ -25,16 +25,18 @@ locality IDs and stopped before writing any input file. The separately registere
 transport repair passes 22 targeted checks; numerical code is unchanged.
 All **24 TRAIN packets / 72 source-head identities** are now on CREATE, totaling
 440.82 MB. Each packet was checksum-verified during transfer; no large local
-data cache was created. Pilot job **37790290** remains pending for priority in
-the **14:02 UTC** October 5 scheduler observation, with no estimated start time.
+data cache was created. Pilot job **37790290** remains pending in the
+**14:15 UTC** October 5 scheduler observation, with no confirmed start time.
 Access recovered after the earlier SSH timeouts. A fresh read-only whole-export
 audit verified all 24 packet hashes, the configuration and executable code.
 Full training has not been submitted, and no new scientific result is claimed.
 The pending pilot's training entry point had the same mounted-root comparison
 defect as the reader. Execution revision 3 fixes that single path comparison;
-83 related tests pass. The registered repair holds only an unstarted owned job,
-archives the previous execution bytes and preserves the job ID. Remote repair
-and release remain separate verified steps, not evidence of optimizer success.
+83 related tests pass. The registered repair held only the unstarted owned job,
+archived the previous execution bytes and preserved its job ID. Remote repair
+and release both completed; it is back in the queue with no optimizer updates.
+Only one code binding changed in the input manifests; TRAIN packets and the
+scientific protocol did not change. These are execution repairs, not model lift.
 [Training-root repair](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_port_root_fix.md).
 [Live execution record](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_execution_status.json),
 [CREATE run and recovery guide](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md).
