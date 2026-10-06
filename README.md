@@ -60,9 +60,14 @@ is now submitted as four disjoint CREATE tasks, with 2,000 updates per fit.
 The first full task reached2,000 updates but failed exact equality with its
 historical control; the reported weight difference is2.43e-6. Unstarted tasks
 are held while a same-node TRAIN replay diagnoses the mismatch. It is not yet
-known whether this is numerical portability or a training implementation issue.
+known whether the low-level cause is a historical floating-point/kernel path.
 Another shard completed36 fits; all checkpoints and its18 historical controls
 verify exactly. Those valid results are retained, not retrained.
+The completed same-node diagnostic now reproduces the failed checkpoint exactly
+with the unmodified original trainer, both directly and through pilot recovery.
+Only the historical saved state differs. An explicit, pre-readout amendment
+uses that exact original-trainer replay for this one identity and keeps the
+historical mismatch visible; floating tolerances and research gates do not change.
 All final heads must be verified before the fixed development evaluation.
 [Pilot evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 

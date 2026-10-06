@@ -29,6 +29,17 @@ The10:28 UTC check verifies task1 completed0:0 in5m17s:36 final checkpoints
 and18 exact historical quadratic controls pass hash/step checks. Full training
 remains incomplete. Diagnostic37814380 is pending; numerical portability is a
 hypothesis, not a confirmed cause. Completed fits and failed logs are preserved.
+Diagnostic37814380 subsequently **completed0:0 in32s**, performing5,900
+verification updates. Original/new direct training and pilot-resumed training
+match the failed checkpoint exactly. Historical versus current execution differs
+only in model/optimizer tensors; the low-level kernel cause remains unresolved.
+An explicit one-identity reference amendment is registered before readout: require
+exact equality with the original-trainer replay, not a larger tolerance. All other
+historical controls retain the original check. The36 completed fits stay frozen;
+only shards0/2/3 will resume. Forty-eight scoped tests pass, including fixed
+six-arm readout arithmetic and independent scalar verification. No new real-data
+readout or scientific gain is claimed.
+[Evidence and narrow amendment](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_replay_amendment.md).
 [Pilot checks and losses](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 [Registered comparison](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/protocol.md).
 
