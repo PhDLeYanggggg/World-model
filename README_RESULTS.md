@@ -19,6 +19,12 @@ is inferred. The conservative per-shard estimate is10.9minutes, not a measured
 full runtime. Array **37814169** and verification join **37814170** are submitted
 and released; each shard retains a12-hour limit. Sixteen scoped tests passed.
 No development result, deployment or independent confirmation is claimed yet.
+The first full task subsequently **failed** after2,000 updates at exact historical
+control comparison (reported maximum difference2.428889e-6 in one weight tensor).
+Shards2/3 were held before starting; shard1 was already running and was preserved.
+A registered same-node TRAIN-only diagnosis compares original/new direct fits,
+pilot-resumed execution and the historical checkpoint. No acceptance rule is
+relaxed. Nineteen relevant tests pass; the full legacy suite was not rerun.
 [Pilot checks and losses](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 [Registered comparison](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/protocol.md).
 

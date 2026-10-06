@@ -57,6 +57,10 @@ checkpoint recovery and the original control replay exactly, and the resource
 checks pass. The two 100-step pilot monitoring losses did not improve, so this
 is execution evidence, not an accuracy or safety result. The full comparison
 is now submitted as four disjoint CREATE tasks, with 2,000 updates per fit.
+The first full task reached2,000 updates but failed exact equality with its
+historical control; the reported weight difference is2.43e-6. Unstarted tasks
+are held while a same-node TRAIN replay diagnoses the mismatch. It is not yet
+known whether this is numerical portability or a training implementation issue.
 All final heads must be verified before the fixed development evaluation.
 [Pilot evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 
