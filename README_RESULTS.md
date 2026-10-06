@@ -69,6 +69,13 @@ loss primitive is implemented and tested. Successor status has advanced from
 neither constitutes a confirmed repair result.
 [Diagnosis and limits](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/conclusions.md),
 [full signed decomposition](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/report.md).
+The [English manuscript diagnostic](outputs/publication_readiness_2026_09/evidence_manuscript_v3/train_selection_diagnostic_addendum.md)
+now distinguishes TRAIN conditional error from domain shift, median ratios from
+equal-locality means, and positive selected harm from net easy ADE degradation.
+Its six source hashes and216 cached head receipts are verified; aggregate replay
+is exact. This is manuscript assembly, not another fresh training or test result.
+The one-identity successor replay amendment and unresolved low-level cause remain
+explicit. No successor scientific gain is inferred.
 
 **The completed temporal-auxiliary experiment fails the advancement screen.**
 All 216 fixed-final fits and the 72-view/12-locality seven-arm readout are done.

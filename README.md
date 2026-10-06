@@ -78,7 +78,11 @@ The [version-three English manuscript](outputs/publication_readiness_2026_09/evi
 connects the earlier SDD study to these European development results without
 pooling their metrics. It retains strong conventional controls and negative
 findings; the [new experimental addendum](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/manuscript_addendum.md)
-replaces its earlier pending-training status. The central question remains whether better cost prediction produces
+replaces its earlier pending-training status. A second
+[TRAIN selection diagnostic](outputs/publication_readiness_2026_09/evidence_manuscript_v3/train_selection_diagnostic_addendum.md)
+shows that selected harm is already underestimated before transfer, with a
+traceable decomposition and the successor's reproducibility limitation retained.
+The central question remains whether better cost prediction produces
 better decisions on the selected population, not merely a smaller average loss.
 
 - [Completed temporal diagnostic](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/conclusions.md)
