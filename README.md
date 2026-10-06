@@ -74,6 +74,15 @@ shows them queued. The cache-free six-arm readout is implemented and registered,
 with61 scoped tests passing, but has not run on real development data yet.
 [Pilot evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 
+**Execution update, 6 October at 12:56 UTC:** two resumed shards have completed.
+There are now 110 hash-verified final fits, including 54 exact historical controls
+and the one explicitly documented original-trainer replay. The last shard failed
+on another identity, with a reported weight difference of 0.113232. This is not
+dismissed as a negligible numerical discrepancy. A TRAIN-only original/new
+implementation sweep is registered for the 17 still-unaccepted pairs. Existing
+fits are preserved, no additional acceptance exception has been granted, and
+new development evaluation remains closed.
+
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
 pooling their metrics. It retains strong conventional controls and negative

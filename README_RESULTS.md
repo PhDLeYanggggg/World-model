@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**12:56 UTC execution update:110/144 final fits verified; a second exact-control failure blocks readout.**
+Tasks37815216_2/3 completed0:0 in7m20s/9m51s. Together with preserved task1 and
+the first resumed pair,110 checkpoint hashes and2,000-step receipts verify.
+Fifty-four quadratic controls reproduce historical states exactly; one uses the
+previously registered original-trainer replay. Task37815216_0 failed on
+eu-locality-020/head29: maximum reported difference0.113232, not a negligible
+2.43e-6 discrepancy. No new exception or floating tolerance is accepted.
+A17-identity TRAIN-only diagnostic now compares unmodified original and new
+direct2,000-step fits with saved/historical states. Its68,000 verification updates
+are separate from scientific training. Ten focused diagnostic tests pass.
+The complete144-head freeze and new development readout remain **not_run**.
+[Verified partial inventory and failed log](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/partial_training_observation_20261006T1256Z.json).
+[Registered diagnostic](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_diagnostic_v2_registration.json).
+
 **The paired easy-harm pilot passed engineering checks; full training is submitted.** It changes one
 moment-loss term, retaining the bounded decoder, signed-score losses,72 original
 TRAIN identities, three seeds,2,000 updates and2% risk budget. All144 final fits
