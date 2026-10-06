@@ -44,6 +44,11 @@ the negative result and investigating false-safe harm/reference predictions,
 without relaxing the risk budget or tuning the completed evaluation. These are
 exposed development findings, not independent confirmation or a deployment gain.
 
+The next diagnostic replays the frozen heads on their original training rows
+to separate harm underestimation from reference-cost overestimation. Its causal
+movement mask now matches all 24 original training packets exactly. This is a
+training-set mechanism check, not another generalization result.
+
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
 pooling their metrics. It retains strong conventional controls and negative

@@ -7,6 +7,14 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**TRAIN false-safe diagnosis is registered, not yet executed.** The causal
+movement mask reconstructed from the frozen CV rollout columns matches every
+row in all 24 TRAIN packets. Five targeted tests pass. The next allocated job
+will replay the 216 immutable heads to decompose selected easy-risk excess
+into harm underprediction, reference overprediction and predicted slack. It
+will make no optimizer update, threshold selection or new validation readout.
+[Fixed diagnostic protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/protocol.md).
+
 **The completed temporal-auxiliary experiment fails the advancement screen.**
 All 216 fixed-final fits and the 72-view/12-locality seven-arm readout are done.
 The fixed evaluator ran 11,391,961 scalar checks and 3,000 paired locality
