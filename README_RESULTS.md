@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**The17-identity TRAIN diagnostic completed; the broader recovery is not yet executed.**
+Job37817976 completed0:0 in4m10s, with68,000 verification updates. Original/new
+direct fits match exactly for17/17 identities, while historical replay matches
+0/17. Metadata, initial states and random draw histories match throughout.
+The failed saved checkpoint also matches both direct implementations. All18
+historical shard-zero heads share one old node that is now absent from the
+scheduler. Execution-environment sensitivity is supported as an explanation,
+but a specific low-level CPU/kernel cause is not proven. No larger tolerance or
+second acceptance exception is granted.110 accepted fits stay preserved; the
+complete144-head freeze and scientific readout are still not done.
+[Completed diagnosis and next recovery requirements](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_diagnostic_v2/conclusions.md).
+
 **12:56 UTC execution update:110/144 final fits verified; a second exact-control failure blocks readout.**
 Tasks37815216_2/3 completed0:0 in7m20s/9m51s. Together with preserved task1 and
 the first resumed pair,110 checkpoint hashes and2,000-step receipts verify.

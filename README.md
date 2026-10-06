@@ -82,6 +82,12 @@ dismissed as a negligible numerical discrepancy. A TRAIN-only original/new
 implementation sweep is registered for the 17 still-unaccepted pairs. Existing
 fits are preserved, no additional acceptance exception has been granted, and
 new development evaluation remains closed.
+The diagnostic has since completed: all 17 new/original implementation pairs
+match exactly, but none matches its historical shard-zero checkpoint. The
+historical compute node no longer exists. This localizes an execution-reproduction
+problem without proving its low-level cause; I am retaining it explicitly while
+preparing the next recovery contract. It is not a scientific result for the loss.
+[Diagnostic evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_diagnostic_v2/conclusions.md).
 
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
