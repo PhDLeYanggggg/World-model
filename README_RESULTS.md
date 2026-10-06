@@ -17,6 +17,8 @@ eu-locality-020/head29: maximum reported difference0.113232, not a negligible
 A17-identity TRAIN-only diagnostic now compares unmodified original and new
 direct2,000-step fits with saved/historical states. Its68,000 verification updates
 are separate from scientific training. Ten focused diagnostic tests pass.
+Diagnostic **37817976** is submitted and released; the first scheduler check
+shows normal Priority waiting. No diagnostic outcome is claimed yet.
 The complete144-head freeze and new development readout remain **not_run**.
 [Verified partial inventory and failed log](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/partial_training_observation_20261006T1256Z.json).
 [Registered diagnostic](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_diagnostic_v2_registration.json).
