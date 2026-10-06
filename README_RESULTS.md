@@ -7,20 +7,41 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**All 216 fixed-final TRAIN fits are complete; downstream evaluation is next.**
+**The completed temporal-auxiliary experiment fails the advancement screen.**
+All 216 fixed-final fits and the 72-view/12-locality seven-arm readout are done.
+The fixed evaluator ran 11,391,961 scalar checks and 3,000 paired locality
+bootstrap draws. Temporal minus row-mean all-row signed MSE is **-0.024422**,
+nominal 95% CI **[-0.054556, -0.001405]**, but paired lower utility is worse:
+**-0.353836** percentage points of full known reference cost, CI
+**[-0.545292, -0.186078]**. Same-count utility is also worse. Temporal loses
+to the no-auxiliary neural head on full paired utility by **-1.026746**,
+CI **[-1.557310, -0.574154]**. These are not FDE improvements.
+
+All 72 temporal full-policy views violate completion-upper easy risk; 60
+already violate the unchanged 2% budget on known outcomes. Median known
+selected easy risk is **7.283471%**. Twenty-nine original-selected views lack
+known support, so that required common-cohort MSE comparison stays undefined.
+No dropped views, threshold retuning, deployment promotion or independent-role
+access is used to turn this into success. Next is a TRAIN-only false-safe
+harm/reference diagnostic before any decision-aware repair.
+[Complete readout](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/report.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/failure_analysis.md),
+[manuscript addendum](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/manuscript_addendum.md).
+
+**All 216 fixed-final TRAIN fits are complete.**
 The four tasks in array **37799286** and verification join **37799287** completed
 with exit 0:0. Every head reached 2,000 updates; three head seeds and all 12
 development localities are present. The collector verified 216 metadata records
 and 48.43 MB of final checkpoint payloads without a local weight cache. All
 recorded losses/gradients are finite. The longest task took 3h42m, below its
 12-hour limit. This is full registered cost-head training, not a pilot or new
-world-dynamics forecaster training. No downstream lift is yet claimed.
+world-dynamics forecaster training. The readout above rejects advancement.
 
 The no-auxiliary / row-mean / temporal arms finish with mean primary TRAIN
 monitor losses **0.362193 / 0.405558 / 0.366840**, from the same 0.863542 mean.
 Temporal supervision does not beat the no-auxiliary control on this training
-monitor. The frozen seven-arm development readout must determine whether it
-improves actual intervention utility and safety. Independent roles stay closed.
+monitor. The subsequent frozen seven-arm readout finds no safe superiority over
+the matched neural controls. Independent roles stay closed.
 [Full training evidence and limits](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_training_report.md).
 
 **Earlier pilot and execution design.**

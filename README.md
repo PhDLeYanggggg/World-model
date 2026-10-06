@@ -25,28 +25,35 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**Temporal error structure is predictable; safer intervention is still unproved.**
-I completed 72 TRAIN-only temporal probes on the frozen EuropeanSquares source
-partitions. Stepwise targets reduce normalized validation error relative to a
-leaf-local trajectory mean by 0.094342, with a nominal locality interval of
-[-0.158824, -0.038614]. But the corresponding result on cases selected by the
-existing policy is inconclusive. I am not treating that as a deployment gain.
+**Temporal supervision improves prediction error, but not safe decisions.**
+I completed all 216 matched neural cost-head fits on the frozen EuropeanSquares
+source partitions, with three head seeds and 2,000 updates per fit. The comparison
+keeps the architecture, primary loss and sampling fixed, and varies no auxiliary,
+row-mean auxiliary and temporal auxiliary supervision. All models were frozen
+before the seven-arm development evaluation.
 
-The next experiment keeps the same neural cost head, samples and update budget,
-and compares no auxiliary, row-mean auxiliary and temporal auxiliary supervision.
-The trainer and seven-arm readout are frozen and tested. Actual fitting remains
-not_run: local storage is below the registered reserve and CREATE access is
-currently unavailable. No real optimizer updates or new model results exist yet.
-Execution is now marked resource-blocked; the [recorded resume conditions](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/resource_blocker.json)
-preserve the experiment and existing assets. This is not completion of the research goal.
+Temporal supervision improves normalized signed-score error over the row-mean
+control by 0.024422, with a nominal locality interval of [0.001405, 0.054556].
+But its paired decision utility is worse, including when intervention counts
+are matched within each query. It also loses to the no-auxiliary neural control.
+Sixty of 72 source/seed views already violate the 2% selected easy-harm budget
+on known outcomes. This cannot be explained only by missing labels.
 
-The [current English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
+The experiment ran successfully; the proposed model did not pass. I am retaining
+the negative result and investigating false-safe harm/reference predictions,
+without relaxing the risk budget or tuning the completed evaluation. These are
+exposed development findings, not independent confirmation or a deployment gain.
+
+The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
 pooling their metrics. It retains strong conventional controls and negative
-findings. The central question remains whether better cost prediction produces
+findings; the [new experimental addendum](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/manuscript_addendum.md)
+replaces its earlier pending-training status. The central question remains whether better cost prediction produces
 better decisions on the selected population, not merely a smaller average loss.
 
 - [Completed temporal diagnostic](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/conclusions.md)
+- [Complete matched training and downstream results](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/report.md)
+- [Why the neural policy failed](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/failure_analysis.md)
 - [Registered training and recovery](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md)
 - [Current paper and reproducible tables](outputs/publication_readiness_2026_09/evidence_manuscript_v3/README.md)
 - [Complete results ledger](README_RESULTS.md)
