@@ -49,13 +49,16 @@ All 216 heads underestimate easy-case harm on their selected populations.
 The temporal arm violates the fixed budget in 52 of 72 TRAIN source/seed views;
 its median predicted/actual selected-harm ratio is only 0.0392. Reference-cost
 overestimation is not the dominant error. This is a training-set diagnosis, not
-a new generalization gain. I am testing a more suitable easy-harm loss next;
-only its arithmetic and gradient implementation have been checked so far.
+a new generalization gain. I am testing a more suitable easy-harm loss next.
 
 The paired easy-harm experiment is now registered: 144 fixed-budget fits, with
-the original quadratic loss as an exact control. The initial TRAIN pilot checks
-actual gradients, checkpoint recovery and runtime before the full comparison.
-It has not produced a new accuracy or safety result.
+the original quadratic loss as an exact control. The real TRAIN pilot is complete:
+checkpoint recovery and the original control replay exactly, and the resource
+checks pass. The two 100-step pilot monitoring losses did not improve, so this
+is execution evidence, not an accuracy or safety result. The full comparison
+is now submitted as four disjoint CREATE tasks, with 2,000 updates per fit.
+All final heads must be verified before the fixed development evaluation.
+[Pilot evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without

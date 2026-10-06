@@ -7,13 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**The paired easy-harm cost-deviance experiment is registered.** It changes one
+**The paired easy-harm pilot passed engineering checks; full training is submitted.** It changes one
 moment-loss term, retaining the bounded decoder, signed-score losses,72 original
 TRAIN identities, three seeds,2,000 updates and2% risk budget. All144 final fits
 must freeze before a new development readout. The engineering pilot checks100
 updates per arm plus exact control/recovery replays, not scientific lift.
-Local targeted tests verify exact quadratic-control training and exact resume.
-No new training result, deployment or independent confirmation is claimed yet.
+Pilot **37813826 completed 0:0 in59s**, including400 actual updates across the
+paired fits and two exact recovery/control replays. Peak Python RSS was1.20GiB.
+Both arms' own monitoring losses rose slightly at100 steps; no scientific lift
+is inferred. The conservative per-shard estimate is10.9minutes, not a measured
+full runtime. Array **37814169** and verification join **37814170** are submitted
+and released; each shard retains a12-hour limit. Sixteen scoped tests passed.
+No development result, deployment or independent confirmation is claimed yet.
+[Pilot checks and losses](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 [Registered comparison](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/protocol.md).
 
 **TRAIN false-safe diagnosis is complete, and risk still fails on TRAIN.**
@@ -29,8 +35,9 @@ a protective average contribution. This rules out pure unseen-domain shift as
 the sole explanation, not all possible modeling or label problems.
 There are432 scalar sum-identity assertions, zero optimizer updates, no new
 validation readout or independent-role access. A one-factor easy-harm deviance
-loss primitive is implemented and synthetically tested; successor training is
-**not_run**, not a repair result.
+loss primitive is implemented and tested. Successor status has advanced from
+**not_run** to the engineering pilot and registered full submission above;
+neither constitutes a confirmed repair result.
 [Diagnosis and limits](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/conclusions.md),
 [full signed decomposition](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/report.md).
 
