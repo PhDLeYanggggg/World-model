@@ -7,7 +7,23 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**The real TRAIN pilot now completes with exact resume; the full run is pending.**
+**All 216 fixed-final TRAIN fits are complete; downstream evaluation is next.**
+The four tasks in array **37799286** and verification join **37799287** completed
+with exit 0:0. Every head reached 2,000 updates; three head seeds and all 12
+development localities are present. The collector verified 216 metadata records
+and 48.43 MB of final checkpoint payloads without a local weight cache. All
+recorded losses/gradients are finite. The longest task took 3h42m, below its
+12-hour limit. This is full registered cost-head training, not a pilot or new
+world-dynamics forecaster training. No downstream lift is yet claimed.
+
+The no-auxiliary / row-mean / temporal arms finish with mean primary TRAIN
+monitor losses **0.362193 / 0.405558 / 0.366840**, from the same 0.863542 mean.
+Temporal supervision does not beat the no-auxiliary control on this training
+monitor. The frozen seven-arm development readout must determine whether it
+improves actual intervention utility and safety. Independent roles stay closed.
+[Full training evidence and limits](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_training_report.md).
+
+**Earlier pilot and execution design.**
 Job **37798513 completed 0:0**: three auxiliary-control branches each trained
 100 updates, and uninterrupted temporal replay exactly matched interrupted
 resume. Peak Python RSS was 1.31 GiB; four checkpoints and the original code
@@ -23,9 +39,9 @@ equivalence, resume, and rejection of incomplete or changed final artifacts.
 All 127 original scientific bindings are unchanged. Each shard is conservatively
 estimated at 10.86 hours; runtime is not guaranteed. The four-task array
 **37799286** and after-success verification job **37799287** are submitted and
-released. The 17:57 UTC observation records all four tasks pending, zero final
-fits, and no new validation readout. All four successful tasks and every final
-fit must verify before readout. Existing pilot work will resume, not restart.
+released. The historical 17:57 UTC observation recorded all four tasks pending,
+zero final fits, and no new validation readout. Complete-array verification has
+since passed. Existing pilot work resumed without reducing any fit budget.
 [Execution-only amendment](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/parallel_execution_protocol.md).
 [Pilot losses, verification and resource gate](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_pilot_report.md).
 
