@@ -25,6 +25,10 @@ Shards2/3 were held before starting; shard1 was already running and was preserve
 A registered same-node TRAIN-only diagnosis compares original/new direct fits,
 pilot-resumed execution and the historical checkpoint. No acceptance rule is
 relaxed. Nineteen relevant tests pass; the full legacy suite was not rerun.
+The10:28 UTC check verifies task1 completed0:0 in5m17s:36 final checkpoints
+and18 exact historical quadratic controls pass hash/step checks. Full training
+remains incomplete. Diagnostic37814380 is pending; numerical portability is a
+hypothesis, not a confirmed cause. Completed fits and failed logs are preserved.
 [Pilot checks and losses](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 [Registered comparison](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/protocol.md).
 
