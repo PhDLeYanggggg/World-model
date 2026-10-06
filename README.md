@@ -69,6 +69,9 @@ Only the historical saved state differs. An explicit, pre-readout amendment
 uses that exact original-trainer replay for this one identity and keeps the
 historical mismatch visible; floating tolerances and research gates do not change.
 All final heads must be verified before the fixed development evaluation.
+The three unfinished shards have been resubmitted; the last scheduler check
+shows them queued. The cache-free six-arm readout is implemented and registered,
+with61 scoped tests passing, but has not run on real development data yet.
 [Pilot evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)

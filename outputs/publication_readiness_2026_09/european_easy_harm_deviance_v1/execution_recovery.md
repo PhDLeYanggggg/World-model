@@ -12,8 +12,13 @@ budget is not the same quantity as net easy ADE degradation.
   after2,000 updates. Its atomic checkpoint remains available.
 - Tasks2/3 were held before starting. Task1 completed0:0 in5m17s; all36 final
   checkpoints and18 historical controls were verified at10:28 UTC.
-- Verification join37814170 cannot release readout until every task passes.
-- Same-node control diagnostic37814380: pending at10:28 UTC. No result assumed.
+- Same-node control diagnostic37814380 completed0:0 in32s. Original/new direct
+  and pilot-resumed states match exactly; only the historical artifact differs.
+- An explicit one-identity reference amendment preserves that failure and uses
+  the verified original-trainer replay, without increasing floating tolerances.
+- Replacement array37815216 resumes only shards0/2/3. Join37815222 must combine
+  them with unchanged completed task37814169_1. The old held tasks2/3 and
+  obsolete join37814170 were cancelled after replacement receipts existed.
 
 ## Safe Inspection
 
@@ -39,9 +44,11 @@ portability. Its registration leaves the exact acceptance rule unchanged.
 ```
 
 Collection requires successful terminal scheduler accounting. A completed
-heartbeat alone is insufficient. Once verified, record the actual cause and an
-explicit execution amendment before resuming a held or failed task. Keep old
-checkpoints and failed logs. Do not increase tolerances merely to pass the gate.
+heartbeat alone is insufficient. The verified result and
+[explicit amendment](control_replay_amendment.md) retain the unresolved low-level
+historical floating-point cause. Old receipts/logs are archived, not overwritten
+without provenance. Original checkpoints and the36 completed fits remain.
+Floating tolerances are not increased.
 
 ## Data And Storage
 

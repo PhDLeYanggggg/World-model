@@ -40,6 +40,14 @@ only shards0/2/3 will resume. Forty-eight scoped tests pass, including fixed
 six-arm readout arithmetic and independent scalar verification. No new real-data
 readout or scientific gain is claimed.
 [Evidence and narrow amendment](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_replay_amendment.md).
+Replacement array **37815216** and join **37815222** are submitted and released.
+Only shards0/2/3 resume; the earlier completed task1 is part of the final join.
+The10:55 UTC scheduler observation shows the replacements pending normally.
+Old held tasks2/3 and their obsolete join were retired after replacement receipts
+were saved. No active or unrelated job was cancelled. The fixed six-arm reader,
+complete-grid admission and scalar checks now pass61 scoped tests; real readout
+is still **not_run**, with all144 heads required first.
+[Recovery and readout tutorial](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/reproduction_zh.md).
 [Pilot checks and losses](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
 [Registered comparison](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/protocol.md).
 
