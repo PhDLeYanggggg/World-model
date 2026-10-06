@@ -52,6 +52,11 @@ overestimation is not the dominant error. This is a training-set diagnosis, not
 a new generalization gain. I am testing a more suitable easy-harm loss next;
 only its arithmetic and gradient implementation have been checked so far.
 
+The paired easy-harm experiment is now registered: 144 fixed-budget fits, with
+the original quadratic loss as an exact control. The initial TRAIN pilot checks
+actual gradients, checkpoint recovery and runtime before the full comparison.
+It has not produced a new accuracy or safety result.
+
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
 pooling their metrics. It retains strong conventional controls and negative

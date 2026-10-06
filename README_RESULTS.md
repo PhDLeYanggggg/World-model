@@ -7,6 +7,15 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**The paired easy-harm cost-deviance experiment is registered.** It changes one
+moment-loss term, retaining the bounded decoder, signed-score losses,72 original
+TRAIN identities, three seeds,2,000 updates and2% risk budget. All144 final fits
+must freeze before a new development readout. The engineering pilot checks100
+updates per arm plus exact control/recovery replays, not scientific lift.
+Local targeted tests verify exact quadratic-control training and exact resume.
+No new training result, deployment or independent confirmation is claimed yet.
+[Registered comparison](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/protocol.md).
+
 **TRAIN false-safe diagnosis is complete, and risk still fails on TRAIN.**
 CREATE job **37812850** completed 0:0 in7m17s; numerical replay took93.706s.
 All216 immutable heads,24 input packets and repeated inference verified.
