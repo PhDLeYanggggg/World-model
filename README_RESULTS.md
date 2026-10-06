@@ -7,13 +7,23 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**TRAIN false-safe diagnosis is registered, not yet executed.** The causal
-movement mask reconstructed from the frozen CV rollout columns matches every
-row in all 24 TRAIN packets. Five targeted tests pass. The next allocated job
-will replay the 216 immutable heads to decompose selected easy-risk excess
-into harm underprediction, reference overprediction and predicted slack. It
-will make no optimizer update, threshold selection or new validation readout.
-[Fixed diagnostic protocol](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/protocol.md).
+**TRAIN false-safe diagnosis is complete, and risk still fails on TRAIN.**
+CREATE job **37812850** completed 0:0 in7m17s; numerical replay took93.706s.
+All216 immutable heads,24 input packets and repeated inference verified.
+No-auxiliary / row-mean / temporal have **58/57/52** known selected easy-risk
+violations out of72 TRAIN source/seed views, respectively. Their median risks
+are **5.3710% /4.5675% /4.3047%**, against the unchanged2% budget. All216
+underestimate selected easy-harm mass. Temporal's median predicted/actual
+selected-harm ratio is **0.039213**, versus **0.705898** on all known TRAIN rows.
+Its signed excess is dominated by harm underprediction; reference error has
+a protective average contribution. This rules out pure unseen-domain shift as
+the sole explanation, not all possible modeling or label problems.
+There are432 scalar sum-identity assertions, zero optimizer updates, no new
+validation readout or independent-role access. A one-factor easy-harm deviance
+loss primitive is implemented and synthetically tested; successor training is
+**not_run**, not a repair result.
+[Diagnosis and limits](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/conclusions.md),
+[full signed decomposition](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/report.md).
 
 **The completed temporal-auxiliary experiment fails the advancement screen.**
 All 216 fixed-final fits and the 72-view/12-locality seven-arm readout are done.

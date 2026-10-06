@@ -44,10 +44,13 @@ the negative result and investigating false-safe harm/reference predictions,
 without relaxing the risk budget or tuning the completed evaluation. These are
 exposed development findings, not independent confirmation or a deployment gain.
 
-The next diagnostic replays the frozen heads on their original training rows
-to separate harm underestimation from reference-cost overestimation. Its causal
-movement mask now matches all 24 original training packets exactly. This is a
-training-set mechanism check, not another generalization result.
+The follow-up replay now shows that the failure starts on the training data.
+All 216 heads underestimate easy-case harm on their selected populations.
+The temporal arm violates the fixed budget in 52 of 72 TRAIN source/seed views;
+its median predicted/actual selected-harm ratio is only 0.0392. Reference-cost
+overestimation is not the dominant error. This is a training-set diagnosis, not
+a new generalization gain. I am testing a more suitable easy-harm loss next;
+only its arithmetic and gradient implementation have been checked so far.
 
 The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
 connects the earlier SDD study to these European development results without
@@ -59,6 +62,7 @@ better decisions on the selected population, not merely a smaller average loss.
 - [Completed temporal diagnostic](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/conclusions.md)
 - [Complete matched training and downstream results](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/report.md)
 - [Why the neural policy failed](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/failure_analysis.md)
+- [TRAIN false-safe diagnosis and next hypothesis](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/conclusions.md)
 - [Registered training and recovery](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md)
 - [Current paper and reproducible tables](outputs/publication_readiness_2026_09/evidence_manuscript_v3/README.md)
 - [Complete results ledger](README_RESULTS.md)
