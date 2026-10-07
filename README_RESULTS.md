@@ -26,6 +26,11 @@ must match before moving the existing recovery job. The34,000 planned diagnostic
 updates are verification work, not new scientific fits. Twenty-four focused
 portability/recovery tests pass. The original recovery and its join stay intact;
 scientific readout remains not_run.
+At14:26 UTC the diagnostic was still Priority-pending with zero runtime, after
+20-minute and60-minute observation intervals. The13:25 resource snapshot shows
+only three effective spare CPUs on the alternate node, fewer than its fixed
+four-CPU request. No crash, execution completion or new numerical result is
+inferred from queue waiting. No duplicate candidate training was submitted.
 [Execution-only protocol](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/node_portability_v1/protocol.md).
 
 **The technical supplement now specifies the implemented method and its limits.**
