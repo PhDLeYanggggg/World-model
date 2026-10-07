@@ -7,6 +7,15 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**The technical supplement now specifies the implemented method and its limits.**
+It documents query-weighted losses, the bounded decoder, masked temporal targets,
+same-count comparisons, unknown-outcome bounds and locality bootstrap. Five
+executable mathematical examples reproduce the implementation, including the
+nonmonotone selected-risk ratio and the difference between paired uncertainty
+and subtraction of lower bounds. Fifteen focused supplement/manuscript tests
+pass. These are synthetic checks, not new real-data results or safety guarantees.
+[Technical supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v4/supplement.md).
+
 **October 7,11:48 UTC: recovery remains queued; a scheduling update is verified.**
 The existing array37835856 now permits a one-hour minimum allocation for backfill,
 with its12-hour requested maximum retained. A timed-out scheduler request applied

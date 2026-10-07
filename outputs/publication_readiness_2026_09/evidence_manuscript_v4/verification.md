@@ -24,3 +24,16 @@ The easy-harm-deviance successor is not yet a scientific result in this revision
 Its frozen144-fit admission and unchanged six-arm readout remain the next
 experimental dependency. The outstanding objective is a credible, independently
 evaluated positive intervention method, not merely a complete document.
+# Technical Supplement Addition
+
+The supplement records the actual five-moment/three-score loss coefficients,
+query weighting, temporal masks, fixed actions, paired unknown-outcome accounting
+and locality resampling. The original scientific code and experiment registrations
+are unchanged. `verify_m3w_supplement_v4` runs five synthetic identity/counterexample
+families and binds eleven source files. It does not read real trajectories or
+perform optimizer updates. Export and `--check` agree exactly.
+
+Focused run: `tests/test_m3w_supplement_v4.py` plus
+`tests/test_m3w_evidence_manuscript_v4.py`: **15 passed**. The full legacy suite
+was not rerun for this documentation/example addition. No real-data improvement,
+population-risk guarantee or anonymous-release completion follows from this check.

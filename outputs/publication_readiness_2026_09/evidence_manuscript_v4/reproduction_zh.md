@@ -19,12 +19,19 @@
 .venv-pytorch/bin/python -m scripts.build_m3w_evidence_manuscript_v4 --check
 .venv-pytorch/bin/python -m scripts.plot_m3w_evidence_manuscript_v4 --check
 .venv-pytorch/bin/python -m pytest -q tests/test_m3w_evidence_manuscript_v4.py
+.venv-pytorch/bin/python -m scripts.verify_m3w_supplement_v4 --check
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_supplement_v4.py
 ```
 
 导出器验证14个固定来源，以及链接的216个训练记录和72个评价分组记录。
 这些是本地公开记录的哈希检查，不是重新读取远端所有私有 checkpoint。
 正文修改放在 `manuscript.template.md`，再去掉 `--check` 重新生成。
 检查不通过时核实变更来源，不能为了通过检查而随意更改来源哈希。
+
+`supplement.md` 补齐了损失的实际权重、按 query 采样与平均、未知样本的
+配对误差界、风险比例非单调反例，以及按 locality 聚合的统计步骤。
+`supplement_examples.json` 是五类合成数学核验，不读取真实轨迹，也不更新
+模型。不能把这些检查称为新增模型提升或完成匿名复现。
 
 ## 真实训练和评价
 

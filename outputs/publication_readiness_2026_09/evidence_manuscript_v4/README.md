@@ -10,6 +10,10 @@ the earlier SDD and European development results as separate studies.
 - `evidence.json`: pinned sources, evidence roles, negative decisions and counts.
 - `figures/`: aggregate-only vector figures, without dataset imagery.
 - `reproduction_zh.md`: local verification, CREATE observation and recovery boundary.
+- `supplement.md`: implemented losses, sampling, actions, missing-outcome bounds
+  and statistical aggregation, with explicit limitations.
+- `supplement_examples.json`: reproducible synthetic mathematical examples and
+  source hashes; not additional real-data evidence.
 
 The temporal experiment is complete and negative: improvement in one prediction
 metric did not improve utility against its matched neural controls or establish
