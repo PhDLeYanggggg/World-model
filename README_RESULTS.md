@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October 7,15:47 UTC: recovery resource sizing is verified; training is still queued.**
+The original node's resource picture changed during the afternoon: six effective
+CPUs became free, but available memory was below the previous16GiB request.
+Four completed comparable batches used at most1.54GiB peak RSS. The same owned
+recovery now requests8GiB and permits a ten-minute minimum backfill allocation,
+while keeping four CPUs, the original node and a12-hour requested maximum.
+The first syntax attempt was rejected; the corrected command reported an error
+but a later authoritative readback confirmed both changes. It was not retried.
+Fifty-one focused scheduling/observation tests pass. All110 accepted receipts,
+17 missing candidate fits, checkpoints and the144-fit readout requirement stay
+unchanged. Queue observation failures are recorded separately from job failures.
+No new training result or scientific improvement is claimed.
+[Scheduling evidence](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/scheduler_resource_repair_outcome.md).
+
 **Revision-four aggregate replay now runs outside the research environment.**
 The85,571-byte standard-library bundle reproduces six tables and18 temporal
 contrast/metric rows from14 pinned sources in an isolated Python process.
@@ -24,8 +38,8 @@ scoped manuscript/replay/supplement tests pass for this revision.
 [Contribution boundary](outputs/publication_readiness_2026_09/evidence_manuscript_v4/decision_learning_position.md).
 [October7 official-date and policy recheck](outputs/publication_readiness_2026_09/venue_status_2026_10_07.md).
 
-**October 7: a separate execution-portability check is queued.**
-The recovery node has124 effective CPUs and all124 are allocated; its four
+**October 7 morning: a separate execution-portability check was queued.**
+At that observation the recovery node had124 effective CPUs and all124 were allocated; its four
 apparent spare cores are system-reserved, so memory is not the immediate queue
 bottleneck. Isolated TRAIN-only job37837636 will replay the17 frozen controls on
 another zen3 node, without changing references or tolerances. It is submitted
