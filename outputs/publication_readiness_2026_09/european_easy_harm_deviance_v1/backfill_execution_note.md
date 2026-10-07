@@ -19,3 +19,10 @@ continues to guard the readout.
 [Slurm sbatch documentation](https://slurm.schedmd.com/sbatch.html) describes
 the minimum-time backfill behaviour; [scontrol](https://slurm.schedmd.com/scontrol.html)
 documents the pending-job update. Faster queue admission is not guaranteed.
+
+The first authenticated update attempt timed out after20seconds. A subsequent
+read-only scheduler response confirmed the same pending job, zero runtime,
+`TimeMin=N/A` and no update receipt. This is not a training failure. The bounded
+retry uses a60-second command timeout and an immutable intent before the update;
+an ambiguous result is recorded and must be inspected, never automatically retried.
+The training job and numerical contract remain unchanged.

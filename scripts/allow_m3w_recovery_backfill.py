@@ -26,10 +26,23 @@ before=show()
 assert before['JobState']=='PENDING' and before['JobName']=='m3w_easy_recovery_v2_train'
 assert before['ReqNodeList']=='erc-hpc-comp186' and before['TimeLimit']=='12:00:00'
 assert before['TimeMin']=='N/A' and before['RunTime']=='00:00:00' and before['NumCPUs']=='4'
-p=subprocess.run(['scontrol','update','JobId=37835856','TimeMin=01:00:00'],capture_output=True,text=True,timeout=20)
-after=show()
+intent=r/PUBLIC/'backfill_time_min_intent_v2.json'
+assert not intent.exists(),'Inspect existing intent; never repeat an ambiguous update'
+once(intent,dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),before=before,
+ previous_attempt='20-second timeout; later read-only observation confirmed TimeMin=N/A'))
+def update():
+ try:
+  p=subprocess.run(['scontrol','update','JobId=37835856','TimeMin=01:00:00'],capture_output=True,text=True,timeout=60)
+  return dict(returncode=p.returncode,stdout=p.stdout,stderr=p.stderr,outcome='command_returned')
+ except subprocess.TimeoutExpired:
+  return dict(returncode=None,stdout='',stderr='scontrol update timed out after60 seconds',outcome='unknown_inspect_do_not_retry')
+result=update()
+try:
+ after=show()
+except (subprocess.TimeoutExpired,AssertionError):
+ after=None
 out=dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),before=before,after=after,
- returncode=p.returncode,stdout=p.stdout,stderr=p.stderr,
+ **result,
  registration_sha256=sha(r/'registration.json'),execution_amendment_sha256=sha(r/'control_execution_amendment_v2.json'),
  training_code_changed=False,scientific_contract_changed=False,new_jobs_submitted=False,
  checkpoint_resume_required_if_time_limited=True,independent_roles_read=False)
@@ -42,7 +55,7 @@ def main():
     path=manager.base.ROOT/'scripts/allow_m3w_recovery_backfill.py'
     if subprocess.check_output(['git','show','HEAD:'+str(path.relative_to(manager.base.ROOT))])!=path.read_bytes():
         raise ValueError('Commit scheduler amendment before update')
-    result=manager.base.remote(REMOTE,[],timeout=90)
+    result=manager.base.remote(REMOTE,[],timeout=150)
     manager.base.once(manager.PUBLIC/'backfill_time_min_v1.json',result)
     print(json.dumps(result,indent=2))
 
