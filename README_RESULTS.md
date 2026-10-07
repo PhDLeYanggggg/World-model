@@ -31,6 +31,12 @@ At14:26 UTC the diagnostic was still Priority-pending with zero runtime, after
 only three effective spare CPUs on the alternate node, fewer than its fixed
 four-CPU request. No crash, execution completion or new numerical result is
 inferred from queue waiting. No duplicate candidate training was submitted.
+At14:30 UTC, a guarded scheduling update applied successfully: the same
+diagnostic may use a minimum ten-minute backfill allocation, retaining the
+one-hour requested maximum, node, four CPUs and exact replay contract. It was
+still PENDING with zero runtime. Twenty-three scoped scheduling/portability
+tests pass. Atomic checkpoints remain available if an allocation expires;
+this is not a completed verification or scientific result.
 [Execution-only protocol](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/node_portability_v1/protocol.md).
 
 **The technical supplement now specifies the implemented method and its limits.**
