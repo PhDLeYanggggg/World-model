@@ -38,13 +38,21 @@ def memory_evidence(stdout):
 
 
 def update():
-    command=['scontrol','update','JobId=37835856','MinMemoryNode=8G','TimeMin=00:10:00']
+    command=['scontrol','update','JobId=37835856','MinMemoryNode=8192','TimeMin=00:10:00']
     try:
         p=subprocess.run(command,capture_output=True,text=True,timeout=90)
         return dict(outcome='command_returned',returncode=p.returncode,stdout=p.stdout,stderr=p.stderr)
     except subprocess.TimeoutExpired:
         return dict(outcome='unknown_inspect_do_not_retry',returncode=None,stdout='',
                     stderr='Resource update observation timed out')
+
+
+def require_rejected_prior(prior):
+    if (prior.get('outcome')!='command_returned' or prior.get('returncode')!=1
+            or prior.get('stderr','').strip()!='scontrol: error: Invalid MinMemoryNode value: 8G'
+            or prior.get('before')!=prior.get('after')):
+        raise ValueError('Only the confirmed no-change syntax rejection permits correction')
+    check_pending(prior['after'])
 
 
 REMOTE=r'''
@@ -60,8 +68,11 @@ verify(root)
 assert sha(root/'registration.json')==sys.argv[1]
 assert sha(root/'control_execution_amendment_v2.json')==sys.argv[2]
 assert not (root/PUBLIC/'training_freeze.json').exists(),'Already complete; do not alter'
-intent=root/PUBLIC/'scheduler_resource_repair_intent_v1.json'
-receipt=root/PUBLIC/'scheduler_resource_repair_v1.json'
+prior=root/PUBLIC/'scheduler_resource_repair_v1.json'
+assert sha(prior)==sys.argv[3]
+require_rejected_prior(json.loads(prior.read_text()))
+intent=root/PUBLIC/'scheduler_resource_repair_intent_v2.json'
+receipt=root/PUBLIC/'scheduler_resource_repair_v2.json'
 assert not intent.exists() and not receipt.exists(),'Inspect previous outcome, never retry blindly'
 p=subprocess.run(['sacct','-j','37814169_1,37815216_2,37815216_3,37817976',
  '--noheader','--parsable2','--format=JobID,State,ExitCode,Elapsed,MaxRSS'],
@@ -78,7 +89,8 @@ def show():
 before=show()
 check_pending(before)
 once(intent,dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
- before=before,measured_completed_batches=measured,requested_memory='8G',
+ before=before,measured_completed_batches=measured,requested_memory_mib=8192,
+ prior_syntax_rejection_sha256=sys.argv[3],
  minimum_allocation='00:10:00',requested_maximum='12:00:00',
  training_registration_sha256=sys.argv[1],execution_amendment_sha256=sys.argv[2]))
 result=update()
@@ -87,6 +99,7 @@ try:
 except (subprocess.TimeoutExpired,RuntimeError):
  after=None
 out=dict(utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),before=before,after=after,
+ prior_syntax_rejection_sha256=sys.argv[3],
  measured_completed_batches=measured,**result,training_code_changed=False,
  scientific_contract_changed=False,node_changed=False,cpu_threads_changed=False,
  jobs_submitted=False,checkpoints_preserved=True,join_untouched=True,independent_roles_read=False)
@@ -103,10 +116,11 @@ def main():
         if subprocess.check_output(['git','show','HEAD:'+str(path.relative_to(root))])!=path.read_bytes():
             raise ValueError('Commit guard, tests and scheduling protocol before mutation')
     source='import re,subprocess\n'+'\n'.join(inspect.getsource(f) for f in
-        (check_pending,memory_evidence,update))+'\n'+REMOTE
+        (check_pending,memory_evidence,update,require_rejected_prior))+'\n'+REMOTE
     out=manager.base.remote(source,[manager.base.sha(manager.REG),
-        manager.base.sha(manager.PUBLIC/'control_execution_amendment_v2.json')],timeout=300)
-    manager.base.once(manager.PUBLIC/'scheduler_resource_repair_v1.json',out)
+        manager.base.sha(manager.PUBLIC/'control_execution_amendment_v2.json'),
+        manager.base.sha(manager.PUBLIC/'scheduler_resource_repair_v1.json')],timeout=300)
+    manager.base.once(manager.PUBLIC/'scheduler_resource_repair_v2.json',out)
     print(json.dumps(out,indent=2))
 
 

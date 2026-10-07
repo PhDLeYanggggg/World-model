@@ -35,3 +35,18 @@ update, remaining queue wait or later OOM is reported, not called completion.
 Only MinMemoryNode and TimeMin are changed.
 [Slurm job-update documentation](https://slurm.schedmd.com/scontrol.html).
 No training result or deployment improvement is established by this amendment.
+
+## Confirmed Syntax Rejection and Corrected Attempt
+
+The first command returned1 at15:43 UTC: this installed scontrol rejects the
+8G suffix for MinMemoryNode. The immediate authoritative readback preserved
+16G/one-hour minimum/PENDING/zero runtime. The immutable v1 receipt records this
+failed attempt. The official scontrol reference specifies mebibytes; the
+corrected command uses MinMemoryNode=8192 with exactly the same resource goal.
+
+Version2 requires the pinned v1 receipt to contain this exact syntax error,
+returncode1 and unchanged before/after fields. It still rechecks current state,
+registration, references and memory evidence. Unknown outcomes, other errors,
+successful or partially applied changes cannot authorize this correction.
+A separate immutable v2 intent and receipt preserve both attempts. No automatic
+retry after any v2 outcome is allowed.

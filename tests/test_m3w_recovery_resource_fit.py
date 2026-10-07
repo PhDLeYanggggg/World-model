@@ -51,7 +51,28 @@ def test_single_update_timeout_preserved_as_unknown(monkeypatch):
     monkeypatch.setattr(subprocess,'run',fake)
     out=run.update()
     assert out['returncode'] is None and out['outcome']=='unknown_inspect_do_not_retry'
-    assert calls==[['scontrol','update','JobId=37835856','MinMemoryNode=8G','TimeMin=00:10:00']]
+    assert calls==[['scontrol','update','JobId=37835856','MinMemoryNode=8192','TimeMin=00:10:00']]
+
+
+def rejection():
+    return dict(outcome='command_returned',returncode=1,
+                stderr='scontrol: error: Invalid MinMemoryNode value: 8G\n',
+                before=pending(),after=pending())
+
+
+def test_confirmed_no_change_rejection_allows_syntax_correction():
+    run.require_rejected_prior(rejection())
+
+
+@pytest.mark.parametrize('change',['unknown','success','other_error','changed','missing_after'])
+def test_no_retry_after_ambiguous_or_applied_update(change):
+    prior=rejection()
+    if change=='unknown':prior['outcome']='unknown_inspect_do_not_retry';prior['returncode']=None
+    elif change=='success':prior['returncode']=0
+    elif change=='other_error':prior['stderr']='Permission denied'
+    elif change=='changed':prior['after']['MinMemoryNode']='8G'
+    else:prior['after']=None
+    with pytest.raises(ValueError):run.require_rejected_prior(prior)
 
 
 def test_remote_only_changes_reservation_after_registered_checks():
