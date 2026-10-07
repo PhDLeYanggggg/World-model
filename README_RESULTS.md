@@ -7,6 +7,15 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October 7,11:48 UTC: recovery remains queued; a scheduling update is verified.**
+The existing array37835856 now permits a one-hour minimum allocation for backfill,
+with its12-hour requested maximum retained. A timed-out scheduler request applied
+later; the guarded retry stopped before issuing another update. The task still
+had zero runtime and zero restarts. This changes neither its17 remaining candidate
+fits nor the complete144-fit readout requirement. Three focused timeout/guard
+tests pass. No new training completion or scientific gain is claimed.
+[Execution record](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/backfill_execution_note.md).
+
 **The English manuscript now integrates the completed negative experiments.**
 [Revision4](outputs/publication_readiness_2026_09/evidence_manuscript_v4/manuscript.md)
 replaces the stale pending-training narrative with the completed216-head temporal

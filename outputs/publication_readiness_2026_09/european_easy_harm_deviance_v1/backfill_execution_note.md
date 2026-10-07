@@ -26,3 +26,11 @@ read-only scheduler response confirmed the same pending job, zero runtime,
 retry uses a60-second command timeout and an immutable intent before the update;
 an ambiguous result is recorded and must be inspected, never automatically retried.
 The training job and numerical contract remain unchanged.
+
+At11:48:15 UTC, a later read-only response showed `TimeMin=01:00:00` on the same
+pending job, still with a12-hour maximum and zero runtime/restarts. The original
+timed-out request therefore took effect after the earlier observation. The retry
+was rejected by its pre-update state guard; it did not write an intent or issue
+a second update. The original command's exit status remains unknown. The separate
+`backfill_after_timeout_observation.json` records the observed applied state,
+not a fabricated successful command receipt. No more scheduler update is needed.
