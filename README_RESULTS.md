@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October 7 execution status: recovery training is queued, not complete.**
+Array **37835856** and verification join **37835859** are submitted and released.
+The first scheduler check reports Priority and Dependency waiting respectively;
+older heartbeat files belong to earlier jobs and are not live progress. The
+obsolete blocked join was retired only after replacement receipts were saved.
+The complete-grid readout is separately registered with unchanged six-arm
+calculations, scalar verification, paired locality bootstrap and risk gates.
+Seventy-three focused tests passed across recovery and readout checks; no new
+development inference or scientific improvement is claimed. Independent roles
+remain closed, and deployment, Stage5C and SMC remain unchanged/off.
+[Readout admission](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v2/admission_protocol.md).
+
 **October 7: the remaining recovery is explicitly registered before readout.**
 The second execution amendment permits exactly 18 named shard-zero controls to
 use hash-frozen, exact original-trainer replays; the other 54 must still reproduce
