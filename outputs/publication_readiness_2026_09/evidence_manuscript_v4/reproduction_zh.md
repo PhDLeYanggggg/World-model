@@ -33,6 +33,23 @@
 `supplement_examples.json` 是五类合成数学核验，不读取真实轨迹，也不更新
 模型。不能把这些检查称为新增模型提升或完成匿名复现。
 
+## 无需 CREATE 的汇总复现包
+
+`aggregate_replay_v2` 可以在独立目录、仅有 Python 标准库的环境下复现六张
+表和18条时间辅助对比指标。先在项目根目录生成本地压缩包：
+
+```bash
+.venv-pytorch/bin/python -m scripts.build_m3w_aggregate_replay_v2
+.venv-pytorch/bin/python -m scripts.build_m3w_aggregate_replay_v2 --check
+```
+
+产物位于 `data/stage_cvpr2027_experiments/aggregate_replay_v2/review_bundle.zip`。
+解压后运行 `python reproduce.py --check`，不需要仓库、远端账号、轨迹或权重。
+这是14个公开汇总来源的哈希和表格核验；区间没有重新 bootstrap，原始标签、
+训练及划分独立性也不由这个包证明。导出时核验的216个训练记录和72个评价
+记录没有装入压缩包，因此不能声称在独立环境重验了这些记录。包内保留全部
+负结果，并明确已去除常见身份标记不等于满足会议匿名要求。
+
 ## 真实训练和评价
 
 已完成的时间辅助实验使用三个头种子、24个 TRAIN 上下文、三个辅助版本，

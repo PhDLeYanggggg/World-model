@@ -7,6 +7,15 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**Revision-four aggregate replay now runs outside the research environment.**
+The85,571-byte standard-library bundle reproduces six tables and18 temporal
+contrast/metric rows from14 pinned sources in an isolated Python process.
+Thirty-eight scoped package/manuscript tests pass, including altered-member
+rejection and exact output checks. Failed controls, risk violations and undefined
+support remain visible. This verifies aggregate reproduction, not fresh training,
+bootstrap, independent confirmation or a complete anonymous release.
+[Reproduction package](outputs/publication_readiness_2026_09/aggregate_replay_v2/README.md).
+
 **October 7: a separate execution-portability check is queued.**
 The recovery node has124 effective CPUs and all124 are allocated; its four
 apparent spare cores are system-reserved, so memory is not the immediate queue
