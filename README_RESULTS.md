@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October 7: the remaining recovery is explicitly registered before readout.**
+The second execution amendment permits exactly 18 named shard-zero controls to
+use hash-frozen, exact original-trainer replays; the other 54 must still reproduce
+historical checkpoints exactly. It preserves all 110 accepted receipts and reuses
+17 TRAIN-only diagnostic quadratic states. Only 17 missing candidate fits need
+fresh training. No loss, sampling, step budget, split, threshold, risk measure or
+scientific pass rule changes. Historical bitwise reproduction remains incomplete.
+Twenty-nine focused recovery/reference tests pass. Submission and numerical
+completion are separate subsequent steps; there is no new development result yet.
+[Explicit recovery contract](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_recovery_v2.md).
+
 **The17-identity TRAIN diagnostic completed; the broader recovery is not yet executed.**
 Job37817976 completed0:0 in4m10s, with68,000 verification updates. Original/new
 direct fits match exactly for17/17 identities, while historical replay matches
