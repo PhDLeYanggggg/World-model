@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October 7: a separate execution-portability check is queued.**
+The recovery node has124 effective CPUs and all124 are allocated; its four
+apparent spare cores are system-reserved, so memory is not the immediate queue
+bottleneck. Isolated TRAIN-only job37837636 will replay the17 frozen controls on
+another zen3 node, without changing references or tolerances. It is submitted
+and released; the first observation is PENDING with zero runtime. All17 controls
+must match before moving the existing recovery job. The34,000 planned diagnostic
+updates are verification work, not new scientific fits. Twenty-four focused
+portability/recovery tests pass. The original recovery and its join stay intact;
+scientific readout remains not_run.
+[Execution-only protocol](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/node_portability_v1/protocol.md).
+
 **The technical supplement now specifies the implemented method and its limits.**
 It documents query-weighted losses, the bounded decoder, masked temporal targets,
 same-count comparisons, unknown-outcome bounds and locality bootstrap. Five
