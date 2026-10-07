@@ -16,6 +16,14 @@ support remain visible. This verifies aggregate reproduction, not fresh training
 bootstrap, independent confirmation or a complete anonymous release.
 [Reproduction package](outputs/publication_readiness_2026_09/aggregate_replay_v2/README.md).
 
+The primary-source comparison now includes three established decision-learning
+papers. Generic prediction-decision mismatch is explicitly not our novelty;
+matched empirical controls remain not_run. Only manuscript positioning changed,
+and the aggregate package still reproduces byte-identically. Twenty-eight
+scoped manuscript/replay/supplement tests pass for this revision.
+[Contribution boundary](outputs/publication_readiness_2026_09/evidence_manuscript_v4/decision_learning_position.md).
+[October7 official-date and policy recheck](outputs/publication_readiness_2026_09/venue_status_2026_10_07.md).
+
 **October 7: a separate execution-portability check is queued.**
 The recovery node has124 effective CPUs and all124 are allocated; its four
 apparent spare cores are system-reserved, so memory is not the immediate queue

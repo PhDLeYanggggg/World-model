@@ -85,8 +85,22 @@ policy under its own probabilistic and calibration requirements [6]. We have not
 implemented its construction or established its assumptions. It supplies no
 guarantee for the empirical ratios reported here.
 
+The mismatch between prediction accuracy and decision quality is established
+prior work, not our discovery. Smart Predict-then-Optimize trains cost estimates
+using decision regret and a surrogate for linear-objective optimization over a
+known feasible set [7]. Task-based learning differentiates through stochastic
+optimization to fit models for their downstream purpose [8]. Decision-focused
+learning extends this motivation to combinatorial problems through continuous
+relaxations [9]. We have not implemented these methods as matched empirical
+controls. Consequently, our negative results do not establish superiority to
+decision-focused learning. Our selected-risk coefficients are themselves learned,
+and some future costs are unobserved; neither a decision-regret surrogate nor a
+differentiable optimizer alone certifies our selected easy-harm ratio. This is an
+applicability limitation, not evidence that these methods cannot be adapted.
+
 The current contribution is a controlled development investigation of the gap
-between cost prediction and selected-policy reliability. Temporal supervision is
+between cost prediction and selected-policy reliability in the stated forecasting
+protocol, not discovery of the general prediction-decision gap. Temporal supervision is
 a tested, unsuccessful repair in its examined form. The TRAIN decomposition
 narrows possible explanations without identifying a causal mechanism. This is a
 targeted literature positioning, not an exhaustive novelty certification or a
@@ -100,7 +114,7 @@ Both studies observe eight annotation steps and predict twelve, with raw stride
 twelve. Twelve predicted steps are not raw-frame t+50. The latter is a separate
 supplemental task. No result here is converted to seconds or metres.
 
-The earlier Stanford Drone Dataset study [7] contains 175,756 past-eligible
+The earlier Stanford Drone Dataset study [10] contains 175,756 past-eligible
 pedestrian queries from 33 recordings in four explored sites: coupa,
 deathCircle, gates and hyang. Observed-point average displacement error (ADE) is
 available for 172,957 queries, final displacement error (FDE) for 144,010, and
@@ -109,7 +123,7 @@ or independent experiments. Historical annotation interpolation can use later
 annotation controls; past-indexed access is therefore an offline annotated-history
 contract, not proof of real-time perception causality.
 
-EuropeanSquares contributes released detector tracks [8], not human-gold
+EuropeanSquares contributes released detector tracks [11], not human-gold
 trajectories. Twelve previously explored localities supply source development.
 The source index has 318,969 unique entries before repeated use across rotations.
 The frozen readout contains 596,988 row occurrences across 72 source/head views,
@@ -508,13 +522,24 @@ result remains an open research requirement.
    Suchi Saria, and Samuel Stanton. *Conformal Policy Control.*
    arXiv:2603.02196, version 1, 2026.
    [Version reviewed](https://arxiv.org/html/2603.02196v1).
-7. Alexandre Robicquet, Amir Sadeghian, Alexandre Alahi, and Silvio Savarese.
+7. Adam N. Elmachtoub and Paul Grigas. *Smart "Predict, then Optimize".*
+   Management Science, 68(1):9-26, 2022.
+   [Author manuscript, version 5](https://arxiv.org/pdf/1710.08005v5).
+8. Priya L. Donti, Brandon Amos, and J. Zico Kolter. *Task-based End-to-end Model
+   Learning in Stochastic Optimization.* NeurIPS, 2017.
+   [Proceedings paper](https://proceedings.neurips.cc/paper/2017/file/3fc2c60b5782f641f76bcefc39fb2392-Paper.pdf).
+9. Bryan Wilder, Bistra Dilkina, and Milind Tambe. *Melding the Data-Decisions
+   Pipeline: Decision-Focused Learning for Combinatorial Optimization.*
+   AAAI, 33(1):1658-1665, 2019.
+   [Proceedings paper](https://ojs.aaai.org/index.php/AAAI/article/view/3982).
+10. Alexandre Robicquet, Amir Sadeghian, Alexandre Alahi, and Silvio Savarese.
    *Stanford Drone Dataset.*
    [Dataset and associated ECCV 2016 work](https://cvgl.stanford.edu/projects/uav_data/).
-8. Nils Wolff and Layne Perry. *Pedestrian Trajectory Dataset of Public European
+11. Nils Wolff and Layne Perry. *Pedestrian Trajectory Dataset of Public European
    Squares.* Zenodo, release v1.1, 2026.
    [Dataset record](https://zenodo.org/records/18267205).
 
-The references and related-work boundaries are retained from the earlier
-source-checked draft; this revision adds no new literature-based novelty claim.
+Earlier source-checked references are retained. The 7 October update adds three
+original decision-learning papers and narrows, rather than expands, the novelty
+claim. Their empirical comparison remains not_run; no theorem is transferred.
 Locally audited release restrictions remain authoritative for cached assets.

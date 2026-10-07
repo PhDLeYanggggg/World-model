@@ -16,6 +16,8 @@ the earlier SDD and European development results as separate studies.
   source hashes; not additional real-data evidence.
 - `../aggregate_replay_v2/README.md`: standalone, standard-library table replay
   with14 pinned public sources; not a complete training reproduction.
+- `decision_learning_position.md`: original-source comparison with established
+  decision-learning work and the missing matched-control boundary.
 
 The temporal experiment is complete and negative: improvement in one prediction
 metric did not improve utility against its matched neural controls or establish
@@ -25,5 +27,6 @@ shift as the sole explanation, not every domain effect or all alternative causes
 The successor easy-harm-deviance comparison is not included as a result before
 its complete paired readout. Public source verification is not a fresh model
 evaluation, a fresh bootstrap, independent confirmation or scientific success.
-Existing references and their contribution boundaries are retained from the
-previous source-checked version; this edit adds no novelty certification.
+Earlier references remain, with three decision-learning precedents added on
+7 October. The generic prediction-decision mismatch is not claimed as novel;
+their empirical comparison remains not_run. This adds no novelty certification.

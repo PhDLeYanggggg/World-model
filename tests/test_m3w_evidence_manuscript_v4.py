@@ -1,4 +1,5 @@
 import copy
+import re
 
 import pytest
 
@@ -51,3 +52,15 @@ def test_manuscript_assembles_all_six_tables(sources):
     assert '216 fits' in result['manuscript.md'] and '0.353836' in result['manuscript.md']
     assert 'not an anonymous or submission-ready manuscript' in result['manuscript.md']
     assert 'stage5c_executed' in result['evidence.json']
+
+
+def test_decision_learning_precedents_and_unrun_controls_are_explicit():
+    template=(api.ROOT/api.OUTPUT/'manuscript.template.md').read_text()
+    refs=template.split('## References\n',1)[1]
+    assert re.findall(r'^(\d+)\. ',refs,re.MULTILINE)==[str(i) for i in range(1,12)]
+    assert 'not our discovery' in template
+    assert 'We have not implemented these methods as matched empirical' in template
+    assert 'Stanford Drone Dataset study [10]' in template
+    assert 'released detector tracks [11]' in template
+    for source in ('1710.08005v5','3fc2c60b5782f641f76bcefc39fb2392','article/view/3982'):
+        assert source in refs
