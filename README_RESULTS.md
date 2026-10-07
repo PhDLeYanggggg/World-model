@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**The English manuscript now integrates the completed negative experiments.**
+[Revision4](outputs/publication_readiness_2026_09/evidence_manuscript_v4/manuscript.md)
+replaces the stale pending-training narrative with the completed216-head temporal
+comparison and TRAIN-selected harm diagnosis. Six tables and two aggregate-only
+figures keep SDD, European development and TRAIN resubstitution separate. Fourteen
+pinned sources,216 fit receipts and72 readout groups verify;27 manuscript tests
+pass and figure regeneration is exact. This is a fresh export of cached verified
+evidence, not new training or confirmation. The draft remains **not submission-ready**;
+the active easy-harm-deviance experiment has no new readout result yet.
+
 **October 7 execution status: recovery training is queued, not complete.**
 Array **37835856** and verification join **37835859** are submitted and released.
 The first scheduler check reports Priority and Dependency waiting respectively;

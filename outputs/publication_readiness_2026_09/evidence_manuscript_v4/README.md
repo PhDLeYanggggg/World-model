@@ -1,0 +1,23 @@
+# Integrated Development Evidence
+
+This revision incorporates completed matched temporal-head training and its
+TRAIN-selected harm diagnosis into the main English manuscript. It preserves
+the earlier SDD and European development results as separate studies.
+
+- `manuscript.md`: full English research draft, not submission-ready.
+- `tables.md`: six exported tables with distinct populations and estimands.
+- `temporal_contrasts.csv`: all six comparator contrasts and source pointers.
+- `evidence.json`: pinned sources, evidence roles, negative decisions and counts.
+- `figures/`: aggregate-only vector figures, without dataset imagery.
+- `reproduction_zh.md`: local verification, CREATE observation and recovery boundary.
+
+The temporal experiment is complete and negative: improvement in one prediction
+metric did not improve utility against its matched neural controls or establish
+selected easy-harm protection. TRAIN replay further rules out pure unseen-domain
+shift as the sole explanation, not every domain effect or all alternative causes.
+
+The successor easy-harm-deviance comparison is not included as a result before
+its complete paired readout. Public source verification is not a fresh model
+evaluation, a fresh bootstrap, independent confirmation or scientific success.
+Existing references and their contribution boundaries are retained from the
+previous source-checked version; this edit adds no novelty certification.
