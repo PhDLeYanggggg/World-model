@@ -11,9 +11,11 @@ The Open OnDemand worker37985561 ran, but its scheduler queries failed while
 resolving or connecting to the Slurm database. Its original report hash and all
 145 metadata files verify; no successful exit codes were inferred from the
 web UI's Completed label. The same-allocation comparison37985676 found that both
-system and module Python fail accounting on the same virtual node; local queue
+system and module Python fail accounting on the same OS host; local queue
 queries work. This does not support a module-only explanation. One bounded zen3
-node comparison is prepared; the earlier failures remain recorded unchanged.
+node comparison exited before querying because of an overly restrictive worker
+hostname guard. That guard is repaired; OS hostname is no longer interpreted as
+Slurm allocation type. The earlier failed observations remain unchanged.
 Forty-five focused tests pass. No retraining or scientific evaluation occurred;
 the registered readout gate remains unchanged.
 

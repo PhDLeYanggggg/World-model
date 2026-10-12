@@ -44,9 +44,11 @@ def test_local_execution_rejected(monkeypatch):
         probe.collect('system')
 
 
-def test_native_variant_rejects_virtual_node_before_reading_experiment(monkeypatch):
+def test_scheduler_node_name_need_not_equal_os_hostname(monkeypatch, tmp_path):
     monkeypatch.setenv('SLURM_JOB_ID', '123')
     monkeypatch.setenv('SLURM_JOB_NODELIST', 'erc-hpc-vm-example')
     monkeypatch.setattr(probe.socket, 'gethostname', lambda: 'erc-hpc-vm-example')
-    with pytest.raises(RuntimeError, match='Native-node comparison'):
-        probe.collect('system', True)
+    monkeypatch.setattr(probe, 'REMOTE', tmp_path)
+    # Reaching the ownership guard proves host naming alone was not rejected.
+    with pytest.raises(FileNotFoundError, match='.owner.json'):
+        probe.collect('module', True)

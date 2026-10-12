@@ -53,8 +53,6 @@ def collect(mode, native_node=False):
     host = socket.gethostname()
     if not job.isdigit() or not os.environ.get('SLURM_JOB_NODELIST') or not host.startswith('erc-hpc-') or 'login' in host:
         raise RuntimeError('An allocated CREATE compute node is required')
-    if native_node and not host.startswith('erc-hpc-comp'):
-        raise RuntimeError('Native-node comparison requires an erc-hpc-comp allocation')
     if mode == 'system' and (Path(sys.executable) != Path('/usr/bin/python3')
             or os.environ.get('LD_LIBRARY_PATH') or os.environ.get('LD_PRELOAD')):
         raise RuntimeError('System branch must use isolated system Python and loader environment')
@@ -72,7 +70,9 @@ def collect(mode, native_node=False):
         if first['job_id'] != job or first['node'] != host:
             raise ValueError('Same-allocation paired observation required')
     out = dict(schema='m3w_accounting_environment_v2', mode=mode, job_id=job, node=host,
-        native_node_comparison=native_node,
+        zen3_requested_variant=native_node,
+        slurm_nodelist=os.environ['SLURM_JOB_NODELIST'],
+        hostname_does_not_identify_allocation_type=True,
         observed_utc=datetime.now(timezone.utc).isoformat(), worker_sha256=sha(__file__),
         registration_sha256=REG_SHA, freeze_sha256=FREEZE_SHA,
         python=dict(executable=sys.executable, version=sys.version.split()[0]),
