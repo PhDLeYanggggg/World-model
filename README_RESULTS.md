@@ -7,13 +7,13 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-An isolated Open OnDemand accounting worker was submitted once as job37985561
-to retrieve the missing owned-job exit records. Its initial state is Queued.
-It is limited to one CPU, 1 GiB and five minutes,
-reads only existing scheduler metadata and fit receipts, and cannot submit,
-cancel or retrain models. Both uploaded files passed byte-identical round-trip
-checks. Thirty-six focused tests pass. Submission is not task completion or
-scientific evaluation; the registered readout gate is unchanged.
+The Open OnDemand worker37985561 ran, but its scheduler queries failed while
+resolving or connecting to the Slurm database. Its original report hash and all
+145 metadata files verify; no successful exit codes were inferred from the
+web UI's Completed label. A same-allocation system/module environment comparison
+is prepared to distinguish loader interference from node/database access.
+Forty-four focused tests pass. No retraining or scientific evaluation occurred;
+the registered readout gate remains unchanged.
 
 **October 13 local time: complete training receipts recovered through CREATE's web interface.**
 The SSH connection remains unavailable, but the authenticated Open OnDemand file
