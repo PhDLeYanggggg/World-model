@@ -7,6 +7,24 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October 13 local time: complete training receipts recovered through CREATE's web interface.**
+The SSH connection remains unavailable, but the authenticated Open OnDemand file
+browser supplied the original freeze and all 144 fit receipts. Their hashes,
+identities, 2,000-step completion and unchanged 110 previously accepted receipts
+pass the existing validator. The 54 historical-exact and 18 original-replay controls
+remain distinguished. This is verified collection of existing training, not 144
+fresh fits. The recovered join log reports `all144_frozen` with an empty error log.
+The separate portability artifacts also verify 17/17 exact controls on the
+alternate node. No checkpoint, raw data or independent evaluation labels were
+downloaded. Twenty-seven focused import/admission/portability tests pass.
+
+Final scheduler accounting for the join is still unavailable; the web shell
+reports public-key authentication failure. The scientific readout therefore
+remains **not_run**. The importer does not manufacture a scheduler collection
+receipt or bypass the existing readout gate. Artifact integrity and scheduler
+completion remain separate checks.
+[Recovered evidence and remaining step](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/web_collection_v1/README.md).
+
 **October12: new evaluation is blocked by CREATE access, not a training failure.**
 The latest read-only connection is still closed at SSH source approval. The
 verification join and alternate-node diagnostic therefore have unknown current

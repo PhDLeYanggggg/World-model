@@ -1,5 +1,23 @@
 # Recovery Completed; Scientific Evaluation Still Pending
 
+## October 13 Collection Update
+
+The official authenticated Open OnDemand file browser now provides a working
+read-only collection route. All 144 fit receipts and training_freeze.json have
+been collected and validated, including the unchanged 110 accepted receipt hashes
+and explicit 54 historical-exact plus 18 original-replay controls. The recovered
+join output says all144_frozen; its error log is empty. The separate portability
+artifact verifies 17/17 exact alternate-node controls. These are cached_verified
+training artifacts collected in a fresh_run, not fresh model fits or new scores.
+
+SSH still closes during access approval and the web shell reports public-key
+authentication failure. Final scheduler accounting remains unknown. No synthetic
+accounting or train_collection.json is created; the registered readout gate stays
+unchanged and scientific evaluation remains not_run. The previously absent
+freeze below is a historical observation, superseded only for artifact presence.
+
+See [web collection](web_collection_v1/README.md) and its hash-indexed receipt.
+
 ## Verified Training Progress
 
 Result source: fresh_run accounting/log observations at16:25-16:26 UTC on7 October.
