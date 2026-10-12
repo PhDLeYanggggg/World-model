@@ -54,3 +54,23 @@ def test_observer_retains_artifact_and_stale_heartbeat_boundary():
     assert 'file_is_not_live_process_evidence=True' in run.REMOTE
     assert 'observed_file_only_not_scheduler_confirmation=True' in run.REMOTE
     assert 'import torch' not in run.REMOTE and 'import numpy' not in run.REMOTE
+
+
+@pytest.mark.parametrize('error,expected',[
+    (RuntimeError('Banner: portal.er.kcl.ac.uk/mfa/\nConnection closed by private-address'),
+        'ssh_access_approval_connection_closed'),
+    (subprocess.TimeoutExpired('ssh',240),'transport_timeout_unknown'),
+    (RuntimeError('Unrecognized remote error'),'transport_error_unknown'),
+    (OSError('Transport unavailable'),'transport_error_unknown')])
+def test_transport_errors_do_not_reclassify_training_or_publish_banner(error,expected):
+    result=run.transport_failure(error)
+    assert result['transport_observation']==expected
+    assert result['scheduler_state']=='unknown'
+    assert result['earlier_observations_not_promoted_to_current']
+    assert not result['artifacts_verified'] and not result['jobs_resubmitted']
+    assert 'private-address' not in str(result)
+
+
+def test_portal_banner_alone_does_not_establish_access_failure():
+    result=run.transport_failure(RuntimeError('portal.er.kcl.ac.uk/mfa/ followed by calculation error'))
+    assert result['transport_observation']=='transport_error_unknown'

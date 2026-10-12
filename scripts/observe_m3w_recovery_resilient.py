@@ -2,8 +2,23 @@
 import inspect
 import json
 import subprocess
+from datetime import datetime, timezone
 
 from scripts import manage_m3w_easy_harm_deviance as manager
+
+
+def transport_failure(error):
+    message=str(error)
+    approval_closed=(isinstance(error,RuntimeError)
+        and 'portal.er.kcl.ac.uk/mfa/' in message and 'Connection closed' in message)
+    return dict(observed_utc=datetime.now(timezone.utc).isoformat(),
+        transport_observation=('ssh_access_approval_connection_closed' if approval_closed
+            else 'transport_timeout_unknown' if isinstance(error,subprocess.TimeoutExpired)
+            else 'transport_error_unknown'),
+        scheduler_state='unknown',artifacts_verified=False,remote_modified=False,
+        jobs_resubmitted=False,job_failure_inferred_from_timeout=False,
+        error_type=type(error).__name__,raw_transport_error_omitted=True,
+        earlier_observations_not_promoted_to_current=True)
 
 
 def query(command):
@@ -64,12 +79,16 @@ print(json.dumps(out))
 
 def main():
     source='import subprocess\n'+inspect.getsource(query)+'\n'+REMOTE
-    out=manager.base.remote(source,[manager.REMOTE],timeout=240)
+    try:
+        out=manager.base.remote(source,[manager.REMOTE],timeout=240)
+    except (RuntimeError,subprocess.TimeoutExpired,OSError) as error:
+        out=transport_failure(error)
     stamp=out['observed_utc'].replace('-','').replace(':','').split('.')[0]
     path=manager.PUBLIC/('resilient_observation_'+stamp+'.json')
     manager.base.once(path,out)
     print(json.dumps(dict(receipt=str(path.relative_to(manager.base.ROOT)),**out),indent=2))
+    return 1 if 'transport_observation' in out else 0
 
 
 if __name__=='__main__':
-    main()
+    raise SystemExit(main())

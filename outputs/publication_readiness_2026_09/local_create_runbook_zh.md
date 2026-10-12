@@ -1,5 +1,144 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-12
+
+本节替代下方历史章节中的“当前状态”和“下一步”。历史记录保留，不重新解释成
+今天的结果。当前英文稿是 [revision 4](evidence_manuscript_v4/manuscript.md)，
+不是旧版 manuscript v1。项目仍未达到投稿准备完成，也没有新的可部署模型。
+
+当前证据要分清：
+
+| 内容 | 可证明的状态 | 不代表什么 |
+| --- | --- | --- |
+| 已完成 temporal 比较 | 216 份训练记录、72 组开发评价；负结果已进入稿件 | 不是独立确认，也没有安全部署通过 |
+| easy-harm 恢复训练 | 10 月 7 日记录为成功退出，4 分 9 秒；恢复组报告 36 个产物 | 不是 144 个模型全部重新训练，也不是新评价已完成 |
+| 完整训练冻结 | 尚未取回完整核验结果；9 日访问检查被来源验证拦住 | 不能假定核验失败，或把旧 PENDING 当作今天状态 |
+| 六组固定读出 | 当前 not_run，必须先收集、验证并提交完整冻结记录 | 不能用训练 loss 代替方法贡献 |
+| 论文表格重建 | 本地孤立运行可重建六张表和 18 行比较，原统计数值复用 | 不是重训、重新 bootstrap 或独立复现 |
+
+最新瞬时状态看 [README_RESULTS](../../README_RESULTS.md) 和对应带 UTC 时间的
+观察记录，不把队列预计开始时间当成承诺。坐标仍是 pixel/image-local，时间仍按
+既定采样步或 raw-frame 表述；没有新增米、秒、物理安全、true 3D 或 foundation
+声明。Stage5C 和 SMC 不执行。
+
+### 1. 选择本地还是 CREATE
+
+本地负责实现、小实验、结果分析和已经具备数据的合理规模计算。当前训练数据和
+完整模型在 CREATE，因此恢复与产物核验沿用远端，避免复制大文件后重新训练。
+固定读出在本地执行时按需读取已冻结的远端模型，不把 checkpoint 全量下载落盘。
+
+先确认解释器，不用默认 Conda：
+
+```bash
+cd /Users/yangyue/Downloads/World
+.venv-pytorch/bin/python -c 'import platform,sys; print(sys.executable); print(platform.system(),platform.machine())'
+```
+
+Apple Silicon 本地必须是 Darwin/arm64；真实 Linux x86_64 CREATE 节点不是
+Rosetta，不应套用本地禁用规则。10 月 12 日上述本地架构检查通过；这不是当日
+重新证明长时间训练稳定。
+
+已有 [CPU4 运行记录](runtime_cpu4.json) 包括真实反向传播、优化器更新和恢复验证：
+计算线程 4、interop 1、DataLoader workers 0，检查点恢复的参数差为 0。它是
+历史工程证据，不是预测精度。不要只因 import torch 成功就认为训练环境稳定。
+环境没变时复用有效证据；只有运行库或设备变化、实际失败时才做新的小验证。
+
+以下是**新环境复核示例，本次未执行**。使用独立 run-id，不覆盖 cpu4 的旧记录：
+
+```bash
+.venv-pytorch/bin/python scripts/probe_m3w_training_runtime.py --device cpu --threads 4 --steps 240 --rows 1024 --checkpoint-every 60 --run-id cpu4_new_environment
+.venv-pytorch/bin/python scripts/probe_m3w_training_runtime.py --device cpu --threads 4 --steps 480 --rows 1024 --checkpoint-every 60 --run-id cpu4_new_environment --resume
+```
+
+它只重建被遮挡的历史位置，不读取未来标签。新 run-id 不能重复首次执行；已有
+端点只能在配置、数据和运行身份一致时续跑到更大的步数。MPS 检查要另用独立
+run-id；不静默切到 CPU 后仍把它记录为 MPS 成功。正式配对实验中不能随意改线程。
+
+### 2. 先看既有任务，不重复提交
+
+SSH 参数来自已经核验的私有交接文件，不复制凭据到公开文档，不修改主机密钥
+检查、代理、VPN 或共享环境。只检查本项目的确定任务 ID，不扫描其他人的作业：
+
+```bash
+.venv-pytorch/bin/python -m scripts.observe_m3w_recovery_resilient
+```
+
+这个入口只读队列、会计记录和轻量产物，并保留带时间的观察。连接失败、查询
+超时和训练失败分别记录；仅有 heartbeat 文件不是仍在运行的证据。登录横幅里
+出现 MFA 链接本身也不能证明认证失败，必须结合连接被关闭等实际结果判断。
+不要因为观察失败就重新提交。若来源验证未通过，在官方门户核实本人网络来源；
+不批准不认识的 IP，也不撤销别人的连接来腾出资源。
+
+已知恢复任务 37835856_0 在 10 月 7 日完成；完整核验任务是 37835859，备用节点
+诊断是 37837636。后两者的当前状态必须重新读取，不能沿用两天前的状态。
+本轮恢复保留 110 个旧记录，复用 17 个诊断 control，只新训练 17 个 candidate。
+替代节点只有 17/17 固定 control 精确一致才可准入，不能偷偷放宽误差阈值。
+
+新的科学训练只能来自单独冻结的协议和提交记录，并先核查没有现存任务或模糊
+提交结果。当前三个任务已有身份，不能再执行首次提交命令。checkpoint 保留
+模型、优化器、RNG、抽样状态及数据/配置指纹，必须从最后一致状态恢复，不能
+把重复训练包装成 resume。CREATE 登录节点只做轻量管理，不运行训练或推理。
+
+### 3. 完整收集通过后，才能开始固定读出
+
+要求远端核验任务有明确 COMPLETED/0:0 和 training_freeze，再收集轻量记录：
+
+```bash
+.venv-pytorch/bin/python -m scripts.manage_m3w_easy_harm_deviance collect --phase train
+```
+
+核验 144 个唯一训练身份、每个 2,000 步、配置和 checkpoint 哈希，以及 54 个
+历史精确 control 加 18 个登记过的原实现 replay。必须保留“历史 bitwise 复现
+不完整”的限制。收集本身不会把历史例外变成历史精确一致。
+
+仅提交这些轻量冻结证据，保留无关暂存内容。然后：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v2 preflight
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v2 run
+```
+
+preflight 只做完整性准入，不生成性能结论。run 使用冻结的六组比较、72 组读出和
+3,000 次地点层配对 bootstrap；不重新选阈值、不挑 checkpoint、不打开独立用途。
+未知标签继续按既定规则保留，不能当作安全或删掉 undefined 的比较。
+
+若读出中断，先确认旧进程不再持有锁，核对已完成组的哈希，才使用：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v2 run --resume
+```
+
+这个 resume 会重放并核对已有组；不是跳过检查或允许覆盖。已有 complete.json
+时不得再运行。运行记录和 heartbeat 在对应 ignored data 目录；公共组记录在
+readout_verified_v2。12 小时是上限而不是成功标准，未发生硬错误时允许慢慢跑。
+
+### 4. 已完成论文证据可以离线核验
+
+```bash
+.venv-pytorch/bin/python -m scripts.build_m3w_evidence_manuscript_v4 --check
+.venv-pytorch/bin/python -m scripts.build_m3w_aggregate_replay_v2 --check
+.venv-pytorch/bin/python -m scripts.verify_m3w_supplement_v4 --check
+```
+
+这些命令不训练、不新读出、不重算统计区间。standalone aggregate 包使用标准库，
+展开后可在隔离目录执行 python reproduce.py --check；它不包含原始数据和全部
+checkpoint，因此只能称聚合表格复现。使用方式与边界见
+[aggregate replay](aggregate_replay_v2/README.md)。发布前仍需单独完成匿名化和
+当年会议格式检查，不把 known-identifier 扫描称作匿名性保证。
+
+### 5. 报告、测试与安全同步
+
+fresh_run 标记本轮实际执行的操作；cached_verified 标记校验后复用的旧结果；
+not_run 标记尚未运行。训练退出 0、checkpoint 一致、评价完整、研究假设得到支持
+是四个不同结论。报告必须给出 easy、尾部、最差地点、未知结果支持和负比较。
+
+只对有改动或有疑点的范围追加验证；已有有效同版本结果可复用。完整旧测试集
+存在会写入其他报告的非隔离测试，不能随手运行后把生成的旧输出当新科研证据。
+同步用明确路径，提交代码、配置、报告和轻量指标；不提交 data、缓存、checkpoint、
+原始视频/图像、第三方数据或 .venv-pytorch，不使用 git add .。
+
+以下全部为按日期保留的历史操作，不是当前状态，也不是自动执行清单。
+
 ## CREATE 连接已实测恢复，限定只读（2026-09-23）
 
 按用户要求向 `simulation model` 取得交接后，使用其提供的既有身份和严格 SSH

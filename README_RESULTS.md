@@ -7,6 +7,30 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October12: new evaluation is blocked by CREATE access, not a training failure.**
+The latest read-only connection is still closed at SSH source approval. The
+verification join and alternate-node diagnostic therefore have unknown current
+states. No duplicate training, source approval or job cancellation was performed.
+The native arm64 interpreter and synthetic supplement check pass; the completed
+manuscript and isolated aggregate replay were also rechecked without changing
+their scientific numbers. The updated [Chinese operating guide](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)
+separates runtime checks, immutable result reproduction and the still-unrun
+six-arm evaluation. Recovery completion remains valid historical evidence;
+the complete144-fit freeze and new readout are not claimed.
+
+**Recovery training completed; complete-grid verification is not yet collected.**
+The October7 16:26 UTC accounting check confirms recovery37835856_0 completed0:0
+in4m09s, with about1.89GiB peak RSS and an empty error log. Its final heartbeat
+records36 fits in the recovered shard. This includes reuse of17 diagnostic
+controls and fresh training of17 missing candidates; it is not144 new fits.
+At that observation, the verification join remained pending and the complete
+training freeze did not yet exist. After the session resumed on October9 local
+time, SSH access verification blocked fresh observation. The join's current
+state is therefore unknown, not assumed pending, failed or completed.
+Fifty-six focused transport/scheduling tests pass. No new scientific readout,
+deployment promotion or independent confirmation has been performed.
+[Verified recovery and remaining access dependency](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/recovery_completion_access_note.md).
+
 **October 7,15:47 UTC: recovery resource sizing is verified; training is still queued.**
 The original node's resource picture changed during the afternoon: six effective
 CPUs became free, but available memory was below the previous16GiB request.
