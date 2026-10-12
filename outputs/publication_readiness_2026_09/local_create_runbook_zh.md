@@ -1,6 +1,38 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-12
+## 当前入口：2026-10-13
+
+今天通过 CREATE 官方 Open OnDemand 文件浏览器取回了原始 training_freeze 和
+144 份训练记录。哈希与既有验证器一致，110 份已验收记录没有变化；54 份历史
+精确 control 和 18 份原训练实现 replay 仍分别标记。备用节点的 17/17 精确验证
+也已取回。这是旧训练的核实收集，不是今天新训 144 个模型。
+
+SSH 与网页终端仍未恢复，因此用官方 Job Composer 创建了独立、只读的调度查询：
+任务 **37985561**，工作流 2，1 CPU、1 GiB、5 分钟，不自动重排。
+初次详情为 **PENDING / Priority**，不是训练失败或卡死。只查本项目已有的恢复、
+核验和备用节点三个任务；不修改它们，不训练、不预测、不读取独立测试数据。
+两个上传文件都下载回读并校验到逐字节一致。不得再次点击 Submit 重复提交。
+
+完成后从工作流日志取得报告路径与 SHA256，再从官方文件浏览器下载报告。
+先对比日志中的哈希，确认对应任务身份，再运行：
+
+```bash
+.venv-pytorch/bin/python -m scripts.collect_m3w_create_web_accounting accept /absolute/path/accounting_37985561.json
+```
+
+只有真实 join 会计记录为 COMPLETED/0:0，且全部元数据与先前收集一致，才生成
+canonical train_collection 并通过原完整性准入。不要根据 join stdout 的完成文字
+自行补造调度退出码。当前查询仍在等待，六组固定读出仍 **not_run**。
+
+这条网页路径只解决元数据与退出记录的收集。既定读出仍使用 SSH 按需读取远端
+冻结模型，因此通过 metadata preflight 不代表 checkpoint streaming 已恢复。
+若需改变传输或运行地点，必须单独记录执行修订，保持计算、模型、数据用途和
+阈值不变；不能擅自落盘下载全部模型来绕过无本地 checkpoint cache 约定。
+
+常规核验已由项目工作流程承担，不要求用户逐项重新审计。正式投稿仍由用户确认。
+Stage5C 和 SMC 仍关闭，既有负结果与独立评价限制不变。
+
+## 历史入口：2026-10-12
 
 本节替代下方历史章节中的“当前状态”和“下一步”。历史记录保留，不重新解释成
 今天的结果。当前英文稿是 [revision 4](evidence_manuscript_v4/manuscript.md)，

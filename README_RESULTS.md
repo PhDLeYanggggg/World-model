@@ -7,11 +7,13 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-An isolated Open OnDemand accounting worker is now prepared to retrieve the
-missing owned-job exit records. It is limited to one CPU, 1 GiB and five minutes,
+An isolated Open OnDemand accounting worker was submitted once as job37985561
+to retrieve the missing owned-job exit records. Its initial state is Queued.
+It is limited to one CPU, 1 GiB and five minutes,
 reads only existing scheduler metadata and fit receipts, and cannot submit,
-cancel or retrain models. Thirty-six focused tests pass. Preparation is not
-submission or scientific evaluation; the registered readout gate is unchanged.
+cancel or retrain models. Both uploaded files passed byte-identical round-trip
+checks. Thirty-six focused tests pass. Submission is not task completion or
+scientific evaluation; the registered readout gate is unchanged.
 
 **October 13 local time: complete training receipts recovered through CREATE's web interface.**
 The SSH connection remains unavailable, but the authenticated Open OnDemand file
