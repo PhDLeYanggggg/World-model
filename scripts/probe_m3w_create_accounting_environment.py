@@ -46,13 +46,15 @@ def query(kind, explicit_cluster=True):
                     observation='query_unavailable_status_unknown')
 
 
-def collect(mode):
+def collect(mode, native_node=False):
     if mode not in ('system', 'module'):
         raise ValueError('An explicit environment is required')
     job = os.environ.get('SLURM_JOB_ID', '')
     host = socket.gethostname()
     if not job.isdigit() or not os.environ.get('SLURM_JOB_NODELIST') or not host.startswith('erc-hpc-') or 'login' in host:
         raise RuntimeError('An allocated CREATE compute node is required')
+    if native_node and not host.startswith('erc-hpc-comp'):
+        raise RuntimeError('Native-node comparison requires an erc-hpc-comp allocation')
     if mode == 'system' and (Path(sys.executable) != Path('/usr/bin/python3')
             or os.environ.get('LD_LIBRARY_PATH') or os.environ.get('LD_PRELOAD')):
         raise RuntimeError('System branch must use isolated system Python and loader environment')
@@ -62,7 +64,7 @@ def collect(mode):
             or sha(home / 'training_freeze.json') != FREEZE_SHA):
         raise ValueError('Owned unchanged experiment required')
     # The experiment directory is new and exclusive, preventing an unnoticed resubmit.
-    directory = home / 'web_accounting_environment_v2'
+    directory = home / ('web_accounting_native_v3' if native_node else 'web_accounting_environment_v2')
     if mode == 'system':
         directory.mkdir(exist_ok=False)
     else:
@@ -70,6 +72,7 @@ def collect(mode):
         if first['job_id'] != job or first['node'] != host:
             raise ValueError('Same-allocation paired observation required')
     out = dict(schema='m3w_accounting_environment_v2', mode=mode, job_id=job, node=host,
+        native_node_comparison=native_node,
         observed_utc=datetime.now(timezone.utc).isoformat(), worker_sha256=sha(__file__),
         registration_sha256=REG_SHA, freeze_sha256=FREEZE_SHA,
         python=dict(executable=sys.executable, version=sys.version.split()[0]),
@@ -90,7 +93,9 @@ def collect(mode):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=['system', 'module'])
-    collect(parser.parse_args().mode)
+    parser.add_argument('--native-node', action='store_true')
+    args = parser.parse_args()
+    collect(args.mode, args.native_node)
 
 
 if __name__ == '__main__':

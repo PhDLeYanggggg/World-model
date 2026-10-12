@@ -1,0 +1,66 @@
+{
+  "schema": "m3w_accounting_environment_v2",
+  "mode": "system",
+  "job_id": "37985676",
+  "node": "erc-hpc-vm-tvd2f5",
+  "observed_utc": "2026-10-12T19:12:42.656731+00:00",
+  "worker_sha256": "9207c1b080491fcb3f081e536dfe197dd2351c2ca293e314a2af03c8e3527b92",
+  "registration_sha256": "a81c1dbbb08e410e6a40c97321752fc7ec1f8aeb81168fa0d81c7902762d99ef",
+  "freeze_sha256": "f57acbc74ba9afa47550b7c5aa37e70a42c2a14bd777ac9d4e9d8b2ee9542426",
+  "python": {
+    "executable": "/usr/bin/python3",
+    "version": "3.10.12"
+  },
+  "loader_environment_present": {
+    "LD_LIBRARY_PATH": false,
+    "LD_PRELOAD": false
+  },
+  "accounting_explicit": {
+    "argv": [
+      "sacct",
+      "--clusters=create",
+      "-j",
+      "37835856,37835859,37837636",
+      "--starttime=2026-10-06",
+      "--noheader",
+      "--parsable2",
+      "--format=JobID,State,Elapsed,ExitCode,MaxRSS"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "sacct: error: slurm_get_port: Address family '0' not supported\nsacct: error: Error connecting, bad data: family = 0, port = 0\nsacct: error: slurm_get_port: Address family '0' not supported\nsacct: error: Error connecting, bad data: family = 0, port = 0\nsacct: error: _open_persist_conn: failed to open persistent connection to host:erc-hpc-dbd2:6819: Resource temporarily unavailable\nsacct: error: Sending PersistInit msg: Resource temporarily unavailable\nsacct: error: Problem talking to the database: Resource temporarily unavailable\n"
+  },
+  "accounting_local": {
+    "argv": [
+      "sacct",
+      "-j",
+      "37835856,37835859,37837636",
+      "--starttime=2026-10-06",
+      "--noheader",
+      "--parsable2",
+      "--format=JobID,State,Elapsed,ExitCode,MaxRSS"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "sacct: error: slurm_get_port: Address family '0' not supported\nsacct: error: Error connecting, bad data: family = 0, port = 0\nsacct: error: slurm_get_port: Address family '0' not supported\nsacct: error: Error connecting, bad data: family = 0, port = 0\nsacct: error: _open_persist_conn: failed to open persistent connection to host:erc-hpc-dbd2:6819: Resource temporarily unavailable\nsacct: error: Sending PersistInit msg: Resource temporarily unavailable\nsacct: error: Problem talking to the database: Resource temporarily unavailable\n"
+  },
+  "queue_local": {
+    "argv": [
+      "squeue",
+      "-j",
+      "37835856,37835859,37837636",
+      "-h",
+      "-o",
+      "%i|%T|%M|%R"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "existing_jobs_changed": false,
+  "checkpoint_bytes_read": 0,
+  "scientific_execution": false,
+  "independent_roles_read": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

@@ -42,3 +42,11 @@ def test_local_execution_rejected(monkeypatch):
     monkeypatch.delenv('SLURM_JOB_ID', raising=False)
     with pytest.raises(RuntimeError, match='allocated CREATE'):
         probe.collect('system')
+
+
+def test_native_variant_rejects_virtual_node_before_reading_experiment(monkeypatch):
+    monkeypatch.setenv('SLURM_JOB_ID', '123')
+    monkeypatch.setenv('SLURM_JOB_NODELIST', 'erc-hpc-vm-example')
+    monkeypatch.setattr(probe.socket, 'gethostname', lambda: 'erc-hpc-vm-example')
+    with pytest.raises(RuntimeError, match='Native-node comparison'):
+        probe.collect('system', True)

@@ -10,9 +10,11 @@ or evidence status.
 The Open OnDemand worker37985561 ran, but its scheduler queries failed while
 resolving or connecting to the Slurm database. Its original report hash and all
 145 metadata files verify; no successful exit codes were inferred from the
-web UI's Completed label. A same-allocation system/module environment comparison
-is prepared to distinguish loader interference from node/database access.
-Forty-four focused tests pass. No retraining or scientific evaluation occurred;
+web UI's Completed label. The same-allocation comparison37985676 found that both
+system and module Python fail accounting on the same virtual node; local queue
+queries work. This does not support a module-only explanation. One bounded zen3
+node comparison is prepared; the earlier failures remain recorded unchanged.
+Forty-five focused tests pass. No retraining or scientific evaluation occurred;
 the registered readout gate remains unchanged.
 
 **October 13 local time: complete training receipts recovered through CREATE's web interface.**
