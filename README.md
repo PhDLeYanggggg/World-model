@@ -50,6 +50,11 @@ queries per fit, not the whole training set or an independent guarantee. I am
 investigating constraint scaling and the mismatch between the differentiable
 training decision and the hard deployment rule before running another matched
 experiment. More training alone has not been shown to solve this.
+The completed TRAIN gradient audit finds that the median easy-risk penalty
+gradient is only 0.0698% of the regression-plus-regret gradient. I have registered
+a matched positive constraint-scaling repair, retaining the original 2% risk
+definition and an exact unscaled control. This is a hypothesis, not yet a result.
+[Gradient evidence and repair](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md).
 
 All 216 fits and all 72 evaluation views are complete and verified. Training ran
 on native arm64 CPU in 10 minutes 48 seconds; evaluation took 3 minutes 23 seconds.

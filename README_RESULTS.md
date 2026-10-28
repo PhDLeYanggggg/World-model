@@ -9,11 +9,15 @@ or evidence status.
 
 ### Matched Decision-Risk Experiment: Complete, Not Deployable
 
-Follow-up in progress: a separately frozen TRAIN-only gradient audit will replay
-all 216 final monitors, measure risk-gradient strength and soft/hard mismatch,
-and quantify positive TRAIN-reference scaling. It takes no optimizer step and
-does not open new evaluation labels. Its registration is not a new training result.
-[Diagnostic protocol](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/protocol.md).
+The TRAIN-only gradient audit is complete: all 216 monitors replay, and median
+weighted easy-risk/data gradient ratio is 0.000698029 in the task-risk arm.
+The original hard rule still has positive easy excess in 52/72 TRAIN monitors.
+This motivates a separately frozen 144-fit constraint-scaling comparison,
+with a fresh unscaled control required to reproduce all 72 previous task-risk
+heads exactly. Ten focused tests pass; real TRAIN pilot and full training are next.
+No new development labels were opened in this diagnostic.
+[Evidence](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md),
+[matched repair protocol](outputs/publication_readiness_2026_09/european_scaled_risk_v1/protocol.md).
 
 **Fresh_run:** 216 neural cost-head fits and 72 fixed-final evaluation views are
 complete. Each of three arms has 72 matched identities and 2,000 updates. Frozen
