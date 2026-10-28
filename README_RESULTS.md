@@ -17,7 +17,11 @@ with a fresh unscaled control required to reproduce all 72 previous task-risk
 heads exactly. Ten focused tests pass. The real TRAIN pilot completed 400 updates
 in 9.65s, with exact interrupted/direct resume and original-control equality;
 peak RSS was 2.24GiB. The projected full run is 14.02 minutes including margin.
-This admits full training, not a scientific improvement claim.
+This admits full training, not a scientific improvement claim. The full 144-fit
+run is active; the eight-arm readout is registered before candidate predictions.
+Its eight primary utility contrasts, original 2% risk checks, all-control replay
+and independent scalar checks are fixed. The expanded focused suite passes 36
+tests. No new development result is available yet.
 No new development labels were opened in this diagnostic.
 [Evidence](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md),
 [matched repair protocol](outputs/publication_readiness_2026_09/european_scaled_risk_v1/protocol.md).
