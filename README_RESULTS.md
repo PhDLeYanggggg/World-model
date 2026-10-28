@@ -13,6 +13,11 @@ reproduction. Peak RSS was2.21GiB, with4compute threads and0loader workers.
 The projected216-fit runtime including transfer and1.5x margin is18.43minutes.
 This admits the unchanged full training target, not a quality or safety claim.
 [Pilot receipt](outputs/publication_readiness_2026_09/european_task_risk_v1/local_pilot.json).
+The full216-fit local run has started with atomic checkpoints and heartbeats.
+The seven-arm readout is also frozen before new development predictions:
+six primary paired-locality contrasts and unchanged2%risk checks. Its23 tests
+pass, including an independent scalar checker and rejection of missing controls,
+unknown-label filtering and unsupported/unsafe promotion. No readout has run yet.
 
 **Decision-aligned training is now registered; scientific results are not yet available.**
 The failed loss repair below motivates a controlled comparison of quadratic,
