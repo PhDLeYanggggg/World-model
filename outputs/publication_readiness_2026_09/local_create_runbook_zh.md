@@ -25,6 +25,10 @@ COMPLETED/0:0，才能继续。旧任务退出状态仍标未知，不创建伪�
 完成结果不可覆盖。仍通过 SSH 按需验证和读取模型，不下载本地 checkpoint cache。
 任何不一致都停止；不会调阈值、改模型或打开独立测试。当前科研结论未升级。
 
+23:07UTC 更新：验证38287008 已由 controller 确认 COMPLETED/0:0，运行6秒，
+289个文件全部哈希一致。该任务已经完成，不能重新提交。接续从 preflight/run 开始，
+科学读出完成与否以 readout_verified_v3/complete.json 和完整结果为准。
+
 ## 历史入口：2026-10-13
 
 今天通过 CREATE 官方 Open OnDemand 文件浏览器取回了原始 training_freeze 和

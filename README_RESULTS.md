@@ -16,9 +16,14 @@ record. No historical success is inferred. The explicit v3 admission checks all
 144 frozen checkpoint payloads in a new bounded verification allocation and
 requires that new job's actual successful controller exit. All old registrations,
 54+18 control provenance, original six-arm calculations and safety gates remain
-unchanged. Fifty-three targeted tests pass; verification submission and scientific
-readout are separate subsequent steps. No retraining or deployment promotion.
+unchanged. Verification38287008 completed0:0 in six seconds and all289 frozen
+files matched, including144 checkpoint payloads. Fifty-three targeted tests pass.
+The six-arm scientific readout is the next step; no retraining or deployment promotion.
 [Execution amendment](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/admission_protocol.md).
+
+The [official submission requirements](outputs/publication_readiness_2026_09/venue_status_2026_10_28.md)
+were rechecked, including mandatory AI-use disclosure and author enrollment.
+A factual disclosure draft is prepared. The manuscript remains not submission-ready.
 
 The Open OnDemand worker37985561 ran, but its scheduler queries failed while
 resolving or connecting to the Slurm database. Its original report hash and all
