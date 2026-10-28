@@ -14,7 +14,10 @@ weighted easy-risk/data gradient ratio is 0.000698029 in the task-risk arm.
 The original hard rule still has positive easy excess in 52/72 TRAIN monitors.
 This motivates a separately frozen 144-fit constraint-scaling comparison,
 with a fresh unscaled control required to reproduce all 72 previous task-risk
-heads exactly. Ten focused tests pass; real TRAIN pilot and full training are next.
+heads exactly. Ten focused tests pass. The real TRAIN pilot completed 400 updates
+in 9.65s, with exact interrupted/direct resume and original-control equality;
+peak RSS was 2.24GiB. The projected full run is 14.02 minutes including margin.
+This admits full training, not a scientific improvement claim.
 No new development labels were opened in this diagnostic.
 [Evidence](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md),
 [matched repair protocol](outputs/publication_readiness_2026_09/european_scaled_risk_v1/protocol.md).
