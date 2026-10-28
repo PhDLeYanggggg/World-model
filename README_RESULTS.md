@@ -7,6 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**October28: SSH restored; a frozen-payload verification replaces unavailable
+historical accounting, not the scientific experiment.** The corrected
+37985989 diagnostic reached both Python environments on another allocation;
+both accounting queries still failed. Current SSH queries reach login2, but
+the database refuses connections and the controller has expired the old join
+record. No historical success is inferred. The explicit v3 admission checks all
+144 frozen checkpoint payloads in a new bounded verification allocation and
+requires that new job's actual successful controller exit. All old registrations,
+54+18 control provenance, original six-arm calculations and safety gates remain
+unchanged. Fifty-three targeted tests pass; verification submission and scientific
+readout are separate subsequent steps. No retraining or deployment promotion.
+[Execution amendment](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/admission_protocol.md).
+
 The Open OnDemand worker37985561 ran, but its scheduler queries failed while
 resolving or connecting to the Slurm database. Its original report hash and all
 145 metadata files verify; no successful exit codes were inferred from the

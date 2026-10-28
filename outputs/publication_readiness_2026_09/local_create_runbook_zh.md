@@ -1,6 +1,31 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-13
+## 当前入口：2026-10-28
+
+SSH 已恢复。旧 join 的控制器记录已过期，历史数据库仍拒绝连接，不能再把旧网页
+的 Queued/Completed 当作实时状态。37985989 的原始报告已取回并逐字节校验：
+两种 Python 均未取得历史 accounting；没有新科学结果，也不重复提交相同查询。
+
+新的 v3 执行修订只改变产物准入依据：以新的单 CPU、1GiB、5 分钟验证任务核验
+全部 144 个冻结 checkpoint、144 份记录和 freeze；必须取得这个新任务的真实
+COMPLETED/0:0，才能继续。旧任务退出状态仍标未知，不创建伪造的 train_collection。
+原训练、54+18 对照、六组比较、3,000 次地点配对 bootstrap、2% 风险预算不变。
+
+本地入口均使用原生 arm64 环境；以下是按顺序执行的阶段，不是已全部完成的声明：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v3 register
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v3 submit
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v3 observe
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v3 preflight
+.venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v3 run
+```
+
+提交凭据存在后只能 observe，不能再次 submit。读出中断用同一 run 加 --resume；
+完成结果不可覆盖。仍通过 SSH 按需验证和读取模型，不下载本地 checkpoint cache。
+任何不一致都停止；不会调阈值、改模型或打开独立测试。当前科研结论未升级。
+
+## 历史入口：2026-10-13
 
 今天通过 CREATE 官方 Open OnDemand 文件浏览器取回了原始 training_freeze 和
 144 份训练记录。哈希与既有验证器一致，110 份已验收记录没有变化；54 份历史
