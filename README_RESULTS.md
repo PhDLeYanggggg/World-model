@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**Decision-aligned training is now registered; scientific results are not yet available.**
+The failed loss repair below motivates a controlled comparison of quadratic,
+task-utility, and task-utility plus empirical risk-dual objectives. All216 fits
+will be fresh matched fits over the same72 TRAIN identities, initialization,
+sampling and2,000-update budget. Twenty-three local tests pass, including exact
+resume and original-control reproduction. The real-data CREATE pilot is next;
+neither a pilot nor lower training loss counts as downstream improvement.
+The2% selected-positive-easy-harm definition, frozen deployment gate and closed
+independent roles are unchanged.
+[Registered protocol](outputs/publication_readiness_2026_09/european_task_risk_v1/protocol.md).
+
 **October 28: the complete easy-harm loss comparison fails advancement.**
 All 72 registered source/head views completed fresh fixed-final inference in
 200.13 seconds, after new verification job38287008 rehashed all144 checkpoint
