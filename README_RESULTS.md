@@ -25,6 +25,10 @@ A second pre-submission guard exposed CREATE's `/users`/Ceph path alias;
 the portable entry fixes only that comparison. All27 focused tests pass,
 including structural equivalence of every other ownership check. No scientific
 setting changed and neither failed attempt submitted a job.
+CREATE quota preflight then found only4.12GiB free, below the preserved10GiB
+reserve. Real-data execution therefore moves to native local CPU, streaming one
+verified TRAIN packet at a time without a disk cache. The216-fit target is not
+reduced. Thirty focused tests pass; [execution amendment](outputs/publication_readiness_2026_09/european_task_risk_v1/local_execution.md).
 
 **October 28: the complete easy-harm loss comparison fails advancement.**
 All 72 registered source/head views completed fresh fixed-final inference in
