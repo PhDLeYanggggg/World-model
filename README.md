@@ -25,45 +25,44 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**28 October: changing the easy-harm loss does not yet produce a safe policy.**
-I completed the registered comparison of quadratic and continuous-cost deviance
-losses, using 144 frozen cost heads, 72 source/head views and twelve EuropeanSquares
-localities. The forecast models, sampling, 2,000-step budget and decision rule
-remain fixed. This isolates one training-loss change rather than a larger model.
+**28 October: decision-focused training improves utility, but safety still fails.**
+I completed 216 fresh neural cost-head fits: quadratic regression, task-utility
+training, and task-utility with empirical risk penalties. Each arm has 72 matched
+source/head views across twelve EuropeanSquares localities. The forecast models,
+TRAIN sampling, initialization, 2,000-update budget and deployment rule stay fixed.
+This tests the learning objective, not a new trajectory predictor.
 
-The deviance policy improves paired utility over the original forest by 1.6191
-percentage points, but loses 0.9027 points to the stronger quadratic control
-(nominal 95% locality interval: -1.7756 to -0.0604). Its same-count comparison
-with quadratic is also not positive. These are normalized decision-utility
-contrasts, not raw ADE/FDE or t+50 improvements.
+The risk-penalized arm gains **1.0497 percentage points** of normalized paired lower
+utility over quadratic regression (nominal 95% locality interval: **0.1981 to
+2.0882**). The gain remains positive at the same intervention count: **0.5528
+points [0.1593, 0.9891]**. However, it loses **1.1731 points** to the utility-only
+control. These are decision-utility contrasts, not ADE/FDE or raw-frame t+50 gains.
 
-Safety remains the more important failure: 59 of 72 views violate the 2% budget
-on known easy-case outcomes, and 71 violate the conservative completion bound.
-The budget measures positive selected easy harm relative to reference error,
-not net easy ADE degradation. In all 72 deviance views, the model underestimates
-harm on the cases it selects; the median predicted/observed harm ratio is 0.0486.
-Selecting fewer cases has not fixed that conditional error.
+The policy is **not safe to promote**. It violates the known-outcome easy-risk
+budget in **58/72** views and the conservative completion bound in **71/72**.
+Here the 2% budget measures positive selected easy harm relative to reference
+error, not net easy ADE degradation. All 72 views underestimate selected easy
+harm. The median predicted/observed ratio is only 0.0106.
 
-I am keeping the negative result and all stronger comparisons. I have now started
-a separately registered decision-aligned training experiment:216 fresh matched
-fits compare quadratic, task-utility, and task-utility plus empirical risk terms.
-The real-data pilot reproduced the original control and exact checkpoint resume.
-All 216 fits are complete and hash-verified, taking 10 minutes 48 seconds.
-The fixed readout is next; no downstream improvement is established yet.
-[Fixed protocol and execution](outputs/publication_readiness_2026_09/european_task_risk_v1/local_execution.md).
-Independent evaluation roles stay closed, and no deployment changes follow from
-this development result. The previous temporal-supervision failure is retained
-in the same evidence chain.
+The optimization itself also needs repair: the soft easy-risk constraint remains
+positive in **61/72 fixed TRAIN monitors**. That is a descriptive check of 128
+queries per fit, not the whole training set or an independent guarantee. I am
+investigating constraint scaling and the mismatch between the differentiable
+training decision and the hard deployment rule before running another matched
+experiment. More training alone has not been shown to solve this.
 
-The readout was freshly computed after all model payloads were verified. Training
-was reused, not repeated for this update. The explicit control amendment retains
-54 historical-exact controls and 18 original-trainer replays; incomplete historical
-bitwise reproduction remains a limitation. These are exposed development results,
-not independent cross-domain confirmation or a submission-ready claim.
+All 216 fits and all 72 evaluation views are complete and verified. Training ran
+on native arm64 CPU in 10 minutes 48 seconds; evaluation took 3 minutes 23 seconds.
+The analysis uses 3,000 paired-locality bootstrap draws, not overlapping rows as
+independent observations. These are exposed development results. Independent
+evaluation remains unopened, deployment is unchanged, and the work is not yet
+submission-ready.
 
-- [Complete loss comparison and risk results](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/conclusions.md)
-- [Selected-harm failure diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/selected_harm_diagnosis.md)
-- [Current English manuscript and reproducible tables](outputs/publication_readiness_2026_09/evidence_manuscript_v5/README.md)
+- [Complete decision-risk comparison](outputs/publication_readiness_2026_09/european_task_risk_v1/readout/conclusions.md)
+- [Constraint and selected-harm failure analysis](outputs/publication_readiness_2026_09/european_task_risk_v1/failure_analysis.md)
+- [English manuscript addendum](outputs/publication_readiness_2026_09/european_task_risk_v1/manuscript_addendum.md)
+- [Earlier loss comparison, including negative results](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/conclusions.md)
+- [English manuscript, revision 5](outputs/publication_readiness_2026_09/evidence_manuscript_v5/README.md)
 - [Earlier temporal and TRAIN diagnosis](outputs/publication_readiness_2026_09/evidence_manuscript_v4/manuscript.md)
 - [Local and CREATE reproduction guide](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)
 - [Complete results ledger](README_RESULTS.md)

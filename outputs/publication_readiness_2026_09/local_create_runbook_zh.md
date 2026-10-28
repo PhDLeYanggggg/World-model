@@ -1,6 +1,56 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-28
+## 当前入口：2026-10-28 决策风险训练与评价均完成
+
+常规审计、实验核验、记录和安全 Git 同步由项目工作流程承担，不再逐项要求用户
+确认。正式投稿仍由作者最终确认；既定数据用途、风险预算和禁止项没有改变。
+
+本轮新训 216 个神经 cost heads，每组 72 个、各 2,000 次更新：quadratic、
+task_utility、task_risk。这是冻结预测器后的选择任务，不是新训 216 个世界模型。
+CREATE 配额剩余约 4.12GiB，低于保留的 10GiB 安全余量，因此没有提交训练任务；
+实际使用本地原生 arm64 `.venv-pytorch`、CPU 4 线程、DataLoader workers=0。
+输入按包从已验证 TRAIN 文件流式读取，不建立本地 TRAIN 数据缓存。
+
+以下是已经成功执行的命令，不要覆盖已完成实验：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_task_risk_local pilot
+.venv-pytorch/bin/python -m scripts.run_m3w_task_risk_local train
+.venv-pytorch/bin/python -m scripts.run_m3w_task_risk_readout preflight
+.venv-pytorch/bin/python -m scripts.run_m3w_task_risk_readout run
+.venv-pytorch/bin/python -m scripts.report_m3w_task_risk
+```
+
+真实 TRAIN pilot 共 500 次更新，原对照复现和中断/直接训练一致性均通过。
+正式训练 647.65 秒，216 份 final checkpoint 全部哈希验证；权重共 41.75MB，
+保存在忽略目录 `data/stage_cvpr2027_experiments/european_task_risk_v1/local/`。
+checkpoint、heartbeat 和事件日志留作恢复证据，不进入 Git。最终评价 72/72 组
+完成，用时 203.37 秒，没有尚在运行的该轮训练。完整训练 freeze SHA256：
+`f713be7605a9e82e40d0629983463fe474540feacf8f22e0d03609c53f564110`。
+
+结果：task-risk 对 quadratic 的配对效用差 +1.0497 个百分点，nominal 95% 地点
+区间 [0.1981, 2.0882]；但对 task-utility 为 -1.1731。已知 easy 风险仍 58/72
+超标，上界 71/72 超标。不能部署，不能说 FDE 改善，也不能说独立泛化成功。
+TRAIN 固定 128-query 检查中，61/72 仍有正的 easy 约束超额，不是全 TRAIN 证明。
+
+当前只需核查已有证据，不重复训练或开启独立测试：
+
+```bash
+.venv-pytorch/bin/python -m scripts.report_m3w_task_risk --check
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_task_risk_monitor --check
+```
+
+这些命令验证冻结模型、逐组摘要和派生报告，重新计算统计核验，不产生新预测或
+新训练结果。新增路径的 56 项针对性测试通过；未宣称全仓库测试通过。
+下一步检查 TRAIN 约束尺度、梯度和软/硬规则一致性，再注册一个匹配修复实验。
+不能用独立测试调阈值，也不能通过减少样本或降低风险要求掩盖失败。
+
+[完整结果](european_task_risk_v1/readout/conclusions.md)、
+[失败分析](european_task_risk_v1/failure_analysis.md)、
+[英文稿增补](european_task_risk_v1/manuscript_addendum.md)。
+基础英文稿 v5 保留，增补不覆盖旧稿。Stage5C、SMC 仍关闭。
+
+## 历史入口：2026-10-28 较早的 easy-harm 读出
 
 SSH 已恢复。旧 join 的控制器记录已过期，历史数据库仍拒绝连接，不能再把旧网页
 的 Queued/Completed 当作实时状态。37985989 的原始报告已取回并逐字节校验：

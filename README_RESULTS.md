@@ -7,43 +7,58 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**The native real-TRAIN pilot passed.** Five hundred updates completed in10.22s,
-including exact interrupted/direct task-risk replay and exact original-control
-reproduction. Peak RSS was2.21GiB, with4compute threads and0loader workers.
-The projected216-fit runtime including transfer and1.5x margin is18.43minutes.
-This admits the unchanged full training target, not a quality or safety claim.
-[Pilot receipt](outputs/publication_readiness_2026_09/european_task_risk_v1/local_pilot.json).
-The full216-fit local run completed in647.65s, including57.59s of TRAIN streaming.
-All216 final2,000-step checkpoints verify; their total size is41,752,749bytes,
-kept outside Git. No new development prediction was read before the freeze.
-The seven-arm readout is also frozen before new development predictions:
-six primary paired-locality contrasts and unchanged2%risk checks. Its23 tests
-pass, including an independent scalar checker and rejection of missing controls,
-unknown-label filtering and unsupported/unsafe promotion. No readout has run yet.
-The complete new training, execution, readout and report test set passes55 tests.
+### Matched Decision-Risk Experiment: Complete, Not Deployable
 
-**Decision-aligned training is now registered; scientific results are not yet available.**
-The failed loss repair below motivates a controlled comparison of quadratic,
-task-utility, and task-utility plus empirical risk-dual objectives. All216 fits
-will be fresh matched fits over the same72 TRAIN identities, initialization,
-sampling and2,000-update budget. Twenty-three local tests pass, including exact
-resume and original-control reproduction. The real-data CREATE pilot is next;
-neither a pilot nor lower training loss counts as downstream improvement.
-The2% selected-positive-easy-harm definition, frozen deployment gate and closed
-independent roles are unchanged.
-[Registered protocol](outputs/publication_readiness_2026_09/european_task_risk_v1/protocol.md).
-Installation now streams metadata after a large-command transport failure;
-the frozen numerical code is unchanged. All25 focused tests pass, and the
-[transport amendment](outputs/publication_readiness_2026_09/european_task_risk_v1/transport_repair.md)
-retains the failed attempt without claiming that training had started.
-A second pre-submission guard exposed CREATE's `/users`/Ceph path alias;
-the portable entry fixes only that comparison. All27 focused tests pass,
-including structural equivalence of every other ownership check. No scientific
-setting changed and neither failed attempt submitted a job.
-CREATE quota preflight then found only4.12GiB free, below the preserved10GiB
-reserve. Real-data execution therefore moves to native local CPU, streaming one
-verified TRAIN packet at a time without a disk cache. The216-fit target is not
-reduced. Thirty focused tests pass; [execution amendment](outputs/publication_readiness_2026_09/european_task_risk_v1/local_execution.md).
+**Fresh_run:** 216 neural cost-head fits and 72 fixed-final evaluation views are
+complete. Each of three arms has 72 matched identities and 2,000 updates. Frozen
+forecasters and input packets are cached_verified; no new forecaster was trained.
+All comparisons retain the same initialization, TRAIN sampling and hard gate.
+
+| Task-risk minus control | Full paired lower utility, pp [nominal 95% CI] | Same-count utility, pp [CI] |
+|---|---:|---:|
+| Quadratic | +1.049721 [0.198079, 2.088174] | +0.552791 [0.159252, 0.989134] |
+| Task utility | -1.173144 [-1.628079, -0.724663] | -0.470816 [-0.716578, -0.232627] |
+| Original forest | +3.029882 [1.239565, 4.959974] | +0.794163 [0.187919, 1.580280] |
+
+These are normalized decision-utility differences, not trajectory FDE improvement.
+The 3,000-draw paired bootstrap uses 12 localities, averaging repeated views
+within locality. The 596,988 row occurrences are not independent observations.
+All 14,076 unknown-outcome occurrences remain in the missingness accounting.
+
+The registered advancement rule **fails**: task-risk loses to the utility-only
+control, has 58/72 known easy-risk violations and 71/72 upper-bound violations.
+Only 1/72 full-policy views has finite completion support. The unchanged 2% risk
+budget concerns positive selected easy harm/reference error, not net easy ADE.
+Task-risk underestimates selected easy harm in all 72 views; its median
+predicted/actual ratio is 0.010576. No arm is promoted after viewing these results.
+
+The post-readout TRAIN-only diagnostic finds unsatisfied soft easy constraints
+in 61/72 fixed 128-query monitors and all-risk constraints in 38/72. No dual
+reaches its cap. This is evidence of unfinished empirical constraint optimization,
+not proof of a unique cause or of what another run will fix. The mean soft action
+is 0.108922 versus hard intervention 0.283421; the 0.5 comparison is descriptive,
+not a calibrated probability or a new deployment rule.
+
+Engineering verification is separate: exact original-control/resume pilot,
+216 hash-bound final checkpoints, exact repeated inference/strong-control replay,
+and 11,466,669 scalar checks pass. The targeted 56-test suite passes; the full
+repository suite was not rerun. Training took 647.65s and evaluation 203.37s.
+Weights total 41,752,749 bytes and stay out of Git. CREATE had only 4.12GiB free,
+so the unchanged experiment ran locally with four CPU threads and zero workers,
+streaming verified TRAIN packets. No CREATE training job was submitted.
+
+Independent evaluation and transfer are **not_run** because development safety
+has not passed. Deployment remains unchanged, and submission readiness is false.
+Next isolate TRAIN constraint scale/gradient and soft/hard consistency, then
+register a matched repair. Do not use independent/test labels to tune thresholds.
+
+[Full results](outputs/publication_readiness_2026_09/european_task_risk_v1/readout/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_task_risk_v1/failure_analysis.md),
+[manuscript addendum](outputs/publication_readiness_2026_09/european_task_risk_v1/manuscript_addendum.md),
+[protocol](outputs/publication_readiness_2026_09/european_task_risk_v1/protocol.md),
+[execution amendments and pilot](outputs/publication_readiness_2026_09/european_task_risk_v1/local_execution.md).
+
+### Preceding Easy-Harm Loss Experiment
 
 **October 28: the complete easy-harm loss comparison fails advancement.**
 All 72 registered source/head views completed fresh fixed-final inference in
@@ -68,8 +83,7 @@ Exact inference and strong-control replay,9,656,592 scalar checks, and a fresh
 [Complete results](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/conclusions.md),
 [selected-risk diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/selected_harm_diagnosis.md),
 [revised English evidence manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v5/README.md).
-Next: a separately frozen matched decision-aligned objective, starting with
-TRAIN-only gradient/pilot checks; no new threshold search or independent labels.
+The matched decision-aligned follow-up is now complete and reported above.
 
 The [official submission requirements](outputs/publication_readiness_2026_09/venue_status_2026_10_28.md)
 were rechecked, including mandatory AI-use disclosure and author enrollment.
