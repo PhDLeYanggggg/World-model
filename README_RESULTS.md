@@ -17,6 +17,10 @@ neither a pilot nor lower training loss counts as downstream improvement.
 The2% selected-positive-easy-harm definition, frozen deployment gate and closed
 independent roles are unchanged.
 [Registered protocol](outputs/publication_readiness_2026_09/european_task_risk_v1/protocol.md).
+Installation now streams metadata after a large-command transport failure;
+the frozen numerical code is unchanged. All25 focused tests pass, and the
+[transport amendment](outputs/publication_readiness_2026_09/european_task_risk_v1/transport_repair.md)
+retains the failed attempt without claiming that training had started.
 
 **October 28: the complete easy-harm loss comparison fails advancement.**
 All 72 registered source/head views completed fresh fixed-final inference in
