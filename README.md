@@ -48,7 +48,8 @@ I am keeping the negative result and all stronger comparisons. I have now starte
 a separately registered decision-aligned training experiment:216 fresh matched
 fits compare quadratic, task-utility, and task-utility plus empirical risk terms.
 The real-data pilot reproduced the original control and exact checkpoint resume.
-Full training is in progress; no downstream improvement is established yet.
+All 216 fits are complete and hash-verified, taking 10 minutes 48 seconds.
+The fixed readout is next; no downstream improvement is established yet.
 [Fixed protocol and execution](outputs/publication_readiness_2026_09/european_task_risk_v1/local_execution.md).
 Independent evaluation roles stay closed, and no deployment changes follow from
 this development result. The previous temporal-supervision failure is retained
