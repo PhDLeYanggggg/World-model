@@ -44,9 +44,12 @@ not net easy ADE degradation. In all 72 deviance views, the model underestimates
 harm on the cases it selects; the median predicted/observed harm ratio is 0.0486.
 Selecting fewer cases has not fixed that conditional error.
 
-I am keeping the negative result and all stronger comparisons. The next question
-is whether a decision-aligned training objective improves selected utility and
-harm prediction under the same frozen protocol. That experiment has not yet run.
+I am keeping the negative result and all stronger comparisons. I have now started
+a separately registered decision-aligned training experiment:216 fresh matched
+fits compare quadratic, task-utility, and task-utility plus empirical risk terms.
+The real-data pilot reproduced the original control and exact checkpoint resume.
+Full training is in progress; no downstream improvement is established yet.
+[Fixed protocol and execution](outputs/publication_readiness_2026_09/european_task_risk_v1/local_execution.md).
 Independent evaluation roles stay closed, and no deployment changes follow from
 this development result. The previous temporal-supervision failure is retained
 in the same evidence chain.

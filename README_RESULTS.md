@@ -18,6 +18,7 @@ The seven-arm readout is also frozen before new development predictions:
 six primary paired-locality contrasts and unchanged2%risk checks. Its23 tests
 pass, including an independent scalar checker and rejection of missing controls,
 unknown-label filtering and unsupported/unsafe promotion. No readout has run yet.
+The complete new training, execution, readout and report test set passes55 tests.
 
 **Decision-aligned training is now registered; scientific results are not yet available.**
 The failed loss repair below motivates a controlled comparison of quadratic,
