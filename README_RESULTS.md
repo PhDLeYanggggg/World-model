@@ -7,6 +7,13 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+**The native real-TRAIN pilot passed.** Five hundred updates completed in10.22s,
+including exact interrupted/direct task-risk replay and exact original-control
+reproduction. Peak RSS was2.21GiB, with4compute threads and0loader workers.
+The projected216-fit runtime including transfer and1.5x margin is18.43minutes.
+This admits the unchanged full training target, not a quality or safety claim.
+[Pilot receipt](outputs/publication_readiness_2026_09/european_task_risk_v1/local_pilot.json).
+
 **Decision-aligned training is now registered; scientific results are not yet available.**
 The failed loss repair below motivates a controlled comparison of quadratic,
 task-utility, and task-utility plus empirical risk-dual objectives. All216 fits
