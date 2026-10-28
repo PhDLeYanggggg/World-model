@@ -7,23 +7,40 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-**October28: SSH restored; a frozen-payload verification replaces unavailable
-historical accounting, not the scientific experiment.** The corrected
-37985989 diagnostic reached both Python environments on another allocation;
-both accounting queries still failed. Current SSH queries reach login2, but
-the database refuses connections and the controller has expired the old join
-record. No historical success is inferred. The explicit v3 admission checks all
-144 frozen checkpoint payloads in a new bounded verification allocation and
-requires that new job's actual successful controller exit. All old registrations,
-54+18 control provenance, original six-arm calculations and safety gates remain
-unchanged. Verification38287008 completed0:0 in six seconds and all289 frozen
-files matched, including144 checkpoint payloads. Fifty-three targeted tests pass.
-The six-arm scientific readout is the next step; no retraining or deployment promotion.
-[Execution amendment](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/admission_protocol.md).
+**October 28: the complete easy-harm loss comparison fails advancement.**
+All 72 registered source/head views completed fresh fixed-final inference in
+200.13 seconds, after new verification job38287008 rehashed all144 checkpoint
+payloads and145 metadata files with a successful controller exit. The original
+six-arm calculation and2% selected-positive-easy-harm budget remain unchanged.
+Historical scheduler accounting stays unavailable;54 historical-exact controls
+and18 original-trainer replays remain distinguished. Training is cached_verified,
+not144 freshly retrained models.
+
+Deviance-minus-quadratic full paired lower utility is -0.902716pp
+(nominal95% locality CI[-1.775623,-0.060409]); same-count is -0.381278pp
+[-0.994827,+0.126845]. The positive original-forest comparison
+(+1.619084pp[+0.634909,+2.693268]) does not replace the failed primary control.
+Deviance has59/72 known easy-risk violations and71/72 completion-upper violations.
+All72 views underestimate selected easy harm; the median predicted/actual ratio
+is0.048558. The descriptive signed accounting verifies432 identities. None of
+these development results establishes independent confirmation or deployment.
+Exact inference and strong-control replay,9,656,592 scalar checks, and a fresh
+3,000-draw paired-locality summary verification pass. Research gates do not.
+
+[Complete results](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/conclusions.md),
+[selected-risk diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/selected_harm_diagnosis.md),
+[revised English evidence manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v5/README.md).
+Next: a separately frozen matched decision-aligned objective, starting with
+TRAIN-only gradient/pilot checks; no new threshold search or independent labels.
 
 The [official submission requirements](outputs/publication_readiness_2026_09/venue_status_2026_10_28.md)
 were rechecked, including mandatory AI-use disclosure and author enrollment.
 A factual disclosure draft is prepared. The manuscript remains not submission-ready.
+
+### Historical Execution Records
+
+The dated entries below preserve earlier observations; their pending/not_run
+statements are not the current status of the completed October28 readout.
 
 The Open OnDemand worker37985561 ran, but its scheduler queries failed while
 resolving or connecting to the Slurm database. Its original report hash and all

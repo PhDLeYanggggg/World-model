@@ -25,87 +25,43 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**Temporal supervision improves prediction error, but not safe decisions.**
-I completed all 216 matched neural cost-head fits on the frozen EuropeanSquares
-source partitions, with three head seeds and 2,000 updates per fit. The comparison
-keeps the architecture, primary loss and sampling fixed, and varies no auxiliary,
-row-mean auxiliary and temporal auxiliary supervision. All models were frozen
-before the seven-arm development evaluation.
+**28 October: changing the easy-harm loss does not yet produce a safe policy.**
+I completed the registered comparison of quadratic and continuous-cost deviance
+losses, using 144 frozen cost heads, 72 source/head views and twelve EuropeanSquares
+localities. The forecast models, sampling, 2,000-step budget and decision rule
+remain fixed. This isolates one training-loss change rather than a larger model.
 
-Temporal supervision improves normalized signed-score error over the row-mean
-control by 0.024422, with a nominal locality interval of [0.001405, 0.054556].
-But its paired decision utility is worse, including when intervention counts
-are matched within each query. It also loses to the no-auxiliary neural control.
-Sixty of 72 source/seed views already violate the 2% selected easy-harm budget
-on known outcomes. This cannot be explained only by missing labels.
+The deviance policy improves paired utility over the original forest by 1.6191
+percentage points, but loses 0.9027 points to the stronger quadratic control
+(nominal 95% locality interval: -1.7756 to -0.0604). Its same-count comparison
+with quadratic is also not positive. These are normalized decision-utility
+contrasts, not raw ADE/FDE or t+50 improvements.
 
-The experiment ran successfully; the proposed model did not pass. I am retaining
-the negative result and investigating false-safe harm/reference predictions,
-without relaxing the risk budget or tuning the completed evaluation. These are
-exposed development findings, not independent confirmation or a deployment gain.
+Safety remains the more important failure: 59 of 72 views violate the 2% budget
+on known easy-case outcomes, and 71 violate the conservative completion bound.
+The budget measures positive selected easy harm relative to reference error,
+not net easy ADE degradation. In all 72 deviance views, the model underestimates
+harm on the cases it selects; the median predicted/observed harm ratio is 0.0486.
+Selecting fewer cases has not fixed that conditional error.
 
-The follow-up replay now shows that the failure starts on the training data.
-All 216 heads underestimate easy-case harm on their selected populations.
-The temporal arm violates the fixed budget in 52 of 72 TRAIN source/seed views;
-its median predicted/actual selected-harm ratio is only 0.0392. Reference-cost
-overestimation is not the dominant error. This is a training-set diagnosis, not
-a new generalization gain. I am testing a more suitable easy-harm loss next.
+I am keeping the negative result and all stronger comparisons. The next question
+is whether a decision-aligned training objective improves selected utility and
+harm prediction under the same frozen protocol. That experiment has not yet run.
+Independent evaluation roles stay closed, and no deployment changes follow from
+this development result. The previous temporal-supervision failure is retained
+in the same evidence chain.
 
-The paired easy-harm experiment is now registered: 144 fixed-budget fits, with
-the original quadratic loss as an exact control. The real TRAIN pilot is complete:
-checkpoint recovery and the original control replay exactly, and the resource
-checks pass. The two 100-step pilot monitoring losses did not improve, so this
-is execution evidence, not an accuracy or safety result. The full comparison
-is now submitted as four disjoint CREATE tasks, with 2,000 updates per fit.
-The first full task reached2,000 updates but failed exact equality with its
-historical control; the reported weight difference is2.43e-6. Unstarted tasks
-are held while a same-node TRAIN replay diagnoses the mismatch. It is not yet
-known whether the low-level cause is a historical floating-point/kernel path.
-Another shard completed36 fits; all checkpoints and its18 historical controls
-verify exactly. Those valid results are retained, not retrained.
-The completed same-node diagnostic now reproduces the failed checkpoint exactly
-with the unmodified original trainer, both directly and through pilot recovery.
-Only the historical saved state differs. An explicit, pre-readout amendment
-uses that exact original-trainer replay for this one identity and keeps the
-historical mismatch visible; floating tolerances and research gates do not change.
-All final heads must be verified before the fixed development evaluation.
-The three unfinished shards have been resubmitted; the last scheduler check
-shows them queued. The cache-free six-arm readout is implemented and registered,
-with61 scoped tests passing, but has not run on real development data yet.
-[Pilot evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/pilot_report.md).
+The readout was freshly computed after all model payloads were verified. Training
+was reused, not repeated for this update. The explicit control amendment retains
+54 historical-exact controls and 18 original-trainer replays; incomplete historical
+bitwise reproduction remains a limitation. These are exposed development results,
+not independent cross-domain confirmation or a submission-ready claim.
 
-**Execution update, 6 October at 12:56 UTC:** two resumed shards have completed.
-There are now 110 hash-verified final fits, including 54 exact historical controls
-and the one explicitly documented original-trainer replay. The last shard failed
-on another identity, with a reported weight difference of 0.113232. This is not
-dismissed as a negligible numerical discrepancy. A TRAIN-only original/new
-implementation sweep is registered for the 17 still-unaccepted pairs. Existing
-fits are preserved, no additional acceptance exception has been granted, and
-new development evaluation remains closed.
-The diagnostic has since completed: all 17 new/original implementation pairs
-match exactly, but none matches its historical shard-zero checkpoint. The
-historical compute node no longer exists. This localizes an execution-reproduction
-problem without proving its low-level cause; I am retaining it explicitly while
-preparing the next recovery contract. It is not a scientific result for the loss.
-[Diagnostic evidence and limits](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/control_diagnostic_v2/conclusions.md).
-
-The [version-three English manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v3/manuscript.md)
-connects the earlier SDD study to these European development results without
-pooling their metrics. It retains strong conventional controls and negative
-findings; the [new experimental addendum](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/manuscript_addendum.md)
-replaces its earlier pending-training status. A second
-[TRAIN selection diagnostic](outputs/publication_readiness_2026_09/evidence_manuscript_v3/train_selection_diagnostic_addendum.md)
-shows that selected harm is already underestimated before transfer, with a
-traceable decomposition and the successor's reproducibility limitation retained.
-The central question remains whether better cost prediction produces
-better decisions on the selected population, not merely a smaller average loss.
-
-- [Completed temporal diagnostic](outputs/publication_readiness_2026_09/european_temporal_target_audit_v1/conclusions.md)
-- [Complete matched training and downstream results](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/report.md)
-- [Why the neural policy failed](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/readout/failure_analysis.md)
-- [TRAIN false-safe diagnosis and next hypothesis](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/false_safe_train_diagnostic_v1/conclusions.md)
-- [Registered training and recovery](outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/reproduction_zh.md)
-- [Current paper and reproducible tables](outputs/publication_readiness_2026_09/evidence_manuscript_v3/README.md)
+- [Complete loss comparison and risk results](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/conclusions.md)
+- [Selected-harm failure diagnosis](outputs/publication_readiness_2026_09/european_easy_harm_deviance_v1/readout_verified_v3/selected_harm_diagnosis.md)
+- [Current English manuscript and reproducible tables](outputs/publication_readiness_2026_09/evidence_manuscript_v5/README.md)
+- [Earlier temporal and TRAIN diagnosis](outputs/publication_readiness_2026_09/evidence_manuscript_v4/manuscript.md)
+- [Local and CREATE reproduction guide](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)
 - [Complete results ledger](README_RESULTS.md)
 
 ### Earlier Conditional Harm Result

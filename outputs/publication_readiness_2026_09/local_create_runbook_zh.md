@@ -11,7 +11,7 @@ SSH 已恢复。旧 join 的控制器记录已过期，历史数据库仍拒绝�
 COMPLETED/0:0，才能继续。旧任务退出状态仍标未知，不创建伪造的 train_collection。
 原训练、54+18 对照、六组比较、3,000 次地点配对 bootstrap、2% 风险预算不变。
 
-本地入口均使用原生 arm64 环境；以下是按顺序执行的阶段，不是已全部完成的声明：
+本地入口均使用原生 arm64 环境；以下阶段本轮已按顺序完成，保留为执行记录：
 
 ```bash
 .venv-pytorch/bin/python -m scripts.run_m3w_easy_harm_readout_v3 register
@@ -25,9 +25,23 @@ COMPLETED/0:0，才能继续。旧任务退出状态仍标未知，不创建伪�
 完成结果不可覆盖。仍通过 SSH 按需验证和读取模型，不下载本地 checkpoint cache。
 任何不一致都停止；不会调阈值、改模型或打开独立测试。当前科研结论未升级。
 
-23:07UTC 更新：验证38287008 已由 controller 确认 COMPLETED/0:0，运行6秒，
-289个文件全部哈希一致。该任务已经完成，不能重新提交。接续从 preflight/run 开始，
-科学读出完成与否以 readout_verified_v3/complete.json 和完整结果为准。
+23:11UTC 更新：验证38287008 已由 controller 确认 COMPLETED/0:0，运行6秒，
+289个文件全部哈希一致。科学读出随后完成72/72组，用时200.13秒；完整结果和哈希
+在 readout_verified_v3/complete.json。这些任务均已完成，不要重新提交或覆盖。
+新损失对 quadratic 的完整配对效用差为-0.902716个百分点，71/72视图风险上界超标，
+没有通过晋级。只核对/生成轻量报告与论文，不重新训练或再读取独立测试：
+
+```bash
+.venv-pytorch/bin/python -m scripts.report_m3w_easy_harm_readout_v3 --check
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_easy_harm_selected_v3 --check
+.venv-pytorch/bin/python -m scripts.build_m3w_evidence_manuscript_v5 --check
+```
+
+第一个命令从已完成逐组结果重新验证3,000次配对bootstrap，不是新的模型评价。
+第二个核对432个选中群体伤害分解恒等式，不是新的假设检验。
+第三个复用哈希固定结果重建论文，不是新训练、新bootstrap或独立确认。
+下一轮应单独冻结决策导向训练目标，先做TRAIN-only验证；目前尚未训练该新目标。
+当前论文入口为 [revision 5](evidence_manuscript_v5/README.md)。正式投稿仍需作者确认。
 
 ## 历史入口：2026-10-13
 
