@@ -21,6 +21,10 @@ Installation now streams metadata after a large-command transport failure;
 the frozen numerical code is unchanged. All25 focused tests pass, and the
 [transport amendment](outputs/publication_readiness_2026_09/european_task_risk_v1/transport_repair.md)
 retains the failed attempt without claiming that training had started.
+A second pre-submission guard exposed CREATE's `/users`/Ceph path alias;
+the portable entry fixes only that comparison. All27 focused tests pass,
+including structural equivalence of every other ownership check. No scientific
+setting changed and neither failed attempt submitted a job.
 
 **October 28: the complete easy-harm loss comparison fails advancement.**
 All 72 registered source/head views completed fresh fixed-final inference in
