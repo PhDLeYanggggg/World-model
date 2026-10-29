@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Causal Reference-Coverage Ablation: Registered, Training Not Yet Run
+### Causal Reference-Coverage Ablation: Neutral Exact, Primary Training Running
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
 1.05*distance to causal damping.97), around the original train-selected center.
@@ -15,7 +15,12 @@ Same88,514parameters,loss2+2,train-only normalizers,folds,seeds,sampling,optimiz
 and4,000updates.9fits/36,000primaryupdates registered; no margin/threshold search.
 Current code has4passing regression tests,including the geometric counterexample,
 finite reference reconstruction,stationary behavior,no future field,resume and
-coverage-off equality. Full real-data pilot/neutral/training remain not_run.
+coverage-off equality. The actual80update pilot passes in1.713535s,
+peakRSS601,997,312B;exactresume and coverage-off replay. Full4,000step neutral
+on affected single2_seed17 is exact against the preceding harm-aware model,
+56.968846s. Primary9fit training PID43521 is running; scientific readout not_run.
+58regression tests pass4.04s; additional readout/control tests pass. The six
+unchanged-radius fits must also reproduce their complete scientific state.
 
 Fresh past-only preflight PID42951 exit0: all318,969rows checked per center.
 Damping.90center changes0rows. OLS4center changes112,202radii:66,155training,
@@ -24,6 +29,8 @@ source cohort for this center. Those counts include training and excluded rows;
 they are not the preceding43,743excluded CV-outside count. Completing geometric
 support is not a model,policy or safety result. No independent roles opened.
 [Protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
+[Prospective unchanged-fold implication](outputs/publication_readiness_2026_09/european_reference_coverage_v1/scope_implication.md),
+[updated official submission checkpoint](outputs/publication_readiness_2026_09/european_reference_coverage_v1/submission_checkpoint_20261029.md).
 
 ### Reference-Harm Forecast: Training Complete, Current-Producer Accuracy Regresses
 

@@ -34,11 +34,14 @@ unchanged; the OLS4-centered fold changes the radius on 66,155 training and
 46,047 excluded-source windows. These are geometry checks, not improved
 forecasts or a safety guarantee.
 
-The next run keeps the preceding harm-aware loss, data, seeds, optimizer and
-4,000-update schedule fixed. Nine fits are registered before training, with
-an exact neutral replay and interruption check on the affected fold. No
+The run keeps the preceding harm-aware loss, data, seeds, optimizer and
+4,000-update schedule fixed. Nine fits were registered before training.
+The affected-fold real-data pilot passes exact interruption and coverage-off
+replay checks; its full 4,000-update neutral replay also matches exactly.
+Primary training is running. No scientific result is claimed yet, and no
 independent evaluation or deployment is opened.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
+The unchanged-fold implication is recorded [before readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/scope_implication.md).
 
 ### Completed Harm-Loss Comparison
 
