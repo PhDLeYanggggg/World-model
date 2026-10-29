@@ -50,6 +50,14 @@ endpoints exactly. Twelve new/adjacent tests pass in1.98s, including a repaired
 internal-pilot-resume regression found before real training. Pilot and full
 model training are not_run at registration. No independent role is opened.
 
+The real full-first-context pilot completes PID40890, exit0, in11.559308s,
+peak RSS9,575,415,808B. All eight10+10/direct20cost heads recover exactly;
+both disabled banks match their legacy20-step controls and active branches
+receive real gradient updates. Engineering work is360updates, not the planned
+288,000primary updates. Measured optimization-only projection is613.25s;
+preparation, full refit and readout are extra. This supports a complete local
+run, not a scientific result or deployment pass.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
