@@ -19,6 +19,20 @@ gradients match,including zero targets. This is not the old19-input controller
 diagnostic or the failed SDD adaptive reweighting trial. Real diagnosis remains
 not_run at registration;an exact-region training repair is conditional on it.
 
+Fresh PID97446exit0 completes54states in84.567688s,peakRSS10,045,472,768B.
+PID97916exit0 replay is exact86.062640s. Mixed minibatch/full-region cosine
+median0.685630,relative vector difference0.940755;7/425mixedregion/head views
+get zero auxiliary visits across2,000steps. Neural-only has5,500/36,000empty
+auxiliary steps. Finite sampling noise and changed implicit weighting remain
+possible contributors;this is not a unique infinite-sample bias proof.
+
+Register54fresh complete-region fits/108,000updates:same398causal fields,
+26,309parameters,old teacher regions,normalizers,initial weights,base draws,
+optimizer and inference. Cycle complete recording regions with chunked exact
+moment gradients. Explicitly report added teacher-row/forward work;not matched
+FLOPs.10focused tests pass1.70s,including exact disabled/recovery and inactive
+neural-action isolation. Real pilot,neutral,training/readout remain not_run.
+
 ### Policy-Region Training Completes Without A Safety Or Neural-Value Pass
 
 All54new heads/108,000updates are complete and frozen atdbec2b6f before

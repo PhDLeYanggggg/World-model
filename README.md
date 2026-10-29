@@ -71,8 +71,11 @@ old regions, while about **68%** of new interventions leave those old chosen
 regions. Those rows are not unseen training inputs; the extra moment loss was
 conditioned on the old choices. I am keeping deployment unchanged and the older
 failed pointwise deviance and posthoc calibration results visible. The next
-registered check compares actual minibatch gradients with complete regional
-gradients on these frozen weights before choosing a training repair. Empty selected
+registered check now replays all54frozen states:the mixed median gradient
+direction cosine is0.686,with a large finite vector difference. Seven mixed
+record/head regions never receive the auxiliary loss over2,000steps. I am
+testing cyclic complete-region gradients next,with additional compute reported
+separately. This is an optimization test,not a new safety guarantee. Empty selected
 risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 
