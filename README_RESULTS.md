@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Protected Risk Decoupling: Registered
+
+Previous turn: progress, complete72-view conditioning diagnosis. New paired
+continuation freezes benefit/reference estimates and all causal preprocessing.
+18 original self heads x2 objectives x2,000 additional updates =36 fits/72,000
+planned updates. Estimation-only versus original action-coupled training;
+same initialization, saved AdamW moments, query draws and clip5.29 scoped tests
+pass3.49s. All72 fixed fitting cohorts have known outcome support. No held or
+independent readout, threshold search, deployment or new forecasting.
+[Prior-control reconciliation](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/prior_controls.md),
+[protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
+
 ### Fixed-Cohort Query-Head Conditioning: Complete, No Promotion
 
 Fresh72 inner-fit views,36 frozen heads,288 matched probes and576 disposable

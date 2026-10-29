@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: isolating risk estimation from action optimization.**
+I have registered a matched continuation from 18 frozen risk heads. One arm
+continues the original action-coupled objective; the other learns the original
+moment estimates alone. Benefit and reference predictions, optimizer starting
+state, causal inputs and training budget are held fixed. This differs from the
+earlier decoder tests, where benefit/reference estimates also changed. The
+first screen uses only fixed fitting cohorts; no new held readout is authorized
+by this experiment. [Protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
+
+### Completed Conditioning Diagnosis
+
 **29 October: lower training loss is not yet better switching-risk estimation.**
 I completed a fixed-cohort diagnosis of 36 frozen risk heads. Across 288 matched
 batches, removing clipping from a disposable AdamW step more often lowers total
