@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### TRAIN Feasibility Diagnostic: Registered, Results Pending
+
+Next after cross-record training failure: exact label-aware feasibility over
+fixed causal actions, and deletion-only oracle within each frozen policy.
+Keep all original fitting recordings, 2% constraints and frozen controls.
+Ten targeted tests pass, including exhaustive Boolean comparison on 240 random
+small examples. Real packets have not yet been evaluated for this diagnostic.
+The oracle is not causal inference or deployment; no new held score, model fit,
+threshold tuning, independent confirmation, Stage5C or SMC.
+[Protocol](outputs/publication_readiness_2026_09/european_train_feasibility_v1/protocol.md).
+
 ### Cross-Recording Meta-Updates: Complete, Safety Failed
 
 Fresh_run: 36 neural policy fits, 72,000 updates, 144 fixed readouts and exact

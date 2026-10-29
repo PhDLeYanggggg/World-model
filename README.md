@@ -25,6 +25,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am now separating TRAIN budget infeasibility from policy-fitting failure with
+an exact, label-aware action oracle. It keeps every fitting recording and the
+same 2% requirements; it is a diagnostic upper bound, not a deployable selector.
+The protocol and exhaustive small-case tests are ready; real-data results are
+pending. No new held-recording evaluation or threshold search is planned for
+this diagnostic. [Protocol](outputs/publication_readiness_2026_09/european_train_feasibility_v1/protocol.md).
+
+### Previous Cross-Recording Comparison
+
 **29 October: cross-recording meta-training did not repair policy safety.**
 I trained 36 neural intervention heads for 72,000 updates, testing whether an
 update learned on one group of recordings remains useful on another group.
