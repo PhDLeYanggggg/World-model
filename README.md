@@ -25,12 +25,13 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: a matched bounded-range repair is now registered.**
+**29 October: a matched bounded-range repair is training.**
 The selected-tail diagnosis motivates one change: replace limited odds shifts
-with a full-range bounded harm adjustment. I will train18 matched continuations,
+with a full-range bounded harm adjustment. I am training18 matched continuations,
 keeping the same anchors, initialization, parameters, sampling, update budget
-and2% criteria. No results are available yet; the previous negative result and
-deployment remain unchanged.
+and2% criteria. The real200-update pilot passed exact resume/protection checks
+in13.78s at2.05GiB peak RSS. Full scientific results are not available yet;
+the previous negative result and deployment remain unchanged.
 [Fixed experiment](outputs/publication_readiness_2026_09/european_full_range_harm_v1/protocol.md).
 
 ### Preceding Selected-Tail Diagnosis
