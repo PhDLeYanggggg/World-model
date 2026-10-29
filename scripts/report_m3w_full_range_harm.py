@@ -17,6 +17,7 @@ def render(summary, training, readout):
         f"Fresh18 fits,36,000 updates in{training['seconds']:.2f}s;144 readout views in{readout['seconds']:.2f}s.",
         'Six old controls are cached_verified models with fresh exactly matching',
         'inference. No old trajectory predictor or new data role was trained/opened.',
+        'This is not independent confirmation.',
         'The18 new finals were all frozen before this readout. No checkpoint or',
         'threshold selection. Native arm64 CPU4/workers0, read-only CREATE TRAIN',
         'streaming; no new scheduler job.', '',
@@ -27,6 +28,10 @@ def render(summary, training, readout):
         'settings, budget and12,258 trainable/25,407 total parameters match the',
         'isolated-odds control. Range and gradient geometry both change; they are',
         'not separately identified. This is a cost head, not a dynamics forecaster.', '',
+        'Utility continuation, joint risk and isolated odds have the same4,000',
+        'effective head updates including their2,000-step anchors. Local, anchor',
+        'and old-risk controls have2,000 updates and are not equal-total-budget',
+        'controls. No favorable comparator is omitted.', '',
         '## Complete Results', '']
     for scope in ('fit', 'held'):
         data = summary[scope]
@@ -76,6 +81,7 @@ def main(check=False, plot=False):
     if len(frozen['fits']) != 18 or len({v['path'] for v in frozen['fits']}) != 18:
         raise ValueError('Exactly18 unique frozen receipts required')
     initial_replays = 0
+    traces = {'full_range': [], 'isolated_odds': []}
     for (context, seed), doc in documents.items():
         state = run.api.core.read_checkpoint(run.ROOT/doc['checkpoint']['path'])
         old = run.api.core.read_checkpoint(run.ROOT/controls[context, seed, 'isolated_risk']['checkpoint']['path'])
@@ -83,9 +89,20 @@ def main(check=False, plot=False):
             raise ValueError('Final model binding changed')
         for key in ('loss', 'primary_loss', 'regret', 'mean_soft_action'):
             run.api.core.exact(state['trace'][0][key], old['trace'][0][key])
+        traces['full_range'].extend(state['trace'])
+        traces['isolated_odds'].extend(old['trace'])
         initial_replays += 1
     if initial_replays != 18:
         raise ValueError('All real initial objective values must replay')
+    np = run.api.np
+    optimization = {name: dict(logged_batches=len(values),
+        fraction_logged_norm_above_clip5=float(np.mean([v['gradient_norm'] > 5 for v in values])),
+        median_logged_gradient_norm=float(np.median([v['gradient_norm'] for v in values])),
+        median_logged_clip_factor=float(np.median([min(1., 5/max(v['gradient_norm'], 1e-30)) for v in values])),
+        maximum_logged_gradient_norm=float(max(v['gradient_norm'] for v in values))) for name, values in traces.items()}
+    optimization.update(scope='logged_training_batches_not_all_updates_not_convergence_proof',
+                        real_initial_objectives_exact=initial_replays)
+    run.once(run.PUBLIC/'optimization_diagnostic.json', optimization)
     out = run.PUBLIC/'readout'
     summary = json.loads((out/'summary.json').read_text())
     training = json.loads((run.PUBLIC/'training_freeze.json').read_text())

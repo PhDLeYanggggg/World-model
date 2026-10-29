@@ -25,15 +25,25 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: all18 bounded-range fits are frozen for evaluation.**
-The selected-tail diagnosis motivates one change: replace limited odds shifts
-with a full-range bounded harm adjustment. I completed18 matched continuations,
-keeping the same anchors, initialization, parameters, sampling, update budget
-and2% criteria. The real200-update pilot passed exact resume/protection checks
-in13.78s at2.05GiB peak RSS. All36,000 updates completed before readout.
-Full scientific results are not available yet;
-the previous negative result and deployment remain unchanged.
-[Fixed experiment](outputs/publication_readiness_2026_09/european_full_range_harm_v1/protocol.md).
+**29 October: expanding the harm head's range did not make it safe.**
+I completed18 matched continuations and144 evaluation views after diagnosing
+the previous branch's limited ability to correct near-zero harm estimates.
+The new mapping preserves causal bounds and the frozen benefit/reference
+outputs, with identical initialization, sampling and training budget.
+
+At the same intervention count, held utility versus the old isolated branch
+changed by **+0.243 percentage points**, but its nominal95% interval spans
+**[-0.057, +0.591]**. Signed-score prediction error worsened, and complete
+policy support fell from3/72 views to0/72. This repair does not advance.
+It also produced much stronger gradient clipping, so wider expressivity and
+optimization conditioning cannot be treated as separate explanations yet.
+
+The experiment ran normally and all controls reproduced. It remains exposed
+TRAIN-internal mechanism evidence, not independent forecasting or deployment
+success. No risk criterion, reserved data role or deployment was changed.
+[Results](outputs/publication_readiness_2026_09/european_full_range_harm_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_full_range_harm_v1/failure_analysis.md),
+[model card](outputs/publication_readiness_2026_09/european_full_range_harm_v1/model_card.md).
 
 ### Preceding Selected-Tail Diagnosis
 

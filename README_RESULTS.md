@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Full-Range Harm Repair: All18 Frozen Before Readout
+### Full-Range Harm Repair: Complete, Registered Gate Failed
 
 One bounded parameterization change,18 planned continuation fits, unchanged
 data/anchors/seeds/budget/objective. Six archived controls retained. The new
@@ -15,10 +15,22 @@ branch can leave near-zero anchor odds while preserving benefit/reference and
 the causal moment envelope. Range and gradient geometry both change; neither
 is uniquely isolated. The200-update real pilot completed13.78s, peak RSS2.05GiB,
 with exact resume and protected outputs. Engineering full estimate3,721s;
-all18 fits and36,000 updates completed, PID47588 exit0. Matched sampler hashes,
-initial weights, parameter counts and protected base verified against old
-controls. No held readout yet; no scientific or deployment success claimed.
-[Protocol](outputs/publication_readiness_2026_09/european_full_range_harm_v1/protocol.md).
+all18 fits and36,000 updates completed185.18s, PID47588 exit0. Matched sampler
+hashes, initial weights, parameters, protected base and initial real objective
+values verified against old controls.144-view readout112.77s, PID48100 exit0.
+97 scoped tests pass; full legacy artifact-writing tests were not run.
+
+Held matched utility versus isolated odds+0.243378pp, nominal95%CI
+[-0.057308,0.590769], versus joint+0.006613[-0.290089,0.314868]. No positive
+lower bound against any of six controls. Held signed MSE7.774976 versus5.047722,
+difference+2.727254[0.628834,5.194862]. Known easy violations44/72, undefined12/72,
+full support0/72. Gate fails; no deployment upgrade or independent-role access.
+The fit matched contrast is positive, but not stable in held recordings.
+Logged gradient clipping is stronger: median factor0.0593 versus0.5057, a
+conditioning signal rather than proof of the sole failure cause.
+[Results](outputs/publication_readiness_2026_09/european_full_range_harm_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_full_range_harm_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_full_range_harm_v1/verification.md).
 
 ### Selected-Tail Accounting: Complete, No Promotion
 

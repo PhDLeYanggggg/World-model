@@ -1,5 +1,46 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 风险误差分解和完整范围修复均已完成
+
+先对冻结六策略重新推理144视图，PID46161 exit0，86.30秒。发现隔离分支的
+easy违规主要对应伤害低估：替换真值参考误差仍放行1573/1589个违规样本。
+这是未来标签诊断，不能成为推理输入。原幅度上限也限制部分伤害表达，但不等于
+已证明条件期望无法拟合。因此注册单一改动：完整范围有界概率调整。
+
+真实pilot200更新，13.78秒、峰值2.05GiB；断点恢复和输出保护一致。
+18组各2000步，PID47588 exit0，185.18秒；全部冻结后PID48100完成144视图，
+112.77秒、exit0。相同参数、初始化、采样和预算，旧六对照精确复现。
+结果仍失败：相同介入数相对旧隔离分支+0.243pp，但CI[-0.057,0.591]跨零；
+held MSE变差，完整风险支持0/72。不部署，不打开独立角色，不执行Stage5C/SMC。
+
+已完成，不重复启动：
+
+```bash
+.venv-pytorch/bin/python -m scripts.audit_m3w_selected_tail run
+.venv-pytorch/bin/python -m scripts.run_m3w_full_range_harm pilot
+.venv-pytorch/bin/python -m scripts.run_m3w_full_range_harm train
+.venv-pytorch/bin/python -m scripts.run_m3w_full_range_harm eval
+```
+
+现在只复核：
+
+```bash
+.venv-pytorch/bin/python -m scripts.audit_m3w_selected_tail check
+.venv-pytorch/bin/python -m scripts.run_m3w_full_range_harm check
+.venv-pytorch/bin/python -m scripts.report_m3w_full_range_harm --check
+```
+
+未完成阶段才允许`--resume`。完整范围runner采用原子receipt和checkpoint，
+heartbeat记录PID；终态文件不是仍在运行的证据。模型、图片、日志在对应
+`data/stage_cvpr2027_experiments/`私有目录，不上Git。本轮没有CREATE新作业，
+只读既有TRAIN数据。当前磁盘可用约23GiB，仍保留10GiB余量，不扩容缓存。
+
+下一步仅用inner-fit检查新参数化的饱和区与梯度尺度，再决定匹配修复；
+不得重复泛泛gradient-conflict/hurdle试验，不按held结果选阈值。
+[最新结果](european_full_range_harm_v1/conclusions.md)、
+[失败分析](european_full_range_harm_v1/failure_analysis.md)、
+[误差分解](european_selected_tail_audit_v1/conclusions.md)。
+
 ## 当前入口：2026-10-29 隔离伤害分支完整重跑完成，未升级
 
 固定三组：utility续训、joint risk、冻结B/R/Re的isolated harm。相同anchor和采样，
