@@ -11,6 +11,7 @@ from src.world_model.m3w_static_scene_context import scene_features, source_poly
 import numpy as np
 
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_static_scene_audit_v1'
+REG = PUBLIC/'registration_v2.json'
 ARCHIVE = ROOT/'external_data/EuropeanSquares_source_audit/02.Resources.zip'
 PACKED = ROOT/'data/stage_cvpr2027_experiments/european_source_forecast_v1/packed/receipt.json'
 FILES = (Path(__file__), ROOT/'src/world_model/m3w_static_scene_context.py',
@@ -24,7 +25,7 @@ def main(phase):
     registration = dict(bindings=bindings, parent_registration_sha256=parent.sha(parent.REG),
         scope='original_fitting_recordings_only', optimizer_updates=0,
         raw_camera_mapping=True, independent_roles_opened=False)
-    parent.once(PUBLIC/'registration.json', registration)
+    parent.once(REG, registration)
     if phase == 'register':
         return
     for path, digest in bindings.items():
@@ -32,9 +33,9 @@ def main(phase):
             parent.committed(ROOT/path)
         if parent.sha(ROOT/path) != digest:
             raise ValueError('Static audit input changed')
-    parent.committed(PUBLIC/'registration.json')
+    parent.committed(REG)
     start = time.monotonic(); rows, saved = [], set()
-    for context, items in sorted(reg['source_contexts'].items()):
+    for context, items in sorted(reg['contexts'].items()):
         scopes = parent.prepare_context(context, items, data, jobs, identity, lambda **_:None, include_held=False)
         for source, packet in sorted(scopes['fit'].items()):
             for ri in np.unique(data['recordings'][packet['ids']]):
@@ -67,7 +68,7 @@ def main(phase):
         total_rows_over_contexts=sum(r['rows'] for r in rows),
         outside_expanded_bbox_over_contexts=sum(r['outside_expanded_polygon_bbox'] for r in rows),
         registered_feature_fields=18, optimizer_updates=0, independent_roles_opened=False,
-        mapping_is_not_verified_metric_or_walkability=True, registration_sha256=parent.sha(PUBLIC/'registration.json'))
+        mapping_is_not_verified_metric_or_walkability=True, registration_sha256=parent.sha(REG))
     if phase == 'verify':
         if result != json.loads((PUBLIC/'audit.json').read_text()):
             raise ValueError('Static context audit differs')
