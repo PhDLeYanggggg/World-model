@@ -9,6 +9,11 @@ or evidence status.
 
 ### Completion-Aware Supervision Registered
 
+**Final status: all 72 real Torch fits, 144 readout groups and 888 fixed-region
+diagnostic views complete, with separate exact replays. The scientific fitting
+gate fails; no deployment or independent evaluation is promoted.** Registration
+and intermediate runtime states below are retained as execution history.
+
 The previous output controls motivate a paired training test: current cost
 heads sample only known outcomes, while their safety readout charges selected
 unknown completion mass. Existing completion-screen and leaf-quality controls
@@ -70,6 +75,40 @@ same frozen control-selected and completion-selected regions plus all legal
 actions. Existing tested helpers retain unknowns and undefined ratios.
 Six diagnostic/helper tests pass in 1.55s. This is not another training or
 threshold search; actual region diagnosis is not_run at this registration.
+
+That registered diagnosis subsequently completes PID 29162, exit 0, in
+78.973267s, peak RSS 6,057,459,712 B. Separate PID 29960 completes all 888-view
+exact replay in 80.741028s, peak RSS 6,221,250,560 B. Mixed-bank conditional
+easy-harm prediction/observed ratios are 0.019880 versus 1.652333 on the old
+fixed selection, but 0.564438 versus 0.000628 on the new completion selection.
+The completion estimator's all-legal ratio is 4.710467. These medians require
+positive observed denominators and retain undefined counts; they are not
+the complete-recording safety test. Improving the old selected region does
+not control the newly induced region.
+
+Unknown endpoint-proxy MSE improves while known-label harm/easy-harm MSE
+worsens. The full report retains all five components, both banks, all source
+localities and actual training traces. Locality 082's floor/native mixed ADE
+changes from 21.838/21.838 pixels in the control to 21.838/60.964 pixels with
+completion training, so the negative result is not only a small-denominator
+artifact. No bad locality is dropped or reweighted.
+
+A separate restricted-policy argument shows why another fixed-head veto is
+not a complete repair: 62/444 old-policy views have zero selected observed
+easy-reference support. Row deletion cannot add it, giving at most 382/444
+defined views before other risk failures. This does not rule out new inputs,
+jointly retrained conditional heads or new forecasters. Three executable
+checks cover the nesting/count argument; the final focused scope is 34 passed
+in 2.32s, not a rerun of the full historical suite. Two aggregate statistical
+SVGs are visually checked; private data, weights and PNGs remain excluded.
+
+See the [complete readout and loss curves](outputs/publication_readiness_2026_09/european_completion_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_completion_cost_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_completion_cost_v1/paper_addendum.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_completion_cost_v1/reproduction_zh.md).
+Independent roles remain closed, submission_ready remains false, Stage5C
+execution and SMC remain off. This is real progress in discriminating repair
+mechanisms, not a successful forecasting or safety result.
 
 ### Fixed Candidate-Output Amplitude Control
 

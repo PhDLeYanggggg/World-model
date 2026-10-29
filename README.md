@@ -134,18 +134,25 @@ causal query draws. The original unknown labels stay unknown. This tests a
 training/evaluation mismatch, not a new forecast architecture or a change to
 the safety requirement. [Fixed experiment](outputs/publication_readiness_2026_09/european_completion_cost_v1/protocol.md).
 
-All 72 new cost heads now finish their fixed 2,000-step runs and are frozen
+All 72 new cost heads finish their fixed 2,000-step runs and are frozen
 before readout. This is real Torch optimization, not new trajectory-forecast
 training. Each supervision mode sees the same 348,388 repeated unknown-row
 draws; only the completion mode includes their interval endpoints in the
-loss. The matched comparison has not yet established a policy improvement.
-Its completed fitting readout is negative: mixed-policy known ADE gain changes
+loss. The completed fitting readout is negative: mixed-policy known ADE gain changes
 from +0.581% for the new known-only control to -18.512% with completion
 endpoints. Required recording risk support falls from 77 to 26/444. The
 paired change is -19.093pp, fitting 95% locality interval [-50.820,-1.022].
-All 144 groups replay exactly. Valid interval targets do not by themselves
-make a learned cost gate safe; I am checking the actual selected regions
-before deciding which part of the target or estimator needs to change.
+All 144 groups replay exactly. The subsequent 888-view fixed-region diagnosis
+also replays exactly: the new estimator improves easy-harm estimation on the
+old policy's selected region but severely underestimates it on its own new
+region. Valid interval targets do not by themselves make a learned gate safe.
+
+A reject-only patch is insufficient here. The old policy lacks selected
+easy-reference support in 62/444 views; deleting actions cannot create that
+support. This restricts one repair class, not every possible model. I retain
+the negative result, its actual loss traces and both candidate-bank controls.
+The next method must address risk estimation on newly admitted regions, not
+simply make this failed head more conservative.
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
@@ -167,6 +174,11 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 - [Fixed forecast-amplitude controls and complete negative results](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/readout.md)
 - [Amplitude tradeoff figure](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/figures/amplitude_controls.svg)
 - [Current availability of matched SOURCE image inputs](outputs/publication_readiness_2026_09/source_rgb_availability_20261029.md)
+- [Completion-cost training: full results, intervals and real losses](outputs/publication_readiness_2026_09/european_completion_cost_v1/readout.md)
+- [Selection-region failure and restricted support argument](outputs/publication_readiness_2026_09/european_completion_cost_v1/failure_analysis.md)
+- [Completion-cost comparison figure](outputs/publication_readiness_2026_09/european_completion_cost_v1/figures/policy_comparison.svg)
+- [Completion-cost training curves](outputs/publication_readiness_2026_09/european_completion_cost_v1/figures/loss_traces.svg)
+- [Completion-cost local reproduction guide](outputs/publication_readiness_2026_09/european_completion_cost_v1/reproduction_zh.md)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)

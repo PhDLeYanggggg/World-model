@@ -1,0 +1,368 @@
+{
+  "result_source": "fresh_report_verified_training_and_fitting_readout",
+  "primary_summary": {
+    "path": "outputs/publication_readiness_2026_09/european_completion_cost_v1/summary.json",
+    "sha256": "5785081e08abeb6386a2968bbb1fcac7f7509444dcf995b532d79b6f48cc4e15"
+  },
+  "primary_verification_sha256": "feb4897a1a8ea2a5fc18350451ee04b193d50cb3832fe0a1385080a64b463a96",
+  "training_freeze_sha256": "ac2fc11efd49ca760d7217c6307d64f798e6eb42039a2a9d3496390f4a4ac92b",
+  "gates": {
+    "full144fitting_groups": true,
+    "full_mixed_recording_risk": false,
+    "full_completion_minus_control_gain_CI_positive": false,
+    "matched_completion_minus_control_gain_CI_positive": false,
+    "mixed_minus_physical_completion_CI_positive": false,
+    "fitting_advancement_gate": false,
+    "independent_confirmation": false,
+    "deployment_changed": false,
+    "submission_ready": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "compute": {
+    "pid": 25627,
+    "seconds": 296.70233404199826,
+    "count": 72,
+    "optimizer_updates": 144000,
+    "extra_full_refit_updates": 2000,
+    "pilot_updates": 180,
+    "peak_RSS_bytes": 10179477504,
+    "architecture": "arm64",
+    "cpu_threads": 4,
+    "num_workers": 0,
+    "primary_checkpoint_bytes": 27385237,
+    "supervision_counts": {
+      "known_only": {
+        "heads": 36,
+        "unknown_row_draws": 348388,
+        "unknown_objective_row_visits": 0,
+        "known_objective_row_visits": 8867612
+      },
+      "completion_bounds": {
+        "heads": 36,
+        "unknown_row_draws": 348388,
+        "unknown_objective_row_visits": 348388,
+        "known_objective_row_visits": 8867612
+      }
+    }
+  },
+  "readout": {
+    "pid": 27079,
+    "seconds": 185.26248075003969,
+    "peak_RSS_bytes": 10344284160
+  },
+  "replay": {
+    "pid": 27763,
+    "seconds": 188.51114349998534,
+    "peak_RSS_bytes": 10397204480
+  },
+  "diagnostics": {
+    "known_only": {
+      "proxy_fit": {
+        "physical_only": {
+          "all": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 4474875,
+            "normalized_component_MSE": [
+              0.2690610496331657,
+              1.6593105702937654,
+              1.8656674350023756,
+              0.0029243082080187928,
+              1.694252848557535
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "known": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 4380675,
+            "normalized_component_MSE": [
+              0.2686744995652781,
+              0.5585667018673754,
+              1.8444561002527518,
+              0.0029677719527780974,
+              0.025922853776734603
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "unknown": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 94200,
+            "normalized_component_MSE": [
+              0.28703716660388373,
+              52.84828239427141,
+              2.852078940886713,
+              0.000903071052249386,
+              79.27823904694348
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          }
+        },
+        "physical_neural": {
+          "all": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 5369850,
+            "normalized_component_MSE": [
+              0.2660442230385423,
+              1.58714359601476,
+              1.849271440462159,
+              0.0028961759202072177,
+              1.5960602230666268
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "known": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 5256810,
+            "normalized_component_MSE": [
+              0.26521610494608544,
+              0.5066263355038471,
+              1.8258215816597472,
+              0.0029397929510968004,
+              0.023455015654384785
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "unknown": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 113040,
+            "normalized_component_MSE": [
+              0.304555010986254,
+              51.83549763198729,
+              2.939783226122727,
+              0.0008678103491646967,
+              74.72846273880283
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          }
+        }
+      },
+      "risk_causes": {
+        "physical_only": {
+          "required_record_views": 444,
+          "supported": 90,
+          "empty_selected": 28,
+          "undefined_easy": 55,
+          "known_selected_risk_violation": 239,
+          "unsupported_with_selected_unknown_no_known_violation": 73,
+          "failing_conditions": {
+            "all_selected_risk_upper": 180,
+            "easy_selected_risk_upper": 332,
+            "easy_degradation_upper": 74
+          },
+          "overlapping_counts_not_unique_causal_attribution": true
+        },
+        "physical_neural": {
+          "required_record_views": 444,
+          "supported": 77,
+          "empty_selected": 30,
+          "undefined_easy": 62,
+          "known_selected_risk_violation": 270,
+          "unsupported_with_selected_unknown_no_known_violation": 47,
+          "failing_conditions": {
+            "all_selected_risk_upper": 195,
+            "easy_selected_risk_upper": 346,
+            "easy_degradation_upper": 86
+          },
+          "overlapping_counts_not_unique_causal_attribution": true
+        }
+      }
+    },
+    "completion_bounds": {
+      "proxy_fit": {
+        "physical_only": {
+          "all": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 4474875,
+            "normalized_component_MSE": [
+              0.3165429565564564,
+              1.9262234500395763,
+              2.055643588011758,
+              0.0030365497933018616,
+              1.4930288569949592
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "known": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 4380675,
+            "normalized_component_MSE": [
+              0.3201196775111088,
+              1.2504630675730488,
+              2.0718554014786053,
+              0.003079996388317866,
+              0.2506543749064742
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "unknown": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 94200,
+            "normalized_component_MSE": [
+              0.150211193626241,
+              33.351771363644644,
+              1.3017297243293404,
+              0.0010161101688668994,
+              59.26838803240194
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          }
+        },
+        "physical_neural": {
+          "all": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 5369850,
+            "normalized_component_MSE": [
+              0.31046070575565915,
+              1.7987284471280327,
+              2.03921920914188,
+              0.0030277087926071965,
+              1.4154494288405497
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "known": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 5256810,
+            "normalized_component_MSE": [
+              0.31366870702606586,
+              1.1248812550972018,
+              2.0554262127137206,
+              0.003072034655935289,
+              0.22637207269016985
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          },
+          "unknown": {
+            "required_group_views": 72,
+            "undefined_group_views": 0,
+            "real_action_occurrences": 113040,
+            "normalized_component_MSE": [
+              0.16127587597597748,
+              33.135305389268474,
+              1.2855290247244675,
+              0.0009663796913883681,
+              56.7122800780381
+            ],
+            "aggregation": "pooled_repeated_real_action_views_not_independent_or_macro_calibration"
+          }
+        }
+      },
+      "risk_causes": {
+        "physical_only": {
+          "required_record_views": 444,
+          "supported": 43,
+          "empty_selected": 2,
+          "undefined_easy": 8,
+          "known_selected_risk_violation": 376,
+          "unsupported_with_selected_unknown_no_known_violation": 22,
+          "failing_conditions": {
+            "all_selected_risk_upper": 308,
+            "easy_selected_risk_upper": 394,
+            "easy_degradation_upper": 234
+          },
+          "overlapping_counts_not_unique_causal_attribution": true
+        },
+        "physical_neural": {
+          "required_record_views": 444,
+          "supported": 26,
+          "empty_selected": 6,
+          "undefined_easy": 8,
+          "known_selected_risk_violation": 392,
+          "unsupported_with_selected_unknown_no_known_violation": 20,
+          "failing_conditions": {
+            "all_selected_risk_upper": 349,
+            "easy_selected_risk_upper": 407,
+            "easy_degradation_upper": 239
+          },
+          "overlapping_counts_not_unique_causal_attribution": true
+        }
+      }
+    }
+  },
+  "source_native_diagnostic": {
+    "eu-locality-007": {
+      "known_only_floor_mean_ADE_pixels": 13.17112614956496,
+      "known_only_physical_neural_mean_ADE_pixels": 13.07331645557251,
+      "completion_bounds_floor_mean_ADE_pixels": 13.17112614956496,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 13.024563809719965
+    },
+    "eu-locality-008": {
+      "known_only_floor_mean_ADE_pixels": 17.80359032322369,
+      "known_only_physical_neural_mean_ADE_pixels": 17.672227767688014,
+      "completion_bounds_floor_mean_ADE_pixels": 17.80359032322369,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 17.75734368859965
+    },
+    "eu-locality-020": {
+      "known_only_floor_mean_ADE_pixels": 9.39794942949671,
+      "known_only_physical_neural_mean_ADE_pixels": 9.316560369332581,
+      "completion_bounds_floor_mean_ADE_pixels": 9.39794942949671,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 9.370571368593936
+    },
+    "eu-locality-048": {
+      "known_only_floor_mean_ADE_pixels": 21.546344322976946,
+      "known_only_physical_neural_mean_ADE_pixels": 21.52064768118041,
+      "completion_bounds_floor_mean_ADE_pixels": 21.546344322976946,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 21.540466975384987
+    },
+    "eu-locality-067": {
+      "known_only_floor_mean_ADE_pixels": 25.66068708185181,
+      "known_only_physical_neural_mean_ADE_pixels": 25.557001918837823,
+      "completion_bounds_floor_mean_ADE_pixels": 25.66068708185181,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 25.61738059510144
+    },
+    "eu-locality-074": {
+      "known_only_floor_mean_ADE_pixels": 18.916178412791798,
+      "known_only_physical_neural_mean_ADE_pixels": 18.831065215060633,
+      "completion_bounds_floor_mean_ADE_pixels": 18.916178412791798,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 23.287364452372156
+    },
+    "eu-locality-082": {
+      "known_only_floor_mean_ADE_pixels": 21.838343536194767,
+      "known_only_physical_neural_mean_ADE_pixels": 21.838343536194767,
+      "completion_bounds_floor_mean_ADE_pixels": 21.838343536194767,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 60.96379585321276
+    },
+    "eu-locality-110": {
+      "known_only_floor_mean_ADE_pixels": 42.316100327373185,
+      "known_only_physical_neural_mean_ADE_pixels": 41.29693701178957,
+      "completion_bounds_floor_mean_ADE_pixels": 42.316100327373185,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 39.865291724492614
+    },
+    "eu-locality-112": {
+      "known_only_floor_mean_ADE_pixels": 22.132309371798655,
+      "known_only_physical_neural_mean_ADE_pixels": 22.1146053489046,
+      "completion_bounds_floor_mean_ADE_pixels": 22.132309371798655,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 27.027542244007403
+    },
+    "eu-locality-119": {
+      "known_only_floor_mean_ADE_pixels": 31.900885535547587,
+      "known_only_physical_neural_mean_ADE_pixels": 31.851684615709246,
+      "completion_bounds_floor_mean_ADE_pixels": 31.900885535547587,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 31.75209244671099
+    },
+    "eu-locality-124": {
+      "known_only_floor_mean_ADE_pixels": 30.861843274882585,
+      "known_only_physical_neural_mean_ADE_pixels": 30.848847706228188,
+      "completion_bounds_floor_mean_ADE_pixels": 30.861843274882585,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 30.858886178390687
+    },
+    "eu-locality-126": {
+      "known_only_floor_mean_ADE_pixels": 18.927169656420705,
+      "known_only_physical_neural_mean_ADE_pixels": 18.744043229023696,
+      "completion_bounds_floor_mean_ADE_pixels": 18.927169656420705,
+      "completion_bounds_physical_neural_mean_ADE_pixels": 20.042694147365154
+    }
+  },
+  "normalized_losses_are_not_cross_mode_scores": true
+}
