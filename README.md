@@ -42,6 +42,9 @@ These are exposed-TRAIN risk errors, not trajectory ADE/FDE gains or independent
 generalization results. No new neural forecaster was trained. Full replay,
 separate receipt checks and 79 targeted tests support reproducibility, not a
 successful world-model claim.
+Future policy evaluations keep full-policy safety separate from count-matched
+utility comparisons. Empty risk comparisons remain not estimable; the 2% budget
+and historical failed verdicts are unchanged.
 [Results](outputs/publication_readiness_2026_09/european_coupled_support_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_coupled_support_v1/failure_analysis.md),
 [gate](outputs/publication_readiness_2026_09/european_coupled_support_v1/evidence_gate.md),

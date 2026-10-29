@@ -7,6 +7,13 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+The user explicitly confirmed the prospective evaluation rule on29October:
+full-policy safety on every required scene still uses the original2%budget;
+count-matched controls assess utility only,empty risk is not estimable and never
+a safety pass. Historical failures remain unchanged. Existing generic v2 contract
+is retained;current risk-MSE experiments are not deployment safety certificates.
+[Explicit confirmation](outputs/publication_readiness_2026_09/european_gate_contract_v1/explicit_user_confirmation_20261029.md).
+
 ### Coupled Risk and Donor-Recording Support: Complete, Screen Failed
 
 Follow-up to the completed local-cost failure: exact joint quadratic constraints
