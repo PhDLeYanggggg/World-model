@@ -28,7 +28,10 @@ separate aggregation-contract test confirms that query-mean TRAIN feasibility
 does not imply selected-agent-mass risk feasibility. This is a synthetic
 counterexample, not a new empirical result; the running scaling intervention is
 not changed. [Aggregation limitation](outputs/publication_readiness_2026_09/european_scaled_risk_v1/aggregation_contract_note.md).
-No new development labels were opened in this diagnostic.
+No new development labels were opened in this diagnostic. A separate TRAIN-only
+aggregation audit is now registered for all 144 frozen scaling/control heads;
+five focused tests pass. It will measure the discrepancy without fitting or
+altering the active eight-arm readout.
 [Evidence](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md),
 [matched repair protocol](outputs/publication_readiness_2026_09/european_scaled_risk_v1/protocol.md).
 
