@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Direct Neural Policy: Registered, Training Pending
+
+The preceding turn completed a useful falsification, not a wait or blocker.
+Direct task-risk learning already exists in the project, so this experiment
+does not claim to invent it. New fixed contrasts remove moment-MSE fitting,
+compare source versus recording constraints, and compare soft versus hard
+forward actions.54 neural policy heads,108,000 planned updates; same original
+forecasts, inner-fit preprocessing, initialization and recording-balanced draws.
+The final original TRAIN inner-held readout is exploratory, not independent test.
+No extra risk-MSE gate, changed2%budget or held-out threshold tuning.
+11 focused tests pass1.68s. An initial diagnostic float-minus-bool error was
+fixed before registration; no real experiment had run at that point.
+[Protocol](outputs/publication_readiness_2026_09/european_direct_policy_v1/protocol.md).
+
 ### Easy-Constrained Objective and Actual Policy: Complete, Not Deployable
 
 Registered commit bb270000 precedes the pilot and real fits. One fixed objective

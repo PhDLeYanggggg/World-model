@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: direct neural intervention learning is registered.**
+I am testing the decision itself rather than another risk-MSE repair: a neural
+gate trained for utility with source-level or recording-level risk constraints,
+and a hard-forward version that uses deployment decisions during training.
+All three share initialization and training draws. The existing inner recording
+holdout is reserved until every final fit is frozen; it remains exploratory
+because earlier experiments have already exposed it. Real training is pending.
+[Method and fixed comparisons](outputs/publication_readiness_2026_09/european_direct_policy_v1/protocol.md).
+
+### Previous Easy-Constrained Check
+
 **29 October: preserving the training objective does not yet preserve policy safety.**
 I completed 72 comparisons of an easy-constrained risk estimator and evaluated
 the resulting intervention decisions. The new objective removes 16,261 donor-fit
