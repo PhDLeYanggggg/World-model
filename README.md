@@ -25,14 +25,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: scene context helps cost prediction, but neural substitution is not yet safe.**
-I completed six controlled comparisons over the same frozen forecast bank:
+**29 October: targeted cost training still does not make neural substitution safe.**
+I completed seven controlled comparisons over the same frozen forecast bank:
 continuous costs, recording-level decision training, a published deferral loss,
-support-unit conditioning, shared reference costs and static scene context.
+support-unit conditioning, shared reference costs, static scene context and
+policy-region moment training.
 Each retains three controller seeds, six contexts and all 54 planned fits.
-Together they comprise **324 real Torch heads and 486,000 primary updates**.
-These are controller experiments, not 324 new trajectory forecasters. Every
-endpoint was frozen before readout, and all six comparisons replay exactly.
+Together they comprise **378 real Torch heads and 594,000 primary updates**.
+These are controller experiments, not 378 new trajectory forecasters. Every
+endpoint was frozen before readout, and all seven comparisons replay exactly.
 
 | Mixed-bank policy | Known-label ADE gain over floor | Required risk views supported |
 |---|---:|---:|
@@ -42,28 +43,34 @@ endpoint was frozen before readout, and all six comparisons replay exactly.
 | Support-unit repair | 0.0348% | 92/186 |
 | Shared reference | 0.542% | 21/186 |
 | Static scene context | 0.983% | 23/186 |
+| Policy-region moments | 0.944% | 19/186 |
 
-The latest feature ablation adds 18 static/past/rollout region features using
+The preceding feature ablation adds 18 static/past/rollout region features using
 14 correctly matched camera polygons. Relative to the no-scene control, known-
 label utility improves **0.429 percentage points**, conditional 95% locality
 CI **[+0.054,+1.045]**. Harm-cost MSE also decreases. This is evidence that
 image-region position matters for cost prediction, not a deployment result.
 
-The physical-only scene policy still gains **1.077%**, more than the mixed
+The physical-only scene control gains **1.077%**, more than its mixed
 policy's **0.983%**. The paired neural increment is **-0.0938pp**, CI
 **[-0.2179,-0.0034]**. Missing-outcome completion bounds do not establish a
 positive scene gain, and the mixed policy selects 518 unknown-outcome row views.
 Lower overall prediction error has not controlled risk after action selection.
 
-I am keeping deployment unchanged. The next test is whether action selection
-concentrates harm underprediction or inflated reference estimates. This needs
-a frozen-prediction diagnosis, not another favorable threshold. That TRAIN-only
-audit now exactly replays all 108 original/scene cost endpoints. Easy-harm bias
-is concentrated inside the gate despite much better all-legal calibration.
-The real recovery pilot and full 2,000-step disabled control pass exactly;
-All 54 conditional region-moment fits have now finished (108,000 updates),
-and their endpoints are frozen before the first readout. I am keeping earlier failed
-pointwise deviance and posthoc calibration results visible. Empty selected
+The TRAIN-only audit now exactly replays all 108 original/scene cost endpoints.
+Easy-harm bias is concentrated inside the gate despite much better all-legal
+calibration. I then trained 54 matched heads with an aggregate moment loss on
+the old policy's selected regions. The new mixed policy gains **0.944%**, but
+its change from the scene control is **-0.039pp**, CI **[-0.275,+0.135]**.
+Its neural increment over its physical-only bank is **+0.039pp**, CI
+**[-0.087,+0.166]**; the missing-outcome completion-lower contrast is negative.
+Only **19/186** required risk views pass. This repair does not earn deployment.
+
+The fitting diagnosis finds incomplete easy-harm calibration even inside the
+old regions, while about **68%** of new interventions leave those old chosen
+regions. Those rows are not unseen training inputs; the extra moment loss was
+conditioned on the old choices. I am keeping deployment unchanged and the older
+failed pointwise deviance and posthoc calibration results visible. Empty selected
 risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 
@@ -76,6 +83,8 @@ Independent evaluation stays closed; submission readiness is still false.
 Metric/effective-second claims, Stage5C execution and SMC remain off.
 
 - [Six-study comparison, intervals and moment errors](outputs/publication_readiness_2026_09/feature_cost_evidence_20261029.md)
+- [Seventh comparison: region-moment evidence](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/evidence.md)
+- [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
 - [Published-loss control](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md)

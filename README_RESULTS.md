@@ -7,6 +7,35 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Policy-Region Training Completes Without A Safety Or Neural-Value Pass
+
+All54new heads/108,000updates are complete and frozen atdbec2b6f before
+first readout. PID94462exit0 evaluates144groups in184.308026s,peakRSS
+7,760,789,504B. Separate PID95082exit0 replay takes205.403332s;all144group
+JSONs,choices,summaries and old-scene controls are exact. Lossless aggregate
+archive2,252,892B is byte-verified. No independent role or new forecaster.
+
+Mixed known ADE gain0.943808%,physical-only0.905229%,neural-only0.462924%.
+Mixed-minus-physical is+0.038578pp,CI[-0.087280,+0.166017];completion-lower
+contrast-0.656490pp,CI[-1.756899,-0.009889]. Region-minus-old-scene known
+change-0.038962pp,CI[-0.275233,+0.134783]. The primary full-risk support
+falls23to19of186views,with577unknown selected row views and17undefined easy
+views. Known easy violations96to89do not override the failed full contract.
+Fixed2x/4x sensitivities are not selected after readout. No deployment promotion.
+
+The prescribed fitting-region check retains all1,332record/head/bank views.
+The new mixed head's median predicted/true EH ratio is0.132688 inside old
+teacher regions versus0.081967 inside its own choices.59,048of86,825new
+interventions(68.008%)are outside the old chosen regions,including changed
+candidates. These are still fitting inputs,not68%unseen examples. Fitting
+centroid calibration remains incomplete and policy-region drift coexists;
+neither is uniquely proven causal. PID95723exit0 takes108.879747s;separate
+PID96261exit0 exactly replays all1,332views in106.555317s.44focused tests
+pass3.19s;the full historical suite is not rerun. The old six-study export and
+3,118-word revision7draft check exactly. Old pointwise-deviance and posthoc failures
+remain negative. See the[fixed evidence](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/evidence.md)
+and[mechanism report](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md).
+
 ### Selection-Conditioned Risk Diagnosis Registered
 
 Previous goal turn is progress:two54-fit real studies,exact readouts and a
