@@ -162,6 +162,13 @@ fitting interval, **+0.0409pp [0.0012,0.0866]**, while the full policy remains
 unsafe. A global mean is more conservative but gains only 0.004%. Consistent
 cost outputs and higher average accuracy have not solved the selection problem.
 
+A further control preserves donor recording and action-availability profiles
+while shuffling their fine target associations. The real matching advantage
+has an interval crossing zero. I am now checking the camera inputs before
+trying another learner: supplied control points exist for all 14 fitting
+cameras, but static reprojection residuals and coordinate conventions still
+need resolution. Their existence is not verified metric calibration.
+
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
 image coordinates, not SDD's official top-down annotations. The [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
@@ -189,6 +196,8 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 - [Completion-cost local reproduction guide](outputs/publication_readiness_2026_09/european_completion_cost_v1/reproduction_zh.md)
 - [Coupled local-cost comparison and complete negative safety result](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/readout.md)
 - [Coupled cost-control figure](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/figures/control_comparison.svg)
+- [Stratified matching control and its limits](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/stratified_readout.md)
+- [Training-camera projection resource audit](outputs/publication_readiness_2026_09/source_projection_audit_v1/readout.md)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)

@@ -84,3 +84,26 @@ Independent roles and deployment stay unchanged. The primary task remains
 oblique detector-silver pixels, obs8/pred12/stride12 raw frames, not metric,
 effective seconds, human gold, true 3D or foundation capability. No Stage5C
 or SMC. The A-conference research goal remains unachieved and active.
+
+## Completed Stratified Mechanism And Input Audit
+
+The additional24-group mechanism now completes and replays exactly. Real
+matching minus the recording/action-eligibility-stratified shuffle is
++0.140110pp on known utility,CI[-0.226939,+0.496201], and-0.122182pp on
+completion-lower utility,CI[-0.482149,+0.230146]. The matched lower interval
+also crosses zero. Fine matching is not stably supported here; this does
+not prove feature insufficiency or that recording identity is the sole cause.
+See stratified_readout.md. Actual weights use the fixed full causal fitting
+pool, not exact per-exclusion source rebalancing; see model_data_card.md.
+
+A subsequent metadata-only projection audit covers all14 existing fitting
+cameras, without trajectory labels or policy scoring. Point/polygon filename
+resolution differs for cameras82/126; inverse polygon-match RMSE for82 is
+423.622pixels under the explicit filename-rescaling convention. Other cameras
+also have nontrivial point-fit/leave-one-point residuals. These are internal
+resource checks, not independent surveyed calibration or proof that such
+errors caused the selection failure. The raw model uses box midpoints while
+the publisher mapping code uses box bottoms. Verify frame resolution and
+observation convention before a new projective proposal; do not silently
+replace old inputs or reinterpret results as metric. See
+../source_projection_audit_v1/readout.md.

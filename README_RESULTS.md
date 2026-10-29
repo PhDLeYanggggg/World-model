@@ -62,6 +62,32 @@ Git. See the [readout](outputs/publication_readiness_2026_09/european_coupled_lo
 and [reproduction guide](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/reproduction_zh.md).
 Independent roles and deployment remain unchanged; no Stage5C or SMC.
 
+The registered stratified control then completes all24source/context groups,
+PID36423,39.107258s,peak RSS9,513,959,424B; separate PID36943 exactly replays
+38.969485s,peak RSS9,623,027,712B. It preserves recording/action-eligibility
+stratum target sums and original unknown endpoints. Primary minus stratified
+known utility is+0.140110pp,CI[-0.226939,+0.496201]; completion-lower is
+-0.122182pp,CI[-0.482149,+0.230146], and matched-lower also crosses zero.
+The deterministic single-copy risk views are10/148supported for the primary
+and6/148for the control, not three new model seeds. The fine-matching mechanism
+is not stably supported. Source weights are fixed full-fit causal counts, not
+exact equal-source rebalancing after each recording exclusion. No numerical
+rule or failed primary is silently replaced.
+
+A fresh metadata-only projection audit and exact replay cover14previously
+admitted fitting cameras, without reading trajectory labels or scoring a
+forecast. Point/polygon filename resolutions differ for82/126. Under explicit
+filename rescaling, camera82's supplied-polygon inverse RMSE is423.622pixels;
+point/leave-one-point residuals also vary substantially. The publisher mapping
+uses box bottoms, while this benchmark uses raw box midpoints. These are
+alignment warnings, not verified causes of the prediction failure, metric
+calibration or a successful new proposal. Audit runtimes0.045026/0.042664s,
+PIDs37494/37495. Final expanded scope46passed in2.87s; not the full historical
+suite. See the [mechanism readout](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/stratified_readout.md),
+[model/data card](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/paper_addendum.md)
+and [projection resource audit](outputs/publication_readiness_2026_09/source_projection_audit_v1/readout.md).
+
 ### Completion-Aware Supervision Registered
 
 **Final status: all 72 real Torch fits, 144 readout groups and 888 fixed-region

@@ -70,3 +70,22 @@ MLP 的 completion-lower 差异区间跨零。神经候选相对物理候选有�
 
 这是 SOURCE 斜视摄像头 detector-silver 的 pixel/raw-frame obs8/pred12，不是
 SDD human gold、米、秒、true 3D 或 foundation。Stage5C、SMC 均未执行。
+
+## 后续机制与输入审计
+
+```bash
+.venv-pytorch/bin/python scripts/diagnose_m3w_coupled_local_shuffle.py run
+.venv-pytorch/bin/python scripts/diagnose_m3w_coupled_local_shuffle.py verify
+.venv-pytorch/bin/python scripts/audit_m3w_source_projection.py run
+.venv-pytorch/bin/python scripts/audit_m3w_source_projection.py verify
+```
+
+分层机制的 v2 登记已在运行前提交；仅修改了相同 source 计数的计算效率。
+完整24组首跑39.11秒、重放38.97秒，结果精确一致；它不替换原始 primary。
+静态几何审计分别运行0.045秒和0.043秒，覆盖14个已用训练摄像头，只读取资源
+对应点和多边形，不读取轨迹目标。提供控制点不等于已验证 raw midpoint 的
+真实地面坐标。所有计算已结束，新策略仍不部署。
+
+最终扩展范围共46项通过（2.87秒），包含此前完成的34项成本/报告检查、9项
+本轮检索/读出/打乱检查和3项投影检查；不是历史全套测试。上述命令有结果冻结
+保护，已完成的 `run` 不应重复覆盖，核验现有结果使用 `verify`。
