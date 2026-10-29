@@ -39,14 +39,21 @@ These are utility-bound contrasts, not FDE improvements.
 Source-specific constraints reduce known-label easy-risk violations from46/72
 to40/72, but only1/72 views has full completion support. That is insufficient:
 fewer switches and fewer reported violations do not establish a safe model.
-Both repairs fail and neither advances. I am now checking the frozen models on
-their inner-fit recordings to distinguish poor fitting from recording shift.
+Both repairs fail and neither advances. A complete frozen-model census shows
+two problems: local models have only1/72 known easy-risk failures on fit recordings
+but46/72 on held recordings, while shared models already fit their training costs
+worse. Their mean fit signed-score MSE is about1.97 versus0.56 for local heads.
+Pooling alone is not the repair; source-specific cost structure and the training
+objective need controlled isolation.
 
 This is a cost-learning experiment, not a new neural trajectory model. It uses
 only original TRAIN packets and refits preprocessing on inner-fit recordings.
 The3,000-draw bootstrap is locality-based and nominal, not independent confirmation.
 Independent evaluation and deployment remain unchanged.
 [Complete study](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/readout/conclusions.md).
+[Fit versus transfer](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/fit_census/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/failure_analysis.md),
+[manuscript addendum](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/manuscript_addendum.md).
 
 ### Preceding Constraint Study
 

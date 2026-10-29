@@ -1,6 +1,53 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-29 约束尺度修复完整完成，但未过科研门槛
+## 当前入口：2026-10-29 共享风险训练与拟合诊断全部完成，未升级
+
+真实训练108个cost heads：72逐source、18共享全局风险约束、18共享逐source约束。
+每个2,000步，共216,000次优化，489.45秒完成。固定72组留出录像评估63.05秒。
+这是小型代价预测头训练，不是108个世界动力学模型；只读取原TRAIN，按完整录像
+做内部划分，未打开外层development或独立selection/calibration/confirmation。
+
+已执行：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_shared_train_risk register
+.venv-pytorch/bin/python -m scripts.run_m3w_shared_train_risk pilot
+.venv-pytorch/bin/python -m scripts.run_m3w_shared_train_risk train
+.venv-pytorch/bin/python -m scripts.evaluate_m3w_shared_train_risk register
+.venv-pytorch/bin/python -m scripts.evaluate_m3w_shared_train_risk run
+.venv-pytorch/bin/python -m scripts.report_m3w_shared_train_risk
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_shared_train_fit register
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_shared_train_fit run --resume
+```
+
+训练PID32956、留出读出PID34118均exit0。额外inner-fit诊断首次PID35029在首个
+TRAIN流遇SSH255，尚未完成任何组推理。只读SSH随后exit0，同代码续跑PID35439
+完成72/72并exit0，用77.52秒；不是重新训练。SSH中断不等于模型卡死或作业失败。
+
+两个共享方案都失败：相对local的配对保守效用分别-2.094903、-2.604299个百分点，
+相同介入次数下也为负。known easy违规46/46/40，完整completion支持0/0/1。
+拟合诊断显示local的fit/held违规1/46，共享全局10/46，共享逐source9/40；共享模型
+在TRAIN上的signed MSE也更高。较小的held/fit比值不能掩盖分母和绝对误差变差。
+
+当前可复核，不重复推理或训练：
+
+```bash
+.venv-pytorch/bin/python -m scripts.report_m3w_shared_train_risk --check
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_shared_train_fit check
+```
+
+41项针对性测试通过。完整旧测试集未重跑，避免其中会覆盖已冻结科研产物的测试。
+参数、数据和心跳在忽略目录`data/stage_cvpr2027_experiments/european_shared_train_risk_v1/`；
+不要把结束进程的旧heartbeat误读为正在运行。继续保持arm64、CPU4、workers0。
+常规审计由项目负责，不再要求用户逐项签字；正式投稿仍由作者最后确认。
+Stage5C、SMC、deployment保持不变。独立证据与正面主贡献仍未补齐。
+
+[完整结果](european_shared_train_risk_v1/readout/conclusions.md)、
+[拟合诊断](european_shared_train_risk_v1/fit_census/conclusions.md)、
+[失败原因](european_shared_train_risk_v1/failure_analysis.md)、
+[英文稿增补](european_shared_train_risk_v1/manuscript_addendum.md)。
+
+## 历史入口：2026-10-29 约束尺度修复完整完成，但未过科研门槛
 
 本轮新训144个cost heads：72个原尺度对照、72个TRAIN预算尺度修正；各2,000步。
 72个对照与上一轮模型、优化器、采样和dual完全一致。训练479.82秒，完整八组对照

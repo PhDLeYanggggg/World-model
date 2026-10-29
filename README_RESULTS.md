@@ -21,9 +21,17 @@ Known easy-risk violations are46/46/40 of72 for local/global/source, with
 full completion support0/0/1. Neither repair passes. These are TRAIN-internal
 utility bounds, not FDE changes or independent confirmation.
 419,766 repeated held row occurrences per arm include9,228 unknown outcomes.
-The next frozen inner-fit census is a diagnostic, not new model selection.
+The frozen inner-fit census is complete:897,060 repeated fit occurrences/arm,
+18,978 unknown, zero new optimizer steps. Fit/held known easy violations are
+1/46 local,10/46 shared-global,9/40 shared-source. Mean fit/held signed MSE is
+0.559739/4.013844,1.968616/11.859315 and1.965634/7.452018, respectively.
+Sharing adds a fitting failure as well as failing recording transfer. A smaller
+held/fit ratio does not imply improvement when both absolute errors are worse.
+The first census stream returned SSH255 before group inference; read-only access
+then returned0 and unchanged resume completed72/72 in77.52s. No refit occurred.
+[Fit census](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/fit_census/conclusions.md).
 [Complete readout](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/readout/conclusions.md).
-38 scoped tests pass, including resume, matched sampling, leakage boundaries,
+41 scoped tests pass, including resume, matched sampling, leakage boundaries,
 aggregate accounting and the signed-degradation gate regression. The full legacy
 suite was not rerun because some tests overwrite frozen research artifacts.
 The separate prospective gate v2 accepts valid negative net easy degradation
