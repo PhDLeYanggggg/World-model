@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Reference-Harm Forecast: Training, Current-Producer Contrast Registered
+### Reference-Harm Forecast: Training Complete, Current-Producer Accuracy Regresses
 
 The next experiment changes only the trajectory training objective. It adds
 two positive-ADE-harm penalties, against train-selected strongest and causal CV,
@@ -16,8 +16,9 @@ optimizer and 4,000-step schedule are fixed. Planned: 18 fits / 72,000 updates,
 one 4,000-update neutral replay and 80 real-data engineering updates. The 21
 targeted tests pass;five additional readout tests also pass. The80-update real
 pilot is exact (2.134s), and the4,000-step neutral replay exactly matches weights,
-optimizer, RNG and draws (78.374s). Primary18-fit training is running; readout
-remains not_run.
+optimizer, RNG and draws (78.374s). Primary18-fit training completed exit0,
+72,000updates,1640.711468s,peakRSS1,734,443,008B. All endpoints are being committed
+before first readout; this family's readout remains not_run.
 
 Lineage follow-up found that the current policy uses the later dimensionless
 agent-track producer, not this earlier forecaster. Do not attribute a current
@@ -28,9 +29,14 @@ locality (72locality views), not18perlocality. All training controls remain fixe
 
 Current-producer training PID35828 completed exit0:9fits/36,000updates in
 675.416043s,peakRSS1,633,157,120B. Its80update real pilot and4,000step neutral
-replay are exact. All9endpoints are frozen before first readout; no scientific
-gain or safety claim yet.50focused regression tests pass3.43s;8readout tests
-also pass after added comparator checks. The earlier-family18fit run continues.
+replay are exact. All9endpoints were frozen in d2f8eda7 before first readout.
+Readout PID37693 exit0 (287.786232s) and replay PID38276 exit0 (29.636488s).
+Current-producer ADE vs CV falls8.461640%to7.531916%, paired -0.929724pp,
+conditional3,000locality-bootstrapCI[-1.669310,-0.168497]pp. Easy degradation
+falls11.169208%to8.433059%; hard improvement falls13.355213%to11.675472%.
+This trades some easy error for lost overall/hard accuracy; no deployment claim.
+Fixed-floor148-view support recomputation is running.50focused regression tests
+pass3.43s;8readout tests also pass after added comparator checks.
 
 All 318,969 rows belong to the already-opened source-development cohort. No
 independent selection/calibration/confirmation role is opened. This is a

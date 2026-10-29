@@ -25,20 +25,29 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**Next controlled experiment: repair the forecast loss, not the switching threshold.**
-I have registered a matched comparison that adds positive-error penalties
+**29 October: a harm-aware forecast loss improves easy error but loses accuracy.**
+I ran a matched comparison that adds positive-error penalties
 against the training-selected baseline and causal CV. It keeps the original
 architecture, source folds, three seeds and 4,000-update budget for each of 18
 forecasters. The data are previously opened source development, not independent
 confirmation. The 2% full-policy safety requirement and deployment remain unchanged.
-The earlier-family real-data pilot and full neutral replay are exact; its18fits
-are running. Tracing the current policy revealed that its producer is a later,
-dimensionless agent-track model. I am also registering the direct nine-fit
-loss-only comparison on that actual producer, keeping the two families separate.
-Both families pass full neutral replay and exact resume checks. The nine
-current-producer fits are complete:36,000updates,11.3minutes,1.63GB peak memory.
-All endpoints are being frozen before readout; no scientific outcome is claimed
-yet. The earlier18-fit comparison is still running.50targeted tests pass.
+Tracing the current policy showed that it uses a later dimensionless agent-track
+producer. I therefore ran a separate nine-fit comparison on that actual producer,
+keeping the earlier family separate. Both families pass full neutral replay and
+exact resume checks. All 27 fits have completed, with 108,000 primary updates.
+
+The current producer's nine fits took 11.3 minutes and 1.63 GB peak memory.
+All endpoints were frozen before readout, and the results replay exactly.
+ADE improvement over causal CV falls from **8.46% to 7.53%**. Easy ADE degradation
+falls from 11.17% to 8.43%, but remains unacceptable; hard ADE improvement falls
+from 13.36% to 11.68%. The paired overall change is **-0.93 percentage points**
+(3,000 locality-bootstrap draws, conditional 95% CI [-1.67, -0.17]). This is
+source-development evidence, not independent confirmation or a safe-policy result.
+
+The earlier-family 18 fits took 27.3 minutes and 1.73 GB peak memory. Their
+endpoints are being frozen before readout; that comparison's scientific outcome
+is still pending. The exact fixed-floor support diagnostic is also running.
+50 targeted regression tests pass. Deployment remains unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/protocol.md).
 [Lineage clarification](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/lineage_clarification.md),
 [current-producer protocol](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/protocol.md).
