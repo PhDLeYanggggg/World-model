@@ -139,6 +139,9 @@ def report(freeze, complete, summary, detail):
         'Across all four arms, source queries, preprocessing and initial predictions match.',
         'Four source decoders add495 parameters; this is not a parameter-matched test.',
         'No new trajectory producer, JEPA representation, residual or latent rollout ran.', '',
+        'The head predicts benefit B, positive harm H, floor-reference R, easy',
+        'reference R_easy and easy harm H_easy. Signed scores are B-H, H-0.02R',
+        'and H_easy-0.02R_easy. Reported score MSE is not trajectory FDE/ADE.', '',
         'Original source TRAIN is partitioned by whole recording. Both fit and held',
         'recordings remain TRAIN-internal; held data have prior research exposure.',
         'No outer development or independent selection/calibration/confirmation was read.',
@@ -178,6 +181,12 @@ def report(freeze, complete, summary, detail):
         'Removing a training penalty does not relax safety. Undefined/empty risk is',
         'not a pass. Full support additionally requires easy preservation and positive',
         'completion utility; same-count risk is diagnostic, not a second deployment gate.', '',
+        'Final sampled training losses are retained in verified_details.json.',
+        'The risk objective includes a signed Lagrangian penalty and can be negative;',
+        'its total loss is not directly comparable with the utility-only total.',
+        'Last-batch loss is not a full-training-census error. Easy-harm calibration',
+        'ratios also use different selected cohorts in different arms, not a controlled',
+        'fixed-cohort calibration comparison.', '',
         '## Registered Routing Decision', '']
     for arm, outcome in summary['routing'].items():
         lines += [f"- {arm}: eligible for later development design = {outcome['eligible_for_later_development_design']}.",

@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Source Decoder by Risk Objective: Real Pilot Passed, Training Running
+### Source Decoder by Risk Objective: All72 Fits Frozen, Readout Running
 
 The next fixed TRAIN-internal study separates output sharing from risk-penalty
 interference: shared/source-specific decoders crossed with risk/utility-only
@@ -15,9 +15,11 @@ objectives.72 fresh fits are registered with unchanged source packets, inner
 recording split, sample draws,2,000updates and2% evaluation budget. The18 fresh
 shared-risk controls must exactly replay the previous shared-source models.
 The real pilot completed600 updates in16.55s with2.37GiB peak RSS, exact old-
-control replay, exact interrupted resume and matched sampling. The full72-fit
-run is in progress (local PID37004); no held readout has begun.16 scoped tests
-pass, including additional whole-recording and report-arithmetic guards.
+control replay, exact interrupted resume and matched sampling. All72 fits are
+complete in539.88s,144,000 updates; PID37004 exited0. The18 fresh risk controls
+exactly reproduce their previous models. Final weights are frozen and the fixed
+144-view fit/held readout is running.42 scoped tests pass, including whole-
+recording, report arithmetic and safety-routing guards. No result is promoted.
 No outer development, independent
 test, checkpoint selection or deployment promotion is authorized by this design.
 [Protocol](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/protocol.md).
