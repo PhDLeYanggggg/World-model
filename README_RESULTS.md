@@ -28,6 +28,12 @@ is 3,781 seconds for the primary fits and approximately 450 MB of checkpoints,
 not a completion claim. Local resources support the full registered roster;
 54 full models and the first 128-tree deterministic replay are next.
 
+The first full 128-tree endpoint now has an exact independent refit, including
+every tree and scientific training field (89.61s / 89.96s). The fixed 54-model
+training process is running as PID 8500 with atomic 16-tree checkpoints. The
+expanded causal-feature, cost, support, archive and oracle checks pass 33 tests
+in 3.68s. This establishes recovery and matching, not generalization or safety.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0
