@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Registered Learned Multi-Action Cost Experiment
+
+`european_multiaction_cost_v1` compares physical-only, physical+original-neural
+and newly trained neural-only cost learners. Six frozen contexts, three head
+seeds, matched initialization and row draws, 2,000 updates each: 54 planned
+fits / 108,000 primary updates. The source forecaster stays frozen at seed43.
+Training uses only frozen fitting-record subsets of 24 verified SOURCE TRAIN
+packets. Old inner-held records remain exploratory validation, not a fresh test.
+Normalization uses physical fitting actions only. Continuous benefit/harm and
+event moments replace best-baseline classification. Risk budgets stay 2% on
+every required recording. Empty risk is not_estimable; matched counts are
+utility-only. All three fixed harm multipliers are reported, not searched on
+test. 15 focused tests pass in 1.98 s; real pilot and full training are not_run
+at registration. No independent roles or deployment changes.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,

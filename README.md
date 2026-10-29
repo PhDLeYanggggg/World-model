@@ -44,10 +44,11 @@ A further label-aware diagnosis changes the next experiment: a bank of the six
 existing motion baselines has useful oracle feasibility in **148/148 fixed
 TRAIN recording/context views**, after removing exact copies of the fallback.
 The original neural forecast adds further oracle utility. These are not
-learned decisions or passed deployment gates. The next step is a matched
-multi-action gain/harm learner with physical-only and old binary controls;
-that learner is not trained or deployed yet. Independent evaluation remains
-unopened, and the 2% requirement is unchanged.
+learned decisions or passed deployment gates. I have now registered the
+[matched multi-action cost experiment](outputs/publication_readiness_2026_09/european_multiaction_cost_v1/protocol.md):
+physical-only, physical+neural and neural-only learners, three seeds and six
+frozen contexts. Its 54 fits have not started at this registration checkpoint.
+Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
