@@ -30,8 +30,9 @@ Across72 frozen-model views,92.4% of the wider head's selected occurrences have
 zero easy-harm output gradient;96.3% of its easy-harm underprediction lies on
 those rows. This is a local learning obstruction, not proof that fixing it
 will generalize. I have registered one bounded, continuously differentiable
-replacement with unchanged data, budget and safety criteria. Training has not
-run yet, and the preceding negative result remains the model verdict.
+replacement with unchanged data, budget and safety criteria. All18 matched
+fits have now finished (36,000 updates); the complete readout is running.
+The preceding negative result remains the verdict until that readout is verified.
 [Diagnosis](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/conclusions.md),
 [fixed repair](outputs/publication_readiness_2026_09/european_rational_harm_v1/protocol.md).
 

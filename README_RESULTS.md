@@ -15,8 +15,12 @@ harm underprediction lies there. The old odds head on the identical cohort has
 33 zero-J rows and zero such underprediction. Hard lower clipping is a verified
 local obstruction, not a sole-cause or generalization proof. All predictions
 and cohorts exactly replay.18 focused tests pass, including the registered
-rational replacement's resume/protection/extreme-anchor checks. No repair fit
-yet, no held inference in this diagnosis, no independent role or deployment change.
+rational replacement's resume/protection/extreme-anchor checks. The registered
+repair's200-update pilot passed12.08s with exact resume and protected outputs;
+18/18 fits and36,000 updates completed190.94s, PID51994 exit0. All real initial
+objective values match old controls.144-view readout is now running, no new
+result or gate claimed yet. No held inference in the Jacobian diagnosis itself,
+no independent role or deployment change.22 new/affected tests pass.
 [Diagnosis](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/conclusions.md),
 [interpretation](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/failure_analysis.md),
 [next fixed repair](outputs/publication_readiness_2026_09/european_rational_harm_v1/protocol.md).
