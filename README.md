@@ -25,16 +25,29 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**In progress: testing whether the local fitting objective matches the risk metric.**
-The next registered control keeps the selected reference samples and their
-neighbors fixed, but fits their source-normalized signed-risk error directly.
-Uniform, weighted-harm, nonlocal and shuffled-label controls will separate what
-the new objective can and cannot explain. This is a fitting-only diagnosis;
-the new scientific readout is incomplete, and deployment stays unchanged.
-The pilot passed, but the first full invocation stopped on a diagnostic-writer
-error before saving a group. The fault is reproduced and fixed without changing
-the scientific protocol; the failed version remains recorded.
-[Protocol and repair](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/protocol.md).
+**29 October: aligning the local loss helps, but the risk estimates are still not usable.**
+I completed the 72-view cost-objective comparison with the same selected queries
+and nearest histories. Direct cost fitting reduces easy-risk prediction error
+by **81.30%** against uniform neighbors, but remains **43.00% worse** than the
+original risk head. None of the 18 context-seed pairs beats both controls.
+These are fitting risk-estimation errors, not trajectory ADE/FDE improvements.
+
+The controls narrow the problem: cost weighting explains almost all of the
+improvement. Reference-error offsets add little and produce **9,019** logically
+inconsistent predictions where easy harm exceeds total harm. Some nominal
+32-neighbor fits also depend almost entirely on one reference sample. I am not
+deploying this estimator or opening held data to rescue the result.
+
+The first diagnostic-writer failure is preserved and repaired. The complete
+calculation and numerical replay now finish successfully; 74 related tests pass.
+No new neural trajectory model was trained. The next work concerns coherent
+joint risk estimates and reliable reference support, not another threshold sweep.
+[Results](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/failure_analysis.md),
+[gate](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/reproducibility.md).
+
+### Previous Reference-Population Check
 
 **29 October: matching the reference population helps, but does not make risk reliable.**
 I completed 72 fitting comparisons using reference samples selected by the same

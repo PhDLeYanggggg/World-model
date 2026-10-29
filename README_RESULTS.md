@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Local Cost Objective: Registered, Scientific Readout Not Run
+### Local Cost Objective: Complete, Magnitude and Moment Consistency Fail
 
 Previous goal turn made progress: 72 donor-conditioning views completed and
 replayed, with complete support but failed magnitude screening. This follow-up
@@ -21,12 +21,42 @@ Pilot PID80933 exit0:18.213214s,5,314,772,992 B;7,572 queries supported and
 frozen neighbors/predictions/normalization exact. Full PID81249 exit1 before
 the first group: missing np alias in diagnostic writer. A runner regression
 reproduces it; v2 fixes the alias only and preserves the failed registration.
-No neural update or held-data readout. Native arm64 local execution is suitable
-for this small fitting calculation; no new CREATE job is needed.
+Corrected pilot PID81915 exit0:18.615700s,5,333,155,840 B; all7,572 queries
+supported and frozen outputs/neighbors/normalization exact. Full PID82222
+exit0:72 views,135.378112s,6,634,569,728 B. All62,902 query occurrences remain
+supported (61,335 known/1,567 unknown). No neural optimizer updates or policy
+execution. Exact full inference/retrieval replay PID82750 exits0, all72 groups
+and summary matching; final verified event05:06:05 UTC.
+
+Primary easy signed-risk MSE0.000442400 is81.30% below uniform selected-neighbor
+MSE0.002365719, but1.43x original0.000309373. All-risk MSE0.089637254 improves
+11.89% over uniform but remains12.81% worse than original. Zero of18 paired
+context/head-seed wins; registered magnitude screen fails. All12 source means
+remain worse than original. Locality082 also worsens against uniform neighbors.
+
+Weighted harm accounts for99.80% of the primary easy-MSE reduction in this fixed
+algebraic contrast; the reference offset adds only0.87% over weighted harm.
+It introduces9,019 EH>H occurrences. Effective reference count can approach1
+despite nominal32 donors; maximum single donor weight0.999935. Predicted easy
+harm55.772637 is below observed95.560642, while positive-event SSE worsens and
+false-safe signed-score counts rise from1,699 to2,444 versus uniform. No
+posthoc projection, global rescaling or secondary-arm promotion.
+
+Separate verification covers864 arm-target records,443 reference banks,144
+donor-loss checks,144 inherited controls and five conditions. All21 descriptive
+slices/figure hashes replay; figure visually inspected.74 related tests pass
+4.01s, not the entire historical test suite. New fits and inference replay are
+fresh_run; ancestors/controls and receipt checks cached_verified; new neural
+training and held/independent/policy evaluation not_run. No CREATE job added.
+The next support-aware, jointly consistent risk repair is not_run. Risk budget,
+data roles and deployment unchanged; Stage5C/SMC remain off.
 [Protocol](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/protocol.md),
 [prior controls](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/prior_controls.md).
 [Failure](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/failure.md),
 [repair](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/protocol.md).
+[Results](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/reproducibility.md).
 
 ### Policy-Conditioned Reference: Complete, Magnitude Gate Failed
 
