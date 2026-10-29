@@ -9,6 +9,12 @@ or evidence status.
 
 ### TRAIN Constraint Scaling: Complete, Advancement Failed
 
+A full TRAIN census is now registered for the 288 frozen neural heads. It will
+check all training rows, exact sampler coverage and rare easy-harm concentration,
+then compare against cached development aggregates. It does not retrain models,
+open independent roles or alter thresholds. Three focused synthetic tests pass;
+the census itself is not yet complete.
+
 **October 29, fresh_run:** 144 matched cost-head fits (72 unit controls, 72
 budget-scaled) and the complete fixed-final eight-arm readout. All72 unit controls
 exactly replay prior training; quadratic/utility heads are 144 cached_verified
