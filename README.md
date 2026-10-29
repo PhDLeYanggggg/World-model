@@ -44,12 +44,20 @@ intervention count it is **-0.4845 [-0.8279, -0.1423]**. The original forest
 comparison is positive, but does not rescue failed stronger controls. These are
 conservative decision-utility bounds, not FDE improvement or t+50 results.
 
-A frozen TRAIN diagnosis also confirms that equal-window risk and pooled-agent
-risk can disagree. For the scaled hard policy, two of 72 monitors pass the first
-easy-risk calculation but fail the second. This matters, but cannot explain the
-whole development failure. Predicted easy harm is still much too low on selected
-development cases. The next question is how to make risk prediction generalize
-across recordings, not simply how to increase the penalty or tune a threshold.
+A full training-set check now makes the gap clearer. I re-evaluated all 288
+frozen heads, without retraining or opening an independent test set. The scaled
+model has only **2/72 known-label easy-risk violations on TRAIN**, but still
+**58/72 on development recordings**. Missing outcomes remain important: only
+2/72 TRAIN views satisfy the full completion check. The next question is how to
+make harm prediction generalize across recordings, not simply how to increase
+the penalty or tune a threshold.
+
+I also found an error in the evaluation design. The original comparison policy
+never intervenes in 29/72 views. Requiring a finite selected-risk ratio after
+matching its zero intervention count is impossible. Future experiments will
+separate full-policy safety from same-count utility comparisons, without changing
+the 2% safety budget or dropping empty views. The old results remain failed:
+correcting this design error does not repair the model's actual risk violations.
 
 Training took 8 minutes and fixed-final evaluation 3 minutes 44 seconds on
 native arm64 CPU. All 72 views across 12 localities are complete. The 3,000-draw
@@ -60,6 +68,8 @@ unopened, deployment is unchanged, and the work is not yet submission-ready.
 - [Complete scaling experiment](outputs/publication_readiness_2026_09/european_scaled_risk_v1/readout/conclusions.md)
 - [What the repair did and did not fix](outputs/publication_readiness_2026_09/european_scaled_risk_v1/failure_analysis.md)
 - [TRAIN aggregation evidence](outputs/publication_readiness_2026_09/european_risk_aggregation_v1/conclusions.md)
+- [Full TRAIN census and generalization gap](outputs/publication_readiness_2026_09/european_train_census_v1/conclusions.md)
+- [Prospective evaluation repair](outputs/publication_readiness_2026_09/european_gate_contract_v1/conclusions.md)
 - [Latest manuscript addendum](outputs/publication_readiness_2026_09/european_scaled_risk_v1/manuscript_addendum.md)
 
 - [Complete decision-risk comparison](outputs/publication_readiness_2026_09/european_task_risk_v1/readout/conclusions.md)

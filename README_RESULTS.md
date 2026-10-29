@@ -9,11 +9,34 @@ or evidence status.
 
 ### TRAIN Constraint Scaling: Complete, Advancement Failed
 
-A full TRAIN census is now registered for the 288 frozen neural heads. It will
-check all training rows, exact sampler coverage and rare easy-harm concentration,
-then compare against cached development aggregates. It does not retrain models,
-open independent roles or alter thresholds. Three focused synthetic tests pass;
-the census itself is not yet complete.
+**October 29, full TRAIN census complete:** 288 frozen heads were freshly
+evaluated on their entire TRAIN packets in114.16s. Models and prior development
+aggregates are cached_verified; no optimizer or new development inference ran.
+All identities, hashes, repeated predictions and exact sampling traces verify.
+Scaled known easy-risk violations are2/72 on TRAIN versus58/72 on development;
+56 views pass known TRAIN risk but fail development. Full TRAIN completion
+support is only2/72, with66 upper-risk violations and4 undefined easy ratios.
+64 known-label passes lose easy-risk support when unknown outcomes are retained.
+This is evidence for a fitting/generalization gap, not an independent success.
+
+12/72 sampling identities leave some known queries unseen; the median unseen
+query and easy-harm mass fractions are both0, with maximum unseen easy-harm mass
+fraction0.062519. The largest1% TRAIN row harms contain a median70.22% of easy
+harm. Sampling coverage alone does not explain the development failures.
+The1,316,826 TRAIN row occurrences per arm overlap across views and seeds.
+
+A structural gate audit also identifies an evaluation-design error: original
+forest actions are empty in29/72 views, forcing undefined risk in their
+same-count comparisons. Future contracts separate full-policy safety from
+count-matched utility, keeping the2% budget and every primary contrast/view.
+The user approved this prospective repair and delegated routine auditing.
+Old registrations and failures remain unchanged; no model is re-promoted under
+the revised rule. New guards reject incomplete rosters, empty/unknown full-policy
+support, nonfinite risk and nonpositive utility intervals.26 targeted tests pass;
+the full legacy suite was not rerun because it can overwrite research artifacts.
+
+[Full census](outputs/publication_readiness_2026_09/european_train_census_v1/conclusions.md),
+[gate design repair](outputs/publication_readiness_2026_09/european_gate_contract_v1/conclusions.md).
 
 **October 29, fresh_run:** 144 matched cost-head fits (72 unit controls, 72
 budget-scaled) and the complete fixed-final eight-arm readout. All72 unit controls
