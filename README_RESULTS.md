@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Local Cost Objective: Registered, Scientific Readout Not Run
+
+Previous goal turn made progress: 72 donor-conditioning views completed and
+replayed, with complete support but failed magnitude screening. This follow-up
+fixes the same selected neighbors and query roster, fitting a bounded quadratic
+signed-risk objective with donor-only reference offsets and equal-source loss
+weights. Original/uniform/weighted-harm/global/shuffled controls are frozen.
+Earlier converged Newton and hurdle failures are reconciled, not relabeled as
+success. Nine focused tests pass, including query-future perturbation, exact
+neighbor/control matching, source-unit rescaling and constrained optima.
+No neural update or held-data readout. Native arm64 local execution is suitable
+for this small fitting calculation; no new CREATE job is needed.
+[Protocol](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/protocol.md),
+[prior controls](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/prior_controls.md).
+
 ### Policy-Conditioned Reference: Complete, Magnitude Gate Failed
 
 The single-factor repair restricts supervised donor labels to the same original

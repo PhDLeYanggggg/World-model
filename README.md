@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**In progress: testing whether the local fitting objective matches the risk metric.**
+The next registered control keeps the selected reference samples and their
+neighbors fixed, but fits their source-normalized signed-risk error directly.
+Uniform, weighted-harm, nonlocal and shuffled-label controls will separate what
+the new objective can and cannot explain. This is a fitting-only diagnosis;
+the new scientific readout has not run, and deployment stays unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/protocol.md).
+
 **29 October: matching the reference population helps, but does not make risk reliable.**
 I completed 72 fitting comparisons using reference samples selected by the same
 frozen policy as the queries. Query selection, normalization and neighbor settings
