@@ -64,8 +64,10 @@ neural bank supports 61/62, so its remaining support failure is retained.
 This is a learnability question, not an oracle-based deployment claim.
 [Exact-record repair protocol](outputs/publication_readiness_2026_09/european_multiaction_record_policy_v1/protocol.md).
 Its real full-gradient CPU pilot passes exact5+5/direct10 recovery in all
-three banks. The 54 fixed 500-update decision fits are next; they do not
-retrain the trajectory producer or claim a safety pass from a pilot.
+three banks. All54fixed500-update decision fits are now complete and being
+frozen before readout. Fitting traces show collapse toward zero intervention;
+the positive easy-support constraints remain unsatisfied, so this is not a
+zero-risk success. The trajectory producer stays frozen.
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.

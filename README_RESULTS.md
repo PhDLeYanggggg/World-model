@@ -60,6 +60,14 @@ match direct10 exactly; full fitting populations and initialization match.
 Projected full optimizer time is1,376.43s plus preparation, not completion.
 The registered54x500 full-gradient fits remain next; no independent role opens.
 
+Exact-record primary training completes PID57836exit0:54fits/27,000full-gradient
+updates,984.886601s,peakRSS5,949,882,368bytes. Each decision head has673parameters.
+All final checkpoint hashes verify before readout. Fitting step500 traces show
+zero selected rows in all18physical-only and all18physical+neural endpoints,
+plus15/18neural-only endpoints. Positive support constraints remain violated;
+empty risk is not a pass. Freeze endpoints,then read out and diagnose numeric
+support/gradient scaling. This is not successful empirical or population safety.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
