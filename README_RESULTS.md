@@ -7,26 +7,47 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Record-Balanced Constraint Comparison: Training Complete, Readout Pending
+### Record-Balanced Constraints: Partial Fitting Repair, Safety Failed
 
-The cost-sensitive repair increased fitting benefit but worsened record safety.
-This follow-up changes only constraint weights from utility-weighted recordings
-to uniform recording weights,total weight1. The source-balanced benefit
-objective,features,forecasts,model,initialization,2,000updates,dual updates and2%
-budget remain fixed.18newfits are planned;cost-sensitive/origin controls remain
-frozen. Five targeted tests pass2.08s,including exact neutral-control replay and
-resume on the fixture. The60update real pilot passed(PID27689,exit0,14.278188s,
-peakRSS2,679,816,192B),including exact neutral replay of the parent. Full training
-PID28251 completed with captured exit0: 18 fits, 36,000 updates, 732.451502s,
-peak RSS 2,821,308,416B. Final manifests are frozen before readout, which remains
-pending. Numerical training was local; hash-verified TRAIN packets streamed
-read-only from CREATE. Eleven targeted tests now
-pass2.35s. A marked CREATE account-queue query10:02:07UTC confirms no listed
-current jobs,not historical job completion. No new HPC job was submitted.
-Independent roles remain unopened. The known
-locality082/51 support obstruction is retained and cannot be solved by this
-fixed-candidate selector alone.
-[Protocol](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/protocol.md).
+Fresh_run: 18 neural fits, 36,000 updates, 72 fitting readouts, exact replay and
+post-fit diagnosis. Only constraint weights change to uniform recording weights
+with total weight1. Benefit weights, features, forecasts, model, initial states,
+optimizer, dual update, 2,000 updates and2%budgets remain fixed. No selected seed,
+checkpoint, threshold or recording. Finals frozen in7481dfd5before readout.
+
+Training PID28251 exit0:732.451502s,peakRSS2,821,308,416B. Readout PID30534 exit0:
+85.444484s; replay PID31124 exit0 reproduces all72views. Report and post-fit
+diagnosis replay exactly, with1,836policy arithmetic checks.68regression tests
+pass3.97s and3new diagnosis tests pass1.37s. Full historical suite not rerun.
+The60update real pilot verifies exact resume and the frozen neutral control.
+
+Required recording-budget coverage84to131of444; aggregate coverage54to52of72.
+Known all-harm violations346to289; easy-upper violations70to59; undefinedeasy14to9.
+Net easy degradation stays within2%inall444views, but positive-harm budgets fail.
+59record/head views gain a pass,12lose one,72remainpassing,301remainfailing.
+74unique source-qualified recordings underlie the repeated contexts/headseeds.
+Allthreeheadseeds improve recording coverage; this is not independent forecast
+seed variance or a generalization claim. Eligible positive benefit retained:
+80.9251%versus81.5516%. Full utility completion bounds versus parent
+[-0.135714,-0.133642]pp; matched [+0.020396,+0.021290]pp. These are TRAIN
+outcome-completion bounds, not FDE gains or CIs. Matched comparisons are utility
+only, with no safety credit for empty or unsupported comparisons.
+
+Increased-constraint-weight slice passes30to76of372; decreased slice54to55of72.
+285of289known all-harm violations remain inlocality008/074. No all-risk dual is
+atcap100. The locality082/51fixed-candidate support obstruction remains. Next:
+TRAIN-only candidate forecast/support repair and constraint-convergence work;
+that follow-up is not_run. No new held scoring, independent confirmation or
+deployment. Not submission-ready; Stage5C/SMC remain off.
+
+Computation was local; hash-verified TRAIN packets streamed read-only from CREATE.
+A marked account-queue query10:02:07UTC verified zero current rows, not historical
+job completion. No new HPC job submitted.
+[Results](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/conclusions.md),
+[readout](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/readout.md),
+[diagnosis](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/constraint_diagnosis.md),
+[gate](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/reproduction_zh.md).
 
 ### Cost-Sensitive Primal Repair: More TRAIN Benefit, Record Safety Failed
 
@@ -53,9 +74,9 @@ Known fixed-action obstructionlocality082/51 retained. No deployment promotion.
 
 Wrong saturated row occurrences443,891to25,925atownfinalduals;consistent with
 the loss mechanism,not unique causal attribution. No all-risk dual hitscap100;
-344positive risk constraints remain just beforelastupdate. Next:preserve useful
-cost-sensitive fitting and test record-constraint optimization,plus legal
-candidate/support repair. Follow-up training not_run. New inner-held scores,
+344positive risk constraints remain just beforelastupdate. This motivated the
+record-balanced follow-up now completed above; candidate/support repair remains
+not_run. New inner-held scores,
 independent roles,Stage5C/SMC remain unopened. Not submission-ready.
 [Results](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/conclusions.md),
 [tables](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/readout.md),

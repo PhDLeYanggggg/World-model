@@ -25,6 +25,31 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: balancing recording constraints improves fitting coverage, but the policy remains unsafe.**
+I trained 18 neural policy heads for 36,000 updates with equal recording weights
+for constraint penalties, leaving the benefit objective and the 2% budgets
+unchanged. Required recording-budget coverage increases from **84/444 to
+131/444 views**, with improvement in all three policy-head seeds. The policy
+retains **80.93% of eligible positive benefit**, versus 81.55% for its control.
+
+This is only a partial repair. There are still **289 known all-harm violations**;
+full-policy utility falls slightly even though matched-count utility improves.
+The 444 views repeat 74 unique recordings across contexts and seeds. These are
+fitting results, not independent generalization or a deployment safety claim.
+The known fixed-forecast support obstruction also remains unresolved.
+
+All 18 final weights were frozen before readout. Training took 12.2 minutes
+locally with 2.82 GB peak memory; all 72 readouts replay exactly, and 68 regression
+tests plus three new analysis tests pass. Independent evaluation remains unopened.
+I am keeping deployment unchanged and prioritizing candidate forecast/support
+repair rather than another threshold search.
+[Results](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/failure_analysis.md),
+[model card](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/model_card.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/reproduction_zh.md).
+
+### Previous Cost-Sensitive Comparison
+
 **29 October: the new loss recovers useful interventions, but safety still fails.**
 I trained 18 cost-sensitive neural policy heads for 36,000 updates, changing
 only the primal loss. On the fitting data, they retain **81.55% of eligible
@@ -40,19 +65,13 @@ constraints. This is a useful fitting improvement, not a deployable policy.
 
 All final weights were frozen before readout; all 72 readouts replay exactly,
 and 57 targeted tests pass. Independent evaluation remains unopened. I am
-keeping deployment unchanged and taking the improved benefit-learning loss
-into the next recording-constraint repair, while retaining the known
-forecast/support obstruction below.
-That next comparison is now registered: equal recording weights for constraint
-penalties, with the benefit objective and all other training settings fixed.
-Its real-data resume/control pilot passed. All 18 fits have now completed locally
-in 12.2 minutes with 2.82 GB peak memory. Final weights are frozen before the
-fitting-data readout; predictive results remain pending. No independent
-evaluation is opened.
+keeping deployment unchanged. This improved benefit-learning loss motivated
+the completed recording-constraint comparison above. The known forecast/support
+obstruction remains visible in both experiments; neither is a deployment update.
 [Results](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/failure_analysis.md),
 [model card](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/model_card.md).
-[Next comparison](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/protocol.md).
+[Follow-up protocol](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/protocol.md).
 
 ### Previous TRAIN Feasibility Diagnostic
 
