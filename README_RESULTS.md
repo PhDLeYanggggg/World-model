@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Fixed-Cohort Query-Head Conditioning: Registered, Not Yet Run
+
+The previous goal turn made verified progress with36 corrected fits and a
+negative matched result. The next diagnostic keeps all36 heads frozen, checks
+72 inner-fit views, and runs288 matched gradient probes/576 disposable AdamW
+steps. It compares the new self/peer heads on the same causal cohorts and asks
+whether clipping actually impedes local fitting.14 related tests pass2.38s.
+No new held scoring, independent roles, persistent training or deployment.
+[Protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v1/protocol.md).
+
 ### Contemporaneous Query Context: Complete, Negative Matched Result
 
 Corrected36 fits/72,000updates and72 ten-arm held-recording views completed.

@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: checking the failed context heads on fixed fitting cohorts.**
+I have registered a training-only diagnosis of signed-risk errors, usable output
+derivatives and component gradients. Disposable AdamW copies compare clipping
+with no clipping on the same next batches; original checkpoints remain frozen.
+This will test whether the observed frequent clipping is an actual local
+obstruction, not assume that removing it improves generalization. No new held
+readout or independent data role is opened.
+[Diagnostic protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v1/protocol.md).
+
+### Completed Context Comparison
+
 **29 October: pooled contemporaneous context did not improve safe selection.**
 I completed 36 matched risk-head fits and 72 evaluation views. The new head sees
 other agents available at the same instant; its self-only control has the same
