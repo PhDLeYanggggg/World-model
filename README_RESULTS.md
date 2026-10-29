@@ -66,6 +66,14 @@ history-vs-disabled/current/noise completion bounds before any advancement.
 Nineteen focused input/recovery/readout checks pass in2.98s. No forecast score
 has yet been read for the new heads, and no independent role is opened.
 
+All144heads now finish at2,000steps, PID41389 exit0,605.155608s,
+peak RSS10,198,335,488B. Primary work is288,000updates, plus2,000full-refit
+and360pilot updates. All36disabled endpoints match their original model,
+optimizer, sampler/RNG and trace. The complete endpoint roster is frozen
+before any new policy readout. Four inference/readout checks pass in1.48s,
+including exact old/new disabled predictions and active cost-bound checks.
+Scientific readout remains not_run at this freeze; no deployment promotion.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a

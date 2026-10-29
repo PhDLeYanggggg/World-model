@@ -1,7 +1,9 @@
 import copy
 import numpy as np
 import pytest
+import torch
 from src.evaluation import m3w_detector_cost_readout as api
+from src.world_model import m3w_detector_cost as model
 
 
 def population():
@@ -51,3 +53,25 @@ def test_each_information_control_and_neural_increment_must_pass():
     out=api.summarize(rows,contexts,cfg)
     assert not out['fitting_advancement_gate']
     assert not out['fitting_gates']['history_minus_noise_matched_lower_CI_positive']
+
+
+def test_disabled_inference_matches_original_and_active_inference_keeps_cost_bounds():
+    torch.set_num_threads(1);rng=np.random.default_rng(8);n=9
+    x=rng.normal(size=(n,7,380));scene=rng.normal(size=(n,7,18));extra=rng.normal(size=(n,64))
+    scales=rng.uniform(.5,2,n);envelope=rng.uniform(0,2,(n,7))
+    pr=dict(mean=np.zeros(398),std=np.ones(398),clip=8.,bias=np.zeros(5,np.float32),
+        detector_normalizer=dict(mean=np.zeros(64),std=np.ones(64),clip=8.),detector_representation='disabled')
+    head=model.DetectorCostHead(462,64,17,pr['bias'],representation='disabled')
+    state=dict(model=head.state_dict(),preprocess=pr,settings=dict(width=64),seed=17,dimension=462,mode='known_only')
+    old=dict(state,model={k:v for k,v in state['model'].items() if k!='detector_weight'},dimension=398)
+    prediction=model.predict(state,x,scene,extra,envelope,scales)
+    np.testing.assert_array_equal(prediction,model.parent.predict(old,x,scene,envelope,scales))
+    with torch.no_grad():head.detector_weight.fill_(.03)
+    state['preprocess']=dict(pr,detector_representation='history');state['model']=head.state_dict()
+    prediction=model.predict(state,x,scene,extra,envelope,scales)
+    assert np.isfinite(prediction).all() and (prediction>=0).all()
+    assert (prediction[...,0]<=prediction[...,2]+1e-6).all()
+    assert (prediction[...,3]<=prediction[...,2]+1e-6).all()
+    assert (prediction[...,4]<=prediction[...,1]+1e-6).all()
+    assert (prediction[...,0]+prediction[...,1]<=envelope+1e-6).all()
+    with pytest.raises(ValueError):model.predict(state,x,scene,extra,-envelope,scales)
