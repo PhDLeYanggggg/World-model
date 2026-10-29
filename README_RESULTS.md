@@ -7,15 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Fit-Only Gradient Diagnosis: Registered, Not Yet Computed
+### Fit-Only Gradient Diagnosis: Complete, Matched Repair Registered
 
-The next check measures actual harm-output Jacobians on all72 fitting views
-of the frozen full-range and isolated-odds heads. It distinguishes hard-clip
-flat regions from merely larger gradients. Four shared causal cohorts preserve
-unknown outcomes and prevent selection changes from masquerading as calibration.
-Four focused engineering tests pass. This is not new training or scientific
-evidence yet; no internal-held inference, independent roles or deployment change.
-[Fixed protocol](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/protocol.md).
+Fresh72/72 fitting-only views completed61.04s, PID50837 exit0. The wider head
+has54,254/58,707 zero-easy-J selected occurrences;96.2899% of its positive easy
+harm underprediction lies there. The old odds head on the identical cohort has
+33 zero-J rows and zero such underprediction. Hard lower clipping is a verified
+local obstruction, not a sole-cause or generalization proof. All predictions
+and cohorts exactly replay.18 focused tests pass, including the registered
+rational replacement's resume/protection/extreme-anchor checks. No repair fit
+yet, no held inference in this diagnosis, no independent role or deployment change.
+[Diagnosis](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/conclusions.md),
+[interpretation](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/failure_analysis.md),
+[next fixed repair](outputs/publication_readiness_2026_09/european_rational_harm_v1/protocol.md).
 
 ### Full-Range Harm Repair: Complete, Registered Gate Failed
 

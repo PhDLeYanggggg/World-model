@@ -25,10 +25,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am now testing whether the failed wider harm head is locally unable to learn
-because clipping makes its output gradients zero. This fixed diagnosis uses
-only fitting rows and unchanged checkpoints; it has not produced results yet.
-The preceding negative result below remains the current evidence.
+**29 October: a concrete gradient failure was found on fitting data.**
+Across72 frozen-model views,92.4% of the wider head's selected occurrences have
+zero easy-harm output gradient;96.3% of its easy-harm underprediction lies on
+those rows. This is a local learning obstruction, not proof that fixing it
+will generalize. I have registered one bounded, continuously differentiable
+replacement with unchanged data, budget and safety criteria. Training has not
+run yet, and the preceding negative result remains the model verdict.
+[Diagnosis](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/conclusions.md),
+[fixed repair](outputs/publication_readiness_2026_09/european_rational_harm_v1/protocol.md).
 
 **29 October: expanding the harm head's range did not make it safe.**
 I completed18 matched continuations and144 evaluation views after diagnosing
