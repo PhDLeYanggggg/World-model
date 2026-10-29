@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Frozen Cost-Bank Factorization
+
+The previous full forest comparison changed the next question: does a mixed
+estimator reject neural actions, or do eligible neural actions lose to physical
+competitors? A fitting-only control now freezes same-estimator restriction,
+neutral recomposition and separate-expert composition for both forest and
+neural cost heads. All 144 original fitting source/context/seed/family groups
+are retained. Composition uses two estimators and is not equal compute.
+
+Nine focused checks pass in 1.21s, including causal gate accounting, exact
+neutral choices, future-input rejection and incomplete-roster rejection.
+Actual inference and replay are not_run at registration. Earlier selected-set
+recalibration failure is preserved, not retried as a threshold sweep. Independent
+roles and deployment remain unchanged. See the [fixed protocol](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/protocol.md).
+
 ### Matched Conventional Expected-Cost Control
 
 **Final status: all 54 fits, 144-group readout and 1,332-view fitting diagnosis
