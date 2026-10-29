@@ -79,6 +79,10 @@ separately. This is an optimization test,not a new safety guarantee. Empty selec
 risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 
+The complete-region repair passes the real120-update recovery pilot and a full
+2,000-update disabled neutral. I am continuing all54primary fits on the same
+local arm64runtime;no new result or deployment is claimed from the pilot.
+
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
 image coordinates, not SDD's official top-down annotations. The [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)

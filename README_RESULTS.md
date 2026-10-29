@@ -33,6 +33,13 @@ moment gradients. Explicitly report added teacher-row/forward work;not matched
 FLOPs.10focused tests pass1.70s,including exact disabled/recovery and inactive
 neural-action isolation. Real pilot,neutral,training/readout remain not_run.
 
+Complete-region pilot PID99000exit0:120actualupdates,14.844251s,peakRSS
+9,704,816,640B,all-bank10+10/direct20recovery exact. Full2,000-step disabled
+neutral PID99432exit0 exactly matches the old scene scientific state,
+14.843235s. Pilot optimizer projection602.52splus data preparation is an
+estimate,not completion. Proceed to all54primary fits locally without reducing
+the scientific roster. Additional regional forward work will be measured.
+
 ### Policy-Region Training Completes Without A Safety Or Neural-Value Pass
 
 All54new heads/108,000updates are complete and frozen atdbec2b6f before
