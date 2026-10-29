@@ -25,6 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: a matched bounded-range repair is now registered.**
+The selected-tail diagnosis motivates one change: replace limited odds shifts
+with a full-range bounded harm adjustment. I will train18 matched continuations,
+keeping the same anchors, initialization, parameters, sampling, update budget
+and2% criteria. No results are available yet; the previous negative result and
+deployment remain unchanged.
+[Fixed experiment](outputs/publication_readiness_2026_09/european_full_range_harm_v1/protocol.md).
+
+### Preceding Selected-Tail Diagnosis
+
 **29 October: the remaining selected-risk error is mainly underestimated harm.**
 I replayed all144 frozen six-policy views. In the protected branch's selected
 cohort, correcting reference error alone would still allow1,573 of1,589 known
