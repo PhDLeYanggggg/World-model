@@ -71,8 +71,11 @@ matched initial weights and row draws. Shared-reference mixed-bank gain is
 **0.542%**, versus **0.553%** for physical-only. The paired neural increment
 is **-0.0110pp**, CI **[-0.0541,+0.0287]**, and required recording-risk support
 is only **21/186**. Coherent estimates did not make the policy successful.
-I am now checking whether relative motion features omit useful static image-
-region context before registering a further training repair. This is an
+The static-context audit now verifies mappings for 74 fitting recordings and
+14 actual cameras. It confirms the relative feature blind spot, but does not
+show a monotonic missingness gradient near polygon edges. I have registered
+a controlled 18-field scene-position ablation, with an exact disabled branch
+control, before training it. This is an
 image-space webcam-track study, not SDD's
 official top-down annotation benchmark; the [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
 separates the released source, our adapter and current experimental population.
@@ -81,6 +84,7 @@ separates the released source, our adapter and current experimental population.
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
 - [Published-loss control](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md)
 - [Shared-reference result and limitations](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/readout.md)
+- [Static scene-context audit](outputs/publication_readiness_2026_09/european_static_scene_audit_v1/readout.md)
 - [English research draft, revision 6](outputs/publication_readiness_2026_09/evidence_manuscript_v6/README.md)
 - [Chinese operating guide](outputs/publication_readiness_2026_09/evidence_manuscript_v6/reproduction_zh.md)
 

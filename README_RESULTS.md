@@ -57,6 +57,18 @@ Metric bundle byte-verifies,contains no raw rows/weights. Deployment unchanged.
 The next registered TRAIN-only audit tests static image-region context,with
 exact raw-camera rather than locality mapping and no metric/walkability claim.
 
+Static context first launcher fails with a context-wrapper key error before
+any record view,retained in attempt_v1;corrected execution bindsregistration_v2.
+Real audit18.434090s,replay18.855576s exact:148context/record views,74unique
+recordings,14cameras,149,510unique rows. Expanded bbox mismatches0;this is not
+calibration. TRAIN unknown rates by fixed distance bins are nonmonotonic,
+so visibility-edge causation is not established. Translation blindness is
+verified synthetically. Register54fresh static-context cost heads/108kupdates:
+18past/static/rollout fields,zero-initialized1,152weight projection,26,309total
+parameters. Old motion weights/draws stay matched;full disabled2000update
+neutral must reproduce old weights/Adam/trace.13focused tests pass2.24s.
+Real pilot,neutral,training and readout remain not_run at this registration.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
