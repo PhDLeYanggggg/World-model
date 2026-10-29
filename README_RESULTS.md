@@ -7,6 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Isolated Harm Continuation: Registered, Real Training Not Yet Run
+
+The next fixed experiment protects a shared-utility anchor's benefit/reference
+outputs while learning harm in a separate branch. Three matched continuations
+compare utility-only, joint-risk and isolated-risk training across54 fits.
+Each receives2,000 additional updates from the same anchor and sampling state.
+13 scoped synthetic tests pass, including exact resume, protected-output identity,
+causal inference, fixed-cohort diagnostics and corrupted-receipt rejection.
+Real pilot/training/readout are not_run at this registration checkpoint.
+No independent roles, deployment change, new forecaster, Stage5C or SMC.
+
+[Fixed protocol](outputs/publication_readiness_2026_09/european_isolated_harm_v1/protocol.md).
+
 ### Source Decoder by Risk Objective: Complete, Neither Repair Advances
 
 Fresh_run72 fits/144,000 updates completed in539.88s, followed by144 fixed-final
