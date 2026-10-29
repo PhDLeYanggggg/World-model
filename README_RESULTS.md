@@ -26,6 +26,15 @@ scoring and exact replay are not_run at registration. No independent role is
 opened, no scientific gate is passed, and deployment is unchanged. See the
 [protocol](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/protocol.md).
 
+The full-context engineering pilot then completes PID 33034, exit 0, in
+10.654783s, peak RSS 9,497,935,872 B. Exact repeated retrieval covers 128
+causal queries; the first lookup takes 0.147529s. The first context has 87,291
+causal rows and projects 603.65s for six-context lookup alone, excluding
+preparation, checkpointing, scoring and replay. All four modes are finite.
+Local modes retain 14 unsupported candidate actions rather than inventing
+labels; the global control has none. No query outcome is scored in the pilot.
+This justifies the complete local run, not a scientific or deployment pass.
+
 ### Completion-Aware Supervision Registered
 
 **Final status: all 72 real Torch fits, 144 readout groups and 888 fixed-region
