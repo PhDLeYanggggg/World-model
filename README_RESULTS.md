@@ -11,16 +11,32 @@ or evidence status.
 
 The previous full forest comparison changed the next question: does a mixed
 estimator reject neural actions, or do eligible neural actions lose to physical
-competitors? A fitting-only control now freezes same-estimator restriction,
-neutral recomposition and separate-expert composition for both forest and
-neural cost heads. All 144 original fitting source/context/seed/family groups
-are retained. Composition uses two estimators and is not equal compute.
+competitors? The fitting-only control now completes all 144 original
+source/context/seed/family groups, followed by exact inference replay in a
+separate process (262.98s / 262.28s). No new trees or optimizer updates.
 
-Nine focused checks pass in 1.21s, including causal gate accounting, exact
-neutral choices, future-input rejection and incomplete-roster rejection.
-Actual inference and replay are not_run at registration. Earlier selected-set
-recalibration failure is preserved, not retried as a threshold sweep. Independent
-roles and deployment remain unchanged. See the [fixed protocol](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/protocol.md).
+For forests, the mixed gate admits only 437 neural query views; 166 then lose
+to physical competition. Of 85,544 dedicated-neural-expert passes, 85,117 are
+rejected by the mixed gate, mainly through predicted all/easy harm. This is
+bank-dependent cost estimation, not chiefly competition after the same gate.
+The neural estimator family shows both mechanisms, not the same proportions.
+
+Separate-expert composition increases fitting known ADE gain from 0.000111%
+to 0.071514% for forests and from 0.678064% to 1.122806% for neural cost heads.
+But full recording risk support worsens: 330 to 285/444 and 77 to 57/444,
+respectively. The positive locality-bootstrap utility intervals describe
+fitting resubstitution, not generalization. Two-expert composition doubles
+estimator capacity; it is not equal compute or an isolated architecture test.
+
+Nine focused checks pass in 1.21s. Original policies, neutral recomposition,
+all groups and summary replay exactly. The 1,983,544-byte aggregate archive is
+verified; no data or weights are published. Earlier recalibration failures
+stay negative. Independent roles and deployment are unchanged. See the
+[readout](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/failure_analysis.md)
+and [fixed protocol](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/protocol.md).
+The final expanded helper/readout/archive scope passes 12 tests in 1.24s;
+the full historical suite is not rerun.
 
 ### Matched Conventional Expected-Cost Control
 

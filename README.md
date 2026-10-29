@@ -107,8 +107,15 @@ The paired fitting audit sharpens the remaining problem. All-legal aggregate
 easy-harm ratios are near one for both estimators, but within identical frozen
 neural-selected regions the forest predicts 4.576 times the observed easy harm
 and the neural head only 0.0214 times. This is not a calibrated risk interval.
-It motivates a fitting-only check of bank coupling and selection-conditioned
-costs, not another held-result threshold sweep or a deployment promotion.
+The subsequent fitting-only bank control now replays all 144 groups exactly.
+Most forest suppression occurs in the estimated risk gate: 85,117 dedicated-
+expert passes are rejected by the mixed estimator, whereas only 166 mixed-
+gate passes lose to a physical competitor. Separating the experts recovers
+some fitting utility, but required recording risk support falls from 330 to
+285/444 for forests and from 77 to 57/444 for neural cost heads. It does not
+repair safety. No new model is trained, and no held or independent role is
+opened. The useful next question concerns safer candidate outputs, not merely
+more permissive switching.
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
@@ -126,6 +133,7 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 - [Neural candidate opportunity and its causal interpretation](outputs/publication_readiness_2026_09/european_neural_marginal_ceiling_v1/readout.md)
 - [Matched conventional control, fixed-region diagnosis and limits](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/readout.md)
 - [Conventional-control failure analysis and paper addendum](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/paper_addendum.md)
+- [Bank-factorization control: exact gate attribution and its safety failure](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/readout.md)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
