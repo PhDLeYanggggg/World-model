@@ -25,6 +25,13 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I have now recovered the original eight-step detection-box histories and raw
+confidence for all 149,510 fitting queries across 74 European SOURCE recordings.
+A separate raw reparse matches exactly, including 222 prefix-truncation checks.
+This adds actual detector-quality history to the next cost-learning experiment;
+it does not repair the existing safety failure by itself. Targets, splits and
+the 2% complete-policy risk requirement are unchanged.
+
 **29 October: targeted cost training still does not make neural substitution safe.**
 I completed eight controlled comparisons over the same frozen forecast bank:
 continuous costs, recording-level decision training, a published deferral loss,

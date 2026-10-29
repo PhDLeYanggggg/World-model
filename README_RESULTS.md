@@ -34,6 +34,13 @@ raw confidences exactly, with three real prefix-truncation checks. No future
 target array or prediction error is read. The tiny first record is not used
 to extrapolate a full training duration; complete extraction is still next.
 
+The complete extraction now finishes PID39447 in40.495374s, peak RSS
+1,989,165,056B:74recordings,149,510queries,222real prefix checks. Separate
+PID39736 reparses all74raw records in39.160109s, peak RSS2,041,085,952B;
+all features, confidences, keys and receipts match exactly. Final arrays total
+52,030,248B and remain local. This is a verified new causal-input store, not
+a model improvement or safety pass. See the [store readout](outputs/publication_readiness_2026_09/european_detector_history_store_v1/readout.md).
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
