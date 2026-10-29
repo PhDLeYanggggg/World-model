@@ -30,8 +30,17 @@ num_workers=0；不使用 x86_64 Conda，也不进行设备资源探测。需要
 
 注册、真实试跑、完整训练冻结、读出注册都须在各自后续运行前提交。现有已完成
 阶段不可覆盖，不要再次启动 pilot/train/run 来覆盖结果；已有完整产物应使用
-`verify` 重新推理。首次重建需要按相同登记版本在具有原始资产的干净工作副本
-执行，不能用更少录像、窗口、模型或更新数替代当前完整固定设计。
+`verify` 重新推理。这需要原登记的上游私有数据和冻结权重，不代表仅克隆 GitHub
+即可从零重建所有资产。独立重训须采用新 replication 命名空间、保留本登记，
+比较科学状态而不是含运行时间的压缩 checkpoint 字节，不能用更少录像、窗口、
+模型或更新数替代完整设计。本实验尚未交付公开匿名从零重训资产包。
+
+Git 中的288组逐组汇总以 metric_groups.zip 保存，不是原始轨迹数据。如需从
+存档恢复逐组 JSON，可用已有校验 API；这只是字节恢复，不是重新计算科研结果：
+
+```sh
+.venv-pytorch/bin/python -c 'from pathlib import Path; from src.evaluation.m3w_metric_bundle import verify; r=Path.cwd(); print(verify(r,r/"outputs/publication_readiness_2026_09/european_detector_cost_v1",restore=True))'
+```
 
 ## 中断恢复
 

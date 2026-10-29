@@ -28,9 +28,21 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 I have now recovered the original eight-step detection-box histories and raw
 confidence for all 149,510 fitting queries across 74 European SOURCE recordings.
 A separate raw reparse matches exactly, including 222 prefix-truncation checks.
-This adds actual detector-quality history to the next cost-learning experiment;
-it does not repair the existing safety failure by itself. Targets, splits and
-the 2% complete-policy risk requirement are unchanged.
+I then trained all **144 matched Torch cost heads**, **288,000 primary updates**,
+with disabled, current-only, identity-noise and full-history inputs. All 36
+disabled controls reproduce the old endpoints exactly, and all 288 fitting
+readouts replay exactly in a separate process.
+
+History improves known-label ADE gain from **0.581% to 1.969%**. The paired
+change is **+1.388 percentage points**, fitting locality CI **[+0.413,+2.888]**.
+But only **42/444** required recording-risk views pass, with 307 known easy-risk
+violations. Adding the neural candidate to the physical bank has no stable
+known-outcome increment; its conservative completion-lower CI is negative.
+These are fitting results, not independent generalization or a safe deployment.
+The extra information has helped some decisions, not yet safe neural dynamics.
+Targets, splits and the 2% complete-policy risk requirement are unchanged.
+[Complete matched result](outputs/publication_readiness_2026_09/european_detector_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_detector_cost_v1/failure_analysis.md).
 
 **29 October: targeted cost training still does not make neural substitution safe.**
 I completed eight controlled comparisons over the same frozen forecast bank:

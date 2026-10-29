@@ -48,10 +48,10 @@ def evidence():
         group=[r for r in rows if r['representation']==arm]
         diagnostics[arm]=dict(risk_causes={bank:risk_causes([p[bank] for r in group for p in r['result']['recordings'].values()])
             for bank in ('physical_only','physical_neural')},
-            mean_all_legal_normalized_cost_MSE={bank:np.mean([
+            mean_all_seven_action_normalized_cost_MSE={bank:np.mean([
                 r['result']['calibration'][bank]['normalized_moment_MSE'] for r in group],0).tolist()
                 for bank in ('physical_only','physical_neural')},
-            diagnostic_MSE_not_risk_calibration=True,
+            diagnostic_MSE_not_risk_calibration=True,inactive_actions_included_in_this_legacy_MSE=True,
             loss_first_last_median={bank:{which:float(np.median([r['trace'][index]['loss'] for r in loss['rows']
                 if r['representation']==arm and r['bank']==bank])) for which,index in (('first',0),('last',-1))}
                 for bank in ('physical_only','physical_neural')})
@@ -129,7 +129,18 @@ def render(value,summary):
         lines.append('| '+arm+' | '+' | '.join(f"{d['loss_first_last_median'][b]['first']:.6g} / {d['loss_first_last_median'][b]['last']:.6g}" for b in ('physical_only','physical_neural'))+' |')
     lines+=['','First/final minibatches are not fixed validation losses. Falling objective',
         'does not certify selected-risk calibration. All traces are retained.','',
-        '## Gates','',*['- '+k+': '+json.dumps(v) for k,v in value['gates'].items()],'',
+        '## FDE And Locality Sensitivity','',
+        '| Representation | Mixed known FDE gain %, fitting CI95 |','|---|---|']
+    for arm,d in summary['representations'].items():
+        lines.append('| '+arm+' | '+interval(d['FDE']['physical_neural'])+' |')
+    lines+=['','Any required zero FDE reference remains not_estimable; no locality is',
+        'deleted to manufacture an aggregate. ADE locality values below are known',
+        'outcomes, not independent tests or cross-camera pooled pixel errors.','',
+        '| Locality | Disabled mixed gain % | Current mixed gain % | Noise mixed gain % | History mixed gain % |',
+        '|---|---:|---:|---:|---:|']
+    for source in sorted(primary['accuracy']['physical_neural']['by_locality']):
+        lines.append('| '+source+' | '+' | '.join(number(summary['representations'][a]['accuracy']['physical_neural']['by_locality'][source]) for a in run.api.REPRESENTATIONS)+' |')
+    lines+=['','## Gates','',*['- '+k+': '+json.dumps(v) for k,v in value['gates'].items()],'',
         'The primary remains history/mixed; no secondary replaces it after scoring.',
         'SOURCE is oblique detector-silver midpoint pixels,obs8/pred12/stride12 raw',
         'frames. Acquisition-as-of is not certified. No metric,seconds,human-gold,',
@@ -167,7 +178,9 @@ def figures():
     fig.text(.5,.035,'Accuracy CI: 3,000 locality-bootstrap draws. Loss spread is descriptive, not a CI. No held or independent evaluation.',ha='center',fontsize=8)
     fig.subplots_adjust(left=.07,right=.985,top=.84,bottom=.22,wspace=.35)
     folder=run.PUBLIC/'figures';folder.mkdir(exist_ok=True)
-    fig.savefig(folder/'summary.svg',metadata={'Date':None});fig.savefig(run.PRIVATE/'summary.png',dpi=150);plt.close(fig)
+    path=folder/'summary.svg';fig.savefig(path,metadata={'Date':None})
+    path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
+    fig.savefig(run.PRIVATE/'summary.png',dpi=150);plt.close(fig)
 
 
 if __name__=='__main__':

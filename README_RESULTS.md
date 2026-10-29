@@ -90,6 +90,24 @@ A separate full inference replay is running; all initial results are frozen.
 The288-group aggregate-only archive is3,113,364B and byte-verified, not a
 substitute for scientific replay. Expanded32focused checks pass in3.23s.
 
+Separate PID44412 redoes all288groups exactly in268.294171s, peak RSS
+10,548,494,336B; all actions,predictions,scores and summary agree. The public
+loss traces cover all144real heads. Mixed history median minibatch loss falls
+1.89560to0.324785; noise ends lower0.301041but has less useful known utility.
+Neither is a validation loss. The aggregate SVG has been visually inspected.
+No primary gate is relaxed and no secondary replaces history/mixed.
+See the [full readout](outputs/publication_readiness_2026_09/european_detector_cost_v1/readout.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_detector_cost_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_detector_cost_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_detector_cost_v1/paper_addendum.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_detector_cost_v1/reproduction_zh.md).
+
+Next is a producer-input coverage audit before a matched past-box forecast
+branch: these histories were added only to routing,not trajectory dynamics.
+The74record controller cache must not be treated as a complete producer store.
+New producer training is not_run here. Current deployment and independent roles
+remain unchanged; submission readiness,Stage5C execution and SMC stay false.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
