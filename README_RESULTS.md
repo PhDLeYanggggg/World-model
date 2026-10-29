@@ -34,6 +34,14 @@ training process is running as PID 8500 with atomic 16-tree checkpoints. The
 expanded causal-feature, cost, support, archive and oracle checks pass 33 tests
 in 3.68s. This establishes recovery and matching, not generalization or safety.
 
+A fitting-only cross-estimator mechanism check is specified before readout.
+It compares H/EH/R/ER estimates on identical frozen neural-selected and
+forest-selected regions across all 1,332 recording/head/bank views. Positive-
+denominator medians retain finite and undefined counts; they are not safety
+certificates. Its existing diagnosis helpers pass four additional tests.
+The [Chinese guide](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/reproduction_zh.md)
+distinguishes training, resume and exact inference replay.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0

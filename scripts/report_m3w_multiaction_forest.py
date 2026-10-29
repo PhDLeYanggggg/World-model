@@ -72,6 +72,9 @@ def render(value):
         'original query-draw multiplicities. Standard forest quadratic regression with',
         'post-fit projection is not the neural underharm/ranking loss or decoder; this',
         'is an estimator/objective control, not a matched-FLOP one-factor ablation.', '',
+        'Inherited calibration MSE retains the parent all-seven-action definition,',
+        'including inactive-bank predictions. It is not active-bank policy error;',
+        'the separate fitting-region mechanism check uses legal bank actions.', '',
         '## Primary Fixed Comparisons', '',
         '| Bank | Forest known ADE gain vs floor (%) | Static neural gain (%) | Forest minus neural (pp), 95% CI | Completion-lower contrast (pp), 95% CI | Full record-risk support |',
         '|---|---:|---:|---|---|---|']
@@ -87,6 +90,9 @@ def render(value):
         'Intervals use 3,000 locality resamples after averaging repeated context/controller',
         'seed views; these are conditional development intervals. Count-matched contrasts',
         'are utility-only. They do not repair recording-risk failures or undefined support.', '',
+        'Completion contrasts divide worst-case net utility differences by the fixed',
+        'known floor-error mass. They are not error-reduction percentages for a fully',
+        'observed future population with an unknown denominator.', '',
         '## Known-Outcome Hard/Easy Supplement', '',
         '| Subset | Repeated known row views | Empty required views | Forest mixed ADE gain (%) | Neural mixed ADE gain (%) |',
         '|---|---:|---:|---:|---:|'])
