@@ -18,7 +18,11 @@ targeted tests pass;five additional readout tests also pass. The80-update real
 pilot is exact (2.134s), and the4,000-step neutral replay exactly matches weights,
 optimizer, RNG and draws (78.374s). Primary18-fit training completed exit0,
 72,000updates,1640.711468s,peakRSS1,734,443,008B. All endpoints are being committed
-before first readout; this family's readout remains not_run.
+before first readout in41f0d3f0. Readout PID38791 exit0 (486.670588s), replay
+PID40091 exit0 (29.260082s), exact original primary metrics and result/CSV replay.
+Earlier-family equal-locality ADE gainCV2.157596%to1.389049%, paired-0.768547pp,
+conditionalCI[-2.281846,+0.832023]pp. No stable lift; CI spanszero. Its pooled
+easy columns are descriptive, not the equal-locality primary estimator.
 
 Lineage follow-up found that the current policy uses the later dimensionless
 agent-track producer, not this earlier forecaster. Do not attribute a current
@@ -35,8 +39,22 @@ Current-producer ADE vs CV falls8.461640%to7.531916%, paired -0.929724pp,
 conditional3,000locality-bootstrapCI[-1.669310,-0.168497]pp. Easy degradation
 falls11.169208%to8.433059%; hard improvement falls13.355213%to11.675472%.
 This trades some easy error for lost overall/hard accuracy; no deployment claim.
-Fixed-floor148-view support recomputation is running.50focused regression tests
-pass3.43s;8readout tests also pass after added comparator checks.
+Fixed-floor148-view support recomputation and replay complete:146to147feasible,
+one gained,zero lost. The remaining082/51view has minimum easyH/R1.931046,
+still above0.02. All148views retained; oracle is label-aware,not deployable.
+Post-fit diagnosis and geometric-bound analysis also replay exactly. Fold2
+cannot geometrically representCVon43,743/140,585excluded-source rows; the same
+rows repeat acrossseeds. Both082/51views can representCVonall78rows, so the
+remaining recording failure is not explained by the hard radius alone.
+54targeted regression tests pass3.16s; full historical suite not rerun.
+
+Current unrestricted candidate knownCVall-risk failures963/978views, easy922/978.
+These repeat163recordings,two producers,three seeds; they are not independent
+samples or complete-policy safety.12localities/318,969rows include7,047rows
+without any future and193,705complete futures. All3currentseeds loseoverallADE;
+4localities improve,8regress. New candidate-cost heads and independent calibration
+remain not_run. Reference-complete causal output construction is the next
+planned single-factor comparison,not_run. No threshold/budget/split change.
 
 All 318,969 rows belong to the already-opened source-development cohort. No
 independent selection/calibration/confirmation role is opened. This is a
@@ -45,6 +63,11 @@ Old candidate-dependent safety scores cannot certify a changed forecast.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/protocol.md).
 [Current-producer comparison](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/protocol.md),
 [lineage clarification](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/lineage_clarification.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/failure_analysis.md),
+[evidence gate](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/evidence_gate.md),
+[model card](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/model_card.md),
+[earlier-family result](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/conclusions.md).
 
 ### Record-Balanced Constraints: Partial Fitting Repair, Safety Failed
 
@@ -75,8 +98,9 @@ only, with no safety credit for empty or unsupported comparisons.
 Increased-constraint-weight slice passes30to76of372; decreased slice54to55of72.
 285of289known all-harm violations remain inlocality008/074. No all-risk dual is
 atcap100. The locality082/51fixed-candidate support obstruction remains. Next:
-TRAIN-only candidate forecast/support repair and constraint-convergence work;
-that follow-up is not_run. No new held scoring, independent confirmation or
+TRAIN-only candidate forecast/support repair and constraint-convergence work.
+The subsequent loss-only forecast comparison is now complete above; no new
+constraint-convergence repair is claimed. No new held scoring, independent confirmation or
 deployment. Not submission-ready; Stage5C/SMC remain off.
 
 Computation was local; hash-verified TRAIN packets streamed read-only from CREATE.

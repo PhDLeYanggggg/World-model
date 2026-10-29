@@ -25,32 +25,42 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: a harm-aware forecast loss improves easy error but loses accuracy.**
-I ran a matched comparison that adds positive-error penalties
-against the training-selected baseline and causal CV. It keeps the original
-architecture, source folds, three seeds and 4,000-update budget for each of 18
-forecasters. The data are previously opened source development, not independent
-confirmation. The 2% full-policy safety requirement and deployment remain unchanged.
-Tracing the current policy showed that it uses a later dimensionless agent-track
-producer. I therefore ran a separate nine-fit comparison on that actual producer,
-keeping the earlier family separate. Both families pass full neutral replay and
-exact resume checks. All 27 fits have completed, with 108,000 primary updates.
+**29 October: penalizing forecast harm helps some easy cases, but does not improve the model.**
+I tested a loss that penalizes error increases over the training-selected
+baseline and causal constant velocity (CV). Architecture, data, folds, seeds
+and the 4,000-update training schedule were fixed within each comparison.
+All **27 neural fits and 108,000 primary updates** are complete: nine fits on
+the actual current producer, plus a separate 18-fit earlier-family comparison.
+Both pass exact neutral and interruption-recovery checks. Every endpoint was
+frozen before readout, and both result sets replay exactly.
 
-The current producer's nine fits took 11.3 minutes and 1.63 GB peak memory.
-All endpoints were frozen before readout, and the results replay exactly.
-ADE improvement over causal CV falls from **8.46% to 7.53%**. Easy ADE degradation
-falls from 11.17% to 8.43%, but remains unacceptable; hard ADE improvement falls
-from 13.36% to 11.68%. The paired overall change is **-0.93 percentage points**
-(3,000 locality-bootstrap draws, conditional 95% CI [-1.67, -0.17]). This is
-source-development evidence, not independent confirmation or a safe-policy result.
+For the current producer, equal-locality ADE improvement over CV falls from
+**8.46% to 7.53%**. Easy ADE degradation improves from 11.17% to 8.43%, but is
+still too high; hard improvement falls from 13.36% to 11.68%. The paired overall
+change is **-0.93 percentage points**, with a conditional 95% locality-bootstrap
+interval of **[-1.67, -0.17]**. All three seeds regress. These are 8-observed /
+12-predicted European SOURCE development results, not historical `t+50` scores
+or independent confirmation.
 
-The earlier-family 18 fits took 27.3 minutes and 1.73 GB peak memory. Their
-endpoints are being frozen before readout; that comparison's scientific outcome
-is still pending. The exact fixed-floor support diagnostic is also running.
-50 targeted regression tests pass. Deployment remains unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/protocol.md).
-[Lineage clarification](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/lineage_clarification.md),
-[current-producer protocol](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/protocol.md).
+The fixed-floor TRAIN diagnostic gains one feasible recording/context view:
+**147/148 instead of 146/148**. It still fails on one required view. A separate
+geometry check identifies an actionable restriction: the fold-2 neural output
+cannot represent CV on **43,743 evaluated windows**. That does not explain the
+remaining difficult recording, where CV is geometrically representable.
+
+The current and earlier-family training took 11.3 and 27.3 minutes respectively.
+54 targeted regression tests pass; the full historical suite was not rerun.
+I am keeping deployment and the 2% full-policy safety requirement unchanged.
+The next controlled change will test an output construction that includes the
+causal reference trajectories, rather than another switching-threshold search.
+[Results](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/failure_analysis.md),
+[output-bound diagnosis](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/output_bound_diagnosis.md),
+[evidence gate](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/evidence_gate.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/reproduction_zh.md).
+The [lineage clarification](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/lineage_clarification.md)
+and [earlier-family negative result](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/conclusions.md)
+are retained separately.
 
 ### Previous Recording-Constraint Comparison
 

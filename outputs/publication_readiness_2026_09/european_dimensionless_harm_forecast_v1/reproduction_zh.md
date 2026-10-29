@@ -72,3 +72,27 @@ bootstrap按locality抽样，不把重叠窗口当独立样本；这些区间仍
 不同损失的总loss数值不直接比较，科学结论来自匹配的预测误差和风险读数。
 
 Stage5C和SMC始终关闭；本轮不会自动部署新模型。
+
+## 已完成结果与后续诊断
+
+9组当前预测器训练和18组早期预测器训练均已完成，主要更新共108,000步。
+两组readout均精确重放。当前预测器整体ADE相对CV提升从8.461640%下降到
+7.531916%；easy退化降至8.433059%，仍不满足2%。固定floor的支持诊断从
+146/148提升到147/148，但不是部署通过。旧结果没有被重新改成成功。
+
+后验诊断只读取已核验的开发性产物，不做新训练或模型选择：
+
+```bash
+.venv-pytorch/bin/python scripts/analyze_m3w_harm_forecast_postfit.py
+.venv-pytorch/bin/python scripts/analyze_m3w_harm_forecast_postfit.py --verify
+.venv-pytorch/bin/python scripts/analyze_m3w_output_bound.py
+.venv-pytorch/bin/python scripts/analyze_m3w_output_bound.py --verify
+```
+
+输出边界诊断发现fold2有43,743个排除来源窗口无法在当前边界内表示CV。
+这批窗口在三个seed中重复，不能计为三份独立样本。难例082/51的78行则
+都能几何表示CV，说明其剩余失败不能只归因于输出半径。
+几何oracle使用future标签计算理论下界，仅用于诊断，不是可调用的预测器。
+
+本轮54项针对性回归测试通过，未重跑完整历史测试库。完整结论见
+`conclusions.md`、`failure_analysis.md`和`evidence_gate.md`。
