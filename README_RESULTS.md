@@ -48,6 +48,13 @@ parallel-configuration warnings come from the frozen legacy-forest test, not
 a failed test; they are retained rather than suppressed. Primary training
 continues, with no inner-held result used for model selection.
 
+All 54 primary forests / 6,912 trees now complete: PID 8500 exits 0 after
+2,454.886983s (40.9 minutes), peak RSS 10,744,889,344B. Private forest
+checkpoints, including engineering refits, total 335,413,378B. Every context,
+seed and bank matches its original causal features, normalizers and query-draw
+hash. All endpoints freeze before the first forest readout. These are fresh
+conventional estimators, not 54 new Torch forecasters or a scientific gate pass.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0

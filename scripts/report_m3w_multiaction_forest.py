@@ -43,7 +43,10 @@ def build():
         total_primary_fit_seconds=sum(r['seconds'] for r in rows), training=fitting,
         gates=gates, held=held_summary, held_FDE_and_regret=details,
         inference_label_filter=False, three_forecasting_training_seeds=False,
-        primary_neural_comparator='frozen_static_scene_cost_heads', estimator_objective_compute_identical=False)
+        primary_neural_comparator='frozen_static_scene_cost_heads',
+        primary_estimator_contrast='fixed_mixed_bank_forest_minus_static_neural_full_and_matched',
+        inherited_summary_bank_contrast='mixed_minus_physical_within_forests_not_the_estimator_contrast',
+        estimator_objective_compute_identical=False)
 
 
 def show(value):
