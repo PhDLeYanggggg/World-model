@@ -7,7 +7,31 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Contemporaneous Query Context: Trainability Repair Before Readout
+### Contemporaneous Query Context: Complete, Negative Matched Result
+
+Corrected36 fits/72,000updates and72 ten-arm held-recording views completed.
+Peer versus matched self utility-0.239274pp, nominal95%CI[-0.352816,-0.143938];
+full utility-0.980376[-1.630511,-0.496614]. Versus rational matched-0.158485
+[-0.249905,-0.077051]. All three head seeds negative against self. All18
+positive-CI conditions plus full support fail; no deployment or independent
+evidence promotion. Peer selects24,501 occurrences, known easy violations44/72,
+undefined easy12/72 and complete support0/72. Self selects32,621.
+
+Matched known benefit delta-0.067220pp, harm delta+0.011536pp and unknown
+penalty0.160518pp reconstruct the-0.239274pp result. It is not solely an
+unknown-label or intervention-rate effect. Peer selected easy-harm masses
+predicted0.001550pp versus observed0.033989pp remain badly separated.
+
+Readout PID61062 exit0,95.521s; full inference replay PID61456 exit0. All eight
+old controls exact. Separate57 arithmetic/summary and18 paired-training checks
+pass. A JSON tuple/list-only verification mismatch was repaired without any
+numeric artifact change.60scoped tests pass3.49s. No full legacy artifact-writing
+suite or independent roles opened. This is cost-head training, not new forecasting.
+[Results](outputs/publication_readiness_2026_09/european_query_context_v2/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_context_v2/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_query_context_v2/verification.md).
+
+#### Preserved Execution and Pre-Readout Repair
 
 Two equal-parameter risk heads compare self-only inputs with leave-self-out
 same-recording/current-frame causal pooling.36fits/72,000updates planned;
@@ -20,12 +44,12 @@ parameter census exposed a frozen copied encoder:130output parameters trained.
 The intended full risk branch was not trained. A targeted test reproduces the
 defect; v2 enables only the copied encoder and requires12,322trainable parameters
 plus actual encoder weight changes. v1 is preserved, not promoted or overwritten.
-No held readout has been performed. v2 real pilot PID59910 exit0 completed
+At the time of repair, no held readout had been performed. v2 real pilot PID59910 exit0 completed
 300updates including replay in21.264s,2.579GB RSS; encoder weights changed and
 the12,322trainable count is guarded.58scoped tests pass. Full corrected training
 completed: PID60147 exit0,36fits/72,000updates,381.689s,2.952GB peak RSS.
 All36 receipt hashes verify; each has12,322trainable parameters and actual
-encoder weight updates. Training is frozen before held readout. These
+encoder weight updates. Training was frozen before held readout. These
 engineering results do not establish scientific lift.
 CREATE read-only inventory verifies24TRAIN packets; squeue timeout leaves
 queue state unavailable. No submission, restart or remote mutation.

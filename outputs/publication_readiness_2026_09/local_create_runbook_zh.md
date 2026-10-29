@@ -1,5 +1,46 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 同帧上下文对照完成，仍不部署
+
+修正版36个风险头、72,000次更新、72个内部held视图已完成，八个旧对照精确复现。
+这不是新轨迹预测器训练。所有12个来源仍是已暴露的original TRAIN；外层development
+和独立selection/calibration/confirmation未打开。常规审计由项目流程完成，不要求用户逐项审核。
+
+peer同帧均值上下文相对同参数self对照，同介入数效用-0.239274pp，
+名义95% CI[-0.352816,-0.143938]；全策略-0.980376pp。三个head种子均为负。
+完整风险支持0/72，known easy违规44/72，easy风险无法定义12/72。19项筛选条件失败。
+不能把同帧均值池化失败扩大为所有交互模型无效，也不能把少切换当安全。
+分解显示同数介入的known收益更少、known伤害更多，并非仅未知标签惩罚所致。
+
+最初v1的复制encoder误继承冻结标志，36次训练只更新130个输出参数；在读held前发现。
+保留v1原记录，注册修复后从原anchor重新训练v2，不复用错误结果。
+v2每个头12,322可训练参数，实际encoder更新、基座保护和精确resume均通过。
+训练PID60147 exit0，381.689秒、峰值2.952GB；评价PID61062 exit0，95.521秒；
+完整重放PID61456 exit0。独立算术实现复核57项、18对训练检查；60项针对性测试通过。
+这里“独立算术实现”不等于外部团队复现或独立测试。JSON元组/列表比较错误已修复，数值未变。
+
+现有产物仅复核，不要删除完成记录重跑：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_query_context_risk check
+.venv-pytorch/bin/python -m scripts.verify_m3w_query_context --check
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_query_context --check
+```
+
+新复现环境按register、提交协议、pilot、train、冻结、eval、check顺序；只有中断未完成时用
+`--resume`。私有checkpoint/heartbeat/图在`data/stage_cvpr2027_experiments/european_query_context_v2/`，
+约19MiB，不进Git。原生arm64 PyTorch2.12.0，CPU4/inter-op1/workers0，100步checkpoint，
+12小时边界续跑、保留10GiB磁盘。CREATE24个原TRAIN包可读，调度队列查询超时仍是未知，
+不是作业失败；没有新远程提交、取消或认证修改。完整旧测试套件会改历史产物，本轮未运行。
+
+下一步仅用inner-fit共同选样队列检查风险残差、可用梯度和各损失项尺度，区分优化条件
+与信息丢失；该诊断尚未运行。不根据这次held结果再调阈值或挑选来源/种子。
+仍为obs8/pred12 rawstride12、detector silver、pixel/local，不是米、秒、人工gold或物理安全。
+Stage5C/SMC关闭，旧Stage37结果不重新认证，正式投稿仍需作者最终确认。
+[结果](european_query_context_v2/conclusions.md)、
+[失败分析](european_query_context_v2/failure_analysis.md)、
+[研究差距](european_query_context_v2/project_gap.md)。
+
 ## 当前入口：2026-10-29 条件风险校准完成，仍不部署
 
 冻结18个rational神经头，完成72个source-excluded校准交叉和288个策略读出。

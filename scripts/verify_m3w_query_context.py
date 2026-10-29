@@ -68,7 +68,7 @@ def calculate():
             for r in subset: groups[r['source']].append(r['result']['contrasts'][field])
             per_seed[str(seed)][field] = sum(sum(v)/len(v) for v in groups.values())/len(groups)
     return dict(result_source='fresh_run_independent_arithmetic_and_checkpoint_verification',
-        checks=checks, paired_training_checks=len(pairs), parameters=sorted(parameter_counts),
+        checks=checks, paired_training_checks=len(pairs), parameters=[list(p) for p in sorted(parameter_counts)],
         training_pairs=pairs, held_context_availability=availability, per_seed_utility_pp=per_seed,
         optimizer_steps=sum(d['steps'] for d in docs.values()),
         summary_sha256=run.sha(run.PUBLIC/'summary.json'), freeze_sha256=run.sha(run.PUBLIC/'training_freeze.json'),

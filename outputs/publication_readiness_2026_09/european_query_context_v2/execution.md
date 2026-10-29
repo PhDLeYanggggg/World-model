@@ -7,8 +7,11 @@ of the corrected comparison and has no held outcome readout.
 v2 real pilot:PID59910 exit0,300updates including exact50+50resume/direct100,
 21.264seconds,2.579GBpeak RSS. Native arm64 Torch2.12.0/NumPy2.4.6,
 CPU4/inter-op1/workers0. Both arms have12,322trainable parameters; actual encoder
-updates and unchanged base outputs are verified. Full-fit estimate435.32s with
-1.5margin is not yet measured full-run wall time.58scoped tests pass3.29s.
+updates and unchanged base outputs are verified. The pre-run estimate435.32s
+with1.5margin is superseded by measured full training381.689s:PID60147 exit0,
+36fits/72,000updates,2.952GB peak RSS. Training froze at commit18ab3abc before
+readout. PID61062 readout exit0,72views in95.521s; PID61456 full replay exit0.
+The scientific screen failed;60scoped tests pass3.49s. See verification.md.
 
 The public entrypoints now target v2:
 ```bash

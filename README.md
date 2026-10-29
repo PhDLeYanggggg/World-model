@@ -25,20 +25,28 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: a trainability check caught a defect before outcome evaluation.**
-I am testing whether pooling the other agents available at the same instant
-improves conditional harm prediction. The paired self-only head has the same
-parameter and training budget. Forecasts, risk criteria and independent data
-roles stay fixed. This is a new information comparison, not another threshold
-sweep. The first36 fits unintentionally froze the copied encoder, training only
-130output parameters. I retain that run without a performance claim and have
-registered a corrected12,322parameter comparison with explicit gradient and
-weight-change checks. Its real Torch pilot passed, including encoder updates
-and exact resume. The corrected 36-head run completed 72,000 updates in
-381.69 seconds, with a 2.95 GB peak resident memory footprint. All copied
-encoders changed. I have frozen the training receipts before held-out readout;
-these are engineering checks, not a performance result.
-[Repair and protocol](outputs/publication_readiness_2026_09/european_query_context_v2/protocol.md).
+**29 October: pooled contemporaneous context did not improve safe selection.**
+I completed 36 matched risk-head fits and 72 evaluation views. The new head sees
+other agents available at the same instant; its self-only control has the same
+parameter count, initialization, samples and training budget. All eight existing
+controls reproduce. At the same intervention count, peer context reduces utility
+by **0.239 percentage points**, nominal 95% CI **[-0.353, -0.144]**. All three
+head seeds are negative. Complete risk support remains **0/72**, so I am not
+deploying this model.
+
+The failure is not just fewer interventions: matched decisions lose some known
+benefit and add some known harm. Unknown outcomes further weaken the evidence.
+This rejects the tested mean-pooling construction, not interaction modeling in
+general. The data remain exposed original-TRAIN recordings, not independent
+confirmation; three risk-head seeds are not three new forecaster trainings.
+
+Before readout, I caught and repaired an accidentally frozen copied encoder.
+The original run is preserved; the corrected run verifies actual encoder updates,
+exact resume and protected base outputs. Full inference and statistics replay;
+60 scoped tests pass. Deployment and reserved data roles remain unchanged.
+[Results](outputs/publication_readiness_2026_09/european_query_context_v2/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_query_context_v2/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_query_context_v2/verification.md).
 
 ### Preceding Conditional Calibration
 
