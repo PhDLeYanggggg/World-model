@@ -71,14 +71,16 @@ zero-risk success. The trajectory producer stays frozen.
 The corrected readout confirms zero interventions for the mixed bank and
 undefined selected risk, not a safety pass. A fitting-state check identifies
 weak scaling of the positive-support dual; I will test a unit change that
-preserves the constraint itself. This single-factor experiment is now registered;
-its primary training has not run. The earlier singleton inference error and
+preserves the constraint itself. This single-factor experiment passes real
+interruption recovery and a complete500-update unchanged-unit control;
+its54primary fits are next. The earlier singleton inference error and
 its weight-preserving repair remain documented.
 
 I have also registered a matched control using the published ICML2024
 regression-deferral logistic surrogate. This is a baseline adapter, not my
 method or a claimed reproduction of its original experiments. Its real
-120-update CPU pilot passes exact recovery; full training is next.
+120-update CPU pilot passes exact recovery. All54primary fits and108,000updates
+are complete, with matched row draws and endpoints frozen before readout.
 [Control protocol](outputs/publication_readiness_2026_09/european_regression_deferral_v1/protocol.md).
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay

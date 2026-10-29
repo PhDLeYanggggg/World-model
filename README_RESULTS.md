@@ -101,6 +101,16 @@ Only the third constraint's numerical unit changes; the feasible set and2%
 all/easy risk requirement do not. All new scientific phases remain not_run
 at this registration checkpoint.
 
+Published-loss primary training subsequently completes PID65672exit0:
+54fits/108,000updates,200.797506s,peakRSS11,402,346,496B. All54source-row draw
+streams match the preceding moment learners. Freeze every final endpoint
+before first readout; no scientific lift is asserted from training completion.
+Support-unit pilot PID66366exit0 completes60updates in17.767055s,peakRSS
+5,611,192,320B,all-bank exact5+5/direct10. Full500-update unchanged-unit neutral
+PID67103exit0 matches all scientific state exactly against the old mixed-bank
+endpoint,53.785976s. Registration/runtime identifiers alone differ as declared.
+The54new-unit primary fits and readout remain next; independent roles stay closed.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
