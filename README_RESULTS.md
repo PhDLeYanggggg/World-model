@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Record-Balanced Constraint Comparison: Registered
+
+The cost-sensitive repair increased fitting benefit but worsened record safety.
+This follow-up changes only constraint weights from utility-weighted recordings
+to uniform recording weights,total weight1. The source-balanced benefit
+objective,features,forecasts,model,initialization,2,000updates,dual updates and2%
+budget remain fixed.18newfits are planned;cost-sensitive/origin controls remain
+frozen. Five targeted tests pass2.08s,including exact neutral-control replay and
+resume on the fixture. A60update real pilot precedes full training.
+New training/readout not_run. Independent roles remain unopened. The known
+locality082/51 support obstruction is retained and cannot be solved by this
+fixed-candidate selector alone.
+[Protocol](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/protocol.md).
+
 ### Cost-Sensitive Primal Repair: More TRAIN Benefit, Record Safety Failed
 
 Fresh_run:18neural fits,36,000updates,72fixed fitting views and exact replay.
