@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Isolated Harm Continuation: Pilot Passed, Full Training In Progress
+### Isolated Harm Continuation: Numerical Repair, Full Rerun Pending
 
 The next fixed experiment protects a shared-utility anchor's benefit/reference
 outputs while learning harm in a separate branch. Three matched continuations
@@ -17,8 +17,13 @@ Each receives2,000 additional updates from the same anchor and sampling state.
 causal inference, fixed-cohort diagnostics and corrupted-receipt rejection.
 The real400-update pilot passed in13.76s, peak RSS2.14GiB, with exact resume,
 sampling and protected-output replay. The conservative full estimate is7,432s.
-TrainingPID40764 is running54 fixed-final fits; readout remains not_run until
-all54 finals freeze. This is an in-progress record, not a completed result.
+TrainingPID40764 exited1 after37/54 finals: a finite forward loss produced
+nonfinite gradients in the float32 bounded odds arithmetic. The saved1600-step
+joint-risk checkpoint reproduced the failure in a private diagnostic fork.
+Float64 ratio intermediates passed400 further real-data updates through the
+failed batch. The network and outputs stay float32. A separately registered
+54-fit rerun will restart all arms from their original anchors; no precursor
+fit will be mixed into its results. No held readout occurred in the precursor.
 No independent roles, deployment change, new forecaster, Stage5C or SMC.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_isolated_harm_v1/protocol.md).

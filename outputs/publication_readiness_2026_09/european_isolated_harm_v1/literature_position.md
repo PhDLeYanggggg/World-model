@@ -6,6 +6,14 @@ risk-coverage tradeoff for classification and regression. Reference: Geifman and
 El-Yaniv, ICML2019, PMLR97:2151-2159,
 [original paper and abstract](https://proceedings.mlr.press/v97/geifman19a.html).
 
+Reading the [original methods, Sections2,4 and5](https://proceedings.mlr.press/v97/geifman19a/geifman19a.pdf):
+the objective minimizes selected prediction loss under a target-coverage
+constraint, implemented with a quadratic coverage penalty. A separate auxiliary
+prediction loss keeps all training examples involved. Post-training coverage
+calibration uses an independent unlabeled validation set. That coverage result
+is not a guarantee on our baseline-relative positive harm. Copying its cutoff
+onto previously exposed recordings would not create independent calibration.
+
 The current experiment is not an implementation of SelectiveNet. It estimates
 benefit and positive harm relative to an existing motion floor, then applies
 fixed all/easy reference-normalized risk conditions. It includes missing-outcome

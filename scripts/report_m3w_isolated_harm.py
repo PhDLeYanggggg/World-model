@@ -56,6 +56,12 @@ def validate():
     complete = json.loads((evaluation.PUBLIC/'complete.json').read_text())
     rows = [json.loads((run.ROOT/ref['path']).read_text()) for ref in complete['groups']]
     detail = details(rows)
+    recording_sets = {scope: {(i['packet']['identity']['source'], recording)
+        for items in reg['contexts'].values() for i in items for recording in i['partition'][scope+'_recordings']}
+        for scope in ('fit', 'held')}
+    if recording_sets['fit'] & recording_sets['held']:
+        raise ValueError('Recording crosses inner-fit and held roles')
+    detail['distinct_source_recordings'] = {k: len(v) for k, v in recording_sets.items()}
     detail['final_sampled_training_losses'] = {arm: {key: statistics.mean(t[key] for t in values)
         for key in ('loss', 'primary_loss', 'regret', 'mean_soft_action')} for arm, values in traces.items()}
     detail.update(verified_fits=54, verified_views=144, source_localities=len(detail['sources']),
@@ -91,6 +97,8 @@ def report(freeze, complete, summary, detail):
         'H changes, so net gain is not frozen. No trajectory predictor was trained.', '',
         'Original TRAIN is split by whole recording; held recordings were previously',
         'exposed. This is exploratory mechanism evidence, not independent confirmation.',
+        f"Distinct source/recording pairs: {detail['distinct_source_recordings']['fit']} fit and "
+        f"{detail['distinct_source_recordings']['held']} held, across12 source localities.",
         'No outer development, independent selection/calibration/test or deployment',
         'changed. Unknown labels remain eligible at inference and receive bounds.', '']
     for scope in ('fit', 'held'):
