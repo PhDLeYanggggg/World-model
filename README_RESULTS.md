@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Causal Reference-Coverage Ablation: Neutral Exact, Primary Training Running
+### Causal Reference-Coverage Ablation: Training Complete, Readout Pending
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
 1.05*distance to causal damping.97), around the original train-selected center.
@@ -18,9 +18,12 @@ finite reference reconstruction,stationary behavior,no future field,resume and
 coverage-off equality. The actual80update pilot passes in1.713535s,
 peakRSS601,997,312B;exactresume and coverage-off replay. Full4,000step neutral
 on affected single2_seed17 is exact against the preceding harm-aware model,
-56.968846s. Primary9fit training PID43521 is running; scientific readout not_run.
-58regression tests pass4.04s; additional readout/control tests pass. The six
-unchanged-radius fits must also reproduce their complete scientific state.
+56.968846s. Primary9fit training PID43521 completed exit0:36,000updates,
+537.401863s,peakRSS1,580,204,032B. All9endpoints are being frozen before first
+readout,which remains not_run. Six unchanged-radius fits reproduce their full
+scientific state exactly; three affected fits keep exact draw/RNG states.
+No excluded-source rows were drawn; parameters remain88,514.60targeted regression
+tests pass3.19s; full historical suite not rerun.
 
 Fresh past-only preflight PID42951 exit0: all318,969rows checked per center.
 Damping.90center changes0rows. OLS4center changes112,202radii:66,155training,

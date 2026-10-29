@@ -38,8 +38,11 @@ The run keeps the preceding harm-aware loss, data, seeds, optimizer and
 4,000-update schedule fixed. Nine fits were registered before training.
 The affected-fold real-data pilot passes exact interruption and coverage-off
 replay checks; its full 4,000-update neutral replay also matches exactly.
-Primary training is running. No scientific result is claimed yet, and no
-independent evaluation or deployment is opened.
+All nine fits are complete: 36,000 updates in 9.0 minutes, with 1.58 GB peak
+memory. The six unchanged-radius fits reproduce the control's full training
+state exactly; the other three keep matching draw/RNG states. All endpoints
+are being frozen before first readout. 60 targeted tests pass. No scientific
+gain is claimed yet, and no independent evaluation or deployment is opened.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
 The unchanged-fold implication is recorded [before readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/scope_implication.md).
 
