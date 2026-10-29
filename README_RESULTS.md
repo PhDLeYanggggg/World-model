@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Registered Learned Multi-Action Cost Experiment
+### Learned Multi-Action Cost Training Complete, Readout Not Yet Run
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
 and newly trained neural-only cost learners. Six frozen contexts, three head
@@ -26,6 +26,13 @@ match direct20 exactly. Initialization and sample streams match across arms.
 The optimizer-only primary projection is184.94s plus data preparation, not a
 claim that training is complete. Full54-fit training and readout are next.
 No independent roles or deployment changes.
+
+Primary training subsequently completes with PID53708, exit0: all54 final
+endpoints / 108,000 updates, 210.034352s, peakRSS10,093,199,360bytes. Each head
+has25,157parameters. All54 checkpoint hashes verify, all18 context/seed triples
+have matched draws, and no unknown or inner-held row enters the training loss.
+Final endpoints are frozen before any new inner-held result. No gate or
+learned neural increment is asserted at this checkpoint.
 
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 

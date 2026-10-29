@@ -47,8 +47,11 @@ The original neural forecast adds further oracle utility. These are not
 learned decisions or passed deployment gates. I have now registered the
 [matched multi-action cost experiment](outputs/publication_readiness_2026_09/european_multiaction_cost_v1/protocol.md):
 physical-only, physical+neural and neural-only learners, three seeds and six
-frozen contexts. The real CPU pilot passes exact interruption recovery and
-matched initialization/draw checks; the 54 primary fits are next.
+frozen contexts. All **54 real Torch fits / 108,000 updates** are complete;
+each cost head has 25,157 parameters. The real CPU pilot passes exact
+interruption recovery and matched initialization/draw checks. Final endpoints
+are being frozen before the first inner-held readout; no policy result or
+safety pass is claimed yet.
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.
