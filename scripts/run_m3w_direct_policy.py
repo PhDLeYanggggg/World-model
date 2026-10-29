@@ -19,7 +19,7 @@ np = api.np
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_direct_policy_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_direct_policy_v1'
 CONFIG = ROOT/'configs/m3w_direct_policy_v1.json'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'execution_registration_v2.json'
 ORIGINS = previous.pooled.previous.previous.parent
 LOADER = previous.pooled.LOADER
 
@@ -30,6 +30,7 @@ def register():
     if cfg['head_seeds'] != reg['seeds'] or cfg['arms'] != list(api.ARMS) or cfg['risk_budget'] != .02:
         raise ValueError('Fixed seeds, arms and budget required')
     paths = [Path(__file__).resolve(), CONFIG, PUBLIC/'protocol.md',
+        PUBLIC/'registration.json', PUBLIC/'execution_amendment.md',
         ROOT/'src/world_model/m3w_direct_policy.py', ROOT/'src/evaluation/m3w_direct_policy_readout.py',
         ROOT/'tests/test_m3w_direct_policy.py', ROOT/'tests/test_m3w_direct_policy_readout.py',
         previous.PUBLIC/'complete.json', previous.PUBLIC/'summary.json', previous.REG,
@@ -86,9 +87,9 @@ def verify_original(context, seed, packets, predictions):
         p = previous.PUBLIC/'groups'/f'{context}_{source}_seed{seed}.json'
         if sha(p) != refs[p.name]['sha256']: raise ValueError('Prior policy receipt changed')
         old = json.loads(p.read_text()); action = api.actions(predictions[source], api.shared.eligible(args))
-        if api.fingerprint(action) != old['action_sha256']['origin']:
+        if previous.api.base.fingerprint(action) != old['action_sha256']['origin']:
             raise ValueError('Frozen original policy does not replay')
-        if api.fingerprint(predictions[source][action]) != old['prediction_sha256']['origin']:
+        if previous.api.base.fingerprint(predictions[source][action]) != old['prediction_sha256']['origin']:
             raise ValueError('Frozen original moments do not replay')
 
 

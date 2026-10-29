@@ -19,6 +19,10 @@ The final original TRAIN inner-held readout is exploratory, not independent test
 No extra risk-MSE gate, changed2%budget or held-out threshold tuning.
 11 focused tests pass1.68s. An initial diagnostic float-minus-bool error was
 fixed before registration; no real experiment had run at that point.
+The first real pilot PID93772 exits1 before training: prior array-hash encoding
+differs from the forecasting helper. Execution revision2 preserves the original
+registration and uses the prior readout's codec; prediction and scientific rules
+are unchanged. A targeted regression verifies this boundary.
 [Protocol](outputs/publication_readiness_2026_09/european_direct_policy_v1/protocol.md).
 
 ### Easy-Constrained Objective and Actual Policy: Complete, Not Deployable

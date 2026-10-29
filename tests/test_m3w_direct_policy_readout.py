@@ -39,3 +39,24 @@ def test_runner_imports_fixed_api_and_resolves_source_roster():
     from scripts import run_m3w_direct_policy as run
     assert run.np is np and run.readout.PAIRS == api.PAIRS
     assert hasattr(run.LOADER, 'packets') and hasattr(run.ORIGINS, 'models')
+
+
+def test_prior_array_hash_codec_is_used_at_artifact_boundary(tmp_path, monkeypatch):
+    import json
+    from scripts import run_m3w_direct_policy as run
+    from tests.test_m3w_direct_policy import fixture
+    packets, predictions = fixture()
+    monkeypatch.setattr(run.previous, 'PUBLIC', tmp_path)
+    groups = tmp_path/'groups'; groups.mkdir()
+    refs = []
+    for source, args in packets.items():
+        action = run.api.actions(predictions[source], run.api.shared.eligible(args))
+        legacy_hash = run.previous.api.base.fingerprint
+        assert legacy_hash(action) != run.api.fingerprint(action)
+        doc = dict(action_sha256={'origin': legacy_hash(action)},
+                   prediction_sha256={'origin': legacy_hash(predictions[source][action])})
+        path = groups/f'context_{source}_seed17.json'
+        path.write_text(json.dumps(doc))
+        refs.append(dict(path=str(path), sha256=run.sha(path)))
+    (tmp_path/'complete.json').write_text(json.dumps(dict(groups=refs)))
+    run.verify_original('context', 17, packets, predictions)
