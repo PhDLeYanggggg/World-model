@@ -7,14 +7,14 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Whole-Recording Policy: Training Complete, Readout Pending
+### Whole-Recording Policy: Better Fitting, Held Safety Failed
 
-Previous goal turn made progress:54 direct neural heads and144 fixed readouts
-completed,with failed utility and full-policy safety. New experiment isolates
+The previous direct-policy experiment completed54 neural heads and144 fixed
+readouts,with failed utility and full-policy safety. This comparison isolates
 the gradient/constraint estimator:exact_dual keeps original sampled primal draws;
 exact_gradient uses chunked whole-record gradients. Same2,000updates,model,
 initialization,features,loss and2% budget; compute and row exposure are NOT matched.
-Planned36 neural fits/72,000updates. First diagnose18 frozen parent states on fit
+Completed36 neural fits/72,000updates. First diagnosed18 frozen parent states on fit
 recordings only. Original and stochastic references remain frozen; all finals
 must precede the exploratory inner-held readout. No independent roles opened.
 Diagnosis PID184 exit0 completes18 frozen states:277 positive recording/channel
@@ -29,8 +29,44 @@ scoring. Real pilot PID1666 completed80 updates with exact10+10 versus20 resume
 for both arms; its receipt and ended process are verified,terminal exit was not
 captured.100 relevant tests pass5.00s. Separate arithmetic reproduces888 diagnostic
 record/channel means with maximum absolute difference4.01e-10. No deployment
-promotion; fixed144-view readout remains pending.
-[Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
+promotion. Frozen144-view readout PID4207 exit0 completes96.813353s. ReplayPID4771
+exit0 exactly reproduces all144 views and controls at07:05:04 UTC.
+
+Primary exact_gradient:fit53/72 budget views versus stochastic35/72;held0/72
+versus4/72. Recording-view budgets178/444 fit and2/186 held. Held known all/easy
+violations64/60;49 easy-degradation upper bounds exceed2%;three easy ratios
+undefined. Full-policy safety fails,even before missing outcomes explain all
+failures. Every source slice0/6 and every head seed0/24 held budget views.
+
+Held primary utility versus stochastic:full[0.377395,1.916356]pp,
+matched[0.073468,0.171986]pp. Versus original:full[-4.226985,0.851822]pp,
+matched[-1.517747,-0.628100]pp. These are partial-label completion bounds,not
+sampling CIs or FDE gains. Seven primary/original matched controls are empty;
+risk remains not_estimable,not a safety pass. Original also fails this cohort's
+budget; it is not certified safe by the comparison.
+
+Primary retained known benefit/harm:fit59.36%/28.53%,held52.96%/52.60%.
+56,720 held interventions include869 unknown outcomes. Exact dual alone does
+not repair the method:held matched utility versus stochastic[-0.050685,-0.028776]pp.
+Exact gradient performs1,789,950,000 gradient-row occurrences versus56,832,000
+sampled primal draws in each matching stochastic/exact-dual arm. More exposure
+and lower gradient noise are not separately identified.20/888 primary final
+dual entries are capped; this does not establish a cap-related cause.
+
+Separate reporter checks5,022 policy summaries and288 frozen controls; reports
+replay exactly. Fit/held row occurrences897,060/419,766 repeat across contexts
+and seeds,with74/31 source-qualified recordings. Historically exposed original
+TRAIN;not whole-pipeline OOF or independent confirmation. Independent selection,
+calibration and confirmation remain unopened. No new trajectory forecaster,
+scene-joint inference,physical-safety,metric/seconds,foundation or CCF-A claim.
+
+Next:reconcile existing cross-fitting roles and compare recording-disjoint
+utility/constraint learning against this shared-record optimizer inside original
+TRAIN. Follow-up not_run;no threshold rescue or retrospective promotion.
+[Results](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/conclusions.md),
+[readout](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/failure_analysis.md),
+[gate](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/evidence_gate.md).
 
 ### Direct Neural Policy: Trained, Utility and Full Safety Failed
 

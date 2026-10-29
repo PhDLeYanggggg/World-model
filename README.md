@@ -25,18 +25,32 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: testing whole-recording constraint optimization.**
-The direct policy still violates constraints on its own training recordings.
-I am checking whether sparse minibatch estimates miss harmful interventions,
-then comparing exact recording-level constraint updates and full-recording
-gradients with the frozen stochastic policy. The predictor, features, update
-budget and 2% requirement stay fixed; additional computation is reported openly.
-The frozen-state diagnostic found that256/277 positive constraint occurrences
-look nonpositive in at least half of the original minibatch draws. This supports
-testing the estimator, not a claim that the new method works. All 36 new heads
-have now completed 72,000 updates in 17.4 minutes. Their final weights are frozen;
-the fixed comparison is next. No deployment decision has changed.
-[Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
+**29 October: whole-recording gradients improve fitting, but risk does not transfer.**
+I trained 36 neural intervention heads with 72,000 updates, comparing exact
+recording-level constraint statistics and full-recording gradients with the
+previous stochastic method. The forecasts, features, update count and 2% budget
+were fixed. Full gradients use more computation; this is not an efficiency claim.
+
+The primary model meets the safety budget in **53/72 training views**, up from
+35/72, but **0/72 held-recording views**, down from 4/72. Its held utility improves
+over the stochastic method, yet at the same intervention count it still loses
+to the original frozen policy. That comparison is bounded between **-1.518 and
+-0.628 percentage points** of reference cost, not a confidence interval or an
+FDE improvement. Better fitting has not produced a safe policy.
+
+The diagnostic did identify a real sampling problem: small batches frequently
+miss positive risk excess. Correcting that alone was insufficient. The new
+policy retains about **53% of the original known benefit and 53% of its known
+harm** on held recordings. I am keeping deployment unchanged and focusing the
+next experiment on recording-level constraint generalization, not threshold tuning.
+
+All 144 readouts replay exactly and 100 targeted tests pass. These checks support
+execution, not independent scientific confirmation: the recording holdout was
+previously exposed, and independent evaluation remains unopened.
+[Results](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/conclusions.md),
+[complete comparisons](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/reproducibility.md).
 
 ### Previous Direct Policy
 
