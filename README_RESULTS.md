@@ -29,6 +29,13 @@ not predictive lift. A54-fit matched shared-reference cost ablation is registere
 same25,157parameters,initialization,draws,loss and2%budget;one existing causal
 floor token predicts R/ER. Real pilot/neutral/training/readout remain not_run.
 
+Shared-reference real pilot PID78172exit0 completes120updates,9.235533s,
+peakRSS8,851,275,776B;all-bank10+10/direct20recovery exact. Projected primary
+optimizer cost392.46s plus preparation,not completion. Full2,000update
+disabled-sharing neutral PID78628exit0 matches all original scientific state
+except declared identity/runtime,11.501076s.14focused tests pass1.69s.
+Primary54fits/108,000updates are next;forecaster and independent roles stay frozen.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural

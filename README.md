@@ -64,8 +64,10 @@ The frozen-gradient diagnosis is now complete and exactly replayed. It finds
 localized constraint conflict rather than universal clipping, and substantial
 candidate variation in estimates of the same reference error. I have registered
 a parameter-matched shared-reference ablation: one causal floor token supplies
-the common risk denominator while candidate costs remain separate. Training
-has not run yet. Coherent estimates alone will not count as a successful policy.
+the common risk denominator while candidate costs remain separate. Its real
+recovery pilot and full 2,000-update disabled-sharing control pass exactly;
+the 54 primary fits are next. Coherent estimates alone will not count as a
+successful policy.
 
 - [Complete comparison, intervals and risk checks](outputs/publication_readiness_2026_09/cost_decision_evidence_20261029.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
