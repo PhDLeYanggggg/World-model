@@ -19,6 +19,26 @@ or open held/independent roles. Zero optimizer updates. Three synthetic tests
 pass0.77s;real diagnosis is not_run at registration. The assets are local and
 the last full readout took206s,so no new CREATE job is justified yet.
 
+Real diagnosis PID89515exit0 completes108states/2,664record views,121.797026s,
+peakRSS6,239,027,200B. Replay PID90127exit0,119.581867s,is exact including
+all old choices and per-record scores. Scene/mixed selected H predicted/true
+median2.241466,not universal underprediction. EH all-legal median1.026498 drops
+to0.021367 inside actual selection. All230known easy violations are EH-dominant,
+with median predicted/true EH0.013175. Of92all-risk violations,37are H-dominant
+and55reference-dominant. These are descriptive fitting associations,not causal
+or independent generalization claims. Unknown selected853row views remain.
+The26MiBaggregate is archived losslessly to3,903,936bytes;no raw data/weights.
+
+Old pointwise easy-harm deviance already failed;do not repeat it. Register
+54newcurrent-scene cost heads/108kupdates with a policy-region H/R/ER/EH
+moment objective:fixed teacher-selected fitting regions,centroid labels only
+for training,record IDs not inputs. Same26,309parameters,initialization,
+preprocessing,draws,optimizer and inference thresholds. This differs from
+old pointwise loss,scalar moment matching and posthoc selected-set calibration.
+21targeted tests pass2.40s,including exact neutral/recovery,rare-cost gradient,
+zero-target finite gradient and changed-region resume rejection. Real pilot,
+full neutral,training and readout remain not_run at registration.
+
 ### Frozen TRAIN Feasibility Diagnosis Registered
 
 Previous goal turn was progress: two54-fit real training/readout sequences,
