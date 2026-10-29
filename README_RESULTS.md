@@ -20,7 +20,12 @@ event moments replace best-baseline classification. Risk budgets stay 2% on
 every required recording. Empty risk is not_estimable; matched counts are
 utility-only. All three fixed harm multipliers are reported, not searched on
 test. 15 focused tests pass in 1.98 s; real pilot and full training are not_run
-at registration. No independent roles or deployment changes.
+at registration. The subsequent real pilot (PID53293, exit0) completes120
+updates in7.299032s, peakRSS9,499,983,872bytes. All three interrupted10+10 runs
+match direct20 exactly. Initialization and sample streams match across arms.
+The optimizer-only primary projection is184.94s plus data preparation, not a
+claim that training is complete. Full54-fit training and readout are next.
+No independent roles or deployment changes.
 
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
