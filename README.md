@@ -64,17 +64,21 @@ neural bank supports 61/62, so its remaining support failure is retained.
 This is a learnability question, not an oracle-based deployment claim.
 [Exact-record repair protocol](outputs/publication_readiness_2026_09/european_multiaction_record_policy_v1/protocol.md).
 Its real full-gradient CPU pilot passes exact5+5/direct10 recovery in all
-three banks. All54fixed500-update decision fits are now complete and being
-frozen before readout. Fitting traces show collapse toward zero intervention;
+three banks. All54fixed500-update decision fits were frozen before readout.
+The corrected readout and all144groups replay exactly. Fitting traces show collapse toward zero intervention;
 the positive easy-support constraints remain unsatisfied, so this is not a
 zero-risk success. The trajectory producer stays frozen.
-The first readout exposed a singleton indexing error in the neural-only
-comparator. A tested inference-only adapter preserves every trained weight;
-evaluation is being resumed, not represented as a completed result.
+The corrected readout confirms zero interventions for the mixed bank and
+undefined selected risk, not a safety pass. A fitting-state check identifies
+weak scaling of the positive-support dual; I will test a unit change that
+preserves the constraint itself. This single-factor experiment is now registered;
+its primary training has not run. The earlier singleton inference error and
+its weight-preserving repair remain documented.
 
 I have also registered a matched control using the published ICML2024
 regression-deferral logistic surrogate. This is a baseline adapter, not my
-method or a claimed reproduction of its original experiments.
+method or a claimed reproduction of its original experiments. Its real
+120-update CPU pilot passes exact recovery; full training is next.
 [Control protocol](outputs/publication_readiness_2026_09/european_regression_deferral_v1/protocol.md).
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay

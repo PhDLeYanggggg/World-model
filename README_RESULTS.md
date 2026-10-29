@@ -80,6 +80,27 @@ roles,forecasts,banks,three seeds and2,000updates. Fifteen combined focused test
 pass2.02s. Its real pilot,54fits and readout remain not_run. No bounded-loss
 theorem or2%risk guarantee is imported into native partial-label ADE.
 
+Corrected record-policy readout PID61101 exits0,all144groups complete. Primary
+mixed bank has0interventions and0.0%known-label gain in both scopes; all444fit
+and186held selected-risk views are undefined,not safe passes. Fitting-state
+diagnosis verifies the original support-dual growth bound: median empty-support
+excess0.000292227,maximum attainable dual<1in372/444views per bank after500steps.
+This motivates a prospective support-unit conditioning test,not changed budgets.
+
+Published-loss pilot PID61828 exits0:120real updates,8.534095s,exact interrupted
+resume and matched draws. Full54fit training/readout is next. No model success
+or independent role is claimed from a pilot.
+
+Corrected record-policy replay PID63096 exits0: all144groups and the summary
+are exact. The aggregate JSON groups are also preserved byte-for-byte in a
+1,093,160-byte metric bundle; no weights or raw trajectories are included.
+Six new support-unit/bundle tests pass1.19s. A separate54-fit support-unit
+conditioning repair is registered, with an all-arm recovery pilot and a full
+500-update unchanged-unit neutral control required before primary training.
+Only the third constraint's numerical unit changes; the feasible set and2%
+all/easy risk requirement do not. All new scientific phases remain not_run
+at this registration checkpoint.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
