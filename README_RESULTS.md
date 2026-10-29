@@ -7,6 +7,23 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Completion-Aware Supervision Registered
+
+The previous output controls motivate a paired training test: current cost
+heads sample only known outcomes, while their safety readout charges selected
+unknown completion mass. Existing completion-screen and leaf-quality controls
+do not train this current action head on unknown-row interval endpoints.
+
+The new protocol retains the forecast bank, 398 causal fields, 2% complete
+recording contract, physical-only comparator and all independent-role closures.
+Both fresh controls share the same all-causal-row sampler; original NaN labels
+remain unchanged. Known-only masks unknown loss; completion mode supervises
+explicit lower/upper proxies, not imputed observed costs. Plan: 72 real Torch
+cost heads / 144,000 primary updates. Four-cell full-context recovery pilot
+comes first. Fourteen focused checks pass in 1.39s; pilot and primary training
+are not_run at registration. See the [protocol](outputs/publication_readiness_2026_09/european_completion_cost_v1/protocol.md)
+and [prior controls](outputs/publication_readiness_2026_09/european_completion_cost_v1/prior_controls.md).
+
 ### Fixed Candidate-Output Amplitude Control
 
 Bank separation recovers fitting utility but worsens complete risk support.

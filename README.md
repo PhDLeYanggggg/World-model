@@ -128,6 +128,12 @@ unknown outcomes. No setting passes complete safety. Smaller predictions
 are not enough when the selected region changes or lacks outcome support.
 These are fitting controls, not newly trained dynamics or independent gains.
 
+The next paired training comparison includes conservative missing-outcome
+cost endpoints in the loss, against a fresh known-only control on the same
+causal query draws. The original unknown labels stay unknown. This tests a
+training/evaluation mismatch, not a new forecast architecture or a change to
+the safety requirement. [Fixed experiment](outputs/publication_readiness_2026_09/european_completion_cost_v1/protocol.md).
+
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
 image coordinates, not SDD's official top-down annotations. The [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
