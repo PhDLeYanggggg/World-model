@@ -25,6 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: a matched test of contemporaneous agent context is registered.**
+I am testing whether pooling the other agents available at the same instant
+improves conditional harm prediction. The paired self-only head has the same
+parameter and training budget. Forecasts, risk criteria and independent data
+roles stay fixed. This is a new information comparison, not another threshold
+sweep; training and its outcome are pending.
+[Protocol](outputs/publication_readiness_2026_09/european_query_context_v1/protocol.md).
+
+### Preceding Conditional Calibration
+
 **29 October: conditional risk calibration still loses useful interventions.**
 I completed72 source-excluded comparisons with frozen neural heads. Conditional
 correction increases fully supported risk views from0/72 to20/72, but reduces

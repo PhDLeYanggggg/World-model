@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Contemporaneous Query Context: Registered, Training Pending
+
+Two equal-parameter risk heads compare self-only inputs with leave-self-out
+same-recording/current-frame causal pooling.36fits/72,000updates planned;
+eight existing controls retained. No held-label pooling or new data role.
+Seven new scoped tests pass; real pilot/full training and readout are not_run.
+CREATE read-only inventory verifies24TRAIN packets; squeue timeout leaves
+queue state unavailable. No submission, restart or remote mutation.
+[Protocol](outputs/publication_readiness_2026_09/european_query_context_v1/protocol.md).
+
 ### Policy-Conditional Calibration: Complete, Gate Failed
 
 Fresh72 source-excluded calibrators/288 policy readouts completed.18 neural
