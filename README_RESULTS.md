@@ -7,6 +7,24 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Causal Reference-Coverage Ablation: Registered, Training Not Yet Run
+
+Single changed factor: radius=max(original radius,1.05*distance to causal CV,
+1.05*distance to causal damping.97), around the original train-selected center.
+Same88,514parameters,loss2+2,train-only normalizers,folds,seeds,sampling,optimizer
+and4,000updates.9fits/36,000primaryupdates registered; no margin/threshold search.
+Current code has4passing regression tests,including the geometric counterexample,
+finite reference reconstruction,stationary behavior,no future field,resume and
+coverage-off equality. Full real-data pilot/neutral/training remain not_run.
+
+Fresh past-only preflight PID42951 exit0: all318,969rows checked per center.
+Damping.90center changes0rows. OLS4center changes112,202radii:66,155training,
+46,047excluded rows. Both CV andD97outside counts fall106,543to0over the entire
+source cohort for this center. Those counts include training and excluded rows;
+they are not the preceding43,743excluded CV-outside count. Completing geometric
+support is not a model,policy or safety result. No independent roles opened.
+[Protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
+
 ### Reference-Harm Forecast: Training Complete, Current-Producer Accuracy Regresses
 
 The next experiment changes only the trajectory training objective. It adds

@@ -25,6 +25,23 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**Next controlled comparison: complete the causal reference coverage.**
+I have implemented a parameter-free change to the output radius so that both
+CV and damping .97 lie inside the model's representable trajectories. The
+radius uses past motion only. A full-source geometry preflight passes: the
+new bounds exclude neither reference. The two damping-centered folds are
+unchanged; the OLS4-centered fold changes the radius on 66,155 training and
+46,047 excluded-source windows. These are geometry checks, not improved
+forecasts or a safety guarantee.
+
+The next run keeps the preceding harm-aware loss, data, seeds, optimizer and
+4,000-update schedule fixed. Nine fits are registered before training, with
+an exact neutral replay and interruption check on the affected fold. No
+independent evaluation or deployment is opened.
+[Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
+
+### Completed Harm-Loss Comparison
+
 **29 October: penalizing forecast harm helps some easy cases, but does not improve the model.**
 I tested a loss that penalizes error increases over the training-selected
 baseline and causal constant velocity (CV). Architecture, data, folds, seeds
