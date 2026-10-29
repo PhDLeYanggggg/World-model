@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: joint-risk and reference-support experiment registered.**
+I am testing whether coherent total/easy harm estimates and donor-record-excluded
+blending can repair the magnitude failure below. Queries, neighbors, splits and
+evaluation rules remain fixed. Mean and shuffled blend controls distinguish
+conditional reliability from simply shrinking toward the original head.
+Code and 22 targeted tests are ready; real fitting has not run yet. This remains
+exposed-TRAIN risk estimation, not a new forecasting or deployment result.
+[Protocol](outputs/publication_readiness_2026_09/european_coupled_support_v1/protocol.md).
+
+### Previous Local Cost Check
+
 **29 October: aligning the local loss helps, but the risk estimates are still not usable.**
 I completed the 72-view cost-objective comparison with the same selected queries
 and nearest histories. Direct cost fitting reduces easy-risk prediction error

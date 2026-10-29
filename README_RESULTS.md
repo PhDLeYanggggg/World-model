@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Coupled Risk and Donor-Recording Support: Registered, Not Run
+
+Follow-up to the completed local-cost failure: exact joint quadratic constraints
+EH<=H and B+H<=E, with donor-record-excluded convex blend selection. Same query
+mask,32neighbors,normalizer,380features and72views; no held roles opened.
+Mean-alpha and shuffled-alpha controls retain per-record alpha mass. Eight
+prespecified magnitude/validity conditions preserve and strengthen the previous
+screen.22 targeted tests pass. Real fitting/replay not_run at registration.
+[Protocol](outputs/publication_readiness_2026_09/european_coupled_support_v1/protocol.md).
+
 ### Local Cost Objective: Complete, Magnitude and Moment Consistency Fail
 
 Previous goal turn made progress: 72 donor-conditioning views completed and
