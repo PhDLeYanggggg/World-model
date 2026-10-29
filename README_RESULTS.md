@@ -22,6 +22,12 @@ target rejection and unknown/empty subgroup handling. Full-data profiling and
 all 54 fits are next; no new utility, safety or deployment result is claimed.
 See the [fixed protocol](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/protocol.md).
 
+The full-data pilot completes in 62.89 seconds (PID 7993, exit 0), with exact
+8+8/direct-16 recovery in all three banks and peak RSS 9.38 GB. Its projection
+is 3,781 seconds for the primary fits and approximately 450 MB of checkpoints,
+not a completion claim. Local resources support the full registered roster;
+54 full models and the first 128-tree deterministic replay are next.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0
