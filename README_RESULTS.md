@@ -7,15 +7,29 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Policy-Conditional Calibration: Registered, Not Yet Run
+### Policy-Conditional Calibration: Complete, Gate Failed
 
-All18 rational heads stay frozen.72 source-excluded original-TRAIN crossings
-compare raw, global, support-only and conditional risk overlays.2% risk criteria
-and independent roles remain unchanged; no new neural fitting or deployment.
-11 focused tests pass. CREATE data assets are reachable; a scheduler query timed
-out, so queue state remains unobserved. No remote submission was made.
-[Fixed protocol](outputs/publication_readiness_2026_09/european_policy_conditional_v1/protocol.md),
-[prior failures and new contrast](outputs/publication_readiness_2026_09/european_policy_conditional_v1/prior_evidence.md).
+Fresh72 source-excluded calibrators/288 policy readouts completed.18 neural
+heads stay frozen; no neural updates. Prepare PID55709 exit0,56.676s,2.25GB RSS;
+readout PID56047 exit0,2.014s; full replay PID56321 exit0. Source TRAIN only.
+
+Conditional complete risk support20/72 versus raw0, global4 and support-only0;
+25 empty policies,33 undefined easy-risk views. Selections fall27,371->5,693.
+Matched utility vs raw-0.365796pp[-0.704795,-0.108582], vs global-0.184432
+[-0.344481,-0.046161], vs support-only-0.365796[-0.704795,-0.108582].
+All six utility checks and full support fail; no deployment or evidence promotion.
+
+Posthoc partition: conditional penalties remove15,639 additional occurrences
+with positive known net utility2.823689pp.23 retained cells have positive observed
+easy excess;11 fail only after subselecting within a raw cell whose mean residual
+was covered. Coarse calibration is insufficient for the selected subgroup.
+Intervals use3000 nominal locality draws over12 exposed TRAIN localities, not
+independent confirmation.2% criteria and reserved roles unchanged.
+CREATE files are reachable; scheduler query timed out, so queue state is unknown.
+No new remote submission.26MiB private decision cache is not committed.
+[Results](outputs/publication_readiness_2026_09/european_policy_conditional_v1/conclusions.md),
+[failure accounting](outputs/publication_readiness_2026_09/european_policy_conditional_v1/failure_analysis.md),
+[verification](outputs/publication_readiness_2026_09/european_policy_conditional_v1/verification.md).
 
 ### Rational Harm Repair: Complete, Gate Failed
 

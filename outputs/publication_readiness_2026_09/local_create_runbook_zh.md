@@ -1,5 +1,39 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 条件风险校准完成，仍不部署
+
+冻结18个rational神经头，完成72个source-excluded校准交叉和288个策略读出。
+每次用另外三个来源的内部held录像估计校准量，目标来源不参与该校准器。
+均为早已暴露的original TRAIN；不打开外层development和独立selection/calibration/test。
+四个对照是raw、global、support-only、conditional；风险预算仍2%。
+
+校准/决策冻结PID55709 exit0，56.676秒，峰值2.25GB；读出PID56047 exit0，2.014秒。
+全量重算核验PID56321 exit0。没有新增神经梯度更新，也没有新CREATE调度任务。
+CREATE24个原TRAIN数据包可读，但squeue查询20秒超时，队列状态未知，不是作业失败。
+
+结果：完整风险支持0/72升至20/72，但保留介入27,371降到5,693；25个空策略，
+33个easy风险无法定义。相同介入数的效用相对raw为-0.365796pp，
+CI[-0.704795,-0.108582]；相对global也为负。7项gate条件失败，不部署。
+错误分解显示额外删掉的15,639次介入仍有正净收益；23个保留分组easy风险超限，
+其中11个是整组均值校准够了、进一步筛选的子集又失准。不要继续盲目收紧阈值。
+
+已完成阶段不要删除重跑或伪装fresh；现在仅复核：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_policy_conditional_calibration check
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_policy_conditional --check
+```
+
+新环境复现按register、提交协议、prepare、eval顺序；仅中断时用`--resume`。
+每个view原子保存，每个context可恢复；heartbeat/锁/私有缓存位于
+`data/stage_cvpr2027_experiments/european_policy_conditional_v1/`。总缓存26MiB，
+不进Git；公开仅代码和聚合证据。62项相关测试通过，未跑会改写旧冻结产物的全库测试。
+下一步回到组内伤害与收益的因果特征/监督可辨别性，先对照已有容量、时序、质量
+负结果，禁止把另一轮同类校准改名成新方法。独立证据与投稿准备仍未完成。
+依然obs8/pred12、raw stride12、detector silver、pixel/dataset-local；Stage5C/SMC关闭。
+[结果](european_policy_conditional_v1/conclusions.md)、
+[失败分析](european_policy_conditional_v1/failure_analysis.md)。
+
 ## 当前入口：2026-10-29 梯度障碍已定位并修复，选样风险仍失败
 
 先在全部72个inner-fit视图做冻结模型autograd审计，PID50837 exit0，61.04秒。

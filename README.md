@@ -25,13 +25,21 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: a fixed conditional-calibration comparison is registered.**
-I am testing whether risk errors can be corrected specifically where the frozen
-model proposes intervention. The comparison includes raw decisions, global
-correction, support-only rejection and conditional correction. Each readout
-source is excluded from its calibrator; all data remain exposed original TRAIN.
-No independent result, neural improvement or deployment is claimed at registration.
-[Protocol](outputs/publication_readiness_2026_09/european_policy_conditional_v1/protocol.md).
+**29 October: conditional risk calibration still loses useful interventions.**
+I completed72 source-excluded comparisons with frozen neural heads. Conditional
+correction increases fully supported risk views from0/72 to20/72, but reduces
+selected occurrences from27,371 to5,693. At the same intervention count, utility
+falls by **0.366 percentage points**, nominal95%CI **[-0.705,-0.109]**.
+It also loses to global calibration and a support-only control.
+
+The problem is not just coverage: useful decisions are removed, and coarse
+cell calibration can fail again after selection within that cell.33/72 views
+have undefined easy risk. This is exposed original-TRAIN mechanism evidence,
+not a new independent result or deployment success. I keep the deployment
+unchanged and will not repeat the same calibration sweep with new thresholds.
+[Results](outputs/publication_readiness_2026_09/european_policy_conditional_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_policy_conditional_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/european_policy_conditional_v1/protocol.md).
 
 ### Preceding Rational Repair
 
