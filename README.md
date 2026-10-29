@@ -25,14 +25,22 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am now separating TRAIN budget infeasibility from policy-fitting failure with
-an exact, label-aware action oracle. It keeps every fitting recording and the
-same 2% requirements; it is a diagnostic upper bound, not a deployable selector.
-The first diagnostic exposed a numeric/string recording-ID bug in its grouped
-control table. A regression test reproduces it; the corrected execution is
-pending, with the original output retained and marked invalid. No new held-recording
-evaluation or threshold search is planned.
-[Protocol](outputs/publication_readiness_2026_09/european_train_feasibility_v2/protocol.md).
+**29 October: safe training choices exist, but the policy does not recover them.**
+An exact label-aware diagnostic finds useful choices within the2%budget in
+146of148recording/forecast views. The two exceptions are the same recording:
+its fixed forecast has no eligible easy-reference choice within budget.
+The cross-record neural policy retains only23.46%of the eligible positive benefit.
+Its selected set contains a safe useful subset in371of444record/seed views, while
+the actual policy passes in160. This points to both decision-fitting failure and
+a specific forecast/support limitation, not simply an absence of useful signal.
+
+All72fitting readouts replay exactly. An initial grouping bug is preserved and
+documented; corrected per-record scores match the prior verified controls.
+The oracle is label-aware and not deployable. I am now testing one training
+change, a cost-sensitive logistic objective, with the same inputs and2%budget.
+The18-fit comparison is registered, not yet trained; it does not open held data.
+[Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
+[next experiment](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 
 ### Previous Cross-Recording Comparison
 

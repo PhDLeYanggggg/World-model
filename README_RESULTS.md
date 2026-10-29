@@ -7,18 +7,27 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### TRAIN Feasibility Diagnostic: Registered, Results Pending
+### TRAIN Feasibility Diagnostic: Complete, Decision Repair Registered
 
 Next after cross-record training failure: exact label-aware feasibility over
 fixed causal actions, and deletion-only oracle within each frozen policy.
 Keep all original fitting recordings, 2% constraints and frozen controls.
-The first run's grouped policy table is invalidated by a reproduced numeric/string
-recording-ID bug. Version2 repairs that accounting and adds exact per-record
-control checks; real-data recomputation is pending. The oracle optimality test
-exhaustively enumerates all Boolean actions on 240 random small examples.
-The oracle is not causal inference or deployment; no new held score, model fit,
-threshold tuning, independent confirmation, Stage5C or SMC.
-[Protocol](outputs/publication_readiness_2026_09/european_train_feasibility_v2/protocol.md).
+Version2 completes72fitting readouts (PID18982 exit0,85.096418s,2.9706GB peakRSS)
+and exact replay (PID19475 exit0). Oracle positive/safe in146/148record/context
+views across74unique recordings. Locality082/51 has no supported2%easy anchor in
+either context. All records retained. The primary cross-record policy captures
+23.46%of available positive benefit; its deletion-only oracle is useful/safe in
+371/444record/head views, versus160/444actual budget views. This does not establish
+causal learnability or a deployable label-aware policy.
+
+The first run's new grouped table is invalidated by a reproduced numeric/string
+ID bug. Corrected per-record counts and all frozen controls are verified. Eleven
+oracle tests include240exhaustive small cases. With the new objective prototypes,
+17targeted tests pass2.09s. No new held score, threshold tuning, independent
+confirmation, Stage5C or SMC. The next18-fit cost-sensitive primal repair is
+registered but training not_run; its scope is fitting only.
+[Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
+[repair protocol](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 
 ### Cross-Recording Meta-Updates: Complete, Safety Failed
 
