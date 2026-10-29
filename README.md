@@ -80,8 +80,9 @@ risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 
 The complete-region repair passes the real120-update recovery pilot and a full
-2,000-update disabled neutral. I am continuing all54primary fits on the same
-local arm64runtime;no new result or deployment is claimed from the pilot.
+2,000-update disabled neutral. All54primary fits now finish on the same local
+arm64runtime:108,000updates in454.86s,with12,275,011additional teacher-row visits.
+All endpoints freeze before readout;training is not a utility or safety pass.
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track

@@ -40,6 +40,14 @@ neutral PID99432exit0 exactly matches the old scene scientific state,
 estimate,not completion. Proceed to all54primary fits locally without reducing
 the scientific roster. Additional regional forward work will be measured.
 
+Primary PID99888exit0 completes54fits/108,000updates in454.858144s,
+peakRSS10,212,655,104B. Original base initializations,draws,RNG,normalizers and
+teacher-region arrays match every old endpoint. Added teacher-row visits total
+12,275,011,and two-pass query-row forwards24,550,022;candidate multiplication
+depends on bank size. Same steps are not same FLOPs. All54endpoints freeze
+before first readout.49focused tests pass3.62s. Fitting mechanism/export code
+and protocol are fixed before readout;no utility or safety claim yet.
+
 ### Policy-Region Training Completes Without A Safety Or Neural-Value Pass
 
 All54new heads/108,000updates are complete and frozen atdbec2b6f before
