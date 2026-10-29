@@ -1,0 +1,30 @@
+{
+  "experiment": "european_shared_train_risk_v1",
+  "head_seeds": [17, 29, 43],
+  "arms": ["local", "shared_global", "shared_source"],
+  "fits": 108,
+  "contexts": 6,
+  "sources_per_context": 4,
+  "partition": "input_only_whole_recording_sha256_hold_quarter_at_least_one",
+  "head_training": {
+    "width": 32, "steps": 2000, "learning_rate": 0.001,
+    "query_batch_size": 16, "gradient_clip": 5.0,
+    "checkpoint_every": 100, "heartbeat_every": 100, "auxiliary_weight": 0.1
+  },
+  "objective": {
+    "task_weight": 1.0, "temperature_start": 1.0, "temperature_end": 0.1,
+    "dual_learning_rate": 1.0, "dual_maximum": 100.0, "risk_budget": 0.02
+  },
+  "checkpoint_cap_bytes": 268435456,
+  "disk_reserve_bytes": 10737418240,
+  "hard_runtime_limit_seconds": 43200,
+  "cpu_threads": 4,
+  "num_workers": 0,
+  "bootstrap_draws": 3000,
+  "bootstrap_seed": 20261029,
+  "outer_development_read": false,
+  "independent_roles_read": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
