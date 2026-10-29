@@ -45,8 +45,10 @@ into the next recording-constraint repair, while retaining the known
 forecast/support obstruction below.
 That next comparison is now registered: equal recording weights for constraint
 penalties, with the benefit objective and all other training settings fixed.
-Its real-data resume/control pilot passed and all18fits are now running locally;
-predictive results remain pending. No independent evaluation is opened.
+Its real-data resume/control pilot passed. All 18 fits have now completed locally
+in 12.2 minutes with 2.82 GB peak memory. Final weights are frozen before the
+fitting-data readout; predictive results remain pending. No independent
+evaluation is opened.
 [Results](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/failure_analysis.md),
 [model card](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/model_card.md).

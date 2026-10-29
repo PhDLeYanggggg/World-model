@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Record-Balanced Constraint Comparison: Training Running
+### Record-Balanced Constraint Comparison: Training Complete, Readout Pending
 
 The cost-sensitive repair increased fitting benefit but worsened record safety.
 This follow-up changes only constraint weights from utility-weighted recordings
@@ -17,7 +17,10 @@ budget remain fixed.18newfits are planned;cost-sensitive/origin controls remain
 frozen. Five targeted tests pass2.08s,including exact neutral-control replay and
 resume on the fixture. The60update real pilot passed(PID27689,exit0,14.278188s,
 peakRSS2,679,816,192B),including exact neutral replay of the parent. Full training
-PID28251 is running;results/readout remain pending. Eleven targeted tests now
+PID28251 completed with captured exit0: 18 fits, 36,000 updates, 732.451502s,
+peak RSS 2,821,308,416B. Final manifests are frozen before readout, which remains
+pending. Numerical training was local; hash-verified TRAIN packets streamed
+read-only from CREATE. Eleven targeted tests now
 pass2.35s. A marked CREATE account-queue query10:02:07UTC confirms no listed
 current jobs,not historical job completion. No new HPC job was submitted.
 Independent roles remain unopened. The known
