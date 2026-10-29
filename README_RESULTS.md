@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Fixed-Selection Causal Analogues: Pilot Verified, Full Run Active
+### Fixed-Selection Causal Analogues: Complete, Support Screen Unpassed
 
 Previous turn: progress, 36 actual risk-head continuations and 72 replayed
 fitting views; selected easy-risk screen failed. Prior calibration, selected
@@ -20,8 +20,25 @@ held readout or independent roles. Eighteen scoped tests pass in 2.85 seconds;
 Real pilot PID71668 exited0: 20.230784s total, 10.635752s retrieval view,
 6,709/6,709 queries supported, 28 query recordings and no same-record donors.
 Peak RSS2,426,093,568 bytes. Frozen original/estimation predictions replay exactly.
-Full72-view run active; no completed scientific result yet. Separate receipt
-verifier added; eight focused new-probe/verifier tests pass0.76s.
+Full runPID71944 exit0:72 views,160.680342s,2,915,418,112 bytes peak RSS,
+zero neural updates. Full retrieval/inference replayPID72471 exit0 matched72.
+Separate verifier checks720 arm-target records,443 recording banks,144 inherited
+cohorts and all3 screen conditions. Twenty-four scoped tests pass3.35s.
+
+Fixed62,902 occurrences retain61,335 known/1,567 unknown. Only24/72 views have
+complete reference support:52,654 supported and10,248 unsupported occurrences.
+All48 unsupported banks have zero donors after target-record exclusion. Primary
+analogue MSE is undefined;0/18 complete-pair wins is not18 negative comparisons.
+No source removal, zero-risk imputation or gate change rescues this outcome.
+
+On the same24 supported views only, nearest easy MSE0.003420122 versus mean
+0.008224796 and shuffled0.013425815 is58.42%/74.53% lower. But original is
+0.000876187, so nearest is3.90x worse. Predicted easy harm502.945952 versus
+observed91.730953 is5.48x too large. Local information is descriptive, not safe
+magnitude calibration, policy utility or independent transfer. Deployment unchanged.
+[Conclusions](outputs/publication_readiness_2026_09/european_selected_analogue_v1/conclusions.md),
+[evidence gate](outputs/publication_readiness_2026_09/european_selected_analogue_v1/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_selected_analogue_v1/reproducibility.md).
 [Protocol](outputs/publication_readiness_2026_09/european_selected_analogue_v1/protocol.md),
 [prior controls](outputs/publication_readiness_2026_09/european_selected_analogue_v1/prior_controls.md).
 

@@ -25,17 +25,26 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: testing causal information in the fixed selected cohort.**
-I am checking whether similar past-only features from other fitting recordings
-predict harm better than a source mean or the same neighbors with shuffled
-labels. The original selected cohort stays fixed. All 72 views are registered;
-the full calculation is running after a real-data pilot. The pilot retained
-all 6,709 queries, verified the frozen predictions and used 2.43 GB peak memory.
-This is a training-domain information
-check, not a new deployed model or an independent test. The source recordings
-already have upstream training exposure, so exclusion from the neighbor bank
-does not make the complete pipeline out-of-fold.
-[Protocol](outputs/publication_readiness_2026_09/european_selected_analogue_v1/protocol.md).
+**29 October: similar histories carry some information, but risk is still unreliable.**
+I completed a 72-view check using past-only features from other recordings to
+estimate harm on the original selected cohort. Only 24 views had complete
+reference support: in eight source localities, excluding the query recording
+left no eligible donor recording. Those unsupported cases remain in the primary
+result, which is undefined rather than silently restricted to successful sources.
+
+Within the 24 supported views, nearest histories reduced easy-risk error by
+58.42% against a source mean and 74.53% against shuffled-label neighbors. Yet
+their error was still 3.90 times the original risk head's, and predicted easy
+harm was 5.48 times observed. Local feature information is not calibrated risk.
+The registered screen did not pass, and I am not changing deployment.
+
+All 72 views reproduce exactly; separate arithmetic and 24 related tests pass.
+The calculation took 160.68 seconds and 2.92 GB peak memory. It involved no new
+neural training or independent evaluation. These source recordings already
+have upstream training exposure, so reference exclusion is not whole-pipeline
+out-of-fold evidence. [Results](outputs/publication_readiness_2026_09/european_selected_analogue_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selected_analogue_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_selected_analogue_v1/reproducibility.md).
 
 ### Completed Risk-Objective Comparison
 

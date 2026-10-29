@@ -1,5 +1,40 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 相似因果历史有局部信号，但覆盖和风险幅度仍未过关
+
+常规审计、实验、恢复和安全同步自行执行，不要求用户逐项确认。
+本轮72个拟合组合全部计算并完整回放，不是新神经网络训练。运行PID71944 exit0，
+160.680秒、峰值2.92GB、零optimizer更新；回放PID72471 exit0，72组完全一致。
+原生arm64环境、CPU4/inter-op1/workers0，沿用已授权TRAIN数据包路径，无新HPC提交。
+不能从数据读取成功推断CREATE队列或其他任务状态。
+
+固定选样62,902次出现包含61,335已知、1,567未知。24/72组有完整参考支持，
+52,654次出现可估计；48组的10,248次出现因排除查询录像后没有donor而保留为unsupported。
+这不是删掉难样本后的成功，主要全范围MSE为undefined，预注册筛选未通过。
+0/18完整pair win不代表18次负比较，而是没有一个四来源pair能完整评价。
+
+仅在同样24组支持充分的诊断范围，相似历史easy风险MSE比来源均值下降58.42%，
+比同录像内打乱标签下降74.53%。但仍是原风险头误差的3.90倍，预测伤害总量为观测5.48倍。
+说明存在局部特征信息，但没有可靠风险幅度校准；不能拿更少false-safe掩盖整体高估。
+不更改部署、不读held或独立角色、不调阈值，也不把该拟合诊断当外部显著性。
+
+独立算术实现核对720个arm-target、443个reference bank、144个旧对照及全部3筛选条件。
+24项针对性测试通过；21个描述切片和本地图片hash重放，图片已目视检查。
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_selected_analogue check
+.venv-pytorch/bin/python -m scripts.verify_m3w_selected_analogue --check
+.venv-pytorch/bin/python -m scripts.report_m3w_selected_analogue --check
+```
+
+完成产物不删除重跑；只有中断未完成才用`run --resume`，先检查PID/heartbeat。
+下轮先核对其他已授权拟合来源能否提供兼容参考，再单独注册跨来源donor对照。
+该后续尚未执行。obs8/pred12 rawstride12及2%正伤害/reference不变，silver不当gold，
+pixel/local不当metric/seconds。Stage5C/SMC关闭。投稿准备和长期目标仍未完成。
+[结论](european_selected_analogue_v1/conclusions.md)、
+[失败分类](european_selected_analogue_v1/failure_analysis.md)、
+[复现](european_selected_analogue_v1/reproducibility.md)。
+
 ## 当前入口：2026-10-29 风险估计解耦训练完成，拟合筛选未通过
 
 常规审计、训练、恢复与安全同步按已有授权自行执行，不再逐项要求用户确认。
