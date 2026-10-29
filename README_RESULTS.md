@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Full-Range Harm Repair: Pilot Passed, Full18 Running
+### Full-Range Harm Repair: All18 Frozen Before Readout
 
 One bounded parameterization change,18 planned continuation fits, unchanged
 data/anchors/seeds/budget/objective. Six archived controls retained. The new
@@ -15,7 +15,9 @@ branch can leave near-zero anchor odds while preserving benefit/reference and
 the causal moment envelope. Range and gradient geometry both change; neither
 is uniquely isolated. The200-update real pilot completed13.78s, peak RSS2.05GiB,
 with exact resume and protected outputs. Engineering full estimate3,721s;
-the18-fit scientific run has started. No scientific or deployment success claimed.
+all18 fits and36,000 updates completed, PID47588 exit0. Matched sampler hashes,
+initial weights, parameter counts and protected base verified against old
+controls. No held readout yet; no scientific or deployment success claimed.
 [Protocol](outputs/publication_readiness_2026_09/european_full_range_harm_v1/protocol.md).
 
 ### Selected-Tail Accounting: Complete, No Promotion
