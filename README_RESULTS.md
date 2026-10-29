@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Record-Balanced Constraint Comparison: Registered
+### Record-Balanced Constraint Comparison: Training Running
 
 The cost-sensitive repair increased fitting benefit but worsened record safety.
 This follow-up changes only constraint weights from utility-weighted recordings
@@ -15,8 +15,12 @@ to uniform recording weights,total weight1. The source-balanced benefit
 objective,features,forecasts,model,initialization,2,000updates,dual updates and2%
 budget remain fixed.18newfits are planned;cost-sensitive/origin controls remain
 frozen. Five targeted tests pass2.08s,including exact neutral-control replay and
-resume on the fixture. A60update real pilot precedes full training.
-New training/readout not_run. Independent roles remain unopened. The known
+resume on the fixture. The60update real pilot passed(PID27689,exit0,14.278188s,
+peakRSS2,679,816,192B),including exact neutral replay of the parent. Full training
+PID28251 is running;results/readout remain pending. Eleven targeted tests now
+pass2.35s. A marked CREATE account-queue query10:02:07UTC confirms no listed
+current jobs,not historical job completion. No new HPC job was submitted.
+Independent roles remain unopened. The known
 locality082/51 support obstruction is retained and cannot be solved by this
 fixed-candidate selector alone.
 [Protocol](outputs/publication_readiness_2026_09/european_record_balanced_policy_v1/protocol.md).
