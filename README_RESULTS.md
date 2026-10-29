@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Isolated Harm Continuation: Numerical Repair, Full Rerun Active
+### Isolated Harm Continuation:54 Finals Frozen, Readout In Progress
 
 The next fixed experiment protects a shared-utility anchor's benefit/reference
 outputs while learning harm in a separate branch. Three matched continuations
@@ -26,7 +26,9 @@ failed batch. The network and outputs stay float32. A separately registered
 fit will be mixed into its results. No held readout occurred in the precursor.
 The repaired400-update pilot passed in13.38s, peak RSS2.10GiB;83 scoped tests
 pass, including21 envelope/odds extremes and a reproducer of the old NaN.
-PID42524 is running the complete rerun; this is not yet a completed result.
+PID42524 completed54/54 fits and108,000 new updates in526.97s, exit0.
+Every final is frozen; the complete144-view readout is now running.
+No research pass or deployment improvement is claimed before that readout.
 No independent roles, deployment change, new forecaster, Stage5C or SMC.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_isolated_harm_v1/protocol.md).

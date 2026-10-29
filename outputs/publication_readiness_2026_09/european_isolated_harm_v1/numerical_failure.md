@@ -12,8 +12,10 @@ that saved checkpoint reproduced the failure with autograd anomaly tracing:
 registered model. The original checkpoint and37 final receipts were not changed.
 
 The float32 ratio has finite forward values at zero/tiny envelopes, while its
-backward path can underflow the squared denominator and create nonfinite
-derivatives. This is an arithmetic defect, not the historical OpenMP/SHM hang,
+backward intermediates can overflow before multiplication by zero creates NaN.
+For the minimal zero-envelope case with positive odds shift, the numerator
+gradient is8.507059e37, its preceding product gradient becomes inf, and the harm
+gradient becomes NaN. This is an arithmetic defect, not the historical OpenMP/SHM hang,
 not exhausted memory and not evidence from a held/test metric.
 
 Repair: a separately registered `european_isolated_harm_fp64_v1` computes only

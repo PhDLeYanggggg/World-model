@@ -25,6 +25,12 @@ def details(rows):
                 ratios = [v for v in ratios if v is not None]
                 d[cohort] = dict(median_predicted_observed_easy_harm_ratio=statistics.median(ratios) if ratios else None,
                     defined_ratios=len(ratios), known_selected_occurrences=sum(r['result'][cohort][arm]['known_selected'] for r in group))
+                for index, name in enumerate(('benefit', 'harm', 'reference', 'easy_reference', 'easy_harm')):
+                    rr = [r['result'][cohort][arm] for r in group]
+                    rr = [v['predicted_moments'][index]/v['observed_moments'][index]
+                          for v in rr if v['observed_moments'][index] > 0]
+                    d[cohort]['median_'+name+'_ratio'] = statistics.median(rr) if rr else None
+                    d[cohort]['defined_'+name+'_ratios'] = len(rr)
             result[scope][arm] = d
     result['sources'] = {}
     for source in sorted({r['source'] for r in rows}):
@@ -85,6 +91,9 @@ def report(freeze, complete, summary, detail):
         f"Fresh_run:54 continuations/108,000 new updates in{freeze['seconds']:.2f}s;144 "
         f"fit/held views in{complete['seconds']:.2f}s after all finals were frozen.",
         'All three arms start from the same shared-utility anchors and continue identical',
+        'A float32-only precursor failed after37 finals; none is reused here. Its',
+        'backward arithmetic was repaired with float64 ratio intermediates, then all54',
+        'fits restarted. Weights and outputs remain float32; the failed batch is preserved.',
         'source/query draws with fresh optimizers. Each continued head has4,000 effective',
         'updates including its2,000-update anchor. Local, old-risk and anchor controls',
         'remain cached_verified2,000-update controls and reproduce their old inference.',
