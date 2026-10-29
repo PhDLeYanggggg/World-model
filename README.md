@@ -30,7 +30,8 @@ I am testing whether pooling the other agents available at the same instant
 improves conditional harm prediction. The paired self-only head has the same
 parameter and training budget. Forecasts, risk criteria and independent data
 roles stay fixed. This is a new information comparison, not another threshold
-sweep; training and its outcome are pending.
+sweep. The native Torch pilot and exact resume check passed; the full36-head
+comparison is now training. There is no effectiveness result yet.
 [Protocol](outputs/publication_readiness_2026_09/european_query_context_v1/protocol.md).
 
 ### Preceding Conditional Calibration
