@@ -35,8 +35,9 @@ where better training fit did not produce safer decisions on other recordings.
 The design fixes 36 fits and all final checkpoints before evaluation. It does
 not create a new validation set: eight of the twelve sources have only one fit
 recording, and the existing recording holdout has already been exposed.
-Independent evaluation remains unopened. The new experiment is registered;
-training and results are not yet complete. Deployment is unchanged.
+Independent evaluation remains unopened. A real-data pilot completed 80 updates
+and reproduced interrupted training exactly, using about 3.2 GB peak memory.
+Full training is running; no new held result is available yet. Deployment is unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
 
 ### Previous Whole-Recording Comparison
