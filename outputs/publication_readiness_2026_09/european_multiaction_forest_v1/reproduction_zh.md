@@ -43,11 +43,20 @@ joblib 进程池。不能用 Intel Conda/Rosetta 替代已核验环境。
 .venv-pytorch/bin/python scripts/run_m3w_multiaction_forest.py verify
 .venv-pytorch/bin/python scripts/bundle_m3w_metrics.py european_multiaction_forest_v1
 .venv-pytorch/bin/python scripts/bundle_m3w_metrics.py european_multiaction_forest_v1 --verify
+.venv-pytorch/bin/python scripts/diagnose_m3w_multiaction_forest_costs.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_multiaction_forest_costs.py --verify
 .venv-pytorch/bin/python scripts/report_m3w_multiaction_forest.py
 ```
 
 `verify` 是重新推理核对，不是重新训练 54 个模型。全量试跑还实际比较了三库
 8+8/直接16棵恢复，首个完整模型另做 128 棵独立重训，逐树核对。
+
+公共仓库中的逐组指标以无损 ZIP 保存。如果本地尚无 `groups/` 文件，先恢复
+这些汇总 JSON，再做推理重放；这一步不恢复原始轨迹或模型权重：
+
+```sh
+.venv-pytorch/bin/python scripts/bundle_m3w_metrics.py european_multiaction_forest_v1 --restore
+```
 
 ## 正常等待和中断恢复
 
@@ -73,6 +82,8 @@ joblib 进程池。不能用 Intel Conda/Rosetta 替代已核验环境。
 - `summary.json`：全部候选库、固定敏感性、逐录像风险和配对区间，不只看最佳值。
 - `readout.md`：已知标签收益、未知结果 completion 界、风险失败及范围说明。
 - `gates.json`：科学 gate 与工程核验分开，跑完不等于可部署。
+- `fitting_cost_summary.json`：在固定神经/树模型选择区域中，比较两者 H/EH/R/ER
+  估计的拟合内诊断，保留正分母与未定义数量，不是新的校准或部署证明。
 
 同切换数量对照只用于效用；空风险仍是不可估，不是安全的 0。完整策略仍须
 满足所有要求录像的 all/easy 2% 正伤害要求。Hard/easy 补充指标按已知误差总量

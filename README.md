@@ -45,6 +45,7 @@ endpoint was frozen before readout, and all eight comparisons replay exactly.
 | Static scene context | 0.983% | 23/186 |
 | Policy-region moments | 0.944% | 19/186 |
 | Complete-region gradients | 0.944% | 24/186 |
+| Matched conventional cost forest | -0.000073% | 118/186 |
 
 The preceding feature ablation adds 18 static/past/rollout region features using
 14 correctly matched camera polygons. Relative to the no-scene control, known-
@@ -88,9 +89,19 @@ I then separated candidate opportunity from learned routing. On the exposed
 inner-held data, a future-informed physical oracle gains **32.40%** over the
 floor; adding the frozen neural path raises that to **33.90%**. Neither is
 deployable, and their difference does not bound differences between causal
-learned policies. The next comparison tests strong causal cost estimators on
-the same candidate bank, rather than treating oracle scores or another loss
-weight as evidence of a useful neural world model.
+learned policies.
+
+I also refit **54 conventional cost forests (6,912 trees)** on the current
+seven-action task, using the same causal information, fitting normalizers and
+query draws as the static-scene neural cost heads. The mixed forest's gain is
+**-0.000073%**: effectively no useful improvement. Its change from the neural
+cost head is **-0.983pp**, conditional 95% CI **[-2.302,-0.242]**. Interventions
+fall from 32,219 to 3,457 repeated row views. Risk support improves to 118/186,
+but 66 easy-risk views remain undefined and two have known violations. This
+is a more conservative policy, not a successful repair. The objectives and
+decoders differ, so the result does not isolate architecture or rule out every
+conventional estimator. Training took 40.9 minutes, and all 144 readout groups
+replay exactly. [Frozen results](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/summary.json).
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track

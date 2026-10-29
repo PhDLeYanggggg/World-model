@@ -55,6 +55,18 @@ seed and bank matches its original causal features, normalizers and query-draw
 hash. All endpoints freeze before the first forest readout. These are fresh
 conventional estimators, not 54 new Torch forecasters or a scientific gate pass.
 
+The first readout completes all 144 groups (PID 12006 exit 0,346.243400s,
+peak RSS 8,077,443,072B); separate PID 12754 exit 0 replays every group and
+summary exactly in345.703089s. The1,955,179Baggregate archive is byte-verified.
+Mixed forest known ADE gain is -0.0000734623%, versus0.982769% for the frozen
+neural cost head. Their paired change is-0.982843pp,CI[-2.301874,-0.242325];
+the matched-count change-0.009443pp has CI[-0.023258,+0.000643]. Mixed-minus-
+physical forest is+0.000009408pp,CI[-0.000023957,+0.000051748],not positive
+neural contribution. Risk support118/186is not a pass:66undefined easy views,
+two known easy violations and43unknown selected views remain. Fitting risk
+support330/444also fails. The fitting-only cross-estimator diagnosis is running;
+do not call this a deployment,capacity-only explanation or independent test.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0

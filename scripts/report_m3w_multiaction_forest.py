@@ -15,6 +15,10 @@ def build():
     verified = json.loads((public/'verification.json').read_text())
     if not verified['exact_replay'] or verified['summary_sha256'] != run.sha(public/'summary.json'):
         raise ValueError('Separate exact inference replay required before reporting')
+    mechanism = json.loads((public/'fitting_cost_summary.json').read_text())
+    mechanism_check = json.loads((public/'fitting_cost_verification.json').read_text())
+    if not mechanism_check['exact_replay'] or mechanism_check['archive_sha256'] != run.sha(public/'fitting_cost_diagnosis.json.gz'):
+        raise ValueError('Separate exact fitting-cost diagnosis replay required')
     groups = list(aggregate_groups(run.NAME).values())
     cfg = json.loads(run.parent.parent.CONFIG.read_text())
     held = [g for g in groups if g['scope'] == 'inner_held']
@@ -30,7 +34,7 @@ def build():
     diff = held_summary['forest_minus_neural']['physical_neural']['full_known_pp']
     lower = held_summary['forest_minus_neural']['physical_neural']['full_lower_pp']
     gates = dict(all54forests_and6912trees_complete=True, all_current_inputs_and_samplers_matched=True,
-        exact144group_replay=True,
+        exact144group_replay=True, exact1332paired_fitting_cost_views=True,
         forest_minus_neural_known_CI_positive=diff['CI95'] is not None and diff['CI95'][0] > 0,
         forest_minus_neural_completion_lower_CI_positive=lower['CI95'] is not None and lower['CI95'][0] > 0,
         neural_increment_completion_CI_positive=summary['neural_increment_conditional_CI_positive'],
@@ -42,6 +46,9 @@ def build():
         training_freeze_sha256=run.sha(public/'training_freeze.json'), primary_fits=54, primary_trees=6912,
         total_primary_fit_seconds=sum(r['seconds'] for r in rows), training=fitting,
         gates=gates, held=held_summary, held_FDE_and_regret=details,
+        held_action_counts={name:{str(k):sum(g['result']['policies'][name]['action_counts'][str(k)] for g in held)
+            for k in range(-1,7)} for name in held[0]['result']['policies']},
+        fitting_costs=mechanism, fitting_cost_verification_sha256=run.sha(public/'fitting_cost_verification.json'),
         inference_label_filter=False, three_forecasting_training_seeds=False,
         primary_neural_comparator='frozen_static_scene_cost_heads',
         primary_estimator_contrast='fixed_mixed_bank_forest_minus_static_neural_full_and_matched',
@@ -106,10 +113,26 @@ def render(value):
     lines.extend(['', 'These ratios pool known error mass over repeated views, not independent samples',
         'or the primary locality macro. Empty required hard views remain not_estimable.',
         'Hard/easy cuts were fixed on fitting data. Unknown outcomes are not imputed.', '',
+        '## Fitting-Only Cost Mechanism', '',
+        'All 1,332 paired recording/head/bank views replay exactly, with no updates.',
+        'Both estimators see identical observed cost mass within each fixed region.', '',
+        '| Mixed-bank fitting region | Estimator | Known/unknown action views | Median predicted/observed H | Median predicted/observed EH | EH finite/undefined record views |',
+        '|---|---|---:|---:|---:|---:|'])
+    for region, estimators in value['fitting_costs']['physical_neural'].items():
+        for estimator, row in estimators.items():
+            h, eh = (row['ratio'][k] for k in ('harm_prediction_ratio','easy_harm_prediction_ratio'))
+            lines.append(f"| {region} | {estimator} | {row['known_action_views']}/{row['unknown_action_views']} | "
+                f"{show(h['median'])} | {show(eh['median'])} | {eh['finite_record_views']}/{eh['undefined_record_views']} |")
+    lines.extend(['', 'Medians condition on a positive observed denominator; undefined counts remain.',
+        'All-legal candidate pools are not deployment policies. Fixed-region differences',
+        'separate changed cost estimates from selection composition, but cannot uniquely',
+        'identify architecture as the cause: estimator objectives and decoders differ.', '',
         '## Safety And Interpretation', '',
         f"Mixed forest: {risk['selected']:,} selected row views, {risk['selected_unknown']:,} unknown selected; "
         f"{risk['known_all_risk_violations']} known all-risk violations, {risk['known_easy_risk_violations']} known easy-risk violations, "
         f"{risk['undefined_easy_record_views']} undefined easy recording views.", '',
+        f"Mixed forest neural-action views: {value['held_action_counts']['physical_neural']['6']}; "
+        f"neural-only forest neural-action views: {value['held_action_counts']['neural_only']['6']}.", '',
         f"Full required recording all/easy 2% contract supported: {gates['full_required_recording_2percent_budget_supported']}.",
         f"Forest beats static neural on known paired CI: {gates['forest_minus_neural_known_CI_positive']}.",
         f"Forest completion-lower paired CI positive: {gates['forest_minus_neural_completion_lower_CI_positive']}.",
