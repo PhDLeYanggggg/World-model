@@ -29,7 +29,9 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 I am checking whether similar past-only features from other fitting recordings
 predict harm better than a source mean or the same neighbors with shuffled
 labels. The original selected cohort stays fixed. All 72 views are registered;
-the real-data probe has not run yet. This is a training-domain information
+the full calculation is running after a real-data pilot. The pilot retained
+all 6,709 queries, verified the frozen predictions and used 2.43 GB peak memory.
+This is a training-domain information
 check, not a new deployed model or an independent test. The source recordings
 already have upstream training exposure, so exclusion from the neighbor bank
 does not make the complete pipeline out-of-fold.

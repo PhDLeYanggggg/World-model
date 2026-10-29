@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Fixed-Selection Causal Analogues: Registered, Not Run
+### Fixed-Selection Causal Analogues: Pilot Verified, Full Run Active
 
 Previous turn: progress, 36 actual risk-head continuations and 72 replayed
 fitting views; selected easy-risk screen failed. Prior calibration, selected
@@ -17,7 +17,11 @@ features supply 32 nearest donors; source-mean and within-recording shuffled
 labels are matched controls. Unknown queries remain, and insufficient donors
 are unsupported rather than zero risk. No new neural training, policy execution,
 held readout or independent roles. Eighteen scoped tests pass in 2.85 seconds;
-real-data pilot and 72-view calculation are not_run. No scientific result yet.
+Real pilot PID71668 exited0: 20.230784s total, 10.635752s retrieval view,
+6,709/6,709 queries supported, 28 query recordings and no same-record donors.
+Peak RSS2,426,093,568 bytes. Frozen original/estimation predictions replay exactly.
+Full72-view run active; no completed scientific result yet. Separate receipt
+verifier added; eight focused new-probe/verifier tests pass0.76s.
 [Protocol](outputs/publication_readiness_2026_09/european_selected_analogue_v1/protocol.md),
 [prior controls](outputs/publication_readiness_2026_09/european_selected_analogue_v1/prior_controls.md).
 
