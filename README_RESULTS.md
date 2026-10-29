@@ -7,20 +7,32 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Reference-Harm Forecast: Registered, Training Pending
+### Reference-Harm Forecast: Training, Current-Producer Contrast Registered
 
 The next experiment changes only the trajectory training objective. It adds
 two positive-ADE-harm penalties, against train-selected strongest and causal CV,
 each with coefficient 2. Original data, architecture, folds, seeds, sampling,
 optimizer and 4,000-step schedule are fixed. Planned: 18 fits / 72,000 updates,
 one 4,000-update neutral replay and 80 real-data engineering updates. The 21
-targeted tests pass. Training/readout are not_run at this registration checkpoint.
+targeted tests pass;five additional readout tests also pass. The80-update real
+pilot is exact (2.134s), and the4,000-step neutral replay exactly matches weights,
+optimizer, RNG and draws (78.374s). Primary18-fit training is running; readout
+remains not_run.
+
+Lineage follow-up found that the current policy uses the later dimensionless
+agent-track producer, not this earlier forecaster. Do not attribute a current
+policy repair to this earlier-family contrast. A separate matched9-fit/36,000-
+update current-producer loss comparison is now registered before readout. The
+prospective count correction is six excluded producer-seed contributions per
+locality (72locality views), not18perlocality. All training controls remain fixed.
 
 All 318,969 rows belong to the already-opened source-development cohort. No
 independent selection/calibration/confirmation role is opened. This is a
 candidate-forecast repair, not a new deployable policy; 2% safety is unchanged.
 Old candidate-dependent safety scores cannot certify a changed forecast.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/protocol.md).
+[Current-producer comparison](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/protocol.md),
+[lineage clarification](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/lineage_clarification.md).
 
 ### Record-Balanced Constraints: Partial Fitting Repair, Safety Failed
 
