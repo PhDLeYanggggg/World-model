@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### TRAIN-Internal Shared Risk Experiment: Registered, Not Yet Trained
+### TRAIN-Internal Shared Risk Experiment: Pilot Passed, Fitting In Progress
 
 The full-TRAIN census motivates a fixed108-fit comparison:72 local heads,
 18 shared-global heads and18 shared heads with source-specific risk constraints.
@@ -15,9 +15,13 @@ Six forecasting/controller contexts each contribute four source TRAIN packets;
 16/24 source/context groups have only two recordings. Input-only hashing holds
 out whole recordings inside TRAIN. All normalizers are refitted on inner-fit
 rows, and per-source query draws must match across arms. No outer development or
-independent roles are opened. Five focused synthetic tests pass, including
-exact resume and held-statistic exclusion. Real pilot and full fitting remain
-not_run until their completion receipts exist. This is not a model promotion.
+independent roles are opened. Eight focused synthetic tests pass, including
+exact resume, held-statistic exclusion and unknown/empty comparison handling.
+The real TRAIN pilot completed700 updates in14.94s, with exact resume and
+identical per-source sampling; peak RSS2.38GiB. Full108 fitting is in progress,
+not complete; held-recording readout remains not_run until every final is frozen.
+CREATE SSH/data access works; a queue query timed out, so queue state is unknown.
+No remote training job was submitted. This is not a model promotion.
 [Registered protocol](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/protocol.md).
 
 ### TRAIN Constraint Scaling: Complete, Advancement Failed
