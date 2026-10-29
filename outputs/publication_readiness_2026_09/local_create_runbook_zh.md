@@ -1,6 +1,31 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-29 共享风险训练与拟合诊断全部完成，未升级
+## 当前入口：2026-10-29 输出层与风险目标的四组对照训练中
+
+共享/分来源输出层，分别配风险惩罚/不加风险惩罚目标。固定72次新训练、每次2,000步，
+18个共享风险对照必须逐项精确复现旧模型。数据、采样、预处理、2%评价标准不变。
+真实600步试跑16.55秒、峰值2.37GiB，断点恢复和旧对照完全一致。PID37004已开始
+完整训练；未读留出结果，不把启动或pilot当作模型提升。
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_decoder_risk_factorial train
+```
+
+上述命令已经启动，不要重复运行。先检查PID和
+`data/stage_cvpr2027_experiments/european_decoder_risk_factorial_v1/heartbeat.json`。
+未完成进程确实退出时，保持代码/config不变，使用同入口加`--resume`。
+完成后程序拒绝重跑；全部72个final冻结后才执行固定fit/held读出：
+
+```bash
+.venv-pytorch/bin/python -m scripts.evaluate_m3w_decoder_risk_factorial run
+.venv-pytorch/bin/python -m scripts.report_m3w_decoder_risk_factorial
+.venv-pytorch/bin/python -m scripts.report_m3w_decoder_risk_factorial --check
+```
+
+这一段后续读出当前not_run；它不是提前声明完成。来源录像全部是原TRAIN，
+内部held已有研究暴露，不能称独立测试。参数缓存不上Git，Stage5C/SMC不执行。
+
+## 历史入口：2026-10-29 共享风险训练与拟合诊断全部完成，未升级
 
 真实训练108个cost heads：72逐source、18共享全局风险约束、18共享逐source约束。
 每个2,000步，共216,000次优化，489.45秒完成。固定72组留出录像评估63.05秒。
