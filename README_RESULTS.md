@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Cross-Recording Meta-Updates: Registered, Not Yet Run
+
+Fixed comparison: 36 neural policy fits, 2,000 updates each, three head seeds.
+Primary cross_record_meta versus compute-matched same_record_meta; frozen
+exact_gradient and original policy references. The scientific split, features,
+forecasters, final-decision threshold and 2% risk budget do not change.
+Both episode sides are original TRAIN, not a new validation/calibration role.
+Eight of twelve sources have one fit recording; singleton sources cannot occur
+on both sides in one episode. The exposed inner-held readout remains exploratory.
+Independent roles stay closed. No threshold tuning or deployment promotion.
+27 targeted tests pass, including second-order gradient and exact resume checks.
+Real pilot and full experiment are not_run at this registration checkpoint.
+[Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
+
 ### Whole-Recording Policy: Better Fitting, Held Safety Failed
 
 The previous direct-policy experiment completed54 neural heads and144 fixed

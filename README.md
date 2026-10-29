@@ -25,6 +25,22 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: testing whether policy updates transfer between recordings.**
+The next comparison keeps the same features, forecasts and 2% safety budget.
+I will train matched same-record and cross-record meta-update policies: an update
+on one group of training recordings is assessed either on those recordings or
+on another group. This tests a specific failure of the previous experiment,
+where better training fit did not produce safer decisions on other recordings.
+
+The design fixes 36 fits and all final checkpoints before evaluation. It does
+not create a new validation set: eight of the twelve sources have only one fit
+recording, and the existing recording holdout has already been exposed.
+Independent evaluation remains unopened. The new experiment is registered;
+training and results are not yet complete. Deployment is unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
+
+### Previous Whole-Recording Comparison
+
 **29 October: whole-recording gradients improve fitting, but risk does not transfer.**
 I trained 36 neural intervention heads with 72,000 updates, comparing exact
 recording-level constraint statistics and full-recording gradients with the
