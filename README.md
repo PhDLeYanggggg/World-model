@@ -154,6 +154,14 @@ the negative result, its actual loss traces and both candidate-bank controls.
 The next method must address risk estimation on newly admitted regions, not
 simply make this failed head more conservative.
 
+I also tested coupled nearest-neighbor cost estimates using other fitting
+recordings as donors. All 288 fixed comparisons and a separate full replay
+complete. The primary gains **0.830%** on known-label ADE but supports only
+**30/444** required risk views. Its neural-bank increment has a small positive
+fitting interval, **+0.0409pp [0.0012,0.0866]**, while the full policy remains
+unsafe. A global mean is more conservative but gains only 0.004%. Consistent
+cost outputs and higher average accuracy have not solved the selection problem.
+
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
 image coordinates, not SDD's official top-down annotations. The [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
@@ -179,6 +187,8 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 - [Completion-cost comparison figure](outputs/publication_readiness_2026_09/european_completion_cost_v1/figures/policy_comparison.svg)
 - [Completion-cost training curves](outputs/publication_readiness_2026_09/european_completion_cost_v1/figures/loss_traces.svg)
 - [Completion-cost local reproduction guide](outputs/publication_readiness_2026_09/european_completion_cost_v1/reproduction_zh.md)
+- [Coupled local-cost comparison and complete negative safety result](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/readout.md)
+- [Coupled cost-control figure](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/figures/control_comparison.svg)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)

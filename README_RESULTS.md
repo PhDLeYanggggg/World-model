@@ -35,6 +35,33 @@ Local modes retain 14 unsupported candidate actions rather than inventing
 labels; the global control has none. No query outcome is scored in the pilot.
 This justifies the complete local run, not a scientific or deployment pass.
 
+The complete run then finishes PID33535, exit0, in 260.627765s, peak RSS
+10,343,464,960 B. Separate PID34342 redoes the full retrieval and all288groups
+exactly in 258.380133s, peak RSS10,829,643,776 B. Primary local-bounds known
+gain is +0.830158%, fitting CI[+0.234853,+1.429495], but risk support is only
+30/444, with237/273known all/easy violations and15undefined easy views.
+Its full completion-lower change over the fresh known-only MLP is+0.006377pp,
+CI[-0.721776,+0.635341]; the matched condition also fails. Local-known gains
+1.334797% but supports only6/444. Global-bounds gains0.004133%, supports291/444
+and has123undefined easy views. No secondary is substituted as a winner.
+
+The primary neural-bank completion-lower increment is+0.040875pp,
+CI[+0.001154,+0.086588]; this small fitting signal is retained, not promoted
+through the failed complete-policy gate. The originally fixed shuffled arm
+gains0.812390% with0/444risk support. A separately registered posthoc mechanism
+will preserve donor recording AND causal-action eligibility marginals; it is
+not a new primary or a threshold search. Static pre-run review memoizes the
+same source counts for efficiency in registration_v2; no inference ran under
+the draft. Expanded primary/mechanism checks:24passed in2.08s; a subsequent
+9-test pre-run check passes1.24s. Full historical tests are not rerun.
+
+The288-group4,764,037-byte aggregate archive is byte-verified. The statistical
+SVG is visually checked; private neighbors, features, data and PNG stay out of
+Git. See the [readout](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/reproduction_zh.md).
+Independent roles and deployment remain unchanged; no Stage5C or SMC.
+
 ### Completion-Aware Supervision Registered
 
 **Final status: all 72 real Torch fits, 144 readout groups and 888 fixed-region
