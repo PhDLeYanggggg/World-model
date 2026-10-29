@@ -25,6 +25,30 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: the new loss recovers useful interventions, but safety still fails.**
+I trained 18 cost-sensitive neural policy heads for 36,000 updates, changing
+only the primal loss. On the fitting data, they retain **81.55% of eligible
+positive benefit**, compared with 26.00% for the frozen exact-gradient control.
+At the same intervention count, the utility difference is bounded between
+**+1.8240 and +1.8248 percentage points** of reference cost. These are TRAIN
+outcome-completion bounds, not an FDE gain, confidence interval or test result.
+
+The required recording-level safety result worsens: **84/444 views pass,
+versus 178/444**. Most known harm violations occur in two multi-recording
+sources. Preserving net easy error does not satisfy the separate positive-harm
+constraints. This is a useful fitting improvement, not a deployable policy.
+
+All final weights were frozen before readout; all 72 readouts replay exactly,
+and 57 targeted tests pass. Independent evaluation remains unopened. I am
+keeping deployment unchanged and taking the improved benefit-learning loss
+into the next recording-constraint repair, while retaining the known
+forecast/support obstruction below.
+[Results](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/failure_analysis.md),
+[model card](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/model_card.md).
+
+### Previous TRAIN Feasibility Diagnostic
+
 **29 October: safe training choices exist, but the policy does not recover them.**
 An exact label-aware diagnostic finds useful choices within the 2% budget in
 146 of 148 recording/forecast views. The two exceptions are the same recording:
@@ -36,13 +60,12 @@ a specific forecast/support limitation, not simply an absence of useful signal.
 
 All 72 fitting readouts replay exactly. An initial grouping bug is preserved and
 documented; corrected per-record scores match the prior verified controls.
-The oracle is label-aware and not deployable. I am now testing one training
-change, a cost-sensitive logistic objective, with the same inputs and 2% budget.
-Its real 40-update pilot passes exact resume checks. All 18 full fits are now
-complete: 36,000 updates in 10.1 minutes, with 3.02 GB peak memory. Final weights
-are frozen before fitting-result comparison; held data and deployment remain unchanged.
+The oracle is label-aware and not deployable. It motivated the cost-sensitive
+logistic comparison reported above, with the same inputs and 2% budget.
+Its 18 full fits took 10.1 minutes with 3.02 GB peak memory; no held data or
+deployment was changed.
 [Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
-[next experiment](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
+[follow-up protocol](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 
 ### Previous Cross-Recording Comparison
 

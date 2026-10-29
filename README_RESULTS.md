@@ -7,7 +7,41 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### TRAIN Feasibility Diagnostic: Complete, Decision Repair Registered
+### Cost-Sensitive Primal Repair: More TRAIN Benefit, Record Safety Failed
+
+Fresh_run:18neural fits,36,000updates,72fixed fitting views and exact replay.
+Same inputs, architecture, initialization, optimizer/duals,2%budget and threshold
+as the frozen exact-gradient comparator; only the primal loss changes. Commit
+01ba5415 freezes finals before readout. Training604.903738s,peakRSS3,015,131,136B.
+The training completion artifact and heartbeat are verified; its original
+terminal exit code was not retained. ReadoutPID23199 exit0,78.580168s; replay
+PID23704 exit0. Report and post-fit diagnostic replay exactly.57targeted tests
+pass3.24s;1,836policy arithmetic checks. Full historical suite not rerun.
+
+Eligible positive benefit retention:cost-sensitive81.5516%,exact-gradient25.9979%.
+Matched utility versus exact-gradient[+1.824042,+1.824777]pp;full
+[+10.567627,+10.569935]pp. Matched versus origin[-1.263524,+0.981568]pp spanszero.
+These are outcome-completion bounds on TRAIN,not FDE improvement or CI.
+Three matched exact-gradient comparisons are empty;risk remains not_estimable.
+
+Aggregate budget coverage54/72versus53/72,but required recording coverage
+84/444versus178/444. Known all-risk violations346versus216;343of346are in
+locality008/074. Easy upper-risk violations70versus65;undefinedeasy14versus55.
+Net easy degradation meets2%inall444views,which does not waive positiveharm.
+Known fixed-action obstructionlocality082/51 retained. No deployment promotion.
+
+Wrong saturated row occurrences443,891to25,925atownfinalduals;consistent with
+the loss mechanism,not unique causal attribution. No all-risk dual hitscap100;
+344positive risk constraints remain just beforelastupdate. Next:preserve useful
+cost-sensitive fitting and test record-constraint optimization,plus legal
+candidate/support repair. Follow-up training not_run. New inner-held scores,
+independent roles,Stage5C/SMC remain unopened. Not submission-ready.
+[Results](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/conclusions.md),
+[tables](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/readout.md),
+[constraint diagnosis](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/constraint_diagnosis.md),
+[gate](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/evidence_gate.md).
+
+### TRAIN Feasibility Diagnostic: Complete, Follow-Up Now Complete
 
 Next after cross-record training failure: exact label-aware feasibility over
 fixed causal actions, and deletion-only oracle within each frozen policy.
@@ -29,8 +63,8 @@ complete after a real40-update pilot (PID20920 exit0,12.907564s,
 2.656GB peakRSS,exact10+10 versus20resume). Full training PID21379 ended with
 18 frozen fits/36,000updates,604.903738s and3,015,131,136B peakRSS. The completion
 artifact exists; the terminal exit code was not retained across the session
-transition. Fitting readout remains pending; no held evaluation is authorized
-by this fitting-only protocol.
+transition. Fitting readout is now complete as reported above; no held evaluation
+is authorized by this fitting-only protocol.
 [Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
 [repair protocol](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 
