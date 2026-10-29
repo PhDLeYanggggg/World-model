@@ -25,26 +25,32 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**Next controlled comparison: complete the causal reference coverage.**
-I have implemented a parameter-free change to the output radius so that both
-CV and damping .97 lie inside the model's representable trajectories. The
-radius uses past motion only. A full-source geometry preflight passes: the
-new bounds exclude neither reference. The two damping-centered folds are
-unchanged; the OLS4-centered fold changes the radius on 66,155 training and
-46,047 excluded-source windows. These are geometry checks, not improved
-forecasts or a safety guarantee.
+**29 October: completing reference coverage yields a small gain, not a safe upgrade.**
+I changed only the causal output radius so that CV and damping .97 can both
+be represented. All nine fits and 36,000 updates are complete, with endpoints
+frozen before scoring. The six unchanged-radius fits reproduce the control's
+full training state and forecasts exactly; the three affected fits retain
+matched draws and random states.
 
-The run keeps the preceding harm-aware loss, data, seeds, optimizer and
-4,000-update schedule fixed. Nine fits were registered before training.
-The affected-fold real-data pilot passes exact interruption and coverage-off
-replay checks; its full 4,000-update neutral replay also matches exactly.
-All nine fits are complete: 36,000 updates in 9.0 minutes, with 1.58 GB peak
-memory. The six unchanged-radius fits reproduce the control's full training
-state exactly; the other three keep matching draw/RNG states. All endpoints
-are being frozen before first readout. 60 targeted tests pass. No scientific
-gain is claimed yet, and no independent evaluation or deployment is opened.
+Equal-locality ADE improvement over CV rises from **7.532% to 7.595%**.
+The paired change is **+0.064 percentage points**, with a conditional 95%
+locality-bootstrap interval of **[+0.030, +0.097]**; all three seeds improve.
+This is small and still below the original ADE-only model's 8.462% result.
+Easy ADE degradation remains **8.346%**, and fixed-floor TRAIN feasibility
+stays **147/148**. The geometric restriction was real, but fixing it does not
+repair the full safety problem or justify deployment.
+
+A further label-aware case diagnosis finds real damping/OLS alternatives on
+the remaining failed recording. Exact copies of the fallback are excluded,
+so this is not a fake zero-intervention pass. I am now checking the complete
+fixed TRAIN action bank before deciding whether a new multi-action cost policy
+is worth training. That policy is not trained or deployed. 68 targeted tests
+pass; independent evaluation remains unopened.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
 The unchanged-fold implication is recorded [before readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/scope_implication.md).
+[Fixed readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/readout.md),
+[remaining-case diagnosis](outputs/publication_readiness_2026_09/european_reference_coverage_v1/remaining_case_diagnosis.md),
+[technical appendix](outputs/publication_readiness_2026_09/european_reference_coverage_v1/technical_appendix.md).
 
 ### Completed Harm-Loss Comparison
 
@@ -74,8 +80,8 @@ remaining difficult recording, where CV is geometrically representable.
 The current and earlier-family training took 11.3 and 27.3 minutes respectively.
 54 targeted regression tests pass; the full historical suite was not rerun.
 I am keeping deployment and the 2% full-policy safety requirement unchanged.
-The next controlled change will test an output construction that includes the
-causal reference trajectories, rather than another switching-threshold search.
+That output-construction comparison is now complete above; its small gain does
+not reverse the earlier harm-loss failure.
 [Results](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/failure_analysis.md),
 [output-bound diagnosis](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/output_bound_diagnosis.md),

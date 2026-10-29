@@ -6,6 +6,8 @@ import os
 from pathlib import Path
 import platform
 import resource
+import shlex
+import subprocess
 import sys
 import time
 
@@ -26,6 +28,34 @@ from src.evaluation.m3w_native_metrics import native_errors
 from src.world_model.m3w_european_source_forecast import baseline_numpy
 from src.world_model.m3w_floor_relative import matched_features
 from src.world_model.m3w_fixed_floor_probe import targets
+from src.evaluation.m3w_train_packet_transport import verified_packet_bytes
+
+
+def fit_packets_cached(items, ancestor, verify):
+    # Same frozen bytes, unpacker and fitting-record filter; transport only.
+    loader = old.direct.LOADER.census.heads.previous.execution
+    from scripts.train_m3w_temporal_auxiliary_portable import unpack
+    result = {}
+    for item in items:
+        ref = item['packet']; source = ref['identity']['source']
+
+        def fetch():
+            args = [ref['group'], ancestor['input_manifest_sha256'], ancestor['parent_registration_sha256']]
+            process = subprocess.run(loader.base.ssh_args()+[
+                shlex.join(['/usr/bin/python3', '-c', loader.PACKET, *args])],
+                capture_output=True, timeout=300)
+            if process.returncode:
+                message = process.stderr.decode(errors='replace')[-2000:]
+                run.beat('read_only_packet_stream_failed', source=source,
+                         returncode=process.returncode, stderr=message)
+                raise RuntimeError('Existing TRAIN stream unavailable; no job or authentication change: '+message)
+            return process.stdout
+
+        raw, status = verified_packet_bytes(ref, run.PRIVATE/'verified_TRAIN_packets', fetch,
+                                           allow_fetch=not verify)
+        run.beat('support_packet_verified', source=source, transport=status, sha256=ref['sha256'])
+        result[source] = old.fit_packet(unpack(raw), item['partition'])
+    return result
 
 
 def run_diagnostic(verify=False):
@@ -57,8 +87,7 @@ def run_diagnostic(verify=False):
         refs = identity['controls'][job['key']]
         banks = dict(new=newbank, harm_control=bank(refs['prediction'], ids),
                      original_ADE=bank(refs['ADE_only_prediction'], ids))
-        packets = old.fit_packets(items, ancestor,
-            lambda **kw:run.beat('support_packet_read', **{k:v for k,v in kw.items() if k != 'state'}))
+        packets = fit_packets_cached(items, ancestor, verify)
         for item in items:
             source = item['packet']['identity']['source']; args = packets[source]
             row_ids = reconstruct_fit_ids(data, item, args)
@@ -122,6 +151,7 @@ def run_diagnostic(verify=False):
         readout_sha256=run.digest(run.PUBLIC/'analysis.json'),
         preceding_support_sha256=run.digest(run.parent.PUBLIC/'support_diagnostic.json'),
         code_sha256=run.digest(Path(__file__)), oracle_is_not_inference=True,
+        transport_api_sha256=run.digest(ROOT/'src/evaluation/m3w_train_packet_transport.py'),
         candidate_dependent_cost_heads_retrained=False, independent_roles_opened=False,
         deployment_changed=False, stage5c_executed=False, smc_enabled=False)
     run.immutable_json(run.PUBLIC/'support_diagnostic.json', result)

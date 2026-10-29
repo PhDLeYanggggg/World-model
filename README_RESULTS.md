@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Causal Reference-Coverage Ablation: Training Complete, Readout Pending
+### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
 1.05*distance to causal damping.97), around the original train-selected center.
@@ -19,11 +19,30 @@ coverage-off equality. The actual80update pilot passes in1.713535s,
 peakRSS601,997,312B;exactresume and coverage-off replay. Full4,000step neutral
 on affected single2_seed17 is exact against the preceding harm-aware model,
 56.968846s. Primary9fit training PID43521 completed exit0:36,000updates,
-537.401863s,peakRSS1,580,204,032B. All9endpoints are being frozen before first
-readout,which remains not_run. Six unchanged-radius fits reproduce their full
+537.401863s,peakRSS1,580,204,032B. All9endpoints were frozen in8fc3f29abefore
+readout. Six unchanged-radius fits reproduce their full
 scientific state exactly; three affected fits keep exact draw/RNG states.
-No excluded-source rows were drawn; parameters remain88,514.60targeted regression
-tests pass3.19s; full historical suite not rerun.
+No excluded-source rows were drawn; parameters remain88,514. ReadoutPID44501
+exit0,288.009012s; replayPID44878exit0,32.762817s, exact analysis/CSV and
+2,304original-comparator metric checks.68targeted tests pass3.31s; full historical
+suite not rerun.
+
+PrimaryADEgainCV7.531916%to7.595475%, paired+0.063559pp,conditional3,000locality-
+bootstrapCI[+0.029923,+0.096635]. Seed differences+0.078978,+0.060200,+0.051499pp.
+Sevenlocalities improve,one regresses,four unchanged. Hard+0.059045pp;easy net
+degradation8.345904%,still above2. Compared with originalADE-only producer,
+all-ADEdifference-0.866165pp,CI[-1.582816,-0.109369]. No stronger-model claim.
+Known unrestrictedCVall/easy harm failures remain963/922of978repeated record/
+producer/seedviews,not independent recordings or full-policy safety.
+
+Support firstattemptPID44928exit1afterSSH255; no remote job action. Transport-
+only hash cache recoveryPID45598exit0completes all148views in69.668609s; replay
+PID46125exit0,18.819719s,uses cached bytes only. Original/harm/new control
+feasibility146/147/147. New bank gains0,lost0versusharm. Remaining082/51 has
+3known eligible easy rows,none within2%forcurrentneural. A separate real-action
+case probe finds legal damping/OLS alternatives; identical-floor actions are
+excluded,not fake anchors. Full148-view multi-action probe registered before
+its readout; new learned multi-action policy remains not_run.
 
 Fresh past-only preflight PID42951 exit0: all318,969rows checked per center.
 Damping.90center changes0rows. OLS4center changes112,202radii:66,155training,
