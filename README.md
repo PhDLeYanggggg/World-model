@@ -25,14 +25,33 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: direct neural intervention learning is registered.**
-I am testing the decision itself rather than another risk-MSE repair: a neural
-gate trained for utility with source-level or recording-level risk constraints,
-and a hard-forward version that uses deployment decisions during training.
-All three share initialization and training draws. The existing inner recording
-holdout is reserved until every final fit is frozen; it remains exploratory
-because earlier experiments have already exposed it. Real training is pending.
-[Method and fixed comparisons](outputs/publication_readiness_2026_09/european_direct_policy_v1/protocol.md).
+**29 October: direct decision learning reduces some harm, but loses useful interventions.**
+I trained 54 neural intervention heads with 108,000 optimizer updates, comparing
+source-level constraints, recording-level constraints and hard deployment
+decisions during training. The trajectory predictors and comparison protocol
+were unchanged. Every final model was frozen before the recording-holdout readout.
+
+The primary hard-decision model meets the safety budget in **35/72 training
+views**, but only **4/72 held-recording views**. It retains about **21% of the
+original policy's known benefit and 20% of its known harm** on held recordings.
+At the same intervention count, its utility change is bounded between
+**-1.133 and -0.625 percentage points**. These are partial-label completion
+bounds, not confidence intervals or FDE improvements. Fewer interventions alone
+do not explain the failure: the retained choices are also less useful.
+
+Hard decisions modestly improve matched utility over the soft recording-level
+version, but neither beats the original policy or satisfies the full safety
+requirement. I am keeping deployment unchanged. The next question is whether
+whole-recording optimization can preserve useful choices while actually meeting
+the training constraints, before claiming transfer to other recordings.
+
+This is new neural **policy** training, not a new trajectory forecaster. Exact
+replay and 88 targeted tests support the implementation; earlier exposure makes
+the recording holdout exploratory, not independent confirmation.
+[Results](outputs/publication_readiness_2026_09/european_direct_policy_v1/conclusions.md),
+[complete comparisons](outputs/publication_readiness_2026_09/european_direct_policy_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_direct_policy_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_direct_policy_v1/reproducibility.md).
 
 ### Previous Easy-Constrained Check
 

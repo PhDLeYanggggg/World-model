@@ -7,23 +7,52 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Direct Neural Policy: Registered, Training Pending
+### Direct Neural Policy: Trained, Utility and Full Safety Failed
 
-The preceding turn completed a useful falsification, not a wait or blocker.
-Direct task-risk learning already exists in the project, so this experiment
-does not claim to invent it. New fixed contrasts remove moment-MSE fitting,
-compare source versus recording constraints, and compare soft versus hard
-forward actions.54 neural policy heads,108,000 planned updates; same original
-forecasts, inner-fit preprocessing, initialization and recording-balanced draws.
-The final original TRAIN inner-held readout is exploratory, not independent test.
-No extra risk-MSE gate, changed2%budget or held-out threshold tuning.
-11 focused tests pass1.68s. An initial diagnostic float-minus-bool error was
-fixed before registration; no real experiment had run at that point.
-The first real pilot PID93772 exits1 before training: prior array-hash encoding
-differs from the forecasting helper. Execution revision2 preserves the original
-registration and uses the prior readout's codec; prediction and scientific rules
-are unchanged. A targeted regression verifies this boundary.
-[Protocol](outputs/publication_readiness_2026_09/european_direct_policy_v1/protocol.md).
+54 real neural intervention heads completed 108,000 updates on native arm64
+CPU4/interop1/workers0. Training PID95082 exit0,198.571095s,3,119,202,304B peak RSS.
+Matched initialization and recording draws isolate source versus recording dual
+constraints and soft versus hard forward actions. Primary=hard_record; no
+moment-MSE objective or MSE advancement gate. Original forecasters stay frozen.
+
+All finals frozen before144 readouts:72 fit and72 existing inner-held views.
+Fit897,060 and held419,766 row occurrences repeat across contexts/seeds;74 fit
+and31 held source-qualified recordings,12 sources. Held outcomes were exposed
+historically, so this is exploratory, not independent test or whole-pipeline OOF.
+Readout PID95704 exit0,102.727252s. Replay PID96257 exit0 exactly matches all
+144 groups and summary at2026-10-29T06:12:22.492316Z.
+
+Primary full-policy safety:fit35/72 views and125/444 record-views;held4/72 and
+17/186. Held19,915 interventions,326 unknown outcomes. Known all/easy budget
+violations43/50;unknown-only upper failures9/6;11 easy ratios undefined and
+27 easy-degradation upper bounds exceed2%. Full budget is not supported.
+Original held reference also fails the budget; it is not newly safety-certified.
+
+Primary versus original utility completion bounds:held full[-5.342713,-0.326202]pp,
+count-matched[-1.132721,-0.625042]pp. All3 head seeds have negative upper bounds.
+These are partial-label bounds,not confidence intervals or FDE gains.
+Primary retains20.90% of known benefit and20.05% of known harm. Switching less
+does not fix conditional choice quality. Hard versus soft-record matched
+[0.012406,0.030458]pp is a small controlled positive contrast,not method success.
+Source-to-record constraint gain does not establish held improvement.
+
+Initial pilot PID93772 exited1 before optimizer updates because the verifier
+used a different array-hash codec. Execution revision2 preserves the original
+registration; numerical predictions and scientific rules unchanged. Repaired
+pilot PID94538 complete:400 updates,exact50+50 resume versus100,13.253901s.
+Its terminal exit code was not captured; completion is verified from the receipt
+and no-live-process check. Full train/readout/replay terminal exits were captured.
+88 relevant tests pass3.73s; separate arithmetic checks5,310 policy records and
+replays the reports. Full historical suite not rerun. No threshold tuning,
+secondary-arm promotion, independent-role opening or deployment change.
+
+Next:compare whole-recording constraint optimization with the present stochastic
+minibatch objective on original TRAIN, retaining useful choices and the2% budget.
+Do not infer that longer training or another threshold will solve transfer.
+[Results](outputs/publication_readiness_2026_09/european_direct_policy_v1/conclusions.md),
+[readout](outputs/publication_readiness_2026_09/european_direct_policy_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_direct_policy_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/european_direct_policy_v1/protocol.md).
 
 ### Easy-Constrained Objective and Actual Policy: Complete, Not Deployable
 
