@@ -58,6 +58,14 @@ receive real gradient updates. Engineering work is360updates, not the planned
 preparation, full refit and readout are extra. This supports a complete local
 run, not a scientific result or deployment pass.
 
+Full training is running as native arm64 PID41389, with100-step checkpoints
+and50-step heartbeats. The first2,000-step history/mixed independent refit
+matches all scientific state exactly; elapsed-time bytes are excluded. The
+readout implementation checks all288groups, complete2%recording risk and
+history-vs-disabled/current/noise completion bounds before any advancement.
+Nineteen focused input/recovery/readout checks pass in2.98s. No forecast score
+has yet been read for the new heads, and no independent role is opened.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
