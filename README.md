@@ -81,7 +81,13 @@ regression-deferral logistic surrogate. This is a baseline adapter, not my
 method or a claimed reproduction of its original experiments. Its real
 120-update CPU pilot passes exact recovery. All54primary fits and108,000updates
 are complete, with matched row draws and endpoints frozen before readout.
+The fixed readout and full replay are now complete: mixed-bank known-label ADE
+gain is8.018%,but0/186required recording/head views pass full risk support.
+Its fixed cost gate supports30/186,still not the complete roster. Average
+accuracy is not a deployable safety result; the mixed-minus-physical gain
+interval also includes zero.
 [Control protocol](outputs/publication_readiness_2026_09/european_regression_deferral_v1/protocol.md).
+[Complete result](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md).
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.

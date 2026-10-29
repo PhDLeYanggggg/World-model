@@ -111,6 +111,18 @@ PID67103exit0 matches all scientific state exactly against the old mixed-bank
 endpoint,53.785976s. Registration/runtime identifiers alone differ as declared.
 The54new-unit primary fits and readout remain next; independent roles stay closed.
 
+Published-loss readout PID69045exit0 completes211.457225s,peakRSS8,055,062,528B;
+exact replay PID70427exit0 completes206.839815s,all144groups/summary exact.
+Inner-held mixed known ADE gain8.018405%versus physical-only7.229477%.
+Paired known increment+0.788928pp,conditionalCI[-0.170983,+1.675128];completion
+lower-4.463329pp,CI[-10.643677,-1.085987]. No robust neural increment established.
+Unrestricted mixed policy risk support0/186;fixed cost-gated30/186. The former
+selects381,203repeated row occurrences,8,144unknown;known all/easy violations
+185/183of186. The latter leaves23undefined easy-risk views. Neither deployable.
+All aggregate bytes are retained in a2,013,081-byte bundle. New support-unit
+primary training is running PID69018,not complete.25related tests pass2.97s;
+the full historical suite was not rerun. Risk budgets and independent roles unchanged.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,

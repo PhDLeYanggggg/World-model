@@ -57,6 +57,18 @@ def build():
             raise ValueError('Require complete, verified development evidence; no role promotion')
         bindings = {name: sha(folder/name) for name in
                     ('summary.json', 'complete.json', 'verification.json', 'training_freeze.json')}
+        if len(complete['groups']) != 144:
+            raise ValueError('Complete144-view readout required')
+        if (folder/'metric_bundle.json').exists():
+            from src.evaluation.m3w_metric_bundle import verify
+            bundle = verify(ROOT, folder)
+            bindings['metric_bundle.json'] = sha(folder/'metric_bundle.json')
+            if bundle['groups'] != 144:
+                raise ValueError('Complete aggregate bundle required')
+        else:
+            for ref in complete['groups']:
+                if sha(ROOT/ref['path']) != ref['sha256']:
+                    raise ValueError('Scientific aggregate group changed')
         freeze = json.loads((folder/'training_freeze.json').read_text())
         if freeze['count'] != 54 or freeze['inner_held_scored']:
             raise ValueError('All54 endpoints frozen before held readout required')
