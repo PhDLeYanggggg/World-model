@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: a single easy-preserving objective test is registered.**
+The next comparison constrains the donor easy-error objective and measures the
+resulting complete policy,not only risk MSE. The original2% safety budget and
+count-matched utility controls remain fixed. No new MSE admission gate is added;
+real fitting is pending. [Protocol](outputs/publication_readiness_2026_09/european_easy_constrained_v1/protocol.md).
+
+### Previous Joint Risk Check
+
 **29 October: joint risk estimates are coherent, but still not accurate enough.**
 I completed and exactly replayed all 72 fitting comparisons with unchanged
 queries and neighbors. Joint constraints remove the 9,019 contradictory outputs

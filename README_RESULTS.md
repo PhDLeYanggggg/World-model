@@ -7,6 +7,15 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Easy-Constrained Objective and Actual Policy: Registered, Not Run
+
+One fixed follow-up to the coupled-support failure. Reconstruct all/easy donor
+loss separately,constrain donor easy error not to increase,then evaluate actual
+full and count-matched policy effects at the unchanged2%rule. Risk MSE is
+secondary,not another advancement gate. No extra threshold sweep.12 targeted
+tests pass1.42s;real pilot/full fitting pending.25 existing protocol tests pass.
+[Protocol](outputs/publication_readiness_2026_09/european_easy_constrained_v1/protocol.md).
+
 The user explicitly confirmed the prospective evaluation rule on29October:
 full-policy safety on every required scene still uses the original2%budget;
 count-matched controls assess utility only,empty risk is not estimable and never
