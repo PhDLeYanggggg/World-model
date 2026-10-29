@@ -25,15 +25,29 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**In progress: matching the reference population to the frozen query policy.**
-The next fitting-only control restricts donor labels to samples that the same
-original policy would select. Normalization, queries and neighbor settings stay
-fixed. I will test whether population mismatch explains the previous magnitude
-error, without changing thresholds or opening held data. The protocol is frozen;
-the real-data pilot verifies unchanged predictions and normalization, with all
-7,572 pilot queries supported. The full 72-view calculation is running;
-scientific results are not yet available.
-[Protocol](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/protocol.md).
+**29 October: matching the reference population helps, but does not make risk reliable.**
+I completed 72 fitting comparisons using reference samples selected by the same
+frozen policy as the queries. Query selection, normalization and neighbor settings
+were unchanged, and all 62,902 query occurrences retained reference support.
+
+This reduces easy-risk prediction error by **50.10%** and overall risk error by
+**65.79%** relative to the previous pooled-neighbor estimate. However, easy-risk
+error remains **7.65 times** the original risk head's, and none of the 18
+context-seed pairs beats both controls. The registered magnitude screen fails.
+These are risk-estimation errors, not trajectory ADE/FDE improvements.
+
+The diagnosis is more specific now: matching average event frequency does not
+recover which samples incur harm or how much. Predicted easy harm remains
+**3.88 times** observed. I am retaining the negative result and the existing
+deployment policy; no new neural model or held-data evaluation was run. Full
+numerical replay, separate arithmetic checks and 53 related tests support the
+implementation, not an independent generalization claim.
+[Results](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/failure_analysis.md),
+[evidence gate](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/reproducibility.md).
+
+### Previous Pooled-Reference Check
 
 **29 October: reference coverage is repaired, but risk magnitude is not.**
 I completed all 72 fitting comparisons after pooling four approved sources from

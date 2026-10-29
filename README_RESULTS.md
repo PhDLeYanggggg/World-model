@@ -7,23 +7,47 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Policy-Conditioned Reference: Registered, Scientific Readout Not Run
+### Policy-Conditioned Reference: Complete, Magnitude Gate Failed
 
-Previous goal turn: progress,72 fresh pooled-reference views with exact replay;
-coverage/information pass, magnitude fails. The next single-factor repair keeps
-query policy, full-bank normalization and32-neighbor rule frozen, restricting
-supervised donors to the same original policy's selected population. Unknown
-queries retained; query recording excluded; insufficient donors remain undefined.
-Sixteen focused tests pass1.31s, including query-label and unselected-label
-perturbations. Real pilotPID77820 exit0:27.645489s,5,287,936,000B peak RSS,
-7,572/7,572 supported,minimum6,810 selected donors; frozen predictions and
-full-bank normalization exact. No scientific screen was evaluated in pilot.
-Full72-view computationPID78105 is running. Independent arithmetic and report
-tests are added;27 targeted tests pass1.74s plus one report test. Full science
-remains incomplete, not a positive risk result.
-No neural training, held/independent role, deployment or scientific-rule change.
+The single-factor repair restricts supervised donor labels to the same original
+policy's selected population, keeping queries, full-bank normalization and k32
+unchanged. Query recordings remain excluded and unknown queries retained. The
+real pilot (PID 77820) completed in 27.645489 s with 5,287,936,000 B peak RSS;
+all 7,572 pilot queries had support and frozen predictions/normalization matched.
+Full computation (PID 78105) completed 72 views in 231.309565 s with
+6,710,427,648 B peak RSS and zero neural updates. All 62,902 repeated query
+occurrences retain support: 61,335 known and 1,567 unknown, not independent rows.
+The smallest selected donor bank has 393 labeled rows after recording exclusion.
+
+Selected-nearest easy signed-risk MSE is 0.002365719, down 50.10% against
+full-bank nearest; all-risk MSE is 0.101728186, down 65.79%. Easy MSE is still
+7.65x original (0.000309373), with 0/18 context/head-seed wins against both
+controls. The registered screen fails despite full support. Selected nearest
+also loses to selected mean and barely beats selected shuffled labels; neither
+control is substituted for the registered arm after readout.
+
+Predicted easy harm is 370.305280 versus 95.560642 observed, a 3.88x excess.
+Average easy-harm event probability is close to prevalence, but harm allocation
+and magnitude remain wrong. Event-positive harm SSE increases 4.26%, while
+non-event SSE decreases 55.70%. Soft probability on realized non-events is not
+a classification false-positive rate. Locality020 contributes 60.67% of the
+equal-view selected-nearest easy MSE; adverse locality048 and context slices
+remain included. These diagnostics do not establish calibrated deployment risk.
+
+Full inference/retrieval replay (PID 78696) reached the verified terminal event
+at 04:48:51 UTC, matching all 72 groups and the summary; its terminal handle
+expired before exit status could be recovered, so no exit-code claim is made.
+Separate receipt arithmetic validates 1,440 arm-target checks (shared controls
+counted twice), 443 selected banks, 288 decompositions, 360 inherited controls
+and five screen conditions. Receipt and 21-slice/figure checks exit 0. The 53
+related tests passed in 4.03 s on unchanged scientific code, not the full suite.
+No new neural training, policy execution, held/independent role, deployment or
+scientific-rule change. Next: reconcile prior cost-aligned controls and test
+an objective-aligned local donor fit; that follow-up remains not_run.
 [Protocol](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/protocol.md),
-[prior controls](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/prior_controls.md).
+[prior controls](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/prior_controls.md),
+[results](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/conclusions.md),
+[reproduction](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/reproducibility.md).
 
 ### Pooled-Reference Analogue Control: Coverage and Information Pass, Magnitude Fails
 
