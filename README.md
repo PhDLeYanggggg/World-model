@@ -38,8 +38,9 @@ All 72 fitting readouts replay exactly. An initial grouping bug is preserved and
 documented; corrected per-record scores match the prior verified controls.
 The oracle is label-aware and not deployable. I am now testing one training
 change, a cost-sensitive logistic objective, with the same inputs and 2% budget.
-Its real 40-update pilot passes exact resume checks. The full 18-fit comparison
-is running locally; it does not open held data or change deployment.
+Its real 40-update pilot passes exact resume checks. All 18 full fits are now
+complete: 36,000 updates in 10.1 minutes, with 3.02 GB peak memory. Final weights
+are frozen before fitting-result comparison; held data and deployment remain unchanged.
 [Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
 [next experiment](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 
