@@ -1,0 +1,766 @@
+{
+  "identity": {
+    "group": "single0_seed43_controller1_dimensionless_fit_eu-locality-048",
+    "source": "eu-locality-048",
+    "seed": 43,
+    "upstream": {
+      "registration_sha256": "621c893aeaca0e3973dc7f36a778bc58518334915efe699506db6974bcf2f2ad",
+      "context": "single0_seed43_controller1_dimensionless",
+      "train_site": "eu-locality-048",
+      "producer_sites": [
+        "eu-locality-074",
+        "eu-locality-082",
+        "eu-locality-112",
+        "eu-locality-126"
+      ],
+      "controller_sites": [
+        "eu-locality-007",
+        "eu-locality-110",
+        "eu-locality-119",
+        "eu-locality-124"
+      ],
+      "upstream_context": {
+        "identity": {
+          "bindings": {
+            "configs/m3w_european_source_forecast_v1.json": "526add4d014200534a4d2ee6880600d6abd41db5d56cdd30e7ab64267cd0a85f",
+            "scripts/run_m3w_european_source_forecast.py": "3439a19515bd10f23e878122533aa7948fb1baa3d61554ad41c88613146ee7a3",
+            "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+            "tests/test_m3w_european_source_forecast.py": "f90465eb46e839a6769cb750c16a02b468a1222817c2c2ffbf9c11ca180a2a13",
+            "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+            "scripts/run_m3w_native_forecast.py": "b8b02340c0515c7dc2a32c1db724a8edd236a70e8b3d7974d7bc0cfbcff5a443",
+            "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+            "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+            "src/world_model/m3w_baseline_relative_forecaster.py": "333fc13769381bb9eca9bc3c8462b90f340b8ccbe9ed30df3d94d425d401c45a",
+            "src/evaluation/m3w_native_metrics.py": "7876c44b092ca21fd4c50f2d2c1dd23906e3b51231e97e3ea591641f22afca38",
+            "src/evaluation/m3w_european_squares_roles.py": "f952eabe6949abb4f61e72318e8f70dfcdded3489abe2ec8424fe35c6e8aee04",
+            "outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md": "c58e85486e35cc872fff6e35d28ee9ed3573e1bf66fb9ff0757c4c64c0953717"
+          },
+          "source_manifest_sha256": "6ed8f16f7f5557bbd88fbaa72778bb79b7893d6a91146945f0f76ced376d16a6",
+          "source_roles_sha256": "858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435",
+          "folds": {
+            "eu-locality-074": 0,
+            "eu-locality-110": 1,
+            "eu-locality-008": 2,
+            "eu-locality-126": 0,
+            "eu-locality-119": 1,
+            "eu-locality-048": 2,
+            "eu-locality-112": 0,
+            "eu-locality-124": 1,
+            "eu-locality-067": 2,
+            "eu-locality-082": 0,
+            "eu-locality-007": 1,
+            "eu-locality-020": 2
+          },
+          "numpy": "2.4.6",
+          "torch": "2.12.0",
+          "architecture": "arm64",
+          "runtime": {
+            "device": "cpu",
+            "torch_threads": 4,
+            "interop_threads": 1,
+            "num_workers": 0
+          }
+        },
+        "kind": "single",
+        "fold": 0,
+        "seed": 43,
+        "fit_sites": [
+          "eu-locality-074",
+          "eu-locality-082",
+          "eu-locality-112",
+          "eu-locality-126"
+        ],
+        "train_ids_sha256": "86eaf3320f4b559964ef1af836832f2de9e2313506ae94190355b47148b3a655",
+        "held_ids_sha256": "1d4f953e41244cf8365a8447b84a5c3c8217c6e4d264d1a68739519193e90340",
+        "factor_sha256": "ff12fe1ee76db53889f04687f7e032c3645699edaae6237f657039ff43400386",
+        "normalizers": {
+          "eu-locality-074": {
+            "indexed": 104353,
+            "supported": 102348,
+            "selected_baseline_mean_ADE": 18.374481094108848,
+            "correction": 1.0195900261851722
+          },
+          "eu-locality-082": {
+            "indexed": 1448,
+            "supported": 1368,
+            "selected_baseline_mean_ADE": 13.641594529351089,
+            "correction": 1.0584795321637428
+          },
+          "eu-locality-112": {
+            "indexed": 5131,
+            "supported": 5004,
+            "selected_baseline_mean_ADE": 21.382899851802883,
+            "correction": 1.0253796962430055
+          },
+          "eu-locality-126": {
+            "indexed": 5891,
+            "supported": 5790,
+            "selected_baseline_mean_ADE": 17.66254861653383,
+            "correction": 1.0174438687392056
+          }
+        },
+        "baseline_index": 2,
+        "selection_relative_scores": [
+          1.5443497481234125,
+          1.0,
+          0.920528281775876,
+          0.943545684007733,
+          0.9466982148973772,
+          1.0580695261637576
+        ],
+        "easy_cut": 4.7893961163745615,
+        "hard_cut": 23.7266812138368
+      },
+      "seed": 43,
+      "fitting_ids_hash": "4e83615509b2664dfba22d28f86b73c72971c4d9c1c126457665fda03a5337d6",
+      "input_hashes": {
+        "x": "2c13f6347ec2d7469dfe730c2dcfbdd1be434fae4286b21ee33c608a7d2e35f0",
+        "envelope": "cdd24e6134117c6bf7dcf3e540e3acf68fbc164b657400d9d0f2ac938d29f63c",
+        "targets": "90c8192c18ce91def668738f8c479f75e939ce0f5507fd3678d9b72e95f2e1c9",
+        "frames": "e4dba5fe391cb8e48decdc3df4e0bfec9d18b9d8ede3692a7130562516b159d2"
+      },
+      "other_fitting_source_used": false,
+      "outer_held_outcomes_used": false
+    },
+    "partition": {
+      "method": "whole_recording_hash_split",
+      "train_recordings": [
+        "36",
+        "37"
+      ],
+      "validation_recordings": [
+        "35",
+        "34"
+      ],
+      "train_rows": 3486,
+      "validation_rows": 4858,
+      "purged_rows": 0
+    },
+    "training_ids_sha256": "b59f71b945be54e442d33c417234e2d75eae1689ea82cd94dd6ed9de70abf977",
+    "source_checkpoint": {
+      "path": "data/stage_cvpr2027_experiments/european_source_forest_v1/heads/single0_seed43_controller1_dimensionless_fit_eu-locality-048/checkpoint.joblib",
+      "sha256": "4930fc09cf28721adf34096eaeff5672f9ea4f44e3b1e534cede433a9e6180ea"
+    },
+    "registration_sha256": "500aa4618d01345d7f50c59673c2ea29332b61219de48a6ee874c22d1c1759e7"
+  },
+  "mode": "budget_scaled",
+  "checkpoint_identity": {
+    "group": "single0_seed43_controller1_dimensionless_fit_eu-locality-048",
+    "source": "eu-locality-048",
+    "seed": 43,
+    "upstream": {
+      "registration_sha256": "621c893aeaca0e3973dc7f36a778bc58518334915efe699506db6974bcf2f2ad",
+      "context": "single0_seed43_controller1_dimensionless",
+      "train_site": "eu-locality-048",
+      "producer_sites": [
+        "eu-locality-074",
+        "eu-locality-082",
+        "eu-locality-112",
+        "eu-locality-126"
+      ],
+      "controller_sites": [
+        "eu-locality-007",
+        "eu-locality-110",
+        "eu-locality-119",
+        "eu-locality-124"
+      ],
+      "upstream_context": {
+        "identity": {
+          "bindings": {
+            "configs/m3w_european_source_forecast_v1.json": "526add4d014200534a4d2ee6880600d6abd41db5d56cdd30e7ab64267cd0a85f",
+            "scripts/run_m3w_european_source_forecast.py": "3439a19515bd10f23e878122533aa7948fb1baa3d61554ad41c88613146ee7a3",
+            "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+            "tests/test_m3w_european_source_forecast.py": "f90465eb46e839a6769cb750c16a02b468a1222817c2c2ffbf9c11ca180a2a13",
+            "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+            "scripts/run_m3w_native_forecast.py": "b8b02340c0515c7dc2a32c1db724a8edd236a70e8b3d7974d7bc0cfbcff5a443",
+            "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+            "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+            "src/world_model/m3w_baseline_relative_forecaster.py": "333fc13769381bb9eca9bc3c8462b90f340b8ccbe9ed30df3d94d425d401c45a",
+            "src/evaluation/m3w_native_metrics.py": "7876c44b092ca21fd4c50f2d2c1dd23906e3b51231e97e3ea591641f22afca38",
+            "src/evaluation/m3w_european_squares_roles.py": "f952eabe6949abb4f61e72318e8f70dfcdded3489abe2ec8424fe35c6e8aee04",
+            "outputs/publication_readiness_2026_09/european_source_forecast_v1/registration.md": "c58e85486e35cc872fff6e35d28ee9ed3573e1bf66fb9ff0757c4c64c0953717"
+          },
+          "source_manifest_sha256": "6ed8f16f7f5557bbd88fbaa72778bb79b7893d6a91146945f0f76ced376d16a6",
+          "source_roles_sha256": "858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435",
+          "folds": {
+            "eu-locality-074": 0,
+            "eu-locality-110": 1,
+            "eu-locality-008": 2,
+            "eu-locality-126": 0,
+            "eu-locality-119": 1,
+            "eu-locality-048": 2,
+            "eu-locality-112": 0,
+            "eu-locality-124": 1,
+            "eu-locality-067": 2,
+            "eu-locality-082": 0,
+            "eu-locality-007": 1,
+            "eu-locality-020": 2
+          },
+          "numpy": "2.4.6",
+          "torch": "2.12.0",
+          "architecture": "arm64",
+          "runtime": {
+            "device": "cpu",
+            "torch_threads": 4,
+            "interop_threads": 1,
+            "num_workers": 0
+          }
+        },
+        "kind": "single",
+        "fold": 0,
+        "seed": 43,
+        "fit_sites": [
+          "eu-locality-074",
+          "eu-locality-082",
+          "eu-locality-112",
+          "eu-locality-126"
+        ],
+        "train_ids_sha256": "86eaf3320f4b559964ef1af836832f2de9e2313506ae94190355b47148b3a655",
+        "held_ids_sha256": "1d4f953e41244cf8365a8447b84a5c3c8217c6e4d264d1a68739519193e90340",
+        "factor_sha256": "ff12fe1ee76db53889f04687f7e032c3645699edaae6237f657039ff43400386",
+        "normalizers": {
+          "eu-locality-074": {
+            "indexed": 104353,
+            "supported": 102348,
+            "selected_baseline_mean_ADE": 18.374481094108848,
+            "correction": 1.0195900261851722
+          },
+          "eu-locality-082": {
+            "indexed": 1448,
+            "supported": 1368,
+            "selected_baseline_mean_ADE": 13.641594529351089,
+            "correction": 1.0584795321637428
+          },
+          "eu-locality-112": {
+            "indexed": 5131,
+            "supported": 5004,
+            "selected_baseline_mean_ADE": 21.382899851802883,
+            "correction": 1.0253796962430055
+          },
+          "eu-locality-126": {
+            "indexed": 5891,
+            "supported": 5790,
+            "selected_baseline_mean_ADE": 17.66254861653383,
+            "correction": 1.0174438687392056
+          }
+        },
+        "baseline_index": 2,
+        "selection_relative_scores": [
+          1.5443497481234125,
+          1.0,
+          0.920528281775876,
+          0.943545684007733,
+          0.9466982148973772,
+          1.0580695261637576
+        ],
+        "easy_cut": 4.7893961163745615,
+        "hard_cut": 23.7266812138368
+      },
+      "seed": 43,
+      "fitting_ids_hash": "4e83615509b2664dfba22d28f86b73c72971c4d9c1c126457665fda03a5337d6",
+      "input_hashes": {
+        "x": "2c13f6347ec2d7469dfe730c2dcfbdd1be434fae4286b21ee33c608a7d2e35f0",
+        "envelope": "cdd24e6134117c6bf7dcf3e540e3acf68fbc164b657400d9d0f2ac938d29f63c",
+        "targets": "90c8192c18ce91def668738f8c479f75e939ce0f5507fd3678d9b72e95f2e1c9",
+        "frames": "e4dba5fe391cb8e48decdc3df4e0bfec9d18b9d8ede3692a7130562516b159d2"
+      },
+      "other_fitting_source_used": false,
+      "outer_held_outcomes_used": false
+    },
+    "partition": {
+      "method": "whole_recording_hash_split",
+      "train_recordings": [
+        "36",
+        "37"
+      ],
+      "validation_recordings": [
+        "35",
+        "34"
+      ],
+      "train_rows": 3486,
+      "validation_rows": 4858,
+      "purged_rows": 0
+    },
+    "training_ids_sha256": "b59f71b945be54e442d33c417234e2d75eae1689ea82cd94dd6ed9de70abf977",
+    "source_checkpoint": {
+      "path": "data/stage_cvpr2027_experiments/european_source_forest_v1/heads/single0_seed43_controller1_dimensionless_fit_eu-locality-048/checkpoint.joblib",
+      "sha256": "4930fc09cf28721adf34096eaeff5672f9ea4f44e3b1e534cede433a9e6180ea"
+    },
+    "registration_sha256": "500aa4618d01345d7f50c59673c2ea29332b61219de48a6ee874c22d1c1759e7",
+    "constraint_mode": "budget_scaled",
+    "constraint_scales": [
+      0.019999999552965164,
+      0.0006452339584939182
+    ],
+    "TRAIN_budget_scales": [
+      0.019999999552965164,
+      0.0006452339584939182
+    ]
+  },
+  "step": 2000,
+  "trace": [
+    {
+      "step": 0,
+      "monitor": {
+        "total": 1.5401830673217773,
+        "primary_total": 1.296562910079956,
+        "moments": 1.1318185329437256,
+        "decision_scores": 1.461307168006897,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.24362017214298248,
+        "soft_all_excess": 0.005374179687350988,
+        "soft_easy_excess": 0.0002900105610024184,
+        "soft_intervention": 0.116402767598629
+      },
+      "dual": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "step": 1,
+      "loss": 0.7207282781600952,
+      "gradient_norm": 0.2437116950750351,
+      "monitor": {
+        "total": 1.7364261150360107,
+        "primary_total": 1.2950104475021362,
+        "moments": 1.130700945854187,
+        "decision_scores": 1.4593199491500854,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.24359309673309326,
+        "soft_all_excess": 0.005359719041734934,
+        "soft_easy_excess": 0.00029016652842983603,
+        "soft_intervention": 0.11637330055236816
+      },
+      "dual": [
+        0.32290998101234436,
+        0.24746574461460114
+      ]
+    },
+    {
+      "step": 100,
+      "loss": 3.394789457321167,
+      "gradient_norm": 9.235142707824707,
+      "monitor": {
+        "total": 8.820194244384766,
+        "primary_total": 1.967244029045105,
+        "moments": 1.5262982845306396,
+        "decision_scores": 2.4081897735595703,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.2483179122209549,
+        "soft_all_excess": 0.0017800912028178573,
+        "soft_easy_excess": 0.00015357435040641576,
+        "soft_intervention": 0.0973481684923172
+      },
+      "dual": [
+        19.399503707885742,
+        20.494592666625977
+      ]
+    },
+    {
+      "step": 200,
+      "loss": 11.094686508178711,
+      "gradient_norm": 104.26982116699219,
+      "monitor": {
+        "total": 3.444049119949341,
+        "primary_total": 2.240741491317749,
+        "moments": 1.699435830116272,
+        "decision_scores": 2.7820470333099365,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.2497563362121582,
+        "soft_all_excess": 0.0006354228826239705,
+        "soft_easy_excess": 3.2175012165680528e-06,
+        "soft_intervention": 0.08454063534736633
+      },
+      "dual": [
+        25.876760482788086,
+        26.354215621948242
+      ]
+    },
+    {
+      "step": 300,
+      "loss": 1.5339699983596802,
+      "gradient_norm": 71.92609405517578,
+      "monitor": {
+        "total": 1.1142613887786865,
+        "primary_total": 1.8576242923736572,
+        "moments": 1.5099023580551147,
+        "decision_scores": 2.2053463459014893,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.24382105469703674,
+        "soft_all_excess": 2.1239211491774768e-05,
+        "soft_easy_excess": -2.6971432816935703e-05,
+        "soft_intervention": 0.08261396735906601
+      },
+      "dual": [
+        28.742931365966797,
+        24.346487045288086
+      ]
+    },
+    {
+      "step": 400,
+      "loss": -0.955955982208252,
+      "gradient_norm": 14.237749099731445,
+      "monitor": {
+        "total": 0.5007295608520508,
+        "primary_total": 1.9113829135894775,
+        "moments": 1.5578490495681763,
+        "decision_scores": 2.2649166584014893,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.23810696601867676,
+        "soft_all_excess": -0.00039790646405890584,
+        "soft_easy_excess": -3.446750633884221e-05,
+        "soft_intervention": 0.08426570892333984
+      },
+      "dual": [
+        28.67426109313965,
+        20.185407638549805
+      ]
+    },
+    {
+      "step": 500,
+      "loss": 0.5031578540802002,
+      "gradient_norm": 6.955062389373779,
+      "monitor": {
+        "total": -0.552566409111023,
+        "primary_total": 1.6370025873184204,
+        "moments": 1.4620286226272583,
+        "decision_scores": 1.8119765520095825,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.23229548335075378,
+        "soft_all_excess": -0.0006654146127402782,
+        "soft_easy_excess": -6.152498826850206e-05,
+        "soft_intervention": 0.09112650156021118
+      },
+      "dual": [
+        28.04482078552246,
+        15.613489151000977
+      ]
+    },
+    {
+      "step": 600,
+      "loss": -0.584242582321167,
+      "gradient_norm": 7.233847618103027,
+      "monitor": {
+        "total": -0.29561471939086914,
+        "primary_total": 1.5781376361846924,
+        "moments": 1.3913235664367676,
+        "decision_scores": 1.7649517059326172,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.2266051173210144,
+        "soft_all_excess": -0.0008881072280928493,
+        "soft_easy_excess": -5.9271180361974984e-05,
+        "soft_intervention": 0.09058598428964615
+      },
+      "dual": [
+        25.7421932220459,
+        10.420927047729492
+      ]
+    },
+    {
+      "step": 700,
+      "loss": 1.0921144485473633,
+      "gradient_norm": 20.750347137451172,
+      "monitor": {
+        "total": 0.1446317434310913,
+        "primary_total": 1.471527099609375,
+        "moments": 1.527093529701233,
+        "decision_scores": 1.415960669517517,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.21103335916996002,
+        "soft_all_excess": -0.0011788008268922567,
+        "soft_easy_excess": -2.7095720724901184e-05,
+        "soft_intervention": 0.10557463765144348
+      },
+      "dual": [
+        22.64523696899414,
+        4.839244842529297
+      ]
+    },
+    {
+      "step": 800,
+      "loss": 0.15699297189712524,
+      "gradient_norm": 7.831780910491943,
+      "monitor": {
+        "total": 0.38914239406585693,
+        "primary_total": 1.2237627506256104,
+        "moments": 1.2354282140731812,
+        "decision_scores": 1.212097406387329,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.21540449559688568,
+        "soft_all_excess": -0.0011034505441784859,
+        "soft_easy_excess": -5.295856317388825e-05,
+        "soft_intervention": 0.1027291789650917
+      },
+      "dual": [
+        19.00075340270996,
+        0.0207761749625206
+      ]
+    },
+    {
+      "step": 900,
+      "loss": 0.26507318019866943,
+      "gradient_norm": 25.256881713867188,
+      "monitor": {
+        "total": -0.019699454307556152,
+        "primary_total": 1.0228898525238037,
+        "moments": 1.022362470626831,
+        "decision_scores": 1.023417353630066,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.21121762692928314,
+        "soft_all_excess": -0.0017779740737751126,
+        "soft_easy_excess": -5.125111056258902e-05,
+        "soft_intervention": 0.1085924282670021
+      },
+      "dual": [
+        14.103771209716797,
+        0.0
+      ]
+    },
+    {
+      "step": 1000,
+      "loss": 0.011271178722381592,
+      "gradient_norm": 3.4963879585266113,
+      "monitor": {
+        "total": 0.34866851568222046,
+        "primary_total": 0.9297076463699341,
+        "moments": 0.9569305181503296,
+        "decision_scores": 0.9024847149848938,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.2049473524093628,
+        "soft_all_excess": -0.0019750592764467,
+        "soft_easy_excess": -3.0450264603132382e-05,
+        "soft_intervention": 0.114410400390625
+      },
+      "dual": [
+        7.959117412567139,
+        0.0
+      ]
+    },
+    {
+      "step": 1100,
+      "loss": 0.37914544343948364,
+      "gradient_norm": 1.8553259372711182,
+      "monitor": {
+        "total": 0.7829957008361816,
+        "primary_total": 0.7192828059196472,
+        "moments": 0.712245523929596,
+        "decision_scores": 0.7263200879096985,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.2090877741575241,
+        "soft_all_excess": -0.001818627119064331,
+        "soft_easy_excess": -3.412982914596796e-05,
+        "soft_intervention": 0.11391118168830872
+      },
+      "dual": [
+        1.5987324714660645,
+        0.0
+      ]
+    },
+    {
+      "step": 1200,
+      "loss": 0.5690817832946777,
+      "gradient_norm": 1.2038029432296753,
+      "monitor": {
+        "total": 0.6884523630142212,
+        "primary_total": 0.47565293312072754,
+        "moments": 0.5125983953475952,
+        "decision_scores": 0.4387074410915375,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.21279941499233246,
+        "soft_all_excess": -0.001399667002260685,
+        "soft_easy_excess": -3.114103674306534e-05,
+        "soft_intervention": 0.11914101243019104
+      },
+      "dual": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "step": 1300,
+      "loss": 0.8800024390220642,
+      "gradient_norm": 7.50846004486084,
+      "monitor": {
+        "total": 0.6490655541419983,
+        "primary_total": 0.4545332193374634,
+        "moments": 0.4917483329772949,
+        "decision_scores": 0.41731807589530945,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.21225738525390625,
+        "soft_all_excess": -0.0017203276511281729,
+        "soft_easy_excess": -3.912089596269652e-05,
+        "soft_intervention": 0.11852473020553589
+      },
+      "dual": [
+        0.0,
+        0.29234543442726135
+      ]
+    },
+    {
+      "step": 1400,
+      "loss": 0.5267931222915649,
+      "gradient_norm": 1.8930600881576538,
+      "monitor": {
+        "total": 0.6436904668807983,
+        "primary_total": 0.4437846541404724,
+        "moments": 0.4785640239715576,
+        "decision_scores": 0.4090053141117096,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.213314026594162,
+        "soft_all_excess": -0.0016130427829921246,
+        "soft_easy_excess": -4.6808767365291715e-05,
+        "soft_intervention": 0.12209492176771164
+      },
+      "dual": [
+        0.0,
+        0.18482527136802673
+      ]
+    },
+    {
+      "step": 1500,
+      "loss": 1.0823228359222412,
+      "gradient_norm": 4.592434406280518,
+      "monitor": {
+        "total": 0.6098136901855469,
+        "primary_total": 0.40277111530303955,
+        "moments": 0.4472547471523285,
+        "decision_scores": 0.3582874536514282,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.20704254508018494,
+        "soft_all_excess": -0.0018735274206846952,
+        "soft_easy_excess": -4.14855639974121e-05,
+        "soft_intervention": 0.12701129913330078
+      },
+      "dual": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "step": 1600,
+      "loss": 0.37871888279914856,
+      "gradient_norm": 1.035754680633545,
+      "monitor": {
+        "total": 0.579034686088562,
+        "primary_total": 0.37802112102508545,
+        "moments": 0.4285129904747009,
+        "decision_scores": 0.3275292217731476,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.20618021488189697,
+        "soft_all_excess": -0.001972033642232418,
+        "soft_easy_excess": -4.610552059602924e-05,
+        "soft_intervention": 0.1287952959537506
+      },
+      "dual": [
+        0.05239932984113693,
+        0.0
+      ]
+    },
+    {
+      "step": 1700,
+      "loss": 0.7399493455886841,
+      "gradient_norm": 1.7678190469741821,
+      "monitor": {
+        "total": 0.5730985403060913,
+        "primary_total": 0.3612370789051056,
+        "moments": 0.41509753465652466,
+        "decision_scores": 0.3073766231536865,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.21186146140098572,
+        "soft_all_excess": -0.0018448005430400372,
+        "soft_easy_excess": -5.97252364968881e-05,
+        "soft_intervention": 0.12817253172397614
+      },
+      "dual": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "step": 1800,
+      "loss": 0.52840656042099,
+      "gradient_norm": 1.0948272943496704,
+      "monitor": {
+        "total": 0.5466442704200745,
+        "primary_total": 0.3462717533111572,
+        "moments": 0.4039214551448822,
+        "decision_scores": 0.28862208127975464,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.20037251710891724,
+        "soft_all_excess": -0.0021731695160269737,
+        "soft_easy_excess": -5.4739830375183374e-05,
+        "soft_intervention": 0.14100578427314758
+      },
+      "dual": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "step": 1900,
+      "loss": 0.4445034861564636,
+      "gradient_norm": 3.439142942428589,
+      "monitor": {
+        "total": 0.554002046585083,
+        "primary_total": 0.36146220564842224,
+        "moments": 0.4112675189971924,
+        "decision_scores": 0.3116568922996521,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.19798871874809265,
+        "soft_all_excess": -0.002443999983370304,
+        "soft_easy_excess": -5.171233351575211e-05,
+        "soft_intervention": 0.14602068066596985
+      },
+      "dual": [
+        0.0,
+        0.06798803806304932
+      ]
+    },
+    {
+      "step": 2000,
+      "loss": 0.4573124945163727,
+      "gradient_norm": 1.557321548461914,
+      "monitor": {
+        "total": 0.574451744556427,
+        "primary_total": 0.37591952085494995,
+        "moments": 0.4238823354244232,
+        "decision_scores": 0.3279567062854767,
+        "auxiliary": 3.002046823501587,
+        "decision_regret": 0.19853220880031586,
+        "soft_all_excess": -0.00280005089007318,
+        "soft_easy_excess": -9.098657756112516e-05,
+        "soft_intervention": 0.15502697229385376
+      },
+      "dual": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "dual": [
+    0.0,
+    0.0
+  ],
+  "input_hashes": {
+    "x": "33800758dbd14ba88e7e3ebdaea33a30e657b367b529b19f56d868fff9d78f12",
+    "envelope": "91afc34c05fde29a4f3c7b9f8f9726f174bf9a6a9a76e81a55429b93ceaad395",
+    "primary": "9219d92b6ca5d199f05dffa1d7a338d41bfd3c25486ebfeb4cbd1f83d088c9b2",
+    "temporal": "63505f00122cee92f71a5f7b6fa50fe045229aa3cfb9da2fdf7551effd582c24",
+    "sites": "4dcedf210e5eb6e951003ce370aeb30c528334a59e1a478c2e3936e47a29bcf9",
+    "recordings": "d3fc25ec6e3f527b4d2687fd9163b30edaa85d31c54d39a9692e397de0830200",
+    "frames": "ae073ad74a65b581195eb679418a5d9a8ac486bcdc03e5b934676572bed429a6"
+  },
+  "eligibility_sha256": "fffa5781067e386dcb3ae4a28fd424e918424e3fed06f9caf4465ea24f048ec2",
+  "draw_hash": "e5977d2495d69955aed3f16591dce74484105302e2f8f4c8095a0f02b5634706",
+  "registration_sha256": "97437cf6eb9b0db5796584b57ac0a5aef4564f06a9d8781c8b92622eb5eb62a9",
+  "checkpoint": {
+    "path": "data/stage_cvpr2027_experiments/european_scaled_risk_v1/heads/single0_seed43_controller1_dimensionless_fit_eu-locality-048_head43_budget_scaled/checkpoint.pt.gz",
+    "sha256": "320afff81d567c90a696ce4a64a323a9447f9f60fc19ad202c20d10243fe685d",
+    "bytes": 193899
+  },
+  "unit_control_replay_exact": false,
+  "result_source": "fresh_run_TRAIN_fit",
+  "validation_scored": false,
+  "independent_roles_read": false
+}

@@ -17,8 +17,9 @@ with a fresh unscaled control required to reproduce all 72 previous task-risk
 heads exactly. Ten focused tests pass. The real TRAIN pilot completed 400 updates
 in 9.65s, with exact interrupted/direct resume and original-control equality;
 peak RSS was 2.24GiB. The projected full run is 14.02 minutes including margin.
-This admits full training, not a scientific improvement claim. The full 144-fit
-run is active; the eight-arm readout is registered before candidate predictions.
+The full 144-fit run completed in 479.82s on October 29, with all 72 original
+controls exactly reproduced. Its finals are frozen before the eight-arm readout;
+this is completed training, not a scientific improvement claim.
 Its eight primary utility contrasts, original 2% risk checks, all-control replay
 and independent scalar checks are fixed. The expanded focused suite passes 36
 tests. No new development result is available yet.
