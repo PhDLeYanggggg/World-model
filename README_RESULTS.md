@@ -7,6 +7,15 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Selected-Tail Accounting: Registered, Not Yet Run
+
+The next diagnostic freezes all six policies from the completed isolated-harm
+comparison and replays144 views. It separates harm underestimation from reference
+overestimation, checks inner-fit-defined causal radius bins, and computes the
+bounded branch's harm supremum. Six unit tests pass. No new fit, threshold,
+deployment, independent role or safety claim is introduced.
+[Protocol](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/protocol.md).
+
 ### Isolated Harm Continuation: Complete, No Advancement
 
 The fixed experiment protects a shared-utility anchor's benefit/reference

@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: tracing selected-risk error before another fit.**
+I am replaying the frozen six-policy comparison to separate underestimated
+harm from overestimated baseline reference error. The diagnostic also checks
+fit-defined causal feature ranges and the isolated branch's representable
+harm ceiling. No model, threshold, split or deployment is being changed.
+The previous negative result remains in force until this analysis completes.
+
+[Diagnostic protocol](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/protocol.md).
+
+### Preceding Protected-Harm Experiment
+
 **29 October: protecting benefit predictions did not make intervention safe.**
 I tested three matched continuations from the same utility-trained anchors:
 continue utility learning, jointly learn risk, or freeze benefit/reference
