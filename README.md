@@ -33,7 +33,9 @@ gradients with the frozen stochastic policy. The predictor, features, update
 budget and 2% requirement stay fixed; additional computation is reported openly.
 The frozen-state diagnostic found that256/277 positive constraint occurrences
 look nonpositive in at least half of the original minibatch draws. This supports
-testing the estimator, not a claim that the new method works. Training is pending.
+testing the estimator, not a claim that the new method works. All 36 new heads
+have now completed 72,000 updates in 17.4 minutes. Their final weights are frozen;
+the fixed comparison is next. No deployment decision has changed.
 [Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
 
 ### Previous Direct Policy

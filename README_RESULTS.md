@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Whole-Recording Policy: Diagnosis Complete, Training Registered
+### Whole-Recording Policy: Training Complete, Readout Pending
 
 Previous goal turn made progress:54 direct neural heads and144 fixed readouts
 completed,with failed utility and full-policy safety. New experiment isolates
@@ -23,8 +23,13 @@ occurrences,256 with at least half of256 minibatches nonpositive;median fraction
 Sample/full-gradient cosine median0.183337;94/288 directions oppose the full
 gradient. No optimizer steps in the diagnosis. Repeated fitted states,not
 independent samples or proof of a universal failure cause. Exact-estimator
-training is now registered. Nine core tests and two reporter tests pass;
-between-heartbeat exact resume covered. No deployment promotion.
+training is now complete:36 fits,72,000updates,PID2284 captured exit0,
+1043.169336s,peak RSS3,130,507,264B. All final weights are frozen before held
+scoring. Real pilot PID1666 completed80 updates with exact10+10 versus20 resume
+for both arms; its receipt and ended process are verified,terminal exit was not
+captured.100 relevant tests pass5.00s. Separate arithmetic reproduces888 diagnostic
+record/channel means with maximum absolute difference4.01e-10. No deployment
+promotion; fixed144-view readout remains pending.
 [Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
 
 ### Direct Neural Policy: Trained, Utility and Full Safety Failed
