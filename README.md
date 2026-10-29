@@ -25,6 +25,34 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: protecting benefit predictions did not make intervention safe.**
+I tested three matched continuations from the same utility-trained anchors:
+continue utility learning, jointly learn risk, or freeze benefit/reference
+predictions and train a separate harm branch. All 54 new fits completed, followed
+by the full 144-view recording readout. An earlier numerical backward failure
+was repaired and preserved; none of its 37 completed fits was reused.
+
+The protected branch kept its benefit/reference outputs exactly unchanged, but
+lost to joint training at the same intervention count: **-0.276 percentage
+points** in conservative utility, with a nominal 95% CI of **[-0.491, -0.077]**.
+It violated known easy-risk limits in **47/72 views** and achieved complete
+policy support in only **3/72**. It does not advance or change deployment.
+
+The important distinction is between estimating harm over a fixed cohort and
+estimating harm in the cases the model actually selects. The former improved
+descriptively; the latter still substantially underestimates harm. I am retaining
+that negative result rather than treating a protected architecture as proof of
+safety. These are exposed TRAIN-internal diagnostics, not independent test
+results, trajectory FDE improvements, or a new world-dynamics capability.
+
+[Complete results](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/readout/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/failure_analysis.md),
+[method](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/method.md),
+[numerical repair](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/numerical_note.md),
+[experimental gates](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/gates.md).
+
+### Preceding Decoder-Risk Factorial
+
 **29 October: better cost prediction still does not make switching safe.**
 I completed a fixed four-way experiment separating output sharing from the
 training risk penalty: 72 new cost-head fits, 144,000 updates, and a complete

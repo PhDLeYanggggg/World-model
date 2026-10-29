@@ -1,6 +1,45 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-29 四组对照全部完成，未升级
+## 当前入口：2026-10-29 隔离伤害分支完整重跑完成，未升级
+
+固定三组：utility续训、joint risk、冻结B/R/Re的isolated harm。相同anchor和采样，
+54组各加训2,000步，共108,000次更新。原float32比例实现第38个模型发生反向NaN，
+PID40764 exit1，保留37个已完成结果，没有进行held读出。诊断复现后仅将比例中间
+运算改成float64，网络/输出仍float32；重新注册并从原anchor完整重跑54组，没有混用。
+
+修复版PID42524训练526.97秒，exit0；全部final冻结后PID43528读出144组，118.26秒，exit0。
+真实400步试跑13.38秒，恢复与输出保护精确一致。83项针对性测试通过；完整旧测试集
+未运行，以免其中的测试覆盖冻结产物。无需用户逐项审计，正式投稿仍需作者最终确认。
+
+已完成，不要重复启动：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_isolated_harm_fp64 train
+.venv-pytorch/bin/python -m scripts.evaluate_m3w_isolated_harm_fp64 run
+.venv-pytorch/bin/python -m scripts.report_m3w_isolated_harm_fp64
+.venv-pytorch/bin/python -m scripts.plot_m3w_isolated_harm_fp64
+```
+
+只复核，不重新训练或推理：
+
+```bash
+.venv-pytorch/bin/python -m scripts.evaluate_m3w_isolated_harm_fp64 check
+.venv-pytorch/bin/python -m scripts.report_m3w_isolated_harm_fp64 --check
+```
+
+结果：isolated相对joint相同切换数保守效用-0.276264个百分点，nominal95%CI
+[-0.490781,-0.076560]；47/72组known easy风险违规，完整支持仅3/72。不是FDE改善。
+固定anchor样本上伤害总量估计改善，最终选中样本仍严重低估伤害，不能升级部署。
+74段fit/31段held录像，12地点，均属已暴露原TRAIN内部；独立角色未打开。
+
+私有checkpoint/图/日志位于`data/stage_cvpr2027_experiments/european_isolated_harm_fp64_v1/`。
+终态heartbeat不代表仍运行；本批没有新增CREATE调度作业。保持arm64、CPU4、workers0。
+Stage5C、SMC不执行。先核对已有hurdle/排序/支持诊断，不能把旧损失换名再训练。
+[完整结果](european_isolated_harm_fp64_v1/readout/conclusions.md)、
+[失败分析](european_isolated_harm_fp64_v1/failure_analysis.md)、
+[数值修复](european_isolated_harm_fp64_v1/numerical_note.md)。
+
+## 历史入口：2026-10-29 四组对照全部完成，未升级
 
 共享/分来源输出层，分别配风险惩罚/不加风险惩罚目标。固定72次新训练、每次2,000步，
 18个共享风险对照逐项精确复现旧模型。数据、采样、预处理、2%评价标准不变。

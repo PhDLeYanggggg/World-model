@@ -7,13 +7,13 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Isolated Harm Continuation:54 Finals Frozen, Readout In Progress
+### Isolated Harm Continuation: Complete, No Advancement
 
-The next fixed experiment protects a shared-utility anchor's benefit/reference
+The fixed experiment protects a shared-utility anchor's benefit/reference
 outputs while learning harm in a separate branch. Three matched continuations
 compare utility-only, joint-risk and isolated-risk training across54 fits.
 Each receives2,000 additional updates from the same anchor and sampling state.
-42 scoped tests pass, including exact resume, protected-output identity,
+83 scoped tests pass, including exact resume, protected-output identity,
 causal inference, fixed-cohort diagnostics and corrupted-receipt rejection.
 The real400-update pilot passed in13.76s, peak RSS2.14GiB, with exact resume,
 sampling and protected-output replay. The conservative full estimate is7,432s.
@@ -21,17 +21,47 @@ TrainingPID40764 exited1 after37/54 finals: a finite forward loss produced
 nonfinite gradients in the float32 bounded odds arithmetic. The saved1600-step
 joint-risk checkpoint reproduced the failure in a private diagnostic fork.
 Float64 ratio intermediates passed400 further real-data updates through the
-failed batch. The network and outputs stay float32. A separately registered
-54-fit rerun will restart all arms from their original anchors; no precursor
-fit will be mixed into its results. No held readout occurred in the precursor.
+failed batch. The network and outputs stay float32. The separately registered
+54-fit rerun restarted all arms from their original anchors; no precursor
+fit is mixed into its results. No held readout occurred in the precursor.
 The repaired400-update pilot passed in13.38s, peak RSS2.10GiB;83 scoped tests
 pass, including21 envelope/odds extremes and a reproducer of the old NaN.
 PID42524 completed54/54 fits and108,000 new updates in526.97s, exit0.
-Every final is frozen; the complete144-view readout is now running.
-No research pass or deployment improvement is claimed before that readout.
+After every final froze, PID43528 completed all144 fit/held views in118.26s,
+exit0. All three cached controls replay exactly; isolated B/R/Re are bit-exact.
 No independent roles, deployment change, new forecaster, Stage5C or SMC.
 
-[Fixed protocol](outputs/publication_readiness_2026_09/european_isolated_harm_v1/protocol.md).
+| Arm | Held signed MSE | Held selected occurrences | Known easy violations /72 | Full support /72 |
+|---|---:|---:|---:|---:|
+| Anchor |1.695168|154772|61|0|
+| Utility continuation |1.967093|182163|61|0|
+| Joint risk |4.663019|36085|45|0|
+| Isolated risk |5.047722|24204|47|3|
+
+Isolated minus joint held lower utility is-1.627860pp[-2.463811,-0.853076]
+at full coverage and-0.276264pp[-0.490781,-0.076560] at matched counts. Against
+local controls the matched contrast is-0.435754pp[-0.901031,-0.097294]. These
+are baseline-reference-normalized completion-lower utility differences, NOT FDE.
+The nominal3,000-draw locality bootstrap uses exposed TRAIN, not independent data.
+
+Same-anchor-cohort median predicted/observed easy harm is0.004896 anchor versus
+1.530911 isolated (68 defined views). Isolated own-selected ratio is0.013320
+(63 defined views). The changed cohort and undefined counts prevent treating
+this as a paired calibration effect. Fixed-cohort harm volume changed, but
+selected-tail underprediction remains. Isolated already has21/72 fit known
+easy failures versus6 joint. Neither extra training nor representation isolation
+solves the registered policy problem. Full risk support remains only3/72.
+
+74 distinct fit and31 held source-recording pairs,12 localities;897,060 fit and
+419,766 held repeated row occurrences/arm. Unknown counts18,978 and9,228 remain
+in inference.83 scoped tests and full checkpoint/receipt/report verification pass.
+Full legacy tests were not rerun because some overwrite frozen research outputs.
+
+[Repaired protocol](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/protocol.md),
+[full results](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/readout/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/failure_analysis.md),
+[numerical precursor](outputs/publication_readiness_2026_09/european_isolated_harm_v1/numerical_failure.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_isolated_harm_fp64_v1/manuscript_addendum.md).
 
 ### Source Decoder by Risk Objective: Complete, Neither Repair Advances
 

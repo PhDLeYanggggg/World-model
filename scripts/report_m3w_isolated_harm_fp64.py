@@ -90,10 +90,10 @@ def report(freeze, complete, summary, detail):
         '## Execution and Evidence', '',
         f"Fresh_run:54 continuations/108,000 new updates in{freeze['seconds']:.2f}s;144 "
         f"fit/held views in{complete['seconds']:.2f}s after all finals were frozen.",
-        'All three arms start from the same shared-utility anchors and continue identical',
         'A float32-only precursor failed after37 finals; none is reused here. Its',
         'backward arithmetic was repaired with float64 ratio intermediates, then all54',
         'fits restarted. Weights and outputs remain float32; the failed batch is preserved.',
+        'All three arms start from the same shared-utility anchors and continue identical',
         'source/query draws with fresh optimizers. Each continued head has4,000 effective',
         'updates including its2,000-update anchor. Local, old-risk and anchor controls',
         'remain cached_verified2,000-update controls and reproduce their old inference.',
