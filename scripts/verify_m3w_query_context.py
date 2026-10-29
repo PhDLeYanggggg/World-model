@@ -48,7 +48,13 @@ def calculate():
             for k in ('loss', 'primary_loss', 'regret', 'mean_soft_action'):
                 run.api.core.exact(states[0]['trace'][0][k], states[1]['trace'][0][k])
             parameter_counts.add((states[0]['trainable_parameters'], states[0]['total_parameters']))
+            encoder_changes = {a: sum(float((v.double()-s['initial_model'][k].double()).square().sum())
+                for k, v in s['model'].items() if k.startswith('risk_encoder.'))
+                for a, s in zip(run.api.ARMS, states)}
+            if min(encoder_changes.values()) <= 0 or states[0]['trainable_parameters'] != 12322:
+                raise ValueError('The repaired real encoder must actually train')
             pairs.append(dict(context=context, seed=seed,
+                encoder_squared_weight_changes=encoder_changes,
                 final_sampled_primary_loss={a: s['trace'][-1]['primary_loss'] for a, s in zip(run.api.ARMS, states)},
                 logged_gradient_clip_fraction={a: sum(r['gradient_norm'] > s['settings']['gradient_clip'] for r in s['trace'])/len(s['trace']) for a, s in zip(run.api.ARMS, states)},
                 final_dual_at_cap={a: int((s['dual'] >= s['objective_config']['dual_maximum']).sum()) for a, s in zip(run.api.ARMS, states)}))

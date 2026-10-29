@@ -34,8 +34,10 @@ sweep. The first36 fits unintentionally froze the copied encoder, training only
 130output parameters. I retain that run without a performance claim and have
 registered a corrected12,322parameter comparison with explicit gradient and
 weight-change checks. Its real Torch pilot passed, including encoder updates
-and exact resume; the corrected36-head run is training. No held outcomes have
-been read.
+and exact resume. The corrected 36-head run completed 72,000 updates in
+381.69 seconds, with a 2.95 GB peak resident memory footprint. All copied
+encoders changed. I have frozen the training receipts before held-out readout;
+these are engineering checks, not a performance result.
 [Repair and protocol](outputs/publication_readiness_2026_09/european_query_context_v2/protocol.md).
 
 ### Preceding Conditional Calibration

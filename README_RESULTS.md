@@ -23,7 +23,10 @@ plus actual encoder weight changes. v1 is preserved, not promoted or overwritten
 No held readout has been performed. v2 real pilot PID59910 exit0 completed
 300updates including replay in21.264s,2.579GB RSS; encoder weights changed and
 the12,322trainable count is guarded.58scoped tests pass. Full corrected training
-is running. These engineering results do not establish scientific lift.
+completed: PID60147 exit0,36fits/72,000updates,381.689s,2.952GB peak RSS.
+All36 receipt hashes verify; each has12,322trainable parameters and actual
+encoder weight updates. Training is frozen before held readout. These
+engineering results do not establish scientific lift.
 CREATE read-only inventory verifies24TRAIN packets; squeue timeout leaves
 queue state unavailable. No submission, restart or remote mutation.
 [Repair](outputs/publication_readiness_2026_09/european_query_context_v2/encoder_repair.md),
