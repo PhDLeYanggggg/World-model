@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Selection-Conditioned Risk Diagnosis Registered
+
+Previous goal turn is progress:two54-fit real studies,exact readouts and a
+positive scene-component effect without safe neural value. The next diagnosis
+binds108frozen original/scene states and all2,664fitting record/head/bank views.
+Compare all legal,gate-passing and selected actions;decompose H-.02R error
+into harm underprediction and reference inflation,with separate EH/ER terms.
+Replay old choices/safety exactly,retain unknowns,and do not change thresholds
+or open held/independent roles. Zero optimizer updates. Three synthetic tests
+pass0.77s;real diagnosis is not_run at registration. The assets are local and
+the last full readout took206s,so no new CREATE job is justified yet.
+
 ### Frozen TRAIN Feasibility Diagnosis Registered
 
 Previous goal turn was progress: two54-fit real training/readout sequences,
