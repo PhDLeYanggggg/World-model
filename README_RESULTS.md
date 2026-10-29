@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Fixed-Selection Causal Analogues: Registered, Not Run
+
+Previous turn: progress, 36 actual risk-head continuations and 72 replayed
+fitting views; selected easy-risk screen failed. Prior calibration, selected
+risk, tail, forest and frozen-readout controls are reconciled before this probe.
+All 6 contexts x 3 head seeds x 4 sources are retained. Other-recording causal
+features supply 32 nearest donors; source-mean and within-recording shuffled
+labels are matched controls. Unknown queries remain, and insufficient donors
+are unsupported rather than zero risk. No new neural training, policy execution,
+held readout or independent roles. Eighteen scoped tests pass in 2.85 seconds;
+real-data pilot and 72-view calculation are not_run. No scientific result yet.
+[Protocol](outputs/publication_readiness_2026_09/european_selected_analogue_v1/protocol.md),
+[prior controls](outputs/publication_readiness_2026_09/european_selected_analogue_v1/prior_controls.md).
+
 ### Protected Risk Decoupling: Complete, Fitting Screen Failed
 
 Previous turn: progress, complete72-view conditioning diagnosis. New paired

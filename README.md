@@ -25,6 +25,18 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: testing causal information in the fixed selected cohort.**
+I am checking whether similar past-only features from other fitting recordings
+predict harm better than a source mean or the same neighbors with shuffled
+labels. The original selected cohort stays fixed. All 72 views are registered;
+the real-data probe has not run yet. This is a training-domain information
+check, not a new deployed model or an independent test. The source recordings
+already have upstream training exposure, so exclusion from the neighbor bank
+does not make the complete pipeline out-of-fold.
+[Protocol](outputs/publication_readiness_2026_09/european_selected_analogue_v1/protocol.md).
+
+### Completed Risk-Objective Comparison
+
 **29 October: better average risk fitting still does not make selection safe.**
 I completed 36 matched continuations from 18 frozen risk heads. Removing the
 action-dependent losses reduced average fitting all/easy risk error by
