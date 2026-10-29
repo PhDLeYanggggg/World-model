@@ -44,6 +44,19 @@ a utility/safety pass. The new data card identifies EuropeanSquares version1.1
 and distinguishes webcam detector-track image coordinates from SDD official
 top-down annotations,georeferenced publisher files,and seconds/metric claims.
 
+First readout PID80142 completes144views,193.309257s,peakRSS6,562,299,904B;
+separate replay PID81173exit0,195.533942s,is exact. Shared mixed known-label
+floor-relative ADE gain0.542017%,physical-only0.553001%. Paired neural increment
+-0.010984pp,conditional3,000-locality CI[-0.054111,+0.028694]. Mixed-minus-old
+unshared gain -0.011770pp,CI[-0.066288,+0.034331]. Required risk support21/186,
+fitting84/444;23,978interventions include308unknown outcomes.48known all-risk
+and83easy-risk violations,20undefined easy views. Fixed4xharm supports106/186,
+not full-roster pass or promoted primary. Exact R/ER coherence does not repair
+prediction/safety.19focused tests pass2.54s,full historical suite not rerun.
+Metric bundle byte-verifies,contains no raw rows/weights. Deployment unchanged.
+The next registered TRAIN-only audit tests static image-region context,with
+exact raw-camera rather than locality mapping and no metric/walkability claim.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
