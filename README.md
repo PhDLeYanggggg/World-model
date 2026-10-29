@@ -32,7 +32,10 @@ labeled donors after excluding each query recording, enough for the fixed
 32-neighbor comparison. No held or independent data were added. The protocol is
 registered; real prediction results are not yet available. This repairs reference
 availability, not risk calibration or deployment readiness.
-[Protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/protocol.md).
+The first pilot stopped at a hash-format mismatch before scoring. I reproduced
+the API error, retained the failure record and registered a corrected version;
+no numeric rule or scientific criterion changed.
+[Protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/protocol.md).
 
 ### Completed Source-Local Analogue Check
 

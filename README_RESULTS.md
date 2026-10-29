@@ -17,8 +17,13 @@ PID73798 exit0:52.278760s,2.45GB RSS,minimum2,319 known donors after query-recor
 exclusion. Native arm64 and authorized CREATE TRAIN hashes verified. No held or
 independent bank, new neural training, deployment or scheduler submission.
 Support is available but scientific scoring is not_run. No positive lift claimed.
+The v1 pilotPID74429 exited1 before retrieval: a packet/query hash API mismatch,
+reproduced on identical arrays. v2 repairs the two contracts without changing
+numeric rules or bypassing assertions;21 scoped tests pass1.47s. Original
+audit/registration/failure retained. Corrected real pilot not_run yet.
 [Input audit](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/input_audit.md),
-[protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/protocol.md).
+[protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/protocol.md),
+[interruption](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/interruption.md).
 
 ### Fixed-Selection Causal Analogues: Complete, Support Screen Unpassed
 

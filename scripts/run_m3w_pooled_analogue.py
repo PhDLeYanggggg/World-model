@@ -14,8 +14,9 @@ from scripts import run_m3w_selected_analogue as previous
 from src.evaluation import m3w_pooled_analogue as api
 
 ROOT,sha,once = previous.ROOT,previous.sha,previous.once
-PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_pooled_analogue_v1'
-PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_pooled_analogue_v1'
+PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_pooled_analogue_v2'
+PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_pooled_analogue_v2'
+AUDIT = PUBLIC.parent/'european_pooled_analogue_v1/input_audit.json'
 REG = PUBLIC/'registration.json'
 LOADER = previous.previous.parent.parent.run.parent.prior
 
@@ -41,7 +42,7 @@ def audit():
         for context,refs in sorted(reg['contexts'].items()):
             packets,held=LOADER.packets(refs,ancestor,beat);del held
             _,_,census=api.pool(packets);contexts[context]=census
-        once(PUBLIC/'input_audit.json',dict(contexts=contexts,source_count=len({s for c in contexts.values() for s in c}),
+        once(AUDIT,dict(contexts=contexts,source_count=len({s for c in contexts.values() for s in c}),
             compatible_schema=True,all_recordings_have32donors=all(v['pooled_supported_all_recordings'] for c in contexts.values() for v in c.values()),
             coordinate_invariance_claim=False,feature_width=380,observed_scale_column=354,
             old_registration_sha256=sha(previous.REG),pid=os.getpid(),seconds=time.monotonic()-began,
@@ -51,11 +52,13 @@ def audit():
 
 
 def register():
-    reg,cfg,ancestor=previous.admission();audit=json.loads((PUBLIC/'input_audit.json').read_text())
+    reg,cfg,ancestor=previous.admission();audit=json.loads(AUDIT.read_text())
     if not audit['compatible_schema'] or not audit['all_recordings_have32donors']:
         raise ValueError('Compatible supported reference bank required before registration')
     files=[Path(__file__),ROOT/'src/evaluation/m3w_pooled_analogue.py',ROOT/'tests/test_m3w_pooled_analogue.py',
-           PUBLIC/'protocol.md',PUBLIC/'input_audit.json',ROOT/'src/world_model/m3w_floor_relative.py',
+           PUBLIC/'protocol.md',AUDIT,ROOT/'tests/test_m3w_pooled_analogue_hashes.py',
+           AUDIT.parent/'protocol.md',AUDIT.parent/'interruption.md',AUDIT.parent/'registration.json',
+           ROOT/'src/world_model/m3w_floor_relative.py',
            ROOT/'src/world_model/m3w_european_source_intervention.py',ROOT/'src/world_model/m3w_native_gain_harm.py']
     once(REG,dict(bindings={str(p.resolve().relative_to(ROOT)):sha(p) for p in files},
         parent_registration_sha256=sha(previous.REG),parent_complete_sha256=sha(previous.PUBLIC/'complete.json'),
@@ -73,6 +76,19 @@ def admission():
     return out
 
 
+def verify_source_input(state,source,args):
+    previous.previous.train.api.core.exact(args[-1],state['anchor_state']['source_preprocess'][source])
+    # Frozen packet/query contracts predate the separate analogue-output format.
+    for name,a in zip(('x','envelope','primary','temporal','sites','recordings','frames'),args[:-1]):
+        if previous.previous.train.api.fingerprint(a)!=state['input_hashes'][source][name]:
+            raise ValueError('Input changed')
+
+
+def verify_query(q,old):
+    if previous.previous.train.api.fingerprint(q)!=old['parent_cohort_sha256']:
+        raise ValueError('Query selection changed')
+
+
 def predictions(context,seed,packets,origins,states):
     origin=previous.previous.train.api.core.read_checkpoint(ROOT/origins[context,seed,'self']['checkpoint']['path'])
     estimation=previous.previous.train.api.core.read_checkpoint(ROOT/states[context,seed,'estimation']['checkpoint']['path'])
@@ -81,17 +97,14 @@ def predictions(context,seed,packets,origins,states):
     receipts={Path(r['path']).name:r for r in complete['groups']}
     for source,args in sorted(packets.items()):
         x,env,_,_,_,recs,frames,pr=args
-        for state in (origin,estimation):
-            previous.previous.train.api.core.exact(pr,state['anchor_state']['source_preprocess'][source])
-            for name,a in zip(('x','envelope','primary','temporal','sites','recordings','frames'),args[:-1]):
-                if previous.api.fingerprint(a)!=state['input_hashes'][source][name]:raise ValueError('Input changed')
+        for state in (origin,estimation):verify_source_input(state,source,args)
         p={a:previous.previous.train.api.predict(s,source,x,env,recs,frames)
            for a,s in (('origin',origin),('estimation',estimation))}
         q=previous.previous.readout.actions(p['origin'],api.eligible(args))
         path=previous.PUBLIC/'groups'/f'{context}_{source}_seed{seed}.json'
         if sha(path)!=receipts[path.name]['sha256']:raise ValueError('Prior group changed')
         old=json.loads(path.read_text())
-        if previous.api.fingerprint(q)!=old['parent_cohort_sha256']:raise ValueError('Query selection changed')
+        verify_query(q,old)
         for arm in p:
             if previous.api.fingerprint(p[arm][q])!=old['prediction_sha256'][arm]:raise ValueError('Frozen control prediction changed')
         values[source],queries[source],oldrows[source]=p,q,old
