@@ -20,7 +20,10 @@ Support is available but scientific scoring is not_run. No positive lift claimed
 The v1 pilotPID74429 exited1 before retrieval: a packet/query hash API mismatch,
 reproduced on identical arrays. v2 repairs the two contracts without changing
 numeric rules or bypassing assertions;21 scoped tests pass1.47s. Original
-audit/registration/failure retained. Corrected real pilot not_run yet.
+audit/registration/failure retained. Corrected pilotPID75039 exit0:22.954905s,
+5,268,684,800 bytes RSS,7,572/7,572 supported queries across four source views,
+frozen predictions exact. Full72-view run active. Twenty-three new and inherited
+analogue tests pass1.62s. Engineering success is not a scientific screen result.
 [Input audit](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/input_audit.md),
 [protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/protocol.md),
 [interruption](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/interruption.md).

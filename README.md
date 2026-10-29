@@ -34,7 +34,8 @@ registered; real prediction results are not yet available. This repairs referenc
 availability, not risk calibration or deployment readiness.
 The first pilot stopped at a hash-format mismatch before scoring. I reproduced
 the API error, retained the failure record and registered a corrected version;
-no numeric rule or scientific criterion changed.
+no numeric rule or scientific criterion changed. The corrected real-data pilot
+passed with all 7,572 queries supported; the full 72-view calculation is running.
 [Protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/protocol.md).
 
 ### Completed Source-Local Analogue Check
