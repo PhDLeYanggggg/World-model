@@ -79,6 +79,17 @@ verified past-input store and the complete fixed comparison code. No held
 readout or independent role is admitted. Scores are still not_run at this
 registration; the primary remains history/mixed, even if a secondary looks better.
 
+The first complete288-group readout finishes PID43421 in277.014973s,
+peak RSS10,585,292,800B. Mixed known ADE gains are disabled0.580799%,
+current1.103071%,noise0.637508%,history1.968657%. History-minus-disabled
+known change is+1.387858pp,CI[+0.413289,+2.887799], but its completion-lower
+CI crosses zero. History supports only42/444record risk views, with307known
+easy violations. The neural-bank completion-lower increment is-0.301435pp,
+CI[-0.520784,-0.131315]. This is not a safety repair or deployment result.
+A separate full inference replay is running; all initial results are frozen.
+The288-group aggregate-only archive is3,113,364B and byte-verified, not a
+substitute for scientific replay. Expanded32focused checks pass in3.23s.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
