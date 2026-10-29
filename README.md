@@ -25,83 +25,46 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: completing reference coverage yields a small gain, not a safe upgrade.**
-I changed only the causal output radius so that CV and damping .97 can both
-be represented. All nine fits and 36,000 updates are complete, with endpoints
-frozen before scoring. The six unchanged-radius fits reproduce the control's
-full training state and forecasts exactly; the three affected fits retain
-matched draws and random states.
+**29 October: learning useful substitutions is easier than making them safe.**
+I completed four controlled comparisons over the same frozen forecast bank:
+continuous cost learning, recording-level decision training, a published
+regression-deferral loss, and a single-factor repair to the support constraint.
+Each retains three controller seeds, six contexts and all 54 planned fits.
+That is 216 real Torch fits and 270,000 primary updates, not new trajectory
+forecasters. Every endpoint was frozen before scoring; all readouts replay exactly.
 
-Equal-locality ADE improvement over CV rises from **7.532% to 7.595%**.
-The paired change is **+0.064 percentage points**, with a conditional 95%
-locality-bootstrap interval of **[+0.030, +0.097]**; all three seeds improve.
-This is small and still below the original ADE-only model's 8.462% result.
-Easy ADE degradation remains **8.346%**, and fixed-floor TRAIN feasibility
-stays **147/148**. The geometric restriction was real, but fixing it does not
-repair the full safety problem or justify deployment.
+The comparisons expose different failures. Continuous costs give **0.554%**
+known-label ADE gain over the floor, but only **20/186** required recording/head
+views have full risk support. The original recording-level decision head
+collapses to zero mixed-bank interventions, which leaves risk undefined.
+The published loss obtains **8.018%** known-label gain but supports **0/186**
+required views; its fixed cost gate supports **30/186**. None is deployable.
 
-A further label-aware diagnosis changes the next experiment: a bank of the six
-existing motion baselines has useful oracle feasibility in **148/148 fixed
-TRAIN recording/context views**, after removing exact copies of the fallback.
-The original neural forecast adds further oracle utility. These are not
-learned decisions or passed deployment gates. I have now registered the
-[matched multi-action cost experiment](outputs/publication_readiness_2026_09/european_multiaction_cost_v1/protocol.md):
-physical-only, physical+neural and neural-only learners, three seeds and six
-frozen contexts. All **54 real Torch fits / 108,000 updates** are complete;
-each cost head has 25,157 parameters. The real CPU pilot passes exact
-interruption recovery and matched initialization/draw checks. Final endpoints
-were frozen before the first inner-held readout. The result is negative:
-physical+neural gains **0.554%** over the floor versus **0.595%** for
-physical-only, a paired **-0.041 pp** difference with CI **[-0.125, +0.025]**.
-Only **20/186** repeated recording/head views meet the full risk requirement.
-I am not promoting this cost learner. The next bounded repair will test
-recording-level decision training rather than only local moment thresholds.
-[Readout and failure diagnosis](outputs/publication_readiness_2026_09/european_multiaction_cost_v1/readout.md).
+The latest repair addresses a measured numerical weakness in the positive-support
+dual. It changes only the training unit, not the constraint or the 2% budget.
+This removes wholesale empty-decision collapse and raises mixed-bank risk
+support to **92/186**. But known-label gain is only **0.0348%**, below the
+physical-only bank's **0.0539%**. Their paired difference is **-0.0192 percentage
+points**, conditional 95% locality-bootstrap CI **[-0.0379, -0.0042]**.
+An optimization failure can be repaired without establishing useful neural value.
 
-Before that repair, the same offline oracle supports all **62/62 inner-held
-recording/context views** for the physical and physical+neural banks. The pure
-neural bank supports 61/62, so its remaining support failure is retained.
-This is a learnability question, not an oracle-based deployment claim.
-[Exact-record repair protocol](outputs/publication_readiness_2026_09/european_multiaction_record_policy_v1/protocol.md).
-Its real full-gradient CPU pilot passes exact5+5/direct10 recovery in all
-three banks. All54fixed500-update decision fits were frozen before readout.
-The corrected readout and all144groups replay exactly. Fitting traces show collapse toward zero intervention;
-the positive easy-support constraints remain unsatisfied, so this is not a
-zero-risk success. The trajectory producer stays frozen.
-The corrected readout confirms zero interventions for the mixed bank and
-undefined selected risk, not a safety pass. A fitting-state check identifies
-weak scaling of the positive-support dual; I will test a unit change that
-preserves the constraint itself. This single-factor experiment passes real
-interruption recovery and a complete500-update unchanged-unit control;
-all54primary fits are now complete and frozen before first readout. Final
-training monitors no longer show empty decisions, but constraints remain
-violated; this is not a safety pass. The earlier singleton inference error and
-its weight-preserving repair remain documented.
+I am keeping the deployment floor unchanged. The next question is why the
+constrained learner cannot satisfy all fitting recordings despite feasible
+label-aware oracle choices. Richer causal history, moment errors and optimizer
+behavior need to be separated before opening independent evaluation. These
+remain exposed SOURCE-development results, not fresh test confirmation;
+repeated head/context views are not independent recordings.
 
-I have also registered a matched control using the published ICML2024
-regression-deferral logistic surrogate. This is a baseline adapter, not my
-method or a claimed reproduction of its original experiments. Its real
-120-update CPU pilot passes exact recovery. All54primary fits and108,000updates
-are complete, with matched row draws and endpoints frozen before readout.
-The fixed readout and full replay are now complete: mixed-bank known-label ADE
-gain is8.018%,but0/186required recording/head views pass full risk support.
-Its fixed cost gate supports30/186,still not the complete roster. Average
-accuracy is not a deployable safety result; the mixed-minus-physical gain
-interval also includes zero.
-[Control protocol](outputs/publication_readiness_2026_09/european_regression_deferral_v1/protocol.md).
-[Complete result](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md).
-Independent evaluation remains unopened, and the 2% requirement is unchanged.
-70 targeted tests pass. The readout, support and action-bank diagnostics replay
-exactly; repeat verification preserves the original execution receipts.
-[Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
-The unchanged-fold implication is recorded [before readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/scope_implication.md).
-[Fixed readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/readout.md),
-[remaining-case diagnosis](outputs/publication_readiness_2026_09/european_reference_coverage_v1/remaining_case_diagnosis.md),
-[full-bank diagnosis](outputs/publication_readiness_2026_09/european_reference_coverage_v1/multiaction_support.md),
-[conclusions](outputs/publication_readiness_2026_09/european_reference_coverage_v1/conclusions.md),
-[model card](outputs/publication_readiness_2026_09/european_reference_coverage_v1/model_card.md),
-[English paper addendum](outputs/publication_readiness_2026_09/european_reference_coverage_v1/paper_addendum_20261029.md),
-[reproduction guide](outputs/publication_readiness_2026_09/european_reference_coverage_v1/reproduction_zh.md).
+The preceding causal-radius repair and action-bank oracle diagnostics are
+retained in the [reference-coverage study](outputs/publication_readiness_2026_09/european_reference_coverage_v1/conclusions.md).
+They motivate the comparison, not a deployment claim. Metric/effective-second
+claims, Stage5C execution and SMC remain off. Submission readiness is still false.
+
+- [Complete comparison, intervals and risk checks](outputs/publication_readiness_2026_09/cost_decision_evidence_20261029.md)
+- [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
+- [Published-loss control](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md)
+- [English research draft, revision 6](outputs/publication_readiness_2026_09/evidence_manuscript_v6/README.md)
+- [Chinese operating guide](outputs/publication_readiness_2026_09/evidence_manuscript_v6/reproduction_zh.md)
 
 ### Completed Harm-Loss Comparison
 

@@ -177,8 +177,8 @@ physical fitting actions only.
 
 ### 5.2 Published Regression-Deferral Control
 
-With the floor treated as expert zero, the logistic surrogate of [3], Section4,
-Eq.(3), has coefficient sum_l c_l-c_j for expert j. We minimize the weighted
+With the floor treated as expert zero, the logistic surrogate of [3], Section 4,
+Eq. (3), has coefficient sum_l c_l-c_j for expert j. We minimize the weighted
 negative base-two log-softmax using known continuous ADE costs. Only the active
 bank enters its loss. Unknown outcomes are not sampled as labels and remain
 in evaluation. A separate preregistered fixed cost gate uses the earlier frozen
@@ -209,12 +209,12 @@ Write positive support as S_r>=m_r>0. The original normalized excess is
 (m_r-S_r)/m_r. Both have the same feasible set. With a zero-initialized dual,
 nonnegative support and step size eta, the old dual after T steps is at most
 min(L,T*eta*m_r/s_r). The frozen fitting median empty excess is0.000292227;
-372/444 repeated views per bank cannot reach a dual of1within500updates.
+372/444 repeated views per bank cannot reach a dual of 1 within 500 updates.
 This diagnoses weak numerical pressure, not a sufficient cause of failure.
 
 The repair changes only the third constraint's unit and corresponding effective
 dual coefficient. Model, inputs, populations, all/easy2% budgets, optimizer,
-dual cap and500updates remain fixed. An unchanged-unit500-update control exactly
+dual cap and 500 updates remain fixed. An unchanged-unit 500-update control exactly
 reproduces the original scientific checkpoint state. All three real recovery
 pilots match interrupted and continuous training. No checkpoint is selected
 after looking at a favorable readout.
@@ -223,16 +223,16 @@ after looking at a favorable readout.
 
 These are SOURCE-development experiments, not a fresh independent benchmark.
 Twenty-four hash-verified TRAIN packets supply twelve localities. Six frozen
-producer/controller contexts and three controller seeds yield54fits per study.
+producer/controller contexts and three controller seeds yield 54 fits per study.
 The trajectory producer is frozen at seed43; three head seeds are not three
 newly trained forecasters. Fitting and inner-held record roles are explicit,
 but the latter have been exposed in earlier development and cannot be renamed
 as independent confirmation or whole-pipeline out-of-fold evidence.
 
-All54endpoints are frozen before the first readout of each new study. Every
+All 54 endpoints are frozen before the first readout of each new study. Every
 completed144-view readout is replayed exactly. The main utility table averages
-context/head views within locality before a3,000-resample locality bootstrap.
-There are74unique fitting and31unique inner-held source/recordings. Repeated
+context/head views within locality before a 3,000-resample locality bootstrap.
+There are 74 unique fitting and 31 unique inner-held source/recordings. Repeated
 contexts, head seeds and overlapping windows are not independent recordings.
 Intervals are conditional development uncertainty, not a guarantee about unseen
 domains, hidden labels or the forecaster population.
@@ -247,8 +247,8 @@ Whole-policy and count-matched utility are reported separately.
 
 The following table is generated from the completed verified aggregates.
 Gain is known-label ADE improvement over the floor, not a completion lower
-bound. Supported views require both all/easy2%risk support, including the
-prescribed missing-outcome treatment. The186views repeat contexts/head seeds.
+bound. Supported views require both all/easy 2% risk support, including the
+prescribed missing-outcome treatment. The 186 views repeat contexts/head seeds.
 
 {chr(10).join(table)}
 
@@ -312,15 +312,15 @@ does not certify that all analysis is correct or that scientific review is compl
 
 ## References
 
-1. Salzmann etal. Trajectron++: Dynamically-Feasible Trajectory Forecasting With
-Heterogeneous Data. ECCV2020. https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123630664.pdf
-2. Yuan etal. AgentFormer: Agent-Aware Transformers for Socio-Temporal Multi-Agent
-Forecasting. ICCV2021. https://openaccess.thecvf.com/content/ICCV2021/html/Yuan_AgentFormer_Agent-Aware_Transformers_for_Socio-Temporal_Multi-Agent_Forecasting_ICCV_2021_paper.html
-3. Mao,Mohri andZhong. Regression with Multi-Expert Deferral. ICML2024.
+1. Salzmann et al. Trajectron++: Dynamically-Feasible Trajectory Forecasting With
+Heterogeneous Data. ECCV 2020. https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123630664.pdf
+2. Yuan et al. AgentFormer: Agent-Aware Transformers for Socio-Temporal Multi-Agent
+Forecasting. ICCV 2021. https://openaccess.thecvf.com/content/ICCV2021/html/Yuan_AgentFormer_Agent-Aware_Transformers_for_Socio-Temporal_Multi-Agent_Forecasting_ICCV_2021_paper.html
+3. Mao, Mohri and Zhong. Regression with Multi-Expert Deferral. ICML 2024.
 https://proceedings.mlr.press/v235/mao24d.html
-4. Cortes etal. Optimized Deferral for Imbalanced Settings. ICML2026.
+4. Cortes et al. Optimized Deferral for Imbalanced Settings. ICML 2026.
 https://proceedings.mlr.press/v306/cortes26b.html
-5. Conformal Risk Control. ICLR2024.
+5. Conformal Risk Control. ICLR 2024.
 https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf
 '''
 

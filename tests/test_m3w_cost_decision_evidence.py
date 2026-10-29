@@ -19,6 +19,7 @@ def test_render_keeps_development_and_completion_bound_limitations():
     assert 'not independent' in text
     assert 'zero' in text and 'not a passed selected-risk gate' in text
     assert 'not a new neural trajectory lift' in text
+    assert 'Completion bounds include' in text
 
 
 def test_support_signs_not_incomparable_units_are_summarized():

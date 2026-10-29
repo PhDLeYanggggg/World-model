@@ -1,0 +1,3 @@
+# Figure Caption
+
+Exposed SOURCE development, not independent confirmation. All54fits and all three head seeds per method are retained; the trajectory producer is frozen. Left: known-label utility only, not missing-outcome completion bounds. Right: full-policy all/easy2%risk support on the complete required recording roster. Undefined empty risks are not passes. The published method is a native-loss adapter. Its preregistered cost-gated control and completion-bound contrasts are reported in the evidence table, not selected from this plot. Methods have different objectives/capacities, so this is not a single-factor comparison except for the old/new support-unit pair. No deployment or world-model efficacy follows.

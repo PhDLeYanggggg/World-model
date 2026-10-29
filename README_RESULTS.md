@@ -132,6 +132,27 @@ but all/easy risk violations remain122/182and full monitor support228/444.
 These are pre-final-update training monitors,not endpoint or held-record risk.
 First scientific readout is next; deployment and independent roles unchanged.
 
+Support-unit readout PID73720exit0 completes134.149339s,peakRSS6,958,874,624B;
+exact replay PID74298exit0 completes137.335583s,peakRSS7,074,840,576B.
+All144groups/summary exact. Mixed inner-held known ADE gain0.034796%versus
+physical-only0.053946%. Mixed-minus-physical known-0.019150pp,
+conditionalCI[-0.037903,-0.004219];completion lower-0.043270pp,
+CI[-0.104130,-0.005320]. No learned neural increment. Full risk support rises
+from old0/186to92/186;15easy-risk views remain undefined,34all/41easy known
+violations. Actual fitting endpoint support227/444,not all. The unit repair
+removes wholesale collapse but does not solve learning or safety. No promotion.
+
+The four-study comparison now exports50policy/scope rows,full paired completion
+contrasts and final training monitors.216primaryfits/270,000updates across four
+studies;the trajectory producer is frozen. The figure is visually checked.
+Revision6English draft has2,416words and a Chinese operating guide. These are
+cached_verified manuscript/aggregate exports,not new independent experiments.
+Selection/calibration/confirmation stay closed;not submission-ready. Next:
+TRAIN-only feasibility diagnosis,not held threshold selection or larger-model claims.
+Final27focused tests pass2.74s;comparison and manuscript exact-export checks pass.
+No full historical-suite run is claimed. The aggregate-only figure and both new
+metric archives contain no raw trajectory,video,image-source or weight payload.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,

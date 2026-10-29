@@ -64,7 +64,7 @@ def training_arm_summary(subset):
 
 
 def build():
-    sources, rows, fits = {}, [], {}
+    sources, rows, fits, contrasts = {}, [], {}, {}
     for study in STUDIES:
         folder = PUBLIC/study
         complete = json.loads((folder/'complete.json').read_text())
@@ -107,9 +107,10 @@ def build():
         fits[study] = dict(updates=freeze['optimizer_updates'], fits=54,
             seconds=freeze['seconds'], peak_RSS_bytes=freeze['peak_RSS_bytes'], arms=by_arm)
         sources[study] = bindings
+        contrasts[study] = summary['scopes']['inner_held']['contrasts']['physical_neural_minus_physical_only']
         rows.extend(policy_rows(study, summary))
     return dict(result_source='cached_verified_aggregate_export_not_new_training_or_bootstrap',
-        sources=sources, training=fits, policies=rows,
+        sources=sources, training=fits, policies=rows, inner_held_mixed_minus_physical=contrasts,
         primary_scope='inner_held', required_views_repeat_context_and_head_seeds=True,
         known_label_utility_not_unknown_completion_bound=True,
         conditional_intervals_not_independent_confirmation=True,
@@ -141,6 +142,16 @@ def render(value):
         text.append(f"| {row['study']} | {row['policy']} | {point}{interval} | "
             f"{row['supported_record_head_views']}/{row['required_record_head_views']} | "
             f"{row['undefined_easy_record_head_views']} | {row['selected']} ({row['selected_unknown']}) |")
+    text += ['', '## Paired Neural Increment and Missing Outcomes', '',
+        'Mixed minus physical-only, in percentage points. Completion bounds include',
+        'unknown selected outcomes; known-label gain alone is not robust utility.',
+        'Matched controls compare utility only, not safety.', '',
+        '| Study | Contrast | Point [conditional 95% CI] |', '|---|---|---:|']
+    for study, contrast in value.get('inner_held_mixed_minus_physical', {}).items():
+        for key in ('full_known_pp', 'full_lower_pp', 'full_upper_pp', 'matched_known_pp', 'matched_lower_pp'):
+            point = contrast[key]['point']; ci = contrast[key]['CI95']
+            cell = 'not_estimable' if point is None else f'{point:.6f} [{ci[0]:.6f}, {ci[1]:.6f}]'
+            text.append(f'| {study} | {key} | {cell} |')
     text += ['', '## Training and Failure Boundaries', '',
         '| Study | Fits | Primary optimizer updates | Seconds | Peak RSS bytes |',
         '|---|---:|---:|---:|---:|']
