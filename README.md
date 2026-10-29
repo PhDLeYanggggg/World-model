@@ -40,17 +40,25 @@ Easy ADE degradation remains **8.346%**, and fixed-floor TRAIN feasibility
 stays **147/148**. The geometric restriction was real, but fixing it does not
 repair the full safety problem or justify deployment.
 
-A further label-aware case diagnosis finds real damping/OLS alternatives on
-the remaining failed recording. Exact copies of the fallback are excluded,
-so this is not a fake zero-intervention pass. I am now checking the complete
-fixed TRAIN action bank before deciding whether a new multi-action cost policy
-is worth training. That policy is not trained or deployed. 68 targeted tests
-pass; independent evaluation remains unopened.
+A further label-aware diagnosis changes the next experiment: a bank of the six
+existing motion baselines has useful oracle feasibility in **148/148 fixed
+TRAIN recording/context views**, after removing exact copies of the fallback.
+The original neural forecast adds further oracle utility. These are not
+learned decisions or passed deployment gates. The next step is a matched
+multi-action gain/harm learner with physical-only and old binary controls;
+that learner is not trained or deployed yet. Independent evaluation remains
+unopened, and the 2% requirement is unchanged.
+70 targeted tests pass. The readout, support and action-bank diagnostics replay
+exactly; repeat verification preserves the original execution receipts.
 [Prospective protocol](outputs/publication_readiness_2026_09/european_reference_coverage_v1/protocol.md).
 The unchanged-fold implication is recorded [before readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/scope_implication.md).
 [Fixed readout](outputs/publication_readiness_2026_09/european_reference_coverage_v1/readout.md),
 [remaining-case diagnosis](outputs/publication_readiness_2026_09/european_reference_coverage_v1/remaining_case_diagnosis.md),
-[technical appendix](outputs/publication_readiness_2026_09/european_reference_coverage_v1/technical_appendix.md).
+[full-bank diagnosis](outputs/publication_readiness_2026_09/european_reference_coverage_v1/multiaction_support.md),
+[conclusions](outputs/publication_readiness_2026_09/european_reference_coverage_v1/conclusions.md),
+[model card](outputs/publication_readiness_2026_09/european_reference_coverage_v1/model_card.md),
+[English paper addendum](outputs/publication_readiness_2026_09/european_reference_coverage_v1/paper_addendum_20261029.md),
+[reproduction guide](outputs/publication_readiness_2026_09/european_reference_coverage_v1/reproduction_zh.md).
 
 ### Completed Harm-Loss Comparison
 

@@ -24,7 +24,7 @@ readout. Six unchanged-radius fits reproduce their full
 scientific state exactly; three affected fits keep exact draw/RNG states.
 No excluded-source rows were drawn; parameters remain88,514. ReadoutPID44501
 exit0,288.009012s; replayPID44878exit0,32.762817s, exact analysis/CSV and
-2,304original-comparator metric checks.68targeted tests pass3.31s; full historical
+2,304original-comparator metric checks.70targeted tests pass3.45s; full historical
 suite not rerun.
 
 PrimaryADEgainCV7.531916%to7.595475%, paired+0.063559pp,conditional3,000locality-
@@ -41,8 +41,23 @@ PID46125exit0,18.819719s,uses cached bytes only. Original/harm/new control
 feasibility146/147/147. New bank gains0,lost0versusharm. Remaining082/51 has
 3known eligible easy rows,none within2%forcurrentneural. A separate real-action
 case probe finds legal damping/OLS alternatives; identical-floor actions are
-excluded,not fake anchors. Full148-view multi-action probe registered before
-its readout; new learned multi-action policy remains not_run.
+excluded,not fake anchors. Full148-view bank probe was registered in86705f11
+before scoring. PID48722exit0and replayPID49327exit0 produce the same hash.
+All444single-action controls replay. Physical-only,physical+original-neural,
+physical+coverage banks each have label-aware positive feasibility148/148;
+real-neural-only banks stay146/147. This is oracle potential,not learned safety.
+Original neural adds oracle utility inall148views. Descriptive equal-locality
+incremental utility/full-reference cost is2.743738pp;not learnedADE/FDElift,
+not an independent CI. New multi-action cost policy remains not_run.
+
+The next experiment must compare a physical-only learner with physical+neural
+and old binary controls. Keep the stronger original ADE-only producer as the
+frozen neural candidate; do not promote the latest weaker model. No threshold,
+recording roster,risk budget or independent role is changed by this diagnosis.
+Repeatable verification wrappers recheck the original numerical routines while
+retaining first-run receipts: readoutPID50614exit0,supportPID50849exit0. Runtime
+variance is not a scientific identity change; changed scientific hashes still
+fail. No original registered numerical code or historical result is rewritten.
 
 Fresh past-only preflight PID42951 exit0: all318,969rows checked per center.
 Damping.90center changes0rows. OLS4center changes112,202radii:66,155training,
