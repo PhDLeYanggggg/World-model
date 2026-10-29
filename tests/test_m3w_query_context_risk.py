@@ -78,3 +78,14 @@ def test_zero_initialized_context_does_not_change_anchor(tmp_path):
     p[:, [1, 4]].sum().backward()
     assert model.risk_output.weight.grad.abs().sum() > 0
     assert all(p.grad is None for p in model.base.parameters())
+
+
+def test_copied_risk_encoder_is_trainable_even_when_base_is_frozen(tmp_path):
+    model = api.initialize(anchor(tmp_path), 'peer')
+    assert all(p.requires_grad for p in model.risk_encoder.parameters())
+    with api.torch.no_grad():
+        model.risk_output.weight.fill_(.01)
+    z = api.torch.randn(7, 380)
+    model(z, api.torch.ones(7), -z)[:, [1, 4]].sum().backward()
+    assert sum(p.grad.abs().sum() for p in model.risk_encoder.parameters()) > 0
+    assert all(not p.requires_grad for p in model.base.parameters())

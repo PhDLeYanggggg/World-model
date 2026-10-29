@@ -33,6 +33,8 @@ class QueryHarmBranch(torch.nn.Module):
         super().__init__()
         self.base = base
         self.risk_encoder = copy.deepcopy(base.primary.encoder)
+        # The parent constructor has already frozen base, including its encoder.
+        for p in self.risk_encoder.parameters(): p.requires_grad_(True)
         self.risk_output = torch.nn.Linear(2*width, 2)
         torch.nn.init.zeros_(self.risk_output.weight)
         torch.nn.init.zeros_(self.risk_output.bias)
@@ -92,6 +94,10 @@ def fit(packets, *, anchor, anchor_sha256, arm, settings, objective_config, iden
     model = initialize(anchor, arm)
     initial = copy.deepcopy(model.state_dict())
     parameters = [p for p in model.parameters() if p.requires_grad]
+    width = anchor['settings']['width']
+    expected_parameters = (len(anchor['preprocess']['mean'])+1)*width + 2*(2*width+1)
+    if sum(p.numel() for p in parameters) != expected_parameters:
+        raise ValueError('Both copied risk encoder and output must be trainable; base must remain frozen')
     optimizer = torch.optim.AdamW(parameters, lr=settings['learning_rate'], weight_decay=.0001)
     binding = dict(arm=arm, settings=settings, objective_config=objective_config, identity=identity,
         experiment_sha256=experiment_sha256, anchor_sha256=anchor_sha256, anchor_state=anchor,

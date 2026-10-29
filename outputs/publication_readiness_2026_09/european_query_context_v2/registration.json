@@ -1,0 +1,57 @@
+{
+  "bindings": {
+    "scripts/run_m3w_query_context_risk.py": "3bfd9e5de0e9acc526841c1a28cc96932ae65f071cab2423d1c7d97c56291e8a",
+    "outputs/publication_readiness_2026_09/european_query_context_v2/protocol.md": "8c3d56edd45422f02fce7f46a12e03429b9a519a9f6665f08460c027d844f76c",
+    "outputs/publication_readiness_2026_09/european_query_context_v2/encoder_repair.md": "de7922e5e83248e02e8a5700e6c98a32fabe137982df99d21150c91e6cf931d2",
+    "src/world_model/m3w_query_context_risk.py": "e213445d07352c27ece397c543b3c7759c48480a73e5beefb03562e9325fdc06",
+    "src/evaluation/m3w_query_context_readout.py": "4f02b6737a0511c44f405c952f8676f8ceed5a7b3f535a6b5eb20c3e51a7b6f2",
+    "tests/test_m3w_query_context_risk.py": "9a7f25309771b01fe920ae56893b09fd5d4cab9973a32040462d6aad9bb448ab",
+    "tests/test_m3w_query_context_readout.py": "08a307726ae1272bc8c1fe1b48d8e198e629fc198049bd194fcde92d85aa6151"
+  },
+  "frozen_encoder_v1_training_sha256": "61268dadad513cc4c84d22bcd02b45b77c3b137345e72ae250b781283dce4839",
+  "parent_registration_sha256": "e16fac539928dd8c92ceff3d3cbe7fa533337130fd9235ffe71ab9cf04adf875",
+  "parent_freeze_sha256": "4abdf659aea9d14134b9962866efb6f6855b7e781485d2797615340dc37f27ef",
+  "parent_readout_sha256": "09fc935407d28d66d02c8bb02b4c9775ed6636c8092bc979c75f2cf7a38bab1d",
+  "preceding_failure_sha256": "f9bb8ebf16ddc8444f84c859df0f40a27a2631347302be1e7a8576bbaecde332",
+  "contexts": [
+    "single0_seed43_controller1_dimensionless",
+    "single0_seed43_controller2_dimensionless",
+    "single1_seed43_controller0_dimensionless",
+    "single1_seed43_controller2_dimensionless",
+    "single2_seed43_controller0_dimensionless",
+    "single2_seed43_controller1_dimensionless"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "arms": [
+    "self",
+    "peer"
+  ],
+  "fits": 36,
+  "head_training": {
+    "width": 32,
+    "steps": 2000,
+    "learning_rate": 0.001,
+    "query_batch_size": 16,
+    "gradient_clip": 5.0,
+    "checkpoint_every": 100,
+    "heartbeat_every": 100,
+    "auxiliary_weight": 0.1
+  },
+  "objective": {
+    "task_weight": 1.0,
+    "temperature_start": 1.0,
+    "temperature_end": 0.1,
+    "dual_learning_rate": 1.0,
+    "dual_maximum": 100.0,
+    "risk_budget": 0.02
+  },
+  "bootstrap_draws": 3000,
+  "bootstrap_seed": 20261029,
+  "independent_roles_read": false,
+  "outer_development_read": false,
+  "deployment_changed": false
+}

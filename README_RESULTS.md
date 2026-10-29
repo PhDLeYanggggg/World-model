@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Contemporaneous Query Context: Pilot Passed, Full Training Running
+### Contemporaneous Query Context: Trainability Repair Before Readout
 
 Two equal-parameter risk heads compare self-only inputs with leave-self-out
 same-recording/current-frame causal pooling.36fits/72,000updates planned;
@@ -15,10 +15,16 @@ eight existing controls retained. No held-label pooling or new data role.
 Seven new scoped tests pass. Real pilot PID58557 exit0:300updates including
 resume/direct replay,21.01s,2.55GB peak RSS, native arm64 CPU4/inter-op1/workers0.
 The two initial objectives match; anchor benefit/reference outputs remain exact.
-Full36-head training is running; held readout and scientific improvement are not_run.
+v1 completed36heads/72,000updates in355.914s(PID58797 exit0), but the trainable
+parameter census exposed a frozen copied encoder:130output parameters trained.
+The intended full risk branch was not trained. A targeted test reproduces the
+defect; v2 enables only the copied encoder and requires12,322trainable parameters
+plus actual encoder weight changes. v1 is preserved, not promoted or overwritten.
+No held readout has been performed. Corrected training is newly registered.
 CREATE read-only inventory verifies24TRAIN packets; squeue timeout leaves
 queue state unavailable. No submission, restart or remote mutation.
-[Protocol](outputs/publication_readiness_2026_09/european_query_context_v1/protocol.md).
+[Repair](outputs/publication_readiness_2026_09/european_query_context_v2/encoder_repair.md),
+[protocol](outputs/publication_readiness_2026_09/european_query_context_v2/protocol.md).
 
 ### Policy-Conditional Calibration: Complete, Gate Failed
 

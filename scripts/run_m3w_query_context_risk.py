@@ -20,18 +20,19 @@ from src.world_model import m3w_query_context_risk as api
 from src.evaluation import m3w_query_context_readout as evaluation
 
 ROOT = parent.ROOT
-PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_query_context_v1'
-PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_query_context_v1'
+PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_query_context_v2'
+PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_query_context_v2'
 REG = PUBLIC/'registration.json'
 sha, once = parent.run.base.sha, parent.once
 
 
 def register():
     reg, cfg, ancestor = parent.admission()
-    files = [Path(__file__).resolve(), PUBLIC/'protocol.md',
+    files = [Path(__file__).resolve(), PUBLIC/'protocol.md', PUBLIC/'encoder_repair.md',
         ROOT/'src/world_model/m3w_query_context_risk.py', ROOT/'src/evaluation/m3w_query_context_readout.py',
         ROOT/'tests/test_m3w_query_context_risk.py', ROOT/'tests/test_m3w_query_context_readout.py']
     once(REG, dict(bindings={str(p.relative_to(ROOT)): sha(p) for p in files},
+        frozen_encoder_v1_training_sha256=sha(PUBLIC.parent/'european_query_context_v1/training_freeze.json'),
         parent_registration_sha256=sha(parent.REG), parent_freeze_sha256=sha(parent.PUBLIC/'training_freeze.json'),
         parent_readout_sha256=sha(parent.PUBLIC/'readout/complete.json'),
         preceding_failure_sha256=sha(ROOT/'outputs/publication_readiness_2026_09/european_policy_conditional_v1/summary.json'),
@@ -96,6 +97,9 @@ def train(phase, resume):
                     if phase == 'pilot' and arm == 'peer' and not path.exists(): api.fit(fit, stop_at=50, **kw)
                     state = api.fit(fit, resume=path.exists() and (resume or phase == 'pilot'),
                         stop_at=100 if phase == 'pilot' else None, **kw)
+                    if not any(not api.torch.equal(v, state['initial_model'][k]) for k, v in state['model'].items()
+                               if k.startswith('risk_encoder.')):
+                        raise ValueError('Risk encoder did not update; do not accept a frozen encoder probe')
                     states.append(state)
                     if phase == 'train':
                         out = PUBLIC/'fits'/(key+'.json')
@@ -104,7 +108,8 @@ def train(phase, resume):
                             registration_sha256=sha(REG), steps=state['step'], seconds=state['seconds'],
                             final_trace=state['trace'][-1], initial_trace=state['trace'][0],
                             context_stats=state['context_stats'], trainable_parameters=state['trainable_parameters'],
-                            total_parameters=state['total_parameters'], result_source='fresh_run_real_Torch_risk_training',
+                            total_parameters=state['total_parameters'], risk_encoder_updated=True,
+                            result_source='fresh_run_real_Torch_risk_training',
                             new_forecaster=False, held_scored=False, independent_roles_read=False))
                         refs.append(dict(path=str(out.relative_to(ROOT)), sha256=sha(out)))
                         beat(state='fit_complete', fits=len(refs), total=36)
@@ -125,6 +130,7 @@ def train(phase, resume):
                         cpu_threads=4, interop_threads=1, workers=0,
                         peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                         exact_resume=True, protection_exact=True, matched_draws=True, engineering_pass=True,
+                        risk_encoder_updated=True, trainable_parameters=states[0]['trainable_parameters'],
                         context_stats=states[-1]['context_stats'],
                         estimated_full_fit_seconds=sum(s['seconds'] for s in states)*20*18*1.5,
                         registration_sha256=sha(REG), scientific_lift_established=False))
