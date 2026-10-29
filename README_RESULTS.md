@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Original Detector Histories: New Input Alignment Registered
+
+The current cost and fine-neighbor controls remain negative. The next input
+test recovers eight unsmoothed box histories and raw detector confidence on
+the same74 fitting recordings/149,510 packed rows. Existing current geometry
+primarily uses midpoint motion; older source_box_motion uses SDD crops/flow,
+not this European raw detector context. No earlier negative is relabelled.
+
+The new64-field schema uses box size/aspect, confidence, body-relative steps
+and box overlap, with exact raw agent/frame/box and original midpoint/width
+alignment. It needs no unverified homography, does not change the forecast
+target and does not read future target arrays. Current-only and key-noise
+controls are specified, not trained. Pilot/full extraction, raw replay and
+new model fitting are not_run at registration. See the [input protocol](outputs/publication_readiness_2026_09/european_detector_history_store_v1/protocol.md).
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
