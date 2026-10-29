@@ -69,6 +69,12 @@ parameters. Old motion weights/draws stay matched;full disabled2000update
 neutral must reproduce old weights/Adam/trace.13focused tests pass2.24s.
 Real pilot,neutral,training and readout remain not_run at this registration.
 
+Real static-scene pilot PID84483exit0:120updates,12.229139s,9,760,096,256Bpeak,
+all-bank interruption recovery exact. Full disabled neutral PID84875exit0:
+2000updates,14.722291s;old weights,Adam moments,draws andloss traces exact,
+new weights remain zero. Optimizer-only primary projection362.31splusdata
+preparation.54fresh primary fits remain next,no scientific gate asserted.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
