@@ -28,6 +28,12 @@ renames that receipt variable and pins the added regression; features, roles,
 rows and numeric rules are unchanged. Eleven new/adjacent checks pass in0.32s.
 No failed invocation is counted as extraction or training success.
 
+The repaired real pilot completes PID39265, exit0, in5.035115s with peak
+RSS109,576,192B. All292existing query rows align to eight original boxes and
+raw confidences exactly, with three real prefix-truncation checks. No future
+target array or prediction error is read. The tiny first record is not used
+to extrapolate a full training duration; complete extraction is still next.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
