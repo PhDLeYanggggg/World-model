@@ -20,7 +20,10 @@ parameter census exposed a frozen copied encoder:130output parameters trained.
 The intended full risk branch was not trained. A targeted test reproduces the
 defect; v2 enables only the copied encoder and requires12,322trainable parameters
 plus actual encoder weight changes. v1 is preserved, not promoted or overwritten.
-No held readout has been performed. Corrected training is newly registered.
+No held readout has been performed. v2 real pilot PID59910 exit0 completed
+300updates including replay in21.264s,2.579GB RSS; encoder weights changed and
+the12,322trainable count is guarded.58scoped tests pass. Full corrected training
+is running. These engineering results do not establish scientific lift.
 CREATE read-only inventory verifies24TRAIN packets; squeue timeout leaves
 queue state unavailable. No submission, restart or remote mutation.
 [Repair](outputs/publication_readiness_2026_09/european_query_context_v2/encoder_repair.md),
