@@ -25,43 +25,42 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**28 October: decision-focused training improves utility, but safety still fails.**
-I completed 216 fresh neural cost-head fits: quadratic regression, task-utility
-training, and task-utility with empirical risk penalties. Each arm has 72 matched
-source/head views across twelve EuropeanSquares localities. The forecast models,
-TRAIN sampling, initialization, 2,000-update budget and deployment rule stay fixed.
-This tests the learning objective, not a new trajectory predictor.
+**29 October: better TRAIN constraints do not yet produce a safe policy.**
+I completed a matched constraint-scaling experiment: 72 new scaled cost heads
+and 72 freshly rerun controls, each trained for 2,000 updates. Every control
+exactly reproduces its previous model, optimizer state and sampling history.
+The forecast models, inputs, hard decision rule and 2% risk budget stay fixed.
+This isolates a cost-learning repair; it is not a new trajectory predictor.
 
-The risk-penalized arm gains **1.0497 percentage points** of normalized paired lower
-utility over quadratic regression (nominal 95% locality interval: **0.1981 to
-2.0882**). The gain remains positive at the same intervention count: **0.5528
-points [0.1593, 0.9891]**. However, it loses **1.1731 points** to the utility-only
-control. These are decision-utility contrasts, not ADE/FDE or raw-frame t+50 gains.
+The repair works on one narrow optimization measure. Positive soft easy-risk
+excess falls from **61/72 to 12/72 fixed TRAIN monitors**. Yet known easy-risk
+violations on development recordings remain **58/72**. None of the 72 full-policy
+views passes the finite-support completion check, so the model is **not promoted**.
+The 2% budget is positive selected easy harm/reference error, not net easy ADE.
 
-The policy is **not safe to promote**. It violates the known-outcome easy-risk
-budget in **58/72** views and the conservative completion bound in **71/72**.
-Here the 2% budget measures positive selected easy harm relative to reference
-error, not net easy ADE degradation. All 72 views underestimate selected easy
-harm. The median predicted/observed ratio is only 0.0106.
+Against the unscaled control, the normalized paired lower-utility contrast is
+**-1.8910 percentage points [nominal 95% CI: -3.1577, -0.7822]**; at the same
+intervention count it is **-0.4845 [-0.8279, -0.1423]**. The original forest
+comparison is positive, but does not rescue failed stronger controls. These are
+conservative decision-utility bounds, not FDE improvement or t+50 results.
 
-The optimization itself also needs repair: the soft easy-risk constraint remains
-positive in **61/72 fixed TRAIN monitors**. That is a descriptive check of 128
-queries per fit, not the whole training set or an independent guarantee. I am
-investigating constraint scaling and the mismatch between the differentiable
-training decision and the hard deployment rule before running another matched
-experiment. More training alone has not been shown to solve this.
-The completed TRAIN gradient audit finds that the median easy-risk penalty
-gradient is only 0.0698% of the regression-plus-regret gradient. I have registered
-a matched positive constraint-scaling repair, retaining the original 2% risk
-definition and an exact unscaled control. This is a hypothesis, not yet a result.
-[Gradient evidence and repair](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md).
+A frozen TRAIN diagnosis also confirms that equal-window risk and pooled-agent
+risk can disagree. For the scaled hard policy, two of 72 monitors pass the first
+easy-risk calculation but fail the second. This matters, but cannot explain the
+whole development failure. Predicted easy harm is still much too low on selected
+development cases. The next question is how to make risk prediction generalize
+across recordings, not simply how to increase the penalty or tune a threshold.
 
-All 216 fits and all 72 evaluation views are complete and verified. Training ran
-on native arm64 CPU in 10 minutes 48 seconds; evaluation took 3 minutes 23 seconds.
-The analysis uses 3,000 paired-locality bootstrap draws, not overlapping rows as
-independent observations. These are exposed development results. Independent
-evaluation remains unopened, deployment is unchanged, and the work is not yet
-submission-ready.
+Training took 8 minutes and fixed-final evaluation 3 minutes 44 seconds on
+native arm64 CPU. All 72 views across 12 localities are complete. The 3,000-draw
+bootstrap resamples localities, not overlapping rows. Three cost-head seeds are
+not three independently trained forecast models. Independent evaluation remains
+unopened, deployment is unchanged, and the work is not yet submission-ready.
+
+- [Complete scaling experiment](outputs/publication_readiness_2026_09/european_scaled_risk_v1/readout/conclusions.md)
+- [What the repair did and did not fix](outputs/publication_readiness_2026_09/european_scaled_risk_v1/failure_analysis.md)
+- [TRAIN aggregation evidence](outputs/publication_readiness_2026_09/european_risk_aggregation_v1/conclusions.md)
+- [Latest manuscript addendum](outputs/publication_readiness_2026_09/european_scaled_risk_v1/manuscript_addendum.md)
 
 - [Complete decision-risk comparison](outputs/publication_readiness_2026_09/european_task_risk_v1/readout/conclusions.md)
 - [Constraint and selected-harm failure analysis](outputs/publication_readiness_2026_09/european_task_risk_v1/failure_analysis.md)

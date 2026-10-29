@@ -22,10 +22,10 @@ def main():
             else:
                 lo,hi=r['CI95'];m=r['mean']
                 ax.errorbar(m,i,xerr=np.array([[m-lo],[hi-m]]),fmt='o',
-                    color='#b03935' if hi<0 else '#17635b',capsize=3)
+                    color='#b03935' if hi<0 else '#17635b' if lo>0 else '#666666',capsize=3)
         ax.axvline(0,color='#666666',linewidth=.8,linestyle='--')
         ax.set_yticks(range(len(names)),labels);ax.invert_yaxis();ax.set_title(title,fontsize=12)
-        ax.set_xlabel('Scaled candidate minus control: utility percentage points')
+        ax.set_xlabel('Scaled minus control: paired lower-utility percentage points')
         ax.grid(axis='x',alpha=.2)
     policy=['original','quadratic','task_utility','unit_control','budget_scaled']
     plabel=['Original','Quadratic','Utility','Unscaled','Scaled']

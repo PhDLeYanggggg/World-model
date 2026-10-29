@@ -1,6 +1,54 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-28 决策风险训练与评价均完成
+## 当前入口：2026-10-29 约束尺度修复完整完成，但未过科研门槛
+
+本轮新训144个cost heads：72个原尺度对照、72个TRAIN预算尺度修正；各2,000步。
+72个对照与上一轮模型、优化器、采样和dual完全一致。训练479.82秒，完整八组对照
+评价223.59秒，72/72视图全部完成。这不是新训144个轨迹世界模型。
+
+已经执行并成功结束的命令：
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_scaled_risk pilot
+.venv-pytorch/bin/python -m scripts.run_m3w_scaled_risk train
+.venv-pytorch/bin/python -m scripts.run_m3w_scaled_risk_readout preflight
+.venv-pytorch/bin/python -m scripts.run_m3w_scaled_risk_readout run
+.venv-pytorch/bin/python -m scripts.report_m3w_scaled_risk
+.venv-pytorch/bin/python -m scripts.diagnose_m3w_risk_aggregation run --resume
+.venv-pytorch/bin/python -m scripts.report_m3w_risk_aggregation
+```
+
+主训练PID23501、读出PID25740已exit0；不要把旧heartbeat当作仍在运行。
+TRAIN追加诊断第一次在54/144处因远程输入流exit255退出。只读连接检查随后exit0，
+同代码`--resume`复用已保存记录，PID26925最终完成144/144并exit0。没有修改认证、
+重训模型或重复提交CREATE任务。其50.10秒是成功续跑进程时间，不含第一次尝试。
+
+正面结果：固定TRAIN软easy超额视图从61/72降到12/72。
+负面结果：开发集已知easy风险超标仍58/72；保守配对效用相对原尺度对照为
+-1.890975个百分点，nominal95%区间[-3.157684,-0.782172]，不是FDE差值。
+67/72风险上界超标、5个easy比率未定义，0/72具有完整有限支持。不升级部署。
+
+真实TRAIN汇总诊断显示：修正模型硬规则有2/72视图在窗口均值下通过、在agent总量
+下失败。这不是所有开发集失败的解释；下一轮重点是统一风险估计并检查录像留出
+下的伤害预测泛化。独立selection/calibration/confirmation角色仍未打开。
+
+当前只核验已有模型和摘要，不重复训练：
+
+```bash
+.venv-pytorch/bin/python -m scripts.report_m3w_scaled_risk --check
+.venv-pytorch/bin/python -m scripts.report_m3w_risk_aggregation --check
+```
+
+全部checkpoint在忽略目录`data/stage_cvpr2027_experiments/european_scaled_risk_v1/`；
+图表在其中`figures/`，不提交二进制图像或权重。代码、轻量结果和哈希进入Git。
+本地arm64、4计算线程、0workers保持不变。Stage5C、SMC仍关闭。
+
+[完整结果](european_scaled_risk_v1/readout/conclusions.md)、
+[失败分析](european_scaled_risk_v1/failure_analysis.md)、
+[英文稿增补](european_scaled_risk_v1/manuscript_addendum.md)、
+[TRAIN汇总诊断](european_risk_aggregation_v1/conclusions.md)。
+
+## 历史入口：2026-10-28 决策风险训练与评价均完成
 
 常规审计、实验核验、记录和安全 Git 同步由项目工作流程承担，不再逐项要求用户
 确认。正式投稿仍由作者最终确认；既定数据用途、风险预算和禁止项没有改变。

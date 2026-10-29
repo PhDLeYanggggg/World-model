@@ -7,6 +7,53 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### TRAIN Constraint Scaling: Complete, Advancement Failed
+
+**October 29, fresh_run:** 144 matched cost-head fits (72 unit controls, 72
+budget-scaled) and the complete fixed-final eight-arm readout. All72 unit controls
+exactly replay prior training; quadratic/utility heads are 144 cached_verified
+controls. Training took479.82s; readout223.59s. No trajectory producer was retrained.
+
+| Scaled minus control | Full paired lower utility, pp [nominal95% CI] | Same-count, pp [CI] |
+|---|---:|---:|
+| Unit control | -1.890975 [-3.157684, -0.782172] | -0.484529 [-0.827914, -0.142285] |
+| Quadratic | -0.184760 [-1.170105, 0.621735] | +0.185634 [-0.134510, 0.524161] |
+| Task utility | -2.940035 [-4.350033, -1.682244] | -0.699983 [-1.134574, -0.257939] |
+| Original forest | +2.258131 [0.718677, 3.848069] | +0.778894 [0.252400, 1.448081] |
+
+These are conservative paired utility contrasts, not FDE/ADE. Their bounds are
+pair-specific and cannot be subtracted as if they were point-estimated utilities.
+The unchanged gate requires all eight primary contrasts plus safety/support;
+six primary contrasts do not support advancement. Development remains exposed.
+
+Scaling reduces fixed-TRAIN soft easy excess from61/72 to12/72, but development
+known easy-risk violations stay58/72. Completion-upper violations are67/72,
+five easy ratios are undefined, and finite completion support is0/72. Four views
+select nothing. Undefined/empty cases do not pass. Selected easy harm is
+underpredicted in66/67 defined views (median predicted/actual0.040247).
+The candidate selects112,749 repeated row occurrences; this is not an independent
+sample count. Mean per-view hard intervention is0.235609; pooled count and
+equal-view means have different weights. No arm is promoted.
+
+All72 views over12 localities,3,000 paired-locality bootstrap draws and13,276,438
+independent scalar checks complete. Inputs, splits, payloads, repeated inference,
+forests and prior neural predictions verify. New weights27,870,358bytes stay
+outside Git.92 prior/new-path targeted tests passed, followed by six additional
+aggregation/report tests in separate runs; full repository tests were not rerun.
+
+Fresh frozen-TRAIN aggregation diagnosis covers144 heads. Under the scaled hard
+policy, query-mean easy excess fails3/72 monitors, pooled-agent excess fails5/72;
+two monitors pass only the former, while nine have no easy-reference support.
+This is a real aggregation discrepancy, not a sufficient explanation of the
+58/72 development violations. The interrupted input stream resumed successfully;
+no model was retrained or evaluation threshold changed. Independent evaluation,
+transfer, Stage5C and SMC remain not_run/disabled.
+
+[Full comparison](outputs/publication_readiness_2026_09/european_scaled_risk_v1/readout/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_scaled_risk_v1/failure_analysis.md),
+[TRAIN audit](outputs/publication_readiness_2026_09/european_risk_aggregation_v1/conclusions.md),
+[manuscript addendum](outputs/publication_readiness_2026_09/european_scaled_risk_v1/manuscript_addendum.md).
+
 ### Matched Decision-Risk Experiment: Complete, Not Deployable
 
 The TRAIN-only gradient audit is complete: all 216 monitors replay, and median
@@ -22,16 +69,14 @@ controls exactly reproduced. Its finals are frozen before the eight-arm readout;
 this is completed training, not a scientific improvement claim.
 Its eight primary utility contrasts, original 2% risk checks, all-control replay
 and independent scalar checks are fixed. The expanded focused suite passes 36
-tests. No new development result is available yet.
+tests. The subsequently completed development result is reported above.
 The old and new targeted regression suites also pass together: 92 tests. A
 separate aggregation-contract test confirms that query-mean TRAIN feasibility
 does not imply selected-agent-mass risk feasibility. This is a synthetic
-counterexample, not a new empirical result; the running scaling intervention is
-not changed. [Aggregation limitation](outputs/publication_readiness_2026_09/european_scaled_risk_v1/aggregation_contract_note.md).
-No new development labels were opened in this diagnostic. A separate TRAIN-only
-aggregation audit is now registered for all 144 frozen scaling/control heads;
-five focused tests pass. It will measure the discrepancy without fitting or
-altering the active eight-arm readout.
+counterexample; the subsequently completed TRAIN audit quantifies the discrepancy
+without changing the scaling intervention.
+[Aggregation limitation](outputs/publication_readiness_2026_09/european_scaled_risk_v1/aggregation_contract_note.md).
+No new development labels were opened in either TRAIN diagnostic.
 [Evidence](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md),
 [matched repair protocol](outputs/publication_readiness_2026_09/european_scaled_risk_v1/protocol.md).
 
