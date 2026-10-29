@@ -50,8 +50,13 @@ physical-only, physical+neural and neural-only learners, three seeds and six
 frozen contexts. All **54 real Torch fits / 108,000 updates** are complete;
 each cost head has 25,157 parameters. The real CPU pilot passes exact
 interruption recovery and matched initialization/draw checks. Final endpoints
-are being frozen before the first inner-held readout; no policy result or
-safety pass is claimed yet.
+were frozen before the first inner-held readout. The result is negative:
+physical+neural gains **0.554%** over the floor versus **0.595%** for
+physical-only, a paired **-0.041 pp** difference with CI **[-0.125, +0.025]**.
+Only **20/186** repeated recording/head views meet the full risk requirement.
+I am not promoting this cost learner. The next bounded repair will test
+recording-level decision training rather than only local moment thresholds.
+[Readout and failure diagnosis](outputs/publication_readiness_2026_09/european_multiaction_cost_v1/readout.md).
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.

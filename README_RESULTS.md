@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Learned Multi-Action Cost Training Complete, Readout Not Yet Run
+### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
 and newly trained neural-only cost learners. Six frozen contexts, three head
@@ -33,6 +33,18 @@ has25,157parameters. All54 checkpoint hashes verify, all18 context/seed triples
 have matched draws, and no unknown or inner-held row enters the training loss.
 Final endpoints are frozen before any new inner-held result. No gate or
 learned neural increment is asserted at this checkpoint.
+
+First readout PID54467 and exact replay PID54975 complete exit0, all144 group
+identities and summary exact. Inner-held known-label floor-relative ADE gain:
+physical-only0.595285%, physical+neural0.553787%, neural-only0.331112%.
+Primary paired known difference -0.041498pp, conditional3,000-locality CI
+[-0.124505,+0.025491]. Completion-lower difference -0.810703pp, CI
+[-2.385747,+0.005279]; no positive neural increment established. Full primary
+recording/head support20/186, fitting77/444. Predicted2% conditions do not
+control observed recording risk. The primary policy selects340 unknown-outcome
+rows among25,478 interventions. 4x harm sensitivity supports102/186, still
+not the full roster, and is not promoted. The failure stays visible; no
+independent role or deployment change. See the immutable experiment readout.
 
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
