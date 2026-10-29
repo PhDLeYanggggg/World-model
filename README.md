@@ -25,6 +25,19 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: testing shared risk learning on held-out TRAIN recordings.**
+I have completed 108 new cost-head fits: 72 local models, 18 shared models with
+global risk constraints, and 18 shared models with source-specific constraints.
+Every model received 2,000 updates; per-source sampling histories match exactly.
+All final weights were frozen before the recording-held-out readout, which is
+now running. This is a test of whether pooling limited training recordings can
+improve harm prediction, not a new neural trajectory model or a success claim.
+The experiment only reads original TRAIN packets and refits preprocessing on
+inner-fit recordings. Independent evaluation and deployment remain unchanged.
+[Registered study](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/protocol.md).
+
+### Preceding Constraint Study
+
 **29 October: better TRAIN constraints do not yet produce a safe policy.**
 I completed a matched constraint-scaling experiment: 72 new scaled cost heads
 and 72 freshly rerun controls, each trained for 2,000 updates. Every control

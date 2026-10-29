@@ -7,7 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### TRAIN-Internal Shared Risk Experiment: Pilot Passed, Fitting In Progress
+### TRAIN-Internal Shared Risk Experiment: All 108 Fits Complete
+
+The complete registered run finished in489.45s with216,000 optimizer updates.
+All108 final checkpoints are frozen; the72-view inner-held recording readout is
+running, not yet a scientific result. Source draws match exactly across arms.
+38 scoped tests pass, including resume, matched sampling, leakage boundaries,
+aggregate accounting and the signed-degradation gate regression. The full legacy
+suite was not rerun because some tests overwrite frozen research artifacts.
+The separate prospective gate v2 accepts valid negative net easy degradation
+without changing the2% positive-risk budget or any old verdict.
+[Gate amendment](outputs/publication_readiness_2026_09/european_gate_contract_v1/signed_degradation_amendment.md).
 
 The full-TRAIN census motivates a fixed108-fit comparison:72 local heads,
 18 shared-global heads and18 shared heads with source-specific risk constraints.
@@ -15,11 +25,11 @@ Six forecasting/controller contexts each contribute four source TRAIN packets;
 16/24 source/context groups have only two recordings. Input-only hashing holds
 out whole recordings inside TRAIN. All normalizers are refitted on inner-fit
 rows, and per-source query draws must match across arms. No outer development or
-independent roles are opened. Eight focused synthetic tests pass, including
-exact resume, held-statistic exclusion and unknown/empty comparison handling.
+independent roles are opened. Initial synthetic tests cover exact resume,
+held-statistic exclusion and unknown/empty comparison handling.
 The real TRAIN pilot completed700 updates in14.94s, with exact resume and
-identical per-source sampling; peak RSS2.38GiB. Full108 fitting is in progress,
-not complete; held-recording readout remains not_run until every final is frozen.
+identical per-source sampling; peak RSS2.38GiB. Full108 fitting is now complete;
+held-recording readout began only after every final was frozen.
 CREATE SSH/data access works; a queue query timed out, so queue state is unknown.
 No remote training job was submitted. This is not a model promotion.
 [Registered protocol](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/protocol.md).
