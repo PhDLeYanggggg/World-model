@@ -68,6 +68,14 @@ three banks. All54fixed500-update decision fits are now complete and being
 frozen before readout. Fitting traces show collapse toward zero intervention;
 the positive easy-support constraints remain unsatisfied, so this is not a
 zero-risk success. The trajectory producer stays frozen.
+The first readout exposed a singleton indexing error in the neural-only
+comparator. A tested inference-only adapter preserves every trained weight;
+evaluation is being resumed, not represented as a completed result.
+
+I have also registered a matched control using the published ICML2024
+regression-deferral logistic surrogate. This is a baseline adapter, not my
+method or a claimed reproduction of its original experiments.
+[Control protocol](outputs/publication_readiness_2026_09/european_regression_deferral_v1/protocol.md).
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.

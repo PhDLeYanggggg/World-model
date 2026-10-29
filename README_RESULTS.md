@@ -68,6 +68,18 @@ plus15/18neural-only endpoints. Positive support constraints remain violated;
 empty risk is not a pass. Freeze endpoints,then read out and diagnose numeric
 support/gradient scaling. This is not successful empirical or population safety.
 
+First record-policy readout PID60443 exits1before any group is written. NumPy
+collapses a one-element Torch index,not an OpenMP/runtime hang. An inference-only
+adapter preserves frozen training code and weights,has exact multi-action parity
+and a singleton regression test. Five focused tests pass. The corrected readout
+is not yet complete at this checkpoint; the failed exit remains recorded.
+
+A published-loss baseline is registered: Mao et al.,ICML2024,Eq.(3) logistic
+deferral with continuous expert costs,not one-hot oracle labels. Same source
+roles,forecasts,banks,three seeds and2,000updates. Fifteen combined focused tests
+pass2.02s. Its real pilot,54fits and readout remain not_run. No bounded-loss
+theorem or2%risk guarantee is imported into native partial-label ADE.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
