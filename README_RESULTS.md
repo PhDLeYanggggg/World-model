@@ -26,6 +26,12 @@ update current-producer loss comparison is now registered before readout. The
 prospective count correction is six excluded producer-seed contributions per
 locality (72locality views), not18perlocality. All training controls remain fixed.
 
+Current-producer training PID35828 completed exit0:9fits/36,000updates in
+675.416043s,peakRSS1,633,157,120B. Its80update real pilot and4,000step neutral
+replay are exact. All9endpoints are frozen before first readout; no scientific
+gain or safety claim yet.50focused regression tests pass3.43s;8readout tests
+also pass after added comparator checks. The earlier-family18fit run continues.
+
 All 318,969 rows belong to the already-opened source-development cohort. No
 independent selection/calibration/confirmation role is opened. This is a
 candidate-forecast repair, not a new deployable policy; 2% safety is unchanged.

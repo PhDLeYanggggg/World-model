@@ -35,8 +35,10 @@ The earlier-family real-data pilot and full neutral replay are exact; its18fits
 are running. Tracing the current policy revealed that its producer is a later,
 dimensionless agent-track model. I am also registering the direct nine-fit
 loss-only comparison on that actual producer, keeping the two families separate.
-Both families now pass full neutral replay and exact resume checks. No new
-forecast readout is available yet;50targeted regression tests pass.
+Both families pass full neutral replay and exact resume checks. The nine
+current-producer fits are complete:36,000updates,11.3minutes,1.63GB peak memory.
+All endpoints are being frozen before readout; no scientific outcome is claimed
+yet. The earlier18-fit comparison is still running.50targeted tests pass.
 [Protocol](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/protocol.md).
 [Lineage clarification](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/lineage_clarification.md),
 [current-producer protocol](outputs/publication_readiness_2026_09/european_dimensionless_harm_forecast_v1/protocol.md).

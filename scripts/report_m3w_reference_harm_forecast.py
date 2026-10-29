@@ -166,9 +166,18 @@ def evaluate(cfg, pc, data, designs, controls, identity, verify):
     for s in seeds.values():
         np.testing.assert_array_equal(s['easy'],first['easy'])
         np.testing.assert_array_equal(s['hard'],first['hard'])
-    mean=dict(first,costs={arm:{metric:np.mean([s['costs'][arm][metric] for s in seeds.values()],axis=0)
+    mean=dict(first,reference=np.mean([s['reference'] for s in seeds.values()],axis=0),
+              reference_fde=np.mean([s['reference_fde'] for s in seeds.values()],axis=0),
+              costs={arm:{metric:np.mean([s['costs'][arm][metric] for s in seeds.values()],axis=0)
                             for metric in ('ade','fde')} for arm in first['costs']})
     mean_results=population(mean)
+    original_path=run.parent.PUBLIC/'analysis.json'
+    original=json.loads(original_path.read_text())
+    for key,oldkey in (('ADE_vs_CV','mean_seed_ADE_vs_CV'),
+                       ('ADE_vs_selected','mean_seed_ADE_vs_training_selected_strongest'),
+                       ('FDE_vs_selected','mean_seed_FDE_vs_training_selected_strongest')):
+        if mean_results['original_ADE'][key]!=original[oldkey]:
+            raise ValueError('Original primary metric replay differs: '+key)
     baselines={name:score(data['baseline_ade'][:,k],cv,data['sites'],roster,cfg['bootstrap_resamples'])
                for k,name in enumerate(BASELINES)}
     result=dict(result_source='fresh_run_training_and_source_development_inference',
@@ -176,6 +185,7 @@ def evaluate(cfg, pc, data, designs, controls, identity, verify):
         unique_recordings=len(set(data['recordings'])),source_localities=len(roster),
         supported_rows=int(np.isfinite(cv).sum()),unknown_future_rows=int(np.isnan(cv).sum()),
         complete_future_rows=int(data['valid'].all(1).sum()),prediction_receipts=receipts,
+        original_primary_replay_exact=True,original_analysis_sha256=run.digest(original_path),
         trials=trials,seeds=seed_results,mean_seed=mean_results,baselines=baselines,
         public_readout_bindings={p:run.digest(ROOT/p) for p in (
             'scripts/report_m3w_reference_harm_forecast.py','src/evaluation/m3w_reference_harm_readout.py',

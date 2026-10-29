@@ -129,11 +129,26 @@ def evaluate(cfg,pc,data,jobs,identity,verify=False):
                   for ep,sub in groups} for seed in cfg['seeds']}
     baselines={ep:{name:summary([r for r in baseline_rows if r['baseline']==name and r['endpoint']==ep])
                    for name in BASELINES} for ep in ('ADE','FDE')}
+    control_path=run.parent.PUBLIC/'evaluation.json'
+    control=json.loads(control_path.read_text())
+    oldrows={(r['trial'],r['site'],r['endpoint'],r['subset']):r['metric'] for r in control['rows']}
+    checks=0
+    for r in rows:
+        if r['subset']=='complete':continue
+        subset='positive_easy' if r['subset']=='easy' else r['subset']
+        old=oldrows[r['trial'],r['site'],r['endpoint'],subset]
+        for a,b in (('old_gain_CV','gain_vs_CV_percent'),('old_gain_selected','gain_vs_reference_percent')):
+            actual,expected=r['metric'][a],old.get(b)
+            if actual is None or expected is None:
+                if actual!=expected:raise ValueError('Old metric support changed')
+            else:np.testing.assert_allclose(actual,expected,rtol=1e-12,atol=1e-12)
+            checks+=1
     result=dict(result_source='fresh_run_training_inference_source_development',control_source='cached_verified',
         training_freeze_sha256=freeze,rows=rows,summaries=summaries,seeds=seed_results,baselines=baselines,
         prediction_receipts=refs,unique_rows=len(data['sites']),unique_recordings=len(set(data['recordings'])),
         unique_localities=len(roster),locality_producer_seed_views=72,excluded_producers_per_locality_per_seed=2,
         unknown_rows=int((~data['valid'].any(1)).sum()),complete_rows=int(data['valid'].all(1).sum()),
+        frozen_control_metric_checks=checks,control_evaluation_sha256=run.digest(control_path),
         independent_roles_opened=False,full_policy_budget_claim=False,deployment_changed=False,
         metric_claim=False,seconds_claim=False,stage5c_executed=False,smc_enabled=False,
         code_sha256=run.digest(Path(__file__)),readout_api_sha256=run.digest(ROOT/'src/evaluation/m3w_reference_harm_readout.py'))
