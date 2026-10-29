@@ -1,5 +1,9 @@
 # CVPR 2027: Current Policy and Delivery Check
 
+Rechecked during the29October pooled-reference run against the live official
+calendar and author-guideline pages. The dates and requirements below remain
+unchanged. This refresh does not verify author accounts or submit any material.
+
 Checked29October2026. Enrollment is10November, paper16November and supplement
 23November, all AoE. Existing internal locks of9/13/20November remain earlier;
 they are work targets, not evidence that the project is ready.

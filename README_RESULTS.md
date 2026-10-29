@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Pooled-Reference Analogue Control: Input Audit Complete, Scoring Not Run
+### Pooled-Reference Analogue Control: Coverage and Information Pass, Magnitude Fails
 
 Previous goal turn: progress,72 fresh source-local views/replay; conditional
 information visible locally but reference coverage and magnitude failed.
@@ -16,17 +16,40 @@ sources, retaining query selection,k32,380 features and all72 views. Input audit
 PID73798 exit0:52.278760s,2.45GB RSS,minimum2,319 known donors after query-record
 exclusion. Native arm64 and authorized CREATE TRAIN hashes verified. No held or
 independent bank, new neural training, deployment or scheduler submission.
-Support is available but scientific scoring is not_run. No positive lift claimed.
+The input-only audit does not itself establish predictive lift.
 The v1 pilotPID74429 exited1 before retrieval: a packet/query hash API mismatch,
 reproduced on identical arrays. v2 repairs the two contracts without changing
-numeric rules or bypassing assertions;21 scoped tests pass1.47s. Original
+numeric rules or bypassing assertions;21 scoped tests passed1.47s. Original
 audit/registration/failure retained. Corrected pilotPID75039 exit0:22.954905s,
 5,268,684,800 bytes RSS,7,572/7,572 supported queries across four source views,
-frozen predictions exact. Full72-view run active. Twenty-three new and inherited
-analogue tests pass1.62s. Engineering success is not a scientific screen result.
+frozen predictions exact. Full runPID75317 completed72 views in184.717100s,
+6,341,705,728 bytes peak RSS, zero neural updates. All62,902 query occurrences
+(61,335known/1,567unknown) now have support; no primary source or seed is dropped.
+
+Nearest easy signed-risk MSE0.004740689 is14.99%/58.17% below pooled mean/shuffled.
+Exactly12/18 complete context-seed pairs win: the registered fitting-information
+screen passes. Magnitude fails: nearest is15.32x original MSE0.000309373, and
+predicted easy harm697.167173 is7.30x observed95.560642. All-risk MSE0.297406867
+is70.03% worse than pooled mean. No policy execution, deployment or independent
+generalization claim. AUROC/AP stay undefined across the full roster when any
+view lacks event support. Two mean/shuffled envelope violations are retained.
+
+Same24 previously supported views: nearest easy MSE0.002462924 versus old
+source-local0.003420122,27.99% lower, still worse than original0.000876187.
+This is a descriptive matched subset, not a replacement primary. New source
+qualification changes permutation salts; old/new shuffled arms are not identical.
+Separate arithmetic checks720 arm-target records,443 recording banks and144
+inherited controls. Twenty-one source/context/seed slices and local figure hashes
+replay. Thirty-eight related tests pass3.47s. Full inference/retrieval replay
+PID75964 exit0 matches all72 groups and summary; neither engineering checks nor the information screen
+establish a safe learned intervention policy.
 [Input audit](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/input_audit.md),
 [protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/protocol.md),
 [interruption](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/interruption.md).
+[Conclusions](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/failure_analysis.md),
+[evidence gate](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/reproducibility.md).
 
 ### Fixed-Selection Causal Analogues: Complete, Support Screen Unpassed
 

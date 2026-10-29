@@ -1,5 +1,47 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 跨来源参考覆盖修复，但风险幅度仍失败
+
+常规审计、实验、恢复、记录和安全Git同步由项目流程完成，不再逐项要求用户审核。
+本轮将同一预测器上下文的四个已授权inner-fit来源合并，仅排除查询的完整来源/录像。
+obs8/pred12 rawstride12、380维因果特征、k32、固定选样及2%正伤害/reference不变。
+没有新神经训练、策略执行、held推断或独立数据角色使用，也没有新CREATE调度任务。
+
+覆盖从24/72组提高到72/72组：62,902次查询出现全部有参考，包含61,335已知和1,567未知。
+未知结果不当安全标签；这是重复出现次数，不是独立样本量。输入审计最少2,319个可用donor。
+原v1试跑因两种hash接口格式不同在评分前失败；保留故障并修复packet/query边界，未改变数值规则。
+v2真实试跑7,572/7,572覆盖，通过后才完整计算。
+
+完整运行PID75317，184.717秒、峰值6.34GB、零optimizer更新。全部输入/冻结预测/检索重算
+PID75964 exit0，72组及summary逐项一致。独立算术实现核对720个arm-target、443个录像bank、
+144个旧对照及3个信息筛查条件；21个描述切片、图片hash复核，图片已目视检查。
+38项相关测试通过3.47秒，后续未改科学代码。不是整个历史测试套件通过。
+
+easy signed-risk MSE0.004740689，相对pooled mean下降14.99%，相对打乱标签下降58.17%，
+12/18个context/headseed组合同时获胜，预注册的拟合信息筛查通过。但仍是原风险头误差15.32倍，
+预测easy伤害697.167173相对观测95.560642为7.30倍；all风险误差比pooled mean还高70.03%。
+因此只是“参考足够、存在部分信息”，不是“风险估准、可部署”。不改变部署、不删locality020、
+不调test阈值，不把信息筛查通过替代幅度失败。仍无独立泛化结论。
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_pooled_analogue check
+.venv-pytorch/bin/python -m scripts.verify_m3w_pooled_analogue --check
+.venv-pytorch/bin/python -m scripts.report_m3w_pooled_analogue --check
+```
+
+完成产物不删除重跑；仅中断未完成才用`run --resume`，先核对PID/heartbeat。
+原生arm64、CPU4/inter-op1/workers0，保留10GiB磁盘和12小时边界，结束剩余约22GiB。
+CREATE数据包读取成功不等于调度队列或其他任务状态已确认。私有数据、缓存、图、checkpoint不进Git。
+此前v1输入审计是cached_verified，完整评分和重算是fresh_run，策略/独立评价是not_run。
+
+下一步只在拟合数据分离donor easy事件频率与伤害幅度/查询envelope的不匹配，先对照此前
+hurdle与conditional calibration负结果，再注册新的单因素修复；该后续尚未运行。
+silver不当gold、pixel/local不当metric/seconds，Stage5C/SMC保持关闭，长期目标仍未完成。
+[结论](european_pooled_analogue_v2/conclusions.md)、
+[失败分类](european_pooled_analogue_v2/failure_analysis.md)、
+[证据边界](european_pooled_analogue_v2/evidence_gate.md)、
+[复现](european_pooled_analogue_v2/reproducibility.md)。
+
 ## 当前入口：2026-10-29 相似因果历史有局部信号，但覆盖和风险幅度仍未过关
 
 常规审计、实验、恢复和安全同步自行执行，不要求用户逐项确认。

@@ -25,18 +25,27 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: repairing reference coverage before judging the risk estimator.**
-The next control pools only the four already-approved fitting sources belonging
-to the same predictor context. An input audit found at least 2,319 eligible
-labeled donors after excluding each query recording, enough for the fixed
-32-neighbor comparison. No held or independent data were added. The protocol is
-registered; real prediction results are not yet available. This repairs reference
-availability, not risk calibration or deployment readiness.
-The first pilot stopped at a hash-format mismatch before scoring. I reproduced
-the API error, retained the failure record and registered a corrected version;
-no numeric rule or scientific criterion changed. The corrected real-data pilot
-passed with all 7,572 queries supported; the full 72-view calculation is running.
-[Protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/protocol.md).
+**29 October: reference coverage is repaired, but risk magnitude is not.**
+I completed all 72 fitting comparisons after pooling four approved sources from
+the same predictor context. Excluding the query recording still leaves enough
+donors for every one of the 62,902 query occurrences. No held or independent
+data were added, and no new neural model was trained.
+
+Nearest histories reduce easy-risk prediction error by **14.99%** against pooled
+means and **58.17%** against shuffled labels. The registered information screen
+passes in 12/18 context-seed pairs. But the error remains **15.32 times** the
+original risk head's, and predicted easy harm is **7.30 times** observed. Overall
+risk error also worsens. This is evidence of fitting information, not a safe
+replacement model; deployment remains unchanged.
+
+The original hash-format pilot failure is preserved and repaired without changing
+the scientific rule. Full results, source slices and verification are documented
+below. These are exposed-TRAIN diagnostics, not whole-pipeline out-of-fold or
+independent generalization evidence.
+[Results](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/failure_analysis.md),
+[evidence gate](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_pooled_analogue_v2/reproducibility.md).
 
 ### Completed Source-Local Analogue Check
 
