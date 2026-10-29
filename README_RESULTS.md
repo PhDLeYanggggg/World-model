@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Policy-Conditional Calibration: Registered, Not Yet Run
+
+All18 rational heads stay frozen.72 source-excluded original-TRAIN crossings
+compare raw, global, support-only and conditional risk overlays.2% risk criteria
+and independent roles remain unchanged; no new neural fitting or deployment.
+11 focused tests pass. CREATE data assets are reachable; a scheduler query timed
+out, so queue state remains unobserved. No remote submission was made.
+[Fixed protocol](outputs/publication_readiness_2026_09/european_policy_conditional_v1/protocol.md),
+[prior failures and new contrast](outputs/publication_readiness_2026_09/european_policy_conditional_v1/prior_evidence.md).
+
 ### Rational Harm Repair: Complete, Gate Failed
 
 Fresh18 matched continuations/36,000 updates completed190.94s, PID51994 exit0;

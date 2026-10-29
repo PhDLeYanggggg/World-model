@@ -25,6 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: a fixed conditional-calibration comparison is registered.**
+I am testing whether risk errors can be corrected specifically where the frozen
+model proposes intervention. The comparison includes raw decisions, global
+correction, support-only rejection and conditional correction. Each readout
+source is excluded from its calibrator; all data remain exposed original TRAIN.
+No independent result, neural improvement or deployment is claimed at registration.
+[Protocol](outputs/publication_readiness_2026_09/european_policy_conditional_v1/protocol.md).
+
+### Preceding Rational Repair
+
 **29 October: removing flat gradients did not restore safe selection.**
 I completed18 matched rational-map continuations and144 evaluation views.
 On the same fitting cohort, exact-zero easy-harm gradients fell from92.4% to
