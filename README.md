@@ -65,9 +65,12 @@ localized constraint conflict rather than universal clipping, and substantial
 candidate variation in estimates of the same reference error. I have registered
 a parameter-matched shared-reference ablation: one causal floor token supplies
 the common risk denominator while candidate costs remain separate. Its real
-recovery pilot and full 2,000-update disabled-sharing control pass exactly;
-the 54 primary fits are next. Coherent estimates alone will not count as a
-successful policy.
+recovery pilot and full 2,000-update disabled-sharing control pass exactly.
+All 54 primary fits are now complete, with matched initial weights and row
+draws, and frozen before first readout. Coherent estimates alone will not count
+as a successful policy. This is an image-space webcam-track study, not SDD's
+official top-down annotation benchmark; the [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
+separates the released source, our adapter and current experimental population.
 
 - [Complete comparison, intervals and risk checks](outputs/publication_readiness_2026_09/cost_decision_evidence_20261029.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)

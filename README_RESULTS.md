@@ -36,6 +36,14 @@ disabled-sharing neutral PID78628exit0 matches all original scientific state
 except declared identity/runtime,11.501076s.14focused tests pass1.69s.
 Primary54fits/108,000updates are next;forecaster and independent roles stay frozen.
 
+Shared-reference primary training completes PID79115exit0:54fits/108,000updates,
+366.151872s,peakRSS10,447,847,424B. Each head retains25,157parameters,and every
+fit matches its old initial weights,normalizer,row draws and RNG states.
+All endpoints freeze before first readout. The structural invariant is not
+a utility/safety pass. The new data card identifies EuropeanSquares version1.1
+and distinguishes webcam detector-track image coordinates from SDD official
+top-down annotations,georeferenced publisher files,and seconds/metric claims.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
