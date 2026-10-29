@@ -7,14 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Selected-Tail Accounting: Registered, Not Yet Run
+### Selected-Tail Accounting: Complete, No Promotion
 
-The next diagnostic freezes all six policies from the completed isolated-harm
-comparison and replays144 views. It separates harm underestimation from reference
-overestimation, checks inner-fit-defined causal radius bins, and computes the
-bounded branch's harm supremum. Six unit tests pass. No new fit, threshold,
-deployment, independent role or safety claim is introduced.
-[Protocol](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/protocol.md).
+Fresh144-view replay completed86.30s, PID46161 exit0. Original predictions and
+selections reproduce exactly.89 scoped tests pass. Isolated held easy excess
+18.075413 decomposes into predicted-12.735580, harm-underestimation+38.375982,
+reference-error contribution-7.564989, all in repeated source-normalized units.
+With perfect reference alone,1,573/1,589 known unsafe row occurrences still pass;
+with perfect harm, only133 remain. These future-informed replacements are not
+inference rules.84.52% of violations fall below fit-radius p90, a coarse proxy.
+The bounded branch's realized minimum easy-harm shortfall is76.26% of its
+own-cohort observed harm, not proof that conditional means exceed the bound.
+No fit, threshold, independent role or deployment changed.
+[Results](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/conclusions.md),
+[interpretation](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/failure_analysis.md).
 
 ### Isolated Harm Continuation: Complete, No Advancement
 

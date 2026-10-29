@@ -25,14 +25,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: tracing selected-risk error before another fit.**
-I am replaying the frozen six-policy comparison to separate underestimated
-harm from overestimated baseline reference error. The diagnostic also checks
-fit-defined causal feature ranges and the isolated branch's representable
-harm ceiling. No model, threshold, split or deployment is being changed.
-The previous negative result remains in force until this analysis completes.
+**29 October: the remaining selected-risk error is mainly underestimated harm.**
+I replayed all144 frozen six-policy views. In the protected branch's selected
+cohort, correcting reference error alone would still allow1,573 of1,589 known
+easy-risk violations. The model's bounded adjustment also cannot reach many
+observed harm values. These are diagnostic counterfactuals, not legal inputs or
+proof that a wider head will work. No deployment or independent evidence changed.
 
-[Diagnostic protocol](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/protocol.md).
+[Diagnostic results](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/conclusions.md),
+[interpretation and next controlled test](outputs/publication_readiness_2026_09/european_selected_tail_audit_v1/failure_analysis.md).
 
 ### Preceding Protected-Harm Experiment
 
