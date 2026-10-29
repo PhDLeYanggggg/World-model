@@ -24,6 +24,17 @@ comes first. Fourteen focused checks pass in 1.39s; pilot and primary training
 are not_run at registration. See the [protocol](outputs/publication_readiness_2026_09/european_completion_cost_v1/protocol.md)
 and [prior controls](outputs/publication_readiness_2026_09/european_completion_cost_v1/prior_controls.md).
 
+The real full-first-context pilot now completes PID 25174, exit 0, in
+10.465481s, peak RSS 8,929,296,384 B. All four cells pass 10+10/direct-20
+recovery; the known-only implementation also matches the existing training
+core on the new common stream. Each draws 48 unknown rows: completion mode
+includes them in its objective, while known-only masks them. These are
+interval endpoints, not newly observed labels. The pilot performs 180 total
+engineering updates. It projects 288.48s of primary optimization and 27.37 MB
+of primary checkpoints; preprocessing, saves and full refit are additional.
+This supports the complete local roster, not a scientific gate or completion
+claim. The 72 full fits are next; no held outcome is used for selection.
+
 ### Fixed Candidate-Output Amplitude Control
 
 Bank separation recovers fitting utility but worsens complete risk support.
