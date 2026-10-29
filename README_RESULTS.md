@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Cross-Recording Meta-Updates: Real Pilot Passed, Training Running
+### Cross-Recording Meta-Updates: Training Complete, Readout Pending
 
 Fixed comparison: 36 neural policy fits, 2,000 updates each, three head seeds.
 Primary cross_record_meta versus compute-matched same_record_meta; frozen
@@ -17,10 +17,11 @@ Both episode sides are original TRAIN, not a new validation/calibration role.
 Eight of twelve sources have one fit recording; singleton sources cannot occur
 on both sides in one episode. The exposed inner-held readout remains exploratory.
 Independent roles stay closed. No threshold tuning or deployment promotion.
-27 targeted tests pass, including second-order gradient and exact resume checks.
+113 targeted tests pass (6.06s), including second-order gradient and exact resume checks.
 Real pilot PID8237 exit0: 80 updates, 18.933s, 3,207,233,536B peak RSS; both arms
-exactly reproduce 10+10 versus 20 uninterrupted updates. Training PID8629 is
-running the fixed 36-fit roster. No new inner-held readout or result yet.
+exactly reproduce 10+10 versus 20 uninterrupted updates. Training PID8629 exit0
+completes 36 fits / 72,000 updates in 3508.268s, peak RSS3,687,137,280B.
+All final states are frozen before new held scoring. No new inner-held result yet.
 [Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
 
 ### Whole-Recording Policy: Better Fitting, Held Safety Failed

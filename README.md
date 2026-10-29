@@ -37,7 +37,9 @@ not create a new validation set: eight of the twelve sources have only one fit
 recording, and the existing recording holdout has already been exposed.
 Independent evaluation remains unopened. A real-data pilot completed 80 updates
 and reproduced interrupted training exactly, using about 3.2 GB peak memory.
-Full training is running; no new held result is available yet. Deployment is unchanged.
+All 36 fits have now completed 72,000 updates in 58.5 minutes, with about 3.7 GB
+peak memory. Their final checkpoints are frozen before the new held readout.
+No new held result is available yet. Deployment is unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
 
 ### Previous Whole-Recording Comparison
