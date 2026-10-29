@@ -19,6 +19,33 @@ zero-no-op, masked-label, convexity and archive checks pass 24 tests in 1.29s.
 Actual readout is not_run at registration; independent roles stay closed.
 See the [frozen protocol](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/protocol.md).
 
+The full registered run subsequently completes PID 20388, exit 0, in
+575.886368s, peak RSS 7,060,619,264 B. Separate PID 21457, exit 0, replays all
+144 groups / 720 amplitude views and summary exactly in 574.746712s. All
+720 fixed-mask convexity checks pass, with maximum numerical excess
+6.8113e-14. These are numerical checks, not learned risk calibration.
+
+No coefficient/bank satisfies complete required recording risk. For neural
+cost heads, mixed fixed-set alpha=1/16 lowers known easy-risk violations
+from 230 to 0 and raises support from 77 to 291/444, but gain falls from
+0.678064% to 0.047258% and 49 easy views remain undefined. Reselection at
+the same fixed amplitude gains 0.818671% but supports only 40/444; unknown
+selected views rise from 853 to 4,968. Forest mixed alpha=1/16 has zero
+known all/easy violations yet only 251/444 supported recording views.
+There are 188 forest and 356 neural unsupported views with selected unknown
+outcomes and no known selected-risk violation. These categories overlap;
+unobserved errors are not asserted to be harmful.
+
+All coefficients, banks and count-matched contrasts are retained. The
+10,788,627-byte aggregate bundle is byte-verified. Final focused scope:
+28 passed in 1.65s, not the full historical suite. The generated statistical
+SVG is visually checked; raw media and preview PNG stay private. Independent
+roles and deployment remain unchanged. See the [complete readout](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/failure_analysis.md)
+and [paper addendum](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/paper_addendum.md).
+Next: audit and test known-only versus completion-aware interval supervision,
+not another alpha/held-threshold search. No such new training is yet run.
+
 ### Frozen Cost-Bank Factorization
 
 The previous full forest comparison changed the next question: does a mixed

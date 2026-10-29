@@ -117,6 +117,17 @@ repair safety. No new model is trained, and no held or independent role is
 opened. The useful next question concerns safer candidate outputs, not merely
 more permissive switching.
 
+I then tested five fixed output amplitudes for both physical and neural
+candidates, with and without changing the original selection set. All 144
+fitting groups and 720 amplitude views complete and replay exactly. With
+the neural cost heads, shrinking the mixed policy to 1/16 on its original
+set reduces known easy-risk violations to zero and raises risk support from
+77 to 291/444, but gain falls from 0.678% to 0.047%. Reselecting at that
+amplitude gains 0.819%, yet supports only 40/444 views and selects many more
+unknown outcomes. No setting passes complete safety. Smaller predictions
+are not enough when the selected region changes or lacks outcome support.
+These are fitting controls, not newly trained dynamics or independent gains.
+
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
 image coordinates, not SDD's official top-down annotations. The [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
@@ -134,6 +145,9 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 - [Matched conventional control, fixed-region diagnosis and limits](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/readout.md)
 - [Conventional-control failure analysis and paper addendum](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/paper_addendum.md)
 - [Bank-factorization control: exact gate attribution and its safety failure](outputs/publication_readiness_2026_09/european_cost_bank_factorization_v1/readout.md)
+- [Fixed forecast-amplitude controls and complete negative results](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/readout.md)
+- [Amplitude tradeoff figure](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/figures/amplitude_controls.svg)
+- [Current availability of matched SOURCE image inputs](outputs/publication_readiness_2026_09/source_rgb_availability_20261029.md)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
