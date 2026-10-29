@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Source Decoder by Risk Objective: Registered, Not Yet Trained
+
+The next fixed TRAIN-internal study separates output sharing from risk-penalty
+interference: shared/source-specific decoders crossed with risk/utility-only
+objectives.72 fresh fits are registered with unchanged source packets, inner
+recording split, sample draws,2,000updates and2% evaluation budget. The18 fresh
+shared-risk controls must exactly replay the previous shared-source models.
+12 scoped tests pass; a real pilot is next. No outer development, independent
+test, checkpoint selection or deployment promotion is authorized by this design.
+[Protocol](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/protocol.md).
+
 ### TRAIN-Internal Shared Risk Experiment: Complete, Both Repairs Failed
 
 The complete registered run finished in489.45s with216,000 optimizer updates.
