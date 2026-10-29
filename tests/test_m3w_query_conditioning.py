@@ -44,6 +44,7 @@ def test_virtual_steps_keep_checkpoint_and_optimizer_unchanged(tmp_path):
     assert set(r['gradient_norms']) == {'primary', 'regret', 'dual_all', 'dual_easy'}
     assert r['virtual_steps']['as_trained']['optimizer_step'] == state['step']+1
     assert 0 < r['clip_factor'] <= 1
+    assert r['additivity']['reference_float64']['relative_component_norm_error'] < 1e-10
     audit.api.core.exact(state, original)
     # Reconstructing probes starts from the same copied final sampler state.
     repeated = audit.prepare_probes(packets(), state, count=1)[0]
@@ -54,3 +55,15 @@ def test_virtual_steps_keep_checkpoint_and_optimizer_unchanged(tmp_path):
 def test_incomplete_rosters_rejected():
     with pytest.raises(ValueError):
         audit.summarize([], [])
+
+
+def test_additivity_handles_cancellation_but_rejects_missing_term():
+    t = audit.torch
+    gradients = dict(a=t.tensor([1000., 2.], dtype=t.float64),
+                     b=t.tensor([-999.9, 3.], dtype=t.float64))
+    total = sum(gradients.values())+t.tensor([.0001, 0.])
+    assert audit.additivity_error(gradients, total, relative_limit=32*t.finfo(t.float32).eps)
+    with pytest.raises(AssertionError):
+        audit.additivity_error(gradients, gradients['a'], relative_limit=32*t.finfo(t.float32).eps)
+    with pytest.raises(FloatingPointError):
+        audit.additivity_error(gradients, total*t.nan, relative_limit=1e-5)

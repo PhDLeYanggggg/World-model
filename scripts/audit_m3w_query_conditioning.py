@@ -12,15 +12,17 @@ from scripts import run_m3w_query_context_risk as run
 from src.evaluation import m3w_query_conditioning as audit
 from src.evaluation.m3w_selected_tail_audit import actions
 
-PUBLIC = run.ROOT/'outputs/publication_readiness_2026_09/european_query_conditioning_v1'
-PRIVATE = run.ROOT/'data/stage_cvpr2027_experiments/european_query_conditioning_v1'
+PUBLIC = run.ROOT/'outputs/publication_readiness_2026_09/european_query_conditioning_v2'
+PRIVATE = run.ROOT/'data/stage_cvpr2027_experiments/european_query_conditioning_v2'
 REG = PUBLIC/'registration.json'
 
 
 def register():
     reg, _, ancestor = run.admission()
     files = [__file__, run.ROOT/'src/evaluation/m3w_query_conditioning.py',
-             run.ROOT/'tests/test_m3w_query_conditioning.py', PUBLIC/'protocol.md']
+             run.ROOT/'tests/test_m3w_query_conditioning.py', PUBLIC/'protocol.md',
+             PUBLIC.parent/'european_query_conditioning_v1/additivity_reproduction.json',
+             PUBLIC.parent/'european_query_conditioning_v1/interruption.md']
     from pathlib import Path
     run.once(REG, dict(bindings={str(Path(p).resolve().relative_to(run.ROOT)): run.sha(Path(p)) for p in files},
         parent_registration_sha256=run.sha(run.REG),

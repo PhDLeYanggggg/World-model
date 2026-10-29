@@ -117,13 +117,40 @@ def fixed_score_mse(predictions, batch, masks):
     return result
 
 
+def additivity_error(gradients, total, *, relative_limit):
+    magnitude = sum(g.abs() for g in gradients.values())
+    error = sum(gradients.values())-total
+    if not torch.isfinite(magnitude).all() or not torch.isfinite(total).all():
+        raise FloatingPointError('Nonfinite component gradient')
+    denominator = float(magnitude.norm())
+    relative = float(error.norm())/denominator if denominator else float(error.norm())
+    if relative > relative_limit:
+        raise AssertionError('Gradient decomposition exceeds precision-aware norm bound')
+    return dict(relative_component_norm_error=relative, max_abs_error=float(error.abs().max()),
+                component_magnitude_norm=denominator, relative_limit=relative_limit)
+
+
+def verify_additivity(model, state, batch, gradients, total):
+    # Separate backward reductions differ in float32, especially after cancellation.
+    native = additivity_error(gradients, total, relative_limit=32*torch.finfo(torch.float32).eps)
+    clone = copy.deepcopy(model).double()
+    precise = {s: {k: v.double() if isinstance(v, torch.Tensor) and v.is_floating_point()
+                   else v for k, v in d.items()} for s, d in batch.items()}
+    parts, _ = objective_parts(clone, state, precise)
+    params = [p for p in clone.parameters() if p.requires_grad]
+    gs = {k: gradient_vector(v, params).double() for k, v in parts.items()}
+    reference = additivity_error(gs, gradient_vector(sum(parts.values()), params).double(),
+                                 relative_limit=1e-10)
+    return dict(native_float32=native, reference_float64=reference)
+
+
 def gradient_probe(state, batch, common_masks):
     """Two one-step disposable copies share the exact saved AdamW state."""
     model = model_from(state); parameters = [p for p in model.parameters() if p.requires_grad]
     parts, prediction = objective_parts(model, state, batch)
     gradients = {k: gradient_vector(v, parameters).double() for k, v in parts.items()}
     total = gradient_vector(sum(parts.values()), parameters).double()
-    torch.testing.assert_close(sum(gradients.values()), total, rtol=2e-4, atol=2e-5)
+    additivity = verify_additivity(model, state, batch, gradients, total)
     before = {k: float(v.detach()) for k, v in parts.items()}; before['total'] = sum(before.values())
     risk, data = gradients['dual_all']+gradients['dual_easy'], gradients['primary']+gradients['regret']
     actual = {}
@@ -148,7 +175,8 @@ def gradient_probe(state, batch, common_masks):
             parameter_step_norm=float(delta.norm()), first_order_total=float(total@delta),
             fixed_self_score_MSE=fixed_score_mse(pp, batch, common_masks), optimizer_step=steps[0])
     api.core.exact(model.state_dict(), state['model'])
-    return dict(before=before, gradient_norms={k: float(v.norm()) for k, v in gradients.items()},
+    return dict(before=before, additivity=additivity,
+        gradient_norms={k: float(v.norm()) for k, v in gradients.items()},
         total_gradient_norm=float(total.norm()), data_risk_cosine=cosine(data, risk),
         weighted_risk_to_data_norm=float(risk.norm()/data.norm()) if data.norm() > 0 else None,
         clip_factor=min(1., state['settings']['gradient_clip']/(float(total.norm())+1e-6)),

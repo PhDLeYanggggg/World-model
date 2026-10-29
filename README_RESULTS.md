@@ -7,15 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Fixed-Cohort Query-Head Conditioning: Registered, Not Yet Run
+### Fixed-Cohort Query-Head Conditioning: Numerical Repair Registered
 
 The previous goal turn made verified progress with36 corrected fits and a
 negative matched result. The next diagnostic keeps all36 heads frozen, checks
 72 inner-fit views, and runs288 matched gradient probes/576 disposable AdamW
 steps. It compares the new self/peer heads on the same causal cohorts and asks
 whether clipping actually impedes local fitting.14 related tests pass2.38s.
+v1 stopped at a float32 additivity assertion after12 fit views/4 probe groups.
+Same-batch relative decomposition error1.69e-7 becomes2.89e-16 in float64.
+v2 repairs the numerical check and adds a double-precision check for every batch;
+the native model, objective and optimizer steps remain unchanged.15 tests pass.
 No new held scoring, independent roles, persistent training or deployment.
-[Protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v1/protocol.md).
+[Repaired protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v2/protocol.md).
 
 ### Contemporaneous Query Context: Complete, Negative Matched Result
 

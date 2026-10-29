@@ -31,7 +31,10 @@ derivatives and component gradients. Disposable AdamW copies compare clipping
 with no clipping on the same next batches; original checkpoints remain frozen.
 This will test whether the observed frequent clipping is an actual local
 obstruction, not assume that removing it improves generalization. No new held
-readout or independent data role is opened.
+readout or independent data role is opened. The first diagnostic stopped at a
+float32 gradient-sum assertion. A same-batch double-precision check identifies
+numerical accumulation error; v2 fixes the check, not the training algorithm.
+The incomplete run is preserved, and 15 related tests pass.
 [Diagnostic protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v1/protocol.md).
 
 ### Completed Context Comparison
