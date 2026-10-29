@@ -81,6 +81,34 @@ motion initialization/normalizer,draws and RNG;new scene weights update in all
 fits.26combined focused tests pass3.08s. All54endpoints freeze before first
 readout;no new utility/safety result yet. Old54controls remain cached_verified.
 
+Static-scene first readout PID86269exit0 completes144views,205.965584s,
+peakRSS7,669,972,992B. Separate replay PID86906exit0 takes207.692464s,all
+actions/metrics/summary and cached parent controls exact. Mixed known ADE gain
+0.982769%,physical-only1.076598%. Scene-minus-no-scene +0.428982pp,
+conditional3,000-locality CI[+0.053706,+1.044617];matched+0.112189pp,
+CI[+0.028429,+0.232094]. But full completion-lower scene effect-0.405680pp,
+CI[-1.185725,+0.126229]. Mixed-minus-physical -0.093829pp,
+CI[-0.217875,-0.003382]. Required risk support23/186,fitting77/444;
+32,219interventions include518unknowns,34known all-risk violations,96easy
+violations,20undefined easy views. Static context improves known prediction,
+not safe neural value. No deployment or independent-role promotion.
+
+Six-study export preserves the old four-study artifact. It verifies324actual
+heads/486,000primaryupdates and adds fresh paired moment-MSE bootstrap arithmetic
+from cached-verified aggregates. Static-context normalized harm-MSE delta
+-0.106608,CI[-0.173896,-0.047766],yet selected risk still fails. This suggests
+a selection-conditioned calibration question,not a proven selection-bias cause.
+Legacy individual aggregates initially caused a bundle-only exporter error;
+the reader now verifies either format without repacking old immutable studies.
+One additional camera-mapping fixture had a wrong filename suffix;only fixture
+was corrected. Real model weights/readouts were unaffected.31focused tests
+pass2.44s on the final version;full historical suite not rerun.
+New anonymous English draftv7extendsv6to3,118words;it is not an8pageformatted
+submission or independently confirmed method. Both exporters check exactly,
+and the updated figure is visually inspected. The frozen TRAIN selected/all-
+eligible calibration audit is next;no threshold sweep,Stage5C orSMC.
+No CREATE job was needed for these local runs.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural

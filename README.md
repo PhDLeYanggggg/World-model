@@ -25,70 +25,58 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: learning useful substitutions is easier than making them safe.**
-I completed four controlled comparisons over the same frozen forecast bank:
-continuous cost learning, recording-level decision training, a published
-regression-deferral loss, and a single-factor repair to the support constraint.
+**29 October: scene context helps cost prediction, but neural substitution is not yet safe.**
+I completed six controlled comparisons over the same frozen forecast bank:
+continuous costs, recording-level decision training, a published deferral loss,
+support-unit conditioning, shared reference costs and static scene context.
 Each retains three controller seeds, six contexts and all 54 planned fits.
-That is 216 real Torch fits and 270,000 primary updates, not new trajectory
-forecasters. Every endpoint was frozen before scoring; all readouts replay exactly.
+Together they comprise **324 real Torch heads and 486,000 primary updates**.
+These are controller experiments, not 324 new trajectory forecasters. Every
+endpoint was frozen before readout, and all six comparisons replay exactly.
 
-The comparisons expose different failures. Continuous costs give **0.554%**
-known-label ADE gain over the floor, but only **20/186** required recording/head
-views have full risk support. The original recording-level decision head
-collapses to zero mixed-bank interventions, which leaves risk undefined.
-The published loss obtains **8.018%** known-label gain but supports **0/186**
-required views; its fixed cost gate supports **30/186**. None is deployable.
+| Mixed-bank policy | Known-label ADE gain over floor | Required risk views supported |
+|---|---:|---:|
+| Continuous costs | 0.554% | 20/186 |
+| Recording-level decisions | 0.000% | 0/186 |
+| Published deferral loss | 8.018% | 0/186 |
+| Support-unit repair | 0.0348% | 92/186 |
+| Shared reference | 0.542% | 21/186 |
+| Static scene context | 0.983% | 23/186 |
 
-The latest repair addresses a measured numerical weakness in the positive-support
-dual. It changes only the training unit, not the constraint or the 2% budget.
-This removes wholesale empty-decision collapse and raises mixed-bank risk
-support to **92/186**. But known-label gain is only **0.0348%**, below the
-physical-only bank's **0.0539%**. Their paired difference is **-0.0192 percentage
-points**, conditional 95% locality-bootstrap CI **[-0.0379, -0.0042]**.
-An optimization failure can be repaired without establishing useful neural value.
+The latest feature ablation adds 18 static/past/rollout region features using
+14 correctly matched camera polygons. Relative to the no-scene control, known-
+label utility improves **0.429 percentage points**, conditional 95% locality
+CI **[+0.054,+1.045]**. Harm-cost MSE also decreases. This is evidence that
+image-region position matters for cost prediction, not a deployment result.
 
-I am keeping the deployment floor unchanged. The next question is why the
-constrained learner cannot satisfy all fitting recordings despite feasible
-label-aware oracle choices. Richer causal history, moment errors and optimizer
-behavior need to be separated before opening independent evaluation. These
-remain exposed SOURCE-development results, not fresh test confirmation;
-repeated head/context views are not independent recordings.
+The physical-only scene policy still gains **1.077%**, more than the mixed
+policy's **0.983%**. The paired neural increment is **-0.0938pp**, CI
+**[-0.2179,-0.0034]**. Missing-outcome completion bounds do not establish a
+positive scene gain, and the mixed policy selects 518 unknown-outcome row views.
+Lower overall prediction error has not controlled risk after action selection.
 
-The preceding causal-radius repair and action-bank oracle diagnostics are
-retained in the [reference-coverage study](outputs/publication_readiness_2026_09/european_reference_coverage_v1/conclusions.md).
-They motivate the comparison, not a deployment claim. Metric/effective-second
-claims, Stage5C execution and SMC remain off. Submission readiness is still false.
+I am keeping deployment unchanged. The next test is whether action selection
+concentrates harm underprediction or inflated reference estimates. This needs
+a frozen-prediction diagnosis, not another favorable threshold. Empty selected
+risk is undefined, never a passed safety check; count matching concerns utility
+only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 
-The frozen-gradient diagnosis is now complete and exactly replayed. It finds
-localized constraint conflict rather than universal clipping, and substantial
-candidate variation in estimates of the same reference error. I have registered
-a parameter-matched shared-reference ablation: one causal floor token supplies
-the common risk denominator while candidate costs remain separate. Its real
-recovery pilot and full 2,000-update disabled-sharing control pass exactly.
-All 54 primary fits and their readouts now complete and replay exactly, with
-matched initial weights and row draws. Shared-reference mixed-bank gain is
-**0.542%**, versus **0.553%** for physical-only. The paired neural increment
-is **-0.0110pp**, CI **[-0.0541,+0.0287]**, and required recording-risk support
-is only **21/186**. Coherent estimates did not make the policy successful.
-The static-context audit now verifies mappings for 74 fitting recordings and
-14 actual cameras. It confirms the relative feature blind spot, but does not
-show a monotonic missingness gradient near polygon edges. I have registered
-a controlled 18-field scene-position ablation. Its real interruption-recovery
-pilot passes; disabling the added branch reproduces the original full 2,000-
-update weights, optimizer and loss trace exactly. All 54 primary fits now
-complete, totaling 108,000 updates in 5.7 minutes, and are frozen before readout.
-This is an
-image-space webcam-track study, not SDD's
-official top-down annotation benchmark; the [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
-separates the released source, our adapter and current experimental population.
+These are exposed European SOURCE-development results, not independent
+confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
+image coordinates, not SDD's official top-down annotations. The [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)
+distinguishes the publisher's release, our adapter and the experimental cohort.
+Static polygons are region proxies, not verified walkable or metric maps.
+Independent evaluation stays closed; submission readiness is still false.
+Metric/effective-second claims, Stage5C execution and SMC remain off.
 
-- [Complete comparison, intervals and risk checks](outputs/publication_readiness_2026_09/cost_decision_evidence_20261029.md)
+- [Six-study comparison, intervals and moment errors](outputs/publication_readiness_2026_09/feature_cost_evidence_20261029.md)
+- [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
 - [Published-loss control](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md)
 - [Shared-reference result and limitations](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/readout.md)
 - [Static scene-context audit](outputs/publication_readiness_2026_09/european_static_scene_audit_v1/readout.md)
-- [English research draft, revision 6](outputs/publication_readiness_2026_09/evidence_manuscript_v6/README.md)
+- [English research draft, revision 7](outputs/publication_readiness_2026_09/evidence_manuscript_v7/README.md)
+- [Frozen four-study evidence and revision 6](outputs/publication_readiness_2026_09/evidence_manuscript_v6/README.md)
 - [Chinese operating guide](outputs/publication_readiness_2026_09/evidence_manuscript_v6/reproduction_zh.md)
 
 ### Completed Harm-Loss Comparison
