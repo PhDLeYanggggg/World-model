@@ -22,6 +22,12 @@ target and does not read future target arrays. Current-only and key-noise
 controls are specified, not trained. Pilot/full extraction, raw replay and
 new model fitting are not_run at registration. See the [input protocol](outputs/publication_readiness_2026_09/european_detector_history_store_v1/protocol.md).
 
+The first pilot stops before raw access with a local-variable shadowing error.
+The failure and reproducing startup regression are retained. Registration_v2
+renames that receipt variable and pins the added regression; features, roles,
+rows and numeric rules are unchanged. Eleven new/adjacent checks pass in0.32s.
+No failed invocation is counted as extraction or training success.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a

@@ -26,13 +26,13 @@ from src.world_model.m3w_detector_history_features import lookup_history,feature
 NAME='european_detector_history_store_v1'
 PUBLIC=ROOT/'outputs/publication_readiness_2026_09'/NAME
 PRIVATE=ROOT/'data/stage_cvpr2027_experiments'/NAME
-CONFIG=ROOT/'configs/m3w_detector_history_store_v1.json';REG=PUBLIC/'registration.json'
+CONFIG=ROOT/'configs/m3w_detector_history_store_v1.json';REG=PUBLIC/'registration_v2.json'
 SOURCE=ROOT/'outputs/publication_readiness_2026_09/european_squares_source_v1/analysis.json'
 ROLES=ROOT/'outputs/publication_readiness_2026_09/european_squares_roles_v1/roles.json'
 PACKED=ROOT/'data/stage_cvpr2027_experiments/european_source_forecast_v1/packed'
 AUDIT=ROOT/'outputs/publication_readiness_2026_09/european_static_scene_audit_v1'
 FILES=(Path(__file__),CONFIG,ROOT/'src/world_model/m3w_detector_history_features.py',
-       ROOT/'tests/test_m3w_detector_history_features.py',PUBLIC/'protocol.md')
+       ROOT/'tests/test_m3w_detector_history_features.py',ROOT/'tests/test_m3w_detector_history_builder.py',PUBLIC/'protocol.md')
 
 
 def admission(register=False):
@@ -58,6 +58,8 @@ def admission(register=False):
         raise ValueError('Original74record149510row fitting roster required')
     source_file=json.loads((SOURCE.parent.parent/'european_squares_intake_v1/trajectory_manifest.json').read_text())['private_file']
     identity=dict(bindings={str(p.relative_to(ROOT)):digest(p) for p in FILES},
+        prior_failed_registration_sha256=digest(PUBLIC/'registration.json'),
+        execution_amendment='rename_runtime_receipt_local_that_shadowed_runtime_function_before_raw_access',
         roles_sha256=digest(ROLES),source_manifest_sha256=digest(SOURCE),
         fitting_audit_sha256=digest(AUDIT/'audit.json'),packed_receipt_sha256=digest(PACKED/'receipt.json'),
         archive=source_file,recordings={str(ri):dict(source_member=r['name'],rows=r['rows'],raw_rows_sha256=r['raw_sha256']) for ri,r in whitelist.items()},
@@ -208,10 +210,10 @@ def execute(phase,resume=False):
             if result!=json.loads(finish.read_text()):raise ValueError('Complete feature-store report replay differs')
             save(PUBLIC/'verification.json',dict(raw_reparsed=True,all_arrays_exact=True,rows=cfg['expected_rows'],complete_sha256=digest(finish)))
         else:save(finish,result)
-    runtime=dict(pid=os.getpid(),seconds=time.monotonic()-start,peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+    runtime_record=dict(pid=os.getpid(),seconds=time.monotonic()-start,peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         newly_parsed_records=new_parse,verified_cache_records=cache_hits)
-    save_event(PRIVATE/('verify_runtime.json' if verify else phase+'_runtime.json'),runtime)
-    beat(state='verified' if verify else phase+'_complete',**{k:v for k,v in runtime.items() if k!='pid'})
+    save_event(PRIVATE/('verify_runtime.json' if verify else phase+'_runtime.json'),runtime_record)
+    beat(state='verified' if verify else phase+'_complete',**{k:v for k,v in runtime_record.items() if k!='pid'})
 
 
 if __name__=='__main__':

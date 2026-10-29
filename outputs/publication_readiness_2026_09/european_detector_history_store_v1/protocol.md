@@ -69,3 +69,11 @@ member and checks all confidence/features/keys and reports exactly. Only
 aggregate receipts/schema are public; private arrays and raw data stay out of
 Git. Prefix checks are implementation evidence, not scientific model success.
 No deployment, metric/effective-second, true3D, foundation, Stage5C or SMC claim.
+
+## Execution Repair Before Raw Access
+
+The first pilot invocation fails before raw-archive access: a local receipt
+variable named runtime shadows the runtime function. A regression reproduces
+that exception. Registration_v2 renames the receipt and adds the startup
+regression; it retains the original registration/failure record. No raw row,
+feature, target, role, query roster or numerical extraction rule changes.
