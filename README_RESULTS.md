@@ -54,6 +54,12 @@ eligible real easy action, not within2%. Do not promote oracle support to learne
 safety. Exact-record decision repair is registered,12focused tests pass1.82s;
 its real pilot and54policy fits are not_run at this checkpoint.
 
+The exact-record repair pilot subsequently completes PID57297exit0:60real
+updates,13.865525s,peakRSS5,618,614,272bytes. All three interrupted5+5 states
+match direct10 exactly; full fitting populations and initialization match.
+Projected full optimizer time is1,376.43s plus preparation, not completion.
+The registered54x500 full-gradient fits remain next; no independent role opens.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
