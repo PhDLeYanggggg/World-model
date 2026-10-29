@@ -53,6 +53,24 @@ The 144-group fitting readout is separately registered against the committed
 72-endpoint freeze. Both original static-policy metrics and their action
 hashes must replay, with exact repetition of the new readout afterward.
 
+The first readout completes PID 27079, exit 0, in 185.262481s, peak RSS
+10,344,284,160 B; separate PID 27763 completes exact 144-group replay in
+188.511143s. The 2,051,789-byte aggregate archive is byte-verified.
+Known-only mixed fitting gain is +0.580799%, support 77/444. Completion-mode
+gain is -18.512092%, support 26/444. Their paired known change is -19.092891pp,
+CI [-50.819548,-1.021775]; completion-lower change is -19.857353pp,
+CI [-51.911894,-1.420127]. The matched completion-lower interval crosses zero.
+Known easy violations rise from 234 to 375, selected unknown views from
+932 to 3,449, and interventions from 80,414 to 237,281. All primary fitting
+advancement conditions fail; no model is deployed or independent role opened.
+
+A fixed-region diagnosis is registered before its separate inference:
+888 paired recording/context/seed/bank views, both estimators scored on the
+same frozen control-selected and completion-selected regions plus all legal
+actions. Existing tested helpers retain unknowns and undefined ratios.
+Six diagnostic/helper tests pass in 1.55s. This is not another training or
+threshold search; actual region diagnosis is not_run at this registration.
+
 ### Fixed Candidate-Output Amplitude Control
 
 Bank separation recovers fitting utility but worsens complete risk support.

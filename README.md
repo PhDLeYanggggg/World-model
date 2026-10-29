@@ -139,6 +139,13 @@ before readout. This is real Torch optimization, not new trajectory-forecast
 training. Each supervision mode sees the same 348,388 repeated unknown-row
 draws; only the completion mode includes their interval endpoints in the
 loss. The matched comparison has not yet established a policy improvement.
+Its completed fitting readout is negative: mixed-policy known ADE gain changes
+from +0.581% for the new known-only control to -18.512% with completion
+endpoints. Required recording risk support falls from 77 to 26/444. The
+paired change is -19.093pp, fitting 95% locality interval [-50.820,-1.022].
+All 144 groups replay exactly. Valid interval targets do not by themselves
+make a learned cost gate safe; I am checking the actual selected regions
+before deciding which part of the target or estimator needs to change.
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
