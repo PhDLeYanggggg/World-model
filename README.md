@@ -76,7 +76,8 @@ The static-context audit now verifies mappings for 74 fitting recordings and
 show a monotonic missingness gradient near polygon edges. I have registered
 a controlled 18-field scene-position ablation. Its real interruption-recovery
 pilot passes; disabling the added branch reproduces the original full 2,000-
-update weights, optimizer and loss trace exactly. The 54 primary fits are next.
+update weights, optimizer and loss trace exactly. All 54 primary fits now
+complete, totaling 108,000 updates in 5.7 minutes, and are frozen before readout.
 This is an
 image-space webcam-track study, not SDD's
 official top-down annotation benchmark; the [data card](outputs/publication_readiness_2026_09/european_shared_reference_cost_v1/data_card.md)

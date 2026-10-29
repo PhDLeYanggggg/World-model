@@ -75,6 +75,12 @@ all-bank interruption recovery exact. Full disabled neutral PID84875exit0:
 new weights remain zero. Optimizer-only primary projection362.31splusdata
 preparation.54fresh primary fits remain next,no scientific gate asserted.
 
+Static-scene primary training PID85320exit0 completes54heads/108,000updates,
+339.605738s,peakRSS10,181,656,576B. Each26,309parameterhead matches its old
+motion initialization/normalizer,draws and RNG;new scene weights update in all
+fits.26combined focused tests pass3.08s. All54endpoints freeze before first
+readout;no new utility/safety result yet. Old54controls remain cached_verified.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
