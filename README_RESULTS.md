@@ -16,6 +16,9 @@ planned updates. Estimation-only versus original action-coupled training;
 same initialization, saved AdamW moments, query draws and clip5.29 scoped tests
 pass3.49s. All72 fixed fitting cohorts have known outcome support. No held or
 independent readout, threshold search, deployment or new forecasting.
+Native-arm64 pilot: 300 real updates, 21.953444s, peak RSS 2,576,744,448 bytes.
+Exact resume, matched draws and protected outputs passed; full training remains
+pending. Pilot execution alone establishes no scientific lift.
 [Prior-control reconciliation](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/prior_controls.md),
 [protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
 

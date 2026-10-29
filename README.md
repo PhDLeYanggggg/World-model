@@ -34,6 +34,11 @@ earlier decoder tests, where benefit/reference estimates also changed. The
 first screen uses only fixed fitting cohorts; no new held readout is authorized
 by this experiment. [Protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
 
+The native-arm64 pilot completed 300 real optimizer updates in 21.95 seconds,
+using 2.58 GB peak memory. Exact interrupted/resumed training, matched sample
+draws and protected outputs all passed. This permits the registered 36-fit
+training comparison; it does not establish a scientific improvement.
+
 ### Completed Conditioning Diagnosis
 
 **29 October: lower training loss is not yet better switching-risk estimation.**
