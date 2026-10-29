@@ -25,11 +25,27 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: a single easy-preserving objective test is registered.**
-The next comparison constrains the donor easy-error objective and measures the
-resulting complete policy,not only risk MSE. The original2% safety budget and
-count-matched utility controls remain fixed. No new MSE admission gate is added;
-real fitting is pending. [Protocol](outputs/publication_readiness_2026_09/european_easy_constrained_v1/protocol.md).
+**29 October: preserving the training objective does not yet preserve policy safety.**
+I completed 72 comparisons of an easy-constrained risk estimator and evaluated
+the resulting intervention decisions. The new objective removes 16,261 donor-fit
+conflicts where total loss improved at the expense of easy cases. But the complete
+policy meets the unchanged safety budget in only **5/72** fitting groups.
+Even on known labels, 33 groups exceed the overall budget and 22 exceed the easy
+budget. Missing outcomes are part of the problem, not the whole explanation.
+
+At the same intervention count, the new estimator improves the utility lower
+bound by **0.098 percentage points** over the previous repair, but remains
+**0.692 points below the original policy**. These are partial-label utility
+bounds, not confidence intervals or trajectory-accuracy gains. I am retaining
+all six comparisons and keeping deployment unchanged.
+
+This test evaluates decisions directly; risk MSE is a secondary diagnostic, not
+an additional hurdle. The next method question is whether learning intervention
+utility and scene-level risk directly works better than fitting risk by squared
+error. The current results are exposed-TRAIN evidence, not independent testing.
+[Results and diagnosis](outputs/publication_readiness_2026_09/european_easy_constrained_v1/conclusions.md),
+[complete tables](outputs/publication_readiness_2026_09/european_easy_constrained_v1/readout.md),
+[protocol](outputs/publication_readiness_2026_09/european_easy_constrained_v1/protocol.md).
 
 ### Previous Joint Risk Check
 

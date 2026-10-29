@@ -7,14 +7,47 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Easy-Constrained Objective and Actual Policy: Registered, Not Run
+### Easy-Constrained Objective and Actual Policy: Complete, Not Deployable
 
-One fixed follow-up to the coupled-support failure. Reconstruct all/easy donor
-loss separately,constrain donor easy error not to increase,then evaluate actual
-full and count-matched policy effects at the unchanged2%rule. Risk MSE is
-secondary,not another advancement gate. No extra threshold sweep.12 targeted
-tests pass1.42s;real pilot/full fitting pending.25 existing protocol tests pass.
-[Protocol](outputs/publication_readiness_2026_09/european_easy_constrained_v1/protocol.md).
+Registered commit bb270000 precedes the pilot and real fits. One fixed objective
+change: constrain donor easy loss while minimizing combined all/easy loss.
+Same 72 views, causal features, query/reference banks and frozen predictions;
+no threshold sweep. Full fitting PID89348 exit0:246.603598s,6,590,414,848B peak
+RSS. Pilot PID88980 exit0:29.068852s,7,572 supported queries. All62,902 repeated
+query occurrences remain,61,335 known/1,567 unknown. No neural optimizer updates.
+
+16,261 donor fits exhibit the hypothesized all/easy conflict. The constraint
+reduces alpha on17,221 queries with zero donor easy-loss violations. Easy donor
+loss sum50.998271->50.889516,versus51.250196 for the previous blend. This fixes a
+training-objective conflict,not a query/deployment safety guarantee.
+
+Actual complete policy:51,693 actions,1,139 unknown selected;5/72 view budgets and
+29/444 recording-view budgets supported. Known-label violations:all33,easy22.
+Unknown-only upper-bound failures:all30,easy37;7 view easy ratios undefined.
+These categories overlap;444 recording-views are not444 independent recordings.
+Full positive-harm/reference and easy-degradation requirements remain2%.
+
+Primary utility completion bounds versus original:full[-2.879768,-1.570854]pp,
+count-matched[-0.692110,-0.454223]pp. Versus previous blend:full
+[-0.466932,2.183365]pp,count-matched[0.097505,0.165584]pp. Two empty matched
+previous-blend comparisons remain present with risk not estimable. Bounds are
+partial-label bounds,not confidence intervals or relative FDE improvements.
+No substitution of a better secondary arm. Complete-policy safety and useful
+improvement over original are not established,so no deployment change.
+
+Secondary risk MSE all/easy0.079382933/0.000317254;original
+0.079458745/0.000309373.7/18 pair wins;loses recording-mean alpha on easy MSE.
+These diagnostics are not new policy gates.79 focused tests pass3.46s;
+25 previously checked protocol tests are reused,not claimed as a full suite.
+Separate arithmetic checks3384 policy records and preserves all source/context/
+head-seed slices. Full numerical replay PID90177 exit0:all72 groups and summary
+exact,verified2026-10-29T05:44:09.713810Z. No necessary process remains running.
+Next:decision-aware utility/risk training with fixed controls;not another MSE
+screen or threshold sweep. No held/independent roles opened.
+[Results](outputs/publication_readiness_2026_09/european_easy_constrained_v1/conclusions.md),
+[tables](outputs/publication_readiness_2026_09/european_easy_constrained_v1/readout.md),
+[protocol](outputs/publication_readiness_2026_09/european_easy_constrained_v1/protocol.md),
+[reproduction](outputs/publication_readiness_2026_09/european_easy_constrained_v1/reproducibility.md).
 
 The user explicitly confirmed the prospective evaluation rule on29October:
 full-policy safety on every required scene still uses the original2%budget;
