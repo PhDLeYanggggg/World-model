@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: testing whole-recording constraint optimization.**
+The direct policy still violates constraints on its own training recordings.
+I am checking whether sparse minibatch estimates miss harmful interventions,
+then comparing exact recording-level constraint updates and full-recording
+gradients with the frozen stochastic policy. The predictor, features, update
+budget and 2% requirement stay fixed; additional computation is reported openly.
+The experiment is registered, not yet a result.
+[Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
+
+### Previous Direct Policy
+
 **29 October: direct decision learning reduces some harm, but loses useful interventions.**
 I trained 54 neural intervention heads with 108,000 optimizer updates, comparing
 source-level constraints, recording-level constraints and hard deployment

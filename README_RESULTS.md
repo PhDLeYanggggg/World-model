@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Whole-Recording Policy: Registered, Diagnosis Pending
+
+Previous goal turn made progress:54 direct neural heads and144 fixed readouts
+completed,with failed utility and full-policy safety. New experiment isolates
+the gradient/constraint estimator:exact_dual keeps original sampled primal draws;
+exact_gradient uses chunked whole-record gradients. Same2,000updates,model,
+initialization,features,loss and2% budget; compute and row exposure are NOT matched.
+Planned36 neural fits/72,000updates. First diagnose18 frozen parent states on fit
+recordings only. Original and stochastic references remain frozen; all finals
+must precede the exploratory inner-held readout. No independent roles opened.
+Nine targeted tests pass before real execution,including exact resume between
+heartbeat boundaries. Unexecuted draft registration is retained. No new result
+or deployment promotion is claimed.
+[Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
+
 ### Direct Neural Policy: Trained, Utility and Full Safety Failed
 
 54 real neural intervention heads completed 108,000 updates on native arm64
