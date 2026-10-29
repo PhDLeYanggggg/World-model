@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**In progress: matching the reference population to the frozen query policy.**
+The next fitting-only control restricts donor labels to samples that the same
+original policy would select. Normalization, queries and neighbor settings stay
+fixed. I will test whether population mismatch explains the previous magnitude
+error, without changing thresholds or opening held data. The protocol is frozen;
+scientific results are not yet available.
+[Protocol](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/protocol.md).
+
 **29 October: reference coverage is repaired, but risk magnitude is not.**
 I completed all 72 fitting comparisons after pooling four approved sources from
 the same predictor context. Excluding the query recording still leaves enough

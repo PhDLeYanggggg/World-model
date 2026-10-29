@@ -7,6 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Policy-Conditioned Reference: Registered, Scientific Readout Not Run
+
+Previous goal turn: progress,72 fresh pooled-reference views with exact replay;
+coverage/information pass, magnitude fails. The next single-factor repair keeps
+query policy, full-bank normalization and32-neighbor rule frozen, restricting
+supervised donors to the same original policy's selected population. Unknown
+queries retained; query recording excluded; insufficient donors remain undefined.
+Sixteen focused tests pass1.31s, including query-label and unselected-label
+perturbations. Real pilot and full72-view science remain not_run at registration.
+No neural training, held/independent role, deployment or scientific-rule change.
+[Protocol](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/protocol.md),
+[prior controls](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/prior_controls.md).
+
 ### Pooled-Reference Analogue Control: Coverage and Information Pass, Magnitude Fails
 
 Previous goal turn: progress,72 fresh source-local views/replay; conditional
