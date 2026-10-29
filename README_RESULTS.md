@@ -74,6 +74,11 @@ before any new policy readout. Four inference/readout checks pass in1.48s,
 including exact old/new disabled predictions and active cost-bound checks.
 Scientific readout remains not_run at this freeze; no deployment promotion.
 
+The288-group readout registration now binds those144frozen endpoints, the
+verified past-input store and the complete fixed comparison code. No held
+readout or independent role is admitted. Scores are still not_run at this
+registration; the primary remains history/mixed, even if a secondary looks better.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
