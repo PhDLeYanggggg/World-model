@@ -5,7 +5,10 @@
 Registered TRAIN-internal risk-head continuation. Code and protocol were committed
 in `8d5d74b5` before the real pilot. Pilot receipt was committed in `85d1b207`
 before the 36-fit run. The final result and runtime are recorded separately;
-this file describes the reproduction contract, not a completion claim.
+this file describes the reproduction contract. Full training froze in
+`1419e149` before the fitting readout. TrainingPID67973, readoutPID69017 and
+full inference replayPID69425 completed exit0; all72 fitting views reproduced.
+The nine-condition fitting screen failed. Deployment remains unchanged.
 
 ## Runtime and Provenance
 

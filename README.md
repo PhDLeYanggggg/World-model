@@ -25,19 +25,26 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: isolating risk estimation from action optimization.**
-I have registered a matched continuation from 18 frozen risk heads. One arm
-continues the original action-coupled objective; the other learns the original
-moment estimates alone. Benefit and reference predictions, optimizer starting
-state, causal inputs and training budget are held fixed. This differs from the
-earlier decoder tests, where benefit/reference estimates also changed. The
-first screen uses only fixed fitting cohorts; no new held readout is authorized
-by this experiment. [Protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
+**29 October: better average risk fitting still does not make selection safe.**
+I completed 36 matched continuations from 18 frozen risk heads. Removing the
+action-dependent losses reduced average fitting all/easy risk error by
+**80.29% / 55.65%**, while benefit and reference predictions stayed fixed.
+But easy-risk error on the original selected cohort did not improve, and only
+4 of 18 context-seed pairs improved over both controls. The registered screen
+failed, so this candidate does not advance to a new held evaluation.
 
-The native-arm64 pilot passed exact resume, matched draws and protected outputs.
-All 36 continuations then completed 72,000 new optimizer updates in 370.46
-seconds, using 2.90 GB peak memory. The final models are frozen before the
-fitting readout; training completion does not establish a scientific improvement.
+The unchanged decision rule selected far more occurrences, from 62,902 to
+419,270, and produced known easy-risk violations in **62/72 views**. These are
+exposed TRAIN results, not independent samples or a deployment success. The
+result shows why I cannot equate a lower average training error with reliable
+intervention risk.
+
+The 72,000 real updates took 370.46 seconds and 2.90 GB peak memory. All 72
+fitting views reproduce from frozen models; separate arithmetic checks and 32
+related tests pass. Deployment, independent data roles and the risk criteria
+are unchanged. [Results](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/reproducibility.md).
 
 ### Completed Conditioning Diagnosis
 

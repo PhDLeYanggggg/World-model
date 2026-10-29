@@ -1,5 +1,39 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 风险估计解耦训练完成，拟合筛选未通过
+
+常规审计、训练、恢复与安全同步按已有授权自行执行，不再逐项要求用户确认。
+这轮真实训练36个风险头续训对照，共72,000次更新，不是新的轨迹预测器或独立测试。
+原生arm64、CPU4/inter-op1/workers0；训练PID67973 exit0，用时370.459秒，峰值2.90GB。
+试跑300次更新验证精确resume、相同采样和收益/reference输出不变。新增checkpoint约17.68MB，
+保留在私有data目录。CREATE原TRAIN包读取成功；队列查询超时仅表示队列状态未知，无新远程提交。
+
+只训练风险估计后，全部eligible拟合样本的all/easy signed-risk MSE下降80.29%/55.65%，
+但固定原选样easy MSE由0.000309373416变成0.000309426746，未改善。
+仅4/18组同时优于两个对照，未达到预定12/18。9项拟合路由条件通过7项，不能修改规则放行。
+策略选择从62,902增至419,270次重复出现，62/72视图known easy正伤害风险超2%，完整支持0/72。
+这些不是独立样本量，不是ADE/FDE下降，不代表可部署。没有再读held或独立角色，也未更改部署。
+
+训练冻结提交`1419e149`在评价之前。评价PID69017 exit0，72视图、100.450秒；
+从冻结权重完整重放PID69425 exit0，72视图全部一致。另用独立算术实现核对864个cohort-target、
+216个policy、72个匹配计数及全部9条件；32项针对性测试通过。这里独立实现不等于外部团队复现。
+
+```bash
+.venv-pytorch/bin/python -m scripts.run_m3w_risk_decoupling check
+.venv-pytorch/bin/python -m scripts.verify_m3w_risk_decoupling --check
+.venv-pytorch/bin/python -m scripts.report_m3w_risk_decoupling --check
+```
+
+完成产物不删除重跑。新环境先register并提交绑定，pilot后train；冻结36个checkpoint回执后才fit-eval。
+只有中断未完成才使用`train --resume`或`fit-eval --resume`，先检查PID/heartbeat。
+本轮说明平均误差下降未解决选样后的低估风险，不能继续仅调阈值。下一步在拟合数据中区分
+条件信息不足、优化和选择乐观偏差，先核对已有OOF、selected-risk、tail对照避免换名重复。
+obs8/pred12 rawstride12、2%正伤害/reference及全部独立数据角色保持不变。
+Stage5C/SMC关闭，正式投稿仍需作者最终确认。
+[结论](european_risk_decoupling_v1/conclusions.md)、
+[失败分类](european_risk_decoupling_v1/failure_analysis.md)、
+[复现](european_risk_decoupling_v1/reproducibility.md)。
+
 ## 当前入口：2026-10-29 固定拟合样本诊断完成，不能靠关裁剪宣布修复
 
 按已有授权，常规审计、诊断、实验和安全同步由项目流程负责，不再逐项要求用户审核。
