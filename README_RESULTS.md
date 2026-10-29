@@ -24,8 +24,10 @@ The first run's new grouped table is invalidated by a reproduced numeric/string
 ID bug. Corrected per-record counts and all frozen controls are verified. Eleven
 oracle tests include240exhaustive small cases. With the new objective prototypes,
 17targeted tests pass2.09s. No new held score, threshold tuning, independent
-confirmation, Stage5C or SMC. The next18-fit cost-sensitive primal repair is
-registered but training not_run; its scope is fitting only.
+confirmation, Stage5C or SMC. The next18-fit cost-sensitive primal repair is now
+training locally after a real40-update pilot (PID20920 exit0,12.907564s,
+2.656GB peakRSS,exact10+10 versus20resume). Full training PID21379 is live;
+its results remain pending and its scope is fitting only.
 [Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
 [repair protocol](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 

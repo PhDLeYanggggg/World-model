@@ -26,19 +26,20 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 ## Latest Experiment
 
 **29 October: safe training choices exist, but the policy does not recover them.**
-An exact label-aware diagnostic finds useful choices within the2%budget in
-146of148recording/forecast views. The two exceptions are the same recording:
+An exact label-aware diagnostic finds useful choices within the 2% budget in
+146 of 148 recording/forecast views. The two exceptions are the same recording:
 its fixed forecast has no eligible easy-reference choice within budget.
-The cross-record neural policy retains only23.46%of the eligible positive benefit.
-Its selected set contains a safe useful subset in371of444record/seed views, while
-the actual policy passes in160. This points to both decision-fitting failure and
+The cross-record neural policy retains only 23.46% of the eligible positive benefit.
+Its selected set contains a safe useful subset in 371 of 444 record/seed views, while
+the actual policy passes in 160. This points to both decision-fitting failure and
 a specific forecast/support limitation, not simply an absence of useful signal.
 
-All72fitting readouts replay exactly. An initial grouping bug is preserved and
+All 72 fitting readouts replay exactly. An initial grouping bug is preserved and
 documented; corrected per-record scores match the prior verified controls.
 The oracle is label-aware and not deployable. I am now testing one training
-change, a cost-sensitive logistic objective, with the same inputs and2%budget.
-The18-fit comparison is registered, not yet trained; it does not open held data.
+change, a cost-sensitive logistic objective, with the same inputs and 2% budget.
+Its real 40-update pilot passes exact resume checks. The full 18-fit comparison
+is running locally; it does not open held data or change deployment.
 [Diagnosis](outputs/publication_readiness_2026_09/european_train_feasibility_v2/conclusions.md),
 [next experiment](outputs/publication_readiness_2026_09/european_cost_sensitive_policy_v1/protocol.md).
 
