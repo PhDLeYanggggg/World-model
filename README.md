@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**Next controlled experiment: repair the forecast loss, not the switching threshold.**
+I have registered a matched comparison that adds positive-error penalties
+against the training-selected baseline and causal CV. It keeps the original
+architecture, source folds, three seeds and 4,000-update budget for each of 18
+forecasters. The data are previously opened source development, not independent
+confirmation. The 2% full-policy safety requirement and deployment remain unchanged.
+Training and readout are pending; 21 targeted implementation tests pass.
+[Protocol](outputs/publication_readiness_2026_09/european_reference_harm_forecast_v1/protocol.md).
+
+### Previous Recording-Constraint Comparison
+
 **29 October: balancing recording constraints improves fitting coverage, but the policy remains unsafe.**
 I trained 18 neural policy heads for 36,000 updates with equal recording weights
 for constraint penalties, leaving the benefit objective and the 2% budgets
