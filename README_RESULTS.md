@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Fixed Candidate-Output Amplitude Control
+
+Bank separation recovers fitting utility but worsens complete risk support.
+The next fitting-only control changes actual output paths by five fixed
+amplitudes, symmetrically for physical and neural candidates. It contrasts
+reselection with unchanged endpoint selection sets, without refitting costs.
+Transported costs are convex-loss surrogates, not calibrated risk estimates.
+All 144 fitting groups and 720 amplitude views are required. Endpoint-neutral,
+zero-no-op, masked-label, convexity and archive checks pass 24 tests in 1.29s.
+Actual readout is not_run at registration; independent roles stay closed.
+See the [frozen protocol](outputs/publication_readiness_2026_09/european_forecast_amplitude_v1/protocol.md).
+
 ### Frozen Cost-Bank Factorization
 
 The previous full forest comparison changed the next question: does a mixed
