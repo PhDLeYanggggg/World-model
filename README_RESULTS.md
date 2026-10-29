@@ -39,6 +39,13 @@ old pointwise loss,scalar moment matching and posthoc selected-set calibration.
 zero-target finite gradient and changed-region resume rejection. Real pilot,
 full neutral,training and readout remain not_run at registration.
 
+Region-cost real pilot PID92242exit0 completes120updates,15.706850s,
+peakRSS9,088,106,496B;all-bank10+10/direct20recovery exact. Full2000-update
+disabled neutral PID92712exit0 matches every old scientific field except
+declared identity/runtime,17.032472s. Primary optimizer projection283.49splus
+teacher/data preparation,not completion.54primary fits are next;no new outcome
+or safety gate asserted. The descriptive TRAIN calibration figure is generated.
+
 ### Frozen TRAIN Feasibility Diagnosis Registered
 
 Previous goal turn was progress: two54-fit real training/readout sequences,

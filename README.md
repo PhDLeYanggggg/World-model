@@ -60,7 +60,8 @@ concentrates harm underprediction or inflated reference estimates. This needs
 a frozen-prediction diagnosis, not another favorable threshold. That TRAIN-only
 audit now exactly replays all 108 original/scene cost endpoints. Easy-harm bias
 is concentrated inside the gate despite much better all-legal calibration.
-I am testing conditional region-moment training, keeping the earlier failed
+The real recovery pilot and full 2,000-step disabled control pass exactly;
+I am continuing the 54-fit conditional region-moment comparison, keeping earlier failed
 pointwise deviance and posthoc calibration results visible. Empty selected
 risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
