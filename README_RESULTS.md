@@ -35,6 +35,21 @@ of primary checkpoints; preprocessing, saves and full refit are additional.
 This supports the complete local roster, not a scientific gate or completion
 claim. The 72 full fits are next; no held outcome is used for selection.
 
+All 72 primary heads subsequently complete PID 25627, exit 0, in 296.702334s,
+peak RSS 10,179,477,504 B. There are 144,000 primary updates, a separate
+2,000-update full exact refit and 180 engineering pilot updates. The first
+full endpoint matches model/Adam/RNG/draws/trace exactly (3.421816s versus
+3.354536s); elapsed-time checkpoint bytes are not claimed identical.
+
+Each 36-head supervision mode draws 348,388 repeated unknown query rows and
+8,867,612 known supervised row visits. Unknown objective participation is
+0 for known-only and 348,388 for completion bounds. These visits are not
+new independent trajectories. Primary checkpoint files total 27,385,237 B
+and remain private. All matched designs pass and every endpoint is frozen
+before readout. Expanded training/readout helper scope: 25 passed in 2.82s.
+Fitting readout remains not_run at freeze; risk and utility are not inferred
+from loss, engineering recovery or training completion.
+
 ### Fixed Candidate-Output Amplitude Control
 
 Bank separation recovers fitting utility but worsens complete risk support.
