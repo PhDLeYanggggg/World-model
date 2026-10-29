@@ -57,6 +57,8 @@ def main():
     fig.subplots_adjust(top=.8,bottom=.28,left=.065,right=.985,wspace=.34)
     (PUBLIC/'figures').mkdir(exist_ok=True);PRIVATE.mkdir(parents=True,exist_ok=True)
     fig.savefig(PUBLIC/'figures/estimator_comparison.svg',metadata={'Date':None})
+    svg=PUBLIC/'figures/estimator_comparison.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fig.savefig(PRIVATE/'estimator_comparison_preview.png',dpi=160)
     plt.close(fig)
     digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()

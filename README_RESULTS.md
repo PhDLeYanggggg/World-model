@@ -90,6 +90,10 @@ the full historical test suite was not rerun. Report generation is idempotent,
 metric/state fields cross-check exactly,and the seeded statistical SVG is
 reproducible. These are engineering checks,not new scientific success.
 
+The final SVG exporter also removes generated line-end whitespace. Parsed
+SVG structure and all numeric coordinates match the earlier visual check;
+the scoped whitespace check passes. Metrics and model states are unchanged.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0
