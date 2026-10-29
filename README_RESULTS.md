@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Frozen TRAIN Feasibility Diagnosis Registered
+
+Previous goal turn was progress: two54-fit real training/readout sequences,
+exact replays and a measured conditioning repair changed the next action.
+The next diagnostic binds36frozen physical/mixed decision states across all
+six contexts and three head seeds. It decomposes exact utility/all/easy/support
+gradients,checks constraint conflict/clipping and candidate-invariant reference
+targets versus predicted moments. Original fitting records only,zero optimizer
+updates;no held/independent role opening. Two synthetic regression tests pass
+1.02s. Fresh real diagnosis is not_run at registration. Existing local assets
+are complete and the preceding full train took16.5minutes;no new HPC job needed.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural

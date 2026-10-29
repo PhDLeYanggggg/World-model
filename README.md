@@ -60,6 +60,12 @@ retained in the [reference-coverage study](outputs/publication_readiness_2026_09
 They motivate the comparison, not a deployment claim. Metric/effective-second
 claims, Stage5C execution and SMC remain off. Submission readiness is still false.
 
+The next registered calculation separates frozen utility, harm and support
+gradients on fitting recordings only. I am also checking whether the cost
+model assigns inconsistent reference errors to different candidates for the
+same row. This diagnosis makes no optimizer update and opens no held result;
+its outcome will determine the next controlled training change.
+
 - [Complete comparison, intervals and risk checks](outputs/publication_readiness_2026_09/cost_decision_evidence_20261029.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
 - [Published-loss control](outputs/publication_readiness_2026_09/european_regression_deferral_v1/readout.md)
