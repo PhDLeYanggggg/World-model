@@ -39,6 +39,12 @@ incompatible older binary forest. All three banks and fixed harm sensitivities
 remain in the report. No seed or checkpoint is selected after readout. This
 SOURCE inner-held set is exposed development, not independent confirmation.
 
+The registered sequence has now completed and replayed exactly. Mixed forest
+known ADE gain is -0.00007346%, versus 0.982769% for the frozen neural cost
+head. Full required recording-risk support is 118/186, with 66 undefined easy
+views and two known easy-risk violations. Its primary gates fail. No forest
+from this experiment replaces the deployed policy.
+
 ## Intended Use And Restrictions
 
 Use for controlled research on forecast replacement and continuous risk-cost

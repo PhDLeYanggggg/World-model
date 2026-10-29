@@ -1,5 +1,6 @@
 """Fixed-bank statistical figure from the verified SOURCE estimator control."""
 import json
+import hashlib
 from pathlib import Path
 import sys
 import matplotlib
@@ -28,16 +29,14 @@ def main():
     if not evidence['gates']['exact144group_replay']:raise ValueError('Verified evidence required')
     held = evidence['held']; arms = ('physical_only','physical_neural','neural_only')
     names = ('Physical (6)','Mixed (7)','Neural (1)'); x = np.arange(3)
-    plt.rcParams.update({'font.size':10,'axes.titlesize':12,'svg.fonttype':'none'})
-    fig, axes = plt.subplots(1,3,figsize=(14,4.9))
+    plt.rcParams.update({'font.size':10,'axes.titlesize':12,'svg.fonttype':'none','svg.hashsalt':'m3w_multiaction_forest_v1'})
+    fig, axes = plt.subplots(1,3,figsize=(14,5.5))
     intervals(axes[0], x-.09, [held['accuracy'][a] for a in arms], '#287D63','ExtraTrees cost estimator')
     intervals(axes[0], x+.09, [held['accuracy'][a+'_neural_parent'] for a in arms], '#93546E','Frozen neural cost head','s')
     axes[0].set_title('Known-outcome accuracy'); axes[0].set_ylabel('ADE gain over floor (%)')
-    axes[0].legend(frameon=False,fontsize=8,loc='best')
     intervals(axes[1],x-.09,[held['forest_minus_neural'][a]['full_known_pp'] for a in arms], '#287D63','Known paired difference')
     intervals(axes[1],x+.09,[held['forest_minus_neural'][a]['full_lower_pp'] for a in arms], '#93546E','Completion-lower contrast','s')
     axes[1].set_title('Forest minus neural estimator'); axes[1].set_ylabel('Known-floor-normalized utility (pp)')
-    axes[1].legend(frameon=False,fontsize=8,loc='best')
     for offset,suffix,color,label in ((-.16,'','#287D63','ExtraTrees'),(.16,'_neural_parent','#93546E','Neural head')):
         rows=[held['safety'][a+suffix] for a in arms]
         bars=axes[2].bar(x+offset,[r['budget_record_views'] for r in rows],width=.28,color=color,label=label)
@@ -47,19 +46,25 @@ def main():
     maximum=max(held['safety'][a]['required_record_views'] for a in arms)
     axes[2].set_ylim(0,maximum*1.12);axes[2].axhline(maximum,color='#555555',linestyle=':',linewidth=1)
     axes[2].set_title('Full all/easy 2% risk support');axes[2].set_ylabel('Supported repeated recording views')
-    axes[2].legend(frameon=False,fontsize=8,loc='upper left')
     for axis in axes:
         axis.set_xticks(x,names);axis.spines[['top','right']].set_visible(False)
         axis.set_xlabel('Forecast candidate bank')
+        axis.legend(frameon=False,fontsize=8,loc='upper center',bbox_to_anchor=(.5,-.23))
     for axis in axes[:2]:axis.axhline(0,color='#777777',linewidth=.8,linestyle='--')
     fig.suptitle('A matched conventional estimator does not change the evidence standard',fontsize=15,y=.98)
     fig.text(.5,.025,'Exposed SOURCE development; 3,000 locality resamples, not independent confirmation. '
         'Banks share frozen forecasts; estimator objectives and compute differ.',ha='center',fontsize=9)
-    fig.subplots_adjust(top=.82,bottom=.19,left=.065,right=.985,wspace=.34)
+    fig.subplots_adjust(top=.8,bottom=.28,left=.065,right=.985,wspace=.34)
     (PUBLIC/'figures').mkdir(exist_ok=True);PRIVATE.mkdir(parents=True,exist_ok=True)
     fig.savefig(PUBLIC/'figures/estimator_comparison.svg',metadata={'Date':None})
     fig.savefig(PRIVATE/'estimator_comparison_preview.png',dpi=160)
     plt.close(fig)
+    digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+    (PUBLIC/'figure_manifest.json').write_text(json.dumps(dict(
+        source_evidence_sha256=digest(PUBLIC/'evidence.json'),generator_sha256=digest(Path(__file__)),
+        svg_sha256=digest(PUBLIC/'figures/estimator_comparison.svg'),
+        kind='generated_statistical_figure_not_third_party_media',raw_data_or_images_included=False,
+        preview_png_private=True),indent=2)+'\n')
     print(str(PRIVATE/'estimator_comparison_preview.png'))
 
 

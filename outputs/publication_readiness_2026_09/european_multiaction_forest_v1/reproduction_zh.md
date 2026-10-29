@@ -46,6 +46,7 @@ joblib 进程池。不能用 Intel Conda/Rosetta 替代已核验环境。
 .venv-pytorch/bin/python scripts/diagnose_m3w_multiaction_forest_costs.py
 .venv-pytorch/bin/python scripts/diagnose_m3w_multiaction_forest_costs.py --verify
 .venv-pytorch/bin/python scripts/report_m3w_multiaction_forest.py
+.venv-pytorch/bin/python scripts/plot_m3w_multiaction_forest.py
 ```
 
 `verify` 是重新推理核对，不是重新训练 54 个模型。全量试跑还实际比较了三库

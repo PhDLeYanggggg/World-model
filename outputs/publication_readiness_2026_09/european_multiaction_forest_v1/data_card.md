@@ -11,8 +11,10 @@ and metric calibration are not established by this experiment.
 The fixed roster contains twelve SOURCE localities. Prior verified records
 identify 74 unique fitting recordings and 31 inner-held recordings. Contexts
 and controller seeds repeat their views; these repetitions must not be counted
-as new independent scenes or independent trajectory training pipelines. Final
-fresh readout receipts report exact view counts and known/unknown support.
+as new independent scenes or independent trajectory training pipelines. The
+final fresh readout confirms 74/31 unique fitting/held recordings, represented
+by 444/186 recording-context-controller-seed views, respectively. Known/unknown
+support is reported without treating repeated views as independent records.
 
 ## Roles And Label Support
 

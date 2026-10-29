@@ -9,8 +9,12 @@ or evidence status.
 
 ### Matched Conventional Expected-Cost Control
 
-The next comparison tests whether a conventional estimator can learn the current
-seven-action cost task better than the neural cost heads. The experiment is
+**Final status: all 54 fits, 144-group readout and 1,332-view fitting diagnosis
+complete and exactly replayed; primary utility/full-risk gates fail.** The
+execution history below retains the intermediate registration and runtime states.
+
+This comparison tests whether a conventional estimator can learn the current
+seven-action cost task better than the neural cost heads. The experiment was
 registered for 54 ExtraTrees fits (128 trees each) using the same 398 causal
 fields, query draws and fitting-only normalizers as the static-scene neural
 comparator. The older binary forest is not reused as a matched model.
@@ -18,8 +22,8 @@ comparator. The older binary forest is not reused as a matched model.
 The shared information and sampling do not make the objectives or compute
 identical: the forest uses symmetric five-moment regression and post-fit
 projection. Five focused engineering tests pass, including recovery, changed
-target rejection and unknown/empty subgroup handling. Full-data profiling and
-all 54 fits are next; no new utility, safety or deployment result is claimed.
+target rejection and unknown/empty subgroup handling. At registration,
+profiling and all 54 fits remained not_run; measured results follow below.
 See the [fixed protocol](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/protocol.md).
 
 The full-data pilot completes in 62.89 seconds (PID 7993, exit 0), with exact
@@ -66,6 +70,25 @@ neural contribution. Risk support118/186is not a pass:66undefined easy views,
 two known easy violations and43unknown selected views remain. Fitting risk
 support330/444also fails. The fitting-only cross-estimator diagnosis is running;
 do not call this a deployment,capacity-only explanation or independent test.
+
+The paired fitting diagnosis subsequently completes PID13613exit0 in211.223233s;
+PID14346exit0 replays all1,332views exactly in208.540083s. On all-legal mixed
+actions,forest/neural median predicted/observed EH is1.016480/1.026498. On
+identical frozen neural selections it is4.576410/0.021367(341finite,103undefined
+record views). On forest selections it is4.456405/0.143958(323finite,121undefined).
+These are descriptive positive-denominator medians,not full-policy calibration
+or a unique architecture explanation. The generated statistical SVG is visually
+checked after removing legend overlap;raw data imagery and PNG previews remain
+private. Reports,cards,English paper addendum and Chinese guide are complete.
+Primary utility/full-risk and neural-contribution gates remain false. Next:
+fitting-only bank-factorization/gate-rejection check using frozen models,not a
+held-result threshold search. Independent roles and deployment stay unchanged.
+
+Final current-version focused regression rerun:39passed in2.62s,no warnings in
+that invocation. The earlier70legacy parallel warnings remain recorded above;
+the full historical test suite was not rerun. Report generation is idempotent,
+metric/state fields cross-check exactly,and the seeded statistical SVG is
+reproducible. These are engineering checks,not new scientific success.
 
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
