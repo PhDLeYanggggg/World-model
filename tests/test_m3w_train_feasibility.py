@@ -98,18 +98,22 @@ def test_unknown_envelope_never_becomes_a_zero_label():
     assert d['policy']['selected_unknown'] == 0
 
 
-def test_record_view_keeps_unidentifiable_record_and_frozen_actions():
+@pytest.mark.parametrize('recordings', [np.array(['a', 'a', 'b']), np.array([1, 1, 2])])
+def test_record_view_keeps_unidentifiable_record_and_frozen_actions(recordings):
     y = np.array([[.2, 0., 1., 1., 0.], [0., .7, 1., 1., .7],
                   [.3, 0., 1., 0., 0.]])
     args = (np.zeros((3, 380)), np.ones(3), y, None, None,
-            np.array(['a', 'a', 'b']), np.arange(3), {})
+            recordings, np.arange(3), {})
     action = np.array([True, True, True])
     copy = action.copy()
     d = api.evaluate(args, np.ones(3, bool), {'frozen': action})
     assert np.array_equal(copy, action)
-    assert set(d['recordings']) == {'a', 'b'}
+    first, second = sorted(set(map(str, recordings)))
+    assert set(d['recordings']) == {first, second}
     assert not d['all_recordings_feasible']
-    assert d['recordings']['a']['oracle']['optimal_gain_lower_mass'] == .2
-    assert not d['recordings']['b']['oracle']['budget_feasible']
+    assert d['recordings'][first]['oracle']['optimal_gain_lower_mass'] == .2
+    assert not d['recordings'][second]['oracle']['budget_feasible']
+    assert d['recordings'][first]['policies']['frozen']['observed']['known_rows'] == 2
+    assert d['recordings'][second]['policies']['frozen']['observed']['known_rows'] == 1
     assert d['policies']['frozen']['deletion_oracle']['budget_feasible']
     assert not d['policies']['frozen']['all_record_deletion_feasible']

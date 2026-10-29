@@ -28,9 +28,11 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 I am now separating TRAIN budget infeasibility from policy-fitting failure with
 an exact, label-aware action oracle. It keeps every fitting recording and the
 same 2% requirements; it is a diagnostic upper bound, not a deployable selector.
-The protocol and exhaustive small-case tests are ready; real-data results are
-pending. No new held-recording evaluation or threshold search is planned for
-this diagnostic. [Protocol](outputs/publication_readiness_2026_09/european_train_feasibility_v1/protocol.md).
+The first diagnostic exposed a numeric/string recording-ID bug in its grouped
+control table. A regression test reproduces it; the corrected execution is
+pending, with the original output retained and marked invalid. No new held-recording
+evaluation or threshold search is planned.
+[Protocol](outputs/publication_readiness_2026_09/european_train_feasibility_v2/protocol.md).
 
 ### Previous Cross-Recording Comparison
 

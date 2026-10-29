@@ -17,8 +17,8 @@ from src.evaluation import m3w_train_feasibility as api
 ROOT, sha, once = prior.ROOT, prior.sha, prior.once
 base = prior.api.base
 whole, direct = prior.previous, prior.previous.previous
-PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_train_feasibility_v1'
-PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_train_feasibility_v1'
+PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_train_feasibility_v2'
+PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_train_feasibility_v2'
 REG = PUBLIC/'registration.json'
 ARMS = ('origin', 'exact_gradient', 'same_record_meta', 'cross_record_meta')
 
@@ -157,6 +157,9 @@ def run(check=False, resume=False):
                         if (base.fingerprint(actions[arm]) != old['action_sha256'][arm]
                                 or result['policies'][arm]['observed'] != old['result']['policies'][arm]):
                             raise ValueError('Frozen fit actions or scores differ')
+                        for recording, detail in result['recordings'].items():
+                            if detail['policies'][arm]['observed'] != old['result']['recordings'][recording][arm]:
+                                raise ValueError('Frozen per-record scores differ')
                     value = dict(context=context,source=source,seed=seed,result=result,
                         registration_sha256=sha(REG), prior_fit_group_sha256=sha(oldpath),
                         result_source='fresh_run_TRAIN_label_aware_oracle_frozen_controls_cached_verified',

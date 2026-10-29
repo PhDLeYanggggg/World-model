@@ -59,6 +59,7 @@ def evaluate(args, eligible, policies):
     _, env, y, _, _, recordings, _, _ = args
     if not policies or np.asarray(recordings).shape != (len(y),):
         raise ValueError('Frozen policies and aligned recordings required')
+    recordings = np.asarray(recordings).astype(str)
     oracle, _ = solve(y, env, eligible)
     details = {}
     for recording in np.unique(recordings):
@@ -75,6 +76,9 @@ def evaluate(args, eligible, policies):
             item['policies'][name] = dict(observed=metrics.policy_score(y[mask], action[mask], env[mask]),
                 deletion_oracle=solve(y[mask], env[mask], action[mask])[0])
         selected_positive = float(y[action & np.isfinite(y).all(1), 0].sum())
+        for key in ('known_rows', 'unknown_rows', 'selected_count', 'selected_unknown'):
+            if sum(d['policies'][name]['observed'][key] for d in details.values()) != score[key]:
+                raise AssertionError('Recording accounting must reproduce the complete view')
         out[name] = dict(observed=score, deletion_oracle=repair,
             retained_positive_benefit_mass=selected_positive,
             missed_positive_benefit_mass=oracle['positive_benefit_upper_mass']-selected_positive,
