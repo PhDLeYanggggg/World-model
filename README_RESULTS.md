@@ -7,11 +7,22 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### TRAIN-Internal Shared Risk Experiment: All 108 Fits Complete
+### TRAIN-Internal Shared Risk Experiment: Complete, Both Repairs Failed
 
 The complete registered run finished in489.45s with216,000 optimizer updates.
-All108 final checkpoints are frozen; the72-view inner-held recording readout is
-running, not yet a scientific result. Source draws match exactly across arms.
+All108 final checkpoints were frozen before72-view inner-held inference, which
+completed in63.05s. Source draws match exactly across arms. Every weight hash,
+input binding, recording partition, risk ratio and aggregate summary verifies.
+Shared-global versus local paired lower utility is-2.094903pp, nominal95%CI
+[-3.479909,-0.824900]; same-count-0.519429[-1.025350,-0.147155]. Shared-source
+versus local is-2.604299[-4.255594,-1.128204]; same-count-0.381723
+[-0.795017,-0.070482]. Signed-score MSE also worsens in both repairs.
+Known easy-risk violations are46/46/40 of72 for local/global/source, with
+full completion support0/0/1. Neither repair passes. These are TRAIN-internal
+utility bounds, not FDE changes or independent confirmation.
+419,766 repeated held row occurrences per arm include9,228 unknown outcomes.
+The next frozen inner-fit census is a diagnostic, not new model selection.
+[Complete readout](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/readout/conclusions.md).
 38 scoped tests pass, including resume, matched sampling, leakage boundaries,
 aggregate accounting and the signed-degradation gate regression. The full legacy
 suite was not rerun because some tests overwrite frozen research artifacts.
@@ -29,7 +40,7 @@ independent roles are opened. Initial synthetic tests cover exact resume,
 held-statistic exclusion and unknown/empty comparison handling.
 The real TRAIN pilot completed700 updates in14.94s, with exact resume and
 identical per-source sampling; peak RSS2.38GiB. Full108 fitting is now complete;
-held-recording readout began only after every final was frozen.
+held-recording readout began only after every final was frozen and is complete.
 CREATE SSH/data access works; a queue query timed out, so queue state is unknown.
 No remote training job was submitted. This is not a model promotion.
 [Registered protocol](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/protocol.md).

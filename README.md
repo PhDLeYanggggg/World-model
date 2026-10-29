@@ -25,16 +25,28 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: testing shared risk learning on held-out TRAIN recordings.**
+**29 October: shared risk learning did not fix recording transfer.**
 I have completed 108 new cost-head fits: 72 local models, 18 shared models with
 global risk constraints, and 18 shared models with source-specific constraints.
 Every model received 2,000 updates; per-source sampling histories match exactly.
-All final weights were frozen before the recording-held-out readout, which is
-now running. This is a test of whether pooling limited training recordings can
-improve harm prediction, not a new neural trajectory model or a success claim.
-The experiment only reads original TRAIN packets and refits preprocessing on
-inner-fit recordings. Independent evaluation and deployment remain unchanged.
-[Registered study](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/protocol.md).
+All final weights were frozen before the complete 72-view recording readout.
+Compared with local heads, shared-global learning loses **2.095 percentage points**
+of conservative paired utility (nominal 95% CI **[-3.480, -0.825]**); sharing with
+source-specific risk constraints loses **2.604 [-4.256, -1.128]**. Both also lose
+at matched intervention counts and have worse signed-score prediction error.
+These are utility-bound contrasts, not FDE improvements.
+
+Source-specific constraints reduce known-label easy-risk violations from46/72
+to40/72, but only1/72 views has full completion support. That is insufficient:
+fewer switches and fewer reported violations do not establish a safe model.
+Both repairs fail and neither advances. I am now checking the frozen models on
+their inner-fit recordings to distinguish poor fitting from recording shift.
+
+This is a cost-learning experiment, not a new neural trajectory model. It uses
+only original TRAIN packets and refits preprocessing on inner-fit recordings.
+The3,000-draw bootstrap is locality-based and nominal, not independent confirmation.
+Independent evaluation and deployment remain unchanged.
+[Complete study](outputs/publication_readiness_2026_09/european_shared_train_risk_v1/readout/conclusions.md).
 
 ### Preceding Constraint Study
 
