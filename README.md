@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: repairing reference coverage before judging the risk estimator.**
+The next control pools only the four already-approved fitting sources belonging
+to the same predictor context. An input audit found at least 2,319 eligible
+labeled donors after excluding each query recording, enough for the fixed
+32-neighbor comparison. No held or independent data were added. The protocol is
+registered; real prediction results are not yet available. This repairs reference
+availability, not risk calibration or deployment readiness.
+[Protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/protocol.md).
+
+### Completed Source-Local Analogue Check
+
 **29 October: similar histories carry some information, but risk is still unreliable.**
 I completed a 72-view check using past-only features from other recordings to
 estimate harm on the original selected cohort. Only 24 views had complete

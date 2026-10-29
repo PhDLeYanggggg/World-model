@@ -7,6 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Pooled-Reference Analogue Control: Input Audit Complete, Scoring Not Run
+
+Previous goal turn: progress,72 fresh source-local views/replay; conditional
+information visible locally but reference coverage and magnitude failed.
+New control changes the reference bank to the four same-context inner-fit
+sources, retaining query selection,k32,380 features and all72 views. Input audit
+PID73798 exit0:52.278760s,2.45GB RSS,minimum2,319 known donors after query-record
+exclusion. Native arm64 and authorized CREATE TRAIN hashes verified. No held or
+independent bank, new neural training, deployment or scheduler submission.
+Support is available but scientific scoring is not_run. No positive lift claimed.
+[Input audit](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/input_audit.md),
+[protocol](outputs/publication_readiness_2026_09/european_pooled_analogue_v1/protocol.md).
+
 ### Fixed-Selection Causal Analogues: Complete, Support Screen Unpassed
 
 Previous turn: progress, 36 actual risk-head continuations and 72 replayed
