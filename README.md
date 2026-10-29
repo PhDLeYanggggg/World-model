@@ -70,7 +70,9 @@ The fitting diagnosis finds incomplete easy-harm calibration even inside the
 old regions, while about **68%** of new interventions leave those old chosen
 regions. Those rows are not unseen training inputs; the extra moment loss was
 conditioned on the old choices. I am keeping deployment unchanged and the older
-failed pointwise deviance and posthoc calibration results visible. Empty selected
+failed pointwise deviance and posthoc calibration results visible. The next
+registered check compares actual minibatch gradients with complete regional
+gradients on these frozen weights before choosing a training repair. Empty selected
 risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 

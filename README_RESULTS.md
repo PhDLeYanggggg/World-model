@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Complete-Region Gradient Check Registered
+
+The previous goal turn is progress:54actual fits,exact inference replay and
+1,332fitting-view mechanism results. Register all54current frozen heads for
+a TRAIN-only comparison of64original minibatch gradients against exact
+complete-region gradients. Replay all2,000sampling draws and count effective
+region visits;include EH/other-cost/base-gradient conflict. No optimizer step
+or held-role read. Synthetic multi-region direct autograd and two-pass chunked
+gradients match,including zero targets. This is not the old19-input controller
+diagnostic or the failed SDD adaptive reweighting trial. Real diagnosis remains
+not_run at registration;an exact-region training repair is conditional on it.
+
 ### Policy-Region Training Completes Without A Safety Or Neural-Value Pass
 
 All54new heads/108,000updates are complete and frozen atdbec2b6f before
