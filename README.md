@@ -25,22 +25,33 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: testing whether policy updates transfer between recordings.**
-The next comparison keeps the same features, forecasts and 2% safety budget.
-I will train matched same-record and cross-record meta-update policies: an update
-on one group of training recordings is assessed either on those recordings or
-on another group. This tests a specific failure of the previous experiment,
-where better training fit did not produce safer decisions on other recordings.
+**29 October: cross-recording meta-training did not repair policy safety.**
+I trained 36 neural intervention heads for 72,000 updates, testing whether an
+update learned on one group of recordings remains useful on another group.
+The comparison used matched same-record training, fixed forecasts and features,
+and the unchanged 2% safety requirement. All final weights were frozen before
+evaluation. Training took 58.5 minutes locally, with about 3.7 GB peak memory.
 
-The design fixes 36 fits and all final checkpoints before evaluation. It does
-not create a new validation set: eight of the twelve sources have only one fit
-recording, and the existing recording holdout has already been exposed.
-Independent evaluation remains unopened. A real-data pilot completed 80 updates
-and reproduced interrupted training exactly, using about 3.2 GB peak memory.
-All 36 fits have now completed 72,000 updates in 58.5 minutes, with about 3.7 GB
-peak memory. Their final checkpoints are frozen before the new held readout.
-No new held result is available yet. Deployment is unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
+The primary policy meets the budget in **51/72 fitting views but 0/72 held views**.
+It retains about **47% of the original policy's known benefit and 47% of its
+known harm**: the desired separation has not emerged. At equal intervention
+counts, its utility change against the same-record control is bounded between
+**-0.189 and -0.045 percentage points** of reference cost. This is a partial-label
+completion bound, not an FDE improvement or confidence interval.
+
+A 3,000-draw source bootstrap gives an outer envelope of **[-0.454, +0.063] pp**
+for that matched contrast. It provides no evidence of improvement, but also
+does not establish that cross-record meta-learning is generally worse. The
+complete-policy safety failure is clear, so deployment remains unchanged.
+
+All 144 readouts replay exactly and 113 targeted tests pass. These are exposed
+TRAIN recordings, not independent confirmation; eight sources have only one
+fitting recording. My next step is to separate budget/support infeasibility from
+optimizer failure on TRAIN before trying another policy objective.
+[Results](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/conclusions.md),
+[complete tables](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/reproducibility.md).
 
 ### Previous Whole-Recording Comparison
 

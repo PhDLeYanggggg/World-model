@@ -7,22 +7,54 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Cross-Recording Meta-Updates: Training Complete, Readout Pending
+### Cross-Recording Meta-Updates: Complete, Safety Failed
 
-Fixed comparison: 36 neural policy fits, 2,000 updates each, three head seeds.
-Primary cross_record_meta versus compute-matched same_record_meta; frozen
-exact_gradient and original policy references. The scientific split, features,
-forecasters, final-decision threshold and 2% risk budget do not change.
-Both episode sides are original TRAIN, not a new validation/calibration role.
-Eight of twelve sources have one fit recording; singleton sources cannot occur
-on both sides in one episode. The exposed inner-held readout remains exploratory.
-Independent roles stay closed. No threshold tuning or deployment promotion.
-113 targeted tests pass (6.06s), including second-order gradient and exact resume checks.
-Real pilot PID8237 exit0: 80 updates, 18.933s, 3,207,233,536B peak RSS; both arms
-exactly reproduce 10+10 versus 20 uninterrupted updates. Training PID8629 exit0
-completes 36 fits / 72,000 updates in 3508.268s, peak RSS3,687,137,280B.
-All final states are frozen before new held scoring. No new inner-held result yet.
-[Protocol](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/protocol.md).
+Fresh_run: 36 neural policy fits, 72,000 updates, 144 fixed readouts and exact
+replay. Primary cross_record_meta versus operation/exposure-matched
+same_record_meta; frozen exact_gradient and origin controls. Same features,
+forecasters, scientific split, final-decision threshold and 2% risk budget.
+This is new policy training, not a new trajectory forecaster.
+
+Training PID8629 exit0: 3508.267798s, peak RSS3,687,137,280B. Pilot PID8237 exit0:
+80 updates, both arms exact 10+10 versus 20 resume. Commit2b71530d freezes all
+finals before readout PID14011 (exit0,99.382036s). Replay PID14596 exit0 reproduces
+all 144 views and the summary. 113 targeted tests pass6.06s; separate arithmetic
+checks 5,022 policy summaries and 288 controls. The full historical suite was not rerun.
+
+Primary fit budget coverage is 51/72 views and 160/444 record views; held coverage
+is 0/72 and 4/186. Frozen exact-gradient remains 53/72 fit and 0/72 held.
+Primary known held all/easy violations: 63/59; easy-degradation violations: 50;
+undefined easy ratios: 3. Each of the 12 source slices has 0/6 passing views,
+and each of the three head seeds has 0/24. Primary makes 57,618 held interventions,
+including 902 unknown outcomes.
+
+Held matched utility completion bounds: cross minus same[-0.188814,-0.044687]pp;
+cross minus exact-gradient[-0.159391,-0.031468]pp; cross minus origin
+[-1.571132,-0.745989]pp. Full cross-minus-same[-1.062365,+0.162885]pp spans zero.
+These are outcome-completion bounds, not CIs or FDE gains. Seven cross/origin
+matched comparisons are empty; risk remains not_estimable, not a safety pass.
+
+Fixed3,000-draw paired source bootstrap,12clusters: matched outer envelope versus
+same[-0.453565,+0.063353]pp, versus exact-gradient[-0.333954,+0.036209]pp, versus
+origin[-2.342835,-0.232816]pp. The first two span zero; no stable positive lift.
+Do not treat repeated windows, contexts or head seeds as independent samples.
+Primary retains47.151%known benefit and46.610%known harm versus origin, showing
+little useful/harmful separation. Both arms use3,579,900,000 support/query forward
+row occurrences; the older exact-gradient comparison is not compute-matched.
+
+Cached_verified: source assets, forecasts, moments and controls. Inner-held
+remains exposed original TRAIN, not whole-pipeline OOF. Eight sources have one
+fit recording; episode sides are both training, not independent calibration.
+Independent roles, deployment, Stage5C and SMC remain unopened/unchanged.
+
+Next: TRAIN-only per-record constrained feasibility/oracle diagnosis, then a
+decision-boundary repair if useful feasible choices exist. Keep unsupported
+recordings visible; do not relax the budget or tune thresholds on held results.
+Follow-up not_run. No submission-readiness, metric/seconds or foundation claim.
+[Results](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/conclusions.md),
+[complete readout](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/failure_analysis.md),
+[gate](outputs/publication_readiness_2026_09/european_cross_record_policy_v1/evidence_gate.md).
 
 ### Whole-Recording Policy: Better Fitting, Held Safety Failed
 
@@ -77,9 +109,8 @@ TRAIN;not whole-pipeline OOF or independent confirmation. Independent selection,
 calibration and confirmation remain unopened. No new trajectory forecaster,
 scene-joint inference,physical-safety,metric/seconds,foundation or CCF-A claim.
 
-Next:reconcile existing cross-fitting roles and compare recording-disjoint
-utility/constraint learning against this shared-record optimizer inside original
-TRAIN. Follow-up not_run;no threshold rescue or retrospective promotion.
+The cross-recording follow-up above now completes the training-internal
+comparison. It does not rescue this experiment or retrospectively promote it.
 [Results](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/conclusions.md),
 [readout](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/readout.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/failure_analysis.md),
