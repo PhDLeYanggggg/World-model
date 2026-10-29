@@ -7,6 +7,25 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Coupled Other-Recording Retrieval Registered
+
+The completed completion-loss failure changes the next control: compare a
+nonparametric estimator whose five action costs preserve common reference
+and harm ordering, rather than fitting another renamed neural loss. Existing
+selected-donor nearest-neighbor failures are retained; this different current
+seven-action control is not an isolated coupling ablation or a new dynamics
+model. Distances use a fixed 398-field physical-bank mean, k32 and whole-query-
+recording donor exclusion. Unknown query support never sets eligibility.
+
+Four modes are fixed: local known-only, local completion endpoints, global
+completion mean, and jointly shuffled known targets. All 288 planned fitting
+comparison groups and original three comparator head seeds remain; the new
+retrieval policy is deterministic, not three trained models. Six new checks
+and adjacent target/readout checks total 17 passed in 1.75s. Pilot, full lookup,
+scoring and exact replay are not_run at registration. No independent role is
+opened, no scientific gate is passed, and deployment is unchanged. See the
+[protocol](outputs/publication_readiness_2026_09/european_coupled_local_cost_v1/protocol.md).
+
 ### Completion-Aware Supervision Registered
 
 **Final status: all 72 real Torch fits, 144 readout groups and 888 fixed-region
