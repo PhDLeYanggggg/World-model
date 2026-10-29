@@ -46,6 +46,17 @@ declared identity/runtime,17.032472s. Primary optimizer projection283.49splus
 teacher/data preparation,not completion.54primary fits are next;no new outcome
 or safety gate asserted. The descriptive TRAIN calibration figure is generated.
 
+Region-cost primary training PID93211 exits0:54fits/108,000updates,
+272.914187s,peakRSS9,987,096,576B. Every endpoint matches its old initial
+weights,preprocessing,row draws and RNG states. All54final endpoints are
+frozen before first readout;training completion is not a utility/safety pass.
+The fitting-region shift mechanism check is also specified before readout.
+
+The user-confirmed single-author roster and live OpenReview profile link have
+been checked. Identity details are retained only in an ignored private
+submission record,not in the anonymous paper package. Profile completion,
+venue enrollment,reviewer eligibility and actual submission are not certified.
+
 ### Frozen TRAIN Feasibility Diagnosis Registered
 
 Previous goal turn was progress: two54-fit real training/readout sequences,
