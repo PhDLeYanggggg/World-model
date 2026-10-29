@@ -60,11 +60,12 @@ retained in the [reference-coverage study](outputs/publication_readiness_2026_09
 They motivate the comparison, not a deployment claim. Metric/effective-second
 claims, Stage5C execution and SMC remain off. Submission readiness is still false.
 
-The next registered calculation separates frozen utility, harm and support
-gradients on fitting recordings only. I am also checking whether the cost
-model assigns inconsistent reference errors to different candidates for the
-same row. This diagnosis makes no optimizer update and opens no held result;
-its outcome will determine the next controlled training change.
+The frozen-gradient diagnosis is now complete and exactly replayed. It finds
+localized constraint conflict rather than universal clipping, and substantial
+candidate variation in estimates of the same reference error. I have registered
+a parameter-matched shared-reference ablation: one causal floor token supplies
+the common risk denominator while candidate costs remain separate. Training
+has not run yet. Coherent estimates alone will not count as a successful policy.
 
 - [Complete comparison, intervals and risk checks](outputs/publication_readiness_2026_09/cost_decision_evidence_20261029.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)

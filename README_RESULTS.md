@@ -19,6 +19,16 @@ updates;no held/independent role opening. Two synthetic regression tests pass
 1.02s. Fresh real diagnosis is not_run at registration. Existing local assets
 are complete and the preceding full train took16.5minutes;no new HPC job needed.
 
+The real diagnosis completes PID76259exit0,74.935765s,peakRSS5,850,284,032B;
+exact replay PID76817exit0,73.474452s,all36states exact. Mixed2/18states clip,
+4/18have support/risk cosine<-0.9. No mixed deeply feasible support view has
+positive support dual:generic excess-support pressure is not the chosen primary
+explanation. Candidate-invariant R/ER targets have predicted relative-spread
+source-view median statistics0.393994/0.558204. These are TRAIN diagnostics,
+not predictive lift. A54-fit matched shared-reference cost ablation is registered:
+same25,157parameters,initialization,draws,loss and2%budget;one existing causal
+floor token predicts R/ER. Real pilot/neutral/training/readout remain not_run.
+
 ### Learned Multi-Action Costs: Training Complete, Negative Fixed Readout
 
 `european_multiaction_cost_v1` compares physical-only, physical+original-neural
