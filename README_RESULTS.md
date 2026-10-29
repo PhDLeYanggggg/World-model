@@ -15,7 +15,12 @@ query policy, full-bank normalization and32-neighbor rule frozen, restricting
 supervised donors to the same original policy's selected population. Unknown
 queries retained; query recording excluded; insufficient donors remain undefined.
 Sixteen focused tests pass1.31s, including query-label and unselected-label
-perturbations. Real pilot and full72-view science remain not_run at registration.
+perturbations. Real pilotPID77820 exit0:27.645489s,5,287,936,000B peak RSS,
+7,572/7,572 supported,minimum6,810 selected donors; frozen predictions and
+full-bank normalization exact. No scientific screen was evaluated in pilot.
+Full72-view computationPID78105 is running. Independent arithmetic and report
+tests are added;27 targeted tests pass1.74s plus one report test. Full science
+remains incomplete, not a positive risk result.
 No neural training, held/independent role, deployment or scientific-rule change.
 [Protocol](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/protocol.md),
 [prior controls](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/prior_controls.md).

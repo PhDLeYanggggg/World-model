@@ -30,6 +30,8 @@ The next fitting-only control restricts donor labels to samples that the same
 original policy would select. Normalization, queries and neighbor settings stay
 fixed. I will test whether population mismatch explains the previous magnitude
 error, without changing thresholds or opening held data. The protocol is frozen;
+the real-data pilot verifies unchanged predictions and normalization, with all
+7,572 pilot queries supported. The full 72-view calculation is running;
 scientific results are not yet available.
 [Protocol](outputs/publication_readiness_2026_09/european_selection_conditioned_analogue_v1/protocol.md).
 
