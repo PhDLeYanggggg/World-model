@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Matched Conventional Expected-Cost Control
+
+The next comparison tests whether a conventional estimator can learn the current
+seven-action cost task better than the neural cost heads. The experiment is
+registered for 54 ExtraTrees fits (128 trees each) using the same 398 causal
+fields, query draws and fitting-only normalizers as the static-scene neural
+comparator. The older binary forest is not reused as a matched model.
+
+The shared information and sampling do not make the objectives or compute
+identical: the forest uses symmetric five-moment regression and post-fit
+projection. Five focused engineering tests pass, including recovery, changed
+target rejection and unknown/empty subgroup handling. Full-data profiling and
+all 54 fits are next; no new utility, safety or deployment result is claimed.
+See the [fixed protocol](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/protocol.md).
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0
