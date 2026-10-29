@@ -42,6 +42,12 @@ certificates. Its existing diagnosis helpers pass four additional tests.
 The [Chinese guide](outputs/publication_readiness_2026_09/european_multiaction_forest_v1/reproduction_zh.md)
 distinguishes training, resume and exact inference replay.
 
+The complete current focused scope subsequently passes 39 tests in 4.06s,
+including explicit unknown-region and undefined-ratio accounting. Seventy
+parallel-configuration warnings come from the frozen legacy-forest test, not
+a failed test; they are retained rather than suppressed. Primary training
+continues, with no inner-held result used for model selection.
+
 ### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
 
 All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0

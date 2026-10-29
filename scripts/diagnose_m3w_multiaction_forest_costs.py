@@ -28,6 +28,10 @@ def conditional_summary(records,estimator,pool):
 
 
 def execute(verify=False):
+    bindings=(Path(__file__),run.PUBLIC/'mechanism_protocol.md',
+        ROOT/'src/evaluation/m3w_policy_region_shift.py',ROOT/'src/evaluation/m3w_selected_cost_diagnosis.py',
+        ROOT/'tests/test_m3w_forest_fitting_diagnosis.py')
+    for path in bindings:run.parent.parent.committed(path)
     cfg,values=run.admission();models,neural=run.models(),run.parent.models()
     started,beat,guard=run.runtime(cfg);expected=run.aggregate_groups(run.NAME);records=[]
     for context,items in sorted(values[2]['contexts'].items()):
@@ -69,6 +73,7 @@ def execute(verify=False):
     value=dict(result_source='fresh_frozen_fitting_only_cross_estimator_cost_diagnosis',records=records,summary=summary,
         optimizer_updates=0,independent_roles_opened=False,deployment_changed=False,
         primary_summary_sha256=run.sha(run.PUBLIC/'summary.json'),diagnostic_code_sha256=run.sha(Path(__file__)),
+        diagnostic_bindings={str(p.relative_to(ROOT)):run.sha(p) for p in bindings},
         protocol_sha256=run.sha(run.PUBLIC/'mechanism_protocol.md'))
     content=json.dumps(value,indent=2).encode()+b'\n';path=run.PUBLIC/'fitting_cost_diagnosis.json.gz'
     if verify:
