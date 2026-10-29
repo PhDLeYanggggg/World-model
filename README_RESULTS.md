@@ -7,15 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Isolated Harm Continuation: Registered, Real Training Not Yet Run
+### Isolated Harm Continuation: Pilot Passed, Full Training In Progress
 
 The next fixed experiment protects a shared-utility anchor's benefit/reference
 outputs while learning harm in a separate branch. Three matched continuations
 compare utility-only, joint-risk and isolated-risk training across54 fits.
 Each receives2,000 additional updates from the same anchor and sampling state.
-13 scoped synthetic tests pass, including exact resume, protected-output identity,
+42 scoped tests pass, including exact resume, protected-output identity,
 causal inference, fixed-cohort diagnostics and corrupted-receipt rejection.
-Real pilot/training/readout are not_run at this registration checkpoint.
+The real400-update pilot passed in13.76s, peak RSS2.14GiB, with exact resume,
+sampling and protected-output replay. The conservative full estimate is7,432s.
+TrainingPID40764 is running54 fixed-final fits; readout remains not_run until
+all54 finals freeze. This is an in-progress record, not a completed result.
 No independent roles, deployment change, new forecaster, Stage5C or SMC.
 
 [Fixed protocol](outputs/publication_readiness_2026_09/european_isolated_harm_v1/protocol.md).
