@@ -25,14 +25,27 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: joint-risk and reference-support experiment registered.**
-I am testing whether coherent total/easy harm estimates and donor-record-excluded
-blending can repair the magnitude failure below. Queries, neighbors, splits and
-evaluation rules remain fixed. Mean and shuffled blend controls distinguish
-conditional reliability from simply shrinking toward the original head.
-Code and 22 targeted tests are ready; real fitting has not run yet. This remains
-exposed-TRAIN risk estimation, not a new forecasting or deployment result.
-[Protocol](outputs/publication_readiness_2026_09/european_coupled_support_v1/protocol.md).
+**29 October: joint risk estimates are coherent, but still not accurate enough.**
+I completed and exactly replayed all 72 fitting comparisons with unchanged
+queries and neighbors. Joint constraints remove the 9,019 contradictory outputs
+where easy harm exceeded total harm. Donor-record-excluded blending lowers easy
+risk-estimation error by **26.09%** versus the previous cost fit, but it remains
+**5.69% worse than the original risk head**. Only **1/18** paired comparisons
+beats both controls; the registered screen fails.
+
+The learned per-query blend also loses to using one mean blend weight within
+each recording. Reference concentration is real, but does not fully explain
+the failure. Shrinking predictions repairs part of their magnitude, not the
+ability to locate rare harmful cases. I am keeping deployment unchanged.
+
+These are exposed-TRAIN risk errors, not trajectory ADE/FDE gains or independent
+generalization results. No new neural forecaster was trained. Full replay,
+separate receipt checks and 79 targeted tests support reproducibility, not a
+successful world-model claim.
+[Results](outputs/publication_readiness_2026_09/european_coupled_support_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_coupled_support_v1/failure_analysis.md),
+[gate](outputs/publication_readiness_2026_09/european_coupled_support_v1/evidence_gate.md),
+[reproduction](outputs/publication_readiness_2026_09/european_coupled_support_v1/reproducibility.md).
 
 ### Previous Local Cost Check
 

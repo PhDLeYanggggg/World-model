@@ -7,15 +7,44 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Coupled Risk and Donor-Recording Support: Registered, Not Run
+### Coupled Risk and Donor-Recording Support: Complete, Screen Failed
 
 Follow-up to the completed local-cost failure: exact joint quadratic constraints
 EH<=H and B+H<=E, with donor-record-excluded convex blend selection. Same query
 mask,32neighbors,normalizer,380features and72views; no held roles opened.
 Mean-alpha and shuffled-alpha controls retain per-record alpha mass. Eight
 prespecified magnitude/validity conditions preserve and strengthen the previous
-screen.22 targeted tests pass. Real fitting/replay not_run at registration.
-[Protocol](outputs/publication_readiness_2026_09/european_coupled_support_v1/protocol.md).
+screen. Preregistered commit008fe6b8 precedes real pilot. Pilot PID84860 exit0:
+23.545532s,5,306,286,080B,7,572 queries supported. Full PID85170 exit0:
+189.291540s,6,623,805,440B;72 groups,62,902 repeated queries retained,
+61,335 known/1,567 unknown. Full replay PID85722 exit0:all groups and summary
+exactly match,verified05:24:36 UTC. No new neural optimizer updates.
+
+Primary all/easy signed-risk MSE0.080533858/0.000326962;original
+0.079458745/0.000309373;independent cost0.089637254/0.000442400.
+Easy MSE improves26.09% over independent cost but remains5.69% worse than
+original;all MSE remains1.35% worse.1/18 pair wins;6/8 conditions pass but
+overall gate FAILS. Conditional assignment also FAILS:beats shuffled alpha,
+loses recording-mean alpha (easy0.000325425). No posthoc control promotion.
+
+Joint constraints eliminate9,019 EH>H contradictions.3,183 queries have only
+one distinct donor recording and return original exactly;27,025 havealpha0,
+6,942alpha1.22,032 have recordingESS<2;4,816/9,019 prior contradictions are
+in that stratum,so low support is not the full explanation. Predicted easy
+harm24.190950 versus observed95.560642;97.37% of predicted mass is on
+non-events. All12source/6context/3head-seed easy means lose original.
+No calibrated2%risk or trajectory accuracy claim follows.
+
+Separate receipt arithmetic verifies864 arm-targets,443 reference banks,
+72 donor objectives,144 old controls and8conditions;21slices/6strata and
+figure hash replay,figure visually inspected.79 relevant tests pass2.72s,
+not full historical suite. Fresh fits/replay=fresh_run;ancestors and arithmetic
+=cached_verified;new neural/held/independent/policy evaluation=not_run.
+Next diagnose separate all/easy donor-loss conflict before registering a
+donor-easy-constrained objective. No threshold change or held-role opening.
+[Results](outputs/publication_readiness_2026_09/european_coupled_support_v1/conclusions.md),
+[protocol](outputs/publication_readiness_2026_09/european_coupled_support_v1/protocol.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_coupled_support_v1/failure_analysis.md).
 
 ### Local Cost Objective: Complete, Magnitude and Moment Consistency Fail
 
