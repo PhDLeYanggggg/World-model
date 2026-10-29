@@ -57,6 +57,12 @@ Only **20/186** repeated recording/head views meet the full risk requirement.
 I am not promoting this cost learner. The next bounded repair will test
 recording-level decision training rather than only local moment thresholds.
 [Readout and failure diagnosis](outputs/publication_readiness_2026_09/european_multiaction_cost_v1/readout.md).
+
+Before that repair, the same offline oracle supports all **62/62 inner-held
+recording/context views** for the physical and physical+neural banks. The pure
+neural bank supports 61/62, so its remaining support failure is retained.
+This is a learnability question, not an oracle-based deployment claim.
+[Exact-record repair protocol](outputs/publication_readiness_2026_09/european_multiaction_record_policy_v1/protocol.md).
 Independent evaluation remains unopened, and the 2% requirement is unchanged.
 70 targeted tests pass. The readout, support and action-bank diagnostics replay
 exactly; repeat verification preserves the original execution receipts.

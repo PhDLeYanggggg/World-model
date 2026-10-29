@@ -46,6 +46,14 @@ rows among25,478 interventions. 4x harm sensitivity supports102/186, still
 not the full roster, and is not promoted. The failure stays visible; no
 independent role or deployment change. See the immutable experiment readout.
 
+Before decision-head optimization, a new held-support ceiling check reproduces
+all148fitting oracle controls. Physical-only and physical+neural banks are
+feasible/positive in all62inner-held context/record views (31unique recordings).
+Neural-only is61/62: locality082/recording49 has239known easy rows but just one
+eligible real easy action, not within2%. Do not promote oracle support to learned
+safety. Exact-record decision repair is registered,12focused tests pass1.82s;
+its real pilot and54policy fits are not_run at this checkpoint.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
