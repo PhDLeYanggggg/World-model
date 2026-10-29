@@ -1,29 +1,45 @@
 # M3W 本地与 CREATE 操作记录
 
-## 当前入口：2026-10-29 输出层与风险目标的四组对照训练中
+## 当前入口：2026-10-29 四组对照全部完成，未升级
 
 共享/分来源输出层，分别配风险惩罚/不加风险惩罚目标。固定72次新训练、每次2,000步，
-18个共享风险对照必须逐项精确复现旧模型。数据、采样、预处理、2%评价标准不变。
-真实600步试跑16.55秒、峰值2.37GiB，断点恢复和旧对照完全一致。PID37004已开始
-完整训练；未读留出结果，不把启动或pilot当作模型提升。
+18个共享风险对照逐项精确复现旧模型。数据、采样、预处理、2%评价标准不变。
+真实600步试跑16.55秒、峰值2.37GiB，断点恢复和旧对照完全一致。
+训练PID37004完成72/72、144,000更新，539.88秒，exit0。
+全部final冻结后，评价PID38132完成144/144组fit/held读出，111.02秒，exit0。
+
+已经执行，完成任务不要重复运行：
 
 ```bash
 .venv-pytorch/bin/python -m scripts.run_m3w_decoder_risk_factorial train
-```
-
-上述命令已经启动，不要重复运行。先检查PID和
-`data/stage_cvpr2027_experiments/european_decoder_risk_factorial_v1/heartbeat.json`。
-未完成进程确实退出时，保持代码/config不变，使用同入口加`--resume`。
-完成后程序拒绝重跑；全部72个final冻结后才执行固定fit/held读出：
-
-```bash
 .venv-pytorch/bin/python -m scripts.evaluate_m3w_decoder_risk_factorial run
 .venv-pytorch/bin/python -m scripts.report_m3w_decoder_risk_factorial
+.venv-pytorch/bin/python -m scripts.plot_m3w_decoder_risk_factorial
+```
+
+当前只核验已有证据，不重新训练/推理：
+
+```bash
+.venv-pytorch/bin/python -m scripts.evaluate_m3w_decoder_risk_factorial check
 .venv-pytorch/bin/python -m scripts.report_m3w_decoder_risk_factorial --check
 ```
 
-这一段后续读出当前not_run；它不是提前声明完成。来源录像全部是原TRAIN，
-内部held已有研究暴露，不能称独立测试。参数缓存不上Git，Stage5C/SMC不执行。
+72模型哈希、18精确对照、录像划分、完整名单、144组风险算式复核通过。
+42项针对性测试通过；完整旧测试集未运行，避免覆盖冻结研究产物。
+模型和图在`data/stage_cvpr2027_experiments/european_decoder_risk_factorial_v1/`，不上Git。
+结束进程的heartbeat是历史记录，不代表仍在运行；本轮没有新增CREATE调度作业。
+
+结论：去掉风险惩罚降低MSE，但shared的held已知easy风险违规从40升至61/72。
+source-utility比local的held MSE低2.062072，但相同切换数保守效用差为
+-0.568936个百分点，nominal95%CI[-1.078989,-0.109548]；54/72 easy违规。
+更低MSE不是更安全的选择器。两个source方案均未达到预先固定门槛，不部署。
+所有来源仍是原TRAIN，内部held已有研究暴露，不能称独立确认。Stage5C/SMC不执行。
+
+下一步在TRAIN内部隔离准确gain/cost表征与selected-harm尾部学习；不得单纯取消
+风险目标后宣称修复，不按held结果挑阈值，不放宽2%标准。
+[完整结果](european_decoder_risk_factorial_v1/readout/conclusions.md)、
+[失败分析](european_decoder_risk_factorial_v1/failure_analysis.md)、
+[英文增补](european_decoder_risk_factorial_v1/manuscript_addendum.md)。
 
 ## 历史入口：2026-10-29 共享风险训练与拟合诊断全部完成，未升级
 

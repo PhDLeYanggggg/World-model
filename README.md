@@ -25,6 +25,33 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**29 October: better cost prediction still does not make switching safe.**
+I completed a fixed four-way experiment separating output sharing from the
+training risk penalty: 72 new cost-head fits, 144,000 updates, and a complete
+144-view fit/held-recording readout. All 18 replay controls reproduced their
+previous training exactly. Training took 9 minutes and evaluation 111 seconds.
+
+Removing the risk penalty improved cost prediction substantially, but increased
+known easy-risk failures from **40 to 61 of 72 views** in the shared model.
+Source-specific output layers improved training fit without a stable gain on
+held recordings. The source-specific utility model reduced held signed-score
+MSE from **4.014 to 1.952** relative to local controls, yet its same-count
+conservative utility fell by **0.569 percentage points** (nominal 95% CI
+**[-1.079, -0.110]**), and it failed easy risk in **54/72 views**.
+
+This isolates a real mismatch between average prediction accuracy and safe
+selection. Neither registered repair advances. I have not changed deployment,
+relaxed the 2% risk budget, or selected a favorable subset. These remain exposed
+TRAIN-internal diagnostics, not independent test results or FDE improvements.
+The next question is how to preserve accurate gain prediction while learning
+rare selected harm without distorting the same representation.
+
+[Complete factorial results](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/readout/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/failure_analysis.md),
+[manuscript addendum](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/manuscript_addendum.md).
+
+### Preceding Shared-Risk Study
+
 **29 October: shared risk learning did not fix recording transfer.**
 I have completed 108 new cost-head fits: 72 local models, 18 shared models with
 global risk constraints, and 18 shared models with source-specific constraints.

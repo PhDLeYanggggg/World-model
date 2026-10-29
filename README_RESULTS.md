@@ -7,22 +7,46 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Source Decoder by Risk Objective: All72 Fits Frozen, Readout Running
+### Source Decoder by Risk Objective: Complete, Neither Repair Advances
 
-The next fixed TRAIN-internal study separates output sharing from risk-penalty
-interference: shared/source-specific decoders crossed with risk/utility-only
-objectives.72 fresh fits are registered with unchanged source packets, inner
-recording split, sample draws,2,000updates and2% evaluation budget. The18 fresh
-shared-risk controls must exactly replay the previous shared-source models.
-The real pilot completed600 updates in16.55s with2.37GiB peak RSS, exact old-
-control replay, exact interrupted resume and matched sampling. All72 fits are
-complete in539.88s,144,000 updates; PID37004 exited0. The18 fresh risk controls
-exactly reproduce their previous models. Final weights are frozen and the fixed
-144-view fit/held readout is running.42 scoped tests pass, including whole-
-recording, report arithmetic and safety-routing guards. No result is promoted.
-No outer development, independent
-test, checkpoint selection or deployment promotion is authorized by this design.
-[Protocol](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/protocol.md).
+Fresh_run72 fits/144,000 updates completed in539.88s, followed by144 fixed-final
+fit/held views in111.02s. TrainingPID37004 and evaluationPID38132 both exited0.
+All18 shared-risk controls reproduce old weights/optimizer/duals/traces exactly;
+72 local controls and source forecast models are cached_verified. Inputs, inner
+recording partitions, sampling and2% evaluation budget remain unchanged.
+42 scoped tests pass; full legacy tests were not rerun because some overwrite
+frozen research outputs. Hashes, full rosters, exact prediction replay and scalar
+risk arithmetic pass. No outer development or independent roles were opened.
+
+| Arm | Mean fit / held signed MSE | Held known easy violations /72 | Full held support /72 |
+|---|---:|---:|---:|
+| Local control | 0.559739 / 4.013844 | 46 | 0 |
+| Shared risk | 1.965634 / 7.452018 | 40 | 1 |
+| Shared utility | 0.489310 / 1.695168 | 61 | 0 |
+| Source risk | 3.133671 / 13.161085 | 42 | 1 |
+| Source utility | 0.415347 / 1.951772 | 54 | 3 |
+
+Removing risk penalties lowers MSE but increases easy-risk failures. Separate
+utility decoders improve fit MSE versus shared utility by-0.073962 (nominal95%CI
+[-0.107675,-0.044951]), but not held MSE:+0.256604[-0.096676,0.883664]. Their
+held same-count lower utility is-0.580246pp[-1.100566,-0.057594] versus shared
+utility and-0.568936pp[-1.078989,-0.109548] versus local controls. Source utility
+does lower held MSE versus local by-2.062072[-3.349375,-0.956808]; this is not
+safe policy improvement. Source-risk versus local full lower utility is
+-2.114539pp[-3.272387,-1.011576]. Neither source arm passes its registered gate.
+
+All intervals use3,000 locality bootstrap draws,12 exposedTRAIN localities;
+they are nominal, not independent confirmation. Utility bounds are not FDE/ADE.
+Fit/held repeated occurrences897,060/419,766 per arm include18,978/9,228 unknown
+outcomes. No hidden dropping of outcomes, zero-action views or negative slices.
+The495 extra source-decoder parameters and known source IDs limit interpretation.
+The MSE interaction interval crosses zero; gradient interference is not proven.
+No new trajectory model or deployment. Stage5C/SMC remain disabled.
+
+[Complete readout](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/readout/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/failure_analysis.md),
+[manuscript](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/manuscript_addendum.md),
+[protocol](outputs/publication_readiness_2026_09/european_decoder_risk_factorial_v1/protocol.md).
 
 ### TRAIN-Internal Shared Risk Experiment: Complete, Both Repairs Failed
 
