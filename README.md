@@ -34,10 +34,10 @@ earlier decoder tests, where benefit/reference estimates also changed. The
 first screen uses only fixed fitting cohorts; no new held readout is authorized
 by this experiment. [Protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
 
-The native-arm64 pilot completed 300 real optimizer updates in 21.95 seconds,
-using 2.58 GB peak memory. Exact interrupted/resumed training, matched sample
-draws and protected outputs all passed. This permits the registered 36-fit
-training comparison; it does not establish a scientific improvement.
+The native-arm64 pilot passed exact resume, matched draws and protected outputs.
+All 36 continuations then completed 72,000 new optimizer updates in 370.46
+seconds, using 2.90 GB peak memory. The final models are frozen before the
+fitting readout; training completion does not establish a scientific improvement.
 
 ### Completed Conditioning Diagnosis
 

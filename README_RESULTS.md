@@ -7,18 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Protected Risk Decoupling: Registered
+### Protected Risk Decoupling: Training Complete, Readout Pending
 
 Previous turn: progress, complete72-view conditioning diagnosis. New paired
 continuation freezes benefit/reference estimates and all causal preprocessing.
 18 original self heads x2 objectives x2,000 additional updates =36 fits/72,000
-planned updates. Estimation-only versus original action-coupled training;
+completed updates. Estimation-only versus original action-coupled training;
 same initialization, saved AdamW moments, query draws and clip5.29 scoped tests
 pass3.49s. All72 fixed fitting cohorts have known outcome support. No held or
 independent readout, threshold search, deployment or new forecasting.
 Native-arm64 pilot: 300 real updates, 21.953444s, peak RSS 2,576,744,448 bytes.
-Exact resume, matched draws and protected outputs passed; full training remains
-pending. Pilot execution alone establishes no scientific lift.
+Exact resume, matched draws and protected outputs passed. Full training PID67973
+completed exit0: 36 fits, 72,000 updates, 370.459281s, peak RSS 2,901,655,552 bytes.
+All final checkpoint hashes freeze before fitting inference. Thirty-two scoped
+tests pass3.67s; neither training nor engineering checks establish scientific lift.
 [Prior-control reconciliation](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/prior_controls.md),
 [protocol](outputs/publication_readiness_2026_09/european_risk_decoupling_v1/protocol.md).
 
