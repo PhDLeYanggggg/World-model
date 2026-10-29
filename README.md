@@ -68,28 +68,29 @@ Its neural increment over its physical-only bank is **+0.039pp**, CI
 Only **19/186** required risk views pass. This repair does not earn deployment.
 
 The fitting diagnosis finds incomplete easy-harm calibration even inside the
-old regions, while about **68%** of new interventions leave those old chosen
-regions. Those rows are not unseen training inputs; the extra moment loss was
-conditioned on the old choices. I am keeping deployment unchanged and the older
-failed pointwise deviance and posthoc calibration results visible. The next
-registered check now replays all54frozen states:the mixed median gradient
-direction cosine is0.686,with a large finite vector difference. Seven mixed
-record/head regions never receive the auxiliary loss over2,000steps. The cyclic
-complete-region repair now also finishes and replays exactly,with added compute
-reported separately. Known utility changes by **-0.00008pp**, CI
-**[-0.108,+0.097]**. Its neural increment is **+0.011pp**, CI **[-0.122,+0.102]**,
-and only **24/186** required risk views pass. Even fixed-region easy-harm fitting
-remains poor. This optimization hypothesis did not repair the policy. Empty selected
-risk is undefined, never a passed safety check; count matching concerns utility
-only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
+old regions. I also checked the optimization: minibatch and complete-region
+gradients differ substantially, and some small regions never receive the
+auxiliary loss. A controlled repair processes complete regions in chunks.
+It completes all 54 fits and replays exactly, but known utility changes by only
+**-0.00008pp**, CI **[-0.108,+0.097]**. Its neural increment is **+0.011pp**,
+CI **[-0.122,+0.102]**, with just **24/186** required risk views supported.
+Even fixed-region easy-harm fitting remains poor. The optimization repair
+does not earn deployment.
 
-The complete-region repair passes the real120-update recovery pilot and a full
-2,000-update disabled neutral. All54primary fits now finish on the same local
-arm64runtime:108,000updates in454.86s,with12,275,011additional teacher-row visits.
-All endpoints freeze before readout;training is not a utility or safety pass.
-The next diagnostic measures how much the frozen neural path can add above a
-physical per-query oracle before another routing loss. That uses future labels
-only for diagnosis,not as a learned result or an inference input.
+This experiment takes 108,000 updates and 12,275,011 additional teacher-row
+visits. Those are repeated fitting visits, not new data or equal training FLOPs.
+The 186 risk views repeat contexts and head seeds over 31 unique recordings.
+Empty selected risk is undefined, never a passed safety check; count matching
+concerns utility only. Earlier pointwise-deviance and recalibration failures
+remain part of the record.
+
+I then separated candidate opportunity from learned routing. On the exposed
+inner-held data, a future-informed physical oracle gains **32.40%** over the
+floor; adding the frozen neural path raises that to **33.90%**. Neither is
+deployable, and their difference does not bound differences between causal
+learned policies. The next comparison tests strong causal cost estimators on
+the same candidate bank, rather than treating oracle scores or another loss
+weight as evidence of a useful neural world model.
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
@@ -104,6 +105,7 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 - [Eighth comparison: complete-region evidence](outputs/publication_readiness_2026_09/european_balanced_region_cost_v1/evidence.md)
 - [Exact-gradient repair and failure analysis](outputs/publication_readiness_2026_09/european_balanced_region_cost_v1/readout.md)
 - [New manuscript evidence addendum](outputs/publication_readiness_2026_09/evidence_addendum_complete_regions_20261029.md)
+- [Neural candidate opportunity and its causal interpretation](outputs/publication_readiness_2026_09/european_neural_marginal_ceiling_v1/readout.md)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)

@@ -32,6 +32,16 @@ feasibility is not the amount of neural gain above a per-query physical oracle.
 This new analysis is post-hoc exposed development,not a new primary result,
 learned selector or independent test. Zero optimizer updates;actual run not_run.
 
+The new marginal ceiling subsequently completes PID4261exit0,48groups,
+20.354766s,peakRSS7,463,256,064B;PID4752exit0 exact replay20.248758s. Held
+physical/mixed oracle known-ADE gains32.396033%/33.899940%;paired neural
+opportunity1.503906pp,CI[0.951225,2.074855],versus2.743738ppfitting. These
+use future labels and are not learned policy results. Held hard aggregation
+isnot_estimable:two locality020views have no hard known query;do not drop them.
+The oracle gap does not bound two causal policies' difference,a finite Euclidean
+counterexample now tests that interpretation. The verified figure is visually
+checked;only its generated statistical SVG,not raw images,is public.
+
 ### Complete-Region Gradient Check Registered
 
 The previous goal turn is progress:54actual fits,exact inference replay and
