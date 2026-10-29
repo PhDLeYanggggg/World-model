@@ -17,8 +17,8 @@ from scripts import run_m3w_selection_conditioned_analogue as parent
 from src.evaluation import m3w_local_cost_analogue as api
 
 ROOT, sha, once = parent.ROOT, parent.sha, parent.once
-PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_local_cost_analogue_v1'
-PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_local_cost_analogue_v1'
+PUBLIC = ROOT/'outputs/publication_readiness_2026_09/european_local_cost_analogue_v2'
+PRIVATE = ROOT/'data/stage_cvpr2027_experiments/european_local_cost_analogue_v2'
 REG = PUBLIC/'registration.json'
 pooled = parent.parent
 
@@ -26,8 +26,11 @@ pooled = parent.parent
 def register():
     reg, cfg, ancestor = parent.admission()
     files = [Path(__file__), ROOT/'src/evaluation/m3w_local_cost_analogue.py',
-        ROOT/'tests/test_m3w_local_cost_analogue.py', PUBLIC/'protocol.md',
-        PUBLIC/'prior_controls.md', parent.REG, parent.PUBLIC/'complete.json',
+        ROOT/'tests/test_m3w_local_cost_analogue.py', ROOT/'tests/test_m3w_local_cost_runner.py', PUBLIC/'protocol.md',
+        PUBLIC.parent/'european_local_cost_analogue_v1/protocol.md',
+        PUBLIC.parent/'european_local_cost_analogue_v1/prior_controls.md',
+        PUBLIC.parent/'european_local_cost_analogue_v1/failure.md',
+        PUBLIC.parent/'european_local_cost_analogue_v1/registration.json', parent.REG, parent.PUBLIC/'complete.json',
         parent.PUBLIC/'summary.json', parent.PUBLIC/'conclusions.md']
     once(REG, dict(bindings={str(p.resolve().relative_to(ROOT)):sha(p) for p in files},
         contexts=sorted(reg['contexts']), seeds=reg['seeds'], views=72, k=32,
@@ -62,7 +65,7 @@ def runtime():
 
 
 def diagnostic(out, take, y, p, env, scale):
-    support = out['supported'][take]; known = np.isfinite(y).all(1) & support
+    support = out['supported'][take]; known = api.np.isfinite(y).all(1) & support
     result = dict(supported_queries=int(support.sum()), known_queries=int(known.sum()),
         effective_donor_quantiles=np_quantiles(out['diagnostics']['effective_donors'][take][support]),
         max_weight_quantiles=np_quantiles(out['diagnostics']['max_weight'][take][support]),

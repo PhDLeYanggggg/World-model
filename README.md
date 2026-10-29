@@ -30,8 +30,11 @@ The next registered control keeps the selected reference samples and their
 neighbors fixed, but fits their source-normalized signed-risk error directly.
 Uniform, weighted-harm, nonlocal and shuffled-label controls will separate what
 the new objective can and cannot explain. This is a fitting-only diagnosis;
-the new scientific readout has not run, and deployment stays unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/protocol.md).
+the new scientific readout is incomplete, and deployment stays unchanged.
+The pilot passed, but the first full invocation stopped on a diagnostic-writer
+error before saving a group. The fault is reproduced and fixed without changing
+the scientific protocol; the failed version remains recorded.
+[Protocol and repair](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/protocol.md).
 
 **29 October: matching the reference population helps, but does not make risk reliable.**
 I completed 72 fitting comparisons using reference samples selected by the same

@@ -17,10 +17,16 @@ weights. Original/uniform/weighted-harm/global/shuffled controls are frozen.
 Earlier converged Newton and hurdle failures are reconciled, not relabeled as
 success. Nine focused tests pass, including query-future perturbation, exact
 neighbor/control matching, source-unit rescaling and constrained optima.
+Pilot PID80933 exit0:18.213214s,5,314,772,992 B;7,572 queries supported and
+frozen neighbors/predictions/normalization exact. Full PID81249 exit1 before
+the first group: missing np alias in diagnostic writer. A runner regression
+reproduces it; v2 fixes the alias only and preserves the failed registration.
 No neural update or held-data readout. Native arm64 local execution is suitable
 for this small fitting calculation; no new CREATE job is needed.
 [Protocol](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/protocol.md),
 [prior controls](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/prior_controls.md).
+[Failure](outputs/publication_readiness_2026_09/european_local_cost_analogue_v1/failure.md),
+[repair](outputs/publication_readiness_2026_09/european_local_cost_analogue_v2/protocol.md).
 
 ### Policy-Conditioned Reference: Complete, Magnitude Gate Failed
 
