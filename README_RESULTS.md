@@ -49,6 +49,9 @@ and remain private. All matched designs pass and every endpoint is frozen
 before readout. Expanded training/readout helper scope: 25 passed in 2.82s.
 Fitting readout remains not_run at freeze; risk and utility are not inferred
 from loss, engineering recovery or training completion.
+The 144-group fitting readout is separately registered against the committed
+72-endpoint freeze. Both original static-policy metrics and their action
+hashes must replay, with exact repetition of the new readout afterward.
 
 ### Fixed Candidate-Output Amplitude Control
 
