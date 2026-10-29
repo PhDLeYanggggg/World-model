@@ -25,6 +25,11 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am now testing whether the failed wider harm head is locally unable to learn
+because clipping makes its output gradients zero. This fixed diagnosis uses
+only fitting rows and unchanged checkpoints; it has not produced results yet.
+The preceding negative result below remains the current evidence.
+
 **29 October: expanding the harm head's range did not make it safe.**
 I completed18 matched continuations and144 evaluation views after diagnosing
 the previous branch's limited ability to correct near-zero harm estimates.

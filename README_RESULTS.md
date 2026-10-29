@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Fit-Only Gradient Diagnosis: Registered, Not Yet Computed
+
+The next check measures actual harm-output Jacobians on all72 fitting views
+of the frozen full-range and isolated-odds heads. It distinguishes hard-clip
+flat regions from merely larger gradients. Four shared causal cohorts preserve
+unknown outcomes and prevent selection changes from masquerading as calibration.
+Four focused engineering tests pass. This is not new training or scientific
+evidence yet; no internal-held inference, independent roles or deployment change.
+[Fixed protocol](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/protocol.md).
+
 ### Full-Range Harm Repair: Complete, Registered Gate Failed
 
 One bounded parameterization change,18 planned continuation fits, unchanged
