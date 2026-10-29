@@ -7,19 +7,31 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Fixed-Cohort Query-Head Conditioning: Numerical Repair Registered
+### Fixed-Cohort Query-Head Conditioning: Complete, No Promotion
 
-The previous goal turn made verified progress with36 corrected fits and a
-negative matched result. The next diagnostic keeps all36 heads frozen, checks
-72 inner-fit views, and runs288 matched gradient probes/576 disposable AdamW
-steps. It compares the new self/peer heads on the same causal cohorts and asks
-whether clipping actually impedes local fitting.14 related tests pass2.38s.
-v1 stopped at a float32 additivity assertion after12 fit views/4 probe groups.
-Same-batch relative decomposition error1.69e-7 becomes2.89e-16 in float64.
-v2 repairs the numerical check and adds a double-precision check for every batch;
-the native model, objective and optimizer steps remain unchanged.15 tests pass.
-No new held scoring, independent roles, persistent training or deployment.
-[Repaired protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v2/protocol.md).
+Fresh72 inner-fit views,36 frozen heads,288 matched probes and576 disposable
+AdamW steps completed. PID65213 exit0,141.240318s,2.948GB RSS. No persistent
+training, new held scoring, independent roles or deployment change.
+
+On identical62,902 self-selected occurrences (61,335known/1,567unknown),
+self/peer predicted easy-harm masses1.375607/23.342870 versus observed95.560642.
+These are sums after source normalization, not ADE/FDE or independent n.
+Signed easy-risk MSE0.000684616/0.000728945; near-zero easy Jacobians75.10%/67.95%.
+Peer aggregate mass improves but conditional squared error does not.
+
+Unclipped steps beat clipped total objective120/144 self and129/144 peer, but
+fixed-cohort easy-risk MSE has self30better/35worse/79tied and peer52/39/53.
+Large adverse objective tails remain. Clipping is a local optimization factor,
+not a sufficient explanation or a validated safety repair. No clipping sweep
+or deployment promotion follows from this result.
+
+v1 stopped at a float32 assertion; its failure and partial receipts are retained.
+v2 adds precision-aware native and double checks without changing numeric steps.
+12 old fit views and4 old probe groups reproduce exactly. Separate1,152
+view/target,272 summary and288 batch checks pass;30 scoped tests pass2.83s.
+[Results](outputs/publication_readiness_2026_09/european_query_conditioning_v2/conclusions.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_query_conditioning_v2/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_query_conditioning_v2/reproducibility.md).
 
 ### Contemporaneous Query Context: Complete, Negative Matched Result
 

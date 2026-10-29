@@ -25,17 +25,19 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: checking the failed context heads on fixed fitting cohorts.**
-I have registered a training-only diagnosis of signed-risk errors, usable output
-derivatives and component gradients. Disposable AdamW copies compare clipping
-with no clipping on the same next batches; original checkpoints remain frozen.
-This will test whether the observed frequent clipping is an actual local
-obstruction, not assume that removing it improves generalization. No new held
-readout or independent data role is opened. The first diagnostic stopped at a
-float32 gradient-sum assertion. A same-batch double-precision check identifies
-numerical accumulation error; v2 fixes the check, not the training algorithm.
-The incomplete run is preserved, and 15 related tests pass.
-[Diagnostic protocol](outputs/publication_readiness_2026_09/european_query_conditioning_v1/protocol.md).
+**29 October: lower training loss is not yet better switching-risk estimation.**
+I completed a fixed-cohort diagnosis of 36 frozen risk heads. Across 288 matched
+batches, removing clipping from a disposable AdamW step more often lowers total
+loss (249 batches), but improves the key easy-risk error in only 82, worsens it
+in 74 and leaves 132 tied. On the same fitting selection, both models still
+underestimate easy harm; peer context improves aggregate mass but worsens
+per-row signed-risk error. I am not deploying an unclipped model from this test.
+
+The run includes 72 fitting views and 576 disposable updates, not 576 newly
+trained models. No held readout or independent data role was opened. A float32
+verification issue was reproduced and repaired using double-precision checks;
+the original model, optimizer and completed numerical receipts are unchanged.
+Thirty related tests pass. [Results and limitations](outputs/publication_readiness_2026_09/european_query_conditioning_v2/conclusions.md).
 
 ### Completed Context Comparison
 

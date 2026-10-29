@@ -1,5 +1,40 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 固定拟合样本诊断完成，不能靠关裁剪宣布修复
+
+按已有授权，常规审计、诊断、实验和安全同步由项目流程负责，不再逐项要求用户审核。
+本轮完整运行72个inner-fit视图、36个冻结风险头、288组梯度探针和576次一次性AdamW更新。
+PID65213 exit0，141.240秒，峰值2.948GB；原生arm64、CPU4/inter-op1/workers0。
+这些更新作用于副本，不是576个新训练模型；原checkpoint不变。没有新增held读出或打开独立角色。
+
+共同self选样62,902次出现，已知61,335、未知1,567；是重复出现次数，不是独立样本量。
+self/peer预测easy伤害总量1.375607/23.342870，对应观测95.560642，均为source归一化后的和。
+peer虽然改善总量，逐行signed-risk MSE仍由0.000684616变差到0.000728945。
+easy输出对logit近零梯度占75.10%/67.95%。问题已在训练样本出现，不仅是跨录像泛化失败。
+
+取消裁剪相对原clip5，249/288组总损失更低，但共同选样easy风险误差只有82组改善、
+74组变差、132组基本不变。部分总损失恶化尾部很大。不能把训练loss下降当安全门槛通过。
+不部署unclipped模型，不调test阈值，不改2%正伤害/reference定义。
+
+初次PID64212在梯度分解检查退出1；同批次float32相对误差1.69e-7，double为2.89e-16。
+保留v1失败及所有部分产物。v2仅修复数值检查，每批新增double核验；12旧视图和4旧探针组
+的原数值全部精确复现。另核对1,152个视图/目标、272个汇总字段、288个有限梯度批次。
+30项针对性测试通过2.83秒。没有运行会改写历史产物的全库测试。
+
+```bash
+.venv-pytorch/bin/python -m scripts.audit_m3w_query_conditioning check
+.venv-pytorch/bin/python -m scripts.verify_m3w_query_conditioning --check
+```
+
+已经完成的产物不删除重跑。新环境须有原冻结checkpoint和授权TRAIN数据包；先register并提交绑定，
+再run，中断未完成才用`run --resume`。日志和图在私有data目录，不进Git。
+下一轮须先核对已有直接cost、hurdle、floor和选样加权对照，避免重复改名实验，再隔离
+“估准风险”和“优化软动作”的影响；该新训练尚未运行。独立证据、三个新forecaster种子和
+投稿准备仍未完成，长期目标保持active。Stage5C/SMC保持关闭。
+[结论](european_query_conditioning_v2/conclusions.md)、
+[失败分类](european_query_conditioning_v2/failure_analysis.md)、
+[复现与边界](european_query_conditioning_v2/reproducibility.md)。
+
 ## 当前入口：2026-10-29 同帧上下文对照完成，仍不部署
 
 修正版36个风险头、72,000次更新、72个内部held视图已完成，八个旧对照精确复现。
