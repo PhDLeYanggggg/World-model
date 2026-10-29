@@ -41,6 +41,15 @@ all features, confidences, keys and receipts match exactly. Final arrays total
 52,030,248B and remain local. This is a verified new causal-input store, not
 a model improvement or safety pass. See the [store readout](outputs/publication_readiness_2026_09/european_detector_history_store_v1/readout.md).
 
+The matched detector-input experiment is now registered:144real Torch cost
+heads,288,000primary optimizer updates, six fitting contexts, three controller
+seeds and physical/mixed candidate banks. Disabled/current/noise/history arms
+retain the old causal sampler, targets, known-only loss and all2,000steps.
+The64-field branch adds4,096parameters; disabled must reproduce all36old
+endpoints exactly. Twelve new/adjacent tests pass in1.98s, including a repaired
+internal-pilot-resume regression found before real training. Pilot and full
+model training are not_run at registration. No independent role is opened.
+
 ### Coupled Other-Recording Retrieval Registered
 
 The completed completion-loss failure changes the next control: compare a
