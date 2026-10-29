@@ -43,6 +43,26 @@ def policy_rows(study, summary):
     return rows
 
 
+def training_arm_summary(subset):
+    last = [r['final_trace'] for r in subset]
+    exact_constraints = None
+    if all('exact_excess' in r for r in last):
+        vectors = [v for r in last for v in r['exact_excess']]
+        if any(len(v) != 3 for v in vectors):
+            raise ValueError('Separate all/easy/support constraint monitors required')
+        exact_constraints = dict(required_repeated_record_views=len(vectors),
+            all_risk_violations=sum(v[0] > 0 for v in vectors),
+            easy_risk_violations=sum(v[1] > 0 for v in vectors),
+            positive_support_violations=sum(v[2] > 0 for v in vectors),
+            full_constraint_supported=sum(all(x <= 0 for x in v) for v in vectors),
+            monitor_is_before_final_optimizer_update_not_endpoint_readout=True)
+    return dict(fits=len(subset), parameters=sorted({r['parameters'] for r in subset}),
+        final_trace_zero_intervention_fits=sum(r.get('selected_rows') == 0 for r in last)
+            if all('selected_rows' in r for r in last) else None,
+        median_final_gradient_norm=statistics.median(r['gradient_norm'] for r in last),
+        final_training_constraint_monitor=exact_constraints)
+
+
 def build():
     sources, rows, fits = {}, [], {}
     for study in STUDIES:
@@ -83,11 +103,7 @@ def build():
             subset = [r for r in fit_rows if r['arm'] == arm]
             if len(subset) != 18:
                 raise ValueError('All six contexts and three head seeds required')
-            last = [r['final_trace'] for r in subset]
-            by_arm[arm] = dict(fits=18, parameters=sorted({r['parameters'] for r in subset}),
-                final_trace_zero_intervention_fits=sum(r.get('selected_rows') == 0 for r in last)
-                    if all('selected_rows' in r for r in last) else None,
-                median_final_gradient_norm=statistics.median(r['gradient_norm'] for r in last))
+            by_arm[arm] = training_arm_summary(subset)
         fits[study] = dict(updates=freeze['optimizer_updates'], fits=54,
             seconds=freeze['seconds'], peak_RSS_bytes=freeze['peak_RSS_bytes'], arms=by_arm)
         sources[study] = bindings
@@ -130,6 +146,20 @@ def render(value):
         '|---|---:|---:|---:|---:|']
     for study, fit in value['training'].items():
         text.append(f"| {study} | {fit['fits']} | {fit['updates']} | {fit['seconds']:.6f} | {fit['peak_RSS_bytes']} |")
+    text += ['', '## Final Training Monitors', '',
+        'These monitors precede the last optimizer update; endpoint behavior is in',
+        'the fixed readout above. Support-unit magnitudes are not compared across',
+        'the old/new units, only invariant constraint signs and action counts.', '',
+        '| Study | Bank | Zero-intervention fits | All/easy/support violations | Fully supported monitor views |',
+        '|---|---|---:|---:|---:|']
+    for study, fit in value['training'].items():
+        for arm, row in fit['arms'].items():
+            monitor = row['final_training_constraint_monitor']
+            if monitor is None:
+                continue
+            text.append(f"| {study} | {arm} | {row['final_trace_zero_intervention_fits']}/{row['fits']} | "
+                f"{monitor['all_risk_violations']}/{monitor['easy_risk_violations']}/{monitor['positive_support_violations']} | "
+                f"{monitor['full_constraint_supported']}/{monitor['required_repeated_record_views']} |")
     text += ['', 'All action-bank arms retain their preregistered seeds and complete roster.',
         'The published deferral loss is an application adapter, not a reproduction of',
         'its original experiments or bounded-loss theorem verification. Its cost-gated',

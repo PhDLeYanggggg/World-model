@@ -73,7 +73,9 @@ undefined selected risk, not a safety pass. A fitting-state check identifies
 weak scaling of the positive-support dual; I will test a unit change that
 preserves the constraint itself. This single-factor experiment passes real
 interruption recovery and a complete500-update unchanged-unit control;
-its54primary fits are next. The earlier singleton inference error and
+all54primary fits are now complete and frozen before first readout. Final
+training monitors no longer show empty decisions, but constraints remain
+violated; this is not a safety pass. The earlier singleton inference error and
 its weight-preserving repair remain documented.
 
 I have also registered a matched control using the published ICML2024

@@ -123,6 +123,15 @@ All aggregate bytes are retained in a2,013,081-byte bundle. New support-unit
 primary training is running PID69018,not complete.25related tests pass2.97s;
 the full historical suite was not rerun. Risk budgets and independent roles unchanged.
 
+Support-unit primary training subsequently completes PID69018exit0:
+54fits/27,000full-gradient updates,992.385098s,peakRSS5,794,103,296B,
+673parameters per decision head. All54endpoints freeze before first readout.
+All three banks have0/18empty final training monitors,versus18/18for the old
+physical/mixed heads. Mixed monitor positive-support violations fall to12/444,
+but all/easy risk violations remain122/182and full monitor support228/444.
+These are pre-final-update training monitors,not endpoint or held-record risk.
+First scientific readout is next; deployment and independent roles unchanged.
+
 ### Causal Reference-Coverage Ablation: Small Predictive Gain, Safety Unresolved
 
 Single changed factor: radius=max(original radius,1.05*distance to causal CV,
