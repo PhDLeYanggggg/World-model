@@ -7,6 +7,31 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Complete-Region Repair Completes,Primary Scientific Gates Still Fail
+
+All54new heads/108,000updates freeze at8f524f40before readout. PID1431exit0
+completes144groups197.103418s,peakRSS7,791,935,488B;PID2082exit0 exact replay
+takes189.833448s. The2,277,810Baggregate bundle preserves all numerical bytes.
+Mixed known gain0.943728%,paired exact-minus-stochastic-0.000080pp,
+CI[-0.108174,+0.097264]. Mixed-minus-physical+0.011277pp,
+CI[-0.121830,+0.102166];completion-lower neural CI is not positive.
+Risk support19to24/186and known easy violations89to76do not pass the full2%
+recording contract.584unknown selected views and19undefined easy views remain.
+
+Fitting mechanism PID2727exit0 takes100.938465s;PID3288exit0 exact replay
+100.941597s,all1,332views. Mixed fixed-teacher EH ratio0.112670versus old
+0.132688;own-selection ratio0.039726. The gradient-estimator repair did not
+solve immediate EH fitting.65.397%of new fitting actions leave the old chosen
+region,not unseen input data. Deployment unchanged,eightstudies432heads/
+702,000updates,not432forecasters. See[readout](outputs/publication_readiness_2026_09/european_balanced_region_cost_v1/readout.md)
+and[paper addendum](outputs/publication_readiness_2026_09/evidence_addendum_complete_regions_20261029.md).
+
+Register a new future-label-only neural marginal ceiling check on48SOURCE
+groups/sixcontexts,without repeating controller seeds. Prior oracle support
+feasibility is not the amount of neural gain above a per-query physical oracle.
+This new analysis is post-hoc exposed development,not a new primary result,
+learned selector or independent test. Zero optimizer updates;actual run not_run.
+
 ### Complete-Region Gradient Check Registered
 
 The previous goal turn is progress:54actual fits,exact inference replay and

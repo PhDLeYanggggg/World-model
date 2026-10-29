@@ -26,14 +26,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 ## Latest Experiment
 
 **29 October: targeted cost training still does not make neural substitution safe.**
-I completed seven controlled comparisons over the same frozen forecast bank:
+I completed eight controlled comparisons over the same frozen forecast bank:
 continuous costs, recording-level decision training, a published deferral loss,
 support-unit conditioning, shared reference costs, static scene context and
-policy-region moment training.
+stochastic and complete-region moment training.
 Each retains three controller seeds, six contexts and all 54 planned fits.
-Together they comprise **378 real Torch heads and 594,000 primary updates**.
-These are controller experiments, not 378 new trajectory forecasters. Every
-endpoint was frozen before readout, and all seven comparisons replay exactly.
+Together they comprise **432 real Torch heads and 702,000 primary updates**.
+These are controller experiments, not 432 new trajectory forecasters. Every
+endpoint was frozen before readout, and all eight comparisons replay exactly.
 
 | Mixed-bank policy | Known-label ADE gain over floor | Required risk views supported |
 |---|---:|---:|
@@ -44,6 +44,7 @@ endpoint was frozen before readout, and all seven comparisons replay exactly.
 | Shared reference | 0.542% | 21/186 |
 | Static scene context | 0.983% | 23/186 |
 | Policy-region moments | 0.944% | 19/186 |
+| Complete-region gradients | 0.944% | 24/186 |
 
 The preceding feature ablation adds 18 static/past/rollout region features using
 14 correctly matched camera polygons. Relative to the no-scene control, known-
@@ -73,9 +74,12 @@ conditioned on the old choices. I am keeping deployment unchanged and the older
 failed pointwise deviance and posthoc calibration results visible. The next
 registered check now replays all54frozen states:the mixed median gradient
 direction cosine is0.686,with a large finite vector difference. Seven mixed
-record/head regions never receive the auxiliary loss over2,000steps. I am
-testing cyclic complete-region gradients next,with additional compute reported
-separately. This is an optimization test,not a new safety guarantee. Empty selected
+record/head regions never receive the auxiliary loss over2,000steps. The cyclic
+complete-region repair now also finishes and replays exactly,with added compute
+reported separately. Known utility changes by **-0.00008pp**, CI
+**[-0.108,+0.097]**. Its neural increment is **+0.011pp**, CI **[-0.122,+0.102]**,
+and only **24/186** required risk views pass. Even fixed-region easy-harm fitting
+remains poor. This optimization hypothesis did not repair the policy. Empty selected
 risk is undefined, never a passed safety check; count matching concerns utility
 only. The 186 risk views repeat contexts/head seeds over 31 unique recordings.
 
@@ -83,6 +87,9 @@ The complete-region repair passes the real120-update recovery pilot and a full
 2,000-update disabled neutral. All54primary fits now finish on the same local
 arm64runtime:108,000updates in454.86s,with12,275,011additional teacher-row visits.
 All endpoints freeze before readout;training is not a utility or safety pass.
+The next diagnostic measures how much the frozen neural path can add above a
+physical per-query oracle before another routing loss. That uses future labels
+only for diagnosis,not as a learned result or an inference input.
 
 These are exposed European SOURCE-development results, not independent
 confirmation or whole-pipeline OOF. The data are oblique webcam detector-track
@@ -94,6 +101,9 @@ Metric/effective-second claims, Stage5C execution and SMC remain off.
 
 - [Six-study comparison, intervals and moment errors](outputs/publication_readiness_2026_09/feature_cost_evidence_20261029.md)
 - [Seventh comparison: region-moment evidence](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/evidence.md)
+- [Eighth comparison: complete-region evidence](outputs/publication_readiness_2026_09/european_balanced_region_cost_v1/evidence.md)
+- [Exact-gradient repair and failure analysis](outputs/publication_readiness_2026_09/european_balanced_region_cost_v1/readout.md)
+- [New manuscript evidence addendum](outputs/publication_readiness_2026_09/evidence_addendum_complete_regions_20261029.md)
 - [Region-moment failure and fitting mechanism](outputs/publication_readiness_2026_09/european_policy_region_cost_v1/readout.md)
 - [Static scene ablation and failure analysis](outputs/publication_readiness_2026_09/european_static_scene_cost_v1/readout.md)
 - [Support-unit repair and failure analysis](outputs/publication_readiness_2026_09/european_multiaction_support_scale_v1/readout.md)
