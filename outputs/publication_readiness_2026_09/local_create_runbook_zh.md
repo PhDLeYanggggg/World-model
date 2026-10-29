@@ -1,5 +1,44 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-10-29 梯度障碍已定位并修复，选样风险仍失败
+
+先在全部72个inner-fit视图做冻结模型autograd审计，PID50837 exit0，61.04秒。
+新版硬截断头在自身选中样本中92.4%为零easy-harm梯度，96.3%的正低估量在这些行。
+随后固定单一rational有界映射，保留原数据、模型初始化、采样、损失和训练预算。
+真实pilot200更新12.08秒，恢复完全一致；18组共36,000更新，PID51994 exit0，190.94秒。
+所有final冻结后，PID52493完成144视图，122.32秒，exit0。七个旧对照全部复现。
+
+结论仍未过gate：相同切换数相对硬截断效用-0.217pp，CI[-0.377,-0.062]；
+完整风险支持0/72，easy风险无法定义19/72。不能把known违规减少解释成安全提升。
+之后只用fit的72视图梯度复查，PID53106 exit0，64.02秒：同一批样本零梯度
+54,254降到231，但40,174仍是极小梯度，选中样本仍严重低估伤害。不部署。
+
+已完成阶段不要重复启动；现在只复核：
+
+```bash
+.venv-pytorch/bin/python -m scripts.audit_m3w_harm_jacobians check
+.venv-pytorch/bin/python -m scripts.run_m3w_rational_harm check
+.venv-pytorch/bin/python -m scripts.report_m3w_rational_harm --check
+.venv-pytorch/bin/python -m scripts.check_m3w_rational_gradients check
+```
+
+未完成阶段才可加`--resume`。修复训练入口是`run_m3w_rational_harm`的pilot/train/eval；
+完整结果已冻结，不能删除后伪装fresh。模型、优化器、采样器、heartbeat和图留在
+私有`data/stage_cvpr2027_experiments/european_rational_harm_v1/`，Git只存代码与聚合证据。
+119项针对性测试通过5.58秒；完整旧套件因可能写入冻结研究产物没有运行。
+当前arm64 Python3.11.1/PyTorch2.12.0，CPU4/inter-op1/workers0，真实训练正常。
+CREATE仅只读传输已批准TRAIN并校验hash，没有新调度作业；传输整包包含内部held，
+两次Jacobian诊断都在forward前丢弃held，主评估按已冻结协议使用已暴露内部held。
+
+下一步验证producer/recording-excluded的policy-conditional风险校准与支持度，
+不继续随意换输出函数，不用当前held调阈值，不打开独立selection/calibration/test。
+常规审计和安全Git同步由项目流程执行，无需用户逐项确认；正式投稿仍需作者确认。
+仍是obs8/pred12、raw stride12、detector轨迹、pixel/dataset-local；不是米/秒/人工gold。
+Stage5C、SMC关闭，旧Stage37探索性结果未重新认证。
+[结果](european_rational_harm_v1/conclusions.md)、
+[失败分析](european_rational_harm_v1/failure_analysis.md)、
+[梯度复查](european_rational_harm_v1/gradient_recheck/conclusions.md)。
+
 ## 当前入口：2026-10-29 风险误差分解和完整范围修复均已完成
 
 先对冻结六策略重新推理144视图，PID46161 exit0，86.30秒。发现隔离分支的

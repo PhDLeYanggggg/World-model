@@ -7,7 +7,30 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Fit-Only Gradient Diagnosis: Complete, Matched Repair Registered
+### Rational Harm Repair: Complete, Gate Failed
+
+Fresh18 matched continuations/36,000 updates completed190.94s, PID51994 exit0;
+144 frozen readouts completed122.32s, PID52493 exit0. All seven cached controls
+replay, protected outputs and real initial objectives match.119 scoped tests
+pass5.58s. No full legacy artifact-writing test suite or independent role opened.
+
+Held matched utility versus hard clipping-0.217080pp[-0.376888,-0.062234];
+full-count utility-1.547315[-2.429844,-0.825328]. Versus isolated odds matched
++0.201973[-0.029673,0.473714], not stable positive. Held signed MSE6.644551;
+known easy violations34/72 but undefined easy19/72 and complete support0/72.
+The fixed gate fails14 conditions, so no deployment or evidence promotion.
+
+Fresh72-view fit-only post-check64.02s, PID53106 exit0: on the same58,707
+full-range-selected occurrences, zero easy J falls54,254 to231, but40,174
+remain near-zero. The repair fixes exact clipping without establishing useful
+selected-risk learning. Own-selected predicted/observed easy harm is0.744652/
+69.357583; overall overprediction cannot certify the selected cohort.
+[Results](outputs/publication_readiness_2026_09/european_rational_harm_v1/conclusions.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_rational_harm_v1/failure_analysis.md),
+[model card](outputs/publication_readiness_2026_09/european_rational_harm_v1/model_card.md),
+[verification](outputs/publication_readiness_2026_09/european_rational_harm_v1/verification.md).
+
+### Fit-Only Gradient Diagnosis: Complete
 
 Fresh72/72 fitting-only views completed61.04s, PID50837 exit0. The wider head
 has54,254/58,707 zero-easy-J selected occurrences;96.2899% of its positive easy
@@ -15,12 +38,11 @@ harm underprediction lies there. The old odds head on the identical cohort has
 33 zero-J rows and zero such underprediction. Hard lower clipping is a verified
 local obstruction, not a sole-cause or generalization proof. All predictions
 and cohorts exactly replay.18 focused tests pass, including the registered
-rational replacement's resume/protection/extreme-anchor checks. The registered
-repair's200-update pilot passed12.08s with exact resume and protected outputs;
-18/18 fits and36,000 updates completed190.94s, PID51994 exit0. All real initial
-objective values match old controls.144-view readout is now running, no new
-result or gate claimed yet. No held inference in the Jacobian diagnosis itself,
-no independent role or deployment change.22 new/affected tests pass.
+rational replacement's resume/protection/extreme-anchor checks. Its200-update
+pilot passed12.08s with exact resume and protected outputs, before the complete
+registered experiment above. No held inference in the Jacobian diagnosis itself,
+no independent role or deployment change.22 new/affected tests passed before
+the final119-test affected regression run.
 [Diagnosis](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/conclusions.md),
 [interpretation](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/failure_analysis.md),
 [next fixed repair](outputs/publication_readiness_2026_09/european_rational_harm_v1/protocol.md).

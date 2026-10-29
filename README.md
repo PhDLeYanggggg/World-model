@@ -25,16 +25,25 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-**29 October: a concrete gradient failure was found on fitting data.**
-Across72 frozen-model views,92.4% of the wider head's selected occurrences have
-zero easy-harm output gradient;96.3% of its easy-harm underprediction lies on
-those rows. This is a local learning obstruction, not proof that fixing it
-will generalize. I have registered one bounded, continuously differentiable
-replacement with unchanged data, budget and safety criteria. All18 matched
-fits have now finished (36,000 updates); the complete readout is running.
-The preceding negative result remains the verdict until that readout is verified.
-[Diagnosis](outputs/publication_readiness_2026_09/european_harm_jacobian_v1/conclusions.md),
-[fixed repair](outputs/publication_readiness_2026_09/european_rational_harm_v1/protocol.md).
+**29 October: removing flat gradients did not restore safe selection.**
+I completed18 matched rational-map continuations and144 evaluation views.
+On the same fitting cohort, exact-zero easy-harm gradients fell from92.4% to
+0.39%. The numerical repair worked, but selected-risk estimation still failed.
+
+At matched intervention counts, utility relative to the hard-clipped model
+fell by **0.217 percentage points**, with nominal95%CI **[-0.377,-0.062]**.
+Complete risk support remains0/72 held views;19/72 have undefined easy risk.
+Fewer known violations cannot be treated as improved safety when the chosen
+cohort and undefined denominators change. I am not deploying this repair.
+
+All results remain exposed TRAIN-internal evidence.119 focused tests pass;
+no independent data role or risk criterion changed. The next step is
+producer-excluded, policy-conditional calibration, not another ad hoc output map.
+[Results](outputs/publication_readiness_2026_09/european_rational_harm_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_rational_harm_v1/failure_analysis.md),
+[gradient verification](outputs/publication_readiness_2026_09/european_rational_harm_v1/gradient_recheck/conclusions.md).
+
+### Preceding Wider-Range Experiment
 
 **29 October: expanding the harm head's range did not make it safe.**
 I completed18 matched continuations and144 evaluation views after diagnosing
