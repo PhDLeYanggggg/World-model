@@ -22,6 +22,11 @@ run is active; the eight-arm readout is registered before candidate predictions.
 Its eight primary utility contrasts, original 2% risk checks, all-control replay
 and independent scalar checks are fixed. The expanded focused suite passes 36
 tests. No new development result is available yet.
+The old and new targeted regression suites also pass together: 92 tests. A
+separate aggregation-contract test confirms that query-mean TRAIN feasibility
+does not imply selected-agent-mass risk feasibility. This is a synthetic
+counterexample, not a new empirical result; the running scaling intervention is
+not changed. [Aggregation limitation](outputs/publication_readiness_2026_09/european_scaled_risk_v1/aggregation_contract_note.md).
 No new development labels were opened in this diagnostic.
 [Evidence](outputs/publication_readiness_2026_09/european_task_risk_gradient_v1/conclusions.md),
 [matched repair protocol](outputs/publication_readiness_2026_09/european_scaled_risk_v1/protocol.md).
