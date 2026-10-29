@@ -31,7 +31,9 @@ I am checking whether sparse minibatch estimates miss harmful interventions,
 then comparing exact recording-level constraint updates and full-recording
 gradients with the frozen stochastic policy. The predictor, features, update
 budget and 2% requirement stay fixed; additional computation is reported openly.
-The experiment is registered, not yet a result.
+The frozen-state diagnostic found that256/277 positive constraint occurrences
+look nonpositive in at least half of the original minibatch draws. This supports
+testing the estimator, not a claim that the new method works. Training is pending.
 [Protocol](outputs/publication_readiness_2026_09/european_whole_record_policy_v1/protocol.md).
 
 ### Previous Direct Policy
