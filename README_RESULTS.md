@@ -50,6 +50,15 @@ receipt hashes verify,with69,194,742B private weights.The full endpoint
 freeze precedes every new policy score.No independent role or deployment
 opens;the fixed216group readout is next.
 
+The readout is now registered against all162committed endpoints and the
+complete original score/risk helpers. Primary remains upper_score/new_neural
+minus original/new_neural;all three banks/objectives remain. Twenty-seven
+focused objective,gradient,recovery,cohort,inference,readout,artifact and
+bundle tests pass in4.34s. A decoder counterexample also verifies that exact
+harm numerators with inflated reference denominators can admit an unsafe
+switch;it is mathematical/engineering evidence,not real-data performance.
+No effectiveness score is read before this registration.
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers
