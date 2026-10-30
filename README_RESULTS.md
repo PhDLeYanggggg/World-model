@@ -7,6 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Optimization Pressure Diagnosis
+
+The preceding turn is progress: complete matched training and exact replay
+rejected the online-admission repair, rather than promoting it from a positive
+secondary contrast. I am now instrumenting the actual training trajectory to
+measure when the extra loss activates, its gradient strength and conflict,
+and the nested easy-harm gate. This replays all 18 admitted heads plus one
+upper control at the full 2,000 updates, not a new policy experiment. Original
+weights, optimizer, RNG, sampling and loss traces must remain exact. Five
+targeted real-Torch instrumentation/recovery checks pass in 2.02s. No reserved
+outcome opens and the 2% rule is unchanged. See the
+[diagnostic protocol](outputs/publication_readiness_2026_09/european_admission_monitor_v1/protocol.md).
+
 ### Selected-Action Attribution and Online Admission Repair
 
 I replayed all 216 frozen prediction/action/full-metric groups and then repeated
