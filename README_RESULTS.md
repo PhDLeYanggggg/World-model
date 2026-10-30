@@ -156,17 +156,41 @@ synthetic Torch recovery and exact fixed-target control reproduction. Real
 pilot PID68545 exits0 in38.359057s at peakRSS9,623,339,008B:600 actual updates,
 exact old fixed-target controls,exact interrupted recovery and matched draws.
 The single-context full-cost projection is7288s (about2h),not measured full
-runtime. Full36-head training runs as PID69758 with checkpoint100/heartbeat50;
-both first full2,000-step scientific refits already agree. Full training and
-new policy outcomes are not yet complete. No deployment or independent promotion.
+runtime. Full36-head training PID69758 exits0 in1877.401549s at peakRSS
+10,798,153,728B:72,000 primary updates plus4,000 exact-refit updates. Both
+first full2,000-step scientific refits agree. Freeze SHA256 is
+`ef19c8d78302e235b233b89634055617143c35bebd8f14ea7092d9ae3d566997`.
+The first complete72-group policy readout PID73583 exits0 in628.181908s at
+peakRSS10,999,578,624B. All144 frozen-query full-policy controls agree.
+Separate complete replay PID75450 is running;no replay agreement is yet claimed.
+No deployment or independent promotion.
 
 The current-query reporter separates a comparable fixed-original-set probe and
 all-action point loss from the moving-set masked training term and complete-
 query coverage. The fixed control has no logged moving-set curve;one is not
-invented. Nine current-query model/readout/report checks pass in2.95s. Four
-real-artifact checks are added for execution after their training/readout
-prerequisites exist;they are not yet claimed passed. Scientific files and all
-currently running training settings stay unchanged.
+invented. Nine current-query model/readout/report checks pass in2.95s. The
+reporting and real-training artifact subset passes4 tests in4.61s;the two
+complete-replay artifact checks still wait for that prerequisite. Scientific
+files and all registered settings stay unchanged. Common fixed-set probe
+medians worsen to0.000600934 row and0.000477941 set,versus fixed-query
+0.000144110/0.000153624. The current moving masked term is not substituted for
+this common-population probe or used to select a checkpoint.
+
+The full current-query result is negative. Set-joint known ADE gain is6.783336%
+versus the fixed-query8.215347%:paired -1.432011pp CI[-3.335655,+0.608111].
+The prespecified completion-lower increment is -7.087372pp
+CI[-13.238339,-2.904036],with all three critic-seed means negative. Only11/444
+recording-risk views are supported,with268 known all-risk violations,313 known
+easy-risk violations and21 undefined easy views. Interventions fall410,575
+to137,815,including3,872 unknown-selected views;this is not safe deployment.
+Four of eight fitting checks pass. The context-minus-row known increment is
++0.768069pp CI[+0.267183,+1.340767],but its completion-lower increment remains
+-3.525013pp CI[-7.281836,-0.772340]. The explicit same-count context contrast
+has known +0.179028pp CI[-0.159545,+0.584688] and lower -1.589234pp
+CI[-2.936624,-0.477403]. These secondary contrasts do not override the failed
+primary or original risk gate. All-action risk MSE is0.144729 row/0.143632 set,
+not probability ECE or final-policy calibration. The1,685,298B metric-only
+archive preserves all72 aggregate files. Independent roles remain closed.
 
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it
