@@ -51,13 +51,22 @@ telemetry and the scale diagnostic. Its real 600-update pilot finishes in
 21.24 seconds with exact old-control reproduction and interrupted recovery.
 All 36 full fits finish in 5.00 minutes, including two exact full refits, at
 10.45 GB peak memory. In original units, median query-monitor error falls from
-about 0.00044 to 0.00015, but pointwise risk error is worse. The new full policy
-readout is running as PID58848, so this remains a training result, not a safe-policy
-claim. [Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
-I have also registered a read-only audit of score errors on the original and
-final selected sets. It separates harm underprediction from reference bias and
-keeps missing support visible; it changes no model or policy.
-[Audit design](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/protocol.md).
+about 0.00044 to 0.00015, but pointwise risk error is worse.
+
+The complete readout now shows a real but limited fitting improvement: known-label
+ADE gain rises from 6.575% to 8.215%, a paired +1.641 percentage points
+[+1.102, +2.252]. All 12 exposed localities improve. The prespecified
+unknown-completion-lower increment is -2.598 pp [-7.642, +0.293], however, and
+only 1/444 recording-risk views is supported, with 383 known easy-risk
+violations. This is not deployable or independent evidence. A separate complete
+replay is running; the final-selection diagnosis will check where the fitting
+improvement stops carrying through. [Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
+The separately registered score audit and its complete replay also finish.
+Original-set fitting improves, but the final choices still underestimate easy
+harm. Their selected population changes substantially, and missing outcomes
+remain a limitation. This motivates testing selection-target mismatch; it does
+not identify a unique cause or change the policy.
+[Score accounting](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/readout.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
@@ -90,8 +99,8 @@ keep the positive neural increment and the failed risk requirement together.
 The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
 also checks why fewer switches need not improve the selected harm/reference ratio.
 The subsequent selected-query comparison is complete, exactly replayed and
-negative. The query-unit repair is fully trained but has not
-completed policy evaluation.
+negative. The query-unit repair completes its first full policy evaluation with
+better known-label utility but a failed primary robust-utility/risk requirement.
 
 ### Preceding Query-Allocation Study
 

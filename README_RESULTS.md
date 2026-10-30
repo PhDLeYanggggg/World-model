@@ -88,11 +88,28 @@ original heads. Same-batch query/point gradient medians become 1.757648/1.634624
 not the original approximately0.0008/0.0007. Pointwise risk monitor is worse:
 0.071484->0.078885 row and0.064269->0.078215 set. All unknown draws still have
 zero supervised loss. These fixed fitting monitors select no checkpoint and
-are not policy/calibration success. The new complete policy readout is running
-as PID58848; no partial outcome selects a checkpoint, threshold or model.
+are not policy/calibration success. Complete policy readout PID58848 exits0
+in1746.471870s at peak RSS11,025,530,880B. All72 groups and144 old-critic policy
+controls complete. Separate full replay PID62325 is running; no agreement is
+yet claimed. No partial outcome selects a checkpoint, threshold or model.
 Its design follows telemetry and the verified diagnostic, not
 selection among the completed parent policy scores.
 Independent roles, deployment, Stage5C and SMC remain closed.
+
+New-unit set-joint known ADE gain is8.215347%, versus6.574842% original units:
+paired +1.640505pp CI[+1.101933,+2.251535],positive in all12 localities and all
+three critic-seed means. This is a useful exposed-fitting unit effect,not an
+independent or new-dynamics result. The prespecified completion-lower increment
+is -2.597889pp CI[-7.642133,+0.293356],so its positive-lower-CI test fails.
+Only1/444 set-joint recording views is supported,with367 known all-risk
+violations,383 known easy violations and13 undefined easy views. Selected row
+views decrease432,796->410,575,but selected unknown views increase8,010->8,430.
+Four of eight fitting checks pass;no deployment. Context still loses to local:
+known -0.347678pp CI[-0.617066,-0.028657],lower -5.657865pp
+CI[-13.058285,-1.481855]. Full all-action risk MSE also worsens relative to the
+old critics: row0.107182->0.129738,set0.108521->0.127527.
+The exact-byte1,718,880B aggregate bundle contains only metrics,not row arrays
+or weights. Full-policy separate replay is pending.
 
 While that readout runs, the eight-variant selected-score audit is registered
 before its own values. It will re-infer old/new row/set critics, hash-check
@@ -100,9 +117,27 @@ their frozen original/decoded choices, and separate signed-score error into
 harm underprediction plus 0.02 times reference inflation. Unknown/empty queries
 remain reported; conditional moments are not called full-cohort or causal
 effects. It changes no model/policy. Five arithmetic/support checks pass in
-0.12s. Actual values are not run. The broader 17-file focused suite passes
+0.12s;two reduction checks also pass (combined7 in1.46s). Its full computation
+finishes as PID62326 in133.040376s,peakRSS9,278,439,424B. Separate complete
+replay PID64645 exits0 in131.790876s,peakRSS10,743,611,392B. All72 groups and
+288 original-set MSE controls match (including retained not-estimable controls).
+No partial diagnostic value is read or used for model selection. The broader17-file suite passes
 70 tests in7.97s; two new-complete-readout tests remain deliberately unrun
 until the required artifacts exist. No full repository suite is claimed.
+
+The fixed-original-set,source-supported set-critic score MSE improves old->new:
+all0.000974966->0.000648158,easy0.000193034->0.000099323 (same66 supported
+views/11 localities,not zero-imputed72/12). On each critic's own final choices,
+all-channel conditional MSE instead increases0.002657289->0.003562664,while
+easy-channel MSE improves0.000474468->0.000154542. These different selected
+populations do not identify a causal shift effect. New final-set mean easy
+score underprediction0.001615704 decomposes into harm0.001659358 plus
+reference contribution-0.000043655. Easy harm underprediction remains despite
+the unit repair;reference inflation is not its sole arithmetic explanation.
+The new set policy introduces200,594 row views relative to original selection,
+changes126,725 retained actions,and has6,471 selected-unknown queries. This
+supports testing current-versus-fixed query supervision,not declaring it solved.
+The192,338B score-audit bundle contains only aggregated accounting.
 
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it

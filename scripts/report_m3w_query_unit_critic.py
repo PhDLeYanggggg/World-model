@@ -257,11 +257,52 @@ def complete_report():
     pack(ROOT, p); verify(ROOT, p)
     run.once(p/'replay_runtime.json', value['replay_runtime']); (p/'readout.md').write_text(render(value))
     run.write(p/'mechanism_diagnostics.json', {k: value[k] for k in ('nonoptimal_queries', 'reason_counts')})
+    policy_plot(value)
     run.write(p/'evidence.json', dict(summary_sha256=run.sha(p/'summary.json'), complete_sha256=run.sha(p/'complete.json'),
         verification_sha256=run.sha(p/'verification.json'), training_freeze_sha256=run.sha(p/'training_freeze.json'),
         report_code_sha256=run.sha(Path(__file__)), report_sha256=run.sha(p/'readout.md'),
+        policy_figure_sha256=run.sha(p/'figures/query_unit_policy.svg'),
         independent_confirmation=False, deployment_changed=False, submission_ready=False))
     print(json.dumps(dict(report_generated=True, gates=value['summary']['fitting_gates'], deployment_changed=False)))
+
+
+def policy_plot(value):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Patch
+    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9, 'svg.fonttype': 'none', 'svg.hashsalt': run.NAME})
+    fig, axes = plt.subplots(1, 3, figsize=(14, 4.8)); s = value['summary']
+    names = ('old_units_row_joint', 'row_joint', 'old_units_set_joint', 'set_joint')
+    labels = ('Old units / local', 'New units / local', 'Old units / set', 'New units / set')
+    for i, name in enumerate(names):
+        old = name.startswith('old_units_')
+        v = (s['old_units_accuracy'] if old else s['accuracy'])[name]
+        risk = (s['old_units_safety'] if old else s['safety'])[name]
+        color = '#666666' if old else '#007C91'; low, high = v['CI95']
+        axes[0].errorbar(v['point'], i, xerr=[[max(0, v['point']-low)], [max(0, high-v['point'])]],
+            fmt='o', capsize=3, color=color)
+        axes[2].barh(i-.14, risk['supported_record_views'], height=.27, color='#007C91')
+        axes[2].barh(i+.14, risk['known_easy_risk_violations'], height=.27, color='#B44D48')
+    for i, (arm, field, label) in enumerate((('row', 'full_known_pp', 'Local / known'),
+            ('row', 'full_lower_pp', 'Local / lower'), ('set', 'full_known_pp', 'Set / known'),
+            ('set', 'full_lower_pp', 'Set / lower'))):
+        v = s['query_unit_contrasts'][arm][field]; low, high = v['CI95']
+        axes[1].errorbar(v['point'], i, xerr=[[max(0, v['point']-low)], [max(0, high-v['point'])]],
+            fmt='o', capsize=3, color='#007C91' if field == 'full_known_pp' else '#B44D48')
+    for ax in (axes[0], axes[2]): ax.set_yticks(range(4), labels); ax.invert_yaxis()
+    axes[1].set_yticks(range(4), ('Local / known', 'Local / lower', 'Set / known', 'Set / lower')); axes[1].invert_yaxis()
+    axes[0].set_xlabel('Known ADE gain over floor (%)'); axes[0].set_title('Full-policy accuracy')
+    axes[1].set_xlabel('Paired new - old gain (pp)'); axes[1].set_title('Known vs unknown-completion lower')
+    for ax in axes[:2]: ax.axvline(0, color='#888888', linewidth=.8); ax.grid(axis='x', alpha=.2)
+    axes[2].set_xlim(0, 450); axes[2].set_xlabel('Recording-risk views (444 required)')
+    axes[2].legend(handles=[Patch(color='#007C91', label='Supported'), Patch(color='#B44D48', label='Known easy violation')],
+        loc='lower center', bbox_to_anchor=(.5, 1.01), ncol=2, fontsize=7, frameon=False)
+    fig.suptitle('Exposed SOURCE fitting: higher known utility does not pass risk', fontsize=11)
+    fig.tight_layout(rect=(0, 0, 1, .94)); p = run.PUBLIC/'figures/query_unit_policy.svg'
+    fig.savefig(p, metadata={'Date': None}, bbox_inches='tight')
+    p.write_text('\n'.join(v.rstrip() for v in p.read_text().splitlines())+'\n')
+    fig.savefig(run.PRIVATE/'query_unit_policy.png', dpi=160, bbox_inches='tight'); plt.close(fig)
 
 
 if __name__ == '__main__':
