@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Selected-Action Attribution
+
+I am checking the actions that the frozen cost heads actually admit, rather
+than relying on average regression error. The diagnosis separates underestimated
+harm, inflated reference error, their joint effect, and loss of selected easy
+support. It must reproduce all 216 prior prediction, action and full-metric
+results before any attribution is accepted. This is a fresh fitting-side
+diagnosis, not a new test result, risk certificate or policy change. The next
+training change will be chosen from these findings; no independent outcome is
+opened. See the [protocol](outputs/publication_readiness_2026_09/european_selected_action_attribution_v1/protocol.md).
+
 ### Original-Budget Score Learning Registered
 
 The previous goal turn is progress:54real matched-bank heads,72readouts and
