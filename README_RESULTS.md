@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Detector Tokens In Trajectory Dynamics Registered
+
+The next test moves past detector information into the Transformer rather than
+only into routing. All18original producer fold/seed designs are retained with
+disabled/current/noise/history arms:72real producers,4,000steps each,
+288,000planned primary updates. Only512zero-initialized parameters are added;
+the original loss,neighbor support,input conditioning and motion bounds remain.
+Seventeen targeted input/model/recovery tests pass in1.66s. A clipping-call
+argument and a temporary-root test-fixture issue were fixed before real training;
+registration_v2 preserves the first draft and changes no model numeric rule.
+Actual SOURCE training/readout remain not_run at registration. Readout remains
+limited to the old controller-fitting IDs outside each producer's fitting
+localities. See the [producer protocol](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/protocol.md).
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across
