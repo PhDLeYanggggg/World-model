@@ -42,6 +42,10 @@ component does not improve. Its same-batch gradient norm is typically below
 than calling a lower total loss success. The frozen72-group policy readout is
 running as PID43330;no deployment result is claimed yet.
 [Real training curves](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
+While the frozen readout runs,I have registered a read-only training-label
+diagnostic for query-loss units and the limits imposed by protected outputs.
+It changes no weights or decision rule and reads no partial new policy scores.
+[Diagnostic protocol](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Completed Strong-Bank Control

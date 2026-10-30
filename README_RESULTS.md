@@ -45,6 +45,12 @@ There are no zero query gradients. Each arm draws65,106 unknown row occurrences
 with zero supervised loss. These are actual optimization diagnostics,not full-
 dataset error,validation,test performance,calibration or world-dynamics lift.
 See [training evidence](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
+The separately registered query-scale/capacity diagnostic will compare actual
+training-query score units with the all-action RMS and project label targets
+onto the protected decoder's feasible triangle. It is a label-aware fitting
+oracle,not an inference input,conditional-mean misspecification proof or policy
+repair. Three exhaustive/missing-label checks pass in0.15s. No values run yet;
+the current72-group policy readout and all36 weights remain unchanged.
 See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Shared Physical-Count Bank Readout and Exact Replay Complete
