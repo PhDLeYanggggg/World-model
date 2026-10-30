@@ -23,9 +23,13 @@ selected-set model exactly in synthetic training. Plans:36 real fits/72,000
 updates,two complete2,000-update refits,full72-group scoring and separate replay.
 Ten focused checks pass in1.99s,including real synthetic Torch training,
 exact recovery,shared references,zero-capacity release and current-query
-matched-count allocation. Pilot and full real fitting/results are not_run.
-No new trajectory forecaster,independent role or deployment. Registration
-and scientific hashes are frozen before their own outcomes.
+matched-count allocation. Real pilot PID95479 exits0:400 actual Torch updates,
+18.008531s from runtime_ready,peakRSS9,588,932,608B. Initial admission/loading
+is outside that phase timer. Both modes have exact interrupted recovery and
+matched inputs/initialization/draws. Protected100-update model equals the old
+unit-corrected selected-set model exactly. Own policy outcomes are not scored.
+Full36-head fitting is now running unchanged. No new trajectory forecaster,
+independent role or deployment. Registration/scientific hashes precede outcomes.
 
 ### Causal Position Anchor: Registered Before Own Outcomes
 

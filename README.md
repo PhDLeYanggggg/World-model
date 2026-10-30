@@ -63,8 +63,9 @@ outcomes. It tests whether freezing predicted benefit prevents harm estimates
 from using the available forecast-error envelope. The two heads share inputs,
 initial weights, parameter count and training draws; only one may adjust benefit.
 Reference predictions and the original 2% risk requirement remain fixed. Ten
-focused training/allocation checks pass. Real-data pilot, full fitting and policy
-results are not yet run, so there is no improvement or deployment claim.
+focused training/allocation checks pass. The real 400-update Torch pilot has
+exact recovery and old-model controls,at 9.59 GB peak memory. Full 36-head
+training is running; no policy improvement or deployment is claimed yet.
 [Coupled benefit/risk design](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/protocol.md).
 
 ### Earlier Risk-Learning And Decoder Controls
