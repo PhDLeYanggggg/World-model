@@ -32,11 +32,16 @@ selected-action context. Both keep the original benefit and reference estimates
 fixed, learn from the same permitted source queries, and use the same allocator.
 The design is registered before fitting. The real pilot completes400 Torch
 updates with exact recovery in20.33s at7.69GB peak memory; both arms have
-identical initialization and training draws. Full36-head training is now
-running as PID41637. Seventy-seven focused checks pass. The pilot's query-loss
-gradients are small relative to its all-action term; this is recorded, not
-silently repaired by changing the registered objective. No policy outcome or
-safe deployment is claimed yet.
+identical initialization and training draws. All36 full heads have now finished
+72,000 updates in4.92 minutes,with both first-head2,000-step refits matching
+exactly. Peak memory is8.78GB. Seventy-seven focused checks pass.
+
+The total fitting-monitor loss falls in all36 heads,but the median query-score
+component does not improve. Its same-batch gradient norm is typically below
+0.1% of the all-action term. I keep that negative diagnostic visible rather
+than calling a lower total loss success. The frozen72-group policy readout is
+running as PID43330;no deployment result is claimed yet.
+[Real training curves](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Completed Strong-Bank Control

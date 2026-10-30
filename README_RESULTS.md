@@ -25,13 +25,26 @@ supervise. Twelve targeted tests pass in2.38s,including real synthetic Torch
 updates and exact resume. Real pilot PID40486 exits0 in20.333650s at peak
 RSS7,688,273,920B,with400 actual updates. Both arms have exact interrupted
 recovery and matched draws;240 unknown row draws per100-step arm have zero
-supervised loss. Full36-head training is running PID41637,not complete.
+supervised loss. Full36-head training PID41637 exits0 in294.916455s at peak
+RSS8,783,167,488B. All72,000 primary updates and both2,000-step full scientific
+refits complete. The fixed72-group allocation readout is running PID43330;
+no partial policy score is used for model selection.
 
 The pilot's final query/pointwise gradient ratios are0.00018164 row-local and
 0.00017953 selected-set. They are real training diagnostics,not proof that
 query learning succeeds or that a different loss weight would help. The fixed
 objective remains unchanged. The extended77-test focused suite passes in10.58s;
-no full repository suite is claimed. No policy readout or threshold search.
+no full repository suite is claimed. No completed policy readout or threshold search.
+
+All36 fixed fitting-monitor total objectives decrease. Median row-local total
+falls0.05730052->0.03591346 and selected-set0.05730052->0.03288493. Median
+query-score monitor instead rises0.00043554->0.00044391/0.00044828. Across738
+same-batch snapshots perarm,the query/pointwise gradient median is0.00080932
+row-local and0.00070819 selected-set;679/738 and698/738 are below1%.
+There are no zero query gradients. Each arm draws65,106 unknown row occurrences
+with zero supervised loss. These are actual optimization diagnostics,not full-
+dataset error,validation,test performance,calibration or world-dynamics lift.
+See [training evidence](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
 See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Shared Physical-Count Bank Readout and Exact Replay Complete
