@@ -45,6 +45,13 @@ measured primary optimization projection is 173.58s excluding preparation,
 refit and readout. Full 18-head training has started with all 2,000 updates
 per head and no policy score read before the complete freeze.
 
+All 18 new heads now complete their full 36,000 primary updates in 209.66s,
+peak RSS 10.92GB. The extra 2,000-step complete refit is exact; shared
+initialization, preprocessing, sampler/RNG and draw hashes match all 36 cached
+controls. New primary weights total 7,721,061B privately. Thirty focused checks
+pass in 6.58s. The fixed 72-group outcome readout is registered next; no new
+effectiveness claim is made from this training freeze.
+
 ### Selected-Action Attribution and Online Admission Repair
 
 I replayed all 216 frozen prediction/action/full-metric groups and then repeated
