@@ -58,6 +58,34 @@ def freeze(value):
     return value
 
 
+def selected_moment_summary(rows, variant):
+    values = [r['result']['calibration'][variant] for r in rows]
+    selected = sum(v['known_selected_rows'] for v in values)
+    legal = sum(v['known_legal_action_rows'] for v in values)
+    def weighted(field, count, total):
+        if total == 0:
+            return None
+        return [sum(v[field][i] * v[count] for v in values if v[count]) / total for i in range(5)]
+    return dict(known_selected_repeated_views=selected, legal_action_repeated_views=legal,
+        harm_underprediction_repeated_views=sum(v['selected_harm_underprediction_rows'] for v in values),
+        easy_harm_underprediction_repeated_views=sum(v['selected_easy_harm_underprediction_rows'] for v in values),
+        weighted_selected_bias=weighted('selected_normalized_bias', 'known_selected_rows', selected),
+        weighted_legal_moment_MSE=weighted('normalized_moment_MSE', 'known_legal_action_rows', legal),
+        action_counts={str(i): sum(r['result']['policies'][variant]['action_counts'][str(i)] for r in rows)
+            for i in range(-1, 7)}, probability_calibration_or_safety_certificate=False,
+        unit='frozen_causal_cost_scale', repeated_views_not_independent_samples=True)
+
+
+def diagnostics(complete):
+    rows = [json.loads((ROOT / ref['path']).read_text()) for ref in complete['groups']]
+    return dict(result_source='cached_verified_frozen_group_diagnostic_aggregation_no_new_inference',
+        moment_order=['benefit', 'positive_harm', 'reference_error', 'easy_reference_error', 'easy_positive_harm'],
+        policies={v: selected_moment_summary(rows, v) for v in run.api.VARIANTS},
+        finite_trajectories={v: all(r['result']['validity_proxies'][v]['finite'] for r in rows)
+            for v in run.api.VARIANTS}, primary_metrics_or_risk_rule_changed=False,
+        causal_explanation_proven=False, independent_confirmation=False)
+
+
 def evidence():
     check = json.loads((run.PUBLIC / 'verification.json').read_text())
     if (not check['all72groups_exact'] or not check['all_old_predictions_actions_record_scores_exact']
@@ -79,13 +107,16 @@ def evidence():
     training = json.loads((run.PUBLIC / 'training_freeze.json').read_text())
     complete = json.loads((run.PUBLIC / 'complete.json').read_text())
     summary = json.loads((run.PUBLIC / 'summary.json').read_text())
+    profile = support_profile(complete)
+    run.once(run.PUBLIC / 'moment_diagnostics.json', diagnostics(complete))
     value = dict(result_source='verified_fresh_matched_Torch_cost_experiment_aggregate_receipt',
         training={k: training[k] for k in ('pid', 'seconds', 'peak_RSS_bytes', 'count', 'primary_optimizer_updates',
             'extra_full_refit_updates', 'pilot_updates', 'legacy_exact_endpoints')},
         readout={k: complete[k] for k in ('pid', 'seconds', 'peak_RSS_bytes')},
         replay=json.loads((run.PRIVATE / 'verification_runtime.json').read_text()),
         checkpoint_bytes=sum(r['checkpoint']['bytes'] for r in models.values()),
-        loss_summary=loss, support_profile=support_profile(complete),
+        loss_summary=loss, support_profile=profile,
+        moment_diagnostics_sha256=run.sha(run.PUBLIC / 'moment_diagnostics.json'),
         summary_sha256=run.sha(run.PUBLIC / 'summary.json'), verification_sha256=run.sha(run.PUBLIC / 'verification.json'),
         artifact_code_bindings={str(p.relative_to(ROOT)): run.sha(p) for p in
             (Path(__file__), ROOT / 'tests/test_m3w_active_bank_artifacts.py')},
@@ -168,7 +199,11 @@ def render(e, s):
     text += ['', 'Loss is asymmetric five-moment cost regression plus within-row ranking,',
         'not best-class classification. Curves are actual fitting minibatches, not',
         'validation or independent-test losses. Unknown labels receive no observed-',
-        'cost loss and do not determine the common row sampler.', '', '## Fitting-Progress Gates', '',
+        'cost loss and do not determine the common row sampler.', '',
+        'The [selected-moment diagnostics](moment_diagnostics.json) also report',
+        'reference-error bias and harm underprediction on known selected rows.',
+        'They are repeated-view fitting diagnostics, not probability calibration',
+        'or a proven causal explanation of failure.', '', '## Fitting-Progress Gates', '',
         *['- ' + k + ': ' + json.dumps(v) for k, v in s['fitting_gates'].items()],
         '- fitting_advancement_gate: ' + json.dumps(s['fitting_advancement_gate']),
         '- independent_confirmation: false', '- deployment_changed: false', '- submission_ready: false', '',

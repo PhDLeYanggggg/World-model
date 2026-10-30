@@ -68,3 +68,21 @@ def test_evidence_keeps_first_exact_replay_runtime_but_not_scientific_changes(tm
 def test_empty_interval_is_not_a_safe_zero():
     assert report.interval(dict(point=None, CI95=None)) == 'not_estimable'
     assert report.interval(dict(point=.1, CI95=[-.2, .3])) == '+0.100000 [-0.200000, +0.300000]'
+
+
+def test_selected_moment_aggregation_weights_support_and_keeps_missing_undefined():
+    def row(n, value):
+        d = dict(known_selected_rows=n, known_legal_action_rows=2 * n,
+            selected_harm_underprediction_rows=n, selected_easy_harm_underprediction_rows=0,
+            selected_normalized_bias=[value] * 5 if n else None,
+            normalized_moment_MSE=[value] * 5 if n else None)
+        return dict(result=dict(calibration=dict(new_neural=d),
+            policies=dict(new_neural=dict(action_counts={str(i): 0 for i in range(-1, 7)}))))
+    result = report.selected_moment_summary([row(1, 1.), row(3, 3.), row(0, None)], 'new_neural')
+    assert result['known_selected_repeated_views'] == 4
+    assert result['weighted_selected_bias'] == [2.5] * 5
+    assert result['weighted_legal_moment_MSE'] == [2.5] * 5
+    assert not result['probability_calibration_or_safety_certificate']
+    empty = report.selected_moment_summary([row(0, None)], 'new_neural')
+    assert empty['weighted_selected_bias'] is None
+    assert empty['weighted_legal_moment_MSE'] is None

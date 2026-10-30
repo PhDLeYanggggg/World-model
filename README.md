@@ -50,6 +50,16 @@ these findings separate: actual neural use can help on known labels without
 making the complete learned policy better or safe. All results are frozen
 before a separate full inference replay; no deployment is promoted.
 
+That separate replay is complete: all 72 prediction/action/metric groups match
+exactly in 2.1 minutes. The new head's actual training-loss median falls from
+1.904 to 0.333, but the risk requirement still fails. The
+[complete result and curves](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/failure_analysis.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/reproduction_zh.md)
+retain both the small neural-use signal and the complete-policy failure.
+My next experiment will address the cost-to-risk decision mismatch, not
+promote this bank or tune its thresholds on the same results.
+
 I traced every requested future label on the same 149,510 allowed SOURCE
 queries back to the original export. All masks and known coordinates agree,
 and a second raw reparse matches exactly. Of 279,192 missing future points,

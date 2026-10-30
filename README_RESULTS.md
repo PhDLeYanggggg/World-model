@@ -84,6 +84,35 @@ Only2/7fixed fitting-progress gates pass. Initial results and aggregate bytes
 freeze before separate complete replay. Four new artifact-support/evidence
 checks pass in1.62s. No independent role or deployment opens.
 
+Separate full inference PID74514 exits0 in125.213123s,peak RSS10,977,935,360B.
+All72new/old moment predictions,choices,metrics,support and summary match
+exactly; all old controls remain exact. The verified report regenerates
+stably. Actual54head training traces and the aggregate SVG are saved and
+visually checked. New-head median fitting objective falls1.904017to0.332831,
+which does not resolve the risk failure. All19focused model/cohort/recovery/
+cross-bank/inference/artifact/bundle tests pass in2.92s; this is not a claim
+that the unrelated full repository suite was rerun.
+
+Selected-moment diagnostics show52,914/263,581known selected repeated views
+underpredict positive harm;42,602underpredict easy positive harm. Weighted
+selected reference-error bias is+0.259655cost-scale units while mean harm
+bias is near zero. This supports investigating tail/risk-ratio mismatch,
+not a unique proven cause. Six of12locality known replacement increments
+are negative and all three seed means are negative. Future-informed bank
+opportunity is feasible,so it cannot justify abandoning the task as having
+no headroom. Next is a registered single-factor conservative cost/risk
+learning repair on the same SOURCE fitting roles,not blind model scaling,
+test-threshold tuning or independent-role opening.
+
+The [verified matched-bank result](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/readout.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/paper_addendum.md)
+and [Chinese guide](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/reproduction_zh.md)
+are complete. All72aggregate groups are preserved byte-exact in1,041,811B,
+with no raw coordinates or weights. Only2/7fitting-progress gates pass;
+deployment,independent confirmation and submission readiness remain false.
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's
