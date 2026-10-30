@@ -38,6 +38,13 @@ refit and readout. Full 54-head training is now running locally as PID96918,
 with the fixed 2,000-update budget, checkpoints and heartbeat. Outcome scoring
 waits for the complete training freeze.
 
+All 54 full heads now complete locally in 378.32s, peak RSS 10.89GB. The
+108,000 primary updates, 2,000-update full refit and 160 pilot updates are
+retained. All 36 original/upper complete scientific states and the new full
+refit agree exactly. The primary weights total 23,064,998B privately. The fixed
+72-group readout will now test actual utility, risk and selection errors;
+there is still no new effectiveness or deployment claim at this freeze.
+
 ### Original-Budget Score Learning Registered
 
 The previous goal turn is progress:54real matched-bank heads,72readouts and
