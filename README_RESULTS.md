@@ -20,6 +20,23 @@ targeted real-Torch instrumentation/recovery checks pass in 2.02s. No reserved
 outcome opens and the 2% rule is unchanged. See the
 [diagnostic protocol](outputs/publication_readiness_2026_09/european_admission_monitor_v1/protocol.md).
 
+All 19 full training replays now match their original scientific states exactly,
+including optimizer/RNG/draws and original loss traces. The run takes 185.81s
+at 10.97GB peak RSS, with 38,000 diagnostic optimizer updates and no new policy.
+Across the 18 admitted trajectories, the auxiliary is nonzero on 33,771/36,000
+steps (93.81%), first at steps 22-90. Its median parameter-gradient norm is
+only 0.003632% of the anchor norm; the easy-channel median is 0.001258%.
+This rejects missing activation as the explanation and identifies a direct
+optimization-pressure mismatch. It does not prove that rescaling will succeed.
+See the [actual training diagnosis](outputs/publication_readiness_2026_09/european_admission_monitor_v1/readout.md).
+
+The next registered experiment tests one detached gradient-norm parity rule,
+not a new threshold or larger model. It will train 18 fresh heads and reuse
+36 hash-verified frozen controls, with the same inputs, sampling, update budget
+and 2% risk contract. Gradient balancing is established prior work; this is a
+targeted optimization repair, not a new main-method novelty claim. No reserved
+outcome or deployment opens.
+
 ### Selected-Action Attribution and Online Admission Repair
 
 I replayed all 216 frozen prediction/action/full-metric groups and then repeated

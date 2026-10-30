@@ -1,0 +1,15 @@
+{
+  "experiment": "european_gradient_balanced_admission_v1",
+  "training": {
+    "width": 64, "steps": 2000, "batch_size": 128,
+    "learning_rate": 0.001, "gradient_clip": 5.0,
+    "underharm_weight": 4.0, "ranking_weight": 0.5,
+    "heartbeat_every": 50, "checkpoint_every": 100
+  },
+  "seeds": [17, 29, 43],
+  "rule": {"target_ratio": 1.0, "max_scale": 1000000.0, "zero_tolerance": 1e-12},
+  "risk_budget": 0.02,
+  "bootstrap_resamples": 3000, "bootstrap_seed": 20261029,
+  "held_scored": false, "independent_roles_opened": false,
+  "deployment_changed": false, "stage5c_executed": false, "smc_enabled": false
+}
