@@ -25,11 +25,13 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am now tracing missing future labels back to the original export on the same
-149,510 allowed SOURCE queries. The independent raw lookup keeps the existing
-population, prediction horizon and risk rule. Its code checks pass; no new raw
-label result is claimed at registration. This will distinguish an import error
-from genuinely absent observations before the next frozen-bank decision study.
+I traced every requested future label on the same 149,510 allowed SOURCE
+queries back to the original export. All masks and known coordinates agree,
+and a second raw reparse matches exactly. Of 279,192 missing future points,
+180,358 follow the last detection of that ID; only 8,948 exceed the record's
+last detection frame. This is missing supplied observation support, not an
+import omission or proof of physical exit. I have not interpolated new labels
+or changed the horizon. [Raw-label audit](outputs/publication_readiness_2026_09/european_source_label_provenance_v1/readout.md).
 
 **30 October: the new input is now reaching the trajectory model itself.**
 I extended the verified detector-history store to all **318,969 producer rows

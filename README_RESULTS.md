@@ -30,6 +30,21 @@ labels match raw data. The record has225partial futures and21wholly missing
 futures. This is one real alignment pilot, not the full audit or a model gain;
 the complete74-record raw pass proceeds locally without changing any labels.
 
+The full raw audit completes PID59390 exit0 in36.511088s, peak RSS1,643,659,264B.
+Separate PID59504 reparses all74records in36.809571s, peak RSS1,851,195,392B;
+all scalar receipts and the full summary match exactly. Every one of1,794,120
+future-valid flags and1,514,928known midpoints agrees. Import mismatches and
+recoverable exact raw labels are both0. Of279,192missing steps,180,358are
+after the last detection of that ID,86,392inside its span with other agents
+observed,8,948beyond the record detection range,and3,494inside its span with
+no detection at that frame. These are export-level categories,not verified
+physical exits or video ends. Locality082's78missing endpoints are74ID-tail
+and4record-range cases,not an importer omission. The aggregate SVG is visually
+checked. The previous failed proposal/completion and easy gates remain unchanged.
+See the [verified provenance result](outputs/publication_readiness_2026_09/european_source_label_provenance_v1/readout.md).
+Next is the same gain/harm learner on a frozen new-producer bank,retaining the
+old fitting roles and2%complete-policy risk rule; no independent outcomes open.
+
 ### Detector Tokens In Trajectory Dynamics: Full Training Frozen
 
 The next test moves past detector information into the Transformer rather than
