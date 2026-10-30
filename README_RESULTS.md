@@ -35,6 +35,13 @@ excluding packet preparation,full refit and readout. Full162fit training
 proceeds locally under the original2,000step/head budget;no policy score
 or independent outcome is read in the pilot.
 
+Full training is live as native arm64 PID78301,CPU4/workers0. The first99
+complete endpoints retain2,000updates each;all33completed original states
+are exact. The first complete upper_score/new_neural head has an exact
+independent2,000step refit. All162fits remain scheduled. Fixed216group
+readout,causal inference,missing-support,artifact and bundle checks now total
+21passing tests in4.40s. No new policy score is read at this snapshot.
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers

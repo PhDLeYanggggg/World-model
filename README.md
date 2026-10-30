@@ -34,6 +34,11 @@ seeds and the 2% recording-risk rule stay fixed. The registered matrix has
 experiment, not a new safety guarantee or a change to the evaluation rules.
 [Budget-score protocol](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/protocol.md).
 
+The real nine-cell recovery pilot passes, and the full native Torch run is
+underway with all 2,000 updates per head retained. The first 99 endpoints
+include 33 exact original controls and an exact full conservative-head refit.
+This is a training-progress snapshot, not a policy-effectiveness result.
+
 I have registered the next matched bank experiment: keep the same gain/harm
 learner, fitting recordings, sampler and risk rule, and change only the frozen
 neural candidate. The six physical actions remain unchanged. All 54 fits are
