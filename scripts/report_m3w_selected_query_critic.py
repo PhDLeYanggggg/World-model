@@ -17,7 +17,11 @@ def training():
         path = ROOT/ref['path']
         if run.sha(path) != ref['sha256']: raise ValueError('Fixed training receipt changed')
         fits.append(json.loads(path.read_text()))
-    if len(fits) != 36 or {r['step'] for r in fits} != {2000} or {r['parameters'] for r in fits} != {30726}:
+    reg = json.loads(run.REG.read_text())
+    expected = {(c, seed, arm) for c in reg['contexts'] for seed in (17, 29, 43) for arm in run.api.ARMS}
+    actual = {(r['context'], r['seed'], r['arm']) for r in fits}
+    if (len(fits) != 36 or actual != expected or {r['step'] for r in fits} != {2000}
+            or {r['parameters'] for r in fits} != {30726}):
         raise ValueError('All36 registered full fits required')
     return freeze, fits
 
@@ -48,7 +52,7 @@ def training_text(freeze, fits, traces):
     stats = {}
     lines = ['# Real selected-query critic training', '', '## Material Passport', '',
         'fresh_run:36 full native-arm64 Torch risk fits,72,000 primary gradient updates.',
-        'Both first context/seed17 heads have independent2,000-step exact refits (4,000 additional updates).',
+        'Both first context/seed17 heads have separate2,000-step exact refits (4,000 additional updates).',
         'cached_verified: original forecast/cost heads, causal features, source inputs and selected-action identities.',
         'No newly trained trajectory forecaster, threshold selection or independent outcome readout.',
         f"Training PID{freeze['pid']} takes{freeze['seconds']:.3f}s,peak RSS{freeze['peak_RSS_bytes']}B.",

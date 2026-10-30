@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Selected-Query Risk Critic Registered Before Fitting
+### Selected-Query Critic Negative; One-Factor Unit Repair Registered
 
 Previous goal turn:progress. The72-group stronger-bank control and exact
 replay show modest neural utility and failed complete-recording risk.
@@ -27,14 +27,16 @@ RSS7,688,273,920B,with400 actual updates. Both arms have exact interrupted
 recovery and matched draws;240 unknown row draws per100-step arm have zero
 supervised loss. Full36-head training PID41637 exits0 in294.916455s at peak
 RSS8,783,167,488B. All72,000 primary updates and both2,000-step full scientific
-refits complete. The fixed72-group allocation readout is running PID43330;
-no partial policy score is used for model selection.
+refits complete. The fixed 72-group allocation readout completes as PID43330
+in 1744.334s at peak RSS 9,191,751,680B. The complete replay is running as
+PID51271; replay agreement is not yet claimed. No partial policy score is
+used for model selection.
 
 The pilot's final query/pointwise gradient ratios are0.00018164 row-local and
 0.00017953 selected-set. They are real training diagnostics,not proof that
 query learning succeeds or that a different loss weight would help. The fixed
 objective remains unchanged. The extended77-test focused suite passes in10.58s;
-no full repository suite is claimed. No completed policy readout or threshold search.
+no full repository suite is claimed. There is no threshold search.
 
 All36 fixed fitting-monitor total objectives decrease. Median row-local total
 falls0.05730052->0.03591346 and selected-set0.05730052->0.03288493. Median
@@ -45,13 +47,35 @@ There are no zero query gradients. Each arm draws65,106 unknown row occurrences
 with zero supervised loss. These are actual optimization diagnostics,not full-
 dataset error,validation,test performance,calibration or world-dynamics lift.
 See [training evidence](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
-The separately registered query-scale/capacity diagnostic will compare actual
-training-query score units with the all-action RMS and project label targets
-onto the protected decoder's feasible triangle. It is a label-aware fitting
-oracle,not an inference input,conditional-mean misspecification proof or policy
-repair. Three exhaustive/missing-label checks pass in0.15s. No values run yet;
-the current72-group policy readout and all36 weights remain unchanged.
+The full readout is negative: row-joint known ADE gain is 7.185249%, while
+selected-set joint is 6.574842%. The paired context increment is -0.610407pp
+CI[-0.880023,-0.349336]; completion-lower increment is -4.872588pp
+CI[-11.205362,-1.301837]. All 12 locality known contrasts are negative.
+Selected-set joint has 0/444 supported recording-risk views and 393 known easy
+violations. Only 4/8 fitting checks pass. This is neither deployment nor an
+independent result. The complete replay remains pending.
+
+The separately registered query-scale/capacity diagnostic completes as PID46712
+in 89.349s; a second complete 72-group run agrees exactly. The old denominator
+over actual selected-target RMS has median ratios 48.273834 (all) and 17.587900
+(easy). These imply channel-wise squared-loss coefficient changes of about
+2331 and 310, not guaranteed gradient or policy improvements. The triangular
+label projection also identifies protected-output interpolation limits; it does
+not prove conditional-mean misspecification or risk calibration. Source labels
+are fitting diagnostics only, never inference features.
+
+The one-factor `european_query_unit_critic_v1` is registered before its own fits
+and policy outcomes: 36 cached-verified old critics versus 36 fresh critics,
+the same 72,000-update budget, two full exact refits, and a 600-update real
+pilot. Only the query denominator changes to source-balanced RMS of the actual
+original selected-query signed target, floored at 1e-6. The all-action term,
+0.5/0.5 weights, model, sampler, decoder and all forecasts remain unchanged.
+New training and new outcomes are not run. Its design follows telemetry and the
+verified diagnostic, not selection among the completed parent policy scores.
+Independent roles, deployment, Stage5C and SMC remain closed.
 See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
+See the [diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md)
+and [unit-repair design](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 
 ### Shared Physical-Count Bank Readout and Exact Replay Complete
 

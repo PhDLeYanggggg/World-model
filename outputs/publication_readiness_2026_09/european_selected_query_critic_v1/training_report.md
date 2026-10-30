@@ -3,7 +3,7 @@
 ## Material Passport
 
 fresh_run:36 full native-arm64 Torch risk fits,72,000 primary gradient updates.
-Both first context/seed17 heads have independent2,000-step exact refits (4,000 additional updates).
+Both first context/seed17 heads have separate2,000-step exact refits (4,000 additional updates).
 cached_verified: original forecast/cost heads, causal features, source inputs and selected-action identities.
 No newly trained trajectory forecaster, threshold selection or independent outcome readout.
 Training PID41637 takes294.916s,peak RSS8783167488B.

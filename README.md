@@ -25,27 +25,31 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am moving the risk repair into a controlled training experiment. Two equally
-sized heads will correct harm estimates for the same seven forecasts: one sees
-local candidate features, the other also sees the original joint policy's
-selected-action context. Both keep the original benefit and reference estimates
-fixed, learn from the same permitted source queries, and use the same allocator.
-The design is registered before fitting. The real pilot completes400 Torch
-updates with exact recovery in20.33s at7.69GB peak memory; both arms have
-identical initialization and training draws. All36 full heads have now finished
-72,000 updates in4.92 minutes,with both first-head2,000-step refits matching
-exactly. Peak memory is8.78GB. Seventy-seven focused checks pass.
+I completed a controlled risk-learning experiment with 36 equally sized heads
+and 72 allocation groups. A head with the original selected-action context
+does not beat the matched row-local head: its known ADE gain is 6.575% versus
+7.185%, a difference of -0.610 percentage points, with a conditional locality
+interval of [-0.880, -0.349]. Complete-recording risk also fails. These are
+exposed source-fitting results, not independent evidence or a deployed model.
+A separate complete replay is running; I do not call it verified yet.
 
-The total fitting-monitor loss falls in all36 heads,but the median query-score
-component does not improve. Its same-batch gradient norm is typically below
-0.1% of the all-action term. I keep that negative diagnostic visible rather
-than calling a lower total loss success. The frozen72-group policy readout is
-running as PID43330;no deployment result is claimed yet.
+All 36 real Torch fits finish 72,000 updates in 4.92 minutes at 8.78 GB peak
+memory. Both first-head 2,000-step refits agree exactly. The total fitting loss
+falls, but the query-score component does not improve and its gradient is
+typically below 0.1% of the all-action term. Lower total loss has not repaired
+the decision rule.
 [Real training curves](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
-While the frozen readout runs,I have registered a read-only training-label
-diagnostic for query-loss units and the limits imposed by protected outputs.
-It changes no weights or decision rule and reads no partial new policy scores.
-[Diagnostic protocol](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/protocol.md).
+
+A separately registered, read-only diagnostic completes all 72 groups and an
+exact replay. The old query-loss denominator is about 48 times the RMS of its
+actual target in the all-agent channel and 18 times in the easy channel
+(medians across heads). I have registered a one-factor experiment that uses the
+actual selected-query target RMS instead. Architecture, sampling, loss weights,
+forecasts and allocation stay unchanged. The design was chosen from training
+telemetry and the scale diagnostic; its own training and policy readout are
+not run yet. It is a testable repair, not a promised improvement.
+[Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
+[One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Completed Strong-Bank Control
@@ -75,8 +79,8 @@ and [method note](outputs/publication_readiness_2026_09/european_shared_count_ba
 keep the positive neural increment and the failed risk requirement together.
 The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
 also checks why fewer switches need not improve the selected harm/reference ratio.
-The new registered comparison targets risk of the actual selected action set,
-with a matched row-local control. Training is in progress; evaluation is not run.
+The subsequent selected-query comparison is complete but negative; its exact
+replay is still running. The new query-unit repair is registered, not trained.
 
 ### Preceding Query-Allocation Study
 
