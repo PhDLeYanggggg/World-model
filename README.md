@@ -63,7 +63,9 @@ include an individually nonpositive-utility support action. Total predicted
 utility must remain positive and both original 2% positive-harm budgets stay
 unchanged. A matched-count control separates this from simply intervening more.
 Nineteen focused solver checks pass, including exhaustive small cases and exact
-resume; the real pilot and complete readout have not yet run.
+resume. The real 128-query pilot finishes in 20.74 seconds at 9.60 GB peak
+memory, with exact interrupted recovery and no outcome scoring. The full
+72-group readout is running; no policy gain is claimed from the pilot.
 [Controlled design](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/protocol.md).
 
 ### Completed Strong-Bank Control

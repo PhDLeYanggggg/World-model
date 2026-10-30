@@ -26,6 +26,13 @@ training or trajectory dynamics. Nineteen focused checks pass in1.56s,including
 60 random exhaustive cases,strict budgets,nesting,solver fallback and resume.
 Code/config/protocol/registration precede the real128-query recovery pilot and
 own outcomes. Both pilot and full policy readout are not_run at registration.
+Subsequently the real128-query pilot PID79636 exits0 in20.739956s at peakRSS
+9,604,530,176B over1,234 rows,with exact interrupted recovery and no outcome
+scoring. Direct allocation takes1.818570s;the one-source full projection is
+7332.476s,not measured full runtime. Full72-group inference/allocation starts
+with unchanged settings. Additional fixed-count/reducer checks pass11 in1.92s,
+including exhaustive nonzero-count cases and refusal of incomplete rosters;
+these are engineering checks,not empirical policy lift.
 
 ### Selected-Query Critic Negative; One-Factor Unit Repair Registered
 
