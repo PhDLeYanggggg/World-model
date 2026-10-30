@@ -7,6 +7,22 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Causal Position Anchor: Registered Before Own Outcomes
+
+Previous goal turn:progress,complete signed-utility controls/replay reject
+admissibility as a sufficient repair. The new controlled study holds OLS4/8
+velocity fixed and changes only raw-last versus causal-fitted current position.
+It retains all24 fitting context/source groups,149,510 unique target rows,
+74recordings,unknowns and original2% recording risk. Deterministic forecasts
+are not duplicated across critic seeds. No neural training or independent role.
+
+Initial registration preflight exposed a loader-registry key mismatch
+(`source_contexts` versus the ancestor's `contexts`) before registration or
+new real prediction/scoring. The entry point is corrected and a stub-loader
+regression check added. Raw-path/velocity,equivariance,linear-motion,synthetic
+noise,unknown-label and missing-roster checks are included. Real pilot and
+complete readout are not_run at registration;no new forecast benefit is claimed.
+
 ### Joint Utility Admissibility: Complete Negative Control
 
 The previous goal turn is progress:36 current-query fits and the full72-group
