@@ -1,0 +1,27 @@
+{
+  "experiment": "european_coupled_benefit_risk_v1",
+  "arms": ["protected_benefit", "released_benefit"],
+  "seeds": [17, 29, 43],
+  "training": {
+    "width": 64, "steps": 2000, "query_batch_size": 16,
+    "learning_rate": 0.001, "gradient_clip": 5.0,
+    "heartbeat_every": 50, "checkpoint_every": 100
+  },
+  "parameters_per_head": 30857,
+  "benefit_loss_weight": 0.5,
+  "row_risk_loss_weight": 0.5,
+  "selected_query_score_loss_weight": 0.5,
+  "query_normalization": "original_selected_query_fitting_target_RMS",
+  "risk_budget": 0.02,
+  "solver_seconds_per_query": 2.0,
+  "pilot_split_updates": 50,
+  "pilot_final_updates": 100,
+  "cpu_threads": 4, "num_workers": 0,
+  "disk_reserve_bytes": 10737418240,
+  "private_checkpoint_cap_bytes": 1073741824,
+  "hard_runtime_limit_seconds": 43200,
+  "bootstrap_resamples": 3000, "bootstrap_seed": 20261029,
+  "held_scored": false, "independent_roles_opened": false,
+  "deployment_changed": false, "submission_ready": false,
+  "stage5c_executed": false, "smc_enabled": false
+}

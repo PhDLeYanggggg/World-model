@@ -7,6 +7,26 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Coupled Benefit/Risk: Registered Before Own Training Outcomes
+
+Previous goal turn:progress;the full position-anchor comparison and both
+replays were negative. Existing462-field cost inputs already contain past
+trajectory,neighbor and detector history. The next matched hypothesis releases
+only the frozen-benefit constraint while references and2% risk remain fixed.
+The prior capacity diagnostic found6,805 cap violations over5,256,810 reused
+known legal action views;this is a limitation,not an identified dominant cause.
+
+Both neural arms have30,857 parameters,the same initial weights,original
+fitting draws/normalization and2,000 updates. The protected branch's benefit
+loss is constant and its risk updates reproduce the original corrected-unit
+selected-set model exactly in synthetic training. Plans:36 real fits/72,000
+updates,two complete2,000-update refits,full72-group scoring and separate replay.
+Ten focused checks pass in1.99s,including real synthetic Torch training,
+exact recovery,shared references,zero-capacity release and current-query
+matched-count allocation. Pilot and full real fitting/results are not_run.
+No new trajectory forecaster,independent role or deployment. Registration
+and scientific hashes are frozen before their own outcomes.
+
 ### Causal Position Anchor: Registered Before Own Outcomes
 
 Previous goal turn:progress,complete signed-utility controls/replay reject

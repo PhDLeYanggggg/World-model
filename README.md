@@ -58,6 +58,15 @@ and confirmation remain closed, as do Stage5C execution and SMC.
 [error geometry](outputs/publication_readiness_2026_09/european_position_anchor_v1/mechanism/readout.md)
 and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_position_anchor_v1/reproduction_zh.md).
 
+I have registered a matched neural cost-head follow-up before its own training
+outcomes. It tests whether freezing predicted benefit prevents harm estimates
+from using the available forecast-error envelope. The two heads share inputs,
+initial weights, parameter count and training draws; only one may adjust benefit.
+Reference predictions and the original 2% risk requirement remain fixed. Ten
+focused training/allocation checks pass. Real-data pilot, full fitting and policy
+results are not yet run, so there is no improvement or deployment claim.
+[Coupled benefit/risk design](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/protocol.md).
+
 ### Earlier Risk-Learning And Decoder Controls
 
 Changing risk supervision to the currently selected actions did not fix safety.
