@@ -9,14 +9,26 @@ or evidence status.
 
 ### Selected-Action Attribution
 
-I am checking the actions that the frozen cost heads actually admit, rather
-than relying on average regression error. The diagnosis separates underestimated
-harm, inflated reference error, their joint effect, and loss of selected easy
-support. It must reproduce all 216 prior prediction, action and full-metric
-results before any attribution is accepted. This is a fresh fitting-side
-diagnosis, not a new test result, risk certificate or policy change. The next
-training change will be chosen from these findings; no independent outcome is
-opened. See the [protocol](outputs/publication_readiness_2026_09/european_selected_action_attribution_v1/protocol.md).
+I replayed all 216 frozen prediction/action/full-metric groups and then repeated
+the complete inference separately, with exact agreement. The runs took 93.05s
+and 93.28s locally, using about 10.9GB. In the upper-score arm, 32,532 of 33,241
+easy false admissions are numerator-only witnesses: selected easy harm is
+19,341.88 observed versus 255.50 predicted. The all-channel reference is inflated
+even though aggregate harm is conservative. These label-informed arithmetic
+witnesses diagnose different failure mechanisms; they are not causal proof,
+usable oracle policies or independent tests. Counts are overlapping fitting
+views, not independent samples. All 149,510 query IDs and unknown outcomes remain
+unchanged. See the [readout](outputs/publication_readiness_2026_09/european_selected_action_attribution_v1/readout.md).
+
+I registered one targeted repair: recompute the model's current winning action
+during training and penalize optimistic risk scores on its supervised false
+admissions. This differs from fixed teacher-region weighting. Inputs, trajectory
+bank, model, sampler, normalization, decoder and 2% rule stay fixed. The planned
+54 real heads include 36 exact original/upper controls, three seeds, all six
+contexts and 2,000 updates per head. Fifteen focused checks pass in 2.92s,
+including gradients, unknown support and exact interrupted recovery. The real
+pilot and full experiment are next; no new effectiveness result is claimed.
+See the [repair protocol](outputs/publication_readiness_2026_09/european_admission_cost_v1/protocol.md).
 
 ### Original-Budget Score Learning Registered
 
