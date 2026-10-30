@@ -32,6 +32,13 @@ policy readout remain not_run at this registration. No new outcome roles,
 thresholds,deployment,Stage5C,SMC or submission-readiness promotion.
 See the [fixed experiment](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/protocol.md).
 
+The three frozen seed43proposal caches complete PID69176 exit0 in149.427837s,
+peak RSS2,203,140,096B. All three disabled predictions match their original
+full-ID banks exactly. New caches contain637,938producer-excluded row views,
+not that many independent queries. Only past inputs are read; no future target
+or controller-held outcome is scored. Cache receipts freeze before the real
+full-first-context pilot. No cost head has trained or new policy scored yet.
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's
