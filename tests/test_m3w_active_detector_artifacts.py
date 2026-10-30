@@ -63,3 +63,29 @@ def test_active_report_retains_first_exact_replay_runtime_but_not_scientific_dri
     assert report.freeze_evidence(later) == first
     with pytest.raises(ValueError):
         report.freeze_evidence(dict(later, summary_sha256='changed'))
+
+
+def test_active_figure_smoke_uses_all36_actual_trace_slots_and_keeps_bounds_distinct(tmp_path, monkeypatch):
+    pytest.importorskip('matplotlib')
+    public, private = tmp_path / 'public', tmp_path / 'private'
+    public.mkdir()
+    private.mkdir()
+    monkeypatch.setattr(report.run, 'PUBLIC', public)
+    monkeypatch.setattr(report.run, 'PRIVATE', private)
+    point = dict(point=3., CI95=[1., 5.])
+    lower = dict(point=-3., CI95=[-6., -1.])
+    summary = dict(representations={a: dict(all=dict(ADE=point)) for a in report.run.api.REPRESENTATIONS},
+                   history_contrasts=dict(all={a: dict(known_pp=point, lower_pp=lower)
+                                              for a in ('disabled', 'current', 'noise')}))
+    path = public / 'summary.json'
+    path.write_text(json.dumps(summary))
+    (public / 'verification.json').write_text(json.dumps(dict(all36groups_exact=True,
+                                                             summary_sha256=report.run.sha(path))))
+    traces = [dict(representation=arm, losses=[dict(step=step, loss=loss)
+                    for step, loss in ((1, 2.), (50, 1.), (4000, .7))])
+              for arm in report.run.api.REPRESENTATIONS for _ in range(9)]
+    (public / 'training_traces.json').write_text(json.dumps(dict(rows=traces)))
+    report.figures()
+    svg = (public / 'figures' / 'summary.svg').read_text()
+    assert 'Completion lower bound' in svg and 'Known labels' in svg
+    assert (private / 'summary.png').stat().st_size > 1000

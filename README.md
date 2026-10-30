@@ -47,6 +47,15 @@ models, and the first full history refit is exact. I am freezing every endpoint
 before the fixed forecast readout; no accuracy or deployment gain is claimed
 at this training checkpoint.
 
+The first fixed active-backbone readout is now complete. History gains 10.486%
+known-label ADE over the fitting-selected causal reference; the disabled parent
+gains 9.326%. The increment is +1.160pp, CI [-0.355,+2.540], so a stable added
+input effect is **not established on the actual active model**. Raw easy-case
+accuracy degrades 12.222% relative to that reference, and missing-outcome lower
+bounds remain negative. All nine fresh parent controls match exactly. I am
+retaining this negative result; the proposal gate fails, deployment is unchanged,
+and a separate complete inference replay is next.
+
 **30 October: the new input is now reaching the trajectory model itself.**
 I extended the verified detector-history store to all **318,969 producer rows
 across 163 SOURCE recordings**, rather than treating the smaller routing cache

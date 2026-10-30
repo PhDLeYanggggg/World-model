@@ -59,6 +59,20 @@ The fixed readout registration now binds all36frozen endpoints,the original
 primary; all6paired physical comparisons are fixed before scores. No new
 controller-held or independent result is admitted. Registration is not readout.
 
+The first complete36group readout finishes PID63955 exit0 in556.340011s,
+peak RSS2,775,433,216B. Known ADE gains are disabled9.325561%,current8.434376%,
+noise9.003217%,history10.485965%. History-minus-disabled is+1.160404pp,
+CI[-0.355089,+2.540277]; history-minus-noise also crosses zero. The actual
+active-parent input effect is not established,even though the preceding flat
+backbone experiment had a positive known-label contrast. History's raw known
+easy gain is-12.222201%; this is not an evaluated safe routing policy. The
+completion-lower contrast is-18.258091pp,CI[-45.071627,-2.865096],a conservative
+unknown-outcome bound,not observed deterioration. All9fresh parent controls
+are exact. The fixed proposal-input gate fails3/8; complete-roster FDE remains
+not_estimable. All36initial aggregate groups are frozen in a byte-verified
+2,019,037B archive,not a fresh scientific recalculation. Separate full inference
+replay is next; no deployment,independent-role or submission promotion.
+
 ### Raw Future-Label Provenance Audit Registered
 
 The previous goal turn is progress: 72 real producers and complete exact
