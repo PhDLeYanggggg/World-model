@@ -29,6 +29,16 @@ Engineering work totals900updates. Measured primary-optimization projection
 is5,283.31s,excluding preparation,full refit and readout. Full72model local
 training proceeds under the original4,000step/model budget; no slowness downgrade.
 
+Full producer training is live as native arm64 PID47833,CPU4/workers0. The
+first two complete disabled4,000step endpoints match the original weights,
+AdamW,draws/RNG and loss traces. The first complete history model also has
+an exact4,000step independent refit. All models remain scheduled; no neural
+forecast score or independent outcome has been read. The fixed readout code
+retains all72models,limits labels to producer-excluded old fitting IDs,and
+keeps proposal accuracy separate from learned-policy safety. Related primary
+reading confirms detector-history/observation-noise modeling is not by itself
+a novel contribution. See the [reading scope](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/literature_position.md).
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across
