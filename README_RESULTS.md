@@ -32,7 +32,13 @@ scoring. Direct allocation takes1.818570s;the one-source full projection is
 7332.476s,not measured full runtime. Full72-group inference/allocation starts
 with unchanged settings. Additional fixed-count/reducer checks pass11 in1.92s,
 including exhaustive nonzero-count cases and refusal of incomplete rosters;
-these are engineering checks,not empirical policy lift.
+these are engineering checks,not empirical policy lift. The extended four-file
+solver/reducer suite passes24 checks in1.97s,including a same-count support-
+donor example that respects conditional moment bounds. The report template
+has a separate synthetic check;the real-complete artifact check waits for
+full readout AND replay. Registered solver/runner/settings remain unchanged.
+The method note and primary-source compatibility review distinguish ordinary
+joint optimization from decision calibration;no prior theorem is claimed here.
 
 ### Selected-Query Critic Negative; One-Factor Unit Repair Registered
 

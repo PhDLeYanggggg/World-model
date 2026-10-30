@@ -37,6 +37,19 @@ def test_nonzero_matched_count_matches_exhaustive_restricted_optima():
         assert run.api.base.terms(p, choice)[0] == pytest.approx(max(scores), abs=1e-10)
 
 
+def test_support_donor_can_help_at_the_same_nonzero_intervention_count():
+    p = np.zeros((4, 7, 5)); ok = np.zeros((4, 7), bool); ok[:, 0] = True
+    p[0, 0] = [10., .04, 20., .1, .04]; p[1, 0] = [0., .01, 4., 3., 0.]
+    p[2:, 0] = [1., 0., 2., 1., 0.]
+    anchor = np.array([-1, -1, 0, 0])
+    assert run.api.base.feasible(p, ok, anchor)
+    old, _ = run.api.base.solve_frame(p, ok, anchor, exact_count=2, seconds=2.)
+    new, info = run.api.solve(p, ok, anchor, exact_count=2, seconds=2.)
+    assert info['optimal'] and int((new >= 0).sum()) == int((old >= 0).sum()) == 2
+    assert run.api.base.terms(p, old)[0] == 2.
+    assert run.api.base.terms(p, new)[0] == pytest.approx(9.95)
+
+
 def synthetic(monkeypatch):
     contexts = {f'c{i}': [f's{4*(i%3)+j}' for j in range(4)] for i in range(6)}
     class Registration:
