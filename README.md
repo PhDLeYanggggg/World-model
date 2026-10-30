@@ -33,6 +33,12 @@ planned across six contexts and three seeds, with the original predictor seed
 are rebuilt together; this is not a threshold search on the last readout.
 [Matched-bank protocol](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/protocol.md).
 
+All 54 cost heads now finish their full 2,000 updates in 4.7 minutes, with
+11.0 GB peak memory. The 36 old-bank controls reproduce their complete old
+training states, and the first new-bank head has an exact full refit. Every
+endpoint is frozen before policy scoring. This checks the controlled training
+comparison; it is not yet evidence that the new policy improves utility or risk.
+
 I traced every requested future label on the same 149,510 allowed SOURCE
 queries back to the original export. All masks and known coordinates agree,
 and a second raw reparse matches exactly. Of 279,192 missing future points,

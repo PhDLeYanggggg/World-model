@@ -139,6 +139,16 @@ def group_readout(packets, choices, ranks, predictions, easy_cut):
         for label, a, b in (('new_minus_old', 'old_neural', 'new_neural'),
                             ('new_minus_physical', 'physical_only', 'new_neural'),
                             ('old_minus_physical', 'physical_only', 'old_neural'))}
+    restricted, restricted_rank = cost.select_actions(predictions['new_neural'], packets['new_neural']['allowed'], arm='physical_only')
+    non_neural = choices['new_neural'] != 6
+    np.testing.assert_array_equal(restricted[non_neural], choices['new_neural'][non_neural])
+    usage = dict(restricted_physical_policy=policy_metrics(packets['new_neural'], restricted),
+        main_minus_restricted=pair(packets['new_neural'], restricted, restricted_rank,
+            packets['new_neural'], choices['new_neural'], ranks['new_neural']),
+        neural_selected=int((choices['new_neural'] == 6).sum()),
+        known_neural_selected=int((known & (choices['new_neural'] == 6)).sum()),
+        unknown_neural_selected=int((~known & (choices['new_neural'] == 6)).sum()),
+        same_frozen_new_head_no_refit=True, not_a_fourth_training_variant=True)
     return dict(rows=len(known), known_rows=int(known.sum()), unknown_rows=int((~known).sum()),
         full_known_reference_mass=float(original['floor_ade'][known].sum()), policies=policies,
         recordings=records, comparisons=comparisons, subsets=subset_rows,
@@ -146,7 +156,7 @@ def group_readout(packets, choices, ranks, predictions, easy_cut):
         bank_local_regret_in_policy_metrics_not_cross_bank_comparable=True,
         shared_union_oracle_diagnostic_not_available_action_bank=True,
         recording_tails=tails, validity_proxies=proxies, bank_opportunity_diagnostic=oracles,
-        inference_label_filter=False, scene_joint_decisions_trained=False)
+        neural_usage_diagnostic=usage, inference_label_filter=False, scene_joint_decisions_trained=False)
 
 
 def summarize(rows, contexts, cfg, training):
@@ -189,6 +199,11 @@ def summarize(rows, contexts, cfg, training):
         comparisons=comparisons, subsets=pooled_subsets(rows), bank_opportunity_diagnostic=oracles,
         shared_union_oracle_regret={v: legacy.interval(rows,
             lambda r, v=v: r['shared_union_oracle_regret_over_cost_scale'][v], cfg) for v in VARIANTS},
+        new_head_neural_usage_increment={mode + '_' + bound: legacy.interval(rows,
+            lambda r, mode=mode, bound=bound: r['neural_usage_diagnostic']['main_minus_restricted'][mode][bound], cfg)
+            for mode in ('full', 'matched') for bound in ('known_pp', 'lower_pp', 'upper_pp')},
+        new_head_neural_usage_counts={key: sum(r['result']['neural_usage_diagnostic'][key] for r in rows)
+            for key in ('neural_selected', 'known_neural_selected', 'unknown_neural_selected')},
         matched_empty_groups={label: sum(r['result']['comparisons'][label]['matched_empty'] for r in rows) for label in comparisons},
         fitting_gates=gates, fitting_advancement_gate=all(gates.values()),
         scope='original_SOURCE_controller_fitting_resubstitution', independent_confirmation=False,

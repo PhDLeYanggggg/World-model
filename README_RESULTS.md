@@ -49,6 +49,16 @@ Ten focused replacement/cohort/recovery/cross-bank/readout tests pass in2.46s;
 the cross-bank fixture catches stale action6costs and retains undefined empty
 count matches. All54full fits are next,not replaced by the pilot.
 
+All54cost heads now finish PID71099 exit0 in282.964357s,peak RSS11,008,163,840B,
+with108,000primary updates,2,000extra full-refit updates and160pilot updates.
+All36old scientific endpoints match; the first full new-bank head refit is
+exact. Checkpoint hashes and all2,000step receipts verify; private weights
+total23,058,125B. Eleven focused model/cohort/readout/lazy-inference tests pass
+in2.64s. All54endpoints freeze before policy scores. The readout also keeps a
+same-new-head physical-only restriction to separate actual neural use from
+shared-head improvements in physical choices. Utility/risk effects remain
+not_run at this freeze; no deployment or independent roles open.
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's
