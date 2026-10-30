@@ -22,6 +22,14 @@ The real extension pilot parses previously uncached record1,PID46770,exit0,
 midpoints and width align exactly. This is new input conversion,not new
 trajectory performance. The complete163record extension is next.
 
+The full extension now completes PID46919,exit0,in45.337349s,peak RSS
+1,725,988,864B:88new raw records,74verified old blocks,and one pilot checkpoint.
+Separate PID47116 reparses all163records in78.277357s,peak RSS2,616,459,264B.
+All318,969past-input rows,489real prefix checks and149,510old overlapping
+rows agree exactly. Final arrays111,001,980B stay local. This repairs
+producer input coverage,not neural accuracy or the failed safety gate.
+See the [complete input result](outputs/publication_readiness_2026_09/european_producer_detector_store_v1/readout.md).
+
 ### Original Detector Histories: New Input Alignment Registered
 
 The current cost and fine-neighbor controls remain negative. The next input
