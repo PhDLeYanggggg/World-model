@@ -45,6 +45,15 @@ read here. Readout keeps all6physical baselines and paired missing-outcome
 bounds,including undefined required localities. The active model family,not
 the earlier flat input model,is the subject of this registered repair.
 
+All36actual-active producers now finish normally:PID61609 exit0,
+1,825.845342s,peak RSS2,203,729,920B. Actual work is144,000primary updates,
+4,000additional full-refit updates and900pilot updates. All9complete disabled
+states match their actual parents; the first complete history refit is exact.
+All36endpoint receipts and the roster are frozen before forecast scoring.
+Expanded input/model/recovery/readout/artifact/bundle checks pass16tests in
+2.57s. Forecast effectiveness,learned-policy safety and independent evaluation
+remain not_run at this freeze. No deployment or submission-readiness change.
+
 ### Raw Future-Label Provenance Audit Registered
 
 The previous goal turn is progress: 72 real producers and complete exact

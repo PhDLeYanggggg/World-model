@@ -40,6 +40,13 @@ the matched detector-input test on all nine actual parent designs, preserving
 their masks, units and training schedule. No new trajectory result is claimed
 at this registration. [Active-producer protocol](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/protocol.md).
 
+The matched active-backbone run now completes all **36 models**, with
+**144,000 primary updates**, in 30.4 minutes on the native arm64 CPU runtime
+(2.20 GB peak memory). All nine disabled controls reproduce the real parent
+models, and the first full history refit is exact. I am freezing every endpoint
+before the fixed forecast readout; no accuracy or deployment gain is claimed
+at this training checkpoint.
+
 **30 October: the new input is now reaching the trajectory model itself.**
 I extended the verified detector-history store to all **318,969 producer rows
 across 163 SOURCE recordings**, rather than treating the smaller routing cache
