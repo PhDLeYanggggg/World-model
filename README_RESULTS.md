@@ -37,6 +37,14 @@ and 2% risk contract. Gradient balancing is established prior work; this is a
 targeted optimization repair, not a new main-method novelty claim. No reserved
 outcome or deployment opens.
 
+The balancing mechanism passes a real 100+100/direct200 recovery pilot with
+400 actual updates in 15.66s at 9.75GB peak RSS. It activates on 12/200 steps
+and hits its numerical scale cap on seven, which is retained in the telemetry;
+target norm parity is not asserted on capped or zero-gradient steps. The
+measured primary optimization projection is 173.58s excluding preparation,
+refit and readout. Full 18-head training has started with all 2,000 updates
+per head and no policy score read before the complete freeze.
+
 ### Selected-Action Attribution and Online Admission Repair
 
 I replayed all 216 frozen prediction/action/full-metric groups and then repeated
