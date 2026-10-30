@@ -1,0 +1,23 @@
+{
+  "name": "european_active_detector_forecaster_v1",
+  "representations": ["disabled", "current", "noise", "history"],
+  "seeds": [17, 29, 43],
+  "parent_models": 9,
+  "new_models": 36,
+  "training": {"steps": 4000, "batch_size": 64, "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01, "weight_decay": 0.0001, "gradient_clip": 5.0,
+    "checkpoint_every": 200, "heartbeat_every": 50},
+  "architecture": {"width": 64, "heads": 4, "layers": 2},
+  "pilot_steps": 100,
+  "pilot_resume_at": 50,
+  "disk_reserve_bytes": 10737418240,
+  "checkpoint_cap_bytes": 1073741824,
+  "hard_runtime_limit_seconds": 43200,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 20261030,
+  "held_controller_outcomes_opened": false,
+  "independent_roles_opened": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

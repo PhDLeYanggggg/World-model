@@ -33,6 +33,13 @@ last detection frame. This is missing supplied observation support, not an
 import omission or proof of physical exit. I have not interpolated new labels
 or changed the horizon. [Raw-label audit](outputs/publication_readiness_2026_09/european_source_label_provenance_v1/readout.md).
 
+The integration check also separates two producer families. The 72-model input
+study below used the original flat SOURCE backbone; the current routing bank
+uses the later grouped, partial-neighbor, dimensionless model. I have registered
+the matched detector-input test on all nine actual parent designs, preserving
+their masks, units and training schedule. No new trajectory result is claimed
+at this registration. [Active-producer protocol](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/protocol.md).
+
 **30 October: the new input is now reaching the trajectory model itself.**
 I extended the verified detector-history store to all **318,969 producer rows
 across 163 SOURCE recordings**, rather than treating the smaller routing cache

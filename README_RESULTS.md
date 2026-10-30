@@ -7,6 +7,26 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Actual Active-Producer Input Repair Registered
+
+Source-code and local-asset reconciliation confirms the current cost bank's
+ADE-only neural candidate is the later dimensionless grouped/partial-neighbor
+producer,not the flat complete-neighbor source backbone in the preceding72model
+input study. Both studies retain their own meaning; they are not one architecture
+or a single-factor old/new downstream comparison. Fresh inventory verifies all9
+actual parent checkpoints (66,894,559B) and318,969rows without forecast scoring.
+
+The new registered experiment keeps every actual parent fold/seed,mask,geometry,
+output fraction and4,000step budget,adding only512zero-initialized detector
+embedding parameters. All9parents times4input arms gives36real producers and
+144,000planned primary updates; this is the full active family,not a shortened
+72model matrix. All9disabled endpoints must reproduce their actual parents.
+Six targeted model/mask/recovery/cohort checks pass in1.54s. The first draft's
+resume-test stub omitted its representation roster; registration_v2 retains
+that draft and corrects the fixture before real training. No arithmetic,role,
+row or scoring rule changes. Real pilot/training/readout are not_run here.
+See the [matched protocol](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/protocol.md).
+
 ### Raw Future-Label Provenance Audit Registered
 
 The previous goal turn is progress: 72 real producers and complete exact
