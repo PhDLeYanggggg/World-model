@@ -139,6 +139,17 @@ changes126,725 retained actions,and has6,471 selected-unknown queries. This
 supports testing current-versus-fixed query supervision,not declaring it solved.
 The192,338B score-audit bundle contains only aggregated accounting.
 
+`european_current_policy_critic_v1` is registered before own fits/outcomes.
+It holds the corrected RMS,all-action loss,0.5/0.5 weights,architecture,source
+draws and decoder fixed,changing only query supervision to the current decoded
+minibatch action set with detached choices. Original selected-set context stays
+fixed;this is not a circular inference model or an exact policy-gradient/SPO
+algorithm. Any incomplete training solver status refuses rather than silently
+changing targets. Planned36 new2,000-step fits plus two full refits,paired with
+36 cached fixed-query controls. Five targeted checks pass2.15s,including real
+synthetic Torch recovery and exact fixed-target control reproduction. Real
+pilot/training/current-query policy outcomes are not run yet. No deployment.
+
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it
 recomputes a creation-time boolean. The old registration/code/results are not

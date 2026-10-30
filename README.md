@@ -67,6 +67,10 @@ harm. Their selected population changes substantially, and missing outcomes
 remain a limitation. This motivates testing selection-target mismatch; it does
 not identify a unique cause or change the policy.
 [Score accounting](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/readout.md).
+The next matched experiment is registered before fitting: replace only the
+frozen training selection with the current decoder's detached selection in
+the query loss. This is offline risk learning, not online deployment or new
+trajectory dynamics. [Current-query design](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/protocol.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
