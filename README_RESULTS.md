@@ -48,7 +48,25 @@ negative result but BEFORE its own values. It checks squared-error change
 labels,plus past-geometry alignment. Three arithmetic/unknown-support checks
 pass in0.69s. A synthetic constant-acceleration example demonstrates possible
 linear-fit lag;it is not an identified real measurement-noise/process cause.
-The new diagnosis has not yet run and does not replace the ADE primary.
+The complete diagnosis PID91253 exits0 in23.248551s at peakRSS6,054,871,040B.
+Its separate replay PID91873 exits0 in22.637795s at peakRSS6,062,292,992B.
+All24 frozen parent results/history controls and24 diagnosis groups are exact.
+ForOLS8 the locality-macro normalized squared-error increase1.423356139
+decomposes into cross1.204155622+squared-shift0.219200516;forOLS4,
+0.140734633=0.132167880+0.008566753. Cross-term and direct-error means are
+positive in all12 sources. Among292,694 observed-label
+row/context views,error increases in197,075(OLS8)/172,796(OLS4);6,326
+wholly unknown row views remain unobserved,not zero. Those are repeated views,
+not unique rows. Error geometry supports reinforcement,not identified noise,
+physical acceleration,turning or detector failure. It does not replace ADE.
+
+Readout/figure,592 record-tail rows,24 pair-proxy rows,model/data card,paper
+results component,statistical review,failure analysis,next steps and Chinese
+reproduction guide are complete. The final figure is visually checked.
+The16-file focused suite passes71 checks in6.30s,including complete real
+artifacts and public aggregate hash checks;the full repository suite was not
+rerun. Scientific code/config/protocol and primary remain frozen. No new
+training,independent evidence or deployment. [Complete result](outputs/publication_readiness_2026_09/european_position_anchor_v1/readout.md).
 
 ### Joint Utility Admissibility: Complete Negative Control
 

@@ -25,72 +25,55 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I tested whether a risk head should learn from the actions it currently selects,
-rather than a fixed original selection. The forecasts, features, model size,
-loss units, sampling and decision rule stay unchanged. All 36 new Torch fits
-finish 72,000 updates plus two complete refits in 31.29 minutes at 10.80 GB peak
-memory. A full readout and separate 10.39-minute replay agree on all 72 groups
-and 144 fixed-policy controls. This is reproducible source fitting, not an
-independent test or a new trajectory model.
+I tested a simple state-estimation hypothesis before changing the neural model
+again: would a fitted current position help when the velocity estimate stays
+the same? The control compares the last observed position with a past-only
+OLS4/OLS8 fitted position, keeping all original rows, masks and risk rules.
+The full 24-group comparison and a separate complete replay agree exactly on
+all row controls and 48 original raw-path/cost controls.
 
-The result is negative. For the selected-set head, known-label ADE gain over
-the floor falls from 8.215% to 6.783%. The prespecified paired completion-lower
-increment is -7.087 percentage points [-13.238, -2.904]. Only 11/444 recording-
-risk views are supported, with 313 known easy-risk violations. Reducing
-interventions from 410,575 to 137,815 does not establish safety. I do not deploy
-this model or change the original 2% risk requirement.
+The result is negative. With OLS8, fitting the starting position changes known
+utility by **-19.35 percentage points**; the primary completion-lower difference
+is **-21.08 pp [-41.40, -10.05]**. OLS4 also worsens. Both contrasts are negative
+in every one of the 12 exposed source localities, and all four direct candidates
+fail the original recording-risk requirement: **0/148 views supported**.
+I retain the original forecasts and deployment. This control trains no new
+neural weights and does not identify a bug in raw-position anchoring.
 
-The preceding unit correction did improve known-label utility from 6.575% to
-8.215%, but also failed robust utility and complete-recording risk. The new
-experiment shows that changing the training selection alone does not close
-that gap. The common fixed-set probe and all-action risk error both worsen;
-the moving masked loss is not treated as error on the same population.
+A separately registered post-hoc error decomposition helps explain the
+direction: the fitted position shift reinforces existing observed prediction
+error on average in all 12 sources. For OLS8, the normalized squared-error
+increase is 1.423, comprising a 1.204 cross term and a 0.219 squared shift.
+That is error geometry, not proof that measurement noise or turning is the
+cause. The diagnostic also has an exact full replay.
 
-[Complete result](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/readout.md),
-[training curves](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/training_report.md),
-[failure analysis](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/failure_analysis.md)
-and [reproduction guide](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/reproduction.md).
-The [earlier unit repair](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/readout.md)
-and [score audit](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/readout.md)
-remain available with their own controls and limitations. Seventy-one focused
-checks pass; the full repository suite was not rerun. All current intervals
-use 12 already-exposed localities, not independent new scenes. Independent
-calibration and confirmation remain closed.
+The study retains 149,510 unique target rows and 74 recordings. Nominal intervals
+use 3,000 locality resamples of exposed fitting data, not independent new scenes.
+Unavailable endpoints remain missing rather than zero FDE. Seventy-one focused
+checks pass; the full repository suite was not rerun. Independent calibration
+and confirmation remain closed, as do Stage5C execution and SMC.
 
-I have registered a decoder-only follow-up before its own outcomes. It keeps
-the corrected-unit critic and forecasts fixed, but allows a joint solution to
-include an individually nonpositive-utility support action. Total predicted
-utility must remain positive and both original 2% positive-harm budgets stay
-unchanged. A matched-count control separates this from simply intervening more.
-Nineteen focused solver checks pass, including exhaustive small cases and exact
-resume. The real 128-query pilot finishes in 20.74 seconds at 9.60 GB peak
-memory, with exact interrupted recovery and no outcome scoring. The full
-72-group readout now finishes in 26.08 minutes. Matched known utility improves
-by only 0.0105 pp; the primary completion-lower effect is -0.0072 pp with an
-interval crossing zero, and original recording risk still fails. Both label-side
-oracles support all 148 record/context views with identical optimal utility:
-the positive-action filter is not a demonstrated structural bottleneck here.
-A separate 26.05-minute complete replay agrees on all 72 groups, 72 original
-policy controls and 148 record/context oracle controls. Eighty-nine focused
-checks pass; this policy is not deployed and no new neural model was trained.
-[Controlled design](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/protocol.md).
-[Complete result and figure](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/readout.md).
+[Complete result and figure](outputs/publication_readiness_2026_09/european_position_anchor_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_position_anchor_v1/failure_analysis.md),
+[error geometry](outputs/publication_readiness_2026_09/european_position_anchor_v1/mechanism/readout.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_position_anchor_v1/reproduction_zh.md).
 
-The next registered control changes position estimation rather than the
-decoder. With the same OLS4/OLS8 velocity, I compare the raw last observation
-with a fitted current position from past observations only. All original rows,
-masks and risk requirements stay fixed. Ten synthetic/interface checks pass.
-The real 1,024-row pilot finishes in 4.26 seconds at 5.01 GB peak memory,with
-exact raw controls and saved-chunk reconstruction,without own outcome scoring.
-The full 24-group comparison and separate replay now finish in 21.53 and
-20.76 seconds, with all row controls and 48 raw-path/cost controls exact.
-The fitted OLS8 position is worse: known utility changes -19.35 pp and the
-completion-lower difference is -21.08 pp [-41.40, -10.05]. OLS4 also worsens.
-The original recording-risk requirement fails for every candidate. I keep the
-existing forecasts; this is not a stronger baseline or neural training success.
-An explicitly post-hoc error-geometry diagnostic is registered next, before
-its own values, to examine the failure without changing the parent experiment.
-[Position-anchor protocol](outputs/publication_readiness_2026_09/european_position_anchor_v1/protocol.md).
+### Earlier Risk-Learning And Decoder Controls
+
+Changing risk supervision to the currently selected actions did not fix safety.
+All 36 Torch fits completed, but selected-set known utility fell from 8.215%
+to 6.783%, with a completion-lower increment of -7.087 pp [-13.238, -2.904].
+Only 11/444 recording-risk views were supported. The preceding unit correction
+improved known utility, but still failed robust utility and original risk.
+[Training and full result](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/readout.md).
+
+Allowing individually nonpositive support actions in joint allocation also
+failed to close the gap. The matched-count known gain was only +0.0105 pp;
+the primary completion-lower contrast crossed zero. Both label-side oracles
+had identical optimal utility in all 148 recording/context views, so the
+positive-action filter was not a demonstrated structural bottleneck here.
+Both full 72-group runs agreed exactly. I did not deploy either repair.
+[Decoder control](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/readout.md).
 
 ### Completed Strong-Bank Control
 
