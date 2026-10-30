@@ -39,6 +39,17 @@ training states, and the first new-bank head has an exact full refit. Every
 endpoint is frozen before policy scoring. This checks the controlled training
 comparison; it is not yet evidence that the new policy improves utility or risk.
 
+The complete 72-group readout now answers that comparison. Known-label ADE
+gain is 1.893% with the new neural bank, versus 1.969% with the old bank and
+1.946% with physical actions only. New-minus-old is -0.075pp, CI
+[-0.171,+0.012], so replacing the candidate has not improved the policy.
+Only 37/444 required recording-risk views pass. Disabling just the neural
+action in the same new head removes a small known-label benefit (+0.166pp,
+CI [+0.055,+0.334]), but its missing-outcome lower CI crosses zero. I keep
+these findings separate: actual neural use can help on known labels without
+making the complete learned policy better or safe. All results are frozen
+before a separate full inference replay; no deployment is promoted.
+
 I traced every requested future label on the same 149,510 allowed SOURCE
 queries back to the original export. All masks and known coordinates agree,
 and a second raw reparse matches exactly. Of 279,192 missing future points,

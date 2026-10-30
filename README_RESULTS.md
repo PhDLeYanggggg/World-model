@@ -65,6 +65,25 @@ old,with full and same-count utility kept distinct from full-policy safety.
 Empty count matches are explicitly not_estimable. No score is read at this
 registration; all independent and controller-held outcomes remain closed.
 
+All72initial readouts finish PID73164 exit0 in126.493666s,peak RSS11,065,573,376B.
+Known-label ADE gains are physical1.946059%,old1.968657%,new1.893446%.
+New-minus-old is-0.075211pp,CI[-0.171084,+0.012147]; its completion-lower
+contrast is-0.681429pp,CI[-1.441316,-0.218155]. New-minus-physical known
+contrast also crosses zero. The new policy supports37/444required recording
+risk views,with313known easy-risk violations. All36legacy endpoint controls
+and all72legacy predictions/actions/recording scores reproduce exactly.
+
+The same-new-head physical-restriction diagnostic finds a real known-label
+neural-use increment+0.165906pp,CI[+0.054680,+0.334448],but its completion-lower
+CI[-0.005768,+0.302693]crosses zero. There are88,379neural-selected repeated
+row views,including940wholly unknown; these are not independent samples.
+All148seed-deduplicated context/record bank-opportunity views are future-label
+oracle-feasible,not learned safe policies. Empty same-count controls remain
+not_estimable,six groups per comparison; complete-roster FDE is undefined.
+Only2/7fixed fitting-progress gates pass. Initial results and aggregate bytes
+freeze before separate complete replay. Four new artifact-support/evidence
+checks pass in1.62s. No independent role or deployment opens.
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's
