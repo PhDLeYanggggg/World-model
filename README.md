@@ -25,6 +25,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am testing whether directly supervising the two deployed budget scores can
+fix the remaining cost-to-decision mismatch. The comparison keeps the full
+five-moment cost loss and adds either a symmetric score penalty or a penalty
+that weighs risk underprediction more heavily. All inputs, forecast banks,
+seeds and the 2% recording-risk rule stay fixed. The registered matrix has
+162 full fits, including 54 exact original controls. This is a learning
+experiment, not a new safety guarantee or a change to the evaluation rules.
+[Budget-score protocol](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/protocol.md).
+
 I have registered the next matched bank experiment: keep the same gain/harm
 learner, fitting recordings, sampler and risk rule, and change only the frozen
 neural candidate. The six physical actions remain unchanged. All 54 fits are

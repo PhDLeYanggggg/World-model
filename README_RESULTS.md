@@ -7,6 +7,25 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Original-Budget Score Learning Registered
+
+The previous goal turn is progress:54real matched-bank heads,72readouts and
+separate full exact replay complete;candidate-only replacement fails the
+utility and recording-risk gates. This next experiment retains all five
+continuous moments and adds supervised signed2%budget-score residuals.
+Original,symmetric_score and upper_score objectives isolate coupling from
+directional conservatism,without a new bank,input,decoder or tolerance.
+Prior shared-reference,signed-score-only and fixed-region experiments are
+not repeated or renamed. Known labels remain loss/eval-only.
+
+The full matrix is6contexts times3seeds times3banks times3objectives:
+162real fits,324,000primary updates,all2,000steps per head,54exact original
+controls,one2,000step full refit and420planned real pilot updates. Eleven
+targeted objective/gradient/recovery/sampler/completed-receipt checks pass
+in2.89s. No pilot,full training,new policy score,independent outcome or
+deployment has run at registration. Local pilot determines actual costs.
+See the[fixed protocol](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/protocol.md).
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers
