@@ -21,6 +21,14 @@ Actual SOURCE training/readout remain not_run at registration. Readout remains
 limited to the old controller-fitting IDs outside each producer's fitting
 localities. See the [producer protocol](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/protocol.md).
 
+The real full-source-context pilot finishes PID47676,exit0,in17.618869s,
+peak RSS1,235,779,584B. All four50+50/direct100training recoveries and the
+disabled legacy comparison are exact; active detector branches receive actual
+gradients. Each model has89,026parameters and no held rows are sampled.
+Engineering work totals900updates. Measured primary-optimization projection
+is5,283.31s,excluding preparation,full refit and readout. Full72model local
+training proceeds under the original4,000step/model budget; no slowness downgrade.
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across
