@@ -26,6 +26,15 @@ in2.89s. No pilot,full training,new policy score,independent outcome or
 deployment has run at registration. Local pilot determines actual costs.
 See the[fixed protocol](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/protocol.md).
 
+The real nine-cell pilot completes PID77422 exit0 in14.972669s,peak RSS
+9,777,119,232B. All9ten-plus-ten/direct20recoveries and all3original
+controls are exact,with420actual optimizer updates. Every arm draws48
+unknown rows and applies zero observed-cost loss to them. Each head remains
+30,405parameters. The measured primary-optimization projection is808.28s,
+excluding packet preparation,full refit and readout. Full162fit training
+proceeds locally under the original2,000step/head budget;no policy score
+or independent outcome is read in the pilot.
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers
