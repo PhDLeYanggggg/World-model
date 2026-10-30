@@ -30,8 +30,13 @@ sized heads will correct harm estimates for the same seven forecasts: one sees
 local candidate features, the other also sees the original joint policy's
 selected-action context. Both keep the original benefit and reference estimates
 fixed, learn from the same permitted source queries, and use the same allocator.
-Twelve focused tests pass. The design is registered before the real pilot; no
-new fitting outcome or safe policy is claimed yet.
+The design is registered before fitting. The real pilot completes400 Torch
+updates with exact recovery in20.33s at7.69GB peak memory; both arms have
+identical initialization and training draws. Full36-head training is now
+running as PID41637. Seventy-seven focused checks pass. The pilot's query-loss
+gradients are small relative to its all-action term; this is recorded, not
+silently repaired by changing the registered objective. No policy outcome or
+safe deployment is claimed yet.
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Completed Strong-Bank Control
@@ -62,7 +67,7 @@ keep the positive neural increment and the failed risk requirement together.
 The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
 also checks why fewer switches need not improve the selected harm/reference ratio.
 The new registered comparison targets risk of the actual selected action set,
-with a matched row-local control. It is not yet trained or evaluated.
+with a matched row-local control. Training is in progress; evaluation is not run.
 
 ### Preceding Query-Allocation Study
 

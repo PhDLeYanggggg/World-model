@@ -22,7 +22,16 @@ Both share a fitting-only risk RMS and a0.5 all-action/0.5 selected-query score
 loss. These are also changes from the parent,so parent improvement alone cannot
 identify context value. Future-unknown rows stay in draws/context but never
 supervise. Twelve targeted tests pass in2.38s,including real synthetic Torch
-updates and exact resume. No real pilot,full fit or outcome readout yet.
+updates and exact resume. Real pilot PID40486 exits0 in20.333650s at peak
+RSS7,688,273,920B,with400 actual updates. Both arms have exact interrupted
+recovery and matched draws;240 unknown row draws per100-step arm have zero
+supervised loss. Full36-head training is running PID41637,not complete.
+
+The pilot's final query/pointwise gradient ratios are0.00018164 row-local and
+0.00017953 selected-set. They are real training diagnostics,not proof that
+query learning succeeds or that a different loss weight would help. The fixed
+objective remains unchanged. The extended77-test focused suite passes in10.58s;
+no full repository suite is claimed. No policy readout or threshold search.
 See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 
 ### Shared Physical-Count Bank Readout and Exact Replay Complete
