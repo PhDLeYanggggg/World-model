@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Shared Physical-Count Bank Control Registered
+### Shared Physical-Count Bank Readout Complete; Separate Replay Running
 
 The preceding goal turn is progress:complete current-query allocation and
 attribution both replay exactly,with positive fitting utility and failed risk.
@@ -25,9 +25,24 @@ was scored in the real pilot. PID31533 exits0 in22.83s,peak9.77GB,covering128
 causal queries and3267rows. Direct and deliberately interrupted/resumed
 allocation agree exactly. Every query matches the four controls' counts;
 all256 physical/neural optimizations meet their predicted-budget postchecks.
-The complete72-group readout is running as PID32631;no partial score is used
-to change the registered protocol. The pilot projection is a rough single-source
-extrapolation,not the measured complete runtime.
+The complete72-group readout PID32631 exits0 in724.190s,peak9.810GB. Separate
+complete inference/optimization/metric replay is running PID34909. The pilot
+projection was a rough single-source extrapolation,not the measured runtime.
+
+Known ADE gain:physical independent1.710155%,neural trimmed1.900218%,physical
+joint2.322960%,neural joint2.544091%. Primary neural-minus-physical joint is
++0.221131pp CI[+0.065452,+0.430560];completion-lower+0.154613pp
+CI[+0.005466,+0.362079]. The secondary four-policy interaction is known
++0.031068pp CI[-0.003349,+0.071656],lower-0.012419pp
+CI[-0.061671,+0.027880]:no supported neural-specific joint synergy claim.
+
+All four controls use262284 selected row views. Neural joint has47/444
+supported record views,229 known all-risk violations,322 known easy violations
+and43 undefined easy views. Physical/neural solver postchecks reject4/7
+solutions and retain feasible warm anchors;none is called exact. Fitting
+checks6/8,advancement false. This is exposed SOURCE fitting,zero new training,
+not safe deployment,independent confirmation or submission readiness. Sixty
+focused tests pass in9.86s;full repository tests are not rerun.
 See the [protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
 
 ### Frozen Joint-Allocation Attribution Complete

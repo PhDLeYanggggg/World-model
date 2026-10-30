@@ -25,15 +25,22 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I have registered the stronger bank comparison: reoptimize the six physical
+I completed the stronger bank comparison: reoptimize the six physical
 forecasts and the seven-action physical/neural bank at the same current-query
 count, determined by the physical independent rule. Both banks keep the same
 cost estimates and 2% predicted-budget rules. This is not neural deletion to
 floor, a new training run or a smaller-cohort safety claim. Nine focused checks
-pass. The real pilot covers 128 causal queries and 3,267 rows in 22.83 seconds,
-uses 9.77 GB peak memory, and recovers exactly after a planned interruption.
-The complete 72-group comparison is running as PID 32631; no outcome or safety
-claim is available yet. I keep the previous complete-policy risk failure open.
+pass. All 72 groups complete in 12.1 minutes. The reoptimized physical bank
+gains 2.323% known ADE over the floor; adding the frozen neural forecast raises
+that to 2.544% at the same query counts. The paired neural increment is +0.221
+percentage points, with a conditional locality interval of [+0.065, +0.431].
+The smaller completion-lower increment is +0.155 pp [+0.005, +0.362].
+
+This supports a modest fitting-time neural contribution beyond the stronger
+physical control, not a safe deployment. Only 47/444 recording-risk views are
+supported, and 322 have known easy-risk violations. The additional interaction
+contrast crosses zero: I cannot claim joint allocation especially amplifies the
+neural bank. A separate complete replay is running as PID 34909.
 [Shared-count protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
 
 ### Preceding Query-Allocation Study
