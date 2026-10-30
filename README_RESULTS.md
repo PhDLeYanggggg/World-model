@@ -30,6 +30,14 @@ including gradients, unknown support and exact interrupted recovery. The real
 pilot and full experiment are next; no new effectiveness result is claimed.
 See the [repair protocol](outputs/publication_readiness_2026_09/european_admission_cost_v1/protocol.md).
 
+The real pilot completes all 160 optimizer updates in 14.72s at 9.78GB peak
+RSS. Interrupted recovery is exact for all three arms; both legacy controls
+are exact. Unknown rows are sampled but receive no observed-cost loss. The
+measured primary-optimization projection is about 604s, excluding preparation,
+refit and readout. Full 54-head training is now running locally as PID96918,
+with the fixed 2,000-update budget, checkpoints and heartbeat. Outcome scoring
+waits for the complete training freeze.
+
 ### Original-Budget Score Learning Registered
 
 The previous goal turn is progress:54real matched-bank heads,72readouts and
