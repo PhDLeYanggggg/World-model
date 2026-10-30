@@ -28,6 +28,28 @@ chunk reconstruction agree exactly;own future outcomes are not scored.
 Existing packet construction still checks its old fitting labels. This is not
 a neural training or interrupted-process claim. Full24-group scoring is next.
 
+Full24-group readout PID89466 exits0 in21.532611s at peakRSS6,105,284,608B.
+Separate complete replay PID90008 exits0 in20.764442s,peakRSS6,074,466,304B.
+All24 groups,24 original ID/support controls and48 raw-path/ADE/FDE controls
+agree exactly. All149,510 unique target rows,74 recordings and148 record/
+context views remain. No deterministic predictor is duplicated across head seeds.
+
+OLS8 fitted-minus-raw known effect is-19.349820pp CI[-37.826305,-9.344567];
+primary completion-lower is-21.078204pp CI[-41.400334,-10.049531]. OLS4 is
+also negative:known-2.591366pp CI[-4.793214,-1.391631],lower-2.957059pp
+CI[-5.420675,-1.614914]. All four direct gated candidates support0/148
+original recording-risk views. Four of seven fitting checks pass;no advancement,
+training or deployment. Missing full-roster endpoints remain not_estimable.
+The227,887B ZIP contains24 aggregate JSONs,not trajectories or weights.
+
+An explicitly post-hoc24-group mechanism audit is registered AFTER the parent
+negative result but BEFORE its own values. It checks squared-error change
+=2*raw_error.dot(position_shift)+squared_shift,with unchanged predictions and
+labels,plus past-geometry alignment. Three arithmetic/unknown-support checks
+pass in0.69s. A synthetic constant-acceleration example demonstrates possible
+linear-fit lag;it is not an identified real measurement-noise/process cause.
+The new diagnosis has not yet run and does not replace the ADE primary.
+
 ### Joint Utility Admissibility: Complete Negative Control
 
 The previous goal turn is progress:36 current-query fits and the full72-group

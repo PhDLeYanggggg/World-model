@@ -82,8 +82,14 @@ with a fitted current position from past observations only. All original rows,
 masks and risk requirements stay fixed. Ten synthetic/interface checks pass.
 The real 1,024-row pilot finishes in 4.26 seconds at 5.01 GB peak memory,with
 exact raw controls and saved-chunk reconstruction,without own outcome scoring.
-The full comparison is next. A stronger physical
-baseline would raise the bar for neural value, not count as neural training.
+The full 24-group comparison and separate replay now finish in 21.53 and
+20.76 seconds, with all row controls and 48 raw-path/cost controls exact.
+The fitted OLS8 position is worse: known utility changes -19.35 pp and the
+completion-lower difference is -21.08 pp [-41.40, -10.05]. OLS4 also worsens.
+The original recording-risk requirement fails for every candidate. I keep the
+existing forecasts; this is not a stronger baseline or neural training success.
+An explicitly post-hoc error-geometry diagnostic is registered next, before
+its own values, to examine the failure without changing the parent experiment.
 [Position-anchor protocol](outputs/publication_readiness_2026_09/european_position_anchor_v1/protocol.md).
 
 ### Completed Strong-Bank Control
