@@ -8,8 +8,18 @@ trajectory producer, following a negative experiment that supplied them only
 to intervention-cost heads. All 72 producers now complete, PID47833 exit0,
 in 5,669.635506 seconds with peak RSS 2,399,272,960 bytes. All 18 disabled
 endpoints and the first complete history refit match their scientific state.
-No forecast score is read at this training freeze; the eventual readout and
-evidence receipts determine effectiveness.
+No forecast score was read at that training freeze. The complete readout is
+now followed by separate PID55783 inference replay: all 72 groups and 18
+disabled legacy predictions match exactly, 1,181.451332 seconds, peak RSS
+2,947,039,232 bytes. Numerical recovery is not independent confirmation.
+
+The primary known masked-ADE gain is 8.811113% versus disabled 4.922961%;
+paired increment +3.888152pp, locality CI [+2.245557,+5.655328]. The required
+completion-lower interval is negative, so the proposal-input evidence gate
+fails. All-locality endpoint FDE is not_estimable because one required locality
+has no final-step labels in the allowed readout. Supplementary superiority
+against fixed damping0.97 is not established (paired CI crosses zero). Easy
+and complement failures remain reported; deployment is unchanged.
 
 ## Architecture
 

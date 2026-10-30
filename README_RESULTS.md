@@ -82,6 +82,31 @@ frozen in a byte-verified 2,491,810B archive; that packaging is not scientific
 recalculation. Separate full inference replay is running. No new model,
 threshold or primary result is chosen from these development outcomes.
 
+Separate PID55783 now redoes every one of the 72 groups exactly in
+1,181.451332s, peak RSS2,947,039,232B. All new predictions, original disabled
+predictions, costs, support counts and summary agree. The 72 real loss traces
+and aggregate SVG are generated and visually checked. History's median final
+minibatch objective is0.944793, versus disabled0.979434; these are not validation
+losses. All 16 focused input/model/recovery/readout/artifact tests pass in2.41s,
+and report regeneration is stable. A mismatched delimiter in the new report
+fixture was fixed before artifact generation; no registered scoring or training
+computation changed. Later exact replays retain the first report's runtime receipt.
+
+The supplementary post-readout history-minus-fixed-damping0.97 contrast is
++2.374844pp, CI[-2.730947,+6.709627], on the original reference-mass denominator.
+It is not used for model/threshold selection or the primary gate. Stable
+superiority over all strong fixed physical methods is not proven. Easy gain
+is+0.551800%, CI[-4.154079,+6.630546]; locality124 degrades14.804979% on easy.
+These negatives, weaker complement results and 3,163 wholly unknown unique
+futures remain in the [failure analysis](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/failure_analysis.md).
+The [verified readout](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/readout.md),
+[model/data card](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/paper_addendum.md)
+and [Chinese guide](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/reproduction_zh.md)
+keep proposal accuracy separate from learned-policy risk. No deployment,
+independent-role, submission, Stage5C or SMC promotion. Next priority is missing
+label provenance on the same allowed IDs before a frozen-bank decision repair.
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across

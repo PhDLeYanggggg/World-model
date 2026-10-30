@@ -46,9 +46,14 @@ for detector history, versus **4.923%** without it. The paired change is
 **+3.888 percentage points**, locality CI **[+2.246,+5.655]**. History also beats
 current-only and identity-noise controls on known labels. But the missing-label
 completion-lower contrast is negative, and one required locality has no final
-step labels, so the all-locality FDE is undefined. A separate full inference
-replay is running. This is promising observed-label proposal evidence, not a
+step labels, so the all-locality FDE is undefined. All 72 readout groups now
+replay exactly in a separate process. The supplementary paired difference
+against fixed damping 0.97 is +2.375pp, CI [-2.731,+6.710], so superiority over
+all strong fixed physical baselines is not established. This is promising
+observed-label proposal evidence, not a
 safe policy, an independent test or a deployment promotion.
+[Verified readout and curves](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/readout.md),
+[limits and failure analysis](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/failure_analysis.md).
 
 The preceding routing-only experiment used 149,510 fitting queries across
 74 SOURCE recordings. Its raw reparse matches exactly, including 222 prefix

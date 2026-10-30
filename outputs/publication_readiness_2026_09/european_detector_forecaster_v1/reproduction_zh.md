@@ -11,14 +11,15 @@
 要求不变；新的轨迹预测更准确，也不能自动推出切换策略安全。独立选择、
 校准、确认集与其他 controller-held 结果不在本次读取范围内。
 
-## 环境与正在运行的任务
+## 环境与任务状态
 
 工作目录：`/Users/yangyue/Downloads/World`。
 使用 `.venv-pytorch/bin/python` 的原生 arm64 环境。训练采用 CPU 4 线程、
 interop 1、DataLoader workers 0，不调用 MPS/硬件资源探测，不启动多进程。
 不要用 x86_64 Conda/Rosetta 替代此环境。
 
-训练首次运行 PID 为 47833。实际当前状态应同时核对进程和有时间戳的日志；
+本轮训练 PID47833 已正常退出；读取 PID54383 和单独复算 PID55783 也已结束。
+后续任务的实际当前状态应同时核对进程和有时间戳的日志；
 锁文件、旧 PID 或旧 heartbeat 单独都不证明仍在运行。不要启动重复训练。
 
 ```bash
@@ -26,6 +27,9 @@ cd /Users/yangyue/Downloads/World
 ps -p 47833 -o pid,etime,%cpu,rss,stat
 tail -n 4 data/stage_cvpr2027_experiments/european_detector_forecaster_v1/events.jsonl
 ```
+
+已结束 PID 的进程查询为空是预期，应结合 complete、verification 和正常退出
+记录理解，不能单独据此认定卡死或重启训练。
 
 主 checkpoint 每 200 步原子写入，heartbeat 每 50 步更新。每个模型保留实际
 optimizer、采样和 RNG 状态。已完成模型的公开轻量 receipt 与私有 checkpoint
@@ -67,12 +71,26 @@ optimizer、采样和 RNG 状态。已完成模型的公开轻量 receipt 与私
 JSON 文件能否读取。全部 72 组都要保留，不能选次要分支替换预先指定的主结果。
 空分母标记不可估，不当作零风险。
 
+公开报告保留第一次验证对应的 PID/耗时收据。以后再次完成完全一致的验证时，
+私有 runtime 日志可以更新，但不重写第一次报告的来源；若科学汇总或生成代码
+发生变化，报告入口会拒绝覆盖旧证据。训练、评分和统计定义不因此改变。
+
 ## 文件与可公开复现边界
 
 公开目录：`outputs/publication_readiness_2026_09/european_detector_forecaster_v1/`。
 私有数据、模型与日志目录：
 `data/stage_cvpr2027_experiments/european_detector_forecaster_v1/`。
 完整过去输入另存于 `european_producer_detector_store_v1/` 同级私有目录。
+
+公开仓库用 `metric_groups.zip` 保存 72 组轻量聚合指标，而不包含原始预测坐标。
+在项目根目录可校验并恢复这些 JSON：
+
+```bash
+.venv-pytorch/bin/python -c "from pathlib import Path; from src.evaluation.m3w_metric_bundle import verify; r=Path.cwd(); print(verify(r,r/'outputs/publication_readiness_2026_09/european_detector_forecaster_v1',restore=True))"
+```
+
+这属于 cached_verified 字节核验和恢复，不是 fresh_run 科学重算，也不需要
+读取原始数据或模型权重。真实重算仍需上述私有资产和完整推理验证。
 
 公开配置、代码、hash 和训练曲线可以核对实验设计与已记录工作，但公开仓库
 不含 SOURCE 原始数据、缓存和 checkpoint。没有这些资产不能声称新 clone

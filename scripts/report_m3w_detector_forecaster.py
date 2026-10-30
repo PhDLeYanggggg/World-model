@@ -17,6 +17,19 @@ def interval(value):
     return 'not_estimable' if value['CI95'] is None else number(value['point'])+' ['+', '.join(number(v) for v in value['CI95'])+']'
 
 
+def paired_summary_difference(new,old,cfg):
+    if set(new['by_locality'])!=set(old['by_locality']) or len(new['by_locality'])!=12:
+        raise ValueError('Same complete12locality roster required')
+    differences={site:None if new['by_locality'][site] is None or old['by_locality'][site] is None
+        else new['by_locality'][site]-old['by_locality'][site] for site in sorted(new['by_locality'])}
+    if any(v is None for v in differences.values()):
+        return dict(point=None,CI95=None,by_locality=differences,reason='required_view_not_estimable')
+    values=np.array(list(differences.values()))
+    draws=np.random.default_rng(cfg['bootstrap_seed']).choice(values,size=(cfg['bootstrap_resamples'],12),replace=True).mean(1)
+    return dict(point=float(values.mean()),CI95=np.quantile(draws,[.025,.975]).tolist(),by_locality=differences,
+        bootstrap_unit='same_SOURCE_locality_after_fold_seed_average',bootstrap_resamples=cfg['bootstrap_resamples'])
+
+
 def support_profile(complete):
     rows=[];seen=set()
     for ref in complete['groups']:
@@ -32,6 +45,19 @@ def support_profile(complete):
         selected=[r['result'] for r in rows if r['kind']==kind]
         if len(selected)!=9:raise ValueError('All three folds and three seeds required')
         records={record for r in selected for site in r['sites'].values() for record in site['records']}
+        sites={};mean_gains=[];tail_gains=[];mean_undefined=tail_undefined=0
+        for r in selected:
+            for site,view in r['sites'].items():
+                m=view['metrics'];support=dict(indexed=m['all']['ADE']['indexed'],known_ADE=m['all']['ADE']['known'],
+                    known_FDE=m['all']['FDE']['known'],complete_future=m['complete_future']['ADE']['indexed'])
+                if site in sites and sites[site]!=support:raise ValueError('Readout support changed across matched producers')
+                sites[site]=support
+                for record in view['records'].values():
+                    ref=record['reference_ADE'];new=record['native_ADE']['history']
+                    if ref['mean'] is None or ref['mean']<=0:mean_undefined+=1
+                    else:mean_gains.append(100*(1-new['mean']/ref['mean']))
+                    if ref['p95'] is None or ref['p95']<=0:tail_undefined+=1
+                    else:tail_gains.append(100*(1-new['p95']/ref['p95']))
         profile[kind]=dict(producer_views=len(selected),unique_recordings=len(records),
             indexed_row_views=sum(r['rows'] for r in selected),
             complete_future_row_views=sum(r['complete_future_rows'] for r in selected),
@@ -40,8 +66,29 @@ def support_profile(complete):
             stationary_observed_row_views=sum(r['stationary_observed_rows'] for r in selected),
             stationary_known_nonzero_error_row_views={arm:sum(r['stationary_known_nonzero_error_rows'][arm] for r in selected)
                 for arm in run.api.REPRESENTATIONS},
+            support_by_locality=sites,
+            unique_queries=dict(indexed=sum(v['indexed'] for v in sites.values()),
+                complete_future=sum(v['complete_future'] for v in sites.values()),
+                partial_future=sum(v['known_ADE']-v['complete_future'] for v in sites.values()),
+                missing_future=sum(v['indexed']-v['known_ADE'] for v in sites.values())),
+            known_record_mean_tail_diagnostic=dict(defined_mean_views=len(mean_gains),undefined_mean_views=mean_undefined,
+                defined_p95_views=len(tail_gains),undefined_p95_views=tail_undefined,
+                mean_worse_by_over2percent=sum(v< -2 for v in mean_gains),p95_worse_by_over2percent=sum(v< -2 for v in tail_gains),
+                worst_mean_gain_percent=min(mean_gains) if mean_gains else None,
+                worst_p95_gain_percent=min(tail_gains) if tail_gains else None,
+                descriptive_not_approved_positive_harm_policy_gate=True),
             repeated_producer_seed_row_views_not_independent_samples=True)
     return profile
+
+
+def freeze_evidence(value):
+    path=run.PUBLIC/'evidence.json'
+    if path.exists():
+        previous=json.loads(path.read_text())
+        # A later exact replay has a new PID/runtime; retain the first report receipt.
+        if dict(value,replay=previous['replay'])!=previous:raise ValueError('Frozen scientific artifact differs')
+        return previous
+    run.once(path,value);return value
 
 
 def evidence():
@@ -71,11 +118,18 @@ def evidence():
         replay=json.loads((run.PRIVATE/'verification_runtime.json').read_text()),
         checkpoint_bytes=sum(r['checkpoint']['bytes'] for r in models.values()),loss_summary=records,
         support_profile=support_profile(complete),
+        supplementary_history_minus_fixed_physical_pp={kind:{k:{metric:paired_summary_difference(
+            d['representations']['history']['all'][metric],v[metric],json.loads(run.CONFIG.read_text()))
+            for metric in ('ADE','FDE')} for k,v in d['physical_baselines'].items()} for kind,d in summary['kinds'].items()},
+        supplementary_comparisons_use_original_reference_mass_not_physical_denominator=True,
+        supplementary_comparisons_added_after_readout_not_model_selection_or_primary_gate=True,
+        artifact_code_bindings={str(p.relative_to(ROOT)):run.sha(p) for p in
+            (Path(__file__),ROOT/'tests/test_m3w_detector_forecast_artifacts.py')},
         summary_sha256=run.sha(run.PUBLIC/'summary.json'),verification_sha256=run.sha(run.PUBLIC/'verification.json'),
         proposal_gates=summary['proposal_input_gates'],proposal_input_evidence_gate=summary['proposal_input_evidence_gate'],
         learned_policy_safety_evaluated=False,controller_held_scored=False,independent_roles_opened=False,
         deployment_changed=False,submission_ready=False,stage5c_executed=False,smc_enabled=False)
-    run.once(run.PUBLIC/'evidence.json',value);return value,summary
+    return freeze_evidence(value),summary
 
 
 def render(value,summary):
@@ -125,6 +179,16 @@ def render(value,summary):
     for kind,d in summary['kinds'].items():
         for k,metrics in d['physical_baselines'].items():
             lines.append('| '+kind+' | '+run.source.BASELINES[int(k)]+' | '+interval(metrics['ADE'])+' | '+interval(metrics['FDE'])+' |')
+    lines+=['','## Supplementary Paired Fixed-Baseline Comparison','',
+        'Added descriptively after the complete fixed readout,not used to select',
+        'a model,reference or primary gate. Difference is history gain minus each',
+        'fixed baseline gain,in percentage points of the original own-fit reference',
+        'mass;it is not a newly normalized percent improvement over that baseline.','',
+        '| Producer design | Fixed physical baseline | History-minus-baseline ADE pp, CI95 | FDE pp, CI95 |',
+        '|---|---|---|---|']
+    for kind,d in value.get('supplementary_history_minus_fixed_physical_pp',{}).items():
+        for k,m in d.items():
+            lines.append('| '+kind+' | '+run.source.BASELINES[int(k)]+' | '+interval(m['ADE'])+' | '+interval(m['FDE'])+' |')
     lines+=['','## Primary History Minus Controls','',
         '| Control | Known ADE change pp, CI95 | Completion-lower pp, CI95 | Completion-upper pp, CI95 |',
         '|---|---|---|---|']
