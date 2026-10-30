@@ -31,7 +31,8 @@ does not beat the matched row-local head: its known ADE gain is 6.575% versus
 7.185%, a difference of -0.610 percentage points, with a conditional locality
 interval of [-0.880, -0.349]. Complete-recording risk also fails. These are
 exposed source-fitting results, not independent evidence or a deployed model.
-A separate complete replay is running; I do not call it verified yet.
+A separate 28.27-minute complete replay agrees on all 72 groups and 144 original
+full-policy controls. That verifies reproducibility, not independent efficacy.
 
 All 36 real Torch fits finish 72,000 updates in 4.92 minutes at 8.78 GB peak
 memory. Both first-head 2,000-step refits agree exactly. The total fitting loss
@@ -50,8 +51,8 @@ telemetry and the scale diagnostic. Its real 600-update pilot finishes in
 21.24 seconds with exact old-control reproduction and interrupted recovery.
 All 36 full fits finish in 5.00 minutes, including two exact full refits, at
 10.45 GB peak memory. In original units, median query-monitor error falls from
-about 0.00044 to 0.00015, but pointwise risk error is worse. The new policy
-readout is not run yet, so this remains a training result, not a safe-policy
+about 0.00044 to 0.00015, but pointwise risk error is worse. The new full policy
+readout is running as PID58848, so this remains a training result, not a safe-policy
 claim. [Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
@@ -84,8 +85,8 @@ and [method note](outputs/publication_readiness_2026_09/european_shared_count_ba
 keep the positive neural increment and the failed risk requirement together.
 The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
 also checks why fewer switches need not improve the selected harm/reference ratio.
-The subsequent selected-query comparison is complete but negative; its exact
-replay is still running. The query-unit repair is fully trained but has not
+The subsequent selected-query comparison is complete, exactly replayed and
+negative. The query-unit repair is fully trained but has not
 completed policy evaluation.
 
 ### Preceding Query-Allocation Study

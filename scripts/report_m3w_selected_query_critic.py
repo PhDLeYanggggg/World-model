@@ -257,7 +257,7 @@ def complete_report():
     axes[1].set_xlim(0, 450); axes[1].set_xlabel('Recording/context/seed views (444 required)')
     from matplotlib.patches import Patch
     axes[1].legend(handles=[Patch(color='#007C91', label='Supported'), Patch(color='#B44D48', label='Known easy violation')],
-        frameon=False, fontsize=8)
+        loc='lower center', bbox_to_anchor=(.5, 1.01), ncol=2, frameon=False, fontsize=8)
     fig.suptitle('Exposed fitting evidence;mean accuracy is not complete-policy safety', fontsize=11)
     fig.tight_layout(rect=(0, 0, 1, .94)); path = p/'figures/critic_policy.svg'
     fig.savefig(path, metadata={'Date': None}, bbox_inches='tight')

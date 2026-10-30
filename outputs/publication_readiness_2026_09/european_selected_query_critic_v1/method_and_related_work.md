@@ -1,89 +1,80 @@
-# Selected-set risk learning: question, assumptions and prior work
+# Selected-query risk learning: method and contribution boundary
 
-This is a method-design component, not a successful result or independent test.
-The registered protocol fixes the paired experiment; this note does not change
-it. Main task: obs8/pred12 at raw stride12 in local image coordinates.
+## Statistical unit
 
-## What is learned
+For query Q (one recording/frame), let S0(Q) be the original joint rule's causal
+selected agent-action set. Unknown peers are retained. With budget rho=0.02,
+the supervised signed scores are the sums of `H-rho*R` and `EH-rho*ER`, divided
+by the summed causal row scale. Empty or partly unknown selected sets do not
+become zero targets. Future costs enter these training labels only.
 
-The original action bank and benefit/reference/easy-reference estimates are
-fixed. Two equal-size neural heads adjust positive harm and positive easy harm
-through the same bounded anchor-exact link. Both train on all legal candidate
-cost labels plus the signed score of the original joint selected set. The
-only paired architecture difference is self versus mean selected-action hidden
-context. Both see the same initial count metadata.
+The point loss averages squared all/easy harm errors over known legal candidate
+actions within each row and query. The query loss averages squared differences
+of the two selected scores, using the original all-action-derived RMS. Queries
+are drawn source-balanced without removing empty/unknown queries. The two terms
+both have weight0.5. The later unit experiment replaces only the query-score
+denominator with its actual fitting-target RMS; it is a different registered
+experiment, not a post-hoc relabelling of these results.
 
-The resulting system is a risk-learning controller around fixed forecasts. It
-is not newly trained trajectory dynamics, a generative JEPA model, a world-state
-rollout or a foundation model. A favorable new neural risk head cannot substitute
-for evidence that the underlying world representation/dynamics contributes.
+## Why context and optimization are separate
 
-## Conditioning is an inductive bias, not new information or a theorem
+The selected-set head uses a shared candidate encoder, mean pooling over S0 and
+the focal embedding. The matched local head pairs the focal embedding with
+itself. Both see selected count and fraction, start from identical weights,
+receive identical training draws, and retain all forecasts and original
+benefit/reference moments. Both can rescore all legal candidates, not just veto
+old interventions.
 
-For frozen weights, the original selected set is a deterministic function of
-the admitted past-only query inputs. Its pooled representation does not add
-an independent observation or reveal a future label. It is a structured way
-to expose other selected action histories and costs to a row-level risk head.
-The row-local comparison is needed because the existing causal fields already
-contain local neighbor information and some scene features.
+Each newly fitted critic has its own independent rule and joint optimization at
+that rule's count. The two full policies therefore need not switch equally
+often. An additional common-minimum-count reoptimized comparison isolates a
+count-matched utility contrast, not full-policy safety. The original 2% observed
+recording-risk requirement is always evaluated separately.
 
-The pool includes selected rows with unknown eventual labels. That unknown
-mask enters only supervised loss/evaluation, never pooling or admission. Missing
-selected labels prevent a complete-query target, not causal inference. Training
-therefore has a missing-support limitation; no missing-at-random assumption
-has been established.
+For frozen weights, original selection is a deterministic function of the
+admitted past-only inputs. The pooled context is an inductive bias; the local
+features already include some neighbor/scene information. The eventual label
+mask enters supervision, not pooling or inference. No missing-at-random
+assumption has been established. Because references remain frozen, the signed
+query target can ask harm estimates to compensate for reference bias; this
+can conflict with fitting harm itself. Original-set training also does not
+establish calibration after the final decoder changes that selection.
 
-The signed-score target contains true reference costs, although those reference
-predictions remain frozen. This can create tension between matching actual
-harm and compensating for reference bias. Integrated component-gradient traces
-are intended to expose such conflicts rather than infer them from one endpoint.
+## Existing methods and what is not claimed
 
-There is another deliberate limit: the query term supervises the original
-selected set, but the new decoder may reassign actions. All legal actions have
-pointwise supervision, yet this does not establish calibration under the final
-selection. The paired study tests a first selected-context repair; it does not
-claim to solve policy-induced conditional calibration in general.
+Permutation-invariant latent pooling is established by
+[Deep Sets](https://proceedings.neurips.cc/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html).
+Our focal-plus-pooled encoder is a controlled use of this idea, not a new set
+architecture or universality result. It adds no new causal observations.
 
-## Relation to primary literature
+[Decision calibration](https://proceedings.neurips.cc/paper/2021/hash/bbc92a647199b832ec90d7cf57074e9e-Abstract.html)
+studies calibration for downstream decisions. The cited paper's multiclass
+construction and conditions do not automatically cover our continuous costs,
+coupled changing action sets or selected harm/reference ratio. We have not
+implemented that algorithm or proved its guarantee for this controller. Better
+MSE and predicted feasibility alone are not a substitute.
 
-[Deep Sets, NIPS2017](https://proceedings.neurips.cc/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html)
-develops permutation-invariant set models. Mean pooling a selected set is an
-ordinary set-model operation, not an architectural novelty claim here. Our
-controlled question is whether this particular selected-action context improves
-cost decisions relative to an equal-size local head.
+[Regression with Multi-Expert Deferral](https://proceedings.mlr.press/v235/mao24d.html)
+already studies routing among pretrained regression experts and provides
+surrogate consistency results. Generic forecast routing, a fallback and learned
+regression costs are not novelty claims here. We do not claim superiority to
+that method without a compatible matched implementation.
 
-[Calibrating Predictions to Decisions, NeurIPS2021](https://proceedings.neurips.cc/paper/2021/hash/bbc92a647199b832ec90d7cf57074e9e-Abstract.html)
-introduces decision calibration for downstream decision-makers in multiclass
-prediction. It is relevant to the distinction between marginal forecast fit
-and useful decisions. We do not implement that paper's recalibration algorithm
-or inherit its guarantee for our continuous, selected-reference ratio.
+The useful empirical question is narrower: does a selected-query risk objective
+and context repair the post-selection risk failure at retained utility? The
+completed original comparison answers no in its tested form. A unit correction
+can diagnose one optimization issue, but normalization alone is not a paper's
+method contribution or an independent success. A credible eventual contribution
+needs useful final-selection risk control, strong decision-method controls and
+exposure-compliant independent evidence.
 
-[Regression with Multi-Expert Deferral, ICML2024](https://proceedings.mlr.press/v235/mao24d.html)
-analyzes choosing between regression experts, including a pretrained-predictor
-two-stage setting. Our fixed-bank controller lies within that broader routing
-motivation. Calling a head cost-aware or using multiple experts is not new by
-itself. Distinctive evidence would have to concern actual gain/harm behavior,
-query allocation, support and source-excluded/independent risk assessment.
+The current budget coupling does not learn dependencies between generated
+future paths. [JFP](https://proceedings.mlr.press/v205/luo23a.html) studies
+structured multi-agent forecasting; unary budget allocation should not be
+described as equivalent dynamics. Confidence pruning also need not reduce a
+selected harm/reference ratio. Existing DUT predictive exposure and reserved
+DroneCrowd roles remain unchanged by this experiment.
 
-The current query-budget decoder does not model interactions between generated
-future paths. [JFP, CoRL proceedings2023](https://proceedings.mlr.press/v205/luo23a.html)
-already studies structured dependencies among multi-agent forecasts. Unary cost
-budget coupling should not be described as equivalent joint dynamics learning.
-
-## What would count as evidence
-
-Fresh real training, a lower loss and exact replay establish implementation
-and optimization evidence. Selected-set versus row-local full and common-count
-comparisons address the pooling hypothesis. The original complete-recording
-all/easy2% criterion still governs safety; confidence pruning alone is not
-monotone in selected harm/reference risk, as the prior tested counterexample
-shows. Empty selected support is undefined, not a safe zero.
-
-All current source material is exposed development/fitting. Neither the three
-critic seeds nor the locality bootstrap converts it into independent scientific
-confirmation. A model must first justify its risk behavior, then undergo a
-separate exposure-aware independent protocol. Historical DUT predictive exposure
-and reserved DroneCrowd roles remain unchanged.
-
-No metric/seconds, human-gold, true3D, foundation, deployment or submission-ready
-claim is made. Stage5C execution and SMC remain disabled.
+Task: obs8/pred12 at raw stride12; detector-silver/local-image coordinates.
+No new trajectory dynamics, physical safety, metric/seconds, human-gold,
+true3D, foundation, deployment, Stage5C execution or SMC claim.

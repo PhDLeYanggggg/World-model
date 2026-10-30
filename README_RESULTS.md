@@ -28,8 +28,9 @@ recovery and matched draws;240 unknown row draws per100-step arm have zero
 supervised loss. Full36-head training PID41637 exits0 in294.916455s at peak
 RSS8,783,167,488B. All72,000 primary updates and both2,000-step full scientific
 refits complete. The fixed 72-group allocation readout completes as PID43330
-in 1744.334s at peak RSS 9,191,751,680B. The complete replay is running as
-PID51271; replay agreement is not yet claimed. No partial policy score is
+in 1744.334s at peak RSS 9,191,751,680B. Complete replay PID51271 exits0 in
+1696.210552s at peak RSS 10,873,667,584B. All 72 groups,144 old full-policy
+controls and the canonical summary agree exactly. No partial policy score is
 used for model selection.
 
 The pilot's final query/pointwise gradient ratios are0.00018164 row-local and
@@ -53,7 +54,11 @@ CI[-0.880023,-0.349336]; completion-lower increment is -4.872588pp
 CI[-11.205362,-1.301837]. All 12 locality known contrasts are negative.
 Selected-set joint has 0/444 supported recording-risk views and 393 known easy
 violations. Only 4/8 fitting checks pass. This is neither deployment nor an
-independent result. The complete replay remains pending.
+independent result. Exact complete replay confirms these negative results.
+The primary solver retains feasible anchors on eight postcheck failures;
+there are no time-limit fallback queries. Empty count controls remain not
+estimable, not safe zero. The 1,353,670B aggregate archive contains only exact
+group metrics, not rows or weights.
 
 The separately registered query-scale/capacity diagnostic completes as PID46712
 in 89.349s; a second complete 72-group run agrees exactly. The old denominator
@@ -83,7 +88,8 @@ original heads. Same-batch query/point gradient medians become 1.757648/1.634624
 not the original approximately0.0008/0.0007. Pointwise risk monitor is worse:
 0.071484->0.078885 row and0.064269->0.078215 set. All unknown draws still have
 zero supervised loss. These fixed fitting monitors select no checkpoint and
-are not policy/calibration success. New policy outcomes are not run.
+are not policy/calibration success. The new complete policy readout is running
+as PID58848; no partial outcome selects a checkpoint, threshold or model.
 Its design follows telemetry and the verified diagnostic, not
 selection among the completed parent policy scores.
 Independent roles, deployment, Stage5C and SMC remain closed.
