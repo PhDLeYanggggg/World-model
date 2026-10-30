@@ -54,6 +54,11 @@ Expanded input/model/recovery/readout/artifact/bundle checks pass16tests in
 2.57s. Forecast effectiveness,learned-policy safety and independent evaluation
 remain not_run at this freeze. No deployment or submission-readiness change.
 
+The fixed readout registration now binds all36frozen endpoints,the original
+149,510fitting-query whitelist and complete scoring code. History remains the
+primary; all6paired physical comparisons are fixed before scores. No new
+controller-held or independent result is admitted. Registration is not readout.
+
 ### Raw Future-Label Provenance Audit Registered
 
 The previous goal turn is progress: 72 real producers and complete exact
