@@ -59,6 +59,12 @@ same-new-head physical-only restriction to separate actual neural use from
 shared-head improvements in physical choices. Utility/risk effects remain
 not_run at this freeze; no deployment or independent roles open.
 
+The fixed72group readout is now registered against all54endpoints,all three
+frozen banks and the original risk/metric helpers. Primary remains new-minus-
+old,with full and same-count utility kept distinct from full-policy safety.
+Empty count matches are explicitly not_estimable. No score is read at this
+registration; all independent and controller-held outcomes remain closed.
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's
