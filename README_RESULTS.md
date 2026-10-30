@@ -68,10 +68,31 @@ backbone experiment had a positive known-label contrast. History's raw known
 easy gain is-12.222201%; this is not an evaluated safe routing policy. The
 completion-lower contrast is-18.258091pp,CI[-45.071627,-2.865096],a conservative
 unknown-outcome bound,not observed deterioration. All9fresh parent controls
-are exact. The fixed proposal-input gate fails3/8; complete-roster FDE remains
+are exact. Only3/8proposal checks pass; the overall gate fails and complete-roster FDE remains
 not_estimable. All36initial aggregate groups are frozen in a byte-verified
 2,019,037B archive,not a fresh scientific recalculation. Separate full inference
 replay is next; no deployment,independent-role or submission promotion.
+
+Separate PID64786 now redoes every one of the36groups exactly in551.535353s,
+peak RSS2,818,850,816B. All new predictions,actual parent controls,metrics,
+supports and summary agree. The36real loss traces and aggregate SVG are
+generated and visually checked; report regeneration is stable. All17focused
+input/model/recovery/readout/artifact/bundle tests pass in2.82s. Known-label
+history gains average positive within each seed,but3of12locality increments
+are negative. Hard increment is+1.547136pp,CI[-0.054726,+2.967366]. Easy raw
+gain is-157.308372% at082 and-21.422930% at124; no negative locality is dropped.
+The preregistered history-minus-damping0.97 difference is+4.049696pp,
+CI[-1.214258,+8.322004],on original reference mass,not a new physical-baseline
+denominator. Stable added input or fixed-baseline superiority is not proved.
+The [verified result](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/failure_analysis.md),
+[card](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/paper_addendum.md)
+and [Chinese guide](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/reproduction_zh.md)
+retain all limits. Next is a registered,matched old/new active-bank gain/harm
+test with the original seed43consumer and full risk rule,not a winning-seed
+substitution or an independent outcome opening. That controller is not_run
+in this completed producer experiment; the project goal remains active.
 
 ### Raw Future-Label Provenance Audit Registered
 

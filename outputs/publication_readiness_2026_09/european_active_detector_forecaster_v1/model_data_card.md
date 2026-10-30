@@ -62,6 +62,8 @@ The original batch size 64, source-balanced draws, loss factors, AdamW schedule,
 decay and gradient clip remain unchanged. The objective is native available-
 label ADE with the original fitting loss factors,not a classification label.
 Loss curves are real minibatches,not validation or independent-test losses.
+The original trainable parameters are optimized as well; this is not a frozen
+encoder probe or a fit of only the 512 added weights.
 
 Disabled controls must reproduce full parent scientific states and fresh
 predictions. All arms retain the parent's draws, factors and RNG. Pilot work

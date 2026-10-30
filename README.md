@@ -53,10 +53,14 @@ gains 9.326%. The increment is +1.160pp, CI [-0.355,+2.540], so a stable added
 input effect is **not established on the actual active model**. Raw easy-case
 accuracy degrades 12.222% relative to that reference, and missing-outcome lower
 bounds remain negative. All nine fresh parent controls match exactly. I am
-retaining this negative result; the proposal gate fails, deployment is unchanged,
-and a separate complete inference replay is next.
+retaining this negative result; the proposal gate fails and deployment is
+unchanged. A separate process now reproduces all 36 prediction/metric groups
+and all nine fresh parent controls exactly in 9.2 minutes. The real loss curves,
+complete locality breakdown and limits are in the
+[verified active-backbone readout](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/readout.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/failure_analysis.md).
 
-**30 October: the new input is now reaching the trajectory model itself.**
+**Earlier flat-backbone input study (30 October).**
 I extended the verified detector-history store to all **318,969 producer rows
 across 163 SOURCE recordings**, rather than treating the smaller routing cache
 as the whole training set. The raw-input replay agrees exactly. I have trained
@@ -66,8 +70,7 @@ and all 4,000 updates per model: **288,000 primary updates**, plus a separate
 94.5 minutes, with 2.40 GB peak memory. All 18 disabled controls and the first
 full history refit reproduce their scientific state exactly.
 
-Every endpoint is frozen before the fixed development readout. No new forecast
-results have been scored at this freeze. Better proposals would answer a different
+Every endpoint was frozen before the fixed development readout. Better proposals answer a different
 question from a safe switching policy; they would not erase the negative result
 below or open the independent evaluation sets.
 [Registered experiment](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/protocol.md).

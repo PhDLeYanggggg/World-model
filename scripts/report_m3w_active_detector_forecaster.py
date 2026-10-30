@@ -203,6 +203,15 @@ def render(value, summary):
     lines += ['', 'Physical contrasts were specified before scores. Differences use the',
         'original own-fit reference mass, not a new percent denominator for each',
         'physical method. No reference, model, threshold or alpha is chosen here.', '',
+        '## Complete Locality Breakdown', '',
+        '| Locality | Unique queries | Last-label rows | History-minus-disabled known ADE pp | Raw history easy gain % |',
+        '|---|---:|---:|---:|---:|']
+    for site, counts in sorted(support['support_by_locality'].items()):
+        change = summary['history_contrasts']['all']['disabled']['known_pp']['by_locality'][site]
+        easy = summary['representations']['history']['easy']['ADE']['by_locality'][site]
+        lines.append(f"| {site} | {counts['indexed']} | {counts['known_FDE']} | {number(change)} | {number(easy)} |")
+    lines += ['', 'All required localities remain, including small or partially observed',
+        'ones. These are development diagnostics, not per-locality safety proofs.', '',
         '## Actual Training Loss', '',
         '| Input | Models | First median minibatch objective | Final median minibatch objective |',
         '|---|---:|---:|---:|']
@@ -218,8 +227,8 @@ def render(value, summary):
         '- proposal_input_evidence_gate: ' + json.dumps(value['proposal_input_evidence_gate']),
         '- learned_policy_safety_evaluated: false', '- deployment_changed: false',
         '- submission_ready: false', '',
-        'No raw-proposal gate certifies the original 2% complete all/easy per-required-',
-        'recording policy-risk requirement. Empty selected risks stay not_estimable.',
+        'No raw-proposal gate certifies the original 2% complete all/easy policy-risk',
+        'requirement on every required recording. Empty selected risks stay not_estimable.',
         'A learned intervention policy must be trained and evaluated separately.', '',
         '## Scope And Limits', '',
         'SOURCE supplied detector-silver bbox midpoints, obs8/pred12/stride12 raw',
@@ -227,7 +236,7 @@ def render(value, summary):
         'seconds, true 3D or a foundation model. The branch combines shape, confidence,',
         'body-relative displacement and overlap; it does not isolate a confidence-',
         'only mechanism. No new scene image, JEPA, generative rollout, Stage5C or SMC.',
-        'No independent or 89-controller-held recording outcomes are opened. Local',
+        'No independent roles or outcomes from the other 89 recordings open. Local',
         'exact replay does not complete an anonymous from-scratch asset release.', '',
         '[Aggregate figure](figures/summary.svg), [actual loss traces](training_traces.json),',
         '[evidence](evidence.json), [model/data card](model_data_card.md),',
