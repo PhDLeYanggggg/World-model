@@ -39,6 +39,16 @@ not that many independent queries. Only past inputs are read; no future target
 or controller-held outcome is scored. Cache receipts freeze before the real
 full-first-context pilot. No cost head has trained or new policy scored yet.
 
+The real first-context pilot completes PID70238 exit0 in13.766389s, peak
+RSS9,749,020,672B. All three10+10/direct20recoveries and both original controls
+are exact. There are160actual optimizer updates and30405parameters per head.
+Each arm draws48unknown rows with zero observed-cost loss on those rows.
+The measured primary-optimization projection is268.88s, excluding preparation,
+full refit and readout. Local resources are adequate for the full54fit run.
+Ten focused replacement/cohort/recovery/cross-bank/readout tests pass in2.46s;
+the cross-bank fixture catches stale action6costs and retains undefined empty
+count matches. All54full fits are next,not replaced by the pilot.
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's
