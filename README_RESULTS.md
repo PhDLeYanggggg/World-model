@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Selected-Action Attribution
+### Selected-Action Attribution and Online Admission Repair
 
 I replayed all 216 frozen prediction/action/full-metric groups and then repeated
 the complete inference separately, with exact agreement. The runs took 93.05s
@@ -44,6 +44,29 @@ retained. All 36 original/upper complete scientific states and the new full
 refit agree exactly. The primary weights total 23,064,998B privately. The fixed
 72-group readout will now test actual utility, risk and selection errors;
 there is still no new effectiveness or deployment claim at this freeze.
+
+The fixed readout and separate full replay now complete. The online loss does
+not repair the policy: known ADE gain is 1.904562%, versus upper 1.979966%.
+The paired primary change is -0.075404pp, CI[-0.245661,+0.026133]; the
+completion-lower change is -0.120265pp, CI[-0.290321,-0.012139]. Supported
+recording views rise 41/444 to 46/444, but 308 known easy violations and 42
+undefined easy views remain. Selected easy harm is still 19,255.86 observed
+versus 254.22 predicted. The targeted failure mechanism therefore persists.
+
+A secondary same-head actual-neural-use contrast remains positive:
++0.194407 known pp, CI[+0.049385,+0.386839], and +0.164782 completion-lower pp,
+CI[+0.019557,+0.359793]. It does not establish an improvement from this new
+loss, independent confirmation or safe deployment. Only 3/6 fixed fitting
+gates pass. All 72 aggregate groups, all 144 original/upper prediction/action/
+full-score controls and the summary replay exactly. The readout took 120.87s;
+separate replay took 117.34s. All 54 actual training traces and an aggregate
+figure are retained; 35 focused checks pass in 7.02s. Raw data and weights are
+not published. I retain the existing deployment and keep independent roles
+closed. See the [complete result](outputs/publication_readiness_2026_09/european_admission_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_admission_cost_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_admission_cost_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_admission_cost_v1/paper_addendum.md)
+and [local reproduction guide](outputs/publication_readiness_2026_09/european_admission_cost_v1/reproduction_zh.md).
 
 ### Original-Budget Score Learning Registered
 

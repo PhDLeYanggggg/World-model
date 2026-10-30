@@ -69,15 +69,15 @@ def render(value):
         'The full upper-score/five-moment/ranking loss remains. Inputs, width, initialization,',
         'sampling, normalization, proposal bank, decoder and original 2% risk rule do not change.',
         'This is a cost-head learning experiment, not a newly trained trajectory producer.', '',
-        f"All54heads complete2000updates:108000primary updates,2000full-refit updates and160pilot updates.",
-        f"All36original/upper full scientific states match; the admitted head full refit is exact.",
-        f"Training PID{train['pid']} took{train['seconds']:.3f}s, peak RSS{train['peak_RSS_bytes']}B.",
-        f"Readout PID{read['pid']} took{read['seconds']:.3f}s, peak RSS{read['peak_RSS_bytes']}B.",
-        f"All72groups and144control prediction/action/full-metric checks agree in a separate replay.",
-        f"Private primary checkpoint size:{value['checkpoint_bytes']}B. All54actual traces accompany this report.", '',
+        "All 54 heads complete 2,000 updates: 108,000 primary updates, 2,000 full-refit updates and 160 pilot updates.",
+        "All 36 original/upper full scientific states match; the admitted head full refit is exact.",
+        f"Training PID {train['pid']} took {train['seconds']:.3f}s, peak RSS {train['peak_RSS_bytes']}B.",
+        f"Readout PID {read['pid']} took {read['seconds']:.3f}s, peak RSS {read['peak_RSS_bytes']}B.",
+        "All 72 groups and 144 control prediction/action/full-metric checks agree in a separate replay.",
+        f"Private primary checkpoint size: {value['checkpoint_bytes']}B. All 54 actual traces accompany this report.", '',
         '## Complete-policy results', '',
-        'Known ADE gain versus the frozen floor; percentage points, equal locality, 95% bootstrap interval.',
-        'Three controller seeds,3000resamples over12localities after context/seed averaging.', '',
+        'Known ADE gain (%) versus the frozen floor; equal locality, 95% bootstrap interval.',
+        'Three controller seeds, 3,000 resamples over 12 localities after context/seed averaging.', '',
         '|Objective|Known ADE gain|Supported recording views|Known easy risk violations|Known all risk violations|Undefined easy views|',
         '|---|---:|---:|---:|---:|---:|']
     for o in run.api.OBJECTIVES:
@@ -89,7 +89,7 @@ def render(value):
         lines.append(f"|{name}|{fmt(item['full_known_pp'])}|{fmt(item['full_lower_pp'])}|")
     lines.append(f"|Same admitted head actual neural use|{fmt(s['actual_neural_use']['full_known_pp'])}|{fmt(s['actual_neural_use']['full_lower_pp'])}|")
     lines += ['', 'Completion sensitivity varies wholly unknown-row policy disagreement only. Partial observed',
-        'ADE remains fixed at its original available-point estimand; it is not full12-step recovery.',
+        'ADE remains fixed at its original available-point estimand; it is not full 12-step recovery.',
         'The complete-roster FDE is not estimable where a required locality lacks endpoints.',
         'Same-count comparisons are utility-only; empty is not estimable, never safe zero.', '',
         '## Selection failure mechanism', '',
@@ -102,20 +102,20 @@ def render(value):
             f"{ch['observed_harm_mass']:.6f}|{ch['predicted_harm_mass']:.6f}|")
     lines += ['', 'Arithmetic witnesses use future evaluation labels only, never deployment rules or causal proof.',
         'Pooled counts and masses are overlapping fitting views, not independent samples or metric quantities.',
-        'Support remains149510unique queries,74recordings,12localities; no test/independent outcome opens.', '',
+        'Support remains 149,510 unique queries, 74 recordings, 12 localities; no test/independent outcome opens.', '',
         '## Gates', '']
     lines += [f"- {name}: {'pass' if passed else 'fail'}" for name, passed in gates.items()]
-    lines += ['', f"Fitting-progress gates:{sum(gates.values())}/{len(gates)}. Complete advancement:{s['fitting_advancement_gate']}.",
+    lines += ['', f"Fitting-progress gates: {sum(gates.values())}/{len(gates)}. Complete advancement: {s['fitting_advancement_gate']}.",
         'No independent confirmation, deployment change or submission-ready claim follows from fitting gates.', '',
         '## Limitations and next action', '',
-        'The global2% selected-reference rule remains mandatory in every required recording. Positive',
+        'The original 2% selected-reference rule remains mandatory in every required recording. Positive',
         'utility, fewer unsafe rows or positive actual-neural-use contrast cannot replace that rule.',
         'This experiment uses exposed development data; all intervals are conditional and exploratory.',
         'If recording risk or primary utility still fails, retain the fallback and diagnose the changed',
         'selected population before another distinct repair. Do not tune on reserved outcomes.',
         'Independent calibration/confirmation and a defensible primary contribution remain required.',
         'This supplied detector-silver top-down task remains pixel/raw-frame, not metric, seconds-level,',
-        'human gold, true3D or foundation world modeling. No Stage5C execution or SMC.', '']
+        'human gold, true 3D or foundation world modeling. No Stage5C execution or SMC.', '']
     return '\n'.join(lines)
 
 
@@ -129,13 +129,17 @@ def figures(value):
     s = value['summary']; labels = ['Original', 'Upper score', 'Online admission']
     objects = run.api.OBJECTIVES
     fig, ax = plt.subplots(1, 2, figsize=(12, 4.5), gridspec_kw={'width_ratios': [1, 1.5]})
-    for i, (o, color) in enumerate(zip(objects, ('#555555', '#007C91', '#8B3F72'))):
-        v = s['accuracy'][o]; low, high = v['CI95']
+    contrasts = (s['comparisons']['admitted_minus_upper']['full_known_pp'],
+                 s['comparisons']['admitted_minus_original']['full_known_pp'],
+                 s['actual_neural_use']['full_known_pp'])
+    for i, (v, color) in enumerate(zip(contrasts, ('#B44D48', '#555555', '#007C91'))):
+        low, high = v['CI95']
         ax[0].errorbar(v['point'], i, xerr=[[v['point']-low], [high-v['point']]],
             color=color, fmt='o', capsize=4)
-    ax[0].set_yticks(range(3), labels)
-    ax[0].set_xlabel('Known ADE gain (%) vs frozen floor')
-    ax[0].set_title('Fitting utility: locality bootstrap95% CI', fontsize=11)
+    ax[0].set_yticks(range(3), ['Online - upper', 'Online - original', 'Actual neural use'])
+    ax[0].set_xlabel('Paired known ADE increment (pp)')
+    ax[0].axvline(0, color='#888888', linewidth=.8)
+    ax[0].set_title('Fitting utility: locality bootstrap 95% CI', fontsize=11)
     ax[0].invert_yaxis(); ax[0].grid(axis='x', alpha=.2)
     metrics = ('supported_record_views', 'known_easy_risk_violations', 'undefined_easy_record_views')
     x = np.arange(3)
@@ -156,7 +160,7 @@ def figures(value):
 
 def main():
     value = build()
-    run.write(run.PUBLIC / 'readout.md', render(value))
+    (run.PUBLIC / 'readout.md').write_text(render(value))
     run.write(run.PUBLIC / 'training_traces.json', dict(heads=54, actual_optimizer_traces=value['traces']))
     figures(value)
     run.write(run.PUBLIC / 'evidence.json', dict(
@@ -164,6 +168,7 @@ def main():
         verified_complete_sha256=run.sha(run.PUBLIC / 'complete.json'),
         verification_sha256=run.sha(run.PUBLIC / 'verification.json'),
         report_code_sha256=run.sha(Path(__file__)),
+        artifact_test_code_sha256=run.sha(ROOT / 'tests/test_m3w_admission_artifacts.py'),
         readout_sha256=run.sha(run.PUBLIC / 'readout.md'),
         traces_sha256=run.sha(run.PUBLIC / 'training_traces.json'),
         figure_sha256=run.sha(run.PUBLIC / 'figures/admission_summary.svg'),
