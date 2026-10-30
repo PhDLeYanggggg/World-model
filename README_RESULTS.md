@@ -7,6 +7,23 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Raw Future-Label Provenance Audit Registered
+
+The previous goal turn is progress: 72 real producers and complete exact
+inference replay establish a known-label input effect, not deployment safety.
+The next registered check independently looks up original raw future rows on
+the same 74 recordings/149,510 fitting queries. It does not call the converter's
+per-track lookup, modify labels, rescore forecasts, shorten the horizon or open
+controller-held/independent outcomes. Missing steps are partitioned by supplied
+record range, scoped ID detection range and interior frame support; none is
+automatically interpreted as a physical exit or a verified video end.
+
+Eighteen focused provenance/import/entry checks pass in0.38s. A test first
+exposed missing parent creation in the inherited receipt writer; a new local
+atomic immutable writer fixes that before any real raw-label access. The old
+registered writer and numerical experiments are unchanged. Raw pilot/full audit
+remain not_run at registration. See the [fixed protocol](outputs/publication_readiness_2026_09/european_source_label_provenance_v1/protocol.md).
+
 ### Detector Tokens In Trajectory Dynamics: Full Training Frozen
 
 The next test moves past detector information into the Transformer rather than

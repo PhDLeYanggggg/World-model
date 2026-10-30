@@ -25,6 +25,12 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am now tracing missing future labels back to the original export on the same
+149,510 allowed SOURCE queries. The independent raw lookup keeps the existing
+population, prediction horizon and risk rule. Its code checks pass; no new raw
+label result is claimed at registration. This will distinguish an import error
+from genuinely absent observations before the next frozen-bank decision study.
+
 **30 October: the new input is now reaching the trajectory model itself.**
 I extended the verified detector-history store to all **318,969 producer rows
 across 163 SOURCE recordings**, rather than treating the smaller routing cache
