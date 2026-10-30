@@ -28,14 +28,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 **30 October: the new input is now reaching the trajectory model itself.**
 I extended the verified detector-history store to all **318,969 producer rows
 across 163 SOURCE recordings**, rather than treating the smaller routing cache
-as the whole training set. The raw-input replay agrees exactly. I am training
+as the whole training set. The raw-input replay agrees exactly. I have trained
 **72 matched Transformer forecasters** with the original folds, three seeds,
-and all 4,000 updates per model. The 36 primary single-fold models have finished;
-the complementary-fold controls are still running. The first full history refit
-and the completed disabled controls reproduce their scientific state exactly.
+and all 4,000 updates per model: **288,000 primary updates**, plus a separate
+4,000-update full refit and 900 pilot updates. The complete CPU run took
+94.5 minutes, with 2.40 GB peak memory. All 18 disabled controls and the first
+full history refit reproduce their scientific state exactly.
 
-No new forecast results have been scored yet. I will freeze every endpoint
-before the fixed development readout. Better proposals would answer a different
+Every endpoint is frozen before the fixed development readout. No new forecast
+results have been scored at this freeze. Better proposals would answer a different
 question from a safe switching policy; they would not erase the negative result
 below or open the independent evaluation sets.
 [Registered experiment](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/protocol.md).

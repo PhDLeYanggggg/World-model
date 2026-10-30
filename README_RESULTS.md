@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Detector Tokens In Trajectory Dynamics Registered
+### Detector Tokens In Trajectory Dynamics: Full Training Frozen
 
 The next test moves past detector information into the Transformer rather than
 only into routing. All18original producer fold/seed designs are retained with
@@ -53,6 +53,15 @@ and 18 paired producer populations without multiplying them by four input arms.
 The original stationary ego-motion budget is explicitly retained: detector
 shape changes cannot unlock a stationary-to-moving prediction in this run.
 Interpretation rules are committed before any new forecast score is read.
+
+All 72 producers now finish in native Torch, PID47833 exit0, 5,669.635506s,
+peak RSS2,399,272,960B. Actual primary work is 288,000 updates, plus 4,000
+full-refit and 900 pilot updates. All 18 disabled complete scientific states
+match the original endpoints. No rows, models or steps were reduced. All 72
+endpoint receipts and the complete roster are frozen before forecast scoring.
+The expanded input/model/recovery/readout scope passes 12 tests in 3.05s.
+Readout and proposal effectiveness remain not_run at this freeze; deployment
+and independent roles are unchanged.
 
 ### Producer Inputs: Full Coverage Repair Registered
 

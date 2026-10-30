@@ -5,8 +5,11 @@
 This is a controlled input study, not a deployment promotion or a complete
 multimodal world model. Past detection-box measurements are supplied to the
 trajectory producer, following a negative experiment that supplied them only
-to intervention-cost heads. Full training is in progress at this card's first
-commit; the eventual readout and evidence receipts determine its result.
+to intervention-cost heads. All 72 producers now complete, PID47833 exit0,
+in 5,669.635506 seconds with peak RSS 2,399,272,960 bytes. All 18 disabled
+endpoints and the first complete history refit match their scientific state.
+No forecast score is read at this training freeze; the eventual readout and
+evidence receipts determine effectiveness.
 
 ## Architecture
 
