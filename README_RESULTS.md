@@ -160,6 +160,14 @@ runtime. Full36-head training runs as PID69758 with checkpoint100/heartbeat50;
 both first full2,000-step scientific refits already agree. Full training and
 new policy outcomes are not yet complete. No deployment or independent promotion.
 
+The current-query reporter separates a comparable fixed-original-set probe and
+all-action point loss from the moving-set masked training term and complete-
+query coverage. The fixed control has no logged moving-set curve;one is not
+invented. Nine current-query model/readout/report checks pass in2.95s. Four
+real-artifact checks are added for execution after their training/readout
+prerequisites exist;they are not yet claimed passed. Scientific files and all
+currently running training settings stay unchanged.
+
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it
 recomputes a creation-time boolean. The old registration/code/results are not

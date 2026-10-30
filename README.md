@@ -72,7 +72,9 @@ The next matched experiment changes only the frozen training selection to the
 current decoder's detached selection in the query loss. Its real 600-update
 pilot passes exact fixed-control and recovery checks in 38.36 seconds; full
 paired training is running. This is offline risk learning, not online deployment
-or new trajectory dynamics. [Current-query design](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/protocol.md).
+or new trajectory dynamics. The report keeps a common original-set probe
+separate from the moving masked loss and its supervision coverage.
+[Current-query design](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/protocol.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
