@@ -1,5 +1,10 @@
 # Full Current-Query Readout: Negative Primary Result
 
+Status update2026-10-30T15:00Z:the separate full replay below subsequently
+finished in623.356s at peakRSS11,088,609,280B. All72 groups,144 controls and
+the canonical summary agree exactly. [Complete readout](readout.md) and
+verification.json record that later result;the first-readout timing is retained.
+
 ## Evidence status
 
 fresh_run:36 native Torch risk-critic fits,72,000 primary updates and4,000

@@ -162,16 +162,19 @@ first full2,000-step scientific refits agree. Freeze SHA256 is
 `ef19c8d78302e235b233b89634055617143c35bebd8f14ea7092d9ae3d566997`.
 The first complete72-group policy readout PID73583 exits0 in628.181908s at
 peakRSS10,999,578,624B. All144 frozen-query full-policy controls agree.
-Separate complete replay PID75450 is running;no replay agreement is yet claimed.
-No deployment or independent promotion.
+Separate complete replay PID75450 exits0 in623.356374s at peakRSS
+11,088,609,280B. All72 groups,144 fixed-query full-policy controls and the
+canonical summary agree exactly. No deployment or independent promotion.
 
 The current-query reporter separates a comparable fixed-original-set probe and
 all-action point loss from the moving-set masked training term and complete-
 query coverage. The fixed control has no logged moving-set curve;one is not
 invented. Nine current-query model/readout/report checks pass in2.95s. The
-reporting and real-training artifact subset passes4 tests in4.61s;the two
-complete-replay artifact checks still wait for that prerequisite. Scientific
-files and all registered settings stay unchanged. Common fixed-set probe
+reporting and real-training artifact subset passes4 tests in4.61s. After
+complete replay and report generation,the18-file focused suite passes71
+checks in11.57s,including all four actual current-training/readout artifact
+checks. This is not the full repository suite. Scientific files and all
+registered settings stay unchanged. Common fixed-set probe
 medians worsen to0.000600934 row and0.000477941 set,versus fixed-query
 0.000144110/0.000153624. The current moving masked term is not substituted for
 this common-population probe or used to select a checkpoint.
@@ -190,7 +193,11 @@ has known +0.179028pp CI[-0.159545,+0.584688] and lower -1.589234pp
 CI[-2.936624,-0.477403]. These secondary contrasts do not override the failed
 primary or original risk gate. All-action risk MSE is0.144729 row/0.143632 set,
 not probability ECE or final-policy calibration. The1,685,298B metric-only
-archive preserves all72 aggregate files. Independent roles remain closed.
+archive preserves all72 aggregate files. The full readout,training/policy
+figures,failure analysis,model/data card,statistical safeguards,results component
+and reproduction guide are published. The main set decoder retains feasible
+anchors on two numerical postcheck failures;there are no solver-status timeouts
+and all-query optimality is not claimed. Independent roles remain closed.
 
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it

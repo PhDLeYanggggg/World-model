@@ -25,66 +25,37 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I completed a controlled risk-learning experiment with 36 equally sized heads
-and 72 allocation groups. A head with the original selected-action context
-does not beat the matched row-local head: its known ADE gain is 6.575% versus
-7.185%, a difference of -0.610 percentage points, with a conditional locality
-interval of [-0.880, -0.349]. Complete-recording risk also fails. These are
-exposed source-fitting results, not independent evidence or a deployed model.
-A separate 28.27-minute complete replay agrees on all 72 groups and 144 original
-full-policy controls. That verifies reproducibility, not independent efficacy.
+I tested whether a risk head should learn from the actions it currently selects,
+rather than a fixed original selection. The forecasts, features, model size,
+loss units, sampling and decision rule stay unchanged. All 36 new Torch fits
+finish 72,000 updates plus two complete refits in 31.29 minutes at 10.80 GB peak
+memory. A full readout and separate 10.39-minute replay agree on all 72 groups
+and 144 fixed-policy controls. This is reproducible source fitting, not an
+independent test or a new trajectory model.
 
-All 36 real Torch fits finish 72,000 updates in 4.92 minutes at 8.78 GB peak
-memory. Both first-head 2,000-step refits agree exactly. The total fitting loss
-falls, but the query-score component does not improve and its gradient is
-typically below 0.1% of the all-action term. Lower total loss has not repaired
-the decision rule.
-[Real training curves](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/training_report.md).
+The result is negative. For the selected-set head, known-label ADE gain over
+the floor falls from 8.215% to 6.783%. The prespecified paired completion-lower
+increment is -7.087 percentage points [-13.238, -2.904]. Only 11/444 recording-
+risk views are supported, with 313 known easy-risk violations. Reducing
+interventions from 410,575 to 137,815 does not establish safety. I do not deploy
+this model or change the original 2% risk requirement.
 
-A separately registered, read-only diagnostic completes all 72 groups and an
-exact replay. The old query-loss denominator is about 48 times the RMS of its
-actual target in the all-agent channel and 18 times in the easy channel
-(medians across heads). I have registered a one-factor experiment that uses the
-actual selected-query target RMS instead. Architecture, sampling, loss weights,
-forecasts and allocation stay unchanged. The design was chosen from training
-telemetry and the scale diagnostic. Its real 600-update pilot finishes in
-21.24 seconds with exact old-control reproduction and interrupted recovery.
-All 36 full fits finish in 5.00 minutes, including two exact full refits, at
-10.45 GB peak memory. In original units, median query-monitor error falls from
-about 0.00044 to 0.00015, but pointwise risk error is worse.
+The preceding unit correction did improve known-label utility from 6.575% to
+8.215%, but also failed robust utility and complete-recording risk. The new
+experiment shows that changing the training selection alone does not close
+that gap. The common fixed-set probe and all-action risk error both worsen;
+the moving masked loss is not treated as error on the same population.
 
-The complete readout now shows a real but limited fitting improvement: known-label
-ADE gain rises from 6.575% to 8.215%, a paired +1.641 percentage points
-[+1.102, +2.252]. All 12 exposed localities improve. The prespecified
-unknown-completion-lower increment is -2.598 pp [-7.642, +0.293], however, and
-only 1/444 recording-risk views is supported, with 383 known easy-risk
-violations. This is not deployable or independent evidence. A separate complete
-replay agrees on all 72 groups and 144 old-policy controls.
-[Complete result](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/readout.md).
-[Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
-The separately registered score audit and its complete replay also finish.
-Original-set fitting improves, but the final choices still underestimate easy
-harm. Their selected population changes substantially, and missing outcomes
-remain a limitation. This motivates testing selection-target mismatch; it does
-not identify a unique cause or change the policy.
-[Score accounting](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/readout.md).
-The next matched experiment changes only the frozen training selection to the
-current decoder's detached selection in the query loss. Its real 600-update
-pilot passes exact fixed-control and recovery checks in 38.36 seconds. All 36
-paired fits now finish in 31.29 minutes at 10.80 GB peak memory, with two exact
-full refits. The complete policy readout is negative: selected-set known ADE
-gain falls from 8.215% to 6.783%. Its paired completion-lower increment is
--7.087 pp [-13.238, -2.904]; only 11/444 recording-risk views are supported,
-with 313 known easy-risk violations. Fewer interventions do not establish safety.
-A separate full replay is running; exact agreement is not yet claimed.
-This is offline risk learning, not online deployment or new trajectory dynamics.
-The report keeps a common original-set probe separate from the moving masked
-loss and its supervision coverage.
-[Full first readout](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/first_readout.md).
-[Current-query design](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/protocol.md).
-[Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
-[One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
-[Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
+[Complete result](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/readout.md),
+[training curves](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/training_report.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/reproduction.md).
+The [earlier unit repair](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/readout.md)
+and [score audit](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/readout.md)
+remain available with their own controls and limitations. Seventy-one focused
+checks pass; the full repository suite was not rerun. All current intervals
+use 12 already-exposed localities, not independent new scenes. Independent
+calibration and confirmation remain closed.
 
 ### Completed Strong-Bank Control
 

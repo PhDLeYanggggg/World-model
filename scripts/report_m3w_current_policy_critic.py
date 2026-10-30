@@ -234,9 +234,57 @@ def render(value):
     return '\n'.join(lines)
 
 
+def policy_plot(value):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9,
+        'svg.fonttype': 'none', 'svg.hashsalt': run.NAME})
+    s = value['summary']; fig, axes = plt.subplots(1, 3, figsize=(12, 4.4))
+    labels = ('Row / fixed', 'Row / current', 'Set / fixed', 'Set / current')
+    names = ('fixed_query_row_joint', 'row_joint', 'fixed_query_set_joint', 'set_joint')
+    colors = ('#777777', '#007C91', '#777777', '#007C91')
+    for i, (name, color) in enumerate(zip(names, colors)):
+        fixed = name.startswith('fixed_')
+        v = s['fixed_query_accuracy' if fixed else 'accuracy'][name]
+        axes[0].errorbar(v['point'], i,
+            xerr=[[v['point']-v['CI95'][0]], [v['CI95'][1]-v['point']]],
+            fmt='o', color=color, capsize=3)
+    axes[0].set_yticks(range(4), labels); axes[0].invert_yaxis()
+    axes[0].set_title('Known-label utility')
+    axes[0].set_xlabel('ADE gain over floor (%)')
+    v = s['current_query_contrasts']['set']
+    for i, (key, color) in enumerate((('full_known_pp', '#007C91'), ('full_lower_pp', '#B43A32'))):
+        z = v[key]; axes[1].errorbar(z['point'], i,
+            xerr=[[z['point']-z['CI95'][0]], [z['CI95'][1]-z['point']]],
+            fmt='o', color=color, capsize=3)
+    axes[1].set_yticks((0, 1), ('Known', 'Completion lower\n(primary)'))
+    axes[1].invert_yaxis(); axes[1].set_title('Current minus fixed, set joint')
+    axes[1].set_xlabel('Paired utility difference (pp)')
+    for i, name in enumerate(('fixed_query_set_joint', 'set_joint')):
+        r = s['fixed_query_safety' if name.startswith('fixed_') else 'safety'][name]
+        axes[2].barh(i, r['known_easy_risk_violations'], color=('#777777', '#B43A32')[i])
+        axes[2].text(r['known_easy_risk_violations']-5, i,
+            str(r['known_easy_risk_violations']), ha='right', va='center', color='white')
+    axes[2].set_yticks((0, 1), ('Set / fixed', 'Set / current')); axes[2].invert_yaxis()
+    axes[2].set_xlim(0, 444); axes[2].set_title('Known easy-risk violations')
+    axes[2].set_xlabel('Repeated recording views / 444')
+    for ax in axes[:2]: ax.axvline(0, color='#777777', linewidth=.7)
+    for ax in axes: ax.grid(axis='x', alpha=.2); ax.set_axisbelow(True)
+    fig.suptitle('Exposed SOURCE fitting only: 3,000 nominal locality bootstrap draws', fontsize=11)
+    fig.tight_layout(rect=(0, .08, 1, .91))
+    fig.text(.5, .015, 'Original 2% all/easy risk remains failed; intervals do not correct adaptive exposure.',
+        ha='center', fontsize=9)
+    path = run.PUBLIC/'figures'/'current_query_policy.svg'; path.parent.mkdir(exist_ok=True)
+    fig.savefig(path, metadata={'Date': None}, bbox_inches='tight')
+    path.write_text('\n'.join(v.rstrip() for v in path.read_text().splitlines())+'\n')
+    fig.savefig(run.PRIVATE/'current_query_policy.png', dpi=160, bbox_inches='tight'); plt.close(fig)
+
+
 def complete_report():
     value = build(); p = run.PUBLIC; pack(ROOT, p); verify(ROOT, p)
     run.once(p/'replay_runtime.json', value['replay_runtime']); (p/'readout.md').write_text(render(value))
+    policy_plot(value)
     run.write(p/'evidence.json', dict(summary_sha256=run.sha(p/'summary.json'), complete_sha256=run.sha(p/'complete.json'),
         verification_sha256=run.sha(p/'verification.json'), report_code_sha256=run.sha(Path(__file__)),
         report_sha256=run.sha(p/'readout.md'), independent_confirmation=False, deployment_changed=False, submission_ready=False))
