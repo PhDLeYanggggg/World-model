@@ -25,6 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I have registered the stronger bank comparison: reoptimize the six physical
+forecasts and the seven-action physical/neural bank at the same current-query
+count, determined by the physical independent rule. Both banks keep the same
+cost estimates and 2% predicted-budget rules. This is not neural deletion to
+floor, a new training run or a smaller-cohort safety claim. Nine focused checks
+pass; the real recovery pilot and complete 72-group comparison are next.
+[Shared-count protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
+
+### Preceding Query-Allocation Study
+
 I tested whether joint decisions help when the forecasts and cost estimates
 stay fixed. The primary joint rule uses exactly the original intervention
 count in every recording/frame query, so it cannot win by making more switches.

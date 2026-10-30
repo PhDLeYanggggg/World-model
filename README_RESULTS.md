@@ -7,6 +7,23 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Shared Physical-Count Bank Control Registered
+
+The preceding goal turn is progress:complete current-query allocation and
+attribution both replay exactly,with positive fitting utility and failed risk.
+The new fixed control reoptimizes physical6 and physical+neural7 at the physical
+independent rule's count in every query. A four-control factorial separates
+bank expansion from joint allocation;no new model or future-derived count.
+The neural bank retains the best feasible predicted-gain warm start,including
+the reoptimized physical solution. This guarantees predicted nesting,not
+observed safety. All cohorts,labels,2% criteria and closed roles stay unchanged.
+
+Nine focused tests pass in1.63s,including exhaustive small-bank optima,
+canonical ordering,real interrupted recovery,solver fallback and the secondary
+four-policy contrast's own cancellation-aware unknown bound. No new outcome
+has run. The real pilot and full72-group three-head-seed experiment are next.
+See the [protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
+
 ### Frozen Joint-Allocation Attribution Complete
 
 All72 new attribution groups complete PID25357 exit0 in101.95s,peak RSS10.91GB.
