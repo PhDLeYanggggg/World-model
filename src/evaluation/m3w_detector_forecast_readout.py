@@ -5,6 +5,12 @@ from src.evaluation.m3w_native_metrics import native_errors
 ARMS=('disabled','current','noise','history')
 
 
+def tail_stats(error,take):
+    values=error[take&np.isfinite(error)]
+    return dict(known_rows=len(values),mean=float(values.mean()) if len(values) else None,
+        p95=float(np.quantile(values,.95)) if len(values) else None)
+
+
 def paired_change(old,new,reference,old_prediction,new_prediction,mask):
     known=np.isfinite(old)&np.isfinite(reference)&mask
     np.testing.assert_array_equal(np.isfinite(old),np.isfinite(new))
@@ -52,10 +58,9 @@ def site_readout(ids,sites,recordings,history,target,valid,physical,reference_in
         output[str(site)]=dict(metrics=metrics,contrasts=contrasts,
             records={str(r):dict(rows=int((group&(recordings==r)).sum()),
                 known_rows=int((group&(recordings==r)&np.isfinite(reference[0])).sum()),
-                native_ADE={arm:dict(mean=float(e[0][group&(recordings==r)&np.isfinite(e[0])].mean())
-                    if np.any(group&(recordings==r)&np.isfinite(e[0])) else None,
-                    p95=float(np.quantile(e[0][group&(recordings==r)&np.isfinite(e[0])],.95))
-                    if np.any(group&(recordings==r)&np.isfinite(e[0])) else None) for arm,e in errors.items()})
+                native_ADE={arm:tail_stats(e[0],group&(recordings==r)) for arm,e in errors.items()},
+                reference_ADE=tail_stats(reference[0],group&(recordings==r)),
+                physical_ADE={str(k):tail_stats(e[0],group&(recordings==r)) for k,e in enumerate(baselines)})
                 for r in sorted(set(recordings[group]))})
     stationary=np.max(np.abs(history-history[:,-1:]),axis=(1,2))==0
     return dict(rows=n,sites=output,complete_future_rows=int(valid.all(1).sum()),

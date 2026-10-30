@@ -84,7 +84,8 @@ def execute(verify=False,resume=False):
         if summary!=json.loads((run.PUBLIC/'summary.json').read_text()) or refs!=json.loads(finish.read_text())['groups']:
             raise ValueError('Complete producer summary replay differs')
         run.once(run.PUBLIC/'verification.json',dict(exact_fresh_inference_replay=True,groups=72,
-            summary_sha256=run.sha(run.PUBLIC/'summary.json'),all18disabled_legacy_predictions_exact=True))
+            summary_sha256=run.sha(run.PUBLIC/'summary.json'),complete_sha256=run.sha(finish),
+            all18disabled_legacy_predictions_exact=True))
     else:
         run.once(run.PUBLIC/'summary.json',summary)
         run.once(finish,dict(pid=run.os.getpid(),seconds=time.monotonic()-start,groups=refs,

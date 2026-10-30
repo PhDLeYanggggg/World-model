@@ -17,10 +17,38 @@ def interval(value):
     return 'not_estimable' if value['CI95'] is None else number(value['point'])+' ['+', '.join(number(v) for v in value['CI95'])+']'
 
 
+def support_profile(complete):
+    rows=[];seen=set()
+    for ref in complete['groups']:
+        path=ROOT/ref['path']
+        if run.sha(path)!=ref['sha256']:raise ValueError('Verified readout group changed')
+        row=json.loads(path.read_text());key=row['trial'],row['representation']
+        if key in seen:raise ValueError('Repeated model readout group')
+        seen.add(key)
+        if row['representation']=='history':rows.append(row)
+    if len(seen)!=72 or len(rows)!=18:raise ValueError('Full fixed72arm/18producer readout required')
+    profile={}
+    for kind in ('single','complement'):
+        selected=[r['result'] for r in rows if r['kind']==kind]
+        if len(selected)!=9:raise ValueError('All three folds and three seeds required')
+        records={record for r in selected for site in r['sites'].values() for record in site['records']}
+        profile[kind]=dict(producer_views=len(selected),unique_recordings=len(records),
+            indexed_row_views=sum(r['rows'] for r in selected),
+            complete_future_row_views=sum(r['complete_future_rows'] for r in selected),
+            partial_future_row_views=sum(r['partial_future_rows'] for r in selected),
+            missing_future_row_views=sum(r['missing_future_rows'] for r in selected),
+            stationary_observed_row_views=sum(r['stationary_observed_rows'] for r in selected),
+            stationary_known_nonzero_error_row_views={arm:sum(r['stationary_known_nonzero_error_rows'][arm] for r in selected)
+                for arm in run.api.REPRESENTATIONS},
+            repeated_producer_seed_row_views_not_independent_samples=True)
+    return profile
+
+
 def evidence():
     check=json.loads((run.PUBLIC/'verification.json').read_text());summary=json.loads((run.PUBLIC/'summary.json').read_text())
     if (not check['exact_fresh_inference_replay'] or check['groups']!=72
             or check['summary_sha256']!=run.sha(run.PUBLIC/'summary.json')
+            or check['complete_sha256']!=run.sha(run.PUBLIC/'complete.json')
             or not check['all18disabled_legacy_predictions_exact']):raise ValueError('Complete fresh exact readout replay required')
     models=run.models();traces=[]
     for (trial,arm),row in sorted(models.items()):
@@ -42,6 +70,7 @@ def evidence():
         readout={k:complete[k] for k in ('pid','seconds','peak_RSS_bytes')},
         replay=json.loads((run.PRIVATE/'verification_runtime.json').read_text()),
         checkpoint_bytes=sum(r['checkpoint']['bytes'] for r in models.values()),loss_summary=records,
+        support_profile=support_profile(complete),
         summary_sha256=run.sha(run.PUBLIC/'summary.json'),verification_sha256=run.sha(run.PUBLIC/'verification.json'),
         proposal_gates=summary['proposal_input_gates'],proposal_input_evidence_gate=summary['proposal_input_evidence_gate'],
         learned_policy_safety_evaluated=False,controller_held_scored=False,independent_roles_opened=False,
@@ -78,7 +107,18 @@ def render(value,summary):
         for arm,m in d['representations'].items():
             lines.append('| '+kind+' | '+arm+' | '+' | '.join(interval(v) for v in
                 (m['all']['ADE'],m['all']['FDE'],m['hard']['ADE'],m['easy']['ADE']))+' |')
-    lines+=['','## All Causal Physical Baselines','',
+    lines+=['','## Label Support And Repeated Views','',
+        'These counts repeat original producer-fold/seed views,not independent',
+        'samples. The recording union is reported separately.','',
+        '| Design | Unique recordings | Indexed row views | Complete future | Partial future | Missing future | Stationary observed |',
+        '|---|---:|---:|---:|---:|---:|---:|']
+    for kind,r in value['support_profile'].items():
+        lines.append('| '+kind+' | '+' | '.join(str(r[k]) for k in ('unique_recordings','indexed_row_views',
+            'complete_future_row_views','partial_future_row_views','missing_future_row_views','stationary_observed_row_views'))+' |')
+    lines+=['','The inherited zero ego-motion budget prevents stationary-to-moving',
+        'corrections. Known stationary misses remain counted for every input arm;',
+        'see support_profile in evidence.json. No future label determines inputs.','',
+        '## All Causal Physical Baselines','',
         'These are descriptive paired comparisons,not selection on readout labels.','',
         '| Producer design | Physical baseline | ADE gain %, CI95 | FDE gain %, CI95 |',
         '|---|---|---|---|']

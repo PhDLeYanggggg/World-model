@@ -47,6 +47,13 @@ contrasts, all required localities and the primary-versus-control comparisons.
 Its three focused regression checks pass in 0.52s. This is a progress checkpoint,
 not a proposal gate or a deployment result.
 
+The expanded fixed-readout checks now total six, passing in 1.98s. They retain
+all six physical-baseline tails, label-support counts, undefined empty views
+and 18 paired producer populations without multiplying them by four input arms.
+The original stationary ego-motion budget is explicitly retained: detector
+shape changes cannot unlock a stationary-to-moving prediction in this run.
+Interpretation rules are committed before any new forecast score is read.
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across

@@ -18,6 +18,11 @@ projection adds 512 parameters to the ego tokens, for 89,026 parameters total.
 It does not add a future-input token, RGB encoder, JEPA target, generative
 rollout, learned routing head or new correction specialist.
 
+The inherited motion budget is zero for an exactly stationary ego history.
+Such a row stays on its stationary physical floor even if the future begins
+moving or past box shape changes. These misses remain in loss and readout;
+this controlled input study does not quietly change that architecture limit.
+
 The four registered arms are disabled, current-only, identity-key noise and
 full eight-step detector history. History contains shape, confidence,
 body-relative motion and box overlap together; an improvement would not identify
@@ -72,6 +77,8 @@ physical baselines and each producer's own-fit-selected physical reference.
 It reports masked ADE, endpoint FDE, observed hard/easy subsets, complete-future
 rows, locality and recording diagnostics, and 3,000 locality-bootstrap draws
 after averaging fold/seed views. Overlapping windows are not independent units.
+The 72 arm receipts are not 72 independent data populations: paired arms share
+18 producer designs, three seeds and the same 12 locality clusters.
 
 Partial labels do not identify full 12-step ADE. Wholly unknown rows retain a
 causal forecast-disagreement completion envelope; zero reference mass remains

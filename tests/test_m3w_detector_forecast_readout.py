@@ -1,4 +1,5 @@
 import copy
+import json
 import numpy as np
 import pytest
 from src.evaluation import m3w_detector_forecast_readout as api
@@ -33,6 +34,9 @@ def test_missing_outcomes_remain_in_contrast_and_no_source_is_discarded():
     assert p['lower_pp']['point']==0.
     assert not out['proposal_input_evidence_gate'] and not out['deployment_changed']
     assert out['kinds']['single']['representations']['history']['hard']['ADE']['point'] is None
+    record=next(iter(next(iter(rows[0]['result']['sites'].values()))['records'].values()))
+    assert record['reference_ADE']==dict(known_rows=1,mean=1.,p95=1.)
+    assert set(record['physical_ADE'])=={str(k) for k in range(6)}
     with pytest.raises(ValueError):api.summarize(rows[:-1],jobs,cfg)
     with pytest.raises(ValueError):api.summarize(rows[:-1]+rows[:1],jobs,cfg)
 
@@ -57,10 +61,33 @@ def test_report_keeps_all_baselines_and_undefined_views_explicit():
     rows,jobs,cfg=population();summary=api.summarize(rows,jobs,cfg)
     value=dict(training=dict(pid=1,seconds=1.,peak_RSS_bytes=1),
         readout=dict(pid=2,seconds=1.),replay=dict(pid=3,seconds=1.),
-        loss_summary={},proposal_gates=summary['proposal_input_gates'],
+        loss_summary={},support_profile={},proposal_gates=summary['proposal_input_gates'],
         proposal_input_evidence_gate=False)
     text=report.render(value,summary)
     assert 'not_estimable' in text
     assert all(name in text for name in report.run.source.BASELINES)
     assert 'learned_policy_safety_evaluated: false' in text
     assert 'deployment_changed: false' in text
+
+
+def test_empty_record_tail_is_not_zero_risk():
+    assert api.tail_stats(np.array([np.nan,2.]),np.array([True,False]))==dict(known_rows=0,mean=None,p95=None)
+
+
+def test_support_profile_counts_repeated_views_without_multiplying_by_arms(tmp_path,monkeypatch):
+    from scripts import report_m3w_detector_forecaster as report
+    monkeypatch.setattr(report,'ROOT',tmp_path)
+    rows,_,_=population();refs=[]
+    for i,row in enumerate(rows):
+        path=tmp_path/(str(i)+'.json');path.write_text(json.dumps(row))
+        refs.append(dict(path=path.name,sha256=report.run.sha(path)))
+    out=report.support_profile(dict(groups=refs))
+    assert out['single']['indexed_row_views']==144
+    assert out['single']['missing_future_row_views']==72
+    assert out['single']['complete_future_row_views']==72
+    assert out['single']['unique_recordings']==12
+    assert out['complement']['indexed_row_views']==72
+    with pytest.raises(ValueError):report.support_profile(dict(groups=refs[:-1]))
+    with pytest.raises(ValueError):report.support_profile(dict(groups=refs[:-1]+refs[:1]))
+    (tmp_path/refs[0]['path']).write_text('{}')
+    with pytest.raises(ValueError):report.support_profile(dict(groups=refs))
