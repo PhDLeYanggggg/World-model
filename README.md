@@ -79,8 +79,10 @@ checks pass; this policy is not deployed and no new neural model was trained.
 The next registered control changes position estimation rather than the
 decoder. With the same OLS4/OLS8 velocity, I compare the raw last observation
 with a fitted current position from past observations only. All original rows,
-masks and risk requirements stay fixed. Synthetic and interface checks pass;
-the real pilot and full comparison have not yet run. A stronger physical
+masks and risk requirements stay fixed. Ten synthetic/interface checks pass.
+The real 1,024-row pilot finishes in 4.26 seconds at 5.01 GB peak memory,with
+exact raw controls and saved-chunk reconstruction,without own outcome scoring.
+The full comparison is next. A stronger physical
 baseline would raise the bar for neural value, not count as neural training.
 [Position-anchor protocol](outputs/publication_readiness_2026_09/european_position_anchor_v1/protocol.md).
 

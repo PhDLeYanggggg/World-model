@@ -22,6 +22,11 @@ new real prediction/scoring. The entry point is corrected and a stub-loader
 regression check added. Raw-path/velocity,equivariance,linear-motion,synthetic
 noise,unknown-label and missing-roster checks are included. Real pilot and
 complete readout are not_run at registration;no new forecast benefit is claimed.
+All10 targeted checks pass in1.56s. Real pilot PID89015 exits0 in4.264390s,
+peakRSS5,014,159,360B over1,024 fitting rows. Raw predictions and checkpoint-
+chunk reconstruction agree exactly;own future outcomes are not scored.
+Existing packet construction still checks its old fitting labels. This is not
+a neural training or interrupted-process claim. Full24-group scoring is next.
 
 ### Joint Utility Admissibility: Complete Negative Control
 
