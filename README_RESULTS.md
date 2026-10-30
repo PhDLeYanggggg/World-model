@@ -7,6 +7,31 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Frozen Active Banks: Matched Gain/Harm Learning Registered
+
+The previous goal turn is progress: all 36 actual-active trajectory producers
+and full exact replay complete, while the added-input gate fails. I now test
+whether the same continuous gain/harm learner can use the frozen replacement
+more effectively. The six physical actions, fallback floor, original causal
+row cohort, sampler, physical fitting preprocessing and history-cost schema
+stay fixed. New action6 motion/scene/envelope fields and supervised costs are
+rebuilt together, with separate causal and label interfaces.
+
+Fresh readonly inventory verifies the 144 old heads,36 frozen actual producers,
+318,969 source rows and six original contexts in 13.047858s, peak RSS543,752,192B.
+Every context maps to one of the three actual seed43producers; no winning seed
+or earlier flat backbone enters. Six targeted lazy-replacement,normalization,
+unknown-support,Torch recovery and completed-receipt checks pass in2.12s.
+
+The registered matrix is6contexts times3controller seeds times3banks:
+physical_only,old_neural,new_neural. All54real heads retain2,000steps each,
+108,000planned primary updates and30405parameters. The36old arms must reproduce
+their existing scientific endpoints. Three past-only neural caches precede
+a160update real pilot and full training. Cache construction,pilot,training and
+policy readout remain not_run at this registration. No new outcome roles,
+thresholds,deployment,Stage5C,SMC or submission-readiness promotion.
+See the [fixed experiment](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/protocol.md).
+
 ### Actual Active-Producer Input Repair Registered
 
 Source-code and local-asset reconciliation confirms the current cost bank's

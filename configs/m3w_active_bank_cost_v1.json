@@ -1,0 +1,29 @@
+{
+  "experiment": "european_active_bank_cost_v1",
+  "variants": ["physical_only", "old_neural", "new_neural"],
+  "seeds": [17, 29, 43],
+  "forecaster_seed": 43,
+  "representation": "history",
+  "supervision": "known_only",
+  "training": {
+    "width": 64, "steps": 2000, "batch_size": 128,
+    "learning_rate": 0.001, "gradient_clip": 5.0,
+    "underharm_weight": 4.0, "ranking_weight": 0.5,
+    "heartbeat_every": 50, "checkpoint_every": 100
+  },
+  "risk_budget": 0.02,
+  "pilot_steps": 20,
+  "pilot_resume_at": 10,
+  "cpu_threads": 4,
+  "num_workers": 0,
+  "disk_reserve_bytes": 10737418240,
+  "checkpoint_cap_bytes": 536870912,
+  "hard_runtime_limit_seconds": 43200,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 20261029,
+  "held_scored": false,
+  "independent_roles_opened": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

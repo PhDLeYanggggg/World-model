@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I have registered the next matched bank experiment: keep the same gain/harm
+learner, fitting recordings, sampler and risk rule, and change only the frozen
+neural candidate. The six physical actions remain unchanged. All 54 fits are
+planned across six contexts and three seeds, with the original predictor seed
+43 fixed. The new candidate's features, region context and supervised costs
+are rebuilt together; this is not a threshold search on the last readout.
+[Matched-bank protocol](outputs/publication_readiness_2026_09/european_active_bank_cost_v1/protocol.md).
+
 I traced every requested future label on the same 149,510 allowed SOURCE
 queries back to the original export. All masks and known coordinates agree,
 and a second raw reparse matches exactly. Of 279,192 missing future points,
