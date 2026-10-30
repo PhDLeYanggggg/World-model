@@ -78,6 +78,34 @@ has350known easy-risk violations.Only3/7fixed fitting-progress gates pass.
 All216aggregate JSON groups are frozen byte-exact in3,829,289B,with no raw
 coordinates or weights.Separate complete exact replay is next,no tuning.
 
+Separate PID82735 exits0 in452.165372s,peak RSS11,097,456,640B.All216new
+prediction/action/metric/support groups and the complete summary are exact;
+all72original controls remain exact.The final report regenerates stably.
+All162actual training traces and both aggregate figures are generated and
+visually checked.A separate presentation-only driver moves one legend;
+summary,complete,verification,evidence,training traces and reference-support
+hashes are unchanged.This is not a scientific revision.
+
+All28focused model,gradient,cohort,recovery,inference,readout,artifact and
+bundle tests pass in5.06s,not a full unrelated repository-suite claim.
+The full known easy-reference census is positive in all148seed-deduplicated
+context/record views.The42undefined selected-easy views are not explained
+by a global lack of easy-reference labels.Selected score biases remain
+negative;lower global MSE is not selected-policy risk calibration.
+The upper arm's pooled known hard gain falls1.560986%to1.330585%,while
+easy net gain rises;neither supports masking the312known easy violations.
+
+The[verified result](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/readout.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/model_data_card.md),
+[paper methods](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/paper_methods.md),
+[results addendum](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/paper_addendum.md)
+and[Chinese guide](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/reproduction_zh.md)
+are complete.This is progress toward identifying useful neural intervention,
+not a safe complete-policy repair,independent confirmation or A-conference
+candidate result.The project goal remains active;next is selected-population
+error/support attribution tied to a nonduplicated controlled repair.
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers

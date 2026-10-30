@@ -82,6 +82,8 @@ def test_figure_uses_all18_new_bank_curves_per_objective(tmp_path, monkeypatch):
     report.figures()
     assert (public / 'figures/summary.svg').stat().st_size > 1000
     assert (private / 'summary.png').stat().st_size > 1000
+    assert (public / 'figures/neural_use.svg').stat().st_size > 1000
+    assert (private / 'neural_use.png').stat().st_size > 1000
     (public / 'training_traces.json').write_text(json.dumps(dict(rows=traces[:-1])))
     with pytest.raises(ValueError, match='All18'):
         report.figures()

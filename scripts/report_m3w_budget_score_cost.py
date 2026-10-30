@@ -203,7 +203,8 @@ def render(e, s):
         'stride12raw frames. Not historical SDDt50,human gold,verified live',
         'sensor-as-of,metric/seconds,true3D or foundation evidence. No Stage5C',
         'execution orSMC. Independent evidence and scene-joint decision gaps remain.', '',
-        '[Actual curves](figures/summary.svg),[machine evidence](evidence.json),',
+        '[Actual curves](figures/summary.svg),[neural-use contrast](figures/neural_use.svg),',
+        '[machine evidence](evidence.json),',
         '[failure analysis](failure_analysis.md),[model/data card](model_data_card.md),',
         '[paper addendum](paper_addendum.md),[Chinese guide](reproduction_zh.md).', '']
     return '\n'.join(out)
@@ -281,6 +282,30 @@ def figures():
     fig.savefig(path, metadata={'Date': None})
     path.write_text('\n'.join(v.rstrip() for v in path.read_text().splitlines()) + '\n')
     fig.savefig(run.PRIVATE / 'summary.png', dpi=150)
+    plt.close(fig)
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+    for j, objective in enumerate(run.api.OBJECTIVES):
+        values = s['objectives'][objective]['actual_neural_use']
+        for shift, key, color in ((-.1, 'full_known_pp', '#227d99'), (.1, 'full_lower_pp', '#ae6437')):
+            point = values[key]
+            if point['CI95'] is not None:
+                ax.errorbar(j + shift, point['point'],
+                    yerr=np.array([[point['point'] - point['CI95'][0]], [point['CI95'][1] - point['point']]]),
+                    fmt='o', color=color, capsize=4,
+                    label=('Known labels' if key == 'full_known_pp' else 'Recorded completion lower') if j == 0 else None)
+    ax.set_xticks(range(3), run.api.OBJECTIVES)
+    ax.set_ylabel('Gain vs same head with neural action disabled (pp)')
+    ax.set_title('Actual neural-use contribution: SOURCE fitting evidence only')
+    ax.axhline(0, color='#888888', lw=.7)
+    ax.grid(axis='y', color='#dddddd', lw=.6)
+    ax.set_axisbelow(True)
+    ax.legend(frameon=False, fontsize=8)
+    fig.text(.5, .035, '3,000 locality resamples. Secondary control; complete-policy safety still fails. Not independent confirmation.', ha='center', fontsize=8)
+    fig.subplots_adjust(left=.11, right=.98, top=.88, bottom=.18)
+    path = folder / 'neural_use.svg'
+    fig.savefig(path, metadata={'Date': None})
+    path.write_text('\n'.join(v.rstrip() for v in path.read_text().splitlines()) + '\n')
+    fig.savefig(run.PRIVATE / 'neural_use.png', dpi=150)
     plt.close(fig)
 
 

@@ -25,35 +25,44 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am testing whether directly supervising the two deployed budget scores can
-fix the remaining cost-to-decision mismatch. The comparison keeps the full
-five-moment cost loss and adds either a symmetric score penalty or a penalty
-that weighs risk underprediction more heavily. All inputs, forecast banks,
-seeds and the 2% recording-risk rule stay fixed. The registered matrix has
-162 full fits, including 54 exact original controls. This is a learning
-experiment, not a new safety guarantee or a change to the evaluation rules.
-[Budget-score protocol](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/protocol.md).
+I completed a controlled test of budget-score supervision: keep the full
+five-moment cost loss, then add either a symmetric score penalty or a penalty
+that weighs risk underprediction more heavily. Inputs, forecast banks, seeds
+and the 2% recording-risk rule stay fixed. All **162 cost heads** finish their
+full 2,000 updates in 13.0 minutes, with 10.91 GB peak memory. All 54 original
+training controls and the first complete conservative refit match exactly.
 
-The real nine-cell recovery pilot passes, and the full native Torch run is
-underway with all 2,000 updates per head retained. The first 99 endpoints
-include 33 exact original controls and an exact full conservative-head refit.
-This is a training-progress snapshot, not a policy-effectiveness result.
+For the new neural bank, the results are:
 
-All162 heads now complete in13.0minutes,with10.91GB peak memory. All54
-original full states and the first full conservative refit are exact. I have
-frozen every endpoint before the complete216-group policy readout; no
-effectiveness or deployment gain is claimed from the loss curves alone.
+| Training objective | Known ADE gain over the frozen floor | Supported recording-risk views |
+|---|---:|---:|
+| Original | 1.893% | 37/444 |
+| Symmetric budget score | 3.016% | 19/444 |
+| Conservative budget score | 1.980% | 41/444 |
 
-The full216-group readout is now complete. With the new neural bank,known ADE
-gain is1.893%for the original objective,3.016%for the symmetric score and
-1.980%for the conservative score. The conservative objective's primary
-increment is only+0.087pp,CI[-0.164,+0.414],and recording-risk support remains
-41/444.The symmetric objective improves average accuracy but worsens safety.
-One narrower result is positive:actual neural use in the conservative head
-adds+0.184pp under the missing-outcome lower bound,CI[+0.014,+0.406],against
-the same head with neural use disabled.This is fitting evidence,not a safe
-complete policy or independent confirmation.The initial result is frozen
-before a separate complete replay;deployment is unchanged.
+The primary conservative-minus-original increment is +0.087 percentage
+points, CI [-0.164,+0.414]. The complete strategy has not improved reliably
+or passed safety. The symmetric objective improves average accuracy but
+makes recording risk worse.
+
+One narrower result is positive: actual neural use in the conservative head
+adds +0.184pp under the recorded missing-outcome lower bound, CI
+[+0.014,+0.406], compared with the same head with neural use disabled. That
+local contribution does not rescue the complete policy. All **216 evaluation
+groups** reproduce exactly in a separate process; 28 focused tests pass.
+These are exposed SOURCE fitting results, not independent confirmation.
+Deployment is unchanged. The 444 risk views reuse 74 recordings across
+contexts and seeds, rather than being 444 independent recordings.
+
+The [complete result and actual loss curves](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/failure_analysis.md),
+[methods draft](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/paper_methods.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_budget_score_cost_v1/reproduction_zh.md)
+retain the positive and negative findings. My next priority is the error on
+the population actually selected by the policy, not another blind loss-weight
+or threshold sweep.
+
+### Previous Matched-Bank Study
 
 I have registered the next matched bank experiment: keep the same gain/harm
 learner, fitting recordings, sampler and risk rule, and change only the frozen

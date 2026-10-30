@@ -41,12 +41,17 @@ DataLoader workers0，无多进程数据加载或 Torch 资源探测。保持检
 .venv-pytorch/bin/python scripts/evaluate_m3w_budget_score_cost.py verify
 .venv-pytorch/bin/python scripts/report_m3w_budget_score_cost.py report
 .venv-pytorch/bin/python scripts/report_m3w_budget_score_cost.py figures
+.venv-pytorch/bin/python scripts/render_m3w_budget_score_figures.py
 .venv-pytorch/bin/python scripts/report_m3w_budget_score_cost.py bundle
 ```
 
 代码、注册和训练冻结收据按顺序先提交，再进入依赖它的执行阶段。完成的实验
 不能覆盖。中断后使用同一版本、同一检查点 `--resume`；已完成头只核验并跳过，
 不能把跳过称为本轮新训练。初次完整 `run` 后使用 `verify`，不会改模型或阈值。
+
+额外的图表呈现步骤只移动首个子图图例，避免遮挡误差线；它逐项核验科学汇总、
+完整读出、复现收据、证据、训练曲线和参考支持文件的哈希未变，并保存独立的
+`figure_presentation.json`。这不是改指标或重新选择结果。
 
 每100步原子保存，每50步写心跳，记录 PID、时间和梯度；有进程锁防止重叠执行。
 12小时边界、10GiB剩余空间和512MiB私有检查点保护。日志在 `train.stdout.log`、
