@@ -29,8 +29,9 @@ I completed the stronger bank comparison: reoptimize the six physical
 forecasts and the seven-action physical/neural bank at the same current-query
 count, determined by the physical independent rule. Both banks keep the same
 cost estimates and 2% predicted-budget rules. This is not neural deletion to
-floor, a new training run or a smaller-cohort safety claim. Nine focused checks
-pass. All 72 groups complete in 12.1 minutes. The reoptimized physical bank
+floor, a new training run or a smaller-cohort safety claim. All 72 groups
+complete in 12.1 minutes; a separate 12.6-minute complete replay agrees exactly.
+The reoptimized physical bank
 gains 2.323% known ADE over the floor; adding the frozen neural forecast raises
 that to 2.544% at the same query counts. The paired neural increment is +0.221
 percentage points, with a conditional locality interval of [+0.065, +0.431].
@@ -40,8 +41,17 @@ This supports a modest fitting-time neural contribution beyond the stronger
 physical control, not a safe deployment. Only 47/444 recording-risk views are
 supported, and 322 have known easy-risk violations. The additional interaction
 contrast crosses zero: I cannot claim joint allocation especially amplifies the
-neural bank. A separate complete replay is running as PID 34909.
-[Shared-count protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
+neural bank. All 65 focused checks pass; the full repository test suite was
+not rerun. These remain exposed source-fitting results, not independent confirmation.
+
+The [complete readout](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/failure_analysis.md)
+and [method note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/method_note.md)
+keep the positive neural increment and the failed risk requirement together.
+The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
+also checks why fewer switches need not improve the selected harm/reference ratio.
+My next method comparison will target the risk of the actual selected action set,
+with a matched row-local control. That critic is not yet trained or evaluated.
 
 ### Preceding Query-Allocation Study
 

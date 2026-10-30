@@ -9,6 +9,10 @@ def test_complete_comparison_preserves_counts_and_legacy_controls():
     assert len(value['rows']) == 72 and s['cached_verified_cost_heads'] == 18
     assert s['new_training_updates'] == 0
     assert s['query_views'] == 112596
+    assert value['cohort']['rows'] == 149510
+    assert value['cohort']['current_frame_queries'] == 18766
+    assert value['cohort']['recordings'] == 74
+    assert value['cohort']['repeated_row_views'] == 897060
     assert all(r['legacy_controls_exact'] for r in value['rows'])
     assert all(r['result']['same_count_every_query'] for r in value['rows'])
     counts = [s['safety'][a]['selected'] for a in report.run.api.ARMS]
@@ -43,6 +47,7 @@ def test_complete_reports_and_exact_aggregate_archive():
     assert receipt['report_sha256'] == report.run.sha(p/'readout.md')
     assert receipt['replay_runtime_sha256'] == report.run.sha(p/'replay_runtime.json')
     assert receipt['figure_sha256'] == report.run.sha(p/'figures/shared_count_summary.svg')
+    assert receipt['locality_figure_sha256'] == report.run.sha(p/'figures/shared_count_by_locality.svg')
     result = verify(report.ROOT, p)
     assert result['groups'] == 72 and result['bytes_verified']
     assert not result['raw_data_or_weights_included']

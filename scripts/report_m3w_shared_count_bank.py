@@ -43,16 +43,33 @@ def build():
         for record in row['result']['recordings'].values():
             failures.update(k for k, passed in record['neural_joint']['budget_status']['conditions'].items()
                 if not passed)
+    sources, recordings = {}, set()
+    for row in rows:
+        result = row['result']; key = (row['source'], row['ids_sha256'])
+        counts = {k: result[k] for k in ('rows', 'known_rows', 'unknown_rows')}
+        counts['current_frame_queries'] = result['allocation']['queries']
+        if key in sources and sources[key] != counts:
+            raise ValueError('Repeated source/cohort counts disagree')
+        sources[key] = counts
+        recordings.update((row['source'], rec) for rec in result['recordings'])
+    if len(sources) != 12:
+        raise ValueError('The same twelve original source ID sets are required')
+    cohort = {k: sum(v[k] for v in sources.values()) for k in counts}
+    cohort.update(localities=len(sources), recordings=len(recordings),
+        repeated_row_views=sum(r['result']['rows'] for r in rows),
+        repeated_current_frame_query_views=summary['query_views'],
+        agent_target_rows_not_joint_frame_queries=True, independent_units_not_windows=True)
     seed_effects = {}
     for seed in cfg['seeds']:
         subset = [r for r in rows if r['seed'] == seed]
         seed_effects[str(seed)] = {k: run.evaluation.bank.legacy.interval(subset,
-            lambda r, k=k: r['comparisons']['neural_joint_minus_physical_joint']['full'][k], cfg)
+            lambda r, k=k: r['comparisons']['neural_joint_minus_physical_joint']['full'][k],
+            dict(cfg, seeds=[seed]))
             for k in ('known_pp', 'lower_pp')}
     return dict(summary=summary, complete=complete, rows=rows,
         reason_counts={a: dict(v) for a, v in reasons.items()},
         nonoptimal_queries=dict(nonoptimal), warm_start_counts=dict(warm),
-        primary_failure_conditions=dict(failures), seed_effects=seed_effects,
+        primary_failure_conditions=dict(failures), seed_effects=seed_effects, cohort=cohort,
         verification_runtime=json.loads((public/'replay_runtime.json' if (public/'replay_runtime.json').exists()
             else run.PRIVATE/'verification_runtime.json').read_text()))
 
@@ -121,13 +138,21 @@ def render(value):
         '|---|---:|---:|']
     for seed, v in value['seed_effects'].items():
         lines.append(f"|{seed}|{fmt(v['known_pp'])}|{fmt(v['lower_pp'])}|")
-    lines += ['', '## Fitting gates', '']
+    primary = s['comparisons']['neural_joint_minus_physical_joint']
+    lines += ['', '|Exposed locality|Primary known pp|Completion-lower pp|Completion-upper pp|',
+        '|---|---:|---:|---:|']
+    for name, point in primary['full_known_pp']['by_locality'].items():
+        lines.append(f"|{name}|{point:+.6f}|{primary['full_lower_pp']['by_locality'][name]:+.6f}|"
+            f"{primary['full_upper_pp']['by_locality'][name]:+.6f}|")
+    lines += ['', 'These locality lower/upper endpoints are missing-outcome sensitivity ranges, not per-locality confidence intervals.',
+        '## Fitting gates', '']
     lines += [f"- {k}: {'pass' if passed else 'fail'}" for k, passed in s['fitting_gates'].items()]
     lines += ['', f"{sum(s['fitting_gates'].values())}/{len(s['fitting_gates'])} fitting checks; advancement {s['fitting_advancement_gate']}.",
         'The complete-policy recording criterion remains the original 2% requirement. No safety threshold,',
         'count anchor, label cohort or model is chosen from these readout results.', '',
         '## Limits', '',
-        'The same 149,510 unique source queries, 74 recordings and 12 localities supply repeated views.',
+        f"The same {value['cohort']['rows']:,} unique agent-target rows form {value['cohort']['current_frame_queries']:,} distinct current-frame queries",
+        f"across {value['cohort']['recordings']} recordings and {value['cohort']['localities']} localities. Repeated row views: {value['cohort']['repeated_row_views']:,}.",
         'Three cost-head seeds are not three new forecasters or independent datasets. Query targets are',
         'not guaranteed to cover all visible agents. No pairwise interaction term is optimized.',
         'Wholly-unknown completion bounds do not also bound missing interior labels of partial ADE rows.',
@@ -146,7 +171,7 @@ def main():
     run.once(public/'replay_runtime.json', value['verification_runtime'])
     (public/'readout.md').write_text(render(value))
     run.write(public/'mechanism_diagnostics.json', {k: value[k] for k in
-        ('reason_counts', 'nonoptimal_queries', 'warm_start_counts', 'primary_failure_conditions', 'seed_effects')})
+        ('reason_counts', 'nonoptimal_queries', 'warm_start_counts', 'primary_failure_conditions', 'seed_effects', 'cohort')})
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -180,11 +205,28 @@ def main():
     fig.savefig(path, metadata={'Date': None}, bbox_inches='tight')
     path.write_text('\n'.join(v.rstrip() for v in path.read_text().splitlines())+'\n')
     fig.savefig(run.PRIVATE/'shared_count_summary.png', dpi=160, bbox_inches='tight'); plt.close(fig)
+    primary = s['comparisons']['neural_joint_minus_physical_joint']
+    places = sorted(primary['full_known_pp']['by_locality'])
+    fig, ax = plt.subplots(figsize=(9.5, 5.6))
+    for i, place in enumerate(places):
+        v = primary['full_known_pp']['by_locality'][place]
+        low, high = (primary['full_'+bound+'_pp']['by_locality'][place] for bound in ('lower', 'upper'))
+        ax.errorbar(v, i, xerr=[[max(0, v-low)], [max(0, high-v)]], fmt='o', capsize=3,
+            color='#007C91' if v > 0 else '#B44D48')
+    ax.set_yticks(range(len(places)), places); ax.invert_yaxis()
+    ax.axvline(0, color='#888888', linewidth=.8); ax.grid(axis='x', alpha=.2)
+    ax.set_xlabel('Neural joint minus physical joint (percentage points)')
+    ax.set_title('Exposed locality points; whiskers are completion ranges, NOT confidence intervals', fontsize=10)
+    fig.tight_layout(); locality_path = folder/'shared_count_by_locality.svg'
+    fig.savefig(locality_path, metadata={'Date': None}, bbox_inches='tight')
+    locality_path.write_text('\n'.join(v.rstrip() for v in locality_path.read_text().splitlines())+'\n')
+    fig.savefig(run.PRIVATE/'shared_count_by_locality.png', dpi=160, bbox_inches='tight'); plt.close(fig)
     run.write(public/'evidence.json', dict(summary_sha256=run.sha(public/'summary.json'),
         complete_sha256=run.sha(public/'complete.json'), verification_sha256=run.sha(public/'verification.json'),
         replay_runtime_sha256=run.sha(public/'replay_runtime.json'),
         report_code_sha256=run.sha(Path(__file__)), report_sha256=run.sha(public/'readout.md'),
         figure_sha256=run.sha(path), scientific_rescoring=False, new_training_updates=0,
+        locality_figure_sha256=run.sha(locality_path),
         independent_confirmation=False, deployment_changed=False, submission_ready=False))
     print(json.dumps(dict(report_generated=True, gates=s['fitting_gates'], deployment_changed=False)))
 

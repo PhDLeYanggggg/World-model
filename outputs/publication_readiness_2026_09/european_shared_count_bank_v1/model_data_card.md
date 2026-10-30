@@ -10,9 +10,9 @@ a newly trained world model. Deployment is unchanged.
 ## Components
 
 - Six physical trajectories: position, causal finite-difference velocity,
-  damping0.90/0.97, history OLS4/OLS8 velocity.
+  damping 0.90/0.97, history OLS4/OLS8 velocity.
 - One previously trained history forecaster, producer seed43, unchanged.
-- Eighteen cached_verified cost heads: six context partitions, seeds17/29/43.
+- Eighteen cached_verified cost heads: six context partitions, seeds 17/29/43.
 - Four fresh decoders at the physical independent rule's per-query count.
 - Two previously frozen seven-action controls, freshly rescored; their old
   joint choices are cached_verified, not solved again in this experiment.
@@ -21,9 +21,10 @@ a newly trained world model. Deployment is unchanged.
 ## Data and labels
 
 European-source image-local detector-silver trajectories use eight observed
-and twelve requested future steps at raw stride12. The same149,510 unique
-target queries,74 recordings and12 localities generate repeated context/seed
-views. These views and overlapping windows are not independent observations.
+and twelve requested future steps at raw stride12. The same 149,510 unique
+agent-target rows form 18,766 current-frame queries across 74 recordings and 12
+localities. They generate 897,060 repeated row and 112,596 frame-query views.
+These repeated views and overlapping windows are not independent observations.
 Future ADE/FDE, easy and hard labels enter scoring only, not allocation inputs.
 
 Inputs are past-only causal features, frozen candidate paths and moment

@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Shared Physical-Count Bank Readout Complete; Separate Replay Running
+### Shared Physical-Count Bank Readout and Exact Replay Complete
 
 The preceding goal turn is progress:complete current-query allocation and
 attribution both replay exactly,with positive fitting utility and failed risk.
@@ -26,8 +26,9 @@ causal queries and3267rows. Direct and deliberately interrupted/resumed
 allocation agree exactly. Every query matches the four controls' counts;
 all256 physical/neural optimizations meet their predicted-budget postchecks.
 The complete72-group readout PID32631 exits0 in724.190s,peak9.810GB. Separate
-complete inference/optimization/metric replay is running PID34909. The pilot
-projection was a rough single-source extrapolation,not the measured runtime.
+complete inference/optimization/metric replay PID34909 exits0 in753.267s,
+peak7.616GB. All72 groups and144 legacy full-policy controls agree exactly.
+The pilot projection was a rough single-source extrapolation,not measured runtime.
 
 Known ADE gain:physical independent1.710155%,neural trimmed1.900218%,physical
 joint2.322960%,neural joint2.544091%. Primary neural-minus-physical joint is
@@ -41,9 +42,27 @@ supported record views,229 known all-risk violations,322 known easy violations
 and43 undefined easy views. Physical/neural solver postchecks reject4/7
 solutions and retain feasible warm anchors;none is called exact. Fitting
 checks6/8,advancement false. This is exposed SOURCE fitting,zero new training,
-not safe deployment,independent confirmation or submission readiness. Sixty
-focused tests pass in9.86s;full repository tests are not rerun.
-See the [protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
+not safe deployment,independent confirmation or submission readiness. The
+aggregate bundle contains72 exact metric files in898645bytes,not row data,
+weights or images. The149510 unique agent-target rows form18766 distinct
+current-frame queries;897060 row views and112596 frame-query views reuse them.
+
+Sixty-five focused tests pass in9.62s;full repository tests are not rerun.
+An initial report-only single-seed reducer used the full three-seed setting;
+the corrected diagnostic uses its actual one-seed roster. Frozen main metrics,
+inference,choices and registration are unchanged. Repeated report/figure
+generation hashes match;both SVGs parse and their PNG previews were inspected.
+Seed29's primary completion-lower interval crosses zero even though all three
+head-seed point estimates are positive. No claim of uniformly positive seeds.
+
+See [complete readout](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/failure_analysis.md),
+[paper component](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/paper_results_component.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/reproduction.md).
+The next selected-query risk critic is not registered/trained/evaluated yet;
+it must differ from the old peer-mean/coarse-cell negative studies. A synthetic
+scorer counterexample and primary-source calibration note show why pruning
+alone does not imply monotone selected-risk reduction. No role is opened.
 
 ### Frozen Joint-Allocation Attribution Complete
 
