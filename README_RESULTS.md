@@ -42,6 +42,14 @@ independent2,000step refit. All162fits remain scheduled. Fixed216group
 readout,causal inference,missing-support,artifact and bundle checks now total
 21passing tests in4.40s. No new policy score is read at this snapshot.
 
+All162heads complete PID78301 exit0 in777.652540s,peak RSS10,908,450,816B.
+All324,000primary updates,2,000extra full-refit updates and420pilot updates
+are retained.All54original complete scientific states reproduce exactly;
+the first upper_score/new_neural full refit is exact.All162checkpoint and
+receipt hashes verify,with69,194,742B private weights.The full endpoint
+freeze precedes every new policy score.No independent role or deployment
+opens;the fixed216group readout is next.
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers

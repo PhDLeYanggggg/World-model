@@ -54,3 +54,19 @@ def test_unknown_support_keeps_conservative_gate_failed_despite_known_gain():
     assert result['objectives']['upper_score']['accuracy']['new_neural']['point'] > 0
     assert not result['fitting_gates']['complete_primary_recording_risk']
     assert not result['fitting_advancement_gate']
+
+
+def test_exact_harm_prediction_with_inflated_reference_can_still_create_false_safe_switch():
+    truth = np.tile(np.array([.2, .1, 1., .5, .05]), (1, 7, 1))
+    predicted = truth.copy()
+    predicted[..., 2:4] *= 10
+    allowed = np.zeros((1, 7), bool)
+    allowed[:, 6] = True
+    choice, _ = api.bank.cost.select_actions(predicted, allowed, arm='physical_neural')
+    assert choice.tolist() == [6]
+    assert truth[0, 6, 1] / truth[0, 6, 2] > .02
+    assert truth[0, 6, 4] / truth[0, 6, 3] > .02
+    p = dict(y=truth, allowed=allowed, scales=np.ones(1))
+    d = api.score_diagnostics(p, predicted, choice, 'new_neural', np.ones(5))
+    assert d['selected_score_underprediction_views'] == [1, 1]
+    assert all(v < 0 for v in d['selected_normalized_score_bias'])

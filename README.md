@@ -39,6 +39,11 @@ underway with all 2,000 updates per head retained. The first 99 endpoints
 include 33 exact original controls and an exact full conservative-head refit.
 This is a training-progress snapshot, not a policy-effectiveness result.
 
+All162 heads now complete in13.0minutes,with10.91GB peak memory. All54
+original full states and the first full conservative refit are exact. I have
+frozen every endpoint before the complete216-group policy readout; no
+effectiveness or deployment gain is claimed from the loss curves alone.
+
 I have registered the next matched bank experiment: keep the same gain/harm
 learner, fitting recordings, sampler and risk rule, and change only the frozen
 neural candidate. The six physical actions remain unchanged. All 54 fits are
