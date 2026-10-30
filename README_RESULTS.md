@@ -72,8 +72,19 @@ original selected-query signed target, floored at 1e-6. The all-action term,
 0.5/0.5 weights, model, sampler, decoder and all forecasts remain unchanged.
 Real pilot PID53213 exits0 in 21.237628s at peak RSS 6,468,075,520B, with all
 600 actual updates, exact old-control reproduction, exact interrupted recovery
-and paired draws. Full training is running as PID55207; new policy outcomes
-are not run. Its design follows telemetry and the verified diagnostic, not
+and paired draws. Full training PID55207 exits0 in 299.777613s at peak RSS
+10,450,976,768B: all 36 fits, 72,000 primary updates and both full 2,000-step
+exact refits. Training freeze SHA256 is
+`b0dfea932eb2f61431dce7a667bf9eee1e30eb79c052034bce54eff7d24dcf9a`.
+Median original-unit query monitor changes old->new:
+row 0.000443910->0.000144110, set 0.000448284->0.000153624.
+Query-monitor decreases in 15/18 row and 16/18 set heads, versus 8/18 and10/18
+original heads. Same-batch query/point gradient medians become 1.757648/1.634624,
+not the original approximately0.0008/0.0007. Pointwise risk monitor is worse:
+0.071484->0.078885 row and0.064269->0.078215 set. All unknown draws still have
+zero supervised loss. These fixed fitting monitors select no checkpoint and
+are not policy/calibration success. New policy outcomes are not run.
+Its design follows telemetry and the verified diagnostic, not
 selection among the completed parent policy scores.
 Independent roles, deployment, Stage5C and SMC remain closed.
 
@@ -82,7 +93,10 @@ bug: the original entry point exits1 after parent completion because it
 recomputes a creation-time boolean. The old registration/code/results are not
 edited. A hash-registered execution adapter preserves only that historical
 event; every scientific identity still requires exact equality. Nine focused
-diagnostic/adapter checks pass in 0.20s. Its new complete replay is not run yet.
+diagnostic/adapter checks pass in 0.20s. The amended cold replay completes as
+PID56421 in 115.853667s and exactly reproduces all 72 original groups/summary.
+All original result and registration hashes remain unchanged; it is an
+execution repair, not another scientific experiment or new policy score.
 See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 See the [diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md)
 and [unit-repair design](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).

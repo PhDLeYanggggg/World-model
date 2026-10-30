@@ -52,8 +52,10 @@ and diagnosis only; none enters the inference features.
 The original execution records remain immutable. The registration captured
 whether the parent's readout was complete at registration time; current replay
 must preserve that historical event value rather than recompute it. A cold
-execution adapter is pending, so the completed exact replay is not a claim
-that the original entry point works unchanged after the parent completes.
+execution adapter is now registered and separately run. PID56421 completes in
+115.854 seconds with all 72 groups and the summary exact. The original
+registration, source and results stay unchanged. This does not claim the old
+entry point works unchanged; use the [explicit adapter](execution_amendment.md).
 
 Task: obs8/pred12 at raw stride12, detector-silver/local-image coordinates.
 No metric, seconds-level, human-gold, true3D, foundation, independent-success,

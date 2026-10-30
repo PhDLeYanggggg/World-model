@@ -47,9 +47,12 @@ actual target in the all-agent channel and 18 times in the easy channel
 actual selected-query target RMS instead. Architecture, sampling, loss weights,
 forecasts and allocation stay unchanged. The design was chosen from training
 telemetry and the scale diagnostic. Its real 600-update pilot finishes in
-21.24 seconds with exact old-control reproduction and interrupted recovery;
-all 36 full paired fits are running. Its new policy readout is not run yet.
-It is a testable repair, not a promised improvement.
+21.24 seconds with exact old-control reproduction and interrupted recovery.
+All 36 full fits finish in 5.00 minutes, including two exact full refits, at
+10.45 GB peak memory. In original units, median query-monitor error falls from
+about 0.00044 to 0.00015, but pointwise risk error is worse. The new policy
+readout is not run yet, so this remains a training result, not a safe-policy
+claim. [Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
@@ -82,7 +85,8 @@ keep the positive neural increment and the failed risk requirement together.
 The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
 also checks why fewer switches need not improve the selected harm/reference ratio.
 The subsequent selected-query comparison is complete but negative; its exact
-replay is still running. The new query-unit repair is registered, not trained.
+replay is still running. The query-unit repair is fully trained but has not
+completed policy evaluation.
 
 ### Preceding Query-Allocation Study
 
