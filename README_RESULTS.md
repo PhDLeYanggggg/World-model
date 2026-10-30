@@ -31,6 +31,23 @@ unit-corrected selected-set model exactly. Own policy outcomes are not scored.
 Full36-head fitting is now running unchanged. No new trajectory forecaster,
 independent role or deployment. Registration/scientific hashes precede outcomes.
 
+Full training PID96568 subsequently exits0:333.204713s timed phase,
+peakRSS10,978,426,880B,36 fits/72,000 primary updates and two2,000-update
+exact refits. All18 protected old models reproduce exactly. Fixed fitting
+monitor medians:total0.416924699->0.248730235 protected/0.209359279 released;
+benefit0.306023788->0.306023788/0.236459099;point-risk0.114094603->
+0.078215335/0.079480324;query-score0.295757026->0.152469851/0.104151487.
+All18 released benefit monitors decrease;neither those losses nor the lower
+query monitor prove policy utility/risk. Both arms retain zero unknown loss.
+Training curves are visually checked. The extended6-file suite passes26 checks.
+
+First evaluation PID98349 exits1 at its first checkpoint:private progress parent
+directory absent,no new error score or aggregate group produced. Preserve
+readout.log;create owned progress directory and rerun identical frozen eval
+with--resume as PID99416. Scientific hashes,weights,losses,budgets and roles
+are unchanged. Full72-group policy outcomes and separate replay remain pending.
+[Execution setup note](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/execution_note.md).
+
 ### Causal Position Anchor: Registered Before Own Outcomes
 
 Previous goal turn:progress,complete signed-utility controls/replay reject
