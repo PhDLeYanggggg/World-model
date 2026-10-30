@@ -27,6 +27,14 @@ that draft and corrects the fixture before real training. No arithmetic,role,
 row or scoring rule changes. Real pilot/training/readout are not_run here.
 See the [matched protocol](outputs/publication_readiness_2026_09/european_active_detector_forecaster_v1/protocol.md).
 
+The real complete-source-context pilot finishes PID61383 exit0 in11.376199s,
+peak RSS1,211,858,944B. All four50+50/direct100recoveries are exact,the disabled
+model matches the actual active parent,and all active detector projections
+update. Each has89,026parameters and held-row draws0. Engineering work is900
+updates,not the planned144,000. Measured primary-optimization projection is
+1,664.85s,excluding preparation,full refit and readout. The complete36model
+CPU4run proceeds locally with all4,000updates retained.
+
 ### Raw Future-Label Provenance Audit Registered
 
 The previous goal turn is progress: 72 real producers and complete exact
