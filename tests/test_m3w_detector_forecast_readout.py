@@ -42,8 +42,25 @@ def test_even_positive_proposal_input_gate_is_not_learned_policy_safety():
     assert out['proposal_input_evidence_gate']
     assert not out['learned_policy_safety_evaluated'] and not out['submission_ready']
     assert not out['independent_roles_opened'] and not out['stage5c_executed']
+    physical=out['kinds']['single']['physical_baselines']
+    assert set(physical)=={str(k) for k in range(6)}
+    assert all(v['ADE']['point']==0. for v in physical.values())
 
 
 def test_producer_locality_or_seed_mismatch_cannot_be_relabelled():
     rows,jobs,cfg=population();rows[0]['seed']=99
     with pytest.raises(ValueError):api.summarize(rows,jobs,cfg)
+
+
+def test_report_keeps_all_baselines_and_undefined_views_explicit():
+    from scripts import report_m3w_detector_forecaster as report
+    rows,jobs,cfg=population();summary=api.summarize(rows,jobs,cfg)
+    value=dict(training=dict(pid=1,seconds=1.,peak_RSS_bytes=1),
+        readout=dict(pid=2,seconds=1.),replay=dict(pid=3,seconds=1.),
+        loss_summary={},proposal_gates=summary['proposal_input_gates'],
+        proposal_input_evidence_gate=False)
+    text=report.render(value,summary)
+    assert 'not_estimable' in text
+    assert all(name in text for name in report.run.source.BASELINES)
+    assert 'learned_policy_safety_evaluated: false' in text
+    assert 'deployment_changed: false' in text

@@ -25,6 +25,21 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+**30 October: the new input is now reaching the trajectory model itself.**
+I extended the verified detector-history store to all **318,969 producer rows
+across 163 SOURCE recordings**, rather than treating the smaller routing cache
+as the whole training set. The raw-input replay agrees exactly. I am training
+**72 matched Transformer forecasters** with the original folds, three seeds,
+and all 4,000 updates per model. The 36 primary single-fold models have finished;
+the complementary-fold controls are still running. The first full history refit
+and the completed disabled controls reproduce their scientific state exactly.
+
+No new forecast results have been scored yet. I will freeze every endpoint
+before the fixed development readout. Better proposals would answer a different
+question from a safe switching policy; they would not erase the negative result
+below or open the independent evaluation sets.
+[Registered experiment](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/protocol.md).
+
 I have now recovered the original eight-step detection-box histories and raw
 confidence for all 149,510 fitting queries across 74 European SOURCE recordings.
 A separate raw reparse matches exactly, including 222 prefix-truncation checks.

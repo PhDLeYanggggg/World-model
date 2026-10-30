@@ -10,8 +10,8 @@ def paired_change(old,new,reference,old_prediction,new_prediction,mask):
     np.testing.assert_array_equal(np.isfinite(old),np.isfinite(new))
     unknown=mask&~np.isfinite(old)
     ref=float(reference[known].sum());delta=float((old[known]-new[known]).sum())
-    envelope=np.linalg.norm(old_prediction-new_prediction,axis=-1).max(1)
-    missing=float(envelope[unknown].sum())
+    envelope=np.linalg.norm(old_prediction[unknown]-new_prediction[unknown],axis=-1).max(1)
+    missing=float(envelope.sum())
     return dict(known_delta_mass=delta,unknown_disagreement_mass=missing,known_reference_mass=ref,
         known_pp=100*delta/ref if ref>0 else None,lower_pp=100*(delta-missing)/ref if ref>0 else None,
         upper_pp=100*(delta+missing)/ref if ref>0 else None,
@@ -25,6 +25,7 @@ def site_readout(ids,sites,recordings,history,target,valid,physical,reference_in
     errors={arm:native_errors(predictions[arm],target,valid,np.ones(n)) for arm in ARMS}
     baselines=[native_errors(physical[:,k],target,valid,np.ones(n)) for k in range(6)]
     reference=baselines[reference_index];cv=baselines[1][0]
+    oracles={column:np.min(np.stack([p[column] for p in baselines],1),1) for column in (0,1)}
     subsets=dict(all=np.ones(n,bool),hard=np.isfinite(cv)&(cv>=hard_cut),
         easy=np.isfinite(cv)&(cv>0)&(cv<=easy_cut),complete_future=valid.all(1))
     output={}
@@ -35,7 +36,7 @@ def site_readout(ids,sites,recordings,history,target,valid,physical,reference_in
             metrics[subset]={};contrasts[subset]={}
             for metric,column in (('ADE',0),('FDE',1)):
                 ref=reference[column];known=take&np.isfinite(ref);den=float(ref[known].sum())
-                phys_oracle=np.min(np.stack([p[column] for p in baselines],1),1)
+                phys_oracle=oracles[column]
                 metrics[subset][metric]=dict(indexed=int(take.sum()),known=int(known.sum()),unknown=int((take&~known).sum()),reference_mass=den,
                     physical={str(k):dict(error_mass=float(p[column][known].sum()),
                         gain_percent=100*(1-float(p[column][known].sum())/den) if den>0 else None) for k,p in enumerate(baselines)},
@@ -105,7 +106,11 @@ def summarize(rows,jobs,cfg):
             lambda v,s=subset,c=control,b=bound:v['contrasts'][s][c][b],cfg,roster)
             for bound in ('known_pp','lower_pp','upper_pp')} for control in ('disabled','current','noise')}
             for subset in ('all','hard','easy','complete_future')}
-        kinds[kind]=dict(representations=representations,history_contrasts=contrasts)
+        baseline_rows=[r for r in group if r['representation']=='disabled']
+        physical={str(k):{metric:interval(baseline_rows,
+            lambda v,k=k,m=metric:v['metrics']['all'][m]['physical'][str(k)]['gain_percent'],cfg,roster)
+            for metric in ('ADE','FDE')} for k in range(6)}
+        kinds[kind]=dict(representations=representations,history_contrasts=contrasts,physical_baselines=physical)
     primary=kinds['single']['history_contrasts']['all']
     positive=lambda x:x['CI95'] is not None and x['CI95'][0]>0
     gates=dict(full72groups=True,disabled_fresh_legacy_exact=all(r['disabled_legacy_exact'] for r in rows),

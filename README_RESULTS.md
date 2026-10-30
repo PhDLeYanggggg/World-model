@@ -39,6 +39,14 @@ keeps proposal accuracy separate from learned-policy safety. Related primary
 reading confirms detector-history/observation-noise modeling is not by itself
 a novel contribution. See the [reading scope](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/literature_position.md).
 
+The 36 primary single-fold producers now all finish their original 4,000
+updates. Complementary-fold producers continue in the same live process;
+training is not complete and no new forecast performance has been scored.
+The fixed readout includes all six physical baselines, missing-label completion
+contrasts, all required localities and the primary-versus-control comparisons.
+Its three focused regression checks pass in 0.52s. This is a progress checkpoint,
+not a proposal gate or a deployment result.
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across
