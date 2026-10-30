@@ -57,6 +57,15 @@ checks pass; the full repository suite was not rerun. All current intervals
 use 12 already-exposed localities, not independent new scenes. Independent
 calibration and confirmation remain closed.
 
+I have registered a decoder-only follow-up before its own outcomes. It keeps
+the corrected-unit critic and forecasts fixed, but allows a joint solution to
+include an individually nonpositive-utility support action. Total predicted
+utility must remain positive and both original 2% positive-harm budgets stay
+unchanged. A matched-count control separates this from simply intervening more.
+Nineteen focused solver checks pass, including exhaustive small cases and exact
+resume; the real pilot and complete readout have not yet run.
+[Controlled design](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/protocol.md).
+
 ### Completed Strong-Bank Control
 
 I completed the stronger bank comparison: reoptimize the six physical

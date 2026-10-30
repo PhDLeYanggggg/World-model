@@ -7,6 +7,26 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Joint Utility Admissibility: Registered, No Own Outcome Yet
+
+The previous goal turn is progress:36 current-query fits and the full72-group
+readout/replay confirm a failed repair. Existing seven-action label-aware
+oracles already show148/148 positive feasible record/context views;that is not
+a new finding or a causal model. The next single-factor experiment freezes the
+corrected-unit selected-set critic and all forecasts. It removes only the
+requirement that each action have positive predicted utility,not either2%
+positive-harm/reference inequality. It evaluates matched-count and free-count
+joint controls. Benefit never cancels positive harm in the risk numerator.
+This differs from prior net/clipped-risk subsidy controls.
+
+The new label-side diagnostic compares unrestricted versus true-positive-action
+restricted oracles,without exposing oracle choices to inference. All72 groups,
+original recording risks,unknowns and closed independent roles remain. No new
+training or trajectory dynamics. Nineteen focused checks pass in1.56s,including
+60 random exhaustive cases,strict budgets,nesting,solver fallback and resume.
+Code/config/protocol/registration precede the real128-query recovery pilot and
+own outcomes. Both pilot and full policy readout are not_run at registration.
+
 ### Selected-Query Critic Negative; One-Factor Unit Repair Registered
 
 Previous goal turn:progress. The72-group stronger-bank control and exact
