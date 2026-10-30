@@ -46,8 +46,10 @@ actual target in the all-agent channel and 18 times in the easy channel
 (medians across heads). I have registered a one-factor experiment that uses the
 actual selected-query target RMS instead. Architecture, sampling, loss weights,
 forecasts and allocation stay unchanged. The design was chosen from training
-telemetry and the scale diagnostic; its own training and policy readout are
-not run yet. It is a testable repair, not a promised improvement.
+telemetry and the scale diagnostic. Its real 600-update pilot finishes in
+21.24 seconds with exact old-control reproduction and interrupted recovery;
+all 36 full paired fits are running. Its new policy readout is not run yet.
+It is a testable repair, not a promised improvement.
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).

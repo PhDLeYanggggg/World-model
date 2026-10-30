@@ -70,9 +70,19 @@ the same 72,000-update budget, two full exact refits, and a 600-update real
 pilot. Only the query denominator changes to source-balanced RMS of the actual
 original selected-query signed target, floored at 1e-6. The all-action term,
 0.5/0.5 weights, model, sampler, decoder and all forecasts remain unchanged.
-New training and new outcomes are not run. Its design follows telemetry and the
-verified diagnostic, not selection among the completed parent policy scores.
+Real pilot PID53213 exits0 in 21.237628s at peak RSS 6,468,075,520B, with all
+600 actual updates, exact old-control reproduction, exact interrupted recovery
+and paired draws. Full training is running as PID55207; new policy outcomes
+are not run. Its design follows telemetry and the verified diagnostic, not
+selection among the completed parent policy scores.
 Independent roles, deployment, Stage5C and SMC remain closed.
+
+Cold replay of the read-only diagnostic exposed a separate registration-event
+bug: the original entry point exits1 after parent completion because it
+recomputes a creation-time boolean. The old registration/code/results are not
+edited. A hash-registered execution adapter preserves only that historical
+event; every scientific identity still requires exact equality. Nine focused
+diagnostic/adapter checks pass in 0.20s. Its new complete replay is not run yet.
 See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
 See the [diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md)
 and [unit-repair design](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
