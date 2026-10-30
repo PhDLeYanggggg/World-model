@@ -7,6 +7,24 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Selected-Query Risk Critic Registered Before Fitting
+
+Previous goal turn:progress. The72-group stronger-bank control and exact
+replay show modest neural utility and failed complete-recording risk.
+The next controlled experiment trains36 fresh critics,30,726 parameters each,
+in matched row-local and selected-set-context arms across the six contexts and
+three cost-head seeds. Each receives the same causal462-field inputs, original
+predictions and count metadata. Only the context pooling differs between arms.
+Original benefit/reference/easy-reference predictions and all forecast paths
+remain frozen;all seven legal candidates can be reassessed,not only vetoed.
+
+Both share a fitting-only risk RMS and a0.5 all-action/0.5 selected-query score
+loss. These are also changes from the parent,so parent improvement alone cannot
+identify context value. Future-unknown rows stay in draws/context but never
+supervise. Twelve targeted tests pass in2.38s,including real synthetic Torch
+updates and exact resume. No real pilot,full fit or outcome readout yet.
+See the [protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
+
 ### Shared Physical-Count Bank Readout and Exact Replay Complete
 
 The preceding goal turn is progress:complete current-query allocation and

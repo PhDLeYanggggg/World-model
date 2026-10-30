@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am moving the risk repair into a controlled training experiment. Two equally
+sized heads will correct harm estimates for the same seven forecasts: one sees
+local candidate features, the other also sees the original joint policy's
+selected-action context. Both keep the original benefit and reference estimates
+fixed, learn from the same permitted source queries, and use the same allocator.
+Twelve focused tests pass. The design is registered before the real pilot; no
+new fitting outcome or safe policy is claimed yet.
+[Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
+
+### Completed Strong-Bank Control
+
 I completed the stronger bank comparison: reoptimize the six physical
 forecasts and the seven-action physical/neural bank at the same current-query
 count, determined by the physical independent rule. Both banks keep the same
@@ -50,8 +61,8 @@ and [method note](outputs/publication_readiness_2026_09/european_shared_count_ba
 keep the positive neural increment and the failed risk requirement together.
 The [calibration note](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/calibration_design_note.md)
 also checks why fewer switches need not improve the selected harm/reference ratio.
-My next method comparison will target the risk of the actual selected action set,
-with a matched row-local control. That critic is not yet trained or evaluated.
+The new registered comparison targets risk of the actual selected action set,
+with a matched row-local control. It is not yet trained or evaluated.
 
 ### Preceding Query-Allocation Study
 
