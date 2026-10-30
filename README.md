@@ -59,18 +59,20 @@ ADE gain rises from 6.575% to 8.215%, a paired +1.641 percentage points
 unknown-completion-lower increment is -2.598 pp [-7.642, +0.293], however, and
 only 1/444 recording-risk views is supported, with 383 known easy-risk
 violations. This is not deployable or independent evidence. A separate complete
-replay is running; the final-selection diagnosis will check where the fitting
-improvement stops carrying through. [Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
+replay agrees on all 72 groups and 144 old-policy controls.
+[Complete result](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/readout.md).
+[Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
 The separately registered score audit and its complete replay also finish.
 Original-set fitting improves, but the final choices still underestimate easy
 harm. Their selected population changes substantially, and missing outcomes
 remain a limitation. This motivates testing selection-target mismatch; it does
 not identify a unique cause or change the policy.
 [Score accounting](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/readout.md).
-The next matched experiment is registered before fitting: replace only the
-frozen training selection with the current decoder's detached selection in
-the query loss. This is offline risk learning, not online deployment or new
-trajectory dynamics. [Current-query design](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/protocol.md).
+The next matched experiment changes only the frozen training selection to the
+current decoder's detached selection in the query loss. Its real 600-update
+pilot passes exact fixed-control and recovery checks in 38.36 seconds; full
+paired training is running. This is offline risk learning, not online deployment
+or new trajectory dynamics. [Current-query design](outputs/publication_readiness_2026_09/european_current_policy_critic_v1/protocol.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).

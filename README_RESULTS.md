@@ -90,8 +90,9 @@ not the original approximately0.0008/0.0007. Pointwise risk monitor is worse:
 zero supervised loss. These fixed fitting monitors select no checkpoint and
 are not policy/calibration success. Complete policy readout PID58848 exits0
 in1746.471870s at peak RSS11,025,530,880B. All72 groups and144 old-critic policy
-controls complete. Separate full replay PID62325 is running; no agreement is
-yet claimed. No partial outcome selects a checkpoint, threshold or model.
+controls complete. Separate full replay PID62325 exits0 in1788.800738s at
+peakRSS10,377,871,360B. All72 groups,144 fixed-critic controls and the canonical
+summary agree exactly. No partial outcome selects a checkpoint,threshold or model.
 Its design follows telemetry and the verified diagnostic, not
 selection among the completed parent policy scores.
 Independent roles, deployment, Stage5C and SMC remain closed.
@@ -109,7 +110,11 @@ known -0.347678pp CI[-0.617066,-0.028657],lower -5.657865pp
 CI[-13.058285,-1.481855]. Full all-action risk MSE also worsens relative to the
 old critics: row0.107182->0.129738,set0.108521->0.127527.
 The exact-byte1,718,880B aggregate bundle contains only metrics,not row arrays
-or weights. Full-policy separate replay is pending.
+or weights. Full-policy separate replay is complete and exact. The primary
+selected-set decoder has three numerical postcheck fallbacks and no solver
+time-limit fallbacks;feasible anchors are retained and all-query optimality
+is not claimed. Readout/card/failure/results/reproduction components retain
+the positive known-label effect and the failed original risk requirement.
 
 While that readout runs, the eight-variant selected-score audit is registered
 before its own values. It will re-infer old/new row/set critics, hash-check
@@ -148,7 +153,12 @@ algorithm. Any incomplete training solver status refuses rather than silently
 changing targets. Planned36 new2,000-step fits plus two full refits,paired with
 36 cached fixed-query controls. Five targeted checks pass2.15s,including real
 synthetic Torch recovery and exact fixed-target control reproduction. Real
-pilot/training/current-query policy outcomes are not run yet. No deployment.
+pilot PID68545 exits0 in38.359057s at peakRSS9,623,339,008B:600 actual updates,
+exact old fixed-target controls,exact interrupted recovery and matched draws.
+The single-context full-cost projection is7288s (about2h),not measured full
+runtime. Full36-head training runs as PID69758 with checkpoint100/heartbeat50;
+both first full2,000-step scientific refits already agree. Full training and
+new policy outcomes are not yet complete. No deployment or independent promotion.
 
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it
