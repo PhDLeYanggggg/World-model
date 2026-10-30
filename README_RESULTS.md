@@ -7,6 +7,59 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Complete Capped Norm-Balancing Repair
+
+The diagnostic and its registered repair are complete, not another small
+demo. Nineteen instrumented full training replays preserve all original
+scientific states. The repair then trains 18 fresh heads for 36,000 primary
+updates, plus 2,000 exact-refit and 400 real pilot updates; 36 controls are
+cached_verified, not newly trained. Training takes 209.66s at 10.92GB peak RSS.
+All 72 fresh readout groups, all 144 cached-control prediction/action/full-score
+checks and the summary match exactly in a separate 122.28s process.
+
+Known ADE gain is 0.388168%, versus unit admission 1.904562% and upper-score
+1.979966%. The fixed primary balanced-minus-unit change is -1.516394pp,
+CI[-2.869731,-0.491213]; its wholly-unknown completion-lower change is
+-2.101592pp, CI[-3.424839,-1.044353]. The negative sign holds for all three
+seed means. There is no new-loss utility advantage.
+
+Supported recording-risk views rise from 46/444 to 201/444, but known easy
+violations remain 31 and undefined easy support increases to 72 views.
+Interventions fall from 265,671 to 25,828 repeated row views. The trade-off is
+heavy pruning, not complete-policy safety. On 135 overlapping recording views,
+the easy completion-upper budget fails even though the known easy ratio is
+within 2%; 94 views have the analogous all-channel issue. These are arithmetic
+conditions, not a disjoint causal taxonomy or new inference-time features.
+
+The same balanced head's actual neural use has a small secondary known
+increment +0.034936pp, CI[+0.006029,+0.084052], and completion-lower increment
++0.030673pp, CI[+0.003886,+0.079485]. It cannot replace the failed primary or
+risk gate. The complete-roster count-matched contrast and FDE remain not
+estimable where required support is absent; empty is not a safe zero.
+
+Actual balancing telemetry retains 28,464 zero-scale and 6,163 capped steps
+out of 36,000. Only 163/738 monitored snapshots have a positive scale; their
+median achieved auxiliary/anchor gradient ratio is 0.132318. This conditional
+median is not a paired estimate against the old all-snapshot median. The
+capped rule is neither exact parity every step nor full GradNorm.
+
+All evidence remains SOURCE fitting/resubstitution on 149,510 unique queries,
+74 recordings and 12 localities, with three seeds and 3,000 locality bootstrap
+resamples. The cached whole-record label-aware oracle is positive/feasible in
+148/148 deduplicated context/record views, but cannot establish past-only or
+simultaneous-frame feasibility. No independent role opens. Gates:3/6;
+no deployment or submission promotion. Thirty-four focused checks pass in
+6.59s; the entire repository suite was not rerun. See the
+[readout](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/readout.md),
+[model/data card](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/model_data_card.md),
+[paper addendum](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/paper_addendum.md)
+and [next experiment boundary](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/next_steps.md).
+
+The next scientific test is a controlled current-frame joint-allocation
+comparison on the same bank, predictions and original risk budget, beginning
+with feasibility and runtime rather than another weight sweep. It is not yet
+registered or run. Earlier entries below retain the chronology of this repair.
+
 ### Optimization Pressure Diagnosis
 
 The preceding turn is progress: complete matched training and exact replay

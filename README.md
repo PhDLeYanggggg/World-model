@@ -25,6 +25,47 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I traced the admission loss through 19 complete training replays, then tested
+one repair: increase its influence using a capped gradient-norm ratio. The
+diagnosis and the repair answer different questions. The loss was already
+active on 93.81% of the original updates, but its median gradient norm was
+only 0.003632% of the main objective's norm. That is evidence of weak
+optimization pressure, not evidence that a larger weight will solve routing.
+
+I trained **18 fresh heads**, each for all 2,000 updates, and reused **36
+hash-verified frozen controls**. The full fit took 3.5 minutes at 10.92 GB peak
+memory. A complete refit is exact. All 72 prediction/action/metric groups and
+144 cached-control checks reproduce in a separate process.
+
+| Objective | Known ADE gain over the frozen floor | Supported recording-risk views |
+|---|---:|---:|
+| Upper-score control | 1.980% | 41/444 |
+| Unit admission loss | 1.905% | 46/444 |
+| Capped norm-balanced admission | 0.388% | 201/444 |
+
+The repair sharply reduces interventions and risk violations, but loses
+**1.516 percentage points** against unit admission, locality bootstrap CI
+**[-2.870,-0.491]**. It still leaves 31 known easy-risk violations and 72
+undefined easy-support views. More supported views do not make the complete
+policy safe. The fixed fitting gates remain **3/6**; I do not deploy this head.
+
+This is exposed SOURCE fitting evidence, not an independent test or a new
+trajectory-model result. The 444 views reuse 74 recordings across contexts
+and seeds. The coefficient hits its cap or is zero on many updates, so this
+experiment is not full GradNorm or exact gradient parity at every step.
+The [complete readout](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/failure_analysis.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_gradient_balanced_admission_v1/reproduction_zh.md)
+retain the actual losses, gradient telemetry, controls and negative result.
+
+My next question is whether joint allocation over the same candidate forecasts
+can improve the gain/risk trade-off. A label-aware whole-record oracle shows
+opportunity, but it does not establish a usable past-only decision rule or
+even simultaneous-frame feasibility. I will test that distinction rather
+than keep sweeping the loss weight or open the reserved confirmation data.
+
+### Earlier Budget-Score Study
+
 I completed a controlled test of budget-score supervision: keep the full
 five-moment cost loss, then add either a symmetric score penalty or a penalty
 that weighs risk underprediction more heavily. Inputs, forecast banks, seeds
