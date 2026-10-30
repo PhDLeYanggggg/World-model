@@ -25,16 +25,39 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I have registered a fixed current-query allocation experiment. It keeps the
-same seven candidate forecasts and 18 frozen cost heads, then compares the
-original independent rule, a uniform action, and joint allocation. The primary
-joint arm must use exactly the independent arm's intervention count in every
-recording/frame query, not just the same pooled rate. This isolates decision
-coupling from a new model or extra switches. The real128-query/3,267-row pilot
-has exact interrupted recovery, taking21.04s including preparation at9.60GB
-peak memory. The full72-group run is now in progress with private action
-checkpoints; there is no new effectiveness claim before the fixed readout completes.
-[Protocol](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/protocol.md).
+I tested whether joint decisions help when the forecasts and cost estimates
+stay fixed. The primary joint rule uses exactly the original intervention
+count in every recording/frame query, so it cannot win by making more switches.
+All 72 groups complete in 12.2 minutes, and a separate 12.4-minute run reproduces
+the predictions, decisions and metrics exactly. No new neural model is trained.
+
+| Decoder | Known ADE gain over the frozen floor | Supported recording-risk views |
+|---|---:|---:|
+| Independent | 1.905% | 46/444 |
+| Uniform action | 0.626% | 112/444 |
+| Joint, matched count | 2.553% | 43/444 |
+| Joint, free count | 2.704% | 39/444 |
+
+The matched joint rule adds **+0.648 percentage points**, conditional locality
+CI **[+0.181,+1.273]**. Its wholly-unknown completion-lower increment is
++0.506pp, CI [+0.071,+1.108]. This is a useful fitting signal for decision
+coupling, not an independent result. Safety is still worse: known easy-risk
+violations rise from 308 to 324, and only 43/444 required recording views pass.
+I do not deploy this policy or call it a successful world model.
+
+The run covers 112,596 reused query views; 36,305 matched-query decisions change.
+Eight numerically rejected primary solutions retain the original policy. The
+six physical forecasts, neural candidate and 18 existing cost heads remain
+unchanged. Predicted pooled budgets are not observed-risk guarantees, and these
+query targets are not necessarily every visible agent. The
+[readout](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/readout.md)
+and [method note](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/method_note.md)
+keep those distinctions explicit.
+
+I am now checking how much of this gain comes from actual neural prediction use
+and where the selected harm is underestimated. That is a registered post-readout
+diagnostic on frozen decisions, not another opportunity to tune the policy.
+[Attribution protocol](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/protocol.md).
 
 ### Preceding Optimization Repair
 

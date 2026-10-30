@@ -7,6 +7,47 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Complete Current-Query Allocation Readout
+
+All72 fixed inference/decision/metric groups complete in729.54s at10.92GB peak
+RSS,PID19894 exit0. A separate full solver/inference/metric replay,PID22148,
+matches exactly in741.43s at9.81GB. All72 parent predictions/actions/full-policy
+scores and444 repeated label-aware record-oracle checks match. No new training:
+18 frozen cost heads and the same seven forecast candidates are cached_verified.
+
+Known ADE gain rises1.904562% to2.552950% for joint matched-count allocation.
+The primary known change is+0.648388pp,CI[+0.181208,+1.272930],and the
+wholly-unknown completion-lower change is+0.506055pp,CI[+0.071211,+1.107688].
+All three head-seed means are positive. Uniform gains0.626333%;free joint gains
+2.704414%,but changes intervention count and is secondary. The primary retains
+exactly265,671 repeated interventions,matched in EACH current query.
+
+Risk does not improve:joint matched has43/444 supported recording views versus
+46/444 independent,324 versus308 known easy violations,and231 versus149 known
+all violations. Selected unknown rows rise3,636 to4,098. Fitting gates5/7;
+no deployment or independent promotion. Eight postcheck-rejected primary
+solutions retain the parent; no solver timeout is hidden as exact optimality.
+112,596 repeated query views include86,316multi-agent views;36,305 primary
+queries change. The seed-deduplicated oracle witness satisfies algebraic
+budgets in37,532context/query views,but selected easy support is defined in
+only20,858. It is not an inference policy or a matched-rate optimum.
+
+The complete aggregate bundle is750,718B with all72 JSON byte identities
+verified. All results remain exposed SOURCE fitting on the same149,510unique
+queries,74recordings,12localities. Three head seeds and3,000 locality bootstrap
+draws are not independent confirmation or multiple forecaster-seed evidence.
+See the [readout](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/readout.md)
+and [method note](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/method_note.md).
+
+The next diagnostic is registered after this main readout,before its own
+attribution values:freeze all choices,delete only actual neural uses to the
+floor,and separate neural-use reallocation from remaining action changes.
+It also distinguishes per-row excess from false whole-query admission.
+Three focused diagnostic tests pass in1.63s,including cancellation of shared
+unknown neural uses;the new lower bound is not a difference of two lower bounds.
+No new policy,training or threshold selection is allowed. See the
+[post-readout protocol](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/protocol.md).
+
 ### Current-Query Allocation Registered
 
 The preceding goal turn is progress:19 exact training diagnoses,18 fresh
