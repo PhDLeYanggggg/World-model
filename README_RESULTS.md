@@ -59,6 +59,25 @@ harm numerators with inflated reference denominators can admit an unsafe
 switch;it is mathematical/engineering evidence,not real-data performance.
 No effectiveness score is read before this registration.
 
+All216initial readouts complete PID80961 exit0 in461.111830s,peak RSS
+11,106,566,144B.All72original prediction/action/full-metric controls agree.
+New-bank known ADE gains are original1.893446%,symmetric3.015832%,upper
+1.979966%.The primary upper-minus-original contrast is+0.086520pp,
+CI[-0.164383,+0.413791];completion lower is-0.780628pp,
+CI[-2.000011,+0.046352].Against original old_neural,known contrast also
+crosses zero and the completion-lower interval is negative.
+
+The fixed same-upper-head neural-use contrast is+0.209989known pp,
+CI[+0.036449,+0.435968],and+0.184456completion-lower pp,
+CI[+0.013755,+0.405677].That secondary fitting contribution is now supported
+under the recorded completion sensitivity,but it does not replace the
+failed primary or full safety test.Upper new-bank support is41/444,with
+312known easy-risk violations and42undefined easy views.Symmetric improves
+known utility+1.122386pp,CI[+0.494471,+1.865738],but supports only19/444and
+has350known easy-risk violations.Only3/7fixed fitting-progress gates pass.
+All216aggregate JSON groups are frozen byte-exact in3,829,289B,with no raw
+coordinates or weights.Separate complete exact replay is next,no tuning.
+
 ### Frozen Active Banks: Matched Gain/Harm Learning Registered
 
 The previous goal turn is progress: all 36 actual-active trajectory producers

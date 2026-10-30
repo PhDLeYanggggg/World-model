@@ -85,3 +85,17 @@ def test_figure_uses_all18_new_bank_curves_per_objective(tmp_path, monkeypatch):
     (public / 'training_traces.json').write_text(json.dumps(dict(rows=traces[:-1])))
     with pytest.raises(ValueError, match='All18'):
         report.figures()
+
+
+def test_full_reference_support_is_not_selected_support_and_is_seed_bank_invariant():
+    rows = [dict(context='c0', source='s0', seed=s, objective_arm='original',
+        result=dict(recordings=dict(r0={v: dict(full_known_easy_reference_mass=2., selected_count=0)
+            for v in report.run.api.active.VARIANTS}))) for s in (17, 29, 43)]
+    support = report.full_reference_support(rows)
+    assert support['seed_deduplicated_context_record_views'] == 1
+    assert support['zero_full_known_easy_reference_views'] == 0
+    assert support['positivity_is_not_selected_policy_safety']
+    changed = copy.deepcopy(rows)
+    changed[-1]['result']['recordings']['r0']['new_neural']['full_known_easy_reference_mass'] = 0
+    with pytest.raises(ValueError, match='selected bank'):
+        report.full_reference_support(changed)

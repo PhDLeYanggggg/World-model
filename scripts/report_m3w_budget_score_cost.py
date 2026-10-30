@@ -14,6 +14,28 @@ from src.evaluation import m3w_metric_bundle as bundle
 interval = prior.interval
 
 
+def full_reference_support(rows):
+    records = {}
+    for row in rows:
+        if row['objective_arm'] != 'original':
+            continue
+        for record, values in row['result']['recordings'].items():
+            masses = [v['full_known_easy_reference_mass'] for v in values.values()]
+            if not all(v == masses[0] for v in masses):
+                raise ValueError('Full known reference support cannot depend on selected bank')
+            key = row['context'], row['source'], record
+            value = dict(context=key[0], source=key[1], recording=record, full_known_easy_reference_mass=masses[0])
+            if key in records and records[key] != value:
+                raise ValueError('Full known reference support cannot depend on head seed')
+            records[key] = value
+    values = list(records.values())
+    return dict(result_source='cached_verified_original_group_reference_support_census',
+        seed_deduplicated_context_record_views=len(values),
+        zero_full_known_easy_reference_views=sum(v['full_known_easy_reference_mass'] <= 0 for v in values),
+        by_context_record=values, selected_support_not_the_same_as_full_reference_support=True,
+        positivity_is_not_selected_policy_safety=True)
+
+
 def support_profile(complete):
     grouped = {o: [] for o in run.api.OBJECTIVES}
     keys = set()
@@ -78,6 +100,11 @@ def evidence():
     complete = json.loads((run.PUBLIC / 'complete.json').read_text())
     training = json.loads((run.PUBLIC / 'training_freeze.json').read_text())
     summary = json.loads((run.PUBLIC / 'summary.json').read_text())
+    rows = [json.loads((ROOT / r['path']).read_text()) for r in complete['groups']]
+    reference = full_reference_support(rows)
+    if reference['seed_deduplicated_context_record_views'] != 148:
+        raise ValueError('All148seed-deduplicated reference-support views required')
+    run.once(run.PUBLIC / 'reference_support.json', reference)
     value = dict(result_source='verified_real_budget_score_cost_training_and_complete_policy_replay',
         training={k: training[k] for k in ('pid', 'seconds', 'peak_RSS_bytes', 'count',
             'primary_optimizer_updates', 'extra_full_refit_updates', 'pilot_updates', 'exact_original_controls')},
@@ -86,6 +113,7 @@ def evidence():
         checkpoint_bytes=sum(r['checkpoint']['bytes'] for r in models.values()), loss_summary=loss,
         support_profile=support_profile(complete), summary_sha256=run.sha(run.PUBLIC / 'summary.json'),
         verification_sha256=run.sha(run.PUBLIC / 'verification.json'),
+        reference_support_sha256=run.sha(run.PUBLIC / 'reference_support.json'),
         artifact_code_bindings={str(p.relative_to(ROOT)): run.sha(p) for p in
             (Path(__file__), ROOT / 'tests/test_m3w_budget_score_artifacts.py')},
         fitting_gates=summary['fitting_gates'], fitting_advancement_gate=summary['fitting_advancement_gate'],
@@ -135,7 +163,10 @@ def render(e, s):
     out += ['', 'Safety keeps the complete unchanged all/easy2%rule on every required',
         'recording,including missing-outcome bounds. Pooled easy net gain is not',
         'the selected-easy positive-harm risk. Full-roster FDE remains undefined',
-        'when a required locality lacks requested final labels.', '',
+        'when a required locality lacks requested final labels. The',
+        '[full-reference support census](reference_support.json) distinguishes',
+        'available easy-reference mass from the support actually selected by a',
+        'policy;neither should be mistaken for a passed safety requirement.', '',
         '## Paired Objective Effects On The Same Bank', '',
         '| Objective | Bank | Full known pp, CI95 | Completion lower pp, CI95 | Same-count lower pp, CI95 |',
         '|---|---|---|---|---|']

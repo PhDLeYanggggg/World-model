@@ -44,6 +44,17 @@ original full states and the first full conservative refit are exact. I have
 frozen every endpoint before the complete216-group policy readout; no
 effectiveness or deployment gain is claimed from the loss curves alone.
 
+The full216-group readout is now complete. With the new neural bank,known ADE
+gain is1.893%for the original objective,3.016%for the symmetric score and
+1.980%for the conservative score. The conservative objective's primary
+increment is only+0.087pp,CI[-0.164,+0.414],and recording-risk support remains
+41/444.The symmetric objective improves average accuracy but worsens safety.
+One narrower result is positive:actual neural use in the conservative head
+adds+0.184pp under the missing-outcome lower bound,CI[+0.014,+0.406],against
+the same head with neural use disabled.This is fitting evidence,not a safe
+complete policy or independent confirmation.The initial result is frozen
+before a separate complete replay;deployment is unchanged.
+
 I have registered the next matched bank experiment: keep the same gain/harm
 learner, fitting recordings, sampler and risk rule, and change only the frozen
 neural candidate. The six physical actions remain unchanged. All 54 fits are
