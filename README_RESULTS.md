@@ -63,6 +63,11 @@ The expanded input/model/recovery/readout scope passes 12 tests in 3.05s.
 Readout and proposal effectiveness remain not_run at this freeze; deployment
 and independent roles are unchanged.
 
+The fixed readout registration now binds all 72 frozen endpoints, the original
+fitting-ID whitelist and complete scoring code. The primary remains single-fold
+history. No controller-held or independent outcomes are admitted; no score has
+been read at this registration.
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across
