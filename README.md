@@ -41,10 +41,18 @@ question from a safe switching policy; they would not erase the negative result
 below or open the independent evaluation sets.
 [Registered experiment](outputs/publication_readiness_2026_09/european_detector_forecaster_v1/protocol.md).
 
-I have now recovered the original eight-step detection-box histories and raw
-confidence for all 149,510 fitting queries across 74 European SOURCE recordings.
-A separate raw reparse matches exactly, including 222 prefix-truncation checks.
-I then trained all **144 matched Torch cost heads**, **288,000 primary updates**,
+The first complete development readout now gives **8.811% known-label ADE gain**
+for detector history, versus **4.923%** without it. The paired change is
+**+3.888 percentage points**, locality CI **[+2.246,+5.655]**. History also beats
+current-only and identity-noise controls on known labels. But the missing-label
+completion-lower contrast is negative, and one required locality has no final
+step labels, so the all-locality FDE is undefined. A separate full inference
+replay is running. This is promising observed-label proposal evidence, not a
+safe policy, an independent test or a deployment promotion.
+
+The preceding routing-only experiment used 149,510 fitting queries across
+74 SOURCE recordings. Its raw reparse matches exactly, including 222 prefix
+checks. I trained **144 matched Torch cost heads**, **288,000 primary updates**,
 with disabled, current-only, identity-noise and full-history inputs. All 36
 disabled controls reproduce the old endpoints exactly, and all 288 fitting
 readouts replay exactly in a separate process.

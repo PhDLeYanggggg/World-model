@@ -68,6 +68,20 @@ fitting-ID whitelist and complete scoring code. The primary remains single-fold
 history. No controller-held or independent outcomes are admitted; no score has
 been read at this registration.
 
+The first complete 72-group readout finishes PID54383 exit0 in 1,153.103515s,
+peak RSS2,939,551,744B. Primary known ADE gains are disabled4.922961%,
+current5.961379%, noise4.840526%, history8.811113%. History-minus-disabled
+is +3.888152pp, locality CI[+2.245557,+5.655328]; it also beats both input
+controls on known labels. Its completion-lower contrast is -11.355480pp,
+CI[-27.808700,-0.343903], so the fixed proposal evidence gate fails. This is
+a conservative unknown-outcome bound, not an observed -11.36% degradation.
+All-locality FDE remains not_estimable: locality082 has no final-step labels.
+There are no exactly stationary input rows, so that inherited architectural
+limit does not explain this observed result. All initial aggregate JSON is
+frozen in a byte-verified 2,491,810B archive; that packaging is not scientific
+recalculation. Separate full inference replay is running. No new model,
+threshold or primary result is chosen from these development outcomes.
+
 ### Producer Inputs: Full Coverage Repair Registered
 
 Fresh past-only coverage reconciliation finds318,969producer rows across
