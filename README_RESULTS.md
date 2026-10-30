@@ -40,6 +40,25 @@ full readout AND replay. Registered solver/runner/settings remain unchanged.
 The method note and primary-source compatibility review distinguish ordinary
 joint optimization from decision calibration;no prior theorem is claimed here.
 
+Full72-group readout PID80693 exits0 in1564.755574s at peakRSS11,025,170,432B.
+All72 frozen prediction/action/policy controls and original148 record/context
+oracle controls agree. Primary signed-minus-positive matched known effect is
++0.010488pp CI[+0.002104,+0.019958];completion-lower is-0.007179pp
+CI[-0.024395,+0.007941],so it does not establish robust improvement. Known
+ADE gain8.215347%->8.225835% is an exposed fitting result,not dynamics or
+deployment. Both retain410,575 interventions;unknown selected8,430->8,448.
+Risk remains1/444 supported,383 known easy violations and13 undefined views.
+The free-count secondary known effect is+0.043942pp CI[+0.025620,+0.062978],
+lower+0.009636pp CI[-0.022548,+0.035381],also unsupported robustly. It makes
+more interventions and still supports only1/444 risk views.
+
+Both label-side oracles are supported and positive in148/148 unique record/
+context views,and all148 optimal utility values agree exactly. The small
+synthetic distinction therefore does not identify the main SOURCE failure.
+Four of eight fitting checks pass. No partial outcome chooses a threshold or
+model. Separate full replay PID84033 is running;agreement not yet claimed.
+The663,233B ZIP contains exactly72 aggregate metrics,not private rows or weights.
+
 ### Selected-Query Critic Negative; One-Factor Unit Repair Registered
 
 Previous goal turn:progress. The72-group stronger-bank control and exact

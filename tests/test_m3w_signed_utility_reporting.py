@@ -5,7 +5,7 @@ from tests.test_m3w_signed_utility_reduction import synthetic
 def test_report_preserves_unknown_risk_and_no_new_training_claim(monkeypatch):
     rows, cfg = synthetic(monkeypatch); s = report.run.summarize(rows, cfg)
     value = dict(summary=s, complete=dict(pid=1, seconds=1., peak_RSS_bytes=1),
-        replay_runtime=dict(pid=2, seconds=1., peak_RSS_bytes=1), reasons={})
+        replay_runtime=dict(pid=2, seconds=1., peak_RSS_bytes=1), reasons={}, oracle_gain_equality={})
     text = report.render(value)
     assert 'not_estimable' in text and 'Deployment unchanged' in text
     assert 'not_run:new training' in text and 'complete_original_risk: fail' in text

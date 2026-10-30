@@ -25,7 +25,12 @@ def build():
     reasons = {a: Counter() for a in run.api.NAMES[1:]}
     for r in rows:
         for a, counts in r['result']['allocation']['reasons'].items(): reasons[a].update(counts)
+    gaps = [o['full']['optimal_gain_lower_mass']-o['positive_action_only']['optimal_gain_lower_mass']
+        for r in rows if r['seed'] == 17 for o in r['result']['oracle_admissibility'].values()
+        if o['full']['optimal_gain_lower_mass'] is not None and o['positive_action_only']['optimal_gain_lower_mass'] is not None]
     return dict(summary=summary, complete=complete, reasons={a: dict(v) for a, v in reasons.items()},
+        oracle_gain_equality=dict(comparable_record_contexts=len(gaps), exact_equal=sum(g == 0 for g in gaps),
+            max_abs_gap=max(map(abs, gaps)) if gaps else None),
         replay_runtime=json.loads((p/'verification_runtime.json').read_text()))
 
 
@@ -71,6 +76,7 @@ def render(value):
         '## Fitting checks', '']
     lines += [f"- {k}: {'pass' if v else 'fail'}" for k, v in s['fitting_gates'].items()]
     lines += ['', f"Advancement:{s['fitting_advancement_gate']}. Deployment unchanged.", '',
+        f"Oracle utility comparison,head seeds deduplicated:{value['oracle_gain_equality']}", '',
         '## Numerical and statistical limits', '', f"Solver reason counts:{value['reasons']}",
         'A fallback retains an actual feasible incumbent,not a global-optimality claim. Predicted nesting is not observed safety.',
         'Empty matched risk is not_estimable;count controls do not replace original complete recording risk.',

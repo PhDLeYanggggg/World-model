@@ -65,7 +65,12 @@ unchanged. A matched-count control separates this from simply intervening more.
 Nineteen focused solver checks pass, including exhaustive small cases and exact
 resume. The real 128-query pilot finishes in 20.74 seconds at 9.60 GB peak
 memory, with exact interrupted recovery and no outcome scoring. The full
-72-group readout is running; no policy gain is claimed from the pilot.
+72-group readout now finishes in 26.08 minutes. Matched known utility improves
+by only 0.0105 pp; the primary completion-lower effect is -0.0072 pp with an
+interval crossing zero, and original recording risk still fails. Both label-side
+oracles support all 148 record/context views with identical optimal utility:
+the positive-action filter is not a demonstrated structural bottleneck here.
+A separate full replay is running; this policy is not deployed.
 [Controlled design](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/protocol.md).
 
 ### Completed Strong-Bank Control
