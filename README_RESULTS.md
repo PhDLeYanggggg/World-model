@@ -24,6 +24,12 @@ atomic immutable writer fixes that before any real raw-label access. The old
 registered writer and numerical experiments are unchanged. Raw pilot/full audit
 remain not_run at registration. See the [fixed protocol](outputs/publication_readiness_2026_09/european_source_label_provenance_v1/protocol.md).
 
+The real label pilot completes PID59148 exit0 in4.379819s, peak RSS107,479,040B.
+All 292 current identities,3,504 requested future flags and1,918 known midpoint
+labels match raw data. The record has225partial futures and21wholly missing
+futures. This is one real alignment pilot, not the full audit or a model gain;
+the complete74-record raw pass proceeds locally without changing any labels.
+
 ### Detector Tokens In Trajectory Dynamics: Full Training Frozen
 
 The next test moves past detector information into the Transformer rather than
