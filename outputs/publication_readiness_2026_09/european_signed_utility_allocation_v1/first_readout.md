@@ -1,5 +1,10 @@
 # First complete readout: admissibility alone is not sufficient
 
+Later status2026-10-30T16:12Z:full replay PID84033 exits0 in1563.212s,
+peakRSS11,267,358,720B. All72 groups,72 original controls,148 oracle controls
+and the canonical summary agree exactly. See readout.md and verification.json.
+The initial first-readout status below is retained as a historical snapshot.
+
 ## Material Passport
 
 fresh_run:all72 causal allocation/scoring groups,PID80693 exits0 in1564.756s,

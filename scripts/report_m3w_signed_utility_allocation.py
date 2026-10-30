@@ -88,13 +88,49 @@ def render(value):
         'here,not borrowed from older policies. No world-dynamics contribution or complete benchmark is claimed.',
         'Obs8/pred12/rawstride12,oblique detector-silver/local-image coordinates,not SDDt50,metric/seconds,human gold,',
         'true3D,foundation,independent success or submission-ready evidence. Independent roles,Stage5C and SMC stay closed.', '',
-        '[Mechanism counterexample](mechanism_note.md),[registered protocol](protocol.md).', '']
+        '[Full-policy figure](figures/allocation_result.svg),[mechanism counterexample](mechanism_note.md),',
+        '[registered protocol](protocol.md),[Chinese reproduction guide](reproduction_zh.md).', '']
     return '\n'.join(lines)
+
+
+def plot(value):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9, 'svg.fonttype': 'none', 'svg.hashsalt': run.NAME})
+    s = value['summary']; fig, axes = plt.subplots(1, 3, figsize=(12, 4.3))
+    for i, a in enumerate(run.api.NAMES):
+        v = s['accuracy'][a]
+        axes[0].errorbar(v['point'], i, xerr=[[v['point']-v['CI95'][0]], [v['CI95'][1]-v['point']]],
+            fmt='o', color='#007C91' if a.startswith('signed') else '#777777', capsize=3)
+    axes[0].set_yticks(range(4), ('Positive / matched', 'Signed / matched', 'Positive / free', 'Signed / free'))
+    axes[0].invert_yaxis(); axes[0].set_title('Known-label fitting utility'); axes[0].set_xlabel('ADE gain over floor (%)')
+    for i, (mode, key) in enumerate((('matched', 'known_pp'), ('matched', 'lower_pp'), ('free', 'known_pp'), ('free', 'lower_pp'))):
+        v = s['effects'][mode][key]
+        axes[1].errorbar(v['point'], i, xerr=[[v['point']-v['CI95'][0]], [v['CI95'][1]-v['point']]],
+            fmt='o', color='#007C91' if key == 'known_pp' else '#B43A32', capsize=3)
+    axes[1].set_yticks(range(4), ('Matched / known', 'Matched / lower', 'Free / known', 'Free / lower'))
+    axes[1].invert_yaxis(); axes[1].set_title('Signed minus positive control'); axes[1].set_xlabel('Paired utility difference (pp)')
+    axes[1].axvline(0, color='#777777', linewidth=.7)
+    o = s['oracle_admissibility']; counts = [o['full_positive_feasible'], o['positive_action_only_positive_feasible']]
+    axes[2].barh([0, 1], counts, color=['#777777', '#007C91'])
+    for i, n in enumerate(counts): axes[2].text(n-4, i, str(n), ha='right', va='center', color='white')
+    axes[2].set_yticks([0, 1], ('Full oracle', 'Positive-only oracle')); axes[2].invert_yaxis()
+    axes[2].set_xlim(0, 155); axes[2].set_title('Future-label diagnostic only'); axes[2].set_xlabel('Positive feasible record/context views')
+    for ax in axes: ax.grid(axis='x', alpha=.2); ax.set_axisbelow(True)
+    fig.suptitle('Exposed SOURCE development: nominal intervals, 3,000 resamples of 12 localities', fontsize=11)
+    fig.tight_layout(rect=(0, .1, 1, .91))
+    fig.text(.5, .015, 'All four policies: original recording risk only 1/444 supported. No deployment or independent-evidence claim.',
+        ha='center', fontsize=9)
+    folder = run.PUBLIC/'figures'; folder.mkdir(exist_ok=True); path = folder/'allocation_result.svg'
+    fig.savefig(path, bbox_inches='tight', metadata={'Date': None})
+    path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
+    fig.savefig(run.PRIVATE/'allocation_result.png', bbox_inches='tight', dpi=160); plt.close(fig)
 
 
 def complete_report():
     value = build(); p = run.PUBLIC; pack(ROOT, p); verify(ROOT, p)
-    (p/'readout.md').write_text(render(value))
+    (p/'readout.md').write_text(render(value)); plot(value)
     run.write(p/'evidence.json', dict(summary_sha256=run.sha(p/'summary.json'), complete_sha256=run.sha(p/'complete.json'),
         verification_sha256=run.sha(p/'verification.json'), report_code_sha256=run.sha(Path(__file__)),
         report_sha256=run.sha(p/'readout.md'), new_training_updates=0,

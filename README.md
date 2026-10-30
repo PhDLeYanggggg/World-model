@@ -70,8 +70,11 @@ by only 0.0105 pp; the primary completion-lower effect is -0.0072 pp with an
 interval crossing zero, and original recording risk still fails. Both label-side
 oracles support all 148 record/context views with identical optimal utility:
 the positive-action filter is not a demonstrated structural bottleneck here.
-A separate full replay is running; this policy is not deployed.
+A separate 26.05-minute complete replay agrees on all 72 groups, 72 original
+policy controls and 148 record/context oracle controls. Eighty-nine focused
+checks pass; this policy is not deployed and no new neural model was trained.
 [Controlled design](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/protocol.md).
+[Complete result and figure](outputs/publication_readiness_2026_09/european_signed_utility_allocation_v1/readout.md).
 
 ### Completed Strong-Bank Control
 

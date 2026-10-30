@@ -7,7 +7,7 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Joint Utility Admissibility: Registered, No Own Outcome Yet
+### Joint Utility Admissibility: Complete Negative Control
 
 The previous goal turn is progress:36 current-query fits and the full72-group
 readout/replay confirm a failed repair. Existing seven-action label-aware
@@ -56,8 +56,20 @@ Both label-side oracles are supported and positive in148/148 unique record/
 context views,and all148 optimal utility values agree exactly. The small
 synthetic distinction therefore does not identify the main SOURCE failure.
 Four of eight fitting checks pass. No partial outcome chooses a threshold or
-model. Separate full replay PID84033 is running;agreement not yet claimed.
+model. Separate full replay PID84033 exits0 in1563.211807s at peakRSS
+11,267,358,720B. All72 groups,72 original full-policy controls,148 unique
+record/context oracle controls and the canonical summary agree exactly.
+The22-file focused suite passes89 checks in11.76s,including the real full
+readout/bundle artifact check;the full repository suite was not rerun.
 The663,233B ZIP contains exactly72 aggregate metrics,not private rows or weights.
+Readout/figure,failure analysis,model/data card,results component and Chinese
+reproduction guide are complete. The main signed-matched decoder has70 strict
+postcheck anchor fallbacks and no solver-status timeouts;all-query optimality
+is not claimed. No independent outcome,new training or deployment promotion.
+The next modeling premise to test is causal position-state estimation:the six
+current physical forecasts anchor at the last observed point,even when OLS
+smooths velocity. A fitted-position-anchor comparison is not yet registered
+or run,and this code observation is not a demonstrated cause of failure.
 
 ### Selected-Query Critic Negative; One-Factor Unit Repair Registered
 
