@@ -21,7 +21,13 @@ observed safety. All cohorts,labels,2% criteria and closed roles stay unchanged.
 Nine focused tests pass in1.63s,including exhaustive small-bank optima,
 canonical ordering,real interrupted recovery,solver fallback and the secondary
 four-policy contrast's own cancellation-aware unknown bound. No new outcome
-has run. The real pilot and full72-group three-head-seed experiment are next.
+was scored in the real pilot. PID31533 exits0 in22.83s,peak9.77GB,covering128
+causal queries and3267rows. Direct and deliberately interrupted/resumed
+allocation agree exactly. Every query matches the four controls' counts;
+all256 physical/neural optimizations meet their predicted-budget postchecks.
+The complete72-group readout is running as PID32631;no partial score is used
+to change the registered protocol. The pilot projection is a rough single-source
+extrapolation,not the measured complete runtime.
 See the [protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
 
 ### Frozen Joint-Allocation Attribution Complete

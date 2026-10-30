@@ -30,7 +30,10 @@ forecasts and the seven-action physical/neural bank at the same current-query
 count, determined by the physical independent rule. Both banks keep the same
 cost estimates and 2% predicted-budget rules. This is not neural deletion to
 floor, a new training run or a smaller-cohort safety claim. Nine focused checks
-pass; the real recovery pilot and complete 72-group comparison are next.
+pass. The real pilot covers 128 causal queries and 3,267 rows in 22.83 seconds,
+uses 9.77 GB peak memory, and recovers exactly after a planned interruption.
+The complete 72-group comparison is running as PID 32631; no outcome or safety
+claim is available yet. I keep the previous complete-policy risk failure open.
 [Shared-count protocol](outputs/publication_readiness_2026_09/european_shared_count_bank_v1/protocol.md).
 
 ### Preceding Query-Allocation Study
