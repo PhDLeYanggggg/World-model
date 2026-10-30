@@ -17,6 +17,11 @@ producer folds. Eight new/adjacent input checks pass in0.34s. Raw parsing,
 new producer training and scoring are not_run at registration. No independent
 or controller-held readout is opened. See the [coverage protocol](outputs/publication_readiness_2026_09/european_producer_detector_store_v1/protocol.md).
 
+The real extension pilot parses previously uncached record1,PID46770,exit0,
+5.084880s,peak RSS199,573,504B. The original raw boxes,confidence,past
+midpoints and width align exactly. This is new input conversion,not new
+trajectory performance. The complete163record extension is next.
+
 ### Original Detector Histories: New Input Alignment Registered
 
 The current cost and fine-neighbor controls remain negative. The next input
