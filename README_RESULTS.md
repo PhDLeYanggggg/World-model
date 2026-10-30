@@ -24,6 +24,15 @@ in2.95s. The real pilot and full outcome experiment have not run. Reserved
 roles and deployment remain closed. See the
 [protocol](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/protocol.md).
 
+The real128-query pilot now completes PID18870 exit0 in21.04s,peak RSS
+9,600,958,464B. It covers3,267rows,126multi-agent queries,max49targets,and
+240actual MILP solutions across the two joint arms. Planned interruption and
+direct recovery match exactly. No outcome scoring occurs. The direct query
+pass takes3.47s; the deliberately large-query,one-source72-group extrapolation
+is3.89h,not a measured full runtime. Local memory is adequate and a healthy
+run within12h is allowed. The complete72-group readout has started asPID19894,
+with atomic query progress and no new training updates or threshold selection.
+
 ### Complete Capped Norm-Balancing Repair
 
 The diagnostic and its registered repair are complete, not another small

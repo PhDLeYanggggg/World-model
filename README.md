@@ -30,8 +30,10 @@ same seven candidate forecasts and 18 frozen cost heads, then compares the
 original independent rule, a uniform action, and joint allocation. The primary
 joint arm must use exactly the independent arm's intervention count in every
 recording/frame query, not just the same pooled rate. This isolates decision
-coupling from a new model or extra switches. Code checks pass; the real-data
-pilot and full 72-group readout are next, so there is no new effectiveness claim.
+coupling from a new model or extra switches. The real128-query/3,267-row pilot
+has exact interrupted recovery, taking21.04s including preparation at9.60GB
+peak memory. The full72-group run is now in progress with private action
+checkpoints; there is no new effectiveness claim before the fixed readout completes.
 [Protocol](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/protocol.md).
 
 ### Preceding Optimization Repair
