@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I have registered a fixed current-query allocation experiment. It keeps the
+same seven candidate forecasts and 18 frozen cost heads, then compares the
+original independent rule, a uniform action, and joint allocation. The primary
+joint arm must use exactly the independent arm's intervention count in every
+recording/frame query, not just the same pooled rate. This isolates decision
+coupling from a new model or extra switches. Code checks pass; the real-data
+pilot and full 72-group readout are next, so there is no new effectiveness claim.
+[Protocol](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/protocol.md).
+
+### Preceding Optimization Repair
+
 I traced the admission loss through 19 complete training replays, then tested
 one repair: increase its influence using a capped gradient-norm ratio. The
 diagnosis and the repair answer different questions. The loss was already

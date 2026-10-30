@@ -7,6 +7,23 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Current-Query Allocation Registered
+
+The preceding goal turn is progress:19 exact training diagnoses,18 fresh
+norm-balanced fits,72 readouts and a separate full replay reject that repair.
+The next experiment freezes the seven-action bank and all18 unit-admission
+heads. Only decoding changes:independent,uniform,joint matched-count,and free
+joint allocation, plus the unchanged floor. The primary matches intervention
+count in every contemporaneous query. No new dynamics training is claimed.
+
+The all/easy2% recording-risk contract, future-label masks, exposed fitting
+roles and all72 groups remain. New solver code includes exact small-problem
+enumeration checks, numerical postchecks,parent fallback,canonical grouping
+and real interrupted inference-state recovery. Sixteen focused checks pass
+in2.95s. The real pilot and full outcome experiment have not run. Reserved
+roles and deployment remain closed. See the
+[protocol](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/protocol.md).
+
 ### Complete Capped Norm-Balancing Repair
 
 The diagnostic and its registered repair are complete, not another small
