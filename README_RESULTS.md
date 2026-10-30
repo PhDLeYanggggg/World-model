@@ -94,6 +94,16 @@ Its design follows telemetry and the verified diagnostic, not
 selection among the completed parent policy scores.
 Independent roles, deployment, Stage5C and SMC remain closed.
 
+While that readout runs, the eight-variant selected-score audit is registered
+before its own values. It will re-infer old/new row/set critics, hash-check
+their frozen original/decoded choices, and separate signed-score error into
+harm underprediction plus 0.02 times reference inflation. Unknown/empty queries
+remain reported; conditional moments are not called full-cohort or causal
+effects. It changes no model/policy. Five arithmetic/support checks pass in
+0.12s. Actual values are not run. The broader 17-file focused suite passes
+70 tests in7.97s; two new-complete-readout tests remain deliberately unrun
+until the required artifacts exist. No full repository suite is claimed.
+
 Cold replay of the read-only diagnostic exposed a separate registration-event
 bug: the original entry point exits1 after parent completion because it
 recomputes a creation-time boolean. The old registration/code/results are not

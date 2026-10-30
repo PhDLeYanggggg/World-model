@@ -54,6 +54,10 @@ All 36 full fits finish in 5.00 minutes, including two exact full refits, at
 about 0.00044 to 0.00015, but pointwise risk error is worse. The new full policy
 readout is running as PID58848, so this remains a training result, not a safe-policy
 claim. [Common-unit curves](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/training_report.md).
+I have also registered a read-only audit of score errors on the original and
+final selected sets. It separates harm underprediction from reference bias and
+keeps missing support visible; it changes no model or policy.
+[Audit design](outputs/publication_readiness_2026_09/european_selected_score_audit_v1/protocol.md).
 [Scale diagnostic](outputs/publication_readiness_2026_09/european_query_critic_capacity_v1/readout.md).
 [One-factor protocol](outputs/publication_readiness_2026_09/european_query_unit_critic_v1/protocol.md).
 [Selected-query critic protocol](outputs/publication_readiness_2026_09/european_selected_query_critic_v1/protocol.md).
