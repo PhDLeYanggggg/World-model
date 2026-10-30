@@ -35,6 +35,16 @@ updates,not the planned144,000. Measured primary-optimization projection is
 1,664.85s,excluding preparation,full refit and readout. The complete36model
 CPU4run proceeds locally with all4,000updates retained.
 
+Full training is live as native arm64 PID61609. The first17complete endpoints
+retain the full4,000step budget; all5completed disabled states reproduce their
+actual parents. The first history model has an exact independent4,000step
+refit. The fixed readout and aggregate-artifact scope passes11focused tests in
+2.50s. All36models remain scheduled; the first17are a progress snapshot,not
+a shortened experiment. No forecast effectiveness or independent outcome is
+read here. Readout keeps all6physical baselines and paired missing-outcome
+bounds,including undefined required localities. The active model family,not
+the earlier flat input model,is the subject of this registered repair.
+
 ### Raw Future-Label Provenance Audit Registered
 
 The previous goal turn is progress: 72 real producers and complete exact
