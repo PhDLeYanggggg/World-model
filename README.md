@@ -46,7 +46,7 @@ violations rise from 308 to 324, and only 43/444 required recording views pass.
 I do not deploy this policy or call it a successful world model.
 
 The run covers 112,596 reused query views; 36,305 matched-query decisions change.
-Eight numerically rejected primary solutions retain the original policy. The
+Eight primary solutions fail postchecks and retain the original policy. The
 six physical forecasts, neural candidate and 18 existing cost heads remain
 unchanged. Predicted pooled budgets are not observed-risk guarantees, and these
 query targets are not necessarily every visible agent. The
@@ -54,10 +54,21 @@ query targets are not necessarily every visible agent. The
 and [method note](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/method_note.md)
 keep those distinctions explicit.
 
-I am now checking how much of this gain comes from actual neural prediction use
-and where the selected harm is underestimated. That is a registered post-readout
-diagnostic on frozen decisions, not another opportunity to tune the policy.
-[Attribution protocol](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/protocol.md).
+The frozen-choice diagnostic also finds a neural-use contribution: changes in
+actual neural use add +0.369 known pp, CI [+0.105,+0.711], with a paired
+completion-lower increment of +0.311pp, CI [+0.063,+0.646]. Both complete
+diagnostic runs agree. This deletion-to-floor ablation is not a reoptimized
+physical-only comparison or independent neural superiority.
+
+The remaining failure is substantial: among records with observed easy harm,
+the median predicted/observed easy-harm ratio is only 0.0152. I will prioritize
+a fully reoptimized physical-only joint control and a distinct selected-query
+risk repair. The [attribution](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/reproduction_zh.md)
+retain the useful signal and the failed protection. All 51 focused checks pass;
+the complete historical repository suite was not rerun. External exposure is
+also explicit: DUT's earlier evaluated recordings are not an untouched test set.
 
 ### Preceding Optimization Repair
 

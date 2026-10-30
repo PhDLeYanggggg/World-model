@@ -7,6 +7,46 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Frozen Joint-Allocation Attribution Complete
+
+All72 new attribution groups complete PID25357 exit0 in101.95s,peak RSS10.91GB.
+Separate replay PID26550 exit0 agrees exactly in118.48s,peak10.83GB. The72
+legacy independent attributions and288 immutable action hashes reproduce.
+This is post-main-readout diagnosis,not another selection experiment or fresh
+neural training. No main score,threshold,cohort or original choice changes.
+
+Deleting only the joint policy's actual neural uses to floor removes+1.026140
+known pp,CI[+0.297522,+1.991966],and+0.905772 completion-lower pp,
+CI[+0.186673,+1.874977]. Joint-versus-independent incremental neural-use
+reallocation is+0.368822 known pp,CI[+0.104733,+0.710547],and+0.311363
+completion-lower pp,CI[+0.063381,+0.646258]. Shared unknown neural uses cancel
+before bounding;this is not subtraction of two lower bounds. Remaining action
+reallocation adds+0.279566 known pp;its completion-lower CI crosses zero.
+Known points partition the main+0.648388pp;CI endpoints do not add.
+
+This is evidence of neural use within the frozen fitting strategy,not a
+reoptimized physical-only comparator,new dynamics training or independent
+neural superiority. Original complete-policy risk still fails. Joint selected
+easy-harm bookkeeping is33,267.35 observed versus429.77 predicted;within-record
+median predicted/observed ratio is0.015205. Among58,970 fully known selected
+query views,18,324 have easy excess;17,728 are numerator-only witnesses.
+3,294 selected-unknown query views remain in full scores. Per-row excess is
+not automatically a false query admission. Raw sums are local-unit accounting,
+not physical/cross-domain metrics or causal identification.
+
+Both metric bundles,report reconstructions and figures are checked;51 focused
+tests pass in8.99s,not the full historical repository suite. The next strong
+control is reoptimized six-action versus seven-action allocation at the physical
+independent rule's common feasible query count. Source-side selected-risk
+repair and compliant independent evidence still remain. Existing DUT has an
+old-chain27-record predictive readout and chunk-based verification;its role
+reservation must not be called pristine data. No roles are changed or new
+external predictions run. See the
+[attribution readout](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_frame_allocation_attribution_v1/failure_analysis.md),
+[next steps](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/next_steps.md)
+and [external role recheck](outputs/publication_readiness_2026_09/european_frame_action_allocation_v1/external_role_recheck.md).
+
 ### Complete Current-Query Allocation Readout
 
 All72 fixed inference/decision/metric groups complete in729.54s at10.92GB peak
