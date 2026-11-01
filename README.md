@@ -25,6 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Current Test: Learning Costs On The Model's Own Decisions
+
+I am comparing two equally sized coherent cost models from the same warm
+weights. One learns query-level risk errors on a fixed earlier selection;
+the other learns those errors on its own current, past-only joint decisions.
+Both retain the same pointwise supervision, query coverage and 2% requirements.
+The protocol and primary are frozen before this experiment's outcomes. Actual
+training/recovery and resource measurements come first; no improvement is claimed.
+[Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
+
 ### Completed Reference-Consistency Control
 
 I tested whether repairing contradictory cost estimates improves the decisions

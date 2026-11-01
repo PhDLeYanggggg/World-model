@@ -7,6 +7,22 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Own-Decision Coherent Cost Training
+
+Registered before its own results. Both arms use the same learned-reference
+warm state,31,119active/total parameters,differentiable coherent decoder and
+complete cyclic query sampling. Only the aggregate risk-loss choices differ:
+fixed causal initial choices versus detached current native joint allocation.
+All legal known candidates keep their pointwise losses;unknown outcomes are
+never supervised zero. The model's context input remains fixed in both arms.
+The original2%budget,full72groups,149,510targets,74recordings and source roles
+are unchanged. No independent role or deployment is opened.
+
+Before registration,13focused checks pass1.88s;two explicit artifact/registration
+checks wait for their real evidence. The proposed real400-update recovery/resource
+pilot has not yet run. New training is not reported complete or beneficial.
+[Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
+
 ### Coherent-Cost Projection Control
 
 **Complete, fresh_run:** deterministic cost projection and full72-group policy
