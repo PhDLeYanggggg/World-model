@@ -91,8 +91,10 @@ or deployment is changed while this experiment is incomplete.
 
 The real 400-update pilot has passed: both arms reproduce the old native costs
 at initialization, and interrupted training agrees exactly with direct training.
-Peak memory was 9.65 GB. The 36 complete-query cost fits are now running locally
-with checkpoints; no policy result or safety improvement is claimed yet.
+Peak pilot memory was 9.65 GB. All 36 complete-query cost fits are now frozen:
+208,320 optimizer updates plus 14,336 exact-refit updates, in 18.8 minutes at
+9.75 GB peak memory. Complete policy evaluation is next; no safety improvement
+or deployment is claimed from training loss alone.
 
 ### Completed Decision-Cost Control
 

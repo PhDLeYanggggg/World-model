@@ -21,9 +21,10 @@ were inspected but require760paired inputs,not a drop-in462-field replacement.
 CREATE read-only queue check succeeds;no remote job is changed or submitted.
 The real400-update pilot is complete:fresh_run,20.832748s,peak9,646,735,360B.
 Both zero-branch native predictions and50/100-update interruption recovery are
-exact. Formal36-head training is running locally with checkpoint100/heartbeat50.
-The pilot is engineering evidence,not policy efficacy. Full readout is not_run
-pending the complete36-model freeze;no deployment or independent role changes.
+exact. All36 formal cost fits are frozen:fresh_run,208,320primary updates plus
+14,336exact-full-refit updates,1128.131876s,peak9,747,415,040B. Every query has
+at least4sampling visits;none is undrawn. Full72-group policy evaluation follows
+the complete model freeze. No deployment or independent role changes.
 
 ### Necessary Query Easy Support
 

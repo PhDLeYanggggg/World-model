@@ -46,6 +46,8 @@ env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
   .venv-pytorch/bin/python scripts/report_m3w_reference_cost_refit.py
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
+  .venv-pytorch/bin/python scripts/verify_m3w_reference_public_report.py
+env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
   .venv-pytorch/bin/python -m pytest -q \
   tests/test_m3w_reference_cost_refit.py \
   tests/test_m3w_refit_cost_allocation.py \

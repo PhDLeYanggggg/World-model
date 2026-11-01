@@ -103,3 +103,23 @@ def test_no_pair_support_remains_undefined_not_observed_zero():
     assert report.supplementary([empty])['pair_and_tail']['learned_joint']['pair_contraction_proxy'] is None
     assert report.supplementary([empty,positive])['pair_and_tail']['learned_joint']['pair_contraction_proxy']==2.
     with pytest.raises(ValueError):report.supplementary([row(3,None)])
+
+
+def test_unobserved_target_values_cannot_change_supervised_loss_or_gradients():
+    from tests.test_m3w_reference_cost_refit import warm
+    from tests.test_m3w_coupled_benefit_risk import data
+    api=run.api;d=data();changed=copy.deepcopy(d)
+    assert (~d['known']).any()
+    changed['targets'][~d['known']]=1e12
+    ix=api.np.arange(8);seg=api.np.repeat(api.np.arange(4),2)
+    args=api.parent.batch(d['causal'],ix,seg,4)
+    normalizer=api.base.units.query_normalizer(d)
+    for arm in api.ARMS:
+        model=api.initialize(warm(d),arm);results=[]
+        for source in (d,changed):
+            model.zero_grad(set_to_none=True)
+            terms=api.losses(model(*args),source,ix,args[-2],4,normalizer)
+            terms['total'].backward()
+            results.append(dict(loss=terms['total'].detach().clone(),
+                gradients={k:p.grad.clone() if p.grad is not None else None for k,p in model.named_parameters()}))
+        api.parent.exact(*results)
