@@ -19,6 +19,13 @@ requirements decide advancement. Eleven focused checks pass1.38s before resource
 pilot. The actual18-query probe now completes in21.154319s,peak9,830,825,984B;
 direct/resumed allocations are exact,maximum49agents. No policy outcomes were
 scored in that probe. Complete72readout is starting;no positive result claimed.
+Full readout now runs under PID29594 with immutable inputs and query checkpoints.
+Public-only report reconstruction and failure/selected-cost diagnostics are
+implemented. Before complete results,15focused checks pass1.90s;three artifact
+checks are explicitly skipped until the complete readout/verification exists.
+The publisher-linked ICML2024multi-expert-deferral PDF methods and two-stage
+theorem statements were inspected;this projection is not claimed as its surrogate
+or as a new consistency theorem. The third-party PDF remains private/excluded.
 
 ### Coverage-Complete Reference Cost Refit
 
