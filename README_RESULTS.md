@@ -35,7 +35,29 @@ readout,not completed duration. Formal36-head training completes as PID52905:
 771.051834s,peak11,638,472,704B,208,320primary plus14,336exact full-refit updates.
 All draws/budgets match the preceding own-choice fits. Both arms retain219,368
 unknown contextual row draws with zero unknown supervised labels. Complete72-
-group policy evaluation is running;no policy effect is claimed yet.
+group policy evaluation and separate new-score/frozen-action replay are complete.
+Known ADE gain over floor:ADE raw19.639345%,ADE guarded10.874718%,TDEF raw25.213369%,
+TDEF guarded11.890200%. Raw TDEF-minus-ADE known effect:+5.574024pp
+[4.372858,6.650644];common-count known:+4.823052pp [3.835628,5.804390].
+Both completion-lower contrasts fail;the matched raw lower is-2.411792pp
+[-7.585155,1.266941]. The published loss has useful observed ranking evidence,
+not a complete-policy or safety success.
+
+Registered guarded primary known:+1.015483pp [0.603912,1.541241],but lower
+**-6.128112pp [-17.313596,0.021076]**. Guarded TDEF-minus-frozen own-joint known
+is-2.260257pp [-3.160157,-1.465769],lower-8.618524pp [-17.032188,-3.672715].
+Only18/444guarded recording-risk views pass;known all/easy violations87/206,
+20undefined selected-easy views. Raw risk support0/444. Worst known easy
+degradation95.988832% raw ->4.090044% guarded,still above2%. Fitting gates5/9.
+Raw utility is not promoted over safe deployment;no policy is replaced.
+
+Readout:PID55021,157.690834s,peak11,552,129,024B. Verification:PID56375,
+159.077315s,peak11,527,356,416B;all72new scores/actions and original full/record
+controls exact. Public rebuild:PID57809,2.619380s,zero private input reads.
+Seventeen focused checks pass3.21s,no skips;full repository suite not run.
+Plot visually checked. A separately registered post-readout diagnostic now
+checks false acceptance and false rejection by the fixed guard;no new policy,
+threshold,training or primary change. Its counts are not_run yet.
 No speed-based reduction. The working-paper technical supplement now specifies
 the current losses,partial-label estimand,completion bounds and support limits.
 Eleven pre-registration focused checks pass1.92s;two artifact checks skipped.

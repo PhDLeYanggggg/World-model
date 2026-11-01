@@ -25,17 +25,36 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Current Comparison: A Matched Published Deferral Baseline
+### Completed Matched Published Deferral Comparison
 
-I have registered a comparison between expected-ADE regression and the published
-multi-expert logistic-deferral loss on the updated forecast bank. Both share the
-same causal inputs, initialization, query draws and full training budget. Raw
-and frozen-risk-guarded decisions will both be reported. The real 400-update
-recovery pilot passed at 9.72 GB peak memory; all 36 formal heads complete locally
-in 12.85 minutes at their full budgets, including two exact full refits. Policy
-evaluation is now running, and
-deployment is unchanged.
-[Protocol](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/protocol.md).
+I compared expected-ADE regression with the published multi-expert logistic-
+deferral loss on the same updated forecast bank. The 36 models share causal
+inputs, initialization, query draws and full budgets. Training and exact full
+refits took 12.85 minutes locally. All 72 policy groups and a separate numerical
+replay are complete.
+
+|Known-label ADE gain over the same fallback|ADE regression|Published-loss adapter|
+|---|---:|---:|
+|Raw selection|19.64%|25.21%|
+|Frozen-risk-guarded selection|10.87%|11.89%|
+
+The public loss improves observed routing, but **neither version is deployable**.
+Raw deferral has worst known easy degradation of **95.99%**. The frozen guard
+reduces it to **4.09%**, still above 2%, and only **18/444** recording-risk views
+pass. The registered guarded-loss completion-lower effect is **-6.13 pp
+[95% CI: -17.31, 0.02]**. Guarded deferral also trails the frozen own-joint policy
+on observed gain. I retain the stronger raw result as a baseline, not a safe
+replacement or an independent result.
+
+The next diagnostic measures both unsafe actions admitted by the frozen guard
+and genuinely safe actions it rejects. Better ranking alone cannot repair a
+guard that excludes the reference support needed by the risk criterion.
+Seventeen focused checks pass, and public reports rebuild without private input
+reads. This remains exposed SOURCE development, not SDD `t+50` or new dynamics.
+
+[Complete result](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/readout.md),
+[method source and reuse](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/method_source_and_reuse.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/reproduction_zh.md).
 
 ### Completed Own-Decision Cost Training
 
