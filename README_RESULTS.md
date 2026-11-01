@@ -16,7 +16,9 @@ remain unchanged. Complete72-group SOURCE evaluation is required;no independent
 role is opened and no new neural model is trained. Reference MSE can improve by
 averaging alone,so primary full-policy utility and original2%recording-risk
 requirements decide advancement. Eleven focused checks pass1.38s before resource
-pilot. Pilot/full readout are not_run at registration;no positive result claimed.
+pilot. The actual18-query probe now completes in21.154319s,peak9,830,825,984B;
+direct/resumed allocations are exact,maximum49agents. No policy outcomes were
+scored in that probe. Complete72readout is starting;no positive result claimed.
 
 ### Coverage-Complete Reference Cost Refit
 

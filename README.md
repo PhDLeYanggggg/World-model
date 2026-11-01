@@ -33,6 +33,7 @@ available candidates and caps benefit at that reference, while preserving harm,
 forecasts and candidate availability. It has no fitted parameters and is not new
 neural training. The complete 72-group comparison is registered before its own
 results; the original 2% requirements and deployment policy stay unchanged.
+The real query-recovery probe has passed; full-cohort evaluation is starting.
 [Protocol](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/protocol.md).
 
 ### Completed Reference Cost Refit
