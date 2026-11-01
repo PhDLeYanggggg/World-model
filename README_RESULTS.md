@@ -9,6 +9,21 @@ or evidence status.
 
 ### Expanded Reference Support Preflight
 
+**Complete,fresh_run:**PID5069,89.699197s,peak10,904,354,816B. Independent
+recalculation PID6228,89.418772s,peak10,982,113,280B;all72numeric groups/original
+controls exact. Expanded reference-only label-aware witness supports444/444;
+reference-pointwise432/444,gain7.128312pp [4.308933,10.858644]. This restores four
+views versus428/444,but12lack known legal easy-reference support under the
+pointwise restriction. Conservative preflight fails;no new actor training.
+This is not proof joint pooling is infeasible. The registered follow-up keeps
+all72groups,retains432cached_verified pointwise witnesses and freshly checks
+every remaining record with singleton/sign certificates or query binary feasibility.
+Timeout/postcheck failure must remain inconclusive. Twelve combined focused
+checks pass in1.23s,including30small exhaustive query cases. No deployment or
+independent-role opening;Stage5C/SMC off.
+
+**Execution history:**
+
 Registered full72-group preflight,after the preceding SOURCE diagnosis but
 before own results. New causal predicate removes only frozen predicted gain-sign
 eligibility;real action availability,positive predicted references and both2%
