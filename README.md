@@ -25,6 +25,18 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am testing a decision-cost objective for the seven-action critic. The forecasts,
+462 causal fields, model size, training draws and update budget stay fixed. The
+new loss learns the expected benefit and harm of choosing an action, with full
+training-record risk updates and the original fallback decoder. This extends
+the earlier binary policy experiment; it is not a claim that cost-aware routing
+is itself new. The controlled comparison is registered before its own outcomes.
+Training and policy evaluation are not complete yet. Independent confirmation
+and deployment remain closed.
+[Experiment protocol](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/protocol.md).
+
+### Completed Pairwise Decoder Control
+
 I tested an explicit predicted-path interaction term in the seven-action joint
 decoder, keeping the forecasts, cost heads, intervention counts and original
 2% risk constraints fixed. This was a decoder control, not new neural training.

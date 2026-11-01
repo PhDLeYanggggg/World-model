@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Seven-Action Decision-Cost Training
+
+New registered comparison:18 new decision-cost critics versus18 cached verified
+regression critics. Same seven forecasts,462 fields,30,857 parameters,initialization,
+query draws and2,000 updates. Add a soft expected decision-cost objective with
+full-record all/easy/easy-degradation dual updates;keep original2%hard decoder.
+The previous binary cost-sensitive policy is an explicit prior control,not a new
+method claim. Eighteen focused/synthetic checks pass in2.01s. Real pilot,training
+and outcome readout are not complete yet. SOURCE development only;independent
+roles,Stage5C and SMC stay closed. No deployment or submission-ready claim.
+
 ### Predicted-Path Interaction: Registered Decoder Control
 
 Iteration complete,not project/goal completion. Main42.73min+fresh42.46min
