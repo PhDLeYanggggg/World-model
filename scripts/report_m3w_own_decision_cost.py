@@ -133,6 +133,7 @@ def render(v):
     for name,effects in s['effects'].items():
         for mode,x in effects.items():lines.append(f'|{name}|{mode}|{interval(x["known_pp"])}|{interval(x["lower_pp"])}|{interval(x["upper_pp"])}|')
     lines+=['','Post-hoc trimmed controls are utility-only;required empty views remain not_estimable,not safe0.',
+        'Paired completion bounds use policy trajectory disagreement on unknown rows;subtracting two individual floor-lower points is not the paired lower effect.',
         'The native joint allocator preserves its own independent intervention count;common-count cross-arm controls are separate.','',
         '|Policy|Known ADE gain over floor (%)|Full-roster FDE|Own completion-lower pp|Risk-supported recording views|Known all/easy risk violations|Undefined selected easy|Selected/unknown views|',
         '|---|---:|---:|---:|---:|---:|---:|---:|']

@@ -82,3 +82,29 @@ def test_complete_bundle_has_only_public_scalar_groups():
             assert name.startswith('groups/') and name.endswith('.json')
             raw=z.read(name);assert b'/Users/' not in raw
             inspect(json.loads(raw,parse_constant=lambda v:(_ for _ in ()).throw(ValueError(v))))
+
+
+def test_public_training_validator_checks_logic_beyond_file_hashes(tmp_path,monkeypatch):
+    public=tmp_path/'public';public.mkdir();reg=public/'registration.json'
+    monkeypatch.setattr(report,'ROOT',tmp_path);monkeypatch.setattr(run,'PUBLIC',public);monkeypatch.setattr(run,'REG',reg)
+    def write(path,value):path.write_text(json.dumps(value)+'\n')
+    budgets=(7168,2000,7168,8192,2000,8192);contexts={f'c{i}':[] for i in range(6)}
+    write(reg,dict(contexts=contexts,seeds=[17,29,43]));refs=[]
+    for i,c in enumerate(contexts):
+        for seed in (17,29,43):
+            for arm in run.api.ARMS:
+                n=budgets[i];path=public/f'{c}_{seed}_{arm}.json'
+                counts=dict(empty_selected_queries=0,unknown_selected_queries=0,complete_selected_queries=16*n,selected_rows=16*n)
+                row=dict(context=c,seed=seed,arm=arm,registration_sha256=run.sha(reg),step=n,budget=n,
+                    minimum_query_visits=4,never_drawn_queries=0,parameters=31119,trainable_parameters=31119,
+                    unknown_rows_with_supervised_labels=0,selected_query_counts=counts,training_solver_calls=16*n if arm=='own_choice' else 0,
+                    training_solver_seconds=1.,input_hashes={},draw_hash='same',source_query_counts=[n],
+                    source_completed_cycles=[4],warm_checkpoint={},unknown_rows_drawn=10)
+                write(path,row);refs.append(dict(path=str(path.relative_to(tmp_path)),sha256=run.sha(path)))
+    freeze=dict(fits=refs,registration_sha256=run.sha(reg),primary_optimizer_updates=208320,exact_full_refit_updates=14336)
+    write(public/'training_freeze.json',freeze)
+    for arm in run.api.ARMS:write(public/f'first_full_refit_{arm}.json',dict(scientific_state_exact=True,wall_time_excluded=True,updates=7168))
+    assert report.training()['totals']['own_choice']['updates']==104160
+    path=tmp_path/refs[0]['path'];row=json.loads(path.read_text());row['unknown_rows_with_supervised_labels']=1
+    write(path,row);refs[0]['sha256']=run.sha(path);write(public/'training_freeze.json',freeze)
+    with pytest.raises(ValueError,match='Complete matched'):report.training()

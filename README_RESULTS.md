@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Working Paper
+
+The [current draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
+sets out the partial-label forecast-substitution problem, controlled comparisons
+and negative results. It now builds in the official CVPR2027 two-column style:
+six main-body pages plus one LLM statement/reference page, all seven visually
+checked. Source and exact-PDF layout receipts are recorded; the official style,
+PDF and page images remain private. This is typesetting progress, not independent
+scientific confirmation or submission readiness. The live cost-training trial
+is explicitly pending in this draft until its complete evaluation is verified.
+
 ## Source-Development Cost Learning (No Deployment Promotion)
 
 ### Own-Decision Coherent Cost Training
@@ -30,7 +41,7 @@ Both complete7,168-update first-context/seed17refits now match their original
 scientific training states exactly. The remaining original heads continue.
 New training is not reported complete or beneficial before its full evaluation.
 Public-scalar report reconstruction,private-input read protection and Chinese
-reproduction commands are implemented. Current focused checks:16passed2.97s;
+reproduction commands are implemented. Current focused checks:17passed3.15s;
 three complete-result checks remain explicitly skipped while real training runs.
 The existing published logistic-deferral adapter was located and its old144-group
 scalar archive verified. It is reusable code,not a matched current-bank score:
