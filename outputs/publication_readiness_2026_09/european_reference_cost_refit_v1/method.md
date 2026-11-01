@@ -74,3 +74,14 @@ before resampling 12 exposed localities. They quantify conditional SOURCE fittin
 variation, not independent confirmation. All three cost seeds share forecaster43.
 This is not whole-pipeline OOF, multi-forecast-seed evidence or a deployable
 world-model claim. Stage5C and SMC stay disabled.
+
+## Additional Nonintervening Diagnostic
+
+A post-registration descriptive diagnostic is collected during the original
+frozen-action inference/score verification. It reads predicted costs, causal
+availability and frozen causal scales only, not targets. It records benefit
+above reference, negative implied candidate ADE, easy-reference/harm ordering,
+exact-zero references and candidate-reference spread. Both exact signs and a
+1e-12 normalized excess tolerance are reported. No prediction byte, choice,
+threshold, endpoint or original gate changes. Such violations can identify a
+remaining moment-model limitation;their absence is not a calibration certificate.

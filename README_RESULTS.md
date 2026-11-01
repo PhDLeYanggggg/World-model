@@ -32,6 +32,13 @@ exactly restores the original AST. Models,registration and scientific files rema
 unchanged. Two focused regression checks pass1.26s before repaired execution.
 The repaired full72readout is running under PID20020. Training endpoints and
 thresholds are frozen;partial source outcomes do not select a new checkpoint.
+Full72readout is now complete:fresh_run,1905.292910s,peak10,907,205,632B.
+Pending separate numeric verification:learned-minus-locked known gain+0.707816pp
+[0.238023,1.192602],completion-lower-2.031363pp[-4.275018,-0.420831].
+Reference MSE change-0.154861[-0.230003,-0.097589];only9/444record-risk views
+supported. Original fitting advancement fails;no deployment. A nonintervening
+post-registration coherence diagnostic will accompany numeric verification;
+it cannot change predictions,choices,thresholds or any original gate.
 
 ### Necessary Query Easy Support
 

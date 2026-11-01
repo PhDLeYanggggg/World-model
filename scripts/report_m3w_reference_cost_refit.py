@@ -121,6 +121,18 @@ def build():
         if f['registration_sha256']!=run.sha(run.REG):raise ValueError('Fit registration differs')
         fits.append(f)
     stats=training_statistics(fits);refits={}
+    coherence=json.loads((p/'coherence_verification.json').read_text())
+    expected={f'{f["context"]}_seed{f["seed"]}_{f["arm"]}':f for f in fits}
+    if (set(coherence['cells'])!=set(expected) or not coherence['prediction_bytes_unchanged']
+            or coherence['registration_sha256']!=run.sha(run.REG)
+            or coherence['training_freeze_sha256']!=run.sha(p/'training_freeze.json')
+            or coherence['verification_sha256']!=run.sha(p/'verification.json')
+            or coherence['executable_sha256']!=run.sha(ROOT/'scripts/verify_m3w_reference_refit_coherence.py')
+            or coherence['future_targets_read_by_diagnostic'] or coherence['thresholds_or_choices_changed']):
+        raise ValueError('Nonintervening coherence diagnostic must retain original predictions and verification')
+    for key,f in expected.items():
+        if coherence['cells'][key]['checkpoint_sha256']!=f['checkpoint']['sha256']:
+            raise ValueError('Coherence diagnostic must use the same36frozen weights')
     first=sorted(reg['contexts'])[0]
     for arm in run.api.ARMS:
         r=json.loads((p/f'first_full_refit_{arm}.json').read_text())
@@ -158,7 +170,7 @@ def build():
     rebuilt.update(unique_target_rows=149510,unique_recordings=len(recordings))
     if summary!=rebuilt or len(recordings)!=74:raise ValueError('Full canonical summary differs')
     return dict(summary=summary,complete=complete,freeze=freeze,replay=replay,bundle=bundle,
-        training=stats,refits=refits,auxiliary=supplementary(rows),
+        training=stats,refits=refits,auxiliary=supplementary(rows),coherence=coherence,
         locality_diagnostics=locality_diagnostics(rows,summary),
         pilot=json.loads((p/'pilot.json').read_text()))
 
@@ -172,6 +184,7 @@ def interval(v):
 
 def render(v):
     p=run.PUBLIC;s=v['summary'];stats=v['training'];aux=v['auxiliary']
+    e=s['effects']['joint'];penalty=None if any(e[k]['point'] is None for k in ('known_pp','lower_pp')) else e['known_pp']['point']-e['lower_pp']['point']
     run.write(p/'training_statistics.json',stats);run.write(p/'supplementary_statistics.json',aux)
     run.write(p/'locality_diagnostics.json',v['locality_diagnostics'])
     lines=['# Coverage-Complete Reference Cost Refits','','## Evidence Role','',
@@ -187,7 +200,8 @@ def render(v):
         '|---|---:|---:|---:|']
     for mode,e in s['effects'].items():lines.append(f'|learned minus locked:{mode}|{interval(e["known_pp"])}|{interval(e["lower_pp"])}|{interval(e["upper_pp"])}|')
     e=s['parent_effect'];lines.append(f'|learned joint minus original parent|{interval(e["known_pp"])}|{interval(e["lower_pp"])}|{interval(e["upper_pp"])}|')
-    lines+=['','Count-matched controls evaluate utility only. Empty selected easy support stays not_estimable,not safe0.','',
+    lines+=['',f'Paired known-minus-completion-lower penalty:{cell(penalty)}pp. This is missing-outcome uncertainty,not observed harm.',
+        'Count-matched controls evaluate utility only. Empty selected easy support stays not_estimable,not safe0.','',
         '|Policy|Known ADE gain over floor (%)|Known FDE gain (%)|Own completion-lower pp|Supported original record-risk views|Known easy-risk violations|Undefined selected easy views|Selected / unknown views|',
         '|---|---:|---:|---:|---:|---:|---:|---:|']
     for a in run.evaluation.NAMES:
@@ -196,6 +210,18 @@ def render(v):
         '|Moment|Locked [conditional95%CI]|Learned [conditional95%CI]|','|---|---:|---:|']
     for k in range(5):lines.append(f'|{k}|{interval(s["calibration_MSE"]["locked_references"][str(k)])}|{interval(s["calibration_MSE"]["learned_references"][str(k)])}|')
     lines += ['',f'Mean reference MSE change:{interval(s["reference_MSE_change"])}.','',
+        '## Prediction Coherence Diagnostic','',
+        'Added after registration,not a new primary or gate. No labels are read by this diagnostic and not one prediction byte or action changes.',
+        'Counts repeat source/context/cost-seed views;they are not independent samples. Excess tolerance is1e-12in frozen causal scale units.','',
+        '|Arm|Legal action views|Benefit above reference|Negative implied candidate ADE|Easy reference above reference|Easy harm above harm|',
+        '|---|---:|---:|---:|---:|---:|']
+    for arm in run.api.ARMS:
+        cells=[x['diagnostic'] for x in v['coherence']['cells'].values() if x['arm']==arm]
+        numbers=[sum(x['legal_action_views'] for x in cells)]+[sum(x['violations'][k]['above1e_12_normalized_action_views'] for x in cells)
+            for k in ('benefit_exceeds_reference','negative_implied_candidate_ADE','easy_reference_exceeds_reference','easy_harm_exceeds_harm')]
+        lines.append('|'+arm+'|'+'|'.join(map(str,numbers))+'|')
+    lines+=['','Per-model exact/tolerance violations,zero references and candidate-reference spread remain in coherence_verification.json.',
+        'A coherent prediction is not proof of calibrated risk or useful decisions;incoherent moments locate a concrete remaining model limitation.','',
         '## Source-Level Diagnostic','','These repeat contexts and cost seeds,not independent recording samples. Cost-MSE changes are descriptive,not causal attribution.','',
         '|Exposed locality|Learned-minus-locked lower pp|Reference MSE change|Locked record-risk support|Learned record-risk support|Locked pointwise witnesses|Learned pointwise witnesses|',
         '|---|---:|---:|---:|---:|---:|---:|']

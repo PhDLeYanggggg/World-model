@@ -123,3 +123,17 @@ def test_unobserved_target_values_cannot_change_supervised_loss_or_gradients():
             results.append(dict(loss=terms['total'].detach().clone(),
                 gradients={k:p.grad.clone() if p.grad is not None else None for k,p in model.named_parameters()}))
         api.parent.exact(*results)
+
+
+def test_undefined_locality_cost_evidence_is_not_reported_as_zero_or_safe():
+    record={name:dict(budget_status=dict(supported=False),easy_selected_risk_upper=None)
+        for name in ('locked_joint','learned_joint')}
+    row=dict(source='s',result=dict(recordings={'r':record},pointwise_diagnostic={arm:dict(supports=dict(
+        reference_pointwise=dict(supported_record_views=0))) for arm in run.api.ARMS}))
+    summary=dict(effects=dict(joint=dict(known_pp=dict(by_locality={'s':1.}),
+        lower_pp=dict(by_locality={'s':-.2}))),reference_MSE_change=dict(point=None,CI95=None))
+    value=report.locality_diagnostics([row],summary)['s']
+    assert value['reference_MSE_change'] is None
+    assert value['joint_completion_lower_pp']==-.2
+    assert value['policies']['learned']['supported_record_views']==0
+    assert value['policies']['learned']['undefined_easy_views']==1

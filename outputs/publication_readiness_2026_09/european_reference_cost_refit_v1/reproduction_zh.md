@@ -26,7 +26,7 @@ env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
   .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit_readout.py eval
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
-  .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit_readout.py verify
+  .venv-pytorch/bin/python scripts/verify_m3w_reference_refit_coherence.py
 ```
 
 这些训练命令需要原始私有素材、已核验旧权重与冻结上游结果，不是纯Git冷启动复现。
@@ -58,11 +58,15 @@ env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
   tests/test_m3w_reference_cost_refit.py \
   tests/test_m3w_refit_cost_allocation.py \
   tests/test_m3w_reference_cost_evidence.py \
-  tests/test_m3w_reference_runtime_erratum.py
+  tests/test_m3w_reference_runtime_erratum.py \
+  tests/test_m3w_reference_cost_coherence.py
 ```
 
 报告从公开标量收据重建，不读私有数据或权重；私有PNG仅用于图形检查。
 另行的完整模型推理/冻结动作重评分不是重新运行全部限时MILP优化。
+该核验还记录不干预的成本自洽性诊断：收益是否超过参考误差、隐含候选误差是否为负，
+以及候选之间参考量是否一致。诊断不读取目标，不改变任何预测字节、动作或原8项gate。
+它是注册后增加的描述性诊断，不是新主指标；其代码与每组模型哈希均公开。
 样本中缺少请求终点时FDE仍为not_estimable，不能换成更早终点。
 
 ## 结论边界

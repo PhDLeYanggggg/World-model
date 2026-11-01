@@ -101,6 +101,9 @@ new policy result; the registered study files and all trained weights remain unc
 Full-cohort evaluation is now running through the corrected entry, with the
 original action-allocation budget and checkpoints. Partial source scores are
 not being used to change the model, thresholds or primary comparison.
+The full 72-group readout is complete and awaiting separate score verification.
+Reference fitting error falls, but the registered completion-lower comparison
+and original recording-risk requirements fail. I am not deploying this repair.
 
 ### Completed Decision-Cost Control
 
