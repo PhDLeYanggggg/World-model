@@ -27,6 +27,12 @@ Initial Torch/Numpy projection difference is1.61e-15causal-scale units.
 The one-context fit projection is8,400.21s,not a completed training duration;
 formal36-head training now runs under PID37642. No speed-based reduction.
 New training is not reported complete or beneficial before its full evaluation.
+Public-scalar report reconstruction,private-input read protection and Chinese
+reproduction commands are implemented. Current focused checks:16passed2.97s;
+three complete-result checks remain explicitly skipped while real training runs.
+The existing published logistic-deferral adapter was located and its old144-group
+scalar archive verified. It is reusable code,not a matched current-bank score:
+the current pipeline replaces the neural expert and recomputes its features.
 [Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
 
 ### Coherent-Cost Projection Control
