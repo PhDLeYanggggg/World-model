@@ -19,7 +19,11 @@ original2%recording gates and reference-MSE evidence. These are SOURCE fits,
 not independent validation or calibration. The old shared-reference weights
 were inspected but require760paired inputs,not a drop-in462-field replacement.
 CREATE read-only queue check succeeds;no remote job is changed or submitted.
-Real pilot/training/readout are not complete at this registration checkpoint.
+The real400-update pilot is complete:fresh_run,20.832748s,peak9,646,735,360B.
+Both zero-branch native predictions and50/100-update interruption recovery are
+exact. Formal36-head training is running locally with checkpoint100/heartbeat50.
+The pilot is engineering evidence,not policy efficacy. Full readout is not_run
+pending the complete36-model freeze;no deployment or independent role changes.
 
 ### Necessary Query Easy Support
 
