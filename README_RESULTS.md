@@ -28,6 +28,18 @@ Direct decoding1.880254s gives a size-biased112596-query estimate11761.616s
 (3.27h),not measured completion. The full72-group readout is now running.
 No population or budget downgrade;no deployment promotion.
 
+The full run is PID59783,native arm64 CPU4/interop1/workers0. It has entered
+the second context and continues normally. One completed large query group
+has two wall-clock solver-limit returns;both retain the original policy and
+remain in scoring. These are not global optimum certificates. Six old
+control groups have zero pair support;their graph statistic remains missing,
+not zero,and no scientific endpoint/gate is changed. The supplementary pooled
+edge point is explicitly not a replacement for the frozen locality interval.
+Expanded five-file checks:61 pass in2.25s. Artifact preflight:3 pass and one
+explicitly skipped final-evidence check because complete/replay artifacts do
+not yet exist. The skipped check is not a scientific pass. Methods,primary
+prior-work links and an honest LLM-usage draft are saved with the experiment.
+
 ### Coupled Benefit/Risk: Registered Before Own Training Outcomes
 
 Previous goal turn:progress;the full position-anchor comparison and both

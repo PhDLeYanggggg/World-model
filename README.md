@@ -32,6 +32,9 @@ no neural training. The real18-query pilot has exact interrupted recovery and
 no solver failures,at9.63GB peak memory. Its size-biased estimate is about
 3.27hours for the complete decoder roster,not a measured full-run duration.
 The full72-group comparison is now running; predictive results are not yet available.
+Sixty-one focused solver/geometry/readout checks pass. Some queries reach the
+fixed two-second solver limit and keep their original assignments; none is dropped.
+Six old source groups have no target pairs,so their graph mean remains missing.
 
 [Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
 
