@@ -7,6 +7,16 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Expanded Reference Support Preflight
+
+Registered full72-group preflight,after the preceding SOURCE diagnosis but
+before own results. New causal predicate removes only frozen predicted gain-sign
+eligibility;real action availability,positive predicted references and both2%
+cost budgets remain. No forecast/cost training or independent-role opening.
+Six new focused tests pass in1.14s. Reuse cached_verified17.01s/9.72GB resource
+measurement for the identical input/preparation path;not a new pilot or outcome.
+No new model-success or deployment claim at this registration checkpoint.
+
 ### Frozen Cost Support Diagnostic
 
 **Complete diagnostic,fresh_run:**PID216 completes72groups in92.763621s,

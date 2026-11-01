@@ -70,6 +70,11 @@ and compare training with guaranteed query coverage. It is not trained yet.
 [Complete support diagnosis](outputs/publication_readiness_2026_09/european_frozen_cost_support_v1/readout.md)
 and [failure mechanism and repair requirements](outputs/publication_readiness_2026_09/european_frozen_cost_support_v1/diagnosis_and_repair.md).
 
+I have implemented the expanded causal-reference support predicate and am
+checking its feasibility on the full source cohort before another actor fit.
+It removes only the old gain-sign eligibility rule, not the 2% cost budgets.
+Six focused tests cover restored support, unchanged budgets and unknown labels.
+
 ### Completed Decision-Cost Control
 
 I trained 18 decision-cost critics while keeping the seven forecasts, 462 causal
