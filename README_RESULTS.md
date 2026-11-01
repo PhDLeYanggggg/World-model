@@ -19,6 +19,25 @@ are included. The working supplement now records the post-readout guard diagnosi
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Registered Two-Sided Boundary Guard Comparison
+
+Next experiment: `european_boundary_guard_v1`. Two matched 31,119-parameter
+coherent critics start from the same completed own-choice weights with fresh
+AdamW, full original cyclic coverage and unchanged 462 causal fields. Both
+retain fixed-initial-choice query regression in this continuation. The only
+factor is a unit BCE auxiliary on the original all/easy budget boundary,
+using log harm versus detached predicted 2%-reference. No best-expert classes,
+new calibrated confidence, threshold fitting or future inference inputs.
+The final current-bank TDEF scores are frozen, so ranking cannot explain a new
+guard difference. Full 36 fits, two exact complete refits and 72 groups required.
+All 149,510 targets, 74 recordings, 12 localities and repeated 444-risk views
+remain. The 2% contract and independent-data lock are unchanged.
+
+Pre-registration checks: 5 passed, 2 explicitly skipped in 1.57s (registration
+and full-result checks). Actual training, pilot resources and policy outcomes
+are not_run at registration. SOURCE development only; no deployment promotion.
+[Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
+
 ### Current-Bank Published Deferral Comparison
 
 Prospective comparison of expected-ADE regression and the existing ICML2024

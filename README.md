@@ -25,6 +25,23 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Two-Sided Risk-Boundary Learning
+
+I am testing whether the risk filter can learn both when to admit a useful
+forecast and when to reject a harmful one. The new comparison keeps the final
+published-loss ranking frozen and trains two equally sized coherent critics
+from identical warm weights. Only one receives an additional loss tied to the
+original 2% boundary. The other keeps moment and fixed-choice query regression.
+This differs from the signed-error MSE and heavier underprediction losses already
+tried; it is a controlled repair, not a claim of a new deferral framework.
+
+The protocol is frozen before this experiment's outcomes. All 36 fits and 72
+original groups remain required. The original recording-risk rules, data roles
+and deployment stay unchanged. Registration and focused code checks are complete;
+real recovery/resource training and full evaluation are not yet run.
+
+[Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
+
 ### Completed Matched Published Deferral Comparison
 
 I compared expected-ADE regression with the published multi-expert logistic-
