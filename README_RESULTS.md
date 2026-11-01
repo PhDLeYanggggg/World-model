@@ -7,6 +7,32 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Necessary Query Easy Support
+
+**Complete,fresh_run:**all72groups/149,510targets/74recordings retained. Prior432
+pointwise witness views are cached_verified;all12remaining views receive fresh
+query-pooling checks. PID8729completes82.377747s,peak10,946,723,840B. Independent
+numerical replay PID9884completes84.496972s,peak10,949,017,600B;all72groups and
+remaining query outcomes exact.
+
+Necessary query easy support:435/444views. Three recover through query pooling;
+nine remain blocked,zero inconclusive. Six blocked views have exact singleton
+certificates,all repeated from one recording with78queries/three known easy
+queries. The other three combine singleton/sign cases with numerical MILPstatus2,
+not algebraic proof. Nine blocked views represent four unique source-recording
+pairs,not nine independent scenes. Necessary support is not actual safe gain.
+The six algebraic views already exclude an all444pass in the frozen supplied-cost
+family;more actor-only training cannot repair those constraints.
+
+Twenty fresh focused checks pass in1.92s,including30small query enumeration
+comparisons,unchanged-budget tests and full public artifact checks. Prior16
+unchanged support checks are cached_verified,not rerun. Full repository suite
+not run. Two complete public-only report builds run in a fresh process with
+private input reads denied,zero attempts,combined1.386100s. No new training,
+deployment,independent roles,Stage5C or SMC. Next:attribute cost-ratio failures,
+check existing coherent/shared-reference assets,then matched SOURCE cost refits
+with complete query coverage before another actor. Not submission-ready.
+
 ### Expanded Reference Support Preflight
 
 **Complete,fresh_run:**PID5069,89.699197s,peak10,904,354,816B. Independent

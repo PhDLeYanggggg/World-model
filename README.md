@@ -73,8 +73,14 @@ and [failure mechanism and repair requirements](outputs/publication_readiness_20
 The expanded causal-reference predicate now has a complete 72-group preflight
 and exact numerical replay. Removing the old gain-sign rule restores four
 record views, but conservative pointwise support still covers only 432/444.
-I am checking the remaining views with query-level budget pooling before another
-actor fit. The 2% cost and evaluation budgets remain unchanged.
+Query-level budget pooling restores necessary easy support in three more views.
+Nine remain blocked under the supplied frozen costs; six have direct singleton
+certificates from one recording repeated across contexts and critic seeds.
+This rules out another actor-only fit as the immediate repair. I need to repair
+the causal cost estimates, with calibration and complete-query coverage checks,
+while keeping the 2% cost and evaluation budgets unchanged.
+[Query-support result](outputs/publication_readiness_2026_09/european_query_easy_support_v1/readout.md)
+and [what must change next](outputs/publication_readiness_2026_09/european_query_easy_support_v1/diagnosis_and_repair.md).
 
 ### Completed Decision-Cost Control
 
