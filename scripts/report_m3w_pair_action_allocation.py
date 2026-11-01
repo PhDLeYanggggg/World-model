@@ -35,7 +35,12 @@ def build():
                 or row['action_sha256']['unary_joint'] != old['action_sha256']['set_joint']
                 or row['result']['policies']['unary_joint'] != old['result']['policies']['set_joint']):
             raise ValueError('Original controls changed')
-    return dict(summary=s,complete=complete,replay=replay,bundle=bundle,rows=rows,
+    counts=[r['result']['allocation'] for r in rows]; edges=sum(v['graph_edges'] for v in counts)
+    graph_description=dict(edge_views=edges,zero_edge_groups=sum(v['graph_edges']==0 for v in counts),
+        pooled_before=sum(v['graph_pair_mass_before'] for v in counts)/edges if edges else None,
+        pooled_after=sum(v['graph_pair_mass_after'] for v in counts)/edges if edges else None,
+        full_locality_CI=s['graph_pair_change'],supplementary_pooled_point_not_gate_replacement=True)
+    return dict(summary=s,complete=complete,replay=replay,bundle=bundle,rows=rows,graph_description=graph_description,
         pilot=json.loads((run.PUBLIC/'pilot.json').read_text()),
         verification_runtime=json.loads((run.PRIVATE/'verification_runtime.json').read_text()))
 
@@ -69,7 +74,9 @@ def render(v):
     for a in run.api.NAMES:
         r = s['safety'][a]
         lines.append(f'| {a} | {fmt(s["accuracy"][a])} | {r["supported_record_views"]}/{r["required_record_views"]} | {r["known_easy_risk_violations"]} | {r["undefined_easy_record_views"]} |')
-    lines += ['',f'Graph contraction change: {fmt(graph)}. Negative is less predicted contraction,not lower realized error.',
+    lines += ['',f'Full-locality graph contraction change: {fmt(graph)}. Negative is less predicted contraction,not lower realized error.',
+        f'Supplementary pooled graph points: {v["graph_description"]["pooled_before"]} before,{v["graph_description"]["pooled_after"]} after.',
+        f'Zero-edge groups: {v["graph_description"]["zero_edge_groups"]};their missing graph statistic is not imputed as zero or removed from the utility/risk cohort.',
         f'Changed query views: {s["changed_queries"]}/{s["query_views"]}; solver calls: {s["solver_calls"]}; nonoptimal solver returns: {s["nonoptimal_solver_queries"]}.',
         'Every timeout or failed numerical postcheck retains the original parent and remains in the full scoring roster. No cohort-wide optimality claim.',
         'Unavailable requested FDE endpoints remain missing; known partial endpoint evidence cannot certify full-roster FDE.',
@@ -105,7 +112,7 @@ def export(v):
         writer=csv.writer(stream); writer.writerow(('source','known_pp','completion_lower_pp','graph_pair_change'))
         for source in sorted(s['effects']['known_pp']['by_locality']):
             writer.writerow((source,s['effects']['known_pp']['by_locality'][source],
-                s['effects']['lower_pp']['by_locality'][source],s['graph_pair_change']['by_locality'][source]))
+                s['effects']['lower_pp']['by_locality'][source],s['graph_pair_change'].get('by_locality',{}).get(source)))
     risk=s['safety']['pair_joint']; primary=s['effects']['lower_pp']; graph=s['graph_pair_change']
     failure=['# Failure Analysis','',
         'This registered experiment isolates predicted-path interaction in the decoder,not missing features or a new neural architecture.',
@@ -159,6 +166,7 @@ def export(v):
         '1. Preserve this fixed decoder result and the original deployment;do not tune its coefficient against the same outcomes.',
         '2. Test training-only correspondence between the predicted interaction proxy and actual forecast harm before adding learned coupling.',
         '3. Only after a fitting repair passes original risk,freeze the full pipeline for independent calibration/confirmation and three forecasting seeds.','']))
+    run.write(public/'graph_description.json',v['graph_description'])
     run.write(public/'evidence.json',dict(summary_sha256=run.sha(public/'summary.json'),
         complete_sha256=run.sha(public/'complete.json'),verification_sha256=run.sha(public/'verification.json'),
         bundle_sha256=run.sha(public/'metric_groups.zip'),full_replay_exact=True,new_training_updates=0,
