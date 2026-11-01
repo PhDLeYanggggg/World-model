@@ -9,6 +9,18 @@ or evidence status.
 
 ### Predicted-Path Interaction: Registered Decoder Control
 
+Full result:PID59783 exits0,72/72groups complete on1November2026 at13:16:22UTC.
+Timed phase2563.680355s(42.73min),peakRSS10,848,567,296B. All149510 unique
+targets,74 recordings and112596 repeated query views remain. Six nonoptimal
+solver returns retain the parent;50,905 query views change at the identical
+total410575 interventions. Known ADE gain falls8.215347%->4.212878%.
+Paired known change-4.002468pp[-6.173491,-2.160963];registered completion-lower
+change-6.973934pp[-10.717766,-3.694180]. Original risk support2/444,360 known
+easy-risk violations,13 undefined easy views. Fitting checks3/6;no advancement.
+Graph-locality interval is not_estimable because six zero-edge groups remain.
+Timed fresh reoptimization is PID64032 and running;frozen-action scoring and
+actual-pair-distance diagnostics are not yet run. No deployment/submission claim.
+
 Previous goal turn: no scientific progress; it only rechecked the private
 author record. This iteration tests explicit seven-action pair costs, which
 the current query risk-pooling decoder does not optimize. The older binary

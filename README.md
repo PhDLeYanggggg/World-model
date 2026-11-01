@@ -25,20 +25,23 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am testing an explicit predicted-path interaction term in the seven-action
-joint decoder. The comparison keeps the existing forecasts, cost heads,
-per-query intervention counts and original 2% risk constraints fixed. It adds
-no neural training. The real18-query pilot has exact interrupted recovery and
-no solver failures,at9.63GB peak memory. Its size-biased estimate is about
-3.27hours for the complete decoder roster,not a measured full-run duration.
-The full72-group comparison is now running; predictive results are not yet available.
-Sixty-one focused solver/geometry/readout checks pass. Some queries reach the
-fixed two-second solver limit and keep their original assignments; none is dropped.
-Six old source groups have no target pairs,so their graph mean remains missing.
-Their old unary policies are also risk-unsupported and unchanged by pair-only
-decoding. This control can test interaction/accuracy tradeoffs,but cannot alone
-certify the full safety contract. A separate frozen-action distance-accuracy
-diagnostic is prepared; it does not change the main score or gate.
+I tested an explicit predicted-path interaction term in the seven-action joint
+decoder,keeping the forecasts,cost heads,per-query intervention counts and
+original 2% risk constraints fixed. This is a decoder control,not new neural training.
+
+The complete72-group run finishes in42.73minutes at10.85GB peak memory.
+The result is negative:known-label ADE gain over the frozen fallback falls
+from **8.215% to4.213%**. The paired completion-lower difference is
+**-6.97pp [-10.72,-3.69]**. Original recording-risk support is only2/444.
+All149,510 unique targets,74 recordings and112,596 repeated query views remain;
+six nonoptimal solver returns retain the original parent. Nothing is deployed.
+
+The causal real-data recovery pilot is exact. Fresh timed reoptimization and
+a separate frozen-action/actual-pair-distance evaluation are next,not yet
+claimed complete. Six old groups have no target pairs and retain their already
+unsupported unary choices,so pair-only decoding cannot repair every risk failure.
+These are exposed SOURCE fitting results,not independent confirmation or a
+three-seed forecasting study. The original scientific definition remains frozen.
 
 [Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
 

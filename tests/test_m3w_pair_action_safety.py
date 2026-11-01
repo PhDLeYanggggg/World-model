@@ -41,3 +41,13 @@ def test_numerically_invalid_optimum_returns_parent(monkeypatch):
     choice, info = api.solve(p, ok, parent, edges, table, scales, weight=1., seconds=1.)
     np.testing.assert_array_equal(choice, parent)
     assert info['reason'] == 'numerical_postcheck_parent_fallback'
+
+
+@pytest.mark.parametrize('weight',(0.,1.,100.))
+def test_pair_only_decoder_cannot_repair_singleton_choices(weight):
+    p,ok,r,f,o,s,ids,_,_,parent=fixture()
+    p[...,1]=.001; p[...,4]=.0005
+    choices,_,info=api.allocate(p,ok,np.array(['a']*3),np.arange(3),ids,r,f,o,s,parent,
+        weight=weight,neighbors=4,seconds=1.)
+    np.testing.assert_array_equal(choices['pair_joint'],parent)
+    assert info['graph_edges']==0 and info['changed_rows']==0 and info['solver_calls']==0
