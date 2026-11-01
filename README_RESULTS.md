@@ -9,23 +9,68 @@ or evidence status.
 
 ### Coherent-Cost Projection Control
 
-Registered before its own policy outcomes. This zero-step control pools predicted
-R/R_easy across causally available candidates per agent and caps B at shared R.
-H/H_easy,forecasts,availability,labels,features and all36frozen cost endpoints
-remain unchanged. Complete72-group SOURCE evaluation is required;no independent
-role is opened and no new neural model is trained. Reference MSE can improve by
-averaging alone,so primary full-policy utility and original2%recording-risk
-requirements decide advancement. Eleven focused checks pass1.38s before resource
-pilot. The actual18-query probe now completes in21.154319s,peak9,830,825,984B;
-direct/resumed allocations are exact,maximum49agents. No policy outcomes were
-scored in that probe. Complete72readout is starting;no positive result claimed.
-Full readout now runs under PID29594 with immutable inputs and query checkpoints.
-Public-only report reconstruction and failure/selected-cost diagnostics are
-implemented. Before complete results,15focused checks pass1.90s;three artifact
-checks are explicitly skipped until the complete readout/verification exists.
-The publisher-linked ICML2024multi-expert-deferral PDF methods and two-stage
-theorem statements were inspected;this projection is not claimed as its surrogate
-or as a new consistency theorem. The third-party PDF remains private/excluded.
+**Complete, fresh_run:** deterministic cost projection and full72-group policy
+evaluation, followed by separate full inference/frozen-action verification.
+All36cost weights,seven forecasts,462causal fields,normalizers and original
+labels are cached_verified and unchanged. No new training,independent data or
+deployment. The protocol was committed before its own outcomes.
+
+The transform pools R/R_easy over causally available candidates per agent and
+caps B at shared R,preserving H/H_easy. Both arms now have zero cost-moment
+contradictions over5,369,850repeated legal action views each. That is structural
+coherence,not calibration. Learned reference MSE falls0.191049->0.185460 and
+easy-reference MSE0.335499->0.323636,while benefit MSE rises0.267517->0.274885.
+
+Known ADE gain over floor falls **10.329562%->10.097661%**. Paired known effect:
+**-0.231901pp [-0.303124,-0.162510]**. Registered full completion-lower effect:
+**-0.455097pp [-0.618925,-0.304167]**. The negative known effect shows this is
+not solely a missing-outcome penalty. Only **9/444** original recording-risk
+views pass. Known all/easy positive-risk violations remain309/360views;ten have
+undefined selected-easy support. Worst known net easy degradation improves
+17.170690%->**14.745066%**,but20views remain above2%.
+**Fitting advancement fails:4/7gates. No deployment promotion.**
+
+Secondary projected joint-minus-independent utility is positive:known
+**+1.627091pp [0.892532,2.407216]**,completion-lower
+**+1.014536pp [0.426580,1.678899]**. The native allocator fixes each query to
+its own independent intervention count. This component result does not replace
+the primary or certify recording risk. The post-hoc trimmed aggregate stays
+not_estimable because three required groups have empty comparisons.
+
+Selected known-action normalized H/H_easy bias remains negative:
+-0.011828/-0.007910 after projection,versus -0.012030/-0.008340 before.
+These are repeated SOURCE descriptions,not independent calibration or proof of
+causation. The existing aggregate training target uses fixed causal initial
+choices,even though pointwise supervision covers all legal known candidates.
+The next matched control is own-decision constraint learning with a coherent
+decoder;it is **not_run**,not a completed training claim.
+
+Actual18-query interruption/recovery probe:PID28401,21.154319s,
+peak9,830,825,984B,maximum49agents,exact recovery. Complete readout:PID29594,
+1815.196780s,peak11,202,265,088B;112,596query views and273,360solver calls.
+Separate verification:PID33094,158.400952s,peak11,719,557,120B. All72new-cost
+inference and every original full/record control agree exactly. This replays
+frozen actions,not timed MILP reoptimization. Native arm64CPU4/interop1/workers0;
+no speed-based reduction. All149,510targets,74recordings and12localities remain.
+
+Nineteen focused checks pass2.56s,no skips,including complete artifact and absent
+output-directory rendering checks. Full repository suite not run. Public-only
+report rebuild:PID34373,1.930654s,zero private input read attempts;plot visually
+checked. Three cost seeds share forecaster43. The3,000paired locality bootstrap
+intervals are SOURCE fitting intervals,not independent confirmation.
+
+ICML2024multi-expert regression deferral and NeurIPS2025feasibility-aware
+decision-learning methods were read from primary PDFs. Their objectives and
+conditions inform the next comparison;neither is implemented or claimed as a
+new theorem here. Third-party PDFs stay private/excluded.
+EuropeanSquares oblique detector-silver/local-image,obs8/pred12/rawstride12:
+not SDDt50,meters,seconds,human gold,true3D or foundation. Stage5C/SMC stay off.
+
+[Readout](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/readout.md),
+[measured diagnosis](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/diagnosis_and_next_control.md),
+[model/data card](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/model_data_card.md),
+[method and prior work](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/related_work_and_method_note.md),
+[reproduction](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/reproduction_zh.md).
 
 ### Coverage-Complete Reference Cost Refit
 

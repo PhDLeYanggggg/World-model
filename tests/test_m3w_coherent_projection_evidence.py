@@ -75,3 +75,14 @@ def test_empty_pair_or_selected_support_is_not_imputed_as_observed_zero():
     assert v['selected_cost_diagnostic']['learned_joint']['pooled_normalized_bias'] is None
     assert report.supplementary([empty,row(4,2.)])['pair_and_tail']['learned_joint']['mean_pair_contraction']==2.
     with pytest.raises(ValueError):report.supplementary([row(4,None)])
+
+
+def test_figure_creates_absent_private_output_directory(tmp_path,monkeypatch):
+    public=tmp_path/'public';public.mkdir();private=tmp_path/'absent_output'
+    monkeypatch.setattr(run,'PUBLIC',public);monkeypatch.setattr(run,'PRIVATE',private)
+    interval=dict(point=1.,CI95=[.5,1.5])
+    summary=dict(accuracy={a:interval for a in ('raw_locked_joint','locked_joint','raw_learned_joint','learned_joint')},
+        effects=dict(learned_projection=dict(full={k:interval for k in ('known_pp','lower_pp')})))
+    report.figure(dict(summary=summary))
+    assert (private/'coherent_cost_readout.png').is_file()
+    assert (public/'figures/coherent_cost_readout.svg').is_file()

@@ -145,7 +145,16 @@ def render(v):
         '|Moment|Raw locked|Projected locked|Raw learned|Projected learned|','|---|---:|---:|---:|---:|']
     for k in range(5):lines.append('|'+str(k)+'|'+'|'.join(interval(s['cost_MSE'][a][str(k)]) for a in ('raw_locked','projected_locked','raw_learned','projected_learned'))+'|')
     lines+=['','H/H_easy predictions remain identical;selected bias can nevertheless change because a different action is chosen.',
-        'Per-group selected cost sums/bias are in the scalar archive. Supplementary pooled normalized bias is descriptive over repeated views,not a calibration guarantee.','',
+        'Per-group selected cost sums/bias are in the scalar archive. Supplementary pooled normalized bias is descriptive over repeated views,not a calibration guarantee.',
+        'Negative bias means the cost is underpredicted on observed selected actions. Frequencies alone do not measure the size of a risk violation.','',
+        '|Policy|Known selected row views|Normalized B bias|H bias|R bias|R_easy bias|H_easy bias|H underprediction views|H_easy underprediction views|',
+        '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
+    for a,x in aux['selected_cost_diagnostic'].items():
+        bias=x['pooled_normalized_bias']
+        lines.append('|'+a+'|'+str(x['known_selected_row_views'])+'|'+
+            '|'.join(cell(None if bias is None else bias[k]) for k in range(5))+'|'+
+            str(x['selected_harm_underprediction_row_views'])+'|'+str(x['selected_easy_harm_underprediction_row_views'])+'|')
+    lines+=['',
         '## Easy Tails','','|Policy|Known easy defined|Worst known net degradation (%)|Views above2%|Worst completion-upper bound (%)|',
         '|---|---:|---:|---:|---:|']
     for a,x in aux['easy_tails'].items():lines.append(f'|{a}|{x["known_defined"]}/{x["required_record_views"]}|{cell(x["worst_known_easy_degradation_percent"])}|{x["known_above2_percent"]}|{cell(x["worst_completion_upper_percent"])}|')
@@ -214,6 +223,46 @@ def interpretation(v):
         'No independent data are opened to rescue a SOURCE fit. A zero-step projection is not neural world-dynamics learning.',
         'The original2%risk/undefined-support rules stay in force. Stage5C and SMC remain disabled.','']
     (p/'failure_analysis.md').write_text('\n'.join(text))
+    raw='raw_learned_joint';projected='learned_joint';a=v['auxiliary'];m=s['cost_MSE']
+    diagnosis=['# Measured Diagnosis And Next Controlled Experiment','',
+        '## What Changed In This Complete Control','',
+        f'Known ADE gain over the same floor:{cell(s["accuracy"][raw]["point"])}% -> {cell(s["accuracy"][projected]["point"])}%.',
+        f'Paired known effect:{interval(primary["known_pp"])}pp;registered completion-lower:{interval(primary["lower_pp"])}pp.',
+        'A negative known effect means the failure cannot be attributed only to missing-outcome conservatism.',
+        'The projection bundles reference averaging with benefit clipping;this experiment does not isolate their individual effects.','',
+        '|Normalized SOURCE MSE|Raw learned|Projected learned|','|---|---:|---:|']
+    for k,name in enumerate(('benefit','harm','reference','easy reference','easy harm')):
+        diagnosis.append(f'|{name}|{cell(m["raw_learned"][str(k)]["point"])}|{cell(m["projected_learned"][str(k)]["point"])}|')
+    diagnosis+=['',
+        'Reference sharing removes candidate-dependent reference values,and the benefit cap removes negative implied errors.',
+        'This is algebraic coherence,not accurate conditional costs. Reference MSE and policy utility need not move in the same direction.',
+        'H/H_easy are unchanged at every candidate;selected-action errors may change only because the chosen actions differ.','',
+        '|Learned policy|Selected known views|Normalized selected H bias|Normalized selected H_easy bias|Known all/easy risk violations|Risk-supported recording views|Worst known easy degradation (%)|',
+        '|---|---:|---:|---:|---:|---:|---:|']
+    for name in (raw,projected):
+        x=a['selected_cost_diagnostic'][name];r=s['safety'][name];b=x['pooled_normalized_bias']
+        diagnosis.append(f'|{name}|{x["known_selected_row_views"]}|{cell(None if b is None else b[1])}|{cell(None if b is None else b[4])}|{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]}|{r["supported_record_views"]}/{r["required_record_views"]}|{cell(a["easy_tails"][name]["worst_known_easy_degradation_percent"])}|')
+    diagnosis+=['',
+        'These selected-action biases are count-weighted descriptions of repeated SOURCE views,not independent calibration or a causal proof.',
+        'Negative harm bias is consistent with residual optimism on chosen actions. Actual positive-harm violations establish that this is not only a missing-label issue.',
+        'Worst-case missing-label bounds are not observed damage. Native cost sums are not pooled across incompatible source scales.','',
+        '## A Useful But Insufficient Component Result','',
+        f'Projected learned joint minus its own independent policy:known {interval(s["effects"]["projected_joint_minus_independent"]["full"]["known_pp"])}pp;',
+        f'completion-lower {interval(s["effects"]["projected_joint_minus_independent"]["full"]["lower_pp"])}pp.',
+        'The native allocator fixes each query to its own independent intervention count. This is not a replacement primary or a safety result.',
+        f'Post-hoc trimmed count-matched aggregate is not_estimable when a required view is empty;learned projection empty groups:{s["matched_empty_groups"]["learned_projection"]}.',
+        'It cannot be reported as a successful matched-policy or zero-risk result.','',
+        '## Next Action And What Is Not Yet Run','',
+        'The current query-level training error in m3w_query_unit_critic.query_error uses frozen causal initial choices.',
+        'All legal known candidates still receive pointwise supervision,and cyclic sampling covers every query;',
+        'neither property makes the aggregate loss train on the critic\'s own newly optimized choices.',
+        'A focused next comparison should use one shared-reference coherent decoder in both arms,with equal capacity,draws and budgets.',
+        'Change only fixed-choice cost regression versus decision-aware constraint learning on current choices,while retaining all known-action supervision.',
+        'Use only available training outcomes for supervised violations;never substitute unknown targets with true zero harm or call a partial-label witness a true optimum.',
+        'Preserve the full cohort,2%contract and independent role locks. Include a disclosed published multi-expert/constraint-aware comparator before claiming novelty.',
+        'That training comparison is not_run here. This completed experiment is a zero-update intervention on frozen costs,not another neural training success.',
+        'A failed mean-and-cap postprocessor does not reject every coherently trained model. No deployment,Stage5C or SMC promotion.','']
+    (p/'diagnosis_and_next_control.md').write_text('\n'.join(diagnosis))
     (p/'publication_gap.md').write_text('# Remaining Publication Evidence\n\n'
         'This control is not a standalone novel method claim. Existing work already studies regression deferral among fixed experts.\n'
         'Still required:useful complete-policy method effects,all original recording-risk requirements,genuinely independent model selection/calibration/confirmation,\n'

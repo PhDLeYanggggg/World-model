@@ -25,19 +25,36 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Current Test: Reference Consistency
+### Completed Reference-Consistency Control
 
-I am testing whether the measured cost inconsistencies actually explain poor
-decisions. The new control shares predicted reference errors across an agent's
-available candidates and caps benefit at that reference, while preserving harm,
-forecasts and candidate availability. It has no fitted parameters and is not new
-neural training. The complete 72-group comparison is registered before its own
-results; the original 2% requirements and deployment policy stay unchanged.
-The real query-recovery probe has passed; full-cohort evaluation is running.
-[Protocol](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/protocol.md).
-The accompanying [method note](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/related_work_and_method_note.md)
-sets out the cost identities and distinguishes this control from established
-multi-expert regression deferral.
+I tested whether repairing contradictory cost estimates improves the decisions
+they produce. With all 36 cost models and seven forecasts frozen, the control
+shares an agent's predicted reference error across its available candidates and
+caps benefit at that reference. It changes no trajectories and trains no model.
+All 72 original groups and a separate inference/score replay are complete.
+
+The costs become internally consistent, but the policy does not improve.
+Known-label ADE gain over fallback falls from **10.33% to 10.10%**. The registered
+completion-lower effect is **-0.46 percentage points [95% CI: -0.62, -0.30]**.
+Worst known easy degradation improves from 17.17% to **14.75%**, still far above
+2%; only **9/444** original recording-risk views pass. I have not deployed it.
+
+Joint allocation does improve on independent choices within the projected
+model: **+1.01 pp [0.43, 1.68]** on completion-lower utility, at its own independent
+intervention count. That secondary result does not rescue the failed primary
+or establish safety. The post-hoc trimmed aggregate is not estimable where a
+required comparison is empty, rather than a successful zero-risk comparison.
+
+This is an exposed SOURCE fitting control, not independent confirmation or new
+neural dynamics evidence. The full readout takes 30.25 minutes; 19 focused checks
+pass, and the public report rebuilds without private input reads. The next
+controlled question is whether training costs against the model's own decisions
+helps where fixed-choice regression and postprocessing did not.
+
+[Complete result and figure](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/readout.md),
+[measured diagnosis](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/diagnosis_and_next_control.md),
+[method and prior work](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/related_work_and_method_note.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/reproduction_zh.md).
 
 ### Completed Reference Cost Refit
 

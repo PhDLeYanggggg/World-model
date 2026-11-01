@@ -22,6 +22,45 @@ appendix-proof audit. Private PDF SHA256:
 The third-party PDF is not committed. This extends the preceding abstract-only
 access record,without revising its historical disclosure.
 
+## Constraint-Aware Decision Learning
+
+Mandi,Defresne,Berden and Guns's
+[Feasibility-Aware Decision-Focused Learning for Predicting Parameters in the Constraints](https://proceedings.neurips.cc/paper_files/paper/2025/hash/ef158a0d4f5364741a571b8d1d44fb1b-Abstract-Conference.html)
+(NeurIPS2025) is another relevant comparator. Its
+[official method PDF](https://proceedings.neurips.cc/paper_files/paper/2025/file/ef158a0d4f5364741a571b8d1d44fb1b-Paper-Conference.pdf),
+Sections3-4.2,pages3-6,was read on1November2026. The infeasibility penalty
+uses the predicted optimization solution and penalizes violations under the
+training instance's true constraint parameters. The optimality-preserving loss
+keeps a known true optimum feasible under predicted constraints,opposing a
+trivially overconservative feasible region. Predicting constraints and balancing
+feasibility against utility are therefore not new on their own.
+
+This suggests a decision-aware training control,not a guarantee for our task.
+Their formulation has a known objective and training constraint parameters;
+our benefit-minus-harm objective is itself predicted,and some future outcomes
+are unavailable. Unknown outcomes cannot be silently treated as true zero harm
+or a known optimal allocation. A prospective adaptation must state its handling
+of missing labels,query coupling and the unchanged recording-risk contract.
+No implementation or empirical comparison with this method is claimed here.
+The present zero-step projection does not use either published loss.
+
+## A Specific Training-Decision Mismatch To Check
+
+The existing coverage-complete refit calls `query_error` in
+`src/world_model/m3w_query_unit_critic.py`. Its aggregate constraint-error target
+uses the frozen causal `initial` choices. The separate pointwise losses still
+supervise every legal known candidate;this is not an absence of labels for all
+other candidates. Cyclic sampling fixes query coverage,but does not turn that
+fixed-choice aggregate loss into training on each critic's own optimized choices.
+
+The complete projection report therefore also records observed selected-action
+cost bias. A negative selected harm bias would motivate a decision-aware loss
+on current choices;it alone would not prove why the full policy fails. Such a
+loss must not use unknown outcomes as supervised zero. A follow-up comparison
+should retain the same coherent decoder and sampling in both arms,changing the
+decision-aware loss rather than simultaneously changing forecasts or data roles.
+This is a prospective research direction,not an experiment completed here.
+
 ## Our Moment Convention
 
 For a realized nonnegative fallback error R and candidate error E_k,define
