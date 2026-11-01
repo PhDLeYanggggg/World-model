@@ -19,6 +19,7 @@ def sha(path):
 
 def verify(build, compile_log, visual_sha=None):
     source = json.loads((PUBLIC / 'build_sources.json').read_text())
+    plots = json.loads((build / 'plot_sources.json').read_text())
     tex, pdf = build / 'main.tex', build / 'main.pdf'
     report = json.loads(compile_log.read_text())
     if (source['tex_sha256'] != sha(tex)
@@ -26,11 +27,15 @@ def verify(build, compile_log, visual_sha=None):
             or source['markdown_sha256'] != sha(PUBLIC / 'manuscript.md')
             or source['official_template_sha256'] != sha(build / 'cvpr.sty')):
         raise ValueError('Manuscript or official style changed after source generation')
+    expected_summary = source['own_summary_sha256'] or source['projection_summary_sha256']
+    if plots['summary_sha256'] != expected_summary or any(sha(build / name) != digest for name,digest in plots['figures'].items()):
+        raise ValueError('Paper figures must match the complete result in the prose')
     if (not report['pdfExists'] or not report['attempts']
             or report['attempts'][-1]['exitCode'] != 0
             or Path(report['pdfPath']).resolve() != pdf.resolve()
             or Path(report['rootFile']).resolve() != tex.resolve()
-            or min(pdf.stat().st_mtime, compile_log.stat().st_mtime) < tex.stat().st_mtime):
+            or min(pdf.stat().st_mtime, compile_log.stat().st_mtime)
+            < max(tex.stat().st_mtime, *(build.joinpath(n).stat().st_mtime for n in plots['figures']))):
         raise ValueError('Current-source successful compilation required')
     log = report['attempts'][-1]['log']
     final_pass = log.rsplit('note: Rerunning TeX', 1)[-1]
@@ -73,6 +78,7 @@ def verify(build, compile_log, visual_sha=None):
                   visual_reviewed_pages=list(range(1, len(reader.pages) + 1)) if visual_sha else [],
                   visual_review_bound_to_pdf_sha256=visual_sha,
                   template_sha256=source['official_template_sha256'],
+                  plot_source_receipt=plots,
                   template_and_PDF_stored_private=True,
                   third_party_lineno_UTF8_warning_retained='Invalid UTF-8' in final_pass,
                   scientific_confirmation=False, submission_ready=False,

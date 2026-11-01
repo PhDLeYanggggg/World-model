@@ -10,11 +10,11 @@ or evidence status.
 The [current draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
 sets out the partial-label forecast-substitution problem, controlled comparisons
 and negative results. It now builds in the official CVPR2027 two-column style:
-six main-body pages plus one LLM statement/reference page, all seven visually
+seven main-body pages plus one LLM statement/reference page, all eight visually
 checked. Source and exact-PDF layout receipts are recorded; the official style,
 PDF and page images remain private. This is typesetting progress, not independent
-scientific confirmation or submission readiness. The live cost-training trial
-is explicitly pending in this draft until its complete evaluation is verified.
+scientific confirmation or submission readiness. The complete own-decision
+cost-training comparison and all its failed risk/primary gates are included.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
@@ -40,7 +40,34 @@ formal36-head training completes under PID37642:4,728.797628s and
 peak10,807,148,544B,208,320primary plus14,336full-refit updates. No speed-based reduction.
 Both complete7,168-update first-context/seed17refits now match their original
 scientific training states exactly. All original36heads are now frozen.
-Complete72-group policy evaluation is running;no benefit is claimed before it.
+Complete72-group policy evaluation and separate inference/frozen-action replay
+are now exact. Known ADE gain over the same floor is10.097661% frozen,
+11.220770% fixed-choice and14.150457% own-choice. Own-minus-fixed observed effect
+is **+2.929688pp [0.735230,5.232952]**,but the registered completion-lower effect
+is **-2.767659pp [-10.790112,2.510282]**. Own-minus-frozen lower also fails:
+-2.730253pp [-12.654568,3.383176]. No independent labels or risk rules changed.
+
+Only **10/444** original recording-risk views pass. Known all/easy violations
+remain226/343;12selected-easy views are undefined. Worst known easy degradation
+is **12.154390%**,with11views above2%. Own-joint improves the secondary own-
+independent lower by+0.828666pp [0.207920,1.581455],but worsens worst known easy
+degradation from4.584243% to12.154390%. Primary and risk fail: **5/9fitting gates**.
+There is a real observed routing improvement,not a deployable safe policy.
+
+Switch rate falls47.371859%->24.620092%;neural row use14.973023%->7.200299%.
+Usage alone is not a neural forecasting increment. The known/lower gap is
+5.697346pp,uncertainty rather than observed hidden harm. Locality082has62known
+and16unknown rows per repeated view:paired known+1.420991pp versus lower
+-39.914367pp. It remains in the full result;no future mask enters inference.
+Selected normalized H/H_easy bias improves but remains negative. All-legal H MSE
+instead rises0.089538->0.132180. Global MSE and chosen-policy risk are not equivalent.
+
+Full policy readout:PID44966,1510.604866s,peak10,470,309,888B,112,596query
+views and285,730native solve_frame calls. Verification:PID47913,167.473205s,
+peak11,469,537,280B;all72cost inferences/frozen actions and original controls
+exact,not timed MILP reoptimization. Public rebuild:PID49562,2.037967s,
+zero private read attempts. Plot visually checked.21focused checks pass3.10s,
+no skips;full repository suite not run. Three cost seeds still share forecaster43.
 Both arms cover every query at least four times. Across1,666,560sampled query
 views each,the fixed arm has810,129complete/35,145unknown/821,286empty selections;
 the own arm has952,481complete/74,417unknown/639,662empty. This is training-loss
@@ -48,12 +75,15 @@ support,not independent samples or a policy improvement. No unknown target is
 supervised zero. Own training invokes native solve_frame1,666,560times,including
 shortcuts;its2,947.300997s loop time is not a MILP-only backend measurement.
 Public-scalar report reconstruction,private-input read protection and Chinese
-reproduction commands are implemented. Current focused checks:17passed3.15s;
-three complete-result checks remain explicitly skipped while real training runs.
+reproduction commands are implemented. Earlier17pass/3skip training-time checks
+are superseded by the complete21pass/no-skip check above.
 The existing published logistic-deferral adapter was located and its old144-group
 scalar archive verified. It is reusable code,not a matched current-bank score:
 the current pipeline replaces the neural expert and recomputes its features.
 [Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
+[Complete readout](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/readout.md),
+[measured diagnosis](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/model_data_card.md).
 
 ### Coherent-Cost Projection Control
 

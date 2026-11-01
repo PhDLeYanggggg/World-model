@@ -24,7 +24,7 @@ support. No reported full policy supports the complete required exposed internal
 development evidence. Independent calibration, confirmation and a successful
 scene-joint mechanism remain necessary before a main deployment claim.
 
-We also test parameter-matched reference sharing and a causal static-image-region feature ablation. Scene context improves known-label routing, but neither new ablation establishes a safe neural increment. 
+We also test parameter-matched reference sharing and a causal static-image-region feature ablation. Scene context improves known-label routing, but neither new ablation establishes a safe neural increment.
 
 ## 1. Introduction
 
@@ -314,6 +314,33 @@ familywise claim. All intervals remain conditional on exposed SOURCE data.
 Figure 1. Paired neural increments and required risk support across the six
 fixed studies. Repeated contexts/head seeds do not create independent recordings.
 
+### Updated Coherent-Cost Controls
+
+These later comparisons use the updated frozen neural bank and SOURCE fitting roster. They are not a ranking against the earlier bank's exposed inner-held results in Section 7. No independent outcomes are opened. All 149,510 targets, 74 recordings, 12 localities and 72 groups remain; three cost seeds share forecaster43.
+
+A zero-update control shares each agent's reference moments across causally available candidates and caps benefit at that reference. Harm and trajectories remain unchanged. This removes the cost contradictions but does not improve the full policy.
+
+| Projection contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |
+|---|---:|---:|
+| Projected minus raw learned joint | -0.23 [-0.30, -0.16] | -0.46 [-0.62, -0.30] |
+| Projected joint minus its independent policy | 1.63 [0.89, 2.41] | 1.01 [0.43, 1.68] |
+
+Only 9/444 original recording-risk views pass after projection. The positive joint-allocation component does not rescue the failed primary or establish safety. Required empty post-hoc matched controls remain not estimable. These are nominal SOURCE fitting intervals, not independent confirmation.
+
+A further matched training experiment uses the same coherent decoder, warm weights, 31,119 active parameters and complete cyclic query draws in both arms. It changes only whether the aggregate signed-risk residual is supervised on fixed causal initial choices or detached current joint choices. All legal known pointwise cost labels remain supervised. Empty or partly unknown selected-query labels do not become supervised zero. The network's context input stays fixed in both arms. This is not differentiation through an integer solver or an implementation of a published consistency loss.
+
+| Own-decision contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |
+|---|---:|---:|
+| Own joint minus fixed joint | 2.93 [0.74, 5.23] | -2.77 [-10.79, 2.51] |
+| Own joint minus frozen projection | 4.05 [1.87, 6.27] | -2.73 [-12.65, 3.38] |
+
+All 36 heads finish 208,320 primary updates, plus 14,336 full-refit updates. Original controls and complete new-cost inference/frozen-action scores replay exactly. Known ADE gain over the same floor is 14.15% for own-choice, 11.22% for fixed-choice and 10.10% for the frozen projection. The choice-conditioned objective improves observed routing, but not the registered complete-policy criterion. Own-choice risk support is 10/444; known all/easy positive-risk violations remain 226/343 views. Its fitting advancement status is false. Missing outcomes cannot explain away these observed violations. This is not an independent or deployable result.
+
+Paired completion bounds use disagreement between policies on unknown outcomes. Subtracting individual lower-bound scores is not the paired lower effect. Missing-label uncertainty is not observed harm.
+
+
+![Complete SOURCE cost evidence](cost_evidence.pdf)
+
 ## 8. Failure Analysis and Limitations
 
 Available forecasts are not the same as causally identifiable good choices.
@@ -338,35 +365,9 @@ rate/conflict comparisons, independent-domain evidence and a successful causal
 mechanism are still missing. This revision is useful research material but
 does not satisfy the project's submission-readiness or world-model success gates.
 
-The new scene result narrows rather than resolves the failure. Static layout
-proxies can improve cost prediction, but the available neural forecast still
-does not add reliable value over physical alternatives. Neither average moment
-MSE nor candidate-invariant denominators certifies the population selected by
-the policy. A prospective frozen-TRAIN audit of selected versus all-eligible
-moment errors is the next distinguishing test, not another favorable threshold.
-No independent outcomes are opened to choose that repair.
-
-### Updated Coherent-Cost Controls
-
-These later comparisons use the updated frozen neural bank and SOURCE fitting roster. They are not a ranking against the earlier bank's exposed inner-held results in Section 7. No independent outcomes are opened. All 149,510 targets, 74 recordings, 12 localities and 72 groups remain; three cost seeds share forecaster43.
-
-A zero-update control shares each agent's reference moments across causally available candidates and caps benefit at that reference. Harm and trajectories remain unchanged. This removes the cost contradictions but does not improve the full policy.
-
-| Projection contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |
-|---|---:|---:|
-| Projected minus raw learned joint | -0.23 [-0.30, -0.16] | -0.46 [-0.62, -0.30] |
-| Projected joint minus its independent policy | 1.63 [0.89, 2.41] | 1.01 [0.43, 1.68] |
-
-Only 9/444 original recording-risk views pass after projection. The positive joint-allocation component does not rescue the failed primary or establish safety. Required empty post-hoc matched controls remain not estimable. These are nominal SOURCE fitting intervals, not independent confirmation.
-
-A further matched training experiment uses the same coherent decoder, warm weights, 31,119 active parameters and complete cyclic query draws in both arms. It changes only whether the aggregate signed-risk residual is supervised on fixed causal initial choices or detached current joint choices. All legal known pointwise cost labels remain supervised. Empty or partly unknown selected-query labels do not become supervised zero. The network's context input stays fixed in both arms. This is not differentiation through an integer solver or an implementation of a published consistency loss.
-
-The new trial is still training. Its complete policy evaluation and primary effect are not yet available; no improvement is claimed from partial losses or completed individual heads.
-
-Paired completion bounds use disagreement between policies on unknown outcomes. Subtracting individual lower-bound scores is not the paired lower effect. Missing-label uncertainty is not observed harm.
+The later coherent-cost controls above separate structural consistency from policy quality. Projection alone worsens utility. Training against current decisions instead improves observed-label routing, yet the registered completion-lower effect and original recording risks still fail. The remaining errors involve both observed harm and missing-outcome uncertainty. Next controls must match the published deferral loss to the updated bank and distinguish conservative selected-risk learning from more average-error fitting. No independent outcomes are opened to choose these repairs.
 
 
-![Complete SOURCE cost evidence](cost_evidence.pdf)
 
 ## 9. Reproducibility and Responsible Reporting
 

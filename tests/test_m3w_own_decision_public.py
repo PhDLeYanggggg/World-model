@@ -51,6 +51,21 @@ def test_cold_output_directory_figure(tmp_path,monkeypatch):
     assert (private/'own_decision_readout.png').exists() and (public/'figures/own_decision_readout.svg').exists()
 
 
+def test_choice_usage_keeps_fallback_and_unknown_rows():
+    result,_=group()
+    extra=report.supplementary([dict(result=result,context='c',source='s0',seed=17)])
+    value=extra['choice_usage']
+    assert value['own_joint']['repeated_row_views']==2
+    assert value['own_joint']['neural_interventions']==2
+    assert value['own_joint']['switch_rate']==1.
+    assert value['floor']['action_counts']['-1']==2
+    assert value['floor']['switch_rate']==0.
+    assert value['own_joint']['usage_is_not_a_neural_increment_ablation']
+    assert len(extra['worst_known_easy_record_views']['own_joint'])<=10
+    assert extra['locality_completion_support_views']['s0'][0]['known_rows']==1
+    assert extra['locality_completion_support_views']['s0'][0]['unknown_rows']==1
+
+
 def test_actual_full_report_uses_no_private_inputs_when_complete(monkeypatch):
     if not (run.PUBLIC/'verification.json').exists():pytest.skip('Full real report not yet complete')
     po,fo,ioo=Path.open,builtins.open,io.open

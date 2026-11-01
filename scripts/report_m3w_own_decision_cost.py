@@ -49,13 +49,37 @@ def training():
 
 
 def supplementary(rows):
-    tails={};selected={};reasons={};nonoptimal={}
+    tails={};selected={};reasons={};nonoptimal={};usage={};worst={};support={}
+    for row in rows:
+        p=row['result']['policies']['floor']['policy'];source=row['source']
+        support.setdefault(source,[]).append(dict(context=row['context'],seed=row['seed'],
+            known_rows=p['known_rows'],unknown_rows=p['unknown_rows'],
+            primary_comparison=row['result']['comparisons']['own_minus_fixed']['full']))
     for name in run.evaluation.NAMES:
+        policies=[r['result']['policies'][name] for r in rows]
+        counts={str(k):sum(v['action_counts'][str(k)] for v in policies) for k in range(-1,7)}
+        total=sum(counts.values());switch=total-counts['-1']
+        usage[name]=dict(action_counts=counts,repeated_row_views=total,selected=switch,
+            switch_rate=switch/total if total else None,
+            neural_interventions=counts['6'],
+            neural_row_rate=counts['6']/total if total else None,
+            group_mean_cost_scale_regret=float(run.api.np.mean([v['known_regret_over_cost_scale'] for v in policies])),
+            group_regret_mean_not_row_weighted=True,usage_is_not_a_neural_increment_ablation=True)
         cells=[r['result']['recordings'][record][name] for r in rows for record in r['result']['recordings']]
         values=[100*(c['selected_known_easy_harm_mass']-c['selected_known_easy_benefit_mass'])/c['full_known_easy_reference_mass']
             for c in cells if c['full_known_easy_reference_mass']>0]
         tails[name]=dict(required_views=len(cells),known_defined=len(values),worst_known_easy_degradation_percent=max(values) if values else None,
             known_above2_percent=sum(x>2+1e-10 for x in values))
+        ranked=[]
+        for row in rows:
+            for record,policies in row['result']['recordings'].items():
+                c=policies[name];reference=c['full_known_easy_reference_mass']
+                if reference>0:
+                    ranked.append(dict(context=row['context'],source=row['source'],seed=row['seed'],recording=record,
+                        known_net_easy_degradation_percent=100*(c['selected_known_easy_harm_mass']-c['selected_known_easy_benefit_mass'])/reference,
+                        observed_easy_reference_mass=reference,known_easy_harm_mass=c['selected_known_easy_harm_mass'],
+                        known_easy_benefit_mass=c['selected_known_easy_benefit_mass']))
+        worst[name]=sorted(ranked,key=lambda r:-r['known_net_easy_degradation_percent'])[:10]
     for name in ('fixed_joint','own_joint'):
         cells=[r['result']['selected_cost_diagnostic'][name] for r in rows];n=sum(c['known_selected_rows'] for c in cells)
         v=[run.api.np.asarray(c['normalized_bias'])*c['known_selected_rows'] for c in cells if c['known_selected_rows']]
@@ -67,7 +91,8 @@ def supplementary(rows):
             a=reasons.setdefault(name,{})
             for key,n in v.items():a[key]=a.get(key,0)+n
         for name,n in r['result']['allocation']['nonoptimal'].items():nonoptimal[name]=nonoptimal.get(name,0)+n
-    return dict(easy_tails=tails,selected_cost_diagnostic=selected,
+    return dict(easy_tails=tails,selected_cost_diagnostic=selected,choice_usage=usage,worst_known_easy_record_views=worst,
+        locality_completion_support_views=support,
         query_views=sum(r['result']['allocation']['queries'] for r in rows),solver_calls=sum(r['result']['allocation']['solver_calls'] for r in rows),
         solver_reason_counts=reasons,nonoptimal_solver_queries=nonoptimal,repeated_views_not_independent_samples=True,
         selected_bias_is_SOURCE_description_not_independent_calibration=True)
@@ -139,6 +164,13 @@ def render(v):
         '|---|---:|---:|---:|---:|---:|---:|---:|']
     for name in run.evaluation.NAMES:
         r=s['safety'][name];lines.append(f'|{name}|{interval(s["accuracy"][name])}|{interval(s["FDE"][name])}|{interval(s["floor_lower"][name])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{r["selected"]}/{r["selected_unknown"]}|')
+    lines+=['','## Action Usage And Regret','',
+        '|Policy|Repeated row views|Switch rate|Neural row rate|Mean group cost-scale regret|',
+        '|---|---:|---:|---:|---:|']
+    for name,x in a['choice_usage'].items():
+        lines.append(f'|{name}|{x["repeated_row_views"]}|{cell(x["switch_rate"])}|{cell(x["neural_row_rate"])}|{cell(x["group_mean_cost_scale_regret"])}|')
+    lines+=['','Rates include repeated context/cost-seed views. Regret is the unweighted mean of complete group means,not a pooled-row or independent score.',
+        'Full action counts are in supplementary_statistics.json. Neural usage is not a causal neural-increment ablation or a dynamics claim.']
     lines+=['','## Cost Error And Chosen-Action Bias','',
         'Normalized SOURCE fitting MSE,not independent calibration. Moments:B,H,R,R_easy,H_easy.','',
         '|Moment|Fixed choices|Own choices|','|---|---:|---:|']
@@ -154,6 +186,7 @@ def render(v):
         '|---|---:|---:|---:|']
     for name,x in a['easy_tails'].items():lines.append(f'|{name}|{x["known_defined"]}/{x["required_views"]}|{cell(x["worst_known_easy_degradation_percent"])}|{x["known_above2_percent"]}|')
     lines+=['','Known harm,missing-outcome uncertainty,and net easy degradation are different quantities. Both original all/easy risk requirements remain.',
+        'The ten worst known easy record views per policy are retained with original context/source/seed identities in supplementary_statistics.json;they repeat recordings and do not become a new selection set.',
         'Pooled known-label subsets below repeat source/context/cost-seed views;they are not independent samples.','',
         '|Subset|Frozen projected policy|Fixed joint|Own joint|','|---|---:|---:|---:|']
     for subset in ('hard','easy'):
@@ -200,10 +233,27 @@ def interpretation(v):
         'Pointwise labels still cover all known legal actions. Missing selected outcomes are not supervised zero;empty choices receive no aggregate target.',
         'Training support counts expose whether this aggregate objective is actually active,not an oracle or a deployment metric.',
         'A favorable component contrast cannot rescue a failed primary or any original recording-risk requirement.',
-        'A negative result would reject this stop-gradient residual objective\'s sufficiency on these SOURCE outputs,not all decision-focused training.',
+        'The observed-label paired utility improves,but the registered complete-policy criterion fails. This rejects the sufficiency of this objective on these SOURCE outputs,not all decision-focused training.',
         'Selected cost bias is descriptive. It does not identify a unique causal failure mechanism or certify conditional risks.',
         'If the objective remains inadequate,inspect selected-label support and harm error before changing the loss;do not silently reduce the cohort or risk contract.',
         'No independent data are opened to rescue a SOURCE fit. This is not proof of neural trajectory,JEPA,scene or interaction contribution.','']
+    selected=a['selected_cost_diagnostic'];usage=a['choice_usage'];tail=a['easy_tails'];effects=s['effects']
+    known=main['known_pp'];lower=main['lower_pp'];worst_source=min(lower['by_locality'],key=lower['by_locality'].get)
+    counts=sorted({(c['known_rows'],c['unknown_rows']) for c in a['locality_completion_support_views'][worst_source]})
+    lines+=['## Measured Success And Remaining Failures','',
+        f'Known ADE gain over the unchanged floor:{cell(s["accuracy"]["frozen_projected_joint"]["point"])}% frozen,{cell(s["accuracy"]["fixed_joint"]["point"])}% fixed-choice,{cell(s["accuracy"]["own_joint"]["point"])}% own-choice.',
+        f'Own-minus-fixed known locality signs:{sum(x>0 for x in known["by_locality"].values())}positive/{sum(x<0 for x in known["by_locality"].values())}negative. All three cost-seed known effects are positive;they still share one forecaster and are SOURCE fits.',
+        f'Switch rate falls {100*usage["fixed_joint"]["switch_rate"]:.6f}%->{100*usage["own_joint"]["switch_rate"]:.6f}%;neural row rate falls {100*usage["fixed_joint"]["neural_row_rate"]:.6f}%->{100*usage["own_joint"]["neural_row_rate"]:.6f}%. Fewer better-observed interventions are not proof of a neural forecasting increment.',
+        f'The known-minus-completion-lower gap is{cell(known["point"]-lower["point"])}pp. This is uncertainty,not measured hidden harm.',
+        f'The most negative paired lower locality is{worst_source}:{cell(lower["by_locality"][worst_source])}pp,versus{cell(known["by_locality"][worst_source])}pp known. Per-required-view (known,unknown) row support is{counts};these views repeat the locality,not independent recordings.',
+        'Its complete scalar comparisons are retained. The locality is not dropped,and outcome masks cannot become an inference filter.',
+        f'Known all/easy risk violation views remain{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]}. These observed violations cannot be explained away by missing labels.',
+        f'Own independent worst known net easy degradation is{cell(tail["own_independent"]["worst_known_easy_degradation_percent"])}%,versus{cell(tail["own_joint"]["worst_known_easy_degradation_percent"])}% for own joint;above2%views rise{tail["own_independent"]["known_above2_percent"]}->{tail["own_joint"]["known_above2_percent"]}. Positive mean joint utility coexists with worse easy tails.',
+        f'Selected normalized H/H_easy bias improves from{cell(selected["fixed_joint"]["pooled_normalized_bias"][1])}/{cell(selected["fixed_joint"]["pooled_normalized_bias"][4])} to{cell(selected["own_joint"]["pooled_normalized_bias"][1])}/{cell(selected["own_joint"]["pooled_normalized_bias"][4])},but remains negative. Chosen populations differ;this is not a paired calibration experiment.',
+        f'All-legal normalized H MSE instead rises{cell(s["cost_MSE"]["fixed_choice"]["1"]["point"])}->{cell(s["cost_MSE"]["own_choice"]["1"]["point"])}. Global MSE,chosen-action bias and recording-risk support are different targets.',
+        f'The own objective has{v["training"]["totals"]["own_choice"]["selected_query_counts"]["complete_selected_queries"]}complete selected query views:it is not simply inactive. Empty/unknown queries stay masked rather than fabricated.',
+        'Next priority:match the existing published deferral adapter to this exact updated bank and input schema. Before any further underprediction loss,check the preceding asymmetric-score/completion/region-loss repairs and register a genuinely distinct control. Do not claim the adapter has already run on the current bank.',
+        'Do not merely add MSE epochs or tune on an independent outcome set. Retain all source records,original2%budgets,undefined-support rules and negative results.','']
     (p/'failure_analysis.md').write_text('\n'.join(lines))
     (p/'model_data_card.md').write_text('# Cost Model And Data Card\n\n'
         '36real warm-started Torch cost heads,31,119active parameters each. No new trajectory or latent generator.\n'

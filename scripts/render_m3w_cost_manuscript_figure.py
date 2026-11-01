@@ -54,7 +54,13 @@ def main():
         axes[1].legend(loc='upper right',frameon=False,fontsize=8)
         for ax in axes:ax.spines[['top','right']].set_visible(False);ax.grid(axis='x',alpha=.15);ax.set_axisbelow(True)
         fig.savefig(a.output/'historical_evidence.pdf');fig.savefig(a.output/'historical_evidence.png',dpi=240);plt.close(fig)
-    print(json.dumps(dict(source=source,exposed_SOURCE_only=True,independent_confirmation=False)))
+    source_dir=own.run.PUBLIC if source==own.run.NAME else own.run.previous.PUBLIC
+    receipt=dict(source=source,summary_sha256=own.run.sha(source_dir/'summary.json'),
+        historical_summary_sha256={study:own.run.sha(own.run.PUBLIC.parent/study/'summary.json') for study in historical.STUDIES},
+        figures={name:own.run.sha(a.output/name) for name in ('cost_evidence.pdf','historical_evidence.pdf')},
+        exposed_SOURCE_only=True,independent_confirmation=False)
+    (a.output/'plot_sources.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    print(json.dumps(receipt))
 
 
 if __name__=='__main__':main()

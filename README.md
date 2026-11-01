@@ -25,17 +25,47 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Current Test: Learning Costs On The Model's Own Decisions
+### Completed Own-Decision Cost Training
 
-I am comparing two equally sized coherent cost models from the same warm
-weights. One learns query-level risk errors on a fixed earlier selection;
-the other learns those errors on its own current, past-only joint decisions.
-Both retain the same pointwise supervision, query coverage and 2% requirements.
-The protocol and primary are frozen before this experiment's outcomes. The real
-400-update recovery probe has passed at 9.82 GB peak memory, including native
-query allocation recovery. Complete training of all 36 heads is running locally;
-no policy improvement is claimed before the full readout.
-[Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
+I trained 36 equally sized coherent cost models from matched warm weights.
+One arm learns query-level risk errors on a fixed earlier selection; the other
+uses its own current, past-only joint decisions. Both keep the same pointwise
+supervision, complete query coverage and 2% requirements. The protocol was frozen
+before this experiment's outcomes. Training took 78.81 minutes locally, including
+two exact full-budget refits. All 72 policy groups and a separate numerical
+inference/frozen-action replay are complete.
+
+|Known-label ADE gain over the same fallback|Result|
+|---|---:|
+|Frozen coherent projection|10.10%|
+|Fixed-choice cost training|11.22%|
+|Own-choice cost training|14.15%|
+
+Own-choice training adds **2.93 percentage points [95% CI: 0.74, 5.23]** over
+fixed-choice training on observed labels. It switches less often: **47.37% to
+24.62%** of repeated row views. But the registered completion-lower effect is
+**-2.77 pp [-10.79, 2.51]**, and only **10/444** original recording-risk views
+pass. Worst known easy degradation remains **12.15%**. **I have not deployed it.**
+
+This gives a useful but limited result: learning on current choices improves
+observed routing, without yet providing reliable full-policy risk control.
+Missing outcomes widen uncertainty, while observed harm still violates the
+requirements. Neither problem can be hidden by reporting only average ADE.
+The three cost seeds share one forecaster, and these are exposed SOURCE fits,
+not independent confirmation or SDD `t+50` results. Twenty-one focused checks
+pass; the public report rebuilds without private input reads. The full unrelated
+repository suite was not run.
+
+[Complete result and figure](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/readout.md),
+[measured failure analysis](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/reproduction_zh.md).
+
+The [working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
+now includes these comparisons and negative results in the official CVPR2027
+style. It is a research draft, not a submission-ready or independently confirmed
+method. The next comparisons must address selected-risk error and include a
+published deferral baseline matched to the updated forecast bank.
 
 ### Completed Reference-Consistency Control
 
@@ -60,8 +90,9 @@ required comparison is empty, rather than a successful zero-risk comparison.
 This is an exposed SOURCE fitting control, not independent confirmation or new
 neural dynamics evidence. The full readout takes 30.25 minutes; 19 focused checks
 pass, and the public report rebuilds without private input reads. The next
-controlled question is whether training costs against the model's own decisions
-helps where fixed-choice regression and postprocessing did not.
+controlled question was whether training costs against the model's own decisions
+helps where fixed-choice regression and postprocessing did not; that completed
+comparison is reported above.
 
 [Complete result and figure](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/readout.md),
 [measured diagnosis](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/diagnosis_and_next_control.md),

@@ -28,7 +28,7 @@ const ci=x=>x.point===null?'not estimable':`${fmt(x.point)} [${x.CI95.map(fmt).j
 let amendment=`### Updated Coherent-Cost Controls\n\nThese later comparisons use the updated frozen neural bank and SOURCE fitting roster. They are not a ranking against the earlier bank's exposed inner-held results in Section 7. No independent outcomes are opened. All 149,510 targets, 74 recordings, 12 localities and 72 groups remain; three cost seeds share forecaster43.\n\nA zero-update control shares each agent's reference moments across causally available candidates and caps benefit at that reference. Harm and trajectories remain unchanged. This removes the cost contradictions but does not improve the full policy.\n\n| Projection contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |\n|---|---:|---:|\n| Projected minus raw learned joint | ${ci(projection.effects.learned_projection.full.known_pp)} | ${ci(projection.effects.learned_projection.full.lower_pp)} |\n| Projected joint minus its independent policy | ${ci(projection.effects.projected_joint_minus_independent.full.known_pp)} | ${ci(projection.effects.projected_joint_minus_independent.full.lower_pp)} |\n\nOnly ${projection.safety.learned_joint.supported_record_views}/444 original recording-risk views pass after projection. The positive joint-allocation component does not rescue the failed primary or establish safety. Required empty post-hoc matched controls remain not estimable. These are nominal SOURCE fitting intervals, not independent confirmation.\n\nA further matched training experiment uses the same coherent decoder, warm weights, 31,119 active parameters and complete cyclic query draws in both arms. It changes only whether the aggregate signed-risk residual is supervised on fixed causal initial choices or detached current joint choices. All legal known pointwise cost labels remain supervised. Empty or partly unknown selected-query labels do not become supervised zero. The network's context input stays fixed in both arms. This is not differentiation through an integer solver or an implementation of a published consistency loss.\n\n`;
 if(own){
   const r=own.safety.own_joint;
-  amendment+=`| Own-decision contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |\n|---|---:|---:|\n| Own joint minus fixed joint | ${ci(own.effects.own_minus_fixed.full.known_pp)} | ${ci(own.effects.own_minus_fixed.full.lower_pp)} |\n| Own joint minus frozen projection | ${ci(own.effects.own_minus_frozen.full.known_pp)} | ${ci(own.effects.own_minus_frozen.full.lower_pp)} |\n\nAll 36 heads finish 208,320 primary updates, plus 14,336 full-refit updates. Original controls and complete new-cost inference/frozen-action scores replay exactly. Own-choice risk support is ${r.supported_record_views}/444; its fitting advancement status is ${own.fitting_advancement}. This is not an independent or deployable result.\n\n`;
+  amendment+=`| Own-decision contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |\n|---|---:|---:|\n| Own joint minus fixed joint | ${ci(own.effects.own_minus_fixed.full.known_pp)} | ${ci(own.effects.own_minus_fixed.full.lower_pp)} |\n| Own joint minus frozen projection | ${ci(own.effects.own_minus_frozen.full.known_pp)} | ${ci(own.effects.own_minus_frozen.full.lower_pp)} |\n\nAll 36 heads finish 208,320 primary updates, plus 14,336 full-refit updates. Original controls and complete new-cost inference/frozen-action scores replay exactly. Known ADE gain over the same floor is ${fmt(own.accuracy.own_joint.point)}% for own-choice, ${fmt(own.accuracy.fixed_joint.point)}% for fixed-choice and ${fmt(own.accuracy.frozen_projected_joint.point)}% for the frozen projection. The choice-conditioned objective improves observed routing, but not the registered complete-policy criterion. Own-choice risk support is ${r.supported_record_views}/444; known all/easy positive-risk violations remain ${r.known_all_risk_violations}/${r.known_easy_risk_violations} views. Its fitting advancement status is ${own.fitting_advancement}. Missing outcomes cannot explain away these observed violations. This is not an independent or deployable result.\n\n`;
 }else amendment+='The new trial is still training. Its complete policy evaluation and primary effect are not yet available; no improvement is claimed from partial losses or completed individual heads.\n\n';
 amendment+='Paired completion bounds use disagreement between policies on unknown outcomes. Subtracting individual lower-bound scores is not the paired lower effect. Missing-label uncertainty is not observed harm.\n\n';
 const basePath=path.join(pub,'evidence_manuscript_v7/manuscript.md');
@@ -38,7 +38,12 @@ let tokens=marked.lexer(base);
 const status=tokens.findIndex(t=>t.type==='paragraph'&&t.text.startsWith('Anonymous research draft.'));
 if(status<0)throw Error('Expected archived status paragraph');
 tokens.splice(status,1,...marked.lexer('**Working draft. Exposed SOURCE evidence only; not independent confirmation or submission-ready.**\n\n'));
-let at=tokens.findIndex(t=>t.type==='heading'&&t.text.startsWith('9. Reproducibility'));
+if(own){
+  const outdated=tokens.findIndex(t=>t.type==='paragraph'&&t.text.startsWith('The new scene result narrows'));
+  if(outdated<0)throw Error('Expected archived next-test paragraph');
+  tokens.splice(outdated,1,...marked.lexer('The later coherent-cost controls above separate structural consistency from policy quality. Projection alone worsens utility. Training against current decisions instead improves observed-label routing, yet the registered completion-lower effect and original recording risks still fail. The remaining errors involve both observed harm and missing-outcome uncertainty. Next controls must match the published deferral loss to the updated bank and distinguish conservative selected-risk learning from more average-error fitting. No independent outcomes are opened to choose these repairs.\n\n'));
+}
+let at=tokens.findIndex(t=>t.type==='heading'&&t.text.startsWith('8. Failure Analysis'));
 if(at<0)throw Error('Expected frozen manuscript structure');
 const additions=marked.lexer(amendment);
 additions.push({type:'m3w_figure',raw:'\n![Complete SOURCE cost evidence](cost_evidence.pdf)\n\n'});
@@ -149,7 +154,8 @@ retaining the pointwise harm, benefit and reference losses.
   if(t.type==='hr'){out+='\\medskip\\hrule\\medskip\n';continue;}
   throw Error('Unsupported block node: '+t.type);
 }return out;}
-const tex=String.raw`\documentclass[10pt,twocolumn,letterpaper]{article}
+const tidy=s=>s.split('\n').map(line=>line.trimEnd()).join('\n');
+const tex=tidy(String.raw`\documentclass[10pt,twocolumn,letterpaper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[review]{cvpr}
 \usepackage{times,graphicx,amsmath,amssymb,booktabs,tabularx}
@@ -163,9 +169,9 @@ const tex=String.raw`\documentclass[10pt,twocolumn,letterpaper]{article}
 \begin{document}
 \raggedbottom
 \maketitle
-`+blocks(tokens)+'\n\\end{document}\n';
+`+blocks(tokens)+'\n\\end{document}\n');
 fs.mkdirSync(output,{recursive:true});fs.mkdirSync(build,{recursive:true});
-fs.writeFileSync(path.join(output,'manuscript.md'),tokens.map(t=>t.raw||'').join(''));
+fs.writeFileSync(path.join(output,'manuscript.md'),tidy(tokens.map(t=>t.raw||'').join('')));
 fs.writeFileSync(path.join(output,'manuscript.tex'),tex);
 fs.writeFileSync(path.join(build,'main.tex'),tex);fs.copyFileSync(path.join(template,'cvpr.sty'),path.join(build,'cvpr.sty'));
 const receipt={base_manuscript_sha256:sha(basePath),projection_summary_sha256:sha(path.join(pub,'european_coherent_cost_projection_v1/summary.json')),

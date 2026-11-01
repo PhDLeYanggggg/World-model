@@ -7,9 +7,10 @@ exposed SOURCE development, not independent confirmation or a deployable method.
 The broader multimodal agent-scene world-model goal remains unproven.
 
 The source includes the earlier frozen-bank comparisons and the complete
-zero-update coherent-cost control. The ongoing own-decision training comparison
-is explicitly pending until its complete evaluation and numerical verification
-exist. A successful build does not change that scientific status.
+zero-update coherent-cost control. The own-decision training comparison is now
+complete and numerically verified; its observed gain and failed primary/risk
+requirements are included together. A successful build does not improve that
+scientific status.
 
 ## Files
 
@@ -54,7 +55,7 @@ node scripts/build_m3w_typeset_draft.mjs
    Only after inspecting all pages, provide `--visual-reviewed-sha` with that
    exact PDF's SHA256. A stale screenshot or PDF identity is rejected.
 
-The local checked build has six main-body pages and one additional page for
+The local checked build has seven main-body pages and one additional page for
 the LLM statement/references. Overfull boxes, font-shape fallbacks, missing
 glyphs, duplicate reference headings and unresolved final-pass references are
 checked. An upstream `lineno.sty` UTF-8 warning is disclosed, not silently removed.
