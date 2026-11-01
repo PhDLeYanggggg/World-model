@@ -25,6 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am testing an explicit predicted-path interaction term in the seven-action
+joint decoder. The comparison keeps the existing forecasts, cost heads,
+per-query intervention counts and original 2% risk constraints fixed. It adds
+no neural training. The design and 45 focused checks are complete; the real
+recovery pilot and full-population result are not yet available.
+
+[Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
+
+### Preceding Coupled Benefit/Risk Control
+
 I compared two matched neural cost heads to test whether freezing predicted
 benefit was preventing reliable harm estimation. Both use the same past-only
 features, forecasts, initial weights and training draws; only one may adjust benefit.

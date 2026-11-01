@@ -7,6 +7,21 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Predicted-Path Interaction: Registered Decoder Control
+
+Previous goal turn: no scientific progress; it only rechecked the private
+author record. This iteration tests explicit seven-action pair costs, which
+the current query risk-pooling decoder does not optimize. The older binary
+pair prototype has synthetic checks, not this real-data comparison.
+
+The registered design fixes the original forecasts,18 cost heads,72 groups,
+149,510 unique rows,74 recordings and per-query intervention counts. It adds
+one fixed predicted-path contraction term over a past-defined four-neighbor
+graph. Original all/easy2% risk and missing-outcome handling are unchanged.
+Forty-five focused checks pass in1.22s,including20 exhaustive small-problem
+comparisons,rigid/scale invariance,recovery and solver-failure fallback.
+Own real pilot/full outcomes are not yet run;there is no deployment promotion.
+
 ### Coupled Benefit/Risk: Registered Before Own Training Outcomes
 
 Previous goal turn:progress;the full position-anchor comparison and both
