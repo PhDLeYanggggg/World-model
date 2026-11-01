@@ -31,8 +31,10 @@ new loss learns the expected benefit and harm of choosing an action, with full
 training-record risk updates and the original fallback decoder. This extends
 the earlier binary policy experiment; it is not a claim that cost-aware routing
 is itself new. The controlled comparison is registered before its own outcomes.
-Training and policy evaluation are not complete yet. Independent confirmation
-and deployment remain closed.
+The real training pilot exactly reproduces the old 100-update model and verifies
+checkpoint recovery. Its peak memory is about 9 GB, so I am running all 18 new
+heads locally at the registered budget. Full training and policy evaluation are
+not complete yet. Independent confirmation and deployment remain closed.
 [Experiment protocol](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/protocol.md).
 
 ### Completed Pairwise Decoder Control

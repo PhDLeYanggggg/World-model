@@ -14,8 +14,11 @@ regression critics. Same seven forecasts,462 fields,30,857 parameters,initializa
 query draws and2,000 updates. Add a soft expected decision-cost objective with
 full-record all/easy/easy-degradation dual updates;keep original2%hard decoder.
 The previous binary cost-sensitive policy is an explicit prior control,not a new
-method claim. Eighteen focused/synthetic checks pass in2.01s. Real pilot,training
-and outcome readout are not complete yet. SOURCE development only;independent
+method claim. Eighteen focused/synthetic checks pass in2.01s. Real300-update pilot
+PID75728 completes in20.274650s,peak9.04GB,old100-update control and50/100 recovery
+exact. All18 full fits are launched locally;training/outcome readout remain incomplete.
+The fresh CREATE queue attempt returns255(remote connection closed),not job failure;
+no remote modifications or duplicate jobs. SOURCE development only;independent
 roles,Stage5C and SMC stay closed. No deployment or submission-ready claim.
 
 ### Predicted-Path Interaction: Registered Decoder Control
