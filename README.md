@@ -58,6 +58,11 @@ optimization failure before another training budget.
 [method and prior work](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/related_work_positioning.md)
 and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/reproduction_zh.md).
 
+I am now checking how much safe beneficial action support remains behind the
+frozen cost gates, and how much the trained actor misses. This is an explicitly
+label-aware development diagnostic, not another model result or an independent
+test. All original sources and recordings stay in the analysis.
+
 ### Completed Decision-Cost Control
 
 I trained 18 decision-cost critics while keeping the seven forecasts, 462 causal

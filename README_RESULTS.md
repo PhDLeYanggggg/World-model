@@ -7,6 +7,18 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Frozen Cost Support Diagnostic
+
+Post-hoc diagnostic registered after the complete negative free-actor outcome,
+before reading its own results. Retain72groups/149,510targets/74recordings.
+Compare original causal availability,predicted positive gain and pointwise
+predicted2%cost support;label-aware per-record oracles and keep/drop controls
+separate missing candidate support from learned decision errors. Pointwise
+witnesses are a restriction of query pooling,not a proof of joint infeasibility.
+No new training,threshold search,independent role opening or deployment.
+Nine focused checks pass,including the existing exhaustive small action oracle.
+Real resource pilot and complete results are not run at this registration checkpoint.
+
 ### Separate Free Allocation Actors
 
 **Complete result,fresh_run:**36 real Torch actors/72,000primary updates plus
