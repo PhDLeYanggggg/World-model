@@ -7,6 +7,17 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Coherent-Cost Projection Control
+
+Registered before its own policy outcomes. This zero-step control pools predicted
+R/R_easy across causally available candidates per agent and caps B at shared R.
+H/H_easy,forecasts,availability,labels,features and all36frozen cost endpoints
+remain unchanged. Complete72-group SOURCE evaluation is required;no independent
+role is opened and no new neural model is trained. Reference MSE can improve by
+averaging alone,so primary full-policy utility and original2%recording-risk
+requirements decide advancement. Eleven focused checks pass1.38s before resource
+pilot. Pilot/full readout are not_run at registration;no positive result claimed.
+
 ### Coverage-Complete Reference Cost Refit
 
 **Complete, fresh_run:** 36 real Torch cost fits, 208,320 primary updates and

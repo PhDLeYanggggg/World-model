@@ -25,6 +25,18 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Current Test: Reference Consistency
+
+I am testing whether the measured cost inconsistencies actually explain poor
+decisions. The new control shares predicted reference errors across an agent's
+available candidates and caps benefit at that reference, while preserving harm,
+forecasts and candidate availability. It has no fitted parameters and is not new
+neural training. The complete 72-group comparison is registered before its own
+results; the original 2% requirements and deployment policy stay unchanged.
+[Protocol](outputs/publication_readiness_2026_09/european_coherent_cost_projection_v1/protocol.md).
+
+### Completed Reference Cost Refit
+
 I compared 36 warm-started causal cost models with complete-query sampling:
 one arm keeps reference errors fixed, and the other learns them. Both use the
 same 462 causal fields, forecasts, query draws and training budgets. Training
