@@ -159,6 +159,8 @@ def render(v):
         lines.append(f"|{a}|{fmt(s['accuracy'][a])}|{fmt(s['floor_lower'][a])}|{fmt(s['FDE'][a])}|{risk['supported_record_views']}/{risk['required_record_views']}|"
             f"{risk['known_easy_risk_violations']}|{risk['undefined_easy_record_views']}|{risk['selected']}/{risk['selected_unknown']}|")
     lines += ['', 'Genuine positive-harm/reference risk is not net error;benefit never cancels its numerator.',
+        'The released floor-relative lower point is '+fmt(s['floor_lower']['released_joint'])+' pp;its interval still crosses zero.',
+        'Subtracting two individual lower-bound points does not give the paired lower bound. It cannot replace the negative registered paired effect.',
         'All149,510 unique target rows,74 recordings,12 exposed localities and444 reused record/context/critic-seed views remain.',
         'Wholly unknown outcomes remain in bounds and are not safe zeros. Empty matched risk is not_estimable.',
         'The floor makes no intervention;its selected-risk denominator is absent,not evidence that the baseline adds harm.',
@@ -175,7 +177,7 @@ def render(v):
         'A lower fitting monitor does not establish decision calibration,conformal control or deployment.',
         'Obs8/pred12/rawstride12,oblique detector-silver/local-image pixels,not SDDt50,metric,seconds,human gold,true3D or foundation.',
         'No independent role,Stage5C execution or SMC. Not submission-ready.', '',
-        '[Training curves](training_report.md),[method and primary-source compatibility](method_note.md),',
+        '[Policy figure](figures/policy_result.svg),[training curves](training_report.md),[method and primary-source compatibility](method_note.md),',
         '[frozen protocol](protocol.md),[failure analysis](failure_analysis.md),[reproduction](reproduction_zh.md).', '']
     return '\n'.join(lines)
 
@@ -206,6 +208,7 @@ def extra_documents(v):
         'Their difference exactly reproduces the known utility contrast up to floating arithmetic. Benefit lost exceeds harm avoided.',
         f"The unknown-disagreement penalty between known and completion-lower effects is{d['unknown_disagreement_penalty_pp']:.9f}pp.",
         'This uses paired forecast disagreement envelopes,not the number of unknown rows. Fewer unknown switches do not imply a smaller uncertainty penalty.',
+        'The released floor-relative lower point improves,but its CI crosses zero. Subtracting individual lower bounds is not a valid paired-effect bound;the registered paired result remains negative.',
         'See all12 sources in locality_effects.csv;no small or adverse locality is removed.', '',
         '## Failure Taxonomy And Remaining Uncertainty', '',
         'Optimization:no stall or failure to update. Engineering:one missing output directory was repaired without changing scientific code.',
@@ -308,8 +311,10 @@ def report():
     training_report(); v = build(); p = run.PUBLIC
     (p/'readout.md').write_text(render(v))
     extra_documents(v); policy_plot(v)
+    run.write(p/'verification_runtime.json', v['replay_runtime'])
     run.write(p/'evidence.json', dict(summary_sha256=run.sha(p/'summary.json'), complete_sha256=run.sha(p/'complete.json'),
         verification_sha256=run.sha(p/'verification.json'), training_freeze_sha256=run.sha(p/'training_freeze.json'),
+        verification_runtime_sha256=run.sha(p/'verification_runtime.json'),
         report_code_sha256=run.sha(Path(__file__)), readout_sha256=run.sha(p/'readout.md'),
         independent_confirmation=False, deployment_changed=False, submission_ready=False))
     print(json.dumps(dict(complete_report=True, fitting_gates=v['summary']['fitting_gates'])))

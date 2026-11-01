@@ -44,6 +44,7 @@ def test_report_does_not_promote_fitting_or_missing_endpoint_evidence():
         assert required in text.lower()
     assert 'new trajectory/dynamics training' in text and 'Deployment unchanged' in text
     assert 'reference predictions r/easy_r' in text.lower() and '36 real Torch cost-head fits' in text
+    assert 'Subtracting two individual lower-bound points does not give the paired lower bound' in text
 
 
 def test_posthoc_mass_decomposition_is_not_a_new_primary_or_causal_claim():

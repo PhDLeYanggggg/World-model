@@ -25,6 +25,39 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I compared two matched neural cost heads to test whether freezing predicted
+benefit was preventing reliable harm estimation. Both use the same past-only
+features, forecasts, initial weights and training draws; only one may adjust benefit.
+Reference predictions and the original 2% risk requirement remain fixed.
+
+All 36 fits finish 72,000 updates plus two complete exact refits in a 5.55-minute
+timed phase, at 10.98 GB peak memory. The full 72-group policy readout takes
+18.11 minutes; a separate 17.50-minute complete replay agrees exactly on every
+group and old full-policy control. These are real Torch cost-head fits; the
+trajectory forecaster is unchanged.
+
+The result is negative. Known-label ADE gain over the frozen fallback falls
+from **8.215% to 7.672%**. The registered paired completion-lower difference
+is **-11.08 pp [-28.15, -2.02]**;
+the matched-count secondary control is also negative. Original recording-risk
+support rises only from **1/444 to 6/444**, with 362 known easy-risk violations.
+I do not deploy this model or change the risk requirement.
+
+Benefit and query-score fitting losses improve, but the policy loses more useful
+benefit than the harm it avoids. This post-hoc accounting is not proof of a
+specific missing causal feature. All 149,510 unique target rows and 74 recordings
+remain;intervals resample 12 already-exposed source localities. Three cost-head
+seeds share one forecast-producer seed, not three-seed forecasting evidence.
+Seventy-six focused checks pass; the full repository suite was not rerun.
+Independent calibration and confirmation, Stage5C execution and SMC remain closed.
+
+[Complete result](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/readout.md),
+[training curves](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/training_report.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/failure_analysis.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/reproduction_zh.md).
+
+### Preceding Position-Anchor Control
+
 I tested a simple state-estimation hypothesis before changing the neural model
 again: would a fitted current position help when the velocity estimate stays
 the same? The control compares the last observed position with a past-only
@@ -57,23 +90,6 @@ and confirmation remain closed, as do Stage5C execution and SMC.
 [failure analysis](outputs/publication_readiness_2026_09/european_position_anchor_v1/failure_analysis.md),
 [error geometry](outputs/publication_readiness_2026_09/european_position_anchor_v1/mechanism/readout.md)
 and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_position_anchor_v1/reproduction_zh.md).
-
-I have registered a matched neural cost-head follow-up before its own training
-outcomes. It tests whether freezing predicted benefit prevents harm estimates
-from using the available forecast-error envelope. The two heads share inputs,
-initial weights, parameter count and training draws; only one may adjust benefit.
-Reference predictions and the original 2% risk requirement remain fixed. Ten
-focused training/allocation checks pass. The real 400-update Torch pilot has
-exact recovery and old-model controls. All 36 full fits now finish 72,000
-updates plus two complete refits in a 5.55-minute timed phase,at 10.98 GB peak
-memory. The released head lowers the fixed fitting benefit/query-score monitors,
-but its median pointwise risk error is slightly worse than the control.
-The complete 72-group policy readout is negative:known utility falls from
-8.215% to 7.672%,and the primary lower-bound difference is -11.08 pp
-[-28.15,-2.02]. Original risk support rises only from 1/444 to 6/444.
-A fresh complete replay is underway;this model is not deployed.
-[Actual training curves](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/training_report.md).
-[Coupled benefit/risk design](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/protocol.md).
 
 ### Earlier Risk-Learning And Decoder Controls
 

@@ -62,6 +62,27 @@ No smaller count or improved loss substitutes for risk. First scores were
 fresh onOct30,cached_verified onNov1;a new full replay is running asPID53258.
 All149,510 unique rows/74 recordings remain. No independent role or deployment.
 
+Fresh2026-11-01 complete replay PID53258 exits0 in1049.945419s timed phase,
+peakRSS9,658,368,000B. All72 groups,all72 protected prediction/full-policy
+controls and the canonical summary agree exactly. No retraining,threshold
+selection or independent outcome access occurs during this replay.
+The source-macro post-hoc mass accounting isB delta-0.784969113pp,H delta
+-0.241742282pp,net-0.543226831pp. Only1/12 known locality effects and0/12
+lower effects are positive. The paired unknown-disagreement penalty is
+10.536958716pp;unknown switch counts alone do not measure it. Released
+floor-relative lower point improves to3.196884pp but its CI[-2.265523,8.293335]
+crosses zero. Subtracting two individual lower bounds is not a valid paired
+bound and cannot override the failed registered primary.
+
+The18-file focused suite passes76 checks in5.15s,including real complete
+readout/replay/hash artifacts. Report-only follow-up4checks pass in3.00s.
+The full repository suite was not rerun. Both training and policy figures are
+visually checked. Full readout,failure analysis,model/data card,post-hoc source
+table,statistical review,results component and Chinese reproduction guide are
+complete. The1,028,029B archive contains72 aggregate JSONs only,not row data,
+features or weights. Scientific files remain frozen;deployment unchanged and
+not submission-ready. [Complete coupled-head result](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/readout.md).
+
 ### Causal Position Anchor: Registered Before Own Outcomes
 
 Previous goal turn:progress,complete signed-utility controls/replay reject

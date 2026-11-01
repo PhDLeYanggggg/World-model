@@ -14,6 +14,8 @@ def test_complete_real_critic_readout_replay_and_bundle_are_not_submission_succe
     evidence = json.loads((p/'evidence.json').read_text())
     assert evidence['summary_sha256'] == report.run.sha(p/'summary.json')
     assert evidence['verification_sha256'] == report.run.sha(p/'verification.json')
+    assert evidence['verification_runtime_sha256'] == report.run.sha(p/'verification_runtime.json')
+    assert evidence['report_code_sha256'] == report.run.sha(report.ROOT/'scripts/report_m3w_coupled_benefit_risk.py')
     assert evidence['readout_sha256'] == report.run.sha(p/'readout.md')
     assert b'\r' not in (p/'locality_effects.csv').read_bytes()
     assert len((p/'locality_effects.csv').read_text().splitlines()) == 13
