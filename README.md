@@ -30,8 +30,9 @@ all seven forecast candidates, but learn their own intervention and fallback
 scores without changing the cost head. The controlled comparison uses the
 agent's own representation versus the selected query's representation, with
 matched capacity, training draws and budgets. Both retain the original 2% cost
-constraints. The design is registered before its own results; real training and
-evaluation are not complete yet.
+constraints. The real pilot verifies exact checkpoint recovery and the original
+zero-actor choices. Its peak memory is 9.76 GB, so the full 36-head experiment is
+running locally at the registered budget. Full evaluation is not complete yet.
 [Registered experiment](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/protocol.md).
 
 ### Completed Decision-Cost Control

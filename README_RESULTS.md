@@ -16,8 +16,11 @@ context arms. Each has133causal representation fields and4,321parameters.
 Whole-record true/bounded-risk duals and two causal query-budget duals retain
 original2%constraints. Actual hard policies use learned objective utilities but
 unchanged predicted cost moments;zero actors must reproduce the old control.
-Thirty-three synthetic/focused checks pass in2.41s. Real pilot/training/outcome
-evaluation not_run at this checkpoint. SOURCE fitting only;no deployment or
+Thirty-three synthetic/focused checks pass in2.41s. Real pilot PID88782 completes
+400updates in19.511579s,peak9.76GB,zero-actor independent choices and both recovery
+checks exact. Full36-head/72,000-update training is launched locally;complete
+evaluation not_run yet. Latest CREATE queue transport returns255(reset by peer),
+not evidence of historical job failure. SOURCE fitting only;no deployment or
 independent roles,Stage5C or SMC. Previous negative results remain unchanged.
 
 ### Seven-Action Decision-Cost Training
