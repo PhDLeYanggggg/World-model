@@ -12,7 +12,7 @@ or evidence status.
 New prospective experiment:freeze18continuous regression critics and the full
 seven-forecast bank;train36small allocation actors across self/selected-query
 context arms. Each has133causal representation fields and4,321parameters.
-72,000primary updates and4,000exact-refit updates are planned,not completed.
+Registered budget:72,000primary updates and4,000exact-refit updates,now completed below.
 Whole-record true/bounded-risk duals and two causal query-budget duals retain
 original2%constraints. Actual hard policies use learned objective utilities but
 unchanged predicted cost moments;zero actors must reproduce the old control.
@@ -25,6 +25,11 @@ max49targets,exact interrupted recovery,direct0.782420s;size-biased one-source
 evaluation is launched locally. Latest CREATE queue transport returns255(reset by peer),
 not evidence of historical job failure. SOURCE fitting only;no deployment or
 independent roles,Stage5C or SMC. Previous negative results remain unchanged.
+Public-only report builder,model/data card,statistical interpretation,method
+component,primary-source positioning and Chinese reproduction instructions are
+prepared. Seven new evidence checks pass in1.71s;three outcome/bundle checks are
+explicitly skipped until complete72 scoring and separate verification exist.
+This is report-engineering progress,not a policy-effect or safety result.
 
 ### Seven-Action Decision-Cost Training
 

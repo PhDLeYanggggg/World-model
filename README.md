@@ -37,6 +37,12 @@ joint-decoder probe also verifies recovery, and the full 72-group evaluation is
 running locally. Predictive and safety results are not complete yet.
 [Registered experiment](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/protocol.md).
 
+I have also prepared a public-aggregate report builder and matched-training checks.
+Seven new checks pass; three result checks deliberately wait for the complete
+readout and separate score verification. The [method description](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/paper_method_component.md)
+and [related-work comparison](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/related_work_positioning.md)
+explain what this experiment tests, and which claims it cannot support yet.
+
 ### Completed Decision-Cost Control
 
 I trained 18 decision-cost critics while keeping the seven forecasts, 462 causal
