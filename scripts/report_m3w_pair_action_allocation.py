@@ -42,7 +42,25 @@ def build():
         full_locality_CI=s['graph_pair_change'],supplementary_pooled_point_not_gate_replacement=True)
     pairless_unsupported=[name for name,old in original.items() if old['result']['pair_proxy']['pair_requested_step_views']==0
         and not old['result']['policies']['set_joint']['policy']['budget_status']['supported']]
+    choice_counts={a:{str(k):sum(r['result']['policies'][a]['action_counts'][str(k)] for r in rows)
+        for k in range(-1,7)} for a in run.api.NAMES}
+    mass_changes={}
+    for r in rows:
+        result=r['result']; ref=result['contrasts']['full']['full_reference_mass_counted_once']
+        if ref<=0: raise ValueError('Defined original reference required')
+        mass_changes.setdefault(r['source'],[]).append([100*(result['policies']['pair_joint']['policy'][k]
+            -result['policies']['unary_joint']['policy'][k])/ref for k in ('selected_known_benefit_mass','selected_known_harm_mass')])
+    per_source={k:run.np.mean(v,0).tolist() for k,v in mass_changes.items()}
+    if any(abs(v[0]-v[1]-s['effects']['known_pp']['by_locality'][k])>1e-8 for k,v in per_source.items()):
+        raise ValueError('Known benefit/harm decomposition identity changed')
+    decomposition=dict(benefit_delta_pp=float(run.np.mean([v[0] for v in per_source.values()])),
+        harm_delta_pp=float(run.np.mean([v[1] for v in per_source.values()])),
+        unknown_disagreement_penalty_pp=s['effects']['known_pp']['point']-s['effects']['lower_pp']['point'],
+        positive_known_sources=sum(v>0 for v in s['effects']['known_pp']['by_locality'].values()),
+        unchanged_known_sources=sum(v==0 for v in s['effects']['known_pp']['by_locality'].values()),
+        source_count=12,by_source_benefit_harm=per_source,posthoc_descriptive_not_causal_feature_diagnosis=True)
     return dict(summary=s,complete=complete,replay=replay,bundle=bundle,rows=rows,graph_description=graph_description,
+        choice_counts=choice_counts,decomposition=decomposition,
         unchanged_pairless_unsupported_controls=sorted(pairless_unsupported),
         pilot=json.loads((run.PUBLIC/'pilot.json').read_text()),
         verification_runtime=json.loads((run.PRIVATE/'verification_runtime.json').read_text()))
@@ -92,6 +110,12 @@ def render(v):
         f'{len(v["unchanged_pairless_unsupported_controls"])} old zero-pair groups are already risk-unsupported and retain their exact unary choices.',
         'This pair-only control therefore cannot certify complete original risk,even if crowded-query utility improves. It does not repair those unary failures.',
         'Known-label utility,completion-lower utility and individual-policy lower bounds have different estimands;their differences are not interchangeable.','',
+        '## Descriptive Accounting','',
+        f'Known benefit change: {v["decomposition"]["benefit_delta_pp"]:+.6f}pp;known harm change: {v["decomposition"]["harm_delta_pp"]:+.6f}pp.',
+        'Benefit change minus harm change exactly reproduces the paired known utility difference in every source.',
+        f'Positive known source effects: {v["decomposition"]["positive_known_sources"]}/12;unchanged sources: {v["decomposition"]["unchanged_known_sources"]}/12.',
+        f'Neural action6 views: {v["choice_counts"]["unary_joint"]["6"]} -> {v["choice_counts"]["pair_joint"]["6"]}. Counts repeat contexts/critic seeds,not distinct people.',
+        'These describe changed assignments,not a causal identification of missing intent,detector noise or feature insufficiency.','',
         '## Population And Statistics','',
         'All149,510 unique targets,74 recordings,72 original source/context/critic-seed groups and12 exposed source localities remain.',
         'Bootstrap3,000 paired locality resamples after averaging repeated contexts and critic seeds. Overlapping windows are not independent samples.',
@@ -172,6 +196,8 @@ def export(v):
         '2. Test training-only correspondence between the predicted interaction proxy and actual forecast harm before adding learned coupling.',
         '3. Only after a fitting repair passes original risk,freeze the full pipeline for independent calibration/confirmation and three forecasting seeds.','']))
     run.write(public/'graph_description.json',v['graph_description'])
+    run.write(public/'choice_description.json',v['choice_counts'])
+    run.write(public/'descriptive_decomposition.json',v['decomposition'])
     run.write(public/'evidence.json',dict(summary_sha256=run.sha(public/'summary.json'),
         complete_sha256=run.sha(public/'complete.json'),verification_sha256=run.sha(public/'verification.json'),
         bundle_sha256=run.sha(public/'metric_groups.zip'),full_replay_exact=True,new_training_updates=0,

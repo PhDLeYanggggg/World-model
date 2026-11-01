@@ -21,6 +21,13 @@ Graph-locality interval is not_estimable because six zero-edge groups remain.
 Timed fresh reoptimization is PID64032 and running;frozen-action scoring and
 actual-pair-distance diagnostics are not yet run. No deployment/submission claim.
 
+Fresh CREATE observation on1November:queue and owned metadata/accounting
+queries exit0. Seventeen M3W directories/six small receipts inspected;the six
+named historical jobs are COMPLETED/0:0. No M3W-named active rows in the returned
+queue snapshot. No weights/labels read or new environment/scientific quality
+verified;no remote write,submission,restart or cancellation. Local paired
+decoding fits10.85GB,so there is no need to duplicate it remotely.
+
 Previous goal turn: no scientific progress; it only rechecked the private
 author record. This iteration tests explicit seven-action pair costs, which
 the current query risk-pooling decoder does not optimize. The older binary

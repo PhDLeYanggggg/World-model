@@ -45,6 +45,11 @@ three-seed forecasting study. The original scientific definition remains frozen.
 
 [Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
 
+I also rechecked the owned CREATE receipts and scheduler without changing remote
+work. Six inspected historical jobs are completed;that is infrastructure
+evidence,not a new model result.
+[Read-only check](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/create_asset_check.md).
+
 ### Preceding Coupled Benefit/Risk Control
 
 I compared two matched neural cost heads to test whether freezing predicted
