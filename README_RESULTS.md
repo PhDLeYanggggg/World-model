@@ -9,6 +9,41 @@ or evidence status.
 
 ### Frozen Cost Support Diagnostic
 
+**Complete diagnostic,fresh_run:**PID216 completes72groups in92.763621s,
+peak10,966,614,016B. PID1889independently recomputes all72numeric groups and
+original full/record scores exactly in93.513954s,peak10,982,719,488B.
+Real four-source resource pilot PID99024 completes17.011790s,peak9,716,383,744B.
+All149,510targets/74recordings/12exposed localities remain. No new model training.
+
+Label-aware causal-bank safe witnesses:444/444views,39.171287pp. Predicted-positive
+support:439/444views,26.449226pp safe witness;positive-benefit upper headroom
+26.863043pp. The positive gate loses12.308244pp of upper headroom
+[10.185824,14.381542] and leaves five views without any legal known easy-reference
+anchor. These repeat one recording under contexts/seeds,not five independent scenes.
+Under the original denominator definition,no policy restricted to that mask can
+support all444views. This is a finite SOURCE support condition,not a population theorem.
+
+Pointwise-cost support gives428/444views and6.985999pp safe-witness gain.
+It is a subset of joint pooling,not a joint upper bound. Oracle keep/drop can
+support427zero-policy and416selected-policy views versus actual6and24.
+Of195,677predicted-pointwise-safe known selected row views,23,582have positive
+observed H-.02R or H_easy-.02R_easy;this is not a defined ratio at zero reference
+or a whole-record violation rate.
+Oracle scores use labels and are never counted as model performance or inputs.
+
+All36frozen actor sampler states reconstruct exactly;18distinct paired draws.
+Large-source views:32,714of92,160queries never enter a gradient batch;coverage
+range61.999512%-67.480469%. Full risk monitoring did cover all queries,and frozen
+encoders had prior training. This is not independent/unseen-test evidence or a
+complete row-draw-hash replay. Sixteen fresh focused checks pass in2.01s;
+prior44unchanged checks are cached_verified,not rerun. Full repository suite not run.
+Fresh-process public report/figure regeneration with private input reads denied
+passes in1.556084s. Deployment/independent roles/Stage5C/SMC remain unchanged.
+Next:preflight causal reference support without frozen gain-sign gating,then
+matched full-coverage versus support-repair training. No new successful policy claimed.
+
+**Execution history:**
+
 Post-hoc diagnostic registered after the complete negative free-actor outcome,
 before reading its own results. Retain72groups/149,510targets/74recordings.
 Compare original causal availability,predicted positive gain and pointwise

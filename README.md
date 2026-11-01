@@ -49,19 +49,26 @@ complete artifact checks and report rebuilding without private input reads.
 The full repository suite was not rerun.
 
 These are development fits on exposed EuropeanSquares sources, not independent
-confirmation, SDD `t+50`, or three-seed forecasting evidence. The next diagnostic
-must distinguish action-support and cost-calibration limits from soft-to-hard
-optimization failure before another training budget.
+confirmation, SDD `t+50`, or three-seed forecasting evidence.
 
 [Complete result and figure](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/readout.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/failure_analysis.md),
 [method and prior work](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/related_work_positioning.md)
 and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/reproduction_zh.md).
 
-I am now checking how much safe beneficial action support remains behind the
-frozen cost gates, and how much the trained actor misses. This is an explicitly
-label-aware development diagnostic, not another model result or an independent
-test. All original sources and recordings stay in the analysis.
+The follow-up diagnosis identifies a structural restriction: the frozen
+positive-gain gate removes every known easy-reference action in 5 of 444 record
+views. No routing score can restore that missing support without changing the
+candidate gate. The original causal bank has label-aware safe witnesses in all
+444 views. Those witnesses are diagnostics using future labels, not model scores.
+
+I also reconstructed the frozen training samplers. In the largest sources,
+32.5% to 38.0% of queries never entered an actor gradient batch, although full
+risk monitoring covered them. The next controlled repair must test causal action
+support without the old gain-sign restriction, preserve the 2% risk contract,
+and compare training with guaranteed query coverage. It is not trained yet.
+[Complete support diagnosis](outputs/publication_readiness_2026_09/european_frozen_cost_support_v1/readout.md)
+and [failure mechanism and repair requirements](outputs/publication_readiness_2026_09/european_frozen_cost_support_v1/diagnosis_and_repair.md).
 
 ### Completed Decision-Cost Control
 
