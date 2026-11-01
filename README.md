@@ -37,8 +37,10 @@ tried; it is a controlled repair, not a claim of a new deferral framework.
 
 The protocol is frozen before this experiment's outcomes. All 36 fits and 72
 original groups remain required. The original recording-risk rules, data roles
-and deployment stay unchanged. Registration and focused code checks are complete;
-real recovery/resource training and full evaluation are not yet run.
+and deployment stay unchanged. The real 400-update recovery pilot passes:
+29.26 seconds, about 9.82 GB peak memory, with exact recovered predictions and
+choices. Local resources are sufficient. Full training is starting; no policy
+effect is available yet.
 
 [Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
 

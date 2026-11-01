@@ -35,7 +35,12 @@ remain. The 2% contract and independent-data lock are unchanged.
 
 Pre-registration checks: 5 passed, 2 explicitly skipped in 1.57s (registration
 and full-result checks). Actual training, pilot resources and policy outcomes
-are not_run at registration. SOURCE development only; no deployment promotion.
+are not_run at registration. Subsequent real recovery pilot: PID61758,
+29.261527s,peak9,822,683,136B,400actual updates. Both100-step recovered/direct
+scientific states,full causal predictions and choices match exactly. Pure-fit
+main-budget projection is1404.586619s,excluding preparation/refits/evaluation;
+this is not actual full duration. Local resources suffice. Formal training is
+starting;policy outcomes not_run. SOURCE development only;no deployment promotion.
 [Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
 
 ### Current-Bank Published Deferral Comparison
