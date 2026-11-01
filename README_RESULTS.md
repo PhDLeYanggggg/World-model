@@ -9,6 +9,29 @@ or evidence status.
 
 ### Seven-Action Decision-Cost Training
 
+**Final result,fresh_run:**18full Torch cost fits,36,000primary updates and2,000
+exact-refit updates. Full72-group evaluation PID79489 completes1008.419213s,
+peak9.65GB;separate frozen-action inference/score verification PID82655 completes
+129.467091s,peak10.82GB,all72groups/old controls exact. It does not reoptimize MILPs.
+All149,510unique targets/74recordings/12 exposed localities remain;112,596query
+views and897,060row views repeat contexts/critic seeds,not independent examples.
+
+Known ADE gain7.672120%->9.138437%;paired+1.466317pp [0.529223,2.342938].
+Registered completion-lower paired effect-2.744940pp [-6.587075,0.210798] fails;
+the interval crosses0,not a significant negative-effect claim. Own floor-relative
+lower gain8.653152pp [5.387204,12.817439] is positive but cannot replace the paired
+endpoint or original safety. Only9/444record-risk views pass;known easy violations
+362->375,worst known easy degradation26.477426%->28.329410%,53views above2%.
+Known hard pooled gain9.372667%->9.386142%;easy4.648667%->3.549522%.
+Known benefit+1.493403pp,harm+0.027086pp;unknown disagreement penalty4.211257pp.
+Harm moment MSE0.106970->0.575948 despite the observed utility gain.
+Thirty-five fresh focused checks pass in2.70s,including public-only report builds;
+prior87unchanged checks are cached_verified,not rerun. Full repository suite not run.
+5/7fitting checks,advancement false,no deployment,no independent-role opening.
+No new trajectory/JEPA/Transformer training,Stage5C or SMC. Not CCF-A ready.
+
+**Execution history:**
+
 New registered comparison:18 new decision-cost critics versus18 cached verified
 regression critics. Same seven forecasts,462 fields,30,857 parameters,initialization,
 query draws and2,000 updates. Add a soft expected decision-cost objective with

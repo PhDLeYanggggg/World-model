@@ -22,8 +22,9 @@ def build():
             or v['unknown_rows_with_supervised_labels'] for v in fits)):
         raise ValueError('All18 complete matched SOURCE fits required')
     cfg=json.loads(run.CONFIG.read_text()); bundle=verify(ROOT,run.PUBLIC)
-    rows=list(aggregate_groups(run.NAME).values()); original=aggregate_groups(run.previous.NAME)
+    groups=aggregate_groups(run.NAME); original=aggregate_groups(run.previous.NAME)
     complete=json.loads((run.PUBLIC/'complete.json').read_text()); replay=json.loads((run.PUBLIC/'verification.json').read_text())
+    rows=[groups[Path(ref['path']).name] for ref in complete['groups']]
     summary=json.loads((run.PUBLIC/'summary.json').read_text())
     if (complete['training_freeze_sha256']!=run.sha(run.PUBLIC/'training_freeze.json')
             or complete['summary_sha256']!=run.sha(run.PUBLIC/'summary.json')
@@ -60,8 +61,24 @@ def build():
         final_positive_expected_record_constraints=sum(sum(v['final_trace']['full_record_pass']['positive_expected_record_constraints']) for v in fits),
         mean_final_soft_intervention_fraction=sum(v['final_trace']['full_record_pass']['soft_intervention_fraction'] for v in fits)/18,
         full_record_expected_values_are_not_final_hard_policy_risk=True)
+    changes={}
+    for row in rows:
+        result=row['result'];reference=result['contrasts']['joint']['full']['full_reference_mass_counted_once']
+        a=result['policies']['regression_joint']['policy'];b=result['policies']['decision_joint']['policy']
+        changes.setdefault(row['source'],[]).append([100*(b[k]-a[k])/reference for k in ('selected_known_benefit_mass','selected_known_harm_mass')])
+    by_source={k:run.np.mean(x,0).tolist() for k,x in changes.items()}
+    if any(abs(v[0]-v[1]-summary['effects']['joint']['known_pp']['by_locality'][k])>1e-8 for k,v in by_source.items()):
+        raise ValueError('Original known benefit/harm accounting changed')
+    accounting=dict(benefit_delta_pp=float(run.np.mean([x[0] for x in by_source.values()])),
+        harm_delta_pp=float(run.np.mean([x[1] for x in by_source.values()])),
+        paired_unknown_disagreement_penalty_pp=summary['effects']['joint']['known_pp']['point']-summary['effects']['joint']['lower_pp']['point'],
+        by_source_benefit_harm=by_source,descriptive_not_causal_attribution=True,
+        calibration_MSE_equal_group_mean={a:{k:sum(r['result']['calibration'][a][k] for r in rows)/72 for k in ('0','1','4')}
+            for a in ('regression_benefit','decision_benefit')},
+        choice_views={a:{str(k):sum(r['result']['policies'][a]['action_counts'][str(k)] for r in rows) for k in range(-1,7)}
+            for a in ('regression_joint','decision_joint')})
     return dict(summary=summary,complete=complete,freeze=freeze,replay=replay,bundle=bundle,
-        tails=tails,fit_stats=fit_stats,pilot=json.loads((run.PUBLIC/'pilot.json').read_text()),
+        tails=tails,fit_stats=fit_stats,accounting=accounting,pilot=json.loads((run.PUBLIC/'pilot.json').read_text()),
         full_refit=json.loads((run.PUBLIC/'first_full_refit.json').read_text()))
 
 
@@ -76,6 +93,7 @@ def interval(v):
 def render(v):
     p=run.PUBLIC;s=v['summary'];risk=s['safety']['decision_joint'];primary=s['effects']['joint']['lower_pp']
     run.write(p/'training_statistics.json',v['fit_stats']);run.write(p/'easy_tail_description.json',v['tails'])
+    run.write(p/'descriptive_accounting.json',v['accounting'])
     lines=['# Seven-Action Decision-Cost Training: Complete SOURCE Result','','## Material Passport','',
         'fresh_run:18 real Torch cost critics,36,000 primary updates,2,000 exact first-head refit,complete72-group allocation/readout.',
         'cached_verified:18 regression heads,seven forecasts,floor,462 past-only fields and all old full-policy controls.',
@@ -96,6 +114,14 @@ def render(v):
     for arm in run.evaluation.NAMES:
         r=s['safety'][arm]
         lines.append(f'|{arm}|{interval(s["accuracy"][arm])}|{interval(s["floor_lower"][arm])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{r["selected"]}/{r["selected_unknown"]}|')
+    a=v['accounting'];lines+=['','## Descriptive Accounting','',
+        f'Known benefit change:{a["benefit_delta_pp"]:+.6f}pp;known harm change:{a["harm_delta_pp"]:+.6f}pp.',
+        'Benefit minus harm reproduces the paired known utility in every source. This is descriptive,not causal attribution.',
+        f'Known-minus-lower paired unknown disagreement penalty:{a["paired_unknown_disagreement_penalty_pp"]:.6f}pp.',
+        'Fewer selected unknown rows need not mean less disagreement with the old policy on unobserved outcomes.','',
+        '|Moment normalized MSE, supplementary equal-group mean|Regression|Decision cost|','|---|---:|---:|']
+    for k,label in (('0','Benefit'),('1','Harm'),('4','Easy harm')):
+        lines.append(f'|{label}|{a["calibration_MSE_equal_group_mean"]["regression_benefit"][k]:.6f}|{a["calibration_MSE_equal_group_mean"]["decision_benefit"][k]:.6f}|')
     lines+=['','## Easy Record Tails','','|Policy|Known easy defined|Worst known degradation (%)|Known views above2%|Completion-upper defined|Worst upper bound (%)|',
         '|---|---:|---:|---:|---:|---:|']
     for a in ('regression_joint','decision_joint'):
@@ -118,6 +144,7 @@ def render(v):
         '## Fitting Gates','']
     lines += [f'- {k}: {"pass" if value else "fail"}' for k,value in s['fitting_gates'].items()]
     lines+=['',f'Fitting advancement:{s["fitting_advancement_gate"]}. No deployment or independent-role promotion from this run.','',
+        '![Decision-cost SOURCE readout](figures/decision_cost_readout.svg)','',
         '## Population And Limits','',
         'All149,510 unique targets,74 recordings,72 source/context/critic-seed groups and12 exposed localities retained.',
         '3,000 paired locality bootstrap draws after averaging repeated context/critic views. Conditional,nominal and adaptively developed,not independent confirmation.',
@@ -138,6 +165,32 @@ def render(v):
         fitting_advancement=s['fitting_advancement_gate'],independent_confirmation=False,deployment_changed=False,submission_ready=False))
 
 
+def figure(v):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    s=v['summary'];fig,axes=plt.subplots(1,2,figsize=(11,4),layout='constrained')
+    names=('regression_joint','decision_joint');colors=('#326a95','#b85042')
+    for i,(name,color) in enumerate(zip(names,colors)):
+        z=s['accuracy'][name];ci=z['CI95']
+        axes[0].bar(i,z['point'],color=color,width=.6)
+        if ci is not None:axes[0].errorbar(i,z['point'],yerr=[[z['point']-ci[0]],[ci[1]-z['point']]],fmt='none',ecolor='#222222',capsize=5)
+    axes[0].set_xticks(range(2),['Regression','Decision cost']);axes[0].set_ylabel('Known ADE gain over floor (%)')
+    axes[0].set_title('Fixed forecaster, full policies',fontsize=11)
+    for i,(key,label) in enumerate((('known_pp','Known labels'),('lower_pp','Completion lower'))):
+        z=s['effects']['joint'][key];ci=z['CI95']
+        axes[1].errorbar(z['point'],i,xerr=[[z['point']-ci[0]],[ci[1]-z['point']]],fmt='o',color=colors[i],capsize=5)
+    axes[1].axvline(0,color='#333333',lw=.8);axes[1].set_yticks([0,1],['Known labels','Completion lower'])
+    axes[1].set_xlabel('Decision minus regression (percentage points)');axes[1].set_title('Paired conditional 95% intervals',fontsize=11)
+    for ax in axes:
+        ax.spines[['top','right']].set_visible(False);ax.grid(axis='y',alpha=.15);ax.set_axisbelow(True)
+    fig.suptitle('SOURCE development only: 12 exposed localities, no deployment',fontsize=12)
+    dest=run.PUBLIC/'figures';dest.mkdir(exist_ok=True);run.PRIVATE.mkdir(parents=True,exist_ok=True)
+    svg=dest/'decision_cost_readout.svg';fig.savefig(svg)
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
+    fig.savefig(run.PRIVATE/'decision_cost_readout.png',dpi=150);plt.close(fig)
+
+
 if __name__=='__main__':
-    value=build();render(value);print(json.dumps(dict(groups=value['summary']['groups'],fits=value['fit_stats']['complete_fits'],
+    value=build();render(value);figure(value);print(json.dumps(dict(groups=value['summary']['groups'],fits=value['fit_stats']['complete_fits'],
         primary=value['summary']['effects']['joint']['lower_pp'],advancement=value['summary']['fitting_advancement_gate'])))

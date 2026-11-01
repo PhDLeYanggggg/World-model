@@ -12,7 +12,7 @@ All18heads finish2,000updates with30,857parameters;matched input hashes,initiali
 query draw streams,reference moments and update budgets agree with cached controls.
 The first complete2,000-update head independently refits exactly,including model,
 optimizer,sampling states,duals and all non-timing scientific trace fields.
-Checkpoints and actual per-update loss traces remain private;scalar first/final traces
+Checkpoints and loss/gradient traces at the scheduled heartbeats remain private;scalar first/final traces
 and training receipts are public. No checkpoint or feature data is committed.
 
 All1,332 final expected training-record constraints remain positive. Mean final soft

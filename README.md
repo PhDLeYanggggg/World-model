@@ -25,25 +25,33 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am testing a decision-cost objective for the seven-action critic. The forecasts,
-462 causal fields, model size, training draws and update budget stay fixed. The
-new loss learns the expected benefit and harm of choosing an action, with full
-training-record risk updates and the original fallback decoder. This extends
-the earlier binary policy experiment; it is not a claim that cost-aware routing
-is itself new. The controlled comparison is registered before its own outcomes.
-The real training pilot exactly reproduces the old 100-update model and verifies
-checkpoint recovery. Its peak memory is about 9 GB, so I am running all 18 new
-heads locally at the registered budget. All 18 now finish 2,000 updates, and an
-independent full refit of the first head is exact. The complete training phase
-took 7.19 minutes at 10.75 GB peak memory. Policy evaluation is running; the
-training loss has not established a utility or safety improvement. Independent
-confirmation and deployment remain closed.
-An additional training-support check finds a structural problem: bounded cost
-logits and a fixed fallback score force high soft intervention probabilities.
-Even a relaxed best-case policy violates the expected constraints in all 444
-record views. This diagnoses the training surrogate, not an impossibility of
-safe hard decisions. The original full-policy evaluation is still running.
-[Experiment protocol](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/protocol.md).
+I trained 18 decision-cost critics while keeping the seven forecasts, 462 causal
+fields, architecture and training draws fixed. Each head received 2,000 updates.
+This tests how the loss changes intervention decisions; it is not new trajectory
+or latent-model training.
+
+Known-label ADE gain over fallback rose from **7.67% to 9.14%**. The paired gain
+was **1.47 percentage points [95% CI: 0.53, 2.34]**. However, the registered
+completion-lower contrast did not pass: **-2.74 pp [-6.59, 0.21]**. Only 9 of 444
+original recording-risk views were supported, and worst known easy degradation
+rose to **28.33%**. I have not promoted this model or changed deployment.
+
+A follow-up check found a structural mismatch in the training surrogate. Bounded
+cost logits and a fixed fallback score force high soft intervention rates at the
+chosen temperature. Even a relaxed best-case family violates the expected
+constraints in every record view. This does not prove that safe hard decisions
+are impossible. The next controlled repair will separate fallback decisions from
+calibrated cost estimates, rather than train the same infeasible objective longer.
+
+All 72 archived-action inference and score checks agree exactly, and the first
+full 2,000-update refit is exact. Thirty-five focused tests pass; the full
+repository suite was not rerun. These remain development fits on exposed sources,
+not independent confirmation or three-seed forecasting evidence.
+
+[Results and figure](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/failure_analysis.md),
+[soft-policy support check](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/soft_support_diagnostic.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/reproduction_zh.md).
 
 ### Completed Pairwise Decoder Control
 
