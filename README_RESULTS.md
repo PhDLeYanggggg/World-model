@@ -9,36 +9,63 @@ or evidence status.
 
 ### Coverage-Complete Reference Cost Refit
 
-Registered36warm-started causal cost fits:locked versus learned R/R_easy,each
-31,119total parameters;the learned arm has262more active parameters. Same old
-cost weights,462causal fields,normalization,labels,cyclic query draws and budgets.
-Per-fit updates=max(2000,4*ceil(largest_source_queries/4));every query is visited
-at least4times,unknown rows remain unsupervised. No speed-based roster reduction.
-Primary remains learned-minus-locked full-joint completion-lower utility,with
-original2%recording gates and reference-MSE evidence. These are SOURCE fits,
-not independent validation or calibration. The old shared-reference weights
-were inspected but require760paired inputs,not a drop-in462-field replacement.
-CREATE read-only queue check succeeds;no remote job is changed or submitted.
-The real400-update pilot is complete:fresh_run,20.832748s,peak9,646,735,360B.
-Both zero-branch native predictions and50/100-update interruption recovery are
-exact. All36 formal cost fits are frozen:fresh_run,208,320primary updates plus
-14,336exact-full-refit updates,1128.131876s,peak9,747,415,040B. Every query has
-at least4sampling visits;none is undrawn. Full72-group policy evaluation follows
-the complete model freeze. No deployment or independent role changes.
-The original eval entry fails before runtime_ready due to a local timing-variable
-collision,with zero new policy groups. The committed execution erratum only
-renames three receipt-variable occurrences in the evaluation AST;inverse rename
-exactly restores the original AST. Models,registration and scientific files remain
-unchanged. Two focused regression checks pass1.26s before repaired execution.
-The repaired full72readout is running under PID20020. Training endpoints and
-thresholds are frozen;partial source outcomes do not select a new checkpoint.
-Full72readout is now complete:fresh_run,1905.292910s,peak10,907,205,632B.
-Pending separate numeric verification:learned-minus-locked known gain+0.707816pp
-[0.238023,1.192602],completion-lower-2.031363pp[-4.275018,-0.420831].
-Reference MSE change-0.154861[-0.230003,-0.097589];only9/444record-risk views
-supported. Original fitting advancement fails;no deployment. A nonintervening
-post-registration coherence diagnostic will accompany numeric verification;
-it cannot change predictions,choices,thresholds or any original gate.
+**Complete, fresh_run:** 36 real Torch cost fits, 208,320 primary updates and
+14,336 full-refit updates. Both first-context full-budget refits are exact.
+All original queries receive at least four sampling visits; none is undrawn.
+Unknown targets never receive supervised cost gradients. This is SOURCE fitting,
+not independent selection, calibration or confirmation.
+
+All 72 policy groups, 149,510 unique targets, 74 recordings and 12 exposed
+localities remain. Known ADE gain over fallback: original parent 7.672120%,
+locked continuation 9.621747%, learned references 10.329562%.
+Learned-minus-locked known effect: **+0.707816 pp [0.238023, 1.192602]**.
+Registered full completion-lower effect: **-2.031363 pp [-4.275018, -0.420831]**.
+Even count-matched lower fails: -0.817503 pp [-1.611754, -0.136574].
+Reference fitting MSE change: -0.154861 [-0.230003, -0.097589], lower in all
+12 localities. Lower MSE does not establish conditional risk calibration.
+
+Only **9/444** original recording-risk views pass. Known all/easy positive-risk
+violations: 317/369 views; selected-easy support undefined in nine. Worst known
+net easy degradation: **17.170690%**, with 22 views above 2%. The uncertainty
+penalty between paired known and lower effects is 2.739179 pp, not observed harm.
+**Fitting advancement fails: 5/8 internal gates pass. No deployment promotion.**
+
+A separate, nonintervening inference diagnostic covers all 36 frozen weights.
+Both arms have inconsistent reference predictions in all 894,975 legal
+multi-action row views. Negative implied candidate ADE increases from 93,505
+to 169,709 of 5,369,850 repeated legal action views. These are cost-moment
+contradictions, not negative measured trajectory errors or proven causes of the
+entire policy effect. Exact-zero R/ER count is zero: that hypothetical limitation
+does not explain this run. Pointwise label-aware witnesses cover 438/444 locked
+and 437/444 learned views; remaining pointwise failures are not joint-infeasibility
+proofs. Oracle witnesses never become model utility or inference inputs.
+
+Training PID15145: 1128.131876s, peak9,747,415,040B. Full readout PID20020:
+1905.292910s, peak10,907,205,632B. Separate numerical verification PID23599:
+147.818049s, peak11,511,250,944B. All72 new-cost inference, frozen actions and
+original-parent scores are exact. Verification does not rerun timed MILP solves.
+The real400-update pilot and actual18-query interruption/recovery probe pass.
+The original eval scope-name error was repaired before any policy group through
+a committed three-name execution erratum; registered scientific files and all
+trained models are unchanged. Thirty fresh focused checks pass in2.58s;
+full repository suite not run. Public reports rebuild with private inputs denied.
+The final fresh-process rebuild takes1.722268s with zero private input reads;
+rendering also succeeds when its output directory does not exist initially.
+
+Both arms use the same warm weights,462 causal fields,normalizers,query draws
+and budgets. Total capacity31,119each;learned references have262additional active
+parameters,not a fully active-capacity-matched control. Old shared-reference
+weights were inspected but require760inputs,not a drop-in replacement.
+Native arm64CPU4/interop1/workers0;no speed-based reduction. CREATE queue access
+was checked read-only successfully;no remote job changed or submitted.
+Three cost seeds share forecaster43. EuropeanSquares oblique detector-silver,
+local-image,obs8/pred12/rawstride12: not independent efficacy,SDDt50,meters,
+seconds,human gold,true3D or foundation. Stage5C/SMC remain off.
+
+[Readout](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/readout.md),
+[measured diagnosis and next control](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/diagnosis_and_next_control.md),
+[model/data card](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/model_data_card.md),
+[reproduction](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/reproduction_zh.md).
 
 ### Necessary Query Easy Support
 

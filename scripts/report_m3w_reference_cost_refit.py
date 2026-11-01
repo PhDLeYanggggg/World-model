@@ -169,7 +169,10 @@ def build():
     summary=json.loads((p/'summary.json').read_text());rebuilt=run.evaluation.summarize(rows,reg['contexts'],cfg)
     rebuilt.update(unique_target_rows=149510,unique_recordings=len(recordings))
     if summary!=rebuilt or len(recordings)!=74:raise ValueError('Full canonical summary differs')
-    return dict(summary=summary,complete=complete,freeze=freeze,replay=replay,bundle=bundle,
+    resource=json.loads((p/'verification_resource.json').read_text())
+    if resource['verification_sha256']!=run.sha(p/'verification.json') or resource['optimization_replayed']:
+        raise ValueError('Verification resource receipt must refer to the same frozen-action replay')
+    return dict(summary=summary,complete=complete,freeze=freeze,replay=replay,bundle=bundle,verification_resource=resource,
         training=stats,refits=refits,auxiliary=supplementary(rows),coherence=coherence,
         locality_diagnostics=locality_diagnostics(rows,summary),
         pilot=json.loads((p/'pilot.json').read_text()))
@@ -249,10 +252,11 @@ def render(v):
         f'Pilot PID{v["pilot"]["pid"]}:{v["pilot"]["seconds"]:.6f}s,peakRSS{v["pilot"]["peak_RSS_bytes"]}B;400actual updates,zero initialization and interruption recovery exact.',
         f'Training PID{v["freeze"]["pid"]}:{v["freeze"]["seconds"]:.6f}s,peakRSS{v["freeze"]["peak_RSS_bytes"]}B.',
         f'Policy readout PID{v["complete"]["pid"]}:{v["complete"]["seconds"]:.6f}s,peakRSS{v["complete"]["peak_RSS_bytes"]}B.',
+        f'Separate verification PID{v["verification_resource"]["pid"]}:{v["verification_resource"]["seconds"]:.6f}s,peakRSS{v["verification_resource"]["peak_RSS_bytes"]}B.',
         f'Complete readout:{aux["query_views"]}repeated query views,{aux["solver_calls"]}solver calls. Phase timers exclude admission.',
-        'Both first-context full-budget refits are exact. Separate72-group verification re-infers costs and scores frozen actions;',
+        'Both first-context full-budget refits are exact. Separate72-group verification re-infers costs and scores frozen actions.',
+        'It does not rerun wall-clock-limited MILP optimization. Actual allocation checkpoint recovery has separate focused tests.',
         'The original evaluation entry failed before runtime_ready with a local runtime-name collision. A committed execution erratum renames only that receipt binding and its two uses;all original scientific files and models remain unchanged.',
-        'it does not rerun wall-clock-limited MILP optimization. Actual allocation checkpoint recovery has separate focused tests.',
         'Solver reason/nonoptimal counts are retained in supplementary_statistics.json;nonoptimal calls keep their feasible independent parent.',
         'Native arm64CPU4/interop1/workers0,checkpoint100/heartbeat50,no resource probing. No reduced roster or speed-based downgrade.','',
         '## Diagnostic Support And Interaction Proxy','',
@@ -282,27 +286,74 @@ def render(v):
             w.writerow([source]+[s['effects']['joint'][b].get('by_locality',{}).get(source,'not_estimable') for b in ('known_pp','lower_pp','upper_pp')])
     run.write(p/'evidence.json',dict(summary_sha256=run.sha(p/'summary.json'),complete_sha256=run.sha(p/'complete.json'),
         training_freeze_sha256=run.sha(p/'training_freeze.json'),verification_sha256=run.sha(p/'verification.json'),
+        coherence_sha256=run.sha(p/'coherence_verification.json'),verification_resource_sha256=run.sha(p/'verification_resource.json'),
         archive_sha256=v['bundle']['archive_sha256'],fresh_cost_training=True,new_trajectory_training=False,
         fitting_advancement=s['fitting_advancement'],independent_confirmation=False,deployment_changed=False,submission_ready=False))
 
 
 def interpretation(v):
     s=v['summary'];p=run.PUBLIC;r=s['safety']['learned_joint'];e=s['effects']['joint'];t=v['auxiliary']['easy_tails']['learned_joint']
+    co={}
+    for arm in run.api.ARMS:
+        ds=[x['diagnostic'] for x in v['coherence']['cells'].values() if x['arm']==arm]
+        co[arm]=dict(legal=sum(d['legal_action_views'] for d in ds),
+            negative_ADE=sum(d['violations']['negative_implied_candidate_ADE']['above1e_12_normalized_action_views'] for d in ds),
+            B_above_R=sum(d['violations']['benefit_exceeds_reference']['above1e_12_normalized_action_views'] for d in ds),
+            multiaction_rows=sum(d['reference_spread']['reference']['rows_with_two_legal_actions'] for d in ds),
+            inconsistent_reference_rows=sum(d['reference_spread']['reference']['rows_with_spread_above1e_12'] for d in ds),
+            zero_R=sum(d['exact_zero_reference_action_views'] for d in ds),
+            zero_ER=sum(d['exact_zero_easy_reference_action_views'] for d in ds))
+    locked,learned=co['locked_references'],co['learned_references']
+    defined=[(source,d) for source,d in v['locality_diagnostics'].items()
+        if d['joint_known_pp'] is not None and d['joint_completion_lower_pp'] is not None]
+    worst=max(defined,key=lambda item:item[1]['joint_known_pp']-item[1]['joint_completion_lower_pp']) if defined else None
     lines=['# Cost Repair: Failure Taxonomy And Interpretation','',
         'This follows the complete registered readout. It does not select a new primary,seed,threshold or recording subset.','',
         '|Question|Measured evidence|Conclusion boundary|','|---|---|---|',
         f'|Sampling coverage repaired?|All36 fits have minimum4query visits and zero undrawn queries|Repairs sampling coverage;wholly unknown labels still provide no supervised gradient. Not a generalization claim.|',
         f'|Reference learning helps the registered decision target?|Known:{interval(e["known_pp"])};completion-lower:{interval(e["lower_pp"])}|Use the lower-CI gate,not the favorable point estimate alone.|',
         f'|Reference prediction improves?|Normalized reference MSE change:{interval(s["reference_MSE_change"])}|Fitting error is not independent calibration;ratio or sign errors may remain.|',
+        f'|Reference-target consistency?|Locked:{locked["inconsistent_reference_rows"]}/{locked["multiaction_rows"]};learned:{learned["inconsistent_reference_rows"]}/{learned["multiaction_rows"]} multi-action row views have differing predicted R|The actual reference target is action-invariant;row-shared scaling has not repaired that structural inconsistency.|',
+        f'|Implied candidate error coherence?|Negative expected ADE from moments:locked{locked["negative_ADE"]}/{locked["legal"]};learned{learned["negative_ADE"]}/{learned["legal"]}|These are cost-model contradictions,not negative measured trajectory errors. They increase despite lower reference MSE;selected-policy causation is not established.|',
+        f'|Benefit-reference ordering?|B>R:locked{locked["B_above_R"]};learned{learned["B_above_R"]} legal action views|The inherited coupled head does not enforce B<=R. Both positive and harm expectations still need representation;netting them away would hide risk.|',
         f'|Original full-policy risk?|Supported {r["supported_record_views"]}/{r["required_record_views"]};undefined easy:{r["undefined_easy_record_views"]};known easy-risk violations:{r["known_easy_risk_violations"]}|No full-policy safety pass from pooled gains or count-matched controls.|',
         f'|Easy accuracy tails?|Worst known degradation:{cell(t["worst_known_easy_degradation_percent"])}%;above2%:{t["known_above2_percent"]}|Do not hide individual recording harm.|',
         '|Capacity attribution|262additional active parameters in the learned arm|Not fully active-capacity matched;the changed branch is not proof of a general architecture contribution.|',
         '|Baseline continuation attribution|Both arms change coverage and continue the old fit with reset optimizers|Cannot isolate coverage alone versus extra updates relative to the historical parent.|',
-        '|Remaining family limits|Multiplicative reference scaling preserves inherited exact zeros and per-action differences|A support or calibration failure can persist despite lower MSE.|',
+        f'|Exact-zero reference explanation?|Locked R/ER zeros:{locked["zero_R"]}/{locked["zero_ER"]};learned:{learned["zero_R"]}/{learned["zero_ER"]}|Multiplicative zero recovery is a theoretical limitation,but not an observed cause in these legal action views.|',
         '|Missing labels|Original conservative bounds and full roster retained|Unknown disagreement is uncertainty,not observed harm or a fabricated zero.|',
         '|Generalization|Exposed SOURCE fitting,one forecast producer|No independent confirmation,cross-dataset success or submission readiness.|','',
         f'Fitting advancement:{s["fitting_advancement"]}. Deployment stays unchanged.','']
     (p/'failure_analysis.md').write_text('\n'.join(lines))
+    details=['# Measured Diagnosis And Next Controlled Test','',
+        'This is post-readout SOURCE diagnosis,not a new primary or a deployment policy. All original outcomes remain frozen.','',
+        '## What Was Repaired','',
+        'All original queries are now sampled at least four times in each of36 actual optimizer fits. No SOURCE query is undrawn.',
+        'All12exposed localities have lower reference fitting MSE in the learned arm. The known-label joint effect is positive with its conditional interval.',
+        'The previous sampler defect and frozen reference learning are therefore addressed operationally;this does not establish independent efficacy.','',
+        '## What Still Fails','',
+        f'Paired full completion-lower effect:{interval(e["lower_pp"])}pp;even count-matched lower:{interval(s["effects"]["matched"]["lower_pp"])}pp.',
+        f'Known-minus-lower uncertainty penalty:{e["known_pp"]["point"]-e["lower_pp"]["point"]:.6f}pp. This is uncertainty about unobserved outcomes,not measured damage.',
+        (f'Largest paired uncertainty penalty:{worst[0]},known{cell(worst[1]["joint_known_pp"])}pp versus lower{cell(worst[1]["joint_completion_lower_pp"])}pp. This is not measured harm.' if worst else 'Source-specific uncertainty is not_estimable.'),
+        f'Actual known all/easy positive-risk violations:{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]} repeated record views. These are distinct from uncertainty.',
+        f'Worst known easy degradation:{t["worst_known_easy_degradation_percent"]:.6f}%;{t["known_above2_percent"]}views exceed2%. The full policy cannot be promoted.',
+        'Normalized benefit and harm fitting MSE do not improve with the reference-only auxiliary objective. All five moment errors are retained in the main table.',
+        f'Candidate-reference inconsistency persists in all{learned["multiaction_rows"]}legal multi-action row views. Negative implied candidate ADE rises from{locked["negative_ADE"]}to{learned["negative_ADE"]}.',
+        'This locates a real model-class limitation,but does not prove it accounts for the entire policy effect. Coherence diagnostics do not use targets or change actions.',
+        'The exact-zero R/ER explanation has no observed support here. Remaining pointwise witness failures are not a proof that query pooling is infeasible.',
+        'Nonoptimal solver queries are few and retain their prespecified feasible parent;counts are public. A different optimization budget was not selected after results.','',
+        '## Next Minimal Discriminating Experiment','',
+        'Test an explicitly causal coherent-cost projection before another larger training run:share R and ER across an agent\'s candidates,',
+        'enforce B<=R and nonnegative implied expected error,retain separate positive benefit/harm and the original envelope bounds.',
+        'Use the same frozen forecasts,features,rows and2%constraints. Compare zero-step projection and unprojected controls on all72SOURCE groups.',
+        'Register the new definition before its own policy outcomes;do not reuse a favorable seed or subset as the new primary.',
+        'A projection changes initialization and decisions:it must not be described as exact old-model reproduction or new neural training.',
+        'If helpful,train the coherent decoder with a matched initialization/coverage budget and a reference-learning control;measure all five costs and actual recording risk.',
+        'If insufficient,inspect selected-query/record risk objectives and outcome-label coverage rather than merely extending the same reference-MSE fit.',
+        'The current SOURCE evidence cannot distinguish all uncertainty/calibration mechanisms. No guaranteed success is predicted.',
+        'No independent labels are opened to rescue this result. Role-compliant producer training,independent calibration/confirmation and contribution baselines remain missing.',
+        'Stage5C and SMC remain disabled. The existing deployment policy is unchanged.','']
+    (p/'diagnosis_and_next_control.md').write_text('\n'.join(details))
     text=['# Publication Gap And Next Experiment','',
         'Completed:actual continuous-cost training,coverage-controlled paired continuation,complete policy/readout,',
         'two exact full-budget refits,conditional paired bootstrap and public scalar reconstruction.','',
@@ -347,6 +398,7 @@ def figure(v):
     fig.suptitle('Exposed SOURCE fitting only: 12 localities; no deployment',fontsize=12)
     dest=run.PUBLIC/'figures';dest.mkdir(exist_ok=True);svg=dest/'reference_cost_readout.svg';fig.savefig(svg)
     svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
+    run.PRIVATE.mkdir(parents=True,exist_ok=True)
     fig.savefig(run.PRIVATE/'reference_cost_readout.png',dpi=150);plt.close(fig)
 
 

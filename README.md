@@ -25,6 +25,43 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I compared 36 warm-started causal cost models with complete-query sampling:
+one arm keeps reference errors fixed, and the other learns them. Both use the
+same 462 causal fields, forecasts, query draws and training budgets. Training
+completed 208,320 optimizer updates, plus two exact full refits. All 72 evaluation
+groups and a separate inference/score replay are complete.
+
+|Known-label ADE gain over the same fallback|Result|
+|---|---:|
+|Original cost model|7.67%|
+|Coverage-complete continuation, fixed references|9.62%|
+|Coverage-complete continuation, learned references|10.33%|
+
+Learning the references adds **0.71 percentage points [95% CI: 0.24, 1.19]** on
+observed labels. However, the registered paired completion-lower effect is
+**-2.03 pp [-4.28, -0.42]**. Only **9/444** original recording-risk views meet the
+unchanged requirements; worst known easy-case degradation is **17.17%**.
+**I have not deployed this model.** Lower reference fitting error has not become
+reliable risk control. The reference arm also has 262 more active parameters,
+so this is not a perfectly active-capacity-matched comparison.
+
+The diagnostic exposes a concrete remaining defect: reference predictions vary
+across candidates for the same agent, and some cost moments imply negative
+candidate errors. These are internal cost-model inconsistencies, not negative
+measured trajectory errors. They motivate a controlled coherent-cost test, not
+another unqualified increase in training duration.
+
+These are exposed EuropeanSquares SOURCE fits, not independent confirmation or
+SDD `t+50` results. Three cost seeds share one forecast producer. Thirty focused
+checks pass; public reports rebuild without reading private inputs. The full
+repository suite was not run. Raw data, caches and weights remain outside Git.
+
+[Complete comparison and figure](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/readout.md),
+[measured diagnosis and next control](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/diagnosis_and_next_control.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_reference_cost_refit_v1/reproduction_zh.md).
+
+### Earlier Routing Actor Study
+
 I trained separate routing actors on top of frozen cost estimates. They retain
 all seven forecast candidates, but learn their own intervention and fallback
 scores without changing the cost head. The controlled comparison uses the
@@ -64,9 +101,8 @@ candidate gate. The original causal bank has label-aware safe witnesses in all
 
 I also reconstructed the frozen training samplers. In the largest sources,
 32.5% to 38.0% of queries never entered an actor gradient batch, although full
-risk monitoring covered them. The next controlled repair must test causal action
-support without the old gain-sign restriction, preserve the 2% risk contract,
-and compare training with guaranteed query coverage. It is not trained yet.
+risk monitoring covered them. That motivated the expanded-support checks and
+coverage-complete cost refit reported above, preserving the 2% risk contract.
 [Complete support diagnosis](outputs/publication_readiness_2026_09/european_frozen_cost_support_v1/readout.md)
 and [failure mechanism and repair requirements](outputs/publication_readiness_2026_09/european_frozen_cost_support_v1/diagnosis_and_repair.md).
 
@@ -82,28 +118,9 @@ while keeping the 2% cost and evaluation budgets unchanged.
 [Query-support result](outputs/publication_readiness_2026_09/european_query_easy_support_v1/readout.md)
 and [what must change next](outputs/publication_readiness_2026_09/european_query_easy_support_v1/diagnosis_and_repair.md).
 
-I am now fitting paired cost models from the same verified old weights. Both use
-source-balanced cyclic sampling with complete query coverage;one keeps reference
-costs fixed,the other learns bounded reference scale updates from causal context.
-The reference-learning arm has262additional active parameters,which I report
-rather than call a perfectly capacity-matched comparison. No trajectory producer
-or deployment is changed while this experiment is incomplete.
-
-The real 400-update pilot has passed: both arms reproduce the old native costs
-at initialization, and interrupted training agrees exactly with direct training.
-Peak pilot memory was 9.65 GB. All 36 complete-query cost fits are now frozen:
-208,320 optimizer updates plus 14,336 exact-refit updates, in 18.8 minutes at
-9.75 GB peak memory. Complete policy evaluation is next; no safety improvement
-or deployment is claimed from training loss alone.
-The first readout entry stopped before evaluation because a local timing name
-shadowed the runtime helper. I recorded a minimal execution erratum before any
-new policy result; the registered study files and all trained weights remain unchanged.
-Full-cohort evaluation is now running through the corrected entry, with the
-original action-allocation budget and checkpoints. Partial source scores are
-not being used to change the model, thresholds or primary comparison.
-The full 72-group readout is complete and awaiting separate score verification.
-Reference fitting error falls, but the registered completion-lower comparison
-and original recording-risk requirements fail. I am not deploying this repair.
+The completed cost refit above addresses sampling coverage and reference
+learning, but does not repair every remaining constraint or uncertainty problem.
+It changes neither the forecast producer nor the existing deployment policy.
 
 ### Completed Decision-Cost Control
 
