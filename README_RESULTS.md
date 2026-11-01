@@ -26,6 +26,8 @@ allocation recovery is exact,maximum49agents. No policy outcomes were scored.
 Initial Torch/Numpy projection difference is1.61e-15causal-scale units.
 The one-context fit projection is8,400.21s,not a completed training duration;
 formal36-head training now runs under PID37642. No speed-based reduction.
+Both complete7,168-update first-context/seed17refits now match their original
+scientific training states exactly. The remaining original heads continue.
 New training is not reported complete or beneficial before its full evaluation.
 Public-scalar report reconstruction,private-input read protection and Chinese
 reproduction commands are implemented. Current focused checks:16passed2.97s;

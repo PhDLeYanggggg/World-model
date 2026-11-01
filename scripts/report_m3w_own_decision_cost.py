@@ -123,6 +123,7 @@ def render(v):
     for name,x in t['totals'].items():
         c=x['selected_query_counts'];lines.append(f'|{name}|{x["fits"]}|{x["updates"]}|{x["training_solver_calls"]}|{cell(x["training_solver_seconds"])}|{c["complete_selected_queries"]}/{c["unknown_selected_queries"]}/{c["empty_selected_queries"]}|')
     lines+=['','The two first-context full refits add14,336updates and match all scientific state exactly,excluding only measured wall times.',
+        'Training solver counts are native solve_frame invocations,including zero-count and feasible-unconstrained shortcuts,not all calls to the MILP backend.',
         'Every query receives at least four gradient sampling visits;none is undrawn. Unknown rows still enter causal context and choices.','',
         '## Registered Primary And Secondary Contrasts','',
         'Primary:own joint minus fixed joint FULL completion-lower utility. Frozen-parent and own-floor lowerCI and all recording risks must also pass.',
