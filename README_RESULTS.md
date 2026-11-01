@@ -18,9 +18,15 @@ never supervised zero. The model's context input remains fixed in both arms.
 The original2%budget,full72groups,149,510targets,74recordings and source roles
 are unchanged. No independent role or deployment is opened.
 
-Before registration,13focused checks pass1.88s;two explicit artifact/registration
-checks wait for their real evidence. The proposed real400-update recovery/resource
-pilot has not yet run. New training is not reported complete or beneficial.
+Before registration,13focused checks pass1.88s. After registration,14pass1.98s;
+one formal-result check remains explicitly skipped. Actual400-update pilot:
+PID36519,41.121026s,peak9,816,473,600B. Both100-update recovered/direct scientific
+states match exactly,excluding measured wall times. Native18-query/402-row
+allocation recovery is exact,maximum49agents. No policy outcomes were scored.
+Initial Torch/Numpy projection difference is1.61e-15causal-scale units.
+The one-context fit projection is8,400.21s,not a completed training duration;
+formal36-head training now runs under PID37642. No speed-based reduction.
+New training is not reported complete or beneficial before its full evaluation.
 [Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
 
 ### Coherent-Cost Projection Control

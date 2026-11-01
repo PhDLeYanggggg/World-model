@@ -31,8 +31,10 @@ I am comparing two equally sized coherent cost models from the same warm
 weights. One learns query-level risk errors on a fixed earlier selection;
 the other learns those errors on its own current, past-only joint decisions.
 Both retain the same pointwise supervision, query coverage and 2% requirements.
-The protocol and primary are frozen before this experiment's outcomes. Actual
-training/recovery and resource measurements come first; no improvement is claimed.
+The protocol and primary are frozen before this experiment's outcomes. The real
+400-update recovery probe has passed at 9.82 GB peak memory, including native
+query allocation recovery. Complete training of all 36 heads is running locally;
+no policy improvement is claimed before the full readout.
 [Protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md).
 
 ### Completed Reference-Consistency Control
