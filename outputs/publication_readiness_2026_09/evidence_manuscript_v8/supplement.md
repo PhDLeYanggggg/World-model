@@ -156,3 +156,34 @@ The data are oblique detector-silver/local-image on obs8/pred12/rawstride12.
 There is no metric,effective-second,human-gold,true-3D,foundation or physical-
 safety claim. No Stage5C execution or SMC is performed. These materials remain
 a working research package until useful independent evidence is established.
+
+## S7. Post-Readout Fixed-Guard Diagnosis
+
+A separately registered label-aware SOURCE diagnostic retains all72groups and
+444recording/context/cost-seed views. It does not change inference,fit a threshold,
+or redefine the primary after seeing its failure. Exact guard-bit probes reproduce
+the seven-action eligibility mask before any outcome-based interpretation.
+
+Among808,680repeated legal known easy action occurrences satisfying both true
+signed-risk inequalities,664,755are rejected by the guard;620,297of these also
+have strictly positive observed benefit. Conversely,75,663known signed-risk-unsafe
+occurrences are admitted across all known rows. These counts repeat actions,
+contexts and seeds;they are not independent samples or deployment confusion rates.
+Observed signed-risk safety does not certify missing outcomes or physical safety.
+
+Twelve views across four unique source/record pairs have positive full known easy
+reference but no guarded known easy action. Their original legal banks contain
+296true safe easy occurrences,208strictly beneficial. Thus a poor guard can remove
+needed denominator anchors despite useful legal forecasts. For six repeated
+views of one small source record,each of the three known easy rows belongs to a
+singleton original target query. The unchanged native allocator cannot recover
+known easy support by pooling a second target in those queries. The other blocked
+views include multi-target queries;pointwise blockage does not prove their joint
+allocation infeasible. Unknown outcomes cannot provide a known denominator for
+this conservative certificate,but need not have zero realized easy reference.
+
+These results motivate two-sided cost repair,not simply stricter filtering or
+better ranking. They do not turn a label-aware witness into a causal model,
+remove the failed primary,or show that missing-outcome bounds caused all errors.
+The matched published-loss comparison remains5/9fitting gates with no deployment
+promotion. No independent role is opened by this diagnosis.

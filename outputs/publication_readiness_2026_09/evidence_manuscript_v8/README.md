@@ -9,8 +9,10 @@ The broader multimodal agent-scene world-model goal remains unproven.
 The source includes the earlier frozen-bank comparisons and the complete
 zero-update coherent-cost control. The own-decision training comparison is now
 complete and numerically verified; its observed gain and failed primary/risk
-requirements are included together. A successful build does not improve that
-scientific status.
+requirements are included together. The completed, capacity-matched ADE versus
+published-deferral comparison is also included with both known and completion-
+lower effects. The working supplement retains the two-sided guard failure
+diagnosis. A successful build does not improve the scientific status.
 
 ## Files
 
@@ -57,7 +59,7 @@ node scripts/build_m3w_typeset_draft.mjs
    Only after inspecting all pages, provide `--visual-reviewed-sha` with that
    exact PDF's SHA256. A stale screenshot or PDF identity is rejected.
 
-The local checked build has seven main-body pages and one additional page for
+The current local checked build has seven main-body pages and one additional page for
 the LLM statement/references. Overfull boxes, font-shape fallbacks, missing
 glyphs, duplicate reference headings and unresolved final-pass references are
 checked. An upstream `lineno.sty` UTF-8 warning is disclosed, not silently removed.

@@ -46,15 +46,24 @@ pass. The registered guarded-loss completion-lower effect is **-6.13 pp
 on observed gain. I retain the stronger raw result as a baseline, not a safe
 replacement or an independent result.
 
-The next diagnostic measures both unsafe actions admitted by the frozen guard
-and genuinely safe actions it rejects. Better ranking alone cannot repair a
-guard that excludes the reference support needed by the risk criterion.
-Seventeen focused checks pass, and public reports rebuild without private input
-reads. This remains exposed SOURCE development, not SDD `t+50` or new dynamics.
+The completed guard diagnostic finds both kinds of error. Across repeated
+candidate/context/seed views, it rejects 664,755 observed safe easy actions
+(620,297 beneficial) while admitting 75,663 observed risk-violating actions.
+These are action occurrences, not independent examples or actual switch counts.
+Twelve recording views have no admitted known easy anchor; six have a
+singleton-query obstruction that the unchanged joint allocator cannot repair.
+The legal bank still contains useful forecasts. Better ranking alone cannot
+repair that eligibility mask, and simply tightening it can lose more support.
+
+Twenty-three focused checks pass. Public reports rebuild from scalar evidence;
+the existing report's private-input-read check remains valid. This remains
+exposed SOURCE development, not SDD `t+50` or new dynamics.
 
 [Complete result](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/readout.md),
 [method source and reuse](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/method_source_and_reuse.md)
 and [reproduction](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/reproduction_zh.md).
+[Guard diagnosis](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/guard_support_readout.md)
+and [earlier repairs that must not be duplicated](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/next_control_reuse.md).
 
 ### Completed Own-Decision Cost Training
 
@@ -95,8 +104,9 @@ and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_
 The [working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
 now includes these comparisons and negative results in the official CVPR2027
 style. It is a research draft, not a submission-ready or independently confirmed
-method. The next comparisons must address selected-risk error and include a
-published deferral baseline matched to the updated forecast bank.
+method. It includes the completed matched published-loss comparison above.
+The next repair must address both unsafe admissions and rejected useful support,
+and differ substantively from the risk-loss controls already tried.
 
 ### Completed Reference-Consistency Control
 

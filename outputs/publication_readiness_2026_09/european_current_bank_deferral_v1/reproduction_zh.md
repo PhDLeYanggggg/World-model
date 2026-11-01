@@ -42,13 +42,32 @@ export VECLIB_MAXIMUM_THREADS=4
   tests/test_m3w_current_bank_deferral.py \
   tests/test_m3w_current_bank_deferral_evidence.py \
   tests/test_m3w_current_bank_public.py \
-  tests/test_m3w_regression_deferral.py
+  tests/test_m3w_regression_deferral.py \
+  tests/test_m3w_current_guard_support.py \
+  tests/test_m3w_current_guard_public.py
 ```
 
 公开重建会在导入报告前禁止 Python 的项目私有输入读取，允许写出本地结果图。
 这不是操作系统隔离，也不是重新训练或独立科学复现。完整结果未产生时，相应产物检查
 明确 skip，不视为通过。`verification.json` 记录的是完整分数推断和动作计分复核，
 不是新运行整数求解；本实验没有用 deferral logit 冒充原生 ADE 效用。
+
+## 固定筛选规则的失败取证
+
+完整评价后的诊断单独注册，并保留原 72 组和 444 个重复录像视图。
+本轮已经完成，拒绝覆盖；不应直接重启它。诊断使用真实标签解释错放和错拒，
+这些标签从未进入推断筛选。只重建公开标量报告可运行：
+
+```sh
+.venv-pytorch/bin/python scripts/report_m3w_current_guard_support.py
+```
+
+`guard_support_diagnostic.json` 是新计算的诊断产物，`guard_support_statistics.json`
+和 `guard_support_readout.md` 是从它重建的轻量汇总。12 个重复视图没有筛选后
+已知 easy 参考支持，其中 6 个存在原始单目标查询结构下的支持阻塞。这不等于
+原候选库没有好预测，也不等于整个多智能体世界没有邻居。错放和错拒均需修复。
+后续修复必须与已有风险残差、低估惩罚、未知端点监督及 own-choice 对照区分，
+不能重命名重复实验，不能使用 oracle 筛选部署。完整实验仍是 5/9 gates，未部署。
 
 ## 评价与计算位置
 

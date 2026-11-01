@@ -13,8 +13,9 @@ and negative results. It now builds in the official CVPR2027 two-column style:
 seven main-body pages plus one LLM statement/reference page, all eight visually
 checked. Source and exact-PDF layout receipts are recorded; the official style,
 PDF and page images remain private. This is typesetting progress, not independent
-scientific confirmation or submission readiness. The complete own-decision
-cost-training comparison and all its failed risk/primary gates are included.
+scientific confirmation or submission readiness. The complete own-decision and
+matched published-loss comparisons, including their failed primary/risk gates,
+are included. The working supplement now records the post-readout guard diagnosis.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
@@ -55,9 +56,24 @@ Readout:PID55021,157.690834s,peak11,552,129,024B. Verification:PID56375,
 159.077315s,peak11,527,356,416B;all72new scores/actions and original full/record
 controls exact. Public rebuild:PID57809,2.619380s,zero private input reads.
 Seventeen focused checks pass3.21s,no skips;full repository suite not run.
-Plot visually checked. A separately registered post-readout diagnostic now
-checks false acceptance and false rejection by the fixed guard;no new policy,
-threshold,training or primary change. Its counts are not_run yet.
+Plot visually checked. The separately registered post-readout diagnostic is now
+complete: PID58218,102.577865s,peak11,423,350,784B,all72groups/444record views.
+The fixed guard rejects664,755of808,680true signed-risk-safe known easy action
+occurrences;620,297rejected occurrences are strictly beneficial. It admits75,663
+known signed-risk-unsafe occurrences across all known rows. These repeat
+candidates/contexts/seeds and are not independent examples or chosen actions.
+Twelve views across four unique source/record pairs have no admitted known easy
+reference;their legal banks retain296safe easy occurrences,208beneficial. Six
+views have singleton original target queries and an exact native-joint known-
+support obstruction. Pointwise blockage does not prove the other six joint
+queries infeasible. No new policy,threshold,training or primary change.
+Twenty-three scoped checks now pass3.74s,no skips;full repository suite not run.
+The earlier17-check completion test above remains valid and is superseded by
+this combined test record,not reinterpreted as a policy gate. Historical
+signed-risk/underprediction/completion-proxy losses were checked before proposing
+another fit;their negative results remain negative.
+[Fresh guard readout](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/guard_support_readout.md),
+[prior-control reuse](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/next_control_reuse.md).
 No speed-based reduction. The working-paper technical supplement now specifies
 the current losses,partial-label estimand,completion bounds and support limits.
 Eleven pre-registration focused checks pass1.92s;two artifact checks skipped.

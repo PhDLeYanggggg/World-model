@@ -381,9 +381,27 @@ All 36 heads finish 208,320 primary updates, plus 14,336 full-refit updates. Ori
 
 Paired completion bounds use disagreement between policies on unknown outcomes. Subtracting individual lower-bound scores is not the paired lower effect. Missing-label uncertainty is not observed harm.
 
+\subsection{Matched Published-Loss Control}
+We rebind the logistic multi-expert deferral loss of Mao et al. \cite{ref3} to the same updated bank and SOURCE roster. The control predicts normalized partial ADE with softplus regression; the comparator uses continuous expert costs in the published logistic surrogate, not one-hot best-expert labels. Both new score models share 30,726 active parameters, warm encoder, zero outputs, causal inputs, full cyclic draws and budgets. Their output architecture differs from the preceding 31,119-parameter critic. Unavailable actions are tied to the floor. A separate frozen own-choice critic supplies the same two pointwise 2\% risk rules; no threshold is fitted.
+
+All 36 fits, two complete refits and 72-group score/action replay finish. Raw known-label ADE gain rises from 19.64\% to 25.21\%; guarded gain rises from 10.87\% to 11.89\%. The registered primary is the guarded completion-lower contrast, not the larger raw mean.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}XXX@{}}\toprule
+Published-loss contrast & Known utility, pp [95\% CI] & Completion-lower, pp [95\% CI] \\
+\midrule
+Raw deferral minus ADE, secondary & 5.57 [4.37, 6.65] & -11.04 [-33.95, 1.55] \\
+Guarded deferral minus ADE, primary & 1.02 [0.60, 1.54] & -6.13 [-17.31, 0.02] \\
+\bottomrule
+\end{tabularx}
+\caption{Matched published-loss comparison on the updated bank. Paired locality intervals are conditional SOURCE development evidence. The raw secondary gain does not rescue the failed guarded primary or certify risk.}
+\end{table*}
+The loss improves observed routing but fails the primary. Only 18/444 guarded recording-risk views pass; 87/206 known all/easy violations remain. Worst known easy degradation is 95.99\% raw and 4.09\% guarded. Guarded deferral also trails frozen own-joint on known gain. This adapted published baseline is not a new dynamics contribution or a safe replacement. The guard rejects useful as well as harmful choices; its utility loss alone does not prove inappropriate filtering. Full loss definitions and post-readout support diagnostics are retained in the supplement.
+
 \begin{figure*}[t]\centering
 \includegraphics[width=\textwidth]{cost_evidence.pdf}
-\caption{Complete exposed SOURCE cost evidence. Left: known-label gain over the same floor. Right: the paired known and completion-lower contrast. The current own-versus-fixed training comparison is shown. Intervals are conditional SOURCE fitting evidence, not independent confirmation or recording-risk certification.}\end{figure*}
+\caption{Complete exposed SOURCE cost evidence. Left: known-label gain over the same floor. Right: the paired known and completion-lower contrast. The own-versus-fixed training comparison is shown, not the later published-loss control. Intervals are conditional SOURCE fitting evidence, not independent confirmation or recording-risk certification.}\end{figure*}
 \section{Failure Analysis and Limitations}
 Available forecasts are not the same as causally identifiable good choices.
 A label-aware oracle uses outcomes unavailable at inference. Conditional
@@ -407,7 +425,7 @@ rate/conflict comparisons, independent-domain evidence and a successful causal
 mechanism are still missing. This revision is useful research material but
 does not satisfy the project's submission-readiness or world-model success gates.
 
-The later coherent-cost controls above separate structural consistency from policy quality. Projection alone worsens utility. Training against current decisions instead improves observed-label routing, yet the registered completion-lower effect and original recording risks still fail. The remaining errors involve both observed harm and missing-outcome uncertainty. Next controls must match the published deferral loss to the updated bank and distinguish conservative selected-risk learning from more average-error fitting. No independent outcomes are opened to choose these repairs.
+The later controls separate structural consistency, observed ranking and policy risk. Projection alone worsens utility; own-choice training and a matched published deferral loss improve observed routing, yet completion-lower and original recording-risk requirements fail. Remaining errors include both observed harm and missing-outcome uncertainty. The next repair must distinguish unsafe admissions from false rejections by the cost guard, rather than only fit average error or tighten every threshold. No independent outcomes are opened to choose these repairs.
 
 \section{Reproducibility and Responsible Reporting}
 Each real run records native arm64Torch CPU threads, single-process loading,
