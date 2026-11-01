@@ -24,15 +24,21 @@ env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
   .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit.py train
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
-  .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit.py eval
+  .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit_readout.py eval
 env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
-  .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit.py verify
+  .venv-pytorch/bin/python scripts/run_m3w_reference_cost_refit_readout.py verify
 ```
 
 这些训练命令需要原始私有素材、已核验旧权重与冻结上游结果，不是纯Git冷启动复现。
 已完成的pilot、training freeze及readout不可覆盖；不要重复启动。
 真实中断时在相同phase后加 `--resume`，不能另起不同预算冒充恢复。
 过程锁避免重复训练。首先检查PID和私有心跳，不因观察失败而重启。
+
+原评价入口在计时变量处存在Python局部作用域错误，首次评价在runtime_ready前
+失败，尚未产生任何新策略组。原注册、科学文件与36组权重均保留不变。
+修复入口只在内存中的原评价语法树上重命名1处局部绑定及2处引用；反向改名
+必须逐节点恢复原语法树。`execution_erratum.json`记录前瞻冻结的补丁和哈希。
+算法、预算、loss、标签、阈值、原注册和模型未改动；不是重新选择实验。
 
 私有日志和checkpoint在 `data/stage_cvpr2027_experiments/european_reference_cost_refit_v1/`。
 公开注册、每模型收据、训练冻结、72组标量压缩包和最终摘要在本说明同目录。
@@ -51,7 +57,8 @@ env OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4 \
   .venv-pytorch/bin/python -m pytest -q \
   tests/test_m3w_reference_cost_refit.py \
   tests/test_m3w_refit_cost_allocation.py \
-  tests/test_m3w_reference_cost_evidence.py
+  tests/test_m3w_reference_cost_evidence.py \
+  tests/test_m3w_reference_runtime_erratum.py
 ```
 
 报告从公开标量收据重建，不读私有数据或权重；私有PNG仅用于图形检查。

@@ -97,7 +97,7 @@ def test_no_pair_support_remains_undefined_not_observed_zero():
     def row(n,value):
         return dict(result=dict(pair_proxy=dict(pair_requested_step_views=n,
             mean_positive_distance_contraction_over_frozen_scale={a:value for a in run.evaluation.NAMES}),
-            recordings={},record_tails={},allocation=dict(queries=1,solver_calls=0),
+            recordings={},record_tails={},allocation=dict(queries=1,solver_calls=0,nonoptimal={},reason_counts={}),
             pointwise_diagnostic={a:dict(supports={}) for a in run.api.ARMS}))
     empty=row(0,None);positive=row(3,2.)
     assert report.supplementary([empty])['pair_and_tail']['learned_joint']['pair_contraction_proxy'] is None

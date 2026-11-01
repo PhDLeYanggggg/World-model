@@ -25,6 +25,11 @@ exact. All36 formal cost fits are frozen:fresh_run,208,320primary updates plus
 14,336exact-full-refit updates,1128.131876s,peak9,747,415,040B. Every query has
 at least4sampling visits;none is undrawn. Full72-group policy evaluation follows
 the complete model freeze. No deployment or independent role changes.
+The original eval entry fails before runtime_ready due to a local timing-variable
+collision,with zero new policy groups. The committed execution erratum only
+renames three receipt-variable occurrences in the evaluation AST;inverse rename
+exactly restores the original AST. Models,registration and scientific files remain
+unchanged. Two focused regression checks pass1.26s before repaired execution.
 
 ### Necessary Query Easy Support
 

@@ -95,6 +95,9 @@ Peak pilot memory was 9.65 GB. All 36 complete-query cost fits are now frozen:
 208,320 optimizer updates plus 14,336 exact-refit updates, in 18.8 minutes at
 9.75 GB peak memory. Complete policy evaluation is next; no safety improvement
 or deployment is claimed from training loss alone.
+The first readout entry stopped before evaluation because a local timing name
+shadowed the runtime helper. I recorded a minimal execution erratum before any
+new policy result; the registered study files and all trained weights remain unchanged.
 
 ### Completed Decision-Cost Control
 

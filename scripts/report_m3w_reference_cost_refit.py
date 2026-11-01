@@ -46,7 +46,7 @@ def training_statistics(fits):
 
 
 def supplementary(rows):
-    tails={};pair={};support={}
+    tails={};pair={};support={};reasons={};nonoptimal={}
     total_pairs=sum(r['result']['pair_proxy']['pair_requested_step_views'] for r in rows)
     for arm in run.evaluation.NAMES:
         values=[v[arm] for r in rows for v in r['result']['recordings'].values()]
@@ -74,10 +74,16 @@ def supplementary(rows):
                 dest=counts.setdefault(name,{k:0 for k in ('allowed_action_occurrences','supported_record_views','positive_record_views')})
                 for k in dest:dest[k]+=metrics[k]
         support[arm]=counts
+    for row in rows:
+        for arm,n in row['result']['allocation']['nonoptimal'].items():nonoptimal[arm]=nonoptimal.get(arm,0)+n
+        for arm,values in row['result']['allocation']['reason_counts'].items():
+            dest=reasons.setdefault(arm,{})
+            for reason,n in values.items():dest[reason]=dest.get(reason,0)+n
     return dict(easy_tails=tails,pair_and_tail=pair,pointwise_label_aware_diagnostic=support,
         query_views=sum(r['result']['allocation']['queries'] for r in rows),
         solver_calls=sum(r['result']['allocation']['solver_calls'] for r in rows),
         repeated_pair_requested_step_views=total_pairs,
+        solver_reason_counts=reasons,nonoptimal_solver_queries=nonoptimal,
         oracle_diagnostic_not_model_gain=True,proxy_not_physical_safety=True)
 
 
@@ -85,6 +91,12 @@ def build():
     p=run.PUBLIC;reg=json.loads(run.REG.read_text());cfg=json.loads(run.CONFIG.read_text())
     for rel,digest in reg['bindings'].items():
         if run.sha(ROOT/rel)!=digest:raise ValueError('Registered scientific definition changed')
+    from scripts.run_m3w_reference_cost_refit_readout import corrected_evaluation
+    erratum=json.loads((p/'execution_erratum.json').read_text())
+    if (erratum['binding']!=corrected_evaluation()[1] or erratum['new_policy_groups_created_before_fix']!=0
+            or not erratum['registered_before_own_policy_outcomes']
+            or erratum['training_freeze_sha256']!=run.sha(p/'training_freeze.json')):
+        raise ValueError('Only the pre-outcome scope-name erratum is allowed')
     freeze=json.loads((p/'training_freeze.json').read_text());fits=[]
     for ref in freeze['fits']:
         if run.sha(ROOT/ref['path'])!=ref['sha256']:raise ValueError('Original fit receipt changed')
@@ -187,7 +199,9 @@ def render(v):
         f'Policy readout PID{v["complete"]["pid"]}:{v["complete"]["seconds"]:.6f}s,peakRSS{v["complete"]["peak_RSS_bytes"]}B.',
         f'Complete readout:{aux["query_views"]}repeated query views,{aux["solver_calls"]}solver calls. Phase timers exclude admission.',
         'Both first-context full-budget refits are exact. Separate72-group verification re-infers costs and scores frozen actions;',
+        'The original evaluation entry failed before runtime_ready with a local runtime-name collision. A committed execution erratum renames only that receipt binding and its two uses;all original scientific files and models remain unchanged.',
         'it does not rerun wall-clock-limited MILP optimization. Actual allocation checkpoint recovery has separate focused tests.',
+        'Solver reason/nonoptimal counts are retained in supplementary_statistics.json;nonoptimal calls keep their feasible independent parent.',
         'Native arm64CPU4/interop1/workers0,checkpoint100/heartbeat50,no resource probing. No reduced roster or speed-based downgrade.','',
         '## Diagnostic Support And Interaction Proxy','',
         'Pointwise label-aware support counts are saved in supplementary_statistics.json. They use labels for diagnosis,not inference or real utility.',
