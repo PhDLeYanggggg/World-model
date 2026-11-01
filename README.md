@@ -25,6 +25,15 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Current Comparison: A Matched Published Deferral Baseline
+
+I have registered a comparison between expected-ADE regression and the published
+multi-expert logistic-deferral loss on the updated forecast bank. Both share the
+same causal inputs, initialization, query draws and full training budget. Raw
+and frozen-risk-guarded decisions will both be reported. This comparison has
+not yet trained or produced policy results; it does not change deployment.
+[Protocol](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/protocol.md).
+
 ### Completed Own-Decision Cost Training
 
 I trained 36 equally sized coherent cost models from matched warm weights.

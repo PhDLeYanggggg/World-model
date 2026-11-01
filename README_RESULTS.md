@@ -18,6 +18,19 @@ cost-training comparison and all its failed risk/primary gates are included.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Current-Bank Published Deferral Comparison
+
+Prospective comparison of expected-ADE regression and the existing ICML2024
+logistic-deferral loss adapter on the exact updated forecast bank. Both arms
+share30,726active parameters,warm encoder,zero output initialization,462causal
+fields,query context,cyclic complete draws and208,320primary update budget.
+Capacity differs from the earlier31,119parameter critic;this is disclosed.
+Raw and frozen-risk-guarded policies are both required. No threshold tuning,
+new trajectory training or independent outcome access. Original2%recording
+requirements and full72groups remain. Status:registered;training not_run.
+Eleven pre-registration focused checks pass1.92s;two artifact checks skipped.
+[Protocol](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/protocol.md).
+
 ### Own-Decision Coherent Cost Training
 
 Registered before its own results. Both arms use the same learned-reference
