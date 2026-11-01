@@ -9,6 +9,35 @@ or evidence status.
 
 ### Separate Free Allocation Actors
 
+**Complete result,fresh_run:**36 real Torch actors/72,000primary updates plus
+4,000exact full-refit updates. Complete72-group evaluation PID92815 exits0:
+1315.919043s,peak10,599,104,512B. Separate frozen-action inference/score check
+PID95491 exits0:192.467144s,peak12,583,337,984B;all72groups/old controls exact.
+This verifier does not reoptimize MILPs. All149,510unique targets,74recordings,
+112,596query views and897,060row views remain;repeated views are not independent.
+
+Known ADE gain7.672120%->6.260934%;paired-1.411186pp [-2.122265,-0.760321].
+Registered completion-lower contrast-5.286748pp [-8.559925,-2.709728] fails.
+Own floor lower5.596602pp [2.945272,9.388861] cannot substitute for the primary.
+Only24/444original record-risk views pass;293known easy-risk violations and
+26undefined selected-easy views remain. Worst known easy degradation26.477426%
+->7.731198%,seven views still above2%. Pooled known hard9.372667%->6.507889%;
+easy4.648667%->9.746591%. Known benefit delta-1.771448pp,harm delta-0.360262pp.
+Paired unknown disagreement penalty3.875563pp is uncertainty,not observed harm.
+
+Selected joint-minus-independent lower+0.542908pp [0.196552,0.951486] is positive;
+selected-minus-self matched lower-0.056640pp [-0.186401,0.083809] is not supported.
+All original cost predictions remain byte-identical. Final expected recording
+constraints remain positive:1282/1332self,1270/1332selected. No safety certificate.
+6/8fitting checks pass,but the primary and original risk fail:advancement false.
+Forty-four fresh focused checks pass in2.59s;full repository suite not run.
+Fresh-process public-only complete report/figure rebuild passes in1.661758s,
+zero private-input read attempts. One report-only empty-pair-support aggregation
+bug was fixed with a regression test;no frozen scientific definition changed.
+No deployment,independent-role opening,Stage5C,SMC or submission-ready claim.
+
+**Execution history:**
+
 New prospective experiment:freeze18continuous regression critics and the full
 seven-forecast bank;train36small allocation actors across self/selected-query
 context arms. Each has133causal representation fields and4,321parameters.

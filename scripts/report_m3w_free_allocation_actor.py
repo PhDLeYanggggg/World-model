@@ -71,6 +71,27 @@ def tails_and_accounting(rows,summary):
         descriptive_not_causal_attribution=True)
 
 
+def supplementary_statistics(rows):
+    pairs=sum(r['result']['pair_proxy']['pair_requested_step_views'] for r in rows)
+    output=dict(query_views=sum(r['result']['allocation']['queries'] for r in rows),
+        row_views=sum(sum(r['result']['policies']['zero_joint']['action_counts'].values()) for r in rows),
+        pair_requested_step_views=pairs,pair_contraction_proxy={},maximum_record_p95={})
+    for arm in run.evaluation.NAMES:
+        weighted=[]
+        for row in rows:
+            proxy=row['result']['pair_proxy'];count=proxy['pair_requested_step_views']
+            if count:
+                value=proxy['mean_positive_distance_contraction_over_frozen_scale'][arm]
+                if value is None:raise ValueError('Positive pair support requires an observed proxy')
+                weighted.append(count*value)
+        output['pair_contraction_proxy'][arm]=sum(weighted)/pairs if pairs else None
+        p95=[x[arm]['p95'] for r in rows for x in r['result']['record_tails'].values() if x[arm]['p95'] is not None]
+        output['maximum_record_p95'][arm]=max(p95) if p95 else None
+    output.update(repeated_views_not_independent_samples=True,physical_safety_certificate=False,
+        p95_is_maximum_record_statistic_not_pooled_percentile=True)
+    return output
+
+
 def build():
     p=run.PUBLIC;reg=json.loads(run.REG.read_text())
     for rel,digest in reg['bindings'].items():
@@ -115,8 +136,10 @@ def build():
     if not all(v['scientific_state_exact'] and v['updates']==2000 for v in refits.values()):
         raise ValueError('Both complete full-refit controls required')
     tails,accounting=tails_and_accounting(rows,summary)
+    for arm in stats['arms'].values():arm['required_expected_record_constraints']=3*summary['safety']['selected_joint']['required_record_views']
+    auxiliary=supplementary_statistics(rows)
     return dict(summary=summary,complete=complete,freeze=freeze,replay=replay,bundle=bundle,
-        fit_stats=stats,tails=tails,accounting=accounting,refits=refits,
+        fit_stats=stats,tails=tails,accounting=accounting,refits=refits,auxiliary=auxiliary,
         pilot=json.loads((p/'pilot.json').read_text()),decoder_pilot=json.loads((p/'decoder_pilot.json').read_text()))
 
 
@@ -127,9 +150,64 @@ def interval(v):
     return 'not_estimable' if v['CI95'] is None else f'{v["point"]:+.6f} [{v["CI95"][0]:+.6f},{v["CI95"][1]:+.6f}]'
 
 
+def interpretation(v):
+    p=run.PUBLIC;s=v['summary'];risk=s['safety']['selected_joint']
+    effect=s['contrasts']['selected_minus_zero']['joint'];context=s['contrasts']['selected_minus_self']['matched']
+    stats=v['fit_stats'];a=v['accounting'];tail=v['tails']['selected_joint']
+    lines=['# Failure Taxonomy And Evidence Limits','',
+        'This analysis follows the complete registered result. It does not change the primary,select a different arm,or retune thresholds.','',
+        '|Question|Measured evidence|Interpretation|','|---|---|---|',
+        '|Old bounded policy expressibility|Separate unbounded actor,all7candidates and exact zero initialization verified|The previous bounded-family obstruction is removed as an architectural restriction,not proven solved statistically.|',
+        f'|Optimization of soft constraints|Self positive record constraints:{stats["arms"]["self_context"]["positive_expected_record_constraints"]};selected:{stats["arms"]["selected_context"]["positive_expected_record_constraints"]}|Whole-record monitoring,not stochastic sampled-only signs;any positive count is unfinished surrogate feasibility.|',
+        f'|Hard policy utility|Known:{interval(effect["known_pp"])};completion-lower:{interval(effect["lower_pp"])}|Primary requires the lower interval endpoint above0;observed gain alone is insufficient.|',
+        f'|Context contribution|Selected-minus-self matched lower:{interval(context["lower_pp"])}|Count-matched utility control only;does not establish full-policy safety or independent efficacy.|',
+        f'|Full recording safety|Supported:{risk["supported_record_views"]}/{risk["required_record_views"]};known easy-risk violations:{risk["known_easy_risk_violations"]};undefined selected easy:{risk["undefined_easy_record_views"]}|Predicted query budgets do not imply actual recording-level2%control.|',
+        f'|Easy tails|Worst known easy degradation:{cell(tail["known_max_degradation_percent"])}%;views above2%:{tail["known_above2_percent"]}|Pooled easy accuracy must not hide individual-record harm.|',
+        f'|Missing outcomes|Paired known-minus-lower penalty:{a["unknown_disagreement_penalty_pp"]:.6f}pp|Disagreement on unobserved outcomes creates uncertainty,not observed harm;missing interior labels remain unresolved.|',
+        '|Cost calibration|Old per-row moment hashes unchanged in all72groups|Actor learning cannot be credited with improving these moments. Frozen mistakes can still constrain decisions.|',
+        '|Generalization|Only exposed SOURCE fitting outcomes;one forecast producer|No independent/cross-dataset conclusion from these intervals.|','',
+        'These measurements locate failures in optimization,soft/hard transfer,predicted-versus-actual risk and label support.',
+        'They do not by themselves causally attribute failure to model capacity,scene representation or training duration.',
+        'A controlled next experiment is needed to distinguish those explanations;more epochs are not justified solely by an unmet gate.','',
+        f'Fitting advancement:{s["fitting_advancement_gate"]}. Deployment remains unchanged,including if an exploratory secondary contrast is favorable.','']
+    (p/'failure_analysis.md').write_text('\n'.join(lines))
+    result=['# Paper Results Component','',
+        f'With a fixed seven-forecast bank and18 frozen cost critics,we fitted36 allocation actors across two matched context arms.',
+        f'Each actor received2,000updates;two complete refits were exact. Across72 repeated SOURCE views,the registered selected-context joint versus native joint known contrast was {interval(effect["known_pp"])}pp,',
+        f'whereas the completion-lower contrast was {interval(effect["lower_pp"])}pp.',
+        f'The selected-context full policy supported {risk["supported_record_views"]}/{risk["required_record_views"]} original recording-risk views.',
+        f'Its worst known recording-level easy degradation was {cell(tail["known_max_degradation_percent"])}%.',
+        'These are nominal,conditional locality-bootstrap intervals on exposed fitting sources,not independent test evidence.',
+        'The study tests routing/cost separation,not fresh neural trajectory training. No deployment or submission-ready claim follows.','']
+    (p/'paper_results_component.md').write_text('\n'.join(result))
+    gap=['# Publication Gap','',
+        f'The current SOURCE fitting advancement gate is {s["fitting_advancement_gate"]}. The full result is retained,not promoted by secondary gains.','',
+        '## Present Evidence','',
+        'Real36-head Torch training,two exact full refits,actual decoder interruption recovery,complete72-group hard readout,',
+        'separate frozen-action inference/scoring checks,matched-capacity controls,3,000paired locality bootstrap draws and public scalar report regeneration.','',
+        '## Still Missing','',
+        'A supported primary method effect under every original recording-risk requirement;genuinely independent model selection/calibration/confirmation;',
+        'role-compliant whole-pipeline fitting for all learned producers;three full forecaster seeds if a forecasting-seed claim is made;',
+        'matched strong deferral/decision-focused baselines;proven scene/interaction contribution rather than proxy movement;',
+        'adequate observation/endpoint support;complete anonymous from-scratch reproduction,full paper,supplement and independently checked claims.','',
+        'The method description/results component is not a completed paper. Independent data are not opened merely to rescue a SOURCE result.',
+        'The2%risk contract is unchanged. Missing outcomes must not be filled by fabricated zeros,earlier endpoints or oracle inputs.',
+        'EuropeanSquares local-image/raw-frame detector-silver results are not metric,seconds,true3D,foundation or SDDt50.',
+        'Stage5C/SMC remain off. Not yet a CCF-A submission candidate.','']
+    (p/'publication_gap.md').write_text('\n'.join(gap))
+    next_lines=['# Next Evidence-Producing Step','',
+        'Preserve this registration,all72groups and both arms. Do not select a new primary,seed or threshold from these outcomes.','',
+        'If the primary or original risk fails:inspect legal action support and predicted-versus-actual risk by recording,including missing-label bounds.',
+        'Distinguish lack of feasible beneficial actions from actor optimization failure and soft-to-hard mismatch before another training budget.',
+        'Use SOURCE-only diagnostic oracle calculations as diagnostics,never inference inputs or real model results.',
+        'If the SOURCE fitting gate passes:freeze the complete learned pipeline and preregister independent role usage before confirmation.',
+        'No independent labels,held data,Stage5C or SMC are opened by this report. A report or engineering pass cannot replace method validation.','']
+    (p/'next_steps.md').write_text('\n'.join(next_lines))
+
+
 def render(v):
     p=run.PUBLIC;s=v['summary'];primary=s['contrasts']['selected_minus_zero']['joint']
-    for name,key in (('training_statistics','fit_stats'),('easy_tail_description','tails'),('descriptive_accounting','accounting')):
+    for name,key in (('training_statistics','fit_stats'),('easy_tail_description','tails'),('descriptive_accounting','accounting'),('supplementary_statistics','auxiliary')):
         run.write(p/(name+'.json'),v[key])
     lines=['# Free Allocation Actors: Complete SOURCE Readout','','## Material Passport','',
         'fresh_run:36 real Torch actors,72,000 primary updates,4,000 exact-refit updates and complete72-group hard allocation/readout.',
@@ -147,10 +225,10 @@ def render(v):
         for mode,e in modes.items():lines.append(f'|{name}|{mode}|{interval(e["known_pp"])}|{interval(e["lower_pp"])}|{interval(e["upper_pp"])}|')
     e=s['selected_minus_legacy'];lines.append(f'|selected_minus_legacy_decision_v1|joint|{interval(e["known_pp"])}|{interval(e["lower_pp"])}|{interval(e["upper_pp"])}|')
     lines+=['','Count-matched controls test utility only. Empty comparisons remain not_estimable,not safe0.','',
-        '|Policy|Known ADE gain over floor (%)|Own completion-lower pp|Original record risk supported|Known easy-risk violations|Undefined selected easy|Selected/unknown views|',
-        '|---|---:|---:|---:|---:|---:|---:|']
+        '|Policy|Known ADE gain over floor (%)|Known FDE gain (%)|Own completion-lower pp|Original record risk supported|Known easy-risk violations|Undefined selected easy|Selected/unknown views|',
+        '|---|---:|---:|---:|---:|---:|---:|---:|']
     for arm in run.evaluation.NAMES:
-        r=s['safety'][arm];lines.append(f'|{arm}|{interval(s["accuracy"][arm])}|{interval(s["floor_lower"][arm])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{r["selected"]}/{r["selected_unknown"]}|')
+        r=s['safety'][arm];lines.append(f'|{arm}|{interval(s["accuracy"][arm])}|{interval(s["FDE"][arm])}|{interval(s["floor_lower"][arm])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{r["selected"]}/{r["selected_unknown"]}|')
     lines+=['','## Joint Versus Independent','','|Actor|Known pp|Completion-lower pp|Completion-upper pp|','|---|---:|---:|---:|']
     for arm,e in s['joint_effects'].items():lines.append(f'|{arm}|{interval(e["known_pp"])}|{interval(e["lower_pp"])}|{interval(e["upper_pp"])}|')
     lines+=['','## Easy Recording Tails','','|Policy|Known easy defined|Worst known degradation (%)|Known views above2%|Worst completion-upper bound (%)|',
@@ -173,6 +251,14 @@ def render(v):
         'That verification does not rerun the wall-clock-limited optimizer. Actual18-query interruption/recovery was separately tested.',
         'Training losses contain changing duals and are not calibrated risk certificates or cross-update comparable objectives.',
         'Native arm64 CPU4/interop1/workers0,checkpoint100/heartbeat50;no speed-based budget reduction.','',
+        '## Supplementary Interaction And Error Tails','',
+        'Pair contraction is a causal diagnostic over query targets only,not a collision or physical-safety certificate.',
+        'The weighted mean repeats the original views;the maximum record p95 is not a pooled95th percentile.','',
+        '|Policy|Mean pair contraction/frozen scale|Maximum recording p95 ADE (local image units)|',
+        '|---|---:|---:|']
+    for arm in ('zero_joint','self_joint','selected_joint','decision_v1_joint','floor'):
+        lines.append(f'|{arm}|{cell(v["auxiliary"]["pair_contraction_proxy"][arm])}|{cell(v["auxiliary"]["maximum_record_p95"][arm])}|')
+    lines+=['',
         '## Fitting Gates','']
     lines += [f'- {k}: {"pass" if value else "fail"}' for k,value in s['fitting_gates'].items()]
     lines+=['',f'Fitting advancement:{s["fitting_advancement_gate"]}.',
@@ -222,6 +308,6 @@ def figure(v):
 
 
 if __name__=='__main__':
-    value=build();render(value);figure(value)
+    value=build();render(value);interpretation(value);figure(value)
     print(json.dumps(dict(groups=value['summary']['groups'],fits=value['fit_stats']['complete_fits'],
         primary=value['summary']['contrasts']['selected_minus_zero']['joint']['lower_pp'],advancement=value['summary']['fitting_advancement_gate'])))

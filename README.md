@@ -25,23 +25,38 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-I am testing separate routing actors on top of frozen cost estimates. They retain
+I trained separate routing actors on top of frozen cost estimates. They retain
 all seven forecast candidates, but learn their own intervention and fallback
 scores without changing the cost head. The controlled comparison uses the
 agent's own representation versus the selected query's representation, with
 matched capacity, training draws and budgets. Both retain the original 2% cost
-constraints. The real pilot verifies exact checkpoint recovery and the original
-zero-actor choices. All 36 heads now finish the registered training budget, with
-exact full refits for both context arms. Peak training memory is 12.37 GB. A real
-joint-decoder probe also verifies recovery, and the full 72-group evaluation is
-running locally. Predictive and safety results are not complete yet.
-[Registered experiment](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/protocol.md).
+constraints. All 36 heads finish 72,000 updates, plus two exact full refits.
+The complete 72-group hard-policy evaluation takes 21.93 minutes and peaks at
+10.60 GB. Separate frozen-action inference and scoring agree exactly throughout.
 
-I have also prepared a public-aggregate report builder and matched-training checks.
-Seven new checks pass; three result checks deliberately wait for the complete
-readout and separate score verification. The [method description](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/paper_method_component.md)
-and [related-work comparison](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/related_work_positioning.md)
-explain what this experiment tests, and which claims it cannot support yet.
+This repair **does not improve the complete policy**. Known-label ADE gain over
+fallback falls from **7.67% to 6.26%**. The registered completion-lower difference
+is **-5.29 percentage points [95% CI: -8.56, -2.71]**. Worst known recording-level
+easy degradation improves from 26.48% to **7.73%**, but remains above 2%; only
+24 of 444 original recording-risk views are supported. I have not deployed it.
+
+There is a narrower positive result: joint allocation improves on independent
+selection within the same actor, with a completion-lower difference of
+**0.54 pp [0.20, 0.95]**. That component result does not rescue the failed primary
+or certify safety. Overall, the actor removes some harm but sacrifices more
+benefit, especially on hard cases. Forty-four focused checks pass, including
+complete artifact checks and report rebuilding without private input reads.
+The full repository suite was not rerun.
+
+These are development fits on exposed EuropeanSquares sources, not independent
+confirmation, SDD `t+50`, or three-seed forecasting evidence. The next diagnostic
+must distinguish action-support and cost-calibration limits from soft-to-hard
+optimization failure before another training budget.
+
+[Complete result and figure](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/failure_analysis.md),
+[method and prior work](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/related_work_positioning.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/reproduction_zh.md).
 
 ### Completed Decision-Cost Control
 
@@ -60,8 +75,8 @@ A follow-up check found a structural mismatch in the training surrogate. Bounded
 cost logits and a fixed fallback score force high soft intervention rates at the
 chosen temperature. Even a relaxed best-case family violates the expected
 constraints in every record view. This does not prove that safe hard decisions
-are impossible. The next controlled repair will separate fallback decisions from
-calibrated cost estimates, rather than train the same infeasible objective longer.
+are impossible. That diagnosis motivated the separate-actor experiment above,
+instead of training the same bounded objective longer.
 
 All 72 archived-action inference and score checks agree exactly, and the first
 full 2,000-update refit is exact. Thirty-five focused tests pass; the full

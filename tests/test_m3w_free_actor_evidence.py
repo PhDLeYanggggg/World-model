@@ -84,3 +84,17 @@ def test_metric_bundle_is_scalar_only_if_available():
             assert name.startswith('groups/') and name.endswith('.json')
             raw=z.read(name);assert b'/Users/' not in raw
             inspect(json.loads(raw,parse_constant=lambda v:(_ for _ in ()).throw(ValueError(v))))
+
+
+def test_empty_pair_support_is_not_observed_zero_and_positive_missing_is_rejected():
+    def row(count,value,p95):
+        return dict(result=dict(pair_proxy=dict(pair_requested_step_views=count,
+            mean_positive_distance_contraction_over_frozen_scale={a:value for a in run.evaluation.NAMES}),
+            allocation=dict(queries=1),policies=dict(zero_joint=dict(action_counts={'-1':1})),
+            record_tails={'rec':{a:dict(p95=p95) for a in run.evaluation.NAMES}}))
+    empty=row(0,None,None);observed=row(5,2.,10.)
+    assert report.supplementary_statistics([empty])['pair_contraction_proxy']['selected_joint'] is None
+    out=report.supplementary_statistics([empty,observed])
+    assert out['pair_contraction_proxy']['selected_joint']==2.
+    assert out['maximum_record_p95']['selected_joint']==10.
+    with pytest.raises(ValueError):report.supplementary_statistics([row(5,None,10.)])
