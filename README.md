@@ -68,7 +68,10 @@ exact recovery and old-model controls. All 36 full fits now finish 72,000
 updates plus two complete refits in a 5.55-minute timed phase,at 10.98 GB peak
 memory. The released head lowers the fixed fitting benefit/query-score monitors,
 but its median pointwise risk error is slightly worse than the control.
-Full policy evaluation is running;these losses do not establish a safer model.
+The complete 72-group policy readout is negative:known utility falls from
+8.215% to 7.672%,and the primary lower-bound difference is -11.08 pp
+[-28.15,-2.02]. Original risk support rises only from 1/444 to 6/444.
+A fresh complete replay is underway;this model is not deployed.
 [Actual training curves](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/training_report.md).
 [Coupled benefit/risk design](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/protocol.md).
 

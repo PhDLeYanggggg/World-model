@@ -48,6 +48,20 @@ with--resume as PID99416. Scientific hashes,weights,losses,budgets and roles
 are unchanged. Full72-group policy outcomes and separate replay remain pending.
 [Execution setup note](outputs/publication_readiness_2026_09/european_coupled_benefit_risk_v1/execution_note.md).
 
+Full72-group readout subsequently completed asPID99416 on2026-10-30:
+1086.630145s timed phase,peakRSS11,107,729,408B. Its terminal complete marker
+and all72 aggregate receipts are present;the old session handle is unavailable
+on the2026-11-01 continuation,so no newly observed exit-code claim is made.
+Known utility protected8.215347%->released7.672120%;paired known-0.543227pp
+CI[-0.820685,-0.301313],primary lower-11.080186pp CI[-28.151170,-2.019377].
+Matched-count known-0.225892pp CI[-0.397646,-0.061245],lower-4.043770pp
+CI[-8.837262,-1.224683]. Only4/7 fitting checks pass. Complete original
+risk fails:protected1/444 supported->released6/444;known easy violations
+383->362,undefined easy13->16,interventions410,575->378,174,unknown8,430->7,256.
+No smaller count or improved loss substitutes for risk. First scores were
+fresh onOct30,cached_verified onNov1;a new full replay is running asPID53258.
+All149,510 unique rows/74 recordings remain. No independent role or deployment.
+
 ### Causal Position Anchor: Registered Before Own Outcomes
 
 Previous goal turn:progress,complete signed-utility controls/replay reject

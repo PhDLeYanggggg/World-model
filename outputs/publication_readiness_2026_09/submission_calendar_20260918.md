@@ -1,5 +1,27 @@
 # CVPR 2027 Submission Evidence and Working Calendar
 
+## Current Recheck: 2026-11-01
+
+The official [dates](https://cvpr.thecvf.com/Conferences/2027/Dates) still list
+Nov10/16/23,2026(AoE) for enrollment,full paper and supplement. Internal buffers
+remain Nov9/12/20. This leaves9 calendar days to enrollment and15 to the paper
+date,not the earlier two-month working window. Dates do not establish readiness.
+
+The [2027 author guide](https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines)
+is now available. It requires the2027 template,anonymous submission,at most
+eight main pages excluding references and the LLM Usage Statement,and that
+statement even when no tools were used. OpenReview profile and venue enrollment
+requirements must be completed by enrollment;profile verification alone is not
+enrollment. These current checks supersede the dated404/unknown-policy records
+below without rewriting their historical observations.
+
+Author identity is privately recorded;venue enrollment remains unverified.
+No registration or submission action was taken. Actual submission still needs
+the user's final confirmation. The current coupled-head trial lowers some
+fitting losses but fails its primary utility and complete-recording risk checks.
+An exact full replay is underway;independent evidence and paper readiness remain
+incomplete. A date cannot justify relaxing risk or relabeling exposed results.
+
 ## Material Passport
 
 Fresh official-web check on2026-09-18, not acceptance or readiness evidence.
