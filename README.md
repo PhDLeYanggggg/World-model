@@ -26,28 +26,34 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 ## Latest Experiment
 
 I tested an explicit predicted-path interaction term in the seven-action joint
-decoder,keeping the forecasts,cost heads,per-query intervention counts and
-original 2% risk constraints fixed. This is a decoder control,not new neural training.
+decoder, keeping the forecasts, cost heads, intervention counts and original
+2% risk constraints fixed. This was a decoder control, not new neural training.
 
-The complete72-group run finishes in42.73minutes at10.85GB peak memory.
-The result is negative:known-label ADE gain over the frozen fallback falls
-from **8.215% to4.213%**. The paired completion-lower difference is
-**-6.97pp [-10.72,-3.69]**. Original recording-risk support is only2/444.
-All149,510 unique targets,74 recordings and112,596 repeated query views remain;
-six nonoptimal solver returns retain the original parent. Nothing is deployed.
+The complete 72-group experiment took 42.73 minutes and peaked at 10.85 GB of
+memory. Known-label ADE gain over the fallback fell from **8.215% to 4.213%**.
+The paired completion-lower difference was **-6.97 percentage points
+[95% CI: -10.72, -3.69]**. All 149,510 unique targets and 74 recordings remain
+in the comparison. No model is promoted or deployed from this result.
 
-The causal recovery pilot and a separate 42.46-minute full reoptimization are
-exact on all 72 groups and old controls. A frozen-action/actual-pair-distance
-evaluation is now running. Six old groups have no target pairs and retain their already
-unsupported unary choices,so pair-only decoding cannot repair every risk failure.
-These are exposed SOURCE fitting results,not independent confirmation or a
-three-seed forecasting study. The original scientific definition remains frozen.
+The geometric proxy fell by about 84%, but observed pair-distance error rose
+by **8.49%**. Hard-subset gain also fell. Pooled easy error improved, yet the
+worst known recording-level easy degradation remained **26.48%**, above the
+2% ceiling. Only 2 of 444 original recording-risk views are supported.
 
-[Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
+The recovery pilot, a separate 42.46-minute full reoptimization and the complete
+frozen-action score check agree exactly. Eighty-seven focused checks pass; the
+full repository suite was not rerun. These are development fits on exposed
+sources, not independent confirmation or three-seed forecasting evidence.
 
-I also rechecked the owned CREATE receipts and scheduler without changing remote
-work. Six inspected historical jobs are completed;that is infrastructure
-evidence,not a new model result.
+[Result and figure](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/failure_analysis.md),
+[annotated pair geometry](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/pair_distance_diagnostic/readout.md)
+and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/reproduction_zh.md).
+
+The next repair is direct learning of intervention gain and harm, not more tuning
+of this geometric penalty. Independent evidence and a submission-ready method
+remain outstanding. I also checked CREATE without changing remote work: six
+inspected historical jobs are completed, but job completion is not model validation.
 [Read-only check](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/create_asset_check.md).
 
 ### Preceding Coupled Benefit/Risk Control

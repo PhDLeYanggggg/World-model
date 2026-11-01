@@ -1,5 +1,6 @@
 """Export a complete fixed-design interaction control,including negative results."""
 import csv
+from collections import Counter
 import json
 from pathlib import Path
 import sys
@@ -36,6 +37,8 @@ def build():
                 or row['result']['policies']['unary_joint'] != old['result']['policies']['set_joint']):
             raise ValueError('Original controls changed')
     counts=[r['result']['allocation'] for r in rows]; edges=sum(v['graph_edges'] for v in counts)
+    solver_reasons=Counter()
+    for value in counts: solver_reasons.update(value['reason_counts'])
     graph_description=dict(edge_views=edges,zero_edge_groups=sum(v['graph_edges']==0 for v in counts),
         pooled_before=sum(v['graph_pair_mass_before'] for v in counts)/edges if edges else None,
         pooled_after=sum(v['graph_pair_mass_after'] for v in counts)/edges if edges else None,
@@ -59,11 +62,44 @@ def build():
         positive_known_sources=sum(v>0 for v in s['effects']['known_pp']['by_locality'].values()),
         unchanged_known_sources=sum(v==0 for v in s['effects']['known_pp']['by_locality'].values()),
         source_count=12,by_source_benefit_harm=per_source,posthoc_descriptive_not_causal_feature_diagnosis=True)
+    easy_tails={}
+    for a in run.api.NAMES:
+        policies=[p[a] for r in rows for p in r['result']['recordings'].values()]
+        known=[(p['selected_known_easy_harm_mass']-p['selected_known_easy_benefit_mass'])/p['full_known_easy_reference_mass']
+            for p in policies if p['full_known_easy_reference_mass']>0]
+        upper=[p['easy_degradation_upper'] for p in policies if p['easy_degradation_upper'] is not None]
+        easy_tails[a]=dict(required_record_views=len(policies),known_defined=len(known),
+            known_max_degradation_percent=100*max(known) if known else None,
+            known_over2_percent_views=sum(v>.02+1e-12 for v in known),completion_upper_defined=len(upper),
+            completion_upper_max_degradation_percent=100*max(upper) if upper else None,
+            completion_upper_over2_percent_views=sum(v>.02+1e-12 for v in upper))
+    diagnostic_path=run.PUBLIC/'pair_distance_diagnostic'
+    diagnostic=json.loads((diagnostic_path/'summary.json').read_text())
+    verify(ROOT,diagnostic_path)
+    action_replay=json.loads((run.PUBLIC/'frozen_action_verification.json').read_text())
+    if (diagnostic['groups']!=72 or diagnostic['original_gates_changed']
+            or not action_replay['all72_frozen_actions_exact']
+            or not action_replay['all72_causal_graphs_and_full_scores_exact']
+            or action_replay['summary_sha256']!=run.sha(run.PUBLIC/'summary.json')):
+        raise ValueError('Complete separate frozen-action and label-diagnostic evidence required')
+    published_runtime=run.PUBLIC/'runtime_evidence.json'
+    if published_runtime.exists():
+        timing=json.loads(published_runtime.read_text())
+        if (timing['readout']!={k:complete[k] for k in ('pid','seconds','peak_RSS_bytes')}
+                or timing['frozen_action_and_label_evaluation']!=action_replay):
+            raise ValueError('Published execution metadata differs from frozen receipts')
+        replay_runtime=timing['fresh_reoptimization']; runtime_source='cached_verified_published_runtime_evidence'
+    else:
+        replay_runtime=json.loads((run.PRIVATE/'verification_runtime.json').read_text())
+        runtime_source='original_local_execution_receipt'
     return dict(summary=s,complete=complete,replay=replay,bundle=bundle,rows=rows,graph_description=graph_description,
+        diagnostic=diagnostic,action_replay=action_replay,
         choice_counts=choice_counts,decomposition=decomposition,
+        solver_reasons=dict(solver_reasons),
+        easy_tails=easy_tails,
         unchanged_pairless_unsupported_controls=sorted(pairless_unsupported),
         pilot=json.loads((run.PUBLIC/'pilot.json').read_text()),
-        verification_runtime=json.loads((run.PRIVATE/'verification_runtime.json').read_text()))
+        verification_runtime=replay_runtime,runtime_source=runtime_source)
 
 
 def fmt(v):
@@ -80,6 +116,7 @@ def render(v):
         'cached_verified: 18 neural cost heads,all candidate/floor forecasts,past-only features,original unary predictions and full-policy choices.',
         'not_run: new neural or trajectory training,independent calibration/confirmation,and SDD deployment retesting.',
         'This is exposed SOURCE fitting resubstitution,not whole-pipeline OOF or independent generalization. No deployment changes.','',
+        'This document regenerates from frozen evidence. Fresh_run above describes the original experiment,not each report-export invocation.','',
         '## Fixed Factor','',
         'The original query allocator shares unary gain and all/easy risk budgets but does not optimize pairwise trajectories.',
         'This control adds one fixed predicted-path contraction cost over a past-position four-nearest-neighbor graph.',
@@ -116,6 +153,27 @@ def render(v):
         f'Positive known source effects: {v["decomposition"]["positive_known_sources"]}/12;unchanged sources: {v["decomposition"]["unchanged_known_sources"]}/12.',
         f'Neural action6 views: {v["choice_counts"]["unary_joint"]["6"]} -> {v["choice_counts"]["pair_joint"]["6"]}. Counts repeat contexts/critic seeds,not distinct people.',
         'These describe changed assignments,not a causal identification of missing intent,detector noise or feature insufficiency.','',
+        '## Hard And Easy Preservation','',
+        '|Known pooled subset|Unary ADE gain over floor (%)|Pair-aware ADE gain over floor (%)|','|---|---:|---:|']
+    for subset in ('hard','easy'):
+        p=s['subsets'][subset]['policies']
+        lines.append(f'|{subset}|{p["unary_joint"]["ADE_gain_percent"]:.6f}|{p["pair_joint"]["ADE_gain_percent"]:.6f}|')
+    lines += ['', 'These supplementary gains pool repeated known-row views and do not replace the original locality/record-risk contract.',
+        'Easy pooled error improves,but that is not preservation in every recording or positive-harm risk control.',
+        '|Policy|Defined known easy record views|Worst known easy degradation (%)|Known views above2%|Worst completion-upper degradation (%)|',
+        '|---|---:|---:|---:|---:|']
+    for a in run.api.NAMES:
+        t=v['easy_tails'][a]
+        lines.append(f'|{a}|{t["known_defined"]}/{t["required_record_views"]}|{t["known_max_degradation_percent"]:.6f}|{t["known_over2_percent_views"]}|{t["completion_upper_max_degradation_percent"]:.6f}|')
+    lines += ['', 'Completion-upper ratios are conservative missing-outcome bounds,not observed losses. Very small reference masses can make them large;they are not clipped or excluded.',
+        'The unchanged original full-risk gate remains failed.','',
+        '## Annotated Pair Geometry','',
+        f'Secondary frozen-action diagnostic: {v["diagnostic"]["total"]["requested_pair_steps"]:,} requested pair-step views,',
+        f'{v["diagnostic"]["total"]["known_pair_steps"]:,} observed and{v["diagnostic"]["total"]["unknown_pair_steps"]:,} unknown.',
+        f'Observed normalized pair-distance error: {v["diagnostic"]["total"]["known_only_mean_error"]["unary_joint"]:.9f} unary -> {v["diagnostic"]["total"]["known_only_mean_error"]["pair_joint"]:.9f} pair-aware.',
+        'This pooled repeated-view point worsens;it is not an independent-sample CI. The missing-outcome completion interval crosses zero.',
+        'Future labels enter only after actions are frozen. No primary score,selection threshold or risk gate changes.',
+        '[Full secondary diagnostic](pair_distance_diagnostic/readout.md).','',
         '## Population And Statistics','',
         'All149,510 unique targets,74 recordings,72 original source/context/critic-seed groups and12 exposed source localities remain.',
         'Bootstrap3,000 paired locality resamples after averaging repeated contexts and critic seeds. Overlapping windows are not independent samples.',
@@ -138,10 +196,10 @@ def export(v):
     s = v['summary']; public = run.PUBLIC
     (public/'readout.md').write_text(render(v))
     with (public/'locality_effects.csv').open('w',newline='') as stream:
-        writer=csv.writer(stream); writer.writerow(('source','known_pp','completion_lower_pp','graph_pair_change'))
+        writer=csv.writer(stream,lineterminator='\n'); writer.writerow(('source','known_pp','completion_lower_pp'))
         for source in sorted(s['effects']['known_pp']['by_locality']):
             writer.writerow((source,s['effects']['known_pp']['by_locality'][source],
-                s['effects']['lower_pp']['by_locality'][source],s['graph_pair_change'].get('by_locality',{}).get(source)))
+                s['effects']['lower_pp']['by_locality'][source]))
     risk=s['safety']['pair_joint']; primary=s['effects']['lower_pp']; graph=s['graph_pair_change']
     failure=['# Failure Analysis','',
         'This registered experiment isolates predicted-path interaction in the decoder,not missing features or a new neural architecture.',
@@ -149,11 +207,15 @@ def export(v):
         f'Original recording-risk support: {risk["supported_record_views"]}/{risk["required_record_views"]}.',
         'If geometry improves without utility or safety,this control rejects this specific fixed pair penalty as a sufficient repair.',
         'It does not establish that interaction is useless:the proxy lacks physical scale/body extent and only covers current query targets.',
+        'The separately evaluated observed pair-distance error also worsens;lower contraction is not evidence of better annotated interaction geometry.',
+        f'Known benefit falls{v["decomposition"]["benefit_delta_pp"]:+.6f}pp while known harm changes{v["decomposition"]["harm_delta_pp"]:+.6f}pp:the saved harm does not offset lost benefit.',
+        f'The six rejected solver returns({v["solver_reasons"].get("solver_status_1_parent_fallback",0)}time limits,{v["solver_reasons"].get("numerical_postcheck_parent_fallback",0)}numerical postchecks)retain the parent and contribute zero paired change.',
+        'Losses arise from accepted changed assignments,not from introducing rejected-solver interventions.',
+        'Six pairless groups retain already unsupported unary policies. A pair-only change cannot repair those failures.',
         'A fixed coefficient may trade unary forecast benefit for a proxy with different semantics. It was not tuned on these outcomes.',
         'Current costs remain fitted on exposed SOURCE data;neither this result nor a replay is independent confirmation.',
         'Do not respond by tuning the same outcome table or redefining the original two-percent risk. Retain the frozen forecasts and deployment.',
-        'Next isolate whether predicted contraction corresponds to actual relative prediction harm using training-only labels,',
-        'then consider a learned interaction cost only if that diagnostic supports predictive value. Keep negative results and unknown rows.','']
+        'The next repair must change actual gain/harm learning,not only tune this geometric penalty. Keep negative results and unknown rows.','']
     (public/'failure_analysis.md').write_text('\n'.join(failure))
     (public/'model_data_card.md').write_text('\n'.join(['# Model And Data Card','',
         'No new model weights. Frozen18 selected-set critics with462 causal fields and original seven-action/floor forecasts.',
@@ -164,14 +226,45 @@ def export(v):
         'Not all-visible-agent forecasting,independent calibration,a physical-safety certificate or deployable world dynamics.',
         'Three critic seeds are not three forecasting seeds. Requested endpoint FDE support is incomplete.',
         'No new data permission,external upload,Stage5C execution,SMC,metric or seconds-level claim.','']))
+    (public/'statistical_review.md').write_text('\n'.join(['# Statistical Evidence And Limits','',
+        'Primary:paired full-policy completion-lower ADE utility,not a subtraction of individual policy lower bounds.',
+        f'Result:{fmt(s["effects"]["lower_pp"])}percentage points. Known-label difference:{fmt(s["effects"]["known_pp"])}.',
+        'Intervals use3000 paired source-locality bootstrap resamples after averaging contexts and critic seeds. Twelve exposed localities,not897060 independent row views.',
+        'These intervals condition on the adaptive SOURCE development history and do not establish independent confirmation or adjust every earlier research choice.',
+        'Critic seeds17/29/43 share forecast-producer seed43. Three full-pipeline forecasting seeds remain a separate requirement.',
+        'Original all/easy positive-harm/reference ratios and every-record risk are unchanged. Empty ratios remain not_estimable,not certified zero risk.',
+        'The graph-locality interval is missing because six no-pair groups remain. Its supplementary pooled edge point has a different weighting and is not a replacement gate.',
+        'The actual pair-distance diagnostic is secondary:115704792 repeated pair-step views,87548430 observed and28156362 unknown.',
+        'Its observed normalized error worsens0.983701227->1.067189361. The deterministic full-requested completion interval crosses zero;it is not a bootstrap confidence interval.',
+        'Missing FDE endpoints remain missing. No last observed earlier point is relabeled the requested endpoint.',
+        'Exact recomputation proves reproducibility under this software/runtime,not independent validity,predictive safety or physics.',
+        'No new training,independent roles,Stage5C execution,SMC or submission readiness.','']))
     (public/'reproduction_zh.md').write_text('\n'.join(['# 复现说明','',
-        '本轮是冻结预测器后的真实联合决策实验，没有重新训练神经轨迹模型。公开仓库不包含数据、缓存或权重；需要本机已有且授权的数据。',
+        '本轮是冻结预测器后的真实联合决策实验，没有重新训练神经轨迹模型。重算预测需要授权数据和权重；公开汇总报告生成不需要这些私有素材。',
         '使用原生 arm64 `.venv-pytorch/bin/python`；CPU 4 线程、interop 1、DataLoader workers 0。',
-        '首次运行顺序：','```bash',
+        '## 只核验公开汇总并生成报告','',
+        '以下两条只依赖已公开、校验通过的汇总指标包和执行记录，不需要读取私有轨迹、缓存或权重；不是重新训练或重算预测。',
+        '绘图会在忽略目录创建一个小 PNG 预览，不会生成假的数据缓存。','```bash',
+        '.venv-pytorch/bin/python scripts/export_m3w_pair_distance_evidence.py',
+        '.venv-pytorch/bin/python scripts/report_m3w_pair_action_allocation.py',
+        '```','',
+        '## 当前工作区可以重复执行的核验','',
+        '下列命令需要现有授权素材和缓存。第一条会重新求解全部查询；后两条只核验已保存的标量结果及生成报告，不是重新训练。',
+        '必须检查本次进程退出码和新日志，不能拿旧 verification.json 冒充本次成功。','```bash',
+        '.venv-pytorch/bin/python scripts/run_m3w_pair_action_allocation.py verify',
+        '.venv-pytorch/bin/python scripts/export_m3w_pair_distance_evidence.py',
+        '.venv-pytorch/bin/python scripts/report_m3w_pair_action_allocation.py',
+        '```','', '## 原始执行记录','',
+        '这是本轮的执行顺序，不是覆盖当前冻结产物的重跑按钮。当前目录已完成，pilot/eval 和首次距离核算会拒绝覆盖。',
+        '从头复算需要注册时的隔离工作区及上游素材映射；通用隔离输出接口仍待补齐，不能声称公开仓库已具备无素材从零复现。','```bash',
         '.venv-pytorch/bin/python scripts/run_m3w_pair_action_allocation.py register',
         '.venv-pytorch/bin/python scripts/run_m3w_pair_action_allocation.py pilot',
         '.venv-pytorch/bin/python scripts/run_m3w_pair_action_allocation.py eval',
+        '# 距离诊断在主实验运行中完成登记，未据主结果调参',
+        '.venv-pytorch/bin/python scripts/run_m3w_pair_distance_diagnostic.py register',
         '.venv-pytorch/bin/python scripts/run_m3w_pair_action_allocation.py verify',
+        '.venv-pytorch/bin/python scripts/run_m3w_pair_distance_diagnostic.py',
+        '.venv-pytorch/bin/python scripts/export_m3w_pair_distance_evidence.py',
         '.venv-pytorch/bin/python scripts/report_m3w_pair_action_allocation.py',
         '.venv-pytorch/bin/python -m pytest tests/test_m3w_pair_action_allocation.py tests/test_m3w_pair_action_safety.py -q',
         '```',
@@ -190,17 +283,40 @@ def export(v):
     gates=['# Interaction-Control Gates','',f'Fitting advancement: {s["fitting_advancement_gate"]}','']
     gates += [f'- {k}: {v}' for k,v in s['fitting_gates'].items()]
     gates += ['', 'Independent confirmation: false','Submission ready: false','Stage5C executed: false','SMC enabled: false','']
+    gates += ['The graph-proxy interval is not_estimable because zero-pair groups remain;false does not mean the pooled graph proxy increased.',
+        'The supplementary pooled point is not substituted for this gate. Original full risk fails independently.','']
     (public/'gates.md').write_text('\n'.join(gates))
     (public/'next_steps.md').write_text('\n'.join(['# Next Steps','',
         '1. Preserve this fixed decoder result and the original deployment;do not tune its coefficient against the same outcomes.',
-        '2. Test training-only correspondence between the predicted interaction proxy and actual forecast harm before adding learned coupling.',
+        '2. Test a direct post-intervention gain/harm objective with record-level risk preservation;do not repeat already failed fixed/moving selected-query score MSE as a new method.',
         '3. Only after a fitting repair passes original risk,freeze the full pipeline for independent calibration/confirmation and three forecasting seeds.','']))
+    (public/'publication_gap.md').write_text('\n'.join(['# Remaining Research And Submission Gaps','',
+        'Not yet a CCF-A submission candidate. Completing this control does not complete the active research objective.','',
+        '1. Method evidence:the fixed pair term loses known ADE and observed pair-distance accuracy. Joint pair energies are established prior work,not a new contribution here.',
+        '2. Safety:only2/444 original record-risk views are supported. Worst observed known easy degradation is26.48%;mean easy improvement cannot replace every-record control.',
+        '3. Independent evidence:all current views are exposed SOURCE fits. Independent calibration/confirmation remains closed;historical test exposure is not repaired by renaming.',
+        '4. Training replication:three critic seeds share one forecast producer. Three compliant full-pipeline forecasting seeds are not demonstrated by this experiment or six old CREATE job exits.',
+        '5. Model contribution:there is no new neural training in this control and no established JEPA/Transformer downstream or world-dynamics lift from it.',
+        '6. Package:the results component is not a full final English paper. Matched public baselines,final ablations,anonymous portable from-scratch reproduction and final author review remain outstanding.',
+        '7. Claims:detector-silver image coordinates and raw-frame steps do not establish meters,seconds,true3D,human-gold labels or foundation-model success.','',
+        'Shortest next path:train a direct record-aware post-intervention gain/harm objective on legal SOURCE training labels,with expected-cost calibration and original fallback preserved.',
+        'This is distinct from the already failed fixed/moving selected-query score-MSE repair. Do not tune this geometric coefficient or use reserved confirmation labels to rescue it.',
+        'Stage5C execution and SMC remain disabled.','']))
     run.write(public/'graph_description.json',v['graph_description'])
     run.write(public/'choice_description.json',v['choice_counts'])
     run.write(public/'descriptive_decomposition.json',v['decomposition'])
+    run.write(public/'easy_preservation_description.json',v['easy_tails'])
+    run.write(public/'runtime_evidence.json',dict(
+        readout={k:v['complete'][k] for k in ('pid','seconds','peak_RSS_bytes')},
+        fresh_reoptimization=v['verification_runtime'],frozen_action_and_label_evaluation=v['action_replay'],
+        initial_admission_loading_excluded_from_phase_timers=True,
+        new_training_updates=0,remote_training_submitted=False))
     run.write(public/'evidence.json',dict(summary_sha256=run.sha(public/'summary.json'),
         complete_sha256=run.sha(public/'complete.json'),verification_sha256=run.sha(public/'verification.json'),
         bundle_sha256=run.sha(public/'metric_groups.zip'),full_replay_exact=True,new_training_updates=0,
+        frozen_action_verification_sha256=run.sha(public/'frozen_action_verification.json'),
+        secondary_diagnostic_summary_sha256=run.sha(public/'pair_distance_diagnostic/summary.json'),
+        runtime_evidence_sha256=run.sha(public/'runtime_evidence.json'),
         full_repo_tests_rerun=False,independent_confirmation=False,submission_ready=False))
     figure(s)
 
@@ -221,10 +337,11 @@ def figure(s):
         axes[1].errorbar(v['point'],i,xerr=[[v['point']-v['CI95'][0]],[v['CI95'][1]-v['point']]],fmt='o',color='#AF3D3D',capsize=4)
     axes[1].set_yticks([0,1],['Known difference','Completion lower']); axes[1].set_xlabel('Pair minus unary (percentage points)')
     for ax in axes: ax.grid(alpha=.15)
-    fig.suptitle('Exposed SOURCE fitting control;conditional locality intervals,not confirmation')
+    fig.suptitle('Exposed SOURCE fitting control; conditional locality intervals, not confirmation')
     fig.tight_layout(rect=(0,0,1,.91)); (run.PUBLIC/'figures').mkdir(exist_ok=True)
     svg=run.PUBLIC/'figures/policy_readout.svg'; fig.savefig(svg,bbox_inches='tight',metadata={'Date':None})
     svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
+    run.PRIVATE.mkdir(parents=True,exist_ok=True)
     fig.savefig(run.PRIVATE/'policy_readout.png',dpi=160,bbox_inches='tight'); plt.close(fig)
 
 

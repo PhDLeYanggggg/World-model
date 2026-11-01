@@ -9,6 +9,34 @@ or evidence status.
 
 ### Predicted-Path Interaction: Registered Decoder Control
 
+Iteration complete,not project/goal completion. Main42.73min+fresh42.46min
+reoptimization+172.764145s frozen-action/label evaluation all exit0.
+All72 predictions,old controls,archived choices,causal graphs and original
+full scores agree. Secondary diagnostic PID68079 finishes14:04:20UTC,
+peakRSS10,495,770,624B. Two aggregate-only bundles contain72 scalar groups each;
+no raw trajectories,images,weights or feature caches are included.
+
+Pooled graph contraction0.242141->0.037657,but observed normalized pair-distance
+error0.983701->1.067189(+8.487143%). All115704792 requested pair-step views
+remain:87548430 known,28156362 unknown;these are repeated views,not independent
+examples. Its full-requested missing-outcome interval[-0.195464,+0.069121]
+crosses0 and is not a bootstrap CI or replacement ADE gate.
+Known benefit change-4.172003pp,harm change-0.169535pp;their difference exactly
+reproduces known utility-4.002468pp. Eleven sources worsen,one is unchanged.
+Hard pooled gain10.128366%->2.641659%;easy pooled gain3.767161%->5.575447%.
+Yet worst known easy record degradation stays26.477426%,with30/444views above2%
+(old54/444);386completion-upper views exceed2%. Large completion-upper ratios
+are bounds,not observed losses. This is not deployable and not CCF-A ready.
+Eighty-seven focused tests pass in2.56s;full repo suite not rerun. Final figure
+is visually checked. New neural training0,independent roles closed,Stage5C/SMCoff.
+
+Public-aggregate reproduction is verified separately:unpacked secondary groups
+were preserved in an ignored backup and restored from their byte-verified ZIP.
+Both exporters/report generators succeed with Python reads of project data and
+external_data blocked. Only an own preview PNG write is permitted. This proves
+aggregate report regeneration,not raw-data prediction/training reproduction or
+independent science. Full portable from-scratch training remains outstanding.
+
 Separate fresh reoptimization PID64032 exits0 at14:00:12UTC:2547.453577s,
 peakRSS9,647,685,632B. All72 complete groups and old controls are exact,
 including identical recorded solver fallbacks. This verifies reproducibility,

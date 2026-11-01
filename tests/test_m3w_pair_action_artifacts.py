@@ -1,4 +1,6 @@
 import json
+import builtins
+import os
 from pathlib import Path
 import pytest
 
@@ -37,5 +39,26 @@ def test_current_final_artifacts_if_generated():
     assert not s['independent_confirmation'] and not s['new_training_updates'] and not s['deployment_changed']
     assert evidence['replay']['all72groups_exact'] and evidence['replay']['all72_old_controls_exact']
     for name in ('readout.md','failure_analysis.md','model_data_card.md','gates.md','reproduction_zh.md',
-            'paper_results_component.md','locality_effects.csv','next_steps.md','figures/policy_readout.svg'):
+            'paper_results_component.md','locality_effects.csv','next_steps.md','figures/policy_readout.svg',
+            'statistical_review.md','publication_gap.md','aggregate_reporting_check.json'):
         assert (run.PUBLIC/name).stat().st_size>100
+
+
+def test_report_build_uses_public_aggregates_without_private_data(tmp_path,monkeypatch):
+    if not (run.PUBLIC/'runtime_evidence.json').exists():
+        pytest.skip('Published complete timer receipt not generated')
+    original_path_open=Path.open; original_open=builtins.open
+    def guard(path):
+        if isinstance(path,(str,bytes,os.PathLike)):
+            p=Path(os.fsdecode(path)).absolute()
+            if p.is_relative_to(run.ROOT/'data') or p.is_relative_to(run.ROOT/'external_data'):
+                raise AssertionError('Aggregate reporting must not read private data:'+str(p))
+    def path_open(path,*args,**kwargs):
+        guard(path); return original_path_open(path,*args,**kwargs)
+    def open_file(path,*args,**kwargs):
+        guard(path); return original_open(path,*args,**kwargs)
+    monkeypatch.setattr(run,'PRIVATE',tmp_path/'missing_private_directory')
+    monkeypatch.setattr(Path,'open',path_open); monkeypatch.setattr(builtins,'open',open_file)
+    result=report.build()
+    assert result['runtime_source']=='cached_verified_published_runtime_evidence'
+    assert result['summary']['groups']==72 and result['diagnostic']['groups']==72
