@@ -36,9 +36,9 @@ from **8.215% to4.213%**. The paired completion-lower difference is
 All149,510 unique targets,74 recordings and112,596 repeated query views remain;
 six nonoptimal solver returns retain the original parent. Nothing is deployed.
 
-The causal real-data recovery pilot is exact. Fresh timed reoptimization and
-a separate frozen-action/actual-pair-distance evaluation are next,not yet
-claimed complete. Six old groups have no target pairs and retain their already
+The causal recovery pilot and a separate 42.46-minute full reoptimization are
+exact on all 72 groups and old controls. A frozen-action/actual-pair-distance
+evaluation is now running. Six old groups have no target pairs and retain their already
 unsupported unary choices,so pair-only decoding cannot repair every risk failure.
 These are exposed SOURCE fitting results,not independent confirmation or a
 three-seed forecasting study. The original scientific definition remains frozen.

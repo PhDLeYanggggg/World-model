@@ -9,6 +9,12 @@ or evidence status.
 
 ### Predicted-Path Interaction: Registered Decoder Control
 
+Separate fresh reoptimization PID64032 exits0 at14:00:12UTC:2547.453577s,
+peakRSS9,647,685,632B. All72 complete groups and old controls are exact,
+including identical recorded solver fallbacks. This verifies reproducibility,
+not utility,safety or independent confirmation. Frozen-action/actual-distance
+evaluation has now started;no primary metric/model/threshold is changed.
+
 Full result:PID59783 exits0,72/72groups complete on1November2026 at13:16:22UTC.
 Timed phase2563.680355s(42.73min),peakRSS10,848,567,296B. All149510 unique
 targets,74 recordings and112596 repeated query views remain. Six nonoptimal
