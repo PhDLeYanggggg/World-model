@@ -36,10 +36,17 @@ states match exactly,excluding measured wall times. Native18-query/402-row
 allocation recovery is exact,maximum49agents. No policy outcomes were scored.
 Initial Torch/Numpy projection difference is1.61e-15causal-scale units.
 The one-context fit projection is8,400.21s,not a completed training duration;
-formal36-head training now runs under PID37642. No speed-based reduction.
+formal36-head training completes under PID37642:4,728.797628s and
+peak10,807,148,544B,208,320primary plus14,336full-refit updates. No speed-based reduction.
 Both complete7,168-update first-context/seed17refits now match their original
-scientific training states exactly. The remaining original heads continue.
-New training is not reported complete or beneficial before its full evaluation.
+scientific training states exactly. All original36heads are now frozen.
+Complete72-group policy evaluation is running;no benefit is claimed before it.
+Both arms cover every query at least four times. Across1,666,560sampled query
+views each,the fixed arm has810,129complete/35,145unknown/821,286empty selections;
+the own arm has952,481complete/74,417unknown/639,662empty. This is training-loss
+support,not independent samples or a policy improvement. No unknown target is
+supervised zero. Own training invokes native solve_frame1,666,560times,including
+shortcuts;its2,947.300997s loop time is not a MILP-only backend measurement.
 Public-scalar report reconstruction,private-input read protection and Chinese
 reproduction commands are implemented. Current focused checks:17passed3.15s;
 three complete-result checks remain explicitly skipped while real training runs.
