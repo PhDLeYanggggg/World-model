@@ -98,6 +98,9 @@ or deployment is claimed from training loss alone.
 The first readout entry stopped before evaluation because a local timing name
 shadowed the runtime helper. I recorded a minimal execution erratum before any
 new policy result; the registered study files and all trained weights remain unchanged.
+Full-cohort evaluation is now running through the corrected entry, with the
+original action-allocation budget and checkpoints. Partial source scores are
+not being used to change the model, thresholds or primary comparison.
 
 ### Completed Decision-Cost Control
 

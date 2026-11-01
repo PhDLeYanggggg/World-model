@@ -30,6 +30,8 @@ collision,with zero new policy groups. The committed execution erratum only
 renames three receipt-variable occurrences in the evaluation AST;inverse rename
 exactly restores the original AST. Models,registration and scientific files remain
 unchanged. Two focused regression checks pass1.26s before repaired execution.
+The repaired full72readout is running under PID20020. Training endpoints and
+thresholds are frozen;partial source outcomes do not select a new checkpoint.
 
 ### Necessary Query Easy Support
 

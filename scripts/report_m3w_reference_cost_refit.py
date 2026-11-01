@@ -87,6 +87,23 @@ def supplementary(rows):
         oracle_diagnostic_not_model_gain=True,proxy_not_physical_safety=True)
 
 
+def locality_diagnostics(rows,summary):
+    output={}
+    for source in sorted({r['source'] for r in rows}):
+        group=[r for r in rows if r['source']==source];values={}
+        for prefix,arm in zip(('locked','learned'),run.api.ARMS):
+            records=[v[prefix+'_joint'] for row in group for v in row['result']['recordings'].values()]
+            values[prefix]=dict(required_record_views=len(records),
+                supported_record_views=sum(v['budget_status']['supported'] for v in records),
+                undefined_easy_views=sum(v['easy_selected_risk_upper'] is None for v in records),
+                pointwise_witness_views=sum(row['result']['pointwise_diagnostic'][arm]['supports']['reference_pointwise']['supported_record_views'] for row in group))
+        output[source]=dict(joint_known_pp=summary['effects']['joint']['known_pp'].get('by_locality',{}).get(source),
+            joint_completion_lower_pp=summary['effects']['joint']['lower_pp'].get('by_locality',{}).get(source),
+            reference_MSE_change=summary['reference_MSE_change'].get('by_locality',{}).get(source),policies=values,
+            descriptive_SOURCE_only_not_causal_attribution=True)
+    return output
+
+
 def build():
     p=run.PUBLIC;reg=json.loads(run.REG.read_text());cfg=json.loads(run.CONFIG.read_text())
     for rel,digest in reg['bindings'].items():
@@ -142,6 +159,7 @@ def build():
     if summary!=rebuilt or len(recordings)!=74:raise ValueError('Full canonical summary differs')
     return dict(summary=summary,complete=complete,freeze=freeze,replay=replay,bundle=bundle,
         training=stats,refits=refits,auxiliary=supplementary(rows),
+        locality_diagnostics=locality_diagnostics(rows,summary),
         pilot=json.loads((p/'pilot.json').read_text()))
 
 
@@ -155,6 +173,7 @@ def interval(v):
 def render(v):
     p=run.PUBLIC;s=v['summary'];stats=v['training'];aux=v['auxiliary']
     run.write(p/'training_statistics.json',stats);run.write(p/'supplementary_statistics.json',aux)
+    run.write(p/'locality_diagnostics.json',v['locality_diagnostics'])
     lines=['# Coverage-Complete Reference Cost Refits','','## Evidence Role','',
         'fresh_run:36 actual Torch warm-started cost fits,two full-budget exact refits,complete72-group policy evaluation and separate inference/score verification.',
         'cached_verified:18 old cost weights,seven forecast candidates,floor,462causal fields,fitting normalizers and original parent full-joint control.',
@@ -177,6 +196,13 @@ def render(v):
         '|Moment|Locked [conditional95%CI]|Learned [conditional95%CI]|','|---|---:|---:|']
     for k in range(5):lines.append(f'|{k}|{interval(s["calibration_MSE"]["locked_references"][str(k)])}|{interval(s["calibration_MSE"]["learned_references"][str(k)])}|')
     lines += ['',f'Mean reference MSE change:{interval(s["reference_MSE_change"])}.','',
+        '## Source-Level Diagnostic','','These repeat contexts and cost seeds,not independent recording samples. Cost-MSE changes are descriptive,not causal attribution.','',
+        '|Exposed locality|Learned-minus-locked lower pp|Reference MSE change|Locked record-risk support|Learned record-risk support|Locked pointwise witnesses|Learned pointwise witnesses|',
+        '|---|---:|---:|---:|---:|---:|---:|']
+    for source,d in v['locality_diagnostics'].items():
+        a,b=d['policies']['locked'],d['policies']['learned']
+        lines.append(f'|{source}|{cell(d["joint_completion_lower_pp"])}|{cell(d["reference_MSE_change"])}|{a["supported_record_views"]}/{a["required_record_views"]}|{b["supported_record_views"]}/{b["required_record_views"]}|{a["pointwise_witness_views"]}|{b["pointwise_witness_views"]}|')
+    lines += ['',
         '## Complete Training And Coverage','',
         f'{stats["complete_fits"]}fits;{stats["primary_optimizer_updates"]}primary optimizer updates;{stats["exact_full_refit_updates"]}full-refit updates.',
         f'Registered per-fit budgets:{stats["budgets"]}. Every query enters at least4optimizer-step sampling batches;zero queries remain undrawn.',
@@ -226,8 +252,8 @@ def render(v):
         f'\n\nFitting advancement:{s["fitting_advancement"]}. Independent confirmation:false. Deployment:false. Submission ready:false. Stage5C:false. SMC:false.\n')
     with (p/'locality_effects.csv').open('w',newline='') as f:
         w=csv.writer(f,lineterminator='\n');w.writerow(['locality','joint_known_pp','joint_lower_pp','joint_upper_pp'])
-        for source in sorted(s['effects']['joint']['lower_pp']['by_locality']):
-            w.writerow([source]+[s['effects']['joint'][b]['by_locality'][source] for b in ('known_pp','lower_pp','upper_pp')])
+        for source in v['locality_diagnostics']:
+            w.writerow([source]+[s['effects']['joint'][b].get('by_locality',{}).get(source,'not_estimable') for b in ('known_pp','lower_pp','upper_pp')])
     run.write(p/'evidence.json',dict(summary_sha256=run.sha(p/'summary.json'),complete_sha256=run.sha(p/'complete.json'),
         training_freeze_sha256=run.sha(p/'training_freeze.json'),verification_sha256=run.sha(p/'verification.json'),
         archive_sha256=v['bundle']['archive_sha256'],fresh_cost_training=True,new_trajectory_training=False,
