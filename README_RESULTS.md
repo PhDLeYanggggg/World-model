@@ -20,7 +20,13 @@ one fixed predicted-path contraction term over a past-defined four-neighbor
 graph. Original all/easy2% risk and missing-outcome handling are unchanged.
 Forty-five focused checks pass in1.22s,including20 exhaustive small-problem
 comparisons,rigid/scale invariance,recovery and solver-failure fallback.
-Own real pilot/full outcomes are not yet run;there is no deployment promotion.
+Real pilot PID58733 exits0:19.835101s timed phase,9,630,269,440B peakRSS.
+Eighteen queries/402 rows include six largest current-query groups(max49agents).
+Interrupted recovery equals direct decoding;17 solver calls are optimal and
+one zero-count query retains the parent. No predictive outcomes are scored.
+Direct decoding1.880254s gives a size-biased112596-query estimate11761.616s
+(3.27h),not measured completion. The full72-group readout is now running.
+No population or budget downgrade;no deployment promotion.
 
 ### Coupled Benefit/Risk: Registered Before Own Training Outcomes
 

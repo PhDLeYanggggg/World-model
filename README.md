@@ -28,8 +28,10 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 I am testing an explicit predicted-path interaction term in the seven-action
 joint decoder. The comparison keeps the existing forecasts, cost heads,
 per-query intervention counts and original 2% risk constraints fixed. It adds
-no neural training. The design and 45 focused checks are complete; the real
-recovery pilot and full-population result are not yet available.
+no neural training. The real18-query pilot has exact interrupted recovery and
+no solver failures,at9.63GB peak memory. Its size-biased estimate is about
+3.27hours for the complete decoder roster,not a measured full-run duration.
+The full72-group comparison is now running; predictive results are not yet available.
 
 [Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
 
