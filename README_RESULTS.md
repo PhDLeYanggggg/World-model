@@ -7,6 +7,20 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Coverage-Complete Reference Cost Refit
+
+Registered36warm-started causal cost fits:locked versus learned R/R_easy,each
+31,119total parameters;the learned arm has262more active parameters. Same old
+cost weights,462causal fields,normalization,labels,cyclic query draws and budgets.
+Per-fit updates=max(2000,4*ceil(largest_source_queries/4));every query is visited
+at least4times,unknown rows remain unsupervised. No speed-based roster reduction.
+Primary remains learned-minus-locked full-joint completion-lower utility,with
+original2%recording gates and reference-MSE evidence. These are SOURCE fits,
+not independent validation or calibration. The old shared-reference weights
+were inspected but require760paired inputs,not a drop-in462-field replacement.
+CREATE read-only queue check succeeds;no remote job is changed or submitted.
+Real pilot/training/readout are not complete at this registration checkpoint.
+
 ### Necessary Query Easy Support
 
 **Complete,fresh_run:**all72groups/149,510targets/74recordings retained. Prior432

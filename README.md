@@ -82,6 +82,13 @@ while keeping the 2% cost and evaluation budgets unchanged.
 [Query-support result](outputs/publication_readiness_2026_09/european_query_easy_support_v1/readout.md)
 and [what must change next](outputs/publication_readiness_2026_09/european_query_easy_support_v1/diagnosis_and_repair.md).
 
+I am now fitting paired cost models from the same verified old weights. Both use
+source-balanced cyclic sampling with complete query coverage;one keeps reference
+costs fixed,the other learns bounded reference scale updates from causal context.
+The reference-learning arm has262additional active parameters,which I report
+rather than call a perfectly capacity-matched comparison. No trajectory producer
+or deployment is changed while this experiment is incomplete.
+
 ### Completed Decision-Cost Control
 
 I trained 18 decision-cost critics while keeping the seven forecasts, 462 causal
