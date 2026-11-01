@@ -27,8 +27,17 @@ fields,query context,cyclic complete draws and208,320primary update budget.
 Capacity differs from the earlier31,119parameter critic;this is disclosed.
 Raw and frozen-risk-guarded policies are both required. No threshold tuning,
 new trajectory training or independent outcome access. Original2%recording
-requirements and full72groups remain. Status:registered;training not_run.
+requirements and full72groups remain. Real400-update recovery pilot passes:
+PID51759,21.601204s,peak9,724,149,760B. Both100-step recovered/direct scientific
+states and full causal predictions/choices are exact. No policy outcomes scored.
+The one-context pure-fit projection is599.427389s,excluding preparation/refits/
+readout,not completed duration. Formal36-head training is running as PID52905
+with the original full coverage budgets;no speed-based reduction.
 Eleven pre-registration focused checks pass1.92s;two artifact checks skipped.
+After registration,12pass1.89s,one formal-artifact skip. Public-scalar rebuild,
+private-read protection and Chinese reproduction instructions are implemented.
+Current focused checks:14passed2.94s;three complete-result checks explicitly
+skipped while real training runs. These are not policy-success gates.
 [Protocol](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/protocol.md).
 
 ### Own-Decision Coherent Cost Training

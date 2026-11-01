@@ -30,8 +30,10 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 I have registered a comparison between expected-ADE regression and the published
 multi-expert logistic-deferral loss on the updated forecast bank. Both share the
 same causal inputs, initialization, query draws and full training budget. Raw
-and frozen-risk-guarded decisions will both be reported. This comparison has
-not yet trained or produced policy results; it does not change deployment.
+and frozen-risk-guarded decisions will both be reported. The real 400-update
+recovery pilot passed at 9.72 GB peak memory; all 36 formal heads are now training
+locally at their complete budgets. Policy results are still pending, and
+deployment is unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/protocol.md).
 
 ### Completed Own-Decision Cost Training
