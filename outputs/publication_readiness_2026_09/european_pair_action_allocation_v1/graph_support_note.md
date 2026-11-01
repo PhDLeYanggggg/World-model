@@ -17,3 +17,12 @@ locality interval,independent uncertainty estimate or replacement gate.
 
 The running decoder,cohort,weight,risk/count constraints and original outcome
 handling remain unchanged. This support note does not establish improvement.
+
+The verified old unary full-policy score is unsupported in all six pairless
+groups(all/easy-risk and easy-degradation conditions are not certified).
+The new decoder returns that exact parent when there are no edges. Therefore
+this pair-only control cannot by itself pass the complete original risk gate,
+regardless of the effect on crowded queries. This follows from old controls
+and the frozen algorithm,not inspection of new utility results. The run
+continues to answer its registered utility/interaction comparison,not as a
+claim that pair geometry alone can repair every unary-risk failure.

@@ -40,7 +40,10 @@ def build():
         pooled_before=sum(v['graph_pair_mass_before'] for v in counts)/edges if edges else None,
         pooled_after=sum(v['graph_pair_mass_after'] for v in counts)/edges if edges else None,
         full_locality_CI=s['graph_pair_change'],supplementary_pooled_point_not_gate_replacement=True)
+    pairless_unsupported=[name for name,old in original.items() if old['result']['pair_proxy']['pair_requested_step_views']==0
+        and not old['result']['policies']['set_joint']['policy']['budget_status']['supported']]
     return dict(summary=s,complete=complete,replay=replay,bundle=bundle,rows=rows,graph_description=graph_description,
+        unchanged_pairless_unsupported_controls=sorted(pairless_unsupported),
         pilot=json.loads((run.PUBLIC/'pilot.json').read_text()),
         verification_runtime=json.loads((run.PRIVATE/'verification_runtime.json').read_text()))
 
@@ -86,6 +89,8 @@ def render(v):
         f'The original full-risk requirement is supported in {risk["supported_record_views"]}/{risk["required_record_views"]} recording/context/seed views.',
         f'Fitting advancement: {str(s["fitting_advancement_gate"]).lower()}. This alone cannot authorize deployment or independent confirmation.',
         'Lower geometric contraction must not be substituted for ADE improvement or original positive-harm safety.',
+        f'{len(v["unchanged_pairless_unsupported_controls"])} old zero-pair groups are already risk-unsupported and retain their exact unary choices.',
+        'This pair-only control therefore cannot certify complete original risk,even if crowded-query utility improves. It does not repair those unary failures.',
         'Known-label utility,completion-lower utility and individual-policy lower bounds have different estimands;their differences are not interchangeable.','',
         '## Population And Statistics','',
         'All149,510 unique targets,74 recordings,72 original source/context/critic-seed groups and12 exposed source localities remain.',

@@ -40,6 +40,18 @@ explicitly skipped final-evidence check because complete/replay artifacts do
 not yet exist. The skipped check is not a scientific pass. Methods,primary
 prior-work links and an honest LLM-usage draft are saved with the experiment.
 
+Old-control inspection identifies a structural limit:all six zero-pair groups
+are already risk-unsupported,and the frozen pair decoder leaves them unchanged.
+Thus pair geometry alone cannot repair the complete risk contract. The full
+utility comparison continues unchanged. A secondary label-only actual
+pair-distance diagnostic is registered before its own execution;15 checks pass
+in1.36s,including missing-label triangle bounds and keeping zero-pair support
+not_estimable. It uses future labels only after actions are frozen,not for
+inference,selection or primary-gate changes. An explicit pre-runfloat64
+clarification preserves its first generated receipt. This does not modify the
+running main experiment. Timed reoptimization and frozen-action score replay
+are separate verification scopes;neither is yet claimed complete.
+
 ### Coupled Benefit/Risk: Registered Before Own Training Outcomes
 
 Previous goal turn:progress;the full position-anchor comparison and both

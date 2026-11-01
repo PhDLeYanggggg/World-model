@@ -35,6 +35,10 @@ The full72-group comparison is now running; predictive results are not yet avail
 Sixty-one focused solver/geometry/readout checks pass. Some queries reach the
 fixed two-second solver limit and keep their original assignments; none is dropped.
 Six old source groups have no target pairs,so their graph mean remains missing.
+Their old unary policies are also risk-unsupported and unchanged by pair-only
+decoding. This control can test interaction/accuracy tradeoffs,but cannot alone
+certify the full safety contract. A separate frozen-action distance-accuracy
+diagnostic is prepared; it does not change the main score or gate.
 
 [Registered comparison](outputs/publication_readiness_2026_09/european_pair_action_allocation_v1/protocol.md).
 

@@ -16,7 +16,7 @@ from scripts import run_m3w_pair_action_allocation as run
 from scripts.report_m3w_feature_cost_evidence import aggregate_groups
 
 
-def verify():
+def verify(diagnostic=None):
     cfg,values,store,banks,models,controls=run.admission(); start,beat=run.runtime(cfg)
     complete=json.loads((run.PUBLIC/'complete.json').read_text())
     if (run.PUBLIC/'frozen_action_verification.json').exists(): raise ValueError('Completed action replay immutable')
@@ -56,6 +56,8 @@ def verify():
                         or run.unit.api.parent.digest(packet['ids'])!=expected['ids_sha256']
                         or any(run.unit.api.parent.digest(choices[a])!=expected['action_sha256'][a] for a in run.api.NAMES)):
                     raise ValueError('Original inputs,predictions,frozen actions or full scores differ')
+                if diagnostic is not None:
+                    diagnostic(key,expected,packet,origin,choices,values[3]['target_eval'][packet['ids']],values[3]['valid'][packet['ids']])
                 rows.append(expected); all_ids.update(map(int,packet['ids']))
                 recordings.update((name,str(r)) for r in packet['recordings'])
                 caches.append(dict(group=key,action_cache_sha256=run.sha(cp)))
