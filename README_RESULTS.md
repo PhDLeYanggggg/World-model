@@ -31,8 +31,13 @@ requirements and full72groups remain. Real400-update recovery pilot passes:
 PID51759,21.601204s,peak9,724,149,760B. Both100-step recovered/direct scientific
 states and full causal predictions/choices are exact. No policy outcomes scored.
 The one-context pure-fit projection is599.427389s,excluding preparation/refits/
-readout,not completed duration. Formal36-head training is running as PID52905
-with the original full coverage budgets;no speed-based reduction.
+readout,not completed duration. Formal36-head training completes as PID52905:
+771.051834s,peak11,638,472,704B,208,320primary plus14,336exact full-refit updates.
+All draws/budgets match the preceding own-choice fits. Both arms retain219,368
+unknown contextual row draws with zero unknown supervised labels. Complete72-
+group policy evaluation is running;no policy effect is claimed yet.
+No speed-based reduction. The working-paper technical supplement now specifies
+the current losses,partial-label estimand,completion bounds and support limits.
 Eleven pre-registration focused checks pass1.92s;two artifact checks skipped.
 After registration,12pass1.89s,one formal-artifact skip. Public-scalar rebuild,
 private-read protection and Chinese reproduction instructions are implemented.

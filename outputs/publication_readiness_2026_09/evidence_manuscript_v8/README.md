@@ -18,6 +18,8 @@ scientific status.
 - `manuscript.tex`: anonymous two-column source using the official 2027 style.
 - `build_sources.json`: source/result/style identities and compile status.
 - `render_verification.json`: exact-PDF layout and recorded visual-review checks.
+- `supplement.md`: current target/loss/support technical notes; a working Markdown
+  appendix, not included in the checked main-paper PDF page count.
 
 The locally built PDF, page renders, official template and third-party packages
 remain private and excluded from Git. No author profile, email, raw data,

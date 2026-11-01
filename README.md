@@ -31,8 +31,9 @@ I have registered a comparison between expected-ADE regression and the published
 multi-expert logistic-deferral loss on the updated forecast bank. Both share the
 same causal inputs, initialization, query draws and full training budget. Raw
 and frozen-risk-guarded decisions will both be reported. The real 400-update
-recovery pilot passed at 9.72 GB peak memory; all 36 formal heads are now training
-locally at their complete budgets. Policy results are still pending, and
+recovery pilot passed at 9.72 GB peak memory; all 36 formal heads complete locally
+in 12.85 minutes at their full budgets, including two exact full refits. Policy
+evaluation is now running, and
 deployment is unchanged.
 [Protocol](outputs/publication_readiness_2026_09/european_current_bank_deferral_v1/protocol.md).
 
