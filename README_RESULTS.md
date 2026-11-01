@@ -7,6 +7,19 @@ or evidence status.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Separate Free Allocation Actors
+
+New prospective experiment:freeze18continuous regression critics and the full
+seven-forecast bank;train36small allocation actors across self/selected-query
+context arms. Each has133causal representation fields and4,321parameters.
+72,000primary updates and4,000exact-refit updates are planned,not completed.
+Whole-record true/bounded-risk duals and two causal query-budget duals retain
+original2%constraints. Actual hard policies use learned objective utilities but
+unchanged predicted cost moments;zero actors must reproduce the old control.
+Thirty-three synthetic/focused checks pass in2.41s. Real pilot/training/outcome
+evaluation not_run at this checkpoint. SOURCE fitting only;no deployment or
+independent roles,Stage5C or SMC. Previous negative results remain unchanged.
+
 ### Seven-Action Decision-Cost Training
 
 **Final result,fresh_run:**18full Torch cost fits,36,000primary updates and2,000

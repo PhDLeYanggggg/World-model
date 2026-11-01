@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+I am testing separate routing actors on top of frozen cost estimates. They retain
+all seven forecast candidates, but learn their own intervention and fallback
+scores without changing the cost head. The controlled comparison uses the
+agent's own representation versus the selected query's representation, with
+matched capacity, training draws and budgets. Both retain the original 2% cost
+constraints. The design is registered before its own results; real training and
+evaluation are not complete yet.
+[Registered experiment](outputs/publication_readiness_2026_09/european_free_allocation_actor_v1/protocol.md).
+
+### Completed Decision-Cost Control
+
 I trained 18 decision-cost critics while keeping the seven forecasts, 462 causal
 fields, architecture and training draws fixed. Each head received 2,000 updates.
 This tests how the loss changes intervention decisions; it is not new trajectory
