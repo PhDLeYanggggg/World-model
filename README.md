@@ -38,6 +38,11 @@ independent full refit of the first head is exact. The complete training phase
 took 7.19 minutes at 10.75 GB peak memory. Policy evaluation is running; the
 training loss has not established a utility or safety improvement. Independent
 confirmation and deployment remain closed.
+An additional training-support check finds a structural problem: bounded cost
+logits and a fixed fallback score force high soft intervention probabilities.
+Even a relaxed best-case policy violates the expected constraints in all 444
+record views. This diagnoses the training surrogate, not an impossibility of
+safe hard decisions. The original full-policy evaluation is still running.
 [Experiment protocol](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/protocol.md).
 
 ### Completed Pairwise Decoder Control

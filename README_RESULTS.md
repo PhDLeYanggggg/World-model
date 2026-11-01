@@ -25,6 +25,14 @@ The fresh CREATE queue attempt returns255(remote connection closed),not job fail
 no remote modifications or duplicate jobs. SOURCE development only;independent
 roles,Stage5C and SMC stay closed. No deployment or submission-ready claim.
 
+Post-hoc SOURCE support diagnostic PID80853 completes113.932136s,peak8.89GB,
+all18context/seed views and444record views. Even the relaxed bounded-logit family
+has strictly positive best-case expected constraints in all444views(all three
+constraints). Median minimum soft intervention probabilities span0.752903-0.797614.
+This is a structural soft-surrogate mismatch,not proof the original hard decoder
+is infeasible. Thirteen independent synthetic checks include exhaustive128-vertex
+comparisons. No primary gate,loss,temperature or model selection is changed.
+
 ### Predicted-Path Interaction: Registered Decoder Control
 
 Iteration complete,not project/goal completion. Main42.73min+fresh42.46min
