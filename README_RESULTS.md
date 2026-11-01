@@ -16,7 +16,11 @@ full-record all/easy/easy-degradation dual updates;keep original2%hard decoder.
 The previous binary cost-sensitive policy is an explicit prior control,not a new
 method claim. Eighteen focused/synthetic checks pass in2.01s. Real300-update pilot
 PID75728 completes in20.274650s,peak9.04GB,old100-update control and50/100 recovery
-exact. All18 full fits are launched locally;training/outcome readout remain incomplete.
+exact. PID76819 completes all18fits/36,000updates plus2,000exact-refit updates,
+431.611798s timed phase,peak10.75GB. All1,332 expected training constraints are
+still positive;this is not a safety pass. The first evaluation fails only on a
+missing output subdirectory;directories are created and the unchanged evaluation
+resumes. Full policy outcomes remain incomplete at this checkpoint.
 The fresh CREATE queue attempt returns255(remote connection closed),not job failure;
 no remote modifications or duplicate jobs. SOURCE development only;independent
 roles,Stage5C and SMC stay closed. No deployment or submission-ready claim.

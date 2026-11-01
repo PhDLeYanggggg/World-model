@@ -33,8 +33,11 @@ the earlier binary policy experiment; it is not a claim that cost-aware routing
 is itself new. The controlled comparison is registered before its own outcomes.
 The real training pilot exactly reproduces the old 100-update model and verifies
 checkpoint recovery. Its peak memory is about 9 GB, so I am running all 18 new
-heads locally at the registered budget. Full training and policy evaluation are
-not complete yet. Independent confirmation and deployment remain closed.
+heads locally at the registered budget. All 18 now finish 2,000 updates, and an
+independent full refit of the first head is exact. The complete training phase
+took 7.19 minutes at 10.75 GB peak memory. Policy evaluation is running; the
+training loss has not established a utility or safety improvement. Independent
+confirmation and deployment remain closed.
 [Experiment protocol](outputs/publication_readiness_2026_09/european_decision_cost_critic_v1/protocol.md).
 
 ### Completed Pairwise Decoder Control
