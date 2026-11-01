@@ -18,8 +18,11 @@ original2%constraints. Actual hard policies use learned objective utilities but
 unchanged predicted cost moments;zero actors must reproduce the old control.
 Thirty-three synthetic/focused checks pass in2.41s. Real pilot PID88782 completes
 400updates in19.511579s,peak9.76GB,zero-actor independent choices and both recovery
-checks exact. Full36-head/72,000-update training is launched locally;complete
-evaluation not_run yet. Latest CREATE queue transport returns255(reset by peer),
+checks exact. All36heads/72,000updates plus4,000exact-refit updates complete:
+PID89945,215.136728s,peak12.37GB. Real decoder PID91498 checks18queries/402rows/
+max49targets,exact interrupted recovery,direct0.782420s;size-biased one-source
+112,596query projection4894.298169s,not a completion receipt. Full72-group
+evaluation is launched locally. Latest CREATE queue transport returns255(reset by peer),
 not evidence of historical job failure. SOURCE fitting only;no deployment or
 independent roles,Stage5C or SMC. Previous negative results remain unchanged.
 
