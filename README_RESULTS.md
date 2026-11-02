@@ -28,6 +28,25 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Seed-Spread Input Comparison Registered
+
+Previous goal turn was progress:27full SOURCE cost fits,three exact complete
+refits,54selection groups/replay,positive registered utility but failed risk.
+`european_selection_uncertainty_v1` tests whether actual same-fold training-seed
+spread contributes harm information missing from the single-path critic.
+Freeze16predicted-path descriptors from three actual seeds17/29/43,with identical
+producer-excluded SOURCE rows and no observed future. No new trajectory training.
+
+Three30,277-parameter arms:disabled,real,fitting-SOURCE-matched noise. Same zero
+adapter initialization,old444fields,mean_absolute objective,complete draws,
+budgets and2%guards. Every disabled fit/inference must reproduce the old control.
+SOURCE-only normalization/catalogue,no selection statistics.27fits required;
+primary real-minus-disabled paired completion lower,negative control real-minus-
+noise,3000locality bootstraps and unchanged full-record risk. Calibration,
+confirmation and DroneCrowd remain closed. Feature construction/training/readout
+are not_run at registration. Six initial synthetic checks pass1.68s;not real
+training evidence. This does not establish a new ensemble method or joint gain.
+
 ### Cardinal-Loss Repair: Positive Primary, Failed Risk
 
 All27new SOURCE cost fits,three full exact refits,27pointwise freezes and

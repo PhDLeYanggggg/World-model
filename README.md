@@ -90,9 +90,16 @@ result is unchanged. Calibration and final confirmation remain closed.
 [actual fitting curves](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/figures/training_traces.svg)
 and [failure analysis](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/failure_analysis.md).
 
-The next unrun hypothesis is causal forecast-ensemble disagreement as an
-additional risk input, with SOURCE lineage and matched controls. I am not
-rescuing this model with a new threshold, a favorable subset or final-test tuning.
+The follow-up now registers causal forecast-ensemble disagreement as an added
+risk input. It compares disabled, real and fitting-SOURCE-matched noise arms,
+using the same cardinal loss, complete query budget and 2% rules. Every member
+excludes the critic-fitting scenes. The new projection starts at zero; the
+disabled control must reproduce the preceding model exactly. Real features,
+training and outcomes are not run at registration. This is a test of an
+established uncertainty signal, not a new calibration guarantee or deployment.
+
+[Uncertainty-input protocol](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/protocol.md).
+I am not rescuing a failed model with favorable subsets or final-test tuning.
 
 [Cost transport diagnosis](outputs/publication_readiness_2026_09/european_selection_cost_transport_v1/readout.md)
 and [registered loss comparison](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/protocol.md).
