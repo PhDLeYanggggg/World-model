@@ -42,6 +42,17 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The matched public forecasting control is now registered on the original
+European SOURCE forecaster population: 318,969 indexed rows, 12 localities and
+nine single-fold producers with actual seeds 17/29/43. This population is not
+the later 149,510-row controller whitelist. Nine fresh EqMotion fixed-head K=1
+fits will retain the original 4,000-update budgets and matched PCT draws.
+The original PCT and EqMotion differ in output parameterization; this is a
+public-family comparison, not isolated equivariance or published best-of-20
+reproduction. No independent roles are opened. Registration and 23 scoped
+checks are complete; actual pilot, fitting and readout are not_run at this
+freeze. [Protocol](outputs/publication_readiness_2026_09/european_eqmotion_v1/protocol.md).
+
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
 and the 200-update recovery pilot. All original query draws, preprocessing and
