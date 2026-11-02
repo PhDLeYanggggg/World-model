@@ -55,12 +55,13 @@ B+H radius. This supports a decoder-support hypothesis,not a cause or remedy
 proved by policy evaluation. No new bound-based model trained here.
 [Full diagnostic and limitations](outputs/publication_readiness_2026_09/european_selection_bank_support_v1/readout.md).
 
-A separate SOURCE-only zero-update check is prepared for the tighter causal
-cost-support constraint. The weighted projection is classical,not a new method
-or safe policy. Four checks include an independent constrained optimizer and
-feasible-label distance/idempotence tests;all pass0.38s. The gain objective and
-deployed risk need not improve. No new weights or development readout here.
-[Fixed diagnostic scope](outputs/publication_readiness_2026_09/european_actual_floor_projection_v1/plan.md).
+A separate SOURCE-only zero-update check now completes on all9old heads.
+The classical weighted projection reduces the mean full decoded fitting
+objective from0.721499640 to0.718860046,about0.37%,with unchanged R/ER.
+All9original prediction hashes match;no policy evaluated or model trained.
+This small improvement does not identify the main failure cause or establish
+better deployment. Four numerical/optimizer checks pass0.38s.
+[Complete diagnostic](outputs/publication_readiness_2026_09/european_actual_floor_projection_v1/readout.md).
 
 The current-bank nonlinear cost control is registered before fitting:18forests,
 two fixed row/context arms,128trees each,9actual forecaster pipelines,seeds17/29/43.
@@ -91,8 +92,10 @@ fitting,not promoted to a new primary. It retains original query visits and
 unlabeled zero-supervision queries,distinguishing common decoded cost error
 from uniform bank MSE and the forest's unprojected monitor. Two new metric
 checks pass;combined19scoped checks pass3.75s. Real diagnostic waits for all18fits.
-The actual interrupted producer also has a direct128tree-refit verifier prepared;
-it is not yet run and is distinct from the already exact first-producer refit.
+The actual interrupted producer's independent direct128tree refit is running
+under PID54254,with its own checkpoint,lock and heartbeat. It cannot overwrite
+the primary fits or main heartbeat. This is a reproducibility check,distinct
+from the already exact first-producer refit;no new efficacy claim.
 
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504
