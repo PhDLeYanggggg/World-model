@@ -58,6 +58,11 @@ fit the measured workload. No new remote job or slower-run downgrade.
 At12:32UTC,the first complete context128tree independent refit matches all
 tree/weight/input/trace state exactly. It is a reproducibility check,not model
 efficacy. All18formal fits continue;no development readout or threshold search.
+The supplementary full decoded SOURCE-objective calculation is prepared during
+fitting,not promoted to a new primary. It retains original query visits and
+unlabeled zero-supervision queries,distinguishing common decoded cost error
+from uniform bank MSE and the forest's unprojected monitor. Two new metric
+checks pass;combined19scoped checks pass3.75s. Real diagnostic waits for all18fits.
 
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504
