@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Preparing An Independent-Scene Readout
+
+I am preparing the past-only inputs for the six model-selection localities
+reserved before their forecast errors were observed. All 28 recordings keep
+the original 8/12-step protocol and query budget. This adapter creates no
+future target windows and opens no calibration or confirmation outcomes.
+It is data preparation for a later frozen-model readout, not a new accuracy result.
+
 ### Conditional Cost Identification: Better Fit, Worse Decisions
 
 I separated easy-event probability from conditional harm magnitude on the

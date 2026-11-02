@@ -24,6 +24,23 @@ all nine current PDF pages were inspected again. Layout is not scientific readin
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Model-Selection Input Adapter Registered
+
+The preceding goal turn was progress:36real conditional-cost fits,complete72
+readout/exact replay,negative primary and measured risk/utility tradeoff changed
+the next action. Current static role check identifies six unscored selection
+localities/28recordings,6,179,261raw rows and3,553,348past-supported target
+positions in the original manifest. These are metadata,not fresh model results.
+
+`european_model_selection_inputs_v1` freezes the existing causal input schema,
+256past-support queries per recording,all visible context and all28recordings.
+Only input/index arrays are permitted;no future target or validity windows,
+forecast errors,normalization fitting or model selection by outcomes. The old
+source-training accessor and immutable roles remain unchanged. Calibration,
+confirmation and DroneCrowd stay closed. Largest-record resource pilot precedes
+full conversion;complete raw reparse/array replay required afterward.18focused
+tests pass0.35s. Real pilot and full conversion not_run at registration.
+
 ### Completed Conditional-Moment Identification
 
 `european_conditional_moment_v1`: two31,381-parameter heads share the same
