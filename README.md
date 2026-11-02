@@ -42,6 +42,9 @@ The real recovery pilot now passes for all three losses, and a complete first-
 producer control refit matches the original weights, optimizer, draws and trace.
 The 18 new fits are running with the original full query budget and checkpoints;
 no downstream improvement is claimed before the complete readout.
+Training hit the existing disk-reserve guard after six fits. Checkpoints were
+retained and the unchanged run resumed once free space recovered, without
+deleting data or reducing the training budget.
 The earlier failed easy-deviance study stays a negative result, not a new-method
 claim. [Complete SOURCE diagnosis](outputs/publication_readiness_2026_09/european_calibration_source_fit_v1/readout.md).
 

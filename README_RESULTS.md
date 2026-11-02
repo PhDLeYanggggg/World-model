@@ -39,6 +39,12 @@ arrays are not used. Real pilot PID30702,8.459041s,peak8,536,358,912B:
 mean-control100step state exact. Formal train PID30865 now live. Complete
 first-producer mean-control refit also matches original weights/optimizer/
 sampler/trace exactly. New loss fits are not yet complete or evaluated.
+The first formal process stopped at the10GiB disk-reserve guard after6fits;
+the next model's2000/8192update checkpoint survived. Free space subsequently
+recovered from about8.3GiB to16.46GiB without any data/cache/system cleanup.
+Cause of the fluctuation is unconfirmed. The same run resumed under PID32164,
+unchanged guard/model/data/budget. CREATE readonly queue query freshly verified
+11:10UTC;72queue lines,not72independent tasks. No jobs changed/submitted.
 
 Matched SOURCE fit diagnosis complete:18frozen cost states,9forecasters,
 144producer-excluded site groups. The current mean_absolute and original
