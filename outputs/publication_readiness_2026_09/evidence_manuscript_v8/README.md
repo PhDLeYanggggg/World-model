@@ -3,7 +3,8 @@
 This draft asks when a learned forecast should replace a strong motion baseline.
 It separates average benefit, positive harm and missing-outcome uncertainty,
 and keeps unsuccessful controllers in the results. The current evidence is
-exposed SOURCE development, not independent confirmation or a deployable method.
+exposed SOURCE development and a supporting model-selection forecast ablation,
+not independent final confirmation or a deployable method.
 The broader multimodal agent-scene world-model goal remains unproven.
 
 The source includes the earlier frozen-bank comparisons and the complete
@@ -75,8 +76,18 @@ Whenever results or source text change, regenerate, compile and inspect again.
 
 ## Research Status
 
+The first supporting frozen-forecast readout on six model-selection localities
+is complete. Three actual forecaster training seeds show a known-label history
+effect of+2.60pp [1.73,3.81], but the registered paired completion-lower effect
+is-2.53pp [-3.67,-1.49] and full substitution fails original risk. These six
+localities are now exposed; risk calibration and final confirmation remain closed.
+Supplement S10 records the role change, missing labels, capacity controls and
+failure. It is not a replacement for the main joint-policy contribution.
+
 The controlled cost study does not establish new JEPA/Transformer dynamics,
 independent forecasting accuracy, cross-dataset safety, metric geometry or
 seconds-level prediction. EuropeanSquares remains detector-silver/local-image,
-obs8/pred12/rawstride12 in this pipeline. Three cost seeds share forecaster43.
+obs8/pred12/rawstride12 in this pipeline. The SOURCE cost comparisons' three
+cost seeds share forecaster43; the supporting selection ablation instead uses
+three actual forecaster training seeds17/29/43. Do not combine these identities.
 Stage5C and SMC remain off. Actual submission requires the author's confirmation.

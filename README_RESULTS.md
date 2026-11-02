@@ -21,8 +21,61 @@ its negative primary and improved-but-still-failed risk. The working supplement
 records conditional-event/magnitude semantics and the earlier guard diagnosis.
 The revised eight-page body retains the official style, fonts and margins;
 all nine current PDF pages were inspected again. Layout is not scientific readiness.
+The first supporting selection-forecast result and role exposure are now recorded
+in the main-text limitations and supplement S10. The regenerated nine-page PDF
+was inspected again; its failed primary and safety are not hidden by the positive
+known-label feature effect.
 
-## Source-Development Cost Learning (No Deployment Promotion)
+## Current Experiments (No Deployment Promotion)
+
+### First Selection-Locality Forecast Readout Complete
+
+The 36 SOURCE-trained forecasters now have a complete frozen-prediction readout
+on six previously unscored model-selection localities: 38,102 targets and28
+recordings, with all54 fold/seed/locality metric groups replayed. The six
+localities are now exposed for model selection, not final confirmation. Risk
+calibration, final confirmation and DroneCrowd remain closed. This supporting
+forecast-input experiment does not replace the main joint-policy claim.
+
+History minus disabled-context known-label ADE gain is **+2.6007pp [95% CI:
++1.7333,+3.8146]**, positive in all six localities. The registered paired
+completion-lower primary is **-2.5261pp [-3.6675,-1.4899]**, negative in all six.
+History known gain versus each SOURCE-selected floor is11.6729%; disabled9.0722%,
+current8.5157%, noise8.4199%. Post-readout exploratory known history-minus-current
+and history-minus-noise effects are+3.1572pp and+3.2530pp; these are not replacement
+primaries. Disabled has an unused512-parameter branch; current/noise use the
+same added capacity. Do not claim disabled is active-capacity matched.
+
+Full history substitution supports0/252 repeated recording-risk views, with249
+known all and247known easy positive-risk violations. Worst known easy net
+degradation47.9793%. Average utility does not rescue the original2% requirements.
+Floor abstention has zero known harm and undefined selected easy denominator;
+it is not a harmful policy or evidence of positive learned intervention.
+
+Known targets37,254; complete12targets21,434; partial-but-known15,820; wholly
+unknown848; available final endpoints27,694. All targets retained. Partial-mask
+ADE is not full12-step ADE; full-roster endpoint FDE is not estimable. The
+completion convention does not identify all missing steps of partial tracks.
+Bootstrap3000 resamples six localities after fold/actual-training-seed average,
+not overlapping rows or252 views as independent samples.
+
+Fresh readout PID83158:20.824071s,peak1,504,280,576B. Separate raw-label/metric
+replay PID83420:20.560468s,peak1,433,534,464B; all28raw labels and54groups exact.
+Inference had separately replayed all36forecasts before label opening. This
+uses actual training seeds17/29/43 but **no new training**, preprocessing fit or
+threshold tuning. Public scalar reports reconstruct exactly without private
+inputs.13focused checks pass1.02s; no full-repository-suite claim.
+
+Verdict: positive known-label input contribution, failed registered primary and
+record safety; no deployment or submission promotion. Task remains obs8/pred12,
+rawstride12,local-image detector-silver; not rawt50,metric,seconds,true3D or
+foundation evidence. Stage5C and SMC remain off. Next: matching SOURCE-only
+cost/controller interface and independent-versus-joint allocation, not more
+selection-threshold searches.
+
+[Readout and statistical detail](outputs/publication_readiness_2026_09/european_selection_forecast_readout_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selection_forecast_readout_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/european_selection_forecast_readout_v1/reproduction_zh.md).
 
 ### Selection Forecast Bridge And Actual Seed Family Complete
 

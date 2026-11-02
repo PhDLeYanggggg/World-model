@@ -257,3 +257,58 @@ The frozen TDEF ranking, forecast bank and all original recording requirements
 are unchanged. Complete fit/readout/replay status and results are taken only
 from the experiment's immutable scalar receipts; no partial loss is used to
 promote a policy. This remains exposed SOURCE fitting, not independent evidence.
+
+## S10. Frozen Forecast Readout On Model-Selection Localities
+
+After all36 SOURCE-trained forecasts were frozen and separately replayed, the
+first supporting outcome readout opened six model-selection localities. The
+38,102 targets in28recordings are new to this forecast readout, not training.
+These six localities are now exposed for model selection and must not later be
+called untouched final confirmation. Risk calibration, confirmation and
+DroneCrowd remain closed. No new fitting, normalization or threshold search was
+performed. The main independent-versus-joint policy question is unchanged.
+
+Three actual forecasting seeds17/29/43, three SOURCE folds and representations
+disabled/current/noise/history produce54matched fold/seed/locality cells. Each
+SOURCE producer's reference baseline and easy/hard thresholds remain fixed.
+The input bridge uses the actual partial-neighbor observation mask, not generic
+complete-neighbor context. Original SOURCE feature parity and a complete fresh
+raw feature reparse pass; all36 forecasts and nine disabled-parent controls
+replay exactly. A later separate reparse reproduces all28 label arrays and54
+metric groups. Inference does not access target masks or future endpoints.
+
+Known-mask ADE gain over the fixed producer floor is11.67% history,9.07%
+disabled,8.52% current and8.42% noise. The paired history-minus-disabled known
+effect is+2.60pp [95% locality bootstrap CI:1.73,3.81], positive in all six
+localities. However, the registered paired completion-lower primary is-2.53pp
+[-3.67,-1.49], negative in all six; the primary fails. Unknown-disagreement
+completion is a bound under the registered partial-mask convention, not a
+recovery of missing steps of partially labelled trajectories. Individual lower
+bounds cannot be subtracted to replace this paired lower contrast.
+
+There are37,254known targets,21,434complete12,15,820partial-but-known and848
+wholly unknown targets. Available final endpoints number27,694; full-roster FDE
+is not estimable. The roster is not selected by future completeness. Intervals
+use3,000locality bootstrap resamples after averaging folds/seeds, not rows or
+repeated views as independent samples. These are model-selection development
+intervals, not independent final confirmation or multiplicity-adjusted evidence.
+
+History full substitution supports0/252record-risk views, with249known-all
+and247known-easy positive-harm violations. Worst known easy net degradation
+is47.98%. Known harm independently fails safety; this is not only missing-label
+uncertainty. Floor abstention has zero known harm but an undefined selected-easy
+denominator, not proof of positive learned-intervention safety. The252views are
+28recordings repeated for nine producers. Original2% requirements are unchanged.
+
+Disabled has zero detector contribution within the same89,026total-parameter
+architecture; its512detector parameters are unused, so active capacity is not
+matched to history. Current/noise activate that same branch. Exploratory known
+history-minus-current and history-minus-noise effects are+3.16pp [1.72,5.13]
+and+3.25pp [2.33,4.46]; they do not replace the registered failed primary.
+
+This supports known-label forecast-input utility, not a safe policy, scene-joint
+decision method, JEPA contribution, independently confirmed dynamics advance
+or submission readiness. The complete public scalar readout and failure report
+are retained in european_selection_forecast_readout_v1. Local-image pixel,
+obs8/pred12/rawstride12 and detector-silver limitations remain. No metric,
+seconds-level, true3D, foundation, Stage5C or SMC claim follows.

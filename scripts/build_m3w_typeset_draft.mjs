@@ -29,6 +29,8 @@ const boundaryReady=fs.existsSync(path.join(pub,'european_boundary_guard_v1/veri
 const boundary=boundaryReady?complete('european_boundary_guard_v1','all72_new_cost_inference_and_action_scores_exact'):null;
 const conditionalReady=fs.existsSync(path.join(pub,'european_conditional_moment_v1/verification.json'));
 const conditional=conditionalReady?complete('european_conditional_moment_v1','all72_new_moment_probability_inference_and_action_scores_exact'):null;
+const selectionReady=fs.existsSync(path.join(pub,'european_selection_forecast_readout_v1/verification.json'));
+const selection=selectionReady?complete('european_selection_forecast_readout_v1','all54_metric_groups_exact'):null;
 const fmt=x=>x===null?'not estimable':Number(x).toFixed(2);
 const ci=x=>x.point===null?'not estimable':`${fmt(x.point)} [${x.CI95.map(fmt).join(', ')}]`;
 let amendment=`### Updated Coherent-Cost Controls\n\nThese later comparisons use the updated frozen neural bank and SOURCE fitting roster. They are not a ranking against the earlier bank's exposed inner-held results in Section 7. No independent outcomes are opened. All 149,510 targets, 74 recordings, 12 localities and 72 groups remain; three cost seeds share forecaster43.\n\nA zero-update control shares each agent's reference moments across causally available candidates and caps benefit at that reference. Harm and trajectories remain unchanged. This removes the cost contradictions but does not improve the full policy.\n\n| Projection contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |\n|---|---:|---:|\n| Projected minus raw learned joint | ${ci(projection.effects.learned_projection.full.known_pp)} | ${ci(projection.effects.learned_projection.full.lower_pp)} |\n| Projected joint minus its independent policy | ${ci(projection.effects.projected_joint_minus_independent.full.known_pp)} | ${ci(projection.effects.projected_joint_minus_independent.full.lower_pp)} |\n\nOnly ${projection.safety.learned_joint.supported_record_views}/444 original recording-risk views pass after projection. The positive joint-allocation component does not rescue the failed primary or establish safety. Required empty post-hoc matched controls remain not estimable. These are nominal SOURCE fitting intervals, not independent confirmation.\n\nA further matched training experiment uses the same coherent decoder, warm weights, 31,119 active parameters and complete cyclic query draws in both arms. It changes only whether the aggregate signed-risk residual is supervised on fixed causal initial choices or detached current joint choices. All legal known pointwise cost labels remain supervised. Empty or partly unknown selected-query labels do not become supervised zero. The network's context input stays fixed in both arms. This is not differentiation through an integer solver or an implementation of a published consistency loss.\n\n`;
@@ -55,7 +57,12 @@ if(base.includes('/Users/')||base.includes('PhDLeYang'))throw Error('Personal id
 let tokens=marked.lexer(base);
 const status=tokens.findIndex(t=>t.type==='paragraph'&&t.text.startsWith('Anonymous research draft.'));
 if(status<0)throw Error('Expected archived status paragraph');
-tokens.splice(status,1,...marked.lexer('**Working draft. Exposed SOURCE evidence only; not independent confirmation or submission-ready.**\n\n'));
+tokens.splice(status,1,...marked.lexer('**Working draft. SOURCE development and a supporting model-selection forecast readout; not independent final confirmation or submission-ready.**\n\n'));
+if(selection){
+  const pending=tokens.findIndex(t=>t.type==='paragraph'&&t.text.startsWith('Independent model selection, risk calibration'));
+  if(pending<0)throw Error('Expected archived role-status paragraph');
+  tokens.splice(pending,1,...marked.lexer(`A supporting frozen-forecast readout has now opened six model-selection localities, not risk calibration or final confirmation. History input adds ${fmt(selection.primary.known_pp.point)} pp known ADE gain; its registered completion-lower effect is ${fmt(selection.primary.completion_lower_pp.point)} pp and full substitution fails risk. Supplement S10 retains the complete comparison. Matched public predictors, same-rate joint controls and independent confirmation remain missing; this is not submission-ready.\n\n`));
+}
 if(own){
   const outdated=tokens.findIndex(t=>t.type==='paragraph'&&t.text.startsWith('The new scene result narrows'));
   if(outdated<0)throw Error('Expected archived next-test paragraph');
@@ -204,6 +211,8 @@ const receipt={base_manuscript_sha256:sha(basePath),projection_summary_sha256:sh
   boundary_guard_summary_sha256:boundaryReady?sha(path.join(pub,'european_boundary_guard_v1/summary.json')):null,
   conditional_moment_status:conditionalReady?'cached_verified_complete_SOURCE':'not_run',
   conditional_moment_summary_sha256:conditionalReady?sha(path.join(pub,'european_conditional_moment_v1/summary.json')):null,
+  supporting_selection_readout_status:selectionReady?'cached_verified_complete_model_selection_not_final_confirmation':'not_run',
+  supporting_selection_summary_sha256:selectionReady?sha(path.join(pub,'european_selection_forecast_readout_v1/summary.json')):null,
   markdown_sha256:sha(path.join(output,'manuscript.md')),tex_sha256:sha(path.join(output,'manuscript.tex')),
   official_template_sha256:sha(path.join(build,'cvpr.sty')),independent_confirmation:false,submission_ready:false,compiled:false};
 fs.writeFileSync(path.join(output,'build_sources.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));

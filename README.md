@@ -40,9 +40,25 @@ three actual training seeds, now have frozen predictions on this population;
 a second complete inference reproduces them exactly. No future targets were
 used to produce those inputs or predictions.
 
-The first model-selection outcome readout is now registered. It is a supporting
-forecast/input ablation, not a replacement for the joint-policy research question
-or the independent final test. Calibration and confirmation stay closed.
+The first model-selection outcome readout and separate raw-label/metric replay
+are complete. Historical detector context improves known-label ADE relative to
+the disabled-context version by **2.60 percentage points [95% CI: 1.73, 3.81]**.
+That secondary effect is positive in all six localities. But the registered
+paired completion-lower primary is **-2.53 pp [-3.67, -1.49]**, and full neural
+substitution reaches **47.98%** worst known easy net degradation. None of its
+252 repeated recording-risk views pass. **I have not deployed it.**
+
+This is a useful forecast-input signal, not a safe joint-policy result. The six
+localities are now exposed for model selection; they are not an untouched final
+test. Calibration and final confirmation stay closed. All 38,102 targets remain,
+including 848 wholly unknown outcomes. ADE uses available labels, not complete
+12-step tracks. Three actual training seeds are included; no new model was fitted
+or threshold chosen from this readout. Thirteen focused checks pass, including
+public-scalar reconstruction with private file reads denied.
+
+[Complete selection readout](outputs/publication_readiness_2026_09/european_selection_forecast_readout_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selection_forecast_readout_v1/failure_analysis.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_selection_forecast_readout_v1/reproduction_zh.md).
 
 [Input conversion and limitations](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/readout.md)
 and [reproduction](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/reproduction_zh.md).
