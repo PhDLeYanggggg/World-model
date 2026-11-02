@@ -38,8 +38,10 @@ explanation. This is diagnosis, not training or validation.
 
 The next controlled training comparison keeps the model and complete SOURCE
 budget fixed and tests easy-only versus dual H/EH stable cost divergences.
-That training comparison is now registered; gradient/interface checks pass,
-but no trained improvement is claimed before the real recovery pilot and full fits.
+The real recovery pilot now passes for all three losses, and a complete first-
+producer control refit matches the original weights, optimizer, draws and trace.
+The 18 new fits are running with the original full query budget and checkpoints;
+no downstream improvement is claimed before the complete readout.
 The earlier failed easy-deviance study stays a negative result, not a new-method
 claim. [Complete SOURCE diagnosis](outputs/publication_readiness_2026_09/european_calibration_source_fit_v1/readout.md).
 
