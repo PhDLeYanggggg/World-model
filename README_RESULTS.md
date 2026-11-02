@@ -43,7 +43,13 @@ registered before outcomes. The frozen current-bank TDEF ranker, original
 recording2%requirements and independent-data lock remain unchanged.
 Pre-registration engineering checks:6passed,2artifact checks skipped,1.35s.
 Actual resource/recovery pilot,formal training and complete evaluation are
-not_run at registration. SOURCE fitting only;no deployment promotion.
+not_run at registration. Subsequent real pilot PID71731 completes400updates
+in23.196583s,peak9,819,979,776B;both100-step recovered/direct scientific
+states,complete predictions and choices are exact. Pure-fit main-budget
+projection634.439558s excludes preparation/refits/readout and is not actual
+completion time. Local resources suffice;formal full36training is running.
+Post-registration checks7pass/1complete-result skip in1.65s. SOURCE fitting
+only;no deployment promotion.
 [Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
 
 ### Completed Two-Sided Boundary Guard Comparison

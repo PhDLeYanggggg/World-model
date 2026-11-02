@@ -35,8 +35,10 @@ The final TDEF ranking, forecast paths and original 2% rules remain frozen.
 
 This adapts the project's earlier easy-hurdle idea, whose old negative result
 is retained. It is not a new hurdle method or an exact continuation of the old
-critic. The comparison is registered before training; real recovery training,
-full policy effects and safety have not yet been evaluated. No deployment changes.
+critic. The registered real 400-update recovery pilot passes in 23.20 seconds,
+with about 9.82 GB peak memory and exact recovered predictions and choices.
+Full training is running; complete policy effects and safety are not yet
+available. No deployment changes.
 
 [Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
 
