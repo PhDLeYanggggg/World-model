@@ -33,6 +33,12 @@ Four regression checks include comparison with an independent constrained
 optimizer, feasible-label distance, idempotence and invalid-input rejection.
 These are engineering/numerical checks, not learned-policy success.
 
+[Evidence figure](figures/SOURCE_cost_support.svg) is generated only from public
+scalar receipts. Its three panels and captions were inspected; two independent
+SVG/PNG renders and receipts match exactly. The combined scoped suite covering
+projection, support, original controller, cardinal cost and forest checks passes
+29 tests in 5.32 seconds. The full repository suite was not run in this step.
+
 No development, private calibration, confirmation or DroneCrowd arrays read.
 No selector policy is evaluated in this diagnostic; no deployment promotion.
 The pending complete forest experiment retains its original primary. This

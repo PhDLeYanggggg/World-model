@@ -62,6 +62,9 @@ All9original prediction hashes match;no policy evaluated or model trained.
 This small improvement does not identify the main failure cause or establish
 better deployment. Four numerical/optimizer checks pass0.38s.
 [Complete diagnostic](outputs/publication_readiness_2026_09/european_actual_floor_projection_v1/readout.md).
+Its [SOURCE evidence figure](outputs/publication_readiness_2026_09/european_actual_floor_projection_v1/figures/SOURCE_cost_support.svg)
+is visually checked;two SVG/PNG renders match. Combined29scoped checks pass
+5.32s. These fitting/numerical results do not promote deployment or readiness.
 
 The current-bank nonlinear cost control is registered before fitting:18forests,
 two fixed row/context arms,128trees each,9actual forecaster pipelines,seeds17/29/43.
