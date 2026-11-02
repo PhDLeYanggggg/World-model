@@ -25,6 +25,14 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Tracing The Cost Failure
+
+I have registered a matched SOURCE comparison of the current mean-cost critic
+and its original control across all nine forecasting pipelines. It will test
+whether the selected easy-harm error already exists on fitting data or grows
+mainly on new localities. This is a diagnosis, not new training or held-out
+validation; confirmation remains closed. The complete resource pilot comes next.
+
 ### Independent Risk Calibration: Complete, But Unsupported
 
 I tested whether one common risk multiplier can repair a fixed cost model on

@@ -28,6 +28,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The next matched SOURCE fit diagnosis is registered, not yet executed:
+18frozen cost states,9forecasters,144producer-excluded site groups. It compares
+mean_absolute with weighted_centered using the same native costs and retains
+unknown labels.12focused synthetic/interface checks pass0.92s. This is not
+new training, a real-data result or a new calibration fit. The original control
+must reproduce the existing verified SOURCE diagnosis. No independent role
+arrays are accessed by this new diagnosis.
+
 Current execution update, 2 November: complete calibration is finished and
 unsupported under the registered original contract. All918full allocation grids
 froze before target construction: PID8905,12,106.168735s,peak853,803,008B.
