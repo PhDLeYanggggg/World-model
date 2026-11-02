@@ -64,11 +64,23 @@ not a submission-ready or deployable world model.
 [protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md)
 and [reproduction](outputs/publication_readiness_2026_09/european_selection_controller_v1/reproduction_zh.md).
 
-The follow-up freezes these same models and decisions, then decomposes their
-risk errors on SOURCE fitting data and the exposed selection localities. It
-checks harm underprediction, reference inflation and where useful neural
-opportunities are lost. This is a registered diagnosis, not another fit or an
-independent calibration result; real-data execution is not run at registration.
+The follow-up diagnosis is now complete: 144 SOURCE fitting and 108 exposed
+selection groups, with separate exact replay. Risk error already exists on
+fitting data. For selected context actions, predicted easy harm is only 1.18%
+of observed harm on SOURCE and 4.02% on selection; predicted reference cost is
+3.80x and 4.03x the observed cost. These pooled action-view diagnostics are
+not independent validation or safety certificates. Most useful neural gain is
+lost before the guard, at nonpositive predicted gain.
+
+I am testing two loss factors while keeping all data, forecasts, models and
+risk thresholds fixed: symmetric cost regression and absolute net-gain
+anchoring. The three new combinations require 27 complete SOURCE fits;
+training and selection outcomes are **not run at registration**. This is a
+controlled repair hypothesis, not a claimed improvement. The historical
+easy-deviance loss experiment also failed and is not being relabeled as new.
+
+[Cost transport diagnosis](outputs/publication_readiness_2026_09/european_selection_cost_transport_v1/readout.md)
+and [registered loss comparison](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/protocol.md).
 
 ### Independent-Scene Inputs
 

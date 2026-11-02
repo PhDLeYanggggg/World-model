@@ -1,0 +1,32 @@
+{
+  "experiment": "european_selection_cardinal_cost_v1",
+  "new_arms": ["mean_centered", "weighted_absolute", "mean_absolute"],
+  "cached_control": "weighted_centered_context",
+  "new_fits": 27,
+  "primary": "mean_absolute_minus_weighted_centered_independent_paired_completion_lower",
+  "training": {
+    "width": 64,
+    "learning_rate": 0.001,
+    "query_batch_size": 32,
+    "minimum_updates": 2000,
+    "largest_source_cycles": 4,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 100,
+    "checkpoint_every": 100
+  },
+  "positive_harm_budget": 0.02,
+  "easy_net_degradation_budget": 0.02,
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 20261102,
+  "cpu_threads": 4,
+  "num_workers": 0,
+  "hard_runtime_limit_seconds": 43200,
+  "disk_reserve_bytes": 10737418240,
+  "model_selection_labels_for_training": false,
+  "threshold_search": false,
+  "calibration_access": false,
+  "confirmation_access": false,
+  "new_trajectory_training": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

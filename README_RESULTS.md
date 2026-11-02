@@ -28,7 +28,7 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-### Risk Transport Diagnosis Registered
+### Risk Transport Diagnosis Complete; Cardinal-Loss Repair Registered
 
 The previous goal turn was progress:18real SOURCE fits,two exact full refits,
 54selection groups/exact replay,and a causal action audit changed the next action.
@@ -41,10 +41,30 @@ diagnostics do not certify completion safety or restore untouched test status.
 All decisions,legal-action masks,normalizers,forecasters,models and2%rules stay
 fixed. No threshold or model is fitted. SOURCE outcomes are explicitly fitting
 resubstitution,not validation. Calibration/confirmation/DroneCrowd remain closed.
-Seven targeted synthetic checks pass0.71s. The initial draft retained a fixture
+Seven targeted synthetic checks passed0.71s. The initial draft retained a fixture
 correction: a guard-rejected synthetic case needed positive,not zero,predicted
-gain. No diagnostic data or mathematics changed before execution. Actual pilot
-and all252real diagnostic groups are not_run at registration.
+gain. No diagnostic data or mathematics changed before execution.
+
+All252real groups now finish: run PID92568,149.432975s,peak10,170,728,448B;
+separate replay PID93031,167.684228s,peak10,218,913,792B. All18SOURCE inference
+outputs and252diagnostic groups exact. Selection predictions cached_verified;
+no policies changed. Context selected EH predicted/actual=.0117858 on SOURCE,
+.0401703 on selection; R inflation=3.7998x/4.0304x. Selected known easy risk
+7.3879%/8.1511%, versus predicted.3919%/.3764%. Failure on fitting data means
+domain shift alone is not an adequate explanation. Most useful neural gain is
+assigned nonpositive predicted gain. All-legal neural H is overpredicted while
+selected H is underpredicted; global multiplication is not a justified fix.
+This is outcome diagnosis,not validation or a new safety gate.
+
+`european_selection_cardinal_cost_v1` registers a2x2loss factor comparison on
+the same context model: underharm4vs1 and centered vs absolute net-gain error.
+Reuse9verified original context controls;27new SOURCE-only endpoints required.
+Same model/initialization/444fields/forecasts/normalization/complete query draws.
+Primary: mean_absolute minus original independent paired completion lower,
+3000locality bootstraps plus original full-policy record risk. No threshold
+search,new joint solver or independent-role exposure. Historical144-fit
+easy-deviance negative is explicitly retained; this is not a repeat of it.
+Real training/selection outcomes not_run at registration.
 
 ### SOURCE-To-Selection Controllers Complete: No Reliable Joint Gain
 
