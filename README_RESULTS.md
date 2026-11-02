@@ -41,6 +41,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+A one-factor neural capacity control is registered before fitting:the same
+mean_absolute cost head grows64to128hidden units(29,253to58,501parameters),
+with the original nine SOURCE pipelines,loss,optimizer,draws,budgets and risk.
+No new trajectories or modalities. Two tests pass2.54s:initial cost outputs
+match,draws remain identical,and small-model resume/direct states are exact.
+Real pilot/training/readout are not_run at registration; no success inferred
+from capacity. [Fixed protocol](outputs/publication_readiness_2026_09/european_selection_capacity_v1/protocol.md).
+
 A fixed SOURCE-only decode decomposition is registered after the complete
 forest negative. It separates raw regression,shared reference costs and the
 existing final projection for all18frozen forests. Final outputs must reproduce
