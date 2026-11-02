@@ -31,6 +31,9 @@ def test_exact_budget_passes_but_undefined_empty_support_does_not():
                  completion_easy_risk_upper=None, selected=0, supported=False)
     assert api.classify(empty)['category'] == 'unsupported_reference'
     assert api.classify(empty)['selected_none']
+    assert not api.classify(empty)['full_roster_easy_reference_unavailable']
+    full = dict(empty, known_easy_net_degradation=None)
+    assert api.classify(full)['full_roster_easy_reference_unavailable']
 
 
 def test_bad_flags_and_nonfinite_values_rejected():
@@ -38,3 +41,19 @@ def test_bad_flags_and_nonfinite_values_rejected():
         api.classify(view(known_all_risk=.3))
     with pytest.raises(ValueError):
         api.classify(view(known_all_risk=float('nan'), supported=False))
+
+
+def test_compatibility_with_actual_partial_label_metric_interface():
+    import numpy as np
+    from src.evaluation.m3w_selection_forecast_readout import policy
+    floor = np.zeros((4, 12, 2)); floor[..., 0] = 1.
+    predicted = floor.copy(); predicted[:2, :, 0] += .005
+    target = np.zeros_like(floor); valid = np.ones((4, 12), bool); valid[-1] = False
+    def cause(p):
+        score = policy(p, floor, floor, target, valid, np.ones(4, int), easy_cut=2., hard_cut=10.)
+        return api.classify(next(iter(score['recordings'].values())))
+    assert cause(predicted)['category'] == 'supported'
+    predicted[-1, :, 0] += .05
+    assert cause(predicted)['category'] == 'unknown_completion_bound_only'
+    predicted[0, :, 0] += .5
+    assert cause(predicted)['category'] == 'observed_positive_harm'

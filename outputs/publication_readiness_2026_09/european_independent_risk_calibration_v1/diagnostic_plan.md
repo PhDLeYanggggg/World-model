@@ -25,3 +25,20 @@ bound failure is not a claim that missing trajectories attain its bound.
 This is a reporting diagnostic, not another threshold/model-selection trial
 or an inferentially independent efficacy test. It cannot promote a policy or
 change a failed gate. No final-confirmation or DroneCrowd data is accessed.
+
+Also separate complete known-easy reference unavailability from merely empty
+selected reference. The former is invariant to policy/multiplier: when the
+whole known-easy floor-reference mass is zero, no selected subset can provide
+positive known-easy reference under the same floor, labels and easy definition.
+Report its repeated-view count, reconcile that invariance, and retain all
+original requirements. This check distinguishes a structural support obstruction
+from a critic or threshold error; it does not redefine zero support as safe.
+
+Report descriptive paired contrasts of matched-joint, free-joint and uniform
+policies versus independent for every fixed grid point. The known numerator
+comes from matched per-locality utility totals. For wholly unknown rows,
+compute the actual candidate-versus-control path disagreement; never subtract
+two floor-relative lower bounds. Use the same reference-weighted locality
+totals and 3,000 equal-locality bootstrap replicates. These contrasts do not
+choose a model, seed, multiplier or a new primary test, and do not undo fitting
+the calibration parameter. Partial missing steps remain unaddressed.

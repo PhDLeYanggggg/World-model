@@ -61,6 +61,8 @@ missing-label bounds or unavailable support without changing the policy.
 and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).
 The [execution record](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/execution_status.md)
 separates completed work from unrun calibration and confirmation.
+The [Chinese operations guide](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/operations_zh.md)
+covers local execution, recovery and the limits of the current reproduction path.
 
 ### Forecast Disagreement: Negative Result
 

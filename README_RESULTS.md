@@ -80,6 +80,15 @@ checks pass0.09s. These checks are not real calibration results. Official
 CVPR2027registration/full/supplement dates freshly verified as10/16/23November
 AoE;no account or submission action taken.
 
+Before calibration outcomes,descriptive diagnostics now also distinguish
+whole-roster easy-reference absence from empty selected support,and compute
+actual policy-pair unknown disagreement rather than subtracting individual
+lower bounds.7synthetic/native-interface checks pass0.19s. These are analysis
+checks,not real calibration effects. A Chinese operations guide documents
+current local execution and recovery;the legacy CREATE helper is invoked as
+a Python module. Its help loads successfully;no remote query/submission is
+claimed. Full allocation remains live and no calibration labels are opened.
+
 ### Frozen-Utility Bounded Repair Also Negative
 
 All nine five-policy action matrices freeze before scoring;54metric groups and

@@ -30,6 +30,9 @@ def classify(view):
     else:
         category = 'supported'
     return dict(category=category, unsupported_reference=unsupported,
+        full_roster_easy_reference_unavailable=view['known_easy_net_degradation'] is None,
+        selected_all_reference_unavailable=view['known_all_risk'] is None,
+        selected_easy_reference_unavailable=view['known_easy_risk'] is None,
         observed_positive_harm_violation=harm, observed_easy_net_violation=net,
         completion_upper_violation=completion, selected_none=view['selected'] == 0,
         selected_unknown_outcome=view['unknown_selected'] > 0)

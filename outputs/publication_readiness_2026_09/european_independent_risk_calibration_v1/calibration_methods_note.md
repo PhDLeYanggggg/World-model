@@ -31,6 +31,15 @@ utility criterion selects lambda, model, seed or SOURCE fold.
 
 ## Existing Risk-Control Work
 
+[Regression with Multi-Expert Deferral](https://proceedings.mlr.press/v235/mao24d.html)
+already studies continuous regression-cost routing, including a two-stage
+setting with pretrained experts. Our earlier matched published-loss control
+adapts its logistic surrogate; it is not a new deferral loss or a reproduction
+of the authors' original experiments. [Optimized Deferral for Imbalanced
+Settings](https://proceedings.mlr.press/v306/cortes26b.html) studies cost-sensitive
+expert imbalance. MILD has not been reproduced here, so imbalance alone cannot
+be presented as a demonstrated methodological contribution.
+
 [Learn then Test](https://arxiv.org/html/2110.01052v5) already provides a
 hypothesis-testing framework for risk calibration, including selective
 regression. Valid risk tests and multiplicity control matter; inspecting a

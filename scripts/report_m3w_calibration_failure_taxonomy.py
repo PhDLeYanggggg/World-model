@@ -55,12 +55,16 @@ def main():
                 exclusive={k:item['exclusive'][k] for k in api.CATEGORIES}, overlapping=dict(item['overlapping'])))
     if len(coverage) != 102:
         raise ValueError('Every original recording required')
+    full_unsupported = {r['overlapping'].get('full_roster_easy_reference_unavailable', 0) for r in rows}
+    if len(full_unsupported) != 1:
+        raise ValueError('Full-roster reference availability must not change with action selection')
     out = dict(result_source='fresh_run_descriptive_completed_calibration_metrics_no_policy_change',
         categories=list(api.CATEGORIES), rows=rows, unique_recordings=102,
         unique_label_coverage={k:sum(r[k] for r in coverage.values()) for k in fields},
         repeated_pipeline_record_views=918, empirical_calibration_not_confirmation=True,
         overlapping_failures_are_not_disjoint=True, exclusive_priority=list(api.CATEGORIES),
         chosen_multiplier_unchanged=summary['selection']['selected_multiplier'],
+        full_roster_easy_reference_unavailable_views=next(iter(full_unsupported)),
         new_model_or_threshold_fit=False, confirmation_access=False, deployment_changed=False)
     (PUBLIC/'risk_failure_taxonomy.json').write_text(json.dumps(out, indent=2, sort_keys=True)+'\n')
     lines = ['# Calibration Risk Failure Taxonomy', '',
@@ -72,7 +76,13 @@ def main():
         '|---:|---|---:|---:|---:|---:|---:|']
     for r in rows:
         lines.append('|'+str(r['multiplier'])+'|'+r['arm']+'|'+'|'.join(str(r['exclusive'][k]) for k in api.CATEGORIES)+'|')
-    lines += ['', 'Unsupported reference mass is not a safe zero. A completion-bound-only',
+    lines += ['', f'Full-roster easy-reference unavailable views: {out["full_roster_easy_reference_unavailable_views"]}/918.',
+        'This availability flag is identical across all actions and multipliers.',
+        'Where the complete known-easy reference mass is zero, no selected subset',
+        'can have positive known-easy reference under the unchanged floor, easy',
+        'definition and labels. That is a support obstruction, not something a',
+        'different threshold or trajectory predictor can repair on these same labels.',
+        '', 'Unsupported reference mass is not a safe zero. A completion-bound-only',
         'failure does not prove missing rows actually incur worst-case harm. Observed',
         'positive harm and signed easy-net degradation are distinct. All figures are',
         'conditional calibration readouts, not independent confirmation or a population',
