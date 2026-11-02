@@ -62,6 +62,10 @@ The complete nine-fit run is now active as PID 66505 with atomic checkpoints
 and heartbeat; no SOURCE outcome readout is available yet. Resume uses
 `scripts/run_m3w_european_eqmotion.py train --resume`, preserving all original
 roles and budgets. Readout tooling requires full forecast and metric replay.
+At the 18:38 UTC checkpoint, four of nine full models are complete and the
+first 4,000-update independent refit is scientifically state-exact. Their
+lightweight receipts are saved separately; this is partial training progress,
+not a completed nine-model freeze or a SOURCE forecasting result.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
