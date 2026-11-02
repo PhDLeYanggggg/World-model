@@ -96,8 +96,9 @@ using the same cardinal loss, complete query budget and 2% rules. Every member
 excludes the critic-fitting scenes. The new projection starts at zero; the
 disabled control must reproduce the preceding model exactly. All six feature
 arrays now reproduce exactly, and the real 600-update recovery pilot passes
-for every arm. The 27 full SOURCE fits are running; outcomes for this comparison
-are not scored yet. Candidate forecast paths remain fixed, with no added ensemble
+for every arm. All 27 full SOURCE fits and three exact full refits now finish
+in 10.56 minutes locally; all nine disabled controls reproduce the old models.
+Outcomes for this comparison are not scored yet. Candidate paths stay fixed, with no added ensemble
 mean action. This tests an established uncertainty signal, not a calibration
 guarantee or deployment.
 

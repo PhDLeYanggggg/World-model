@@ -53,7 +53,12 @@ per fold;these overlapping views are not new unique target rows. No outcome
 values create features. No ensemble-mean action changes the fixed forecast bank.
 Real600-update pilot PID97385passes7.960654s,peak8,705,835,008B:all three
 50->100recoveries exact;disabled original100-step control exact. Formal27fits
-now running with original complete budgets;outcomes not scored for this comparison.
+started with original complete budgets. All27fits now complete PID97567:
+633.519989s,peak14,832,680,960B;211,968primary and21,504full-refit updates.
+Three complete first-producer refits exact;all nine disabled original models,
+base optimizer states,traces,samplers and RNG reproduce the preceding controls.
+Every original query has at least four visits. New policy freeze follows;
+outcomes for this comparison remain unscored at this training checkpoint.
 
 ### Cardinal-Loss Repair: Positive Primary, Failed Risk
 
