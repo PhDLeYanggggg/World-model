@@ -25,6 +25,19 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Independent Risk Calibration: Registered, Not Yet Run
+
+I have fixed the existing mean-absolute cost models for the next experiment:
+risk calibration on the separately reserved 12 localities and 102 recordings.
+The native utility ranking, all nine trained pipelines and the original 2%
+recording requirements stay fixed. A registered common risk multiplier is the
+only fitted parameter. Empty support cannot qualify as safe intervention.
+Calibration outcomes will be opened only after the complete policy grid is
+frozen. Final confirmation stays closed; this is not a population-risk guarantee
+or deployment promotion. The earlier negative results below remain unchanged.
+
+[Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md).
+
 ### Forecast Disagreement: Negative Result
 
 I tested whether disagreement among three actual training seeds helps identify

@@ -28,6 +28,17 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Independent Risk Calibration Registered
+
+Fixed mean_absolute SOURCE models, nine producers; original risk-calibration
+role:102 recordings/12 localities. This new narrow operator does not alter old
+role flags or SOURCE/selection accessors. Only a common lambda in the fixed
+1,2,...,4096 grid is calibrated; native predicted utility and original all/easy
+2% requirements remain. All four allocator arms/grid decisions must freeze
+before labels. Undefined recording support never passes. Registration is not
+execution, a population-risk certificate or confirmation. Confirmation and
+DroneCrowd remain closed. No new neural training or deployment is claimed.
+
 ### Frozen-Utility Bounded Repair Also Negative
 
 All nine five-policy action matrices freeze before scoring;54metric groups and
