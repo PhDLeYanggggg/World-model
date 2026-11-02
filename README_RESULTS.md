@@ -41,6 +41,17 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+A fixed SOURCE-only decode decomposition is registered after the complete
+forest negative. It separates raw regression,shared reference costs and the
+existing final projection for all18frozen forests. Final outputs must reproduce
+the original SOURCE hashes and complete scores exactly;independent augmented
+target/weight hashes must match the original fits. Five numerical/interface
+checks pass1.18s,including cases where alias averaging or radial projection
+can damage the original objective. Those are synthetic counterexamples,not
+observed causes. Real18case execution is not_run at registration. No new
+training,policy,threshold or independent-role access.
+[Fixed scope](outputs/publication_readiness_2026_09/european_cost_decode_decomposition_v1/protocol.md).
+
 A SOURCE-only current-bank support diagnostic now completes across all9
 producers and444repeated recording views. Each view has at least one genuine
 known easy action satisfying the original finite2%reference contract. This
