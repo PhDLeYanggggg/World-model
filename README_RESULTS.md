@@ -95,10 +95,12 @@ fitting,not promoted to a new primary. It retains original query visits and
 unlabeled zero-supervision queries,distinguishing common decoded cost error
 from uniform bank MSE and the forest's unprojected monitor. Two new metric
 checks pass;combined19scoped checks pass3.75s. Real diagnostic waits for all18fits.
-The actual interrupted producer's independent direct128tree refit is running
-under PID54254,with its own checkpoint,lock and heartbeat. It cannot overwrite
-the primary fits or main heartbeat. This is a reproducibility check,distinct
-from the already exact first-producer refit;no new efficacy claim.
+The actual interrupted producer's independent direct128tree refit now completes:
+PID54254,1,152.128213s,peak10,484,514,816B. All128tree states and the retained
+96tree prefix/trace match exactly. Its separate checkpoint,lock and heartbeat
+do not overwrite primary fits or main progress. These128extra reproduction
+trees are distinct from the first-producer refit,not a new efficacy result.
+[Chinese running and recovery guide](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/reproduction_zh.md).
 
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504
