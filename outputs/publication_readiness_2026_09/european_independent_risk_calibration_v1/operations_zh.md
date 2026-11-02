@@ -117,7 +117,9 @@ SOURCE、model selection、risk calibration、final confirmation 是不同角色
 .venv-pytorch/bin/python scripts/run_m3w_independent_risk_calibration.py verify
 .venv-pytorch/bin/python scripts/report_m3w_calibration_failure_taxonomy.py
 .venv-pytorch/bin/python scripts/report_m3w_calibration_paired_effects.py
+.venv-pytorch/bin/python scripts/report_m3w_calibration_cost_attribution.py
 .venv-pytorch/bin/python scripts/report_m3w_independent_risk_calibration.py
+.venv-pytorch/bin/python scripts/plot_m3w_independent_risk_calibration.py
 ```
 
 每个完成标记都是不可覆盖的阶段记录。已有同版本有效验证可直接复用；
@@ -130,7 +132,12 @@ SOURCE、model selection、risk calibration、final confirmation 是不同角色
 - `verify.json`：评分、可行性与逐查询切换数量核验的实际范围；不等于再次优化所有 MILP。
 - `risk_failure_taxonomy.md`：真实伤害、缺失未来边界、支持不足等原因；分类不是另一次调参。
 - `paired_calibration_effects.md`：直接成对计算未知未来的预测差异；不是两个各自下界相减，也不参与选参。
+- `selected_cost_attribution.md`：明确在读数后加入的描述性成本归因，区分伤害低估和参考误差高估；不重训、不修改本轮参数，不声称事先登记。
 - `gates.md`：实际通过与未通过项，不能以程序成功退出替代科学 gate。
+
+结果图只读取公开汇总，不重新选择参数。私有 PNG 预览和公开 SVG 来自同一
+张 Matplotlib 图；图中保留全部网格、失败和不可估结果。预测或风险上的正值
+仍需结合完整 gate 阅读，不能以其中一张正收益图替代部署证据。
 
 校准参数只从预先固定的 13 个强度中选择，模型、排序目标和 2% 要求不变。
 所有必需录像视图都要满足原始条件；分母不可估不能填成安全的零。
@@ -151,6 +158,16 @@ SOURCE、model selection、risk calibration、final confirmation 是不同角色
 ```
 
 针对性检查不等于整个 `tests` 仓库通过。全套未运行时必须单独标明。
+完整评分和 `verify` 都结束后，还可用公开充分统计量重新核对全部 104 组
+地点级点估计与区间，以及 39 个配对比较；不加载私有轨迹、不训练模型：
+
+```bash
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_completed_calibration_evidence.py
+```
+
+它保留原程序按录像首次出现的地点顺序，因此固定种子 bootstrap 能逐值
+匹配；不能把 JSON 排序后的键顺序偷偷换进去后声称逐值一致。这仍只是
+数值报告复现，不是新的独立数据验证或完整冷启动训练复现。
 本地存在的私有原始数据、cache 和模型权重不会随 Git 分发；全新机器缺少
 这些资产时，这份阶段操作说明不能冒充已验证的冷启动完整训练复现包。
 

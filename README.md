@@ -25,12 +25,13 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Independent Risk Calibration: Complete Grid Frozen, Scoring Underway
+### Independent Risk Calibration: Complete, But Unsupported
 
-I am testing whether one common risk multiplier can repair a fixed cost model
-on separately reserved calibration scenes. All nine SOURCE-trained pipelines,
-native utility rankings and original 2% recording requirements stay fixed.
-There is no new training or per-scene parameter search.
+I tested whether one common risk multiplier can repair a fixed cost model on
+separately reserved calibration scenes. All nine SOURCE-trained pipelines,
+native utility rankings and original 2% recording requirements stayed fixed.
+No common multiplier passes the complete original contract. I have not deployed
+this controller; global-floor fallback is not counted as a learned success.
 
 The complete cohort contains 102 recordings in 12 locality groups, with at
 most 256 query frames per recording: 481,537 causal targets and 801,360
@@ -45,18 +46,34 @@ from 29.65% to 0.137% as the constraint tightens; matched joint allocation keeps
 the same intervention count at every query. These counts are not accuracy or
 safety evidence, and nonoptimal solver cases retain a feasible parent policy.
 
-Only after the full freeze were future calibration targets constructed.
-Scoring is underway; no common multiplier or safety result is claimed yet.
-Empty support does not pass. Final confirmation and DroneCrowd remain closed,
-and earlier negative results remain unchanged. A calibrated result would still
-not be independent efficacy evidence, a population guarantee or deployment approval.
-Complete-grid plots and failure categories were fixed before outcomes; they
-retain unsupported and negative results instead of selecting a favorable curve.
+Future target windows were constructed only after the full freeze. All 47,736
+metric groups now replay exactly, including feasibility and per-query counts.
+The unadjusted joint policy improves available-label ADE by 1.93% on average,
+but its worst-recording easy net degradation is 103.57%, and 0/918 recording/
+pipeline views meet the original full risk contract. At the strictest multiplier,
+gain is only 0.00210% and 141/918 views pass; the remaining views are not safe zeros.
+
+The cost diagnosis is more specific than "domain shift": at actual switches,
+the joint policy's median predicted/observed harm ratio is 0.196 and its easy-
+harm ratio is 0.000031. These are defined-record conditional medians, not a causal
+explanation or pooled estimates. The next question is whether this error already
+exists on SOURCE data or is amplified on new localities, before choosing a new loss.
+
+Same-count joint allocation shows descriptive utility gains at some grid points,
+but that does not repair failed risk or justify choosing a favorable multiplier
+afterward. All curves, paired intervals and failures are retained. Fifty-six
+focused checks pass; the full repository suite has not been run in this phase.
+Final confirmation and DroneCrowd remain closed. These calibration outcomes are
+now exposed, not independent efficacy evidence or a population risk guarantee.
 
 [Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md)
-and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).
+and [complete readout](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/readout.md).
+The [failure analysis](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/failure_analysis.md)
+separates observed error harm from support and missing-label bounds.
+The [working paper addendum](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/calibration_paper_addendum.md)
+records the result without changing the frozen v8 PDF or claiming submission readiness.
 The [execution record](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/execution_status.md)
-separates completed work from unrun calibration and confirmation.
+separates completed calibration from unrun confirmation.
 The [Chinese operations guide](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/operations_zh.md)
 covers local execution, recovery and the limits of the current reproduction path.
 
@@ -86,10 +103,10 @@ is -1.44 pp [-2.05, -0.84]. All decisions and metric groups replay exactly.
 The evidence does not support the simple explanation that preserving the old
 ranking is enough. Neither new policy is deployed.
 
-The next priority is the separately reserved risk-calibration stage, not more
-variants on these exposed selection scenes. I checked its existing metadata:
-12 locality groups and 102 recordings. No calibration or final-confirmation
-outcomes were opened in this check; no failed gate is relabeled as passed.
+That result motivated the separately reserved calibration experiment above.
+Its initial metadata check opened no calibration or final-confirmation outcomes;
+the subsequent completed readout is reported separately. No failed gate is
+relabeled as passed.
 
 [Complete uncertainty result](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/readout.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/failure_analysis.md)

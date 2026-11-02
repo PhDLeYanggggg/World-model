@@ -62,6 +62,64 @@ def render(summary, phases):
     return '\n'.join(lines)
 
 
+def render_failure(summary, taxonomy, attribution):
+    chosen = summary['selection']['selected_multiplier']
+    lines = ['# Calibration Limitations And Failure Analysis', '',
+        'Complete dedicated-role calibration, not independent confirmation. No model,',
+        'policy, risk budget or threshold grid is changed by this diagnosis.', '',
+        ('No common multiplier passes the original full-record contract. Global-floor'
+         ' fallback is separate, not learned safe success.' if chosen is None else
+         'A common multiplier fits this calibration cohort; confirmation is still required.'), '',
+        '## Observed Error Harm Versus Support', '',
+        '|Lambda|Policy|Observed-harm exclusive|Undefined reference|Unknown-bound only|Supported|No actual switches|',
+        '|---:|---|---:|---:|---:|---:|---:|']
+    for r in taxonomy['rows']:
+        if r['arm'] not in ('independent', 'joint_matched'):
+            continue
+        c = r['exclusive']
+        lines.append(f'|{r["multiplier"]}|{r["arm"]}|{c["observed_positive_harm"]}|'
+            f'{c["unsupported_reference"]}|{c["unknown_completion_bound_only"]}|'
+            f'{c["supported"]}|{r["overlapping"]["selected_none"]}|')
+    lines += ['', 'Exclusive categories prioritize undefined reference before observed harm;',
+        'overlapping flags are retained in risk_failure_taxonomy.json. Harm here means',
+        'increased forecast error, not physical damage. Empty selected reference is',
+        'not a measured safe zero. Full-roster easy-reference unavailable views:',
+        f'{taxonomy["full_roster_easy_reference_unavailable_views"]}/918.', '',
+        'The low-multiplier failures are not explained solely by unobserved outcomes.',
+        'Increasing the multiplier suppresses actions, but finite selected support is',
+        'lost and average gains approach zero. Passing signed easy net alone would',
+        'not pass the separate original positive-harm/reference constraints.', '',
+        '## Selected Cost Diagnosis', '',
+        'This attribution was added after the completed readout, not preregistered as',
+        'another primary result. It uses native costs, never lambda-scaled optimizer',
+        'coefficients. Medians condition on defined record ratios; nine pipelines',
+        'repeat recordings and do not create independent samples.', '',
+        '|Lambda|Policy|Median predicted/true H|Median predicted/true EH|',
+        '|---:|---|---:|---:|']
+    for r in attribution['rows']:
+        if r['multiplier'] not in (1, 4096):
+            continue
+        values = [r['record_ratio_summaries'][k]['median'] for k in
+                  ('harm_prediction_ratio', 'easy_harm_prediction_ratio')]
+        text = '|'.join('N/A' if v is None else f'{v:.6g}' for v in values)
+        lines.append(f'|{r["multiplier"]}|{r["arm"]}|{text}|')
+    lines += ['', 'The cost accounting separates harm underprediction from reference',
+        'overprediction; it does not identify the causal training mechanism. A new',
+        'SOURCE-side repair should address the selected easy-harm tail and verify',
+        'SOURCE generalization, not tune repeatedly on these calibration labels.',
+        'Future reuse of this cohort must disclose its outcome exposure.', '',
+        'The complete paired policy effects are in paired_calibration_effects.md.',
+        'Some grid points show positive descriptive effects, but inspecting the grid',
+        'does not supply multiplicity-controlled superiority or repair failed risk.',
+        'No favorable lambda is substituted for the registered unsupported selection.', '',
+        'Available-label ADE is not full12 ADE. Unknown-row completion bounds do not',
+        'recover missing steps inside partial trajectories. Pixels/raw stride12 and',
+        'released tracker/detector silver do not support metric, seconds, human-gold,',
+        'true3D or foundation claims. Confirmation and DroneCrowd remain closed.',
+        'Stage5C and SMC remain off. No new controller is deployed.', '']
+    return '\n'.join(lines)
+
+
 def main():
     summary = json.loads((PUBLIC/'summary.json').read_text())
     phases = {name: json.loads((PUBLIC/(name+'.json')).read_text())
@@ -72,18 +130,9 @@ def main():
         original_record_risk_supported=chosen is not None, population_certificate=False,
         confirmation_efficacy=False, deployment_promoted=False, stage5c=False, smc=False)
     (PUBLIC/'gates.md').write_text('# Calibration Gates\n\n'+'\n'.join(f'- {k}: {v}' for k,v in gates.items())+'\n')
-    (PUBLIC/'failure_analysis.md').write_text(
-        '# Calibration Limitations And Failure Analysis\n\n'
-        + ('No multiplier supports every required recording view. Shrinking intervention '
-           'does not turn empty or undefined denominators into evidence of safety.\n\n' if chosen is None else
-           'A common multiplier fits this dedicated calibration cohort. Independent '
-           'confirmation is still unrun; passing calibration is not deployment approval.\n\n')
-        + 'The frozen score family may underestimate conditional harm under domain shift. '
-        'A stricter scalar can suppress useful actions and lose finite support; it cannot '
-        'relearn the ranking or create missing labels. The full fixed grid and per-locality '
-        'statistics are retained. No locality is removed and no failed historical protocol '
-        'is relabeled. Next research must separate score accuracy, conditional support and '
-        'calibration limitations instead of optimizing these calibration labels repeatedly.\n')
+    taxonomy = json.loads((PUBLIC/'risk_failure_taxonomy.json').read_text())
+    attribution = json.loads((PUBLIC/'selected_cost_attribution.json').read_text())
+    (PUBLIC/'failure_analysis.md').write_text(render_failure(summary, taxonomy, attribution))
     print(json.dumps(dict(readout=str(PUBLIC/'readout.md'), selected_multiplier=chosen)))
 
 

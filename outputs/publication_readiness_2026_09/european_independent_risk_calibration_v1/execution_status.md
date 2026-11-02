@@ -25,6 +25,10 @@ No optimizer updates occurred.
 |Frozen forecast/cost inference|5393|827.282159|2431598592|
 |Complete fresh forecast/cost replay|6966|837.194931|2397880320|
 |Real atomic recovery/direct grid pilot|6747|69.347075|656785408|
+|Complete atomic allocation|8905|12106.168735|853803008|
+|Targets after complete freeze|23238|162.685442|3451518976|
+|Complete calibration scoring|23672|989.094563|3310239744|
+|Complete metric/feasibility replay|25146|1066.039289|3259449344|
 
 The legacy outer two-file checkpoint crash window was reproduced in a test.
 Prospective storage-v2 uses a single fsynced atomic prefix. The real largest
@@ -32,7 +36,8 @@ record controlled stop after one committed multiplier, checkpoint reload and
 direct full-grid run match exactly, including the original pilot. This is not
 an OS-kill test. No predictor, grid, objective, solver or risk rule changed.
 
-33 focused checks pass in 1.24s; the full repository suite was not run. The
+The earlier pre-readout set had33checks in1.24s. The final focused set has
+56passing checks in3.16s; the full repository suite was not run. The
 cohort SVG is rendered and visually checked; two renders give the same hash
 using only public input metadata. One locality accounts for 86.35% of targets.
 All 12 groups remain; window count is not statistical independence.
@@ -50,17 +55,28 @@ freeze, PID23238:162.685442s, peak3,451,518,976B. Original inputs were rechecked
 against the label-builder's past interface. These calibration outcomes are now
 opened for their registered purpose; they are not an untouched test cohort.
 
-## Running
+## Completed Readout: Unsupported Calibration
 
-Complete calibration scoring is running locally, PID23672. Original models,
-parameter grid, recording cohort and risk requirements remain unchanged.
-The process lock prevents duplicate work. Final confirmation stays closed.
+Complete scoring and replay exited0. All47,736metric groups are exactly
+reproduced, with frozen decision feasibility and per-query matched counts
+rechecked. This is not MILP reoptimization. No common multiplier passes the
+original full-record contract. No process from these calibration phases is
+still running; do not rerun immutable completed phases as new experiments.
 
-## Not Complete Yet
+The full taxonomy, all39direct paired contrasts, post-readout native selected-
+cost attribution and three readout figures are complete. The attribution
+reconciles23,868metric views, two known-risk ratios each; it does not fit or
+change a policy. Figure PNG siblings were inspected and two SVG renders have
+identical hashes. All104public locality point/CI pairs and39paired contrasts
+reconstruct exactly in focused tests; this is numerical reporting evidence,
+not independent model confirmation or a cold-start training reproduction.
 
-Full calibration scoring and exact metric/feasibility replay are not complete.
-No common multiplier has been fitted yet. Final confirmation and DroneCrowd
-remain closed. The completed freeze and labels are not an efficacy result.
+## Remaining Research
+
+The selected easy-harm prediction error needs a SOURCE-side diagnosis before
+another loss/model change. The new descriptive findings are recorded in the
+working paper addendum; they have not been typeset into the frozen v8 PDF.
+Final confirmation and DroneCrowd remain closed. No learned policy is promoted.
 
 Runtime checks, input replay and numerical equality are not predictive
 improvement, a safety pass, an independent efficacy result, a risk certificate,
@@ -68,20 +84,17 @@ submission readiness or deployment approval. Prior negative model-selection
 results remain unchanged. Original 2% all/easy requirements and finite support
 remain. Empty support is not a safe zero.
 
-After the current scoring process exits successfully:
+Reporting/statistic reconstruction commands (completed phases need not rerun):
 
 ```bash
-.venv-pytorch/bin/python scripts/run_m3w_independent_risk_calibration.py verify
-.venv-pytorch/bin/python scripts/report_m3w_calibration_failure_taxonomy.py
-.venv-pytorch/bin/python scripts/report_m3w_calibration_paired_effects.py
 .venv-pytorch/bin/python scripts/report_m3w_independent_risk_calibration.py
 .venv-pytorch/bin/python scripts/plot_m3w_independent_risk_calibration.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_completed_calibration_evidence.py
 ```
 
 The label operator refuses access until all 918 full-grid policy matrices
-freeze. If no multiplier meets the original full-record requirements, report
-unsupported calibration; do not relabel global-floor fallback as learned safe
-success.
+freeze. This run found no supported common multiplier. Global-floor fallback
+remains separate, not a learned safe success.
 
 ## Unchanged Boundaries
 

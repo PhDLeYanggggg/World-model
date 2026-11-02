@@ -28,13 +28,41 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-Current execution update, 2 November: all 918 full allocation grids finished,
-PID8905, 12,106.168735s, peak853,803,008B. No cohort or parameter reduction.
-The label-free solver report is complete. All102future label sets were built
-only after the global policy freeze, PID23238,162.685442s,peak3,451,518,976B.
-Calibration scoring is now running (PID23672); confirmation remains closed.
-Earlier "not_run/outcomes closed" entries below describe their earlier phases,
-not the current access status. No predictive or safety pass is claimed yet.
+Current execution update, 2 November: complete calibration is finished and
+unsupported under the registered original contract. All918full allocation grids
+froze before target construction: PID8905,12,106.168735s,peak853,803,008B.
+All102label sets followed: PID23238,162.685442s,peak3,451,518,976B.
+Complete scoring: PID23672,989.094563s,peak3,310,239,744B.
+All47,736metric groups exactly replayed: PID25146,1,066.039289s,
+peak3,259,449,344B; feasibility and per-query matched counts also replayed,
+not all MILPs reoptimized. No cohort, model, budget or grid reduction.
+
+No common multiplier is supported. At lambda1, independent known gain1.4121%
+[1.0922,1.7757], matched joint1.9255%[1.4393,2.4855], but worst signed easy
+net41.0795%/103.5715% and only6/0 of918views pass. The direct paired lower
+joint-minus-independent effect is0.0697pp[-0.0946,0.2628], not the difference
+of individual lower bounds. All39fixed-grid contrasts remain descriptive;
+positive curves at other multipliers do not choose a new operating point.
+
+At lambda1, matched joint exclusive failure counts are907observed harm,
+9undefined reference and2unknown-bound-only. At4096, they are96/675/6,
+with141supported views. No full-roster known-easy reference is absent in any
+view; empty selected reference is distinct. Scalar tightening loses utility
+and finite support without satisfying the complete recording contract.
+
+Post-readout descriptive cost attribution reconciles23,868metric views and
+47,736known-risk ratios. Matched-joint lambda1 record medians predicted/true
+H=.195606, EH=.0000310265, R=1.048541, ER=.013008, with finite counts retained.
+This diagnoses selected-region cost error, not a causal training mechanism.
+Three readout figures are visually checked and SVG hashes repeat exactly.
+56focused checks pass3.16s, including exact reconstruction of all104public
+locality point/CI pairs and39paired comparisons. Full repository suite not_run.
+The paper addendum is new; the frozen v8 main PDF has not been regenerated.
+
+Calibration outcomes are now exposed; confirmation and DroneCrowd remain
+closed. No new neural training, learned deployment, risk certificate, metric/
+seconds claim or submission readiness. Earlier "not_run/outcomes closed"
+entries below describe their earlier phases, not the current access status.
 
 ### Independent Risk Calibration: All102 Inputs Replayed Exactly
 
