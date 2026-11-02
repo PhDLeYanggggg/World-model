@@ -40,6 +40,13 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+A SOURCE-only current-bank support diagnostic is prepared while the registered
+forests train. It checks whether genuine known easy actions can supply the
+original finite2%reference support,even with outcome knowledge. This is an
+oracle feasibility diagnosis,not an inference policy or model success. Three
+synthetic checks pass0.18s. Development/calibration/confirmation remain untouched
+by this diagnostic;real SOURCE execution not_run at preparation.
+
 The current-bank nonlinear cost control is registered before fitting:18forests,
 two fixed row/context arms,128trees each,9actual forecaster pipelines,seeds17/29/43.
 It reuses the444causal fields,complete original SOURCE query multiplicities,
