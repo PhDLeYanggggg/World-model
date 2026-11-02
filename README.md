@@ -44,14 +44,21 @@ harm, but the original 2% requirements still fail. **I have not deployed it.**
 This does not prove all uncertainty methods fail; three point models can share
 the same blind spots.
 
-The next registered check keeps the old utility ranking fixed and uses the new
-model only for risk guards. It changes no weights or thresholds; its outcomes
-are not run at registration. A causal-only audit motivates this separation,
-but predicted opportunities are not proof of useful actions.
+I then kept the old utility ranking fixed and used the new model only for risk
+guards. That bounded repair also fails: known gain is 0.55%, worst easy net
+degradation is 7.85%, and its paired lower effect versus the original controller
+is -1.44 pp [-2.05, -0.84]. All decisions and metric groups replay exactly.
+The evidence does not support the simple explanation that preserving the old
+ranking is enough. Neither new policy is deployed.
+
+The next priority is the separately reserved risk-calibration stage, not more
+variants on these exposed selection scenes. I checked its existing metadata:
+12 locality groups and 102 recordings. No calibration or final-confirmation
+outcomes were opened in this check; no failed gate is relabeled as passed.
 
 [Complete uncertainty result](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/readout.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/failure_analysis.md)
-and [frozen-utility protocol](outputs/publication_readiness_2026_09/european_frozen_utility_guard_v1/protocol.md).
+and [complete frozen-utility repair](outputs/publication_readiness_2026_09/european_frozen_utility_guard_v1/readout.md).
 
 ### Learning When To Intervene
 

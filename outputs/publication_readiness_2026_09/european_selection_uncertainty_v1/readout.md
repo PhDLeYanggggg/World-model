@@ -68,6 +68,8 @@ outcomes,including15,820partial futures and21,434complete12step targets;
 848wholly unknown outcomes remain. Endpoint labels exist on27,694rows only.
 ADE uses available steps,not a complete12step-only subset. Endpoint FDE is
 diagnostic;full-roster endpoint error is not identified.
+Paired completion bounds cover wholly unknown rows under this available-label
+convention;they do not recover missing steps inside partial trajectories.
 
 252recording-risk views repeat the28recordings over nine producer models;they
 are not252independent recordings. Positive harm cannot be canceled by benefit.

@@ -28,6 +28,29 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Frozen-Utility Bounded Repair Also Negative
+
+All nine five-policy action matrices freeze before scoring;54metric groups and
+separate replay complete. Fresh_run:decisions/metrics. Cached_verified:critic
+costs,forecasts,inputs and exposed labels. No new fitting or Torch inference.
+Primary fixed-real minus fixed-noise lower-1.017451pp[-1.560672,-.637402].
+Advancement versus old coupled-disabled-1.436676pp[-2.049653,-.842976].
+Mechanism versus coupled-real-.120838pp[-.189548,-.068256]. All fail.
+
+Known gain.545770%,worst easy net7.848485%,risk support15/252,180known-all/
+179known-easy violations,25undefined easy views. Coupled controls unchanged.
+Freeze PID232:13.410177s;eval PID840:16.971586s;verify PID1121:16.747841s.
+All nine choice matrices and54groups exact.40focused checks pass5.47s;full
+repository suite not run. Original2%rules and all records remain. No promotion.
+
+This refutes the simple proposed repair,not all separate-head training. Stop
+this model-selection splice branch. The next distinct requirement is independent
+risk calibration with the existing score family frozen,not deployment. Metadata
+check verifies the original12calibration groups/102records;80,910,623raw rows
+are inventory counts,not converted model windows. No predictive calibration or
+confirmation outcomes were opened,access flags/splits not edited. See
+`european_frozen_utility_guard_v1/calibration_role_metadata.md` for boundaries.
+
 ### Seed-Spread Input Comparison Complete: Negative
 
 All27SOURCE fits,three exact full refits,27pointwise policy freezes and54metric
@@ -56,7 +79,7 @@ whose new gain is nonpositive,among107,981such predicted-positive candidates.
 new-real-guard52,715potential switches. These are not known beneficial actions.
 `european_frozen_utility_guard_v1` registers exactly one decision repair:freeze
 old utility/rank,use real/noise guards at unchanged2%. No new fit or thresholds.
-Its new policy outcomes are not_run at registration. Primary fixed-real minus
+Its new policy outcomes were not_run at registration and are now reported above. Primary fixed-real minus
 fixed-noise paired lower;advancement fixed-real minus old coupled-disabled plus
 all original record risk. Original failed comparisons remain unchanged.
 
