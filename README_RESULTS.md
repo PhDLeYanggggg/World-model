@@ -52,6 +52,12 @@ All nine frozen Torch forecast/cost pipelines are now inferring,not yet all
 complete. Calibration labels/final confirmation stay closed. Input and runtime
 checks are not predictive improvement,calibration success or deployment.
 
+Prospective storage-v2 repair:reproduced the legacy two-file crash window in
+a focused test;atomic compound checkpoint retains the previous valid prefix
+when replacement is interrupted.18storage/selector/allocator checks pass.
+The real largest-record resume/direct pilot is registered,not yet executed.
+No model,normalizer,grid,solver,cohort or risk-rule change;old receipts retained.
+
 ### Frozen-Utility Bounded Repair Also Negative
 
 All nine five-policy action matrices freeze before scoring;54metric groups and

@@ -38,6 +38,9 @@ needed. The largest-record pilot's one-model grid took 31.61 seconds. Frozen
 Torch forecast/cost inference is now running for all nine pipelines.
 One locality supplies 86.35% of targets, so these overlapping windows are not
 independent statistical units; locality-level summaries retain all 12 groups.
+I also registered an atomic checkpoint repair before the full allocation job:
+an interrupted progress update must not invalidate an otherwise recoverable
+grid prefix. The model, choices objective and risk requirements are unchanged.
 Calibration outcomes will be opened only after the complete policy grid is
 frozen. Final confirmation stays closed; this is not a population-risk guarantee
 or deployment promotion. The earlier negative results below remain unchanged.
