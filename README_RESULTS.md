@@ -15,13 +15,17 @@ checked. Source and exact-PDF layout receipts are recorded; the official style,
 PDF and page images remain private. This is typesetting progress, not independent
 scientific confirmation or submission readiness. The complete own-decision and
 matched published-loss comparisons, including their failed primary/risk gates,
-are included. The working supplement now records the post-readout guard diagnosis.
+are included. The completed boundary-loss comparison is now also included.
+The working supplement records its output-semantics limitation and the earlier
+post-readout guard diagnosis. The revised seven-page body packs the result
+tables without altering the official style, fonts or margins; all eight current
+PDF pages were inspected again.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Registered Two-Sided Boundary Guard Comparison
+### Completed Two-Sided Boundary Guard Comparison
 
-Next experiment: `european_boundary_guard_v1`. Two matched 31,119-parameter
+Experiment: `european_boundary_guard_v1`. Two matched 31,119-parameter
 coherent critics start from the same completed own-choice weights with fresh
 AdamW, full original cyclic coverage and unchanged 462 causal fields. Both
 retain fixed-initial-choice query regression in this continuation. The only
@@ -45,7 +49,40 @@ plus14,336full-refit updates are complete;both7,168-update first-context
 refits are scientifically exact,excluding wall time. Each arm has104,160main
 updates and219,368unknown contextual draws with no unknown supervised labels.
 Every query has at least four visits. All weights freeze before the now-running
-72-group evaluation. No complete policy outcome is available yet.
+72-group evaluation and separate new-cost/action-score replay are complete.
+Readout PID65863:174.347063s,peak11,248,467,968B. Verification PID67210:
+170.763235s,peak11,660,214,272B. All72new inferences/actions and original
+full/record controls are exact;no timed integer reoptimization.
+
+Known ADE gain over the same floor:moment10.578407%,boundary21.425949%,
+frozen guarded TDEF11.890200%. Primary known effect:+10.847543pp
+[9.699275,11.991599];completion-lower:+4.830476pp[-3.072394,9.335094],fail.
+Versus frozen guard:known+9.535749pp[8.128308,10.898344],lower+4.727428pp
+[-1.495463,8.613226],fail. Required recording-risk support20/444->0/444;
+known all/easy violations121/240->388/417. Worst known easy degradation
+5.769174%->40.472291%;easy views above2%:8->79. Fitting gates5/9,no deployment.
+
+Safe easy action occurrences rejected498,455->144,757;beneficial safe easy
+rejected466,569->121,127. Known unsafe admitted173,754->563,612. Blocked
+known easy-support views9->5;singleton joint-obstruction views6->5. Counts
+repeat candidates/contexts/seeds and are not independent or chosen samples.
+Switch rate32.979176%->70.412236%. Neural-use counts99,511->99,706 do not
+establish a neural increment;no new trajectory training or path-use ablation.
+
+Same anchor fitting monitor ends0.311329versus0.453420;boundary BCE ends
+0.892041versus0.435365. The lower BCE trades against magnitude fit and actual
+risk. A tied event logit generally does not preserve a conditional-mean cost
+optimum;the method note records the elementary derivative and its limited scope.
+The primary lower gap includes missing-outcome uncertainty;known violations
+already establish that safety failure is not solely missing labels.
+
+Public rebuild PID68534:2.887868s,zero private input reads;plot visually checked.
+33focused checks pass4.41s,no skips;full repository suite not run. Earlier
+partial-stage checks below are preserved as dated process evidence,not final gates.
+[Readout and real curves](outputs/publication_readiness_2026_09/european_boundary_guard_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_boundary_guard_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_boundary_guard_v1/model_data_card.md).
+
 Current additional focused checks7pass/3explicit
 complete-artifact skips in2.18s. SOURCE development only;no deployment promotion.
 [Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).

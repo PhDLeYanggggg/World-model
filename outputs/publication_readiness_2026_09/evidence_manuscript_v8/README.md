@@ -12,7 +12,10 @@ complete and numerically verified; its observed gain and failed primary/risk
 requirements are included together. The completed, capacity-matched ADE versus
 published-deferral comparison is also included with both known and completion-
 lower effects. The working supplement retains the two-sided guard failure
-diagnosis. A successful build does not improve the scientific status.
+diagnosis. The complete two-sided boundary-loss continuation is now included:
+observed routing improves, but required recording risk worsens and the primary
+lower interval crosses zero. Its event-versus-cost limitation is retained in
+the supplement. A successful build does not improve the scientific status.
 
 ## Files
 

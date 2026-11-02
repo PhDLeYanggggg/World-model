@@ -25,27 +25,41 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Two-Sided Risk-Boundary Learning
+### Completed Risk-Boundary Learning Comparison
 
-I am testing whether the risk filter can learn both when to admit a useful
-forecast and when to reject a harmful one. The new comparison keeps the final
-published-loss ranking frozen and trains two equally sized coherent critics
-from identical warm weights. Only one receives an additional loss tied to the
-original 2% boundary. The other keeps moment and fixed-choice query regression.
-This differs from the signed-error MSE and heavier underprediction losses already
-tried; it is a controlled repair, not a claim of a new deferral framework.
+I kept the published-loss ranking and all forecasts frozen, then trained two
+matched risk critics from identical weights. One retains cost and query
+regression; the other adds a two-sided loss at the original 2% boundary. All
+36 fits, two exact complete refits, 72 policy groups and a separate inference
+replay are complete. Formal training took 22.59 minutes locally.
 
-The protocol is frozen before this experiment's outcomes. All 36 fits and 72
-original groups remain required. The original recording-risk rules, data roles
-and deployment stay unchanged. The real 400-update recovery pilot passes:
-29.26 seconds, about 9.82 GB peak memory, with exact recovered predictions and
-choices. All 36 full-budget fits now finish: 208,320 main updates plus 14,336
-exact full-refit updates, in 22.59 minutes locally. All weights are frozen before
-the 72-group policy evaluation, which is running. No complete policy effect is
-available yet. The [method note](outputs/publication_readiness_2026_09/european_boundary_guard_v1/method_scope.md)
-explains why boundary-event accuracy alone cannot establish an expected-harm budget.
+|Policy|Known-label ADE gain over the same floor|Worst known easy degradation|Risk-supported recording views|
+|---|---:|---:|---:|
+|Frozen original guard|11.89%|4.09%|18/444|
+|Matched cost continuation|10.58%|5.77%|20/444|
+|Added boundary supervision|21.43%|40.47%|0/444|
 
-[Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
+The new loss recovers useful choices, but also admits far more harmful ones.
+Its paired known gain is **+10.85 pp [95% CI: 9.70, 11.99]**. The registered
+completion-lower effect is **+4.83 pp [-3.07, 9.34]**, which does not pass, and
+the full policy fails the unchanged risk requirement. **I have not deployed it.**
+
+This exposes a specific limitation: predicting whether a cost exceeds a boundary
+does not identify how large that cost is. Tying event confidence directly to a
+mean-cost output can distort the quantity used by the risk filter. The fitting
+curves show lower boundary loss but worse cost loss, not a safe neural upgrade.
+The next repair must separate these quantities and reuse the earlier event/hurdle
+controls rather than repeat a threshold search.
+
+These are exposed SOURCE results, not independent confirmation, SDD `t+50`
+or new trajectory dynamics. Thirty-three focused checks pass; public scalar
+reports rebuild without private input reads. No independent role or deployment
+is changed.
+
+[Complete result and real loss curves](outputs/publication_readiness_2026_09/european_boundary_guard_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_boundary_guard_v1/failure_analysis.md),
+[method limitation](outputs/publication_readiness_2026_09/european_boundary_guard_v1/method_scope.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_boundary_guard_v1/reproduction_zh.md).
 
 ### Completed Matched Published Deferral Comparison
 

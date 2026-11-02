@@ -111,7 +111,8 @@ def render(v):
     for a in run.evaluation.NAMES:
         r = s['safety'][a]; x = aux[a]
         lines.append(f'|{a}|{interval(s["accuracy"][a])}|{interval(s["FDE"][a])}|{interval(s["floor_lower"][a])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{cell(x["worst_known_easy_degradation_percent"])}|{cell(x["switch_rate"])}|')
-    lines += ['', '## Registered Contrasts', '', 'Primary: boundary minus moment FULL completion-lower utility. Secondary or matched-count results cannot replace it.', '',
+    lines += ['', 'Floor-only has no interventions; an undefined selected-risk field is not evidence that the floor causes harm, nor a learned intervention success.', '',
+        '## Registered Contrasts', '', 'Primary: boundary minus moment FULL completion-lower utility. Secondary or matched-count results cannot replace it.', '',
         '|Contrast|Scope|Known pp [conditional 95% CI]|Completion-lower pp [conditional 95% CI]|', '|---|---|---:|---:|']
     for name, effects in s['effects'].items():
         for mode, x in effects.items(): lines.append(f'|{name}|{mode}|{interval(x["known_pp"])}|{interval(x["lower_pp"])}|')

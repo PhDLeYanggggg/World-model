@@ -193,8 +193,10 @@ promotion. No independent role is opened by this diagnosis.
 A current SOURCE control retains moment regression and adds two-sided BCE on
 log harm versus detached predicted0.02-reference. Its two arms have matched
 capacity,warm state,draws and complete budgets,and share frozen published-loss
-rankings. At the time this section is added,training is in progress;no policy
-improvement is asserted. This is a controlled learning change,not a new theorem.
+rankings. All36fits,two full refits and72-group numerical replay now finish.
+Known gain rises10.58%to21.43%,but supported recording-risk views fall20to0of444.
+The primary lower effect is+4.83pp with CI[-3.07,9.34],so fitting advancement fails.
+This is an observed routing gain,not a safe policy or a new theorem.
 
 An event probability does not identify expected harm. For fixed R=1,both a
 1%chance of H=1 and a1%chance of H=100 give the same probability of H>0.02R,
@@ -202,3 +204,12 @@ but expected harms0.01and1differ by100x. A cost-tied BCE logit therefore need no
 remain a conditional mean cost estimate. The original magnitude losses and full
 recording criteria must remain;auxiliary loss or sign accuracy cannot certify
 their success. Future easy status is a loss label only,never an inference input.
+
+For fixed budget c and q=P(H>c),the tied probability p(h)=h/(h+c) has expected
+BCE derivative(p(h)-q)/h,ignoring the numerical epsilon. At h=E[H],the magnitude-
+MSE derivative is zero but this auxiliary generally is not. Shared output tying
+can therefore move a mean-cost estimator away from its proper target even with
+unlimited capacity. This elementary observation is not a unique attribution of
+the empirical error. It motivates separating event prediction from cost magnitude
+semantics,not calling the tied sigmoid calibrated risk. The current boundary
+arm improves its BCE while worsening the common anchor objective and known risk.

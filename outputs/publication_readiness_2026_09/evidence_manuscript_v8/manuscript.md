@@ -351,6 +351,18 @@ All 36 fits, two complete refits and 72-group score/action replay finish. Raw kn
 
 The loss improves observed routing but fails the primary. Only 18/444 guarded recording-risk views pass; 87/206 known all/easy violations remain. Worst known easy degradation is 95.99% raw and 4.09% guarded. Guarded deferral also trails frozen own-joint on known gain. This adapted published baseline is not a new dynamics contribution or a safe replacement. The guard rejects useful as well as harmful choices; its utility loss alone does not prove inappropriate filtering. Full loss definitions and post-readout support diagnostics are retained in the supplement.
 
+### Two-Sided Budget-Boundary Control
+
+A further matched continuation freezes the published-loss ranking and all forecast paths. Both coherent critics share 31,119 active weights, completed own-choice initialization, full draws and fixed-initial-choice query regression. Only one adds unit BCE on the two original budget-boundary events, through log harm versus detached predicted 2%-reference. This trains neither a best-expert class nor a new calibrated confidence. An event probability does not identify expected harm, so magnitude regression and the complete policy criterion remain essential.
+
+All 36 fits, two full refits and 72-group inference/action-score replay finish. Known ADE gain is 10.58% for the moment continuation and 21.43% with boundary supervision.
+
+| Boundary-loss contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |
+|---|---:|---:|
+| Boundary minus moment, primary | 10.85 [9.70, 11.99] | 4.83 [-3.07, 9.34] |
+
+Boundary recording-risk support is 0/444; known all/easy violations are 388/417. Fitting advancement is false. Neither a fitting loss nor a repaired observed mean can substitute for the unchanged risk requirement. These remain conditional SOURCE results, not independent confirmation or new dynamics evidence.
+
 
 ![Complete SOURCE cost evidence](cost_evidence.pdf)
 
