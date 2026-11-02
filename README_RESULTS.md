@@ -28,6 +28,33 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### SOURCE-To-Selection Controller Registered
+
+The previous goal turn completed a real first selection readout and exact
+replay; known history-input utility was positive, but primary and risk failed.
+`european_selection_controller_v1` now freezes the next direct policy comparison:
+18row/context cost models, identical active parameter sets/initialization,
+full SOURCE query coverage, three actual forecast seeds and three SOURCE folds.
+Each cost fit uses the eight localities outside its forecaster's four fitting
+sites. SOURCE rows by producer fold:91,562/145,422/62,036; each row set is reused
+across the three actual seeds. These are not new independent targets.
+
+The interface uses380causal geometry/rollout fields plus64past detector fields.
+Only context pooling changes; no new trajectory model, future endpoint, label
+mask, central velocity, scene ID, test normalization or threshold search.
+All38,102selection targets and original2%record risk rules remain. Primary is
+context matched-joint minus its independent policy, paired completion lower;
+count matches each query. Empty matched controls remain not estimable. Physical-
+bank removal is an action ablation, not a retrained representation ablation.
+
+12targeted implementation tests pass1.94s, including scientific checkpoint
+recovery and refusal of future input fields. SOURCE cache, real pilot,18full
+cost fits and new selection-policy outcomes are **not_run at registration**.
+These tests are not real-data results. The six model-selection localities remain
+development-exposed; calibration and final confirmation stay closed. Pairwise
+composition conflicts remain outside this risk-pooling comparison and are not
+claimed solved. Stage5C/SMC remain off; no deployment change.
+
 ### First Selection-Locality Forecast Readout Complete
 
 The 36 SOURCE-trained forecasters now have a complete frozen-prediction readout

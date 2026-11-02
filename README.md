@@ -25,6 +25,23 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Learning When To Intervene
+
+The next registered comparison keeps all forecasts fixed and trains matched
+row-only and same-query-context cost controllers. Each learns only from the
+eight SOURCE localities excluded from its own forecaster's four training
+localities. Eighteen cost fits cover all three actual forecasting seeds and
+three SOURCE folds. New-scene labels are not training targets.
+
+Both controllers have the same parameters, initialization and complete query
+coverage. I will compare independent, frame-uniform and joint risk-budget
+allocation on the same bank, with intervention counts matched at each query.
+This is risk-budget pooling, not yet pairwise interaction optimization. The
+original 2% requirements remain. Twelve targeted implementation checks pass;
+real SOURCE fitting and the new policy comparison are not run at registration.
+
+[Frozen controller protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md).
+
 ### Independent-Scene Inputs
 
 The past-only adapter now covers all 28 recordings from the six reserved
