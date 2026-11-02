@@ -28,6 +28,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+Current execution update, 2 November: all 918 full allocation grids finished,
+PID8905, 12,106.168735s, peak853,803,008B. No cohort or parameter reduction.
+The label-free solver report is complete. All102future label sets were built
+only after the global policy freeze, PID23238,162.685442s,peak3,451,518,976B.
+Calibration scoring is now running (PID23672); confirmation remains closed.
+Earlier "not_run/outcomes closed" entries below describe their earlier phases,
+not the current access status. No predictive or safety pass is claimed yet.
+
 ### Independent Risk Calibration: All102 Inputs Replayed Exactly
 
 Fixed mean_absolute SOURCE models, nine producers; original risk-calibration

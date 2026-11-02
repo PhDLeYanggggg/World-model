@@ -25,40 +25,33 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Independent Risk Calibration: Inputs And Frozen Inference Verified
+### Independent Risk Calibration: Complete Grid Frozen, Scoring Underway
 
-I have fixed the existing `mean_absolute` cost family for the next experiment:
-risk calibration on the separately reserved 12 localities and 102 recordings.
-The native utility ranking, all nine trained pipelines and the original 2%
-recording requirements stay fixed. A registered common risk multiplier is the
-only parameter that will be calibrated. Empty support cannot qualify as safe intervention.
-All 102 recordings, at the registered cap of 256 query frames per recording,
-are converted and replay exactly from the original archive:
-481,537 causal targets and 801,360 visible-agent rows. No cohort reduction was
-needed. The largest-record pilot's one-model grid took 31.61 seconds. All nine
-frozen Torch pipelines have now produced forecasts and costs for every target:
-4,333,833 repeated model-target predictions, not independent observations.
-Inference took 13.79 minutes; all 918 forecast/cost views now replay exactly
-in a separate 13.95-minute run. Thirty-three focused checks pass; the full
-repository test suite has not been run in this phase.
-One locality supplies 86.35% of targets, so these overlapping windows are not
-independent statistical units; locality-level summaries retain all 12 groups.
-I also registered an atomic checkpoint repair before the full allocation job:
-an interrupted progress update must not invalidate an otherwise recoverable
-grid prefix. The model, choices objective and risk requirements are unchanged.
-The real largest-record recovery and direct full-grid runs now match exactly,
-including the original pilot; this is an execution check, not a safety result.
-Calibration outcomes will be opened only after the complete policy grid is
-frozen. Final confirmation stays closed; this is not a population-risk guarantee
-or deployment promotion. The earlier negative results below remain unchanged.
-The complete allocation grid is now running locally with atomic checkpoints;
-calibration scoring follows only after every decision is frozen. This is not
-a completed safety result. I have also fixed the descriptive failure categories
-before opening outcomes, so a failed check can distinguish observed harm from
-missing-label bounds or unavailable support without changing the policy.
-The reporting code also retains every multiplier in the plots, including
-unsupported or negative results. Figures will be rendered only from the
-completed scalar readout; they do not choose a new policy or threshold.
+I am testing whether one common risk multiplier can repair a fixed cost model
+on separately reserved calibration scenes. All nine SOURCE-trained pipelines,
+native utility rankings and original 2% recording requirements stay fixed.
+There is no new training or per-scene parameter search.
+
+The complete cohort contains 102 recordings in 12 locality groups, with at
+most 256 query frames per recording: 481,537 causal targets and 801,360
+visible-agent rows. All inputs and all 918 frozen forecast/cost views replay
+exactly. The 4,333,833 model-target predictions are repeated views, not
+independent observations; one locality supplies 86.35% of target windows.
+
+All four policies and all 13 multipliers are now frozen for every recording
+and model. The full allocation took 3 hours 22 minutes locally with atomic
+checkpoints, without reducing the cohort. Independent intervention rates range
+from 29.65% to 0.137% as the constraint tightens; matched joint allocation keeps
+the same intervention count at every query. These counts are not accuracy or
+safety evidence, and nonoptimal solver cases retain a feasible parent policy.
+
+Only after the full freeze were future calibration targets constructed.
+Scoring is underway; no common multiplier or safety result is claimed yet.
+Empty support does not pass. Final confirmation and DroneCrowd remain closed,
+and earlier negative results remain unchanged. A calibrated result would still
+not be independent efficacy evidence, a population guarantee or deployment approval.
+Complete-grid plots and failure categories were fixed before outcomes; they
+retain unsupported and negative results instead of selecting a favorable curve.
 
 [Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md)
 and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).

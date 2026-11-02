@@ -37,21 +37,30 @@ cohort SVG is rendered and visually checked; two renders give the same hash
 using only public input metadata. One locality accounts for 86.35% of targets.
 All 12 groups remain; window count is not statistical independence.
 
+## Complete Allocation And Label Freeze
+
+The complete allocation finished with exit0 on 2 November, PID8905:
+12,106.168735s, peak853,803,008B. All918recording/model full grids are frozen,
+with all13multipliers and4policies. The label-free choice/solver accounting
+is complete; it reads no outcomes and is not a predictive or safety result.
+Nonoptimal/numerical cases retain a feasible independent parent.
+
+All102future calibration target sets were then constructed after the complete
+freeze, PID23238:162.685442s, peak3,451,518,976B. Original inputs were rechecked
+against the label-builder's past interface. These calibration outcomes are now
+opened for their registered purpose; they are not an untouched test cohort.
+
 ## Running
 
-The complete allocation started locally on 2 November at 06:26:38 UTC, PID8905.
-Its live process and advancing atomic checkpoints have been observed. It uses
-the unchanged registered models, grid and original risk rules. This is an
-active computation, not a completed calibration result. Do not duplicate a
-live job; the process lock also prevents a second allocator.
+Complete calibration scoring is running locally, PID23672. Original models,
+parameter grid, recording cohort and risk requirements remain unchanged.
+The process lock prevents duplicate work. Final confirmation stays closed.
 
 ## Not Complete Yet
 
-The complete four-policy by 13-multiplier by nine-pipeline by 102-recording
-allocation and calibration scoring are not complete. Only label-free largest-
-record grid and recovery pilots have run. No common multiplier has been fitted.
-Calibration future targets have not been constructed; no predictive calibration
-outcome has been opened. Final confirmation and DroneCrowd remain closed.
+Full calibration scoring and exact metric/feasibility replay are not complete.
+No common multiplier has been fitted yet. Final confirmation and DroneCrowd
+remain closed. The completed freeze and labels are not an efficacy result.
 
 Runtime checks, input replay and numerical equality are not predictive
 improvement, a safety pass, an independent efficacy result, a risk certificate,
@@ -59,13 +68,14 @@ submission readiness or deployment approval. Prior negative model-selection
 results remain unchanged. Original 2% all/easy requirements and finite support
 remain. Empty support is not a safe zero.
 
-Next executable phase, using the registered storage repair:
+After the current scoring process exits successfully:
 
 ```bash
-.venv-pytorch/bin/python scripts/run_m3w_calibration_atomic_allocation.py run
-.venv-pytorch/bin/python scripts/run_m3w_independent_risk_calibration.py labels --resume
-.venv-pytorch/bin/python scripts/run_m3w_independent_risk_calibration.py eval
 .venv-pytorch/bin/python scripts/run_m3w_independent_risk_calibration.py verify
+.venv-pytorch/bin/python scripts/report_m3w_calibration_failure_taxonomy.py
+.venv-pytorch/bin/python scripts/report_m3w_calibration_paired_effects.py
+.venv-pytorch/bin/python scripts/report_m3w_independent_risk_calibration.py
+.venv-pytorch/bin/python scripts/plot_m3w_independent_risk_calibration.py
 ```
 
 The label operator refuses access until all 918 full-grid policy matrices
