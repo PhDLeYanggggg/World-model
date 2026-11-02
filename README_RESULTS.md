@@ -71,6 +71,15 @@ metadata alone. The registered cap is256queries/record,not every raw window.
 Full calibration grid,parameter fitting,label scoring and confirmation are
 not_run except the label-free largest-record allocation/recovery pilots.
 
+Full atomic allocation started2November06:26:38UTC,PID8905,local arm64CPU4,
+workers0. Live process and progressing per-query/grid checkpoints verified;
+this supersedes only the not-started allocation status,not any outcome gate.
+Models and original2%rules unchanged;calibration labels remain unopened.
+Descriptive failure categories fixed before readout;3synthetic classification
+checks pass0.09s. These checks are not real calibration results. Official
+CVPR2027registration/full/supplement dates freshly verified as10/16/23November
+AoE;no account or submission action taken.
+
 ### Frozen-Utility Bounded Repair Also Negative
 
 All nine five-policy action matrices freeze before scoring;54metric groups and

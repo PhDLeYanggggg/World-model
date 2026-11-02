@@ -51,8 +51,11 @@ including the original pilot; this is an execution check, not a safety result.
 Calibration outcomes will be opened only after the complete policy grid is
 frozen. Final confirmation stays closed; this is not a population-risk guarantee
 or deployment promotion. The earlier negative results below remain unchanged.
-The full allocation grid and calibration scoring are the next step, not a
-completed safety result.
+The complete allocation grid is now running locally with atomic checkpoints;
+calibration scoring follows only after every decision is frozen. This is not
+a completed safety result. I have also fixed the descriptive failure categories
+before opening outcomes, so a failed check can distinguish observed harm from
+missing-label bounds or unavailable support without changing the policy.
 
 [Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md)
 and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).

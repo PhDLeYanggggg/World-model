@@ -37,7 +37,15 @@ cohort SVG is rendered and visually checked; two renders give the same hash
 using only public input metadata. One locality accounts for 86.35% of targets.
 All 12 groups remain; window count is not statistical independence.
 
-## Not Run Yet
+## Running
+
+The complete allocation started locally on 2 November at 06:26:38 UTC, PID8905.
+Its live process and advancing atomic checkpoints have been observed. It uses
+the unchanged registered models, grid and original risk rules. This is an
+active computation, not a completed calibration result. Do not duplicate a
+live job; the process lock also prevents a second allocator.
+
+## Not Complete Yet
 
 The complete four-policy by 13-multiplier by nine-pipeline by 102-recording
 allocation and calibration scoring are not complete. Only label-free largest-
