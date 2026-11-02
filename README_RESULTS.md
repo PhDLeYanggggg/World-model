@@ -39,8 +39,11 @@ are not_run at registration. Subsequent real recovery pilot: PID61758,
 29.261527s,peak9,822,683,136B,400actual updates. Both100-step recovered/direct
 scientific states,full causal predictions and choices match exactly. Pure-fit
 main-budget projection is1404.586619s,excluding preparation/refits/evaluation;
-this is not actual full duration. Local resources suffice. Formal training is
-starting;policy outcomes not_run. SOURCE development only;no deployment promotion.
+this is not actual full duration. Local resources suffice. Formal PID62953 is
+running the complete36-head budget. Both first-context7,168-update complete
+refits are scientifically exact,excluding wall time. No policy outcomes are
+scored while training. Current additional focused checks7pass/3explicit
+complete-artifact skips in2.18s. SOURCE development only;no deployment promotion.
 [Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
 
 ### Current-Bank Published Deferral Comparison

@@ -187,3 +187,18 @@ better ranking. They do not turn a label-aware witness into a causal model,
 remove the failed primary,or show that missing-outcome bounds caused all errors.
 The matched published-loss comparison remains5/9fitting gates with no deployment
 promotion. No independent role is opened by this diagnosis.
+
+## S8. Boundary-Event Supervision Is Not A Mean-Risk Guarantee
+
+A current SOURCE control retains moment regression and adds two-sided BCE on
+log harm versus detached predicted0.02-reference. Its two arms have matched
+capacity,warm state,draws and complete budgets,and share frozen published-loss
+rankings. At the time this section is added,training is in progress;no policy
+improvement is asserted. This is a controlled learning change,not a new theorem.
+
+An event probability does not identify expected harm. For fixed R=1,both a
+1%chance of H=1 and a1%chance of H=100 give the same probability of H>0.02R,
+but expected harms0.01and1differ by100x. A cost-tied BCE logit therefore need not
+remain a conditional mean cost estimate. The original magnitude losses and full
+recording criteria must remain;auxiliary loss or sign accuracy cannot certify
+their success. Future easy status is a loss label only,never an inference input.

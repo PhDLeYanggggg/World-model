@@ -20,6 +20,7 @@ export VECLIB_MAXIMUM_THREADS=4
 .venv-pytorch/bin/python scripts/run_m3w_boundary_guard.py train
 .venv-pytorch/bin/python scripts/run_m3w_boundary_guard.py eval
 .venv-pytorch/bin/python scripts/run_m3w_boundary_guard.py verify
+.venv-pytorch/bin/python scripts/export_m3w_boundary_traces.py
 ```
 
 只有实际中断后才对同一阶段加 `--resume`。不要因终端观察超时重复启动任务。
@@ -43,7 +44,8 @@ export VECLIB_MAXIMUM_THREADS=4
   tests/test_m3w_boundary_public.py
 ```
 
-报告从公开标量包重建，提前禁止 Python 的项目私有输入读取，仅允许写出结果图。
+训练曲线导出单独读取经过 hash 校验的完整私有检查点，只输出逐步标量，不输出权重。
+报告从公开标量包和这些标量曲线重建，提前禁止 Python 的项目私有输入读取，仅允许写出结果图。
 这不是操作系统隔离，也不是重训或独立科学复现。结果未齐时，相关检查明确 skip。
 重新推断所有新成本和重算动作得分与公开报告重建是不同的验证步骤。
 

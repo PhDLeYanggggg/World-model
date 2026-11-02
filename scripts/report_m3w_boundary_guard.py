@@ -64,6 +64,17 @@ def build():
     summary.update(unique_target_rows=149510, unique_recordings=len(records))
     if len(records) != 74 or summary != json.loads((p/'summary.json').read_text()):
         raise ValueError('Canonical original-cohort summary differs')
+    traces = json.loads((p/'training_traces.json').read_text())
+    if traces['training_freeze_sha256'] != run.sha(p/'training_freeze.json') or len(traces['cells']) != 36:
+        raise ValueError('Complete frozen training trace export required')
+    trace_keys = set()
+    for r in traces['cells']:
+        key = r['context'], r['seed'], r['arm']
+        if key in trace_keys or key not in fits or r['checkpoint_sha256'] != fits[key]['checkpoint']['sha256']:
+            raise ValueError('Training curve identity changed')
+        trace_keys.add(key)
+        if r['trace'][0]['step'] != 0 or r['trace'][-1]['step'] != fits[key]['budget']:
+            raise ValueError('Only complete fitting curves may be plotted')
     auxiliary = {}
     for a in run.evaluation.NAMES:
         policies = [r['result']['policies'][a] for r in rows]
@@ -74,7 +85,7 @@ def build():
             neural_row_rate=counts['6']/total, worst_known_easy_degradation_percent=max(easy) if easy else None,
             easy_views_above2=sum(v > 2+1e-10 for v in easy))
     return dict(summary=summary, training=freeze, fits=list(fits.values()), complete=complete, replay=replay,
-        auxiliary=auxiliary, bundle=bundle, pilot=json.loads((p/'pilot.json').read_text()))
+        auxiliary=auxiliary, traces=traces, bundle=bundle, pilot=json.loads((p/'pilot.json').read_text()))
 
 
 def render(v):
@@ -95,11 +106,11 @@ def render(v):
         lines.append(f'|{arm}|{len(rows)}|{sum(r["step"] for r in rows)}|{cell(mean("first_trace","anchor_objective"))}|{cell(mean("final_trace","anchor_objective"))}|{cell(mean("first_trace","boundary_objective"))}|{cell(mean("final_trace","boundary_objective"))}|')
     lines += ['', 'Monitor values are fitting losses, not held-out performance or checkpoint selection. No unknown observed-cost targets are supplied.', '',
         '## Full Policy And Required Safety', '',
-        '|Policy|Known ADE gain % [conditional 95% CI]|Completion-lower utility pp|Risk-supported recording views|Known all/easy violations|Undefined easy support|Worst known easy degradation %|Switch rate|',
-        '|---|---:|---:|---:|---:|---:|---:|---:|']
+        '|Policy|Known ADE gain % [conditional 95% CI]|Full-roster FDE gain|Completion-lower utility pp|Risk-supported recording views|Known all/easy violations|Undefined easy support|Worst known easy degradation %|Switch rate|',
+        '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
     for a in run.evaluation.NAMES:
         r = s['safety'][a]; x = aux[a]
-        lines.append(f'|{a}|{interval(s["accuracy"][a])}|{interval(s["floor_lower"][a])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{cell(x["worst_known_easy_degradation_percent"])}|{cell(x["switch_rate"])}|')
+        lines.append(f'|{a}|{interval(s["accuracy"][a])}|{interval(s["FDE"][a])}|{interval(s["floor_lower"][a])}|{r["supported_record_views"]}/{r["required_record_views"]}|{r["known_all_risk_violations"]}/{r["known_easy_risk_violations"]}|{r["undefined_easy_record_views"]}|{cell(x["worst_known_easy_degradation_percent"])}|{cell(x["switch_rate"])}|')
     lines += ['', '## Registered Contrasts', '', 'Primary: boundary minus moment FULL completion-lower utility. Secondary or matched-count results cannot replace it.', '',
         '|Contrast|Scope|Known pp [conditional 95% CI]|Completion-lower pp [conditional 95% CI]|', '|---|---|---:|---:|']
     for name, effects in s['effects'].items():
@@ -134,7 +145,8 @@ def figure(v):
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     s = v['summary']; names = ('frozen_tdef_guarded', 'moment_guarded', 'boundary_guarded')
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.5), layout='constrained')
+    fig, grid = plt.subplots(2, 2, figsize=(11, 8), layout='constrained')
+    axes = grid[0]
     for i, a in enumerate(names):
         x = s['accuracy'][a]; axes[0].bar(i, x['point'], color=('#555555', '#326a95', '#9a6a16')[i], width=.6)
         if x['CI95'] is not None: axes[0].vlines(i, *x['CI95'], color='black')
@@ -144,7 +156,16 @@ def figure(v):
         if x['CI95'] is not None: axes[1].hlines(i, *x['CI95'], color='#326a95'); axes[1].plot(x['point'], i, 'o', color='#326a95')
     axes[1].set_yticks([0, 1], ['Known', 'Completion lower']); axes[1].set_ylim(-.3, 1.3)
     axes[1].set_xlabel('Boundary minus moment utility (pp)'); axes[1].axvline(0, color='black', linewidth=.7)
-    for ax in axes: ax.spines[['top', 'right']].set_visible(False)
+    progress = run.api.np.linspace(0, 1, 101)
+    for arm, color in (('moment', '#326a95'), ('boundary', '#9a6a16')):
+        rows = [r for r in v['traces']['cells'] if r['arm'] == arm]
+        for axis, key in zip(grid[1], ('anchor_monitor', 'boundary_monitor')):
+            curves = [run.api.np.interp(progress, [t['step']/r['budget'] for t in r['trace']], [t[key] for t in r['trace']]) for r in rows]
+            axis.plot(progress, run.api.np.mean(curves, axis=0), color=color, label=arm)
+            axis.set_xlabel('Fraction of each complete update budget')
+    grid[1, 0].set_ylabel('Same anchor objective'); grid[1, 1].set_ylabel('Boundary BCE (measured in both arms)')
+    for axis in grid[1]: axis.legend(); axis.set_title('Fixed fitting-query monitor; not validation')
+    for ax in grid.flat: ax.spines[['top', 'right']].set_visible(False)
     fig.suptitle('Exposed SOURCE: frozen ranking, matched cost-boundary loss')
     (run.PUBLIC/'figures').mkdir(parents=True, exist_ok=True)
     fig.savefig(run.PUBLIC/'figures/boundary_guard.svg'); fig.savefig(run.PRIVATE/'boundary_guard.png', dpi=150); plt.close(fig)
