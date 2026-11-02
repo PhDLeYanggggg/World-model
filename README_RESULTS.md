@@ -24,7 +24,7 @@ all nine current PDF pages were inspected again. Layout is not scientific readin
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Selection Forecast Bridge And Actual Seed Family Registered
+### Selection Forecast Bridge And Actual Seed Family Complete
 
 Previous turn was progress:all28input conversions and full raw replay completed.
 `european_selection_forecast_freeze_v1` now binds476geometry/64detector fields,
@@ -38,6 +38,24 @@ Registration_v2 retains the pre-execution registration and fixes a duplicated
 fixed metadata keyword before any feature or inference execution;no scientific
 factor,model,budget or role changed.18focused checks pass1.10s. Actual feature
 pilot,all28bridge,36full forecasts and replay are not_run at registration.
+
+Actual feature pilot PID81219:5.579301s,peak670,957,568B;one292-row SOURCE
+record reproduces its existing partial geometry and detector64exactly. Full
+feature build PID81348:14.422613s,peak893,009,920B. Raw replay PID81549:
+14.612769s,peak1,013,497,856B,all28records and assembled arrays exact.
+38,102rows include33,530with partial neighbors;84prefix comparisons pass.
+New IDs are scoped european_selection_v1;record IDs start163,not SOURCE aliases.
+
+Real Torch prediction pilot PID81722:1.010333s,peak513,474,560B;1024-row
+interruption/recovery and disabled-parent comparison exact. Full36inference
+PID81832:246.159356s,peak1,006,026,752B. Complete independent rerun PID82290:
+237.266312s,peak1,115,242,496B;all36predictions and all9disabled-parent
+comparisons exact. No new training,normalizer fit,threshold choice or outcomes.
+
+The supporting first selection-outcome readout is registered separately after
+that full prediction freeze/replay. It retains every target and original2%
+record risk requirement,and cannot replace the main joint-policy question.
+Risk calibration,confirmation and DroneCrowd remain closed.
 
 ### Model-Selection Input Adapter Complete, Outcomes Closed
 
