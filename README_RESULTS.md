@@ -24,7 +24,7 @@ all nine current PDF pages were inspected again. Layout is not scientific readin
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Model-Selection Input Adapter Registered
+### Model-Selection Input Adapter Complete, Outcomes Closed
 
 The preceding goal turn was progress:36real conditional-cost fits,complete72
 readout/exact replay,negative primary and measured risk/utility tradeoff changed
@@ -40,6 +40,28 @@ source-training accessor and immutable roles remain unchanged. Calibration,
 confirmation and DroneCrowd stay closed. Largest-record resource pilot precedes
 full conversion;complete raw reparse/array replay required afterward.18focused
 tests pass0.35s. Real pilot and full conversion not_run at registration.
+
+Actual largest-record pilot PID79023:6.620355s,peak402,259,968B. Full build
+PID79090:15.041471s,peak643,776,512B,27new raw parses plus one hash-verified
+pilot reused. A separate complete raw reparse PID79148takes16.475473s,
+peak820,805,632B;all28raw recordings and every input/index array are exact.
+Original role manifest remains858065b8a14f15a8741cbd9b0f24e5de595a02512b2552709d37b6eeb5e88435.
+
+Actual cache:38,102targets/65,094visible rows/26,992partial-history context rows,
+7,087query times,48,651,654bytes,all28records/six reserved localities. One short
+record has175past-supported times instead of256;no future filter or budget
+reduction. Queries with>=2/5/10targets:5,240/2,857/1,281. Every recording has
+at least one multi-target query,but the sparsest has only3of175;do not discard it.
+84first/middle/last-prefix comparisons complement the separate complete replay.
+21scoped tests pass0.42s,no skips;full repository suite not run.
+
+No future target window,forecast error,normalizer fit,training,calibration or
+confirmation. The exact input cache still lacks the current model's raw-prefix
+64confidence/box-change fields and explicit geometric/static context bridge.
+Do not fake those fields or reuse SOURCE row IDs. Next freeze actual producer
+lineage and build predictions before a versioned selection readout. This is
+new data engineering,not independent prediction success or a deployment upgrade.
+[Readout](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/readout.md).
 
 ### Completed Conditional-Moment Identification
 

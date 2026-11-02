@@ -25,13 +25,21 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Preparing An Independent-Scene Readout
+### Independent-Scene Inputs
 
-I am preparing the past-only inputs for the six model-selection localities
-reserved before their forecast errors were observed. All 28 recordings keep
-the original 8/12-step protocol and query budget. This adapter creates no
-future target windows and opens no calibration or confirmation outcomes.
-It is data preparation for a later frozen-model readout, not a new accuracy result.
+The past-only adapter now covers all 28 recordings from the six reserved
+model-selection localities: 38,102 target windows and 26,992 short-history
+context rows. A second complete raw reparse reproduces every stored input
+array. The original 8/12-step protocol and query budget are unchanged.
+
+Of 7,087 query times, 5,240 have at least two target agents, so joint decisions
+have substantial input support. Some recordings remain sparse and are not
+discarded. No future target windows or prediction errors are opened. The next
+interface step is the frozen models' geometry and detector-confidence features;
+this is not yet a new accuracy result. Calibration and confirmation stay closed.
+
+[Input conversion and limitations](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/readout.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/reproduction_zh.md).
 
 ### Conditional Cost Identification: Better Fit, Worse Decisions
 
