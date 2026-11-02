@@ -27,38 +27,42 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ### Learning When To Intervene
 
-The next registered comparison keeps all forecasts fixed and trains matched
-row-only and same-query-context cost controllers. Each learns only from the
-eight SOURCE localities excluded from its own forecaster's four training
-localities. Eighteen cost fits cover all three actual forecasting seeds and
-three SOURCE folds. New-scene labels are not training targets.
+I trained 18 matched row-only and same-query-context cost controllers while
+keeping every forecast fixed. Each learns from the eight SOURCE localities
+excluded from its forecaster's four training localities. The models share
+parameters, initialization and complete query coverage; new-scene labels never
+train weights or normalization. All fits, two complete exact refits and the
+54-group model-selection readout are finished.
 
-Both controllers have the same parameters, initialization and complete query
-coverage. I will compare independent, frame-uniform and joint risk-budget
-allocation on the same bank, with intervention counts matched at each query.
-This is risk-budget pooling, not yet pairwise interaction optimization. The
-original 2% requirements remain. Twelve targeted implementation checks pass;
-real SOURCE fitting and the new policy comparison are not run at registration.
+|Same-count context joint minus independent|Effect, percentage points [95% CI]|
+|---|---:|
+|Known-label secondary|+0.0138 [-0.0081, +0.0344]|
+|Registered paired completion-lower primary|+0.0016 [-0.0152, +0.0168]|
 
-All nine SOURCE prediction caches now reproduce the original hashes exactly
-(110.27 seconds locally). The first real recovery pilot found tiny context-arm
-floating differences, so I have not promoted it to formal training. A versioned
-numerical repair uses fixed membership products instead of grouped scatter;
-the original failed pilot stays recorded and the new real recovery check must
-pass without relaxing exactness. Data, model sizes, budgets and risk rules stay fixed.
+Neither interval supports a reliable joint gain. The matched joint policy
+has **7.02%** worst known easy net degradation and supports only **21/252**
+repeated recording-risk views. **I have not deployed it.** Context also fails
+to improve on the matched row-only critic. This is budget pooling, not pairwise
+interaction optimization, and the original 2% requirements have not changed.
 
-The repaired real SOURCE pilot now passes exact recovery for both29,253-parameter
-controllers (400 actual optimizer updates,7.47seconds,8.76GB peak RSS). All18
-formal fits have started with the original full coverage budget. The failed pilot
-is retained; a successful recovery check is not a successful selection policy.
+The causal action audit rules out "no switching": the context policy makes
+19,496 switches over repeated producer views. Joint allocation replaces 801
+neural choices with physical choices at the same total count, but does not
+produce a reliable gain. The next diagnosis is cost/admission calibration
+across SOURCE and new scenes, rather than another blind threshold search.
 
-All18 formal fits and both complete refits are now finished:141,312primary and
-14,336refit updates,541.08seconds,14.85GB peak RSS. Every original fitting query
-has at least four visits, and both complete refits are exact. The next step is
-to freeze all new-scene costs and decisions before the policy outcome readout.
-The scalar loss traces are public; private data and weights are not uploaded.
+Training took 9.02 minutes locally, with 155,648 primary/refit updates and
+14.85 GB peak RSS. Actual loss traces, the failed initial recovery pilot and
+its exactness repair are retained. All 18 cost inferences and 54 frozen-action
+metric groups replay exactly; 21 focused checks pass. Risk calibration and
+final confirmation remain closed. This remains model-selection evidence,
+not a submission-ready or deployable world model.
 
-[Frozen controller protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md).
+[Complete controller comparison](outputs/publication_readiness_2026_09/european_selection_controller_v1/readout.md),
+[loss curves](outputs/publication_readiness_2026_09/european_selection_controller_v1/figures/training_and_primary.svg),
+[failure analysis](outputs/publication_readiness_2026_09/european_selection_controller_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_selection_controller_v1/reproduction_zh.md).
 
 ### Independent-Scene Inputs
 

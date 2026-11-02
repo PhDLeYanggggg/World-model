@@ -28,6 +28,56 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### SOURCE-To-Selection Controllers Complete: No Reliable Joint Gain
+
+All18 SOURCE-only cost fits, two full exact refits,18causal policy freezes and
+54selection groups are complete. A separate rerun reproduces all18cost outputs
+and54frozen-action metric groups exactly; it checks every query's feasibility
+and matched counts but does not rerun solver optimization. No selection label
+trained weights or preprocessing and no threshold search occurred.
+
+Primary matched-joint minus independent paired completion lower:
+**+0.0016077pp [95% CI:-0.0152463,+0.0168448]**, fails. Known component:
+**+0.0137784pp [-0.0080937,+0.0344373]**, also inconclusive. Context minus row
+matched-joint known effect-0.0012360pp, lower-0.2111303pp [-0.3462881,-0.0958706].
+Known ADE gain versus each SOURCE floor: row joint0.1745%, context joint0.1733%,
+context independent0.1595%, context free-joint0.2173%; raw history11.6729%.
+The free-count secondary does not replace the failed matched primary.
+
+Context matched-joint supports21/252repeated record-risk views, with157known-all,
+156known-easy violations and52undefined easy-risk views; worst easy net7.0157%.
+Independent supports23/252with worst easy3.7724%. Original2%rules unchanged.
+There are216/252nonempty matched utility controls;36empty controls are not
+estimable, not safety passes. Views repeat28recordings across nine producers.
+
+A fresh post-readout causal-action audit uses no labels or new predictions.
+Across342,918repeated row views per arm, context predicts positive neural gain
+on71,298, admits18,899through both guards, and rejects52,399gain-positive
+predictions at those guards. These are predicted gains, not proved beneficial
+actions. Independent uses12,060neural/7,436physical; matched-joint11,259neural/
+8,237physical, same19,496switches. Thus joint replaces801neural actions by
+physical actions, not "never switches". This audit does not measure actual
+calibration or prove a unique irreducible failure cause.
+
+Policy freeze PID88292:177.001749s,peak3,259,416,576B. Initial PID88076failed at
+the first atomic checkpoint because its parent directory was absent; creating
+that private directory and unchanged-definition resume repaired execution.
+No registered code, model, threshold or scientific definition changed.
+Readout PID88704:34.577694s,peak3,207,512,064B. Verification PID88908:
+44.865313s,peak3,075,751,936B.21focused checks pass2.55s, including public
+scalar reconstruction with private reads denied. Full repository suite not run.
+Derived figures were rendered and inspected; no raw imagery/data/weights committed.
+
+Verdict: complete real SOURCE-to-selection training, failed joint utility and
+original safety; no deployment, no independent confirmation, no submission-ready
+claim. Next distinguishing step is SOURCE-versus-selection signed-risk/admission
+calibration and false-rejection analysis on this same frozen bank, not more
+threshold or architecture sweeps. Pairwise composition optimization remains missing.
+
+[Complete readout](outputs/publication_readiness_2026_09/european_selection_controller_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selection_controller_v1/failure_analysis.md),
+[actual loss curves](outputs/publication_readiness_2026_09/european_selection_controller_v1/figures/training_and_primary.svg).
+
 ### SOURCE-To-Selection Controller Registered
 
 The previous goal turn completed a real first selection readout and exact

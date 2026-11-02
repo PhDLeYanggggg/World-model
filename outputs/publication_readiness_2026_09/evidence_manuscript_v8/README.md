@@ -84,6 +84,14 @@ localities are now exposed; risk calibration and final confirmation remain close
 Supplement S10 records the role change, missing labels, capacity controls and
 failure. It is not a replacement for the main joint-policy contribution.
 
+The later complete SOURCE-to-selection controller study is in working supplement
+S11 and its linked experiment report. Eighteen full SOURCE fits and exact refits
+do not produce a reliable matched-joint gain; the primary interval crosses zero
+and worst known easy degradation is7.02%. The main PDF has not been regenerated
+to include S11; its existing exact-PDF receipt still covers the preceding main
+text and S10 status paragraph, not this new Markdown-only appendix. Full results:
+[controller readout](../european_selection_controller_v1/readout.md).
+
 The controlled cost study does not establish new JEPA/Transformer dynamics,
 independent forecasting accuracy, cross-dataset safety, metric geometry or
 seconds-level prediction. EuropeanSquares remains detector-silver/local-image,

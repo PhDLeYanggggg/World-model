@@ -312,3 +312,47 @@ or submission readiness. The complete public scalar readout and failure report
 are retained in european_selection_forecast_readout_v1. Local-image pixel,
 obs8/pred12/rawstride12 and detector-silver limitations remain. No metric,
 seconds-level, true3D, foundation, Stage5C or SMC claim follows.
+
+## S11. SOURCE-To-Selection Cost Controller Comparison
+
+Following S10,18matched real cost critics fit only the eight SOURCE localities
+outside each frozen forecaster's four producer-fit sites. Three actual forecasting
+seeds and three SOURCE folds remain; row/context critics share29,253parameters,
+initialization, draws and complete four-visit query coverage. Inputs are380causal
+geometry/rollout and64detector-history fields. Context adds only parameter-free
+other-target pooling at the same frame. No selection labels train the critic,
+normalizers or thresholds. This is a new cost fit, not new trajectory dynamics.
+
+All18fits, two complete exact refits and18policy freezes finish before scoring.
+Training uses141,312primary and14,336refit updates in541.08s locally,14.85GBpeak
+RSS. The original tiny numerical recovery failure is retained; fixed-membership
+reductions pass a new real recovery pilot and full exact refits without relaxed
+tolerance. A missing private checkpoint directory is repaired operationally,
+without a registered definition change. All18cost inferences and54frozen-action
+metric groups later replay; solver optimization is not claimed reexecuted.
+
+The primary is context matched-joint minus context independent paired completion
+lower. It is+0.0016077pp [-0.0152463,+0.0168448]; the known secondary is+0.0137784pp
+[-0.0080937,+0.0344373]. Both are inconclusive. Context-minus-row matched-joint
+known effect is-0.0012360pp; its completion lower is-0.2111303pp with an entirely
+negative interval. Context matched-joint known gain over its SOURCE floor is
+0.1733%, but only21/252repeated record-risk views pass, with157known-all and156
+known-easy violations and7.0157%worst known easy degradation. Original2%rules
+remain. The36empty count-matched controls are not estimable,not safety passes.
+
+The neural-action bank adds a small known+0.05748pp [0.03197,0.07749] over its
+physical-action ablation, but completion lower includes zero and risk fails.
+That ablation removes the action from the same critic; it is not retrained.
+Raw neural known gain11.6729% does not establish that the critic can safely
+identify its useful rows. A label-free causal-action audit shows19,496switches
+in342,918repeated context row views; matched joint replaces801neural actions
+with physical actions at the same total count. It is not a no-switch artifact.
+These counts do not measure actual calibration or prove a unique failure cause.
+
+This tests contemporaneous risk-budget pooling, not pairwise conflict/composition
+optimization. All six selection localities remain model-selection exposed;
+risk calibration, confirmation and DroneCrowd remain closed. Available-label
+ADE, wholly unknown completion, detector-silver/pixel/raw-step limitations and
+bootstrap unit are unchanged. This does not support deployment or submission
+readiness. The complete readout, actual loss traces, negative results and causal
+action diagnosis are retained in european_selection_controller_v1.
