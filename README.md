@@ -37,8 +37,10 @@ This adapts the project's earlier easy-hurdle idea, whose old negative result
 is retained. It is not a new hurdle method or an exact continuation of the old
 critic. The registered real 400-update recovery pilot passes in 23.20 seconds,
 with about 9.82 GB peak memory and exact recovered predictions and choices.
-Full training is running; complete policy effects and safety are not yet
-available. No deployment changes.
+All 36 fits and two exact full-budget refits now finish in 12.57 minutes,
+with about 10.60 GB peak memory. Real fitting curves are exported. The complete
+72-group policy evaluation is running; effects and safety are not yet available.
+No deployment changes.
 
 [Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md),
 [method scope](outputs/publication_readiness_2026_09/european_conditional_moment_v1/method_scope.md)

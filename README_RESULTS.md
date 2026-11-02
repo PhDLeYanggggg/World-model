@@ -47,7 +47,11 @@ not_run at registration. Subsequent real pilot PID71731 completes400updates
 in23.196583s,peak9,819,979,776B;both100-step recovered/direct scientific
 states,complete predictions and choices are exact. Pure-fit main-budget
 projection634.439558s excludes preparation/refits/readout and is not actual
-completion time. Local resources suffice;formal full36training is running.
+completion time. Local resources suffice. Formal PID72912 completes all36fits
+in754.069219s,peak10,604,593,152B:208,320main updates plus14,336exact complete
+refit updates. Both arms have219,368unknown causal contextual draws and zero
+unknown supervised labels. Real scalar training curves are exported. Complete
+72-group policy readout is running,not yet a utility or safety result.
 Post-registration checks7pass/1complete-result skip in1.65s. SOURCE fitting
 only;no deployment promotion.
 [Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
