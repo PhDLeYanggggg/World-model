@@ -36,17 +36,44 @@ under the same independent policy. These differing cohorts are not a paired
 transfer effect; the fitting failure is enough to rule out a purely new-scene
 explanation. This is diagnosis, not training or validation.
 
-The next controlled training comparison keeps the model and complete SOURCE
-budget fixed and tests easy-only versus dual H/EH stable cost divergences.
-The real recovery pilot now passes for all three losses, and a complete first-
-producer control refit matches the original weights, optimizer, draws and trace.
-The 18 new fits are running with the original full query budget and checkpoints;
-no downstream improvement is claimed before the complete readout.
-Training hit the existing disk-reserve guard after six fits. Checkpoints were
-retained and the unchanged run resumed once free space recovered, without
-deleting data or reducing the training budget.
-The earlier failed easy-deviance study stays a negative result, not a new-method
-claim. [Complete SOURCE diagnosis](outputs/publication_readiness_2026_09/european_calibration_source_fit_v1/readout.md).
+[Complete SOURCE diagnosis](outputs/publication_readiness_2026_09/european_calibration_source_fit_v1/readout.md).
+
+### Cost-Loss Repair: Negative Result
+
+I completed 18 matched cost-head fits to test whether stronger penalties for
+underestimated harm repair this failure. The easy-only arm changes easy-harm
+loss; the dual arm changes both harm losses. Forecasts, initialization, data,
+complete query coverage and the original 2% requirements stay fixed.
+
+|Cost head|Available-label ADE gain over floor|Views passing the full risk contract|
+|---|---:|---:|
+|Original mean-squared control|1.50%|6/252|
+|Easy-only cost deviance|0.092%|33/252|
+|Dual harm cost deviance|0.087%|30/252|
+
+The registered dual-minus-control paired completion-lower effect is **-1.98 pp
+[95% CI: -2.66, -1.26]**. Worst signed easy net improves to 1.62%, but 134
+all-risk and 133 easy-risk views still violate the contract; 64 selected-easy
+views lack defined support. Passing one net-error check is not a safety pass.
+The 252 views repeat 28 recordings; intervals resample six exposed development
+localities, not independent final-test scenes. **I have not deployed either arm.**
+
+The same-bank fitting check is also mixed: dual harm MSE decreases, while
+easy-harm MSE increases. Better prediction ratios on different selected pools
+do not establish better cost accuracy. New guards reject most old interventions,
+so simply retaining the old utility ranking would not restore those actions.
+The next useful control is whether a stronger matched causal cost regressor can
+learn these costs at all, before another loss or threshold search.
+
+All 18 cost inferences and 54 metric groups replay exactly. Training resumed
+after the real disk-reserve interruption without deleting data or reducing the
+budget; the resumed full state matches a direct full refit. These are engineering
+checks, not efficacy evidence. No new trajectory, JEPA or Transformer predictor
+was trained. The divergence is an existing loss, not a new method contribution.
+
+[Complete result](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/readout.md),
+[actual loss and effect figure](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/figures/harm_loss_evidence.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/failure_analysis.md).
 
 ### Independent Risk Calibration: Complete, But Unsupported
 
@@ -79,8 +106,8 @@ gain is only 0.00210% and 141/918 views pass; the remaining views are not safe z
 The cost diagnosis is more specific than "domain shift": at actual switches,
 the joint policy's median predicted/observed harm ratio is 0.196 and its easy-
 harm ratio is 0.000031. These are defined-record conditional medians, not a causal
-explanation or pooled estimates. The next question is whether this error already
-exists on SOURCE data or is amplified on new localities, before choosing a new loss.
+explanation or pooled estimates. The matched SOURCE diagnosis above finds that
+the error is already present on fitting data; its loss-repair experiment is negative.
 
 Same-count joint allocation shows descriptive utility gains at some grid points,
 but that does not repair failed risk or justify choosing a favorable multiplier

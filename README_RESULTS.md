@@ -28,23 +28,56 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-Controlled harm-loss training is registered and running:18new SOURCE cost fits
-on the same9forecast pipelines. Cached mean_absolute versus easy-only and dual
-H/EH stable divergence,original initialization/draws/coverage/risk rules fixed.
-15targeted synthetic/interface checks pass1.95s. This adapts the older stable
-loss rather than claiming a new divergence or a newly found clipping defect.
-The six selection sites are exposed development; calibration/private confirmation
-arrays are not used. Real pilot PID30702,8.459041s,peak8,536,358,912B:
-600actual updates; all3arms50->100resume versus100direct exact, original
-mean-control100step state exact. Formal train PID30865 now live. Complete
-first-producer mean-control refit also matches original weights/optimizer/
-sampler/trace exactly. New loss fits are not yet complete or evaluated.
+Controlled harm-loss training and complete readout are finished, with a negative
+registered result. All18new SOURCE cost fits/141,312primary updates and21,504
+full-control/new-arm refit updates complete. Mean_absolute is cached_verified;
+easy-only and dual H/EH losses are fresh_run. Same9forecast pipelines, SOURCE
+data, initialization,draws,coverage,risk rules and inference thresholds. No
+new trajectory,JEPA or Transformer training. This adapts an existing stable
+deviance, not a novel loss or newly discovered clipping defect. Six selection
+sites are exposed development; calibration/private confirmation arrays unused.
+
+All18new cost inferences and54metric groups replay exactly. Complete original
+control and both first-producer new-arm refits match. Dual-minus-control FULL
+paired completion-lower effect=-1.977437pp[-2.656544,-1.259025]; known effect=
+-1.416810pp[-2.059565,-.709034]. Easy-only lower=-1.944856pp. Both fail.
+Known ADE gain over the floor falls from1.503747% to.086937% for dual; the
+easy-only arm gains.091837%. Dual worst signed easy net=1.622262%, but only
+30/252repeated recording views pass the original complete risk contract:
+134known-all/133known-easy violations,64undefined selected-easy views.
+No favorable arm replaces the primary; no deployment or submission promotion.
+Intervals use3,000locality resamples after pipeline/actual-seed averaging.
+
+Fixed all-legal SOURCE counts/target masses match across all three heads:
+5,267,952repeated known action views. Dual H normalized MSE=.00315142 versus
+.00347079 control, while EH MSE rises to.000486812 from.000415010. Selected-
+pool cost-ratio improvement is not a blanket fixed-bank accuracy gain. A
+post-readout label-free suppression audit finds62,198/82,848old interventions
+rejected by the new guard alone; preserving old utility alone is insufficient.
+This is not a bound over alternative bank actions or proof rejected actions help.
+
+Real pilot PID30702,8.459041s,peak8,536,358,912B:600actual updates; all3arms
+50->100resume/direct exact and original100step control exact. Completion train
+PID32164,448.537613s,peak12,097,355,776B; its runtime excludes the earlier
+interrupted process. Inference PID33416,26.771173s; evaluation PID33725,
+19.469587s; replay PID34105,29.533293s. The actually interrupted2000->8192
+fit separately matches direct8192in model/optimizer/sampler/trace/RNG;
+PID33193,39.189826s,8,192extra reproduction updates. No production fit reduced.
 The first formal process stopped at the10GiB disk-reserve guard after6fits;
 the next model's2000/8192update checkpoint survived. Free space subsequently
 recovered from about8.3GiB to16.46GiB without any data/cache/system cleanup.
 Cause of the fluctuation is unconfirmed. The same run resumed under PID32164,
 unchanged guard/model/data/budget. CREATE readonly queue query freshly verified
 11:10UTC;72queue lines,not72independent tasks. No jobs changed/submitted.
+
+[Complete result](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/readout.md),
+[fixed-bank cost diagnostics](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/fixed_bank_cost_diagnosis.json),
+[loss/effect figure](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/figures/harm_loss_evidence.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/failure_analysis.md).
+38focused checks pass2.94s;full repository suite not_run. The figure is visually
+checked and two deterministic SVG renders match. These engineering checks do
+not override the negative scientific result.
+[Chinese reproduction and recovery guide](outputs/publication_readiness_2026_09/european_selection_harm_deviance_v1/reproduction_zh.md).
 
 Matched SOURCE fit diagnosis complete:18frozen cost states,9forecasters,
 144producer-excluded site groups. The current mean_absolute and original
