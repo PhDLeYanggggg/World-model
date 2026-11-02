@@ -84,6 +84,11 @@ is skipped, so MPS success is not claimed. Full-checkpoint accounting separates
 3,027,268 stored parameters, 580,676 gradient-enabled parameters and 386,628
 parameters with actual AdamW state through step 4,000, consistently across all
 nine models. These are not three interchangeable counts of trained capacity.
+All nine EqMotion forecasts and original-PCT inference checks are now frozen.
+The stronger current history-PCT control also reproduces all nine existing
+forecast hashes on the fixed whitelist; dimensionless-PCT caches are verified
+on complete original IDs. Both prediction freezes precede new EqMotion label
+scoring. No new outcome or learned deployment pass is asserted at this freeze.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
