@@ -51,6 +51,13 @@ can damage the original objective. Those are synthetic counterexamples,not
 observed causes. Real18case execution is not_run at registration. No new
 training,policy,threshold or independent-role access.
 [Fixed scope](outputs/publication_readiness_2026_09/european_cost_decode_decomposition_v1/protocol.md).
+The full18case/54stage run and separate replay now complete exactly. Raw fitting
+objectives=.920821row/.922766context,versus.918171/.920199after decoding and
+.721500for the original neural control. Sharing and projection slightly help
+in every case;the tested decoder-damage hypothesis does not hold here. Original
+target/weight/query hashes match. Run/replay166.8/177.9s,peak17.08GB;local48GB
+is sufficient. No feature-impossibility or new policy claim follows.
+[Complete mechanism result](outputs/publication_readiness_2026_09/european_cost_decode_decomposition_v1/readout.md).
 
 A SOURCE-only current-bank support diagnostic now completes across all9
 producers and444repeated recording views. Each view has at least one genuine
