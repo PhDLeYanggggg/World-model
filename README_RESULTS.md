@@ -28,7 +28,38 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-### Risk Transport Diagnosis Complete; Cardinal-Loss Repair Registered
+### Cardinal-Loss Repair: Positive Primary, Failed Risk
+
+All27new SOURCE cost fits,three full exact refits,27pointwise freezes and
+54selection groups complete. Separate PID95068inference/metric replay29.080005s
+reproduces all27new outputs/choices and54groups exactly; old nine context
+controls remain cached_verified. Actual evaluation PID94908:16.691139s.
+Frozen actions were saved before this comparison scored outcomes. No threshold
+search,joint reoptimization,final confirmation or calibration exposure.
+
+|New loss minus original independent|Known secondary,pp [95% CI]|Paired completion-lower,pp [95% CI]|
+|---|---:|---:|
+|mean_centered|+0.524623 [+0.231198,+0.886284]|+0.045522 [-0.188159,+0.270377]|
+|weighted_absolute|+0.443861 [+0.175111,+0.753086]|+0.229374 [-0.072069,+0.553307]|
+|mean_absolute, registered primary|+1.344268 [+0.717840,+1.895003]|+0.799527 [+0.175107,+1.333576]|
+
+Combined primary passes,not a deployment. Known floor-relative ADE gain rises
+0.159478%->1.503747%; mean switch5.521367%->22.495891%. Worst known easy net
+8.495468%,original3.772416%; full risk support6/252,original23/252. New known
+all/easy risk violations199/211,undefined easy14. All original requirements stay2%.
+No scene/seed/unknown target removed; empty-risk views are not safe zeros.
+The three actual seed primary means are+.955754/+.429803/+1.013023pp,while
+locality104has negative lower-.462358pp. Six-locality conditional development
+bootstrap3000,not38102independent examples and not untouched confirmation.
+
+The original matched-joint failure is not superseded by this independent-arm
+primary. No new dynamics or calibration guarantee.25focused checks pass3.88s
+on the final report/figure version; full repository suite not run.
+The current main PDF is not regenerated for this loss-repair readout.
+Scalar traces2151new points and two reviewed derivedSVGs are public; private
+weights/data/predictions/PNGpreviews remain excluded. No new deployment.
+
+### Risk Transport Diagnosis Complete; Loss-Repair Execution Record
 
 The previous goal turn was progress:18real SOURCE fits,two exact full refits,
 54selection groups/exact replay,and a causal action audit changed the next action.
@@ -72,8 +103,8 @@ PID93797in622.392853s,peak14,072,610,816B:211,968primary and21,504complete-refit
 updates. Three separate complete first-producer refits exact. Every new arm
 matches the original context control's initial weights,normalization,draws,RNG,
 row IDs and complete coverage. New policy inference/freeze now running; selection
-outcomes for this comparison remain unscored. This is training completion,
-not an empirical claim that either loss factor improves deployment.
+outcomes were unscored at that training checkpoint. The complete readout above
+supersedes that in-progress status,not the retained original training receipt.
 
 ### SOURCE-To-Selection Controllers Complete: No Reliable Joint Gain
 

@@ -48,8 +48,8 @@ interaction optimization, and the original 2% requirements have not changed.
 The causal action audit rules out "no switching": the context policy makes
 19,496 switches over repeated producer views. Joint allocation replaces 801
 neural choices with physical choices at the same total count, but does not
-produce a reliable gain. The next diagnosis is cost/admission calibration
-across SOURCE and new scenes, rather than another blind threshold search.
+produce a reliable gain. This motivated the completed SOURCE/new-scene cost
+diagnosis and controlled loss repair below, rather than a threshold search.
 
 Training took 9.02 minutes locally, with 155,648 primary/refit updates and
 14.85 GB peak RSS. Actual loss traces, the failed initial recovery pilot and
@@ -72,14 +72,27 @@ of observed harm on SOURCE and 4.02% on selection; predicted reference cost is
 not independent validation or safety certificates. Most useful neural gain is
 lost before the guard, at nonpositive predicted gain.
 
-I am testing two loss factors while keeping all data, forecasts, models and
-risk thresholds fixed: symmetric cost regression and absolute net-gain
-anchoring. The real 800-update pilot passes exact recovery in every arm and
-reproduces the old control's weights exactly. All 27 complete SOURCE fits and
-three full exact refits finish in 10.37 minutes locally. New policies are being
-frozen; selection outcomes remain unscored for this comparison. This is a
-controlled repair hypothesis, not a claimed improvement. The historical
-easy-deviance loss experiment also failed and is not being relabeled as new.
+I tested two loss factors while keeping all data, forecasts, models and risk
+thresholds fixed: symmetric cost regression and absolute net-gain anchoring.
+All 27 complete SOURCE fits, three full exact refits and 54 selection groups
+finish, followed by exact inference/metric replay. The combined repair improves
+the registered paired completion-lower utility by **+0.80 pp [95% CI: 0.18, 1.33]**
+over the original independent critic. Neither single-factor interval excludes zero.
+
+This is a genuine but limited gain: known ADE improvement over the same floor
+rises from 0.16% to 1.50%, but mean intervention increases from 5.52% to 22.50%
+and worst known easy net degradation reaches **8.50%**. Only **6/252** repeated
+recording views support the complete risk checks. **I have not deployed it.**
+Better gain prediction does not solve safe admission; the original failed joint
+result is unchanged. Calibration and final confirmation remain closed.
+
+[Complete loss comparison](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/readout.md),
+[actual fitting curves](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/figures/training_traces.svg)
+and [failure analysis](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/failure_analysis.md).
+
+The next unrun hypothesis is causal forecast-ensemble disagreement as an
+additional risk input, with SOURCE lineage and matched controls. I am not
+rescuing this model with a new threshold, a favorable subset or final-test tuning.
 
 [Cost transport diagnosis](outputs/publication_readiness_2026_09/european_selection_cost_transport_v1/readout.md)
 and [registered loss comparison](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/protocol.md).

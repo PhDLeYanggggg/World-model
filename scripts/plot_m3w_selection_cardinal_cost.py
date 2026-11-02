@@ -29,7 +29,7 @@ def main():
         ax.set(xlabel="Actual optimizer update",ylabel="SOURCE minibatch objective",yscale="log",title=arm.replace("_"," "))
     fig.suptitle("Nine real fits per objective; loss definitions differ across panels",fontsize=12)
     fig.savefig(out/"training_traces.svg",metadata={"Date":None});fig.savefig(private/"training_traces.png",dpi=160);plt.close(fig)
-    fig,axes=plt.subplots(1,2,figsize=(11,4.1),layout="constrained")
+    fig,axes=plt.subplots(1,2,figsize=(11,4.5),layout="constrained")
     for i,arm in enumerate(names[1:]):
         for offset,key,marker in ((.12,"known_pp","o"),(-.12,"completion_lower_pp","s")):
             value=summary["effects"][arm][key];point=value["point"];lo,hi=value["CI95"]
@@ -37,13 +37,13 @@ def main():
                 label=key.replace("_pp","").replace("_"," ") if i==0 else None)
     axes[0].axvline(0,color="#777777",lw=.8,ls="--")
     axes[0].set(yticks=range(3),yticklabels=[n.replace("_"," ") for n in names[1:]],
-        xlabel="New loss minus original policy (pp)",title="Paired locality bootstrap; primary is lower")
+        xlabel="New loss minus original policy (pp)",title="Paired locality bootstrap\nSquares: completion lower; circles: known")
     axes[0].legend(frameon=False,fontsize=8)
     values=[summary["safety"][n]["worst_known_easy_net_degradation_percent"] for n in names]
     axes[1].barh(range(4),values,color=colors,height=.6)
     axes[1].axvline(2,color="#333333",lw=1,ls="--",label="Original 2% easy-net requirement")
     axes[1].set(yticks=range(4),yticklabels=[n.replace("_"," ") for n in names],xlabel="Worst known easy net degradation (%)",
-        title="Mean utility cannot replace all/easy positive-harm checks")
+        title="Worst-record easy net degradation\nPositive-harm checks are also required")
     axes[1].legend(frameon=False,fontsize=8,loc="lower right")
     fig.savefig(out/"utility_and_easy_risk.svg",metadata={"Date":None});fig.savefig(private/"utility_and_easy_risk.png",dpi=160);plt.close(fig)
     for path in out.glob("*.svg"):

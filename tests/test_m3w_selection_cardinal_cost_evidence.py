@@ -52,3 +52,18 @@ def test_complete_report_only_reads_public_scalar_evidence(monkeypatch):
     assert report.render()["private_input_reads"]==0
     assert not any(s[k] for k in ("selection_labels_used_for_training","threshold_search","calibration_access",
         "confirmation_access","new_joint_solver","deployment_changed","submission_ready","stage5c_executed","smc_enabled"))
+
+
+def test_all_scalar_traces_and_reviewed_figures_are_bound():
+    t=json.loads((report.HOME/"training_traces.json").read_text())
+    assert t["training_freeze_sha256"]==report.sha(report.HOME/"training_freeze.json")
+    assert len(t["models"])==27 and not t["labels_or_weights_exported"]
+    assert sum(len(v["trace"]) for v in t["models"])==2151
+    for model in t["models"]:
+        fit=json.loads((report.HOME/"fits"/(model["trial"]+"_"+model["arm"]+".json")).read_text())
+        assert model["trace"][0]==fit["first_trace"] and model["trace"][-1]==fit["final_trace"]
+        assert model["trace"][-1]["step"]==fit["budget"]
+    review=json.loads((report.HOME/"figure_review.json").read_text())
+    assert review["summary_sha256"]==report.sha(report.HOME/"summary.json")
+    for name,digest in review["svg_sha256"].items():assert report.sha(report.HOME/"figures"/name)==digest
+    assert review["final_both_figures_visually_reviewed"] and not review["metric_changed"]

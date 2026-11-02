@@ -144,6 +144,9 @@ not calibrated population safety or untouched final confirmation.
 Loss definitions differ by design; cross-arm raw training totals are not a
 common test metric. First/final minibatches differ and are not validation loss.
 Scalar per-update traces are exported separately from hash-verified checkpoints.
+[All real fitting traces](figures/training_traces.svg) and
+[paired utility and easy-net risk](figures/utility_and_easy_risk.svg) are derived
+only from these public scalar artifacts,not new experiments.
 No weights or labels are published. The original control100-step weights,
 optimizer,sampler,trace and RNG match the previous real pilot exactly. Every
 new arm passes50->100resume vs100direct; three complete first-producer refits
