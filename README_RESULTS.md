@@ -46,6 +46,14 @@ noise,3000locality bootstraps and unchanged full-record risk. Calibration,
 confirmation and DroneCrowd remain closed. Feature construction/training/readout
 are not_run at registration. Six initial synthetic checks pass1.68s;not real
 training evidence. This does not establish a new ensemble method or joint gain.
+Subsequently all six feature arrays finish and separately replay exactly:
+build PID97055,2.697197s,peak3,068,805,120B;replay PID97272,2.678708s,
+peak3,076,587,520B. SOURCE rows by fold91,562/145,422/62,036,selection38,102
+per fold;these overlapping views are not new unique target rows. No outcome
+values create features. No ensemble-mean action changes the fixed forecast bank.
+Real600-update pilot PID97385passes7.960654s,peak8,705,835,008B:all three
+50->100recoveries exact;disabled original100-step control exact. Formal27fits
+now running with original complete budgets;outcomes not scored for this comparison.
 
 ### Cardinal-Loss Repair: Positive Primary, Failed Risk
 

@@ -94,9 +94,12 @@ The follow-up now registers causal forecast-ensemble disagreement as an added
 risk input. It compares disabled, real and fitting-SOURCE-matched noise arms,
 using the same cardinal loss, complete query budget and 2% rules. Every member
 excludes the critic-fitting scenes. The new projection starts at zero; the
-disabled control must reproduce the preceding model exactly. Real features,
-training and outcomes are not run at registration. This is a test of an
-established uncertainty signal, not a new calibration guarantee or deployment.
+disabled control must reproduce the preceding model exactly. All six feature
+arrays now reproduce exactly, and the real 600-update recovery pilot passes
+for every arm. The 27 full SOURCE fits are running; outcomes for this comparison
+are not scored yet. Candidate forecast paths remain fixed, with no added ensemble
+mean action. This tests an established uncertainty signal, not a calibration
+guarantee or deployment.
 
 [Uncertainty-input protocol](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/protocol.md).
 I am not rescuing a failed model with favorable subsets or final-test tuning.
