@@ -76,6 +76,14 @@ first-producer refits remain required. Pilot-based primary fitting estimate
 360.99s excludes preparation,refits and policy allocation and is not completion.
 No new selection policy outcome has been read.
 
+Formal training PID87270 completes541.081206s,peak14,854,356,992B: all18fits,
+141,312primary updates and14,336complete-refit updates. Both first-producer
+full scientific states reproduce exactly. All SOURCE queries receive>=4visits;
+no unknown future is supervised.1,434scalar trace points are exported from
+hash-verified checkpoints; they are training minibatches,not validation metrics.
+New-scene causal costs and actions are now being frozen. New policy readout is
+still not_run; lower loss is not claimed as generalization or safe deployment.
+
 ### First Selection-Locality Forecast Readout Complete
 
 The 36 SOURCE-trained forecasters now have a complete frozen-prediction readout

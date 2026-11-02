@@ -52,6 +52,12 @@ controllers (400 actual optimizer updates,7.47seconds,8.76GB peak RSS). All18
 formal fits have started with the original full coverage budget. The failed pilot
 is retained; a successful recovery check is not a successful selection policy.
 
+All18 formal fits and both complete refits are now finished:141,312primary and
+14,336refit updates,541.08seconds,14.85GB peak RSS. Every original fitting query
+has at least four visits, and both complete refits are exact. The next step is
+to freeze all new-scene costs and decisions before the policy outcome readout.
+The scalar loss traces are public; private data and weights are not uploaded.
+
 [Frozen controller protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md).
 
 ### Independent-Scene Inputs
