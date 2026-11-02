@@ -25,21 +25,25 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Independent Risk Calibration: Pilot Complete
+### Independent Risk Calibration: Complete Inputs Verified
 
 I have fixed the existing mean-absolute cost models for the next experiment:
 risk calibration on the separately reserved 12 localities and 102 recordings.
 The native utility ranking, all nine trained pipelines and the original 2%
 recording requirements stay fixed. A registered common risk multiplier is the
 only fitted parameter. Empty support cannot qualify as safe intervention.
-The real largest-record pilot parsed 3,591,510 rows and built 18,733 causal
-targets; its complete one-model grid took 31.61 seconds. All 102 recordings
-are now being converted locally, without reducing the registered cohort.
+All 102 recordings are converted and replay exactly from the original archive:
+481,537 causal targets and 801,360 visible-agent rows. No cohort reduction was
+needed. The largest-record pilot's one-model grid took 31.61 seconds. Frozen
+Torch forecast/cost inference is now running for all nine pipelines.
+One locality supplies 86.35% of targets, so these overlapping windows are not
+independent statistical units; locality-level summaries retain all 12 groups.
 Calibration outcomes will be opened only after the complete policy grid is
 frozen. Final confirmation stays closed; this is not a population-risk guarantee
 or deployment promotion. The earlier negative results below remain unchanged.
 
-[Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md).
+[Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md)
+and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).
 
 ### Forecast Disagreement: Negative Result
 

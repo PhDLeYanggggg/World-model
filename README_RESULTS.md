@@ -28,7 +28,7 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-### Independent Risk Calibration: Real Pilot Pass
+### Independent Risk Calibration: All102 Inputs Replayed Exactly
 
 Fixed mean_absolute SOURCE models, nine producers; original risk-calibration
 role:102 recordings/12 localities. This new narrow operator does not alter old
@@ -42,7 +42,15 @@ DroneCrowd remain closed. No new neural training or deployment is claimed.
 Fresh largest-record pilot PID4339:49.672492s,peak2,365,243,392B;
 3,591,510raw rows,18,733causal targets;single-model full-grid31.608944s.
 No future labels constructed.27focused checks pass;full repository suite
-not run. Full102-record conversion is running,not yet complete.
+not run. Complete conversion PID4554:204.410813s,peak2,762,833,920B;
+101fresh records plus one hash-verified current-run pilot. Complete raw replay
+PID5028:207.244544s,peak3,306,864,640B;all102freshly reparsed and all input/
+bridge arrays exact.26,112queries;481,537targets;801,360visible rows including
+319,823partial-history context rows.306input+306bridge prefix checks.
+One locality accounts for86.35%of targets;rows are not independent units.
+All nine frozen Torch forecast/cost pipelines are now inferring,not yet all
+complete. Calibration labels/final confirmation stay closed. Input and runtime
+checks are not predictive improvement,calibration success or deployment.
 
 ### Frozen-Utility Bounded Repair Also Negative
 
