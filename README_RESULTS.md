@@ -81,6 +81,9 @@ do not justify blind projection repair or automatic width escalation.
 All 48 scoped checks pass in 5.15 s; the unrelated full legacy suite was not run.
 [Complete result](outputs/publication_readiness_2026_09/european_selection_capacity_v1/readout.md)
 and [failure analysis](outputs/publication_readiness_2026_09/european_selection_capacity_v1/failure_analysis.md).
+The [width-control figure](outputs/publication_readiness_2026_09/european_selection_capacity_v1/figures/width_control.svg)
+separates fitting loss, the negative registered contrast and complete risk
+support. The actual SVG render was inspected; two SVG/PNG renders match exactly.
 
 A one-factor neural capacity control is registered before fitting:the same
 mean_absolute cost head grows64to128hidden units(29,253to58,501parameters),

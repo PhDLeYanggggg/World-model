@@ -25,6 +25,12 @@ These are full decoded query-visit/RMS-weighted fitting objectives, not
 minibatch trace values or validation loss. SOURCE improvement alone is not
 safe selection or generalization.
 
+![Complete width-control result](figures/width_control.svg)
+
+Gray lines are the nine paired SOURCE producers; teal is their mean.
+The primary uses the complete paired lower bound, not observed ADE loss.
+Repeated risk views are not independent scenes; neither width passes.
+
 ## Full Development Policies
 
 |Width|Known ADE gain % [95% CI]|Mean switch %|Supported views|All/easy violations|Undefined easy|Worst signed easy net %|
