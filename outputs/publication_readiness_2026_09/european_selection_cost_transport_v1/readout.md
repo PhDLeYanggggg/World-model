@@ -33,6 +33,17 @@ The R/ER outputs are already shared across candidate actions,so this is not an a
 The true useful designation uses outcomes only for this diagnosis; it is never an inference feature.
 Unknown outcomes remain unknown. Known beneficial gain does not certify safety.
 
+## Frozen-Normalizer Input Check
+
+|Context domain|Clipped geometry/rollout field fraction|Clipped detector field fraction|
+|---|---:|---:|
+|source_fit|0.00011873|0.00013968|
+|selection|0.00008567|0.00008065|
+
+Massive clipping is not observed under this particular check; this does not rule out distribution
+shift,representation insufficiency or subtle scaling problems. These are descriptive field fractions,
+not a test of equal distributions or a new normalization fitted on selection data.
+
 ## Next Controlled Test
 
 Keep forecasts,model,data,normalization and2%rules fixed. Compare the original asymmetric/centered

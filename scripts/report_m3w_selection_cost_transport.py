@@ -58,6 +58,17 @@ def render():
         lines.append(f"|{domain}|{a['useful_known_neural_rows']}|{frac('predicted_nonpositive_gain'):.2f}%|{frac('predicted_positive_guard_rejected'):.2f}%|{frac('neural_chosen'):.2f}%|")
     lines += ["","The true useful designation uses outcomes only for this diagnosis; it is never an inference feature.",
         "Unknown outcomes remain unknown. Known beneficial gain does not certify safety.","",
+        "## Frozen-Normalizer Input Check","",
+        "|Context domain|Clipped geometry/rollout field fraction|Clipped detector field fraction|",
+        "|---|---:|---:|"]
+    rows=[checked(ref) for ref in c["groups"]]
+    for domain in ("source_fit","selection"):
+        cells=[r["input_statistics"] for r in rows if r["domain"]==domain and r["arm"]=="context"]
+        average=lambda k:sum(r[k]*r["rows"] for r in cells)/sum(r["rows"] for r in cells)
+        lines.append(f"|{domain}|{average('geometry_rollout_clipped_fraction'):.8f}|{average('detector_clipped_fraction'):.8f}|")
+    lines += ["","Massive clipping is not observed under this particular check; this does not rule out distribution",
+        "shift,representation insufficiency or subtle scaling problems. These are descriptive field fractions,",
+        "not a test of equal distributions or a new normalization fitted on selection data.","",
         "## Next Controlled Test","",
         "Keep forecasts,model,data,normalization and2%rules fixed. Compare the original asymmetric/centered",
         "objective with unweighted squared mean-cost loss,absolute net-gain anchoring,and their combination.",

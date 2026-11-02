@@ -67,9 +67,13 @@ easy-deviance negative is explicitly retained; this is not a repeat of it.
 Real training/selection outcomes not_run at registration. Subsequently the
 real800-update pilot PID93653passes in8.357918s,peak8,738,488,320B. All four
 arms recover50->100exactly; the original100-step control also reproduces the
-parent checkpoint/optimizer/sampler/trace/RNG exactly. Formal27fits now running
-PID93797with100-step atomic checkpoints and heartbeat; not claimed complete.
-Selection outcomes for this comparison remain unscored.
+parent checkpoint/optimizer/sampler/trace/RNG exactly. Formal27fits complete
+PID93797in622.392853s,peak14,072,610,816B:211,968primary and21,504complete-refit
+updates. Three separate complete first-producer refits exact. Every new arm
+matches the original context control's initial weights,normalization,draws,RNG,
+row IDs and complete coverage. New policy inference/freeze now running; selection
+outcomes for this comparison remain unscored. This is training completion,
+not an empirical claim that either loss factor improves deployment.
 
 ### SOURCE-To-Selection Controllers Complete: No Reliable Joint Gain
 
