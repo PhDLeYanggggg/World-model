@@ -28,13 +28,22 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The next matched SOURCE fit diagnosis is registered, not yet executed:
-18frozen cost states,9forecasters,144producer-excluded site groups. It compares
-mean_absolute with weighted_centered using the same native costs and retains
-unknown labels.12focused synthetic/interface checks pass0.92s. This is not
-new training, a real-data result or a new calibration fit. The original control
-must reproduce the existing verified SOURCE diagnosis. No independent role
-arrays are accessed by this new diagnosis.
+Matched SOURCE fit diagnosis complete:18frozen cost states,9forecasters,
+144producer-excluded site groups. The current mean_absolute and original
+weighted_centered are compared with native labels directly recomputed from
+SOURCE arrays, not float32 target restoration. Pilot PID28699,7.505672s,
+peak3,939,713,024B; full run PID28953,65.986890s,peak8,706,785,280B,
+16fresh+2hash-checked current-run pilot cases. Separate full replay PID29316,
+72.032816s,peak8,681,799,680B; all18fresh inferences/144site groups and72old
+control groups exact.12focused synthetic/interface checks pass0.92s.
+
+Current SOURCE selected-record H/EH prediction-ratio medians=.365326/.000503;
+old control=1.257809/.002579. Current pooled selected known all/easy risks=
+5.109%/11.449%, despite predicted .803%/.330%. Thus selected harm error exists
+on fitting data, not solely new-scene shift. Each family has444repeated record
+views; medians are conditional on finite ratios. No new training or risk pass.
+No independent-role private arrays accessed; calibration scalar comparison
+uses its existing disclosed exposure. No model or threshold is deployed.
 
 Current execution update, 2 November: complete calibration is finished and
 unsupported under the registered original contract. All918full allocation grids

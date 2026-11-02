@@ -27,11 +27,19 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ### Tracing The Cost Failure
 
-I have registered a matched SOURCE comparison of the current mean-cost critic
-and its original control across all nine forecasting pipelines. It will test
-whether the selected easy-harm error already exists on fitting data or grows
-mainly on new localities. This is a diagnosis, not new training or held-out
-validation; confirmation remains closed. The complete resource pilot comes next.
+The matched SOURCE comparison is complete: 18 frozen cost states across all
+nine forecasting pipelines, with a separate exact replay of all 144 site groups.
+The original control reproduces its earlier verified result exactly. The current
+critic already underestimates selected easy harm on fitting data: its median
+predicted/true ratio is 0.000503, versus 0.0000296 on the new calibration cohort
+under the same independent policy. These differing cohorts are not a paired
+transfer effect; the fitting failure is enough to rule out a purely new-scene
+explanation. This is diagnosis, not training or validation.
+
+The next controlled training comparison keeps the model and complete SOURCE
+budget fixed and tests easy-only versus dual H/EH stable cost divergences.
+The earlier failed easy-deviance study stays a negative result, not a new-method
+claim. [Complete SOURCE diagnosis](outputs/publication_readiness_2026_09/european_calibration_source_fit_v1/readout.md).
 
 ### Independent Risk Calibration: Complete, But Unsupported
 
