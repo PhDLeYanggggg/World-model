@@ -121,6 +121,21 @@ def main():
         '## Compute And Recovery', '', '|Phase|PID|Seconds|Peak RSS bytes|', '|---|---:|---:|---:|']
     for name in ('pilot','training_freeze','policy_freeze','complete','verification'):
         r = read(name+'.json'); lines.append(f'|{name}|{r["pid"]}|{r["seconds"]:.6f}|{r["peak_RSS_bytes"]}|')
+    if (public/'turn_interrupt_recovery.json').exists():
+        lines += ['', 'Training resumed after a turn interruption from the actual tenth model',
+            '96/128tree checkpoint. The original process was absent; its exit code and',
+            'exit mechanism are unknown,not evidence of an OpenMP/SHM hang. Complete',
+            'previous models were revalidated,not refitted. Training-freeze runtime',
+            'covers only the resumed process; per-fit retained work is recorded in',
+            'the fit receipts. Unsaved interrupted-block work is unknown. No budget',
+            'or resource guard changed.']
+    if (public/'actual_interruption_refit.json').exists():
+        actual = read('actual_interruption_refit.json')
+        if not actual['actual_recovery_vs_direct_full_forest_exact'] or not actual['interrupted96_tree_prefix_exact']:
+            raise ValueError('Actual interrupted recovery failed direct refit')
+        lines += ['', 'The actual interrupted96/128tree producer also matches an independent',
+            'direct128tree refit,including all retained96prefix trees and trace.',
+            'This adds128reproduction trees,distinct from the first-producer refit.']
     lines += ['', 'The complete primary budget is2,304trees plus128first-primary refit trees.',
         'Native arm64, four fit threads, single-thread predictions, workers0; no',
         'DataLoader multiprocessing. Atomic checkpoints and the10GiB reserve remain.',

@@ -40,12 +40,20 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-A SOURCE-only current-bank support diagnostic is prepared while the registered
-forests train. It checks whether genuine known easy actions can supply the
-original finite2%reference support,even with outcome knowledge. This is an
-oracle feasibility diagnosis,not an inference policy or model success. Three
-synthetic checks pass0.18s. Development/calibration/confirmation remain untouched
-by this diagnostic;real SOURCE execution not_run at preparation.
+A SOURCE-only current-bank support diagnostic now completes across all9
+producers and444repeated recording views. Each view has at least one genuine
+known easy action satisfying the original finite2%reference contract. This
+rules out complete bank-support absence on SOURCE,not causal learning failure.
+It uses outcome knowledge and is not a deployable oracle or model success.
+No development/calibration/confirmation data read. Independent reconstruction
+now matches all444views and9old mean-cost predictions. Its first numeric/string
+recording-key join failure is fixed,regression-tested and retained in the logs;
+the original arithmetic was unaffected. All444views have at least3beneficial
+safe actions with causal displacement>=0.1pixel(descriptive,not new eligibility).
+About13.8%of old selected SOURCE predictions exceed the tighter actual-floor
+B+H radius. This supports a decoder-support hypothesis,not a cause or remedy
+proved by policy evaluation. No new bound-based model trained here.
+[Full diagnostic and limitations](outputs/publication_readiness_2026_09/european_selection_bank_support_v1/readout.md).
 
 The current-bank nonlinear cost control is registered before fitting:18forests,
 two fixed row/context arms,128trees each,9actual forecaster pipelines,seeds17/29/43.
@@ -60,8 +68,14 @@ Actual recovery pilot PID37889 completes64trees,214.392408s,peak9,218,342,912B.
 Both8->16/direct16states are exact;536,712observed SOURCE action rows,minimum
 query visits4. Row/context expanded matrices=.988/1.943GB. Projected18fit time
 7,208.18s excludes preparation,prediction and full refit;not completion evidence.
-Original128tree formal run is live under PID38473,CPU4,workers0;local resources
-fit the measured workload. No new remote job or slower-run downgrade.
+Original128tree formal run stopped across a turn interruption;PID38473 was
+absent on inspection,not observed as a live stalled job. Its exit code/cause
+is unknown. Nine complete fits and the tenth96/128tree checkpoint survived.
+The same run resumes under PID50966,CPU4,workers0;the interrupted model has
+completed128trees. Completed endpoints are revalidated,not trained again.
+The96tree snapshot hash and recovery evidence are recorded in the
+[recovery receipt](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/turn_interrupt_recovery.json).
+No guard,budget,model,split or threshold changed;no new remote job or downgrade.
 At12:32UTC,the first complete context128tree independent refit matches all
 tree/weight/input/trace state exactly. It is a reproducibility check,not model
 efficacy. All18formal fits continue;no development readout or threshold search.
@@ -70,6 +84,8 @@ fitting,not promoted to a new primary. It retains original query visits and
 unlabeled zero-supervision queries,distinguishing common decoded cost error
 from uniform bank MSE and the forest's unprojected monitor. Two new metric
 checks pass;combined19scoped checks pass3.75s. Real diagnostic waits for all18fits.
+The actual interrupted producer also has a direct128tree-refit verifier prepared;
+it is not yet run and is distinct from the already exact first-producer refit.
 
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504
