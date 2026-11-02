@@ -41,6 +41,25 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The neural width control is now complete, not a pilot: nine new width-128
+Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
+and the 200-update recovery pilot. All original query draws, preprocessing and
+initial outputs match the width-64 control. Training takes 503.02 s with 14.49 GB
+peak RSS; every SOURCE objective, development inference and all 54 metric groups
+replay exactly. These are cost critics, not new trajectory/world-dynamics models.
+
+The complete SOURCE objective improves only 0.43% (0.721500 to 0.718380).
+Known ADE gain is 1.4312% versus 1.5037% for width 64; their paired observed
+effect is inconclusive. The registered full paired completion-lower effect is
+**-0.6363 pp [95% CI -1.1786, -0.2787]**, and complete recording risk fails:
+only 9/252 views supported, 202 all/207 easy violations, 13 undefined easy views,
+10.1658% worst easy-net degradation. No favorable subset replaces that result.
+The current deployment is unchanged. The combined decoder and capacity results
+do not justify blind projection repair or automatic width escalation.
+All 48 scoped checks pass in 5.15 s; the unrelated full legacy suite was not run.
+[Complete result](outputs/publication_readiness_2026_09/european_selection_capacity_v1/readout.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_selection_capacity_v1/failure_analysis.md).
+
 A one-factor neural capacity control is registered before fitting:the same
 mean_absolute cost head grows64to128hidden units(29,253to58,501parameters),
 with the original nine SOURCE pipelines,loss,optimizer,draws,budgets and risk.
