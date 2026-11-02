@@ -82,19 +82,23 @@ query visits4. Row/context expanded matrices=.988/1.943GB. Projected18fit time
 Original128tree formal run stopped across a turn interruption;PID38473 was
 absent on inspection,not observed as a live stalled job. Its exit code/cause
 is unknown. Nine complete fits and the tenth96/128tree checkpoint survived.
-The same run resumes under PID50966,CPU4,workers0;the interrupted model has
-completed128trees. Completed endpoints are revalidated,not trained again.
+The same run resumes under PID50966,CPU4,workers0,and now completes all18fits
+at their original128trees:2,304primary trees. Completion-process runtime is
+3,670.010830s,peak15,547,973,632B;this excludes the original interrupted process.
+Retained per-fit time totals8,261.121515s,not including all preparation or
+unsaved interrupted work. Completed endpoints were revalidated,not refitted.
 The96tree snapshot hash and recovery evidence are recorded in the
 [recovery receipt](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/turn_interrupt_recovery.json).
 No guard,budget,model,split or threshold changed;no new remote job or downgrade.
 At12:32UTC,the first complete context128tree independent refit matches all
 tree/weight/input/trace state exactly. It is a reproducibility check,not model
 efficacy. All18formal fits continue;no development readout or threshold search.
-The supplementary full decoded SOURCE-objective calculation is prepared during
-fitting,not promoted to a new primary. It retains original query visits and
+The supplementary full decoded SOURCE-objective calculation now runs after
+all18fits,not promoted to a new primary. It retains original query visits and
 unlabeled zero-supervision queries,distinguishing common decoded cost error
 from uniform bank MSE and the forest's unprojected monitor. Two new metric
-checks pass;combined19scoped checks pass3.75s. Real diagnostic waits for all18fits.
+checks pass;combined19scoped checks passed3.75s before later additions.
+Development readout and separate replay are still pending at training completion.
 The actual interrupted producer's independent direct128tree refit now completes:
 PID54254,1,152.128213s,peak10,484,514,816B. All128tree states and the retained
 96tree prefix/trace match exactly. Its separate checkpoint,lock and heartbeat
