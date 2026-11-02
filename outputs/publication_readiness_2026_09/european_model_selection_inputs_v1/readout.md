@@ -84,9 +84,11 @@ No sample budget is reduced for speed.
 ## Remaining Model Interface Work
 
 This exact input schema is not yet the full current-model feature store.
-The frozen geometric packer expects476geometry fields and applies its own
-complete-aligned-neighbor policy;it must not be described as consuming every
-partial neighbor simply because this cache retains them. Current detector-aware
+The generic geometric packer expects476geometry fields and keeps complete
+neighbors. The actual active producers additionally use the versioned masked-
+neighbor repair,so a bridge must apply that repair rather than use generic
+packing alone. Retaining every visible input agent also does not mean the
+network consumes more than its eight nearest masked neighbors. Current detector-aware
 models also need64past confidence/box-change fields. The original input cache
 does not store confidence history,so those fields require a raw-prefix-aligned
 extraction;inventing confidence or aliasing new rows to old SOURCE IDs is invalid.

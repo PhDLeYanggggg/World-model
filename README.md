@@ -35,8 +35,11 @@ array. The original 8/12-step protocol and query budget are unchanged.
 Of 7,087 query times, 5,240 have at least two target agents, so joint decisions
 have substantial input support. Some recordings remain sparse and are not
 discarded. No future target windows or prediction errors are opened. The next
-interface step is the frozen models' geometry and detector-confidence features;
-this is not yet a new accuracy result. Calibration and confirmation stay closed.
+interface step is the frozen models' geometry and detector-confidence features.
+I have registered this bridge and all 36 source-trained forecasting checkpoints,
+including three actual training seeds. Their predictions will be frozen before
+selection outcomes. This is not yet a new accuracy result. Calibration and
+confirmation stay closed.
 
 [Input conversion and limitations](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/readout.md)
 and [reproduction](outputs/publication_readiness_2026_09/european_model_selection_inputs_v1/reproduction_zh.md).

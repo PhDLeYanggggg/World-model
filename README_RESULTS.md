@@ -24,6 +24,21 @@ all nine current PDF pages were inspected again. Layout is not scientific readin
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Selection Forecast Bridge And Actual Seed Family Registered
+
+Previous turn was progress:all28input conversions and full raw replay completed.
+`european_selection_forecast_freeze_v1` now binds476geometry/64detector fields,
+all38,102selection targets,and36actual trained forecasters across seeds17/29/43,
+three SOURCE folds and four detector representations. Normalizers remain source
+fitted. No new training or forecast errors. Active models require the versioned
+partial-neighbor repair after generic packing;the older complete-only pack alone
+would feed the wrong context. A real SOURCE feature-parity check is required.
+
+Registration_v2 retains the pre-execution registration and fixes a duplicated
+fixed metadata keyword before any feature or inference execution;no scientific
+factor,model,budget or role changed.18focused checks pass1.10s. Actual feature
+pilot,all28bridge,36full forecasts and replay are not_run at registration.
+
 ### Model-Selection Input Adapter Complete, Outcomes Closed
 
 The preceding goal turn was progress:36real conditional-cost fits,complete72
