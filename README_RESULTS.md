@@ -10,20 +10,21 @@ or evidence status.
 The [current draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
 sets out the partial-label forecast-substitution problem, controlled comparisons
 and negative results. It now builds in the official CVPR2027 two-column style:
-seven main-body pages plus one LLM statement/reference page, all eight visually
+eight main-body pages plus one LLM statement/reference page, all nine visually
 checked. Source and exact-PDF layout receipts are recorded; the official style,
 PDF and page images remain private. This is typesetting progress, not independent
 scientific confirmation or submission readiness. The complete own-decision and
 matched published-loss comparisons, including their failed primary/risk gates,
 are included. The completed boundary-loss comparison is now also included.
-The working supplement records its output-semantics limitation and the earlier
-post-readout guard diagnosis. The revised seven-page body packs the result
-tables without altering the official style, fonts or margins; all eight current
-PDF pages were inspected again.
+The complete conditional-cost factorization comparison is also included, with
+its negative primary and improved-but-still-failed risk. The working supplement
+records conditional-event/magnitude semantics and the earlier guard diagnosis.
+The revised eight-page body retains the official style, fonts and margins;
+all nine current PDF pages were inspected again. Layout is not scientific readiness.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
-### Registered Conditional-Moment Identification
+### Completed Conditional-Moment Identification
 
 `european_conditional_moment_v1`: two31,381-parameter heads share the same
 own-choice warm encoder, fitting-prior initialized outputs, 462 causal fields,
@@ -51,10 +52,38 @@ completion time. Local resources suffice. Formal PID72912 completes all36fits
 in754.069219s,peak10,604,593,152B:208,320main updates plus14,336exact complete
 refit updates. Both arms have219,368unknown causal contextual draws and zero
 unknown supervised labels. Real scalar training curves are exported. Complete
-72-group policy readout is running,not yet a utility or safety result.
-Post-registration checks7pass/1complete-result skip in1.65s. SOURCE fitting
-only;no deployment promotion.
-[Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
+72-group readout and separate numerical replay are complete. PID75028 readout
+takes165.378655s,peak11,593,695,232B;PID76396 replay165.724376s,
+peak11,568,758,784B. All new moment/probability inferences,actions and original
+full/record controls are exact;timed integer optimization is not rerun.
+
+Known ADE gain:marginal6.909619%,identified2.830236%,frozen guard11.890200%.
+Identified-minus-marginal known -4.079383pp[-5.548596,-2.623124];primary
+completion-lower -5.321489pp[-7.088381,-3.692526]. All12locality known effects
+and all3cost-seed effects are negative. Even the completion-upper interval
+is negative. Empty count-matched controls remain not_estimable,not safe0.
+
+Occurrence Brier0.109240->0.037867;all5normalized cost-MSE point estimates
+improve. Paired B/H/R/EH error intervals are negative;ER interval crosses0.
+Fixed anchor loss0.115738->0.108436,occurrence BCE0.366042->0.149985,
+conditional MSE0.127004->0.098434. These are fitting diagnostics,not validation.
+Risk-supported recording views15/444->55/444;known all/easy violations
+181/293->71/150. Worst easy net degradation6.250110%->1.264269% does not
+replace positive-harm safety. Undefined selected-easy views15->38.
+Safe easy actions rejected389,742->524,628;beneficial safe easy rejected
+364,680->492,385;unsafe admitted265,601->139,550. Blocked support views
+10->26,singleton obstructions5->5. Switch rate35.837402%->17.934363%.
+These repeat candidates/contexts/seeds,not independent samples. No dynamics lift.
+
+Public scalar rebuild PID77711 takes3.216290s with zero private input reads;
+figure checked.44scoped tests pass5.78s,no skips;full repository suite not run.
+Earlier7pass/1skip and8pass/3skip are dated partial-stage checks,not final gates.
+Fitting gates6/9,no advancement or deployment. SOURCE only;independent roles
+remain unopened. Separating event semantics from mean magnitude is insufficient
+to repair the unchanged guard's complete-policy utility and recording risk.
+[Readout](outputs/publication_readiness_2026_09/european_conditional_moment_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_conditional_moment_v1/failure_analysis.md),
+[model/data card](outputs/publication_readiness_2026_09/european_conditional_moment_v1/model_data_card.md).
 
 ### Completed Two-Sided Boundary Guard Comparison
 

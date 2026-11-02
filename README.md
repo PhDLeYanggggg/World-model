@@ -25,24 +25,38 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Conditional Cost Identification
+### Conditional Cost Identification: Better Fit, Worse Decisions
 
-I am now testing a cost model that keeps event probability separate from harm
-magnitude. Both arms share a coherent seven-candidate architecture, warm causal
-encoder and complete training budget. One fits the composed cost moments; the
-other also learns the easy event and its conditional costs from fitting labels.
-The final TDEF ranking, forecast paths and original 2% rules remain frozen.
+I separated easy-event probability from conditional harm magnitude on the
+same seven-candidate forecast bank. Two matched models share the architecture,
+warm causal encoder, initialization and complete training budget. One fits
+the composed costs; the other also learns the easy event and conditional costs
+from fitting labels. Ranking, forecast paths and the original 2% rules stay fixed.
+This extends the earlier easy-hurdle control, not a newly invented hurdle method.
 
-This adapts the project's earlier easy-hurdle idea, whose old negative result
-is retained. It is not a new hurdle method or an exact continuation of the old
-critic. The registered real 400-update recovery pilot passes in 23.20 seconds,
-with about 9.82 GB peak memory and exact recovered predictions and choices.
-All 36 fits and two exact full-budget refits now finish in 12.57 minutes,
-with about 10.60 GB peak memory. Real fitting curves are exported. The complete
-72-group policy evaluation is running; effects and safety are not yet available.
-No deployment changes.
+All 36 fits, two exact complete refits, 72 policy groups and a separate numerical
+replay finish. Formal training took 12.57 minutes locally.
 
-[Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md),
+|Policy|Known-label ADE gain over the same floor|Worst known easy net degradation|Risk-supported recording views|
+|---|---:|---:|---:|
+|Matched marginal supervision|6.91%|6.25%|15/444|
+|Added occurrence and conditional supervision|2.83%|1.26%|55/444|
+|Frozen original guard|11.89%|4.09%|18/444|
+
+The additional supervision improves all five aggregate cost-MSE point estimates
+and occurrence Brier from 0.1092 to 0.0379. But its paired known utility is
+**-4.08 pp [95% CI: -5.55, -2.62]**; the registered completion-lower effect is
+**-5.32 pp [-7.09, -3.69]**. The guard admits fewer harmful choices but rejects
+more useful ones. Lower regression loss does not establish a better policy.
+
+**I have not deployed this model.** Easy net degradation below 2% does not
+replace the positive-harm rule: 150 easy-risk violations remain. These exposed
+SOURCE fitting results are not independent confirmation or new dynamics.
+Forty-four focused checks pass; scalar reports rebuild without private inputs.
+
+[Complete result and real fitting curves](outputs/publication_readiness_2026_09/european_conditional_moment_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_conditional_moment_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md),
 [method scope](outputs/publication_readiness_2026_09/european_conditional_moment_v1/method_scope.md)
 and [reproduction](outputs/publication_readiness_2026_09/european_conditional_moment_v1/reproduction_zh.md).
 
@@ -69,8 +83,9 @@ This exposes a specific limitation: predicting whether a cost exceeds a boundary
 does not identify how large that cost is. Tying event confidence directly to a
 mean-cost output can distort the quantity used by the risk filter. The fitting
 curves show lower boundary loss but worse cost loss, not a safe neural upgrade.
-The next repair must separate these quantities and reuse the earlier event/hurdle
-controls rather than repeat a threshold search.
+This motivated the conditional-cost control above. That complete comparison
+also fails; separating the quantities is not enough to make the policy useful
+and safe. I retain both results rather than repeat a threshold search.
 
 These are exposed SOURCE results, not independent confirmation, SDD `t+50`
 or new trajectory dynamics. Thirty-three focused checks pass; public scalar

@@ -213,3 +213,47 @@ unlimited capacity. This elementary observation is not a unique attribution of
 the empirical error. It motivates separating event prediction from cost magnitude
 semantics,not calling the tied sigmoid calibrated risk. The current boundary
 arm improves its BCE while worsening the common anchor objective and known risk.
+
+## S9. Conditional Easy Occurrence And Cost Magnitude
+
+The next matched control reuses the earlier easy-hurdle mechanism on the current
+full seven-action bank. Both arms have 31,381 active parameters, the same warm
+causal encoder, equal fitting-prior output initialization, complete cyclic draws
+and fixed-initial-choice query supervision. They are matched to each other, not
+an exact prediction-preserving continuation of the preceding critic. The old
+easy-hurdle negative result is retained rather than presented as a new method.
+
+For causal X, predict q(X) and conditional costs B_e,H_e,R_e for e in {0,1}:
+
+```text
+B = (1-q) B_0 + q B_1
+H = (1-q) H_0 + q H_1
+R = (1-q) R_0 + q R_1
+ER = q R_1; EH = q H_1.
+```
+
+The reference levels and q are shared across candidate actions. Conditional
+benefit/harm fractions are bounded by causal path disagreement, and benefit is
+also capped at its corresponding reference. The decoder therefore preserves
+B<=R, ER<=R, EH<=H and B+H<=D. These are statistical cost factors, not future
+trajectory branches, latent rollout or stochastic proposals.
+
+The marginal arm regresses the five composed moments and fixed-query residual.
+The identified arm adds unit-weight easy-occurrence BCE and unit-weight
+class-balanced conditional B/H/R squared loss. Class weights and output priors
+come only from fitting sources. Actual E is defined by the original future CV
+cost and fixed easy cutoff, not ER>0: an easy row can have zero floor reference.
+It is a loss/evaluation label only; strict causal inference rejects that field.
+Wholly unknown outcome rows remain NaN and have no supervised contribution.
+
+This separates occurrence semantics from a cost-tied boundary sigmoid. However,
+for q>0, EH-0.02ER=q(H_1-0.02R_1), so a more accurate occurrence probability alone
+does not change the pointwise easy-risk sign. Conditional magnitude estimates,
+selected support and complete observed/unobserved risk still matter. The name
+"identified" denotes the supervised arm, not identification of missing outcomes
+or a causal-effect, calibration or population-safety guarantee.
+
+The frozen TDEF ranking, forecast bank and all original recording requirements
+are unchanged. Complete fit/readout/replay status and results are taken only
+from the experiment's immutable scalar receipts; no partial loss is used to
+promote a policy. This remains exposed SOURCE fitting, not independent evidence.

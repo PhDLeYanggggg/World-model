@@ -363,6 +363,18 @@ All 36 fits, two full refits and 72-group inference/action-score replay finish. 
 
 Boundary recording-risk support is 0/444; known all/easy violations are 388/417. Fitting advancement is false. Neither a fitting loss nor a repaired observed mean can substitute for the unchanged risk requirement. These remain conditional SOURCE results, not independent confirmation or new dynamics evidence.
 
+### Conditional Event And Magnitude Control
+
+We next separate easy-event probability from conditional cost magnitude. This reuses the earlier easy-hurdle idea, not a novel hurdle method. Both arms share a new coherent seven-candidate decoder, 31,381 active weights, the same warm encoder, fitting priors, causal draws and complete budgets. One fits the composed B/H/R/ER/EH moments and the fixed-query signed residual; the other additionally supervises the easy occurrence and class-balanced conditional B/H/R magnitudes. The occurrence probability and conditional references are shared across actions. Actual future easy labels remain fitting/evaluation targets, never inference inputs. The original TDEF ranking and 2% guard are unchanged.
+
+All 36 fits, two complete refits and 72-group probability/cost/action-score replay finish. Known ADE gain is 6.91% for marginal supervision and 2.83% for identified supervision.
+
+| Conditional-cost contrast | Known utility, pp [95% CI] | Completion-lower, pp [95% CI] |
+|---|---:|---:|
+| Identified minus marginal, primary | -4.08 [-5.55, -2.62] | -5.32 [-7.09, -3.69] |
+
+The identified policy supports 55/444 original recording-risk views, with 71/150 known all/easy violations. Fitting advancement is false. A coherent probabilistic factorization does not by itself establish downstream utility, unobserved-outcome identification or safety. These remain exposed SOURCE fitting comparisons, not independent confirmation or new trajectory dynamics.
+
 
 ![Complete SOURCE cost evidence](cost_evidence.pdf)
 

@@ -15,7 +15,11 @@ lower effects. The working supplement retains the two-sided guard failure
 diagnosis. The complete two-sided boundary-loss continuation is now included:
 observed routing improves, but required recording risk worsens and the primary
 lower interval crosses zero. Its event-versus-cost limitation is retained in
-the supplement. A successful build does not improve the scientific status.
+the supplement. The conditional-event/magnitude comparison is now complete too:
+cost regression and event prediction improve, but matched policy utility falls
+and only55/444record-risk views pass. Its negative primary and conditional
+factorization are retained in the main text and working supplement. A successful
+build does not improve the scientific status.
 
 ## Files
 
@@ -62,7 +66,7 @@ node scripts/build_m3w_typeset_draft.mjs
    Only after inspecting all pages, provide `--visual-reviewed-sha` with that
    exact PDF's SHA256. A stale screenshot or PDF identity is rejected.
 
-The current local checked build has seven main-body pages and one additional page for
+The current local checked build has eight main-body pages and one additional page for
 the LLM statement/references. Overfull boxes, font-shape fallbacks, missing
 glyphs, duplicate reference headings and unresolved final-pass references are
 checked. An upstream `lineno.sty` UTF-8 warning is disclosed, not silently removed.
