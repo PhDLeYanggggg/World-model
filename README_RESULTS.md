@@ -28,6 +28,24 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Risk Transport Diagnosis Registered
+
+The previous goal turn was progress:18real SOURCE fits,two exact full refits,
+54selection groups/exact replay,and a causal action audit changed the next action.
+`european_selection_cost_transport_v1` freezes a read-only diagnostic on these
+same18critics:144SOURCE fitting-resubstitution and108exposed selection groups.
+It reuses the established five-moment diagnostic and separates true-minus-
+predicted H-0.02R into harm underprediction and reference inflation. Known-label
+diagnostics do not certify completion safety or restore untouched test status.
+
+All decisions,legal-action masks,normalizers,forecasters,models and2%rules stay
+fixed. No threshold or model is fitted. SOURCE outcomes are explicitly fitting
+resubstitution,not validation. Calibration/confirmation/DroneCrowd remain closed.
+Seven targeted synthetic checks pass0.71s. The initial draft retained a fixture
+correction: a guard-rejected synthetic case needed positive,not zero,predicted
+gain. No diagnostic data or mathematics changed before execution. Actual pilot
+and all252real diagnostic groups are not_run at registration.
+
 ### SOURCE-To-Selection Controllers Complete: No Reliable Joint Gain
 
 All18 SOURCE-only cost fits, two full exact refits,18causal policy freezes and

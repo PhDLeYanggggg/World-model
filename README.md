@@ -64,6 +64,12 @@ not a submission-ready or deployable world model.
 [protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md)
 and [reproduction](outputs/publication_readiness_2026_09/european_selection_controller_v1/reproduction_zh.md).
 
+The follow-up freezes these same models and decisions, then decomposes their
+risk errors on SOURCE fitting data and the exposed selection localities. It
+checks harm underprediction, reference inflation and where useful neural
+opportunities are lost. This is a registered diagnosis, not another fit or an
+independent calibration result; real-data execution is not run at registration.
+
 ### Independent-Scene Inputs
 
 The past-only adapter now covers all 28 recordings from the six reserved
