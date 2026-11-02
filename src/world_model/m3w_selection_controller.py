@@ -95,9 +95,11 @@ class CostHead(nn.Module):
         code = torch.eye(7, dtype=x.dtype).expand(len(x), -1, -1)
         hidden = F.silu(self.encoder(torch.cat((x, code), -1)))
         if self.arm == "context":
-            total = hidden.new_zeros(count, 7, hidden.shape[-1]).index_add(0, segments, hidden)
-            sizes = torch.bincount(segments, minlength=count)[segments]
-            others = (total[segments]-hidden)/(sizes-1).clamp_min(1)[:, None, None]
+            # Fixed membership products avoid parallel scatter accumulation in backprop.
+            membership = F.one_hot(segments, count).to(hidden.dtype).T
+            total = membership @ hidden.flatten(1)
+            sizes = membership.T @ membership.sum(1)
+            others = ((membership.T @ total).reshape_as(hidden)-hidden)/(sizes-1).clamp_min(1)[:, None, None]
             hidden = hidden + others
         hidden = F.silu(hidden)
         raw = self.action(hidden)
@@ -125,9 +127,10 @@ def loss(prediction, data, ix, segments, count):
     center = (delta*legal).sum(1)/actions
     ranking = ((delta-center[:, None]).square()*legal).sum(1)/actions
     supported = legal.any(1)
+    membership = F.one_hot(segments, count).to(prediction.dtype).T
     def query_mean(value):
-        sums = value.new_zeros(count).index_add(0, segments, value*supported)
-        ns = value.new_zeros(count).index_add(0, segments, supported.float())
+        sums = membership @ (value*supported)
+        ns = membership @ supported.float()
         return (sums/ns.clamp_min(1)).mean()
     reg, rank = query_mean(regression), query_mean(ranking)
     return dict(total=reg+.5*rank, regression=reg, ranking=rank,

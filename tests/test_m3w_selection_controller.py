@@ -78,3 +78,18 @@ def test_feature_constructor_preserves_partial_context_and_keeps_labels_separate
     target=p[:,1].copy();valid=np.ones((n,12),bool);valid[-1]=False
     y,known=api.labels(p,target,valid,2,10.)
     assert known.tolist()==[True,True,False] and np.isnan(y[-1]).all()
+
+
+def test_four_thread_resume_is_exact_at_nonlogging_checkpoint(tmp_path):
+    old = torch.get_num_threads(); torch.set_num_threads(4)
+    try:
+        d = data(); settings = dict(width=16, learning_rate=.001, query_batch_size=4,
+            minimum_updates=100, largest_source_cycles=2, gradient_clip=5., heartbeat_every=100, checkpoint_every=50)
+        kw = dict(arm="context", seed=29, settings=settings, identity={"four_thread_regression":True})
+        api.fit(d,path=tmp_path/"resume.gz",stop_at=50,**kw)
+        a=api.fit(d,path=tmp_path/"resume.gz",resume=True,**kw)
+        b=api.fit(d,path=tmp_path/"direct.gz",**kw)
+        for key in a:
+            if key!="seconds":api.exact(a[key],b[key])
+    finally:
+        torch.set_num_threads(old)

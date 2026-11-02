@@ -40,6 +40,13 @@ This is risk-budget pooling, not yet pairwise interaction optimization. The
 original 2% requirements remain. Twelve targeted implementation checks pass;
 real SOURCE fitting and the new policy comparison are not run at registration.
 
+All nine SOURCE prediction caches now reproduce the original hashes exactly
+(110.27 seconds locally). The first real recovery pilot found tiny context-arm
+floating differences, so I have not promoted it to formal training. A versioned
+numerical repair uses fixed membership products instead of grouped scatter;
+the original failed pilot stays recorded and the new real recovery check must
+pass without relaxing exactness. Data, model sizes, budgets and risk rules stay fixed.
+
 [Frozen controller protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md).
 
 ### Independent-Scene Inputs

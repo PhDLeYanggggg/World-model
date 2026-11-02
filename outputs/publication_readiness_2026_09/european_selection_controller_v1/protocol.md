@@ -102,3 +102,21 @@ metres, human gold, true3D or foundation evidence. No Stage5C execution or SMC.
 Commit code/configs/reports/light scalar metrics only. Private arrays, raw data,
 weights and external dependencies remain excluded. No deployment promotion from
 a failed primary, missing support or favorable mean.
+
+## Pre-Formal-Training Numerical Amendment
+
+The original real SOURCE recovery pilot completed400updates but failed exact
+context-arm recovery: encoder max absolute difference2.421438694e-08. Initial
+weights, row identities, preprocessing, draws, sampler and RNG states were exact;
+the row arm passed. Parallel scatter/gather floating accumulation is the working
+hypothesis, not a certified hardware cause; a small random-gradient probe did
+not reproduce it. The original log/checkpoints and registration are retained.
+No new policy outcomes or formal cost fit were scored before this amendment.
+
+Registration_v2 replaces the context and loss grouped reductions by fixed
+membership matrix products. Both arms retain the same mathematical objective,
+parameters, data, source-balanced draws, budgets, reference, risk rule and primary.
+No tolerance is relaxed. The verified nine SOURCE forecast caches are unchanged
+and explicitly rebound. A new400-update real recovery pilot and both first
+complete exact refits are still required. This is a numerical recovery repair,
+not a positive scientific result or an OpenMP/SHM hang.

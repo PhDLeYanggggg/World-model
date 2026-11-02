@@ -55,6 +55,19 @@ development-exposed; calibration and final confirmation stay closed. Pairwise
 composition conflicts remain outside this risk-pooling comparison and are not
 claimed solved. Stage5C/SMC remain off; no deployment change.
 
+Actual SOURCE inference PID86187 completed110.272940s,peak1,822,277,632B.
+All nine cached predictions match the original active-producer hashes exactly.
+The real400-update pilot PID86447 then failed exact context-arm restoration:
+max encoder difference2.421438694e-08. Row restoration passed; identity,
+preprocessing, initialization, fit IDs, sampler, draws and RNG were exact.
+This is not a hang, scientific policy failure or positive fitting result.
+The small random-gradient probe did not reproduce the issue. Registration_v2
+retains the original contract and failure receipt and replaces scatter/gather
+reductions by fixed membership products, with no mathematical objective,
+data/budget/risk change or tolerance relaxation. New real pilot required.
+Thirteen targeted implementation checks pass after the repair; formal18fits
+and new policy outcome evaluation remain not_run at this amendment.
+
 ### First Selection-Locality Forecast Readout Complete
 
 The 36 SOURCE-trained forecasters now have a complete frozen-prediction readout

@@ -31,7 +31,7 @@ from src.evaluation.m3w_european_squares_roles import require_source_training
 NAME = "european_selection_controller_v1"
 PUBLIC = ROOT/"outputs/publication_readiness_2026_09"/NAME
 PRIVATE = ROOT/"data/stage_cvpr2027_experiments"/NAME
-CONFIG = ROOT/"configs/m3w_selection_controller_v1.json"; REG = PUBLIC/"registration.json"
+CONFIG = ROOT/"configs/m3w_selection_controller_v1.json"; REG = PUBLIC/"registration_v2.json"
 SOURCE = frozen.PACKED
 CONTROLLER_STORE = ROOT/"outputs/publication_readiness_2026_09/european_detector_history_store_v1/complete.json"
 SOURCE_STORE = frozen.STORE/"complete.json"
@@ -75,6 +75,10 @@ def admission(register=False):
         fit_scopes.append(dict(trial=row["trial"], producer_fit_sites=row["fit_sites"], controller_fit_sites=names,
                               controller_fit_rows=len(selected), controller_fit_ids_sha256=frozen.fingerprint(selected)))
     value = dict(bindings={str(p.relative_to(ROOT)):sha(p) for p in FILES},
+        original_registration=artifact(PUBLIC/"registration.json"),
+        pre_formal_training_numerical_repair="replace_parallel_scatter_gather_reductions_with_fixed_membership_products_both_arms_objective_unchanged",
+        original_failed_recovery_pilot=artifact(PUBLIC/"pilot_failure_v1.json"),
+        unchanged_verified_source_bank_freeze=artifact(PUBLIC/"source_bank_freeze.json"),
         dependencies={p:sha(ROOT/p) for p in DEPENDENCIES}, parent_forecast_registration=artifact(frozen.REG),
         selection_feature_freeze=artifact(frozen.PUBLIC/"feature_freeze.json"),
         selection_prediction_freeze=artifact(frozen.PUBLIC/"prediction_freeze.json"),
@@ -209,9 +213,9 @@ def pilot():
     source = source_inputs(json.loads(frozen.REG.read_text())); row = producers[0]
     data = fitting_data(row, source, whitelist); cells = []
     for arm in api.ARMS:
-        fit_one(data, row, arm, cfg, beat, guard, family="pilot", stop_at=50)
-        recovered = fit_one(data, row, arm, cfg, beat, guard, family="pilot", stop_at=100, resume=True)
-        direct = fit_one(data, row, arm, cfg, beat, guard, family="pilot_direct", stop_at=100)
+        fit_one(data, row, arm, cfg, beat, guard, family="pilot_deterministic_v2", stop_at=50)
+        recovered = fit_one(data, row, arm, cfg, beat, guard, family="pilot_deterministic_v2", stop_at=100, resume=True)
+        direct = fit_one(data, row, arm, cfg, beat, guard, family="pilot_direct_deterministic_v2", stop_at=100)
         assert_recovery(recovered, direct)
         cells.append(dict(arm=arm, parameters=direct["parameters"], seconds=direct["seconds"],
                           updates=direct["step"], budget=direct["budget"], exact_scientific_recovery=True,
