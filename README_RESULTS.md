@@ -7,7 +7,19 @@ or evidence status.
 
 ## Working Paper
 
-The [current draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
+The [current v9 working revision](outputs/publication_readiness_2026_09/evidence_manuscript_v9/README.md)
+integrates complete current-bank cost-loss, SOURCE diagnosis and unsuccessful
+calibration evidence. Fresh prose/AST rendering/figure and current-source
+compile;scientific numbers are cached_verified,not new inference. Five main
+pages plus one disclosure/reference page;all6PNGs inspected against PDF SHA
+adc08069c50dadd5e36a3e97647e765d162ddea3ac689554de99ef0784049a32.
+No final-pass overfull/reference/font-shape issue;upstream lineno UTF-8 warning
+retained. Locked Torch environment lacks pypdf;bundled document Python validates
+the PDF without changing training dependencies. v8 sources/receipts remain
+unchanged. Forest training is ongoing and its readout is not yet included.
+No scientific promotion,complete anonymity certificate or submission occurred.
+
+The [previous frozen v8 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
 sets out the partial-label forecast-substitution problem, controlled comparisons
 and negative results. It now builds in the official CVPR2027 two-column style:
 eight main-body pages plus one LLM statement/reference page, all nine visually
@@ -43,6 +55,9 @@ query visits4. Row/context expanded matrices=.988/1.943GB. Projected18fit time
 7,208.18s excludes preparation,prediction and full refit;not completion evidence.
 Original128tree formal run is live under PID38473,CPU4,workers0;local resources
 fit the measured workload. No new remote job or slower-run downgrade.
+At12:32UTC,the first complete context128tree independent refit matches all
+tree/weight/input/trace state exactly. It is a reproducibility check,not model
+efficacy. All18formal fits continue;no development readout or threshold search.
 
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504

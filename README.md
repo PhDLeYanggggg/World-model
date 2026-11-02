@@ -443,12 +443,14 @@ repository suite was not run.
 [protocol](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/protocol.md)
 and [Chinese reproduction guide](outputs/publication_readiness_2026_09/european_own_decision_cost_v1/reproduction_zh.md).
 
-The [working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
-now includes these comparisons and negative results in the official CVPR2027
-style. It is a research draft, not a submission-ready or independently confirmed
-method. It includes the completed matched published-loss comparison above.
-The next repair must address both unsafe admissions and rejected useful support,
-and differ substantively from the risk-loss controls already tried.
+The [current working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v9/README.md)
+now brings the complete current-bank cost-loss and failed calibration evidence
+into one narrative in the official CVPR2027 style. All six current pages have
+been visually checked. It is a research draft, not a submission-ready or
+independently confirmed method. The frozen v8 retains the earlier matched
+published-loss comparisons; the ongoing nonlinear control has no claimed
+efficacy result yet. The next repair must address both unsafe admissions and
+rejected useful support, not just improve aggregate error.
 
 ### Completed Reference-Consistency Control
 

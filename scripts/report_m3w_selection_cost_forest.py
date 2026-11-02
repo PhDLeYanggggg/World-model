@@ -36,6 +36,8 @@ def main():
     freeze = read('training_freeze.json'); fits = [read_ref(ref) for ref in freeze['fits']]
     if len(fits) != 18 or any(r['trees'] != 128 or r['minimum_query_visits'] < 4 or r['unknown_supervised_rows'] for r in fits):
         raise ValueError('All complete registered forests and SOURCE query support required')
+    if not read('first_full_refit.json')['full128_tree_state_exact']:
+        raise ValueError('Complete primary-arm exact refit required')
     source = ROOT/'outputs/publication_readiness_2026_09/european_calibration_source_fit_v1/complete.json'
     controls = [read_ref(r) for r in json.loads(source.read_text())['cases'] if r['path'].endswith('_mean_absolute.json')]
     if len(controls) != 9 or {r['trial'] for r in controls} != {r['trial'] for r in fits}:
