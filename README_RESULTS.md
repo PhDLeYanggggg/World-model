@@ -23,6 +23,29 @@ PDF pages were inspected again.
 
 ## Source-Development Cost Learning (No Deployment Promotion)
 
+### Registered Conditional-Moment Identification
+
+`european_conditional_moment_v1`: two31,381-parameter heads share the same
+own-choice warm encoder, fitting-prior initialized outputs, 462 causal fields,
+full cyclic query draws and budgets. The shared easy-event factor composes
+conditional B/H/R into coherent B/H/R/ER/EH means for all seven candidates.
+The identified arm adds occurrence BCE and separate conditional magnitude loss;
+the marginal arm measures but does not optimize these auxiliary targets.
+Realized easy status is a loss/evaluation label only, not an inference field.
+Zero floor-reference cases do not define that event; its original CV-error
+definition is preserved. Unknown labels stay NaN with causal rows retained.
+
+This adapts, rather than renames as new, the existing easy-hurdle supervision.
+The old method's negative results are acknowledged. New heads are not an exact
+prediction-preserving continuation of the preceding critic. Full36fits,
+208,320main updates,14,336exact full-refit updates and72readout groups are
+registered before outcomes. The frozen current-bank TDEF ranker, original
+recording2%requirements and independent-data lock remain unchanged.
+Pre-registration engineering checks:6passed,2artifact checks skipped,1.35s.
+Actual resource/recovery pilot,formal training and complete evaluation are
+not_run at registration. SOURCE fitting only;no deployment promotion.
+[Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
+
 ### Completed Two-Sided Boundary Guard Comparison
 
 Experiment: `european_boundary_guard_v1`. Two matched 31,119-parameter

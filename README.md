@@ -25,6 +25,21 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Conditional Cost Identification
+
+I am now testing a cost model that keeps event probability separate from harm
+magnitude. Both arms share a coherent seven-candidate architecture, warm causal
+encoder and complete training budget. One fits the composed cost moments; the
+other also learns the easy event and its conditional costs from fitting labels.
+The final TDEF ranking, forecast paths and original 2% rules remain frozen.
+
+This adapts the project's earlier easy-hurdle idea, whose old negative result
+is retained. It is not a new hurdle method or an exact continuation of the old
+critic. The comparison is registered before training; real recovery training,
+full policy effects and safety have not yet been evaluated. No deployment changes.
+
+[Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
+
 ### Completed Risk-Boundary Learning Comparison
 
 I kept the published-loss ranking and all forecasts frozen, then trained two
