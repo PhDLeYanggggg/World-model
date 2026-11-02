@@ -28,6 +28,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+Controlled harm-loss training is registered,not yet run:18new SOURCE cost fits
+on the same9forecast pipelines. Cached mean_absolute versus easy-only and dual
+H/EH stable divergence,original initialization/draws/coverage/risk rules fixed.
+15targeted synthetic/interface checks pass1.95s. This adapts the older stable
+loss rather than claiming a new divergence or a newly found clipping defect.
+The six selection sites are exposed development; calibration/private confirmation
+arrays are not used. Real recovery and exact-control pilots precede training.
+
 Matched SOURCE fit diagnosis complete:18frozen cost states,9forecasters,
 144producer-excluded site groups. The current mean_absolute and original
 weighted_centered are compared with native labels directly recomputed from

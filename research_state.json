@@ -1,4 +1,28 @@
 {
+  "selection_harm_deviance_20261102": {
+    "experiment": "european_selection_harm_deviance_v1",
+    "status": "registered_controlled_SOURCE_training_real_recovery_pilot_next",
+    "expected_new_cost_fits": 18,
+    "new_arms": ["easy_deviance", "dual_deviance"],
+    "cached_control": "mean_absolute",
+    "actual_forecaster_seeds": [17, 29, 43],
+    "new_cost_training_executed": false,
+    "new_forecast_training": false,
+    "synthetic_interface_checks_passed": 15,
+    "selection_development_already_exposed": true,
+    "calibration_arrays_access": false,
+    "confirmation_access": false,
+    "deployment_changed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "next_commands": [
+      ".venv-pytorch/bin/python scripts/run_m3w_selection_harm_deviance.py pilot",
+      ".venv-pytorch/bin/python scripts/run_m3w_selection_harm_deviance.py train --resume",
+      ".venv-pytorch/bin/python scripts/run_m3w_selection_harm_deviance.py infer --resume",
+      ".venv-pytorch/bin/python scripts/run_m3w_selection_harm_deviance.py eval --resume",
+      ".venv-pytorch/bin/python scripts/run_m3w_selection_harm_deviance.py verify"
+    ]
+  },
   "calibration_source_fit_20261102": {
     "experiment": "european_calibration_source_fit_v1",
     "status": "complete_SOURCE18_inferences144site_groups_and72original_controls_exact_selected_harm_error_present_on_fit",
@@ -180,8 +204,8 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "active_experiment": "european_calibration_source_fit_v1",
-  "active_phase": "SOURCE_fit_failure_verified_controlled_H_EH_loss_training_next_confirmation_closed",
+  "active_experiment": "european_selection_harm_deviance_v1",
+  "active_phase": "controlled_SOURCE_cost_training_registered_recovery_pilot_next_confirmation_closed",
   "frozen_utility_guard_20261102": {
     "status": "complete_nine_action_matrices54metric_groups_exact_replay_primary_advancement_and_risk_failed",
     "freeze_pid": 232,
