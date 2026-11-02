@@ -28,6 +28,15 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The current-bank nonlinear cost control is registered before fitting:18forests,
+two fixed row/context arms,128trees each,9actual forecaster pipelines,seeds17/29/43.
+It reuses the444causal fields,complete original SOURCE query multiplicities,
+normalization and mean-cost/absolute-gain objective before output projection.
+The older72-source and54-multiaction forest failures remain distinct.17focused
+checks pass2.61s;real pilot/training/inference/readout not_run at registration.
+No threshold search or independent-role opening.
+[Protocol](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/protocol.md).
+
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504
 full-control/new-arm refit updates complete. Mean_absolute is cached_verified;

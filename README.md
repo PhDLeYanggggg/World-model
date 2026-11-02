@@ -25,6 +25,17 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Matched Nonlinear Cost Control
+
+I am checking whether the current causal inputs can support a more reliable
+cost model before changing another neural loss. The registered comparison uses
+row-only and same-query-context ExtraTrees with the current nine forecasters,
+444-field schema, original query-draw weights and absolute gain objective.
+The older forest failures used different banks and are not treated as this
+matched control. Seventeen focused checks pass; real fitting and development
+readout have not run at registration. No risk threshold or deployment changes.
+[Protocol](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/protocol.md).
+
 ### Tracing The Cost Failure
 
 The matched SOURCE comparison is complete: 18 frozen cost states across all
