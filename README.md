@@ -34,13 +34,17 @@ recording requirements stay fixed. A registered common risk multiplier is the
 only fitted parameter. Empty support cannot qualify as safe intervention.
 All 102 recordings are converted and replay exactly from the original archive:
 481,537 causal targets and 801,360 visible-agent rows. No cohort reduction was
-needed. The largest-record pilot's one-model grid took 31.61 seconds. Frozen
-Torch forecast/cost inference is now running for all nine pipelines.
+needed. The largest-record pilot's one-model grid took 31.61 seconds. All nine
+frozen Torch pipelines have now produced forecasts and costs for every target:
+4,333,833 repeated model-target predictions, not independent observations.
+Inference took 13.79 minutes; complete fresh numerical replay is in progress.
 One locality supplies 86.35% of targets, so these overlapping windows are not
 independent statistical units; locality-level summaries retain all 12 groups.
 I also registered an atomic checkpoint repair before the full allocation job:
 an interrupted progress update must not invalidate an otherwise recoverable
 grid prefix. The model, choices objective and risk requirements are unchanged.
+The real largest-record recovery and direct full-grid runs now match exactly,
+including the original pilot; this is an execution check, not a safety result.
 Calibration outcomes will be opened only after the complete policy grid is
 frozen. Final confirmation stays closed; this is not a population-risk guarantee
 or deployment promotion. The earlier negative results below remain unchanged.

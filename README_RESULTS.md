@@ -55,8 +55,16 @@ checks are not predictive improvement,calibration success or deployment.
 Prospective storage-v2 repair:reproduced the legacy two-file crash window in
 a focused test;atomic compound checkpoint retains the previous valid prefix
 when replacement is interrupted.18storage/selector/allocator checks pass.
-The real largest-record resume/direct pilot is registered,not yet executed.
+Real largest-record controlled stop after one committed multiplier,full reload
+and complete direct grid now match exactly;the original pilot grid also exact.
+PID6747:69.347075s,peak656,785,408B. This is not an OS-kill test or a risk pass.
 No model,normalizer,grid,solver,cohort or risk-rule change;old receipts retained.
+
+All9 frozen Torch inference complete PID5393:827.282159s,peak2,431,598,592B;
+918record-model views and4,333,833repeated predictions. Current-run original
+pilot reused by hash for one view;remaining views freshly inferred. SOURCE
+weights/normalizers cached_verified;no new training. Full fresh forecast/cost
+replay is running. Full calibration grid and label scoring are not yet complete.
 
 ### Frozen-Utility Bounded Repair Also Negative
 
