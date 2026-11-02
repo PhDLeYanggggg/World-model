@@ -35,10 +35,11 @@ def main():
     axes[0].legend(frameon=False,fontsize=8)
     values=[summary["safety"][arm]["worst_known_easy_net_degradation_percent"] for arm in names]
     axes[1].barh(range(3),values,color=colors,height=.6)
-    axes[1].axvline(2,color="#333333",ls="--",lw=1,label="Original 2% easy-net requirement")
+    axes[1].axvline(2,color="#333333",ls="--",lw=1)
     axes[1].set(yticks=range(3),yticklabels=names,xlabel="Worst known easy net degradation (%)",
         title="Worst recording: easy net\nPositive-harm guards also apply")
-    axes[1].legend(frameon=False,fontsize=8,loc="lower right")
+    axes[1].set_ylim(-.5,2.9)
+    axes[1].text(2.1,2.55,"Original 2% easy-net requirement",fontsize=8,color="#333333")
     fig.savefig(out/"utility_and_risk.svg",metadata={"Date":None});fig.savefig(private/"utility_and_risk.png",dpi=160);plt.close(fig)
     for path in out.glob("*.svg"):path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())+"\n")
     print(json.dumps(dict(figures=2,raw_data_or_weights_read=False,new_training=False)))

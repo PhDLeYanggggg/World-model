@@ -25,6 +25,34 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
+### Forecast Disagreement: Negative Result
+
+I tested whether disagreement among three actual training seeds helps identify
+harmful switches. All 27 matched SOURCE cost fits, three complete refits and
+the new-scene readout are finished, with exact numerical replay. The disabled
+controls reproduce the preceding models exactly; no forecast path changed.
+
+|Input arm|Known ADE gain over the same floor|Worst known easy net degradation|
+|---|---:|---:|
+|Disabled|1.50%|8.50%|
+|Real seed disagreement|0.59%|6.87%|
+|SOURCE-matched noise|1.20%|8.78%|
+
+Real minus disabled paired completion-lower utility is **-1.47 pp
+[95% CI: -2.09, -0.88]**. Real also loses to noise. Fewer switches reduce some
+harm, but the original 2% requirements still fail. **I have not deployed it.**
+This does not prove all uncertainty methods fail; three point models can share
+the same blind spots.
+
+The next registered check keeps the old utility ranking fixed and uses the new
+model only for risk guards. It changes no weights or thresholds; its outcomes
+are not run at registration. A causal-only audit motivates this separation,
+but predicted opportunities are not proof of useful actions.
+
+[Complete uncertainty result](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/failure_analysis.md)
+and [frozen-utility protocol](outputs/publication_readiness_2026_09/european_frozen_utility_guard_v1/protocol.md).
+
 ### Learning When To Intervene
 
 I trained 18 matched row-only and same-query-context cost controllers while
@@ -90,17 +118,14 @@ result is unchanged. Calibration and final confirmation remain closed.
 [actual fitting curves](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/figures/training_traces.svg)
 and [failure analysis](outputs/publication_readiness_2026_09/european_selection_cardinal_cost_v1/failure_analysis.md).
 
-The follow-up now registers causal forecast-ensemble disagreement as an added
+The completed follow-up tests causal forecast-ensemble disagreement as an added
 risk input. It compares disabled, real and fitting-SOURCE-matched noise arms,
 using the same cardinal loss, complete query budget and 2% rules. Every member
 excludes the critic-fitting scenes. The new projection starts at zero; the
-disabled control must reproduce the preceding model exactly. All six feature
-arrays now reproduce exactly, and the real 600-update recovery pilot passes
-for every arm. All 27 full SOURCE fits and three exact full refits now finish
-in 10.56 minutes locally; all nine disabled controls reproduce the old models.
-Outcomes for this comparison are not scored yet. Candidate paths stay fixed, with no added ensemble
-mean action. This tests an established uncertainty signal, not a calibration
-guarantee or deployment.
+disabled control reproduces the preceding model exactly. All six feature arrays,
+27 full SOURCE fits and three complete refits finish. Candidate paths stay fixed,
+with no ensemble-mean action. The negative result is reported above; an
+established uncertainty signal is not automatically a safe intervention signal.
 
 [Uncertainty-input protocol](outputs/publication_readiness_2026_09/european_selection_uncertainty_v1/protocol.md).
 I am not rescuing a failed model with favorable subsets or final-test tuning.

@@ -28,7 +28,39 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-### Seed-Spread Input Comparison Registered
+### Seed-Spread Input Comparison Complete: Negative
+
+All27SOURCE fits,three exact full refits,27pointwise policy freezes and54metric
+groups complete. Separate PID99005replay30.302152s reproduces all27new cost
+inferences/choices and54groups. All nine disabled controls remain exactly the
+old mean_absolute models,including weights/base optimizer/traces/RNG/predictions.
+
+Real-minus-disabled paired completion lower**-1.467508pp[-2.087922,-.881301]**;
+known-.918127pp[-1.466817,-.370835]. Real-minus-noise lower
+**-1.110665pp[-1.768625,-.666736]**. All six locality primary effects and all
+three actual-seed means are negative. No promotion. Known gain versus floor:
+disabled1.503747%,real.585619%,noise1.197095%;mean switch22.495891/13.452368/
+20.869863%. Worst known easy net8.495468/6.869911/8.778604%. Real supports
+13/252record views,188known-all/178known-easy violations,27undefined easy-risk
+views. Full-roster easy-net references are defined in all252views;selected
+support failure is not unavoidable absence of every easy evaluation target.
+
+38focused checks pass5.57s,including three synthetic checks of the next bounded
+repair. Full repository suite not run. Both derivedSVGs reviewed;one legend/bar
+overlap fixed before commit,without metric changes. No raw/feature/weight/media
+files committed. Main PDF not regenerated. Calibration/confirmation remain closed.
+
+A causal-only audit counts30,135old-positive/new-real-guard-passing candidates
+whose new gain is nonpositive,among107,981such predicted-positive candidates.
+342,918repeated row views:old82,848switches,real-coupled46,567,fixed-old-utility/
+new-real-guard52,715potential switches. These are not known beneficial actions.
+`european_frozen_utility_guard_v1` registers exactly one decision repair:freeze
+old utility/rank,use real/noise guards at unchanged2%. No new fit or thresholds.
+Its new policy outcomes are not_run at registration. Primary fixed-real minus
+fixed-noise paired lower;advancement fixed-real minus old coupled-disabled plus
+all original record risk. Original failed comparisons remain unchanged.
+
+### Seed-Spread Execution History
 
 Previous goal turn was progress:27full SOURCE cost fits,three exact complete
 refits,54selection groups/replay,positive registered utility but failed risk.
