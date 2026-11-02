@@ -32,8 +32,12 @@ cost model before changing another neural loss. The registered comparison uses
 row-only and same-query-context ExtraTrees with the current nine forecasters,
 444-field schema, original query-draw weights and absolute gain objective.
 The older forest failures used different banks and are not treated as this
-matched control. Seventeen focused checks pass; real fitting and development
-readout have not run at registration. No risk threshold or deployment changes.
+matched control. Seventeen focused checks pass. The real first-producer pilot
+passes both 8-to-16-tree recovery checks; peak RSS is 9.22 GB. Its estimated
+18-fit optimizer time is about two hours, excluding preparation and full refit.
+Formal training is now running locally with all 128 trees per model. This is
+an execution estimate, not a completed result or risk pass. No threshold or
+deployment changes.
 [Protocol](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/protocol.md).
 
 ### Tracing The Cost Failure

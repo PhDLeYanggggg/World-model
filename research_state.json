@@ -1,7 +1,7 @@
 {
   "selection_cost_forest_20261102": {
     "experiment": "european_selection_cost_forest_v1",
-    "status": "registered_current_bank_nonlinear_cost_control_real_execution_not_run",
+    "status": "real64tree_recovery_pilot_exact_full18fit_training_running_pid38473",
     "expected_new_cost_fits": 18,
     "trees_per_forest": 128,
     "new_arms": ["row_forest", "context_forest"],
@@ -12,9 +12,15 @@
     "sklearn": "1.8.0",
     "focused_checks_passed": 17,
     "focused_test_seconds": 2.61,
-    "pilot_run": false,
-    "training_run": false,
-    "training_running": false,
+    "pilot_run": true,
+    "pilot_pid": 37889,
+    "pilot_seconds": 214.3924079160206,
+    "pilot_peak_RSS_bytes": 9218342912,
+    "both_arm_8to16_vs_direct16_exact": true,
+    "projected18_fit_seconds_excludes_preparation_and_refit": 7208.180328014307,
+    "training_run": true,
+    "training_running": true,
+    "training_pid": 38473,
     "development_readout_run": false,
     "selection_development_already_exposed": true,
     "calibration_arrays_access": false,
@@ -25,7 +31,8 @@
     "submission_ready": false,
     "stage5c_executed": false,
     "smc_enabled": false,
-    "next_commands": [".venv-pytorch/bin/python scripts/run_m3w_selection_cost_forest.py pilot"]
+    "next_commands": [".venv-pytorch/bin/python scripts/run_m3w_selection_cost_forest.py train --resume"],
+    "training_log": "data/stage_cvpr2027_experiments/european_selection_cost_forest_v1/train.log"
   },
   "selection_harm_deviance_20261102": {
     "experiment": "european_selection_harm_deviance_v1",

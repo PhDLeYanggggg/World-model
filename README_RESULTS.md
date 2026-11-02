@@ -37,6 +37,13 @@ checks pass2.61s;real pilot/training/inference/readout not_run at registration.
 No threshold search or independent-role opening.
 [Protocol](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/protocol.md).
 
+Actual recovery pilot PID37889 completes64trees,214.392408s,peak9,218,342,912B.
+Both8->16/direct16states are exact;536,712observed SOURCE action rows,minimum
+query visits4. Row/context expanded matrices=.988/1.943GB. Projected18fit time
+7,208.18s excludes preparation,prediction and full refit;not completion evidence.
+Original128tree formal run is live under PID38473,CPU4,workers0;local resources
+fit the measured workload. No new remote job or slower-run downgrade.
+
 Controlled harm-loss training and complete readout are finished, with a negative
 registered result. All18new SOURCE cost fits/141,312primary updates and21,504
 full-control/new-arm refit updates complete. Mean_absolute is cached_verified;
