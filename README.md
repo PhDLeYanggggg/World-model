@@ -27,7 +27,7 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ### Independent Risk Calibration: Inputs And Frozen Inference Verified
 
-I have fixed the existing mean-absolute cost models for the next experiment:
+I have fixed the existing `mean_absolute` cost family for the next experiment:
 risk calibration on the separately reserved 12 localities and 102 recordings.
 The native utility ranking, all nine trained pipelines and the original 2%
 recording requirements stay fixed. A registered common risk multiplier is the

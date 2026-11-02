@@ -42,3 +42,8 @@ two floor-relative lower bounds. Use the same reference-weighted locality
 totals and 3,000 equal-locality bootstrap replicates. These contrasts do not
 choose a model, seed, multiplier or a new primary test, and do not undo fitting
 the calibration parameter. Partial missing steps remain unaddressed.
+
+Before opening targets, the frozen matrices and allocator metadata can also
+be summarized for action counts, intervention rates, exact solver/fast-path
+statuses and explicit parent fallbacks. This is operational and causal-choice
+accounting, not accuracy, actual risk, a new per-query proof or a solver rerun.
