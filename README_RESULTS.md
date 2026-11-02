@@ -79,6 +79,11 @@ primary updates, 4,000 full-refit updates and the separate 200-update pilot.
 The training/refit process takes 12,893.02 s (3.58 h), peak RSS 2.252 GB.
 Every original PCT draw/factor/SOURCE-exclusion check passes. Prediction freezing
 and exact control inference are in progress; no forecasting outcome is claimed.
+The combined focused suite now passes 75 tests; one optional Metal-parity test
+is skipped, so MPS success is not claimed. Full-checkpoint accounting separates
+3,027,268 stored parameters, 580,676 gradient-enabled parameters and 386,628
+parameters with actual AdamW state through step 4,000, consistently across all
+nine models. These are not three interchangeable counts of trained capacity.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit

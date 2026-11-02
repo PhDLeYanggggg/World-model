@@ -33,6 +33,13 @@ def main():
         fits.append(row)
     if len(fits)!=9 or sum(r['fit']['step'] for r in fits)!=36000:
         raise ValueError('All nine actual full fits required')
+    account=read('parameter_accounting.json')
+    if (account['training_freeze_sha256']!=run.sha(run.PUBLIC/'training_freeze.json') or len(account['rows'])!=9
+            or any(r['optimizer_step_range']!=[4000,4000] for r in account['rows'])):
+        raise ValueError('Actual full-checkpoint parameter accounting required')
+    counts={(r['stored_parameters'],r['requires_grad_parameters'],r['optimizer_state_parameters']) for r in account['rows']}
+    if len(counts)!=1:raise ValueError('Different parameter counts require explicit per-model reporting')
+    stored,flagged,updated=next(iter(counts))
     mean=lambda xs:sum(xs)/len(xs)
     sites=summary['localities']
     def site_average(fn):return mean([mean([fn(r) for r in groups if r['site']==s]) for s in sites])
@@ -97,6 +104,11 @@ def main():
         'in the 72 public scalar group receipts. No physical or complete-policy risk',
         'certificate is inferred from this forecasting comparison.','',
         '## Compute And Exact Reproduction','',
+        f'All nine models store {stored:,} parameters, with {flagged:,} gradient-enabled',
+        f'parameters and {updated:,} parameters that actually have AdamW state at step 4,000.',
+        'These counts are not interchangeable: frozen unused heads remain stored, and',
+        'some gradient-enabled core paths receive no gradient under this fixed forward.',
+        'That accounting alone identifies no unique performance failure cause.','',
         f'Primary updates: {training["primary_optimizer_updates"]}; full refit: 4,000; pilot: 200.',
         f'Full training/refit process: PID {training["pid"]}, {training["seconds"]:.3f} s,',
         f'peak RSS {training["peak_RSS_bytes"]:,} bytes. Separate inference replay:',
