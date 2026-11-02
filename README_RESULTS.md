@@ -55,6 +55,13 @@ B+H radius. This supports a decoder-support hypothesis,not a cause or remedy
 proved by policy evaluation. No new bound-based model trained here.
 [Full diagnostic and limitations](outputs/publication_readiness_2026_09/european_selection_bank_support_v1/readout.md).
 
+A separate SOURCE-only zero-update check is prepared for the tighter causal
+cost-support constraint. The weighted projection is classical,not a new method
+or safe policy. Four checks include an independent constrained optimizer and
+feasible-label distance/idempotence tests;all pass0.38s. The gain objective and
+deployed risk need not improve. No new weights or development readout here.
+[Fixed diagnostic scope](outputs/publication_readiness_2026_09/european_actual_floor_projection_v1/plan.md).
+
 The current-bank nonlinear cost control is registered before fitting:18forests,
 two fixed row/context arms,128trees each,9actual forecaster pipelines,seeds17/29/43.
 It reuses the444causal fields,complete original SOURCE query multiplicities,
