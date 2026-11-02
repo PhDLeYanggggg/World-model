@@ -25,13 +25,16 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Independent Risk Calibration: Registered, Not Yet Run
+### Independent Risk Calibration: Pilot Complete
 
 I have fixed the existing mean-absolute cost models for the next experiment:
 risk calibration on the separately reserved 12 localities and 102 recordings.
 The native utility ranking, all nine trained pipelines and the original 2%
 recording requirements stay fixed. A registered common risk multiplier is the
 only fitted parameter. Empty support cannot qualify as safe intervention.
+The real largest-record pilot parsed 3,591,510 rows and built 18,733 causal
+targets; its complete one-model grid took 31.61 seconds. All 102 recordings
+are now being converted locally, without reducing the registered cohort.
 Calibration outcomes will be opened only after the complete policy grid is
 frozen. Final confirmation stays closed; this is not a population-risk guarantee
 or deployment promotion. The earlier negative results below remain unchanged.
