@@ -52,6 +52,12 @@ public-family comparison, not isolated equivariance or published best-of-20
 reproduction. No independent roles are opened. Registration and 23 scoped
 checks are complete; actual pilot, fitting and readout are not_run at this
 freeze. [Protocol](outputs/publication_readiness_2026_09/european_eqmotion_v1/protocol.md).
+The actual SOURCE pilot now completes 200 optimizer updates in 79.45 s with
+1.082 GB peak RSS. The 50->100/direct-100 complete states and original query
+prefix match exactly. The measured projection for nine complete primary fits
+plus the first full refit is 15,782 s, excluding preparation/inference/replay.
+That is acceptable locally; the original full fitting budgets are retained.
+This is an engineering pass, not a forecasting improvement.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
