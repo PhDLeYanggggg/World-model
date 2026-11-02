@@ -47,6 +47,11 @@ numerical repair uses fixed membership products instead of grouped scatter;
 the original failed pilot stays recorded and the new real recovery check must
 pass without relaxing exactness. Data, model sizes, budgets and risk rules stay fixed.
 
+The repaired real SOURCE pilot now passes exact recovery for both29,253-parameter
+controllers (400 actual optimizer updates,7.47seconds,8.76GB peak RSS). All18
+formal fits have started with the original full coverage budget. The failed pilot
+is retained; a successful recovery check is not a successful selection policy.
+
 [Frozen controller protocol](outputs/publication_readiness_2026_09/european_selection_controller_v1/protocol.md).
 
 ### Independent-Scene Inputs

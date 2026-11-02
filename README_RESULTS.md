@@ -68,6 +68,14 @@ data/budget/risk change or tolerance relaxation. New real pilot required.
 Thirteen targeted implementation checks pass after the repair; formal18fits
 and new policy outcome evaluation remain not_run at this amendment.
 
+Repaired real pilot PID87079 completes7.466013s,peak8,761,081,856B,400actual
+updates. Both29,253-parameter arms recover exactly after50steps and match100
+uninterrupted steps. No tolerance relaxation. All18formal fits are now launched,
+with every SOURCE query required to receive at least four visits; two full
+first-producer refits remain required. Pilot-based primary fitting estimate
+360.99s excludes preparation,refits and policy allocation and is not completion.
+No new selection policy outcome has been read.
+
 ### First Selection-Locality Forecast Readout Complete
 
 The 36 SOURCE-trained forecasters now have a complete frozen-prediction readout
