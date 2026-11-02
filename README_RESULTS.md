@@ -89,6 +89,11 @@ current local execution and recovery;the legacy CREATE helper is invoked as
 a Python module. Its help loads successfully;no remote query/submission is
 claimed. Full allocation remains live and no calibration labels are opened.
 
+The complete-grid plotting helper was added before outcomes. Six focused
+checks pass, including rejection of incomplete cohorts and retention of missing
+points as N/A rather than safe zeros. This is reporting validation only;
+actual utility/risk/paired-effect figures still await the complete readout.
+
 ### Frozen-Utility Bounded Repair Also Negative
 
 All nine five-policy action matrices freeze before scoring;54metric groups and

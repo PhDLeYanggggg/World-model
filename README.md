@@ -56,6 +56,9 @@ calibration scoring follows only after every decision is frozen. This is not
 a completed safety result. I have also fixed the descriptive failure categories
 before opening outcomes, so a failed check can distinguish observed harm from
 missing-label bounds or unavailable support without changing the policy.
+The reporting code also retains every multiplier in the plots, including
+unsupported or negative results. Figures will be rendered only from the
+completed scalar readout; they do not choose a new policy or threshold.
 
 [Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md)
 and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).
