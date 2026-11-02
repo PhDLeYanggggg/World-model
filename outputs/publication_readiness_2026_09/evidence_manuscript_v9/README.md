@@ -4,8 +4,8 @@ This revision brings the complete SOURCE cost-loss and unsuccessful independent
 calibration results into one current narrative. It is a research draft, not a
 submission-ready method. Earlier failed results remain in the frozen
 [v8 paper and supplement](../evidence_manuscript_v8/README.md); those files and
-their PDF receipt are unchanged. The current forest experiment is still
-training in this revision and has no claimed readout.
+their PDF receipt are unchanged. The current forest experiment now completes
+with a negative registered contrast and failed complete recording-risk contract.
 
 ## Evidence Included
 
@@ -16,13 +16,17 @@ training in this revision and has no claimed readout.
   cost diagnoses, not just a favorable easy-net metric.
 - Complete102-recording calibration: no common multiplier satisfies the
   original full risk contract; all47,736metric groups replay exactly.
+- Complete18-fit forest control: primary -2.010571pp with95%CI
+  [-2.703014,-1.292373],full SOURCE/development inference and54-group replay.
+- SOURCE bank support and small zero-update geometric effect,clearly separated
+  from learned-policy success and independent validation.
 
 The data roles, actual forecaster seeds, repeated recording views, partial
 future labels and missing independent final confirmation are explicit. These
 are cached_verified scientific results, not new experimental replications
 created by writing this document. Prose, figure rendering and typesetting are
-fresh work. The current paper has five main-body pages and one disclosure/
-reference page in the unchanged official2027style. All six pages were inspected
+fresh work. The current paper has six main-body pages and one disclosure/
+reference page in the unchanged official2027style. All seven pages were inspected
 as PNGs and the review is bound to the current PDF hash. Formatting does not
 establish scientific readiness or complete anonymity.
 
@@ -65,6 +69,13 @@ overfull box, unresolved reference, missing glyph or font-shape fallback occurs.
 The first attempt at source generation used the wrong calibration-receipt
 filename and did not produce TeX; its failed compile log is retained privately.
 The corrected builder binds the actual `verify.json`, not a fabricated receipt.
+The latest complete forest/SOURCE update compiles through `paper_compile_04.log`;
+current PDF SHA isefb68abaf8713e63a79ba94cb4c9c614221ef96b11c5133af187c6e78ee1adf6.
+The final whitespace-only table-format cleanup changes source/PDF identities;
+all seven current page renders are byte-identical to the seven pages viewed.
+The first attempt to verify this update preceded completion of PNG rendering
+and correctly refused it; after all pages were rendered and viewed,the final
+source/PDF/visual checks passed. This does not change scientific status.
 
 ## Still Missing
 

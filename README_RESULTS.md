@@ -10,13 +10,14 @@ or evidence status.
 The [current v9 working revision](outputs/publication_readiness_2026_09/evidence_manuscript_v9/README.md)
 integrates complete current-bank cost-loss, SOURCE diagnosis and unsuccessful
 calibration evidence. Fresh prose/AST rendering/figure and current-source
-compile;scientific numbers are cached_verified,not new inference. Five main
-pages plus one disclosure/reference page;all6PNGs inspected against PDF SHA
-adc08069c50dadd5e36a3e97647e765d162ddea3ac689554de99ef0784049a32.
+compile;scientific numbers are cached_verified,not new inference by writing.
+The complete forest negative and SOURCE support/geometry diagnostics are now
+included. Six main pages plus one disclosure/reference page;all7PNGs inspected
+against current PDF SHAefb68abaf8713e63a79ba94cb4c9c614221ef96b11c5133af187c6e78ee1adf6.
 No final-pass overfull/reference/font-shape issue;upstream lineno UTF-8 warning
 retained. Locked Torch environment lacks pypdf;bundled document Python validates
 the PDF without changing training dependencies. v8 sources/receipts remain
-unchanged. Forest training is ongoing and its readout is not yet included.
+unchanged. Forest readout is complete,negative and included without promotion.
 No scientific promotion,complete anonymity certificate or submission occurred.
 
 The [previous frozen v8 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
@@ -92,13 +93,26 @@ The96tree snapshot hash and recovery evidence are recorded in the
 No guard,budget,model,split or threshold changed;no new remote job or downgrade.
 At12:32UTC,the first complete context128tree independent refit matches all
 tree/weight/input/trace state exactly. It is a reproducibility check,not model
-efficacy. All18formal fits continue;no development readout or threshold search.
+efficacy. No threshold search or independent-role opening was added.
 The supplementary full decoded SOURCE-objective calculation now runs after
 all18fits,not promoted to a new primary. It retains original query visits and
 unlabeled zero-supervision queries,distinguishing common decoded cost error
 from uniform bank MSE and the forest's unprojected monitor. Two new metric
 checks pass;combined19scoped checks passed3.75s before later additions.
-Development readout and separate replay are still pending at training completion.
+All18SOURCE and18development cost inferences and54metric groups now replay
+exactly. Registered context-minus-control completion-lower=-2.010571pp,
+95%CI[-2.703014,-1.292373]. Known gain over floor=.048919%versus1.503747%
+control. Context worst signed easy net=.617861%,but34all/37easy violations and
+158undefined selected-easy views leave only56/252complete supported views.
+Primary,risk and candidate all fail;no favorable secondary-arm substitution.
+The complete decoded query/RMS objective also worsens:.721500control versus
+.918171row/.920199context. Uniform H/R error reductions are not a complete
+fitting repair or proof of irreducible features. Next separate raw regression,
+reference sharing and projection on SOURCE before another fit.
+[Full readout](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/readout.md)
+and [failure analysis](outputs/publication_readiness_2026_09/european_selection_cost_forest_v1/failure_analysis.md).
+The full-result figure is visually checked and repeat renders are exact.
+Latest29scoped checks pass2.62s;full repository suite not_run in this step.
 The actual interrupted producer's independent direct128tree refit now completes:
 PID54254,1,152.128213s,peak10,484,514,816B. All128tree states and the retained
 96tree prefix/trace match exactly. Its separate checkpoint,lock and heartbeat

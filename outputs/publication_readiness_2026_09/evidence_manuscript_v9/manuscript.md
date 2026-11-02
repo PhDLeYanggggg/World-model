@@ -19,6 +19,9 @@ recording-risk views. Changing harm losses reduces some violations but loses
 1.98 percentage points on the registered paired completion-lower comparison.
 A separate 102-recording calibration experiment finds no common multiplier
 that satisfies the original complete 2% recording requirements. These results
+are reinforced by a complete matched forest control: its registered lower
+contrast loses 2.01 percentage points and its complete risk contract also fails.
+The comparisons
 locate a gap between mean routing utility and reliable selected-cost prediction,
 including error already present on fitting data. They do not establish a safe
 learned upgrade, a population-risk certificate or a new world-dynamics model.
@@ -182,8 +185,8 @@ use 128 trees with depth 12, minimum leaf 64 and feature fraction one-third.
 The fixed context is a leave-self-out raw-feature summary, not neural hidden
 pooling. References are shared across actions and physical cost constraints
 are applied after regression. Thus this is an estimator/representation control,
-not a perfectly isolated architecture or FLOP comparison. Its training is
-ongoing in this working revision; no efficacy result is assigned to it yet.
+not a perfectly isolated architecture or FLOP comparison. All eighteen forests
+complete their original budgets, with full inference and metric replay.
 The older forest studies use different banks and retain their negative status.
 
 ## 5. Data, Roles and Statistical Evidence
@@ -248,6 +251,15 @@ on its fitting data. Its selected pooled known all/easy risks are 5.109%/11.449%
 despite predicted 0.803%/0.330%. Thus new-scene shift is not the sole explanation.
 This is fitting resubstitution, not held-out validation.
 
+A separate SOURCE bank diagnosis finds at least one genuine known easy action
+satisfying the original support requirements in every one of 444 repeated
+recording views. This outcome-informed existence result is not a causal policy.
+The exact candidate-to-floor radius also gives a tighter cost-support bound
+than the old decoder sometimes uses. Classical weighted projection onto that
+bound reduces the complete SOURCE objective only from 0.721500 to 0.718860,
+about 0.37%, without training or evaluating a new policy. A valid constraint
+and a small fitting improvement do not establish the main failure cause.
+
 The corresponding independent calibration-policy EH median is 0.0000296. These
 SOURCE and calibration cohorts differ; their ratio is not a paired causal
 transfer effect. Different selected pools must also not be confused with a
@@ -301,6 +313,30 @@ groups replay exactly, including feasibility and per-query matched counts.
 The calibration is complete but unsuccessful, not an unrun future experiment
 or independent confirmation of a learned upgrade.
 
+### 6.5 The Conventional Nonlinear Control Also Fails
+
+|Estimator|Known ADE gain %|Supported risk views|Undefined easy|Worst easy-net %|
+|---|---:|---:|---:|---:|
+|Neural mean control|1.5037|6/252|14|8.4955|
+|Row forest|0.0579|67/252|143|0.1021|
+|Context forest|0.0489|56/252|158|0.6179|
+
+The fixed context-minus-control paired completion-lower effect is -2.0106 pp
+[-2.7030, -1.2924]. Intervention falls from 22.50% to 0.53%. Context retains
+34 known-all and 37 known-easy violations; its lower net easy degradation
+does not repair missing support or pass complete safety. Row is secondary and
+does not replace the negative primary. All eighteen SOURCE and development
+cost inferences and all 54 metric groups replay exactly.
+
+Uniformly pooled H and R fitting errors improve, but the complete decoded
+query-visit/RMS objective worsens: 0.721500 for the neural control versus
+0.918171 row and 0.920199 context. Context EH MSE rises from 0.402858 to
+0.761374 and net-gain MSE from 0.382875 to 0.549883. Those query-weighted values
+are not the uniform action errors above or the forest's unprojected subset
+monitor. This control has not solved SOURCE fitting. Reference sharing,
+projection and estimator limitations remain confounded; no irreducible feature
+insufficiency or unique architecture cause follows from the negative result.
+
 ## 7. Failure Analysis and Remaining Gaps
 
 The controls separate several errors. A candidate bank can contain future-
@@ -311,9 +347,10 @@ interventions. Global cost fit, event probabilities, selected-pool ratios,
 known utility and every-record risk support are not interchangeable objectives.
 
 The observed losses do not prove causal inputs are useless or all regressors
-fail. The current nonlinear estimator control is intended to distinguish a
-weak head from weak available information; it cannot prove irreducible risk
-from finite model comparisons. Its result is pending in this revision.
+fail. The complete nonlinear control does not repair the full fitting objective
+or policy utility. A SOURCE-only decomposition of raw regression, reference
+sharing and output projection is the next diagnostic, not a completed result.
+Finite model comparisons cannot prove irreducible risk.
 The calibration result also does not certify a population-level 2% risk bound.
 Arbitrary selected ratios, small scene samples, dependence and partially
 observed futures prevent that inference without additional justified assumptions.
@@ -337,6 +374,12 @@ control/refit updates. An actual disk-reserve interruption preserves its
 2000-step checkpoint; unchanged resume to 8192 matches an independent direct
 full fit, including optimizer and sampling state. No slow-run budget reduction
 or data deletion was used. Engineering recovery does not demonstrate efficacy.
+The estimator control completes 2,304 primary trees and 128 first-producer
+refit trees. Its actual 96-to-128-tree interrupted producer also matches a
+separate direct 128-tree refit, including the saved prefix and trace. These
+128 additional reproduction trees are counted separately; unknown unsaved
+interrupted work and the earlier process are not hidden in the completion
+process's runtime. No guard or model budget was changed.
 
 Public scalar evidence supports exact numerical reconstruction of reported
 aggregates. It is not fresh raw-data inference. Full execution still needs

@@ -22,6 +22,7 @@ const evidences={
   european_selection_controller_v1:['verification.json','all54_frozen_action_metric_groups_exact'],
   european_selection_cardinal_cost_v1:['verification.json','all54_metric_groups_exact'],
   european_selection_harm_deviance_v1:['verification.json','all54_metric_groups_exact'],
+  european_selection_cost_forest_v1:['verification.json','all54_metric_groups_exact'],
   european_calibration_source_fit_v1:['verification.json','all144_SOURCE_site_groups_exact'],
   european_independent_risk_calibration_v1:['verify.json','all47736_metric_groups_exact']
 };
@@ -34,6 +35,16 @@ for(const [name,[file,key]] of Object.entries(evidences)){
   if(!v[key]||v.summary_sha256!==sha(p))throw Error('Complete verified evidence required: '+name);
   bindings[name]={summary_sha256:sha(p),verification_file:file,verification_sha256:sha(path.join(home,file))};
 }
+const diagnosticPaths=[
+  'european_selection_bank_support_v1/complete.json',
+  'european_selection_bank_support_v1/verification.json',
+  'european_actual_floor_projection_v1/complete.json',
+  'european_selection_cost_forest_v1/decoded_SOURCE_objective.json'
+];
+const diagnosticBindings=Object.fromEntries(diagnosticPaths.map(p=>[p,sha(path.join(base,p))]));
+const support=read(path.join(base,diagnosticPaths[1]));
+if(!support.all_record_support_counts_exact||!support.all9_old_mean_cost_inferences_exact
+  ||support.complete_sha256!==diagnosticBindings[diagnosticPaths[0]])throw Error('Verified SOURCE diagnostic required');
 const figures=read(path.join(output,'figures/figure_sources.json'));
 if(figures.evidence_summary_sha256!==bindings.european_selection_harm_deviance_v1.summary_sha256
   ||figures.public_svg_sha256!==sha(path.join(output,'figures/cost_loss.svg'))
@@ -79,8 +90,9 @@ function blocks(items){let out='';for(const t of items){
   if(t.type==='table'){
     const captions={Cohort:'Distinct data roles. Repeated forecasting-pipeline views do not increase the number of independent localities.',
       'Cost head':'Complete matched harm-loss readout. All arms retain the original recording roster and 2 percent contract. Undefined selected-easy support is not a safe zero.'};
+    captions.Estimator='Complete current-bank estimator control. Easy-net preservation alone does not repair failed positive-harm and selected-support requirements. The context-minus-neural completion-lower contrast is the fixed primary.';
     const caption=captions[t.header[0].text];if(!caption)throw Error('Unregistered table caption');
-    const row=c=>c.map(x=>inline(x.tokens)).join(' & ')+' \\\\ \n';
+    const row=c=>c.map(x=>inline(x.tokens)).join(' & ')+' '+String.raw`\\`+'\n';
     out+='\\begin{table*}[!t]\\centering\\small\n'+
       `\\begin{tabularx}{\\textwidth}{@{}${'X'.repeat(t.header.length)}@{}}\\toprule\n`+
       row(t.header)+'\\midrule\n'+t.rows.map(row).join('')+'\\bottomrule\\end{tabularx}\n'+
@@ -108,8 +120,9 @@ writeIfChanged(path.join(build,'main.tex'),tex);writeIfChanged(path.join(build,'
 const receipt={result_source:'fresh_working_prose_and_AST_typesetting_from_verified_scalar_evidence',
   builder_sha256:sha(fileURLToPath(import.meta.url)),
   source_bindings:bindings,markdown_sha256:sha(source),tex_sha256:sha(path.join(output,'manuscript.tex')),
+  diagnostic_bindings:diagnosticBindings,
   template_sha256:sha(path.join(build,'cvpr.sty')),figure_sources_sha256:sha(path.join(output,'figures/figure_sources.json')),
   frozen_v8_markdown_sha256:frozenV8.markdown_sha256,frozen_v8_tex_sha256:frozenV8.tex_sha256,
-  frozen_v8_changed:false,current_forest_readout_included:false,compiled:false,independent_confirmation:false,submission_ready:false};
+  frozen_v8_changed:false,current_forest_readout_included:true,compiled:false,independent_confirmation:false,submission_ready:false};
 fs.writeFileSync(path.join(output,'build_sources.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log(JSON.stringify(receipt));

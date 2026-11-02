@@ -51,8 +51,24 @@ def main():
         if a['known_action_views'] != b['known_action_views'] or a['unknown_action_views'] != b['unknown_action_views'] or any(
                 not math.isclose(a['observed_known_mass'][k],b['observed_known_mass'][k],rel_tol=1e-10,abs_tol=1e-8) for k in KEYS):
             raise ValueError('Fixed-bank observed support and cost masses changed')
+    decoded = read('decoded_SOURCE_objective.json')
+    objectives = {}
+    for arm in ('mean_absolute',*run.api.ARMS):
+        cells = [r for r in decoded['rows'] if r['arm'] == arm]
+        if len(cells) != 9:
+            raise ValueError('Complete decoded SOURCE objectives required')
+        for r in cells:
+            expected = next(c['full_prediction_sha256'] for c in controls if c['trial'] == r['trial']) if arm == 'mean_absolute' else next(
+                f['SOURCE_prediction_sha256'] for f in fits if f['trial'] == r['trial'] and f['arm'] == arm)
+            if r['prediction_sha256'] != expected:
+                raise ValueError('Decoded objective does not use the verified SOURCE inference')
+        component = lambda r,k:sum(v['query_visits']*v['components'][k] for v in r['score']['by_site'].values())/r['score']['query_visits']
+        objectives[arm] = dict(total=sum(r['score']['total'] for r in cells)/9,
+            gain_MSE=sum(sum(v['query_visits']*v['gain_MSE'] for v in r['score']['by_site'].values())/r['score']['query_visits'] for r in cells)/9,
+            components={k:sum(component(r,k) for r in cells)/9 for k in ('B','H','R','ER','EH')})
     (public/'SOURCE_cost_diagnosis.json').write_text(json.dumps(dict(
         result_source='fresh_public_scalar_aggregation_cached_verified_SOURCE_inferences',arms=pools,
+        complete_decoded_SOURCE_objective=objectives,decoded_SOURCE_objective_sha256=run.sha(public/'decoded_SOURCE_objective.json'),
         all_legal_support_and_target_mass_match=True,SOURCE_fitting_resubstitution_not_validation=True,
         selected_pools_differ_by_arm=True,control_source_freeze_sha256=run.sha(source),
         training_freeze_sha256=run.sha(public/'training_freeze.json')),indent=2,sort_keys=True)+'\n')
@@ -108,6 +124,20 @@ def main():
     lines += ['', 'All-legal observed action counts and cost masses match. These squared errors',
         'use the frozen causal scale, uniformly pooled action views; they are not the',
         'query-weighted/RMS training objective or a held-out conditional-risk estimate.', '',
+        '### Complete Decoded SOURCE Objective', '',
+        '|Estimator|Full objective|Gain MSE|B MSE|H MSE|R MSE|ER MSE|EH MSE|',
+        '|---|---:|---:|---:|---:|---:|---:|---:|']
+    for arm,o in objectives.items():
+        lines.append(f'|{arm}|{number(o["total"])}|{number(o["gain_MSE"])}|'+
+            '|'.join(number(o['components'][k]) for k in ('B','H','R','ER','EH'))+'|')
+    lines += ['', 'These are complete decoded query-visit/RMS-weighted objectives against the',
+        'original float32 training targets,averaged across nine producers. Wholly',
+        'unlabeled queries retain zero supervision. They are not the fixed subset',
+        'unprojected forest monitor or uniformly pooled error above. In this metric',
+        'both forests fit worse,especially EH and net gain. This finite control does',
+        'not establish that stronger regression solved SOURCE fitting,or that the',
+        'causal inputs are irreducibly insufficient. Decode/reference-sharing effects',
+        'remain to be separated before another model or loss change.', '',
         '### Selected SOURCE Regions', '',
         '|Estimator|Selected known actions|H predicted/true|EH predicted/true|Known all/easy risks %|',
         '|---|---:|---:|---:|---:|']

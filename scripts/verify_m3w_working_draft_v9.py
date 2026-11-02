@@ -30,6 +30,9 @@ def verify(build, compile_log, visual_sha=None):
         home = PUBLIC.parent/experiment
         if ref['summary_sha256'] != sha(home/'summary.json') or ref['verification_sha256'] != sha(home/ref['verification_file']):
             raise ValueError('Linked scalar evidence changed')
+    for path,digest in source.get('diagnostic_bindings',{}).items():
+        if digest != sha(PUBLIC.parent/path):
+            raise ValueError('Linked SOURCE diagnostic changed')
     if (not report['pdfExists'] or report['attempts'][-1]['exitCode'] != 0
             or Path(report['pdfPath']).resolve() != pdf.resolve()
             or Path(report['rootFile']).resolve() != tex.resolve()
@@ -69,6 +72,7 @@ def verify(build, compile_log, visual_sha=None):
         review_method='assistant inspection of every page PNG' if visual_sha else 'not_run',
         visual_review_bound_to_pdf_sha256=visual_sha,template_sha256=source['template_sha256'],
         source_bindings=source['source_bindings'],PDF_and_template_private=True,
+        diagnostic_bindings=source.get('diagnostic_bindings',{}),
         scientific_confirmation=False,complete_anonymity_certified=False,submission_ready=False)
     (PUBLIC/'render_verification.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
     source.update(compiled=True,pdf_sha256=digest,render_verification_sha256=sha(PUBLIC/'render_verification.json'))
