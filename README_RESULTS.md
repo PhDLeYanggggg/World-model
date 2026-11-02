@@ -67,6 +67,9 @@ Readout PID88704:34.577694s,peak3,207,512,064B. Verification PID88908:
 44.865313s,peak3,075,751,936B.21focused checks pass2.55s, including public
 scalar reconstruction with private reads denied. Full repository suite not run.
 Derived figures were rendered and inspected; no raw imagery/data/weights committed.
+The derived SVGs also have stable element IDs and no timestamp/trailing whitespace;
+the corresponding inspected PNG bytes remain exactly unchanged. This formatting
+repair changes no metric, plotted value or scientific result.
 
 Verdict: complete real SOURCE-to-selection training, failed joint utility and
 original safety; no deployment, no independent confirmation, no submission-ready

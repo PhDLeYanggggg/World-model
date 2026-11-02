@@ -18,7 +18,8 @@ def main():
     private = ROOT/"data/stage_cvpr2027_experiments/european_selection_controller_v1/figure_preview"
     private.mkdir(exist_ok=True)
     colors = dict(row="#24758c",context="#bc4b42")
-    plt.rcParams.update({"font.size":10,"svg.fonttype":"none","axes.spines.top":False,"axes.spines.right":False})
+    plt.rcParams.update({"font.size":10,"svg.fonttype":"none","svg.hashsalt":"m3w-selection-controller-v1",
+                         "axes.spines.top":False,"axes.spines.right":False})
     fig, axes = plt.subplots(1,2,figsize=(11,3.8),layout="constrained")
     for row in traces["models"]:
         x=[r["step"] for r in row["trace"]]; y=[r["total"] for r in row["trace"]]
@@ -33,7 +34,7 @@ def main():
     axes[1].set(yticks=[1,0],yticklabels=["Known secondary","Registered lower primary"],
                 xlabel="Matched-joint minus independent (pp)",title="Selection-locality paired bootstrap")
     axes[1].set_ylim(-.6,1.6)
-    fig.savefig(out/"training_and_primary.svg"); fig.savefig(private/"training_and_primary.png",dpi=160); plt.close(fig)
+    fig.savefig(out/"training_and_primary.svg",metadata={"Date":None}); fig.savefig(private/"training_and_primary.png",dpi=160); plt.close(fig)
     names=["floor","raw_history","row_independent","row_joint_matched","context_independent","context_joint_matched","context_joint_free"]
     fig,ax=plt.subplots(figsize=(9,4.6),layout="constrained")
     values=np.asarray([summary["accuracy"][k]["point"] for k in names])
@@ -43,7 +44,9 @@ def main():
     ax.axvline(0,color="#777777",ls="--",lw=.8)
     ax.set(yticks=np.arange(len(names)),yticklabels=labels,xlabel="Known available-label ADE gain vs floor (%)",
            title="Average utility does not certify record-level risk")
-    ax.invert_yaxis();fig.savefig(out/"known_utility.svg");fig.savefig(private/"known_utility.png",dpi=160);plt.close(fig)
+    ax.invert_yaxis();fig.savefig(out/"known_utility.svg",metadata={"Date":None});fig.savefig(private/"known_utility.png",dpi=160);plt.close(fig)
+    for path in out.glob("*.svg"):
+        path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())+"\n")
     print(json.dumps(dict(result_source="cached_verified_scalar_visualization_not_new_experiment",figures=2,
                          raw_data_or_weights_read=False,submission_ready=False)))
 
