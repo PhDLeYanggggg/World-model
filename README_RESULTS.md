@@ -74,6 +74,11 @@ budgets align exactly; internal neighbor/detector processing differs and is
 reported. The original primary is not changed. Current-bank forecasts must
 reproduce their existing array hashes before secondary scoring. Four focused
 checks pass in 1.49 s. New secondary inference/readout are not_run at this freeze.
+All nine formal EqMotion fits now finish their original budgets, with 36,000
+primary updates, 4,000 full-refit updates and the separate 200-update pilot.
+The training/refit process takes 12,893.02 s (3.58 h), peak RSS 2.252 GB.
+Every original PCT draw/factor/SOURCE-exclusion check passes. Prediction freezing
+and exact control inference are in progress; no forecasting outcome is claimed.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
