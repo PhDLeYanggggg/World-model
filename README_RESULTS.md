@@ -58,6 +58,10 @@ prefix match exactly. The measured projection for nine complete primary fits
 plus the first full refit is 15,782 s, excluding preparation/inference/replay.
 That is acceptable locally; the original full fitting budgets are retained.
 This is an engineering pass, not a forecasting improvement.
+The complete nine-fit run is now active as PID 66505 with atomic checkpoints
+and heartbeat; no SOURCE outcome readout is available yet. Resume uses
+`scripts/run_m3w_european_eqmotion.py train --resume`, preserving all original
+roles and budgets. Readout tooling requires full forecast and metric replay.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
