@@ -66,6 +66,14 @@ At the 18:38 UTC checkpoint, four of nine full models are complete and the
 first 4,000-update independent refit is scientifically state-exact. Their
 lightweight receipts are saved separately; this is partial training progress,
 not a completed nine-model freeze or a SOURCE forecasting result.
+Before any new EqMotion outcome reduction, a secondary extension fixes two
+stronger existing controls: dimensionless agent-track PCT on all original
+318,969 SOURCE rows, and the actual history-detector PCT on the unchanged
+149,510-row controller whitelist. Metadata, labels, exclusions and fitting
+budgets align exactly; internal neighbor/detector processing differs and is
+reported. The original primary is not changed. Current-bank forecasts must
+reproduce their existing array hashes before secondary scoring. Four focused
+checks pass in 1.49 s. New secondary inference/readout are not_run at this freeze.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
