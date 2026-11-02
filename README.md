@@ -74,8 +74,9 @@ lost before the guard, at nonpositive predicted gain.
 
 I am testing two loss factors while keeping all data, forecasts, models and
 risk thresholds fixed: symmetric cost regression and absolute net-gain
-anchoring. The three new combinations require 27 complete SOURCE fits;
-training and selection outcomes are **not run at registration**. This is a
+anchoring. The real 800-update pilot passes exact recovery in every arm and
+reproduces the old control's weights exactly. The 27 complete SOURCE fits are
+now running; selection outcomes remain unscored for this comparison. This is a
 controlled repair hypothesis, not a claimed improvement. The historical
 easy-deviance loss experiment also failed and is not being relabeled as new.
 

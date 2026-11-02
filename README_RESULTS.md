@@ -64,7 +64,12 @@ Primary: mean_absolute minus original independent paired completion lower,
 3000locality bootstraps plus original full-policy record risk. No threshold
 search,new joint solver or independent-role exposure. Historical144-fit
 easy-deviance negative is explicitly retained; this is not a repeat of it.
-Real training/selection outcomes not_run at registration.
+Real training/selection outcomes not_run at registration. Subsequently the
+real800-update pilot PID93653passes in8.357918s,peak8,738,488,320B. All four
+arms recover50->100exactly; the original100-step control also reproduces the
+parent checkpoint/optimizer/sampler/trace/RNG exactly. Formal27fits now running
+PID93797with100-step atomic checkpoints and heartbeat; not claimed complete.
+Selection outcomes for this comparison remain unscored.
 
 ### SOURCE-To-Selection Controllers Complete: No Reliable Joint Gain
 
