@@ -40,7 +40,9 @@ with about 9.82 GB peak memory and exact recovered predictions and choices.
 Full training is running; complete policy effects and safety are not yet
 available. No deployment changes.
 
-[Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md).
+[Protocol](outputs/publication_readiness_2026_09/european_conditional_moment_v1/protocol.md),
+[method scope](outputs/publication_readiness_2026_09/european_conditional_moment_v1/method_scope.md)
+and [reproduction](outputs/publication_readiness_2026_09/european_conditional_moment_v1/reproduction_zh.md).
 
 ### Completed Risk-Boundary Learning Comparison
 

@@ -2448,6 +2448,9 @@ The user-confirmed single-author roster and live OpenReview profile link have
 been checked. Identity details are retained only in an ignored private
 submission record,not in the anonymous paper package. Profile completion,
 venue enrollment,reviewer eligibility and actual submission are not certified.
+The 2 November live Chrome tab-title/URL recheck matches that private record;
+it does not reverify email,affiliation or venue enrollment. No account change
+or paper submission was made.
 
 ### Frozen TRAIN Feasibility Diagnosis Registered
 
