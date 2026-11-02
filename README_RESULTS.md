@@ -89,6 +89,14 @@ The stronger current history-PCT control also reproduces all nine existing
 forecast hashes on the fixed whitelist; dimensionless-PCT caches are verified
 on complete original IDs. Both prediction freezes precede new EqMotion label
 scoring. No new outcome or learned deployment pass is asserted at this freeze.
+The first complete SOURCE scoring is now available, with full replay pending.
+EqMotion's observed-label primary versus original PCT is +14.5236 pp
+[+9.5506, +22.1861]. Prespecified stronger-control differences are +8.7522 pp
+versus dimensionless PCT on the full population and +4.6779 pp [+1.3917, +7.4120]
+versus current history-PCT on the unchanged whitelist. The two populations are
+not pooled. Missing-outcome lower intervals still cross zero, and locality 082
+is a negative current-control slice. No policy/deployment/independent-test pass
+follows. [Initial results and limits](outputs/publication_readiness_2026_09/european_eqmotion_v1/initial_readout.md).
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit
