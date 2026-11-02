@@ -31,7 +31,7 @@ def main():
     if sha(ROOT/reg['roles']['path']) != reg['roles']['sha256']:
         raise ValueError('Original role manifest changed')
     value = dict(result_source='fresh_run_full_raw_input_bridge_replay', unique_recordings=102, locality_groups=12,
-        query_frames=sum(r['input_statistics']['queries'] for r in rows),
+        query_frames=sum(r['input_statistics']['queries'] for r in rows), per_recording_query_cap=256,
         target_rows=sum(r['input_statistics']['target_rows'] for r in rows),
         visible_rows=sum(r['input_statistics']['visible_rows'] for r in rows),
         partial_history_context_rows=sum(r['input_statistics']['partial_history_context_rows'] for r in rows),
@@ -48,6 +48,9 @@ def main():
     text = '# Calibration Input Inventory\n\n'
     text += (f'Fresh full replay: {value["target_rows"]:,} target rows, {value["visible_rows"]:,} visible rows, '
              f'{value["query_frames"]:,} query frames, 102 recordings/12 locality groups.\n\n')
+    text += ('The original registered budget is at most256 past-supported query frames '
+             'per recording. This is the complete registered cohort/budget,not every '
+             'possible overlapping window in the raw archive.\n\n')
     text += ('All arrays replay exactly from raw CSVs; input and bridge prefix checks: '
              f'{value["input_prefix_checks"]} and {value["bridge_prefix_checks"]}. '
              'Partial-history neighbors remain; futureless targets are not filtered by labels.\n\n')

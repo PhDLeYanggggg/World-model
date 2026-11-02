@@ -48,8 +48,8 @@ PID5028:207.244544s,peak3,306,864,640B;all102freshly reparsed and all input/
 bridge arrays exact.26,112queries;481,537targets;801,360visible rows including
 319,823partial-history context rows.306input+306bridge prefix checks.
 One locality accounts for86.35%of targets;rows are not independent units.
-All nine frozen Torch forecast/cost pipelines are now inferring,not yet all
-complete. Calibration labels/final confirmation stay closed. Input and runtime
+All nine frozen Torch forecast/cost pipelines have completed. Calibration
+labels/final confirmation stay closed. Input and runtime
 checks are not predictive improvement,calibration success or deployment.
 
 Prospective storage-v2 repair:reproduced the legacy two-file crash window in
@@ -64,7 +64,12 @@ All9 frozen Torch inference complete PID5393:827.282159s,peak2,431,598,592B;
 918record-model views and4,333,833repeated predictions. Current-run original
 pilot reused by hash for one view;remaining views freshly inferred. SOURCE
 weights/normalizers cached_verified;no new training. Full fresh forecast/cost
-replay is running. Full calibration grid and label scoring are not yet complete.
+replay PID6966:837.194931s,peak2,397,880,320B;all918forecast/cost arrays exact.
+33focused checks pass1.24s;full repository suite not run. The input-only cohort
+figure is rendered,visually checked and reproduces its SVG hash from public
+metadata alone. The registered cap is256queries/record,not every raw window.
+Full calibration grid,parameter fitting,label scoring and confirmation are
+not_run except the label-free largest-record allocation/recovery pilots.
 
 ### Frozen-Utility Bounded Repair Also Negative
 

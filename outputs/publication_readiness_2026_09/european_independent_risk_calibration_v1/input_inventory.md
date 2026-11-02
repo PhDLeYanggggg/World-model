@@ -2,6 +2,8 @@
 
 Fresh full replay: 481,537 target rows, 801,360 visible rows, 26,112 query frames, 102 recordings/12 locality groups.
 
+The original registered budget is at most256 past-supported query frames per recording. This is the complete registered cohort/budget,not every possible overlapping window in the raw archive.
+
 All arrays replay exactly from raw CSVs; input and bridge prefix checks: 306 and 306. Partial-history neighbors remain; futureless targets are not filtered by labels.
 
 Obs8/pred12/stride12 raw frames; local image pixels; released detector/tracker silver. No metric/seconds/human-gold or online-sensor-causality claim. Original role manifest/accessors unchanged. Future targets have not been constructed by this phase; confirmation remains closed. Input replay is not predictive or safety success.

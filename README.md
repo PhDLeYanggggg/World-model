@@ -25,19 +25,22 @@ these modules is not, by itself, evidence of a useful world model or a new metho
 
 ## Latest Experiment
 
-### Independent Risk Calibration: Complete Inputs Verified
+### Independent Risk Calibration: Inputs And Frozen Inference Verified
 
 I have fixed the existing mean-absolute cost models for the next experiment:
 risk calibration on the separately reserved 12 localities and 102 recordings.
 The native utility ranking, all nine trained pipelines and the original 2%
 recording requirements stay fixed. A registered common risk multiplier is the
-only fitted parameter. Empty support cannot qualify as safe intervention.
-All 102 recordings are converted and replay exactly from the original archive:
+only parameter that will be calibrated. Empty support cannot qualify as safe intervention.
+All 102 recordings, at the registered cap of 256 query frames per recording,
+are converted and replay exactly from the original archive:
 481,537 causal targets and 801,360 visible-agent rows. No cohort reduction was
 needed. The largest-record pilot's one-model grid took 31.61 seconds. All nine
 frozen Torch pipelines have now produced forecasts and costs for every target:
 4,333,833 repeated model-target predictions, not independent observations.
-Inference took 13.79 minutes; complete fresh numerical replay is in progress.
+Inference took 13.79 minutes; all 918 forecast/cost views now replay exactly
+in a separate 13.95-minute run. Thirty-three focused checks pass; the full
+repository test suite has not been run in this phase.
 One locality supplies 86.35% of targets, so these overlapping windows are not
 independent statistical units; locality-level summaries retain all 12 groups.
 I also registered an atomic checkpoint repair before the full allocation job:
@@ -48,9 +51,13 @@ including the original pilot; this is an execution check, not a safety result.
 Calibration outcomes will be opened only after the complete policy grid is
 frozen. Final confirmation stays closed; this is not a population-risk guarantee
 or deployment promotion. The earlier negative results below remain unchanged.
+The full allocation grid and calibration scoring are the next step, not a
+completed safety result.
 
 [Calibration protocol](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/protocol.md)
 and [verified input inventory](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/input_inventory.md).
+The [execution record](outputs/publication_readiness_2026_09/european_independent_risk_calibration_v1/execution_status.md)
+separates completed work from unrun calibration and confirmation.
 
 ### Forecast Disagreement: Negative Result
 
