@@ -20,6 +20,11 @@ with a negative registered contrast and failed complete recording-risk contract.
   [-2.703014,-1.292373],full SOURCE/development inference and54-group replay.
 - SOURCE bank support and small zero-update geometric effect,clearly separated
   from learned-policy success and independent validation.
+- Complete SOURCE decoder decomposition: the raw forest fitting gap precedes
+  sharing and projection, which slightly help in all 18 cases.
+- Nine full width-128 neural critics, matched to the width-64 control: the
+  registered lower contrast is -0.636338 pp [-1.178580, -0.278679], and only
+  9/252 risk views pass. The observed-ADE difference remains inconclusive.
 
 The data roles, actual forecaster seeds, repeated recording views, partial
 future labels and missing independent final confirmation are explicit. These
@@ -69,10 +74,11 @@ overfull box, unresolved reference, missing glyph or font-shape fallback occurs.
 The first attempt at source generation used the wrong calibration-receipt
 filename and did not produce TeX; its failed compile log is retained privately.
 The corrected builder binds the actual `verify.json`, not a fabricated receipt.
-The latest complete forest/SOURCE update compiles through `paper_compile_04.log`;
-current PDF SHA isefb68abaf8713e63a79ba94cb4c9c614221ef96b11c5133af187c6e78ee1adf6.
-The final whitespace-only table-format cleanup changes source/PDF identities;
-all seven current page renders are byte-identical to the seven pages viewed.
+The latest complete decoder/width-control update compiles through
+`paper_compile_05.log`; the current PDF SHA is
+`daf8f42157a2ae00103b2b368eb6f1e71aec05765218d7cd9aab2f30d17ea070`.
+All seven current page renders were individually inspected again. Earlier
+compile logs and their source/PDF checks are retained as historical evidence.
 The first attempt to verify this update preceded completion of PNG rendering
 and correctly refused it; after all pages were rendered and viewed,the final
 source/PDF/visual checks passed. This does not change scientific status.

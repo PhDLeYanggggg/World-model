@@ -11,9 +11,10 @@ The [current v9 working revision](outputs/publication_readiness_2026_09/evidence
 integrates complete current-bank cost-loss, SOURCE diagnosis and unsuccessful
 calibration evidence. Fresh prose/AST rendering/figure and current-source
 compile;scientific numbers are cached_verified,not new inference by writing.
-The complete forest negative and SOURCE support/geometry diagnostics are now
-included. Six main pages plus one disclosure/reference page;all7PNGs inspected
-against current PDF SHAefb68abaf8713e63a79ba94cb4c9c614221ef96b11c5133af187c6e78ee1adf6.
+The complete forest negative, SOURCE decoder decomposition and nine-fit neural
+width-control failure are now included. Six main pages plus one disclosure/
+reference page; all seven current PNGs inspected against PDF SHA
+`daf8f42157a2ae00103b2b368eb6f1e71aec05765218d7cd9aab2f30d17ea070`.
 No final-pass overfull/reference/font-shape issue;upstream lineno UTF-8 warning
 retained. Locked Torch environment lacks pypdf;bundled document Python validates
 the PDF without changing training dependencies. v8 sources/receipts remain

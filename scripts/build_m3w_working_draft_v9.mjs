@@ -23,6 +23,7 @@ const evidences={
   european_selection_cardinal_cost_v1:['verification.json','all54_metric_groups_exact'],
   european_selection_harm_deviance_v1:['verification.json','all54_metric_groups_exact'],
   european_selection_cost_forest_v1:['verification.json','all54_metric_groups_exact'],
+  european_selection_capacity_v1:['verification.json','all54_metric_groups_exact'],
   european_calibration_source_fit_v1:['verification.json','all144_SOURCE_site_groups_exact'],
   european_independent_risk_calibration_v1:['verify.json','all47736_metric_groups_exact']
 };
@@ -39,12 +40,19 @@ const diagnosticPaths=[
   'european_selection_bank_support_v1/complete.json',
   'european_selection_bank_support_v1/verification.json',
   'european_actual_floor_projection_v1/complete.json',
-  'european_selection_cost_forest_v1/decoded_SOURCE_objective.json'
+  'european_selection_cost_forest_v1/decoded_SOURCE_objective.json',
+  'european_cost_decode_decomposition_v1/summary.json',
+  'european_cost_decode_decomposition_v1/verification.json',
+  'european_selection_capacity_v1/source_objective_comparison.json'
 ];
 const diagnosticBindings=Object.fromEntries(diagnosticPaths.map(p=>[p,sha(path.join(base,p))]));
 const support=read(path.join(base,diagnosticPaths[1]));
 if(!support.all_record_support_counts_exact||!support.all9_old_mean_cost_inferences_exact
   ||support.complete_sha256!==diagnosticBindings[diagnosticPaths[0]])throw Error('Verified SOURCE diagnostic required');
+const decomposition=read(path.join(base,'european_cost_decode_decomposition_v1/verification.json'));
+if(!decomposition.all18_SOURCE_inferences_and54_stage_scores_exact
+  ||decomposition.summary_sha256!==diagnosticBindings['european_cost_decode_decomposition_v1/summary.json'])
+  throw Error('Complete SOURCE decomposition replay required');
 const figures=read(path.join(output,'figures/figure_sources.json'));
 if(figures.evidence_summary_sha256!==bindings.european_selection_harm_deviance_v1.summary_sha256
   ||figures.public_svg_sha256!==sha(path.join(output,'figures/cost_loss.svg'))
@@ -123,6 +131,7 @@ const receipt={result_source:'fresh_working_prose_and_AST_typesetting_from_verif
   diagnostic_bindings:diagnosticBindings,
   template_sha256:sha(path.join(build,'cvpr.sty')),figure_sources_sha256:sha(path.join(output,'figures/figure_sources.json')),
   frozen_v8_markdown_sha256:frozenV8.markdown_sha256,frozen_v8_tex_sha256:frozenV8.tex_sha256,
-  frozen_v8_changed:false,current_forest_readout_included:true,compiled:false,independent_confirmation:false,submission_ready:false};
+  frozen_v8_changed:false,current_forest_readout_included:true,complete_SOURCE_decomposition_included:true,
+  complete_neural_width_control_included:true,compiled:false,independent_confirmation:false,submission_ready:false};
 fs.writeFileSync(path.join(output,'build_sources.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log(JSON.stringify(receipt));

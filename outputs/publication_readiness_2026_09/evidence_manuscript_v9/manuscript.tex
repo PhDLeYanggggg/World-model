@@ -29,7 +29,10 @@ are reinforced by a complete matched forest control: its registered lower
 contrast loses 2.01 percentage points and its complete risk contract also fails.
 The comparisons
 locate a gap between mean routing utility and reliable selected-cost prediction,
-including error already present on fitting data. They do not establish a safe
+including error already present on fitting data. SOURCE decomposition finds
+that reference sharing and output projection slightly help, while doubling
+the neural critic width still fails the fixed primary and risk requirements.
+They do not establish a safe
 learned upgrade, a population-risk certificate or a new world-dynamics model.
 
 \end{abstract}
@@ -330,9 +333,37 @@ query-visit/RMS objective worsens: 0.721500 for the neural control versus
 0.918171 row and 0.920199 context. Context EH MSE rises from 0.402858 to
 0.761374 and net-gain MSE from 0.382875 to 0.549883. Those query-weighted values
 are not the uniform action errors above or the forest's unprojected subset
-monitor. This control has not solved SOURCE fitting. Reference sharing,
-projection and estimator limitations remain confounded; no irreducible feature
-insufficiency or unique architecture cause follows from the negative result.
+monitor. This control has not solved SOURCE fitting.
+
+A separate SOURCE-only decomposition now evaluates the same eighteen frozen
+forests before reference sharing, after sharing and after the original output
+projection. Raw objectives are 0.920821 row and 0.922766 context; sharing lowers
+them to 0.918441 and 0.920482, and projection to 0.918171 and 0.920199. Both
+transformations slightly help in every case. The raw fitting gap therefore
+precedes the decoder; decoder damage is not the observed cause of this control's
+failure. All eighteen SOURCE predictions and 54 stage scores replay, with
+original target, weight and query-exposure hashes unchanged. This fitting-side
+result does not prove irreducible feature insufficiency.
+
+\subsection{Doubling Neural Cost Width Does Not Resolve Routing}
+We next change only the existing mean-cost critic's width from 64 to 128,
+increasing parameters from 29,253 to 58,501. Original SOURCE rows, preprocessing,
+loss, sampling, complete fitting budgets and risk thresholds remain fixed.
+Zero output-head initialization gives exactly matching initial cost predictions;
+encoder weights have different shapes. All nine real training pipelines finish
+their original budgets. This is not a matched-compute comparison.
+
+The complete SOURCE objective improves only from 0.721500 to 0.718380.
+Known-label development gain is 1.4312\%, versus 1.5037\% for width 64. The paired
+known effect is -0.0725 pp [-0.6665, +0.3906], so its direction is inconclusive.
+The registered full paired completion-lower effect is -0.6363 pp
+[-1.1786, -0.2787]; it fails and must not be reported as observed-ADE loss.
+Width 128 supports only 9/252 required views, with 202 known-all violations,
+207 known-easy violations, 13 undefined easy views and 10.1658\% worst easy-net
+degradation. Favorable secondary hard/easy means do not replace that failure.
+All nine SOURCE objectives, nine development inferences and 54 metric groups
+replay exactly. Increasing this width alone is not an effective safe-routing
+repair; it is not evidence that all larger models or all causal inputs fail.
 
 \section{Failure Analysis and Remaining Gaps}
 The controls separate several errors. A candidate bank can contain future-
@@ -344,9 +375,10 @@ known utility and every-record risk support are not interchangeable objectives.
 
 The observed losses do not prove causal inputs are useless or all regressors
 fail. The complete nonlinear control does not repair the full fitting objective
-or policy utility. A SOURCE-only decomposition of raw regression, reference
-sharing and output projection is the next diagnostic, not a completed result.
-Finite model comparisons cannot prove irreducible risk.
+or policy utility. SOURCE decomposition rejects the tested decoder-damage
+explanation on these data, while the one-factor width control offers only a
+small fitting improvement without safe routing. Finite model comparisons
+cannot prove irreducible risk or justify blind capacity escalation.
 The calibration result also does not certify a population-level 2\% risk bound.
 Arbitrary selected ratios, small scene samples, dependence and partially
 observed futures prevent that inference without additional justified assumptions.
@@ -375,6 +407,11 @@ separate direct 128-tree refit, including the saved prefix and trace. These
 128 additional reproduction trees are counted separately; unknown unsaved
 interrupted work and the earlier process are not hidden in the completion
 process's runtime. No guard or model budget was changed.
+The width control adds 70,656 primary optimizer updates, a 7,168-update complete
+first-producer refit and a 200-update real recovery pilot. Complete state and
+sampler comparisons reproduce both recovery and the first full fit. Primary
+training takes 503.02 s with 14.49 GB peak RSS; complete separate replay takes
+119.25 s. These costs concern cost-critic training, not trajectory training.
 
 Public scalar evidence supports exact numerical reconstruction of reported
 aggregates. It is not fresh raw-data inference. Full execution still needs
