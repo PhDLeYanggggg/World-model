@@ -39,9 +39,10 @@ The protocol is frozen before this experiment's outcomes. All 36 fits and 72
 original groups remain required. The original recording-risk rules, data roles
 and deployment stay unchanged. The real 400-update recovery pilot passes:
 29.26 seconds, about 9.82 GB peak memory, with exact recovered predictions and
-choices. Local resources are sufficient. Full training is running under a fixed
-budget, and both first-context complete refits reproduce exactly. No policy
-effect is available yet. The [method note](outputs/publication_readiness_2026_09/european_boundary_guard_v1/method_scope.md)
+choices. All 36 full-budget fits now finish: 208,320 main updates plus 14,336
+exact full-refit updates, in 22.59 minutes locally. All weights are frozen before
+the 72-group policy evaluation, which is running. No complete policy effect is
+available yet. The [method note](outputs/publication_readiness_2026_09/european_boundary_guard_v1/method_scope.md)
 explains why boundary-event accuracy alone cannot establish an expected-harm budget.
 
 [Protocol](outputs/publication_readiness_2026_09/european_boundary_guard_v1/protocol.md).
