@@ -48,6 +48,11 @@ No new trajectories or modalities. Two tests pass2.54s:initial cost outputs
 match,draws remain identical,and small-model resume/direct states are exact.
 Real pilot/training/readout are not_run at registration; no success inferred
 from capacity. [Fixed protocol](outputs/publication_readiness_2026_09/european_selection_capacity_v1/protocol.md).
+The actual SOURCE pilot now completes200updates in12.360554s,peak8.614GB.
+Width12850->100/direct100states match;old/new initial SOURCE outputs and
+100step query draws match exactly. The measured100step fit takes.496675s;
+the320.4s nine-fit projection excludes preparation,inference and full refit.
+Full9fit training follows unchanged budgets;no efficacy is inferred from pilot.
 
 A fixed SOURCE-only decode decomposition is registered after the complete
 forest negative. It separates raw regression,shared reference costs and the
