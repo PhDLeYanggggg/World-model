@@ -190,8 +190,9 @@ primary control. It retains all SOURCE sites, three seeds and full budgets.
 All 36 real Torch cost fits now complete 116,160 primary updates, plus 4,000
 full-refit and 1,200 recovery-pilot updates. Training takes 404.41 s with 9.23 GB
 peak RSS; both first full refits and all three-group recovery checks are exact.
-Held cost/probability/amplitude predictions are next; no policy outcome is
-claimed from fitting. This is not the earlier easy-event hurdle.
+All 36 held cost/probability/amplitude prediction sets are now frozen before
+this comparison's outcome scoring. No policy outcome is claimed from fitting
+or this prediction freeze. This is not the earlier easy-event hurdle.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

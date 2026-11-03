@@ -59,8 +59,9 @@ full-fit projection254.757splus7.944sfirst-refits, excluding preparation/inferen
 Fourteen current targeted tests pass1.85s. All36fits now complete116160primary
 updates plus4000full-refit updates, PID17236,404.408s,peak9.230GB. Both first
 complete refits are exact. Paired initial weights, normalizers, samplers and
-draws agree. Held prediction freeze/readout are next; no efficacy or safety
-claim follows from fitting, recovery or code checks.
+draws agree. All36held cost/observation-probability/amplitude sets now freeze
+before this comparison's outcome scoring. No efficacy or safety claim follows
+from fitting, recovery, code checks or the prediction freeze.
 [Protocol](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md).
 
 The post-readout same-set cost diagnostic is complete: all36frozen heads,
