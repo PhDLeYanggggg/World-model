@@ -61,10 +61,13 @@ from149510whitelist windows,not independent samples. Four focused tests pass.74s
 The corrected all-nine real pilot now passes:PID22514,31.285s,peak1.918GB,
 all27batches exact for saved coordinates,hidden repeatability and unchanged RNG.
 Actual capture times project7202.77sfor the complete extraction,excluding I/O
-and final hashes. Full extraction and separate replay are next;there is no
-feature-utility result,new optimizer update or deployment promotion.
+and final hashes. Full extraction now completes in7241.54s,peak1.993GB:
+all1913814coordinates exact and897060h64rows retained. All64dimensions vary
+in every producer;this descriptive scan is not normalization or feature utility.
+Separate full re-extraction is running;there is no new learned-feature result.
 
-Complete extraction is running as PID22705with atomic cursors and heartbeat.
+Complete extraction PID22705exits0;full separate replay is PID30866with
+heartbeat. [Build record](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v2/readout.md).
 I have also implemented the next matched test,not trained it:interaction64
 versuszero64in508-input,width64heads,33349parameters each. The same fit-only
 normalizer,initialization,query draws,target loss and2%risk policy isolate
