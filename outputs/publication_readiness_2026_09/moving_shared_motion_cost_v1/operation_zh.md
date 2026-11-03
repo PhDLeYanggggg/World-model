@@ -34,7 +34,12 @@ CPU 4 计算线程、1 interop、0 workers。不要切回 x86_64 Conda／Rosetta
 .venv-pytorch/bin/python -u scripts/run_m3w_moving_shared_motion_cost.py train
 .venv-pytorch/bin/python -u scripts/run_m3w_moving_shared_motion_cost.py evaluate
 .venv-pytorch/bin/python -u scripts/run_m3w_moving_shared_motion_cost.py verify
+.venv-pytorch/bin/python scripts/report_m3w_moving_shared_motion_cost.py
 ```
+
+最后一个命令只整理已经完整核验的结果，不训练、不重新选策略。它要求
+36 个真实 head、两个首模型完整重训、全部输出／指标重算均完成；平均收益、
+缺失标签下界、全录像风险和非空同切换数量效用分别列出，不能相互替代。
 
 pilot 在三个训练折、两个版本上做 50+50 对照直接 100 步的真实恢复检查，
 并估计完整成本。实际预算至少每个 head 2,000 步，而且每个训练 query

@@ -117,6 +117,9 @@ is not estimable, not zero benefit or a safety pass. Full-policy risk and the
 shared-minus-local feature effect keep the original population; count matching
 does not imply equal switch rates between feature arms. These are implementation
 checks, not real-source critic fitting or a positive feature/risk result.
+The separate result formatter also has two passing checks (0.15s). It refuses
+to write a completed study report until all36real fits, full first refits and
+saved-head/scalar replay exist; no actual cost-study score is available yet.
 Actual critic execution remains pending complete forecast training and replay.
 The [Chinese operation guide](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/operation_zh.md)
 explains the learned roles,resume commands and full-risk versus utility checks.
