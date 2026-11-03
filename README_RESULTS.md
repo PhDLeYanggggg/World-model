@@ -143,6 +143,13 @@ The unbound plotter's loss axis is corrected to fitting-baseline-relative,
 not necessarily CV-relative; its two scalar-report tests pass0.14s. No active
 training definition,data,budget or model was changed by that label repair.
 
+Original held inference now runs asPID91599. To retain full-refit disk headroom,
+the four completed100-update pilot copies are [losslessly archived](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/storage_compaction.md):
+48,838,756to14,842,420bytes,all original member hashes preserved and restorable.
+All18primary model hashes remain unchanged. Two archive/restore/change-protection
+tests pass0.12s; actual build,compact and separate raw-byte verification exit0.
+This is storage engineering,not another training result or scientific gate.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)

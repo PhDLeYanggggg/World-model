@@ -74,6 +74,20 @@ checkpoint 和压缩预测留在本地，不入 Git。保留原 10 GiB 磁盘余
 资源不足时先保留产物，再核对已授权 CREATE 的队列／自己目录后转移，
 不改另一个 simulation 项目的任务或环境。本轮本地成本适合，无新 HPC 作业。
 
+18 个正式模型完成后，为保留完整重训核验的磁盘余量，4 份已结束的 100 步
+试跑副本移入本地无损归档。所有原始字节和路径信息都保留，48,838,756 字节
+压缩为 14,842,420 字节；每个成员的 SHA 与原件一致，正式 18 个模型未改变。
+原始试跑单文件路径需还原后再直接打开，完整 4k 重训并不依赖这些副本。
+完整收据见同目录 `storage_compaction.md` 和 `pilot_storage_archive.json`。
+
+```sh
+.venv-pytorch/bin/python scripts/archive_m3w_moving_pilot.py verify
+.venv-pytorch/bin/python scripts/archive_m3w_moving_pilot.py restore
+```
+
+还原要求保留原 10 GiB 余量，且不覆盖有变更的现存文件。无损存储校验不是
+重新训练或新的科学结果；归档及模型大文件仍不入 Git。
+
 ## 核查结果
 
 需要同时看到所有主训练完成、原始留出推理完成、两个首模型完整重训一致、
