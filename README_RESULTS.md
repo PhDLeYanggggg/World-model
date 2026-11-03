@@ -90,8 +90,12 @@ All three group recoveries and matched initial weights,normalization and draws
 are exact. The optimizer-only36-fit projection is296.70s,excluding preparation
 and inference. All36fits now complete116160primary updates plus4000full-refit
 updates,PID52378,454.824sphase time,peak12.553GB. Both first full refits and all
-paired initialization/normalization/draw checks are exact. Endpoints are frozen;
-no held policy outcome has been scored and no feature-effect claim is made.
+paired initialization/normalization/draw checks are exact. All36cost/amplitude
+prediction pairs now freeze before held policy scoring,PID54753. A fresh
+actual-checkpoint audit PID55263checks every fitting IDhash and normalizer:
+all36use only criticGand exclude producerF/evaluationH. It reads no new future
+label arrays. The initial discarded-Hpreparation failure remains documented.
+Held policy outcomes are next;no feature-effect claim is made yet.
 These engineering tests do not establish a learned-feature benefit.
 The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.
