@@ -62,6 +62,9 @@ the explanation without turning it into a success:
 - The completed 102-recording calibration experiment finds no common risk
   multiplier that satisfies the original complete contract. Empty selected
   reference support is not counted as a measured safe zero.
+- Explicit observation-support cost models reduce some risk violations but
+  lose 2.56 pp of observed utility against the frozen direct head. Their full
+  risk check still fails; better label-availability prediction is not a policy win.
 
 The current contract retains the 2% all/easy positive-harm and signed easy-net
 requirements in every required recording, with finite support. A favorable
@@ -182,17 +185,21 @@ ratio in 423/444 fitting views. Fitting views with no wholly unknown selected
 labels can also fail, so missing-label bounds alone do not explain it. This is a zero-update diagnosis, not a
 new policy or another training success.
 
-The next [registered comparison](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md)
-models released-label support explicitly, separating its conservative unknown
-contribution from costs conditional on observed labels. Two matched new arms
-will test identification supervision, with the frozen direct-bound head as the
-primary control. It retains all SOURCE sites, three seeds and full budgets.
-All 36 real Torch cost fits now complete 116,160 primary updates, plus 4,000
-full-refit and 1,200 recovery-pilot updates. Training takes 404.41 s with 9.23 GB
-peak RSS; both first full refits and all three-group recovery checks are exact.
-All 36 held cost/probability/amplitude prediction sets are now frozen before
-this comparison's outcome scoring. No policy outcome is claimed from fitting
-or this prediction freeze. This is not the earlier easy-event hurdle.
+The [observation-support comparison](outputs/publication_readiness_2026_09/european_observation_cost_v1/readout.md)
+is complete: 36 real Torch fits, 116,160 primary updates and exact full replay.
+Training takes 404.41 s with 9.23 GB peak RSS. Its primary paired lower effect
+is **-3.13 pp [-4.41, -1.99]**; observed utility also regresses,
+**-2.56 pp [-3.74, -1.48]**. All twelve locality-averaged known effects are
+negative. Risk support improves to 160/444, but worst easy-net degradation is
+8.32%, so this model is not deployed.
+
+The identified availability head learns more about released labels, but average
+intervention amplitude falls from 0.239 to 0.091 and useful gains are lost.
+The [failure analysis](outputs/publication_readiness_2026_09/european_observation_cost_v1/failure_analysis.md)
+keeps that distinction explicit. Next I will test learned past-only interaction
+features from the frozen forecaster against a capacity-matched zero-feature
+control. No latent-feature gain has been measured yet; more cost factorization
+alone has not solved admission.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

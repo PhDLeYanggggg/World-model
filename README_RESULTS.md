@@ -59,10 +59,27 @@ full-fit projection254.757splus7.944sfirst-refits, excluding preparation/inferen
 Fourteen current targeted tests pass1.85s. All36fits now complete116160primary
 updates plus4000full-refit updates, PID17236,404.408s,peak9.230GB. Both first
 complete refits are exact. Paired initial weights, normalizers, samplers and
-draws agree. All36held cost/observation-probability/amplitude sets now freeze
-before this comparison's outcome scoring. No efficacy or safety claim follows
-from fitting, recovery, code checks or the prediction freeze.
-[Protocol](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md).
+draws agree. All36prediction triplets froze before scores in876a0a79and now
+replay exactly,as do72metric groups. Verification PID18551takes131.106s,
+including77.438scomplete prediction replay,peak6.672GB. Frozen direct control
+also reproduces exactly in every view.
+
+Primary paired lower effect:-3.133282pp [-4.410254,-1.987128]. Paired known
+effect:-2.564786pp [-3.740926,-1.480043],negative in all twelve locality means.
+This is actual observed-utility regression,not only uncertain missing labels.
+Identified-minus-marginal known:-.362240pp [-.672350,-.064044]; lower:-.674471pp
+[-1.036137,-.348833]. Both fixed controls fail. Full-risk support108->160/444
+but worst easy-net8.319583% and280completion-easy violations remain. No deployment.
+Mean amplitude.239083->.091445 while active rate57.9310%->52.8473%; attenuating
+many surviving actions loses utility. Full-bound fitting objective1.488498
+versus olddirect1.489479is essentially unchanged. Label-support AUROC improves
+.570222->.636791,posthoc paired effect+.066569 [.036595,.094362],but this is a
+different target,not failure prediction or world dynamics. No independent role
+opened,threshold chosen or negative site dropped.
+[Readout](outputs/publication_readiness_2026_09/european_observation_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_observation_cost_v1/failure_analysis.md),
+[card](outputs/publication_readiness_2026_09/european_observation_cost_v1/model_data_card.md)
+and[gates](outputs/publication_readiness_2026_09/european_observation_cost_v1/gates.md).
 
 The post-readout same-set cost diagnostic is complete: all36frozen heads,
 72fitting/held inference passes, no optimizer updates, all36job-role summaries

@@ -110,6 +110,13 @@ The later [same-set cost diagnosis](same_set_cost_diagnosis_addendum.md) is a
 separate current addendum. Its complete inference/replay is not yet a section
 of the compiled main PDF; that PDF and its visual receipt remain unchanged.
 
+The [observation-support addendum](observation_support_addendum.md) now records
+the subsequent36-fit controlled negative: known utility falls2.5648pp and the
+registered paired lower falls3.1333pp versus direct. Availability identification
+improves a secondary label-process score but not complete admission. This is
+also separate from the compiled main PDF; no new main-text result or scientific
+readiness is implied by linking the supplement.
+
 ## Still Missing
 
 A learned full-policy risk pass, supported scene-joint gain, independent final
