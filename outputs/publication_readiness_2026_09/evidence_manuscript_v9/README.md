@@ -127,6 +127,11 @@ records the later 36-fit matched feature test, exact full replay and unsupported
 primary. Better fitting does not become a safe policy result. This is separate
 from the compiled main PDF, which remains unchanged after its disclosure update.
 
+The subsequent [feature selected-cost diagnosis](feature_selected_cost_addendum.md)
+locates easy-harm underfitting on G before transfer to H. Its complete frozen
+inference and replay are separate from the main PDF. A fourfold fitting-only
+duration test follows; it is not a held-policy result or deployment claim.
+
 ## Still Missing
 
 

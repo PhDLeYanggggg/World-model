@@ -65,6 +65,11 @@ the explanation without turning it into a success:
 - Explicit observation-support cost models reduce some risk violations but
   lose 2.56 pp of observed utility against the frozen direct head. Their full
   risk check still fails; better label-availability prediction is not a policy win.
+- A complete, capacity-matched interaction-feature test lowers the fitting
+  objective by about 11.5%, but its held-scene primary remains inconclusive:
+  -0.021 pp [-0.615, +0.648]. Only 110/444 repeated recording/pipeline views
+  meet the complete risk contract. Better latent features are not yet a safe
+  admission result.
 
 The current contract retains the 2% all/easy positive-harm and signed easy-net
 requirements in every required recording, with finite support. A favorable
@@ -196,15 +201,23 @@ negative. Risk support improves to 160/444, but worst easy-net degradation is
 The identified availability head learns more about released labels, but average
 intervention amplitude falls from 0.239 to 0.091 and useful gains are lost.
 The [failure analysis](outputs/publication_readiness_2026_09/european_observation_cost_v1/failure_analysis.md)
-keeps that distinction explicit. Next I will test learned past-only interaction
-features from the frozen forecaster against a capacity-matched zero-feature
-control. No latent-feature gain has been measured yet; more cost factorization
-alone has not solved admission.
+keeps that distinction explicit. The subsequent
+[frozen interaction-feature experiment](outputs/publication_readiness_2026_09/european_interaction_feature_cost_v1/readout.md)
+is also complete: 36 real cost-head fits, three actual seeds, exact replay of
+all predictions and 72 metric groups. The two-hour feature extraction and
+separate two-hour re-extraction preserve every original forecast. The added
+feature bundle improves fitting, but its registered lower effect and known
+effect both have intervals crossing zero. It is not a new safe policy.
 
-The [frozen interaction-cache protocol](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v1/protocol.md)
-is registered. It will preserve the original forecast batches and verify
-unchanged outputs while capturing past-only interaction states. The real pilot
-comes first; neither a cache nor a learned-feature improvement is claimed yet.
+The [new same-set diagnosis](outputs/publication_readiness_2026_09/european_feature_cost_diagnosis_v1/conclusions.md)
+finds that this head underestimates selected easy harm already on fitting
+scenes, not only on new localities. All 324 falsely-safe fitting views and 330
+held views underestimate its numerator. Before changing architecture again,
+I am checking whether four times the training budget repairs that fitting
+failure across every original job and seed. The old-budget weights must
+reproduce exactly, and the main comparison holds the original selected set
+fixed. This is a training-adequacy experiment, not another threshold search
+or evidence of a new world-model contribution.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

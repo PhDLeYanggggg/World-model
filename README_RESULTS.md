@@ -97,7 +97,9 @@ including replayed original prefixes, plus an 8,000-update full refit. A real
 optimizer regression confirms unchanged-prefix and resume/direct equality.
 Only duration/coverage change; held-policy evaluation is not part of this
 fitting-adequacy check. Original selected sets remain fixed for its main cost
-comparison. Registration is not completed training or a policy improvement.
+comparison. Real training is now running locally under PID60218, with heartbeat
+and checkpoint resume. The first old-budget prefix and full 8,000-update
+from-scratch refit reproduce exactly. No completed18-model or policy claim yet.
 
 ### Build And Fitting History
 
