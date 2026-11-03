@@ -89,9 +89,12 @@ overfull box, unresolved reference, missing glyph or font-shape fallback occurs.
 The first attempt at source generation used the wrong calibration-receipt
 filename and did not produce TeX; its failed compile log is retained privately.
 The corrected builder binds the actual `verify.json`, not a fabricated receipt.
-The latest complete SOURCE bound-target update compiles through
-`paper_compile_07.log`; the current PDF SHA is
-`13e3c4a07bb83424354c397c51900286ac57460d1487708ccf2cb17c7834917a`.
+The latest disclosure-only update compiles through
+`paper_compile_08.log`; the current PDF SHA is
+`d9babe3ddbac858bcc1ac30e3ba98b332bed625c78ff9231d1d42a3e30b11772`.
+It names OpenAI Codex explicitly under the current detailed author policy;
+no scientific score,figure or official style was changed. The compile07PDF
+is retained privately as main_compile07.pdf.
 All nine current page renders were individually inspected again. Earlier
 compile logs and their source/PDF checks are retained as historical evidence.
 The first attempt to verify this update preceded completion of PNG rendering

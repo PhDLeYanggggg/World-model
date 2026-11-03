@@ -557,7 +557,7 @@ foundation claim is made. Actual paper submission remains an author decision.
 
 ## LLM Usage Statement
 
-LLM assistance was used substantially for implementation and debugging,
+OpenAI Codex was used substantially for implementation and debugging,
 experiment orchestration, primary-source retrieval, analysis, documentation
 and draft preparation, not only grammar correction. Claims remain tied to
 frozen artifacts and sources. This disclosure is not a certificate of scientific

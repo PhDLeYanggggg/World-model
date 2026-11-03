@@ -18,12 +18,16 @@ complete36-fit bound-target comparison and2026non-monotonicCRC prior are now
 included without promoting the failed primary. Eight main pages plus one
 disclosure/reference page; all nine current PNGs inspected
 against PDF SHA
-`13e3c4a07bb83424354c397c51900286ac57460d1487708ccf2cb17c7834917a`.
+`d9babe3ddbac858bcc1ac30e3ba98b332bed625c78ff9231d1d42a3e30b11772`.
 No final-pass overfull/reference/font-shape issue;upstream lineno UTF-8 warning
 retained. Locked Torch environment lacks pypdf;bundled document Python validates
 the PDF without changing training dependencies. v8 sources/receipts remain
 unchanged. Forest readout is complete,negative and included without promotion.
 No scientific promotion,complete anonymity certificate or submission occurred.
+The3November disclosure update explicitly names OpenAI Codex as required by
+the detailed author guidelines. All nine regenerated pages were inspected;
+scientific scores and the official style are unchanged. The prior PDF is
+retained privately. [Current policy check](outputs/publication_readiness_2026_09/cvpr2027_policy_refresh_20261103.md).
 
 The [previous frozen v8 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v8/README.md)
 sets out the partial-label forecast-substitution problem, controlled comparisons
