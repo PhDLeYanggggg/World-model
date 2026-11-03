@@ -186,8 +186,10 @@ The next [registered comparison](outputs/publication_readiness_2026_09/european_
 models released-label support explicitly, separating its conservative unknown
 contribution from costs conditional on observed labels. Two matched new arms
 will test identification supervision, with the frozen direct-bound head as the
-primary control. It retains all SOURCE sites, three seeds and full budgets;
-training and outcomes have not yet run. This is not the earlier easy-event hurdle.
+primary control. It retains all SOURCE sites, three seeds and full budgets.
+The real 1,200-update recovery pilot is complete and exact for both arms on all
+three fitting groups, peaking at 7.58 GB. Full fitting starts next; no efficacy
+result is claimed by the pilot. This is not the earlier easy-event hurdle.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

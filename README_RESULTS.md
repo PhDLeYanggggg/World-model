@@ -52,8 +52,12 @@ bound control. Both new arms share structure, initialization, normalization,
 queries and full budgets; identified support adds proper observation BCE and
 observed-conditional cost supervision. Primary is identified-minus-frozen-direct
 paired completion-lower gain,not the secondary within-family contrast. The old
-generic easy-event hurdle failure remains. Real recovery pilot, full fitting,
-prediction freeze and readout are next; no new scientific result claimed.
+generic easy-event hurdle failure remains. Real recovery pilot PID16958 completes
+1200updates in13.582s,peak7.584GB. All six arm/group50->100/direct100recoveries
+are exact and paired initialization/preprocessing/draws agree. Optimizer-only
+full-fit projection254.757splus7.944sfirst-refits, excluding preparation/inference.
+Fourteen current targeted tests pass1.85s. Full fitting, prediction freeze and
+readout are next; no new scientific result is claimed by recovery or code checks.
 [Protocol](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md).
 
 The post-readout same-set cost diagnostic is complete: all36frozen heads,
