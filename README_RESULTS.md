@@ -157,6 +157,11 @@ is+14.4599pp [-8.1907,38.9277]. The latter still crosses zero; neither view
 passes the unestimable original24-group primary or any intervention-risk gate.
 These are fresh inference numbers, pending the full independent replay now
 running asPID98674/session56152. No model or threshold is changed from them.
+The first PCT and EqMotion have now each been fully refitted for4,000new
+verification updates: both scientific checkpoints are exact,with zero held
+rows sampled. This adds8,000verification updates,not primary training budget.
+All9PCT saved predictions have also replayed; EqMotion prediction replay
+continues. Complete verification is not yet claimed.
 To retain full-refit disk headroom,
 the four completed100-update pilot copies are [losslessly archived](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/storage_compaction.md):
 48,838,756to14,842,420bytes,all original member hashes preserved and restorable.
