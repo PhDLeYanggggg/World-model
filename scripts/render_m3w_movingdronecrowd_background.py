@@ -31,7 +31,9 @@ def save_contact(canvas,path,resume=False):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pairs',action='store_true');parser.add_argument('--version2',action='store_true')
+    parser.add_argument('--within-source',action='store_true')
     parser.add_argument('--resume',action='store_true');args=parser.parse_args()
+    if args.within_source and not args.pairs:parser.error('--within-source requires --pairs')
     audit=parent_audit
     if args.version2:
         from scripts import audit_m3w_movingdronecrowd_background_v2 as audit
@@ -41,7 +43,8 @@ def main():
         raise ValueError('Changed source images')
     records={(v['node'],v['slot']):v for v in manifest['views']}
     output=private/'visual_review';output.mkdir(exist_ok=True)
-    receipt=public/('pair_contact_sources.json' if args.pairs else 'overview_contact_sources.json')
+    receipt=public/('within_pair_contact_sources.json' if args.within_source else
+                   'pair_contact_sources.json' if args.pairs else 'overview_contact_sources.json')
     if receipt.exists():raise ValueError('Completed figure source manifest is immutable')
     outputs=[];typeface=font()
     old_lookup=None
@@ -81,9 +84,10 @@ def main():
         selection_rule='all120first_views_sorted_by_namespaced_clip'
     else:
         summary=json.loads((public/'analysis.json').read_text())
+        kind='within_moving' if args.within_source else 'cross_source'
         cases=[]
         for status in ('strong_multiview','ambiguous'):
-            candidates=sorted((v for v in summary['supported_pairs'] if v['kind']=='cross_source' and v['status']==status),
+            candidates=sorted((v for v in summary['supported_pairs'] if v['kind']==kind and v['status']==status),
                               key=lambda v:(v['left'],v['right']))
             cases.extend(candidates[:8])
         for index,case in enumerate(cases,1):
@@ -103,8 +107,8 @@ def main():
                     canvas.paste(image.resize((480,270)),(x,y))
                     draw.text((x+4,y+273),node+f' actual f{frame}',font=typeface,fill='black')
                     sources.append(dict(node=node,slot=slot,actual_image_frame=frame,source_JPEG_sha256=digest))
-            save(canvas,f'cross_candidate_{index:02d}.png',sources)
-        selection_rule='first8lexical_cross_pairs_per_strong_or_ambiguous_status_not_all_pairs'
+            save(canvas,('within' if args.within_source else 'cross')+f'_candidate_{index:02d}.png',sources)
+        selection_rule='first8lexical_'+kind+'_pairs_per_strong_or_ambiguous_status_not_all_pairs'
     parent_audit.once(receipt,dict(renderer_sha256=audit.sha(Path(__file__)),image_manifest_sha256=audit.sha(public/'image_manifest.json'),
         selection_rule=selection_rule,outputs=outputs,visual_review_performed=False,
         figures_private_not_committed=True,model_inputs=False,physical_independence_certified=False))

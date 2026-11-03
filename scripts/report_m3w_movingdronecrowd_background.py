@@ -50,6 +50,12 @@ def main():
     source_analysis_path=audit.intake.PUBLIC/'analysis.json'
     source_analysis=json.loads(source_analysis_path.read_text())
     support=candidate_support(source_analysis['recordings'],candidates,groups)
+    scene_by_node={v['node']:v['clip'].split('/')[0] for v in images['views']}
+    nodes=sorted(scene_by_node)
+    same_label_pairs=sum(scene_by_node[a]==scene_by_node[b]
+        for i,a in enumerate(nodes) for b in nodes[i+1:])
+    same_label_supported=sum(v['kind']=='within_moving' and scene_by_node[v['left']]==scene_by_node[v['right']]
+                             for v in result['supported_pairs'])
     mixed=[g for g in groups if any(v.startswith('moving_') for v in g) and any(v.startswith('drone_') for v in g)]
     cache_bytes=sum(v['bytes'] for v in images['views'])
     bounds=sum(v['head_centers_outside_image'] for v in images['views'])
@@ -59,6 +65,9 @@ def main():
         publisher_train_clips=64,remaining_unadmitted_publisher_train_candidates=len(candidates),
         remaining_unadmitted_candidate_nodes=candidates,mixed_source_exclusion_components=len(mixed),
         remaining_unadmitted_candidate_support=support,source_structure_sha256=audit.sha(source_analysis_path),
+        within_same_publisher_label_pairs=same_label_pairs,
+        supported_within_same_publisher_label_pairs=same_label_supported,
+        publisher_label_support_is_geographic_recall=False,
         source_roles_assigned=False,model_training=False,physical_independence_certified=False,
         stage5c_executed=False,smc_enabled=False)
     lines=['# Moving-Drone Source-Overlap Results','', '## Material Passport','',
@@ -71,14 +80,23 @@ def main():
         '## Acquisition And Resource Cost','',
         f'New source views:360; protected cached views:336. Current acquisition',
         f'invocation transfers{images["network_payload_range_bytes_this_invocation"]:,}archive range bytes,',
-        f'with{images["new_views_this_invocation"]}new and{images["cached_views_this_invocation"]}resumed cached views.',
+        f'with{images["new_views_this_invocation"]}new and{images["cached_views_this_invocation"]}exact cached views.',
         'These are invocation counts, not an invented total for any failed requests.',
         f'Prepared view cache:{cache_bytes:,}bytes; no raw JPEG/full archive retained.',
         f'Head centers outside image bounds in these audit views:{bounds}; none are silently removed.',
         f'Acquisition PID{acquisition["pid"]}: {acquisition["seconds"]:.3f}s, peak RSS{acquisition["peak_RSS_bytes"]:,}bytes.',
         f'Fixed timing pilot estimated{pilot["estimated_full_matching_seconds"]:.1f}s for all pairs; this was an estimate.',
-        f'Complete matching process PID{execution["pid"]}: {execution["seconds"]:.3f}s, peak RSS{execution["peak_RSS_bytes"]:,}bytes.',
-        f'Its fresh/cached pairs:{execution["new_pairs"]}/{execution["cached_pairs"]}; do not erase the pilot or reused work.','',
+        f'Completion process PID{execution["pid"]}: {execution["seconds"]:.3f}s, peak RSS{execution["peak_RSS_bytes"]:,}bytes.',
+        f'Its fresh/cached pairs:{execution["new_pairs"]}/{execution["cached_pairs"]}; do not erase the pilot or reused work.']
+    if 'original_matching_exit_code' in execution:
+        lines += [f'Original matching PID{execution["original_matching_pid"]} saved all pairs after',
+            f'{execution["original_matching_loop_seconds"]:.3f}s, with{execution["original_matching_peak_RSS_bytes"]:,}bytes peak RSS,',
+            f'{execution["original_matching_new_pairs"]}new pairs and{execution["original_cached_pilot_pairs"]}cached pilot pairs.',
+            f'It then exited{execution["original_matching_exit_code"]} on duplicate summary-key assembly, not matching.',
+            'The registered forward adapter recovers that work without changing matching or grouping;',
+            'its short completion time is not presented as the original full matching time.',
+            'See completion_failure.md and completion_repair_registration.json.']
+    lines+=['',
         '## Complete Roster','', '| Scope | Strong multi-view candidates | Ambiguous candidates | Unsupported |',
         '|---|---:|---:|---:|']
     for name,counts in result['status_counts'].items():
@@ -90,7 +108,11 @@ def main():
         'unadmitted candidates after these known-link/background exclusions.',
         'This is not a physical-site count, role grant, independence certificate',
         'or positive transfer result. Preserve all weak, publisher-scene and old',
-        '45group constraints; do not reassign a protected clip to create training data.','',
+        '45group constraints; do not reassign a protected clip to create training data.',
+        f'Of {same_label_pairs} within-publisher-label pairs, {same_label_supported} have image support.',
+        'The publisher label is not an exact shared-field-of-view ground truth;',
+        'this ratio is not measured geographic recall. It illustrates why the',
+        'publisher priors must remain even when sparse image matching is unsupported.','',
         '## Remaining Candidate Support, Not Admitted Data','',
         f'The remaining publisher-train candidates contain {support["rows"]:,} rows,',
         f'{support["recording_local_tracks"]:,} recording-local tracks across',
@@ -115,8 +137,9 @@ def main():
         'the predetermined prefix only, not all pairs. Source checks prove the',
         'implemented replay and coverage, not geographic or scientific independence.','',
         '## Limits And Next Action','',
-        'Inspect source contact sheets and candidate correspondences; any visual',
-        'review must name the exact figures inspected and remain self-audited,',
+        'The first-view inspection is recorded in overview_review.md. The later',
+        'within-source inspection and empty cross-source panel scope are recorded',
+        'in pair_review.md. The visual review remains model-assisted self-audit,',
         'not human gold. Unsupported image matching does not prove a different',
         'place; sparse views, darkness, motion and parallax can hide overlap.',
         'DUT imagery is not screened in this roster. No complete producer-chain',

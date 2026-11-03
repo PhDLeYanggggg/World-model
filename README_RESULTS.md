@@ -85,8 +85,10 @@ The corrected acquisition is now complete: PID69296 records 51.802s and
 1,212,809,216bytes peak RSS, with21fresh portrait views and339exact reused
 landscape views. The immutable acquisition receipt exists and the process has
 ended; the original terminal handle was lost, so a recovered exit code is not
-invented. Actual range payload is38,845,567bytes, including archive metadata;
+invented. Final range payload is39,942,398bytes, including archive metadata;
 32,822,255bytes is the selected portrait JPEG total, not total network traffic.
+The earlier38,845,567-byte progress value excluded the last directory recheck;
+the final immutable image manifest supplies the complete invocation total.
 The separate v2 pilotPID69470exit0 completes50fresh pairs in11.818s and
 projects4,274.06s for full matching. Full matching now runs asPID69529 using
 unchanged resume and pair checkpoints; it is not yet a complete result.
@@ -106,6 +108,36 @@ pair-file digest inventory. Frozen definitions/criteria/roles are not edited;
 the69minute job is not repeated. Seven focused completion/report tests pass
 0.37s. Recovery and the prescribed feature/receipt/fixed50pair verification
 remain pending at this checkpoint.
+
+The [complete v2 readout](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md)
+now supersedes those pending states. Forward recovery PID74437exit0 takes
+3.921s and hashes/reuses all20,580original pair checkpoints; that is not the
+original matching time. Separate verification PID74460exit0 takes43.099s,
+peak1,663,025,152bytes: all360prepared features exact,336protected views and
+20,580pair receipts/graph exact, plus50fixed pairs freshly recomputed.
+A separate repeatable read-only check also exits0 in42.559s,peak1,513,357,312
+bytes,with no network or application artifact writes and the same complete
+checks. Neither replay is a second full matching run. Analysis SHA is
+`546f51843487e42f013502b683afacd2cf6df91c1301c57beb420cf333bcff4e`.
+
+Full results: within-source2strong/29ambiguous/7,109unsupported; cross-source
+0strong/0ambiguous/13,440unsupported;185,207frame comparisons attempted.
+No mixed component or insufficient-background new clip is found under these
+rules. All44publisher groups and45protected groups remain89conservative
+components,not89verified places. Only31of213same-publisher-label pairs have
+image support; that is not geographic recall and negative matches do not
+certify independence. All ten first-view pages and ten within-source candidate
+panels were inspected; the empty cross-source candidate set produces0panels,
+not a human-confirmed absence of overlap. [Exact review scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md).
+
+All64publisher-train clips remain unadmitted candidates:24publisher labels /
+24conservative components,351,862rows,15,165recording-local tracks and136,295
+complete native8/12windows. The same candidate population has58,991history-
+complete/future-incomplete agent instances; do not target-filter neighbors.
+Seventeen focused source/geometry/completion/report tests pass0.50s. No new
+model training,forecast error,producer-role admission or deployment promotion.
+DUT image overlap and complete source-use/producer admission remain next;
+the112whole-source confirmation clips are not repurposed. [Chinese guide](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/tutorial_zh.md).
 
 ### New Development-Source Feasibility
 

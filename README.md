@@ -144,13 +144,20 @@ I am checking MovingDroneCrowd++ as a possible new development source rather
 than reusing protected confirmation recordings. Its annotation intake contains
 120 clips and 245,018 complete native 8/12 windows, not that many independent
 scenes. All 360 sparse source views are now available; 21 portrait views needed
-a fixed axis correction before matching. All 20,580 source-overlap pair
-checkpoints are now saved after 69 minutes. Summary assembly then failed on a
-duplicate dictionary field; the original failure is retained and a small
-forward completion adapter is registered. Final verification is still pending.
-The new data has not been admitted to
-training, and an unsupported image match will not establish independence.
-[Protocol and inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/protocol.md).
+a fixed axis correction before matching. All 20,580 source-overlap pairs are
+now complete, with full saved-result verification and a repeatable read-only
+check. The 69-minute matching job hit a summary-assembly error after saving
+every pair; a registered repair recovered the work without changing matching.
+
+The screen finds two strong and 29 ambiguous pairs within the new source,
+but no supported cross-source pair. This is not proof of independent sites.
+The 64 publisher-train candidates retain 136,295 complete native 8/12 windows;
+they are not independent samples or admitted training data. Source-use and
+producer-role admission, including the outstanding DUT comparison, come next.
+No new forecasting score or deployment result follows from this audit.
+[Complete result](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md),
+[inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/tutorial_zh.md).
 
 Can the stronger frozen proposal support useful, reliable admission rather
 than another increase in critic width? The completed SOURCE experiments
