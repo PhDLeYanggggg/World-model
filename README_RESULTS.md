@@ -46,13 +46,16 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The frozen EqMotion interaction-cache preparation is registered. Nine existing
-producer-excluded forecasters;1913814original forecast rows processed in original
-128-row batches,897060unchanged-whitelist latent rows retained,64float32values
-per row,229647360rawlatentbytes. No optimizer updates or new feature-effect
-evaluation. Two passive-hook tests pass.66s,including exact output/RNG behavior,
-cleanup and target-key refusal. Real first/middle/last-batch pilots on all nine
-models precede any full extraction. [Protocol](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v1/protocol.md).
+The first frozen-interaction extraction pilot failed because I passed the
+controller's newer partial-neighbor packet to the old forecaster. A fresh
+27-batch diagnosis across all nine models reproduces every saved prediction
+exactly with the original packet;hooks preserve outputs and RNG. I retain the
+[failure record](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v1/failure_analysis.md)
+and register an [explicit input-binding correction](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v2/protocol.md).
+The unchanged target is1913814processed forecast rows and897060retained h64rows
+from149510whitelist windows,not independent samples. Four focused tests pass.74s.
+The corrected all-nine pilot and full extraction are not yet complete;there is
+no feature-utility result,new optimizer update or deployment promotion.
 
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct
