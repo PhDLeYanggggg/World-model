@@ -155,13 +155,18 @@ peak RSS1,671,512,064bytes. The23-supported-group known-label EqMotion-minus-PCT
 secondary is+55.0152pp [27.8895,87.3852]; its completion-lower secondary
 is+14.4599pp [-8.1907,38.9277]. The latter still crosses zero; neither view
 passes the unestimable original24-group primary or any intervention-risk gate.
-These are fresh inference numbers, pending the full independent replay now
-running asPID98674/session56152. No model or threshold is changed from them.
-The first PCT and EqMotion have now each been fully refitted for4,000new
-verification updates: both scientific checkpoints are exact,with zero held
-rows sampled. This adds8,000verification updates,not primary training budget.
-All9PCT saved predictions have also replayed; EqMotion prediction replay
-continues. Complete verification is not yet claimed.
+Full independent replay PID98674 exits0 at22:10:36UTC after6,638.724s,
+peak RSS2,347,810,816bytes. Every saved prediction of all18models is exact.
+The first PCT and EqMotion have each been fully refitted for4,000new verification
+updates: both scientific checkpoints are exact,with zero held rows sampled.
+This adds8,000verification updates,not primary training budget. No model or
+threshold changes from the readout. The [complete readout](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/readout.md)
+includes all six causal baselines,all3seeds,loss curves and negative evidence.
+Known-label groupwise gain over CV is+15.7428%for EqMotion and-39.2724%for
+PCT; these are not original2%risk passes or historical SDD horizon scores.
+Both private plot previews are visually checked; a clipped title was repaired
+and endpoint FDE is explicitly labelled available-endpoint diagnostic,not full
+population FDE. No scientific scalar changed through these formatting repairs.
 To retain full-refit disk headroom,
 the four completed100-update pilot copies are [losslessly archived](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/storage_compaction.md):
 48,838,756to14,842,420bytes,all original member hashes preserved and restorable.

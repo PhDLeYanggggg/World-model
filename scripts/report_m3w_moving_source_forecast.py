@@ -75,7 +75,7 @@ def figures(analysis,trials):
                     fmt='o',capsize=4,color=('#1766a0','#b15c25')[i])
     ax.axvline(0,color='0.45',lw=1);ax.set_yticks(range(2),names);ax.invert_yaxis()
     ax.set_xlabel('EqMotion minus PCT, percentage points [95% grouped bootstrap CI]')
-    ax.set_title('23 prediction-supported groups; original 24-group primary not estimable')
+    ax.set_title('23 prediction-supported groups\nOriginal 24-group primary not estimable')
     fig.tight_layout();fig.savefig(destination/'paired_secondary.svg');fig.savefig(previews/'paired_secondary.png',dpi=170);plt.close(fig)
     fig,ax=plt.subplots(figsize=(7,3.5))
     for family,color in (('pct','#1766a0'),('eqmotion','#b15c25')):
@@ -147,10 +147,14 @@ def main():
         'components, not certified independent geographic sites. Available-label',
         'ADE on partial rows is not full-future ground truth. Unknown rows use',
         'the unchanged paired-disagreement bound, not imputed positions.','',
-        '| Model | Equal supported-group pixel ADE | Full-supported-group endpoint FDE | Gain vs CV (%) |',
+        '| Model | Equal supported-group pixel ADE | Available-endpoint diagnostic FDE (px) | Mean groupwise gain vs CV (%) |',
         '|---|---:|---:|---:|']
     for row in model_rows:lines.append(f'| {row["model"]} | {number(row["available_ADE"])} | {number(row["endpoint_FDE"])} | {number(row["gain_vs_CV_percent"])} |')
-    lines += ['', 'Baselines are reported separately. A held-data best baseline is diagnostic,',
+    lines += ['', 'Endpoint FDE uses valid endpoint labels only, then averages all supported',
+        'groups; it is not full-population FDE. Gains average groupwise ratios,',
+        'not the ratio of the two displayed ADE means. Native8/12scores are not',
+        'directly comparable with historical SDD raw-frame horizon scores.', '',
+        'Baselines are reported separately. A held-data best baseline is diagnostic,',
         'never an inference choice; each producer chooses its actual rollout floor',
         'using fitting groups only. PCT and EqMotion are architecture-family controls,',
         'not capacity-matched or an isolated equivariance effect. EqMotion emits one',
