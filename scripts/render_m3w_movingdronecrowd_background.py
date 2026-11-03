@@ -17,9 +17,21 @@ def font():
     return ImageFont.truetype(str(path),12) if path.exists() else ImageFont.load_default()
 
 
+def save_contact(canvas,path,resume=False):
+    if path.exists():
+        if not resume:
+            raise ValueError('Preserve previous source-review media')
+        with Image.open(path) as existing:
+            if existing.mode!=canvas.mode or not np.array_equal(np.asarray(existing),np.asarray(canvas)):
+                raise ValueError('Changed source-review pixels during resume')
+    else:
+        canvas.save(path)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--pairs',action='store_true');parser.add_argument('--version2',action='store_true');args=parser.parse_args()
+    parser.add_argument('--pairs',action='store_true');parser.add_argument('--version2',action='store_true')
+    parser.add_argument('--resume',action='store_true');args=parser.parse_args()
     audit=parent_audit
     if args.version2:
         from scripts import audit_m3w_movingdronecrowd_background_v2 as audit
@@ -52,8 +64,7 @@ def main():
         return image,frame,row['sha256']
     def save(canvas,name,sources):
         path=output/name
-        if path.exists():raise ValueError('Preserve previous source-review media')
-        canvas.save(path)
+        save_contact(canvas,path,args.resume)
         outputs.append(dict(path=str(path.relative_to(ROOT)),sha256=audit.sha(path),sources=sources))
     if not args.pairs:
         nodes=sorted({node for node,slot in records if slot==1})
@@ -94,7 +105,7 @@ def main():
                     sources.append(dict(node=node,slot=slot,actual_image_frame=frame,source_JPEG_sha256=digest))
             save(canvas,f'cross_candidate_{index:02d}.png',sources)
         selection_rule='first8lexical_cross_pairs_per_strong_or_ambiguous_status_not_all_pairs'
-    audit.once(receipt,dict(renderer_sha256=audit.sha(Path(__file__)),image_manifest_sha256=audit.sha(public/'image_manifest.json'),
+    parent_audit.once(receipt,dict(renderer_sha256=audit.sha(Path(__file__)),image_manifest_sha256=audit.sha(public/'image_manifest.json'),
         selection_rule=selection_rule,outputs=outputs,visual_review_performed=False,
         figures_private_not_committed=True,model_inputs=False,physical_independence_certified=False))
     print(json.dumps(dict(contact_sheets=len(outputs),manifest=str(receipt))))

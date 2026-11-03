@@ -81,6 +81,20 @@ views exactly. All20,580pairs/criteria/roles remain unchanged;no v1 pair receipt
 is reused. Ten current geometry/source tests pass0.32s. No predictive outcome
 or measured missed-match rate is used to select this repair.
 
+The corrected acquisition is now complete: PID69296 records 51.802s and
+1,212,809,216bytes peak RSS, with21fresh portrait views and339exact reused
+landscape views. The immutable acquisition receipt exists and the process has
+ended; the original terminal handle was lost, so a recovered exit code is not
+invented. Actual range payload is38,845,567bytes, including archive metadata;
+32,822,255bytes is the selected portrait JPEG total, not total network traffic.
+The separate v2 pilotPID69470exit0 completes50fresh pairs in11.818s and
+projects4,274.06s for full matching. Full matching now runs asPID69529 using
+unchanged resume and pair checkpoints; it is not yet a complete result.
+All ten first-view contact sheets (120clips) were inspected, with explicit
+[self-audit scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/overview_review.md).
+The preview helper's manifest-write error is repaired without changing frozen
+matching code or previously saved PNG bytes; its resume regression passes.
+
 ### New Development-Source Feasibility
 
 The whole-source reservation overrides the earlier suggestion to split
