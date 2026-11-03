@@ -74,6 +74,11 @@ are exact within each arm;paired initial states/draws match. Projected36-head
 fit cost is2,430.802s before preparation/refits,not actual completion. The
 complete registered continuation matrix now runs locally;held policy readout
 waits for all36completed continuations and the first-job full refits.
+The [Chinese operation guide](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/operation_zh.md)
+now gives ordered commands,resume and evidence boundaries. A fixed-region
+fitting check and verified readout/plotter are implemented before the new held
+readout;they do not choose checkpoints. The expanded focused suite passes11
+checks,including all-region support accounting and empty-contrast reporting.
 
 ### Admitted Moving-Source Forecast Controls
 
