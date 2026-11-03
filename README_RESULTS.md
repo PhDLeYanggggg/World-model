@@ -46,6 +46,15 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The post-readout same-set cost diagnostic is registered before execution.
+All36frozen cost heads, both fitting and double-excluded SOURCE roles, all
+recordings/seeds retained. It separates H/EH from R/ER error on identical
+selected sets, and distinguishes amplitude-scaled proposal bounds from actual
+interpolated harm. Zero optimizer updates; no threshold/role/primary changes.
+Synthetic tests cover denominator handling, unknown bound mass and empty support.
+Fresh real diagnostic inference and complete replay are next,not yet results.
+[Protocol](outputs/publication_readiness_2026_09/european_bound_cost_decomposition_v1/protocol.md).
+
 The prospectively registered explicit unknown-bound cost comparison is complete:
 36 real Torch heads, 116,160 primary updates, 4,000 full-refit updates and a
 1,200-update three-group recovery pilot. Same width-64 head, initialization,

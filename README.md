@@ -172,6 +172,11 @@ decompose harm and reference errors on identical selected sets, on fitting and
 excluded SOURCE sites, before choosing another cost-learning repair. No new
 threshold will be selected from exposed calibration or final-confirmation data.
 
+The [same-set cost diagnostic](outputs/publication_readiness_2026_09/european_bound_cost_decomposition_v1/protocol.md)
+is now registered: frozen-model inference on fitting and doubly excluded sites,
+separating predicted harm from reference/support error. It makes no optimizer
+updates and does not change the failed parent result. Real execution is next.
+
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
 The larger goal remains useful neural dynamics backed by reproducible,
