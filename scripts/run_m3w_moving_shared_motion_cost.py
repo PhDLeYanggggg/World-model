@@ -319,6 +319,16 @@ def policy_paths(paths, floor, choices):
     return out
 
 
+def group_interval(groups, getter, sites, cfg):
+    value = readout.interval(groups, getter, expected_sites=sites,
+        resamples=cfg['bootstrap_resamples'], seed=cfg['bootstrap_seed'])
+    if 'by_locality' in value:
+        value['by_source_group'] = value.pop('by_locality')
+    value['bootstrap_unit'] = 'conservative_source_group_after_producer_and_seed_average_not_verified_IID_sites'
+    value['scientific_role'] = 'supported_group_development_secondary_not_independent_confirmation'
+    return value
+
+
 def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
     freeze = read(PUBLIC/'training_freeze.json')
     if freeze['complete_heads'] != 36 or not freeze['all18pairs_exact']:
@@ -375,14 +385,23 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
     observed = {(r['site'], r['producer_fold'], r['seed']) for r in groups}
     if len(groups) != 6*len(sites) or observed != expected:
         raise ValueError('Every supported group needs both excluded producers and three actual seeds')
-    interval = lambda getter: readout.interval(groups, getter, expected_sites=sites,
-        resamples=cfg['bootstrap_resamples'], seed=cfg['bootstrap_seed'])
+    interval = lambda getter: group_interval(groups, getter, sites, cfg)
     contrasts = {key:{metric:interval(lambda r,k=key,m=metric:r['paired_shared_minus_local'][k][m])
         for metric in ('known_pp', 'completion_lower_pp', 'completion_upper_pp')} for key in cfg['policies']}
     safety = {}
+    accuracy, lower, subset_gains = {}, {}, {}
     for arm in cfg['arms']:
         safety[arm] = {}
+        accuracy[arm] = {}
+        lower[arm] = {}
+        subset_gains[arm] = {}
         for key in cfg['policies']:
+            accuracy[arm][key] = interval(lambda r,a=arm,k=key:
+                r['policies'][a][k]['known_ADE_gain_floor_percent'])
+            lower[arm][key] = interval(lambda r,a=arm,k=key:
+                r['policies'][a][k]['completion_lower_gain_floor_percent'])
+            subset_gains[arm][key] = {subset:interval(lambda r,a=arm,k=key,s=subset:
+                r['policies'][a][k]['subsets'][s]['gain_percent']) for subset in ('easy', 'hard')}
             records = [v for r in groups for v in r['policies'][arm][key]['recordings'].values()]
             values = [r['known_easy_net_degradation'] for r in records if r['known_easy_net_degradation'] is not None]
             safety[arm][key] = dict(required_record_views=len(records),
@@ -395,6 +414,7 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
     summary = stable(dict(scope='source_development_not_independent_confirmation',
         original24group_primary='not_estimable_not_passed', supported_groups_secondary=len(sites),
         paired_shared_minus_local=contrasts, safety=safety, group_receipts=replays,
+        known_accuracy=accuracy, completion_lower=lower, subset_gains=subset_gains,
         declared_feature_secondary=contrasts['joint_free']['completion_lower_pp'],
         actual_training_seeds=cfg['seeds'], unique_past_eligible_rows=len(data['sites']),
         independent_physical_sites_not_established=True, independent_confirmation=False,

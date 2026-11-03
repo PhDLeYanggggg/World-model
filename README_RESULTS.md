@@ -110,15 +110,21 @@ is defined before forecast readout. EqMotion is fixed as its proposal family;
 the future comparison does not choose a family from held scores. Both cost
 heads use380common past/local rollout columns and48shared-motion slots, with
 only those48slots zeroed in the local control. The complete runner is now
-implemented; nine synthetic role,input,exact-resume and solver-receipt checks
-pass1.98s. These are implementation
+implemented; ten synthetic role,input,exact-resume,solver-receipt and grouped-
+interval checks pass2.10s. These are implementation
 checks, not real-source critic fitting or a positive feature/risk result.
 Actual critic execution remains pending complete forecast training and replay.
 
-The first complete EqMotion producer now finishes4,000updates,including its
+At the first-completion checkpoint,the EqMotion producer finishes4,000updates,including its
 identical100-update pilot prefix, in1,172.812s of actual fitting time. Its saved
 checkpoint is frozen while the second seed continues; this is10/18complete
 producers, not a completed readout or a positive forecasting result.
+
+By16:47:24UTC,all three first-fold EqMotion seeds finish,bringing the complete
+count to12/18models and48,000primary updates. Their fitting times are
+1,172.812/1,169.858/1,184.621s. All12complete checkpoint hashes are freshly
+checked; the other six EqMotion models continue in the same process. No held
+forecast score,threshold choice or intervention claim has been made.
 
 ### New-Source Image Overlap
 

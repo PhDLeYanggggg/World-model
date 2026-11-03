@@ -40,3 +40,17 @@ def test_joint_receipt_replay_checks_fresh_cost_binding_and_original_budget(tmp_
     changed[0, 6, 0] += .01
     with pytest.raises(ValueError, match='different freshly replayed'):
         runner.allocated(changed, causal, held, job, 'local_history', cfg, lambda **_:None, verify=True)
+
+
+def test_group_intervals_average_seed_producers_and_keep_missing_undefined():
+    groups = [dict(site=site, value=float(index)) for site in ('g0', 'g1') for index in range(6)]
+    cfg = dict(bootstrap_resamples=100, bootstrap_seed=17)
+    value = runner.group_interval(groups, lambda r:r['value'], ['g0', 'g1'], cfg)
+    assert value['point'] == 2.5
+    assert value['CI95'] == [2.5, 2.5]
+    assert value['by_source_group'] == dict(g0=2.5, g1=2.5)
+    assert 'not_verified_IID' in value['bootstrap_unit']
+    missing = runner.group_interval(groups, lambda _:None, ['g0', 'g1'], cfg)
+    assert missing['point'] is None
+    assert missing['CI95'] is None
+    assert missing['status'] == 'required_view_not_estimable'
