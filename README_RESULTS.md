@@ -86,6 +86,16 @@ keeps all6zero-row recordings visible:58recordings contribute queries,not64.
 Five new encoder/checkpoint/support checks pass0.83s. No training or held-model
 metric is claimed at the repair checkpoint.
 
+The real TorchCPU4pilotPID78094exit0 now completes in77.212s,peak1,462,222,848
+bytes. Both families'50+50resume/direct100checkpoints,optimizer/RNG/draws and
+training-source outputs are exact. PCT100updates take1.892s,checkpoint4,933,735
+bytes;EqMotion100take28.894s,checkpoint19,485,803bytes. Fitting losses move
+0.99358to0.74669and6.68347to0.94014respectively; these are not held ADE or
+safety metrics. Projection for all18complete4kfits is11,083.13s,about3.1h,
+not a completed run. The repaired full population and every geometry/label/
+baseline hash exactly equal the original complete RAM pack. The full matrix
+will reuse only the identical100updateprefix of each family's first job.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
