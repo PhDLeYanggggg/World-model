@@ -82,7 +82,14 @@ and realized costs on identical selected sets in fitting and held roles.
 That [frozen-head diagnosis](outputs/publication_readiness_2026_09/european_feature_cost_diagnosis_v1/protocol.md)
 is now registered for every original job, both feature arms and all three
 seeds. Five focused tests pass. It adds no optimizer updates or policy search;
-the actual fitted-versus-held cost decomposition is the next execution.
+the complete fresh run and full replay are now exact: 72 model-role passes,
+36 role summaries, 247.893 s original and 246.096 s replay. The interaction
+head's median selected EH prediction/target ratio is 0.003209 on fitting and
+0.025886 on excluded rows. All 324 fitting and 330 held falsely-safe easy
+views underpredict EH. Only 31 and 92 overpredict the denominator. The failure
+therefore already exists in fitting, not only domain transfer. Eleven current
+focused tests pass in 2.67 s; the unrelated legacy suite was not run.
+[Diagnosis and next controlled training check](outputs/publication_readiness_2026_09/european_feature_cost_diagnosis_v1/conclusions.md).
 
 ### Build And Fitting History
 
