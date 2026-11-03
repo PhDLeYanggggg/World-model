@@ -50,7 +50,7 @@ and [failure analysis](outputs/publication_readiness_2026_09/european_eqmotion_v
 
 Better forecasting, better cost fitting and safe admission are different tests.
 The existing controller improves average observed error but does not satisfy
-the complete recording-level risk requirements. Three recent controls narrow
+the complete recording-level risk requirements. Recent controlled experiments narrow
 the explanation without turning it into a success:
 
 - Eighteen matched cost forests fail the registered paired lower contrast and
@@ -141,7 +141,7 @@ third-party images and local virtual environments stay out of Git.
 ## Next Question
 
 Can the stronger frozen proposal support useful, reliable admission rather
-than another increase in critic width? Three completed SOURCE experiments
+than another increase in critic width? The completed SOURCE experiments
 narrow that question. The negative 082 slice and missing futures stay in the
 analysis; none of these results changes deployment.
 
@@ -213,11 +213,13 @@ The [new same-set diagnosis](outputs/publication_readiness_2026_09/european_feat
 finds that this head underestimates selected easy harm already on fitting
 scenes, not only on new localities. All 324 falsely-safe fitting views and 330
 held views underestimate its numerator. Before changing architecture again,
-I am checking whether four times the training budget repairs that fitting
-failure across every original job and seed. The old-budget weights must
-reproduce exactly, and the main comparison holds the original selected set
-fixed. This is a training-adequacy experiment, not another threshold search
-or evidence of a new world-model contribution.
+The fourfold-budget training check is currently incomplete after a local disk
+guard stopped the run. Six heads finish and a seventh is checkpointed; the
+saved models and failed log are now verified backups on CREATE. The old-budget
+prefixes checked so far are exact, and the main comparison keeps the original
+selected set fixed. The next step is recovery and CPU portability qualification,
+not a lower budget or a favorable partial-result claim. This is a training-
+adequacy experiment, not evidence of a new world-model contribution.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

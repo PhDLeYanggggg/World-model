@@ -99,7 +99,15 @@ Only duration/coverage change; held-policy evaluation is not part of this
 fitting-adequacy check. Original selected sets remain fixed for its main cost
 comparison. Real training is now running locally under PID60218, with heartbeat
 and checkpoint resume. The first old-budget prefix and full 8,000-update
-from-scratch refit reproduce exactly. No completed18-model or policy claim yet.
+from-scratch refit reproduce exactly. That process subsequently exits1 when
+the unchanged10GiB disk reserve is breached. Six endpoints finish; the seventh
+is saved at14,600/16,384steps. Checkpoints preserve81,608primary updates plus
+8,000full-refit updates, not the planned232,320or18completed heads. All11small
+recovery files are backed up and hash-read back on CREATE. Fresh SSH, ordinary
+CPU and the owned M3W root are verified; no new job is submitted or environment
+compatibility claimed. [Interruption and recovery](outputs/publication_readiness_2026_09/european_feature_duration_probe_v1/interruption.md).
+No partial-cohort aggregate or policy promotion. Fourteen current focused
+checks pass2.83s; unrelated legacy tests are not run.
 
 ### Build And Fitting History
 
