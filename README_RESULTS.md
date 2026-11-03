@@ -179,12 +179,23 @@ is frozen before the complete parent readout to address the interaction-
 consistency requirement. It uses past-only nearest-neighbor edges and retained
 partial/unknown pair support,not future-defined graphs. Five synthetic graph,
 label-separation,translation-blindness,cache-alignment and grouped-statistic
-checks pass0.27s. Actual diagnostic evaluation is not_run pending the parent's
-full replay. It cannot replace absolute error or any original2%risk gate.
+checks pass0.27s. The [actual diagnostic readout](outputs/publication_readiness_2026_09/moving_relational_diagnostic_v1/readout.md)
+now completes asPID6615exit0 in32.209s and independently replays asPID6685exit0
+in31.631s. Known paired EqMotion-minus-PCT is+19.7990pp [11.8632,28.1398];
+completion lower is-24.8693pp [-46.6212,-5.8276]. Thus observed relative-motion
+advantage does not establish a robust positive effect under unknown outcomes.
+This secondary proxy cannot replace absolute error or any original2%risk gate.
 The [primary-source prior-work update](outputs/publication_readiness_2026_09/selected_ratio_prior_update_20261103.md)
 also records why generic ratio/joint-risk certification and joint trajectory
 metrics are not new contributions. No theoretical certificate or paper
 readiness is claimed; the v9 PDF and existing negative results are unchanged.
+
+The new information study is now registered as
+`844ea2387465a10f8f10db6d30e504da4b913d0f8c9aaba65f185b987069bcd0`,
+with18disjoint producer/critic/held jobs and two matched28,229-parameter heads
+per job. Each head retains2,000updates (72,000primary updates total), without
+held-out parameter selection. Registration completes asPID6785exit0; actual
+pilot and full fitting have not yet run at this checkpoint.
 
 ### New-Source Image Overlap
 
