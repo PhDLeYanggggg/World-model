@@ -44,18 +44,24 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The causal release-label-support probe is registered before fitting:18 actual
-ExtraTrees models, geometry versus geometry+detector history, original three
-producer folds/seeds17/29/43,128trees per model. Fit four original SOURCE sites,
-predict the excluded eight; no new final test or role boundary. Target is wholly
-unknown requested future labels, not physical occlusion. Future masks never
-enter inference. Four new unit checks pass. The real32->64/direct64 pilot now
-passes exact tree/full-held-probability recovery:14.19s,peak2.739GB,128 actual
-pilot trees. All18formal models now finish2304primary trees plus128full-refit
-trees in267.97s,peak4.513GB. The first full128-tree refit is exact; all18held-
-SOURCE probability arrays freeze before scores. Held-SOURCE scores remain
-not_run at this freeze; no feature or model was chosen from held results.
-[Protocol](outputs/publication_readiness_2026_09/european_source_label_support_v1/protocol.md).
+The causal release-label-support probe is complete:18actual ExtraTrees models,
+geometry versus geometry+detector history, original producer folds/seeds17/29/43,
+128trees per model. Fit four SOURCE sites,predict the excluded eight. Every
+probability array freezes before held scores; all18arrays and144metric groups
+replay exactly. Geometry+detector AUROC0.706249 [0.648098,0.750792] versus geometry
+0.602327; registered paired effect+0.103922 [0.059967,0.162186]. AUPRC0.144023
+versus equal-locality prevalence0.041739. This is learned past-detector signal
+about released future-label support, not a new neural world dynamics model.
+Future masks are supervision only. Calibration is not sufficient for safety:
+locality082ECE0.145512; locality020AUROC0.4491. No scene is dropped or threshold
+chosen. The real32->64/direct64 pilot and full128-tree refit are exact. Training
+2304primary+128refit trees takes267.97s,peak4.513GB; pilot128trees counted separately.
+The new explicit unknown-bound moment constructor is implemented with two
+passing tests,not connected to a trained critic. No policy/deployment pass.
+[Readout](outputs/publication_readiness_2026_09/european_source_label_support_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_source_label_support_v1/failure_analysis.md),
+[card](outputs/publication_readiness_2026_09/european_source_label_support_v1/model_data_card.md)
+and[gates](outputs/publication_readiness_2026_09/european_source_label_support_v1/gates.md).
 
 The SOURCE-only fixed-support amplitude bridge is complete. Both frozen
 EqMotion/current-PCT families retain the original149,510-window whitelist,

@@ -133,9 +133,9 @@ third-party images and local virtual environments stay out of Git.
 ## Next Question
 
 Can the stronger frozen proposal support useful, reliable admission rather
-than another increase in critic width? I will first test bounded intervention,
-causal visibility/cost features and calibration with preserved reference support
-on SOURCE. The negative 082 slice and missing futures must stay in the analysis.
+than another increase in critic width? The two completed SOURCE experiments
+below narrow the next cost-learning repair. The negative 082 slice and missing
+futures stay in the analysis.
 Any new comparison will be registered before fitting, without tuning on exposed
 calibration outcomes or opening final confirmation to rescue the method.
 
@@ -145,20 +145,22 @@ quarter-amplitude EqMotion gains 6.28% over the fixed causal floor, but 0/444
 recording views satisfy the full risk contract. Fixed support removes undefined
 reference denominators; it does not remove actual easy harm or uncertainty from
 missing futures. Even amplitude .001 fails six views of the same recording,
-while gaining only 0.027%. No grid point is chosen for deployment. The next
-probe tests whether causal history can predict released future-label support,
-before treating missing-outcome bounds as a learnable cost target.
+while gaining only 0.027%. No grid point is chosen for deployment.
 
-That [SOURCE probe](outputs/publication_readiness_2026_09/european_source_label_support_v1/protocol.md)
-now has a frozen eighteen-forest design: past geometry versus geometry plus
-past detector history, fitting on the original four SOURCE sites and predicting
-the excluded eight. Future-mask information is a target only, never an input.
-The real 32->64/direct64 recovery pilot is exact. All eighteen full models now
-finish 2,304 primary trees plus a 128-tree full refit and 128 pilot trees.
-Training takes 267.97 s with 4.51 GB peak RSS; all held-SOURCE predictions are
-frozen before scoring. No held-SOURCE outcome is reported at this freeze.
-This is a label-process diagnostic, not a new neural world model or
-physical-visibility predictor.
+The [causal label-support probe](outputs/publication_readiness_2026_09/european_source_label_support_v1/readout.md)
+is also complete. On excluded SOURCE sites, past detector history raises AUROC
+from 0.602 to 0.706; the paired feature effect is +0.104 [0.060, 0.162]. AUPRC
+is 0.144 versus equal-locality unknown prevalence 0.042. Eighteen full forests,
+real recovery/full refit, all probability arrays and 144 metric groups replay.
+Training takes 267.97 s with 4.51 GB peak RSS. Future masks are targets only.
+Calibration remains weak on the critical scene, and some scenes do not improve.
+This is a release-label-process result, not physical visibility or neural dynamics.
+
+Next I will compare known-only cost supervision with explicit unknown-row
+disagreement-bound targets, keeping evaluation sites excluded from both the
+forecaster and critic. The target constructor is implemented and unit tested;
+the new critic comparison has not run. Neither a missing future nor an absent
+reference contribution is treated as an observed zero trajectory error.
 
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.

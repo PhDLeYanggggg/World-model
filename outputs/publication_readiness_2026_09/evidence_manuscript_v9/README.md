@@ -90,6 +90,14 @@ The first attempt to verify this update preceded completion of PNG rendering
 and correctly refused it; after all pages were rendered and viewed,the final
 source/PDF/visual checks passed. This does not change scientific status.
 
+## New Evidence Addendum
+
+The [SOURCE observation-process addendum](source_observation_process_addendum.md)
+records the complete fixed-amplitude failure and positive past-detector support
+probe. It is not yet inserted into the compiled main PDF above, whose existing
+source/PDF/layout receipt remains unchanged. No learned bound-aware critic or
+new policy pass is claimed by the addendum.
+
 ## Still Missing
 
 A learned full-policy risk pass, supported scene-joint gain, independent final
