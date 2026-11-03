@@ -91,6 +91,14 @@ therefore already exists in fitting, not only domain transfer. Eleven current
 focused tests pass in 2.67 s; the unrelated legacy suite was not run.
 [Diagnosis and next controlled training check](outputs/publication_readiness_2026_09/european_feature_cost_diagnosis_v1/conclusions.md).
 
+The [single fourfold duration probe](outputs/publication_readiness_2026_09/european_feature_duration_probe_v1/protocol.md)
+is now registered: all 18 interaction heads, 232,320 planned fresh updates
+including replayed original prefixes, plus an 8,000-update full refit. A real
+optimizer regression confirms unchanged-prefix and resume/direct equality.
+Only duration/coverage change; held-policy evaluation is not part of this
+fitting-adequacy check. Original selected sets remain fixed for its main cost
+comparison. Registration is not completed training or a policy improvement.
+
 ### Build And Fitting History
 
 The first frozen-interaction extraction pilot failed because I passed the
