@@ -55,6 +55,10 @@ def test_no_implicit_unequal_group_sampler():
     folds = dict(a=0, b=1, c=2, empty=0)
     with pytest.raises(ValueError, match='three-seed'):
         job_designs(data, folds, [], dict(query_batch_size=3, minimum_updates=2, largest_source_cycles=4))
+    data['sites'][1] = 'd'
+    folds['d'] = 0
+    with pytest.raises(ValueError, match='Equal source sampling'):
+        job_designs(data, folds, [], dict(query_batch_size=3, minimum_updates=2, largest_source_cycles=4))
 
 
 def test_matched_heads_resume_exactly_without_held_preprocessing(tmp_path):

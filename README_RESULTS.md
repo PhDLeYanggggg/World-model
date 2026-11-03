@@ -109,10 +109,16 @@ While the full matrix continues, the [next matched information comparison](outpu
 is defined before forecast readout. EqMotion is fixed as its proposal family;
 the future comparison does not choose a family from held scores. Both cost
 heads use380common past/local rollout columns and48shared-motion slots, with
-only those48slots zeroed in the local control. Seven new synthetic role,
-inference-schema and exact-resume checks pass1.96s. These are implementation
+only those48slots zeroed in the local control. The complete runner is now
+implemented; nine synthetic role,input,exact-resume and solver-receipt checks
+pass1.98s. These are implementation
 checks, not real-source critic fitting or a positive feature/risk result.
 Actual critic execution remains pending complete forecast training and replay.
+
+The first complete EqMotion producer now finishes4,000updates,including its
+identical100-update pilot prefix, in1,172.812s of actual fitting time. Its saved
+checkpoint is frozen while the second seed continues; this is10/18complete
+producers, not a completed readout or a positive forecasting result.
 
 ### New-Source Image Overlap
 
