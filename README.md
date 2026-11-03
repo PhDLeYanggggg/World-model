@@ -201,6 +201,11 @@ features from the frozen forecaster against a capacity-matched zero-feature
 control. No latent-feature gain has been measured yet; more cost factorization
 alone has not solved admission.
 
+The [frozen interaction-cache protocol](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v1/protocol.md)
+is registered. It will preserve the original forecast batches and verify
+unchanged outputs while capturing past-only interaction states. The real pilot
+comes first; neither a cache nor a learned-feature improvement is claimed yet.
+
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
 The larger goal remains useful neural dynamics backed by reproducible,

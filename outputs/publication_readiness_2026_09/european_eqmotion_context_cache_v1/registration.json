@@ -1,0 +1,256 @@
+{
+  "architecture": {
+    "channels": 64,
+    "family": "eqmotion_fixed_head",
+    "fixed_head": 0,
+    "hidden_nf": 64,
+    "history_steps": 8,
+    "input_conditioning": "observed_joint_max_norm",
+    "layers": 4,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "bindings": {
+    "configs/m3w_eqmotion_context_cache_v1.json": "356f0633cbf34e2868bb2207e476c6800e89c170ff9e63bfe6cb7358326236f9",
+    "configs/m3w_eqmotion_source.json": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v1/protocol.md": "d0830dc37bd86d250dfdaf97128a550325e16004ea4ff3a5ff0fccbaaffa45ae",
+    "scripts/run_m3w_eqmotion_context_cache.py": "f9ecca593984b045ff81d4ef724bcbaa30b513d53ee69bb32bd79dab467a7373",
+    "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+    "src/world_model/m3w_eqmotion_adapter.py": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+    "src/world_model/m3w_frozen_interaction_capture.py": "5d6c1dd275a4069dca6c1fb3a66fa604abb6e7a37f2269c3961d9c736680cbcb",
+    "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+    "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+    "tests/test_m3w_frozen_interaction_capture.py": "39f0c91dd3ae67d0575fb3936ff2ed31b8240dc7f319780fb5df96b455591c35"
+  },
+  "deployment_changed": false,
+  "independent_confirmation": false,
+  "new_optimizer_updates": 0,
+  "normalization_fitted": false,
+  "parent_registration": {
+    "path": "outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/registration.json",
+    "sha256": "0d6b34eb68c85af6a3120552e64d3b79d0018098bad6271131f2f4cf58eb5490"
+  },
+  "parent_source_forecast_registration": {
+    "path": "outputs/publication_readiness_2026_09/european_eqmotion_v1/registration.json",
+    "sha256": "598576cd038247320d8744f5b9b539f3866abac5804d06400c1182059479b170"
+  },
+  "parent_source_forecast_verification": {
+    "path": "outputs/publication_readiness_2026_09/european_eqmotion_v1/verification.json",
+    "sha256": "7bfa18bff81165d427c4911988bc9b4815e62f003a171df8d5dda30faa67bd68"
+  },
+  "predicted_latent_bytes": 229647360,
+  "processed_rows": 1913814,
+  "producers": [
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single0_seed17/checkpoint.pt",
+        "sha256": "dfb06c6e64ac6b2bbc6135e3cc26a78d2ce9a116c7fa762426ad7d81de9435f3"
+      },
+      "floor_index": 2,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single0_seed17.npz",
+        "sha256": "6d9d8b1ede205db084b4d568d4d365f2b92bb87b861662e01787fb7c8a16b306"
+      },
+      "processed_ids_sha256": "2a8b9b3e8dbef45f8c8d00d1d5eb0e5706b07e40da6ec2e4cd8919612ccf6f57",
+      "processed_rows": 202146,
+      "producer_sites": [
+        "eu-locality-074",
+        "eu-locality-082",
+        "eu-locality-112",
+        "eu-locality-126"
+      ],
+      "seed": 17,
+      "stored_ids_sha256": "3a991d05c83ab382d015e1e873101f49c911a41d425a7d6c44220608fece5dfa",
+      "stored_rows": 91562,
+      "trial": "single0_seed17"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single0_seed29/checkpoint.pt",
+        "sha256": "7684a34a8e4ec5ba244ca0d66447162b7e04e02912034ef04e2b71291c73daff"
+      },
+      "floor_index": 2,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single0_seed29.npz",
+        "sha256": "412b70d29dbaaf4563b55eea1b0ef1e54f93049d184e3f860c4ab75e15d1f60c"
+      },
+      "processed_ids_sha256": "2a8b9b3e8dbef45f8c8d00d1d5eb0e5706b07e40da6ec2e4cd8919612ccf6f57",
+      "processed_rows": 202146,
+      "producer_sites": [
+        "eu-locality-074",
+        "eu-locality-082",
+        "eu-locality-112",
+        "eu-locality-126"
+      ],
+      "seed": 29,
+      "stored_ids_sha256": "3a991d05c83ab382d015e1e873101f49c911a41d425a7d6c44220608fece5dfa",
+      "stored_rows": 91562,
+      "trial": "single0_seed29"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single0_seed43/checkpoint.pt",
+        "sha256": "9db6e97da019216212588975b3c0758ca84f64463d0a4e1dd07e12f5893cb365"
+      },
+      "floor_index": 2,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single0_seed43.npz",
+        "sha256": "eccf6beb16e2a524963ea609cf946d1447779ea5f6f98b6f48d6cd8fa831cae8"
+      },
+      "processed_ids_sha256": "2a8b9b3e8dbef45f8c8d00d1d5eb0e5706b07e40da6ec2e4cd8919612ccf6f57",
+      "processed_rows": 202146,
+      "producer_sites": [
+        "eu-locality-074",
+        "eu-locality-082",
+        "eu-locality-112",
+        "eu-locality-126"
+      ],
+      "seed": 43,
+      "stored_ids_sha256": "3a991d05c83ab382d015e1e873101f49c911a41d425a7d6c44220608fece5dfa",
+      "stored_rows": 91562,
+      "trial": "single0_seed43"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single1_seed17/checkpoint.pt",
+        "sha256": "5f78cc646c2bfa521f49dfe81baf3048f1b8727622b2ab42de49de9ea6b28740"
+      },
+      "floor_index": 2,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single1_seed17.npz",
+        "sha256": "ee7c0e4bebf738835d1c56d5344c9b01238dce4904a4967dbb4e222ac178b6e5"
+      },
+      "processed_ids_sha256": "4dd190ff43fd57d87c3f335693bcbf4c00c8e721115a27f1c278f8baa9a09af0",
+      "processed_rows": 295207,
+      "producer_sites": [
+        "eu-locality-007",
+        "eu-locality-110",
+        "eu-locality-119",
+        "eu-locality-124"
+      ],
+      "seed": 17,
+      "stored_ids_sha256": "0ab693fd61c41cb09f64bb845995c8c545f3caf1ee669cc5e4cf814bb2910a77",
+      "stored_rows": 145422,
+      "trial": "single1_seed17"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single1_seed29/checkpoint.pt",
+        "sha256": "3082ee38f06675430a5f1f107cfbf687dee9d90dcdf095be890f6c0341cc2fd7"
+      },
+      "floor_index": 2,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single1_seed29.npz",
+        "sha256": "7191df5e2ba208fcc4fea1d886751a9d8e09842258088abbe5888a50ca246ec1"
+      },
+      "processed_ids_sha256": "4dd190ff43fd57d87c3f335693bcbf4c00c8e721115a27f1c278f8baa9a09af0",
+      "processed_rows": 295207,
+      "producer_sites": [
+        "eu-locality-007",
+        "eu-locality-110",
+        "eu-locality-119",
+        "eu-locality-124"
+      ],
+      "seed": 29,
+      "stored_ids_sha256": "0ab693fd61c41cb09f64bb845995c8c545f3caf1ee669cc5e4cf814bb2910a77",
+      "stored_rows": 145422,
+      "trial": "single1_seed29"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single1_seed43/checkpoint.pt",
+        "sha256": "de0301d23f54a950a6d7236acb6aff47076e0b163083469f5091f6ccd113a445"
+      },
+      "floor_index": 2,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single1_seed43.npz",
+        "sha256": "bc40e5505862468c6035f2b5222ac7e4b032e6c98c11d36bf50b0b5aba3cde70"
+      },
+      "processed_ids_sha256": "4dd190ff43fd57d87c3f335693bcbf4c00c8e721115a27f1c278f8baa9a09af0",
+      "processed_rows": 295207,
+      "producer_sites": [
+        "eu-locality-007",
+        "eu-locality-110",
+        "eu-locality-119",
+        "eu-locality-124"
+      ],
+      "seed": 43,
+      "stored_ids_sha256": "0ab693fd61c41cb09f64bb845995c8c545f3caf1ee669cc5e4cf814bb2910a77",
+      "stored_rows": 145422,
+      "trial": "single1_seed43"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single2_seed17/checkpoint.pt",
+        "sha256": "6399d8c92cd46306d7a3fe48348d84cb92a6b4c2f83f542035bbb50232d0ecff"
+      },
+      "floor_index": 4,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single2_seed17.npz",
+        "sha256": "d0e97b0ad82fa7ce14e0cd6b1bbf8f06ed8c21faceffb5d8916ae54932cee356"
+      },
+      "processed_ids_sha256": "560d132a896e343f3c1f7d64e2b81b0c2fcce104c4851f64de6cff76284fb8e1",
+      "processed_rows": 140585,
+      "producer_sites": [
+        "eu-locality-008",
+        "eu-locality-020",
+        "eu-locality-048",
+        "eu-locality-067"
+      ],
+      "seed": 17,
+      "stored_ids_sha256": "a2ffbbadfa33a5993a9eada14c36dd4c39e55064c5889b28d47199fe9ed4a825",
+      "stored_rows": 62036,
+      "trial": "single2_seed17"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single2_seed29/checkpoint.pt",
+        "sha256": "d2041a230a3e58519b1eb569cc397d613553e89c9676c8e836072a10a0a4f83c"
+      },
+      "floor_index": 4,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single2_seed29.npz",
+        "sha256": "21fae3b3cc51a9c0964722f1b9fdeb1d3ed023c746233cba16c2040253b84745"
+      },
+      "processed_ids_sha256": "560d132a896e343f3c1f7d64e2b81b0c2fcce104c4851f64de6cff76284fb8e1",
+      "processed_rows": 140585,
+      "producer_sites": [
+        "eu-locality-008",
+        "eu-locality-020",
+        "eu-locality-048",
+        "eu-locality-067"
+      ],
+      "seed": 29,
+      "stored_ids_sha256": "a2ffbbadfa33a5993a9eada14c36dd4c39e55064c5889b28d47199fe9ed4a825",
+      "stored_rows": 62036,
+      "trial": "single2_seed29"
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/trials/single2_seed43/checkpoint.pt",
+        "sha256": "b777411f3c59fdceb065ca91cc4b5968df6003302c730b7c0523f26092b9995f"
+      },
+      "floor_index": 4,
+      "forecast": {
+        "path": "data/stage_cvpr2027_experiments/european_eqmotion_v1/predictions/single2_seed43.npz",
+        "sha256": "3ec66cd3bc7c3e3106a23522b1cb492b807a01cbc9969ad116c0c9e231871c59"
+      },
+      "processed_ids_sha256": "560d132a896e343f3c1f7d64e2b81b0c2fcce104c4851f64de6cff76284fb8e1",
+      "processed_rows": 140585,
+      "producer_sites": [
+        "eu-locality-008",
+        "eu-locality-020",
+        "eu-locality-048",
+        "eu-locality-067"
+      ],
+      "seed": 43,
+      "stored_ids_sha256": "a2ffbbadfa33a5993a9eada14c36dd4c39e55064c5889b28d47199fe9ed4a825",
+      "stored_rows": 62036,
+      "trial": "single2_seed43"
+    }
+  ],
+  "smc_enabled": false,
+  "stage5c_executed": false,
+  "stored_rows": 897060
+}

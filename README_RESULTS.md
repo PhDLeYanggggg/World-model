@@ -46,6 +46,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The frozen EqMotion interaction-cache preparation is registered. Nine existing
+producer-excluded forecasters;1913814original forecast rows processed in original
+128-row batches,897060unchanged-whitelist latent rows retained,64float32values
+per row,229647360rawlatentbytes. No optimizer updates or new feature-effect
+evaluation. Two passive-hook tests pass.66s,including exact output/RNG behavior,
+cleanup and target-key refusal. Real first/middle/last-batch pilots on all nine
+models precede any full extraction. [Protocol](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v1/protocol.md).
+
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct
 bound control. Both new arms share structure, initialization, normalization,
