@@ -1,0 +1,45 @@
+{
+  "bindings": {
+    "configs/m3w_moving_relational_v1.json": "8eaa0462aafc0db14af0238c6bdfe92165c83048f01443701b82d272c998741b",
+    "outputs/publication_readiness_2026_09/moving_relational_diagnostic_v1/protocol.md": "8a3b687b478dc644ab699f032b8728b691ddd2bbabf3e781f4f069eb1a55de3e",
+    "scripts/run_m3w_moving_relational_diagnostic.py": "f72783b6c7b009114675b2fcc3e6bad73e29580683662b2638dd975e2d6983c9",
+    "src/evaluation/m3w_moving_relational.py": "082f39e35535910062d9d1c843719b2abfe7f7841a661d0eef2ef0d5635f02c3",
+    "tests/test_m3w_moving_relational.py": "fb2ff59cfce8a6cf17df7dff86bfa7b58c30c2dc97b510c575dcf81d2427b6a7"
+  },
+  "configuration": {
+    "bootstrap_resamples": 3000,
+    "bootstrap_seed": 20261103,
+    "coordinate_unit": "image_pixel",
+    "disk_reserve_bytes": 10737418240,
+    "horizon": 12,
+    "models": [
+      "cv",
+      "floor",
+      "pct",
+      "eqmotion"
+    ],
+    "name": "moving_relational_diagnostic_v1",
+    "new_source_admission": false,
+    "new_training": false,
+    "normalizer": "fixed_known_CV_pair_ADE_mass_not_unknown_full_population_error",
+    "past_nearest_neighbors": 8,
+    "primary_or_safety_gate_changes": false,
+    "role": "secondary_diagnostic_never_replaces_absolute_error_or_original_risk",
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "time_unit": "native_annotation_step_unverified_video_FPS",
+    "unknown_pair_bound": "maximum_disagreement_between_two_predicted_relative_motion_paths"
+  },
+  "deployment_changed": false,
+  "new_training": false,
+  "original_primary_or_risk_changed": false,
+  "parent": {
+    "job_roster.json": "36bd01b4ba3909880a2708f224e776cdff87d47a440a8a4659e283f815c8b756",
+    "population.json": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+    "registration.json": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+    "training.json": "1982194620b6ef215a7ce276f06b1dcb300af37711c9a071f433cd60307b1680"
+  },
+  "registered_before_parent_readout": true,
+  "smc_enabled": false,
+  "stage5c_executed": false
+}

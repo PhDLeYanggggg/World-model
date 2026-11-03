@@ -150,6 +150,18 @@ All18primary model hashes remain unchanged. Two archive/restore/change-protectio
 tests pass0.12s; actual build,compact and separate raw-byte verification exit0.
 This is storage engineering,not another training result or scientific gate.
 
+A [relative-motion diagnostic](outputs/publication_readiness_2026_09/moving_relational_diagnostic_v1/protocol.md)
+is frozen before the complete parent readout to address the interaction-
+consistency requirement. It uses past-only nearest-neighbor edges and retained
+partial/unknown pair support,not future-defined graphs. Five synthetic graph,
+label-separation,translation-blindness,cache-alignment and grouped-statistic
+checks pass0.27s. Actual diagnostic evaluation is not_run pending the parent's
+full replay. It cannot replace absolute error or any original2%risk gate.
+The [primary-source prior-work update](outputs/publication_readiness_2026_09/selected_ratio_prior_update_20261103.md)
+also records why generic ratio/joint-risk certification and joint trajectory
+metrics are not new contributions. No theoretical certificate or paper
+readiness is claimed; the v9 PDF and existing negative results are unchanged.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
