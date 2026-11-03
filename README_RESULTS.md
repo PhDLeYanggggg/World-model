@@ -55,7 +55,8 @@ All36fits now finish116,160primary updates plus4,000complete-refit updates.
 The three-group1,200-update real recovery pilot is exact; paired initial
 weights,normalizers,samplers and draws match. Training PID9710 takes378.71s,
 peak9.241GB; both first full refits are exact. Held-policy predictions/readout
-are not_run at this freeze; no independent final role or policy pass.
+are next. All36cost/amplitude arrays now freeze before held outcome scoring;
+no efficacy or independent final-role result is claimed at this freeze.
 [Protocol](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md).
 
 The causal release-label-support probe is complete:18actual ExtraTrees models,

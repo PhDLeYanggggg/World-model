@@ -166,8 +166,9 @@ The [matched cost experiment](outputs/publication_readiness_2026_09/european_bou
 now completes all 36 cost heads and 116,160 primary optimizer updates, plus
 4,000 full-refit and 1,200 real recovery-pilot updates. Training takes 378.71 s,
 peak RSS 9.24 GB. Both forecaster and critic exclude evaluation sites; paired
-initialization,normalization and query draws match exactly. Held-policy
-predictions are next; no efficacy or risk result is claimed at this fit freeze.
+initialization,normalization and query draws match exactly. All 36 held-policy
+cost and amplitude arrays are now frozen before outcome scoring. No efficacy
+or risk result is claimed at this prediction freeze.
 
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.
