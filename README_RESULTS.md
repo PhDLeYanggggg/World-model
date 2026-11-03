@@ -110,8 +110,12 @@ is defined before forecast readout. EqMotion is fixed as its proposal family;
 the future comparison does not choose a family from held scores. Both cost
 heads use380common past/local rollout columns and48shared-motion slots, with
 only those48slots zeroed in the local control. The complete runner is now
-implemented; ten synthetic role,input,exact-resume,solver-receipt and grouped-
-interval checks pass2.10s. These are implementation
+implemented; thirteen synthetic role,input,exact-resume,solver-receipt, grouped-
+interval and same-count utility checks pass2.33s. The within-arm utility
+comparison includes only causally selected nonempty queries. An empty control
+is not estimable, not zero benefit or a safety pass. Full-policy risk and the
+shared-minus-local feature effect keep the original population; count matching
+does not imply equal switch rates between feature arms. These are implementation
 checks, not real-source critic fitting or a positive feature/risk result.
 Actual critic execution remains pending complete forecast training and replay.
 The [Chinese operation guide](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/operation_zh.md)

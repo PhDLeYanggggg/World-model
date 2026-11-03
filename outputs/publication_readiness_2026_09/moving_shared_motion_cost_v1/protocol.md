@@ -83,6 +83,15 @@ Same-count comparison measures utility only and never replaces full deployment
 risk. No threshold sweep on held labels. All recording and group failures remain.
 No deployment promotion from positive mean ADE or a source-level comparison.
 
+The explicit within-arm same-count contrast is joint-matched minus that arm's
+independent policy,on whole queries where the independent count is positive.
+Eligibility uses causal choices only,not future labels. With no nonempty query,
+utility is not estimable,not zero or a safety pass. Keep the original full
+population for every policy's risk and the main shared-minus-local feature
+effect. Count matching is within each feature arm,not a claim that the two
+feature arms choose equal intervention counts. This fills the already approved
+evaluation rule before any critic fitting; no success criterion is relaxed.
+
 ## Statistics And Claim
 
 Pair shared-minus-local joint-free policies using the unchanged completion-lower

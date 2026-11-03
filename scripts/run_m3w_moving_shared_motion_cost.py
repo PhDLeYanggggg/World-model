@@ -29,6 +29,7 @@ from src.world_model import m3w_shared_motion_cost as api
 from src.world_model.m3w_european_source_forecast import fit_design
 from src.world_model.m3w_frame_action_allocation import allocate, feasible, query_groups
 from src.evaluation import m3w_selection_forecast_readout as readout
+from src.evaluation.m3w_matched_intervention_utility import matched_utility
 
 NAME = 'moving_shared_motion_cost_v1'
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09'/NAME
@@ -47,7 +48,9 @@ FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md',
     ROOT/'src/world_model/m3w_european_source_intervention.py',
     ROOT/'src/world_model/m3w_geometric_cost_head.py', ROOT/'src/world_model/m3w_causal_descriptor_head.py',
     ROOT/'src/evaluation/m3w_selection_forecast_readout.py',
-    ROOT/'tests/test_m3w_moving_shared_motion_runner.py')
+    ROOT/'tests/test_m3w_moving_shared_motion_runner.py',
+    ROOT/'src/evaluation/m3w_matched_intervention_utility.py',
+    ROOT/'tests/test_m3w_matched_intervention_utility.py')
 MATCHED = ('initial_model', 'parameters', 'budget', 'sampler', 'draw_hash',
            'fit_ids', 'preprocess', 'torch_rng')
 
@@ -342,13 +345,14 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
         held = view(data, job, refs)
         paths, ids, causal = held['paths'], held['ids'], held['causal']
         floor = paths[:, job['floor_index']]
-        predictions, policies, allocations = {}, {}, {}
+        predictions, policies, allocations, allocated_choices = {}, {}, {}, {}
         for arm in cfg['arms']:
             receipt = models[job['key'], arm]
             state = api.base.base.read_checkpoint(checked(receipt['checkpoint']))
             prediction = api.predict(state, causal)
             predictions[arm] = array_hash(prediction)
             choice, allocations[arm] = allocated(prediction, causal, held, job, arm, cfg, beat, verify=verify)
+            allocated_choices[arm] = choice
             policies[arm] = policy_paths(paths, floor, choice)
             del state, prediction
         rows = []
@@ -363,9 +367,15 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
                     for key,value in policies[arm].items()}
             paired = {key:readout.paired(policies['local_history'][key][at],
                 policies['shared_motion'][key][at], floor[at], target, valid) for key in cfg['policies']}
+            local_groups = query_groups(held['recordings'][at], held['frames'][at], ids[at])
+            matched = {arm:matched_utility(policies[arm]['independent'][at],
+                policies[arm]['joint_matched'][at], floor[at], target, valid,
+                allocated_choices[arm]['independent'][at], allocated_choices[arm]['joint_matched'][at],
+                local_groups) for arm in cfg['arms']}
             rows.append(dict(site=str(site), job=job['key'], seed=job['seed'],
                 producer_fold=job['producer_fold'], critic_fold=job['critic_fold'],
-                policies=values, paired_shared_minus_local=paired))
+                policies=values, paired_shared_minus_local=paired,
+                within_arm_nonempty_matched_utility=matched))
         output = PUBLIC/'groups'/(job['key']+'.json')
         value = stable(dict(job=job, rows=rows, prediction_hashes=predictions))
         if verify:
@@ -377,7 +387,7 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
         groups.extend(rows)
         replays.append(artifact(output))
         beat(state='held_job_verified' if verify else 'held_job_complete', job=job['key'], rows=len(rows))
-        del held, paths, policies, causal
+        del held, paths, policies, causal, allocated_choices
         gc.collect()
     sites = sorted(set(data['sites']))
     expected = {(site, f, s) for site in sites for f in range(3) for s in cfg['seeds']
@@ -388,6 +398,13 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
     interval = lambda getter: group_interval(groups, getter, sites, cfg)
     contrasts = {key:{metric:interval(lambda r,k=key,m=metric:r['paired_shared_minus_local'][k][m])
         for metric in ('known_pp', 'completion_lower_pp', 'completion_upper_pp')} for key in cfg['policies']}
+    matched_contrasts = {arm:{metric:interval(lambda r,a=arm,m=metric:
+        r['within_arm_nonempty_matched_utility'][a]['contrast'][m])
+        for metric in ('known_pp', 'completion_lower_pp', 'completion_upper_pp')} for arm in cfg['arms']}
+    matched_support = {arm:dict(nonempty_query_views=sum(r['within_arm_nonempty_matched_utility'][arm]['nonempty_queries'] for r in groups),
+        empty_query_views=sum(r['within_arm_nonempty_matched_utility'][arm]['empty_queries'] for r in groups),
+        nonestimable_source_views=sum(r['within_arm_nonempty_matched_utility'][arm]['contrast']['known_pp'] is None for r in groups))
+        for arm in cfg['arms']}
     safety = {}
     accuracy, lower, subset_gains = {}, {}, {}
     for arm in cfg['arms']:
@@ -415,6 +432,9 @@ def evaluate(cfg, data, jobs, refs, beat, guard, *, verify=False):
         original24group_primary='not_estimable_not_passed', supported_groups_secondary=len(sites),
         paired_shared_minus_local=contrasts, safety=safety, group_receipts=replays,
         known_accuracy=accuracy, completion_lower=lower, subset_gains=subset_gains,
+        within_arm_nonempty_matched_utility=matched_contrasts, matched_utility_support=matched_support,
+        matched_utility_is_not_safety_gate=True, count_matching_within_arm_not_between_feature_arms=True,
+        feature_effect_uses_full_original_population=True,
         declared_feature_secondary=contrasts['joint_free']['completion_lower_pp'],
         actual_training_seeds=cfg['seeds'], unique_past_eligible_rows=len(data['sites']),
         independent_physical_sites_not_established=True, independent_confirmation=False,
