@@ -81,3 +81,21 @@ exposed development;these exclusions do not make a new independent benchmark.
 No deployment/submission/paper-readiness promotion solely from this result.
 Pixels/rawstride12/silver/detector-label/support limitations remain. No metric,
 seconds,physical safety,true3D,foundation,Stage5Cexecution orSMC.
+
+## Pre-Fit Engineering Amendment
+
+The initial real pilot PID51081 exits1before any optimizer update or checkpoint.
+The new bank wrapper hard-coded the parent's evaluation role even when its own
+caller requested training. The existing normalizer-site assertion caught this
+before fitting,but Htargets had already been loaded and a temporary Hderived
+preprocessor computed. Those statistics are discarded,not reused;no new model,
+policy prediction,policy score or threshold choice resulted. SOURCEwas already
+exposed development;this is not described as unopened Hdata. Reserved independent
+roles were not accessed.
+
+Preserve initial registration.json,its code in commitf5d3f557and private pilot.log.
+registration_v2.jsonbinds this explicit correction and the failed log. Forward
+the requested training flag to the parent and check the returned site role
+immediately. New regression tests verify train->G,inference->Hand refusal before
+new label loads on a mismatched return. Same jobs,primary,cache,capacity,loss,
+budgets,seeds and thresholds;no outcome-guided scientific design change.

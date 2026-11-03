@@ -79,7 +79,12 @@ parity. The added fixed-contrast tests check that missing seeds/support and
 zero paired effects cannot be promoted;the current combined suite passes12
 tests in2.21s. The scalar report/gate reconstruction is implemented but not
 run without complete results. With complete cache replay verified,the36-fit
-comparison is now registered;the three-group real recovery pilot is next.
+comparison is now registered. Its first real pilot stops before any optimizer
+update:the wrapper requested heldHdata instead of fittingGdata,and the site
+assertion rejected it. Temporary Hlabel preprocessing was computed and discarded,
+not used for fitting or selection. I retain the [failure and explicit role repair](outputs/publication_readiness_2026_09/european_interaction_feature_cost_v1/role_repair.md).
+The corrected registration preserves jobs,primary,budgets and thresholds;14
+focused tests pass2.59s. Corrected real recovery pilot and full fits are next.
 These engineering tests do not establish a learned-feature benefit.
 The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.

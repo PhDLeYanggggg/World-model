@@ -26,7 +26,7 @@ def main():
         raise ValueError('Complete exact replay is required for this report')
     from scripts import run_m3w_interaction_feature_cost as runner
     cfg = read(runner.CONFIG)
-    reg = read(PUBLIC/'registration.json')
+    reg = read(runner.REG)
     paths = [PUBLIC/'groups'/(j['key']+'_'+site+'.json') for j in reg['jobs'] for site in j['evaluation_sites']]
     groups = [read(p) for p in paths]
     if runner.summarize(groups, cfg, summary['source_localities']) != summary:
@@ -121,6 +121,11 @@ def main():
               'critic fits,but SOURCE has been used for development,not final confirmation.', '',
               'The source-cache v1pilot failed from neighbor-packet mismatch;v2restores',
               'the original packet and separately replays all coordinates and h64rows.',
+              'The initial head pilot also failed before any optimizer update:the',
+              'wrapper requested Hrather than G,and the site assertion stopped it.',
+              'Temporary Hlabel preprocessing had been computed and discarded;',
+              'it was never used to train a head or select a policy. The explicit',
+              'registration_v2correction forwards the role and checks it earlier.',
               'No private calibration/confirmation/DroneCrowd use for this repair.',
               'Future targets and masks are loss/evaluation only. Available-label ADE',
               'is not full12ADE;unknown-row bounds do not complete partial futures.',

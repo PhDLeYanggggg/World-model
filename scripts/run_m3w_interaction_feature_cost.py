@@ -30,9 +30,11 @@ NAME = 'european_interaction_feature_cost_v1'
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09'/NAME
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments'/NAME
 CONFIG = ROOT/'configs/m3w_interaction_feature_cost_v1.json'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
+INITIAL_REG = PUBLIC/'registration.json'
 FILES = (Path(__file__), CONFIG, ROOT/'src/world_model/m3w_interaction_feature_cost.py',
          ROOT/'tests/test_m3w_interaction_feature_cost.py', ROOT/'tests/test_m3w_interaction_feature_summary.py',
+         ROOT/'tests/test_m3w_interaction_feature_roles.py',
          PUBLIC/'protocol.md')
 sha, once, write, artifact, checked = parent.sha, parent.once, parent.write, parent.artifact, parent.checked
 
@@ -56,7 +58,13 @@ def admission(register=False):
         caches[row['identity']['trial']] = row
     if set(caches) != set(refs):
         raise ValueError('All nine aligned producer caches required')
+    initial = json.loads(INITIAL_REG.read_text())
+    if initial['jobs'] != jobs or initial['primary'] != cfg['primary'] or initial['cache_freeze'] != artifact(cache.PUBLIC/'cache_freeze.json'):
+        raise ValueError('The input-role correction must not change jobs,primary or cache')
     definition = dict(bindings={str(p.relative_to(ROOT)): sha(p) for p in FILES}, jobs=jobs,
+                      initial_registration=artifact(INITIAL_REG), initial_failed_pilot=artifact(PRIVATE/'pilot.log'),
+                      pre_fit_amendment='forward_training_role_to_parent_bank_before_preprocessing_no_optimizer_update_or_policy_score_in_failed_attempt',
+                      prior_failed_H_label_preprocessing_computed_and_discarded=True,
                       parent_registration=artifact(parent.REG), parent_verification=artifact(parent.PUBLIC/'verification.json'),
                       cache_registration=artifact(cache.REG), cache_verification=artifact(cache.PUBLIC/'verification.json'),
                       cache_freeze=artifact(cache.PUBLIC/'cache_freeze.json'), parent_objective=artifact(ROOT/'src/world_model/m3w_bound_aware_cost.py'),
@@ -104,7 +112,10 @@ def runtime(cfg, phase):
 
 
 def bank(job, source, ids, refs, caches, training=False):
-    data = parent.bank(job, source, ids, refs, training=False)
+    data = parent.bank(job, source, ids, refs, training=training)
+    expected = job['critic_sites'] if training else job['evaluation_sites']
+    if set(data['causal']['sites']) != set(expected):
+        raise ValueError('Requested fitting or evaluation role must match before feature preparation')
     ref = caches[job['outer_trial']]
     cached_ids = np.load(checked(ref['ids']), allow_pickle=False)
     latent = np.load(checked(ref['latent']), mmap_mode='r', allow_pickle=False)
