@@ -88,7 +88,10 @@ focused tests pass2.59s. Corrected real recovery pilot and full fits are next.
 The corrected real pilot now completes1200updates,PID52114,20.513s,peak11.975GB.
 All three group recoveries and matched initial weights,normalization and draws
 are exact. The optimizer-only36-fit projection is296.70s,excluding preparation
-and inference. Complete36-fit training is next;no held feature effect is known.
+and inference. All36fits now complete116160primary updates plus4000full-refit
+updates,PID52378,454.824sphase time,peak12.553GB. Both first full refits and all
+paired initialization/normalization/draw checks are exact. Endpoints are frozen;
+no held policy outcome has been scored and no feature-effect claim is made.
 These engineering tests do not establish a learned-feature benefit.
 The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.
