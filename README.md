@@ -182,8 +182,9 @@ not turn the missing group into zero error or shorten the task.
 The real native-arm64 Torch pilot now passes for both families: 50+50-step
 resume and direct100 produce identical model/optimizer/sampler states and
 outputs. Peak RSS is 1.46 GB; measured speed projects about 3.1 hours for all
-18 full fits. The complete matrix is next, with pilot prefixes reused only for
-their identical first primary jobs. Pilot loss is fitting evidence, not a held
+18 full fits. The complete matrix is running: all nine PCT producers have now
+finished their full 4,000 updates, and EqMotion continues. Pilot prefixes are
+reused only for their identical first primary jobs. Pilot loss is fitting evidence, not a held
 prediction or risk result.
 [Complete result](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md),
 [inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md),

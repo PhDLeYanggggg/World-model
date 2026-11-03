@@ -96,6 +96,15 @@ not a completed run. The repaired full population and every geometry/label/
 baseline hash exactly equal the original complete RAM pack. The full matrix
 will reuse only the identical100updateprefix of each family's first job.
 
+The complete matrix is now genuinely running under PID78359. All9PCT source
+producers finish4,000updates each by15:49:05UTC,about734.9s into the whole
+train invocation. EqMotion then continues under the same18model design.
+This is36,000completed PCT updates,not a complete18model result. Held
+predictions remain unopened until every producer completes; no parameters,
+sampling budget or risk thresholds are selected from these fitting losses.
+Heartbeat/checkpoints/log:
+`data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/`.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
