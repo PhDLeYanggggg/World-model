@@ -215,19 +215,23 @@ scenes, not only on new localities. All 324 falsely-safe fitting views and 330
 held views underestimate its numerator. I then tested whether more training
 could fix this before changing the architecture again. The
 [complete fourfold-budget experiment](outputs/publication_readiness_2026_09/european_feature_duration_probe_v1/conclusions.md)
-finishes all18 cost heads,232,320 primary updates and a separate exact replay.
-Average fitting loss improves34.77%, but selected easy harm remains badly
+finishes all 18 cost heads, 232,320 primary updates and a separate exact replay.
+Average fitting loss improves 34.77%, but selected easy harm remains badly
 underestimated. On the unchanged original decisions its prediction/target
 ratio rises from0.0032 to0.0093; on the new model's own decisions it is0.0028.
-The latter still violates easy risk in307/444 repeated recording/pipeline
+The latter still violates easy risk in 307/444 repeated recording/pipeline
 views. Longer training alone has not produced a safe learned policy.
 
 The run recovered from a disk-reserve interruption without lowering the
 budget or discarding completed heads. Both the original and completed
 checkpoint sets are verified backups on CREATE; no remote training was
-needed. The next fitting-only diagnosis separates available-label harm from
-missing-label bounds. Neither lower loss nor a smaller intervention set is
-treated as new world-dynamics or independent generalization evidence.
+needed. The completed
+[label-support decomposition](outputs/publication_readiness_2026_09/european_duration_support_diagnosis_v1/conclusions.md)
+shows why missing labels are not the whole explanation. Unknown-row bounds
+account for a median 64.26% of the evaluated easy-harm numerator, but 223 views also fail on
+available labels. Even on fully labeled twelve-step paths, predicted easy
+harm is only 0.83% of the target. Neither lower loss, fewer interventions nor
+dropping uncertain labels establishes safe world-dynamics improvement.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

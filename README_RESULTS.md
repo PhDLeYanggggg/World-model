@@ -132,11 +132,26 @@ the old interrupted backup is retained. No remote training or job submitted.
 Twelve current focused regression tests pass2.62s; three new support-partition
 tests pass0.11s. These are not the complete unrelated legacy suite.
 
-The next [label-support decomposition](outputs/publication_readiness_2026_09/european_duration_support_diagnosis_v1/protocol.md)
+The [label-support decomposition](outputs/publication_readiness_2026_09/european_duration_support_diagnosis_v1/protocol.md)
 is fitting-only, all18 frozen jobs and all three selected sets. It separates
 complete/partial observed-label contributions from wholly-unknown bounds while
 requiring every unpartitioned mass to remain exact. No new policy, H score,
 threshold, role, calibration or confirmation result is selected from it.
+
+The complete fresh decomposition and separate replay now match all18groups
+and every original unpartitioned mass exactly. On extended own selection,
+unknown rows are1.35%of repeated selected instances but their median share
+of target EH is64.26%. Of307whole-set easy violations,223also occur on
+available labels;84arise only after the conservative unknown contribution.
+Complete-twelve-step rows still have median EHprediction/target0.008336,
+versus0.010831partial and0.000001420unknown. Missingness amplifies but does
+not explain away the selected-harm failure. No subset is a replacement risk
+gate. [Readout](outputs/publication_readiness_2026_09/european_duration_support_diagnosis_v1/readout.md),
+[conclusions and next data task](outputs/publication_readiness_2026_09/european_duration_support_diagnosis_v1/conclusions.md).
+Eighteen current focused tests pass2.07s, including retaining tiny nonzero
+ratios rather than rounding them to zero; full unrelated legacy suite not_run.
+Original support diagnosis PID63885 exits0 in154.281s,peak12,221,333,504bytes;
+separate replay PID64229 exits0 in157.571s,peak12,259,966,976bytes.
 
 ### Build And Fitting History
 

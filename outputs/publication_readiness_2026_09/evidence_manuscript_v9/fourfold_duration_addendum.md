@@ -25,3 +25,14 @@ not metric/seconds/human gold. Stage5C/SMC remain off.
 
 Sources: [full readout](../european_feature_duration_probe_v1/readout.md),
 [conclusions](../european_feature_duration_probe_v1/conclusions.md).
+
+## Label-Support Follow-up
+
+A complete18-job G-only decomposition and separate exact replay preserve every
+unpartitioned mass. On extended own decisions, the median unknown-label share
+of conservative EH is64.26%, but223views also violate easy risk on available
+labels. Complete-twelve-label selected rows have median EHprediction/target
+0.008336. Thus missing labels amplify the failure without explaining away
+observed selected-harm underfitting. Observed-only subsets do not replace the
+original complete-risk contract. This adds no updates, H scores, threshold
+selection or independent evidence. [Full source breakdown](../european_duration_support_diagnosis_v1/conclusions.md).
