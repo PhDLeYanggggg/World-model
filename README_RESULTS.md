@@ -50,6 +50,19 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### New Development-Source Feasibility
+
+The whole-source reservation overrides the earlier suggestion to split
+DroneCrowd into multiple roles: all112recordings remain confirmation-only,
+without predictive admission. No source reservation or guard is changed.
+The new [MovingDroneCrowd++ intake](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/protocol.md)
+pins the author-linked public release before acquisition. Nine focused tests
+pass0.17s for bounded range access, source paths, MOT geometry, history/label
+separation and native-step support. Definition/registration are complete;
+actual acquisition, structural counts and replay are not yet run at this
+checkpoint. It is a different publication/release, not evidence that underlying
+physical scenes are independent. No downloaded vendor code or weights run.
+
 ### Frozen Interaction Features: Complete, Primary Unsupported
 
 The complete matched study trains 36 real Torch cost heads with three actual

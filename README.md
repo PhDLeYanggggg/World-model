@@ -233,6 +233,14 @@ available labels. Even on fully labeled twelve-step paths, predicted easy
 harm is only 0.83% of the target. Neither lower loss, fewer interventions nor
 dropping uncertain labels establishes safe world-dynamics improvement.
 
+I am now checking a different development-data route:
+[MovingDroneCrowd++](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/protocol.md),
+which provides image sequences and head-identity annotations. Its version is
+pinned before acquisition, and the first pass downloads annotations rather
+than the full video archive. The existing DroneCrowd collection remains
+reserved for confirmation in its entirety. The new source is not yet admitted
+for training or claimed to be independent of those reserved scenes.
+
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
 The larger goal remains useful neural dynamics backed by reproducible,
