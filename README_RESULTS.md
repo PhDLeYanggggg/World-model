@@ -46,14 +46,25 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The post-readout same-set cost diagnostic is registered before execution.
-All36frozen cost heads, both fitting and double-excluded SOURCE roles, all
-recordings/seeds retained. It separates H/EH from R/ER error on identical
-selected sets, and distinguishes amplitude-scaled proposal bounds from actual
-interpolated harm. Zero optimizer updates; no threshold/role/primary changes.
-Synthetic tests cover denominator handling, unknown bound mass and empty support.
-Fresh real diagnostic inference and complete replay are next,not yet results.
-[Protocol](outputs/publication_readiness_2026_09/european_bound_cost_decomposition_v1/protocol.md).
+The post-readout same-set cost diagnostic is complete: all36frozen heads,
+72fitting/held inference passes, no optimizer updates, all36job-role summaries
+exact in a separate full replay. Original PID14300 takes197.365s,peak4.502GB;
+replay PID14863 takes199.490s,peak4.523GB. Held costs/amplitudes are exactly the
+parent's, and actual completed recording-risk ratios match. Eleven current
+targeted tests pass1.73s. No policy/threshold/role/primary change.
+
+Bound-aware median selected actual EH predicted/target mass ratios are.006509
+on fitting and.039710on excluded sites; ER ratios.093521and.292533. These are
+ratios of recording contribution masses, not prediction accuracy. Targets
+contain known masked costs and declared unknown-row bounds, not full physical
+truth. All358fitting/332held falsely-safe easy views underpredict EH; only40/124
+inflate ER. On the unchanged full proposal, the selected EH ratio falls below
+the full-legal ratio in423/444fitting and411/444held views. Thus selection and
+fitting-side numerator error matter, not exclusively new-domain shift or
+denominator inflation. A disclosed small no-unknown-selected fitting slice
+still has8easy violations; this does not change the primary roster. Earlier
+generic hurdle/conditional-moment and divergence failures remain, not recycled
+as a new method. [Readout](outputs/publication_readiness_2026_09/european_bound_cost_decomposition_v1/readout.md).
 
 The prospectively registered explicit unknown-bound cost comparison is complete:
 36 real Torch heads, 116,160 primary updates, 4,000 full-refit updates and a

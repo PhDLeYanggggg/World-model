@@ -172,10 +172,15 @@ decompose harm and reference errors on identical selected sets, on fitting and
 excluded SOURCE sites, before choosing another cost-learning repair. No new
 threshold will be selected from exposed calibration or final-confirmation data.
 
-The [same-set cost diagnostic](outputs/publication_readiness_2026_09/european_bound_cost_decomposition_v1/protocol.md)
-is now registered: frozen-model inference on fitting and doubly excluded sites,
-separating predicted harm from reference/support error. It makes no optimizer
-updates and does not change the failed parent result. Real execution is next.
+The [same-set cost diagnostic](outputs/publication_readiness_2026_09/european_bound_cost_decomposition_v1/readout.md)
+is also complete, with full frozen-model replay. It locates failure before
+new-scene transfer: on fitting sites, the bound-aware head's median selected
+EH predicted/target mass ratio is only 0.0065. Every one of its 358 falsely-safe
+fitting views underestimates EH; only 40 also inflate ER. Error is therefore
+not just a denominator problem. Selection worsens the unattenuated EH mass
+ratio in 423/444 fitting views. Fitting views with no wholly unknown selected
+labels can also fail, so missing-label bounds alone do not explain it. This is a zero-update diagnosis, not a
+new policy or another training success.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 

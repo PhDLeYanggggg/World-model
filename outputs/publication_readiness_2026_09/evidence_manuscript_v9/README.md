@@ -106,6 +106,10 @@ probe. Those two bridge studies remain a separate addendum, not full sections
 of the compiled main PDF. The subsequent completed bound-aware critic comparison
 is now included in main sections4.4/6.8. No new policy pass is claimed by either.
 
+The later [same-set cost diagnosis](same_set_cost_diagnosis_addendum.md) is a
+separate current addendum. Its complete inference/replay is not yet a section
+of the compiled main PDF; that PDF and its visual receipt remain unchanged.
+
 ## Still Missing
 
 A learned full-policy risk pass, supported scene-joint gain, independent final
