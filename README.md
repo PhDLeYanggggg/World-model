@@ -155,6 +155,10 @@ The 64 publisher-train candidates retain 136,295 complete native 8/12 windows;
 they are not independent samples or admitted training data. Source-use and
 producer-role admission, including the outstanding DUT comparison, come next.
 No new forecasting score or deployment result follows from this audit.
+The remaining DUT image bridge is registered before acquisition: all 28
+author background composites (19.4 MB), compared with the new and protected
+sources in 6,874 fixed pairs. A background composite is not a past video frame
+and will not become a causal model input.
 [Complete result](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md),
 [inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/tutorial_zh.md).

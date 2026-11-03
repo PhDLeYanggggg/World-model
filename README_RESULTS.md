@@ -141,6 +141,19 @@ the112whole-source confirmation clips are not repurposed. [Chinese guide](output
 
 ### New Development-Source Feasibility
 
+The [remaining DUT image bridge](outputs/publication_readiness_2026_09/dut_background_bridge_v1/protocol.md)
+is now registered,not an executed image result. The pinned author tree supplies
+28cropped GSOC background PNGs totaling19,357,004bytes. Five source/roster/
+single-view/closure tests pass0.16s. The complete planned roster is3,360Moving-
+to-DUT,3,136protected-Drone-to-DUT and378within-DUT pairs,6,874total. A fixed
+60pair balanced pilot precedes full matching. One DUT background cannot be
+duplicated into temporal views or provide strong multi-view support. All image
+support is retained conservatively; background synthesis/frame time is unknown,
+so these images cannot become causal predictive inputs. No predictive outcome,
+role assignment,training,video acquisition,Stage5C orSMC. Original reservations,
+2%risk criteria and the10GiBreserve remain unchanged. Prior goal turn is progress:
+the full parent screen and replays finished; current work fills its DUT gap.
+
 The whole-source reservation overrides the earlier suggestion to split
 DroneCrowd into multiple roles: all112recordings remain confirmation-only,
 without predictive admission. No source reservation or guard is changed.
