@@ -51,8 +51,10 @@ predict the excluded eight; no new final test or role boundary. Target is wholly
 unknown requested future labels, not physical occlusion. Future masks never
 enter inference. Four new unit checks pass. The real32->64/direct64 pilot now
 passes exact tree/full-held-probability recovery:14.19s,peak2.739GB,128 actual
-pilot trees. Formal18-fit training is running as PID6433; the first full128-tree
-refit is exact. Held-SOURCE scores remain not_run until all predictions freeze.
+pilot trees. All18formal models now finish2304primary trees plus128full-refit
+trees in267.97s,peak4.513GB. The first full128-tree refit is exact; all18held-
+SOURCE probability arrays freeze before scores. Held-SOURCE scores remain
+not_run at this freeze; no feature or model was chosen from held results.
 [Protocol](outputs/publication_readiness_2026_09/european_source_label_support_v1/protocol.md).
 
 The SOURCE-only fixed-support amplitude bridge is complete. Both frozen

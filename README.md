@@ -153,9 +153,10 @@ That [SOURCE probe](outputs/publication_readiness_2026_09/european_source_label_
 now has a frozen eighteen-forest design: past geometry versus geometry plus
 past detector history, fitting on the original four SOURCE sites and predicting
 the excluded eight. Future-mask information is a target only, never an input.
-The real 32->64/direct64 recovery pilot is exact, and formal training is now
-running with per32-tree checkpoints. The measured projection is about four
-minutes before preparation/inference. No held-SOURCE outcome is reported yet.
+The real 32->64/direct64 recovery pilot is exact. All eighteen full models now
+finish 2,304 primary trees plus a 128-tree full refit and 128 pilot trees.
+Training takes 267.97 s with 4.51 GB peak RSS; all held-SOURCE predictions are
+frozen before scoring. No held-SOURCE outcome is reported at this freeze.
 This is a label-process diagnostic, not a new neural world model or
 physical-visibility predictor.
 
