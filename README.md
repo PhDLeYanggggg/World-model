@@ -144,9 +144,11 @@ I am checking MovingDroneCrowd++ as a possible new development source rather
 than reusing protected confirmation recordings. Its annotation intake contains
 120 clips and 245,018 complete native 8/12 windows, not that many independent
 scenes. All 360 sparse source views are now available; 21 portrait views needed
-a fixed axis correction before matching. The complete 20,580-pair source-overlap
-screen is running with checkpoints. A 50-pair timing pilot estimates about
-71 minutes, not a completed result. The new data has not been admitted to
+a fixed axis correction before matching. All 20,580 source-overlap pair
+checkpoints are now saved after 69 minutes. Summary assembly then failed on a
+duplicate dictionary field; the original failure is retained and a small
+forward completion adapter is registered. Final verification is still pending.
+The new data has not been admitted to
 training, and an unsupported image match will not establish independence.
 [Protocol and inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/protocol.md).
 

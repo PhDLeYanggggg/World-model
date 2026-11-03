@@ -95,6 +95,18 @@ All ten first-view contact sheets (120clips) were inspected, with explicit
 The preview helper's manifest-write error is repaired without changing frozen
 matching code or previously saved PNG bytes; its resume regression passes.
 
+The full pair loop now reaches20,580/20,580 at4,136.420s,peak674,234,368bytes,
+then PID69529exits1 in summary assembly: the false `scientific_roles_assigned`
+dictionary key was supplied twice. All20,530new receipts and50pilot receipts
+are intact. This is not a successful original exit or lost matching work.
+A [forward completion repair](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/completion_failure.md)
+is now registered before recovery. It removes only that duplicate field,
+requires every original grouping field unchanged, and binds the complete
+pair-file digest inventory. Frozen definitions/criteria/roles are not edited;
+the69minute job is not repeated. Seven focused completion/report tests pass
+0.37s. Recovery and the prescribed feature/receipt/fixed50pair verification
+remain pending at this checkpoint.
+
 ### New Development-Source Feasibility
 
 The whole-source reservation overrides the earlier suggestion to split

@@ -9,6 +9,28 @@ sys.path.insert(0,str(ROOT))
 from scripts import audit_m3w_movingdronecrowd_background as parent_audit
 
 
+def candidate_support(recordings,candidates,groups):
+    lookup={parent_audit.moving_node(r['clip']):r for r in recordings}
+    if len(lookup)!=len(recordings) or not set(candidates)<=lookup.keys():
+        raise ValueError('Require unique, source-traceable candidate recordings')
+    selected=[lookup[node] for node in candidates]
+    containing=[g for g in groups if set(g)&set(candidates)]
+    if any(sum(node in group for group in containing)!=1 for node in candidates):
+        raise ValueError('Conservative components must partition candidate clips')
+    name='obs8_pred12_native_stride1'
+    fields=('target_agent_windows','past_visible_agent_instances',
+            'history_complete_agent_instances','history_complete_but_future_incomplete_instances',
+            'queries_with_targets','nonoverlapping_raw_intervals_with_targets')
+    return dict(clips=len(selected),publisher_scene_labels=len({r['publisher_scene_label'] for r in selected}),
+        conservative_components_touching_candidates=len(containing),
+        rows=sum(r['rows'] for r in selected),recording_local_tracks=sum(r['agents'] for r in selected),
+        native_obs8_pred12={k:sum(r['window_support'][name][k] for r in selected) for k in fields},
+        native_endpoint_support={h:{k:sum(r['endpoint_support'][h][k] for r in selected)
+            for k in ('endpoint_label_windows','complete_interval_windows')} for h in ('10','25','50','100')},
+        candidate_counts_are_admission=False,components_are_verified_physical_sites=False,
+        windows_are_independent_samples=False,future_masks_used_as_predictive_inputs=False)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--version2',action='store_true');args=parser.parse_args()
     audit=parent_audit
@@ -25,6 +47,9 @@ def main():
     linked=set(result['moving_nodes_linked_to_protected']);unresolved=set(result['insufficient_background_moving_nodes'])
     candidates=sorted(audit.moving_node(key) for key in sources if audit.moving_node(key) not in linked|unresolved)
     groups=result['conservative_exclusion_components']
+    source_analysis_path=audit.intake.PUBLIC/'analysis.json'
+    source_analysis=json.loads(source_analysis_path.read_text())
+    support=candidate_support(source_analysis['recordings'],candidates,groups)
     mixed=[g for g in groups if any(v.startswith('moving_') for v in g) and any(v.startswith('drone_') for v in g)]
     cache_bytes=sum(v['bytes'] for v in images['views'])
     bounds=sum(v['head_centers_outside_image'] for v in images['views'])
@@ -33,6 +58,7 @@ def main():
         moving_clips_linked_to_protected=len(linked),moving_insufficient_background=len(unresolved),
         publisher_train_clips=64,remaining_unadmitted_publisher_train_candidates=len(candidates),
         remaining_unadmitted_candidate_nodes=candidates,mixed_source_exclusion_components=len(mixed),
+        remaining_unadmitted_candidate_support=support,source_structure_sha256=audit.sha(source_analysis_path),
         source_roles_assigned=False,model_training=False,physical_independence_certified=False,
         stage5c_executed=False,smc_enabled=False)
     lines=['# Moving-Drone Source-Overlap Results','', '## Material Passport','',
@@ -65,6 +91,23 @@ def main():
         'This is not a physical-site count, role grant, independence certificate',
         'or positive transfer result. Preserve all weak, publisher-scene and old',
         '45group constraints; do not reassign a protected clip to create training data.','',
+        '## Remaining Candidate Support, Not Admitted Data','',
+        f'The remaining publisher-train candidates contain {support["rows"]:,} rows,',
+        f'{support["recording_local_tracks"]:,} recording-local tracks across',
+        f'{support["publisher_scene_labels"]} publisher labels and',
+        f'{support["conservative_components_touching_candidates"]} conservative components.',
+        'Neither label nor component count is a verified number of independent sites.','',
+        '| Native 8/12 support | Count |','|---|---:|']
+    for key,value in support['native_obs8_pred12'].items():
+        lines.append(f'| {key} | {value:,} |')
+    lines+=['','| Native endpoint offset | Endpoint labels | Complete intervals |',
+            '|---|---:|---:|']
+    for horizon,value in support['native_endpoint_support'].items():
+        lines.append(f'| +{horizon} | {value["endpoint_label_windows"]:,} | {value["complete_interval_windows"]:,} |')
+    lines+=['','These overlapping windows are structural availability counts, not',
+        'independent samples, measured forecasting success or new data roles.',
+        'Keep all current visible neighbors and future labels/masks separate;',
+        'target-complete windows are not permission to filter inference neighbors.','',
         '## Verification','',
         f'Verification PID{verify["pid"]}: {verify["seconds"]:.3f}s, peak RSS{verify["peak_RSS_bytes"]:,}bytes.',
         f'All360new prepared features reproduce exactly; all336protected descriptors',
