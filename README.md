@@ -168,6 +168,12 @@ complete windows. Other clips remain unadmitted for prediction in this track;
 DUT and DroneCrowd retain their original roles. The next experiment must bind
 the actual predictor/teacher/critic exclusions before fitting. Source access
 is ready; a new neural benefit or safe policy has not yet been demonstrated.
+The [first admitted-source forecast comparison](outputs/publication_readiness_2026_09/moving_source_forecast_v1/protocol.md)
+is now registered: matched PCT and fixed-head EqMotion, three source folds and
+three actual seeds, 18 complete 4,000-update fits. It includes partial and
+wholly missing future labels rather than keeping only complete trajectories.
+Its matrices will stay in RAM; a real-data optimizer/resume pilot precedes
+the full run. No new training result is claimed at registration.
 [Complete result](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md),
 [inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/tutorial_zh.md).

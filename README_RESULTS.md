@@ -50,6 +50,29 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Admitted Moving-Source Forecast Controls
+
+The [complete new-source control](outputs/publication_readiness_2026_09/moving_source_forecast_v1/protocol.md)
+is registered before fitting. It uses the64fit-admitted recordings and all
+195,286past-eligible rows,not just136,295complete future windows. PCT and
+fixed-head K=1EqMotion retain the original control architectures and4,000
+update budgets. Three source folds and seeds17/29/43 yield18primary models /
+72,000primary updates. Each producer fits one fold; both other folds remain
+excluded for the later disjoint predictor/critic/evaluation design. All
+current-visible raw inputs remain; both forecasters use the same eight nearest
+complete-past neighbors,not future-target eligibility. A separate48-column
+all-current observed-motion vector is frozen for a later critic comparison,
+not fed to these forecasters or declared useful here.
+
+Two new encoder tests pass0.76s,including future truncation/perturbation and
+partial-history context retention. A capacity-only native arm64 Torch2.12CPU4
+inspection measures PCT88,514trainable parameters /368,692state bytes and
+EqMotion580,676trainable of3,027,268total /12,467,251state bytes. This is not
+successful training. Full feature matrices stay in RAM; compressed predictions
+and original10GiBreserve limit disk usage. Actual100update50+50resume/direct
+pilots will precede the full matrix. No model score,calibration,confirmation,
+new intervention policy or deployment/CCF-A claim is made at this checkpoint.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
