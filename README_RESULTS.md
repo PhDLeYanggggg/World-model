@@ -150,7 +150,14 @@ The unbound plotter's loss axis is corrected to fitting-baseline-relative,
 not necessarily CV-relative; its two scalar-report tests pass0.14s. No active
 training definition,data,budget or model was changed by that label repair.
 
-Original held inference now runs asPID91599. To retain full-refit disk headroom,
+Original held inference PID91599 exits0 at20:19:56UTC after5,555.304s,
+peak RSS1,671,512,064bytes. The23-supported-group known-label EqMotion-minus-PCT
+secondary is+55.0152pp [27.8895,87.3852]; its completion-lower secondary
+is+14.4599pp [-8.1907,38.9277]. The latter still crosses zero; neither view
+passes the unestimable original24-group primary or any intervention-risk gate.
+These are fresh inference numbers, pending the full independent replay now
+running asPID98674/session56152. No model or threshold is changed from them.
+To retain full-refit disk headroom,
 the four completed100-update pilot copies are [losslessly archived](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/storage_compaction.md):
 48,838,756to14,842,420bytes,all original member hashes preserved and restorable.
 All18primary model hashes remain unchanged. Two archive/restore/change-protection
