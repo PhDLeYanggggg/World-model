@@ -74,9 +74,18 @@ and the derived forecasting task is not the dataset author's published task.
 
 [Full new-source comparison and loss curves](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/readout.md)
 and [relative-motion diagnostic](outputs/publication_readiness_2026_09/moving_relational_diagnostic_v1/readout.md).
-The next controlled experiment tests whether observed crowd motion helps learn
-when that proposal is worth using. Its matched cost heads are still fitting;
-there is no new deployment result yet.
+The subsequent matched cost study is also complete: 36 real Torch heads,
+72,000 updates and exact full refit/replay checks. Adding 48 observed-motion
+fields does not establish a gain: the known paired effect is -0.41 pp
+[-2.66, +2.00], and the completion-lower effect is -5.33 pp [-8.95, -2.27].
+Only 9/348 repeated recording views satisfy the shared-motion joint policy's
+full original risk contract. It is not deployed.
+
+The [failure diagnosis](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/failure_analysis.md)
+finds severe underprediction specifically on policy-selected samples, already
+within critic-fitting sources. Global cost fitting can look reasonable while
+the apparently safest choices are wrong. This makes selection-conditional risk
+learning the next problem to solve, rather than simply adding more motion cues.
 
 ## What Has Not Worked
 
@@ -160,7 +169,8 @@ The full pipeline entry points are in the experiment protocol/readout. Completed
 stage receipts are immutable: resume incomplete work and do not delete results
 to manufacture a fresh run. Full execution still requires verified upstream
 data and private checkpoints; anonymous cold-start reproduction remains a gap.
-The focused suite has 75 passing tests and one optional Metal-parity skip.
+The earlier European scoped suite had 75 passing tests and one optional Metal-parity skip.
+New-source checks and actual full replays are recorded with each experiment.
 The unrelated legacy suite is not presented as a clean read-only smoke test.
 
 |Record|Purpose|

@@ -211,6 +211,31 @@ Full fitting now finishes asPID7082exit0 at23:00:17UTC after2,689.130s:
 parameters,budget,sampler,draw hashes,fitting IDs,normalization and Torch RNG.
 Both complete first-head refits remain exact. Held policy evaluation and its
 separate replay are still pending; fitting completion is not a passed risk gate.
+The [complete policy study](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/readout.md)
+now evaluates asPID9812exit0 in333.175s and replays asPID10181exit0 in149.750s.
+The fixed joint-free shared-minus-local known contrast is-0.4068pp
+[-2.6646,2.0005]; completion lower is-5.3316pp [-8.9456,-2.2735]. This does
+not support a positive information contribution. Shared joint-free has+10.9258%
+known floor gain,but only9/348required recording views meet the original full
+risk contract,with288/291known all/easy positive-harm violations and442.3645%
+worst easy net degradation. Repeated recording views are not independent places.
+The same-count full-scope utility contrasts are not estimable (4local/3shared
+unsupported source views); they are not rewritten as zero or safety passes.
+All36cost predictions,policy scalars and saved predicted-budget feasibility
+replay exactly. No deployment,calibration or confirmation promotion follows.
+
+A separate post-readout [selected-cost audit](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/selected_cost_audit/readout.md)
+finds the independent selector's known EH mass already653x/1210xits predictions
+on the local/shared critic-fitting selected rows. Global EH overprediction and
+selected-region underprediction coexist; held domain shift and missing outcomes
+are not the sole causes. All72role/arm views replay exactly. This is diagnosis,
+not a new independent test or an identified unique decoder/optimization cause.
+Two new pure calibration/empty-support checks pass0.12s. The next controlled
+repair should address selected-cost self-consistency,not another blind feature,
+width or duration sweep. [Detailed failure analysis](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/failure_analysis.md).
+The final changed-version focused suite passes19tests in2.49s. The unrelated
+legacy suite is not_run in this unit; its report-writing side effects are not
+treated as a clean read-only verification. Current phase processes have exited.
 
 ### New-Source Image Overlap
 
