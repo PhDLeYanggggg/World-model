@@ -51,8 +51,12 @@ Each evaluation group is excluded from both forecaster and critic fitting.
 Original SOURCE whitelist149,510rows/74recordings/twelve localities remains.
 Primary116,160updates,first-full-refits4,000updates,and a planned1,200-update
 three-group recovery pilot are separate. Six scoped checks pass in1.73s.
-Actual fitting/readout are not_run at this freeze; no independent final role
-or new policy pass. [Protocol](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md).
+All36fits now finish116,160primary updates plus4,000complete-refit updates.
+The three-group1,200-update real recovery pilot is exact; paired initial
+weights,normalizers,samplers and draws match. Training PID9710 takes378.71s,
+peak9.241GB; both first full refits are exact. Held-policy predictions/readout
+are not_run at this freeze; no independent final role or policy pass.
+[Protocol](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md).
 
 The causal release-label-support probe is complete:18actual ExtraTrees models,
 geometry versus geometry+detector history, original producer folds/seeds17/29/43,
