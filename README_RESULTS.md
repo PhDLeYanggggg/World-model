@@ -63,6 +63,24 @@ All112DroneCrowd confirmation reservations and DUT roles remain unchanged.
 Raw JPEGs are checked transiently; only private lossless audit rasters,
 masks and descriptors are retained. No model training or predictive score.
 
+Fresh acquisition now completes all360views asPID67366exit0:920.593s,
+peak1,690,796,032bytes,669,612,286archive-range bytes transferred. Prepared
+cache is276,322,016bytes.33,227head boxes are masked;0centers lie outside
+their source images. All360RGB/prepared feature comparisons are exact.
+The balanced50pair pilotPID68608exit0 takes12.129s and estimates4,301.54s
+for the complete roster,not a completed full screen.
+
+Decoded dimensions reveal21portrait views in7clips. The inherited landscape
+resize imposes axis-scale ratio3.16049on9:16inputs,so exact feature replay
+does not establish suitable geometry. Full v1 matching is not run; its cache
+and pilot remain preserved. [Diagnosis](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/geometry_failure.md).
+The [v2 forward repair](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/protocol.md)
+is registered before corrected acquisition:re-read only21identical portrait
+JPEGs,apply fixed lossless90degree axis canonicalization,and reuse339landscape
+views exactly. All20,580pairs/criteria/roles remain unchanged;no v1 pair receipt
+is reused. Ten current geometry/source tests pass0.32s. No predictive outcome
+or measured missed-match rate is used to select this repair.
+
 ### New Development-Source Feasibility
 
 The whole-source reservation overrides the earlier suggestion to split

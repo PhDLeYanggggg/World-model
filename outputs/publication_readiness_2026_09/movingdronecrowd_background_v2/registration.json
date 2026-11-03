@@ -1,0 +1,5841 @@
+{
+  "bindings": {
+    "configs/m3w_movingdronecrowd_background_v1.json": "fc49aa175fbe61ff8f7b85bc99f2255b00edc6687c55c7d4916bd21ac9c224ca",
+    "configs/m3w_movingdronecrowd_background_v2.json": "a16365451d7f0a09e5e6af754a17739437ecf8c158428e4f0bd6a8eb9636ffcd",
+    "configs/m3w_movingdronecrowd_intake_v1.json": "d0f14c2020a5147a2a2a6c73a8200aec9ecdc39a4fdae0486038f1ef17903888",
+    "outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/geometry_failure.md": "cc733fb578d087bd9873d3578ec18b63b5a12eecf9ee1c971a2f7335c04f1402",
+    "outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md": "60ea06fbdfd734aa0e27ff688f2ff503dc188174b4841dbec89160e6e02d625d",
+    "outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/protocol.md": "72204e693fef401ada329bea6f18c8222c5e901837200a1bc8d3b6f5aaaac0c2",
+    "scripts/audit_m3w_movingdronecrowd_background.py": "c1f86d1ca29a377ad900b3b3643cdee86cbbb0f66adc1d75e09e5e50474b8b95",
+    "scripts/audit_m3w_movingdronecrowd_background_v2.py": "baa2827184c3b1b48874b75d59483cc54075c59b754a4d8000e9dd262eb6256e",
+    "scripts/intake_m3w_movingdronecrowd.py": "dce120e65ac98b7798812947a0d17da237d9271615dd8bee82377abdc376493f",
+    "src/data_unification/m3w_movingdronecrowd_intake.py": "8404ed08858a4eb0124096fbfe79dc574db66c70253219ddab5dd0d262567abf",
+    "src/evaluation/m3w_dronecrowd_grouping.py": "3b68da5a81954db1248971228e7ab17ec58c0a4c14750e2a08bc4dcfee002895",
+    "src/evaluation/m3w_dronecrowd_image_geometry.py": "af03f7be155e4bf15405814907bb5d38659fe50e7d4aa43cc53526b59ad930a7",
+    "src/evaluation/m3w_movingdronecrowd_background.py": "e84c46e368f8b4d21798ef73bf96dd2fc0710e69efb8c94347a8275d50821aa2",
+    "src/evaluation/m3w_movingdronecrowd_orientation.py": "17443dd8c21de5acfe24a4407ffb9726176a43900612481cdbefe376f44b5236",
+    "tests/test_m3w_movingdronecrowd_background.py": "62c5c8ba17c47131d50cfe7831b5934831f19f48bfb17f172b43ce6dcb3f2de6",
+    "tests/test_m3w_movingdronecrowd_orientation.py": "eb217d39b2bdcc22d53a5583615e9ea3e2183fd4d8a1e47e954ada22e0b77348"
+  },
+  "configuration": {
+    "cross_source_pairs": 13440,
+    "disk_reserve_bytes": 10737418240,
+    "landscape_rule": "exact_cached_v1_features_and_rasters",
+    "matcher_config": "configs/m3w_dronecrowd_grouping_v2.json",
+    "maximum_image_pixels": 30000000,
+    "maximum_invocation_seconds": 43200,
+    "maximum_network_bytes_per_acquisition_invocation": 1073741824,
+    "maximum_new_cache_bytes": 536870912,
+    "maximum_raw_member_bytes": 16777216,
+    "middle_rule": "sorted_frames[(N-1)//2]",
+    "moving_clips": 120,
+    "moving_views": 360,
+    "new_roles_assigned": false,
+    "opencv_threads": 1,
+    "pilot_pairs_per_kind": 25,
+    "portrait_rule": "rotate90counterclockwise_lossless_before_original_preparation",
+    "portrait_source_JPEG_bytes": 32822255,
+    "portrait_views_to_reextract": 21,
+    "predictive_outcomes_read": false,
+    "protected_dronecrowd_clips": 112,
+    "protected_views": 336,
+    "purpose": "source_overlap_before_new_predictive_roles_portrait_axis_repair",
+    "retain_prepared_lossless_rasters_and_masks": true,
+    "retain_raw_source_JPEG": false,
+    "roster_seed": 20261103,
+    "selected_compressed_member_bytes": 575970426,
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "verification_fresh_pair_prefix": 50,
+    "view_slots": [
+      "first",
+      "middle",
+      "last"
+    ],
+    "within_moving_pairs": 7140
+  },
+  "landscape_views_exact_reuse": 339,
+  "new_model_training": false,
+  "old_pair_receipts_reused": false,
+  "parent_acquisition_sha256": "2d491de709ec0be8b5124511fe261f20bc7d7af75b59063e66c5eaf92aabdc76",
+  "parent_image_manifest_sha256": "a98ee66739cacf2d458a6f65f150d4936700e0c029f9149fccab2b0c70d1383e",
+  "parent_incomplete_matching_not_promoted": true,
+  "parent_registration_sha256": "7f7e5e2d9e094e2244fe782072bdca7a4576b6f1a4c390942818647d138352a4",
+  "parent_timing_pilot_sha256": "21ae18c8b53a265ac78391de7be308a6a97534ccbab3f7a361eb5e0f221d6a3b",
+  "portrait_nodes": [
+    "moving_scene_12__1",
+    "moving_scene_12__2",
+    "moving_scene_14__1",
+    "moving_scene_14__2",
+    "moving_scene_14__3",
+    "moving_scene_27__1",
+    "moving_scene_29__1"
+  ],
+  "portrait_views_new_extraction": 21,
+  "predictive_outcomes_read": false,
+  "smc_enabled": false,
+  "source_roles_and_matching_criteria_unchanged": true,
+  "stage5c_executed": false,
+  "view_selection": [
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/1.csv",
+      "clip": "scene_1/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 517414,
+        "compressed_bytes": 516379,
+        "compression": 8,
+        "crc32": 2729795605,
+        "name": "MovingDroneCrowd++/frames/scene_1/1/1.jpg",
+        "offset": 4959288
+      },
+      "node": "moving_scene_1__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 15,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/1.csv",
+      "clip": "scene_1/1",
+      "image_frame_one_based": 16,
+      "member": {
+        "bytes": 697990,
+        "compressed_bytes": 697869,
+        "compression": 8,
+        "crc32": 876041703,
+        "name": "MovingDroneCrowd++/frames/scene_1/1/16.jpg",
+        "offset": 9376537
+      },
+      "node": "moving_scene_1__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 31,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/1.csv",
+      "clip": "scene_1/1",
+      "image_frame_one_based": 32,
+      "member": {
+        "bytes": 581979,
+        "compressed_bytes": 581118,
+        "compression": 8,
+        "crc32": 2243980004,
+        "name": "MovingDroneCrowd++/frames/scene_1/1/32.jpg",
+        "offset": 21362266
+      },
+      "node": "moving_scene_1__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/2.csv",
+      "clip": "scene_1/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 560071,
+        "compressed_bytes": 558489,
+        "compression": 8,
+        "crc32": 2948889353,
+        "name": "MovingDroneCrowd++/frames/scene_1/2/1.jpg",
+        "offset": 25397676
+      },
+      "node": "moving_scene_1__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 14,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/2.csv",
+      "clip": "scene_1/2",
+      "image_frame_one_based": 15,
+      "member": {
+        "bytes": 545053,
+        "compressed_bytes": 544060,
+        "compression": 8,
+        "crc32": 3133266431,
+        "name": "MovingDroneCrowd++/frames/scene_1/2/15.jpg",
+        "offset": 28864170
+      },
+      "node": "moving_scene_1__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 29,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/2.csv",
+      "clip": "scene_1/2",
+      "image_frame_one_based": 30,
+      "member": {
+        "bytes": 601985,
+        "compressed_bytes": 601486,
+        "compression": 8,
+        "crc32": 3613963368,
+        "name": "MovingDroneCrowd++/frames/scene_1/2/30.jpg",
+        "offset": 38023665
+      },
+      "node": "moving_scene_1__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/3.csv",
+      "clip": "scene_1/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 546045,
+        "compressed_bytes": 546004,
+        "compression": 8,
+        "crc32": 3778234612,
+        "name": "MovingDroneCrowd++/frames/scene_1/3/1.jpg",
+        "offset": 42045104
+      },
+      "node": "moving_scene_1__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 51,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/3.csv",
+      "clip": "scene_1/3",
+      "image_frame_one_based": 52,
+      "member": {
+        "bytes": 667085,
+        "compressed_bytes": 666840,
+        "compression": 8,
+        "crc32": 24284509,
+        "name": "MovingDroneCrowd++/frames/scene_1/3/52.jpg",
+        "offset": 76964142
+      },
+      "node": "moving_scene_1__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 103,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_1/3.csv",
+      "clip": "scene_1/3",
+      "image_frame_one_based": 104,
+      "member": {
+        "bytes": 502364,
+        "compressed_bytes": 502266,
+        "compression": 8,
+        "crc32": 4091369026,
+        "name": "MovingDroneCrowd++/frames/scene_1/3/104.jpg",
+        "offset": 45073848
+      },
+      "node": "moving_scene_1__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_10/1.csv",
+      "clip": "scene_10/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 328147,
+        "compressed_bytes": 327763,
+        "compression": 8,
+        "crc32": 2068485064,
+        "name": "MovingDroneCrowd++/frames/scene_10/1/1.jpg",
+        "offset": 106673442
+      },
+      "node": "moving_scene_10__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 43,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_10/1.csv",
+      "clip": "scene_10/1",
+      "image_frame_one_based": 44,
+      "member": {
+        "bytes": 321565,
+        "compressed_bytes": 321316,
+        "compression": 8,
+        "crc32": 2556559166,
+        "name": "MovingDroneCrowd++/frames/scene_10/1/44.jpg",
+        "offset": 118878206
+      },
+      "node": "moving_scene_10__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 86,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_10/1.csv",
+      "clip": "scene_10/1",
+      "image_frame_one_based": 87,
+      "member": {
+        "bytes": 313883,
+        "compressed_bytes": 313632,
+        "compression": 8,
+        "crc32": 2175637069,
+        "name": "MovingDroneCrowd++/frames/scene_10/1/87.jpg",
+        "offset": 133945429
+      },
+      "node": "moving_scene_10__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_10/2.csv",
+      "clip": "scene_10/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 293407,
+        "compressed_bytes": 293187,
+        "compression": 8,
+        "crc32": 1894054,
+        "name": "MovingDroneCrowd++/frames/scene_10/2/1.jpg",
+        "offset": 134589836
+      },
+      "node": "moving_scene_10__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 19,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_10/2.csv",
+      "clip": "scene_10/2",
+      "image_frame_one_based": 20,
+      "member": {
+        "bytes": 317964,
+        "compressed_bytes": 317725,
+        "compression": 8,
+        "crc32": 462669603,
+        "name": "MovingDroneCrowd++/frames/scene_10/2/20.jpg",
+        "offset": 138314449
+      },
+      "node": "moving_scene_10__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 38,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_10/2.csv",
+      "clip": "scene_10/2",
+      "image_frame_one_based": 39,
+      "member": {
+        "bytes": 356998,
+        "compressed_bytes": 356612,
+        "compression": 8,
+        "crc32": 2542502292,
+        "name": "MovingDroneCrowd++/frames/scene_10/2/39.jpg",
+        "offset": 144996646
+      },
+      "node": "moving_scene_10__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_11/1.csv",
+      "clip": "scene_11/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 179674,
+        "compressed_bytes": 179093,
+        "compression": 8,
+        "crc32": 1880023413,
+        "name": "MovingDroneCrowd++/frames/scene_11/1/1.jpg",
+        "offset": 147138696
+      },
+      "node": "moving_scene_11__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 21,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_11/1.csv",
+      "clip": "scene_11/1",
+      "image_frame_one_based": 22,
+      "member": {
+        "bytes": 207940,
+        "compressed_bytes": 207798,
+        "compression": 8,
+        "crc32": 1757767333,
+        "name": "MovingDroneCrowd++/frames/scene_11/1/22.jpg",
+        "offset": 149902816
+      },
+      "node": "moving_scene_11__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 43,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_11/1.csv",
+      "clip": "scene_11/1",
+      "image_frame_one_based": 44,
+      "member": {
+        "bytes": 227120,
+        "compressed_bytes": 227002,
+        "compression": 8,
+        "crc32": 1351364350,
+        "name": "MovingDroneCrowd++/frames/scene_11/1/44.jpg",
+        "offset": 154992971
+      },
+      "node": "moving_scene_11__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_12/1.csv",
+      "clip": "scene_12/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 914570,
+        "compressed_bytes": 913912,
+        "compression": 8,
+        "crc32": 3812495659,
+        "name": "MovingDroneCrowd++/frames/scene_12/1/1.jpg",
+        "offset": 156149729
+      },
+      "node": "moving_scene_12__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 12,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_12/1.csv",
+      "clip": "scene_12/1",
+      "image_frame_one_based": 13,
+      "member": {
+        "bytes": 906912,
+        "compressed_bytes": 906977,
+        "compression": 8,
+        "crc32": 2867889446,
+        "name": "MovingDroneCrowd++/frames/scene_12/1/13.jpg",
+        "offset": 159788529
+      },
+      "node": "moving_scene_12__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 24,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_12/1.csv",
+      "clip": "scene_12/1",
+      "image_frame_one_based": 25,
+      "member": {
+        "bytes": 990645,
+        "compressed_bytes": 990509,
+        "compression": 8,
+        "crc32": 3066914318,
+        "name": "MovingDroneCrowd++/frames/scene_12/1/25.jpg",
+        "offset": 171941456
+      },
+      "node": "moving_scene_12__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_12/2.csv",
+      "clip": "scene_12/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 876142,
+        "compressed_bytes": 874699,
+        "compression": 8,
+        "crc32": 3349469324,
+        "name": "MovingDroneCrowd++/frames/scene_12/2/1.jpg",
+        "offset": 179482786
+      },
+      "node": "moving_scene_12__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 8,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_12/2.csv",
+      "clip": "scene_12/2",
+      "image_frame_one_based": 9,
+      "member": {
+        "bytes": 905427,
+        "compressed_bytes": 904963,
+        "compression": 8,
+        "crc32": 3181851044,
+        "name": "MovingDroneCrowd++/frames/scene_12/2/9.jpg",
+        "offset": 195302654
+      },
+      "node": "moving_scene_12__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 17,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_12/2.csv",
+      "clip": "scene_12/2",
+      "image_frame_one_based": 18,
+      "member": {
+        "bytes": 923308,
+        "compressed_bytes": 923359,
+        "compression": 8,
+        "crc32": 3570743744,
+        "name": "MovingDroneCrowd++/frames/scene_12/2/18.jpg",
+        "offset": 187749450
+      },
+      "node": "moving_scene_12__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_13/1.csv",
+      "clip": "scene_13/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 243995,
+        "compressed_bytes": 243754,
+        "compression": 8,
+        "crc32": 235480581,
+        "name": "MovingDroneCrowd++/frames/scene_13/1/1.jpg",
+        "offset": 196207933
+      },
+      "node": "moving_scene_13__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 33,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_13/1.csv",
+      "clip": "scene_13/1",
+      "image_frame_one_based": 34,
+      "member": {
+        "bytes": 240117,
+        "compressed_bytes": 240008,
+        "compression": 8,
+        "crc32": 1393775084,
+        "name": "MovingDroneCrowd++/frames/scene_13/1/34.jpg",
+        "offset": 202283068
+      },
+      "node": "moving_scene_13__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 66,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_13/1.csv",
+      "clip": "scene_13/1",
+      "image_frame_one_based": 67,
+      "member": {
+        "bytes": 190454,
+        "compressed_bytes": 190043,
+        "compression": 8,
+        "crc32": 1166355248,
+        "name": "MovingDroneCrowd++/frames/scene_13/1/67.jpg",
+        "offset": 210556453
+      },
+      "node": "moving_scene_13__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_13/2.csv",
+      "clip": "scene_13/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 244576,
+        "compressed_bytes": 244437,
+        "compression": 8,
+        "crc32": 3143040224,
+        "name": "MovingDroneCrowd++/frames/scene_13/2/1.jpg",
+        "offset": 211451169
+      },
+      "node": "moving_scene_13__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 14,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_13/2.csv",
+      "clip": "scene_13/2",
+      "image_frame_one_based": 15,
+      "member": {
+        "bytes": 203924,
+        "compressed_bytes": 203791,
+        "compression": 8,
+        "crc32": 2399894112,
+        "name": "MovingDroneCrowd++/frames/scene_13/2/15.jpg",
+        "offset": 212728421
+      },
+      "node": "moving_scene_13__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 28,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_13/2.csv",
+      "clip": "scene_13/2",
+      "image_frame_one_based": 29,
+      "member": {
+        "bytes": 197183,
+        "compressed_bytes": 197034,
+        "compression": 8,
+        "crc32": 1989301924,
+        "name": "MovingDroneCrowd++/frames/scene_13/2/29.jpg",
+        "offset": 215634487
+      },
+      "node": "moving_scene_13__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/1.csv",
+      "clip": "scene_14/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2667512,
+        "compressed_bytes": 2559601,
+        "compression": 8,
+        "crc32": 623189719,
+        "name": "MovingDroneCrowd++/frames/scene_14/1/1.jpg",
+        "offset": 217398638
+      },
+      "node": "moving_scene_14__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/1.csv",
+      "clip": "scene_14/1",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 2068606,
+        "compressed_bytes": 1967587,
+        "compression": 8,
+        "crc32": 2784673543,
+        "name": "MovingDroneCrowd++/frames/scene_14/1/42.jpg",
+        "offset": 303776338
+      },
+      "node": "moving_scene_14__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/1.csv",
+      "clip": "scene_14/1",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 2416423,
+        "compressed_bytes": 2314966,
+        "compression": 8,
+        "crc32": 404862959,
+        "name": "MovingDroneCrowd++/frames/scene_14/1/83.jpg",
+        "offset": 399360135
+      },
+      "node": "moving_scene_14__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/2.csv",
+      "clip": "scene_14/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2409399,
+        "compressed_bytes": 2307899,
+        "compression": 8,
+        "crc32": 2464973361,
+        "name": "MovingDroneCrowd++/frames/scene_14/2/1.jpg",
+        "offset": 404432567
+      },
+      "node": "moving_scene_14__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/2.csv",
+      "clip": "scene_14/2",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 2607180,
+        "compressed_bytes": 2505971,
+        "compression": 8,
+        "crc32": 4176875220,
+        "name": "MovingDroneCrowd++/frames/scene_14/2/42.jpg",
+        "offset": 490994817
+      },
+      "node": "moving_scene_14__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/2.csv",
+      "clip": "scene_14/2",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 2551114,
+        "compressed_bytes": 2452574,
+        "compression": 8,
+        "crc32": 3486420264,
+        "name": "MovingDroneCrowd++/frames/scene_14/2/83.jpg",
+        "offset": 601427820
+      },
+      "node": "moving_scene_14__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/3.csv",
+      "clip": "scene_14/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2588097,
+        "compressed_bytes": 2488393,
+        "compression": 8,
+        "crc32": 3839797411,
+        "name": "MovingDroneCrowd++/frames/scene_14/3/1.jpg",
+        "offset": 606148562
+      },
+      "node": "moving_scene_14__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 27,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/3.csv",
+      "clip": "scene_14/3",
+      "image_frame_one_based": 28,
+      "member": {
+        "bytes": 2735903,
+        "compressed_bytes": 2636896,
+        "compression": 8,
+        "crc32": 4199848980,
+        "name": "MovingDroneCrowd++/frames/scene_14/3/28.jpg",
+        "offset": 657594700
+      },
+      "node": "moving_scene_14__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 55,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_14/3.csv",
+      "clip": "scene_14/3",
+      "image_frame_one_based": 56,
+      "member": {
+        "bytes": 2487453,
+        "compressed_bytes": 2379548,
+        "compression": 8,
+        "crc32": 3896675519,
+        "name": "MovingDroneCrowd++/frames/scene_14/3/56.jpg",
+        "offset": 738697496
+      },
+      "node": "moving_scene_14__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_15/1.csv",
+      "clip": "scene_15/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1190951,
+        "compressed_bytes": 1187723,
+        "compression": 8,
+        "crc32": 2174826494,
+        "name": "MovingDroneCrowd++/frames/scene_15/1/1.jpg",
+        "offset": 751334461
+      },
+      "node": "moving_scene_15__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 14,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_15/1.csv",
+      "clip": "scene_15/1",
+      "image_frame_one_based": 15,
+      "member": {
+        "bytes": 1216885,
+        "compressed_bytes": 1215029,
+        "compression": 8,
+        "crc32": 3090718581,
+        "name": "MovingDroneCrowd++/frames/scene_15/1/15.jpg",
+        "offset": 758604865
+      },
+      "node": "moving_scene_15__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 29,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_15/1.csv",
+      "clip": "scene_15/1",
+      "image_frame_one_based": 30,
+      "member": {
+        "bytes": 1007238,
+        "compressed_bytes": 1001919,
+        "compression": 8,
+        "crc32": 2341875292,
+        "name": "MovingDroneCrowd++/frames/scene_15/1/30.jpg",
+        "offset": 777690451
+      },
+      "node": "moving_scene_15__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_15/2.csv",
+      "clip": "scene_15/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2702609,
+        "compressed_bytes": 2702710,
+        "compression": 8,
+        "crc32": 2891833074,
+        "name": "MovingDroneCrowd++/frames/scene_15/2/1.jpg",
+        "offset": 785713084
+      },
+      "node": "moving_scene_15__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 8,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_15/2.csv",
+      "clip": "scene_15/2",
+      "image_frame_one_based": 9,
+      "member": {
+        "bytes": 2728540,
+        "compressed_bytes": 2728772,
+        "compression": 8,
+        "crc32": 1650339988,
+        "name": "MovingDroneCrowd++/frames/scene_15/2/9.jpg",
+        "offset": 831198395
+      },
+      "node": "moving_scene_15__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 17,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_15/2.csv",
+      "clip": "scene_15/2",
+      "image_frame_one_based": 18,
+      "member": {
+        "bytes": 2723480,
+        "compressed_bytes": 2723551,
+        "compression": 8,
+        "crc32": 3404612648,
+        "name": "MovingDroneCrowd++/frames/scene_15/2/18.jpg",
+        "offset": 810016106
+      },
+      "node": "moving_scene_15__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/1.csv",
+      "clip": "scene_16/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2548955,
+        "compressed_bytes": 2548551,
+        "compression": 8,
+        "crc32": 175354846,
+        "name": "MovingDroneCrowd++/frames/scene_16/1/1.jpg",
+        "offset": 833927483
+      },
+      "node": "moving_scene_16__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 9,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/1.csv",
+      "clip": "scene_16/1",
+      "image_frame_one_based": 10,
+      "member": {
+        "bytes": 2390462,
+        "compressed_bytes": 2390959,
+        "compression": 8,
+        "crc32": 3865875086,
+        "name": "MovingDroneCrowd++/frames/scene_16/1/10.jpg",
+        "offset": 836476154
+      },
+      "node": "moving_scene_16__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 19,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/1.csv",
+      "clip": "scene_16/1",
+      "image_frame_one_based": 20,
+      "member": {
+        "bytes": 2251282,
+        "compressed_bytes": 2251760,
+        "compression": 8,
+        "crc32": 1925109101,
+        "name": "MovingDroneCrowd++/frames/scene_16/1/20.jpg",
+        "offset": 862478225
+      },
+      "node": "moving_scene_16__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/2.csv",
+      "clip": "scene_16/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2696440,
+        "compressed_bytes": 2692795,
+        "compression": 8,
+        "crc32": 152641296,
+        "name": "MovingDroneCrowd++/frames/scene_16/2/1.jpg",
+        "offset": 881919807
+      },
+      "node": "moving_scene_16__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 11,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/2.csv",
+      "clip": "scene_16/2",
+      "image_frame_one_based": 12,
+      "member": {
+        "bytes": 2246469,
+        "compressed_bytes": 2246883,
+        "compression": 8,
+        "crc32": 1820421136,
+        "name": "MovingDroneCrowd++/frames/scene_16/2/12.jpg",
+        "offset": 889210183
+      },
+      "node": "moving_scene_16__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/2.csv",
+      "clip": "scene_16/2",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 1866735,
+        "compressed_bytes": 1867007,
+        "compression": 8,
+        "crc32": 822672595,
+        "name": "MovingDroneCrowd++/frames/scene_16/2/23.jpg",
+        "offset": 913255433
+      },
+      "node": "moving_scene_16__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/3.csv",
+      "clip": "scene_16/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1779218,
+        "compressed_bytes": 1778552,
+        "compression": 8,
+        "crc32": 1006640448,
+        "name": "MovingDroneCrowd++/frames/scene_16/3/1.jpg",
+        "offset": 932748343
+      },
+      "node": "moving_scene_16__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/3.csv",
+      "clip": "scene_16/3",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 2022605,
+        "compressed_bytes": 2022898,
+        "compression": 8,
+        "crc32": 488245768,
+        "name": "MovingDroneCrowd++/frames/scene_16/3/23.jpg",
+        "offset": 961302347
+      },
+      "node": "moving_scene_16__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 45,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/3.csv",
+      "clip": "scene_16/3",
+      "image_frame_one_based": 46,
+      "member": {
+        "bytes": 2078932,
+        "compressed_bytes": 2079362,
+        "compression": 8,
+        "crc32": 500770499,
+        "name": "MovingDroneCrowd++/frames/scene_16/3/46.jpg",
+        "offset": 1011532010
+      },
+      "node": "moving_scene_16__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/4.csv",
+      "clip": "scene_16/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2394132,
+        "compressed_bytes": 2391575,
+        "compression": 8,
+        "crc32": 1631662839,
+        "name": "MovingDroneCrowd++/frames/scene_16/4/1.jpg",
+        "offset": 1022533290
+      },
+      "node": "moving_scene_16__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 11,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/4.csv",
+      "clip": "scene_16/4",
+      "image_frame_one_based": 12,
+      "member": {
+        "bytes": 1896448,
+        "compressed_bytes": 1896658,
+        "compression": 8,
+        "crc32": 972476569,
+        "name": "MovingDroneCrowd++/frames/scene_16/4/12.jpg",
+        "offset": 1028919954
+      },
+      "node": "moving_scene_16__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/4.csv",
+      "clip": "scene_16/4",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 1793327,
+        "compressed_bytes": 1793372,
+        "compression": 8,
+        "crc32": 193439379,
+        "name": "MovingDroneCrowd++/frames/scene_16/4/24.jpg",
+        "offset": 1053015693
+      },
+      "node": "moving_scene_16__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/5.csv",
+      "clip": "scene_16/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1986533,
+        "compressed_bytes": 1986109,
+        "compression": 8,
+        "crc32": 2383792721,
+        "name": "MovingDroneCrowd++/frames/scene_16/5/1.jpg",
+        "offset": 1069766688
+      },
+      "node": "moving_scene_16__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 10,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/5.csv",
+      "clip": "scene_16/5",
+      "image_frame_one_based": 11,
+      "member": {
+        "bytes": 1805858,
+        "compressed_bytes": 1806137,
+        "compression": 8,
+        "crc32": 1638065481,
+        "name": "MovingDroneCrowd++/frames/scene_16/5/11.jpg",
+        "offset": 1073539207
+      },
+      "node": "moving_scene_16__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 20,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_16/5.csv",
+      "clip": "scene_16/5",
+      "image_frame_one_based": 21,
+      "member": {
+        "bytes": 1832544,
+        "compressed_bytes": 1832888,
+        "compression": 8,
+        "crc32": 1124994323,
+        "name": "MovingDroneCrowd++/frames/scene_16/5/21.jpg",
+        "offset": 1093426263
+      },
+      "node": "moving_scene_16__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/1.csv",
+      "clip": "scene_17/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2705366,
+        "compressed_bytes": 2621759,
+        "compression": 8,
+        "crc32": 844319963,
+        "name": "MovingDroneCrowd++/frames/scene_17/1/1.jpg",
+        "offset": 1108102642
+      },
+      "node": "moving_scene_17__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/1.csv",
+      "clip": "scene_17/1",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 3176283,
+        "compressed_bytes": 3102166,
+        "compression": 8,
+        "crc32": 3448178761,
+        "name": "MovingDroneCrowd++/frames/scene_17/1/42.jpg",
+        "offset": 1213801064
+      },
+      "node": "moving_scene_17__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/1.csv",
+      "clip": "scene_17/1",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 2911543,
+        "compressed_bytes": 2833293,
+        "compression": 8,
+        "crc32": 734196335,
+        "name": "MovingDroneCrowd++/frames/scene_17/1/83.jpg",
+        "offset": 1350658221
+      },
+      "node": "moving_scene_17__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/2.csv",
+      "clip": "scene_17/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2928105,
+        "compressed_bytes": 2851589,
+        "compression": 8,
+        "crc32": 1881558690,
+        "name": "MovingDroneCrowd++/frames/scene_17/2/1.jpg",
+        "offset": 1356305069
+      },
+      "node": "moving_scene_17__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/2.csv",
+      "clip": "scene_17/2",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 2850997,
+        "compressed_bytes": 2769923,
+        "compression": 8,
+        "crc32": 1762322810,
+        "name": "MovingDroneCrowd++/frames/scene_17/2/42.jpg",
+        "offset": 1456183072
+      },
+      "node": "moving_scene_17__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/2.csv",
+      "clip": "scene_17/2",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 2921570,
+        "compressed_bytes": 2842930,
+        "compression": 8,
+        "crc32": 2987999818,
+        "name": "MovingDroneCrowd++/frames/scene_17/2/83.jpg",
+        "offset": 1583380009
+      },
+      "node": "moving_scene_17__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/3.csv",
+      "clip": "scene_17/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2951633,
+        "compressed_bytes": 2874444,
+        "compression": 8,
+        "crc32": 1816316049,
+        "name": "MovingDroneCrowd++/frames/scene_17/3/1.jpg",
+        "offset": 1589041892
+      },
+      "node": "moving_scene_17__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/3.csv",
+      "clip": "scene_17/3",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 3054836,
+        "compressed_bytes": 2977772,
+        "compression": 8,
+        "crc32": 1202585150,
+        "name": "MovingDroneCrowd++/frames/scene_17/3/42.jpg",
+        "offset": 1696519810
+      },
+      "node": "moving_scene_17__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_17/3.csv",
+      "clip": "scene_17/3",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 3145980,
+        "compressed_bytes": 3060243,
+        "compression": 8,
+        "crc32": 1800939975,
+        "name": "MovingDroneCrowd++/frames/scene_17/3/83.jpg",
+        "offset": 1828844347
+      },
+      "node": "moving_scene_17__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_18/1.csv",
+      "clip": "scene_18/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1063376,
+        "compressed_bytes": 1063218,
+        "compression": 8,
+        "crc32": 1454294653,
+        "name": "MovingDroneCrowd++/frames/scene_18/1/1.jpg",
+        "offset": 1834757051
+      },
+      "node": "moving_scene_18__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 56,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_18/1.csv",
+      "clip": "scene_18/1",
+      "image_frame_one_based": 57,
+      "member": {
+        "bytes": 1006661,
+        "compressed_bytes": 1006786,
+        "compression": 8,
+        "crc32": 2697062909,
+        "name": "MovingDroneCrowd++/frames/scene_18/1/57.jpg",
+        "offset": 1901028110
+      },
+      "node": "moving_scene_18__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 112,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_18/1.csv",
+      "clip": "scene_18/1",
+      "image_frame_one_based": 113,
+      "member": {
+        "bytes": 992733,
+        "compressed_bytes": 992824,
+        "compression": 8,
+        "crc32": 1217460709,
+        "name": "MovingDroneCrowd++/frames/scene_18/1/113.jpg",
+        "offset": 1851106857
+      },
+      "node": "moving_scene_18__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/1.csv",
+      "clip": "scene_19/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 303011,
+        "compressed_bytes": 302913,
+        "compression": 8,
+        "crc32": 69479975,
+        "name": "MovingDroneCrowd++/frames/scene_19/1/1.jpg",
+        "offset": 1948286987
+      },
+      "node": "moving_scene_19__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 39,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/1.csv",
+      "clip": "scene_19/1",
+      "image_frame_one_based": 40,
+      "member": {
+        "bytes": 280681,
+        "compressed_bytes": 280556,
+        "compression": 8,
+        "crc32": 1289959075,
+        "name": "MovingDroneCrowd++/frames/scene_19/1/40.jpg",
+        "offset": 1958179247
+      },
+      "node": "moving_scene_19__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 79,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/1.csv",
+      "clip": "scene_19/1",
+      "image_frame_one_based": 80,
+      "member": {
+        "bytes": 319692,
+        "compressed_bytes": 319602,
+        "compression": 8,
+        "crc32": 3341143224,
+        "name": "MovingDroneCrowd++/frames/scene_19/1/80.jpg",
+        "offset": 1971643311
+      },
+      "node": "moving_scene_19__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/2.csv",
+      "clip": "scene_19/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1419427,
+        "compressed_bytes": 1385318,
+        "compression": 8,
+        "crc32": 2204581796,
+        "name": "MovingDroneCrowd++/frames/scene_19/2/1.jpg",
+        "offset": 1972267040
+      },
+      "node": "moving_scene_19__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 78,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/2.csv",
+      "clip": "scene_19/2",
+      "image_frame_one_based": 79,
+      "member": {
+        "bytes": 1426422,
+        "compressed_bytes": 1395641,
+        "compression": 8,
+        "crc32": 1699766439,
+        "name": "MovingDroneCrowd++/frames/scene_19/2/79.jpg",
+        "offset": 2145517589
+      },
+      "node": "moving_scene_19__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 157,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/2.csv",
+      "clip": "scene_19/2",
+      "image_frame_one_based": 158,
+      "member": {
+        "bytes": 1206254,
+        "compressed_bytes": 1179634,
+        "compression": 8,
+        "crc32": 1531196483,
+        "name": "MovingDroneCrowd++/frames/scene_19/2/158.jpg",
+        "offset": 2051152957
+      },
+      "node": "moving_scene_19__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/3.csv",
+      "clip": "scene_19/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1249348,
+        "compressed_bytes": 1223304,
+        "compression": 8,
+        "crc32": 1251477145,
+        "name": "MovingDroneCrowd++/frames/scene_19/3/1.jpg",
+        "offset": 2175112529
+      },
+      "node": "moving_scene_19__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 33,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/3.csv",
+      "clip": "scene_19/3",
+      "image_frame_one_based": 34,
+      "member": {
+        "bytes": 1308024,
+        "compressed_bytes": 1282825,
+        "compression": 8,
+        "crc32": 3541356707,
+        "name": "MovingDroneCrowd++/frames/scene_19/3/34.jpg",
+        "offset": 2208195608
+      },
+      "node": "moving_scene_19__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 66,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/3.csv",
+      "clip": "scene_19/3",
+      "image_frame_one_based": 67,
+      "member": {
+        "bytes": 1391672,
+        "compressed_bytes": 1366284,
+        "compression": 8,
+        "crc32": 304900118,
+        "name": "MovingDroneCrowd++/frames/scene_19/3/67.jpg",
+        "offset": 2255941701
+      },
+      "node": "moving_scene_19__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/4.csv",
+      "clip": "scene_19/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1088178,
+        "compressed_bytes": 1065744,
+        "compression": 8,
+        "crc32": 3853811002,
+        "name": "MovingDroneCrowd++/frames/scene_19/4/1.jpg",
+        "offset": 2260871618
+      },
+      "node": "moving_scene_19__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 32,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/4.csv",
+      "clip": "scene_19/4",
+      "image_frame_one_based": 33,
+      "member": {
+        "bytes": 1168364,
+        "compressed_bytes": 1147561,
+        "compression": 8,
+        "crc32": 1682829346,
+        "name": "MovingDroneCrowd++/frames/scene_19/4/33.jpg",
+        "offset": 2291199909
+      },
+      "node": "moving_scene_19__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 64,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/4.csv",
+      "clip": "scene_19/4",
+      "image_frame_one_based": 65,
+      "member": {
+        "bytes": 1508584,
+        "compressed_bytes": 1479039,
+        "compression": 8,
+        "crc32": 2617288443,
+        "name": "MovingDroneCrowd++/frames/scene_19/4/65.jpg",
+        "offset": 2337133094
+      },
+      "node": "moving_scene_19__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/5.csv",
+      "clip": "scene_19/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1362552,
+        "compressed_bytes": 1334464,
+        "compression": 8,
+        "crc32": 359793416,
+        "name": "MovingDroneCrowd++/frames/scene_19/5/1.jpg",
+        "offset": 2341928572
+      },
+      "node": "moving_scene_19__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 83,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/5.csv",
+      "clip": "scene_19/5",
+      "image_frame_one_based": 84,
+      "member": {
+        "bytes": 1169473,
+        "compressed_bytes": 1149261,
+        "compression": 8,
+        "crc32": 1590476813,
+        "name": "MovingDroneCrowd++/frames/scene_19/5/84.jpg",
+        "offset": 2509220653
+      },
+      "node": "moving_scene_19__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 167,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_19/5.csv",
+      "clip": "scene_19/5",
+      "image_frame_one_based": 168,
+      "member": {
+        "bytes": 1208549,
+        "compressed_bytes": 1187144,
+        "compression": 8,
+        "crc32": 33463142,
+        "name": "MovingDroneCrowd++/frames/scene_19/5/168.jpg",
+        "offset": 2422787897
+      },
+      "node": "moving_scene_19__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/1.csv",
+      "clip": "scene_2/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 293739,
+        "compressed_bytes": 293369,
+        "compression": 8,
+        "crc32": 3237301624,
+        "name": "MovingDroneCrowd++/frames/scene_2/1/1.jpg",
+        "offset": 2528470399
+      },
+      "node": "moving_scene_2__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 8,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/1.csv",
+      "clip": "scene_2/1",
+      "image_frame_one_based": 9,
+      "member": {
+        "bytes": 298663,
+        "compressed_bytes": 298429,
+        "compression": 8,
+        "crc32": 2167025235,
+        "name": "MovingDroneCrowd++/frames/scene_2/1/9.jpg",
+        "offset": 2533200204
+      },
+      "node": "moving_scene_2__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 16,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/1.csv",
+      "clip": "scene_2/1",
+      "image_frame_one_based": 17,
+      "member": {
+        "bytes": 299668,
+        "compressed_bytes": 299498,
+        "compression": 8,
+        "crc32": 1175157362,
+        "name": "MovingDroneCrowd++/frames/scene_2/1/17.jpg",
+        "offset": 2530826794
+      },
+      "node": "moving_scene_2__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/2.csv",
+      "clip": "scene_2/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 253038,
+        "compressed_bytes": 252654,
+        "compression": 8,
+        "crc32": 2139303340,
+        "name": "MovingDroneCrowd++/frames/scene_2/2/1.jpg",
+        "offset": 2533498850
+      },
+      "node": "moving_scene_2__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 4,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/2.csv",
+      "clip": "scene_2/2",
+      "image_frame_one_based": 5,
+      "member": {
+        "bytes": 265060,
+        "compressed_bytes": 264854,
+        "compression": 8,
+        "crc32": 704678765,
+        "name": "MovingDroneCrowd++/frames/scene_2/2/5.jpg",
+        "offset": 2534845276
+      },
+      "node": "moving_scene_2__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 9,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/2.csv",
+      "clip": "scene_2/2",
+      "image_frame_one_based": 10,
+      "member": {
+        "bytes": 313012,
+        "compressed_bytes": 312474,
+        "compression": 8,
+        "crc32": 1233494961,
+        "name": "MovingDroneCrowd++/frames/scene_2/2/10.jpg",
+        "offset": 2533751623
+      },
+      "node": "moving_scene_2__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/3.csv",
+      "clip": "scene_2/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 323062,
+        "compressed_bytes": 322081,
+        "compression": 8,
+        "crc32": 2881156357,
+        "name": "MovingDroneCrowd++/frames/scene_2/3/1.jpg",
+        "offset": 2536284099
+      },
+      "node": "moving_scene_2__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 7,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/3.csv",
+      "clip": "scene_2/3",
+      "image_frame_one_based": 8,
+      "member": {
+        "bytes": 315346,
+        "compressed_bytes": 314602,
+        "compression": 8,
+        "crc32": 1162164333,
+        "name": "MovingDroneCrowd++/frames/scene_2/3/8.jpg",
+        "offset": 2540490030
+      },
+      "node": "moving_scene_2__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 15,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_2/3.csv",
+      "clip": "scene_2/3",
+      "image_frame_one_based": 16,
+      "member": {
+        "bytes": 288282,
+        "compressed_bytes": 287964,
+        "compression": 8,
+        "crc32": 2557055062,
+        "name": "MovingDroneCrowd++/frames/scene_2/3/16.jpg",
+        "offset": 2538291627
+      },
+      "node": "moving_scene_2__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_20/1.csv",
+      "clip": "scene_20/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 444430,
+        "compressed_bytes": 442941,
+        "compression": 8,
+        "crc32": 1136499068,
+        "name": "MovingDroneCrowd++/frames/scene_20/1/1.jpg",
+        "offset": 2541100327
+      },
+      "node": "moving_scene_20__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 30,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_20/1.csv",
+      "clip": "scene_20/1",
+      "image_frame_one_based": 31,
+      "member": {
+        "bytes": 423689,
+        "compressed_bytes": 421653,
+        "compression": 8,
+        "crc32": 2394311383,
+        "name": "MovingDroneCrowd++/frames/scene_20/1/31.jpg",
+        "offset": 2551336263
+      },
+      "node": "moving_scene_20__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 60,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_20/1.csv",
+      "clip": "scene_20/1",
+      "image_frame_one_based": 61,
+      "member": {
+        "bytes": 370456,
+        "compressed_bytes": 369186,
+        "compression": 8,
+        "crc32": 3508989721,
+        "name": "MovingDroneCrowd++/frames/scene_20/1/61.jpg",
+        "offset": 2564473058
+      },
+      "node": "moving_scene_20__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/1.csv",
+      "clip": "scene_21/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 285347,
+        "compressed_bytes": 284584,
+        "compression": 8,
+        "crc32": 4084707070,
+        "name": "MovingDroneCrowd++/frames/scene_21/1/1.jpg",
+        "offset": 2566107291
+      },
+      "node": "moving_scene_21__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 40,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/1.csv",
+      "clip": "scene_21/1",
+      "image_frame_one_based": 41,
+      "member": {
+        "bytes": 233002,
+        "compressed_bytes": 231613,
+        "compression": 8,
+        "crc32": 2250160490,
+        "name": "MovingDroneCrowd++/frames/scene_21/1/41.jpg",
+        "offset": 2576295650
+      },
+      "node": "moving_scene_21__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 81,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/1.csv",
+      "clip": "scene_21/1",
+      "image_frame_one_based": 82,
+      "member": {
+        "bytes": 289060,
+        "compressed_bytes": 288732,
+        "compression": 8,
+        "crc32": 4003713768,
+        "name": "MovingDroneCrowd++/frames/scene_21/1/82.jpg",
+        "offset": 2588326489
+      },
+      "node": "moving_scene_21__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/2.csv",
+      "clip": "scene_21/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 547875,
+        "compressed_bytes": 547246,
+        "compression": 8,
+        "crc32": 3177876949,
+        "name": "MovingDroneCrowd++/frames/scene_21/2/1.jpg",
+        "offset": 2588926934
+      },
+      "node": "moving_scene_21__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/2.csv",
+      "clip": "scene_21/2",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 644474,
+        "compressed_bytes": 643357,
+        "compression": 8,
+        "crc32": 515926386,
+        "name": "MovingDroneCrowd++/frames/scene_21/2/23.jpg",
+        "offset": 2597969066
+      },
+      "node": "moving_scene_21__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 45,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/2.csv",
+      "clip": "scene_21/2",
+      "image_frame_one_based": 46,
+      "member": {
+        "bytes": 477383,
+        "compressed_bytes": 477266,
+        "compression": 8,
+        "crc32": 4262959899,
+        "name": "MovingDroneCrowd++/frames/scene_21/2/46.jpg",
+        "offset": 2613251287
+      },
+      "node": "moving_scene_21__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/3.csv",
+      "clip": "scene_21/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 400562,
+        "compressed_bytes": 398609,
+        "compression": 8,
+        "crc32": 3232127234,
+        "name": "MovingDroneCrowd++/frames/scene_21/3/1.jpg",
+        "offset": 2616563692
+      },
+      "node": "moving_scene_21__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 42,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/3.csv",
+      "clip": "scene_21/3",
+      "image_frame_one_based": 43,
+      "member": {
+        "bytes": 469463,
+        "compressed_bytes": 469172,
+        "compression": 8,
+        "crc32": 1660961600,
+        "name": "MovingDroneCrowd++/frames/scene_21/3/43.jpg",
+        "offset": 2632342322
+      },
+      "node": "moving_scene_21__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 84,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_21/3.csv",
+      "clip": "scene_21/3",
+      "image_frame_one_based": 85,
+      "member": {
+        "bytes": 488400,
+        "compressed_bytes": 488260,
+        "compression": 8,
+        "crc32": 705375380,
+        "name": "MovingDroneCrowd++/frames/scene_21/3/85.jpg",
+        "offset": 2653888088
+      },
+      "node": "moving_scene_21__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/1.csv",
+      "clip": "scene_22/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 236954,
+        "compressed_bytes": 236710,
+        "compression": 8,
+        "crc32": 866192738,
+        "name": "MovingDroneCrowd++/frames/scene_22/1/1.jpg",
+        "offset": 2654817876
+      },
+      "node": "moving_scene_22__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 92,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/1.csv",
+      "clip": "scene_22/1",
+      "image_frame_one_based": 93,
+      "member": {
+        "bytes": 216526,
+        "compressed_bytes": 216208,
+        "compression": 8,
+        "crc32": 2600808559,
+        "name": "MovingDroneCrowd++/frames/scene_22/1/93.jpg",
+        "offset": 2697319441
+      },
+      "node": "moving_scene_22__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 184,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/1.csv",
+      "clip": "scene_22/1",
+      "image_frame_one_based": 185,
+      "member": {
+        "bytes": 218359,
+        "compressed_bytes": 217725,
+        "compression": 8,
+        "crc32": 509015466,
+        "name": "MovingDroneCrowd++/frames/scene_22/1/185.jpg",
+        "offset": 2677913903
+      },
+      "node": "moving_scene_22__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/2.csv",
+      "clip": "scene_22/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 812833,
+        "compressed_bytes": 787668,
+        "compression": 8,
+        "crc32": 2811604785,
+        "name": "MovingDroneCrowd++/frames/scene_22/2/1.jpg",
+        "offset": 2698851491
+      },
+      "node": "moving_scene_22__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 44,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/2.csv",
+      "clip": "scene_22/2",
+      "image_frame_one_based": 45,
+      "member": {
+        "bytes": 813425,
+        "compressed_bytes": 791653,
+        "compression": 8,
+        "crc32": 855909035,
+        "name": "MovingDroneCrowd++/frames/scene_22/2/45.jpg",
+        "offset": 2730405791
+      },
+      "node": "moving_scene_22__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 89,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/2.csv",
+      "clip": "scene_22/2",
+      "image_frame_one_based": 90,
+      "member": {
+        "bytes": 932190,
+        "compressed_bytes": 909113,
+        "compression": 8,
+        "crc32": 4115206404,
+        "name": "MovingDroneCrowd++/frames/scene_22/2/90.jpg",
+        "offset": 2775585941
+      },
+      "node": "moving_scene_22__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/3.csv",
+      "clip": "scene_22/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 221688,
+        "compressed_bytes": 221543,
+        "compression": 8,
+        "crc32": 403239421,
+        "name": "MovingDroneCrowd++/frames/scene_22/3/1.jpg",
+        "offset": 2776495274
+      },
+      "node": "moving_scene_22__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 51,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/3.csv",
+      "clip": "scene_22/3",
+      "image_frame_one_based": 52,
+      "member": {
+        "bytes": 235452,
+        "compressed_bytes": 235334,
+        "compression": 8,
+        "crc32": 3927284179,
+        "name": "MovingDroneCrowd++/frames/scene_22/3/52.jpg",
+        "offset": 2788446673
+      },
+      "node": "moving_scene_22__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 102,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/3.csv",
+      "clip": "scene_22/3",
+      "image_frame_one_based": 103,
+      "member": {
+        "bytes": 212808,
+        "compressed_bytes": 212695,
+        "compression": 8,
+        "crc32": 324402828,
+        "name": "MovingDroneCrowd++/frames/scene_22/3/103.jpg",
+        "offset": 2777612741
+      },
+      "node": "moving_scene_22__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/4.csv",
+      "clip": "scene_22/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 195520,
+        "compressed_bytes": 195394,
+        "compression": 8,
+        "crc32": 2389614537,
+        "name": "MovingDroneCrowd++/frames/scene_22/4/1.jpg",
+        "offset": 2800473600
+      },
+      "node": "moving_scene_22__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 62,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/4.csv",
+      "clip": "scene_22/4",
+      "image_frame_one_based": 63,
+      "member": {
+        "bytes": 164759,
+        "compressed_bytes": 164608,
+        "compression": 8,
+        "crc32": 4073157475,
+        "name": "MovingDroneCrowd++/frames/scene_22/4/63.jpg",
+        "offset": 2816586790
+      },
+      "node": "moving_scene_22__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 124,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/4.csv",
+      "clip": "scene_22/4",
+      "image_frame_one_based": 125,
+      "member": {
+        "bytes": 215656,
+        "compressed_bytes": 215533,
+        "compression": 8,
+        "crc32": 3771215459,
+        "name": "MovingDroneCrowd++/frames/scene_22/4/125.jpg",
+        "offset": 2806016163
+      },
+      "node": "moving_scene_22__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/5.csv",
+      "clip": "scene_22/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 221587,
+        "compressed_bytes": 221239,
+        "compression": 8,
+        "crc32": 3211829407,
+        "name": "MovingDroneCrowd++/frames/scene_22/5/1.jpg",
+        "offset": 2823620474
+      },
+      "node": "moving_scene_22__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 48,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/5.csv",
+      "clip": "scene_22/5",
+      "image_frame_one_based": 49,
+      "member": {
+        "bytes": 266336,
+        "compressed_bytes": 266194,
+        "compression": 8,
+        "crc32": 2590105529,
+        "name": "MovingDroneCrowd++/frames/scene_22/5/49.jpg",
+        "offset": 2835320253
+      },
+      "node": "moving_scene_22__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 96,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/5.csv",
+      "clip": "scene_22/5",
+      "image_frame_one_based": 97,
+      "member": {
+        "bytes": 240602,
+        "compressed_bytes": 240470,
+        "compression": 8,
+        "crc32": 937804075,
+        "name": "MovingDroneCrowd++/frames/scene_22/5/97.jpg",
+        "offset": 2848732558
+      },
+      "node": "moving_scene_22__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/6.csv",
+      "clip": "scene_22/6",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 233477,
+        "compressed_bytes": 233358,
+        "compression": 8,
+        "crc32": 1081113655,
+        "name": "MovingDroneCrowd++/frames/scene_22/6/1.jpg",
+        "offset": 2848973248
+      },
+      "node": "moving_scene_22__6",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/6.csv",
+      "clip": "scene_22/6",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 240398,
+        "compressed_bytes": 240280,
+        "compression": 8,
+        "crc32": 798627778,
+        "name": "MovingDroneCrowd++/frames/scene_22/6/24.jpg",
+        "offset": 2852800086
+      },
+      "node": "moving_scene_22__6",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 46,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/6.csv",
+      "clip": "scene_22/6",
+      "image_frame_one_based": 47,
+      "member": {
+        "bytes": 248543,
+        "compressed_bytes": 248372,
+        "compression": 8,
+        "crc32": 697488288,
+        "name": "MovingDroneCrowd++/frames/scene_22/6/47.jpg",
+        "offset": 2858822527
+      },
+      "node": "moving_scene_22__6",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/7.csv",
+      "clip": "scene_22/7",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 224377,
+        "compressed_bytes": 224266,
+        "compression": 8,
+        "crc32": 1735888696,
+        "name": "MovingDroneCrowd++/frames/scene_22/7/1.jpg",
+        "offset": 2860270833
+      },
+      "node": "moving_scene_22__7",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 57,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/7.csv",
+      "clip": "scene_22/7",
+      "image_frame_one_based": 58,
+      "member": {
+        "bytes": 201561,
+        "compressed_bytes": 201436,
+        "compression": 8,
+        "crc32": 3590102783,
+        "name": "MovingDroneCrowd++/frames/scene_22/7/58.jpg",
+        "offset": 2874705028
+      },
+      "node": "moving_scene_22__7",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 115,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_22/7.csv",
+      "clip": "scene_22/7",
+      "image_frame_one_based": 116,
+      "member": {
+        "bytes": 208566,
+        "compressed_bytes": 208446,
+        "compression": 8,
+        "crc32": 1378549247,
+        "name": "MovingDroneCrowd++/frames/scene_22/7/116.jpg",
+        "offset": 2864204175
+      },
+      "node": "moving_scene_22__7",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_23/1.csv",
+      "clip": "scene_23/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 848699,
+        "compressed_bytes": 848563,
+        "compression": 8,
+        "crc32": 675638469,
+        "name": "MovingDroneCrowd++/frames/scene_23/1/1.jpg",
+        "offset": 2884389468
+      },
+      "node": "moving_scene_23__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 14,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_23/1.csv",
+      "clip": "scene_23/1",
+      "image_frame_one_based": 15,
+      "member": {
+        "bytes": 711949,
+        "compressed_bytes": 711750,
+        "compression": 8,
+        "crc32": 233783128,
+        "name": "MovingDroneCrowd++/frames/scene_23/1/15.jpg",
+        "offset": 2888819351
+      },
+      "node": "moving_scene_23__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 29,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_23/1.csv",
+      "clip": "scene_23/1",
+      "image_frame_one_based": 30,
+      "member": {
+        "bytes": 752311,
+        "compressed_bytes": 752151,
+        "compression": 8,
+        "crc32": 301105283,
+        "name": "MovingDroneCrowd++/frames/scene_23/1/30.jpg",
+        "offset": 2901006275
+      },
+      "node": "moving_scene_23__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/1.csv",
+      "clip": "scene_24/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 3828409,
+        "compressed_bytes": 3825750,
+        "compression": 8,
+        "crc32": 1480444433,
+        "name": "MovingDroneCrowd++/frames/scene_24/1/1.jpg",
+        "offset": 2906154631
+      },
+      "node": "moving_scene_24__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/1.csv",
+      "clip": "scene_24/1",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 3109538,
+        "compressed_bytes": 3105885,
+        "compression": 8,
+        "crc32": 846485103,
+        "name": "MovingDroneCrowd++/frames/scene_24/1/42.jpg",
+        "offset": 3022157396
+      },
+      "node": "moving_scene_24__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 83,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/1.csv",
+      "clip": "scene_24/1",
+      "image_frame_one_based": 84,
+      "member": {
+        "bytes": 2634929,
+        "compressed_bytes": 2633054,
+        "compression": 8,
+        "crc32": 2766620973,
+        "name": "MovingDroneCrowd++/frames/scene_24/1/84.jpg",
+        "offset": 3153418226
+      },
+      "node": "moving_scene_24__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/2.csv",
+      "clip": "scene_24/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 3293029,
+        "compressed_bytes": 3280322,
+        "compression": 8,
+        "crc32": 922185290,
+        "name": "MovingDroneCrowd++/frames/scene_24/2/1.jpg",
+        "offset": 3159248417
+      },
+      "node": "moving_scene_24__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 49,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/2.csv",
+      "clip": "scene_24/2",
+      "image_frame_one_based": 50,
+      "member": {
+        "bytes": 3391031,
+        "compressed_bytes": 3383844,
+        "compression": 8,
+        "crc32": 2897001799,
+        "name": "MovingDroneCrowd++/frames/scene_24/2/50.jpg",
+        "offset": 3306875133
+      },
+      "node": "moving_scene_24__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 99,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/2.csv",
+      "clip": "scene_24/2",
+      "image_frame_one_based": 100,
+      "member": {
+        "bytes": 3418733,
+        "compressed_bytes": 3409743,
+        "compression": 8,
+        "crc32": 2866734490,
+        "name": "MovingDroneCrowd++/frames/scene_24/2/100.jpg",
+        "offset": 3165630887
+      },
+      "node": "moving_scene_24__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/3.csv",
+      "clip": "scene_24/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 3362736,
+        "compressed_bytes": 3356679,
+        "compression": 8,
+        "crc32": 1554762238,
+        "name": "MovingDroneCrowd++/frames/scene_24/3/1.jpg",
+        "offset": 3490641236
+      },
+      "node": "moving_scene_24__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 73,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/3.csv",
+      "clip": "scene_24/3",
+      "image_frame_one_based": 74,
+      "member": {
+        "bytes": 3044675,
+        "compressed_bytes": 3041678,
+        "compression": 8,
+        "crc32": 993180982,
+        "name": "MovingDroneCrowd++/frames/scene_24/3/74.jpg",
+        "offset": 3874062659
+      },
+      "node": "moving_scene_24__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 147,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/3.csv",
+      "clip": "scene_24/3",
+      "image_frame_one_based": 148,
+      "member": {
+        "bytes": 3350367,
+        "compressed_bytes": 3345822,
+        "compression": 8,
+        "crc32": 1674590296,
+        "name": "MovingDroneCrowd++/frames/scene_24/3/148.jpg",
+        "offset": 3668190161
+      },
+      "node": "moving_scene_24__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/4.csv",
+      "clip": "scene_24/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1479081,
+        "compressed_bytes": 1476620,
+        "compression": 8,
+        "crc32": 1086080380,
+        "name": "MovingDroneCrowd++/frames/scene_24/4/1.jpg",
+        "offset": 3961416990
+      },
+      "node": "moving_scene_24__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 40,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/4.csv",
+      "clip": "scene_24/4",
+      "image_frame_one_based": 41,
+      "member": {
+        "bytes": 1489978,
+        "compressed_bytes": 1488578,
+        "compression": 8,
+        "crc32": 2142837855,
+        "name": "MovingDroneCrowd++/frames/scene_24/4/41.jpg",
+        "offset": 4012445682
+      },
+      "node": "moving_scene_24__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 80,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/4.csv",
+      "clip": "scene_24/4",
+      "image_frame_one_based": 81,
+      "member": {
+        "bytes": 1466957,
+        "compressed_bytes": 1465826,
+        "compression": 8,
+        "crc32": 98404596,
+        "name": "MovingDroneCrowd++/frames/scene_24/4/81.jpg",
+        "offset": 4077413624
+      },
+      "node": "moving_scene_24__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/5.csv",
+      "clip": "scene_24/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 3457865,
+        "compressed_bytes": 3449122,
+        "compression": 8,
+        "crc32": 475086693,
+        "name": "MovingDroneCrowd++/frames/scene_24/5/1.jpg",
+        "offset": 4080292703
+      },
+      "node": "moving_scene_24__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 53,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/5.csv",
+      "clip": "scene_24/5",
+      "image_frame_one_based": 54,
+      "member": {
+        "bytes": 3453961,
+        "compressed_bytes": 3444340,
+        "compression": 8,
+        "crc32": 1173245186,
+        "name": "MovingDroneCrowd++/frames/scene_24/5/54.jpg",
+        "offset": 4286956093
+      },
+      "node": "moving_scene_24__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 107,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/5.csv",
+      "clip": "scene_24/5",
+      "image_frame_one_based": 108,
+      "member": {
+        "bytes": 3412733,
+        "compressed_bytes": 3404438,
+        "compression": 8,
+        "crc32": 4097008236,
+        "name": "MovingDroneCrowd++/frames/scene_24/5/108.jpg",
+        "offset": 4115104828
+      },
+      "node": "moving_scene_24__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/6.csv",
+      "clip": "scene_24/6",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2706658,
+        "compressed_bytes": 2704801,
+        "compression": 8,
+        "crc32": 1136801914,
+        "name": "MovingDroneCrowd++/frames/scene_24/6/1.jpg",
+        "offset": 4458470605
+      },
+      "node": "moving_scene_24__6",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/6.csv",
+      "clip": "scene_24/6",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 2992102,
+        "compressed_bytes": 2983705,
+        "compression": 8,
+        "crc32": 1618278295,
+        "name": "MovingDroneCrowd++/frames/scene_24/6/42.jpg",
+        "offset": 4564500546
+      },
+      "node": "moving_scene_24__6",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_24/6.csv",
+      "clip": "scene_24/6",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 2900618,
+        "compressed_bytes": 2888203,
+        "compression": 8,
+        "crc32": 2351658217,
+        "name": "MovingDroneCrowd++/frames/scene_24/6/83.jpg",
+        "offset": 4696260283
+      },
+      "node": "moving_scene_24__6",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_25/1.csv",
+      "clip": "scene_25/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 625888,
+        "compressed_bytes": 625154,
+        "compression": 8,
+        "crc32": 499028341,
+        "name": "MovingDroneCrowd++/frames/scene_25/1/1.jpg",
+        "offset": 4702040317
+      },
+      "node": "moving_scene_25__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 17,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_25/1.csv",
+      "clip": "scene_25/1",
+      "image_frame_one_based": 18,
+      "member": {
+        "bytes": 652337,
+        "compressed_bytes": 652284,
+        "compression": 8,
+        "crc32": 4280594586,
+        "name": "MovingDroneCrowd++/frames/scene_25/1/18.jpg",
+        "offset": 4707955180
+      },
+      "node": "moving_scene_25__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 34,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_25/1.csv",
+      "clip": "scene_25/1",
+      "image_frame_one_based": 35,
+      "member": {
+        "bytes": 548951,
+        "compressed_bytes": 548947,
+        "compression": 8,
+        "crc32": 37689168,
+        "name": "MovingDroneCrowd++/frames/scene_25/1/35.jpg",
+        "offset": 4720248820
+      },
+      "node": "moving_scene_25__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_25/2.csv",
+      "clip": "scene_25/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1476080,
+        "compressed_bytes": 1475072,
+        "compression": 8,
+        "crc32": 1103219016,
+        "name": "MovingDroneCrowd++/frames/scene_25/2/1.jpg",
+        "offset": 4724887833
+      },
+      "node": "moving_scene_25__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 17,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_25/2.csv",
+      "clip": "scene_25/2",
+      "image_frame_one_based": 18,
+      "member": {
+        "bytes": 1560816,
+        "compressed_bytes": 1561101,
+        "compression": 8,
+        "crc32": 3453101827,
+        "name": "MovingDroneCrowd++/frames/scene_25/2/18.jpg",
+        "offset": 4739026833
+      },
+      "node": "moving_scene_25__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 35,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_25/2.csv",
+      "clip": "scene_25/2",
+      "image_frame_one_based": 36,
+      "member": {
+        "bytes": 1555741,
+        "compressed_bytes": 1555968,
+        "compression": 8,
+        "crc32": 319696146,
+        "name": "MovingDroneCrowd++/frames/scene_25/2/36.jpg",
+        "offset": 4770047777
+      },
+      "node": "moving_scene_25__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_26/1.csv",
+      "clip": "scene_26/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 565592,
+        "compressed_bytes": 564831,
+        "compression": 8,
+        "crc32": 1844317871,
+        "name": "MovingDroneCrowd++/frames/scene_26/1/1.jpg",
+        "offset": 4781002210
+      },
+      "node": "moving_scene_26__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 17,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_26/1.csv",
+      "clip": "scene_26/1",
+      "image_frame_one_based": 18,
+      "member": {
+        "bytes": 613937,
+        "compressed_bytes": 613909,
+        "compression": 8,
+        "crc32": 387521164,
+        "name": "MovingDroneCrowd++/frames/scene_26/1/18.jpg",
+        "offset": 4786458793
+      },
+      "node": "moving_scene_26__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 35,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_26/1.csv",
+      "clip": "scene_26/1",
+      "image_frame_one_based": 36,
+      "member": {
+        "bytes": 607107,
+        "compressed_bytes": 607062,
+        "compression": 8,
+        "crc32": 3037827727,
+        "name": "MovingDroneCrowd++/frames/scene_26/1/36.jpg",
+        "offset": 4798598172
+      },
+      "node": "moving_scene_26__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_26/2.csv",
+      "clip": "scene_26/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 440700,
+        "compressed_bytes": 440219,
+        "compression": 8,
+        "crc32": 3564483477,
+        "name": "MovingDroneCrowd++/frames/scene_26/2/1.jpg",
+        "offset": 4802823723
+      },
+      "node": "moving_scene_26__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 8,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_26/2.csv",
+      "clip": "scene_26/2",
+      "image_frame_one_based": 9,
+      "member": {
+        "bytes": 449528,
+        "compressed_bytes": 449165,
+        "compression": 8,
+        "crc32": 1431411751,
+        "name": "MovingDroneCrowd++/frames/scene_26/2/9.jpg",
+        "offset": 4809778761
+      },
+      "node": "moving_scene_26__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 16,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_26/2.csv",
+      "clip": "scene_26/2",
+      "image_frame_one_based": 17,
+      "member": {
+        "bytes": 375134,
+        "compressed_bytes": 374897,
+        "compression": 8,
+        "crc32": 2860393211,
+        "name": "MovingDroneCrowd++/frames/scene_26/2/17.jpg",
+        "offset": 4806198594
+      },
+      "node": "moving_scene_26__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_27/1.csv",
+      "clip": "scene_27/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1149953,
+        "compressed_bytes": 1147971,
+        "compression": 8,
+        "crc32": 235704617,
+        "name": "MovingDroneCrowd++/frames/scene_27/1/1.jpg",
+        "offset": 4810228242
+      },
+      "node": "moving_scene_27__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 32,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_27/1.csv",
+      "clip": "scene_27/1",
+      "image_frame_one_based": 33,
+      "member": {
+        "bytes": 777091,
+        "compressed_bytes": 769837,
+        "compression": 8,
+        "crc32": 2921626411,
+        "name": "MovingDroneCrowd++/frames/scene_27/1/33.jpg",
+        "offset": 4834554816
+      },
+      "node": "moving_scene_27__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 64,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_27/1.csv",
+      "clip": "scene_27/1",
+      "image_frame_one_based": 65,
+      "member": {
+        "bytes": 1046201,
+        "compressed_bytes": 1043274,
+        "compression": 8,
+        "crc32": 1791935156,
+        "name": "MovingDroneCrowd++/frames/scene_27/1/65.jpg",
+        "offset": 4860904606
+      },
+      "node": "moving_scene_27__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_28/1.csv",
+      "clip": "scene_28/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 557609,
+        "compressed_bytes": 556886,
+        "compression": 8,
+        "crc32": 2438893308,
+        "name": "MovingDroneCrowd++/frames/scene_28/1/1.jpg",
+        "offset": 4865012001
+      },
+      "node": "moving_scene_28__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_28/1.csv",
+      "clip": "scene_28/1",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 528889,
+        "compressed_bytes": 528429,
+        "compression": 8,
+        "crc32": 3395303757,
+        "name": "MovingDroneCrowd++/frames/scene_28/1/24.jpg",
+        "offset": 4873847358
+      },
+      "node": "moving_scene_28__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 46,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_28/1.csv",
+      "clip": "scene_28/1",
+      "image_frame_one_based": 47,
+      "member": {
+        "bytes": 401777,
+        "compressed_bytes": 400033,
+        "compression": 8,
+        "crc32": 3658867884,
+        "name": "MovingDroneCrowd++/frames/scene_28/1/47.jpg",
+        "offset": 4885375206
+      },
+      "node": "moving_scene_28__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_29/1.csv",
+      "clip": "scene_29/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 652582,
+        "compressed_bytes": 652519,
+        "compression": 8,
+        "crc32": 1177763849,
+        "name": "MovingDroneCrowd++/frames/scene_29/1/1.jpg",
+        "offset": 4888626198
+      },
+      "node": "moving_scene_29__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_29/1.csv",
+      "clip": "scene_29/1",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 583438,
+        "compressed_bytes": 583273,
+        "compression": 8,
+        "crc32": 4193609535,
+        "name": "MovingDroneCrowd++/frames/scene_29/1/23.jpg",
+        "offset": 4897781687
+      },
+      "node": "moving_scene_29__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 45,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_29/1.csv",
+      "clip": "scene_29/1",
+      "image_frame_one_based": 46,
+      "member": {
+        "bytes": 564299,
+        "compressed_bytes": 564152,
+        "compression": 8,
+        "crc32": 615715070,
+        "name": "MovingDroneCrowd++/frames/scene_29/1/46.jpg",
+        "offset": 4912619421
+      },
+      "node": "moving_scene_29__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_3/1.csv",
+      "clip": "scene_3/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 4403800,
+        "compressed_bytes": 4313304,
+        "compression": 8,
+        "crc32": 531607145,
+        "name": "MovingDroneCrowd++/frames/scene_3/1/1.jpg",
+        "offset": 4916285150
+      },
+      "node": "moving_scene_3__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 16,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_3/1.csv",
+      "clip": "scene_3/1",
+      "image_frame_one_based": 17,
+      "member": {
+        "bytes": 4906072,
+        "compressed_bytes": 4819829,
+        "compression": 8,
+        "crc32": 1225025519,
+        "name": "MovingDroneCrowd++/frames/scene_3/1/17.jpg",
+        "offset": 4954019800
+      },
+      "node": "moving_scene_3__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 33,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_3/1.csv",
+      "clip": "scene_3/1",
+      "image_frame_one_based": 34,
+      "member": {
+        "bytes": 4968434,
+        "compressed_bytes": 4883034,
+        "compression": 8,
+        "crc32": 35740116,
+        "name": "MovingDroneCrowd++/frames/scene_3/1/34.jpg",
+        "offset": 5044803234
+      },
+      "node": "moving_scene_3__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_3/2.csv",
+      "clip": "scene_3/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 3211920,
+        "compressed_bytes": 3126650,
+        "compression": 8,
+        "crc32": 3086181852,
+        "name": "MovingDroneCrowd++/frames/scene_3/2/1.jpg",
+        "offset": 5077297147
+      },
+      "node": "moving_scene_3__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 13,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_3/2.csv",
+      "clip": "scene_3/2",
+      "image_frame_one_based": 14,
+      "member": {
+        "bytes": 3933760,
+        "compressed_bytes": 3851751,
+        "compression": 8,
+        "crc32": 3312552465,
+        "name": "MovingDroneCrowd++/frames/scene_3/2/14.jpg",
+        "offset": 5095851353
+      },
+      "node": "moving_scene_3__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 27,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_3/2.csv",
+      "clip": "scene_3/2",
+      "image_frame_one_based": 28,
+      "member": {
+        "bytes": 3580315,
+        "compressed_bytes": 3492023,
+        "compression": 8,
+        "crc32": 145961861,
+        "name": "MovingDroneCrowd++/frames/scene_3/2/28.jpg",
+        "offset": 5149972888
+      },
+      "node": "moving_scene_3__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/1.csv",
+      "clip": "scene_30/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1530806,
+        "compressed_bytes": 1524272,
+        "compression": 8,
+        "crc32": 2805826061,
+        "name": "MovingDroneCrowd++/frames/scene_30/1/1.jpg",
+        "offset": 5179483876
+      },
+      "node": "moving_scene_30__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 6,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/1.csv",
+      "clip": "scene_30/1",
+      "image_frame_one_based": 7,
+      "member": {
+        "bytes": 1722531,
+        "compressed_bytes": 1720833,
+        "compression": 8,
+        "crc32": 3394383108,
+        "name": "MovingDroneCrowd++/frames/scene_30/1/7.jpg",
+        "offset": 5198708118
+      },
+      "node": "moving_scene_30__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 13,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/1.csv",
+      "clip": "scene_30/1",
+      "image_frame_one_based": 14,
+      "member": {
+        "bytes": 1821427,
+        "compressed_bytes": 1819656,
+        "compression": 8,
+        "crc32": 550039419,
+        "name": "MovingDroneCrowd++/frames/scene_30/1/14.jpg",
+        "offset": 5188165718
+      },
+      "node": "moving_scene_30__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/2.csv",
+      "clip": "scene_30/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1141276,
+        "compressed_bytes": 1127498,
+        "compression": 8,
+        "crc32": 2867316167,
+        "name": "MovingDroneCrowd++/frames/scene_30/2/1.jpg",
+        "offset": 5203956786
+      },
+      "node": "moving_scene_30__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 18,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/2.csv",
+      "clip": "scene_30/2",
+      "image_frame_one_based": 19,
+      "member": {
+        "bytes": 1161939,
+        "compressed_bytes": 1151216,
+        "compression": 8,
+        "crc32": 3497013616,
+        "name": "MovingDroneCrowd++/frames/scene_30/2/19.jpg",
+        "offset": 5216630138
+      },
+      "node": "moving_scene_30__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 37,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/2.csv",
+      "clip": "scene_30/2",
+      "image_frame_one_based": 38,
+      "member": {
+        "bytes": 1698335,
+        "compressed_bytes": 1695581,
+        "compression": 8,
+        "crc32": 2212259459,
+        "name": "MovingDroneCrowd++/frames/scene_30/2/38.jpg",
+        "offset": 5246915398
+      },
+      "node": "moving_scene_30__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/3.csv",
+      "clip": "scene_30/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1858736,
+        "compressed_bytes": 1853389,
+        "compression": 8,
+        "crc32": 1629838280,
+        "name": "MovingDroneCrowd++/frames/scene_30/3/1.jpg",
+        "offset": 5256565134
+      },
+      "node": "moving_scene_30__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 12,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/3.csv",
+      "clip": "scene_30/3",
+      "image_frame_one_based": 13,
+      "member": {
+        "bytes": 2130502,
+        "compressed_bytes": 2130142,
+        "compression": 8,
+        "crc32": 3813404331,
+        "name": "MovingDroneCrowd++/frames/scene_30/3/13.jpg",
+        "offset": 5264902365
+      },
+      "node": "moving_scene_30__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 25,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_30/3.csv",
+      "clip": "scene_30/3",
+      "image_frame_one_based": 26,
+      "member": {
+        "bytes": 2170696,
+        "compressed_bytes": 2170674,
+        "compression": 8,
+        "crc32": 3399151588,
+        "name": "MovingDroneCrowd++/frames/scene_30/3/26.jpg",
+        "offset": 5294768190
+      },
+      "node": "moving_scene_30__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_31/1.csv",
+      "clip": "scene_31/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 4662518,
+        "compressed_bytes": 4656134,
+        "compression": 8,
+        "crc32": 1073998961,
+        "name": "MovingDroneCrowd++/frames/scene_31/1/1.jpg",
+        "offset": 5312029477
+      },
+      "node": "moving_scene_31__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 34,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_31/1.csv",
+      "clip": "scene_31/1",
+      "image_frame_one_based": 35,
+      "member": {
+        "bytes": 4304477,
+        "compressed_bytes": 4296795,
+        "compression": 8,
+        "crc32": 3282185883,
+        "name": "MovingDroneCrowd++/frames/scene_31/1/35.jpg",
+        "offset": 5433856785
+      },
+      "node": "moving_scene_31__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 69,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_31/1.csv",
+      "clip": "scene_31/1",
+      "image_frame_one_based": 70,
+      "member": {
+        "bytes": 4377999,
+        "compressed_bytes": 4372369,
+        "compression": 8,
+        "crc32": 1484161825,
+        "name": "MovingDroneCrowd++/frames/scene_31/1/70.jpg",
+        "offset": 5604873117
+      },
+      "node": "moving_scene_31__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/1.csv",
+      "clip": "scene_32/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1622258,
+        "compressed_bytes": 1599551,
+        "compression": 8,
+        "crc32": 3029975959,
+        "name": "MovingDroneCrowd++/frames/scene_32/1/1.jpg",
+        "offset": 5618035625
+      },
+      "node": "moving_scene_32__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/1.csv",
+      "clip": "scene_32/1",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 1529046,
+        "compressed_bytes": 1508146,
+        "compression": 8,
+        "crc32": 1863499625,
+        "name": "MovingDroneCrowd++/frames/scene_32/1/24.jpg",
+        "offset": 5643395544
+      },
+      "node": "moving_scene_32__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 47,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/1.csv",
+      "clip": "scene_32/1",
+      "image_frame_one_based": 48,
+      "member": {
+        "bytes": 1507977,
+        "compressed_bytes": 1488301,
+        "compression": 8,
+        "crc32": 1638790832,
+        "name": "MovingDroneCrowd++/frames/scene_32/1/48.jpg",
+        "offset": 5682754869
+      },
+      "node": "moving_scene_32__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/2.csv",
+      "clip": "scene_32/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 4936667,
+        "compressed_bytes": 4926843,
+        "compression": 8,
+        "crc32": 2819097549,
+        "name": "MovingDroneCrowd++/frames/scene_32/2/1.jpg",
+        "offset": 5692093673
+      },
+      "node": "moving_scene_32__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 42,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/2.csv",
+      "clip": "scene_32/2",
+      "image_frame_one_based": 43,
+      "member": {
+        "bytes": 4074824,
+        "compressed_bytes": 4069475,
+        "compression": 8,
+        "crc32": 1593968585,
+        "name": "MovingDroneCrowd++/frames/scene_32/2/43.jpg",
+        "offset": 5848178508
+      },
+      "node": "moving_scene_32__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 85,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/2.csv",
+      "clip": "scene_32/2",
+      "image_frame_one_based": 86,
+      "member": {
+        "bytes": 4996027,
+        "compressed_bytes": 4987020,
+        "compression": 8,
+        "crc32": 3526980590,
+        "name": "MovingDroneCrowd++/frames/scene_32/2/86.jpg",
+        "offset": 6043866535
+      },
+      "node": "moving_scene_32__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/3.csv",
+      "clip": "scene_32/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 5174371,
+        "compressed_bytes": 5170236,
+        "compression": 8,
+        "crc32": 2008730395,
+        "name": "MovingDroneCrowd++/frames/scene_32/3/1.jpg",
+        "offset": 6052839840
+      },
+      "node": "moving_scene_32__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/3.csv",
+      "clip": "scene_32/3",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 4795182,
+        "compressed_bytes": 4790327,
+        "compression": 8,
+        "crc32": 2249818203,
+        "name": "MovingDroneCrowd++/frames/scene_32/3/23.jpg",
+        "offset": 6130922862
+      },
+      "node": "moving_scene_32__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 45,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_32/3.csv",
+      "clip": "scene_32/3",
+      "image_frame_one_based": 46,
+      "member": {
+        "bytes": 5018472,
+        "compressed_bytes": 5017159,
+        "compression": 8,
+        "crc32": 2213907984,
+        "name": "MovingDroneCrowd++/frames/scene_32/3/46.jpg",
+        "offset": 6257484082
+      },
+      "node": "moving_scene_32__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_33/1.csv",
+      "clip": "scene_33/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2022000,
+        "compressed_bytes": 2022182,
+        "compression": 8,
+        "crc32": 2810982641,
+        "name": "MovingDroneCrowd++/frames/scene_33/1/1.jpg",
+        "offset": 6288504073
+      },
+      "node": "moving_scene_33__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 67,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_33/1.csv",
+      "clip": "scene_33/1",
+      "image_frame_one_based": 68,
+      "member": {
+        "bytes": 2210718,
+        "compressed_bytes": 2210969,
+        "compression": 8,
+        "crc32": 3619175868,
+        "name": "MovingDroneCrowd++/frames/scene_33/1/68.jpg",
+        "offset": 6491964157
+      },
+      "node": "moving_scene_33__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 134,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_33/1.csv",
+      "clip": "scene_33/1",
+      "image_frame_one_based": 135,
+      "member": {
+        "bytes": 2102851,
+        "compressed_bytes": 2103183,
+        "compression": 8,
+        "crc32": 142713826,
+        "name": "MovingDroneCrowd++/frames/scene_33/1/135.jpg",
+        "offset": 6369760928
+      },
+      "node": "moving_scene_33__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/1.csv",
+      "clip": "scene_34/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2242512,
+        "compressed_bytes": 2242144,
+        "compression": 8,
+        "crc32": 3168077841,
+        "name": "MovingDroneCrowd++/frames/scene_34/1/1.jpg",
+        "offset": 6568128763
+      },
+      "node": "moving_scene_34__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 19,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/1.csv",
+      "clip": "scene_34/1",
+      "image_frame_one_based": 20,
+      "member": {
+        "bytes": 2048214,
+        "compressed_bytes": 2047730,
+        "compression": 8,
+        "crc32": 904018055,
+        "name": "MovingDroneCrowd++/frames/scene_34/1/20.jpg",
+        "offset": 6592710565
+      },
+      "node": "moving_scene_34__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 39,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/1.csv",
+      "clip": "scene_34/1",
+      "image_frame_one_based": 40,
+      "member": {
+        "bytes": 2093709,
+        "compressed_bytes": 2092851,
+        "compression": 8,
+        "crc32": 697619531,
+        "name": "MovingDroneCrowd++/frames/scene_34/1/40.jpg",
+        "offset": 6638616623
+      },
+      "node": "moving_scene_34__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/2.csv",
+      "clip": "scene_34/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2417763,
+        "compressed_bytes": 2414679,
+        "compression": 8,
+        "crc32": 3962555119,
+        "name": "MovingDroneCrowd++/frames/scene_34/2/1.jpg",
+        "offset": 6650813539
+      },
+      "node": "moving_scene_34__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 24,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/2.csv",
+      "clip": "scene_34/2",
+      "image_frame_one_based": 25,
+      "member": {
+        "bytes": 2089560,
+        "compressed_bytes": 2088084,
+        "compression": 8,
+        "crc32": 1175612065,
+        "name": "MovingDroneCrowd++/frames/scene_34/2/25.jpg",
+        "offset": 6686380163
+      },
+      "node": "moving_scene_34__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 49,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/2.csv",
+      "clip": "scene_34/2",
+      "image_frame_one_based": 50,
+      "member": {
+        "bytes": 2068316,
+        "compressed_bytes": 2066324,
+        "compression": 8,
+        "crc32": 3033898306,
+        "name": "MovingDroneCrowd++/frames/scene_34/2/50.jpg",
+        "offset": 6744276784
+      },
+      "node": "moving_scene_34__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/3.csv",
+      "clip": "scene_34/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1129890,
+        "compressed_bytes": 1073242,
+        "compression": 8,
+        "crc32": 1891622044,
+        "name": "MovingDroneCrowd++/frames/scene_34/3/1.jpg",
+        "offset": 6754598487
+      },
+      "node": "moving_scene_34__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 27,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/3.csv",
+      "clip": "scene_34/3",
+      "image_frame_one_based": 28,
+      "member": {
+        "bytes": 1434569,
+        "compressed_bytes": 1391905,
+        "compression": 8,
+        "crc32": 1958933075,
+        "name": "MovingDroneCrowd++/frames/scene_34/3/28.jpg",
+        "offset": 6781701565
+      },
+      "node": "moving_scene_34__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 55,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/3.csv",
+      "clip": "scene_34/3",
+      "image_frame_one_based": 56,
+      "member": {
+        "bytes": 1389208,
+        "compressed_bytes": 1347792,
+        "compression": 8,
+        "crc32": 1773546288,
+        "name": "MovingDroneCrowd++/frames/scene_34/3/56.jpg",
+        "offset": 6820888940
+      },
+      "node": "moving_scene_34__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/4.csv",
+      "clip": "scene_34/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1748084,
+        "compressed_bytes": 1743486,
+        "compression": 8,
+        "crc32": 1428418124,
+        "name": "MovingDroneCrowd++/frames/scene_34/4/1.jpg",
+        "offset": 6827578209
+      },
+      "node": "moving_scene_34__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 20,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/4.csv",
+      "clip": "scene_34/4",
+      "image_frame_one_based": 21,
+      "member": {
+        "bytes": 1762029,
+        "compressed_bytes": 1760342,
+        "compression": 8,
+        "crc32": 1814815479,
+        "name": "MovingDroneCrowd++/frames/scene_34/4/21.jpg",
+        "offset": 6850682975
+      },
+      "node": "moving_scene_34__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_34/4.csv",
+      "clip": "scene_34/4",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 1605942,
+        "compressed_bytes": 1603500,
+        "compression": 8,
+        "crc32": 188980833,
+        "name": "MovingDroneCrowd++/frames/scene_34/4/42.jpg",
+        "offset": 6889363137
+      },
+      "node": "moving_scene_34__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/1.csv",
+      "clip": "scene_35/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 4165473,
+        "compressed_bytes": 4161514,
+        "compression": 8,
+        "crc32": 4223687281,
+        "name": "MovingDroneCrowd++/frames/scene_35/1/1.jpg",
+        "offset": 6899987194
+      },
+      "node": "moving_scene_35__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 24,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/1.csv",
+      "clip": "scene_35/1",
+      "image_frame_one_based": 25,
+      "member": {
+        "bytes": 3830847,
+        "compressed_bytes": 3827477,
+        "compression": 8,
+        "crc32": 347010177,
+        "name": "MovingDroneCrowd++/frames/scene_35/1/25.jpg",
+        "offset": 6965903291
+      },
+      "node": "moving_scene_35__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 48,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/1.csv",
+      "clip": "scene_35/1",
+      "image_frame_one_based": 49,
+      "member": {
+        "bytes": 4555600,
+        "compressed_bytes": 4552547,
+        "compression": 8,
+        "crc32": 885597847,
+        "name": "MovingDroneCrowd++/frames/scene_35/1/49.jpg",
+        "offset": 7068742473
+      },
+      "node": "moving_scene_35__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/2.csv",
+      "clip": "scene_35/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 4383140,
+        "compressed_bytes": 4382124,
+        "compression": 8,
+        "crc32": 367844127,
+        "name": "MovingDroneCrowd++/frames/scene_35/2/1.jpg",
+        "offset": 7093197781
+      },
+      "node": "moving_scene_35__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 35,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/2.csv",
+      "clip": "scene_35/2",
+      "image_frame_one_based": 36,
+      "member": {
+        "bytes": 4105051,
+        "compressed_bytes": 4102732,
+        "compression": 8,
+        "crc32": 1393881853,
+        "name": "MovingDroneCrowd++/frames/scene_35/2/36.jpg",
+        "offset": 7213248522
+      },
+      "node": "moving_scene_35__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 71,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/2.csv",
+      "clip": "scene_35/2",
+      "image_frame_one_based": 72,
+      "member": {
+        "bytes": 4185801,
+        "compressed_bytes": 4185286,
+        "compression": 8,
+        "crc32": 3377620462,
+        "name": "MovingDroneCrowd++/frames/scene_35/2/72.jpg",
+        "offset": 7385911907
+      },
+      "node": "moving_scene_35__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/3.csv",
+      "clip": "scene_35/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1599881,
+        "compressed_bytes": 1595253,
+        "compression": 8,
+        "crc32": 4011297869,
+        "name": "MovingDroneCrowd++/frames/scene_35/3/1.jpg",
+        "offset": 7398363579
+      },
+      "node": "moving_scene_35__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 28,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/3.csv",
+      "clip": "scene_35/3",
+      "image_frame_one_based": 29,
+      "member": {
+        "bytes": 2284870,
+        "compressed_bytes": 2284964,
+        "compression": 8,
+        "crc32": 744267515,
+        "name": "MovingDroneCrowd++/frames/scene_35/3/29.jpg",
+        "offset": 7441183268
+      },
+      "node": "moving_scene_35__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 56,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_35/3.csv",
+      "clip": "scene_35/3",
+      "image_frame_one_based": 57,
+      "member": {
+        "bytes": 2063230,
+        "compressed_bytes": 2062554,
+        "compression": 8,
+        "crc32": 3316910779,
+        "name": "MovingDroneCrowd++/frames/scene_35/3/57.jpg",
+        "offset": 7508164002
+      },
+      "node": "moving_scene_35__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_36/1.csv",
+      "clip": "scene_36/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2538997,
+        "compressed_bytes": 2533799,
+        "compression": 8,
+        "crc32": 3910599289,
+        "name": "MovingDroneCrowd++/frames/scene_36/1/1.jpg",
+        "offset": 7517634509
+      },
+      "node": "moving_scene_36__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 36,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_36/1.csv",
+      "clip": "scene_36/1",
+      "image_frame_one_based": 37,
+      "member": {
+        "bytes": 2040563,
+        "compressed_bytes": 2038225,
+        "compression": 8,
+        "crc32": 3595902491,
+        "name": "MovingDroneCrowd++/frames/scene_36/1/37.jpg",
+        "offset": 7581674538
+      },
+      "node": "moving_scene_36__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 73,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_36/1.csv",
+      "clip": "scene_36/1",
+      "image_frame_one_based": 74,
+      "member": {
+        "bytes": 2472682,
+        "compressed_bytes": 2469069,
+        "compression": 8,
+        "crc32": 2496994882,
+        "name": "MovingDroneCrowd++/frames/scene_36/1/74.jpg",
+        "offset": 7674451237
+      },
+      "node": "moving_scene_36__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_37/1.csv",
+      "clip": "scene_37/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1660420,
+        "compressed_bytes": 1660229,
+        "compression": 8,
+        "crc32": 1166831130,
+        "name": "MovingDroneCrowd++/frames/scene_37/1/1.jpg",
+        "offset": 7681400460
+      },
+      "node": "moving_scene_37__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 25,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_37/1.csv",
+      "clip": "scene_37/1",
+      "image_frame_one_based": 26,
+      "member": {
+        "bytes": 1558315,
+        "compressed_bytes": 1557489,
+        "compression": 8,
+        "crc32": 3513949052,
+        "name": "MovingDroneCrowd++/frames/scene_37/1/26.jpg",
+        "offset": 7711086662
+      },
+      "node": "moving_scene_37__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 50,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_37/1.csv",
+      "clip": "scene_37/1",
+      "image_frame_one_based": 51,
+      "member": {
+        "bytes": 1548880,
+        "compressed_bytes": 1547146,
+        "compression": 8,
+        "crc32": 1235741797,
+        "name": "MovingDroneCrowd++/frames/scene_37/1/51.jpg",
+        "offset": 7755145197
+      },
+      "node": "moving_scene_37__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_37/2.csv",
+      "clip": "scene_37/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2123520,
+        "compressed_bytes": 2123708,
+        "compression": 8,
+        "crc32": 716766914,
+        "name": "MovingDroneCrowd++/frames/scene_37/2/1.jpg",
+        "offset": 7763414473
+      },
+      "node": "moving_scene_37__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 19,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_37/2.csv",
+      "clip": "scene_37/2",
+      "image_frame_one_based": 20,
+      "member": {
+        "bytes": 1732047,
+        "compressed_bytes": 1732328,
+        "compression": 8,
+        "crc32": 2549099165,
+        "name": "MovingDroneCrowd++/frames/scene_37/2/20.jpg",
+        "offset": 7785754070
+      },
+      "node": "moving_scene_37__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 38,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_37/2.csv",
+      "clip": "scene_37/2",
+      "image_frame_one_based": 39,
+      "member": {
+        "bytes": 1563306,
+        "compressed_bytes": 1563187,
+        "compression": 8,
+        "crc32": 336812135,
+        "name": "MovingDroneCrowd++/frames/scene_37/2/39.jpg",
+        "offset": 7818533792
+      },
+      "node": "moving_scene_37__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_38/1.csv",
+      "clip": "scene_38/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 4307234,
+        "compressed_bytes": 4302188,
+        "compression": 8,
+        "crc32": 1050063538,
+        "name": "MovingDroneCrowd++/frames/scene_38/1/1.jpg",
+        "offset": 7831747159
+      },
+      "node": "moving_scene_38__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 26,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_38/1.csv",
+      "clip": "scene_38/1",
+      "image_frame_one_based": 27,
+      "member": {
+        "bytes": 4265405,
+        "compressed_bytes": 4260085,
+        "compression": 8,
+        "crc32": 280635676,
+        "name": "MovingDroneCrowd++/frames/scene_38/1/27.jpg",
+        "offset": 7910242906
+      },
+      "node": "moving_scene_38__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 53,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_38/1.csv",
+      "clip": "scene_38/1",
+      "image_frame_one_based": 54,
+      "member": {
+        "bytes": 4346436,
+        "compressed_bytes": 4343032,
+        "compression": 8,
+        "crc32": 541759832,
+        "name": "MovingDroneCrowd++/frames/scene_38/1/54.jpg",
+        "offset": 8037310899
+      },
+      "node": "moving_scene_38__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_38/2.csv",
+      "clip": "scene_38/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2075662,
+        "compressed_bytes": 2073650,
+        "compression": 8,
+        "crc32": 4211894341,
+        "name": "MovingDroneCrowd++/frames/scene_38/2/1.jpg",
+        "offset": 8057679976
+      },
+      "node": "moving_scene_38__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 27,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_38/2.csv",
+      "clip": "scene_38/2",
+      "image_frame_one_based": 28,
+      "member": {
+        "bytes": 1878212,
+        "compressed_bytes": 1874740,
+        "compression": 8,
+        "crc32": 1445868516,
+        "name": "MovingDroneCrowd++/frames/scene_38/2/28.jpg",
+        "offset": 8096066829
+      },
+      "node": "moving_scene_38__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 55,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_38/2.csv",
+      "clip": "scene_38/2",
+      "image_frame_one_based": 56,
+      "member": {
+        "bytes": 2077144,
+        "compressed_bytes": 2076252,
+        "compression": 8,
+        "crc32": 3587167244,
+        "name": "MovingDroneCrowd++/frames/scene_38/2/56.jpg",
+        "offset": 8156433169
+      },
+      "node": "moving_scene_38__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/1.csv",
+      "clip": "scene_39/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2153031,
+        "compressed_bytes": 2099198,
+        "compression": 8,
+        "crc32": 3398636186,
+        "name": "MovingDroneCrowd++/frames/scene_39/1/1.jpg",
+        "offset": 8166474835
+      },
+      "node": "moving_scene_39__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 60,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/1.csv",
+      "clip": "scene_39/1",
+      "image_frame_one_based": 61,
+      "member": {
+        "bytes": 1994194,
+        "compressed_bytes": 1950054,
+        "compression": 8,
+        "crc32": 1950412393,
+        "name": "MovingDroneCrowd++/frames/scene_39/1/61.jpg",
+        "offset": 8329087761
+      },
+      "node": "moving_scene_39__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 120,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/1.csv",
+      "clip": "scene_39/1",
+      "image_frame_one_based": 121,
+      "member": {
+        "bytes": 1973279,
+        "compressed_bytes": 1928432,
+        "compression": 8,
+        "crc32": 1274486060,
+        "name": "MovingDroneCrowd++/frames/scene_39/1/121.jpg",
+        "offset": 8216382382
+      },
+      "node": "moving_scene_39__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/2.csv",
+      "clip": "scene_39/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1890832,
+        "compressed_bytes": 1843211,
+        "compression": 8,
+        "crc32": 2863070934,
+        "name": "MovingDroneCrowd++/frames/scene_39/2/1.jpg",
+        "offset": 8414694402
+      },
+      "node": "moving_scene_39__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 75,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/2.csv",
+      "clip": "scene_39/2",
+      "image_frame_one_based": 76,
+      "member": {
+        "bytes": 1961195,
+        "compressed_bytes": 1915309,
+        "compression": 8,
+        "crc32": 3808083569,
+        "name": "MovingDroneCrowd++/frames/scene_39/2/76.jpg",
+        "offset": 8658105621
+      },
+      "node": "moving_scene_39__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 150,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/2.csv",
+      "clip": "scene_39/2",
+      "image_frame_one_based": 151,
+      "member": {
+        "bytes": 2093046,
+        "compressed_bytes": 2045324,
+        "compression": 8,
+        "crc32": 2644812095,
+        "name": "MovingDroneCrowd++/frames/scene_39/2/151.jpg",
+        "offset": 8530349299
+      },
+      "node": "moving_scene_39__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/3.csv",
+      "clip": "scene_39/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2291000,
+        "compressed_bytes": 2237342,
+        "compression": 8,
+        "crc32": 3469874508,
+        "name": "MovingDroneCrowd++/frames/scene_39/3/1.jpg",
+        "offset": 8706443180
+      },
+      "node": "moving_scene_39__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 50,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/3.csv",
+      "clip": "scene_39/3",
+      "image_frame_one_based": 51,
+      "member": {
+        "bytes": 2131282,
+        "compressed_bytes": 2083860,
+        "compression": 8,
+        "crc32": 3613896126,
+        "name": "MovingDroneCrowd++/frames/scene_39/3/51.jpg",
+        "offset": 8801460401
+      },
+      "node": "moving_scene_39__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 100,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_39/3.csv",
+      "clip": "scene_39/3",
+      "image_frame_one_based": 101,
+      "member": {
+        "bytes": 1960005,
+        "compressed_bytes": 1918696,
+        "compression": 8,
+        "crc32": 3682626543,
+        "name": "MovingDroneCrowd++/frames/scene_39/3/101.jpg",
+        "offset": 8712690557
+      },
+      "node": "moving_scene_39__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_4/1.csv",
+      "clip": "scene_4/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1183738,
+        "compressed_bytes": 1182229,
+        "compression": 8,
+        "crc32": 3717121955,
+        "name": "MovingDroneCrowd++/frames/scene_4/1/1.jpg",
+        "offset": 8901049955
+      },
+      "node": "moving_scene_4__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 12,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_4/1.csv",
+      "clip": "scene_4/1",
+      "image_frame_one_based": 13,
+      "member": {
+        "bytes": 1225382,
+        "compressed_bytes": 1222140,
+        "compression": 8,
+        "crc32": 1098983594,
+        "name": "MovingDroneCrowd++/frames/scene_4/1/13.jpg",
+        "offset": 8905869366
+      },
+      "node": "moving_scene_4__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 25,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_4/1.csv",
+      "clip": "scene_4/1",
+      "image_frame_one_based": 26,
+      "member": {
+        "bytes": 903692,
+        "compressed_bytes": 881618,
+        "compression": 8,
+        "crc32": 3329463323,
+        "name": "MovingDroneCrowd++/frames/scene_4/1/26.jpg",
+        "offset": 8920631734
+      },
+      "node": "moving_scene_4__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_4/2.csv",
+      "clip": "scene_4/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1683263,
+        "compressed_bytes": 1683578,
+        "compression": 8,
+        "crc32": 970921244,
+        "name": "MovingDroneCrowd++/frames/scene_4/2/1.jpg",
+        "offset": 8930214660
+      },
+      "node": "moving_scene_4__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_4/2.csv",
+      "clip": "scene_4/2",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 1594954,
+        "compressed_bytes": 1595271,
+        "compression": 8,
+        "crc32": 4112618016,
+        "name": "MovingDroneCrowd++/frames/scene_4/2/42.jpg",
+        "offset": 8994775630
+      },
+      "node": "moving_scene_4__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_4/2.csv",
+      "clip": "scene_4/2",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 1700435,
+        "compressed_bytes": 1700590,
+        "compression": 8,
+        "crc32": 791055632,
+        "name": "MovingDroneCrowd++/frames/scene_4/2/83.jpg",
+        "offset": 9070240974
+      },
+      "node": "moving_scene_4__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_40/1.csv",
+      "clip": "scene_40/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1298467,
+        "compressed_bytes": 1271654,
+        "compression": 8,
+        "crc32": 2852120783,
+        "name": "MovingDroneCrowd++/frames/scene_40/1/1.jpg",
+        "offset": 9073669492
+      },
+      "node": "moving_scene_40__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 54,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_40/1.csv",
+      "clip": "scene_40/1",
+      "image_frame_one_based": 55,
+      "member": {
+        "bytes": 1106292,
+        "compressed_bytes": 1085515,
+        "compression": 8,
+        "crc32": 2776904793,
+        "name": "MovingDroneCrowd++/frames/scene_40/1/55.jpg",
+        "offset": 9142415194
+      },
+      "node": "moving_scene_40__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 108,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_40/1.csv",
+      "clip": "scene_40/1",
+      "image_frame_one_based": 109,
+      "member": {
+        "bytes": 1354722,
+        "compressed_bytes": 1330267,
+        "compression": 8,
+        "crc32": 2095803387,
+        "name": "MovingDroneCrowd++/frames/scene_40/1/109.jpg",
+        "offset": 9087474297
+      },
+      "node": "moving_scene_40__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_41/1.csv",
+      "clip": "scene_41/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2210539,
+        "compressed_bytes": 2211052,
+        "compression": 8,
+        "crc32": 683239942,
+        "name": "MovingDroneCrowd++/frames/scene_41/1/1.jpg",
+        "offset": 9201607793
+      },
+      "node": "moving_scene_41__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_41/1.csv",
+      "clip": "scene_41/1",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 2305040,
+        "compressed_bytes": 2305580,
+        "compression": 8,
+        "crc32": 1227180756,
+        "name": "MovingDroneCrowd++/frames/scene_41/1/23.jpg",
+        "offset": 9236748421
+      },
+      "node": "moving_scene_41__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 45,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_41/1.csv",
+      "clip": "scene_41/1",
+      "image_frame_one_based": 46,
+      "member": {
+        "bytes": 2418316,
+        "compressed_bytes": 2418894,
+        "compression": 8,
+        "crc32": 1756311788,
+        "name": "MovingDroneCrowd++/frames/scene_41/1/46.jpg",
+        "offset": 9296362288
+      },
+      "node": "moving_scene_41__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_42/1.csv",
+      "clip": "scene_42/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2903989,
+        "compressed_bytes": 2901422,
+        "compression": 8,
+        "crc32": 2268018007,
+        "name": "MovingDroneCrowd++/frames/scene_42/1/1.jpg",
+        "offset": 9310333313
+      },
+      "node": "moving_scene_42__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 76,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_42/1.csv",
+      "clip": "scene_42/1",
+      "image_frame_one_based": 77,
+      "member": {
+        "bytes": 1731280,
+        "compressed_bytes": 1731485,
+        "compression": 8,
+        "crc32": 3923367618,
+        "name": "MovingDroneCrowd++/frames/scene_42/1/77.jpg",
+        "offset": 9557458330
+      },
+      "node": "moving_scene_42__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 152,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_42/1.csv",
+      "clip": "scene_42/1",
+      "image_frame_one_based": 153,
+      "member": {
+        "bytes": 2414175,
+        "compressed_bytes": 2413945,
+        "compression": 8,
+        "crc32": 1556781492,
+        "name": "MovingDroneCrowd++/frames/scene_42/1/153.jpg",
+        "offset": 9431148533
+      },
+      "node": "moving_scene_42__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_43/1.csv",
+      "clip": "scene_43/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1444404,
+        "compressed_bytes": 1444601,
+        "compression": 8,
+        "crc32": 2592433188,
+        "name": "MovingDroneCrowd++/frames/scene_43/1/1.jpg",
+        "offset": 9601087857
+      },
+      "node": "moving_scene_43__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 121,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_43/1.csv",
+      "clip": "scene_43/1",
+      "image_frame_one_based": 122,
+      "member": {
+        "bytes": 1467604,
+        "compressed_bytes": 1467741,
+        "compression": 8,
+        "crc32": 1062167384,
+        "name": "MovingDroneCrowd++/frames/scene_43/1/122.jpg",
+        "offset": 9639166922
+      },
+      "node": "moving_scene_43__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 242,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_43/1.csv",
+      "clip": "scene_43/1",
+      "image_frame_one_based": 243,
+      "member": {
+        "bytes": 1362254,
+        "compressed_bytes": 1362427,
+        "compression": 8,
+        "crc32": 3728635631,
+        "name": "MovingDroneCrowd++/frames/scene_43/1/243.jpg",
+        "offset": 9835065975
+      },
+      "node": "moving_scene_43__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_44/1.csv",
+      "clip": "scene_44/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2492161,
+        "compressed_bytes": 2492692,
+        "compression": 8,
+        "crc32": 4101375822,
+        "name": "MovingDroneCrowd++/frames/scene_44/1/1.jpg",
+        "offset": 9955395297
+      },
+      "node": "moving_scene_44__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 35,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_44/1.csv",
+      "clip": "scene_44/1",
+      "image_frame_one_based": 36,
+      "member": {
+        "bytes": 2385299,
+        "compressed_bytes": 2385801,
+        "compression": 8,
+        "crc32": 1460909081,
+        "name": "MovingDroneCrowd++/frames/scene_44/1/36.jpg",
+        "offset": 10024425306
+      },
+      "node": "moving_scene_44__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 71,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_44/1.csv",
+      "clip": "scene_44/1",
+      "image_frame_one_based": 72,
+      "member": {
+        "bytes": 2535953,
+        "compressed_bytes": 2536501,
+        "compression": 8,
+        "crc32": 542993267,
+        "name": "MovingDroneCrowd++/frames/scene_44/1/72.jpg",
+        "offset": 10118104897
+      },
+      "node": "moving_scene_44__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_5/1.csv",
+      "clip": "scene_5/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 979537,
+        "compressed_bytes": 954511,
+        "compression": 8,
+        "crc32": 3777941658,
+        "name": "MovingDroneCrowd++/frames/scene_5/1/1.jpg",
+        "offset": 10125461569
+      },
+      "node": "moving_scene_5__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 20,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_5/1.csv",
+      "clip": "scene_5/1",
+      "image_frame_one_based": 21,
+      "member": {
+        "bytes": 1016137,
+        "compressed_bytes": 992345,
+        "compression": 8,
+        "crc32": 2762225641,
+        "name": "MovingDroneCrowd++/frames/scene_5/1/21.jpg",
+        "offset": 10138403689
+      },
+      "node": "moving_scene_5__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_5/1.csv",
+      "clip": "scene_5/1",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 1040469,
+        "compressed_bytes": 1016865,
+        "compression": 8,
+        "crc32": 1598549888,
+        "name": "MovingDroneCrowd++/frames/scene_5/1/42.jpg",
+        "offset": 10161378208
+      },
+      "node": "moving_scene_5__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_5/2.csv",
+      "clip": "scene_5/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 936340,
+        "compressed_bytes": 900238,
+        "compression": 8,
+        "crc32": 893621099,
+        "name": "MovingDroneCrowd++/frames/scene_5/2/1.jpg",
+        "offset": 10167364245
+      },
+      "node": "moving_scene_5__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 50,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_5/2.csv",
+      "clip": "scene_5/2",
+      "image_frame_one_based": 51,
+      "member": {
+        "bytes": 1014533,
+        "compressed_bytes": 989888,
+        "compression": 8,
+        "crc32": 81166715,
+        "name": "MovingDroneCrowd++/frames/scene_5/2/51.jpg",
+        "offset": 10213264793
+      },
+      "node": "moving_scene_5__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 101,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_5/2.csv",
+      "clip": "scene_5/2",
+      "image_frame_one_based": 102,
+      "member": {
+        "bytes": 1020438,
+        "compressed_bytes": 994355,
+        "compression": 8,
+        "crc32": 574413585,
+        "name": "MovingDroneCrowd++/frames/scene_5/2/102.jpg",
+        "offset": 10171195138
+      },
+      "node": "moving_scene_5__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/1.csv",
+      "clip": "scene_6/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 539619,
+        "compressed_bytes": 539488,
+        "compression": 8,
+        "crc32": 2493955136,
+        "name": "MovingDroneCrowd++/frames/scene_6/1/1.jpg",
+        "offset": 10264416813
+      },
+      "node": "moving_scene_6__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 25,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/1.csv",
+      "clip": "scene_6/1",
+      "image_frame_one_based": 26,
+      "member": {
+        "bytes": 389859,
+        "compressed_bytes": 389106,
+        "compression": 8,
+        "crc32": 1237315300,
+        "name": "MovingDroneCrowd++/frames/scene_6/1/26.jpg",
+        "offset": 10272029432
+      },
+      "node": "moving_scene_6__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 50,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/1.csv",
+      "clip": "scene_6/1",
+      "image_frame_one_based": 51,
+      "member": {
+        "bytes": 449169,
+        "compressed_bytes": 449044,
+        "compression": 8,
+        "crc32": 3100421640,
+        "name": "MovingDroneCrowd++/frames/scene_6/1/51.jpg",
+        "offset": 10284626901
+      },
+      "node": "moving_scene_6__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/2.csv",
+      "clip": "scene_6/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 3168302,
+        "compressed_bytes": 3078382,
+        "compression": 8,
+        "crc32": 1709863631,
+        "name": "MovingDroneCrowd++/frames/scene_6/2/1.jpg",
+        "offset": 10286872586
+      },
+      "node": "moving_scene_6__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 11,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/2.csv",
+      "clip": "scene_6/2",
+      "image_frame_one_based": 12,
+      "member": {
+        "bytes": 2998519,
+        "compressed_bytes": 2920047,
+        "compression": 8,
+        "crc32": 4029537695,
+        "name": "MovingDroneCrowd++/frames/scene_6/2/12.jpg",
+        "offset": 10295873488
+      },
+      "node": "moving_scene_6__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/2.csv",
+      "clip": "scene_6/2",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 2748991,
+        "compressed_bytes": 2674156,
+        "compression": 8,
+        "crc32": 196282242,
+        "name": "MovingDroneCrowd++/frames/scene_6/2/24.jpg",
+        "offset": 10333362719
+      },
+      "node": "moving_scene_6__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/3.csv",
+      "clip": "scene_6/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2777968,
+        "compressed_bytes": 2691456,
+        "compression": 8,
+        "crc32": 2582949516,
+        "name": "MovingDroneCrowd++/frames/scene_6/3/1.jpg",
+        "offset": 10358071852
+      },
+      "node": "moving_scene_6__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 15,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/3.csv",
+      "clip": "scene_6/3",
+      "image_frame_one_based": 16,
+      "member": {
+        "bytes": 2644587,
+        "compressed_bytes": 2565037,
+        "compression": 8,
+        "crc32": 433917966,
+        "name": "MovingDroneCrowd++/frames/scene_6/3/16.jpg",
+        "offset": 10376147720
+      },
+      "node": "moving_scene_6__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 30,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/3.csv",
+      "clip": "scene_6/3",
+      "image_frame_one_based": 31,
+      "member": {
+        "bytes": 2482797,
+        "compressed_bytes": 2391647,
+        "compression": 8,
+        "crc32": 1254005736,
+        "name": "MovingDroneCrowd++/frames/scene_6/3/31.jpg",
+        "offset": 10419395192
+      },
+      "node": "moving_scene_6__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/4.csv",
+      "clip": "scene_6/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 394360,
+        "compressed_bytes": 393753,
+        "compression": 8,
+        "crc32": 3762862113,
+        "name": "MovingDroneCrowd++/frames/scene_6/4/1.jpg",
+        "offset": 10437484966
+      },
+      "node": "moving_scene_6__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 12,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/4.csv",
+      "clip": "scene_6/4",
+      "image_frame_one_based": 13,
+      "member": {
+        "bytes": 430350,
+        "compressed_bytes": 429328,
+        "compression": 8,
+        "crc32": 2264415918,
+        "name": "MovingDroneCrowd++/frames/scene_6/4/13.jpg",
+        "offset": 10439182184
+      },
+      "node": "moving_scene_6__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 25,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/4.csv",
+      "clip": "scene_6/4",
+      "image_frame_one_based": 26,
+      "member": {
+        "bytes": 333579,
+        "compressed_bytes": 332747,
+        "compression": 8,
+        "crc32": 3224770659,
+        "name": "MovingDroneCrowd++/frames/scene_6/4/26.jpg",
+        "offset": 10445256169
+      },
+      "node": "moving_scene_6__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/5.csv",
+      "clip": "scene_6/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2169343,
+        "compressed_bytes": 2052908,
+        "compression": 8,
+        "crc32": 2035520738,
+        "name": "MovingDroneCrowd++/frames/scene_6/5/1.jpg",
+        "offset": 10448638326
+      },
+      "node": "moving_scene_6__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 18,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/5.csv",
+      "clip": "scene_6/5",
+      "image_frame_one_based": 19,
+      "member": {
+        "bytes": 2424003,
+        "compressed_bytes": 2339014,
+        "compression": 8,
+        "crc32": 1432960100,
+        "name": "MovingDroneCrowd++/frames/scene_6/5/19.jpg",
+        "offset": 10470992482
+      },
+      "node": "moving_scene_6__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 37,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/5.csv",
+      "clip": "scene_6/5",
+      "image_frame_one_based": 38,
+      "member": {
+        "bytes": 2449162,
+        "compressed_bytes": 2347714,
+        "compression": 8,
+        "crc32": 869910221,
+        "name": "MovingDroneCrowd++/frames/scene_6/5/38.jpg",
+        "offset": 10517121451
+      },
+      "node": "moving_scene_6__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/6.csv",
+      "clip": "scene_6/6",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 2782872,
+        "compressed_bytes": 2686373,
+        "compression": 8,
+        "crc32": 3912790680,
+        "name": "MovingDroneCrowd++/frames/scene_6/6/1.jpg",
+        "offset": 10532674751
+      },
+      "node": "moving_scene_6__6",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 11,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/6.csv",
+      "clip": "scene_6/6",
+      "image_frame_one_based": 12,
+      "member": {
+        "bytes": 3098029,
+        "compressed_bytes": 3011081,
+        "compression": 8,
+        "crc32": 2781299757,
+        "name": "MovingDroneCrowd++/frames/scene_6/6/12.jpg",
+        "offset": 10541494715
+      },
+      "node": "moving_scene_6__6",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_6/6.csv",
+      "clip": "scene_6/6",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 3248478,
+        "compressed_bytes": 3161734,
+        "compression": 8,
+        "crc32": 2327673364,
+        "name": "MovingDroneCrowd++/frames/scene_6/6/24.jpg",
+        "offset": 10583065749
+      },
+      "node": "moving_scene_6__6",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/1.csv",
+      "clip": "scene_7/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 944230,
+        "compressed_bytes": 943479,
+        "compression": 8,
+        "crc32": 2623300518,
+        "name": "MovingDroneCrowd++/frames/scene_7/1/1.jpg",
+        "offset": 10607787577
+      },
+      "node": "moving_scene_7__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 5,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/1.csv",
+      "clip": "scene_7/1",
+      "image_frame_one_based": 6,
+      "member": {
+        "bytes": 929161,
+        "compressed_bytes": 928735,
+        "compression": 8,
+        "crc32": 2474883124,
+        "name": "MovingDroneCrowd++/frames/scene_7/1/6.jpg",
+        "offset": 10614485791
+      },
+      "node": "moving_scene_7__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 10,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/1.csv",
+      "clip": "scene_7/1",
+      "image_frame_one_based": 11,
+      "member": {
+        "bytes": 968971,
+        "compressed_bytes": 968692,
+        "compression": 8,
+        "crc32": 3405614089,
+        "name": "MovingDroneCrowd++/frames/scene_7/1/11.jpg",
+        "offset": 10609712755
+      },
+      "node": "moving_scene_7__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/10.csv",
+      "clip": "scene_7/10",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1396259,
+        "compressed_bytes": 1374018,
+        "compression": 8,
+        "crc32": 2486831786,
+        "name": "MovingDroneCrowd++/frames/scene_7/10/1.jpg",
+        "offset": 10618248340
+      },
+      "node": "moving_scene_7__10",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 19,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/10.csv",
+      "clip": "scene_7/10",
+      "image_frame_one_based": 20,
+      "member": {
+        "bytes": 1477473,
+        "compressed_bytes": 1469297,
+        "compression": 8,
+        "crc32": 3821979388,
+        "name": "MovingDroneCrowd++/frames/scene_7/10/20.jpg",
+        "offset": 10634969684
+      },
+      "node": "moving_scene_7__10",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 39,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/10.csv",
+      "clip": "scene_7/10",
+      "image_frame_one_based": 40,
+      "member": {
+        "bytes": 1512685,
+        "compressed_bytes": 1509650,
+        "compression": 8,
+        "crc32": 3612443303,
+        "name": "MovingDroneCrowd++/frames/scene_7/10/40.jpg",
+        "offset": 10666421565
+      },
+      "node": "moving_scene_7__10",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/11.csv",
+      "clip": "scene_7/11",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1576915,
+        "compressed_bytes": 1576363,
+        "compression": 8,
+        "crc32": 3777838376,
+        "name": "MovingDroneCrowd++/frames/scene_7/11/1.jpg",
+        "offset": 10674758908
+      },
+      "node": "moving_scene_7__11",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 11,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/11.csv",
+      "clip": "scene_7/11",
+      "image_frame_one_based": 12,
+      "member": {
+        "bytes": 1711139,
+        "compressed_bytes": 1711407,
+        "compression": 8,
+        "crc32": 4231060854,
+        "name": "MovingDroneCrowd++/frames/scene_7/11/12.jpg",
+        "offset": 10679758995
+      },
+      "node": "moving_scene_7__11",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 23,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/11.csv",
+      "clip": "scene_7/11",
+      "image_frame_one_based": 24,
+      "member": {
+        "bytes": 1663289,
+        "compressed_bytes": 1663544,
+        "compression": 8,
+        "crc32": 3213898387,
+        "name": "MovingDroneCrowd++/frames/scene_7/11/24.jpg",
+        "offset": 10701760086
+      },
+      "node": "moving_scene_7__11",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/12.csv",
+      "clip": "scene_7/12",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1467216,
+        "compressed_bytes": 1467117,
+        "compression": 8,
+        "crc32": 4130416787,
+        "name": "MovingDroneCrowd++/frames/scene_7/12/1.jpg",
+        "offset": 10715323755
+      },
+      "node": "moving_scene_7__12",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 10,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/12.csv",
+      "clip": "scene_7/12",
+      "image_frame_one_based": 11,
+      "member": {
+        "bytes": 1445180,
+        "compressed_bytes": 1443843,
+        "compression": 8,
+        "crc32": 914662328,
+        "name": "MovingDroneCrowd++/frames/scene_7/12/11.jpg",
+        "offset": 10718264999
+      },
+      "node": "moving_scene_7__12",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 21,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/12.csv",
+      "clip": "scene_7/12",
+      "image_frame_one_based": 22,
+      "member": {
+        "bytes": 1503086,
+        "compressed_bytes": 1498585,
+        "compression": 8,
+        "crc32": 384763938,
+        "name": "MovingDroneCrowd++/frames/scene_7/12/22.jpg",
+        "offset": 10735740173
+      },
+      "node": "moving_scene_7__12",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/13.csv",
+      "clip": "scene_7/13",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1411840,
+        "compressed_bytes": 1402776,
+        "compression": 8,
+        "crc32": 3659512699,
+        "name": "MovingDroneCrowd++/frames/scene_7/13/1.jpg",
+        "offset": 10747536416
+      },
+      "node": "moving_scene_7__13",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 11,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/13.csv",
+      "clip": "scene_7/13",
+      "image_frame_one_based": 12,
+      "member": {
+        "bytes": 1415715,
+        "compressed_bytes": 1408734,
+        "compression": 8,
+        "crc32": 3272625231,
+        "name": "MovingDroneCrowd++/frames/scene_7/13/12.jpg",
+        "offset": 10751811513
+      },
+      "node": "moving_scene_7__13",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/13.csv",
+      "clip": "scene_7/13",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 1489956,
+        "compressed_bytes": 1485875,
+        "compression": 8,
+        "crc32": 2934403255,
+        "name": "MovingDroneCrowd++/frames/scene_7/13/23.jpg",
+        "offset": 10768868752
+      },
+      "node": "moving_scene_7__13",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/2.csv",
+      "clip": "scene_7/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1936323,
+        "compressed_bytes": 1935140,
+        "compression": 8,
+        "crc32": 3019236116,
+        "name": "MovingDroneCrowd++/frames/scene_7/2/1.jpg",
+        "offset": 10780529637
+      },
+      "node": "moving_scene_7__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 6,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/2.csv",
+      "clip": "scene_7/2",
+      "image_frame_one_based": 7,
+      "member": {
+        "bytes": 1979902,
+        "compressed_bytes": 1979837,
+        "compression": 8,
+        "crc32": 2329422702,
+        "name": "MovingDroneCrowd++/frames/scene_7/2/7.jpg",
+        "offset": 10802228010
+      },
+      "node": "moving_scene_7__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 13,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/2.csv",
+      "clip": "scene_7/2",
+      "image_frame_one_based": 14,
+      "member": {
+        "bytes": 1998546,
+        "compressed_bytes": 1998554,
+        "compression": 8,
+        "crc32": 1670534192,
+        "name": "MovingDroneCrowd++/frames/scene_7/2/14.jpg",
+        "offset": 10790438152
+      },
+      "node": "moving_scene_7__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/3.csv",
+      "clip": "scene_7/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1372349,
+        "compressed_bytes": 1369771,
+        "compression": 8,
+        "crc32": 3904863376,
+        "name": "MovingDroneCrowd++/frames/scene_7/3/1.jpg",
+        "offset": 10808174764
+      },
+      "node": "moving_scene_7__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 8,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/3.csv",
+      "clip": "scene_7/3",
+      "image_frame_one_based": 9,
+      "member": {
+        "bytes": 1413071,
+        "compressed_bytes": 1411176,
+        "compression": 8,
+        "crc32": 970068803,
+        "name": "MovingDroneCrowd++/frames/scene_7/3/9.jpg",
+        "offset": 10830776621
+      },
+      "node": "moving_scene_7__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 16,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/3.csv",
+      "clip": "scene_7/3",
+      "image_frame_one_based": 17,
+      "member": {
+        "bytes": 1411126,
+        "compressed_bytes": 1408764,
+        "compression": 8,
+        "crc32": 3418938898,
+        "name": "MovingDroneCrowd++/frames/scene_7/3/17.jpg",
+        "offset": 10819455644
+      },
+      "node": "moving_scene_7__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/4.csv",
+      "clip": "scene_7/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1484600,
+        "compressed_bytes": 1483120,
+        "compression": 8,
+        "crc32": 2448736886,
+        "name": "MovingDroneCrowd++/frames/scene_7/4/1.jpg",
+        "offset": 10832188014
+      },
+      "node": "moving_scene_7__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 7,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/4.csv",
+      "clip": "scene_7/4",
+      "image_frame_one_based": 8,
+      "member": {
+        "bytes": 1810911,
+        "compressed_bytes": 1810899,
+        "compression": 8,
+        "crc32": 1973602068,
+        "name": "MovingDroneCrowd++/frames/scene_7/4/8.jpg",
+        "offset": 10854897502
+      },
+      "node": "moving_scene_7__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 14,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/4.csv",
+      "clip": "scene_7/4",
+      "image_frame_one_based": 15,
+      "member": {
+        "bytes": 1963160,
+        "compressed_bytes": 1962927,
+        "compression": 8,
+        "crc32": 1874621760,
+        "name": "MovingDroneCrowd++/frames/scene_7/4/15.jpg",
+        "offset": 10843443262
+      },
+      "node": "moving_scene_7__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/5.csv",
+      "clip": "scene_7/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1572370,
+        "compressed_bytes": 1571991,
+        "compression": 8,
+        "crc32": 441077549,
+        "name": "MovingDroneCrowd++/frames/scene_7/5/1.jpg",
+        "offset": 10858709330
+      },
+      "node": "moving_scene_7__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 20,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/5.csv",
+      "clip": "scene_7/5",
+      "image_frame_one_based": 21,
+      "member": {
+        "bytes": 1326710,
+        "compressed_bytes": 1324276,
+        "compression": 8,
+        "crc32": 1675143945,
+        "name": "MovingDroneCrowd++/frames/scene_7/5/21.jpg",
+        "offset": 10878196822
+      },
+      "node": "moving_scene_7__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/5.csv",
+      "clip": "scene_7/5",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 1352747,
+        "compressed_bytes": 1341567,
+        "compression": 8,
+        "crc32": 3636857963,
+        "name": "MovingDroneCrowd++/frames/scene_7/5/42.jpg",
+        "offset": 10910910905
+      },
+      "node": "moving_scene_7__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/6.csv",
+      "clip": "scene_7/6",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1446264,
+        "compressed_bytes": 1440041,
+        "compression": 8,
+        "crc32": 2811322456,
+        "name": "MovingDroneCrowd++/frames/scene_7/6/1.jpg",
+        "offset": 10919851838
+      },
+      "node": "moving_scene_7__6",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 22,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/6.csv",
+      "clip": "scene_7/6",
+      "image_frame_one_based": 23,
+      "member": {
+        "bytes": 1252217,
+        "compressed_bytes": 1248919,
+        "compression": 8,
+        "crc32": 3431184057,
+        "name": "MovingDroneCrowd++/frames/scene_7/6/23.jpg",
+        "offset": 10939011957
+      },
+      "node": "moving_scene_7__6",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 45,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/6.csv",
+      "clip": "scene_7/6",
+      "image_frame_one_based": 46,
+      "member": {
+        "bytes": 1147734,
+        "compressed_bytes": 1139374,
+        "compression": 8,
+        "crc32": 4108649159,
+        "name": "MovingDroneCrowd++/frames/scene_7/6/46.jpg",
+        "offset": 10969445910
+      },
+      "node": "moving_scene_7__6",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/7.csv",
+      "clip": "scene_7/7",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1537153,
+        "compressed_bytes": 1530179,
+        "compression": 8,
+        "crc32": 1331848037,
+        "name": "MovingDroneCrowd++/frames/scene_7/7/1.jpg",
+        "offset": 10977079507
+      },
+      "node": "moving_scene_7__7",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 8,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/7.csv",
+      "clip": "scene_7/7",
+      "image_frame_one_based": 9,
+      "member": {
+        "bytes": 1645188,
+        "compressed_bytes": 1640711,
+        "compression": 8,
+        "crc32": 972419091,
+        "name": "MovingDroneCrowd++/frames/scene_7/7/9.jpg",
+        "offset": 11002700225
+      },
+      "node": "moving_scene_7__7",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 16,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/7.csv",
+      "clip": "scene_7/7",
+      "image_frame_one_based": 17,
+      "member": {
+        "bytes": 1593007,
+        "compressed_bytes": 1587788,
+        "compression": 8,
+        "crc32": 3612992448,
+        "name": "MovingDroneCrowd++/frames/scene_7/7/17.jpg",
+        "offset": 10989779550
+      },
+      "node": "moving_scene_7__7",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/8.csv",
+      "clip": "scene_7/8",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1773322,
+        "compressed_bytes": 1770253,
+        "compression": 8,
+        "crc32": 1191250943,
+        "name": "MovingDroneCrowd++/frames/scene_7/8/1.jpg",
+        "offset": 11004341153
+      },
+      "node": "moving_scene_7__8",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 9,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/8.csv",
+      "clip": "scene_7/8",
+      "image_frame_one_based": 10,
+      "member": {
+        "bytes": 1664004,
+        "compressed_bytes": 1662233,
+        "compression": 8,
+        "crc32": 1932973033,
+        "name": "MovingDroneCrowd++/frames/scene_7/8/10.jpg",
+        "offset": 11006111525
+      },
+      "node": "moving_scene_7__8",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 19,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/8.csv",
+      "clip": "scene_7/8",
+      "image_frame_one_based": 20,
+      "member": {
+        "bytes": 1454533,
+        "compressed_bytes": 1452482,
+        "compression": 8,
+        "crc32": 2711029655,
+        "name": "MovingDroneCrowd++/frames/scene_7/8/20.jpg",
+        "offset": 11023231724
+      },
+      "node": "moving_scene_7__8",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/9.csv",
+      "clip": "scene_7/9",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1633644,
+        "compressed_bytes": 1633706,
+        "compression": 8,
+        "crc32": 1718250210,
+        "name": "MovingDroneCrowd++/frames/scene_7/9/1.jpg",
+        "offset": 11036943921
+      },
+      "node": "moving_scene_7__9",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 7,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/9.csv",
+      "clip": "scene_7/9",
+      "image_frame_one_based": 8,
+      "member": {
+        "bytes": 1633510,
+        "compressed_bytes": 1633739,
+        "compression": 8,
+        "crc32": 2728734318,
+        "name": "MovingDroneCrowd++/frames/scene_7/9/8.jpg",
+        "offset": 11059807033
+      },
+      "node": "moving_scene_7__9",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 15,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_7/9.csv",
+      "clip": "scene_7/9",
+      "image_frame_one_based": 16,
+      "member": {
+        "bytes": 1624699,
+        "compressed_bytes": 1625008,
+        "compression": 8,
+        "crc32": 2818346011,
+        "name": "MovingDroneCrowd++/frames/scene_7/9/16.jpg",
+        "offset": 11048455198
+      },
+      "node": "moving_scene_7__9",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/1.csv",
+      "clip": "scene_8/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1404430,
+        "compressed_bytes": 1363372,
+        "compression": 8,
+        "crc32": 177853134,
+        "name": "MovingDroneCrowd++/frames/scene_8/1/1.jpg",
+        "offset": 11063120734
+      },
+      "node": "moving_scene_8__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 30,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/1.csv",
+      "clip": "scene_8/1",
+      "image_frame_one_based": 31,
+      "member": {
+        "bytes": 1264137,
+        "compressed_bytes": 1221174,
+        "compression": 8,
+        "crc32": 1297644601,
+        "name": "MovingDroneCrowd++/frames/scene_8/1/31.jpg",
+        "offset": 11095305807
+      },
+      "node": "moving_scene_8__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 61,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/1.csv",
+      "clip": "scene_8/1",
+      "image_frame_one_based": 62,
+      "member": {
+        "bytes": 1233769,
+        "compressed_bytes": 1196180,
+        "compression": 8,
+        "crc32": 4215914008,
+        "name": "MovingDroneCrowd++/frames/scene_8/1/62.jpg",
+        "offset": 11136987309
+      },
+      "node": "moving_scene_8__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/2.csv",
+      "clip": "scene_8/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1346769,
+        "compressed_bytes": 1309567,
+        "compression": 8,
+        "crc32": 2411529694,
+        "name": "MovingDroneCrowd++/frames/scene_8/2/1.jpg",
+        "offset": 11142390203
+      },
+      "node": "moving_scene_8__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 46,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/2.csv",
+      "clip": "scene_8/2",
+      "image_frame_one_based": 47,
+      "member": {
+        "bytes": 1154007,
+        "compressed_bytes": 1116605,
+        "compression": 8,
+        "crc32": 2766415660,
+        "name": "MovingDroneCrowd++/frames/scene_8/2/47.jpg",
+        "offset": 11189324770
+      },
+      "node": "moving_scene_8__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 92,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/2.csv",
+      "clip": "scene_8/2",
+      "image_frame_one_based": 93,
+      "member": {
+        "bytes": 1313672,
+        "compressed_bytes": 1275150,
+        "compression": 8,
+        "crc32": 894588342,
+        "name": "MovingDroneCrowd++/frames/scene_8/2/93.jpg",
+        "offset": 11249176733
+      },
+      "node": "moving_scene_8__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/3.csv",
+      "clip": "scene_8/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1075846,
+        "compressed_bytes": 1026925,
+        "compression": 8,
+        "crc32": 2473861890,
+        "name": "MovingDroneCrowd++/frames/scene_8/3/1.jpg",
+        "offset": 11250452101
+      },
+      "node": "moving_scene_8__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 36,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/3.csv",
+      "clip": "scene_8/3",
+      "image_frame_one_based": 37,
+      "member": {
+        "bytes": 1381941,
+        "compressed_bytes": 1342797,
+        "compression": 8,
+        "crc32": 2521382744,
+        "name": "MovingDroneCrowd++/frames/scene_8/3/37.jpg",
+        "offset": 11289669915
+      },
+      "node": "moving_scene_8__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 72,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/3.csv",
+      "clip": "scene_8/3",
+      "image_frame_one_based": 73,
+      "member": {
+        "bytes": 1236202,
+        "compressed_bytes": 1196415,
+        "compression": 8,
+        "crc32": 4104559603,
+        "name": "MovingDroneCrowd++/frames/scene_8/3/73.jpg",
+        "offset": 11341134729
+      },
+      "node": "moving_scene_8__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/4.csv",
+      "clip": "scene_8/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1428640,
+        "compressed_bytes": 1387497,
+        "compression": 8,
+        "crc32": 2340356825,
+        "name": "MovingDroneCrowd++/frames/scene_8/4/1.jpg",
+        "offset": 11344604414
+      },
+      "node": "moving_scene_8__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 41,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/4.csv",
+      "clip": "scene_8/4",
+      "image_frame_one_based": 42,
+      "member": {
+        "bytes": 1365987,
+        "compressed_bytes": 1327650,
+        "compression": 8,
+        "crc32": 602230416,
+        "name": "MovingDroneCrowd++/frames/scene_8/4/42.jpg",
+        "offset": 11393586762
+      },
+      "node": "moving_scene_8__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 82,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/4.csv",
+      "clip": "scene_8/4",
+      "image_frame_one_based": 83,
+      "member": {
+        "bytes": 1263179,
+        "compressed_bytes": 1224035,
+        "compression": 8,
+        "crc32": 2627771820,
+        "name": "MovingDroneCrowd++/frames/scene_8/4/83.jpg",
+        "offset": 11450410155
+      },
+      "node": "moving_scene_8__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/5.csv",
+      "clip": "scene_8/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 1504671,
+        "compressed_bytes": 1462735,
+        "compression": 8,
+        "crc32": 1771262797,
+        "name": "MovingDroneCrowd++/frames/scene_8/5/1.jpg",
+        "offset": 11452999365
+      },
+      "node": "moving_scene_8__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 28,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/5.csv",
+      "clip": "scene_8/5",
+      "image_frame_one_based": 29,
+      "member": {
+        "bytes": 1492375,
+        "compressed_bytes": 1455229,
+        "compression": 8,
+        "crc32": 3729398014,
+        "name": "MovingDroneCrowd++/frames/scene_8/5/29.jpg",
+        "offset": 11482301981
+      },
+      "node": "moving_scene_8__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 56,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_8/5.csv",
+      "clip": "scene_8/5",
+      "image_frame_one_based": 57,
+      "member": {
+        "bytes": 1680048,
+        "compressed_bytes": 1638683,
+        "compression": 8,
+        "crc32": 3484192133,
+        "name": "MovingDroneCrowd++/frames/scene_8/5/57.jpg",
+        "offset": 11531442152
+      },
+      "node": "moving_scene_8__5",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/1.csv",
+      "clip": "scene_9/1",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 823201,
+        "compressed_bytes": 823273,
+        "compression": 8,
+        "crc32": 4121680480,
+        "name": "MovingDroneCrowd++/frames/scene_9/1/1.jpg",
+        "offset": 11538506804
+      },
+      "node": "moving_scene_9__1",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 10,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/1.csv",
+      "clip": "scene_9/1",
+      "image_frame_one_based": 11,
+      "member": {
+        "bytes": 790726,
+        "compressed_bytes": 790811,
+        "compression": 8,
+        "crc32": 3410302354,
+        "name": "MovingDroneCrowd++/frames/scene_9/1/11.jpg",
+        "offset": 11540210104
+      },
+      "node": "moving_scene_9__1",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 20,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/1.csv",
+      "clip": "scene_9/1",
+      "image_frame_one_based": 21,
+      "member": {
+        "bytes": 960408,
+        "compressed_bytes": 960396,
+        "compression": 8,
+        "crc32": 3991575525,
+        "name": "MovingDroneCrowd++/frames/scene_9/1/21.jpg",
+        "offset": 11550217392
+      },
+      "node": "moving_scene_9__1",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/2.csv",
+      "clip": "scene_9/2",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 497169,
+        "compressed_bytes": 497021,
+        "compression": 8,
+        "crc32": 1432971790,
+        "name": "MovingDroneCrowd++/frames/scene_9/2/1.jpg",
+        "offset": 11557172132
+      },
+      "node": "moving_scene_9__2",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 15,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/2.csv",
+      "clip": "scene_9/2",
+      "image_frame_one_based": 16,
+      "member": {
+        "bytes": 586507,
+        "compressed_bytes": 586484,
+        "compression": 8,
+        "crc32": 1481103548,
+        "name": "MovingDroneCrowd++/frames/scene_9/2/16.jpg",
+        "offset": 11561261489
+      },
+      "node": "moving_scene_9__2",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 30,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/2.csv",
+      "clip": "scene_9/2",
+      "image_frame_one_based": 31,
+      "member": {
+        "bytes": 588102,
+        "compressed_bytes": 588082,
+        "compression": 8,
+        "crc32": 3032322298,
+        "name": "MovingDroneCrowd++/frames/scene_9/2/31.jpg",
+        "offset": 11571227997
+      },
+      "node": "moving_scene_9__2",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/3.csv",
+      "clip": "scene_9/3",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 943235,
+        "compressed_bytes": 943229,
+        "compression": 8,
+        "crc32": 4284017414,
+        "name": "MovingDroneCrowd++/frames/scene_9/3/1.jpg",
+        "offset": 11575156524
+      },
+      "node": "moving_scene_9__3",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 12,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/3.csv",
+      "clip": "scene_9/3",
+      "image_frame_one_based": 13,
+      "member": {
+        "bytes": 841073,
+        "compressed_bytes": 841157,
+        "compression": 8,
+        "crc32": 238136228,
+        "name": "MovingDroneCrowd++/frames/scene_9/3/13.jpg",
+        "offset": 11578623388
+      },
+      "node": "moving_scene_9__3",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 24,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/3.csv",
+      "clip": "scene_9/3",
+      "image_frame_one_based": 25,
+      "member": {
+        "bytes": 842114,
+        "compressed_bytes": 842135,
+        "compression": 8,
+        "crc32": 4265898621,
+        "name": "MovingDroneCrowd++/frames/scene_9/3/25.jpg",
+        "offset": 11589626637
+      },
+      "node": "moving_scene_9__3",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/4.csv",
+      "clip": "scene_9/4",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 566239,
+        "compressed_bytes": 565953,
+        "compression": 8,
+        "crc32": 4102877789,
+        "name": "MovingDroneCrowd++/frames/scene_9/4/1.jpg",
+        "offset": 11596610665
+      },
+      "node": "moving_scene_9__4",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 14,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/4.csv",
+      "clip": "scene_9/4",
+      "image_frame_one_based": 15,
+      "member": {
+        "bytes": 567912,
+        "compressed_bytes": 567888,
+        "compression": 8,
+        "crc32": 2129148294,
+        "name": "MovingDroneCrowd++/frames/scene_9/4/15.jpg",
+        "offset": 11599947892
+      },
+      "node": "moving_scene_9__4",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 28,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/4.csv",
+      "clip": "scene_9/4",
+      "image_frame_one_based": 29,
+      "member": {
+        "bytes": 599899,
+        "compressed_bytes": 599906,
+        "compression": 8,
+        "crc32": 3574813910,
+        "name": "MovingDroneCrowd++/frames/scene_9/4/29.jpg",
+        "offset": 11608527873
+      },
+      "node": "moving_scene_9__4",
+      "slot": 3
+    },
+    {
+      "annotation_frame_zero_based": 0,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/5.csv",
+      "clip": "scene_9/5",
+      "image_frame_one_based": 1,
+      "member": {
+        "bytes": 553560,
+        "compressed_bytes": 553411,
+        "compression": 8,
+        "crc32": 2768261236,
+        "name": "MovingDroneCrowd++/frames/scene_9/5/1.jpg",
+        "offset": 11613257282
+      },
+      "node": "moving_scene_9__5",
+      "slot": 1
+    },
+    {
+      "annotation_frame_zero_based": 16,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/5.csv",
+      "clip": "scene_9/5",
+      "image_frame_one_based": 17,
+      "member": {
+        "bytes": 533355,
+        "compressed_bytes": 533327,
+        "compression": 8,
+        "crc32": 1764772555,
+        "name": "MovingDroneCrowd++/frames/scene_9/5/17.jpg",
+        "offset": 11617661979
+      },
+      "node": "moving_scene_9__5",
+      "slot": 2
+    },
+    {
+      "annotation_frame_zero_based": 32,
+      "annotation_member": "MovingDroneCrowd++/annotations/scene_9/5.csv",
+      "clip": "scene_9/5",
+      "image_frame_one_based": 33,
+      "member": {
+        "bytes": 531293,
+        "compressed_bytes": 531271,
+        "compression": 8,
+        "crc32": 3054981505,
+        "name": "MovingDroneCrowd++/frames/scene_9/5/33.jpg",
+        "offset": 11627280671
+      },
+      "node": "moving_scene_9__5",
+      "slot": 3
+    }
+  ]
+}

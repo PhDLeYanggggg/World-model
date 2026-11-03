@@ -245,10 +245,12 @@ reserved for confirmation in its entirety. The new source is not yet admitted
 for training or claimed to be independent of those reserved scenes. The next
 step checks source overlap before assigning research roles.
 
-The [registered image-overlap study](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
+The [registered image-overlap study](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/protocol.md)
 covers every new clip and its relation to the protected DroneCrowd collection.
 It keeps ambiguous matches as exclusion constraints. Passing a software check
 or finding no image match will not be treated as proof of a new physical site.
+Acquisition exposed 21 portrait views that need an explicit orientation fix
+before matching; the original pass is retained and no training role is granted.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
