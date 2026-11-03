@@ -206,6 +206,11 @@ The first complete2,000-update head in each arm has now also been independently
 refitted; both full scientific states are exact. These are4,000additional
 verification updates,not primary budget or held-policy evidence. The remaining
 registered fits continue underPID7082/session30908.
+Full fitting now finishes asPID7082exit0 at23:00:17UTC after2,689.130s:
+36/36heads,72,000primary updates,all18pairs exactly matched in initialization,
+parameters,budget,sampler,draw hashes,fitting IDs,normalization and Torch RNG.
+Both complete first-head refits remain exact. Held policy evaluation and its
+separate replay are still pending; fitting completion is not a passed risk gate.
 
 ### New-Source Image Overlap
 
