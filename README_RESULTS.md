@@ -109,6 +109,12 @@ compatibility claimed. [Interruption and recovery](outputs/publication_readiness
 No partial-cohort aggregate or policy promotion. Fourteen current focused
 checks pass2.83s; unrelated legacy tests are not run.
 
+Local space subsequently recovers above the unchanged10GiB reserve. The same
+training resumes under PID62172, with a separate log: the six complete models
+are reused without updates and the seventh advances beyond its saved step.
+No new HPC computation, changed budget, discarded checkpoint or erased failure.
+The18-model fitting result is still incomplete at this recovery checkpoint.
+
 ### Build And Fitting History
 
 The first frozen-interaction extraction pilot failed because I passed the

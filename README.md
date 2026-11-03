@@ -213,13 +213,14 @@ The [new same-set diagnosis](outputs/publication_readiness_2026_09/european_feat
 finds that this head underestimates selected easy harm already on fitting
 scenes, not only on new localities. All 324 falsely-safe fitting views and 330
 held views underestimate its numerator. Before changing architecture again,
-The fourfold-budget training check is currently incomplete after a local disk
-guard stopped the run. Six heads finish and a seventh is checkpointed; the
-saved models and failed log are now verified backups on CREATE. The old-budget
-prefixes checked so far are exact, and the main comparison keeps the original
-selected set fixed. The next step is recovery and CPU portability qualification,
-not a lower budget or a favorable partial-result claim. This is a training-
-adequacy experiment, not evidence of a new world-model contribution.
+The fourfold-budget training check remains incomplete. A local disk guard
+initially stops the run after six heads and a seventh checkpoint; those files
+and the failed log are verified backups on CREATE. Once local space recovers,
+the same run resumes from the saved optimizer state without retraining the
+complete models or lowering the budget. The old-budget prefixes checked so
+far are exact, and the main comparison keeps the original selected set fixed.
+This is a training-adequacy experiment, not evidence of a new world-model
+contribution or a favorable partial-result claim.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
