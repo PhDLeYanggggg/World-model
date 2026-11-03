@@ -85,6 +85,10 @@ assertion rejected it. Temporary Hlabel preprocessing was computed and discarded
 not used for fitting or selection. I retain the [failure and explicit role repair](outputs/publication_readiness_2026_09/european_interaction_feature_cost_v1/role_repair.md).
 The corrected registration preserves jobs,primary,budgets and thresholds;14
 focused tests pass2.59s. Corrected real recovery pilot and full fits are next.
+The corrected real pilot now completes1200updates,PID52114,20.513s,peak11.975GB.
+All three group recoveries and matched initial weights,normalization and draws
+are exact. The optimizer-only36-fit projection is296.70s,excluding preparation
+and inference. Complete36-fit training is next;no held feature effect is known.
 These engineering tests do not establish a learned-feature benefit.
 The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.
