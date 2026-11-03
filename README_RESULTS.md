@@ -105,6 +105,15 @@ sampling budget or risk thresholds are selected from these fitting losses.
 Heartbeat/checkpoints/log:
 `data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/`.
 
+While the full matrix continues, the [next matched information comparison](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/protocol.md)
+is defined before forecast readout. EqMotion is fixed as its proposal family;
+the future comparison does not choose a family from held scores. Both cost
+heads use380common past/local rollout columns and48shared-motion slots, with
+only those48slots zeroed in the local control. Seven new synthetic role,
+inference-schema and exact-resume checks pass1.96s. These are implementation
+checks, not real-source critic fitting or a positive feature/risk result.
+Actual critic execution remains pending complete forecast training and replay.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
