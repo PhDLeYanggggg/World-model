@@ -17,7 +17,7 @@
 
 ```sh
 .venv-pytorch/bin/python scripts/report_m3w_moving_shared_motion_cost.py
-.venv-pytorch/bin/python scripts/report_m3w_selected_cost_audit.py
+.venv-pytorch/bin/python scripts/report_m3w_moving_selected_cost_audit.py
 ```
 
 上面两条整理已有且核验的结果。下文保留原执行顺序；已完成的训练／评价

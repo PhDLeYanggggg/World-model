@@ -83,8 +83,14 @@ risk is still evaluated on the entire original population.
 
 ## Next Controlled Repair
 
-First test selected-set cost self-consistency on critic-fitting sources, using
-a separately frozen selection-aware risk/tail objective or calibration control.
+This new-source audit corroborates earlier European selected-EH diagnosis;
+it is not a newly discovered general mechanism or a standalone novelty claim.
+The earlier sparse-EH, conditional-cost and cost-loss controls also failed and
+remain negative. Do not simply rerun them under another dataset or name.
+
+First distinguish numerical saturation from an incorrectly weighted selected
+objective on critic-fitting sources. A subsequent risk/calibration control must
+be a separately frozen, substantively different test justified by that diagnosis.
 Keep the original moment bounds, legal inputs, disjoint roles and2%requirements.
 Do not tune a multiplier on the exposed held scores, widen the network again
 without evidence, or assume more camera-motion features will fix this failure.

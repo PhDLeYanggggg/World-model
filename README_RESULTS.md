@@ -233,7 +233,12 @@ not a new independent test or an identified unique decoder/optimization cause.
 Two new pure calibration/empty-support checks pass0.12s. The next controlled
 repair should address selected-cost self-consistency,not another blind feature,
 width or duration sweep. [Detailed failure analysis](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/failure_analysis.md).
-The final changed-version focused suite passes19tests in2.49s. The unrelated
+The final changed-version focused suite passes21tests in2.13s,including the
+historical European reporter checks. Its original entry is restored byte-for-
+byte (SHA7d62532825bfa408729c12186e13d3443e76db9887675a16fa47ef90b97df80e),
+and its cached archive/derived-output check passes without fresh training.
+The new exporter uses `scripts/report_m3w_moving_selected_cost_audit.py`;
+rerendering leaves the new scalar outputs unchanged. The unrelated
 legacy suite is not_run in this unit; its report-writing side effects are not
 treated as a clean read-only verification. Current phase processes have exited.
 
