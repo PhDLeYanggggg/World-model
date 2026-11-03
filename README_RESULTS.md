@@ -196,6 +196,12 @@ with18disjoint producer/critic/held jobs and two matched28,229-parameter heads
 per job. Each head retains2,000updates (72,000primary updates total), without
 held-out parameter selection. Registration completes asPID6785exit0; actual
 pilot and full fitting have not yet run at this checkpoint.
+The subsequent real pilot PID6969 now exits0 in67.570s,peak RSS7,423,655,936
+bytes. All six feature-arm/source-fold cells have exact50+50resume/direct100
+scientific state and matched pair sampling. Pure36-head fitting projects to
+2,197.931s before preparation/refit overhead,not actual completion. Local RAM
+and disk headroom support the full registered budget; formal36-head fitting
+now runs,without reading held policy scores or opening calibration/confirmation.
 
 ### New-Source Image Overlap
 
