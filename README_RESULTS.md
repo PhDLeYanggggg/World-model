@@ -114,6 +114,8 @@ implemented; ten synthetic role,input,exact-resume,solver-receipt and grouped-
 interval checks pass2.10s. These are implementation
 checks, not real-source critic fitting or a positive feature/risk result.
 Actual critic execution remains pending complete forecast training and replay.
+The [Chinese operation guide](outputs/publication_readiness_2026_09/moving_shared_motion_cost_v1/operation_zh.md)
+explains the learned roles,resume commands and full-risk versus utility checks.
 
 At the first-completion checkpoint,the EqMotion producer finishes4,000updates,including its
 identical100-update pilot prefix, in1,172.812s of actual fitting time. Its saved
