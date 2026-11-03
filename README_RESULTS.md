@@ -68,6 +68,12 @@ frozen2kparents,both with2kadditional updates. It is not a generic log-loss
 novelty claim or an independent test;earlier log-loss/hurdle failures remain.
 Six initial loss/neutral-gradient/warm-optimizer/recovery checks pass1.85s.
 Real pilot/full continuation/evaluation are not_run at this definition checkpoint.
+The real six-cell pilot subsequently exits0 asPID12974in72.122s,peakRSS
+7,426,801,664bytes.50+50resume/direct100states,optimizers,samplers and predictions
+are exact within each arm;paired initial states/draws match. Projected36-head
+fit cost is2,430.802s before preparation/refits,not actual completion. The
+complete registered continuation matrix now runs locally;held policy readout
+waits for all36completed continuations and the first-job full refits.
 
 ### Admitted Moving-Source Forecast Controls
 
