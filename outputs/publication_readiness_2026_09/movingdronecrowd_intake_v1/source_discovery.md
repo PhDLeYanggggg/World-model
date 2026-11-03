@@ -1,5 +1,8 @@
 # Source Discovery, Not Experimental Admission
 
+This is the discovery-time record. The completed acquisition, structural
+counts and split interpretation are in [conclusions.md](conclusions.md).
+
 The author's [project page](https://github.com/fyw1999/MovingDroneCrowd) links
 the current [dataset repository](https://huggingface.co/datasets/fyw1999/MovingDroneCrowd).
 The latter declares CC-BY-NC4.0 and currently distributes the extended

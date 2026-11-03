@@ -234,7 +234,7 @@ harm is only 0.83% of the target. Neither lower loss, fewer interventions nor
 dropping uncertain labels establishes safe world-dynamics improvement.
 
 I am now checking a different development-data route:
-[MovingDroneCrowd++](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/protocol.md),
+[MovingDroneCrowd++](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/conclusions.md),
 which provides image sequences and head-identity annotations. Its version is
 pinned before acquisition. The completed annotation pass finds 120 clips,
 638,718 labeled rows and 245,018 complete eight-observation/twelve-prediction

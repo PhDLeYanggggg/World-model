@@ -75,12 +75,29 @@ The common offline history kernel is tested,not annotator sensor-time causality.
 Publisher train files can name whole scenes while val/test can name clips.
 The initial conservative parser leaves scene-only entries unresolved. A new
 explicit interpreter follows the pinned author loader,without executing it;
-16focused source tests pass0.21s. Execution of that additional interpretation
-is pending at this checkpoint. Extended val/test share11publisher scene
+16focused source tests pass0.21s. That additional interpretation and its
+separate replay are now complete and exact. Extended val/test share11publisher scene
 labels,so they cannot simply be treated as scene-disjoint calibration/test.
 This is a difference in task requirements,not an accusation about the original
 counting benchmark. No training,forecast-error readout,role reassignment or
 source-independence claim is made. No downloaded vendor code or weights run.
+
+Correctly expanded extended train/val/test are64/15/41clips with24/12/19scene
+labels and136,295/22,035/86,688complete native8/12windows. The current release's
+conference-protocol subset is63/8/18clips across16/4/6labels,without label-level
+split overlap. Its325,577rows differ from the paper's325,541; the cause remains
+unverified and a byte-identical historical-data replication is not claimed.
+Extended test has only34native+100endpoint windows; original-protocol test has
+none. Full-source support is not substituted for held-out support.
+Split executionPID65880 takes0.341s; replayPID65894 takes0.073s,all summaries
+exact. A repeatable read-only check then recomputes all120record/window and
+split summaries exactly in7.354s,with0application artifacts written,
+bytecode-cache writing disabled and0network requests.
+[Results and limits](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/conclusions.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/tutorial_zh.md).
+The next source-image plan has360fixed first/middle/last views,575,970,426
+compressed member bytes; it is a metadata-only plan,not an executed image
+download or overlap audit. Preserve the whole-source confirmation reservation.
 
 ### Frozen Interaction Features: Complete, Primary Unsupported
 
