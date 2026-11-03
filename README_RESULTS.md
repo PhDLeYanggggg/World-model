@@ -56,8 +56,11 @@ generic easy-event hurdle failure remains. Real recovery pilot PID16958 complete
 1200updates in13.582s,peak7.584GB. All six arm/group50->100/direct100recoveries
 are exact and paired initialization/preprocessing/draws agree. Optimizer-only
 full-fit projection254.757splus7.944sfirst-refits, excluding preparation/inference.
-Fourteen current targeted tests pass1.85s. Full fitting, prediction freeze and
-readout are next; no new scientific result is claimed by recovery or code checks.
+Fourteen current targeted tests pass1.85s. All36fits now complete116160primary
+updates plus4000full-refit updates, PID17236,404.408s,peak9.230GB. Both first
+complete refits are exact. Paired initial weights, normalizers, samplers and
+draws agree. Held prediction freeze/readout are next; no efficacy or safety
+claim follows from fitting, recovery or code checks.
 [Protocol](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md).
 
 The post-readout same-set cost diagnostic is complete: all36frozen heads,
