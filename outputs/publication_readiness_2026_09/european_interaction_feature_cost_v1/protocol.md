@@ -33,6 +33,13 @@ coverage budgets. Dimension508gives33349parameters per head versus29253in the
 frozen444control. The primary is within the matched new capacity;old-direct
 contrasts are secondary and cannot isolate latent information by themselves.
 
+The h64extractor uses its original complete-neighbor packet while the existing
+444descriptors use the later partial-neighbor packet. A positive feature
+contrast therefore establishes utility of this frozen feature bundle,not an
+isolated learned-encoding effect under identical raw neighbor coverage. If it
+succeeds,a matched raw-original-context control is required before that stronger
+attribution. This distinction is recorded before any head fit or held readout.
+
 No future-target latent,endpoint,future masks,central velocity,eventual track
 length,test goals,domain/record ID input or held normalization. Existing IDs
 group queries and enforce roles,not neural covariates. Forecaster features are

@@ -75,6 +75,10 @@ zero paired effects cannot be promoted;the current combined suite passes12
 tests in2.13s. The scalar report/gate reconstruction is implemented but not
 run without complete results. Registration and all36fits wait for full cache
 replay;these tests do not establish a learned-feature benefit.
+The planned feature contrast is also not an encoding-only attribution: h64uses
+the forecaster's original neighbor packet while444uses partial neighbors.
+A positive result would need a matched raw-context control before attributing
+the gain specifically to learned encoding.
 
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct

@@ -55,6 +55,11 @@ def main():
              'Zero64removes the final standardized feature block exactly;the other',
              'uses ego h64from a frozen producer-excluded EqMotion interaction layer.',
              'The old444-input direct control has29253parameters and is secondary.', '',
+             'h64uses the original forecaster neighbor packet;the444descriptors use',
+             'the later partial-neighbor packet. This contrast tests the full added',
+             'feature bundle,not learned encoding isolated from raw neighbor coverage.',
+             'A positive result still needs a raw-original-context control before',
+             'that stronger attribution. This caveat was fixed before head training.', '',
              '|Policy|Known gain % [95% CI]|Individual completion lower % [95% CI]|Supported/444|Worst signed easy net %|',
              '|---|---:|---:|---:|---:|']
     for name in names:
