@@ -79,6 +79,11 @@ SOURCE development results, not independent confirmation or a new dynamics
 contribution. Deployment is unchanged. The next diagnosis compares predicted
 and realized costs on identical selected sets in fitting and held roles.
 
+That [frozen-head diagnosis](outputs/publication_readiness_2026_09/european_feature_cost_diagnosis_v1/protocol.md)
+is now registered for every original job, both feature arms and all three
+seeds. Five focused tests pass. It adds no optimizer updates or policy search;
+the actual fitted-versus-held cost decomposition is the next execution.
+
 ### Build And Fitting History
 
 The first frozen-interaction extraction pilot failed because I passed the
