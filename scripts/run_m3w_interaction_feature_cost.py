@@ -32,7 +32,8 @@ PRIVATE = ROOT/'data/stage_cvpr2027_experiments'/NAME
 CONFIG = ROOT/'configs/m3w_interaction_feature_cost_v1.json'
 REG = PUBLIC/'registration.json'
 FILES = (Path(__file__), CONFIG, ROOT/'src/world_model/m3w_interaction_feature_cost.py',
-         ROOT/'tests/test_m3w_interaction_feature_cost.py', PUBLIC/'protocol.md')
+         ROOT/'tests/test_m3w_interaction_feature_cost.py', ROOT/'tests/test_m3w_interaction_feature_summary.py',
+         PUBLIC/'protocol.md')
 sha, once, write, artifact, checked = parent.sha, parent.once, parent.write, parent.artifact, parent.checked
 
 

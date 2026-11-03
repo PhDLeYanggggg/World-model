@@ -70,8 +70,11 @@ versuszero64in508-input,width64heads,33349parameters each. The same fit-only
 normalizer,initialization,query draws,target loss and2%risk policy isolate
 the added information from capacity. Ten focused tests pass1.93s,including
 real optimizer recovery,zero-block invariance and exact unablated prediction
-parity. Registration and all36fits wait for full cache replay;these tests do
-not establish a learned-feature benefit.
+parity. The added fixed-contrast tests check that missing seeds/support and
+zero paired effects cannot be promoted;the current combined suite passes12
+tests in2.13s. The scalar report/gate reconstruction is implemented but not
+run without complete results. Registration and all36fits wait for full cache
+replay;these tests do not establish a learned-feature benefit.
 
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct
