@@ -50,6 +50,19 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### New-Source Image Overlap
+
+The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
+is registered before acquisition:360new first/middle/last views,336verified
+protected cached views,7,140new-source pairs and13,440cross-source pairs.
+Seven focused tests pass0.26s,including exact original-RGB versus prepared-
+raster RootSIFT equality, atomic-view identity checks and weak-link closure.
+No image/matching result is claimed at this registration checkpoint. The
+first50pairs are a fixed balanced timing pilot,not a smaller final cohort.
+All112DroneCrowd confirmation reservations and DUT roles remain unchanged.
+Raw JPEGs are checked transiently; only private lossless audit rasters,
+masks and descriptors are retained. No model training or predictive score.
+
 ### New Development-Source Feasibility
 
 The whole-source reservation overrides the earlier suggestion to split
