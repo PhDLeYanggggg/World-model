@@ -50,6 +50,25 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Decoder Signal And Matched Continuation
+
+The [complete fitting-only decoder diagnosis](outputs/publication_readiness_2026_09/moving_decoder_signal_v1/readout.md)
+finishes36frozen heads and independently replays every scalar. Both precision
+paths use identical normalized inputs/weights;all2,343,432repeated row-view
+choices agree. Float32underflow recovery covers only0.0961%/0.6540%of local/
+shared selected known EH mass. Pure precision is not the main admission failure.
+At link sensitivity1e-4,71.2543%/70.7090%of that mass lies in an attenuated
+decoder region. This is a logit-link diagnostic,not proof of a training cause.
+Actual evaluate/replay times are207.181/207.704s;three focused tests pass1.54s.
+
+A [matched continuation](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/protocol.md)
+is defined before new training. It compares original-loss continuation with a
+fixed additional coherent cost-fraction logit auxiliary,both from the same18
+frozen2kparents,both with2kadditional updates. It is not a generic log-loss
+novelty claim or an independent test;earlier log-loss/hurdle failures remain.
+Six initial loss/neutral-gradient/warm-optimizer/recovery checks pass1.85s.
+Real pilot/full continuation/evaluation are not_run at this definition checkpoint.
+
 ### Admitted Moving-Source Forecast Controls
 
 The [complete new-source control](outputs/publication_readiness_2026_09/moving_source_forecast_v1/protocol.md)
