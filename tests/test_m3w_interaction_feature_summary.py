@@ -12,10 +12,11 @@ def fixture():
                 known_easy_net_degradation=0.)
     policy = dict(known_ADE_gain_floor_percent=1., completion_lower_gain_floor_percent=-2.,
                   switch_rate=.2, subsets=dict(easy=dict(gain_percent=0.), hard=dict(gain_percent=2.)),
+                  known_ADE_pixel=10., available_endpoint_FDE_diagnostic_pixel=12., p95_known_ADE_pixel=20.,
                   recordings={'record': view})
     delta = dict(known_pp=0., completion_lower_pp=0., completion_upper_pp=0.)
     groups = [dict(trial=f'p{producer}s{seed}', seed=seed, site=site,
-                   policies={'interaction64_bounded': deepcopy(policy)},
+                   policies={k:deepcopy(policy) for k in ('interaction64_bounded','constant_velocity_causal_fd')},
                    primary=deepcopy(delta), interaction_minus_direct=deepcopy(delta), zero_minus_direct=deepcopy(delta))
               for site in roster for producer in (0, 1) for seed in (17, 29, 43)]
     cfg = dict(bootstrap_resamples=30, bootstrap_seed=11, primary='synthetic_fixed_primary')
@@ -29,6 +30,7 @@ def test_zero_effect_or_individual_bound_is_not_promoted_to_primary_success():
     assert not result['primary_supported']
     assert result['original_risk_pass']
     assert not result['submission_ready'] and not result['independent_confirmation']
+    assert result['accuracy']['interaction64_bounded']['known_gain_CV_percent']['point'] == 0
     for row in rows:
         row['primary']['completion_lower_pp'] = .5
     result = summarize(rows, cfg, roster)

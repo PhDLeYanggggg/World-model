@@ -282,7 +282,15 @@ def summarize(groups,cfg,roster):
                               completion_lower=ci(lambda r:r['policies'][name]['completion_lower_gain_floor_percent']),
                               easy=ci(lambda r:r['policies'][name]['subsets']['easy']['gain_percent']),
                               hard=ci(lambda r:r['policies'][name]['subsets']['hard']['gain_percent']),
-                              switch_rate=ci(lambda r:r['policies'][name]['switch_rate']))
+                              switch_rate=ci(lambda r:r['policies'][name]['switch_rate']),
+                              known_ADE_pixel=ci(lambda r:r['policies'][name]['known_ADE_pixel']),
+                              available_endpoint_FDE_diagnostic_pixel=ci(lambda r:r['policies'][name]['available_endpoint_FDE_diagnostic_pixel']),
+                              mean_role_specific_p95_ADE_pixel=ci(lambda r:r['policies'][name]['p95_known_ADE_pixel']))
+        def cv_gain(row):
+            cv = row['policies']['constant_velocity_causal_fd']['known_ADE_pixel']
+            model = row['policies'][name]['known_ADE_pixel']
+            return None if cv is None or cv<=0 or model is None else 100*(cv-model)/cv
+        accuracy[name]['known_gain_CV_percent'] = ci(cv_gain)
         views = [v for r in groups for v in r['policies'][name]['recordings'].values()]
         easy = [v['known_easy_net_degradation'] for v in views if v['known_easy_net_degradation'] is not None]
         safety[name] = dict(required_record_views=len(views),supported_record_views=sum(v['supported'] for v in views),
@@ -328,7 +336,8 @@ def evaluate(cfg,jobs,source,ids,refs,caches,beat,guard,receipt,resume,verify=Fa
         y = np.load(parent.prior.SOURCE/'target_eval.npy',mmap_mode='r',allow_pickle=False)[data['ids']]-source['origin'][data['ids'],None]
         valid = np.load(parent.prior.SOURCE/'valid.npy',mmap_mode='r',allow_pickle=False)[data['ids']]
         olda = np.load(checked(old[job['key']]['amplitudes']),allow_pickle=False)[:,0]
-        policies = dict(floor=b,full_neural=neural,direct_bound_bounded=api.base.prediction(b,neural,olda))
+        policies = dict(floor=b,constant_velocity_causal_fd=paths[:,1],full_neural=neural,
+                        direct_bound_bounded=api.base.prediction(b,neural,olda))
         amps = {}
         for arm in cfg['arms']:
             row = saved[job['key'],arm]

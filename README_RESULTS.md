@@ -75,7 +75,7 @@ the added information from capacity. Ten focused tests pass1.93s,including
 real optimizer recovery,zero-block invariance and exact unablated prediction
 parity. The added fixed-contrast tests check that missing seeds/support and
 zero paired effects cannot be promoted;the current combined suite passes12
-tests in2.13s. The scalar report/gate reconstruction is implemented but not
+tests in2.21s. The scalar report/gate reconstruction is implemented but not
 run without complete results. Registration and all36fits wait for full cache
 replay;these tests do not establish a learned-feature benefit.
 The planned feature contrast is also not an encoding-only attribution: h64uses
@@ -86,6 +86,9 @@ A [primary-source positioning note](outputs/publication_readiness_2026_09/europe
 also distinguishes the planned feature test from established contextual
 uncertainty calibration and joint forecasting metrics. It is not a claim of
 new method novelty or a reproduced published-method comparison.
+Before fitting,I also fixed the separate causalCVcomparison and the secondary
+pixelADE,available-endpointFDEand role-specific tail summaries. None changes
+the registered-primary definition or fills missing endpoint labels.
 
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct

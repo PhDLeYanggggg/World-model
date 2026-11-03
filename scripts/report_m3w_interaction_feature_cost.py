@@ -39,7 +39,7 @@ def main():
         fits.append(read(path))
     fmt = lambda r: 'not estimable' if r['point'] is None else f'{r["point"]:+.4f} [{r["CI95"][0]:+.4f}, {r["CI95"][1]:+.4f}]'
     primary = summary['contrasts']['primary']
-    names = ('floor','full_neural','direct_bound_bounded','zero64_bounded','interaction64_bounded','zero64_binary','interaction64_binary')
+    names = ('floor','constant_velocity_causal_fd','full_neural','direct_bound_bounded','zero64_bounded','interaction64_bounded','zero64_binary','interaction64_binary')
     lines = ['# Frozen Interaction Features For Intervention Costs', '', '## Material Passport', '',
              'Fresh_run36real Torch cost-head fits and complete held SOURCE inference,',
              'evaluation and replay;cached_verified frozen forecasters and h64cache.',
@@ -66,7 +66,17 @@ def main():
         a,r = summary['accuracy'][name],summary['safety'][name]
         worst = r['worst_signed_easy_net_percent']
         lines.append(f'|{name}|{fmt(a["known"])}|{fmt(a["completion_lower"])}|{r["supported_record_views"]}/444|{worst if worst is not None else "not estimable"}|')
-    lines += ['', 'A paired lower comparison is not the subtraction of two individual lower',
+    lines += ['', '## Accuracy And Tail Diagnostics', '',
+              '|Policy|Known ADE pixel [95% CI]|Available endpoint FDE diagnostic pixel [95% CI]|Known gain over CV % [95% CI]|Mean role-specific p95 ADE pixel [95% CI]|',
+              '|---|---:|---:|---:|---:|']
+    for name in names:
+        a = summary['accuracy'][name]
+        lines.append(f'|{name}|{fmt(a["known_ADE_pixel"])}|{fmt(a["available_endpoint_FDE_diagnostic_pixel"])}|{fmt(a["known_gain_CV_percent"])}|{fmt(a["mean_role_specific_p95_ADE_pixel"])}|')
+    lines += ['', 'The tail column is an equal-locality average of role-specific95th percentiles,',
+              'not a pooled-window percentile. Endpoint FDE uses only released valid',
+              'endpoints,not full-roster endpoint accuracy. The floor is producer-fit-',
+              'selected;CVremains a separate fixed causal comparator,not held-selected.', '',
+              'A paired lower comparison is not the subtraction of two individual lower',
               'bounds. An empty selected reference is not estimable;the unchanged floor',
               'is not thereby operationally unsafe or a learned-intervention success.', '',
               '## Full Risk And Subsets', '',

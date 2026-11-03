@@ -59,6 +59,10 @@ equal-locality aggregation and3000paired locality bootstraps. Also known-label
 gain,upper gain,easy/hard,all required per-record risk/support,amplitude/switch
 rates and fitting objective. Secondary interaction64minusfrozen direct and
 zero64minusfrozen direct,plus binary deployment controls,floor and full neural.
+Include fixed causalCVas a separate comparator,available-label pixelADE,
+available-endpointFDEdiagnostic and equal-locality mean role-specificp95ADE.
+The latter is not a pooled-window percentile;missing endpoints are not filled.
+These secondary accuracy fields do not replace the original primary or risk.
 Freeze all36heads and all36cost/amplitude arrays before held outcomes. No
 best-seed/model choice;report all fixed jobs and seeds. Complete risk failure
 cannot be hidden by positive mean gain or an easier/undefined reference.
