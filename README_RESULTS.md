@@ -44,13 +44,23 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The next SOURCE-only bridge is registered: fixed-support amplitude controls for
-both frozen EqMotion and current PCT on the original 149,510-window whitelist.
-Ten fixed amplitudes retain all recordings and the original full 2% contract;
-quarter amplitude is the focal mechanism check. No deployment grid-point
-selection, new fit, private calibration or final confirmation. Eight scoped
-checks pass in 1.17 s. New reductions are not_run at this registration freeze.
-[Protocol](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/protocol.md).
+The SOURCE-only fixed-support amplitude bridge is complete. Both frozen
+EqMotion/current-PCT families retain the original149,510-window whitelist,
+74recordings and twelve localities. All72 groups and1,440 policy evaluations
+replay exactly: first reduction49.33s, independent metric replay49.30s. No new
+fitting or Torch inference. Quarter-amplitude EqMotion known gain versus the
+producer-fitting-selected floor is6.2799% [5.3510,7.4112], lower3.1722%
+[-0.2633,5.6376], but full risk supports0/444views. Known all/easy violations
+are42/315;worst easy-net degradation30.5507%. No positive grid point passes.
+All positive amplitudes have defined reference support, so empty support is
+not the remaining failure. At alpha.001,438/444views pass with only0.0274%
+known gain; all six failures are recording51/locality082, due to unknown-row
+upper bounds over a small easy reference. They are not six independent scenes.
+Twelve scoped checks pass in1.21s,including supplementary convexity properties.
+No alpha selected for deployment,no risk tolerance change,no private role opened.
+[Complete readout](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/readout.md),
+[convexity note](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/convexity_note.md)
+and[gates](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/gates.md).
 
 The public SOURCE forecasting control is complete, including separate full
 forecast and metric replay. Nine actual EqMotion fixed-head K=1 models retain
