@@ -44,6 +44,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The next SOURCE-only bridge is registered: fixed-support amplitude controls for
+both frozen EqMotion and current PCT on the original 149,510-window whitelist.
+Ten fixed amplitudes retain all recordings and the original full 2% contract;
+quarter amplitude is the focal mechanism check. No deployment grid-point
+selection, new fit, private calibration or final confirmation. Eight scoped
+checks pass in 1.17 s. New reductions are not_run at this registration freeze.
+[Protocol](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/protocol.md).
+
 The public SOURCE forecasting control is complete, including separate full
 forecast and metric replay. Nine actual EqMotion fixed-head K=1 models retain
 the original 4,000-update budgets, actual seeds 17/29/43, SOURCE exclusions,

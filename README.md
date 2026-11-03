@@ -139,5 +139,12 @@ on SOURCE. The negative 082 slice and missing futures must stay in the analysis.
 Any new comparison will be registered before fitting, without tuning on exposed
 calibration outcomes or opening final confirmation to rescue the method.
 
+The first bridge experiment is now [registered](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/protocol.md):
+a fixed ten-point intervention-amplitude curve for EqMotion and current PCT on
+the same SOURCE whitelist. Quarter amplitude is specified in advance; no grid
+point is selected for deployment. Outcome reduction is not_run at this freeze.
+Eight scoped tests pass. This is a mechanism diagnostic, not another trained
+selector or an independent test.
+
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.
