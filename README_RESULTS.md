@@ -82,6 +82,10 @@ The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.
 A positive result would need a matched raw-context control before attributing
 the gain specifically to learned encoding.
+A [primary-source positioning note](outputs/publication_readiness_2026_09/european_interaction_feature_cost_v1/method_scope.md)
+also distinguishes the planned feature test from established contextual
+uncertainty calibration and joint forecasting metrics. It is not a claim of
+new method novelty or a reproduced published-method comparison.
 
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct
