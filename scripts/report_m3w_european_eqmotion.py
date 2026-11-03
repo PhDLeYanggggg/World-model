@@ -75,6 +75,19 @@ def main():
         gain=site_average(lambda r,n=name:100*(1-r['baselines'][n]['ADE']/
             (r['scores']['CV_error_mass']/r['scores']['known_rows'])))
         lines.append(f'|{name}|{gain:+.6f}|')
+    chosen=lambda r:100*(1-r['baselines'][r['training_selected_strongest']]['ADE']/
+        (r['scores']['CV_error_mass']/r['scores']['known_rows']))
+    lines.append(f'|Fit-selected causal baseline|{site_average(chosen):+.6f}|')
+    derived=[dict(trial=r['trial'],seed=r['seed'],site=r['site'],scores=dict(
+        EqMotion_vs_CV=r['scores']['eqmotion']['gain_vs_CV_percent'],
+        fit_selected_vs_CV=chosen(r),
+        EqMotion_minus_fit_selected=r['scores']['eqmotion']['gain_vs_CV_percent']-chosen(r))) for r in groups]
+    baseline_contrasts={key:run.interval(derived,key,sites,cfg['bootstrap_resamples'],cfg['bootstrap_seed'])
+        for key in ('EqMotion_vs_CV','fit_selected_vs_CV','EqMotion_minus_fit_selected')}
+    lines+=['','The fit-selected baseline uses its own four fitting localities only; it',
+        'need not be strongest on the excluded SOURCE groups. Fixed-baseline readout',
+        'rankings do not retrospectively change the floor.',
+        f'Planned known-label EqMotion-minus-fit-selected contrast pp: {fmt(baseline_contrasts["EqMotion_minus_fit_selected"])}.']
     lines+=['','|EqMotion minus PCT|Paired effect pp [95% locality CI]|','|---|---:|']
     for key,value in summary['effects'].items():lines.append(f'|{key}|{fmt(value)}|')
     lines+=['',f'Registered known-ADE primary positive: **{summary["known_primary_positive"]}**.',
@@ -136,6 +149,11 @@ def main():
         'Image-local pixels and detector/tracker silver are not metric, seconds, human',
         'gold, physical safety, true 3D or foundation evidence. Stage5C and SMC remain off.','']
     (run.PUBLIC/'readout.md').write_text('\n'.join(lines))
+    (run.PUBLIC/'baseline_comparison.json').write_text(json.dumps(dict(
+        result_source='cached_verified_public_scalar_summary_not_new_inference',
+        contrasts=baseline_contrasts,summary_sha256=run.sha(run.PUBLIC/'summary.json'),
+        verification_sha256=run.sha(run.PUBLIC/'verification.json'),
+        fitting_only_baseline_selection_unchanged=True,independent_confirmation=False),indent=2,sort_keys=True)+'\n')
     print(json.dumps(dict(primary=summary['known_primary_positive'],effects=summary['effects'])))
 
 

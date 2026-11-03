@@ -24,6 +24,8 @@ const evidences={
   european_selection_harm_deviance_v1:['verification.json','all54_metric_groups_exact'],
   european_selection_cost_forest_v1:['verification.json','all54_metric_groups_exact'],
   european_selection_capacity_v1:['verification.json','all54_metric_groups_exact'],
+  european_eqmotion_v1:['verification.json','all72_SOURCE_groups_exact'],
+  'european_eqmotion_v1/strong_controls':['verification.json','all144_secondary_groups_exact'],
   european_calibration_source_fit_v1:['verification.json','all144_SOURCE_site_groups_exact'],
   european_independent_risk_calibration_v1:['verify.json','all47736_metric_groups_exact']
 };
@@ -43,7 +45,12 @@ const diagnosticPaths=[
   'european_selection_cost_forest_v1/decoded_SOURCE_objective.json',
   'european_cost_decode_decomposition_v1/summary.json',
   'european_cost_decode_decomposition_v1/verification.json',
-  'european_selection_capacity_v1/source_objective_comparison.json'
+  'european_selection_capacity_v1/source_objective_comparison.json',
+  'european_eqmotion_v1/registration.json',
+  'european_eqmotion_v1/strong_controls/registration.json',
+  'european_eqmotion_v1/training_freeze.json',
+  'european_eqmotion_v1/parameter_accounting.json',
+  'european_eqmotion_v1/baseline_comparison.json'
 ];
 const diagnosticBindings=Object.fromEntries(diagnosticPaths.map(p=>[p,sha(path.join(base,p))]));
 const support=read(path.join(base,diagnosticPaths[1]));
@@ -62,7 +69,7 @@ const title=tokens.find(t=>t.type==='heading'&&t.depth===1).text;
 const symbols={'\\':'\\textbackslash{}','{':'\\{','}':'\\}','$':'\\$','&':'\\&','#':'\\#','%':'\\%','_':'\\_','^':'\\textasciicircum{}','~':'\\textasciitilde{}','<':'\\textless{}','>':'\\textgreater{}'};
 const esc=s=>String(s).replace(/[\\{}$&#%_^~<>]/g,c=>symbols[c]);
 function inline(items){return (items||[]).map(t=>{
-  if(t.type==='text'||t.type==='escape')return t.tokens?inline(t.tokens):esc(t.text).replace(/\[([1-8])\]/g,'\\cite{ref$1}');
+  if(t.type==='text'||t.type==='escape')return t.tokens?inline(t.tokens):esc(t.text).replace(/\[([1-9])\]/g,'\\cite{ref$1}');
   if(t.type==='strong')return `\\textbf{${inline(t.tokens)}}`;
   if(t.type==='em')return `\\emph{${inline(t.tokens)}}`;
   if(t.type==='codespan')return `\\texttt{${esc(t.text)}}`;
@@ -99,6 +106,7 @@ function blocks(items){let out='';for(const t of items){
     const captions={Cohort:'Distinct data roles. Repeated forecasting-pipeline views do not increase the number of independent localities.',
       'Cost head':'Complete matched harm-loss readout. All arms retain the original recording roster and 2 percent contract. Undefined selected-easy support is not a safe zero.'};
     captions.Estimator='Complete current-bank estimator control. Easy-net preservation alone does not repair failed positive-harm and selected-support requirements. The context-minus-neural completion-lower contrast is the fixed primary.';
+    captions['Forecast Control']='EqMotion minus fixed PCT controls on two prespecified SOURCE populations. Differences are percentage points with a common known CV denominator within locality. Secondary controls do not replace the original primary. All completion-lower intervals cross zero; this is not independent final confirmation or a full-policy risk pass.';
     const caption=captions[t.header[0].text];if(!caption)throw Error('Unregistered table caption');
     const row=c=>c.map(x=>inline(x.tokens)).join(' & ')+' '+String.raw`\\`+'\n';
     out+='\\begin{table*}[!t]\\centering\\small\n'+
@@ -133,5 +141,7 @@ const receipt={result_source:'fresh_working_prose_and_AST_typesetting_from_verif
   frozen_v8_markdown_sha256:frozenV8.markdown_sha256,frozen_v8_tex_sha256:frozenV8.tex_sha256,
   frozen_v8_changed:false,current_forest_readout_included:true,complete_SOURCE_decomposition_included:true,
   complete_neural_width_control_included:true,compiled:false,independent_confirmation:false,submission_ready:false};
+receipt.complete_SOURCE_public_forecaster_comparison_included=true;
+receipt.stronger_PCT_controls_and_distinct_SOURCE_populations_included=true;
 fs.writeFileSync(path.join(output,'build_sources.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log(JSON.stringify(receipt));

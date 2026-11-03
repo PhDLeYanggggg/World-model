@@ -32,8 +32,10 @@ locate a gap between mean routing utility and reliable selected-cost prediction,
 including error already present on fitting data. SOURCE decomposition finds
 that reference sharing and output projection slightly help, while doubling
 the neural critic width still fails the fixed primary and risk requirements.
-They do not establish a safe
-learned upgrade, a population-risk certificate or a new world-dynamics model.
+A separately registered public-forecaster control improves observed-label
+SOURCE accuracy, including against the current PCT, but its missing-outcome
+lower comparisons remain unresolved. Neither result establishes a safe learned
+admission upgrade, a population-risk certificate or a new world-dynamics model.
 
 \end{abstract}
 \section{Introduction}
@@ -73,6 +75,9 @@ information. Trajectron++ \cite{ref1} and AgentFormer \cite{ref2} are important 
 adding interaction tokens or attention is not sufficient novelty. Neither
 published forecasting implementation has been rerun under the native protocol
 reported here, and its published score cannot substitute for that comparison.
+EqMotion \cite{ref9} provides a geometric interaction control. We run a pinned,
+fixed-head deterministic K=1 adaptation on SOURCE, not published best-of-20
+evaluation. Stronger own-PCT controls and their context differences are explicit.
 
 Regression with multiple experts is also established. Mao et al. \cite{ref3} study
 regression-deferral formulations; an earlier SOURCE experiment in this project
@@ -196,14 +201,21 @@ derived arrays. Detector/tracker silver is not manually annotated human gold.
 
 \begin{table*}[!t]\centering\small
 \begin{tabularx}{\textwidth}{@{}XXXXX@{}}\toprule
-Cohort & Unique targets & Recordings & Localities & Role in this study \\
+Cohort & Target windows & Recordings & Localities & Role in this study \\
 \midrule
-SOURCE whitelist & 149,510 & 74 & 12 & Forecaster/cost fitting with producer exclusions \\
+Forecaster SOURCE & 318,969 & 163 & 12 & Producer fitting and excluded-SOURCE forecasting \\
+SOURCE whitelist & 149,510 & 74 & 12 & Controller costs and fixed query subset \\
 Selection & 38,102 & 28 & 6 & Already exposed model development \\
 Calibration & 481,537 & 102 & 12 & Completed unsuccessful calibration, now exposed \\
 Final confirmation & Not opened & Not scored & Not scored & Reserved, no claimed result \\
 \bottomrule\end{tabularx}
 \caption{Distinct data roles. Repeated forecasting-pipeline views do not increase the number of independent localities.}\end{table*}
+The whitelist is a subset of the original forecaster population, not extra
+independent observations. The latter retains 193,705 complete, 118,217 partial
+and 7,047 wholly unknown futures. Public-family comparisons use the full
+population; the current history-PCT comparison uses the unchanged whitelist.
+All twelve SOURCE localities have already informed research choices.
+
 Three SOURCE folds and actual forecaster seeds 17, 29 and 43 yield nine frozen
 pipelines. Repeated pipeline/recording views do not create independent scenes.
 The selection cohort has 252 such risk views. Its intervals use 3,000 locality
@@ -365,6 +377,42 @@ All nine SOURCE objectives, nine development inferences and 54 metric groups
 replay exactly. Increasing this width alone is not an effective safe-routing
 repair; it is not evidence that all larger models or all causal inputs fail.
 
+\subsection{Public-Family SOURCE Forecasting Improves Observed Error}
+Nine new EqMotion K=1 producers retain the original SOURCE fitting sites,
+sampling, label masks, loss factors and 4,000-update budgets. A head fixed
+before fitting emits one trajectory. Original PCT shares complete-neighbor
+observations and conditioning but has a bounded output wrapper; EqMotion
+emits coordinates. Stronger PCT variants use grouped/partial context and,
+for the current history arm, additional detector-history fields. This is a
+family control, not isolated equivariance, equal active capacity or a new
+EqMotion method. Secondary controls were fixed before new outcome scoring.
+
+\begin{table*}[!t]\centering\small
+\begin{tabularx}{\textwidth}{@{}XXXX@{}}\toprule
+Forecast Control & SOURCE windows & Known difference pp [95\% CI] & Completion-lower pp [95\% CI] \\
+\midrule
+Original PCT, primary & 318,969 & +14.5236 [9.5506, 22.1861] & +5.7879 [-0.9320, 14.7335] \\
+Dimensionless PCT & 318,969 & +8.7522 [6.0912, 11.9292] & +2.2097 [-1.6792, 6.1388] \\
+Current history-PCT & 149,510 & +4.6779 [1.3917, 7.4120] & -21.9971 [-61.9541, 0.0951] \\
+\bottomrule\end{tabularx}
+\caption{EqMotion minus fixed PCT controls on two prespecified SOURCE populations. Differences are percentage points with a common known CV denominator within locality. Secondary controls do not replace the original primary. All completion-lower intervals cross zero; this is not independent final confirmation or a full-policy risk pass.}\end{table*}
+These differences use a common known CV denominator within locality, not
+percent error reduction relative to each control. Full-population gains versus
+CV are 17.2138\% for EqMotion and 2.6902\% for original PCT; fixed damped velocity
+0.97 gives 3.9755\%. On the whitelist, EqMotion and current PCT give 10.8141\%
+and 6.1362\%. The populations are not pooled. The fitting-selected physical
+baseline averages -0.8388\% on excluded SOURCE groups; observed fixed-baseline
+rankings do not retroactively select a different floor.
+
+All 72 primary and 144 secondary groups reproduce, with complete new/original
+forecast replay and current-history control hashes matching their earlier
+readout. Dimensionless-PCT arrays are cached verified, not fresh inference.
+All lower intervals cross zero. Locality 082 has a known negative current-control
+effect (-9.6668 pp) and large unknown-row disagreement. That disagreement is
+uncertainty, not observed catastrophic error. Better SOURCE forecasting supplies
+a stronger proposal; it does not validate a new admission policy or independent
+world-model contribution.
+
 \section{Failure Analysis and Remaining Gaps}
 The controls separate several errors. A candidate bank can contain future-
 informed opportunity without causally learnable safe choices. Fitting-side
@@ -385,8 +433,9 @@ observed futures prevent that inference without additional justified assumptions
 
 The present method does not establish scene-joint interaction optimization,
 new JEPA downstream lift, stronger Transformer dynamics, occupancy, calibrated
-physical validity or cross-dataset world modeling. Matching public forecasting
-implementations under the same protocol remains incomplete. New independent
+physical validity or cross-dataset world modeling. The public-family SOURCE
+control is complete; matching public forecasters in an independent full-policy
+evaluation remains incomplete. New independent
 confirmation and an anonymous cold-start reproduction package are also missing.
 These are substantive research gaps, not formatting details. The project is
 not yet a CCF-A submission candidate.
@@ -412,6 +461,11 @@ first-producer refit and a 200-update real recovery pilot. Complete state and
 sampler comparisons reproduce both recovery and the first full fit. Primary
 training takes 503.02 s with 14.49 GB peak RSS; complete separate replay takes
 119.25 s. These costs concern cost-critic training, not trajectory training.
+The public forecasting control adds 36,000 primary updates, a 4,000-update full
+refit and 200 pilot updates. Training/refit takes 3.58 h with 2.25 GB peak RSS;
+complete primary forecast replay takes 2.10 h. These are actual CPU Torch fits,
+not fallback arithmetic. Source exclusion and exact replay do not turn these
+exposed development data into independent final tests.
 
 Public scalar evidence supports exact numerical reconstruction of reported
 aggregates. It is not fresh raw-data inference. Full execution still needs
@@ -446,6 +500,8 @@ correctness or completed author review.
 \bibitem{ref7} Banerjee, Guo and Wang. On the Optimality of Conditional Expectation as a Bregman Predictor. IEEE Transactions on Information Theory 51(7):2664-2669, 2005. \url{https://doi.org/10.1109/TIT.2005.850145}
 
 \bibitem{ref8} Geurts, Ernst and Wehenkel. Extremely randomized trees. Machine Learning 63:3-42, 2006. \url{https://doi.org/10.1007/s10994-006-6226-1}
+
+\bibitem{ref9} Xu et al. EqMotion: Equivariant Multi-agent Motion Prediction with Invariant Interaction Reasoning. CVPR 2023, pp. 1410-1420. \url{https://arxiv.org/abs/2303.10876}
 
 \end{thebibliography}
 

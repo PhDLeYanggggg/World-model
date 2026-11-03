@@ -12,9 +12,11 @@ integrates complete current-bank cost-loss, SOURCE diagnosis and unsuccessful
 calibration evidence. Fresh prose/AST rendering/figure and current-source
 compile;scientific numbers are cached_verified,not new inference by writing.
 The complete forest negative, SOURCE decoder decomposition and nine-fit neural
-width-control failure are now included. Six main pages plus one disclosure/
-reference page; all seven current PNGs inspected against PDF SHA
-`daf8f42157a2ae00103b2b368eb6f1e71aec05765218d7cd9aab2f30d17ea070`.
+width-control failure are now included, alongside the positive observed-label
+SOURCE public-forecaster comparison and its unresolved missing outcomes. Seven
+main pages plus one disclosure/reference page; all eight current PNGs inspected
+against PDF SHA
+`c5ee29bb610c3d6a290ca4c1b3423bd4db3dda4621ae82837ce0e3ab8ec92a90`.
 No final-pass overfull/reference/font-shape issue;upstream lineno UTF-8 warning
 retained. Locked Torch environment lacks pypdf;bundled document Python validates
 the PDF without changing training dependencies. v8 sources/receipts remain
@@ -42,61 +44,59 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The matched public forecasting control is now registered on the original
-European SOURCE forecaster population: 318,969 indexed rows, 12 localities and
-nine single-fold producers with actual seeds 17/29/43. This population is not
-the later 149,510-row controller whitelist. Nine fresh EqMotion fixed-head K=1
-fits will retain the original 4,000-update budgets and matched PCT draws.
-The original PCT and EqMotion differ in output parameterization; this is a
-public-family comparison, not isolated equivariance or published best-of-20
-reproduction. No independent roles are opened. Registration and 23 scoped
-checks are complete; actual pilot, fitting and readout are not_run at this
-freeze. [Protocol](outputs/publication_readiness_2026_09/european_eqmotion_v1/protocol.md).
-The actual SOURCE pilot now completes 200 optimizer updates in 79.45 s with
-1.082 GB peak RSS. The 50->100/direct-100 complete states and original query
-prefix match exactly. The measured projection for nine complete primary fits
-plus the first full refit is 15,782 s, excluding preparation/inference/replay.
-That is acceptable locally; the original full fitting budgets are retained.
-This is an engineering pass, not a forecasting improvement.
-The complete nine-fit run is now active as PID 66505 with atomic checkpoints
-and heartbeat; no SOURCE outcome readout is available yet. Resume uses
-`scripts/run_m3w_european_eqmotion.py train --resume`, preserving all original
-roles and budgets. Readout tooling requires full forecast and metric replay.
-At the 18:38 UTC checkpoint, four of nine full models are complete and the
-first 4,000-update independent refit is scientifically state-exact. Their
-lightweight receipts are saved separately; this is partial training progress,
-not a completed nine-model freeze or a SOURCE forecasting result.
-Before any new EqMotion outcome reduction, a secondary extension fixes two
-stronger existing controls: dimensionless agent-track PCT on all original
-318,969 SOURCE rows, and the actual history-detector PCT on the unchanged
-149,510-row controller whitelist. Metadata, labels, exclusions and fitting
-budgets align exactly; internal neighbor/detector processing differs and is
-reported. The original primary is not changed. Current-bank forecasts must
-reproduce their existing array hashes before secondary scoring. Four focused
-checks pass in 1.49 s. New secondary inference/readout are not_run at this freeze.
-All nine formal EqMotion fits now finish their original budgets, with 36,000
-primary updates, 4,000 full-refit updates and the separate 200-update pilot.
-The training/refit process takes 12,893.02 s (3.58 h), peak RSS 2.252 GB.
-Every original PCT draw/factor/SOURCE-exclusion check passes. Prediction freezing
-and exact control inference are in progress; no forecasting outcome is claimed.
-The combined focused suite now passes 75 tests; one optional Metal-parity test
-is skipped, so MPS success is not claimed. Full-checkpoint accounting separates
-3,027,268 stored parameters, 580,676 gradient-enabled parameters and 386,628
-parameters with actual AdamW state through step 4,000, consistently across all
-nine models. These are not three interchangeable counts of trained capacity.
-All nine EqMotion forecasts and original-PCT inference checks are now frozen.
-The stronger current history-PCT control also reproduces all nine existing
-forecast hashes on the fixed whitelist; dimensionless-PCT caches are verified
-on complete original IDs. Both prediction freezes precede new EqMotion label
-scoring. No new outcome or learned deployment pass is asserted at this freeze.
-The first complete SOURCE scoring is now available, with full replay pending.
-EqMotion's observed-label primary versus original PCT is +14.5236 pp
-[+9.5506, +22.1861]. Prespecified stronger-control differences are +8.7522 pp
-versus dimensionless PCT on the full population and +4.6779 pp [+1.3917, +7.4120]
-versus current history-PCT on the unchanged whitelist. The two populations are
-not pooled. Missing-outcome lower intervals still cross zero, and locality 082
-is a negative current-control slice. No policy/deployment/independent-test pass
-follows. [Initial results and limits](outputs/publication_readiness_2026_09/european_eqmotion_v1/initial_readout.md).
+The public SOURCE forecasting control is complete, including separate full
+forecast and metric replay. Nine actual EqMotion fixed-head K=1 models retain
+the original 4,000-update budgets, actual seeds 17/29/43, SOURCE exclusions,
+sampling, observations and labels. Training/refit takes 12,893.02 s (3.58 h),
+with 2.252 GB peak RSS; 36,000 primary updates, a 4,000-update independent
+state-exact refit and a separate 200-update recovery pilot are counted separately.
+No fitting budget was reduced. This is an adaptation of a public method, not
+isolated equivariance, matched compute or published best-of-20 reproduction.
+
+|Fixed SOURCE comparison|Target windows|EqMotion minus control known gain pp [95% CI]|
+|---|---:|---:|
+|Original PCT, registered primary|318,969|+14.5236 [+9.5506, +22.1861]|
+|Dimensionless PCT, secondary|318,969|+8.7522 [+6.0912, +11.9292]|
+|Current history-PCT, secondary|149,510|+4.6779 [+1.3917, +7.4120]|
+
+The original population has 163 recordings in 12 exposed SOURCE localities;
+the controller whitelist is a fixed subset with 74 recordings, not another
+independent cohort. Gains versus CV are 17.2138% / 2.6902% for EqMotion /
+original PCT on the full population, and 10.8141% / 6.1362% for EqMotion /
+current PCT on the whitelist. Differences are percentage points with a common
+known CV denominator within locality, not relative error reduction versus PCT.
+Intervals use 3,000 locality resamples after producer-fold/seed averaging.
+
+Both stronger controls were fixed before new EqMotion outcome scoring. Nine
+current history-PCT forecast arrays freshly reproduce old hashes; dimensionless
+PCT arrays are cached_verified, not fresh inference. All nine new and nine
+original forecasts replay exactly in 7,546.15 s (peak 1.923 GB). The stronger
+current-control replay takes 108.44 s. All 72 primary and 144 secondary scalar
+groups reproduce exactly. Exact replay is not independent confirmation.
+
+**Observed-label SOURCE improvement is positive, but deployment is unchanged.**
+Every missing-outcome lower CI crosses zero; locality 082 loses to current PCT.
+Wholly unknown-row bounds do not fill partial-future steps or identify full-12
+ADE. No new admission policy or complete recording-risk pass has been evaluated.
+No independent final role or DroneCrowd has been opened. Historical calibration
+remains complete and unsuccessful, not an untouched future experiment.
+
+The combined focused suite passes 75 tests in 14.66 s, with one optional
+Metal-parity skip. All training is real arm64 CPU Torch. Stored/gradient-enabled/
+actually optimizer-updated parameters are 3,027,268 / 580,676 / 386,628 per
+model; these counts are not interchangeable. The unrelated legacy suite was
+not run. [Primary readout](outputs/publication_readiness_2026_09/european_eqmotion_v1/readout.md),
+[stronger controls](outputs/publication_readiness_2026_09/european_eqmotion_v1/strong_controls/readout.md),
+[card](outputs/publication_readiness_2026_09/european_eqmotion_v1/model_data_card.md),
+[gates](outputs/publication_readiness_2026_09/european_eqmotion_v1/gates.md)
+and [Chinese guide](outputs/publication_readiness_2026_09/european_eqmotion_v1/reproduction_zh.md).
+The first-score replay-pending note is retained as a historical snapshot.
+
+The front page now introduces the project and current evidence concisely in
+the author's voice. Its previous text is preserved verbatim in
+[README_RESEARCH_HISTORY_2026_11_03.md](README_RESEARCH_HISTORY_2026_11_03.md)
+(SHA256 `4e251d9d8959078f6a115b25463cd08b81fb23c8b91782a1e40699b0f5bc44d4`).
+No old result or failed contract is promoted by that documentation change.
 
 The neural width control is now complete, not a pilot: nine new width-128
 Torch cost critics finish 70,656 primary updates, plus a 7,168-update full refit

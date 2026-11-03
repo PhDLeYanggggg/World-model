@@ -1,5 +1,10 @@
 # Initial SOURCE Readout: Full Replay Pending
 
+Historical first-score snapshot. The separately executed full forecast and
+216-group metric replay subsequently completed exactly; see the
+[final primary readout](readout.md) and [stronger controls](strong_controls/readout.md).
+The pending statements below describe the initial snapshot, not current status.
+
 All nine full EqMotion fits, the first full refit, all primary forecasts and
 both stronger-control prediction freezes precede these fresh outcome reductions.
 The separately executed complete forecast/metric replay is still running.
