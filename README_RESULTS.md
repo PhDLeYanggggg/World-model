@@ -73,6 +73,19 @@ and original10GiBreserve limit disk usage. Actual100update50+50resume/direct
 pilots will precede the full matrix. No model score,calibration,confirmation,
 new intervention policy or deployment/CCF-A claim is made at this checkpoint.
 
+Original preparePID77627exits1 before any optimizer update: complete RAM packing
+produces195,286rows/551,487,664bytes,190,570known and136,295complete futures,
+but only23of24admission groups have requested8/12queries. Component068's three
+clips have17/10/16frames; the strict old fitter rejects its absent row name.
+Alloriginal files,population and failure remain. A [forward support adapter](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/protocol.md)
+is registered before fitting. It changes only empty-group handling and honest
+score qualification,not rows,folds,architecture,budget or2%risk. Original full
+24-group primary is not estimable;23supported-group metrics are secondary,
+never a passed full-roster primary. [Population scope](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/population_scope.md)
+keeps all6zero-row recordings visible:58recordings contribute queries,not64.
+Five new encoder/checkpoint/support checks pass0.83s. No training or held-model
+metric is claimed at the repair checkpoint.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)

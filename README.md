@@ -174,6 +174,11 @@ three actual seeds, 18 complete 4,000-update fits. It includes partial and
 wholly missing future labels rather than keeping only complete trajectories.
 Its matrices will stay in RAM; a real-data optimizer/resume pilot precedes
 the full run. No new training result is claimed at registration.
+Preparation now exposes one empty source group: its three clips have only
+10-17 native frames, too short for the fixed 8/12 request. All 195,286 data
+rows are intact. A forward support repair keeps the original 24-group contrast
+not estimable and labels the 23 supported-group contrast secondary; it does
+not turn the missing group into zero error or shorten the task.
 [Complete result](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md),
 [inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/tutorial_zh.md).
