@@ -154,6 +154,38 @@ role assignment,training,video acquisition,Stage5C orSMC. Original reservations,
 2%risk criteria and the10GiBreserve remain unchanged. Prior goal turn is progress:
 the full parent screen and replays finished; current work fills its DUT gap.
 
+That [DUT bridge is now complete](outputs/publication_readiness_2026_09/dut_background_bridge_v1/readout.md).
+Acquisition PID75319exit0:28fresh images/features,19,357,004successful image
+payload bytes,17.272s,peak1,007,992,832bytes. The60pair pilotPID75426exit0
+takes4.911s and projects477.4s. FullPID75454exit0 completes6,874pairs in
+459.180s,peak659,243,008bytes:6,814new plus60cached pilot pairs. All19,866
+actual available-view comparisons complete. Moving-to-DUT0supported/3,360
+unsupported,Drone-to-DUT0/3,136,within-DUT171/207. No cross-reservation
+component or new Moving clip connected to a protected source is found;
+91conservative components retain the89parent and2DUTsite priors,not91IIDsites.
+
+VerificationPID76014exit0 takes11.246s: all28raw/prepared feature extractions
+exact,696parent feature views hash-checked,6,874pair receipts/graph exact,
+and60fixed pairs freshly recomputed. An additional read-only replayexit0
+takes9.446s,peak1,429,454,848bytes,with0network/applicationartifactwrites.
+All3overview pages (28backgrounds) and8selected within-source panels were
+inspected; no supported cross-source panels exist. [Exact self-audit scope](outputs/publication_readiness_2026_09/dut_background_bridge_v1/visual_review.md).
+Crop/background/aspect limits remain; maximum resize-axis ratio1.7423is not
+hidden. These are source diagnostics,not causal video features or geographic
+independence proof. [Chinese reproduction guide](outputs/publication_readiness_2026_09/dut_background_bridge_v1/tutorial_zh.md).
+
+The separate [new fit-only admission](outputs/publication_readiness_2026_09/moving_development_admission_v1/readout.md)
+now permits the64publisher-train clips for development fitting:351,862rows,
+15,165recording-local tracks,136,295complete native8/12windows,24conservative
+groups. All64raw annotation hashes pass the actual fit-reader guard. Proposed
+structurally balanced source folds have45,606/45,359/45,330complete windows;
+these are not independent train/val/test performance results. Other clips
+remain unadmitted for prediction;DUT/Drone reservations are unchanged. Nine
+targeted bridge/summary/role-guard tests pass0.31s. Source access is ready,
+but actual predictor/teacher/critic producer admission and new training remain
+the next experiment. No new forecasting score,calibration,confirmation,
+deployment,metric/seconds claim,Stage5C,SMC or submission promotion.
+
 The whole-source reservation overrides the earlier suggestion to split
 DroneCrowd into multiple roles: all112recordings remain confirmation-only,
 without predictive admission. No source reservation or guard is changed.

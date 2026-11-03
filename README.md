@@ -152,13 +152,22 @@ every pair; a registered repair recovered the work without changing matching.
 The screen finds two strong and 29 ambiguous pairs within the new source,
 but no supported cross-source pair. This is not proof of independent sites.
 The 64 publisher-train candidates retain 136,295 complete native 8/12 windows;
-they are not independent samples or admitted training data. Source-use and
-producer-role admission, including the outstanding DUT comparison, come next.
+they are not independent samples. At the source-screen checkpoint they were
+not yet admitted to training.
 No new forecasting score or deployment result follows from this audit.
-The remaining DUT image bridge is registered before acquisition: all 28
-author background composites (19.4 MB), compared with the new and protected
-sources in 6,874 fixed pairs. A background composite is not a past video frame
-and will not become a causal model input.
+The DUT bridge is now complete: all 28 author backgrounds (19.4 MB), 6,874
+fixed pairs and exact source/receipt replays. No supported cross-source link
+or reservation conflict was found, with crop/composite/matching limits retained.
+A background composite is not a past video frame and will not become a causal
+model input.
+
+The separate [fit-only admission](outputs/publication_readiness_2026_09/moving_development_admission_v1/readout.md)
+now opens those 64 clips for local development fitting. Their 24 conservative
+groups have a fixed proposed threefold allocation of 45,606 / 45,359 / 45,330
+complete windows. Other clips remain unadmitted for prediction in this track;
+DUT and DroneCrowd retain their original roles. The next experiment must bind
+the actual predictor/teacher/critic exclusions before fitting. Source access
+is ready; a new neural benefit or safe policy has not yet been demonstrated.
 [Complete result](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/readout.md),
 [inspection scope](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/pair_review.md),
 [Chinese reproduction guide](outputs/publication_readiness_2026_09/movingdronecrowd_background_v2/tutorial_zh.md).
