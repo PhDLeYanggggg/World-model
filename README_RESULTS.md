@@ -44,6 +44,16 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The explicit unknown-bound cost comparison is registered before fitting:
+36real Torch cost heads,known-only versus bound-aware supervision,same width64
+context head,preprocessing,initialization,complete query draws and budgets.
+Each evaluation group is excluded from both forecaster and critic fitting.
+Original SOURCE whitelist149,510rows/74recordings/twelve localities remains.
+Primary116,160updates,first-full-refits4,000updates,and a planned1,200-update
+three-group recovery pilot are separate. Six scoped checks pass in1.73s.
+Actual fitting/readout are not_run at this freeze; no independent final role
+or new policy pass. [Protocol](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md).
+
 The causal release-label-support probe is complete:18actual ExtraTrees models,
 geometry versus geometry+detector history, original producer folds/seeds17/29/43,
 128trees per model. Fit four SOURCE sites,predict the excluded eight. Every

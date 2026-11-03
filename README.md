@@ -162,5 +162,11 @@ forecaster and critic. The target constructor is implemented and unit tested;
 the new critic comparison has not run. Neither a missing future nor an absent
 reference contribution is treated as an observed zero trajectory error.
 
+The [matched cost experiment](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md)
+is now registered: 36 cost heads, 116,160 primary optimizer updates, full
+first-job refits and recovery checks across all three fitting groups. Both
+forecaster and critic exclude the evaluation sites. No fit or policy outcome
+is claimed at this pre-execution freeze.
+
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.
