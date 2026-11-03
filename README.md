@@ -153,8 +153,11 @@ That [SOURCE probe](outputs/publication_readiness_2026_09/european_source_label_
 now has a frozen eighteen-forest design: past geometry versus geometry plus
 past detector history, fitting on the original four SOURCE sites and predicting
 the excluded eight. Future-mask information is a target only, never an input.
-Training/readout are not_run at this registration. This is a label-process
-diagnostic, not a new neural world model or physical-visibility predictor.
+The real 32->64/direct64 recovery pilot is exact, and formal training is now
+running with per32-tree checkpoints. The measured projection is about four
+minutes before preparation/inference. No held-SOURCE outcome is reported yet.
+This is a label-process diagnostic, not a new neural world model or
+physical-visibility predictor.
 
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.
