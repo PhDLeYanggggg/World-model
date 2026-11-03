@@ -4,7 +4,7 @@
 
 Fresh_run complete frozen-context extraction. Cached_verified original EqMotion
 checkpoints,pinned source,forecasts,roles and row identities. No new training,
-policy decision or outcome scoring. Full separate replay is still running.
+policy decision or outcome scoring. Full separate replay is complete.
 
 ## Completed Build
 
@@ -47,12 +47,15 @@ learner must fit its own preprocessing on criticGsites only.
 
 ## Full Replay And Next Decisive Test
 
-Separate re-extraction PID30866/session3018is running. It recomputes every
-original coordinate and retained latent,not just a sample or checksum read.
-Completion is not asserted before its exit and verification receipt.
+Separate re-extraction PID30866 completes in7292.629338s,peakRSS1,949,564,928bytes.
+All nine latent arrays and all1,913,814coordinates reproduce exactly. This is
+a fresh full re-extraction,not just a sample or checksum read. The completed
+verification receipt and terminal log are present;the PID is no longer live.
+The original tool session handle was unavailable after continuation,so no
+recovered process exit code is asserted for that verification invocation.
 
-Only after complete replay,register the implemented capacity-matched
-interaction64-versuszero64cost experiment. Both arms have33349parameters,
+After complete replay,the capacity-matched interaction64-versuszero64cost
+experiment is now registered. Both arms have33349parameters,
 identical initial weights/normalizer/draws/targets/budgets and original2%risk
 rules. This tests the full added feature bundle;original-versuspartial neighbor
 coverage means an encoding-only claim would still need a raw-context control.
@@ -64,8 +67,8 @@ No new cost head has been trained and no feature utility has been scored.
 ```
 
 The build resume command is for an interrupted same-identity run;completed
-phases are immutable. The verification command above is already running,not
-an instruction to submit a duplicate. Atomic cursors/heartbeat preserve the
+phases are immutable. Both phases above are complete,not instructions to submit
+duplicate work. Atomic cursors/heartbeat preserve the
 original batch roster. The local pilot shows the full job fits this machine;
 no new HPC job was submitted.
 

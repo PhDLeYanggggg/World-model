@@ -64,10 +64,12 @@ Actual capture times project7202.77sfor the complete extraction,excluding I/O
 and final hashes. Full extraction now completes in7241.54s,peak1.993GB:
 all1913814coordinates exact and897060h64rows retained. All64dimensions vary
 in every producer;this descriptive scan is not normalization or feature utility.
-Separate full re-extraction is running;there is no new learned-feature result.
+Separate full re-extraction now completes in7292.63s,peak1.950GB. Every original
+coordinate and retained latent is exact. There is no learned-feature utility
+result yet.
 
-Complete extraction PID22705exits0;full separate replay is PID30866with
-heartbeat. [Build record](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v2/readout.md).
+Complete extraction PID22705exits0;full separate replay PID30866has completed
+receipts and is no longer live. [Build record](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v2/readout.md).
 I have also implemented the next matched test,not trained it:interaction64
 versuszero64in508-input,width64heads,33349parameters each. The same fit-only
 normalizer,initialization,query draws,target loss and2%risk policy isolate
@@ -76,8 +78,9 @@ real optimizer recovery,zero-block invariance and exact unablated prediction
 parity. The added fixed-contrast tests check that missing seeds/support and
 zero paired effects cannot be promoted;the current combined suite passes12
 tests in2.21s. The scalar report/gate reconstruction is implemented but not
-run without complete results. Registration and all36fits wait for full cache
-replay;these tests do not establish a learned-feature benefit.
+run without complete results. With complete cache replay verified,the36-fit
+comparison is now registered;the three-group real recovery pilot is next.
+These engineering tests do not establish a learned-feature benefit.
 The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.
 A positive result would need a matched raw-context control before attributing
