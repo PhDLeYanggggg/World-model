@@ -59,7 +59,11 @@ experiment is now registered. Both arms have33349parameters,
 identical initial weights/normalizer/draws/targets/budgets and original2%risk
 rules. This tests the full added feature bundle;original-versuspartial neighbor
 coverage means an encoding-only claim would still need a raw-context control.
-No new cost head has been trained and no feature utility has been scored.
+At this cache-completion checkpoint, no new cost head had been trained and no
+feature utility had been scored. The subsequent complete 36-head experiment
+is recorded separately in [its readout](../european_interaction_feature_cost_v1/readout.md):
+the primary is inconclusive and the complete risk contract fails. This later
+result does not change the frozen cache or its extraction receipts.
 
 ```sh
 .venv-pytorch/bin/python scripts/run_m3w_eqmotion_context_cache_v2.py build --resume

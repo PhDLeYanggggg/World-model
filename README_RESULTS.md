@@ -50,6 +50,37 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Frozen Interaction Features: Complete, Primary Unsupported
+
+The complete matched study trains 36 real Torch cost heads with three actual
+seeds. All 36 prediction pairs and 72 metric groups reproduce exactly in a
+separate full replay. Adding the frozen interaction features lowers the mean
+full-bound fitting objective from 1.4981 to 1.3263, about 11.5%, but does not
+establish better intervention on held SOURCE localities.
+
+The registered Interaction64-minus-Zero64 completion-lower contrast is
+-0.0213 percentage points, with 95% locality bootstrap CI [-0.6148, +0.6482].
+The known-label contrast is +0.4800 pp [-0.1007, +1.1025]. Both are inconclusive.
+Only 110/444 repeated recording/pipeline views support the complete original
+risk contract; worst signed easy-net degradation is 39.37%, not within 2%.
+The 444 views repeat 74 recordings and are not independent scenes.
+
+Under the prespecified equal-locality CV-relative metric, the feature policy
+is -2.1850% versus constant velocity. Its slightly lower macro pixel ADE does
+not override that separately defined relative metric. Locality 082 has no
+valid step-12 endpoint, so all-required-locality endpoint FDE is not estimable;
+no scene is dropped to produce a favorable number.
+
+[Full readout](outputs/publication_readiness_2026_09/european_interaction_feature_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_interaction_feature_cost_v1/failure_analysis.md)
+and [paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/frozen_interaction_feature_addendum.md)
+retain the negative results and both engineering failures. These are exposed
+SOURCE development results, not independent confirmation or a new dynamics
+contribution. Deployment is unchanged. The next diagnosis compares predicted
+and realized costs on identical selected sets in fitting and held roles.
+
+### Build And Fitting History
+
 The first frozen-interaction extraction pilot failed because I passed the
 controller's newer partial-neighbor packet to the old forecaster. A fresh
 27-batch diagnosis across all nine models reproduces every saved prediction
@@ -65,8 +96,8 @@ and final hashes. Full extraction now completes in7241.54s,peak1.993GB:
 all1913814coordinates exact and897060h64rows retained. All64dimensions vary
 in every producer;this descriptive scan is not normalization or feature utility.
 Separate full re-extraction now completes in7292.63s,peak1.950GB. Every original
-coordinate and retained latent is exact. There is no learned-feature utility
-result yet.
+coordinate and retained latent is exact. At cache completion there was no
+learned-feature utility result; the completed study is summarized above.
 
 Complete extraction PID22705exits0;full separate replay PID30866has completed
 receipts and is no longer live. [Build record](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v2/readout.md).
@@ -95,8 +126,8 @@ prediction pairs now freeze before held policy scoring,PID54753. A fresh
 actual-checkpoint audit PID55263checks every fitting IDhash and normalizer:
 all36use only criticGand exclude producerF/evaluationH. It reads no new future
 label arrays. The initial discarded-Hpreparation failure remains documented.
-Held policy outcomes are next;no feature-effect claim is made yet.
-These engineering tests do not establish a learned-feature benefit.
+Those freezes preceded held scoring. The subsequent complete evaluation and
+replay are now recorded above; no learned-feature benefit is established.
 The planned feature contrast is also not an encoding-only attribution: h64uses
 the forecaster's original neighbor packet while444uses partial neighbors.
 A positive result would need a matched raw-context control before attributing

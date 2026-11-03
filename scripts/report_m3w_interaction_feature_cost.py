@@ -38,6 +38,7 @@ def main():
             raise ValueError('Fitting receipt changed')
         fits.append(read(path))
     fmt = lambda r: 'not estimable' if r['point'] is None else f'{r["point"]:+.4f} [{r["CI95"][0]:+.4f}, {r["CI95"][1]:+.4f}]'
+    distance = lambda r: 'not estimable' if r['point'] is None else f'{r["point"]:.4f} [{r["CI95"][0]:.4f}, {r["CI95"][1]:.4f}]'
     primary = summary['contrasts']['primary']
     names = ('floor','constant_velocity_causal_fd','full_neural','direct_bound_bounded','zero64_bounded','interaction64_bounded','zero64_binary','interaction64_binary')
     lines = ['# Frozen Interaction Features For Intervention Costs', '', '## Material Passport', '',
@@ -65,17 +66,20 @@ def main():
     for name in names:
         a,r = summary['accuracy'][name],summary['safety'][name]
         worst = r['worst_signed_easy_net_percent']
-        lines.append(f'|{name}|{fmt(a["known"])}|{fmt(a["completion_lower"])}|{r["supported_record_views"]}/444|{worst if worst is not None else "not estimable"}|')
+        worst_text = f'{worst:.4f}' if worst is not None else 'not estimable'
+        lines.append(f'|{name}|{fmt(a["known"])}|{fmt(a["completion_lower"])}|{r["supported_record_views"]}/444|{worst_text}|')
     lines += ['', '## Accuracy And Tail Diagnostics', '',
               '|Policy|Known ADE pixel [95% CI]|Available endpoint FDE diagnostic pixel [95% CI]|Known gain over CV % [95% CI]|Mean role-specific p95 ADE pixel [95% CI]|',
               '|---|---:|---:|---:|---:|']
     for name in names:
         a = summary['accuracy'][name]
-        lines.append(f'|{name}|{fmt(a["known_ADE_pixel"])}|{fmt(a["available_endpoint_FDE_diagnostic_pixel"])}|{fmt(a["known_gain_CV_percent"])}|{fmt(a["mean_role_specific_p95_ADE_pixel"])}|')
+        lines.append(f'|{name}|{distance(a["known_ADE_pixel"])}|{distance(a["available_endpoint_FDE_diagnostic_pixel"])}|{fmt(a["known_gain_CV_percent"])}|{distance(a["mean_role_specific_p95_ADE_pixel"])}|')
     lines += ['', 'The tail column is an equal-locality average of role-specific95th percentiles,',
               'not a pooled-window percentile. Endpoint FDE uses only released valid',
               'endpoints,not full-roster endpoint accuracy. The floor is producer-fit-',
               'selected;CVremains a separate fixed causal comparator,not held-selected.', '',
+              'CV-relative percentages are averaged within localities before the final',
+              'mean;they are not the ratio of the two macro pixel-ADEaverages.', '',
               'A paired lower comparison is not the subtraction of two individual lower',
               'bounds. An empty selected reference is not estimable;the unchanged floor',
               'is not thereby operationally unsafe or a learned-intervention success.', '',
@@ -107,6 +111,27 @@ def main():
         k = primary['known_pp']['by_locality'][site]
         lo = primary['completion_lower_pp']['by_locality'][site]
         lines.append(f'|{site}|{k:+.4f}|{lo:+.4f}|')
+    lines += ['', '## Endpoint And Cohort Support', '',
+              'Posthoc descriptive label-support counts,not a new primary cohort.',
+              'All six producer/seed views must agree on the same target-row support.', '',
+              '|Locality|Unique windows|Wholly unknown future|Complete12|Valid final endpoint|',
+              '|---|---:|---:|---:|---:|']
+    support = {}
+    for site in summary['source_localities']:
+        values = [r['policies']['floor'] for r in groups if r['site']==site]
+        keys = ('rows','wholly_unknown_rows','complete12_rows','endpoint_rows')
+        if len(values)!=6 or any(len({r[k] for r in values})!=1 for k in keys):
+            raise ValueError('Repeated views cannot change unique cohort support')
+        row = {k:values[0][k] for k in keys}
+        support[site] = row
+        lines.append(f'|{site}|{row["rows"]}|{row["wholly_unknown_rows"]}|{row["complete12_rows"]}|{row["endpoint_rows"]}|')
+    if sum(r['rows'] for r in support.values())!=149510:
+        raise ValueError('Unique SOURCE whitelist must be preserved')
+    lines += ['', '082has zero released final endpoints in the unchanged whitelist;the',
+              'all-required-locality endpoint interval is therefore not estimable.',
+              'Do not fill endpoints,drop082or call available-labelADEa full12score.',
+              '008and074contain most windows,but the registered bootstrap gives each',
+              'locality equal weight. Window count alone is not independent support.']
     lines += ['', '## Reproduction And Scope', '',
               f'Training PID{train["pid"]}:{train["seconds"]:.3f}s phase time including preparation/scoring,peakRSS{train["peak_RSS_bytes"]:,}bytes.',
               f'Primary updates:{train["primary_optimizer_updates"]};first full refits:{train["first_full_refit_updates"]};pilot:{pilot["actual_optimizer_updates"]}.',
@@ -137,7 +162,8 @@ def main():
     evidence = dict(result_source='verified_public_scalar_reconstruction_not_new_training',
                     summary_sha256=sha(PUBLIC/'summary.json'),verification_sha256=sha(PUBLIC/'verification.json'),
                     reporter_sha256=sha(Path(__file__)),groups={str(p.relative_to(ROOT)):sha(p) for p in paths},
-                    fitting=fitting,public_groups_reproduce_summary_exactly=True,submission_ready=False,deployment_changed=False)
+                    fitting=fitting,posthoc_unique_label_support=support,
+                    public_groups_reproduce_summary_exactly=True,submission_ready=False,deployment_changed=False)
     (PUBLIC/'report_sources.json').write_text(json.dumps(evidence,indent=2,sort_keys=True)+'\n')
     gate_lines = ['# Matched Interaction Feature Gates', '',
                   '|Gate|Pass|', '|---|---|',
@@ -152,6 +178,54 @@ def main():
                   'Engineering gates and positive SOURCE mean effects cannot certify',
                   'complete risk or independent science. No promotion in this report.']
     (PUBLIC/'gates.md').write_text('\n'.join(gate_lines)+'\n')
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import numpy as np
+    old = PUBLIC.parent/'european_bound_aware_cost_v1'
+    direct = []
+    direct_refs = []
+    for ref in read(old/'training_freeze.json')['fits']:
+        p = ROOT/ref['path']
+        if sha(p)!=ref['sha256']:
+            raise ValueError('Frozen direct fitting reference changed')
+        r = read(p)
+        if r['arm']=='bound_aware':
+            direct.append(r['fitting_objectives']['bound_aware']['total'])
+            direct_refs.append(ref)
+    if len(direct)!=18:
+        raise ValueError('Complete old direct fitting control required')
+    plt.rcParams.update({'svg.fonttype':'none','svg.hashsalt':'m3w-interaction-feature-cost-v1','font.size':9})
+    fig,axes = plt.subplots(1,3,figsize=(15,4),layout='constrained')
+    labels = ('Direct444','Zero64','Interaction64')
+    colors = ('#75818a','#a66b35','#087f89')
+    axes[0].bar(labels,[float(np.mean(direct)),fitting['zero64']['bound_aware'],fitting['interaction64']['bound_aware']],color=colors)
+    axes[0].set(title='Fitting costs improve',ylabel='Mean decoded full-bound fitting objective',ylim=(0,1.7))
+    for j,(field,label) in enumerate((('known_pp','Known labels'),('completion_lower_pp','Registered lower'))):
+        value = primary[field]
+        p = value['point']
+        lo,hi = value['CI95']
+        axes[1].errorbar(p,j,xerr=[[p-lo],[hi-p]],fmt='o',color=('#087f89','#b24952')[j],capsize=4)
+    axes[1].axvline(0,color='#777777',linestyle=':')
+    axes[1].set(title='Held benefit is not established',yticks=[0,1],yticklabels=['Known labels','Registered lower'],
+                xlabel='Interaction64 minus Zero64 (pp), 95% locality CI')
+    names = ('direct_bound_bounded','zero64_bounded','interaction64_bounded')
+    axes[2].bar(labels,[summary['safety'][k]['supported_record_views'] for k in names],color=colors)
+    axes[2].axhline(444,color='#777777',linestyle='--')
+    axes[2].text(2.4,449,'Required: 444',ha='right',va='bottom',color='#555555',fontsize=8)
+    axes[2].set(title='No complete risk pass',ylabel='Supported repeated recording/pipeline views',ylim=(0,470))
+    for ax in axes:
+        ax.spines[['top','right']].set_visible(False)
+        ax.grid(axis='y',alpha=.2)
+    fig.suptitle('Frozen interaction features: better fitting is not a safe intervention result')
+    home = PUBLIC/'figures'
+    home.mkdir(exist_ok=True)
+    fig.savefig(home/'interaction_feature_cost.svg',metadata={'Date':None})
+    plt.close(fig)
+    (home/'sources.json').write_text(json.dumps(dict(result_source='verified_scalar_figure_not_new_inference',
+        summary_sha256=sha(PUBLIC/'summary.json'),verification_sha256=sha(PUBLIC/'verification.json'),
+        old_direct_fitting_receipts=direct_refs,reporter_sha256=sha(Path(__file__)),
+        svg_sha256=sha(home/'interaction_feature_cost.svg'),deployment_changed=False),indent=2,sort_keys=True)+'\n')
     print(json.dumps(dict(readout=str(PUBLIC/'readout.md'),primary=primary,risk=summary['original_risk_pass'])))
 
 

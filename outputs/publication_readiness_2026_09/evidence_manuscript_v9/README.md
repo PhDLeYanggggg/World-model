@@ -120,7 +120,15 @@ improves a secondary label-process score but not complete admission. This is
 also separate from the compiled main PDF; no new main-text result or scientific
 readiness is implied by linking the supplement.
 
+## Later Feature Evidence
+
+The complete [frozen-interaction feature addendum](frozen_interaction_feature_addendum.md)
+records the later 36-fit matched feature test, exact full replay and unsupported
+primary. Better fitting does not become a safe policy result. This is separate
+from the compiled main PDF, which remains unchanged after its disclosure update.
+
 ## Still Missing
+
 
 A learned full-policy risk pass, supported scene-joint gain, independent final
 confirmation and a complete anonymous cold-start reproduction remain incomplete.
