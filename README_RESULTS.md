@@ -54,8 +54,11 @@ exactly with the original packet;hooks preserve outputs and RNG. I retain the
 and register an [explicit input-binding correction](outputs/publication_readiness_2026_09/european_eqmotion_context_cache_v2/protocol.md).
 The unchanged target is1913814processed forecast rows and897060retained h64rows
 from149510whitelist windows,not independent samples. Four focused tests pass.74s.
-The corrected all-nine pilot and full extraction are not yet complete;there is
-no feature-utility result,new optimizer update or deployment promotion.
+The corrected all-nine real pilot now passes:PID22514,31.285s,peak1.918GB,
+all27batches exact for saved coordinates,hidden repeatability and unchanged RNG.
+Actual capture times project7202.77sfor the complete extraction,excluding I/O
+and final hashes. Full extraction and separate replay are next;there is no
+feature-utility result,new optimizer update or deployment promotion.
 
 The observation-support cost comparison is registered before fitting:
 36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct
