@@ -133,11 +133,9 @@ third-party images and local virtual environments stay out of Git.
 ## Next Question
 
 Can the stronger frozen proposal support useful, reliable admission rather
-than another increase in critic width? The two completed SOURCE experiments
-below narrow the next cost-learning repair. The negative 082 slice and missing
-futures stay in the analysis.
-Any new comparison will be registered before fitting, without tuning on exposed
-calibration outcomes or opening final confirmation to rescue the method.
+than another increase in critic width? Three completed SOURCE experiments
+narrow that question. The negative 082 slice and missing futures stay in the
+analysis; none of these results changes deployment.
 
 The [first amplitude experiment](outputs/publication_readiness_2026_09/european_eqmotion_amplitude_v1/readout.md)
 is complete: all 1,440 policy evaluations replay exactly. The prespecified
@@ -156,19 +154,25 @@ Training takes 267.97 s with 4.51 GB peak RSS. Future masks are targets only.
 Calibration remains weak on the critical scene, and some scenes do not improve.
 This is a release-label-process result, not physical visibility or neural dynamics.
 
-Next I will compare known-only cost supervision with explicit unknown-row
-disagreement-bound targets, keeping evaluation sites excluded from both the
-forecaster and critic. The target constructor is implemented and unit tested;
-the new critic comparison has not run. Neither a missing future nor an absent
-reference contribution is treated as an observed zero trajectory error.
+The [matched bound-aware cost experiment](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/readout.md)
+is complete: 36 real Torch heads, 116,160 primary updates, 4,000 full-refit and
+1,200 recovery-pilot updates. Both fitting stages exclude each evaluation site;
+all cost/amplitude arrays and 72 metric groups replay exactly. Training takes
+378.71 s with 9.24 GB peak RSS. Explicit unknown-row targets lower their own
+fitting objective from 4.884 to 1.489, but the direct paired primary is
+**-1.70 pp [-5.71, +1.12]**, not a supported improvement. Known utility differs
+by +0.38 pp [-1.48, +1.95], also inconclusive.
 
-The [matched cost experiment](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md)
-now completes all 36 cost heads and 116,160 primary optimizer updates, plus
-4,000 full-refit and 1,200 real recovery-pilot updates. Training takes 378.71 s,
-peak RSS 9.24 GB. Both forecaster and critic exclude evaluation sites; paired
-initialization,normalization and query draws match exactly. All 36 held-policy
-cost and amplitude arrays are now frozen before outcome scoring. No efficacy
-or risk result is claimed at this prediction freeze.
+Full-risk support improves from 28/444 to 108/444 repeated recording views,
+while known-all violations increase. Neither policy passes. In the worst
+signed easy-net view, predicted easy risk is 0.060% but observed easy positive
+harm is 57.76%. The [failure analysis](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/failure_analysis.md)
+separates target-fitting progress from this selected-risk failure. I will next
+decompose harm and reference errors on identical selected sets, on fitting and
+excluded SOURCE sites, before choosing another cost-learning repair. No new
+threshold will be selected from exposed calibration or final-confirmation data.
+
+![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.

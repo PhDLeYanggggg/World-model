@@ -13,10 +13,12 @@ calibration evidence. Fresh prose/AST rendering/figure and current-source
 compile;scientific numbers are cached_verified,not new inference by writing.
 The complete forest negative, SOURCE decoder decomposition and nine-fit neural
 width-control failure are now included, alongside the positive observed-label
-SOURCE public-forecaster comparison and its unresolved missing outcomes. Seven
-main pages plus one disclosure/reference page; all eight current PNGs inspected
+SOURCE public-forecaster comparison and its unresolved missing outcomes. The
+complete36-fit bound-target comparison and2026non-monotonicCRC prior are now
+included without promoting the failed primary. Eight main pages plus one
+disclosure/reference page; all nine current PNGs inspected
 against PDF SHA
-`c5ee29bb610c3d6a290ca4c1b3423bd4db3dda4621ae82837ce0e3ab8ec92a90`.
+`13e3c4a07bb83424354c397c51900286ac57460d1487708ccf2cb17c7834917a`.
 No final-pass overfull/reference/font-shape issue;upstream lineno UTF-8 warning
 retained. Locked Torch environment lacks pypdf;bundled document Python validates
 the PDF without changing training dependencies. v8 sources/receipts remain
@@ -44,20 +46,31 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
-The explicit unknown-bound cost comparison is registered before fitting:
-36real Torch cost heads,known-only versus bound-aware supervision,same width64
-context head,preprocessing,initialization,complete query draws and budgets.
-Each evaluation group is excluded from both forecaster and critic fitting.
-Original SOURCE whitelist149,510rows/74recordings/twelve localities remains.
-Primary116,160updates,first-full-refits4,000updates,and a planned1,200-update
-three-group recovery pilot are separate. Six scoped checks pass in1.73s.
-All36fits now finish116,160primary updates plus4,000complete-refit updates.
-The three-group1,200-update real recovery pilot is exact; paired initial
-weights,normalizers,samplers and draws match. Training PID9710 takes378.71s,
-peak9.241GB; both first full refits are exact. Held-policy predictions/readout
-are next. All36cost/amplitude arrays now freeze before held outcome scoring;
-no efficacy or independent final-role result is claimed at this freeze.
-[Protocol](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/protocol.md).
+The prospectively registered explicit unknown-bound cost comparison is complete:
+36 real Torch heads, 116,160 primary updates, 4,000 full-refit updates and a
+1,200-update three-group recovery pilot. Same width-64 head, initialization,
+preprocessing, query draws and full budgets; evaluation excludes both fitting
+stages. Original SOURCE 149,510 rows/74 recordings/twelve localities retained.
+Training PID9710 takes378.708s, peak9.241GB; both full refits and all recoveries
+are exact. All36cost/amplitude arrays froze before held outcome scoring and
+replay exactly, as do72metric groups. Separate verification PID11539 takes
+124.657s including76.350s inference. Nine current scoped tests pass1.77s.
+
+Registered direct paired completion-lower effect: -1.703051pp
+[-5.708066,+1.116554], unsupported. Paired known-label effect +0.377358pp
+[-1.481444,+1.947473], inconclusive. Do not replace the direct primary with
+the difference of individual lower bounds. Bound-aware known gain3.430437%
+versus control3.053080%; full-risk support108/444 versus28/444, but known-all
+violations rise79to143 and worst signed easy-net remains43.692932%. Full-bound
+fitting objective improves4.883677to1.489479; known-only objective worsens
+.901362to1.011491. Better intended fitting and some risk views are not full
+policy success. Locality008/recording77 predicts easy risk.059779% but realizes
+57.7637% known easy positive-harm risk. Locality082 retains negative paired
+known effect -7.022130pp. All records remain. Deployment unchanged.
+[Readout](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/failure_analysis.md),
+[card](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/model_data_card.md)
+and[gates](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/gates.md).
 
 The causal release-label-support probe is complete:18actual ExtraTrees models,
 geometry versus geometry+detector history, original producer folds/seeds17/29/43,
@@ -71,8 +84,8 @@ Future masks are supervision only. Calibration is not sufficient for safety:
 locality082ECE0.145512; locality020AUROC0.4491. No scene is dropped or threshold
 chosen. The real32->64/direct64 pilot and full128-tree refit are exact. Training
 2304primary+128refit trees takes267.97s,peak4.513GB; pilot128trees counted separately.
-The new explicit unknown-bound moment constructor is implemented with two
-passing tests,not connected to a trained critic. No policy/deployment pass.
+The subsequent matched cost experiment above uses the explicit unknown-bound
+constructor in36completecritics. The probe itself is not a policy/deployment pass.
 [Readout](outputs/publication_readiness_2026_09/european_source_label_support_v1/readout.md),
 [failure analysis](outputs/publication_readiness_2026_09/european_source_label_support_v1/failure_analysis.md),
 [card](outputs/publication_readiness_2026_09/european_source_label_support_v1/model_data_card.md)

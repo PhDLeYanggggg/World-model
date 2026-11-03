@@ -32,13 +32,21 @@ a new admission-policy risk pass or independent confirmation.
   the fixed 149,510-window whitelist, not the full 318,969-window population.
   All lower intervals cross zero; locality 082 loses to current PCT on known
   labels. All primary forecasts and 216 primary/secondary metric groups replay.
+- Thirty-six matched SOURCE cost heads with held sites excluded from both
+  forecaster and critic fitting. Explicit unknown-row contributions improve
+  their own fitting target, but the registered direct paired lower effect is
+  -1.7031 pp [-5.7081, +1.1166]; full-risk support is only108/444. Known-all
+  violations increase. The mixed risk result and severe selected-cost failure
+  are included, not presented as a safe admission upgrade.
+- The 2026 non-monotonic CRC extension is discussed alongside original CRC.
+  No blanket impossibility or novelty claim rests on non-monotonicity alone.
 
 The data roles, actual forecaster seeds, repeated recording views, partial
 future labels and missing independent final confirmation are explicit. These
 are cached_verified scientific results, not new experimental replications
 created by writing this document. Prose, figure rendering and typesetting are
-fresh work. The current paper has seven main-body pages and one disclosure/
-reference page in the unchanged official2027style. All eight pages were inspected
+fresh work. The current paper has eight main-body pages and one disclosure/
+reference page in the unchanged official2027style. All nine pages were inspected
 as PNGs and the review is bound to the current PDF hash. Formatting does not
 establish scientific readiness or complete anonymity.
 
@@ -81,10 +89,10 @@ overfull box, unresolved reference, missing glyph or font-shape fallback occurs.
 The first attempt at source generation used the wrong calibration-receipt
 filename and did not produce TeX; its failed compile log is retained privately.
 The corrected builder binds the actual `verify.json`, not a fabricated receipt.
-The latest complete SOURCE forecasting/control update compiles through
-`paper_compile_06.log`; the current PDF SHA is
-`c5ee29bb610c3d6a290ca4c1b3423bd4db3dda4621ae82837ce0e3ab8ec92a90`.
-All eight current page renders were individually inspected again. Earlier
+The latest complete SOURCE bound-target update compiles through
+`paper_compile_07.log`; the current PDF SHA is
+`13e3c4a07bb83424354c397c51900286ac57460d1487708ccf2cb17c7834917a`.
+All nine current page renders were individually inspected again. Earlier
 compile logs and their source/PDF checks are retained as historical evidence.
 The first attempt to verify this update preceded completion of PNG rendering
 and correctly refused it; after all pages were rendered and viewed,the final
@@ -94,9 +102,9 @@ source/PDF/visual checks passed. This does not change scientific status.
 
 The [SOURCE observation-process addendum](source_observation_process_addendum.md)
 records the complete fixed-amplitude failure and positive past-detector support
-probe. It is not yet inserted into the compiled main PDF above, whose existing
-source/PDF/layout receipt remains unchanged. No learned bound-aware critic or
-new policy pass is claimed by the addendum.
+probe. Those two bridge studies remain a separate addendum, not full sections
+of the compiled main PDF. The subsequent completed bound-aware critic comparison
+is now included in main sections4.4/6.8. No new policy pass is claimed by either.
 
 ## Still Missing
 

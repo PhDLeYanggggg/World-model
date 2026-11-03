@@ -29,7 +29,10 @@ the neural critic width still fails the fixed primary and risk requirements.
 A separately registered public-forecaster control improves observed-label
 SOURCE accuracy, including against the current PCT, but its missing-outcome
 lower comparisons remain unresolved. Neither result establishes a safe learned
-admission upgrade, a population-risk certificate or a new world-dynamics model.
+admission upgrade. A new 36-fit, doubly excluded SOURCE cost comparison improves
+bound-target fitting and some recording-risk views, but its registered paired
+lower effect remains unsupported. No population-risk certificate or new
+world-dynamics model is established.
 
 ## 1. Introduction
 
@@ -86,7 +89,10 @@ Conformal Risk Control [5] requires an appropriate loss and assumptions. Our
 selected positive-harm/reference ratios are not automatically bounded or
 monotone: removing a low-harm agent can reduce the reference denominator and
 increase the ratio. We therefore report empirical checks of complete policies,
-not a distribution-free certificate. The generalized cost divergence used in
+not a distribution-free certificate. The non-monotonic extension [10] uses
+algorithmic stability and exchangeability; non-monotonicity alone is therefore
+not a novelty argument or an impossibility result. We establish neither that
+stability condition nor an expected-risk certificate. The generalized cost divergence used in
 one control is classical [7]; its ideal conditional-mean property does not
 guarantee finite-network accuracy after selection. ExtraTrees [8] supplies a
 conventional nonlinear estimator control, not a proposed world model.
@@ -196,6 +202,35 @@ are applied after regression. Thus this is an estimator/representation control,
 not a perfectly isolated architecture or FLOP comparison. All eighteen forests
 complete their original budgets, with full inference and metric replay.
 The older forest studies use different banks and retain their negative status.
+
+### 4.4 Explicit Unknown-Row Cost Targets
+
+A matched SOURCE comparison asks whether the critic should learn the same
+unknown-row contributions that its evaluator bounds. Let nu indicate at least
+one observed requested future label. The supervised moment vector is
+
+```math
+\begin{aligned}
+Z={}&(\nu B,\;\nu H+(1-\nu)D,\;\nu R,\\
+    &\nu ER,\;\nu EH+(1-\nu)D).
+\end{aligned}
+```
+
+Zero R or ER for an unknown row denotes absent observed denominator mass, not
+a zero-error future. The known-only control omits unknown target rows but keeps
+their causal context. Both arms have the same initial weights, preprocessing,
+objective, query draws and complete budgets; target-defined query averaging
+changes with supervision support and is part of this comparison.
+
+For each fixed EqMotion producer, the critic fits one other four-site SOURCE
+group and evaluates on the remaining four sites. Rotating both choices and
+three actual seeds gives 18 jobs per arm. Held sites are in neither fit.
+Only the neural candidate intervenes, with amplitude between zero and one
+limited by both original predicted 2% inequalities. This convex interpolation
+bounds predicted costs, not actual selected risk. All 36 prediction arrays
+freeze before scoring. The primary is the direct paired completion-lower
+bound-aware-minus-control gain; binary admission is secondary. This is neither
+a new conditional-mean theorem nor scene-joint conflict optimization.
 
 ## 5. Data, Roles and Statistical Evidence
 
@@ -415,6 +450,36 @@ uncertainty, not observed catastrophic error. Better SOURCE forecasting supplies
 a stronger proposal; it does not validate a new admission policy or independent
 world-model contribution.
 
+### 6.8 Bound Supervision Helps Fitting, Not Complete Admission
+
+All 36 full cost fits complete 116,160 primary updates, 4,000 full-refit updates
+and a 1,200-update recovery pilot. On the same full-bound fitting target, the
+objective decreases from 4.883677 to 1.489479; on the known-only target it rises
+from 0.901362 to 1.011491. These different target scores must not be treated as
+interchangeable validation losses.
+
+|Bound target|Known gain %|Individual lower %|Supported views|Worst easy-net %|
+|---|---:|---:|---:|---:|
+|Known-only control|3.0531|1.0579|28/444|71.0389|
+|Explicit bound-aware|3.4304|2.7669|108/444|43.6929|
+
+The registered direct paired completion-lower effect is -1.7031 pp
+[-5.7081, +1.1166]. It is not the difference of the two individual lower bounds
+in the table. The paired known-label effect, +0.3774 pp [-1.4814, +1.9475], is
+also inconclusive. These negative-primary results do not establish significant
+observed-ADE regression. Known-all violations increase from 79 to 143, while
+known-easy violations decrease from 330 to 235: better support is a mixed
+trade-off, not full safety.
+
+For locality 008, recording 77, one bound-aware view predicts selected easy
+risk of 0.0598% but realizes 57.7637% on known labels and a 96.6815% completion
+upper. Both numerator and denominator are estimated; this comparison alone
+cannot identify which one causes the error. Locality 082 retains a -7.0221 pp
+paired known effect. All sites remain in the analysis. The 444 views repeat
+74 recordings, twelve exposed SOURCE sites and three seeds. All 36 cost and
+amplitude arrays and 72 metric groups replay exactly, without independent
+confirmation or a deployable upgrade.
+
 ## 7. Failure Analysis and Remaining Gaps
 
 The controls separate several errors. A candidate bank can contain future-
@@ -430,6 +495,12 @@ or policy utility. SOURCE decomposition rejects the tested decoder-damage
 explanation on these data, while the one-factor width control offers only a
 small fitting improvement without safe routing. Finite model comparisons
 cannot prove irreducible risk or justify blind capacity escalation.
+Explicit bound supervision further reduces its intended fitting error but
+leaves severe selected-record miscalibration. Missing-row target mismatch is
+therefore not the sole unresolved cause. The next diagnostic must separate
+H/EH prediction from R/ER support error on identical selected sets, including
+critic-fitting versus doubly excluded sites; another global loss score cannot
+answer that question.
 The calibration result also does not certify a population-level 2% risk bound.
 Arbitrary selected ratios, small scene samples, dependence and partially
 observed futures prevent that inference without additional justified assumptions.
@@ -470,6 +541,11 @@ refit and 200 pilot updates. Training/refit takes 3.58 h with 2.25 GB peak RSS;
 complete primary forecast replay takes 2.10 h. These are actual CPU Torch fits,
 not fallback arithmetic. Source exclusion and exact replay do not turn these
 exposed development data into independent final tests.
+The bound-target comparison adds 36 complete cost fits, taking 378.71 s at
+9.24 GB peak RSS. A separate verification takes 124.66 s, including 76.35 s
+for complete cost/amplitude inference. Both first-job full refits and all six
+critic-group/arm recovery checks are exact. No new trajectory fit is counted
+as part of these cost-head updates.
 
 Public scalar evidence supports exact numerical reconstruction of reported
 aggregates. It is not fresh raw-data inference. Full execution still needs
@@ -498,3 +574,4 @@ correctness or completed author review.
 7. Banerjee, Guo and Wang. On the Optimality of Conditional Expectation as a Bregman Predictor. IEEE Transactions on Information Theory 51(7):2664-2669, 2005. https://doi.org/10.1109/TIT.2005.850145
 8. Geurts, Ernst and Wehenkel. Extremely randomized trees. Machine Learning 63:3-42, 2006. https://doi.org/10.1007/s10994-006-6226-1
 9. Xu et al. EqMotion: Equivariant Multi-agent Motion Prediction with Invariant Interaction Reasoning. CVPR 2023, pp. 1410-1420. https://arxiv.org/abs/2303.10876
+10. Angelopoulos. Conformal Risk Control for Non-Monotonic Losses. arXiv:2602.20151, 2026. https://arxiv.org/abs/2602.20151
