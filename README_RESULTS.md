@@ -113,7 +113,30 @@ Local space subsequently recovers above the unchanged10GiB reserve. The same
 training resumes under PID62172, with a separate log: the six complete models
 are reused without updates and the seventh advances beyond its saved step.
 No new HPC computation, changed budget, discarded checkpoint or erased failure.
-The18-model fitting result is still incomplete at this recovery checkpoint.
+The18-model fitting result was incomplete at that recovery checkpoint.
+
+**Completed follow-up:** all18 heads now finish232,320 canonical primary
+updates plus the8,000-update first scratch refit. Every old-budget scientific
+prefix is exact. Completion PID62172 exits0 in570.670s (resumed process only),
+peak RSS12,068,306,944bytes. Separate replay PID63133 exits0 in182.927s,
+peak RSS12,393,955,328bytes; all18 fitting decompositions are exact.
+The full-bound objective falls34.77%,1.326343 to0.865164. On identical old
+decisions the median easy-harm ratio improves0.003209->0.009333, but their
+actual324easy violations cannot change. Own selection produces307easy and
+147all violations, median EHratio0.002782; selected repeated row instances
+fall672,807->573,770. This is not a completed-risk pass or held-policy gain.
+[Readout](outputs/publication_readiness_2026_09/european_feature_duration_probe_v1/readout.md)
+and [interpretation](outputs/publication_readiness_2026_09/european_feature_duration_probe_v1/conclusions.md).
+All26completed-backup files(12,337,053bytes) are read-back/hash exact onCREATE;
+the old interrupted backup is retained. No remote training or job submitted.
+Twelve current focused regression tests pass2.62s; three new support-partition
+tests pass0.11s. These are not the complete unrelated legacy suite.
+
+The next [label-support decomposition](outputs/publication_readiness_2026_09/european_duration_support_diagnosis_v1/protocol.md)
+is fitting-only, all18 frozen jobs and all three selected sets. It separates
+complete/partial observed-label contributions from wholly-unknown bounds while
+requiring every unpartitioned mass to remain exact. No new policy, H score,
+threshold, role, calibration or confirmation result is selected from it.
 
 ### Build And Fitting History
 

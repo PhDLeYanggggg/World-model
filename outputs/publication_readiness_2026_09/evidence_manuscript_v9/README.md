@@ -103,6 +103,11 @@ source/PDF/visual checks passed. This does not change scientific status.
 
 ## New Evidence Addendum
 
+The [fourfold fitting-duration addendum](fourfold_duration_addendum.md) records
+the complete18-head training-adequacy negative:34.77% lower average fitting
+loss, but selected easy-harm reliability remains failed. It is separate from
+the compiled main PDF and does not add a held-policy or deployment claim.
+
 The [SOURCE observation-process addendum](source_observation_process_addendum.md)
 records the complete fixed-amplitude failure and positive past-detector support
 probe. Those two bridge studies remain a separate addendum, not full sections

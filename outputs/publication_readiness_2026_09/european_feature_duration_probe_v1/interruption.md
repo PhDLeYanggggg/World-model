@@ -1,5 +1,11 @@
 # Resource Interruption, Not A Completed Duration Result
 
+This is the preserved interruption-time record, not the final experiment
+status. The unchanged resumed run subsequently completes all18heads and a
+separate exact fitting replay. See [final readout](readout.md) and
+[conclusions](conclusions.md). The original failure and backup below remain
+historical evidence; no failed record is replaced by a success claim.
+
 ## Status
 
 Fresh real Torch training ran under PID60218 and exited1 when the existing

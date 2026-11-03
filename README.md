@@ -212,15 +212,22 @@ effect both have intervals crossing zero. It is not a new safe policy.
 The [new same-set diagnosis](outputs/publication_readiness_2026_09/european_feature_cost_diagnosis_v1/conclusions.md)
 finds that this head underestimates selected easy harm already on fitting
 scenes, not only on new localities. All 324 falsely-safe fitting views and 330
-held views underestimate its numerator. Before changing architecture again,
-The fourfold-budget training check remains incomplete. A local disk guard
-initially stops the run after six heads and a seventh checkpoint; those files
-and the failed log are verified backups on CREATE. Once local space recovers,
-the same run resumes from the saved optimizer state without retraining the
-complete models or lowering the budget. The old-budget prefixes checked so
-far are exact, and the main comparison keeps the original selected set fixed.
-This is a training-adequacy experiment, not evidence of a new world-model
-contribution or a favorable partial-result claim.
+held views underestimate its numerator. I then tested whether more training
+could fix this before changing the architecture again. The
+[complete fourfold-budget experiment](outputs/publication_readiness_2026_09/european_feature_duration_probe_v1/conclusions.md)
+finishes all18 cost heads,232,320 primary updates and a separate exact replay.
+Average fitting loss improves34.77%, but selected easy harm remains badly
+underestimated. On the unchanged original decisions its prediction/target
+ratio rises from0.0032 to0.0093; on the new model's own decisions it is0.0028.
+The latter still violates easy risk in307/444 repeated recording/pipeline
+views. Longer training alone has not produced a safe learned policy.
+
+The run recovered from a disk-reserve interruption without lowering the
+budget or discarding completed heads. Both the original and completed
+checkpoint sets are verified backups on CREATE; no remote training was
+needed. The next fitting-only diagnosis separates available-label harm from
+missing-label bounds. Neither lower loss nor a smaller intervention set is
+treated as new world-dynamics or independent generalization evidence.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
