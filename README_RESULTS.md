@@ -202,6 +202,10 @@ scientific state and matched pair sampling. Pure36-head fitting projects to
 2,197.931s before preparation/refit overhead,not actual completion. Local RAM
 and disk headroom support the full registered budget; formal36-head fitting
 now runs,without reading held policy scores or opening calibration/confirmation.
+The first complete2,000-update head in each arm has now also been independently
+refitted; both full scientific states are exact. These are4,000additional
+verification updates,not primary budget or held-policy evidence. The remaining
+registered fits continue underPID7082/session30908.
 
 ### New-Source Image Overlap
 

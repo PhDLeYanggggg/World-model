@@ -46,6 +46,38 @@ next admission experiment.
 [model/data card](outputs/publication_readiness_2026_09/european_eqmotion_v1/model_data_card.md)
 and [failure analysis](outputs/publication_readiness_2026_09/european_eqmotion_v1/failure_analysis.md).
 
+### Moving-Camera Source Check
+
+I have also completed the matched forecasting controls on 64 fit-admitted
+MovingDroneCrowd++ recordings. Both model families use the same causal history,
+neighbors and fitting budget: nine PCT and nine fixed-head EqMotion fits, with
+three actual seeds and 72,000 primary updates. Every saved forecast replays
+exactly, as do two complete first-model refits.
+
+There are 195,286 past-eligible target windows, including partial and missing
+future labels. Only 58 recordings in 23 source groups support the fixed 8/12
+task; one declared group has no usable window. The original 24-group primary
+is therefore not estimable. I report the supported-group results as secondary
+development evidence, not an independent final test.
+
+|Model|Available-label pixel ADE|Mean groupwise gain over causal CV|
+|---|---:|---:|
+|Causal CV|61.3680|0.00%|
+|PCT|77.3815|-39.27%|
+|Fixed-head EqMotion|53.4925|+15.74%|
+
+EqMotion's known-label paired advantage over PCT is +55.02 pp
+[+27.89, +87.39], but the missing-outcome lower contrast is +14.46 pp
+[-8.19, +38.93]. That unresolved interval matters: this is a stronger proposal,
+not a passed safety gate. Native annotation steps are not verified video time,
+and the derived forecasting task is not the dataset author's published task.
+
+[Full new-source comparison and loss curves](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/readout.md)
+and [relative-motion diagnostic](outputs/publication_readiness_2026_09/moving_relational_diagnostic_v1/readout.md).
+The next controlled experiment tests whether observed crowd motion helps learn
+when that proposal is worth using. Its matched cost heads are still fitting;
+there is no new deployment result yet.
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.
@@ -70,6 +102,11 @@ the explanation without turning it into a success:
   -0.021 pp [-0.615, +0.648]. Only 110/444 repeated recording/pipeline views
   meet the complete risk contract. Better latent features are not yet a safe
   admission result.
+- On the new moving-camera source, relative-motion prediction improves on
+  observed labels, but its unknown-outcome lower contrast is -24.87 pp
+  [-46.62, -5.83]. This does not establish a robust positive effect. The proxy
+  is also blind to common translation and cannot replace absolute error or
+  the full recording-level risk checks.
 
 The current contract retains the 2% all/easy positive-harm and signed easy-net
 requirements in every required recording, with finite support. A favorable
@@ -106,7 +143,7 @@ result, not yet a submission-ready M3W method.
 ## Running And Reading
 
 Use native arm64 `.venv-pytorch` on Apple Silicon, not x86 Conda under Rosetta.
-The completed study uses four CPU compute threads, one inter-op thread and no
+The completed European study uses four CPU compute threads, one inter-op thread and no
 DataLoader workers, with atomic checkpoints, heartbeat and resume. It completes
 36,000 primary updates, a 4,000-update full refit and a 200-update recovery pilot.
 Training/refit takes 3.58 h; complete primary inference replay takes 2.10 h.
