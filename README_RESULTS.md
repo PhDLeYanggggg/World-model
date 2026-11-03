@@ -58,10 +58,29 @@ without predictive admission. No source reservation or guard is changed.
 The new [MovingDroneCrowd++ intake](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/protocol.md)
 pins the author-linked public release before acquisition. Nine focused tests
 pass0.17s for bounded range access, source paths, MOT geometry, history/label
-separation and native-step support. Definition/registration are complete;
-actual acquisition, structural counts and replay are not yet run at this
-checkpoint. It is a different publication/release, not evidence that underlying
-physical scenes are independent. No downloaded vendor code or weights run.
+separation and native-step support. The complete fresh intake now acquires127
+annotation/metadata members:120clips,7,197listed images,638,718head rows,
+27,866recording-local tracks and44publisher scene labels. Complete native8/12
+support is245,018overlapping agent windows; native+50/+100endpoint support is
+36,409/4,247,versus32,439/3,511complete intervals. These are not raw-video
+frame/second equivalents,global identities or independent-site counts.
+Only7,179,281network payload bytes are read from the11,631,901,823-byte
+archive and small source metadata; no image/weight/fullarchive is downloaded.
+All selected members passCRC/SHA and the remote ZIPinventory recheck is exact.
+PID65508 exits0 in18.378s,peak155,123,712bytes. Separate cached structural
+replay PID65574 exits0 in7.331s,peak131,891,200bytes; all120record summaries
+match.353distinct query prefixes /706perturbations have0input mismatches.
+The common offline history kernel is tested,not annotator sensor-time causality.
+
+Publisher train files can name whole scenes while val/test can name clips.
+The initial conservative parser leaves scene-only entries unresolved. A new
+explicit interpreter follows the pinned author loader,without executing it;
+16focused source tests pass0.21s. Execution of that additional interpretation
+is pending at this checkpoint. Extended val/test share11publisher scene
+labels,so they cannot simply be treated as scene-disjoint calibration/test.
+This is a difference in task requirements,not an accusation about the original
+counting benchmark. No training,forecast-error readout,role reassignment or
+source-independence claim is made. No downloaded vendor code or weights run.
 
 ### Frozen Interaction Features: Complete, Primary Unsupported
 

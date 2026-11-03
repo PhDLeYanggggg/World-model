@@ -236,10 +236,14 @@ dropping uncertain labels establishes safe world-dynamics improvement.
 I am now checking a different development-data route:
 [MovingDroneCrowd++](outputs/publication_readiness_2026_09/movingdronecrowd_intake_v1/protocol.md),
 which provides image sequences and head-identity annotations. Its version is
-pinned before acquisition, and the first pass downloads annotations rather
-than the full video archive. The existing DroneCrowd collection remains
+pinned before acquisition. The completed annotation pass finds 120 clips,
+638,718 labeled rows and 245,018 complete eight-observation/twelve-prediction
+windows, using 7.18 MB of network payload rather than the full archive.
+These are overlapping native-step windows, not independent samples or matched
+physical time. The existing DroneCrowd collection remains
 reserved for confirmation in its entirety. The new source is not yet admitted
-for training or claimed to be independent of those reserved scenes.
+for training or claimed to be independent of those reserved scenes. The next
+step checks source overlap before assigning research roles.
 
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
