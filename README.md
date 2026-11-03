@@ -182,6 +182,13 @@ ratio in 423/444 fitting views. Fitting views with no wholly unknown selected
 labels can also fail, so missing-label bounds alone do not explain it. This is a zero-update diagnosis, not a
 new policy or another training success.
 
+The next [registered comparison](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md)
+models released-label support explicitly, separating its conservative unknown
+contribution from costs conditional on observed labels. Two matched new arms
+will test identification supervision, with the frozen direct-bound head as the
+primary control. It retains all SOURCE sites, three seeds and full budgets;
+training and outcomes have not yet run. This is not the earlier easy-event hurdle.
+
 ![Bound-aware cost fitting does not establish full policy safety](outputs/publication_readiness_2026_09/european_bound_aware_cost_v1/figures/cost_target_comparison.svg)
 
 The larger goal remains useful neural dynamics backed by reproducible,

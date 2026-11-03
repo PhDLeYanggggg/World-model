@@ -46,6 +46,16 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The observation-support cost comparison is registered before fitting:
+36newrealTorchheads,29,318parameters each,versus the frozen29,253-parameter direct
+bound control. Both new arms share structure, initialization, normalization,
+queries and full budgets; identified support adds proper observation BCE and
+observed-conditional cost supervision. Primary is identified-minus-frozen-direct
+paired completion-lower gain,not the secondary within-family contrast. The old
+generic easy-event hurdle failure remains. Real recovery pilot, full fitting,
+prediction freeze and readout are next; no new scientific result claimed.
+[Protocol](outputs/publication_readiness_2026_09/european_observation_cost_v1/protocol.md).
+
 The post-readout same-set cost diagnostic is complete: all36frozen heads,
 72fitting/held inference passes, no optimizer updates, all36job-role summaries
 exact in a separate full replay. Original PID14300 takes197.365s,peak4.502GB;
