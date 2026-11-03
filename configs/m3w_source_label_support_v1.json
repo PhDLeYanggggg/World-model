@@ -1,0 +1,33 @@
+{
+  "name": "european_source_label_support_v1",
+  "source_whitelist_rows": 149510,
+  "arms": ["geometry", "geometry_detector"],
+  "new_models": 18,
+  "seeds": [17, 29, 43],
+  "forest": {
+    "n_estimators": 128,
+    "max_depth": 12,
+    "min_samples_leaf": 64,
+    "max_features": 0.3333333333333333,
+    "n_jobs": 4,
+    "class_weight": null,
+    "warm_start": true
+  },
+  "checkpoint_every_trees": 32,
+  "pilot_stop": 32,
+  "pilot_target": 64,
+  "feature_clip": 8,
+  "primary": "geometry_detector_minus_geometry_SOURCE_excluded_unknown_label_AUROC",
+  "bootstrap_resamples": 3000,
+  "bootstrap_seed": 20261103,
+  "disk_reserve_bytes": 10737418240,
+  "hard_runtime_limit_seconds": 43200,
+  "new_neural_or_trajectory_training": false,
+  "threshold_selection": false,
+  "development_arrays_opened": false,
+  "calibration_arrays_opened": false,
+  "confirmation_opened": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

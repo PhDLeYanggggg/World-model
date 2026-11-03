@@ -44,6 +44,14 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+The causal release-label-support probe is registered before fitting:18 actual
+ExtraTrees models, geometry versus geometry+detector history, original three
+producer folds/seeds17/29/43,128trees per model. Fit four original SOURCE sites,
+predict the excluded eight; no new final test or role boundary. Target is wholly
+unknown requested future labels, not physical occlusion. Future masks never
+enter inference. Four new unit checks pass; pilot/training/readout are not_run.
+[Protocol](outputs/publication_readiness_2026_09/european_source_label_support_v1/protocol.md).
+
 The SOURCE-only fixed-support amplitude bridge is complete. Both frozen
 EqMotion/current-PCT families retain the original149,510-window whitelist,
 74recordings and twelve localities. All72 groups and1,440 policy evaluations

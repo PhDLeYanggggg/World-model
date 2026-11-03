@@ -149,5 +149,12 @@ while gaining only 0.027%. No grid point is chosen for deployment. The next
 probe tests whether causal history can predict released future-label support,
 before treating missing-outcome bounds as a learnable cost target.
 
+That [SOURCE probe](outputs/publication_readiness_2026_09/european_source_label_support_v1/protocol.md)
+now has a frozen eighteen-forest design: past geometry versus geometry plus
+past detector history, fitting on the original four SOURCE sites and predicting
+the excluded eight. Future-mask information is a target only, never an input.
+Training/readout are not_run at this registration. This is a label-process
+diagnostic, not a new neural world model or physical-visibility predictor.
+
 The larger goal remains useful neural dynamics backed by reproducible,
 independent evidence. More stages or a lower training loss are not substitutes.
