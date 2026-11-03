@@ -133,6 +133,16 @@ At17:46:50UTC,the second EqMotion fold also completes all three seeds:
 freshly checked. The final three models continue without a budget or endpoint
 change. Held inference and full refit/replay are still pending.
 
+Full training now completes at18:46:12UTC:18/18real TorchCPU models and
+72,000primary optimizer updates. PID78359/session32466 exits0 after
+11,361.552s,peak RSS2,149,498,880bytes. All nine paired families have exactly
+the same training IDs,loss factors,draws and sampler RNG;zero held rows were
+sampled. This completes fitting,not evaluation or a risk gate. Original held
+inference and both full first-job refits/all18predictionreplays come next.
+The unbound plotter's loss axis is corrected to fitting-baseline-relative,
+not necessarily CV-relative; its two scalar-report tests pass0.14s. No active
+training definition,data,budget or model was changed by that label repair.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)

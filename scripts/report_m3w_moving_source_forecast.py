@@ -84,7 +84,7 @@ def figures(analysis,trials):
         matrix=np.array([[next(v['loss'] for v in run if v['step']==s) for s in steps] for run in runs])
         ax.plot(steps,np.median(matrix,axis=0),color=color,label=family+' median of 9 fits')
         ax.fill_between(steps,matrix.min(0),matrix.max(0),color=color,alpha=.14)
-    ax.set_yscale('log');ax.set_xlabel('Optimizer updates');ax.set_ylabel('CV-relative fitting objective (log scale)')
+    ax.set_yscale('log');ax.set_xlabel('Optimizer updates');ax.set_ylabel('Fitting-baseline-relative objective (log scale)')
     ax.set_title('Training loss only; band is run range, not held-data confidence')
     ax.legend(frameon=False);fig.tight_layout();fig.savefig(destination/'training_loss.svg');fig.savefig(previews/'training_loss.png',dpi=170);plt.close(fig)
 
