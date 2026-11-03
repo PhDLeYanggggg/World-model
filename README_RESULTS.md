@@ -128,6 +128,11 @@ count to12/18models and48,000primary updates. Their fitting times are
 checked; the other six EqMotion models continue in the same process. No held
 forecast score,threshold choice or intervention claim has been made.
 
+At17:46:50UTC,the second EqMotion fold also completes all three seeds:
+15/18complete models,60,000primary updates,all15current checkpoint hashes
+freshly checked. The final three models continue without a budget or endpoint
+change. Held inference and full refit/replay are still pending.
+
 ### New-Source Image Overlap
 
 The [full background protocol](outputs/publication_readiness_2026_09/movingdronecrowd_background_v1/protocol.md)
