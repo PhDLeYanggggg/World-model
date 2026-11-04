@@ -87,6 +87,17 @@ are additional. The full18fresh-head task is live asPID27883/session56988,
 without changing the fixed2,000update budget. Current45focused tests pass
 2.75s. No new held-policy outcome is claimed from the pilot or live loss.
 
+The first producer fold now has all6fresh heads/12,000primary updates,with
+their checkpoint hashes freshly checked. Both complete first-job refits
+also finish:the convex scientific state replays exactly,and the original
+unconstrained control is exactly reproduced from fresh full2ktraining.
+The remaining folds continue as the same task. The complete readout/plotter
+is prepared with tests for source-macro usage,empty comparisons and all
+original-budget solver ledgers. The [derivation](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/derivation.md)
+separates elementary curve structure from unproved risk/calibration claims.
+The combined47focused tests pass3.73s;the full report-mutating legacy suite
+is not run as a readonly smoke test. No new held outcome or deployment.
+
 ### Matched Amplitude Cost Learning
 
 The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
