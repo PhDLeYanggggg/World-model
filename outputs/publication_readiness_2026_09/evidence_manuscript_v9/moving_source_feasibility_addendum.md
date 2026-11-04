@@ -272,3 +272,39 @@ addendum; the main v9 PDF has not been recompiled by this task.
 - [Gate separation](../moving_harm_refinement_v1/gate_readout.md)
 - [Fixed-region fitting control](../moving_harm_refinement_v1/fitting_check/readout.md)
 - [Post-decision held costs](../moving_harm_refinement_v1/held_cost_check/readout.md)
+
+## Equal-width shared-context refinement, 4 November
+
+A separate prospectively committed feature comparison retrains 18 local-zero
+and 18 shared-context refiners, both 435 columns and 20 trees, on the same
+frozen neural costs and fitting roles. The added fields are past group motion
+and current crowd geometry, not images or verified camera-motion calibration.
+All 720 primary trees finish before held scoring; six recovery cells and two
+complete refits are exact. The original shared-neural-head negative stays
+negative; this tests a different cost estimator, not a new pooling architecture.
+
+The registered shared-minus-local direct completion-lower effect is -0.05387 pp,
+95% grouped development CI [-0.21678, +0.08149]. The known-label effect is
+-0.04198 pp [-0.20440, +0.09306]. Neither establishes a feature gain. Shared
+worst signed easy-net degradation improves from 2.06315% to 0.90200%, but known
+all/easy positive-harm violations remain 56/67, with complete support in only
+37/348 repeated recording views. There are 54 empty same-count contrasts.
+
+All 54 freshly inferred cost arrays, 108 decision metric blocks and post-decision
+diagnostics replay exactly. The previous 387-column controls reuse hash-bound
+decisions and fresh exact scalar replay, not fresh old-cost inference. Shared
+own-selection H/EH mass ratios improve, but this does not hold held selection
+fixed and cannot establish calibration. The known-label contrast also fails,
+so missing-outcome uncertainty is not the sole explanation. All 162 common-region
+fitting cells and every source remain available.
+
+No deployment or submission-readiness promotion. Original 24-group primary
+remains not estimable; supported 23 groups remain exposed development. Reserved
+Moving sources, DUT calibration and DroneCrowd confirmation remain closed.
+Native 8/12 annotation steps, pixel coordinates and available-label ADE retain
+their prior limitations. Stage5C/SMC are off. This updates source prose only;
+the main v9 PDF is not recompiled by this experiment.
+
+- [Matched feature experiment](../moving_shared_harm_refinement_v1/readout.md)
+- [Failure analysis](../moving_shared_harm_refinement_v1/failure_analysis.md)
+- [Gates and reproducibility](../moving_shared_harm_refinement_v1/gate_readout.md)

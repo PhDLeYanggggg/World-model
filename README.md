@@ -173,16 +173,19 @@ result, not a new neural world model or deployment upgrade.
 [failure analysis](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/failure_analysis.md)
 and [common-selection checks](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/fitting_check/readout.md).
 
-I am now testing whether past/current crowd information helps this cost
+I tested whether past/current crowd information helps this cost
 estimator. The new comparison retrains equal-width local-zero and shared-context
 controls, leaving forecasts, targets, data roles and the 2% requirements fixed.
 All 36 refiners and both complete refits are finished. The complete held
 readout does not establish a feature gain: shared minus local is -0.042 pp
 on known labels, and the direct completion-lower effect is -0.054 pp with a
 95% interval crossing zero. Shared context improves worst signed easy-net
-degradation to 0.90%, but the complete risk contract still fails. Exact replay
-is in progress. This remains development evidence, not a deployment upgrade.
+degradation to 0.90%, but the complete risk contract still fails. All 54 cost
+outputs and 108 decision metric blocks replay exactly. This remains development
+evidence, not a deployment upgrade.
 [Protocol](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/protocol.md).
+[Complete results](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/readout.md)
+and [failure analysis](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/failure_analysis.md).
 
 ## What Has Not Worked
 

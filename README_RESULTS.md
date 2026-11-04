@@ -5,31 +5,58 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Shared Context In Harm Refiners: Full Evaluation Complete, Replay In Progress
+## Shared Context In Harm Refiners: Complete, Feature Gain Not Established
 
-The next controlled experiment asks whether already-admitted past/current crowd
-information improves the now-functional tree cost refiner. Both fresh arms
-have435columns: the common local387 plus either48zeros or48original-C-normalized
-shared fields. The18frozen neural cost heads, candidates, roles, three seeds,
-20trees/arm/job, risk2% and missing-label rules stay fixed. No new trajectory
-or neural model is trained. Prior387refiners are cached-verified secondary
-controls, not the matched primary. All six real2+2versus4round recovery cells
-are exact. All36refiners /720primary trees and both20round full refits are
-complete; all162common-region fitting cells are retained. Training elapsed
-943.77s, peakRSS10.39GB. Complete held evaluation elapsed1020.47s,
-peakRSS8.75GB. All138groupviews and348repeated-recordviews remain.
+4 November: I completed the registered equal-width comparison of local-zero
+and shared-context tree cost refiners. Each has 435 columns: the previous local
+387 plus either 48 zeros or 48 past/current crowd statistics using the original
+C-fitted normalization. Forecasts, 18 frozen neural cost heads, candidate paths,
+three seeds, targets, data roles and the full 2% contract stay fixed.
 
-The registered shared-minus-local completion-lower effect is-0.05387pp,
-95%CI[-0.21678,+0.08149]; known effect-0.04198pp,
-CI[-0.20440,+0.09306]. Neither establishes a feature gain. Shared worst signed
-easy-net degradation is0.90200%, versus2.06315% for the fresh local control,
-but full original support is only37/348 and all/easy positive-harm violations
-are56/67. No deployment. Complete exact replay is running before final reports.
+|Shared minus fresh local control, joint policy|Effect pp|95% grouped development CI|
+|---|---:|---:|
+|Known labels|-0.04198|[-0.20440, +0.09306]|
+|Registered direct completion lower|-0.05387|[-0.21678, +0.08149]|
 
-The [registered protocol](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/protocol.md)
-keeps all23supported groups as exposed development, the original24group primary
-not_estimable, and every unsupported/empty view. Reserved data stay closed;
-Stage5C/SMC remain off. A passed implementation test is not a passed hypothesis.
+The feature hypothesis is not supported. Worst signed easy-net degradation
+improves from 2.06315% to 0.90200%, but this does not replace the other risk
+conditions: shared all/easy positive-harm violations remain 56/67, and only
+37/348 repeated recording views meet the complete contract. The priority
+breakdown is 171 unchanged-path, 51 active-but-unsupported, 70 known-contract
+violating, 19 unknown-completion uncertified and 37 supported views. Empty
+same-count controls remain not estimable in 54/138 group views. No deployment.
+
+Both controls really use their registered inputs: all 18 real pairs match on
+raw inputs, targets, preprocessing, seed and budget. Shared fields are used at
+831 tree split nodes; that is an implementation diagnostic, not causal feature
+importance. Pooled held H/EH ratios are closer to one on shared's own selection,
+but the selected populations differ. This does not prove matched held
+calibration, and the paired known-label result also fails, so missing future
+outcomes alone are not the explanation.
+
+All 36 refiners / 720 primary trees, six recovery cells and two complete refits
+finish. There are 808 observed tree-fitting events including verification fits,
+not new neural trajectory training. All 162 common-region fitting cells are
+retained. All 54 cost outputs, 108 choice metric blocks and post-decision
+diagnostics replay exactly. Prior 387-column controls reuse verified decision
+ledgers with fresh scalar replay; their cost predictions are not freshly
+inferred. Saved-feasibility replay is not bitwise MILP reoptimization.
+
+Actual local phases: pilot 128.15 s, training 943.77 s, evaluation 1,020.47 s,
+replay 365.09 s; peak RSS 10.39 GB. Forty-seven focused tests pass; the historical
+full suite is not run and is not claimed to pass. All four final figure
+previews are checked. No raw data, caches, checkpoints or images enter Git.
+
+All 23 supported source groups remain exposed development; the original
+24-group primary is still not estimable. No independent confirmation, new
+metric/seconds, true-3D, foundation or submission-ready claim. Reserved data
+remain closed; Stage5C/SMC stay off.
+
+[Complete readout](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/gate_readout.md),
+[component/data card](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/model_data_card.md)
+and [Chinese operation guide](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/operation_zh.md).
 
 ## Moving Harm Refinement: Complete, Not Deployed
 

@@ -56,13 +56,17 @@ def figures(summary,fits,taxonomy):
     pub.mkdir(exist_ok=True);preview.mkdir(exist_ok=True)
     plt.rcParams.update({'svg.fonttype':'none','font.size':9})
     fig,axes=plt.subplots(1,2,figsize=(9,3.6))
+    labels={'local_minus_frozen':'Local vs frozen','shared_minus_cached_adaptive_region':'Shared vs prior adaptive',
+        'shared_minus_cached_fixed_region':'Shared vs prior fixed','shared_minus_cached_global':'Shared vs prior global',
+        'shared_minus_frozen':'Shared vs frozen','shared_minus_local':'Shared vs local (primary)'}
     for ax,metric,title in zip(axes,('known_pp','completion_lower_pp'),('Known labels','Completion lower')):
         for i,(name,row)in enumerate(summary['paired'].items()):
             v=row['joint_free'][metric]
             if v['point']is not None:
                 ax.errorbar(v['point'],i,xerr=[[v['point']-v['CI95'][0]],[v['CI95'][1]-v['point']]],fmt='o',capsize=3)
-        ax.axvline(0,color='.5',lw=1);ax.set_yticks(range(len(summary['paired'])),list(summary['paired']))
-        ax.invert_yaxis();ax.set_title(title);ax.set_xlabel('Direct paired gain (pp), grouped95%CI')
+        ax.axvline(0,color='.5',lw=1);ax.set_yticks(range(len(summary['paired'])),[labels[k]for k in summary['paired']])
+        if ax is axes[1]:ax.tick_params(axis='y',labelleft=False)
+        ax.invert_yaxis();ax.set_title(title);ax.set_xlabel('Paired gain (pp), grouped 95% CI')
     fig.suptitle('Registered development contrasts; not independent confirmation',fontsize=10)
     fig.tight_layout();fig.savefig(pub/'paired_effects.svg');fig.savefig(preview/'paired_effects.png',dpi=160);plt.close(fig)
     fig,ax=plt.subplots(figsize=(7.5,3.3))
@@ -70,11 +74,11 @@ def figures(summary,fits,taxonomy):
     for y,key,label in ((0,'known_pp','Known labels'),(1,'completion_lower_pp','Completion lower')):
         r=primary[key]
         ax.errorbar(r['point'],y,xerr=[[r['point']-r['CI95'][0]],[r['CI95'][1]-r['point']]],fmt='o',capsize=4)
-        ax.annotate(f"{r['point']:+.4f} [{r['CI95'][0]:+.4f}, {r['CI95'][1]:+.4f}]pp",
+        ax.annotate(f"{r['point']:+.4f} [{r['CI95'][0]:+.4f}, {r['CI95'][1]:+.4f}] pp",
             (r['point'],y),xytext=(0,14),textcoords='offset points',ha='center',fontsize=8)
     ax.axvline(0,color='.5',lw=1);ax.set_yticks([0,1],['Known labels','Completion lower'])
-    ax.set_ylim(1.55,-.5);ax.set_xlabel('Shared minus fresh435wide local, grouped95% developmentCI (pp)')
-    ax.set_title('Registered primary detail; all23supported exposed source groups')
+    ax.set_ylim(1.55,-.5);ax.set_xlabel('Shared minus fresh 435-wide local, grouped 95% development CI (pp)')
+    ax.set_title('Registered primary detail; all 23 supported exposed source groups')
     fig.tight_layout();fig.savefig(pub/'primary_detail.svg');fig.savefig(preview/'primary_detail.png',dpi=160);plt.close(fig)
     fig,ax=plt.subplots(figsize=(7.5,3.6))
     for arm in run.api.ARMS:
@@ -82,7 +86,8 @@ def figures(summary,fits,taxonomy):
         x=np.asarray([[v['weighted_normalized_harm_MSE']for v in trace]for trace in traces])
         ax.plot(range(1,21),np.median(x,0),label=arm);ax.fill_between(range(1,21),x.min(0),x.max(0),alpha=.12)
     ax.set_yscale('log');ax.set_xlabel('Tree fitting round');ax.set_ylabel('Own-region weighted normalized H/EH MSE')
-    ax.set_title('18fits per arm, median/min-max\nChoice weights differ: loss levels are not matched performance scores')
+    ax.set_xticks([1,5,10,15,20])
+    ax.set_title('18 fits per arm, median/min-max\nChoice weights differ: loss levels are not matched performance scores')
     ax.legend(frameon=False);fig.tight_layout();fig.savefig(pub/'fitting_losses.svg');fig.savefig(preview/'fitting_losses.png',dpi=160);plt.close(fig)
     fig,ax=plt.subplots(figsize=(9,4.8));bottom=np.zeros(len(run.ARMS))
     colors=('#c6c6c6','#87b5d4','#c25857','#d6a153','#397f6b')
@@ -93,7 +98,7 @@ def figures(summary,fits,taxonomy):
         bottom+=values
     ax.set_xticks(range(len(run.ARMS)),run.ARMS,rotation=18,ha='right')
     ax.set_ylabel('Repeated recording views, not independent videos');ax.set_ylim(0,365)
-    ax.set_title('All348views retained; priority partition, original2%contract unchanged')
+    ax.set_title('All 348 views retained; priority partition, original 2% contract unchanged')
     fig.legend(*ax.get_legend_handles_labels(),loc='lower center',ncol=3,frameon=False,fontsize=8)
     fig.subplots_adjust(bottom=.28,left=.09,right=.98,top=.87)
     fig.savefig(pub/'risk_footprint.svg');fig.savefig(preview/'risk_footprint.png',dpi=160);plt.close(fig)
@@ -175,6 +180,10 @@ def main():
         'Resource phases and real durations are in runtime_summary.json. Saved choices are binding/feasibility verified where fresh costs exist; '
         'no bitwise MILP reoptimization is claimed. No new images, independent roles, metric/seconds, true3D, foundation, Stage5C or SMC.\n')
     m=held['shared_motion']['joint_free']['moments'];u=next(r for r in usage if r['arm']=='shared_motion')
+    source_effects=sorted(primary['known_pp']['by_source_group'].items(),key=lambda r:r[1])
+    penalty=primary['known_pp']['point']-primary['completion_lower_pp']['point']
+    feature_mass=np.median([r['importance_mass_by_group']['shared48']for r in matching['rows']if r['arm']=='shared_motion'])
+    shared_nodes=sum(r['shared_split_nodes']for r in matching['rows']if r['arm']=='shared_motion')
     text_once(PUBLIC/'failure_analysis.md',f'''# What the shared-context test does and does not establish
 
 ## Fixed hypothesis and result
@@ -188,6 +197,11 @@ Known shared-minus-local joint effect: {interval(primary['known_pp'])}pp.
 Direct completion lower: {interval(primary['completion_lower_pp'])}pp.
 Robust primary pass: {lower_pass}. A nonpositive lower CI does not establish
 that the unobserved true effect is negative; it fails the registered criterion.
+The mean missing-outcome penalty is{penalty:.6f}pp. The known-label contrast
+also lacks a strictly positive CI, so missing outcomes alone do not explain
+this unsuccessful feature test. Source effects differ: lowest three
+{source.json.dumps(source_effects[:3])}; highest three
+{source.json.dumps(source_effects[-3:])}. All sources remain in the primary.
 
 ## Safety and support remain separate
 
@@ -213,6 +227,21 @@ On H own joint selections, pooled shared actual/predicted H/EH are
 all54Hdiagnostic cells and per-record metrics before attributing a unique cause.
 C/H populations differ. Fitting magnitude repair does not prove held
 calibration; neither pooled ratios nor distance reduction is a safety theorem.
+
+The shared arm actually uses{shared_nodes}shared split nodes, with median across-model
+shared impurity-importance mass{feature_mass:.6f}. The zero control uses none.
+This rules out an ignored-input implementation explanation, not a causal
+feature-contribution claim. All18real pairs share original inputs, targets,
+normalizer, seed and budget. Their learned tree node counts need not be equal.
+
+Shared source-macro known gain over the floor is
+{s['known_accuracy']['shared_motion']['joint_free']['point']:.6f}%, compared
+with{ s['known_accuracy']['local_zero']['joint_free']['point']:.6f}% for local.
+These are groupwise gains over the floor, distinct from the direct paired pp.
+The own-selection pooled H/EH ratios are closer to1than local, but those
+selection populations differ. Do not infer improved matched-region H
+calibration from those numbers. The162Ccommon-region comparison does hold
+selection fixed and shows fitting overshoot for both tree arms.
 
 Legacy crowd_mean_dx/dy fields are current centroid offsets, not shared camera
 velocity. No verified ego-motion, image semantics, metric or raw-video time
