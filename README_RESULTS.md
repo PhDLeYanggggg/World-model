@@ -50,6 +50,18 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Expanded Social Motion Controls
+
+A [separate strong-baseline extension](outputs/publication_readiness_2026_09/moving_social_causal_baselines_v1/protocol.md)
+is defined before its new held scores. It adds9causal common-acceleration
+controls using the neural forecasters' same nearest8past neighbors,and9using
+the extra all-current context. Coefficients are selected on P-fitting sources
+only,then compared to all three frozen EqMotion seeds. The richer inventory
+is not mislabeled as an input-matched architecture effect. This changes no
+current cost floor,role,risk or running continuation. Three synthetic motion,
+future-field and fitting-support checks pass;real baseline scoring is not_run
+at this definition checkpoint.
+
 ### Decoder Signal And Matched Continuation
 
 The [complete fitting-only decoder diagnosis](outputs/publication_readiness_2026_09/moving_decoder_signal_v1/readout.md)
