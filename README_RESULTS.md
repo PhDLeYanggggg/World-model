@@ -37,6 +37,13 @@ serialization exception ended PID31569 with exit1. Their checkpoints are
 preserved. A narrow committed runtime wrapper converts the aggregate event
 prior to a JSON list; scientific files and definitions remain unchanged.
 Resume continues the same full budget, not a new selected trial.
+The first five completed checkpoints pass own-source/normalizer and optimizer
+audits; the first two full pairs also have identical initialization and draws.
+The complete108-model run is still active. Separately, I read the ICML2024
+multi-expert regression deferral paper through its two-stage formulation and
+implemented its logistic loss primitive. Three synthetic equation/masking tests
+pass; real-data fitting of that public control is not_run, not a new result.
+[Public-control implementation note](outputs/publication_readiness_2026_09/moving_joint_harm_v1/public_control_note.md).
 All outputs remain exposed SOURCE development, not independent confirmation.
 The latest read-only CREATE attempt returned an SSH authentication banner and
 then a connection timeout; queue state remains unknown and no job was submitted.

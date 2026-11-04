@@ -25,7 +25,7 @@ def audit():
         if len(state['optimizer']['state']) != 6: raise ValueError('All six parameter tensors must be trained')
         for parameter in state['optimizer']['state'].values():
             if int(parameter['step']) != 2000: raise ValueError('Incomplete optimizer steps')
-        if not all(source.np.isfinite(v).all() for v in state['model'].values()):
+        if not all(source.torch.isfinite(v).all() for v in state['model'].values()):
             raise ValueError('Nonfinite fitted weights')
         key = (r['job'], r['part']); pair = pairs.setdefault(key, {})
         pair[r['arm']] = state
