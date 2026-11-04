@@ -155,17 +155,23 @@ and [failure analysis](outputs/publication_readiness_2026_09/moving_convex_ampli
 This separates a correct structural prior from reliable intervention costs:
 enforcing the right curve shape is not enough to learn the right magnitudes.
 
-I have registered a targeted follow-up: keep the original forecasts and
-reference costs frozen, and compare global, fixed-region and refreshed-region
-tree refinements of the predicted harm costs. It tests whether learning the
-costs of the actions actually selected helps, rather than changing another
-forecast architecture. All54refiners and three complete first-job refits are
-now finished and hash-verified. The complete held matrix finds a small known-
-label advantage for refreshed over fixed weighting (+0.070pp), but its paired
-completion-lower CI crosses zero. Worst signed easy-net degradation is1.37%,
-yet the full positive-harm/support contract still fails. Separate replay is
-running. This is not a new neural model or independent deployment result.
-[Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
+I followed this with 54 small tree refiners that keep the forecasts and
+reference costs frozen. The experiment compares global, fixed-region and
+refreshed-region learning of intervention harm. A same-selection comparison
+confirms that the new estimator corrects much of the extreme fitting error;
+the change is not just avoiding difficult samples.
+
+That does not yet make the controller reliable. Refreshed weighting gains
+0.070 percentage points over fixed weighting on known labels, but the paired
+completion-lower interval still crosses zero. Worst signed easy-net degradation
+is 1.37%, while positive-harm and support requirements still fail. Only 47 of
+348 repeated recording views meet the complete contract. All 72 held cost
+outputs and policy metrics replay exactly. I retain this as a diagnostic
+result, not a new neural world model or deployment upgrade.
+
+[Complete experiment](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/failure_analysis.md)
+and [common-selection checks](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/fitting_check/readout.md).
 
 ## What Has Not Worked
 

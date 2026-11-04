@@ -5,55 +5,54 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Moving Harm Refinement: All54Fits Complete, Evaluation Live
+## Moving Harm Refinement: Complete, Not Deployed
 
-4November: the next fixed experiment compares global, fixed-selection-region
-and refreshed-selection-region upward harm refiners on the same18verified
-amplitude heads.54refiners x20trees, not54neural models. References, causal
-features, data roles, seven trajectory amplitudes and2%requirements remain
-fixed. Primary is refreshed minus fixed region, joint-free paired completion
-lower on the supported23group exposed development matrix. Original24group
-primary remains not estimable. The9real pilot cells pass exact2+2versus4round
-recovery (150.49s, peak10.40GB); the pure-fit full projection is818.60s, not a
-completion claim. Complete54refiner fitting is live, PID33620 verified against
-the heartbeat; no new held scientific score has been read.
-The first16refiners and all three first-job full refits are complete and exact.
-The original training attempt exited1at the9.5GiB resource reserve, after at
-least477.38s; no model crash or new held readout. A precommitted operational
-wrapper resumes the original partial checkpoint with9GiB reserve and the same
-100MiB artifact cap. No scientific budget,2%rule or data role changes. The new
-PID is34279. [Verified numerator/reference decomposition](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/prior_mass_factorization.md).
-The first producer fold is now complete:18refiners/360retained trees, with all
-18checkpoint hashes freshly checked. Remaining folds are still fitting; this
-is not a complete54refiner or held-evaluation result.
-Two producer folds are complete:36refiners/720trees, all checkpoint hashes
-freshly checked. Storage-only transparent compression and three separate
-successful reverifications preserve1,927old public report bytes against HEAD
-or exact members of unchanged committed metric archives. File blocks shrink
-by471,977,984bytes; no raw/cache/checkpoint/unrelated files were touched. This
-is resource engineering, not a model result.27focused tests pass.
-All54refiners/1,080retained primary trees now finish, with all54checkpoint
-hashes freshly checked before held scoring. One unsaved tree was recomputed
-after the resource interruption; three full refits and nine recovery pilots
-add132verification tree fits. The resumed train phase exits0in995.18s,
-peak10.08GB; combined training phase cost is at least1,472.56s, not the resumed
-phase alone. Complete held evaluation is live, PID43491. No primary or safety
-pass is claimed from fitting completion.
-Complete held evaluation exits0after1,543.02s, peak8.58GB. Primary adaptive
-minus fixed, joint-free: known+0.07047pp [0.01397,0.13662], completion lower
-+0.00267pp [-0.14122,0.10866], so the registered robust criterion fails.
-Adaptive worst signed easy-net degradation is1.37061%, but known all/easy
-positive-harm violations remain42/72, selected-easy support is undefined in
-214views, and only47/348repeated recording views meet the full contract.
-Separate72output/decision replay with post-decision cost diagnostics is live,
-PID48718; do not equate the signed-net pass with complete risk certification.
-The310.13s fitting-only16cell-per-job audit completes:72prediction hashes and
-18old scalar blocks exactly match prior receipts. On the original frozen
-choice region, refined H/EH overestimate rather than severely underestimate;
-all16common-region comparisons are retained. No new training or selection.
-The inherited10GiB resource guard stopped one launch before registration or
-fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
-no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
+4 November: all 54 tree refiners and 1,080 retained primary trees are complete,
+using the same 18 frozen neural cost heads, three seeds, seven fixed trajectory
+amplitudes and original 2% contract. This is real tree fitting, not 54 new
+neural models. All fits finish before held scoring; there is no held threshold
+or model selection. One unsaved tree is recomputed after a disk-guard exit;
+nine recovery pilots and three full refits add 132 verification tree fits.
+
+|Adaptive minus fixed region, joint-free|Effect (pp)|Grouped 95% development CI|
+|---|---:|---:|
+|Known labels|+0.07047|[+0.01397, +0.13662]|
+|Registered completion lower|+0.00267|[-0.14122, +0.10866]|
+
+The robust primary fails. Worst signed easy-net degradation is 1.37061%, which
+passes that condition, but known all/easy positive-harm violations remain
+42/72. Only 47/348 repeated recording views meet the complete contract.
+Undefined selected-easy support in 214 views comprises 161 no-path-change views
+and 53 active but unsupported views; these are not all observed harms, nor are
+they empirical risk passes. There are 48 empty same-count contrasts out of 138.
+The source-macro switch rate falls from 70.93% to 5.33%, trading away most
+intervention utility. No deployment or CCF-A readiness is declared.
+
+The 288-cell fitting comparison confirms an estimation change on the original
+fixed choice region, not just a different selected population. All 72 fitting
+prediction hashes and 18 old scalar blocks match. Separate held replay matches
+all 72 cost outputs, original policy metrics and cached controls. Post-decision
+diagnostics leave every prediction and decision hash unchanged. Held adaptive
+H/EH actual-to-predicted mass ratios remain 1.354/1.442; fitting reliability is
+not recording-level held safety. Solver budget stays 0.25 s/query; replay checks
+saved feasibility and bindings, not bitwise MILP reoptimization.
+
+Actual phases: pilot 150.49 s; combined training at least 1,472.56 s including
+the interrupted attempt; fitting diagnosis 310.13 s; evaluation 1,543.02 s;
+replay with cost diagnostics 370.62 s. Some phases overlap. Runtime reservations
+and transparent storage compression do not change the scientific contract.
+All raw data, feature/history/latent caches and checkpoints remain outside Git.
+The original 24-group primary is still not estimable; all 23 supported groups
+are exposed development evidence, not independent confirmation. Native 8/12
+steps and available-label ADE are not verified raw-video seconds or complete
+12-step trajectory ADE. No metric, true-3D or foundation claim; Stage5C/SMC off.
+
+[Readout and all policies](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/failure_analysis.md),
+[fixed-region checks](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/fitting_check/readout.md),
+[held costs](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/held_cost_check/readout.md),
+[model/data card](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/model_data_card.md)
+and [Chinese operation guide](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/operation_zh.md).
 
 ## Working Paper
 

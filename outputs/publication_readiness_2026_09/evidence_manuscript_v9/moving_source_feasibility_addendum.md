@@ -228,3 +228,47 @@ construction is introduced. Stage5C execution and SMC remain disabled.
 - [Matched convex decoder](../moving_convex_amplitude_v1/readout.md)
 - [Convex-decoder failure analysis](../moving_convex_amplitude_v1/failure_analysis.md)
 - [Task-specific shape derivation and limits](../moving_convex_amplitude_v1/derivation.md)
+
+## Harm magnitude repair without deployment certification, 4 November
+
+After the negative convex-decoder comparison, a fixed three-arm study fits
+54 small upward harm refiners on the same 18 frozen amplitude heads. This is
+1,080 retained tree fits, not new neural trajectory training. References,
+forecasts, data roles, amplitudes and the original 2% contract remain fixed.
+Global, fixed-region and refreshed-region arms have matched tree budgets.
+
+The common-region diagnostic rules out a purely selection-based explanation
+for fitting improvement. On the original frozen choice region, adaptive
+actual/predicted H changes 42.7012 to 0.7856 and EH 202.2497 to 0.3729: severe
+underestimation becomes overestimation. All 288 fitting cells are retained;
+72 prediction hashes and 18 original scalar blocks match earlier receipts.
+
+The registered joint-free adaptive-minus-fixed known effect is +0.07047 pp,
+CI [+0.01397, +0.13662]. Its paired completion-lower effect is +0.00267 pp,
+CI [-0.14122, +0.10866], so the robust primary is not passed. Worst signed
+easy-net degradation improves to 1.37061%, but known all/easy positive-harm
+violations remain 42/72. Only 47/348 repeated recording views meet the original
+full contract. Of 214 undefined selected-easy views, 161 have no trajectory
+change and 53 have active but unsupported decisions; neither is reclassified
+as an empirical selected-risk pass. There are 48 empty same-count contrasts.
+
+All 72 held cost outputs and original metrics replay. Post-decision diagnostics
+do not change prediction or allocation hashes. Remaining held pooled H/EH
+underestimation factors are 1.354/1.442, with easy-reference inflation also
+contributing. These averages do not identify a unique shift mechanism or
+replace recording-level checks. The registered 0.25 s/query solve budget is
+retained; saved feasibility replay is not bitwise MILP reoptimization.
+
+The original 24-group primary remains not estimable, and all 23 supported
+groups are exposed development. Completion effects use the fixed observed-
+floor denominator and available-label ADE; they do not reconstruct missing
+steps of partially observed trajectories. No independent confirmation, new
+deployment, dynamics contribution, true-3D/foundation claim, metric scale or
+effective-seconds verification. Stage5C and SMC stay off. This is a source
+addendum; the main v9 PDF has not been recompiled by this task.
+
+- [Full readout](../moving_harm_refinement_v1/readout.md)
+- [Failure analysis and uncertainty](../moving_harm_refinement_v1/failure_analysis.md)
+- [Gate separation](../moving_harm_refinement_v1/gate_readout.md)
+- [Fixed-region fitting control](../moving_harm_refinement_v1/fitting_check/readout.md)
+- [Post-decision held costs](../moving_harm_refinement_v1/held_cost_check/readout.md)
