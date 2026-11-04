@@ -11,6 +11,57 @@ from scripts.report_m3w_moving_amplitude_cost import interval
 source, PUBLIC = run.source, run.PUBLIC
 
 
+def per_source_value(rows, site, kind, metric):
+    values = [r['nonempty_matched'][kind]['contrast'][metric] for r in rows if r['site'] == site]
+    if not values or any(v is None for v in values):
+        return 'NA'
+    return str(float(source.np.mean(values)))
+
+
+def figures(fits, summary):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    np = source.np
+    traces = [r['trace'] for r in fits]
+    steps = np.array([r['step'] for r in traces[0]])
+    if any([r['step'] for r in trace] != steps.tolist() for trace in traces):
+        raise ValueError('Plot every complete registered training trace on its actual update grid')
+    losses = np.array([[r['total'] for r in trace] for trace in traces])
+    plt.rcParams.update({'svg.fonttype': 'none', 'font.size': 9})
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.7))
+    lo, mid, hi = np.quantile(losses, [.1, .5, .9], axis=0)
+    axes[0].fill_between(steps, lo, hi, alpha=.2, color='#35719a', label='10th-90th percentile of fits')
+    axes[0].plot(steps, mid, color='#35719a', label='Median across all108fits')
+    axes[0].set_xlabel('Optimizer updates per model')
+    axes[0].set_ylabel('Own-part normalized training objective')
+    axes[0].legend(fontsize=7)
+    axes[0].set_title('Fitting loss is not validation accuracy', fontsize=9)
+    for y, (kind, metric, label) in enumerate((
+            ('same_data', 'known_pp', 'Same data: known'),
+            ('same_data', 'completion_lower_pp', 'Same data: direct lower'),
+            ('disjoint_data', 'known_pp', 'Disjoint data: known'),
+            ('disjoint_data', 'completion_lower_pp', 'Disjoint data: direct lower'))):
+        r = summary['nonempty_matched'][kind][metric]
+        if r['CI95'] is None:
+            axes[1].text(.03, y, 'NA: a required view is unavailable', fontsize=7,
+                transform=axes[1].get_yaxis_transform())
+        else:
+            axes[1].plot(r['CI95'], [y, y], color='#4f8c70', linewidth=1.5)
+            axes[1].plot(r['point'], y, 'o', color='#4f8c70', markersize=4)
+    axes[1].set_yticks(range(4), ['Same data: known', 'Same data: direct lower', 'Disjoint data: known', 'Disjoint data: direct lower'], fontsize=8)
+    axes[1].set_ylim(3.5, -.5)
+    axes[1].axvline(0, color='.5', lw=1)
+    axes[1].set_xlabel('Veto minus own count/alpha-matched control (pp)')
+    axes[1].set_title('Nested Cdevelopment, not independent test', fontsize=9)
+    fig.tight_layout()
+    public, private = PUBLIC / 'figures', run.PRIVATE / 'figure_previews'
+    public.mkdir(exist_ok=True); private.mkdir(exist_ok=True)
+    fig.savefig(public / 'training_and_validation.svg', metadata={'Date': None})
+    fig.savefig(private / 'training_and_validation.png', dpi=160)
+    plt.close(fig)
+
+
 def main():
     summary = source.read(PUBLIC / 'analysis.json')
     verified = source.read(PUBLIC / 'verification.json')
@@ -94,7 +145,7 @@ def main():
     text_once(PUBLIC / 'per_source.md', '# Every Required Source: Nested Development Only\n\n'
         '|Source|Same-data known pp|Same-data lower pp|Disjoint-data known pp|Disjoint-data lower pp|\n'
         '|---|---:|---:|---:|---:|\n'
-        + '\n'.join('|'+site+'|'+'|'.join(str(summary['nonempty_matched'][k][m].get('by_source_group', {}).get(site, 'NA'))
+        + '\n'.join('|'+site+'|'+'|'.join(per_source_value(rows, site, k, m)
             for k in ('same_data', 'disjoint_data') for m in ('known_pp', 'completion_lower_pp'))+'|' for site in sites)
         + '\n\nNA means a required view was unavailable; do not drop it or report a complete CI.\n')
     gate = source.read(PUBLIC / 'decision.json')
@@ -109,6 +160,7 @@ def main():
         first_full_refit_updates=2000, unique_validation_arrays_each_inference=216,
         required_source_views=276, required_record_views=696, bootstrap_source_units=23,
         original_risk_rules_unchanged=True, source=source.artifact(PUBLIC / 'analysis.json'))))
+    figures(fits, summary)
     print(source.json.dumps(dict(report=str((PUBLIC / 'readout.md').relative_to(ROOT)), decision=gate), indent=2))
 
 

@@ -29,6 +29,12 @@ pilot states match exactly:1200actual pilot updates,72.44s, peakRSS7.068GB,
 observed exit0. The pilot projects8018.83s of primary fitting, not completion.
 Full108head training started locally with PID89603, checkpoint/heartbeat
 every100updates. No new nested validation scores have been read.
+At the13:45UTCcheck, all36heads for the first producer fold are complete
+(72000primary updates). A read-only checkpoint audit confirms their exact
+own-source row IDs/normalizers and2000Adam updates for every optimized
+parameter;18same-data seed pairs share normalization but not initial weights.
+This is partial training evidence, not validation or a complete108model run.
+The nine new-study focused tests pass.
 
 [Prospective definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
 
