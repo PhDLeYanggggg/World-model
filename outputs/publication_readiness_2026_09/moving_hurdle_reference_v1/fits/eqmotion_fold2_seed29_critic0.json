@@ -1,0 +1,373 @@
+{
+  "C_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+  "C_target_sha256": "d4036402c76820dea7047dc02e2c0c4145fbf800939b2d4239669f3f2f45447b",
+  "OOF_metrics": {
+    "direct": {
+      "MAE": 0.026227203104442286,
+      "MSE": 0.0015465106222830114
+    },
+    "event": {
+      "AUPRC": 0.5414997913754864,
+      "AUROC": 0.7050386558026598,
+      "Brier": 0.1895639816817899,
+      "log_loss": 0.5644049751083944,
+      "positive_rate": 0.31897720975099975,
+      "prior_Brier": 0.2332167743797647
+    },
+    "hurdle": {
+      "MAE": 0.02608155345802163,
+      "MSE": 0.0015641410357042718
+    },
+    "inventory": {
+      "known_eligible": 53288,
+      "positive_labels": 18567,
+      "required_rows": 53956,
+      "source_groups": 6,
+      "target": "available_label_positive_easy_reference_not_complete_future_or_physical_safety",
+      "unknown_rows": 668
+    },
+    "prior": {
+      "MAE": 0.02732190712921826,
+      "MSE": 0.001588359420774478
+    }
+  },
+  "OOF_predictions": {
+    "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/oof/eqmotion_fold2_seed29_critic0.npz",
+    "sha256": "92d2e0614196c8e6f252415db3fd7c37d59cebcf516cf45dc6cd95b5572588aa"
+  },
+  "all_inner_models_exclude_their_validation_sources": true,
+  "full_prior": {
+    "event": 0.3189772097509997,
+    "reference": 0.019145572146211896
+  },
+  "inner_folds": {
+    "moving_source_component_047": 1,
+    "moving_source_component_048": 0,
+    "moving_source_component_051": 2,
+    "moving_source_component_052": 1,
+    "moving_source_component_062": 2,
+    "moving_source_component_067": 0
+  },
+  "job": {
+    "critic_fold": 0,
+    "critic_sites": [
+      "moving_source_component_047",
+      "moving_source_component_048",
+      "moving_source_component_051",
+      "moving_source_component_052",
+      "moving_source_component_062",
+      "moving_source_component_067"
+    ],
+    "easy_cut": 12.491606766896991,
+    "evaluation_fold": 1,
+    "evaluation_scope": {
+      "budget": 2000,
+      "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+      "queries": 807,
+      "rows": 71584,
+      "sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "source_query_counts": [
+        39,
+        46,
+        52,
+        72,
+        316,
+        90,
+        134,
+        58
+      ]
+    },
+    "evaluation_sites": [
+      "moving_source_component_053",
+      "moving_source_component_065",
+      "moving_source_component_076",
+      "moving_source_component_077",
+      "moving_source_component_078",
+      "moving_source_component_080",
+      "moving_source_component_082",
+      "moving_source_component_087"
+    ],
+    "fit_scope": {
+      "budget": 2000,
+      "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+      "queries": 806,
+      "rows": 53956,
+      "sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "source_query_counts": [
+        88,
+        25,
+        165,
+        11,
+        490,
+        27
+      ]
+    },
+    "floor_index": 4,
+    "forecast_key": "eqmotion_fold2_seed29",
+    "hard_cut": 61.71788504054353,
+    "key": "eqmotion_fold2_seed29_critic0",
+    "producer_fold": 2,
+    "producer_sites": [
+      "moving_source_component_049",
+      "moving_source_component_055",
+      "moving_source_component_059",
+      "moving_source_component_060",
+      "moving_source_component_066",
+      "moving_source_component_068",
+      "moving_source_component_070",
+      "moving_source_component_073",
+      "moving_source_component_075",
+      "moving_source_component_090"
+    ],
+    "seed": 29
+  },
+  "models": [
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner0_direct.pt.gz",
+        "sha256": "a2a7144dfe656b1b51738c827dea8ca14eeb55649d0e2a6346bb545ed4e207b2"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "d322e01a3f6be633e7ae04cfe183bc38a8cedfa9f0d5768532a2b3f1141df7c3",
+        "prediction_sha256": "f5fb4983f4181890e3b9e3d7f7b0a01af385523babcc1ef29f5ba236410a84d0",
+        "training_loss": 0.0012194074988890673,
+        "tree_nodes": 6252,
+        "trees": 64
+      },
+      "partition": "inner0",
+      "rows": 47285,
+      "seconds": 2.8381572499638423,
+      "task": "direct",
+      "trees": 64
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner0_event.pt.gz",
+        "sha256": "a8d2ec1c2754258b71de52ba6a9006afc44e1dd6a95c453d23b4901e5ce5ddea"
+      },
+      "last_trace": {
+        "loss": "Brier",
+        "model_sha256": "eb3bd4bcdace1d636cb5144a19e629532cf3fc1c4a3dfbad843a6a556ccbaa10",
+        "prediction_sha256": "79e1df7b78208a428c2a2cb600482c4a2a31c567bbc4e0a71ee0135bac84a697",
+        "training_loss": 0.16323323580902258,
+        "tree_nodes": 3342,
+        "trees": 32
+      },
+      "partition": "inner0",
+      "rows": 47285,
+      "seconds": 1.3794152910122648,
+      "task": "event",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner0_positive.pt.gz",
+        "sha256": "d3d46ab3189210685ae4faec11d3ed7f8cce29dce77e36a5b5a83fd7997249a7"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "4a7462e0975103d8dde969000dee813c7f0b39f49e24714cfc099078e3a0a68e",
+        "prediction_sha256": "14640816d317f1c4eb04beb712e9e70f59e4c6d5d3878e31744d3f8f3961ea13",
+        "training_loss": 0.0011649657809411774,
+        "tree_nodes": 2494,
+        "trees": 32
+      },
+      "partition": "inner0",
+      "rows": 17483,
+      "seconds": 0.3769262080313638,
+      "task": "positive",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner1_direct.pt.gz",
+        "sha256": "74d46c841408c8309011dac029b68c041f0840e60ca2903c655bde72f907df5f"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "3969b7c96463130e76f97a3fe8890ebdb3729c158a9cbc9ab1f89bc6016dd1d1",
+        "prediction_sha256": "77e98d5dbb11394fde9f2f6d164df8f643c108762d37d982adbf55bf505f3f72",
+        "training_loss": 0.0013847903952265348,
+        "tree_nodes": 6542,
+        "trees": 64
+      },
+      "partition": "inner1",
+      "rows": 50603,
+      "seconds": 3.0561373750679195,
+      "task": "direct",
+      "trees": 64
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner1_event.pt.gz",
+        "sha256": "56d5cd16a080ed95b4f94ce8f63edc8e16cdd80bdd5ecbea3b0737330af235ba"
+      },
+      "last_trace": {
+        "loss": "Brier",
+        "model_sha256": "858bd53060cc25575ac3b45f154d3de05431762fdd7eb65a82b870d53235c5c3",
+        "prediction_sha256": "320e87a4d72c29a619389b8ab2808b73a747ea025dbfe19d9c694fa98d057cf8",
+        "training_loss": 0.15708197480233527,
+        "tree_nodes": 3408,
+        "trees": 32
+      },
+      "partition": "inner1",
+      "rows": 50603,
+      "seconds": 1.442248292034492,
+      "task": "event",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner1_positive.pt.gz",
+        "sha256": "020f046853121ffdad2f202ca7f5450c0e489c97281dc49e6e878b2e7c466bb1"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "b32ccae6d804dec47d777b18bbbae9ed8fc15acce54d170b6955f03b8a58be40",
+        "prediction_sha256": "3411b9cd347d26482f83551bd658d003d8111fe4d4fb0e0f2dc13d1f24adb898",
+        "training_loss": 0.0015750571043040068,
+        "tree_nodes": 2424,
+        "trees": 32
+      },
+      "partition": "inner1",
+      "rows": 17486,
+      "seconds": 0.37575066601857543,
+      "task": "positive",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner2_direct.pt.gz",
+        "sha256": "a01990a51d0b7f2d9873a2f83c270267d2f3551894be8ff7e010ba1afa6e106b"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "c4bca4f84f6094d166c61e8a2426c4cef7321eae8637cb51705a1043f1efc111",
+        "prediction_sha256": "de28c1c84fd7b275c796e7195e5ff910b58c3680e584a23fa5520d6186835324",
+        "training_loss": 0.00127704617287032,
+        "tree_nodes": 4752,
+        "trees": 64
+      },
+      "partition": "inner2",
+      "rows": 8688,
+      "seconds": 0.4150270828977227,
+      "task": "direct",
+      "trees": 64
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner2_event.pt.gz",
+        "sha256": "b322b3faf34e499298c20c2a768eb58718e7517e02a2092c8a00eea6f68067c0"
+      },
+      "last_trace": {
+        "loss": "Brier",
+        "model_sha256": "eaeb64ac16d1d1b7b6d09aaa80fd2aced8364089794caa8ce0a9561a2959de7a",
+        "prediction_sha256": "ee2d302d8eb894bbf7c4956daf86fbd78333763f175edbc73f18f48e1b8b9875",
+        "training_loss": 0.14109540445560792,
+        "tree_nodes": 2138,
+        "trees": 32
+      },
+      "partition": "inner2",
+      "rows": 8688,
+      "seconds": 0.19327341706957668,
+      "task": "event",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_inner2_positive.pt.gz",
+        "sha256": "3152718bc7b8a8921e38e7638259c2fad0cb22620d5845d3e7c177a511f4a107"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "6fe0ad3187a6853a25db9dac37c26a76d19b3ff29fb59f8d1e5a524fd93b8955",
+        "prediction_sha256": "06434dcdabc6b42faf8f68abf06cfef471e33e57ce2bc4aea3679889481cae5d",
+        "training_loss": 0.001498788533474672,
+        "tree_nodes": 1314,
+        "trees": 32
+      },
+      "partition": "inner2",
+      "rows": 2165,
+      "seconds": 0.05933887499850243,
+      "task": "positive",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_full_direct.pt.gz",
+        "sha256": "7ac3997b91a5b5af6f65f754da668dcb760ed2d9650faa1baae0aedfd2aadd7f"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "e6513a07b8a1306443bb6f770081672d39b37a6de23b59513060b8eaa2bb4cf8",
+        "prediction_sha256": "86eae6c0eb1b0811a71ffe527f2ccc25ee9233f384b0d32e295706c85fd2f04b",
+        "training_loss": 0.0013365015804390592,
+        "tree_nodes": 6556,
+        "trees": 64
+      },
+      "partition": "full",
+      "rows": 53288,
+      "seconds": 3.2385899999644607,
+      "task": "direct",
+      "trees": 64
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_full_event.pt.gz",
+        "sha256": "d36341e70bf78aebcf251a989e92093e8fbec9e34e12d779f63b7ac781da0097"
+      },
+      "last_trace": {
+        "loss": "Brier",
+        "model_sha256": "44633798c0d8c7c9d4c8846c482f56dc581cde8a8c15ddd794f16ab36e96d71a",
+        "prediction_sha256": "7d3c836a9bb608dd4f194adce6c0d6473d974c5bc6f1e84514c296a5dacb35ae",
+        "training_loss": 0.15885658792893714,
+        "tree_nodes": 3464,
+        "trees": 32
+      },
+      "partition": "full",
+      "rows": 53288,
+      "seconds": 1.5308225830085576,
+      "task": "event",
+      "trees": 32
+    },
+    {
+      "checkpoint": {
+        "path": "data/stage_cvpr2027_experiments/moving_hurdle_reference_v1/fits/eqmotion_fold2_seed29_critic0_full_positive.pt.gz",
+        "sha256": "fa201794f276075220b44f60d4bf4ca0ccd04616de447c06735e5e591636a1f4"
+      },
+      "last_trace": {
+        "loss": "normalized_reference_MSE",
+        "model_sha256": "d9680d940001f8d231d9988eb957dfb8144edcbae7341a01b5318cb5b73f1953",
+        "prediction_sha256": "b5a6a4ba31895c1ec2db866fdccc52511919d98885128ac7d7a1e75cf07de168",
+        "training_loss": 0.0014885272333321547,
+        "tree_nodes": 2552,
+        "trees": 32
+      },
+      "partition": "full",
+      "rows": 18567,
+      "seconds": 0.4073687919881195,
+      "task": "positive",
+      "trees": 32
+    }
+  ],
+  "new_held_predictions_before_this_freeze": false,
+  "no_critic_or_global_C_normalizer_in_inputs": true,
+  "selected_by_C_OOF": "direct"
+}
