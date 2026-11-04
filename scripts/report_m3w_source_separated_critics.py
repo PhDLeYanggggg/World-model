@@ -18,6 +18,23 @@ def per_source_value(rows, site, kind, metric):
     return str(float(source.np.mean(values)))
 
 
+def pooled_cost_diagnostics(groups):
+    totals = {}
+    for group in groups:
+        for cell in group['cost_cells']:
+            key = cell['model']+'__'+cell['region']
+            values = totals.setdefault(key, dict(actual=source.np.zeros(5), predicted=source.np.zeros(5), selected_known=0))
+            score = cell['scores']
+            values['actual'] += score['realized_selected_known_moments']
+            values['predicted'] += score['predicted_on_selected_known_moments']
+            values['selected_known'] += score['selected_known']
+    return {k: dict(known_actual_moments=v['actual'].tolist(),
+        predicted_on_exact_same_known_rows=v['predicted'].tolist(), selected_known_repeated_rows=v['selected_known'],
+        actual_over_predicted_H=float(v['actual'][1]/v['predicted'][1]) if v['predicted'][1] > 0 else None,
+        actual_over_predicted_EH=float(v['actual'][4]/v['predicted'][4]) if v['predicted'][4] > 0 else None)
+        for k, v in totals.items()}
+
+
 def figures(fits, summary):
     import matplotlib
     matplotlib.use('Agg')
@@ -75,6 +92,8 @@ def main():
     if len(fits) != 108 or len(groups) != 108 or sum(r['steps'] for r in fits) != 216000:
         raise ValueError('Complete prescribed population and model budget required')
     receipts = {phase: source.read(PUBLIC / (phase+'_execution.json')) for phase in ('pilot', 'train', 'evaluate', 'verify')}
+    interrupted = source.read(PUBLIC / 'interruption_20261104.json') if (PUBLIC / 'interruption_20261104.json').exists() else None
+    primary_fitter_seconds = sum(r['seconds'] for r in fits)
     cfg = source.read(run.previous.teacher.PARENT.CONFIG)
     rows = [r for group in groups for r in group['rows']]
     sites = sorted({r['site'] for r in rows})
@@ -88,6 +107,9 @@ def main():
         full_strategy_known_benefit_lost_pp=decomposition,
         identity='utility = benefit_change + harm_reduction; identical full-strategy denominators only',
         role='posthoc_algebra_not_a_new_policy_or_replacement_primary')))
+    source.once(PUBLIC / 'pooled_cost_diagnostics.json', source.stable(dict(cells=pooled_cost_diagnostics(groups),
+        role='post_readout_repeated_rows_descriptive_not_source_macro_CI_or_calibration',
+        no_new_policy=True, known_rows_identical_between_predicted_and_actual_mass=True)))
     table = ['|Contrast, veto minus its query count/alpha matched control|Known pp [95% CI]|Direct lower pp [95% CI]|Known harm reduction pp, full denominator|',
         '|---|---:|---:|---:|']
     for kind in ('same_data', 'disjoint_data'):
@@ -142,6 +164,21 @@ def main():
         'independent scientific confirmation. No CUDA/MPS claim; native arm64CPU4, '
         'interop1, workers0. Local native8/12annotation order, not verified time, '
         'metric, true3D, foundation or human-gold. Stage5C/SMC remain off.\n')
+    if interrupted:
+        text_once(PUBLIC / 'runtime_recovery.md', '# Interrupted Training: Time Accounting\n\n'
+            f"The original PID{interrupted['previous_pid']} and session{interrupted['previous_session']} "
+            f"were confirmed absent at{interrupted['observation_UTC']}. No exit code or cause "
+            'was observed.71complete models and the step100partial state were retained. '
+            'Same-binding resume continued the saved optimizer/sampler/RNG; no model, '
+            'normalizer, risk rule, threshold or update budget changed.\n\n'
+            f"The train-execution receipt describes only terminal resumed PID{receipts['train']['pid']} "
+            f"and its{receipts['train']['seconds']:.2f}s elapsed time. It is NOT the full "
+            f"interrupted training wall span. Sum of saved primary fitter times:{primary_fitter_seconds:.2f}s. "
+            'The original last-heartbeat elapsed time is6440.0074s, not an exact terminal '
+            'duration. Do not sum overlapping timing definitions or count the unobserved '
+            'wall gap as compute. Pilot1200and first full-refit2000updates are extra. '
+            'Completed primary checkpoints contain exactly216000prescribed updates; '
+            'any unsaved work before termination is unknown, not asserted as zero.\n')
     text_once(PUBLIC / 'per_source.md', '# Every Required Source: Nested Development Only\n\n'
         '|Source|Same-data known pp|Same-data lower pp|Disjoint-data known pp|Disjoint-data lower pp|\n'
         '|---|---:|---:|---:|---:|\n'
@@ -159,7 +196,10 @@ def main():
         fresh_primary_fits=108, primary_optimizer_updates=216000, pilot_updates=1200,
         first_full_refit_updates=2000, unique_validation_arrays_each_inference=216,
         required_source_views=276, required_record_views=696, bootstrap_source_units=23,
-        original_risk_rules_unchanged=True, source=source.artifact(PUBLIC / 'analysis.json'))))
+        original_risk_rules_unchanged=True, primary_saved_fitter_seconds=primary_fitter_seconds,
+        train_execution_is_terminal_resumed_attempt_only=interrupted is not None,
+        previous_training_exit_code_observed=False if interrupted else None,
+        source=source.artifact(PUBLIC / 'analysis.json'))))
     figures(fits, summary)
     print(source.json.dumps(dict(report=str((PUBLIC / 'readout.md').relative_to(ROOT)), decision=gate), indent=2))
 

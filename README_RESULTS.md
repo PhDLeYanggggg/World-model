@@ -35,6 +35,12 @@ own-source row IDs/normalizers and2000Adam updates for every optimized
 parameter;18same-data seed pairs share normalization but not initial weights.
 This is partial training evidence, not validation or a complete108model run.
 The nine new-study focused tests pass.
+At 22:21 UTC the original process and tool session were confirmed absent.
+There were 71 complete models plus a valid step-100 partial checkpoint.
+I resumed the unchanged run from that checkpoint, without repeating completed
+fits. The termination cause and exit code are unknown. The wall-clock gap is
+not training compute time; the final resumed-attempt receipt will be labelled
+separately from saved per-head fitting time.
 
 [Prospective definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
 
