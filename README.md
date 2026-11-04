@@ -133,6 +133,9 @@ the explanation without turning it into a success:
   [-46.62, -5.83]. This does not establish a robust positive effect. The proxy
   is also blind to common translation and cannot replace absolute error or
   the full recording-level risk checks.
+- A complete fitting-side audit finds that clipped inputs account for only
+  0.95% of selected known easy-harm mass. Outliers exist, but this does not
+  support another clipping-map training sweep as the main repair.
 
 The current contract retains the 2% all/easy positive-harm and signed easy-net
 requirements in every required recording, with finite support. A favorable

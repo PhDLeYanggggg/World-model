@@ -50,6 +50,24 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Input Clipping And Fixed-Proposal Feasibility
+
+The [complete clipping audit](outputs/publication_readiness_2026_09/moving_input_clipping_v1/readout.md)
+checks all18fitting jobs and independently replays every scalar. Parent-selected
+rows are99.6067%unclipped;clipped rows contain0.9454%of known EH mass. Outliers
+exist,but this does not support clipping as the main explanation for selected
+harm underprediction. Context/optimization effects are not causally ruled out.
+No clipping-map model is trained. EvaluationPID17777and replayPID17937both
+exit0,about143s each. Three helper tests pass;unknown rows remain included.
+
+A [fixed-proposal feasibility audit](outputs/publication_readiness_2026_09/moving_record_feasibility_v1/protocol.md)
+is now defined. It will check whether any binary neural/floor choice can meet
+the original full finite2%recording contract,using labels only for diagnosis.
+Five synthetic tests cover exact-budget witnesses,non-easy reference not
+subsidizing easy risk,unknowns,zero reference and causal aliases. Real
+feasibility outcomes are not_run at this definition checkpoint. This changes
+no learned input,gate,role,forecast or deployment.
+
 ### Expanded Social Motion Controls
 
 A [separate strong-baseline extension](outputs/publication_readiness_2026_09/moving_social_causal_baselines_v1/protocol.md)
