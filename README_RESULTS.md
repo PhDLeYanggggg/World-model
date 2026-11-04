@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested Cvalidation.
 No new Htest is opened by this decision.
 
-## Source-Separated Neural Critics: Registered, Not Yet Trained
+## Source-Separated Neural Critics: Real Pilot Passed, Training Running
 
 The next controlled model change fits108new point-objective neural cost heads
 on the already registered inner-Cparts:18outer contexts,3parts,2cost seeds.
@@ -24,7 +24,11 @@ same-data/different-seed critics. Controls match each amplitude's count within
 each query, not merely the pooled intervention rate. The fixed primary uses
 the original direct completion-lower contrast and3000source resamples.
 No new Hreadout, official split, certification or deployment is introduced.
-Seven focused tests pass; the true training/resume pilot is next.
+Seven focused tests pass. All6real50->100resumed versus100direct neural
+pilot states match exactly:1200actual pilot updates,72.44s, peakRSS7.068GB,
+observed exit0. The pilot projects8018.83s of primary fitting, not completion.
+Full108head training started locally with PID89603, checkpoint/heartbeat
+every100updates. No new nested validation scores have been read.
 
 [Prospective definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
 
