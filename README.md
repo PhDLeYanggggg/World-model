@@ -160,8 +160,11 @@ reference costs frozen, and compare global, fixed-region and refreshed-region
 tree refinements of the predicted harm costs. It tests whether learning the
 costs of the actions actually selected helps, rather than changing another
 forecast architecture. All54refiners and three complete first-job refits are
-now finished and hash-verified; the full held evaluation is running. This is
-not a new neural model, independent calibration result or deployment upgrade.
+now finished and hash-verified. The complete held matrix finds a small known-
+label advantage for refreshed over fixed weighting (+0.070pp), but its paired
+completion-lower CI crosses zero. Worst signed easy-net degradation is1.37%,
+yet the full positive-harm/support contract still fails. Separate replay is
+running. This is not a new neural model or independent deployment result.
 [Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
 
 ## What Has Not Worked

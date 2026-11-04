@@ -39,6 +39,18 @@ add132verification tree fits. The resumed train phase exits0in995.18s,
 peak10.08GB; combined training phase cost is at least1,472.56s, not the resumed
 phase alone. Complete held evaluation is live, PID43491. No primary or safety
 pass is claimed from fitting completion.
+Complete held evaluation exits0after1,543.02s, peak8.58GB. Primary adaptive
+minus fixed, joint-free: known+0.07047pp [0.01397,0.13662], completion lower
++0.00267pp [-0.14122,0.10866], so the registered robust criterion fails.
+Adaptive worst signed easy-net degradation is1.37061%, but known all/easy
+positive-harm violations remain42/72, selected-easy support is undefined in
+214views, and only47/348repeated recording views meet the full contract.
+Separate72output/decision replay with post-decision cost diagnostics is live,
+PID48718; do not equate the signed-net pass with complete risk certification.
+The310.13s fitting-only16cell-per-job audit completes:72prediction hashes and
+18old scalar blocks exactly match prior receipts. On the original frozen
+choice region, refined H/EH overestimate rather than severely underestimate;
+all16common-region comparisons are retained. No new training or selection.
 The inherited10GiB resource guard stopped one launch before registration or
 fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
 no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
