@@ -140,6 +140,13 @@ and [reproduction guide](outputs/publication_readiness_2026_09/moving_amplitude_
 The next question is why selected harm remains underpredicted on fitting
 sources, not whether another held-threshold sweep can make this result pass.
 
+The [frozen fitting-curve check](outputs/publication_readiness_2026_09/moving_amplitude_shape_v1/readout.md)
+now finds that roughly70% of the supervised amplitude head's repeated fitting
+rows violate positive-harm convexity,although the true-label curves do not.
+This is not a unique cause of failure. I have registered a same-capacity
+constrained-decoder comparison to test it,without changing the risk contract
+or claiming a new convex-network architecture.
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.

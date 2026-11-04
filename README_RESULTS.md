@@ -60,6 +60,25 @@ threshold,data role or reserved outcome access. Four synthetic tests pass
 0.14s;real curve counts are not_run at registration. The old scalar-score
 monotone calibration is not this within-row amplitude-shape diagnosis.
 
+The real diagnostic now completes all36frozen fitting views in188.560475s,
+with separate exact replay in192.850901s,peakRSS9,300,066,304bytes. Every
+original fitting prediction hash matches. True H/EH shape violations are0;
+predicted R/ER span is0. For the supervised amplitude head,822,588/1,171,716
+repeated fitting rows violate H convexity and542,904violate EH convexity.
+Selected H/alpha inversions contain46.847640% of its known selected EH mass;
+EH/alpha inversions contain21.576606%. These are pooled descriptive repeated
+views,not independent risk scores or unique causal attribution.
+[Full shape diagnosis](outputs/publication_readiness_2026_09/moving_amplitude_shape_v1/readout.md).
+
+The [matched convex decoder repair](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/protocol.md)
+is now registered before training. It plans18fresh heads/36,000primary updates
+against18cached_verified original amplitude controls;it does not claim36new
+fits. Inputs,raw capacity/initial parameters,loss,sampling and budgets match.
+Nested nonnegative hinge curves constrain H/EH/non-easy harm;stable hinge
+arithmetic is disclosed,not a precision ablation. Real pilot/training/new
+held outcomes are not_run at registration. Seven combined synthetic tests
+pass1.77s,including shape,gradient,control equality and exact resume checks.
+
 ### Matched Amplitude Cost Learning
 
 The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
