@@ -94,6 +94,16 @@ within critic-fitting sources. Global cost fitting can look reasonable while
 the apparently safest choices are wrong. This makes selection-conditional risk
 learning the next problem to solve, rather than simply adding more motion cues.
 
+An equal-budget follow-up tests stable logit supervision from the same 18
+frozen cost heads. It improves fitting on the old selected cases, but the new
+policy still underestimates harm on its own choices. Its switch rate falls
+from about 70% to 12%, while known utility falls by 9.31 pp against ordinary
+continuation. The paired missing-outcome lower effect is -16.86 pp
+[-27.30,-7.69], and the complete risk contract still fails. I do not deploy it.
+The [matched continuation report](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/readout.md)
+and [failure analysis](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/failure_analysis.md)
+show why improved cost fitting is not the same as safe intervention.
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.

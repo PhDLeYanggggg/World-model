@@ -111,6 +111,29 @@ and checkpoint hash is freshly checked,and the minimum additional query visits
 is24. This is completed real Torch training,not a passed scientific gate.
 The fixed-region fitting audit now runs before any new held-policy readout.
 
+The complete pre-held216-view fitting audit now replays exactly in166.577/
+165.817s. Auxiliary known EH/predicted EH is0.485on the frozen parent's
+selection region but19.827on its own selection region: fixing the old region
+does not calibrate a new selected set. Actual held evaluationPID16720exits0
+in358.364s;separate replayPID17077exits0 in183.093s. All36new cost outputs
+and policy scalars match;solver receipts/feasibility replay without claiming
+bitwise MILP reoptimization.
+
+The [complete matched readout](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/readout.md)
+is negative: fixed joint-free auxiliary-minus-continuation known effect
+-9.3066pp [-15.5876,-3.4391];completion-lower -16.8573pp
+[-27.2972,-7.6909]. The3,000resamples use23supported source groups,notIID
+windows. Joint-free known floor gain falls11.3861%to2.0796%,and switch rate
+69.9956%to11.8629%. Only4/348auxiliary recording views satisfy the original
+risk/support contract,with236all/192easy known violations and145undefined
+completion-easy views. Full-scope same-count utility is not estimable:
+16/138auxiliary views are empty. Empty controls are not safe zeros.
+
+Both generated figures are visually checked. The [failure analysis](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/failure_analysis.md)
+retains precision,selection-region,utility-loss,coverage and independent-role
+limitations. New training completed but no scientific/deployment gate is
+promoted. Stage5Cexecution and SMCremain off.
+
 ### Admitted Moving-Source Forecast Controls
 
 The [complete new-source control](outputs/publication_readiness_2026_09/moving_source_forecast_v1/protocol.md)
