@@ -75,6 +75,19 @@ keeps interpolation,EqMotion and conformal risk control separate from any new
 contribution claim. No existing CRC theorem is asserted for this incomplete
 support,dependent-source experiment. Independent roles remain closed.
 
+The real six-cell pilot now exits0 asPID20317in80.327905s,peakRSS
+9,161,637,888bytes. All50+50/direct100scientific states and paired query draws
+match across all three critic folds. Full-amplitude target/features alignment
+also holds on the actual fitting packets. Projected36-head pure fit cost is
+2,335.683960s before preparation/refits,not completed training. The full36-head
+matrix is now live asPID20580,session95999,with CPU/checkpoint progress observed.
+No new held-policy outcome has been read. A144-view fitting-side audit and
+verified readout/plotter are prepared before that readout. Two extra curve
+tests verify amplitude-independent references and true positive-harm shape;
+no monotonicity or conformal guarantee is imposed on learned outputs.
+The [Chinese operation guide](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/operation_zh.md)
+gives full commands,phase ordering,logs,resume and evidence boundaries.
+
 ### Input Clipping And Fixed-Proposal Feasibility
 
 The [complete clipping audit](outputs/publication_readiness_2026_09/moving_input_clipping_v1/readout.md)
