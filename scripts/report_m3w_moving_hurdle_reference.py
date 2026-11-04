@@ -11,6 +11,47 @@ from scripts.report_m3w_moving_amplitude_cost import interval
 source=run.source;PUBLIC=run.PUBLIC
 
 
+def figures(effects,fits):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    public=PUBLIC/'figures';private=run.PRIVATE/'figure_previews'
+    public.mkdir(exist_ok=True);private.mkdir(exist_ok=True)
+    plt.rcParams.update({'svg.fonttype':'none','font.size':9})
+    names=('direct_minus_prior_MSE_reduction','hurdle_minus_prior_MSE_reduction',
+        'hurdle_minus_direct_MSE_reduction','C_selected_minus_prior_MSE_reduction')
+    labels=('Direct vs prior','Hurdle vs prior','Hurdle vs direct','C-selected vs prior')
+    fig,axes=plt.subplots(1,2,figsize=(9,3.7),gridspec_kw={'width_ratios':[1.5,1]})
+    for y,name in enumerate(names):
+        r=effects[name]
+        if r['CI95']is not None:axes[0].errorbar(r['point'],y,xerr=[[r['point']-r['CI95'][0]],
+            [r['CI95'][1]-r['point']]],fmt='o',capsize=3)
+        else:axes[0].text(0,y,'not estimable')
+    axes[0].set_yticks(range(4),labels);axes[0].invert_yaxis();axes[0].set_title('Normalized ER prediction')
+    r=effects['event_minus_prior_Brier_reduction']
+    if r['CI95']is not None:axes[1].errorbar(r['point'],0,xerr=[[r['point']-r['CI95'][0]],
+        [r['CI95'][1]-r['point']]],fmt='o',capsize=3)
+    else:axes[1].text(0,0,'not estimable')
+    axes[1].set_yticks([0],['Event vs prior']);axes[1].set_ylim(-.7,.7);axes[1].set_title('Support-event Brier')
+    for ax in axes:
+        ax.axvline(0,color='.5',lw=1);ax.set_xlabel('Loss reduction; positive is better')
+        ax.ticklabel_format(axis='x',style='sci',scilimits=(-2,2))
+    fig.suptitle('Grouped 95% development CI, not trajectory gain or risk certification',fontsize=10)
+    fig.tight_layout();fig.savefig(public/'prediction_effects.svg');fig.savefig(private/'prediction_effects.png',dpi=160);plt.close(fig)
+    fig,axes=plt.subplots(1,3,figsize=(10,3.3))
+    for ax,task,title in zip(axes,run.api.TASKS,('Direct reference MSE','Event Brier','Conditional positive MSE')):
+        traces=[]
+        for r in fits:
+            item=next(m for m in r['models']if m['partition']=='full'and m['task']==task)
+            traces.append(run.api.base.read_checkpoint(source.checked(item['checkpoint']))['trace'])
+        values=np.array([[r['training_loss']for r in rows]for rows in traces]);steps=[r['trees']for r in traces[0]]
+        ax.plot(steps,np.median(values,axis=0));ax.fill_between(steps,values.min(0),values.max(0),alpha=.15)
+        ax.set_title(title);ax.set_xlabel('Trees');ax.set_yscale('symlog',linthresh=1e-10)
+        ax.set_ylabel('Own-task fitting loss');ax.set_xticks([steps[0],steps[-1]])
+    fig.suptitle('18 full-C fits per task; different targets/weights are not comparable loss scales',fontsize=10)
+    fig.tight_layout();fig.savefig(public/'training_losses.svg');fig.savefig(private/'training_losses.png',dpi=160);plt.close(fig)
+
+
 def main():
     freeze=source.read(PUBLIC/'training_freeze.json');ev=source.read(PUBLIC/'evaluation.json');verified=source.read(PUBLIC/'verification.json')
     oof=source.read(PUBLIC/'oof_verification/verification.json')
@@ -166,6 +207,7 @@ OOF复核要核对216个模型的来源、样本、输入、标签、权重及10
 安全，不得把概率当逐录像支持保证。旧策略、原2%要求、独立保留数据用途不变。
 未启用Stage5C/SMC，没有metric/seconds/true3D/foundation声明。
 ''')
+    figures(effects,fits)
     print(source.json.dumps(dict(decision=decision,selection_counts=selected,primary=mean_effect),sort_keys=True))
 
 

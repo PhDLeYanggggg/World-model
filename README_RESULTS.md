@@ -16,8 +16,9 @@ Nine real16-tree direct/resumed pilot cells agree exactly, across all three
 critic folds. Pilot elapsed48.49s, peakRSS9.47GB. Full216forest training is
 complete locally:216forests /9216primary trees,535.30s, peakRSS9.56GB.
 The source-OOF choices are16direct and2hurdle, none prior. All candidates and
-the three complete first-job refits are retained. C-OOF replay comes before
-new H prediction; no policy changes or deployment claims exist yet.
+the three complete first-job refits are retained. All216actual fitting
+source/feature/target/weight bindings and108OOF arrays replay exactly. New H
+prediction is now running; no policy changes or deployment claims exist yet.
 
 [Frozen study definition](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/protocol.md).
 
