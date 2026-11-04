@@ -23,6 +23,9 @@ least477.38s; no model crash or new held readout. A precommitted operational
 wrapper resumes the original partial checkpoint with9GiB reserve and the same
 100MiB artifact cap. No scientific budget,2%rule or data role changes. The new
 PID is34279. [Verified numerator/reference decomposition](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/prior_mass_factorization.md).
+The first producer fold is now complete:18refiners/360retained trees, with all
+18checkpoint hashes freshly checked. Remaining folds are still fitting; this
+is not a complete54refiner or held-evaluation result.
 The inherited10GiB resource guard stopped one launch before registration or
 fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
 no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
