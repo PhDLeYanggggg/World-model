@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Shared Context In Harm Refiners: Full Training In Progress
+## Shared Context In Harm Refiners: All Fits Frozen Before Held Evaluation
 
 The next controlled experiment asks whether already-admitted past/current crowd
 information improves the now-functional tree cost refiner. Both fresh arms
@@ -14,8 +14,9 @@ shared fields. The18frozen neural cost heads, candidates, roles, three seeds,
 20trees/arm/job, risk2% and missing-label rules stay fixed. No new trajectory
 or neural model is trained. Prior387refiners are cached-verified secondary
 controls, not the matched primary. All six real2+2versus4round recovery cells
-are exact. Pilot elapsed128.15s, peakRSS9.70GB; the complete36refiner training
-is now active locally. No new held outcomes exist yet.
+are exact. All36refiners /720primary trees and both20round full refits are
+complete; all162common-region fitting cells are retained. Training elapsed
+943.77s, peakRSS10.39GB. No new held outcomes exist yet.
 
 The [registered protocol](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/protocol.md)
 keeps all23supported groups as exposed development, the original24group primary

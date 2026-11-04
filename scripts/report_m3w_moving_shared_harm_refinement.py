@@ -21,6 +21,33 @@ def aggregate_costs(values):
         **factorization(actual,predicted))
 
 
+def matching_and_features(fits):
+    rows=[];models={}
+    for receipt in fits:
+        state=run.api.base.read_checkpoint(source.checked(receipt['checkpoint']))
+        models[receipt['job']['key'],receipt['arm']]=state
+        importance=np.sum([tree.feature_importances_ for tree in state['trees']],axis=0)
+        groupings=dict(local380=slice(0,380),current_cost5=slice(380,385),amplitude=slice(385,386),
+            log_query_size=slice(386,387),shared48=slice(387,435))
+        total=importance.sum()
+        feature_nodes=np.concatenate([t.tree_.feature for t in state['trees']])
+        shared_nodes=int((feature_nodes>=387).sum())
+        if receipt['arm']=='local_zero'and shared_nodes:raise ValueError('Constant zero controls cannot split on shared fields')
+        rows.append(dict(job=receipt['job']['key'],arm=receipt['arm'],tree_nodes=receipt['actual_tree_nodes'],
+            shared_split_nodes=shared_nodes,importance_mass_by_group={k:float(importance[ix].sum()/total)
+                if total>0 else None for k,ix in groupings.items()},
+            impurity_diagnostic_not_causal_feature_contribution=True))
+    jobs={r['job']['key']for r in fits}
+    if len(fits)!=36 or len(jobs)!=18 or len(models)!=36:raise ValueError('All18fresh matched pairs required')
+    for job in jobs:
+        local,shared=(models[job,a]for a in run.api.ARMS)
+        for key in ('identity','seed','settings','preprocess','frozen_prediction_sha256','fit_ids_sha256',
+                'raw_feature_sha256','truth_sha256','legal_sha256','feature_dimension','feature_schema','legal_pairs','queries'):
+            run.api.base.exact(local[key],shared[key])
+    return dict(all18real_pairs_same_raw_inputs_targets_normalizer_seed_budget=True,rows=rows,
+        learned_node_counts_not_parameter_exact=True)
+
+
 def figures(summary,fits,taxonomy):
     import matplotlib
     matplotlib.use('Agg')
@@ -38,6 +65,17 @@ def figures(summary,fits,taxonomy):
         ax.invert_yaxis();ax.set_title(title);ax.set_xlabel('Direct paired gain (pp), grouped95%CI')
     fig.suptitle('Registered development contrasts; not independent confirmation',fontsize=10)
     fig.tight_layout();fig.savefig(pub/'paired_effects.svg');fig.savefig(preview/'paired_effects.png',dpi=160);plt.close(fig)
+    fig,ax=plt.subplots(figsize=(7.5,3.3))
+    primary=summary['paired']['shared_minus_local']['joint_free']
+    for y,key,label in ((0,'known_pp','Known labels'),(1,'completion_lower_pp','Completion lower')):
+        r=primary[key]
+        ax.errorbar(r['point'],y,xerr=[[r['point']-r['CI95'][0]],[r['CI95'][1]-r['point']]],fmt='o',capsize=4)
+        ax.annotate(f"{r['point']:+.4f} [{r['CI95'][0]:+.4f}, {r['CI95'][1]:+.4f}]pp",
+            (r['point'],y),xytext=(0,14),textcoords='offset points',ha='center',fontsize=8)
+    ax.axvline(0,color='.5',lw=1);ax.set_yticks([0,1],['Known labels','Completion lower'])
+    ax.set_ylim(1.55,-.5);ax.set_xlabel('Shared minus fresh435wide local, grouped95% developmentCI (pp)')
+    ax.set_title('Registered primary detail; all23supported exposed source groups')
+    fig.tight_layout();fig.savefig(pub/'primary_detail.svg');fig.savefig(preview/'primary_detail.png',dpi=160);plt.close(fig)
     fig,ax=plt.subplots(figsize=(7.5,3.6))
     for arm in run.api.ARMS:
         traces=[run.api.base.read_checkpoint(source.checked(r['checkpoint']))['trace']for r in fits if r['arm']==arm]
@@ -68,6 +106,7 @@ def main():
         raise ValueError('Complete all fits, all held outcomes and exact replay before readout')
     fits=[source.read(source.checked(ref))for ref in freeze['fits']]
     for r in fits:source.checked(r['checkpoint'])
+    matching=matching_and_features(fits)
     for arm in run.api.ARMS:
         if not source.read(PUBLIC/('full_refit_'+arm+'.json'))['exact']:raise ValueError('Both complete refits required')
     records=[row for ref in s['group_receipts']for row in source.read(source.checked(ref))['rows']]
@@ -106,6 +145,7 @@ def main():
             if p.is_file()and 'figure_previews'not in p.parts))
     for name,value in (('decision.json',decision),('runtime_summary.json',runtime),('fitting_summary.json',fitting),
             ('held_cost_summary.json',held),('policy_usage.json',usage),('risk_taxonomy.json',taxonomy),
+            ('matching_and_feature_usage.json',matching),
             ('secondary_metrics.json',secondary_intervals(records,source.read(run.parent.CONFIG)))):
         source.once(PUBLIC/name,source.stable(value))
     fmt=lambda x:'undefined'if x is None else f'{x:.6f}'
