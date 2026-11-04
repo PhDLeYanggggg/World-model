@@ -38,22 +38,30 @@ def scientific_decision(summary):
         submission_ready=False, stage5c_executed=False, smc_enabled=False)
 
 
-def cost_diagnostics(receipts):
+def pooled_moments(cells):
+    if len(cells) != 18:
+        raise ValueError('Every fixed model/region combination needs all 18 jobs')
+    actual = np.sum([c['realized_selected_known_moments'] for c in cells], axis=0)
+    estimate = np.sum([c['predicted_on_selected_known_moments'] for c in cells], axis=0)
+    ratios = {name: float(a/b) if b > 0 else None
+        for name, a, b in zip(('B', 'H', 'R', 'ER', 'EH'), actual, estimate)}
+    return dict(known_actual_over_predicted=ratios,
+        known_selected_rows=sum(c['selected_known'] for c in cells),
+        unknown_selected_rows=sum(c['selected_unknown'] for c in cells))
+
+
+def cost_diagnostics(receipts, *, fitting=False):
     rows = []
-    for model in ('frozen_teacher', 'adaptive'):
-        for region in ('frozen_teacher', 'adaptive', 'shared_tree'):
-            cells = [cell['scores'] for receipt in receipts for cell in receipt['fixed_region_cost_diagnostics']
+    models = ('frozen_teacher', 'adaptive_selection') if fitting else ('frozen_teacher', 'adaptive')
+    regions = models if fitting else ('frozen_teacher', 'adaptive', 'shared_tree')
+    key = 'C_region_cells' if fitting else 'fixed_region_cost_diagnostics'
+    role = 'C_supervised_fitting_independent_choices' if fitting else 'H_exposed_development_joint_free_choices'
+    for model in models:
+        for region in regions:
+            cells = [cell['scores'] for receipt in receipts for cell in receipt[key]
                 if cell['model'] == model and cell['region'] == region]
-            if len(cells) != 18:
-                raise ValueError('Every fixed model/region combination needs all 18 held jobs')
-            actual = np.sum([c['realized_selected_known_moments'] for c in cells], axis=0)
-            estimate = np.sum([c['predicted_on_selected_known_moments'] for c in cells], axis=0)
-            ratios = {name: float(a/b) if b > 0 else None
-                for name, a, b in zip(('B', 'H', 'R', 'ER', 'EH'), actual, estimate)}
-            rows.append(dict(model=model, region=region, known_actual_over_predicted=ratios,
-                known_selected_rows=sum(c['selected_known'] for c in cells),
-                unknown_selected_rows=sum(c['selected_unknown'] for c in cells),
-                role='post_choice_pooled_repeated_row_mass_diagnostic_not_CI_or_calibration'))
+            rows.append(dict(model=model, region=region, **pooled_moments(cells),
+                role=role + '_pooled_repeated_row_mass_not_CI_or_calibration'))
     return rows
 
 
@@ -136,9 +144,12 @@ def main():
         raise ValueError('Retain every supported source view')
     decision = scientific_decision(summary)
     diagnostics = cost_diagnostics(receipts)
+    fitting_diagnostics = cost_diagnostics([source.read(source.checked(r)) for r in freeze['fits']], fitting=True)
     solver = solver_diagnostics(receipts)
     source.once(PUBLIC / 'decision.json', source.stable(decision))
     source.once(PUBLIC / 'cost_diagnostics.json', source.stable(diagnostics))
+    source.once(PUBLIC / 'fitting_cost_diagnostics.json', source.stable(dict(rows=fitting_diagnostics,
+        comparison_warning='C_independent_and_H_joint_differ_in_both_population_and_decoder_not_an_isolated_domain_shift_test')))
     source.once(PUBLIC / 'solver_diagnostics.json', source.stable(solver))
     source.once(PUBLIC / 'secondary_metrics.json', source.stable(secondary_intervals(records, source.read(run.run.teacher.PARENT.CONFIG))))
     zero = {arm: dict(known_zero_CV_rows=sum(r['zero_CV_diagnostic'][arm]['known_zero_CV_rows'] for r in records),
@@ -151,6 +162,8 @@ def main():
         primary_optimizer_updates=36000, nominal_pilot_optimizer_updates=1500,
         full_refit_optimizer_updates=4000, new_trajectory_training=False,
         phase_seconds_measurement='time.monotonic_elapsed_not_CPU_time_or_guaranteed_wall_clock_interval',
+        failed_preallocation_evaluation_pid=74361, failed_preallocation_evaluation_exit_code=1,
+        failed_preallocation_cost_arrays_inferred=3, failed_call_adaptive_choices_or_label_scores=0,
         cached_frozen_teacher_controls=18, cached_original_point_controls=18))
     table = ['|Adaptive joint-free versus|Known utility pp [95%CI]|Direct completion-lower pp [95%CI]|', '|---|---:|---:|']
     for arm in ('point', 'shared_tree', 'frozen_teacher'):
@@ -189,6 +202,8 @@ def main():
         'All 348 repeated recording views, four policies, original 2% positive-harm/support and signed-net '
         'condition remains. Empty same-count utility stays NA. Known-label and bounded-completion '
         'estimands are separate. Cost ratios/zero-CVcounts are supplementary diagnostics, not model selection. '
+        'The Cdiagnostic uses independent choices, while the Hdiagnostic uses joint-free choices; '
+        'their difference mixes population and decoder changes, not isolated domain shift. '
         'All 23 supported groups are exposed development, not independent tests or verified IID scenes. '
         'Reserved 20 Moving groups, DUT and DroneCrowd confirmation remain closed.\n\n'
         'No new trajectory model, metric/seconds/physical-safety/true3D/foundation/human-gold claim. '

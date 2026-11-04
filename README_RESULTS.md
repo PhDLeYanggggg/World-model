@@ -30,6 +30,11 @@ lower -9.24427pp [-15.04626,-4.25927]. Complete risk support is14/348, with251
 known all-risk and249easy-risk violations; worst signed easy-net degradation
 is309.59%. It is not deployed. These are exposed-development contrasts, not
 independent confirmation or relative-percent improvements.
+That worst defined view contains only2easy windows. Its saved reference mass
+and signed fraction imply a20.75pixel increase in mean available-label ADE
+across those windows, so this is sparse support and real error, not just a
+rounding-scale denominator artifact. The case remains in scope.
+[Denominator context](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/denominator_context.md).
 
 The adaptive evaluator's first call exited before allocation/scoring at a
 hash-serialization mismatch. The solver binding serializes(shape,dtype),

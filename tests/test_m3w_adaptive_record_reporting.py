@@ -1,6 +1,6 @@
 from copy import deepcopy
 import pytest
-from scripts.report_m3w_moving_adaptive_record_cost import scientific_decision, validate_solver_metadata
+from scripts.report_m3w_moving_adaptive_record_cost import scientific_decision, validate_solver_metadata, pooled_moments
 
 
 def summary():
@@ -42,3 +42,14 @@ def test_solver_fallback_counts_are_retained_not_claimed_all_optimal():
     meta['reason_counts']['joint_free']['solver_status_1_parent_fallback'] = 0
     with pytest.raises(ValueError):
         validate_solver_metadata(meta)
+
+
+def test_pooled_moment_ratios_do_not_invent_missing_denominators_or_drop_jobs():
+    cell = dict(realized_selected_known_moments=[2., 4., 6., 0., 2.],
+        predicted_on_selected_known_moments=[1., 2., 3., 0., 1.], selected_known=10, selected_unknown=1)
+    result = pooled_moments([cell]*18)
+    assert result['known_actual_over_predicted']['H'] == 2.
+    assert result['known_actual_over_predicted']['ER'] is None
+    assert result['unknown_selected_rows'] == 18
+    with pytest.raises(ValueError):
+        pooled_moments([cell]*17)
