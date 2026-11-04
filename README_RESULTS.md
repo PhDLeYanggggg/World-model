@@ -110,6 +110,12 @@ curve counts are0,but own-region known H/predH is40.662441and EH/predEH
 245.059453. Shape correctness therefore does not demonstrate calibrated
 magnitudes or safety. The complete fixed held evaluation is next;no new
 held result or deployment is claimed at this checkpoint.
+Complete held evaluation now runs asPID29951/session52795. All18control
+weights retain cached provenance,with fresh exact control predictions and
+scalars checked against the parent;new constrained allocations use the
+original0.25s/query budget. No partial group is used to select a model.
+The reporter distinguishes zero predicted positive actual cost from an empty
+mass ratio. Current48focused tests pass3.08s;full legacy suite remains not_run.
 
 ### Matched Amplitude Cost Learning
 
