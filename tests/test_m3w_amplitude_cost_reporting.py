@@ -1,4 +1,5 @@
 import json
+import numpy as np
 import pytest
 from scripts import report_m3w_moving_amplitude_cost as report
 
@@ -35,3 +36,23 @@ def test_fitting_summary_requires_all18views_and_preserves_unknown_denominators(
     rows.pop();(p/'analysis.json').write_text(json.dumps(dict(rows=rows)))
     with pytest.raises(ValueError,match='All18'):
         report.fitting_summary()
+
+
+def test_all_solver_receipts_and_fixed_budget_are_required(tmp_path,monkeypatch):
+    monkeypatch.setattr(report,'PRIVATE',tmp_path)
+    p=tmp_path/'allocation';p.mkdir()
+    jobs=[f'job{i}'for i in range(18)]
+    meta=dict(bindings=dict(seconds=.25),completed_queries=3,
+        reason_counts=dict(joint_free=dict(exact_milp=2,solver_status_1_parent_fallback=1),
+            joint_matched=dict(unconstrained_optimum_feasible=3)),
+        nonoptimal_queries=dict(joint_free=1),changed_queries=dict(joint_free=2))
+    for arm in ('binary_only','amplitude_bank','amplitude_bank_binary_deploy'):
+        for job in jobs:
+            np.savez_compressed(p/(job+'_'+arm+'.npz'),metadata_json=np.asarray(json.dumps(meta)))
+    rows=report.solver_summary(jobs)
+    assert len(rows)==54
+    assert sum(r['nonoptimal_queries']['joint_free']for r in rows)==54
+    meta['bindings']['seconds']=.5
+    np.savez_compressed(p/'job0_binary_only.npz',metadata_json=np.asarray(json.dumps(meta)))
+    with pytest.raises(ValueError,match='original-budget'):
+        report.solver_summary(jobs)

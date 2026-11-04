@@ -93,6 +93,16 @@ every saved checkpoint hash is freshly checked. Both first-job full2krefits
 are exact. Remaining producer folds continue under the same live task;this
 checkpoint is not the complete36-head matrix or a held-performance result.
 
+The whole36-head matrix now completes with observed exit0:PID20580,
+3,025.522778s,peakRSS8,712,224,768bytes. All72,000fresh primary updates and
+both first-job full2krefits finish;all18paired initial states/samplers/draws
+match. Every36receipt/checkpoint hash is freshly checked;minimum complete
+query visits25. No warm or pilot updates are recounted as primary work.
+The fitting-side144-view audit is now live asPID23972/session81003before
+new held policy readout. Solver-fallback accounting is also implemented before
+that readout,so predicted-feasible parent fallback is not mislabeled as an
+exact optimum or real safety. Scientific results are still not_run.
+
 ### Input Clipping And Fixed-Proposal Feasibility
 
 The [complete clipping audit](outputs/publication_readiness_2026_09/moving_input_clipping_v1/readout.md)

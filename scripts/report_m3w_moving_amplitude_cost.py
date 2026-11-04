@@ -65,6 +65,27 @@ def fitting_summary():
     return rows
 
 
+def solver_summary(jobs):
+    if len(set(jobs))!=18:
+        raise ValueError('All18held job identities required')
+    records=[]
+    for arm in ('binary_only','amplitude_bank','amplitude_bank_binary_deploy'):
+        for job in sorted(set(jobs)):
+            path=PRIVATE/'allocation'/(job+'_'+arm+'.npz')
+            if not path.exists():
+                raise ValueError('All54complete solver receipts required')
+            with np.load(path,allow_pickle=False)as cache:
+                meta=json.loads(str(cache['metadata_json']))
+            if (meta['bindings']['seconds']!=.25 or meta['completed_queries']<=0
+                    or any(sum(meta['reason_counts'][p].values())!=meta['completed_queries']
+                        for p in ('joint_matched','joint_free'))):
+                raise ValueError('Complete original-budget solver counts required')
+            records.append(dict(job=job,arm=arm,queries=meta['completed_queries'],
+                reason_counts=meta['reason_counts'],nonoptimal_queries=meta['nonoptimal_queries'],
+                changed_queries=meta['changed_queries'],receipt_sha256=sha(path)))
+    return records
+
+
 def figures(summary,fits):
     import matplotlib
     matplotlib.use('Agg')
@@ -124,7 +145,9 @@ def main():
         records.extend(read(ROOT/ref['path'])['rows'])
     if len(records)!=138:
         raise ValueError('Complete supported group matrix required')
-    fit=fitting_summary();use=usage(records);figures(summary,fits)
+    fit=fitting_summary();use=usage(records)
+    solvers=solver_summary({r['job']['key']for r in fits})
+    figures(summary,fits)
     primary=summary['primary_amplitude_minus_binary']['joint_free']
     same=summary['shared_weight_deployment_contrast']['joint_free']
     lines=['# Matched Amplitude-Conditioned Cost Learning','','## Material Passport','',
@@ -184,7 +207,21 @@ def main():
         values=['not estimable'if r[k]is None else f'{r[k]:.4f}'for k in ('H_over_predicted_H','EH_over_predicted_EH')]
         lines.append(f"| {r['arm']} | {r['region']} | {values[0]} | {values[1]} |")
     train,evaluate,replay=(read(PUBLIC/(p+'_execution.json'))for p in ('train','evaluate','verify'))
-    lines+=['','## Execution And Limits','',
+    lines+=['','## Solver Completion And Fallback','',
+        '| Deployment arm | Repeated query views | Nonoptimal matched solves | Nonoptimal free solves | Free choices changed from independent |',
+        '|---|---:|---:|---:|---:|']
+    for arm in ('binary_only','amplitude_bank','amplitude_bank_binary_deploy'):
+        rows=[r for r in solvers if r['arm']==arm]
+        total=sum(r['queries']for r in rows)
+        matched=sum(r['nonoptimal_queries'].get('joint_matched',0)for r in rows)
+        free=sum(r['nonoptimal_queries'].get('joint_free',0)for r in rows)
+        changed=sum(r['changed_queries'].get('joint_free',0)for r in rows)
+        lines.append(f'| {arm} | {total} | {matched} | {free} | {changed} |')
+    lines+=['','These queries repeat sources/producer/seed contexts. Timeout or failed',
+        'post-check retains the independent parent feasible under predicted',
+        'budgets; this is not an empirical safety pass or proof of an exact',
+        'joint optimum. Complete reason counts remain in `solver_summary.json`.','',
+        '## Execution And Limits','',
         f"Training/refits: {train['seconds']:.3f} s, peak RSS {train['peak_RSS_bytes']:,} bytes.",
         f"Held evaluation: {evaluate['seconds']:.3f} s; separate replay: {replay['seconds']:.3f} s.",
         'Native arm64 CPU4/interop1/workers0, atomic checkpoints and exact resume.',
@@ -202,6 +239,7 @@ def main():
     (PUBLIC/'readout.md').write_text('\n'.join(lines)+'\n')
     (PUBLIC/'fitting_summary.json').write_text(json.dumps(dict(rows=fit),indent=2,sort_keys=True,allow_nan=False)+'\n')
     (PUBLIC/'policy_usage.json').write_text(json.dumps(dict(rows=use),indent=2,sort_keys=True,allow_nan=False)+'\n')
+    (PUBLIC/'solver_summary.json').write_text(json.dumps(dict(rows=solvers),indent=2,sort_keys=True,allow_nan=False)+'\n')
 
 
 if __name__=='__main__':
