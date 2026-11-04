@@ -159,7 +159,8 @@ I have registered a targeted follow-up: keep the original forecasts and
 reference costs frozen, and compare global, fixed-region and refreshed-region
 tree refinements of the predicted harm costs. It tests whether learning the
 costs of the actions actually selected helps, rather than changing another
-forecast architecture. Fitting and evaluation are not yet complete; this is
+forecast architecture. All54refiners and three complete first-job refits are
+now finished and hash-verified; the full held evaluation is running. This is
 not a new neural model, independent calibration result or deployment upgrade.
 [Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
 

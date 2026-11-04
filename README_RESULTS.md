@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Moving Harm Refinement: Recovery Verified, Complete Fitting Live
+## Moving Harm Refinement: All54Fits Complete, Evaluation Live
 
 4November: the next fixed experiment compares global, fixed-selection-region
 and refreshed-selection-region upward harm refiners on the same18verified
@@ -32,6 +32,13 @@ successful reverifications preserve1,927old public report bytes against HEAD
 or exact members of unchanged committed metric archives. File blocks shrink
 by471,977,984bytes; no raw/cache/checkpoint/unrelated files were touched. This
 is resource engineering, not a model result.27focused tests pass.
+All54refiners/1,080retained primary trees now finish, with all54checkpoint
+hashes freshly checked before held scoring. One unsaved tree was recomputed
+after the resource interruption; three full refits and nine recovery pilots
+add132verification tree fits. The resumed train phase exits0in995.18s,
+peak10.08GB; combined training phase cost is at least1,472.56s, not the resumed
+phase alone. Complete held evaluation is live, PID43491. No primary or safety
+pass is claimed from fitting completion.
 The inherited10GiB resource guard stopped one launch before registration or
 fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
 no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
