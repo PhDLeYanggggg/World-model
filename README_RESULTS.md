@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Joint Harm Event Supervision: Registered, Training Pending
+## Joint Harm Event Supervision: Real Pilot Passed, Full Training Running
 
 I am testing one loss change after the negative source-separated critic study:
 explicit joint benefit/non-easy-harm/easy-harm event and conditional magnitude
@@ -25,9 +25,13 @@ itself is not a claimed invention. This is a controlled model test, not another
 threshold search or a change in the original risk rules.
 
 The registered plan is 108 heads, 216,000 primary optimizer updates, three
-producer seeds and all original inner-C parts. Those counts are planned, not
-completed. Fourteen focused new/parent tests pass, including an actual tiny
-Torch resume check; the real data pilot and full fitting have not yet run.
+producer seeds and all original inner-C parts. Those full counts are planned,
+not completed. Fourteen focused new/parent tests pass. The real-data pilot
+completed1200updates in74.15s, peakRSS7.19GB, observed exit0. All six resumed
+versus direct states and three initialization/sampling pairs match exactly.
+Each model has28,489parameters. The pilot projects8526.46s of primary fitting;
+that is an estimate, not completion. Full local training has started with
+checkpoints/heartbeat every100updates; no new validation has been read.
 All outputs remain exposed SOURCE development, not independent confirmation.
 The latest read-only CREATE attempt returned an SSH authentication banner and
 then a connection timeout; queue state remains unknown and no job was submitted.
