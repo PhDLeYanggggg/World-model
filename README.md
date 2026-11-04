@@ -104,6 +104,16 @@ The [matched continuation report](outputs/publication_readiness_2026_09/moving_d
 and [failure analysis](outputs/publication_readiness_2026_09/moving_decoder_link_repair_v1/failure_analysis.md)
 show why improved cost fitting is not the same as safe intervention.
 
+The next check exposes a more basic limit of the fixed binary proposal.
+Even a label-aware choice can satisfy the original complete recording gate
+in only 299/348 repeated views. In 15 views there is no observed easy event;
+in another 34 every legal easy neural prediction exceeds the 2% harm ratio.
+These involve 14 of 58 actual-query recordings, not 49 independent sites.
+I keep all of them in the result rather than filtering to the feasible cases.
+The [exact feasibility check](outputs/publication_readiness_2026_09/moving_record_feasibility_v1/readout.md)
+shifts the next work toward candidate quality and event support, not another
+blind selector-loss sweep. It is a diagnosis, not learned model performance.
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.

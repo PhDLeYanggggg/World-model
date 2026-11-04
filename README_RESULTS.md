@@ -68,6 +68,23 @@ subsidizing easy risk,unknowns,zero reference and causal aliases. Real
 feasibility outcomes are not_run at this definition checkpoint. This changes
 no learned input,gate,role,forecast or deployment.
 
+That [audit is now complete](outputs/publication_readiness_2026_09/moving_record_feasibility_v1/readout.md):
+PID18193exits0 in71.402731s and PID18289replays every scalar in71.230221s.
+All348label-aware witnesses agree with the unchanged policy evaluator.
+Only299/348views have any feasible binary choice;34are candidate-limited
+and15have no observed easy event. Fourteen of58unique recordings have at
+least one infeasible view. No view is dropped. Nine focused tests pass0.33s,
+including exhaustive all-binary-policy comparison on30synthetic cases.
+The full risk gate cannot be repaired by further optimizing this same binary
+selector. This is not a blanket impossibility for new proposals or protocols.
+
+A [fixed amplitude follow-up](outputs/publication_readiness_2026_09/moving_amplitude_opportunity_v1/protocol.md)
+is defined before its scoring. It tests all six past-only interpolation
+fractions1/32,1/16,1/8,1/4,1/2,1without choosing a favorable fraction from held
+scores. It will report uniform-policy utility/risk and separate label-aware
+candidate opportunity. The15empty-event views must remain. Two causal-path
+tests pass;no new model is trained and no deployment is promoted.
+
 ### Expanded Social Motion Controls
 
 A [separate strong-baseline extension](outputs/publication_readiness_2026_09/moving_social_causal_baselines_v1/protocol.md)
