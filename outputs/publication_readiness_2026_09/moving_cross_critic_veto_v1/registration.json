@@ -1,0 +1,2740 @@
+{
+  "adaptive_freeze": {
+    "path": "outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/training_freeze.json",
+    "sha256": "59487e1385023c406bb137665ce35f582d10df4fca7b858865ffd1a897eab5cd"
+  },
+  "bindings": {
+    "configs/m3w_moving_cross_critic_veto_v1.json": "c246b5b4df536a214a2bc5ababa6222c2c18de5475606636fd43b2e43dce81df",
+    "outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/protocol.md": "87a490021ad6254a7847e5c9684c275f78767dbe886a8ea744050fcf04b31dd2",
+    "scripts/run_m3w_moving_cross_critic_veto.py": "547e778817f5c9987c634b59428039b59b7e07aab1d1cc9574560a34633840c4",
+    "src/world_model/m3w_cross_critic_veto.py": "fc968bd840ecc159314fac28fb23cb5b9290e0ca7e9cc13c1f5fd5793a94ca7a",
+    "tests/test_m3w_cross_critic_veto.py": "1dbd8746743025a120044b5d9435a96aae7d3317031ad11ee85c2bdef1460560"
+  },
+  "configuration": {
+    "arms": [
+      "adaptive_self",
+      "frozen_self",
+      "cross_veto",
+      "self_count_matched"
+    ],
+    "budget": 0.02,
+    "deployment_changed": false,
+    "disk_reserve_bytes": 5368709120,
+    "expected_fresh_C_cost_arrays_each_phase": 36,
+    "expected_jobs": 18,
+    "expected_record_views": 348,
+    "expected_source_views": 138,
+    "independent_confirmation": false,
+    "name": "moving_cross_critic_veto_v1",
+    "new_H_prediction_or_policy_scoring": false,
+    "new_data_roles": false,
+    "new_training": false,
+    "private_artifact_cap_bytes": 134217728,
+    "proposer": "completed_adaptive_record_cost",
+    "risk_evaluator": "completed_frozen_teacher_record_cost",
+    "role": "C_fitting_diagnostic_not_validation_or_calibration",
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "threshold_search": false
+  },
+  "definition_frozen_before_this_C_prototype_scoring": true,
+  "forecasts": {
+    "eqmotion_fold0_seed17": {
+      "checkpoint_sha256": "37ce8c07927b5e59afa8946df4d18498ef7ae75e147438e3783a6359c8dc499f",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 1,
+        "excluded_groups": [
+          "moving_source_component_049",
+          "moving_source_component_053",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_065",
+          "moving_source_component_066",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087",
+          "moving_source_component_090"
+        ],
+        "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "fold": 0,
+        "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+        "normalizers": {
+          "moving_source_component_047": {
+            "correction": 1.0143054914628518,
+            "indexed": 2198,
+            "selected_baseline_mean_ADE": 22.007610731356404,
+            "supported": 2167
+          },
+          "moving_source_component_048": {
+            "correction": 1.0205307961942915,
+            "indexed": 2038,
+            "selected_baseline_mean_ADE": 20.960665576080856,
+            "supported": 1997
+          },
+          "moving_source_component_051": {
+            "correction": 1.009539842873176,
+            "indexed": 7196,
+            "selected_baseline_mean_ADE": 19.521207693475986,
+            "supported": 7128
+          },
+          "moving_source_component_052": {
+            "correction": 1.0347490347490347,
+            "indexed": 536,
+            "selected_baseline_mean_ADE": 35.92935069477207,
+            "supported": 518
+          },
+          "moving_source_component_062": {
+            "correction": 1.0095271135781383,
+            "indexed": 37829,
+            "selected_baseline_mean_ADE": 22.06826013491561,
+            "supported": 37472
+          },
+          "moving_source_component_067": {
+            "correction": 1.0381927109335995,
+            "indexed": 4159,
+            "selected_baseline_mean_ADE": 35.87855846370121,
+            "supported": 4006
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 17,
+        "selection_relative_scores": [
+          3.6030917960092697,
+          1.0,
+          1.542420151944505,
+          1.1603407786700874,
+          1.0482901689991855,
+          1.2208692321142756
+        ],
+        "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed17.npz",
+      "rows": 141330,
+      "sha256": "ccbbe3eff59b207a48a4834c48e149c3f59965e7ea68932ab94b8abb10532775",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold0_seed29": {
+      "checkpoint_sha256": "bef1f3acafa0cddc57f7d7ba69403298818408714a74d6e6e2c275d77bd1c4d5",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 1,
+        "excluded_groups": [
+          "moving_source_component_049",
+          "moving_source_component_053",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_065",
+          "moving_source_component_066",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087",
+          "moving_source_component_090"
+        ],
+        "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "fold": 0,
+        "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+        "normalizers": {
+          "moving_source_component_047": {
+            "correction": 1.0143054914628518,
+            "indexed": 2198,
+            "selected_baseline_mean_ADE": 22.007610731356404,
+            "supported": 2167
+          },
+          "moving_source_component_048": {
+            "correction": 1.0205307961942915,
+            "indexed": 2038,
+            "selected_baseline_mean_ADE": 20.960665576080856,
+            "supported": 1997
+          },
+          "moving_source_component_051": {
+            "correction": 1.009539842873176,
+            "indexed": 7196,
+            "selected_baseline_mean_ADE": 19.521207693475986,
+            "supported": 7128
+          },
+          "moving_source_component_052": {
+            "correction": 1.0347490347490347,
+            "indexed": 536,
+            "selected_baseline_mean_ADE": 35.92935069477207,
+            "supported": 518
+          },
+          "moving_source_component_062": {
+            "correction": 1.0095271135781383,
+            "indexed": 37829,
+            "selected_baseline_mean_ADE": 22.06826013491561,
+            "supported": 37472
+          },
+          "moving_source_component_067": {
+            "correction": 1.0381927109335995,
+            "indexed": 4159,
+            "selected_baseline_mean_ADE": 35.87855846370121,
+            "supported": 4006
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 29,
+        "selection_relative_scores": [
+          3.6030917960092697,
+          1.0,
+          1.542420151944505,
+          1.1603407786700874,
+          1.0482901689991855,
+          1.2208692321142756
+        ],
+        "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed29.npz",
+      "rows": 141330,
+      "sha256": "aa9fab000097f3d10488a52b70c320c9bd0dd212e9e389cd599eceb8bf01bee0",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold0_seed43": {
+      "checkpoint_sha256": "c886c48c70dea6caf152e9d9cb8534a758901f5f199d0d4bb7f2d8f036b7f586",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 1,
+        "excluded_groups": [
+          "moving_source_component_049",
+          "moving_source_component_053",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_065",
+          "moving_source_component_066",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087",
+          "moving_source_component_090"
+        ],
+        "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "fold": 0,
+        "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+        "normalizers": {
+          "moving_source_component_047": {
+            "correction": 1.0143054914628518,
+            "indexed": 2198,
+            "selected_baseline_mean_ADE": 22.007610731356404,
+            "supported": 2167
+          },
+          "moving_source_component_048": {
+            "correction": 1.0205307961942915,
+            "indexed": 2038,
+            "selected_baseline_mean_ADE": 20.960665576080856,
+            "supported": 1997
+          },
+          "moving_source_component_051": {
+            "correction": 1.009539842873176,
+            "indexed": 7196,
+            "selected_baseline_mean_ADE": 19.521207693475986,
+            "supported": 7128
+          },
+          "moving_source_component_052": {
+            "correction": 1.0347490347490347,
+            "indexed": 536,
+            "selected_baseline_mean_ADE": 35.92935069477207,
+            "supported": 518
+          },
+          "moving_source_component_062": {
+            "correction": 1.0095271135781383,
+            "indexed": 37829,
+            "selected_baseline_mean_ADE": 22.06826013491561,
+            "supported": 37472
+          },
+          "moving_source_component_067": {
+            "correction": 1.0381927109335995,
+            "indexed": 4159,
+            "selected_baseline_mean_ADE": 35.87855846370121,
+            "supported": 4006
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 43,
+        "selection_relative_scores": [
+          3.6030917960092697,
+          1.0,
+          1.542420151944505,
+          1.1603407786700874,
+          1.0482901689991855,
+          1.2208692321142756
+        ],
+        "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed43.npz",
+      "rows": 141330,
+      "sha256": "c6f8e791df8a95111a678f8786d0ef1c262f0ca7cd09705eebdc8026850b48cc",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold1_seed17": {
+      "checkpoint_sha256": "c469a035003bc8735c2df385838676925f8bc00fccbc59c8e8eec998f7f82a16",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 1,
+        "excluded_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_049",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_062",
+          "moving_source_component_066",
+          "moving_source_component_067",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "factors_sha256": "39c8f17df9322a86f13c09a9598a4739aca03f921e16d6a7f7a799b7740df238",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "fold": 1,
+        "held_ids_sha256": "a5795ad3c6c5e587e775cf754c80fb5478e37fc64a5b074fd75d1fc2840018ee",
+        "normalizers": {
+          "moving_source_component_053": {
+            "correction": 1.0383561643835617,
+            "indexed": 1137,
+            "selected_baseline_mean_ADE": 74.0045714422828,
+            "supported": 1095
+          },
+          "moving_source_component_065": {
+            "correction": 1.1073326248671627,
+            "indexed": 1042,
+            "selected_baseline_mean_ADE": 17.657900017884348,
+            "supported": 941
+          },
+          "moving_source_component_076": {
+            "correction": 1.0496231155778895,
+            "indexed": 3342,
+            "selected_baseline_mean_ADE": 36.08185549351027,
+            "supported": 3184
+          },
+          "moving_source_component_077": {
+            "correction": 1.0309607942116776,
+            "indexed": 6127,
+            "selected_baseline_mean_ADE": 37.4415371598482,
+            "supported": 5943
+          },
+          "moving_source_component_078": {
+            "correction": 1.026430705584923,
+            "indexed": 40194,
+            "selected_baseline_mean_ADE": 31.472128131282894,
+            "supported": 39159
+          },
+          "moving_source_component_080": {
+            "correction": 1.0139694003611137,
+            "indexed": 10670,
+            "selected_baseline_mean_ADE": 34.09818816354395,
+            "supported": 10523
+          },
+          "moving_source_component_082": {
+            "correction": 1.0497470489038785,
+            "indexed": 6225,
+            "selected_baseline_mean_ADE": 75.03483906370397,
+            "supported": 5930
+          },
+          "moving_source_component_087": {
+            "correction": 1.0731247644176405,
+            "indexed": 2847,
+            "selected_baseline_mean_ADE": 128.06050816268524,
+            "supported": 2653
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 17,
+        "selection_relative_scores": [
+          5.7257370801864935,
+          1.0,
+          1.8727675199953155,
+          1.2386274232699042,
+          1.029580007877629,
+          1.2604192949940918
+        ],
+        "train_ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold1_seed17.npz",
+      "rows": 123702,
+      "sha256": "a3e399d6b47df90ab47862ca37cf837440c142de36df25857f08688b3b3c878b",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold1_seed29": {
+      "checkpoint_sha256": "208e21c6edbfb363d3a462c46a544b5df25c79775e42200e44813c3820470b3e",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 1,
+        "excluded_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_049",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_062",
+          "moving_source_component_066",
+          "moving_source_component_067",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "factors_sha256": "39c8f17df9322a86f13c09a9598a4739aca03f921e16d6a7f7a799b7740df238",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "fold": 1,
+        "held_ids_sha256": "a5795ad3c6c5e587e775cf754c80fb5478e37fc64a5b074fd75d1fc2840018ee",
+        "normalizers": {
+          "moving_source_component_053": {
+            "correction": 1.0383561643835617,
+            "indexed": 1137,
+            "selected_baseline_mean_ADE": 74.0045714422828,
+            "supported": 1095
+          },
+          "moving_source_component_065": {
+            "correction": 1.1073326248671627,
+            "indexed": 1042,
+            "selected_baseline_mean_ADE": 17.657900017884348,
+            "supported": 941
+          },
+          "moving_source_component_076": {
+            "correction": 1.0496231155778895,
+            "indexed": 3342,
+            "selected_baseline_mean_ADE": 36.08185549351027,
+            "supported": 3184
+          },
+          "moving_source_component_077": {
+            "correction": 1.0309607942116776,
+            "indexed": 6127,
+            "selected_baseline_mean_ADE": 37.4415371598482,
+            "supported": 5943
+          },
+          "moving_source_component_078": {
+            "correction": 1.026430705584923,
+            "indexed": 40194,
+            "selected_baseline_mean_ADE": 31.472128131282894,
+            "supported": 39159
+          },
+          "moving_source_component_080": {
+            "correction": 1.0139694003611137,
+            "indexed": 10670,
+            "selected_baseline_mean_ADE": 34.09818816354395,
+            "supported": 10523
+          },
+          "moving_source_component_082": {
+            "correction": 1.0497470489038785,
+            "indexed": 6225,
+            "selected_baseline_mean_ADE": 75.03483906370397,
+            "supported": 5930
+          },
+          "moving_source_component_087": {
+            "correction": 1.0731247644176405,
+            "indexed": 2847,
+            "selected_baseline_mean_ADE": 128.06050816268524,
+            "supported": 2653
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 29,
+        "selection_relative_scores": [
+          5.7257370801864935,
+          1.0,
+          1.8727675199953155,
+          1.2386274232699042,
+          1.029580007877629,
+          1.2604192949940918
+        ],
+        "train_ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold1_seed29.npz",
+      "rows": 123702,
+      "sha256": "7caa989fb5e3e663f033e51a27f9aaf66f8e7a857b0d04834df6ba3dccb5bf88",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold1_seed43": {
+      "checkpoint_sha256": "43e32e4d931744b67b36a0d34148e3e3048fde8ed2878c48bb8f6d5cf0415766",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 1,
+        "excluded_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_049",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_062",
+          "moving_source_component_066",
+          "moving_source_component_067",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "factors_sha256": "39c8f17df9322a86f13c09a9598a4739aca03f921e16d6a7f7a799b7740df238",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "fold": 1,
+        "held_ids_sha256": "a5795ad3c6c5e587e775cf754c80fb5478e37fc64a5b074fd75d1fc2840018ee",
+        "normalizers": {
+          "moving_source_component_053": {
+            "correction": 1.0383561643835617,
+            "indexed": 1137,
+            "selected_baseline_mean_ADE": 74.0045714422828,
+            "supported": 1095
+          },
+          "moving_source_component_065": {
+            "correction": 1.1073326248671627,
+            "indexed": 1042,
+            "selected_baseline_mean_ADE": 17.657900017884348,
+            "supported": 941
+          },
+          "moving_source_component_076": {
+            "correction": 1.0496231155778895,
+            "indexed": 3342,
+            "selected_baseline_mean_ADE": 36.08185549351027,
+            "supported": 3184
+          },
+          "moving_source_component_077": {
+            "correction": 1.0309607942116776,
+            "indexed": 6127,
+            "selected_baseline_mean_ADE": 37.4415371598482,
+            "supported": 5943
+          },
+          "moving_source_component_078": {
+            "correction": 1.026430705584923,
+            "indexed": 40194,
+            "selected_baseline_mean_ADE": 31.472128131282894,
+            "supported": 39159
+          },
+          "moving_source_component_080": {
+            "correction": 1.0139694003611137,
+            "indexed": 10670,
+            "selected_baseline_mean_ADE": 34.09818816354395,
+            "supported": 10523
+          },
+          "moving_source_component_082": {
+            "correction": 1.0497470489038785,
+            "indexed": 6225,
+            "selected_baseline_mean_ADE": 75.03483906370397,
+            "supported": 5930
+          },
+          "moving_source_component_087": {
+            "correction": 1.0731247644176405,
+            "indexed": 2847,
+            "selected_baseline_mean_ADE": 128.06050816268524,
+            "supported": 2653
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 43,
+        "selection_relative_scores": [
+          5.7257370801864935,
+          1.0,
+          1.8727675199953155,
+          1.2386274232699042,
+          1.029580007877629,
+          1.2604192949940918
+        ],
+        "train_ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold1_seed43.npz",
+      "rows": 123702,
+      "sha256": "824e3b4652023be8d5fbf170575a2412c7d01707125423e1238f0e1ed3521af8",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold2_seed17": {
+      "checkpoint_sha256": "2f1aa2906b0031c88adc9292579cd2dc361b0593edd696cac4a3d25a8b3bf3cf",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 4,
+        "excluded_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_053",
+          "moving_source_component_062",
+          "moving_source_component_065",
+          "moving_source_component_067",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "factors_sha256": "c96272f240783f2ed33532b4d5f4f60b987d5dc6ad8c769bcb4d0b120f5674e3",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fold": 2,
+        "held_ids_sha256": "0cfdf0401484e949f955a6c9aa8d536968ac88753e6bff63f78e843fdecba65e",
+        "normalizers": {
+          "moving_source_component_049": {
+            "correction": 1.1007130124777185,
+            "indexed": 1235,
+            "selected_baseline_mean_ADE": 229.69906384811824,
+            "supported": 1122
+          },
+          "moving_source_component_055": {
+            "correction": 1.0316455696202531,
+            "indexed": 2445,
+            "selected_baseline_mean_ADE": 28.890635820108123,
+            "supported": 2370
+          },
+          "moving_source_component_059": {
+            "correction": 1.052933009371746,
+            "indexed": 12134,
+            "selected_baseline_mean_ADE": 160.83305328850074,
+            "supported": 11524
+          },
+          "moving_source_component_060": {
+            "correction": 1.024680738437107,
+            "indexed": 15486,
+            "selected_baseline_mean_ADE": 43.50830972795463,
+            "supported": 15113
+          },
+          "moving_source_component_066": {
+            "correction": 1.0779901356350186,
+            "indexed": 3497,
+            "selected_baseline_mean_ADE": 31.935702745052748,
+            "supported": 3244
+          },
+          "moving_source_component_070": {
+            "correction": 1.0150467669784464,
+            "indexed": 2496,
+            "selected_baseline_mean_ADE": 75.033859722747,
+            "supported": 2459
+          },
+          "moving_source_component_073": {
+            "correction": 1.012565124118909,
+            "indexed": 23128,
+            "selected_baseline_mean_ADE": 17.676719374358502,
+            "supported": 22841
+          },
+          "moving_source_component_075": {
+            "correction": 1.0076943140323422,
+            "indexed": 7727,
+            "selected_baseline_mean_ADE": 39.48716215952784,
+            "supported": 7668
+          },
+          "moving_source_component_090": {
+            "correction": 1.0561797752808988,
+            "indexed": 1598,
+            "selected_baseline_mean_ADE": 180.78516861511847,
+            "supported": 1513
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 17,
+        "selection_relative_scores": [
+          3.3202532364707413,
+          1.0,
+          1.3336161169763772,
+          1.05311265180542,
+          0.9943779305608214,
+          1.1578603408620332
+        ],
+        "train_ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold2_seed17.npz",
+      "rows": 125540,
+      "sha256": "9dbe9d0292682335a327e352e9bd7559ff37e7c5ca708c091b6abbe669c00c45",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold2_seed29": {
+      "checkpoint_sha256": "99773ef94adceaa46bb2473cfcf61c81b010169d7240105e9dc788323f8b5cb5",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 4,
+        "excluded_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_053",
+          "moving_source_component_062",
+          "moving_source_component_065",
+          "moving_source_component_067",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "factors_sha256": "c96272f240783f2ed33532b4d5f4f60b987d5dc6ad8c769bcb4d0b120f5674e3",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fold": 2,
+        "held_ids_sha256": "0cfdf0401484e949f955a6c9aa8d536968ac88753e6bff63f78e843fdecba65e",
+        "normalizers": {
+          "moving_source_component_049": {
+            "correction": 1.1007130124777185,
+            "indexed": 1235,
+            "selected_baseline_mean_ADE": 229.69906384811824,
+            "supported": 1122
+          },
+          "moving_source_component_055": {
+            "correction": 1.0316455696202531,
+            "indexed": 2445,
+            "selected_baseline_mean_ADE": 28.890635820108123,
+            "supported": 2370
+          },
+          "moving_source_component_059": {
+            "correction": 1.052933009371746,
+            "indexed": 12134,
+            "selected_baseline_mean_ADE": 160.83305328850074,
+            "supported": 11524
+          },
+          "moving_source_component_060": {
+            "correction": 1.024680738437107,
+            "indexed": 15486,
+            "selected_baseline_mean_ADE": 43.50830972795463,
+            "supported": 15113
+          },
+          "moving_source_component_066": {
+            "correction": 1.0779901356350186,
+            "indexed": 3497,
+            "selected_baseline_mean_ADE": 31.935702745052748,
+            "supported": 3244
+          },
+          "moving_source_component_070": {
+            "correction": 1.0150467669784464,
+            "indexed": 2496,
+            "selected_baseline_mean_ADE": 75.033859722747,
+            "supported": 2459
+          },
+          "moving_source_component_073": {
+            "correction": 1.012565124118909,
+            "indexed": 23128,
+            "selected_baseline_mean_ADE": 17.676719374358502,
+            "supported": 22841
+          },
+          "moving_source_component_075": {
+            "correction": 1.0076943140323422,
+            "indexed": 7727,
+            "selected_baseline_mean_ADE": 39.48716215952784,
+            "supported": 7668
+          },
+          "moving_source_component_090": {
+            "correction": 1.0561797752808988,
+            "indexed": 1598,
+            "selected_baseline_mean_ADE": 180.78516861511847,
+            "supported": 1513
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 29,
+        "selection_relative_scores": [
+          3.3202532364707413,
+          1.0,
+          1.3336161169763772,
+          1.05311265180542,
+          0.9943779305608214,
+          1.1578603408620332
+        ],
+        "train_ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold2_seed29.npz",
+      "rows": 125540,
+      "sha256": "7ee0d3f4a66061bf9c9d0aea8cc6b162aa7ce0c977ea42345ce89236e53a7250",
+      "stored_prediction": "relative_to_current_origin_float32"
+    },
+    "eqmotion_fold2_seed43": {
+      "checkpoint_sha256": "f0f5f83f4faef0d38dce4f368cf108a9c48656b03350e169b48f3f4f1e1d7b9a",
+      "emitted_candidates": 1,
+      "identity": {
+        "architecture": {
+          "channels": 64,
+          "family": "eqmotion_fixed_head",
+          "fixed_head": 0,
+          "hidden_nf": 64,
+          "history_steps": 8,
+          "input_conditioning": "observed_joint_max_norm",
+          "layers": 4,
+          "prediction_steps": 12,
+          "prune_unused_heads": true
+        },
+        "baseline_index": 4,
+        "excluded_groups": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_053",
+          "moving_source_component_062",
+          "moving_source_component_065",
+          "moving_source_component_067",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "factors_sha256": "c96272f240783f2ed33532b4d5f4f60b987d5dc6ad8c769bcb4d0b120f5674e3",
+        "family": "eqmotion",
+        "fit_groups": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_068",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fold": 2,
+        "held_ids_sha256": "0cfdf0401484e949f955a6c9aa8d536968ac88753e6bff63f78e843fdecba65e",
+        "normalizers": {
+          "moving_source_component_049": {
+            "correction": 1.1007130124777185,
+            "indexed": 1235,
+            "selected_baseline_mean_ADE": 229.69906384811824,
+            "supported": 1122
+          },
+          "moving_source_component_055": {
+            "correction": 1.0316455696202531,
+            "indexed": 2445,
+            "selected_baseline_mean_ADE": 28.890635820108123,
+            "supported": 2370
+          },
+          "moving_source_component_059": {
+            "correction": 1.052933009371746,
+            "indexed": 12134,
+            "selected_baseline_mean_ADE": 160.83305328850074,
+            "supported": 11524
+          },
+          "moving_source_component_060": {
+            "correction": 1.024680738437107,
+            "indexed": 15486,
+            "selected_baseline_mean_ADE": 43.50830972795463,
+            "supported": 15113
+          },
+          "moving_source_component_066": {
+            "correction": 1.0779901356350186,
+            "indexed": 3497,
+            "selected_baseline_mean_ADE": 31.935702745052748,
+            "supported": 3244
+          },
+          "moving_source_component_070": {
+            "correction": 1.0150467669784464,
+            "indexed": 2496,
+            "selected_baseline_mean_ADE": 75.033859722747,
+            "supported": 2459
+          },
+          "moving_source_component_073": {
+            "correction": 1.012565124118909,
+            "indexed": 23128,
+            "selected_baseline_mean_ADE": 17.676719374358502,
+            "supported": 22841
+          },
+          "moving_source_component_075": {
+            "correction": 1.0076943140323422,
+            "indexed": 7727,
+            "selected_baseline_mean_ADE": 39.48716215952784,
+            "supported": 7668
+          },
+          "moving_source_component_090": {
+            "correction": 1.0561797752808988,
+            "indexed": 1598,
+            "selected_baseline_mean_ADE": 180.78516861511847,
+            "supported": 1513
+          }
+        },
+        "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+        "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+        "seed": 43,
+        "selection_relative_scores": [
+          3.3202532364707413,
+          1.0,
+          1.3336161169763772,
+          1.05311265180542,
+          0.9943779305608214,
+          1.1578603408620332
+        ],
+        "train_ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "whole_source_reservations_unchanged": true
+      },
+      "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold2_seed43.npz",
+      "rows": 125540,
+      "sha256": "b90d0ceb2182e8fda885456f597c9a617662cfcd30f4a26a71abfc4de6805996",
+      "stored_prediction": "relative_to_current_origin_float32"
+    }
+  },
+  "frozen_freeze": {
+    "path": "outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/training_freeze.json",
+    "sha256": "979ca25a89aaa1209d78116223bfb71a489c2ba215b55dbf5612ec4eb558a013"
+  },
+  "independent_data_critics": false,
+  "jobs": [
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed17",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed17_critic1",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed17",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed17_critic2",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed29",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed29_critic1",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 29
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed29",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed29_critic2",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 29
+    },
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed43",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed43_critic1",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 43
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed43",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed43_critic2",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 43
+    },
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed17",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed17_critic0",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 0,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed17",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed17_critic2",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed29",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed29_critic0",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 29
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 0,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed29",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed29_critic2",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 29
+    },
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed43",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed43_critic0",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 43
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 0,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed43",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed43_critic2",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 43
+    },
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 12.491606766896991,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 4,
+      "forecast_key": "eqmotion_fold2_seed17",
+      "hard_cut": 61.71788504054353,
+      "key": "eqmotion_fold2_seed17_critic0",
+      "producer_fold": 2,
+      "producer_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_068",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 12.491606766896991,
+      "evaluation_fold": 0,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 4,
+      "forecast_key": "eqmotion_fold2_seed17",
+      "hard_cut": 61.71788504054353,
+      "key": "eqmotion_fold2_seed17_critic1",
+      "producer_fold": 2,
+      "producer_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_068",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 12.491606766896991,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 4,
+      "forecast_key": "eqmotion_fold2_seed29",
+      "hard_cut": 61.71788504054353,
+      "key": "eqmotion_fold2_seed29_critic0",
+      "producer_fold": 2,
+      "producer_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_068",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "seed": 29
+    },
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 12.491606766896991,
+      "evaluation_fold": 0,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 4,
+      "forecast_key": "eqmotion_fold2_seed29",
+      "hard_cut": 61.71788504054353,
+      "key": "eqmotion_fold2_seed29_critic1",
+      "producer_fold": 2,
+      "producer_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_068",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "seed": 29
+    },
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 12.491606766896991,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 4,
+      "forecast_key": "eqmotion_fold2_seed43",
+      "hard_cut": 61.71788504054353,
+      "key": "eqmotion_fold2_seed43_critic0",
+      "producer_fold": 2,
+      "producer_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_068",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "seed": 43
+    },
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 12.491606766896991,
+      "evaluation_fold": 0,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 4,
+      "forecast_key": "eqmotion_fold2_seed43",
+      "hard_cut": 61.71788504054353,
+      "key": "eqmotion_fold2_seed43_critic1",
+      "producer_fold": 2,
+      "producer_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_068",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "seed": 43
+    }
+  ],
+  "new_H_prediction": false,
+  "new_data_roles": false,
+  "new_deployment": false,
+  "new_training": false,
+  "original_training_registration": {
+    "path": "outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/registration.json",
+    "sha256": "2748da73ac0d40a78e49595206c424865808a121eef87bf9ded62e9f3252a9cb"
+  },
+  "prior_C_diagnostic": {
+    "path": "outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/fitting_cost_diagnostics.json",
+    "sha256": "c02f49891b017ac96945278da0ce4d4b2b3eee0f9e813fe3c4784e6066e39970"
+  },
+  "prior_H_results_already_exposed": true,
+  "smc_enabled": false,
+  "stage5c_executed": false,
+  "submission_ready": false,
+  "validation_or_calibration": false
+}

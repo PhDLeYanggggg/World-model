@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cross-Critic Veto: A C-Only Mechanism Test
+
+The completed moving-mask loss remains optimistic even on its own fitting
+selections. I am testing one fixed second-head risk veto before investing in
+new critic training. A causal same-count control keeps exactly the same
+number of interventions per query, ordered by the original proposer's own
+predicted utility. This distinguishes a useful second opinion from merely
+switching less. All budgets, weights, features and official source roles stay
+unchanged. No new Hreadout, model fit or deployment is part of this test.
+Both critics share supervised Cexposure: this is not independent validation.
+The definition is committed before the new Cprototype is scored.
+
+[Fixed diagnostic protocol](outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/protocol.md).
+
 ## A Fixed Support Limit, Separate From Learning Quality
 
 Fresh arithmetic on hash-checked old complete feasibility receipts confirms
