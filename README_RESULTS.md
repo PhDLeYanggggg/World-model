@@ -17,6 +17,8 @@ pilot is now complete: all six recovery cells and all three original-loop
 controls match exactly,94.60s, peakRSS9.29GB. Its projected primary fitting
 time is1099.51s, not an observed completion time. Full training is running
 locally; these models have not yet produced new held-source outcomes.
+Both full first-context refits now pass too: the point loop reproduces its
+original model/optimizer/sampler state, and the new objective reproduces itself.
 No new trajectory training, threshold search or independent data opening.
 The first real pilot exited at a duplicate log-field write before primary
 training. Its step0checkpoint is retained; the logging-only fix and actual
