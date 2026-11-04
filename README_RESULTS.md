@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Moving Harm Refinement: Registered, Not Yet Trained
+
+4November: the next fixed experiment compares global, fixed-selection-region
+and refreshed-selection-region upward harm refiners on the same18verified
+amplitude heads.54refiners x20trees, not54neural models. References, causal
+features, data roles, seven trajectory amplitudes and2%requirements remain
+fixed. Primary is refreshed minus fixed region, joint-free paired completion
+lower on the supported23group exposed development matrix. Original24group
+primary remains not estimable.11focused tests pass; no new scientific score.
+The inherited10GiB resource guard stopped one launch before registration or
+fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
+no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
+
 ## Working Paper
 
 The [current v9 working revision](outputs/publication_readiness_2026_09/evidence_manuscript_v9/README.md)
