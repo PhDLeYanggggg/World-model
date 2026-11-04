@@ -41,7 +41,9 @@ hash-serialization mismatch. The solver binding serializes(shape,dtype),
 whereas the general array hash serializes(dtype,shape). Correcting that exact
 guard preserves original registration and adds a separate runtime binding.
 The four focused hash/cache tests pass; altered values, shapes and dtypes
-are still rejected. No model, loss, threshold or Hselection change.
+are still rejected. No model, loss, threshold or Hselection change. The
+corrected full comparison is now running locally; no partial adaptive score
+has been used for a model or policy decision.
 
 The full four-arm/four-policy readout is now committed before new Houtcomes.
 Its current checks passed 14 targeted tests, including missing support,
