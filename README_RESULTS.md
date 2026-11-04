@@ -5,23 +5,26 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Selected-Record Neural Objective: Real Pilot Passed,18Fits Running
+## Selected-Record Neural Objective:18Fits Frozen Before New Held Readout
 
 The fixed-set diagnosis motivates a loss-only test, not a larger architecture.
-I am training18neural cost heads with the original initialization, inputs,
+I completed18neural cost heads with the original initialization, inputs,
 normalization, seeds and2000updates. A selected-record excess term is the only
 new objective component. Original point-objective heads and the stronger
 shared-tree policy remain controls. The real pilot must first prove original
 training-loop and50/100resume equivalence across all three critic folds. That
 pilot is now complete: all six recovery cells and all three original-loop
 controls match exactly,94.60s, peakRSS9.29GB. Its projected primary fitting
-time is1099.51s, not an observed completion time. Full training is running
-locally; these models have not yet produced new held-source outcomes.
+time was1099.51s, not a completion claim. The actual full phase finished in
+1541.61s with peakRSS9.29GB,36000primary updates and all18models frozen.
+These models have not yet produced new held-source outcomes. A predeclared
+C-only fitting-region check is running before any decision about follow-up
+training; it is not independent validation or calibration.
 Both full first-context refits now pass too: the point loop reproduces its
 original model/optimizer/sampler state, and the new objective reproduces itself.
 No new trajectory training, threshold search or independent data opening.
 The first real pilot exited at a duplicate log-field write before primary
-training. Its step0checkpoint is retained; the logging-only fix and actual
+training. Its saved step0state was used for recovery; the logging-only fix and actual
 tiny checkpoint/resume regression are recorded in the runtime patch note.
 
 [Registered objective definition](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/protocol.md).
