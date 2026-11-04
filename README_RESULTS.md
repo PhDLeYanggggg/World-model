@@ -101,6 +101,16 @@ The first two producer folds now complete12fresh heads/24,000primary
 updates;all12checkpoint hashes are freshly checked. Producer2continues
 under the samePID27883/session56988. Full training is not yet claimed.
 
+The whole18fresh-head matrix now completes with observed exit0asPID27883,
+1,627.621452s,peakRSS9,338,159,104bytes. All36,000new primary updates and
+both complete first-job refits finish;all18raw initial states and sampling
+streams match the verified cached controls. Every new fit/checkpoint hash
+is freshly checked;minimum query visits25. All constrained H/EH fitting
+curve counts are0,but own-region known H/predH is40.662441and EH/predEH
+245.059453. Shape correctness therefore does not demonstrate calibrated
+magnitudes or safety. The complete fixed held evaluation is next;no new
+held result or deployment is claimed at this checkpoint.
+
 ### Matched Amplitude Cost Learning
 
 The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)

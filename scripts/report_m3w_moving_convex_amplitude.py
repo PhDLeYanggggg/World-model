@@ -18,6 +18,14 @@ def read(path):return json.loads(path.read_text())
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def cost_ratio_diagnostic(actual,predicted):
+    if not np.isfinite([actual,predicted]).all()or min(actual,predicted)<0:
+        raise ValueError('Finite nonnegative known cost masses required')
+    status='finite'if predicted>0 else('zero_prediction_positive_realized_mass'if actual>0 else'both_mass_zero_undefined')
+    return dict(realized_known_mass=float(actual),predicted_on_same_known_rows=float(predicted),
+        ratio=float(actual/predicted)if predicted>0 else None,status=status)
+
+
 def usage(records):
     sites=sorted({r['site']for r in records});rows=[]
     for arm in ('unconstrained','convex'):
@@ -125,6 +133,7 @@ def main():
     actual=sum(np.asarray(r['own_selected_costs']['realized_selected_known_moments'])for r in fits)
     fraction=lambda i:float(actual[i]/pred[i])if pred[i]>0 else None
     fitting=dict(known_H_over_predicted_H=fraction(1),known_EH_over_predicted_EH=fraction(4),
+        known_moment_details={name:cost_ratio_diagnostic(actual[j],pred[j])for name,j in (('H',1),('EH',4))},
         all18predicted_H_EH_shape_counts_zero=all(not any(v for comp in r['fitting_shape']['predicted'].values()for v in comp.values())for r in fits))
     lines=['# Matched Convex Amplitude Decoder','','## Material Passport','',
         'Fresh_run: 18 real Torch convex heads, 36,000 new primary updates, complete',
@@ -164,7 +173,9 @@ def main():
         f"Own fitting-region known H / predicted H: {fitting['known_H_over_predicted_H']}; EH / predicted EH: {fitting['known_EH_over_predicted_EH']}.",
         f"All 18 constrained H/EH fitting-shape checks zero: {fitting['all18predicted_H_EH_shape_counts_zero']}.",
         'These are pooled resubstitution cost masses, not calibration or a causal',
-        'decomposition. Correct shape need not mean correct cost magnitude.','',
+        'decomposition. Correct shape need not mean correct cost magnitude.',
+        'The fitting receipt distinguishes zero prediction with positive actual',
+        'harm from both masses zero; neither is relabeled as safe zero.','',
         '## Solver And Execution','',
         '| Arm | Repeated query views | Nonoptimal matched | Nonoptimal free |',
         '|---|---:|---:|---:|']

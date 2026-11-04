@@ -4,6 +4,14 @@ import pytest
 from scripts import report_m3w_moving_convex_amplitude as report
 
 
+def test_zero_predicted_harm_is_not_mislabeled_as_an_empty_safe_case():
+    positive=report.cost_ratio_diagnostic(2.,0.)
+    empty=report.cost_ratio_diagnostic(0.,0.)
+    assert positive['ratio']is None and positive['status']=='zero_prediction_positive_realized_mass'
+    assert empty['ratio']is None and empty['status']=='both_mass_zero_undefined'
+    assert report.cost_ratio_diagnostic(2.,1.)['ratio']==2.
+
+
 def test_source_macro_usage_and_empty_matched_views_stay_distinct():
     rows=[]
     for site,values in [('a',[0.,1.]),('b',[1.])]:
