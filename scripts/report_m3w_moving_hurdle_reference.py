@@ -6,9 +6,14 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import numpy as np
 from scripts import run_m3w_moving_hurdle_reference as run
 from scripts.report_m3w_moving_harm_refinement import text_once
-from scripts.report_m3w_moving_amplitude_cost import interval
 
 source=run.source;PUBLIC=run.PUBLIC
+
+
+def loss_interval(row):
+    if row['point'] is None or row['CI95'] is None:
+        return 'not_estimable'
+    return '{:+.6g} [{:+.6g},{:+.6g}]'.format(row['point'], *row['CI95'])
 
 
 def figures(effects,fits):
@@ -34,7 +39,7 @@ def figures(effects,fits):
     else:axes[1].text(0,0,'not estimable')
     axes[1].set_yticks([0],['Event vs prior']);axes[1].set_ylim(-.7,.7);axes[1].set_title('Support-event Brier')
     for ax in axes:
-        ax.axvline(0,color='.5',lw=1);ax.set_xlabel('Loss reduction; positive is better')
+        ax.axvline(0,color='.5',lw=1);ax.set_xlabel('Loss reduction')
         ax.ticklabel_format(axis='x',style='sci',scilimits=(-2,2))
     fig.suptitle('Grouped 95% development CI, not trajectory gain or risk certification',fontsize=10)
     fig.tight_layout();fig.savefig(public/'prediction_effects.svg');fig.savefig(private/'prediction_effects.png',dpi=160);plt.close(fig)
@@ -95,7 +100,7 @@ def main():
             ('decision.json',decision),('runtime_summary.json',runtime)):
         source.once(PUBLIC/name,source.stable(value))
     table=['|Fixed H contrast; positive is lower loss|Normalized loss reduction [grouped95%CI]|','|---|---:|']
-    for name,row in effects.items():table.append(f'|{name}|{interval(row)}|')
+    for name,row in effects.items():table.append(f'|{name}|{loss_interval(row)}|')
     text_once(PUBLIC/'readout.md','# Source-excluded reference prediction\n\n'
         'Fresh216forests /9216primary trees, three actual seeds, direct64versus hurdle32+32trees. '
         'No trajectory model, policy or threshold changes. All108OOF arrays and216fit bindings replay; '
@@ -160,9 +165,9 @@ original2%deployment gates by itself. Stage5C/SMC off.
 ''')
     text_once(PUBLIC/'failure_analysis.md',f'''# Prediction evidence is not a repaired policy
 
-Selected-reference prediction reduction: {interval(mean_effect)} in normalized
-MSE units. Hurdle minus direct reduction: {interval(hurdle_effect)}.
-Event Brier reduction: {interval(effects['event_minus_prior_Brier_reduction'])}.
+Selected-reference prediction reduction: {loss_interval(mean_effect)} in normalized
+MSE units. Hurdle minus direct reduction: {loss_interval(hurdle_effect)}.
+Event Brier reduction: {loss_interval(effects['event_minus_prior_Brier_reduction'])}.
 Every source remains in per_source.md. Source-OOF choices were{selected}.
 
 Whether positive or negative, these results concern a missing reference target,

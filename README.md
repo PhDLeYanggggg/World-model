@@ -189,9 +189,12 @@ and [failure analysis](outputs/publication_readiness_2026_09/moving_shared_harm_
 
 The follow-up fixed-decision decomposition identifies reference support as a
 separate problem: 47 active views lack observed selected easy reference even
-though every selected row has some future label. I am testing a two-part
-reference head with source-excluded internal validation, while keeping the
-current forecasts and policies fixed. It is not a deployment upgrade.
+though every selected row has some future label. I tested a two-part reference
+head against direct regression with source-excluded internal validation. The
+direct head is better; the event-probability head does not establish a Brier
+improvement. C-selected reference prediction beats a constant prior, but I am
+checking it against the existing learned reference before drawing a component
+claim. Forecasts and policies stay fixed; this is not a deployment upgrade.
 [Risk-factor diagnosis](outputs/publication_readiness_2026_09/moving_record_risk_factors_v1/readout.md)
 and [reference-head protocol](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/protocol.md).
 
