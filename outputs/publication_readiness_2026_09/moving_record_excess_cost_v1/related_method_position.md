@@ -18,3 +18,20 @@ the complete joint controller versus its actual matched neural control and
 the stronger existing conservative tree policy. The original2%contract,
 unsupported views, independent data requirements and unknown-label bounds
 are unchanged. A loss-only improvement is not paper-level novelty or safety.
+
+## Earlier Negative Aggregate-Loss Experiment
+
+This is not the project's first aggregation test. The earlier
+[European query-excess study](../european_query_excess_refit_v1/conclusions.md)
+trained216heads/432000updates and found pure query-aggregate supervision worse
+than its pointwise joint control by0.15468%in its paired ADE contrast, with a negative
+95%development interval. Its same-count ADE contrast crossed zero, and its
+selected-risk primary remained unavailable. That failure is retained.
+
+The present within-study contrast adds an aggregate term while preserving the
+original point cost objective, focuses it on frozen fitting teacher selections,
+uses coherent five-moment bound-aware cost outputs and samples recording
+aggregates on the Moving SOURCE population. These differences motivate a new
+controlled test; they are not a matched attribution against the European study
+and do not establish that aggregation generally works. Only the registered new
+matched control and complete risk readout can decide the current hypothesis.
