@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Selected-Region Reference Check: Registered, Not Run
+
+The new reference head loses on full-roster prediction, but that does not by
+itself characterize its errors on the controller's selected sets. I am checking
+the original3cost classes and4policies with all4176repeated recording views
+fixed. No new solver choice or risk threshold is allowed. The check separates
+row prediction loss, recording-mass error and absent observed reference.
+It also makes an important scope limit explicit: the new head predicts easy
+reference ER, not all-reference R, so it cannot fix all-risk Rerrors.
+
+[Fixed-set diagnostic definition](outputs/publication_readiness_2026_09/moving_selected_reference_v1/protocol.md).
+
 ## Reference Prediction: New Heads Fail The Existing Learned Control
 
 The fixed-decision diagnosis points to reference support, not just harm
