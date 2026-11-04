@@ -88,6 +88,11 @@ no monotonicity or conformal guarantee is imposed on learned outputs.
 The [Chinese operation guide](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/operation_zh.md)
 gives full commands,phase ordering,logs,resume and evidence boundaries.
 
+The first complete producer fold now has all12heads/24,000primary updates;
+every saved checkpoint hash is freshly checked. Both first-job full2krefits
+are exact. Remaining producer folds continue under the same live task;this
+checkpoint is not the complete36-head matrix or a held-performance result.
+
 ### Input Clipping And Fixed-Proposal Feasibility
 
 The [complete clipping audit](outputs/publication_readiness_2026_09/moving_input_clipping_v1/readout.md)

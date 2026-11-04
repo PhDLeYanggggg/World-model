@@ -143,22 +143,25 @@ def main():
         'Intervals use 3,000 source-group resamples after excluded-producer and',
         'actual-seed averaging. They are nominal development intervals, not',
         'independent confirmation or adjustments for the wider research search.','',
-        '| Model | Policy | Known gain over floor (%) [95% CI] | Completion lower (%) [95% CI] | Original risk support | Known all/easy violations | Worst known easy-net degradation (%) |',
-        '|---|---|---:|---:|---:|---:|---:|']
+        '| Model | Policy | Known gain over floor (%) [95% CI] | Completion lower (%) [95% CI] | Original risk support | Known all/easy violations | Undefined easy | Worst known easy-net degradation (%) |',
+        '|---|---|---:|---:|---:|---:|---:|---:|']
     for arm,policies in summary['safety'].items():
         for policy,risk in policies.items():
             worst=risk['worst_known_easy_net_degradation_percent']
             value='not estimable'if worst is None else f'{worst:.4f}'
             lines.append(f"| {arm} | {policy} | {interval(summary['known_accuracy'][arm][policy])} | "
                 f"{interval(summary['completion_lower'][arm][policy])} | {risk['supported_record_views']}/{risk['required_record_views']} | "
-                f"{risk['known_all_risk_violations']}/{risk['known_easy_risk_violations']} | {value} |")
+                f"{risk['known_all_risk_violations']}/{risk['known_easy_risk_violations']} | {risk['undefined_easy_views']} | {value} |")
     lines+=['','The legacy arm is cached_verified, not freshly inferred here or input-',
         'matched to the new seven-amplitude inventory. The two new heads share',
         'the same inputs/capacity; their treatment changes active supervision and',
         'action availability. The shared-weight binary deployment isolates only',
         'the secondary inference effect. All use the same frozen physical floor.',
         'Original CV defines easy labels; reference moments are not alpha-scaled.',
-        'Actual candidate-to-floor envelopes are shared by both new heads.','',
+        'Actual candidate-to-floor envelopes are shared by both new heads.',
+        'The floor has no interventions and therefore no finite selected-risk',
+        'support; this does not mean it causes harm. Its zero path change is',
+        'analytical equality, not an empirical finite-support risk certificate.','',
         '## Intervention Size And Matched Utility','',
         '| Model | Source-macro switch (%) | Source-macro mean amplitude, all rows | Empty matched group views |',
         '|---|---:|---:|---:|']
