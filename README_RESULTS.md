@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Reference Prediction: Direct Regression Beats The Two-Part Head
+## Reference Prediction: New Heads Fail The Existing Learned Control
 
 The fixed-decision diagnosis points to reference support, not just harm
 magnitude. I am testing direct reference regression against a two-part head
@@ -23,14 +23,22 @@ prediction improves normalized MSE over a constant prior by6.88075e-5
 [95% grouped development CI:9.50482e-6,1.47169e-4]. This is not trajectory gain.
 The hurdle head is worse than direct regression by2.21094e-5 MSE
 [3.67567e-6,4.30839e-5]; its event Brier improvement is not established.
-I am comparing the frozen heads with the existing learned neural reference
-on the same rows, keeping both known-label and conservative bounded targets.
-No policy, risk gate or deployment has changed; all23source groups remain
-exposed development, not independent confirmation.
+The completed same-row learned-control comparison changes the interpretation:
+C-selected reference MSE is worse than the existing neural head, by1.42915e-4
+[7.55963e-5,2.22749e-4] on known labels and1.43482e-4
+[7.79073e-5,2.21417e-4] under the original bounded-label target. Both target
+definitions remain visible; neither supports replacement. In each comparison,
+20/23source groups favor the old neural output. All18old neural cost arrays
+and108new reference arrays replay exactly. The new and old heads have different
+training targets and capacities, so this is an operational comparison, not a
+matched architecture ablation. No policy, risk gate or deployment has changed;
+all23source groups remain exposed development, not independent confirmation.
+The next target is finite selected-record support, not another claim based
+only on a mean predictor beating a constant prior.
 
 [Frozen study definition](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/protocol.md),
 [complete prediction readout](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/readout.md)
-and [learned-control comparison](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/strong_control/protocol.md).
+and [complete learned-control result](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/strong_control/readout.md).
 
 ## Recording Risk Factors: Complete Fixed-Decision Diagnostic
 
