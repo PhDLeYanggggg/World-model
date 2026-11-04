@@ -5,14 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Hurdle Reference Head: Registered Before Training
+## Hurdle Reference Head: Full Training In Progress
 
 The fixed-decision diagnosis points to reference support, not just harm
 magnitude. I am testing direct reference regression against a two-part head
 that predicts a positive-reference event and its conditional amount. Both
 have 64-tree budgets. Model selection uses whole-source internal C folds,
 with no C-trained critic or globally fitted C normalizer in the inputs.
-No new H predictions, policy changes or deployment claims exist yet.
+Nine real16-tree direct/resumed pilot cells agree exactly, across all three
+critic folds. Pilot elapsed48.49s, peakRSS9.47GB. Full216forest training is
+active locally; the tree-fitting-only projection was254.47s, not a completed
+runtime. No new H predictions, policy changes or deployment claims exist yet.
 
 [Frozen study definition](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/protocol.md).
 
