@@ -7,6 +7,13 @@ or evidence status.
 
 ## Current-Selection Repair: C-Only Trigger Verified,18Fits Running
 
+The full four-arm/four-policy readout is now committed before new Houtcomes.
+Its reporting checks passed10targeted tests, including missing support,
+undefined/negative contrasts and nonfinite interval rejection. These are
+engineering checks, not evidence of efficacy. The evaluator must retain all
+348recording views and the complete original risk contract. GitHub sync to
+add774ac was verified; training is continuing, not complete.
+
 The complete fitting-region comparison exposes a selection mismatch without
 looking at new held outcomes. The new neural head's Hactual/predicted ratio
 is1.46489on its frozen teacher region but20.38847on its own selection; easy-H
