@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recording Risk Factors: Registered Diagnostic
+
+I am separating the remaining risk errors on the fixed decisions before
+training another guard. The four-factor identity distinguishes observed harm,
+observed reference, conservative unknown-label harm and unknown-reference
+credit. All 3 cost classes, 4 policies and repeated recording views stay in
+scope. This is a post-readout diagnostic on verified cost receipts, not new
+inference, calibration, deployment or an independent result.
+
+[Diagnostic definition](outputs/publication_readiness_2026_09/moving_record_risk_factors_v1/protocol.md).
+
 ## Shared Context In Harm Refiners: Complete, Feature Gain Not Established
 
 4 November: I completed the registered equal-width comparison of local-zero
