@@ -62,6 +62,17 @@ current cost floor,role,risk or running continuation. Three synthetic motion,
 future-field and fitting-support checks pass;real baseline scoring is not_run
 at this definition checkpoint.
 
+Scoring and separate exact replay are now complete: PID14602 exits0 in24.333s;
+PID14663 exits0 in24.597s. Both candidate inventories select the same fitting-
+only controls, giving identical held scores. EqMotion minus the selected
+control is +18.3259pp [+9.5118,+26.5624] on known labels; the completion-lower
+contrast is -1.6116pp [-13.6627,+8.9601]. Importantly, the selected social
+control is -2.5830% versus CV on held groups: more candidates did not produce
+a stronger held baseline. The [readout](outputs/publication_readiness_2026_09/moving_social_causal_baselines_v1/readout.md)
+reports all23supported groups,138repeated views per inventory,3,000grouped
+resamples and the unestimable original24-group primary. No floor,policy,data
+role,risk threshold,independent confirmation or deployment status changes.
+
 ### Decoder Signal And Matched Continuation
 
 The [complete fitting-only decoder diagnosis](outputs/publication_readiness_2026_09/moving_decoder_signal_v1/readout.md)

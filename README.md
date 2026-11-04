@@ -74,6 +74,13 @@ and the derived forecasting task is not the dataset author's published task.
 
 [Full new-source comparison and loss curves](outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/readout.md)
 and [relative-motion diagnostic](outputs/publication_readiness_2026_09/moving_relational_diagnostic_v1/readout.md).
+I also tested past-only shared-motion extrapolators, selecting their coefficients
+on producer-fitting sources only. They do not beat CV on held sources: the
+selected control's mean groupwise gain is -2.58%. EqMotion retains an observed
+advantage, but its paired missing-outcome lower interval still crosses zero.
+The [expanded baseline comparison](outputs/publication_readiness_2026_09/moving_social_causal_baselines_v1/readout.md)
+keeps that limitation explicit rather than presenting a larger candidate list
+as proof of a stronger baseline.
 The subsequent matched cost study is also complete: 36 real Torch heads,
 72,000 updates and exact full refit/replay checks. Adding 48 observed-motion
 fields does not establish a gain: the known paired effect is -0.41 pp
