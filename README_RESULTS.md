@@ -14,6 +14,20 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested Cvalidation.
 No new Htest is opened by this decision.
 
+## Source-Separated Neural Critics: Registered, Not Yet Trained
+
+The next controlled model change fits108new point-objective neural cost heads
+on the already registered inner-Cparts:18outer contexts,3parts,2cost seeds.
+Each model's preprocessing and supervision are fitted only on its own part.
+For each held Cpart, proposers and source-disjoint critics are compared with
+same-data/different-seed critics. Controls match each amplitude's count within
+each query, not merely the pooled intervention rate. The fixed primary uses
+the original direct completion-lower contrast and3000source resamples.
+No new Hreadout, official split, certification or deployment is introduced.
+Seven focused tests pass; the true training/resume pilot is next.
+
+[Prospective definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
+
 ## Cross-Critic Veto: Complete C Test, Same-Count Utility Loses
 
 The completed moving-mask loss remains optimistic even on its own fitting
