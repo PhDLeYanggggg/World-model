@@ -11,11 +11,12 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am now testing source-separated neural cost critics, rather than changing
-the evaluation rules after a failure. The registered experiment trains108
-small heads on disjoint inner fitting sources, with same-data seed controls
-and query-level count/amplitude matching. Training and results are recorded
-separately; registration is not evidence of improvement.
+I have completed training 108 source-separated neural cost critics, keeping
+the original evaluation rules. Each head learns only from its own fitting
+sources. Same-data seed controls and query-level count/amplitude matching
+will test whether the second critic adds useful information. All checkpoints
+passed source-isolation checks; the validation readout is next. Training
+completion is not evidence of an improved or deployable model.
 [Experiment definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
 
 I completed nine fixed-budget EqMotion forecasting fits on the EuropeanSquares

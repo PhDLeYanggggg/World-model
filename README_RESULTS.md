@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested Cvalidation.
 No new Htest is opened by this decision.
 
-## Source-Separated Neural Critics: Real Pilot Passed, Training Running
+## Source-Separated Neural Critics: Training Complete, Validation Pending
 
 The next controlled model change fits108new point-objective neural cost heads
 on the already registered inner-Cparts:18outer contexts,3parts,2cost seeds.
@@ -41,6 +41,15 @@ I resumed the unchanged run from that checkpoint, without repeating completed
 fits. The termination cause and exit code are unknown. The wall-clock gap is
 not training compute time; the final resumed-attempt receipt will be labelled
 separately from saved per-head fitting time.
+
+The complete bank finished at 23:08 UTC: 108 real neural heads and 216,000
+saved primary updates. All 108 checkpoint/row/normalizer/optimizer audits
+pass. The 54 same-data seed pairs share normalization but have different
+initial weights. The training freeze was saved before any new nested
+validation readout. Resumed PID 21038 exited 0 after 2,760.31 seconds;
+saved per-head fitting times sum to 8,822.70 seconds. Those are different
+timing definitions, not numbers to add. Peak RSS for the resumed process
+was 9.30 GB. All 19 scoped new-study and parent-control tests pass.
 
 [Prospective definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
 

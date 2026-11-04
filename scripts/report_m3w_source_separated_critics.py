@@ -49,7 +49,7 @@ def figures(fits, summary):
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.7))
     lo, mid, hi = np.quantile(losses, [.1, .5, .9], axis=0)
     axes[0].fill_between(steps, lo, hi, alpha=.2, color='#35719a', label='10th-90th percentile of fits')
-    axes[0].plot(steps, mid, color='#35719a', label='Median across all108fits')
+    axes[0].plot(steps, mid, color='#35719a', label='Median (108 fits)')
     axes[0].set_xlabel('Optimizer updates per model')
     axes[0].set_ylabel('Own-part normalized training objective')
     axes[0].legend(fontsize=7)
@@ -122,19 +122,19 @@ def main():
         worst = r['worst_defined_signed_easy_net_percent']
         risk.append(f"|{arm}|{r['supported_record_views']}|{r['known_all_risk_violations']}|{r['known_easy_risk_violations']}|{r['undefined_easy_views']}|{worst if worst is not None else 'NA'}|{interval(summary['switch_percent'][arm])}|")
     text_once(PUBLIC / 'readout.md', '# Source-Separated Neural Critics: Complete Nested C Readout\n\n'
-        '**fresh_run:**108real Torch cost heads,216000primary optimizer updates; '
+        '**fresh_run:** 108 real Torch cost heads, 216,000 saved primary optimizer updates; '
         'not a new trajectory model, JEPA or generative run. All full-budget weights froze '
-        'before new nested Cvalidation scores. Both orientations and all three original '
+        'before new nested C validation scores. Both orientations and all three original '
         'producer seeds are retained. **cached_verified:** source admission, original '
         'forecast checkpoints, outer roles and existing inner-source mapping. '
-        '**not_run:** new Hreadout, independent confirmation, deployment and paper submission.\n\n'
+        '**not_run:** new H readout, independent confirmation, deployment and paper submission.\n\n'
         'The user explicitly kept the original rules. There is no analytic identity '
-        'certification. Original2%risk, easy-net, support requirements, all unavailable '
-        'views and old failures remain. The original24source primary is still '
+        'certification. The original 2% risk limit, easy-net and support requirements, unavailable '
+        'views and old failures remain. The original 24-source primary is still '
         'not_estimable, not passed.\n\n'
         '## Controlled Model Change\n\n'
-        'Each single Cpart supplies two28229parameter cost heads. Means, scales, '
-        'target RMS and bias use only that own fitting part. For a held Cpart, '
+        'Each single C part supplies two 28,229-parameter cost heads. Means, scales, '
+        'target RMS and bias use only that own fitting part. For a held C part, '
         'the other two provide proposer/risk roles in both orientations. Same-data '
         'critics use the other cost seed on the proposer fitting part. Disjoint-data '
         'critics use different source groups, but are not statistically independent: '
@@ -147,23 +147,29 @@ def main():
         'Primary is the disjoint-data direct completion-lower contrast on causal '
         'nonempty matched queries. Known utility, same-data comparison, complete '
         'strategy and harm are secondary; none can replace a missing/negative primary. '
-        'Required empty source views remain NA. The3000bootstrap uses23source '
-        'units after producer/seed/orientation averaging;276repeated source views '
-        'and696record views are not independent sample sizes. These are exposed '
+        'Required empty source views remain NA. Where estimable, 3,000 bootstrap '
+        'resamples use 23 source units after producer/seed/orientation averaging; '
+        '276 repeated source views and 696 record views are not independent sample sizes. These are exposed '
         'nested development sources, not a recovered final test.\n\n'
+        'The outcome is the registered available-label ADE. Partially labelled '
+        'rows are not silently treated as complete 12-step trajectories; endpoint '
+        'errors remain available-endpoint diagnostics. The completion contrast '
+        'does not establish metric, seconds-level or physical-safety guarantees.\n\n'
         '## Unchanged Full-Policy Risk\n\n'+'\n'.join(risk)+'\n\n'
         'Whole-record risk uses every required view, not just nonempty utility '
         'queries. A no-intervention/zero-reference view does not automatically '
         'pass. A positive model contrast alone does not authorize deployment.\n\n'
         '## Runtime And Reproducibility\n\n'
-        + '\n'.join(f"- {phase}: PID{r['pid']}, {r['seconds']:.2f}s, peakRSS{r['peak_RSS_bytes']/1e9:.3f}GB." for phase, r in receipts.items())
-        + '\n\nAll6pilot resumed/direct scientific states and the first full-budget '
-        'refit agree. Separate replay reproduces216unique Cprediction arrays, '
-        '108orientation policy blocks,1620cost cells and every within-query '
+        + '\n'.join(f"- {phase}: PID {r['pid']}, {r['seconds']:.2f} s, peak RSS {r['peak_RSS_bytes']/1e9:.3f} GB." for phase, r in receipts.items())
+        + '\n\nAll six pilot resumed/direct scientific states and the first full-budget '
+        'refit agree. Separate replay reproduces 216 unique C prediction arrays, '
+        '108 orientation policy blocks, 1,620 cost cells and every within-query '
         'count/amplitude histogram. Exact replay verifies engineering, not '
-        'independent scientific confirmation. No CUDA/MPS claim; native arm64CPU4, '
-        'interop1, workers0. Local native8/12annotation order, not verified time, '
-        'metric, true3D, foundation or human-gold. Stage5C/SMC remain off.\n')
+        'independent scientific confirmation. No CUDA/MPS claim: native arm64, four CPU '
+        'threads, interop one, workers zero. Native 8/12 annotation order is not verified '
+        'time, metric, true 3D, foundation or human-gold. Stage5C/SMC remain off.\n\n'
+        '[Interrupted-run time accounting](runtime_recovery.md). '
+        'The training receipt is the terminal resumed attempt, not the full wall span.\n')
     if interrupted:
         text_once(PUBLIC / 'runtime_recovery.md', '# Interrupted Training: Time Accounting\n\n'
             f"The original PID{interrupted['previous_pid']} and session{interrupted['previous_session']} "
