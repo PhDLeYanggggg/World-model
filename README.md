@@ -176,6 +176,7 @@ and [common-selection checks](outputs/publication_readiness_2026_09/moving_harm_
 I am now testing whether past/current crowd information helps this cost
 estimator. The new comparison retrains equal-width local-zero and shared-context
 controls, leaving forecasts, targets, data roles and the 2% requirements fixed.
+The six real recovery trials agree exactly; full training is in progress.
 It is a registered development experiment, not another deployment claim.
 [Protocol](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/protocol.md).
 
