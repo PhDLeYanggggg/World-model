@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Current-Selection Repair: C-Only Trigger Verified, New Study Registered
+## Current-Selection Repair: C-Only Trigger Verified,18Fits Running
 
 The complete fitting-region comparison exposes a selection mismatch without
 looking at new held outcomes. The new neural head's Hactual/predicted ratio
@@ -15,6 +15,10 @@ registered before this diagnostic therefore triggers one bounded follow-up:
 keep the same extra loss but use the current detached causal selection in it.
 This is fitting diagnosis, not independent validation or a safety pass. Both
 families must freeze before new Hreadout. No loss weight or threshold search.
+The real adaptive pilot passed all six50/100resume-and-selection-stream cells
+and all three frozen-objective loop controls:97.27s, peakRSS9.37GB. The
+projected primary fitting time is1091.15s, not completion. Training is running
+locally with the same18models/36000primary-update target.
 
 [C-only result](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/fitting_regions/readout.md)
 and [current-selection study](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/protocol.md).
