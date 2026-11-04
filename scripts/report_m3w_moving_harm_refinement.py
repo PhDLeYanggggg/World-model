@@ -102,8 +102,12 @@ def figures(summary,fits):
 def main():
     summary=source.read(PUBLIC/'summary.json');verification=source.read(PUBLIC/'verification.json')
     freeze=source.read(PUBLIC/'training_freeze.json')
+    fitting_check=source.read(PUBLIC/'fitting_check/analysis.json')
+    held_check=source.read(PUBLIC/'held_cost_check/analysis.json')
     if (not verification['all72cost_outputs_and_policy_scalars_exact']or verification['summary_sha256']!=source.sha(PUBLIC/'summary.json')
-            or freeze['complete_refiners']!=54):raise ValueError('Complete all fits, held evaluation and separate replay first')
+            or freeze['complete_refiners']!=54 or not fitting_check['all72fitting_prediction_hashes_exact']
+            or not held_check['all72causal_decisions_and_cost_predictions_unchanged']):
+        raise ValueError('Complete all fits, held evaluation, common-region diagnosis and exact observed replay first')
     fits=[source.read(source.checked(ref))for ref in freeze['fits']]
     for row in fits:source.checked(row['checkpoint'])
     for arm in run.api.ARMS:
@@ -141,6 +145,7 @@ def main():
         r=summary['safety'][arm]['joint_free'];worst=r['worst_known_easy_net_degradation_percent']
         safety.append(f"|{arm}|{r['supported_record_views']}|{r['known_all_risk_violations']}|{r['known_easy_risk_violations']}|{r['undefined_easy_views']}|{worst if worst is not None else 'not estimable'}|")
     executions={phase:source.read(PUBLIC/(phase+'_execution.json'))for phase in ('pilot','train','evaluate','verify')}
+    executions['common_fitting_region_diagnosis']=source.read(PUBLIC/'fitting_check/execution.json')
     interruption=PUBLIC/'training_interruption.json'
     if interruption.exists():
         attempt=source.read(interruption)
@@ -155,7 +160,9 @@ def main():
     text+='\n'.join(table)+'\n\n'+'\n'.join(safety)+'\n\n'
     text+=f'Registered supported-group primary positive: {primary_pass}. Complete original risk pass: {risk_pass}. Neither a positive pooled/known score nor a floor-only decision can replace the complete contract.\n\n'
     text+='All6policies,138source/producer/seed views and348repeated recording views are retained. Intervals use3000source-group bootstrap resamples after producer/seed averaging, not IID windows. The original24group primary remains not estimable; this exposed23group study cannot independently recertify deployment. Empty same-count contrasts stay not estimable. Exact replay checks saved solver bindings and feasibility, not bitwise MILP reoptimization.\n\n'
+    text+='The registered paired effects use a common observed-label floor-error denominator. Completion bounds add worst-case path disagreement for wholly unknown rows; partially observed rows still use available-label ADE. These are not full12-step complete-trajectory ADE reductions or bounds on a ratio with an unobserved complete-data denominator. An unchanged floor has zero path change analytically, while unsupported selected-event risk remains not estimable.\n\n'
     text+='[All policies and intervals](summary.json), [secondary metrics](secondary_metrics.json), [fitting moment factorization](fitting_summary.json), [switches and empty controls](policy_usage.json), [solver ledger](solver_summary.json), [actual runtime](runtime_summary.json), [decision](decision.json).\n\n'
+    text+='[Fixed choice-region fitting comparison](fitting_check/readout.md) separates estimation changes from abstention. [Post-decision held-cost diagnostics](held_cost_check/readout.md) retain every causal policy and recording without changing any model prediction or cached decision. These are diagnostics, not independent calibration guarantees.\n\n'
     text+='No new deployment or submission readiness. Native8/12steps and dataset-local pixel coordinates only; no verified seconds, metric scale, true3D or foundation claim. Stage5C and SMC remain off.\n'
     text_once(PUBLIC/'readout.md',text)
     per=['# Every supported source group\n','|Source|Adaptive minus fixed known pp|Adaptive minus fixed completion lower pp|','|---|---:|---:|']

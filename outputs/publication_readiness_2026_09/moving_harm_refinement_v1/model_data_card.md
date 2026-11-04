@@ -41,6 +41,11 @@ There are no newly admitted images, raster/SDF, hand-verified goal labels,
 simulation curriculum or human-gold annotations. Native8observation/12forecast
 steps are not audited raw video frames or seconds. Coordinates remain local
 pixel-space, without verified homography/scale. No metric or true3D claim.
+The paired criterion uses a common observed-label floor-error denominator.
+Whole-unknown row disagreement is bounded, but partial rows retain available-
+label ADE: this is not a complete12step trajectory metric or a bound using an
+unknown complete-data reference denominator. Endpoint FDE is diagnostic where
+an endpoint label exists. Reporting clarification does not change the criterion.
 
 ## Runtime And Reproducibility
 
