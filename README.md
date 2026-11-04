@@ -220,6 +220,13 @@ more optimistic. I do not deploy either version or interpret successful
 training and replay as a successful method. The next test should separate
 proposal selection from risk evaluation on genuinely source-excluded fitting
 data, rather than assume another loss sweep will solve this.
+Before retraining, I also tested a second frozen head as a risk veto and
+matched its intervention count in every query. That cheaper alternative loses
+utility even on C: it removes some harm but rejects more useful predictions.
+Both heads share C training, so this is not a test of an independently fitted
+critic. I do not scale or deploy this particular veto based on a lower harm
+numerator.
+[Same-count veto result](outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/readout.md).
 [Complete two-study analysis](outputs/publication_readiness_2026_09/evidence_manuscript_v9/selected_record_objective_addendum.md)
 and [current-selection results](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/readout.md).
 

@@ -5,19 +5,56 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Cross-Critic Veto: A C-Only Mechanism Test
+## Evaluation Decision: Keep The Original Rules
+
+On November4 I retained the original evaluation contract: no analytic identity-
+fallback certification, no changed2%risk limit, no removed support requirement.
+Empty utility controls remain not estimable and old failures remain failures.
+The next intervention is a model-training change: source-separated neural
+critics with their own fitting-only preprocessing and nested Cvalidation.
+No new Htest is opened by this decision.
+
+## Cross-Critic Veto: Complete C Test, Same-Count Utility Loses
 
 The completed moving-mask loss remains optimistic even on its own fitting
-selections. I am testing one fixed second-head risk veto before investing in
+selections. I tested one fixed second-head risk veto before investing in
 new critic training. A causal same-count control keeps exactly the same
 number of interventions per query, ordered by the original proposer's own
 predicted utility. This distinguishes a useful second opinion from merely
 switching less. All budgets, weights, features and official source roles stay
 unchanged. No new Hreadout, model fit or deployment is part of this test.
 Both critics share supervised Cexposure: this is not independent validation.
-The definition is committed before the new Cprototype is scored.
+The definition was committed before the new Cprototype was scored.
 
-[Fixed diagnostic protocol](outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/protocol.md).
+All18contexts and36fresh Ccost arrays replay exactly, including144cost cells
+and the original36diagonal training cells. The same-query-count primary loses:
+known utility -2.79342pp [-4.40479,-1.29426]; direct completion-lower
+-3.57542pp [-5.23964,-2.05520]. All138required source views are estimable;
+14981nonempty and1753empty repeated query views remain explicit. The complete
+strategy secondary is negative too, not an alternative positive primary.
+
+The harm numerator does fall: known-harm reduction is0.70313pp
+[0.33098,1.16005], but full-strategy benefit lost is3.42111pp
+[2.09875,4.89549]. Those two use the same complete-strategy denominator;
+the nonempty primary has a different denominator and is not added to them.
+Both matched strategies switch31.5743%on a source-macro basis. Cross-veto
+passes10/348risk views versus9/348for self-count-matched; its worst defined
+easy-net degradation is429.30%. No safety, validation or deployment pass.
+
+Selected mean alpha differs0.903822versus0.927745, so equal counts are not
+equal severity. This is an additional limitation, not evidence of independent
+critic information. The fixed rule does not justify scaling this shared-C
+veto or opening a new Htest. It does not rule out a genuinely independent-data
+critic with a separately defined evaluation design.
+
+Actual run/replay took228.24/254.71monotonic seconds, peakRSS8.77/9.05GB,
+observed exits0; no optimizer updates. Nine focused tests pass. CREATE queue
+checks timed out over the approved hostname and one verified DNS endpoint:
+current remote jobs remain unknown, not failed. No jobs were changed/submitted.
+
+[Complete Creadout](outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/readout.md),
+[tradeoff explanation](outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/interpretation.md)
+and [every source group](outputs/publication_readiness_2026_09/moving_cross_critic_veto_v1/per_source.md).
 
 ## A Fixed Support Limit, Separate From Learning Quality
 

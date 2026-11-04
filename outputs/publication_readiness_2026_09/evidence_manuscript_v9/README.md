@@ -180,3 +180,15 @@ data, with the locked project environment:
 That is lightweight result reconstruction, not fresh model inference or a
 completed anonymous raw-data cold start. Independent confirmation, supported
 full-policy risk and submission readiness are still missing.
+
+## Fixed Second-Critic Veto: Also Negative
+
+The [C-only veto readout](../moving_cross_critic_veto_v1/readout.md) and
+[paired benefit/harm explanation](../moving_cross_critic_veto_v1/interpretation.md)
+are a subsequent prospective diagnostic, not an Hmethod selection. At exactly
+the same intervention count per query, the shared-C second head loses utility:
+it discards more benefit than harm. All18contexts/36Carrays replay exactly.
+No new model was trained or new Hpolicy scored. This rules out promoting that
+particular cheap veto, not all independently fitted critics. Counts do not
+match intervention magnitude; that confound and all risk failures remain.
+This additional report is also separate from the compiled main PDF.
