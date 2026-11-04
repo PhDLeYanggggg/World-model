@@ -5,14 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Current-Selection Repair: C-Only Trigger Verified,18Fits Running
+## Current-Selection Repair: All 36 New Cost Heads Frozen
 
 The full four-arm/four-policy readout is now committed before new Houtcomes.
 Its reporting checks passed10targeted tests, including missing support,
 undefined/negative contrasts and nonfinite interval rejection. These are
 engineering checks, not evidence of efficacy. The evaluator must retain all
 348recording views and the complete original risk contract. GitHub sync to
-add774ac was verified; training is continuing, not complete.
+add774ac was verified. The second full phase is now complete: 18 adaptive
+heads, 36,000 primary updates, 1599.06s and peak RSS 9.31GB, observed exit0.
+Both complete first-model refits match, including the adaptive selection
+stream. All 18 initializations, row/schema/normalizer/sampler bindings and
+budgets match their frozen-teacher controls. The two model banks were frozen
+before any new H outcome. No held-policy efficacy result is available yet.
 
 The complete fitting-region comparison exposes a selection mismatch without
 looking at new held outcomes. The new neural head's Hactual/predicted ratio
@@ -24,8 +29,8 @@ This is fitting diagnosis, not independent validation or a safety pass. Both
 families must freeze before new Hreadout. No loss weight or threshold search.
 The real adaptive pilot passed all six50/100resume-and-selection-stream cells
 and all three frozen-objective loop controls:97.27s, peakRSS9.37GB. The
-projected primary fitting time is1091.15s, not completion. Training is running
-locally with the same18models/36000primary-update target.
+projected primary fitting time was1091.15s, not the actual elapsed phase time.
+The completed phase also includes control refits and fitting diagnostics.
 
 [C-only result](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/fitting_regions/readout.md)
 and [current-selection study](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/protocol.md).
@@ -43,8 +48,8 @@ controls match exactly,94.60s, peakRSS9.29GB. Its projected primary fitting
 time was1099.51s, not a completion claim. The actual full phase finished in
 1541.61s with peakRSS9.29GB,36000primary updates and all18models frozen.
 These models have not yet produced new held-source outcomes. A predeclared
-C-only fitting-region check is running before any decision about follow-up
-training; it is not independent validation or calibration.
+C-only fitting-region check is now complete and exactly replayed; it triggered
+the registered current-selection follow-up above, not independent validation.
 Both full first-context refits now pass too: the point loop reproduces its
 original model/optimizer/sampler state, and the new objective reproduces itself.
 No new trajectory training, threshold search or independent data opening.

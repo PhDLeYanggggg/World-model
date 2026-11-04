@@ -45,7 +45,7 @@ def cost_diagnostics(receipts):
             cells = [cell['scores'] for receipt in receipts for cell in receipt['fixed_region_cost_diagnostics']
                 if cell['model'] == model and cell['region'] == region]
             if len(cells) != 18:
-                raise ValueError('Every fixed model/region combination needs all18held jobs')
+                raise ValueError('Every fixed model/region combination needs all 18 held jobs')
             actual = np.sum([c['realized_selected_known_moments'] for c in cells], axis=0)
             estimate = np.sum([c['predicted_on_selected_known_moments'] for c in cells], axis=0)
             ratios = {name: float(a/b) if b > 0 else None
@@ -78,7 +78,7 @@ def figures(summary):
         ax.set_ylim(2.5, -.5)
         ax.set_title(title)
         ax.set_xlabel('Adaptive joint utility contrast (pp)')
-    fig.suptitle('23exposed source groups; three seeds; grouped95%CI, not confirmation', fontsize=10)
+    fig.suptitle('23 exposed source groups; three seeds; grouped 95% CI, not confirmation', fontsize=10)
     fig.tight_layout()
     fig.savefig(public / 'paired_effects.svg')
     fig.savefig(private / 'paired_effects.png', dpi=160)
@@ -127,26 +127,26 @@ def main():
         easy = 'not_estimable' if easy is None else f'{easy:.6f}'
         risk_table.append(f'|{arm}|{row["supported_record_views"]}|{row["known_all_risk_violations"]}|{row["known_easy_risk_violations"]}|{row["undefined_easy_views"]}|{easy}|')
     text_once(PUBLIC / 'readout.md', '# Current-Selection Neural Cost Training\n\n'
-        '18fresh neural cost heads,36000primary updates,three actual seeds; same models, '
+        '18 fresh neural cost heads, 36,000 primary updates, three actual seeds; same models, '
         'inputs, initializations, sampled queries and budget as frozen-teacher controls. '
         'The only loss change is detached current independent selection instead of fixed teacher selection. '
-        'Both complete model banks froze before any new Hreadout. All54neural prediction arrays and '
+        'Both complete model banks froze before any new H readout. All 54 neural prediction arrays and '
         'all policy blocks replay; all three cached control decisions match the verified parent. '
-        'Tree costs were not freshly inferred; cached allocation replay is not bitwise MILPreoptimization.\n\n'
+        'Tree costs were not freshly inferred; cached allocation replay is not bitwise MILP reoptimization.\n\n'
         + '\n'.join(table) + '\n\n' + '\n'.join(risk_table) + '\n\n'
         + f'Supported-source mechanism gate:{decision["supported_source_mechanism_gate"]}. '
-        'New deployment:False. Original24group primary:not_estimable, not passed.\n\n'
-        'Current selection is causal but the record loss uses Csupervision. Its selection is independent-agent, '
+        'New deployment: False. Original 24-group primary: not_estimable, not passed.\n\n'
+        'Current selection is causal but the record loss uses C supervision. Its selection is independent-agent, '
         'not the final joint choice; sampled record multisets are not unbiased full-video loss estimates. '
-        'No gradient through action choice; this is not SPO+or a new safety theorem. '
+        'No gradient through action choice; this is not SPO+ or a new safety theorem. '
         'A no-switch batch has no extra record term, not an observed safety pass.\n\n'
-        'Every348repeated recording view, four policies, original2%positive-harm/support and signed-net '
+        'All 348 repeated recording views, four policies, original 2% positive-harm/support and signed-net '
         'condition remains. Empty same-count utility stays NA. Known-label and bounded-completion '
         'estimands are separate. Cost ratios/zero-CVcounts are supplementary diagnostics, not model selection. '
-        'All23supported groups are exposed development, not independent tests or verified IID scenes. '
-        'Reserved20Moving groups, DUT and DroneCrowd confirmation remain closed.\n\n'
+        'All 23 supported groups are exposed development, not independent tests or verified IID scenes. '
+        'Reserved 20 Moving groups, DUT and DroneCrowd confirmation remain closed.\n\n'
         'No new trajectory model, metric/seconds/physical-safety/true3D/foundation/human-gold claim. '
-        'Native8/12supplied annotation order, not verified sensor-as-of time. Stage5C/SMC off.\n')
+        'Native 8/12 supplied annotation order, not verified sensor-as-of time. Stage5C/SMC off.\n')
     text_once(PUBLIC / 'gates.md', '# Fixed Scientific Gates\n\n' + '\n'.join(f'- {k}: {v}' for k, v in decision.items())
         + '\n\nExecution, development efficacy, complete risk support and independent confirmation are distinct.\n')
     lines = ['# Every Supported Source', '', '|Source|Adaptive minus point lower pp|Minus shared lower pp|Minus frozen lower pp|', '|---|---:|---:|---:|']

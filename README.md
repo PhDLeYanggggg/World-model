@@ -201,11 +201,16 @@ is not a deployment upgrade.
 and [complete learned-reference comparison](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/strong_control/readout.md).
 
 A fixed-selection follow-up finds that lower row-level reference loss can
-coexist with worse recording-level mass estimates. I am testing a targeted
+coexist with worse recording-level mass estimates. I tested a targeted
 change to the existing neural cost objective: learn aggregate excess on its
 fitting teacher's selected sets, while leaving the network, observations,
 forecasts and risk requirements unchanged. This is an experiment, not a new
-deployment result.
+deployment result. The fitting-only diagnosis then found that the model was
+more optimistic on its own selections than on the teacher's selections. I
+therefore trained one matched follow-up using the current detached selection
+in that extra loss. Both banks are now frozen: 36 new neural cost heads across
+three seeds, with the same forecasts, inputs and training budget. Their fixed
+held-source comparison is next; training completion is not a safety result.
 [Selected-set evidence](outputs/publication_readiness_2026_09/moving_selected_reference_v1/readout.md)
 and [matched neural objective](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/protocol.md).
 
