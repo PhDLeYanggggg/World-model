@@ -141,6 +141,14 @@ def main():
         r=summary['safety'][arm]['joint_free'];worst=r['worst_known_easy_net_degradation_percent']
         safety.append(f"|{arm}|{r['supported_record_views']}|{r['known_all_risk_violations']}|{r['known_easy_risk_violations']}|{r['undefined_easy_views']}|{worst if worst is not None else 'not estimable'}|")
     executions={phase:source.read(PUBLIC/(phase+'_execution.json'))for phase in ('pilot','train','evaluate','verify')}
+    interruption=PUBLIC/'training_interruption.json'
+    if interruption.exists():
+        attempt=source.read(interruption)
+        executions['interrupted_training_attempt']=attempt
+        executions['total_training_phase_seconds_lower_bound']=attempt['last_heartbeat_elapsed_seconds_lower_bound']+executions['train']['seconds']
+        executions['total_primary_tree_fit_calls_including_one_unsaved_recomputed_round']=1081
+        executions['retained_primary_trees']=1080
+        executions['additional_pilot_and_full_refit_tree_fits']=132
     source.once(PUBLIC/'runtime_summary.json',executions)
     text='# Matched upward harm refinement: complete readout\n\n'
     text+='Fresh54tree refiners /1080primary tree fits on18cached-verified neural heads. No new neural training. All18original fitting outputs and held baseline outputs replay exactly; all72held cost outputs and policy scalars replay, with72saved solver ledgers. Three complete first-job refits are exact.\n\n'

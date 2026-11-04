@@ -17,6 +17,12 @@ primary remains not estimable. The9real pilot cells pass exact2+2versus4round
 recovery (150.49s, peak10.40GB); the pure-fit full projection is818.60s, not a
 completion claim. Complete54refiner fitting is live, PID33620 verified against
 the heartbeat; no new held scientific score has been read.
+The first16refiners and all three first-job full refits are complete and exact.
+The original training attempt exited1at the9.5GiB resource reserve, after at
+least477.38s; no model crash or new held readout. A precommitted operational
+wrapper resumes the original partial checkpoint with9GiB reserve and the same
+100MiB artifact cap. No scientific budget,2%rule or data role changes. The new
+PID is34279. [Verified numerator/reference decomposition](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/prior_mass_factorization.md).
 The inherited10GiB resource guard stopped one launch before registration or
 fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
 no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
