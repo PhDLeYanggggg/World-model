@@ -1,5 +1,6 @@
 from copy import deepcopy
-from scripts.report_m3w_moving_adaptive_record_cost import scientific_decision
+import pytest
+from scripts.report_m3w_moving_adaptive_record_cost import scientific_decision, validate_solver_metadata
 
 
 def summary():
@@ -31,3 +32,13 @@ def test_positive_development_contrast_does_not_promote_deployment():
     assert decision['supported_source_mechanism_gate']
     assert not decision['new_deployment'] and not decision['submission_ready']
     assert not decision['independent_confirmation'] and not decision['new_trajectory_training']
+
+
+def test_solver_fallback_counts_are_retained_not_claimed_all_optimal():
+    meta = dict(completed_queries=3, bindings=dict(seconds=.25),
+        reason_counts={p: dict(exact_milp=2, solver_status_1_parent_fallback=1) for p in ('joint_free', 'joint_matched')},
+        nonoptimal_queries=dict(joint_free=1, joint_matched=1), changed_queries=dict(joint_free=1, joint_matched=2))
+    validate_solver_metadata(meta)
+    meta['reason_counts']['joint_free']['solver_status_1_parent_fallback'] = 0
+    with pytest.raises(ValueError):
+        validate_solver_metadata(meta)

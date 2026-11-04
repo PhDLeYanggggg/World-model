@@ -57,6 +57,39 @@ def cost_diagnostics(receipts):
     return rows
 
 
+def validate_solver_metadata(meta):
+    n = meta['completed_queries']
+    if n <= 0 or meta['bindings']['seconds'] != .25:
+        raise ValueError('Complete original-budget solver metadata required')
+    for policy in ('joint_matched', 'joint_free'):
+        counts = meta['reason_counts'][policy]
+        if (any(v < 0 for v in counts.values()) or sum(counts.values()) != n
+                or not 0 <= meta['nonoptimal_queries'][policy] <= n
+                or not 0 <= meta['changed_queries'][policy] <= n):
+            raise ValueError('Every query must retain its actual solver outcome')
+
+
+def solver_diagnostics(receipts):
+    rows = []
+    for receipt in receipts:
+        job = receipt['job']['key']
+        for bank, base, suffix in (('frozen_teacher', run.run.teacher.PRIVATE, 'record_excess'),
+                                   ('adaptive', PRIVATE, 'adaptive_selection')):
+            path = base / 'allocation' / (job + '_' + suffix + '.npz')
+            with np.load(path, allow_pickle=False) as packet:
+                meta = source.json.loads(str(packet['metadata_json']))
+            validate_solver_metadata(meta)
+            rows.append(dict(job=job, bank=bank, queries=meta['completed_queries'],
+                reason_counts=meta['reason_counts'], nonoptimal_queries=meta['nonoptimal_queries'],
+                changed_queries=meta['changed_queries'], allocation=source.artifact(path)))
+    if len(rows) != 36:
+        raise ValueError('Both complete18-bank solver reports required')
+    return dict(rows=rows, actual_repeated_query_workload_not_IID_data=True,
+        zero_count_or_analytic_optimum_separate_from_MILP=True,
+        original_point_and_shared_controls_not_reoptimized=True,
+        bitwise_MILP_reoptimization_claimed=False)
+
+
 def figures(summary):
     import matplotlib
     matplotlib.use('Agg')
@@ -103,8 +136,10 @@ def main():
         raise ValueError('Retain every supported source view')
     decision = scientific_decision(summary)
     diagnostics = cost_diagnostics(receipts)
+    solver = solver_diagnostics(receipts)
     source.once(PUBLIC / 'decision.json', source.stable(decision))
     source.once(PUBLIC / 'cost_diagnostics.json', source.stable(diagnostics))
+    source.once(PUBLIC / 'solver_diagnostics.json', source.stable(solver))
     source.once(PUBLIC / 'secondary_metrics.json', source.stable(secondary_intervals(records, source.read(run.run.teacher.PARENT.CONFIG))))
     zero = {arm: dict(known_zero_CV_rows=sum(r['zero_CV_diagnostic'][arm]['known_zero_CV_rows'] for r in records),
         positive_error_on_zero_CV_rows=sum(r['zero_CV_diagnostic'][arm]['positive_error_on_zero_CV_rows'] for r in records))
@@ -115,6 +150,7 @@ def main():
         for phase in ('pilot', 'train', 'evaluate', 'verify')}, primary_new_neural_cost_heads=18,
         primary_optimizer_updates=36000, nominal_pilot_optimizer_updates=1500,
         full_refit_optimizer_updates=4000, new_trajectory_training=False,
+        phase_seconds_measurement='time.monotonic_elapsed_not_CPU_time_or_guaranteed_wall_clock_interval',
         cached_frozen_teacher_controls=18, cached_original_point_controls=18))
     table = ['|Adaptive joint-free versus|Known utility pp [95%CI]|Direct completion-lower pp [95%CI]|', '|---|---:|---:|']
     for arm in ('point', 'shared_tree', 'frozen_teacher'):
@@ -126,6 +162,13 @@ def main():
         easy = row['worst_known_easy_net_degradation_percent']
         easy = 'not_estimable' if easy is None else f'{easy:.6f}'
         risk_table.append(f'|{arm}|{row["supported_record_views"]}|{row["known_all_risk_violations"]}|{row["known_easy_risk_violations"]}|{row["undefined_easy_views"]}|{easy}|')
+    solver_table = ['|New bank|Policy|Repeated queries|Nonoptimal/fallback queries|', '|---|---|---:|---:|']
+    for bank in ('frozen_teacher', 'adaptive'):
+        cells = [r for r in solver['rows'] if r['bank'] == bank]
+        for policy in ('joint_matched', 'joint_free'):
+            total = sum(r['queries'] for r in cells)
+            nonoptimal = sum(r['nonoptimal_queries'][policy] for r in cells)
+            solver_table.append(f'|{bank}|{policy}|{total}|{nonoptimal} ({100*nonoptimal/total:.2f}%)|')
     text_once(PUBLIC / 'readout.md', '# Current-Selection Neural Cost Training\n\n'
         '18 fresh neural cost heads, 36,000 primary updates, three actual seeds; same models, '
         'inputs, initializations, sampled queries and budget as frozen-teacher controls. '
@@ -133,13 +176,16 @@ def main():
         'Both complete model banks froze before any new H readout. All 54 neural prediction arrays and '
         'all policy blocks replay; all three cached control decisions match the verified parent. '
         'Tree costs were not freshly inferred; cached allocation replay is not bitwise MILP reoptimization.\n\n'
-        + '\n'.join(table) + '\n\n' + '\n'.join(risk_table) + '\n\n'
+        + '\n'.join(table) + '\n\n' + '\n'.join(risk_table) + '\n\n' + '\n'.join(solver_table) + '\n\n'
         + f'Supported-source mechanism gate:{decision["supported_source_mechanism_gate"]}. '
         'New deployment: False. Original 24-group primary: not_estimable, not passed.\n\n'
         'Current selection is causal but the record loss uses C supervision. Its selection is independent-agent, '
         'not the final joint choice; sampled record multisets are not unbiased full-video loss estimates. '
         'No gradient through action choice; this is not SPO+ or a new safety theorem. '
         'A no-switch batch has no extra record term, not an observed safety pass.\n\n'
+        'solver_diagnostics.json retains actual per-query reason counts for both new banks, '
+        'including time/status limits and postcheck fallbacks. Feasibility replay does not '
+        'mean every decision was an optimal MILP solution. No solver budget was increased.\n\n'
         'All 348 repeated recording views, four policies, original 2% positive-harm/support and signed-net '
         'condition remains. Empty same-count utility stays NA. Known-label and bounded-completion '
         'estimands are separate. Cost ratios/zero-CVcounts are supplementary diagnostics, not model selection. '

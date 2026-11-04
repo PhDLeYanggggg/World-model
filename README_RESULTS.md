@@ -23,7 +23,7 @@ The three diagnostic tests pass; this is not fresh raw-data inference.
 ## Current-Selection Repair: All 36 New Cost Heads Frozen
 
 The full four-arm/four-policy readout is now committed before new Houtcomes.
-Its reporting checks passed10targeted tests, including missing support,
+Its current checks passed 14 targeted tests, including missing support,
 undefined/negative contrasts and nonfinite interval rejection. These are
 engineering checks, not evidence of efficacy. The evaluator must retain all
 348recording views and the complete original risk contract. GitHub sync to
@@ -33,6 +33,10 @@ Both complete first-model refits match, including the adaptive selection
 stream. All 18 initializations, row/schema/normalizer/sampler bindings and
 budgets match their frozen-teacher controls. The two model banks were frozen
 before any new H outcome. No held-policy efficacy result is available yet.
+The readout also retains every actual solver reason, including status/time
+limits and postcheck fallbacks; replay does not mean all allocations were
+optimal MILP solutions. No solver budget was increased. These checks do not
+constitute a fresh run of the full historical test suite.
 
 The complete fitting-region comparison exposes a selection mismatch without
 looking at new held outcomes. The new neural head's Hactual/predicted ratio
