@@ -103,6 +103,14 @@ fitting check and verified readout/plotter are implemented before the new held
 readout;they do not choose checkpoints. The expanded focused suite passes11
 checks,including all-region support accounting and empty-contrast reporting.
 
+Full continuation now finishes with observed exit0: PID13079,2,930.122s,
+peakRSS7,331,446,784bytes. All36heads complete2,000additional updates each,
+72,000new primary updates total;the18pairs match initial scientific states,
+optimizers and draws. Both complete first-job refits are exact. Every receipt
+and checkpoint hash is freshly checked,and the minimum additional query visits
+is24. This is completed real Torch training,not a passed scientific gate.
+The fixed-region fitting audit now runs before any new held-policy readout.
+
 ### Admitted Moving-Source Forecast Controls
 
 The [complete new-source control](outputs/publication_readiness_2026_09/moving_source_forecast_v1/protocol.md)
