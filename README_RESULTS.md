@@ -97,6 +97,9 @@ original-budget solver ledgers. The [derivation](outputs/publication_readiness_2
 separates elementary curve structure from unproved risk/calibration claims.
 The combined47focused tests pass3.73s;the full report-mutating legacy suite
 is not run as a readonly smoke test. No new held outcome or deployment.
+The first two producer folds now complete12fresh heads/24,000primary
+updates;all12checkpoint hashes are freshly checked. Producer2continues
+under the samePID27883/session56988. Full training is not yet claimed.
 
 ### Matched Amplitude Cost Learning
 
