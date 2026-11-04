@@ -22,6 +22,22 @@ The three diagnostic tests pass; this is not fresh raw-data inference.
 
 ## Current-Selection Repair: All 36 New Cost Heads Frozen
 
+The frozen-teacher arm's complete Hreadout and36-array replay are now done.
+Versus shared tree, known utility rises6.44194pp [2.69052,10.44579], but direct
+completion-lower is3.45471pp [-2.34214,8.56057]. Versus its actual matched neural
+control, both contrasts are negative: known -4.92049pp [-8.74045,-1.69321],
+lower -9.24427pp [-15.04626,-4.25927]. Complete risk support is14/348, with251
+known all-risk and249easy-risk violations; worst signed easy-net degradation
+is309.59%. It is not deployed. These are exposed-development contrasts, not
+independent confirmation or relative-percent improvements.
+
+The adaptive evaluator's first call exited before allocation/scoring at a
+hash-serialization mismatch. The solver binding serializes(shape,dtype),
+whereas the general array hash serializes(dtype,shape). Correcting that exact
+guard preserves original registration and adds a separate runtime binding.
+The four focused hash/cache tests pass; altered values, shapes and dtypes
+are still rejected. No model, loss, threshold or Hselection change.
+
 The full four-arm/four-policy readout is now committed before new Houtcomes.
 Its current checks passed 14 targeted tests, including missing support,
 undefined/negative contrasts and nonfinite interval rejection. These are
@@ -32,7 +48,7 @@ heads, 36,000 primary updates, 1599.06s and peak RSS 9.31GB, observed exit0.
 Both complete first-model refits match, including the adaptive selection
 stream. All 18 initializations, row/schema/normalizer/sampler bindings and
 budgets match their frozen-teacher controls. The two model banks were frozen
-before any new H outcome. No held-policy efficacy result is available yet.
+before any new H outcome. Adaptive policy results are pending the corrected run.
 The readout also retains every actual solver reason, including status/time
 limits and postcheck fallbacks; replay does not mean all allocations were
 optimal MILP solutions. No solver budget was increased. These checks do not

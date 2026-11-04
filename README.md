@@ -210,7 +210,13 @@ more optimistic on its own selections than on the teacher's selections. I
 therefore trained one matched follow-up using the current detached selection
 in that extra loss. Both banks are now frozen: 36 new neural cost heads across
 three seeds, with the same forecasts, inputs and training budget. Their fixed
-held-source comparison is next; training completion is not a safety result.
+held-source comparison is fixed in advance; training completion is not a safety result.
+The frozen-teacher loss has now completed that comparison. It improves known
+utility against the conservative tree, but loses to the matched neural head,
+does not establish the completion-lower gain and badly fails recording-level
+easy preservation. I do not deploy it. The already-frozen current-selection
+version is the next comparison, not a model selected after this failure.
+[Complete frozen-teacher result](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/readout.md).
 
 A separate verified support check also limits what training can establish:
 15 of the 348 recording views have zero full observed easy-reference mass.

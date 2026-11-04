@@ -6,12 +6,15 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts import run_m3w_moving_adaptive_record_cost as run
-from src.evaluation.m3w_verified_choice_cache import verified_choices, POLICIES
+from src.evaluation.m3w_verified_choice_cache import verified_choices, POLICIES, binding
 from src.evaluation.m3w_selected_cost_audit import selected_costs
 
 source, PUBLIC, PRIVATE = run.source, run.PUBLIC, run.PRIVATE
 REG = PUBLIC / 'evaluation_registration.json'
 FILES = (Path(__file__), PUBLIC / 'evaluation_protocol.md')
+RUNTIME_REG = PUBLIC / 'evaluation_runtime_registration.json'
+PATCH_NOTE = PUBLIC / 'evaluation_runtime_patch_note.md'
+RUNTIME_FILES = (*FILES, ROOT / 'tests/test_m3w_adaptive_record_evaluation.py', PATCH_NOTE)
 ARMS = ('point', 'shared_tree', 'frozen_teacher', 'adaptive')
 
 
@@ -20,7 +23,40 @@ def check_choice_hashes(choices, expected):
         raise ValueError('Every cached control choice must match its verified parent readout')
 
 
+def check_prediction_binding(meta, prediction):
+    if meta['original_prediction_binding'] != binding(prediction):
+        raise ValueError('Cached neural choice bank must bind the actual current cost output')
+
+
+def runtime_registration():
+    original = source.read(REG)
+    if ((PUBLIC / 'evaluate_execution.json').exists() or any((PUBLIC / 'held').glob('*.json'))
+            or any((PRIVATE / 'allocation').glob('*.npz'))):
+        raise ValueError('Record this serialization repair before adaptive choices or scoring')
+    if original['bindings'][str(FILES[1].relative_to(ROOT))] != source.sha(FILES[1]):
+        raise ValueError('Do not change the original scientific protocol')
+    for name in ('adaptive_training_registration', 'frozen_training_registration', 'C_only_trigger'):
+        source.checked(original[name])
+    source.once(RUNTIME_REG, source.stable(dict(
+        **{k: v for k, v in original.items() if k != 'bindings'},
+        original_evaluation_registration=source.artifact(REG),
+        bindings={str(p.relative_to(ROOT)): source.sha(p) for p in RUNTIME_FILES},
+        failed_preallocation_log=source.artifact(PRIVATE / 'evaluate_failed_binding_20261104.log'),
+        failed_pid=74361, failed_exit_code_observed=1,
+        repair='use_original_solver_shape_dtype_serialization_for_its_prediction_binding',
+        frozen_models_source_roles_protocol_losses_thresholds_and_metrics_unchanged=True,
+        new_adaptive_labels_not_scored_before_patch=True)))
+
+
 def registration():
+    if RUNTIME_REG.exists():
+        current, original = source.read(RUNTIME_REG), source.read(REG)
+        source.checked(current['original_evaluation_registration'])
+        if any(current.get(k) != v for k, v in original.items() if k != 'bindings'):
+            raise ValueError('Runtime repair must preserve every scientific registration field')
+        if any(source.sha(ROOT / filename) != expected for filename, expected in current['bindings'].items()):
+            raise ValueError('Corrected runtime definition changed')
+        return RUNTIME_REG
     if not REG.exists() and ((run.teacher.PUBLIC / 'evaluate_execution.json').exists()
             or any((run.teacher.PUBLIC / 'held').glob('*.json'))):
         raise ValueError('Register the full comparison before any new Houtcome')
@@ -31,16 +67,21 @@ def registration():
         arms=list(ARMS), primary='adaptive_minus_frozen_teacher_joint_free_completion_lower',
         strong_control='adaptive_minus_shared_tree_joint_free_completion_lower',
         no_H_model_or_threshold_selection=True, independent_confirmation=False)))
+    return REG
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('register', 'evaluate', 'verify'))
+    parser.add_argument('phase', choices=('register', 'runtime-register', 'evaluate', 'verify'))
     args = parser.parse_args()
-    registration()
+    if args.phase == 'runtime-register':
+        runtime_registration()
+        return
+    active_registration = registration()
     if args.phase == 'register':
         return
-    for path in (*FILES, REG):
+    definition = source.read(active_registration)
+    for path in (*(ROOT / filename for filename in definition['bindings']), active_registration):
         content = source.subprocess.run(['git', 'show', 'HEAD:' + str(path.relative_to(ROOT))], cwd=ROOT, capture_output=True, check=True).stdout
         if source.hashlib.sha256(content).hexdigest() != source.sha(path):
             raise ValueError('Commit unchanged full-comparison definition before readout')
@@ -87,8 +128,8 @@ def main():
                 choices[name], meta = verified_choices(path, source.sha(path), c, p, cfg['joint_solver_seconds_per_query'])
                 old_name = 'record_excess' if name == 'frozen_teacher' else name
                 check_choice_hashes(choices[name], original['choice_hashes'][old_name])
-                if name != 'shared_tree' and meta['original_prediction_binding'] != source.array_hash(predictions[name]):
-                    raise ValueError('Cached neural choice bank must bind the actual current cost output')
+                if name != 'shared_tree':
+                    check_prediction_binding(meta, predictions[name])
             source.PRIVATE = PRIVATE
             choices['adaptive'], _ = source.allocated(predictions['adaptive'], c, p, job, 'adaptive_selection', cfg, beat,
                                                        verify=args.phase == 'verify')
