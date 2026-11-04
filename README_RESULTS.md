@@ -50,6 +50,16 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Cross-Amplitude Shape Diagnosis
+
+The [fitting-only follow-up](outputs/publication_readiness_2026_09/moving_amplitude_shape_v1/protocol.md)
+is registered before the real curve readout. It checks all36frozen heads'
+cross-amplitude H/EH monotonicity,convexity and H/alpha ordering,then relates
+violations to selected known easy-harm mass. No new model,policy,held scoring,
+threshold,data role or reserved outcome access. Four synthetic tests pass
+0.14s;real curve counts are not_run at registration. The old scalar-score
+monotone calibration is not this within-row amplitude-shape diagnosis.
+
 ### Matched Amplitude Cost Learning
 
 The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
