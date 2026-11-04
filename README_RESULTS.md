@@ -79,6 +79,14 @@ arithmetic is disclosed,not a precision ablation. Real pilot/training/new
 held outcomes are not_run at registration. Seven combined synthetic tests
 pass1.77s,including shape,gradient,control equality and exact resume checks.
 
+The real three-fold pilot now exits0asPID27760in58.452761s,peakRSS
+9,306,439,680bytes. All50+50/direct100convex states are exact and original
+control initial states/100step query streams match. Pure18-fit projection
+is1,173.099820s,not completed training;full refits/preparation/held solves
+are additional. The full18fresh-head task is live asPID27883/session56988,
+without changing the fixed2,000update budget. Current45focused tests pass
+2.75s. No new held-policy outcome is claimed from the pilot or live loss.
+
 ### Matched Amplitude Cost Learning
 
 The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
