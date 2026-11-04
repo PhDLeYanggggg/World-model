@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Current-Selection Repair: C-Only Trigger Verified, New Study Registered
+
+The complete fitting-region comparison exposes a selection mismatch without
+looking at new held outcomes. The new neural head's Hactual/predicted ratio
+is1.46489on its frozen teacher region but20.38847on its own selection; easy-H
+ratios are0.74107and29.59719. All36Ccost arrays and72cells replay. The rule
+registered before this diagnostic therefore triggers one bounded follow-up:
+keep the same extra loss but use the current detached causal selection in it.
+This is fitting diagnosis, not independent validation or a safety pass. Both
+families must freeze before new Hreadout. No loss weight or threshold search.
+
+[C-only result](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/fitting_regions/readout.md)
+and [current-selection study](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/protocol.md).
+
 ## Selected-Record Neural Objective:18Fits Frozen Before New Held Readout
 
 The fixed-set diagnosis motivates a loss-only test, not a larger architecture.
