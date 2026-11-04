@@ -141,11 +141,19 @@ The next question is why selected harm remains underpredicted on fitting
 sources, not whether another held-threshold sweep can make this result pass.
 
 The [frozen fitting-curve check](outputs/publication_readiness_2026_09/moving_amplitude_shape_v1/readout.md)
-now finds that roughly70% of the supervised amplitude head's repeated fitting
+now finds that roughly 70% of the supervised amplitude head's repeated fitting
 rows violate positive-harm convexity,although the true-label curves do not.
-This is not a unique cause of failure. I have registered a same-capacity
-constrained-decoder comparison to test it,without changing the risk contract
-or claiming a new convex-network architecture.
+This is not a unique cause of failure. I tested a same-capacity constrained
+decoder with 18 fresh heads and 36,000 updates, retaining the verified old
+amplitude heads as matched controls. Curve checks pass, but known utility is
+essentially unchanged: -0.02 pp [-0.53,+0.51]. The paired missing-outcome lower
+effect is -1.83 pp [-3.62,-0.42], and complete risk support stays at 10/348
+repeated recording views. I do not deploy it or claim new dynamics lift.
+
+[Complete constrained-head results and loss curves](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/readout.md)
+and [failure analysis](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/failure_analysis.md).
+This separates a correct structural prior from reliable intervention costs:
+enforcing the right curve shape is not enough to learn the right magnitudes.
 
 ## What Has Not Worked
 

@@ -182,6 +182,7 @@ def main():
     for arm in ('unconstrained','convex'):
         rows=[r for r in solver if r['arm']==arm]
         lines.append(f"| {arm} | {sum(r['queries']for r in rows)} | {sum(r['nonoptimal'].get('joint_matched',0)for r in rows)} | {sum(r['nonoptimal'].get('joint_free',0)for r in rows)} |")
+    lines.append('')
     for phase in ('pilot','train','evaluate','verify'):
         r=read(PUBLIC/(phase+'_execution.json'))
         lines.append(f"{phase}: {r['seconds']:.3f} s; peak RSS {r['peak_RSS_bytes']:,} bytes.")
@@ -205,6 +206,22 @@ def main():
     for name,value in (('policy_usage',dict(rows=use,action_count_order=['fallback','unavailable_floor_alias','1/32','1/16','1/8','1/4','1/2','1'])),
             ('solver_summary',dict(rows=solver)),('fitting_summary',fitting),('secondary_metrics',secondary),('decision',decision)):
         (PUBLIC/(name+'.json')).write_text(json.dumps(value,indent=2,sort_keys=True,allow_nan=False)+'\n')
+    by={key:primary[key]['by_source_group']for key in ('known_pp','completion_lower_pp','completion_upper_pp')}
+    if len(by['known_pp'])!=23 or any(set(v)!=set(by['known_pp'])for v in by.values()):
+        raise ValueError('Every supported source required in the diagnostic breakdown')
+    source_lines=['# All Supported Source Groups','',
+        'Convex minus unconstrained joint-free; within-source producer/seed means.',
+        'These are descriptive development points, not per-source confidence',
+        'intervals or verified independent geographic scenes. All 23 supported',
+        'sources remain; the original 24-group primary is not estimable.','',
+        '| Source group | Known effect (pp) | Paired completion lower (pp) | Paired completion upper (pp) |',
+        '|---|---:|---:|---:|']
+    for name in sorted(by['known_pp']):
+        source_lines.append(f"| `{name}` | {by['known_pp'][name]:+.6f} | {by['completion_lower_pp'][name]:+.6f} | {by['completion_upper_pp'][name]:+.6f} |")
+    (PUBLIC/'per_source.md').write_text('\n'.join(source_lines)+'\n')
+    lines+=['','The complete source breakdown is in `per_source.md`; no favorable',
+        'source subset is promoted to a new primary. Full error/subset ledgers,',
+        'solver outcomes and the negative decision remain available.']
     (PUBLIC/'readout.md').write_text('\n'.join(lines)+'\n')
 
 

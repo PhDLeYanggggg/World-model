@@ -117,6 +117,40 @@ original0.25s/query budget. No partial group is used to select a model.
 The reporter distinguishes zero predicted positive actual cost from an empty
 mass ratio. Current48focused tests pass3.08s;full legacy suite remains not_run.
 
+The full constrained-head evaluation now exits0asPID29951in841.278129s,
+peakRSS5,691,883,520bytes;separate replayPID30996exits0in180.764369s,
+peakRSS5,530,927,104bytes. All36cost outputs and policy scalars are exact,
+including the cached parent controls. All36original-budget solver ledgers
+are checked,not bitwise MILP reoptimization. SummarySHA
+0130682b0c077b72c754bcc80b018a43e79ff8a01d787e1add32720549d10e5d.
+
+The [complete readout](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/readout.md)
+rejects the repair. Joint-free known paired effect is-0.021859pp
+[-0.529905,+0.505792];fixed paired completion lower is-1.830778pp
+[-3.623868,-0.422953]. A negative lower criterion is not proof of the
+unobserved true effect's sign;the completion upper is+1.787060pp
+[+0.683564,+3.433760]. Original24-group primary remains not estimable.
+No favorable subset or separately floor-bounded score replaces the fixed
+paired comparison. All23supported source points are reported.
+
+Full original support is still10/348views. Known all/easy violations are
+268/278;47selected easy denominators are undefined;worst known easy-net
+degradation428.913029%,versus376.331142% for the control. Mean source-macro
+switching falls70.925824%->69.567705%,and mean amplitude over all rows
+0.658174->0.629830,but the complete risk contract still fails. Both arms
+have3/138empty same-count comparisons,so full-scope matched utility is not
+estimable. New free solves have173/16,734nonoptimal cases versus175for
+the cached control. All3figures are visually checked. The
+[model/data card](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/model_data_card.md)
+and [failure analysis](outputs/publication_readiness_2026_09/moving_convex_amplitude_v1/failure_analysis.md)
+retain selected-cost underprediction despite correct shapes. No new
+trajectory backbone,independent confirmation,deployment or submission
+promotion. The v9 source addendum is updated;compiled main PDF is unchanged.
+Stage5C execution and SMC remain off. Next action is selected-magnitude/
+reference-support diagnosis against existing controls,not more shape tuning.
+Final same-version focused check:48passed in2.68s. The complete unrelated
+legacy report-writing suite remains not_run,not implicitly passed.
+
 ### Matched Amplitude Cost Learning
 
 The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
