@@ -50,6 +50,31 @@ known-label feature effect.
 
 ## Current Experiments (No Deployment Promotion)
 
+### Matched Amplitude Cost Learning
+
+The [new two-arm protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
+is registered before fitting. Both controls use the same seven-slot amplitude
+inventory,428causal inputs,28,229parameters,old physical critic normalization,
+query72source-balanced sampling and2,000updates. Binary_only learns/permits
+slot6only;amplitude_bank learns/permits all six nonzero fractions. This changes
+supervision and action availability together;the shared-weight binary-only
+deployment control separates the secondary inference effect.
+
+Original CV defines easy labels independently of the new slot1. Actual
+floor-disagreement envelopes and all new candidate costs are rebuilt;R/ER
+are not amplitude-scaled. Five synthetic tests pass1.80s,covering full-amplitude
+feature/label semantics,unknown bounds,unchanged causal inputs,matched capacity,
+future-field rejection and exact fresh-fit resume. They are not real-data
+model results. RegistrationPID20116exits0,packing all195,286original rows;
+hash71d7de935915c8441b3b50348cd14a5643c4e48d79bd433f358da866c53e1e6a.
+All18legacy cached group receipts and their summary hash are freshly checked.
+No optimizer update or held policy score is claimed at this checkpoint.
+
+The [primary-source positioning note](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/literature_position.md)
+keeps interpolation,EqMotion and conformal risk control separate from any new
+contribution claim. No existing CRC theorem is asserted for this incomplete
+support,dependent-source experiment. Independent roles remain closed.
+
 ### Input Clipping And Fixed-Proposal Feasibility
 
 The [complete clipping audit](outputs/publication_readiness_2026_09/moving_input_clipping_v1/readout.md)

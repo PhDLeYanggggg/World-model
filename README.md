@@ -120,6 +120,13 @@ uniform amplitude still fails the complete contract. The
 motivate learning the size of an intervention as well as its occurrence;
 they are not a deployed selector or a safety guarantee.
 
+I am now testing that idea with matched amplitude-conditioned risk heads.
+Both controls see the same candidate paths and have the same capacity; one
+can learn and select only the full neural prediction, while the other can
+learn and select intermediate amplitudes. This experiment has not yet
+produced a performance result. Its [fixed protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
+keeps the original risk contract and all unsupported cases.
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.
