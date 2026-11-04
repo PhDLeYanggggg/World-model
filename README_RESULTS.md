@@ -5,14 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Selected-Record Neural Objective: Preparing A Matched Training Test
+## Selected-Record Neural Objective: Real Pilot Passed,18Fits Running
 
 The fixed-set diagnosis motivates a loss-only test, not a larger architecture.
-I will train18neural cost heads with the original initialization, inputs,
+I am training18neural cost heads with the original initialization, inputs,
 normalization, seeds and2000updates. A selected-record excess term is the only
 new objective component. Original point-objective heads and the stronger
 shared-tree policy remain controls. The real pilot must first prove original
-training-loop and50/100resume equivalence across all three critic folds.
+training-loop and50/100resume equivalence across all three critic folds. That
+pilot is now complete: all six recovery cells and all three original-loop
+controls match exactly,94.60s, peakRSS9.29GB. Its projected primary fitting
+time is1099.51s, not an observed completion time. Full training is running
+locally; these models have not yet produced new held-source outcomes.
 No new trajectory training, threshold search or independent data opening.
 The first real pilot exited at a duplicate log-field write before primary
 training. Its step0checkpoint is retained; the logging-only fix and actual
