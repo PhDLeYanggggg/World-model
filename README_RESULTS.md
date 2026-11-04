@@ -14,6 +14,26 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Joint Harm Event Supervision: Registered, Training Pending
+
+I am testing one loss change after the negative source-separated critic study:
+explicit joint benefit/non-easy-harm/easy-harm event and conditional magnitude
+supervision. Both arms have the same factorized architecture, initialization,
+source-isolated preprocessing, query samples and full training budget. Earlier
+European hurdle and ranking failures remain part of the rationale; factorization
+itself is not a claimed invention. This is a controlled model test, not another
+threshold search or a change in the original risk rules.
+
+The registered plan is 108 heads, 216,000 primary optimizer updates, three
+producer seeds and all original inner-C parts. Those counts are planned, not
+completed. Fourteen focused new/parent tests pass, including an actual tiny
+Torch resume check; the real data pilot and full fitting have not yet run.
+All outputs remain exposed SOURCE development, not independent confirmation.
+The latest read-only CREATE attempt returned an SSH authentication banner and
+then a connection timeout; queue state remains unknown and no job was submitted.
+
+[Definition](outputs/publication_readiness_2026_09/moving_joint_harm_v1/protocol.md).
+
 ## Source-Separated Neural Critics: Complete, Still Not Deployable
 
 The complete validation and exact replay do not support deployment. Both

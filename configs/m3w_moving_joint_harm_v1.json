@@ -1,0 +1,30 @@
+{
+  "name": "moving_joint_harm_v1",
+  "arms": ["product_moment", "event_supervised"],
+  "new_heads": 108,
+  "primary_updates": 216000,
+  "training": {
+    "width": 64,
+    "learning_rate": 0.001,
+    "query_batch_size": 72,
+    "minimum_updates": 2000,
+    "largest_source_cycles": 4,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 100,
+    "checkpoint_every": 100
+  },
+  "disk_reserve_bytes": 5368709120,
+  "private_artifact_cap_bytes": 536870912,
+  "risk_budget": 0.02,
+  "easy_net_budget": 0.02,
+  "loss_change": "unweighted_joint_event_CE_plus_positive_conditional_envelope_fraction_MSE",
+  "coefficient": 1.0,
+  "primary": "event_veto_minus_own_query_count_and_amplitude_matched_self_nonempty_completion_lower",
+  "source_role": "already_exposed_SOURCE_nested_C_development",
+  "new_H_readout": false,
+  "threshold_search": false,
+  "identity_certification": false,
+  "deployment_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
