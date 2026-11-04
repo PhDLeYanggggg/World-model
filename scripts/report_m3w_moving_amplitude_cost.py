@@ -113,7 +113,7 @@ def figures(summary,fits):
         ax.plot(steps,np.median(matrix,0),color='#176e8b');ax.fill_between(steps,matrix.min(0),matrix.max(0),alpha=.15)
         ax.set_title(arm.replace('_',' '));ax.set_xlabel('Fresh optimizer updates')
         ax.set_ylabel('Own active-action fitting objective');ax.set_yscale('log')
-    fig.suptitle('Different active supervision sets: loss levels are not directly comparable')
+    fig.suptitle('Different active supervision sets: loss levels are not directly comparable\nMedian and min-max across 18 fitting runs, not validation confidence intervals',fontsize=10)
     fig.tight_layout();fig.savefig(public/'fitting_losses.svg');fig.savefig(private/'fitting_losses.png',dpi=170);plt.close(fig)
 
 
@@ -227,6 +227,8 @@ def main():
         'Native arm64 CPU4/interop1/workers0, atomic checkpoints and exact resume.',
         'Fitting-loss panels use different active-action targets; smaller values',
         'in one panel do not by themselves show better learning than the other.',
+        'Lines are medians and shading is the min-max over 18 fitting runs,',
+        'not validation confidence intervals or independent experimental units.',
         'Saved solver bindings/feasibility replay is not bitwise MILP reoptimization.',
         'Joint allocation pools predicted budgets, not geometric collision costs.',
         'Required views repeat producer/seed contexts, not independent recordings.',

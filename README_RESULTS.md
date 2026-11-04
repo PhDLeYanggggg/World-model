@@ -98,6 +98,14 @@ The whole36-head matrix now completes with observed exit0:PID20580,
 both first-job full2krefits finish;all18paired initial states/samplers/draws
 match. Every36receipt/checkpoint hash is freshly checked;minimum complete
 query visits25. No warm or pilot updates are recounted as primary work.
+
+The complete144-view fitting-side audit now finishes before the new held
+evaluation,with a separate exact scalar replay:209.622892s and208.742056s.
+Own-region known EH/predicted EH is202.25for the amplitude head versus731.85
+for binary;both still severely underestimate selected harm. These pooled
+resubstitution mass ratios are not calibration success or held accuracy.
+The complete fixed held matrix is running asPID24487;no threshold,checkpoint
+or input is changed from these diagnostics. No complete held score is claimed.
 The fitting-side144-view audit is now live asPID23972/session81003before
 new held policy readout. Solver-fallback accounting is also implemented before
 that readout,so predicted-feasible parent fallback is not mislabeled as an
