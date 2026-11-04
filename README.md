@@ -211,6 +211,13 @@ therefore trained one matched follow-up using the current detached selection
 in that extra loss. Both banks are now frozen: 36 new neural cost heads across
 three seeds, with the same forecasts, inputs and training budget. Their fixed
 held-source comparison is next; training completion is not a safety result.
+
+A separate verified support check also limits what training can establish:
+15 of the 348 recording views have zero full observed easy-reference mass.
+No selected subset can create positive reference mass in those fixed views.
+I retain them as unsupported rather than claiming that a smaller learning
+loss makes the original complete-roster risk requirement pass.
+[Support diagnosis](outputs/publication_readiness_2026_09/moving_support_ceiling_v1/readout.md).
 [Selected-set evidence](outputs/publication_readiness_2026_09/moving_selected_reference_v1/readout.md)
 and [matched neural objective](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/protocol.md).
 

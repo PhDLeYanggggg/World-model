@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## A Fixed Support Limit, Separate From Learning Quality
+
+Fresh arithmetic on hash-checked old complete feasibility receipts confirms
+15/348 views have exactly zero full observed easy-reference mass. Every
+selected subset has at most that mass, so at most 333/348 views can have the
+required positive easy reference under the unchanged floor/event/labels.
+333 is an upper bound, not achievable support or a safety pass. This argument
+does not infer general joint infeasibility from the 330 single-row witnesses.
+No view, risk threshold or original failure is removed. These 15 cases cannot
+be repaired by cost learning alone; the current matched studies test decision
+and mass-estimation errors separately, not disappearance of this limitation.
+The three diagnostic tests pass; this is not fresh raw-data inference.
+
+[Verified support ceiling](outputs/publication_readiness_2026_09/moving_support_ceiling_v1/readout.md).
+
 ## Current-Selection Repair: All 36 New Cost Heads Frozen
 
 The full four-arm/four-policy readout is now committed before new Houtcomes.
