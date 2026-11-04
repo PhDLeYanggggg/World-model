@@ -11,13 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I have completed training 108 source-separated neural cost critics, keeping
-the original evaluation rules. Each head learns only from its own fitting
-sources. Same-data seed controls and query-level count/amplitude matching
-will test whether the second critic adds useful information. All checkpoints
-passed source-isolation checks; the validation readout is next. Training
-completion is not evidence of an improved or deployable model.
-[Experiment definition](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/protocol.md).
+I trained 108 source-separated neural cost critics on MovingDroneCrowd++
+SOURCE to test whether a second model can judge an intervention's risk more
+reliably. Each head learns only from its own fitting sources. This did not
+solve the admission problem. With the same intervention count and amplitude
+distribution in each query, the source-disjoint veto loses 0.56 percentage
+points of known-label utility against its matched control (95% CI:
+-1.09 to -0.19). The registered nonempty primary remains unavailable because
+18 required source views have empty controls; I did not drop them or replace
+the primary. The original risk rules remain unmet, so deployment is unchanged.
+[Complete experiment and training losses](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/README.md).
 
 I completed nine fixed-budget EqMotion forecasting fits on the EuropeanSquares
 SOURCE data, using three real training seeds and the same observations, labels

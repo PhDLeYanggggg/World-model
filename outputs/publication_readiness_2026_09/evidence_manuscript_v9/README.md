@@ -192,3 +192,20 @@ No new model was trained or new Hpolicy scored. This rules out promoting that
 particular cheap veto, not all independently fitted critics. Counts do not
 match intervention magnitude; that confound and all risk failures remain.
 This additional report is also separate from the compiled main PDF.
+
+## Source-Separated Critics: Complete Negative Follow-Up
+
+The [new 108-head experiment](../moving_source_separated_critics_v1/README.md)
+uses the already registered inner-source mapping and own-fit normalization,
+with same-data seed controls and within-query count/amplitude matching.
+All 216,000 saved primary updates are complete. Its nonempty primary remains
+unavailable because 18 required disjoint-data views have empty controls.
+The complete-strategy secondary is negative too: known -0.563 pp
+[-1.095, -0.193], direct lower -1.274 pp [-2.089, -0.586]. Only 44/696 risk
+views pass the original contract. Exact replay does not make this deployable.
+
+The original evaluation rules were retained; no analytic identity fallback
+certification, new H readout, independent confirmation, deployment or paper
+promotion occurred. This follow-up, its failure analysis and loss figure are
+not included in the compiled main PDF. The paper still lacks the required
+successful main-method and independent primary evidence.

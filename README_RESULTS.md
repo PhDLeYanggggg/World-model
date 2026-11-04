@@ -7,14 +7,55 @@ or evidence status.
 
 ## Evaluation Decision: Keep The Original Rules
 
-On November4 I retained the original evaluation contract: no analytic identity-
-fallback certification, no changed2%risk limit, no removed support requirement.
+On 4 November I retained the original evaluation contract: no analytic identity-
+fallback certification, no changed 2% risk limit, no removed support requirement.
 Empty utility controls remain not estimable and old failures remain failures.
 The next intervention is a model-training change: source-separated neural
-critics with their own fitting-only preprocessing and nested Cvalidation.
-No new Htest is opened by this decision.
+critics with their own fitting-only preprocessing and nested C validation.
+No new H test is opened by this decision.
 
-## Source-Separated Neural Critics: Training Complete, Validation Pending
+## Source-Separated Neural Critics: Complete, Still Not Deployable
+
+The complete validation and exact replay do not support deployment. Both
+vetoes lose to their own causal controls, which match each amplitude's count
+within each query. The original 2% risk and support rules remain unchanged.
+
+|Veto|Nonempty primary|Full-strategy known pp [95% CI], secondary|Full-strategy direct lower pp [95% CI], secondary|
+|---|---|---:|---:|
+|Same-data, different seed|NA: 6/276 required views empty|-0.373 [-0.672, -0.151]|-0.877 [-1.370, -0.477]|
+|Source-disjoint|NA: 18/276 required views empty|-0.563 [-1.095, -0.193]|-1.274 [-2.089, -0.586]|
+
+Source-disjoint veto reduces known harm by 0.213 pp [0.093, 0.346], but loses
+0.776 pp [0.356, 1.325] of known benefit on the same full-strategy denominator.
+The matched pair both switch 26.961% on a source-macro basis. Its positive
+known-label gain over the physical floor is not an advantage over the matched
+control or a safety pass. Only 44/696 recording views meet the original full
+risk/support requirements; 443 have known all-risk violations, 448 have known
+easy-risk violations, and 173 have unavailable selected easy risk. Worst
+defined signed record easy-net degradation is 477.76%, not a dataset-wide mean.
+
+On identical selected known rows, actual harm and easy-harm masses are 122.85
+and 553.27 times the second head's estimates. These are descriptive repeated-
+row ratios, not calibration bounds. All 216 unique validation arrays, 108
+policy blocks and 1,620 cost cells replay exactly. Estimable intervals use
+3,000 resamples of 23 source units, not overlapping windows as independent
+observations. The unavailable primary is not replaced by the negative
+full-strategy secondary. No new H readout, deployment, Stage5C or SMC.
+
+All 20 scoped tests pass. A repeatable public-artifact read-only replay
+completed in 311.18 s with exit 0, checking the real model outputs while
+leaving existing public study files unchanged. It updates private logs only.
+This is command-interface verification, not another scientific experiment
+or independent confirmation. The full historical suite was not rerun.
+
+[Complete readout](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/README.md),
+[recovery accounting](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/runtime_recovery.md)
+and [literature positioning](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/related_work_positioning.md).
+
+### Training And Recovery Record
+
+The milestones below retain their original observation times; they are not
+the current validation status, which is reported above.
 
 The next controlled model change fits108new point-objective neural cost heads
 on the already registered inner-Cparts:18outer contexts,3parts,2cost seeds.

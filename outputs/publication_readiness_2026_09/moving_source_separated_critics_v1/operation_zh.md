@@ -18,6 +18,17 @@
 .venv-pytorch/bin/python scripts/report_m3w_source_separated_critics.py
 ```
 
+这些是首次运行命令。完整阶段完成后不会覆盖旧结果。日常重新复核请使用：
+
+```sh
+.venv-pytorch/bin/python scripts/replay_m3w_source_separated_critics.py
+```
+
+这个入口重新推理全部216个成本数组，并核对108组策略和1620个成本统计。
+它只更新私有运行心跳和日志，不修改现有公开实验文件，不训练，不读取新H
+结果。缺失产物或数值不一致会报错，不会自动“修正”旧结果。需要本机保留
+的合法数据与检查点；公开Git仓库没有原始数据和权重，不是免数据的演示。
+
 每100次更新保存检查点。心跳、事件记录和模型权重位于 Git 忽略的
 `data/stage_cvpr2027_experiments/moving_source_separated_critics_v1/`。
 一次只运行一个阶段；运行中不要重复启动。若进程确实中断且退出后，使用

@@ -68,9 +68,15 @@ def figures(fits, summary):
             axes[1].plot(r['point'], y, 'o', color='#4f8c70', markersize=4)
     axes[1].set_yticks(range(4), ['Same data: known', 'Same data: direct lower', 'Disjoint data: known', 'Disjoint data: direct lower'], fontsize=8)
     axes[1].set_ylim(3.5, -.5)
-    axes[1].axvline(0, color='.5', lw=1)
-    axes[1].set_xlabel('Veto minus own count/alpha-matched control (pp)')
-    axes[1].set_title('Nested Cdevelopment, not independent test', fontsize=9)
+    estimable = any(v['CI95'] is not None for c in summary['nonempty_matched'].values() for v in c.values())
+    if estimable:
+        axes[1].axvline(0, color='.5', lw=1)
+        axes[1].set_xlabel('Veto minus count/alpha-matched control (pp)')
+        axes[1].set_title('Nested C development, not independent test', fontsize=9)
+    else:
+        axes[1].set_xlim(0, 1); axes[1].set_xticks([])
+        axes[1].set_xlabel('Primary not estimable; no replacement CI', fontsize=8)
+        axes[1].set_title('Required empty views remain in the primary', fontsize=9)
     fig.tight_layout()
     public, private = PUBLIC / 'figures', run.PRIVATE / 'figure_previews'
     public.mkdir(exist_ok=True); private.mkdir(exist_ok=True)
