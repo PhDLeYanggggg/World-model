@@ -200,6 +200,15 @@ is not a deployment upgrade.
 [Risk-factor diagnosis](outputs/publication_readiness_2026_09/moving_record_risk_factors_v1/readout.md)
 and [complete learned-reference comparison](outputs/publication_readiness_2026_09/moving_hurdle_reference_v1/strong_control/readout.md).
 
+A fixed-selection follow-up finds that lower row-level reference loss can
+coexist with worse recording-level mass estimates. I am testing a targeted
+change to the existing neural cost objective: learn aggregate excess on its
+fitting teacher's selected sets, while leaving the network, observations,
+forecasts and risk requirements unchanged. This is an experiment, not a new
+deployment result.
+[Selected-set evidence](outputs/publication_readiness_2026_09/moving_selected_reference_v1/readout.md)
+and [matched neural objective](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/protocol.md).
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.

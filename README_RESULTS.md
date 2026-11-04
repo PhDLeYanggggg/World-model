@@ -5,17 +5,35 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Selected-Region Reference Check: Registered, Not Run
+## Selected-Record Neural Objective: Preparing A Matched Training Test
+
+The fixed-set diagnosis motivates a loss-only test, not a larger architecture.
+I will train18neural cost heads with the original initialization, inputs,
+normalization, seeds and2000updates. A selected-record excess term is the only
+new objective component. Original point-objective heads and the stronger
+shared-tree policy remain controls. The real pilot must first prove original
+training-loop and50/100resume equivalence across all three critic folds.
+No new trajectory training, threshold search or independent data opening.
+
+[Registered objective definition](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/protocol.md).
+
+## Selected-Region Reference Check: Complete, No Support Repair
 
 The new reference head loses on full-roster prediction, but that does not by
 itself characterize its errors on the controller's selected sets. I am checking
 the original3cost classes and4policies with all4176repeated recording views
 fixed. No new solver choice or risk threshold is allowed. The check separates
 row prediction loss, recording-mass error and absent observed reference.
-It also makes an important scope limit explicit: the new head predicts easy
-reference ER, not all-reference R, so it cannot fix all-risk Rerrors.
+All4176views replay. In the shared policy's177defined active views, C-selected
+reference reduces row MSE by5.83736e-5 but increases recording-mass squared
+error by1.63167e-4. These are post-hoc conditional descriptive means, not
+complete-roster estimates or CIs: required empty views leave all-view intervals
+not_estimable. All four predictors still assign positive ERin all51active
+shared-policy views without observed support.47have some label for every
+selected row. The new head predicts ER, not all-reference R, so cannot fix
+all-risk Rerrors by construction. No decisions or safety gates change.
 
-[Fixed-set diagnostic definition](outputs/publication_readiness_2026_09/moving_selected_reference_v1/protocol.md).
+[Fixed-set diagnostic result](outputs/publication_readiness_2026_09/moving_selected_reference_v1/readout.md).
 
 ## Reference Prediction: New Heads Fail The Existing Learned Control
 
