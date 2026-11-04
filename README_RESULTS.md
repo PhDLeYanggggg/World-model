@@ -85,6 +85,24 @@ scores. It will report uniform-policy utility/risk and separate label-aware
 candidate opportunity. The15empty-event views must remain. Two causal-path
 tests pass;no new model is trained and no deployment is promoted.
 
+The [six-fraction matrix and exact replay](outputs/publication_readiness_2026_09/moving_amplitude_opportunity_v1/readout.md)
+are now complete: PID18901exits0 in86.927810s;PID19028exits0 in86.215520s.
+Every alpha=1policy and witness exactly reproduces the parent. Candidate-set
+oracle opportunity rises299to330/348,covering31/34candidate-limited views;
+15empty-event and3candidate-limited views remain. This is not learned coverage.
+Every uniform causal policy still fails: alpha1/32known gain+1.1488%
+[+0.8788,+1.4285],completion lower+0.4792%[+0.1593,+0.7808],but only96/348
+full-risk supported views and65known easy-risk violations. No favorable
+fraction is selected or deployed. The complete current focused suite passes
+26tests in2.36s;both new figures are actually viewed. Full unrelated legacy
+tests remain not_run because they mutate historical report outputs.
+
+The [paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/moving_source_feasibility_addendum.md)
+now consolidates all later moving-source experiments and their limitations.
+This is a fresh synthesis of cached_verified science,not new training or an
+updated compiled main PDF. Full original risk and independent validation
+remain failed/incomplete;goal active,not submission-ready.
+
 ### Expanded Social Motion Controls
 
 A [separate strong-baseline extension](outputs/publication_readiness_2026_09/moving_social_causal_baselines_v1/protocol.md)

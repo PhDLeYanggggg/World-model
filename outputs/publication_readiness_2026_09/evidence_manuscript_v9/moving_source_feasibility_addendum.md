@@ -1,0 +1,148 @@
+# Moving-Source Forecasts, Conditional Risk And Candidate Feasibility
+
+This addendum records the completed MovingDroneCrowd++ follow-up. It is not
+yet integrated into the compiled v9 main PDF; that PDF and its visual receipt
+are unchanged. Scientific numbers below are cached_verified completed results,
+not fresh replications created by writing. None establishes independent final
+confirmation, deployment or submission readiness.
+
+## Population And Matched Forecasting
+
+The admitted 64 recordings contain 195,286 past-eligible target windows for
+eight observed and twelve requested native annotation steps. Fifty-eight
+recordings in 23 conservative source groups support actual queries. One of
+the original 24 declared groups has no query, so the full-roster primary is
+not estimable. All supported-group comparisons remain development secondary
+evidence; the six zero-query recordings and empty declared group are retained
+in the scope ledger. Sources are not certified independent physical sites.
+
+Nine PCT and nine fixed-head K=1 EqMotion producers complete identical
+4,000-update budgets and matched sampling using three actual seeds. Both
+families use the same causal histories and nearest eight complete-past
+neighbors. This is an existing-method control, not a new M3W architecture or
+published best-of-20 reproduction. Every saved forecast and two complete
+first-model refits replay exactly.
+
+| Model | Available-label pixel ADE | Mean source-group gain over causal CV |
+|---|---:|---:|
+| Causal CV | 61.3680 | 0.00% |
+| PCT | 77.3815 | -39.27% |
+| Fixed-head EqMotion | 53.4925 | +15.74% |
+
+The paired EqMotion-minus-PCT known-label gain is +55.02 percentage points
+(pp), grouped 95% CI [+27.89,+87.39]. The paired missing-outcome completion
+lower is +14.46 pp [-8.19,+38.93]. The latter does not establish a robust
+positive comparison. Intervals resample 23 source groups 3,000 times after
+excluded-producer and actual-seed averaging, not overlapping windows.
+
+The larger past-only social-kinematic candidate inventories select their
+coefficients on producer-fitting sources only. Both select identical controls.
+The selected social control has -2.58% held known gain over CV, so it is not
+advertised as a stronger held baseline simply because the inventory expanded.
+EqMotion's observed advantage over that control does not repair the uncertain
+missing-outcome contrast. The expanded inventory is not exhaustive.
+
+## Better Fitting Is Not Safe Admission
+
+Thirty-six matched cost heads compare local history with 48 additional
+all-current observed-motion fields. Predictor, critic and evaluation source
+groups are disjoint within each pipeline; outcomes are nevertheless already
+development-exposed. Both feature arms finish 2,000 updates per head.
+Shared-minus-local joint-free known utility is -0.41 pp [-2.66,+2.00]; its
+paired completion lower is -5.33 pp [-8.95,-2.27]. The information addition
+does not establish a positive effect or a complete risk pass.
+
+A further matched continuation starts from the same 18 frozen local heads,
+restoring weights, Adam state, sampling and normalization. Original-loss and
+stable-logit-auxiliary arms each receive 2,000 additional updates. All 36
+continuations, two full first-job refits and the complete policy replay finish.
+The fixed auxiliary-minus-continuation joint-free known contrast is -9.31 pp
+[-15.59,-3.44]; the paired completion-lower contrast is -16.86 pp
+[-27.30,-7.69]. These are fixed contrasts, not a selected favorable policy.
+
+The fitting-region check was run before this continuation's held readout.
+Auxiliary known easy-harm/predicted easy-harm mass is 0.485 on the frozen
+parent's selection region but 19.83 on its own region. Thus repairing old
+selected cases is not calibration of new choices. The group-macro joint
+switch rate falls from 70.00% to 11.86%, while only 4/348 auxiliary repeated
+recording views meet the full original contract. Reduced intervention is not
+a complete safety result. Full-scope same-count utility is not estimable;
+empty controls are neither zero utility nor a safety pass.
+
+A separate fitting-only input audit finds clipped fields on just 0.39% of
+parent-selected row views, containing 0.95% of their known easy-harm mass.
+It does not support hard input clipping as the dominant explanation. Context
+and optimization effects are not causally ruled out, and no clipping-map
+retraining sweep is launched from that diagnosis.
+
+## Fixed-Candidate Feasibility
+
+Before more selector training, test whether the original recording gate is
+attainable with this binary neural/floor proposal at all. For known legal
+easy rows with positive floor error R, let H be the nonnegative increase in
+available-label error. A finite-support binary policy satisfies both 2%
+positive-harm ratios and the signed easy-net requirement if and only if some
+such row has H/R <= 0.02. Necessity follows because selected easy risk is a
+reference-weighted average of these ratios. Sufficiency follows by selecting
+one qualifying row and keeping the remainder at the floor. Unknown selected
+rows contribute bound mass but no observed easy reference and cannot rescue
+an otherwise infeasible easy constraint.
+
+This is elementary feasibility accounting, not a new learning guarantee or
+an architecture contribution. All single-row witnesses were checked against
+the unchanged evaluator and replayed exactly. Thirty additional synthetic
+cases exhaust every binary policy and confirm the same criterion.
+
+Only 299/348 repeated recording views are feasible: 34 are candidate-limited
+and 15 have no observed easy event under the original fitting-derived cutoff.
+Fourteen of 58 unique actual-query recordings have at least one infeasible
+view. The entire fixed binary roster therefore cannot pass through better
+critic optimization alone. This is not an impossibility claim about every
+forecaster, future annotation process or scientific protocol.
+
+## A Constructive But Insufficient Action-Class Change
+
+A prospective follow-up fixes all six amplitudes
+{1/32,1/16,1/8,1/4,1/2,1} before scoring. Candidate paths are the physical floor
+plus a fixed amplitude times the past-only neural/floor difference. Every
+fraction is reported; no winner is chosen from held outcomes. No neural
+model, residual head or selector is trained by this control.
+
+The candidate set admits a label-aware witness in 31 of the 34 formerly
+candidate-limited views, increasing total feasibility to 330/348. Fifteen of
+these newly feasible views admit a half-amplitude witness, and six admit a
+quarter-amplitude witness, so the opportunity is not confined to arbitrarily
+near-zero changes. It still uses labels and is not a learned policy result.
+Fifteen empty-event and three candidate-limited views remain; none is dropped.
+
+Uniform causal interpolation also remains unsafe. At amplitude 1/32, known
+gain is +1.15% [+0.88,+1.43] and completion lower +0.48% [+0.16,+0.78], but
+only 96/348 views meet the original complete contract, with 65 known easy-risk
+violations. Larger amplitudes trade more utility against failed risk. These
+development intervals are not independent success or permission to deploy.
+
+The next method would need to learn past-conditioned amplitude costs and
+joint allocation without inheriting full-amplitude costs for changed paths.
+The empty-event problem separately requires explicit data/event support;
+the original 2% requirements are not silently relaxed. Independent model
+selection, risk calibration and final confirmation remain outstanding.
+
+## Claim Boundary And Evidence Links
+
+These results provide a real stronger forecast component, negative risk-learning
+controls and a constructive candidate-space diagnosis. They do not yet support
+the complete M3W method or a submission-ready claim. This is 2D image-plane
+forecasting within a 2.5D trajectory/world-state research system, not true 3D
+or foundation success. Native annotation steps are not verified video frames
+or seconds. Pixels are not metres. Partial available-label ADE and bounds for
+wholly unknown outcomes do not identify missing steps within partial futures.
+No independent role, future endpoint input, central velocity input or test-goal
+construction is introduced. Stage5C execution and SMC remain disabled.
+
+- [Matched forecasting and loss curves](../moving_source_forecast_supported_v1/readout.md)
+- [Expanded causal controls](../moving_social_causal_baselines_v1/readout.md)
+- [Matched shared-motion cost study](../moving_shared_motion_cost_v1/readout.md)
+- [Decoder-link continuation and fixed-region checks](../moving_decoder_link_repair_v1/readout.md)
+- [Input clipping audit](../moving_input_clipping_v1/readout.md)
+- [Exact binary feasibility](../moving_record_feasibility_v1/readout.md)
+- [All fixed-amplitude controls](../moving_amplitude_opportunity_v1/readout.md)

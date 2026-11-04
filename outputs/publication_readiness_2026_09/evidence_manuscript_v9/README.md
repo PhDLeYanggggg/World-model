@@ -139,6 +139,14 @@ duration test follows; it is not a held-policy result or deployment claim.
 
 ## Still Missing
 
+The new [moving-source feasibility addendum](moving_source_feasibility_addendum.md)
+consolidates the completed18forecast,36cost-head and36matched-continuation
+experiments,clipping diagnosis,exact binary risk infeasibility and all six
+fixed-amplitude controls. It separates a stronger known-label forecast from
+failed complete admission. These later results are not yet integrated into
+the compiled main PDF;its hash,LLM disclosure and visual receipt are unchanged.
+No new architecture,independent confirmation or deployment is claimed.
+
 
 A learned full-policy risk pass, supported scene-joint gain, independent final
 confirmation and a complete anonymous cold-start reproduction remain incomplete.

@@ -113,6 +113,12 @@ I keep all of them in the result rather than filtering to the feasible cases.
 The [exact feasibility check](outputs/publication_readiness_2026_09/moving_record_feasibility_v1/readout.md)
 shifts the next work toward candidate quality and event support, not another
 blind selector-loss sweep. It is a diagnosis, not learned model performance.
+Fixed past-only intermediate forecasts then expand that label-aware opportunity
+to 330/348 views, covering 31 of the 34 candidate-limited cases. However, every
+uniform amplitude still fails the complete contract. The
+[amplitude controls](outputs/publication_readiness_2026_09/moving_amplitude_opportunity_v1/readout.md)
+motivate learning the size of an intervention as well as its occurrence;
+they are not a deployed selector or a safety guarantee.
 
 ## What Has Not Worked
 
