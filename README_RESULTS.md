@@ -26,6 +26,12 @@ PID is34279. [Verified numerator/reference decomposition](outputs/publication_re
 The first producer fold is now complete:18refiners/360retained trees, with all
 18checkpoint hashes freshly checked. Remaining folds are still fitting; this
 is not a complete54refiner or held-evaluation result.
+Two producer folds are complete:36refiners/720trees, all checkpoint hashes
+freshly checked. Storage-only transparent compression and three separate
+successful reverifications preserve1,927old public report bytes against HEAD
+or exact members of unchanged committed metric archives. File blocks shrink
+by471,977,984bytes; no raw/cache/checkpoint/unrelated files were touched. This
+is resource engineering, not a model result.27focused tests pass.
 The inherited10GiB resource guard stopped one launch before registration or
 fitting. The prospective operational reserve is9.5GiB with100MiB private cap;
 no unrelated files were deleted. [Protocol](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/protocol.md).
