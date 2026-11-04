@@ -56,3 +56,20 @@ def test_all_solver_receipts_and_fixed_budget_are_required(tmp_path,monkeypatch)
     np.savez_compressed(p/'job0_binary_only.npz',metadata_json=np.asarray(json.dumps(meta)))
     with pytest.raises(ValueError,match='original-budget'):
         report.solver_summary(jobs)
+
+
+def test_secondary_scores_keep_missing_required_subsets_and_source_macro():
+    rows=[]
+    for site,value in [('a',0.),('a',2.),('b',5.)]:
+        score=dict(subsets={s:dict(gain_percent=None if s=='hard'and site=='a'else value)
+            for s in ('easy','hard')},known_ADE_pixel=value,p95_known_ADE_pixel=value,
+            available_endpoint_FDE_diagnostic_pixel=value,full_roster_FDE_pixel=None)
+        rows.append(dict(site=site,policies=dict(binary_only=dict(joint_free=score))))
+    out=report.secondary_intervals(rows,dict(bootstrap_resamples=100,bootstrap_seed=17))
+    scores=out['binary_only']['joint_free']
+    assert scores['known_ADE_pixel']['point']==3.
+    assert scores['hard_gain_percent']['point']is None
+    assert scores['full_roster_FDE_pixel']['point']is None
+    assert scores['easy_gain_percent']['point']==3.
+    assert scores['easy_gain_percent']['by_source_group']==dict(a=1.,b=5.)
+    assert 'by_locality'not in scores['easy_gain_percent']

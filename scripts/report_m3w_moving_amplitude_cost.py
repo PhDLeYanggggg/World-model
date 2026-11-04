@@ -65,6 +65,29 @@ def fitting_summary():
     return rows
 
 
+def secondary_intervals(records,config):
+    from src.evaluation.m3w_selection_forecast_readout import interval as grouped
+    sites=sorted({r['site']for r in records})
+    getters={k:(lambda p,k=k:p[k])for k in ('known_ADE_pixel','p95_known_ADE_pixel',
+        'available_endpoint_FDE_diagnostic_pixel','full_roster_FDE_pixel')}
+    getters.update({s+'_gain_percent':(lambda p,s=s:p['subsets'][s]['gain_percent'])
+        for s in ('easy','hard')})
+    result={}
+    for arm,policies in records[0]['policies'].items():
+        result[arm]={}
+        for policy in policies:
+            result[arm][policy]={name:grouped(records,
+                lambda r,get=get,arm=arm,policy=policy:get(r['policies'][arm][policy]),
+                expected_sites=sites,resamples=config['bootstrap_resamples'],seed=config['bootstrap_seed'])
+                for name,get in getters.items()}
+            for score in result[arm][policy].values():
+                if 'by_locality'in score:
+                    score['by_source_group']=score.pop('by_locality')
+                score['bootstrap_unit']='conservative_source_group_after_producer_and_seed_average_not_verified_IID_sites'
+                score['scientific_role']='supported_group_development_secondary_not_independent_confirmation'
+    return result
+
+
 def solver_summary(jobs):
     if len(set(jobs))!=18:
         raise ValueError('All18held job identities required')
@@ -146,6 +169,7 @@ def main():
     if len(records)!=138:
         raise ValueError('Complete supported group matrix required')
     fit=fitting_summary();use=usage(records)
+    secondary=secondary_intervals(records,read(ROOT/'configs/m3w_moving_amplitude_cost_v1.json'))
     solvers=solver_summary({r['job']['key']for r in fits})
     figures(summary,fits)
     primary=summary['primary_amplitude_minus_binary']['joint_free']
@@ -185,6 +209,22 @@ def main():
         'The floor has no interventions and therefore no finite selected-risk',
         'support; this does not mean it causes harm. Its zero path change is',
         'analytical equality, not an empirical finite-support risk certificate.','',
+        '## Prespecified Subsets And Error Diagnostics','',
+        '| Model, joint-free | Easy known gain (%) [95% CI] | Hard known gain (%) [95% CI] | Available-label ADE (pixel) [95% CI] | Group p95 ADE (pixel) [95% CI] | Available-endpoint FDE diagnostic (pixel) [95% CI] |',
+        '|---|---:|---:|---:|---:|---:|']
+    for arm,policies in secondary.items():
+        row=policies['joint_free']
+        lines.append('| '+arm+' | '+' | '.join(interval(row[k])for k in
+            ('easy_gain_percent','hard_gain_percent','known_ADE_pixel','p95_known_ADE_pixel',
+                'available_endpoint_FDE_diagnostic_pixel'))+' |')
+    lines+=['','These are source-macro secondary diagnostics after producer/seed',
+        'averaging, not a new primary endpoint. Positive subset gain means less',
+        'error; it cannot replace the worst-recording easy-risk gate. The tail',
+        'column averages within-group p95 values, not a pooled population p95.',
+        'The endpoint diagnostic uses only observed final endpoints; full-roster',
+        'FDE remains not estimable when any required view lacks full endpoints.',
+        'A missing required subset stays not estimable, never dropped. All six',
+        'policies and the full-roster FDE status are in `secondary_metrics.json`.','',
         '## Intervention Size And Matched Utility','',
         '| Model | Source-macro switch (%) | Source-macro mean amplitude, all rows | Empty matched group views |',
         '|---|---:|---:|---:|']
@@ -240,7 +280,10 @@ def main():
         'foundation or submission-ready claim. Stage5C execution and SMC stay off.']
     (PUBLIC/'readout.md').write_text('\n'.join(lines)+'\n')
     (PUBLIC/'fitting_summary.json').write_text(json.dumps(dict(rows=fit),indent=2,sort_keys=True,allow_nan=False)+'\n')
-    (PUBLIC/'policy_usage.json').write_text(json.dumps(dict(rows=use),indent=2,sort_keys=True,allow_nan=False)+'\n')
+    (PUBLIC/'secondary_metrics.json').write_text(json.dumps(secondary,indent=2,sort_keys=True,allow_nan=False)+'\n')
+    (PUBLIC/'policy_usage.json').write_text(json.dumps(dict(rows=use,
+        action_count_order=['fallback','unavailable_floor_alias','alpha_1over32','alpha_1over16',
+            'alpha_1over8','alpha_1over4','alpha_1over2','alpha_1']),indent=2,sort_keys=True,allow_nan=False)+'\n')
     (PUBLIC/'solver_summary.json').write_text(json.dumps(dict(rows=solvers),indent=2,sort_keys=True,allow_nan=False)+'\n')
 
 

@@ -120,12 +120,25 @@ uniform amplitude still fails the complete contract. The
 motivate learning the size of an intervention as well as its occurrence;
 they are not a deployed selector or a safety guarantee.
 
-I am now testing that idea with matched amplitude-conditioned risk heads.
-Both controls see the same candidate paths and have the same capacity; one
-can learn and select only the full neural prediction, while the other can
-learn and select intermediate amplitudes. This experiment has not yet
-produced a performance result. Its [fixed protocol](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/protocol.md)
-keeps the original risk contract and all unsupported cases.
+I tested that idea with 36 fresh amplitude-conditioned cost heads and 72,000
+updates. Both controls see the same paths and have the same capacity; one
+learns/selects only the full neural action, while the other learns/selects
+intermediate amplitudes. All new outputs and policy scores replay exactly.
+
+The matched joint-policy known effect is only +0.46 pp [-0.48,+1.49]; its
+paired missing-outcome lower effect is -1.16 pp [-2.91,+0.22]. With the same
+amplitude-head weights, the richer action menu has a small observed benefit
+of +0.59 pp [+0.30,+0.92], but its missing-outcome lower interval crosses zero.
+Neither finding supports a new safe deployment: only 10/348 repeated recording
+views meet the full original risk contract. The richer menu increases the
+source-average switch rate from 63.24% to 70.93%, rather than simply shrinking
+every intervention. I retain the failed primary and do not deploy this head.
+
+[Complete amplitude-learning results and loss curves](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/failure_analysis.md)
+and [reproduction guide](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/operation_zh.md).
+The next question is why selected harm remains underpredicted on fitting
+sources, not whether another held-threshold sweep can make this result pass.
 
 ## What Has Not Worked
 

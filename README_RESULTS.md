@@ -106,6 +106,38 @@ for binary;both still severely underestimate selected harm. These pooled
 resubstitution mass ratios are not calibration success or held accuracy.
 The complete fixed held matrix is running asPID24487;no threshold,checkpoint
 or input is changed from these diagnostics. No complete held score is claimed.
+
+The complete held matrix now finishes:PID24487,910.433301s,peakRSS
+6,212,059,136bytes,all138supported group/pipeline views and348recording views.
+The final completion receipt/log and ended process are verified;the shell
+session handle was lost in truncated tool output,so no separately observed
+shell exit code is asserted for that phase. Separate replayPID25603exits0in
+199.648098s,peakRSS6,264,569,856bytes. All36new cost outputs and policy
+scalars are exact;54saved solver bindings/feasibility receipts are checked,
+not bitwise MILP reoptimization. SummarySHA
+f367c376cd1e8ff053bf6c319e1ad18ee2b89403def6595c1f16cd65ea89b7b4.
+
+The [complete readout](outputs/publication_readiness_2026_09/moving_amplitude_cost_v1/readout.md)
+rejects promotion. Joint-free amplitude-bank minus newly trained binary known
+effect is+0.457936pp[-0.480517,+1.493011];fixed paired completion lower is
+-1.158427pp[-2.906426,+0.218829]. Same-weight amplitude-minus-binary deployment
+known is+0.594669pp[+0.298759,+0.919206],but paired completion lower remains
+uncertain:+0.101009pp[-0.427861,+0.543615]. The secondary known signal does
+not replace the failed primary or independently establish safety.
+
+Amplitude joint-free supports only10/348views,with273known all-risk and281
+known easy-risk violations,46undefined selected easy denominators and worst
+known easy-net degradation376.331142%. Binary-only supports6/348. Source-macro
+switch rates are70.925824% versus63.237067%,and mean amplitude over all rows
+0.658174 versus0.632371. Of repeated selected amplitude-arm row views,92.730071%
+still use the full neural action. Empty matched group views are3/138 versus
+4/138;full-scope same-count utility remains not estimable. No required view
+is filtered. All6policies,easy/hard,tail and endpoint diagnostics remain in
+the new light metrics. The two generated figures are visually checked.
+Current focused tests:38passed in3.23s. Full unrelated report-mutating legacy
+suite not_run. No new trajectory/JEPA training,independent confirmation,
+deployment,Stage5C orSMC. Next action is fitting-side amplitude-shape and
+selected-cost diagnosis before any separately registered model repair.
 The fitting-side144-view audit is now live asPID23972/session81003before
 new held policy readout. Solver-fallback accounting is also implemented before
 that readout,so predicted-feasible parent fallback is not mislabeled as an
