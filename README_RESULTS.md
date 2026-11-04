@@ -5,16 +5,27 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Recording Risk Factors: Registered Diagnostic
+## Recording Risk Factors: Complete Fixed-Decision Diagnostic
 
-I am separating the remaining risk errors on the fixed decisions before
+I separated the remaining risk errors on fixed decisions before
 training another guard. The four-factor identity distinguishes observed harm,
 observed reference, conservative unknown-label harm and unknown-reference
 credit. All 3 cost classes, 4 policies and repeated recording views stay in
 scope. This is a post-readout diagnostic on verified cost receipts, not new
-inference, calibration, deployment or an independent result.
+inference, calibration, deployment or an independent result. All 4,176 original
+cost/decision blocks match; all 8,352 decompositions replay exactly.
 
-[Diagnostic definition](outputs/publication_readiness_2026_09/moving_record_risk_factors_v1/protocol.md).
+In the shared arm, 51 active views have no observed easy-reference mass, and
+47 of those have some future label for every selected row. The issue therefore
+is not just missing outcomes. Of 63 defined all-risk false-feasible views,
+known-harm correction alone flags 33 and reference correction alone flags 26;
+those counts overlap. Upward harm refiners freeze the reference components,
+so their improvement cannot solve reference-support estimation by construction.
+The next controlled target is a source-excluded hurdle reference model, not a
+new scalar penalty or another generic uncertainty-feature network.
+
+[Full diagnostic](outputs/publication_readiness_2026_09/moving_record_risk_factors_v1/readout.md)
+and [definition](outputs/publication_readiness_2026_09/moving_record_risk_factors_v1/protocol.md).
 
 ## Shared Context In Harm Refiners: Complete, Feature Gain Not Established
 
