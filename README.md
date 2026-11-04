@@ -209,14 +209,19 @@ deployment result. The fitting-only diagnosis then found that the model was
 more optimistic on its own selections than on the teacher's selections. I
 therefore trained one matched follow-up using the current detached selection
 in that extra loss. Both banks are now frozen: 36 new neural cost heads across
-three seeds, with the same forecasts, inputs and training budget. Their fixed
-held-source comparison is fixed in advance; training completion is not a safety result.
-The frozen-teacher loss has now completed that comparison. It improves known
+three seeds, with the same forecasts, inputs and training budget. Their
+held-source comparison was fixed in advance. The frozen-teacher loss improves known
 utility against the conservative tree, but loses to the matched neural head,
 does not establish the completion-lower gain and badly fails recording-level
-easy preservation. I do not deploy it. The already-frozen current-selection
-version is the next comparison, not a model selected after this failure.
-[Complete frozen-teacher result](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/readout.md).
+easy preservation. The current-selection version is also complete. It recovers
+known utility over that failed loss, but still loses to the original neural
+head and does not repair risk. Its own fitting-region harm estimates are even
+more optimistic. I do not deploy either version or interpret successful
+training and replay as a successful method. The next test should separate
+proposal selection from risk evaluation on genuinely source-excluded fitting
+data, rather than assume another loss sweep will solve this.
+[Complete two-study analysis](outputs/publication_readiness_2026_09/evidence_manuscript_v9/selected_record_objective_addendum.md)
+and [current-selection results](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/readout.md).
 
 A separate verified support check also limits what training can establish:
 15 of the 348 recording views have zero full observed easy-reference mass.

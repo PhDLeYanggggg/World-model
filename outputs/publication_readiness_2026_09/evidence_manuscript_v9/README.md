@@ -157,3 +157,26 @@ dynamics contribution is claimed by this revision. Available-label ADE is not
 full12 ADE; bounds omit missing steps inside partial futures. Local pixels and
 raw-frame steps are not metric or seconds. Silver is not human gold. Stage5C
 and SMC remain off. No registration or paper submission was made.
+
+## Two Complete Selected-Record Neural Objectives
+
+The [new comparative addendum](selected_record_objective_addendum.md) records
+36 fresh neural cost heads, 72,000 primary updates and complete fixed readouts
+for teacher-selected versus current-selected aggregate training. Neither
+establishes the completion-lower contrasts or complete risk contract. The
+current-selection version remains optimistic on its own C fitting choices;
+the evidence does not reduce to held-source domain shift. This is not a new
+trajectory/JEPA model or a deployment upgrade. Structural zero-reference views,
+rare-event absolute error and every unsupported case remain explicit.
+
+This addendum is not included in the compiled main PDF. Its scalar table can
+be reconstructed from the public verified aggregate receipts, not private row
+data, with the locked project environment:
+
+```sh
+.venv-pytorch/bin/python scripts/report_m3w_record_objective_comparison.py
+```
+
+That is lightweight result reconstruction, not fresh model inference or a
+completed anonymous raw-data cold start. Independent confirmation, supported
+full-policy risk and submission readiness are still missing.

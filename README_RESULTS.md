@@ -20,7 +20,30 @@ The three diagnostic tests pass; this is not fresh raw-data inference.
 
 [Verified support ceiling](outputs/publication_readiness_2026_09/moving_support_ceiling_v1/readout.md).
 
-## Current-Selection Repair: All 36 New Cost Heads Frozen
+## Selected-Record Objectives: Both Complete, Neither Deployable
+
+The current-selection arm is complete too: all54neural cost arrays and all
+three cached parent policy blocks replay exactly. Known utility versus the
+frozen-teacher loss improves4.54795pp [1.56912,8.12552], but direct completion-
+lower is0.96631pp [-1.68089,3.43143]. Against the original neural head, lower
+utility is -1.50397pp [-2.89571,-0.54964]. Against the conservative shared tree,
+lower is4.79508pp [-2.88641,11.31927]. These intervals do not pass the fixed
+scientific contrasts. Full risk support is9/348, with274known all-risk and277
+easy-risk violations,52undefined easy-risk views and worst defined signed
+easy-net degradation376.33%. No deployment change.
+
+Its own Cselection harm actual/predicted mass ratio is36.6987, versus20.3885
+for the frozen-teacher arm; easy-H ratios are134.6385and29.5972. On the same
+adaptive Cselection, the frozen model's ratios are1.6363/0.7958. Thus the
+repair fails already within supervised fitting, not only on new sources.
+These are pooled repeated-row mass diagnostics, not calibration or CIs.
+Hdiagnostics use joint choices while Cuses independent choices, so their
+difference cannot isolate domain shift. Source-macro joint intervention is
+68.15%for current selection,55.11%for frozen teacher,70.93%for original neural
+and4.57%for shared tree; no model was chosen from these descriptive rates.
+
+[Complete comparative paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/selected_record_objective_addendum.md)
+and [all adaptive results](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/readout.md).
 
 The frozen-teacher arm's complete Hreadout and36-array replay are now done.
 Versus shared tree, known utility rises6.44194pp [2.69052,10.44579], but direct
@@ -42,11 +65,12 @@ whereas the general array hash serializes(dtype,shape). Correcting that exact
 guard preserves original registration and adds a separate runtime binding.
 The four focused hash/cache tests pass; altered values, shapes and dtypes
 are still rejected. No model, loss, threshold or Hselection change. The
-corrected full comparison is now running locally; no partial adaptive score
-has been used for a model or policy decision.
+corrected full comparison and its replay are complete; no partial adaptive
+score was used for a model or policy decision. Successful evaluation took
+900.08monotonic seconds, replay252.60s; no further training was performed.
 
 The full four-arm/four-policy readout is now committed before new Houtcomes.
-Its current checks passed 14 targeted tests, including missing support,
+Its current checks passed 17 targeted tests, including missing support,
 undefined/negative contrasts and nonfinite interval rejection. These are
 engineering checks, not evidence of efficacy. The evaluator must retain all
 348recording views and the complete original risk contract. GitHub sync to
@@ -55,7 +79,7 @@ heads, 36,000 primary updates, 1599.06s and peak RSS 9.31GB, observed exit0.
 Both complete first-model refits match, including the adaptive selection
 stream. All 18 initializations, row/schema/normalizer/sampler bindings and
 budgets match their frozen-teacher controls. The two model banks were frozen
-before any new H outcome. Adaptive policy results are pending the corrected run.
+before any new H outcome. Both completed results above remain negative.
 The readout also retains every actual solver reason, including status/time
 limits and postcheck fallbacks; replay does not mean all allocations were
 optimal MILP solutions. No solver budget was increased. These checks do not
@@ -68,7 +92,7 @@ ratios are0.74107and29.59719. All36Ccost arrays and72cells replay. The rule
 registered before this diagnostic therefore triggers one bounded follow-up:
 keep the same extra loss but use the current detached causal selection in it.
 This is fitting diagnosis, not independent validation or a safety pass. Both
-families must freeze before new Hreadout. No loss weight or threshold search.
+families froze before new Hreadout. No loss weight or threshold search.
 The real adaptive pilot passed all six50/100resume-and-selection-stream cells
 and all three frozen-objective loop controls:97.27s, peakRSS9.37GB. The
 projected primary fitting time was1091.15s, not the actual elapsed phase time.
@@ -77,7 +101,7 @@ The completed phase also includes control refits and fitting diagnostics.
 [C-only result](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/fitting_regions/readout.md)
 and [current-selection study](outputs/publication_readiness_2026_09/moving_adaptive_record_cost_v1/protocol.md).
 
-## Selected-Record Neural Objective:18Fits Frozen Before New Held Readout
+## Frozen-Teacher Training And Recorded Runtime Repair
 
 The fixed-set diagnosis motivates a loss-only test, not a larger architecture.
 I completed18neural cost heads with the original initialization, inputs,
@@ -89,7 +113,7 @@ pilot is now complete: all six recovery cells and all three original-loop
 controls match exactly,94.60s, peakRSS9.29GB. Its projected primary fitting
 time was1099.51s, not a completion claim. The actual full phase finished in
 1541.61s with peakRSS9.29GB,36000primary updates and all18models frozen.
-These models have not yet produced new held-source outcomes. A predeclared
+Their complete Hreadout and replay now appear above. A predeclared
 C-only fitting-region check is now complete and exactly replayed; it triggered
 the registered current-selection follow-up above, not independent validation.
 Both full first-context refits now pass too: the point loop reproduces its
@@ -104,7 +128,7 @@ tiny checkpoint/resume regression are recorded in the runtime patch note.
 ## Selected-Region Reference Check: Complete, No Support Repair
 
 The new reference head loses on full-roster prediction, but that does not by
-itself characterize its errors on the controller's selected sets. I am checking
+itself characterize its errors on the controller's selected sets. I checked
 the original3cost classes and4policies with all4176repeated recording views
 fixed. No new solver choice or risk threshold is allowed. The check separates
 row prediction loss, recording-mass error and absent observed reference.
