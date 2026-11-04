@@ -17,6 +17,7 @@ PUBLIC = ROOT / 'outputs/publication_readiness_2026_09/moving_record_excess_cost
 PRIVATE = ROOT / 'data/stage_cvpr2027_experiments/moving_record_excess_cost_v1'
 CONFIG = ROOT / 'configs/m3w_moving_record_excess_cost_v1.json'
 REG = PUBLIC / 'registration.json'
+RUNTIME_REG = PUBLIC / 'runtime_registration.json'
 FILES = (Path(__file__), CONFIG, PUBLIC / 'protocol.md', ROOT / 'src/world_model/m3w_record_excess_cost.py',
          ROOT / 'tests/test_m3w_record_excess_cost.py')
 
@@ -38,13 +39,19 @@ def register(beat):
         if source.read(source.checked(r))['arm'] == 'amplitude_bank'}
     if len(controls) != 18:
         raise ValueError('All18actual matched neural controls required')
-    source.once(REG, source.stable(dict(configuration=spec,
+    value = dict(configuration=spec,
         bindings={str(p.relative_to(ROOT)): source.sha(p) for p in FILES},
         parent_registration=source.artifact(PARENT.REG), controls={k: r['checkpoint'] for k, r in controls.items()},
         selected_diagnostic=source.artifact(ROOT / 'outputs/publication_readiness_2026_09/moving_selected_reference_v1/analysis.json'),
         jobs=jobs, forecasts=refs, new_neural_cost_training=True, new_trajectory_training=False,
         new_data_roles=False, teacher_C_masks_are_supervised_training_not_OOF_validation=True,
-        original24group_primary='not_estimable_not_passed', independent_confirmation=False)))
+        original24group_primary='not_estimable_not_passed', independent_confirmation=False)
+    original = source.read(REG)
+    for key in ('configuration', 'controls', 'jobs', 'forecasts'):
+        api.base.base.exact(source.stable(value[key]), source.stable(original[key]))
+    source.once(RUNTIME_REG, source.stable(dict(value, scientific_registration=source.artifact(REG),
+        runtime_patch=source.artifact(PUBLIC / 'runtime_patch_note.md'),
+        revision='logging_duplicate_total_fixed_objective_data_budget_unchanged')))
     return spec, cfg, data, jobs, refs, controls
 
 
@@ -143,6 +150,7 @@ def train(spec, cfg, data, jobs, refs, controls, beat, guard, resume):
             trace=state['trace'], fitting_predictions_sha256=source.array_hash(predicted),
             fixed_teacher_region={name: selected_costs(value, truth['moments'], truth['observed_future'], teacher, p['causal']['groups'])
                 for name, value in (('point', frozen), ('record_excess', predicted))},
+            active_runtime_registration=source.artifact(RUNTIME_REG),
             new_neural_cost_training=True, new_trajectory_training=False)))
         receipts.append(source.artifact(path_receipt))
         beat(state='record_cost_fit_frozen', job=job['key'], complete=len(receipts), total=18)
@@ -257,7 +265,7 @@ def main():
         spec, cfg, data, jobs, refs, controls = register(beat)
         if args.phase == 'register':
             return
-        for path in (*FILES, REG):
+        for path in (*FILES, RUNTIME_REG):
             content = source.subprocess.run(['git', 'show', 'HEAD:' + str(path.relative_to(ROOT))], cwd=ROOT, capture_output=True, check=True).stdout
             if source.hashlib.sha256(content).hexdigest() != source.sha(path):
                 raise ValueError('Commit unchanged objective definition before fitting')

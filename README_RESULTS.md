@@ -14,6 +14,9 @@ new objective component. Original point-objective heads and the stronger
 shared-tree policy remain controls. The real pilot must first prove original
 training-loop and50/100resume equivalence across all three critic folds.
 No new trajectory training, threshold search or independent data opening.
+The first real pilot exited at a duplicate log-field write before primary
+training. Its step0checkpoint is retained; the logging-only fix and actual
+tiny checkpoint/resume regression are recorded in the runtime patch note.
 
 [Registered objective definition](outputs/publication_readiness_2026_09/moving_record_excess_cost_v1/protocol.md).
 

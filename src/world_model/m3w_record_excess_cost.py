@@ -14,6 +14,12 @@ base = parent.base
 ARMS = ('point', 'record_excess')
 
 
+def trace_losses(terms, extra, total):
+    return {**{k: float(v.detach()) if isinstance(v, torch.Tensor) else v for k, v in terms.items()},
+            **{k: float(v.detach()) if isinstance(v, torch.Tensor) else v for k, v in extra.items()},
+            'base_total': float(terms['total'].detach()), 'total': float(total.detach())}
+
+
 def training_packet(learning, teacher_actions, recordings):
     c = learning['causal']
     choice, records = np.asarray(teacher_actions), np.asarray(recordings)
@@ -133,9 +139,7 @@ def fit(data, *, loss_arm, seed, settings, identity, path, heartbeat=lambda **_:
             draws = hashlib.sha256(bytes.fromhex(draws)+qids.tobytes()+ix.tobytes()).hexdigest()
             if step == 1 or step % settings['heartbeat_every'] == 0 or step == budget:
                 row = dict(step=step, budget=budget,
-                    **{k: float(v.detach()) if isinstance(v, torch.Tensor) else v for k, v in terms.items()},
-                    base_total=float(terms['total'].detach()), total=float(total.detach()),
-                    **{k: float(v.detach()) if isinstance(v, torch.Tensor) else v for k, v in extra.items()},
+                    **trace_losses(terms, extra, total),
                     gradient_norm=float(norm), minimum_query_visits=int(sampler.counts.min()),
                     never_drawn_queries=int((sampler.counts == 0).sum()))
                 trace.append(row)

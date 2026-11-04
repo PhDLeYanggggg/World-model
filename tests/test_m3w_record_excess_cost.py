@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 import torch
-from src.world_model.m3w_record_excess_cost import record_excess, training_packet
+from src.world_model.m3w_record_excess_cost import record_excess, training_packet, trace_losses, fit
 
 
 def data(records=(0, 0), sources=(0,), actions=(6, 6), scales=(1., 1.)):
@@ -49,6 +49,31 @@ def test_scale_weighting_and_equal_source_averaging_are_explicit():
 def test_loss_rejects_relaxed_risk_budget():
     with pytest.raises(ValueError):
         record_excess(torch.zeros(2, 7, 5), data(), np.arange(2), budget=.03)
+
+
+def test_total_loss_trace_overrides_base_total_without_duplicate_keyword():
+    r = trace_losses(dict(total=torch.tensor(.2), regression=torch.tensor(.1)),
+        dict(record_excess=torch.tensor(.3)), torch.tensor(.5))
+    assert r['base_total'] == pytest.approx(.2)
+    assert r['total'] == .5
+
+
+def test_actual_tiny_fit_logs_checkpoints_and_resumes(tmp_path):
+    d = data()
+    c = dict(x=np.zeros((2, 7, 428), np.float32), envelope=np.ones((2, 7)),
+        scales=np.ones(2, np.float32), allowed=np.ones((2, 7), bool), groups=[np.arange(2)],
+        source_groups=[np.array([0])], sites=np.array(['s', 's']), ids=np.arange(2))
+    d.update(causal=c, z=torch.zeros(2, 7, 428), observed_future=np.ones(2, bool),
+        defined_by_arm=dict(bound_aware=np.ones(2, bool)))
+    d['preprocess'].update(bias=np.zeros(5, np.float32))
+    settings = dict(width=4, learning_rate=.001, query_batch_size=1, minimum_updates=2,
+        largest_source_cycles=1, gradient_clip=5., heartbeat_every=1, checkpoint_every=1)
+    for arm in ('point', 'record_excess'):
+        path = tmp_path / (arm + '.pt.gz')
+        first = fit(d, loss_arm=arm, seed=17, settings=settings, identity=dict(test=True), path=path, stop_at=1)
+        last = fit(d, loss_arm=arm, seed=17, settings=settings, identity=dict(test=True), path=path, resume=True)
+        assert first['step'] == 1 and last['step'] == 2
+        assert np.isfinite(last['trace'][-1]['total'])
 
 
 def test_loss_metadata_never_changes_causal_input_schema():
