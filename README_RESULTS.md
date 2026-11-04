@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Shared Context In Harm Refiners: Registered, Not Yet Trained
+
+The next controlled experiment asks whether already-admitted past/current crowd
+information improves the now-functional tree cost refiner. Both fresh arms
+have435columns: the common local387 plus either48zeros or48original-C-normalized
+shared fields. The18frozen neural cost heads, candidates, roles, three seeds,
+20trees/arm/job, risk2% and missing-label rules stay fixed. No new trajectory
+or neural model is trained. Prior387refiners are cached-verified secondary
+controls, not the matched primary. No new held outcomes exist yet.
+
+The [registered protocol](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/protocol.md)
+keeps all23supported groups as exposed development, the original24group primary
+not_estimable, and every unsupported/empty view. Reserved data stay closed;
+Stage5C/SMC remain off. A passed implementation test is not a passed hypothesis.
+
 ## Moving Harm Refinement: Complete, Not Deployed
 
 4 November: all 54 tree refiners and 1,080 retained primary trees are complete,

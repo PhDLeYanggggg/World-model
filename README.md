@@ -173,6 +173,12 @@ result, not a new neural world model or deployment upgrade.
 [failure analysis](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/failure_analysis.md)
 and [common-selection checks](outputs/publication_readiness_2026_09/moving_harm_refinement_v1/fitting_check/readout.md).
 
+I am now testing whether past/current crowd information helps this cost
+estimator. The new comparison retrains equal-width local-zero and shared-context
+controls, leaving forecasts, targets, data roles and the 2% requirements fixed.
+It is a registered development experiment, not another deployment claim.
+[Protocol](outputs/publication_readiness_2026_09/moving_shared_harm_refinement_v1/protocol.md).
+
 ## What Has Not Worked
 
 Better forecasting, better cost fitting and safe admission are different tests.
