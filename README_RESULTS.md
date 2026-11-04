@@ -32,6 +32,11 @@ versus direct states and three initialization/sampling pairs match exactly.
 Each model has28,489parameters. The pilot projects8526.46s of primary fitting;
 that is an estimate, not completion. Full local training has started with
 checkpoints/heartbeat every100updates; no new validation has been read.
+The first full model and its exact refit completed before a fit-receipt JSON
+serialization exception ended PID31569 with exit1. Their checkpoints are
+preserved. A narrow committed runtime wrapper converts the aggregate event
+prior to a JSON list; scientific files and definitions remain unchanged.
+Resume continues the same full budget, not a new selected trial.
 All outputs remain exposed SOURCE development, not independent confirmation.
 The latest read-only CREATE attempt returned an SSH authentication banner and
 then a connection timeout; queue state remains unknown and no job was submitted.
