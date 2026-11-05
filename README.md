@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing a model change under the same evaluation rules: separate learned
+representations for risk magnitude and intervention decisions. Nine fixed-budget
+fits compare narrow shared, wider shared and separated encoders. The wider
+shared control has almost the same parameter count as the separated model.
+The experiment is registered before training; seventeen focused tests pass.
+Real fitting and additional development evaluation are not yet complete.
+[Fixed protocol](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/protocol.md).
+
+### Latest Completed Result
+
 I tested complete-fitting optimization of the neural risk model without changing
 the original 2% safety or support rules. Three real fits, exact resume checks,
 a full refit and error-attribution replay are complete.
@@ -28,7 +38,7 @@ or a new trajectory-dynamics result.
 
 I am next investigating separate risk-magnitude and intervention-decision
 representations while retaining the conservative supervision for missing labels.
-That next model is not yet trained. The current result remains negative.
+That next model is not yet trained. The completed result remains negative.
 [Complete result](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/README.md),
 [error analysis](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/result_interpretation.md),
 [run and recovery guide](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/operation_zh.md).

@@ -14,6 +14,19 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Separate Risk And Decision Representations: Registered, Not Yet Trained
+
+I retain the original2% rules, missing-support NA and negative results. Nine
+matched neural fits will compare shared64, shared128 and separate64 encoders.
+The main contrast separates representations against the near-capacity-matched
+wide control, not against a smaller model alone. Both heads keep conservative
+supervision on missing labels; one regresses risk, the other learns costly
+decision signs. Acceptance requires both signs to agree. No probability or
+formal safety calibration is claimed. Seventeen focused tests pass; real fits
+are not_run at registration. No H/reserved data, threshold search, deployment
+upgrade or identity certification. Local arm64 CPU4/workers0 pilot comes first.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/protocol.md).
+
 ## Complete-Fitting Optimization: Complete Negative Fitting Result
 
 The next diagnostic keeps the network, original labels, source roles and 2%
