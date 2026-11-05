@@ -34,6 +34,13 @@ replay are verified. There are no new encoder updates or new holdout results.
 
 ### Previous Direct Risk Test
 
+I am now testing a nonlinear risk readout with a matched control: the two
+existing risk scores alone versus those scores plus the frozen hidden features.
+This asks whether the representation still contains useful conditional
+information. The study is registered but has no real-data result yet.
+No risk threshold or evaluation rule changes with this comparison.
+[Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).
+
 I tested a more direct way to learn intervention risk: predict how far an
 action lies above or below the original harm budget. Six neural heads compare
 ordinary mean regression with a fixed upper-quantile objective, with matched

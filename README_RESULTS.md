@@ -14,6 +14,19 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Nonlinear Risk Readout: Registered, Real Fits Pending
+
+The next matched comparison tests two standard boosting readouts on the same
+frozen neural model: two risk scores alone, versus those scores plus the 64
+hidden features. The source roles, proposals, targets, empirical query weights,
+reference checks and original 2% rules stay fixed. Six readouts, two scalar
+outputs each, 128 rounds per output are registered. No threshold search or new
+encoder training. Thirteen focused checks pass after fixing a missing-field
+synthetic fixture; the preflight failure is retained. Real-data training and
+readout are not yet complete. This is a conditional-information experiment,
+not a new world-model dynamics claim.
+[Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).
+
 ## Frozen Readout Control: Complete, Optimization Does Not Repair Risk
 
 This model-side control keeps the three existing direct-mean neural
