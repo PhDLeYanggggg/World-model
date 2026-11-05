@@ -26,6 +26,10 @@ and causal rollout diagnostics. The original flat input already contains past
 coordinates, so this is a representation test, not newly acquired information.
 Ten focused checks pass, including exact resume, initial prediction identity,
 future-input rejection, neighbor masking and source-isolated preprocessing.
+The real native-CPU pilot completed 400 updates including repeats, observed
+exit0. Both resumed/uninterrupted models and their predictions are exact;
+initial predictions also match the warm neural model exactly. Full six-head
+training follows this runtime check; pilot loss is not a scientific result.
 [Fixed protocol](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
 
 ## Nonlinear Risk Readout: Complete, No Held-Source Latent Lift
