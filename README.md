@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+The next registered experiment tests a composed decision loss. Six matched
+fits compare the unchanged two-head objective with an added cost-sensitive
+loss on their joint acceptance decision. The independent arm must reproduce
+the previous separated models exactly. The 2% limits, conservative labels and
+support requirements remain unchanged. Nineteen focused checks pass; real
+training and any conditional development readout are still pending.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
+
+### Previous Separate-Representation Result
+
 I trained nine models to test separate representations for risk magnitude and
 intervention decisions, with narrow and near-capacity-matched shared controls.
 The original 2% safety and support rules are unchanged.

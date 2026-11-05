@@ -14,6 +14,18 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Composed Decision Loss: Registered, Training Pending
+
+I am testing one fixed loss change with six matched fits across the same three
+fitting contexts. The independent controls must exactly reproduce the preceding
+separate64 models. The new loss trains the per-channel conjunction of risk and
+decision signs, retaining both original objectives and missing-label bounds.
+It is not a calibrated probability or a replacement for the original risk gate.
+The same internal fitting screen controls whether another exposed-development
+readout runs. No new H, identity certification, threshold search or changed 2%
+rule. Nineteen focused tests pass in 2.57 seconds. Real training is not_run yet.
+[Protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
+
 ## Separate Risk And Decision Representations: Nine Fits Complete, Screen Failed
 
 I retain the original2% rules, missing-support NA and negative results. Nine
