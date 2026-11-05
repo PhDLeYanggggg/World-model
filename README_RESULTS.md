@@ -23,7 +23,11 @@ belong to the target context's outer H, while different teachers can have seen
 the intended critic sources. I registered six fresh EqMotion fits within the
 existing producer-A folds0/1, using their existing three source partitions.
 Each receives4,000 updates and predicts only its own source-held A partition.
-Nine focused tests pass. Training is not yet claimed complete. No new C/H
+Thirteen focused tests pass. The40-update recovery pilot initially tripped an
+over-strict comparison because the resumed route logs its20-update stop point;
+all model/optimizer/RNG/draw states match. The additional verifier preserves
+that failure and checks common logs and output equality separately. No full
+training completion is claimed yet. No new C/H
 readout, no risk-threshold change, no identity certificate and no promotion.
 [Protocol](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/protocol.md).
 
