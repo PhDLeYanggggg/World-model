@@ -23,7 +23,9 @@ decision signs, retaining both original objectives and missing-label bounds.
 It is not a calibrated probability or a replacement for the original risk gate.
 The same internal fitting screen controls whether another exposed-development
 readout runs. No new H, identity certification, threshold search or changed 2%
-rule. Nineteen focused tests pass in 2.57 seconds. Pilot PID98622 exited0 in
+rule. Thirty-six focused tests pass in 4.12 seconds. The new readout test verifies
+that both arms and all choices precede outcome access and that changed prediction
+caches are rejected on replay. Pilot PID98622 exited0 in
 64.70 seconds, peak RSS6.62GB: both arms exactly replay 50+50 versus100 updates
 and predictions on the largest context. There are400 actual pilot updates
 including repeats. Full six-fit training is running, not complete.
