@@ -16,6 +16,14 @@ No new H test is opened by this decision.
 
 ## Model-Mechanism Checks: No Rule Change
 
+The next model repair is registered in
+[rollout-history relations](outputs/publication_readiness_2026_09/moving_rollout_history_v1/protocol.md):
+six matched neural fits,32 deterministic causal relational inputs,68356
+parameters per model, unchanged joint objective and2000updates per fit.
+Initial-function, actual tiny training/resume, causal-input and interruption
+tests pass. Full real-data pilot, training and held readout are not_run at
+registration. No projection or neighbor averaging is introduced.
+
 `fresh_run`: all nine frozen paired-experiment models were decomposed into
 complete own-B loss gradients, with twelve disposable saved-AdamW steps.
 Risk/rank conflict appears at both fixed pair offsets in2/3 contexts, but

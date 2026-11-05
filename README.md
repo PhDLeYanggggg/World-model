@@ -11,6 +11,13 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+A matched rollout-history feature experiment is now registered. It adds32
+causal relations between observed motion and candidate forecasts, with an
+equal-parameter masked-feature control and the original joint objective.
+The previous negative result below remains current until training and readout
+are complete; no improvement or deployment is inferred from implementation.
+[Protocol](outputs/publication_readiness_2026_09/moving_rollout_history_v1/protocol.md).
+
 I completed nine matched neural fits to test whether learning relative scores
 for useful and harmful interventions improves the decision to replace a
 baseline. The comparison keeps the same inputs, initialization, query draws,
