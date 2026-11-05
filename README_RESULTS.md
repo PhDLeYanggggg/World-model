@@ -14,20 +14,51 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Proposal-Conditioned Peer Context: Pilot Complete, Training Running
+## Proposal-Conditioned Peer Context: Six Fits Complete, Screen Failed
 
-Thirty-four distinct focused tests pass. Six matched neural continuations
-are registered prospectively: same-action peer context versus frozen-proposal
-peer context, with identical initial predictions,76,548 parameters and1,000
-updates each. No loss/threshold/evaluation-rule change. A causal own-B input
-inspection finds mixed proposals in46/52,99/137,735/898 queries; overlapping
-queries are not independent scenes. Pilot PID33505 exits0 in116.773s:400actual
-updates, both50+50-versus100 resume comparisons exact, initial parent predictions
-exact, all three training-proposal masks replay from full legal-action inputs.
-Training PID33697 is running the six fixed-budget fits; no new performance
-readout has run. Earlier selected-set failures are
-explicitly retained; this tests a narrow current-head input distinction.
-[Protocol](outputs/publication_readiness_2026_09/moving_proposal_context_v1/protocol.md).
+`fresh_run`: six matched neural continuations compare same-action peer context
+with frozen-proposal peer context, identical initial predictions,76,548
+parameters and1,000updates each. No loss, threshold or evaluation-rule change.
+Mixed proposals occur in46/52,99/137,735/898 own-B queries. All three proposal
+masks replay from full legal-action inputs using the source-disjoint proposer.
+These are dependent fitting windows, not independent scenes.
+
+Risk-MSE reductions are+0.0670%,+1.0776%,-0.3627%; joint-cost reductions
++0.9195%,-6.9754%,-0.5588%; false-safe-cost reductions0.0000%,-29.4963%,
+-0.3314%. Context1 false-safe count rises33to37 and false-reject count1814to1828.
+The fixed internal screen fails0/3. Additional nested-C/H evaluation is
+`not_run`, not a new risk pass or trajectory result. Earlier selected-set and
+17-view safety failures remain unchanged. No model is promoted.
+
+Pilot PID33505 exits0 in116.773s:400updates, both50+50-versus100 resumes and
+parent initial predictions exact. Train PID33697 exits0 in680.127s, peak
+RSS7,415,808,000bytes:6,000primary plus1,000exact full-refit updates. Verify
+PID34694 exits0; all six initial/final metrics and attributions reproduce.
+Thirty-five distinct focused tests pass; the historical full suite was not rerun.
+Loss/cost figure inspected. A supplementary diagnosis initially exited1 because
+concurrent reporting changed its public-file manifest. The shared reporter lock
+and regression test repair this; sequential diagnosis PID34875 exits0 in37.862s.
+The incident is retained and did not change weights or scientific metrics.
+Completed read-only replay PID35166 exits0 in36.682s, reproduces the frozen
+metrics exactly and leaves all28then-existing public files unchanged. A final
+combined focused test run passes35tests in3.26s. Replay adds no independent
+scientific confirmation; the unchanged compiled manuscript does not yet include
+the linked addendum.
+
+Posthoc own-B diagnosis finds about76% of context1's added cost in source065
+and most added cost in single/empty-proposal queries. Empty queries have zero
+active weight, not certified safety. The treatment couples candidate identity
+and exclusion of non-proposing peers; isolate these before another model fit.
+Frozen-bridge removal is descriptive, not a retrained ablation or promotion.
+
+`cached_verified`: parents, schema, source partitions and scalers. `not_run`:
+independent confirmation, new trajectory/JEPA fitting and deployment. Original
+2% all/easy positive-harm, easy-net and support rules remain; no identity
+certificate, no new H, original24-group primary NA, Stage5C/SMC off.
+Native obs8/pred12 image coordinates, not metric/seconds/true3D/foundation.
+[Results](outputs/publication_readiness_2026_09/moving_proposal_context_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_proposal_context_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/moving_proposal_context_v1/paper_addendum.md).
 
 ## Source-Robust Neural Continuation: Completed, Screen Failed
 

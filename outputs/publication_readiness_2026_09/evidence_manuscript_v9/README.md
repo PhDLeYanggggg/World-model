@@ -103,6 +103,12 @@ source/PDF/visual checks passed. This does not change scientific status.
 
 ## New Evidence Addendum
 
+The [proposal-context addendum](../moving_proposal_context_v1/paper_addendum.md)
+records six matched real neural continuations. Candidate-conditioned peer
+context gives no consistent fitting decision gain; the fixed follow-up screen
+fails0/3 and no extra nested-C/H readout runs. The original rules and previous
+failures remain. This addendum is not in the unchanged compiled main PDF.
+
 The [fourfold fitting-duration addendum](fourfold_duration_addendum.md) records
 the complete18-head training-adequacy negative:34.77% lower average fitting
 loss, but selected easy-harm reliability remains failed. It is separate from

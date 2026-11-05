@@ -11,14 +11,33 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing a narrower model change after the source-weighting result below:
-a matched neural context branch that sees peers' actual frozen proposals,
-rather than each peer's same-index hypothetical candidate. The original loss,
-training budget, 2% risk rules and support requirements remain fixed. The real
-pilot reproduces resumed training and initial parent predictions exactly; all
-three own-B proposal masks replay from causal inputs. Thirty-four focused tests
-pass. The six full-budget fits are running; there is no performance claim yet.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_proposal_context_v1/protocol.md).
+I completed six matched neural fits to test whether risk estimation benefits
+from seeing each peer's actual proposed forecast, rather than a same-index
+hypothetical forecast. Both models have the same capacity, initial predictions,
+training budget and loss. The original 2% risk rules remain unchanged.
+
+**Proposal-conditioned context did not consistently improve decisions.**
+
+| Context | Risk MSE reduction | Decision-cost reduction | Harmful-admission-cost reduction |
+|---|---:|---:|---:|
+| 0 | +0.067% | +0.920% | 0.000% |
+| 1 | +1.078% | -6.975% | -29.496% |
+| 2 | -0.363% | -0.559% | -0.331% |
+
+Positive reductions mean better. These are fitting diagnostics, not test
+trajectory gains. In the second context, a lower average prediction error still
+leads to more costly wrong decisions. The fixed internal follow-up screen fails
+0/3, so no additional development or reserved-test evaluation is opened.
+
+All six models complete 1,000 updates; resume, a full repeat and metric replay
+agree exactly. Source-level analysis suggests the context change also removes
+useful background information, but that is a hypothesis, not a proven cause.
+The next model comparison will separate candidate identity from excluding peers
+that fall back to the baseline. No deployment upgrade or safety exemption is
+introduced, and the paper is not yet submission-ready.
+[Results and loss curves](outputs/publication_readiness_2026_09/moving_proposal_context_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_proposal_context_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_proposal_context_v1/protocol.md).
 
 ### Last Completed Experiment
 

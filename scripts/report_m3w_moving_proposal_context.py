@@ -73,7 +73,7 @@ def figure(rows):
     fig.savefig(run.PRIVATE/'context_fitting.png', dpi=150); plt.close(fig)
 
 
-def main():
+def render():
     analysis = source.read(PUBLIC/'analysis.json'); verify = source.read(PUBLIC/'verification.json')
     api.base.exact(verify['analysis_sha256'], source.sha(PUBLIC/'analysis.json'))
     freeze = source.read(PUBLIC/'training_freeze.json')
@@ -164,6 +164,12 @@ def main():
         '| Independent confirmation | not_run |', '| Deployment / submission readiness | false / false |',
         '| Stage5C / SMC | disabled / disabled |', '', 'Engineering checks are not scientific safety passes.', '']))
     print(source.json.dumps(dict(fits=6, fitting_screen=passed, **status)))
+
+
+def main():
+    with (run.PRIVATE/'process.lock').open('a') as lock:
+        source.fcntl.flock(lock, source.fcntl.LOCK_EX | source.fcntl.LOCK_NB)
+        render()
 
 
 if __name__ == '__main__':

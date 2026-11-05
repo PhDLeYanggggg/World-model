@@ -52,3 +52,17 @@ def test_bridge_removal_keeps_frozen_model_unchanged(tmp_path):
     assert changed['model']['risk.bridge.weight'].sum() == 0
     assert changed['model']['decision.bridge.weight'].sum() == 0
     assert torch.equal(original['model']['risk.encoder.weight'], changed['model']['risk.encoder.weight'])
+
+
+def test_report_refuses_to_write_during_readonly_diagnosis(tmp_path, monkeypatch):
+    import fcntl
+    monkeypatch.setattr(report.run, 'PRIVATE', tmp_path)
+    called = []
+    monkeypatch.setattr(report, 'render', lambda:called.append(True))
+    with (tmp_path/'process.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        with pytest.raises(BlockingIOError):
+            report.main()
+    assert called == []
+    report.main()
+    assert called == [True]

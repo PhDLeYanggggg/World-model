@@ -27,6 +27,11 @@ DataLoader workers0，不做硬件探测。训练有进程锁、每100步checkpo
 .venv-pytorch/bin/python scripts/report_m3w_moving_proposal_context.py
 ```
 
+各阶段顺序执行，尤其不要并行生成报告和做只读诊断。报告生成也使用
+同一把非阻塞进程锁。曾有一次附加诊断因同时生成报告而检测到文件清单
+变化并退出1；记录保留在 `diagnostic_orchestration_incident.json`，不是
+训练失败，也没有修改权重或研究指标。
+
 只有某阶段中断且确认进程已经退出，才对该未完成阶段加 `--resume`。
 不要根据观察超时重复启动，不要删除旧checkpoint。完成凭据存在的阶段
 会拒绝重跑；这是保护已冻结结果，不是需要绕过的错误。
