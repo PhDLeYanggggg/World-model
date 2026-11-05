@@ -14,7 +14,8 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 I am testing a decision-aligned training objective after the negative result
 below. It penalizes incorrect risk signs by their realized cost, instead of
 giving a fixed subset of errors extra MSE weight. A fitting-only audit and
-loss/resume tests are complete; real training and held evaluation are pending.
+loss tests are complete. Both real training arms resume exactly; six complete
+fits and held evaluation are next.
 The original 2% and support rules remain fixed. This is a matched risk-head
 experiment, not new trajectory dynamics or a claim of safe deployment.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md).

@@ -23,7 +23,9 @@ Cost-weighted sign regret and raw error count differ. Six equal-budget warm
 continuations will compare MSE with signed-cost logistic learning, retaining
 bound-aware MSE for unknown outcomes and all original decision/support rules.
 No threshold search, new H, identity certificate, deployment or primary-metric
-revision. Fitting audit is fresh; training/evaluation are not_run at registration.
+revision. Twenty-three focused tests pass. The nativearm64 real pilot completes
+400updates including repeats in36.32seconds, exit0; both objective arms resume
+to exactly matching weights and predictions. Complete fits/evaluation are next.
 [Protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md),
 [fitting audit](outputs/publication_readiness_2026_09/moving_signed_decision_v1/fitting_boundary_audit.md).
 
