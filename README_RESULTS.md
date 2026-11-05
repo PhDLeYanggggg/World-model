@@ -16,12 +16,15 @@ No new H test is opened by this decision.
 
 ## Peer Participation: Prospective Factorial Completion
 
-Six new neural fits are planned: same-index context over active peers, and
+Six new neural fits are running: same-index context over active peers, and
 proposed-candidate context over all peers with causal-floor context for
 non-proposers. Six previous controls will be cached_verified by exact metric
 and checkpoint checks. The primary contrast keeps all peers fixed; secondary
 contrasts separate candidate identity and peer inclusion. No new scientific
-result exists yet. Fourteen focused implementation tests pass, not a model gate.
+result exists yet. Twenty-three focused tests pass, not a model gate.
+Real pilot PID36108 exits0 in132.120s, peak RSS7,696,744,448bytes. Its500updates
+verify both new arms' resume, initial-parent identity, and exact reproduction
+of the old100-update training engine. All62,466 own-B floor paths match exactly.
 Original 2% rules, NA support, closed reserved sets and previous failures remain.
 [Protocol](outputs/publication_readiness_2026_09/moving_peer_participation_v1/protocol.md).
 

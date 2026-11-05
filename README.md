@@ -13,9 +13,10 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 I am now separating two model-input choices that the last experiment changed
 together: which forecast represents a peer, and whether fallback peers remain
-visible. Six new matched fits will complete a four-cell comparison with six
-verified existing controls. This is a model experiment, not a revision of the
-original 2% safety or support rules. No new result is available yet.
+visible. Six new matched fits are running to complete a four-cell comparison
+with six verified existing controls. The real-data pilot confirms causal-floor
+inputs, exact resume and legacy-model replay. This is a model experiment, not
+a revision of the original 2% rules; no new scientific result is available yet.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_peer_participation_v1/protocol.md).
 
 ### Last Completed Peer-Context Experiment
