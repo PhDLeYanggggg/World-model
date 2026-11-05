@@ -40,6 +40,12 @@ producer seed on exposed development data; they are not independent-test or
 multi-seed evidence. I have not changed the rules or upgraded deployment.
 [Results and mechanism analysis](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/README.md).
 
+The next comparison changes the neural representation rather than its safety
+thresholds: explicit past-motion and neighbor-approach features versus an
+otherwise identical continued-training control. The two arms start from the
+same weights; outcomes are not yet available.
+[Fixed comparison](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
+
 ### Previous Affine And Direct Risk Tests
 
 An exact affine-output refit previously raised known floor gain from 4.09%

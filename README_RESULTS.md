@@ -14,6 +14,20 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Causal Kinematic Representation: Registered Neural Repair
+
+The next model comparison retains the original 2% rules and tests an explicit
+64-field past-motion basis against a masked-input continuation control. Both
+arms start from the same completed direct-mean neural weights, with a zero new
+branch, identical reset optimizer, sampling, loss and 2,000-update budget.
+Three contexts give six new neural fits; no result is yet claimed. The basis
+contains backward motion changes, turns, observed-neighbor closest approach
+and causal rollout diagnostics. The original flat input already contains past
+coordinates, so this is a representation test, not newly acquired information.
+Ten focused checks pass, including exact resume, initial prediction identity,
+future-input rejection, neighbor masking and source-isolated preprocessing.
+[Fixed protocol](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
+
 ## Nonlinear Risk Readout: Complete, No Held-Source Latent Lift
 
 The next matched comparison tests two standard boosting readouts on the same
