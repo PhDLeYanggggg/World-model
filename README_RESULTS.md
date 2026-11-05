@@ -14,6 +14,23 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Boundary Audit And Channel-Specific Model Repair
+
+The fresh boundary audit locates the ego-frame MSE gains almost entirely in
+unchanged rejects. Its accepted source048 rows have no easy reference; their
+risk stays NA. Source076 has six harmful admissions among13accepted known
+proposals. The pointwise information diagnostic is distinct from both the
+support-gated neural veto and the earlier scene-joint allocator.
+
+I am testing separate all/easy regression partitions, not changing the rules.
+The primary has two32-tree heads against the cached shared64-tree control;
+a fresh shared32-tree control checks tree-budget effects. Original120features,
+targets, weights, RMS and zero threshold are fixed. Eight source-excluded folds
+use verified exposed own-B records only. Seven focused tests pass; real fits
+are not yet complete. No new held readout or deployment claim.
+[Boundary evidence](outputs/publication_readiness_2026_09/moving_boundary_audit_v1/README.md),
+[fixed model protocol](outputs/publication_readiness_2026_09/moving_channel_specialist_v1/protocol.md).
+
 ## Forecast Tail: Complete, Causal Ranking Remains Weak
 
 The completed experiment separates forecast-tail concentration from causal
