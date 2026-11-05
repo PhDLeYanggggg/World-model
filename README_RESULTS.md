@@ -31,7 +31,10 @@ its correction and pre-training registration amendment are retained.
 Fourteen focused checks pass after correction. The real native-CPU pilot
 completed400updates including repeats in36.65seconds, peak RSS2.83GB and
 observed exit0. Both arms resume to exactly the same weights and predictions;
-the full six-head comparison has not yet completed.
+all six full heads have now completed 12,000 primary updates plus an exact
+2,000-update full refit in 515.49 seconds, peak RSS 7.51 GB, observed exit0.
+All models are frozen before held readout. Sixteen focused checks pass; no
+new scientific result is yet claimed.
 [Protocol](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md),
 [fitting diagnosis](outputs/publication_readiness_2026_09/moving_admission_risk_v1/fitting_loss_decomposition.json),
 [preflight amendment](outputs/publication_readiness_2026_09/moving_admission_risk_v1/preflight_amendment.md).
