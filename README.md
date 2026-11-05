@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing a narrower model change after the source-weighting result below:
+a matched neural context branch that sees peers' actual frozen proposals,
+rather than each peer's same-index hypothetical candidate. The original loss,
+training budget, 2% risk rules and support requirements remain fixed. The code
+passes seven focused tests; real fitting and performance readout are pending.
+This is not yet evidence of an improvement.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_proposal_context_v1/protocol.md).
+
+### Last Completed Experiment
+
 I completed six matched neural continuations to test whether emphasizing the
 worst training source improves intervention decisions. Both arms use the same
 trained starting models, inputs, query draws and 1,000-update budget. The only
