@@ -66,6 +66,36 @@ def outcome(analysis, decision):
         else ' Original full-policy risk/support requirements fail.')
 
 
+def audit_parent_controls(groups):
+    parent_refs = source.read(run.old.PUBLIC / 'analysis.json')['group_receipts']
+    parents = {Path(r['path']).name: source.read(source.checked(r)) for r in parent_refs}
+    policy_map = dict(point_proposer='proposal_self', point_veto='disjoint_data_veto',
+        point_matched='disjoint_data_matched_self')
+    policies = 0
+    for group in groups:
+        first = group['rows'][0]
+        key = first['job']+f"_val{first['validation_part']}_propose{first['proposer_part']}.json"
+        parent = parents[key]
+        for name, old_name in policy_map.items():
+            if group['choice_hashes'][name] != parent['choice_hashes'][old_name]:
+                raise ValueError('Old point-control actions changed')
+        for k in set(range(3))-{first['validation_part']}:
+            if group['prediction_hashes'][f'point{k}'] != parent['prediction_hashes'][f'part{k}_replica0']:
+                raise ValueError('Old point-control prediction changed')
+        old_rows = {r['site']: r for r in parent['rows']}
+        for row in group['rows']:
+            for name, old_name in policy_map.items():
+                if row['policies'][name] != old_rows[row['site']]['policies'][old_name]:
+                    raise ValueError('Old point-control scientific readout changed')
+                policies += 1
+    if len(groups) != 108 or policies != 828:
+        raise ValueError('All108original blocks and828source-policy cells required')
+    result = dict(all108_original_point_prediction_and_choice_hashes_exact=True,
+        all828_original_source_policy_readouts_exact=True, parent_analysis=source.artifact(run.old.PUBLIC / 'analysis.json'))
+    source.once(PUBLIC / 'parent_control_replay.json', result)
+    return result
+
+
 def risk_diagnostics(groups):
     rows = [r for g in groups for r in g['rows']]
     result = {}
@@ -79,6 +109,21 @@ def risk_diagnostics(groups):
             undefined_full_known_easy_net_views=sum(v['known_easy_net_degradation'] is None for v in views),
             no_intervention_views=sum(v['selected'] == 0 for v in views))
     return result
+
+
+def policy_metrics(groups):
+    rows = [r for g in groups for r in g['rows']]
+    sites = sorted({r['site'] for r in rows})
+    cfg = source.read(source.CONFIG)
+    out = {}
+    for name in run.POLICIES:
+        fields = ('known_ADE_gain_floor_percent', 'completion_lower_gain_floor_percent',
+            'known_ADE_pixel', 'available_endpoint_FDE_diagnostic_pixel', 'p95_known_ADE_pixel')
+        out[name] = {k: source.group_interval(rows, lambda r, k=k, a=name:r['policies'][a][k], sites, cfg) for k in fields}
+        for subset in ('easy', 'hard'):
+            out[name][subset+'_gain_floor_percent'] = source.group_interval(rows,
+                lambda r, a=name, s=subset:r['policies'][a]['subsets'][s]['gain_percent'], sites, cfg)
+    return out
 
 
 def figures(fits, analysis):
@@ -133,10 +178,19 @@ def main():
     groups = [source.read(source.checked(r)) for r in analysis['group_receipts']]
     if len(groups) != 108 or sum(len(g['rows']) for g in groups) != 276:
         raise ValueError('All orientations and sources required')
+    audit_parent_controls(groups)
     result = outcome(analysis, decision)
     phases = {p: source.read(PUBLIC / (p+'_execution.json')) for p in ('pilot', 'train', 'evaluate', 'verify')}
     diagnostics = risk_diagnostics(groups)
     source.once(PUBLIC / 'risk_diagnostics.json', dict(values=diagnostics, counts_overlap_not_additive=True))
+    metrics = policy_metrics(groups)
+    source.once(PUBLIC / 'policy_metrics.json', dict(values=metrics,
+        role='secondary_original_policy_metrics_from_frozen_readout_no_new_gate_or_selection'))
+    floor = ['|Policy|Known ADE gain vs floor % [95% CI]|Completion lower % [95% CI]|Known ADE pixels [95% CI]|Endpoint FDE diagnostic pixels [95% CI]|', '|---|---:|---:|---:|---:|']
+    for name in run.POLICIES:
+        m = metrics[name]
+        floor.append('|'+name+'|'+'|'.join(interval(m[k]) for k in ('known_ADE_gain_floor_percent',
+            'completion_lower_gain_floor_percent', 'known_ADE_pixel', 'available_endpoint_FDE_diagnostic_pixel'))+'|')
     direct = ['|Public minus point control|Known effect pp [95% CI]|Direct lower pp [95% CI]|', '|---|---:|---:|']
     for name in run.CONTRASTS:
         m = analysis['direct_contrasts'][name]
@@ -172,6 +226,15 @@ def main():
         'Positive means the public policy has lower available-label error than the point policy. '
         'The guarded comparison uses the exact same source-excluded frozen point critic. Full '
         'policies can have different coverage, so this is not a matched-ranking test.\n\n'
+        '## Physical Floor And Absolute Errors\n\n'+'\n'.join(floor)+'\n\n'
+        'These are secondary source-macro summaries of all original saved policy metrics, '
+        'not new policies or selected thresholds. A positive contrast against the point learner '
+        'does not by itself imply positive gain against the physical floor. Available-label ADE '
+        'and available-endpoint FDE do not impute missing labels. Pixel errors are native '
+        'image-coordinate diagnostics, not comparable metric distances across cameras. '
+        'Gain percentages average within-source relative gains; they are not the ratio '
+        'of the two separately averaged pixel-ADE entries. '
+        'Easy/hard and tail summaries, including every required NA, are in policy_metrics.json.\n\n'
         '## Same-Count Controls\n\n'+'\n'.join(primary)+'\n\n'
         'Required empty matched views remain NA. The original24group primary is still not '
         'estimable and not passed. Full-strategy secondary results do not replace it. Intervals '
@@ -186,7 +249,9 @@ def main():
         +'\n\nThree real pilot resumed/direct fits and the first full2000-update refit agree exactly. '
         'All54fit normalizers, row IDs, sampler states and draw hashes equal the corresponding '
         'frozen point controls. All new heads froze before readout. All108policy blocks and '
-        'prediction hashes match a separate replay. Native arm64 CPU4/interop1/workers0, '
+        'prediction hashes match a separate replay. The original point control also reproduces '
+        'all108original prediction/action blocks and828source-policy readouts exactly. '
+        'Native arm64 CPU4/interop1/workers0, '
         'no resource probing. Optimizer and query sampler states are checkpointed every100updates.\n\n'
         'Run `.venv-pytorch/bin/python scripts/run_m3w_moving_public_deferral.py PHASE` '
         'for register/pilot/train/evaluate/verify; interrupted unchanged phases accept `--resume`. '

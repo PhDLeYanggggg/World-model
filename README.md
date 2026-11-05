@@ -11,7 +11,32 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-My latest controlled experiment tests whether explicitly learning the chance
+My latest comparison tests a published cost-sensitive routing objective on the
+same frozen MovingDroneCrowd++ forecast bank. I trained 54 source-isolated neural
+routers, with 108,000 updates and three producer seeds. The original point
+controls and all new inference blocks reproduce exactly.
+
+Direct routing improves available-label ADE over the physical floor by 12.29%
+(95% source-bootstrap CI: 6.94 to 17.88). Against the previous point selector,
+the paired known-label gain is 5.25 percentage points [1.31, 9.55]. Those are
+exposed development results, not independent confirmation. The direct
+missing-outcome lower comparison against the point selector still crosses zero.
+
+The safety result is less encouraging. With the same risk veto, the paired
+advantage is only 0.82 points [-1.05, 2.93], and just 38/696 repeated recording
+views meet the original complete risk/support contract. There are 483 known
+easy-risk violations. Eight required source views have empty matched controls,
+so that complete comparison remains unavailable. **I have not changed the 2%
+rule, certified empty cases as safe, or upgraded deployment.**
+
+This control shows that better mean routing utility does not automatically give
+reliable admission decisions. It adapts an existing public method; it is not a
+new M3W loss or a new trajectory-world-model contribution by itself.
+[Full results, loss curves and failure analysis](outputs/publication_readiness_2026_09/moving_public_deferral_v1/README.md).
+
+## Previous Controlled Tests
+
+The preceding controlled experiment tests whether explicitly learning the chance
 and size of harm makes neural interventions more reliable. I trained 108
 matched cost heads on MovingDroneCrowd++ SOURCE, with the same initialization,
 sampling, fitting sources and update budget in both arms. Event supervision

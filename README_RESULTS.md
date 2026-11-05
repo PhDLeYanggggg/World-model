@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Moving Public Deferral Control: All 54 Fits Complete, Readout Pending
+## Moving Public Deferral Control: Mean Utility Improved, Original Risk Failed
 
 I am testing the two-stage cost-sensitive routing objective from Mao, Mohri and
 Zhong (ICML2024) on the unchanged Moving forecast bank and original inner-C
@@ -29,10 +29,44 @@ All54routers completed2000updates each,108000primary updates, with observed
 exit0 for PID46216 in3306.79s and peak RSS9.80GB. The first full refit is exact;
 all54own-source preprocessors, sampler states and actual optimizer updates pass
 the frozen-parent audit. All weights are frozen before readout.
-No validation result or improvement is claimed yet. No identity certification, new test access, risk change
-or deployment change is introduced. All previous failures remain recorded.
+Evaluation and separate replay completed with exit0 in249.63s and251.09s.
+All108new policy/prediction blocks agree; the original point controls also
+reproduce108prediction/action blocks and828source-policy readouts exactly.
+The read-only reproduction command also finished with exit0, preserved every
+existing public artifact and replayed all108blocks. Its final heartbeat records
+247.92s. The generated figure was inspected and reproduced with the same hash.
+No identity certification, new test access, risk change or deployment change
+is introduced. All previous failures remain recorded.
 
-[Protocol](outputs/publication_readiness_2026_09/moving_public_deferral_v1/protocol.md).
+|Development contrast|Known effect pp [95% source CI]|Direct completion lower pp [95% source CI]|
+|---|---:|---:|
+|Public router minus point proposer|+5.249[+1.307,+9.551]|-2.410[-6.139,+1.249]|
+|Public with shared veto minus point with shared veto|+0.817[-1.047,+2.931]|-0.780[-2.679,+0.594]|
+
+Unguarded public routing has12.295%known-label ADE gain over the physical floor
+[6.937,17.878], hard gain14.800%[9.250,21.089], and a floor-relative completion
+lower of4.209%[0.165,8.290]. The last quantity does not establish the direct
+comparison against the point selector. Gain is a source-macro mean of ratios,
+not a ratio of separately averaged pixel errors. This is native8/12 image-pixel
+development evidence, not historical SDD raw-frame t50 or independent testing.
+
+The guarded public policy passes the full risk/support contract on38/696
+recording views, with454known all-risk violations,483known easy-risk violations
+and144undefined selected easy-risk views. Worst defined signed recording
+easy-net degradation is469.929%, not a dataset mean. Its required nonempty
+matched comparison is NA in8/276source views. Its full-strategy secondary
+matched known effect is-0.807pp[-1.747,-0.245], direct lower-2.176pp
+[-3.628,-1.184]. The original24group primary stays NA, not passed.
+
+Three thousand paired source resamples retain all23available source units after
+seed/context/orientation averaging. These are not verified IID independent test
+sites. No new forecast or deployment is claimed. The next model hypothesis is
+source-excluded proposal-conditioned risk learning; it is not_run here.
+This is not a new M3W loss invention, a full historical test-suite rerun or
+submission readiness. Nineteen focused checks and the real-data replay pass.
+
+[Complete evidence](outputs/publication_readiness_2026_09/moving_public_deferral_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_public_deferral_v1/protocol.md).
 
 ## Joint Harm Event Supervision: Complete, Original Rules Still Fail
 
@@ -92,7 +126,9 @@ neither pooled conservatism nor a lower average loss certifies deployment.
 Separately, I read the ICML2024
 multi-expert regression deferral paper through its two-stage formulation and
 implemented its logistic loss primitive. Three synthetic equation/masking tests
-pass; real-data fitting of that public control is not_run, not a new result.
+pass; at that study's closure, real-data fitting of that Moving public control
+was not_run. The separate completed experiment is now recorded above; this does
+not change the joint-harm study's historical result.
 [Public-control implementation note](outputs/publication_readiness_2026_09/moving_joint_harm_v1/public_control_note.md).
 The result reporter was implemented before validation; a post-readout descriptive
 check also preserves undefined recording risks and signed worst-case values.
