@@ -41,8 +41,15 @@ false rejections are2655/2660/2693. The floor's total joint fitting cost is
 0.00651109 versus0.00645961 for joint, a tradeoff rather than a safety success.
 Six fits are now complete. In critic1, harmful admissions are35/32/11 and false
 rejections1924/1942/2001; the floor lowers joint cost relative to joint but not
-relative to the equal-mass uniform control. Remaining three fits and held
-readout are not complete.
+relative to the equal-mass uniform control. All nine fits are now complete.
+Critic2 harmful admissions are162/143/81 and false rejections22704/22752/22971.
+The floor has higher joint fitting cost than the equal-mass uniform control
+in all three contexts. Original internal screen passes3/3 against warm
+initialization, not scientific safety. PID10991 exited0 after1252.74s, peak
+7.59GB; this resumed time excludes the first completed fit from the failed
+attempt.18,000 primary and2,000 exact full-refit updates completed. All nine
+own-B weight/sampler calculations replay exactly (PID13746,30.29s,exit0).
+The fixed exposed-development readout is now running; no reserved H is opened.
 [Failure record](outputs/publication_readiness_2026_09/moving_harm_floor_v1/attempt1_failure.md).
 [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).

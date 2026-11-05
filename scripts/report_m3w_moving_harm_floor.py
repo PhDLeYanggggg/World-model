@@ -133,6 +133,9 @@ def main():
     for job, w in summary['fitting_harm_weighting'].items():
         text.append('| '+job+' | '+' | '.join(fmt(w[k]) for k in
             ('positive_weighted_median', 'uniform_multiplier', 'original_positive_mass', 'floor_positive_mass'))+' |')
+    text += ['', 'Loss-weight magnitudes use the mean positive target across channels.',
+        'Attributed decision costs above sum channel magnitudes. Their absolute',
+        'values are not interchangeable; matched comparisons retain one convention.']
     passed = sum(r['passed'] for r in screen['contexts'])
     text += ['', f'Original internal fitting screen: **{passed}/3**, overall **{screen["followup_readout_allowed"]}**.',
         'It compares harm_floor with warm initialization, not a scientific risk',

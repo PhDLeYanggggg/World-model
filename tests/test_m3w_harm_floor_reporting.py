@@ -46,3 +46,23 @@ def test_amendment_only_accepts_original_runner_binding_change(tmp_path, monkeyp
     altered = deepcopy(amended); altered['bindings']['model'] = 'changed'
     with pytest.raises((AssertionError, ValueError)):
         run.registered_payload(altered)
+
+
+def test_fitting_figures_are_reproducible_and_use_only_supplied_receipts(tmp_path, monkeypatch):
+    import xml.etree.ElementTree as ET
+    from scripts import report_m3w_moving_harm_floor as report
+    public, private = tmp_path/'public', tmp_path/'private'
+    public.mkdir(); private.mkdir()
+    monkeypatch.setattr(report, 'PUBLIC', public)
+    monkeypatch.setattr(report.run, 'PRIVATE', private)
+    rows = [dict(job='synthetic_critic'+str(i), arm=arm,
+        trace=[dict(step=1, risk_MSE=.1), dict(step=2000, risk_MSE=.05)],
+        joint_attribution=dict(total=dict(false_safe_cost=.01, false_reject_cost=.02, total_joint_cost=.03)))
+        for i in range(3) for arm in run.api.ARMS]
+    report.figures(rows)
+    originals = {p.name: p.read_bytes() for p in (public/'figures').glob('*.svg')}
+    assert set(originals) == {'common_risk_loss.svg', 'decision_costs.svg'}
+    for name in originals:
+        ET.parse(public/'figures'/name)
+    report.figures(rows)
+    assert originals == {p.name: p.read_bytes() for p in (public/'figures').glob('*.svg')}
