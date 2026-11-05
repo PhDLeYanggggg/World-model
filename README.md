@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing a source-robust neural risk objective against matched continuation
+with the original mean loss. Both arms start from the same trained models and
+use the same inputs, query draws and 1,000-update budget. The only experimental
+change is a fixed 25% contribution from the worst training-source loss.
+The experiment is registered before fitting; real training results are pending.
+No evaluation rule, threshold or reserved-test role changes.
+[Protocol](outputs/publication_readiness_2026_09/moving_source_robust_v1/protocol.md).
+
+### Latest Model-Input Diagnostic
+
 I tested whether explicit relations between a candidate forecast and nearby
 agents explain the remaining risk errors. Sixteen fixed linear probes leave out
 one training source at a time. Adding these features worsens risk-prediction MSE

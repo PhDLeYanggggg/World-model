@@ -14,6 +14,18 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Source-Robust Neural Continuation: Registered
+
+Six matched neural continuations are registered: original mean loss versus a
+fixed 0.75 mean + 0.25 worst-source mixture. Every model retains 68,356
+parameters, the same verified relational inputs and a 1,000-update continuation
+budget. Preprocessing, starts and query draws are identical within each pair.
+The original admission rule, 2% budgets, reference/support rules and absence of
+an identity exemption are unchanged. A failed internal fitting screen prevents
+another exposed nested-C readout; no H or reserved scenes are opened.
+Twelve focused tests pass in2.40s. Real pilot/training/evaluation: not_run yet.
+[Protocol](outputs/publication_readiness_2026_09/moving_source_robust_v1/protocol.md).
+
 ## Candidate-Neighbor Mechanism: Fixed Probes Negative
 
 The completed own-B diagnostic adds 24 past-derived candidate/neighbor relations.
