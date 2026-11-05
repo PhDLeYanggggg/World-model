@@ -15,8 +15,9 @@ I am testing a model change under the same evaluation rules: separate learned
 representations for risk magnitude and intervention decisions. Nine fixed-budget
 fits compare narrow shared, wider shared and separated encoders. The wider
 shared control has almost the same parameter count as the separated model.
-The experiment is registered before training; seventeen focused tests pass.
-Real fitting and additional development evaluation are not yet complete.
+The experiment was registered before training; seventeen focused tests pass.
+The real largest-context pilot passed exact resume checks for all three models.
+Full fixed-budget fitting is running; no new development result is claimed.
 [Fixed protocol](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/protocol.md).
 
 ### Latest Completed Result
@@ -38,7 +39,7 @@ or a new trajectory-dynamics result.
 
 I am next investigating separate risk-magnitude and intervention-decision
 representations while retaining the conservative supervision for missing labels.
-That next model is not yet trained. The completed result remains negative.
+That new model is now in fixed-budget training. The completed result remains negative.
 [Complete result](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/README.md),
 [error analysis](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/result_interpretation.md),
 [run and recovery guide](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/operation_zh.md).
