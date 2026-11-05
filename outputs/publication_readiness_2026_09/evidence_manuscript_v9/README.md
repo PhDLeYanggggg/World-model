@@ -282,6 +282,18 @@ Both addenda are separate from the compiled main PDF. Its source, PDF hash and
 visual-verification receipt are unchanged. These results narrow the supported
 claim; they do not supply independent confirmation or a successful main method.
 
+## Cross-Source History Retrieval: Information Without Safe Admission
+
+The [retrieval addendum](../moving_track_analogue_v1/paper_addendum.md) records
+all 48,061 known own-B proposals with source-excluded, identity-distinct causal
+references. Correct matching beats a fixed misalignment, but decision cost is
+worse than shared64 in all three contexts and harmful admissions increase.
+The fixed internal screen fails 0/3. All eight retrievals reproduce exactly.
+Original 2% rules, support and empty-reference NA remain. This is not an
+independent test, a calibrated safety guarantee or a new neural dynamics result.
+The addendum is separate from the unchanged compiled PDF; submission remains
+not ready.
+
 ## Channel-Specific Risk Heads: Negative Model Repair
 
 The [channel-head addendum](../moving_channel_specialist_v1/paper_addendum.md)

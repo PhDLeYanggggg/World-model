@@ -11,6 +11,33 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested whether similar causal histories from other sources can identify
+useful interventions that risk forests miss. The new local risk model uses
+32 source/agent buckets per query and excludes the query's entire source.
+It leaves the features, targets and original safety rules unchanged.
+
+**Matching history carries information, but still does not make intervention safe.**
+
+| Context | Risk-MSE reduction | Decision-cost reduction | Harmful admissions, control to new |
+|---|---:|---:|---:|
+| 0 | -0.427% | -4.482% | 0 to 107 |
+| 1 | -0.199% | -121.691% | 1 to 723 |
+| 2 | +33.420% | -2.568% | 0 to 521 |
+
+Correct matching beats a fixed misaligned control, but loses to the stronger
+forest on decision cost in all three settings. The fixed information screen
+fails 0/3. All 48,061 known proposals were processed, and all eight complete
+retrievals reproduce exactly. These are exposed development component results,
+not trajectory gains, independent test evidence or a safety certificate.
+Deployment stays unchanged. The original 2% and support requirements remain;
+empty reference support is not estimable, not passed. No identity exemption.
+The paper is not submission-ready.
+[Results](outputs/publication_readiness_2026_09/moving_track_analogue_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_track_analogue_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/moving_track_analogue_v1/operation_zh.md).
+
+### Previous Channel-Head Result
+
 I traced why recent risk-regression improvements did not improve intervention
 decisions. Almost all of the error reduction occurred on proposals that both
 models still rejected. I then tested a concrete model change: separate

@@ -10,23 +10,51 @@ or evidence status.
 On 4 November I retained the original evaluation contract: no analytic identity-
 fallback certification, no changed 2% risk limit, no removed support requirement.
 Empty utility controls remain not estimable and old failures remain failures.
-The intervention remains model training: source-separated neural critics with
-their own fitting-only preprocessing and nested C development evaluation.
-No new H test is opened by this decision.
+The intervention remains model-side repair with fitting-only preprocessing
+and source-separated evidence. This decision does not open a new C/H test;
+the latest component experiments use already-exposed own-B records.
 
-## Cross-Source History Retrieval: Registered Model Check
+## Cross-Source History Retrieval: Complete, No Safe Repair
 
-After the failed channel-head repair, I am testing whether nearest causal
+After the failed channel-head repair, I tested whether nearest causal
 histories from other source components carry useful risk information. The fixed
 comparison uses 32 distinct source/agent identity buckets, a fitting prior,
 a misaligned-query control and the verified shared64 forest. Same-source and
 same-recording donors are forbidden; repeated local IDs across linked clips
 are conservatively merged. This is not a claim of independent physical people.
 
-The original 120 features, signed risk targets and 2% rules remain. Six focused
-tests pass; metadata reconstruction and the real retrieval experiment are not
-yet complete. No reserved readout, deployment change or new neural training.
-[Protocol](outputs/publication_readiness_2026_09/moving_track_analogue_v1/protocol.md).
+The original 120 features, signed risk targets and 2% rules remain. Metadata
+reconstruction and all 48,061 queries complete across eight source-held folds.
+Decision-cost reductions versus shared64 are -4.481672%, -121.691096%, -2.568241%;
+risk-MSE reductions are -0.426663%, -0.198968%, +33.419794%. Harmful admissions
+increase 0/1/0 to107/723/521. Internal information screen0/3; no model promotion.
+
+Matching reduces cost versus the fixed misalignment by11.453190%,20.948376%,
+15.575000%, but this single null draw is not a statistical significance test.
+Source076 substantially underestimates signed-risk exceedance even among
+nearby histories. Source-specific fixed-distance tables retain all empty bins
+as NA. The selected known-label ratios are not full-policy safety estimates.
+
+Preparation PID46564 completes in17.698s, peak1,199,865,856bytes. Pilot PID46811
+exits0 in0.742s; fullrun PID46854 exits0 in37.138s, peak1,521,188,864bytes;
+verification PID46936 exits0 in32.254s, peak1,205,682,176bytes. Every retrieval
+reconstructs exactly with different chunking. Eighteen focused tests pass in2.17s;
+full historical suite not rerun. This is a nonparametric risk-model experiment,
+not new neural dynamics training. No new CREATE job, reserved readout or
+deployment change. Original24 primary remains NA, not passed.
+
+Read-only replay PID47266 exits0 in2.608s, peak1,035,943,936bytes. Fitting and
+distance search are forbidden; saved references reproduce all predictions
+and metrics exactly, and all24 then-existing public files remain unchanged.
+The compiled main PDF hash is unchanged; the separate paper addendum does not
+constitute a new main-paper success. Exact replay is not independent evidence.
+
+Next: attribute harmful near-matches to causal forecast amplitude, ego/peer
+motion and scale context before one distinct representation repair; no held
+distance/threshold sweep. The original 2% and support rules remain unchanged.
+[Results](outputs/publication_readiness_2026_09/moving_track_analogue_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_track_analogue_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_track_analogue_v1/protocol.md).
 
 ## Boundary Audit And Channel-Specific Model Repair
 
