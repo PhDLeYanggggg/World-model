@@ -14,13 +14,13 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Causal Kinematic Representation: Registered Neural Repair
+## Causal Kinematic Representation: Complete, No Safe Held-Source Lift
 
-The next model comparison retains the original 2% rules and tests an explicit
+This model comparison retains the original 2% rules and tests an explicit
 64-field past-motion basis against a masked-input continuation control. Both
 arms start from the same completed direct-mean neural weights, with a zero new
 branch, identical reset optimizer, sampling, loss and 2,000-update budget.
-Three contexts give six new neural fits; no result is yet claimed. The basis
+Three contexts give six new neural fits. The basis
 contains backward motion changes, turns, observed-neighbor closest approach
 and causal rollout diagnostics. The original flat input already contains past
 coordinates, so this is a representation test, not newly acquired information.
@@ -32,9 +32,46 @@ initial predictions also match the warm neural model exactly. Full six-head
 training completed all six neural heads and 12,000 primary encoder updates,
 plus an exact 2,000-update independent refit, in 491.91 seconds with peak RSS
 7.54 GB and observed exit0. Both feature arms retain matching sampling and
-supervision. All weights are frozen before held-source evaluation; no scientific
-gain is yet claimed. Seventeen focused checks now pass.
-[Fixed protocol](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
+supervision. All weights froze before held-source evaluation. Seventeen focused
+checks pass, including a production feature-encoding trace. Evaluation and
+exact replay completed in 63.05 and 62.21 seconds with observed exit0. All
+three prediction/action/metric blocks and all parent controls reproduce exactly.
+
+Fresh full fitting-data MSE reductions are 72.99%, 58.10% and 30.13% for the
+kinematic arm versus 34.86%, 36.28% and 14.38% for its matched control. These
+are exact empirical-query weighted losses, not minibatch or validation scores.
+Despite better loss, the fitting policy loses 0.5288 percentage points of
+known utility against the control. On seven exposed held SOURCE units, known
+floor gains are 4.3233% affine, 3.9625% continued-training control and 3.9418%
+kinematic. Hard gains are 5.3547%, 5.1252% and 4.8582%. The kinematic-minus-
+control known contrast is -0.0207 pp; its missing-outcome completion bounds
+are [-0.9431, +0.9017] pp, not a sampling CI. Kinematic-minus-affine is
+-0.3816 pp with completion bounds [-1.1439, +0.3808] pp.
+
+Only one of three fixed contexts meets the prospective expansion condition;
+the overall condition fails. Complete original risk/support is 0/17 recording
+views. Compared with the continued-training control, known all-risk violations
+rise 13 to 14; easy violations fall 16 to 14 but two selected-easy views become
+undefined. Worst defined signed easy-net degradation is 37.3451%, and the
+kinematic intervention rate is 17.3155%. No NA is converted into a pass.
+
+Pooled repeated-context diagnostics show the same admission error on fitting
+and held data: easy risk is overpredicted across proposals but underpredicted
+among admitted actions. They are not independent samples or official risk
+ratios. Explicit motion features help fitting MSE, not safe deployment; extra
+training alone also fails to improve held utility. This narrows the diagnosis
+toward conditional-risk learning and decision alignment rather than simply a
+missing velocity feature or insufficient final-layer optimization.
+
+This is real risk-encoder training, not new forecasting dynamics. One producer
+seed and exposed SOURCE data do not establish independent generalization.
+Original 24-group primary remains NA, no identity certificate, no new H,
+no expanded 108-direction run and no deployment/submission upgrade. The full
+historical test suite was not rerun. Stage5C and SMC remain disabled.
+[Completed report](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/failure_analysis.md),
+[fixed protocol](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/kinematic_risk_addendum.md).
 
 ## Nonlinear Risk Readout: Complete, No Held-Source Latent Lift
 

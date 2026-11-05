@@ -11,6 +11,46 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested whether explicit causal motion features improve the neural model's
+intervention-risk estimates. A 64-field basis describes past velocity changes,
+turns, neighbor approach and baseline rollouts. I compared it with an otherwise
+identical continued-training control in three matched contexts. Both arms
+start from the same weights and use the same loss, sampling and update budget.
+The original 2% risk and support requirements are unchanged.
+
+Six real neural fits completed 12,000 primary updates. The new features reduce
+full fitting loss by 30.13% to 72.99%, but do not improve overall held-source
+utility:
+
+| Risk model | Known ADE gain over floor | Hard gain | Intervention rate | Full risk/support views passed |
+|---|---:|---:|---:|---:|
+| Previous affine readout | 4.32% | 5.35% | 22.01% | 0/17 |
+| Equal-budget continued-training control | 3.96% | 5.13% | 18.51% | 0/17 |
+| Causal kinematic representation | 3.94% | 4.86% | 17.32% | 0/17 |
+
+**This model repair does not pass.** Only one of three fixed contexts meets
+the prospective expansion condition. Known all-risk violations increase from
+13 to 14; easy violations fall from 16 to 14, but two selected-easy views also
+become undefined. Worst defined recording easy-net degradation is 37.35%, not
+a safety pass. I retain all contexts rather than promote the favorable one.
+
+The fitting-policy comparison also worsens despite the lower loss. On the
+actions it admits, the model underestimates easy harm even in fitting data;
+unseen-scene shift alone cannot explain the failure. More training without the
+new features also loses held utility against the warm model. These findings
+point to a mismatch between average risk regression and conditional admission
+decisions, not evidence that causal motion is generally useless.
+
+Checkpoint resume, a full independent refit and all inference/decision/metric
+replays are exact; 17 focused tests pass. This is new risk-encoder training,
+not new trajectory dynamics. The comparison covers seven already exposed
+SOURCE units and one producer seed. It is development evidence, not an
+independent test. Missing-outcome completion bounds are not confidence
+intervals. Deployment is unchanged; no identity-fallback certificate is used.
+[Results, losses and failure analysis](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/README.md).
+
+### Previous Nonlinear Readout Test
+
 I tested whether a nonlinear risk model can recover useful information from
 the frozen neural representation. In three matched contexts, I fitted one
 readout using the two existing risk scores and another using those scores plus
@@ -39,13 +79,6 @@ not new encoder training or a new dynamics method. The comparisons use one
 producer seed on exposed development data; they are not independent-test or
 multi-seed evidence. I have not changed the rules or upgraded deployment.
 [Results and mechanism analysis](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/README.md).
-
-The next comparison changes the neural representation rather than its safety
-thresholds: explicit past-motion and neighbor-approach features versus an
-otherwise identical continued-training control. The two arms start from the
-same weights. All six neural fits have completed their fixed update budget;
-held-source outcomes are not yet available.
-[Fixed comparison](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
 
 ### Previous Affine And Direct Risk Tests
 
