@@ -15,7 +15,9 @@ I am now testing complete-fitting optimization of the same neural risk model,
 without changing the original safety or support rules. The diagnostic separates
 inadequate fitting from held-source failure; training improvement alone will not
 count as safe deployment. Three source-separated fits and exact resume checks
-are registered. No new held results are available yet.
+are registered. All three real-data resume pilots now reproduce exact weights
+and predictions (68.65 seconds, peak6.73 GB); complete fitting is running.
+No new held results are available yet.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
 
 ### Previous Training-Schedule Result

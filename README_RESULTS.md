@@ -23,7 +23,11 @@ bundle. All three contexts must improve MSE and not worsen either sign-cost
 channel before another exposed-development readout. This internal screen is
 not a safety certificate. No new H, identity certificate or threshold search.
 Four focused synthetic tests pass, including exact resume and interruption
-without saving transient line-search states. Real-data training is not_run.
+without saving transient line-search states. Real pilot PID92728 completed with
+observed exit0 in68.65seconds, peak6.73GB. Each of three contexts reproduced
+3+3 versus6 completed calls exactly, totaling36 parameter-changing pilot calls
+and120 full-gradient passes including repeats. Their fitting populations are
+6,197 /5,521 /50,748 rows. Complete training is running; no new held results yet.
 [Protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
 
 ## All/Easy Attribution And Fixed-Schedule Repair
