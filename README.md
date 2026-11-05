@@ -11,36 +11,42 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I tested whether incomplete optimization of the final risk layer explains
-unsafe intervention decisions. I froze three learned representations and
-refitted only their 130 output coefficients, keeping the original inputs,
-source splits, proposals and 2% risk rules unchanged.
+I tested whether a nonlinear risk model can recover useful information from
+the frozen neural representation. In three matched contexts, I fitted one
+readout using the two existing risk scores and another using those scores plus
+64 hidden features. Inputs, source splits, proposals, supervision and the
+original 2% risk requirements stay fixed.
 
-The exact output solves reduce fitting loss by 1.31% to 4.70%. On the same
-seven exposed SOURCE units, known ADE gain over the motion floor increases
-from 4.09% to 4.32%. This is a small descriptive improvement, not independent
-confirmation: two of three registered context comparisons still fail the
-prespecified expansion condition.
+The hidden-feature readouts reduce fitting loss by 40.87% to 64.59%, but that
+advantage does not transfer to the seven exposed held SOURCE units:
 
-**The repair does not make the policy safe.** Full risk/support passes remain
-0/17 recording views, with 13 all-risk and 15 easy-risk violations. On fitting
-data the corresponding violation counts increase from 15/15 to 17/18.
-Better regression fit does not ensure accurate risk on the subset selected
-for intervention. I have not changed the rules or upgraded deployment.
+| Risk readout | Known ADE gain over floor | Intervention rate | Full risk/support views passed |
+|---|---:|---:|---:|
+| Previous affine readout | 4.32% | 22.01% | 0/17 |
+| Nonlinear scores only | 1.58% | 8.06% | 0/17 |
+| Nonlinear scores + hidden features | 1.51% | 8.46% | 0/17 |
 
-All three output fits, a complete independent repeat and inference/readout
-replay are verified. There are no new encoder updates or new holdout results.
-[Results and mechanism analysis](outputs/publication_readiness_2026_09/moving_readout_refit_v1/README.md).
+**This repair fails.** Both new readouts discard many useful interventions
+while still admitting actions that exceed the harm budget. Adding hidden
+features is slightly worse than the matched score-only control on held-source
+known utility, despite helping on the fitting data. Known all/easy risk
+violations remain 13/15, and two selected-easy views become undefined. Fewer
+interventions and lower average prediction loss are not safety certificates.
 
-### Previous Direct Risk Test
+Six real readout fits, checkpoint resume, a full independent refit and exact
+inference/readout replay are verified. These are standard boosting readouts,
+not new encoder training or a new dynamics method. The comparisons use one
+producer seed on exposed development data; they are not independent-test or
+multi-seed evidence. I have not changed the rules or upgraded deployment.
+[Results and mechanism analysis](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/README.md).
 
-I am now testing a nonlinear risk readout with a matched control: the two
-existing risk scores alone versus those scores plus the frozen hidden features.
-This asks whether the representation still contains useful conditional
-information. All six readouts have now been fitted; held-source evaluation
-is pending. Better fitting loss is not itself evidence of safer intervention.
-No risk threshold or evaluation rule changes with this comparison.
-[Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).
+### Previous Affine And Direct Risk Tests
+
+An exact affine-output refit previously raised known floor gain from 4.09%
+to 4.32%, but left full risk/support at 0/17 and failed its expansion criterion.
+That control helps distinguish final-layer optimization from the unresolved
+problem of predicting risk on the subset selected for intervention.
+[Affine control](outputs/publication_readiness_2026_09/moving_readout_refit_v1/README.md).
 
 I tested a more direct way to learn intervention risk: predict how far an
 action lies above or below the original harm budget. Six neural heads compare

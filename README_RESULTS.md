@@ -14,14 +14,14 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Nonlinear Risk Readout: Six Fits Complete, Evaluation Pending
+## Nonlinear Risk Readout: Complete, No Held-Source Latent Lift
 
 The next matched comparison tests two standard boosting readouts on the same
 frozen neural model: two risk scores alone, versus those scores plus the 64
 hidden features. The source roles, proposals, targets, empirical query weights,
 reference checks and original 2% rules stay fixed. Six readouts, two scalar
 outputs each, 128 rounds per output are registered. No threshold search or new
-encoder training. Thirteen focused checks pass after fixing a missing-field
+encoder training. Fifteen focused checks pass after fixing a missing-field
 synthetic fixture; the preflight failure is retained. The real-data pilot
 completed 128 scalar boosting rounds including its repeated fits in 18.02
 seconds with observed exit 0. Both resumed/uninterrupted arms reproduce their
@@ -29,15 +29,41 @@ trees and predictions exactly. All six full readouts completed their registered
 1,536 scalar boosting rounds, plus one full independent refit, in 39.06 seconds
 with observed exit 0 and peak RSS 5.66 GB. Frozen-latent fitting MSE reductions
 are 64.59%, 45.08% and 40.87%; score-only reductions are 39.10%, 29.28% and
-11.26%. All models froze before held-source readout. Evaluation is pending;
-no generalization or safety improvement is claimed from fitting loss.
+11.26%. All models froze before held-source readout. Evaluation and independent
+replay completed with observed exit 0 in 61.45 and 61.95 seconds. All three
+prediction/action/readout blocks and all original controls reproduce exactly.
 The first evaluation attempt stopped on a nested-preprocessor metadata lookup
 before new held-source metrics. Its traceback is retained. An explicit evaluator
 amendment supplies the actual frozen preprocessor to the unchanged source-
 isolation check; no model is retrained and no scientific rule is changed.
-This is a conditional-information experiment,
-not a new world-model dynamics claim.
-[Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).
+
+Known floor gains on seven exposed SOURCE units are 4.3233% affine, 1.5845%
+score-only and 1.5090% latent-plus-score. The latent-minus-score fitting contrast
+is +1.7243 pp, but the held contrast is -0.0755 pp, with missing-outcome
+completion bounds [-0.1807, +0.0296] pp. Those are not confidence intervals.
+Latent-minus-affine is -2.8143 pp; its completion-lower contrast is negative
+in all three fixed contexts. The expansion condition fails. One producer seed
+and exposed SOURCE results do not provide independent confirmation.
+
+Both new readouts retain 13 known all-risk and 15 easy-risk violations, with
+0/17 complete original risk/support passes. Two selected-easy views additionally
+become undefined. The latent arm's switch rate drops from 22.0115% to 8.4619%;
+worst defined signed recording easy-net degradation drops to 8.9271%, still
+not an original risk pass. Pooled action flows show 21,113 known newly rejected
+rows with 149,658.76 summed net benefit, versus 614 newly admitted rows with
+2,381.91. These counts repeat context views and are not independent samples.
+Among admitted rows, predicted all/easy excess sums are negative, but observed
+sums remain positive. This is lost utility plus persistent admission error,
+not merely a beneficial reduction in intervention.
+
+All seven pilot matched contrasts are available, but the old 24-group primary
+remains NA. No identity certificate, removed failure, deployment change or
+submission-readiness upgrade. No new encoder updates, new H or full historical
+test-suite rerun. This standard nonlinear readout control is not a new world-
+model dynamics contribution.
+[Completed report](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/nonlinear_readout_addendum.md).
 
 ## Frozen Readout Control: Complete, Optimization Does Not Repair Risk
 
