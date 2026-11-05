@@ -11,6 +11,11 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+My next controlled experiment directly predicts whether an intervention exceeds
+the original harm budget. A small, fixed-context mean-versus-quantile comparison
+is registered first; it has no result yet and does not change the safety rules.
+[Protocol](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/protocol.md).
+
 I completed a controlled test of proposal-conditioned risk learning: the risk
 model learns only the actions proposed by a router fitted on different source
 scenes. I trained 108 neural critics for 216,000 updates, keeping the forecaster,
