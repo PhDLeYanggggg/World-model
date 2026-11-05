@@ -43,7 +43,8 @@ multi-seed evidence. I have not changed the rules or upgraded deployment.
 The next comparison changes the neural representation rather than its safety
 thresholds: explicit past-motion and neighbor-approach features versus an
 otherwise identical continued-training control. The two arms start from the
-same weights; outcomes are not yet available.
+same weights. All six neural fits have completed their fixed update budget;
+held-source outcomes are not yet available.
 [Fixed comparison](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
 
 ### Previous Affine And Direct Risk Tests

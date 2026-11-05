@@ -29,7 +29,11 @@ future-input rejection, neighbor masking and source-isolated preprocessing.
 The real native-CPU pilot completed 400 updates including repeats, observed
 exit0. Both resumed/uninterrupted models and their predictions are exact;
 initial predictions also match the warm neural model exactly. Full six-head
-training follows this runtime check; pilot loss is not a scientific result.
+training completed all six neural heads and 12,000 primary encoder updates,
+plus an exact 2,000-update independent refit, in 491.91 seconds with peak RSS
+7.54 GB and observed exit0. Both feature arms retain matching sampling and
+supervision. All weights are frozen before held-source evaluation; no scientific
+gain is yet claimed. Seventeen focused checks now pass.
 [Fixed protocol](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/protocol.md).
 
 ## Nonlinear Risk Readout: Complete, No Held-Source Latent Lift
