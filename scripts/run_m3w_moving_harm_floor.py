@@ -21,10 +21,36 @@ PUBLIC = ROOT/'outputs/publication_readiness_2026_09/moving_harm_floor_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_harm_floor_v1'
 CONFIG = ROOT/'configs/m3w_moving_harm_floor_v1.json'
 REG = PUBLIC/'registration.json'
+AMENDMENT = PUBLIC/'serialization_amendment.json'
+ORIGINAL_RUNNER_SHA = 'd8ca2c764d9d93641b5d505a6f18bae3b67eb0e708a546754094af3f5d6ec47b'
 FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md', ROOT/'src/world_model/m3w_harm_floor_risk.py',
     ROOT/'src/evaluation/m3w_harm_admission.py', ROOT/'tests/test_m3w_harm_floor_risk.py',
     ROOT/'tests/test_m3w_harm_admission.py')
 inputs = previous.inputs
+
+
+def json_weighting(weights):
+    return dict(weights, planned_query_counts=weights['planned_query_counts'].tolist())
+
+
+def registered_payload(payload):
+    if not REG.exists():
+        source.once(REG, payload)
+        return
+    original = source.read(REG)
+    runner = str(Path(__file__).relative_to(ROOT))
+    if original == payload:
+        return
+    if original['bindings'][runner] != ORIGINAL_RUNNER_SHA:
+        raise ValueError('Unrecognized original runner for serialization-only amendment')
+    comparison = dict(payload, bindings=dict(payload['bindings']))
+    comparison['bindings'][runner] = original['bindings'][runner]
+    api.base.exact(original, comparison)
+    source.once(AMENDMENT, dict(original_registration=source.artifact(REG),
+        original_runner_sha256=ORIGINAL_RUNNER_SHA, amended_runner_sha256=payload['bindings'][runner],
+        reason='Serialize planned query counts as a JSON list; retain checkpoint identity and all scientific bindings',
+        original_checkpoint_identity_retained=True, training_objective_changed=False,
+        data_or_thresholds_changed=False, prior_failure_retained=True))
 
 
 def register(beat):
@@ -37,7 +63,7 @@ def register(beat):
         raise ValueError('Fixed model-loss contrast and original safety rules required')
     for directory in (previous.PUBLIC, diagnosis.PUBLIC):
         api.base.exact(source.read(directory/'verification.json')['analysis_sha256'], source.sha(directory/'analysis.json'))
-    source.once(REG, source.stable(dict(configuration=cfg,
+    registered_payload(source.stable(dict(configuration=cfg,
         bindings={str(p.relative_to(ROOT)): source.sha(p) for p in FILES},
         parent_registration=source.artifact(previous.REG), parent_result=source.artifact(previous.PUBLIC/'analysis.json'),
         harm_admission_attribution=source.artifact(diagnosis.PUBLIC/'analysis.json'),
@@ -107,7 +133,7 @@ def train(cfg, values, beat, guard, resume):
                 initial_fitting=api.full(api.model_from(s, True), d, s['sampler']['counts'], guard),
                 final_fitting=api.full(api.model_from(s), d, s['sampler']['counts'], guard),
                 joint_attribution=api.attribution(s, d, guard),
-                fitting_harm_weighting=s['fitting_harm_weighting'],
+                fitting_harm_weighting=json_weighting(s['fitting_harm_weighting']),
                 validation_readout=False, both_neural_encoders_updated=True,
                 control_reproduced_previous_exactly=arm == 'joint')
             out = PUBLIC/'fits'/(job['key']+'_'+arm+'.json')
@@ -166,7 +192,7 @@ def main():
         cfg, values = register(beat)
         if args.phase == 'register':
             return
-        for f in (*FILES, REG):
+        for f in (*FILES, REG, *((AMENDMENT,) if AMENDMENT.exists() else ())):
             content = source.subprocess.run(['git', 'show', 'HEAD:'+str(f.relative_to(ROOT))], cwd=ROOT,
                 capture_output=True, check=True).stdout
             if source.hashlib.sha256(content).hexdigest() != source.sha(f):
@@ -186,4 +212,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

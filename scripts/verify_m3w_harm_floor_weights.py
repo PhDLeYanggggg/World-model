@@ -23,7 +23,7 @@ def main():
                 row = source.read(run.PUBLIC/'fits'/(job['key']+'_'+arm+'.json'))
                 state = api.base.read_checkpoint(source.checked(row['checkpoint']))
                 api.base.exact(expected, state['fitting_harm_weighting'])
-                api.base.exact(source.stable(expected), row['fitting_harm_weighting'])
+                api.base.exact(source.stable(run.json_weighting(expected)), row['fitting_harm_weighting'])
                 api.base.exact(expected['planned_query_counts'], state['sampler']['counts'])
                 if not source.np.isclose(expected['floor_positive_mass'],
                         expected['original_positive_mass']*expected['uniform_multiplier'], rtol=1e-12, atol=1e-15):

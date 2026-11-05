@@ -30,8 +30,12 @@ support/easy rules stay fixed. No new V/H outcome is used in weight selection.
 Eighteen focused tests pass in 2.95s; a separate report-roster check passes in
 1.41s. Real pilot PID9647 exits 0 after 96.82s, peak RSS6.53GB; all three
 50+50 versus100-update models/predictions match exactly, 600 actual updates
-including repeats. Full nine-fit training is now PID9913; readout remains
-not_run. [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
+including repeats. PID9913 exited1 after the first 2,000-update control and exact
+predecessor comparison, at JSON receipt serialization. The checkpoint is intact;
+an output-only amendment permits exact recovery without changing scientific
+bindings. Remaining training and readout are not complete.
+[Failure record](outputs/publication_readiness_2026_09/moving_harm_floor_v1/attempt1_failure.md).
+[Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
 
 ## Joint Decision Loss: More Utility, More Harm, No Deployment
