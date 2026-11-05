@@ -27,8 +27,11 @@ contexts, 2,000 updates per head. The latter two have equal positive coefficient
 mass under the exact planned fitting query weights. Only training weights
 change; risk MSE, unknown supervision, inference thresholds and original2%
 support/easy rules stay fixed. No new V/H outcome is used in weight selection.
-Eighteen focused tests pass in 2.95s. Registration is complete; actual training
-and readout are not_run at this checkpoint. [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
+Eighteen focused tests pass in 2.95s; a separate report-roster check passes in
+1.41s. Real pilot PID9647 exits 0 after 96.82s, peak RSS6.53GB; all three
+50+50 versus100-update models/predictions match exactly, 600 actual updates
+including repeats. Full nine-fit training is now PID9913; readout remains
+not_run. [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
 
 ## Joint Decision Loss: More Utility, More Harm, No Deployment

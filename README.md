@@ -15,8 +15,9 @@ The next controlled test targets harmful admissions, not the evaluation rules.
 I compare the joint loss with a fitting-only positive penalty floor and a
 uniform increase with the same total positive weight. The diagnostic rules
 out simple benefit-mass dominance; lower-magnitude harmful cases remain weakly
-penalized. Nine full fits are registered; new training results are not yet
-available. [Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
+penalized. All three real recovery pilots match exactly; nine full fits are
+running locally. New scientific results are not yet available.
+[Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
 
 I completed six matched neural fits to test a concrete loss problem: a channel
 with a zero target could block a useful intervention without receiving a
