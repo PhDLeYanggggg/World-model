@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Source-Held Error Discovery: Real Resume Pilot Passed
+## Source-Held Error Discovery: All Eight Discovery Heads Complete
 
 The next controlled model change discovers errors strictly inside fitting B.
 Eight random-initialized teachers omit one B source each; both common and
@@ -28,6 +28,11 @@ a held-data result. A real scratch-teacher pilot completed200updates including
 repeat, with exact resumed/uninterrupted weights and predictions. Full training
 and evaluation are pending. No V readout, independent H, deployment change, Stage5C or
 SMC is authorized by the new experiment. Old failures remain.
+All eight scratch teachers have now completed16,000 primary updates and an
+exact2,000-update full refit, in726.52seconds with peak RSS9.17GB, observed
+exit0. Own-source common and kinematic preprocessing exclude each held
+source. All three discovery masks are frozen before student training or V
+readout. This is real neural fitting, not evidence of improved held utility.
 The first real pilot stopped before optimizer initialization because the
 existing cache required its original full-role population. The v2 registration
 reads that immutable population before whole-source/query subsetting. The
