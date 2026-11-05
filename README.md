@@ -11,12 +11,20 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing whether candidate-specific neighbor relations explain the remaining
-risk errors. The next fixed experiment compares history/motion probes with and
-without causal forecast-to-neighbor features, leaving out one training source
-at a time. This changes the model inputs, not the original 2% rules. No reserved
-test scenes or identity-fallback exemption are used.
-[Registered experiment](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/protocol.md).
+I tested whether explicit relations between a candidate forecast and nearby
+agents explain the remaining risk errors. Sixteen fixed linear probes leave out
+one training source at a time. Adding these features worsens risk-prediction MSE
+by 6.29%, 0.22% and 5.12% across the three contexts; decision cost improves in
+only one. This does not support expanding that feature branch. It also does not
+rule out nonlinear interaction models.
+
+The next model hypothesis concerns cross-source risk learning, rather than a
+missing proximity feature. These are exposed training-side diagnostics, not a
+new independent test or sixteen new neural networks. The original 2% rules,
+support requirements and prior failures are unchanged; there is no identity-
+fallback exemption or deployment upgrade.
+[Diagnostic results](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/failure_analysis.md).
 
 ### Latest Completed Neural Experiment
 

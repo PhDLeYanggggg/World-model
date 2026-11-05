@@ -14,19 +14,34 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Candidate-Neighbor Mechanism: Registered, Results Pending
+## Candidate-Neighbor Mechanism: Fixed Probes Negative
 
-The next own-B diagnostic adds 24 past-derived candidate/neighbor relations.
+The completed own-B diagnostic adds 24 past-derived candidate/neighbor relations.
 Fixed ridge probes compare kinematic64 + rollout/history32 with and without
 these features in leave-one-source-out fitting folds. Preprocessing, target
 scales and coefficients use only each probe's fitting sources. This is not
 independent confirmation: the parent source data have already been exposed.
-Nine focused synthetic/schema/integration tests pass; real probe results are
-not_run yet. An initial serialization mismatch stopped the first attempt before
-probe fitting. Its receipt is retained; the corrected registration also reuses
-the parent's full attribution helper for exact comparison.
+`fresh_run`: sixteen ridge fits across eight source folds; 62,466 causal rows,
+48,061 known proposed outcomes, 1,274 unknown proposed outcomes retained as
+unknown. Source-macro MSE improvements are -6.2855%, -0.2226%, -5.1245%; joint
+decision-cost improvements -1.2896%, -0.4721%, +1.1641%. The internal follow-up
+screen fails 0/3. No neighbor neural branch is trained or promoted.
+`cached_verified`: original causal data, source roles and frozen neural models.
+`not_run`: new V/H, reserved confirmation or deployment. Prior risk/support
+failure remains 0/17, and original24-group primary remains NA.
+
+Run PID28898 exits0 in40.424s, peak RSS6.46GB. Verification PID29002 exits0 in
+39.514s: every saved coefficient, prediction, metric and frozen-neural slice
+replays exactly. An initial serialization mismatch stopped PID28662 before
+fitting; its receipt is preserved. A pre-rerun integration check also corrected
+the comparison to use the parent's full attribution helper. No scientific
+design or outcome-dependent choice changed.
+Completed read-only replay PID29269 exits0 in39.274s and leaves all16then-existing
+public files unchanged. Fifteen focused tests pass in2.25s; the full historical
+suite was not rerun. The diagnostic figure was inspected.
 The original safety/support rules are unchanged. No new V/H or threshold search.
-[Protocol](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/protocol.md).
+[Results](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/protocol.md).
 
 ## Rollout-History Relations: Small Gain, Safety Still Failed
 
