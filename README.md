@@ -16,8 +16,11 @@ Own-fitting audits show that stronger harm weighting can improve ranking while
 still rejecting useful forecasts. I am testing paired useful/harmful learning
 within each query against a matched pointwise control, without changing inputs,
 thresholds or reserved data access. All three real recovery pilots match
-continuous training exactly. Full training is running from the unchanged
-checkpoint after an interrupted process; no new gain is claimed yet.
+continuous training exactly. Four of nine full fits and one complete treatment
+refit are verified; training continues after unchanged checkpoint recovery.
+The first partition's ranking model admits fewer harmful proposals but rejects
+more useful ones, so its decision cost worsens. This is fitting evidence only;
+no development or deployment gain is claimed yet.
 [Prospective experiment](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
 
 I completed nine matched neural fits to test whether training should put more

@@ -36,6 +36,14 @@ on inspection, with no completion receipt and a last heartbeat at update1500.
 Its terminal exit code was unavailable, so no crash cause is inferred.
 After confirming no duplicate process, unchanged `train --resume` (PID18194)
 continued to update1600. Pilot success and recovery are not scientific success.
+Four of nine fit receipts are now complete. The first paired-rank2000-update
+refit is exact, and both completed joint controls reproduce their predecessors.
+In critic0, joint/point/rank false-safe counts are18/19/4 and false-reject
+counts2655/1945/2873. Rank improves ordering over joint but worsens total
+decision cost; no held evaluation or arm selection has occurred.
+The [loss geometry note](outputs/publication_readiness_2026_09/moving_paired_decision_v1/loss_geometry.md)
+explains why ranking does not determine the fixed acceptance boundary. Four
+analytical regression cases pass;62 existing focused checks also pass.
 [Diagnostic](outputs/publication_readiness_2026_09/moving_discrimination_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
 
