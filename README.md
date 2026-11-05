@@ -11,6 +11,29 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested whether the neural risk failure was simply due to too little training.
+I continued all eight saved heads, adding 32,871 updates with the same model,
+features, loss, sources and original risk rules. Only the fixed final checkpoint
+was evaluated after every fit and exact repeated continuation had completed.
+
+**More training improved fitting, but did not repair transfer.**
+
+Fitting loss fell in all eight folds; source-held risk MSE worsened in six.
+The decision-cost reductions versus the forest control are -4.72%, -68.65%
+and -6.69% across the three development contexts. The screen passes 0/3, so
+deployment is unchanged. These are risk-model results, not trajectory gains.
+
+The fitting banks each contain only one or two source components. I am now
+prioritizing compatible source coverage and conditional risk learning over
+another unstructured increase in training time. The original 2% and support
+requirements remain; empty support is NA. No new reserved test was opened.
+The paper is not submission-ready.
+[Results and loss traces](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/failure_analysis.md),
+[source coverage](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/source_coverage.md).
+
+### Previous Neural Risk Result
+
 I trained a small neural risk model to adjust the mismatch between a query
 and its reference histories. Plain neural prediction and a linear correction
 serve as controls; the reference set, causal inputs and original rules stay fixed.

@@ -10,6 +10,13 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [fixed-budget continuation addendum](../moving_risk_convergence_v1/paper_addendum.md)
+adds 32,871 real optimizer updates to eight saved risk heads. Fitting loss improves
+in all eight folds, but source-held MSE improves in only two and the information
+screen passes 0/3. Verified fitting banks contain only one or two source components.
+This weakens an undertraining-only explanation; it does not establish a new safe
+method. The compiled main paper remains unchanged and is not submission-ready.
+
 The [cost-partition addendum](../moving_cost_partition_v1/paper_addendum.md)
 records16new fitted models,8verified controls and full exact refits. Fixed
 cost-directed partitions improve risk MSE up to35.8%, but not safe decisions:

@@ -16,13 +16,38 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-The next registered experiment holds the model and data fixed and continues
-each saved head for at least 4,096 additional updates, rounded to full epochs.
-All eight fits must finish before the fixed final checkpoint is evaluated.
-There is no held-out epoch selection or threshold search. This tests whether
-optimization budget explains the negative result; it does not presume that
-longer training will improve transfer. Seven focused preflight tests pass.
-[Continuation protocol](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/protocol.md).
+The fixed-budget continuation is complete: eight heads, 32,871 additional
+updates, full epochs, unchanged model/data/loss/thresholds. All eight repeat
+exactly from the original parents. Only the final fixed-budget checkpoint
+was evaluated, after all training and verification had completed.
+
+Fitting loss improves in 8/8 folds; source-held plain MSE improves in only 2/8.
+Continued transport decision-cost reductions versus shared64 are -4.719181%,
+-68.647572%, -6.692049%; harmful admissions 214/498/1219 versus 0/1/0.
+Screen passes 0/3. No new trajectory result or model promotion. No fold meets
+the operational plateau diagnostic; mathematical convergence is not claimed.
+The large fitting gains without transfer weaken an undertraining-only account.
+Verified metadata shows one/two fitting sources per fold, not independent
+scene diversity implied by the larger window count.
+
+Pilot PID 49656 exits 0 in 1.396s; full continuation PID 49711 exits 0 in 25.403s,
+peak 747,159,552 bytes; verification PID 49805 exits 0 in 20.501s, peak 737,656,832
+bytes; final evaluation PID 49864 exits 0 in 2.282s, peak 883,490,816 bytes.
+Twenty-four focused tests pass in 3.22s; historical full suite not rerun. No new
+CREATE job. The fitting/transfer figure was visually checked and remains local.
+Read-only replay PID 50182 exits 0 in 2.247s with fitting forbidden; predictions
+and metrics reproduce, and all 26 then-existing public files stay unchanged.
+The compiled main-paper hash remains unchanged. Replay is not independent evidence.
+
+Next: inspect additional already-authorized SOURCE banks for compatible teacher
+ancestry and target definitions before any donor pooling. Do not combine critic
+contexts blindly or open reserved tests. Original 2% rules, support requirements,
+empty-control NA, original 24-group NA and no-identity decision remain.
+[Continuation results](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/failure_analysis.md),
+[source coverage](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/source_coverage.md).
+
+### Original 32-Epoch Comparison
 
 The fixed-reference attribution found source076 harmful matches differ more
 in forecast/history lateral relationships, while other sources show different
