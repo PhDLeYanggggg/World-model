@@ -16,6 +16,14 @@ No new H test is opened by this decision.
 
 ## Composed Decision Loss: Fitting Repaired, Held Safety Failed
 
+Joint-loss follow-up: full training PID4934 exited0 in1,051.49s, peak7.56GB.
+All6fits and12,000 primary updates complete, plus2,000 exact full-refit updates.
+All3fresh per-channel controls reproduce the prior composed models exactly.
+Matched joint costs fall13.9028%/17.5846%/30.1134%, while false-safe counts
+change16->18,20->35,22->162. Zero-only rejection cost falls45.3245%/52.5479%/
+67.3560%. The original internal fitting screen passes3/3, not scientific
+safety. The same exposed-development evaluation is now running; no new H.
+
 Next fixed model test: per-channel versus complete joint-sign auxiliary loss,
 six actual fits, unchanged64,260-parameter architecture and2,000update budgets.
 Own-B attribution finds zero-target outputs alone cause39%/42%/49% of weighted

@@ -23,14 +23,13 @@ of false-rejection cost across the three fitting contexts. I am testing a joint
 decision loss that trains those blocking outputs without changing the gate.
 [Blocking-output audit](outputs/publication_readiness_2026_09/moving_zero_channel_v1/README.md),
 [fixed experiment](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
-Both real resume pilots and the first full2,000-step refit reproduce exactly.
-In the first fitting context, joint decision cost falls13.90% and zero-only
-rejection cost falls45.32%, but the all-channel sign cost rises12.57% versus
-the matched control. The remaining contexts are still training. This partial
-fitting result does not establish safe generalization or change deployment.
-The second context also lowers joint cost (17.58%) but increases false-safe
-decisions from20 to35. Both favorable and unfavorable effects are retained;
-the largest fitting context is still running.
+All six new fits, both resume pilots and the first full2,000-step refit are
+complete. Joint decision cost falls13.90%,17.58%,30.11% across the three
+contexts, but false-safe counts change16 to18,20 to35,and22 to162. The first
+context's all-channel sign cost also rises12.57% versus the matched control.
+The unchanged internal fitting screen passes3/3; the exposed-development
+readout is in progress. Better fitting is not a safe-generalization claim,
+and no model is deployed.
 
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.
