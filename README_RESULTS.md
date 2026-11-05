@@ -14,6 +14,23 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Harm-Weight Allocation: Registered Model Test
+
+A fresh own-B attribution and exact replay identify 4/17/141 newly admitted
+harmful proposals in the three preceding joint models. Their median targets
+are 0.005242/0.026056/0.072066, below the corresponding harmful-target medians
+0.122769/0.058217/0.275317. Total harm penalty mass is already larger than
+benefit mass, so simple benefit-mass dominance is not supported.
+
+The next fixed test compares joint, uniform_harm and harm_floor in all three
+contexts, 2,000 updates per head. The latter two have equal positive coefficient
+mass under the exact planned fitting query weights. Only training weights
+change; risk MSE, unknown supervision, inference thresholds and original2%
+support/easy rules stay fixed. No new V/H outcome is used in weight selection.
+Eighteen focused tests pass in 2.95s. Registration is complete; actual training
+and readout are not_run at this checkpoint. [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
+
 ## Joint Decision Loss: More Utility, More Harm, No Deployment
 
 **Fresh_run, 5 November:** six full fits and complete exposed-development
