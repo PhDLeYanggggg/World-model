@@ -11,6 +11,15 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing whether candidate-specific neighbor relations explain the remaining
+risk errors. The next fixed experiment compares history/motion probes with and
+without causal forecast-to-neighbor features, leaving out one training source
+at a time. This changes the model inputs, not the original 2% rules. No reserved
+test scenes or identity-fallback exemption are used.
+[Registered experiment](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/protocol.md).
+
+### Latest Completed Neural Experiment
+
 I added explicit relations between a candidate forecast and the agent's past
 motion: direction, speed change, acceleration alignment and departure from the
 baseline. Six matched neural models test these32features with the same loss,

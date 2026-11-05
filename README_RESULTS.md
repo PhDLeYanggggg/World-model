@@ -14,6 +14,17 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Candidate-Neighbor Mechanism: Registered, Results Pending
+
+The next own-B diagnostic adds 24 past-derived candidate/neighbor relations.
+Fixed ridge probes compare kinematic64 + rollout/history32 with and without
+these features in leave-one-source-out fitting folds. Preprocessing, target
+scales and coefficients use only each probe's fitting sources. This is not
+independent confirmation: the parent source data have already been exposed.
+Seven focused synthetic/schema tests pass; real probe results are not_run yet.
+The original safety/support rules are unchanged. No new V/H or threshold search.
+[Protocol](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/protocol.md).
+
 ## Rollout-History Relations: Small Gain, Safety Still Failed
 
 `fresh_run`: six matched neural fits add32 causal relation features, with68,356
