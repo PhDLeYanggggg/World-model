@@ -51,7 +51,10 @@ Follow-up: an ego-history frame control is fixed before fitting. It keeps
 original signed targets and target scaling; history121 retains the causal
 old-to-new scale ratio, with history120 as a secondary ablation. Sixteen fits
 against eight cached controls are planned. Five feature tests pass in1.67s.
-No real-fit or safety success is claimed yet.
+Pilot PID43180 saved its first model, then exited1 exporting the target-scale
+array to JSON. Only serialization is repaired; the checkpoint is retained,
+registration_v2 discloses the change, and six focused tests pass in1.38s.
+No completed pilot or safety success is claimed yet.
 [Protocol](outputs/publication_readiness_2026_09/moving_ego_frame_v1/protocol.md).
 
 ## Cost-Directed Partitions: Complete, No Safe Decision Repair

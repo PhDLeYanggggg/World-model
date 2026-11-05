@@ -14,9 +14,10 @@ from src.world_model import m3w_ego_frame_basis as features
 source,rel,np,method=parent.source,parent.rel,parent.np,parent.method.parent
 PUBLIC=ROOT/'outputs/publication_readiness_2026_09/moving_ego_frame_v1'
 PRIVATE=ROOT/'data/stage_cvpr2027_experiments/moving_ego_frame_v1'
-CONFIG=ROOT/'configs/m3w_moving_ego_frame_v1.json'; REG=PUBLIC/'registration.json'
+CONFIG=ROOT/'configs/m3w_moving_ego_frame_v1.json'
+BINDING_REG=PUBLIC/'registration.json'; REG=PUBLIC/'registration_v2.json'
 FILES=(Path(__file__),CONFIG,PUBLIC/'protocol.md',ROOT/'src/world_model/m3w_ego_frame_basis.py',
-    ROOT/'tests/test_m3w_ego_frame_basis.py')
+    ROOT/'tests/test_m3w_ego_frame_basis.py',ROOT/'tests/test_m3w_ego_frame_reporting.py',PUBLIC/'serialization_repair.md')
 
 
 def register(beat):
@@ -30,6 +31,7 @@ def register(beat):
     rel.base.exact(source.read(parent.PUBLIC/'verification.json')['analysis_sha256'],source.sha(parent.PUBLIC/'analysis.json'))
     source.once(REG,source.stable(dict(config=cfg,tree=method.TREE,files={str(f.relative_to(ROOT)):source.sha(f) for f in FILES},
         parent=source.artifact(parent.REG),negative_tail_probe=source.artifact(parent.PUBLIC/'analysis.json'),
+        unchanged_scientific_binding=source.artifact(BINDING_REG),
         jobs=values[3],partitions={j['key']:values[5][j['key']] for j in values[3]},
         result_role='exposed_own_B_source_held_model_input_repair',fresh_fits=16,cached_controls=8,
         original_rules_unchanged=True,new_V_or_H=False,identity_certification=False,independent_confirmation=False)))
@@ -56,7 +58,7 @@ def inputs(values,job,guard):
 
 def cell(d,job,site,arm,guard,*,resume=False,verify=False,replay=False,kind='fits'):
     train,held=d['sites']!=site,d['sites']==site; x=d['xs'][arm]; y,w=d['target'],d['weights']
-    identity=dict(registration_sha256=source.sha(REG),job=job['key'],source=str(site),arm=arm,
+    identity=dict(registration_sha256=source.sha(BINDING_REG),job=job['key'],source=str(site),arm=arm,
         x_hash=rel.parent.kin.digest(x),target_hash=rel.parent.kin.digest(y),
         train_ids_hash=rel.parent.kin.digest(d['ids'][train]),held_ids_hash=rel.parent.kin.digest(d['ids'][held]))
     common=dict(d,xs={'summary120':d['xs']['original120']})
@@ -80,10 +82,11 @@ def cell(d,job,site,arm,guard,*,resume=False,verify=False,replay=False,kind='fit
         state,seconds,ref=saved['state'],saved['seconds'],source.artifact(path)
         rel.base.exact(saved['prediction'],method.predict(state,x[held]))
     pred=method.predict(state,x[held])
-    return source.stable(dict(**identity,checkpoint=ref,seconds=seconds,rows=int(held.sum()),
+    return source.stable(dict(**identity,execution_registration_sha256=source.sha(REG),
+        checkpoint=ref,seconds=seconds,rows=int(held.sum()),
         queries=len(set(d['query'][held])),train_sources=sorted(set(d['sites'][train])),
         result_source='cached_verified' if arm=='original120' else 'fresh_run',prediction_hash=rel.parent.kin.digest(pred),
-        target_scale=state['target_scale'],metrics=method.previous.metrics(pred,y[held],w[held],state['target_scale']),
+        target_scale=state['target_scale'].tolist(),metrics=method.previous.metrics(pred,y[held],w[held],state['target_scale']),
         fitting_metrics=method.previous.metrics(method.predict(state,x[train]),y[train],w[train],state['target_scale'])))
 
 
