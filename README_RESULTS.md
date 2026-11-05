@@ -14,16 +14,19 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Moving Public Deferral Control: Registered, Not Yet A Result
+## Moving Public Deferral Control: Real Training In Progress
 
 I am testing the two-stage cost-sensitive routing objective from Mao, Mohri and
 Zhong (ICML2024) on the unchanged Moving forecast bank and original inner-C
 partitions. This is a task-adapted public comparison, not a new M3W invention or
 the authors' original experiment. The prior European control is a separate study.
-Nine focused model/loss/runner checks pass. The registered budget is54routers,
+Twelve focused model/loss/runner/reporting checks pass. The registered budget is54routers,
 2000updates each, with the original three producer seeds and the same own-source
-normalization and sampling. Neither a training run nor a new improvement is
-claimed at registration. No identity certification, new test access, risk change
+normalization and sampling. The real pilot completed600updates in42.92s with
+peak RSS7.16GB; all three resumed/direct state and inference comparisons are
+exact. Its projected primary training time is3048.98s, not measured completion.
+Full fitting is running as PID46216 with unchanged2000-update checkpoints.
+No validation result or improvement is claimed yet. No identity certification, new test access, risk change
 or deployment change is introduced. All previous failures remain recorded.
 
 [Protocol](outputs/publication_readiness_2026_09/moving_public_deferral_v1/protocol.md).
