@@ -14,6 +14,20 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Cross-Source History Retrieval: Registered Model Check
+
+After the failed channel-head repair, I am testing whether nearest causal
+histories from other source components carry useful risk information. The fixed
+comparison uses 32 distinct source/agent identity buckets, a fitting prior,
+a misaligned-query control and the verified shared64 forest. Same-source and
+same-recording donors are forbidden; repeated local IDs across linked clips
+are conservatively merged. This is not a claim of independent physical people.
+
+The original 120 features, signed risk targets and 2% rules remain. Six focused
+tests pass; metadata reconstruction and the real retrieval experiment are not
+yet complete. No reserved readout, deployment change or new neural training.
+[Protocol](outputs/publication_readiness_2026_09/moving_track_analogue_v1/protocol.md).
+
 ## Boundary Audit And Channel-Specific Model Repair
 
 The fresh boundary audit locates the ego-frame MSE gains almost entirely in
