@@ -11,6 +11,12 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing whether the new source-held forecast donors improve risk learning.
+The fixed comparison has 24 new fits: own-B only, producer-A only, and a50/50
+mixture, each with the same model, features and4,096-update budget. No result
+is claimed yet. The outer test stays closed and the original2% rules remain.
+[Donor-comparison protocol](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/protocol.md).
+
 I trained six new EqMotion controls to expand risk-learning source coverage
 without relaxing the safety rule. Each completed 4,000 updates. Their forecasts
 are held out by source inside the original predictor training sets, keeping

@@ -16,6 +16,17 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Matched Donor Comparison Registered
+
+The next experiment compares own-only, A-only and50/50augmented risk training
+on the eight exposed source-held own-B folds. Each receives4,096updates with
+the original120features,64/32MLP and fixed zero decision threshold. All24fits
+and24full repeats must finish before final readout. Donor candidates include
+all six predetermined amplitudes; teacher-size and candidate-mixture changes
+are explicit limitations, not a pure source-count causal effect. No new C/H,
+threshold tuning or identity certificate. Results are not yet claimed complete.
+[Protocol](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/protocol.md).
+
 ### Producer-A Donor Repair Completed
 
 The source audit rules out blind cross-context pooling: same-teacher caches can
