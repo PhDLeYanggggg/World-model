@@ -103,16 +103,17 @@ def main():
     lines += ['', 'The evaluate phase may only record not_run; its successful exit does',
         'not imply held evaluation took place. Full-gradient passes include initial',
         'and final-gradient diagnostics and repeated line-search evaluations.',
-        'Reaching200 outer calls is not proof of convergence.', '',
-        'Each context passes actual3+3 versus6 resume equivalence. The first full',
+        'Reaching 200 outer calls is not proof of convergence.', '',
+        'Each context passes actual 3+3 versus 6 resume equivalence. The first full',
         'fit repeats exactly; all initial/final full-fitting metrics replay exactly.',
         'Interrupted line searches cannot overwrite the last completed checkpoint.',
         'This solver/float64/no-decay bundle is not an isolated optimizer comparison.', '',
-        'Original24-group primary: NA, not passed. Missing support and empty',
+        'Original 24-group primary: NA, not passed. Missing support and empty',
         'controls remain NA, without identity certification. No new H/reserved data.',
         'Native obs8/pred12 image pixels; no metric/seconds/true3D/foundation or',
         'human-gold claim. Stage5C and SMC remain disabled.', '',
-        '[Protocol](protocol.md) | [Fitting screen](fitting_screen.json) | [Analysis](analysis.json)', '']
+        '[Protocol](protocol.md) | [Fitting screen](fitting_screen.json) | [Analysis](analysis.json)',
+        '[Error attribution](result_interpretation.md) | [Chinese run guide](operation_zh.md)', '']
     (PUBLIC/'README.md').write_text('\n'.join(lines))
     commands = '\n'.join('.venv-pytorch/bin/python scripts/run_m3w_moving_full_objective_risk.py '+p
         for p in ('register', 'pilot', 'train', 'evaluate', 'verify'))

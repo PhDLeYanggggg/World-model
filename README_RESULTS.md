@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Complete-Fitting Optimization: Training Complete
+## Complete-Fitting Optimization: Complete Negative Fitting Result
 
 The next diagnostic keeps the network, original labels, source roles and 2%
 rules. Three full-B LBFGS continuations start from the final constant controls;
@@ -33,8 +33,29 @@ passes; the first complete200-call /620-pass refit is exact. All fits reach the
 registered200-call budget, not the gradient convergence criterion. Mean fitting
 MSE falls31.98%,37.90%,41.13%; at least one sign-cost channel worsens in every
 context. The prospective fitting screen fails0/3, so additional held readout
-is not_run. Error attribution and final replay are pending; no deployment change.
+is not_run. The evaluate command PID93829 exited0 only after recording that
+not_run decision; it did not produce new held predictions. Replay PID93881
+exited0 in30.50seconds, reproducing all three initial/final full-fitting metrics
+exactly. Fresh fitting-error attribution PID93946 (30.12s) and replay PID94001
+(30.13s) also exited0 with exact decompositions and original observed-label masks.
+
+All/easy decision-cost changes are +8.32%/-4.21%, -1.48%/+2.37%, and
++2.57%/+6.34% respectively (positive is worse). Context0 reduces false-safe cost
+but increases false rejection; context1 increases all false-safe cost47.50%;
+context2 increases easy false-safe cost7.21%. Sources048,076,060/073 identify
+different fitting failure slices. Unknown-bound fitting accounts for40.19%,
+49.92%,75.14% of the MSE decrease; observed MSE also falls. This does not prove
+the bounds cause the failures and they remain intact. Twenty-seven focused
+tests pass; the full historical suite was not rerun. No deployment change,
+new held gain, independent confirmation or submission-ready claim.
+Next untrained hypothesis: separate magnitude and decision representations,
+retain conservative-bound supervision, compare under the same source roles
+and original2% rules. A repeated signed-cost-only sweep is not justified by
+the earlier negative held results.
 [Protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
+[Complete results](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/README.md),
+[interpretation](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/full_objective_risk_addendum.md).
 
 ## All/Easy Attribution And Fixed-Schedule Repair
 

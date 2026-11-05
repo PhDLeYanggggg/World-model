@@ -11,15 +11,27 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am now testing complete-fitting optimization of the same neural risk model,
-without changing the original safety or support rules. The diagnostic separates
-inadequate fitting from held-source failure; training improvement alone will not
-count as safe deployment. Three source-separated fits and exact resume checks
-are complete. All three real-data resume pilots and a full refit reproduce
-exactly. Mean fitting loss falls31.98%,37.90%,41.13%, but every context worsens
-at least one decision-cost channel. The prospective fitting screen fails;
-no new held readout is allowed. Attribution and final replay are in progress.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
+I tested complete-fitting optimization of the neural risk model without changing
+the original 2% safety or support rules. Three real fits, exact resume checks,
+a full refit and error-attribution replay are complete.
+
+**Better loss did not produce consistently better decisions.** Mean fitting
+loss falls 31.98%, 37.90% and 41.13%, but every context worsens at least one
+decision-cost channel. One model rejects more useful interventions; others
+admit more costly harmful ones. These are training diagnostics, not test gains.
+The prospective fitting screen fails, so no new held predictions are evaluated.
+There is no deployment upgrade, changed threshold or identity certification.
+
+Twenty-seven focused checks pass; the full historical suite was not rerun.
+This is native obs8/pred12 SOURCE-development evidence, not independent testing
+or a new trajectory-dynamics result.
+
+I am next investigating separate risk-magnitude and intervention-decision
+representations while retaining the conservative supervision for missing labels.
+That next model is not yet trained. The current result remains negative.
+[Complete result](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/README.md),
+[error analysis](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/result_interpretation.md),
+[run and recovery guide](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/operation_zh.md).
 
 ### Previous Training-Schedule Result
 
