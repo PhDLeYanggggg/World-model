@@ -14,6 +14,18 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Cost-Directed Partitions: Registered Model Test
+
+The next comparison changes how a fixed-capacity forest partitions fitting
+examples, not the scientific risk budget or decision threshold. It retains the
+original120causal features and two-channel mean readout. Sixteen new sign/cost
+partition fits are planned against eight cached MSE controls, across eight
+source-held fitting folds. Allmodels are verified by full refit. No new neural
+or held result is claimed. Nineteen focused tests pass in2.95s after a disclosed
+preflight synthetic-test correction; no real training result drove that fix.
+The prior directional branch remains unsupported and is not expanded.
+[Protocol](outputs/publication_readiness_2026_09/moving_cost_partition_v1/protocol.md).
+
 ## Directional Peer Paths: Complete, Primary Follow-Up Screen Failed
 
 The earlier neighbor24 linear probe and the completed neural pooling factorial

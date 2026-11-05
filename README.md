@@ -11,6 +11,14 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing a targeted change to risk learning: fit partitions around useful
+and costly decisions, while keeping the original expected-risk readout. The
+comparison uses the same inputs and zero decision boundary; it does not loosen
+the safety rules. The protocol and three model arms are fixed before fitting.
+[Current experiment](outputs/publication_readiness_2026_09/moving_cost_partition_v1/protocol.md).
+
+### Last Completed Information Test
+
 I tested whether richer directional information about nearby agents improves
 intervention decisions. The comparison adds step-by-step candidate-to-peer
 geometry, including a deliberately mismatched association control, and leaves
