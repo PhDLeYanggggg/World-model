@@ -33,7 +33,9 @@ Eighteen focused tests pass in 2.95s; a separate report-roster check passes in
 including repeats. PID9913 exited1 after the first 2,000-update control and exact
 predecessor comparison, at JSON receipt serialization. The checkpoint is intact;
 an output-only amendment permits exact recovery without changing scientific
-bindings. Remaining training and readout are not complete.
+bindings. Recovery PID10991 exported the first receipt without changing a byte
+of its checkpoint and continued the remaining fits. Fifty focused regression
+tests pass in4.20s. Remaining training and readout are not complete.
 [Failure record](outputs/publication_readiness_2026_09/moving_harm_floor_v1/attempt1_failure.md).
 [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
