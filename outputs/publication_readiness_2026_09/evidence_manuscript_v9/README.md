@@ -274,3 +274,14 @@ depends on one source, worst easy degradation remains8.6603%, and full original
 risk/support is0/17. Controls, a complete refit and prediction/metric replay are
 exact. No identity exemption, new deployment or independent confirmation is
 claimed. The addendum is not included in the unchanged compiled main PDF.
+
+## Source-Robust Continuation: Lower Loss, No Consistent Decision Gain
+
+The [source-loss addendum](../moving_source_robust_v1/paper_addendum.md) records
+six actual matched neural continuations. Worst-source fitting loss decreases
+2.149%, 6.936% and 1.980%, but two contexts have higher total decision cost and
+two have higher harmful-admission cost. The internal follow-up screen fails
+0/3, so no additional nested-C or H readout is performed. Original rules and
+prior failures remain unchanged. This is a completed negative model experiment,
+not a safety pass, independent confirmation or deployment improvement. The
+addendum is separate from the unchanged compiled main PDF.

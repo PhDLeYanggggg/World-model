@@ -14,17 +14,43 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Source-Robust Neural Continuation: Registered
+## Source-Robust Neural Continuation: Completed, Screen Failed
 
-Six matched neural continuations are registered: original mean loss versus a
+`fresh_run`: six matched real neural fits compare original mean loss with a
 fixed 0.75 mean + 0.25 worst-source mixture. Every model retains 68,356
-parameters, the same verified relational inputs and a 1,000-update continuation
-budget. Preprocessing, starts and query draws are identical within each pair.
-The original admission rule, 2% budgets, reference/support rules and absence of
-an identity exemption are unchanged. A failed internal fitting screen prevents
-another exposed nested-C readout; no H or reserved scenes are opened.
-Twelve focused tests pass in2.40s. Real pilot/training/evaluation: not_run yet.
-[Protocol](outputs/publication_readiness_2026_09/moving_source_robust_v1/protocol.md).
+parameters, the same verified relational inputs and 1,000 additional updates.
+Preprocessing, parent starts, query draws and optimizer resets match within
+each pair. Both encoders update. All six models complete the full budget.
+
+Worst-source loss reductions are +2.1492%, +6.9365%, +1.9804%. Joint decision-
+cost reductions are -1.4646%, -8.2327%, +1.1602%. Harmful-admission-cost
+reductions are -5.0465%, +31.4085%, -22.4348%. The three worst fitting sources
+improve in loss, while the other five worsen. Risk-MSE reductions are
+-0.8688%, +5.4689%, -0.1660%. These are fitting contrasts, not trajectory gains.
+The fixed internal follow-up screen fails0/3; additional nested-C and H
+readouts are `not_run`. Previous17-view safety failure remains unchanged.
+
+Pilot PID30383 exits0 in73.512s: two50+50-versus100 exact resume checks,
+400actual updates. Training PID30621 exits0 in590.198s, peak RSS7.739GB:
+6,000primary updates plus1,000exact full-refit updates. Evaluation orchestration
+PID31462 exits0 in16.780s and records not_run without opening another readout.
+Verification PID31505 exits0 in39.831s: all six initial/final fitting metrics,
+per-source losses and joint attributions reproduce exactly. Forty-five focused
+tests pass across three non-overlapping batches; the historical full suite was
+not rerun. The common-loss and decision-cost figure was inspected.
+Completed read-only replay PID31790 exits0 in41.199s and leaves all26then-existing
+public files unchanged. No new fitting or scientific readout is performed.
+
+`cached_verified`: parent weights, causal schemas, source roles and fitting-only
+normalization. `not_run`: independent confirmation, a new trajectory predictor,
+JEPA and deployment. Original2% all/easy, easy-net, reference/support rules remain;
+empty support stays NA and there is no identity exemption or threshold search.
+Original24-group primary remains NA. Reserved Moving20, DUT, DroneCrowd and H
+remain closed. Native obs8/pred12 image coordinates, no metric/seconds or
+true3D/foundation claim. Stage5C/SMC remain off; submission readiness is false.
+[Results](outputs/publication_readiness_2026_09/moving_source_robust_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_source_robust_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/moving_source_robust_v1/paper_addendum.md).
 
 ## Candidate-Neighbor Mechanism: Fixed Probes Negative
 

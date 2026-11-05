@@ -11,13 +11,32 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing a source-robust neural risk objective against matched continuation
-with the original mean loss. Both arms start from the same trained models and
-use the same inputs, query draws and 1,000-update budget. The only experimental
+I completed six matched neural continuations to test whether emphasizing the
+worst training source improves intervention decisions. Both arms use the same
+trained starting models, inputs, query draws and 1,000-update budget. The only
 change is a fixed 25% contribution from the worst training-source loss.
-The experiment is registered before fitting; real training results are pending.
-No evaluation rule, threshold or reserved-test role changes.
-[Protocol](outputs/publication_readiness_2026_09/moving_source_robust_v1/protocol.md).
+
+**Lower worst-source loss did not produce consistently better decisions.**
+
+| Context | Worst-source loss reduction | Total decision-cost reduction | Harmful-admission-cost reduction |
+|---|---:|---:|---:|
+| 0 | +2.149% | -1.465% | -5.046% |
+| 1 | +6.936% | -8.233% | +31.409% |
+| 2 | +1.980% | +1.160% | -22.435% |
+
+Positive reductions mean better. These are fitting diagnostics, not test
+trajectory gains. The three worst sources improve, but the five other fitting
+sources worsen. None passes the fixed internal follow-up screen, so I did not
+run another development or reserved-test readout. Resume, a full refit and all
+fitting metrics replay exactly; that verifies execution, not scientific success.
+
+The original 2% risk and support requirements are unchanged. Empty support is
+still not estimable, there is no identity-fallback exemption, and no model is
+promoted. The next model question concerns representing the complete admission
+decision more directly, rather than another source-weight or threshold sweep.
+[Results and loss curves](outputs/publication_readiness_2026_09/moving_source_robust_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_source_robust_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_source_robust_v1/protocol.md).
 
 ### Latest Model-Input Diagnostic
 
@@ -28,15 +47,15 @@ by 6.29%, 0.22% and 5.12% across the three contexts; decision cost improves in
 only one. This does not support expanding that feature branch. It also does not
 rule out nonlinear interaction models.
 
-The next model hypothesis concerns cross-source risk learning, rather than a
-missing proximity feature. These are exposed training-side diagnostics, not a
+This motivated the source-risk training experiment above. These are exposed
+training-side diagnostics, not a
 new independent test or sixteen new neural networks. The original 2% rules,
 support requirements and prior failures are unchanged; there is no identity-
 fallback exemption or deployment upgrade.
 [Diagnostic results](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/failure_analysis.md).
 
-### Latest Completed Neural Experiment
+### Previous Neural Feature Experiment
 
 I added explicit relations between a candidate forecast and the agent's past
 motion: direction, speed change, acceleration alignment and departure from the
