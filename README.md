@@ -11,16 +11,28 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I trained 108 source-separated neural cost critics on MovingDroneCrowd++
-SOURCE to test whether a second model can judge an intervention's risk more
-reliably. Each head learns only from its own fitting sources. This did not
-solve the admission problem. With the same intervention count and amplitude
-distribution in each query, the source-disjoint veto loses 0.56 percentage
-points of known-label utility against its matched control (95% CI:
--1.09 to -0.19). The registered nonempty primary remains unavailable because
-18 required source views have empty controls; I did not drop them or replace
-the primary. The original risk rules remain unmet, so deployment is unchanged.
-[Complete experiment and training losses](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/README.md).
+My latest controlled experiment tests whether explicitly learning the chance
+and size of harm makes neural interventions more reliable. I trained 108
+matched cost heads on MovingDroneCrowd++ SOURCE, with the same initialization,
+sampling, fitting sources and update budget in both arms. Event supervision
+improves harm-estimation errors over the matched product-moment model, but
+does not solve the decision problem. Its occurrence probabilities are also
+worse than fitting-source frequency priors on the held development sources.
+
+At the same intervention count and amplitude distribution within each query,
+the new veto loses 1.03 percentage points of known-label utility against its
+matched control (95% CI: -1.89 to -0.37). The complete nonempty primary remains
+unavailable because 24 required source views have empty controls. Only 47/696
+repeated recording views meet the original risk/support contract. I retain
+those failures rather than changing the 2% limit or certifying empty cases as
+safe. Deployment is unchanged.
+[Complete experiment, loss curves and failure analysis](outputs/publication_readiness_2026_09/moving_joint_harm_v1/README.md).
+
+This follows a [negative source-separated critic experiment](outputs/publication_readiness_2026_09/moving_source_separated_critics_v1/README.md).
+The remaining problem is not simply average error prediction: risk estimates
+can be conservative over the candidate pool yet optimistic on the actions
+the model admits. These are exposed development results, not independent
+confirmation or a new trajectory-world-model success.
 
 I completed nine fixed-budget EqMotion forecasting fits on the EuropeanSquares
 SOURCE data, using three real training seeds and the same observations, labels

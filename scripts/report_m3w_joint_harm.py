@@ -55,11 +55,25 @@ def loss_arrays(fits, arm):
     return source.np.array(steps), common, occurrence
 
 
+def risk_diagnostics(groups):
+    rows = [r for g in groups for r in g['rows']]
+    result = {}
+    for arm in run.POLICIES:
+        views = [v for r in rows for v in r['policies'][arm]['recordings'].values()]
+        defined = [100*v['known_easy_net_degradation'] for v in views
+            if v['known_easy_net_degradation'] is not None]
+        result[arm] = dict(required_record_views=len(views),
+            worst_defined_signed_easy_net_percent=max(defined) if defined else None,
+            undefined_full_known_easy_net_views=sum(v['known_easy_net_degradation'] is None for v in views),
+            no_intervention_views=sum(v['selected'] == 0 for v in views))
+    return result
+
+
 def figures(fits, analysis):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    plt.rcParams.update({'svg.fonttype': 'none', 'font.size': 9})
+    plt.rcParams.update({'svg.fonttype': 'none', 'svg.hashsalt': 'm3w-joint-harm-v1', 'font.size': 9})
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.8))
     for arm, color in zip(run.api.ARMS, ('#216a91', '#a24d4b')):
         steps, common, _ = loss_arrays(fits, arm)
@@ -110,6 +124,9 @@ def main():
     source.once(PUBLIC / 'pooled_cost_diagnostics.json', source.stable(dict(cells=costs,
         role='post_readout_repeated_rows_descriptive_not_source_macro_CI_or_calibration',
         no_new_policy=True, known_rows_identical_between_predicted_and_actual_mass=True)))
+    source.once(PUBLIC / 'risk_diagnostics.json', dict(
+        values=risk_diagnostics(groups), counts_overlap_not_additive=True,
+        role='posthoc_description_original_policy_not_new_gate'))
     primary = ['|Arm vs own query-count/amplitude-matched control|Known pp [95% CI]|Direct lower pp [95% CI]|Unavailable /276|',
         '|---|---:|---:|---:|']
     secondary = ['|Full-strategy secondary contrast|Known pp [95% CI]|Direct lower pp [95% CI]|', '|---|---:|---:|']

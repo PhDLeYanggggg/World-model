@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Joint Harm Event Supervision: Full Training Frozen, Validation Pending
+## Joint Harm Event Supervision: Complete, Original Rules Still Fail
 
 I am testing one loss change after the negative source-separated critic study:
 explicit joint benefit/non-easy-harm/easy-harm event and conditional magnitude
@@ -26,35 +26,64 @@ threshold search or a change in the original risk rules.
 
 All108heads and216,000primary optimizer updates are complete, retaining three
 producer seeds and all original inner-C parts. All54paired fits pass the
-own-source preprocessing, optimizer and sampling audit. Twenty-two focused
-model/runner/reporting/public-loss tests pass. The real-data pilot
+own-source preprocessing, optimizer and sampling audit. Twenty-three focused
+model/runner/reporting/public-loss checks pass. The real-data pilot
 completed1200updates in74.15s, peakRSS7.19GB, observed exit0. All six resumed
 versus direct states and three initialization/sampling pairs match exactly.
 Each model has28,489parameters. The pilot projects8526.46s of primary fitting;
 that was a planning estimate, not measured runtime. The terminal resumed
 training attempt finished with observed exit0 in7954.35s, peakRSS9.77GB.
-Saved primary fitter times sum to7818.46s. No new validation has been read.
+Saved primary fitter times sum to7818.46s. Evaluation299.39s and separate
+replay297.89s both finished with exit0; all108policy blocks and prediction
+hashes agree. Weights froze before the new nested-C readout.
 The first full model and its exact refit completed before a fit-receipt JSON
 serialization exception ended PID31569 with exit1. Their checkpoints are
 preserved. A narrow committed runtime wrapper converts the aggregate event
 prior to a JSON list; scientific files and definitions remain unchanged.
 Resume completed the same full budget, not a new selected trial. All108weights
 and their training receipts are frozen before validation. Checkpoints stay
-local; only light metrics and hashes are committed. Separately, I read the ICML2024
+local; only light metrics and hashes are committed.
+
+|Arm vs own query-count/amplitude-matched control|Nonempty primary|Full-strategy known pp [95% CI], secondary|Direct lower pp [95% CI], secondary|
+|---|---|---:|---:|
+|Product moment|NA:26/276 empty|-0.931[-1.738,-0.276]|-1.392[-2.535,-0.518]|
+|Event supervised|NA:24/276 empty|-1.031[-1.886,-0.369]|-1.543[-2.811,-0.601]|
+
+Event minus product full-policy known effect is+0.275pp[-0.062,+0.665];
+direct lower+0.099pp[-0.243,+0.446]. Neither establishes an advantage.
+Event-veto switch rate is18.685%, source-macro, with47/696supported recording
+views,382known all-risk violations,399known easy-risk violations and213
+undefined selected easy-risk views. Worst defined signed recording easy-net
+degradation is247.37%, not a dataset-wide mean. No original gate is relaxed.
+
+On all legal known actions, event supervision reduces H/EH envelope-fraction
+MSE by0.05091[0.03162,0.07210] and0.05191[0.03233,0.07457] versus product moments.
+But its H/EH Brier gains over fitting-only priors are negative:
+-0.08270[-0.13022,-0.04918] and-0.09111[-0.16280,-0.04014]. Better than an
+unsupervised factor is not better than a frequency baseline. The complete
+fixed-proposal diagnostic remains NA where required views lack support.
+
+On identical known rows of the frozen proposer, event-model actual/predicted
+H/EH masses are0.460/0.152: pooled risks are overestimated. On its admitted
+subset the ratios reverse to5.975/162.400. These are repeated-row descriptive
+ratios, not calibration CIs. Selection-specific reliability remains unresolved;
+neither pooled conservatism nor a lower average loss certifies deployment.
+
+Separately, I read the ICML2024
 multi-expert regression deferral paper through its two-stage formulation and
 implemented its logistic loss primitive. Three synthetic equation/masking tests
 pass; real-data fitting of that public control is not_run, not a new result.
 [Public-control implementation note](outputs/publication_readiness_2026_09/moving_joint_harm_v1/public_control_note.md).
-The result reporter is now implemented before validation. Four focused checks
-verify that it rejects incomplete replay, retains unavailable primary results,
-does not let a positive secondary override safety, and compares the common
-loss term rather than the two differently defined total objectives. These are
-reporting tests, not evidence of model improvement.
+The result reporter was implemented before validation; a post-readout descriptive
+check also preserves undefined recording risks and signed worst-case values.
+It does not let a positive secondary override safety or compare differently
+defined total training losses as if they were the same objective.
 All outputs remain exposed SOURCE development, not independent confirmation.
 The latest read-only CREATE attempt returned an SSH authentication banner and
 then a connection timeout; queue state remains unknown and no job was submitted.
 
-[Definition](outputs/publication_readiness_2026_09/moving_joint_harm_v1/protocol.md).
+[Complete readout](outputs/publication_readiness_2026_09/moving_joint_harm_v1/readout.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_joint_harm_v1/failure_analysis.md).
 
 ## Source-Separated Neural Critics: Complete, Still Not Deployable
 

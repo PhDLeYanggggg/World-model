@@ -209,3 +209,12 @@ certification, new H readout, independent confirmation, deployment or paper
 promotion occurred. This follow-up, its failure analysis and loss figure are
 not included in the compiled main PDF. The paper still lacks the required
 successful main-method and independent primary evidence.
+
+## Joint Event Supervision: Completed Model Test
+
+The [joint-harm addendum](joint_harm_addendum.md) records108matched neural
+heads and216,000primary updates. Harm MSE improves, but fitting-frequency
+priors still beat occurrence prediction, matched decision utility is negative,
+and the original full-policy risk contract fails. All108policy blocks replay.
+No rule was relaxed. This addendum is separate from the compiled main PDF;
+the manuscript has not gained a successful main-method or independent claim.

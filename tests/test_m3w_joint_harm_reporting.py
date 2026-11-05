@@ -1,5 +1,5 @@
 import pytest
-from scripts.report_m3w_joint_harm import outcome, loss_arrays, require_complete
+from scripts.report_m3w_joint_harm import outcome, loss_arrays, require_complete, risk_diagnostics, run
 
 
 def test_missing_primary_and_risk_failure_cannot_be_rescued_by_secondary():
@@ -36,3 +36,15 @@ def test_reporting_rejects_incomplete_replay_and_changed_analysis():
         require_complete(freeze, audit, verification, 'a', fits, groups)
     with pytest.raises(ValueError, match='separate replay'):
         require_complete(freeze, audit, verification, 'changed', fits, groups)
+
+
+def test_risk_diagnostic_keeps_undefined_views_and_signed_worst_not_absolute():
+    records = dict(a=dict(known_easy_net_degradation=-.5, selected=1),
+        b=dict(known_easy_net_degradation=.01, selected=2),
+        c=dict(known_easy_net_degradation=None, selected=0))
+    groups = [dict(rows=[dict(policies={a: dict(recordings=records) for a in run.POLICIES})])]
+    result = risk_diagnostics(groups)['event_supervised_veto']
+    assert result['required_record_views'] == 3
+    assert result['undefined_full_known_easy_net_views'] == 1
+    assert result['no_intervention_views'] == 1
+    assert result['worst_defined_signed_easy_net_percent'] == 1.
