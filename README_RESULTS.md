@@ -16,6 +16,15 @@ No new H test is opened by this decision.
 
 ## Composed Decision Loss: Fitting Repaired, Held Safety Failed
 
+Next fixed model test: per-channel versus complete joint-sign auxiliary loss,
+six actual fits, unchanged64,260-parameter architecture and2,000update budgets.
+Own-B attribution finds zero-target outputs alone cause39%/42%/49% of weighted
+false-rejection cost, although those channels receive no signed-cost gradient.
+The hypothesis is a model-loss repair, not a zero-target deployment exemption.
+Registration precedes training. The original internal expansion screen still
+controls additional exposed-development readout; no new reserved/H role.
+[Protocol](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
+
 Correction, 5 November: a fresh own-B row audit confirms exactly one frozen
 router proposal per supported row. The earlier all-action-averaging explanation
 was wrong. There are also no opposing all/easy target signs on observed proposed

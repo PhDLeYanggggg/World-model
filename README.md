@@ -17,7 +17,13 @@ actions. Opposing all/easy target signs are absent. The actual remaining
 fitting problem is substantial rejection of target-safe proposals, which I am
 tracing to the blocking outputs before changing the model again.
 [Decision audit and correction](outputs/publication_readiness_2026_09/moving_decision_semantics_v1/README.md).
-The original rules and negative results below are unchanged.
+The original rules and negative results below are unchanged. A follow-up
+attribution finds that zero-target channels alone account for about39%,42%,49%
+of false-rejection cost across the three fitting contexts. I am testing a joint
+decision loss that trains those blocking outputs without changing the gate.
+[Blocking-output audit](outputs/publication_readiness_2026_09/moving_zero_channel_v1/README.md),
+[fixed experiment](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
+The new six-fit experiment is registered, not yet a result.
 
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.
