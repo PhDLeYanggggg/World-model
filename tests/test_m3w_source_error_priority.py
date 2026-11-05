@@ -28,6 +28,18 @@ def test_circular_matched_discovery_and_source_provenance():
         api.discovery_pair(sites, predictions, provenance)
 
 
+def test_source_subset_preserves_complete_queries_and_original_ids():
+    c = fixture()['causal']; c['sites'] = np.array(['a', 'a', 'b', 'b'])
+    selected, ix = api.source_subset(c, {'b'})
+    assert ix.tolist() == [2, 3]
+    np.testing.assert_array_equal(selected['ids'], c['ids'][ix])
+    assert [v.tolist() for v in selected['groups']] == [[0, 1]]
+    assert [v.tolist() for v in selected['source_groups']] == [[0]]
+    c['sites'] = np.array(['a', 'b', 'a', 'b'])
+    with pytest.raises(ValueError, match='split a causal query'):
+        api.source_subset(c, {'b'})
+
+
 def test_own_normalization_causal_schema_and_unknown_priority():
     d = prepared(); before = d['extra_preprocess']['mean'].copy()
     d['truth_by_arm']['bound_aware'][:] = 123

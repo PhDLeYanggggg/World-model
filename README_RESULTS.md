@@ -22,10 +22,14 @@ kinematic normalization exclude that source. A circular, equally sized
 in-source teacher supplies the comparison mask. Six identical warm-started
 students will differ only in the discovery-mask provenance. The original
 weight10 objective, zero admission boundary, 2% rules and support requirements
-remain unchanged. Eighteen focused tests pass, including real synthetic
+remain unchanged. Nineteen focused tests pass, including real synthetic
 updates, exact resume, provenance and future-input rejection. This is not yet
 a real-data result. No V readout, independent H, deployment change, Stage5C or
 SMC is authorized by the new experiment. Old failures remain.
+The first real pilot stopped before optimizer initialization because the
+existing cache required its original full-role population. The v2 registration
+reads that immutable population before whole-source/query subsetting. The
+failure and pre-training amendment remain recorded; no scientific rule changed.
 [Protocol](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/protocol.md).
 
 ## Fixed Warm-Error Priority: Complete, No Safe Held-Source Lift

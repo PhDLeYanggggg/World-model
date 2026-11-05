@@ -7,6 +7,26 @@ np, torch, base, kin = parent.np, parent.torch, parent.base, parent.parent
 ARMS = ('in_source_errors', 'held_source_errors')
 
 
+def source_subset(c, names):
+    if set(c) != base.CAUSAL_KEYS or not names or not set(names) < set(c['sites']):
+        raise ValueError('Strict nonempty fitting-source subset required')
+    at = np.flatnonzero(np.isin(c['sites'], list(names)))
+    remap = np.full(len(c['ids']), -1, np.int64); remap[at] = np.arange(len(at))
+    groups = []
+    for g in c['groups']:
+        mapped = remap[g]
+        if (mapped >= 0).any():
+            if (mapped < 0).any():
+                raise ValueError('Source selection cannot split a causal query')
+            groups.append(mapped)
+    if not groups or not np.array_equal(np.sort(np.concatenate(groups)), np.arange(len(at))):
+        raise ValueError('Every retained row belongs to one complete query')
+    out = {k: v[at] for k, v in c.items() if k not in ('groups', 'source_groups')}
+    group_sites = np.asarray([out['sites'][g[0]] for g in groups])
+    out.update(groups=groups, source_groups=[np.flatnonzero(group_sites == s) for s in sorted(names)])
+    return out, at
+
+
 def prepare_basis(data):
     c = data['causal']
     if set(c) != base.CAUSAL_KEYS or set(data['preprocess']['source_names']) != set(c['sites']):

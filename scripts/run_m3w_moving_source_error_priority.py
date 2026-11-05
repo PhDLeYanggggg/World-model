@@ -17,7 +17,7 @@ source, old, direct = parent.source, parent.old, parent.direct
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/moving_source_error_priority_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_source_error_priority_v1'
 CONFIG = ROOT/'configs/m3w_moving_source_error_priority_v1.json'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md', ROOT/'src/world_model/m3w_source_error_priority.py',
     ROOT/'tests/test_m3w_source_error_priority.py')
 
@@ -47,20 +47,23 @@ def register(beat):
     return cfg, values
 
 
-def subpart(data, job, part, names):
-    if not names or not set(names) < set(part['names']):
-        raise ValueError('Strict nonempty subset of B required')
-    ids = source.np.flatnonzero(source.np.isin(data['sites'], names))
-    routing = dict(part['routing_job'], evaluation_sites=sorted(names),
-        critic_sites=sorted(set(job['critic_sites'])-set(names)),
-        evaluation_scope=dict(rows=len(ids), ids_sha256=source.array_hash(ids)))
-    return dict(part=part['part'], names=sorted(names), routing_job=routing)
+def subset_packet(data, job, refs, part, names, training):
+    raw = source.view(data, part['routing_job'], refs, training=False)
+    c, at = api.source_subset(raw['causal'], names); ids = raw['ids'][at]
+    result = old.amplitude.causal_bank(old_causal=c, geometry=data['geometry'][ids],
+        shared_context=data['shared_context'][ids], paths=raw['paths'][at], floor_index=job['floor_index'])
+    p = dict(result, ids=ids, sites=raw['sites'][at], recordings=raw['recordings'][at], frames=raw['frames'][at])
+    if training:
+        target = data['target_eval'][ids]-data['origin'][ids, None]; valid = data['valid'][ids]
+        physical = source.api.base.training_data(c, raw['paths'][at], target, valid, job['floor_index'], job['easy_cut'])
+        p['learning'] = old.amplitude.training_data(p, target, valid, job['easy_cut'], physical['preprocess'])
+    return p
 
 
 def teacher_packet(values, job, omitted):
     _, _, data, _, refs, parts, _, routers, *_ = values
     part = parts[job['key']][0]
-    p = old.packet(data, job, refs, subpart(data, job, part, set(part['names'])-{omitted}), training=True)
+    p = subset_packet(data, job, refs, part, set(part['names'])-{omitted}, training=True)
     router = api.base.read_checkpoint(source.checked(routers[job['key'], 1]['checkpoint']))
     direct.parent.api.assert_excluded(router, p['causal'], p['sites'])
     logits = direct.parent.api.router.predict(router, p['causal'])
@@ -124,8 +127,7 @@ def teachers(cfg, values, beat, guard, resume):
             d = teacher_packet(values, job, omitted)
             state = teacher_fit(d, job, omitted, cfg, beat, guard,
                 resume=resume and path_for(job, omitted, 'teachers').exists())
-            held = old.packet(values[2], job, values[4],
-                subpart(values[2], job, values[5][job['key']][0], {omitted}), training=False)
+            held = subset_packet(values[2], job, values[4], values[5][job['key']][0], {omitted}, training=False)
             api.assert_excluded(state, held['causal'], [omitted])
             if state['step'] != 2000 or state['parameters'] != 32130 or state['warm_step'] != 0:
                 raise ValueError('Complete real scratch teacher required')
