@@ -14,6 +14,24 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Paired Decision Experiment: Registered, Not Yet Trained
+
+Fresh own-B ranking and exact replay distinguish score ordering from decision
+errors. Harm-floor AUROC is0.9702/0.8881/0.7272; cost-weighted AUROC is
+0.9943/0.9765/0.9049. Nevertheless44.90/68.10/66.15% of beneficial fitting
+mass is rejected. This is not held performance or proof of sufficient features.
+The exact two-agent pooling alias affects only five queries and two opposite-
+label pairs in critic2, none in the other contexts; it does not explain most
+failures. Both diagnostics replay exactly without additional held reads.
+
+The next nine-fit contrast is joint / paired_point / paired_rank, preserving
+the original neural architecture, inputs, preprocessing, loss anchors, query
+draws, 2,000-update budget and safety/readout rules. Pairs stay inside complete
+queries; zeros/unknowns are not beneficial labels. Point/rank terms match value
+and gradient at zero, not throughout training. No new inference thresholds,
+reserved data or claimed gain. [Diagnostic](outputs/publication_readiness_2026_09/moving_discrimination_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
+
 ## Harm-Weight Allocation: Fewer Harmful Admissions, Lower Utility
 
 A fresh own-B attribution and exact replay identify 4/17/141 newly admitted

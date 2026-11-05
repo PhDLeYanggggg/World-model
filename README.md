@@ -11,6 +11,13 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+The next model experiment targets discrimination, keeping the original rules.
+Own-fitting audits show that stronger harm weighting can improve ranking while
+still rejecting useful forecasts. I am testing paired useful/harmful learning
+within each query against a matched pointwise control, without changing inputs,
+thresholds or reserved data access. No new gain is claimed before training.
+[Prospective experiment](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
+
 I completed nine matched neural fits to test whether training should put more
 weight on lower-magnitude harmful interventions. A uniform-weight control has
 the same total positive coefficient mass, so the comparison tests allocation
