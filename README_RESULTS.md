@@ -16,6 +16,14 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+The next registered experiment holds the model and data fixed and continues
+each saved head for at least 4,096 additional updates, rounded to full epochs.
+All eight fits must finish before the fixed final checkpoint is evaluated.
+There is no held-out epoch selection or threshold search. This tests whether
+optimization budget explains the negative result; it does not presume that
+longer training will improve transfer. Seven focused preflight tests pass.
+[Continuation protocol](outputs/publication_readiness_2026_09/moving_risk_convergence_v1/protocol.md).
+
 The fixed-reference attribution found source076 harmful matches differ more
 in forecast/history lateral relationships, while other sources show different
 patterns. This is descriptive, not a causal explanation or a new safety pass.
