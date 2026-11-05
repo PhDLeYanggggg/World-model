@@ -37,9 +37,10 @@ serialization exception ended PID31569 with exit1. Their checkpoints are
 preserved. A narrow committed runtime wrapper converts the aggregate event
 prior to a JSON list; scientific files and definitions remain unchanged.
 Resume continues the same full budget, not a new selected trial.
-The first five completed checkpoints pass own-source/normalizer and optimizer
-audits; the first two full pairs also have identical initialization and draws.
-The complete108-model run is still active. Separately, I read the ICML2024
+At00:30UTC on5November,34completed checkpoints pass own-source/normalizer and
+optimizer audits; all17complete pairs have identical initialization and draws.
+Those audited models contain68,000primary updates. The complete108-model run
+is still active, with no validation readout. Separately, I read the ICML2024
 multi-expert regression deferral paper through its two-stage formulation and
 implemented its logistic loss primitive. Three synthetic equation/masking tests
 pass; real-data fitting of that public control is not_run, not a new result.
