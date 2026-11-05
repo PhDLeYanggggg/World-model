@@ -11,6 +11,14 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+A fresh fitting-only audit corrects one earlier explanation: these models
+already supervise only the frozen router's proposed action, not all legal
+actions. Opposing all/easy target signs are absent. The actual remaining
+fitting problem is substantial rejection of target-safe proposals, which I am
+tracing to the blocking outputs before changing the model again.
+[Decision audit and correction](outputs/publication_readiness_2026_09/moving_decision_semantics_v1/README.md).
+The original rules and negative results below are unchanged.
+
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.
 The original 2% limits, conservative labels and support rules remain unchanged.

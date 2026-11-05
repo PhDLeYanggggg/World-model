@@ -16,6 +16,14 @@ No new H test is opened by this decision.
 
 ## Composed Decision Loss: Fitting Repaired, Held Safety Failed
 
+Correction, 5 November: a fresh own-B row audit confirms exactly one frozen
+router proposal per supported row. The earlier all-action-averaging explanation
+was wrong. There are also no opposing all/easy target signs on observed proposed
+actions. Scores and failure verdicts below are unchanged. Critic2 still rejects
+23,981 of24,216 target-safe observed proposals, motivating blocking-output
+attribution rather than repeating proposal conditioning.
+[Fresh audit](outputs/publication_readiness_2026_09/moving_decision_semantics_v1/README.md).
+
 I tested one fixed loss change with six matched fits across the same three
 fitting contexts. The independent controls exactly reproduce the preceding
 separate64 models. The new loss trains the per-channel conjunction of risk and

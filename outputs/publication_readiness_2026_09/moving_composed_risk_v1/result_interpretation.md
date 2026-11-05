@@ -84,24 +84,27 @@ both remain in the report rather than being substituted for each other.
    frozen composed risk head loses2.556pp of known gain while reducing worst
    easy-net harm. Removing that gate restores utility but raises worst easy-net
    degradation to40.38%; it is not a valid deployment repair.
-4. **Objective versus deployment mismatch: still present.** Training averages
-   legal candidate actions and separate all/easy channels. Deployment uses the
-   frozen router's chosen action, both channels, both heads and support checks.
-   The new surrogate trains only per-channel conjunction, not the complete
-   selected-policy risk ratio. This is a code-supported remaining mismatch,
-   not a proven exclusive cause of the held failure.
+4. **Objective versus deployment mismatch: explanation corrected 5 November.**
+   The earlier claim that fitting averaged all legal actions was incorrect.
+   A fresh own-B row audit confirms exactly one frozen router-selected action
+   per supported row in all three contexts. The per-channel surrogate still
+   differs from the full all/easy conjunction and support rule, but opposing
+   all/easy target signs also occur zero times on observed proposed actions.
+   Neither all-action averaging nor conflicting target signs explains this run.
+   See the [decision audit](../moving_decision_semantics_v1/README.md).
 5. **Evidence support: independently unresolved.** The original24-group primary
    remains not estimable. Neural weights cannot create missing reference events.
    Keeping the original rules means leaving this limitation visible.
 
 ## Next Decisive Work
 
-Keep the model and thresholds frozen. On the permitted fitting roles, separate
-errors on router-proposed actions from errors on other legal actions, including
-false-safe, false-reject and source-level costs. This will test whether the
-remaining training/deployment mismatch explains where the improvement is lost.
-Any subsequent loss change needs a fixed matched contrast and the same original
-rules, not a posthoc threshold chosen from SOURCE062 or a removed safety branch.
+The proposed all-action versus selected-action diagnosis has now refuted its
+premise. Keep the models and thresholds frozen while attributing joint false
+rejections to the blocking outputs on fitting roles. In critic2, 23,981 of
+24,216 observed target-safe proposals are rejected; this is a concrete fitting
+failure to explain. Any subsequent loss change needs a fixed matched contrast
+and unchanged original rules, not a threshold selected from SOURCE062 or a
+removed safety branch. The previous result numbers and failure verdict stand.
 
 Independent supported confirmation, three-seed main experiments and matched
 published controls remain separate requirements. This diagnostic does not

@@ -49,9 +49,13 @@ utility but worsens easy-net degradation to40.38%. No model is promoted.
 
 The controlled experiment supports a narrow conclusion: joint sign training
 repairs part of the fitting mismatch. It does not establish safe cross-source
-generalization. Remaining discrepancies include all-action versus selected-action
-training, the full all/easy conjunction, tail risk and reference support. These
-are hypotheses for further discriminating tests, not settled causal explanations.
+generalization. Correction on 5 November: a fresh own-B row audit refutes the
+earlier all-action versus selected-action explanation; training already masks
+to the frozen router proposal. It also finds no opposing target signs between
+all/easy channels. The full all/easy conjunction, tail risk and reference support
+remain distinct issues, not settled causal explanations. See the
+[decision audit](../moving_decision_semantics_v1/README.md). No reported result
+or original safety failure is changed by this explanatory correction.
 
 Only one producer seed and repeatedly exposed development roles are used.
 Partial known ADE must not be presented as complete-roster12-step accuracy.
