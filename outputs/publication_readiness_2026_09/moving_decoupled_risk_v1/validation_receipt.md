@@ -8,7 +8,7 @@
 - Nine fixed fits /18,000 actual updates; first separated fit repeated for2,000 exact updates.
 - Largest-context50+50 versus100 actual-update pilot matches for all3 architectures;600 pilot updates including repeats.
 - Input/target/observed-mask/proposal hashes and query draws match frozen origins.
-- Evaluate PID97225, exit0: only records not_run after the prespecified fitting screen fails2/3, not a held prediction pass.
+- Evaluate PID97225, exit0: only records not_run after the overall fitting screen fails (2 of3 contexts pass, all3 required), not a held prediction pass.
 - Verify PID97261, exit0: all9 initial/final complete-fitting metrics replay exactly.
 - Attribution PID97310 and replay PID97358, both exit0: all9 decompositions exact.
 - Report generator and regeneration both exit0; all33 pre-existing public experiment files remain byte-identical after regeneration.
