@@ -14,13 +14,13 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Signed-Cost Decision Learning: Registered Next Comparison
+## Signed-Cost Decision Learning: Complete, No Safe Held Transfer
 
 A fresh fitting-only audit checks error count versus cost and score distance
 from zero. The third context contains590/992false-safe easy channels with
 absolute normalized scores0.1-1, so rounding at zero is not the sole issue.
 Cost-weighted sign regret and raw error count differ. Six equal-budget warm
-continuations will compare MSE with signed-cost logistic learning, retaining
+continuations compare MSE with signed-cost logistic learning, retaining
 bound-aware MSE for unknown outcomes and all original decision/support rules.
 No threshold search, new H, identity certificate, deployment or primary-metric
 revision. Twenty-three focused tests pass. The nativearm64 real pilot completes
@@ -28,9 +28,30 @@ revision. Twenty-three focused tests pass. The nativearm64 real pilot completes
 to exactly matching weights and predictions. All six complete fits now finish
 12,000 primary updates plus an exact 2,000-update treatment refit in517.02seconds,
 observed exit0. All three fresh MSE controls reproduce their previous weights.
-Models are frozen before V evaluation. Twenty-six focused tests pass.
+Models froze before V evaluation. Twenty-six focused tests pass. Evaluation
+and exact replay finish in46.57/45.66seconds, exit0. New predictions/actions/
+metrics and old cached-control metric recomputations are exact.
+
+Treatment known floor gain is2.6928% versus3.6006% MSE; hard gain3.5649% versus
+4.6257%. The known paired contrast is-0.9078pp, missing-label completion bounds
+[-2.2534,+0.4379]pp, NOT a sampling CI. Worst defined easy-net degradation is
+26.2254% versus38.9046%. All-risk violations decrease14to11; easy violations
+increase13to14. Full risk/support passes are1/17versus0/17; the passing view
+selects13/3,193rows with zero unknown outcomes and zero positive harm. This
+does not pass the full policy gate. An empty matched source control remainsNA.
+
+Fitting easy sign regret decreases81.03-85.10%; all sign regret45.95-91.43%.
+Thus the objective changes fitting decisions effectively but does not transfer
+safely. Three held sources improve and four worsen; source078loses10.4354pp
+againstMSE. Only1/3prospective context screens passes; expansionfalse.
+Original24group primary remainsNA. No identity certificate, newH, deployment
+change or submission-ready claim. This is risk-head training, not new dynamics.
+The next question is feature support and decision-boundary transport, not
+another threshold/weight sweep. Stage5C/SMC remain disabled.
 [Protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md),
-[fitting audit](outputs/publication_readiness_2026_09/moving_signed_decision_v1/fitting_boundary_audit.md).
+[complete results](outputs/publication_readiness_2026_09/moving_signed_decision_v1/README.md),
+[interpretation](outputs/publication_readiness_2026_09/moving_signed_decision_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/signed_decision_addendum.md).
 
 ## Source-Held Error Discovery: Complete, No Safe Held Lift
 

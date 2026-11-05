@@ -11,15 +11,28 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing a decision-aligned training objective after the negative result
-below. It penalizes incorrect risk signs by their realized cost, instead of
-giving a fixed subset of errors extra MSE weight. A fitting-only audit and
-loss tests are complete. Six real neural fits and a full repeat are complete;
-both arms resume exactly and all three MSE controls reproduce old weights.
-Held-source evaluation is next, with all models already frozen.
-The original 2% and support rules remain fixed. This is a matched risk-head
-experiment, not new trajectory dynamics or a claim of safe deployment.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md).
+I tested a decision-aligned risk objective that charges mistakes according to
+their realized cost. Six real neural fits, a complete treatment refit and exact
+prediction replays are complete. The original 2% and support rules are unchanged.
+
+| Risk objective | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full risk/support |
+|---|---:|---:|---:|---:|
+| Ordinary MSE | 3.60% | 4.63% | 38.90% | 0/17 |
+| Signed-cost logistic | 2.69% | 3.56% | 26.23% | 1/17 |
+
+**Better fitting does not establish safe transfer.** Training easy-channel
+decision cost falls 81-85%, but held-source utility declines. Three sources
+improve and four worsen; useful intervention nearly disappears in some scenes.
+The one passing view contains only 13 selected rows. This is not an overall
+safety pass or a reason to deploy the new model.
+
+These are repeated development results on seven SOURCE units and one producer
+seed, not independent confirmation or new world dynamics. Missing supports and
+empty utility controls remain NA. No reserved data were opened or evaluation
+rules revised. Twenty-six focused tests pass; deployment remains unchanged.
+[Complete results](outputs/publication_readiness_2026_09/moving_signed_decision_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_signed_decision_v1/result_interpretation.md),
+[run and recovery guide](outputs/publication_readiness_2026_09/moving_signed_decision_v1/operation_zh.md).
 
 ### Completed Source-Held Error Test
 
