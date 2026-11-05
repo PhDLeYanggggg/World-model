@@ -41,8 +41,10 @@ prespecified condition for expansion.
 
 My next control freezes those learned representations and refits only the
 linear risk outputs. This isolates whether incomplete output optimization
-explains the failed admission decisions. The experiment is registered, but
-has no result yet; the risk rules and reserved test sets remain unchanged.
+explains the failed admission decisions. All three output fits completed and
+lowered fitting loss by 1.31% to 4.70%. Held-source policy evaluation is pending;
+lower loss alone is not evidence of safer intervention. The risk rules and
+reserved test sets remain unchanged.
 [Protocol](outputs/publication_readiness_2026_09/moving_readout_refit_v1/protocol.md).
 
 I completed a controlled test of proposal-conditioned risk learning: the risk
