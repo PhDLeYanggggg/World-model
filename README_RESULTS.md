@@ -16,20 +16,36 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Producer-A Donor Repair Registered
+### Producer-A Donor Repair Completed
 
 The source audit rules out blind cross-context pooling: same-teacher caches can
 belong to the target context's outer H, while different teachers can have seen
-the intended critic sources. I registered six fresh EqMotion fits within the
+the intended critic sources. I completed six fresh EqMotion fits within the
 existing producer-A folds0/1, using their existing three source partitions.
-Each receives4,000 updates and predicts only its own source-held A partition.
-Thirteen focused tests pass. The40-update recovery pilot initially tripped an
+Each receives 4,000 updates and predicts only its own source-held A partition.
+The bank covers 125,540 rows, 36 recordings and 14 source components, separately
+6/8 by parent. Known rows122,716, complete12-label rows90,965, wholly unknown2,824.
+No future label or future mask is a model input; annotation-generation temporal
+causality itself remains unverified. No main-result or risk-lift claim follows.
+
+Primary updates24,000; another40updates for the direct recovery control.
+Training PID51455 exits0 after8133.811s, peak1,868,922,880bytes. Forecast PID61091
+exits0 after549.829s. Replay PID61818 exits0 after573.711s; all six caches match
+exactly with no optimization. Source sampling logs show zero held-source draws.
+Donor ADE is better than causal CV on10/14sources and worse on4/14:047,062,076,082.
+No source is removed after its outcome is seen. No strongest-baseline or
+independent confirmation claim. Risk-head augmentation remains not_run.
+
+Twenty-four focused tests pass in3.20s; full historical suite not rerun.
+The40-update recovery pilot initially tripped an
 over-strict comparison because the resumed route logs its20-update stop point;
 all model/optimizer/RNG/draw states match. The additional verifier preserves
-that failure and checks common logs and output equality separately. No full
-training completion is claimed yet. No new C/H
-readout, no risk-threshold change, no identity certificate and no promotion.
-[Protocol](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/protocol.md).
+that failure and checks common logs and output equality separately; verifier
+PID51408 exits0. No new C/H readout, no risk-threshold change, no identity
+certificate and no promotion. Original24-group main estimate remains NA.
+The figure was visually checked locally. The main-paper PDF hash is unchanged.
+[Results](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/README.md),
+[verification](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/verification_report.md).
 
 The fixed-budget continuation is complete: eight heads, 32,871 additional
 updates, full epochs, unchanged model/data/loss/thresholds. All eight repeat

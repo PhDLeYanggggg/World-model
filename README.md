@@ -11,12 +11,25 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am expanding risk-learning coverage without relaxing the safety rule. Six
-new EqMotion fits will produce source-held forecasts wholly inside the original
-predictor training sets. They keep the outer calibration/evaluation roles
-closed. This is a donor-data experiment, not a claimed forecasting improvement;
-the original negative results below and deployment status remain unchanged.
-[Fixed protocol](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/protocol.md).
+I trained six new EqMotion controls to expand risk-learning source coverage
+without relaxing the safety rule. Each completed 4,000 updates. Their forecasts
+are held out by source inside the original predictor training sets, keeping
+outer calibration/evaluation roles closed. The bank now covers 125,540 rows
+from 6 and 8 sources in the two separate parent training sets.
+
+**The training-data repair is complete; safer intervention is not yet proved.**
+
+All six forecast caches replay exactly. Donor ADE beats causal CV on 10 of 14
+sources and loses on four; all sources and unknown-label rows remain in the
+record. These are training-donor diagnostics, not a new independent test or a
+strongest-baseline result. The next comparison is the same risk model with
+and without these additional donors. Deployment and the original 2% rules
+remain unchanged; the paper is not submission-ready.
+[Training and donor results](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/README.md),
+[source eligibility](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/eligibility_report.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/operation_zh.md).
+
+### Previous Budget-Controlled Risk Experiment
 
 I tested whether the neural risk failure was simply due to too little training.
 I continued all eight saved heads, adding 32,871 updates with the same model,

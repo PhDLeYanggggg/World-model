@@ -10,6 +10,14 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [within-producer crossfit addendum](../moving_producer_crossfit_v1/paper_addendum.md)
+records six fresh EqMotion fits and a125,540-row OOF training-donor bank.
+Each fit completes4,000updates; every forecast cache replays exactly. Donor ADE
+beats causal CV on10/14sources and loses on four, all retained. This is data
+repair inside existing producer-A sets, not an independent result or demonstrated
+risk-head lift. The original2% rules and24-group NA remain. The compiled main
+paper is unchanged; a fixed donor-augmentation comparison is the next experiment.
+
 The [fixed-budget continuation addendum](../moving_risk_convergence_v1/paper_addendum.md)
 adds 32,871 real optimizer updates to eight saved risk heads. Fitting loss improves
 in all eight folds, but source-held MSE improves in only two and the information
