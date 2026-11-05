@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Proposal-Conditioned Risk Learning: Full Training Complete, Readout In Progress
+## Proposal-Conditioned Risk Learning: Complete, Original Risk Still Fails
 
 I am keeping the original rules and changing the model's supervision. A frozen
 public router fitted on source part A proposes actions on part B; a new risk
@@ -32,10 +32,40 @@ runtime. All108critics completed2000updates each,216000primary updates, with
 observed exit0 in7682.12s and peak RSS8.07GB. Every actual optimizer, source-
 excluded proposer, own-part preprocessor, initialization and query draw hash
 passes the frozen-control audit. All weights were frozen before readout.
-Evaluation is in progress. No new H access, identity certification, deployment
+Evaluation and exact replay completed with observed exit0 in289.44s and286.95s.
+All108prediction/action blocks and1104cached source-policy readouts reproduce.
+No new H access, identity certification, deployment
 upgrade or scientific success is claimed. Previous failures remain intact.
 The first complete2000-update critic and its independent refit match exactly.
 Training PID54910 completed normally; checkpoints remain local.
+The read-only reproduction entry also completed with exit0 in285.42s and changed
+no existing public artifact during that run. A later figure-only layout change
+was visually checked and regenerated identically; metric hashes did not change.
+
+New versus old veto known utility is -0.2880pp,95%source CI[-0.8643,+0.2825].
+The direct missing-outcome lower comparison is -1.0764pp[-2.0174,-0.2208].
+Against the new veto's own matched count/amplitude control, full-strategy
+secondary known utility is -0.8753pp[-1.7854,-0.3053], direct lower -2.5434pp
+[-3.9292,-1.4343]. The required nonempty primary remains unavailable in8/276
+source views. Original24group primary is still NA, not passed.
+
+The new veto has3.8586%source-macro known ADE gain over the physical floor,
+hard gain4.2120%, switch29.9757%. These positive floor comparisons do not repair
+the failed comparison to the old veto or the original safety contract.
+Full risk/support passes28/696views versus38before; known all-risk violations
+462, known easy-risk violations486, undefined selected-easy views156.
+Worst defined signed recording easy-net degradation421.983% is not a mean.
+Thirty full-known easy-net views remain undefined. No empty case is certified.
+
+Training loss median falls0.60657to0.14517, but realized/predicted easy-harm mass
+is0.0682on the fixed proposal pool and758.34on the newly admitted subset.
+These are pooled repeated-view diagnostics, not independent probabilities.
+The treatment changes effective supervised support, not only a loss formula.
+No deployment or submission-readiness upgrade. Twenty focused tests pass;
+the full historical test suite was not rerun. All23source units remain in the
+3000-resample bootstrap. Native8/12 image pixels are not SDDt50 or seconds.
+[Completed evidence](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/failure_analysis.md).
 [Protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
 
 ## Moving Public Deferral Control: Mean Utility Improved, Original Risk Failed

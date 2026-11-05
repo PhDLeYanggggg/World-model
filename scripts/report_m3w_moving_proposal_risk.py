@@ -133,7 +133,7 @@ def figures(fits, analysis, reliability):
             ('known_easy_violations', 'Known easy-risk violations', '#B54848'),
             ('undefined_selected_easy', 'Undefined selected easy risk', '#8B7A3C'))):
         ax[1].bar(x+(i-1)*.23, [analysis['safety'][a][key] for a in names], width=.23, label=label, color=color)
-    ax[1].set(xticks=x, xticklabels=['All-action critic', 'Proposal critic'],
+    ax[1].set(xticks=x, xticklabels=['All-action critic', 'Proposal critic'], ylim=(0, 720),
         ylabel='Required recording views (of 696)', title='Original rules, no certification')
     ax[1].legend(fontsize=7)
     for i, arm in enumerate(('all_action', 'conditioned')):
@@ -145,6 +145,8 @@ def figures(fits, analysis, reliability):
     ax[2].legend(fontsize=8)
     folder = PUBLIC/'figures'; folder.mkdir(exist_ok=True)
     fig.savefig(folder/'training_and_risk.svg', metadata={'Date': None})
+    svg = folder/'training_and_risk.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     png = run.PRIVATE/'training_and_risk.png'; fig.savefig(png, dpi=150); plt.close(fig)
     return png
 

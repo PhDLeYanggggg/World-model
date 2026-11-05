@@ -11,15 +11,30 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-My next experiment keeps the original evaluation contract and changes how the
-risk model learns: it trains on actions proposed by a separately fitted router.
-The forecaster, source splits and 2% limits stay fixed. All108critics have completed
-their full2000-update budget, and the source-isolation and exact-control audits
-pass. Evaluation is in progress, not yet a measured improvement; the completed
-results below remain unchanged.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
+I completed a controlled test of proposal-conditioned risk learning: the risk
+model learns only the actions proposed by a router fitted on different source
+scenes. I trained 108 neural critics for 216,000 updates, keeping the forecaster,
+initialization, sampling, source splits and original 2% requirements fixed.
+Training took about 128 minutes locally, with exact checkpoint and inference
+reproduction.
 
-My latest comparison tests a published cost-sensitive routing objective on the
+The change did not improve the policy. Compared with the all-action critic,
+the known-label utility difference is -0.29 percentage points (95% source CI:
+-0.86 to +0.28). Only 28/696 repeated recording views meet the full original
+risk/support requirements, down from 38/696. Easy-risk violations remain high,
+and eight required source views still lack an estimable matched comparison.
+
+The failure is informative but not a success claim: the critic overestimates
+harm across the proposal pool, then underestimates it on the actions it admits.
+Restricting its training actions did not resolve that problem. **The original
+rules and previous failures are unchanged, and I am not upgrading deployment.**
+These are exposed MovingDroneCrowd++ development results, not independent
+confirmation or a new safe world-model contribution.
+[Full results, loss curves and failure analysis](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/README.md).
+
+## Previous Controlled Tests
+
+An earlier comparison tests a published cost-sensitive routing objective on the
 same frozen MovingDroneCrowd++ forecast bank. I trained 54 source-isolated neural
 routers, with 108,000 updates and three producer seeds. The original point
 controls and all new inference blocks reproduce exactly.
@@ -42,7 +57,7 @@ reliable admission decisions. It adapts an existing public method; it is not a
 new M3W loss or a new trajectory-world-model contribution by itself.
 [Full results, loss curves and failure analysis](outputs/publication_readiness_2026_09/moving_public_deferral_v1/README.md).
 
-## Previous Controlled Tests
+### Joint Harm Supervision
 
 The preceding controlled experiment tests whether explicitly learning the chance
 and size of harm makes neural interventions more reliable. I trained 108
