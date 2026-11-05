@@ -44,6 +44,11 @@ multi-expert regression deferral paper through its two-stage formulation and
 implemented its logistic loss primitive. Three synthetic equation/masking tests
 pass; real-data fitting of that public control is not_run, not a new result.
 [Public-control implementation note](outputs/publication_readiness_2026_09/moving_joint_harm_v1/public_control_note.md).
+The result reporter is now implemented before validation. Four focused checks
+verify that it rejects incomplete replay, retains unavailable primary results,
+does not let a positive secondary override safety, and compares the common
+loss term rather than the two differently defined total objectives. These are
+reporting tests, not evidence of model improvement.
 All outputs remain exposed SOURCE development, not independent confirmation.
 The latest read-only CREATE attempt returned an SSH authentication banner and
 then a connection timeout; queue state remains unknown and no job was submitted.
