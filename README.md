@@ -23,8 +23,11 @@ of false-rejection cost across the three fitting contexts. I am testing a joint
 decision loss that trains those blocking outputs without changing the gate.
 [Blocking-output audit](outputs/publication_readiness_2026_09/moving_zero_channel_v1/README.md),
 [fixed experiment](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
-Both real resume pilots now reproduce exactly. The six-fit experiment is
-running locally; this is not yet a new result or a deployment change.
+Both real resume pilots and the first full2,000-step refit reproduce exactly.
+In the first fitting context, joint decision cost falls13.90% and zero-only
+rejection cost falls45.32%, but the all-channel sign cost rises12.57% versus
+the matched control. The remaining contexts are still training. This partial
+fitting result does not establish safe generalization or change deployment.
 
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.

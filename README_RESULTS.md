@@ -28,6 +28,12 @@ Pilot PID4791 completed74.96s, peak6.49GB: both50+50 versus100-update models
 and predictions match exactly,400 actual updates including repeats. Full
 six-fit training started as PID4934; completion and scientific results are
 not yet claimed. Checkpoint/heartbeat every100 completed updates.
+First matched context and its exact2,000-step full refit are complete. Joint
+decision cost falls13.9028% and zero-only rejection cost45.3245%; the all-channel
+sign cost worsens12.5674% versus the fresh per-channel control. False rejections
+fall2,987 to2,655. This is partial fitting evidence; remaining contexts are
+running and no held readout has occurred. Thirty-eight focused tests pass
+across two checks (37 in4.37s and reporting-roster check1 in1.54s).
 
 Correction, 5 November: a fresh own-B row audit confirms exactly one frozen
 router proposal per supported row. The earlier all-action-averaging explanation
