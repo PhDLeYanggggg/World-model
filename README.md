@@ -17,6 +17,7 @@ The new risk heads remove only that input; normalized motion and the original
 2% risk/support rules stay fixed. Six fits are planned, with MSE as the primary
 comparison and signed-cost learning secondary. This is not full-policy scale
 invariance, and no new result is claimed before training and evaluation finish.
+The real-data resume pilot completed400updates; both arms reproduce exactly.
 [Registered comparison](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
 
 ### Completed Signed-Cost Comparison

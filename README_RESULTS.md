@@ -23,7 +23,10 @@ removing only the explicit log-scale input. Main contrast is masked versus
 unmaskedMSE; signed-costlogistic is secondary. Original labels, losses, roles,
 sampling, budgets and2%risk/support rules remain unchanged. Prior unmasked
 controls are cached_verified, notfreshtraining. No identity certificate,
-newH, deployment change or full-policy coordinate-invariance claim.
+newH, deployment change or full-policy coordinate-invariance claim. The actual
+pilotPID87463exited0 after37.04seconds and400updates including repeats. Both
+objectives resume to exactweights/predictions; changing the removed input
+also leaves predictions exactly unchanged. Full fits and Vreadoutnot_runyet.
 [Protocol](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
 
 ## Signed-Cost Decision Learning: Complete, No Safe Held Transfer
