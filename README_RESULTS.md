@@ -26,7 +26,10 @@ controls are cached_verified, notfreshtraining. No identity certificate,
 newH, deployment change or full-policy coordinate-invariance claim. The actual
 pilotPID87463exited0 after37.04seconds and400updates including repeats. Both
 objectives resume to exactweights/predictions; changing the removed input
-also leaves predictions exactly unchanged. Full fits and Vreadoutnot_runyet.
+also leaves predictions exactly unchanged. Full trainingPID87626nowexited0
+in521.02seconds: six real fits12,000updates plus2,000exactrefitupdates. All
+six labels/proposals/draws and unmasked inputs match controls exactly. The
+six models froze beforeV; Vreadoutnot_runyet. No gate outcome claimed.
 [Protocol](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
 
 ## Signed-Cost Decision Learning: Complete, No Safe Held Transfer

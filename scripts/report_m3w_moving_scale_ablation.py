@@ -24,6 +24,7 @@ def summary(result):
 
 def fitting_audit(fits):
     _, values = run.register(lambda **_: None)
+    previous = source.read(run.parent.PUBLIC/'full_fitting_objectives.json')['rows']
     states = {(r['job'], r['arm']): api.base.read_checkpoint(source.checked(r['checkpoint'])) for r in fits}
     rows = []
     for job in values[3]:
@@ -56,6 +57,12 @@ def fitting_audit(fits):
                     false_safe_excess_mass=(weights[:, None]*y*false_safe).sum(0).tolist(),
                     false_reject_margin_mass=(weights[:, None]*-y*false_reject).sum(0).tolist(),
                     fitting_not_generalization=True))
+                if label == 'unmasked':
+                    old = next(r for r in previous if r['job'] == job['key'] and r['arm'] == arm)
+                    for key in ('common_MSE', 'signed_cost_training_objective', 'unknown_MSE_contribution',
+                            'false_safe_channels', 'false_reject_channels', 'cost_weighted_sign_regret',
+                            'false_safe_excess_mass', 'false_reject_margin_mass'):
+                        api.base.exact(rows[-1][key], old[key])
         del d, warm, control; source.gc.collect()
     source.once(PUBLIC/'full_fitting_objectives.json', source.stable(dict(rows=rows,
         source='fresh_run', weights='empirical_query_draws', repeated_channels_not_independent=True)))
