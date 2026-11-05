@@ -11,10 +11,11 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-A matched rollout-history feature experiment is now registered. It adds32
+A matched rollout-history feature experiment is now training. It adds32
 causal relations between observed motion and candidate forecasts, with an
 equal-parameter masked-feature control and the original joint objective.
-The previous negative result below remains current until training and readout
+The real-data pilot passed exact recovery and original-control reproduction.
+The previous negative result below remains current until full training and readout
 are complete; no improvement or deployment is inferred from implementation.
 [Protocol](outputs/publication_readiness_2026_09/moving_rollout_history_v1/protocol.md).
 

@@ -21,8 +21,11 @@ The next model repair is registered in
 six matched neural fits,32 deterministic causal relational inputs,68356
 parameters per model, unchanged joint objective and2000updates per fit.
 Initial-function, actual tiny training/resume, causal-input and interruption
-tests pass. Full real-data pilot, training and held readout are not_run at
-registration. No projection or neighbor averaging is introduced.
+tests pass. The real-data pilot completed 500 updates including repeated runs
+in 83.98 seconds (PID25011, exit0). Both 50+50 versus100 recovery checks are
+exact; the masked model also matches the original joint control. Full six-model
+training is running locally as PID25357. Held readout is not_run pending the
+frozen fitting screen. No projection or neighbor averaging is introduced.
 
 `fresh_run`: all nine frozen paired-experiment models were decomposed into
 complete own-B loss gradients, with twelve disposable saved-AdamW steps.
