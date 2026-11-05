@@ -14,18 +14,18 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Fixed Warm-Error Priority: Registered Objective Test
+## Fixed Warm-Error Priority: Complete, No Safe Held-Source Lift
 
 A fresh fitting-only audit decomposes the six previous neural models' weighted
 loss by observed/bound-only supervision and predicted/actual budget-excess sign.
 In the kinematic heads, observed false-safe easy signs account for0.925%,1.221%
 and1.041%of the easy-channel MSE, and1.187%,1.623%,2.103%of absolute output
 gradient mass. These are fitting diagnostics, not parameter-gradient or safety
-evidence. A fixed replay-priority comparison will give warm-model observed
-false-safe channels weight10 rather than1, preserving the full original anchor.
+evidence. The fixed replay-priority comparison gives warm-model observed
+false-safe channels weight 10 rather than 1, preserving the full original anchor.
 Both arms start at the same kinematic weights and receive2,000updates. No
-threshold search or changed2%rule; no independent H. Six real fits are planned,
-not yet completed. Prior online-admission and gradient-parity failures remain.
+threshold search or changed 2% rule; no independent H. All six real fits are
+complete. Prior online-admission and gradient-parity failures remain.
 A strengthened gradient test found an inherited zero-target synthetic fixture;
 its correction and pre-training registration amendment are retained.
 Fourteen focused checks pass after correction. The real native-CPU pilot
@@ -33,8 +33,40 @@ completed400updates including repeats in36.65seconds, peak RSS2.83GB and
 observed exit0. Both arms resume to exactly the same weights and predictions;
 all six full heads have now completed 12,000 primary updates plus an exact
 2,000-update full refit in 515.49 seconds, peak RSS 7.51 GB, observed exit0.
-All models are frozen before held readout. Sixteen focused checks pass; no
-new scientific result is yet claimed.
+All models froze before held readout. Sixteen focused checks pass. Evaluation
+and exact replay completed in 75.74 and 76.10 seconds, observed exit0. All three
+prediction/action/readout blocks and all old controls reproduce exactly.
+
+Fixed-error MSE falls 91.26%, 70.61%, 62.78% relative to warm weights, and
+89.21%, 60.22%, 57.96% relative to the matched MSE control. On repeated fitting
+contexts, 650/1,002 warm false-safe easy signs are corrected, but 333 new ones
+appear and 352 persist. These are training-output signs, not independent rows
+or complete-policy risk passes. Complete fitting anchor MSE is worse than the
+control in every context. In context two, even the combined weighted fitting
+objective is worse; the experiment does not claim optimization fully solved.
+
+Held known floor gain is 3.0323% priority versus 3.6006% continued MSE and
+3.9418% warm kinematic. Hard gain is 3.8505% versus 4.6257% for the control.
+The matched known contrast is -0.5683 pp, with missing-outcome completion
+bounds [-0.8147, -0.3218] pp, not a sampling CI. Against affine the contrast
+is -1.2910 pp, bounded by [-2.1918, -0.3902] pp. Only one of three contexts
+meets the prospective expansion condition; no favorable context is promoted.
+
+Priority and control both have 0/17 full original risk/support passes,
+14 known all-risk violations, 13 easy violations and two undefined selected-
+easy views. Priority intervention is 13.5856%, and worst defined signed
+recording easy-net degradation is 22.6698%, still not a 2% pass. The original
+24-group primary remains NA. No identity certificate, new H, expanded trial,
+deployment or submission-readiness upgrade. Full historical tests were not
+rerun. Stage5C and SMC remain disabled.
+
+The mask was discovered by warm-model resubstitution, and the fitting contexts
+contain only two/three/three source groups. A prospective next question is
+source-held-out error discovery strictly inside B, retaining A/V roles and
+reserved data. It is not run, not an approved result and not a promised cure.
+[Completed report](outputs/publication_readiness_2026_09/moving_admission_risk_v1/README.md),
+[mechanism analysis](outputs/publication_readiness_2026_09/moving_admission_risk_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/admission_priority_addendum.md).
 [Protocol](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md),
 [fitting diagnosis](outputs/publication_readiness_2026_09/moving_admission_risk_v1/fitting_loss_decomposition.json),
 [preflight amendment](outputs/publication_readiness_2026_09/moving_admission_risk_v1/preflight_amendment.md).

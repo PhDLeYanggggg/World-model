@@ -11,6 +11,36 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested whether teaching the risk model to correct its earlier mistakes
+improves safe intervention. Both models continue from identical weights;
+one uses ordinary MSE, while the other gives its fixed, observed training
+errors ten times the weight. The original 2% safety and support rules stay
+unchanged. Six real neural fits, a full refit and exact replay are complete.
+
+| Risk model | Known ADE gain over floor | Hard gain | Intervention rate | Full risk/support views passed |
+|---|---:|---:|---:|---:|
+| Warm kinematic model | 3.94% | 4.86% | 17.32% | 0/17 |
+| Ordinary continued training | 3.60% | 4.63% | 15.01% | 0/17 |
+| Fixed error-priority training | 3.03% | 3.85% | 13.59% | 0/17 |
+
+**This objective repair fails.** The emphasized fitting-error loss falls
+57.96-89.21% below the matched control, but held-source utility decreases.
+The model learns many old mistakes, introduces new ones, and rejects useful
+interventions. Both arms retain 14 all-risk and 13 easy-risk violations,
+with two undefined selected-easy views. Worst defined easy-net degradation
+is 22.67% for priority training, still far above the original requirement.
+
+This is a controlled negative result on seven exposed SOURCE units and one
+producer seed, not independent confirmation. Each fitting context has only
+two or three source groups; many overlapping windows cannot substitute for
+scene diversity. Neither more identical training nor this fixed error
+weighting establishes safe utility. I have not changed the evaluation rules,
+certified missing support, upgraded deployment or claimed a new dynamics method.
+[Complete results](outputs/publication_readiness_2026_09/moving_admission_risk_v1/README.md)
+and [what the experiment identifies](outputs/publication_readiness_2026_09/moving_admission_risk_v1/result_interpretation.md).
+
+### Previous Kinematic Representation Test
+
 I tested whether explicit causal motion features improve the neural model's
 intervention-risk estimates. A 64-field basis describes past velocity changes,
 turns, neighbor approach and baseline rollouts. I compared it with an otherwise
@@ -48,14 +78,6 @@ SOURCE units and one producer seed. It is development evidence, not an
 independent test. Missing-outcome completion bounds are not confidence
 intervals. Deployment is unchanged; no identity-fallback certificate is used.
 [Results, losses and failure analysis](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/README.md).
-
-The next fixed comparison changes the learning objective, not the safety
-rules. Both arms continue from the same kinematic model; one gives its
-previously misclassified fitting examples extra weight. A fitting-only loss
-audit motivates this controlled test. All six neural fits and the full first
-refit are complete; both arms pass exact checkpoint-resume checks. The models
-are frozen before evaluation. No new scientific gain is yet claimed.
-[Registered comparison](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md).
 
 ### Previous Nonlinear Readout Test
 
