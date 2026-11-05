@@ -11,6 +11,17 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing whether errors discovered on an unseen training source are more
+useful supervision than errors on a source the discovery model has already
+seen. Eight small discovery networks will be fitted from scratch, with their
+own source-only preprocessing, followed by six matched risk-head continuations.
+The original 2% rules and all previous failures remain unchanged. The new
+comparison has passed 18 focused code tests; real training and evaluation are
+pending. It opens no reserved data and does not change the deployed model.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/protocol.md).
+
+### Completed Fixed-Error Priority Test
+
 I tested whether teaching the risk model to correct its earlier mistakes
 improves safe intervention. Both models continue from identical weights;
 one uses ordinary MSE, while the other gives its fixed, observed training

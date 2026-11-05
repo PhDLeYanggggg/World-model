@@ -14,6 +14,20 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Source-Held Error Discovery: Registered, Training Pending
+
+The next controlled model change discovers errors strictly inside fitting B.
+Eight random-initialized teachers omit one B source each; both common and
+kinematic normalization exclude that source. A circular, equally sized
+in-source teacher supplies the comparison mask. Six identical warm-started
+students will differ only in the discovery-mask provenance. The original
+weight10 objective, zero admission boundary, 2% rules and support requirements
+remain unchanged. Eighteen focused tests pass, including real synthetic
+updates, exact resume, provenance and future-input rejection. This is not yet
+a real-data result. No V readout, independent H, deployment change, Stage5C or
+SMC is authorized by the new experiment. Old failures remain.
+[Protocol](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/protocol.md).
+
 ## Fixed Warm-Error Priority: Complete, No Safe Held-Source Lift
 
 A fresh fitting-only audit decomposes the six previous neural models' weighted
