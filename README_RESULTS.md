@@ -22,13 +22,36 @@ risk stays NA. Source076 has six harmful admissions among13accepted known
 proposals. The pointwise information diagnostic is distinct from both the
 support-gated neural veto and the earlier scene-joint allocator.
 
-I am testing separate all/easy regression partitions, not changing the rules.
-The primary has two32-tree heads against the cached shared64-tree control;
-a fresh shared32-tree control checks tree-budget effects. Original120features,
+I completed the separate all/easy regression comparison without changing rules.
+The primary has two 32-tree heads against the cached shared 64-tree control;
+a fresh shared 32-tree control checks tree-budget effects. Original 120 features,
 targets, weights, RMS and zero threshold are fixed. Eight source-excluded folds
-use verified exposed own-B records only. Seven focused tests pass; real fits
-are not yet complete. No new held readout or deployment claim.
+use verified exposed own-B records only. Sixteen new model objects contain
+24 forests; eight controls are cached_verified. All 24 comparison cells refit
+exactly. The shared32 predictions equal the shared64 first-tree prefix.
+
+Primary decision-cost reductions are -0.033689%, +0.461475%, 0%; MSE reductions
+are +2.908763%, +0.372358%, -3.898268%. Harmful admissions change 0/1/0 to 0/19/0.
+The internal screen fails 0/3, with no new held readout or deployment claim.
+These costs are not trajectory ADE improvements or full-policy risk estimates.
+
+Pilot PID45301 exits0 in2.966s, peak625,999,872bytes; run PID45347 exits0
+in8.053s, peak811,171,840bytes; verify PID45404 exits0 in12.275s,
+peak859,308,032bytes. Local fitting uses the fully verified 48,061-row known
+proposal cache, not a sample reduction. The preceding cache/boundary audit
+takes113.498s and7,666,286,592bytes. Forests use n_jobs4 despite the reused
+runtime banner's legacy forest_threads1 label. No new CREATE job.
+
+Read-only replay PID45651 exits0 in2.195s, peak759,021,568bytes. Fitting is
+forbidden; all24 predictions/metrics agree and all38 then-existing public files
+remain unchanged. Twenty-seven focused tests pass in3.60s; the full historical
+suite is not rerun. The compiled paper hash is unchanged. Posthoc fitting gaps
+are mixed, not proof of pure source shift. Next: source-separated causal-history
+distinguishability and forecast-error cases, not another width/threshold sweep.
+Original2% rules, support, empty-control NA and original24 primary NA remain;
+no identity exemption, reserved evaluation, Stage5C/SMC or submission upgrade.
 [Boundary evidence](outputs/publication_readiness_2026_09/moving_boundary_audit_v1/README.md),
+[model results](outputs/publication_readiness_2026_09/moving_channel_specialist_v1/README.md),
 [fixed model protocol](outputs/publication_readiness_2026_09/moving_channel_specialist_v1/protocol.md).
 
 ## Forecast Tail: Complete, Causal Ranking Remains Weak

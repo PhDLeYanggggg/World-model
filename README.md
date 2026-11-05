@@ -11,6 +11,32 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I traced why recent risk-regression improvements did not improve intervention
+decisions. Almost all of the error reduction occurred on proposals that both
+models still rejected. I then tested a concrete model change: separate
+all-agent and easy-agent risk regressors, keeping the total tree budget,
+causal features, targets and safety rules unchanged.
+
+**Separating the heads did not repair safe intervention.**
+
+| Context | Risk-MSE reduction | Decision-cost reduction | Harmful admissions, control to new |
+|---|---:|---:|---:|
+| 0 | +2.909% | -0.034% | 0 to 0 |
+| 1 | +0.372% | +0.461% | 1 to 19 |
+| 2 | -3.898% | 0.000% | 0 to 0 |
+
+The fixed information screen fails 0/3. Sixteen new model objects and eight
+verified controls reproduce by full refit; that establishes reproducibility,
+not effectiveness. These are exposed source-held component diagnostics, not
+trajectory improvements or an independent test. I keep the current deployment
+unchanged and retain the original 2% risk and support requirements. Empty
+reference support remains not estimable. The paper is not submission-ready.
+[Results](outputs/publication_readiness_2026_09/moving_channel_specialist_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_channel_specialist_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/moving_channel_specialist_v1/operation_zh.md).
+
+### Previous Motion-Frame Result
+
 I completed a motion-frame repair suggested by the tail audit: express motion
 in the agent's own history scale and retain the original scale context.
 Sixteen new models and eight verified controls keep the same signed targets,

@@ -282,6 +282,17 @@ Both addenda are separate from the compiled main PDF. Its source, PDF hash and
 visual-verification receipt are unchanged. These results narrow the supported
 claim; they do not supply independent confirmation or a successful main method.
 
+## Channel-Specific Risk Heads: Negative Model Repair
+
+The [channel-head addendum](../moving_channel_specialist_v1/paper_addendum.md)
+records 16 new fitted model objects containing 24 forests against eight verified
+controls. Separating all/easy partitions does not repair safe admission: the
+primary information screen fails 0/3, and one context increases harmful
+admissions from 1 to 19. The preceding boundary audit locates regression gains
+almost entirely among unchanged rejects. Original 2% rules and support remain.
+This note is separate from the compiled main PDF; no independent confirmation,
+deployment upgrade or submission readiness is established.
+
 ## Forecast Tail: Concentration Is Not Causal Predictability
 
 The subsequent [ego-frame addendum](../moving_ego_frame_v1/paper_addendum.md)
