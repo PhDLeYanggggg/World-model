@@ -11,6 +11,22 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am keeping the original 2% safety and support rules and changing the model's
+training, not the evaluation contract. A complete-fitting diagnostic of nine
+frozen risk heads finds no all/easy gradient conflict: protected and ordinary
+updates are identical. The diagnostic and its replay agree exactly. This rules
+out that local explanation, not every possible cause of poor generalization.
+
+The next matched experiment compares fixed with gradually reduced learning
+rates, using identical weights, inputs, labels and 2,000 updates in each of
+three contexts. It tests training stability without changing the loss, support
+rules or decision thresholds. Code tests pass; real-data training and held-source
+evaluation are not yet complete. Deployment remains unchanged.
+[Diagnostic](outputs/publication_readiness_2026_09/moving_all_easy_gradient_v1/README.md),
+[fixed experiment](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/protocol.md).
+
+### Completed Scale-Input Ablation
+
 I tested whether explicit pixel scale misleads the neural intervention-risk
 model. Six real retrained models, a full refit and exact prediction replay
 are complete. I removed only the risk head's log-scale input and retained

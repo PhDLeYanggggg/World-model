@@ -14,6 +14,27 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## All/Easy Attribution And Fixed-Schedule Repair
+
+Fresh complete-B gradients and 27 disposable saved-AdamW updates across nine
+frozen models finish in 35.21 seconds, peak RSS 7.34 GB. Exact replay passes.
+All shared task cosines are positive; none of the three original MSE contexts
+supports the projection hypothesis. Protected and ordinary updates coincide.
+Two original MSE contexts nevertheless increase easy MSE after the actual
+optimizer step. This is a local fitting observation, not a proven explanation
+of held-scene failure or a new trained model. No new V/H outcome is read.
+
+I therefore register six fixed-budget neural fits comparing constant .001
+against cosine reduction to .00001. Initial weights, original unmasked inputs,
+loss, query draws and 2,000 updates remain matched. This changes training, not
+the original 2% rules or support. Final iterates are fixed before V. Eleven
+focused tests pass, including exact resume and old constant-control agreement
+on the test fixture. Real-data pilot/training/evaluation are still not_run.
+No projected-gradient model, threshold search, identity certificate, reserved
+test, deployment or submission-readiness upgrade. Stage5C/SMC stay disabled.
+[Diagnostic](outputs/publication_readiness_2026_09/moving_all_easy_gradient_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/protocol.md).
+
 ## Explicit Scale Removal: Completed, Utility Lift Without Safety
 
 A fresh causal-only audit finds57.05% of source078proposed rows outside its
