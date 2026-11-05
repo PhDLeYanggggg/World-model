@@ -27,6 +27,13 @@ CPU4线程、inter-op1、workers0，不进行 torch 资源探测。
 新的开发集读数，报告 not_run。检查通过也不等于科学安全门槛通过。
 代码、配置、协议和注册在训练前固化；报告脚本只读取已验证的完整结果。
 
+完整实验结束后，保留全部原收据，用独立只读入口再次核对；它不会重新
+训练、创建新评价收据或覆盖旧结果，只更新私有运行日志：
+
+```sh
+.venv-pytorch/bin/python scripts/replay_m3w_moving_paired_decision.py
+```
+
 ## 恢复
 
 本地检查点、heartbeat 和事件记录在

@@ -14,38 +14,71 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Paired Decision Experiment: Full Training Resumed
+## Paired Decision Experiment: Ranking Improves, Original Safety Fails
 
 Fresh own-B ranking and exact replay distinguish score ordering from decision
-errors. Harm-floor AUROC is0.9702/0.8881/0.7272; cost-weighted AUROC is
-0.9943/0.9765/0.9049. Nevertheless44.90/68.10/66.15% of beneficial fitting
+errors. Harm-floor AUROC is 0.9702/0.8881/0.7272; cost-weighted AUROC is
+0.9943/0.9765/0.9049. Nevertheless 44.90/68.10/66.15% of beneficial fitting
 mass is rejected. This is not held performance or proof of sufficient features.
 The exact two-agent pooling alias affects only five queries and two opposite-
 label pairs in critic2, none in the other contexts; it does not explain most
 failures. Both diagnostics replay exactly without additional held reads.
 
-The next nine-fit contrast is joint / paired_point / paired_rank, preserving
+The completed nine-fit contrast is joint / paired_point / paired_rank, preserving
 the original neural architecture, inputs, preprocessing, loss anchors, query
 draws, 2,000-update budget and safety/readout rules. Pairs stay inside complete
 queries; zeros/unknowns are not beneficial labels. Point/rank terms match value
 and gradient at zero, not throughout training. No new inference thresholds,
-reserved data or claimed gain. Real pilot PID16418 completed all three exact
-50+50-versus100-update recovery comparisons,600 updates including repeats.
-Full nine-fit training is running. The first process (PID16893) was absent
+reserved data were used. Real pilot PID16418 completed all three exact
+50+50-versus100-update recovery comparisons, 600 updates including repeats.
+The first training process (PID16893) was absent
 on inspection, with no completion receipt and a last heartbeat at update1500.
 Its terminal exit code was unavailable, so no crash cause is inferred.
 After confirming no duplicate process, unchanged `train --resume` (PID18194)
-continued to update1600. Pilot success and recovery are not scientific success.
-Four of nine fit receipts are now complete. The first paired-rank2000-update
-refit is exact, and both completed joint controls reproduce their predecessors.
-In critic0, joint/point/rank false-safe counts are18/19/4 and false-reject
-counts2655/1945/2873. Rank improves ordering over joint but worsens total
-decision cost; no held evaluation or arm selection has occurred.
+continued from the saved update1500 and completed all nine fits in 1717.60s,
+excluding initial-process time and downtime. All three controls and a complete
+2000-update treatment refit are exact. The original fitting screen passes3/3
+against warm initialization, not against the matched control or safety rule.
+
+| Fitting context | False-safe joint/point/rank | False-reject joint/point/rank | Rank joint-cost change vs point |
+|---|---|---|---:|
+| critic0 | 18 / 19 / 4 | 2655 / 1945 / 2873 | +46.5534% |
+| critic1 | 35 / 118 / 43 | 1924 / 1499 / 1881 | +19.6743% |
+| critic2 | 162 / 551 / 171 | 22704 / 21048 / 22573 | +1.7278% |
+
+Rank improves fitting AUROC over joint in all three contexts, but its total
+decision cost is worse than point in all three. Fewer harmful admissions alone
+are not the objective. No arm was chosen retrospectively from held outcomes.
+
+| Frozen policy | Known ADE gain % | Hard gain % | Switch % | Worst defined easy-net % | Full original risk/support |
+|---|---:|---:|---:|---:|---:|
+| Joint | 0.894772 | 1.169812 | 5.988241 | 8.633364 | 0/17 |
+| Paired point | 1.467386 | 1.840246 | 8.118883 | 8.464957 | 0/17 |
+| Paired rank | 0.836321 | 1.129416 | 5.368494 | 8.337269 | 0/17 |
+
+The registered rank-minus-point contrast is -0.631065pp; missing-label
+completion bounds [-0.866418, -0.395712]pp are not sampling CIs. Six of seven
+exposed SOURCE units lose utility. Rank has11 known all-risk violations,
+13 easy-risk violations and4 undefined selected-easy views. The full original
+gate fails; original24-group primary remains NA. Removing the decision head
+gives3.321222% known gain but41.773209% worst easy-net degradation, not a repair.
+
+Fixed evaluation PID20797 exits0 in67.64s. Verification PID20940 exits0 in75.36s;
+all nine initial/final fitting metrics, attributions and ranking summaries,
+plus held predictions/actions/metrics, replay exactly. Sixty-six focused tests
+pass in5.41s; the full historical suite was not rerun. Training and readouts
+are fresh_run; parent assets cached_verified; independent/reserved/H evaluation
+not_run. No deployment, submission-ready claim or new CREATE job.
+A separate completed-replay entry point passes two additional tests and a real
+74.08s run (PID21646, exit0), preserving all36 then-existing public files.
+It makes completed verification repeatable without deleting or replacing old
+receipts. This is engineering replay, not another scientific test result.
 The [loss geometry note](outputs/publication_readiness_2026_09/moving_paired_decision_v1/loss_geometry.md)
-explains why ranking does not determine the fixed acceptance boundary. Four
-analytical regression cases pass;62 existing focused checks also pass.
+explains why ranking does not determine the fixed acceptance boundary. Its four
+analytical cases are included in the66 tests, not independent scientific evidence.
 [Diagnostic](outputs/publication_readiness_2026_09/moving_discrimination_v1/README.md),
-[protocol](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
+[results](outputs/publication_readiness_2026_09/moving_paired_decision_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_paired_decision_v1/failure_analysis.md).
 
 ## Harm-Weight Allocation: Fewer Harmful Admissions, Lower Utility
 

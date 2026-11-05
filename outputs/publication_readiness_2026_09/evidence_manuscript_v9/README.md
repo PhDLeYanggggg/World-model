@@ -237,3 +237,19 @@ from 0.759% to 0.895%, but worst easy-net degradation also rises from 8.038% to
 8.633%; full risk/support remains 0/17. All fits and readouts replay exactly.
 No independent H data, new deployment or successful main-method evidence is
 claimed. This addendum is not included in the compiled main PDF.
+
+## Harm Weighting And Paired Decision Learning
+
+Two later completed model studies retain the original evaluation contract.
+The [harm-weight allocation addendum](../moving_harm_floor_v1/paper_addendum.md)
+records nine matched fits: fewer harmful fitting admissions, but lower matched
+utility and failed full-policy safety. The
+[paired-decision addendum](../moving_paired_decision_v1/paper_addendum.md)
+records nine further fits with exact controls and replay. Ranking improves
+fitting AUROC over joint but is inferior to its matched pointwise control;
+the primary known contrast is -0.6311pp. Point's larger mean gain also fails
+the original safety requirement. Neither result justifies deployment.
+
+Both addenda are separate from the compiled main PDF. Its source, PDF hash and
+visual-verification receipt are unchanged. These results narrow the supported
+claim; they do not supply independent confirmation or a successful main method.

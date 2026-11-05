@@ -11,17 +11,40 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-The next model experiment targets discrimination, keeping the original rules.
-Own-fitting audits show that stronger harm weighting can improve ranking while
-still rejecting useful forecasts. I am testing paired useful/harmful learning
-within each query against a matched pointwise control, without changing inputs,
-thresholds or reserved data access. All three real recovery pilots match
-continuous training exactly. Four of nine full fits and one complete treatment
-refit are verified; training continues after unchanged checkpoint recovery.
-The first partition's ranking model admits fewer harmful proposals but rejects
-more useful ones, so its decision cost worsens. This is fitting evidence only;
-no development or deployment gain is claimed yet.
-[Prospective experiment](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
+I completed nine matched neural fits to test whether learning relative scores
+for useful and harmful interventions improves the decision to replace a
+baseline. The comparison keeps the same inputs, initialization, query draws,
+training budget and original safety rules. No threshold was retuned.
+
+**Better ranking did not produce a safer, more useful policy.**
+
+| Frozen policy | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full original risk/support |
+|---|---:|---:|---:|---:|
+| Joint-decision control | 0.895% | 1.170% | 8.633% | 0/17 |
+| Matched pointwise loss | 1.467% | 1.840% | 8.465% | 0/17 |
+| Paired ranking loss | 0.836% | 1.129% | 8.337% | 0/17 |
+
+The primary ranking-minus-pointwise contrast is **-0.6311 percentage points**.
+Its missing-label completion bounds are [-0.8664, -0.3957] pp, not sampling
+confidence intervals. Ranking improves fitting AUROC over the joint control
+in all three contexts, but its decision cost is worse than the matched
+pointwise arm in all three. The pointwise arm recovers more useful predictions
+and increases harmful admissions; its larger mean gain does not make it safe.
+
+These are partial-outcome results from seven already exposed development
+sources, not independent confirmation or complete-roster ADE. All nine fits,
+three predecessor controls, one complete refit and prediction/metric replay
+are verified. Sixty-six focused tests and two completed-replay checks pass.
+The read-only replay command also reproduces the real completed experiment
+without changing any of its 36 then-existing public files. The resumed training took
+28.6 minutes, excluding the interrupted process and downtime. No model is
+promoted, no reserved scenes are opened, and no identity exemption is added.
+The original 2% risk, easy and support requirements remain unchanged.
+[Complete results](outputs/publication_readiness_2026_09/moving_paired_decision_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_paired_decision_v1/failure_analysis.md),
+[reproducibility](outputs/publication_readiness_2026_09/moving_paired_decision_v1/validation_receipt.md).
+
+### Previous Harm-Weight Allocation Result
 
 I completed nine matched neural fits to test whether training should put more
 weight on lower-magnitude harmful interventions. A uniform-weight control has

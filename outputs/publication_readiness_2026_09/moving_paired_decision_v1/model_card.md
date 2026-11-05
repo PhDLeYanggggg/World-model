@@ -1,5 +1,10 @@
 # Paired Intervention-Risk Heads
 
+Status: all nine real fits and frozen readouts completed and exactly replayed.
+The main rank-minus-point contrast is -0.6311pp; rank's worst defined easy-net
+degradation is 8.3373% and full original risk/support passes 0/17. Not deployable.
+The point control's larger known gain of 1.4674% also fails safety; it is not promoted.
+
 Intended use: controlled research on neural intervention gain and harm under
 the original evaluation contract. The model neither produces new forecasts nor
 provides a calibrated safety probability. No automatic deployment.

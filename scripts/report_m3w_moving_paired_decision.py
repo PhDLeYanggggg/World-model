@@ -92,7 +92,8 @@ def main():
     text = ['# Paired Useful/Harmful Decision Learning', '',
         'I tested within-query paired ranking against a matched pointwise loss and',
         'the preceding joint control. All nine complete fits, three exact controls,',
-        'one full treatment refit and metric/prediction replay are complete.',
+        'one full treatment refit and fitting-metric replay are complete.',
+        'Held evaluation and its replay status are reported separately below.',
         'These are neural intervention-risk heads, not new trajectory forecasts.', '',
         '## Own-Fitting Results', '',
         '| Context | Arm | MSE reduction from warm % | Joint cost | False-safe | False-reject | AUROC | Cost-weighted AUROC |',
@@ -115,7 +116,7 @@ def main():
     passed = sum(r['passed'] for r in screen['contexts'])
     text += [f'Original internal fitting screen: **{passed}/3**. It is not the scientific safety gate.', '']
     if held:
-        text += ['Seven already exposed SOURCE units /17views, one producer seed.', '',
+        text += ['Seven already exposed SOURCE units / 17 views, one producer seed.', '',
             '| Policy | Known ADE gain % | Hard gain % | Switch % | Worst defined easy-net % | Full risk/support |',
             '|---|---:|---:|---:|---:|---:|']
         for name in ('constant_veto', 'joint_veto', 'paired_point_veto', 'paired_rank_veto', 'paired_rank_risk_only_veto'):
@@ -135,14 +136,18 @@ def main():
         '## Execution', '', '| Phase | PID | Seconds | Peak RSS bytes |', '|---|---:|---:|---:|']
     for k, r in phases.items():
         text.append(f"| {k} | {r['pid']} | {r['seconds']:.2f} | {r['peak_RSS_bytes']} |")
-    text += ['', '18,000 primary, 2,000 full-refit and600 pilot updates; actual arm64 PyTorch',
+    text += ['', '18,000 primary, 2,000 full-refit and 600 pilot updates; actual arm64 PyTorch',
         'CPU4/inter-op1/workers0. Parent assets cached_verified, fits/diagnostics',
-        'fresh_run, reserved/H confirmation not_run. No CREATE job started.', '',
-        'Original2% risk/easy/support rules unchanged; no identity certification.',
-        'Original24-group primary remains NA; empty support is not passed.',
+        'fresh_run, reserved/H confirmation not_run. No CREATE job started.',
+        'The train-phase duration is for the resumed process only, excluding',
+        'initial-process time and downtime. The [interruption and recovery record](interruption_recovery.md)',
+        'retains the unavailable first exit code; no crash cause is inferred.', '',
+        'Original 2% risk/easy/support rules unchanged; no identity certification.',
+        'Original 24-group primary remains NA; empty support is not passed.',
         'No deployment or submission-ready claim. Native obs8/pred12 image',
         'coordinates, not metric/seconds/true3D/foundation/human gold. Stage5C/SMC disabled.', '',
         '[Protocol](protocol.md) | [Failure analysis](failure_analysis.md) |',
+        '[Loss geometry](loss_geometry.md) | [Validation receipt](validation_receipt.md) |',
         '[Run/recovery guide](operation_zh.md) | [Metrics](result_summary.json)', '']
     (PUBLIC/'README.md').write_text('\n'.join(text))
     risk = analysis['held_policy']['paired_rank_veto']['safety']['full_original_risk_pass'] if held else 'not_run'
@@ -150,7 +155,7 @@ def main():
         '| Nine real fits / exact controls / resume / full refit | pass |',
         '| All fitting metrics / attribution / ranking replay | pass |',
         f'| Original internal fitting screen | {passed}/3 |', f'| Original held risk/support | {risk} |',
-        '| Original24-group primary | NA, not passed |', '| Independent confirmation | not_run |',
+        '| Original 24-group primary | NA, not passed |', '| Independent confirmation | not_run |',
         '| Deployment / submission readiness | false / false |', '| Stage5C / SMC | disabled / disabled |', '',
         'Execution passes are not scientific success and are not pooled into a gate total.', '']))
     print(json.dumps(dict(status=summary['status'], fits=9, fitting_screen=passed,
