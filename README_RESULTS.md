@@ -25,11 +25,13 @@ own-source normalization, sampling and the original 2% veto are retained.
 The only treatment is the supervised action mask, not a changed threshold.
 
 The registered budget is108new critics and216000primary optimizer updates.
-Eleven focused checks pass. The real-data pilot completed600updates in44.85s,
+Twenty focused model/runner/reporting and parent checks pass. The real-data pilot completed600updates in44.85s,
 peak RSS5.96GB, observed exit0. All three resumed/direct model and inference
 comparisons are exact. The projected primary fit time is6923.18s, not completed
 runtime. Full training is in progress; evaluation is not_run. No new H access, identity certification, deployment
 upgrade or scientific success is claimed. Previous failures remain intact.
+The first complete2000-update critic and its independent refit match exactly.
+Training PID54910 records checkpoints every100updates and a local heartbeat.
 [Protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
 
 ## Moving Public Deferral Control: Mean Utility Improved, Original Risk Failed
