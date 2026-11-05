@@ -14,11 +14,12 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 I am testing whether errors discovered on an unseen training source are more
 useful supervision than errors on a source the discovery model has already
 seen. Eight small discovery networks have completed training from scratch,
-with their own source-only preprocessing and 16,000 total updates, plus an
-exact full refit. Six matched risk-head continuations are next.
+with their own source-only preprocessing and 16,000 total updates. Six matched
+risk-head continuations have also completed 12,000 updates. Full independent
+teacher/student refits reproduce exactly. All weights are frozen before readout.
 The original 2% rules and all previous failures remain unchanged. The new
 comparison has passed 19 focused code tests and a real 200-update pilot with
-exact checkpoint recovery. Student training and evaluation are pending. It opens
+exact checkpoint recovery. Evaluation is pending. It opens
 no reserved data and does not change the deployed model.
 An initial cache-interface error stopped the pilot before training; the repair
 preserves complete queries and fits normalization only on the retained source.
