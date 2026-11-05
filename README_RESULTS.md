@@ -14,6 +14,19 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Signed-Cost Decision Learning: Registered Next Comparison
+
+A fresh fitting-only audit checks error count versus cost and score distance
+from zero. The third context contains590/992false-safe easy channels with
+absolute normalized scores0.1-1, so rounding at zero is not the sole issue.
+Cost-weighted sign regret and raw error count differ. Six equal-budget warm
+continuations will compare MSE with signed-cost logistic learning, retaining
+bound-aware MSE for unknown outcomes and all original decision/support rules.
+No threshold search, new H, identity certificate, deployment or primary-metric
+revision. Fitting audit is fresh; training/evaluation are not_run at registration.
+[Protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md),
+[fitting audit](outputs/publication_readiness_2026_09/moving_signed_decision_v1/fitting_boundary_audit.md).
+
 ## Source-Held Error Discovery: Complete, No Safe Held Lift
 
 Eight new scratch teachers discover errors strictly inside fitting B, excluding

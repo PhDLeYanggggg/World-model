@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing a decision-aligned training objective after the negative result
+below. It penalizes incorrect risk signs by their realized cost, instead of
+giving a fixed subset of errors extra MSE weight. A fitting-only audit and
+loss/resume tests are complete; real training and held evaluation are pending.
+The original 2% and support rules remain fixed. This is a matched risk-head
+experiment, not new trajectory dynamics or a claim of safe deployment.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md).
+
+### Completed Source-Held Error Test
+
 I tested whether errors discovered on an unseen fitting source teach a better
 intervention-risk model than errors discovered on an already seen source.
 Eight discovery networks were trained from scratch, followed by six matched
