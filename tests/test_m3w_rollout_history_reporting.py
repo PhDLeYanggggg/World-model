@@ -29,3 +29,12 @@ def test_incomplete_replay_never_creates_receipts(tmp_path):
     with pytest.raises(ValueError, match='Complete original run required'):
         replay.require_completed(tmp_path)
     assert not list(tmp_path.iterdir())
+
+
+def test_source_influence_keeps_negative_and_unknown_results():
+    out = report.source_consistency({'known_pp': {'by_source': {'a': 3., 'b': -1., 'c': 0.}}})
+    assert (out['positive'], out['negative'], out['unchanged']) == (1, 1, 1)
+    assert out['leave_one_source_out_mean_pp']['a'] == -.5
+    assert out['full_primary_unchanged'] and not out['sampling_CI']
+    out = report.source_consistency({'known_pp': {'by_source': {'a': 3., 'b': None}}})
+    assert out['status'] == 'not_estimable'

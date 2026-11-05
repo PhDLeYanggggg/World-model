@@ -13,6 +13,17 @@ def reduction(a, b):
     return None if a == 0 else 100*(a-b)/a
 
 
+def source_consistency(contrast):
+    values = contrast['known_pp']['by_source']
+    if len(values) < 2 or any(v is None or not source.np.isfinite(v) for v in values.values()):
+        return dict(status='not_estimable', full_primary_unchanged=True)
+    return dict(status='posthoc_descriptive_influence_not_new_primary', sources=len(values),
+        positive=sum(v > 0 for v in values.values()), negative=sum(v < 0 for v in values.values()),
+        unchanged=sum(v == 0 for v in values.values()),
+        leave_one_source_out_mean_pp={s: float(source.np.mean([v for k, v in values.items() if k != s]))
+                                     for s in values}, full_primary_unchanged=True, sampling_CI=False)
+
+
 def comparisons(rows, jobs):
     expected = {(j['key'], arm) for j in jobs for arm in api.ARMS}
     actual = [(r['job'], r['arm']) for r in rows]
@@ -86,6 +97,7 @@ def main():
         held_readout='fresh_run_exposed_development' if held else 'not_run',
         held_reason=None if held else analysis['reason'], held_policy=analysis.get('held_policy'),
         held_contrasts=analysis.get('contrasts'), original_rules_unchanged=True,
+        source_consistency=source_consistency(analysis['contrasts']['main']) if held else None,
         original24group_primary='not_estimable_not_passed', identity_certification=False,
         independent_confirmation=False, deployment_changed=False, submission_ready=False,
         stage5c_executed=False, smc_enabled=False)
@@ -119,7 +131,9 @@ def main():
     if held:
         text += ['| Policy | Known ADE gain % | Hard gain % | Switch % | Worst defined easy-net % | Original risk/support |',
             '|---|---:|---:|---:|---:|---:|']
-        for name, r in analysis['held_policy'].items():
+        for name in ('physical_floor', 'constant_veto', 'history_masked_veto',
+                     'history_relational_veto', 'history_relational_risk_only_veto'):
+            r = analysis['held_policy'][name]
             s = r['safety']
             text.append('| '+name+' | '+' | '.join(f(x) for x in (r['known']['mean'], r['hard']['mean'],
                 r['switch_percent']['mean'], s['worst_defined_signed_easy_net_percent']))+f" | {s['supported']}/{s['required']} |")
@@ -127,6 +141,20 @@ def main():
         text += ['', f"Primary relational-minus-masked contrast: {f(c['known_pp']['mean'])} pp; "
             f"missing-label completion bounds [{f(c['completion_lower_pp']['mean'])}, "
             f"{f(c['completion_upper_pp']['mean'])}] pp."]
+        text += ['', '| Source | Known contrast pp | Completion lower pp | Completion upper pp |',
+            '|---|---:|---:|---:|']
+        for site in c['known_pp']['by_source']:
+            text.append('| '+site+' | '+' | '.join(f(c[k]['by_source'][site]) for k in
+                ('known_pp', 'completion_lower_pp', 'completion_upper_pp'))+' |')
+        consistency = summary['source_consistency']
+        text += ['', f"Source consistency: {consistency['positive']} improve, {consistency['negative']} worsen, "
+            f"{consistency['unchanged']} unchanged. The posthoc leave-one-source-out means range from "
+            f"{f(min(consistency['leave_one_source_out_mean_pp'].values()))} to "
+            f"{f(max(consistency['leave_one_source_out_mean_pp'].values()))} pp.",
+            'Leave-one-source-out means are influence diagnostics, not alternative',
+            'primary results, confidence intervals or permission to remove a source.',
+            'All frozen legacy and same-count controls remain in the complete JSON.',
+            'The risk-only arm is an ablation, not an authorized deployment policy.']
     else:
         text += ['**not_run:** '+analysis['reason']+'. No held improvement inferred.']
     text += ['', 'Completion bounds are not sampling CIs. Partial-outcome development ADE',

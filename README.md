@@ -11,14 +11,34 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-A matched rollout-history feature experiment has completed all six neural fits. It adds32
-causal relations between observed motion and candidate forecasts, with an
-equal-parameter masked-feature control and the original joint objective.
-The real-data pilot, three original controls and one full refit reproduce exactly.
-The registered fitting screen passes3/3 and exposed-development evaluation is
-running. The previous negative result below remains current until readout is
-complete; fitting improvement does not establish safety or deployment.
-[Protocol](outputs/publication_readiness_2026_09/moving_rollout_history_v1/protocol.md).
+I added explicit relations between a candidate forecast and the agent's past
+motion: direction, speed change, acceleration alignment and departure from the
+baseline. Six matched neural models test these32features with the same loss,
+initialization, training budget and original safety rules.
+
+**The features give a small development gain, but the policy is still unsafe.**
+
+| Policy | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full original risk/support |
+|---|---:|---:|---:|---:|
+| Matched masked-feature control | 0.895% | 1.170% | 8.633% | 0/17 |
+| Rollout-history relations | 0.981% | 1.303% | 8.660% | 0/17 |
+
+The contrast is+0.0865percentage points, with missing-label completion bounds
+[+0.0451,+0.1279]pp, not sampling confidence intervals. Only two of seven
+sources improve; four worsen and one is unchanged. Most gain comes from one
+source. Removing the decision head raises average gain but worsens maximum
+easy degradation to25.726%, so that is not a deployment option.
+
+All six fits, three original controls, a full refit and prediction/metric replay
+are verified. These are already exposed obs8/pred12 image-coordinate development
+results, not independent confirmation or new trajectory-dynamics training.
+The original2% rules remain unchanged; no identity exemption or deployment
+upgrade is introduced. The paper is not yet submission-ready.
+[Results and loss curves](outputs/publication_readiness_2026_09/moving_rollout_history_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_rollout_history_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_rollout_history_v1/protocol.md).
+
+### Previous Paired Decision Result
 
 I completed nine matched neural fits to test whether learning relative scores
 for useful and harmful interventions improves the decision to replace a

@@ -14,22 +14,48 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Model-Mechanism Checks: No Rule Change
+## Rollout-History Relations: Small Gain, Safety Still Failed
 
-The next model repair is registered in
-[rollout-history relations](outputs/publication_readiness_2026_09/moving_rollout_history_v1/protocol.md):
-six matched neural fits,32 deterministic causal relational inputs,68356
-parameters per model, unchanged joint objective and2000updates per fit.
-Initial-function, actual tiny training/resume, causal-input and interruption
-tests pass. The real-data pilot completed 500 updates including repeated runs
-in 83.98 seconds (PID25011, exit0). Both 50+50 versus100 recovery checks are
-exact; the masked model also matches the original joint control. All six models
-completed locally as PID25357 (exit0,1084.43s,peak RSS7.62GB), including12000
-primary updates plus2000 exact full-refit updates. Three masked controls exactly
-reproduce their predecessors. The original fitting screen passes3/3 against warm
-initialization, not against the matched control or safety requirement. Exposed-C
-readout is running; no reserved data opened. No projection or neighbor averaging
-is introduced. Twenty-six model/report tests and13 original-rule tests pass.
+`fresh_run`: six matched neural fits add32 causal relation features, with68,356
+parameters per model, unchanged joint objective and2,000updates per fit.
+Full-fitting MSE improves8.737%,10.484%,1.980% over masked controls; joint
+decision cost improves in2/3 contexts. A decrease in false-safe count in critic0
+does not reduce its harm cost. All errors and loss curves are retained.
+
+| Exposed-development policy | Known ADE gain % | Hard gain % | Worst easy-net % | Original risk/support |
+|---|---:|---:|---:|---:|
+| Masked control | 0.894772 | 1.169812 | 8.633364 | 0/17 |
+| Relational features | 0.981299 | 1.303188 | 8.660257 | 0/17 |
+| Relational, decision head removed | 3.268218 | 4.162150 | 25.726249 | 0/17 |
+
+The registered relational-minus-masked contrast is+0.086527pp, missing-label
+completion bounds[+0.045112,+0.127942]pp, not a sampling CI. Two sources improve,
+four worsen, one is unchanged. Source078 carries most gain; the other six
+average-0.052874pp in a posthoc influence diagnostic, not a revised primary.
+Known-all12/17 and known-easy13/17 views violate the original2% limit; selected
+easy support is undefined in three views. No identity certification, threshold
+change or promotion. Original24-group primary remains NA.
+
+PilotPID25011 exits0 in83.98s:500updates including repeats, exact recovery and
+old-control reproduction. TrainingPID25357 exits0 in1084.43s,peak RSS7.62GB:
+12000primary plus2000exact-refit updates; all three masked controls exact.
+EvaluationPID27000/verificationPID27153 exit0 in68.90/69.38s. Every fitted
+metric, attribution, development prediction and action replays exactly.
+Completed read-only replayPID27506 exits0 in69.39s and leaves all29then-existing
+public evidence files byte-identical, without training or a new scientific test.
+The3/3 internal fitting screen is not the scientific risk gate. Forty distinct
+focused tests pass across model/report, original-rule and added influence checks;
+the full historical suite was not rerun. The loss figure was visually inspected.
+
+`cached_verified`: parent assets, source roles and normalizers. `not_run`:
+reserved/H confirmation, new trajectory predictor or JEPA, deployment and
+submission readiness. No CREATE job. Native obs8/pred12 image coordinates;
+no metric/seconds, true3D, foundation or human-gold claim. Stage5C/SMC off.
+[Complete results](outputs/publication_readiness_2026_09/moving_rollout_history_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_rollout_history_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/moving_rollout_history_v1/paper_addendum.md).
+
+## Earlier Model-Mechanism Checks: No Rule Change
 
 `fresh_run`: all nine frozen paired-experiment models were decomposed into
 complete own-B loss gradients, with twelve disposable saved-AdamW steps.

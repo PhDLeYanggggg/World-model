@@ -264,3 +264,13 @@ in2/3 contexts, yet fixed-order averaging worsens both fitting criteria in3/3.
 Both limited follow-up screens fail; neither changes the original rules or
 supports a safe method claim. Exact replay is not independent confirmation.
 These notes are not incorporated into the unchanged compiled main PDF.
+
+## Rollout-History Features: Modest Gain, Original Safety Failed
+
+The [matched feature addendum](../moving_rollout_history_v1/paper_addendum.md)
+records six actual neural fits with unchanged objectives and evaluation rules.
+Known development ADE gain increases0.8948%to0.9813%, but the positive macro
+depends on one source, worst easy degradation remains8.6603%, and full original
+risk/support is0/17. Controls, a complete refit and prediction/metric replay are
+exact. No identity exemption, new deployment or independent confirmation is
+claimed. The addendum is not included in the unchanged compiled main PDF.
