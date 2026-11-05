@@ -25,7 +25,10 @@ bound-aware MSE for unknown outcomes and all original decision/support rules.
 No threshold search, new H, identity certificate, deployment or primary-metric
 revision. Twenty-three focused tests pass. The nativearm64 real pilot completes
 400updates including repeats in36.32seconds, exit0; both objective arms resume
-to exactly matching weights and predictions. Complete fits/evaluation are next.
+to exactly matching weights and predictions. All six complete fits now finish
+12,000 primary updates plus an exact 2,000-update treatment refit in517.02seconds,
+observed exit0. All three fresh MSE controls reproduce their previous weights.
+Models are frozen before V evaluation. Twenty-six focused tests pass.
 [Protocol](outputs/publication_readiness_2026_09/moving_signed_decision_v1/protocol.md),
 [fitting audit](outputs/publication_readiness_2026_09/moving_signed_decision_v1/fitting_boundary_audit.md).
 
