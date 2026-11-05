@@ -16,6 +16,17 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Producer-A Donor Repair Registered
+
+The source audit rules out blind cross-context pooling: same-teacher caches can
+belong to the target context's outer H, while different teachers can have seen
+the intended critic sources. I registered six fresh EqMotion fits within the
+existing producer-A folds0/1, using their existing three source partitions.
+Each receives4,000 updates and predicts only its own source-held A partition.
+Nine focused tests pass. Training is not yet claimed complete. No new C/H
+readout, no risk-threshold change, no identity certificate and no promotion.
+[Protocol](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/protocol.md).
+
 The fixed-budget continuation is complete: eight heads, 32,871 additional
 updates, full epochs, unchanged model/data/loss/thresholds. All eight repeat
 exactly from the original parents. Only the final fixed-budget checkpoint

@@ -11,6 +11,13 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am expanding risk-learning coverage without relaxing the safety rule. Six
+new EqMotion fits will produce source-held forecasts wholly inside the original
+predictor training sets. They keep the outer calibration/evaluation roles
+closed. This is a donor-data experiment, not a claimed forecasting improvement;
+the original negative results below and deployment status remain unchanged.
+[Fixed protocol](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/protocol.md).
+
 I tested whether the neural risk failure was simply due to too little training.
 I continued all eight saved heads, adding 32,871 updates with the same model,
 features, loss, sources and original risk rules. Only the fixed final checkpoint

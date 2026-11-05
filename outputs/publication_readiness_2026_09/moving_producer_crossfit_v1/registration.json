@@ -1,0 +1,369 @@
+{
+  "architecture": {
+    "channels": 64,
+    "family": "eqmotion_fixed_head",
+    "fixed_head": 0,
+    "hidden_nf": 64,
+    "history_steps": 8,
+    "input_conditioning": "observed_joint_max_norm",
+    "layers": 4,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "author_core": {
+    "adapter_sha256": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "commit": "5aec2e0b61c511fa93a24138dd90da59a089084b",
+    "files_sha256": {
+      "LICENSE": "f1d3136868b8e8bd929d21257c3b9c6970e398a052d6a7b5ed02cfc72c49caf1",
+      "README.md": "aded869035346f0a84b7786209d26355fd33c223046ccf2c4d7c009babe336a2",
+      "eth_ucy/dataloader_diverse.py": "51bec703ecbde61c4e9d3d1a26e0e51fc13fb1331b126d8faff525219f3656f2",
+      "eth_ucy/gcl_t.py": "ca6856d408c99a8cd97184861a646a87406bf2b09ec1d37dd517bc71c80d2e06",
+      "eth_ucy/model_t.py": "5d31dd6c5144ec4715a006bf1c3e5e8753a71a2dd87dc4ab42b1b80b98a6cfcc",
+      "eth_ucy/preprocessor.py": "790a3e4ceb7e24e2feda6335b117662085ea260d726af5617bf9efc06c976938",
+      "eth_ucy/process_eth_data_diverse.py": "faf14a90298643e467f6a509c6cfb8bc98435dd72bb5938a9a78247e11fe0f7d",
+      "main_eth_diverse.py": "1dc93be49d4f632df4d865647f66b0bc70d55d784f59219faaf3ec12cb5c87ad"
+    },
+    "license": "MIT",
+    "manifest_sha256": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "repository": "https://github.com/MediaBrain-SJTU/EqMotion"
+  },
+  "config": {
+    "admission": "outputs/publication_readiness_2026_09/moving_development_admission_v1/admission.json",
+    "artifact_cap_bytes": 1073741824,
+    "contexts": "outputs/publication_readiness_2026_09/moving_ego_frame_v1/registration_v2.json",
+    "deployment_changed": false,
+    "device": "cpu",
+    "disk_reserve_bytes": 5368709120,
+    "final_checkpoint_only": true,
+    "hard_runtime_limit_seconds": 43200,
+    "identity_certification": false,
+    "inference_batch_size": 128,
+    "inner_folds": 3,
+    "interop_threads": 1,
+    "models": 6,
+    "name": "moving_producer_crossfit_v1",
+    "new_outer_C_H_readout": false,
+    "num_workers": 0,
+    "original_risk_budget": 0.02,
+    "parent_config": "configs/m3w_moving_source_forecast_supported_v1.json",
+    "parent_registration": "outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/registration.json",
+    "pilot_split": 20,
+    "pilot_total": 40,
+    "producer_folds": [
+      0,
+      1
+    ],
+    "seed": 17,
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "steps_per_model": 4000,
+    "submission_ready": false,
+    "torch_threads": 4,
+    "warm_start": false
+  },
+  "eligibility": [
+    {
+      "blind_pooling_allowed": false,
+      "donor": "eqmotion_fold0_seed17_critic1",
+      "reasons": [
+        "donor_teacher_trained_on_target_critic_sources",
+        "different_teacher",
+        "different_training_defined_target_cut"
+      ],
+      "source_groups": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076"
+      ],
+      "target": "eqmotion_fold1_seed17_critic0"
+    },
+    {
+      "blind_pooling_allowed": false,
+      "donor": "eqmotion_fold0_seed17_critic2",
+      "reasons": [
+        "donor_is_target_outer_H",
+        "donor_teacher_trained_on_target_critic_sources",
+        "different_teacher",
+        "different_training_defined_target_cut"
+      ],
+      "source_groups": [
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_073"
+      ],
+      "target": "eqmotion_fold1_seed17_critic0"
+    },
+    {
+      "blind_pooling_allowed": false,
+      "donor": "eqmotion_fold1_seed17_critic0",
+      "reasons": [
+        "donor_teacher_trained_on_target_critic_sources",
+        "different_teacher",
+        "different_training_defined_target_cut"
+      ],
+      "source_groups": [
+        "moving_source_component_048",
+        "moving_source_component_067"
+      ],
+      "target": "eqmotion_fold0_seed17_critic1"
+    },
+    {
+      "blind_pooling_allowed": false,
+      "donor": "eqmotion_fold0_seed17_critic2",
+      "reasons": [
+        "donor_is_target_outer_H"
+      ],
+      "source_groups": [
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_073"
+      ],
+      "target": "eqmotion_fold0_seed17_critic1"
+    },
+    {
+      "blind_pooling_allowed": false,
+      "donor": "eqmotion_fold1_seed17_critic0",
+      "reasons": [
+        "different_teacher",
+        "different_training_defined_target_cut"
+      ],
+      "source_groups": [
+        "moving_source_component_048",
+        "moving_source_component_067"
+      ],
+      "target": "eqmotion_fold0_seed17_critic2"
+    },
+    {
+      "blind_pooling_allowed": false,
+      "donor": "eqmotion_fold0_seed17_critic1",
+      "reasons": [
+        "donor_is_target_outer_H"
+      ],
+      "source_groups": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076"
+      ],
+      "target": "eqmotion_fold0_seed17_critic2"
+    }
+  ],
+  "files": {
+    "configs/m3w_moving_producer_crossfit_v1.json": "48bdd7c80b3b5b6f009d3486d7f9d95921db844d9f370a0cd3bd4701c16b7fac",
+    "outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/protocol.md": "efa6fb97aa495435920181edaa77cc4f4f92c49fe4bca18b8fbeba65dee73af5",
+    "scripts/run_m3w_moving_producer_crossfit.py": "b90142052f143fe6c3a3ae9fc42e6c8f5e5062156bc2fcd2336b74358e45eec5",
+    "src/data_unification/m3w_producer_crossfit.py": "50db05b50903b868997a5c917f0bac1a08000d17c1de94ed86f4579c92434ba3",
+    "tests/test_m3w_producer_crossfit.py": "98567a15696d51542d5001e5baa127f1e50ac63657c3108db6a2cfb13cece55e"
+  },
+  "independent_confirmation": false,
+  "jobs": [
+    {
+      "donor_sites": [
+        "moving_source_component_048",
+        "moving_source_component_067"
+      ],
+      "fit_sites": [
+        "moving_source_component_047",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062"
+      ],
+      "key": "eqmotion_A0_inner0_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 0,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_047",
+        "moving_source_component_052"
+      ],
+      "fit_sites": [
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "key": "eqmotion_A0_inner1_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 1,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_051",
+        "moving_source_component_062"
+      ],
+      "fit_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_052",
+        "moving_source_component_067"
+      ],
+      "key": "eqmotion_A0_inner2_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 2,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076"
+      ],
+      "fit_sites": [
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "key": "eqmotion_A1_inner0_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 0,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078"
+      ],
+      "key": "eqmotion_A1_inner1_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 1,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_077",
+        "moving_source_component_078"
+      ],
+      "fit_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "key": "eqmotion_A1_inner2_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 2,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    }
+  ],
+  "machine": "arm64",
+  "new_outer_readout": false,
+  "numpy": "2.4.6",
+  "original_rules_unchanged": true,
+  "parents": [
+    {
+      "bytes": 2094,
+      "path": "configs/m3w_moving_source_forecast_supported_v1.json",
+      "sha256": "368cec9df76816423118a5b02880637aa2d194e8cbe72044d9f7eaaf2ec78d4d"
+    },
+    {
+      "bytes": 7516,
+      "path": "outputs/publication_readiness_2026_09/moving_source_forecast_supported_v1/registration.json",
+      "sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9"
+    },
+    {
+      "bytes": 30873,
+      "path": "outputs/publication_readiness_2026_09/moving_ego_frame_v1/registration_v2.json",
+      "sha256": "ea9b14938020f64e6e2253ec01e8db7b951b3a2cece97b1682b25b22a6b8a920"
+    },
+    {
+      "bytes": 53924,
+      "path": "outputs/publication_readiness_2026_09/moving_development_admission_v1/admission.json",
+      "sha256": "951458d6c3c80567fac1e97275fd3db7fbd712fbcd55b50c20c9c530b631e6f8"
+    }
+  ],
+  "role": "producer_A_internal_OOF_training_donors",
+  "torch": "2.12.0",
+  "training": {
+    "batch_size": 64,
+    "checkpoint_every": 200,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 50,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "steps": 4000,
+    "weight_decay": 0.0001
+  }
+}
