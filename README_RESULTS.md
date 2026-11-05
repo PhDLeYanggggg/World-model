@@ -14,6 +14,17 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Frozen Readout Control: Registered, Not Yet Run
+
+The next model-side control keeps the three existing direct-mean neural
+representations frozen and refits only their 130 affine output coefficients
+by weighted least squares. It retains the exact empirical query weights,
+causal features, source roles, proposals, unknown-label bounds and original
+2% rules. Fourteen focused checks pass. No real-data refit or held-source
+readout is claimed yet. This is an optimization diagnostic, not a new
+forecaster or a revised safety definition.
+[Frozen protocol](outputs/publication_readiness_2026_09/moving_readout_refit_v1/protocol.md).
+
 ## Direct Tail Risk Pilot: Complete, No Repair Demonstrated
 
 I am testing whether directly predicting the two signed 2% budget excesses,

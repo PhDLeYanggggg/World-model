@@ -39,6 +39,12 @@ prespecified condition for expansion.
 
 ### Previous Full Comparison
 
+My next control freezes those learned representations and refits only the
+linear risk outputs. This isolates whether incomplete output optimization
+explains the failed admission decisions. The experiment is registered, but
+has no result yet; the risk rules and reserved test sets remain unchanged.
+[Protocol](outputs/publication_readiness_2026_09/moving_readout_refit_v1/protocol.md).
+
 I completed a controlled test of proposal-conditioned risk learning: the risk
 model learns only the actions proposed by a router fitted on different source
 scenes. I trained 108 neural critics for 216,000 updates, keeping the forecaster,
