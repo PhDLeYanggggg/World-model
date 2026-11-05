@@ -14,6 +14,19 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Conditional Risk Transport: Registered Neural Model Check
+
+The fixed-reference attribution found source076 harmful matches differ more
+in forecast/history lateral relationships, while other sources show different
+patterns. This is descriptive, not a causal explanation or a new safety pass.
+I registered a source-only MLP risk model with a fixed residual-transport
+readout, alongside its plain readout and a ridge control. Reference IDs,
+original120features, signed targets,32epochs and2%rules stay fixed. Real fitting
+is not yet complete. Five focused tests pass, including real optimizer resume.
+No new held readout, trajectory training or deployment change.
+[Attribution](outputs/publication_readiness_2026_09/moving_match_attribution_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_neural_transport_v1/protocol.md).
+
 ## Cross-Source History Retrieval: Complete, No Safe Repair
 
 After the failed channel-head repair, I tested whether nearest causal
