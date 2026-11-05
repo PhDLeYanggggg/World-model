@@ -14,6 +14,39 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Model-Mechanism Checks: No Rule Change
+
+`fresh_run`: all nine frozen paired-experiment models were decomposed into
+complete own-B loss gradients, with twelve disposable saved-AdamW steps.
+Risk/rank conflict appears at both fixed pair offsets in2/3 contexts, but
+projected updates improve MSE without worse joint decision cost in only1/3.
+The prospective2/3-and2/3 follow-up screen fails. No projected model is trained
+or deployed; the checkpoints remain unchanged. All nine decompositions and
+twelve updates replay exactly, including a completed read-only replay.
+
+A second `fresh_run` uses three unchanged joint controls and all eight fixed
+cyclic neighbor orders on62466 fitting rows /1087 queries. Mean changes in
+known-proposal admission are44.953%,11.971%,3.956%. The fixed eight-order mean
+worsens both fitting MSE and joint decision cost in every context (0/3), so
+the permutation-training screen also fails. This is a storage-order stress
+test, not real distribution-shift evidence or a claim that ordered inputs are
+invalid. The original identity view matches the frozen metrics.
+
+`cached_verified`: original model weights, causal schema, source partitions,
+own-B normalizers and parent result bindings. `not_run`: new projected or
+permutation-trained heads, new V/H evaluation, independent confirmation and
+deployment. The earlier primary result and original24-group NA remain intact.
+Neither diagnostic changes the2% all/easy risk, signed easy-net or support rule.
+
+Two engineering errors were caught and repaired before acceptance: a synthetic
+test incorrectly expected a changed label-mask hash to be accepted, and a new
+diagnostic helper disagreed with the established joint-cost aggregation.
+The latter now calls the existing metric implementation; initial registrations
+and failure records are retained. Twenty-six focused tests plus one replay
+receipt test pass; the full historical suite was not rerun.
+[Gradient results](outputs/publication_readiness_2026_09/moving_paired_gradient_v1/result_interpretation.md),
+[neighbor results](outputs/publication_readiness_2026_09/moving_neighbor_order_v1/README.md).
+
 ## Paired Decision Experiment: Ranking Improves, Original Safety Fails
 
 Fresh own-B ranking and exact replay distinguish score ordering from decision

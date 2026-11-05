@@ -253,3 +253,14 @@ the original safety requirement. Neither result justifies deployment.
 Both addenda are separate from the compiled main PDF. Its source, PDF hash and
 visual-verification receipt are unchanged. These results narrow the supported
 claim; they do not supply independent confirmation or a successful main method.
+
+## Posthoc Model-Mechanism Checks
+
+The [paired-gradient audit](../moving_paired_gradient_v1/result_interpretation.md)
+finds conflict in2/3 fitting contexts, but only1/3 disposable projected steps
+improves MSE without worse decision cost. The
+[neighbor-order audit](../moving_neighbor_order_v1/README.md) finds sensitivity
+in2/3 contexts, yet fixed-order averaging worsens both fitting criteria in3/3.
+Both limited follow-up screens fail; neither changes the original rules or
+supports a safe method claim. Exact replay is not independent confirmation.
+These notes are not incorporated into the unchanged compiled main PDF.

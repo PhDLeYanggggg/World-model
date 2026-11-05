@@ -44,6 +44,24 @@ The original 2% risk, easy and support requirements remain unchanged.
 [failure analysis](outputs/publication_readiness_2026_09/moving_paired_decision_v1/failure_analysis.md),
 [reproducibility](outputs/publication_readiness_2026_09/moving_paired_decision_v1/validation_receipt.md).
 
+### Checking The Failure Mechanism
+
+I tested two specific explanations before extending training. Complete-fitting
+gradients show risk/ranking conflict in two of three contexts, but a disposable
+saved-AdamW projection improves MSE without raising decision cost in only one.
+It does not support a full projection-training run. Separately, changing only
+neighbor storage order changes many decisions in two contexts, but averaging
+all eight fixed orders worsens fitting MSE and decision cost in all three.
+This is not proof that neighbor order is a bug or that invariant models cannot
+work; it rejects this particular shortcut. Both diagnostics replay exactly.
+
+These are new own-fitting diagnostics of existing neural models, not additional
+trained models, independent tests or safety passes. Original 2% rules, support
+requirements and failed results remain unchanged. No identity exemption or
+deployment change is introduced.
+[Gradient evidence](outputs/publication_readiness_2026_09/moving_paired_gradient_v1/result_interpretation.md),
+[neighbor-order evidence](outputs/publication_readiness_2026_09/moving_neighbor_order_v1/README.md).
+
 ### Previous Harm-Weight Allocation Result
 
 I completed nine matched neural fits to test whether training should put more
