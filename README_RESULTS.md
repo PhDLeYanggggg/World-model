@@ -14,19 +14,44 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Frozen Readout Control: Three Fits Complete, Readout Pending
+## Frozen Readout Control: Complete, Optimization Does Not Repair Risk
 
-The next model-side control keeps the three existing direct-mean neural
+This model-side control keeps the three existing direct-mean neural
 representations frozen and refits only their 130 affine output coefficients
 by weighted least squares. It retains the exact empirical query weights,
 causal features, source roles, proposals, unknown-label bounds and original
-2% rules. Fourteen focused checks pass. All three real-data readout fits and
+2% rules. Seventeen focused checks pass. All three real-data readout fits and
 the first independent repeat completed in 25.94 seconds, peak RSS 5.65 GB,
 observed exit 0. The actual saved-inference fitting losses decrease by 1.31%,
 4.70% and 2.85%. All three numerical systems have full retained rank 65.
 These are three new closed-form output fits, not new encoder training or Adam
-updates. Held-source evaluation is pending; no policy improvement is claimed.
-This is an optimization diagnostic, not a new forecaster or safety definition.
+updates. Evaluation and independent replay both completed with observed exit 0
+in 49.28 and 49.29 seconds. All three prediction/action/readout blocks and every
+old policy control reproduce exactly. No new H or independent test was used.
+
+On the same seven exposed SOURCE units and 17 recording views, known floor
+gain rises from 4.0912% to 4.3233%, a descriptive +0.2321 pp change. Hard gain
+rises from 5.0355% to 5.3547%, and switches from 21.3077% to 22.0115%.
+The direct missing-outcome completion-lower contrast is +0.0484 pp, not a CI.
+Two of three context lower contrasts remain negative, so the registered
+expansion criterion fails. This one-seed pilot is not multi-seed confirmation.
+
+Full risk/support remains 0/17; known all/easy violations remain 13/15.
+Worst defined signed recording easy-net degradation is 39.8845%, not a mean.
+Fitting all/easy violations worsen from 15/15 to 17/18 across 24 repeated views.
+On admitted fitting rows the refit predicts easy-budget excess -66343.18,
+but the observed sum is +2486.75. These are repeated-view diagnostics, not
+independent outcomes or a safety ratio. Final-layer optimization does not
+fix selected-set risk; it does not prove the encoder or data cannot improve.
+
+All seven pilot matched contrasts are estimable, but the original 24-group
+primary remains NA, not passed. No identity-fallback certificate, retrospective
+pass, deployment or submission-readiness upgrade. This is a standard numerical
+control, not a new forecaster or safety definition. The full historical test
+suite was not rerun.
+[Completed evidence](outputs/publication_readiness_2026_09/moving_readout_refit_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_readout_refit_v1/failure_analysis.md),
+[paper evidence addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/readout_refit_addendum.md).
 [Frozen protocol](outputs/publication_readiness_2026_09/moving_readout_refit_v1/protocol.md).
 
 ## Direct Tail Risk Pilot: Complete, No Repair Demonstrated

@@ -11,6 +11,29 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested whether incomplete optimization of the final risk layer explains
+unsafe intervention decisions. I froze three learned representations and
+refitted only their 130 output coefficients, keeping the original inputs,
+source splits, proposals and 2% risk rules unchanged.
+
+The exact output solves reduce fitting loss by 1.31% to 4.70%. On the same
+seven exposed SOURCE units, known ADE gain over the motion floor increases
+from 4.09% to 4.32%. This is a small descriptive improvement, not independent
+confirmation: two of three registered context comparisons still fail the
+prespecified expansion condition.
+
+**The repair does not make the policy safe.** Full risk/support passes remain
+0/17 recording views, with 13 all-risk and 15 easy-risk violations. On fitting
+data the corresponding violation counts increase from 15/15 to 17/18.
+Better regression fit does not ensure accurate risk on the subset selected
+for intervention. I have not changed the rules or upgraded deployment.
+
+All three output fits, a complete independent repeat and inference/readout
+replay are verified. There are no new encoder updates or new holdout results.
+[Results and mechanism analysis](outputs/publication_readiness_2026_09/moving_readout_refit_v1/README.md).
+
+### Previous Direct Risk Test
+
 I tested a more direct way to learn intervention risk: predict how far an
 action lies above or below the original harm budget. Six neural heads compare
 ordinary mean regression with a fixed upper-quantile objective, with matched
@@ -38,14 +61,6 @@ prespecified condition for expansion.
 [Results and failure analysis](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/README.md).
 
 ### Previous Full Comparison
-
-My next control freezes those learned representations and refits only the
-linear risk outputs. This isolates whether incomplete output optimization
-explains the failed admission decisions. All three output fits completed and
-lowered fitting loss by 1.31% to 4.70%. Held-source policy evaluation is pending;
-lower loss alone is not evidence of safer intervention. The risk rules and
-reserved test sets remain unchanged.
-[Protocol](outputs/publication_readiness_2026_09/moving_readout_refit_v1/protocol.md).
 
 I completed a controlled test of proposal-conditioned risk learning: the risk
 model learns only the actions proposed by a router fitted on different source
