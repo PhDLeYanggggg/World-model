@@ -114,7 +114,9 @@ def figures(fits, analysis):
     fig.tight_layout()
     public, private = PUBLIC / 'figures', run.PRIVATE / 'figure_previews'
     public.mkdir(exist_ok=True); private.mkdir(exist_ok=True)
-    fig.savefig(public / 'training_and_risk.svg', metadata={'Date': None})
+    svg = public / 'training_and_risk.svg'
+    fig.savefig(svg, metadata={'Date': None})
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fig.savefig(private / 'training_and_risk.png', dpi=160)
     plt.close(fig)
 
@@ -195,6 +197,38 @@ def main():
         f"Development criteria pass: **{decision['development_criteria_pass']}**.\n\n"
         'The old primary and negative experiments remain unchanged. Engineering completion does '
         'not establish scientific success. No deployment, independent confirmation or submission readiness.\n')
+    text_once(PUBLIC / 'model_data_card.md', '# Model And Data Card\n\n'
+        '## Intended Use\n\nA task-adapted public routing comparison in exposed-source research. '
+        'Not a deployed trajectory generator, physical controller or certified safe policy. '
+        'No existing deployable model is replaced.\n\n'
+        '## Model\n\n54independently fitted width64 routing heads,27969parameters each, '
+        'three producer seeds and original nested source partitions. The seven candidate '
+        'trajectories are frozen. Local causal features, action code and same-query other-agent '
+        'context produce one logit per action. The48shared-latent fields remain zero. '
+        'The public loss comes from Mao et al. (ICML2024), not a new architecture claim. '
+        'A separately fitted point critic supplies the unchanged guarded-policy risk test.\n\n'
+        '## Data And Roles\n\nMovingDroneCrowd++ SOURCE only, observation8/prediction12 in native '
+        'annotation order and image pixels. Original admission and source grouping are inherited '
+        'with hash checks. Causal rows and sampling are matched to the parent point control. '
+        'Each model and all learned preprocessing exclude its validation sources. This is '
+        'exposed development evidence, not independent final test evidence. No reserved Moving, '
+        'DUT or DroneCrowd confirmation data is opened. Future labels only supervise fitting '
+        'and evaluation; eventual mask availability is not an inference input. Wholly unknown '
+        'outcomes are excluded from this loss, unlike the parent bound-target loss.\n\n'
+        '## Safety And Limits\n\n'+result+'\n\n'
+        'Original2%positive harm/easy-net and support requirements are preserved. The original '
+        '24group primary remains not estimable, not passed. Missing reference support cannot be '
+        'converted into measured safety by an improved average loss. No identity fallback '
+        'certification is used. Softmax/logit scores are not calibrated safety probabilities. '
+        'No true3D, foundation, metric, calibrated-time or human-gold claim is supported. '
+        'Stage5C and SMC stay off.\n\n'
+        '## Reproduction\n\nConfiguration, registration, full training receipts and inference '
+        'hashes are public; raw data, private arrays and checkpoints remain local. Resume '
+        'requires the unchanged definition and checkpoint. Separate inference replay '
+        'verifies108policy blocks and all prediction hashes. Use '
+        '`.venv-pytorch/bin/python scripts/replay_m3w_moving_deferral.py` for a read-only '
+        'repeat after original verification. Native arm64 CPU4/interop1/workers0; no NumPy '
+        'training fallback or MPS-performance claim.\n')
     source.once(PUBLIC / 'runtime_summary.json', dict(phases=phases, fresh_heads=54, primary_updates=108000,
         pilot_updates=600, first_full_refit_updates=2000, saved_primary_fitter_seconds=sum(f['seconds'] for f in fits),
         source=source.artifact(PUBLIC / 'analysis.json')))
