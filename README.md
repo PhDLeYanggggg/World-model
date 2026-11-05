@@ -16,8 +16,9 @@ useful supervision than errors on a source the discovery model has already
 seen. Eight small discovery networks will be fitted from scratch, with their
 own source-only preprocessing, followed by six matched risk-head continuations.
 The original 2% rules and all previous failures remain unchanged. The new
-comparison has passed 19 focused code tests; real training and evaluation are
-pending. It opens no reserved data and does not change the deployed model.
+comparison has passed 19 focused code tests and a real 200-update pilot with
+exact checkpoint recovery. Full training and evaluation are pending. It opens
+no reserved data and does not change the deployed model.
 An initial cache-interface error stopped the pilot before training; the repair
 preserves complete queries and fits normalization only on the retained source.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/protocol.md).

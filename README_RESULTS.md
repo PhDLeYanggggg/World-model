@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Source-Held Error Discovery: Registered, Training Pending
+## Source-Held Error Discovery: Real Resume Pilot Passed
 
 The next controlled model change discovers errors strictly inside fitting B.
 Eight random-initialized teachers omit one B source each; both common and
@@ -24,7 +24,9 @@ students will differ only in the discovery-mask provenance. The original
 weight10 objective, zero admission boundary, 2% rules and support requirements
 remain unchanged. Nineteen focused tests pass, including real synthetic
 updates, exact resume, provenance and future-input rejection. This is not yet
-a real-data result. No V readout, independent H, deployment change, Stage5C or
+a held-data result. A real scratch-teacher pilot completed200updates including
+repeat, with exact resumed/uninterrupted weights and predictions. Full training
+and evaluation are pending. No V readout, independent H, deployment change, Stage5C or
 SMC is authorized by the new experiment. Old failures remain.
 The first real pilot stopped before optimizer initialization because the
 existing cache required its original full-role population. The v2 registration
