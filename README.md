@@ -23,7 +23,8 @@ of false-rejection cost across the three fitting contexts. I am testing a joint
 decision loss that trains those blocking outputs without changing the gate.
 [Blocking-output audit](outputs/publication_readiness_2026_09/moving_zero_channel_v1/README.md),
 [fixed experiment](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
-The new six-fit experiment is registered, not yet a result.
+Both real resume pilots now reproduce exactly. The six-fit experiment is
+running locally; this is not yet a new result or a deployment change.
 
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.

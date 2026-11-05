@@ -24,6 +24,10 @@ The hypothesis is a model-loss repair, not a zero-target deployment exemption.
 Registration precedes training. The original internal expansion screen still
 controls additional exposed-development readout; no new reserved/H role.
 [Protocol](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
+Pilot PID4791 completed74.96s, peak6.49GB: both50+50 versus100-update models
+and predictions match exactly,400 actual updates including repeats. Full
+six-fit training started as PID4934; completion and scientific results are
+not yet claimed. Checkpoint/heartbeat every100 completed updates.
 
 Correction, 5 November: a fresh own-B row audit confirms exactly one frozen
 router proposal per supported row. The earlier all-action-averaging explanation
