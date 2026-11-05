@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Joint Harm Event Supervision: Real Pilot Passed, Full Training Running
+## Joint Harm Event Supervision: Full Training Frozen, Validation Pending
 
 I am testing one loss change after the negative source-separated critic study:
 explicit joint benefit/non-easy-harm/easy-harm event and conditional magnitude
@@ -24,23 +24,23 @@ European hurdle and ranking failures remain part of the rationale; factorization
 itself is not a claimed invention. This is a controlled model test, not another
 threshold search or a change in the original risk rules.
 
-The registered plan is 108 heads, 216,000 primary optimizer updates, three
-producer seeds and all original inner-C parts. Those full counts are planned,
-not completed. Fourteen focused new/parent tests pass. The real-data pilot
+All108heads and216,000primary optimizer updates are complete, retaining three
+producer seeds and all original inner-C parts. All54paired fits pass the
+own-source preprocessing, optimizer and sampling audit. Twenty-two focused
+model/runner/reporting/public-loss tests pass. The real-data pilot
 completed1200updates in74.15s, peakRSS7.19GB, observed exit0. All six resumed
 versus direct states and three initialization/sampling pairs match exactly.
 Each model has28,489parameters. The pilot projects8526.46s of primary fitting;
-that is an estimate, not completion. Full local training has started with
-checkpoints/heartbeat every100updates; no new validation has been read.
+that was a planning estimate, not measured runtime. The terminal resumed
+training attempt finished with observed exit0 in7954.35s, peakRSS9.77GB.
+Saved primary fitter times sum to7818.46s. No new validation has been read.
 The first full model and its exact refit completed before a fit-receipt JSON
 serialization exception ended PID31569 with exit1. Their checkpoints are
 preserved. A narrow committed runtime wrapper converts the aggregate event
 prior to a JSON list; scientific files and definitions remain unchanged.
-Resume continues the same full budget, not a new selected trial.
-At01:22UTC on5November,73completed checkpoints pass own-source/normalizer and
-optimizer audits; all36complete pairs have identical initialization and draws.
-Those audited models contain146,000primary updates. The complete108-model run
-is still active, with no validation readout. Separately, I read the ICML2024
+Resume completed the same full budget, not a new selected trial. All108weights
+and their training receipts are frozen before validation. Checkpoints stay
+local; only light metrics and hashes are committed. Separately, I read the ICML2024
 multi-expert regression deferral paper through its two-stage formulation and
 implemented its logistic loss primitive. Three synthetic equation/masking tests
 pass; real-data fitting of that public control is not_run, not a new result.
