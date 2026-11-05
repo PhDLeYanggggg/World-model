@@ -14,17 +14,46 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Cost-Directed Partitions: Registered Model Test
+## Cost-Directed Partitions: Complete, No Safe Decision Repair
 
-The next comparison changes how a fixed-capacity forest partitions fitting
+This comparison changes how a fixed-capacity forest partitions fitting
 examples, not the scientific risk budget or decision threshold. It retains the
 original120causal features and two-channel mean readout. Sixteen new sign/cost
-partition fits are planned against eight cached MSE controls, across eight
-source-held fitting folds. Allmodels are verified by full refit. No new neural
-or held result is claimed. Nineteen focused tests pass in2.95s after a disclosed
-preflight synthetic-test correction; no real training result drove that fix.
-The prior directional branch remains unsupported and is not expanded.
-[Protocol](outputs/publication_readiness_2026_09/moving_cost_partition_v1/protocol.md).
+partition fits complete against eight cached MSE controls, across eight
+source-held fitting folds. All24cells reproduce by full refit. No new neural
+or held result is claimed. Thirty-one focused tests pass in4.36s after a
+disclosed preflight synthetic-test correction; no real training result drove
+that fix. Full historical suite not rerun. The prior directional branch remains
+unsupported and is not expanded.
+
+Primary MSE reductions:+10.743933%,+1.041743%,+35.804406%; joint-cost reductions:
+-1.829510%,+0.041046%,+0.284337%. Harmful admissions increase0to6,1to9,0to3.
+The internal screen fails0/3. Source-macro harmful costs are0to9.6490851e-5,
+4.2984456e-7to2.8190795e-6,0to3.3834201e-8. Zero-denominator reductions stay NA.
+All sources and secondary sign-only results retained; no posthoc promotion.
+
+Known fitting labels are jointly nonpositive90.15%,72.24%,63.04% by original
+weights, yet easy-channel positive/negative signed-cost mass ratios are6.389,
+56.493,52.210. These are not full-policy risk ratios. Same-partition
+probability-times-severity reconstructs the original mean within3.89e-16,
+with no sign changes. Arithmetic identity is not a separately trained model.
+
+Pilot PID40600 exits0 in44.905s, full64tree fit1.899s, peak RSS5,961,383,936bytes.
+Run PID40759 exits0 in71.694s, peak6,439,043,072bytes; verify PID40897 exits0
+in74.573s, peak6,493,437,952bytes. Local resources suffice; no new CREATE job.
+All16new and8old model refits exact. Figure visually inspected.
+Read-only replay PID41185 exits0 in60.227s, peak RSS6,467,993,600bytes. All24
+saved predictions/metrics reproduce with fitting forbidden; all41then-existing
+public files remain unchanged. This adds engineering evidence, not independent
+scientific confirmation. The two report tests pass again after table changes.
+The separate paper addendum is not in the unchanged compiled v9 PDF. Original2%rules/support,
+old failures and original24-group primary NA remain; no identity certification.
+No additional nested-C/H or reserved readout, deployment or submission upgrade.
+Next: audit frozen forecast-bank harmful tails and causal separability before
+another loss; distinguish predictor failure from risk-estimator failure.
+[Results](outputs/publication_readiness_2026_09/moving_cost_partition_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_cost_partition_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_cost_partition_v1/operation_zh.md).
 
 ## Directional Peer Paths: Complete, Primary Follow-Up Screen Failed
 

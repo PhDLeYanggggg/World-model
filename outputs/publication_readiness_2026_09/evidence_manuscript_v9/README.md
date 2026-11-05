@@ -10,6 +10,14 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [cost-partition addendum](../moving_cost_partition_v1/paper_addendum.md)
+records16new fitted models,8verified controls and full exact refits. Fixed
+cost-directed partitions improve risk MSE up to35.8%, but not safe decisions:
+joint-cost changes are-1.830%,+0.041%,+0.284%, with increased harmful cost in
+all three contexts. The internal screen fails0/3. This is not independent
+confirmation or a new neural dynamics result. It is separate from the unchanged
+compiled PDF; original risk rules and earlier failures are preserved.
+
 The later [directional peer-path probe](../moving_peer_path_probe_v1/paper_addendum.md)
 adds a source-held nonlinear information test. All48 fixed fits and refits are
 complete, but the primary follow-up screen passes only1/3. A5% risk-MSE gain in

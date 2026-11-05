@@ -11,11 +11,29 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing a targeted change to risk learning: fit partitions around useful
-and costly decisions, while keeping the original expected-risk readout. The
-comparison uses the same inputs and zero decision boundary; it does not loosen
-the safety rules. The protocol and three model arms are fixed before fitting.
-[Current experiment](outputs/publication_readiness_2026_09/moving_cost_partition_v1/protocol.md).
+I tested a targeted change to risk learning: fit partitions around useful and
+costly decisions, while keeping the original expected-risk readout. Sixteen new
+models and eight verified controls use the same inputs and capacity limits.
+All models reproduce by full refit; the safety rules and decision threshold
+are unchanged.
+
+**Substantially better risk regression still did not yield a safe decision upgrade.**
+
+| Context | Risk-MSE reduction | Decision-cost reduction | Harmful admissions, control to new |
+|---|---:|---:|---:|
+| 0 | +10.744% | -1.830% | 0 to 6 |
+| 1 | +1.042% | +0.041% | 1 to 9 |
+| 2 | +35.804% | +0.284% | 0 to 3 |
+
+Positive reductions mean better. The fixed internal follow-up screen fails 0/3.
+These are source-held fitting diagnostics, not trajectory gains or independent
+confirmation. I do not promote this model or open another reserved-test readout.
+The next question concerns the harmful tail of the candidate forecasts: whether
+the predictor itself needs repair, rather than another selector-weight sweep.
+The paper is not yet submission-ready.
+[Results](outputs/publication_readiness_2026_09/moving_cost_partition_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_cost_partition_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_cost_partition_v1/protocol.md).
 
 ### Last Completed Information Test
 
