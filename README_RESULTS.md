@@ -14,39 +14,54 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Joint Decision Loss: More Utility, More Harm, No Deployment
+
+**Fresh_run, 5 November:** six full fits and complete exposed-development
+evaluation are finished. The matched contrast changes only the added observed
+decision loss; original risk MSE, conservative unknown-label supervision,
+2% limits, support rules and inference thresholds are unchanged.
+
+Joint fitting costs fall 13.90%/17.58%/30.11% across critic0/1/2. Zero-only
+rejection costs fall 45.32%/52.55%/67.36%. But false-safe counts rise from
+16/20/22 to 18/35/162, and matched all-channel costs worsen in all three
+contexts. The old internal fitting screen still passes 3/3 because it compares
+against warm initialization, not the matched fitted control. It is not a
+scientific safety pass.
+
+| Frozen policy | Known ADE gain % | Hard gain % | Switch % | Worst defined easy-net % | Full original risk/support |
+|---|---:|---:|---:|---:|---:|
+| Previous per-channel | 0.758534 | 1.008910 | 5.293516 | 8.037815 | 0/17 |
+| Joint decision | 0.894772 | 1.169812 | 5.988241 | 8.633364 | 0/17 |
+
+Known ADE gain changes by +0.136238 pp; missing-label completion bounds are
+[+0.092671, +0.179805] pp, **not sampling confidence intervals**. The seven
+SOURCE units / 17 recording views are previously exposed development data,
+one producer seed, not independent confirmation. SOURCE075 loses 0.008116 pp.
+The joint model violates known all-risk limits in 13 views and easy-risk
+limits in 13, with three undefined selected-easy views. Removing the decision
+head raises known gain to 3.316601% but worst easy-net harm to 40.377560%; that
+diagnostic is not a deployment repair. The constant control also fails safety.
+
+Actual execution: pilot PID4791, 74.96 s; training PID4934, 1,051.49 s;
+evaluation PID6819, 63.68 s; replay PID7216, 69.12 s; all exit 0. Peak training
+RSS is 7.56 GB. There are 12,000 primary updates, 2,000 exact full-refit updates,
+and 400 pilot updates. All three fresh controls exactly reproduce their
+predecessors; all six fitting metrics/attributions, held predictions/actions
+and metrics replay exactly. Native arm64 PyTorch, CPU 4/inter-op 1/workers 0.
+Thirty-eight focused tests pass in 3.82 s; the full historical suite was not
+rerun. Report regeneration leaves all 27 then-existing experiment files
+byte-identical. [Verification receipt](outputs/publication_readiness_2026_09/moving_joint_decision_v1/validation_receipt.md).
+
+Parent inputs are cached_verified; training and readout are fresh_run.
+Independent H confirmation is not_run. The original 24-group primary remains
+NA, not passed. No identity certification, model promotion, new forecasting
+dynamics, JEPA training, Stage5C or SMC execution. Private arrays/weights stay
+outside Git. This completes the earlier running milestone notes, not the
+research goal. [Results](outputs/publication_readiness_2026_09/moving_joint_decision_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_joint_decision_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
+
 ## Composed Decision Loss: Fitting Repaired, Held Safety Failed
-
-Joint-loss follow-up: full training PID4934 exited0 in1,051.49s, peak7.56GB.
-All6fits and12,000 primary updates complete, plus2,000 exact full-refit updates.
-All3fresh per-channel controls reproduce the prior composed models exactly.
-Matched joint costs fall13.9028%/17.5846%/30.1134%, while false-safe counts
-change16->18,20->35,22->162. Zero-only rejection cost falls45.3245%/52.5479%/
-67.3560%. The original internal fitting screen passes3/3, not scientific
-safety. The same exposed-development evaluation is now running; no new H.
-
-Next fixed model test: per-channel versus complete joint-sign auxiliary loss,
-six actual fits, unchanged64,260-parameter architecture and2,000update budgets.
-Own-B attribution finds zero-target outputs alone cause39%/42%/49% of weighted
-false-rejection cost, although those channels receive no signed-cost gradient.
-The hypothesis is a model-loss repair, not a zero-target deployment exemption.
-Registration precedes training. The original internal expansion screen still
-controls additional exposed-development readout; no new reserved/H role.
-[Protocol](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
-Pilot PID4791 completed74.96s, peak6.49GB: both50+50 versus100-update models
-and predictions match exactly,400 actual updates including repeats. Full
-six-fit training started as PID4934; completion and scientific results are
-not yet claimed. Checkpoint/heartbeat every100 completed updates.
-First matched context and its exact2,000-step full refit are complete. Joint
-decision cost falls13.9028% and zero-only rejection cost45.3245%; the all-channel
-sign cost worsens12.5674% versus the fresh per-channel control. False rejections
-fall2,987 to2,655. This is partial fitting evidence; remaining contexts are
-running and no held readout has occurred. Thirty-eight focused tests pass
-across two checks (37 in4.37s and reporting-roster check1 in1.54s).
-Second matched context is complete and its control also reproduces exactly.
-Joint cost falls17.5846%, zero-only rejection cost52.5479%, but false-safe cost
-rises from0.00004070 to0.00009716, with20 to35 false-safe proposals. False
-rejections fall2,073 to1,924. Four of six main fits are frozen; the largest
-context remains in progress. These are fitting counts/costs, not test safety.
 
 Correction, 5 November: a fresh own-B row audit confirms exactly one frozen
 router proposal per supported row. The earlier all-action-averaging explanation

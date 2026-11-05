@@ -46,6 +46,17 @@ The README, result_summary.json and gates.md report completion and outcomes;
 the architecture description alone is not evidence of completed training.
 Both actual100-update resume pilots have already matched exactly.
 
+## Completed Result, 5 November
+
+All six 2,000-update models, the first complete treatment refit, held-development
+readout and separate replay are finished. The fixed internal fitting screen
+passes 3/3, but the original scientific safety contract fails. Known ADE gain
+rises from 0.758534% to 0.894772%; worst defined easy-net degradation rises
+from 8.037815% to 8.633364%. Full original risk/support is 0/17. There is no
+deployment upgrade. These partial-outcome results use previously exposed
+development sources, not independent test scenes. See the failure analysis
+for increased harmful admissions and the distinct missing-support limitation.
+
 ## Restrictions
 
 Original2% all/easy positive harm, easy-net and support rules unchanged.

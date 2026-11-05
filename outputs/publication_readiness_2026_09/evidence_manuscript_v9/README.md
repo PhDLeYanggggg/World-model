@@ -227,3 +227,13 @@ repairs the three-context fitting screen, but exposed-development gain changes
 by only+0.013pp and the original full risk/support gate remains0/17. Worst known
 easy-net degradation is8.04%, not within2%. This addendum is not in the compiled
 main PDF and does not confer deployment or submission readiness.
+
+## Joint Decision Loss: Small Utility Gain, Safety Still Failed
+
+The [joint-decision addendum](joint_decision_addendum.md) records six further
+matched neural fits under the original rules. A zero-target blocker diagnosis
+motivates a complete-decision auxiliary loss. Known development gain rises
+from 0.759% to 0.895%, but worst easy-net degradation also rises from 8.038% to
+8.633%; full risk/support remains 0/17. All fits and readouts replay exactly.
+No independent H data, new deployment or successful main-method evidence is
+claimed. This addendum is not included in the compiled main PDF.

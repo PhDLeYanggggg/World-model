@@ -11,25 +11,34 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-A fresh fitting-only audit corrects one earlier explanation: these models
-already supervise only the frozen router's proposed action, not all legal
-actions. Opposing all/easy target signs are absent. The actual remaining
-fitting problem is substantial rejection of target-safe proposals, which I am
-tracing to the blocking outputs before changing the model again.
-[Decision audit and correction](outputs/publication_readiness_2026_09/moving_decision_semantics_v1/README.md).
-The original rules and negative results below are unchanged. A follow-up
-attribution finds that zero-target channels alone account for about39%,42%,49%
-of false-rejection cost across the three fitting contexts. I am testing a joint
-decision loss that trains those blocking outputs without changing the gate.
-[Blocking-output audit](outputs/publication_readiness_2026_09/moving_zero_channel_v1/README.md),
-[fixed experiment](outputs/publication_readiness_2026_09/moving_joint_decision_v1/protocol.md).
-All six new fits, both resume pilots and the first full2,000-step refit are
-complete. Joint decision cost falls13.90%,17.58%,30.11% across the three
-contexts, but false-safe counts change16 to18,20 to35,and22 to162. The first
-context's all-channel sign cost also rises12.57% versus the matched control.
-The unchanged internal fitting screen passes3/3; the exposed-development
-readout is in progress. Better fitting is not a safe-generalization claim,
-and no model is deployed.
+I completed six matched neural fits to test a concrete loss problem: a channel
+with a zero target could block a useful intervention without receiving a
+signed-cost gradient. Training the complete decision reduces this rejection
+cost, but also admits more harmful interventions. The original 2% safety and
+support rules were not changed.
+
+**The model improves development utility slightly, but still fails safety.**
+
+| Frozen policy | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full original risk/support |
+|---|---:|---:|---:|---:|
+| Previous per-channel model | 0.759% | 1.009% | 8.038% | 0/17 |
+| Joint-decision model | 0.895% | 1.170% | 8.633% | 0/17 |
+
+These are source-macro, partial-outcome results on seven already exposed
+development sources, not independent test confirmation. The +0.136 percentage
+point gain does not offset the safety failure. All predictions and metrics
+replay exactly; that establishes reproducibility, not deployability. No model
+is promoted, and no reserved test scenes were opened.
+
+The audit also corrects an earlier explanation: training already used the
+router's single proposed action. All-action averaging and opposing target
+signs do not explain this failure. The remaining problem is distinguishing
+useful interventions from harmful ones, not simply encouraging more switches.
+[Complete experiment](outputs/publication_readiness_2026_09/moving_joint_decision_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_joint_decision_v1/failure_analysis.md),
+[corrected diagnosis](outputs/publication_readiness_2026_09/moving_decision_semantics_v1/README.md).
+
+### Previous Per-Channel Composition Result
 
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.

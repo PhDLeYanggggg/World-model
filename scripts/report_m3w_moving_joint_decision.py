@@ -72,6 +72,9 @@ def main():
         all6_metrics_and_joint_attributions_exact=True,
         held_readout='fresh_run_exposed_development' if held else 'not_run',
         held_readout_reason=None if held else a['reason'],
+        held_policy=a['held_policy'] if held else None,
+        held_contrasts=a['contrasts'] if held else None,
+        completion_bounds_are_sampling_CI=False,
         original_rules_unchanged=True, identity_certification=False, new_H=False,
         independent_confirmation=False, original24group_primary='not_estimable_not_passed',
         deployment_changed=False, submission_ready=False, stage5c_executed=False, smc_enabled=False)
@@ -83,11 +86,11 @@ def main():
         'channels can block useful proposals despite receiving no signed-cost',
         'gradient. The treatment trains the complete four-output conjunction.',
         'Risk MSE, the original decision objective, conservative missing-label',
-        'supervision and the original2% risk/easy-net/support rules are unchanged.', '',
+        'supervision and the original 2% risk/easy-net/support rules are unchanged.', '',
         '## Controlled Experiment', '',
         'Six real neural fits compare per-channel and joint auxiliary losses in',
-        'three own-B contexts. All use64,260 parameters,492 causal inputs, identical',
-        'warm starts, query draws and2,000 updates. The three fresh controls exactly',
+        'three own-B contexts. All use 64,260 parameters, 492 causal inputs, identical',
+        'warm starts, query draws and 2,000 updates. The three fresh controls exactly',
         'reproduce the preceding composed models, optimizers and predictions.',
         'The first full joint fit and both pilot resume paths reproduce exactly.', '',
         '| Context | Loss | MSE reduction from warm % | All/easy sign-cost reduction from warm % |',
@@ -103,7 +106,7 @@ def main():
                 'false_safe_cost_reduction_percent', 'zero_only_reject_cost_reduction_percent'))+' |')
     passed = sum(c['passed'] for c in screen['contexts'])
     text += ['', f'Original internal expansion screen: **{passed}/3**, overall **{screen["followup_readout_allowed"]}**.',
-        'Each treatment context must improve risk MSE at least1% from warm and',
+        'Each treatment context must improve risk MSE at least 1% from warm and',
         'not worsen either channel sign cost. This is not a scientific safety gate.',
         'Joint attribution is diagnostic; it cannot replace a failed screen.', '',
         '## Joint Error Attribution', '',
@@ -130,7 +133,7 @@ def main():
             'The evaluate command records this decision; it does not evaluate new',
             'held predictions. No held improvement is inferred from fitting.']
     else:
-        text += ['Seven already exposed SOURCE units /17 recording views, one producer',
+        text += ['Seven already exposed SOURCE units / 17 recording views, one producer',
             'seed. Every model/action freezes before outcomes are accessed.', '',
             '| Policy | Known ADE gain % | Hard gain % | Switch % | Worst defined easy-net % | Full original risk/support |',
             '|---|---:|---:|---:|---:|---:|']
@@ -141,25 +144,30 @@ def main():
         text += ['', '| Contrast | Known pp | Completion lower pp | Completion upper pp |', '|---|---:|---:|---:|']
         for name, row in a['contrasts'].items():
             text.append('| '+name+' | '+' | '.join(f(row[k]['mean']) for k in ('known_pp','completion_lower_pp','completion_upper_pp'))+' |')
-        text += ['', 'Completion bounds are not sampling CIs. Known ADE uses available',
-            'outcomes, not complete-roster12-step accuracy. Repeated exposed',
+        s = a['held_policy']['joint_veto']['safety']
+        text += ['', f"The joint policy has {s['known_all_violations']}/{s['required']} known all-risk violations, "
+            f"{s['known_easy_violations']}/{s['required']} known easy-risk violations, and "
+            f"{s['undefined_selected_easy']} undefined selected-easy views.",
+            f"**Full original risk/support pass: {s['full_original_risk_pass']}. No deployment upgrade.**", '',
+            'Completion bounds are not sampling CIs. Known ADE uses available',
+            'outcomes, not complete-roster 12-step accuracy. Repeated exposed',
             'development is not independent confirmation or multi-seed evidence.']
     text += ['', '## Execution And Evidence', '',
         '| Phase | PID | Seconds | Peak RSS bytes |', '|---|---:|---:|---:|']
     for key, r in phases.items():
         text.append(f"| {key} | {r['pid']} | {r['seconds']:.2f} | {r['peak_RSS_bytes']} |")
-    text += ['', '12,000 primary updates,2,000 exact full-refit updates,400 pilot updates.',
-        'Real arm64 PyTorch CPU4/inter-op1/workers0, not NumPy fallback. All six',
+    text += ['', '12,000 primary updates, 2,000 exact full-refit updates, 400 pilot updates.',
+        'Real arm64 PyTorch CPU 4/inter-op 1/workers 0, not NumPy fallback. All six',
         'initial/final metrics and joint attributions replay exactly. Models,',
-        'optimizers, sampler and RNG are checkpointed every100 completed updates.', '',
+        'optimizers, sampler and RNG are checkpointed every 100 completed updates.', '',
         'Parent data/schema/warm assets: cached_verified. Training and metrics:',
         'fresh_run. New reserved/H confirmation: not_run. Private arrays and weights',
         'remain excluded from Git. Hashes alone are not a self-contained benchmark.', '',
-        'No deployment or submission-ready claim. Original24-group primary remains',
+        'No deployment or submission-ready claim. Original 24-group primary remains',
         'NA, not passed; empty controls and missing support remain NA. No identity',
         'certification, threshold change or reserved Moving/DUT/DroneCrowd/H reading.',
         'Neural intervention-risk training, not new JEPA or forecasting dynamics.',
-        'Native obs8/pred12 image coordinates, not metric/seconds/true3D/foundation/',
+        'Native obs8/pred12 image coordinates, not metric/seconds/true 3D/foundation/',
         'human-gold evidence. Stage5C and SMC disabled.', '',
         '[Protocol](protocol.md) | [Numeric summary](result_summary.json) |',
         '[Failure analysis](failure_analysis.md) | [Recovery guide](operation_zh.md)', '']
