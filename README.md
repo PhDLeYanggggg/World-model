@@ -11,6 +11,15 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing whether temporal direction information was lost by the previous
+neighbor summaries. The new comparison adds step-by-step candidate-to-peer
+geometry and a deliberately mismatched association control, with source-held-out
+linear and nonlinear probes. This is a fixed information test, not another
+threshold search or a new independent benchmark result.
+[Protocol](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/protocol.md).
+
+### Last Completed Model Experiment
+
 I separated two model-input choices that the previous experiment changed
 together: which forecast represents a peer, and whether fallback peers remain
 visible. Six new neural fits and six verified existing controls complete the

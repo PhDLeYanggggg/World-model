@@ -14,6 +14,17 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Directional Peer Paths: Prospective Information Test
+
+The earlier neighbor24 linear probe and the completed neural pooling factorial
+remain negative. The next fixed own-B source-held test compares120 summary
+features against180 with directional nearest-peer paths and an equal-width
+within-query misassociation control. Primary ExtraTrees and secondary ridge
+settings are fixed before fitting. Seven focused implementation tests pass;
+real-data pilot and48probe fits are not yet run. No new neural or held result.
+Original risk/support rules and reserved-set boundaries are unchanged.
+[Protocol](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/protocol.md).
+
 ## Peer Participation: Six New Fits Complete, Primary Screen Failed
 
 `fresh_run`: six real neural fits complete the missing same-active and
