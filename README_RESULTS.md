@@ -23,9 +23,13 @@ parameters per model, unchanged joint objective and2000updates per fit.
 Initial-function, actual tiny training/resume, causal-input and interruption
 tests pass. The real-data pilot completed 500 updates including repeated runs
 in 83.98 seconds (PID25011, exit0). Both 50+50 versus100 recovery checks are
-exact; the masked model also matches the original joint control. Full six-model
-training is running locally as PID25357. Held readout is not_run pending the
-frozen fitting screen. No projection or neighbor averaging is introduced.
+exact; the masked model also matches the original joint control. All six models
+completed locally as PID25357 (exit0,1084.43s,peak RSS7.62GB), including12000
+primary updates plus2000 exact full-refit updates. Three masked controls exactly
+reproduce their predecessors. The original fitting screen passes3/3 against warm
+initialization, not against the matched control or safety requirement. Exposed-C
+readout is running; no reserved data opened. No projection or neighbor averaging
+is introduced. Twenty-six model/report tests and13 original-rule tests pass.
 
 `fresh_run`: all nine frozen paired-experiment models were decomposed into
 complete own-B loss gradients, with twelve disposable saved-AdamW steps.
