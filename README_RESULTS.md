@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Complete-Fitting Optimization: Registered
+## Complete-Fitting Optimization: Training Complete
 
 The next diagnostic keeps the network, original labels, source roles and 2%
 rules. Three full-B LBFGS continuations start from the final constant controls;
@@ -27,7 +27,13 @@ without saving transient line-search states. Real pilot PID92728 completed with
 observed exit0 in68.65seconds, peak6.73GB. Each of three contexts reproduced
 3+3 versus6 completed calls exactly, totaling36 parameter-changing pilot calls
 and120 full-gradient passes including repeats. Their fitting populations are
-6,197 /5,521 /50,748 rows. Complete training is running; no new held results yet.
+6,197 /5,521 /50,748 rows. Complete training PID92869 exited0 in617.61seconds,
+peak6.62GB. Three fits complete600 parameter-changing calls and1,851 full-gradient
+passes; the first complete200-call /620-pass refit is exact. All fits reach the
+registered200-call budget, not the gradient convergence criterion. Mean fitting
+MSE falls31.98%,37.90%,41.13%; at least one sign-cost channel worsens in every
+context. The prospective fitting screen fails0/3, so additional held readout
+is not_run. Error attribution and final replay are pending; no deployment change.
 [Protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
 
 ## All/Easy Attribution And Fixed-Schedule Repair

@@ -15,9 +15,10 @@ I am now testing complete-fitting optimization of the same neural risk model,
 without changing the original safety or support rules. The diagnostic separates
 inadequate fitting from held-source failure; training improvement alone will not
 count as safe deployment. Three source-separated fits and exact resume checks
-are registered. All three real-data resume pilots now reproduce exact weights
-and predictions (68.65 seconds, peak6.73 GB); complete fitting is running.
-No new held results are available yet.
+are complete. All three real-data resume pilots and a full refit reproduce
+exactly. Mean fitting loss falls31.98%,37.90%,41.13%, but every context worsens
+at least one decision-cost channel. The prospective fitting screen fails;
+no new held readout is allowed. Attribution and final replay are in progress.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
 
 ### Previous Training-Schedule Result
