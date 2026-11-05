@@ -27,6 +27,9 @@ Nineteen focused tests passed in 2.38s: neural fitting/resume, transport,
 reporting, match attribution, track references/reporting and boundary audit.
 This is not a rerun of the entire historical test suite. The final reporting
 edits change prose only, not trained code, predictions or decision rules.
+The CSV exporter subsequently switched to LF line endings; all 264 parsed
+loss records were checked before and after and are identical. This serialization
+repair does not change the registered model code or any numerical result.
 
 Verified result SHA-256:
 `c7991cf9d80f5b99d06a1a083be90198ab13c7f49fc11cde84eb191500b50df0`.

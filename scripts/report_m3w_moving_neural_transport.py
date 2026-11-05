@@ -94,7 +94,7 @@ def main():
         '| [Related work and paper note](paper_addendum.md)']
     (run.PUBLIC/'README.md').write_text('\n'.join(lines)+'\n')
     with (run.PUBLIC/'loss_trace.csv').open('w',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=list(trace[0])); writer.writeheader(); writer.writerows(trace)
+        writer=csv.DictWriter(f,fieldnames=list(trace[0]),lineterminator='\n'); writer.writeheader(); writer.writerows(trace)
 
 
 if __name__=='__main__': main()
