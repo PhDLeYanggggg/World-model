@@ -28,7 +28,13 @@ that both arms and all choices precede outcome access and that changed predictio
 caches are rejected on replay. Pilot PID98622 exited0 in
 64.70 seconds, peak RSS6.62GB: both arms exactly replay 50+50 versus100 updates
 and predictions on the largest context. There are400 actual pilot updates
-including repeats. Full six-fit training is running, not complete.
+including repeats. Full six-fit training PID98758 exited0 in938.05 seconds,
+peak RSS6.78GB:12,000 primary updates plus2,000 exact full-refit updates.
+All three independent controls reproduce their predecessors exactly. Composed
+mean fitting MSE falls19.60%/28.26%/9.93%, with both observed sign-cost channels
+nonworse in all three contexts. The internal expansion screen passes3/3.
+This permits the registered exposed-development readout, not a safety pass.
+No held outcome is claimed yet; six models and fitting receipts are frozen.
 [Protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
 
 ## Separate Risk And Decision Representations: Nine Fits Complete, Screen Failed

@@ -17,7 +17,10 @@ loss on their joint acceptance decision. The independent arm must reproduce
 the previous separated models exactly. The 2% limits, conservative labels and
 support requirements remain unchanged. Thirty-six focused checks pass. The real
 pilot reproduces 50+50 versus 100 updates exactly for both arms (64.70 seconds,
-6.62 GB peak RSS). Full six-fit training is running; no new readout is complete.
+6.62 GB peak RSS). All six fits now finish in 938.05 seconds with 6.78 GB peak
+RSS. The three independent controls reproduce their predecessors exactly;
+the first full composed refit is exact. The internal fitting screen passes
+3/3 contexts. No held-readout result or safety success is claimed yet.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
 
 ### Previous Separate-Representation Result
