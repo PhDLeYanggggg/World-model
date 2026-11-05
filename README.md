@@ -11,6 +11,15 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am tracing the harmful tail of the frozen forecast bank before changing the
+trajectory model. The next fixed comparison learns positive budget-excess costs
+from the same causal inputs, with source-held tail ranking against the signed
+risk head and a simple forecast-displacement score. It does not change the
+2% safety contract or open reserved tests. Real fits are not yet complete.
+[Protocol](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/protocol.md).
+
+### Previous Cost-Partition Result
+
 I tested a targeted change to risk learning: fit partitions around useful and
 costly decisions, while keeping the original expected-risk readout. Sixteen new
 models and eight verified controls use the same inputs and capacity limits.

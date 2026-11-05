@@ -1,0 +1,956 @@
+{
+  "config": {
+    "cached_controls": 8,
+    "deployment_changed": false,
+    "disk_reserve_bytes": 5368709120,
+    "easy_net_budget": 0.02,
+    "features": "summary120",
+    "fresh_fits": 8,
+    "identity_certification": false,
+    "minimum_capture": 0.5,
+    "minimum_gain_over_both_controls": 0.05,
+    "minimum_passing_contexts": 2,
+    "name": "moving_forecast_tail_v1",
+    "new_H_readout": false,
+    "primary_ranking_fraction": 0.1,
+    "private_artifact_cap_bytes": 536870912,
+    "risk_budget": 0.02,
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "submission_ready": false,
+    "threshold_search": false,
+    "training_target": "positive_original_signed_excess_two_channels"
+  },
+  "files": {
+    "configs/m3w_moving_forecast_tail_v1.json": "81ee83a9b050384136ead1a0b173c3effcfb576f384b17ee29cd987238404f0e",
+    "outputs/publication_readiness_2026_09/moving_forecast_tail_v1/protocol.md": "75aa7465d4fb0616f3af170e850e952eef27ee7b8b8471dd00d4ed9a44c1cbfa",
+    "scripts/run_m3w_moving_forecast_tail.py": "ac1b4435f5ecc24df6146aa570b95244d5597f4ebe9cace10ebc74063fbc26b6",
+    "src/evaluation/m3w_forecast_tail_probe.py": "53927826aa13caf5a801a61a7b679d539466ffced72ad457a11df9c050c97bdb",
+    "tests/test_m3w_forecast_tail_probe.py": "4899e8afb273889c2ccbd95c6cde41c654590b9a4ad5e9908b433ca5b049c795"
+  },
+  "identity_certification": false,
+  "independent_confirmation": false,
+  "jobs": [
+    {
+      "critic_fold": 0,
+      "critic_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "easy_cut": 15.403742715015557,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+        "queries": 806,
+        "rows": 53956,
+        "sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "source_query_counts": [
+          88,
+          25,
+          165,
+          11,
+          490,
+          27
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold1_seed17",
+      "hard_cut": 49.24863795836583,
+      "key": "eqmotion_fold1_seed17_critic0",
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 1,
+      "critic_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 2,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed17",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed17_critic1",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 17
+    },
+    {
+      "critic_fold": 2,
+      "critic_sites": [
+        "moving_source_component_049",
+        "moving_source_component_055",
+        "moving_source_component_059",
+        "moving_source_component_060",
+        "moving_source_component_066",
+        "moving_source_component_070",
+        "moving_source_component_073",
+        "moving_source_component_075",
+        "moving_source_component_090"
+      ],
+      "easy_cut": 9.545994051407813,
+      "evaluation_fold": 1,
+      "evaluation_scope": {
+        "budget": 2000,
+        "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+        "queries": 807,
+        "rows": 71584,
+        "sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "source_query_counts": [
+          39,
+          46,
+          52,
+          72,
+          316,
+          90,
+          134,
+          58
+        ]
+      },
+      "evaluation_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_scope": {
+        "budget": 2000,
+        "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+        "queries": 1176,
+        "rows": 69746,
+        "sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "source_query_counts": [
+          6,
+          94,
+          156,
+          630,
+          28,
+          51,
+          112,
+          55,
+          44
+        ]
+      },
+      "floor_index": 1,
+      "forecast_key": "eqmotion_fold0_seed17",
+      "hard_cut": 29.899692038749063,
+      "key": "eqmotion_fold0_seed17_critic2",
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "seed": 17
+    }
+  ],
+  "new_V_or_H": false,
+  "original_rules_unchanged": true,
+  "parent_analysis": {
+    "path": "outputs/publication_readiness_2026_09/moving_cost_partition_v1/analysis.json",
+    "sha256": "c19816ab24072260e27e0e3e270232c0d835f690e3576b6d5a42733f2a5c98bd"
+  },
+  "parent_registration": {
+    "path": "outputs/publication_readiness_2026_09/moving_cost_partition_v1/registration_v2.json",
+    "sha256": "5685210872db8d9bf1edd078351825751e01dc06fe18b4b684fe811068295721"
+  },
+  "partitions": {
+    "eqmotion_fold0_seed17_critic1": [
+      {
+        "names": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 1,
+          "critic_sites": [
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "d10df2811d7c20f4f21ed0cc6d42d6c8f810dfba0e3cf4a22378c13f51ff39f2",
+            "rows": 5521
+          },
+          "evaluation_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+            "queries": 807,
+            "rows": 71584,
+            "sites": [
+              "moving_source_component_053",
+              "moving_source_component_065",
+              "moving_source_component_076",
+              "moving_source_component_077",
+              "moving_source_component_078",
+              "moving_source_component_080",
+              "moving_source_component_082",
+              "moving_source_component_087"
+            ],
+            "source_query_counts": [
+              39,
+              46,
+              52,
+              72,
+              316,
+              90,
+              134,
+              58
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic1",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      {
+        "names": [
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "part": 1,
+        "routing_job": {
+          "critic_fold": 1,
+          "critic_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "21e2266b286041a385ba857c39e440bd8ba3d79cf7165c2a06aaa23ed2fa0f5e",
+            "rows": 19742
+          },
+          "evaluation_sites": [
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+            "queries": 807,
+            "rows": 71584,
+            "sites": [
+              "moving_source_component_053",
+              "moving_source_component_065",
+              "moving_source_component_076",
+              "moving_source_component_077",
+              "moving_source_component_078",
+              "moving_source_component_080",
+              "moving_source_component_082",
+              "moving_source_component_087"
+            ],
+            "source_query_counts": [
+              39,
+              46,
+              52,
+              72,
+              316,
+              90,
+              134,
+              58
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic1",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      {
+        "names": [
+          "moving_source_component_077",
+          "moving_source_component_078"
+        ],
+        "part": 2,
+        "routing_job": {
+          "critic_fold": 1,
+          "critic_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "c8e670aee26a5b4d09e9b39010ac75d188f14a52ecf97f760e8202d6acec8e9c",
+            "rows": 46321
+          },
+          "evaluation_sites": [
+            "moving_source_component_077",
+            "moving_source_component_078"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+            "queries": 807,
+            "rows": 71584,
+            "sites": [
+              "moving_source_component_053",
+              "moving_source_component_065",
+              "moving_source_component_076",
+              "moving_source_component_077",
+              "moving_source_component_078",
+              "moving_source_component_080",
+              "moving_source_component_082",
+              "moving_source_component_087"
+            ],
+            "source_query_counts": [
+              39,
+              46,
+              52,
+              72,
+              316,
+              90,
+              134,
+              58
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic1",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      }
+    ],
+    "eqmotion_fold0_seed17_critic2": [
+      {
+        "names": [
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_073"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 2,
+          "critic_sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 1,
+          "evaluation_scope": {
+            "ids_sha256": "f5b38f3e0d2b6b1952ebb629fd33dbe3b324267ba51d1c929b379858e1f6f32e",
+            "rows": 50748
+          },
+          "evaluation_sites": [
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_073"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+            "queries": 1176,
+            "rows": 69746,
+            "sites": [
+              "moving_source_component_049",
+              "moving_source_component_055",
+              "moving_source_component_059",
+              "moving_source_component_060",
+              "moving_source_component_066",
+              "moving_source_component_070",
+              "moving_source_component_073",
+              "moving_source_component_075",
+              "moving_source_component_090"
+            ],
+            "source_query_counts": [
+              6,
+              94,
+              156,
+              630,
+              28,
+              51,
+              112,
+              55,
+              44
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic2",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      {
+        "names": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_090"
+        ],
+        "part": 1,
+        "routing_job": {
+          "critic_fold": 2,
+          "critic_sites": [
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 1,
+          "evaluation_scope": {
+            "ids_sha256": "14cce7b1163ad6692ac59e9737ff679d481db0f48fb98e3a9f7acc6350fab294",
+            "rows": 5278
+          },
+          "evaluation_sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_090"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+            "queries": 1176,
+            "rows": 69746,
+            "sites": [
+              "moving_source_component_049",
+              "moving_source_component_055",
+              "moving_source_component_059",
+              "moving_source_component_060",
+              "moving_source_component_066",
+              "moving_source_component_070",
+              "moving_source_component_073",
+              "moving_source_component_075",
+              "moving_source_component_090"
+            ],
+            "source_query_counts": [
+              6,
+              94,
+              156,
+              630,
+              28,
+              51,
+              112,
+              55,
+              44
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic2",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      {
+        "names": [
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_075"
+        ],
+        "part": 2,
+        "routing_job": {
+          "critic_fold": 2,
+          "critic_sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_073",
+            "moving_source_component_090"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 1,
+          "evaluation_scope": {
+            "ids_sha256": "d9cb1afce5d09b66ef2998314aebc2eb47d0f68ec6c89c17b2b2536d45efee80",
+            "rows": 13720
+          },
+          "evaluation_sites": [
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_075"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+            "queries": 1176,
+            "rows": 69746,
+            "sites": [
+              "moving_source_component_049",
+              "moving_source_component_055",
+              "moving_source_component_059",
+              "moving_source_component_060",
+              "moving_source_component_066",
+              "moving_source_component_070",
+              "moving_source_component_073",
+              "moving_source_component_075",
+              "moving_source_component_090"
+            ],
+            "source_query_counts": [
+              6,
+              94,
+              156,
+              630,
+              28,
+              51,
+              112,
+              55,
+              44
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic2",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      }
+    ],
+    "eqmotion_fold1_seed17_critic0": [
+      {
+        "names": [
+          "moving_source_component_048",
+          "moving_source_component_067"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 0,
+          "critic_sites": [
+            "moving_source_component_047",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062"
+          ],
+          "easy_cut": 15.403742715015557,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "8742de971bcc86ac09cf1403d8e44a4aa0f0fb804f9388ec9278f1392857cafb",
+            "rows": 6197
+          },
+          "evaluation_sites": [
+            "moving_source_component_048",
+            "moving_source_component_067"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+            "queries": 806,
+            "rows": 53956,
+            "sites": [
+              "moving_source_component_047",
+              "moving_source_component_048",
+              "moving_source_component_051",
+              "moving_source_component_052",
+              "moving_source_component_062",
+              "moving_source_component_067"
+            ],
+            "source_query_counts": [
+              88,
+              25,
+              165,
+              11,
+              490,
+              27
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold1_seed17",
+          "hard_cut": 49.24863795836583,
+          "key": "eqmotion_fold1_seed17_critic0",
+          "producer_fold": 1,
+          "producer_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "seed": 17
+        }
+      },
+      {
+        "names": [
+          "moving_source_component_047",
+          "moving_source_component_052"
+        ],
+        "part": 1,
+        "routing_job": {
+          "critic_fold": 0,
+          "critic_sites": [
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "easy_cut": 15.403742715015557,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "1037e1afa6f4be7167e34da56d5da33da6314a1623a1f45c4a8437917930330c",
+            "rows": 2734
+          },
+          "evaluation_sites": [
+            "moving_source_component_047",
+            "moving_source_component_052"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+            "queries": 806,
+            "rows": 53956,
+            "sites": [
+              "moving_source_component_047",
+              "moving_source_component_048",
+              "moving_source_component_051",
+              "moving_source_component_052",
+              "moving_source_component_062",
+              "moving_source_component_067"
+            ],
+            "source_query_counts": [
+              88,
+              25,
+              165,
+              11,
+              490,
+              27
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold1_seed17",
+          "hard_cut": 49.24863795836583,
+          "key": "eqmotion_fold1_seed17_critic0",
+          "producer_fold": 1,
+          "producer_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "seed": 17
+        }
+      },
+      {
+        "names": [
+          "moving_source_component_051",
+          "moving_source_component_062"
+        ],
+        "part": 2,
+        "routing_job": {
+          "critic_fold": 0,
+          "critic_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_052",
+            "moving_source_component_067"
+          ],
+          "easy_cut": 15.403742715015557,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "4de36416661d2500805df9d47a92710950611a62ab3455101886b808e2241d1a",
+            "rows": 45025
+          },
+          "evaluation_sites": [
+            "moving_source_component_051",
+            "moving_source_component_062"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+            "queries": 806,
+            "rows": 53956,
+            "sites": [
+              "moving_source_component_047",
+              "moving_source_component_048",
+              "moving_source_component_051",
+              "moving_source_component_052",
+              "moving_source_component_062",
+              "moving_source_component_067"
+            ],
+            "source_query_counts": [
+              88,
+              25,
+              165,
+              11,
+              490,
+              27
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold1_seed17",
+          "hard_cut": 49.24863795836583,
+          "key": "eqmotion_fold1_seed17_critic0",
+          "producer_fold": 1,
+          "producer_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "seed": 17
+        }
+      }
+    ]
+  },
+  "result_role": "exposed_own_B_source_held_information_diagnostic",
+  "sklearn_version": "1.8.0",
+  "tree": {
+    "bootstrap": false,
+    "max_depth": 8,
+    "max_features": 1.0,
+    "min_samples_leaf": 32,
+    "n_estimators": 64,
+    "n_jobs": 4,
+    "random_state": 17
+  }
+}

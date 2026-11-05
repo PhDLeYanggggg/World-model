@@ -14,6 +14,17 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Forecast Tail: Fixed Information Test, Not Yet Run
+
+The next experiment separates forecast-tail concentration from causal
+predictability. Eight fixed positive-target forest probes use the same120
+features and source-held splits as the signed-risk controls. Attribution will
+retain sources, action amplitudes, unknown outcomes and fitting-only causal
+motion cuts. The original2% rules, support and empty-control NA remain unchanged;
+no identity certification, newC/H readout or deployment. Twenty-six focused
+tests pass in3.25s; real fitting has not yet completed.
+[Protocol](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/protocol.md).
+
 ## Cost-Directed Partitions: Complete, No Safe Decision Repair
 
 This comparison changes how a fixed-capacity forest partitions fitting
