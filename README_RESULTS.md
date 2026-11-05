@@ -47,15 +47,40 @@ is inferred from this diagnostic. Submission readiness remains false.
 [Results](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/failure_analysis.md).
 
-Follow-up: an ego-history frame control is fixed before fitting. It keeps
-original signed targets and target scaling; history121 retains the causal
-old-to-new scale ratio, with history120 as a secondary ablation. Sixteen fits
-against eight cached controls are planned. Five feature tests pass in1.67s.
-Pilot PID43180 saved its first model, then exited1 exporting the target-scale
-array to JSON. Only serialization is repaired; the checkpoint is retained,
-registration_v2 discloses the change, and six focused tests pass in1.38s.
-No completed pilot or safety success is claimed yet.
-[Protocol](outputs/publication_readiness_2026_09/moving_ego_frame_v1/protocol.md).
+## Ego-History Frame: Better Regression, Decision Screen Failed
+
+Sixteen new models complete against eight cached controls. history121 retains
+the causal old-to-new scale ratio; history120 is a secondary ablation. Original
+signed targets, weights and target RMS stay exactly the same. Primary MSE
+reductions are9.825349%,0.709317%,30.215682%; decision-cost reductions are
+0.115156%,0.053858%,0%. Context1 harmful admissions increase1to6, and context2
+rejects all38579known proposals. Internal screen0/3, no neural expansion or
+deployment promotion. Secondary decision-cost reductions are-0.012866%,
+-0.062795%,0%; no posthoc primary switch. These pointwise source-held
+diagnostics are not the full original scene allocator or safety certificate.
+
+The original context scale is neighbor-dominated in95.745-100% of proposed
+rows by source, with median ego/context ratios0.227822to0.751991. This motivated
+a genuine representation contrast, but did not establish a unique root cause
+or fix source transfer. All24model refits and target-scale checks are exact.
+Thirty-four combined focused tests pass in3.38s; full historical suite not rerun.
+
+Initial pilot PID43180 exits1 after saving a model, on NumPy-to-JSON metric
+export. Serialization-only repair disclosed in registration_v2; saved pilot
+reused. Successful resume PID43412 exits0 in53.837s, peak6,920,536,064bytes.
+Run PID43521 exits0 in71.750s, peak7,445,200,896bytes; verify PID43684 exits0
+in77.568s, peak7,374,012,416bytes. Read-only replay PID43911 exits0 in64.521s,
+peak7,377,371,136bytes; fitting forbidden, all24predictions and metrics exact,
+all39then-existing public files unchanged. Compiled main PDF hash unchanged.
+No new CREATE job. Original2% rules/support,
+old failures and original24-group primary NA remain. No identity exemption,
+newC/H readout, metric/time claim, Stage5C/SMC or submission-ready claim.
+Next: locate regression gains relative to admissible boundaries and the
+original joint decision functional, including selected easy-reference mass;
+do not equate rowwise screens with full-policy safety or sweep thresholds.
+[Results](outputs/publication_readiness_2026_09/moving_ego_frame_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_ego_frame_v1/failure_analysis.md),
+[two-route Chinese summary](outputs/publication_readiness_2026_09/moving_ego_frame_v1/model_repair_summary_zh.md).
 
 ## Cost-Directed Partitions: Complete, No Safe Decision Repair
 

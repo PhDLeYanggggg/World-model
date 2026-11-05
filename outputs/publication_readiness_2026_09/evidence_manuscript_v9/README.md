@@ -284,6 +284,13 @@ claim; they do not supply independent confirmation or a successful main method.
 
 ## Forecast Tail: Concentration Is Not Causal Predictability
 
+The subsequent [ego-frame addendum](../moving_ego_frame_v1/paper_addendum.md)
+records sixteen new representation-control fits against eight verified controls.
+Risk-MSE decreases by up to30.216%, but the fixed decision screen fails0/3;
+one context increases harmful admissions1to6. Original signed targets and
+2%rules/support remain unchanged. This separate note is not in the unchanged
+compiled PDF and does not establish a successful method or independent evidence.
+
 The [tail-ranking addendum](../moving_forecast_tail_v1/paper_addendum.md) records
 eight fresh positive-target probes against eight verified controls. All models
 reproduce, but the source-held information screen fails0/3. Concentrated

@@ -11,11 +11,27 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing a controlled motion-frame repair suggested by the tail audit:
-express motion in the agent's own history scale and retain the old-to-new
-scale ratio. The prediction targets, safety requirements and data roles stay
-fixed. The representation tests pass; real fits are not yet complete.
-[Registered comparison](outputs/publication_readiness_2026_09/moving_ego_frame_v1/protocol.md).
+I completed a motion-frame repair suggested by the tail audit: express motion
+in the agent's own history scale and retain the original scale context.
+Sixteen new models and eight verified controls keep the same signed targets,
+risk requirements and data roles. All models reproduce by full refit.
+
+**Better risk regression still does not establish better safe decisions.**
+
+| Context | Risk-MSE reduction | Decision-cost reduction | Harmful admissions, control to new |
+|---|---:|---:|---:|
+| 0 | +9.825% | +0.115% | 0 to 0 |
+| 1 | +0.709% | +0.054% | 1 to 6 |
+| 2 | +30.216% | 0.000% | 0 to 0 |
+
+The fixed information screen fails 0/3. In context 2, all 38,579 known
+proposals remain rejected. These are source-held risk-model diagnostics,
+not trajectory improvements, independent confirmation or safety certificates.
+No model is promoted. The original 2% and support rules remain unchanged;
+empty controls stay not estimable. The paper is not submission-ready.
+[Results](outputs/publication_readiness_2026_09/moving_ego_frame_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_ego_frame_v1/failure_analysis.md),
+[Chinese summary of both repairs](outputs/publication_readiness_2026_09/moving_ego_frame_v1/model_repair_summary_zh.md).
 
 ### Completed Forecast-Tail Test
 
