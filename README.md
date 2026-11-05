@@ -49,6 +49,12 @@ independent test. Missing-outcome completion bounds are not confidence
 intervals. Deployment is unchanged; no identity-fallback certificate is used.
 [Results, losses and failure analysis](outputs/publication_readiness_2026_09/moving_kinematic_risk_v1/README.md).
 
+The next fixed comparison changes the learning objective, not the safety
+rules. Both arms continue from the same kinematic model; one gives its
+previously misclassified fitting examples extra weight. A fitting-only loss
+audit motivates this controlled test. No new training result is yet claimed.
+[Registered comparison](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md).
+
 ### Previous Nonlinear Readout Test
 
 I tested whether a nonlinear risk model can recover useful information from

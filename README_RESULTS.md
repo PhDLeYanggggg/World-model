@@ -14,6 +14,24 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Fixed Warm-Error Priority: Registered Objective Test
+
+A fresh fitting-only audit decomposes the six previous neural models' weighted
+loss by observed/bound-only supervision and predicted/actual budget-excess sign.
+In the kinematic heads, observed false-safe easy signs account for0.925%,1.221%
+and1.041%of the easy-channel MSE, and1.187%,1.623%,2.103%of absolute output
+gradient mass. These are fitting diagnostics, not parameter-gradient or safety
+evidence. A fixed replay-priority comparison will give warm-model observed
+false-safe channels weight10 rather than1, preserving the full original anchor.
+Both arms start at the same kinematic weights and receive2,000updates. No
+threshold search or changed2%rule; no independent H. Six real fits are planned,
+not yet completed. Prior online-admission and gradient-parity failures remain.
+A strengthened gradient test found an inherited zero-target synthetic fixture;
+its correction and pre-training registration amendment are retained.
+[Protocol](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md),
+[fitting diagnosis](outputs/publication_readiness_2026_09/moving_admission_risk_v1/fitting_loss_decomposition.json),
+[preflight amendment](outputs/publication_readiness_2026_09/moving_admission_risk_v1/preflight_amendment.md).
+
 ## Causal Kinematic Representation: Complete, No Safe Held-Source Lift
 
 This model comparison retains the original 2% rules and tests an explicit
