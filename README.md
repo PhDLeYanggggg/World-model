@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing an explicit-scale ablation after a causal input audit found that
+57.05% of proposed rows in source078 lie outside the fitting log-scale range.
+The new risk heads remove only that input; normalized motion and the original
+2% risk/support rules stay fixed. Six fits are planned, with MSE as the primary
+comparison and signed-cost learning secondary. This is not full-policy scale
+invariance, and no new result is claimed before training and evaluation finish.
+[Registered comparison](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
+
+### Completed Signed-Cost Comparison
+
 I tested a decision-aligned risk objective that charges mistakes according to
 their realized cost. Six real neural fits, a complete treatment refit and exact
 prediction replays are complete. The original 2% and support rules are unchanged.

@@ -14,6 +14,18 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Explicit Scale Removal: Prospective Retrained Ablation
+
+A fresh causal-only audit finds57.05% of source078proposed rows outside its
+fitting log-scale range. It is not the most clipped source; clipping alone
+does not explain previous failure. I register six new risk-head continuations
+removing only the explicit log-scale input. Main contrast is masked versus
+unmaskedMSE; signed-costlogistic is secondary. Original labels, losses, roles,
+sampling, budgets and2%risk/support rules remain unchanged. Prior unmasked
+controls are cached_verified, notfreshtraining. No identity certificate,
+newH, deployment change or full-policy coordinate-invariance claim.
+[Protocol](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
+
 ## Signed-Cost Decision Learning: Complete, No Safe Held Transfer
 
 A fresh fitting-only audit checks error count versus cost and score distance
