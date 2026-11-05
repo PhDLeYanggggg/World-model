@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Nonlinear Risk Readout: Registered, Real Fits Pending
+## Nonlinear Risk Readout: Six Fits Complete, Evaluation Pending
 
 The next matched comparison tests two standard boosting readouts on the same
 frozen neural model: two risk scores alone, versus those scores plus the 64
@@ -25,7 +25,12 @@ encoder training. Thirteen focused checks pass after fixing a missing-field
 synthetic fixture; the preflight failure is retained. The real-data pilot
 completed 128 scalar boosting rounds including its repeated fits in 18.02
 seconds with observed exit 0. Both resumed/uninterrupted arms reproduce their
-trees and predictions exactly. Full training and readout are not yet complete.
+trees and predictions exactly. All six full readouts completed their registered
+1,536 scalar boosting rounds, plus one full independent refit, in 39.06 seconds
+with observed exit 0 and peak RSS 5.66 GB. Frozen-latent fitting MSE reductions
+are 64.59%, 45.08% and 40.87%; score-only reductions are 39.10%, 29.28% and
+11.26%. All models froze before held-source readout. Evaluation is pending;
+no generalization or safety improvement is claimed from fitting loss.
 This is a conditional-information experiment,
 not a new world-model dynamics claim.
 [Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).

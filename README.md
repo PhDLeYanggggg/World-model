@@ -37,7 +37,8 @@ replay are verified. There are no new encoder updates or new holdout results.
 I am now testing a nonlinear risk readout with a matched control: the two
 existing risk scores alone versus those scores plus the frozen hidden features.
 This asks whether the representation still contains useful conditional
-information. The study is registered but has no real-data result yet.
+information. All six readouts have now been fitted; held-source evaluation
+is pending. Better fitting loss is not itself evidence of safer intervention.
 No risk threshold or evaluation rule changes with this comparison.
 [Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).
 
