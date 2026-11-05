@@ -13,9 +13,10 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 My next experiment keeps the original evaluation contract and changes how the
 risk model learns: it trains on actions proposed by a separately fitted router.
-The forecaster, source splits and 2% limits stay fixed. The real-data resume pilot
-has passed and full training is running, not yet a measured improvement; the
-completed results below remain unchanged.
+The forecaster, source splits and 2% limits stay fixed. All108critics have completed
+their full2000-update budget, and the source-isolation and exact-control audits
+pass. Evaluation is in progress, not yet a measured improvement; the completed
+results below remain unchanged.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
 
 My latest comparison tests a published cost-sensitive routing objective on the

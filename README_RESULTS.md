@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Proposal-Conditioned Risk Learning: Pilot Verified, Full Training In Progress
+## Proposal-Conditioned Risk Learning: Full Training Complete, Readout In Progress
 
 I am keeping the original rules and changing the model's supervision. A frozen
 public router fitted on source part A proposes actions on part B; a new risk
@@ -28,10 +28,14 @@ The registered budget is108new critics and216000primary optimizer updates.
 Twenty focused model/runner/reporting and parent checks pass. The real-data pilot completed600updates in44.85s,
 peak RSS5.96GB, observed exit0. All three resumed/direct model and inference
 comparisons are exact. The projected primary fit time is6923.18s, not completed
-runtime. Full training is in progress; evaluation is not_run. No new H access, identity certification, deployment
+runtime. All108critics completed2000updates each,216000primary updates, with
+observed exit0 in7682.12s and peak RSS8.07GB. Every actual optimizer, source-
+excluded proposer, own-part preprocessor, initialization and query draw hash
+passes the frozen-control audit. All weights were frozen before readout.
+Evaluation is in progress. No new H access, identity certification, deployment
 upgrade or scientific success is claimed. Previous failures remain intact.
 The first complete2000-update critic and its independent refit match exactly.
-Training PID54910 records checkpoints every100updates and a local heartbeat.
+Training PID54910 completed normally; checkpoints remain local.
 [Protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
 
 ## Moving Public Deferral Control: Mean Utility Improved, Original Risk Failed
