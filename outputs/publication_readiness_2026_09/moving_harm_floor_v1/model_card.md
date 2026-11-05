@@ -29,6 +29,14 @@ decision and reference/support tests.
 
 ## Evidence Limits
 
+All nine full fits and exact replay are complete. Relative to equal-mass
+uniform weighting, the floor reduces false-safe cost but increases total
+decision cost in all three fitting contexts. Known exposed-development ADE
+gain is 0.792581% versus 0.880858%; worst defined easy-net degradation is
+8.048131%. Original full risk/support passes only 1/17 recording views and
+therefore fails overall. This model is not deployed. See the posthoc own-B
+tradeoff decomposition in [failure analysis](failure_analysis.md).
+
 The README and machine-readable receipts, not this architecture description,
 establish actual completion. Same-data replay is not independent confirmation.
 The existing original 24-group primary remains NA, not passed. Missing support

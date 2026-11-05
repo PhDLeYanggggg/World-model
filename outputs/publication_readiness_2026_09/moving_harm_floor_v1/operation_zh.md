@@ -51,6 +51,18 @@ pilot 中断同样使用对应阶段加 `--resume`。运行锁阻止并发副本
 
 ## 核查与限制
 
+本轮已完成 9 个模型、评估与复算，科学结论为失败，不需要重复训练。
+降低误放行的同时误拦了更多有益预测。以下额外诊断仅重新读取 own-B
+拟合分区，已完成并逐项复算，不进行训练或读取新的评估结果：
+
+```sh
+.venv-pytorch/bin/python scripts/diagnose_m3w_harm_floor_tradeoff.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_harm_floor_tradeoff.py --verify
+```
+
+该诊断在看到本轮结果后提出，明确标为事后描述分析，不是预注册主检验。
+初次 PID14367、复算 PID14462 已完成，不要把旧 PID 当作仍在运行。
+
 `training_freeze.json` 核对 9 个完整模型；`full_refit.json` 核对完整重训；
 `weighting_verification.json` 独立重算训练分区的权重和采样次数；
 `verification.json` 记录全量指标重放。README 与 failure_analysis 解释科学结果。

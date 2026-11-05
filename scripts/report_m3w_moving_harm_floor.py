@@ -28,7 +28,8 @@ def figures(rows):
     colors = {'joint': '#555555', 'uniform_harm': '#2878A0', 'harm_floor': '#B84848'}
     public = PUBLIC/'figures'; public.mkdir(exist_ok=True)
     for mode in ('common_risk_loss', 'decision_costs'):
-        fig, axes = plt.subplots(1, 3, figsize=(12, 3.6), layout='constrained')
+        fig, axes = plt.subplots(1, 3, figsize=(12, 4.2))
+        fig.subplots_adjust(left=.075, right=.985, bottom=.18, top=.77, wspace=.42)
         for ax, job in zip(axes, jobs):
             arms = {r['arm']: r for r in rows if r['job'] == job}
             if mode == 'common_risk_loss':
@@ -47,8 +48,9 @@ def figures(rows):
                 ax.set(xticks=[0, 1, 2], xticklabels=['False safe', 'False reject', 'Joint cost'],
                     ylabel='Own-fitting cost / joint control (lower is better)')
             ax.set_title(job.rsplit('_', 1)[1]); ax.spines[['top', 'right']].set_visible(False)
-        axes[0].legend(frameon=False, fontsize=8)
-        fig.suptitle('Fitting diagnostics only: not held utility or safety certification', fontsize=11)
+        handles, labels = axes[0].get_legend_handles_labels()
+        fig.legend(handles, labels, frameon=False, fontsize=9, ncol=3, loc='upper center', bbox_to_anchor=(.5, .925))
+        fig.suptitle('Fitting diagnostics only: not held utility or safety certification', fontsize=11, y=.98)
         svg = public/(mode+'.svg'); fig.savefig(svg, metadata={'Date': None})
         svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
         fig.savefig(run.PRIVATE/(mode+'.png'), dpi=150); plt.close(fig)

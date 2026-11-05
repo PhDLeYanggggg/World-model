@@ -11,18 +11,42 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-The next controlled test targets harmful admissions, not the evaluation rules.
-I compare the joint loss with a fitting-only positive penalty floor and a
-uniform increase with the same total positive weight. The diagnostic rules
-out simple benefit-mass dominance; lower-magnitude harmful cases remain weakly
-penalized. All three real recovery pilots match exactly. The first full fit
-finished, but its JSON receipt export failed; the checkpoint is intact. A
-serialization-only repair recovered it with an unchanged checkpoint hash.
-All nine full fits and an exact full treatment refit are complete. The floor
-reduces harmful admissions in all three fitting partitions but also rejects
-more useful proposals. The internal fitting screen passes3/3; this is not a
-scientific safety pass. Held-development results are not yet available.
-[Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
+I completed nine matched neural fits to test whether training should put more
+weight on lower-magnitude harmful interventions. A uniform-weight control has
+the same total positive coefficient mass, so the comparison tests allocation
+rather than simply adding a larger penalty. The original 2% safety, reference
+and support requirements remain unchanged.
+
+**Rejecting more harmful predictions did not produce a better safe policy.**
+The new loss reduces harmful admissions in every fitting partition, but also
+rejects more useful predictions. Relative to the equal-mass control, total
+decision cost increases in all three partitions.
+
+| Frozen policy | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full original risk/support |
+|---|---:|---:|---:|---:|
+| Joint-decision control | 0.895% | 1.170% | 8.633% | 0/17 |
+| Uniform harm weighting | 0.881% | 1.159% | 8.633% | 0/17 |
+| Low-magnitude harm floor | 0.793% | 1.046% | 8.048% | 1/17 |
+
+The primary utility contrast is **-0.0883 percentage points**, with
+missing-label completion bounds [-0.1004, -0.0762] pp. These are not sampling
+confidence intervals. Results cover seven already exposed development sources
+and partial outcomes, not independent test confirmation or complete-roster ADE.
+One passing recording view does not satisfy the full safety requirement.
+Three selected-easy views remain undefined; no identity exemption is added.
+
+All nine fits, exact predecessor controls, a complete treatment refit, metric
+replay and own-fitting error attribution are complete. Fifty-one focused tests
+pass; the full historical suite was not rerun. A receipt-export error was
+recovered without changing the completed checkpoint. No model is promoted,
+no reserved scenes are opened, and this experiment does not train new trajectory
+dynamics. The next problem is distinguishing harmful from useful interventions,
+not weakening the safety rule or increasing rejection indiscriminately.
+[Complete results](outputs/publication_readiness_2026_09/moving_harm_floor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_harm_floor_v1/failure_analysis.md),
+[reproducibility](outputs/publication_readiness_2026_09/moving_harm_floor_v1/validation_receipt.md).
+
+### Previous Joint-Decision Result
 
 I completed six matched neural fits to test a concrete loss problem: a channel
 with a zero target could block a useful intervention without receiving a

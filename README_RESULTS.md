@@ -14,7 +14,7 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Harm-Weight Allocation: Registered Model Test
+## Harm-Weight Allocation: Fewer Harmful Admissions, Lower Utility
 
 A fresh own-B attribution and exact replay identify 4/17/141 newly admitted
 harmful proposals in the three preceding joint models. Their median targets
@@ -22,37 +22,58 @@ are 0.005242/0.026056/0.072066, below the corresponding harmful-target medians
 0.122769/0.058217/0.275317. Total harm penalty mass is already larger than
 benefit mass, so simple benefit-mass dominance is not supported.
 
-The next fixed test compares joint, uniform_harm and harm_floor in all three
-contexts, 2,000 updates per head. The latter two have equal positive coefficient
-mass under the exact planned fitting query weights. Only training weights
-change; risk MSE, unknown supervision, inference thresholds and original2%
-support/easy rules stay fixed. No new V/H outcome is used in weight selection.
-Eighteen focused tests pass in 2.95s; a separate report-roster check passes in
-1.41s. Real pilot PID9647 exits 0 after 96.82s, peak RSS6.53GB; all three
-50+50 versus100-update models/predictions match exactly, 600 actual updates
-including repeats. PID9913 exited1 after the first 2,000-update control and exact
-predecessor comparison, at JSON receipt serialization. The checkpoint is intact;
-an output-only amendment permits exact recovery without changing scientific
-bindings. Recovery PID10991 exported the first receipt without changing a byte
-of its checkpoint and continued the remaining fits. Fifty focused regression
-tests pass in4.20s. The first three fits and a complete exact treatment refit
-are now finished. In critic0, harmful admissions are18/17/7 for joint/uniform/floor;
-false rejections are2655/2660/2693. The floor's total joint fitting cost is
-0.00651109 versus0.00645961 for joint, a tradeoff rather than a safety success.
-Six fits are now complete. In critic1, harmful admissions are35/32/11 and false
-rejections1924/1942/2001; the floor lowers joint cost relative to joint but not
-relative to the equal-mass uniform control. All nine fits are now complete.
-Critic2 harmful admissions are162/143/81 and false rejections22704/22752/22971.
-The floor has higher joint fitting cost than the equal-mass uniform control
-in all three contexts. Original internal screen passes3/3 against warm
-initialization, not scientific safety. PID10991 exited0 after1252.74s, peak
-7.59GB; this resumed time excludes the first completed fit from the failed
-attempt.18,000 primary and2,000 exact full-refit updates completed. All nine
-own-B weight/sampler calculations replay exactly (PID13746,30.29s,exit0).
-The fixed exposed-development readout is now running; no reserved H is opened.
-[Failure record](outputs/publication_readiness_2026_09/moving_harm_floor_v1/attempt1_failure.md).
-[Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
-[protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
+**Fresh_run, 5 November:** all nine fixed fits, 2,000 updates per head, are
+complete. The uniform_harm and harm_floor arms have equal total positive
+coefficient mass under the exact planned fitting query weights. Only loss
+weights change: risk MSE, unknown supervision, thresholds and original 2%
+support/easy rules stay fixed. No held outcomes select weights or thresholds.
+
+| Fitting context | False-safe joint/uniform/floor | False-reject joint/uniform/floor | Floor joint-cost change vs uniform |
+|---|---|---|---:|
+| critic0 | 18 / 17 / 7 | 2655 / 2660 / 2693 | +0.6261% |
+| critic1 | 35 / 32 / 11 | 1924 / 1942 / 2001 | +0.2402% |
+| critic2 | 162 / 143 / 81 | 22704 / 22752 / 22971 | +0.3512% |
+
+The original internal screen passes 3/3 against warm initialization, not the
+matched control and not scientific safety. A separate posthoc own-B replay
+shows why the matched comparison fails: the floor repairs 10/21/62 harmful
+admissions but loses 75/64/227 useful admissions relative to uniform weighting.
+Counts alone are not the objective; the weighted lost benefit exceeds repaired
+harm plus recovered benefit in each context. All six tradeoff decompositions
+replay exactly. No new fitting or held outcome is used for that attribution.
+
+| Frozen policy | Known ADE gain % | Hard gain % | Switch % | Worst defined easy-net % | Full original risk/support |
+|---|---:|---:|---:|---:|---:|
+| Joint control | 0.894772 | 1.169812 | 5.988241 | 8.633364 | 0/17 |
+| Uniform weighting | 0.880858 | 1.158954 | 5.904828 | 8.633364 | 0/17 |
+| Low-magnitude floor | 0.792581 | 1.046007 | 5.395710 | 8.048131 | 1/17 |
+
+Primary floor-minus-uniform contrast: -0.088277 pp; missing-label completion
+bounds [-0.100385, -0.076169] pp, **not sampling CIs**. Six of seven exposed
+SOURCE units lose utility. The full original safety requirement fails: 12
+known all-risk and 13 known easy-risk violations; three selected-easy views
+remain undefined. Removing the decision veto gives 3.303746% known gain but
+40.377560% worst easy-net harm, not a repair. Original24-group primary remains
+NA. No identity certification, independent confirmation, deployment or
+submission-ready claim. This is partial-outcome obs8/pred12 development evidence,
+not the earlier SDD t50 task or complete-roster prediction accuracy.
+
+Actual execution: pilot PID9647, 96.82s, exit0; first training PID9913, exit1
+at JSON receipt export after an intact full control. Serialization-only recovery
+PID10991, 1,252.74s, exit0, peak RSS7.59GB, retains the first checkpoint byte for
+byte. Its 182.75s first-fit time is outside the resumed process duration.
+18,000 primary, 2,000 full-refit and 600 pilot updates completed. All three
+controls exactly reproduce their predecessors. Weight/sampler replay PID13746
+exits0 in30.29s. Evaluation PID13840 exits0 in74.19s; exact replay PID14065
+exits0 in78.59s. Posthoc diagnostic PID14367 and replay PID14462 complete in
+32.77s and34.48s. Fifty-one focused tests pass in5.07s; the full historical
+suite was not rerun. Parent assets are cached_verified; new training and
+diagnostics are fresh_run; reserved/H confirmation is not_run.
+
+[Results](outputs/publication_readiness_2026_09/moving_harm_floor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_harm_floor_v1/failure_analysis.md),
+[recovery record](outputs/publication_readiness_2026_09/moving_harm_floor_v1/attempt1_failure.md),
+[verification](outputs/publication_readiness_2026_09/moving_harm_floor_v1/validation_receipt.md).
 
 ## Joint Decision Loss: More Utility, More Harm, No Deployment
 
