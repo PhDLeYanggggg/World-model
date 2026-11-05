@@ -24,22 +24,44 @@ Two original MSE contexts nevertheless increase easy MSE after the actual
 optimizer step. This is a local fitting observation, not a proven explanation
 of held-scene failure or a new trained model. No new V/H outcome is read.
 
-I therefore register six fixed-budget neural fits comparing constant .001
+I therefore trained six fixed-budget neural fits comparing constant .001
 against cosine reduction to .00001. Initial weights, original unmasked inputs,
 loss, query draws and 2,000 updates remain matched. This changes training, not
-the original 2% rules or support. Final iterates are fixed before V. Eleven
-focused tests initially pass, including exact resume and old constant-control
-agreement on the test fixture. The actual real-data pilot now completes
-400 updates including repeats in 35.73 seconds (PID90244, exit0). Both schedules
+the original 2% rules or support. Final iterates were fixed before V. The real-data
+pilot completed 400 updates including repeats in 35.73 seconds (PID 90244,
+exit 0). Both schedules
 resume to exact weights and predictions. Six real fits finish 12,000 updates
-plus a 2,000-update exact full treatment refit under PID90371 (exit0) in
+plus a 2,000-update exact full treatment refit under PID 90371 (exit 0) in
 494.94 seconds, peak RSS 7.56 GB. All three fresh constant controls reproduce
 old weights, optimizer and query draws exactly. All six models are frozen
-before V; evaluation is not_run. Thirty-four focused tests pass in 4.03 seconds.
+before V. Fresh evaluation (PID 91232, exit 0, 47.37 s) and replay (PID 91354,
+exit 0, 46.37 s) are now complete: all new predictions, actions, metrics and old
+cached-control metric recomputations match exactly. Thirty-four focused tests
+pass in 4.03 seconds; the full historical suite was not rerun.
+
+Cosine known floor gain is 3.7549% versus 3.6006%; hard gain 4.7483% versus
+4.6257%. Paired known contrast +0.1543 pp, missing-label completion bounds
+[+0.0275, +0.2811] pp, NOT a sampling CI. Against affine, known difference is
+-0.5685 pp. Worst defined easy-net degradation worsens from 38.9046% to 44.6540%.
+Known all-risk violations remain at 14; easy violations rise from 13 to 15.
+Undefined selected-easy views fall from 2 to 0 but are not made safe: full
+risk/support is 0/17. Only 1/3 development expansion conditions passes;
+the aggregate expansion screen fails.
+
+Full-fitting easy MSE rises 28.25%, 13.82%, 4.50% in contexts 0/1/2, and easy
+cost-weighted sign regret rises 8.49%, 24.91%, 3.77%. This schedule does not
+establish convergence or safe generalization. Four held sources improve and
+three worsen; source 077/record 46 remains the worst easy-net failure. No
+deployment upgrade. The next unrun question is complete-fitting objective
+convergence with fixed source roles, not another threshold sweep.
 No projected-gradient model, threshold search, identity certificate, reserved
 test, deployment or submission-readiness upgrade. Stage5C/SMC stay disabled.
+Report replay leaves all 26 existing public evidence files byte-identical;
+the research-state metrics match the saved analysis exactly.
 [Diagnostic](outputs/publication_readiness_2026_09/moving_all_easy_gradient_v1/README.md),
-[protocol](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/protocol.md).
+[complete results](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/README.md),
+[interpretation](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/annealed_risk_addendum.md).
 
 ## Explicit Scale Removal: Completed, Utility Lift Without Safety
 

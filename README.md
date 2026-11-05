@@ -11,21 +11,31 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am keeping the original 2% safety and support rules and changing the model's
-training, not the evaluation contract. A complete-fitting diagnostic of nine
-frozen risk heads finds no all/easy gradient conflict: protected and ordinary
-updates are identical. The diagnostic and its replay agree exactly. This rules
-out that local explanation, not every possible cause of poor generalization.
+I kept the original 2% safety and support rules and tested a training change.
+Six matched neural risk-head fits compare a fixed learning rate with gradual
+reduction, starting from identical weights and using the same inputs, labels,
+loss and update budget. Full training, exact refit and prediction replay are
+complete. A preceding fitting diagnostic did not support gradient conflict as
+the local explanation for failure.
 
-The next matched experiment compares fixed with gradually reduced learning
-rates, using identical weights, inputs, labels and 2,000 updates in each of
-three contexts. It tests training stability without changing the loss, support
-rules or decision thresholds. All six real fits and the full treatment refit
-are complete. Three constant controls reproduce old weights exactly; both
-schedules resume exactly. The models are frozen before held-source evaluation,
-which is not yet complete. Deployment remains unchanged.
-[Diagnostic](outputs/publication_readiness_2026_09/moving_all_easy_gradient_v1/README.md),
-[fixed experiment](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/protocol.md).
+| Training schedule | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full risk/support |
+|---|---:|---:|---:|---:|
+| Constant | 3.60% | 4.63% | 38.90% | 0/17 |
+| Gradually reduced | 3.75% | 4.75% | 44.65% | 0/17 |
+
+**This is not a safe improvement.** The small average gain comes with more
+easy-risk violations, and the original safety gate still fails. Full-fitting
+risk errors also increase, so the experiment does not establish that the
+optimization problem has been solved. I am retaining the negative result and
+not deploying this model.
+
+These are repeated development observations on seven SOURCE units and one
+producer seed, not independent tests or new trajectory dynamics. No reserved
+data, thresholds, support rules or identity-fallback certificates changed.
+Thirty-four focused tests pass; the full historical suite was not rerun.
+[Complete results](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/result_interpretation.md),
+[reproducibility](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/reproducibility.md).
 
 ### Completed Scale-Input Ablation
 
