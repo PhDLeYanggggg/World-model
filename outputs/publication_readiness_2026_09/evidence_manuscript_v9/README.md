@@ -218,3 +218,12 @@ priors still beat occurrence prediction, matched decision utility is negative,
 and the original full-policy risk contract fails. All108policy blocks replay.
 No rule was relaxed. This addendum is separate from the compiled main PDF;
 the manuscript has not gained a successful main-method or independent claim.
+
+## Composed Risk Decision: Fitting Repair, Held Safety Still Failed
+
+The [composed-risk addendum](composed_risk_addendum.md) reports six matched real
+fits with exact predecessor controls. Directly training the two-head conjunction
+repairs the three-context fitting screen, but exposed-development gain changes
+by only+0.013pp and the original full risk/support gate remains0/17. Worst known
+easy-net degradation is8.04%, not within2%. This addendum is not in the compiled
+main PDF and does not confer deployment or submission readiness.

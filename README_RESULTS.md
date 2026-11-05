@@ -10,19 +10,19 @@ or evidence status.
 On 4 November I retained the original evaluation contract: no analytic identity-
 fallback certification, no changed 2% risk limit, no removed support requirement.
 Empty utility controls remain not estimable and old failures remain failures.
-The next intervention is a model-training change: source-separated neural
-critics with their own fitting-only preprocessing and nested C validation.
+The intervention remains model training: source-separated neural critics with
+their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Composed Decision Loss: Registered, Training Pending
+## Composed Decision Loss: Fitting Repaired, Held Safety Failed
 
-I am testing one fixed loss change with six matched fits across the same three
-fitting contexts. The independent controls must exactly reproduce the preceding
+I tested one fixed loss change with six matched fits across the same three
+fitting contexts. The independent controls exactly reproduce the preceding
 separate64 models. The new loss trains the per-channel conjunction of risk and
 decision signs, retaining both original objectives and missing-label bounds.
 It is not a calibrated probability or a replacement for the original risk gate.
-The same internal fitting screen controls whether another exposed-development
-readout runs. No new H, identity certification, threshold search or changed 2%
+The same internal fitting screen controls the exposed-development readout.
+No new H, identity certification, threshold search or changed 2%
 rule. Thirty-six focused tests pass in 4.12 seconds. The new readout test verifies
 that both arms and all choices precede outcome access and that changed prediction
 caches are rejected on replay. Pilot PID98622 exited0 in
@@ -33,9 +33,28 @@ peak RSS6.78GB:12,000 primary updates plus2,000 exact full-refit updates.
 All three independent controls reproduce their predecessors exactly. Composed
 mean fitting MSE falls19.60%/28.26%/9.93%, with both observed sign-cost channels
 nonworse in all three contexts. The internal expansion screen passes3/3.
-This permits the registered exposed-development readout, not a safety pass.
-No held outcome is claimed yet; six models and fitting receipts are frozen.
-[Protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
+Matched all-cost reductions are30.94%/14.68%/9.89%; matched risk MSE is slightly
+worse by1.03%/0.59%/0.16%. Within critic1, SOURCE053/065 easy fitting costs still
+worsen from initialization; the pooled improvement must not hide those slices.
+
+Evaluate PID1815 exited0 in66.75s on seven already exposed SOURCE units /17views.
+Known ADE gain is0.759%, versus0.745% for independent training and3.601% for the
+original constant control. The matched contrast is+0.01313pp with missing-label
+completion bounds[+0.00766,+0.01860]pp, NOT a sampling CI or independent evidence.
+Hard gain is1.009%; switch5.294%; worst defined known easy-net degradation8.038%.
+Known all-risk violations10/17, easy-risk violations12/17, full risk/support0/17.
+The risk-only diagnostic has3.315% known gain but40.378% worst easy-net degradation,
+so removing the decision gate is not a safe fix. No model is promoted.
+
+Replay PID2026 exited0 in68.93s: all six initial/final fitting metrics, held
+predictions/actions and cached-control metric recomputations match exactly.
+Fitting attribution PID2273 and replay PID2488 exited0 in33.21s/33.12s, all six
+decompositions exact. Critic0 false-reject cost is0.003244 versus0.004702 for the
+independent model, confirming a fitting repair rather than a held safety solution.
+Original24-group primary stays NA, not passed. Stage5C/SMC remain disabled.
+[Complete results](outputs/publication_readiness_2026_09/moving_composed_risk_v1/README.md),
+[interpretation](outputs/publication_readiness_2026_09/moving_composed_risk_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/composed_risk_addendum.md).
 
 ## Separate Risk And Decision Representations: Nine Fits Complete, Screen Failed
 

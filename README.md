@@ -11,17 +11,31 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-The next registered experiment tests a composed decision loss. Six matched
-fits compare the unchanged two-head objective with an added cost-sensitive
-loss on their joint acceptance decision. The independent arm must reproduce
-the previous separated models exactly. The 2% limits, conservative labels and
-support requirements remain unchanged. Thirty-six focused checks pass. The real
-pilot reproduces 50+50 versus 100 updates exactly for both arms (64.70 seconds,
-6.62 GB peak RSS). All six fits now finish in 938.05 seconds with 6.78 GB peak
-RSS. The three independent controls reproduce their predecessors exactly;
-the first full composed refit is exact. The internal fitting screen passes
-3/3 contexts. No held-readout result or safety success is claimed yet.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
+I trained six matched models to test whether learning the combined risk and
+intervention decision improves on training the two heads independently.
+The original 2% limits, conservative labels and support rules remain unchanged.
+
+**The loss change repairs fitting, but safe generalization is still unresolved.**
+All three fitting contexts pass the prespecified internal screen. Compared with
+independent training, all-decision cost falls 30.94%, 14.68% and 9.89%. Yet the
+gain on already exposed development scenes is only +0.013 percentage points.
+
+| Policy | Known ADE gain over floor | Worst defined easy-net degradation | Original full risk/support |
+|---|---:|---:|---:|
+| Independent two-head | 0.745% | 8.116% | 0/17 |
+| Composed two-head | 0.759% | 8.038% | 0/17 |
+
+These are partial-outcome development results, not independent test confirmation.
+The original constant control has greater utility but also fails safety. Neither
+the average gain nor lower training cost justifies deployment. No model is promoted.
+
+All 12,000 primary updates, a 2,000-update exact repeat, prediction replay and
+error attribution are complete. The three fresh controls exactly reproduce the
+previous models. Thirty-six focused tests pass; the full historical suite was
+not rerun. This is neural intervention-risk research, not new trajectory dynamics.
+[Complete results](outputs/publication_readiness_2026_09/moving_composed_risk_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_composed_risk_v1/result_interpretation.md),
+[run and recovery guide](outputs/publication_readiness_2026_09/moving_composed_risk_v1/operation_zh.md).
 
 ### Previous Separate-Representation Result
 
@@ -39,8 +53,8 @@ All 18,000 primary updates, a 2,000-update exact repeat and metric/error replay
 are complete. Twenty-nine focused tests pass; the full historical suite was
 not rerun. The prespecified fitting screen fails, so no additional held readout
 is run and no model is promoted. This is risk-head research, not new trajectory
-dynamics or independent confirmation. The next hypothesis targets the composed
-intervention loss, while preserving the original rules and conservative labels.
+dynamics or independent confirmation. These findings motivated the composed
+intervention loss experiment above, preserving the original rules and labels.
 [Complete results](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/result_interpretation.md),
 [run and recovery guide](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/operation_zh.md).
