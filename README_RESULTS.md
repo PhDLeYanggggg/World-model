@@ -14,16 +14,40 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Directional Peer Paths: Prospective Information Test
+## Directional Peer Paths: Complete, Primary Follow-Up Screen Failed
 
 The earlier neighbor24 linear probe and the completed neural pooling factorial
-remain negative. The next fixed own-B source-held test compares120 summary
+remain negative. The fixed own-B source-held test compares120 summary
 features against180 with directional nearest-peer paths and an equal-width
 within-query misassociation control. Primary ExtraTrees and secondary ridge
-settings are fixed before fitting. Seven focused implementation tests pass;
-real-data pilot and48probe fits are not yet run. No new neural or held result.
+settings were fixed before fitting at commit`fec5f2be`. Pilot PID39075
+exits0 in41.054s with5,917,310,976bytes peak RSS; the full64-tree fit takes2.210s
+and repeats exactly. All48probe fits complete:24ExtraTrees and24ridge, with
+eight exact repeated legacy ridge controls. Run PID39226 exits0 in60.167s,
+peak RSS6,350,716,928bytes. Verification PID39477 exits0 in60.569s, peak
+RSS6,521,110,528bytes; all48refits/predictions and8old controls agree exactly.
+Thirty-three focused tests pass in2.88s; full historical suite not rerun.
+Completed read-only replay PID39789 exits0 in43.190s, peak RSS6,474,055,680bytes.
+Fitting is forbidden, all48saved predictions reproduce and all67then-existing
+public files remain unchanged. This verifies execution, not independent science.
+
+Primary MSE reductions:-1.262274%,+0.996725%,+5.000471%. Joint-cost reductions:
+-0.000449%,+0.189098%,0%. The registered follow-up screen passes1/3, below2.
+Context2 rejects all38,579known candidates despite better MSE. Context1
+harmful admissions increase1to10 (all admissions10to61). Its false-safe cost
+rises4.2984456e-7to3.6856046e-6; the large relative increase has a small
+denominator, not a new full-policy harm measurement. Secondary ridge fails3/3.
+Known proposals48,061; unknown proposals1,274; own-B rows62,466. Source065
+has44known proposals. Allsources retained; overlapping queries are dependent.
+The figure was visually inspected. No new neural or held result; no independent
+confirmation. The separate paper addendum is not in the unchanged compiled PDF.
 Original risk/support rules and reserved-set boundaries are unchanged.
-[Protocol](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/protocol.md).
+No identity certification or deployment promotion. Next: audit conditional
+signed-cost information and prediction signs before another loss/model branch,
+not a threshold search or substituting the favorable secondary/context result.
+[Results](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/operation_zh.md).
 
 ## Peer Participation: Six New Fits Complete, Primary Screen Failed
 

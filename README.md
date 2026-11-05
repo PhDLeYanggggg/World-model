@@ -11,12 +11,35 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing whether temporal direction information was lost by the previous
-neighbor summaries. The new comparison adds step-by-step candidate-to-peer
-geometry and a deliberately mismatched association control, with source-held-out
-linear and nonlinear probes. This is a fixed information test, not another
-threshold search or a new independent benchmark result.
-[Protocol](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/protocol.md).
+I tested whether richer directional information about nearby agents improves
+intervention decisions. The comparison adds step-by-step candidate-to-peer
+geometry, including a deliberately mismatched association control, and leaves
+one fitting source out at a time. All 48 fixed linear and nonlinear fits are
+complete and reproduce exactly.
+
+**Better risk prediction did not produce reliable decision gains.**
+
+| Context | Nonlinear risk-MSE reduction | Decision-cost reduction | Outcome |
+|---|---:|---:|---|
+| 0 | -1.262% | -0.000449% | Worse prediction |
+| 1 | +0.997% | +0.189098% | More harmful admissions |
+| 2 | +5.000% | 0.000000% | All candidates still rejected |
+
+Positive reductions mean better. The primary follow-up screen passes only 1/3,
+below the registered requirement of two. In context2, the favorable error change
+does not alter any of the 38,579 known candidate decisions. Context1 increases
+harmful admissions from 1 to 10. I therefore do not expand this feature branch
+into a new neural model or promote it for deployment.
+
+This is an exposed-development information test, not independent confirmation
+or a trajectory-dynamics improvement. Original 2% risk and support rules remain
+unchanged; there is no identity-fallback exemption or new reserved-test readout.
+The next question is why the risk estimate fails to distinguish useful switches
+from costly mistakes, with earlier negative cost-head experiments retained.
+The paper is not yet submission-ready.
+[Complete results](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_peer_path_probe_v1/protocol.md).
 
 ### Last Completed Model Experiment
 

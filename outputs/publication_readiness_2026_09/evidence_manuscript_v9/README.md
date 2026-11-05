@@ -10,6 +10,14 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The later [directional peer-path probe](../moving_peer_path_probe_v1/paper_addendum.md)
+adds a source-held nonlinear information test. All48 fixed fits and refits are
+complete, but the primary follow-up screen passes only1/3. A5% risk-MSE gain in
+one context leaves all candidates rejected; another context increases harmful
+admissions. Original rules and prior failures remain unchanged. This separate
+addendum is not included in the unchanged compiled PDF and does not establish
+a new safe method or independent confirmation.
+
 - The nine-producer SOURCE-to-development controller comparison and its
   unsupported same-count joint effect.
 - The limited absolute-cost gain, together with failed recording-risk checks.
