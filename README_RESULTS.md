@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Direct Tail Risk Pilot: Registered, Not Yet A Result
+## Direct Tail Risk Pilot: Real Training In Progress
 
 I am testing whether directly predicting the two signed 2% budget excesses,
 using a fixed upper-quantile loss, improves admission over an identical mean
@@ -23,7 +23,10 @@ negative; this is not a claim that another loss is already successful.
 Three contexts are fixed by registry order, with two matched heads each and
 2,000 updates per head. No held-out threshold search or changed risk rule.
 This is a six-head mechanism pilot, not the full 108-head experiment.
-Ten focused checks pass; training and real readout have not yet run.
+Ten focused checks pass. Both real smoke runs reproduce uninterrupted training
+exactly after resume:400actual updates,33.22s,2.06GB peak RSS, observed exit0.
+The six complete fits are running locally under PID68847, with checkpoints
+every100updates. The scientific result has not been read out yet.
 [Registered protocol](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/protocol.md).
 
 ## Proposal-Conditioned Risk Learning: Complete, Original Risk Still Fails
