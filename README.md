@@ -11,6 +11,12 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+My next experiment keeps the original evaluation contract and changes how the
+risk model learns: it trains on actions proposed by a separately fitted router.
+The forecaster, source splits and 2% limits stay fixed. This test is registered,
+not yet a measured improvement; the completed results below remain unchanged.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
+
 My latest comparison tests a published cost-sensitive routing objective on the
 same frozen MovingDroneCrowd++ forecast bank. I trained 54 source-isolated neural
 routers, with 108,000 updates and three producer seeds. The original point

@@ -14,6 +14,22 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Proposal-Conditioned Risk Learning: Registered, Not Yet Evaluated
+
+I am keeping the original rules and changing the model's supervision. A frozen
+public router fitted on source part A proposes actions on part B; a new risk
+critic learns only those proposed actions on B, then is evaluated on a third
+disjoint part V. The all-action critic is an unchanged, hash-verified control.
+All rows, complete queries, unknown-label envelope bounds, initialization,
+own-source normalization, sampling and the original 2% veto are retained.
+The only treatment is the supervised action mask, not a changed threshold.
+
+The registered budget is108new critics and216000primary optimizer updates.
+Eleven focused checks pass; real-data pilot, full training and evaluation are
+not_run at registration. No new H access, identity certification, deployment
+upgrade or scientific success is claimed. Previous failures remain intact.
+[Protocol](outputs/publication_readiness_2026_09/moving_proposal_risk_v1/protocol.md).
+
 ## Moving Public Deferral Control: Mean Utility Improved, Original Risk Failed
 
 I am testing the two-stage cost-sensitive routing objective from Mao, Mohri and
