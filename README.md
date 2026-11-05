@@ -15,8 +15,9 @@ The next registered experiment tests a composed decision loss. Six matched
 fits compare the unchanged two-head objective with an added cost-sensitive
 loss on their joint acceptance decision. The independent arm must reproduce
 the previous separated models exactly. The 2% limits, conservative labels and
-support requirements remain unchanged. Nineteen focused checks pass; real
-training and any conditional development readout are still pending.
+support requirements remain unchanged. Nineteen focused checks pass. The real
+pilot reproduces 50+50 versus 100 updates exactly for both arms (64.70 seconds,
+6.62 GB peak RSS). Full six-fit training is running; no new readout is complete.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_composed_risk_v1/protocol.md).
 
 ### Previous Separate-Representation Result
