@@ -39,7 +39,10 @@ tests pass in4.20s. The first three fits and a complete exact treatment refit
 are now finished. In critic0, harmful admissions are18/17/7 for joint/uniform/floor;
 false rejections are2655/2660/2693. The floor's total joint fitting cost is
 0.00651109 versus0.00645961 for joint, a tradeoff rather than a safety success.
-Remaining six fits and held readout are not complete.
+Six fits are now complete. In critic1, harmful admissions are35/32/11 and false
+rejections1924/1942/2001; the floor lowers joint cost relative to joint but not
+relative to the equal-mass uniform control. Remaining three fits and held
+readout are not complete.
 [Failure record](outputs/publication_readiness_2026_09/moving_harm_floor_v1/attempt1_failure.md).
 [Diagnostic](outputs/publication_readiness_2026_09/moving_harm_admission_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
