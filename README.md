@@ -11,16 +11,27 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing a model change under the same evaluation rules: separate learned
-representations for risk magnitude and intervention decisions. Nine fixed-budget
-fits compare narrow shared, wider shared and separated encoders. The wider
-shared control has almost the same parameter count as the separated model.
-The experiment was registered before training; seventeen focused tests pass.
-The real largest-context pilot passed exact resume checks for all three models.
-Full fixed-budget fitting is running; no new development result is claimed.
-[Fixed protocol](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/protocol.md).
+I trained nine models to test separate representations for risk magnitude and
+intervention decisions, with narrow and near-capacity-matched shared controls.
+The original 2% safety and support rules are unchanged.
 
-### Latest Completed Result
+**The change helps fitting in two contexts, but does not solve the problem.**
+The separated model reduces MSE by 20.42%, 28.68% and 10.07%. Its all-decision
+cost rises 4.13% in the first context and falls 30.71% and 20.18% in the other two. The failed
+context admits fewer harmful predictions but rejects too many useful ones.
+Separation also does not consistently outperform the wider shared control.
+
+All 18,000 primary updates, a 2,000-update exact repeat and metric/error replay
+are complete. Twenty-nine focused tests pass; the full historical suite was
+not rerun. The prespecified fitting screen fails, so no additional held readout
+is run and no model is promoted. This is risk-head research, not new trajectory
+dynamics or independent confirmation. The next hypothesis targets the composed
+intervention loss, while preserving the original rules and conservative labels.
+[Complete results](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/result_interpretation.md),
+[run and recovery guide](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/operation_zh.md).
+
+### Previous Complete-Fitting Result
 
 I tested complete-fitting optimization of the neural risk model without changing
 the original 2% safety or support rules. Three real fits, exact resume checks,
@@ -37,9 +48,8 @@ Twenty-seven focused checks pass; the full historical suite was not rerun.
 This is native obs8/pred12 SOURCE-development evidence, not independent testing
 or a new trajectory-dynamics result.
 
-I am next investigating separate risk-magnitude and intervention-decision
-representations while retaining the conservative supervision for missing labels.
-That new model is now in fixed-budget training. The completed result remains negative.
+This motivated the separate-representation experiment reported above.
+The earlier complete-fitting result remains negative.
 [Complete result](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/README.md),
 [error analysis](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/result_interpretation.md),
 [run and recovery guide](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/operation_zh.md).

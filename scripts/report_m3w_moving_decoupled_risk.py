@@ -135,6 +135,46 @@ def main():
         'Completed phases refuse overwrite. Only resume an interrupted unchanged\n'
         'phase with --resume. Exact replay uses existing checked artifacts, not\n'
         'new data independence. This is a one-producer-seed model diagnostic.\n')
+    original_safety = a['held_policy']['separate64_veto']['safety']['full_original_risk_pass'] if held else None
+    (PUBLIC/'gates.md').write_text('\n'.join([
+        '# Evidence Gates', '', '| Check | Result | Scope |', '|---|---|---|',
+        '| Nine real fits completed | pass | Engineering/training, not scientific success |',
+        '| Exact pilot/full-refit/metric replay | pass | Reproducibility on existing data |',
+        '| Original thresholds and data roles retained | pass | No identity certificate or new H |',
+        f"| Prespecified fitting expansion screen | {screen['followup_readout_allowed']} | Internal diagnostic, not safety |",
+        f"| Original full risk/support on exposed readout | {original_safety if held else 'not_run'} | No missing-support exemption |",
+        '| Original24-group primary | NA, not passed | Reference-support limitation remains |',
+        '| Independent confirmation | not_run | Reserved data remain closed |',
+        '| Deployment upgrade | false | No promotion from fitting evidence |',
+        '| Submission ready | false | Independent scientific evidence incomplete |',
+        '| Stage5C / SMC execution | false / false | Prohibited, not scientific achievements |', '',
+        'No aggregate gate count combines engineering progress with scientific success.', '']))
+    (PUBLIC/'model_card.md').write_text('\n'.join([
+        '# Model And Data Card', '',
+        'Purpose: a fixed intervention-risk learning diagnostic. The frozen trajectory',
+        'producer is not retrained. These heads do not generate new trajectories.',
+        'Three own-B contexts, three prespecified architectures, one producer seed.',
+        'Original492 causal features: past/history/neighbor and frozen-candidate',
+        'rollout context with an explicit64-dimensional motion basis. Previous latent',
+        'input columns remain zeroed as in the parent experiment; no new JEPA claim.',
+        'Complete current-query pooling; no future endpoint/validity mask at inference.',
+        'Preprocessing, target and proposal/observed-mask hashes are bound to each',
+        'own-fitting checkpoint. Outcomes and their masks are used only for losses',
+        'and evaluation. Old source/teacher lineage restrictions are inherited.', '',
+        'Outputs: all/easy signed risk regression and cost-weighted decision logits.',
+        'Both signs must accept, plus original support requirements. Neither score',
+        'is a certified upper risk bound. Decision magnitudes are not probabilities.',
+        'Shared64/shared128/separate64 have32,260/64,516/64,260 parameters.',
+        'AdamW .0001, fixed2,000 updates, original query sampler, no V early stopping.',
+        'Both heads retain conservative unknown-outcome supervision.', '',
+        'Evidence: all9 real fits and exact initial/final metric replay complete.',
+        f"Additional held evaluation: {'fresh_run on exposed development only' if held else 'not_run after failed fitting screen'}.",
+        'No independent test, deployment upgrade or submission-ready claim.',
+        'Native obs8/pred12 image coordinates; no metric/seconds/true3D/foundation',
+        'or human-gold status. Original24-group primary remains NA, not passed.',
+        'Private checkpoints and caches are not in Git. Public hashes alone do not',
+        'make training reproducible without the permitted local data assets.',
+        'Stage5C and SMC remain disabled.', '']))
     print(json.dumps(summary, indent=2))
 
 

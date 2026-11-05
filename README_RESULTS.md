@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Separate Risk And Decision Representations: Pilot Passed, Training Running
+## Separate Risk And Decision Representations: Nine Fits Complete, Screen Failed
 
 I retain the original2% rules, missing-support NA and negative results. Nine
 matched neural fits will compare shared64, shared128 and separate64 encoders.
@@ -22,14 +22,38 @@ The main contrast separates representations against the near-capacity-matched
 wide control, not against a smaller model alone. Both heads keep conservative
 supervision on missing labels; one regresses risk, the other learns costly
 decision signs. Acceptance requires both signs to agree. No probability or
-formal safety calibration is claimed. Seventeen focused tests pass. Real pilot
+formal safety calibration is claimed. Twenty-nine focused tests pass3.48seconds;
+the full historical suite was not rerun. Real pilot
 PID95467 exited0 in84.82seconds, peak6.64GB. All three arms exactly reproduce
 50+50 versus100 training updates and predictions on the50,748-row largest
 fitting context; initial functions also match the frozen warm model within
 numerical tolerance. Total600 pilot updates including repeats. Measured100-step
-fit times are4.51s/6.74s/7.08s. Full nine-fit training is now running locally.
+fit times are4.51s/6.74s/7.08s. Full nine-fit training PID95634 exited0 in1059.52s,
+peak7.92GB:18,000 actual primary updates plus2,000 exact full-refit updates.
+All9 encoders updated, original input/target/proposal/observed masks and query
+draws match their frozen origins. Replay PID97261 exited0 in32.24s, reproducing
+all9 initial/final full-fitting metrics exactly. Fitting attribution PID97310
+(32.24s) and replay PID97358 (31.84s) exited0 with all9 decompositions exact.
+
+Separate64 fitting MSE reductions are20.42%/28.68%/10.07%. All-decision cost
+reductions are-4.13%/30.71%/20.18%; easy-cost reductions20.54%/75.25%/84.96%.
+The prespecified all3-context fitting screen therefore fails (2/3 contexts).
+Evaluate PID97225 exited0 only to record not_run, with no new held predictions.
+Critic0 false-safe cost falls75.82%, but false-rejection cost increases20.54%,
+dominated by SOURCE048. Its decision branch alone reduces all-cost80.08%; this
+does not justify removing the risk branch or selecting it posthoc. Compared
+with shared128, separate64 all-cost is3.57%/12.60% worse in critic0/1 and1.26%
+better in critic2: no uniform capacity-controlled architectural superiority.
+
 No H/reserved data, threshold search, deployment upgrade or identity certification.
+These are fitting risk losses, not new trajectory ADE/FDE or a passed2% gate.
+Next unrun hypothesis: train the composed decision objective while retaining
+all conservative targets and original scientific rules. Independent support
+remains a separate gap; weights cannot create missing easy-reference events.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/protocol.md).
+[Complete results](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/README.md),
+[interpretation](outputs/publication_readiness_2026_09/moving_decoupled_risk_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/decoupled_risk_addendum.md).
 
 ## Complete-Fitting Optimization: Complete Negative Fitting Result
 
