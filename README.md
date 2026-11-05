@@ -11,19 +11,32 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing whether errors discovered on an unseen training source are more
-useful supervision than errors on a source the discovery model has already
-seen. Eight small discovery networks have completed training from scratch,
-with their own source-only preprocessing and 16,000 total updates. Six matched
-risk-head continuations have also completed 12,000 updates. Full independent
-teacher/student refits reproduce exactly. All weights are frozen before readout.
-The original 2% rules and all previous failures remain unchanged. The new
-comparison has passed 19 focused code tests and a real 200-update pilot with
-exact checkpoint recovery. Evaluation is pending. It opens
-no reserved data and does not change the deployed model.
-An initial cache-interface error stopped the pilot before training; the repair
-preserves complete queries and fits normalization only on the retained source.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/protocol.md).
+I tested whether errors discovered on an unseen fitting source teach a better
+intervention-risk model than errors discovered on an already seen source.
+Eight discovery networks were trained from scratch, followed by six matched
+risk-head continuations. All 14 models completed training, and full refits and
+prediction replays reproduce exactly. The original 2% rules remain unchanged.
+
+| Error discovery | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full risk/support |
+|---|---:|---:|---:|---:|
+| In-source control | 3.20% | 4.04% | 25.00% | 0/17 |
+| Source-held errors | 2.95% | 4.06% | 64.13% | 0/17 |
+
+**This repair does not establish safe utility.** The known paired contrast is
+-0.2505 percentage points. Six sources improve, but a 5.03-point loss in the
+seventh outweighs those gains. The method rejects many beneficial interventions
+in one source while admitting beneficial but easy-harming interventions in
+another. Even on the full fitting data, false-safe easy signs increase relative
+to the control despite lower loss on the emphasized errors.
+
+This is a development result on seven exposed SOURCE units and one producer
+seed, not an independent test or a new world-dynamics contribution. No reserved
+data were opened. Missing-support cases remain NA; no identity certificate,
+deployment change or submission-readiness upgrade. Twenty-one focused tests
+pass. I retain the negative result and the pre-training cache-interface repair.
+[Full results](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/README.md),
+[mechanism and limitations](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/result_interpretation.md),
+[original-rule gates](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/gates.md).
 
 ### Completed Fixed-Error Priority Test
 

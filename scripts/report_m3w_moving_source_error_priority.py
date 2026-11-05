@@ -10,6 +10,27 @@ from scripts import run_m3w_moving_source_error_priority as run
 source, PUBLIC = run.source, run.PUBLIC
 
 
+def held_action_audit(values):
+    from scripts.run_m3w_moving_readout_refit import flow
+    _, _, data, jobs, refs, parts, *_ = values
+    rows = []
+    for job in jobs:
+        p = run.old.packet(data, job, refs, parts[job['key']][2], training=False)
+        group = source.read(PUBLIC/'groups'/(job['key']+'_val2_propose1.json'))
+        with source.np.load(source.checked(group['cache']), allow_pickle=False) as saved:
+            source.np.testing.assert_array_equal(saved['ids'], p['ids'])
+            proposal = saved['public_router']; before = saved['in_source_errors_veto']; after = saved['held_source_errors_veto']
+            ids = p['ids']; target = data['target_eval'][ids]-data['origin'][ids, None]
+            truth = run.old.amplitude.targets(p, target, data['valid'][ids], job['easy_cut'])
+            for site in sorted(set(p['sites'])):
+                at = p['sites'] == site
+                local = dict(moments=truth['moments'][at], observed_future=truth['observed_future'][at])
+                rows.append(dict(job=job['key'], source=str(site), action_flow=flow(local,
+                    proposal[at], before[at], after[at]), posthoc_diagnostic_only=True,
+                    frozen_actions_not_reselected=True))
+    source.once(PUBLIC/'held_action_flow.json', source.stable(rows))
+
+
 def fitting_audit(student_rows, discovery_rows):
     from src.world_model.m3w_frozen_readout_refit import query_weights
     api = run.api
@@ -66,6 +87,7 @@ def fitting_audit(student_rows, discovery_rows):
     source.once(PUBLIC/'full_fitting_losses.json', source.stable(dict(losses=losses, mask_overlap=overlaps,
         teacher_extrapolation=extrapolation,
         scope='full_B_empirical_query_weights_not_minibatch_not_validation')))
+    held_action_audit(values)
     return losses
 
 

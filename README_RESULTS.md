@@ -14,34 +14,47 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Source-Held Error Discovery: All Fourteen Neural Fits Complete
+## Source-Held Error Discovery: Complete, No Safe Held Lift
 
-The next controlled model change discovers errors strictly inside fitting B.
-Eight random-initialized teachers omit one B source each; both common and
-kinematic normalization exclude that source. A circular, equally sized
-in-source teacher supplies the comparison mask. Six identical warm-started
-students will differ only in the discovery-mask provenance. The original
-weight10 objective, zero admission boundary, 2% rules and support requirements
-remain unchanged. Nineteen focused tests pass, including real synthetic
-updates, exact resume, provenance and future-input rejection. This is not yet
-a held-data result. A real scratch-teacher pilot completed200updates including
-repeat, with exact resumed/uninterrupted weights and predictions. Full training
-and evaluation are pending. No V readout, independent H, deployment change, Stage5C or
-SMC is authorized by the new experiment. Old failures remain.
-All eight scratch teachers have now completed16,000 primary updates and an
-exact2,000-update full refit, in726.52seconds with peak RSS9.17GB, observed
-exit0. Own-source common and kinematic preprocessing exclude each held
-source. All three discovery masks are frozen before student training or V
-readout. This is real neural fitting, not evidence of improved held utility.
-All six matched students have now completed12,000 primary updates and an
-exact2,000-update full refit in534.17seconds, peak RSS7.54GB, observedexit0.
-The paired sampling, initial weights, preprocessing and supervision are exact.
-All14neural models are frozen; held readout and numerical replay are pending.
-The first real pilot stopped before optimizer initialization because the
-existing cache required its original full-role population. The v2 registration
-reads that immutable population before whole-source/query subsetting. The
-failure and pre-training amendment remain recorded; no scientific rule changed.
-[Protocol](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/protocol.md).
+Eight new scratch teachers discover errors strictly inside fitting B, excluding
+one source from their weights, common normalization, target RMS and kinematic
+normalization. Circular in-source discovery supplies the equal-capacity control.
+Six paired students continue identical warm weights with only the priority-mask
+provenance changed. Same weight 10, optimizer, sampling, 2,000 updates and
+original zero admission boundary. No threshold or scientific rule changes.
+
+Fresh real training: 16,000 teacher updates and 12,000 student updates; two
+independent full refits add 4,000 updates. Both refits and checkpoint resume
+are exact. Teacher/student phases completed in 726.52/534.17 seconds, peak
+RSS 9.17/7.54 GB, observed exit0. All weights froze before V. Evaluation and
+exact replay completed in 46.57/44.91 seconds, exit0. All three new prediction,
+action and metric blocks match; cached old control actions are hash-verified
+and their metrics freshly recomputed exactly. Twenty-one focused tests pass
+in 2.39 seconds. The full historical suite was not rerun.
+
+Held known gain is 2.9544% for source-held errors versus 3.2049% for in-source
+errors; hard gain is 4.0590% versus 4.0374%. The paired known contrast is
+-0.2505 pp with missing-label completion bounds [-0.8846, +0.3837] pp, NOT a
+sampling CI. Against warm kinematic and affine the known differences are
+-0.9874 and -1.3689 pp. Both new arms have 0/17 full risk/support passes,
+14 known all-risk and 14 easy-risk violations. The source-held arm adds two
+undefined selected-easy views; worst defined easy-net degradation is 64.1321%
+versus 24.9970% for control. Only one of three expansion conditions passes.
+
+Source-held error loss decreases on the selected channels but full-fitting
+false-safe easy signs rise to 84/91/992 versus 48/65/931. Six held sources have
+positive known contrasts, but source 078 loses 5.0345 pp after rejecting many
+beneficial actions. Source 077 gains utility but incurs severe easy harm.
+These rejected groups are not certified safe either. Clipping, source scarcity
+and different priority mass are measured limitations, not proven sole causes.
+
+The original cache-interface failure occurred before training and is retained
+with its pre-training amendment. No reserved H/domain readout, identity
+certificate, changed support rule, deployment or submission-readiness upgrade.
+Original 24-group primary remains NA. Stage5C/SMC remain disabled.
+[Complete results](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/README.md),
+[interpretation](outputs/publication_readiness_2026_09/moving_source_error_priority_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/source_held_error_addendum.md).
 
 ## Fixed Warm-Error Priority: Complete, No Safe Held-Source Lift
 
