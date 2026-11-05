@@ -282,6 +282,16 @@ Both addenda are separate from the compiled main PDF. Its source, PDF hash and
 visual-verification receipt are unchanged. These results narrow the supported
 claim; they do not supply independent confirmation or a successful main method.
 
+## Neural Risk Transport: Actual Training, Negative Decision Evidence
+
+The [neural transport addendum](../moving_neural_transport_v1/paper_addendum.md)
+records eight actual Torch risk networks and eight ridge controls, with complete
+loss traces and exact full refits. The primary screen fails0/3; cost is worse
+than shared64 in every context, although transport modestly helps relative to
+the plain network. This does not establish neural trajectory lift or a safe
+main method. The original risk/support rules remain, and convergence is not
+claimed. The separate note does not change the compiled paper or its not-ready status.
+
 ## Cross-Source History Retrieval: Information Without Safe Admission
 
 The [retrieval addendum](../moving_track_analogue_v1/paper_addendum.md) records

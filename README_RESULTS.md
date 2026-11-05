@@ -14,17 +14,44 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
-## Conditional Risk Transport: Registered Neural Model Check
+## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
 The fixed-reference attribution found source076 harmful matches differ more
 in forecast/history lateral relationships, while other sources show different
 patterns. This is descriptive, not a causal explanation or a new safety pass.
-I registered a source-only MLP risk model with a fixed residual-transport
+I trained a source-only MLP risk model with a fixed residual-transport
 readout, alongside its plain readout and a ridge control. Reference IDs,
-original120features, signed targets,32epochs and2%rules stay fixed. Real fitting
-is not yet complete. Five focused tests pass, including real optimizer resume.
-No new held readout, trajectory training or deployment change.
+original 120 features, signed targets, 32 epochs and 2% rules stay fixed. All eight
+Torch models and eight ridge controls complete, with 5,792 primary optimizer
+updates and 32 visits to every donor-fitting row. Each MLP has 9,890 parameters.
+All 16 models reproduce by full refitting. Nineteen focused tests pass in 2.38s;
+full historical suite not rerun. No new held readout or trajectory training.
+
+Primary decision-cost reductions versus shared64 are -6.914305%, -54.521863%,
+-5.517107%; risk-MSE reductions -42.675320%, -18.758902%, +32.191628%.
+Harmful admissions increase 0/1/0 to 94/353/1288. Screen passes 0/3; no deployment change.
+Transport improves cost versus its plain neural counterpart 1.769447%, 6.433618%,
+0.892890%, which does not establish the stronger comparison or safety.
+
+Pilot PID 48213 exits 0 in 1.221s with exact two-epoch recovery over 29,807 donor
+rows. Full run PID 48265 exits 0 in 10.272s, peak 1,285,865,472 bytes; full verification
+PID 48345 exits 0 in 10.442s, peak 1,249,574,912 bytes. Cached features and the small
+network explain the runtime; no registered row,epoch or fold is omitted.
+No new CREATE job. Original 2% rules/support, empty-control NA and original 24-group
+primary NA remain. No identity exemption, Stage5C/SMC or submission upgrade.
+
+The loss table distinguishes fitting, source-held evaluation and actual updates.
+Some small folds receive only 64-256 updates despite 32 epochs; late losses still
+fall. Next: a predeclared source-fitting convergence check with the model,
+features and reference IDs frozen, not selecting epochs on held results.
+Strong source-held errors mean more training cannot be assumed to repair transfer.
+Read-only replay PID 48759 completes in 2.343s with fitting forbidden and all
+22 then-existing public files unchanged. Its completion receipt is verified;
+the process is no longer live, but its shell exit code was not captured.
+The compiled main-paper PDF hash is unchanged. Replay is not independent evidence.
+[Verification record](outputs/publication_readiness_2026_09/moving_neural_transport_v1/verification_report.md).
 [Attribution](outputs/publication_readiness_2026_09/moving_match_attribution_v1/README.md),
+[Results and losses](outputs/publication_readiness_2026_09/moving_neural_transport_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_neural_transport_v1/protocol.md).
 
 ## Cross-Source History Retrieval: Complete, No Safe Repair

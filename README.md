@@ -11,6 +11,32 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I trained a small neural risk model to adjust the mismatch between a query
+and its reference histories. Plain neural prediction and a linear correction
+serve as controls; the reference set, causal inputs and original rules stay fixed.
+
+**The networks trained and reproduced, but did not improve safe intervention.**
+
+| Context | Risk-MSE reduction | Decision-cost reduction | Harmful admissions, control to new |
+|---|---:|---:|---:|
+| 0 | -42.675% | -6.914% | 0 to 94 |
+| 1 | -18.759% | -54.522% | 1 to 353 |
+| 2 | +32.192% | -5.517% | 0 to 1288 |
+
+Eight Torch networks and eight ridge controls complete; every fitting row gets
+32 epochs. All models reproduce by full refitting. Correcting reference risk
+helps modestly versus the plain network, but not versus the forest control.
+The information screen passes 0/3 contexts. Actual training losses are retained, and
+convergence is not claimed. This is risk-model development, not new neural
+trajectory success, independent confirmation or a safety certificate.
+The original 2% and support requirements remain, empty references stay NA,
+and deployment is unchanged. The paper is not submission-ready.
+[Results and loss traces](outputs/publication_readiness_2026_09/moving_neural_transport_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_neural_transport_v1/failure_analysis.md),
+[Chinese reproduction guide](outputs/publication_readiness_2026_09/moving_neural_transport_v1/operation_zh.md).
+
+### Previous History-Matching Result
+
 I tested whether similar causal histories from other sources can identify
 useful interventions that risk forests miss. The new local risk model uses
 32 source/agent buckets per query and excludes the query's entire source.
