@@ -14,6 +14,18 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
+## Complete-Fitting Optimization: Registered
+
+The next diagnostic keeps the network, original labels, source roles and 2%
+rules. Three full-B LBFGS continuations start from the final constant controls;
+double precision and no decay/clipping are explicit parts of this optimization
+bundle. All three contexts must improve MSE and not worsen either sign-cost
+channel before another exposed-development readout. This internal screen is
+not a safety certificate. No new H, identity certificate or threshold search.
+Four focused synthetic tests pass, including exact resume and interruption
+without saving transient line-search states. Real-data training is not_run.
+[Protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
+
 ## All/Easy Attribution And Fixed-Schedule Repair
 
 Fresh complete-B gradients and 27 disposable saved-AdamW updates across nine

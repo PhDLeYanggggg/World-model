@@ -11,6 +11,15 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am now testing complete-fitting optimization of the same neural risk model,
+without changing the original safety or support rules. The diagnostic separates
+inadequate fitting from held-source failure; training improvement alone will not
+count as safe deployment. Three source-separated fits and exact resume checks
+are registered. No new held results are available yet.
+[Prospective protocol](outputs/publication_readiness_2026_09/moving_full_objective_risk_v1/protocol.md).
+
+### Previous Training-Schedule Result
+
 I kept the original 2% safety and support rules and tested a training change.
 Six matched neural risk-head fits compare a fixed learning rate with gradual
 reduction, starting from identical weights and using the same inputs, labels,
