@@ -14,16 +14,45 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Forecast Tail: Fixed Information Test, Not Yet Run
+## Forecast Tail: Complete, Causal Ranking Remains Weak
 
-The next experiment separates forecast-tail concentration from causal
-predictability. Eight fixed positive-target forest probes use the same120
+The completed experiment separates forecast-tail concentration from causal
+predictability. Eight fresh positive-target forest probes use the same120
 features and source-held splits as the signed-risk controls. Attribution will
 retain sources, action amplitudes, unknown outcomes and fitting-only causal
 motion cuts. The original2% rules, support and empty-control NA remain unchanged;
-no identity certification, newC/H readout or deployment. Twenty-six focused
-tests pass in3.25s; real fitting has not yet completed.
-[Protocol](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/protocol.md).
+no identity certification, newC/H readout or deployment. Eight signed-risk
+controls are cached_verified; all16models reproduce by full refit. Twenty-six
+focused tests pass in3.25s and two reporting tests in1.85s; full historical suite
+not rerun. The original24-group primary stays NA, not passed.
+
+At10% ranking weight, easy positive-excess capture changes from
+19.196/3.419/38.228% to20.675/4.078/39.099%. Envelope scores capture
+12.214/20.427/32.400%, and label-oracle diagnostics99.880/99.990/98.798%.
+Internal screen fails0/3. Fitting-source capture60.2-86.9% versus excluded
+source0-49.7% indicates a transfer limitation, not proof of irreducible noise.
+Full-amplitude proposals contribute93.036/53.442/84.346% of easy positive mass;
+this is conditional attribution, not a new shrinkage-policy success.
+
+Pilot PID42310 exits0 in57.639s with6,939,099,136bytes peak RSS; fullforest1.337s.
+Run PID42441 exits0 in67.455s with7,367,901,184bytes; verify PID42584 exits0
+in70.429s with7,262,404,608bytes. All8new and8control refits exact.
+Read-only replay PID42883 exits0 in59.637s, peak7,445,856,256bytes; fitting
+forbidden, all saved predictions/metrics exact, all24then-existing public files
+unchanged. This is engineering evidence, not independent confirmation. Local
+resources suffice; no new CREATE job. Figure inspected. The next causal
+representation control should remove neighbor-dominated ego-motion scaling
+while retaining scale context, targets and safety rules. No repair success
+is inferred from this diagnostic. Submission readiness remains false.
+[Results](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/failure_analysis.md).
+
+Follow-up: an ego-history frame control is fixed before fitting. It keeps
+original signed targets and target scaling; history121 retains the causal
+old-to-new scale ratio, with history120 as a secondary ablation. Sixteen fits
+against eight cached controls are planned. Five feature tests pass in1.67s.
+No real-fit or safety success is claimed yet.
+[Protocol](outputs/publication_readiness_2026_09/moving_ego_frame_v1/protocol.md).
 
 ## Cost-Directed Partitions: Complete, No Safe Decision Repair
 

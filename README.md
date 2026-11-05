@@ -11,12 +11,29 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am tracing the harmful tail of the frozen forecast bank before changing the
-trajectory model. The next fixed comparison learns positive budget-excess costs
-from the same causal inputs, with source-held tail ranking against the signed
-risk head and a simple forecast-displacement score. It does not change the
-2% safety contract or open reserved tests. Real fits are not yet complete.
-[Protocol](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/protocol.md).
+I am testing a controlled motion-frame repair suggested by the tail audit:
+express motion in the agent's own history scale and retain the old-to-new
+scale ratio. The prediction targets, safety requirements and data roles stay
+fixed. The representation tests pass; real fits are not yet complete.
+[Registered comparison](outputs/publication_readiness_2026_09/moving_ego_frame_v1/protocol.md).
+
+### Completed Forecast-Tail Test
+
+I trained eight positive-cost risk probes to trace the harmful tail of the
+frozen forecast bank, against eight verified signed-risk controls. All models
+reproduce by full refit. The original safety rules and reserved tests stay unchanged.
+
+**Harm is concentrated, but causal tail identification still transfers poorly.**
+At a fixed10% ranking weight, easy-cost capture changes from
+19.20/3.42/38.23% to20.67/4.08/39.10% across three contexts. The internal
+information screen fails0/3. These are diagnostic cost-capture rates, not
+trajectory gains or safety passes. Fitting-source capture is much higher than
+excluded-source capture. The next controlled repair concerns the motion
+representation's dependence on neighbor scale, not another threshold sweep.
+No new model is deployed, and the paper is not submission-ready.
+[Results](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_forecast_tail_v1/protocol.md).
 
 ### Previous Cost-Partition Result
 

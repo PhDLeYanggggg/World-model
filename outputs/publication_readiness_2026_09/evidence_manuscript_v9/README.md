@@ -282,6 +282,15 @@ Both addenda are separate from the compiled main PDF. Its source, PDF hash and
 visual-verification receipt are unchanged. These results narrow the supported
 claim; they do not supply independent confirmation or a successful main method.
 
+## Forecast Tail: Concentration Is Not Causal Predictability
+
+The [tail-ranking addendum](../moving_forecast_tail_v1/paper_addendum.md) records
+eight fresh positive-target probes against eight verified controls. All models
+reproduce, but the source-held information screen fails0/3. Concentrated
+label-oracle cost does not establish a learnable safe policy. No new reserved
+readout or deployment claim is added. This note is separate from the unchanged
+compiled main PDF and does not establish submission readiness.
+
 ## Posthoc Model-Mechanism Checks
 
 The [paired-gradient audit](../moving_paired_gradient_v1/result_interpretation.md)
