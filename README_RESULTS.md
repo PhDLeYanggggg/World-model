@@ -31,6 +31,10 @@ with observed exit 0 and peak RSS 5.66 GB. Frozen-latent fitting MSE reductions
 are 64.59%, 45.08% and 40.87%; score-only reductions are 39.10%, 29.28% and
 11.26%. All models froze before held-source readout. Evaluation is pending;
 no generalization or safety improvement is claimed from fitting loss.
+The first evaluation attempt stopped on a nested-preprocessor metadata lookup
+before new held-source metrics. Its traceback is retained. An explicit evaluator
+amendment supplies the actual frozen preprocessor to the unchanged source-
+isolation check; no model is retrained and no scientific rule is changed.
 This is a conditional-information experiment,
 not a new world-model dynamics claim.
 [Protocol](outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1/protocol.md).

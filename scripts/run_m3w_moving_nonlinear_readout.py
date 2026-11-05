@@ -20,6 +20,7 @@ PUBLIC = ROOT/'outputs/publication_readiness_2026_09/moving_nonlinear_readout_v1
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_nonlinear_readout_v1'
 CONFIG = ROOT/'configs/m3w_moving_nonlinear_readout_v1.json'
 REG = PUBLIC/'registration.json'
+AMENDMENT = PUBLIC/'evaluation_interface_amendment.json'
 FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md',
     ROOT/'src/world_model/m3w_nonlinear_risk_readout.py', ROOT/'tests/test_m3w_nonlinear_risk_readout.py')
 POLICIES = parent.POLICIES + tuple(arm+suffix for arm in api.ARMS for suffix in ('_veto', '_matched'))
@@ -40,14 +41,33 @@ def register(beat):
     refits = {}
     for ref in source.read(parent.PUBLIC/'training_freeze.json')['fits']:
         row = source.read(source.checked(ref)); refits[row['job']] = row
-    source.once(REG, source.stable(dict(configuration=spec, jobs=jobs,
+    payload = source.stable(dict(configuration=spec, jobs=jobs,
         bindings={str(p.relative_to(ROOT)): source.sha(p) for p in FILES},
         parent_registration=source.artifact(parent.REG), parent_freeze=source.artifact(parent.PUBLIC/'training_freeze.json'),
         parent_analysis=source.artifact(parent.PUBLIC/'analysis.json'),
         sklearn=api.sklearn.__version__, original_rules_unchanged=True, no_new_H=True,
         independent_confirmation=False, deployment_changed=False, submission_ready=False,
-        stage5c_executed=False, smc_enabled=False)))
+        stage5c_executed=False, smc_enabled=False))
+    if REG.exists() and source.read(REG) != payload:
+        prior = source.read(REG); runner = str(Path(__file__).relative_to(ROOT))
+        api.base.exact({k: v for k, v in prior.items() if k != 'bindings'},
+            {k: v for k, v in payload.items() if k != 'bindings'})
+        api.base.exact(payload['bindings'], dict(prior['bindings'], **{runner: payload['bindings'][runner]}))
+        api.base.exact(source.read(AMENDMENT), dict(original_registration_sha256=source.sha(REG),
+            frozen_training_sha256=source.sha(PUBLIC/'training_freeze.json'),
+            original_runner_sha256=prior['bindings'][runner], amended_runner_sha256=payload['bindings'][runner],
+            scope='nested_preprocess_source_exclusion_interface_only', training_changed=False,
+            predictions_changed_by_interface_fix=False, scientific_rules_changed=False))
+    else:
+        source.once(REG, payload)
     return spec, cfg, data, jobs, refs, parts, points, routers, critics, fitted, refits
+
+
+def assert_readout_excluded(state, causal, names):
+    """The readout reuses its frozen parent's preprocessor, not a new one."""
+    for key in ('fit_ids', 'source_sites'):
+        api.base.exact(state[key], state['frozen'][key])
+    direct.api.parent.assert_excluded(dict(state, preprocess=state['frozen']['preprocess']), causal, names)
 
 
 def path_for(job, arm, kind='fits'):
@@ -141,7 +161,7 @@ def evaluate(spec, cfg, data, jobs, refs, parts, points, routers, critics, fitte
             for arm in api.ARMS:
                 state = api.joblib.load(source.checked(heads[job['key'], arm]['checkpoint']))
                 if part_id == 2:
-                    direct.api.parent.assert_excluded(state, c, part['names'])
+                    assert_readout_excluded(state, c, part['names'])
                 predictions[arm] = api.predict(state, c, chosen['public_router'])
                 hashes[arm] = source.array_hash(predictions[arm])
                 chosen[arm+'_veto'], chosen[arm+'_matched'] = direct.api.choose(
@@ -260,7 +280,7 @@ def main():
         values = register(beat)
         if args.phase == 'register':
             return
-        for path in (*FILES, REG):
+        for path in (*FILES, REG, *((AMENDMENT,) if AMENDMENT.exists() else ())):
             body = source.subprocess.run(['git', 'show', 'HEAD:'+str(path.relative_to(ROOT))], cwd=ROOT,
                 capture_output=True, check=True).stdout
             if source.hashlib.sha256(body).hexdigest() != source.sha(path):
