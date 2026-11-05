@@ -28,6 +28,10 @@ threshold search or changed2%rule; no independent H. Six real fits are planned,
 not yet completed. Prior online-admission and gradient-parity failures remain.
 A strengthened gradient test found an inherited zero-target synthetic fixture;
 its correction and pre-training registration amendment are retained.
+Fourteen focused checks pass after correction. The real native-CPU pilot
+completed400updates including repeats in36.65seconds, peak RSS2.83GB and
+observed exit0. Both arms resume to exactly the same weights and predictions;
+the full six-head comparison has not yet completed.
 [Protocol](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md),
 [fitting diagnosis](outputs/publication_readiness_2026_09/moving_admission_risk_v1/fitting_loss_decomposition.json),
 [preflight amendment](outputs/publication_readiness_2026_09/moving_admission_risk_v1/preflight_amendment.md).

@@ -52,7 +52,8 @@ intervals. Deployment is unchanged; no identity-fallback certificate is used.
 The next fixed comparison changes the learning objective, not the safety
 rules. Both arms continue from the same kinematic model; one gives its
 previously misclassified fitting examples extra weight. A fitting-only loss
-audit motivates this controlled test. No new training result is yet claimed.
+audit motivates this controlled test. The real checkpoint-resume pilot passes
+in both arms; full training and scientific evaluation are not yet complete.
 [Registered comparison](outputs/publication_readiness_2026_09/moving_admission_risk_v1/protocol.md).
 
 ### Previous Nonlinear Readout Test
