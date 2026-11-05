@@ -84,6 +84,9 @@ def main():
         '## Whole-Fitting Diagnostics', '',
         'Computed before held prediction, over all own-B queries with the same',
         'empirical sampling weights. Lower training loss is not held-scene safety.', '',
+        'These losses measure normalized signed budget-excess risk prediction,',
+        'not trajectory ADE/FDE. Unknown outcomes retain conservative bound',
+        'supervision, rather than being silently dropped.', '',
         '| Context | Schedule | All MSE | Easy MSE | All/easy sign regret | False-safe all/easy |',
         '|---|---|---:|---:|---|---|']
     for f in fits:

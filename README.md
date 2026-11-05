@@ -20,9 +20,10 @@ out that local explanation, not every possible cause of poor generalization.
 The next matched experiment compares fixed with gradually reduced learning
 rates, using identical weights, inputs, labels and 2,000 updates in each of
 three contexts. It tests training stability without changing the loss, support
-rules or decision thresholds. The real-data resume pilot passes exactly for
-both schedules; six complete fits are now running. Held-source evaluation is
-not yet run. Deployment remains unchanged.
+rules or decision thresholds. All six real fits and the full treatment refit
+are complete. Three constant controls reproduce old weights exactly; both
+schedules resume exactly. The models are frozen before held-source evaluation,
+which is not yet complete. Deployment remains unchanged.
 [Diagnostic](outputs/publication_readiness_2026_09/moving_all_easy_gradient_v1/README.md),
 [fixed experiment](outputs/publication_readiness_2026_09/moving_annealed_risk_v1/protocol.md).
 

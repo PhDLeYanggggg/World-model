@@ -31,9 +31,11 @@ the original 2% rules or support. Final iterates are fixed before V. Eleven
 focused tests initially pass, including exact resume and old constant-control
 agreement on the test fixture. The actual real-data pilot now completes
 400 updates including repeats in 35.73 seconds (PID90244, exit0). Both schedules
-resume to exact weights and predictions. Full six-model training is running
-under PID90371 with checkpoint/heartbeat; evaluation is not_run. Twelve focused
-tests, including report-safety checks, pass in 2.31 seconds.
+resume to exact weights and predictions. Six real fits finish 12,000 updates
+plus a 2,000-update exact full treatment refit under PID90371 (exit0) in
+494.94 seconds, peak RSS 7.56 GB. All three fresh constant controls reproduce
+old weights, optimizer and query draws exactly. All six models are frozen
+before V; evaluation is not_run. Thirty-four focused tests pass in 4.03 seconds.
 No projected-gradient model, threshold search, identity certificate, reserved
 test, deployment or submission-readiness upgrade. Stage5C/SMC stay disabled.
 [Diagnostic](outputs/publication_readiness_2026_09/moving_all_easy_gradient_v1/README.md),
