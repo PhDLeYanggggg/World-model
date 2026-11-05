@@ -14,6 +14,17 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
+## Peer Participation: Prospective Factorial Completion
+
+Six new neural fits are planned: same-index context over active peers, and
+proposed-candidate context over all peers with causal-floor context for
+non-proposers. Six previous controls will be cached_verified by exact metric
+and checkpoint checks. The primary contrast keeps all peers fixed; secondary
+contrasts separate candidate identity and peer inclusion. No new scientific
+result exists yet. Fourteen focused implementation tests pass, not a model gate.
+Original 2% rules, NA support, closed reserved sets and previous failures remain.
+[Protocol](outputs/publication_readiness_2026_09/moving_peer_participation_v1/protocol.md).
+
 ## Proposal-Conditioned Peer Context: Six Fits Complete, Screen Failed
 
 `fresh_run`: six matched neural continuations compare same-action peer context
