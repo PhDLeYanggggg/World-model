@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Explicit Scale Removal: Prospective Retrained Ablation
+## Explicit Scale Removal: Completed, Utility Lift Without Safety
 
 A fresh causal-only audit finds57.05% of source078proposed rows outside its
 fitting log-scale range. It is not the most clipped source; clipping alone
@@ -29,8 +29,33 @@ objectives resume to exactweights/predictions; changing the removed input
 also leaves predictions exactly unchanged. Full trainingPID87626nowexited0
 in521.02seconds: six real fits12,000updates plus2,000exactrefitupdates. All
 six labels/proposals/draws and unmasked inputs match controls exactly. The
-six models froze beforeV; Vreadoutnot_runyet. No gate outcome claimed.
+six models froze beforeV. Fresh evaluationPID88461and replayPID88560both
+exit0 in48.02/46.73seconds; predictions/actions/metrics and old cached-control
+metric recomputations match exactly. All old fitting diagnostics also reproduce.
+
+MainMSEknownfloor gain3.6006%to4.1531%, hard4.6257%to5.4549%, intervention
+15.0144%to17.6952%. Pairedknown+0.5525pp, completionbounds[+0.0944,+1.0106]pp,
+NOTsamplingCI. Worstdefinedeasy-net38.9046%to47.5913%; fullrisk/support0/17.
+All-riskviolations14to13, easy13to13, undefinedselectedeasy2to2. Relative to
+affine, knowncontrast-0.1703pp. Mainexpansionscreenfalse.
+
+Secondarysigned-costknown2.6928%to3.0085%, hard3.5649%to4.3291%, pairedknown
++0.3158pp, completionbounds[+0.1141,+0.5174]pp. Worstdefinedeasy-net26.2254%
+to30.2521%; fullrisk/support1/17, undefinedselectedeasy1to2. Secondaryscreenfalse.
+MSEsource078improves+2.6813pp, but066loses1.9301pp and077record46easyharm
+worsens. Scale removal changes local utility, not reliable harm discrimination.
+
+No identity certification, deployment change, independentconfirmation or
+submission-ready claim. Original24groupprimaryNA. Nativeobs8/pred12imagepixels;
+no metric/seconds/true3D/foundation claims. This is risk-head learning, notnew
+dynamics. Next: fitting-only task/error attribution before any further model
+change; no new threshold sweep. Stage5C/SMCoff.
+Thirty-one focused tests pass in3.06seconds. All31public evidence files remain
+byte-identical after report replay; the full historical suite wasnotrerun.
 [Protocol](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
+[Results](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/README.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/result_interpretation.md),
+[paper addendum](outputs/publication_readiness_2026_09/evidence_manuscript_v9/scale_ablation_addendum.md).
 
 ## Signed-Cost Decision Learning: Complete, No Safe Held Transfer
 

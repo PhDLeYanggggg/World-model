@@ -152,6 +152,20 @@ def main():
     for c in result['per_context']:
         lines.append(f"| {c['arm']} | {c['job']} | {n(c['completion_lower_pp'])} | {c['expansion_condition']} |")
     (PUBLIC/'fitting_analysis.md').write_text('\n'.join(lines)+'\n')
+    lines = ['# All Exposed Sources', '',
+        'Equal-source development contrasts, not selected favorable subsets.',
+        'Paired completion bounds describe missing labels, not sampling uncertainty.', '',
+        '| Source | MSE contrast pp | MSE completion lower/upper pp | Logistic contrast pp | MSE intervention before/after % |',
+        '|---|---:|---|---:|---|']
+    main = result['contrasts']['continued_mse_minus_control']
+    secondary = result['contrasts']['signed_cost_logistic_minus_control']
+    for site in sorted(main['known_pp']['by_source']):
+        before = result['held_policy']['continued_mse_veto']['switch_percent']['by_source'][site]
+        after = result['held_policy']['ablated_continued_mse_veto']['switch_percent']['by_source'][site]
+        lines.append(f"| {site} | {n(main['known_pp']['by_source'][site])} | {n(main['completion_lower_pp']['by_source'][site])} / {n(main['completion_upper_pp']['by_source'][site])} | {n(secondary['known_pp']['by_source'][site])} | {n(before)} / {n(after)} |")
+    lines += ['', 'The unchanged full-policy gates use all recording views. Empty utility',
+        'controls stayNA, and zero intervention is not an identity certificate.', '']
+    (PUBLIC/'per_source.md').write_text('\n'.join(lines))
     gate = ['# Original-Rule Gates', '', '- Real training/resume/refit/replay: pass.',
         '- Own-fitting preprocessing and held-source exclusion checks: pass.',
         f"- Main expansion screen: {s['expansion_supported']}."]

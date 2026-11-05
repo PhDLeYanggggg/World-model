@@ -11,15 +11,31 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing an explicit-scale ablation after a causal input audit found that
-57.05% of proposed rows in source078 lie outside the fitting log-scale range.
-The new risk heads remove only that input; normalized motion and the original
-2% risk/support rules stay fixed. Six real fits and one exact full refit have
-completed14,000updates, with MSE as the primary comparison and signed-cost
-learning secondary. All models are frozen before evaluation. This is not
-full-policy scale invariance or a result claim before evaluation finishes.
-The real-data resume pilot completed400updates; both arms reproduce exactly.
-[Registered comparison](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/protocol.md).
+I tested whether explicit pixel scale misleads the neural intervention-risk
+model. Six real retrained models, a full refit and exact prediction replay
+are complete. I removed only the risk head's log-scale input and retained
+the original 2% safety and support requirements.
+
+| MSE risk head | Known ADE gain over floor | Hard gain | Worst defined easy-net degradation | Full risk/support |
+|---|---:|---:|---:|---:|
+| Original input | 3.60% | 4.63% | 38.90% | 0/17 |
+| Explicit scale removed | 4.15% | 5.45% | 47.59% | 0/17 |
+
+**Average utility improves, but the safety repair fails.** The matched gain
+is +0.5525 percentage points. Some scenes benefit, another loses useful
+interventions, and the worst easy-case degradation increases. The secondary
+signed-cost comparison shows the same aggregate utility/safety tradeoff.
+Neither version is deployed, and neither passes its expansion screen.
+
+These are repeated development results on seven SOURCE units and one producer
+seed, not independent confirmation. Missing-reference and empty-control cases
+remain NA. Removing one input is not full-policy coordinate invariance, and
+this experiment does not train new trajectory dynamics. Evaluation rules and
+reserved data are unchanged.
+Thirty-one focused tests pass; the full historical suite was not rerun.
+[Complete comparison](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/result_interpretation.md),
+[running and recovery](outputs/publication_readiness_2026_09/moving_scale_ablation_v1/operation_zh.md).
 
 ### Completed Signed-Cost Comparison
 
