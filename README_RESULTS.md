@@ -21,7 +21,10 @@ Fixed ridge probes compare kinematic64 + rollout/history32 with and without
 these features in leave-one-source-out fitting folds. Preprocessing, target
 scales and coefficients use only each probe's fitting sources. This is not
 independent confirmation: the parent source data have already been exposed.
-Seven focused synthetic/schema tests pass; real probe results are not_run yet.
+Nine focused synthetic/schema/integration tests pass; real probe results are
+not_run yet. An initial serialization mismatch stopped the first attempt before
+probe fitting. Its receipt is retained; the corrected registration also reuses
+the parent's full attribution helper for exact comparison.
 The original safety/support rules are unchanged. No new V/H or threshold search.
 [Protocol](outputs/publication_readiness_2026_09/moving_candidate_neighbor_v1/protocol.md).
 

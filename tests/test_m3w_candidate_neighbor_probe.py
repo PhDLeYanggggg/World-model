@@ -1,4 +1,5 @@
 import numpy as np
+import json
 import pytest
 from src.world_model import m3w_candidate_neighbor_basis as api
 from src.evaluation import m3w_candidate_neighbor_probe as probe
@@ -23,6 +24,12 @@ def test_known_paths_and_static_neighbors():
     assert y[0, 0, 12] == pytest.approx(37**.5)
     assert y[0, 0, 20] == pytest.approx(37**.5)
     np.testing.assert_array_equal(api.chunked(x, 1), y)
+
+
+def test_feature_names_are_json_stable():
+    from scripts.diagnose_m3w_candidate_neighbors import features
+    names = list(features.NAMES)
+    assert json.loads(json.dumps(names)) == names
 
 
 def test_no_neighbors_masked_values_and_unaligned_time():
@@ -83,3 +90,13 @@ def test_probe_replay_and_synthetic_predictive_control():
     assert a == b and a['relative_MSE_improvement'] > .9
     for key in arrays:
         np.testing.assert_array_equal(arrays[key], again[key])
+
+
+def test_frozen_parent_attribution_roundtrip(tmp_path):
+    from scripts.diagnose_m3w_candidate_neighbors import api as neural, frozen_slices
+    from tests.test_m3w_harm_floor_risk import prepared
+    neural.torch.set_num_threads(1)
+    data, origin, settings = prepared(tmp_path); data = neural.prepare(data, origin)
+    state = neural.fit(data, origin, arm='relational', settings=settings, identity={}, path=tmp_path/'fit.pt.gz')
+    value = frozen_slices(state, data, api.basis(data['causal']['x']), lambda: None)
+    neural.base.exact(value['total'], neural.attribution(state, data))

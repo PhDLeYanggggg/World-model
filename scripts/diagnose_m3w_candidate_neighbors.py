@@ -35,7 +35,7 @@ def frozen_slices(state, data, added, guard):
     y = (api.parent.kin.parent.signed(data['truth_by_arm']['bound_aware']) /
         api.torch.from_numpy(api.parent.kin.parent.normalizer(data['preprocess']))).numpy()
     w = api.parent.query_weights(c, state['sampler']['counts'])
-    all_metrics = diagnose(r, d, y, c['allowed'], data['observed_future'], w)
+    all_metrics = api.previous.previous.attribute(r, d, y, c['allowed'], data['observed_future'], w)
     support = c['allowed'] & data['observed_future'][:, None]
     coordinate = added[..., 20]; proposal = c['allowed']
     # Causal own-B proposals determine cuts; outcome availability cannot move them.
@@ -104,9 +104,12 @@ def main():
         started, guard, beat = run.old.old.previous.teacher.lineage.runtime({}, source.read(run.CONFIG), args.phase)
         _, values = run.register(beat)
         api.base.exact(source.read(run.PUBLIC/'verification.json')['analysis_sha256'], source.sha(run.PUBLIC/'analysis.json'))
-        reg = PUBLIC/'registration.json'
+        reg = PUBLIC/'registration_v3.json'
         source.once(reg, dict(parent=source.artifact(run.REG), parent_result=source.artifact(run.PUBLIC/'analysis.json'),
-            files={str(f.relative_to(ROOT)): source.sha(f) for f in FILES}, feature_names=features.NAMES,
+            files={str(f.relative_to(ROOT)): source.sha(f) for f in FILES}, feature_names=list(features.NAMES),
+            initial_registration=source.artifact(PUBLIC/'registration.json'),
+            intermediate_registration=source.artifact(PUBLIC/'registration_v2.json'),
+            correction='JSON-stable feature-name list and exact original attribution helper; no probe result yet',
             jobs=[j['key'] for j in values[3]], ridge_penalty=.01, own_B_only=True,
             followup_screen='MSE improves >=1% and joint sign-cost nonworse in >=2/3 contexts',
             new_V_or_H=False, original_rules_unchanged=True, identity_certification=False))
