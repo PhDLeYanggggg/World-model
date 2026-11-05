@@ -145,7 +145,22 @@ not metric, verified seconds, SDDt50, true3D or foundation. Stage5C/SMC off.
                 fmt = lambda values: 'NA' if values is None else ', '.join(number(x) for x in values)
                 lines.append(f"| {scope} | {arm} | {sub} | {r['known_rows']} | {fmt(r['predicted_excess_sum'])} | "
                     f"{fmt(r['actual_excess_sum'])} | {fmt(r['underprediction_fraction'])} |")
-    lines += ['', '## Limits And Next Decision', '',
+    lines += ['', '## Reading The Pilot', '',
+        f"Mean minus old conditioned known utility: {number(a['paired']['mean_minus_conditioned']['known_pp']['mean'])}pp; "
+        f"quantile minus old: {number(a['paired']['quantile_minus_conditioned']['known_pp']['mean'])}pp.",
+        f"The quantile switch rate is {number(a['policy']['quantile90_veto']['switch_percent']['mean'])}%, "
+        f"versus {number(a['policy']['conditioned_veto']['switch_percent']['mean'])}% for the old conditioned veto.",
+        'These are the identical seven pilot SOURCE units, not the previous full',
+        '23-source experiment. Neither point estimates nor this one seed establish',
+        'independent significance. See every source/context contrast in analysis.', '',
+        'The fit-versus-held table matters: if the admitted fitting subset already',
+        'has underestimated excess, the failure cannot be attributed solely to',
+        'unseen-scene shift. Marginal tail coverage and conditional admitted-set',
+        'error are different. Underprediction of a negative budget excess does',
+        'not itself mean harm; actual positive excess and full record gates must',
+        'still be inspected. Conversely, low marginal underprediction frequency',
+        'does not certify selected mean harm. See the pre-readout method note.', '',
+        '## Limits And Next Decision', '',
         'Training fit, held prediction error, and policy safety are separate tests.',
         'A lower fraction of underpredictions is not by itself useful intervention:',
         'excessive abstention can lose benefit while still leaving selected harm or',

@@ -11,10 +11,33 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-My next controlled experiment directly predicts whether an intervention exceeds
-the original harm budget. A small, fixed-context mean-versus-quantile comparison
-is registered first; it has no result yet and does not change the safety rules.
-[Protocol](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/protocol.md).
+I tested a more direct way to learn intervention risk: predict how far an
+action lies above or below the original harm budget. Six neural heads compare
+ordinary mean regression with a fixed upper-quantile objective, with matched
+initialization, sampling and 2,000 updates per head. This is a deliberately
+limited model-repair experiment on seven already exposed SOURCE units, not an
+independent benchmark or a full multi-seed result.
+
+| Policy on the same pilot sources | Known ADE gain over floor | Intervention rate | Full risk/support views passed |
+|---|---:|---:|---:|
+| Previous proposal-conditioned critic | 5.33% | 31.79% | 1/17 |
+| Direct mean-risk head | 4.09% | 21.31% | 0/17 |
+| Direct upper-quantile head | 0.15% | 1.52% | 2/17 |
+
+Neither repair is deployable. The upper-quantile head discards most useful
+interventions yet still violates the original risk requirements. The problem
+also appears on its fitting data, so unseen-scene shift is not the only
+explanation. Marginal prediction quality does not ensure accurate risk on the
+subset a model chooses to admit. I retain the failed and undefined cases,
+including the quantile policy's two unavailable matched utility comparisons.
+
+All six fits, the independent full refit, checkpoint resume and readout replay
+are verified. The original 2% rules remain unchanged; there is no identity-
+fallback certificate or deployment upgrade. The pilot does not meet its
+prespecified condition for expansion.
+[Results and failure analysis](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/README.md).
+
+### Previous Full Comparison
 
 I completed a controlled test of proposal-conditioned risk learning: the risk
 model learns only the actions proposed by a router fitted on different source

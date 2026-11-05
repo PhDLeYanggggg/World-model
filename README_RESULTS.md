@@ -14,7 +14,7 @@ The next intervention is a model-training change: source-separated neural
 critics with their own fitting-only preprocessing and nested C validation.
 No new H test is opened by this decision.
 
-## Direct Tail Risk Pilot: Training Complete, Readout In Progress
+## Direct Tail Risk Pilot: Complete, No Repair Demonstrated
 
 I am testing whether directly predicting the two signed 2% budget excesses,
 using a fixed upper-quantile loss, improves admission over an identical mean
@@ -28,8 +28,33 @@ exactly after resume:400actual updates,33.22s,2.06GB peak RSS, observed exit0.
 All six fits completed2,000updates each:12,000primary updates in456.69s,
 6.41GB peak RSS, observed exit0 under PID68847. The first complete refit is
 exact, and all three mean/quantile pairs match preprocessing and sampling.
-Twenty-six focused checks pass. Every weight is frozen; readout is in progress.
-[Registered protocol](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/protocol.md).
+Twenty-six focused checks pass. Readout completed with observed exit0 in46.10s;
+exact replay completed with observed exit0 in45.20s. All three inference blocks,
+old policy predictions and original metric readouts reproduce. No new H opened.
+
+The pilot covers7SOURCE units/17recording views, one seed17, three fixed contexts.
+It is not the previous23-source/108-head study. Source-macro known ADE gains
+over the same floor are5.3318%old conditioned,4.0912%new mean,0.1515%new quantile.
+New-minus-old known differences are-1.2406pp and-5.1804pp, respectively.
+Quantile-minus-mean completion lower is-5.2444pp; all three context lower
+contrasts are negative. These are descriptive pilot values, not significant
+independent-test effects. No confidence interval is claimed for this pilot.
+
+Mean switches21.3077%, quantile1.5194%, old31.7941%. Full original risk/support
+passes0/17mean,2/17quantile,1/17old. Quantile still has10known-all and9known-easy
+risk violations,4undefined selected-easy views, worst defined signed easy-net
+degradation7.4101%. Its matched primary is unavailable in2/7source views; the
+old24group primary remainsNA. No identity certificate is substituted.
+
+The selection-conditioned error exists even in fitting data: the mean head's
+admitted easy-budget excess sums to-47537.18predicted versus+2000.15observed;
+quantile-312.74versus+7.78. These pooled repeated-view sums are diagnostics,
+not independent observations. On held sources the quantile head predicts
+-8092.24easy excess but realizes+2441.24on known admitted rows. Direct signed
+outputs and tail loss did not repair this bias. The fixed expansion criterion
+fails; deployment and submission readiness remain unchanged/false.
+[Completed evidence](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/README.md),
+[protocol](outputs/publication_readiness_2026_09/moving_direct_tail_risk_pilot_v1/protocol.md).
 
 ## Proposal-Conditioned Risk Learning: Complete, Original Risk Still Fails
 
