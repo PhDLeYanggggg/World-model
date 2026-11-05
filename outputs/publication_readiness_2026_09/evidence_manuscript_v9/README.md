@@ -103,6 +103,12 @@ source/PDF/visual checks passed. This does not change scientific status.
 
 ## New Evidence Addendum
 
+The [peer-participation factorial addendum](../moving_peer_participation_v1/paper_addendum.md)
+separates candidate identity from omission of fallback peers with six new fits
+and six verified controls. The registered primary still fails0/3internal
+contexts; partial recovery does not establish safe deployment. All12metrics
+replay exactly. It is a separate addendum, not part of the unchanged compiled PDF.
+
 The [proposal-context addendum](../moving_proposal_context_v1/paper_addendum.md)
 records six matched real neural continuations. Candidate-conditioned peer
 context gives no consistent fitting decision gain; the fixed follow-up screen

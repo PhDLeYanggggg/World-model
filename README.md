@@ -11,13 +11,33 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am now separating two model-input choices that the last experiment changed
+I separated two model-input choices that the previous experiment changed
 together: which forecast represents a peer, and whether fallback peers remain
-visible. Six new matched fits are running to complete a four-cell comparison
-with six verified existing controls. The real-data pilot confirms causal-floor
-inputs, exact resume and legacy-model replay. This is a model experiment, not
-a revision of the original 2% rules; no new scientific result is available yet.
-[Prospective protocol](outputs/publication_readiness_2026_09/moving_peer_participation_v1/protocol.md).
+visible. Six new neural fits and six verified existing controls complete the
+four-cell comparison, with matched capacity, initialization, training and loss.
+
+**Keeping fallback peers did not produce a reliable decision improvement.**
+
+| Context | Risk MSE reduction | Decision-cost reduction | Harmful-admission-cost reduction |
+|---|---:|---:|---:|
+| 0 | +0.043% | -0.043% | +8.922% |
+| 1 | -0.279% | -4.108% | -19.095% |
+| 2 | -0.402% | +0.675% | +9.027% |
+
+Positive reductions mean better. These are fitting diagnostics, not test
+trajectory gains. Retaining fallback peers partially repairs two prior failures,
+but the registered primary fails the fixed internal screen in all three contexts.
+No additional development or reserved-test evaluation is opened.
+
+All six fresh fits finish 1,000 updates. Resume, legacy-engine replay, a full
+repeat and all twelve cells' metrics agree exactly. The original 2% safety and
+support rules remain unchanged; no identity exemption or deployment upgrade is
+introduced. The next question is whether candidate-relative peer information
+adds source-held-out predictive value beyond the existing pooled representation.
+The paper is not yet submission-ready.
+[Results and loss curves](outputs/publication_readiness_2026_09/moving_peer_participation_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_peer_participation_v1/failure_analysis.md),
+[protocol](outputs/publication_readiness_2026_09/moving_peer_participation_v1/protocol.md).
 
 ### Last Completed Peer-Context Experiment
 

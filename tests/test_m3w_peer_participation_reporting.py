@@ -55,3 +55,16 @@ def test_report_and_readonly_run_share_lock(tmp_path, monkeypatch):
             report.main()
     assert calls == []
     report.main(); assert calls == [True]
+
+
+def test_context_separation_is_finite_and_does_not_change_parent(tmp_path):
+    from tests.test_m3w_proposal_context_risk import fixture
+    from scripts.diagnose_m3w_moving_peer_participation import context_separation
+    d, warm, _ = fixture(tmp_path); before = copy.deepcopy(warm)
+    result = context_separation(d, warm, lambda:None)
+    report.api.base.exact(before, warm)
+    assert set(result) == {'same_active', 'proposed_action', 'proposed_all'}
+    for value in result.values():
+        assert value['proposals'] == 3
+        assert value['relative_RMS_difference'] >= 0
+        assert -1 <= value['cosine_mean'] <= 1

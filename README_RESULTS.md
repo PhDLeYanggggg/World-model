@@ -14,19 +14,50 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Peer Participation: Prospective Factorial Completion
+## Peer Participation: Six New Fits Complete, Primary Screen Failed
 
-Six new neural fits are running: same-index context over active peers, and
-proposed-candidate context over all peers with causal-floor context for
-non-proposers. Six previous controls will be cached_verified by exact metric
-and checkpoint checks. The primary contrast keeps all peers fixed; secondary
-contrasts separate candidate identity and peer inclusion. No new scientific
-result exists yet. Twenty-three focused tests pass, not a model gate.
-Real pilot PID36108 exits0 in132.120s, peak RSS7,696,744,448bytes. Its500updates
-verify both new arms' resume, initial-parent identity, and exact reproduction
-of the old100-update training engine. All62,466 own-B floor paths match exactly.
-Original 2% rules, NA support, closed reserved sets and previous failures remain.
-[Protocol](outputs/publication_readiness_2026_09/moving_peer_participation_v1/protocol.md).
+`fresh_run`: six real neural fits complete the missing same-active and
+proposed-all cells. `cached_verified`: six unchanged same-all/proposed-active
+controls, including exact checkpoint and metric checks. All12cells share
+capacity, initial function, draws, scalers and the original joint objective.
+Each model completes1,000updates with76,548parameters. No threshold change.
+
+The registered proposed-all versus same-all contrast gives MSE reductions
++0.042702%,-0.279415%,-0.402056%; joint-cost reductions-0.043263%,-4.107580%,
++0.674586%; false-safe-cost reductions+8.921983%,-19.094560%,+9.027022%.
+These are own-fitting diagnostics, not held trajectory gains. The fixed internal
+screen fails0/3. Extra nested-C/H readout is `not_run`; old17-view failure and
+original24-group primary NA remain unchanged. No favorable secondary cell is
+substituted for the primary.
+
+Pilot PID36108 exits0 in132.120s, peak RSS7,696,744,448bytes:500updates,
+exact new-arm resume, initial-parent identity and old100-update engine replay.
+All62,466 own-B floor paths match exactly. Train PID36291 exits0 in778.812s,
+peak RSS7,301,939,200bytes:6,000primary plus1,000exact full-refit updates.
+Verification PID37523 exits0 in43.274s; all12initial/final metrics and
+attributions reproduce. Forty-four focused tests pass in3.85s; the full
+historical suite was not rerun. Loss/cost figure visually inspected.
+Completed read-only replay PID37842 exits0 in44.166s, reproduces all frozen
+metrics exactly and leaves all33then-existing public files unchanged. This is
+execution verification, not independent confirmation. The linked paper addendum
+is not incorporated in the unchanged compiled v9 PDF.
+
+Posthoc diagnosis PID37605 exits0 in38.610s. Under proposed context, retaining
+fallback peers improves two contexts2.6809%/1.2265% but worsens one0.9717%.
+Holding active participation fixed, candidate-identity changes worsen all three
+decision costs. Source065 contributes97.3% of context1's main cost increment.
+Parent representations remain highly aligned (cosines0.9984/0.9910/0.9949),
+not identical. Omitted background is not a sufficient explanation or repair.
+
+Original2% all/easy harm, easy-net and support rules remain. No identity
+certificate, no new H, no deployment or submission-ready claim. Native
+obs8/pred12 silver image coordinates, not metric/seconds/true3D/foundation.
+Stage5C/SMC off. Next: source-held-out information test of ego-candidate-relative
+peer representations against existing relational features, checking prior
+negative neighbor probes first; no new reserved evaluation or threshold sweep.
+[Results](outputs/publication_readiness_2026_09/moving_peer_participation_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_peer_participation_v1/failure_analysis.md),
+[paper addendum](outputs/publication_readiness_2026_09/moving_peer_participation_v1/paper_addendum.md).
 
 ## Proposal-Conditioned Peer Context: Six Fits Complete, Screen Failed
 
