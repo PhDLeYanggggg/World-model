@@ -14,7 +14,7 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Paired Decision Experiment: Registered, Not Yet Trained
+## Paired Decision Experiment: Recovery Pilots Complete
 
 Fresh own-B ranking and exact replay distinguish score ordering from decision
 errors. Harm-floor AUROC is0.9702/0.8881/0.7272; cost-weighted AUROC is
@@ -29,7 +29,10 @@ the original neural architecture, inputs, preprocessing, loss anchors, query
 draws, 2,000-update budget and safety/readout rules. Pairs stay inside complete
 queries; zeros/unknowns are not beneficial labels. Point/rank terms match value
 and gradient at zero, not throughout training. No new inference thresholds,
-reserved data or claimed gain. [Diagnostic](outputs/publication_readiness_2026_09/moving_discrimination_v1/README.md),
+reserved data or claimed gain. Real pilot PID16418 completed all three exact
+50+50-versus100-update recovery comparisons,600 updates including repeats.
+Full nine-fit training is next; pilot success is not scientific success.
+[Diagnostic](outputs/publication_readiness_2026_09/moving_discrimination_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
 
 ## Harm-Weight Allocation: Fewer Harmful Admissions, Lower Utility
