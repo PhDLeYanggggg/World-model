@@ -14,7 +14,7 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Paired Decision Experiment: Recovery Pilots Complete
+## Paired Decision Experiment: Full Training Resumed
 
 Fresh own-B ranking and exact replay distinguish score ordering from decision
 errors. Harm-floor AUROC is0.9702/0.8881/0.7272; cost-weighted AUROC is
@@ -31,7 +31,11 @@ queries; zeros/unknowns are not beneficial labels. Point/rank terms match value
 and gradient at zero, not throughout training. No new inference thresholds,
 reserved data or claimed gain. Real pilot PID16418 completed all three exact
 50+50-versus100-update recovery comparisons,600 updates including repeats.
-Full nine-fit training is next; pilot success is not scientific success.
+Full nine-fit training is running. The first process (PID16893) was absent
+on inspection, with no completion receipt and a last heartbeat at update1500.
+Its terminal exit code was unavailable, so no crash cause is inferred.
+After confirming no duplicate process, unchanged `train --resume` (PID18194)
+continued to update1600. Pilot success and recovery are not scientific success.
 [Diagnostic](outputs/publication_readiness_2026_09/moving_discrimination_v1/README.md),
 [protocol](outputs/publication_readiness_2026_09/moving_paired_decision_v1/protocol.md).
 
