@@ -28,6 +28,9 @@ In the first fitting context, joint decision cost falls13.90% and zero-only
 rejection cost falls45.32%, but the all-channel sign cost rises12.57% versus
 the matched control. The remaining contexts are still training. This partial
 fitting result does not establish safe generalization or change deployment.
+The second context also lowers joint cost (17.58%) but increases false-safe
+decisions from20 to35. Both favorable and unfavorable effects are retained;
+the largest fitting context is still running.
 
 I trained six matched models to test whether learning the combined risk and
 intervention decision improves on training the two heads independently.

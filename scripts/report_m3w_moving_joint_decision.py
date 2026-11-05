@@ -39,7 +39,7 @@ def main():
     held = a['status'] == 'fresh_run'
     if held != screen['followup_readout_allowed']:
         raise ValueError('Prespecified screen determines held readout')
-    pairs = []
+    pairs, source_pairs = [], []
     for job in sorted({r['job'] for r in rows}):
         arms = {r['arm']: r for r in rows if r['job'] == job}
         left, right = arms['per_channel'], arms['joint']
@@ -53,8 +53,19 @@ def main():
             false_safe_cost_reduction_percent=reduction(la['false_safe_cost'], ra['false_safe_cost']),
             zero_only_reject_cost_reduction_percent=reduction(la['false_reject_partition']['zero_only']['cost'],
                 ra['false_reject_partition']['zero_only']['cost'])))
+        local_a, local_b = left['joint_attribution']['by_source'], right['joint_attribution']['by_source']
+        if set(local_a) != set(local_b):
+            raise ValueError('Same fitting sources required for attribution')
+        for site in sorted(local_a):
+            x, y = local_a[site], local_b[site]
+            source_pairs.append(dict(job=job, source=site,
+                control_joint_cost=x['total_joint_cost'], joint_joint_cost=y['total_joint_cost'],
+                joint_cost_change=y['total_joint_cost']-x['total_joint_cost'],
+                false_safe_cost_change=y['false_safe_cost']-x['false_safe_cost'],
+                false_reject_cost_change=y['false_reject_cost']-x['false_reject_cost']))
     phases = {p: source.read(PUBLIC/(p+'_execution.json')) for p in ('pilot', 'train', 'evaluate', 'verify')}
     summary = dict(status=a['status'], fitting=[compare(r) for r in rows], matched_contrasts=pairs,
+        source_contrasts=source_pairs,
         fitting_screen=screen, phases=phases, training='fresh_run_complete',
         primary_updates=12000, exact_refit_updates=2000, pilot_updates=400,
         all3_controls_reproduce_previous_exactly=True, full_refit_exact=True,
@@ -105,7 +116,15 @@ def main():
     text += ['', 'Zero-only/nonzero-only/both are disjoint. Per-output blocker counts',
         'overlap and cannot be added as independent samples. Target-safe means',
         'observed-label normalized sign only, not a deployment safety certificate.',
-        'Per-source attribution is retained in every fitting receipt.', '', '## Held Development', '']
+        'Per-source attribution is retained in every fitting receipt.', '',
+        '| Context | Fitting source | Joint cost change | False-safe cost change | False-reject cost change |',
+        '|---|---|---:|---:|---:|']
+    for r in source_pairs:
+        text.append(f"| {r['job']} | {r['source']} | " + ' | '.join(f"{r[k]:+.8f}" for k in
+            ('joint_cost_change', 'false_safe_cost_change', 'false_reject_cost_change'))+' |')
+    text += ['', 'Positive changes above are worse. These are absolute contributions',
+        'under the same original query weighting, not source-standardized effects',
+        'or independent-sample estimates. Negative slices are retained.', '', '## Held Development', '']
     if not held:
         text += ['**not_run:** '+a['reason']+'.',
             'The evaluate command records this decision; it does not evaluate new',

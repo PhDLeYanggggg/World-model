@@ -34,6 +34,11 @@ sign cost worsens12.5674% versus the fresh per-channel control. False rejections
 fall2,987 to2,655. This is partial fitting evidence; remaining contexts are
 running and no held readout has occurred. Thirty-eight focused tests pass
 across two checks (37 in4.37s and reporting-roster check1 in1.54s).
+Second matched context is complete and its control also reproduces exactly.
+Joint cost falls17.5846%, zero-only rejection cost52.5479%, but false-safe cost
+rises from0.00004070 to0.00009716, with20 to35 false-safe proposals. False
+rejections fall2,073 to1,924. Four of six main fits are frozen; the largest
+context remains in progress. These are fitting counts/costs, not test safety.
 
 Correction, 5 November: a fresh own-B row audit confirms exactly one frozen
 router proposal per supported row. The earlier all-action-averaging explanation
