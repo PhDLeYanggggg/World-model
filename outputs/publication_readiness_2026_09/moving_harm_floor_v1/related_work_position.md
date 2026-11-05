@@ -1,7 +1,8 @@
 # What This Experiment Can Contribute
 
 Official primary-source abstracts and publication metadata rechecked on
-5 November 2026; this refresh is not a full rereading or theorem verification.
+5 November 2026. The initial pass was metadata-only; the method-section review
+below followed while the fixed experiment trained. It is not proof verification.
 
 [Mao, Mohri and Zhong, ICML 2024](https://proceedings.mlr.press/v235/mao24d.html)
 study regression with multiple experts, including fixed-predictor two-stage
@@ -25,3 +26,30 @@ The formal paper still needs successful original-rule results, independent
 supported evidence, the planned seeds and matched strong forecasting/deferral
 controls. Neither a favorable loss curve nor a diagnostic target-safe oracle
 replaces those requirements. See the broader [related-work record](../cost_decision_related_work_20261029.md).
+
+## Method Review During Training
+
+Mao et al., section4, equations3-4: with the predictor frozen, expert costs
+weight the routing surrogate. This is a relevant matched control for routing;
+it does not make our four-output maximum an instance of their proven loss.
+[Official paper](https://raw.githubusercontent.com/mlresearch/v235/main/assets/mao24d/mao24d.pdf).
+
+Cortes et al., sections3-5: input-expert rewards induce a cost-sensitive
+classification problem. MILD uses expert-specific margins inside a
+reward-weighted logistic objective. That differs from raising small harmful
+target weights in our binary admission surrogate. Their expected-loss
+consistency results do not establish our per-recording 2% contract or repair
+missing reference support. This last comparison is an inference about the two
+different objectives, not an extension of their theorem.
+[Official paper](https://raw.githubusercontent.com/mlresearch/v306/main/assets/cortes26b/cortes26b.pdf).
+
+Reviewed text: Mao PDF pages2,4-6 and Cortes pages2-8; rendered equation-bearing
+pages5 and6 respectively were checked visually. Appendices/proofs and their
+code were not verified. No new prior-work implementation or experimental
+claim follows from this review; the running protocol was not changed.
+
+Downloaded PDF SHA256:
+- Mao: `06d3b0b82937a157b23084ba8ba6c7110420edec0ecd7e545f57fee18a9a1ed5`.
+- Cortes: `e1e335bfa5de101a580197daf0bdbb4d6a0660c1a1852f4b6721fb095420ed72`.
+
+Third-party PDFs and temporary renders are not included in the repository.

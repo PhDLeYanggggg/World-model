@@ -19,6 +19,41 @@ def verify_roster(rows, jobs):
         raise ValueError('All nine unique completed fits required')
 
 
+def figures(rows):
+    import matplotlib
+    matplotlib.use('Agg')
+    matplotlib.rcParams.update({'svg.hashsalt': 'moving_harm_floor_v1', 'svg.fonttype': 'none', 'font.size': 9})
+    import matplotlib.pyplot as plt
+    jobs = sorted({r['job'] for r in rows}, key=lambda x: int(x.rsplit('critic', 1)[1]))
+    colors = {'joint': '#555555', 'uniform_harm': '#2878A0', 'harm_floor': '#B84848'}
+    public = PUBLIC/'figures'; public.mkdir(exist_ok=True)
+    for mode in ('common_risk_loss', 'decision_costs'):
+        fig, axes = plt.subplots(1, 3, figsize=(12, 3.6), layout='constrained')
+        for ax, job in zip(axes, jobs):
+            arms = {r['arm']: r for r in rows if r['job'] == job}
+            if mode == 'common_risk_loss':
+                for arm in api.ARMS:
+                    trace = arms[arm]['trace']
+                    ax.plot([t['step'] for t in trace], [t['risk_MSE'] for t in trace],
+                        color=colors[arm], label=arm, linewidth=1.2)
+                ax.set(xlabel='Optimizer update', ylabel='Common risk MSE (sampled batches)')
+            else:
+                metrics = ('false_safe_cost', 'false_reject_cost', 'total_joint_cost')
+                for i, arm in enumerate(api.ARMS):
+                    values = [arms[arm]['joint_attribution']['total'][k] /
+                        arms['joint']['joint_attribution']['total'][k] for k in metrics]
+                    ax.bar(source.np.arange(3)+(i-1)*.24, values, width=.24, color=colors[arm], label=arm)
+                ax.axhline(1, color='#333333', linewidth=.7, linestyle='--')
+                ax.set(xticks=[0, 1, 2], xticklabels=['False safe', 'False reject', 'Joint cost'],
+                    ylabel='Own-fitting cost / joint control (lower is better)')
+            ax.set_title(job.rsplit('_', 1)[1]); ax.spines[['top', 'right']].set_visible(False)
+        axes[0].legend(frameon=False, fontsize=8)
+        fig.suptitle('Fitting diagnostics only: not held utility or safety certification', fontsize=11)
+        svg = public/(mode+'.svg'); fig.savefig(svg, metadata={'Date': None})
+        svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
+        fig.savefig(run.PRIVATE/(mode+'.png'), dpi=150); plt.close(fig)
+
+
 def main():
     a = source.read(PUBLIC/'analysis.json'); v = source.read(PUBLIC/'verification.json')
     api.base.exact(v['analysis_sha256'], source.sha(PUBLIC/'analysis.json'))
@@ -30,6 +65,7 @@ def main():
         raise ValueError('Actual complete fits, controls, refit, weights and replay required')
     rows = [source.read(source.checked(ref)) for ref in freeze['fits']]
     verify_roster(rows, source.read(run.REG)['jobs'])
+    figures(rows)
     screen = run.fitting_screen([r for r in rows if r['arm'] == 'harm_floor'])
     api.base.exact(screen, a['fitting_screen'])
     held = a['status'] == 'fresh_run'
@@ -56,6 +92,14 @@ def main():
         completion_bounds_are_sampling_CI=False, original_rules_unchanged=True, identity_certification=False,
         original24group_primary='not_estimable_not_passed', independent_confirmation=False,
         deployment_changed=False, submission_ready=False, stage5c_executed=False, smc_enabled=False)
+    first = next(r for r in rows if r['job'] == 'eqmotion_fold1_seed17_critic0' and r['arm'] == 'joint')
+    if first['checkpoint']['sha256'] != 'e4bad40a0b2f320f87d97c43fc00697765d56fb99e638d8f48a64dae471858fd':
+        raise ValueError('Recovered first checkpoint must remain byte-identical')
+    summary['recovery'] = dict(first_attempt_pid=9913, first_attempt_exit_code=1,
+        phase='receipt_serialization_after_first_complete_control',
+        original_checkpoint_sha256=first['checkpoint']['sha256'], checkpoint_bytes_unchanged=True,
+        first_fit_seconds=first['seconds'], completed_train_receipt_excludes_failed_attempt_wall_time=True,
+        serialization_amendment=source.artifact(run.AMENDMENT))
     source.once(PUBLIC/'result_summary.json', source.stable(summary))
     fmt = lambda x: 'NA' if x is None else f'{x:.4f}'
     text = ['# Harm-Weight Allocation Under Unchanged Safety Rules', '',
@@ -79,6 +123,11 @@ def main():
             ('joint_cost_reduction_percent', 'false_safe_cost_reduction_percent', 'false_reject_cost_reduction_percent'))+' |')
     text += ['', 'Negative reductions mean worse. Counts and normalized costs are fitting',
         'diagnostics, not held trajectory gains or deployment guarantees.', '',
+        '![Common risk loss, same query draws](figures/common_risk_loss.svg)', '',
+        'Different auxiliary weights make total training objectives incomparable',
+        'across arms. The plotted risk MSE is unchanged; sampled-batch values are',
+        'not full-population fitting loss. Curves may overlap.', '',
+        '![False-safe and false-rejection fitting costs](figures/decision_costs.svg)', '',
         '| Context | Positive weighted median | Uniform multiplier | Original positive mass | New positive mass |',
         '|---|---:|---:|---:|---:|']
     for job, w in summary['fitting_harm_weighting'].items():
@@ -113,6 +162,11 @@ def main():
     text += ['', 'Native arm64 PyTorch CPU 4/inter-op 1/workers 0. Checkpoints/heartbeat',
         'every 100 completed updates; 18,000 primary, 2,000 refit and 600 pilot updates.',
         'Own-B medians, mass controls and all sampler counts recompute exactly.', '',
+        'The training phase above is the resumed process. The first attempt exited1',
+        'at JSON receipt export after completing the first control. Its checkpoint',
+        f"is byte-identical after recovery; its {first['seconds']:.2f} fit seconds are",
+        'not included in resumed process time. No completed optimizer steps were',
+        'repeated. The original registration and failed attempt remain recorded.', '',
         'Parent assets cached_verified; training/diagnostics fresh_run. Reserved/H',
         'confirmation not_run. Original 2% rules unchanged, no identity exemption.',
         'Empty controls/support stay NA; original 24-group primary remains NA, not pass.',

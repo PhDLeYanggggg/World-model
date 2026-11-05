@@ -18,7 +18,9 @@ out simple benefit-mass dominance; lower-magnitude harmful cases remain weakly
 penalized. All three real recovery pilots match exactly. The first full fit
 finished, but its JSON receipt export failed; the checkpoint is intact. A
 serialization-only repair recovered it with an unchanged checkpoint hash.
-The remaining full fits are running; new scientific results are not yet available.
+Three full fits and an exact full treatment refit are complete; six fits remain.
+On the first fitting partition, the floor reduces harmful admissions but also
+rejects more useful proposals. Held-development results are not yet available.
 [Fixed experiment](outputs/publication_readiness_2026_09/moving_harm_floor_v1/protocol.md).
 
 I completed six matched neural fits to test a concrete loss problem: a channel
