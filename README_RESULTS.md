@@ -14,16 +14,18 @@ The intervention remains model training: source-separated neural critics with
 their own fitting-only preprocessing and nested C development evaluation.
 No new H test is opened by this decision.
 
-## Proposal-Conditioned Peer Context: Prospective
+## Proposal-Conditioned Peer Context: Pilot Complete, Training Running
 
-Seven focused synthetic/contract tests pass. Six matched neural continuations
+Thirty-four distinct focused tests pass. Six matched neural continuations
 are registered prospectively: same-action peer context versus frozen-proposal
 peer context, with identical initial predictions,76,548 parameters and1,000
 updates each. No loss/threshold/evaluation-rule change. A causal own-B input
 inspection finds mixed proposals in46/52,99/137,735/898 queries; overlapping
-queries are not independent scenes. The real pilot must reproduce the training
-proposal from the full legal-action mask before any new fitting. Real fitting
-and new performance readout are not yet run. Earlier selected-set failures are
+queries are not independent scenes. Pilot PID33505 exits0 in116.773s:400actual
+updates, both50+50-versus100 resume comparisons exact, initial parent predictions
+exact, all three training-proposal masks replay from full legal-action inputs.
+Training PID33697 is running the six fixed-budget fits; no new performance
+readout has run. Earlier selected-set failures are
 explicitly retained; this tests a narrow current-head input distinction.
 [Protocol](outputs/publication_readiness_2026_09/moving_proposal_context_v1/protocol.md).
 

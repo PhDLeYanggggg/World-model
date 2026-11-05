@@ -14,9 +14,10 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 I am testing a narrower model change after the source-weighting result below:
 a matched neural context branch that sees peers' actual frozen proposals,
 rather than each peer's same-index hypothetical candidate. The original loss,
-training budget, 2% risk rules and support requirements remain fixed. The code
-passes seven focused tests; real fitting and performance readout are pending.
-This is not yet evidence of an improvement.
+training budget, 2% risk rules and support requirements remain fixed. The real
+pilot reproduces resumed training and initial parent predictions exactly; all
+three own-B proposal masks replay from causal inputs. Thirty-four focused tests
+pass. The six full-budget fits are running; there is no performance claim yet.
 [Prospective protocol](outputs/publication_readiness_2026_09/moving_proposal_context_v1/protocol.md).
 
 ### Last Completed Experiment
