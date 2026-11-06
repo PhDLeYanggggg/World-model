@@ -62,6 +62,12 @@ The [English working manuscript](outputs/publication_readiness_2026_09/evidence_
 keeps these native-stride results separate from older European stride-12 and
 SDD studies. It remains an evidence draft, not a submission-ready paper.
 
+I am now separating past alignment from future camera extrapolation in a
+matched four-arm study. The two missing arms will be fully retrained; the
+original and combined arms remain verified cached controls. The primary
+comparison is fixed before fitting, with no new test access or changed risk
+rule. [Operator-ablation protocol](outputs/publication_readiness_2026_09/moving_camera_factor_v1/protocol.md).
+
 ### Previous Controller Experiment
 
 I tested a new observation from the past images: native image bounds and

@@ -16,6 +16,22 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Camera-Operator Ablation: Registered Before Real Fitting
+
+Previous goal turn is progress:six complete camera actors,full original control,
+one exact full treatment refit and complete prediction/scalar replay. Primary
+known-5.133066pp/lower-21.447401pp fails;past alignment and future restoration
+remain confounded. This turn separates them in twelve new full fits:past_only
+and future_only across six original source designs. Six identity and six both
+controls are cached_verified. Primary is fixed past_only-minus-identity,not
+the best arm chosen after scoring. Same inputs,core,loss,draws,4000updates and
+original2%/support/NA rules. No new parameters,residual head or test readout.
+Ten focused checks pass8.08s,including actual small-core updates and recovery.
+Full real recovery pilot/control must precede fitting. No real predictive
+success claimed. Fresh60sCREATE observation times out;remote state unknown,
+no mutations. Local route feasible based on prior full-fit measurements.
+[Protocol](outputs/publication_readiness_2026_09/moving_camera_factor_v1/protocol.md).
+
 ### Query-View Geometry: Complete Negative Component
 
 Six actual4000update treatment actors,one full original-control refit and one

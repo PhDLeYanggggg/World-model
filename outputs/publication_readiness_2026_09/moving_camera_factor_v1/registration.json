@@ -1,0 +1,566 @@
+{
+  "architecture": {
+    "channels": 64,
+    "family": "eqmotion_fixed_head",
+    "fixed_head": 0,
+    "hidden_nf": 64,
+    "history_steps": 8,
+    "input_conditioning": "observed_joint_max_norm",
+    "layers": 4,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "author_core": {
+    "adapter_sha256": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "commit": "5aec2e0b61c511fa93a24138dd90da59a089084b",
+    "files_sha256": {
+      "LICENSE": "f1d3136868b8e8bd929d21257c3b9c6970e398a052d6a7b5ed02cfc72c49caf1",
+      "README.md": "aded869035346f0a84b7786209d26355fd33c223046ccf2c4d7c009babe336a2",
+      "eth_ucy/dataloader_diverse.py": "51bec703ecbde61c4e9d3d1a26e0e51fc13fb1331b126d8faff525219f3656f2",
+      "eth_ucy/gcl_t.py": "ca6856d408c99a8cd97184861a646a87406bf2b09ec1d37dd517bc71c80d2e06",
+      "eth_ucy/model_t.py": "5d31dd6c5144ec4715a006bf1c3e5e8753a71a2dd87dc4ab42b1b80b98a6cfcc",
+      "eth_ucy/preprocessor.py": "790a3e4ceb7e24e2feda6335b117662085ea260d726af5617bf9efc06c976938",
+      "eth_ucy/process_eth_data_diverse.py": "faf14a90298643e467f6a509c6cfb8bc98435dd72bb5938a9a78247e11fe0f7d",
+      "main_eth_diverse.py": "1dc93be49d4f632df4d865647f66b0bc70d55d784f59219faaf3ec12cb5c87ad"
+    },
+    "license": "MIT",
+    "manifest_sha256": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "repository": "https://github.com/MediaBrain-SJTU/EqMotion"
+  },
+  "config": {
+    "artifact_cap_bytes": 536870912,
+    "bootstrap_resamples": 3000,
+    "bootstrap_seed": 39107,
+    "cached_both_controls": 6,
+    "cached_identity_controls": 6,
+    "component_screen": "positive_lower_and_CI_at_least8of14_known_positive_both_fold_known_means_positive",
+    "deployment_changed": false,
+    "disk_reserve_bytes": 2147483648,
+    "expected_queries": 1613,
+    "expected_recordings": 34,
+    "expected_rows": 125540,
+    "expected_sources": 14,
+    "forecaster_seeds": [
+      17
+    ],
+    "fresh_treatment_models": 12,
+    "full_identity_control_refits": 1,
+    "full_treatment_refits": 2,
+    "hard_runtime_limit_seconds": 43200,
+    "identity_certification": false,
+    "inference_batch_size": 128,
+    "interop_threads": 1,
+    "name": "moving_camera_factor_v1",
+    "new_outer_C_H_readout": false,
+    "new_own_B_readout": false,
+    "num_workers": 0,
+    "original_risk_budget": 0.02,
+    "primary": "past_only_minus_identity_whole12_paired_completion_lower",
+    "recovery_split": 100,
+    "recovery_total": 200,
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "steps_per_model": 4000,
+    "submission_ready": false,
+    "threshold_search": false,
+    "torch_threads": 4,
+    "treatment_arms": [
+      "past_only",
+      "future_only"
+    ],
+    "uninterrupted_optimizer_budget": 60200,
+    "warm_start": false
+  },
+  "controls": [
+    {
+      "both": {
+        "checkpoint": {
+          "bytes": 18298283,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/fits/eqmotion_A0_inner0_seed17/checkpoint.pt",
+          "sha256": "e112a83ffddf76430be922c9adab2b86860177e3c9cbb4bc1d8486c271c00bd8"
+        },
+        "forecast": {
+          "bytes": 564616,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A0_inner0_seed17_camera_actor.npz",
+          "sha256": "53f900b58ded03b744c6a549028ed013eaa5ed8b6eb818cd266d19bea102b0a6"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "camera_cv": {
+        "forecast": {
+          "bytes": 718258,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A0_inner0_seed17_camera_cv.npz",
+          "sha256": "e95923ef368dac3391ede46a1757d6a6b95e79ad69de6c43776cf8b0626c2f2c"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "identity": {
+        "checkpoint": {
+          "bytes": 18298219,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A0_inner0_seed17/checkpoint.pt",
+          "sha256": "549ba1573b5c5f7412222fab52d28f9c0e6df95ec4832d0485984d54896d04f3"
+        },
+        "forecast": {
+          "bytes": 694858,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A0_inner0_seed17.npz",
+          "sha256": "322915525685b65de1ce292b16e7fa3920d5047f642860f3f4efa1b1fd86c4a6"
+        },
+        "ids_key": "global_ids",
+        "prediction_key": "relative_prediction"
+      },
+      "job": "eqmotion_A0_inner0_seed17"
+    },
+    {
+      "both": {
+        "checkpoint": {
+          "bytes": 18338411,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/fits/eqmotion_A0_inner1_seed17/checkpoint.pt",
+          "sha256": "5acc325029c026fbbf5685e29d17bf4b2cf2154235866d6648c766280a64f17d"
+        },
+        "forecast": {
+          "bytes": 249221,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A0_inner1_seed17_camera_actor.npz",
+          "sha256": "3e4dbf49dfedda4f55c487bfcfb9b389ef2410593ddb7bad3c2b9a37fc489492"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "camera_cv": {
+        "forecast": {
+          "bytes": 336452,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A0_inner1_seed17_camera_cv.npz",
+          "sha256": "632c4a01037864165a714eba4000feaabe2fbc3256513c51c821ec47a9b4db1c"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "identity": {
+        "checkpoint": {
+          "bytes": 18338219,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A0_inner1_seed17/checkpoint.pt",
+          "sha256": "70c62819a1455e7f14855738f11230e0b6699c76ee0c2b806b287fe1a7393053"
+        },
+        "forecast": {
+          "bytes": 307002,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A0_inner1_seed17.npz",
+          "sha256": "43dca430e6c6f5f4e2731f56c228ab342c7b2e71150650271a440d51df147b6c"
+        },
+        "ids_key": "global_ids",
+        "prediction_key": "relative_prediction"
+      },
+      "job": "eqmotion_A0_inner1_seed17"
+    },
+    {
+      "both": {
+        "checkpoint": {
+          "bytes": 17801579,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/fits/eqmotion_A0_inner2_seed17/checkpoint.pt",
+          "sha256": "5993e3b2e4c1b61cfe12427c8fa912b526f17180e974e0bf0aca6d71c0335a8e"
+        },
+        "forecast": {
+          "bytes": 4068687,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A0_inner2_seed17_camera_actor.npz",
+          "sha256": "8833e4d1e62d0017ba0ea84b1169ddf56d2d6a00ab14ac92437b768c0e6a8792"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "camera_cv": {
+        "forecast": {
+          "bytes": 7843261,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A0_inner2_seed17_camera_cv.npz",
+          "sha256": "688177b1dbb1ed99769272929a73c6abc85f981b7b5e95edf6fb60fffc9322de"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "identity": {
+        "checkpoint": {
+          "bytes": 17801387,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A0_inner2_seed17/checkpoint.pt",
+          "sha256": "470570c393ca03f22addb4e3dc387f3e0417ce24ad0d6934a074e8e0562aca5c"
+        },
+        "forecast": {
+          "bytes": 5043594,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A0_inner2_seed17.npz",
+          "sha256": "4391884b5d889e3342a256f9fc9031b03250f53c8f84e03c6b087e4f912e9a81"
+        },
+        "ids_key": "global_ids",
+        "prediction_key": "relative_prediction"
+      },
+      "job": "eqmotion_A0_inner2_seed17"
+    },
+    {
+      "both": {
+        "checkpoint": {
+          "bytes": 18526891,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/fits/eqmotion_A1_inner0_seed17/checkpoint.pt",
+          "sha256": "515b9827bcab9af011b97f3b3b1ca23decc02985fb4aa747c9dac52add95e941"
+        },
+        "forecast": {
+          "bytes": 501531,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A1_inner0_seed17_camera_actor.npz",
+          "sha256": "5312635ac0b7b010ebba66b6e5fadc041ddf99ab4306a75d43c7fd4ef7c6b0f1"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "camera_cv": {
+        "forecast": {
+          "bytes": 969283,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A1_inner0_seed17_camera_cv.npz",
+          "sha256": "8de7030a506d90a59fb63ecf083b92a9f1546174d4072218c9892956365391fb"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "identity": {
+        "checkpoint": {
+          "bytes": 18526699,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A1_inner0_seed17/checkpoint.pt",
+          "sha256": "5247e8c62099fec257d9f7d5bb6288b0d065831cdac65dffb6e10ee77e90940e"
+        },
+        "forecast": {
+          "bytes": 619146,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A1_inner0_seed17.npz",
+          "sha256": "af14539b33b243e0d3d9a650833e0616f279204c0ba03cd90a89cf59b42607b4"
+        },
+        "ids_key": "global_ids",
+        "prediction_key": "relative_prediction"
+      },
+      "job": "eqmotion_A1_inner0_seed17"
+    },
+    {
+      "both": {
+        "checkpoint": {
+          "bytes": 18340203,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/fits/eqmotion_A1_inner1_seed17/checkpoint.pt",
+          "sha256": "74a4c3c452168b6e779f24367089ae205a19f9de4bbd0ef39df08fe6ecea647d"
+        },
+        "forecast": {
+          "bytes": 1797623,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A1_inner1_seed17_camera_actor.npz",
+          "sha256": "33617da1f85e29197f93137aa81599caf1bda7ba8842925d6ffa80c189c4854a"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "camera_cv": {
+        "forecast": {
+          "bytes": 3150497,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A1_inner1_seed17_camera_cv.npz",
+          "sha256": "4ccaa936871b62673ac19329d2f43069499163addadfec2c5a1a90680f34d805"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "identity": {
+        "checkpoint": {
+          "bytes": 18339883,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A1_inner1_seed17/checkpoint.pt",
+          "sha256": "76a4248758be622984e124d5e147df68334a1ed4a3f008f7e3d6e2607825c1db"
+        },
+        "forecast": {
+          "bytes": 2211898,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A1_inner1_seed17.npz",
+          "sha256": "d40a11e14b576e5b8a883899a414eb3a458f88680d0326f5f81c1a2b2e33b328"
+        },
+        "ids_key": "global_ids",
+        "prediction_key": "relative_prediction"
+      },
+      "job": "eqmotion_A1_inner1_seed17"
+    },
+    {
+      "both": {
+        "checkpoint": {
+          "bytes": 18018987,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/fits/eqmotion_A1_inner2_seed17/checkpoint.pt",
+          "sha256": "51217cf6c4388c7279243c62bdc90a9bd810bb8eb2edcf9f1bfaf23a9823f3a8"
+        },
+        "forecast": {
+          "bytes": 4216659,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A1_inner2_seed17_camera_actor.npz",
+          "sha256": "55f4d6e47b5e8b2eb3c7f88fcc1ac2cf17770d2cd131ac243680277e7efba332"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "camera_cv": {
+        "forecast": {
+          "bytes": 5279342,
+          "path": "data/stage_cvpr2027_experiments/moving_camera_frame_v1/forecasts/eqmotion_A1_inner2_seed17_camera_cv.npz",
+          "sha256": "dd5065617b6b7f1370881f1ef75965989dbe098da4f8bab5c63a71cc2be9f6d5"
+        },
+        "ids_key": "ids",
+        "prediction_key": "prediction"
+      },
+      "identity": {
+        "checkpoint": {
+          "bytes": 18018795,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A1_inner2_seed17/checkpoint.pt",
+          "sha256": "d3090dd627efdc9318a549d3a2441d5e410e49758c49539b737d2bd4e6e9feb5"
+        },
+        "forecast": {
+          "bytes": 5188746,
+          "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A1_inner2_seed17.npz",
+          "sha256": "fd1968ef56dba15c62eb6d8ee3a1892169cc841d31fdcf6988c4869429057363"
+        },
+        "ids_key": "global_ids",
+        "prediction_key": "relative_prediction"
+      },
+      "job": "eqmotion_A1_inner2_seed17"
+    }
+  ],
+  "cuts": {
+    "0": {
+      "easy": 9.545994051407813,
+      "hard": 29.899692038749063
+    },
+    "1": {
+      "easy": 15.403742715015557,
+      "hard": 49.24863795836583
+    }
+  },
+  "dependencies": {
+    "scripts/run_m3w_moving_camera_frame.py": "4657c9b0fa7d60b561c7a3f51a489cd18d1a85d6e426faa49dd5735b78923cdf",
+    "scripts/run_m3w_moving_prefix_actor.py": "0a81d3d70958e36f4619aa45c544a10a1f3a2c98f706c0ab89f3b4991551991a",
+    "scripts/run_m3w_moving_producer_crossfit.py": "b90142052f143fe6c3a3ae9fc42e6c8f5e5062156bc2fcd2336b74358e45eec5",
+    "src/training/m3w_camera_frame.py": "f584f1651aa80e4506f4c869fd3d9857f3fcfd12005524c1f949af6db26414f2",
+    "src/world_model/m3w_camera_frame.py": "dc116004a8c70281bbdc023e04e762ffe3c377bf951a17ed1eae2e6564786eb5",
+    "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+    "src/world_model/m3w_eqmotion_adapter.py": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+    "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613"
+  },
+  "files": {
+    "configs/m3w_moving_camera_factor_v1.json": "131d41fc70ac7215c2afb38edd67440540f6af79139b807908f0204f18b35c9f",
+    "outputs/publication_readiness_2026_09/moving_camera_factor_v1/protocol.md": "c14e1718da6bad63b1e274fc1a9d502efbf46e74b857e4b1f9ebc7e9e443aa97",
+    "scripts/run_m3w_moving_camera_factor.py": "beadff53aab9e24981abe34ec331517c6b2b930e8da572c926b1e2dad56dff86",
+    "src/world_model/m3w_camera_factor.py": "e5b2b9e5e727dc677c5198469ffd862638b235a98f984d45dc6e4874f27b5d74",
+    "tests/test_m3w_camera_factor.py": "59b043166d30340ef5c58a4c8bb2bf3cbe06e2c6e4a7a2ea7851babf82e71eff"
+  },
+  "independent_confirmation": false,
+  "jobs": [
+    {
+      "donor_sites": [
+        "moving_source_component_048",
+        "moving_source_component_067"
+      ],
+      "fit_sites": [
+        "moving_source_component_047",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062"
+      ],
+      "key": "eqmotion_A0_inner0_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 0,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_047",
+        "moving_source_component_052"
+      ],
+      "fit_sites": [
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "key": "eqmotion_A0_inner1_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 1,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_051",
+        "moving_source_component_062"
+      ],
+      "fit_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_052",
+        "moving_source_component_067"
+      ],
+      "key": "eqmotion_A0_inner2_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 2,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076"
+      ],
+      "fit_sites": [
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "key": "eqmotion_A1_inner0_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 0,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078"
+      ],
+      "key": "eqmotion_A1_inner1_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 1,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_077",
+        "moving_source_component_078"
+      ],
+      "fit_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "key": "eqmotion_A1_inner2_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 2,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    }
+  ],
+  "new_outer_C_H_readout": false,
+  "new_own_B_readout": false,
+  "numpy": "2.4.6",
+  "original_rules_unchanged": true,
+  "parents": [
+    {
+      "bytes": 28419,
+      "path": "outputs/publication_readiness_2026_09/moving_camera_frame_v1/registration_v2.json",
+      "sha256": "1bf9d4710157f93f2cb05081b8291c1201c67156022f975644d17523273257bc"
+    },
+    {
+      "bytes": 220562,
+      "path": "outputs/publication_readiness_2026_09/moving_camera_frame_v1/population.json",
+      "sha256": "f7ece5d135061bb52962fb15644bfbeb04e40656ebdec40d6c0e6f42822c3d62"
+    },
+    {
+      "bytes": 1551,
+      "path": "outputs/publication_readiness_2026_09/moving_camera_frame_v1/training.json",
+      "sha256": "258b6586940c4195b04de24a6107cb81be7d7c0a719e32d18471e8c9bc8c5e73"
+    },
+    {
+      "bytes": 361,
+      "path": "outputs/publication_readiness_2026_09/moving_camera_frame_v1/verification.json",
+      "sha256": "914e131a902da05245e3eb047e6889db7ef3527b1d5b12a4b6d738b6c5963e97"
+    },
+    {
+      "bytes": 1249630,
+      "path": "outputs/publication_readiness_2026_09/moving_camera_frame_v1/analysis.json",
+      "sha256": "af4b8ef696a49f529f7da6845105686d21ddbc90e5b7d0f408f26ea05652e1b7"
+    },
+    {
+      "bytes": 3027,
+      "path": "outputs/publication_readiness_2026_09/moving_camera_frame_v1/forecast_freeze.json",
+      "sha256": "ca9b3c4cf261a78e1af0ed01d40077a1035bda7826bf0da7090422782289bfc7"
+    }
+  ],
+  "role": "exposed_producer_A_component_not_independent_test",
+  "torch": "2.12.0",
+  "training": {
+    "batch_size": 64,
+    "checkpoint_every": 200,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 50,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "steps": 4000,
+    "weight_decay": 0.0001
+  }
+}
