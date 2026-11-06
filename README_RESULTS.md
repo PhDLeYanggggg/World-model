@@ -58,6 +58,12 @@ test now fixes its seed, uses8float32epsilon relative forward tolerance and
 requires an exact zero candidate-field Jacobian. All23checks pass2.41s.
 No actual prediction-replay tolerance, risk rule or model changes. The failed
 check and both registrations remain; all48full refits are next.
+All48complete refits finish: PID77577 exits0 in668.216s,peak6,157,107,200B,
+196,608repeat updates; model/optimizer/trace states and matched arm draws exact.
+First inference PID78626 exits1 on missing allocation output directory before
+its first checkpoint and before metrics. A tested storage-only outer entry
+creates the directory and calls the unchanged engine; resumed inference
+PID78964 is active. No fits, inputs, solver budgets or risk rules change.
 [Protocol](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
 
 ### Complete-Risk Model Repair: Trained, But Original Safety Still Fails

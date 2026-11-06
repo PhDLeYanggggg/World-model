@@ -13,10 +13,10 @@
 .venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py pilot
 .venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py train
 .venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py verify
-.venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py infer
-.venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py evaluate
+.venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py infer
+.venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py evaluate
 .venv-pytorch/bin/python scripts/report_m3w_moving_role_separated_cost.py
-.venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py replay
+.venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py replay
 ```
 
 入口拒绝 Rosetta/x86_64，固定 CPU 4 线程、interop 1、workers 0，不探测 MPS
@@ -34,7 +34,7 @@
 ```sh
 .venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py train --resume
 .venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py verify --resume
-.venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py infer --resume
+.venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py infer --resume
 ```
 
 同一来源的全部录像从其模型训练、归一化和目标 RMS 中排除。输入仅为过去运动、

@@ -13,13 +13,17 @@ def binary_quality(label,probability,weights):
     y,p,w=map(run.np.asarray,(label,probability,weights));w=w/w.sum()
     if y.dtype!=bool or y.shape!=p.shape or p.shape!=w.shape or not len(y):
         raise ValueError('Nonempty held label-support evaluation only')
-    rate=float(w@y);both=bool(y.any() and (~y).any());ece=0.
+    rate=float(w@y);both=bool(y.any() and (~y).any());ece=0.;bins=[]
     for i in range(10):
         at=(p>=i/10)&((p<(i+1)/10) if i<9 else (p<=1))
-        if at.any():ece+=abs(float(w[at]@(p[at]-y[at])))
+        if at.any():
+            mass=float(w[at].sum());prediction=float(w[at]@p[at]/mass);observed=float(w[at]@y[at]/mass)
+            ece+=abs(float(w[at]@(p[at]-y[at])))
+            bins.append(dict(lower=i/10,upper=(i+1)/10,rows=int(at.sum()),weight=mass,
+                             predicted_unknown_rate=prediction,observed_unknown_rate=observed))
     return dict(unknown_rate=rate,AUROC=float(roc_auc_score(y,p,sample_weight=w)) if both else None,
         AUPRC=float(average_precision_score(y,p,sample_weight=w)) if both else None,
-        Brier=float(w@((p-y)**2)),ECE=ece,rows=len(y),predicts_released_label_support_not_visibility=True)
+        Brier=float(w@((p-y)**2)),ECE=ece,bins=bins,rows=len(y),predicts_released_label_support_not_visibility=True)
 
 
 def candidate_screen(analysis):
@@ -103,12 +107,44 @@ def formatted(x):
     return 'NA' if x is None else f'{x:.6f}'
 
 
+def utility_intervals(a,cfg):
+    result={}
+    for arm in run.method.ARMS:
+        rows=[r for r in a['rows'] if r['arm']==arm];result[arm]={}
+        for name in run.POLICIES:
+            values=[dict(source=r['source'],known=r['policies'][name]['known_ADE_gain_floor_percent'],
+                         lower=r['policies'][name]['completion_lower_gain_floor_percent']) for r in rows]
+            result[arm][name]={k:run.interval(values,k,cfg) for k in ('known','lower')}
+    return result
+
+
+def plot(a):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    names=list(run.POLICIES);x=run.np.arange(len(names))
+    fig,axes=plt.subplots(1,2,figsize=(13,4.6),layout='constrained')
+    for arm,offset,color in [('composed_anchor',-.18,'#2563eb'),('role_separated',.18,'#15803d')]:
+        values=a['policies'][arm]
+        axes[0].bar(x+offset,[values[n]['source_seed_macro_known_gain'] for n in names],width=.36,color=color,label=arm)
+        axes[1].bar(x+offset,[values[n]['safety']['supported_record_views'] for n in names],width=.36,color=color,label=arm)
+    axes[0].axhline(0,color='#525252',linewidth=.7)
+    axes[0].set(ylabel='Available-label ADE gain versus CV (%)',title='Exposed own-B, native 8/12')
+    axes[1].axhline(72,color='#dc2626',linestyle='--',label='All 72 required')
+    axes[1].set(ylabel='Supported original recording views',title='Original risk and support contract',ylim=(0,78))
+    for ax in axes:
+        ax.set_xticks(x,[n.replace('_','\n') for n in names]);ax.grid(axis='y',alpha=.2);ax.legend(fontsize=8)
+    p=run.PRIVATE/'figures';p.mkdir(exist_ok=True)
+    fig.savefig(p/'utility_and_risk.png',dpi=170);fig.savefig(p/'utility_and_risk.pdf');plt.close(fig)
+
+
 def main():
     a=run.read(run.PUBLIC/'analysis.json');cfg,reg=run.register()
     if len(a['rows'])!=48 or a['source_blocks']!=8 or a['unique_recordings']!=24:
         raise ValueError('Complete registered all-seed/source readout required')
     cc,utility=components(reg);run.once(run.PUBLIC/'components.json',cc);run.once(run.PUBLIC/'matched_utility.json',utility)
     run.once(run.PUBLIC/'legacy_veto_support_ceiling.json',legacy_veto_ceiling())
+    run.once(run.PUBLIC/'absolute_utility_intervals.json',utility_intervals(a,cfg))
     lines=['# Role-Separated Cost Learning And Full-Action Joint Decisions','',
         'I compared complete-bound anchor learning with separate observed-cost and',
         'label-support supervision. All 48 Torch fits and all 48 complete exact refits',
@@ -188,6 +224,7 @@ def main():
         '| Independent confirmation / deployment | NOT RUN / FALSE | Exposed own-B, not new independent validation |',
         '| Stage5C / SMC | FALSE | Not executed |']
     (run.PUBLIC/'world_model_gate_role_separated_cost.md').write_text('\n'.join(gates)+'\n')
+    plot(a)
     print('Complete matched cost and policy evidence reported; no risk rule changed.')
 
 
