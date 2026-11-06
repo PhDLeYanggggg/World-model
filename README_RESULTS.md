@@ -43,6 +43,9 @@ Full identity controlPID57782exits0 at19:20:38Z,about1276.8s,peak1,783,660,544B.
 All4000updates reproduce original model/optimizer/sampler/RNG/draws/factors
 and common training trace exactly. Six matched camera-conditioned actor fits
 now start;no new outcome comparison is scored.
+Additional unit-only native-origin/camera-coordinate roundtrip check passes
+0.86s without changing registered definitions. Full treatment processPID59468
+is active,CPU4/workers0. This is not a new predictive result.
 The CVPR2027official enrollment/full/supplementary dates and author guidelines
 are freshly checked;profiles/conflicts remain unverified and no submission is
 performed. The seven-page native evidence draft now cites viewpoint-normalized
