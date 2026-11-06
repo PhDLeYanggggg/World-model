@@ -27,13 +27,17 @@ np, torch = parent.np, parent.torch
 read, sha, stable, once, checked, artifact = parent.read, parent.sha, parent.stable, parent.once, parent.checked, parent.artifact
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/moving_dual_view_actor_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_dual_view_actor_v1'
-CONFIG = ROOT/'configs/m3w_moving_dual_view_v1.json'; REG = PUBLIC/'registration.json'
+CONFIG = ROOT/'configs/m3w_moving_dual_view_v1.json'; REG = PUBLIC/'registration_v2.json'
 ARMS = ('camera_node', 'native_node')
-FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md', Path(method.__file__), ROOT/'tests/test_m3w_dual_view.py', Path(training.__file__))
+FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md', Path(method.__file__), ROOT/'tests/test_m3w_dual_view.py', Path(training.__file__), PUBLIC/'preflight_amendment.md')
 
 
 def register():
     cfg = read(CONFIG); _, old = parent.register()
+    draft = read(PUBLIC/'registration.json')
+    for path in (CONFIG, PUBLIC/'protocol.md', Path(method.__file__), Path(training.__file__), ROOT/'tests/test_m3w_dual_view.py'):
+        if sha(path) != draft['files'][str(path.relative_to(ROOT))]:
+            raise ValueError('Preflight snapshot fix must not change model,training,tests or science')
     if (cfg['treatment_arms'] != list(ARMS) or cfg['fresh_treatment_models'] != 12
             or cfg['forecaster_seeds'] != [17] or cfg['steps_per_model'] != old['training']['steps']
             or cfg['steps_per_model'] != 4000 or cfg['original_risk_budget'] != .02
@@ -70,10 +74,12 @@ def register():
             'training.json', 'verification.json', 'analysis.json', 'forecast_freeze.json')]+[
             artifact(ROOT/'outputs/publication_readiness_2026_09/moving_camera_factor_v1/design_stop.md')],
         torch=str(torch.__version__), numpy=np.__version__, original_rules_unchanged=True,
+        pre_execution_draft=artifact(PUBLIC/'registration.json'), definition_version=2,
+        draft_code_git_commit='21c3057e', preflight_snapshot_reference_fix_only=True,
         independent_confirmation=False, new_own_B_readout=False, new_outer_C_H_readout=False,
         role='exposed_producer_A_component_not_independent_test'))
     once(REG, reg)
-    once(PUBLIC/'input_admission.json', dict(registration_sha256=sha(REG),
+    once(PUBLIC/'input_admission_v2.json', dict(registration_sha256=sha(REG),
         role='supervised_training_previously_exposed_producer_A_only',
         observed_inputs=['native_past_agent_neighbor_geometry', 'observed_camera_maps'],
         native_geometry_retained=True, future_camera_operator_in_input_or_output=False,
@@ -82,7 +88,7 @@ def register():
     return cfg, reg
 
 def committed(reg):
-    for p in (*FILES, REG, PUBLIC/'input_admission.json'):
+    for p in (*FILES, REG, PUBLIC/'input_admission_v2.json'):
         value = subprocess.run(['git', 'show', 'HEAD:'+str(p.relative_to(ROOT))], cwd=ROOT,
             capture_output=True, check=True).stdout
         if hashlib.sha256(value).hexdigest() != sha(p): raise ValueError('Commit exact definitions before real execution')
@@ -173,11 +179,15 @@ def pilot(reg, data, jobs, guard, beat, stop):
             saved = torch.load(c/'checkpoint.pt', map_location='cpu', weights_only=False)
             if stop.requests != 1 or saved['step'] != 1 or not saved['committed_update_boundary']:
                 raise
+            snapshot = c/'signal_stop_checkpoint.pt'; shutil.copyfile(c/'checkpoint.pt', snapshot)
             once(PUBLIC/'pilot_signal_stop.json', dict(result_source='fresh_run', actual_in_forward_SIGTERM=True,
-                stop_deferred_until_committed_update=True, saved_step=1, checkpoint=artifact(c/'checkpoint.pt')))
+                stop_deferred_until_committed_update=True, saved_step=1, checkpoint=artifact(snapshot)))
             stop.clear_self_test()
         else:
             raise ValueError('The registered real signal pilot must request an interruption')
+    stopped = torch.load(checked(read(PUBLIC/'pilot_signal_stop.json')['checkpoint']), map_location='cpu', weights_only=False)
+    if stopped['step'] != 1 or not stopped['committed_update_boundary']:
+        raise ValueError('Immutable coherent signal-stop snapshot required')
     signaled, third = fit_one(data, jobs[0], reg, c, 'camera_node', guard, beat, resume=True, stop_at=200)
     same_scientific_checkpoint(left, third)
     once(PUBLIC/'pilot.json', stable(dict(result_source='fresh_run', actual_Torch=True,

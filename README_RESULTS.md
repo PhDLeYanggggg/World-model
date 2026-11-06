@@ -32,6 +32,10 @@ Primarycamera_node-minus-native_node;camera_node-minus-raw must also pass.
 Same exposedA,source exclusions,whole12loss and original2%/support/NA rules.
 No real new-model fitting or predictive success claimed at this draft.
 [Protocol](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/protocol.md).
+Before real execution,active registration_v2fixes only the signal-pilot proof
+to reference an immutable step1snapshot instead of a subsequently overwritten
+rolling checkpoint. DraftGit21c3057eis retained. Model/trainer/config/protocol/
+tests match draft hashes. Seven focused checks pass4.04s. No scientific change.
 
 ### Camera-Operator Ablation: Registered Before Real Fitting
 
