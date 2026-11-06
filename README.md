@@ -61,7 +61,9 @@ Four of the six full fits are complete. A tool interruption ended the original
 training process; its exit code was not observed. I verified the four complete
 models and resumed the fifth from update 1,400, without changing the protocol
 or budget. The last pre-interruption heartbeat was at update 1,550, so at least
-150 updates must be repeated. No held-source outcome has been scored yet.
+150 updates were repeated. All six models now complete 4,000 updates and the
+resumed process exits successfully. A full fixed-design treatment refit is
+running before prediction and scoring; no outcome has been scored yet.
 
 ### Previous Controller Experiment
 

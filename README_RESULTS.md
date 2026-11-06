@@ -55,6 +55,10 @@ its terminal signal/exit code were not observed. Four full4000fits are complete.
 The fifth checkpoint is1400,last heartbeat1550:at least150updates repeat,exact
 discarded count unknown. PID68334resumes unchanged at20:58:59Z and verifies all
 four complete receipts. No model/risk/support change or predictive readout.
+At21:33:07Z,PID68334exits0 after2048.528471s,peak1,851,949,056B. All six
+treatments complete4000updates with original draws/factors/RNGchecks. One full
+first-design treatment refit now runs before predictions/scoring. This is
+completed fitting,not predictive success or independent confirmation.
 The CVPR2027official enrollment/full/supplementary dates and author guidelines
 are freshly checked;profiles/conflicts remain unverified and no submission is
 performed. The seven-page native evidence draft now cites viewpoint-normalized
