@@ -41,9 +41,14 @@ def test_conditional_gradient_isolated_from_unknown_targets_and_probability():
 
 def test_composed_moments_are_coherent_and_probability_is_action_invariant():
     p=m.prepare(data(),'a');model=m.Head(m.SETTINGS,p['binding'])
+    with torch.no_grad():
+        model.conditional[-1].weight.normal_()
+        model.reference[-1].weight.normal_()
+        model.observation[-1].weight.normal_()
     x=p['x'][:3].clone();x[1:,:50]=x[0,:50]
     out=model(x,torch.ones(3))
     assert torch.equal(out['observation_probability'],out['observation_probability'][0].expand(3))
+    torch.testing.assert_close(out['conditional'][:,2:4],out['conditional'][0,2:4].expand(3,2),rtol=0,atol=0)
     v=out['moments'];assert (v>=0).all() and (v[:,0]+v[:,1]<=1+1e-6).all()
     assert (v[:,0]<=v[:,2]).all() and (v[:,3]<=v[:,2]).all() and (v[:,4]<=v[:,1]).all()
     assert not {'valid','observed','target','future_endpoint'}&set(inspect.signature(m.predict).parameters)

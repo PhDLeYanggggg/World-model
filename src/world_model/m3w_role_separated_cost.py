@@ -13,7 +13,7 @@ from src.world_model import m3w_neural_risk_transport as storage
 ARMS = ('composed_anchor', 'role_separated')
 SETTINGS = dict(steps=4096, batch_size=512, learning_rate=.001, weight_decay=.0001,
                 gradient_clip=5., checkpoint_steps=128, log_every=256,
-                width1=64, width2=32, observation_width=32, underharm_weight=4.)
+                width1=64, width2=32, observation_width=32, reference_width=32, underharm_weight=4.)
 
 
 def prepare(data, source):
@@ -55,14 +55,18 @@ class Head(nn.Module):
     def __init__(self,cfg,preprocess):
         super().__init__()
         self.conditional=nn.Sequential(nn.Linear(120,cfg['width1']),nn.SiLU(),
-            nn.Linear(cfg['width1'],cfg['width2']),nn.SiLU(),nn.Linear(cfg['width2'],5))
+            nn.Linear(cfg['width1'],cfg['width2']),nn.SiLU(),nn.Linear(cfg['width2'],3))
+        self.reference=nn.Sequential(nn.Linear(50,cfg['reference_width']),nn.SiLU(),
+                                    nn.Linear(cfg['reference_width'],2))
         # First50 are agent/neighbor motion only, not action-rollout descriptors.
         self.observation=nn.Sequential(nn.Linear(50,cfg['observation_width']),nn.SiLU(),
             nn.Linear(cfg['observation_width'],1))
         nn.init.zeros_(self.conditional[-1].weight)
+        nn.init.zeros_(self.reference[-1].weight)
         nn.init.zeros_(self.observation[-1].weight)
         with torch.no_grad():
-            self.conditional[-1].bias.copy_(torch.as_tensor(preprocess['bias']))
+            self.conditional[-1].bias.copy_(torch.as_tensor(preprocess['bias'][[0,1,4]]))
+            self.reference[-1].bias.copy_(torch.as_tensor(preprocess['bias'][[2,3]]))
             q=preprocess['observation_prior']
             self.observation[-1].bias.fill_(np.log(q/(1-q)))
 
@@ -71,9 +75,10 @@ class Head(nn.Module):
             raise ValueError('Causal120 and causal disagreement only; no role/mask input')
         raw=self.conditional(x)
         fraction=torch.softmax(torch.cat((raw[:,:2],torch.zeros_like(raw[:,:1])),1),1)
-        reference=F.softplus(raw[:,2]);harm=envelope*fraction[:,1]
+        ref=self.reference(x[:,:50])
+        reference=F.softplus(ref[:,0]);harm=envelope*fraction[:,1]
         conditional=torch.stack((torch.minimum(envelope*fraction[:,0],reference),harm,
-            reference,reference*torch.sigmoid(raw[:,3]),harm*torch.sigmoid(raw[:,4])),1)
+            reference,reference*torch.sigmoid(ref[:,1]),harm*torch.sigmoid(raw[:,2])),1)
         logit=self.observation(x[:,:50])[:,0];q=torch.sigmoid(logit)
         unknown=torch.stack((torch.zeros_like(envelope),envelope,torch.zeros_like(envelope),
                              torch.zeros_like(envelope),envelope),1)

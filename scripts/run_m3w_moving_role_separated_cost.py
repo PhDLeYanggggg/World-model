@@ -31,10 +31,10 @@ load_cache=previous.load_cache
 PUBLIC=ROOT/'outputs/publication_readiness_2026_09/moving_role_separated_cost_v1'
 PRIVATE=ROOT/'data/stage_cvpr2027_experiments/moving_role_separated_cost_v1'
 CONFIG=ROOT/'configs/m3w_moving_role_separated_cost_v1.json'
-REG=PUBLIC/'registration.json'
+REG=PUBLIC/'registration_v2.json'
 FILES=(Path(__file__),CONFIG,PUBLIC/'protocol.md',ROOT/'src/world_model/m3w_role_separated_cost.py',
        ROOT/'src/data_unification/m3w_full_action_features.py',ROOT/'tests/test_m3w_role_separated_cost.py',
-       ROOT/'tests/test_m3w_full_action_features.py')
+       ROOT/'tests/test_m3w_full_action_features.py',PUBLIC/'reference_invariance_amendment.md')
 POLICIES=('proposal_only',*allocation.ARMS)
 
 
@@ -47,7 +47,7 @@ def register():
             or any(cfg[k] for k in ('threshold_search','new_outer_C_H_readout','identity_certification',
                 'deployment_changed','submission_ready','stage5c_executed','smc_enabled'))):
         raise ValueError('Fixed matched loss comparison, all views and original rules required')
-    value=dict(config=cfg,settings=method.SETTINGS,jobs=parent['jobs'],
+    value=dict(config=cfg,settings=method.SETTINGS,jobs=parent['jobs'],definition_version=2,
         files={str(p.relative_to(ROOT)):sha(p) for p in FILES},
         parent_registration=artifact(previous.REG),parent_training=artifact(previous.PUBLIC/'training_freeze.json'),
         full_population=artifact(full.PUBLIC/'population.json'),full_inference=artifact(full.PUBLIC/'inference_freeze_v2.json'),

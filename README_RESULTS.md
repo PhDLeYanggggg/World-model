@@ -25,14 +25,23 @@ known-only normalization/RMS and the same source/query draws. The treatment
 optimizes observed-only conditional loss plus complete-pool BCE; the control
 optimizes composed-bound moment loss. No new threshold or independent readout.
 
-Veto-only policies cannot repair recording views with no selected easy mass:
-subsets cannot create that denominator. Therefore the decision comparison also
+Extra vetoes of an accepted set cannot repair its missing selected easy mass:
+subsets cannot create that denominator. The broader proposer still has reference
+in all24views, so a newly learned proposal veto could help; full-bank expansion
+is a separate tested choice, not a proved necessity. The comparison also
 uses all six original amplitudes, not just frozen proposals, with independent,
 frame-uniform, matched-count joint and free joint controls. The original 2%
 risk/support and empty-NA contract stays intact. All past-eligible rows remain.
 Planned: 48 fits and 48 full exact refits, seeds17/29/43, 4,096 updates each;
 actual resource/resume pilot before training. Eighteen scoped tests pass in
 2.23s. Real preparation/training/evaluation not_run at registration.
+Fresh preparation PID75378 exits0 in119.402s,peak4,419,616,768B. All62,466
+rows remain, with374,796legal candidates (364,206observed/10,590bound-only).
+Both A banks' complete753,240signed targets match the prior caches exactly.
+Before the training pilot, definitionv2 replaces action-dependent R/ER output
+with an action-invariant reference branch. Both arms change identically;
+no training/outcome was opened under v1. The original registration and prepared
+hashes remain. Eighteen scoped checks pass2.26s after this correction.
 [Protocol](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
 
 ### Complete-Risk Model Repair: Trained, But Original Safety Still Fails
