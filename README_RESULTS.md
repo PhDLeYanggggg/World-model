@@ -46,6 +46,9 @@ Two of six treatment forecasters now finish4000updates with zero held-source
 draws and exact paired sampling/factors. Third is active. Add an independent
 readout cross-check against42old control prefix estimands before scoring; this
 does not change any model,metric or rule. Effect readout is still not_run.
+Three of six full treatment fits are complete; all have zero held-source
+draws and identical paired sampling/factors. Fourth is active,under2GB peak
+RSS. No training downgrade or early effect selection is made.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent

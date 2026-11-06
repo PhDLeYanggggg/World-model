@@ -58,7 +58,7 @@ network, draws and 4,000-update budget and first reproduces a full old control.
 It does not change the 2% risk contract or open another held-out test.
 The real recovery test and full old-control refit are now exact; all six new
 forecasters are training. There is not yet a new forecast-effect result.
-Two of six complete fits are finished and their matched sampling checks pass.
+Three of six complete fits are finished and their matched sampling checks pass.
 [Matched actor experiment](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/protocol.md).
 
 ### Previous Reference-Context Result
