@@ -36,8 +36,12 @@ Endpoint-only FDE is secondary and cannot replace the failed primary outcome.
 
 No new own-B/C/H,policy refit or deployment upgrade. Original2%/support/NA
 rules and all earlier failures remain. Actual inference/scalar replay is
-running asPID13422; two local scalar-only plots have been rendered,with layout
-verification in progress. Main compiled paper is unchanged and not ready.
+complete:PID13422 exits0 in524.029483s,peak1,374,535,680B. All six complete
+prediction banks,all analysis scalars and the public-file digest snapshot match
+exactly,with zero new optimizer updates. Both local scalar-only figures were
+visually checked; an overlong training ylabel was shortened without changing
+values. Main compiled PDF hash remains d9babe3ddbac858bcc1ac30e3ba98b332bed625c78ff9231d1d42a3e30b11772.
+The paper note is separate from that unchanged PDF. The project is not ready.
 [Complete comparison](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/failure_analysis.md),
 [paper note](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/paper_addendum.md).

@@ -2,6 +2,12 @@
 
 ## Result
 
+Independent computational replay is complete: PID13422 exits0 in524.029483s.
+All six125540-row prediction banks,all analysis scalars and the public-file
+snapshot match exactly,with no optimizer updates. This is repeatability,not
+independent scientific confirmation. The two scalar-only plots are local and
+were visually checked. See failure_analysis.md for the final negative decision.
+
 Component progression screen: **FAIL**.
 Equal-source paired available12ADE gain difference: **0.0976pp**.
 Conservative paired completion-lower: **-9.4738pp**,

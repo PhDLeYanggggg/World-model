@@ -31,6 +31,8 @@ that adjustment. All 34 raw neural recording diagnostics still exceed the
 original 2% known-easy positive-harm reference. **The component screen fails;
 the new model is not deployed.** No rule, support requirement or test role was
 changed to make the result pass. The project remains **not submission-ready**.
+All six new prediction banks and every reported scalar now reproduce exactly
+in a separate replay, without further training.
 [Complete model experiment](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/operation_zh.md).
