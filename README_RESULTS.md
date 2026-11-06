@@ -65,6 +65,13 @@ exposed-development readout. Fourteen focused checks pass2.18s. Actual new
 neural training is not_run at registration;original risk/support/NA remain.
 [Predictive protocol](outputs/publication_readiness_2026_09/moving_visual_risk_v1/protocol.md).
 
+Preparation is complete: exact candidate-ID joins for both A supports and all
+three existing own-B contexts; no own-B target arrays were opened. Actual
+128+128 versus continuous256 recovery is exact (19,814 parameters). The24full
+models are now training at4,096updates each on nativearm64 CPU4/workers0.
+These are engineering milestones, not utility or safety passes. All original
+2%/support/NA rules and old negative results are retained.
+
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 
 Seven full neural fits finish: six4000update matched treatment producers and

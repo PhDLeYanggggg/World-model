@@ -50,6 +50,9 @@ Those development inputs are now complete and replayed too. I have registered
 24 matched neural cost heads: no image, image bounds, measurement quality and
 full background-motion context. All train on source-separated A donors only;
 the original full development cohort and risk rules remain the evaluation.
+The causal input joins are complete, and a real 128+128-step recovery run
+matches a continuous 256-step run exactly. The 24 full models are now training;
+neither recovery agreement nor input availability is a forecasting result.
 [Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
 
 ### Previous Support / Context Study
