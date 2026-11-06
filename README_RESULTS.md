@@ -36,6 +36,13 @@ Before real execution,active registration_v2fixes only the signal-pilot proof
 to reference an immutable step1snapshot instead of a subsequently overwritten
 rolling checkpoint. DraftGit21c3057eis retained. Model/trainer/config/protocol/
 tests match draft hashes. Seven focused checks pass4.04s. No scientific change.
+Actual admissionPID80606exits0 in0.630488s,peak650,739,712B;all18cached
+forecast-bank row alignments match. Predicted-camera maps are removed from
+model data. Real recoveryPID80666exits0 in171.851555s,peak1,815,986,176B.
+Both100+100and actual in-forwardSIGTERM1+199match continuous200scientific state
+exactly;immutable step1snapshot validates. Direct200takes56.781232s,projecting
+17,034.369650s(~4.73h)for15full fits before inference. Full shared-core raw
+controlPID80926now runs. No new outcome scored;old partial checkpoint not used.
 
 ### Camera-Operator Ablation: Registered Before Real Fitting
 
