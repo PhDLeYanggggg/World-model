@@ -49,6 +49,10 @@ does not change any model,metric or rule. Effect readout is still not_run.
 Three of six full treatment fits are complete; all have zero held-source
 draws and identical paired sampling/factors. Fourth is active,under2GB peak
 RSS. No training downgrade or early effect selection is made.
+Four full4000update treatment forecasters are complete; fifth is running.
+The first producer-fold trio and one second-fold model are finished,all with
+exact paired sampling and zero held-source draws. Effect evaluation remains
+not_run until all six forecast banks are frozen.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
