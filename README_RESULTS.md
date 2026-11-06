@@ -42,6 +42,10 @@ and identical draws; the first resumes its verified200update pilot prefix.
 Treatment PID3325 completes the first of six4000update forecasters. Its held
 source sample count is zero,and all row draws/factors exactly match the old
 control. The second fit is running; no donor/held effect scoring has occurred.
+Two of six treatment forecasters now finish4000updates with zero held-source
+draws and exact paired sampling/factors. Third is active. Add an independent
+readout cross-check against42old control prefix estimands before scoring; this
+does not change any model,metric or rule. Effect readout is still not_run.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
