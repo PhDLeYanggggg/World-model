@@ -7,6 +7,12 @@ from scripts import run_m3w_moving_supported_global_motion as run
 np=run.np
 
 
+def same_binding(first,second):
+    try:run.method.base.exact(first,second)
+    except AssertionError:return False
+    return True
+
+
 def probability_metrics(probability,observed):
     q,y=np.asarray(probability),np.asarray(observed)
     if (q.shape!=y.shape or q.ndim!=1 or not len(q) or y.dtype!=bool
@@ -43,7 +49,7 @@ def main():
                         delta=max(float((v-state['model'][k]).abs().max()) for k,v in old_state['model'].items())
                         parity.append(dict(source=site,seed=seed,final_parent_weights_exact=weights,
                             maximum_absolute_parent_weight_difference=delta,
-                            preprocessing_exact=run.stable(state['preprocess']['parent'])==run.stable(old_state['preprocess']),
+                            preprocessing_exact=same_binding(state['preprocess']['parent'],old_state['preprocess']),
                             sampler_exact=run.torch.equal(state['generator'],old_state['generator']) and np.array_equal(state['visits'],old_state['visits']),
                             masked_global_weights_zero=all(not bool(v.count_nonzero()) for k,v in state['model'].items() if k.startswith('global_'))))
                     known=own['observed'][at]

@@ -58,6 +58,25 @@ context choices freeze before readout. Original numerical safeguards retain
 the parent in37joint-free postchecks,31matched postchecks and6matched solver
 timeouts. These are preserved,not called all-optimal solutions. The original
 runner,model definitions and96trained/refit states remain unchanged.
+Fresh scoring PID96183 exits0 in7.484033s,peak2,369,470,464B. Augmented-global
+known gain1.038039%vs0.667578%local; registered paired lower+0.198862pp
+[-0.819517,+1.254443],not stable positive. Only3/8source lower contrasts and
+2/3risk-seed means positive. Full risk worsens23/72to13/72; easy-NA7to17;
+worst signed easy loss19.858488%,known positive easy ratio313.170226%.
+Own-only global context hurts known utility6.804575%to-0.313036%,despite lower
+fitting loss. Positive secondary interaction largely mitigates that damage,
+not a substitute for the failed primary. No deployment or rule change.
+Held-source harm/reference/observability diagnostics and an actual three-label
+tail case are preserved. LocalCV ADE1.1381vs globalalpha1ADE62.2556pixels;
+future labels stay evaluation only. This is not complete12ADE or rawt50.
+[Full readout](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/README.md).
+Actual replay PID97281 exits0 in25.494838s,peak3,693,166,592B:all36predictions,
+independent choices,frozen-choice checks and complete metrics exact;public files
+unchanged. Timed solver search is not rerun. Final40focused tests pass3.05s.
+Main compiled PDF hash remainsd9babe3d...0b11772;new addendum is not incorporated.
+The goal remains active and unmet. Next is fitting-only prefix/critic-error
+attribution,including the earlier negative SDD prefix-cost result,not another
+held threshold sweep or renamed global-context attempt.
 
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 

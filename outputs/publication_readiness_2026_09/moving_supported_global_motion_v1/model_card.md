@@ -8,7 +8,8 @@ Architecture:19,430parameter Torch cost/support head. Local causal120 feeds
 64/32conditional hidden layers. Fifty action-invariant history/neighbor features
 feed separate32wide reference and observation branches. Three zero-initialized
 global48projections enter the respective hidden layers. Local ablations mask
-global input but retain identical capacity. It is not new JEPA/Transformer
+global input but retain identical parameter count;masked branches are inactive.
+It is not new JEPA/Transformer
 pretraining or a newly trained trajectory forecaster.
 
 Outputs: conditional nonnegative benefit,harm,floor reference,easy reference and

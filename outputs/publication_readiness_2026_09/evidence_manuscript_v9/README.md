@@ -403,6 +403,12 @@ compiled main PDF and does not establish submission readiness.
 
 ## Posthoc Model-Mechanism Checks
 
+The [support/context addendum](support_context_addendum.md) records96fresh Torch
+cost-head fits and96exact full refits. All feature pairs fit better,but the
+registered utility interval crosses zero and original recording support falls
+23/72to13/72. The positive secondary interaction does not rescue that failure.
+All original rules and prior negatives stay intact;compiled main PDF unchanged.
+
 The [exact-cohort strong controls](../moving_simple_controls_v1/README.md)
 now include all six fixed amplitudes and a strictly past-only stationary guard.
 The minimum blend has better mean ADE than the learned joint policy, but neither

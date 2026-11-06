@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from scripts.diagnose_m3w_supported_global_motion import probability_metrics
+from scripts.diagnose_m3w_supported_global_motion import probability_metrics,same_binding
 
 
 def test_probability_endpoints_and_empty_bins():
@@ -16,3 +16,11 @@ def test_future_observation_role_is_required_only_for_diagnostic():
     with pytest.raises(ValueError): probability_metrics(np.array([.2]),np.array([1]))
     a=probability_metrics(np.array([0.,1.]),np.array([True,False]))
     assert a['Brier']==a['ECE']==1
+
+
+def test_preprocessing_comparison_handles_numpy_without_json_conversion():
+    a={'mean':np.array([1.,2.]),'sources':['a','b']}
+    b={'mean':np.array([1.,2.]),'sources':['a','b']}
+    assert same_binding(a,b)
+    b['mean'][0]=3
+    assert not same_binding(a,b)

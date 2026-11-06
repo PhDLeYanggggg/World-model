@@ -11,29 +11,37 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-The exact-cohort strong controls reveal a useful limitation of my current method.
-A fixed 1/32 forecast blend with a past-only stationary guard gains **1.434%**
-in available-label ADE, compared with **0.791%** for the learned joint policy.
-But it passes only **5/24 recording checks**; worst signed easy degradation is
-**8.95%**, not the required 2%. Neither strategy is deployable.
+I tested whether more source-excluded training support makes global past-motion
+context useful to the controller. All 96 Torch cost/support models and 96 complete
+exact refits are finished. The four cells retain the original risk rules:
 
-All six original amplitudes and both guards were frozen before scoring all
-62,466 exposed development rows. The registered learned-minus-minimum-blend
-paired completion-lower contrast is **-1.697 percentage points [-3.127, -0.397]**.
-That fails the conservative utility criterion; it does not determine the sign
-of the unobserved true effect. No coefficient is selected from this matrix.
-[Complete controls](outputs/publication_readiness_2026_09/moving_simple_controls_v1/README.md).
+| Training Support / Features | Available-Label ADE Gain vs CV | Original Checks Passed | Worst Recording Easy Loss |
+|---|---:|---:|---:|
+| Own / local | +6.805% | 3/72 | 129.66% |
+| Own / global | -0.313% | 4/72 | 156.26% |
+| Augmented / local | +0.668% | 23/72 | 22.12% |
+| Augmented / global | +1.038% | 13/72 | 19.86% |
 
-My next matched experiment separates two questions: whether source-excluded
-donor training helps, and whether global past-motion context helps within each
-data regime. The four cells keep the same parameter count, objective, seeds and
-original risk rules. This is a replication/interaction test of a previously
-unsuccessful feature, not a new world-dynamics claim.
-All 96 new Torch fits are complete; all 48 paired context models have lower
-final fitting-minibatch loss. All 96 complete exact refits also reproduce.
-All 36 policy-choice contexts are now frozen before the held-source readout;
-this is not yet a utility or safety pass.
-[Fixed protocol](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/protocol.md).
+**Lower training loss did not produce a safe policy.** All 48 paired context
+models fit better, but the registered augmented global-minus-local paired
+completion-lower contrast is only **+0.199pp [-0.820, +1.254]**. The interval
+crosses zero. The new global model also loses support and fails the unchanged
+recording-level 2% requirements, so I am not deploying it.
+
+These are 62,466 exposed MovingDroneCrowd++ agent-window rows, native observation8 /
+prediction12 in image coordinates. The 72 views repeat 24 recordings over three
+risk-head seeds, not three forecasters. No independent confirmation or new
+trajectory training is claimed. The project remains **not submission-ready**.
+[Complete experiment](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/operation_zh.md).
+
+The matched simple controls also remain important: guarded fixed1/32 gains
+1.434% on the same cohort but passes only 5/24 recording checks, with worst
+signed easy loss8.95%. All six original amplitudes are reported; no coefficient
+is selected after scoring. Neither mean accuracy nor empty fallback support
+is treated as a safety pass.
+[Full control matrix](outputs/publication_readiness_2026_09/moving_simple_controls_v1/README.md).
 
 ### Previous Reference-Context Result
 

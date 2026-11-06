@@ -100,8 +100,20 @@ def main():
         'Intervals:3,000source-component bootstrap draws after averaging risk seeds',
         'within each of8components. They are exploratory and not adjusted for this',
         'project\'s adaptive search. No independent confirmation or novelty proof.','',
-        '## Interpretation Boundaries','',
-        'The identical-capacity local/global cells test an already unsuccessful feature',
+        '## Primary By Source And Risk Seed','',
+        '| Source | Known pp | Paired completion lower pp |','|---|---:|---:|']
+    primary=a['contrast_rows']['primary']
+    for source in sorted(set(r['source'] for r in primary)):
+        rr=[r for r in primary if r['source']==source]
+        lines.append(f'| {source} | {number(float(run.np.mean([r["known_pp"] for r in rr])))} | '
+            f'{number(float(run.np.mean([r["completion_lower_pp"] for r in rr])))} |')
+    lines+=['','| Risk-head seed | Known pp | Paired completion lower pp |','|---|---:|---:|']
+    for seed in (17,29,43):
+        rr=[r for r in primary if r['seed']==seed]
+        lines.append(f'| {seed} | {number(float(run.np.mean([r["known_pp"] for r in rr])))} | '
+            f'{number(float(run.np.mean([r["completion_lower_pp"] for r in rr])))} |')
+    lines+=['','## Interpretation Boundaries','',
+        'The equal-parameter-count local/global cells test an already unsuccessful feature',
         'under a new support/loss regime. Donor augmentation changes producer/candidate',
         'population as well as source support; it is not a pure source-count effect.',
         'The48variables describe past crowd motion,not images or calibrated camera motion.',
@@ -118,7 +130,7 @@ def main():
         '| Registered definition | PASS | Fixed before fresh preparation/training |',
         '| Real Torch training | PASS | 96final models,393216updates |',
         '| Complete exact refits | PASS | 96models,393216repeat updates |',
-        '| Matched capacity/draws | PASS | Feature pairs; support factor deliberately differs |',
+        '| Matched parameter count/draws | PASS | Feature pairs; masked parameters inactive; support factor differs |',
         '| Causal role/source controls | PASS within pipeline | Known fitting normalization,no query-source fitting,no future input |',
         '| Registered utility | '+('PASS, exploratory' if primary_positive(a) else 'FAIL / NA')+' | Augmented global-local paired lower |',
         '| Original full risk | '+('PASS, development only' if a['policies']['augmented_global']['joint_free']['safety']['original_record_contract_pass'] else 'FAIL')+' | All72views and original2%rules |',
