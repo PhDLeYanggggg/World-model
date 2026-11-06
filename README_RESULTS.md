@@ -53,6 +53,9 @@ Four full4000update treatment forecasters are complete; fifth is running.
 The first producer-fold trio and one second-fold model are finished,all with
 exact paired sampling and zero held-source draws. Effect evaluation remains
 not_run until all six forecast banks are frozen.
+Five full treatment forecasters finish4000updates,all paired draw/factor
+checks pass. The sixth and final model is training asPID3325. No early model
+or prefix result is selected; no new policy evaluation is opened.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
