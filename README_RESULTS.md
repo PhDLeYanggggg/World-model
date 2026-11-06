@@ -27,6 +27,8 @@ alpha1/32paired lower,not an outcome-selected coefficient. All24static recording
 views and72repeated learned-policy views remain distinct. No new training,
 new C/H,identity certificate or original2%change. Five helper checks pass0.15s;
 actual preparation and evaluation not_run at registration.
+Preparation PID88132 exits0 in0.487890s,peak1,301,954,560B. All13static
+policies for all62,466rows freeze before scoring. Raw choice arrays stay private.
 [Protocol](outputs/publication_readiness_2026_09/moving_simple_controls_v1/protocol.md).
 
 ### Shared Frozen-Expert Reference Context: Registered Model Repair

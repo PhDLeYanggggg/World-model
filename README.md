@@ -17,6 +17,7 @@ stationary guard. The whole matrix and the minimum-amplitude primary are fixed
 before scoring. Earlier uniform-blend negatives used a different cohort, so
 they cannot substitute for this matched comparison. No new model or risk-rule
 change is involved.
+All static choices are now frozen for all 62,466 rows, before scoring labels.
 [Control protocol](outputs/publication_readiness_2026_09/moving_simple_controls_v1/protocol.md).
 
 ### Previous Reference-Context Result
