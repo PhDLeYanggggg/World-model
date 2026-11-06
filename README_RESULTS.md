@@ -16,7 +16,7 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Cost-Fitting Source Prefix Attribution: Registered
+### Cost-Fitting Source Prefix Attribution: Complete
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
@@ -28,6 +28,18 @@ readout. Five helper tests pass0.15s;actual run not_run at registration.
 Fresh CREATE queue observation times out after60seconds;remote state unknown,
 no new/cancelled/restarted jobs. Local complete audit is feasible.
 [Protocol](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/protocol.md).
+
+Fresh actual run PID99090 exits0 in80.301416s,peak2,593,996,800B.
+All125540rows and six banks remain. Separate replay PID99760 finishes in
+81.383955s with every scalar and public-file digest unchanged. The first-step
+cosine matches existing raw120 on124816comparable rows:maximum difference
+4.545330112e-6;724undefined/tiny-direction rows are retained. Nine of14sources
+have negative first-step gain while ten have positive available12-step gain.
+Opposing directions explain only0--9.75% of terminal easy harm per source.
+No new model training, no own-B/C/H readout and no new input are claimed.
+Next model-side hypothesis is actual prefix-balanced forecaster fitting;
+the old critic-prefix and frozen temporal-ramp failures remain failures.
+[Complete audit](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/README.md).
 
 ### Data Support By Global Past Motion: Registered Four-Cell Study
 

@@ -43,11 +43,14 @@ is selected after scoring. Neither mean accuracy nor empty fallback support
 is treated as a safety pass.
 [Full control matrix](outputs/publication_readiness_2026_09/moving_simple_controls_v1/README.md).
 
-I am now separating forecast-prefix errors from controller credit errors on
-the permitted training-side source banks. The first-step direction cue can be
-reconstructed from existing inputs,so adding it under a new name would not add
-information. The full audit is registered before scoring its fixed slices.
-[Training-side audit](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/protocol.md).
+I completed the prefix audit on all 125,540 permitted training-side agent
+windows and reproduced every scalar in a separate replay. Nine of 14 sources
+have worse first-step forecasts even though ten improve over the available
+12-step average. The first-step direction cue is already recoverable from
+the existing inputs, and opposing motion explains little of the total harm.
+This points toward testing the forecast training loss, not adding a duplicate
+feature or another threshold. No evaluation rule or deployment has changed.
+[Training-side audit](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/README.md).
 
 ### Previous Reference-Context Result
 
