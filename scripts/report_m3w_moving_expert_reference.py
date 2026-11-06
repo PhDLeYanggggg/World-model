@@ -74,6 +74,26 @@ def components(reg,a):
 def f(x):return 'NA' if x is None else f'{x:+.6f}'
 
 
+def plot(a):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    names=list(run.POLICIES);x=run.np.arange(len(names))
+    fig,axes=plt.subplots(1,2,figsize=(13,4.7),layout='constrained')
+    for arm,offset,color in (('frozen',-.25,'#6b7280'),('history_refit',0,'#2563eb'),('expert_context',.25,'#15803d')):
+        p=a['policies'][arm]
+        axes[0].bar(x+offset,[p[n]['source_seed_macro_known_gain'] for n in names],width=.25,color=color,label=arm)
+        axes[1].bar(x+offset,[p[n]['safety']['supported_record_views'] for n in names],width=.25,color=color,label=arm)
+    axes[0].axhline(0,color='#525252',linewidth=.8)
+    axes[0].set(ylabel='Available-label ADE gain versus CV (%)',title='Exposed own-B, native obs8/pred12')
+    axes[1].axhline(72,color='#dc2626',linestyle='--',label='All 72 required')
+    axes[1].set(ylabel='Original risk supported recording views',ylim=(0,78),title='Original contract, no identity exception')
+    for ax in axes:
+        ax.set_xticks(x,[n.replace('_','\n') for n in names]);ax.grid(axis='y',alpha=.2);ax.legend(fontsize=8)
+    p=run.PRIVATE/'figures';p.mkdir(exist_ok=True)
+    fig.savefig(p/'utility_and_original_risk.png',dpi=170);fig.savefig(p/'utility_and_original_risk.pdf');plt.close(fig)
+
+
 def main():
     a=run.read(run.PUBLIC/'analysis.json');cfg,reg=run.register()
     if len(a['rows'])!=72 or not a['cached_frozen_control_exact']:raise ValueError('Full registered readout required')
@@ -150,6 +170,7 @@ def main():
         '| Original24-source-group main | NA, not passed | Unchanged estimand |',
         '| Stage5C/SMC | FALSE | Not executed |']
     (run.PUBLIC/'world_model_gate_expert_reference.md').write_text('\n'.join(gates)+'\n')
+    plot(a)
     print('Full reference-input contrast and unchanged original-risk gates reported.')
 
 

@@ -38,6 +38,14 @@ Actual128+128vs256pilot PID82366 exits0 in46.005963s,peak3,850,371,072B;
 excludes loading,normalization,refits and allocation;it is not actual completion.
 Formal training PID82450 is active,native arm64 CPU4/workers0. Seventeen focused
 checks pass2.07s;no full historical suite rerun. No new CREATE job submitted.
+All48primary fits finish:PID82450 exits0 in483.161025s,peak7,010,271,232B,
+196,608updates. All24paired arms have identical initial minibatch losses and
+matched sampled draws. Context reduces the final matched training-minibatch loss
+in24/24pairs;median final values0.158613history vs0.119602context. These are
+fitting minibatches,not validation or risk evidence. All48complete refits are
+running asPID83520;no policy outcomes read. Fresh official CVPR dates/policies
+are rechecked in the linked [6 November note](outputs/publication_readiness_2026_09/cvpr2027_deadline_refresh_20261106.md);
+no author/profile change,enrollment or submission is performed.
 [Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
 
 ### Role-Separated Full-Action Models: Positive Utility, Failed Complete Risk
