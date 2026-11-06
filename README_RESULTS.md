@@ -32,6 +32,12 @@ Fresh CREATE queue observation again times out after60seconds;remote state
 unknown,no submitted/restarted/cancelled jobs. Local image measurement is
 feasible with7.8GiBfree and a5GiBreserve.
 [Protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
+Actual pilot PID15979 exits0 in66.615818s,peak1,021,952,000B. All68past images
+are cached losslessly;31/34pairs supported,5349/5349head centers in bounds.
+All34fixed current-past overlays were visually inspected;no obvious axis swap
+or unrelated frame,without claiming per-head human-gold calibration. Full
+measurement is active asPID16205. Matching availability is not predictive lift.
+Latest focused16tests pass0.31s; previous rules,admissions and failures remain.
 
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 

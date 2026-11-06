@@ -43,6 +43,8 @@ training-source roster has 1,613 query times and needs 1,851 past images.
 I will first check native frame alignment and matching quality, without future
 target arrays or a new held-out readout. It is an image-motion proxy, not
 calibrated camera geometry or demonstrated forecasting lift.
+The real 34-pair pilot passes: 31 supported measurements, with native head-box
+alignment checked on all 34 fixed past-frame views. Full measurement is running.
 [Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
 
 ### Previous Support / Context Study
