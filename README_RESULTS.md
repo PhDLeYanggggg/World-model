@@ -49,6 +49,10 @@ asPID94774,all36choices will freeze before readout. The combined38focused
 checks pass3.59s; full historical suite not rerun. Actual fitting-loss plot is
 rendered and visually checked; IQR bands describe24fits per cell,not confidence
 intervals or independent forecaster replication. Original rules remain.
+First infer PID94774 exits1:allocation checkpoint parent directory is absent.
+No new policy readout or choice freeze occurred. Preserve all trained/refit
+states and frozen runner; a versioned directory-init entry point calls it
+unchanged. This is a filesystem repair,not a Torch hang or model amendment.
 
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 

@@ -10,13 +10,15 @@
 .venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion.py pilot
 .venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion.py train
 .venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion.py verify
-.venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion.py infer
+.venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion_safe.py infer
 .venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion.py evaluate
-.venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion.py replay
+.venv-pytorch/bin/python scripts/run_m3w_moving_supported_global_motion_safe.py replay
 .venv-pytorch/bin/python scripts/report_m3w_moving_supported_global_motion.py
 ```
 
 中断后对原阶段追加`--resume`，不删除checkpoint、不改变定义或另启重复进程。
+首次推理因断点目录未初始化退出；safe入口仅创建目录再调用原冻结程序，
+不改变训练或评价。错误与修复记录见inference_runtime_repair.md。
 训练每128次更新保存，256次更新写心跳。各阶段单独12小时上限，5GiB磁盘
 保留空间和新私有产物3GiB上限。先核查心跳、PID和checkpoint是否增长；慢不
 等于卡死，不据此降级目标。没有新提交CREATE作业，也不推断远端旧作业状态。
