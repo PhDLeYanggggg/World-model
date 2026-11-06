@@ -17,7 +17,10 @@ shares the frozen expert's causal rollout descriptors across an agent's actions,
 while keeping harm and label-support predictions fixed. Both reference networks
 have the same capacity, initialization and training budget; only one receives
 the shared context. The comparison is registered before actual preparation or
-training, and the original risk rules remain unchanged.
+training, and the original risk rules remain unchanged. Shared-context joins
+are now exact across all five feature banks, and real interrupted training
+reproduces the uninterrupted model exactly. All 48 reference fits are running
+locally; policy outcomes have not been read.
 [Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
 
 ### Previous Matched Cost Result

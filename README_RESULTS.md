@@ -29,6 +29,15 @@ support are exact; benefit changes only through the required coherence cap.
 All sources/rows remain. Plan:48fits,48full refits,seeds17/29/43,4096steps each,
 actual recovery/resource pilot first. Real execution not_run at registration.
 Original2%/support/NA,closed C/H,original24group NA and no deployment remain.
+Preparation PID82185 exits0 in74.705404s,peak2,928,934,912B. All five tables
+exactly align original full-expert descriptors to374,796own and753,240A legal
+candidates. Table "agents" counts are agent-window rows,not distinct tracks:
+62,466own and125,540donor rows. No outcome label is passed to context construction.
+Actual128+128vs256pilot PID82366 exits0 in46.005963s,peak3,850,371,072B;
+512updates,all optimizer/model/trace states exact. Pure48-fit projection274.244s
+excludes loading,normalization,refits and allocation;it is not actual completion.
+Formal training PID82450 is active,native arm64 CPU4/workers0. Seventeen focused
+checks pass2.07s;no full historical suite rerun. No new CREATE job submitted.
 [Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
 
 ### Role-Separated Full-Action Models: Positive Utility, Failed Complete Risk
