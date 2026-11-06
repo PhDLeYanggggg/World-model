@@ -26,6 +26,13 @@ exist. No sweep, changed input, raw rollout ramp, new own-B or C/H readout.
 Original recording2%/support/NA rules remain. Registration precedes training.
 Actor component success, if any, is not policy deployment or paper readiness.
 [Protocol](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/protocol.md).
+Actual recovery pilot PID1292 exits0 in130.432418s,peak1,675,231,232B.
+Real100+100vs200updates match all model/optimizer/sampler/RNG/trace fields.
+Each forecaster has3,027,268parameters. Six full treatment fit projection is
+about7820seconds from the uninterrupted200update pilot; excludes control,
+loading,inference and verification,not a completion claim. Full original-loss
+control refit is starting. The18focused checks passed1.51s; no full historical
+suite rerun and no new held/readout result.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
