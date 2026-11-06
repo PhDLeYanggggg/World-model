@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+The next comparison is registered: separate observed-cost and label-support
+learning without a mixed bound-loss anchor, and reopen the existing amplitude
+bank for joint decisions. This is not a new risk threshold or another name for
+the earlier unsuccessful observation-support model. Both new losses use the
+same architecture and training draws; proposal-only and full-action decisions
+will show whether candidate coverage matters. Real training is not claimed yet.
+[Registered comparison](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
+
+### Previous Complete-Risk Training Result
+
 I tested a concrete training repair after the complete-policy audit: add the
 conservative unknown-label contributions omitted by donor fitting. All 24 new
 Torch heads and 24 full exact refits are complete, with the same model, causal

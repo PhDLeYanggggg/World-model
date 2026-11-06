@@ -16,6 +16,25 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Role-Separated Full-Action Model Comparison Registered
+
+The earlier observation-support SOURCE model already failed; its composed-bound
+anchor and shared gradient remain a relevant negative control, not a new idea.
+This new matched family uses separate conditional-cost and support networks,
+known-only normalization/RMS and the same source/query draws. The treatment
+optimizes observed-only conditional loss plus complete-pool BCE; the control
+optimizes composed-bound moment loss. No new threshold or independent readout.
+
+Veto-only policies cannot repair recording views with no selected easy mass:
+subsets cannot create that denominator. Therefore the decision comparison also
+uses all six original amplitudes, not just frozen proposals, with independent,
+frame-uniform, matched-count joint and free joint controls. The original 2%
+risk/support and empty-NA contract stays intact. All past-eligible rows remain.
+Planned: 48 fits and 48 full exact refits, seeds17/29/43, 4,096 updates each;
+actual resource/resume pilot before training. Eighteen scoped tests pass in
+2.23s. Real preparation/training/evaluation not_run at registration.
+[Protocol](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
+
 ### Complete-Risk Model Repair: Trained, But Original Safety Still Fails
 
 The next treatment restores unknown-label upper-bound contributions omitted by
