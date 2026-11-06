@@ -350,6 +350,11 @@ CPU execution uses four compute threads, one inter-op thread and zero loader
 workers. Genuine interrupted-versus-continuous training is checked; NumPy
 fallback and import-only tests are not counted as neural training.
 
+For the actor study, preparation opens past-only arrays. Later generic loading
+opens and hashes the complete packed training bank, including labels, for
+integrity checks; only causal geometry and image context reach inference.
+Forecast freeze precedes diagnostic scoring, not all target-file byte access.
+
 The image-cost study includes 24 complete fits, 24 complete exact refits and
 exact prediction/scalar replay. The actor study reports its distinct refit
 scope rather than inheriting that count. All scientific losses and both
