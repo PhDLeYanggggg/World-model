@@ -7,6 +7,8 @@
 - Replay PID89630: receipt written after exact choices, scalar metrics and
   unchanged-public-files checks, 9.779963584s, RSS1,985,708,032bytes. It does not
   recompute learned forecasts, retrain models or reproduce optimizer decisions.
+- A second replay PID89930 exits0 (observed), 9.727052750s, peak
+  RSS1,997,258,752bytes; choices/metrics exact and public files unchanged.
 - All frozen learned rows equal their authoritative previous metrics.
 - The public-scalar plot was rendered and visually inspected. It shows all six
   amplitudes, both guards, the learned mean and all24-required-view reference.

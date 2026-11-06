@@ -38,6 +38,11 @@ larger donor pools,allocation and full refits; it is not a completion estimate.
 Training PID90737 is running with a fresh ready heartbeat. Seventeen model/control tests pass
 2.13s and17existing data/allocation checks pass1.71s. Full historical suite not
 rerun. No new CREATE job is submitted.
+All96fits complete:PID90737 exits0 in1143.657700s,peak7,477,329,920B,
+393,216updates. All48feature pairs match initial losses,preprocessing,initial
+weights and sampled draws; global context lowers the final matched fitting
+minibatch loss in48/48pairs. This is not held-source utility/calibration/risk
+evidence. Full96refits are active asPID93036; no policy outcomes have been read.
 
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 

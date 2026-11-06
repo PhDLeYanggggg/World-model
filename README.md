@@ -29,6 +29,9 @@ donor training helps, and whether global past-motion context helps within each
 data regime. The four cells keep the same model capacity, objective, seeds and
 original risk rules. This is a replication/interaction test of a previously
 unsuccessful feature, not a new world-dynamics claim.
+All 96 new Torch fits are complete; all 48 paired context models have lower
+final fitting-minibatch loss. Complete exact refits are underway. Held-source
+policy outcomes have not yet been read, so this is not a utility or safety pass.
 [Fixed protocol](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/protocol.md).
 
 ### Previous Reference-Context Result
