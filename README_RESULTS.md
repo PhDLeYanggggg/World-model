@@ -26,6 +26,10 @@ at seed17 before training. Report3000paired source-component bootstrap
 replicates, not window bootstrap. These are exposed-development component
 results, not three forecaster seeds, new independent tests or a safety upgrade.
 No result is claimed complete yet.
+Before opening the new-seed readout, I also fixed an auxiliary mean/unanimity
+comparison using all three augmented heads. It changes no threshold and makes
+no coverage guarantee: agreeing heads can share bias, and fewer accepted cases
+need not reduce the full-policy risk ratio.
 [Protocol](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/protocol.md).
 
 ### Matched Donor Comparison: Information Improves, Safety Still Unproved
