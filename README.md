@@ -33,9 +33,10 @@ not estimable; there is no identity-fallback exemption. Deployment is unchanged.
 [failure analysis](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/operation_zh.md).
 
-The next fixed-budget experiment adds conservative unknown-label contributions
-to donor training while retaining the same network, features, source exclusions
-and decision rule. It is registered before fitting; no new result is claimed yet.
+The fixed-budget repair now has 24 newly trained Torch heads, with conservative
+unknown-label contributions included. Network, features, source exclusions and
+decision rule stay fixed. Complete refits are running before policy readout;
+training completion is not a claim of improved safety.
 [Model treatment](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
 
 ### Risk-Head Seed Replication

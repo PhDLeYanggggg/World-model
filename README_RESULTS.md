@@ -25,8 +25,18 @@ and full exact refits. Known labels/features must reproduce before fitting.
 Reweighting complete source/query pools and fitting-only normalization are part
 of the treatment. Bounds are not fabricated ADE; unknown status is never an
 input/gate. Frozen known-only controls and complete 62,466-row evaluation remain.
-No new C/H or risk-rule change. Fifteen focused tests pass; real fitting not_run
-at registration. [Protocol](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
+No new C/H or risk-rule change. Real fitting was not_run at registration.
+Preparation PID71644 exits 0 in 82.828s; all known own features/labels match.
+Producer-A adds exactly 16,944 bound-only candidates to 736,296 known candidates;
+own-B restores 1,274 omitted unknown proposals. Training PID72064 exits 0 in
+292.337s, peak 4,659,134,464 bytes: 24 models, 98,304 primary updates. Complete
+refits are now running before readout. Thirty-five focused checks and the new
+repeatable-replay check pass; no full historical suite rerun. A source-separated
+review finds no bound-target/leakage defect; it identifies single-use execution
+receipts and missing component diagnostics in the runner. A separate no-fit
+replay wrapper preserves unique receipts, and the reporter will emit observed
+versus bound diagnostics. No policy outcome is claimed before freeze.
+[Protocol](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
 
 ### Complete Exposed-Own-B Readout: Gain Is Not A Safety Pass
 
