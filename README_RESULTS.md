@@ -16,6 +16,20 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Past-Image Trajectory Actor: Registered Before Real Fitting
+
+Previous goal turn is progress:24full cost fits,24exact full refits and complete
+negative original-risk readout. The next intervention adds46past-image context
+features to the pinned EqMotion node encoder,not a residual output head. The
+initial output and Torch RNG match the old core exactly. Four model/trainer
+tests pass2.43s. Twelve full quality/motion actors,one full old-control refit
+and two fixed-design full treatment refits are planned. No actual full fitting
+is claimed at registration. Final4000checkpoint,original loss/draws/factors,
+all125540Arows and original2%/support/NA rules remain;no own-B/C/Hreadout.
+Fresh CREATE query again times out after60s;remote queue unknown,no mutations.
+Local CPU4/workers0is feasible;actual recovery pilot will estimate full time.
+[Protocol](outputs/publication_readiness_2026_09/moving_visual_actor_v1/protocol.md).
+
 ### Past-Image Observation: Complete Matched Experiment, Original Contract Failed
 
 All24full Torch fits and24complete exact refits finish,with98,304updates per

@@ -1,0 +1,791 @@
+{
+  "architecture": {
+    "channels": 64,
+    "family": "eqmotion_fixed_head",
+    "fixed_head": 0,
+    "hidden_nf": 64,
+    "history_steps": 8,
+    "input_conditioning": "observed_joint_max_norm",
+    "layers": 4,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "author_core": {
+    "adapter_sha256": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "commit": "5aec2e0b61c511fa93a24138dd90da59a089084b",
+    "files_sha256": {
+      "LICENSE": "f1d3136868b8e8bd929d21257c3b9c6970e398a052d6a7b5ed02cfc72c49caf1",
+      "README.md": "aded869035346f0a84b7786209d26355fd33c223046ccf2c4d7c009babe336a2",
+      "eth_ucy/dataloader_diverse.py": "51bec703ecbde61c4e9d3d1a26e0e51fc13fb1331b126d8faff525219f3656f2",
+      "eth_ucy/gcl_t.py": "ca6856d408c99a8cd97184861a646a87406bf2b09ec1d37dd517bc71c80d2e06",
+      "eth_ucy/model_t.py": "5d31dd6c5144ec4715a006bf1c3e5e8753a71a2dd87dc4ab42b1b80b98a6cfcc",
+      "eth_ucy/preprocessor.py": "790a3e4ceb7e24e2feda6335b117662085ea260d726af5617bf9efc06c976938",
+      "eth_ucy/process_eth_data_diverse.py": "faf14a90298643e467f6a509c6cfb8bc98435dd72bb5938a9a78247e11fe0f7d",
+      "main_eth_diverse.py": "1dc93be49d4f632df4d865647f66b0bc70d55d784f59219faaf3ec12cb5c87ad"
+    },
+    "license": "MIT",
+    "manifest_sha256": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "repository": "https://github.com/MediaBrain-SJTU/EqMotion"
+  },
+  "config": {
+    "artifact_cap_bytes": 1073741824,
+    "bootstrap_resamples": 3000,
+    "bootstrap_seed": 39107,
+    "cached_raw_controls": 6,
+    "component_screen": "same_prior_actor_screen_positive_lower_CI_at_least8of14_known_positive_both_fold_known_means_positive",
+    "context_columns": 46,
+    "deployment_changed": false,
+    "device": "cpu",
+    "disk_reserve_bytes": 5368709120,
+    "expected_recordings": 34,
+    "expected_rows": 125540,
+    "expected_sources": 14,
+    "final_checkpoint_only": true,
+    "forecaster_seeds": [
+      17
+    ],
+    "fresh_treatment_models": 12,
+    "full_raw_control_refits": 1,
+    "full_treatment_refits": 2,
+    "hard_runtime_limit_seconds": 43200,
+    "identity_certification": false,
+    "image_encoder": "46_32_8_bias_free_SiLU_zero_final",
+    "image_feature_offset": "0.1_tanh_node_feature_conditioning_not_trajectory_residual",
+    "inference_batch_size": 128,
+    "interop_threads": 1,
+    "name": "moving_visual_actor_v1",
+    "new_outer_C_H_readout": false,
+    "new_own_B_readout": false,
+    "normalization": "past_fitting_rows_only_equal_source_mean_variance_clip8",
+    "num_workers": 0,
+    "objective": "unchanged_source_weighted_available12_ADE",
+    "original_risk_budget": 0.02,
+    "primary": "motion_minus_quality_whole12_paired_completion_lower",
+    "recovery_split": 100,
+    "recovery_total": 200,
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "steps_per_model": 4000,
+    "submission_ready": false,
+    "threshold_search": false,
+    "torch_threads": 4,
+    "treatment_arms": [
+      "quality_geometry",
+      "motion_geometry"
+    ],
+    "warm_start": false
+  },
+  "controls": [
+    {
+      "checkpoint": {
+        "bytes": 18298219,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A0_inner0_seed17/checkpoint.pt",
+        "sha256": "549ba1573b5c5f7412222fab52d28f9c0e6df95ec4832d0485984d54896d04f3"
+      },
+      "fitting_donors_not_confirmation": true,
+      "forecast": {
+        "bytes": 694858,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A0_inner0_seed17.npz",
+        "sha256": "322915525685b65de1ce292b16e7fa3920d5047f642860f3f4efa1b1fd86c4a6"
+      },
+      "global_ids_hash": "8742de971bcc86ac09cf1403d8e44a4aa0f0fb804f9388ec9278f1392857cafb",
+      "job": {
+        "donor_sites": [
+          "moving_source_component_048",
+          "moving_source_component_067"
+        ],
+        "fit_sites": [
+          "moving_source_component_047",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062"
+        ],
+        "key": "eqmotion_A0_inner0_seed17",
+        "parent_contexts": [
+          "eqmotion_fold0_seed17_critic1",
+          "eqmotion_fold0_seed17_critic2"
+        ],
+        "part": 0,
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ]
+      },
+      "prediction_hash": "efb64a75a50873c89f37e47d5d12472c79c893566d829de209dd8b719b8376a1",
+      "result_source": "fresh_run",
+      "rows": 6197,
+      "sources": [
+        {
+          "causal_CV_ADE": 20.960665576080856,
+          "causal_CV_FDE": 52.488633771947164,
+          "endpoint_rows": 1412,
+          "known_rows": 1997,
+          "neural_ADE": 14.051451804195898,
+          "neural_FDE": 36.315037979952066,
+          "rows": 2038,
+          "source": "moving_source_component_048",
+          "unknown_rows": 41
+        },
+        {
+          "causal_CV_ADE": 35.87855846370121,
+          "causal_CV_FDE": 91.8269109089684,
+          "endpoint_rows": 2559,
+          "known_rows": 4006,
+          "neural_ADE": 21.60086649098028,
+          "neural_FDE": 49.97722617956036,
+          "rows": 4159,
+          "source": "moving_source_component_067",
+          "unknown_rows": 153
+        }
+      ],
+      "teacher_exposure_disjoint": true
+    },
+    {
+      "checkpoint": {
+        "bytes": 18338219,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A0_inner1_seed17/checkpoint.pt",
+        "sha256": "70c62819a1455e7f14855738f11230e0b6699c76ee0c2b806b287fe1a7393053"
+      },
+      "fitting_donors_not_confirmation": true,
+      "forecast": {
+        "bytes": 307002,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A0_inner1_seed17.npz",
+        "sha256": "43dca430e6c6f5f4e2731f56c228ab342c7b2e71150650271a440d51df147b6c"
+      },
+      "global_ids_hash": "1037e1afa6f4be7167e34da56d5da33da6314a1623a1f45c4a8437917930330c",
+      "job": {
+        "donor_sites": [
+          "moving_source_component_047",
+          "moving_source_component_052"
+        ],
+        "fit_sites": [
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "key": "eqmotion_A0_inner1_seed17",
+        "parent_contexts": [
+          "eqmotion_fold0_seed17_critic1",
+          "eqmotion_fold0_seed17_critic2"
+        ],
+        "part": 1,
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ]
+      },
+      "prediction_hash": "0287e6f33e5fe6819293fa6a366d4616f34d16522228b6752b9953922e360864",
+      "result_source": "fresh_run",
+      "rows": 2734,
+      "sources": [
+        {
+          "causal_CV_ADE": 22.007610731356404,
+          "causal_CV_FDE": 41.20006921102771,
+          "endpoint_rows": 1803,
+          "known_rows": 2167,
+          "neural_ADE": 24.54524382567141,
+          "neural_FDE": 48.46752595310751,
+          "rows": 2198,
+          "source": "moving_source_component_047",
+          "unknown_rows": 31
+        },
+        {
+          "causal_CV_ADE": 35.92935069477207,
+          "causal_CV_FDE": 84.14660365007255,
+          "endpoint_rows": 450,
+          "known_rows": 518,
+          "neural_ADE": 13.659234939290618,
+          "neural_FDE": 28.84935249615583,
+          "rows": 536,
+          "source": "moving_source_component_052",
+          "unknown_rows": 18
+        }
+      ],
+      "teacher_exposure_disjoint": true
+    },
+    {
+      "checkpoint": {
+        "bytes": 17801387,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A0_inner2_seed17/checkpoint.pt",
+        "sha256": "470570c393ca03f22addb4e3dc387f3e0417ce24ad0d6934a074e8e0562aca5c"
+      },
+      "fitting_donors_not_confirmation": true,
+      "forecast": {
+        "bytes": 5043594,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A0_inner2_seed17.npz",
+        "sha256": "4391884b5d889e3342a256f9fc9031b03250f53c8f84e03c6b087e4f912e9a81"
+      },
+      "global_ids_hash": "4de36416661d2500805df9d47a92710950611a62ab3455101886b808e2241d1a",
+      "job": {
+        "donor_sites": [
+          "moving_source_component_051",
+          "moving_source_component_062"
+        ],
+        "fit_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_052",
+          "moving_source_component_067"
+        ],
+        "key": "eqmotion_A0_inner2_seed17",
+        "parent_contexts": [
+          "eqmotion_fold0_seed17_critic1",
+          "eqmotion_fold0_seed17_critic2"
+        ],
+        "part": 2,
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ]
+      },
+      "prediction_hash": "9cf8930467ded16bb26e19f09ecfd89a72c410058d228cf72e1b4e63116cfd9e",
+      "result_source": "fresh_run",
+      "rows": 45025,
+      "sources": [
+        {
+          "causal_CV_ADE": 19.521207693475986,
+          "causal_CV_FDE": 40.60364207253509,
+          "endpoint_rows": 6338,
+          "known_rows": 7128,
+          "neural_ADE": 18.12380605899051,
+          "neural_FDE": 35.43661203270935,
+          "rows": 7196,
+          "source": "moving_source_component_051",
+          "unknown_rows": 68
+        },
+        {
+          "causal_CV_ADE": 22.06826013491561,
+          "causal_CV_FDE": 42.5508315597898,
+          "endpoint_rows": 33659,
+          "known_rows": 37472,
+          "neural_ADE": 25.749519251756006,
+          "neural_FDE": 56.56211528127804,
+          "rows": 37829,
+          "source": "moving_source_component_062",
+          "unknown_rows": 357
+        }
+      ],
+      "teacher_exposure_disjoint": true
+    },
+    {
+      "checkpoint": {
+        "bytes": 18526699,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A1_inner0_seed17/checkpoint.pt",
+        "sha256": "5247e8c62099fec257d9f7d5bb6288b0d065831cdac65dffb6e10ee77e90940e"
+      },
+      "fitting_donors_not_confirmation": true,
+      "forecast": {
+        "bytes": 619146,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A1_inner0_seed17.npz",
+        "sha256": "af14539b33b243e0d3d9a650833e0616f279204c0ba03cd90a89cf59b42607b4"
+      },
+      "global_ids_hash": "d10df2811d7c20f4f21ed0cc6d42d6c8f810dfba0e3cf4a22378c13f51ff39f2",
+      "job": {
+        "donor_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076"
+        ],
+        "fit_sites": [
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "key": "eqmotion_A1_inner0_seed17",
+        "parent_contexts": [
+          "eqmotion_fold1_seed17_critic0"
+        ],
+        "part": 0,
+        "producer_fold": 1,
+        "producer_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ]
+      },
+      "prediction_hash": "0c158a444687ba253c16c49fbbb06102152837bb3958f762699fef1c2c883444",
+      "result_source": "fresh_run",
+      "rows": 5521,
+      "sources": [
+        {
+          "causal_CV_ADE": 74.0045714422828,
+          "causal_CV_FDE": 158.95227576743676,
+          "endpoint_rows": 578,
+          "known_rows": 1095,
+          "neural_ADE": 48.70585752181155,
+          "neural_FDE": 116.12080567439075,
+          "rows": 1137,
+          "source": "moving_source_component_053",
+          "unknown_rows": 42
+        },
+        {
+          "causal_CV_ADE": 17.657900017884348,
+          "causal_CV_FDE": 85.28303268874384,
+          "endpoint_rows": 90,
+          "known_rows": 941,
+          "neural_ADE": 14.232241513972236,
+          "neural_FDE": 75.39042491985316,
+          "rows": 1042,
+          "source": "moving_source_component_065",
+          "unknown_rows": 101
+        },
+        {
+          "causal_CV_ADE": 36.08185549351027,
+          "causal_CV_FDE": 107.96044132894568,
+          "endpoint_rows": 1604,
+          "known_rows": 3184,
+          "neural_ADE": 39.61913621390977,
+          "neural_FDE": 114.84615513261394,
+          "rows": 3342,
+          "source": "moving_source_component_076",
+          "unknown_rows": 158
+        }
+      ],
+      "teacher_exposure_disjoint": true
+    },
+    {
+      "checkpoint": {
+        "bytes": 18339883,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A1_inner1_seed17/checkpoint.pt",
+        "sha256": "76a4248758be622984e124d5e147df68334a1ed4a3f008f7e3d6e2607825c1db"
+      },
+      "fitting_donors_not_confirmation": true,
+      "forecast": {
+        "bytes": 2211898,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A1_inner1_seed17.npz",
+        "sha256": "d40a11e14b576e5b8a883899a414eb3a458f88680d0326f5f81c1a2b2e33b328"
+      },
+      "global_ids_hash": "21e2266b286041a385ba857c39e440bd8ba3d79cf7165c2a06aaa23ed2fa0f5e",
+      "job": {
+        "donor_sites": [
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "fit_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078"
+        ],
+        "key": "eqmotion_A1_inner1_seed17",
+        "parent_contexts": [
+          "eqmotion_fold1_seed17_critic0"
+        ],
+        "part": 1,
+        "producer_fold": 1,
+        "producer_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ]
+      },
+      "prediction_hash": "84ae21f5ae29fb4217a1983b2c101e8c00724b7652d96feca030791f9b34a769",
+      "result_source": "fresh_run",
+      "rows": 19742,
+      "sources": [
+        {
+          "causal_CV_ADE": 34.09818816354395,
+          "causal_CV_FDE": 71.02154645047992,
+          "endpoint_rows": 8869,
+          "known_rows": 10523,
+          "neural_ADE": 29.142342595931893,
+          "neural_FDE": 61.934492019755616,
+          "rows": 10670,
+          "source": "moving_source_component_080",
+          "unknown_rows": 147
+        },
+        {
+          "causal_CV_ADE": 75.03483906370397,
+          "causal_CV_FDE": 248.0332556567685,
+          "endpoint_rows": 2409,
+          "known_rows": 5930,
+          "neural_ADE": 84.42765630698682,
+          "neural_FDE": 279.55835543189204,
+          "rows": 6225,
+          "source": "moving_source_component_082",
+          "unknown_rows": 295
+        },
+        {
+          "causal_CV_ADE": 128.06050816268524,
+          "causal_CV_FDE": 283.70670196911595,
+          "endpoint_rows": 891,
+          "known_rows": 2653,
+          "neural_ADE": 110.89568716885059,
+          "neural_FDE": 243.00779289236903,
+          "rows": 2847,
+          "source": "moving_source_component_087",
+          "unknown_rows": 194
+        }
+      ],
+      "teacher_exposure_disjoint": true
+    },
+    {
+      "checkpoint": {
+        "bytes": 18018795,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/fits/eqmotion_A1_inner2_seed17/checkpoint.pt",
+        "sha256": "d3090dd627efdc9318a549d3a2441d5e410e49758c49539b737d2bd4e6e9feb5"
+      },
+      "fitting_donors_not_confirmation": true,
+      "forecast": {
+        "bytes": 5188746,
+        "path": "data/stage_cvpr2027_experiments/moving_producer_crossfit_v1/forecasts/eqmotion_A1_inner2_seed17.npz",
+        "sha256": "fd1968ef56dba15c62eb6d8ee3a1892169cc841d31fdcf6988c4869429057363"
+      },
+      "global_ids_hash": "c8e670aee26a5b4d09e9b39010ac75d188f14a52ecf97f760e8202d6acec8e9c",
+      "job": {
+        "donor_sites": [
+          "moving_source_component_077",
+          "moving_source_component_078"
+        ],
+        "fit_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "key": "eqmotion_A1_inner2_seed17",
+        "parent_contexts": [
+          "eqmotion_fold1_seed17_critic0"
+        ],
+        "part": 2,
+        "producer_fold": 1,
+        "producer_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ]
+      },
+      "prediction_hash": "faecea6fb803c0d61c8f7f99016a7ab6713b320899637dab282572a8e400b866",
+      "result_source": "fresh_run",
+      "rows": 46321,
+      "sources": [
+        {
+          "causal_CV_ADE": 37.4415371598482,
+          "causal_CV_FDE": 102.31762183344019,
+          "endpoint_rows": 3908,
+          "known_rows": 5943,
+          "neural_ADE": 28.263989194808563,
+          "neural_FDE": 74.95650569401572,
+          "rows": 6127,
+          "source": "moving_source_component_077",
+          "unknown_rows": 184
+        },
+        {
+          "causal_CV_ADE": 31.472128131282894,
+          "causal_CV_FDE": 79.91283657343293,
+          "endpoint_rows": 28246,
+          "known_rows": 39159,
+          "neural_ADE": 20.5508726424135,
+          "neural_FDE": 55.49824000417237,
+          "rows": 40194,
+          "source": "moving_source_component_078",
+          "unknown_rows": 1035
+        }
+      ],
+      "teacher_exposure_disjoint": true
+    }
+  ],
+  "cuts": {
+    "0": {
+      "easy": 9.545994051407813,
+      "hard": 29.899692038749063
+    },
+    "1": {
+      "easy": 15.403742715015557,
+      "hard": 49.24863795836583
+    }
+  },
+  "dependencies": {
+    "scripts/run_m3w_moving_prefix_actor.py": "0a81d3d70958e36f4619aa45c544a10a1f3a2c98f706c0ab89f3b4991551991a",
+    "scripts/run_m3w_moving_producer_crossfit.py": "b90142052f143fe6c3a3ae9fc42e6c8f5e5062156bc2fcd2336b74358e45eec5",
+    "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+    "src/world_model/m3w_eqmotion_adapter.py": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "src/world_model/m3w_european_source_forecast.py": "cf29f35ffcb97321810e51ef0fb40a493656d1abbeb93c93454f10a58a504bb4",
+    "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+    "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10"
+  },
+  "files": {
+    "configs/m3w_moving_visual_actor_v1.json": "aaa93e2f4cb9e15b9db11abc1291fc0b5ab108fd522ae4125e0086e4128e1e6b",
+    "outputs/publication_readiness_2026_09/moving_visual_actor_v1/protocol.md": "8b84bc59531d799cfe75d391b870e5d479cbd90ef7620c77d2379d0b80d95ada",
+    "scripts/run_m3w_moving_visual_actor.py": "b46a7919f99da88175a0638ab900e3222c3af10109abeb1a0633d1245082583b",
+    "src/training/m3w_visual_forecast.py": "25a492ecd63dbd93fdb25b1717ead91fc4d61814058843092d5eb351257accf7",
+    "src/world_model/m3w_visual_forecast.py": "90fc3109f656eafa104dc1cbd2ffb9a7eb00eb11bb5d7d69c09037af5b4cc3a8",
+    "tests/test_m3w_visual_forecast.py": "cf98c36d204640d39f40f71c62733858667914a7d751cb077c38d6b4b0310cfe"
+  },
+  "jobs": [
+    {
+      "donor_sites": [
+        "moving_source_component_048",
+        "moving_source_component_067"
+      ],
+      "fit_sites": [
+        "moving_source_component_047",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062"
+      ],
+      "key": "eqmotion_A0_inner0_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 0,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_047",
+        "moving_source_component_052"
+      ],
+      "fit_sites": [
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ],
+      "key": "eqmotion_A0_inner1_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 1,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_051",
+        "moving_source_component_062"
+      ],
+      "fit_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_052",
+        "moving_source_component_067"
+      ],
+      "key": "eqmotion_A0_inner2_seed17",
+      "parent_contexts": [
+        "eqmotion_fold0_seed17_critic1",
+        "eqmotion_fold0_seed17_critic2"
+      ],
+      "part": 2,
+      "producer_fold": 0,
+      "producer_sites": [
+        "moving_source_component_047",
+        "moving_source_component_048",
+        "moving_source_component_051",
+        "moving_source_component_052",
+        "moving_source_component_062",
+        "moving_source_component_067"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076"
+      ],
+      "fit_sites": [
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "key": "eqmotion_A1_inner0_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 0,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "fit_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078"
+      ],
+      "key": "eqmotion_A1_inner1_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 1,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    },
+    {
+      "donor_sites": [
+        "moving_source_component_077",
+        "moving_source_component_078"
+      ],
+      "fit_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ],
+      "key": "eqmotion_A1_inner2_seed17",
+      "parent_contexts": [
+        "eqmotion_fold1_seed17_critic0"
+      ],
+      "part": 2,
+      "producer_fold": 1,
+      "producer_sites": [
+        "moving_source_component_053",
+        "moving_source_component_065",
+        "moving_source_component_076",
+        "moving_source_component_077",
+        "moving_source_component_078",
+        "moving_source_component_080",
+        "moving_source_component_082",
+        "moving_source_component_087"
+      ]
+    }
+  ],
+  "machine": "arm64",
+  "measured_inputs": {
+    "receipt_counts": {
+      "A": 3668,
+      "own": 2227
+    },
+    "sha256": "661ef13c48d448094b6f2f4c7d36ace14a49a4d4146853f926fc08fd9b4b0daf"
+  },
+  "new_outer_C_H_readout": false,
+  "new_own_B_readout": false,
+  "numpy": "2.4.6",
+  "original_rules_unchanged": true,
+  "parents": [
+    {
+      "bytes": 12062,
+      "path": "outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/registration.json",
+      "sha256": "e03ec718b048963b69e09928a80b33b2a476d36ee9f160ad800b1b3e8ca80a1d"
+    },
+    {
+      "bytes": 7512,
+      "path": "outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/population.json",
+      "sha256": "139d296e7c64157f73d1a3b616627879a80fb150ca7a199ef8bd2c78d8f3ce55"
+    },
+    {
+      "bytes": 16489,
+      "path": "outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/analysis.json",
+      "sha256": "74f9a3e0bf40e11dec548b87fa2d1450dbe6548e051a42b97bc4880a12e8cd21"
+    },
+    {
+      "bytes": 227436,
+      "path": "outputs/publication_readiness_2026_09/moving_prefix_actor_v1/analysis.json",
+      "sha256": "ae140b4cad607c07883446a4f0b8c31fe8512cbe7d262ebcd1f78b329f91e83e"
+    },
+    {
+      "bytes": 38354,
+      "path": "outputs/publication_readiness_2026_09/moving_visual_risk_v1/registration.json",
+      "sha256": "d16343c2f814c968a8525f84d0ab004ec864061d8b48dc94af37c3e88d2e9b14"
+    },
+    {
+      "bytes": 1658,
+      "path": "outputs/publication_readiness_2026_09/moving_visual_risk_v1/context.json",
+      "sha256": "078a44316e492424701ff9098eda009c0343ea83d789ea573b4b2b88516519a0"
+    },
+    {
+      "bytes": 1410964,
+      "path": "outputs/publication_readiness_2026_09/moving_visual_risk_v1/analysis.json",
+      "sha256": "4375e369a675ff2f396e5502a8e3bf43cb33dbce173142cb8ff2e4c8ecd7025f"
+    },
+    {
+      "bytes": 85685,
+      "path": "outputs/publication_readiness_2026_09/moving_visual_risk_v1/calibration_analysis.json",
+      "sha256": "9ca842da055628c2341502c9e442c66411118b3faacbba7c5aabf3798063551b"
+    }
+  ],
+  "role": "producer_A_component_not_independent_confirmation",
+  "torch": "2.12.0",
+  "training": {
+    "batch_size": 64,
+    "checkpoint_every": 200,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 50,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "steps": 4000,
+    "weight_decay": 0.0001
+  }
+}

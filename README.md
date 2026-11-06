@@ -39,6 +39,12 @@ or a calibrated physical world. The project is **not submission-ready**.
 [failure analysis](outputs/publication_readiness_2026_09/moving_visual_risk_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_visual_risk_v1/operation_zh.md).
 
+My next experiment moves the image context into the trajectory predictor itself.
+The new branch starts with exactly the original forecast and learns through the
+unchanged whole12-step loss. Twelve matched quality/motion actors are registered
+before real fitting; recovery checks and a full original-control refit precede
+the source-held comparison. No new outer test or risk-rule change is involved.
+
 ### Previous Actor Repair
 
 I retrained the actual trajectory predictor to test whether better early-step
