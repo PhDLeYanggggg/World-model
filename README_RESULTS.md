@@ -42,6 +42,11 @@ in130.8365s,peak1,798,586,368B. All model/optimizer/sampler/RNG/trace state is
 exact for100+100vs200. Direct200takes65.440536s,projecting19,632.16s(~5.45h)
 for15full fits,not including inference. Full raw control is active before the
 twelve-model matrix. This is real Torch engineering,not predictive success.
+Full raw control PID26558 exits0 in1366.044474s,peak1,845,657,600B. The complete
+4000update shared core,optimizer,sampler,RNG and common trace match the cached
+original exactly;only the old pilot20/40log entries are additional. Twelve
+matched image-conditioned actors are now active asPID28399;no donor prediction
+comparison is scored.
 
 ### Past-Image Observation: Complete Matched Experiment, Original Contract Failed
 

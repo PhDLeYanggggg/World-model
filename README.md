@@ -47,6 +47,9 @@ the source-held comparison. No new outer test or risk-rule change is involved.
 The real100+100versus200recovery pilot now matches exactly. Its measured speed
 projects roughly5.5hours for all full fits,within the local budget;training is
 continuing rather than replacing the experiment with a quick result.
+The full4,000update raw-control refit now reproduces the original shared
+core,optimizer,sampler,RNG and common loss trace exactly. The twelve matched
+image-conditioned actors are training;their donor outcomes are not scored yet.
 
 ### Previous Actor Repair
 
