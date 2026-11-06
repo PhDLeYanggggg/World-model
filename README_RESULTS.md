@@ -46,6 +46,10 @@ now start;no new outcome comparison is scored.
 Additional unit-only native-origin/camera-coordinate roundtrip check passes
 0.86s without changing registered definitions. Full treatment processPID59468
 is active,CPU4/workers0. This is not a new predictive result.
+At20:24Z,the first three complete4000update treatment models are finished and
+the second producer fold starts. Original draws/factors/RNGchecks pass for
+every completed fit;source-held outcomes remain unscored. Local training stays
+on the full registered budget with no resource downgrade.
 The CVPR2027official enrollment/full/supplementary dates and author guidelines
 are freshly checked;profiles/conflicts remain unverified and no submission is
 performed. The seven-page native evidence draft now cites viewpoint-normalized
