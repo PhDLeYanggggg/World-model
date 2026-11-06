@@ -52,6 +52,9 @@ The causal operator store now retains all 125,540 windows. Seven-pair image
 support is complete for 94,242 windows; the others retain explicit identity
 imputation. Geometry and history timestamps align exactly. The real recovery
 pilot is running before full fitting.
+The real 100+100 versus 200 recovery check now matches exactly. Its measured
+speed projects about 2.8 hours for the eight full fits, excluding inference.
+A complete identity-control refit is running before the six treatment fits.
 
 ### Previous Controller Experiment
 
