@@ -10,6 +10,13 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [complete-policy addendum](../moving_complete_donor_policy_v1/paper_addendum.md)
+reconstructs all 62,466 exposed own-B rows. Fixed mean/unanimity policies improve
+available-label ADE but pass only 1/24 and 2/24 original risk/support views.
+Actual known-easy harm violations coexist with missing selected reference and
+unknown-label bound violations. This is a negative full-policy result, not an
+independent test or deployment upgrade. Original rules and compiled paper remain.
+
 The [fixed-teacher risk-seed addendum](../moving_donor_seeds_v1/paper_addendum.md)
 adds48risk fits and48full exact refits, with24verified cached seed17heads.
 The information criterion holds in3/3,2/3,2/3contexts for risk seeds17/29/43.

@@ -11,18 +11,36 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am now evaluating the two frozen consensus rules on the complete exposed
-development population, not just known selected proposals. The original risk
-evaluator will include unknown-label bounds, non-intervention rows and every
-required recording view. No new test, training or threshold change is involved.
-[Complete-policy protocol](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/protocol.md).
+The complete-policy evaluation is now finished. I reconstructed all 62,466
+past-eligible rows in eight exposed development sources, including unknown
+labels and non-interventions, and kept the original per-record 2% risk and
+support requirements. No new held test, training or threshold search was used.
+
+**Trajectory accuracy improves, but neither consensus policy is safe to deploy.**
+
+The fixed mean rule improves available-label source-macro ADE by 1.313%, and
+unanimity by 0.336%, versus the training-defined motion floor. Conservative
+completion lower gains are 0.824% and 0.306%. Yet only 1/24 and 2/24 required
+recording views pass the full original risk/support contract. This is not just
+an empty-denominator problem: there are 15 and 9 known-easy positive-harm
+violations, respectively. Unknown labels add further conservative risk.
+
+All recordings have easy observations before selection, but consensus removes
+much of the selected easy reference mass. The next repair targets complete-risk
+training and reference support, not a looser safety rule. Empty support stays
+not estimable; there is no identity-fallback exemption. Deployment is unchanged.
+[Complete results](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/operation_zh.md).
+
+### Risk-Head Seed Replication
 
 The donor benefit now replicates across risk-head seeds 17/29/43 with the
 forecast teacher fixed. I trained 48 additional heads and repeated every new
 fit exactly, retaining the verified seed17 models rather than selecting a
 favorable run. The information criterion passes in 3/3, 2/3 and 2/3 contexts.
 
-**The component learns better; the complete policy is still unproved.**
+**The component learns better; the subsequent complete-policy check fails.**
 
 Average individual-head decision cost falls 12.16% versus matched own-only
 training, with an exploratory source-component interval of [2.66%, 27.18%].
@@ -33,10 +51,10 @@ and do not describe the separately aggregated score ensembles.
 
 The fixed three-head unanimity rule reduces harmful known-proposal admissions
 to 7/26/26, versus 46/229/602 for the original single head and 0/1/0 for the
-forest. It also rejects useful predictions. This is not yet a complete 2%
-policy-risk check: unknown-label contributions and reference/support conditions
-must be evaluated on the full allowed development population. The outer test
-stays closed. Deployment and the original rules remain unchanged.
+forest. It also rejects useful predictions. These component counts exclude the
+unknown-label contributions and reference/support conditions evaluated in the
+new complete-policy result above. The outer test stays closed. Deployment and
+the original rules remain unchanged.
 
 These are three risk-head seeds, not three forecaster seeds or independent
 world-model confirmation. The project is not submission-ready.

@@ -16,24 +16,46 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Complete Exposed-Own-B Readout Registered
+### Complete Exposed-Own-B Readout: Gain Is Not A Safety Pass
 
-Freeze the prior mean/unanimity rules, original proposer, forest and risk heads.
-Rebuild62,466past-eligible rows in the same eight exposed source components;
-known proposals48,061and unknown proposals1,274must align to the old scope.
-Inference cannot use future validity or select batches by label support. Known
-features/decisions must reproduce; a fixed floating tolerance is declared for
-scores when full inference batches include unknown rows. Then run the original
-per-record2%all/easy/net/support calculation unchanged. Matched counts remain
-utility-only; empty support stays NA, with no identity exemption. No new C/H,
-training or promotion. Full-policy results are not claimed complete yet.
-Initial inference PID69915 exits1 on a1.06e-9score difference at an old batch
-tail, after exact raw-feature equality. No full-policy readout has run. The
-numeric verification amendment normalizes scores by saved training RMS and
-uses64float32epsilon, while requiring exact channel and ensemble decisions.
-It changes no model, inference math, zero threshold,2%risk rule or cohort.
-The original registration/failure/cache are retained; v2uses separate outputs.
-[Protocol](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/protocol.md).
+Fresh reconstruction and frozen causal inference cover 62,466 past-eligible
+rows in 8 exposed source components and 24 recordings: 60,701 have some labels,
+40,043 complete labels and 1,765 no future labels. The proposer selects 49,335
+rows (48,061 known, 1,274 unknown). No future validity enters choices.
+
+Mean/unanimity available-label source-macro ADE gains are +1.313033%/+0.335919%;
+completion lower gains +0.823788%/+0.305609%. Paired lower trajectory contrasts
+versus forest are +0.820595 pp [0.126605, 1.724009] and +0.301100 pp
+[0.030597, 0.644316], 3,000 exploratory source-component bootstrap resamples.
+These are not earlier surrogate-cost intervals, independent tests or safety CIs.
+
+Both fail the original full risk/support contract: only 1/24 and 2/24 views
+pass. Known-easy positive-harm violations are 15 and 9; completion-easy
+violations 17 and 10. Mean admits 81 unknown rows, unanimity 11. Undefined
+easy-reference views are 6 and 12. Every recording has observed easy reference
+before selection; this is partly a selected-support problem, not a structural
+absence in the original cohort. Zero unanimity easy-net violations do not
+cancel its positive harm. Forest passes only 1/24, so is not a safety success.
+The physical floor's empty selected support is NA, not evidence of unsafe motion.
+
+Initial infer PID69915 exits 1 on one 1.06e-9 batch-tail score mismatch, before
+full metrics. Its failure remains. Committed v2 changes verification only:
+training-RMS scaled float32 tolerance plus exact channel/ensemble choices.
+All raw known features and decisions match; 8/24 score arrays are bitwise exact,
+maximum score difference 4.908907e-9. No model, inference math or risk rule changes.
+prepare PID69798 exits 0 in 5.127s; infer PID70312 exits 0 in 12.982s,
+peak 4,028,530,688 bytes; evaluate PID70430 exits 0 in 1.409s.
+Final serial replay PID71145 exits 0 in 13.616s: all complete inference arrays
+and metrics match exactly, public files unchanged during the check. Nineteen
+focused tests pass in 1.73s; full historical suite not rerun. Local figure
+visually checked; compiled main paper unchanged.
+
+No new training, C/H, deployment or submission readiness. Original 2%/support,
+NA semantics, old failures and original 24-group main NA remain. Next model
+test: complete-risk donor supervision with explicitly marked conservative
+unknown-envelope targets, then selection/reference-aware risk learning.
+[Full results](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/failure_analysis.md).
 
 ### Risk-Head Seed Replication: Benefit Persists, Safety Still Unproved
 
@@ -59,7 +81,8 @@ need not reduce the full-policy risk ratio.
 Mean/unanimity lower total known-proposal cost relative to forest in all three
 contexts, but false-safe cost remains higher. Harmful admissions are34/134/323
 for mean and7/26/26for unanimity; forest0/1/0. Original full-population risk,
-unknown-label and support evaluation of these policies remains not_run.
+unknown-label and support evaluation was not_run at that milestone; the later
+complete-policy readout above is now complete and negative.
 
 New primary updates196,608; repeatupdates196,608; separatepilot4,608. Pilot
 PID66007 exits0 in12.412s; primary PID66113 exits0 in285.502s, peak5,704,531,968
