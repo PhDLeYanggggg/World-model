@@ -28,13 +28,16 @@ np, torch = source.np, source.torch
 read, sha, stable, once, checked, artifact = source.read, source.sha, source.stable, source.once, source.checked, source.artifact
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/moving_visual_actor_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_visual_actor_v1'
-CONFIG = ROOT/'configs/m3w_moving_visual_actor_v1.json'; REG = PUBLIC/'registration.json'
+CONFIG = ROOT/'configs/m3w_moving_visual_actor_v1.json'; REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), CONFIG, PUBLIC/'protocol.md', Path(model_method.__file__), Path(training.__file__),
-    ROOT/'tests/test_m3w_visual_forecast.py')
+    ROOT/'tests/test_m3w_visual_forecast.py', ROOT/'tests/test_m3w_visual_actor_recovery.py', PUBLIC/'recovery_amendment.md')
 
 
 def register():
     cfg = read(CONFIG); _, parent = source.register(); _, old = previous.register(); vision.register()
+    preliminary = read(PUBLIC/'registration.json')
+    for p in (CONFIG, PUBLIC/'protocol.md', Path(model_method.__file__), Path(training.__file__), ROOT/'tests/test_m3w_visual_forecast.py'):
+        if sha(p) != preliminary['files'][str(p.relative_to(ROOT))]: raise ValueError('Recovery amendment cannot change the model or scientific definitions')
     if (cfg['treatment_arms'] != list(model_method.ARMS[1:]) or cfg['fresh_treatment_models'] != 12
             or cfg['full_treatment_refits'] != 2 or cfg['full_raw_control_refits'] != 1
             or cfg['cached_raw_controls'] != 6 or cfg['steps_per_model'] != parent['training']['steps']
@@ -58,10 +61,11 @@ def register():
             source.PUBLIC/'analysis.json', previous.PUBLIC/'analysis.json', vision.REG,
             vision.PUBLIC/'context.json', vision.PUBLIC/'analysis.json', vision.PUBLIC/'calibration_analysis.json')],
         measured_inputs=vision.measurement_bundle(), torch=str(torch.__version__), numpy=np.__version__,
+        preliminary_registration=artifact(PUBLIC/'registration.json'), definition_version=2, recovery_only_amendment=True,
         machine=platform.machine(), role='producer_A_component_not_independent_confirmation',
         original_rules_unchanged=True, new_own_B_readout=False, new_outer_C_H_readout=False))
     once(REG, value)
-    once(PUBLIC/'input_admission.json', dict(registration_sha256=sha(REG),
+    once(PUBLIC/'input_admission_v2.json', dict(registration_sha256=sha(REG),
         version='past_image_derived_actor_conditioning_v1', original_admission_files_edited=False,
         role='supervised_training_existing_producer_A_only', context_columns=46,
         candidate_specific_rollout_context=False, future_targets_as_inputs=False,
@@ -71,7 +75,7 @@ def register():
 
 
 def committed(reg):
-    for p in (*FILES, REG, PUBLIC/'input_admission.json'):
+    for p in (*FILES, REG, PUBLIC/'input_admission_v2.json'):
         blob = subprocess.run(['git', 'show', 'HEAD:'+str(p.relative_to(ROOT))], cwd=ROOT, capture_output=True, check=True).stdout
         if hashlib.sha256(blob).hexdigest() != sha(p): raise ValueError('Commit the exact experiment before real preparation/fitting')
     for p, digest in reg['dependencies'].items():
@@ -101,6 +105,27 @@ def runtime(cfg, phase):
     return start, guard, beat
 
 
+def atomic_array(path, value):
+    if path.exists():
+        np.testing.assert_array_equal(np.load(path, allow_pickle=False), value)
+        return
+    path.parent.mkdir(parents=True, exist_ok=True); pending = path.with_suffix('.pending')
+    with pending.open('wb') as f:
+        np.save(f, value, allow_pickle=False); f.flush(); os.fsync(f.fileno())
+    pending.replace(path)
+
+
+def completed_fit(path, expected_identity):
+    if not path.exists(): return None
+    receipt = read(path)
+    state = torch.load(checked(receipt['checkpoint']), map_location='cpu', weights_only=False)
+    if (receipt.get('identity') != expected_identity or state['identity'] != expected_identity
+            or state['image_arm'] != expected_identity['arm'] or state['step'] != 4000
+            or not receipt['result']['complete'] or receipt['result']['step'] != 4000):
+        raise ValueError('Completed fit must retain the exact full-budget identity')
+    return receipt
+
+
 def prepare(beat):
     past = vision.images.past_arrays(read(vision.images.CONFIG)); ids = past['global_ids']
     n = len(ids); tables = {name: np.empty((n, 46), np.float32) for name in ('quality', 'motion')}
@@ -123,8 +148,7 @@ def prepare(beat):
         raise ValueError('Retain all125540Arows and all source/recording groups')
     files = {}
     for name, value in dict(**tables, global_ids=np.asarray(ids)).items():
-        p = PRIVATE/'arrays'/f'{name}.npy'; p.parent.mkdir(exist_ok=True)
-        with p.open('xb') as f: np.save(f, value, allow_pickle=False)
+        p = PRIVATE/'arrays'/f'{name}.npy'; atomic_array(p, value)
         files[name] = artifact(p)
     once(PUBLIC/'population.json', dict(files=files, rows=n, columns=46, sources=14, recordings=34,
         exact_original_global_ID_joins=True, all_candidate_copies_action_invariant=True,
@@ -175,6 +199,8 @@ def pilot(cfg, reg, data, jobs, guard, beat):
 
 
 def control(reg, data, jobs, guard, beat, resume):
+    if completed_fit(PUBLIC/'raw_control_refit.json', identity(jobs[0], 'raw_control')) is not None:
+        beat(state='completed_raw_control_verified'); return
     home = PRIVATE/'raw_control'; result, new = fit_one(data, jobs[0], reg, home, 'raw_control', guard, beat, resume)
     ref = next(c for c in reg['controls'] if c['job']['key'] == jobs[0][0]['key'])
     old = torch.load(checked(ref['checkpoint']), map_location='cpu', weights_only=False)
@@ -190,6 +216,7 @@ def control(reg, data, jobs, guard, beat, resume):
     for step in b: exact(a[step], b[step])
     if not result['complete']: raise ValueError('Full4000update old control required')
     once(PUBLIC/'raw_control_refit.json', stable(dict(result_source='fresh_run', result=result,
+        identity=identity(jobs[0], 'raw_control'),
         checkpoint=artifact(home/'checkpoint.pt'), shared_core_optimizer_sampler_RNG_and_common_trace_exact=True,
         inactive_context_parameters=1728, old_pilot_only_log_steps=sorted(set(a)-set(b)))))
 
@@ -201,6 +228,12 @@ def train(cfg, reg, data, jobs, guard, beat, resume, verify=False):
     for i, entry in enumerate(jobs[:1] if verify else jobs):
         for arm in cfg['treatment_arms']:
             key = entry[0]['key']+'_'+arm; home = PRIVATE/('verify' if verify else 'fits')/key
+            if not verify:
+                done = completed_fit(PUBLIC/'fits'/f'{key}.json', identity(entry, arm))
+                if done is not None:
+                    receipts.append(dict(key=key, checkpoint=done['checkpoint']))
+                    beat(state='completed_fit_verified', complete=len(receipts), total=12)
+                    continue
             if not verify and i == 0 and arm == 'motion_geometry' and not (home/'checkpoint.pt').exists():
                 home.mkdir(parents=True, exist_ok=True); shutil.copyfile(checked(prefix), home/'checkpoint.pt')
             result, state = fit_one(data, entry, reg, home, arm, guard, beat, resume or (home/'checkpoint.pt').exists())

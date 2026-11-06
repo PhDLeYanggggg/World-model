@@ -29,6 +29,12 @@ all125540Arows and original2%/support/NA rules remain;no own-B/C/Hreadout.
 Fresh CREATE query again times out after60s;remote queue unknown,no mutations.
 Local CPU4/workers0is feasible;actual recovery pilot will estimate full time.
 [Protocol](outputs/publication_readiness_2026_09/moving_visual_actor_v1/protocol.md).
+Recovery-only v2 is registered before any real input preparation or fitting:
+completed model receipts and prepared arrays can be reused without overwrite.
+Model/loss/sampling/metrics/protocol hashes remain byte-identical. Seven focused
+checks pass5.98s,including actual small author-core optimizer parity. The full
+model has3,028,996nominal/582,404trainable parameters. These checks do not claim
+real predictive success. Original draft/code remain in Gitb43f032c.
 
 ### Past-Image Observation: Complete Matched Experiment, Original Contract Failed
 
