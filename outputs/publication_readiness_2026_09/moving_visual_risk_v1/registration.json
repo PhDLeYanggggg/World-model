@@ -1,0 +1,1044 @@
+{
+  "config": {
+    "arms": [
+      "no_image",
+      "image_bounds",
+      "quality_geometry",
+      "motion_geometry"
+    ],
+    "artifact_cap_bytes": 2147483648,
+    "bootstrap_resamples": 3000,
+    "bootstrap_seed": 62468,
+    "context_width": 56,
+    "deployment_changed": false,
+    "disk_reserve_bytes": 5368709120,
+    "expected_evaluation_rows": 62466,
+    "expected_recordings": 24,
+    "expected_source_groups": 8,
+    "forecaster_seeds": [
+      17
+    ],
+    "fresh_models": 24,
+    "full_exact_refits": 24,
+    "hard_runtime_limit_seconds": 43200,
+    "identity_certification": false,
+    "name": "moving_visual_risk_v1",
+    "new_outer_C_H_readout": false,
+    "observation_context_indices": [
+      [
+        0,
+        40
+      ],
+      [
+        48,
+        54
+      ]
+    ],
+    "own_B_is_already_exposed_development": true,
+    "policies": [
+      "proposal_only",
+      "independent",
+      "frame_uniform",
+      "joint_matched",
+      "joint_free"
+    ],
+    "primary_contrast": "motion_geometry_minus_quality_geometry_paired_completion_lower",
+    "primary_policy": "joint_free",
+    "producer_folds": [
+      0,
+      1
+    ],
+    "risk_budget": 0.02,
+    "risk_head_seeds": [
+      17,
+      29,
+      43
+    ],
+    "secondary_contrast": "image_bounds_minus_no_image",
+    "smc_enabled": false,
+    "solver_seconds_per_query": 1.0,
+    "stage5c_executed": false,
+    "steps_per_model": 4096,
+    "submission_ready": false,
+    "threshold_search": false,
+    "training_support": "producer_A_OOF_only_no_own_B_targets_in_fitting"
+  },
+  "dependencies": {
+    "scripts/run_m3w_moving_role_separated_cost.py": "9518fc752a88ab571cb60dbc5b97fbb98f1e406e24c42f16db1415cc92e0eddf",
+    "src/data_unification/m3w_past_background_motion.py": "83dcda0b8eb68ba8d0dbc1f34ee56040e72fbd8b804bbef034c443ea70c9e474",
+    "src/world_model/m3w_frame_action_allocation.py": "b1e1351171900901c069f97ada3e081ad13a1b6ab7d5d31c3aacd81d926879dd",
+    "src/world_model/m3w_role_separated_cost.py": "844cb79374744ff05ffa61cdfe435fecaccaa79ecb8f6687ea91b3b80abde4a0"
+  },
+  "files": {
+    "configs/m3w_moving_visual_risk_v1.json": "8f47559c6caec241458edd726526c88ad49d839c0a723ca8eb4176c1b051726f",
+    "outputs/publication_readiness_2026_09/moving_visual_risk_v1/protocol.md": "d8e61de80d298534a92c100672a8bf799f64d283b8dd3048bb131a8c7af51534",
+    "scripts/run_m3w_moving_visual_risk.py": "2e45ffdfb153aa4e28c3274f37a8e37ebaee0234d8f9fbad8b2beb5f799f618d",
+    "src/data_unification/m3w_visual_context_packet.py": "a7c00278b5a6e7c5593031de2bafd3c7a361630404b05b961421fe2d7cc8503b",
+    "src/world_model/m3w_visual_risk_cost.py": "dcd7c11aa9d7946de6fcd356dda55ae2b2ceaf7ba88008c504f0bd515e832016",
+    "tests/test_m3w_visual_context_packet.py": "7e1844f483aa8497072ccabbac3cbc9c4864267e1d4b608f29a3e79a76979cdf",
+    "tests/test_m3w_visual_risk_cost.py": "fda176e52e92a0de342852550fd1590673244ae044d235e716ee6df2366f2998"
+  },
+  "forecaster_seeds": [
+    17
+  ],
+  "jobs": [
+    {
+      "forecast": {
+        "checkpoint_sha256": "c469a035003bc8735c2df385838676925f8bc00fccbc59c8e8eec998f7f82a16",
+        "emitted_candidates": 1,
+        "identity": {
+          "architecture": {
+            "channels": 64,
+            "family": "eqmotion_fixed_head",
+            "fixed_head": 0,
+            "hidden_nf": 64,
+            "history_steps": 8,
+            "input_conditioning": "observed_joint_max_norm",
+            "layers": 4,
+            "prediction_steps": 12,
+            "prune_unused_heads": true
+          },
+          "baseline_index": 1,
+          "excluded_groups": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_049",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_062",
+            "moving_source_component_066",
+            "moving_source_component_067",
+            "moving_source_component_068",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "factors_sha256": "39c8f17df9322a86f13c09a9598a4739aca03f921e16d6a7f7a799b7740df238",
+          "family": "eqmotion",
+          "fit_groups": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "fold": 1,
+          "held_ids_sha256": "a5795ad3c6c5e587e775cf754c80fb5478e37fc64a5b074fd75d1fc2840018ee",
+          "normalizers": {
+            "moving_source_component_053": {
+              "correction": 1.0383561643835617,
+              "indexed": 1137,
+              "selected_baseline_mean_ADE": 74.0045714422828,
+              "supported": 1095
+            },
+            "moving_source_component_065": {
+              "correction": 1.1073326248671627,
+              "indexed": 1042,
+              "selected_baseline_mean_ADE": 17.657900017884348,
+              "supported": 941
+            },
+            "moving_source_component_076": {
+              "correction": 1.0496231155778895,
+              "indexed": 3342,
+              "selected_baseline_mean_ADE": 36.08185549351027,
+              "supported": 3184
+            },
+            "moving_source_component_077": {
+              "correction": 1.0309607942116776,
+              "indexed": 6127,
+              "selected_baseline_mean_ADE": 37.4415371598482,
+              "supported": 5943
+            },
+            "moving_source_component_078": {
+              "correction": 1.026430705584923,
+              "indexed": 40194,
+              "selected_baseline_mean_ADE": 31.472128131282894,
+              "supported": 39159
+            },
+            "moving_source_component_080": {
+              "correction": 1.0139694003611137,
+              "indexed": 10670,
+              "selected_baseline_mean_ADE": 34.09818816354395,
+              "supported": 10523
+            },
+            "moving_source_component_082": {
+              "correction": 1.0497470489038785,
+              "indexed": 6225,
+              "selected_baseline_mean_ADE": 75.03483906370397,
+              "supported": 5930
+            },
+            "moving_source_component_087": {
+              "correction": 1.0731247644176405,
+              "indexed": 2847,
+              "selected_baseline_mean_ADE": 128.06050816268524,
+              "supported": 2653
+            }
+          },
+          "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+          "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+          "seed": 17,
+          "selection_relative_scores": [
+            5.7257370801864935,
+            1.0,
+            1.8727675199953155,
+            1.2386274232699042,
+            1.029580007877629,
+            1.2604192949940918
+          ],
+          "train_ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+          "whole_source_reservations_unchanged": true
+        },
+        "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold1_seed17.npz",
+        "rows": 123702,
+        "sha256": "a3e399d6b47df90ab47862ca37cf837440c142de36df25857f08688b3b3c878b",
+        "stored_prediction": "relative_to_current_origin_float32"
+      },
+      "forest": {
+        "moving_source_component_048": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold1_seed17_critic0_moving_source_component_048_extra_trees_summary120.pt.gz",
+          "sha256": "108f1d8469140d4bbd21722d68914f98e8fa55b6fc3749eb1cbeb9b55f1a63a2"
+        },
+        "moving_source_component_067": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold1_seed17_critic0_moving_source_component_067_extra_trees_summary120.pt.gz",
+          "sha256": "c72b37beb6679755c831290d261deff33e3128fb4158c62b072cb1f7ea8b3835"
+        }
+      },
+      "job": {
+        "critic_fold": 0,
+        "critic_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "easy_cut": 15.403742715015557,
+        "evaluation_fold": 2,
+        "evaluation_scope": {
+          "budget": 2000,
+          "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+          "queries": 1176,
+          "rows": 69746,
+          "sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "source_query_counts": [
+            6,
+            94,
+            156,
+            630,
+            28,
+            51,
+            112,
+            55,
+            44
+          ]
+        },
+        "evaluation_sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fit_scope": {
+          "budget": 2000,
+          "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+          "queries": 806,
+          "rows": 53956,
+          "sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "source_query_counts": [
+            88,
+            25,
+            165,
+            11,
+            490,
+            27
+          ]
+        },
+        "floor_index": 1,
+        "forecast_key": "eqmotion_fold1_seed17",
+        "hard_cut": 49.24863795836583,
+        "key": "eqmotion_fold1_seed17_critic0",
+        "producer_fold": 1,
+        "producer_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "seed": 17
+      },
+      "part": {
+        "names": [
+          "moving_source_component_048",
+          "moving_source_component_067"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 0,
+          "critic_sites": [
+            "moving_source_component_047",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062"
+          ],
+          "easy_cut": 15.403742715015557,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "8742de971bcc86ac09cf1403d8e44a4aa0f0fb804f9388ec9278f1392857cafb",
+            "rows": 6197
+          },
+          "evaluation_sites": [
+            "moving_source_component_048",
+            "moving_source_component_067"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+            "queries": 806,
+            "rows": 53956,
+            "sites": [
+              "moving_source_component_047",
+              "moving_source_component_048",
+              "moving_source_component_051",
+              "moving_source_component_052",
+              "moving_source_component_062",
+              "moving_source_component_067"
+            ],
+            "source_query_counts": [
+              88,
+              25,
+              165,
+              11,
+              490,
+              27
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold1_seed17",
+          "hard_cut": 49.24863795836583,
+          "key": "eqmotion_fold1_seed17_critic0",
+          "producer_fold": 1,
+          "producer_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "seed": 17
+        }
+      },
+      "proposer": {
+        "path": "data/stage_cvpr2027_experiments/moving_public_deferral_v1/fits/eqmotion_fold1_seed17_critic0_part1.pt.gz",
+        "sha256": "581d493c5df559248cfb0cdb1fed73a99e68ac5380b6d8ad0d51883222e2d5e6"
+      }
+    },
+    {
+      "forecast": {
+        "checkpoint_sha256": "37ce8c07927b5e59afa8946df4d18498ef7ae75e147438e3783a6359c8dc499f",
+        "emitted_candidates": 1,
+        "identity": {
+          "architecture": {
+            "channels": 64,
+            "family": "eqmotion_fixed_head",
+            "fixed_head": 0,
+            "hidden_nf": 64,
+            "history_steps": 8,
+            "input_conditioning": "observed_joint_max_norm",
+            "layers": 4,
+            "prediction_steps": 12,
+            "prune_unused_heads": true
+          },
+          "baseline_index": 1,
+          "excluded_groups": [
+            "moving_source_component_049",
+            "moving_source_component_053",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_065",
+            "moving_source_component_066",
+            "moving_source_component_068",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087",
+            "moving_source_component_090"
+          ],
+          "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+          "family": "eqmotion",
+          "fit_groups": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "fold": 0,
+          "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+          "normalizers": {
+            "moving_source_component_047": {
+              "correction": 1.0143054914628518,
+              "indexed": 2198,
+              "selected_baseline_mean_ADE": 22.007610731356404,
+              "supported": 2167
+            },
+            "moving_source_component_048": {
+              "correction": 1.0205307961942915,
+              "indexed": 2038,
+              "selected_baseline_mean_ADE": 20.960665576080856,
+              "supported": 1997
+            },
+            "moving_source_component_051": {
+              "correction": 1.009539842873176,
+              "indexed": 7196,
+              "selected_baseline_mean_ADE": 19.521207693475986,
+              "supported": 7128
+            },
+            "moving_source_component_052": {
+              "correction": 1.0347490347490347,
+              "indexed": 536,
+              "selected_baseline_mean_ADE": 35.92935069477207,
+              "supported": 518
+            },
+            "moving_source_component_062": {
+              "correction": 1.0095271135781383,
+              "indexed": 37829,
+              "selected_baseline_mean_ADE": 22.06826013491561,
+              "supported": 37472
+            },
+            "moving_source_component_067": {
+              "correction": 1.0381927109335995,
+              "indexed": 4159,
+              "selected_baseline_mean_ADE": 35.87855846370121,
+              "supported": 4006
+            }
+          },
+          "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+          "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+          "seed": 17,
+          "selection_relative_scores": [
+            3.6030917960092697,
+            1.0,
+            1.542420151944505,
+            1.1603407786700874,
+            1.0482901689991855,
+            1.2208692321142756
+          ],
+          "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+          "whole_source_reservations_unchanged": true
+        },
+        "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed17.npz",
+        "rows": 141330,
+        "sha256": "ccbbe3eff59b207a48a4834c48e149c3f59965e7ea68932ab94b8abb10532775",
+        "stored_prediction": "relative_to_current_origin_float32"
+      },
+      "forest": {
+        "moving_source_component_053": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic1_moving_source_component_053_extra_trees_summary120.pt.gz",
+          "sha256": "0734531697820970a89585c00af94cd9e2ea4eb886f740442a5e7e44f6c3d66b"
+        },
+        "moving_source_component_065": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic1_moving_source_component_065_extra_trees_summary120.pt.gz",
+          "sha256": "f14b510e6b1609496d750ef1248195b18ca85bc2eed6094b833fbaa2d0800dc5"
+        },
+        "moving_source_component_076": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic1_moving_source_component_076_extra_trees_summary120.pt.gz",
+          "sha256": "0bfa5605330b76d768293498fcc2f40865053bd465e5dd93f6d7df3cfc32ea5d"
+        }
+      },
+      "job": {
+        "critic_fold": 1,
+        "critic_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "easy_cut": 9.545994051407813,
+        "evaluation_fold": 2,
+        "evaluation_scope": {
+          "budget": 2000,
+          "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+          "queries": 1176,
+          "rows": 69746,
+          "sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "source_query_counts": [
+            6,
+            94,
+            156,
+            630,
+            28,
+            51,
+            112,
+            55,
+            44
+          ]
+        },
+        "evaluation_sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fit_scope": {
+          "budget": 2000,
+          "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+          "queries": 807,
+          "rows": 71584,
+          "sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "source_query_counts": [
+            39,
+            46,
+            52,
+            72,
+            316,
+            90,
+            134,
+            58
+          ]
+        },
+        "floor_index": 1,
+        "forecast_key": "eqmotion_fold0_seed17",
+        "hard_cut": 29.899692038749063,
+        "key": "eqmotion_fold0_seed17_critic1",
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "seed": 17
+      },
+      "part": {
+        "names": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 1,
+          "critic_sites": [
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "d10df2811d7c20f4f21ed0cc6d42d6c8f810dfba0e3cf4a22378c13f51ff39f2",
+            "rows": 5521
+          },
+          "evaluation_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+            "queries": 807,
+            "rows": 71584,
+            "sites": [
+              "moving_source_component_053",
+              "moving_source_component_065",
+              "moving_source_component_076",
+              "moving_source_component_077",
+              "moving_source_component_078",
+              "moving_source_component_080",
+              "moving_source_component_082",
+              "moving_source_component_087"
+            ],
+            "source_query_counts": [
+              39,
+              46,
+              52,
+              72,
+              316,
+              90,
+              134,
+              58
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic1",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      "proposer": {
+        "path": "data/stage_cvpr2027_experiments/moving_public_deferral_v1/fits/eqmotion_fold0_seed17_critic1_part1.pt.gz",
+        "sha256": "e5ea13a446ee062c398e74bbdceff12baf221381475a11a904e4c93e1acf9811"
+      }
+    },
+    {
+      "forecast": {
+        "checkpoint_sha256": "37ce8c07927b5e59afa8946df4d18498ef7ae75e147438e3783a6359c8dc499f",
+        "emitted_candidates": 1,
+        "identity": {
+          "architecture": {
+            "channels": 64,
+            "family": "eqmotion_fixed_head",
+            "fixed_head": 0,
+            "hidden_nf": 64,
+            "history_steps": 8,
+            "input_conditioning": "observed_joint_max_norm",
+            "layers": 4,
+            "prediction_steps": 12,
+            "prune_unused_heads": true
+          },
+          "baseline_index": 1,
+          "excluded_groups": [
+            "moving_source_component_049",
+            "moving_source_component_053",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_065",
+            "moving_source_component_066",
+            "moving_source_component_068",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087",
+            "moving_source_component_090"
+          ],
+          "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+          "family": "eqmotion",
+          "fit_groups": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "fold": 0,
+          "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+          "normalizers": {
+            "moving_source_component_047": {
+              "correction": 1.0143054914628518,
+              "indexed": 2198,
+              "selected_baseline_mean_ADE": 22.007610731356404,
+              "supported": 2167
+            },
+            "moving_source_component_048": {
+              "correction": 1.0205307961942915,
+              "indexed": 2038,
+              "selected_baseline_mean_ADE": 20.960665576080856,
+              "supported": 1997
+            },
+            "moving_source_component_051": {
+              "correction": 1.009539842873176,
+              "indexed": 7196,
+              "selected_baseline_mean_ADE": 19.521207693475986,
+              "supported": 7128
+            },
+            "moving_source_component_052": {
+              "correction": 1.0347490347490347,
+              "indexed": 536,
+              "selected_baseline_mean_ADE": 35.92935069477207,
+              "supported": 518
+            },
+            "moving_source_component_062": {
+              "correction": 1.0095271135781383,
+              "indexed": 37829,
+              "selected_baseline_mean_ADE": 22.06826013491561,
+              "supported": 37472
+            },
+            "moving_source_component_067": {
+              "correction": 1.0381927109335995,
+              "indexed": 4159,
+              "selected_baseline_mean_ADE": 35.87855846370121,
+              "supported": 4006
+            }
+          },
+          "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+          "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+          "seed": 17,
+          "selection_relative_scores": [
+            3.6030917960092697,
+            1.0,
+            1.542420151944505,
+            1.1603407786700874,
+            1.0482901689991855,
+            1.2208692321142756
+          ],
+          "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+          "whole_source_reservations_unchanged": true
+        },
+        "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed17.npz",
+        "rows": 141330,
+        "sha256": "ccbbe3eff59b207a48a4834c48e149c3f59965e7ea68932ab94b8abb10532775",
+        "stored_prediction": "relative_to_current_origin_float32"
+      },
+      "forest": {
+        "moving_source_component_059": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic2_moving_source_component_059_extra_trees_summary120.pt.gz",
+          "sha256": "64965fc1e549b7e9088ce8dfb34fc85e078948c37debd3d5936a0c088dffe3df"
+        },
+        "moving_source_component_060": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic2_moving_source_component_060_extra_trees_summary120.pt.gz",
+          "sha256": "46161400c74e6a623ed448fb1d43da90efef85e3f10f0e482436b64a49425815"
+        },
+        "moving_source_component_073": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic2_moving_source_component_073_extra_trees_summary120.pt.gz",
+          "sha256": "7d2092fe0ba32bfd2109ddf93b18f3b19151cbbd8ba33cf23f197384b8d43068"
+        }
+      },
+      "job": {
+        "critic_fold": 2,
+        "critic_sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "easy_cut": 9.545994051407813,
+        "evaluation_fold": 1,
+        "evaluation_scope": {
+          "budget": 2000,
+          "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+          "queries": 807,
+          "rows": 71584,
+          "sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "source_query_counts": [
+            39,
+            46,
+            52,
+            72,
+            316,
+            90,
+            134,
+            58
+          ]
+        },
+        "evaluation_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "fit_scope": {
+          "budget": 2000,
+          "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+          "queries": 1176,
+          "rows": 69746,
+          "sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "source_query_counts": [
+            6,
+            94,
+            156,
+            630,
+            28,
+            51,
+            112,
+            55,
+            44
+          ]
+        },
+        "floor_index": 1,
+        "forecast_key": "eqmotion_fold0_seed17",
+        "hard_cut": 29.899692038749063,
+        "key": "eqmotion_fold0_seed17_critic2",
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "seed": 17
+      },
+      "part": {
+        "names": [
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_073"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 2,
+          "critic_sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 1,
+          "evaluation_scope": {
+            "ids_sha256": "f5b38f3e0d2b6b1952ebb629fd33dbe3b324267ba51d1c929b379858e1f6f32e",
+            "rows": 50748
+          },
+          "evaluation_sites": [
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_073"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+            "queries": 1176,
+            "rows": 69746,
+            "sites": [
+              "moving_source_component_049",
+              "moving_source_component_055",
+              "moving_source_component_059",
+              "moving_source_component_060",
+              "moving_source_component_066",
+              "moving_source_component_070",
+              "moving_source_component_073",
+              "moving_source_component_075",
+              "moving_source_component_090"
+            ],
+            "source_query_counts": [
+              6,
+              94,
+              156,
+              630,
+              28,
+              51,
+              112,
+              55,
+              44
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic2",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      "proposer": {
+        "path": "data/stage_cvpr2027_experiments/moving_public_deferral_v1/fits/eqmotion_fold0_seed17_critic2_part1.pt.gz",
+        "sha256": "793726b8c5b005f3657bf1fccac46ddf624d359a34b73919d4ca82e62dbf53c2"
+      }
+    }
+  ],
+  "measured_inputs": {
+    "receipt_counts": {
+      "A": 3668,
+      "own": 2227
+    },
+    "sha256": "661ef13c48d448094b6f2f4c7d36ace14a49a4d4146853f926fc08fd9b4b0daf"
+  },
+  "original_rules_unchanged": true,
+  "own_B_targets_in_training": false,
+  "parents": [
+    {
+      "bytes": 37428,
+      "path": "outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/registration_v3.json",
+      "sha256": "9872630e4ce6b272cddae8d99fb1b880b18e6a9e801eae2a81e14fff08cd3c1a"
+    },
+    {
+      "bytes": 671,
+      "path": "outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/A_moments.json",
+      "sha256": "d53e8ac26c897269fa1f90e8a651461b988bbcd17bd739c420017f7b051d27f4"
+    },
+    {
+      "bytes": 1646,
+      "path": "outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/own.json",
+      "sha256": "deb125b69f275a3d5da0e64e7ac30241d737bb3bdde37dc04c2b53bde4ded6dd"
+    },
+    {
+      "bytes": 4023,
+      "path": "outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/population.json",
+      "sha256": "e9e1adcdf250b7b2675b8928d806e167775c282836ec2e55a2c337f088828f2a"
+    },
+    {
+      "bytes": 842,
+      "path": "outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/inference_freeze_v2.json",
+      "sha256": "95f8bb50c7158775e4228586f55f645dff1560ea8a97efbdd07f4839a43ec5d3"
+    },
+    {
+      "bytes": 726555,
+      "path": "outputs/publication_readiness_2026_09/moving_past_background_v1/registration.json",
+      "sha256": "64daef34172ca173b63a484bab4050a8f4be6ea705325591a14dc55a4127fa97"
+    },
+    {
+      "bytes": 2288944,
+      "path": "outputs/publication_readiness_2026_09/moving_past_background_v1/measurement.json",
+      "sha256": "3f5c0c56d56fe8778841fc0d2454f9df1d3eb15707b7ceac22e91495b589ba57"
+    },
+    {
+      "bytes": 489902,
+      "path": "outputs/publication_readiness_2026_09/moving_past_background_own_v1/registration.json",
+      "sha256": "65f00259b145f5e9cef0822d939da2ae7e6eeaed2ecb59e3b8f62625d8f29565"
+    },
+    {
+      "bytes": 1539049,
+      "path": "outputs/publication_readiness_2026_09/moving_past_background_own_v1/measurement.json",
+      "sha256": "16f675347a388cd20d6f0109654cb12a74b4258d8912e227b5f8280c02ef53a4"
+    }
+  ],
+  "producer_sources": {
+    "0": [
+      "moving_source_component_047",
+      "moving_source_component_048",
+      "moving_source_component_051",
+      "moving_source_component_052",
+      "moving_source_component_062",
+      "moving_source_component_067"
+    ],
+    "1": [
+      "moving_source_component_053",
+      "moving_source_component_065",
+      "moving_source_component_076",
+      "moving_source_component_077",
+      "moving_source_component_078",
+      "moving_source_component_080",
+      "moving_source_component_082",
+      "moving_source_component_087"
+    ]
+  },
+  "role": "exposed_own_B_model_development_not_confirmation",
+  "settings": {
+    "batch_size": 512,
+    "checkpoint_steps": 128,
+    "context_width": 56,
+    "gradient_clip": 5.0,
+    "learning_rate": 0.001,
+    "log_every": 256,
+    "observation_width": 32,
+    "reference_width": 32,
+    "steps": 4096,
+    "underharm_weight": 4.0,
+    "weight_decay": 0.0001,
+    "width1": 64,
+    "width2": 32
+  }
+}

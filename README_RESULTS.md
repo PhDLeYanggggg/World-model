@@ -47,6 +47,23 @@ extension to the complete62466row exposed own-B inputs:996new past images and
 259exact parent reuse,with no target arrays or new C/Hreadout. This avoids a
 partial easier-cohort test. Eight related checks pass0.33s. Predictive admission
 and neural head training remain not_run at this input-registration milestone.
+Own-B past inputs now complete:PID17690 exits0 in131.101288s,peak1,022,050,304B,
+996fresh images+259exact reused,1061/1231pairs supported and95856/95861head
+centers in bounds. Separate1231pair/scalar replay PID18113 is exact in11.907s.
+No future target arrays are opened by either measurement phase.
+
+Register24real Torch cost models and24full exact refits,2producer A supports
+x3risk seeds x4image arms. All arms share19814parameter capacity,4096updates,
+initial functions and draws. Reference/support consume action-invariant40
+motion and6boundary slots only;candidate rollout fields are excluded there.
+New prospective input admission is branch-specific;old admission files stay
+unchanged. Training uses A-only OOF donors,not own-B targets;this differs from
+old50%A/Baugmentation and is not an unmatched pure-modality comparison to it.
+Primary is full-motion minus quality-geometry joint-free paired lower;bounds
+is secondary. All36choices freeze before the original complete62466row
+exposed-development readout. Fourteen focused checks pass2.18s. Actual new
+neural training is not_run at registration;original risk/support/NA remain.
+[Predictive protocol](outputs/publication_readiness_2026_09/moving_visual_risk_v1/protocol.md).
 
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 

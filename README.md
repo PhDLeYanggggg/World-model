@@ -46,6 +46,10 @@ stay unopened in this measurement. It is an image-motion proxy, not calibrated
 camera geometry or demonstrated forecasting lift. The same inputs are now being
 prepared for the complete existing development cohort before a matched model
 comparison, without selecting only the easier sources.
+Those development inputs are now complete and replayed too. I have registered
+24 matched neural cost heads: no image, image bounds, measurement quality and
+full background-motion context. All train on source-separated A donors only;
+the original full development cohort and risk rules remain the evaluation.
 [Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
 
 ### Previous Support / Context Study
