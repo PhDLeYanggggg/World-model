@@ -16,6 +16,21 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Shared Frozen-Expert Reference Context: Registered Model Repair
+
+Previous goal turn: progress. The48-model role-separated comparison establishes
+positive matched utility but fails the complete original risk contract. Existing
+direct-tail and selected-query negatives were rechecked before this repair.
+The new hypothesis is missing causal expert context in the reference branch,
+not another quantile multiplier or changed denominator definition. Both new
+arms refit only a3938parameter reference model from the same frozen parent;
+one masks and one admits the70shared full-expert descriptors. Frozen harm and
+support are exact; benefit changes only through the required coherence cap.
+All sources/rows remain. Plan:48fits,48full refits,seeds17/29/43,4096steps each,
+actual recovery/resource pilot first. Real execution not_run at registration.
+Original2%/support/NA,closed C/H,original24group NA and no deployment remain.
+[Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
+
 ### Role-Separated Full-Action Models: Positive Utility, Failed Complete Risk
 
 The earlier observation-support SOURCE model already failed; its composed-bound

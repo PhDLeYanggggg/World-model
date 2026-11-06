@@ -11,6 +11,17 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am testing whether the reference head lost useful intent information when
+its input was restricted to action-invariant history. The new matched repair
+shares the frozen expert's causal rollout descriptors across an agent's actions,
+while keeping harm and label-support predictions fixed. Both reference networks
+have the same capacity, initialization and training budget; only one receives
+the shared context. The comparison is registered before actual preparation or
+training, and the original risk rules remain unchanged.
+[Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
+
+### Previous Matched Cost Result
+
 Separating cost learning from label-support learning improves trajectory utility
 in the latest matched experiment. I trained 48 Torch heads and reproduced all
 48 complete fits exactly, then evaluated fixed independent and joint choices
