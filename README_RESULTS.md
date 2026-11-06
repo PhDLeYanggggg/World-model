@@ -16,7 +16,47 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### New Past-Image Observation: Registered Measurement
+### Past-Image Observation: Complete Matched Experiment, Original Contract Failed
+
+All24full Torch fits and24complete exact refits finish,with98,304updates per
+stage. The24models have19,814parameters each,identical initial functions and
+matched samplers. A-only OOF training excludes corresponding own-B sources.
+All36choices freeze before scoring the original62,466-row exposed own-B cohort;
+this is not a new independent test. No threshold is changed after scoring.
+
+| Context | Joint-free known ADE gain % | Original supported views | Worst signed easy loss % |
+|---|---:|---:|---:|
+| No image | +0.7004 | 18/72 | 12.4108 |
+| Bounds | +1.2611 | 26/72 | 9.5477 |
+| Quality / geometry | +5.2899 | 12/72 | 47.3520 |
+| Motion / geometry | +5.8670 | 12/72 | 118.2649 |
+
+Primary motion-minus-quality paired completion lower+0.461541pp,
+exploratory3,000source-bootstrap95%interval[-1.094911,+2.293574]. All3risk-seed
+means are positive,but only5/8source means;the interval crosses zero and the
+registered component screen fails. Bounds-only and full-bundle intervals also
+cross zero. Motion has43known-easy harm violations,26signed-easy violations
+and9easy-NA views. Original full risk fails;no model deployment.
+
+Image context improves fitting and observability but not harm generalization:
+quality-to-motion observation Brier.049945to.038765,conditional harm MSE
+.001455to.003445,easy-harm MSE.000328to.000608,reference MSE.120155to.133059.
+All five conditional costs worsen in common causal history-scale units.
+Posthoc actual complete12label case:moving_scene_34__2/frame11,baselineADE
+5.2922pixels,qualityfallbacksame,motionfull96.4910,predictedharm.3323.
+It is a selected tail case,not representative sampling or a pointwise2%test.
+
+Inference PID22700 exits0 in520.192209s,peak3,290,923,008B. Readout PID23648
+exits0 in7.321634s,peak2,402,779,136B. Separate replay PID23695 exits0 in
+24.414961s,peak3,848,241,152B:all36prediction banks,metrics and public snapshot
+exact;frozen joint choices satisfy their predicted budgets and matched counts.
+Timed MILP search is not rerun. All original2%/support/NA rules and old failures
+remain. No new C/H/reserved outcomes,three-forecaster-seed claim,meters/seconds,
+true3D,foundation,human-gold,Stage5C/SMC or submission readiness.
+[Complete report](outputs/publication_readiness_2026_09/moving_visual_risk_v1/README.md),
+[mechanism](outputs/publication_readiness_2026_09/moving_visual_risk_v1/failure_analysis.md).
+
+#### Measurement And Fitting History
 
 Previous goal turn is progress:seven actual full neural fits and negative
 whole-forecast result with exact replay. New measurement prospectively binds

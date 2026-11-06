@@ -24,6 +24,42 @@ def score(prediction, target, probability, known, weights):
         mean_observation_probability=float(ww@q), observed_fraction=float(ww@mask))
 
 
+def tail_case(a, reg):
+    rows = [dict(job=r['job'], source=r['source'], seed=r['seed'], recording=k, **v)
+        for r in a['rows'] if r['arm'] == 'motion_geometry'
+        for k, v in r['policies']['joint_free']['recordings'].items()
+        if v['known_easy_net_degradation'] is not None]
+    worst = max(rows, key=lambda r: r['known_easy_net_degradation'])
+    node = next(n for n in reg['jobs'] if n['job']['key'] == worst['job'])
+    own, old = run.own_input(node); data = run.parent.full.load_data(); ix = old['local_ids']
+    target = data['target_eval'][ix]-data['origin'][ix, None]; valid = data['valid'][ix]
+    errors = run.parent.full.method.original.errors
+    be, _ = errors(old['floor'], target, valid); ce, _ = errors(old['cv'], target, valid)
+    banks, paths = {}, {}
+    for arm in ('quality_geometry', 'motion_geometry'):
+        ref = run.read(run.PUBLIC/'inference'/f'{worst["job"]}_{arm}_seed{worst["seed"]}.json')['cache']
+        banks[arm] = run.parent.load_cache(ref)
+        paths[arm] = run.parent.full.method.paths_for(old['paths'], old['floor'], banks[arm]['joint_free'])
+    pe, _ = errors(paths['motion_geometry'], target, valid)
+    easy = valid.any(1)&(ce > 0)&(ce <= node['job']['easy_cut'])
+    eligible = easy&(old['sites'] == worst['source'])&(old['recordings'].astype(str) == worst['recording'])
+    harm = np.where(eligible, pe-be, -np.inf); j = int(np.argmax(harm))
+    if not eligible[j] or harm[j] <= 0: raise ValueError('Expected an actual harmed easy case')
+    names = sorted(run.read(ROOT/'outputs/publication_readiness_2026_09/moving_development_admission_v1/admission.json')['recordings'])
+    result = dict(selection='worst_motion_joint_free_signed_easy_recording_then_largest_known_positive_easy_harm',
+        representative_sample=False, posthoc_only=True, job=worst['job'], source=worst['source'], seed=worst['seed'],
+        recording=int(old['recordings'][j]), recording_name=names[int(old['recordings'][j])],
+        frame=int(old['frames'][j]), global_id=int(old['ids'][j]), known_future_steps=int(valid[j].sum()),
+        floor_available_ADE_pixel=float(be[j]), actual_added_ADE_pixel=float(harm[j]), arms={})
+    for arm, bank in banks.items():
+        choice = int(bank['joint_free'][j]); error, _ = errors(paths[arm][j:j+1], target[j:j+1], valid[j:j+1])
+        at = [j, choice] if choice >= 0 else None
+        result['arms'][arm] = dict(action=choice, available_ADE_pixel=float(error[0]),
+            predicted_moments=dict(zip(NAMES, bank['moments'][j, choice].tolist())) if at else None,
+            predicted_observation_probability=float(bank['probability'][j, choice]) if at else None)
+    run.once(run.PUBLIC/'failure_case.json', run.stable(result))
+
+
 def main():
     cfg, reg = run.register()
     a = run.read(run.PUBLIC/'analysis.json')
@@ -60,6 +96,7 @@ def main():
         unknown_rows_retained_in_observation_Brier=True,
         used_for_model_selection=False, thresholds_changed=False, original_risk_rules_unchanged=True))
     run.once(run.PUBLIC/'calibration_analysis.json', result)
+    tail_case(a, reg)
     lines = ['# Frozen Source-Held Calibration Audit', '',
         'Posthoc analysis after all36choices and the complete original readout.',
         'This does not change the registered decision, select a model or tune a threshold.',

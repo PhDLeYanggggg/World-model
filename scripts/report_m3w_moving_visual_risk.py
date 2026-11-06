@@ -100,13 +100,15 @@ def main():
             or any(r['steps'] != 4096 or r['parameters'] != 19814 for r in fits)):
         raise ValueError('Report only the complete registered experiment')
     primary = a['contrasts']['primary']['completion_lower_pp']
+    screen_status = ('PASS, exploratory' if a['motion_component_screen_pass']
+        else 'NA' if primary['interval95'] is None else 'FAIL')
     motion_safe = a['policies']['motion_geometry']['joint_free']['safety']['original_record_contract_pass']
     lines = ['# Past-Image Context Under The Original Risk Contract', '',
         'I tested whether information measured from the past images helps a neural',
         'controller distinguish useful forecasts from harmful interventions. Four',
         'matched arms isolate image bounds, measurement reliability and background',
         'motion. This is an exposed-development experiment, not an independent test.', '',
-        f'Registered motion component screen: **{"PASS, exploratory" if a["motion_component_screen_pass"] else "FAIL / NA"}**.',
+        f'Registered motion component screen: **{screen_status}**.',
         f'Primary paired completion-lower: **{number(primary["point"])}pp {ci(primary)}**.',
         f'Original full motion-policy recording contract: **{"PASS, development only" if motion_safe else "FAIL"}**.',
         '**No deployment or submission-readiness change.**', '',
@@ -186,7 +188,7 @@ def main():
         '| Complete real refits | PASS | 24full scientific states exact |',
         '| Matched initial functions and draws | PASS | Same capacity and sampling |',
         '| Causal inputs and source roles | PASS within pipeline | A-only fits, exact ID joins, past-only own-B input whitelist |',
-        '| Registered motion utility | '+('PASS, exploratory' if a['motion_component_screen_pass'] else 'FAIL / NA')+' | Paired completion-lower interval and seed signs |',
+        '| Registered motion utility | '+screen_status+' | Paired completion-lower interval and seed signs |',
         '| Original complete recording risk | '+('PASS, development only' if motion_safe else 'FAIL')+' | Unchanged2%/support/NA rules across72views |',
         '| Independent confirmation | NOT RUN | Already-exposed own-B development only |',
         '| Three forecaster seeds | NOT RUN | Three risk seeds, one forecaster seed |',
@@ -211,7 +213,33 @@ def main():
         differences = [y['trace'][-1]['total']-x['trace'][-1]['total'] for x, y in pairs]
         failure.append(f'| {treatment} minus {control} | {sum(v < 0 for v in differences)}/6 | {number(statistics.mean(differences))} |')
     failure += ['', 'These are matched final training minibatches, not validation MSE or evidence',
-        'of calibrated uncertainty. All24traces remain in the loss CSV.', '',
+        'of calibrated uncertainty. All24traces remain in the loss CSV.']
+    calibration = read(PUBLIC/'calibration_analysis.json')['summary']
+    quality, motion = calibration['quality_geometry'], calibration['motion_geometry']
+    case = read(PUBLIC/'failure_case.json'); selected = case['arms']['motion_geometry']
+    failure += ['', '## Actual Held-Source Prediction Errors', '',
+        f'Motion lowers observation Brier from{quality["observation_Brier"]:.6f}to{motion["observation_Brier"]:.6f},',
+        'but conditional cost generalization is worse in common history-scale units:',
+        f'harm MSE {quality["conditional_MSE"]["harm"]:.6f}to{motion["conditional_MSE"]["harm"]:.6f},',
+        f'easy-harm MSE {quality["conditional_MSE"]["easy_harm"]:.6f}to{motion["conditional_MSE"]["easy_harm"]:.6f},',
+        f'reference MSE {quality["conditional_MSE"]["reference"]:.6f}to{motion["conditional_MSE"]["reference"]:.6f}.',
+        'All five conditional errors worsen versus quality_geometry despite improved',
+        'final fitting loss in all six pairs. Better observability prediction is',
+        'not a reliable forecast-harm estimate. This is a mechanism diagnostic,',
+        'not proof that images contain no useful information or a calibration guarantee.',
+        '[Complete calibration audit](calibration_analysis.md).', '',
+        '## Actual Tail Case', '',
+        f'Source{case["source"]},recording{case["recording_name"]},frame{case["frame"]},risk seed{case["seed"]}.',
+        'Selection is worst signed-easy recording, then largest positive easy-harm',
+        'window. It is explicitly posthoc and not representative sampling.',
+        f'The quality control retains the floor with ADE{case["floor_available_ADE_pixel"]:.4f}pixels.',
+        f'Motion selects action{selected["action"]}with ADE{selected["available_ADE_pixel"]:.4f},',
+        f'adding{case["actual_added_ADE_pixel"]:.4f}pixels,while predicting harm',
+        f'{selected["predicted_moments"]["harm"]:.4f}and easy harm{selected["predicted_moments"]["easy_harm"]:.4f}.',
+        f'The window has{case["known_future_steps"]}/12labels. This failure is not merely',
+        'an unknown-future completion penalty. A pointwise predicted harm need not',
+        'satisfy the2%budget alone because the joint decision pools query budgets.',
+        '[Frozen scalar case](failure_case.json).', '',
         '## Risks And Representation Limits', '',
         'Past-image transforms can fail on weak texture, parallax, independently moving',
         'background content and masks. Unsupported transitions remain explicit, not',
@@ -219,6 +247,8 @@ def main():
         'The small cost head does not learn pixels or retrain the trajectory actor.',
         'Any retained actor errors and source shifts can remain after better context.',
         'Pointwise fit and per-record joint deployment are different tasks.', '',
+        'Error/reference ratios can exceed100%;they are not probabilities or',
+        'physical collision risk. The worst signed easy loss is not a mean.', '',
         'There is no after-the-fact threshold search, dropped difficult recording,',
         'identity certificate or reopening of reserved outcomes. A failed result',
         'requires model/data repair under a new prospective experiment, not a',

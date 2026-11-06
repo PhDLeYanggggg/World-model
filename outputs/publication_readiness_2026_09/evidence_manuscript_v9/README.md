@@ -10,6 +10,17 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [past-image cost experiment](../moving_visual_risk_v1/paper_addendum.md)
+adds24full neural fits and24complete exact refits under the original contract.
+All decisions are frozen before the complete exposed-development readout.
+Motion-minus-quality paired lower is+0.461541pp[-1.094911,+2.293574],so its
+screen fails. Motion improves mean known ADE but passes only12/72recording
+views,with43known-easy harm violations and worst signed easy loss118.26%.
+Better observability prediction coexists with worse held-source harm estimates.
+All predictions and metrics replay exactly;no new test,rule or deployment.
+This note is separate from the unchanged compiled PDF and does not establish
+submission readiness.
+
 The [actual prefix-actor addendum](../moving_prefix_actor_v1/paper_addendum.md)
 records seven full neural fits with unchanged inputs and original rules. A
 full control and real recovery test reproduce exactly. Prefix1known gain

@@ -11,6 +11,36 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested a new observation from the past images: native image bounds and
+background-motion context. All 24 matched neural cost heads completed 4,096
+updates, and 24 complete from-scratch refits reproduced exactly. Decisions
+were frozen before scoring all 62,466 existing development windows.
+
+| Inputs | Available-Label ADE Gain vs CV | Original Recording Checks Passed | Worst Signed Easy Loss |
+|---|---:|---:|---:|
+| No image | +0.700% | 18/72 | 12.41% |
+| Image bounds | +1.261% | 26/72 | 9.55% |
+| Quality / geometry control | +5.290% | 12/72 | 47.35% |
+| Background motion | +5.867% | 12/72 | 118.26% |
+
+The registered motion-minus-quality paired lower contrast is **+0.462pp
+[-1.095, +2.294]**. Its interval crosses zero, and the motion model still
+harms easy cases. Better training fit and better prediction of label availability
+do not produce accurate harm estimates. **The component screen and original
+safety contract fail; the new model is not deployed.** All predictions and
+reported scalars reproduce exactly in a separate replay.
+
+These are exposed-development results, not an independent test. The72views
+repeat24recordings across three risk-head seeds, not three forecasters.
+The original2%/support/NA rules and previous failures remain unchanged.
+The task is native observation8/prediction12 in image coordinates, not SDDt50
+or a calibrated physical world. The project is **not submission-ready**.
+[Complete comparison](outputs/publication_readiness_2026_09/moving_visual_risk_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_visual_risk_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_visual_risk_v1/operation_zh.md).
+
+### Previous Actor Repair
+
 I retrained the actual trajectory predictor to test whether better early-step
 supervision repairs the unsafe forecasts. All six matched neural models finished
 4,000 updates, and a full old-model control reproduced exactly. The new loss
@@ -37,24 +67,12 @@ in a separate replay, without further training.
 [failure analysis](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/operation_zh.md).
 
-My next test measures a genuinely new past observation: background image
-motion, rather than another summary of pedestrian trajectories. The fixed
-training-source roster has 1,613 query times and needs 1,851 past images.
-Full measurement is complete: 1,694/1,817 past transitions meet the fixed quality
-rule, and all 125,540 causal feature rows reproduce exactly. Future target arrays
-stay unopened in this measurement. It is an image-motion proxy, not calibrated
-camera geometry or demonstrated forecasting lift. The same inputs are now being
-prepared for the complete existing development cohort before a matched model
-comparison, without selecting only the easier sources.
-Those development inputs are now complete and replayed too. I have registered
-24 matched neural cost heads: no image, image bounds, measurement quality and
-full background-motion context. All train on source-separated A donors only;
-the original full development cohort and risk rules remain the evaluation.
-The causal input joins are complete, and a real 128+128-step recovery run
-matches a continuous 256-step run exactly. All 24 full models have now finished
-4,096 updates each, and all 24 complete from-scratch refits reproduce exactly.
-I am now freezing every decision before the full evaluation; neither recovery
-agreement nor lower fitting loss is a forecasting result.
+The completed image experiment above uses 1,851 past training-source images;
+1,694/1,817 transitions meet the fixed measurement rule, and all125,540causal
+feature rows reproduce exactly. The full exposed development input roster is
+also retained, including failed measurements. This is a conventional image-motion
+proxy, not calibrated camera geometry. Future target arrays stay unopened during
+measurement and inference. Image availability is separate from predictive lift.
 [Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
 
 ### Previous Support / Context Study
