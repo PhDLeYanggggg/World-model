@@ -20,8 +20,8 @@ an exploratory interval of {{ motion_ci_short }}. The full-motion policy improve
 available-label ADE by {{ motion_known_short }}% over causal constant velocity yet passes only
 {{ motion_pass }} of 72 required recording views. A fully labelled failure case exposes severe
 harm underprediction. These results distinguish useful average routing from
-reliable intervention; they do not establish a safe learned upgrade. A separate
-image-conditioned actor comparison is reported with its actual execution status.
+reliable intervention; they do not establish a safe learned upgrade.
+{{ actor_abstract }}
 
 ## 1. Introduction
 
@@ -307,7 +307,11 @@ not success inferred from a favorable early prefix.
 
 {{ actor_update }}
 
+{{ actor_table }}
+
 ## 7. Failure Analysis and Limitations
+
+{{ actor_mechanism }}
 
 The source-held error and selected policy answer different questions.
 The past-image branch improves its fitted objective, but the controller

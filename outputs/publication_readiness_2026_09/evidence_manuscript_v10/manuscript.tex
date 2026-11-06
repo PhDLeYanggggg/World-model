@@ -12,7 +12,7 @@
 
 \begin{abstract}
 
-Neural motion forecasts may improve average error while harming agents that a causal baseline already predicts well. Choosing a forecast is therefore a different problem from improving its mean accuracy. We investigate baseline-relative intervention on moving-drone crowd trajectories with partial future labels. The controller predicts benefit, positive harm, reference error and label support from past-only inputs, then allocates substitutions jointly within a query. We retain the original recording-level error and support requirements, including undefined references. Matched experiments test source support, training losses and past-image information without reusing new test outcomes. Past-image cost heads improve fitting and label-availability prediction, but their registered motion-versus-quality contrast remains uncertain: a paired completion-lower difference of 0.462 percentage points has an exploratory interval of [-1.095, 2.294]. The full-motion policy improves available-label ADE by 5.867\% over causal constant velocity yet passes only 12 of 72 required recording views. A fully labelled failure case exposes severe harm underprediction. These results distinguish useful average routing from reliable intervention; they do not establish a safe learned upgrade. A separate image-conditioned actor comparison is reported with its actual execution status.
+Neural motion forecasts may improve average error while harming agents that a causal baseline already predicts well. Choosing a forecast is therefore a different problem from improving its mean accuracy. We investigate baseline-relative intervention on moving-drone crowd trajectories with partial future labels. The controller predicts benefit, positive harm, reference error and label support from past-only inputs, then allocates substitutions jointly within a query. We retain the original recording-level error and support requirements, including undefined references. Matched experiments test source support, training losses and past-image information without reusing new test outcomes. Past-image cost heads improve fitting and label-availability prediction, but their registered motion-versus-quality contrast remains uncertain: a paired completion-lower difference of 0.462 percentage points has an exploratory interval of [-1.095, 2.294]. The full-motion policy improves available-label ADE by 5.867\% over causal constant velocity yet passes only 12 of 72 required recording views. A fully labelled failure case exposes severe harm underprediction. These results distinguish useful average routing from reliable intervention; they do not establish a safe learned upgrade. Conditioning the trajectory actor itself also fails its matched motion contrast (-1.804 percentage points on known labels). No new deployment or independent confirmation is established.
 
 
 \end{abstract}
@@ -157,7 +157,8 @@ No image & 0.700 & 0.638 & -0.308 & 18/72 & 12.41 \\
 Bounds & 1.261 & 2.228 & -0.612 & 26/72 & 9.55 \\
 Quality / geometry & 5.290 & 8.274 & -1.928 & 12/72 & 47.35 \\
 Motion / geometry & 5.867 & 9.288 & -6.520 & 12/72 & 118.26 \\
-\bottomrule\end{tabularx}\end{table*}
+\bottomrule\end{tabularx}
+\end{table*}
 
 The 72 views repeat 24 recordings over three risk seeds. They are not 72 independent scenes. Mean easy gain is not the selected positive-harm ratio or the worst recording's signed easy-net loss. Error/reference ratios can exceed 100\%; they are not probabilities or collision risks.
 
@@ -180,10 +181,36 @@ The prefix-balanced actor repair improves paired known 1/3/6-step differences by
 
 \subsection{Image-Conditioned Actor Comparison}
 
-The twelve-model comparison is registered and training is ongoing. A real 100+100 versus 200 recovery test and a full 4,000-update original-control refit are exact. No donor outcome comparison has been scored. No forecasting lift or component pass is claimed from those engineering checks.
+All twelve actors complete 4,000 updates, with both fixed-design full refits exact. The primary whole-twelve known difference is -1.804 percentage points; paired completion lower is -10.931, with exploratory source interval [-17.826, -5.288]. 7 of 14 source known contrasts are positive. The registered component progression screen is not supported. This remains a one-seed, previously exposed A-side component experiment, not a complete policy risk result or independent confirmation. Deployment is unchanged.
+
+
+\noindent\begin{minipage}{\columnwidth}\small
+\captionof{table}{Source-balanced actor differences on exposed producer-A donors}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\columnwidth}{>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}\toprule
+\textbf{Contrast} & \textbf{Prefix} & \textbf{Known difference (pp)} & \textbf{Completion lower (pp)} \\\midrule
+Motion - quality & 1 & -2.536 & -7.165 \\
+Motion - quality & 3 & -1.417 & -5.970 \\
+Motion - quality & 6 & -1.760 & -8.421 \\
+Motion - quality & 12 & -1.804 & -10.931 \\
+Quality - raw & 1 & +4.878 & -0.496 \\
+Quality - raw & 3 & +1.034 & -4.426 \\
+Quality - raw & 6 & +0.281 & -7.151 \\
+Quality - raw & 12 & +0.737 & -12.363 \\
+Motion - raw & 1 & +2.343 & -2.812 \\
+Motion - raw & 3 & -0.382 & -6.337 \\
+Motion - raw & 6 & -1.478 & -9.532 \\
+Motion - raw & 12 & -1.066 & -15.021 \\
+\bottomrule\end{tabularx}
+\end{minipage}\par\medskip
+
+The registered primary is motion minus quality over twelve steps. Raw comparisons are secondary bundle contrasts. The quality bundle has a small positive known difference, not a positive completion bound. Neither an early-prefix signal nor a secondary bundle replaces the failed primary. These are fourteen exposed development sources, not independent confirmation or three forecaster seeds.
 
 
 \section{Failure Analysis and Limitations}
+
+Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000\% and 0.000\% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
+
 
 The source-held error and selected policy answer different questions. The past-image branch improves its fitted objective, but the controller intervenes more often and continues to underestimate harm on selected easy cases. In the posthoc worst signed-easy recording, frame 11 of moving\_scene\_34\_\_2, the quality control retains CV with ADE 5.2922 pixels. Motion chooses the full neural forecast with ADE 96.4910 while predicting harm 0.3323. All twelve future labels exist. This failure is not solely an unknown-label completion penalty. It is a selected tail example, not representative sampling or a stand-alone pointwise 2\% budget test.
 
@@ -200,6 +227,9 @@ This work remains a 2D image-coordinate trajectory/world-state investigation, wi
 \section{Reproducibility and Responsible Use}
 
 Definitions, input schemas, source exclusions and comparison endpoints are committed before fitting. Registrations bind source, feature and split hashes. Model checkpoints retain optimizer, sampler/RNG, draws and logs. Native arm64 CPU execution uses four compute threads, one inter-op thread and zero loader workers. Genuine interrupted-versus-continuous training is checked; NumPy fallback and import-only tests are not counted as neural training.
+
+
+For the actor study, preparation opens past-only arrays. Later generic loading opens and hashes the complete packed training bank, including labels, for integrity checks; only causal geometry and image context reach inference. Forecast freeze precedes diagnostic scoring, not all target-file byte access.
 
 
 The image-cost study includes 24 complete fits, 24 complete exact refits and exact prediction/scalar replay. The actor study reports its distinct refit scope rather than inheriting that count. All scientific losses and both positive and negative source slices are retained. Raw data, image/feature caches, third-party source and large weights are not Git artifacts. Public scalar receipts and reconstruction commands identify what is fresh, verified cache reuse or not run. An independently runnable anonymous package is still to be completed; the existing local Git guard is not such a package by itself.

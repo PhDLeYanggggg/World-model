@@ -16,7 +16,35 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Past-Image Trajectory Actor: Registered Before Real Fitting
+### Past-Image Trajectory Actor: Complete Actual Training, Negative Primary
+
+Fresh_run:twelve actual full4000update actors,one full old-model control and
+two complete exact treatment refits. Actual compute60,351optimizer updates
+includes200extra direct-recovery updates and151discarded/repeated disk-stop
+updates. Six raw controls are cached_verified. All twelve forecasts freeze
+before source-held diagnostic scoring;every forecast and scalar replays exactly.
+
+The whole12motion-minus-quality known effect is-1.803852pp;paired completion
+lower-10.930870pp,exploratory3,000source-bootstrap95%interval
+[-17.826116,-5.287792]. Known-positive sources7/14;fold means-6.449304and
++1.680238. All1/3/6/12primary known differences are negative. Quality-minus-
+raw is+0.737445known but-12.362941lower;it does not replace the failed primary.
+Raw motion actor known-easy +harm exceeds2%in33/34recordings,not a full new
+selected-policy certificate. No new controller,own-B/C/Hreadout or deployment.
+
+Posthoc checkpoint/past-input diagnosis:all12final projections are nonzero;
+motion final fitting-minibatch objective improves4/6designs,but all6first-fold
+donors worsen. Worst source067loses26.937881known pp with zero clipped input
+elements in both arms. Simple dead-branch or clipping-only explanations fail;
+no single causal failure mechanism is established. Branch diagnostics repeat
+exactly without opening target arrays. Original2%/support/NA rules unchanged.
+ReadoutPID53576exit0in1.868321s;replayPID53702exit0in1032.662386s,peak
+1,655,848,960B. Twelve focused checks pass6.45s;one additional diagnostic test
+and the three manuscript checks pass0.78s.Final combined focused suite13passed
+5.99s.Full historical suite not rerun.
+[Complete experiment](outputs/publication_readiness_2026_09/moving_visual_actor_v1/README.md).
+
+#### Registration And Execution History
 
 Previous goal turn is progress:24full cost fits,24exact full refits and complete
 negative original-risk readout. The next intervention adds46past-image context

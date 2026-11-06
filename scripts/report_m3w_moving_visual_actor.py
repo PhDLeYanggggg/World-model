@@ -170,6 +170,30 @@ def main():
         'not prove its2%recording contract. Raw actor harm is retained separately.',
         'No outcome-selected threshold,new test access or deployment change.',
         'Previous prefix-balanced and visual-cost failures remain in the ledger.']
+    diagnostic = PUBLIC/'branch_diagnostics.json'
+    if diagnostic.exists():
+        failure += ['', '## What The New Diagnosis Establishes', '',
+            'The registered known contrast is negative at every1/3/6/12prefix,',
+            'so missing-label completion is not the sole reason for failure.',
+            'All six donors in producer fold0worsen;seven of eight in fold1improve.',
+            'No source is removed to reverse the result. Source067is the largest',
+            'known negative(-26.937881pp),not an independently selected test case.', '',
+            'All twelve final image projections are nonzero. Final fitting-minibatch',
+            'motion loss improves in four of six matched fits,not all six;this is',
+            'not full-training or validation loss. All full-budget fits really ran.',
+            'In source067,both arms have zero input clipping. Motion branch saturation',
+            'is3.8591%,versus57.2103%for quality. Thus a fully inactive branch or',
+            'input clipping alone cannot explain the largest failure. Source051',
+            'does have more motion clipping/saturation,but that association is not',
+            'a causal explanation for every recording.', '',
+            'The present evidence supports source-dependent negative transfer,',
+            'not a proven diagnosis of insufficient epochs,absent information or',
+            'a unique camera-motion cause. The next useful controlled repair is',
+            'to test explicit past camera/agent-relative geometric conditioning',
+            'against an identity-transform control,or another specified source-',
+            'robust forecast objective. Neither repair has run in this experiment.',
+            'Do not tune thresholds,change the primary or open new test outcomes',
+            'to promote this failed branch. See branch_diagnostics.md.']
     (PUBLIC/'failure_analysis.md').write_text('\n'.join(failure)+'\n')
     operation = ['# 本轮真实轨迹训练复现', '',
         '使用现有 arm64 `.venv-pytorch`，CPU4/inter-op1/workers0。',

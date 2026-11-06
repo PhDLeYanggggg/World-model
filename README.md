@@ -11,6 +11,40 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I conditioned the actual trajectory network on past-image measurements and
+compared it with a matched quality-only control. All twelve models completed
+4,000 updates. A full old-model control and two complete treatment refits
+reproduced exactly; all twelve prediction banks and reported metrics also
+reproduce in a separate replay.
+
+**The new motion branch does not improve the whole forecast reliably.**
+Its registered motion-minus-quality known difference is **-1.804pp** and
+paired completion lower is **-10.931pp [-17.826, -5.288]**. Only 7 of 14 sources
+improve; one producer fold is negative. The raw motion actor exceeds 2% known-
+easy positive harm in 33 of 34 recordings. That is a raw-actor diagnostic, not a
+complete selected-policy certificate. **The component screen fails; no new
+controller or deployment follows.**
+
+These are 125,540 previously exposed training-donor windows from 14 source groups,
+not a new independent test. Observation 8 / prediction 12 uses native stride 1
+and image coordinates. I kept the original 2% and reference-support requirements,
+including undefined values, and did not add identity-fallback certification.
+
+All image branches learned nonzero weights. The worst source has no input
+clipping,so a disabled branch or clipping alone cannot explain the failure.
+The remaining problem is held-source predictive usefulness,not a training
+deadlock or a missing complete run. No true 3D, foundation, metric, seconds-level
+or submission-readiness claim is made.
+[Complete actor comparison](outputs/publication_readiness_2026_09/moving_visual_actor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_visual_actor_v1/failure_analysis.md),
+[branch diagnostics](outputs/publication_readiness_2026_09/moving_visual_actor_v1/branch_diagnostics.md).
+
+The [native-stride English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
+integrates these results separately from the older European stride12 study.
+It is an evidence draft,not a submission-ready paper.
+
+### Previous Controller Experiment
+
 I tested a new observation from the past images: native image bounds and
 background-motion context. All 24 matched neural cost heads completed 4,096
 updates, and 24 complete from-scratch refits reproduced exactly. Decisions
@@ -38,27 +72,6 @@ or a calibrated physical world. The project is **not submission-ready**.
 [Complete comparison](outputs/publication_readiness_2026_09/moving_visual_risk_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_visual_risk_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_visual_risk_v1/operation_zh.md).
-
-My next experiment moves the image context into the trajectory predictor itself.
-The new branch starts with exactly the original forecast and learns through the
-unchanged whole12-step loss. Twelve matched quality/motion actors are registered
-before real fitting; recovery checks and a full original-control refit precede
-the source-held comparison. No new outer test or risk-rule change is involved.
-The real100+100versus200recovery pilot now matches exactly. Its measured speed
-projects roughly5.5hours for all full fits,within the local budget;training is
-continuing rather than replacing the experiment with a quick result.
-The full4,000update raw-control refit now reproduces the original shared
-core,optimizer,sampler,RNG and common loss trace exactly. The twelve matched
-image-conditioned actors now complete all4,000updates and both full fixed-design
-treatment refits reproduce exactly. All twelve donor prediction banks are
-frozen before the component outcome comparison.
-A disk-reserve stop preserved the sixth model's
-checkpoint; a documented resource-only amendment resumed it with a2GiBreserve
-and the unchanged1GiBartifact cap. No scientific budget or risk rule changed.
-The [native-stride working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
-keeps this experiment separate from the older European stride12 protocol.
-It reports the completed negative results and marks the new actor outcomes
-as pending; it is not a submission-ready paper.
 
 ### Previous Actor Repair
 

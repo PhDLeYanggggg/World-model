@@ -88,13 +88,18 @@ def latex_document(markdown):
         elif kind == 'table':
             head, rows = n['children']; cells = head['children']; count = len(cells)
             if caption is None: raise ValueError('Every table requires an AST caption heading')
-            tab = [r'\begin{table*}[t]\centering\small', r'\caption{'+tex_escape(caption)+'}',
-                r'\setlength{\tabcolsep}{4pt}', r'\begin{tabularx}{\textwidth}{'+('>{\\raggedright\\arraybackslash}X'*count)+r'}\toprule',
+            narrow = count <= 4
+            opening = r'\noindent\begin{minipage}{\columnwidth}\small' if narrow else r'\begin{table*}[t]\centering\small'
+            caption_cmd = r'\captionof{table}' if narrow else r'\caption'
+            width = r'\columnwidth' if narrow else r'\textwidth'
+            tab = [opening, caption_cmd+'{'+tex_escape(caption)+'}',
+                r'\setlength{\tabcolsep}{4pt}', r'\begin{tabularx}{'+width+'}{'+('>{\\raggedright\\arraybackslash}X'*count)+r'}\toprule',
                 ' & '.join(r'\textbf{'+inlines(c['children'])+'}' for c in cells)+r' \\\midrule']
             for row in rows['children']:
                 if len(row['children']) != count: raise ValueError('Unequal Markdown table width')
                 tab.append(' & '.join(inlines(c['children']) for c in row['children'])+r' \\')
-            tab += [r'\bottomrule\end{tabularx}\end{table*}']; body.append('\n'.join(tab)); caption = None
+            closing = r'\end{minipage}\par\medskip' if narrow else r'\end{table*}'
+            tab += [r'\bottomrule\end{tabularx}', closing]; body.append('\n'.join(tab)); caption = None
         elif kind == 'list':
             ordered = n.get('attrs', {}).get('ordered', False); env = 'enumerate' if ordered else 'itemize'
             body.append('\\begin{'+env+'}')
@@ -139,6 +144,58 @@ def actor_update():
         f'The registered component progression screen is {"supported" if r["component_progression_screen_pass"] else "not supported"}. '
         'This remains a one-seed, previously exposed A-side component experiment, not '
         'a complete policy risk result or independent confirmation. Deployment is unchanged.')
+
+
+def actor_table():
+    path = HOME/'moving_visual_actor_v1/analysis.json'
+    if not path.exists():
+        return ''
+    a = read(path)
+    lines = ['### Table 2. Source-balanced actor differences on exposed producer-A donors', '',
+        '| Contrast | Prefix | Known difference (pp) | Completion lower (pp) |',
+        '|---|---:|---:|---:|']
+    names = {'primary': 'Motion - quality', 'quality_bundle': 'Quality - raw', 'motion_bundle': 'Motion - raw'}
+    for contrast, name in names.items():
+        rows = [r for r in a['sources'] if r['contrast'] == contrast]
+        for i, prefix in enumerate((1, 3, 6, 12)):
+            known = sum(r['summary'][i]['paired_known_pp'] for r in rows)/len(rows)
+            lower = sum(r['summary'][i]['paired_completion_lower_pp'] for r in rows)/len(rows)
+            lines.append(f'| {name} | {prefix} | {known:+.3f} | {lower:+.3f} |')
+    lines += ['', 'The registered primary is motion minus quality over twelve steps.',
+        'Raw comparisons are secondary bundle contrasts. The quality bundle has',
+        'a small positive known difference, not a positive completion bound.',
+        'Neither an early-prefix signal nor a secondary bundle replaces the',
+        'failed primary. These are fourteen exposed development sources, not',
+        'independent confirmation or three forecaster seeds.']
+    return '\n'.join(lines)
+
+
+def actor_abstract():
+    path = HOME/'moving_visual_actor_v1/analysis.json'
+    if not path.exists():
+        return 'A separate image-conditioned actor comparison is reported with its actual execution status.'
+    effect = read(path)['primary']['known_pp']
+    return (f'Conditioning the trajectory actor itself also fails its matched motion '
+        f'contrast ({effect:+.3f} percentage points on known labels). '
+        'No new deployment or independent confirmation is established.')
+
+
+def actor_mechanism():
+    path = HOME/'moving_visual_actor_v1/branch_diagnostics.json'
+    if not path.exists():
+        return ''
+    d = read(path)
+    nonzero = all(r['fitting']['final_weight_norm'] > 0 for r in d['jobs'])
+    worst = min(d['sources'], key=lambda key: d['sources'][key]['paired_known_pp'])
+    q, m = (d['sources'][worst][arm] for arm in ('quality_geometry', 'motion_geometry'))
+    return (f'Posthoc frozen-checkpoint diagnostics find all twelve final image '
+        f'projections nonzero ({nonzero}). The largest known loss is source '
+        f'{worst.rsplit("_", 1)[-1]}, where both arms have '
+        f'{100*q["input_element_clipped_fraction"]:.3f}% and '
+        f'{100*m["input_element_clipped_fraction"]:.3f}% clipped input elements, '
+        f'respectively. Thus neither an entirely inactive branch nor input '
+        'clipping alone explains that case. These diagnostics are not retrained '
+        'ablations or proof of a single causal failure mechanism.')
 
 
 def figures(a):
@@ -186,7 +243,7 @@ def main():
         worst = max(v['known_easy_net_degradation'] for x in a['rows'] if x['arm'] == arm
             for v in x['policies']['joint_free']['recordings'].values() if v['known_easy_net_degradation'] is not None)
         table.append(f'| {name} | {r["utility"]["known"]["point"]:.3f} | {r["hard_gain_percent"]:.3f} | {r["easy_gain_percent"]:.3f} | {r["safety"]["supported_record_views"]}/72 | {100*worst:.2f} |')
-    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), motion_lower_short=f'{p["point"]:.3f}',
+    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), motion_lower_short=f'{p["point"]:.3f}',
         motion_lower_long=f'{p["point"]:.6f}', motion_ci_short=f'[{p["interval95"][0]:.3f}, {p["interval95"][1]:.3f}]',
         motion_ci_long=f'[{p["interval95"][0]:.6f}, {p["interval95"][1]:.6f}]', motion_positive_sources=positive,
         motion_known_short=f'{m["utility"]["known"]["point"]:.3f}', motion_pass=s['supported_record_views'],
@@ -200,10 +257,18 @@ def main():
     (PUBLIC/'manuscript.md').write_text(markdown); (PUBLIC/'manuscript.tex').write_text(tex); (BUILD/'main.tex').write_text(tex)
     template = ROOT/'data/stage_cvpr2027_experiments/evidence_manuscript_v9/paper_build/cvpr.sty'
     shutil.copyfile(template, BUILD/'cvpr.sty'); figures(a)
+    actor_paths = [HOME/'moving_visual_actor_v1'/name for name in
+        ('registration_v2.json', 'training.json', 'verification.json', 'analysis.json',
+         'execution_scope.md', 'resource_amendment.json')]
+    actor_sources = {str(path.relative_to(ROOT)): sha(path) for path in actor_paths} if (HOME/'moving_visual_actor_v1/analysis.json').exists() else {}
+    diagnostic = HOME/'moving_visual_actor_v1/branch_diagnostics.json'
+    if diagnostic.exists():
+        actor_sources[str(diagnostic.relative_to(ROOT))] = sha(diagnostic)
     write_json(PUBLIC/'source_bindings.json', dict(result_source='fresh_prose_typesetting_of_cached_verified_scalar_evidence',
         fixed_sources=PINNED, template_sha256=sha(PUBLIC/'manuscript.template.md'), builder_sha256=sha(Path(__file__)),
         markdown_sha256=sha(PUBLIC/'manuscript.md'), tex_sha256=sha(PUBLIC/'manuscript.tex'), cvpr_style_sha256=sha(template),
         actor_outcomes_included=(HOME/'moving_visual_actor_v1/analysis.json').exists(),
+        actor_sources=actor_sources,
         independent_confirmation=False, submission_ready=False, old_v9_sources_or_PDF_modified=False,
         stage5c_executed=False, smc_enabled=False))
     print('Native-stride working manuscript and private figures prepared; no new outcome scoring or submission claim.')

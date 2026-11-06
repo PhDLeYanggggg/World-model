@@ -33,7 +33,8 @@ $$
     assert r'\begin{aligned}' in tex
     assert r'\end{aligned}' in tex
     assert r'No\_image & 2\%' in tex
-    assert r'\caption{Observed development data}' in tex
+    assert r'\captionof{table}{Observed development data}' in tex
+    assert r'\begin{minipage}{\columnwidth}' in tex
     assert r'\section{Method}' in tex
     assert r'\clearpage\section*{References}' in tex
     assert tex.count(r'\begin{abstract}') == tex.count(r'\end{abstract}') == 1

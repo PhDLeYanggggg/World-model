@@ -20,8 +20,8 @@ an exploratory interval of [-1.095, 2.294]. The full-motion policy improves
 available-label ADE by 5.867% over causal constant velocity yet passes only
 12 of 72 required recording views. A fully labelled failure case exposes severe
 harm underprediction. These results distinguish useful average routing from
-reliable intervention; they do not establish a safe learned upgrade. A separate
-image-conditioned actor comparison is reported with its actual execution status.
+reliable intervention; they do not establish a safe learned upgrade.
+Conditioning the trajectory actor itself also fails its matched motion contrast (-1.804 percentage points on known labels). No new deployment or independent confirmation is established.
 
 ## 1. Introduction
 
@@ -310,9 +310,35 @@ not success inferred from a favorable early prefix.
 
 ### 6.2 Image-Conditioned Actor Comparison
 
-The twelve-model comparison is registered and training is ongoing. A real 100+100 versus 200 recovery test and a full 4,000-update original-control refit are exact. No donor outcome comparison has been scored. No forecasting lift or component pass is claimed from those engineering checks.
+All twelve actors complete 4,000 updates, with both fixed-design full refits exact. The primary whole-twelve known difference is -1.804 percentage points; paired completion lower is -10.931, with exploratory source interval [-17.826, -5.288]. 7 of 14 source known contrasts are positive. The registered component progression screen is not supported. This remains a one-seed, previously exposed A-side component experiment, not a complete policy risk result or independent confirmation. Deployment is unchanged.
+
+### Table 2. Source-balanced actor differences on exposed producer-A donors
+
+| Contrast | Prefix | Known difference (pp) | Completion lower (pp) |
+|---|---:|---:|---:|
+| Motion - quality | 1 | -2.536 | -7.165 |
+| Motion - quality | 3 | -1.417 | -5.970 |
+| Motion - quality | 6 | -1.760 | -8.421 |
+| Motion - quality | 12 | -1.804 | -10.931 |
+| Quality - raw | 1 | +4.878 | -0.496 |
+| Quality - raw | 3 | +1.034 | -4.426 |
+| Quality - raw | 6 | +0.281 | -7.151 |
+| Quality - raw | 12 | +0.737 | -12.363 |
+| Motion - raw | 1 | +2.343 | -2.812 |
+| Motion - raw | 3 | -0.382 | -6.337 |
+| Motion - raw | 6 | -1.478 | -9.532 |
+| Motion - raw | 12 | -1.066 | -15.021 |
+
+The registered primary is motion minus quality over twelve steps.
+Raw comparisons are secondary bundle contrasts. The quality bundle has
+a small positive known difference, not a positive completion bound.
+Neither an early-prefix signal nor a secondary bundle replaces the
+failed primary. These are fourteen exposed development sources, not
+independent confirmation or three forecaster seeds.
 
 ## 7. Failure Analysis and Limitations
+
+Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000% and 0.000% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
 
 The source-held error and selected policy answer different questions.
 The past-image branch improves its fitted objective, but the controller
@@ -354,6 +380,11 @@ Model checkpoints retain optimizer, sampler/RNG, draws and logs. Native arm64
 CPU execution uses four compute threads, one inter-op thread and zero loader
 workers. Genuine interrupted-versus-continuous training is checked; NumPy
 fallback and import-only tests are not counted as neural training.
+
+For the actor study, preparation opens past-only arrays. Later generic loading
+opens and hashes the complete packed training bank, including labels, for
+integrity checks; only causal geometry and image context reach inference.
+Forecast freeze precedes diagnostic scoring, not all target-file byte access.
 
 The image-cost study includes 24 complete fits, 24 complete exact refits and
 exact prediction/scalar replay. The actor study reports its distinct refit

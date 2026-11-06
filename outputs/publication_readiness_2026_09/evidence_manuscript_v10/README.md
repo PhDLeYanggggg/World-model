@@ -6,9 +6,11 @@ raw-frame studies. Their absolute errors and gains are not pooled.
 
 The draft integrates completed support, prefix-loss and past-image cost-head
 experiments, including their negative registered contrasts and failed original
-recording-risk checks. The new twelve-model past-image actor matrix is still
-training. Its outcomes are not in this version. No new outcome scoring is done
-by the manuscript builder.
+recording-risk checks. All twelve past-image actors complete4000updates and
+both fixed-design full refits reproduce exactly. Their primary whole12known
+effect is-1.804pp and completion lower-10.931pp[-17.826,-5.288];the component
+screen fails. These outcomes and frozen-checkpoint diagnostics are included,
+with their source hashes. No new outcome scoring is done by the manuscript builder.
 
 This is a working evidence draft, **not submission-ready**. Exact replay and a
 compiled PDF do not establish the method contribution or independent evidence.
