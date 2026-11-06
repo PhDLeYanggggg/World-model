@@ -47,6 +47,11 @@ Full raw control PID26558 exits0 in1366.044474s,peak1,845,657,600B. The complete
 original exactly;only the old pilot20/40log entries are additional. Twelve
 matched image-conditioned actors are now active asPID28399;no donor prediction
 comparison is scored.
+PID28399 subsequently exits1 at14:45:54Z on the5GiBdisk reserve,not a deadlock.
+Five fits are complete;the sixth reaches3551but last saved state is3400.
+A committed resource-only wrapper reduces reserve to2GiB,retains1GiBartifact
+cap and all scientific definitions,and resumes the same checkpoint. The151
+discarded updates are reported as additional compute,not extra scientific budget.
 
 The native-stride v10 English working manuscript now compiles independently
 of the frozen European-stride v9 PDF. It binds completed public scalar evidence,

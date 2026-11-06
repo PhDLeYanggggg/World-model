@@ -50,6 +50,9 @@ continuing rather than replacing the experiment with a quick result.
 The full4,000update raw-control refit now reproduces the original shared
 core,optimizer,sampler,RNG and common loss trace exactly. The twelve matched
 image-conditioned actors are training;their donor outcomes are not scored yet.
+Five fits are complete. A disk-reserve stop preserved the sixth model's
+checkpoint; a documented resource-only amendment resumes it with a2GiBreserve
+and the unchanged1GiBartifact cap. No scientific budget or risk rule changes.
 The [native-stride working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
 keeps this experiment separate from the older European stride12 protocol.
 It reports the completed negative results and marks the new actor outcomes
