@@ -1,5 +1,9 @@
 # 分角色成本模型与场景联合选择复现
 
+验证入口使用 v3，训练权重身份仍绑定 v2；浮点测试修正和第一次保存目录
+故障的修复记录均保留。下面的 readout 包装入口只创建保存目录，不改变注册
+引擎、模型或规则。这里的 24 是录像数，不是原始主估计中的 24 个来源组。
+
 本实验使用 MovingDroneCrowd++ 已暴露 own-B 的 8 个来源分量、24 段录像。
 观察 8 步、请求预测 12 步；坐标仍为图像坐标。不是 SDD raw t50 复验，
 不是米、秒、真实 3D 或 foundation 结果。原始 24 组主估计仍 NA。
@@ -15,6 +19,7 @@
 .venv-pytorch/bin/python scripts/run_m3w_moving_role_separated_cost.py verify
 .venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py infer
 .venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py evaluate
+.venv-pytorch/bin/python scripts/diagnose_m3w_role_separated_selection.py
 .venv-pytorch/bin/python scripts/report_m3w_moving_role_separated_cost.py
 .venv-pytorch/bin/python scripts/run_m3w_role_separated_readout.py replay
 ```

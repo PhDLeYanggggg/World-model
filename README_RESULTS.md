@@ -16,7 +16,7 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Role-Separated Full-Action Model Comparison Registered
+### Role-Separated Full-Action Models: Positive Utility, Failed Complete Risk
 
 The earlier observation-support SOURCE model already failed; its composed-bound
 anchor and shared gradient remain a relevant negative control, not a new idea.
@@ -64,6 +64,44 @@ First inference PID78626 exits1 on missing allocation output directory before
 its first checkpoint and before metrics. A tested storage-only outer entry
 creates the directory and calls the unchanged engine; resumed inference
 PID78964 is active. No fits, inputs, solver budgets or risk rules change.
+Inference completes: PID78964 exits0 in155.133950s,peak2,604,351,488B;
+all18context/arm/seed choices freeze before labels. Evaluation PID79399 exits0
+in5.103152s,peak1,923,088,384B. Registered joint-free paired completion-lower
+contrast is+0.445303pp,95%exploratory source interval[+0.090835,+0.930796];
+known contrast+0.527832pp[+0.193976,+0.996965]. All3risk-seed mean contrasts
+are positive; lower source contrasts positive6/8,known7/8. Source065 lower and
+source073 known/lower negatives remain. Eight source components,not72repeated
+views or overlapping windows,are bootstrap units; only one forecast teacher seed.
+
+Role-separated joint-free known gain versus CV is0.667496%,separate completion
+lower0.587271%,but original support only23/72with27known-easy harm violations
+and7undefined easy views. Same-arm independent passes28/72with13known-easy
+violations. Joint utility improves while safety worsens. Source-held selected
+easy reference is overpredicted61/72,easy harm underpredicted35/72;seven easy
+violations select no unknown rows. This is not only a missing-label problem.
+Mutually exclusive failure classes are6missing support,27observed violation,
+16completion-only,23pass. Full-action coverage improves independent versus
+proposal paired lower utility0.162274pp but does not satisfy the contract.
+
+Matched observed conditional MSE1.348588->1.189763,composed1.415037->1.308119;
+bound composed7.063742->7.661082worsens. Support AUROC0.539627->0.679486,
+ECE0.058111->0.038312,predicting released-label availability,not physical
+visibility or failure. New composed and old conditional outputs have different
+targets. A separate exact-cohort/RMS diagnostic gives conditional signed MSE
+old1.609501,newanchor13.721483,newseparated2.810864:the matched family improves
+but does not recover old conditional prediction. These posthoc probes do not
+change a checkpoint,policy,primary contrast or threshold. All original rules,
+NA,old failures,closed C/H and deployment remain. Main-paper PDF unchanged;
+no new CREATE job. Twenty-seven focused tests pass2.37s;historical suite not rerun.
+Actual replay PID80653 exits0 in13.781801s,peak2,843,049,984B:all prediction
+arrays,proposal/independent choices and metrics exact;cached joint/uniform
+choices feasible with matched counts preserved. Public files unchanged during
+check. Timed integer search is not rerun;this is not independent confirmation.
+Final27focused checks pass2.56s after reporting changes. A second actual replay
+PID80838 exits0 inapproximately14.082s,again exact with public files unchanged
+during the check;both private receipts remain. No fit or solver search rerun.
+[Results](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/README.md),
+[Failure analysis](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/failure_analysis.md).
 [Protocol](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
 
 ### Complete-Risk Model Repair: Trained, But Original Safety Still Fails

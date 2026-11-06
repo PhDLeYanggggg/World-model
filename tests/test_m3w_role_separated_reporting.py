@@ -1,5 +1,5 @@
 import numpy as np
-from scripts.report_m3w_moving_role_separated_cost import binary_quality,candidate_screen,mean_required
+from scripts.report_m3w_moving_role_separated_cost import binary_quality,candidate_screen,mean_required,primary_utility_supported
 
 
 def test_one_class_label_support_is_na_not_false_auroc_success():
@@ -11,6 +11,7 @@ def test_one_class_label_support_is_na_not_false_auroc_success():
 def test_candidate_needs_all_views_and_registered_paired_support():
     p=dict(safety=dict(required_record_views=72,original_record_contract_pass=False))
     a=dict(policies=dict(role_separated=dict(joint_free=p)),primary=dict(completion_lower_pp=dict(interval95=[1,2])))
+    assert primary_utility_supported(a)
     assert not candidate_screen(a)
     p['safety']['original_record_contract_pass']=True;assert candidate_screen(a)
     a['primary']['completion_lower_pp']['interval95']=[-1,2];assert not candidate_screen(a)

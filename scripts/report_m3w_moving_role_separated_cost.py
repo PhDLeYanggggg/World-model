@@ -26,11 +26,15 @@ def binary_quality(label,probability,weights):
         Brier=float(w@((p-y)**2)),ECE=ece,bins=bins,rows=len(y),predicts_released_label_support_not_visibility=True)
 
 
+def primary_utility_supported(analysis):
+    ci=analysis['primary']['completion_lower_pp']['interval95']
+    return bool(ci is not None and ci[0]>0)
+
+
 def candidate_screen(analysis):
     candidate=analysis['policies']['role_separated']['joint_free']
-    ci=analysis['primary']['completion_lower_pp']['interval95']
     return bool(candidate['safety']['required_record_views']==72
-        and candidate['safety']['original_record_contract_pass'] and ci is not None and ci[0]>0)
+        and candidate['safety']['original_record_contract_pass'] and primary_utility_supported(analysis))
 
 
 def mean_required(rows,key):
@@ -145,6 +149,8 @@ def main():
     cc,utility=components(reg);run.once(run.PUBLIC/'components.json',cc);run.once(run.PUBLIC/'matched_utility.json',utility)
     run.once(run.PUBLIC/'legacy_veto_support_ceiling.json',legacy_veto_ceiling())
     run.once(run.PUBLIC/'absolute_utility_intervals.json',utility_intervals(a,cfg))
+    diagnosis=run.read(run.PUBLIC/'selection_diagnostics.json')
+    probe=run.read(run.PUBLIC/'conditional_risk_probe.json')
     lines=['# Role-Separated Cost Learning And Full-Action Joint Decisions','',
         'I compared complete-bound anchor learning with separate observed-cost and',
         'label-support supervision. All 48 Torch fits and all 48 complete exact refits',
@@ -175,6 +181,10 @@ def main():
         'The paired unknown envelope is between policies; separate lower gains cannot',
         'be subtracted to claim a paired improvement. Secondary controls do not replace',
         'the registered primary. No independent C/H evaluation is opened.','',
+        'All three risk-seed completion-lower contrasts are positive; six of eight',
+        'source means are positive. Source065 has a negative lower contrast, and',
+        'source073 is negative even on known labels. These are not three independent',
+        'forecast-teacher replications. Full values are in primary_source_seed_rows.json.','',
         '## Mechanism: Matched Prediction Targets','',
         '| Loss | Observed conditional MSE | Observed composed MSE | Bound composed MSE | Label-support AUROC | ECE |',
         '|---|---:|---:|---:|---:|---:|']
@@ -190,13 +200,41 @@ def main():
         'Support scores predict released-label availability, not human visibility or',
         'baseline failure. Full source/seed data, AUPRC/Brier and the separately matched',
         'old-proposal signed-error control are retained in components.json.','',
+        'The new composed outputs and the old known-only outputs have different',
+        'statistical targets. A separate conditional-risk probe therefore compares',
+        'the conditional branch on the same known old-proposal cohort and RMS:','',
+        '| Model | Conditional signed MSE |','|---|---:|']
+    frozen=[r['normalized_signed_MSE']['frozen_known_only'] for r in probe['rows']]
+    lines.append(f'| Frozen known-only head | {formatted(float(run.np.mean(frozen)))} |')
+    for arm in run.method.ARMS:
+        values=[r['normalized_signed_MSE']['conditional'] for r in probe['rows'] if r['arm']==arm]
+        lines.append(f'| {arm} conditional branch | {formatted(float(run.np.mean(values)))} |')
+    lines+=['','Role separation improves this new model family, but does not recover the',
+        'old head\'s conditional error on this matched cohort. This posthoc probe',
+        'does not select a new checkpoint or replace the registered utility contrast.','',
+        '## Selected-Risk Calibration','',
+        '| Policy | Pass | Known harm violation | Completion-only violation | Missing support |',
+        '|---|---:|---:|---:|---:|']
+    for arm,name in (('composed_anchor','joint_free'),('role_separated','independent'),('role_separated','joint_free')):
+        d=diagnosis['by_policy'][arm][name]['categories']
+        lines.append(f'| {arm}/{name} | {d.get("passes_original_record_contract",0)} | '
+            f'{d.get("observed_harm_violation",0)} | {d.get("unknown_completion_bound_violation",0)} | '
+            f'{d.get("missing_reference_support",0)} |')
+    lines+=['','Categories are mutually exclusive; observed violations take priority over',
+        'completion-only and support failures. Seven undefined easy views in the',
+        'main table need not equal six support-only failures in this table.',
+        'The separated joint rule overpredicts selected easy reference in 61/72 views',
+        'and underpredicts selected easy harm in 35/72. Seven easy violations select',
+        'no unknown rows. This implicates selected-cost/reference optimism, not only',
+        'censoring. Independent-to-joint improves utility but reduces full support',
+        'from 28/72 to 23/72. Predicted query feasibility is not realized safety.','',
         '## Candidate Coverage And Same-Count Controls','']
     for arm,effects in a['within_arm_effects'].items():
         for name,r in effects.items():
             v=r['completion_lower_pp'];lines.append(f'- {arm} / {name}: paired lower {formatted(v["point"])} pp; interval {v["interval95"]}.')
     lines+=['','Matched-count utility is computed only on causally selected nonempty',
         'queries and is never used for safety. Empty controls remain not estimable.',
-        'The complete deployed strategy always retains all required recording views.','',
+        'Complete-policy safety evaluation retains all required recording views.','',
         '## Verdict','',
         'Registered development candidate screen: '+('PASS' if candidate_screen(a) else '**FAIL / NA**')+'.',
         'No automatic deployment or submission-ready claim. The full original2%',
@@ -207,7 +245,9 @@ def main():
         'not_run:new independent C/H,three forecaster seeds,deployment or new dynamics.',
         'The original24-group main stays NA. No metric/seconds,true3D,foundation,',
         'human-gold,Stage5C or SMC claim. Annotation-generation causality unverified.','',
-        '[Failure analysis](failure_analysis.md) | [Reproduction](operation_zh.md)']
+        '[Failure analysis](failure_analysis.md) | [Model card](model_card.md) |',
+        '[Reproduction](operation_zh.md) | [Verification](verification_report.md) |',
+        '[Paper addendum](paper_addendum.md)']
     (run.PUBLIC/'README.md').write_text('\n'.join(lines)+'\n')
     gates=['# Role-Separated Full-Action Gates','',
         '| Gate | Status | Evidence |','|---|---|---|',
@@ -220,7 +260,8 @@ def main():
         for name,p in a['policies'][arm].items():
             s=p['safety'];gates.append(f'| {arm}/{name} original risk | {"PASS" if s["original_record_contract_pass"] else "FAIL / NA"} | '
                 f'{s["supported_record_views"]}/72 required repeated views |')
-    gates+=['| Registered positive paired evidence and full risk | '+('PASS' if candidate_screen(a) else 'FAIL / NA')+' | Joint-free primary only |',
+    gates+=['| Registered paired utility evidence | '+('PASS, exploratory development' if primary_utility_supported(a) else 'FAIL / NA')+' | Source-bootstrap lower endpoint positive; not safety |',
+        '| Registered positive paired evidence and full risk | '+('PASS' if candidate_screen(a) else 'FAIL / NA')+' | Joint-free primary only |',
         '| Independent confirmation / deployment | NOT RUN / FALSE | Exposed own-B, not new independent validation |',
         '| Stage5C / SMC | FALSE | Not executed |']
     (run.PUBLIC/'world_model_gate_role_separated_cost.md').write_text('\n'.join(gates)+'\n')

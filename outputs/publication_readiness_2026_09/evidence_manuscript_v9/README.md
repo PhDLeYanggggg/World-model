@@ -10,6 +10,16 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [role-separated full-action addendum](../moving_role_separated_cost_v1/paper_addendum.md)
+adds 48 matched Torch heads and 48 complete exact refits. Its registered paired
+completion-lower utility contrast is +0.445303pp, exploratory source interval
+[+0.090835,+0.930796], but the new joint policy passes only23/72 original risk
+views with27known-easy harm violations. All three risk-seed means are positive;
+two source lower contrasts remain negative. Separating targets helps this model
+family, but joint selection exposes reference/harm optimism. This is positive
+component utility evidence, not independent confirmation, safe deployment or a
+submission-ready result. Original rules and compiled main paper are unchanged.
+
 The [complete-risk training addendum](../moving_complete_risk_donors_v1/paper_addendum.md)
 adds 24 new risk heads and 24 complete exact refits while preserving the original
 2% contract. Restoring unknown-bound training contributions reduces unknown

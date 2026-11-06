@@ -11,20 +11,34 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-The next comparison is registered: separate observed-cost and label-support
-learning without a mixed bound-loss anchor, and reopen the existing amplitude
-bank for joint decisions. This is not a new risk threshold or another name for
-the earlier unsuccessful observation-support model. Both new losses use the
-same architecture and training draws; proposal-only and full-action decisions
-will show whether candidate coverage matters. All 48 new Torch models have
-finished their fixed budget and all 48 complete refits reproduce exactly.
-Full causal allocation is now running before policy readout.
-Training completion alone is not evidence that intervention is safer.
-Data preparation now covers all 62,466 rows and 374,796 original amplitude
-candidates, with exact old-proposal feature and donor-target parity. Before
-fitting, a versioned correction makes predicted reference mass action-invariant;
-the same floor cannot acquire a different risk denominator for a new action.
-[Registered comparison](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
+Separating cost learning from label-support learning improves trajectory utility
+in the latest matched experiment. I trained 48 Torch heads and reproduced all
+48 complete fits exactly, then evaluated fixed independent and joint choices
+over the original forecast-amplitude bank. Both losses use the same architecture,
+initialization, source-excluded training draws and budget.
+
+**The model improves utility, but the complete strategy is still not safe to deploy.**
+
+The registered paired completion-lower gain over the matched control is
+**+0.445 percentage points [95% exploratory source interval: +0.091, +0.931]**.
+All three risk-head seeds have positive mean contrasts; two of eight source
+lower contrasts remain negative. The forecast teacher is still a single seed.
+
+The new joint policy gains 0.667% in available-label ADE over causal CV, but
+only **23/72 required recording views** pass the original risk/support contract.
+There are 27 known-easy harm violations. Joint selection exposes optimistic
+reference and harm predictions: utility rises while safety worsens relative
+to the new independent policy. This is the next model problem, not a reason
+to loosen the 2% rule or certify empty support as a pass.
+
+These are MovingDroneCrowd++ native observation-8/prediction-12 development
+results, not an SDD t50 result or independent confirmation. The 72 views repeat
+24 recordings over three risk seeds; uncertainty uses eight source blocks.
+All 62,466 rows and 374,796 legal candidates remain. Deployment is unchanged,
+and the project is not submission-ready.
+[Complete comparison](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/operation_zh.md).
 
 ### Previous Complete-Risk Training Result
 
