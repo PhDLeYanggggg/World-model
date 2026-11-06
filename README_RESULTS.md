@@ -16,6 +16,23 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Information-Preserving Node Views: Implementation Before Real Fitting
+
+Keep native coordinates as the core geometry;add native/aligned velocity and
+alignment displacement as48past-only per-node features. No future-camera
+operator or ordinary trajectory residual output. Bias-free48to32to8node
+encoder adds1792parameters;native_nodeandcamera_nodehave matching capacity.
+Zero final weights preserve initial old-core forecasts/RNG.7focused checks
+pass4.01s,including actual small-core optimizer parity,two-view preservation,
+partial-update checkpoint retention and deferred stop/resume. A new trainer
+marks coherent boundaries and never publishes partial-update sampler state.
+Twelve full4000treatments,one full shared-core raw control,two full treatment
+refits and three real200step recovery trajectories are fixed before fitting.
+Primarycamera_node-minus-native_node;camera_node-minus-raw must also pass.
+Same exposedA,source exclusions,whole12loss and original2%/support/NA rules.
+No real new-model fitting or predictive success claimed at this draft.
+[Protocol](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/protocol.md).
+
 ### Camera-Operator Ablation: Registered Before Real Fitting
 
 Previous goal turn is progress:six complete camera actors,full original control,

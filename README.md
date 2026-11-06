@@ -70,6 +70,11 @@ model reached 2,160 updates. I do not report it as a completed experiment.
 The next repair must preserve both native and aligned history, rather than
 discarding camera information or forcing a fixed future transform.
 [Design diagnosis](outputs/publication_readiness_2026_09/moving_camera_factor_v1/design_stop.md).
+The replacement keeps native geometry and adds aligned motion as per-node
+features. Its matched control has the same extra parameters but no camera
+transform. Seven focused checks pass, including original-core update parity,
+retained two-view information and coherent interruption recovery. Real fitting
+and predictive usefulness have not yet been established for this replacement.
 
 A [standalone aggregate-evidence package](outputs/publication_readiness_2026_09/native_actor_reproduction_v1/README.md)
 now replays the three completed actor studies in a clean directory without
