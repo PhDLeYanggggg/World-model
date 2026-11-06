@@ -59,6 +59,11 @@ At21:33:07Z,PID68334exits0 after2048.528471s,peak1,851,949,056B. All six
 treatments complete4000updates with original draws/factors/RNGchecks. One full
 first-design treatment refit now runs before predictions/scoring. This is
 completed fitting,not predictive success or independent confirmation.
+At21:52:47Z,full fixed-first-design refitPID70911exits0 in1170.635099s,peak
+1,747,910,656B. Full scientific state matches exactly,one refit not six.
+Twelve actor/camera-CV prediction banks now generate before diagnostic scoring.
+Six manuscript tests pass0.12s,including complete-replay and undefined-source
+guards for the pending camera table. No camera outcomes are included yet.
 The CVPR2027official enrollment/full/supplementary dates and author guidelines
 are freshly checked;profiles/conflicts remain unverified and no submission is
 performed. The seven-page native evidence draft now cites viewpoint-normalized

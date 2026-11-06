@@ -198,6 +198,51 @@ def actor_mechanism():
         'ablations or proof of a single causal failure mechanism.')
 
 
+def camera_update():
+    folder = HOME/'moving_camera_frame_v1'
+    path = folder/'analysis.json'
+    if not path.exists():
+        return ''
+    training, verification = [read(folder/name) for name in ('training.json', 'verification.json')]
+    replays = ROOT/'data/stage_cvpr2027_experiments/moving_camera_frame_v1/replays'
+    if (training['models'] != 6 or verification['models'] != 1
+            or not verification['full_refits_exact'] or not list(replays.glob('replay_*.json'))):
+        raise ValueError('Camera evidence requires all six fits, one full refit and completed exact replay')
+    a = read(path); p = a['primary']; lo, hi = p['interval95']
+    lines = ['### 6.3 Explicit Query-View Geometry', '',
+        'Six new actors complete the same 4,000 updates with no additional learned',
+        'parameters. The full identity control and one fixed-design treatment',
+        'refit match exactly; all twelve actor/camera-CV banks and reported',
+        'scalars replay exactly. This is not six complete treatment refits.', '',
+        f'The primary camera-actor minus identity known effect is {p["known_pp"]:+.3f}',
+        f'percentage points. Its completion lower is {p["completion_lower_pp"]:+.3f}',
+        f'with exploratory source interval [{lo:+.3f}, {hi:+.3f}].',
+        f'{p["positive_known_sources"]} of fourteen known source contrasts are positive;',
+        'the registered component screen is '+('supported.' if p['component_progression_screen_pass'] else 'not supported.'), '',
+        '### Table 3. Query-view controls on exposed producer-A donors', '',
+        '| Contrast | Prefix | Known difference (pp) | Completion lower (pp) |',
+        '|---|---:|---:|---:|']
+    for contrast, label in (('primary', 'Camera actor - identity'),
+            ('camera_cv_effect', 'Camera CV - raw CV'), ('neural_over_camera_cv', 'Actor - camera CV')):
+        rows = [r for r in a['sources'] if r['contrast'] == contrast]
+        if len(rows) != 14:
+            raise ValueError('Every camera contrast must retain fourteen source components')
+        for i, prefix in enumerate((1, 3, 6, 12)):
+            values = [[r['summary'][i][key] for r in rows] for key in ('paired_known_pp', 'paired_completion_lower_pp')]
+            if any(v is None for group in values for v in group):
+                raise ValueError('Undefined manuscript contrast must not be averaged over defined sources only')
+            known, lower = [sum(group)/len(group) for group in values]
+            lines.append(f'| {label} | {prefix} | {known:+.3f} | {lower:+.3f} |')
+    lines += ['', 'The simple camera-CV control isolates whether geometric extrapolation',
+        'alone is useful; its gain is not neural added value. All seven fixed',
+        'causal baselines and all fourteen source components remain in the',
+        'experiment report. No outcome-selected baseline replaces the CV floor.',
+        'This remains a one-seed exposed-development component comparison, not',
+        'an independent test or complete selected-policy risk certificate.',
+        'No new controller or deployment follows from this table.']
+    return '\n'.join(lines)
+
+
 def figures(a):
     import matplotlib
     matplotlib.use('Agg')
@@ -243,7 +288,7 @@ def main():
         worst = max(v['known_easy_net_degradation'] for x in a['rows'] if x['arm'] == arm
             for v in x['policies']['joint_free']['recordings'].values() if v['known_easy_net_degradation'] is not None)
         table.append(f'| {name} | {r["utility"]["known"]["point"]:.3f} | {r["hard_gain_percent"]:.3f} | {r["easy_gain_percent"]:.3f} | {r["safety"]["supported_record_views"]}/72 | {100*worst:.2f} |')
-    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), motion_lower_short=f'{p["point"]:.3f}',
+    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), camera_update=camera_update(), motion_lower_short=f'{p["point"]:.3f}',
         motion_lower_long=f'{p["point"]:.6f}', motion_ci_short=f'[{p["interval95"][0]:.3f}, {p["interval95"][1]:.3f}]',
         motion_ci_long=f'[{p["interval95"][0]:.6f}, {p["interval95"][1]:.6f}]', motion_positive_sources=positive,
         motion_known_short=f'{m["utility"]["known"]["point"]:.3f}', motion_pass=s['supported_record_views'],
@@ -264,11 +309,17 @@ def main():
     diagnostic = HOME/'moving_visual_actor_v1/branch_diagnostics.json'
     if diagnostic.exists():
         actor_sources[str(diagnostic.relative_to(ROOT))] = sha(diagnostic)
+    camera_folder = HOME/'moving_camera_frame_v1'
+    camera_paths = [camera_folder/name for name in ('registration_v2.json', 'training.json',
+        'verification.json', 'control.json', 'analysis.json', 'forecast_freeze.json',
+        'interruption_20261106T2054Z.json')]
+    camera_sources = {str(path.relative_to(ROOT)): sha(path) for path in camera_paths} if values['camera_update'] else {}
     write_json(PUBLIC/'source_bindings.json', dict(result_source='fresh_prose_typesetting_of_cached_verified_scalar_evidence',
         fixed_sources=PINNED, template_sha256=sha(PUBLIC/'manuscript.template.md'), builder_sha256=sha(Path(__file__)),
         markdown_sha256=sha(PUBLIC/'manuscript.md'), tex_sha256=sha(PUBLIC/'manuscript.tex'), cvpr_style_sha256=sha(template),
         actor_outcomes_included=(HOME/'moving_visual_actor_v1/analysis.json').exists(),
         actor_sources=actor_sources,
+        camera_outcomes_included=bool(values['camera_update']), camera_sources=camera_sources,
         independent_confirmation=False, submission_ready=False, old_v9_sources_or_PDF_modified=False,
         stage5c_executed=False, smc_enabled=False))
     print('Native-stride working manuscript and private figures prepared; no new outcome scoring or submission claim.')

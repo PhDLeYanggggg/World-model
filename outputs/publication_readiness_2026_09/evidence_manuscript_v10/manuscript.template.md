@@ -232,6 +232,26 @@ parameters, the six existing source exclusions, the original sampler and
 control reproduces original shared-core training; two full treatment refits
 check the first fixed design. These are not twelve complete exact refits.
 
+### 4.4 Explicit Viewpoint Conditioning
+
+A separate conventional repair aligns eight observed positions and their
+time-aligned neighbors to the query image using seven past affine proxies.
+All seven pairs must satisfy the pre-existing measurement support rule;
+otherwise the full window retains identity imputation without deleting rows.
+Of 125,540 windows, 94,242 have complete support and 31,298 retain identity
+imputation. These populations are not interchangeable experimental cohorts.
+
+The unchanged neural core predicts in that query frame. Fixed powers of the
+last observed affine restore predicted native image coordinates before the
+same whole-twelve loss. No actual future image or camera pose is used. This
+extrapolation can fail under changing viewpoint and parallax. There are no new
+learned parameters: 3,027,268 nominal and 580,676 trainable parameters remain.
+A matched camera-compensated CV forecast tests geometry without neural learning.
+An unsupported window is not frozen raw-model fallback: newly learned weights
+can still change its prediction. All six actors and six camera-CV banks must
+freeze before diagnostic scoring. The primary remains camera actor minus the
+cached identity actor; secondary controls cannot replace it after readout.
+
 ## 5. Data Roles and Experimental Protocol
 
 The current task uses the pinned MovingDroneCrowd++ archive at native
@@ -315,6 +335,8 @@ not success inferred from a favorable early prefix.
 {{ actor_update }}
 
 {{ actor_table }}
+
+{{ camera_update }}
 
 ## 7. Failure Analysis and Limitations
 
