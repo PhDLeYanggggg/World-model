@@ -50,6 +50,10 @@ continuing rather than replacing the experiment with a quick result.
 The full4,000update raw-control refit now reproduces the original shared
 core,optimizer,sampler,RNG and common loss trace exactly. The twelve matched
 image-conditioned actors are training;their donor outcomes are not scored yet.
+The [native-stride working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
+keeps this experiment separate from the older European stride12 protocol.
+It reports the completed negative results and marks the new actor outcomes
+as pending; it is not a submission-ready paper.
 
 ### Previous Actor Repair
 

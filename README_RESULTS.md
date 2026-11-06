@@ -48,6 +48,12 @@ original exactly;only the old pilot20/40log entries are additional. Twelve
 matched image-conditioned actors are now active asPID28399;no donor prediction
 comparison is scored.
 
+The native-stride v10 English working manuscript now compiles independently
+of the frozen European-stride v9 PDF. It binds completed public scalar evidence,
+keeps the negative cost/actor results, and explicitly marks the new actor matrix
+as unscored. This is prose/typesetting progress, not a new scientific result or
+submission-readiness claim.
+
 ### Past-Image Observation: Complete Matched Experiment, Original Contract Failed
 
 All24full Torch fits and24complete exact refits finish,with98,304updates per
