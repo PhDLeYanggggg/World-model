@@ -33,6 +33,12 @@ about7820seconds from the uninterrupted200update pilot; excludes control,
 loading,inference and verification,not a completion claim. Full original-loss
 control refit is starting. The18focused checks passed1.51s; no full historical
 suite rerun and no new held/readout result.
+Full control refit PID1601 exits0 in1299.475958s,peak1,731,821,568B.
+All4000updates reproduce original model/optimizer/sampler/Torch RNG/draws
+exactly,with common trace exact. Only the original pilot stop log records
+at20/40are extra in the old receipt; no scientific state difference is ignored.
+Six full prefix-balanced treatment fits now start from matched initialization
+and identical draws; the first resumes its verified200update pilot prefix.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
