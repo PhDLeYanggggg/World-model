@@ -52,8 +52,9 @@ full background-motion context. All train on source-separated A donors only;
 the original full development cohort and risk rules remain the evaluation.
 The causal input joins are complete, and a real 128+128-step recovery run
 matches a continuous 256-step run exactly. All 24 full models have now finished
-4,096 updates each. Complete from-scratch refits are running before evaluation;
-neither recovery agreement nor lower fitting loss is a forecasting result.
+4,096 updates each, and all 24 complete from-scratch refits reproduce exactly.
+I am now freezing every decision before the full evaluation; neither recovery
+agreement nor lower fitting loss is a forecasting result.
 [Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
 
 ### Previous Support / Context Study

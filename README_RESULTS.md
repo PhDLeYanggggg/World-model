@@ -79,6 +79,11 @@ matched minibatch mean objectives(no-image/bounds/quality/motion) are
 All24complete fresh refits are active asPID21288 before freezing decisions and
 opening the full original readout. Latest14feature/model tests pass2.60s;
 one separate posthoc-audit unknown-label test passes1.48s. No C/H/deployment.
+All24complete refits now exact:PID21288 exits0 in1171.203879s,peak4,730,748,928B.
+Total fitting plus repeat budget196,608updates; the separate direct recovery
+pilot adds256updates without double-counting the resumed pilot prefix.
+All36choice contexts are now being generated asPID22700,still before outcome
+readout. Latest combined15focused checks pass2.25s. No threshold search.
 
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 
