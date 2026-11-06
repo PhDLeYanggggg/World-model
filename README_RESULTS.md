@@ -65,6 +65,11 @@ Both fixed-design treatment refits complete at17:50:21Z,PID48482exit0,
 2673.407485s,peak1,999,847,424B. Both scientific states reproduce exactly.
 This is two complete treatment refits,not twelve. All twelve prediction banks
 will freeze before the source-held diagnostic outcome comparison.
+ForecastPID52072 exits0 at18:08:53Z after1069.586420s,peak1,508,081,664B.
+All twelve complete prediction banks are frozen before diagnostic scoring.
+The generic loader opens and hashes full packed arrays for integrity;future
+targets/masks never enter model input.This is not a target-unopened inference
+filesystem boundary,as documented in execution_scope before scoring.
 
 The native-stride v10 English working manuscript now compiles independently
 of the frozen European-stride v9 PDF. It binds completed public scalar evidence,
