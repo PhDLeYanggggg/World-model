@@ -57,8 +57,11 @@ The complete 4,000-update identity-control refit now matches the original
 weights, optimizer, sampler/RNG and common trace exactly. The six matched
 camera-conditioned trajectory models are training; no outcome comparison has
 been scored.
-Three of the six full fits are complete; the second producer fold is now
-training. Every completed fit retains the original draws, loss factors and RNG.
+Four of the six full fits are complete. A tool interruption ended the original
+training process; its exit code was not observed. I verified the four complete
+models and resumed the fifth from update 1,400, without changing the protocol
+or budget. The last pre-interruption heartbeat was at update 1,550, so at least
+150 updates must be repeated. No held-source outcome has been scored yet.
 
 ### Previous Controller Experiment
 

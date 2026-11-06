@@ -50,6 +50,11 @@ At20:24Z,the first three complete4000update treatment models are finished and
 the second producer fold starts. Original draws/factors/RNGchecks pass for
 every completed fit;source-held outcomes remain unscored. Local training stays
 on the full registered budget with no resource downgrade.
+At20:58Z,the original process/session are absent after a tool interruption;
+its terminal signal/exit code were not observed. Four full4000fits are complete.
+The fifth checkpoint is1400,last heartbeat1550:at least150updates repeat,exact
+discarded count unknown. PID68334resumes unchanged at20:58:59Z and verifies all
+four complete receipts. No model/risk/support change or predictive readout.
 The CVPR2027official enrollment/full/supplementary dates and author guidelines
 are freshly checked;profiles/conflicts remain unverified and no submission is
 performed. The seven-page native evidence draft now cites viewpoint-normalized
