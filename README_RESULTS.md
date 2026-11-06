@@ -18,6 +18,15 @@ the latest component experiments use already-exposed own-B records.
 
 ### Cost-Fitting Source Prefix Attribution: Complete
 
+Next registered repair: six real prefix-balanced EqMotion forecasters plus one
+full matched original-control refit, each4000updates, seed17. Exact100+100vs200
+recovery pilot precedes fitting. Loss is half available12ADE plus half the
+mean of supported1/3/6prefix ADEs, with full-loss fallback if only later labels
+exist. No sweep, changed input, raw rollout ramp, new own-B or C/H readout.
+Original recording2%/support/NA rules remain. Registration precedes training.
+Actor component success, if any, is not policy deployment or paper readiness.
+[Protocol](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/protocol.md).
+
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
 windows across6OOFforecasts,with fixed prefixes1/2/3/4/8/12and first-step cosine

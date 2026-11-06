@@ -52,6 +52,12 @@ This points toward testing the forecast training loss, not adding a duplicate
 feature or another threshold. No evaluation rule or deployment has changed.
 [Training-side audit](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/README.md).
 
+The next registered component experiment retrains all six source-excluded
+trajectory producers with a fixed prefix-balanced loss. It retains the original
+network, draws and 4,000-update budget and first reproduces a full old control.
+It does not change the 2% risk contract or open another held-out test.
+[Matched actor experiment](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/protocol.md).
+
 ### Previous Reference-Context Result
 
 I tested whether sharing the frozen expert's causal rollout context could repair
