@@ -29,6 +29,11 @@ neural predictions. Eight focused tests include actual small author-core update
 parity,composition direction,latest-state interruption recovery and idempotency.
 No real predictive success is claimed. CREATE observation times out after60s;
 queue state unknown,no mutations. Local CPU4/workers0is feasible;real pilot next.
+PreparationPID57379exits0 in1.684588s,peak785,727,488B. All125540rows,14sources,
+34recordings and1613queries retain exact geometry/history/neighbor-time alignment.
+1290queries/94242rows have complete seven-pair support;31298rows retain identity
+imputation. New compact operators/indices occupy3,831,453B,no duplicatedgeometry.
+Preparation target arrays remain unopened. Actual recovery pilotPID57469is active.
 
 ### Past-Image Trajectory Actor: Complete Actual Training, Negative Primary
 
