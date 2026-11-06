@@ -49,8 +49,9 @@ projects roughly5.5hours for all full fits,within the local budget;training is
 continuing rather than replacing the experiment with a quick result.
 The full4,000update raw-control refit now reproduces the original shared
 core,optimizer,sampler,RNG and common loss trace exactly. The twelve matched
-image-conditioned actors are training;their donor outcomes are not scored yet.
-Seven fits are now complete. A disk-reserve stop preserved the sixth model's
+twelve image-conditioned actors now complete all4,000updates;their donor
+outcomes are not scored yet. Two full fixed-design treatment refits come next.
+A disk-reserve stop preserved the sixth model's
 checkpoint; a documented resource-only amendment resumed it with a2GiBreserve
 and the unchanged1GiBartifact cap. No scientific budget or risk rule changed.
 The [native-stride working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)

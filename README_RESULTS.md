@@ -56,6 +56,11 @@ Same-definition recovery PID38977 verifies all five completed receipts,resumes
 the sixth from3400,and completes the first six-model producer fold. At15:19Z,
 seven full treatment fits are complete and the eighth is active. Donor outcome
 comparison remains unscored;all results and original risk requirements stay frozen.
+The full twelve-model treatment matrix completes at17:05:07Z,PID38977exit0,
+resumed phase8175.679276s,peak1,802,534,912B. All48000scientific treatment updates
+are complete with the original source sampler/factors;the151discarded updates
+are additional compute. Two complete fixed-design refits precede forecast freeze
+and source-held outcome comparison. No predictive success is claimed yet.
 
 The native-stride v10 English working manuscript now compiles independently
 of the frozen European-stride v9 PDF. It binds completed public scalar evidence,
