@@ -52,6 +52,10 @@ Five fits are complete;the sixth reaches3551but last saved state is3400.
 A committed resource-only wrapper reduces reserve to2GiB,retains1GiBartifact
 cap and all scientific definitions,and resumes the same checkpoint. The151
 discarded updates are reported as additional compute,not extra scientific budget.
+Same-definition recovery PID38977 verifies all five completed receipts,resumes
+the sixth from3400,and completes the first six-model producer fold. At15:19Z,
+seven full treatment fits are complete and the eighth is active. Donor outcome
+comparison remains unscored;all results and original risk requirements stay frozen.
 
 The native-stride v10 English working manuscript now compiles independently
 of the frozen European-stride v9 PDF. It binds completed public scalar evidence,

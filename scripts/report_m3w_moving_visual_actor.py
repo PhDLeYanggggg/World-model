@@ -52,6 +52,8 @@ def main():
     if len(fits) != 12 or not all(f['result']['complete'] and f['result']['step'] == 4000 for f in fits) or verify['models'] != 2 or not verify['full_refits_exact']:
         raise ValueError('Complete registered full-budget actors and both actual full refits required')
     screen = p['component_progression_screen_pass']; interval = p['interval95']
+    resource_receipt = PUBLIC/'resource_amendment.json'
+    repeated_updates = read(resource_receipt)['extra_discarded_updates'] if resource_receipt.exists() else 0
     lines = ['# Does Past-Image Context Improve The Trajectory Actor?', '',
         'I moved the same verified past-image measurements into the trajectory',
         'predictor, rather than only the intervention controller. This experiment',
@@ -98,7 +100,8 @@ def main():
         'fixed source design. Do not call these twelve complete exact refits.',
         'The real100+100versus200recovery pilot is exact;its200prefix is resumed',
         'into its own full motion fit. A separate direct200pilot is additional.',
-        'Total actual optimizer updates:60,200including recovery and full refits.',
+        f'Total actual optimizer updates:{60200+repeated_updates:,}including recovery,full refits and discarded/repeated updates.',
+        f'Disk-guard recovery repeats{repeated_updates}updates from the last atomic checkpoint;the scientific endpoint stays4000.',
         'Each treatment has3,028,996nominal/582,404trainable parameters;unused',
         'author heads remain frozen. The image branch adds1,728parameters.',
         f'Raw shared core/optimizer/sampler/RNG/common trace exact:{control["shared_core_optimizer_sampler_RNG_and_common_trace_exact"]}.', '',
@@ -171,15 +174,17 @@ def main():
         '数组、缓存、第三方源码和 checkpoint 不在 Git 中。', '',
         '```sh',
         '.venv-pytorch/bin/python scripts/run_m3w_moving_visual_actor.py control --resume',
-        '.venv-pytorch/bin/python scripts/run_m3w_moving_visual_actor.py train --resume',
-        '.venv-pytorch/bin/python scripts/run_m3w_moving_visual_actor.py verify --resume',
-        '.venv-pytorch/bin/python scripts/run_m3w_moving_visual_actor.py forecast',
-        '.venv-pytorch/bin/python scripts/run_m3w_moving_visual_actor.py evaluate',
-        '.venv-pytorch/bin/python scripts/run_m3w_moving_visual_actor.py replay',
+        '.venv-pytorch/bin/python scripts/resume_m3w_moving_visual_actor_resources.py train --resume',
+        '.venv-pytorch/bin/python scripts/resume_m3w_moving_visual_actor_resources.py verify --resume',
+        '.venv-pytorch/bin/python scripts/resume_m3w_moving_visual_actor_resources.py forecast',
+        '.venv-pytorch/bin/python scripts/resume_m3w_moving_visual_actor_resources.py evaluate',
+        '.venv-pytorch/bin/python scripts/resume_m3w_moving_visual_actor_resources.py replay',
         '.venv-pytorch/bin/python scripts/report_m3w_moving_visual_actor.py',
         '```', '',
         '已完成的 pilot/evaluate 收据不可覆盖重跑；核验已有产物即可。',
         '训练在同定义断点上恢复，已完成模型校验后复用；不得以 quick 替代4000步。',
+        'resource_amendment 只将磁盘工程预留由5GiB改为2GiB，保留1GiB产物上限。',
+        '原模型、训练终点和2%科学评价规则不变，不删除旧数据。',
         'replay 重算所有预测和原指标，不进行新优化。',
         'loss CSV 的 mean_past_normalized_ADE 是旧字段名，实际为未加权 batch',
         'available-label ADE 的原始 packed 图像坐标值，不是米或不同场景统一尺度。',
