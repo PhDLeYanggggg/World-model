@@ -16,6 +16,19 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Cost-Fitting Source Prefix Attribution: Registered
+
+Previous goal turn:progress,96fits+96exact refits complete,primary utility
+uncertain and full original risk failed. Register all125540producer-A agent
+windows across6OOFforecasts,with fixed prefixes1/2/3/4/8/12and first-step cosine
+bins0/.5/.9. Algebraically compare to existing raw120fields20/74/75;do not rename
+implicit information as a new input. Future labels are separate attribution
+only,all unknown/partial rows remain. No new controller,own-B,C/H or image-role
+readout. Five helper tests pass0.15s;actual run not_run at registration.
+Fresh CREATE queue observation times out after60seconds;remote state unknown,
+no new/cancelled/restarted jobs. Local complete audit is feasible.
+[Protocol](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/protocol.md).
+
 ### Data Support By Global Past Motion: Registered Four-Cell Study
 
 The exact-cohort fixed controls finish negatively for safety. Prior shared-motion,
