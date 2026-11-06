@@ -16,21 +16,45 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Risk-Head Seed Replication Registered
+### Risk-Head Seed Replication: Benefit Persists, Safety Still Unproved
 
-The donor treatment is frozen for seeds17/29/43:24cached-verified seed17heads,
-48new29/43heads and48full repeats,4,096updates each. Teacher/OOF seed remains17.
+The donor treatment is complete for seeds17/29/43:24cached-verified seed17heads,
+48new29/43heads and48full exact repeats,4,096updates each. Teacher/OOF seed remains17.
 The original dataset, features, pool weights, source exclusions and zero
 threshold stay fixed. The new seed-explicit engine must equal the old engine
-at seed17 before training. Report3000paired source-component bootstrap
+at seed17 before training; the complete real4,096-update equivalence holds.
+Seed29recovery128+128vs256also matches. Report3000paired source-component bootstrap
 replicates, not window bootstrap. These are exposed-development component
 results, not three forecaster seeds, new independent tests or a safety upgrade.
-No result is claimed complete yet.
+The information criterion passes3/3,2/3,2/3contexts. All nine cost contrasts
+against matched own-only are positive, but seed29critic2 has worse false-safe
+cost and seed43critic2 has13.618%worse MSE. All three seeds and negatives remain.
+Average individual-head cost reduction is12.161989%, exploratory source-cluster
+interval[2.656382%,27.179109%]. Forest contrast4.150244%[-4.749503%,8.121513%]
+does not establish superiority. These are fixed-teacher, exposed-component
+intervals, not independent final tests or ensemble-policy confidence intervals.
 Before opening the new-seed readout, I also fixed an auxiliary mean/unanimity
 comparison using all three augmented heads. It changes no threshold and makes
 no coverage guarantee: agreeing heads can share bias, and fewer accepted cases
 need not reduce the full-policy risk ratio.
-[Protocol](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/protocol.md).
+Mean/unanimity lower total known-proposal cost relative to forest in all three
+contexts, but false-safe cost remains higher. Harmful admissions are34/134/323
+for mean and7/26/26for unanimity; forest0/1/0. Original full-population risk,
+unknown-label and support evaluation of these policies remains not_run.
+
+New primary updates196,608; repeatupdates196,608; separatepilot4,608. Pilot
+PID66007 exits0 in12.412s; primary PID66113 exits0 in285.502s, peak5,704,531,968
+bytes; refit PID66852 exits0 in290.180s. Final readout PID67376 exits0 in10.821s.
+51focused tests pass in3.98s; full historical suite not rerun. Figure visually
+checked locally. No new CREATE job, C/H readout or deployment change. Original
+2%/support, empty-control NA, old failures and24-group main NA stay unchanged.
+Next: complete-policy readout for the two frozen consensus rules on exposed
+own-B only, with unknown bounds/support retained, before further risk calibration.
+Both consensus and complete seed readouts replay exactly. Main replay PID68282
+exits0 in9.928s, fitting forbidden, all public files unchanged during the check.
+The main-paper PDF hash and unrelated staged-index digest remain unchanged.
+[Results](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/README.md),
+[consensus](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/consensus/README.md).
 
 ### Matched Donor Comparison: Information Improves, Safety Still Unproved
 

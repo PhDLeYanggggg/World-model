@@ -11,11 +11,34 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am checking the donor result across risk-head seeds17/29/43 with the teacher
-cache fixed. This adds48new fits and full repeats, rather than choosing a
-favorable seed. Source-component uncertainty will be reported separately from
-overlapping windows. No new outer test or deployment decision is involved.
-[Fixed replication protocol](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/protocol.md).
+The donor benefit now replicates across risk-head seeds 17/29/43 with the
+forecast teacher fixed. I trained 48 additional heads and repeated every new
+fit exactly, retaining the verified seed17 models rather than selecting a
+favorable run. The information criterion passes in 3/3, 2/3 and 2/3 contexts.
+
+**The component learns better; the complete policy is still unproved.**
+
+Average individual-head decision cost falls 12.16% versus matched own-only
+training, with an exploratory source-component interval of [2.66%, 27.18%].
+The forest comparison is 4.15% [-4.75%, 8.12%], which does not establish a
+reliable advantage over that stronger control. One seed/context has worse MSE.
+These intervals use eight exposed source components, not overlapping windows,
+and do not describe the separately aggregated score ensembles.
+
+The fixed three-head unanimity rule reduces harmful known-proposal admissions
+to 7/26/26, versus 46/229/602 for the original single head and 0/1/0 for the
+forest. It also rejects useful predictions. This is not yet a complete 2%
+policy-risk check: unknown-label contributions and reference/support conditions
+must be evaluated on the full allowed development population. The outer test
+stays closed. Deployment and the original rules remain unchanged.
+
+These are three risk-head seeds, not three forecaster seeds or independent
+world-model confirmation. The project is not submission-ready.
+[Replication and uncertainty](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/README.md),
+[fixed consensus](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/consensus/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/failure_analysis.md).
+
+### Previous Seed17 Donor Comparison
 
 The new source-held donors improve neural risk learning in the matched
 development comparison. I trained 24 heads and repeated all 24 fits exactly
@@ -52,8 +75,8 @@ from 6 and 8 sources in the two separate parent training sets.
 All six forecast caches replay exactly. Donor ADE beats causal CV on 10 of 14
 sources and loses on four; all sources and unknown-label rows remain in the
 record. These are training-donor diagnostics, not a new independent test or a
-strongest-baseline result. The next comparison is the same risk model with
-and without these additional donors. Deployment and the original 2% rules
+strongest-baseline result. The matched donor comparison and its risk-head seed
+replication are recorded above. Deployment and the original 2% rules
 remain unchanged; the paper is not submission-ready.
 [Training and donor results](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/README.md),
 [source eligibility](outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/eligibility_report.md),

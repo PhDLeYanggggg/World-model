@@ -10,6 +10,17 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [fixed-teacher risk-seed addendum](../moving_donor_seeds_v1/paper_addendum.md)
+adds48risk fits and48full exact refits, with24verified cached seed17heads.
+The information criterion holds in3/3,2/3,2/3contexts for risk seeds17/29/43.
+The macro cost reduction versus matched own-only is12.16% with exploratory
+source-cluster interval[2.66%,27.18%]; the forest interval[-4.75%,8.12%] crosses
+zero. Fixed mean/unanimity controls reduce known decision cost; unanimity has
+7/26/26harmful admissions versus forest0/1/0. These are not three forecaster
+seeds, new independent validation, a complete-policy risk certificate or a
+deployment upgrade. Negative seed slices and original risk/support/NA rules
+remain. The compiled main paper is unchanged and still not submission-ready.
+
 The [matched donor-augmentation addendum](../moving_donor_augmentation_v1/paper_addendum.md)
 adds24risk fits and24full exact refits. Augmentation improves matched own-only
 decision cost20.71%,32.27%,10.69% and risk MSE in all three contexts; all eight
