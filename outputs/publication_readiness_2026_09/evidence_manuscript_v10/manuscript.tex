@@ -45,6 +45,9 @@ Conformal Risk Control gives expected-risk guarantees for its specified exchange
 MovingDroneCrowd++ provides moving-drone crowd images and head boxes with tracking identities [4]. Its counting/tracking release is the data source; the source-grouped 8/12 forecasting protocol below is a registered research adaptation, not the publisher's official forecasting leaderboard. Background motion measurement and simple feature conditioning are conventional tools. Their inclusion would require a controlled downstream contribution, not just a lower training loss.
 
 
+Explicit separation of pedestrian and camera motion is also established prior work. Neumann and Vedaldi normalize the viewpoint and predict future ego motion for monocular pedestrian forecasting [5]. This motivates testing geometric conditioning, not claiming camera compensation itself as new. Their learned future-pose estimator is not implemented by our fixed affine proxy; neither their reported benchmarks nor physical geometry transfer here.
+
+
 \section{Forecast Substitution with Partial Labels}
 
 At a query, target-eligible agents have eight observed positions and a fixed twelve-step request. Eligibility and neighbor support depend only on the past. The current model uses at most eight complete, time-aligned nearest-neighbor histories per target; it does not claim to represent every visible agent. Positions remain in native image coordinates. The numerical time embedding is relative to the request horizon, not a verified number of seconds.
@@ -250,10 +253,12 @@ Crowd imagery and trajectory identities should be handled under the dataset lice
 
 \item Yaowu Fan, Jia Wan, Tao Han, Andy J. Ma, Wanli Ouyang, and Antoni B. Chan. Video Individual Counting and Tracking from Moving Drones: A Benchmark and Methods. arXiv:2601.12500, 2026. Dataset release: \url{https://huggingface.co/datasets/fyw1999/MovingDroneCrowd}
 
+\item Lukas Neumann and Andrea Vedaldi. Pedestrian and Ego-Vehicle Trajectory Prediction From Monocular Camera. CVPR, 10204-10212, 2021. \url{https://openaccess.thecvf.com/content/CVPR2021/html/Neumann_Pedestrian_and_Ego-Vehicle_Trajectory_Prediction_From_Monocular_Camera_CVPR_2021_paper.html}
+
 \end{enumerate}
 
 \section*{LLM Usage Statement}
 
-AI tools assisted implementation, experiment orchestration, debugging, analysis and drafting. Reported results are tied to saved artifacts and documented checks. The author is responsible for validating experiments, citations, data-role boundaries and the final manuscript. This statement does not claim that automated checks replace scientific verification.
+OpenAI Codex assisted implementation, experiment orchestration, debugging, analysis and figure production in Methods and Experiments, and drafting and revision throughout the manuscript. It did not supply trajectory ground truth or independent validation. Reported results are tied to saved artifacts and documented checks. The author is responsible for validating experiments, citations, data-role boundaries and the final manuscript. Automated checks do not replace scientific verification.
 
 \end{document}

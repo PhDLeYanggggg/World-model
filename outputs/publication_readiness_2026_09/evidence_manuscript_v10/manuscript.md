@@ -87,6 +87,13 @@ motion measurement and simple feature conditioning are conventional tools.
 Their inclusion would require a controlled downstream contribution, not just
 a lower training loss.
 
+Explicit separation of pedestrian and camera motion is also established
+prior work. Neumann and Vedaldi normalize the viewpoint and predict future
+ego motion for monocular pedestrian forecasting [5]. This motivates testing
+geometric conditioning, not claiming camera compensation itself as new.
+Their learned future-pose estimator is not implemented by our fixed affine
+proxy; neither their reported benchmarks nor physical geometry transfer here.
+
 ## 3. Forecast Substitution with Partial Labels
 
 At a query, target-eligible agents have eight observed positions and a fixed
@@ -422,10 +429,16 @@ any final decision to submit.
    A Benchmark and Methods. arXiv:2601.12500, 2026.
    Dataset release: https://huggingface.co/datasets/fyw1999/MovingDroneCrowd
 
+5. Lukas Neumann and Andrea Vedaldi. Pedestrian and Ego-Vehicle Trajectory
+   Prediction From Monocular Camera. CVPR, 10204-10212, 2021.
+   https://openaccess.thecvf.com/content/CVPR2021/html/Neumann_Pedestrian_and_Ego-Vehicle_Trajectory_Prediction_From_Monocular_Camera_CVPR_2021_paper.html
+
 ## LLM Usage Statement
 
-AI tools assisted implementation, experiment orchestration, debugging,
-analysis and drafting. Reported results are tied to saved artifacts and
-documented checks. The author is responsible for validating experiments,
-citations, data-role boundaries and the final manuscript. This statement
-does not claim that automated checks replace scientific verification.
+OpenAI Codex assisted implementation, experiment orchestration, debugging,
+analysis and figure production in Methods and Experiments, and drafting
+and revision throughout the manuscript. It did not supply trajectory ground
+truth or independent validation. Reported results are tied to saved artifacts
+and documented checks. The author is responsible for validating experiments,
+citations, data-role boundaries and the final manuscript. Automated checks
+do not replace scientific verification.

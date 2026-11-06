@@ -34,11 +34,16 @@ PreparationPID57379exits0 in1.684588s,peak785,727,488B. All125540rows,14sources,
 1290queries/94242rows have complete seven-pair support;31298rows retain identity
 imputation. New compact operators/indices occupy3,831,453B,no duplicatedgeometry.
 Preparation target arrays remain unopened. Actual recovery pilotPID57469is active.
-Real recoveryPID57469exits0 in127.2125s,peak1,730,314,240B. Full model/optimizer/
+Real recoveryPID57469exits0 in127.212250s,peak1,730,314,240B. Full model/optimizer/
 sampler/RNG/trace state matches100+100vs200exactly. Model3,027,268nominal/
 580,676trainable parameters,no new learned parameters. Direct200takes63.539798s,
 projecting10,166.367667s(~2.82h)for8full fits,excluding inference. Full identity
 control now starts before the six treatment actors. No predictive lift claimed.
+The CVPR2027official enrollment/full/supplementary dates and author guidelines
+are freshly checked;profiles/conflicts remain unverified and no submission is
+performed. The seven-page native evidence draft now cites viewpoint-normalized
+forecasting prior work and names Codex in its required disclosure. All seven
+pages are rendered/checked;new camera-frame outcomes are not yet included.
 
 ### Past-Image Trajectory Actor: Complete Actual Training, Negative Primary
 
