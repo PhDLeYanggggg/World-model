@@ -71,6 +71,14 @@ three existing own-B contexts; no own-B target arrays were opened. Actual
 models are now training at4,096updates each on nativearm64 CPU4/workers0.
 These are engineering milestones, not utility or safety passes. All original
 2%/support/NA rules and old negative results are retained.
+All24primary fits now complete98,304updates. PID19566 exits0 in1176.424307s,
+peak4,728,274,944B. Cumulative model fitting time269.753857s excludes repeated
+input loading/preprocessing; end-to-end time is reported separately. Final
+matched minibatch mean objectives(no-image/bounds/quality/motion) are
+0.225726/0.149061/0.130606/0.124131. These are training statistics,not utility.
+All24complete fresh refits are active asPID21288 before freezing decisions and
+opening the full original readout. Latest14feature/model tests pass2.60s;
+one separate posthoc-audit unknown-label test passes1.48s. No C/H/deployment.
 
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 
