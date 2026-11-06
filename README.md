@@ -11,6 +11,12 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am checking the donor result across risk-head seeds17/29/43 with the teacher
+cache fixed. This adds48new fits and full repeats, rather than choosing a
+favorable seed. Source-component uncertainty will be reported separately from
+overlapping windows. No new outer test or deployment decision is involved.
+[Fixed replication protocol](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/protocol.md).
+
 The new source-held donors improve neural risk learning in the matched
 development comparison. I trained 24 heads and repeated all 24 fits exactly
 before evaluation. Each receives the same 4,096-update budget and original

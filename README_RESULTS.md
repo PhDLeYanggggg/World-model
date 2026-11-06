@@ -16,6 +16,18 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Risk-Head Seed Replication Registered
+
+The donor treatment is frozen for seeds17/29/43:24cached-verified seed17heads,
+48new29/43heads and48full repeats,4,096updates each. Teacher/OOF seed remains17.
+The original dataset, features, pool weights, source exclusions and zero
+threshold stay fixed. The new seed-explicit engine must equal the old engine
+at seed17 before training. Report3000paired source-component bootstrap
+replicates, not window bootstrap. These are exposed-development component
+results, not three forecaster seeds, new independent tests or a safety upgrade.
+No result is claimed complete yet.
+[Protocol](outputs/publication_readiness_2026_09/moving_donor_seeds_v1/protocol.md).
+
 ### Matched Donor Comparison: Information Improves, Safety Still Unproved
 
 The completed comparison trains own-only, A-only and50/50augmented risk heads
