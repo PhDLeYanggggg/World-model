@@ -43,6 +43,12 @@ All96fits complete:PID90737 exits0 in1143.657700s,peak7,477,329,920B,
 weights and sampled draws; global context lowers the final matched fitting
 minibatch loss in48/48pairs. This is not held-source utility/calibration/risk
 evidence. Full96refits are active asPID93036; no policy outcomes have been read.
+All96full refits finish:PID93036 exits0 in1157.498922s,peak7,465,222,144B,
+393,216repeat updates; all states and paired draws exact. Inference is active
+asPID94774,all36choices will freeze before readout. The combined38focused
+checks pass3.59s; full historical suite not rerun. Actual fitting-loss plot is
+rendered and visually checked; IQR bands describe24fits per cell,not confidence
+intervals or independent forecaster replication. Original rules remain.
 
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 

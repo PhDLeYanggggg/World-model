@@ -20,6 +20,30 @@ def worst_signed(a,arm,name):
     return max(values) if values else None
 
 
+def plot_fit_losses():
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    freeze=run.read(run.PUBLIC/'training_freeze.json')
+    fits=[run.read(run.checked(ref)) for ref in freeze['fits']]
+    if len(fits)!=96:raise ValueError('All96actual fitting traces required')
+    fig,axes=plt.subplots(1,2,figsize=(12,4.5),layout='constrained')
+    for ax,support in zip(axes,('own','augmented')):
+        for suffix,color in (('local','#2563eb'),('global','#0f766e')):
+            traces=[r['trace'] for r in fits if r['arm']==support+'_'+suffix]
+            if len(traces)!=24:raise ValueError('All24source/risk-seed fits per cell required')
+            steps=[r['step'] for r in traces[0]]
+            if any([r['step'] for r in t]!=steps for t in traces):raise ValueError('Fixed trace budget changed')
+            v=run.np.array([[r['total'] for r in t] for t in traces])
+            median=run.np.median(v,axis=0);q=run.np.quantile(v,[.25,.75],axis=0)
+            ax.plot(steps,median,color=color,label=suffix+' (24 fits)')
+            ax.fill_between(steps,q[0],q[1],alpha=.12,color=color)
+        ax.set(title=support+' support: median and descriptive IQR',xlabel='Optimizer updates',
+            ylabel='Matched training-minibatch objective (not validation)');ax.grid(alpha=.2);ax.legend()
+    path=run.PRIVATE/'figures';path.mkdir(exist_ok=True)
+    fig.savefig(path/'actual_fitting_losses.png',dpi=170);fig.savefig(path/'actual_fitting_losses.pdf');plt.close(fig)
+
+
 def plot(a):
     import matplotlib
     matplotlib.use('Agg')
@@ -103,7 +127,7 @@ def main():
         '| Identity exception/deployment/submission | FALSE | No approval or evidence change |',
         '| Stage5C / SMC | FALSE | Not executed |']
     (run.PUBLIC/'world_model_gate_supported_global_motion.md').write_text('\n'.join(gates)+'\n')
-    plot(a);print('Complete four-cell matrix reported; no outcome-selected arm or deployment.')
+    plot(a);plot_fit_losses();print('Complete four-cell matrix reported; no outcome-selected arm or deployment.')
 
 
 if __name__=='__main__':main()
