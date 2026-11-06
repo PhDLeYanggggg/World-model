@@ -16,7 +16,7 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Exact-Cohort Fixed-Amplitude Strong Controls: Registered
+### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 
 Previous goal turn:progress. The48reference fits/refits identify easy-reference
 and frozen-harm failures, but lack simple fixed-amplitude scores for the exact
@@ -27,9 +27,22 @@ alpha1/32paired lower,not an outcome-selected coefficient. All24static recording
 views and72repeated learned-policy views remain distinct. No new training,
 new C/H,identity certificate or original2%change. Five helper checks pass0.15s;
 actual preparation and evaluation not_run at registration.
-Preparation PID88132 exits0 in0.487890s,peak1,301,954,560B. All13static
+Preparation PID88132 exits0 in0.487807s,peak1,301,954,560B. All13static
 policies for all62,466rows freeze before scoring. Raw choice arrays stay private.
 [Protocol](outputs/publication_readiness_2026_09/moving_simple_controls_v1/protocol.md).
+Fresh evaluation PID88335 finishes in9.359766s,peak1,979,301,888B; original
+learned controls reproduce exactly. Guarded1/32known gain1.434438% exceeds
+expert-joint0.790637%,but passes only5/24original views,with7known-easy harm
+violations,19completion-easy violations and worst signed easy loss8.953535%.
+All13static policies,including every amplitude and floor,are retained. No
+coefficient is picked from outcomes. The primary paired lower contrast is
+-1.696935pp[-3.126752,-0.397203]; known contrast-0.643801pp crosses zero.
+Negative lower is failed conservative evidence,not identified negative true
+effect. All fixed nonfloor policies fail full24-view support/risk; floor empty
+selected references remain NA. Replay PID89630 recomputes static choices and
+complete scalar metrics exactly in9.779964s; public files stay unchanged.
+No new training,no held C/H,new identity certificate or rule change.
+[Full matrix](outputs/publication_readiness_2026_09/moving_simple_controls_v1/README.md).
 
 ### Shared Frozen-Expert Reference Context: Registered Model Repair
 

@@ -403,6 +403,14 @@ compiled main PDF and does not establish submission readiness.
 
 ## Posthoc Model-Mechanism Checks
 
+The [exact-cohort strong controls](../moving_simple_controls_v1/README.md)
+now include all six fixed amplitudes and a strictly past-only stationary guard.
+The minimum blend has better mean ADE than the learned joint policy, but neither
+passes the original recording-level contract. The registered learned-minus-fixed
+paired completion-lower contrast is negative. This is an important negative
+control, not a chosen new policy or independent confirmation. The compiled main
+PDF remains unchanged.
+
 The [paired-gradient audit](../moving_paired_gradient_v1/result_interpretation.md)
 finds conflict in2/3 fitting contexts, but only1/3 disposable projected steps
 improves MSE without worse decision cost. The

@@ -11,14 +11,18 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am closing a strong-control gap on the same exposed development cohort:
-all six fixed forecast amplitudes, with and without a strictly past-only
-stationary guard. The whole matrix and the minimum-amplitude primary are fixed
-before scoring. Earlier uniform-blend negatives used a different cohort, so
-they cannot substitute for this matched comparison. No new model or risk-rule
-change is involved.
-All static choices are now frozen for all 62,466 rows, before scoring labels.
-[Control protocol](outputs/publication_readiness_2026_09/moving_simple_controls_v1/protocol.md).
+The exact-cohort strong controls reveal a useful limitation of my current method.
+A fixed 1/32 forecast blend with a past-only stationary guard gains **1.434%**
+in available-label ADE, compared with **0.791%** for the learned joint policy.
+But it passes only **5/24 recording checks**; worst signed easy degradation is
+**8.95%**, not the required 2%. Neither strategy is deployable.
+
+All six original amplitudes and both guards were frozen before scoring all
+62,466 exposed development rows. The registered learned-minus-minimum-blend
+paired completion-lower contrast is **-1.697 percentage points [-3.127, -0.397]**.
+That fails the conservative utility criterion; it does not determine the sign
+of the unobserved true effect. No coefficient is selected from this matrix.
+[Complete controls](outputs/publication_readiness_2026_09/moving_simple_controls_v1/README.md).
 
 ### Previous Reference-Context Result
 
@@ -38,9 +42,11 @@ is not established.
 Only **24/72 required repeated recording views** pass the original contract.
 There are 26 known-easy harm violations; worst signed easy-net degradation is
 **9.02%**, above the unchanged 2% limit. A real failure case also shows the frozen
-harm head underestimating loss. I am targeting shared easy-support and conditional
-reference/harm learning next, rather than increasing model width or loosening
-evaluation. No deployment change follows this result.
+harm head underestimating loss. Shared easy-support, convex amplitude constraints
+and global past-motion context also have prior negative results. I am testing
+whether data support changes the value of causal global motion, rather than
+presenting those old ideas as new or loosening evaluation. No deployment change
+follows this result.
 
 These remain MovingDroneCrowd++ exposed-development, native observation-8 /
 prediction-12 image-coordinate results, not independent confirmation or a new
