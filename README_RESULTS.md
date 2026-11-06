@@ -48,6 +48,16 @@ Direct256-fit time0.542854s projects416.912s for48primary fits, excluding
 preparation,full refits and allocation. This is a cost projection, not claimed
 completion. Actual training PID76038 is active with checkpoints and heartbeat;
 local CPU4/workers0 remains appropriate. No new CREATE job submitted.
+All48primary fits finish under definitionv2: PID76038 exits0 in680.135s,
+peak6,164,381,696B,196,608updates. Actual time includes repeated preparation
+and checkpoint work, unlike the earlier pure-fit projection. No policy readout.
+A broader test reveals one-ulp reference differences under an unseeded random
+fixture (max5.960464e-8):1failed/22passed. Verification-onlyv3 preserves v2
+checkpoint identities and verifies unchanged model/data/config/settings. The
+test now fixes its seed, uses8float32epsilon relative forward tolerance and
+requires an exact zero candidate-field Jacobian. All23checks pass2.41s.
+No actual prediction-replay tolerance, risk rule or model changes. The failed
+check and both registrations remain; all48full refits are next.
 [Protocol](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
 
 ### Complete-Risk Model Repair: Trained, But Original Safety Still Fails

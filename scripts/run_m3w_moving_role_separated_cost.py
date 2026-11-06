@@ -31,15 +31,24 @@ load_cache=previous.load_cache
 PUBLIC=ROOT/'outputs/publication_readiness_2026_09/moving_role_separated_cost_v1'
 PRIVATE=ROOT/'data/stage_cvpr2027_experiments/moving_role_separated_cost_v1'
 CONFIG=ROOT/'configs/m3w_moving_role_separated_cost_v1.json'
-REG=PUBLIC/'registration_v2.json'
+TRAINING_REG=PUBLIC/'registration_v2.json'
+REG=PUBLIC/'registration_v3.json'
 FILES=(Path(__file__),CONFIG,PUBLIC/'protocol.md',ROOT/'src/world_model/m3w_role_separated_cost.py',
        ROOT/'src/data_unification/m3w_full_action_features.py',ROOT/'tests/test_m3w_role_separated_cost.py',
-       ROOT/'tests/test_m3w_full_action_features.py',PUBLIC/'reference_invariance_amendment.md')
+       ROOT/'tests/test_m3w_full_action_features.py',PUBLIC/'reference_invariance_amendment.md',
+       PUBLIC/'verification_only_amendment.md')
 POLICIES=('proposal_only',*allocation.ARMS)
 
 
 def register():
     cfg=read(CONFIG);_,parent=previous.register()
+    frozen=read(TRAINING_REG)
+    for p in (CONFIG,ROOT/'src/world_model/m3w_role_separated_cost.py',
+              ROOT/'src/data_unification/m3w_full_action_features.py',PUBLIC/'protocol.md'):
+        if sha(p)!=frozen['files'][str(p.relative_to(ROOT))]:
+            raise ValueError('Verification amendment cannot change model/data/training definitions')
+    if cfg!=frozen['config'] or method.SETTINGS!=frozen['settings']:
+        raise ValueError('Frozen fitting settings cannot change')
     if (cfg['arms']!=list(method.ARMS) or cfg['risk_head_seeds']!=[17,29,43]
             or cfg['fresh_models']!=48 or cfg['steps_per_model']!=4096 or cfg['risk_budget']!=.02
             or cfg['policies']!=list(POLICIES) or cfg['primary_policy']!='joint_free'
@@ -47,7 +56,8 @@ def register():
             or any(cfg[k] for k in ('threshold_search','new_outer_C_H_readout','identity_certification',
                 'deployment_changed','submission_ready','stage5c_executed','smc_enabled'))):
         raise ValueError('Fixed matched loss comparison, all views and original rules required')
-    value=dict(config=cfg,settings=method.SETTINGS,jobs=parent['jobs'],definition_version=2,
+    value=dict(config=cfg,settings=method.SETTINGS,jobs=parent['jobs'],definition_version=3,
+        training_registration=artifact(TRAINING_REG),training_model_and_settings_unchanged=True,
         files={str(p.relative_to(ROOT)):sha(p) for p in FILES},
         parent_registration=artifact(previous.REG),parent_training=artifact(previous.PUBLIC/'training_freeze.json'),
         full_population=artifact(full.PUBLIC/'population.json'),full_inference=artifact(full.PUBLIC/'inference_freeze_v2.json'),
@@ -189,7 +199,7 @@ def entries(reg):
             data=mixed(own,added,site)
             for seed in (17,29,43):
                 for arm in method.ARMS:
-                    identity=dict(registration_sha256=sha(REG),job=key,source=site,risk_seed=seed,arm=arm)
+                    identity=dict(registration_sha256=sha(TRAINING_REG),job=key,source=site,risk_seed=seed,arm=arm)
                     yield node,site,seed,arm,data,identity
 
 

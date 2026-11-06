@@ -16,8 +16,9 @@ learning without a mixed bound-loss anchor, and reopen the existing amplitude
 bank for joint decisions. This is not a new risk threshold or another name for
 the earlier unsuccessful observation-support model. Both new losses use the
 same architecture and training draws; proposal-only and full-action decisions
-will show whether candidate coverage matters. The real-data recovery pilot
-reproduces exactly and the 48-model matched training run is now underway.
+will show whether candidate coverage matters. All 48 new Torch models have
+finished their fixed budget; complete refits and policy readout follow.
+Training completion alone is not evidence that intervention is safer.
 Data preparation now covers all 62,466 rows and 374,796 original amplitude
 candidates, with exact old-proposal feature and donor-target parity. Before
 fitting, a versioned correction makes predicted reference mass action-invariant;
