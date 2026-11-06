@@ -16,7 +16,7 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Complete-Risk Model Repair Registered
+### Complete-Risk Model Repair: Trained, But Original Safety Still Fails
 
 The next treatment restores unknown-label upper-bound contributions omitted by
 known-only augmented fitting. Same causal120 features, 64/32 network, zero
@@ -29,13 +29,33 @@ No new C/H or risk-rule change. Real fitting was not_run at registration.
 Preparation PID71644 exits 0 in 82.828s; all known own features/labels match.
 Producer-A adds exactly 16,944 bound-only candidates to 736,296 known candidates;
 own-B restores 1,274 omitted unknown proposals. Training PID72064 exits 0 in
-292.337s, peak 4,659,134,464 bytes: 24 models, 98,304 primary updates. Complete
-refits are now running before readout. Thirty-five focused checks and the new
+292.337s, peak 4,659,134,464 bytes: 24 models, 98,304 primary updates. All 24
+complete exact refits finish: PID72750 exits 0 in 296.148s, 98,304 repeat updates.
+Inference PID73273 and evaluation PID73314 exit 0 in 1.711s and 0.920s after
+all fits and choices freeze. Thirty-five focused checks and the new
 repeatable-replay check pass; no full historical suite rerun. A source-separated
 review finds no bound-target/leakage defect; it identifies single-use execution
 receipts and missing component diagnostics in the runner. A separate no-fit
 replay wrapper preserves unique receipts, and the reporter will emit observed
-versus bound diagnostics. No policy outcome is claimed before freeze.
+versus bound diagnostics. No policy outcome was opened before freeze.
+
+The model repair fails: mean known gain falls 1.313033% to 1.134321%, unknown
+admissions 81 to 68, but known-easy harm violations rise 15 to 19; support stays
+1/24. Unanimity support falls 2/24 to 1/24; all three individual seeds pass
+0/24. Its apparent separate mean completion lower gain rises to 0.921428%,
+but paired lower contrast is -0.783298 pp [-2.085325, +0.095371]. Different
+unknown paths mean separate lower bounds cannot simply be subtracted.
+Observed-target source/seed-macro MSE worsens 1.715678 to 23.081753, 0/24
+improved views; bound-target MSE improves 586.586965 to 527.056177, 21/24 views.
+These use frozen known-only fitting RMS; unknown targets are bounds, not truth.
+New fitting RMS median ratios are 2.333 all / 5.917 easy. This supports a
+target/loss-balance failure hypothesis, not an isolated causal proof about RMS.
+No deployment or rule change. Next: separate observed-risk and observability/
+envelope targets and model reference moments, using the same full evaluator.
+Thirty-six focused tests pass in 2.94s; full historical suite not rerun.
+Repeatable no-fit replays PID73602/73637 both exit 0 (2.611s/2.585s), all
+predictions/choices/metrics exact and public files unchanged during each check.
+The earlier receipt is preserved. Main-paper PDF unchanged; no new CREATE job.
 [Protocol](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
 
 ### Complete Exposed-Own-B Readout: Gain Is Not A Safety Pass

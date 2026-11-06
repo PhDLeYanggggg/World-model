@@ -10,6 +10,14 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [complete-risk training addendum](../moving_complete_risk_donors_v1/paper_addendum.md)
+adds 24 new risk heads and 24 complete exact refits while preserving the original
+2% contract. Restoring unknown-bound training contributions reduces unknown
+admissions but worsens observed-risk prediction and does not repair safety.
+Mean support remains 1/24 and unanimity falls to 1/24. All negatives, changed
+training scales and the inconclusive paired trajectory contrast are retained.
+This is model-side development, not a new held test or deployment result.
+
 The [complete-policy addendum](../moving_complete_donor_policy_v1/paper_addendum.md)
 reconstructs all 62,466 exposed own-B rows. Fixed mean/unanimity policies improve
 available-label ADE but pass only 1/24 and 2/24 original risk/support views.

@@ -11,7 +11,27 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-The complete-policy evaluation is now finished. I reconstructed all 62,466
+I tested a concrete training repair after the complete-policy audit: add the
+conservative unknown-label contributions omitted by donor fitting. All 24 new
+Torch heads and 24 full exact refits are complete, with the same model, causal
+features, source exclusions, training budget and original 2% rules.
+
+**Adding unknown-risk targets alone does not repair safe intervention.**
+
+The mean rule admits fewer unknown tracks (81 to 68), but more recording views
+violate known-easy harm (15 to 19). Only 1/24 views passes the complete contract;
+unanimity drops from 2/24 to 1/24. Observed-risk target error worsens in every
+source/seed comparison while bound-target error mostly improves. The next
+model repair will separate these competing targets and model reference support,
+not loosen the rule or claim an empty fallback has passed. Deployment stays
+unchanged, and the project is not submission-ready.
+[Model comparison](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/operation_zh.md).
+
+### Initial Complete-Policy Audit
+
+I reconstructed all 62,466
 past-eligible rows in eight exposed development sources, including unknown
 labels and non-interventions, and kept the original per-record 2% risk and
 support requirements. No new held test, training or threshold search was used.
@@ -32,12 +52,6 @@ not estimable; there is no identity-fallback exemption. Deployment is unchanged.
 [Complete results](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/README.md),
 [failure analysis](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/operation_zh.md).
-
-The fixed-budget repair now has 24 newly trained Torch heads, with conservative
-unknown-label contributions included. Network, features, source exclusions and
-decision rule stay fixed. Complete refits are running before policy readout;
-training completion is not a claim of improved safety.
-[Model treatment](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
 
 ### Risk-Head Seed Replication
 

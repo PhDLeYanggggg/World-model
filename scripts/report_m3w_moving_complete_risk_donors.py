@@ -40,11 +40,30 @@ def component_metrics(reg):
                 label_role_is_not_an_inference_feature=True)
 
 
+def target_scale_diagnostics(reg):
+    rows=[]
+    for node in reg['jobs']:
+        key=node['job']['key']
+        for site in node['part']['names']:
+            for seed in (17,29,43):
+                old=run.neural.rel.base.read_checkpoint(run.checked(run.full.risk_checkpoint(key,site,seed)))
+                new=run.neural.rel.base.read_checkpoint(run.checked(
+                    run.read(run.PUBLIC/'fits'/f'{key}_{site}_seed{seed}.json')['checkpoint']))
+                rows.append(dict(job=key,source=site,seed=seed,
+                    RMS_ratio=(new['preprocess']['target_scale']/old['preprocess']['target_scale']).tolist()))
+    ratios=run.np.asarray([r['RMS_ratio'] for r in rows])
+    return dict(rows=rows,minimum=ratios.min(0).tolist(),median=run.np.median(ratios,axis=0).tolist(),
+                maximum=ratios.max(0).tolist(),posthoc_fitting_scale_diagnostic_not_model_selection=True)
+
+
 def main():
     p=run.PUBLIC;a=run.read(p/'analysis.json');old=run.read(run.full.PUBLIC/'analysis.json')
     if len(a['rows'])!=8 or a['fresh_models']!=24 or not a['original_rules_unchanged']:
         raise ValueError('Complete registered model comparison required')
-    run.once(p/'component_metrics.json',component_metrics(run.read(run.REG)))
+    components=component_metrics(run.read(run.REG))
+    run.once(p/'component_metrics.json',components)
+    scales=target_scale_diagnostics(run.read(run.REG))
+    run.once(p/'target_scale_diagnostics.json',scales)
     lines=['# Complete-Risk Donor Supervision','',
         'I added the conservative unknown-label contributions omitted by known-only',
         'donor fitting. All 24 new Torch heads and 24 full exact refits are complete.',
@@ -78,6 +97,9 @@ def main():
         categories[name]=counts
     run.once(p/'failure_taxonomy.json',categories)
     lines+=['','## Paired Change From Known-Only Consensus','',
+        'This uses the envelope between the two policies, not subtraction of their',
+        'separate pessimistic lower gains. A higher individual lower bound is not',
+        'proof that the paired improvement is positive.','',
         '| Policy | Known pp | Completion lower pp | Exploratory source-bootstrap interval for lower pp |',
         '|---|---:|---:|---:|']
     for name,m in a['paired_vs_known_only'].items():
@@ -85,6 +107,21 @@ def main():
         lines.append(f'| {name} | {m["known_pp"]["point"]:+.6f} | {lower["point"]:+.6f} | [{lo:+.6f}, {hi:+.6f}] |')
     lines+=['','3,000 paired resamples of 8 source components; not windows, independent',
         'confirmation or safety intervals. All policies and seed slices are retained.','',
+        '## Observed Versus Bound Target Error','',
+        '| Label role | Known-only MSE | Complete-risk MSE | Improved source/seed views |',
+        '|---|---:|---:|---:|']
+    for role in ('observed','bound'):
+        rows=[r for r in components['rows'] if r['label_role']==role and r['rows']>0]
+        old_mse=run.np.mean([r['normalized_MSE']['known_only'] for r in rows])
+        new_mse=run.np.mean([r['normalized_MSE']['complete_risk'] for r in rows])
+        improved=sum(r['normalized_MSE']['complete_risk']<r['normalized_MSE']['known_only'] for r in rows)
+        lines.append(f'| {role} | {old_mse:.6f} | {new_mse:.6f} | {improved}/{len(rows)} |')
+    lines+=['','MSE uses each frozen known-only fitting RMS for a common comparison scale.',
+        'Unknown-role MSE measures prediction of a conservative bound contribution,',
+        'not error against an observed future. The new fitting RMS is inflated by',
+        f'median factors {scales["median"][0]:.3f} (all) and {scales["median"][1]:.3f} (easy).',
+        'This is consistent with large bound targets disrupting observed-risk',
+        'regression, not proof that normalization alone caused the failure.','',
         '## Decision','']
     passing=[name for name,m in a['policies'].items() if eligible(m)]
     lines+=['Original complete-risk screen: '+(', '.join(passing)+' pass.' if passing else '**No new policy passes.**'),
