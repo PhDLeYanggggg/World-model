@@ -11,6 +11,12 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am now evaluating the two frozen consensus rules on the complete exposed
+development population, not just known selected proposals. The original risk
+evaluator will include unknown-label bounds, non-intervention rows and every
+required recording view. No new test, training or threshold change is involved.
+[Complete-policy protocol](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/protocol.md).
+
 The donor benefit now replicates across risk-head seeds 17/29/43 with the
 forecast teacher fixed. I trained 48 additional heads and repeated every new
 fit exactly, retaining the verified seed17 models rather than selecting a

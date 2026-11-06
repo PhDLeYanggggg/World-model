@@ -16,6 +16,19 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Complete Exposed-Own-B Readout Registered
+
+Freeze the prior mean/unanimity rules, original proposer, forest and risk heads.
+Rebuild62,466past-eligible rows in the same eight exposed source components;
+known proposals48,061and unknown proposals1,274must align to the old scope.
+Inference cannot use future validity or select batches by label support. Known
+features/decisions must reproduce; a fixed floating tolerance is declared for
+scores when full inference batches include unknown rows. Then run the original
+per-record2%all/easy/net/support calculation unchanged. Matched counts remain
+utility-only; empty support stays NA, with no identity exemption. No new C/H,
+training or promotion. Full-policy results are not claimed complete yet.
+[Protocol](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/protocol.md).
+
 ### Risk-Head Seed Replication: Benefit Persists, Safety Still Unproved
 
 The donor treatment is complete for seeds17/29/43:24cached-verified seed17heads,

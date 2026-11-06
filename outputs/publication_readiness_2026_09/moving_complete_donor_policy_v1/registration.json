@@ -1,0 +1,953 @@
+{
+  "admission": {
+    "bytes": 53924,
+    "path": "outputs/publication_readiness_2026_09/moving_development_admission_v1/admission.json",
+    "sha256": "951458d6c3c80567fac1e97275fd3db7fbd712fbcd55b50c20c9c530b631e6f8"
+  },
+  "cached_consensus": {
+    "bytes": 17599,
+    "path": "outputs/publication_readiness_2026_09/moving_donor_seeds_v1/consensus/analysis.json",
+    "sha256": "48c98535efa82923f6dcf4ac8c54b592a20a51a01ea2b59bf8dcd13400de21f6"
+  },
+  "cached_known_result": {
+    "bytes": 142122,
+    "path": "outputs/publication_readiness_2026_09/moving_donor_seeds_v1/analysis.json",
+    "sha256": "0179551855704b4bbdbedf2104ebc5ca833873223e8eca4c59e8e5b6d0656d44"
+  },
+  "config": {
+    "artifact_cap_bytes": 1073741824,
+    "bootstrap_resamples": 3000,
+    "bootstrap_seed": 62466,
+    "deployment_changed": false,
+    "disk_reserve_bytes": 5368709120,
+    "expected_known_proposals": 48061,
+    "expected_rows": 62466,
+    "expected_unknown_proposals": 1274,
+    "forecaster_seed": 17,
+    "hard_runtime_limit_seconds": 43200,
+    "identity_certification": false,
+    "name": "moving_complete_donor_policy_v1",
+    "new_outer_C_H_readout": false,
+    "new_training": false,
+    "policies": [
+      "physical_floor",
+      "proposal_self",
+      "forest64",
+      "seed17",
+      "mean",
+      "unanimity",
+      "mean_matched",
+      "unanimity_matched"
+    ],
+    "prediction_atol": 1e-09,
+    "prediction_rtol": 1e-06,
+    "risk_budget": 0.02,
+    "risk_head_seeds": [
+      17,
+      29,
+      43
+    ],
+    "risk_threshold": 0,
+    "same_count_controls_are_utility_only": true,
+    "smc_enabled": false,
+    "stage5c_executed": false,
+    "submission_ready": false,
+    "threshold_search": false
+  },
+  "dependencies": {
+    "src/data_unification/m3w_producer_crossfit.py": "50db05b50903b868997a5c917f0bac1a08000d17c1de94ed86f4579c92434ba3",
+    "src/evaluation/m3w_selection_forecast_readout.py": "930031d39affff45e63bba08b940ad34aaded2fca585c9fb72c0bc743c4f08ef",
+    "src/world_model/m3w_amplitude_cost.py": "5ba963860cae89fc7ac0793afea8a6cb11baa7a6c12f4b4839af0eccaa524ab1",
+    "src/world_model/m3w_candidate_neighbor_basis.py": "8befcca06d2f59124dd432cdadabc75f84742c1f3cc04cc12d4d5831ee2c0445",
+    "src/world_model/m3w_moving_deferral.py": "e3f04199c30415a0ac7b460135eaf78c74bf6e7420922d6f92491a0cc5a41f97",
+    "src/world_model/m3w_proposal_conditioned_risk.py": "a707908f2b04fd6f2429daa28c5de90c5df4333ef8ef5b0a7dd2dfc086744f41",
+    "src/world_model/m3w_rollout_history_risk.py": "5c37ca48739c9efe1685f2cfd121e9bda64285eb91cd0dcad8b5902e76f6810d",
+    "src/world_model/m3w_shared_motion_cost.py": "2dc5c21ec3f1e64c92ab80d8786fe92b56c34d55a60361088c811ab059e3ce19"
+  },
+  "files": {
+    "configs/m3w_moving_complete_donor_policy_v1.json": "d893c4049ca5e494c7b48e6c8d73aa6f18350dac23e7cca1b40225754295aecf",
+    "outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/protocol.md": "96523f55aed40e7ac089f5e7fa20ff151265abfe1771e548cbfc481fb4a0ec19",
+    "scripts/run_m3w_moving_complete_donor_policy.py": "fbf9ca619059ebc9e961958dbc5cc6be6f71e8fb1ea2149f6756d74912dcb06f",
+    "src/data_unification/m3w_complete_policy_packet.py": "f747e5d6339569af43083cc637177d7366ce9d0a80a31e5831a7064ff6058bda",
+    "src/evaluation/m3w_complete_donor_policy.py": "c0d9e5e1273c45de165d7acc16df522baa909d079583e8489317a89577f39ca2",
+    "tests/test_m3w_complete_donor_policy.py": "78460a695398a688deff8137c8d24b8586c3525929a3b5689dfddcbebea38bb4"
+  },
+  "frozen_models": {
+    "bytes": 13615,
+    "path": "outputs/publication_readiness_2026_09/moving_donor_seeds_v1/training_freeze.json",
+    "sha256": "0e2a570cd039ec81f008ac8ec193a9a90c603fcc847218d7bc57b4f70dd67951"
+  },
+  "identity_certification": false,
+  "jobs": [
+    {
+      "forecast": {
+        "checkpoint_sha256": "c469a035003bc8735c2df385838676925f8bc00fccbc59c8e8eec998f7f82a16",
+        "emitted_candidates": 1,
+        "identity": {
+          "architecture": {
+            "channels": 64,
+            "family": "eqmotion_fixed_head",
+            "fixed_head": 0,
+            "hidden_nf": 64,
+            "history_steps": 8,
+            "input_conditioning": "observed_joint_max_norm",
+            "layers": 4,
+            "prediction_steps": 12,
+            "prune_unused_heads": true
+          },
+          "baseline_index": 1,
+          "excluded_groups": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_049",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_062",
+            "moving_source_component_066",
+            "moving_source_component_067",
+            "moving_source_component_068",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "factors_sha256": "39c8f17df9322a86f13c09a9598a4739aca03f921e16d6a7f7a799b7740df238",
+          "family": "eqmotion",
+          "fit_groups": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "fold": 1,
+          "held_ids_sha256": "a5795ad3c6c5e587e775cf754c80fb5478e37fc64a5b074fd75d1fc2840018ee",
+          "normalizers": {
+            "moving_source_component_053": {
+              "correction": 1.0383561643835617,
+              "indexed": 1137,
+              "selected_baseline_mean_ADE": 74.0045714422828,
+              "supported": 1095
+            },
+            "moving_source_component_065": {
+              "correction": 1.1073326248671627,
+              "indexed": 1042,
+              "selected_baseline_mean_ADE": 17.657900017884348,
+              "supported": 941
+            },
+            "moving_source_component_076": {
+              "correction": 1.0496231155778895,
+              "indexed": 3342,
+              "selected_baseline_mean_ADE": 36.08185549351027,
+              "supported": 3184
+            },
+            "moving_source_component_077": {
+              "correction": 1.0309607942116776,
+              "indexed": 6127,
+              "selected_baseline_mean_ADE": 37.4415371598482,
+              "supported": 5943
+            },
+            "moving_source_component_078": {
+              "correction": 1.026430705584923,
+              "indexed": 40194,
+              "selected_baseline_mean_ADE": 31.472128131282894,
+              "supported": 39159
+            },
+            "moving_source_component_080": {
+              "correction": 1.0139694003611137,
+              "indexed": 10670,
+              "selected_baseline_mean_ADE": 34.09818816354395,
+              "supported": 10523
+            },
+            "moving_source_component_082": {
+              "correction": 1.0497470489038785,
+              "indexed": 6225,
+              "selected_baseline_mean_ADE": 75.03483906370397,
+              "supported": 5930
+            },
+            "moving_source_component_087": {
+              "correction": 1.0731247644176405,
+              "indexed": 2847,
+              "selected_baseline_mean_ADE": 128.06050816268524,
+              "supported": 2653
+            }
+          },
+          "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+          "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+          "seed": 17,
+          "selection_relative_scores": [
+            5.7257370801864935,
+            1.0,
+            1.8727675199953155,
+            1.2386274232699042,
+            1.029580007877629,
+            1.2604192949940918
+          ],
+          "train_ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+          "whole_source_reservations_unchanged": true
+        },
+        "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold1_seed17.npz",
+        "rows": 123702,
+        "sha256": "a3e399d6b47df90ab47862ca37cf837440c142de36df25857f08688b3b3c878b",
+        "stored_prediction": "relative_to_current_origin_float32"
+      },
+      "forest": {
+        "moving_source_component_048": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold1_seed17_critic0_moving_source_component_048_extra_trees_summary120.pt.gz",
+          "sha256": "108f1d8469140d4bbd21722d68914f98e8fa55b6fc3749eb1cbeb9b55f1a63a2"
+        },
+        "moving_source_component_067": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold1_seed17_critic0_moving_source_component_067_extra_trees_summary120.pt.gz",
+          "sha256": "c72b37beb6679755c831290d261deff33e3128fb4158c62b072cb1f7ea8b3835"
+        }
+      },
+      "job": {
+        "critic_fold": 0,
+        "critic_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "easy_cut": 15.403742715015557,
+        "evaluation_fold": 2,
+        "evaluation_scope": {
+          "budget": 2000,
+          "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+          "queries": 1176,
+          "rows": 69746,
+          "sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "source_query_counts": [
+            6,
+            94,
+            156,
+            630,
+            28,
+            51,
+            112,
+            55,
+            44
+          ]
+        },
+        "evaluation_sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fit_scope": {
+          "budget": 2000,
+          "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+          "queries": 806,
+          "rows": 53956,
+          "sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "source_query_counts": [
+            88,
+            25,
+            165,
+            11,
+            490,
+            27
+          ]
+        },
+        "floor_index": 1,
+        "forecast_key": "eqmotion_fold1_seed17",
+        "hard_cut": 49.24863795836583,
+        "key": "eqmotion_fold1_seed17_critic0",
+        "producer_fold": 1,
+        "producer_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "seed": 17
+      },
+      "part": {
+        "names": [
+          "moving_source_component_048",
+          "moving_source_component_067"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 0,
+          "critic_sites": [
+            "moving_source_component_047",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062"
+          ],
+          "easy_cut": 15.403742715015557,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "8742de971bcc86ac09cf1403d8e44a4aa0f0fb804f9388ec9278f1392857cafb",
+            "rows": 6197
+          },
+          "evaluation_sites": [
+            "moving_source_component_048",
+            "moving_source_component_067"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+            "queries": 806,
+            "rows": 53956,
+            "sites": [
+              "moving_source_component_047",
+              "moving_source_component_048",
+              "moving_source_component_051",
+              "moving_source_component_052",
+              "moving_source_component_062",
+              "moving_source_component_067"
+            ],
+            "source_query_counts": [
+              88,
+              25,
+              165,
+              11,
+              490,
+              27
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold1_seed17",
+          "hard_cut": 49.24863795836583,
+          "key": "eqmotion_fold1_seed17_critic0",
+          "producer_fold": 1,
+          "producer_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "seed": 17
+        }
+      },
+      "proposer": {
+        "path": "data/stage_cvpr2027_experiments/moving_public_deferral_v1/fits/eqmotion_fold1_seed17_critic0_part1.pt.gz",
+        "sha256": "581d493c5df559248cfb0cdb1fed73a99e68ac5380b6d8ad0d51883222e2d5e6"
+      }
+    },
+    {
+      "forecast": {
+        "checkpoint_sha256": "37ce8c07927b5e59afa8946df4d18498ef7ae75e147438e3783a6359c8dc499f",
+        "emitted_candidates": 1,
+        "identity": {
+          "architecture": {
+            "channels": 64,
+            "family": "eqmotion_fixed_head",
+            "fixed_head": 0,
+            "hidden_nf": 64,
+            "history_steps": 8,
+            "input_conditioning": "observed_joint_max_norm",
+            "layers": 4,
+            "prediction_steps": 12,
+            "prune_unused_heads": true
+          },
+          "baseline_index": 1,
+          "excluded_groups": [
+            "moving_source_component_049",
+            "moving_source_component_053",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_065",
+            "moving_source_component_066",
+            "moving_source_component_068",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087",
+            "moving_source_component_090"
+          ],
+          "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+          "family": "eqmotion",
+          "fit_groups": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "fold": 0,
+          "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+          "normalizers": {
+            "moving_source_component_047": {
+              "correction": 1.0143054914628518,
+              "indexed": 2198,
+              "selected_baseline_mean_ADE": 22.007610731356404,
+              "supported": 2167
+            },
+            "moving_source_component_048": {
+              "correction": 1.0205307961942915,
+              "indexed": 2038,
+              "selected_baseline_mean_ADE": 20.960665576080856,
+              "supported": 1997
+            },
+            "moving_source_component_051": {
+              "correction": 1.009539842873176,
+              "indexed": 7196,
+              "selected_baseline_mean_ADE": 19.521207693475986,
+              "supported": 7128
+            },
+            "moving_source_component_052": {
+              "correction": 1.0347490347490347,
+              "indexed": 536,
+              "selected_baseline_mean_ADE": 35.92935069477207,
+              "supported": 518
+            },
+            "moving_source_component_062": {
+              "correction": 1.0095271135781383,
+              "indexed": 37829,
+              "selected_baseline_mean_ADE": 22.06826013491561,
+              "supported": 37472
+            },
+            "moving_source_component_067": {
+              "correction": 1.0381927109335995,
+              "indexed": 4159,
+              "selected_baseline_mean_ADE": 35.87855846370121,
+              "supported": 4006
+            }
+          },
+          "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+          "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+          "seed": 17,
+          "selection_relative_scores": [
+            3.6030917960092697,
+            1.0,
+            1.542420151944505,
+            1.1603407786700874,
+            1.0482901689991855,
+            1.2208692321142756
+          ],
+          "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+          "whole_source_reservations_unchanged": true
+        },
+        "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed17.npz",
+        "rows": 141330,
+        "sha256": "ccbbe3eff59b207a48a4834c48e149c3f59965e7ea68932ab94b8abb10532775",
+        "stored_prediction": "relative_to_current_origin_float32"
+      },
+      "forest": {
+        "moving_source_component_053": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic1_moving_source_component_053_extra_trees_summary120.pt.gz",
+          "sha256": "0734531697820970a89585c00af94cd9e2ea4eb886f740442a5e7e44f6c3d66b"
+        },
+        "moving_source_component_065": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic1_moving_source_component_065_extra_trees_summary120.pt.gz",
+          "sha256": "f14b510e6b1609496d750ef1248195b18ca85bc2eed6094b833fbaa2d0800dc5"
+        },
+        "moving_source_component_076": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic1_moving_source_component_076_extra_trees_summary120.pt.gz",
+          "sha256": "0bfa5605330b76d768293498fcc2f40865053bd465e5dd93f6d7df3cfc32ea5d"
+        }
+      },
+      "job": {
+        "critic_fold": 1,
+        "critic_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "easy_cut": 9.545994051407813,
+        "evaluation_fold": 2,
+        "evaluation_scope": {
+          "budget": 2000,
+          "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+          "queries": 1176,
+          "rows": 69746,
+          "sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "source_query_counts": [
+            6,
+            94,
+            156,
+            630,
+            28,
+            51,
+            112,
+            55,
+            44
+          ]
+        },
+        "evaluation_sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "fit_scope": {
+          "budget": 2000,
+          "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+          "queries": 807,
+          "rows": 71584,
+          "sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "source_query_counts": [
+            39,
+            46,
+            52,
+            72,
+            316,
+            90,
+            134,
+            58
+          ]
+        },
+        "floor_index": 1,
+        "forecast_key": "eqmotion_fold0_seed17",
+        "hard_cut": 29.899692038749063,
+        "key": "eqmotion_fold0_seed17_critic1",
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "seed": 17
+      },
+      "part": {
+        "names": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 1,
+          "critic_sites": [
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 2,
+          "evaluation_scope": {
+            "ids_sha256": "d10df2811d7c20f4f21ed0cc6d42d6c8f810dfba0e3cf4a22378c13f51ff39f2",
+            "rows": 5521
+          },
+          "evaluation_sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+            "queries": 807,
+            "rows": 71584,
+            "sites": [
+              "moving_source_component_053",
+              "moving_source_component_065",
+              "moving_source_component_076",
+              "moving_source_component_077",
+              "moving_source_component_078",
+              "moving_source_component_080",
+              "moving_source_component_082",
+              "moving_source_component_087"
+            ],
+            "source_query_counts": [
+              39,
+              46,
+              52,
+              72,
+              316,
+              90,
+              134,
+              58
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic1",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      "proposer": {
+        "path": "data/stage_cvpr2027_experiments/moving_public_deferral_v1/fits/eqmotion_fold0_seed17_critic1_part1.pt.gz",
+        "sha256": "e5ea13a446ee062c398e74bbdceff12baf221381475a11a904e4c93e1acf9811"
+      }
+    },
+    {
+      "forecast": {
+        "checkpoint_sha256": "37ce8c07927b5e59afa8946df4d18498ef7ae75e147438e3783a6359c8dc499f",
+        "emitted_candidates": 1,
+        "identity": {
+          "architecture": {
+            "channels": 64,
+            "family": "eqmotion_fixed_head",
+            "fixed_head": 0,
+            "hidden_nf": 64,
+            "history_steps": 8,
+            "input_conditioning": "observed_joint_max_norm",
+            "layers": 4,
+            "prediction_steps": 12,
+            "prune_unused_heads": true
+          },
+          "baseline_index": 1,
+          "excluded_groups": [
+            "moving_source_component_049",
+            "moving_source_component_053",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_065",
+            "moving_source_component_066",
+            "moving_source_component_068",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087",
+            "moving_source_component_090"
+          ],
+          "factors_sha256": "926dce93afa54e95a5cf7e58aef2630c8b38211d28773bc8549565694337d0a7",
+          "family": "eqmotion",
+          "fit_groups": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "fold": 0,
+          "held_ids_sha256": "7c9acc1d28c719b839fc79ae68914bc64ab62e4de0f0dda1c37bbb1f72e2f372",
+          "normalizers": {
+            "moving_source_component_047": {
+              "correction": 1.0143054914628518,
+              "indexed": 2198,
+              "selected_baseline_mean_ADE": 22.007610731356404,
+              "supported": 2167
+            },
+            "moving_source_component_048": {
+              "correction": 1.0205307961942915,
+              "indexed": 2038,
+              "selected_baseline_mean_ADE": 20.960665576080856,
+              "supported": 1997
+            },
+            "moving_source_component_051": {
+              "correction": 1.009539842873176,
+              "indexed": 7196,
+              "selected_baseline_mean_ADE": 19.521207693475986,
+              "supported": 7128
+            },
+            "moving_source_component_052": {
+              "correction": 1.0347490347490347,
+              "indexed": 536,
+              "selected_baseline_mean_ADE": 35.92935069477207,
+              "supported": 518
+            },
+            "moving_source_component_062": {
+              "correction": 1.0095271135781383,
+              "indexed": 37829,
+              "selected_baseline_mean_ADE": 22.06826013491561,
+              "supported": 37472
+            },
+            "moving_source_component_067": {
+              "correction": 1.0381927109335995,
+              "indexed": 4159,
+              "selected_baseline_mean_ADE": 35.87855846370121,
+              "supported": 4006
+            }
+          },
+          "population_sha256": "bde94c25e5a8dae699e0cde9cfd40f220b980a9691a3045fb1874383bd7f3176",
+          "registration_sha256": "54225118a7d5128bb3ea9e2f19e8a24e5f48cf53d109083585fe015561ea23b9",
+          "seed": 17,
+          "selection_relative_scores": [
+            3.6030917960092697,
+            1.0,
+            1.542420151944505,
+            1.1603407786700874,
+            1.0482901689991855,
+            1.2208692321142756
+          ],
+          "train_ids_sha256": "c0f2ee3ccab3352f098fe0b359e051f3cbb069bfe96b50898708062a2d8cb391",
+          "whole_source_reservations_unchanged": true
+        },
+        "path": "data/stage_cvpr2027_experiments/moving_source_forecast_supported_v1/predictions/eqmotion_fold0_seed17.npz",
+        "rows": 141330,
+        "sha256": "ccbbe3eff59b207a48a4834c48e149c3f59965e7ea68932ab94b8abb10532775",
+        "stored_prediction": "relative_to_current_origin_float32"
+      },
+      "forest": {
+        "moving_source_component_059": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic2_moving_source_component_059_extra_trees_summary120.pt.gz",
+          "sha256": "64965fc1e549b7e9088ce8dfb34fc85e078948c37debd3d5936a0c088dffe3df"
+        },
+        "moving_source_component_060": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic2_moving_source_component_060_extra_trees_summary120.pt.gz",
+          "sha256": "46161400c74e6a623ed448fb1d43da90efef85e3f10f0e482436b64a49425815"
+        },
+        "moving_source_component_073": {
+          "path": "data/stage_cvpr2027_experiments/moving_peer_path_probe_v1/fits/eqmotion_fold0_seed17_critic2_moving_source_component_073_extra_trees_summary120.pt.gz",
+          "sha256": "7d2092fe0ba32bfd2109ddf93b18f3b19151cbbd8ba33cf23f197384b8d43068"
+        }
+      },
+      "job": {
+        "critic_fold": 2,
+        "critic_sites": [
+          "moving_source_component_049",
+          "moving_source_component_055",
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_066",
+          "moving_source_component_070",
+          "moving_source_component_073",
+          "moving_source_component_075",
+          "moving_source_component_090"
+        ],
+        "easy_cut": 9.545994051407813,
+        "evaluation_fold": 1,
+        "evaluation_scope": {
+          "budget": 2000,
+          "ids_sha256": "0e14547c0ccff85a62bc71ffca8481926122bf25f97232508d623bca59ace221",
+          "queries": 807,
+          "rows": 71584,
+          "sites": [
+            "moving_source_component_053",
+            "moving_source_component_065",
+            "moving_source_component_076",
+            "moving_source_component_077",
+            "moving_source_component_078",
+            "moving_source_component_080",
+            "moving_source_component_082",
+            "moving_source_component_087"
+          ],
+          "source_query_counts": [
+            39,
+            46,
+            52,
+            72,
+            316,
+            90,
+            134,
+            58
+          ]
+        },
+        "evaluation_sites": [
+          "moving_source_component_053",
+          "moving_source_component_065",
+          "moving_source_component_076",
+          "moving_source_component_077",
+          "moving_source_component_078",
+          "moving_source_component_080",
+          "moving_source_component_082",
+          "moving_source_component_087"
+        ],
+        "fit_scope": {
+          "budget": 2000,
+          "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+          "queries": 1176,
+          "rows": 69746,
+          "sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_073",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "source_query_counts": [
+            6,
+            94,
+            156,
+            630,
+            28,
+            51,
+            112,
+            55,
+            44
+          ]
+        },
+        "floor_index": 1,
+        "forecast_key": "eqmotion_fold0_seed17",
+        "hard_cut": 29.899692038749063,
+        "key": "eqmotion_fold0_seed17_critic2",
+        "producer_fold": 0,
+        "producer_sites": [
+          "moving_source_component_047",
+          "moving_source_component_048",
+          "moving_source_component_051",
+          "moving_source_component_052",
+          "moving_source_component_062",
+          "moving_source_component_067"
+        ],
+        "seed": 17
+      },
+      "part": {
+        "names": [
+          "moving_source_component_059",
+          "moving_source_component_060",
+          "moving_source_component_073"
+        ],
+        "part": 0,
+        "routing_job": {
+          "critic_fold": 2,
+          "critic_sites": [
+            "moving_source_component_049",
+            "moving_source_component_055",
+            "moving_source_component_066",
+            "moving_source_component_070",
+            "moving_source_component_075",
+            "moving_source_component_090"
+          ],
+          "easy_cut": 9.545994051407813,
+          "evaluation_fold": 1,
+          "evaluation_scope": {
+            "ids_sha256": "f5b38f3e0d2b6b1952ebb629fd33dbe3b324267ba51d1c929b379858e1f6f32e",
+            "rows": 50748
+          },
+          "evaluation_sites": [
+            "moving_source_component_059",
+            "moving_source_component_060",
+            "moving_source_component_073"
+          ],
+          "fit_scope": {
+            "budget": 2000,
+            "ids_sha256": "568a3298842a84ff33c2ceec8946fb16a9efb2528058283e23e48598c7da2f67",
+            "queries": 1176,
+            "rows": 69746,
+            "sites": [
+              "moving_source_component_049",
+              "moving_source_component_055",
+              "moving_source_component_059",
+              "moving_source_component_060",
+              "moving_source_component_066",
+              "moving_source_component_070",
+              "moving_source_component_073",
+              "moving_source_component_075",
+              "moving_source_component_090"
+            ],
+            "source_query_counts": [
+              6,
+              94,
+              156,
+              630,
+              28,
+              51,
+              112,
+              55,
+              44
+            ]
+          },
+          "floor_index": 1,
+          "forecast_key": "eqmotion_fold0_seed17",
+          "hard_cut": 29.899692038749063,
+          "key": "eqmotion_fold0_seed17_critic2",
+          "producer_fold": 0,
+          "producer_sites": [
+            "moving_source_component_047",
+            "moving_source_component_048",
+            "moving_source_component_051",
+            "moving_source_component_052",
+            "moving_source_component_062",
+            "moving_source_component_067"
+          ],
+          "seed": 17
+        }
+      },
+      "proposer": {
+        "path": "data/stage_cvpr2027_experiments/moving_public_deferral_v1/fits/eqmotion_fold0_seed17_critic2_part1.pt.gz",
+        "sha256": "793726b8c5b005f3657bf1fccac46ddf624d359a34b73919d4ca82e62dbf53c2"
+      }
+    }
+  ],
+  "new_outer_C_H_readout": false,
+  "new_training": false,
+  "original_rules_unchanged": true,
+  "role": "complete_exposed_own_B_development_not_independent_confirmation"
+}
