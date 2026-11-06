@@ -16,6 +16,19 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Exact-Cohort Fixed-Amplitude Strong Controls: Registered
+
+Previous goal turn:progress. The48reference fits/refits identify easy-reference
+and frozen-harm failures, but lack simple fixed-amplitude scores for the exact
+62,466-row own-B cohort. Older195,286-row/348-view negatives are not this control.
+Register all six original amplitudes with/without exact last-past-velocity-zero
+fallback,plus the floor. Primary is current expert-context joint minus guarded
+alpha1/32paired lower,not an outcome-selected coefficient. All24static recording
+views and72repeated learned-policy views remain distinct. No new training,
+new C/H,identity certificate or original2%change. Five helper checks pass0.15s;
+actual preparation and evaluation not_run at registration.
+[Protocol](outputs/publication_readiness_2026_09/moving_simple_controls_v1/protocol.md).
+
 ### Shared Frozen-Expert Reference Context: Registered Model Repair
 
 Previous goal turn: progress. The48-model role-separated comparison establishes

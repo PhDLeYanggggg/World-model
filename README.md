@@ -11,6 +11,16 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I am closing a strong-control gap on the same exposed development cohort:
+all six fixed forecast amplitudes, with and without a strictly past-only
+stationary guard. The whole matrix and the minimum-amplitude primary are fixed
+before scoring. Earlier uniform-blend negatives used a different cohort, so
+they cannot substitute for this matched comparison. No new model or risk-rule
+change is involved.
+[Control protocol](outputs/publication_readiness_2026_09/moving_simple_controls_v1/protocol.md).
+
+### Previous Reference-Context Result
+
 I tested whether sharing the frozen expert's causal rollout context could repair
 reference-cost learning without changing harm or label-support predictions.
 All 48 matched reference models and 48 complete exact refits are finished.
