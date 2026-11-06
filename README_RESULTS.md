@@ -38,6 +38,15 @@ All34fixed current-past overlays were visually inspected;no obvious axis swap
 or unrelated frame,without claiming per-head human-gold calibration. Full
 measurement is active asPID16205. Matching availability is not predictive lift.
 Latest focused16tests pass0.31s; previous rules,admissions and failures remain.
+Full A measurement PID16205 exits0 in709.841286s,peak1,365,164,032B:
+1694/1817transitions supported(93.2306%),167829/167830native centers in bounds.
+All125540x48causal feature rows are built. Separate replay PID17389 exits0 in
+21.671s,all transitions/scalars/feature rows exact and public snapshot unchanged.
+No predictive outcome is scored by these phases. Register a same-measurement
+extension to the complete62466row exposed own-B inputs:996new past images and
+259exact parent reuse,with no target arrays or new C/Hreadout. This avoids a
+partial easier-cohort test. Eight related checks pass0.33s. Predictive admission
+and neural head training remain not_run at this input-registration milestone.
 
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 

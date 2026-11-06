@@ -40,11 +40,12 @@ in a separate replay, without further training.
 My next test measures a genuinely new past observation: background image
 motion, rather than another summary of pedestrian trajectories. The fixed
 training-source roster has 1,613 query times and needs 1,851 past images.
-I will first check native frame alignment and matching quality, without future
-target arrays or a new held-out readout. It is an image-motion proxy, not
-calibrated camera geometry or demonstrated forecasting lift.
-The real 34-pair pilot passes: 31 supported measurements, with native head-box
-alignment checked on all 34 fixed past-frame views. Full measurement is running.
+Full measurement is complete: 1,694/1,817 past transitions meet the fixed quality
+rule, and all 125,540 causal feature rows reproduce exactly. Future target arrays
+stay unopened in this measurement. It is an image-motion proxy, not calibrated
+camera geometry or demonstrated forecasting lift. The same inputs are now being
+prepared for the complete existing development cohort before a matched model
+comparison, without selecting only the easier sources.
 [Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
 
 ### Previous Support / Context Study
