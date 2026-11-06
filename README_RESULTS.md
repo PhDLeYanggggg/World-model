@@ -37,6 +37,22 @@ geometry copy. Real recoveryPID76582exits0 in133.704041s,peak1,380,646,912B.
 Complete100+100vs200model/optimizer/sampler/RNG/trace exact;direct200takes
 65.091570s,projecting19,527.471125s(~5.42h)for15full fits before inference.
 Full identity controlPID76809now runs. No new outcome has been scored.
+Full controlPID76809exits0 at23:09:26Z after1330.576864s,peak1,452,507,136B.
+Complete4000model/optimizer/sampler/RNG/draws/factors and common trace exact.
+The twelve full treatment models now start;no outcome readout yet.
+
+### Portable Native Actor Evidence: Actual Isolated Aggregate Replay
+
+Fresh packaging/replay of cached_verified primary scalar evidence from the
+three completed native actor studies. Six-file253,746byte archive,two clean
+isolated executions exit0,stdlib-only/no site-packages,guarded artifact-only
+file reads/no network/subprocess. Two outputs match frozen hashes. All14source
+means and original3000draws replay within1e-12relative/1e-9absolute tolerance;
+prefix seed39017and image seeds39107remain distinct. All three failures remain
+failures. Five focused checks pass0.26s. Not full training/prediction replay,
+independent confirmation,guaranteed anonymity or submission readiness. No raw
+or large private artifacts included. Live factor experiment outcomes excluded.
+[Evidence package](outputs/publication_readiness_2026_09/native_actor_reproduction_v1/README.md).
 
 ### Query-View Geometry: Complete Negative Component
 
