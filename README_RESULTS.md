@@ -16,6 +16,18 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Complete-Risk Model Repair Registered
+
+The next treatment restores unknown-label upper-bound contributions omitted by
+known-only augmented fitting. Same causal120 features, 64/32 network, zero
+threshold and 4,096-update budget; 24 new source-excluded heads at seeds17/29/43
+and full exact refits. Known labels/features must reproduce before fitting.
+Reweighting complete source/query pools and fitting-only normalization are part
+of the treatment. Bounds are not fabricated ADE; unknown status is never an
+input/gate. Frozen known-only controls and complete 62,466-row evaluation remain.
+No new C/H or risk-rule change. Fifteen focused tests pass; real fitting not_run
+at registration. [Protocol](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
+
 ### Complete Exposed-Own-B Readout: Gain Is Not A Safety Pass
 
 Fresh reconstruction and frozen causal inference cover 62,466 past-eligible

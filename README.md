@@ -33,6 +33,11 @@ not estimable; there is no identity-fallback exemption. Deployment is unchanged.
 [failure analysis](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/operation_zh.md).
 
+The next fixed-budget experiment adds conservative unknown-label contributions
+to donor training while retaining the same network, features, source exclusions
+and decision rule. It is registered before fitting; no new result is claimed yet.
+[Model treatment](outputs/publication_readiness_2026_09/moving_complete_risk_donors_v1/protocol.md).
+
 ### Risk-Head Seed Replication
 
 The donor benefit now replicates across risk-head seeds 17/29/43 with the
