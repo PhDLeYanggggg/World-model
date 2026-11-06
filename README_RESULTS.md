@@ -42,6 +42,12 @@ Before the training pilot, definitionv2 replaces action-dependent R/ER output
 with an action-invariant reference branch. Both arms change identically;
 no training/outcome was opened under v1. The original registration and prepared
 hashes remain. Eighteen scoped checks pass2.26s after this correction.
+The real128+128vs256pilot PID75912 exits0 in45.154s,peak3,651,764,224B,
+with exact full optimizer/model/trace state. Each model has13,286parameters.
+Direct256-fit time0.542854s projects416.912s for48primary fits, excluding
+preparation,full refits and allocation. This is a cost projection, not claimed
+completion. Actual training PID76038 is active with checkpoints and heartbeat;
+local CPU4/workers0 remains appropriate. No new CREATE job submitted.
 [Protocol](outputs/publication_readiness_2026_09/moving_role_separated_cost_v1/protocol.md).
 
 ### Complete-Risk Model Repair: Trained, But Original Safety Still Fails
