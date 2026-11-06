@@ -11,11 +11,29 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing whether the new source-held forecast donors improve risk learning.
-The fixed comparison has 24 new fits: own-B only, producer-A only, and a50/50
-mixture, each with the same model, features and4,096-update budget. No result
-is claimed yet. The outer test stays closed and the original2% rules remain.
-[Donor-comparison protocol](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/protocol.md).
+The new source-held donors improve neural risk learning in the matched
+development comparison. I trained 24 heads and repeated all 24 fits exactly
+before evaluation. Each receives the same 4,096-update budget and original
+causal features; the comparison is own-B only, producer-A only, and a 50/50 mixture.
+
+**The mixture improves information, but is not yet safe to deploy.**
+
+Decision cost falls 20.71%, 32.27% and 10.69% versus matched own-only training;
+risk MSE also falls in all three contexts. All eight source folds have lower
+total decision cost. This supports the donor treatment rather than another
+blind increase in training time. It does not isolate source count from teacher
+size and candidate-mixture effects, and remains a one-seed development result.
+
+Against the more conservative forest, total cost improves in two contexts but
+worsens in one, and false-safe cost is higher in all three. Source060 also has
+more harmful admissions than own-only despite its lower total cost. The 3/3
+information screen is not a safety-gate pass. Deployment, the original 2% rules,
+empty-support NA and the closed outer test remain unchanged.
+[Matched results](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/operation_zh.md).
+
+### Source-Held Forecast Donor Bank
 
 I trained six new EqMotion controls to expand risk-learning source coverage
 without relaxing the safety rule. Each completed 4,000 updates. Their forecasts

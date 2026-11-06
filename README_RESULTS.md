@@ -16,16 +16,44 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Matched Donor Comparison Registered
+### Matched Donor Comparison: Information Improves, Safety Still Unproved
 
-The next experiment compares own-only, A-only and50/50augmented risk training
-on the eight exposed source-held own-B folds. Each receives4,096updates with
-the original120features,64/32MLP and fixed zero decision threshold. All24fits
-and24full repeats must finish before final readout. Donor candidates include
-all six predetermined amplitudes; teacher-size and candidate-mixture changes
-are explicit limitations, not a pure source-count causal effect. No new C/H,
-threshold tuning or identity certificate. Results are not yet claimed complete.
-[Protocol](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/protocol.md).
+The completed comparison trains own-only, A-only and50/50augmented risk heads
+on eight exposed own-B source folds. Each receives4,096updates with the original
+120features,64/32MLP and zero decision threshold. All24fits and24full exact
+repeats finish before readout:98,304primaryupdates and98,304repeatupdates.
+The real128+128vs256resume pilot is exact and contributes another512updates.
+The donor bank contains736,296known legal candidates and16,944unknown candidates,
+not called safe. Teacher-size and candidate-mixture effects are not isolated.
+
+Augmentation cuts decision cost20.710862%,32.267086%,10.692731% versus the fresh
+matched own-only heads, with risk-MSE reductions64.337175%,16.726303%,11.997147%.
+All eight source folds improve total cost. The information screen passes3/3.
+This is an exposed one-seed component result, not independent confirmation.
+
+Against shared64, cost reductions are+4.962925%,-10.859887%,+2.244043%; false-safe
+cost is higher in all three contexts. Harmful admissions46/229/602 versus the
+forest's0/1/0. Source060 has184harmful admissions versus matched own-only149,
+despite lower total cost. No safety/deployment upgrade follows the information
+gain. Original2%/support rules, empty-control NA, old failures and24-group NA stay.
+
+prepare PID63754 exits0 in158.920s; pilot PID63978 exits0 in5.115s.
+train PID64054 exits0 in153.805s, peak5,659,852,800bytes; complete-refit PID64455
+exits0 in152.364s. Final readout PID64729 exits0 in8.255s. Thirty-six focused
+tests pass in3.27s; full historical suite not rerun. Cached inputs and the small
+risk network explain the short runtime; no registered updates/folds are omitted.
+The first replay's numeric comparison passes, but its file-invariance check
+fails because the reporter is writing new public files concurrently. That
+failure is retained; final replay is run serially after reports stabilize.
+No retraining is performed to address the reporting race. No new CREATE job.
+The serial replay PID65165 exits0 in8.120s with fitting forbidden: all24
+predictions/metrics match and public files remain unchanged during the check.
+The local cost/harm figure was visually checked; main-paper PDF hash is unchanged.
+
+Next: repeat the exact donor treatment across risk-head seeds, then test
+source-blocked fitting-only uncertainty before any new outer evaluation.
+[Results](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_donor_augmentation_v1/failure_analysis.md).
 
 ### Producer-A Donor Repair Completed
 

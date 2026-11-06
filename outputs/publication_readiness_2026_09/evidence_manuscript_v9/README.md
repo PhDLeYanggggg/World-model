@@ -10,6 +10,16 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [matched donor-augmentation addendum](../moving_donor_augmentation_v1/paper_addendum.md)
+adds24risk fits and24full exact refits. Augmentation improves matched own-only
+decision cost20.71%,32.27%,10.69% and risk MSE in all three contexts; all eight
+source folds improve total cost. This is the first positive component result
+in this local donor-repair sequence, not a safe deployment result. False-safe
+cost remains above the forest in every context, one forest cost comparison is
+negative, and source060 has more harmful admissions than own-only. One seed,
+already-exposed own-B, no new outer readout, no isolated source-count causal
+claim. The original rules and unchanged compiled paper remain; not submission-ready.
+
 The [within-producer crossfit addendum](../moving_producer_crossfit_v1/paper_addendum.md)
 records six fresh EqMotion fits and a125,540-row OOF training-donor bank.
 Each fit completes4,000updates; every forecast cache replays exactly. Donor ADE
