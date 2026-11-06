@@ -53,7 +53,10 @@ support is complete for 94,242 windows; the others retain explicit identity
 imputation. Geometry and history timestamps align exactly.
 The real 100+100 versus 200 recovery check now matches exactly. Its measured
 speed projects about 2.8 hours for the eight full fits, excluding inference.
-A complete identity-control refit is running before the six treatment fits.
+The complete 4,000-update identity-control refit now matches the original
+weights, optimizer, sampler/RNG and common trace exactly. The six matched
+camera-conditioned trajectory models are training; no outcome comparison has
+been scored.
 
 ### Previous Controller Experiment
 

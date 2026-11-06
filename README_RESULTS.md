@@ -39,6 +39,10 @@ sampler/RNG/trace state matches100+100vs200exactly. Model3,027,268nominal/
 580,676trainable parameters,no new learned parameters. Direct200takes63.539798s,
 projecting10,166.367667s(~2.82h)for8full fits,excluding inference. Full identity
 control now starts before the six treatment actors. No predictive lift claimed.
+Full identity controlPID57782exits0 at19:20:38Z,about1276.8s,peak1,783,660,544B.
+All4000updates reproduce original model/optimizer/sampler/RNG/draws/factors
+and common training trace exactly. Six matched camera-conditioned actor fits
+now start;no new outcome comparison is scored.
 The CVPR2027official enrollment/full/supplementary dates and author guidelines
 are freshly checked;profiles/conflicts remain unverified and no submission is
 performed. The seven-page native evidence draft now cites viewpoint-normalized
