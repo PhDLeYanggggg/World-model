@@ -67,6 +67,16 @@ def main():
             f'{fmt(old["known_gain_percent"])} | {fmt(new["known_gain_percent"])} | {fmt(r["paired_known_pp"])} | '
             f'{fmt(new["known_positive_harm_percent"])} | {fmt(new["known_easy_positive_harm_percent"])} | '
             f'{fmt(new["known_easy_signed_degradation_percent"])} |')
+    endpoint = run.read(run.PUBLIC/'endpoint_diagnostic.json')
+    lines += ['', '## Available Endpoint FDE: Secondary Diagnostic', '',
+        '| Source | Endpoint known | Endpoint unknown | Old FDE gain % | New FDE gain % | Paired FDE pp |',
+        '|---|---:|---:|---:|---:|---:|']
+    for r in endpoint['sources']:
+        lines.append(f'| {r["source"]} | {r["endpoint_label_rows"]} | {r["endpoint_unknown_rows"]} | '
+            f'{fmt(r["control_endpoint_FDE_gain_percent"])} | {fmt(r["treatment_endpoint_FDE_gain_percent"])} | '
+            f'{fmt(r["paired_endpoint_FDE_pp"])} |')
+    lines += ['', 'Endpoint FDE uses a different supported subset from available-label ADE.',
+        'It is not substituted for the failed registered primary contrast.']
     lines += ['', 'Known-label raw-actor harm columns are diagnostics,not the full policy',
         'certificate. Original recording2% all/easy positive harm,signed easy-net',
         'and support requirements remain unchanged. NA is not zero or pass. No',

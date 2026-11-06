@@ -10,6 +10,16 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [actual prefix-actor addendum](../moving_prefix_actor_v1/paper_addendum.md)
+records seven full neural fits with unchanged inputs and original rules. A
+full control and real recovery test reproduce exactly. Prefix1known gain
+difference improves12.439pp,but the whole available12difference is only0.098pp,
+with6/14positive sources and a negative second-fold mean. Conservative lower
+is-9.474pp,exploratory interval[-17.809,-3.083];every raw new actor recording
+still exceeds2%known-easy positive harm. This is a completed negative model
+repair,not independent confirmation or deployment success. The compiled main
+PDF is unchanged; the new note does not establish submission readiness.
+
 The [shared-expert reference addendum](../moving_expert_reference_v1/paper_addendum.md)
 adds48reference fits and48complete exact refits. Context improves total-reference
 MSE but worsens easy-reference MSE. The registered lower contrast is+0.133479pp

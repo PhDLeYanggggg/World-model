@@ -16,6 +16,32 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
+
+Seven full neural fits finish: six4000update matched treatment producers and
+one4000update exact old-control refit. The source-only recovery pilot is exact.
+Inference PID12415 exits0 in521.421503s,peak1,211,695,104B,freezing all125540
+donor predictions before label scoring. Evaluation PID13119 exits0 in1.136740s,
+peak895,385,600B. The42old control estimands match the earlier full audit to
+1e-8; no metric redefinition or dropped cohort is used.
+
+Equal-source paired known differences at prefixes1/3/6/12are+12.4391/+2.9155/
++0.6775/+0.0976pp. Whole12improves only6/14sources; fold means+1.3003/-0.8044pp.
+Registered paired completion-lower is-9.473750pp,exploratory source interval
+[-17.808894,-3.082520]. This is a conservative statistic,not an estimate of
+unknown actual effect. All2824unknown and31751partial rows remain. All34raw
+new-actor recordings exceed2%known-easy positive harm; there is no empty easy
+reference in this A-cohort diagnostic. Do not mix previous own-B NA counts.
+Endpoint-only FDE is secondary and cannot replace the failed primary outcome.
+
+No new own-B/C/H,policy refit or deployment upgrade. Original2%/support/NA
+rules and all earlier failures remain. Actual inference/scalar replay is
+running asPID13422; two local scalar-only plots have been rendered,with layout
+verification in progress. Main compiled paper is unchanged and not ready.
+[Complete comparison](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/failure_analysis.md),
+[paper note](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/paper_addendum.md).
+
 ### Cost-Fitting Source Prefix Attribution: Complete
 
 Next registered repair: six real prefix-balanced EqMotion forecasters plus one

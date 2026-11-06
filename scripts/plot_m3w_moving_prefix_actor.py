@@ -39,9 +39,9 @@ def main():
             axis.plot([int(r['step']) for r in rows], [float(r['mean_past_normalized_ADE']) for r in rows],
                 linewidth=.8, alpha=.85, color=color, label=arm)
         axis.set_title(job, fontsize=9); axis.set_yscale('log'); axis.grid(alpha=.2)
-        axis.set_xlabel('Optimizer updates'); axis.set_ylabel('Unweighted minibatch available ADE (image coords)')
+        axis.set_xlabel('Optimizer updates'); axis.set_ylabel('Batch available ADE\n(image coords)', fontsize=9)
     axes.ravel()[0].legend(fontsize=8)
-    fig.suptitle('Matched minibatches: actual full-ADE diagnostic, not unlike objective-loss comparison')
+    fig.suptitle('Matched minibatches: full-ADE diagnostic, not weighted training loss', fontsize=13)
     fig.savefig(home/'matched_training_available_ADE.png', dpi=150); plt.close(fig)
     print('Two local scalar-only figures written; no raw data or paper-success claim.')
 

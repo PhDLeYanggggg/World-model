@@ -11,6 +11,32 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I retrained the actual trajectory predictor to test whether better early-step
+supervision repairs the unsafe forecasts. All six matched neural models finished
+4,000 updates, and a full old-model control reproduced exactly. The new loss
+helps early predictions but does not improve the whole forecast consistently:
+
+| Forecast Prefix | Gain Difference vs Old Predictor | Improving Sources |
+|---|---:|---:|
+| 1 step | +12.439pp | 12/14 |
+| 3 steps | +2.915pp | 12/14 |
+| 6 steps | +0.677pp | 7/14 |
+| 12 steps | +0.098pp | 6/14 |
+
+These are equal-source, query-balanced differences on 125,540 existing training-
+donor windows, not a new held-out test. The whole-forecast conservative lower
+contrast is **-9.474pp [-17.809, -3.083]**; this bounds unknown-label uncertainty,
+not the actual unobserved error. One producer-fold mean is also negative before
+that adjustment. All 34 raw neural recording diagnostics still exceed the
+original 2% known-easy positive-harm reference. **The component screen fails;
+the new model is not deployed.** No rule, support requirement or test role was
+changed to make the result pass. The project remains **not submission-ready**.
+[Complete model experiment](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/operation_zh.md).
+
+### Previous Support / Context Study
+
 I tested whether more source-excluded training support makes global past-motion
 context useful to the controller. All 96 Torch cost/support models and 96 complete
 exact refits are finished. The four cells retain the original risk rules:
@@ -52,15 +78,9 @@ This points toward testing the forecast training loss, not adding a duplicate
 feature or another threshold. No evaluation rule or deployment has changed.
 [Training-side audit](outputs/publication_readiness_2026_09/moving_fitting_prefix_audit_v1/README.md).
 
-The next registered component experiment retrains all six source-excluded
-trajectory producers with a fixed prefix-balanced loss. It retains the original
-network, draws and 4,000-update budget and first reproduces a full old control.
-It does not change the 2% risk contract or open another held-out test.
-The real recovery test and full old-control refit are exact. All six new
-forecasters have completed 4,000 updates with identical paired sampling and
-training factors. Prediction freezing is in progress; effect evaluation has
-not yet run. Training completion does not establish a better or safe policy.
-[Matched actor experiment](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/protocol.md).
+The follow-up prefix-balanced producer experiment is now complete and negative
+on its whole-forecast screen, as summarized above. It changes actual neural
+training, not the original risk contract or a held-out evaluation role.
 
 ### Previous Reference-Context Result
 
