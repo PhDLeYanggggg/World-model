@@ -16,6 +16,20 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Data Support By Global Past Motion: Registered Four-Cell Study
+
+The exact-cohort fixed controls finish negatively for safety. Prior shared-motion,
+Easy-event factorization and convex-amplitude negatives are preserved. Register
+own-only versus50%producer-A augmentation, crossed with masked versus admitted
+global-past48features. The96new heads have identical19,430parameter capacity,
+role-separated loss and4096updates; paired feature arms have equal initial
+functions and sampling. Plan96full refits, actual recovery pilot, all36choice
+contexts frozen before scoring. Primary augmented-global minus augmented-local
+joint-free paired lower. Context effect in own-only and a bounded interaction
+are secondary. Original2%/support/NA remain; no new C/H, image inputs, identity
+certificate or deployment. Actual training not_run at registration.
+[Protocol](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/protocol.md).
+
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 
 Previous goal turn:progress. The48reference fits/refits identify easy-reference
