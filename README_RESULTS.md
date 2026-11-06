@@ -56,6 +56,12 @@ not_run until all six forecast banks are frozen.
 Five full treatment forecasters finish4000updates,all paired draw/factor
 checks pass. The sixth and final model is training asPID3325. No early model
 or prefix result is selected; no new policy evaluation is opened.
+All six treatment fits complete:PID3325 exits0 in7792.307787s,
+peak1,957,527,552B. Each has4000updates,total24000,and zero held-source
+draws. All six paired sampling/factors are exact. Full old-control refit adds
+4000updates and the direct recovery pilot200extra; no reduced-budget claim.
+Forecast freezing is active asPID12415,all125540producer-A rows planned.
+No effect readout has occurred; no new own-B/C/H data are opened.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent

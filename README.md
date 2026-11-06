@@ -56,9 +56,10 @@ The next registered component experiment retrains all six source-excluded
 trajectory producers with a fixed prefix-balanced loss. It retains the original
 network, draws and 4,000-update budget and first reproduces a full old control.
 It does not change the 2% risk contract or open another held-out test.
-The real recovery test and full old-control refit are now exact; all six new
-forecasters are training. There is not yet a new forecast-effect result.
-Five of six complete fits are finished and their matched sampling checks pass.
+The real recovery test and full old-control refit are exact. All six new
+forecasters have completed 4,000 updates with identical paired sampling and
+training factors. Prediction freezing is in progress; effect evaluation has
+not yet run. Training completion does not establish a better or safe policy.
 [Matched actor experiment](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/protocol.md).
 
 ### Previous Reference-Context Result
