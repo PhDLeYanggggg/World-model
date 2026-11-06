@@ -44,6 +44,9 @@ The new branch starts with exactly the original forecast and learns through the
 unchanged whole12-step loss. Twelve matched quality/motion actors are registered
 before real fitting; recovery checks and a full original-control refit precede
 the source-held comparison. No new outer test or risk-rule change is involved.
+The real100+100versus200recovery pilot now matches exactly. Its measured speed
+projects roughly5.5hours for all full fits,within the local budget;training is
+continuing rather than replacing the experiment with a quick result.
 
 ### Previous Actor Repair
 

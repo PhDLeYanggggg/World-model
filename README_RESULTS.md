@@ -35,6 +35,13 @@ Model/loss/sampling/metrics/protocol hashes remain byte-identical. Seven focused
 checks pass5.98s,including actual small author-core optimizer parity. The full
 model has3,028,996nominal/582,404trainable parameters. These checks do not claim
 real predictive success. Original draft/code remain in Gitb43f032c.
+Actual causal input join PID26247 exits0 in0.7369s,peak1,611,055,104B:all
+125540rows join exactly and all candidate copies agree on46input columns;
+target arrays remain unopened in preparation. Actual recovery PID26329 exits0
+in130.8365s,peak1,798,586,368B. All model/optimizer/sampler/RNG/trace state is
+exact for100+100vs200. Direct200takes65.440536s,projecting19,632.16s(~5.45h)
+for15full fits,not including inference. Full raw control is active before the
+twelve-model matrix. This is real Torch engineering,not predictive success.
 
 ### Past-Image Observation: Complete Matched Experiment, Original Contract Failed
 
