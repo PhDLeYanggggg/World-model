@@ -26,6 +26,7 @@ from scripts import run_m3w_moving_producer_crossfit as source
 from src.data_unification import m3w_producer_crossfit as packing
 from src.data_unification import m3w_complete_policy_packet as features
 from src.evaluation import m3w_complete_donor_policy as method
+from src.evaluation.m3w_risk_float_parity import compare as float_parity
 from src.evaluation.m3w_seed_consensus import scores
 from src.evaluation.m3w_peer_path_probe import predict as forest_predict
 from src.evaluation.m3w_matched_intervention_utility import matched_utility
@@ -36,10 +37,12 @@ read,stable,sha,once,checked,artifact = seeds.read,seeds.stable,seeds.sha,seeds.
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_complete_donor_policy_v1'
 CONFIG = ROOT/'configs/m3w_moving_complete_donor_policy_v1.json'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
 BASE = ROOT/'outputs/publication_readiness_2026_09'
 FILES = (Path(__file__),CONFIG,PUBLIC/'protocol.md',ROOT/'src/evaluation/m3w_complete_donor_policy.py',
-         ROOT/'src/data_unification/m3w_complete_policy_packet.py',ROOT/'tests/test_m3w_complete_donor_policy.py')
+         ROOT/'src/data_unification/m3w_complete_policy_packet.py',ROOT/'tests/test_m3w_complete_donor_policy.py',
+         ROOT/'src/evaluation/m3w_risk_float_parity.py',ROOT/'tests/test_m3w_risk_float_parity.py',
+         PUBLIC/'numeric_verification_amendment.md')
 
 
 def register():
@@ -73,6 +76,8 @@ def register():
     for ref in refs:
         checked(ref)
     value = dict(config=cfg,jobs=jobs,files={str(p.relative_to(ROOT)):sha(p) for p in FILES},
+        original_definition=artifact(PUBLIC/'registration.json'),definition_version=2,
+        numeric_verification='training_scaled_64float32epsilon_all_channel_and_ensemble_choices_exact',
         dependencies={str(Path(m.__file__).relative_to(ROOT)):sha(Path(m.__file__)) for m in
             (packing,features.shared,features.amplitude,features.relation,features.neighbors,method.original,proposer,proposer.router)},
         frozen_models=artifact(seeds.PUBLIC/'training_freeze.json'),
@@ -172,6 +177,7 @@ def infer_one(data,node,cfg,beat):
     own,utility=proposer.router.choose(proposer.router.predict(router,c),c['allowed'])
     active,x=features.summary(c,own)
     risk=np.zeros((3,len(ids),2),float)
+    training_scales={}
     forest_score=np.zeros((len(ids),2),float)
     for site in part['names']:
         sub=np.flatnonzero(c['sites'][active]==site)
@@ -183,6 +189,7 @@ def infer_one(data,node,cfg,beat):
             if site in state['preprocess']['train_sources'] or state['step']!=4096 or not state['complete']:
                 raise ValueError('Frozen complete, source-excluded risk head required')
             risk[si,positions]=neural.method.predict(state,x[sub])
+            training_scales[seed,site]=state['preprocess']['target_scale']
     aggregated=scores(risk)
     choices=dict(physical_floor=np.full(len(ids),-1,np.int64),proposal_self=own,
         forest64=method.veto(own,forest_score),seed17=method.veto(own,risk[0]),
@@ -199,7 +206,7 @@ def infer_one(data,node,cfg,beat):
     np.testing.assert_array_equal(x[apos],old['x'])
     np.testing.assert_array_equal(forest_score[lookup],old['old_prediction'])
     frozen=read(seeds.PUBLIC/'analysis.json')
-    comparisons=[]
+    comparisons=[];old_risk=np.zeros((3,len(old['ids']),2),float)
     for si,seed in enumerate((17,29,43)):
         for site in part['names']:
             wanted=old['sites']==site
@@ -210,10 +217,12 @@ def infer_one(data,node,cfg,beat):
             if neural.method.digest(before)!=row['prediction_hash']:
                 raise ValueError('Changed old prediction cache')
             after=risk[si,lookup[wanted]]
-            np.testing.assert_allclose(after,before,rtol=cfg['prediction_rtol'],atol=cfg['prediction_atol'])
-            np.testing.assert_array_equal((after<=0).all(1),(before<=0).all(1))
-            comparisons.append(dict(seed=seed,source=site,bitwise_equal=np.array_equal(after,before),
-                                    maximum_absolute_difference=float(np.max(np.abs(after-before)))))
+            comparisons.append(dict(seed=seed,source=site,**float_parity(after,before,training_scales[seed,site])))
+            old_risk[si,wanted]=before
+    old_ensemble=scores(old_risk)
+    for name in ('mean','unanimity'):
+        expected=method.veto(own[lookup],old_ensemble[name])
+        np.testing.assert_array_equal(choices[name][lookup],expected)
     active_known=data['valid'][ix].any(1)&(own>=0)
     np.testing.assert_array_equal(ids[active_known],old['ids'])
     payload=dict(ids=ids,local_ids=ix,sites=c['sites'],recordings=data['recordings'][ix],
@@ -222,7 +231,7 @@ def infer_one(data,node,cfg,beat):
     receipt=dict(job=job['key'],rows=len(ids),proposals=int((own>=0).sum()),
         known_proposals=len(old['ids']),unknown_proposals=int(((own>=0)&~data['valid'][ix].any(1)).sum()),
         input_features_exact=True,forest_known_prediction_exact=True,
-        known_decisions_exact=True,prediction_comparisons=comparisons,
+        known_decisions_exact=True,known_ensemble_choices_exact=True,prediction_comparisons=comparisons,
         causal_choices_before_outcome_filter=True)
     beat(state='complete_causal_inference_verified',**{k:receipt[k] for k in ('job','rows','proposals','unknown_proposals')})
     return payload,receipt
@@ -231,7 +240,7 @@ def infer_one(data,node,cfg,beat):
 def infer(reg,cfg,beat,replay=False,resume=False):
     data=load_data();refs=[];receipts=[]
     for node in reg['jobs']:
-        key=node['job']['key'];path=PRIVATE/'inference'/f'{key}.npz';out=PUBLIC/'inference'/f'{key}.json'
+        key=node['job']['key'];path=PRIVATE/'inference_v2'/f'{key}.npz';out=PUBLIC/'inference_v2'/f'{key}.json'
         if resume and out.exists() and not replay:
             record=read(out);checked(record['cache']);refs.append(artifact(out));receipts.append(record)
             beat(state='completed_context_cache_verified',job=key);continue
@@ -247,11 +256,11 @@ def infer(reg,cfg,beat,replay=False,resume=False):
         refs.append(artifact(out));receipts.append(read(out))
     if sum(r['known_proposals'] for r in receipts)!=cfg['expected_known_proposals'] or sum(r['unknown_proposals'] for r in receipts)!=cfg['expected_unknown_proposals']:
         raise ValueError('Do not drop or add old known/unknown proposals')
-    if not replay:once(PUBLIC/'inference_freeze.json',dict(contexts=refs,all_choices_before_readout=True,new_training=False))
+    if not replay:once(PUBLIC/'inference_freeze_v2.json',dict(contexts=refs,all_choices_before_readout=True,new_training=False))
 
 
 def evaluate(reg,cfg,beat,replay=False):
-    freeze=read(PUBLIC/'inference_freeze.json')
+    freeze=read(PUBLIC/'inference_freeze_v2.json')
     if not freeze['all_choices_before_readout']:raise ValueError('Freeze all contexts first')
     data=load_data();rows=[]
     for node,ref in zip(reg['jobs'],freeze['contexts']):

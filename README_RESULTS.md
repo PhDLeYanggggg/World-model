@@ -27,6 +27,12 @@ scores when full inference batches include unknown rows. Then run the original
 per-record2%all/easy/net/support calculation unchanged. Matched counts remain
 utility-only; empty support stays NA, with no identity exemption. No new C/H,
 training or promotion. Full-policy results are not claimed complete yet.
+Initial inference PID69915 exits1 on a1.06e-9score difference at an old batch
+tail, after exact raw-feature equality. No full-policy readout has run. The
+numeric verification amendment normalizes scores by saved training RMS and
+uses64float32epsilon, while requiring exact channel and ensemble decisions.
+It changes no model, inference math, zero threshold,2%risk rule or cohort.
+The original registration/failure/cache are retained; v2uses separate outputs.
 [Protocol](outputs/publication_readiness_2026_09/moving_complete_donor_policy_v1/protocol.md).
 
 ### Risk-Head Seed Replication: Benefit Persists, Safety Still Unproved
