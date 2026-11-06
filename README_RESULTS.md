@@ -31,6 +31,12 @@ Full real recovery pilot/control must precede fitting. No real predictive
 success claimed. Fresh60sCREATE observation times out;remote state unknown,
 no mutations. Local route feasible based on prior full-fit measurements.
 [Protocol](outputs/publication_readiness_2026_09/moving_camera_factor_v1/protocol.md).
+Actual admissionPID76555exits0 in0.699621s,peak670,924,800B:all18cached
+identity/both/camera-CV bank row alignments match the125540rows exactly;no new
+geometry copy. Real recoveryPID76582exits0 in133.704041s,peak1,380,646,912B.
+Complete100+100vs200model/optimizer/sampler/RNG/trace exact;direct200takes
+65.091570s,projecting19,527.471125s(~5.42h)for15full fits before inference.
+Full identity controlPID76809now runs. No new outcome has been scored.
 
 ### Query-View Geometry: Complete Negative Component
 

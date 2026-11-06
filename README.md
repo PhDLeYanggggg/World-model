@@ -67,6 +67,10 @@ matched four-arm study. The two missing arms will be fully retrained; the
 original and combined arms remain verified cached controls. The primary
 comparison is fixed before fitting, with no new test access or changed risk
 rule. [Operator-ablation protocol](outputs/publication_readiness_2026_09/moving_camera_factor_v1/protocol.md).
+The real 100+100 versus 200 recovery pilot now matches exactly, and a full
+original-control refit is running. Measured local speed projects about5.4hours
+for the fifteen full fits,excluding inference. This is runtime evidence,not
+a predictive improvement.
 
 ### Previous Controller Experiment
 
