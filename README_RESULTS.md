@@ -29,6 +29,15 @@ joint-free paired lower. Context effect in own-only and a bounded interaction
 are secondary. Original2%/support/NA remain; no new C/H, image inputs, identity
 certificate or deployment. Actual training not_run at registration.
 [Protocol](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/protocol.md).
+Preparation PID90503 finishes in74.695562s,peak3,147,841,536B: all five
+context tables align exactly without outcomes as join keys. Recovery pilot
+PID90653 exits0 in43.787749s,peak2,046,083,072B; actual128+128versus256
+optimizer/model/trace states exact. Each model has19,430parameters. Pure-fit
+96-model projection646.906s uses this small own-only cell and excludes loading,
+larger donor pools,allocation and full refits; it is not a completion estimate.
+Training PID90737 is running with a fresh ready heartbeat. Seventeen model/control tests pass
+2.13s and17existing data/allocation checks pass1.71s. Full historical suite not
+rerun. No new CREATE job is submitted.
 
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 
