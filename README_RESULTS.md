@@ -53,6 +53,11 @@ First infer PID94774 exits1:allocation checkpoint parent directory is absent.
 No new policy readout or choice freeze occurred. Preserve all trained/refit
 states and frozen runner; a versioned directory-init entry point calls it
 unchanged. This is a filesystem repair,not a Torch hang or model amendment.
+Safe-entry infer PID95208 exits0 in472.858147s,peak3,086,680,064B; all36
+context choices freeze before readout. Original numerical safeguards retain
+the parent in37joint-free postchecks,31matched postchecks and6matched solver
+timeouts. These are preserved,not called all-optimal solutions. The original
+runner,model definitions and96trained/refit states remain unchanged.
 
 ### Exact-Cohort Fixed-Amplitude Strong Controls: Complete, No Safe Winner
 

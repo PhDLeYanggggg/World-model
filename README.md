@@ -26,13 +26,13 @@ of the unobserved true effect. No coefficient is selected from this matrix.
 
 My next matched experiment separates two questions: whether source-excluded
 donor training helps, and whether global past-motion context helps within each
-data regime. The four cells keep the same model capacity, objective, seeds and
+data regime. The four cells keep the same parameter count, objective, seeds and
 original risk rules. This is a replication/interaction test of a previously
 unsuccessful feature, not a new world-dynamics claim.
 All 96 new Torch fits are complete; all 48 paired context models have lower
 final fitting-minibatch loss. All 96 complete exact refits also reproduce.
-Policy choices are being frozen before the held-source readout; this is not
-yet a utility or safety pass.
+All 36 policy-choice contexts are now frozen before the held-source readout;
+this is not yet a utility or safety pass.
 [Fixed protocol](outputs/publication_readiness_2026_09/moving_supported_global_motion_v1/protocol.md).
 
 ### Previous Reference-Context Result

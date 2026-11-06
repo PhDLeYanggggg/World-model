@@ -25,7 +25,7 @@ def probability_metrics(probability,observed):
 
 
 def main():
-    a=run.read(run.PUBLIC/'analysis.json');reg=run.read(run.REG);rows=[]
+    a=run.read(run.PUBLIC/'analysis.json');reg=run.read(run.REG);rows=[];parity=[]
     if a['fresh_models']!=96:raise ValueError('Full immutable readout first')
     for node in reg['jobs']:
         own,old=run.parent.own_and_floor(node);c=run.context(node['job']['key'],own['ids'])
@@ -36,6 +36,16 @@ def main():
                 for site in node['part']['names']:
                     at=np.flatnonzero(own['sites']==site);rr,action=own['row'][at],own['action'][at]
                     state=run.method.base.read_checkpoint(run.checked(run.read(run.PUBLIC/'fits'/f'{node["job"]["key"]}_{site}_seed{seed}_{arm}.json')['checkpoint']))
+                    if arm=='augmented_local':
+                        ref=run.read(run.parent.PUBLIC/'fits'/f'{node["job"]["key"]}_{site}_seed{seed}_role_separated.json')['checkpoint']
+                        old_state=run.method.base.read_checkpoint(run.checked(ref))
+                        weights=all(run.torch.equal(v,state['model'][k]) for k,v in old_state['model'].items())
+                        delta=max(float((v-state['model'][k]).abs().max()) for k,v in old_state['model'].items())
+                        parity.append(dict(source=site,seed=seed,final_parent_weights_exact=weights,
+                            maximum_absolute_parent_weight_difference=delta,
+                            preprocessing_exact=run.stable(state['preprocess']['parent'])==run.stable(old_state['preprocess']),
+                            sampler_exact=run.torch.equal(state['generator'],old_state['generator']) and np.array_equal(state['visits'],old_state['visits']),
+                            masked_global_weights_zero=all(not bool(v.count_nonzero()) for k,v in state['model'].items() if k.startswith('global_'))))
                     known=own['observed'][at]
                     conditional=pred['conditional'][rr,action]/own['scales'][at,None]
                     mse=np.mean((conditional[known]-own['moments'][at][known])**2,axis=0)
@@ -69,7 +79,8 @@ def main():
             observation_ECE=float(np.mean([r['future_observation']['ECE'] for r in rr])),
             context_clip_fraction=float(np.mean([r['context_clip_fraction'] for r in rr])),
             averaging='equal_source_and_risk_seed_not_pooled_candidates')
-    run.once(run.PUBLIC/'calibration_analysis.json',run.stable(dict(rows=rows,summary=summary,
+    if len(parity)!=24:raise ValueError('All24augmented-local replication controls required')
+    run.once(run.PUBLIC/'calibration_analysis.json',run.stable(dict(rows=rows,summary=summary,local_parent_replication=parity,
         targets=['benefit','harm','reference','easy_reference','easy_harm'],
         role='posthoc_exposed_own_B_diagnostic_not_new_fit_selection_or_calibration',
         source='fresh_run_from_cached_verified_frozen_predictions',future_observation_not_failure_probability=True,
@@ -89,7 +100,12 @@ def main():
         'it used. Easy-credit mass on realized nonEasy rows is an attribution,not',
         'by itself proof of an Easy classification or calibration failure.',
         'Selected credit/harm totals are in calibration_analysis.json; they do not',
-        'replace the original per-record2%and unknown-completion contract.']
+        'replace the original per-record2%and unknown-completion contract.','',
+        '## Local Replication Control','',
+        str(sum(r['final_parent_weights_exact'] for r in parity))+'/24augmented-local models exactly recover',
+        'the original role-separated parent weights. Masked context is checked as zero;',
+        'normalization and samplers are recorded per pair. This is a consistency',
+        'check,not independent evidence or a newly discovered method.']
     (run.PUBLIC/'calibration_analysis.md').write_text('\n'.join(lines)+'\n')
     print('Complete cost/observability diagnostic saved without changing models or policy.')
 
