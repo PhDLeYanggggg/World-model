@@ -39,6 +39,9 @@ exactly,with common trace exact. Only the original pilot stop log records
 at20/40are extra in the old receipt; no scientific state difference is ignored.
 Six full prefix-balanced treatment fits now start from matched initialization
 and identical draws; the first resumes its verified200update pilot prefix.
+Treatment PID3325 completes the first of six4000update forecasters. Its held
+source sample count is zero,and all row draws/factors exactly match the old
+control. The second fit is running; no donor/held effect scoring has occurred.
 
 Previous goal turn:progress,96fits+96exact refits complete,primary utility
 uncertain and full original risk failed. Register all125540producer-A agent
