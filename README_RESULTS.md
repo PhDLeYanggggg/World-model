@@ -16,6 +16,23 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### New Past-Image Observation: Registered Measurement
+
+Previous goal turn is progress:seven actual full neural fits and negative
+whole-forecast result with exact replay. New measurement prospectively binds
+the1851past images/1817transitions for125540producer-A rows,34recordings,
+14groups and1613queries. Standard LK+limited-affine fitting is a proxy,not
+verified camera motion or metric H. Raw JPEG is not retained; small lossless
+rasters/masks support replay. First34last-observed pairs form an engineering
+pilot before full3.924GBmember-content range acquisition. Original2%rules,
+image-input admissions and C/H reservations stay unchanged. No target arrays
+or predictive outcomes are opened in this phase. No predictive admission or
+model success is claimed. Sixteen image/helper checks pass0.32s.
+Fresh CREATE queue observation again times out after60seconds;remote state
+unknown,no submitted/restarted/cancelled jobs. Local image measurement is
+feasible with7.8GiBfree and a5GiBreserve.
+[Protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
+
 ### Actual Prefix-Balanced Forecast Training: Complete, Screen Failed
 
 Seven full neural fits finish: six4000update matched treatment producers and

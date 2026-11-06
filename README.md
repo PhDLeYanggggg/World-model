@@ -37,6 +37,14 @@ in a separate replay, without further training.
 [failure analysis](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/failure_analysis.md),
 [reproduction](outputs/publication_readiness_2026_09/moving_prefix_actor_v1/operation_zh.md).
 
+My next test measures a genuinely new past observation: background image
+motion, rather than another summary of pedestrian trajectories. The fixed
+training-source roster has 1,613 query times and needs 1,851 past images.
+I will first check native frame alignment and matching quality, without future
+target arrays or a new held-out readout. It is an image-motion proxy, not
+calibrated camera geometry or demonstrated forecasting lift.
+[Measurement protocol](outputs/publication_readiness_2026_09/moving_past_background_v1/protocol.md).
+
 ### Previous Support / Context Study
 
 I tested whether more source-excluded training support makes global past-motion
