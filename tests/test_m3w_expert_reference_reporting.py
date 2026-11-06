@@ -1,7 +1,8 @@
-from scripts.report_m3w_moving_expert_reference import candidate_screen,utility_supported
+from scripts.report_m3w_moving_expert_reference import candidate_screen,utility_supported,percent
 
 
 def test_positive_utility_is_not_safety_and_missing_primary_is_not_pass():
+    assert percent(None)=='NA' and percent(.02)=='2.0000%'
     a=dict(primary=dict(completion_lower_pp=dict(interval95=[.1,.3])),
         policies=dict(expert_context=dict(joint_free=dict(safety=dict(required_record_views=72,original_record_contract_pass=False)))))
     assert utility_supported(a) and not candidate_screen(a)

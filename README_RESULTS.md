@@ -50,6 +50,53 @@ All48complete refits finish:PID83520 exits0 in496.797578s,peak6,949,060,608B,
 196,608repeat updates. Models,optimizers,loss traces and matched arm draws
 reproduce exactly. Full causal inference is now running,with no policy outcome
 selection or change to the original contract.
+All18new causal caches freeze before labels:PID84257 exits0 in192.355692s,
+peak2,054,864,896B. One free-joint and four matched-joint postcheck failures
+retain feasible independent parents;they are not dropped or called optimal.
+Native HiGHS prints an internal transformNewIntegerFeasibleSolution diagnostic;
+no process crash or solver/risk change follows. Evaluation PID84742 exits0
+in5.445373s,peak2,071,691,264B;all frozen prior metrics reproduce exactly.
+
+Registered context-minus-history joint-free paired lower is+0.133479pp,
+95%exploratory source interval[-0.140981,+0.556238]. Known+0.175721pp
+[-0.090314,+0.594128]. Both cross0. Context versus frozen lower+0.072390pp
+[-0.244467,+0.535662]also crosses0. Only3/8source lower means positive;
+seed17lower negative,29/43positive. Source059contributes+1.487083pp;all source
+and seed negatives remain. These3risk seeds share one forecast teacher.
+
+Context known gain vs CV0.790637%,separate lower0.711599%,but full original
+support only24/72,26known-easy violations,6easyNA,8signed easy-net violations.
+Worst defined signed easy-net degradation9.0168%,gross easy risk40.2986%.
+Frozen support23/72,history-refit25/72;none passes. Total reference MSE
+3.360713->3.154554improves,ER0.230431->0.280262worsens. Context own-selection
+ER overprediction62/72. Pooled87.89%predicted ER falls on realized known rows
+without easy reference;this is attribution,not a misclassification rate or
+requirement that soft probabilities vanish on each negative. Unknown mass
+is separate. All three arms have24/24defined matched-count utility cells;
+these are not safety certificates. Benefit caps affect4503context/5941history
+candidate-seed views. Every candidate H/EH/support remains exact.
+
+Posthoc source053/record11/seed17illustration:chosen alpha0.5raises ADE6.175879
+to10.959726pixels over8available future labels;H predicted0.765837vsactual
+4.783846,R predicted38.814562vsactual6.175879. Thus reference and frozen harm
+both remain problems. No future label enters inference or threshold choice.
+Actual replay PID85082 exits0 in17.827980s,peak2,552,086,528B,predictions and
+metrics exact;public files unchanged during check. Timed integer search is
+not rerun. Thirty-five focused tests pass2.77s;historical suite not rerun.
+Both local figures visually checked. Original24group main remainsNA;
+independent C/H,Stage5C,SMC and deployment are unchanged/off. This is not a new
+world-dynamics or submission-ready result. Next:shared easy-event support and
+conditional R/H supervision,not only reference refinement or threshold search.
+Final same-scope35checks pass2.65s after report formatting changes. Prior uniform
+six-amplitude controls belong to a different195,286-row/348-view cohort;they do
+not close this62,466-row matched-control gap. Next first recompute every fixed
+fraction and causal stationary guard here,without outcome-selecting a coefficient,
+then test shared easy-event conditional cost learning. No new endpoint/risk rule.
+Final second replay PID87047 exits0 in17.673682s,peak2,629,582,848B after all
+report writers finish;predictions,choices checks and metrics exact again,
+public files unchanged during the check. Timed search is not rerun.
+[Results](outputs/publication_readiness_2026_09/moving_expert_reference_v1/README.md),
+[Failure analysis](outputs/publication_readiness_2026_09/moving_expert_reference_v1/failure_analysis.md).
 [Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
 
 ### Role-Separated Full-Action Models: Positive Utility, Failed Complete Risk

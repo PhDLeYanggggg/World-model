@@ -11,18 +11,33 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I am testing whether the reference head lost useful intent information when
-its input was restricted to action-invariant history. The new matched repair
-shares the frozen expert's causal rollout descriptors across an agent's actions,
-while keeping harm and label-support predictions fixed. Both reference networks
-have the same parameterization, initialization and training budget; only one receives
-the shared context. The comparison is registered before actual preparation or
-training, and the original risk rules remain unchanged. Shared-context joins
-are now exact across all five feature banks, and real interrupted training
-reproduces the uninterrupted model exactly. All 48 reference fits and all 48
-complete exact refits have finished. Full causal decisions are being frozen
-before policy readout; training completion is not a safety result.
-[Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
+I tested whether sharing the frozen expert's causal rollout context could repair
+reference-cost learning without changing harm or label-support predictions.
+All 48 matched reference models and 48 complete exact refits are finished.
+
+**Total reference prediction improves, but easy-case protection is still unresolved.**
+
+Shared context improves total-reference MSE by about 6.1% over its matched
+history-only refit, but worsens easy-reference MSE by 21.6%. Its available-label
+ADE gain over causal CV is 0.791%, versus 0.667% for the frozen prior. However,
+the registered paired completion-lower contrast is only +0.133 percentage points
+with an exploratory source interval of [-0.141, +0.556], so stable added utility
+is not established.
+
+Only **24/72 required repeated recording views** pass the original contract.
+There are 26 known-easy harm violations; worst signed easy-net degradation is
+**9.02%**, above the unchanged 2% limit. A real failure case also shows the frozen
+harm head underestimating loss. I am targeting shared easy-support and conditional
+reference/harm learning next, rather than increasing model width or loosening
+evaluation. No deployment change follows this result.
+
+These remain MovingDroneCrowd++ exposed-development, native observation-8 /
+prediction-12 image-coordinate results, not independent confirmation or a new
+trajectory dynamics result. The 72 views repeat 24 recordings over three risk
+seeds; the forecaster has one fixed seed. The project is not submission-ready.
+[Complete comparison](outputs/publication_readiness_2026_09/moving_expert_reference_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_expert_reference_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/moving_expert_reference_v1/operation_zh.md).
 
 ### Previous Matched Cost Result
 

@@ -16,6 +16,9 @@
 .venv-pytorch/bin/python scripts/run_m3w_moving_expert_reference.py verify
 .venv-pytorch/bin/python scripts/run_m3w_moving_expert_reference.py infer
 .venv-pytorch/bin/python scripts/run_m3w_moving_expert_reference.py evaluate
+.venv-pytorch/bin/python scripts/report_m3w_moving_expert_reference.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_easy_reference_credit.py
+.venv-pytorch/bin/python scripts/plot_m3w_expert_reference_failure.py
 .venv-pytorch/bin/python scripts/run_m3w_moving_expert_reference.py replay
 ```
 

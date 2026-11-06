@@ -10,6 +10,15 @@ a new admission-policy risk pass or independent confirmation.
 
 ## Evidence Included
 
+The [shared-expert reference addendum](../moving_expert_reference_v1/paper_addendum.md)
+adds48reference fits and48complete exact refits. Context improves total-reference
+MSE but worsens easy-reference MSE. The registered lower contrast is+0.133479pp
+[-0.140981,+0.556238], and complete risk passes only24/72views. A real case also
+retains frozen harm underprediction. This narrows the next model target to
+shared easy-support and conditional reference/harm learning, not a deployment
+upgrade. Negative sources/seeds, tails and original rules remain; compiled PDF
+is unchanged. [Official dates/policies refreshed 6 November](../cvpr2027_deadline_refresh_20261106.md).
+
 The [role-separated full-action addendum](../moving_role_separated_cost_v1/paper_addendum.md)
 adds 48 matched Torch heads and 48 complete exact refits. Its registered paired
 completion-lower utility contrast is +0.445303pp, exploratory source interval

@@ -83,6 +83,28 @@ def components(reg,a):
 def f(x):return 'NA' if x is None else f'{x:+.6f}'
 
 
+def percent(x):return 'NA' if x is None else f'{100*x:.4f}%'
+
+
+def policy_uncertainty_and_tails(a,cfg):
+    result={}
+    for arm in ('frozen',*run.method.ARMS):
+        result[arm]={}
+        for name in run.POLICIES:
+            rr=[r for r in a['rows'] if r['arm']==arm]
+            values=[dict(source=r['source'],known=r['policies'][name]['known_ADE_gain_floor_percent'],
+                         lower=r['policies'][name]['completion_lower_gain_floor_percent']) for r in rr]
+            views=[v for r in rr for v in r['policies'][name]['recordings'].values()]
+            tails={}
+            for key in ('known_all_risk','known_easy_risk','known_easy_net_degradation'):
+                defined=[v[key] for v in views if v[key] is not None]
+                tails[key]=dict(maximum_defined=max(defined) if defined else None,
+                    undefined_required_views=len(views)-len(defined),defined_only_maximum_not_full_safety_pass=True)
+            result[arm][name]=dict(absolute_gain={k:run.parent.interval(values,k,cfg) for k in ('known','lower')},
+                tails=tails,source_components=8,required_repeated_record_views=72)
+    return dict(policies=result,exploratory_exposed_development=True,no_missing_view_dropped_from_gates=True)
+
+
 def plot(a):
     import matplotlib
     matplotlib.use('Agg')
@@ -107,6 +129,9 @@ def main():
     a=run.read(run.PUBLIC/'analysis.json');cfg,reg=run.register()
     if len(a['rows'])!=72 or not a['cached_frozen_control_exact']:raise ValueError('Full registered readout required')
     d=components(reg,a);run.once(run.PUBLIC/'reference_diagnostics.json',d)
+    uncertainty=policy_uncertainty_and_tails(a,cfg)
+    run.once(run.PUBLIC/'policy_uncertainty_and_tails.json',uncertainty)
+    tail=uncertainty['policies']['expert_context']['joint_free']['tails']
     primary=a['primary']['completion_lower_pp'];ci=primary['interval95']
     lines=['# Shared Frozen-Expert Context For Reference Learning','',
         'This is a completed model-side input contrast on already-exposed own-B.',
@@ -129,6 +154,10 @@ def main():
     lines+=['','72 views repeat24recordings over3risk seeds; they are not72independent scenes.',
         'Separate lower gains are not the paired lower contrast. Available-label',
         'image-coordinate obs8/pred12ADE is not official complete12ADE or SDD raw t50.','',
+        f'Context joint-free worst defined signed easy-net degradation is {percent(tail["known_easy_net_degradation"]["maximum_defined"])},',
+        f'and worst defined known-easy gross risk is {percent(tail["known_easy_risk"]["maximum_defined"])}; '
+        f'{tail["known_easy_risk"]["undefined_required_views"]} easy ratios are NA.',
+        'These are distinct from mean gain and do not pass the original2%contract.','',
         '## Reference Prediction On The Same Known Candidate Cohort','',
         '| Model | R MSE | ER MSE | R bias | ER bias |','|---|---:|---:|---:|---:|']
     for arm in ('frozen',*run.method.ARMS):
@@ -162,7 +191,8 @@ def main():
         'not_run:new independent C/H,three forecaster seeds,new dynamics or deployment.',
         'Original24-source-group main remains NA. Annotation-generation causality',
         'unverified; no metric/seconds,true3D,foundation,human-gold,Stage5C or SMC claim.','',
-        '[Protocol](protocol.md) | [Reproduction](operation_zh.md) | [Failure analysis](failure_analysis.md)']
+        '[Protocol](protocol.md) | [Reproduction](operation_zh.md) | [Failure analysis](failure_analysis.md) |',
+        '[Model card](model_card.md) | [Data card](data_card.md) | [Verification](verification_report.md) | [Paper addendum](paper_addendum.md)']
     (run.PUBLIC/'README.md').write_text('\n'.join(lines)+'\n')
     gates=['# Shared-Expert Reference Gates','', '| Gate | Status | Evidence |','|---|---|---|',
         '| Real source-excluded reference fitting | PASS | 48 models,4096updates each |',
