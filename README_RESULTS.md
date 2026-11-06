@@ -16,6 +16,20 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
+### Query-View Geometry: Pre-Execution Component Registration
+
+Previous goal turn is progress:12real full actors,full control/two exact refits
+and exact prediction/scalar replay;primary negative. Next repair composes seven
+past image-affine proxies into the query view and restores predictions with
+last-observed-affine extrapolation. No new learned parameters,residual output,
+changed loss,source split,primary risk rule or new own-B/C/Hreadout. Six full
+treatment fits,one full identity control and one complete treatment refit are
+fixed before real fitting. A simple camera-CV strong control is frozen alongside
+neural predictions. Eight focused tests include actual small author-core update
+parity,composition direction,latest-state interruption recovery and idempotency.
+No real predictive success is claimed. CREATE observation times out after60s;
+queue state unknown,no mutations. Local CPU4/workers0is feasible;real pilot next.
+
 ### Past-Image Trajectory Actor: Complete Actual Training, Negative Primary
 
 Fresh_run:twelve actual full4000update actors,one full old-model control and

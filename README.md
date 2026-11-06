@@ -43,6 +43,12 @@ The [native-stride English working manuscript](outputs/publication_readiness_202
 integrates these results separately from the older European stride12 study.
 It is an evidence draft,not a submission-ready paper.
 
+My next matched experiment replaces the auxiliary image branch with explicit
+query-view geometry. It keeps the same trajectory network and loss, and uses
+only past camera-motion measurements. A camera-compensated CV control will
+show whether any benefit comes from geometry alone. The protocol and recovery
+checks are fixed before real fitting; no new outcome or deployment is claimed.
+
 ### Previous Controller Experiment
 
 I tested a new observation from the past images: native image bounds and
