@@ -46,6 +46,10 @@ fitting minibatches,not validation or risk evidence. All48complete refits are
 running asPID83520;no policy outcomes read. Fresh official CVPR dates/policies
 are rechecked in the linked [6 November note](outputs/publication_readiness_2026_09/cvpr2027_deadline_refresh_20261106.md);
 no author/profile change,enrollment or submission is performed.
+All48complete refits finish:PID83520 exits0 in496.797578s,peak6,949,060,608B,
+196,608repeat updates. Models,optimizers,loss traces and matched arm draws
+reproduce exactly. Full causal inference is now running,with no policy outcome
+selection or change to the original contract.
 [Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
 
 ### Role-Separated Full-Action Models: Positive Utility, Failed Complete Risk

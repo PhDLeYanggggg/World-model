@@ -19,8 +19,9 @@ have the same parameterization, initialization and training budget; only one rec
 the shared context. The comparison is registered before actual preparation or
 training, and the original risk rules remain unchanged. Shared-context joins
 are now exact across all five feature banks, and real interrupted training
-reproduces the uninterrupted model exactly. All 48 reference fits have completed;
-complete exact refits are running locally before any policy readout.
+reproduces the uninterrupted model exactly. All 48 reference fits and all 48
+complete exact refits have finished. Full causal decisions are being frozen
+before policy readout; training completion is not a safety result.
 [Protocol](outputs/publication_readiness_2026_09/moving_expert_reference_v1/protocol.md).
 
 ### Previous Matched Cost Result

@@ -8,6 +8,7 @@ sys.path.insert(0,str(ROOT))
 from scripts import run_m3w_moving_expert_reference as run
 from scripts.diagnose_m3w_role_separated_selection import moment_summary
 from scripts.report_m3w_moving_complete_donor_policy import category
+from src.evaluation.m3w_matched_intervention_utility import matched_utility
 
 
 def utility_supported(a):
@@ -21,7 +22,7 @@ def candidate_screen(a):
 
 
 def components(reg,a):
-    errors=[];selected=[];common=[];caps=[];data=run.parent.full.load_data()
+    errors=[];selected=[];common=[];caps=[];matched=[];data=run.parent.full.load_data()
     for node in reg['jobs']:
         own,old=run.parent.own_and_floor(node);key=node['job']['key'];ix=old['local_ids']
         target=data['target_eval'][ix]-data['origin'][ix,None];valid=data['valid'][ix]
@@ -37,6 +38,13 @@ def components(reg,a):
                 origin=run.method.base.read_checkpoint(run.checked(run.read(run.parent.PUBLIC/'fits'/f'{key}_{site}_seed{seed}_role_separated.json')['checkpoint']))
                 rms=origin['preprocess']['rms'][[2,3]];y=own['moments'][known][:,[2,3]]
                 for arm,b in banks.items():
+                    source_rows=old['sites']==site
+                    paths={n:run.parent.full.method.paths_for(old['paths'],old['floor'],b[n])[source_rows]
+                           for n in ('independent','joint_matched')}
+                    groups=run.parent.allocation.query_groups(old['recordings'][source_rows],old['frames'][source_rows],old['ids'][source_rows])
+                    matched.append(dict(source=site,seed=seed,arm=arm,
+                        **matched_utility(paths['independent'],paths['joint_matched'],old['floor'][source_rows],
+                            target[source_rows],valid[source_rows],b['independent'][source_rows],b['joint_matched'][source_rows],groups)))
                     pp=b['conditional'][row,action][:,[2,3]]/own['scales'][known,None]
                     delta=(pp-y)/rms
                     errors.append(dict(job=key,source=site,seed=seed,arm=arm,known_candidate_rows=len(row),
@@ -68,7 +76,8 @@ def components(reg,a):
                             cohort='frozen_joint_free_choices_identical_for_all_arms',
                             **moment_summary(b['moments'][at,choice].sum(0),truth[at,choice].sum(0))))
     return dict(reference_errors=errors,own_selected_calibration=selected,frozen_choice_calibration=common,
-                benefit_caps=caps,all_candidate_harm_support_exact=True,posthoc_not_policy_selection=True)
+                benefit_caps=caps,matched_count_utility=matched,matched_utility_not_safety=True,
+                all_candidate_harm_support_exact=True,posthoc_not_policy_selection=True)
 
 
 def f(x):return 'NA' if x is None else f'{x:+.6f}'
