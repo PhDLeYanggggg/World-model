@@ -40,6 +40,14 @@ Full identity controlPID76809now runs. No new outcome has been scored.
 Full controlPID76809exits0 at23:09:26Z after1330.576864s,peak1,452,507,136B.
 Complete4000model/optimizer/sampler/RNG/draws/factors and common trace exact.
 The twelve full treatment models now start;no outcome readout yet.
+At23:20:31Z,the one-sided experiment is intentionally stopped after a synthetic
+information-loss counterexample,not slowness/deadlock. PID78512exit130,saved
+step2160,no full treatment complete/no outcomes scored. Two synthetic checks
+pass1.10s. Original code/protocol preserved;planned12model matrix is incomplete,
+not a quick substitute or completed failure. Next model must preserve raw and
+aligned histories. Mid-forward signal may leave the saved sampler ahead of
+the committed counter;that checkpoint is not reused or claimed exact recovery.
+[Design stop](outputs/publication_readiness_2026_09/moving_camera_factor_v1/design_stop.md).
 
 ### Portable Native Actor Evidence: Actual Isolated Aggregate Replay
 
