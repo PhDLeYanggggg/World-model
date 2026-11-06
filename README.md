@@ -11,60 +11,56 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
-I conditioned the actual trajectory network on past-image measurements and
-compared it with a matched quality-only control. All twelve models completed
-4,000 updates. A full old-model control and two complete treatment refits
-reproduced exactly; all twelve prediction banks and reported metrics also
-reproduce in a separate replay.
+I tested whether explicit viewpoint conditioning helps the trajectory network.
+Past-image motion aligns observed agent and neighbor histories to the current
+view. A fixed extrapolation restores predicted image coordinates. The network,
+loss, source exclusions and 4,000-update budget stay matched to the original.
 
-**The new motion branch does not improve the whole forecast reliably.**
-Its registered motion-minus-quality known difference is **-1.804pp** and
-paired completion lower is **-10.931pp [-17.826, -5.288]**. Only 7 of 14 sources
-improve; one producer fold is negative. The raw motion actor exceeds 2% known-
-easy positive harm in 33 of 34 recordings. That is a raw-actor diagnostic, not a
-complete selected-policy certificate. **The component screen fails; no new
-controller or deployment follows.**
+**This model repair fails its registered component comparison.** The new actor
+loses **5.133 percentage points** against the original on known-label whole-
+12-step ADE gain. Its paired completion lower is **-21.447pp**, with an
+exploratory source-bootstrap interval of **[-33.682, -9.911]**. Only 3 of 14
+sources improve, and both producer-fold means are negative.
 
-These are 125,540 previously exposed training-donor windows from 14 source groups,
-not a new independent test. Observation 8 / prediction 12 uses native stride 1
-and image coordinates. I kept the original 2% and reference-support requirements,
-including undefined values, and did not add identity-fallback certification.
+| Whole-12 Diagnostic | Known-Label ADE Gain vs CV |
+|---|---:|
+| Original trajectory actor | +15.378% |
+| Camera-conditioned actor | +10.245% |
+| Camera-compensated CV | +2.828% |
 
-All image branches learned nonzero weights. The worst source has no input
-clipping,so a disabled branch or clipping alone cannot explain the failure.
-The remaining problem is held-source predictive usefulness,not a training
-deadlock or a missing complete run. No true 3D, foundation, metric, seconds-level
-or submission-readiness claim is made.
-[Complete actor comparison](outputs/publication_readiness_2026_09/moving_visual_actor_v1/README.md),
-[failure analysis](outputs/publication_readiness_2026_09/moving_visual_actor_v1/failure_analysis.md),
-[branch diagnostics](outputs/publication_readiness_2026_09/moving_visual_actor_v1/branch_diagnostics.md).
+These are source-balanced exposed-development diagnostics, not deployment
+scores. A camera-CV benefit does not establish added neural value. The new raw
+actor exceeds 2% known-easy positive harm in 33 of 34 recordings; this is not
+a complete selected-policy certificate. All six matched final training batches
+also have higher loss after conditioning. That does not identify whether past
+alignment or future camera extrapolation causes the failure: they were tested
+together. **No new controller or deployment follows.**
 
-The [native-stride English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
-integrates these results separately from the older European stride12 study.
-It is an evidence draft,not a submission-ready paper.
+All six treatment models completed 4,000 updates. A full original-control
+refit, one full fixed-design treatment refit, and all twelve actor/camera-CV
+prediction banks and scalar results reproduce exactly. A tool interruption
+was recovered from its unchanged checkpoint; no budget was reduced. Runtime
+reproduction is not independent scientific confirmation.
 
-My next matched experiment replaces the auxiliary image branch with explicit
-query-view geometry. It keeps the same trajectory network and loss, and uses
-only past camera-motion measurements. A camera-compensated CV control will
-show whether any benefit comes from geometry alone. The protocol and recovery
-checks are fixed before real fitting; no new outcome or deployment is claimed.
-The causal operator store now retains all 125,540 windows. Seven-pair image
-support is complete for 94,242 windows; the others retain explicit identity
-imputation. Geometry and history timestamps align exactly.
-The real 100+100 versus 200 recovery check now matches exactly. Its measured
-speed projects about 2.8 hours for the eight full fits, excluding inference.
-The complete 4,000-update identity-control refit now matches the original
-weights, optimizer, sampler/RNG and common trace exactly. The six matched
-camera-conditioned trajectory models are training; no outcome comparison has
-been scored.
-Four of the six full fits are complete. A tool interruption ended the original
-training process; its exit code was not observed. I verified the four complete
-models and resumed the fifth from update 1,400, without changing the protocol
-or budget. The last pre-interruption heartbeat was at update 1,550, so at least
-150 updates were repeated. All six models now complete 4,000 updates and the
-resumed process exits successfully. The full fixed-design treatment refit now
-matches model, optimizer, sampler/RNG and draws exactly. Prediction banks are
-being generated before scoring; no outcome has been scored yet.
+The study retains all 125,540 previously exposed donor windows, 14 source
+groups and 34 recordings. It observes 8 steps and predicts 12 at native stride
+1 in image coordinates. I kept the original 2% and support/undefined-reference
+rules, without identity-fallback certification or a new own-B/C/H readout.
+It does not establish true 3D, a foundation model, verified meters or seconds,
+or submission readiness.
+
+[Complete camera experiment](outputs/publication_readiness_2026_09/moving_camera_frame_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_camera_frame_v1/failure_analysis.md),
+[reproduction instructions](outputs/publication_readiness_2026_09/moving_camera_frame_v1/operation_zh.md).
+
+The earlier past-image feature branch also failed its matched comparison:
+known difference -1.804pp and paired lower -10.931pp [-17.826, -5.288].
+Its nonzero learned weights and unclipped worst source rule out a completely
+inactive branch or input clipping alone as sufficient explanations.
+[Earlier actor study](outputs/publication_readiness_2026_09/moving_visual_actor_v1/README.md).
+The [English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
+keeps these native-stride results separate from older European stride-12 and
+SDD studies. It remains an evidence draft, not a submission-ready paper.
 
 ### Previous Controller Experiment
 

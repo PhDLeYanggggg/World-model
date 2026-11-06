@@ -16,7 +16,24 @@ the latest component experiments use already-exposed own-B records.
 
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
-### Query-View Geometry: Pre-Execution Component Registration
+### Query-View Geometry: Complete Negative Component
+
+Six actual4000update treatment actors,one full original-control refit and one
+full first-design treatment refit complete. All12actor/camera-CV predictions
+and scalars replay exactly. Primary known effect-5.133066pp;paired completion
+lower-21.447401pp,exploratory3000source-bootstrapCI[-33.682328,-9.910946].
+Only3/14known-positive sources,both folds negative;all1/3/6/12known primaries
+negative. The registered screen fails. Camera-CV secondary known+2.827548pp
+does not replace the primary and has negative whole12completion lower.
+Raw actor easy+harm exceeds2%in33/34recordings,not a full policy certificate.
+All six matched final fitting minibatches have higher loss;the separate roles
+of past alignment and future extrapolation remain unidentified. No new
+controller,own-B/C/Hreadout,deployment,Stage5Cexecution or SMC. Original rules
+remain.15focused checks pass4.30s;full historical suite not rerun.
+The English evidence draft includes the new negative study;not submission-ready.
+[Complete evidence](outputs/publication_readiness_2026_09/moving_camera_frame_v1/README.md).
+
+#### Registration And Execution History
 
 Previous goal turn is progress:12real full actors,full control/two exact refits
 and exact prediction/scalar replay;primary negative. Next repair composes seven

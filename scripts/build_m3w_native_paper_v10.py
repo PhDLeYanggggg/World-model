@@ -72,7 +72,7 @@ def latex_document(markdown):
             if level == 3 and text.startswith('Table '): caption = text.partition('. ')[2]; continue
             if abstract: body.append(r'\end{abstract}'); abstract = False
             if text == 'Abstract': body.append(r'\begin{abstract}'); abstract = True; continue
-            if text == 'References': body.append(r'\clearpage\section*{References}'); continue
+            if text == 'References': body.append(r'\section*{References}'); continue
             if text == 'LLM Usage Statement': body.append(r'\section*{LLM Usage Statement}'); continue
             command = 'section' if level == 2 else 'subsection'
             body.append('\\'+command+'{'+tex_escape(strip_number(text))+'}')
@@ -240,6 +240,23 @@ def camera_update():
         'This remains a one-seed exposed-development component comparison, not',
         'an independent test or complete selected-policy risk certificate.',
         'No new controller or deployment follows from this table.']
+    harm = [r['summary'][-1]['treatment']['known_easy_positive_harm_percent']
+        for r in a['recordings'] if r['contrast'] == 'primary']
+    fit_paths = sorted((folder/'fits').glob('*.json'))
+    if len(harm) != 34 or len(fit_paths) != 6:
+        raise ValueError('Complete recording and matched fitting diagnostics required')
+    worse = 0
+    for path in fit_paths:
+        old = read(HOME/'moving_producer_crossfit_v1/fits'/path.name)['result']['losses'][-1]['loss']
+        new = read(path)['result']['losses'][-1]['loss']
+        worse += new > old
+    lines += ['', f'The raw camera actor exceeds 2% known-easy positive harm in {sum(x is not None and x > 2 for x in harm)}',
+        'of 34 recordings; this is a raw-actor diagnostic, not a full policy',
+        f'certificate. In {worse} of six matched designs its final fitting-',
+        'minibatch loss is also higher. That single-minibatch comparison is not',
+        'a training-population average or proof of underfitting. Past alignment',
+        'and future-affine restoration remain a bundled intervention; their',
+        'separate effects are not identified by this experiment.']
     return '\n'.join(lines)
 
 
@@ -313,6 +330,9 @@ def main():
     camera_paths = [camera_folder/name for name in ('registration_v2.json', 'training.json',
         'verification.json', 'control.json', 'analysis.json', 'forecast_freeze.json',
         'interruption_20261106T2054Z.json')]
+    camera_paths += sorted((camera_folder/'fits').glob('*.json'))
+    camera_paths += [HOME/'moving_producer_crossfit_v1/fits'/path.name
+        for path in sorted((camera_folder/'fits').glob('*.json'))]
     camera_sources = {str(path.relative_to(ROOT)): sha(path) for path in camera_paths} if values['camera_update'] else {}
     write_json(PUBLIC/'source_bindings.json', dict(result_source='fresh_prose_typesetting_of_cached_verified_scalar_evidence',
         fixed_sources=PINNED, template_sha256=sha(PUBLIC/'manuscript.template.md'), builder_sha256=sha(Path(__file__)),

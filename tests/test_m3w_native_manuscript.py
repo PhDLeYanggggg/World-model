@@ -39,7 +39,8 @@ $$
     assert r'\captionof{table}{Observed development data}' in tex
     assert r'\begin{minipage}{\columnwidth}' in tex
     assert r'\section{Method}' in tex
-    assert r'\clearpage\section*{References}' in tex
+    assert r'\section*{References}' in tex
+    assert r'\clearpage\section*{References}' not in tex
     assert tex.count(r'\begin{abstract}') == tex.count(r'\end{abstract}') == 1
 
 
@@ -61,9 +62,15 @@ def camera_fixture(tmp_path, monkeypatch, with_replay=True):
     records = [dict(contrast=contrast, summary=[dict(paired_known_pp=1., paired_completion_lower_pp=-2.) for _ in range(4)])
         for contrast in ('primary', 'camera_cv_effect', 'neural_over_camera_cv') for _ in range(14)]
     files = {'analysis.json': dict(primary=dict(known_pp=1., completion_lower_pp=-2., interval95=[-3., -1.],
-        positive_known_sources=9, component_progression_screen_pass=False), sources=records),
+        positive_known_sources=9, component_progression_screen_pass=False), sources=records,
+        recordings=[dict(contrast='primary', summary=[dict(treatment=dict(known_easy_positive_harm_percent=3.))]) for _ in range(34)]),
         'training.json': dict(models=6), 'verification.json': dict(models=1, full_refits_exact=True)}
     for name, value in files.items(): (folder/name).write_text(json.dumps(value))
+    (folder/'fits').mkdir()
+    control = home/'moving_producer_crossfit_v1/fits'; control.mkdir(parents=True)
+    for i in range(6):
+        (folder/'fits'/f'job{i}.json').write_text(json.dumps(dict(result=dict(losses=[dict(loss=2.)]))))
+        (control/f'job{i}.json').write_text(json.dumps(dict(result=dict(losses=[dict(loss=1.)]))))
     if with_replay:
         replays = tmp_path/'data/stage_cvpr2027_experiments/moving_camera_frame_v1/replays'
         replays.mkdir(parents=True); (replays/'replay_unit.json').write_text('{}')

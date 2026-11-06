@@ -154,11 +154,13 @@ def main():
     (PUBLIC/'README.md').write_text('\n'.join(lines)+'\n')
     fields = ('job', 'step', 'loss', 'gradient_norm', 'learning_rate', 'supported_batch_rows', 'mean_past_normalized_ADE')
     with (PUBLIC/'loss_trace.csv').open('w', newline='') as out:
-        writer = csv.DictWriter(out, fieldnames=fields); writer.writeheader()
+        writer = csv.DictWriter(out, fieldnames=fields, lineterminator='\n'); writer.writeheader()
         for row in fits:
             for loss in row['result']['losses']: writer.writerow(dict(job=row['job']['key'], **loss))
     camera_effect = mean([r['summary'][-1]['paired_known_pp'] for r in a['sources'] if r['contrast'] == 'camera_cv_effect'])
     neural_effect = mean([r['summary'][-1]['paired_known_pp'] for r in a['sources'] if r['contrast'] == 'neural_over_camera_cv'])
+    losses = [(r['job']['key'], read(SOURCE/'fits'/f'{r["job"]["key"]}.json')['result']['losses'][-1]['loss'],
+        r['result']['losses'][-1]['loss']) for r in fits]
     failure = ['# Geometric Actor Result And Remaining Gap', '',
         f'Primary known:{fmt(p["known_pp"])}pp;paired lower:{fmt(p["completion_lower_pp"])}pp.',
         f'Component screen:{passed}. Camera-CV effect:{fmt(camera_effect)}known pp.',
@@ -172,6 +174,21 @@ def main():
         'negative. Known,partial and wholly unknown outcomes stay distinct.',
         'The source-fold contrasts and camera support slices remain visible.',
         'All source rows remain;no primary/threshold is changed after scoring.', '',
+        '## Fitting-Side Diagnostic', '',
+        f'The camera actor has higher final fitting-minibatch loss in{sum(new > old for _, old, new in losses)}/6designs.',
+        'The original draws,factors and final batch are matched. This is one',
+        'final minibatch per design,not a complete training-distribution average',
+        'or proof of underfitting. The degradation already appears on fitting',
+        'examples,so a pure held-source-shift explanation is insufficient.', '',
+        '| Design | Identity final loss | Camera final loss |', '|---|---:|---:|']
+    failure += [f'| {key} | {old:.6f} | {new:.6f} |' for key, old, new in losses]
+    failure += ['', '## Next Model-Side Question', '',
+        'The current intervention bundles past-history alignment with fixed',
+        'future-affine restoration. Their separate predictive effects are not',
+        'identified. A next matched A-side ablation should separate those two',
+        'operations before scaling the same failed recipe or retuning a policy.',
+        'It must retain source exclusions,original loss/risk/support rules and',
+        'a native-coordinate control. No new test is opened by this report.', '',
         'No new controller is trained and no new policy is deployed. The original',
         'per-recording2%all/easy,signed easy-net,reference/support/NA requirements',
         'remain. Exact replay is reproducibility evidence,not independent',

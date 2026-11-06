@@ -12,6 +12,15 @@ effect is-1.804pp and completion lower-10.931pp[-17.826,-5.288];the component
 screen fails. These outcomes and frozen-checkpoint diagnostics are included,
 with their source hashes. No new outcome scoring is done by the manuscript builder.
 
+The completed query-view experiment adds six full4,000update actors,a full
+identity control and one complete first-design treatment refit. All twelve
+actor/camera-CV forecast banks and scalars replay exactly. Its primary known
+effect is-5.133pp,paired lower-21.447pp[-33.682,-9.911],with3/14positive
+known sources. The camera-CV secondary control does not replace this failed
+primary. All six final matched training minibatches are worse;this is not a
+training-average loss estimate or identification of a unique causal failure.
+The draft preserves the failure and original risk/support/NA rules.
+
 This is a working evidence draft, **not submission-ready**. Exact replay and a
 compiled PDF do not establish the method contribution or independent evidence.
 The original2%/support/NA requirements remain; identity certification is not
