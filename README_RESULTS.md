@@ -61,6 +61,10 @@ resumed phase8175.679276s,peak1,802,534,912B. All48000scientific treatment updat
 are complete with the original source sampler/factors;the151discarded updates
 are additional compute. Two complete fixed-design refits precede forecast freeze
 and source-held outcome comparison. No predictive success is claimed yet.
+Both fixed-design treatment refits complete at17:50:21Z,PID48482exit0,
+2673.407485s,peak1,999,847,424B. Both scientific states reproduce exactly.
+This is two complete treatment refits,not twelve. All twelve prediction banks
+will freeze before the source-held diagnostic outcome comparison.
 
 The native-stride v10 English working manuscript now compiles independently
 of the frozen European-stride v9 PDF. It binds completed public scalar evidence,
