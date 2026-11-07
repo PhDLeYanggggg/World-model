@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Calibration: Full Run Started
+
+The four thresholds and selection procedure are registered. All nine
+screened neural checkpoints ran on two real calibration prefixes on
+native arm64 before the full 40-recording inference started. All 11,240
+queries must be frozen before any calibration label readout. The 30
+confirmation groups are outside the runner. No calibration score yet.
+[Protocol, runtime and recovery](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/README.md).
+
 ## Approved DroneCrowd Calibration And Confirmation Roles
 
 The approved, label-blind 15/30 split assigns 40 recordings to calibration

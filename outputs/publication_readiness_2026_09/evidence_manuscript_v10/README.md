@@ -7,6 +7,10 @@ raw-frame studies. Their absolute errors and gains are not pooled.
 The [approved DroneCrowd allocation](../dronecrowd_approved_roles_v2/README.md)
 locks 15 groups for calibration and 30 distinct groups for confirmation.
 It is an input-only role decision, not an external result.
+The [registered calibration run](../dronecrowd_calibration_readout_v1/README.md)
+has begun on the 15-group role after a real-model input smoke.
+It will freeze all predictions before opening calibration labels.
+The main PDF is unchanged.
 
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
