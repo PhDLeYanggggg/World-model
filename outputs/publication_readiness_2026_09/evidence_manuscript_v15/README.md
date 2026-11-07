@@ -1,5 +1,8 @@
 # Decision Manuscript v15
 
+The [v16 draft](../evidence_manuscript_v16/README.md) also reports
+the forecast-blend and missing-label debit ablations.
+
 This anonymous working draft retains the matched-budget and imitation
 experiments from [v14](../evidence_manuscript_v14/README.md). It adds
 the [dual-reference capacity audit](../native_dual_reference_capacity_v1/README.md)

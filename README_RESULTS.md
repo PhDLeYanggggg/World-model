@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Missing-Label Risk And Utility Debit Ablation
+
+With identical counts, the native bank verifies 51/102 under the
+original rule, 63 with only the utility debit omitted, 57 with only
+the positive-harm debit omitted, and 66 with both omitted. No
+unresolved views. The 15 newly positive counterfactual views repeat
+five recordings from three sources; 36 still fail. This does not
+impute missing outcomes or change the deployment check.
+[Results and replay](outputs/publication_readiness_2026_09/native_missing_debit_capacity_v1/README.md) |
+[v16 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v16/README.md).
+
 ## OLS4-Centered Forecast Bank Expansion
 
 Expanding the native eight options to 20 (causal blends) or 29

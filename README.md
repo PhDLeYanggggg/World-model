@@ -109,6 +109,11 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I separated the missing-label charge in the risk check from the
+charge in the gain comparison. In the most permissive diagnostic,
+15 additional views can pass, but 36 still fail. I keep the original
+rule for all reported deployment evidence. [Debit ablation and its limits](outputs/publication_readiness_2026_09/native_missing_debit_capacity_v1/README.md).
+
 I tried expanding the forecast bank with small OLS4-centered blends.
 Neither the causal blends nor the learned blends added a single
 recording view that could beat both motion references and meet the
