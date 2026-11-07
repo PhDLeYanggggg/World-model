@@ -160,3 +160,13 @@ def test_dual_view_rejects_changed_results_after_replay(tmp_path, monkeypatch):
     (folder/'analysis.json').write_text(json.dumps(a))
     with pytest.raises(ValueError, match='exact replay evidence required'):
         paper.dual_view_update()
+
+
+def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
+    template = (paper.PUBLIC/'manuscript.template.md').read_text()
+    assert template.index('## LLM Usage Statement') < template.index('## References')
+    tex = paper.latex_document((paper.PUBLIC/'manuscript.md').read_text())
+    assert tex.index(r'\section*{LLM Usage Statement}') < tex.index(r'\section*{References}')
+    assert 'The component fails' in paper.fixed_count_update()
+    assert 'not estimable' in paper.three_seed_update()
+    assert 'neither a three-seed intervention policy nor independent confirmation' in paper.three_seed_update()

@@ -18,6 +18,10 @@ PINNED = {
     'moving_visual_risk_v1/failure_case.json': '5eb109a4a98f9f3076bfe3b95e94120b0572f66bc81360e90bce04d2a3b47523',
     'moving_prefix_actor_v1/analysis.json': 'ae140b4cad607c07883446a4f0b8c31fe8512cbe7d262ebcd1f78b329f91e83e',
     'moving_supported_global_motion_v1/analysis.json': 'ff55b3039123a2c6d8a5b8b58147e1d69aa96609bc4131c4ee050208397cfb74',
+    'moving_pair_coupling_v1/analysis.json': '6e0ff5216cc54b96f6ed599934a6c684d746ca88bfb9208ae97caec47ddfecd7',
+    'moving_pair_coupling_v1/oracle_diagnostic.json': '6a3bd39df31700f45a99f5e0092b8563b26e32c9a5cbbb602e557bffd904c3de',
+    'moving_pair_coupling_v1/execution_verification.json': 'a2867d4e0bd2f14002dd7f3f3a7c663a089573a05e260965cb03ee215a1be904',
+    'moving_source_forecast_supported_v1/analysis.json': '1b71be03bcdcf270da342365a33cc158890c133a3a59b336c1df2b9fe324ec16',
 }
 
 
@@ -359,6 +363,44 @@ def figures(a):
     fig.savefig(BUILD/'visual_cost_evidence.png', dpi=180); plt.close(fig)
 
 
+def fixed_count_update():
+    folder = HOME/'moving_pair_coupling_v1'
+    pair, oracle, proof = [read(folder/name) for name in
+        ('analysis.json', 'oracle_diagnostic.json', 'execution_verification.json')]
+    if (proof['registered_component_screen_pass'] or proof['original_full_policy_gate_run']
+            or pair['new_independent_outcomes'] or oracle['independent_confirmation']):
+        raise ValueError('Fixed-count pair study is a failed development diagnostic')
+    r = pair['paired']['pair_squared_reduction']
+    lo, hi = r['interval95']
+    return (
+        '### 6.5 Matched-Count Pair Decisions\n\n'
+        'On the same exposed forecast bank, we hold the switch count fixed per query '
+        'and add an analytic pair term to source-excluded marginal costs. '
+        f'Across {pair["rows"]:,} rows, the reduction in squared normalized pair error '
+        f'is {r["point"]:+.6f} [{lo:+.6f}, {hi:+.6f}]. The component fails. '
+        f'A label-aware oracle adds only {oracle["oracle_coupling_gain"]:.6f} over '
+        'the additive oracle; this is not learnable gain. Matching count does '
+        'not match the original 2% risk budget.\n'
+    )
+
+
+def three_seed_update():
+    a = read(HOME/'moving_source_forecast_supported_v1/analysis.json')
+    if (a['actual_seeds'] != [17, 29, 43] or a['primary']['status'] != 'not_estimable'
+            or a['complete_risk_or_policy_gate_evaluated']):
+        raise ValueError('Three-seed source evidence applies to predictors, not the policy')
+    known, lower = [a['supported_group_'+key+'_secondary'] for key in
+                    ('known', 'completion_lower')]
+    lo, hi = lower['CI95']
+    return (
+        'In a separate three-seed predictor control, EqMotion minus PCT yields '
+        f'{known["point"]:+.2f} pp on known labels but a completion lower bound of '
+        f'{lower["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}] across 23 supported '
+        'development groups. The 24-group primary remains not estimable. '
+        'This is neither a three-seed intervention policy nor independent confirmation.'
+    )
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -381,6 +423,7 @@ def main():
     for prefix, arm in (('quality', 'quality_geometry'), ('motion', 'motion_geometry')):
         values[prefix+'_easy_MSE'] = f'{cal[arm]["conditional_MSE"]["easy_harm"]:.6f}'
         values[prefix+'_Brier'] = f'{cal[arm]["observation_Brier"]:.6f}'
+    values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update())
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)

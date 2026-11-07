@@ -36,6 +36,20 @@ assigned,no new outcome access,unchanged2%contract.13scoped tests pass1.80s.
 CREATE read-only60s query times out,remote stateunknown;no job submitted.
 [Full source screen and role alternatives](outputs/publication_readiness_2026_09/dronecrowd_cross_archive_v1/README.md).
 
+## Three-Seed Predictor Controls
+
+I rechecked 18 saved 4,000-update PCT/EqMotion checkpoints from three actual
+training seeds. Native Torch inference matches all 18,432 original A probe
+predictions exactly. Training-record screening covers 12 checkpoints; the
+remaining six use 10 additional unscreened recordings. These are reusable
+forecast controls, not a three-seed controller or independent validation.
+No new training or external outcome access. The revised eight-page working
+draft includes the failed fixed-count pair study and the separate predictor
+control, retaining the undefined full-roster result and the interval crossing
+zero for the completion-lower contrast.
+[Checks and reproduction](outputs/publication_readiness_2026_09/dronecrowd_three_seed_bank_v1/README.md) |
+[Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

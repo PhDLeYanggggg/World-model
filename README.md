@@ -70,6 +70,13 @@ physical sites, and neither check is an external prediction result.
 [Source screen and proposed roles](outputs/publication_readiness_2026_09/dronecrowd_cross_archive_v1/README.md) |
 [Input compatibility](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
 
+I also checked the existing three-seed forecast controls before scheduling new
+training. All 18 trained checkpoints reproduce their saved predictions exactly
+on 18,432 development probe rows. The prior image screen covers every contributing
+training recording for 12 of those checkpoints. This prepares predictor controls;
+it does not establish three-seed intervention performance or external accuracy.
+[Three-seed control library](outputs/publication_readiness_2026_09/dronecrowd_three_seed_bank_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

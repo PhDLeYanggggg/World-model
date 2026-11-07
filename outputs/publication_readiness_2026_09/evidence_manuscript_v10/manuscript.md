@@ -446,6 +446,13 @@ contrast bounds wholly unknown row contributions with the observed
 reference fixed, not the full-grid error of partially labelled rows.
 This is one forecaster seed and no new independent test or deployment.
 
+### 6.5 Matched-Count Pair Decisions
+
+On the same exposed forecast bank, we hold the switch count fixed per query and add an analytic pair term to source-excluded marginal costs. Across 125,540 rows, the reduction in squared normalized pair error is -0.000172 [-0.001445, +0.000907]. The component fails. A label-aware oracle adds only 0.000634 over the additive oracle; this is not learnable gain. Matching count does not match the original 2% risk budget.
+
+
+In a separate three-seed predictor control, EqMotion minus PCT yields +55.02 pp on known labels but a completion lower bound of +14.46 pp [-8.19, +38.93] across 23 supported development groups. The 24-group primary remains not estimable. This is neither a three-seed intervention policy nor independent confirmation.
+
 ## 7. Failure Analysis and Limitations
 
 Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000% and 0.000% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
@@ -486,8 +493,8 @@ study. Failure under the original support requirements is not an impossibility
 theorem for neural forecasting, nor can it be repaired by reporting only mean
 utility. No required view is discarded or scored safe because it is empty.
 
-This work remains a 2D image-coordinate trajectory/world-state investigation,
-within the broader M3W research project. It is not true 3D, a foundation world
+This work remains a 2D image-coordinate trajectory/world-state investigation.
+It is not true 3D, a foundation world
 model, a calibrated physical simulator or proof of cross-dataset success.
 Stage5C execution and SMC remain disabled. A useful method contribution,
 stable intervention gain under the whole original contract and genuinely
@@ -525,6 +532,16 @@ human identity labels or human-gold scene annotations. A future inference
 system should not interpret error-relative checks as physical control safety.
 The author remains responsible for experimental validity, claim scope and
 any final decision to submit.
+
+## LLM Usage Statement
+
+OpenAI Codex assisted implementation, experiment orchestration, debugging,
+analysis and figure production in Methods and Experiments, and drafting
+and revision throughout the manuscript. It did not supply trajectory ground
+truth or independent validation. Reported results are tied to saved artifacts
+and documented checks. The author is responsible for validating experiments,
+citations, data-role boundaries and the final manuscript. Automated checks
+do not replace scientific verification.
 
 ## References
 
@@ -573,13 +590,3 @@ any final decision to submit.
     and Nicola Paoletti. Conformal Off-Policy Prediction for Multi-Agent
     Systems. IEEE CDC, 2024.
     https://arxiv.org/abs/2403.16871
-
-## LLM Usage Statement
-
-OpenAI Codex assisted implementation, experiment orchestration, debugging,
-analysis and figure production in Methods and Experiments, and drafting
-and revision throughout the manuscript. It did not supply trajectory ground
-truth or independent validation. Reported results are tied to saved artifacts
-and documented checks. The author is responsible for validating experiments,
-citations, data-role boundaries and the final manuscript. Automated checks
-do not replace scientific verification.

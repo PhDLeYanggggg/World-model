@@ -60,6 +60,14 @@ changed pages 6 through 8 and the new source/training figure were inspected.
 Forty-three focused checks pass; the full historical suite was not rerun.
 The frozen v9 sources and PDF are unchanged.
 
+The 7 November revision retains eight pages and includes the negative
+matched-count pair comparison plus a separate three-seed predictor control.
+The full 24-group predictor primary remains not estimable. The 23 supported
+groups are a secondary result, not evidence of an independently confirmed
+three-seed intervention policy. The named LLM Usage Statement now precedes
+References. Pages 6 through 8 were inspected; pages 1 through 5 were identical
+to the last inspected render. Thirty-five focused checks passed for this update.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

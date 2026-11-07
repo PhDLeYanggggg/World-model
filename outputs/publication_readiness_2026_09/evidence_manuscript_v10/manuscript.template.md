@@ -352,6 +352,10 @@ not success inferred from a favorable early prefix.
 
 {{ dual_view_update }}
 
+{{ fixed_count_update }}
+
+{{ three_seed_update }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}
@@ -392,8 +396,8 @@ study. Failure under the original support requirements is not an impossibility
 theorem for neural forecasting, nor can it be repaired by reporting only mean
 utility. No required view is discarded or scored safe because it is empty.
 
-This work remains a 2D image-coordinate trajectory/world-state investigation,
-within the broader M3W research project. It is not true 3D, a foundation world
+This work remains a 2D image-coordinate trajectory/world-state investigation.
+It is not true 3D, a foundation world
 model, a calibrated physical simulator or proof of cross-dataset success.
 Stage5C execution and SMC remain disabled. A useful method contribution,
 stable intervention gain under the whole original contract and genuinely
@@ -431,6 +435,16 @@ human identity labels or human-gold scene annotations. A future inference
 system should not interpret error-relative checks as physical control safety.
 The author remains responsible for experimental validity, claim scope and
 any final decision to submit.
+
+## LLM Usage Statement
+
+OpenAI Codex assisted implementation, experiment orchestration, debugging,
+analysis and figure production in Methods and Experiments, and drafting
+and revision throughout the manuscript. It did not supply trajectory ground
+truth or independent validation. Reported results are tied to saved artifacts
+and documented checks. The author is responsible for validating experiments,
+citations, data-role boundaries and the final manuscript. Automated checks
+do not replace scientific verification.
 
 ## References
 
@@ -479,13 +493,3 @@ any final decision to submit.
     and Nicola Paoletti. Conformal Off-Policy Prediction for Multi-Agent
     Systems. IEEE CDC, 2024.
     https://arxiv.org/abs/2403.16871
-
-## LLM Usage Statement
-
-OpenAI Codex assisted implementation, experiment orchestration, debugging,
-analysis and figure production in Methods and Experiments, and drafting
-and revision throughout the manuscript. It did not supply trajectory ground
-truth or independent validation. Reported results are tied to saved artifacts
-and documented checks. The author is responsible for validating experiments,
-citations, data-role boundaries and the final manuscript. Automated checks
-do not replace scientific verification.

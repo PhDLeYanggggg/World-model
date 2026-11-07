@@ -12,6 +12,9 @@ code,analysis,figures and prose. Author profiles and conflict information must
 be completed by enrollment,not after the paper is finished.
 [Author guidelines](https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines).
 
+7 November recheck: the LLM Usage Statement must follow the main text and
+precede the references. The revised working PDF uses this order.
+
 Current project status:working evidence draft,not submission-ready. Three-seed
 main evidence,independent confirmation,anonymous reconstruction and scientific
 gate success are incomplete. Profile/enrollment/conflict completion is not
