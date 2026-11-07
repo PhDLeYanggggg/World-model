@@ -88,6 +88,11 @@ The draft remains eight pages. Pages 1 through 6 match the inspected prior
 render exactly; changed pages 7 and 8 were inspected. The supplement TeX is
 unchanged and its source binding is refreshed. Twenty-nine focused tests pass.
 
+The three-seed continuation revision records the new easy-objective training
+ablation and its conservative utility loss. Both candidate banks still miss
+one required view. Eight pages, pages 1 through 6 pixel-identical to the last
+checked version and changed pages 7 and 8 inspected. Thirty focused tests pass.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

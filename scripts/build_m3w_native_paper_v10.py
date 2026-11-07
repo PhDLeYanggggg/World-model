@@ -30,6 +30,8 @@ PINNED = {
     'moving_recording_switch_ceiling_v1/replay_execution.json': '3f1b30dd0deaec3084401b6cf84aaed6b23423c7ac5c30b46ed4ced2df708caf',
     'moving_recording_bank_ceiling_v1/analysis.json': '8ee77b07e40ba2f114dcd84c4764418dade8bf118df7b70bb097df2e9f725151',
     'moving_recording_bank_ceiling_v1/replay_execution.json': '4e9ebf07df53ff8bc2fffaae7c915d82b5e279c925f5c7df0bd2b8b44e997b3a',
+    'moving_easy_aligned_forecast_v1/analysis.json': 'fddd5b29954f673b82191ecab83bdac2187bb72783cc66e45809a439a71c4426',
+    'moving_easy_aligned_forecast_v1/replay_execution.json': '82f07bae672c62cf5a46d2d4be3580d2c550dd5127eb727fb45dde0664e0bbf5',
 }
 
 
@@ -467,6 +469,21 @@ def bank_ceiling_update():
     )
 
 
+def easy_forecast_update():
+    folder = HOME/'moving_easy_aligned_forecast_v1'; path = folder/'analysis.json'
+    a = read(path); replay = read(folder/'replay_execution.json')
+    if (replay['analysis']['sha256'] != sha(path) or a['independent_confirmation']
+            or a['new_bank_feasible_views'] != dict(ade=101, easy_aligned=101)):
+        raise ValueError('Keep the matched warm-training result separate from policy or external evidence')
+    p = a['paired']; lo, hi = p['lower_pp']['interval95']
+    return (
+        'In a matched three-seed PCT continuation, an easy ADE excess loss '
+        f'changes known easy positive harm by {p["easy_harm_increase_pp"]["point"]:+.2f} pp, '
+        f'but the paired completion lower is {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
+        'Neither new trajectory bank recovers the unsupported view.'
+    )
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -491,7 +508,7 @@ def main():
         values[prefix+'_Brier'] = f'{cal[arm]["observation_Brier"]:.6f}'
     values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update(),
         seed_dispersion_update=seed_dispersion_update(), recording_risk_update=recording_risk_update(),
-        bank_ceiling_update=bank_ceiling_update())
+        bank_ceiling_update=bank_ceiling_update(), easy_forecast_update=easy_forecast_update())
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)

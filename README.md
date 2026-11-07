@@ -115,6 +115,12 @@ other existing forecasts raises free-count feasibility to 101/102, still
 short of the full roster. This is an offline limit, not selector performance.
 [Candidate-bank feasibility](outputs/publication_readiness_2026_09/moving_recording_bank_ceiling_v1/readout.md).
 
+I also trained a matched three-seed forecast ablation. An easy-case loss
+reduced known easy harm by 6.98 percentage points, but the conservative
+paired utility fell by 7.68 points and the remaining unsupported view did
+not recover. The new forecasts are research candidates, not a deployment.
+[Easy-aligned training experiment](outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

@@ -175,3 +175,4 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert '0/102' in paper.recording_risk_update() and 'undefined in 17' in paper.recording_risk_update()
     assert '101/102 feasible views' in paper.bank_ceiling_update()
     assert 'without demonstrating a learnable selector' in paper.bank_ceiling_update()
+    assert '-7.68 pp' in paper.easy_forecast_update() and 'Neither new trajectory bank' in paper.easy_forecast_update()

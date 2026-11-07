@@ -111,6 +111,16 @@ is promoted to an inference policy or independent outcome.
 [Binary oracle](outputs/publication_readiness_2026_09/moving_recording_switch_ceiling_v1/readout.md) |
 [Nested bank](outputs/publication_readiness_2026_09/moving_recording_bank_ceiling_v1/readout.md).
 
+## Training A New Easy-Aligned Candidate
+
+Six real PCT continuations, 1,800 new optimizer updates, three matched actual
+seeds. The new training loss reduces known easy positive harm by 6.976 pp
+[-15.513,-0.610] versus matched ADE, but hard change +0.092 pp is uncertain
+and completion-lower utility is -7.675 pp [-16.963,-2.093]. Both expanded
+oracle banks still support 101/102, not full support. All 753,240 A predictions
+freeze before scoring, and the scalar replay is exact. No promotion or changed
+2% rules. [Training and readout](outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

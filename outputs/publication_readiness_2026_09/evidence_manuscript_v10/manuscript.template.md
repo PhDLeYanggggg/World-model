@@ -362,6 +362,8 @@ not success inferred from a favorable early prefix.
 
 {{ bank_ceiling_update }}
 
+{{ easy_forecast_update }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}
