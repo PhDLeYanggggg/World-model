@@ -1,5 +1,8 @@
 # Decision Manuscript v14
 
+The [v15 working draft](../evidence_manuscript_v15/README.md) also
+reports exact conservative capacity against both motion references.
+
 This six-page anonymous working draft distinguishes the existence of
 feasible forecast replacements from recovering them using past
 observations. It adds an exact-budget figure and the matched structured

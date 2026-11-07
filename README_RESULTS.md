@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Dual-Reference Capacity At Fixed Query Counts
+
+At the original 9,675 switches, a fresh hindsight optimizer verifies
+44/102 views with one frozen path per person and 51/102 with the full
+bank that meet the original risk checks and show positive conservative
+gain against both CV and OLS4. These are exactly the prior CV-optimal
+witness counts. In the full bank, 45 more views have a negative
+maximin upper bound and six are risk/count infeasible; none are
+unresolved. This separates bank capacity from learned selection, not
+independent validation. [Method, results and replay](outputs/publication_readiness_2026_09/native_dual_reference_capacity_v1/README.md) |
+[v15 working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v15/README.md).
+
 ## Matched Recording Failure Attribution
 
 A fresh audit of frozen development choices exactly replays the

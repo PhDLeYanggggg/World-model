@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I also asked whether a better assignment could beat both CV and
+OLS4 at exactly the same switch counts. The full bank meets the
+risk rule in 96 of 102 development views, but only 51 can also
+beat both references under the conservative utility comparison.
+Changing the hindsight optimizer's objective did not add a single
+view. [Exact dual-reference result](outputs/publication_readiness_2026_09/native_dual_reference_capacity_v1/README.md).
+
 I checked whether missing future labels explain why the imitated
 policy failed. In 98 of 102 views, an original 2% check already
 failed on observed labels. The missing-label bound makes the utility
