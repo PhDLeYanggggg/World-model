@@ -14,6 +14,19 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Past Forecast Feedback
+
+I froze past-only inputs from forecasts that had already come due and
+refitted 84 source-excluded cost heads on the exposed Moving A roster.
+All 74,821 exact matches use the same agent in the same recording.
+With the same 6,184 switches and the same estimated risk costs, the
+primary own-plus-recording feedback contrast is +0.00003 pp in completion
+lower utility (95% source interval [-0.01215, +0.01426]). Original risk
+passes decrease from 3 to 1 of 102. With free switch counts, own feedback
+shows +0.03228 pp [+0.00170, +0.07517], but passes decrease from 7 to 6.
+Static actions and score replay are exact. No independent outcome access
+or deployment change. [Design and results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/resolved_feedback/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

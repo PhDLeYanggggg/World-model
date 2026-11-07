@@ -168,6 +168,14 @@ discounting removed all carry but did not improve the risk result. A
 standalone aggregate bundle reconstructs the ledger comparisons and risk
 tables. [Credit and reproduction](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/credit_transport/readout.md).
 
+I also tested whether forecast errors that are already observable tell me
+when to switch again. With the same number of switches per frame, adding
+agent and recording feedback does not improve utility reliably, and fewer
+recording views pass the original risk test. Letting the model choose how
+often to switch gives a small utility gain from agent feedback alone, but
+still does not improve safety. I do not use this change for deployment.
+[Past forecast feedback experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/resolved_feedback/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
