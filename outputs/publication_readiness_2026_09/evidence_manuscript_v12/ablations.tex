@@ -1,0 +1,65 @@
+\section{Controlled Ablations}
+\paragraph{Past scene information.}
+In the exposed own-B experiment, comparing motion-and-geometry with
+quality-and-geometry holds the requested prediction support fixed.
+Table~\ref{tab:context} gives the reported free-switch policies; their
+realized intervention rates differ, so the table is not an equal-count
+effect. The registered direct motion-minus-quality conservative
+contrast is \ContextContrast. It does not establish a scene-input
+benefit. The motion policy improves hard-slice available-label error
+while worsening the easy slice and still fails the complete risk rule.
+In a selected worst-easy case with all twelve labels present, retaining
+CV gives \FailureBaseline{} pixels ADE while the chosen neural
+forecast gives \FailureCandidate{} pixels ADE. This is a tail case,
+not an estimate of typical behavior.
+
+\begin{table*}[t]
+\centering\small
+\caption{Past-image cost inputs on exposed own-B development.
+Accuracy columns report available-label gain over CV in percent.
+The 72 views repeat 24 recordings across three risk-head seeds.}
+\label{tab:context}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Input & All & Hard & Easy & Original risk passes / 72 \\
+\midrule
+\ContextRows
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{Interaction ablation.}
+With matched forecasters, query counts and the same observed-neighbor
+graph, the relative-trajectory ADE reduction of joint versus additive
+is \PairObserved{} pixels on observed pairs. The full-grid conservative
+lower contrast is \PairLower{} pixels; the upper contrast is
+\PairUpper{} pixels. Thus the observed pair comparison does not
+establish an improvement with missing pair outcomes, nor does it
+measure physical collisions. The conservative trajectory utility
+contrast in Table~\ref{tab:matched}'s setting likewise does not
+support the added cross term.
+
+\paragraph{Risk after selection.}
+The local screen accepts options according to predictions fitted on
+candidate actions. Refitting to the actions the search actually selects
+tests whether this mismatch can be repaired. With 3,280 matched
+switches, learned probability ranking versus the matched margin
+control gives \PostRiskContrast; both pass one of 102 views.
+A separate loss directly fits additive harm and reference masses,
+then applies a past-only recording ledger. At 280 switches matched
+within recording and cardinality, whole-recording training gives
+\PostMassContrast{} relative to the pointwise margin rank. The
+recording model passes three views and the matched control four.
+These fixed-count ranks are retrospective controls, not deployments.
+Neither of the nested post-search model families has a threshold
+that passes every required validation view in any of its 42 folds.
+
+\paragraph{Tail errors and support.}
+The original gated joint strategy uses \GateSwitches{} switches in
+the native Moving A experiment; the CV and gated joint worst
+recording-level p95 available-label ADE are both \TailCV{} pixels.
+Unconditionally substituting OLS4 yields \TailOLS{} pixels in this
+tail summary. OLS4 is a comparison forecast, not a policy certified
+against CV. CV abstains everywhere, so its selected easy risk is
+undefined, not an observed pass. The forecast role and the risk
+denominator must remain explicit when interpreting either comparator.

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Integrated Decision Manuscript
+
+The four-page [v12 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v12/README.md)
+combines matched intervention controls, distinct development cohorts, scene
+and interaction ablations, and negative risk-refit results. It builds from
+hash-verified results; no new scientific score was computed for the manuscript.
+The anonymous source package rebuilt all four pages from an empty directory.
+DroneCrowd confirmation remains sealed under the 15/30 group protocol.
+
 ## History-Conditioned Forecast Radius
 
 At 2,194 identical interventions, literal clipping raises risk passes

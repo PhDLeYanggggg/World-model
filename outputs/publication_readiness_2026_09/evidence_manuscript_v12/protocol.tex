@@ -1,0 +1,47 @@
+\section{Data and Experimental Protocol}
+The native Moving A development roster contains 125,540
+past-eligible agent windows in 1,613 queries, 34 recordings and
+14 source groups. We retain partial and wholly unobserved futures.
+The three forecast seeds repeat this roster. Earlier image experiments
+use a distinct, exposed own-B development roster of 62,466 windows
+in 24 recordings and eight source components. These roles overlap
+globally and are not pooled or counted as independent tests.
+All data are native annotation steps and image pixels.
+
+\paragraph{Decisions.}
+An action is one forecaster or the CV fallback for one agent. The
+matched experiment keeps at most two genuine switches per query and
+uses the same requested query count for all four decision rules.
+The independent control ranks predicted gains by agent; the
+shared-family control uses the same forecaster for all switches
+within a query. The graph controls use the causal neighborhood
+from the union of four-nearest-neighbor links at the last observation.
+For an edge $(i,j)$, let $d_i$ denote the change from CV, and $r_{ij}$
+the CV relative path minus its OLS4 counterpart. The quadratic
+relative-path change is
+\[
+  \lVert r_{ij}+d_i-d_j\rVert^2-\lVert r_{ij}\rVert^2 .
+\]
+The additive arm omits the cross term in $d_i,d_j$ but retains
+the same single-agent marginals. Predicted CV gain, positive harm,
+reference error and visibility are estimated from causal trajectory
+and forecast-disagreement features. A local screen uses the fitted
+risk costs, not observed outcomes; all reported passes are evaluated
+by the original recording rule. The screen does not imply a
+finite-sample risk guarantee.
+
+\paragraph{Role separation.}
+Development model fits exclude the scored source for each comparison.
+For thresholded post-search studies, seven sources fit the search
+and risk heads, six disjoint sources choose operating thresholds,
+and one source is held out. Search choices used to fit the risk head
+are themselves cross-fitted within the seven sources. No fold is a
+substitute for an independent, unexposed evaluation. The separate
+DroneCrowd protocol reserves 15 exclusion groups (40 recordings)
+for calibration and 30 groups (72 recordings) for confirmation.
+Predictions for all calibration recordings must freeze before the
+calibration scorer reads their future labels. A qualifying frozen
+rule must meet all required recording checks and the registered
+paired CV criterion before any one-shot confirmation proceeds.
+The final confirmation comparisons and matched controls are fixed
+ahead of its readout. This manuscript contains no external scores.

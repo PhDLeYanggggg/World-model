@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I pulled the decision study into a four-page working paper. The main
+comparison keeps the prediction bank and intervention budget fixed. I
+report where joint selection falls short, alongside the image ablation,
+the recording-level risk refits, and a large easy-case failure.
+[Working paper and reproduction](outputs/publication_readiness_2026_09/evidence_manuscript_v12/README.md).
+
 I have fixed the DroneCrowd study to 15 calibration groups and 30
 separate confirmation groups. The recordings stay with their entire
 exclusion group. This assigns roles; it does not report external
