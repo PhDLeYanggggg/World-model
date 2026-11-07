@@ -1,0 +1,255 @@
+{
+  "all_predictions_frozen_before_any_calibration_labels": true,
+  "arm_order": [
+    "constant_velocity_causal_fd",
+    "history_ols4_velocity",
+    "independent",
+    "scene",
+    "pair_additive",
+    "joint",
+    "gate_0",
+    "gate_1",
+    "gate_2",
+    "gate_3"
+  ],
+  "batch_size": 256,
+  "confirmation_access": false,
+  "contrasts": {
+    "gate_0_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gate_0",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_0_vs_ols4": [
+      "history_ols4_velocity",
+      "gate_0",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_1_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gate_1",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_1_vs_ols4": [
+      "history_ols4_velocity",
+      "gate_1",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_2_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gate_2",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_2_vs_ols4": [
+      "history_ols4_velocity",
+      "gate_2",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_3_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gate_3",
+      "constant_velocity_causal_fd"
+    ],
+    "gate_3_vs_ols4": [
+      "history_ols4_velocity",
+      "gate_3",
+      "constant_velocity_causal_fd"
+    ],
+    "history_ols4_velocity_vs_cv": [
+      "constant_velocity_causal_fd",
+      "history_ols4_velocity",
+      "constant_velocity_causal_fd"
+    ],
+    "independent_vs_cv": [
+      "constant_velocity_causal_fd",
+      "independent",
+      "constant_velocity_causal_fd"
+    ],
+    "independent_vs_ols4": [
+      "history_ols4_velocity",
+      "independent",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_cv": [
+      "constant_velocity_causal_fd",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_independent": [
+      "independent",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_ols4": [
+      "history_ols4_velocity",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_pair_additive": [
+      "pair_additive",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_scene": [
+      "scene",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "pair_additive_vs_cv": [
+      "constant_velocity_causal_fd",
+      "pair_additive",
+      "constant_velocity_causal_fd"
+    ],
+    "pair_additive_vs_ols4": [
+      "history_ols4_velocity",
+      "pair_additive",
+      "constant_velocity_causal_fd"
+    ],
+    "scene_vs_cv": [
+      "constant_velocity_causal_fd",
+      "scene",
+      "constant_velocity_causal_fd"
+    ],
+    "scene_vs_ols4": [
+      "history_ols4_velocity",
+      "scene",
+      "constant_velocity_causal_fd"
+    ]
+  },
+  "cpu_threads": 4,
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "exact_predictors": [
+    {
+      "checkpoint_sha256": "1f4a84d5069f3814d8c1a33a3fb56681e843b371dc85b4aaaa2b737fc8ad8a79",
+      "family": "pct",
+      "seed": 17
+    },
+    {
+      "checkpoint_sha256": "e9bc3296bf3616028dc153cf18aed076c8a61ec426378786923e7fea23865a22",
+      "family": "pct",
+      "seed": 29
+    },
+    {
+      "checkpoint_sha256": "fa73ea6d4e59fb04183adc34359f5cb1e19af73d519763bda370a61b19927a30",
+      "family": "pct",
+      "seed": 43
+    },
+    {
+      "checkpoint_sha256": "2f1aa2906b0031c88adc9292579cd2dc361b0593edd696cac4a3d25a8b3bf3cf",
+      "family": "eqmotion",
+      "seed": 17
+    },
+    {
+      "checkpoint_sha256": "99773ef94adceaa46bb2473cfcf61c81b010169d7240105e9dc788323f8b5cb5",
+      "family": "eqmotion",
+      "seed": 29
+    },
+    {
+      "checkpoint_sha256": "f0f5f83f4faef0d38dce4f368cf108a9c48656b03350e169b48f3f4f1e1d7b9a",
+      "family": "eqmotion",
+      "seed": 43
+    },
+    {
+      "checkpoint_sha256": "cd886e8a3918fc8673cb12a7be56cdbc960509bfff2a317968b16bd22f7486e9",
+      "family": "self",
+      "seed": 17
+    },
+    {
+      "checkpoint_sha256": "5f151a1d9e7f0fdf9bc512de399779cbbfab9720eb2a0ad6b9cdbe4254f3b666",
+      "family": "self",
+      "seed": 29
+    },
+    {
+      "checkpoint_sha256": "12a5a0d11f32a49675e92a6d0135e77fed1102470a377eb0f12794e5cbf683f2",
+      "family": "self",
+      "seed": 43
+    }
+  ],
+  "files": [
+    {
+      "bytes": 14804,
+      "path": "scripts/run_m3w_dronecrowd_calibration.py",
+      "sha256": "8a3e22fa8cce08abf15a55dac40f131edfb1b4e6b81027914daa98c974f59ad0"
+    },
+    {
+      "bytes": 2046,
+      "path": "src/world_model/m3w_dronecrowd_calibration.py",
+      "sha256": "59a851ef320d0e92ef68cdc79775426044d8afa58254d7f95db1a95c135f1be8"
+    },
+    {
+      "bytes": 1903,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/protocol.md",
+      "sha256": "350c98c9f6b57ae46e4fc164a379d28db022d1916aee0a484de98c0d70a62249"
+    },
+    {
+      "bytes": 1079,
+      "path": "tests/test_m3w_dronecrowd_calibration.py",
+      "sha256": "91d7c51f97e42c897a49a142023dddb72afd1ec002bf7f3bd5da0515873a33eb"
+    }
+  ],
+  "normalized_gain_thresholds": [
+    0.0,
+    0.01,
+    0.03,
+    0.1
+  ],
+  "original_budget": 0.02,
+  "parents": [
+    {
+      "bytes": 8933,
+      "path": "configs/m3w_dronecrowd_calibration_confirmation_v2.json",
+      "sha256": "caabb7504d6e1912d2fb3f8b8207d77b2be28c8897db280bbccf4d7168c1790a"
+    },
+    {
+      "bytes": 40251,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_recordings_v1/analysis.json",
+      "sha256": "1bb9946fa1bb62c720b40acb5aa7348dc4e8bf852a44c0d35b8765f36e98e9be"
+    },
+    {
+      "bytes": 4413,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/registration.json",
+      "sha256": "4b300cdb5c7d6f1a1800535b239409799052d1574409df14e5ae9ad21d35d705"
+    },
+    {
+      "bytes": 323,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/freeze_execution.json",
+      "sha256": "ea5a9a9bb83851d6d3adc05d40633dda57d0740d82757a4a1434925385a34598"
+    },
+    {
+      "bytes": 6605,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_native_inference_rehearsal_v1/analysis.json",
+      "sha256": "6b7765bc4af095b9ebe9477838901cec85f61cd88b7d8140515ae473acf916a3"
+    },
+    {
+      "bytes": 6255,
+      "path": "src/world_model/m3w_record_joint_actions.py",
+      "sha256": "dea6dad446dee16fbd9442d0c25a05ecde2d62d75be96bf37245ecf955b11b75"
+    },
+    {
+      "bytes": 1801,
+      "path": "src/world_model/m3w_native_transport_policy.py",
+      "sha256": "db7d937a1755b0843b33bd13d5c852d8b8f6ba94d59ad01561090556aa2502b4"
+    },
+    {
+      "bytes": 1543,
+      "path": "src/world_model/m3w_native_prefix_inference.py",
+      "sha256": "ea205b37b01ab7041170616776f7358fa8c0d6c7ac8fb9327697eeb0e932d964"
+    },
+    {
+      "bytes": 2289,
+      "path": "src/evaluation/m3w_recording_forecast_comparison.py",
+      "sha256": "efa0b2ddac1b51e71a2688373cce6f4c80886f4de0031642012a618169b9c41e"
+    }
+  ],
+  "scope": "calibration_only",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "threshold_rule": "all_120_pass_and_positive_paired_CV_lower_interval_then_maximize_lower_point",
+  "workers": 0
+}
