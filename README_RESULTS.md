@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Count-Preserving Amplitude Control
+
+The registered quarter-amplitude arm moves recording passes from
+2/102 to 15/102 without changing any of the 6,952 switches.
+Signed-easy violations fall from eight to zero; 35 undefined
+references remain. Of 75 original total-risk violations, 74
+already exceed the threshold from observed harm under the
+original denominator. None of these arms is deployed.
+[Results, bounds and exact replay](outputs/publication_readiness_2026_09/moving_frozen_amplitude_v1/readout.md).
+
 ## External Scoring Rehearsal on Development
 
 The source-group reducer exactly replays the direct policy's

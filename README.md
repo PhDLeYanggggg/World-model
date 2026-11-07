@@ -448,6 +448,12 @@ though the decisions and overall utility were identical. The
 keeps the original result and shows why the cuts must be fixed
 before confirmation.
 
+I kept the same switches and reduced how far their forecasts
+departed from constant velocity. At one quarter of the original
+amplitude, 15 rather than 2 recording views passed, but the same
+35 still lacked easy reference.
+[Amplitude control](outputs/publication_readiness_2026_09/moving_frozen_amplitude_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
