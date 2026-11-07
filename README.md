@@ -56,6 +56,16 @@ between learned choices and the label-aware optimum. This motivates better
 marginal cost estimation before a larger pair solver, not a deployment change.
 [Decision study and reproduction](outputs/publication_readiness_2026_09/moving_pair_coupling_v1/README.md).
 
+### Independent Evaluation Preparation
+
+I connected the cached DroneCrowd annotation prefixes to the existing 8/12
+forecast input schema. All 112 recordings pass the three-prefix check, without
+using future labels to select agents. I am screening these recordings for
+overlap with the previous MovingDroneCrowd development image roster before
+assigning experimental roles. The official folders are not a clean scene split.
+Neither input compatibility nor image matching is an external prediction result.
+[Input compatibility and compute estimate](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

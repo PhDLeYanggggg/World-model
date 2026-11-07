@@ -14,6 +14,19 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Independent DroneCrowd Input Preparation
+
+Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,
+48362current agents and48183past-complete targets. All pack to the original
+8/12 schema;no future-label method,forecast inference or role admission.
+11focused tests pass1.66s. Whole schedule31472queries;previous inference timing
+projects about4.7h perfull pass,not external measured throughput. Use streaming,
+not an8.6GB materialized feature table. Source overlap screen is registered
+before matching. Its one-recording pilot completes112pairs in23.52s;the full
+48x112 screen resumes from that receipt. Original2%and deployment unchanged;
+external calibration/confirmation roles pending,not independent evidence.
+[Input compatibility](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original
