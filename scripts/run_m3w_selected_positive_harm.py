@@ -17,7 +17,7 @@ from src.world_model import m3w_selected_positive_harm as model
 run, np, torch = nested.run, nested.np, model.torch
 PUBLIC = run.PUBLIC/'selected_positive_harm'
 PRIVATE = run.PRIVATE/'selected_positive_harm'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), Path(model.__file__), PUBLIC/'protocol.md', ROOT/'tests/test_m3w_selected_positive_harm.py')
 STEPS, BATCH = 400, 128
 FIT_ARMS = ('direct', 'factorized')
@@ -28,7 +28,7 @@ def register():
     if run.read(paths[1])['artifact']['sha256'] != run.sha(paths[0]):
         raise ValueError('Require verified selected cost attribution and calibration')
     run.once(REG, run.stable(dict(files=[run.artifact(p) for p in FILES], parents=[run.artifact(p) for p in
-        (*paths, nested.REG, Path(nested.__file__), Path(nested.cal.__file__), run.REG,
+        (*paths, PUBLIC/'registration.json', nested.REG, Path(nested.__file__), Path(nested.cal.__file__), run.REG,
          run.PUBLIC/'freeze.json', nested.base.PUBLIC/'freeze.json', nested.base.PUBLIC/'analysis.json')],
         arms=model.ARMS, steps=STEPS, batch=BATCH, aux_weight=.5, lr=.001, width=32,
         budget=.02, same_candidate_pool_and_query_counts=True, external_outcomes=False)))
@@ -87,7 +87,11 @@ def train_head(data, draws, key, arm, seed, path, stop, beat):
     step = 0; trace = []
     if path.exists():
         state = torch.load(path, map_location='cpu', weights_only=False)
-        if state['identity'] != identity:
+        saved = state['identity']; old_reg = PUBLIC/'registration.json'
+        old_head_bound = run.artifact(Path(model.__file__)) in run.read(old_reg)['files']
+        allowed_v1 = (saved['registration'] == run.sha(old_reg) and old_head_bound and state['step'] == STEPS
+                      and key == '17_moving_source_component_047')
+        if saved != identity and not (allowed_v1 and dict(saved, registration=run.sha(REG)) == identity):
             raise ValueError('Cannot resume changed selection, label or sampling')
         net.load_state_dict(state['model']); optimizer.load_state_dict(state['optimizer'])
         step, trace = state['step'], state['trace']
@@ -139,7 +143,7 @@ def fit_seed(d, refs, parent, label, beat, prefix):
             values.append(estimate*p['radius'])
         if stats['direct']['sampler_sha256'] != stats['factorized']['sampler_sha256']:
             raise ValueError('Matched sampler changed')
-        control = nested.base.select(b['groups'], p['utility'], p['all_excess'], p['easy_excess'], p['ok'])
+        control = nested.base.select(b['groups'], p['utility'], p['all_excess'], p['easy_excess'], b['scale'], p['ok'])
         np.testing.assert_array_equal(control, raw[ix])
         r = np.flatnonzero(control >= 0)
         for k, estimate in enumerate(values):
