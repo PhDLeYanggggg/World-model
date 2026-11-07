@@ -388,6 +388,12 @@ but did not beat the stronger control reliably and did not
 improve its first-query hit rate. I did not add it to the policy.
 [Easy-reference ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/easy_reference_rank/readout.md).
 
+I then trained two identical query rankers, emphasizing the first
+two queries in only one of them. The extra weight made the first
+choice worse: 20.56% versus 31.90% without it. I did not carry the
+early-weighted model into the policy.
+[Early-query ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/early_reference_listwise/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

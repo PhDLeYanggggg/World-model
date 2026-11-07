@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Early-Weighted Within-Query Easy-Reference Ranking
+
+On matched PyTorch fits, upweighting the first two eligible queries
+reduces first-query top-one accuracy from 31.90% to 20.56%:
+-11.35 pp (95% paired source interval [-23.02, -2.06]).
+First-query transitions lose 11 hits and regain one; five sources
+worsen and nine tie. The component fails without operating-policy
+evaluation.
+[Experiment and paired transition audit](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/early_reference_listwise/readout.md).
+
 ## Learning Observed Easy Reference On Matched Agents
 
 Boosted top-one accuracy is 39.01% over eligible queries, versus

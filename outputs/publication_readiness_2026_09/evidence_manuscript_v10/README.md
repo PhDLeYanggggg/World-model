@@ -170,6 +170,13 @@ the stronger joint control is inconclusive and first-query hits
 do not improve. It is not admitted to a new policy. The main
 PDF and risk contract are unchanged.
 
+The [early-weighted listwise study](../moving_record_joint_actions_v1/causal_ledger/early_reference_listwise/readout.md)
+holds the network and fitting draws fixed while changing the
+training weight on the first two eligible queries. It worsens
+first-query accuracy by 11.35 pp against the uniform objective,
+with a negative paired interval. This negative result constrains
+the early-support mechanism; no change to the main PDF or policy.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 
