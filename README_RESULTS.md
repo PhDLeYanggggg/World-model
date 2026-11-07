@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recording Risk Mass And Missing Easy Support
+
+With 280 matched switches, fitting whole-recording masses passes
+3/102 views versus 4/102 for pointwise ranking. Its normalized
+all-excess MSE increases by 0.000572 [0.000015, 0.001416].
+The exact easy-support check also reproduces all 102 prior capacity
+decisions. All three infeasible views repeat one recording, whose
+best distinct easy option incurs 23.925% harm against a 2% cap.
+[Matched loss comparison](outputs/publication_readiness_2026_09/native_postsearch_mass_v1/README.md) |
+[Feasibility case study](outputs/publication_readiness_2026_09/native_easy_support_certificate_v1/README.md).
+
 ## Nested Post-Search Risk Estimation
 
 With 7/6/1 source separation and 3,280 matched switches, learned

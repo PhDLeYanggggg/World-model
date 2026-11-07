@@ -77,6 +77,14 @@ does not improve the matched-margin contrast or the recording pass
 count; none of the donor threshold folds passes all required views.
 Better easy-reference prediction is not a risk guarantee.
 
+The [recording-mass comparison](../native_postsearch_mass_v1/README.md)
+fits exact recording totals after search. It does not beat the point
+fit at the same 280 switches and worsens the held all-excess error.
+The [easy-reference case study](easy_support_case_appendix.tex) gives
+a separate reason that selection alone cannot fix all recordings:
+the three oracle failures repeat one recording whose best legal
+easy replacement exceeds the risk cap in every seed.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

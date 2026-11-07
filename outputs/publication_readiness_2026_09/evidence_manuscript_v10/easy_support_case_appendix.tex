@@ -1,0 +1,51 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,booktabs}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\pagestyle{empty}
+\begin{document}
+{\Large\bfseries When the Forecast Bank Cannot Supply Easy Reference}
+
+\textbf{Setting.} Consider the exposed full-recipient oracle in
+which each query may emit any distinct legal actions up to its fixed
+cap. Let $b_i$ be the observed CV error of an easy target $i$, and
+$h_{ia}=\max(e_{ia}-b_i,0)$ the positive harm of alternative $a$.
+Only actions with a path different from CV count as switches.
+Easy reference requires $b_i>0$ by the original scoring rule.
+
+\textbf{Criterion.} The risk constraints admit a solution if and
+only if there is at least one legal easy action at a query with
+nonzero cap such that $h_{ia}\leq 0.02b_i$.
+
+\textit{Sufficiency.} Emit only that action. The selected all and
+easy harm ratios are identical and at most 2\%. Its signed easy
+change is no greater than its positive harm, which is bounded by
+2\% of the entire easy reference. Both selected denominators are
+positive and no unknown-outcome radius is incurred.
+
+\textit{Necessity.} A passing policy must have positive selected
+easy reference. If every eligible easy action has positive
+$h_{ia}-0.02 b_i$, any set with an easy action has positive easy
+excess. Other known actions add no easy credit. Wholly unobserved
+actions can only increase that numerator. Thus the easy cap fails.
+
+\textbf{Empirical case.} The criterion agrees with all 102 previous
+solves, including 99 feasible views and three infeasible views.
+The failures repeat one recording over three forecast seeds.
+Each seed has three easy rows with 27 distinct eligible row--path
+alternatives, and the minimum positive-harm ratio is 23.925\%
+for each seed. Ranking or allocating those same paths cannot create
+a passing subset in this case.
+
+\textbf{Scope.} This is an elementary consequence of the risk rule,
+not a statistical guarantee or a claim of method novelty. Risk uses
+the original unweighted selected-row masses; the separate OLS4
+utility objective uses equal query weights. The criterion need not
+hold for intact multi-agent proposals or a mandatory switch count.
+Feasible risk alone does not establish positive gain over OLS4.
+Labels are used for this diagnostic, not for past-only inference.
+The data are exposed Moving A recordings, eight observed and
+twelve predicted annotation steps in image pixels. No independent
+data or policy change is involved.
+\end{document}

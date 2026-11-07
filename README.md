@@ -184,6 +184,14 @@ risk-margin control both passed one view. The new head predicted easy
 reference better, but did not predict risk better.
 [Source-separated post-search result](outputs/publication_readiness_2026_09/native_postsearch_risk_v1/README.md).
 
+I compared query-level and whole-recording risk fits on the same
+search outputs. At matched counts the whole-recording fit passed
+one fewer view. I also traced the three hindsight-infeasible views
+to one recording repeated across seeds: even its best easy replacement
+adds 23.925% of the CV reference error.
+[Risk fit](outputs/publication_readiness_2026_09/native_postsearch_mass_v1/README.md) |
+[Failure case](outputs/publication_readiness_2026_09/native_easy_support_certificate_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
