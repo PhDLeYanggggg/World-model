@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Past-Only Causal Menu Control
+
+At 9,675 exactly matched switches, the mixed joint policy gains +0.450 pp
+[0.161, 0.797] on available labels but its conservative lower contrast
+is -0.314 pp [-1.183, 0.298] against the same policy with causal
+options only. Relative-path observed ADE reduction is -0.390 pixels
+[-0.850, -0.060]. The two screens share 56 identical causal switches
+and pass 0/102 views on that matched control. No deployment or external
+claim. [Matched control and replay](outputs/publication_readiness_2026_09/native_causal_menu_control_v1/README.md).
+
 ## Causal Versus Learned Forecast Capacity
 
 Under identical query caps and the original 2% rule, causal-only and

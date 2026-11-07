@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I then ran the same past-only selector with and without learned
+forecasts, at exactly the same switch count. The mixed menu helps on
+observed labels but does not establish conservative improvement.
+On the queries both screens accept, the 56 switches are identical
+and all use motion baselines.
+[Matched causal-menu control](outputs/publication_readiness_2026_09/native_causal_menu_control_v1/README.md).
+
 I separated the learned forecasts from the motion alternatives in the
 same label-aware capacity test. The causal menu already accounts for
 48 of the 51 positive recording-seed views. The learned forecasts

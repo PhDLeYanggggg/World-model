@@ -29,6 +29,7 @@ seconds. No true-3D or foundation-world-model claim is made.
 - [Working supplement and source-influence audit](supplement_readout.md).
 - [Dataset provenance and reporting units](data_provenance.md).
 - [Subsequent matched-cap causal versus learned bank ablation](../native_neural_bank_ablation_v1/README.md), not included in the frozen v12 PDF.
+- [Subsequent past-only causal-menu control](../native_causal_menu_control_v1/README.md), not included in the frozen v12 PDF.
 - [Aggregate replay instructions](../review_replay_v1/README.md).
 - The manuscript build checks SHA-256 bindings for the source extract, five
   replay-backed analyses, the image analysis and case, the template, and the
