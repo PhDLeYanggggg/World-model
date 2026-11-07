@@ -62,6 +62,26 @@ f27a7ae3e76bc129b02adff1bcd2326db87cee6124e9244a3af67269cf12a70c.
 New matrix remains incomplete. No forecast/score/refit has run for this matrix.
 No reserve/risk rule changed,no unrelated data deleted. Resume requires disk
 space;full remaining budget and two complete verification refits remain owed.
+At03:16:19Z,free disk recovers above the unchanged reserve andPID96461resumes.
+Nine complete receipts reverify;the interrupted model performs exactly65new
+updates to4000,256000draws,original draw/factor/RNG parity intact.10/12complete,
+last two train. The old3935hash records its rolling checkpoint at interruption;
+it is not claimed an immutable snapshot after that same file advances.
+The resume and complete-design receipt preserve this distinction.
+
+### Existing-Estimand Supplement: Derivations And Synthetic Verification
+
+The registered actor completion envelope holds partial-row observed losses and
+the known CV denominator fixed,and bounds only wholly unknown row contrasts.
+It is not complete-grid ADE. A separate existing full-grid gain bound handles
+every missing step,without inventing a reference denominator. Added explicit
+derivations,attainability example,paired-radius example and nonmonotone-ratio
+counterexample. No new metric,identity exception,model change or real-label
+readout.9new synthetic cases plus7manuscript checks pass:16passed1.32s.
+Three-page supplement compiles and all pages are visually inspected;15registered
+code/protocol hashes remain unchanged. CREATE fresh read-only60squeue attempt
+times out;stateunknown,no submissions or remote modifications. Training resumes
+locally;this is real progress,not completion of the scientific objective.
 
 ### Camera-Operator Ablation: Registered Before Real Fitting
 

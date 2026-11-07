@@ -55,3 +55,27 @@ diagnosis and the primary-literature scope recheck. Its replacement dual-view
 model is still training: no new dual-view outcome is included. All eight current
 rendered pages were visually inspected. Thirty-one focused checks pass; the
 full historical suite was not rerun. The frozen v9 sources and PDF are unchanged.
+
+## Evaluation Supplement
+
+`supplementary_math.md` and its generated TeX give the exact scope of the
+registered row-support completion envelope. Partially labelled rows retain
+their observed-step loss; only wholly unknown row contrasts are bounded, with
+the known CV reference denominator fixed. This is not a full-grid ADE bound.
+A separately documented existing full-grid calculation bounds every missing
+step. Elementary proofs, attainability examples and synthetic tests keep these
+quantities distinct without changing any registered metric or historical score.
+
+Nine new synthetic cases and seven manuscript checks pass (16 tests total).
+The three-page supplementary PDF compiles and every rendered page was inspected.
+All 15 active registered model/protocol dependency hashes remain unchanged.
+The new dual-view models remain unscored; their disk interruption recovered for
+exactly the remaining 65 updates in the tenth fit, with final RNG/draw parity.
+
+```sh
+.venv-pytorch/bin/python scripts/build_m3w_native_supplement.py
+python3 /Users/yangyue/.codex/plugins/cache/openai-bundled/latex/0.2.8/scripts/compile_latex.py \
+  data/stage_cvpr2027_experiments/evidence_manuscript_v10/supplement_build/main.tex \
+  --compiler tectonic --json
+.venv-pytorch/bin/python -m pytest tests/test_m3w_native_bound_estimands.py tests/test_m3w_native_manuscript.py
+```

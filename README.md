@@ -77,12 +77,19 @@ retained two-view information and coherent interruption recovery. Real-data
 100+100 and mid-forward signal-stop recovery now both match continuous 200
 exactly. The full 4,000-update original-core control now also matches the shared
 model, active optimizer state, sampler/RNG and common loss trace exactly. Its
-two additional inactive optimizer entries are declared separately. Nine of
+two additional inactive optimizer entries are declared separately. Ten of
 twelve full treatment models are complete, including all six observed-view
 models, with original sampling/RNG checks intact. A disk-space guard stopped
-the tenth model at a verified coherent update 3,935; no budget was reduced.
-The remaining work awaits disk space, then resumes from that checkpoint before
-any prediction or outcome comparison. Predictive usefulness is not established.
+the tenth model at coherent update 3,935. When space recovered it resumed for
+exactly the remaining 65 updates, retaining final sampling/RNG parity. The last
+two models are training; no budget or disk reserve was reduced. Prediction and
+outcome comparisons are still pending, so usefulness is not established.
+
+The [evaluation supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v10/supplementary_math.md)
+now makes an important distinction explicit: available-label error and the
+registered row-support completion envelope are not complete-trajectory ADE.
+The derivations and synthetic checks explain the existing quantities without
+changing the evaluation contract or any historical score.
 
 A [standalone aggregate-evidence package](outputs/publication_readiness_2026_09/native_actor_reproduction_v1/README.md)
 now replays the three completed actor studies in a clean directory without
