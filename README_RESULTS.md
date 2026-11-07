@@ -120,6 +120,19 @@ only on newly released rows in a bookkeeping diagnostic reduces
 eight violations to one, not a matched deployment evaluation.
 [Results and attribution](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/readout.md).
 
+## Source-Calibrated Release Guards
+
+One held, three calibration and ten fitting sources per fold.
+All four policies match 6,344 switches. Unguarded reopening gains
++0.20260 pp [0.01963, 0.41839] versus the matched base; learned and
+radius guards give +0.05579 pp [-0.00066, 0.13553] and +0.08172 pp
+[-0.01925, 0.21567]. Easy net violations fall from eight unguarded
+to five and four, but full passes are 2/102 and 3/102 versus 3/102
+unguarded. A posthoc grid ceiling finds positive preserving
+options in 23/42 learned and 32/42 radius cells; no outer threshold
+is adopted. No independent result or deployment change.
+[Results and threshold diagnostic](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

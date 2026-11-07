@@ -233,6 +233,13 @@ them. I keep this result as evidence of the gain and harm tradeoff,
 not a deployment upgrade.
 [Veto correction experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/readout.md).
 
+I tested two ways to limit those reopened decisions, calibrating each
+on sources that were separate from fitting and evaluation. Both cut
+easy net losses relative to reopening without a check, but also lost
+utility. The learned harm score did not reliably beat a simple limit
+on how far the forecast moves from the baseline. Neither is ready to use.
+[Release-guard comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
