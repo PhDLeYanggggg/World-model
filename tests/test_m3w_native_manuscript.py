@@ -179,3 +179,5 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert '-40.03 pp and raw risk passes 0/102' in paper.easy_forecast_update()
     assert 'feasibility to 102/102, but neither raw variant passes any view' in paper.easy_forecast_update()
     assert '-7.71 pp [-12.51, -3.12]' in paper.easy_forecast_update()
+    assert '-0.061 pp [-0.157, -0.006]' in paper.easy_forecast_update()
+    assert '+0.077 pp versus CV but passes only 2/102' in paper.easy_forecast_update()

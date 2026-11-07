@@ -39,7 +39,8 @@ full bank that individually meets both predicted budgets. In 43, all
 positive joint proposals violate the estimated easy budget. Only two
 zero-switch views have no nonpositive easy-budget excess among any distinct
 action. This identifies a concrete search restriction in addition to any
-cost calibration problem. [Filter-first follow-up](filter_first/protocol.md).
+cost calibration problem. The filter-first follow-up restores interventions
+but does not pass the observed risk gate. [Follow-up results](filter_first/readout.md).
 
 ## Reproduce
 

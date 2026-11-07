@@ -135,6 +135,14 @@ still fail the risk check, and adding neighbors does not improve the paired
 conservative score. The result motivates a new allocation test, not a
 replacement model. [Direct kinematic forecasts](outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/readout.md).
 
+On that fixed bank, I compared independent, common-action and joint
+selection with exactly the same per-query switch counts. The joint term
+adds no clear relative-motion gain beyond its pair marginals. Filtering
+before ranking recovers a small average gain over CV, but passes the
+original risk test in only 2 of 102 views. I do not deploy either policy.
+[Matched allocation](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/readout.md) |
+[Budget-first follow-up](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/filter_first/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

@@ -142,6 +142,20 @@ free-count, label-aware bank from 101 to 102 feasible and positive views,
 including the previously infeasible view. This is candidate support on
 exposed A, not policy or independent confirmation. [Full readout](outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/readout.md).
 
+## Source-Cross-Fit Multi-Action Allocation
+
+Forty-two source-held cost fits on fixed paths from three actual forecast
+seeds. The four matched arms each switch 9,675 times. Joint improves observed
+relative-pair error versus independent selection, but its mixed term changes
+direct completion-lower utility by -0.061 pp [-0.157, -0.006] versus its own
+marginal control. Screening the full bank first restores 6,184 switches and
+CV-relative lower utility +0.077 pp [+0.029, +0.133]. The original gate still
+passes just 2/102; 63 views already exceed known easy harm and 36 have no
+defined easy reference. The matched and budget-first tests use exposed A;
+no independent outcome or change to deployment.
+[Matched study](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/readout.md) |
+[Search repair](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/filter_first/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

@@ -36,6 +36,10 @@ PINNED = {
     'moving_missingness_aligned_forecast_v1/replay_execution.json': 'bbaca7c39cea793b9e4294689aaba9040d929e68e73bf40795cf0eb5d45f29ce',
     'moving_direct_kinematic_forecast_v1/analysis.json': '09bfe6216781f6a0d4e14dc0bc408a07b09d892445f7b0ea58e914a6faa088d7',
     'moving_direct_kinematic_forecast_v1/replay_execution.json': 'df6bed7065d8177142adec962bf633b8c582904e8a8211ba96a2fe8cd13c39ee',
+    'moving_record_joint_actions_v1/analysis.json': 'cccb421712de5bd1c8b56a1773c29d4f93a2228346c6a1688b13633a02b8d5e6',
+    'moving_record_joint_actions_v1/replay_execution.json': '494d17c5fc01bb19d2ff2e5708528562c8e5559829464f8232e1ade8e798c265',
+    'moving_record_joint_actions_v1/filter_first/analysis.json': '5ec62bcc01687044ea4a52a6dad85de40bb013799e2d0b207d99be0b51818506',
+    'moving_record_joint_actions_v1/filter_first/replay_execution.json': '507be3662e599017f9a4af9cead2a92bdb2b2e6b54654d3bbccd309a760f98a8',
 }
 
 
@@ -493,6 +497,12 @@ def easy_forecast_update():
                    or k['raw_risk_passes'][arm] for arm in ('self', 'peer'))):
         raise ValueError('Do not conflate direct forecasts and oracle feasibility')
     peer = k['contrasts']['peer_minus_self']['completion_lower_pp']
+    folder = HOME/'moving_record_joint_actions_v1'
+    a, f = (read(root/'analysis.json') for root in (folder, folder/'filter_first'))
+    for root, v in ((folder, a), (folder/'filter_first', f)):
+        if read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json') or v['independent_confirmation']:
+            raise ValueError('Require verified A-only allocation results')
+    pair = a['contrasts']['joint_vs_pair_additive']['completion_lower_pp']; gain = f['completion_lower_pp']
     return (
         'In a matched three-seed PCT continuation, an easy ADE excess loss '
         f'changes known easy positive harm by {p["easy_harm_increase_pp"]["point"]:+.2f} pp, '
@@ -504,7 +514,12 @@ def easy_forecast_update():
         'feasibility to 102/102, but neither raw variant passes any view. Adding '
         f'peers to that model changes the paired lower by {peer["point"]:+.2f} pp '
         f'[{peer["interval95"][0]:+.2f}, {peer["interval95"][1]:+.2f}]. '
-        'This separates candidate availability from learnable allocation.'
+        'With that bank and matched query counts, the joint mixed term versus its marginal '
+        f'control changes the paired lower by {pair["point"]:+.3f} pp '
+        f'[{pair["interval95"][0]:+.3f}, {pair["interval95"][1]:+.3f}]. '
+        f'Filtering all actions before ranking gives {gain["point"]:+.3f} pp versus CV '
+        f'but passes only {f["risk_passes"]}/102 original risk views. '
+        'Candidate availability, average utility and risk control are distinct.'
     )
 
 

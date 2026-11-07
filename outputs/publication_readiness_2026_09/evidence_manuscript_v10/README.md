@@ -107,6 +107,12 @@ independent allocation result. The revised PDF remains eight pages; pages 1
 through 6 are identical to the previous render, and pages 7 and 8 were
 inspected. Thirty-four focused tests pass. Supplement TeX is unchanged.
 
+The matched multi-action revision adds the joint-versus-marginal negative
+contrast and the filter-first gain with failed original risk. No independent
+result or rule change. Eight pages, pages 1 through 6 identical to the last
+render and pages 7 and 8 inspected. Forty focused tests pass; supplement
+TeX and PDF are unchanged.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the
