@@ -1,0 +1,165 @@
+{
+  "arms": [
+    "constant_velocity_causal_fd",
+    "history_ols4_velocity",
+    "joint",
+    "gain_retrieved",
+    "support_retrieved",
+    "gated_joint",
+    "gated_gain",
+    "gated_support"
+  ],
+  "bootstrap_draws": 3000,
+  "contrasts": {
+    "gain_retrieved_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gain_retrieved",
+      "constant_velocity_causal_fd"
+    ],
+    "gain_retrieved_vs_ols4": [
+      "history_ols4_velocity",
+      "gain_retrieved",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_gain_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gated_gain",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_gain_vs_ols4": [
+      "history_ols4_velocity",
+      "gated_gain",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_joint_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gated_joint",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_joint_vs_ols4": [
+      "history_ols4_velocity",
+      "gated_joint",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_support_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gated_support",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_support_vs_gain": [
+      "gated_gain",
+      "gated_support",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_support_vs_ols4": [
+      "history_ols4_velocity",
+      "gated_support",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_support_vs_original": [
+      "gated_joint",
+      "gated_support",
+      "constant_velocity_causal_fd"
+    ],
+    "history_ols4_velocity_vs_cv": [
+      "constant_velocity_causal_fd",
+      "history_ols4_velocity",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_cv": [
+      "constant_velocity_causal_fd",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_ols4": [
+      "history_ols4_velocity",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "support_retrieved_vs_cv": [
+      "constant_velocity_causal_fd",
+      "support_retrieved",
+      "constant_velocity_causal_fd"
+    ],
+    "support_retrieved_vs_ols4": [
+      "history_ols4_velocity",
+      "support_retrieved",
+      "constant_velocity_causal_fd"
+    ],
+    "support_vs_gain": [
+      "gain_retrieved",
+      "support_retrieved",
+      "constant_velocity_causal_fd"
+    ]
+  },
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 12274,
+      "path": "scripts/run_m3w_native_support_retrieval.py",
+      "sha256": "9d4c3f744ebd2633ea29b20a4da60e23e192dad7305da1fa3fd2f744b32ce4b9"
+    },
+    {
+      "bytes": 2635,
+      "path": "src/world_model/m3w_native_support_retrieval.py",
+      "sha256": "d8c1b4b1b91d60b87ea5d1d8278180f3c936783922d280b854188eecac496ddd"
+    },
+    {
+      "bytes": 2016,
+      "path": "outputs/publication_readiness_2026_09/native_support_retrieval_v1/protocol.md",
+      "sha256": "72409cf201aabf6c4a239b9598ef2d5c3d35d3b733f58a9f676780dd4b9b435c"
+    },
+    {
+      "bytes": 1340,
+      "path": "tests/test_m3w_native_support_retrieval.py",
+      "sha256": "cc2bd782ed3cdf5b5d7da1e7a7ce565aa90561bf760072c5bfe86243ad0e63b6"
+    }
+  ],
+  "held_source_exclusion": true,
+  "original_budget": 0.02,
+  "original_gate_unchanged": true,
+  "parents": [
+    {
+      "bytes": 4037,
+      "path": "outputs/publication_readiness_2026_09/native_query_risk_critic_v1/registration.json",
+      "sha256": "a259cfb0b1a05b898cded0d1355ab9ebdd826674fe4065c1d7b6598e26e75747"
+    },
+    {
+      "bytes": 12533,
+      "path": "outputs/publication_readiness_2026_09/native_query_risk_critic_v1/analysis.json",
+      "sha256": "0315e5ffd92c0a531d579180003dc223f8f79ccbdbdb58b51d21e1a81e5955d7"
+    },
+    {
+      "bytes": 269,
+      "path": "outputs/publication_readiness_2026_09/native_query_risk_critic_v1/replay_execution.json",
+      "sha256": "e4895e8cf3a999ee66f7f1a372fa51dfbe69f3c1e65c722714d33f186d132047"
+    },
+    {
+      "bytes": 902,
+      "path": "outputs/publication_readiness_2026_09/native_query_risk_critic_v1/proposal_capacity.json",
+      "sha256": "712be754fcae9ded96fcde6b8afdaf0c1428b748c691b821c54b1e7164d306c0"
+    },
+    {
+      "bytes": 6255,
+      "path": "src/world_model/m3w_record_joint_actions.py",
+      "sha256": "dea6dad446dee16fbd9442d0c25a05ecde2d62d75be96bf37245ecf955b11b75"
+    },
+    {
+      "bytes": 1801,
+      "path": "src/world_model/m3w_native_transport_policy.py",
+      "sha256": "db7d937a1755b0843b33bd13d5c852d8b8f6ba94d59ad01561090556aa2502b4"
+    },
+    {
+      "bytes": 2828,
+      "path": "src/world_model/m3w_query_risk_critic.py",
+      "sha256": "b92249ea13d6617c3492d66ec339bea71917fa7ea66935017a1829b512bb9598"
+    }
+  ],
+  "ridge": 0.02,
+  "scope": "exposed_development_only",
+  "shortlist": 8
+}
