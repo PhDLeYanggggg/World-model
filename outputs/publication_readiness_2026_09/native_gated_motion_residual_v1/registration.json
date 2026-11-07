@@ -1,0 +1,129 @@
+{
+  "arms": [
+    "ungated",
+    "gated"
+  ],
+  "bindings": [
+    {
+      "bytes": 12076,
+      "path": "scripts/run_m3w_gated_motion_residual.py",
+      "sha256": "d0e7d98e623273d57f606e79b9c4e220db649ff19cf49ed37c618a617e0bd9c4"
+    },
+    {
+      "bytes": 2126,
+      "path": "src/world_model/m3w_gated_motion_residual.py",
+      "sha256": "69b9325ee8a0216bb5aaf9d6c638e877a2f67374e3ad4b0c1d4096579c068859"
+    },
+    {
+      "bytes": 2322,
+      "path": "outputs/publication_readiness_2026_09/native_gated_motion_residual_v1/protocol.md",
+      "sha256": "32779bae916ddd885654ea19e22d1a07643dd16641916fdf79bf652c9713938d"
+    },
+    {
+      "bytes": 1188,
+      "path": "tests/test_m3w_gated_motion_residual.py",
+      "sha256": "739e9c7fca0415df6a27d60c4a489196303aed5a987501bf7b7acb0862d01ffb"
+    },
+    {
+      "bytes": 1864,
+      "path": "outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/fit_population.json",
+      "sha256": "834743f6e691b95ce6bf54665d99bcee12dde97789c5500c2dc735e167f935da"
+    },
+    {
+      "bytes": 23207,
+      "path": "outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/registration_v2.json",
+      "sha256": "aefd418428a13a9366e67f9d07965a2db18a65d8f39a478a300f1df7f1638045"
+    },
+    {
+      "bytes": 16562,
+      "path": "scripts/run_m3w_easy_aligned_forecast.py",
+      "sha256": "5011066ada9e8b419bacc0076ef3a76931281ea294a6a87036cff35d37a00486"
+    },
+    {
+      "bytes": 9938,
+      "path": "src/world_model/m3w_native_forecast.py",
+      "sha256": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613"
+    },
+    {
+      "bytes": 2185,
+      "path": "outputs/publication_readiness_2026_09/native_dual_reference_capacity_v1/registration.json",
+      "sha256": "f8431c8158ba067ec12490e9475e933945dc2c200a18132872007baf5351d21e"
+    },
+    {
+      "bytes": 261,
+      "path": "outputs/publication_readiness_2026_09/native_recipient_shortfall_v1/freeze_execution.json",
+      "sha256": "fdc04de4d009914e5ac1871b278063058651dc172bdb6aeef09e2632e2040a0d"
+    },
+    {
+      "bytes": 271,
+      "path": "outputs/publication_readiness_2026_09/native_recipient_shortfall_v1/replay_execution.json",
+      "sha256": "10ac5165a30cacf70343bad932f9f99fbd5ec2cb9741ad76df5e0a0de3946c5e"
+    }
+  ],
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "data_loader_workers": 0,
+  "external_access": false,
+  "model_selection": false,
+  "original_risk_unchanged": true,
+  "pairs": {
+    "gated_vs_constant_velocity_causal_fd": [
+      "constant_velocity_causal_fd",
+      "gated",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_vs_history_ols4_velocity": [
+      "history_ols4_velocity",
+      "gated",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_vs_ungated": [
+      "ungated",
+      "gated",
+      "constant_velocity_causal_fd"
+    ],
+    "matched_gated_vs_gain": [
+      "gain",
+      "matched_gated",
+      "constant_velocity_causal_fd"
+    ],
+    "matched_gated_vs_matched_ungated": [
+      "matched_ungated",
+      "matched_gated",
+      "constant_velocity_causal_fd"
+    ],
+    "matched_ungated_vs_gain": [
+      "gain",
+      "matched_ungated",
+      "constant_velocity_causal_fd"
+    ],
+    "ungated_vs_constant_velocity_causal_fd": [
+      "constant_velocity_causal_fd",
+      "ungated",
+      "constant_velocity_causal_fd"
+    ],
+    "ungated_vs_history_ols4_velocity": [
+      "history_ols4_velocity",
+      "ungated",
+      "constant_velocity_causal_fd"
+    ]
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch_size": 128,
+    "checkpoint_every": 150,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 150,
+    "learning_rate": 0.001,
+    "minimum_lr_ratio": 0.1,
+    "steps": 900,
+    "weight_decay": 0.0001
+  },
+  "torch_threads": 2
+}
