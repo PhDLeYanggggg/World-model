@@ -49,6 +49,9 @@ PINNED = {
     'moving_record_joint_actions_v1/causal_ledger/replay_execution.json': '1c4169e1699571d140a1fe0981b1f8cbc7139a6aecc2852f7a00c5e8ef667335',
     'moving_record_joint_actions_v1/causal_ledger/physical_control/analysis.json': '6bdd9e49ef4fd165e2a01cdf9044777ace010d1e7524fceee6c90f9188aa9b56',
     'moving_record_joint_actions_v1/causal_ledger/physical_control/replay_execution.json': '11f242abf14ff6087c24c57f41f2383b363b171204bc79e03bd9319263feddb7',
+    'moving_record_joint_actions_v1/causal_ledger/credit_transport/analysis.json': '5f7ece052db47d75f19546cd43a4dc126a232c18d325ebaab0fe7578b65137ff',
+    'moving_record_joint_actions_v1/causal_ledger/credit_transport/replay_execution.json': 'e6f7cce0c22c1088309b9c383e50959e3d1c05bb9712cf32eed3c9bb5a939235',
+    'moving_record_joint_actions_v1/causal_ledger/credit_transport/portable_verification.json': '6783cd1044da81a9d489d499de9a719b24366d24b016122a076b50ab7be44e2e',
 }
 
 
@@ -530,6 +533,10 @@ def easy_forecast_update():
             raise ValueError('Require verified chronological development results')
     l = ledger['comparisons']['ledger_vs_query']['completion_lower_pp']
     b = physical['comparisons']['full_vs_physical']['completion_lower_pp']
+    root = ledger_root/'credit_transport'; credit = read(root/'analysis.json')
+    if (read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json')
+            or credit['discount_positive_folds'] != [0, 0] or any(v >= 0 for v in credit['credit_totals']['realized'])):
+        raise ValueError('Require exact matched credit readout')
     return (
         f'PCT easy-harm training reduces known harm by {-p["easy_harm_increase_pp"]["point"]:.2f} pp '
         f'but yields a paired lower of {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
@@ -552,7 +559,8 @@ def easy_forecast_update():
         f'the matched lower by {l["point"]:+.3f} pp [{l["interval95"][0]:+.3f}, {l["interval95"][1]:+.3f}] '
         f'but passes {ledger["risk"]["ledger_matched"]["passes"]}/102. The full bank gains {b["point"]:+.3f} pp '
         f'over a reoptimized physical bank at common counts, reducing passes from '
-        f'{physical["risks"]["physical_ledger"]["passes"]} to {physical["risks"]["full_ledger"]["passes"]}.'
+        f'{physical["risks"]["physical_ledger"]["passes"]} to {physical["risks"]["full_ledger"]["passes"]}. '
+        'Predicted earning queries show realized net deficits for both budgets; all 42 donor fits retain zero credit.'
     )
 
 

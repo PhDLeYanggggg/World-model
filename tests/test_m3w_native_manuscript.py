@@ -185,3 +185,4 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert 'only 30/102 screened views are feasible, versus at least 72/102' in paper.easy_forecast_update()
     assert 'matched lower by +0.017 pp [+0.002, +0.033]' in paper.easy_forecast_update()
     assert 'at common counts, reducing passes from 12 to 6' in paper.easy_forecast_update()
+    assert 'all 42 donor fits retain zero credit' in paper.easy_forecast_update()

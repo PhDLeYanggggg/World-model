@@ -430,6 +430,9 @@ training and prediction package remains outstanding.
 
 {{ native_portable_update }}
 
+An isolated ledger bundle also reconstructs 21 contrasts, 13 policy risk
+summaries and the credit accounting from identity-stripped aggregates.
+
 Crowd imagery and trajectory identities should be handled under the dataset
 license and without attempting personal identification. We release no new
 human identity labels or human-gold scene annotations. A future inference

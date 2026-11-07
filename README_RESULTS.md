@@ -190,6 +190,17 @@ and a common 2,580 switches, the full bank gains +0.01376 pp
 past-only A comparisons, not independent confirmation or deployment.
 [Experiment and reproduction](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/readout.md).
 
+## Causal Ledger Credit Transport
+
+At the same 6,184 switches, all 42 nested donor calibrators learn zero
+carry. Realized signed savings on predicted earning queries are negative
+for both original budgets. Fixed half carry does not improve risk passes;
+the donor rule is identical to no carry and loses -0.02135 pp
+[-0.03808, -0.00538] in direct paired lower versus full carry. Neither
+repair yields a deployable policy. A clean standard-library replay rebuilds
+21 contrasts and 13 risk summaries from identity-stripped aggregates.
+[Credit experiment and replay](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/credit_transport/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

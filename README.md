@@ -162,6 +162,12 @@ conservative utility over the same per-query optimizer. Adding learned
 trajectories also beats the reoptimized physical bank on utility, but
 reduces observed risk passes. [Causal ledger and physical control](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/readout.md).
 
+I checked what funded those ledger choices. The queries predicted to earn
+credit collectively overspent under the original accounting. Donor-based
+discounting removed all carry but did not improve the risk result. A
+standalone aggregate bundle reconstructs the ledger comparisons and risk
+tables. [Credit and reproduction](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/credit_transport/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

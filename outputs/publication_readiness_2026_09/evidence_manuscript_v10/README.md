@@ -131,6 +131,12 @@ reoptimized physical-only comparator. The eight-page PDF has pages 1
 through 6 identical to the previous render and pages 7 and 8 inspected.
 Fifty-two focused tests pass. Supplement TeX and PDF are unchanged.
 
+The credit transport revision records realized net deficits on predicted
+earning queries and the donor discount that collapses to no carry. The
+standalone ledger bundle is aggregate-only. The eight-page PDF retains
+pages 1 through 6 exactly; pages 7 and 8 were inspected. Fifty-seven
+focused tests pass. Supplement TeX and PDF are unchanged.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the
