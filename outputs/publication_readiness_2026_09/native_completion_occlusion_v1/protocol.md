@@ -1,0 +1,11 @@
+# Stress test of the missing-coordinate witness radius
+
+This is an exposed-development diagnostic of the completion model used in the pair ranking reversal, not an assumption about true missing labels. Use the exact 34-recording, 14-source release with its reconciled unique agent/step ledger. Artificially hide released coordinates consistently across all overlapping windows. No model outputs, official scores, training, calibration or confirmation inputs change.
+
+For each eligible track, hide one run of 1, 2, 4, 8 or 12 released consecutive coordinates per regime. An internal gap uses a fixed hash of recording, track and length to select among eligible runs; require four consecutive retained points on the left and one on the right. A terminal gap hides a suffix of the final contiguous released segment, with four consecutive points retained immediately before it. Eligibility and assignment use release masks, never coordinate values. The same terminal gaps are used for both centers.
+
+Recompute the witness radius using median consecutive observed displacement with a floor of 0.25 pixels, times the nearest retained-label distance capped at twelve. Center internal gaps with linear interpolation and terminal gaps with constant extension (the original center) or an anchored OLS4 extrapolation (a proposed sensitivity center). Radius fitting uses only retained coordinates; the synthetic hidden coordinates enter only the coverage calculation. The internal center uses both retained anchors and is an offline completion, not a forecast.
+
+Primary contrast: OLS4 minus constant-extension whole-gap empirical coverage, at the 1x coordinatewise radius for twelve-step terminal gaps. Report pointwise and whole-gap coverage at 1x/2x and center error for each regime and length. Aggregate within source and then equally across sources; pair 3,000 source-group resamples. Count actual requested gaps by position and requested size for context, without assuming pseudo-deletions have the same mechanism. These are pointwise corridors, not the tighter shared-direction witness family, and empirical coverage on deleted labels is not calibrated coverage on actual absences.
+
+No missing coordinate is recovered or published. No policy thresholds, metric or seconds claims, Stage5C, SMC, or external access.
