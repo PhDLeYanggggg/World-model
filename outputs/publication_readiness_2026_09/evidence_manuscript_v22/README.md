@@ -25,3 +25,7 @@ the local rendering on every page. Source ZIP SHA-256:
 
 [Aggregate replay](../review_replay_v1/README.md) |
 [Chinese local/CREATE guide](../evidence_manuscript_v12/operation_zh.md).
+
+The separate [annotation budget analysis](../native_pair_annotation_budget_v1/README.md)
+quantifies which missing positions affect the frozen comparison. It is
+not part of the frozen v22 PDFs or an independent result.

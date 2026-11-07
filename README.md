@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I measured how much new labeling would matter for the fixed pair
+comparison. Only 3,492 missing positions can change it. A targeted
+order needs 1,691 valid positions to remove 95% of the original
+disagreement debit, compared with 3,454 in chronological order.
+[Conditional labeling budget](outputs/publication_readiness_2026_09/native_pair_annotation_budget_v1/README.md).
+
 I constructed two bounded completions that preserve every released
 coordinate. They rank joint and additive selection in opposite orders
 on the same pair metric. This says what the current labels cannot

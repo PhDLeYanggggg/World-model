@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Pair Labeling Budget
+
+Only 3,492 of 40,134 missing positions contribute to the fixed
+joint-additive contrast. For 95% diagonal debit removal, chronology,
+incident mass and dependency-aware order require 3,454, 1,706 and
+1,691 positions, with a fractional lower bound of 1,665.69. No
+labels were acquired; the budget is conditional on annotatability.
+[Budget, figure and replay](outputs/publication_readiness_2026_09/native_pair_annotation_budget_v1/README.md).
+
 ## Constructive Pair-Ranking Reversal
 
 Two bounded shared completions preserve every released coordinate
