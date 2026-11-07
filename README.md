@@ -47,6 +47,13 @@ foundation world model, or submission readiness.
 
 ### Which Forecasts To Change
 
+I checked whether a smaller intervention could preserve the original
+utility and meet the same recording risk rules. In a hindsight-only test,
+one same-query exchange repaired 26 previously failing views without
+lowering paired utility. This identifies room for a selective replacement
+model; it is not a forecast result or a change to the deployed policy.
+[Sparse exchange experiment](outputs/publication_readiness_2026_09/moving_quarter_swap_capacity_v1/readout.md).
+
 I trained a model to predict the gain and harm of each candidate, then let
 it change the selected agents while keeping every query's intervention
 count and amplitude fixed. Adding the harm term reduced total-risk

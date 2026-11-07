@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Sparse Quarter-Amplitude Exchange Capacity
+
+Exact single-exchange search repairs 26 previously failing views at
+nonnegative paired completion-lower gain, including 12 without original
+easy reference. Across nested budgets of 1, 4 and 16 exchanges, the
+union of rechecked witnesses covers 41, 52 and 59 of 102 views, including
+the original 15 passes. The larger solves leave unresolved cases, and
+the 18 zero-switch views cannot be repaired by same-count exchange.
+These are label-aware capacity findings, not learned policy passes.
+[Design and results](outputs/publication_readiness_2026_09/moving_quarter_swap_capacity_v1/readout.md).
+
 ## Native Inference Rehearsal For External Comparison
 
 Rebuilding the past-only prefix reproduces all 125,540 development input

@@ -4,6 +4,12 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [sparse quarter-amplitude capacity study](../moving_quarter_swap_capacity_v1/readout.md)
+separates candidate availability from learned ranking. A single same-query
+exchange with labels can repair 26 failing views at positive paired lower
+gain, but this does not demonstrate learned recovery. Larger-cap timeouts
+remain visible. This study is supplemental evidence, not a new main PDF.
+
 The [native inference rehearsal](../dronecrowd_native_inference_rehearsal_v1/README.md)
 documents the common prefix, comparator roster and exact three-seed
 kinematic replay. It is an engineering receipt; no external result or
