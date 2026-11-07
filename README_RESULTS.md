@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Joint Easy-Support Opening
+
+Across 42 source-separated fit, calibration and evaluation cells, the
+joint-event and marginal-product heads each open three extra actions,
+recover no zero-direct view and leave full passes at 2/102. Ungated
+same-query joint ranking passes 5/102 versus 3/102 for original
+utility, but raises signed easy violations versus the direct policy
+and does not reliably improve utility. Of the 18 zero-direct views,
+a label-aware scan finds positive standalone candidates at the first
+eligible query in nine, only later in six, and nowhere in three.
+[Results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/easy_joint_anchor/readout.md).
+
 ## Intervention Timing At The Same Recording Total
 
 Moving switches without changing each recording's total increases

@@ -288,6 +288,13 @@ changed no online decisions, and a rule that deliberately waited lost
 some utility. I keep the timing result as a diagnostic, not a policy
 upgrade. [Timing comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/timing_capacity/readout.md).
 
+I also tested whether a learned easy-support score could open recordings
+where the direct policy never switches. Neither calibrated score did.
+A hindsight check separates missing candidates from missed choices:
+nine of the 18 zero-switch views have a useful first-query option,
+six only have one later, and three have none in this bank.
+[Opening action experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/easy_joint_anchor/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

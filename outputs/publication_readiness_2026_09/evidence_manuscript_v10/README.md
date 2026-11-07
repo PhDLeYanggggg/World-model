@@ -64,6 +64,12 @@ separates timing from intervention volume and contrasts it with two
 past-only waiting rules. The local appendix directory contains the
 checked `timing_capacity.pdf` figure. The main PDF is unchanged.
 
+The [opening-action ablation](../moving_record_joint_actions_v1/causal_ledger/easy_joint_anchor/readout.md)
+compares a joint easy-and-low-harm event with marginal prediction,
+and distinguishes missing first-query support from failures to rank
+available candidates. Neither calibrated rule improves full observed
+risk passes. This is supporting negative evidence, not a main result.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.
