@@ -14,6 +14,19 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Supported Gain Within Fixed Forecast Families
+
+Holding ordered family slots fixed, the fitted gain-risk ranker
+raises useful early winner recall from 0 to 6 across the full
+pre-direct cohort, but loses four of six useful shortlist views
+in the zero-direct subset. Calibrated passes stay at 2/102 and
+signed easy violations rise from 8 to 9. At matched coverage, lower
+utility falls by 0.00527 pp (95% source interval [-0.01359, -0.00006]).
+Adding each recovered local winner to its corresponding full direct
+record yields 0/6 complete passes in a retrospective check. No
+deployment change.
+[Experiment and opening diagnosis](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/family_supported_gain/readout.md).
+
 ## Retrieval Loss Attribution And Six-Plus-Two Replay
 
 Changing the cost ranking alone is sufficient to explain all five

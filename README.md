@@ -341,6 +341,13 @@ useful openings than the original list. With the same scoring head
 it added no calibrated intervention.
 [Retrieval loss audit](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_exclusions/readout.md).
 
+I kept all forecast families and learned a new ranking within each
+one. It found six useful early winners across the recordings, but
+adding those actions to their original recordings still produced no
+complete pass. The new ranking also increased easy-case violations,
+so I did not keep it in the policy.
+[Within-family ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/family_supported_gain/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

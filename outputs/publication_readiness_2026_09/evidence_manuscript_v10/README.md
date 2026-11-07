@@ -117,6 +117,14 @@ The hybrid restores three losses without adding any calibrated
 intervention. This is additional development evidence; the compiled
 appendices and main paper are unchanged.
 
+The [within-family supported-gain experiment](../moving_record_joint_actions_v1/causal_ledger/family_supported_gain/readout.md)
+recovers six locally useful early winners across the full pre-direct
+cohort, but adds no complete pass and increases signed easy violations.
+Even retrospectively inserting those winners into their respective
+direct records yields zero complete passes. This exposes a gap
+between local action labels and the full-record decision objective;
+it is not an independent result or a change to the risk contract.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 
