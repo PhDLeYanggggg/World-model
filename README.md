@@ -368,6 +368,13 @@ added a complete pass. The result does not support using the new
 router in the policy.
 [Recording routing experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/pruning_router/readout.md).
 
+To see whether deletion was the wrong restriction, I measured the
+hindsight capacity of adding one support action and then removing
+harmful actions. The full bank can repair 33 of 35 views with
+undefined easy support; the old eight-action list allows only 18.
+This identifies a retrieval problem, not a deployable result.
+[Support acquisition experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/support_acquisition/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Joint Support Acquisition Capacity
+
+Among 35 direct views with undefined easy support, the checked
+hindsight optima are feasible in 22/35 with one insertion alone,
+29/35 with an early insertion followed by deletion, and 33/35 with
+insertion at any query before or with deletion. Dropping that
+ordering constraint adds zero views. Restricting anchors to the old
+eight-slot shortlist leaves 18/35. These are capacity results with
+unchanged risk/support and paired non-loss, not learned passes.
+[Experiment and figure recipe](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/support_acquisition/readout.md).
+
 ## Causal Routing Before Deletion
 
 First-active-query AUROC is 0.632 (95% source interval

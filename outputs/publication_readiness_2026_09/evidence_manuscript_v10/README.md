@@ -146,6 +146,16 @@ is weak and neither routed arm adds a pass. A fixed-threshold replay
 shows that the decline from 44 deletions to one depends on
 recalibration, not the support veto alone. Main PDF is unchanged.
 
+The [support acquisition capacity study](../moving_record_joint_actions_v1/causal_ledger/support_acquisition/readout.md)
+compares one insertion, ordered joint edits, free order and the
+old shortlist in the 35 views with undefined easy support.
+The ordered full bank reaches 33 checked feasible views, versus
+18 using the shortlist. A new source-bound vector figure,
+`support_acquisition.pdf` in the local `utility_tradeoff_build`
+directory, was generated and visually inspected. It is an
+appendix diagnostic, not an independent policy result. The main
+PDF is unchanged.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 
