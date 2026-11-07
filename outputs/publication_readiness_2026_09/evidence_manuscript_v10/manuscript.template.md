@@ -358,6 +358,8 @@ not success inferred from a favorable early prefix.
 
 {{ seed_dispersion_update }}
 
+{{ recording_risk_update }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}

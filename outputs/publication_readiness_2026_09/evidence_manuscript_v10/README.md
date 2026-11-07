@@ -75,6 +75,13 @@ the main text ends on page seven, followed by the disclosure and references.
 Changed pages were inspected and 25 focused checks pass. This is still a
 working draft, not a deployment or submission claim.
 
+The recording-risk revision adds a direct comparison with OLS4 and the
+unchanged selected-reference gate on all 34 exposed recordings and three
+forecast seeds. The learned anchor passes no recording view. The eight-page
+PDF is checked again: pages 1 through 6 are pixel-identical to the prior render,
+and pages 7 and 8 were inspected. The mandatory disclosure still precedes
+References. Twenty-seven focused tests pass; no new independent result.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

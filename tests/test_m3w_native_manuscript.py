@@ -172,3 +172,4 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert 'neither a three-seed intervention policy nor independent confirmation' in paper.three_seed_update()
     assert '-3.535 pp' in paper.seed_dispersion_update()
     assert 'full risk policy is not evaluated' in paper.seed_dispersion_update()
+    assert '0/102' in paper.recording_risk_update() and 'undefined in 17' in paper.recording_risk_update()

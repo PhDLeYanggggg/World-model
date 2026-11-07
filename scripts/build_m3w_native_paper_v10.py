@@ -24,6 +24,8 @@ PINNED = {
     'moving_source_forecast_supported_v1/analysis.json': '1b71be03bcdcf270da342365a33cc158890c133a3a59b336c1df2b9fe324ec16',
     'moving_seed_dispersion_cost_v1/analysis.json': 'e52e7e014ef32f909a3e36bb8809ab2b0a90b2c5a5e2244857da22a35b29e00f',
     'moving_seed_dispersion_cost_v1/replay_execution.json': '6da7351f0d7c85a0c91e6c96b9d70a1ebec3f4c2d8542b8adef30956e3c25e63',
+    'moving_recording_forecast_replay_v1/analysis.json': 'c16ab9bc65be5895521d4a4cf49047fd91077741534447234e95093523e7a451',
+    'moving_recording_forecast_replay_v1/replay_execution.json': '5aa3176b06b2d280b2d44a4d335b024dd76784fed2c41de5c74cf605095cea67',
 }
 
 
@@ -422,6 +424,24 @@ def seed_dispersion_update():
     )
 
 
+def recording_risk_update():
+    folder = HOME/'moving_recording_forecast_replay_v1'
+    path = folder/'analysis.json'; result = read(path); replay = read(folder/'replay_execution.json')
+    r = result['risk']['learned_anchor']; e = r['diagnostics']['completion_easy_risk_upper']
+    if (replay['artifact']['sha256'] != sha(path) or not result['safety_rule_unchanged']
+            or result['independent_confirmation'] or r['views'] != 102 or r['supported'] != 0):
+        raise ValueError('Keep the exact original recording-risk failure on exposed sources')
+    p = result['paired']['eqmotion_vs_ols4']; lo, hi = p['completion_lower_pp']['interval95']
+    return (
+        f'Against the fitting-selected OLS4 baseline, EqMotion gains {p["known_pp"]["point"]:+.2f} pp '
+        f'on known labels; the completion lower is {p["completion_lower_pp"]["point"]:+.2f} pp '
+        f'[{lo:+.2f}, {hi:+.2f}]. Reusing the original CV risk contract on all 34 recordings '
+        f'and three seeds, the learned missingness anchor passes {r["supported"]}/{r["views"]} views. '
+        f'Easy completion risk exceeds 2% in {e["over_2"]} views and is undefined in {e["undefined"]}. '
+        'These repeated views are not independent evidence.'
+    )
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -445,7 +465,7 @@ def main():
         values[prefix+'_easy_MSE'] = f'{cal[arm]["conditional_MSE"]["easy_harm"]:.6f}'
         values[prefix+'_Brier'] = f'{cal[arm]["observation_Brier"]:.6f}'
     values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update(),
-        seed_dispersion_update=seed_dispersion_update())
+        seed_dispersion_update=seed_dispersion_update(), recording_risk_update=recording_risk_update())
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)

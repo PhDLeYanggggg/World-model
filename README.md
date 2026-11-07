@@ -101,6 +101,13 @@ predictors resume exactly on the older development probe. This verifies the
 evaluation inputs and recovery path, not new accuracy or safety.
 [Causal input stream](outputs/publication_readiness_2026_09/m3w_causal_forecast_stream_v1/README.md).
 
+I then reran the original risk checks on each of the 34 development recordings
+and three forecast seeds. EqMotion improves the known-label result over the
+fitting-selected OLS4 baseline, but the conservative interval crosses zero.
+No fixed-count switch variant passes the full recording checks. This separates
+predictor accuracy from the case for deploying a switch policy.
+[Recording-level comparison](outputs/publication_readiness_2026_09/moving_recording_forecast_replay_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

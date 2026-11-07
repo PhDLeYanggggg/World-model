@@ -86,6 +86,18 @@ match the old bank, 6,144 exact in total. CREATE read-only status remains
 unverified after a 60 s timeout. Independent evaluation is not run.
 [Input and resume evidence](outputs/publication_readiness_2026_09/m3w_causal_forecast_stream_v1/README.md).
 
+## Original Recording Risk And The Fitting-Selected Comparator
+
+Fresh scoring of all 34 A recordings and three frozen seeds, including six
+causal baselines and both learned forecast families. EqMotion vs OLS4 is
++20.472 pp on known labels; the completion lower is -1.503 pp
+[-21.072,+14.223]. The learned anchor passes 0/102 repeated recording views:
+easy completion risk exceeds 2% in 85 and is undefined in 17. The original
+CV risk reference stays fixed; OLS4 is an accuracy comparator only. Per-record
+sums reconstruct previous source scalars and a separate replay is exact.
+This is exposed development, not a fresh forecast fit or independent readout.
+[Full scoring and risk table](outputs/publication_readiness_2026_09/moving_recording_forecast_replay_v1/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original
