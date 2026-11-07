@@ -45,6 +45,14 @@ worsened easy net loss. The eight-page PDF was rebuilt; pages 1 through 6
 are unchanged and pages 7 and 8 were inspected. The supplement is unchanged.
 [Veto refit](../moving_record_joint_actions_v1/causal_ledger/veto_refit/readout.md).
 
+The separate [utility and harm appendix](utility_tradeoff_appendix.md)
+reports the calibration-size, source-stable risk, and directional gain
+comparisons at the same query-matched switch count. Each row uses its
+registered control. The one-page local PDF was compiled and visually
+checked; the main PDF and the mathematical supplement are unchanged.
+Build its Markdown and TeX from the replay receipts with
+`.venv-pytorch/bin/python scripts/build_m3w_utility_tradeoff_appendix.py`.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

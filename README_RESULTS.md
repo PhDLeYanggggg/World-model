@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Directional Gain At Fixed Risk Costs
+
+At the same 6,952 query-matched switches, a gain head with a shared
+baseline-error direction and a nonnegative ADE remainder changes the
+paired completion lower by +0.00916 pp (95% source interval
+[-0.04245, +0.06149]). Full original passes change from 2/102 to 4/102,
+with 35 easy views still undefined. The direction-only ablation also
+does not reliably beat direct gain. No rollout changes, thresholds
+selected or independent outcomes opened. Exact score replay.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/directional_utility/readout.md)
+and [manuscript appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v10/utility_tradeoff_appendix.md).
+
 ## Source-Stable Veto Costs
 
 I refit the veto cost head 42 times with held sources excluded and used

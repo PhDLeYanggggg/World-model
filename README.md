@@ -260,6 +260,12 @@ risk reduction. At the same switch count, this reduced easy-case violations
 but lost prediction utility. I did not adopt it for deployment.
 [Source-stable risk head](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/stability/readout.md).
 
+I then kept the risk head fixed and changed the gain model. It scores
+whether each candidate moves in a direction that would reduce the
+baseline's error. It changed many choices, but its small utility gain
+was not reliable, and only four of 102 views passed the original rule.
+[Directional gain experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/directional_utility/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

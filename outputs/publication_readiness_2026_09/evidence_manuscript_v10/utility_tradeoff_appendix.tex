@@ -1,0 +1,39 @@
+\documentclass[10pt,onecolumn,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[review]{cvpr}
+\usepackage{times,graphicx,amsmath,amssymb,booktabs,tabularx,array}
+\usepackage{xurl}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=blue]{hyperref}
+\def\confName{CVPR}\def\confYear{2027}\def\PaperID{DRAFT}
+\title{Matched Intervention Utility and Observed Harm}\author{Anonymous}
+\begin{document}\raggedbottom\maketitle
+\section{Development Protocol}
+
+We hold the candidate trajectories and 6,952 intervention counts fixed query by query. The data are exposed Moving A, with 8 observed and 12 predicted annotation steps in native image coordinates. Seven fitting sources and one held source per cell give 42 source-seed comparisons. Three frozen forecaster seeds share the 34 recordings, giving 102 views, not 102 independent units.
+
+
+\noindent\begin{minipage}{\textwidth}\small
+\captionof{table}{Completion-lower ADE contrasts and original recording-risk checks}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}\toprule
+\textbf{Component contrast} & \textbf{Difference (pp), 95\% source interval} & \textbf{Full passes / 102} & \textbf{Signed easy net >2\%} & \textbf{Undefined easy in new arm} \\\midrule
+Six versus three calibration sources & -0.068 [-0.186, +0.012] & 1 to 1 & 8/12 to 10 & 36 \\
+Source-stable versus pooled risk & -0.184 [-0.348, -0.041] & 1 to 4 & 15 to 9 & 37 \\
+Directional versus direct gain & +0.009 [-0.042, +0.061] & 2 to 4 & 8 to 7 & 35 \\
+Direction only versus direct gain & +0.006 [-0.050, +0.063] & 2 to 2 & 8 to 10 & 35 \\
+\bottomrule\end{tabularx}
+\end{minipage}\par\medskip
+
+Each row compares only its own registered control. In the first row the two three-source contrasts are averaged; their easy violation counts are shown separately. Intervals use 3,000 whole-source draws after averaging the forecaster seeds. The bounds account for wholly missing labels using paired path disagreement; they are not confidence intervals for a complete-grid ADE effect. The unchanged risk rule includes positive harm, signed easy degradation and required support.
+
+
+\section{What Changed}
+
+More calibration data does not improve threshold transfer in this design. Source deletion at the residual fitting stage reduces some observed harm, but loses matched utility. The directional gain head changes which forecasts are used with the same predicted harm, risk budgets and counts. For baseline error e and candidate displacement d, the ADE gain per step is the projection of d onto the unit error direction minus a nonnegative remainder. The shared direction head and per-action remainder are fit only on observed training labels. The model scores fixed forecasts; it does not alter their paths.
+
+
+\section{Interpretation}
+
+The directional head's positive point estimate is inconclusive, and four recording passes do not validate a policy. Direction alone does not improve the control reliably either. Model-side gains and recording-level safety must both be demonstrated on eligible independent sources before any deployment claim. These exploratory model changes do not select a winner for confirmation. No protected outcomes, Stage5C or SMC were used.
+
+\end{document}
