@@ -45,6 +45,17 @@ foundation world model, or submission readiness.
 [failure analysis](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/failure_analysis.md),
 [reproduction instructions](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/operation_zh.md).
 
+### Fixed-Forecaster Decision Study
+
+I compared additive selection with an exact pair interaction term, holding
+the forecast candidates and each query's intervention count fixed. Across
+14 excluded donor sources the added term did not improve relative-position
+error. In a label-aware diagnostic, adding it to already known marginal
+costs improves squared pair error by only 0.30%; the much larger gap is
+between learned choices and the label-aware optimum. This motivates better
+marginal cost estimation before a larger pair solver, not a deployment change.
+[Decision study and reproduction](outputs/publication_readiness_2026_09/moving_pair_coupling_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

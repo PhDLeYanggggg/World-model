@@ -14,6 +14,23 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Analytic Pair Coupling On A Fixed Forecast Bank
+
+Fresh14deterministic ridge fits, source-excluded within each of six original
+producer designs, 125540A rows, all1613queries. Identical learned marginals,
+candidate paths and fixed counts; only the label-free quadratic mixed term
+changes. 423 queries change choices,3225switches perarm. Squared pair reduction
+-0.000172[-0.001445,+0.000907]; unsquared -0.000099[-0.000642,+0.000393].
+Agent known +0.0184pp and completion lower -0.2392pp; both intervals cross0.
+Registered component screen fails; no independent readout or risk certification.
+Posthoc label-aware coupling improves squared error0.30% over label-aware
+additive; learned-to-oracle coupled gap0.029532 versus oracle incremental
+gain0.000634. This is a candidate-set observed-label ceiling, not learnable gain.
+Run/replay exit0, exact coefficients/choices/scalars;14focused tests pass0.76s.
+No new actor training, old rule change or Stage5C/SMC. Prioritize marginal cost
+estimation over adding solver complexity for this candidate bank.
+[Complete study](outputs/publication_readiness_2026_09/moving_pair_coupling_v1/README.md).
+
 ## Conditional Risk Transport: Actual Neural Training, Negative Decision Result
 
 ### Information-Preserving Node Views: Implementation Before Real Fitting
