@@ -216,6 +216,15 @@ recording views. I will work on which options the policy considers
 before adding a larger model to score the same options.
 [Whole-set comparison and support bound](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/setwise/readout.md).
 
+I reopened the full candidate bank without changing the final risk
+test. This reduced the number of recording views ruled out by the
+fixed-budget diagnostic from 75 to 47, but did not increase actual
+passes. For 28 views missing an easy reference, the original predicted
+allowance blocked every option that could supply one, even though a
+locally feasible option existed with observed outcomes. I now need to
+improve how the model judges rejected options, not just rank more of them.
+[Full-bank and reference-support experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/expanded_support/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

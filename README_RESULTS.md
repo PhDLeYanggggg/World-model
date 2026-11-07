@@ -93,6 +93,21 @@ are not proved feasible. No label-aware choice is exported. No
 independent outcome access or deployment change.
 [Design, readout and bound](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/setwise/readout.md).
 
+## Full-Bank Risk Support
+
+At the same 6,184 exact per-query switches, full-bank membership vs
+restricted membership gives +0.00151 pp [-0.01207, +0.01563] and
+passes 2/102 rather than 3/102. The fixed reference bonus increases
+pooled easy reference by 4.13% but still passes 3/102. The fixed
+original-prefix diagnostic rules out 47/102 rather than the restricted
+75/102; 55 remain not ruled out, not proved feasible. Among 33 views
+without possible selected easy reference at the fixed counts, five
+could obtain it in an inactive query under the same predicted balance.
+Twenty-eight have an observed locally feasible option but the original
+predicted allowance rejects all easy-supported single and pair options.
+No policy upgrade or independent result.
+[Results and reproduction](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/expanded_support/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,
