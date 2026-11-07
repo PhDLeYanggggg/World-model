@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Source-Stable Veto Costs
+
+I refit the veto cost head 42 times with held sources excluded and used
+leave-one-fitting-source-out estimates to shrink fragile cost reductions.
+At the same 6,952 query-matched switches, full passes rise from 1/102 to
+4/102 and signed easy violations fall from 15 to 9 against the pooled
+head. The paired completion lower declines by 0.18428 pp (95% source
+bootstrap interval [-0.34810, -0.04103]). Thirty-seven easy risk views
+remain undefined. This is a model-side change, not a changed threshold
+or a new deployment result. Controls and score replay match exactly.
+[Experiment and results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/stability/readout.md).
+
 ## Fixed-Fit Calibration Size
 
 I held the seven-source fit and all 6,952 query-matched switches fixed,
