@@ -4,6 +4,13 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [matched proposal retrieval comparison](../native_support_retrieval_v1/README.md)
+holds the intervention roster size fixed. Support ranking increases
+label-aware single-query feasibility but reduces absolute and observed
+relative-path accuracy. The unchanged gate keeps at least one locally
+feasible proposal in 18 views per retrieval arm. This is supplemental
+development evidence; the main PDF is unchanged.
+
 The [query switch-set critic](../native_query_risk_critic_v1/README.md)
 holds candidate proposals fixed and separates local feasibility from
 recording-level risk. It does not improve the registered support-prediction

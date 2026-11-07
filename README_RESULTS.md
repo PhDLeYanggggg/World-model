@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Count Support-Aware Proposal Retrieval
+
+With 9,675 proposed switches per arm, prioritizing easy reference raises
+the count of views with a feasible single-query witness from 55 to 67
+against the matched gain control. The primary any-reference contrast is
++1.90 pp [-1.43, +7.14], while paired lower utility drops by 0.477 pp.
+The fixed gate keeps at least one feasible proposal in 18 views per arm;
+original-rule passes are 5/102 versus 3/102. The policy is not promoted.
+[Matched retrieval, relative geometry and gate audit](outputs/publication_readiness_2026_09/native_support_retrieval_v1/README.md).
+
 ## Native Switch-Set Risk Critic
 
 The query critic picks 21 locally feasible sets out of 44 accepted,

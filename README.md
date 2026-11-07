@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I tested whether changing the proposed switches could recover easy-case
+coverage. At the same proposal count, the support-aware ranking raised the
+number of views with a feasible hindsight choice from 55 to 67, but the
+unchanged gate kept a feasible choice in only 18 views for either ranking.
+It also worsened matched forecast accuracy. I have not promoted the policy.
+[Matched proposal and gate audit](outputs/publication_readiness_2026_09/native_support_retrieval_v1/README.md).
+
 I also trained a screen that judges a whole proposed switch set rather than
 adding separate decisions. At nearly the same intervention count, it found
 21 locally feasible sets instead of 10, but only 4 of 102 recording-seed
