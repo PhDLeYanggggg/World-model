@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Past Forecast Errors Within The Fixed Shortlist
+
+With the same shortlist and original risk contract, an eight-observation
+backtest improves matched completion-lower utility by +0.00525 pp
+(95% source interval [+0.00045, +0.01119]), but the calibrated policy
+still passes only 2/102 views. In the first two eligible queries of the
+18 original zero-direct views, no shortlisted action has resolved
+12-step feedback, and neither new selector recovers a useful winner.
+No deployment or submission change.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_history/readout.md).
+
 ## Gain And Risk Choice Within A Fixed Shortlist
 
 With the same eight family-diverse candidates, the gain-only and

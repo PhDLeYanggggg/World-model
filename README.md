@@ -315,6 +315,13 @@ choices that neither selector picked, so I treat candidate availability
 and action choice as separate results.
 [Fixed shortlist experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_cost/readout.md).
 
+I also tested whether the model could use errors it had already seen.
+None of the first two eligible queries in the 18 no-switch views had
+12-step feedback available for a shortlisted action. Short forecasts
+checked against the eight observed positions helped slightly at equal
+switch counts, but did not add a pass under the original 2% rule.
+[Past-error experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_history/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
