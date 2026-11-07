@@ -408,6 +408,13 @@ value prediction. The gain stopped there: neither method recovered
 a whole recording under the original rules.
 [Support and value experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/reference_hurdle/readout.md).
 
+I trained on whole-recording outcomes next. That recovered one
+missing reference, but the recording still failed the original
+risk check. In hindsight, keeping the insertion and withdrawing
+one existing switch would have passed. The learned policy did not
+make that joint decision, so I have not changed the operating model.
+[Whole-record supervision experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/record_rescue/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

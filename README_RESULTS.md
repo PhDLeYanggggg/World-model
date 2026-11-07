@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Whole-Recording Rescue Supervision
+
+In 84 fresh Torch fits, whole-record rescue supervision picked
+2/102 feasible first actions versus 1/102 for local supervision
+(+0.48 pp by source, 95% interval [0.00, +1.43]). It recovered
+one missing reference but added no recording pass. Prefix features
+lost one original pass. The recovered-reference case still had
+12.82% all-risk upper; a label-aware check verified that the same
+insertion with one ordered deletion could pass. It is not a learned
+pass. The original 2% and support requirements remain unchanged.
+[Results and transition audit](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/record_rescue/readout.md).
+
 ## Factoring Support and Value
 
 A matched 42-fold Torch fit increased first-query selections with
