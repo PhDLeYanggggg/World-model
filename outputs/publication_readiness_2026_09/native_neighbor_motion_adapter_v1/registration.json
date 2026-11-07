@@ -1,0 +1,96 @@
+{
+  "arms": [
+    "ego",
+    "pooled_motion",
+    "local_relative_motion"
+  ],
+  "backbones": {
+    "17": {
+      "bytes": 1627573,
+      "path": "data/stage_cvpr2027_experiments/native_gated_motion_residual_v1/fits/17_ungated/checkpoint.pt",
+      "sha256": "bb4fd50259a9c3194690f262f666714b89b782f773d304cce9836f8b439cc292"
+    },
+    "29": {
+      "bytes": 1627573,
+      "path": "data/stage_cvpr2027_experiments/native_gated_motion_residual_v1/fits/29_ungated/checkpoint.pt",
+      "sha256": "d7560d63a2f20a610265dfd82b14bcb8c60cfbe34bc7cfab5c6a366c4d002763"
+    },
+    "43": {
+      "bytes": 1627573,
+      "path": "data/stage_cvpr2027_experiments/native_gated_motion_residual_v1/fits/43_ungated/checkpoint.pt",
+      "sha256": "3a3acab49ff123d5b12c06c18c898131e16f91c1165346379f03b105344ccc6f"
+    }
+  },
+  "bindings": [
+    {
+      "bytes": 12578,
+      "path": "scripts/run_m3w_neighbor_motion_adapter.py",
+      "sha256": "65b498c961df4e504026c75e8daa16e195dd0a333941fb0c6968d6fdbfc8114d"
+    },
+    {
+      "bytes": 3143,
+      "path": "src/world_model/m3w_neighbor_motion_adapter.py",
+      "sha256": "0199e3e5540e8c45d8465bb3d286ef1f1918a1cf76c7fe76ce1258b4f1f34bd7"
+    },
+    {
+      "bytes": 1822,
+      "path": "outputs/publication_readiness_2026_09/native_neighbor_motion_adapter_v1/protocol.md",
+      "sha256": "c4c50991f54449c52e93ac4cdd9dff6371974884c89a60fcd7cb1e9f2ca31440"
+    },
+    {
+      "bytes": 1273,
+      "path": "tests/test_m3w_neighbor_motion_adapter.py",
+      "sha256": "47932d9543a2d2c5f2a85fe76c26e8716a0f40922929067cf6daa4360ec28969"
+    },
+    {
+      "bytes": 3795,
+      "path": "outputs/publication_readiness_2026_09/native_gated_motion_residual_v1/registration.json",
+      "sha256": "f4e3eeb7a8f36faa783f85f74e419d94de38b71272fbbf143df373075ffa3f23"
+    },
+    {
+      "bytes": 264,
+      "path": "outputs/publication_readiness_2026_09/native_gated_motion_residual_v1/train_execution.json",
+      "sha256": "3611ab01f9df28dafe63bd6dfb6a1572d07cd6c4b81ab546d641abd562e732aa"
+    },
+    {
+      "bytes": 271,
+      "path": "outputs/publication_readiness_2026_09/native_gated_motion_residual_v1/replay_execution.json",
+      "sha256": "78d8a9f54a10996deac802b5e9ced14018420f38e4bfab0e720d5b9760a72361"
+    },
+    {
+      "bytes": 2996,
+      "path": "src/evaluation/m3w_joint_path_audit.py",
+      "sha256": "22d4b7ea96ed46658bc6a83009ffd051e7fab20a2b5428b7439b18be5d1ba9e1"
+    },
+    {
+      "bytes": 9938,
+      "path": "src/world_model/m3w_native_forecast.py",
+      "sha256": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613"
+    }
+  ],
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "data_loader_workers": 0,
+  "exact_recipients": true,
+  "external_access": false,
+  "model_selection": false,
+  "original_risk_unchanged": true,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch_size": 128,
+    "checkpoint_every": 150,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 150,
+    "learning_rate": 0.001,
+    "minimum_lr_ratio": 0.1,
+    "steps": 900,
+    "weight_decay": 0.0001
+  },
+  "torch_threads": 2
+}
