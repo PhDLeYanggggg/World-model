@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I compared predicted benefit and harm magnitudes with the previous
+activation scores. At the same 430 switches, the risk-adjusted score
+did not reliably improve utility. The current-query version passed
+2 of 102 recording-seed views, so I have not promoted it.
+[Continuous activation results](outputs/publication_readiness_2026_09/native_value_activation_v1/README.md).
+
 I separated when to switch from which forecasts to use. At the same
 430 switches, activating by predicted feasibility found more locally
 feasible sets than activating by predicted gain, but reduced conservative

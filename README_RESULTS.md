@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Continuous Benefit And Harm Activation
+
+At 430 matched switches, the risk-adjusted score's paired lower utility
+versus the previous gain score is +0.00105 pp [-0.00541, +0.00788].
+Adding the risk penalty reduces lower utility by 0.00146 pp versus
+the new value-only score, with the same number of recording passes.
+The current-query risk-adjusted arm makes 516 switches and passes 2/102.
+[Study and reproduction](outputs/publication_readiness_2026_09/native_value_activation_v1/README.md).
+
 ## Native Query Activation At Matched Counts
 
 With the proposed action fixed per query and 430 matched switches,

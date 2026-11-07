@@ -1,0 +1,53 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.78in]{geometry}
+\usepackage{booktabs}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\pagestyle{empty}
+\begin{document}
+{\Large\bfseries Where Do Selective Forecast Substitutions Fail?}
+
+\textbf{Development evidence.} These comparisons reuse one native
+8-observation / 12-prediction image-coordinate bank on 34 previously exposed
+recordings, grouped into 14 sources and evaluated with three forecast seeds.
+The 102 recording-seed views are repeated evaluations, not independent
+recordings. Each row holds intervention count fixed within its own comparison;
+counts are not matched between rows.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Control to treatment & Switches & Local hits & Passes & Paired lower utility [95\% interval] \\
+\midrule
+Gain to support retrieval & 9,675 & 685 to 755 & 4 to 1 & -0.47730 [-1.23473, -0.04561] \\
+Support to feasibility rank & 222 & 40 to 38 & 5 to 2 & +0.00118 [+0.00004, +0.00309] \\
+Gain to event activation & 430 & 59 to 74 & 1 to 5 & -0.00388 [-0.00910, -0.00003] \\
+Gain to value-risk activation & 430 & 59 to 70 & 1 to 3 & +0.00105 [-0.00541, +0.00788] \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{What is matched?}
+Retrieval uses the same number of proposals and agent slots for every query
+before any gate. Ranking retains the same active queries, predicted gate and
+agent counts. The two activation rows fix the proposed actions and rank across
+each full recording to match the prior switch budget by recording and action
+count. That last comparison is retrospective, not an online operating rule.
+
+\textbf{What is measured?}
+A local hit is a proposal with positive conservative gain, nonpositive
+all/easy excess, and positive easy reference. Recording passes require
+the original 2\% caps and positive reference support; an undefined risk
+is not a pass. The utility column gives percentage-point reductions in
+error relative to the shared CV reference, with a missing-label
+completion penalty. Intervals resample 14 paired source groups 3,000
+times after averaging seeds.
+
+\textbf{Interpretation.}
+Better local retrieval need not translate into positive utility or a
+recording-level pass. The current-query value-risk rule uses disjoint
+donor-source thresholds and makes 516 switches; it passes 2 of 102 views.
+The retrospective numbers cannot be used to claim risk calibration.
+No rule here justifies deployment or demonstrates independent transfer.
+\end{document}

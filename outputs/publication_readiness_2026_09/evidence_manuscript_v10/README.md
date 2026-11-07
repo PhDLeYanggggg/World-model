@@ -4,6 +4,14 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [activation appendix](activation_appendix.tex) compares matched
+support retrieval, direct feasibility ranking, event activation and
+continuous value/risk. It is generated from four replayed results and
+compiled locally as a one-page PDF. The [binding file](activation_appendix_bindings.json)
+and [build receipt](activation_appendix_verification.json) preserve its
+provenance. The [continuous value study](../native_value_activation_v1/README.md)
+does not establish an operating-policy improvement. The main PDF is unchanged.
+
 The [query activation comparison](../native_activation_v1/README.md)
 fixes the proposed action and separates equal-count retrospective
 comparison from the current-query threshold. Probability ranking
