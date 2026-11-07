@@ -51,6 +51,10 @@ checkpoint not used. The eight-page working PDF includes the literature
 recheck and portable aggregate replay,not these unscored dual-view outcomes.
 All eight rendered pages inspected;31focused checks pass11.95s,not a rerun of
 the full historical suite. Submission readiness remains false.
+At01:53Z on7November,all six camera_node models finish4000updates each;
+all original draws/factors/RNG checks pass. PID82393continues the six matched
+native_node controls. No new forecast or outcome scored,so this is training
+completion evidence for one arm,not a predictive result or finished matrix.
 
 ### Camera-Operator Ablation: Registered Before Real Fitting
 

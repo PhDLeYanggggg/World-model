@@ -80,6 +80,9 @@ model, active optimizer state, sampler/RNG and common loss trace exactly. Its
 two additional inactive optimizer entries are declared separately. The twelve
 full treatment models are running; predictive usefulness has not yet been
 established for this replacement.
+All six observed-view models have now completed 4,000 updates with original
+sampling/RNG checks intact. The six same-capacity native-view controls are
+training before any prediction or outcome comparison.
 
 A [standalone aggregate-evidence package](outputs/publication_readiness_2026_09/native_actor_reproduction_v1/README.md)
 now replays the three completed actor studies in a clean directory without
