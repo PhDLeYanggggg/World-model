@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Nested Post-Search Risk Estimation
+
+With 7/6/1 source separation and 3,280 matched switches, learned
+post-search ranking changes conservative utility by -0.00035 pp
+[-0.00272, +0.00200] versus predicted-margin ranking; both pass
+1/102 views. Budget-event Brier is worse than fitting prevalence,
+and no donor threshold passes all required views in any of 42 folds.
+[Fit, matched comparison and replay](outputs/publication_readiness_2026_09/native_postsearch_risk_v1/README.md).
+
 ## Exact Joint Path Search
 
 At 72 matched interventions, exact joint path search changes one query,

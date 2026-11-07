@@ -66,6 +66,17 @@ risk violations from 12 to 40 views, without increasing the four
 recording passes. The observed pair improvement at the ungated matched
 count does not survive the missing-pair lower bound.
 
+The [decision bottleneck figure](decision_bottlenecks_figure.md) places
+the two hindsight and actual-policy comparisons in separate panels.
+Its vector PDF is built from the hash-verified aggregates, not raw
+paths or labels.
+
+The [post-search risk comparison](../native_postsearch_risk_v1/README.md)
+fits on selected search actions with nested source separation. It
+does not improve the matched-margin contrast or the recording pass
+count; none of the donor threshold folds passes all required views.
+Better easy-reference prediction is not a risk guarantee.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

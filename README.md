@@ -178,6 +178,12 @@ did not improve the result. Screening all options first increased
 switches but also increased recording risk violations.
 [Exact joint search and additive control](outputs/publication_readiness_2026_09/native_joint_path_portfolio_v1/README.md).
 
+I retrained risk prediction on the combinations the search actually
+chose. With 3,280 switches each, the learned ranking and the matched
+risk-margin control both passed one view. The new head predicted easy
+reference better, but did not predict risk better.
+[Source-separated post-search result](outputs/publication_readiness_2026_09/native_postsearch_risk_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
