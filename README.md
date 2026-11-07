@@ -166,6 +166,12 @@ views but no new view with positive conservative gain over OLS4.
 The original controller still passed more views, so I kept it unchanged.
 [Learned retrieval comparison](outputs/publication_readiness_2026_09/native_full_query_retrieval_v1/README.md).
 
+I also trained retrieval from whole-recording solutions. It found
+three additional views with positive hindsight OLS4 utility, but
+selecting one assignment per query and then applying the fixed gate
+reduced that capacity from 48 to 26 to 3. The actual policy still did
+not beat OLS4. [Where the choices were lost](outputs/publication_readiness_2026_09/native_recording_witness_retrieval_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed

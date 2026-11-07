@@ -1,0 +1,55 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{booktabs}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\pagestyle{empty}
+\begin{document}
+{\Large\bfseries From Recording Witnesses to Causal Decisions}
+
+\textbf{Matched comparison.}
+Both rankers retrieve eight recipients per query and propose the same
+9,675 interventions across three forecaster seeds. The gain-only
+control keeps its full shortlist. The witness ranker keeps the first
+four gain slots and fills the rest from a source-excluded predictor of
+membership in a risk-feasible recording solution with positive
+conservative gain over OLS4. The teacher uses exposed labels and can
+only intervene on labeled rows; it retains the original uncertainty
+charge on wholly unobserved rows. Both rankers see the same past-only
+inputs and use the same path bank, action costs, decoder and gate.
+
+\textbf{Retrieval and operation.}
+On 34 exposed recordings across 14 sources and three forecaster
+seeds, the number of views with positive hindsight OLS4 utility is
+45 with gain-only retrieval and 48 with witness retrieval. The
+three gains incur no losses, but the source-bootstrap contrast is
+$+3.571$ percentage points [$0.000,+10.714$]. At matched counts the
+paired conservative utility difference is $-0.361$ [$-0.828,-0.023$]
+points on the CV denominator. The witness policy passes 4/102 views
+after gating, compared with 3/102 for the original unshortlisted
+controller, and remains below OLS4.
+
+\begin{center}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Path choices available to a hindsight solver & Feasible & Positive vs. OLS4 \\
+\midrule
+All paths on the eight retrieved recipients & 87 & 48 \\
+One intact decoded choice per query & 62 & 26 \\
+Only decoded choices admitted by the fixed gate & 7 & 3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Attribution.}
+All three nested optimizations allow abstention and keep the same
+recording risk and reference-support conditions. This isolates two
+losses after retrieval: collapsing the candidate paths to one joint
+choice, and rejecting that choice before accumulating recording
+support. A feasible query subset with labels is not a certificate
+for the full operating policy, which must act without those labels.
+The unchanged 2\% limits, original query caps, CV risk reference,
+and OLS4 accuracy comparison apply throughout. There are no unresolved
+solves. Distances are in pixels over eight observed and twelve
+predicted annotation steps. No independent test is used here.
+\end{document}

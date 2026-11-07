@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recording-Witness Retrieval And Decision Retention
+
+Source-excluded witness supervision raises positive OLS4 shortlist
+capacity from 45 to 48 views at identical counts, but matched
+conservative utility is -0.361 pp [-0.828, -0.023] versus gain-only.
+The nested capacity falls from 48 to 26 with a single decoded option
+per query and to 3 after gate admission. The actual controller passes
+4/102 views and remains below OLS4; no promotion.
+[Matched training and nested readout](outputs/publication_readiness_2026_09/native_recording_witness_retrieval_v1/README.md).
+
 ## Learned Full-Query Retrieval
 
 At eight candidate slots per query and 9,675 matched proposals, the

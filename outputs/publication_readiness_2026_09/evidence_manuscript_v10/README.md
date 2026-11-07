@@ -51,6 +51,13 @@ opportunity restores feasibility in three additional views but does
 not change the 45 positive OLS4 views. The gated ranker passes only
 two views, so this does not close the gap from hindsight to operation.
 
+The [recording-witness appendix](witness_retention_appendix.tex) shows
+that source-excluded training can recover some shortlist capacity,
+but compressing that shortlist to one decoded proposal per query
+reduces the positive OLS4 views from 48 to 26. The original gate
+leaves only three hindsight-positive views. The actual policy is not
+promoted. [Matched results](../native_recording_witness_retrieval_v1/README.md).
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and
