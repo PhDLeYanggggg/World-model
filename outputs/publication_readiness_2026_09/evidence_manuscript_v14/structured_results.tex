@@ -1,0 +1,63 @@
+\section{Exact Budgets and Learned Recipient Decisions}
+
+Holding recipients fixed can make risk infeasible before a
+path ranker is trained. Componentwise minima rule out
+\FixedPeople{} of the 102 views at the original neural counts
+and \FreeNeural{} if those counts are free. These are bounds
+for the specific frozen recipients and allowed replacements,
+not infeasibility claims about the entire forecast bank.
+
+When recipients may change, the constraints are jointly
+feasible in \NominationFeasible{} views using one frozen
+nomination per person, and \FullFeasible{} with all paths.
+The solver keeps the exact original query counts in both
+banks. On known rows the lowest-error legal path weakly
+improves all risk components and CV utility; on wholly
+unknown rows the path with the smallest CV disagreement
+does likewise. This reduces full-bank CV optimization to
+one choice per row without assuming the same dominance
+for OLS4 utility. Every witness is rechecked by the original
+scorer. Figure~\ref{fig:recipient} contrasts this capacity
+with the actual pass counts from causal recipient selection.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=.98\textwidth]{recipient_feasibility.pdf}
+\caption{Exact-count development results. A label-aware
+feasibility check is not a deployed policy. The first two
+rows show componentwise exclusions; their remaining views
+are not certified. The last two rows solve all constraints
+together. The past-only policies make identical numbers of
+switches per query. All 102 views repeat 34 recordings
+across three forecaster seeds.}
+\label{fig:recipient}
+\end{figure*}
+
+\paragraph{Distilling the recording teacher.}
+Decision-focused learning already optimizes predictors for
+downstream objectives~\cite{spo,wilder}. Our diagnostic does
+not differentiate through the optimizer or implement SPO+.
+It learns pairwise preferences from verified whole-recording
+solutions on training sources. For each teacher action we
+compare the past descriptors with legal alternatives on the
+same recipient and on unselected recipients. Ridge fitting
+balances these two comparisons and excludes the scored
+source. We then use the same score to select recipients with
+the original nominated paths or to select both paths and
+recipients. Neither student sees outcome labels at inference.
+
+At the same \StructuredSwitches{} switches, the full-bank
+student changes conservative utility relative to gain
+ranking by \StudentVsGain. The fixed-nomination student
+changes it by \NomineeVsGain. The original recording
+pass counts are \StudentPass{} and \NomineePass, respectively,
+versus \GainPass{} for gain ranking. The full student changes
+observed pair ADE by a signed reduction of \StudentPair{} pixels.
+The predicted screen retains \ScreenSwitches{} full-student
+switches and passes \ScreenPass{} views; this screened count
+is not a matched-utility result. For the full student versus
+gain, the observed contrast is \StudentKnown; disagreement
+on wholly unobserved rows accounts for another
+\StudentMissing{} percentage points in the lower envelope.
+Closer agreement with a training teacher is not enough to
+recover its recording-level constraints on a new source.

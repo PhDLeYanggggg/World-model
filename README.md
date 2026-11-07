@@ -109,6 +109,15 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I used feasible recording-level decisions to teach a past-only
+ranker. It more often chose the same person as the teacher, but
+that did not translate into safer decisions. At the same 9,675
+switches, the full-action ranker lost 16.61 percentage points in
+conservative utility relative to gain ranking. The original risk
+screen kept no switches. I kept this negative result in the
+[working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v14/README.md)
+and left the independent evaluation protocol unchanged.
+
 I tested a new way to choose recipients without changing their
 nominated paths or the intervention budget. It does not beat the
 gain control. Yet at exactly the same per-query counts, the

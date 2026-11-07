@@ -1,5 +1,8 @@
 # Decision Manuscript v13
 
+The [v14 working draft](../evidence_manuscript_v14/README.md)
+adds the exact-count figure and the structured-imitation result.
+
 This five-page working draft adds the causal-only oracle, the
 same-switch past-only comparison, and the new fixed-recipient
 increment fit to v12. The abstract and new main-text section

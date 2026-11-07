@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Structured Imitation Of Feasible Recording Decisions
+
+42 source-excluded fits used recording-local feasible decisions as
+training supervision. At 9,675 matched switches, the full-action
+student loses 16.607 pp [-25.703, -9.080] in conservative utility
+against gain ranking. The fixed-nomination student loses 2.020 pp
+[-4.469, -0.449]. Both pass 0/102 recording-seed views; the risk
+screen retains no full-student switches. Better teacher agreement
+does not establish recording-level feasibility on a held source.
+[Fit, score and replay](outputs/publication_readiness_2026_09/native_structured_imitation_v1/README.md) |
+[v14 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v14/README.md).
+No independent result or deployment change.
+
 ## Recipient Shortfall And Joint Exact-Count Capacity
 
 At 9,675 matched switches, predicted risk shortfall loses -1.991 pp
