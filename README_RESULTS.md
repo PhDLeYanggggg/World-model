@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Feasibility Ranking On The Fixed Slate
+
+The top-one feasibility contrast is -0.169 pp [-2.058, +1.932].
+At exactly 222 matched switches, the trained ranker keeps 38 locally
+feasible sets versus 40 for support ranking and passes 2 rather than
+5 of 102 recording-seed views. Of 111 old active queries, only 49 have
+any actually feasible gate-eligible option; another 84 feasible eligible
+queries were inactive. Those counts are label-aware diagnostics.
+[Fit, evaluation and checkpoint replay](outputs/publication_readiness_2026_09/native_feasible_slate_v1/README.md).
+
 ## Fixed-Count Support-Aware Proposal Retrieval
 
 With 9,675 proposed switches per arm, prioritizing easy reference raises

@@ -4,6 +4,13 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [direct feasibility ranker](../native_feasible_slate_v1/README.md)
+does not improve top-one feasibility on the same slate. Holding the
+active queries and agent counts fixed does not repair recording-level
+risk. The [related-work note](selection_conditioned_prior_20261107.md)
+distinguishes this empirical contract from prior marginal
+selection-conditioned risk control. The main PDF is unchanged.
+
 The [matched proposal retrieval comparison](../native_support_retrieval_v1/README.md)
 holds the intervention roster size fixed. Support ranking increases
 label-aware single-query feasibility but reduces absolute and observed

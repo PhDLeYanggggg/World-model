@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I trained a model to rank whole switch sets by their chance of being both
+useful and within budget. At the same 222 switches, it did not improve
+local feasibility and passed 2 rather than 5 recording-seed views.
+The frozen switch schedule also left feasible alternatives unused. I am
+keeping the old operating policy unchanged.
+[Matched ranking experiment](outputs/publication_readiness_2026_09/native_feasible_slate_v1/README.md).
+
 I tested whether changing the proposed switches could recover easy-case
 coverage. At the same proposal count, the support-aware ranking raised the
 number of views with a feasible hindsight choice from 55 to 67, but the
