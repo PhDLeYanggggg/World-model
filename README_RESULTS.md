@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## DroneCrowd External Input Preflight
+
+All 31,472 query times and 4,520,912 history-complete instances
+replay exactly with no future-label access. Both unassigned
+role alternatives preserve whole exclusion groups. Three frozen
+self-kinematic fits have verified coverage of their 24 training
+recordings in the archived source screen. No external policy,
+reference cut, role assignment or outcome is frozen here.
+[Preflight and remaining decision](outputs/publication_readiness_2026_09/dronecrowd_blind_preflight_v1/README.md).
+
 ## Observed Box Geometry
 
 The full-cohort box features keep first-query easy-reference hits

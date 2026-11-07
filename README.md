@@ -435,6 +435,12 @@ and neither was taken by the calibrated policy.
 [Box geometry comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/box_visibility/readout.md) ·
 [Insertion appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v10/insertion_appendix.md).
 
+I have now streamed all 112 DroneCrowd recordings to check that
+the eight-step input path works before an external test. This does
+not open confirmation labels or assign roles. The two proposed
+splits and the checkpoint source checks are recorded in the
+[external input preflight](outputs/publication_readiness_2026_09/dronecrowd_blind_preflight_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
