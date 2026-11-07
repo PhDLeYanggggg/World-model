@@ -16,8 +16,8 @@ from src.evaluation import m3w_prefix_capacity as model
 
 run, np, prior = directional.run, directional.np, directional.prior
 PUBLIC, PRIVATE = prior.PUBLIC/'prefix_capacity', prior.PRIVATE/'prefix_capacity'
-PARENT_REG = PUBLIC/'registration.json'
-REG = PUBLIC/'registration_v2.json'
+OLDER_REGS = (PUBLIC/'registration.json',PUBLIC/'registration_v2.json')
+REG = PUBLIC/'registration_v3.json'
 FILES = (Path(__file__), Path(model.__file__), PUBLIC/'protocol.md',
          ROOT/'tests/test_m3w_prefix_capacity.py')
 TIME_LIMIT = 8.
@@ -29,14 +29,14 @@ def register():
     for phase in ('score', 'replay'):
         if run.read(parent/f'{phase}_execution.json')['artifact']['sha256'] != run.sha(parent/'analysis.json'):
             raise ValueError('Require frozen parent scoring and replay')
-    inputs = (PARENT_REG, directional.REG, parent/'freeze.json', parent/'analysis.json',
+    inputs = (*OLDER_REGS, directional.REG, parent/'freeze.json', parent/'analysis.json',
               parent/'replay_execution.json', directional.size.REG, directional.size.PUBLIC/'freeze.json',
               Path(run.model.__file__), Path(run.parent.readout.__file__))
     run.once(REG, run.stable(dict(files=[run.artifact(p) for p in FILES],
         inputs=[run.artifact(p) for p in inputs], modes=model.MODES, time_limit=TIME_LIMIT,
         expected_views=102, expected_switches=6952, original_budget=.02,
         label_aware_only=True, protected_outcomes_accessed=False,
-        lossless_rowwise_dominance=True, prefix_presolve_disabled=True,
+        lossless_rowwise_dominance=True, all_presolve_disabled=True,
         reuse_completed_original_checkpoints=True)))
 
 
@@ -143,14 +143,13 @@ def execute(phase, beat):
                 run.once(path,run.stable(dict(identity=identity, reference=p['reference'],
                                               direct_switches=n, modes=modes)))
             row = run.read(path)
-            original_identity = {**identity,'registration':run.sha(PARENT_REG)}
-            if row['identity'] not in (identity, original_identity):
+            earlier = [{**identity,'registration':run.sha(p)} for p in OLDER_REGS]
+            if row['identity'] not in (identity, *earlier):
                 raise ValueError('Cannot resume another registered recording view')
             out.append(row)
             beat(state='recording_done', seed=seed, complete=len(out))
     data = summarize(out)
-    data['original_solver_checkpoints_reused'] = sum(
-        r['identity']['registration']==run.sha(PARENT_REG) for r in out)
+    data['solver_registration_counts'] = dict(Counter(r['identity']['registration'] for r in out))
     run.once(PUBLIC/'analysis.json',data)
 
 

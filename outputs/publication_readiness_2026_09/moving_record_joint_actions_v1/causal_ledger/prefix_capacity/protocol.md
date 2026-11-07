@@ -42,3 +42,7 @@ runtime: remove dominated same-row actions (identical count/support,
 no better objective and no lower relevant cost), and disable presolve
 for the prefix problem. All four problem definitions and the requested
 search time limit are unchanged. Keep any timeout unproven.
+Sampling the resumed process identified the same dominated-column
+presolve delay in the terminal-budget problem. The second continuation
+disables that presolve for all modes, also without changing the
+optimization problems or recomputing completed recording views.

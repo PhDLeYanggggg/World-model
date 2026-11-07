@@ -127,7 +127,7 @@ def solve(problem, floor, bank, direct, target, valid, recording, easy_cut, hard
                   integrality=np.r_[np.ones(len(row)), np.zeros(slack)],
                   bounds=Bounds(0.,np.r_[np.ones(len(row)),np.full(slack,np.inf)]),
                   constraints=LinearConstraint(matrix,lower,upper),
-                  options=dict(time_limit=seconds,mip_rel_gap=0.,presolve=mode!='fixed_prefix'))
+                  options=dict(time_limit=seconds,mip_rel_gap=0.,presolve=False))
     if result.status == 2:
         return dict(status='infeasible',reason='joint_constraints')
     dual = getattr(result,'mip_dual_bound',None)
