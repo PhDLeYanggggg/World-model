@@ -302,6 +302,12 @@ queries for 15 of the 18 zero-switch views, but no tested ranker puts it
 first. I will improve candidate selection before expanding the waiting
 rule. [Stop versus wait](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_stop_wait/readout.md).
 
+I trained two useful-action rankers to test that bottleneck directly.
+The pairwise loss improved shortlist recall but did not improve the
+calibrated policy. At the same eight-slot budget, a simple shortlist
+that retains different forecast families also found more useful
+choices. [Ranking and shortlist comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_pair_rank/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

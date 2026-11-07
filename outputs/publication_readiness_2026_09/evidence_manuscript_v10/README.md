@@ -77,6 +77,12 @@ The shortlist recall check separates timing from ranking: positive
 supported first-two-query opportunities exist in 15/18 zero-direct
 views, but the tested top-ranked choices recover none.
 
+The [useful-action ranker](../moving_record_joint_actions_v1/causal_ledger/opening_pair_rank/readout.md)
+compares a pointwise and a pairwise objective on identical draws. The
+local appendix figure `opening_rank_recall.pdf` also shows an
+eight-slot diversity control. Shortlist gains do not turn into
+calibrated policy gains; the main PDF is unchanged.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

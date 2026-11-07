@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Useful-Action Ranking And Shortlist Diversity
+
+84 matched Torch fits move the first-two-query flat top-eight recall
+from 2/18 to 4/18 pointwise and 5/18 pairwise. Top-one recall is
+1/18 for both trained scores. At the same eight-slot budget,
+family diversity on the previous score and row diversity on the
+pair score each reach 6/18 in a posthoc shortlist check. Neither
+trained and calibrated policy adds a complete risk pass on the full
+102 views. This is a recall improvement, not a deployment result.
+[Results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_pair_rank/readout.md).
+
 ## Stop Versus One-Query Continuation
 
 Across 42 source-separated fits, neither calibrated policy adds a
