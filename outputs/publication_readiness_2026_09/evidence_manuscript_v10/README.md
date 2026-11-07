@@ -4,6 +4,12 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [native transport rehearsal](../dronecrowd_transport_candidate_v1/README.md)
+tests an updated intervention rule on exposed development sources, each
+excluded from its controller fit. Screening removes most interventions
+without passing the original recording-risk rule. This is neither
+independent validation nor a change to the compiled main PDF.
+
 The [external candidate-bank audit](../dronecrowd_exact_bank_v2/README.md)
 reconciles the existing whole-source reservation and verifies the
 matching predictor and fitting-only cut provenance. It does not

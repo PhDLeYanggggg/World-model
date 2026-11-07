@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I tested a new decision rule that only switches forecasts when the current
+query predicts a gain, low risk and a positive easy-case reference. In development,
+it reduced interventions from 9,675 to 90, but passed just 3 of 102
+recording-seed views under the original risk rules. I have not promoted it
+or opened the reserved DroneCrowd outcomes.
+[Development rehearsal and matched controls](outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/README.md).
+
 I checked the exact predictor bank against the existing DroneCrowd
 confirmation reservation, and rebuilt the reference cuts from the
 training annotations. The original nine neural checkpoints are covered.
@@ -134,10 +141,10 @@ forecast input schema. All 112 recordings pass the three-prefix check, without
 using future labels to select agents. The complete 5,376-pair screen against
 the prior development image roster finds no match at the frozen thresholds.
 The original release folders still have known internal overlap. I retain all
-45 conservative exclusion groups and have prepared two role alternatives:
-15 calibration groups plus 30 confirmation groups, or 45 frozen-transfer
-groups. Neither is assigned yet. Image matching is not proof of independent
-physical sites, and neither check is an external prediction result.
+45 conservative exclusion groups under the original whole-source reservation.
+The alternative split into 15 calibration groups and 30 confirmation groups
+has not been adopted. Image matching is not proof of independent physical
+sites, and neither check is an external prediction result.
 [Source screen and proposed roles](outputs/publication_readiness_2026_09/dronecrowd_cross_archive_v1/README.md) |
 [Input compatibility](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
 

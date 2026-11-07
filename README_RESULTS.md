@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Transport Candidate: Development Rehearsal
+
+Using the exact 8-observation / 12-prediction forecast bank, the risk
+screen reduces interventions from 9,675 to 90. Paired lower utility versus
+CV is +0.00524 pp [0.00006, 0.01455], but lower utility versus OLS4 is
+-9.819 pp [-21.997, -0.550]. Only 3/102 recording-seed views pass the
+original 2% and support rules; 84 have undefined easy risk. The matched
+joint arm does not establish a relative-path advantage over the additive
+control. No deployment or reserved external evaluation changes.
+[Protocol, results and replay](outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/README.md).
+
 ## Exact External Candidate-Bank And Cut Provenance
 
 The existing whole-source registry reserves 112 DroneCrowd recordings
