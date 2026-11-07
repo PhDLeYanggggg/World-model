@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Past-Only Prefix-Adaptive Velocity
+
+At 9,675 unchanged switches, adaptive per-agent weights improve
+available-label utility over fixed weights by +0.023 pp
+[+0.002, +0.048], but the conservative lower contrast is -0.120 pp
+[-0.391, +0.028]. Per-agent weighting does not improve over the
+query-average control. All three variants pass 3/102 original
+recording checks, versus 4/102 for gain ranking. The new path
+direction is not promoted. [Experiment and replay](outputs/publication_readiness_2026_09/native_prefix_velocity_v1/README.md).
+
 ## Fixed-Recipient Recording Feasibility
 
 Allowing every recipient its own continuous blend of the same

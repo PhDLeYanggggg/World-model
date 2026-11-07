@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I tried choosing velocity windows by how well they predict the
+last few already observed positions. That helped slightly where
+future labels are present, but it did not improve the conservative
+12-step comparison or the recording risk pass count.
+[Prefix forecast experiment](outputs/publication_readiness_2026_09/native_prefix_velocity_v1/README.md).
+
 I also checked whether any reweighting of the same two forecasts
 could satisfy the original recording rule. Of 102 recording-seed
 views, 23 have no selected easy reference mass, 74 still exceed
