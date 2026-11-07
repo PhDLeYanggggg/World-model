@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source-Separated Gated Motion Forecasting
+
+Six matched PyTorch fits on 69,746 source-excluded training windows
+produce two OLS4-relative heads. The gated head's all-row observed
+contrast against OLS4 is +15.244 pp, but its conservative interval
+spans zero. At the same 9,675 recipients, gated and ungated lose
+-0.905 pp [-2.020, -0.049] and -0.797 pp [-1.777, -0.060] against
+gain ranking, respectively. Their worst easy degradation is
+25.78% and 24.48%; neither passes the original operating rule.
+Adding either or both as optional paths leaves 51/102 hindsight
+capacity witnesses. Real-data resume exactly reproduces the
+registered final scientific state.
+[Training and fixed recipients](outputs/publication_readiness_2026_09/native_gated_motion_residual_v1/README.md) |
+[Capacity](outputs/publication_readiness_2026_09/native_gated_motion_menu_v1/README.md).
+
 ## Damped Speed And Turn Forecasts At Fixed Recipients
 
 Adding speed and turning shapes leaves 51/102 dual-reference

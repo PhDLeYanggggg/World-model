@@ -109,6 +109,14 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I trained a matched pair of OLS4-relative motion heads across
+three seeds on disjoint training sources. The new forecasts helped
+the all-row comparison with OLS4 on available labels but lost at
+the original intervention recipients. Neither expanded the number
+of recording views that could beat both motion references at the
+same budget. [Training, recovery and comparison](outputs/publication_readiness_2026_09/native_gated_motion_residual_v1/README.md) |
+[Optional-menu audit](outputs/publication_readiness_2026_09/native_gated_motion_menu_v1/README.md).
+
 I tested whether extrapolating acceleration and turns could add
 useful paths without changing who gets switched. Neither bank
 extension added a positive view, and the matched speed and heading

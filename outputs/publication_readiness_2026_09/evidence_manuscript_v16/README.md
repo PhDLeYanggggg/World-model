@@ -9,6 +9,9 @@ status are unchanged. There are no independent outcomes in this draft.
 
 The subsequent [speed and turn comparison](../native_damped_motion_v1/README.md)
 is documented separately and does not change the frozen v16 files.
+The follow-up [trained motion-head experiment](../native_gated_motion_residual_v1/README.md)
+and [optional-menu audit](../native_gated_motion_menu_v1/README.md)
+are also exposed development evidence, not part of the frozen draft.
 
 ```sh
 out=data/stage_cvpr2027_experiments/evidence_manuscript_v16
