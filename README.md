@@ -14,6 +14,11 @@ when the intervention budget and recipients are held fixed. The small gain on
 observed labels did not survive the conservative missing-label comparison or
 the safety checks. [Matched training experiment](outputs/publication_readiness_2026_09/native_dual_reference_forecast_v1/README.md).
 
+For missing trajectory labels, I also tested how well two extrapolation
+centers cover positions I deliberately hid from released tracks. Anchored
+OLS4 covered more complete 12-step tails than a fixed-position center.
+[Missing-label stress test](outputs/publication_readiness_2026_09/native_completion_occlusion_v1/README.md).
+
 ## Current Result
 
 I tested whether adding past-image alignment to each agent's history helps

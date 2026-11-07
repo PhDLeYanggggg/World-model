@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Stress Test of the Missing-Label Corridor
+
+On the same 4,026 artificially hidden twelve-step tails, anchored OLS4
+raised whole-gap coverage at the original radius from 10.61% to 80.42%
+(+69.82 pp; source-bootstrap 95% CI [+59.68, +79.49]). This tests the
+completion center on released positions, not coverage of real absences.
+[Design, length sweep and replay](outputs/publication_readiness_2026_09/native_completion_occlusion_v1/README.md).
+
 ## Matched CV and OLS4 Forecast Training
 
 Across six fresh Torch fits, dual-reference training improved observed-label
