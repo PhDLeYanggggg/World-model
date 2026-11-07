@@ -140,6 +140,12 @@ selected easy support. This paired transition is evidence against
 equating donor calibration or fewer signed easy violations with improved
 recording risk; the main paper and PDF are unchanged.
 
+The [causal routing experiment](../moving_record_joint_actions_v1/causal_ledger/pruning_router/readout.md)
+estimates repairability before a deletion. First-query discrimination
+is weak and neither routed arm adds a pass. A fixed-threshold replay
+shows that the decline from 44 deletions to one depends on
+recalibration, not the support veto alone. Main PDF is unchanged.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 

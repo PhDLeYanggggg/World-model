@@ -361,6 +361,13 @@ easy-reference support from a recording that previously passed.
 I kept the original policy.
 [Removal-set supervision](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/pruning_teacher/readout.md).
 
+I tested whether the model could recognize a repairable recording
+before deciding which actions to remove. The score was weak, and
+neither routing nor keeping a reserve of predicted easy support
+added a complete pass. The result does not support using the new
+router in the policy.
+[Recording routing experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/pruning_router/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

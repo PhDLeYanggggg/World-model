@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Causal Routing Before Deletion
+
+First-active-query AUROC is 0.632 (95% source interval
+[0.440, 0.766]), with 28 positives among 84 active views.
+Routing deletes 44 actions and the calibrated reserve arm one;
+neither adds a complete pass. With thresholds held fixed, the
+reserve changes 44 deletions to 43, so the one-deletion result
+depends on recalibration rather than direct vetoes alone.
+[Routing and fixed-threshold diagnosis](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/pruning_router/readout.md).
+
 ## Learning From Verified Recording Removal Sets
 
 Feasible-set imitation and a predicted-gain guard calibrate in
