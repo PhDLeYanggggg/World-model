@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Shared Targets In Overlapping Pair Forecasts
+
+The original pair bounds reproduce. Grouping missing predictions of
+the same pair and step within a recording narrows the joint versus
+additive envelope from [-0.1580, +0.1750] to [-0.1569, +0.1738]
+image pixels. It does not establish a conservative advantage or
+change the original risk rule. [Analysis](outputs/publication_readiness_2026_09/native_shared_pair_completion_v1/README.md) |
+[Updated supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v21/README.md).
+
 ## Frozen Forecast Runtime Profile
 
 On 28 development queries with three real checkpoint seeds, EqMotion

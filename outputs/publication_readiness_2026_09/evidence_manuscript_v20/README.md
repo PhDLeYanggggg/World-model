@@ -21,5 +21,5 @@ matches all six page rasters. Source ZIP SHA-256:
 `bcc8e6d24f7d0844a16de242d6b48eb68b9e23f60217cfaf6e66506d6292fa00`.
 
 [Previous draft](../evidence_manuscript_v19/README.md) |
-[Compiled companion supplement](supplement_readout.md) |
+[Latest companion supplement](../evidence_manuscript_v21/README.md) |
 [Chinese local/CREATE guide](../evidence_manuscript_v12/operation_zh.md).

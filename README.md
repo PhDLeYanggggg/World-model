@@ -109,6 +109,11 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I checked whether using one target for overlapping predictions of the
+same agent pair changes the conservative geometry result. The bound
+tightens, but the comparison with additive selection still does not
+establish an advantage. [Shared-target analysis](outputs/publication_readiness_2026_09/native_shared_pair_completion_v1/README.md).
+
 I measured the three-seed inference route on existing development
 inputs. Nearly all compute is in the EqMotion forecast, not in
 joint selection. The running external calibration keeps its original
@@ -848,7 +853,7 @@ inactive branch or input clipping alone as sufficient explanations.
 The [English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v20/README.md)
 keeps these native-stride results separate from older European stride-12 and
 SDD studies. It remains an evidence draft, not a submission-ready paper.
-The [companion supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v20/supplement_readout.md)
+The [companion supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v21/README.md)
 explains how I distinguish observed utility, missing-label bounds and
 recording-level failures, with instructions to rebuild the tables.
 
