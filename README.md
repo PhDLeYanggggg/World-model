@@ -401,6 +401,13 @@ views in hindsight, but only 18 fit the original shortlist. A new shortlist
 admitted 20; the past-only policy still found no change that qualified.
 I have not changed the deployed policy or the evaluation rules.
 
+I then trained one network to estimate easy-reference support and
+conditional gain separately. It picked a non-losing action with
+observed reference in 9 of 102 first queries, versus 3 for direct
+value prediction. The gain stopped there: neither method recovered
+a whole recording under the original rules.
+[Support and value experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/reference_hurdle/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

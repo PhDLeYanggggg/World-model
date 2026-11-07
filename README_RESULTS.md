@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Factoring Support and Value
+
+A matched 42-fold Torch fit increased first-query selections with
+observed easy reference and nonnegative gain from 3/102 to 9/102
+(+4.84 pp, paired source 95% interval [+0.79, +10.32]).
+It did not recover an entire recording: both policies passed 2/102.
+Among 22 missing-reference views with a feasible hindsight insertion,
+20 had no qualifying calibrated cutoff and the remaining two did
+not trigger. The original 2% and support rules remain unchanged.
+[Experiment and operating diagnosis](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/reference_hurdle/readout.md).
+
 ## Whole-Recording Repair in the Working Paper
 
 On 102 exposed views of 34 recordings, 35 lacked an evaluable easy
