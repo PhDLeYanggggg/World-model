@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## External Calibration Readout Preparation
+
+The aggregate-only reporting command binds the exact approved role
+and full prediction freeze to the score and replay. It prints each
+locked threshold's risk support, interventions and paired utility
+without reopening labels or selecting a new threshold. Tested on
+positive and negative fixtures; no external result is available yet.
+[Run instructions](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/README.md).
+
 ## Conditional Pair Labeling Budget
 
 Only 3,492 of 40,134 missing positions contribute to the fixed

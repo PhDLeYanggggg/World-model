@@ -109,6 +109,11 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+The [DroneCrowd calibration readout](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/README.md)
+keeps utility, the original recording risk checks, and confirmation
+eligibility separate. It can be generated only after the full score
+and replay.
+
 I measured how much new labeling would matter for the fixed pair
 comparison. Only 3,492 missing positions can change it. A targeted
 order needs 1,691 valid positions to remove 95% of the original

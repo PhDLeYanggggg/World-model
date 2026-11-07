@@ -44,3 +44,21 @@ The run resumes verified recording checkpoints and does not overwrite
 an existing result. macOS sleep prevention is tied to the supervisor.
 No CREATE job was needed. Neither calibration nor replay constitutes
 independent confirmation. No deployment, Stage5C execution or SMC.
+
+## Verified Outcome Table
+
+Once the supervisor finishes all three phases, generate the decision
+table without reopening recordings or labels:
+
+~~~sh
+.venv-pytorch/bin/python scripts/report_m3w_dronecrowd_calibration.py
+~~~
+
+The reporter checks the locked role manifest, the 40-recording
+prediction freeze, and the matching score and replay receipts.
+It reports each threshold's risk passes, support, interventions and
+CV/OLS4 intervals separately, including disqualifying criteria.
+It will not generate a partial report or admit the confirmation run.
+At preparation time, 11 focused tests pass and the actual command
+refuses to render before completion. The fixture tests are not
+external results.
