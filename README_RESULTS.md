@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned Amplitude At Fixed Intervention Count
+
+The donor-calibrated uniform policy exactly matches the fixed quarter.
+The adaptive arm changes only 12/6,952 amplitudes and passes 14/102 views
+versus quarter's 15/102. Matching each query's coefficient budget gives
+19/102 passes but no paired utility lift: -0.00087 pp
+[-0.00316, +0.00153] pp for the completion lower contrast.
+All four reduced-amplitude arms still have 39 total-risk violations and
+35 undefined easy references. No external outcome was opened or used.
+[Design, results and reproduction](outputs/publication_readiness_2026_09/moving_calibrated_amplitude_v1/readout.md).
+
 ## Evaluation Decision: Keep The Original Rules
 
 On 4 November I retained the original evaluation contract: no analytic identity-

@@ -45,6 +45,18 @@ foundation world model, or submission readiness.
 [failure analysis](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/failure_analysis.md),
 [reproduction instructions](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/operation_zh.md).
 
+### How Much To Change A Forecast
+
+I kept all 6,952 neural interventions fixed and changed only how far each
+forecast moved away from constant velocity. Using one quarter of the
+original adjustment raised recording passes from 2 to 15 out of 102.
+A learned adjustment that shared the same budget within each query
+raised that count to 19, but did not show a reliable gain over the fixed
+quarter. The donor-calibrated model almost always chose the fixed quarter.
+The original 2% rule still applies, 35 views lack a required reference,
+and none of these variants is deployed.
+[Amplitude study and exact replay](outputs/publication_readiness_2026_09/moving_calibrated_amplitude_v1/readout.md).
+
 ### Fixed-Forecaster Decision Study
 
 I compared additive selection with an exact pair interaction term, holding
