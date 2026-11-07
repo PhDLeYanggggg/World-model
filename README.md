@@ -355,6 +355,12 @@ rule could not find a calibration threshold that preserved both
 utility and risk. It made no deletions.
 [Recording pruning experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/record_pruning/readout.md).
 
+Training on verified removal sets did make the model intervene, but
+it still repaired no held-out recording. One version removed the
+easy-reference support from a recording that previously passed.
+I kept the original policy.
+[Removal-set supervision](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/pruning_teacher/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

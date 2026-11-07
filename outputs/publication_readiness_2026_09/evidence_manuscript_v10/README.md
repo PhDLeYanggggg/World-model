@@ -132,6 +132,14 @@ has no donor threshold that gains passes while preserving easy risk
 and paired lower utility. Its zero changes are not a matched-coverage
 efficacy result. Main paper and PDF are unchanged.
 
+[Removal-set supervision](../moving_record_joint_actions_v1/causal_ledger/pruning_teacher/readout.md)
+learns from checked fitting-source subsets. Unlike the moment
+pruner, it deletes some actions after donor calibration but adds
+no held pass. The gain guard loses one existing pass by deleting
+selected easy support. This paired transition is evidence against
+equating donor calibration or fewer signed easy violations with improved
+recording risk; the main paper and PDF are unchanged.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 

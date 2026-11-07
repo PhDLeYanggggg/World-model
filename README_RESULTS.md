@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Learning From Verified Recording Removal Sets
+
+Feasible-set imitation and a predicted-gain guard calibrate in
+2/42 and 4/42 cells. Both delete 75 switches, but add zero held
+passes. The guard loses one existing pass and its easy support.
+Of 28 previously failing views with a verified non-loss deletion
+solution, the methods touch only one and four, respectively.
+Matched-query diagnostics show no established ranking gain.
+[Experiment and paired transitions](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/pruning_teacher/readout.md).
+
 ## Deleting Existing Actions Under Whole-Recording Risk
 
 At most one removal per query, a checked hindsight optimum is
