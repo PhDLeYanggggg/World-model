@@ -77,12 +77,12 @@ retained two-view information and coherent interruption recovery. Real-data
 100+100 and mid-forward signal-stop recovery now both match continuous 200
 exactly. The full 4,000-update original-core control now also matches the shared
 model, active optimizer state, sampler/RNG and common loss trace exactly. Its
-two additional inactive optimizer entries are declared separately. The twelve
-full treatment models are running; predictive usefulness has not yet been
-established for this replacement.
-All six observed-view models have now completed 4,000 updates with original
-sampling/RNG checks intact. The six same-capacity native-view controls are
-training before any prediction or outcome comparison.
+two additional inactive optimizer entries are declared separately. Nine of
+twelve full treatment models are complete, including all six observed-view
+models, with original sampling/RNG checks intact. A disk-space guard stopped
+the tenth model at a verified coherent update 3,935; no budget was reduced.
+The remaining work awaits disk space, then resumes from that checkpoint before
+any prediction or outcome comparison. Predictive usefulness is not established.
 
 A [standalone aggregate-evidence package](outputs/publication_readiness_2026_09/native_actor_reproduction_v1/README.md)
 now replays the three completed actor studies in a clean directory without

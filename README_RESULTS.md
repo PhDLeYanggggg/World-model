@@ -55,6 +55,13 @@ At01:53Z on7November,all six camera_node models finish4000updates each;
 all original draws/factors/RNG checks pass. PID82393continues the six matched
 native_node controls. No new forecast or outcome scored,so this is training
 completion evidence for one arm,not a predictive result or finished matrix.
+At03:10:01Z,PID82393exits1 onthe registered2GiBdisk-reserve guard,not a
+training deadlock.9/12full models complete;native_node/A1_inner0saves coherent
+step3935and251840draws,verified equal to3935x64. Checkpoint SHA256
+f27a7ae3e76bc129b02adff1bcd2326db87cee6124e9244a3af67269cf12a70c.
+New matrix remains incomplete. No forecast/score/refit has run for this matrix.
+No reserve/risk rule changed,no unrelated data deleted. Resume requires disk
+space;full remaining budget and two complete verification refits remain owed.
 
 ### Camera-Operator Ablation: Registered Before Real Fitting
 
