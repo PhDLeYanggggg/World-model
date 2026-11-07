@@ -24,7 +24,7 @@ np, read, sha, artifact, checked, once, stable = kin.np, kin.read, kin.sha, kin.
 parent, old = kin.parent, kin.bank.old
 PUBLIC = old.HOME/'moving_record_joint_actions_v1'
 PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_record_joint_actions_v1'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), Path(model.__file__), PUBLIC/'protocol.md', ROOT/'tests/test_m3w_record_joint_actions.py')
 NAMES = ('eqmotion', 'pct', *(k for k in parent.BASELINES if k != parent.CV), 'self')
 PAIRS = {f'{k}_vs_cv': (parent.CV, k, parent.CV) for k in model.ARMS[1:]}
@@ -40,7 +40,10 @@ def register():
     if (read(replay)['analysis']['sha256'] != sha(result) or a['bank_support']['self']['feasible'] != 102
             or not f['all_before_A_labels'] or not read(train)['before_A_inference_and_labels']):
         raise ValueError('Frozen source-excluded candidate bank and exact replay required')
-    parents = (kin.REG, result, replay, forecast, train, parent.REG, old.prior.PARENT/'population.json',
+    if artifact(kin.prior.REG) not in read(kin.REG)['parents']:
+        raise ValueError('Original fitting job manifest not bound to kinematic registration')
+    parents = (PUBLIC/'registration.json', kin.REG, kin.prior.REG, result, replay, forecast, train,
+               parent.REG, old.prior.PARENT/'population.json',
                Path(parent.readout.__file__), *old.PARENTS)
     once(REG, stable(dict(files=[artifact(p) for p in FILES], parents=[artifact(p) for p in parents],
         candidate_names=NAMES, seeds=kin.prior.SEEDS, arms=model.ARMS, contrasts=PAIRS, pair_weight=model.PAIR_WEIGHT,
@@ -71,7 +74,7 @@ def candidates(data, refs, seed):
     old_paths = parent.read_banks(old_f, seed, ids, sites)
     source = next(v for v in f if v['seed'] == seed and v['arm'] == 'self')
     fit = next(v for v in read(kin.PUBLIC/'training_freeze.json')['fits'] if v['seed'] == seed and v['arm'] == 'self')
-    job = next(v for v in read(kin.REG)['jobs'] if v['seed'] == seed)
+    job = next(v for v in read(kin.prior.REG)['jobs'] if v['seed'] == seed)
     if (fit['checkpoint'] != source['checkpoint'] or fit['identity']['registration_sha256'] != sha(kin.REG)
             or fit['identity']['global_fit_rows_sha256'] != job['identity']['train_ids_sha256']
             or set(sites) & set(job['identity']['fit_groups'])):
