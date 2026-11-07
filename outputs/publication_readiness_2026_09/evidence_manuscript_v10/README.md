@@ -4,6 +4,15 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The abstract and Section 6.6 distinguish hindsight repair capacity,
+shortlist coverage, and the behavior of a calibrated past-only policy.
+The 102 exposed views are 34 recordings repeated across three forecaster
+seeds, not 102 independent recordings. Four frozen analysis files are
+bound to both their scoring and replay receipts by the builder.
+[Build verification](repair_revision_build.json) records the local PDF
+check. No model is refitted, no reserved outcome is opened, and no
+threshold or operating policy changes in this revision.
+
 The draft integrates completed support, prefix-loss and past-image cost-head
 experiments, including their negative registered contrasts and failed original
 recording-risk checks. All twelve past-image actors complete4000updates and

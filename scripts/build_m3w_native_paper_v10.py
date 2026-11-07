@@ -12,6 +12,13 @@ ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT/'outputs/publication_readiness_2026_09'
 PUBLIC = HOME/'evidence_manuscript_v10'
 BUILD = ROOT/'data/stage_cvpr2027_experiments/evidence_manuscript_v10/paper_build'
+REPAIR_LEDGER = HOME/'moving_record_joint_actions_v1/causal_ledger'
+REPAIR_ANALYSES = {
+    'support_acquisition': '4afe85abdce2fda7d136cc747add890ffa2d7393f0e5623bd098fc3811c68257',
+    'support_joint': '5069cc52fd97dccc496aaff8f105ca7b40d8459b50cc1d1a5d084565e09f9233',
+    'record_pruning': '66335187a9d94e3852cd4777ee071ef0cdb85175d3fcd4ba844b6c2d8198a604',
+    'early_reference_listwise': '819131e73fe93539b27cf79bb2fc563322954f1838bbca03eaed271562133d8a',
+}
 PINNED = {
     'moving_visual_risk_v1/analysis.json': '4375e369a675ff2f396e5502a8e3bf43cb33dbce173142cb8ff2e4c8ecd7025f',
     'moving_visual_risk_v1/calibration_analysis.json': '9ca842da055628c2341502c9e442c66411118b3faacbba7c5aabf3798063551b',
@@ -615,6 +622,85 @@ def veto_refit_update():
     )
 
 
+def recording_repair(ledger=REPAIR_LEDGER):
+    reports, sources = {}, {}
+    for study, expected in REPAIR_ANALYSES.items():
+        folder = ledger/study
+        path = folder/'analysis.json'
+        if sha(path) != expected:
+            raise ValueError(f'Changed frozen recording-repair evidence: {study}')
+        report = read(path)
+        if (not report['original_rules_unchanged'] or report['independent_confirmation']
+                or report['deployment_changed']):
+            raise ValueError(f'Unexpected recording-repair scope: {study}')
+        reports[study] = report
+        sources[str(path.relative_to(ROOT))] = expected
+        for receipt_name in ('score_execution.json', 'replay_execution.json'):
+            receipt = folder/receipt_name
+            if read(receipt)['artifact']['sha256'] != expected:
+                raise ValueError(f'Mismatched recording-repair receipt: {study}/{receipt_name}')
+            sources[str(receipt.relative_to(ROOT))] = sha(receipt)
+
+    acquisition = reports['support_acquisition']
+    shortlist = reports['support_joint']
+    pruning = reports['record_pruning']
+    ranking = reports['early_reference_listwise']
+    missing = acquisition['groups']['all_missing']
+    modes = missing['modes']
+    n, total = missing['views'], acquisition['input_views']
+    direct = shortlist['risk']['direct']['passes']
+    full = modes['ordered_joint']['checked_feasible']
+    restricted = modes['shortlist_joint']['checked_feasible']
+    support = shortlist['capacity_status']['support']['optimal']
+    learned = shortlist['risk']['support_joint']
+    deletion = pruning['oracle']['non_loss']['feasible']
+    result = ranking['top_one']['first_early_minus_listwise']
+    first = ranking['top_one']['first']
+    if (not acquisition['oracle_only'] or ranking['operating_policy_evaluated']
+            or n != shortlist['missing_views'] or n != ranking['missing_views']
+            or any(x['views'] != total or x['source_groups'] != acquisition['source_groups']
+                   for x in (shortlist, pruning, ranking))
+            or restricted != shortlist['capacity_status']['eligible_family']['optimal']
+            or learned['insertions'] or learned['deletions'] or learned['passes'] != direct):
+        raise ValueError('Incompatible recording-repair scopes')
+
+    abstract = (
+        f'In {total} exposed recording views, label-aware joint edits restore support and satisfy '
+        f'the recording rule in {full}/{n} views with undefined easy reference error, '
+        f'but the original shortlist admits only {restricted}/{n}. The past-only '
+        f'calibrated repair changes no decisions. This separates feasible repair from '
+        f'retrieval and selection; it does not establish a safe learned upgrade.'
+    )
+    section = (
+        f'The {total} views reuse 34 recordings across three forecaster seeds '
+        f'({acquisition["source_groups"]} source groups), not {total} independent recordings. '
+        f'Of the {n} views with undefined easy reference error, '
+        f'{acquisition["groups"]["zero_direct"]["views"]} have no substitutions and '
+        f'{acquisition["groups"]["active_no_easy"]["views"]} have substitutions but no easy reference. '
+        f'Deleting existing actions alone cannot create that support: a label-aware deletion '
+        f'oracle finds non-loss repairs in {deletion}/{total} views overall (including '
+        f'{direct} already passing), but none in the missing-support subset.\n\n'
+        f'With observed labels, one insertion and up to one deletion per query make '
+        f'{full}/{n} missing-support views pass the unchanged recording rule with '
+        f'nonnegative paired lower utility. Insertion alone gives '
+        f'{modes["insert_only"]["checked_feasible"]}/{n}; requiring insertion before '
+        f'the first original substitution gives {modes["early_joint"]["checked_feasible"]}/{n}. '
+        f'Restricting insertion candidates to the original eight slots reduces feasibility '
+        f'to {restricted}/{n}; a support-specific eight-slot shortlist recovers {support}/{n}. '
+        f'These are hindsight feasibility counts, not prediction results.\n\n'
+        f'The calibrated past-only repair makes no edits and leaves '
+        f'{learned["passes"]}/{total} views passing. A separate matched ranking test '
+        f'finds that weighting early queries eightfold reduces first-eligible-query top-one '
+        f'accuracy from {100*first["listwise"]:.2f}% to {100*first["early_listwise"]:.2f}% '
+        f'(difference {100*result["point"]:.2f} points, 95% source-bootstrap '
+        f'interval [{100*result["interval95"][0]:.2f}, {100*result["interval95"][1]:.2f}]). '
+        f'It does not test an operating policy. Capacity exists in these exposed data, '
+        f'but neither better shortlist capacity nor earlier weighting establishes '
+        f'reliable online repair.'
+    )
+    return abstract, section, sources
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -641,6 +727,7 @@ def main():
         seed_dispersion_update=seed_dispersion_update(), recording_risk_update=recording_risk_update(),
         bank_ceiling_update=bank_ceiling_update(), easy_forecast_update=easy_forecast_update(),
         veto_refit_update=veto_refit_update())
+    values['repair_abstract'], values['repair_section'], repair_sources = recording_repair()
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)
@@ -679,7 +766,7 @@ def main():
         actor_sources=actor_sources,
         camera_outcomes_included=bool(values['camera_update']), camera_sources=camera_sources,
         reporting_and_scope_sources=reporting_sources, new_dual_view_outcomes_included=bool(dual),
-        dual_view_sources=dual_sources,
+        dual_view_sources=dual_sources, recording_repair_sources=repair_sources,
         independent_confirmation=False, submission_ready=False, old_v9_sources_or_PDF_modified=False,
         stage5c_executed=False, smc_enabled=False))
     print('Native-stride working manuscript and private figures prepared; no new outcome scoring or submission claim.')

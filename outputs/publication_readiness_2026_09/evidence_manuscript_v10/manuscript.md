@@ -18,10 +18,8 @@ prediction, but their registered motion-versus-quality contrast remains
 uncertain: a paired completion-lower difference of 0.462 percentage points has
 an exploratory interval of [-1.095, 2.294]. The full-motion policy improves
 available-label ADE by 5.867% over causal constant velocity yet passes only
-12 of 72 required recording views. A fully labelled failure case exposes severe
-harm underprediction. These results distinguish useful average routing from
-reliable intervention; they do not establish a safe learned upgrade.
-Conditioning the trajectory actor itself also fails its matched motion contrast (-1.804 percentage points on known labels). No new deployment or independent confirmation is established.
+12 of 72 required recording views.
+In 102 exposed recording views, label-aware joint edits restore support and satisfy the recording rule in 33/35 views with undefined easy reference error, but the original shortlist admits only 18/35. The past-only calibrated repair changes no decisions. This separates feasible repair from retrieval and selection; it does not establish a safe learned upgrade.
 
 ## 1. Introduction
 
@@ -49,13 +47,12 @@ choice and joint choices with or without an intervention-count constraint.
 The joint optimizer pools error budgets; it does not optimize pairwise
 collisions or control a physical environment.
 
-The contribution under investigation is reliable neural intervention under
-partial labels, not a JEPA/Transformer combination or a new optical-flow
-algorithm. The present native moving-drone evidence does not yet solve that
-problem. We report matched positive component signals, failed whole-policy
-checks, exact computational reproduction and the remaining model failure.
-No independent confirmation or deployable world-model advance follows from
-the experiments in this draft.
+We test whether reliable neural intervention is limited by the forecast
+bank, the retrieved candidate list, or the final past-only decision. This
+distinction matters because an oracle can repair a recording without showing
+that a learned system can find the same actions. The native moving-drone
+experiments separate these bottlenecks and document failed whole-policy
+checks. They do not establish an independent or deployable upgrade.
 
 ## 2. Related Work and Claim Scope
 
@@ -461,6 +458,14 @@ An offline label-aware ceiling finds 91/102 feasible binary views at free count 
 
 PCT easy-harm training reduces known harm by 6.98 pp but yields a paired lower of -7.68 pp [-16.96, -2.09]. Neither new trajectory bank recovers the unsupported view. With CV agreement training, completion lower versus CV is -40.03 pp and raw risk passes 0/102 views. Direct velocity integration raises oracle feasibility to 102/102, but neither raw variant passes any view. Peer context changes the paired lower by -7.71 pp [-12.51, -3.12]. At matched counts, the mixed term versus its marginal control changes the lower by -0.061 pp [-0.157, -0.006]. Filtering all actions before ranking gives +0.077 pp versus CV but passes only 2/102 original risk views. Nested source calibration passes 19/102 by retaining 474 of 6,184 switches, with no clear CV gain. Matched harm heads improve prediction error but keep 2/102 risk passes. With true outcomes and the same counts, only 30/102 screened views are feasible, versus at least 72/102 in the full bank. This is an action-space ceiling. Carrying predicted slack forward causally improves the matched lower by +0.017 pp [+0.002, +0.033] but passes 3/102. The full bank gains +0.014 pp over a reoptimized physical bank at common counts, reducing passes from 12 to 6. All 42 donor fits retain zero credit. Bounded alternatives add +0.016 pp [+0.004, +0.028] but pass 0/102. Uniform quarter displacement passes 29/102 at lower utility. Incremental costs do not help at matched amplitudes; even a label-aware reassignment adds at most 0.007 pp to the fixed-pool lower objective. The wider fixed-prefix diagnostic rules out 47/102 rather than 75/102 views. Refitting veto costs gives +0.200 pp [+0.052, +0.381] at matched counts, but passes 3/102, unchanged. Signed easy-net violations rise from 2 to 8. Targeted fits do not outperform all-action refits.
 
+### 6.6 Reference Support and Whole-Recording Repair
+
+The 102 views reuse 34 recordings across three forecaster seeds (14 source groups), not 102 independent recordings. Of the 35 views with undefined easy reference error, 18 have no substitutions and 17 have substitutions but no easy reference. Deleting existing actions alone cannot create that support: a label-aware deletion oracle finds non-loss repairs in 30/102 views overall (including 2 already passing), but none in the missing-support subset.
+
+With observed labels, one insertion and up to one deletion per query make 33/35 missing-support views pass the unchanged recording rule with nonnegative paired lower utility. Insertion alone gives 22/35; requiring insertion before the first original substitution gives 29/35. Restricting insertion candidates to the original eight slots reduces feasibility to 18/35; a support-specific eight-slot shortlist recovers 20/35. These are hindsight feasibility counts, not prediction results.
+
+The calibrated past-only repair makes no edits and leaves 2/102 views passing. A separate matched ranking test finds that weighting early queries eightfold reduces first-eligible-query top-one accuracy from 31.90% to 20.56% (difference -11.35 points, 95% source-bootstrap interval [-23.02, -2.06]). It does not test an operating policy. Capacity exists in these exposed data, but neither better shortlist capacity nor earlier weighting establishes reliable online repair.
+
 ## 7. Failure Analysis and Limitations
 
 Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000% and 0.000% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
@@ -477,16 +482,12 @@ Weak texture, parallax and moving background content can corrupt alignment.
 The affine proxy is not calibrated camera pose. The context head does not
 infer exits, future visibility or semantic pixels.
 
-A synthetic check also exposes a specific defect of removing only the future
-view restoration. For observed native positions $h_t=p_t+c_t$, exact alignment
-and current-origin removal can leave $p_t-p_0$ at the core, while native future
-labels still depend on $c_{\mathrm{future}}-c_0$. Different observed camera motions can
-therefore collapse to the same core representation with different labels.
-This conventional information-loss example is not a new impossibility theorem
-or proof of the combined actor's real-data failure. The incomplete one-sided
-follow-up was stopped before outcome scoring. The replacement retains both
-native geometry and aligned node features, which repairs this representation
-defect without itself establishing a predictive or policy gain.
+Removing view restoration alone can discard information: alignment and
+origin removal can map distinct observed camera motions to the same core
+input while native future labels differ. A synthetic check illustrates the
+defect; it does not explain the combined actor's real-data failure. The
+one-sided follow-up stopped before scoring. The replacement preserves
+native and aligned features without establishing a policy gain.
 
 These results use exposed data and retain empty views. Exact replay
 does not replace independent confirmation or the missing three-seed

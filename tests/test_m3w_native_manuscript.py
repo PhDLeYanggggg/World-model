@@ -1,9 +1,35 @@
 import json
+import shutil
 
 import pytest
 
 from scripts import build_m3w_native_paper_v10 as paper
 from scripts.build_m3w_native_paper_v10 import latex_document
+
+
+def test_recording_repair_keeps_capacity_separate_from_policy():
+    abstract, section, sources = paper.recording_repair()
+    assert '33/35' in abstract and '18/35' in abstract
+    assert '20/35' in section and 'hindsight feasibility counts' in section
+    assert 'makes no edits and leaves 2/102' in section
+    assert '31.90%' in section and '20.56%' in section
+    assert 'not 102 independent recordings' in section
+    assert 'does not test an operating policy' in section
+    assert len(sources) == 3 * len(paper.REPAIR_ANALYSES)
+
+
+@pytest.mark.parametrize('filename,error', [
+    ('analysis.json', 'Changed frozen recording-repair evidence'),
+    ('replay_execution.json', 'Mismatched recording-repair receipt'),
+])
+def test_recording_repair_rejects_changed_evidence(tmp_path, monkeypatch, filename, error):
+    ledger = tmp_path/'ledger'
+    for study in paper.REPAIR_ANALYSES:
+        shutil.copytree(paper.REPAIR_LEDGER/study, ledger/study)
+    monkeypatch.setattr(paper, 'ROOT', tmp_path)
+    (ledger/'support_acquisition'/filename).write_text('{"artifact": {"sha256": "changed"}}')
+    with pytest.raises(ValueError, match=error):
+        paper.recording_repair(ledger)
 
 
 def test_ast_preserves_aligned_math_and_escapes_table_cells():

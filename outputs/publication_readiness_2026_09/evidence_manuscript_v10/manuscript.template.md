@@ -18,10 +18,8 @@ prediction, but their registered motion-versus-quality contrast remains
 uncertain: a paired completion-lower difference of {{ motion_lower_short }} percentage points has
 an exploratory interval of {{ motion_ci_short }}. The full-motion policy improves
 available-label ADE by {{ motion_known_short }}% over causal constant velocity yet passes only
-{{ motion_pass }} of 72 required recording views. A fully labelled failure case exposes severe
-harm underprediction. These results distinguish useful average routing from
-reliable intervention; they do not establish a safe learned upgrade.
-{{ actor_abstract }}
+{{ motion_pass }} of 72 required recording views.
+{{ repair_abstract }}
 
 ## 1. Introduction
 
@@ -49,13 +47,12 @@ choice and joint choices with or without an intervention-count constraint.
 The joint optimizer pools error budgets; it does not optimize pairwise
 collisions or control a physical environment.
 
-The contribution under investigation is reliable neural intervention under
-partial labels, not a JEPA/Transformer combination or a new optical-flow
-algorithm. The present native moving-drone evidence does not yet solve that
-problem. We report matched positive component signals, failed whole-policy
-checks, exact computational reproduction and the remaining model failure.
-No independent confirmation or deployable world-model advance follows from
-the experiments in this draft.
+We test whether reliable neural intervention is limited by the forecast
+bank, the retrieved candidate list, or the final past-only decision. This
+distinction matters because an oracle can repair a recording without showing
+that a learned system can find the same actions. The native moving-drone
+experiments separate these bottlenecks and document failed whole-policy
+checks. They do not establish an independent or deployable upgrade.
 
 ## 2. Related Work and Claim Scope
 
@@ -364,6 +361,10 @@ not success inferred from a favorable early prefix.
 
 {{ easy_forecast_update }} {{ veto_refit_update }}
 
+### 6.6 Reference Support and Whole-Recording Repair
+
+{{ repair_section }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}
@@ -380,16 +381,12 @@ Weak texture, parallax and moving background content can corrupt alignment.
 The affine proxy is not calibrated camera pose. The context head does not
 infer exits, future visibility or semantic pixels.
 
-A synthetic check also exposes a specific defect of removing only the future
-view restoration. For observed native positions $h_t=p_t+c_t$, exact alignment
-and current-origin removal can leave $p_t-p_0$ at the core, while native future
-labels still depend on $c_{\mathrm{future}}-c_0$. Different observed camera motions can
-therefore collapse to the same core representation with different labels.
-This conventional information-loss example is not a new impossibility theorem
-or proof of the combined actor's real-data failure. The incomplete one-sided
-follow-up was stopped before outcome scoring. The replacement retains both
-native geometry and aligned node features, which repairs this representation
-defect without itself establishing a predictive or policy gain.
+Removing view restoration alone can discard information: alignment and
+origin removal can map distinct observed camera motions to the same core
+input while native future labels differ. A synthetic check illustrates the
+defect; it does not explain the combined actor's real-data failure. The
+one-sided follow-up stopped before scoring. The replacement preserves
+native and aligned features without establishing a policy gain.
 
 These results use exposed data and retain empty views. Exact replay
 does not replace independent confirmation or the missing three-seed

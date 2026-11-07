@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Whole-Recording Repair in the Working Paper
+
+On 102 exposed views of 34 recordings, 35 lacked an evaluable easy
+reference. Under the original rule, label-aware insertion and deletion
+could repair 33 of those 35; the original eight-slot shortlist admitted
+18, and a support-specific shortlist admitted 20. The calibrated
+past-only policy made no edits: 2/102 views still passed. The three
+forecaster seeds do not make the 102 views independent. These are
+verified reuse of existing experiments, not new training or confirmation.
+[Working paper and source bindings](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md).
+
 ## Early-Weighted Within-Query Easy-Reference Ranking
 
 On matched PyTorch fits, upweighting the first two eligible queries

@@ -394,6 +394,13 @@ choice worse: 20.56% versus 31.90% without it. I did not carry the
 early-weighted model into the policy.
 [Early-query ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/early_reference_listwise/readout.md).
 
+In the [working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v10/manuscript.md),
+I separate what can be repaired after seeing the labels from what the
+model can actually do. Joint edits could recover 33 of 35 missing-reference
+views in hindsight, but only 18 fit the original shortlist. A new shortlist
+admitted 20; the past-only policy still found no change that qualified.
+I have not changed the deployed policy or the evaluation rules.
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
