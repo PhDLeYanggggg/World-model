@@ -34,6 +34,8 @@ PINNED = {
     'moving_easy_aligned_forecast_v1/replay_execution.json': '82f07bae672c62cf5a46d2d4be3580d2c550dd5127eb727fb45dde0664e0bbf5',
     'moving_missingness_aligned_forecast_v1/analysis.json': 'c6e08b01a126cdd4fc8062d001f83dd7d38662acf976a8354a9950938cf81e44',
     'moving_missingness_aligned_forecast_v1/replay_execution.json': 'bbaca7c39cea793b9e4294689aaba9040d929e68e73bf40795cf0eb5d45f29ce',
+    'moving_direct_kinematic_forecast_v1/analysis.json': '09bfe6216781f6a0d4e14dc0bc408a07b09d892445f7b0ea58e914a6faa088d7',
+    'moving_direct_kinematic_forecast_v1/replay_execution.json': 'df6bed7065d8177142adec962bf633b8c582904e8a8211ba96a2fe8cd13c39ee',
 }
 
 
@@ -484,13 +486,25 @@ def easy_forecast_update():
             or m['original_raw_risk_passes'] != 0 or m['new_bank_feasible_views'] != 101):
         raise ValueError('Do not promote missingness training to a risk or external result')
     cv = m['completion_lower_vs_CV']['point']
+    folder = HOME/'moving_direct_kinematic_forecast_v1'; path = folder/'analysis.json'
+    k = read(path); check = read(folder/'replay_execution.json')
+    if (check['analysis']['sha256'] != sha(path) or k['independent_confirmation']
+            or any(k['bank_support'][arm] != dict(feasible=102, positive=102)
+                   or k['raw_risk_passes'][arm] for arm in ('self', 'peer'))):
+        raise ValueError('Do not conflate direct forecasts and oracle feasibility')
+    peer = k['contrasts']['peer_minus_self']['completion_lower_pp']
     return (
         'In a matched three-seed PCT continuation, an easy ADE excess loss '
         f'changes known easy positive harm by {p["easy_harm_increase_pp"]["point"]:+.2f} pp, '
         f'but the paired completion lower is {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
         'Neither new trajectory bank recovers the unsupported view. An additional '
         'unobserved-row agreement loss shrinks disagreement to CV, but the new '
-        f'completion lower versus CV is {cv:+.2f} pp and raw risk passes 0/102 views.'
+        f'completion lower versus CV is {cv:+.2f} pp and raw risk passes 0/102 views. '
+        'A three-seed direct velocity-integration model raises label-aware bank '
+        'feasibility to 102/102, but neither raw variant passes any view. Adding '
+        f'peers to that model changes the paired lower by {peer["point"]:+.2f} pp '
+        f'[{peer["interval95"][0]:+.2f}, {peer["interval95"][1]:+.2f}]. '
+        'This separates candidate availability from learnable allocation.'
     )
 
 

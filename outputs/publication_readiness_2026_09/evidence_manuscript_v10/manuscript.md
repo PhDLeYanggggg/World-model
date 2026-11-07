@@ -459,7 +459,7 @@ Against the fitting-selected OLS4 baseline, EqMotion gains +20.47 pp on known la
 
 An offline label-aware ceiling finds 91/102 feasible binary views at free count and 90/102 at the old fixed count. Adding PCT and the other causal baselines supplies 101/102 feasible views, still not the whole roster. This isolates missing candidate support on these banks without demonstrating a learnable selector.
 
-In a matched three-seed PCT continuation, an easy ADE excess loss changes known easy positive harm by -6.98 pp, but the paired completion lower is -7.68 pp [-16.96, -2.09]. Neither new trajectory bank recovers the unsupported view. An additional unobserved-row agreement loss shrinks disagreement to CV, but the new completion lower versus CV is -40.03 pp and raw risk passes 0/102 views.
+In a matched three-seed PCT continuation, an easy ADE excess loss changes known easy positive harm by -6.98 pp, but the paired completion lower is -7.68 pp [-16.96, -2.09]. Neither new trajectory bank recovers the unsupported view. An additional unobserved-row agreement loss shrinks disagreement to CV, but the new completion lower versus CV is -40.03 pp and raw risk passes 0/102 views. A three-seed direct velocity-integration model raises label-aware bank feasibility to 102/102, but neither raw variant passes any view. Adding peers to that model changes the paired lower by -7.71 pp [-12.51, -3.12]. This separates candidate availability from learnable allocation.
 
 ## 7. Failure Analysis and Limitations
 

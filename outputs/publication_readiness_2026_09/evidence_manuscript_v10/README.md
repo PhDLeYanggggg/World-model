@@ -100,6 +100,13 @@ The rules are unchanged and the model is not promoted. The revised draft
 compiles to eight pages; pages 7 and 8 were inspected, and 31 focused tests
 pass. The supplement TeX is byte-identical; only its source binding changed.
 
+The direct kinematic revision reports matched three-seed history-only and
+peer-conditioned forecasts. Either recovers the last view for a label-aware
+oracle, while the raw forecasts still fail every view. This is not an
+independent allocation result. The revised PDF remains eight pages; pages 1
+through 6 are identical to the previous render, and pages 7 and 8 were
+inspected. Thirty-four focused tests pass. Supplement TeX is unchanged.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

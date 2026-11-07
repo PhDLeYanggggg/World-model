@@ -131,6 +131,17 @@ expanded bank ceiling is unchanged at 101/102. Controls are hash verified
 and not retrained; fresh scores replay exactly. No external outcome or
 change to deployment. [Training and readout](outputs/publication_readiness_2026_09/moving_missingness_aligned_forecast_v1/readout.md).
 
+## Direct Kinematic Forecasts And Candidate Coverage
+
+Six new matched fits (three seeds, 14,400 updates), 753,240 frozen A paths.
+Self-only known-label gain vs OLS4 is +17.10 pp [6.41, 28.76], but the paired
+completion lower is +0.75 pp [-14.16, 14.45]. Adding peer context changes the
+direct paired lower by -7.71 pp [-12.51, -3.12] on the CV scale. Both raw
+forecasts pass 0/102 recording views. Either new path expands the original
+free-count, label-aware bank from 101 to 102 feasible and positive views,
+including the previously infeasible view. This is candidate support on
+exposed A, not policy or independent confirmation. [Full readout](outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

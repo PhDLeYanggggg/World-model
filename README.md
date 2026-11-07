@@ -128,6 +128,13 @@ conservative utility is still negative, the original recording check passes
 variant as a replacement.
 [Disagreement-aware training](outputs/publication_readiness_2026_09/moving_missingness_aligned_forecast_v1/readout.md).
 
+I next trained a smaller direct motion model that weights past velocities.
+Either new forecast gives the offline oracle feasible choices in all 102
+views, up from 101, without changing the risk rules. The raw forecasters
+still fail the risk check, and adding neighbors does not improve the paired
+conservative score. The result motivates a new allocation test, not a
+replacement model. [Direct kinematic forecasts](outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
