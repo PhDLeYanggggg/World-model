@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen Forecast Runtime Profile
+
+On 28 development queries with three real checkpoint seeds, EqMotion
+accounts for about 96% of core time. Two threads save about 11% with
+exact path and decision parity on this probe; eight threads change
+699 forecast values, even though the selected actions do not change.
+The registered calibration and confirmation settings are unchanged.
+[Timing and parity evidence](outputs/publication_readiness_2026_09/frozen_inference_profile_v1/README.md).
+
 ## Anonymous Decision Supplement
 
 The four-page companion to v20 brings the original risk definitions,

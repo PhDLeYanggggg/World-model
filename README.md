@@ -109,6 +109,11 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I measured the three-seed inference route on existing development
+inputs. Nearly all compute is in the EqMotion forecast, not in
+joint selection. The running external calibration keeps its original
+settings. [Local timing and exactness check](outputs/publication_readiness_2026_09/frozen_inference_profile_v1/README.md).
+
 I tried choosing velocity windows by how well they predict the
 last few already observed positions. That helped slightly where
 future labels are present, but it did not improve the conservative
