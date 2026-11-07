@@ -1,5 +1,6 @@
 """Exact component minima for the frozen recipients, without exporting hindsight choices."""
 import argparse
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -12,7 +13,7 @@ from src.evaluation.m3w_recording_switch_ceiling import BUDGET, moments
 
 run, np = prev.run, prev.np
 PUBLIC = prev.PUBLIC.parent/'native_fixed_recipient_risk_bound_v1'
-REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), PUBLIC/'protocol.md', ROOT/'tests/test_m3w_fixed_recipient_risk_bound.py')
 RISK = ('all_excess', 'easy_excess', 'easy_signed')
 
@@ -72,7 +73,7 @@ def main():
     cut = prev.register()
     frozen = prev.receipt(prev.PUBLIC, 'freeze')
     parents = (prev.REG, prev.PUBLIC/'freeze_execution.json', prev.PUBLIC/'score_execution.json',
-               Path(prev.__file__), Path(moments.__code__.co_filename), *FILES)
+               Path(prev.__file__), Path(moments.__code__.co_filename), PUBLIC/'registration.json', *FILES)
     run.once(REG, run.stable(dict(bindings=[run.artifact(x) for x in parents],
         risk=.02, audit='componentwise_necessary_conditions', relative_tolerance=1e-8,
         roles='exposed_development_only', seeds=prev.SEEDS, external_access=False)))
