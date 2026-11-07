@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## External Cost-Head Recording Coverage
+
+The direct cost and directional gain heads' 42 fitting cells use only
+recordings covered by the verified cross-archive screen: 34 possible
+Moving A training recordings and 112 prospective DroneCrowd clips.
+This is a fresh metadata join, not a repeat image match, a frozen
+external policy, or a new outcome result. Full bank and cut provenance
+for the selected external policy and external scientific roles remain
+open. [Coverage receipt](outputs/publication_readiness_2026_09/dronecrowd_controller_coverage_v1/README.md).
+
 ## Directional Gain At Fixed Risk Costs
 
 At the same 6,952 query-matched switches, a gain head with a shared

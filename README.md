@@ -266,6 +266,12 @@ baseline's error. It changed many choices, but its small utility gain
 was not reliable, and only four of 102 views passed the original rule.
 [Directional gain experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/directional_utility/readout.md).
 
+For the next external study I checked which recordings could have fitted
+these two cost heads. All 34 are covered by the earlier cross-archive image
+screen. This checks training provenance, not external performance; I have
+not selected an external policy or scored the new archive.
+[Recording coverage](outputs/publication_readiness_2026_09/dronecrowd_controller_coverage_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
