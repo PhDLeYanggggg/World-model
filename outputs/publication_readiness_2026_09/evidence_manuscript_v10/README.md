@@ -58,6 +58,14 @@ reduces the positive OLS4 views from 48 to 26. The original gate
 leaves only three hindsight-positive views. The actual policy is not
 promoted. [Matched results](../native_recording_witness_retrieval_v1/README.md).
 
+The [exact joint path portfolio](../native_joint_path_portfolio_v1/README.md)
+tests preserving more assignments. At 72 matched interventions, it
+changes only one query and does not improve conservative utility.
+Screening before choosing increases interventions to 2,194 and total
+risk violations from 12 to 40 views, without increasing the four
+recording passes. The observed pair improvement at the ungated matched
+count does not survive the missing-pair lower bound.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

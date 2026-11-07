@@ -172,6 +172,12 @@ selecting one assignment per query and then applying the fixed gate
 reduced that capacity from 48 to 26 to 3. The actual policy still did
 not beat OLS4. [Where the choices were lost](outputs/publication_readiness_2026_09/native_recording_witness_retrieval_v1/README.md).
 
+I compared all legal two-person path combinations on the same shortlist.
+At 72 matched switches, the larger search changed one query and
+did not improve the result. Screening all options first increased
+switches but also increased recording risk violations.
+[Exact joint search and additive control](outputs/publication_readiness_2026_09/native_joint_path_portfolio_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed

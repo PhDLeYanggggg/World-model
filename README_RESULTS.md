@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Exact Joint Path Search
+
+At 72 matched interventions, exact joint path search changes one query,
+still passes 4/102 views, and does not improve conservative utility.
+Screening before choosing admits 2,194 switches and increases
+all-risk violations from 12 to 40 views, with no net gain in recording
+passes. The ungated observed pair gain is 0.052 pixels, but the
+full-grid lower contrast is -0.094 pixels. No promotion.
+[Exact search and matched additive comparison](outputs/publication_readiness_2026_09/native_joint_path_portfolio_v1/README.md).
+
 ## Recording-Witness Retrieval And Decision Retention
 
 Source-excluded witness supervision raises positive OLS4 shortlist
