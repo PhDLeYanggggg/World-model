@@ -1,5 +1,8 @@
 # Decision Supplement v21
 
+[v22](../evidence_manuscript_v22/README.md) adds the constructive
+completion check to the main draft and supplement.
+
 The companion to the unchanged [v20 main manuscript](../evidence_manuscript_v20/README.md)
 adds a short [shared-target sensitivity](../native_shared_pair_completion_v1/README.md).
 The new bound narrows the completion envelope without establishing a

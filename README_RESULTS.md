@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Constructive Pair-Ranking Reversal
+
+Two bounded shared completions preserve every released coordinate
+and give opposite joint-versus-additive gains: -0.0808 and +0.1043
+image pixels at the same radius. All seeds share one assignment.
+This is stronger than an outer bound crossing zero, but does not
+estimate the true missing labels or change the official risk rule.
+[Experiment](outputs/publication_readiness_2026_09/native_pair_completion_witness_v1/README.md) |
+[v22 working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v22/README.md).
+
 ## Observed-Neighbor Pair Completion
 
 Aligning different edges through the same unobserved agent further

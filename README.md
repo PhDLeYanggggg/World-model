@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I constructed two bounded completions that preserve every released
+coordinate. They rank joint and additive selection in opposite orders
+on the same pair metric. This says what the current labels cannot
+determine, not what the missing trajectories were.
+[Constructive check](outputs/publication_readiness_2026_09/native_pair_completion_witness_v1/README.md).
+
 I checked whether using one target for overlapping predictions of the
 same agent pair changes the conservative geometry result. The bound
 tightens, but the comparison with additive selection still does not
@@ -853,10 +859,10 @@ known difference -1.804pp and paired lower -10.931pp [-17.826, -5.288].
 Its nonzero learned weights and unclipped worst source rule out a completely
 inactive branch or input clipping alone as sufficient explanations.
 [Earlier actor study](outputs/publication_readiness_2026_09/moving_visual_actor_v1/README.md).
-The [English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v20/README.md)
+The [English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v22/README.md)
 keeps these native-stride results separate from older European stride-12 and
 SDD studies. It remains an evidence draft, not a submission-ready paper.
-The [companion supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v21/README.md)
+The [companion supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v22/README.md)
 explains how I distinguish observed utility, missing-label bounds and
 recording-level failures, with instructions to rebuild the tables.
 
