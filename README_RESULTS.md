@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned Full-Query Retrieval
+
+At eight candidate slots per query and 9,675 matched proposals, the
+local-opportunity ranker improves hindsight feasibility from 81 to 84
+views but retains exactly the same 45 positive OLS4 views. Matched
+conservative utility falls by 0.338 pp [-0.737, -0.052] versus gain-only.
+After the fixed gate, the ranker passes 2/102 views versus 3/102 for
+the original policy. The model is not promoted.
+[Source-excluded fit, score and replay](outputs/publication_readiness_2026_09/native_full_query_retrieval_v1/README.md).
+
 ## Recipient Access At A Fixed Query Budget
 
 Recombining the original pairs, expanding paths on the same recipients,

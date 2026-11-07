@@ -45,6 +45,12 @@ capacity from 39 to 51. It does not resolve the learned decision
 problem or provide an independent result.
 [Detailed solver readout](../native_recipient_budget_capacity_v1/README.md).
 
+The [learned full-query retrieval](../native_full_query_retrieval_v1/README.md)
+keeps eight recipients and identical proposed switch counts. Local
+opportunity restores feasibility in three additional views but does
+not change the 45 positive OLS4 views. The gated ranker passes only
+two views, so this does not close the gap from hindsight to operation.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

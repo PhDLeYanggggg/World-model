@@ -160,6 +160,12 @@ and views with positive conservative gain over OLS4 from 39 to 51.
 It gives me a more specific target for retrieval, not a new trained
 policy. [Fixed-budget recipient comparison](outputs/publication_readiness_2026_09/native_recipient_budget_capacity_v1/README.md).
 
+I trained a past-only ranker to recover that opportunity. With eight
+candidate recipients per query, it found three additional feasible
+views but no new view with positive conservative gain over OLS4.
+The original controller still passed more views, so I kept it unchanged.
+[Learned retrieval comparison](outputs/publication_readiness_2026_09/native_full_query_retrieval_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
