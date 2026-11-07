@@ -208,6 +208,14 @@ training demonstrations, but the student still did not improve on held
 sources. Neither student meets the original risk requirements.
 [Constrained demonstrations](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/nested/readout.md).
 
+I then compared whole sets of replacements, with and without a term for
+the two forecasts' relative motion. Neither improved the original
+policy. More importantly, on this restricted candidate list even an
+oracle could not satisfy the original risk rules in at least 75 of 102
+recording views. I will work on which options the policy considers
+before adding a larger model to score the same options.
+[Whole-set comparison and support bound](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/setwise/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

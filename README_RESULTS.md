@@ -80,6 +80,19 @@ ledger passes 3/102. No new independent results or deployment change.
 [Degenerate control](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/readout.md) |
 [Nested repair](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/nested/readout.md).
 
+## Whole-Set Scores And Candidate Support
+
+Eighty-four source-excluded fits compare additive set preference and
+a mixed relative-motion term with 6,184 exact per-query matched
+switches. The primary paired lower is -0.00062 pp [-0.00215, +0.00130]
+against additive; both pass 2/102 original views. On the same slate,
+additive loses -0.03978 pp [-0.06602, -0.01669] against the membership
+ranker. A separate observed-outcome bound proves at least 75/102 views
+infeasible under this predicted-spend-dominant slate; the remaining 27
+are not proved feasible. No label-aware choice is exported. No
+independent outcome access or deployment change.
+[Design, readout and bound](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/setwise/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,
