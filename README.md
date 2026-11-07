@@ -90,6 +90,14 @@ pair steps are accounted for. The simple OLS4 forecast has lower observed
 pair error even though its scene ADE is higher. I report both metrics.
 [Joint path audit](outputs/publication_readiness_2026_09/moving_joint_path_audit_v1/readout.md).
 
+I tested that difference by holding OLS4 relative paths fixed and changing
+only their shared motion. A fixed uniform mixture improves the lower
+utility bound against OLS4 by 8.503 percentage points with the CV reference
+denominator, while preserving every pair vector. The learned mixture does
+not reliably beat the fixed controls or CV; no full-scene variant passes
+the recording risk rule.
+[Common-motion ablation](outputs/publication_readiness_2026_09/moving_common_motion_v1/readout.md).
+
 I compared additive selection with an exact pair interaction term, holding
 the forecast candidates and each query's intervention count fixed. Across
 14 excluded donor sources the added term did not improve relative-position

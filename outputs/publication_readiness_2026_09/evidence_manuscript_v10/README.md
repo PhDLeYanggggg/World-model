@@ -4,6 +4,13 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [common-motion ablation](../moving_common_motion_v1/readout.md)
+separates absolute error from pair geometry. A fixed uniform mixture
+improves OLS4's paired completion lower bound without changing any
+relative vector. The learned mixer does not reliably outperform the
+fixed controls or CV, and all full-scene arms fail the recording
+risk rule. The compiled main PDF is unchanged.
+
 The [joint path audit](../moving_joint_path_audit_v1/readout.md) adds
 paired missing-step bounds, final-step errors and tail measures to the
 frozen matched-count comparison. It retains the negative comparison

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Common Motion At Fixed Relative Geometry
+
+A uniform mixture of OLS4, CV and self-kinematic query means improves
+completion-lower utility over OLS4 by +8.503 pp [+3.672, +13.850],
+preserving every OLS4 relative trajectory. The learned mixer is
++6.893 pp [-1.657, +15.507] against OLS4 and -0.390 pp
+[-10.380, +8.142] against CV. All shifted full-scene forecasts pass
+0/102 under the original risk rule. This is an accuracy decomposition,
+not a new deployment.
+[Controls, source intervals and replay](outputs/publication_readiness_2026_09/moving_common_motion_v1/readout.md).
+
 ## Joint Path Accuracy And Missing Pair Steps
 
 Matched-count joint selection reduces observed pair ADE versus independent
