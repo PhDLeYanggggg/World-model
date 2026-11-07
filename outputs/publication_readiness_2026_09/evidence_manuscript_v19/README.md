@@ -1,5 +1,8 @@
 # Decision Manuscript v19
 
+[v20](../evidence_manuscript_v20/README.md) adds the recording-level
+feasibility bound and supersedes this working draft.
+
 This six-page anonymous working draft extends [v18](../evidence_manuscript_v18/README.md)
 with the [continuous pair-blend directional audit](../native_pair_blend_direction_v1/README.md).
 It distinguishes verified query-local improvement from original

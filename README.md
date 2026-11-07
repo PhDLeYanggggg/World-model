@@ -109,6 +109,14 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I also checked whether any reweighting of the same two forecasts
+could satisfy the original recording rule. Of 102 recording-seed
+views, 23 have no selected easy reference mass, 74 still exceed
+the budget at the lower bound, and five admit a verified witness.
+That points to changing who receives a new forecast, or which
+forecast they receive, rather than fitting another mixture of
+these same paths. [Recording feasibility](outputs/publication_readiness_2026_09/native_recording_blend_feasibility_v1/README.md).
+
 I used a convex directional test to check the full range of
 pair blend weights at fixed recipients. Separate weights make
 more individual queries improvable than a shared weight, but

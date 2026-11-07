@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Recipient Recording Feasibility
+
+Allowing every recipient its own continuous blend of the same
+two paths cannot fix the original recording gate: of 102
+views, 23 lack positive selected easy mass, 74 exceed at least
+one minimum risk allowance, and five admit exact checked
+witnesses. Minimum unknown disagreement alone excludes 33 of
+the 74. No checked safe pair ray beats OLS4 on the relative-path
+lower score. This is exposed-development hindsight, not a
+deployment or external confirmation.
+[Method and replay](outputs/publication_readiness_2026_09/native_recording_blend_feasibility_v1/README.md) |
+[v20 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v20/README.md).
+
 ## Continuous Pair-Blend Directional Capacity
 
 At 9,675 fixed switches, 2,746/4,839 active query-seed views have
