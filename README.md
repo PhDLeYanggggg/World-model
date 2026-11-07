@@ -60,11 +60,15 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 I connected the cached DroneCrowd annotation prefixes to the existing 8/12
 forecast input schema. All 112 recordings pass the three-prefix check, without
-using future labels to select agents. I am screening these recordings for
-overlap with the previous MovingDroneCrowd development image roster before
-assigning experimental roles. The official folders are not a clean scene split.
-Neither input compatibility nor image matching is an external prediction result.
-[Input compatibility and compute estimate](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
+using future labels to select agents. The complete 5,376-pair screen against
+the prior development image roster finds no match at the frozen thresholds.
+The original release folders still have known internal overlap. I retain all
+45 conservative exclusion groups and have prepared two role alternatives:
+15 calibration groups plus 30 confirmation groups, or 45 frozen-transfer
+groups. Neither is assigned yet. Image matching is not proof of independent
+physical sites, and neither check is an external prediction result.
+[Source screen and proposed roles](outputs/publication_readiness_2026_09/dronecrowd_cross_archive_v1/README.md) |
+[Input compatibility](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
 
 ### Earlier Viewpoint Study
 

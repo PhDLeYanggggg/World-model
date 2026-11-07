@@ -26,6 +26,15 @@ before matching. Its one-recording pilot completes112pairs in23.52s;the full
 48x112 screen resumes from that receipt. Original2%and deployment unchanged;
 external calibration/confirmation roles pending,not independent evidence.
 [Input compatibility](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
+Complete48x112cross-archive screen exits0 with5376recording pairs,48384frame
+comparisons and0strong/ambiguous matches. All34actual A actor recordings match
+the registered ID bridge. Full continuation1079.321623s after23.516829pilot;
+cached aggregate verification exit0,exact full receipt hash,not new matching.
+All45conservative groups stay intact. Two ID-only proposals reproduce exactly:
+15groups/40clips calibration and30/72confirmation,or45/112zero-shot. No role
+assigned,no new outcome access,unchanged2%contract.13scoped tests pass1.80s.
+CREATE read-only60s query times out,remote stateunknown;no job submitted.
+[Full source screen and role alternatives](outputs/publication_readiness_2026_09/dronecrowd_cross_archive_v1/README.md).
 
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
