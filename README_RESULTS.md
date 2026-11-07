@@ -42,7 +42,15 @@ model data. Real recoveryPID80666exits0 in171.851555s,peak1,815,986,176B.
 Both100+100and actual in-forwardSIGTERM1+199match continuous200scientific state
 exactly;immutable step1snapshot validates. Direct200takes56.781232s,projecting
 17,034.369650s(~4.73h)for15full fits before inference. Full shared-core raw
-controlPID80926now runs. No new outcome scored;old partial checkpoint not used.
+controlPID80926exits0 at23:58:21Z after1140.507934s,peak1,773,191,168B.
+All4000shared-core/active-optimizer/sampler/RNG/draws/factors/common-trace
+checks match exactly;two extra inactive optimizer entries remain declared,
+not identical complete parameter lists. Twelve formal fits now run asPID82393,
+starting with the verified200step prefix. No new outcome scored;old partial
+checkpoint not used. The eight-page working PDF includes the literature
+recheck and portable aggregate replay,not these unscored dual-view outcomes.
+All eight rendered pages inspected;31focused checks pass11.95s,not a rerun of
+the full historical suite. Submission readiness remains false.
 
 ### Camera-Operator Ablation: Registered Before Real Fitting
 

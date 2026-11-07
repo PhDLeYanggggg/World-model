@@ -260,6 +260,23 @@ def camera_update():
     return '\n'.join(lines)
 
 
+def native_portable_update():
+    path = HOME/'native_actor_reproduction_v1/verification.json'
+    if not path.exists(): return ''
+    value = read(path); clean = value['clean_execution']
+    if (clean['exit_code'] != 0 or not clean['stdlib_only'] or not clean['site_packages_disabled']
+            or any(value[k] for k in ('new_training', 'new_prediction_or_target_readout',
+                'new_random_bootstrap', 'full_training_reproduction', 'independent_confirmation', 'submission_ready'))):
+        raise ValueError('Portable reporting artifact must not be promoted to full model replication')
+    return (f'A separate {value["archive_members"]}-file, {value["archive_bytes"]:,}-byte aggregate artifact '
+        'replays the three completed actor primaries in an isolated temporary directory, '
+        'without site packages, network access or the project workspace. It reconstructs '
+        'fourteen-source means and the original fixed bootstrap draws, retaining their '
+        'distinct seeds and negative results. This is standard-library reporting '
+        'reproducibility, not new independent evidence, guaranteed anonymity or '
+        'model-training/prediction reproduction.')
+
+
 def figures(a):
     import matplotlib
     matplotlib.use('Agg')
@@ -305,7 +322,7 @@ def main():
         worst = max(v['known_easy_net_degradation'] for x in a['rows'] if x['arm'] == arm
             for v in x['policies']['joint_free']['recordings'].values() if v['known_easy_net_degradation'] is not None)
         table.append(f'| {name} | {r["utility"]["known"]["point"]:.3f} | {r["hard_gain_percent"]:.3f} | {r["easy_gain_percent"]:.3f} | {r["safety"]["supported_record_views"]}/72 | {100*worst:.2f} |')
-    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), camera_update=camera_update(), motion_lower_short=f'{p["point"]:.3f}',
+    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), camera_update=camera_update(), native_portable_update=native_portable_update(), motion_lower_short=f'{p["point"]:.3f}',
         motion_lower_long=f'{p["point"]:.6f}', motion_ci_short=f'[{p["interval95"][0]:.3f}, {p["interval95"][1]:.3f}]',
         motion_ci_long=f'[{p["interval95"][0]:.6f}, {p["interval95"][1]:.6f}]', motion_positive_sources=positive,
         motion_known_short=f'{m["utility"]["known"]["point"]:.3f}', motion_pass=s['supported_record_views'],
@@ -334,12 +351,18 @@ def main():
     camera_paths += [HOME/'moving_producer_crossfit_v1/fits'/path.name
         for path in sorted((camera_folder/'fits').glob('*.json'))]
     camera_sources = {str(path.relative_to(ROOT)): sha(path) for path in camera_paths} if values['camera_update'] else {}
+    reporting_paths = [HOME/'native_actor_reproduction_v1/verification.json',
+        PUBLIC/'related_work_recheck_20261106.md',
+        ROOT/'src/evaluation/native_actor_portable.py', ROOT/'scripts/build_m3w_native_actor_reproduction.py',
+        HOME/'moving_camera_factor_v1/design_stop.md', HOME/'moving_camera_factor_v1/stopped_training.json']
+    reporting_sources = {str(path.relative_to(ROOT)): sha(path) for path in reporting_paths}
     write_json(PUBLIC/'source_bindings.json', dict(result_source='fresh_prose_typesetting_of_cached_verified_scalar_evidence',
         fixed_sources=PINNED, template_sha256=sha(PUBLIC/'manuscript.template.md'), builder_sha256=sha(Path(__file__)),
         markdown_sha256=sha(PUBLIC/'manuscript.md'), tex_sha256=sha(PUBLIC/'manuscript.tex'), cvpr_style_sha256=sha(template),
         actor_outcomes_included=(HOME/'moving_visual_actor_v1/analysis.json').exists(),
         actor_sources=actor_sources,
         camera_outcomes_included=bool(values['camera_update']), camera_sources=camera_sources,
+        reporting_and_scope_sources=reporting_sources, new_dual_view_outcomes_included=False,
         independent_confirmation=False, submission_ready=False, old_v9_sources_or_PDF_modified=False,
         stage5c_executed=False, smc_enabled=False))
     print('Native-stride working manuscript and private figures prepared; no new outcome scoring or submission claim.')

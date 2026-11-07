@@ -44,5 +44,14 @@ python3 /Users/yangyue/.codex/plugins/cache/openai-bundled/latex/0.2.8/scripts/c
 The local generated PDF and scalar-only figures are under
 `data/stage_cvpr2027_experiments/evidence_manuscript_v10/paper_build/`.
 No dataset images, third-party style file, raw data, weights or caches are
-committed. A standalone anonymous reconstruction package is still outstanding.
-The frozen v9 sources and compiled PDF are not overwritten.
+committed. A six-file portable aggregate package now replays the three completed
+native actor primary analyses in a clean stdlib-only process. It preserves the
+original bootstrap indices and negative outcomes; it is not complete training
+or prediction reproduction, independent confirmation or guaranteed anonymity.
+Full model-training reconstruction is still outstanding.
+
+The latest eight-page PDF also records the stopped one-sided information-loss
+diagnosis and the primary-literature scope recheck. Its replacement dual-view
+model is still training: no new dual-view outcome is included. All eight current
+rendered pages were visually inspected. Thirty-one focused checks pass; the
+full historical suite was not rerun. The frozen v9 sources and PDF are unchanged.

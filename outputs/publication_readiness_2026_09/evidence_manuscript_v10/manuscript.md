@@ -94,6 +94,18 @@ geometric conditioning, not claiming camera compensation itself as new.
 Their learned future-pose estimator is not implemented by our fixed affine
 proxy; neither their reported benchmarks nor physical geometry transfer here.
 
+Selective regression already shows that reducing coverage can worsen
+subgroup error [6]. Multi-expert classification surrogates can also underfit
+despite favorable consistency properties [7]. These observations are not new
+claims of this project; their conditions do not establish our relative-ADE
+recording contract. Weighted non-exchangeable risk control still requires
+its specified monotone, bounded losses [8], not arbitrary selected ratios.
+
+Trajectory certification under noisy observations [9] and joint conformal
+regions under agents' policy changes [10] address different problems. Our
+decision changes a forecast, not the pedestrians' behavior. Neither input-
+robustness certification nor off-policy coverage is reproduced or inherited.
+
 ## 3. Forecast Substitution with Partial Labels
 
 At a query, target-eligible agents have eight observed positions and a fixed
@@ -431,6 +443,17 @@ identify whether image semantics, better candidate dynamics, additional
 independent training sources or better conditional uncertainty is the most
 effective remaining repair.
 
+A synthetic check also exposes a specific defect of removing only the future
+view restoration. For observed native positions $h_t=p_t+c_t$, exact alignment
+and current-origin removal can leave $p_t-p_0$ at the core, while native future
+labels still depend on $c_{\mathrm{future}}-c_0$. Different observed camera motions can
+therefore collapse to the same core representation with different labels.
+This conventional information-loss example is not a new impossibility theorem
+or proof of the combined actor's real-data failure. The incomplete one-sided
+follow-up was stopped before outcome scoring. A replacement retains both
+native geometry and aligned node features; its new outcomes are not included
+while full fitting remains in progress.
+
 The current evidence is source-excluded per pipeline but previously exposed
 globally. Exact replay establishes repeatability, not independent scientific
 confirmation. One forecaster seed cannot meet the intended three-seed main
@@ -465,8 +488,11 @@ scope rather than inheriting that count. All scientific losses and both
 positive and negative source slices are retained. Raw data, image/feature
 caches, third-party source and large weights are not Git artifacts. Public
 scalar receipts and reconstruction commands identify what is fresh, verified
-cache reuse or not run. An independently runnable anonymous package is still
-to be completed; the existing local Git guard is not such a package by itself.
+cache reuse or not run. A complete anonymous model-training and prediction
+reconstruction package is still outstanding; the local Git guard is not such
+a package by itself.
+
+A separate 6-file, 253,746-byte aggregate artifact replays the three completed actor primaries in an isolated temporary directory, without site packages, network access or the project workspace. It reconstructs fourteen-source means and the original fixed bootstrap draws, retaining their distinct seeds and negative results. This is standard-library reporting reproducibility, not new independent evidence, guaranteed anonymity or model-training/prediction reproduction.
 
 Crowd imagery and trajectory identities should be handled under the dataset
 license and without attempting personal identification. We release no new
@@ -487,8 +513,8 @@ any final decision to submit.
    https://proceedings.mlr.press/v235/mao24d.html
 
 3. Anastasios N. Angelopoulos, Stephen Bates, Adam Fisch, Lihua Lei, and
-   Tal Schuster. Conformal Risk Control. arXiv:2208.02814v4.
-   https://arxiv.org/abs/2208.02814
+   Tal Schuster. Conformal Risk Control. ICLR, 2024.
+   https://proceedings.iclr.cc/paper_files/paper/2024/hash/f3549ef9b5ff520a7e41ff3cc306ab2b-Abstract-Conference.html
 
 4. Yaowu Fan, Jia Wan, Tao Han, Andy J. Ma, Wanli Ouyang, and Antoni B.
    Chan. Video Individual Counting and Tracking from Moving Drones:
@@ -498,6 +524,30 @@ any final decision to submit.
 5. Lukas Neumann and Andrea Vedaldi. Pedestrian and Ego-Vehicle Trajectory
    Prediction From Monocular Camera. CVPR, 10204-10212, 2021.
    https://openaccess.thecvf.com/content/CVPR2021/html/Neumann_Pedestrian_and_Ego-Vehicle_Trajectory_Prediction_From_Monocular_Camera_CVPR_2021_paper.html
+
+6. Abhin Shah, Yuheng Bu, Joshua K. Lee, Subhro Das, Rameswar Panda,
+   Prasanna Sattigeri, and Gregory W. Wornell. Selective Regression under
+   Fairness Criteria. ICML, PMLR 162:19598-19615, 2022.
+   https://proceedings.mlr.press/v162/shah22a.html
+
+7. Shuqi Liu, Yuzhou Cao, Lei Feng, Bo An, and Luke Ong. When More Experts
+   Hurt: Underfitting in Multi-Expert Learning to Defer. ICML,
+   PMLR 306:75507-75531, 2026.
+   https://proceedings.mlr.press/v306/liu26g.html
+
+8. Antonio Farinhas, Chrysoula Zerva, Dennis Ulmer, and Andre F. T. Martins.
+   Non-Exchangeable Conformal Risk Control. ICLR, 2024.
+   https://proceedings.iclr.cc/paper_files/paper/2024/hash/de04896f011beff76c91e094f72727f4-Abstract-Conference.html
+
+9. Mohammadhossein Bahari, Saeed Saadatnejad, Amirhossein Askari Farsangi,
+   Seyed-Mohsen Moosavi-Dezfooli, and Alexandre Alahi. Certified Human
+   Trajectory Prediction. CVPR, 12301-12311, 2025.
+   https://openaccess.thecvf.com/content/CVPR2025/html/Bahari_Certified_Human_Trajectory_Prediction_CVPR_2025_paper.html
+
+10. Tom Kuipers, Renukanandan Tumu, Shuo Yang, Milad Kazemi, Rahul Mangharam,
+    and Nicola Paoletti. Conformal Off-Policy Prediction for Multi-Agent
+    Systems. IEEE CDC, 2024.
+    https://arxiv.org/abs/2403.16871
 
 ## LLM Usage Statement
 

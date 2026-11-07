@@ -98,3 +98,17 @@ def test_camera_table_never_uses_defined_only_source_mean(tmp_path, monkeypatch)
     (folder/'analysis.json').write_text(json.dumps(files['analysis.json']))
     with pytest.raises(ValueError, match='defined sources only'):
         paper.camera_update()
+
+
+def test_aggregate_reporting_artifact_never_becomes_full_model_reproduction(tmp_path, monkeypatch):
+    monkeypatch.setattr(paper, 'HOME', tmp_path)
+    folder = tmp_path/'native_actor_reproduction_v1'; folder.mkdir()
+    value = dict(clean_execution=dict(exit_code=0, stdlib_only=True, site_packages_disabled=True),
+        archive_members=6, archive_bytes=253746, new_training=False, new_prediction_or_target_readout=False,
+        new_random_bootstrap=False, full_training_reproduction=False, independent_confirmation=False, submission_ready=False)
+    path = folder/'verification.json'; path.write_text(json.dumps(value))
+    text = paper.native_portable_update()
+    assert '253,746' in text and 'not new independent evidence' in text
+    value['full_training_reproduction'] = True; path.write_text(json.dumps(value))
+    with pytest.raises(ValueError, match='full model replication'):
+        paper.native_portable_update()
