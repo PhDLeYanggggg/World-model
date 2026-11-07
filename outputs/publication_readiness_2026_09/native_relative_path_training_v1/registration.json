@@ -1,0 +1,97 @@
+{
+  "arms": [
+    "individual",
+    "with_relative"
+  ],
+  "backbones": {
+    "17": {
+      "bytes": 1627573,
+      "path": "data/stage_cvpr2027_experiments/native_gated_motion_residual_v1/fits/17_ungated/checkpoint.pt",
+      "sha256": "bb4fd50259a9c3194690f262f666714b89b782f773d304cce9836f8b439cc292"
+    },
+    "29": {
+      "bytes": 1627573,
+      "path": "data/stage_cvpr2027_experiments/native_gated_motion_residual_v1/fits/29_ungated/checkpoint.pt",
+      "sha256": "d7560d63a2f20a610265dfd82b14bcb8c60cfbe34bc7cfab5c6a366c4d002763"
+    },
+    "43": {
+      "bytes": 1627573,
+      "path": "data/stage_cvpr2027_experiments/native_gated_motion_residual_v1/fits/43_ungated/checkpoint.pt",
+      "sha256": "3a3acab49ff123d5b12c06c18c898131e16f91c1165346379f03b105344ccc6f"
+    }
+  },
+  "bindings": [
+    {
+      "bytes": 17838,
+      "path": "scripts/run_m3w_relative_path_training.py",
+      "sha256": "7c0eecdaada8cd301736a2c78bfb51ef5fb49480cc6829aa027cd3588fea6e8c"
+    },
+    {
+      "bytes": 573,
+      "path": "src/world_model/m3w_relative_path_supervision.py",
+      "sha256": "258a3b25e3c7217b616a148a6b57af481b97a62115a0dd79ccbb34d25e0bc9d1"
+    },
+    {
+      "bytes": 2114,
+      "path": "outputs/publication_readiness_2026_09/native_relative_path_training_v1/protocol.md",
+      "sha256": "948133a0d388bb2f378ff863c7b117c30793bbf62f9dcc97d8ea2ecf02db4305"
+    },
+    {
+      "bytes": 1163,
+      "path": "tests/test_m3w_relative_path_supervision.py",
+      "sha256": "3fec7a8f1288915c954c9aad4d31139adf4bd5f95394abec8b8a8c8141eedafc"
+    },
+    {
+      "bytes": 3119,
+      "path": "outputs/publication_readiness_2026_09/native_neighbor_motion_adapter_v1/registration.json",
+      "sha256": "5be1b51959dbe8214eaac39a68a405a246cceb07be5190ae7034f5aa8929bbee"
+    },
+    {
+      "bytes": 274,
+      "path": "outputs/publication_readiness_2026_09/native_neighbor_motion_adapter_v1/replay_execution.json",
+      "sha256": "1f29e2556597c3080f9d513587fe23dc167bb2b59bff1dd52cd53897a5246da1"
+    },
+    {
+      "bytes": 12578,
+      "path": "scripts/run_m3w_neighbor_motion_adapter.py",
+      "sha256": "65b498c961df4e504026c75e8daa16e195dd0a333941fb0c6968d6fdbfc8114d"
+    },
+    {
+      "bytes": 6255,
+      "path": "src/world_model/m3w_record_joint_actions.py",
+      "sha256": "dea6dad446dee16fbd9442d0c25a05ecde2d62d75be96bf37245ecf955b11b75"
+    },
+    {
+      "bytes": 9938,
+      "path": "src/world_model/m3w_native_forecast.py",
+      "sha256": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613"
+    }
+  ],
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "exact_recipients": true,
+  "external_access": false,
+  "original_risk_unchanged": true,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch_size": 128,
+    "checkpoint_every": 150,
+    "edge_rows": 32,
+    "gradient_clip": 5.0,
+    "heartbeat_every": 150,
+    "learning_rate": 0.001,
+    "minimum_lr_ratio": 0.1,
+    "pair_weight": 0.25,
+    "single_rows": 64,
+    "steps": 900,
+    "weight_decay": 0.0001
+  },
+  "torch_threads": 2,
+  "workers": 0
+}
