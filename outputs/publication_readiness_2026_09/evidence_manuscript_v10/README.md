@@ -30,6 +30,13 @@ It expands the feasible set from 61 to 71 recording-seed views but does
 not establish a learned or independently confirmed improvement.
 [Registered readout](../native_slate_geometry_capacity_v1/README.md).
 
+The [local OLS4 proposal experiment](../native_local_ols_proposal_v1/README.md)
+tests whether a learned trajectory adjustment, rather than another
+selector, can expand that set. Donor-selected amplitudes improve
+the OLS4 conservative comparison, but the matched neighbor ablation
+does not support a neighbor benefit, and the same-recipient capacity
+does not gain any feasible or positive OLS4 views.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

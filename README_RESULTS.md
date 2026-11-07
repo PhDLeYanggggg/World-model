@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source-Separated Local OLS4 Proposal
+
+After 84 native PyTorch fits, donor-selected self and neighbor proposals
+gain +7.639 and +7.980 pp in conservative ADE utility over OLS4.
+The direct neighbor-vs-self lower contrast is -3.764 pp
+[-8.478, -0.388]. None of the full-path arms meets the original risk
+rule, and adding the self proposal on the same recipients leaves
+capacity unchanged at 71 feasible / 33 positive OLS4 views.
+[Registered experiment and replay](outputs/publication_readiness_2026_09/native_local_ols_proposal_v1/README.md).
+
 ## Forecast Geometry At Fixed Recipients
 
 Adding OLS4 and a past-only common-translation forecast on the exact

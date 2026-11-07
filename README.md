@@ -147,6 +147,13 @@ conservative gain over OLS4. This tells me the forecast choices matter,
 even with the same agents, but it is not a deployment result.
 [Matched-recipient experiment](outputs/publication_readiness_2026_09/native_slate_geometry_capacity_v1/README.md).
 
+I also trained a small, bounded forecast around OLS4. Choosing the
+adjustment size on separate development sources helped against OLS4,
+but adding nearest-neighbor information did not help the matched
+comparison. The simpler forecast added no new passing recording views
+when offered alongside the existing options, so I kept the policy unchanged.
+[Local forecast and matched controls](outputs/publication_readiness_2026_09/native_local_ols_proposal_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
