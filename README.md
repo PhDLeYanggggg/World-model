@@ -45,6 +45,17 @@ foundation world model, or submission readiness.
 [failure analysis](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/failure_analysis.md),
 [reproduction instructions](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/operation_zh.md).
 
+### Which Forecasts To Change
+
+I trained a model to predict the gain and harm of each candidate, then let
+it change the selected agents while keeping every query's intervention
+count and amplitude fixed. Adding the harm term reduced total-risk
+violations from 64 to 56 out of 102 views compared with gain-only ranking.
+Both learned rankings passed just 7 views, versus 15 with the original
+agent list at quarter amplitude. The gains on labeled cases did not
+survive the missing-label bounds. I kept the existing policy.
+[Matched-count allocation experiment](outputs/publication_readiness_2026_09/moving_quarter_allocation_v1/readout.md).
+
 ### How Much To Change A Forecast
 
 I kept all 6,952 neural interventions fixed and changed only how far each

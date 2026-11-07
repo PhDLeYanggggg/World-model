@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Dense Gain/Harm Allocation At Matched Query Counts
+
+With 6,952 interventions and quarter amplitude fixed, adding predicted harm
+to gain-only ranking reduces total-risk violations from 64 to 56, but both
+rankings pass only 7/102 views versus 15/102 for the unchanged roster.
+Both improve on observed labels; neither establishes paired lower utility
+over the quarter control. Donor-calibrated selection falls back on 40/42
+folds and passes 14/102. The hindsight rank gains utility but leaves 96
+undefined easy references. No policy is promoted.
+[Results and primary contrast](outputs/publication_readiness_2026_09/moving_quarter_allocation_v1/readout.md).
+
 ## Learned Amplitude At Fixed Intervention Count
 
 The donor-calibrated uniform policy exactly matches the fixed quarter.
