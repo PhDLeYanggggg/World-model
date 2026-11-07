@@ -240,6 +240,14 @@ utility. The learned harm score did not reliably beat a simple limit
 on how far the forecast moves from the baseline. Neither is ready to use.
 [Release-guard comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/readout.md).
 
+I then matched calibration recordings by motion in the first observed
+query. The matched recordings were closer, but the thresholds did not
+transfer better than selecting the same number without looking at
+motion. The full risk pass count did not improve. I keep this result
+as a limit of the first-query features, not a reason to pick the
+farthest recordings instead.
+[Context-matched calibration](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/context/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

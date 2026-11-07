@@ -133,6 +133,17 @@ options in 23/42 learned and 32/42 radius cells; no outer threshold
 is adopted. No independent result or deployment change.
 [Results and threshold diagnostic](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/readout.md).
 
+## First-Query Context Matching For Calibration
+
+The frozen source roles and models are unchanged. Nearest and
+context-blind each select one recording per calibration source.
+Nearest changes 63/102 peer sets and 40 thresholds, but gives a
+direct paired completion lower of -0.00905 pp [-0.01875, -0.00111]
+against blind. Both pass 3/102 original views and have five signed
+easy-net violations. Farthest is a negative control, not adopted.
+No independent outcomes, retraining or deployment change.
+[Results and verification](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/context/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,
