@@ -1,0 +1,117 @@
+{
+  "accuracy_comparator": "history_ols4_velocity",
+  "arms": [
+    "constant_velocity_causal_fd",
+    "history_ols4_velocity",
+    "selected",
+    "matched_independent",
+    "matched_scene",
+    "matched_pair_additive"
+  ],
+  "bootstrap_draws": 3000,
+  "bootstrap_seed": 73107,
+  "comparisons": {
+    "ols4_vs_cv": [
+      "constant_velocity_causal_fd",
+      "history_ols4_velocity",
+      "constant_velocity_causal_fd"
+    ],
+    "selected_vs_cv": [
+      "constant_velocity_causal_fd",
+      "selected",
+      "constant_velocity_causal_fd"
+    ],
+    "selected_vs_matched_independent": [
+      "matched_independent",
+      "selected",
+      "constant_velocity_causal_fd"
+    ],
+    "selected_vs_matched_pair_additive": [
+      "matched_pair_additive",
+      "selected",
+      "constant_velocity_causal_fd"
+    ],
+    "selected_vs_matched_scene": [
+      "matched_scene",
+      "selected",
+      "constant_velocity_causal_fd"
+    ],
+    "selected_vs_ols4": [
+      "history_ols4_velocity",
+      "selected",
+      "constant_velocity_causal_fd"
+    ]
+  },
+  "confirmation_role_counts": [
+    30,
+    72,
+    216
+  ],
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "files": [
+    {
+      "bytes": 14450,
+      "path": "scripts/run_m3w_dronecrowd_confirmation.py",
+      "sha256": "cbe3fee3f97d4c6310f2867d8384aaf3683ad6bd734e327e4d5755ff958f2e89"
+    },
+    {
+      "bytes": 3022,
+      "path": "src/evaluation/m3w_dronecrowd_confirmation.py",
+      "sha256": "3b7cf2eec3822da5b54f88fd88b78ec5a8cc0033ca1336c3bf048dfbee58cbe1"
+    },
+    {
+      "bytes": 2322,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_confirmation_readout_v1/protocol.md",
+      "sha256": "dce5aef46c56a3bb5df8df7cc3735f72af597ec47fa0ac8e56a653e4d85df32b"
+    },
+    {
+      "bytes": 4174,
+      "path": "tests/test_m3w_dronecrowd_confirmation.py",
+      "sha256": "d9ddb813152e0b4674831f6f06c961507a1487c2d8aff6cb6ee5221862fb4fe5"
+    }
+  ],
+  "one_shot_labels_after_policy_and_forecast_freeze": true,
+  "original_risk_budget": 0.02,
+  "parents": [
+    {
+      "bytes": 7070,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/registration.json",
+      "sha256": "a34135e3a0cc5129f820b9e297a35dbe9da9e5151500f0589d8c23f03fb3bb2c"
+    },
+    {
+      "bytes": 8933,
+      "path": "configs/m3w_dronecrowd_calibration_confirmation_v2.json",
+      "sha256": "caabb7504d6e1912d2fb3f8b8207d77b2be28c8897db280bbccf4d7168c1790a"
+    },
+    {
+      "bytes": 14804,
+      "path": "scripts/run_m3w_dronecrowd_calibration.py",
+      "sha256": "8a3e22fa8cce08abf15a55dac40f131edfb1b4e6b81027914daa98c974f59ad0"
+    },
+    {
+      "bytes": 2046,
+      "path": "src/world_model/m3w_dronecrowd_calibration.py",
+      "sha256": "59a851ef320d0e92ef68cdc79775426044d8afa58254d7f95db1a95c135f1be8"
+    },
+    {
+      "bytes": 2996,
+      "path": "src/evaluation/m3w_joint_path_audit.py",
+      "sha256": "22d4b7ea96ed46658bc6a83009ffd051e7fab20a2b5428b7439b18be5d1ba9e1"
+    },
+    {
+      "bytes": 3578,
+      "path": "src/evaluation/m3w_grouped_recording_readout.py",
+      "sha256": "1a3ca793d02e501a143e23bdc20e95429114ba7ed81ddc76c186523824713b56"
+    }
+  ],
+  "risk_reference": "constant_velocity_causal_fd",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "threshold_search_on_confirmation": false
+}

@@ -10,6 +10,9 @@ It is an input-only role decision, not an external result.
 The [registered calibration run](../dronecrowd_calibration_readout_v1/README.md)
 has begun on the 15-group role after a real-model input smoke.
 It will freeze all predictions before opening calibration labels.
+The [one-shot confirmation protocol](../dronecrowd_confirmation_readout_v1/README.md)
+fixes the primary CV/OLS4 comparisons and the same-budget joint
+ablation before calibration finishes. It adds no confirmation result.
 The main PDF is unchanged.
 
 The [activation appendix](activation_appendix.tex) compares matched

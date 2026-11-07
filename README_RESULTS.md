@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Confirmation Readout Registered
+
+The one-shot program and its claim rules are fixed before calibration
+finishes. It will compare the selected policy with CV and OLS4,
+and compare joint against three simpler choices at the same active-query
+counts. Empty matched controls stay unestimable. Synthetic checks
+exercised the scorer; no confirmation input or label was accessed.
+[Readout and admission guard](outputs/publication_readiness_2026_09/dronecrowd_confirmation_readout_v1/README.md).
+
 ## DroneCrowd Calibration: Full Run Started
 
 The four thresholds and selection procedure are registered. All nine

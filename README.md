@@ -120,6 +120,12 @@ inference on the 40 calibration recordings. The 72 confirmation recordings
 are excluded from the runner. The launch record does not contain outcomes.
 [Calibration protocol and local run](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/README.md).
 
+I have also fixed how I will evaluate confirmation if calibration
+qualifies. The comparison keeps the same switch count for the joint
+and simpler choices, and separates forecast error from the original
+recording risk check. The confirmation data are still sealed.
+[One-shot protocol and tests](outputs/publication_readiness_2026_09/dronecrowd_confirmation_readout_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
