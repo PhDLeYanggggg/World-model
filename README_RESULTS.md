@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Learning Observed Easy Reference On Matched Agents
+
+Boosted top-one accuracy is 39.01% over eligible queries, versus
+32.82% for predicted mass and 34.88% for the joint control.
+The +4.13 pp interval versus the joint control crosses zero.
+On the first query in missing-support views, 28/35 have an
+available easy agent but boosted ranking hits only 5/35
+versus 6/35 for the joint control. The component gate fails;
+the score is not used in an operating policy.
+[Experiment and first-query diagnosis](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/easy_reference_rank/readout.md).
+
 ## Support-Specific Retrieval With Ordered Causal Edits
 
 At equal eligible shortlist size, checked hindsight feasibility

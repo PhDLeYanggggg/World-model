@@ -163,6 +163,13 @@ observed easy reference in the missing-support stratum; no
 operating arm calibrates. The small retrieval benefit is not
 evidence of a learned risk improvement. Main PDF unchanged.
 
+The [matched-agent easy-reference experiment](../moving_record_joint_actions_v1/causal_ledger/easy_reference_rank/readout.md)
+separates observed-support prediction from intervention. Boosting
+improves pooled discrimination, but the top-one effect versus
+the stronger joint control is inconclusive and first-query hits
+do not improve. It is not admitted to a new policy. The main
+PDF and risk contract are unchanged.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 

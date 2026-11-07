@@ -382,6 +382,12 @@ records supplied no observed easy reference, so no threshold
 qualified. I kept the original policy.
 [Support retrieval and joint repair](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/support_joint/readout.md).
 
+I trained an agent-level easy-reference score separately from
+the edit decision. The boosted model ranked better on average,
+but did not beat the stronger control reliably and did not
+improve its first-query hit rate. I did not add it to the policy.
+[Easy-reference ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/easy_reference_rank/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
