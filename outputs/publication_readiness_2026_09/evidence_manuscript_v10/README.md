@@ -4,6 +4,12 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [insertion appendix](insertion_appendix.md) collects five
+matched development comparisons and the verified action-set
+capacity checks. It is generated from score/replay receipts by
+`scripts/build_m3w_insertion_appendix.py`. The one-page local PDF
+is not committed. See [build verification](insertion_appendix_verification.json).
+
 The abstract and Section 6.6 distinguish hindsight repair capacity,
 shortlist coverage, and the behavior of a calibrated past-only policy.
 The 102 exposed views are 34 recordings repeated across three forecaster

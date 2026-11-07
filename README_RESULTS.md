@@ -14,6 +14,15 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Observed Box Geometry
+
+The full-cohort box features keep first-query easy-reference hits
+at 17/102. Non-loss rescue probes move from 0 to 2, both on the
+same recording and neither with a donor cutoff. Frozen policies
+still pass 2/102, with eight signed-easy violations.
+[Experiment and probe audit](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/box_visibility/readout.md) ·
+[Paper appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v10/insertion_appendix.md).
+
 ## Optional Causal Withdrawal
 
 After 84 fresh fits, the optional policy and matched insertion

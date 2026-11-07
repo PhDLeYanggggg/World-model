@@ -428,6 +428,13 @@ withdrew. None of those four was in a recording that lacked easy
 reference, so the experiment did not establish a withdrawal benefit.
 [Optional withdrawal experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/optional_withdrawal/readout.md).
 
+I added geometry from the eight observed head boxes to test
+whether overlap and apparent size improve insertion retrieval.
+The two feasible first-query choices came from the same recording,
+and neither was taken by the calibrated policy.
+[Box geometry comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/box_visibility/readout.md) ·
+[Insertion appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v10/insertion_appendix.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
