@@ -109,6 +109,14 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I matched the number of neural replacements before testing a model
+for missing future labels. It did not improve conservative utility.
+I then let a label-aware audit pick the best option for each risk
+component. Keeping the same recipients rules out 99 of 102 views
+at the matched count, and 93 even when the neural count is free.
+[Matched test](outputs/publication_readiness_2026_09/native_visibility_increment_v1/README.md) |
+[Why reranking is insufficient](outputs/publication_readiness_2026_09/native_fixed_recipient_risk_bound_v1/README.md).
+
 I trained a new score for replacing an already selected motion
 forecast. At the same recipients it worsens the conservative
 comparison by 3.303 percentage points against the previous score.

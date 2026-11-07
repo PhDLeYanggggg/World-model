@@ -7,6 +7,10 @@ report the negative result. The separate [v12 supplement](../evidence_manuscript
 still contains the unchanged risk definitions and source-influence
 checks. No independent result is present.
 
+Subsequent [matched-count missingness experiment](../native_visibility_increment_v1/README.md)
+and [fixed-recipient risk proof](../native_fixed_recipient_risk_bound_v1/README.md)
+are not yet incorporated in the frozen PDF.
+
 ~~~sh
 out=data/stage_cvpr2027_experiments/evidence_manuscript_v13
 .venv-pytorch/bin/python scripts/build_m3w_decision_manuscript_v13.py \

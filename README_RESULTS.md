@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Neural Counts And Recipient Risk Bounds
+
+At 6,066 matched neural replacements, the fitted missing-label
+probability gives -0.0628 pp [-0.1513, +0.0045] conservative
+utility against donor prevalence. None of the matched rankers
+passes a recording view. Exact component minima rule out 99/102
+views under the fixed count and 93/102 with free neural counts
+among the same recipients. Remaining views are not certified.
+[Matched test](outputs/publication_readiness_2026_09/native_visibility_increment_v1/README.md) |
+[Risk bounds](outputs/publication_readiness_2026_09/native_fixed_recipient_risk_bound_v1/README.md).
+
 ## Direct Neural Increment At Fixed Recipients
 
 Across 42 source-excluded fits and 9,675 identical intervention
