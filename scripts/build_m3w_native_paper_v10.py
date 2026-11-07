@@ -26,6 +26,10 @@ PINNED = {
     'moving_seed_dispersion_cost_v1/replay_execution.json': '6da7351f0d7c85a0c91e6c96b9d70a1ebec3f4c2d8542b8adef30956e3c25e63',
     'moving_recording_forecast_replay_v1/analysis.json': 'c16ab9bc65be5895521d4a4cf49047fd91077741534447234e95093523e7a451',
     'moving_recording_forecast_replay_v1/replay_execution.json': '5aa3176b06b2d280b2d44a4d335b024dd76784fed2c41de5c74cf605095cea67',
+    'moving_recording_switch_ceiling_v1/analysis.json': 'd9e88dbb5c917435759b3dd42a6589ea37a2dc93e1466767a2d4c1d96a8f1e04',
+    'moving_recording_switch_ceiling_v1/replay_execution.json': '3f1b30dd0deaec3084401b6cf84aaed6b23423c7ac5c30b46ed4ced2df708caf',
+    'moving_recording_bank_ceiling_v1/analysis.json': '8ee77b07e40ba2f114dcd84c4764418dade8bf118df7b70bb097df2e9f725151',
+    'moving_recording_bank_ceiling_v1/replay_execution.json': '4e9ebf07df53ff8bc2fffaae7c915d82b5e279c925f5c7df0bd2b8b44e997b3a',
 }
 
 
@@ -442,6 +446,27 @@ def recording_risk_update():
     )
 
 
+def bank_ceiling_update():
+    def load(name):
+        folder = HOME/name; path = folder/'analysis.json'
+        r, replay = read(path), read(folder/'replay_execution.json')
+        if (replay['artifact']['sha256'] != sha(path) or not replay['exact_replay']
+                or r['oracle_row_choices_exported'] or r['independent_confirmation']):
+            raise ValueError('Retain exact label-aware diagnostic scope')
+        return r
+    binary = load('moving_recording_switch_ceiling_v1')
+    nested = load('moving_recording_bank_ceiling_v1')['summary']
+    free, fixed = [binary[k]['supported_views'] for k in ('free_count','matched_count')]
+    full = nested['full']['feasible']
+    return (
+        f'An offline label-aware ceiling finds {free}/102 feasible binary views '
+        f'at free count and {fixed}/102 at the old fixed count. Adding PCT and '
+        f'the other causal baselines supplies {full}/102 feasible views, still '
+        'not the whole roster. This isolates missing candidate support on these '
+        'banks without demonstrating a learnable selector.'
+    )
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -465,7 +490,8 @@ def main():
         values[prefix+'_easy_MSE'] = f'{cal[arm]["conditional_MSE"]["easy_harm"]:.6f}'
         values[prefix+'_Brier'] = f'{cal[arm]["observation_Brier"]:.6f}'
     values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update(),
-        seed_dispersion_update=seed_dispersion_update(), recording_risk_update=recording_risk_update())
+        seed_dispersion_update=seed_dispersion_update(), recording_risk_update=recording_risk_update(),
+        bank_ceiling_update=bank_ceiling_update())
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)

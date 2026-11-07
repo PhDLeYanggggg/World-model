@@ -82,6 +82,12 @@ PDF is checked again: pages 1 through 6 are pixel-identical to the prior render,
 and pages 7 and 8 were inspected. The mandatory disclosure still precedes
 References. Twenty-seven focused tests pass; no new independent result.
 
+The candidate-ceiling revision records the exact label-aware binary
+free/fixed-count comparison and nested-bank limit, not an inference result.
+The draft remains eight pages. Pages 1 through 6 match the inspected prior
+render exactly; changed pages 7 and 8 were inspected. The supplement TeX is
+unchanged and its source binding is refreshed. Twenty-nine focused tests pass.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

@@ -108,6 +108,13 @@ No fixed-count switch variant passes the full recording checks. This separates
 predictor accuracy from the case for deploying a switch policy.
 [Recording-level comparison](outputs/publication_readiness_2026_09/moving_recording_forecast_replay_v1/readout.md).
 
+I checked whether the fixed trajectories could satisfy the original budget
+even with outcome-aware choices. With CV and EqMotion, 91/102 repeated views
+are feasible at free count and 90/102 at the old fixed count. Adding the
+other existing forecasts raises free-count feasibility to 101/102, still
+short of the full roster. This is an offline limit, not selector performance.
+[Candidate-bank feasibility](outputs/publication_readiness_2026_09/moving_recording_bank_ceiling_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

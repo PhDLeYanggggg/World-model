@@ -98,6 +98,19 @@ sums reconstruct previous source scalars and a separate replay is exact.
 This is exposed development, not a fresh forecast fit or independent readout.
 [Full scoring and risk table](outputs/publication_readiness_2026_09/moving_recording_forecast_replay_v1/readout.md).
 
+## Candidate Availability Under The Original Risk Contract
+
+The exact label-aware binary oracle is feasible in 91/102 free-count views
+and 90/102 at the fixed per-query count. Eleven failures lack an individually
+in-budget easy action, not observed easy references; one further failure is
+due to the count. Nested frozen banks give 93/102 for PCT+EqMotion, 101/102
+after the five other causal rollouts. The last view has two known easy rows;
+all alternatives exceed the original easy bound. Full-roster utility remains
+not estimable under required support. Both studies replay exactly; nothing
+is promoted to an inference policy or independent outcome.
+[Binary oracle](outputs/publication_readiness_2026_09/moving_recording_switch_ceiling_v1/readout.md) |
+[Nested bank](outputs/publication_readiness_2026_09/moving_recording_bank_ceiling_v1/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

@@ -360,6 +360,8 @@ not success inferred from a favorable early prefix.
 
 {{ recording_risk_update }}
 
+{{ bank_ceiling_update }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}

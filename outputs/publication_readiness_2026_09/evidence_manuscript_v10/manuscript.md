@@ -457,6 +457,8 @@ With three actual EqMotion seeds on exposed development sources, we also hold ca
 
 Against the fitting-selected OLS4 baseline, EqMotion gains +20.47 pp on known labels; the completion lower is -1.50 pp [-21.07, +14.22]. Reusing the original CV risk contract on all 34 recordings and three seeds, the learned missingness anchor passes 0/102 views. Easy completion risk exceeds 2% in 85 views and is undefined in 17. These repeated views are not independent evidence.
 
+An offline label-aware ceiling finds 91/102 feasible binary views at free count and 90/102 at the old fixed count. Adding PCT and the other causal baselines supplies 101/102 feasible views, still not the whole roster. This isolates missing candidate support on these banks without demonstrating a learnable selector.
+
 ## 7. Failure Analysis and Limitations
 
 Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000% and 0.000% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
