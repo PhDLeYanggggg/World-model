@@ -167,6 +167,18 @@ with the observed completion component exposes 57 easy violations;
 replacing reference alone exposes nine. No arm deploys, and no independent
 evaluation or risk rule changes. [Calibration results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/nested_calibration/readout.md).
 
+## Matched Positive-Harm Learning And The Screening Limit
+
+Eighty-four native Torch fits, 33,600 updates. Matched direct and factorized
+harm supervision both lower fixed raw-selection MSE vs the ridge estimate,
+but pass the original 2% rules in the same 2/102 views, at the same 6,184
+switches. Factorized vs direct paired lower is -0.000774 pp
+[-0.002810, +0.000706]. The label-aware screened ceiling is 30/102 at the
+matched query counts and 57/102 with free counts under the cap. Keeping the
+same counts and opening the whole bank gives 72 verified feasible views,
+20 infeasible and 10 unresolved at the solver limit. No oracle row decisions,
+deployment or independent outcome. [Full study](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/selected_positive_harm/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

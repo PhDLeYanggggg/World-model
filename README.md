@@ -149,6 +149,13 @@ removed most useful interventions. Replacing one cost component at a time
 on the original selections showed that harm underestimation was the larger
 problem. [Selected-cost calibration](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/nested_calibration/readout.md).
 
+I retrained the harm estimate on the selected region and held the switch
+count fixed. Prediction error fell, but the original risk pass count did
+not improve. Even with true outcomes, the screened candidate pool allows
+only 30 of 102 views at those counts; the full bank has at least 72.
+The next change is to preserve alternatives through allocation, not tune
+the small-pool ranker. [Matched harm learning and oracle check](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/selected_positive_harm/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

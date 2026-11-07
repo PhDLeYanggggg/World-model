@@ -42,6 +42,9 @@ PINNED = {
     'moving_record_joint_actions_v1/filter_first/replay_execution.json': '507be3662e599017f9a4af9cead2a92bdb2b2e6b54654d3bbccd309a760f98a8',
     'moving_record_joint_actions_v1/nested_calibration/analysis.json': 'e4f8025681b3a085948d3de5ef03b23103aa7925de4307ff23fb2e4182abcf24',
     'moving_record_joint_actions_v1/nested_calibration/replay_execution.json': '75eea89af27141c93b07056078e08ff908fce2b1db1b8145080875e17f9bbc80',
+    'moving_record_joint_actions_v1/selected_positive_harm/analysis.json': '44dedb2cf29634ac0b216d88d340cffbf89499bec32c0d525e5a6028679fc5dc',
+    'moving_record_joint_actions_v1/selected_positive_harm/replay_execution.json': 'adeb2866eb836a8c46c472b192a0978317abd511f6d9f9db2ff90439bfef37db',
+    'moving_record_joint_actions_v1/selected_positive_harm/oracle/analysis.json': '6c5bcd88eea8944d89009f5af7c1922d5b4c190be761448e3ce1884295c76a1e',
 }
 
 
@@ -510,25 +513,31 @@ def easy_forecast_update():
             or not nested['original_control_exact'] or nested['independent_confirmation']):
         raise ValueError('Require verified nested development calibration')
     calibrated = nested['risk']['joint']
+    root = folder/'selected_positive_harm'; harms = read(root/'analysis.json')
+    bound = read(root/'oracle'/'analysis.json'); limits = bound['summary']
+    if (read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json')
+            or read(root/'oracle'/'score_execution.json')['artifact']['sha256'] != sha(root/'oracle'/'analysis.json')
+            or not bound['no_label_aware_choices_exported'] or harms['independent_confirmation']):
+        raise ValueError('Require matched harm test and diagnostic ceiling')
     return (
-        'In a matched three-seed PCT continuation, an easy ADE excess loss '
-        f'changes known easy positive harm by {p["easy_harm_increase_pp"]["point"]:+.2f} pp, '
-        f'but the paired completion lower is {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
-        'Neither new trajectory bank recovers the unsupported view. An additional '
-        'unobserved-row agreement loss shrinks disagreement to CV, but the new '
+        f'PCT easy-harm training reduces known harm by {-p["easy_harm_increase_pp"]["point"]:.2f} pp '
+        f'but yields a paired lower of {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
+        'Neither new trajectory bank recovers the unsupported view. With CV agreement training, '
         f'completion lower versus CV is {cv:+.2f} pp and raw risk passes 0/102 views. '
-        'A three-seed direct velocity-integration model raises label-aware bank '
-        'feasibility to 102/102, but neither raw variant passes any view. Adding '
-        f'peers to that model changes the paired lower by {peer["point"]:+.2f} pp '
+        'Direct velocity integration raises oracle feasibility to 102/102, but neither raw variant passes any view. '
+        f'Peer context changes the paired lower by {peer["point"]:+.2f} pp '
         f'[{peer["interval95"][0]:+.2f}, {peer["interval95"][1]:+.2f}]. '
-        'With that bank and matched query counts, the joint mixed term versus its marginal '
-        f'control changes the paired lower by {pair["point"]:+.3f} pp '
+        f'At matched counts, the mixed term versus its marginal control changes the lower by {pair["point"]:+.3f} pp '
         f'[{pair["interval95"][0]:+.3f}, {pair["interval95"][1]:+.3f}]. '
         f'Filtering all actions before ranking gives {gain["point"]:+.3f} pp versus CV '
         f'but passes only {f["risk_passes"]}/102 original risk views. '
         f'Nested source calibration passes {calibrated["passes"]}/102 by retaining '
         f'{calibrated["switches"]:,} of {nested["risk"]["raw"]["switches"]:,} switches, '
-        'with no clear utility over CV. Candidate availability, average utility and risk control are distinct.'
+        'with no clear CV gain. Matched harm heads improve prediction error '
+        f'but keep {harms["risk"]["factorized"]["passes"]}/102 risk passes. With true outcomes and the same counts, '
+        f'only {limits["screened_matched"]["positive_feasible"]}/102 screened views are feasible, versus at least '
+        f'{limits["full_matched"]["positive_feasible"]}/102 in the full bank. '
+        'This is an action-space ceiling, not learned risk control.'
     )
 
 

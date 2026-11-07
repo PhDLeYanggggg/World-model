@@ -119,6 +119,12 @@ eight pages; pages 1 through 6 are identical to the last render and pages
 7 and 8 were inspected. Forty-three focused tests pass. Supplement TeX
 and PDF remain unchanged. Independent confirmation is still unrun.
 
+The selected-harm revision adds the matched training comparison and the
+screened versus full-bank feasibility limits, with no model promotion.
+The revised eight-page PDF has pages 1 through 6 and 8 identical to the
+prior render; page 7 was inspected. Forty-nine focused tests pass.
+Supplement TeX and PDF are unchanged.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the
