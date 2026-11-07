@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Neural Increment At Fixed Recipients
+
+Across 42 source-excluded fits and 9,675 identical intervention
+recipients, the new direct critic gives -3.303 pp [-9.403, -0.044]
+in conservative utility versus the original CV-difference critic.
+The available-label contrast is -0.055 pp. The fixed risk screen
+keeps only eight neural replacements and passes 1/102 views;
+98 lack an estimable selected easy ratio. No deployment.
+[Results and exact replay](outputs/publication_readiness_2026_09/native_direct_increment_v1/README.md) |
+[v13 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v13/README.md).
+
 ## Past-Only Causal Menu Control
 
 At 9,675 exactly matched switches, the mixed joint policy gains +0.450 pp

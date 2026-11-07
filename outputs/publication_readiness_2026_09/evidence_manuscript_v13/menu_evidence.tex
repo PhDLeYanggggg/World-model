@@ -1,0 +1,52 @@
+\section{From Forecast Availability to Realized Gain}
+We test whether access to learned paths adds value over a selector
+that can already choose among five causal motion alternatives.
+The all-recipient hindsight comparison fixes the CV fallback,
+per-query intervention caps, the 2\% risk rule, and the OLS4
+accuracy reference. The motion bank has positive lower utility on
+\CausalPositive{} of 102 recording-seed views. Adding the three
+learned forecasts raises this to \MixedPositive{} views, with the
+new positives all from one recording. The prior shared-motion
+transform adds no further positive views. The source-balanced
+increase is \CapacityGain; the solver uses labels and this is
+not evidence of a past-only policy improvement.
+
+In the past-only comparison, the two joint policies make
+\MenuSwitches{} genuine changes each, with identical counts per
+query. The mixed bank improves available-label utility by
+\MenuObserved, while its conservative lower contrast is \MenuLower.
+Observed relative-pair ADE reduction is \MenuPair{} pixels.
+The two predicted screens share \CommonScreenSwitches{} accepted
+switches, all identical motion choices; the intersection is not
+an alternative operating policy and does not certify risk.
+
+\paragraph{Learning the neural increment directly.}
+Rather than estimate benefit from the difference of two separate
+CV-relative scores, we learn the change from the actual selected
+motion forecast. We fix the recipients, clip both incremental
+scores to the same pairwise disagreement range, and change a path
+only when its predicted increment is positive. For each held
+source, anchors on the other 13 sources are constructed using
+fits that also exclude their own source. The ridge heads see
+the same past descriptor family centered on the selected
+motion path. Their target is its available-label gain minus
+maximum paired disagreement on wholly unobserved rows, divided
+by the past motion scale. These changes do not alter the CV risk
+reference or any evaluation rule.
+
+At the same recipients and counts, the direct score changes the
+conservative lower utility by \DirectVsCV{} relative to the
+CV-difference control and by \DirectVsAnchor{} relative to
+retaining the motion anchors. The respective whole-recording
+pass counts (out of 102) are \DirectPass{} for the direct
+score, \DifferencePass{} for CV-difference, and \AnchorPass{}
+for the motion anchor. The direct-minus-CV-difference contrast
+on observed labels is \DirectKnown; the lower envelope subtracts
+another \DirectMissing{} points for wholly unobserved rows.
+The unchanged predicted screen retains only \DirectScreenSwitches{}
+direct-score switches and passes \DirectScreenPass{} of 102 views.
+The observed relative-pair ADE reduction
+for direct versus anchor is \DirectPair{} pixels. These results
+are development-only. Learning a different score does not
+by itself convert a label-aware witness into a risk-supported
+decision on a new recording.

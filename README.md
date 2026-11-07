@@ -109,6 +109,14 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I trained a new score for replacing an already selected motion
+forecast. At the same recipients it worsens the conservative
+comparison by 3.303 percentage points against the previous score.
+Most of that difference comes from greater disagreement on windows
+with no future labels. I did not replace the existing policy.
+[Increment test](outputs/publication_readiness_2026_09/native_direct_increment_v1/README.md) |
+[Updated working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v13/README.md).
+
 I then ran the same past-only selector with and without learned
 forecasts, at exactly the same switch count. The mixed menu helps on
 observed labels but does not establish conservative improvement.

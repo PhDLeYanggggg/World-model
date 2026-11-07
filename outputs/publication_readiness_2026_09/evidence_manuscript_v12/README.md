@@ -1,5 +1,8 @@
 # Integrated Decision Manuscript, v12
 
+The [v13 working draft](../evidence_manuscript_v13/README.md) now
+incorporates the motion-menu controls and fixed-recipient increment fit.
+
 This four-page anonymous working draft integrates the matched decision
 study, the hindsight capacity comparison, the scene-input and relative-path
 ablations, and the post-selection risk refits. It is a new manuscript build
