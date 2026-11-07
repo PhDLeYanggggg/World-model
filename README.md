@@ -328,6 +328,12 @@ added easy-case violations at the same switch count. I kept these
 features out of the current policy.
 [Interaction experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_interaction/readout.md).
 
+I also tried spending the same eight slots on different gain and
+risk rankings. That found two opportunities the family-diverse list
+missed but lost five it had kept. I kept the family-diverse list:
+neither new choice rule improved complete policy passes.
+[Candidate retrieval experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_portfolio/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

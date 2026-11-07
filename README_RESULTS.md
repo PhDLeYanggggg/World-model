@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Multi-Criterion Retrieval At The Same Eight-Slot Budget
+
+The portfolio shortlist retains a useful early action in 3/18
+zero-direct views versus 6/18 for family diversity (one shared, two
+new, five lost). The event winner recovers 1/18 before thresholding,
+but calibrated complete passes remain 2/102 for both refit rules.
+At identical query counts, the event choice loses -0.01223 pp of
+completion-lower utility (95% source interval [-0.02959, -0.00100]).
+No deployment change.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_portfolio/readout.md).
+
 ## Neighbor Motion And Candidate Path Proximity
 
 With identical forecast paths and eight-slot shortlists, neither new

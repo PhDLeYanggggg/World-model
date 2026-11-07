@@ -1,0 +1,50 @@
+# What Limits Early Intervention At A Fixed Action Budget?
+
+The exposed Moving A development task uses eight observed and twelve
+forecast annotation steps in native image coordinates. We keep the
+bank, direct actions, eight candidate slots, and the original 2%
+risk and reference-support rules fixed. Each of 42 source/seed cells
+uses seven fitting, six calibration, and one held source. The views
+are 34 recordings repeated across three forecaster seeds.
+
+## Retrieval And Choice Are Separate Bottlenecks
+
+In the first two eligible queries of 18 original zero-direct views,
+the full bank has a positive supported action in 15. The family-diverse
+list retains one in 6. The new cost portfolio keeps the
+old top action and cycles through support, gain, risk-adjusted gain,
+and low excess, preferring different agents. It retains one in
+3: 1 shared with the old list,
+2 new and 5 lost. Thus diversifying
+cost rankings is not a replacement for family diversity.
+
+## Refit Results
+
+Early hits are final choices in the first two eligible queries, out of
+18 original zero-direct views, without thresholding. Pass and easy
+columns are complete calibrated policy counts out of 102 views.
+The unchanged selector has zero early hits, two passes and eight
+signed easy violations. Matched effects compare exactly 6,998
+switches on identical queries to that selector, in percentage points
+of completion-lower utility. Intervals resample 14 sources 3,000 times,
+averaging the three seeds within source.
+
+### Table 1. Early choice, observed policy passes, and matched utility
+
+| Added input or changed retrieval | Early hits | Passes | Easy >2% | Matched effect [95% interval] |
+| --- | ---: | ---: | ---: | ---: |
+| Short observed-window errors | 0 | 2 | 8 | +0.00525 [+0.00045, +0.01119] |
+| Resolved forecast errors | 0 | 2 | 9 | -0.00946 [-0.02841, +0.00016] |
+| Observed neighbor motion | 0 | 2 | 8 | -0.00853 [-0.02540, +0.00176] |
+| Motion and rollout proximity | 0 | 2 | 9 | -0.00695 [-0.02996, +0.00797] |
+| Portfolio, risk winner | 0 | 2 | 8 | -0.01471 [-0.04221, +0.00148] |
+| Portfolio, event winner | 1 | 2 | 8 | -0.01223 [-0.02959, -0.00100] |
+
+No tested model adds a complete observed pass. The short-history
+backtest improves matched utility without solving early choice.
+Already-resolved feedback is absent in those early queries.
+Neighbor summaries do not recover a useful choice; rollout proximity
+adds a calibrated easy violation. The portfolio event model finds
+one early choice but loses matched utility and complete passes at
+fixed coverage. None provides independent confirmation or changes
+deployment. The units are not seconds, meters or physical safety.

@@ -99,6 +99,16 @@ recall, and increase signed easy violations at matched switch count.
 These linked tables are development evidence; neither is a positive
 main-method result or an independent evaluation. The PDF is unchanged.
 
+The [shortlist follow-up appendix](shortlist_followup.md) compares those
+two ablations with the new fixed-budget cost portfolio. The portfolio
+finds two different useful openings but loses five retained by the
+family-diverse control; neither calibrated rule improves full passes.
+Build the bound Markdown and TeX from the exact score replays with
+`.venv-pytorch/bin/python scripts/build_m3w_shortlist_followup.py`.
+The one-page local PDF under `shortlist_followup_build` was compiled
+and visually inspected. The original appendix and main paper are
+unchanged.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.
