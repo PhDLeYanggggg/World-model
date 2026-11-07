@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Exact Native CPU Sharding Benchmark
+
+On 18 exposed development queries, three independent four-thread
+workers reduce measured wall time from 28.59 s to 14.88 s. All 27
+neural outputs and 36 stored policy arrays match serial execution
+exactly. The optional confirmation executor reuses the original
+per-record inference and final freeze checks. Calibration was left
+running; no confirmation data were accessed.
+[Runtime evidence and limits](outputs/publication_readiness_2026_09/native_cpu_shard_benchmark_v1/README.md).
+
 ## DroneCrowd Confirmation Readout Registered
 
 The one-shot program and its claim rules are fixed before calibration

@@ -31,7 +31,9 @@ checks, not confirmation inference. Run the metadata-only check with:
 
 If calibration qualifies, the next step is to freeze its admission
 receipt and pick an execution location for the full confirmation roster.
-At the measured calibration CPU rate, the 2.76 million confirmation
-targets would exceed the prior 12-hour local estimate; use the
-available execution environment deliberately rather than shrinking
-the cohort. No deployment, Stage5C or SMC.
+At the measured serial calibration CPU rate, the 2.76 million
+confirmation targets would take roughly 13 hours. A separate
+[development benchmark](../native_cpu_shard_benchmark_v1/README.md)
+supports an optional process-isolated local backend. It changes only
+the scheduling of inference, and remains blocked on calibration.
+No deployment, Stage5C or SMC.

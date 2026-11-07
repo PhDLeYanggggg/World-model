@@ -126,6 +126,13 @@ and simpler choices, and separates forecast error from the original
 recording risk check. The confirmation data are still sealed.
 [One-shot protocol and tests](outputs/publication_readiness_2026_09/dronecrowd_confirmation_readout_v1/README.md).
 
+I tested process-isolated CPU inference on previously exposed development
+recordings. Parallel execution was 1.92 times faster on that benchmark
+and left all tested predictions and switches unchanged. I have prepared
+the optional confirmation runner without starting confirmation or
+interrupting calibration.
+[Exact scheduling benchmark](outputs/publication_readiness_2026_09/native_cpu_shard_benchmark_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed

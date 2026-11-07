@@ -13,6 +13,9 @@ It will freeze all predictions before opening calibration labels.
 The [one-shot confirmation protocol](../dronecrowd_confirmation_readout_v1/README.md)
 fixes the primary CV/OLS4 comparisons and the same-budget joint
 ablation before calibration finishes. It adds no confirmation result.
+The [native CPU sharding benchmark](../native_cpu_shard_benchmark_v1/README.md)
+checks scheduling equivalence on exposed development data, not
+forecast performance or confirmation.
 The main PDF is unchanged.
 
 The [activation appendix](activation_appendix.tex) compares matched
