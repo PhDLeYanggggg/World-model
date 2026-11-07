@@ -176,6 +176,14 @@ often to switch gives a small utility gain from agent feedback alone, but
 still does not improve safety. I do not use this change for deployment.
 [Past forecast feedback experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/resolved_feedback/readout.md).
 
+I added smaller versions of each candidate forecast. At the same number
+of switches, choosing among the expanded candidates improved conservative
+utility, but none of the 102 recording views passed the original safety
+test. Simply moving the original choices one quarter of the way away from
+the baseline passed 29 views, at a cost in utility. This tells me the model
+needs to get better at deciding where a smaller change is warranted.
+[Bounded substitution experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

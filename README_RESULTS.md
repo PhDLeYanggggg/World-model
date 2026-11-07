@@ -27,6 +27,19 @@ shows +0.03228 pp [+0.00170, +0.07517], but passes decrease from 7 to 6.
 Static actions and score replay are exact. No independent outcome access
 or deployment change. [Design and results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/resolved_feedback/readout.md).
 
+## Bounded Substitution On The Full Forecast Bank
+
+I added half- and quarter-displacement versions of the same eight causal
+and learned candidates and fitted 84 source-excluded cost heads for those
+new actions. At the same 6,184 per-query-matched switches, the expanded
+bank improves the paired completion lower by +0.01573 pp [0.00396, 0.02800],
+but the original safety passes drop from 3 to 0 of 102. Keeping the original
+choices and uniformly using quarter displacement passes 29/102, but loses
+0.06880 pp on that same lower contrast and leaves 34 easy views undefined.
+The free count contrast is inconclusive and changes coverage. Original
+controls and scores replay exactly; no independent evidence or deployment
+change. [Experiment and derivation](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

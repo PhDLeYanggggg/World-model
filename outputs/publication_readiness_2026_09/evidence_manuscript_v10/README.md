@@ -26,6 +26,13 @@ compiled PDF do not establish the method contribution or independent evidence.
 The original2%/support/NA requirements remain; identity certification is not
 introduced. Stage5C execution and SMC remain off.
 
+The latest revision includes the matched bounded-substitution experiment.
+The expanded bank improves utility but passes no original risk view;
+uniform quarter displacement passes 29 of 102 at lower utility.
+The PDF remains eight pages. Pages 1 to 6 are unchanged and pages 7 and 8
+were inspected. Forty scoped tests pass. The supplement text and PDF are
+unchanged. [Bounded substitution results](../moving_record_joint_actions_v1/causal_ledger/bounded_bank/readout.md).
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

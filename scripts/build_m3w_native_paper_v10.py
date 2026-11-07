@@ -52,6 +52,8 @@ PINNED = {
     'moving_record_joint_actions_v1/causal_ledger/credit_transport/analysis.json': '5f7ece052db47d75f19546cd43a4dc126a232c18d325ebaab0fe7578b65137ff',
     'moving_record_joint_actions_v1/causal_ledger/credit_transport/replay_execution.json': 'e6f7cce0c22c1088309b9c383e50959e3d1c05bb9712cf32eed3c9bb5a939235',
     'moving_record_joint_actions_v1/causal_ledger/credit_transport/portable_verification.json': '6783cd1044da81a9d489d499de9a719b24366d24b016122a076b50ab7be44e2e',
+    'moving_record_joint_actions_v1/causal_ledger/bounded_bank/analysis.json': '13d4523650653356a5d51fba6aeb45197e3d3b81fdb4b2e6b1c60b39d6759f3a',
+    'moving_record_joint_actions_v1/causal_ledger/bounded_bank/replay_execution.json': 'a63f7a22da87864ebef950cfbad2592870ffd057a219febb81eb20b2fac02084',
 }
 
 
@@ -537,6 +539,13 @@ def easy_forecast_update():
     if (read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json')
             or credit['discount_positive_folds'] != [0, 0] or any(v >= 0 for v in credit['credit_totals']['realized'])):
         raise ValueError('Require exact matched credit readout')
+    root = ledger_root/'bounded_bank'; bounded = read(root/'analysis.json')
+    if (read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json')
+            or not bounded['exact_original_controls'] or bounded['independent_confirmation']
+            or bounded['deployment_changed'] or not bounded['original_risk_rules_unchanged']):
+        raise ValueError('Require the original risk readout for the matched bounded bank')
+    amp = bounded['comparisons']['bounded_vs_full']['completion_lower_pp']
+    risk = bounded['risk']
     return (
         f'PCT easy-harm training reduces known harm by {-p["easy_harm_increase_pp"]["point"]:.2f} pp '
         f'but yields a paired lower of {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
@@ -560,7 +569,11 @@ def easy_forecast_update():
         f'but passes {ledger["risk"]["ledger_matched"]["passes"]}/102. The full bank gains {b["point"]:+.3f} pp '
         f'over a reoptimized physical bank at common counts, reducing passes from '
         f'{physical["risks"]["physical_ledger"]["passes"]} to {physical["risks"]["full_ledger"]["passes"]}. '
-        'Predicted earning queries show realized net deficits for both budgets; all 42 donor fits retain zero credit.'
+        'Predicted earning queries show realized net deficits for both budgets; all 42 donor fits retain zero credit. '
+        f'Adding half and quarter alternatives improves matched utility by {amp["point"]:+.3f} pp '
+        f'[{amp["interval95"][0]:+.3f}, {amp["interval95"][1]:+.3f}], but passes {risk["bounded"]["passes"]}/102. '
+        f'Uniform quarter displacement of the original choices passes {risk["fixed_quarter"]["passes"]}/102 '
+        'at lower utility. Neither policy satisfies the original risk rule.'
     )
 
 
