@@ -1,0 +1,17 @@
+\paragraph{Does local context help beyond pooled motion?}
+Marginal forecast errors do not measure joint outcomes~\cite{jointmetrics}.
+We train matched ego, pooled-neighbor and relative-neighbor
+adapters over frozen motion backbones, using only fitting
+sources and single-agent ADE for supervision. Pooled motion
+is the average motion of the available complete-history
+neighbors, not a camera-motion estimate. At fixed recipients
+and identical substitution counts, local relative features
+change conservative utility versus pooled motion by
+\LocalVsPooledLower{} pp. They change observed relative-path
+ADE reduction by \LocalPairObserved{} pixels and its
+full-grid lower envelope by \LocalPairLower{} pixels.
+Local and pooled policies pass \LocalPass{} and \PooledPass{}
+recording views, respectively. This controlled contrast
+does not establish a local interaction benefit. The
+relative-path metric is not a published joint-minimum
+forecast score, and we did not train on this pair metric.

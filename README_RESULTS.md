@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Neighbor Context At Fixed Recipients
+
+Nine source-separated PyTorch fits keep the same 9,675 switch
+recipients. Local relative motion versus pooled motion gives
+-0.194 pp [-0.466, -0.002] in conservative utility and
+-0.468 px [-0.915, -0.142] in the pair-grid lower contrast.
+Pooled vs ego has +0.089 pp on available single-agent labels,
+but no positive conservative interval. Ego/pooled/local all
+pass 5/102 views and none meets the original operating rule.
+[Ablation and exact replay](outputs/publication_readiness_2026_09/native_neighbor_motion_adapter_v1/README.md) |
+[v17 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v17/README.md).
+
 ## Source-Separated Gated Motion Forecasting
 
 Six matched PyTorch fits on 69,746 source-excluded training windows

@@ -1,5 +1,8 @@
 # Decision Manuscript v16
 
+The [v17 draft](../evidence_manuscript_v17/README.md) adds the
+matched neighbor-context and relative-geometry comparison.
+
 This six-page anonymous working paper extends [v15](../evidence_manuscript_v15/README.md)
 with two matched-count development diagnostics: the
 [OLS4-centered bank expansion](../native_ols_blend_capacity_v1/README.md)

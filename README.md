@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I compared ego motion, pooled neighbor motion and local relative
+features using the same switched people. Adding the local features
+did not help either conservative utility or relative-path accuracy
+under the original comparison.
+[Context ablation](outputs/publication_readiness_2026_09/native_neighbor_motion_adapter_v1/README.md).
+
 I trained a matched pair of OLS4-relative motion heads across
 three seeds on disjoint training sources. The new forecasts helped
 the all-row comparison with OLS4 on available labels but lost at
