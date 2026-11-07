@@ -16,7 +16,8 @@ from src.evaluation import m3w_prefix_capacity as model
 
 run, np, prior = directional.run, directional.np, directional.prior
 PUBLIC, PRIVATE = prior.PUBLIC/'prefix_capacity', prior.PRIVATE/'prefix_capacity'
-REG = PUBLIC/'registration.json'
+PARENT_REG = PUBLIC/'registration.json'
+REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), Path(model.__file__), PUBLIC/'protocol.md',
          ROOT/'tests/test_m3w_prefix_capacity.py')
 TIME_LIMIT = 8.
@@ -28,13 +29,15 @@ def register():
     for phase in ('score', 'replay'):
         if run.read(parent/f'{phase}_execution.json')['artifact']['sha256'] != run.sha(parent/'analysis.json'):
             raise ValueError('Require frozen parent scoring and replay')
-    inputs = (directional.REG, parent/'freeze.json', parent/'analysis.json',
+    inputs = (PARENT_REG, directional.REG, parent/'freeze.json', parent/'analysis.json',
               parent/'replay_execution.json', directional.size.REG, directional.size.PUBLIC/'freeze.json',
               Path(run.model.__file__), Path(run.parent.readout.__file__))
     run.once(REG, run.stable(dict(files=[run.artifact(p) for p in FILES],
         inputs=[run.artifact(p) for p in inputs], modes=model.MODES, time_limit=TIME_LIMIT,
         expected_views=102, expected_switches=6952, original_budget=.02,
-        label_aware_only=True, protected_outcomes_accessed=False)))
+        label_aware_only=True, protected_outcomes_accessed=False,
+        lossless_rowwise_dominance=True, prefix_presolve_disabled=True,
+        reuse_completed_original_checkpoints=True)))
 
 
 def summarize(rows):
@@ -140,11 +143,15 @@ def execute(phase, beat):
                 run.once(path,run.stable(dict(identity=identity, reference=p['reference'],
                                               direct_switches=n, modes=modes)))
             row = run.read(path)
-            if row['identity'] != identity:
+            original_identity = {**identity,'registration':run.sha(PARENT_REG)}
+            if row['identity'] not in (identity, original_identity):
                 raise ValueError('Cannot resume another registered recording view')
             out.append(row)
             beat(state='recording_done', seed=seed, complete=len(out))
-    run.once(PUBLIC/'analysis.json',summarize(out))
+    data = summarize(out)
+    data['original_solver_checkpoints_reused'] = sum(
+        r['identity']['registration']==run.sha(PARENT_REG) for r in out)
+    run.once(PUBLIC/'analysis.json',data)
 
 
 def main():

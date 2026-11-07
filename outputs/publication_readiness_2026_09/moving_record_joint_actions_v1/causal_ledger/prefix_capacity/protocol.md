@@ -34,3 +34,11 @@ Only aggregate witness metrics and statuses are kept; no oracle choices
 are exported or used as a training signal. Replay re-aggregates verified
 checkpoints; it is not a second solve. No change to official evaluation,
 thresholds, deployment, external outcome access, Stage5C or SMC.
+
+Runtime continuation: sampling the original live process showed the
+solver in dominated-column presolve far beyond its requested limit.
+Keep all completed recording checkpoints and switch only the unresolved
+runtime: remove dominated same-row actions (identical count/support,
+no better objective and no lower relevant cost), and disable presolve
+for the prefix problem. All four problem definitions and the requested
+search time limit are unchanged. Keep any timeout unproven.

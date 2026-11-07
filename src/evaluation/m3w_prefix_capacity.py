@@ -62,6 +62,18 @@ def prefix_matrix(estimated, at, nq):
     return vstack((hstack((blocks[0], balance, blank)), hstack((blocks[1], blank, balance))), format='csc')
 
 
+def undominated(legal, gain, costs):
+    """Replace dominated actions on the same row without changing support or counts."""
+    better = gain[:, :, None] >= gain[:, None, :]
+    strictly = gain[:, :, None] > gain[:, None, :]
+    for c in costs:
+        better &= c[:, :, None] <= c[:, None, :]
+        strictly |= c[:, :, None] < c[:, None, :]
+    j = np.arange(gain.shape[1])
+    tie = j[:,None] < j[None,:]
+    return legal & ~(legal[:, :, None] & better & (strictly | tie)).any(axis=1)
+
+
 def solve(problem, floor, bank, direct, target, valid, recording, easy_cut, hard_cut, mode, seconds):
     if mode not in MODES:
         raise ValueError('Unknown capacity comparison')
@@ -74,6 +86,10 @@ def solve(problem, floor, bank, direct, target, valid, recording, easy_cut, hard
     if not ((ref>0) & legal.any(1)).any():
         return dict(status='infeasible', reason='no_eligible_easy_reference')
     n = len(group)
+    costs = problem['risk']
+    if mode in ('fixed_terminal', 'fixed_prefix'):
+        costs = np.concatenate((costs,problem['estimated']),axis=0)
+    legal = undominated(legal,problem['gain'],costs)
     row, action = np.where(legal)
     g = group[row]
     if not free and (np.bincount(group[legal.any(1)], minlength=len(cap)) < cap).any():
@@ -111,7 +127,7 @@ def solve(problem, floor, bank, direct, target, valid, recording, easy_cut, hard
                   integrality=np.r_[np.ones(len(row)), np.zeros(slack)],
                   bounds=Bounds(0.,np.r_[np.ones(len(row)),np.full(slack,np.inf)]),
                   constraints=LinearConstraint(matrix,lower,upper),
-                  options=dict(time_limit=seconds,mip_rel_gap=0.))
+                  options=dict(time_limit=seconds,mip_rel_gap=0.,presolve=mode!='fixed_prefix'))
     if result.status == 2:
         return dict(status='infeasible',reason='joint_constraints')
     dual = getattr(result,'mip_dual_bound',None)

@@ -48,3 +48,12 @@ def test_unknown_objective_uses_direct_path_disagreement_not_cv_radius():
     y[0] = np.nan
     p = model.prepare(c,b,d,ch,y,valid,g,1.5,pred,ok)
     np.testing.assert_allclose(p['gain'][0],[-.25,.1])
+
+
+def test_dominance_is_same_row_and_respects_every_predicted_cost():
+    legal = np.array([[True,True,True,False],[True,True,True,True]])
+    gain = np.array([[2.,2.,2.,100.],[0.,1.,1.,1.]])
+    cost = np.array([[[2.,2.,0.,-1.],[0.,1.,1.,0.]],
+                     [[0.,0.,1.,0.],[1.,0.,0.,0.]]])
+    np.testing.assert_array_equal(model.undominated(legal,gain,cost),
+                                  [[True,False,True,False],[False,False,False,True]])
