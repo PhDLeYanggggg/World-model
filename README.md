@@ -83,6 +83,13 @@ and none of these variants is deployed.
 
 ### Fixed-Forecaster Decision Study
 
+I also scored the frozen policies on the relative motion of neighboring
+agents. Joint selection beats independent selection on labeled pairs, but
+does not establish a gain over the matched additive control once missing
+pair steps are accounted for. The simple OLS4 forecast has lower observed
+pair error even though its scene ADE is higher. I report both metrics.
+[Joint path audit](outputs/publication_readiness_2026_09/moving_joint_path_audit_v1/readout.md).
+
 I compared additive selection with an exact pair interaction term, holding
 the forecast candidates and each query's intervention count fixed. Across
 14 excluded donor sources the added term did not improve relative-position

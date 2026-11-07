@@ -4,6 +4,13 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [joint path audit](../moving_joint_path_audit_v1/readout.md) adds
+paired missing-step bounds, final-step errors and tail measures to the
+frozen matched-count comparison. It retains the negative comparison
+with the matched additive control and does not change the main PDF.
+The standalone [supplement page](joint_path_appendix.tex) was compiled
+and visually checked; [build receipt](joint_path_appendix_verification.json).
+
 The [learned sparse exchange ablation](../moving_sparse_quarter_exchange_v1/readout.md)
 tests the capacity result with past-only inputs. Donor calibration leaves
 the original 15 passing views unchanged despite 19 replacements. The

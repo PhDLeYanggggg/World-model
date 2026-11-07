@@ -1,0 +1,65 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,booktabs}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\pagestyle{empty}
+\begin{document}
+{\Large\bfseries Joint Path Accuracy Under Missing Pair Outcomes}
+
+\textbf{Development appendix.} We use 34 exposed recordings in 14 source
+groups, 1,613 queries and three frozen forecaster seeds. The four learned
+full-amplitude policies share 9,675 interventions at identical query
+counts. CV and fitting-selected OLS4 are reference forecasts, not
+count-matched policies. The 102 recording views are not independent.
+
+\textbf{Pair outcomes.} For agents $i,j$, let $r_{a,t}$ be the relative
+vector predicted by arm $a$ and $r_t$ the labeled vector. Edges are the
+undirected union of the four nearest neighbors at the last observed
+frame. A pair-step is observed only when both agents are labeled:
+9,222,204/11,361,600 pair-steps and 647,949/946,800 terminal pairs.
+For a comparison $a$ vs. $b$, define
+$d_t=\lVert r_{b,t}-r_t\rVert_2-\lVert r_{a,t}-r_t\rVert_2$,
+so positive values favor $a$. At a missing pair-step,
+\[
+ -\lVert r_{a,t}-r_{b,t}\rVert_2 \leq d_t
+ \leq \lVert r_{a,t}-r_{b,t}\rVert_2.
+\]
+These bounds are averaged with the exact observed differences over
+the requested pair grid within each query. We average queries, then
+seeds and sources, and bootstrap the 14 sources 3,000 times.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Comparison & Observed pair ADE [95\% CI] & Observed pair FDE [95\% CI] & Full-grid ADE bounds \\
+\midrule
+Joint vs. independent & $+.231$ [$+.139$, $+.345$] & $+.659$ [$+.373$, $+1.069$] & [$-.944$, $+1.250$] \\
+Joint vs. shared-family & $+.256$ [$+.110$, $+.448$] & $+.604$ [$+.259$, $+1.132$] & [$-1.235$, $+1.570$] \\
+Joint vs. additive & $+.013$ [$-.009$, $+.045$] & $-.014$ [$-.297$, $+.268$] & [$-.158$, $+.175$] \\
+Joint vs. CV & $-.438$ [$-1.067$, $+.046$] & $-1.651$ [$-3.646$, $-.157$] & [$-2.167$, $+1.822$] \\
+Joint vs. OLS4 & $-3.776$ [$-4.951$, $-2.536$] & $-9.501$ [$-12.947$, $-6.597$] & [$-15.636$, $+9.888$] \\
+Quarter vs. CV & $+.014$ [$-.002$, $+.033$] & $+.022$ [$-.019$, $+.065$] & [$-.005$, $+.032$] \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Table.} Image-pixel reductions on the shared roster. The last
+column gives completion bounds, not confidence intervals. The source
+interval for the primary joint-vs.-additive lower bound is
+$[-.337,-.037]$ pixels. Its upper bound remains positive, so the
+complete-grid effect is not shown to be negative.
+
+\textbf{Interpretation.} Joint selection improves on independent
+selection on observed pairs, but the matched additive control and
+missing-label analysis do not support a separate gain for the
+pair interaction term. OLS4 improves observed pair ADE (28.842 vs.
+32.618 pixels) but worsens available scene ADE (48.012 vs. 45.423
+pixels) relative to joint selection. Relative geometry and absolute
+scene accuracy need not agree. The p95 query pair error is 51.396
+for joint and 49.805 for CV; the corresponding worst recording
+views are 80.804 and 79.686. Neither calibrated sparse policy
+demonstrates a strictly positive lower-bound source interval.
+This analysis leaves the original risk rule unchanged and does not
+measure physical collision safety or establish independent confirmation.
+\end{document}

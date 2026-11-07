@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Joint Path Accuracy And Missing Pair Steps
+
+Matched-count joint selection reduces observed pair ADE versus independent
+selection by 0.231 pixels, but the gain versus the matched additive
+control is 0.013 [-0.009, +0.045]. Accounting for missing pair steps,
+the latter contrast's lower bound is -0.158 pixels and upper bound
+is +0.175. OLS4 has lower observed pair error than the joint policy
+but higher scene ADE. The sparse policies make no decisive difference.
+[Paired bounds and full comparator table](outputs/publication_readiness_2026_09/moving_joint_path_audit_v1/readout.md).
+
 ## Learned Sparse Quarter-Amplitude Exchange
 
 The four-exchange model fits on seven sources and selects on six, with
