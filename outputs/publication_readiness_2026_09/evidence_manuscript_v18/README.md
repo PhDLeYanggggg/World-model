@@ -1,5 +1,8 @@
 # Decision Manuscript v18
 
+The [v19 draft](../evidence_manuscript_v19/README.md) adds a
+continuous pair-blend directional audit.
+
 This six-page anonymous working draft extends [v17](../evidence_manuscript_v17/README.md)
 with the [matched relative-path loss experiment](../native_relative_path_training_v1/README.md).
 It distinguishes the observed pairwise improvement from the negative

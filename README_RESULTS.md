@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Continuous Pair-Blend Directional Capacity
+
+At 9,675 fixed switches, 2,746/4,839 active query-seed views have
+verified lower pair gain with one shared blend weight and
+3,598/4,839 with separate weights. Separate weights add 852
+witnesses where the shared derivative bound rules out gain to
+tolerance; no query is unresolved. The assembled witness
+policies both pass only 5/102 original recording checks.
+[Derivation and exact replay](outputs/publication_readiness_2026_09/native_pair_blend_direction_v1/README.md) |
+[v19 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v19/README.md).
+
 ## Completion-Aware Pair Forecast Blend
 
 With 9,675 matched recipients, adding missing-label debits cuts the

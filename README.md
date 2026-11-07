@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I used a convex directional test to check the full range of
+pair blend weights at fixed recipients. Separate weights make
+more individual queries improvable than a shared weight, but
+the assembled witnesses still fail the original recording
+requirement. [Directional audit](outputs/publication_readiness_2026_09/native_pair_blend_direction_v1/README.md).
+
 I trained a blend that charges disagreement on missing future
 labels. It mostly falls back toward the individual forecast:
 the typical pair-correction weight drops from 0.412 to 0.058.
