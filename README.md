@@ -77,6 +77,13 @@ training recording for 12 of those checkpoints. This prepares predictor controls
 it does not establish three-seed intervention performance or external accuracy.
 [Three-seed control library](outputs/publication_readiness_2026_09/dronecrowd_three_seed_bank_v1/README.md).
 
+I then held the trajectories and switch counts fixed and tested whether
+three-seed disagreement improves the choice of when to switch. It reduced
+held cost prediction error, but the conservative utility contrast was -3.53
+percentage points (source interval -8.98 to -0.36). This change does not pass
+and I do not use it for deployment.
+[Matched disagreement experiment](outputs/publication_readiness_2026_09/moving_seed_dispersion_cost_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

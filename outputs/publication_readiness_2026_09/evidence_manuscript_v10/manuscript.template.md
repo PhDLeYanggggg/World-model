@@ -356,6 +356,8 @@ not success inferred from a favorable early prefix.
 
 {{ three_seed_update }}
 
+{{ seed_dispersion_update }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}
@@ -433,8 +435,7 @@ Crowd imagery and trajectory identities should be handled under the dataset
 license and without attempting personal identification. We release no new
 human identity labels or human-gold scene annotations. A future inference
 system should not interpret error-relative checks as physical control safety.
-The author remains responsible for experimental validity, claim scope and
-any final decision to submit.
+The author is responsible for the claims and decision to submit.
 
 ## LLM Usage Statement
 

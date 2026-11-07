@@ -50,6 +50,17 @@ zero for the completion-lower contrast.
 [Checks and reproduction](outputs/publication_readiness_2026_09/dronecrowd_three_seed_bank_v1/README.md) |
 [Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md).
 
+## Does Seed Disagreement Improve The Switch Decision?
+
+Fresh 168 source-excluded boosted cost regressors, three actual EqMotion
+forecaster seeds, identical 3,225 switches per arm and seed. On all 125,540
+exposed A rows, disagreement lowers gain/harm prediction MSE, but known utility
+changes +0.049 pp [-0.041,+0.146] and the completion-lower contrast is
+-3.535 pp [-8.981,-0.356]. Easy harm change -1.722 pp [-6.031,+1.069]. Both
+frozen arm predictions and decisions replay exactly; the model-side screen
+fails. No independent readout or change to the original 2% gate.
+[Readout and reproduction](outputs/publication_readiness_2026_09/moving_seed_dispersion_cost_v1/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

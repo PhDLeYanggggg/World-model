@@ -170,3 +170,5 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert 'The component fails' in paper.fixed_count_update()
     assert 'not estimable' in paper.three_seed_update()
     assert 'neither a three-seed intervention policy nor independent confirmation' in paper.three_seed_update()
+    assert '-3.535 pp' in paper.seed_dispersion_update()
+    assert 'full risk policy is not evaluated' in paper.seed_dispersion_update()

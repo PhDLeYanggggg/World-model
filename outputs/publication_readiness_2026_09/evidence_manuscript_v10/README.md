@@ -68,6 +68,13 @@ three-seed intervention policy. The named LLM Usage Statement now precedes
 References. Pages 6 through 8 were inspected; pages 1 through 5 were identical
 to the last inspected render. Thirty-five focused checks passed for this update.
 
+The later seed-disagreement revision adds the source-excluded matched-count
+cost experiment. The conservative utility contrast is -3.535 pp with an
+entirely negative exploratory source interval. The PDF still has eight pages;
+the main text ends on page seven, followed by the disclosure and references.
+Changed pages were inspected and 25 focused checks pass. This is still a
+working draft, not a deployment or submission claim.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

@@ -22,6 +22,8 @@ PINNED = {
     'moving_pair_coupling_v1/oracle_diagnostic.json': '6a3bd39df31700f45a99f5e0092b8563b26e32c9a5cbbb602e557bffd904c3de',
     'moving_pair_coupling_v1/execution_verification.json': 'a2867d4e0bd2f14002dd7f3f3a7c663a089573a05e260965cb03ee215a1be904',
     'moving_source_forecast_supported_v1/analysis.json': '1b71be03bcdcf270da342365a33cc158890c133a3a59b336c1df2b9fe324ec16',
+    'moving_seed_dispersion_cost_v1/analysis.json': 'e52e7e014ef32f909a3e36bb8809ab2b0a90b2c5a5e2244857da22a35b29e00f',
+    'moving_seed_dispersion_cost_v1/replay_execution.json': '6da7351f0d7c85a0c91e6c96b9d70a1ebec3f4c2d8542b8adef30956e3c25e63',
 }
 
 
@@ -401,6 +403,25 @@ def three_seed_update():
     )
 
 
+def seed_dispersion_update():
+    folder = HOME/'moving_seed_dispersion_cost_v1'
+    path = folder/'analysis.json'; a = read(path)
+    replay = read(folder/'replay_execution.json')
+    if (replay['artifact']['sha256'] != sha(path) or not replay['checkpoint_inference_and_actions_exact']
+            or a['component_screen_pass'] or a['independent_confirmation'] or a['original_full_policy_gate_run']):
+        raise ValueError('Require the exact replay of the failed development component')
+    p = a['paired']; known = p['known_gain_pp']; lower = p['completion_lower_pp']
+    lo, hi = lower['interval95']
+    return (
+        'With three actual EqMotion seeds on exposed development sources, we also '
+        'hold candidate paths and switch counts fixed and add between-seed dispersion '
+        'to source-excluded boosted gain/harm models. Average cost error falls, but '
+        f'known utility changes only {known["point"]:+.3f} pp and the completion-lower '
+        f'contrast is {lower["point"]:+.3f} pp [{lo:+.3f}, {hi:+.3f}]. '
+        'The matched-count component fails; the full risk policy is not evaluated.'
+    )
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -423,7 +444,8 @@ def main():
     for prefix, arm in (('quality', 'quality_geometry'), ('motion', 'motion_geometry')):
         values[prefix+'_easy_MSE'] = f'{cal[arm]["conditional_MSE"]["easy_harm"]:.6f}'
         values[prefix+'_Brier'] = f'{cal[arm]["observation_Brier"]:.6f}'
-    values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update())
+    values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update(),
+        seed_dispersion_update=seed_dispersion_update())
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)

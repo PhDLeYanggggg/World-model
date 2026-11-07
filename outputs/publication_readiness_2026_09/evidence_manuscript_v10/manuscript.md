@@ -453,6 +453,8 @@ On the same exposed forecast bank, we hold the switch count fixed per query and 
 
 In a separate three-seed predictor control, EqMotion minus PCT yields +55.02 pp on known labels but a completion lower bound of +14.46 pp [-8.19, +38.93] across 23 supported development groups. The 24-group primary remains not estimable. This is neither a three-seed intervention policy nor independent confirmation.
 
+With three actual EqMotion seeds on exposed development sources, we also hold candidate paths and switch counts fixed and add between-seed dispersion to source-excluded boosted gain/harm models. Average cost error falls, but known utility changes only +0.049 pp and the completion-lower contrast is -3.535 pp [-8.981, -0.356]. The matched-count component fails; the full risk policy is not evaluated.
+
 ## 7. Failure Analysis and Limitations
 
 Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000% and 0.000% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
@@ -530,8 +532,7 @@ Crowd imagery and trajectory identities should be handled under the dataset
 license and without attempting personal identification. We release no new
 human identity labels or human-gold scene annotations. A future inference
 system should not interpret error-relative checks as physical control safety.
-The author remains responsible for experimental validity, claim scope and
-any final decision to submit.
+The author is responsible for the claims and decision to submit.
 
 ## LLM Usage Statement
 
