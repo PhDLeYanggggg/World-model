@@ -4,6 +4,14 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [query activation comparison](../native_activation_v1/README.md)
+fixes the proposed action and separates equal-count retrospective
+comparison from the current-query threshold. Probability ranking
+increases local hits but reduces paired lower utility at matched counts,
+and donor coverage calibration does not repair the recording rule.
+[Chinese reproduction guide](../native_activation_v1/reproduction_zh.md).
+The main PDF is unchanged.
+
 The [direct feasibility ranker](../native_feasible_slate_v1/README.md)
 does not improve top-one feasibility on the same slate. Holding the
 active queries and agent counts fixed does not repair recording-level

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Query Activation At Matched Counts
+
+With the proposed action fixed per query and 430 matched switches,
+probability ranking finds 74 locally feasible sets versus 59 for gain
+ranking. The primary paired lower utility is -0.00388 pp
+[-0.00910, -0.00003], and observed relative-path error worsens.
+The current-query probability rule emits 376 switches and passes
+2/102 views. Donor coverage calibration does not establish risk control.
+[Matched and causal readout](outputs/publication_readiness_2026_09/native_activation_v1/README.md).
+
 ## Direct Feasibility Ranking On The Fixed Slate
 
 The top-one feasibility contrast is -0.169 pp [-2.058, +1.932].

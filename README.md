@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I separated when to switch from which forecasts to use. At the same
+430 switches, activating by predicted feasibility found more locally
+feasible sets than activating by predicted gain, but reduced conservative
+utility. The current-query version passed only 2 of 102 recording-seed
+views. I have not promoted either rule.
+[Matched activation and donor-only thresholds](outputs/publication_readiness_2026_09/native_activation_v1/README.md).
+
 I trained a model to rank whole switch sets by their chance of being both
 useful and within budget. At the same 222 switches, it did not improve
 local feasibility and passed 2 rather than 5 recording-seed views.
