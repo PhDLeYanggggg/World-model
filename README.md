@@ -143,6 +143,12 @@ original risk test in only 2 of 102 views. I do not deploy either policy.
 [Matched allocation](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/readout.md) |
 [Budget-first follow-up](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/filter_first/readout.md).
 
+I calibrated selected harm and reference estimates using held-source
+predictions from other sources. Calibration reduced violations, but also
+removed most useful interventions. Replacing one cost component at a time
+on the original selections showed that harm underestimation was the larger
+problem. [Selected-cost calibration](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/nested_calibration/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

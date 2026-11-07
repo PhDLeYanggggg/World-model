@@ -156,6 +156,17 @@ no independent outcome or change to deployment.
 [Matched study](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/readout.md) |
 [Search repair](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/filter_first/readout.md).
 
+## Selected-Cost Calibration
+
+Nested source exclusion on the same eight-action bank: 273 inner ridge fits,
+42 calibrators, exact raw action and scalar replay. Joint calibration moves
+original passes from 2/102 to 19/102 but drops switches from 6,184 to 474;
+the CV-relative lower utility is +0.00004 pp with a confidence interval
+crossing zero. At fixed raw actions, replacing the predicted harm component
+with the observed completion component exposes 57 easy violations;
+replacing reference alone exposes nine. No arm deploys, and no independent
+evaluation or risk rule changes. [Calibration results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/nested_calibration/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

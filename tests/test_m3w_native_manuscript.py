@@ -181,3 +181,4 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert '-7.71 pp [-12.51, -3.12]' in paper.easy_forecast_update()
     assert '-0.061 pp [-0.157, -0.006]' in paper.easy_forecast_update()
     assert '+0.077 pp versus CV but passes only 2/102' in paper.easy_forecast_update()
+    assert 'calibration passes 19/102 by retaining 474 of 6,184 switches' in paper.easy_forecast_update()

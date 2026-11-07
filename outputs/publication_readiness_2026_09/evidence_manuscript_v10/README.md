@@ -113,6 +113,12 @@ result or rule change. Eight pages, pages 1 through 6 identical to the last
 render and pages 7 and 8 inspected. Forty focused tests pass; supplement
 TeX and PDF are unchanged.
 
+The nested calibration revision reports greater original risk support but
+no clear utility after most switches are removed. The manuscript remains
+eight pages; pages 1 through 6 are identical to the last render and pages
+7 and 8 were inspected. Forty-three focused tests pass. Supplement TeX
+and PDF remain unchanged. Independent confirmation is still unrun.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

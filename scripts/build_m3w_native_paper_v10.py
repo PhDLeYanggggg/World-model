@@ -40,6 +40,8 @@ PINNED = {
     'moving_record_joint_actions_v1/replay_execution.json': '494d17c5fc01bb19d2ff2e5708528562c8e5559829464f8232e1ade8e798c265',
     'moving_record_joint_actions_v1/filter_first/analysis.json': '5ec62bcc01687044ea4a52a6dad85de40bb013799e2d0b207d99be0b51818506',
     'moving_record_joint_actions_v1/filter_first/replay_execution.json': '507be3662e599017f9a4af9cead2a92bdb2b2e6b54654d3bbccd309a760f98a8',
+    'moving_record_joint_actions_v1/nested_calibration/analysis.json': 'e4f8025681b3a085948d3de5ef03b23103aa7925de4307ff23fb2e4182abcf24',
+    'moving_record_joint_actions_v1/nested_calibration/replay_execution.json': '75eea89af27141c93b07056078e08ff908fce2b1db1b8145080875e17f9bbc80',
 }
 
 
@@ -503,6 +505,11 @@ def easy_forecast_update():
         if read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json') or v['independent_confirmation']:
             raise ValueError('Require verified A-only allocation results')
     pair = a['contrasts']['joint_vs_pair_additive']['completion_lower_pp']; gain = f['completion_lower_pp']
+    root = folder/'nested_calibration'; nested = read(root/'analysis.json')
+    if (read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json')
+            or not nested['original_control_exact'] or nested['independent_confirmation']):
+        raise ValueError('Require verified nested development calibration')
+    calibrated = nested['risk']['joint']
     return (
         'In a matched three-seed PCT continuation, an easy ADE excess loss '
         f'changes known easy positive harm by {p["easy_harm_increase_pp"]["point"]:+.2f} pp, '
@@ -519,7 +526,9 @@ def easy_forecast_update():
         f'[{pair["interval95"][0]:+.3f}, {pair["interval95"][1]:+.3f}]. '
         f'Filtering all actions before ranking gives {gain["point"]:+.3f} pp versus CV '
         f'but passes only {f["risk_passes"]}/102 original risk views. '
-        'Candidate availability, average utility and risk control are distinct.'
+        f'Nested source calibration passes {calibrated["passes"]}/102 by retaining '
+        f'{calibrated["switches"]:,} of {nested["risk"]["raw"]["switches"]:,} switches, '
+        'with no clear utility over CV. Candidate availability, average utility and risk control are distinct.'
     )
 
 
