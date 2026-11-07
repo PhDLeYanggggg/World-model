@@ -21,3 +21,7 @@ With the verified style restored, the clean-source build matches
 all five page rasters. Source ZIP SHA-256:
 `7b530750b4ebaa61a61c02378fa3c5953d016750d57f5b1b4c770df0808f7ffd`.
 The supplement still reports exposed development only.
+
+The separate [observed-neighbor follow-up](../native_anchored_pair_completion_v1/README.md)
+further narrows the same bound without changing the interpretation.
+It is not part of the frozen v21 PDF.

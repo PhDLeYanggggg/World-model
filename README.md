@@ -113,6 +113,9 @@ I checked whether using one target for overlapping predictions of the
 same agent pair changes the conservative geometry result. The bound
 tightens, but the comparison with additive selection still does not
 establish an advantage. [Shared-target analysis](outputs/publication_readiness_2026_09/native_shared_pair_completion_v1/README.md).
+Grouping different edges that share a single unobserved agent
+narrows it further without changing that conclusion.
+[Observed-neighbor analysis](outputs/publication_readiness_2026_09/native_anchored_pair_completion_v1/README.md).
 
 I measured the three-seed inference route on existing development
 inputs. Nearly all compute is in the EqMotion forecast, not in

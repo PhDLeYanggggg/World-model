@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Observed-Neighbor Pair Completion
+
+Aligning different edges through the same unobserved agent further
+narrows the joint-vs-additive envelope to [-0.1549, +0.1718] image
+pixels, from [-0.1569, +0.1738] with repeated pairs alone. No
+conservative joint advantage is established, and the official risk
+and endpoint metrics are unchanged.
+[Analysis and exact replay](outputs/publication_readiness_2026_09/native_anchored_pair_completion_v1/README.md).
+
 ## Shared Targets In Overlapping Pair Forecasts
 
 The original pair bounds reproduce. Grouping missing predictions of

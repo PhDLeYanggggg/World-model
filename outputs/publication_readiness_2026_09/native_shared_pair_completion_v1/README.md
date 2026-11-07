@@ -65,3 +65,7 @@ Six focused tests passed. The fresh score and full replay each
 took approximately 20 seconds after imports and produced the
 same aggregate hash.
 [Protocol](protocol.md) | [Analysis](analysis.json) | [Replay](replay_execution.json).
+
+The [observed-neighbor follow-up](../native_anchored_pair_completion_v1/README.md)
+groups different edges of one missing agent and further narrows the
+bound without establishing a conservative joint advantage.
