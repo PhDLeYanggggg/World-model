@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Completion-Aware Pair Forecast Blend
+
+With 9,675 matched recipients, adding missing-label debits cuts the
+median learned pair weight from 0.412 to 0.058. The treatment's pair
+lower contrast versus the frozen individual reference is -0.0039 px
+[-0.0080, -0.0006]; conservative individual utility is +0.0011 pp
+[-0.0023, +0.0046]. The near-fallback behavior does not add a
+recording pass; all compared replacement arms pass 5/102.
+[Training, replay and matched figure](outputs/publication_readiness_2026_09/native_completion_motion_blend_v1/README.md).
+
 ## Relative-Path Supervision At Fixed Recipients
 
 Six matched PyTorch fits compare individual ADE to the same

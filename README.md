@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I trained a blend that charges disagreement on missing future
+labels. It mostly falls back toward the individual forecast:
+the typical pair-correction weight drops from 0.412 to 0.058.
+It does not improve the original recording pass count.
+[Matched blend experiment and figure](outputs/publication_readiness_2026_09/native_completion_motion_blend_v1/README.md).
+
 I then trained the same neighbor model with and without a
 relative-path loss. It reduced pair error on observed steps,
 but the full-grid lower comparison was negative and the

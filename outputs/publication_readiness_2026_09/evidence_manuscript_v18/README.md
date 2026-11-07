@@ -6,6 +6,9 @@ It distinguishes the observed pairwise improvement from the negative
 full-grid lower contrast. There are no independent outcomes or
 deployment claims.
 
+The subsequent [completion-aware blend comparison and figure](../native_completion_motion_blend_v1/README.md)
+are documented separately and do not change the frozen draft.
+
 ```sh
 out=data/stage_cvpr2027_experiments/evidence_manuscript_v18
 .venv-pytorch/bin/python scripts/build_m3w_decision_manuscript_v18.py \
