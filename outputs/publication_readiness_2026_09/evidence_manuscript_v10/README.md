@@ -59,6 +59,11 @@ also has a separate, visually checked vector figure under the local
 sets and keeps unresolved solver results visible. It does not replace
 the failed learned-policy comparison or change the main manuscript.
 
+The [matched-total timing diagnostic](../moving_record_joint_actions_v1/causal_ledger/timing_capacity/readout.md)
+separates timing from intervention volume and contrasts it with two
+past-only waiting rules. The local appendix directory contains the
+checked `timing_capacity.pdf` figure. The main PDF is unchanged.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

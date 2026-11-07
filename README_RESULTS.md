@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Intervention Timing At The Same Recording Total
+
+Moving switches without changing each recording's total increases
+checked hindsight feasibility from 81 to 84 views under observed risk,
+from 62 to 72 with terminal predicted budgets, and from 48 to 57 with
+every prefix constrained. Eighteen zero-total views remain unsupported
+under all timing-only arms. Greedy online banking changes zero actions.
+Deliberate waiting releases 70 slots but loses 0.00505 pp of paired
+lower utility [95% interval -0.01073, -0.00031] with 67 unused slots.
+No policy promotion or independent evidence.
+[Timing results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/timing_capacity/readout.md).
+
 ## Capacity Under Fixed Counts And Predicted Risk Budgets
 
 Across all 102 development views, the frozen bank has 101 checked

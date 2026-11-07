@@ -281,6 +281,13 @@ leaves far fewer. This points to the allocation and cost estimates,
 but does not show that the right actions are identifiable online.
 [Hindsight capacity](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/prefix_capacity/readout.md).
 
+I then kept each recording's total number of interventions fixed and
+allowed the timing to move. Even with predicted prefix budgets, this
+found more useful hindsight choices. Simply carrying unused slots
+changed no online decisions, and a rule that deliberately waited lost
+some utility. I keep the timing result as a diagnostic, not a policy
+upgrade. [Timing comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/timing_capacity/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
