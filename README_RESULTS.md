@@ -61,6 +61,20 @@ frozen arm predictions and decisions replay exactly; the model-side screen
 fails. No independent readout or change to the original 2% gate.
 [Readout and reproduction](outputs/publication_readiness_2026_09/moving_seed_dispersion_cost_v1/readout.md).
 
+## Missingness-Aware Revision
+
+Fresh 42 source-excluded support classifiers, no new forecast fit. The
+learned-anchor component changes fewer wholly unknown choices (293 to 66),
+but its paired completion lower is -0.218 pp [-0.476,-0.045] against the
+original control. Easy-harm change remains uncertain and 43/102 repeated
+recording views exceed 2% known easy positive harm. No deployment change.
+I also joined the earlier 120-clip image screen with the recent 48-clip
+screen, verifying the 1,120 cached pairs for the ten additional contributing
+recordings. All 18 predictor checkpoints have screen coverage. External
+roles and results remain unassigned/unscored, not independent evidence.
+[Revision experiment](outputs/publication_readiness_2026_09/moving_support_anchored_cost_v1/readout.md) |
+[Source coverage](outputs/publication_readiness_2026_09/dronecrowd_combined_forecaster_coverage_v1/README.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

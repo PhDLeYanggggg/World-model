@@ -84,6 +84,16 @@ percentage points (source interval -8.98 to -0.36). This change does not pass
 and I do not use it for deployment.
 [Matched disagreement experiment](outputs/publication_readiness_2026_09/moving_seed_dispersion_cost_v1/readout.md).
 
+My follow-up charged the model for changing its decision when a future label
+was unlikely to be available. It reduced the conservative loss to -0.22
+percentage points against the same control, but the interval remained below
+zero and easy harm was not reliably reduced. I keep this as a negative result.
+[Support-aware decisions](outputs/publication_readiness_2026_09/moving_support_anchored_cost_v1/readout.md).
+I also recovered the earlier full image screen for the ten additional
+training recordings, so all 18 forecast controls now have source-screen
+coverage. This is not external accuracy or verified geographic independence.
+[Complete predictor coverage](outputs/publication_readiness_2026_09/dronecrowd_combined_forecaster_coverage_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

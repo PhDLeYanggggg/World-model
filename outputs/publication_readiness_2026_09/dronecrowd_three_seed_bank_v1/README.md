@@ -17,6 +17,11 @@ short clips contribute zero eligible training rows in the covered folds. The
 screen does not certify independent physical sites. Coverage of the forecasters
 does not cover a later gain/harm head's training data.
 
+The narrow-screen figures above describe that run only. A later
+[combined coverage check](../dronecrowd_combined_forecaster_coverage_v1/README.md)
+joins the previously completed wider screen for the ten additional training
+recordings, bringing image-screen coverage to all 18 forecasters.
+
 PID 9164 exited 0 after 37.41 s (peak RSS 868,843,520 bytes; native arm64
 Torch CPU4/interop1, zero loader workers). No optimizer updates, no external
 inference, no external future-label access, and no deployment change. The
