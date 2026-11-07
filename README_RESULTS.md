@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Stop Versus One-Query Continuation
+
+Across 42 source-separated fits, neither calibrated policy adds a
+held-source action and full original passes stay at 2/102. The
+unthresholded wait policy changes timing in 32 views but loses
+0.01697 pp of paired lower utility versus first stop (95% source
+interval [-0.04101, +0.00395]). For the 18 zero-direct views,
+15 have a positive supported candidate in the first two eligible
+queries, while the top candidate from each of three scores hits
+zero. This is a ranking constraint on timing, not a proof that no
+policy can intervene. [Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_stop_wait/readout.md).
+
 ## Joint Easy-Support Opening
 
 Across 42 source-separated fit, calibration and evaluation cells, the

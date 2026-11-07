@@ -70,6 +70,13 @@ and distinguishes missing first-query support from failures to rank
 available candidates. Neither calibrated rule improves full observed
 risk passes. This is supporting negative evidence, not a main result.
 
+The [stop-versus-wait test](../moving_record_joint_actions_v1/causal_ledger/opening_stop_wait/readout.md)
+holds candidate ranking fixed and fits a source-held next-query
+continuation head. No calibrated held-source decisions change.
+The shortlist recall check separates timing from ranking: positive
+supported first-two-query opportunities exist in 15/18 zero-direct
+views, but the tested top-ranked choices recover none.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

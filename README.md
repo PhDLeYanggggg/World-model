@@ -295,6 +295,13 @@ nine of the 18 zero-switch views have a useful first-query option,
 six only have one later, and three have none in this bank.
 [Opening action experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/easy_joint_anchor/readout.md).
 
+I then trained a controller to compare switching now with waiting one
+eligible query. It did not improve the original policy. The ranking
+diagnostic explains a limit: a useful opening exists in the first two
+queries for 15 of the 18 zero-switch views, but no tested ranker puts it
+first. I will improve candidate selection before expanding the waiting
+rule. [Stop versus wait](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_stop_wait/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
