@@ -54,6 +54,9 @@ PINNED = {
     'moving_record_joint_actions_v1/causal_ledger/credit_transport/portable_verification.json': '6783cd1044da81a9d489d499de9a719b24366d24b016122a076b50ab7be44e2e',
     'moving_record_joint_actions_v1/causal_ledger/bounded_bank/analysis.json': '13d4523650653356a5d51fba6aeb45197e3d3b81fdb4b2e6b1c60b39d6759f3a',
     'moving_record_joint_actions_v1/causal_ledger/bounded_bank/replay_execution.json': 'a63f7a22da87864ebef950cfbad2592870ffd057a219febb81eb20b2fac02084',
+    'moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/analysis.json': '596a2b6aaa206dd8007275325a3c5e2dfdebbd72b431cf7b722274e9a011d819',
+    'moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/replay_execution.json': '802288c085a1f007c8c2e48c8f21052551b5111ab0a6f3fcb399836074cac852',
+    'moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/ceiling.json': 'ba7635479a3876c36443acd1e09f56f62036cf752bf6b8d496a3965b7dff7314',
 }
 
 
@@ -546,6 +549,16 @@ def easy_forecast_update():
         raise ValueError('Require the original risk readout for the matched bounded bank')
     amp = bounded['comparisons']['bounded_vs_full']['completion_lower_pp']
     risk = bounded['risk']
+    inc_root = root/'incremental'; inc = read(inc_root/'analysis.json')
+    ceiling = read(inc_root/'ceiling.json')
+    if (read(inc_root/'replay_execution.json')['artifact']['sha256'] != sha(inc_root/'analysis.json')
+            or ceiling['source']['sha256'] != sha(inc_root/'analysis.json')
+            or not ceiling['posthoc_diagnostic_only'] or ceiling['oracle_choices_exported']
+            or inc['independent_confirmation'] or inc['deployment_changed']):
+        raise ValueError('Keep the restricted amplitude oracle separate from predictive evidence')
+    match = inc['comparisons']['incremental_vs_matched_absolute']['completion_lower_pp']
+    if match['interval95'][0] > 0:
+        raise ValueError('Unexpected lift in the frozen matched amplitude comparison')
     return (
         f'PCT easy-harm training reduces known harm by {-p["easy_harm_increase_pp"]["point"]:.2f} pp '
         f'but yields a paired lower of {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
@@ -569,11 +582,11 @@ def easy_forecast_update():
         f'but passes {ledger["risk"]["ledger_matched"]["passes"]}/102. The full bank gains {b["point"]:+.3f} pp '
         f'over a reoptimized physical bank at common counts, reducing passes from '
         f'{physical["risks"]["physical_ledger"]["passes"]} to {physical["risks"]["full_ledger"]["passes"]}. '
-        'Predicted earning queries show realized net deficits for both budgets; all 42 donor fits retain zero credit. '
-        f'Adding half and quarter alternatives improves matched utility by {amp["point"]:+.3f} pp '
-        f'[{amp["interval95"][0]:+.3f}, {amp["interval95"][1]:+.3f}], but passes {risk["bounded"]["passes"]}/102. '
-        f'Uniform quarter displacement of the original choices passes {risk["fixed_quarter"]["passes"]}/102 '
-        'at lower utility. Neither policy satisfies the original risk rule.'
+        f'All 42 donor fits retain zero credit. Bounded alternatives add {amp["point"]:+.3f} pp '
+        f'[{amp["interval95"][0]:+.3f}, {amp["interval95"][1]:+.3f}] but pass {risk["bounded"]["passes"]}/102. '
+        f'Uniform quarter displacement passes {risk["fixed_quarter"]["passes"]}/102 at lower utility. '
+        'Incremental costs do not help at matched amplitudes; even a label-aware reassignment '
+        f'adds at most {ceiling["attainable_conservative_utility"]["point"]:.3f} pp to the fixed-pool lower objective.'
     )
 
 

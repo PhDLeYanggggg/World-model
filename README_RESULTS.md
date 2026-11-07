@@ -40,6 +40,18 @@ The free count contrast is inconclusive and changes coverage. Original
 controls and scores replay exactly; no independent evidence or deployment
 change. [Experiment and derivation](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/readout.md).
 
+## Direct Cost Of A Larger Switch
+
+Eighty-four source-excluded fits predict the incremental cost between
+adjacent amplitudes, at fixed selected rows and forecast families.
+Direct increments give 5/102 risk passes versus 0 for the original;
+the matched-amplitude absolute-derived control gives 4/102. At exactly
+the same level multiset in each query, the direct completion-lower
+contrast is -0.00022 pp [-0.00531, +0.00378]. A posthoc oracle constrained
+to the same two rows and amplitudes could add only +0.00672 pp on that
+lower metric. This does not establish better ranking or safety. No
+independent outcome access or deployment change. [Results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

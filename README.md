@@ -184,6 +184,13 @@ the baseline passed 29 views, at a cost in utility. This tells me the model
 needs to get better at deciding where a smaller change is warranted.
 [Bounded substitution experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/readout.md).
 
+Next I trained the model to estimate what one more increment of amplitude
+would cost. It learned to make fewer large changes, but at the same final
+amplitudes it did not allocate them more effectively. Even an oracle that
+can see outcomes adds little by rearranging those amplitudes alone. I am
+keeping this result as a limit on that approach, not a model upgrade.
+[Incremental cost experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
