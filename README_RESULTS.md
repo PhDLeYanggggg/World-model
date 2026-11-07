@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched CV and OLS4 Forecast Training
+
+Across six fresh Torch fits, dual-reference training improved observed-label
+gain by 0.068 points over CV-only on the same 9,675 interventions. The
+conservative contrast was -0.287 points (95% source-bootstrap CI
+[-0.816, +0.060]), and only 12/102 dual views passed the unchanged 2% risk
+checks. No model or external gate was promoted.
+[Design, results and replay](outputs/publication_readiness_2026_09/native_dual_reference_forecast_v1/README.md).
+
 ## External Calibration Readout Preparation
 
 The aggregate-only reporting command binds the exact approved role

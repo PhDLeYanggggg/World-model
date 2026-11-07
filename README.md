@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I also tested whether training against both CV and OLS4 improves forecasts
+when the intervention budget and recipients are held fixed. The small gain on
+observed labels did not survive the conservative missing-label comparison or
+the safety checks. [Matched training experiment](outputs/publication_readiness_2026_09/native_dual_reference_forecast_v1/README.md).
+
 ## Current Result
 
 I tested whether adding past-image alignment to each agent's history helps
