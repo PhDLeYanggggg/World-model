@@ -183,3 +183,5 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert '+0.077 pp versus CV but passes only 2/102' in paper.easy_forecast_update()
     assert 'calibration passes 19/102 by retaining 474 of 6,184 switches' in paper.easy_forecast_update()
     assert 'only 30/102 screened views are feasible, versus at least 72/102' in paper.easy_forecast_update()
+    assert 'matched lower by +0.017 pp [+0.002, +0.033]' in paper.easy_forecast_update()
+    assert 'at common counts, reducing passes from 12 to 6' in paper.easy_forecast_update()

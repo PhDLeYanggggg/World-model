@@ -45,6 +45,10 @@ PINNED = {
     'moving_record_joint_actions_v1/selected_positive_harm/analysis.json': '44dedb2cf29634ac0b216d88d340cffbf89499bec32c0d525e5a6028679fc5dc',
     'moving_record_joint_actions_v1/selected_positive_harm/replay_execution.json': 'adeb2866eb836a8c46c472b192a0978317abd511f6d9f9db2ff90439bfef37db',
     'moving_record_joint_actions_v1/selected_positive_harm/oracle/analysis.json': '6c5bcd88eea8944d89009f5af7c1922d5b4c190be761448e3ce1884295c76a1e',
+    'moving_record_joint_actions_v1/causal_ledger/analysis.json': '69f26a9e64221759aeec6ab770e277671f107f78cd6ea497005c54009319bd9c',
+    'moving_record_joint_actions_v1/causal_ledger/replay_execution.json': '1c4169e1699571d140a1fe0981b1f8cbc7139a6aecc2852f7a00c5e8ef667335',
+    'moving_record_joint_actions_v1/causal_ledger/physical_control/analysis.json': '6bdd9e49ef4fd165e2a01cdf9044777ace010d1e7524fceee6c90f9188aa9b56',
+    'moving_record_joint_actions_v1/causal_ledger/physical_control/replay_execution.json': '11f242abf14ff6087c24c57f41f2383b363b171204bc79e03bd9319263feddb7',
 }
 
 
@@ -519,6 +523,13 @@ def easy_forecast_update():
             or read(root/'oracle'/'score_execution.json')['artifact']['sha256'] != sha(root/'oracle'/'analysis.json')
             or not bound['no_label_aware_choices_exported'] or harms['independent_confirmation']):
         raise ValueError('Require matched harm test and diagnostic ceiling')
+    ledger_root = folder/'causal_ledger'
+    ledger, physical = (read(root/'analysis.json') for root in (ledger_root, ledger_root/'physical_control'))
+    for root, v in ((ledger_root, ledger), (ledger_root/'physical_control', physical)):
+        if read(root/'replay_execution.json')['artifact']['sha256'] != sha(root/'analysis.json') or v['independent_confirmation']:
+            raise ValueError('Require verified chronological development results')
+    l = ledger['comparisons']['ledger_vs_query']['completion_lower_pp']
+    b = physical['comparisons']['full_vs_physical']['completion_lower_pp']
     return (
         f'PCT easy-harm training reduces known harm by {-p["easy_harm_increase_pp"]["point"]:.2f} pp '
         f'but yields a paired lower of {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
@@ -537,7 +548,11 @@ def easy_forecast_update():
         f'but keep {harms["risk"]["factorized"]["passes"]}/102 risk passes. With true outcomes and the same counts, '
         f'only {limits["screened_matched"]["positive_feasible"]}/102 screened views are feasible, versus at least '
         f'{limits["full_matched"]["positive_feasible"]}/102 in the full bank. '
-        'This is an action-space ceiling, not learned risk control.'
+        'This is an action-space ceiling. Carrying predicted slack forward causally improves '
+        f'the matched lower by {l["point"]:+.3f} pp [{l["interval95"][0]:+.3f}, {l["interval95"][1]:+.3f}] '
+        f'but passes {ledger["risk"]["ledger_matched"]["passes"]}/102. The full bank gains {b["point"]:+.3f} pp '
+        f'over a reoptimized physical bank at common counts, reducing passes from '
+        f'{physical["risks"]["physical_ledger"]["passes"]} to {physical["risks"]["full_ledger"]["passes"]}.'
     )
 
 

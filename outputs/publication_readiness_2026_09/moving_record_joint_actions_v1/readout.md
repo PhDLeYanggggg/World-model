@@ -42,6 +42,11 @@ action. This identifies a concrete search restriction in addition to any
 cost calibration problem. The filter-first follow-up restores interventions
 but does not pass the observed risk gate. [Follow-up results](filter_first/readout.md).
 
+The whole-record budget prefix in this study ranks proposals from across
+the recording, so it is an offline diagnostic and not a chronological
+policy. The [causal ledger follow-up](causal_ledger/readout.md) does not use
+later query observations to choose earlier actions.
+
 ## Reproduce
 
 ```sh

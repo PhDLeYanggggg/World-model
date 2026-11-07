@@ -179,6 +179,17 @@ same counts and opening the whole bank gives 72 verified feasible views,
 20 infeasible and 10 unresolved at the solver limit. No oracle row decisions,
 deployment or independent outcome. [Full study](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/selected_positive_harm/readout.md).
 
+## Chronological Recording Budget Ledger
+
+At 6,184 identical per-query switches, carrying earlier estimated budget
+improves the direct lower over the query-only optimizer by +0.01725 pp
+[+0.00179, +0.03326]. Original risk passes 3/102; observed pair error does
+not improve. With an independently reoptimized five-action physical bank
+and a common 2,580 switches, the full bank gains +0.01376 pp
+[+0.00345, +0.02687] but reduces observed passes from 12 to 6. Both are
+past-only A comparisons, not independent confirmation or deployment.
+[Experiment and reproduction](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

@@ -397,19 +397,15 @@ follow-up was stopped before outcome scoring. The replacement retains both
 native geometry and aligned node features, which repairs this representation
 defect without itself establishing a predictive or policy gain.
 
-The current evidence is source-excluded per pipeline but previously exposed
-globally. Exact replay establishes repeatability, not independent scientific
-confirmation. One forecaster seed cannot meet the intended three-seed main
-study. Failure under the original support requirements is not an impossibility
-theorem for neural forecasting, nor can it be repaired by reporting only mean
-utility. No required view is discarded or scored safe because it is empty.
+These source-excluded results use previously exposed data. Replay proves
+repeatability, not independent confirmation; the single-seed actor cannot
+replace the intended three-seed comparison. We retain all views, including
+empty ones. Mean gains do not resolve the failed risk gate.
 
-This work remains a 2D image-coordinate trajectory/world-state investigation.
-It is not true 3D, a foundation world
-model, a calibrated physical simulator or proof of cross-dataset success.
-Stage5C execution and SMC remain disabled. A useful method contribution,
-stable intervention gain under the whole original contract and genuinely
-separate confirmation are required before a submission-candidate claim.
+This is a 2D image-coordinate study, not a 3D, foundation, calibrated
+physical or cross-dataset result. Stage5C and SMC remain disabled. A method
+contribution still requires useful gains under the original contract and
+independent confirmation.
 
 ## 8. Reproducibility and Responsible Use
 
@@ -425,15 +421,12 @@ opens and hashes the complete packed training bank, including labels, for
 integrity checks; only causal geometry and image context reach inference.
 Forecast freeze precedes diagnostic scoring, not all target-file byte access.
 
-The image-cost study includes 24 complete fits, 24 complete exact refits and
-exact prediction/scalar replay. The actor study reports its distinct refit
-scope rather than inheriting that count. All scientific losses and both
-positive and negative source slices are retained. Raw data, image/feature
-caches, third-party source and large weights are not Git artifacts. Public
-scalar receipts and reconstruction commands identify what is fresh, verified
-cache reuse or not run. A complete anonymous model-training and prediction
-reconstruction package is still outstanding; the local Git guard is not such
-a package by itself.
+The image-cost study includes 24 fits, 24 exact refits and prediction/scalar
+replay. Actor refits are counted separately. Receipts and reconstruction
+commands distinguish fresh runs, verified reuse and unrun work. Positive
+and negative source slices are retained. Data, image/feature caches,
+third-party code and weights stay outside Git. An anonymous end-to-end
+training and prediction package remains outstanding.
 
 {{ native_portable_update }}
 

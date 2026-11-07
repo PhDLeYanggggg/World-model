@@ -459,7 +459,7 @@ Against the fitting-selected OLS4 baseline, EqMotion gains +20.47 pp on known la
 
 An offline label-aware ceiling finds 91/102 feasible binary views at free count and 90/102 at the old fixed count. Adding PCT and the other causal baselines supplies 101/102 feasible views, still not the whole roster. This isolates missing candidate support on these banks without demonstrating a learnable selector.
 
-PCT easy-harm training reduces known harm by 6.98 pp but yields a paired lower of -7.68 pp [-16.96, -2.09]. Neither new trajectory bank recovers the unsupported view. With CV agreement training, completion lower versus CV is -40.03 pp and raw risk passes 0/102 views. Direct velocity integration raises oracle feasibility to 102/102, but neither raw variant passes any view. Peer context changes the paired lower by -7.71 pp [-12.51, -3.12]. At matched counts, the mixed term versus its marginal control changes the lower by -0.061 pp [-0.157, -0.006]. Filtering all actions before ranking gives +0.077 pp versus CV but passes only 2/102 original risk views. Nested source calibration passes 19/102 by retaining 474 of 6,184 switches, with no clear CV gain. Matched harm heads improve prediction error but keep 2/102 risk passes. With true outcomes and the same counts, only 30/102 screened views are feasible, versus at least 72/102 in the full bank. This is an action-space ceiling, not learned risk control.
+PCT easy-harm training reduces known harm by 6.98 pp but yields a paired lower of -7.68 pp [-16.96, -2.09]. Neither new trajectory bank recovers the unsupported view. With CV agreement training, completion lower versus CV is -40.03 pp and raw risk passes 0/102 views. Direct velocity integration raises oracle feasibility to 102/102, but neither raw variant passes any view. Peer context changes the paired lower by -7.71 pp [-12.51, -3.12]. At matched counts, the mixed term versus its marginal control changes the lower by -0.061 pp [-0.157, -0.006]. Filtering all actions before ranking gives +0.077 pp versus CV but passes only 2/102 original risk views. Nested source calibration passes 19/102 by retaining 474 of 6,184 switches, with no clear CV gain. Matched harm heads improve prediction error but keep 2/102 risk passes. With true outcomes and the same counts, only 30/102 screened views are feasible, versus at least 72/102 in the full bank. This is an action-space ceiling. Carrying predicted slack forward causally improves the matched lower by +0.017 pp [+0.002, +0.033] but passes 3/102. The full bank gains +0.014 pp over a reoptimized physical bank at common counts, reducing passes from 12 to 6.
 
 ## 7. Failure Analysis and Limitations
 
@@ -494,19 +494,15 @@ follow-up was stopped before outcome scoring. The replacement retains both
 native geometry and aligned node features, which repairs this representation
 defect without itself establishing a predictive or policy gain.
 
-The current evidence is source-excluded per pipeline but previously exposed
-globally. Exact replay establishes repeatability, not independent scientific
-confirmation. One forecaster seed cannot meet the intended three-seed main
-study. Failure under the original support requirements is not an impossibility
-theorem for neural forecasting, nor can it be repaired by reporting only mean
-utility. No required view is discarded or scored safe because it is empty.
+These source-excluded results use previously exposed data. Replay proves
+repeatability, not independent confirmation; the single-seed actor cannot
+replace the intended three-seed comparison. We retain all views, including
+empty ones. Mean gains do not resolve the failed risk gate.
 
-This work remains a 2D image-coordinate trajectory/world-state investigation.
-It is not true 3D, a foundation world
-model, a calibrated physical simulator or proof of cross-dataset success.
-Stage5C execution and SMC remain disabled. A useful method contribution,
-stable intervention gain under the whole original contract and genuinely
-separate confirmation are required before a submission-candidate claim.
+This is a 2D image-coordinate study, not a 3D, foundation, calibrated
+physical or cross-dataset result. Stage5C and SMC remain disabled. A method
+contribution still requires useful gains under the original contract and
+independent confirmation.
 
 ## 8. Reproducibility and Responsible Use
 
@@ -522,15 +518,12 @@ opens and hashes the complete packed training bank, including labels, for
 integrity checks; only causal geometry and image context reach inference.
 Forecast freeze precedes diagnostic scoring, not all target-file byte access.
 
-The image-cost study includes 24 complete fits, 24 complete exact refits and
-exact prediction/scalar replay. The actor study reports its distinct refit
-scope rather than inheriting that count. All scientific losses and both
-positive and negative source slices are retained. Raw data, image/feature
-caches, third-party source and large weights are not Git artifacts. Public
-scalar receipts and reconstruction commands identify what is fresh, verified
-cache reuse or not run. A complete anonymous model-training and prediction
-reconstruction package is still outstanding; the local Git guard is not such
-a package by itself.
+The image-cost study includes 24 fits, 24 exact refits and prediction/scalar
+replay. Actor refits are counted separately. Receipts and reconstruction
+commands distinguish fresh runs, verified reuse and unrun work. Positive
+and negative source slices are retained. Data, image/feature caches,
+third-party code and weights stay outside Git. An anonymous end-to-end
+training and prediction package remains outstanding.
 
 A separate 6-file, 253,746-byte aggregate artifact replays the three completed actor primaries in an isolated temporary directory, without site packages, network access or the project workspace. It reconstructs fourteen-source means and the original fixed bootstrap draws, retaining their distinct seeds and negative results. This is standard-library reporting reproducibility, not new independent evidence, guaranteed anonymity or model-training/prediction reproduction.
 

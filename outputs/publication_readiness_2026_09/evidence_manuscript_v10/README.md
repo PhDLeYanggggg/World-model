@@ -125,6 +125,12 @@ The revised eight-page PDF has pages 1 through 6 and 8 identical to the
 prior render; page 7 was inspected. Forty-nine focused tests pass.
 Supplement TeX and PDF are unchanged.
 
+The chronological ledger revision adds two positive matched utility
+contrasts alongside the failed original risk results, including the
+reoptimized physical-only comparator. The eight-page PDF has pages 1
+through 6 identical to the previous render and pages 7 and 8 inspected.
+Fifty-two focused tests pass. Supplement TeX and PDF are unchanged.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

@@ -156,6 +156,12 @@ only 30 of 102 views at those counts; the full bank has at least 72.
 The next change is to preserve alternatives through allocation, not tune
 the small-pool ranker. [Matched harm learning and oracle check](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/selected_positive_harm/readout.md).
 
+I tested a chronological ledger that carries the two estimated budgets
+forward without looking at later frames. At equal counts it improves
+conservative utility over the same per-query optimizer. Adding learned
+trajectories also beats the reoptimized physical bank on utility, but
+reduces observed risk passes. [Causal ledger and physical control](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
