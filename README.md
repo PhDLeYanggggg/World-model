@@ -248,6 +248,12 @@ as a limit of the first-query features, not a reason to pick the
 farthest recordings instead.
 [Context-matched calibration](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/context/readout.md).
 
+I also held the fitted model and switch count fixed while doubling the
+number of calibration sources from three to six. The extra sources did
+not improve utility on held sources or increase the number of views
+that passed the original rule. More calibration alone did not fix this
+policy. [Calibration size comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/size/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

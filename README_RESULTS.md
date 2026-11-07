@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Fixed-Fit Calibration Size
+
+I held the seven-source fit and all 6,952 query-matched switches fixed,
+then compared six calibration sources with two disjoint groups of three.
+The primary paired completion lower changes by -0.06765 pp (95% source
+bootstrap interval [-0.18612, +0.01171]). Pooling six sources for utility
+alone does not help detectably. All calibration variants pass only 1/102
+views under the original rule; the no-reopening base passes 2/102. The
+all-six policy leaves 36 easy views undefined and exceeds 2% signed easy
+degradation in 10 views. Scores replay exactly; no deployment change or
+independent evidence. [Experiment and replay](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/guard/size/readout.md).
+
 ## Past Forecast Feedback
 
 I froze past-only inputs from forecasts that had already come due and
