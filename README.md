@@ -322,6 +322,12 @@ checked against the eight observed positions helped slightly at equal
 switch counts, but did not add a pass under the original 2% rule.
 [Past-error experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_history/readout.md).
 
+I tested neighbor motion and predicted path proximity on the same
+shortlist. Neither helped the policy pass more recordings, and both
+added easy-case violations at the same switch count. I kept these
+features out of the current policy.
+[Interaction experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_interaction/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

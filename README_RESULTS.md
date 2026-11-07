@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Neighbor Motion And Candidate Path Proximity
+
+With identical forecast paths and eight-slot shortlists, neither new
+interaction selector adds a complete pass (both 2/102). At the same
+6,998 switches on the same queries, matched lower utility changes by
+-0.00853 pp for observed motion and -0.00695 pp when adding rollout
+proximity; both source intervals include zero. Signed easy violations
+rise from 11 to 14 in both matched controls. No useful first-two-query
+winner is recovered. No deployment change.
+[Interaction ablation](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_interaction/readout.md).
+
 ## Past Forecast Errors Within The Fixed Shortlist
 
 With the same shortlist and original risk contract, an eight-observation

@@ -89,6 +89,16 @@ Its local PDF compiles and was visually checked. Rebuild its source
 with `.venv-pytorch/bin/python scripts/build_m3w_shortlist_appendix.py`.
 This adds a supporting negative result; the main PDF is unchanged.
 
+Two further fixed-shortlist ablations keep this conclusion intact.
+[Past forecast errors](../moving_record_joint_actions_v1/causal_ledger/shortlist_history/readout.md)
+show a small matched effect for the short observed-window backtest
+but no additional calibrated pass.
+[Observed neighbor motion and rollout proximity](../moving_record_joint_actions_v1/causal_ledger/shortlist_interaction/readout.md)
+do not improve either calibrated pass counts or early useful-choice
+recall, and increase signed easy violations at matched switch count.
+These linked tables are development evidence; neither is a positive
+main-method result or an independent evaluation. The PDF is unchanged.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.
