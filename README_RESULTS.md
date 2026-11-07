@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Deleting Existing Actions Under Whole-Recording Risk
+
+At most one removal per query, a checked hindsight optimum is
+feasible in 32/102 views under the original risk rules and 30/102
+when preserving paired lower utility. No solver results are
+unresolved. Eight of 42 donor calibrations can recover a pass
+while preserving old passes and easy risk, but none of those
+thresholds also preserves lower utility. The learned policy
+remains identical to direct, with 2/102 full passes. The empty
+matched-deletion control is not estimable as a ranking comparison.
+[Capacity, calibration and readout](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/record_pruning/readout.md).
+
 ## Supported Gain Within Fixed Forecast Families
 
 Holding ordered family slots fixed, the fitted gain-risk ranker

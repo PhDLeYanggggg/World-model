@@ -348,6 +348,13 @@ complete pass. The new ranking also increased easy-case violations,
 so I did not keep it in the policy.
 [Within-family ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/family_supported_gain/readout.md).
 
+I also tested removing existing switches instead of adding an early
+one. With hindsight, 30 of 102 recording views admit a subset that
+passes the original rules without losing paired utility. The learned
+rule could not find a calibration threshold that preserved both
+utility and risk. It made no deletions.
+[Recording pruning experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/record_pruning/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

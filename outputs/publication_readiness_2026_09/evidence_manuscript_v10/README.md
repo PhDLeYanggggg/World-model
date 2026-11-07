@@ -125,6 +125,13 @@ direct records yields zero complete passes. This exposes a gap
 between local action labels and the full-record decision objective;
 it is not an independent result or a change to the risk contract.
 
+The [recording pruning experiment](../moving_record_joint_actions_v1/causal_ledger/record_pruning/readout.md)
+tests deletion alone. Checked hindsight non-loss subsets exist in
+30/102 views, including the two existing passes. The causal pruner
+has no donor threshold that gains passes while preserving easy risk
+and paired lower utility. Its zero changes are not a matched-coverage
+efficacy result. Main paper and PDF are unchanged.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 
