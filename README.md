@@ -109,6 +109,13 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I separated the learned forecasts from the motion alternatives in the
+same label-aware capacity test. The causal menu already accounts for
+48 of the 51 positive recording-seed views. The learned forecasts
+add three views from one recording, so I cannot credit the whole
+gain to the neural models or treat it as a deployment result.
+[Matched forecast-bank ablation](outputs/publication_readiness_2026_09/native_neural_bank_ablation_v1/README.md).
+
 I pulled the decision study into a four-page working paper. The main
 comparison keeps the prediction bank and intervention budget fixed. I
 report where joint selection falls short, alongside the image ablation,

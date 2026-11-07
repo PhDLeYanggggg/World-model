@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal Versus Learned Forecast Capacity
+
+Under identical query caps and the original 2% rule, causal-only and
+causal-plus-learned hindsight banks give 96/99 feasible views and
+48/51 positive OLS4 views, respectively, out of 102. The three
+newly positive views are one recording at three seeds. The
+source-balanced positive-rate gain is +7.143 pp [0.000, 21.429].
+No objective remains unresolved; no external outcome was read.
+[Ablation and exact replay](outputs/publication_readiness_2026_09/native_neural_bank_ablation_v1/README.md).
+
 ## Source Influence And Decision Supplement
 
 On exposed development, joint beats independent selection on observed
