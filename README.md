@@ -375,6 +375,13 @@ undefined easy support; the old eight-action list allows only 18.
 This identifies a retrieval problem, not a deployable result.
 [Support acquisition experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/support_acquisition/readout.md).
 
+The support-specific list retained 20 rather than 18 feasible
+views at the same eight-action budget. The operating rule did
+not improve: its proposed insertions in missing-support donor
+records supplied no observed easy reference, so no threshold
+qualified. I kept the original policy.
+[Support retrieval and joint repair](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/support_joint/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

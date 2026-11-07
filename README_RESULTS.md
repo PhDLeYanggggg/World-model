@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Support-Specific Retrieval With Ordered Causal Edits
+
+At equal eligible shortlist size, checked hindsight feasibility
+increases from 18/35 to 20/35, versus 33/35 in the full bank.
+None of the three operating policies calibrates in any of 42
+cells. Across the donor grid, the support-joint policy proposes
+insertions in 19/190 repeated missing-support records but acquires
+observed easy reference in none. Frozen operating passes remain
+2/102 with no edit. This is not a policy or independent advance.
+[Experiment and donor diagnosis](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/support_joint/readout.md).
+
 ## Joint Support Acquisition Capacity
 
 Among 35 direct views with undefined easy support, the checked

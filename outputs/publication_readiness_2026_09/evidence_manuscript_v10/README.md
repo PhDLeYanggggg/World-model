@@ -156,6 +156,13 @@ directory, was generated and visually inspected. It is an
 appendix diagnostic, not an independent policy result. The main
 PDF is unchanged.
 
+The [equal-budget support retrieval experiment](../moving_record_joint_actions_v1/causal_ledger/support_joint/readout.md)
+raises checked shortlist capacity from 18 to 20 of the 35 views.
+In the donor grid, proposed support acquisitions supply no
+observed easy reference in the missing-support stratum; no
+operating arm calibrates. The small retrieval benefit is not
+evidence of a learned risk improvement. Main PDF unchanged.
+
 [中文复现说明](reproduction_shortlist_zh.md) covers the latest local
 replay, checkpoints, input requirements, and when to use CREATE.
 
