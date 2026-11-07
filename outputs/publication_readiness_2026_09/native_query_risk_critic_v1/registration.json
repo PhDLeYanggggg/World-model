@@ -1,0 +1,133 @@
+{
+  "arms": [
+    "constant_velocity_causal_fd",
+    "history_ols4_velocity",
+    "joint",
+    "gated_joint",
+    "recalibrated_sum",
+    "query_critic"
+  ],
+  "bootstrap_draws": 3000,
+  "budget": 0.02,
+  "contrasts": {
+    "critic_vs_old": [
+      "gated_joint",
+      "query_critic",
+      "constant_velocity_causal_fd"
+    ],
+    "critic_vs_sum": [
+      "recalibrated_sum",
+      "query_critic",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_joint_vs_cv": [
+      "constant_velocity_causal_fd",
+      "gated_joint",
+      "constant_velocity_causal_fd"
+    ],
+    "gated_joint_vs_ols4": [
+      "history_ols4_velocity",
+      "gated_joint",
+      "constant_velocity_causal_fd"
+    ],
+    "history_ols4_velocity_vs_cv": [
+      "constant_velocity_causal_fd",
+      "history_ols4_velocity",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_cv": [
+      "constant_velocity_causal_fd",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "joint_vs_ols4": [
+      "history_ols4_velocity",
+      "joint",
+      "constant_velocity_causal_fd"
+    ],
+    "query_critic_vs_cv": [
+      "constant_velocity_causal_fd",
+      "query_critic",
+      "constant_velocity_causal_fd"
+    ],
+    "query_critic_vs_ols4": [
+      "history_ols4_velocity",
+      "query_critic",
+      "constant_velocity_causal_fd"
+    ],
+    "recalibrated_sum_vs_cv": [
+      "constant_velocity_causal_fd",
+      "recalibrated_sum",
+      "constant_velocity_causal_fd"
+    ],
+    "recalibrated_sum_vs_ols4": [
+      "history_ols4_velocity",
+      "recalibrated_sum",
+      "constant_velocity_causal_fd"
+    ]
+  },
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 12300,
+      "path": "scripts/run_m3w_native_query_critic.py",
+      "sha256": "f046b56c561c59983dbbe4c2eadcbf95c299ddf1cf02333cf5d8bee0df5d15ec"
+    },
+    {
+      "bytes": 2828,
+      "path": "src/world_model/m3w_query_risk_critic.py",
+      "sha256": "b92249ea13d6617c3492d66ec339bea71917fa7ea66935017a1829b512bb9598"
+    },
+    {
+      "bytes": 2276,
+      "path": "outputs/publication_readiness_2026_09/native_query_risk_critic_v1/protocol.md",
+      "sha256": "842106f70f3419b86f62b86e00b2997e1c166319bcb1493167cd54000907bc94"
+    },
+    {
+      "bytes": 1862,
+      "path": "tests/test_m3w_query_risk_critic.py",
+      "sha256": "9a21e7cd964e914ec3380b507b642ad73c0b4d1c32ec54a0a474749b6c12f078"
+    }
+  ],
+  "parents": [
+    {
+      "bytes": 4413,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/registration.json",
+      "sha256": "4b300cdb5c7d6f1a1800535b239409799052d1574409df14e5ae9ad21d35d705"
+    },
+    {
+      "bytes": 323,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/freeze_execution.json",
+      "sha256": "ea5a9a9bb83851d6d3adc05d40633dda57d0740d82757a4a1434925385a34598"
+    },
+    {
+      "bytes": 308,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/score_execution.json",
+      "sha256": "a8d2a80408bd3f8fd9bcbe3eac9669cb37a6288f38ed392283f92f1fd22c700b"
+    },
+    {
+      "bytes": 309,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/replay_execution.json",
+      "sha256": "064afcf5f7cd7978428137b9db3837ee229d584290623a98ffb76b6efca375bf"
+    },
+    {
+      "bytes": 19652,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_transport_candidate_v1/analysis.json",
+      "sha256": "e8ffab3bab965c49854e7b026b2a05e84b5b08ee168c4daeb8794bf4c5ed9cee"
+    },
+    {
+      "bytes": 6255,
+      "path": "src/world_model/m3w_record_joint_actions.py",
+      "sha256": "dea6dad446dee16fbd9442d0c25a05ecde2d62d75be96bf37245ecf955b11b75"
+    },
+    {
+      "bytes": 1801,
+      "path": "src/world_model/m3w_native_transport_policy.py",
+      "sha256": "db7d937a1755b0843b33bd13d5c852d8b8f6ba94d59ad01561090556aa2502b4"
+    }
+  ],
+  "ridge": 0.04,
+  "scope": "exposed_development_only",
+  "support_threshold": 0.5,
+  "training_query_proposal_excludes_outer_and_training_source": true
+}
