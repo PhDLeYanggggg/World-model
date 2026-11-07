@@ -10,6 +10,9 @@ checks. No independent result is present.
 Subsequent [matched-count missingness experiment](../native_visibility_increment_v1/README.md)
 and [fixed-recipient risk proof](../native_fixed_recipient_risk_bound_v1/README.md)
 are not yet incorporated in the frozen PDF.
+The [exact-count feasible-versus-realized comparison](../native_exact_count_joint_capacity_v1/README.md)
+adds a separate reproducible vector figure and is also not yet
+incorporated in this version.
 
 ~~~sh
 out=data/stage_cvpr2027_experiments/evidence_manuscript_v13

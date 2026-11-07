@@ -109,6 +109,15 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I tested a new way to choose recipients without changing their
+nominated paths or the intervention budget. It does not beat the
+gain control. Yet at exactly the same per-query counts, the
+label-aware solver finds feasible choices in 93 of 102 views using
+those same nominations. The gap is in finding those assignments
+from past observations, not just in having more forecast paths.
+[Past-only comparison](outputs/publication_readiness_2026_09/native_recipient_shortfall_v1/README.md) |
+[Exact capacity and figure](outputs/publication_readiness_2026_09/native_exact_count_joint_capacity_v1/README.md).
+
 I matched the number of neural replacements before testing a model
 for missing future labels. It did not improve conservative utility.
 I then let a label-aware audit pick the best option for each risk

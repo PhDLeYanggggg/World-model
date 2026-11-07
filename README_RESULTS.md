@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recipient Shortfall And Joint Exact-Count Capacity
+
+At 9,675 matched switches, predicted risk shortfall loses -1.991 pp
+[-3.195, -0.927] in conservative utility against support-first.
+Gain, support-first and shortfall pass 4/0/2 of 102 views. At the
+same exact query counts, the hindsight joint solver verifies 93
+feasible views with fixed nominations and 96 with the full bank;
+9 and 6 are proved infeasible, none unresolved. The witnesses do
+not establish causal or independent performance.
+[Past-only comparison](outputs/publication_readiness_2026_09/native_recipient_shortfall_v1/README.md) |
+[Exact capacity and figure](outputs/publication_readiness_2026_09/native_exact_count_joint_capacity_v1/README.md).
+
 ## Matched Neural Counts And Recipient Risk Bounds
 
 At 6,066 matched neural replacements, the fitted missing-label
