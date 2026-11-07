@@ -82,8 +82,9 @@ full treatment models are complete, with original sampling/RNG checks intact.
 A disk-space guard stopped
 the tenth model at coherent update 3,935. When space recovered it resumed for
 exactly the remaining 65 updates, retaining final sampling/RNG parity. No budget
-or disk reserve was reduced. Two full fixed-design treatment refits are now
-running before prediction and outcome comparison; usefulness is not established.
+or disk reserve was reduced. Both complete fixed-design treatment refits now
+match their originals exactly. The twelve new prediction banks are being
+generated before outcome comparison; usefulness is not established.
 
 The [evaluation supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v10/supplementary_math.md)
 now makes an important distinction explicit: available-label error and the

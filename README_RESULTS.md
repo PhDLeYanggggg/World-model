@@ -74,6 +74,11 @@ parity. No repeated partial update is required after the coherent3935stop.
 PID99198now performs two full first-design refits,one perarm,from scratch.
 The complete matrix is not yet a real predictive result;forecasts/scoring and
 separate replay remain not_run until both refits verify exactly.
+At04:33:20Z,PID99198exits0 after2285.256599s,peak1,837,367,296B.
+Both complete4000update first-design refits reproduce model/optimizer/sampler/
+RNG/trace exactly. This is one full refit perarm,not twelve exact refits.
+The full60400update experiment budget is now executed without a reduced budget.
+Fresh12-bank inference startsPID2528;new outcomes still not scored.
 
 ### Existing-Estimand Supplement: Derivations And Synthetic Verification
 
