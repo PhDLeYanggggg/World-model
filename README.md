@@ -133,6 +133,13 @@ the optional confirmation runner without starting confirmation or
 interrupting calibration.
 [Exact scheduling benchmark](outputs/publication_readiness_2026_09/native_cpu_shard_benchmark_v1/README.md).
 
+I checked what the frozen forecast options could achieve even with
+hindsight. On 102 development recording-seed views, the four-option
+slate was infeasible under the original risk rule in 41 views; only
+27 views admitted a positive conservative gain over OLS4. This is
+a limit of the tested options, not a result for a learned selector.
+[Capacity analysis](outputs/publication_readiness_2026_09/native_joint_slate_capacity_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed

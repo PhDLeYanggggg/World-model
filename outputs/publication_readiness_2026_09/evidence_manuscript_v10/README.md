@@ -18,6 +18,12 @@ checks scheduling equivalence on exposed development data, not
 forecast performance or confirmation.
 The main PDF is unchanged.
 
+The [whole-query capacity audit](../native_joint_slate_capacity_v1/README.md)
+shows that broader hindsight choice among the current fixed proposals
+cannot repair all recording views or guarantee improvement over OLS4.
+The vector figure separates infeasibility from feasible but nonpositive
+conservative utility. The result is on exposed development data only.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

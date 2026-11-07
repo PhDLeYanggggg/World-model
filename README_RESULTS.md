@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Whole-Query Forecast Capacity
+
+On 102 exposed recording-seed views, a label-aware solver can meet the
+original risk checks in 60 views using only joint proposals and 61
+using any of four fixed choices. Only 25 and 27, respectively, can
+achieve positive conservative utility over OLS4. The larger slate
+still has 41 infeasible views and 34 with no positive OLS4 lower gain.
+These are capacity limits, not achieved policy scores.
+[Bounds and reproduction](outputs/publication_readiness_2026_09/native_joint_slate_capacity_v1/README.md).
+
 ## Exact Native CPU Sharding Benchmark
 
 On 18 exposed development queries, three independent four-thread
