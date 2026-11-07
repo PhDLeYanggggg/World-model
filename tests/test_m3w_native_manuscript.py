@@ -190,3 +190,7 @@ def test_manuscript_disclosure_precedes_references_and_retains_negative_scope():
     assert 'but pass 0/102' in allocation
     assert 'incremental costs do not help at matched amplitudes' in allocation
     assert 'at most 0.007 pp to the fixed-pool lower objective' in allocation
+    veto = paper.veto_refit_update()
+    assert '+0.200 pp [+0.052, +0.381]' in veto
+    assert 'passes 3/102, unchanged' in veto
+    assert 'violations rise from 2 to 8' in veto

@@ -108,6 +108,18 @@ predicted allowance rejects all easy-supported single and pair options.
 No policy upgrade or independent result.
 [Results and reproduction](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/expanded_support/readout.md).
 
+## Refitting Risk For Rejected Candidates
+
+With 6,184 matched switches, veto-only correction gains +0.20044 pp
+[0.05235, 0.38133] in direct completion lower versus the original and
++0.25149 pp [0.05662, 0.47217] in known hard utility. Veto-only does not
+beat the all-action refit: +0.00156 pp [-0.00110, +0.00496]. All policies
+pass only 3/102 original views. Signed easy violations rise from two
+to eight and undefined easy from 34 to 39. Restoring old outputs
+only on newly released rows in a bookkeeping diagnostic reduces
+eight violations to one, not a matched deployment evaluation.
+[Results and attribution](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

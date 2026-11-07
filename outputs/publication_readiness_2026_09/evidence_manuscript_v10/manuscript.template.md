@@ -362,7 +362,7 @@ not success inferred from a favorable early prefix.
 
 {{ bank_ceiling_update }}
 
-{{ easy_forecast_update }}
+{{ easy_forecast_update }} {{ veto_refit_update }}
 
 ## 7. Failure Analysis and Limitations
 
@@ -373,18 +373,12 @@ The past-image branch improves its fitted objective, but the controller
 intervenes more often and continues to underestimate harm on selected
 easy cases. In the posthoc worst signed-easy recording, frame 11 of
 moving_scene_34__2, the quality control retains CV with ADE 5.2922 pixels.
-Motion chooses the full neural forecast with ADE 96.4910 while predicting
-harm 0.3323. All twelve future labels exist. This failure is not solely an
-unknown-label completion penalty. It is a selected tail example, not
-representative sampling or a stand-alone pointwise 2% budget test.
+Motion chooses the full neural forecast (ADE 96.4910, predicted harm
+0.3323). All twelve labels exist. This tail case is not representative.
 
-The image measurement can fail under weak texture, parallax or independently
-moving background content. Native bounds do not reveal exits or future
-visibility. The affine proxy is not calibrated camera pose, and the small
-context head does not learn semantic pixels. The current experiments cannot
-identify whether image semantics, better candidate dynamics, additional
-independent training sources or better conditional uncertainty is the most
-effective remaining repair.
+Weak texture, parallax and moving background content can corrupt alignment.
+The affine proxy is not calibrated camera pose. The context head does not
+infer exits, future visibility or semantic pixels.
 
 A synthetic check also exposes a specific defect of removing only the future
 view restoration. For observed native positions $h_t=p_t+c_t$, exact alignment
@@ -397,10 +391,9 @@ follow-up was stopped before outcome scoring. The replacement retains both
 native geometry and aligned node features, which repairs this representation
 defect without itself establishing a predictive or policy gain.
 
-These source-excluded results use previously exposed data. Replay proves
-repeatability, not independent confirmation; the single-seed actor cannot
-replace the intended three-seed comparison. We retain all views, including
-empty ones. Mean gains do not resolve the failed risk gate.
+These results use exposed data and retain empty views. Exact replay
+does not replace independent confirmation or the missing three-seed
+actor comparison. Mean gains do not resolve the failed risk gate.
 
 This is a 2D image-coordinate study, not a 3D, foundation, calibrated
 physical or cross-dataset result. Stage5C and SMC remain disabled. A method

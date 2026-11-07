@@ -225,6 +225,14 @@ locally feasible option existed with observed outcomes. I now need to
 improve how the model judges rejected options, not just rank more of them.
 [Full-bank and reference-support experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/expanded_support/readout.md).
 
+Refitting predicted risk for rejected candidates recovered some of that
+utility at the same number of switches. It also hurt more easy cases,
+and no extra recording view passed the full rule. Training only on
+rejected candidates was not reliably better than training on all of
+them. I keep this result as evidence of the gain and harm tradeoff,
+not a deployment upgrade.
+[Veto correction experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/veto_refit/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

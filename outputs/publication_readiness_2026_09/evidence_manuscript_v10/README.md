@@ -33,11 +33,17 @@ The PDF remains eight pages. Pages 1 to 6 are unchanged and pages 7 and 8
 were inspected. Forty scoped tests pass. The supplement text and PDF are
 unchanged. [Bounded substitution results](../moving_record_joint_actions_v1/causal_ledger/bounded_bank/readout.md).
 
-The latest revision adds the negative comparison at identical amplitudes
+The incremental revision adds the negative comparison at identical amplitudes
 and the small, posthoc amplitude-reassignment ceiling. The eight-page PDF
 changes only page 7, which was visually checked; page 8 and the supplement
 are unchanged. Forty-three scoped tests pass.
 [Incremental costs](../moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/readout.md).
+
+The latest revision reports the wider support diagnostic and the +0.200 pp
+matched gain from veto refitting alongside unchanged risk passes and
+worsened easy net loss. The eight-page PDF was rebuilt; pages 1 through 6
+are unchanged and pages 7 and 8 were inspected. The supplement is unchanged.
+[Veto refit](../moving_record_joint_actions_v1/causal_ledger/veto_refit/readout.md).
 
 ## Files And Reproduction
 

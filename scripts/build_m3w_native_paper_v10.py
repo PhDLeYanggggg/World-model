@@ -57,6 +57,9 @@ PINNED = {
     'moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/analysis.json': '596a2b6aaa206dd8007275325a3c5e2dfdebbd72b431cf7b722274e9a011d819',
     'moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/replay_execution.json': '802288c085a1f007c8c2e48c8f21052551b5111ab0a6f3fcb399836074cac852',
     'moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/ceiling.json': 'ba7635479a3876c36443acd1e09f56f62036cf752bf6b8d496a3965b7dff7314',
+    'moving_record_joint_actions_v1/causal_ledger/expanded_support/analysis.json': '40b3b8527bae22ed8d5a64d971e5b739a5951530152546bc53d2529d074cdbf7',
+    'moving_record_joint_actions_v1/causal_ledger/veto_refit/analysis.json': '56e7d398a01d766d7c031b1be6db8ed918ceb01764d05377793f4c60d6b62f64',
+    'moving_record_joint_actions_v1/causal_ledger/veto_refit/replay_execution.json': 'ae59f1af12bf0357b207ca28595b05ff11ac6ca7c4ae76dd4a1d5e6086bc64da',
 }
 
 
@@ -590,6 +593,28 @@ def easy_forecast_update():
     )
 
 
+def veto_refit_update():
+    parent = HOME/'moving_record_joint_actions_v1'/'causal_ledger'
+    support = read(parent/'expanded_support'/'analysis.json')
+    folder = parent/'veto_refit'
+    path = folder/'analysis.json'
+    a = read(path)
+    if (read(folder/'replay_execution.json')['artifact']['sha256'] != sha(path)
+            or not a['original_exact'] or not a['original_rules_unchanged']
+            or a['independent_confirmation'] or a['deployment_changed']):
+        raise ValueError('Require verified matched development results and unchanged risk rules')
+    d = a['comparisons']['veto_vs_original']['completion_lower_pp']
+    risk = a['risk']
+    return (
+        'The wider fixed-prefix diagnostic rules out '
+        f'{support["full_fixed_prefix_infeasible"]}/102 rather than {support["narrow_infeasible"]}/102 views. '
+        f'Refitting veto costs gives {d["point"]:+.3f} pp [{d["interval95"][0]:+.3f}, {d["interval95"][1]:+.3f}] '
+        f'at matched counts, but passes {risk["veto_only"]["passes"]}/102, unchanged. '
+        f'Signed easy-net violations rise from {risk["original"]["easy_net_over_2"]} to '
+        f'{risk["veto_only"]["easy_net_over_2"]}. Targeted fits do not outperform all-action refits.'
+    )
+
+
 def main():
     for name, expected in PINNED.items():
         if sha(HOME/name) != expected: raise ValueError('Changed frozen manuscript evidence: '+name)
@@ -614,7 +639,8 @@ def main():
         values[prefix+'_Brier'] = f'{cal[arm]["observation_Brier"]:.6f}'
     values.update(fixed_count_update=fixed_count_update(), three_seed_update=three_seed_update(),
         seed_dispersion_update=seed_dispersion_update(), recording_risk_update=recording_risk_update(),
-        bank_ceiling_update=bank_ceiling_update(), easy_forecast_update=easy_forecast_update())
+        bank_ceiling_update=bank_ceiling_update(), easy_forecast_update=easy_forecast_update(),
+        veto_refit_update=veto_refit_update())
     env = jinja2.Environment(undefined=jinja2.StrictUndefined, autoescape=False, keep_trailing_newline=True)
     markdown = env.from_string((PUBLIC/'manuscript.template.md').read_text()).render(**values)
     tex = latex_document(markdown); BUILD.mkdir(parents=True, exist_ok=True)
