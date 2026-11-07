@@ -441,6 +441,13 @@ not open confirmation labels or assign roles. The two proposed
 splits and the checkpoint source checks are recorded in the
 [external input preflight](outputs/publication_readiness_2026_09/dronecrowd_blind_preflight_v1/README.md).
 
+I tested the external scoring code on the existing development
+recordings. Changing the reference cuts changed pass counts even
+though the decisions and overall utility were identical. The
+[scoring rehearsal](outputs/publication_readiness_2026_09/dronecrowd_scoring_rehearsal_v1/README.md)
+keeps the original result and shows why the cuts must be fixed
+before confirmation.
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

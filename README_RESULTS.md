@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## External Scoring Rehearsal on Development
+
+The source-group reducer exactly replays the direct policy's
+2/102 passes. The two uniform reference-cut counterfactuals yield
+1 and 3 passes on identical decisions; all still have 75 total-risk
+violations. Direct versus the fitting-selected OLS4 has +4.066 pp
+known change but -9.719 pp paired lower change. This is not an
+external result or a selection of external cuts.
+[Rehearsal, comparator and cut sensitivity](outputs/publication_readiness_2026_09/dronecrowd_scoring_rehearsal_v1/README.md).
+
 ## DroneCrowd External Input Preflight
 
 All 31,472 query times and 4,520,912 history-complete instances
