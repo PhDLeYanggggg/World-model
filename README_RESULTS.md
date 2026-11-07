@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Retrieval Loss Attribution And Six-Plus-Two Replay
+
+Changing the cost ranking alone is sufficient to explain all five
+original-to-portfolio losses; agent preference alone also loses four.
+The five excluded useful actions came from damped-velocity-0.97
+(three) and the self-trained forecast (two), whose families were
+absent from the corresponding portfolio queries. The six-plus-two
+repair retrieves a useful option in 4/18 zero-direct views versus
+6/18 for the family control; neither frozen head selects one. The
+hybrid adds no calibrated intervention and remains at 2/102 passes.
+[Factorial replay and wider-cohort check](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_exclusions/readout.md).
+
 ## Multi-Criterion Retrieval At The Same Eight-Slot Budget
 
 The portfolio shortlist retains a useful early action in 3/18

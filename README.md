@@ -334,6 +334,13 @@ missed but lost five it had kept. I kept the family-diverse list:
 neither new choice rule improved complete policy passes.
 [Candidate retrieval experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_portfolio/readout.md).
 
+I replayed those five losses. The cost ranking displaced two
+forecast families that supplied the missed actions. Keeping six
+family slots restored three of the losses but still found fewer
+useful openings than the original list. With the same scoring head
+it added no calibrated intervention.
+[Retrieval loss audit](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_exclusions/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

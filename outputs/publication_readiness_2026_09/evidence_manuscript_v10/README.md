@@ -109,6 +109,17 @@ The one-page local PDF under `shortlist_followup_build` was compiled
 and visually inspected. The original appendix and main paper are
 unchanged.
 
+The [retrieval loss audit](../moving_record_joint_actions_v1/causal_ledger/shortlist_exclusions/readout.md)
+separates the cost ranking from agent preference and includes a
+predeclared six-plus-two replay with the original head. Five dropped
+actions came from families absent at the corresponding queries.
+The hybrid restores three losses without adding any calibrated
+intervention. This is additional development evidence; the compiled
+appendices and main paper are unchanged.
+
+[中文复现说明](reproduction_shortlist_zh.md) covers the latest local
+replay, checkpoints, input requirements, and when to use CREATE.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.
