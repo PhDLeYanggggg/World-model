@@ -8,6 +8,10 @@ conservative utility against both CV and OLS4. These are exposed
 development results; this is not an independent or submission-ready
 package.
 
+A subsequent [OLS4-blend capacity check](../native_ols_blend_capacity_v1/README.md)
+adds no positive views at the same exact budgets. It is documented
+separately; the frozen v15 PDF and ZIP are unchanged.
+
 ```sh
 out=data/stage_cvpr2027_experiments/evidence_manuscript_v15
 .venv-pytorch/bin/python scripts/build_m3w_decision_manuscript_v15.py \

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OLS4-Centered Forecast Bank Expansion
+
+Expanding the native eight options to 20 (causal blends) or 29
+(adding learned blends) leaves the same 51/102 dual-reference
+witnesses at 9,675 exact switches. Both expansions leave 45 negative
+objective bounds, six infeasible risk/count views, and none
+unresolved. On the 45 negative views, the paired median maximin
+margin moves by +0.120 pp and a further +0.030 pp, with the best
+remaining negative optimum -1.471 pp. No new selector is fitted.
+[Results and replay](outputs/publication_readiness_2026_09/native_ols_blend_capacity_v1/README.md).
+
 ## Dual-Reference Capacity At Fixed Query Counts
 
 At the original 9,675 switches, a fresh hindsight optimizer verifies

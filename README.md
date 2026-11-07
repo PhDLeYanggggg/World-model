@@ -109,6 +109,11 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I tried expanding the forecast bank with small OLS4-centered blends.
+Neither the causal blends nor the learned blends added a single
+recording view that could beat both motion references and meet the
+original risk rule. [Matched-count blend test](outputs/publication_readiness_2026_09/native_ols_blend_capacity_v1/README.md).
+
 I also asked whether a better assignment could beat both CV and
 OLS4 at exactly the same switch counts. The full bank meets the
 risk rule in 96 of 102 development views, but only 51 can also
