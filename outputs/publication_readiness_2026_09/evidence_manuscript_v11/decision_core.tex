@@ -1,0 +1,211 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[review]{cvpr}
+\usepackage{times,graphicx,amsmath,amssymb,booktabs}
+\usepackage[breaklinks,colorlinks,allcolors=blue]{hyperref}
+\def\confName{CVPR}\def\confYear{2027}\def\PaperID{DRAFT}
+\title{When Should a Neural Forecast Replace a Motion Baseline?}
+\author{Anonymous}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Improving average trajectory error does not establish that a learned
+forecast should replace a strong motion baseline. We study that
+decision on moving-drone trajectories with partial future labels.
+We evaluate joint forecast replacement under recording-level
+positive-harm and reference-support constraints, distinguishing
+forecast availability, candidate retrieval, and causal decisions.
+On exposed development data, expanded retrieval leaves 48 recording-seed
+views with positive conservative utility over an OLS velocity baseline;
+fixing one decoded choice per query leaves 26, and admitting only
+choices that pass a predicted risk screen leaves three. In actual
+causal policies, exact joint search at the same interventions does
+not improve risk, and screening all assignments before choosing
+increases risk violations without increasing passes. These findings
+identify where candidate capacity is lost. They do not establish a
+deployable improvement or independent generalization.
+\end{abstract}
+
+\section{Forecast Replacement}
+A model can reduce error for some trajectories while worsening
+predictions that a motion baseline already handles well. This
+asymmetry motivates forecast replacement rather than unconditional
+neural forecasting. Here a decision changes a prediction, not an
+agent's behavior. We ask whether causal joint choices improve
+prediction accuracy without excessive error increases on individual
+recordings. Reusing a motion network or solving a larger search is
+not, by itself, evidence of that improvement.
+
+Strong constant-velocity comparisons have been emphasized in
+pedestrian prediction~\cite{schoeller}. Multi-expert regression
+already studies the choice among forecasters~\cite{mao}; deferral
+itself is not our contribution. Our focus is the empirical gap
+between a useful forecast being available and a past-only joint
+decision recovering it under a recording risk constraint.
+
+The observation is eight annotated image positions and the request is
+twelve future annotation steps. Neighbor construction, motion features,
+and every candidate forecast depend on the current and past positions.
+Distances are measured in native image pixels. The trajectory protocol
+uses the tracking annotations from MovingDroneCrowd++~\cite{fan};
+it is not the publisher's counting or tracking benchmark. The forecast
+bank includes causal motion models, a fixed-head EqMotion
+adaptation~\cite{eqmotion}, and our Past Context Transformer, with
+three frozen forecaster seeds. Causal constant velocity
+(CV) is the fallback and the risk reference. OLS4 fits velocity to the
+last four positions and is an additional strong accuracy comparator.
+Model training and evaluation on this trajectory task do not reproduce
+the published best-of-multiple-forecast scores of the original methods.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=.96\textwidth]{decision_bottlenecks.pdf}
+\caption{Hindsight capacity and actual policy outcomes must be
+interpreted separately. Parentheses indicate switch counts.
+The 102 views are 34 exposed recordings repeated at three
+forecaster seeds, not 102 independent recordings.}
+\label{fig:capacity}
+\end{figure*}
+
+\section{Risk and Utility With Partial Labels}
+For a row with nonempty future support $M_i$, write
+$e_i(p)=|M_i|^{-1}\sum_{t\in M_i}\|p_{it}-y_{it}\|_2$.
+The baseline error is $b_i=e_i(\mathrm{CV})$ and positive harm is
+$[e_i(p)-b_i]_+$. Easy rows have $0<b_i\leq\tau_E$, with
+$\tau_E$ fitted before evaluation. For wholly unobserved selected
+rows the maximum path disagreement from CV is added to each
+positive-harm numerator. Both the all and easy ratios use
+unweighted observed reference on selected rows. They require positive
+denominators and ratios no greater than 2\%; the signed easy check
+uses the entire observed easy reference of the recording. Abstention
+does not manufacture a positive selected denominator.
+
+Accuracy uses equal query weights and a common observed CV denominator.
+For a comparison between two policies, subtract maximum disagreement
+between those policies on wholly unobserved rows from the observed gain.
+The resulting lower contrast keeps available-label errors unchanged
+on partial rows. It is not a full-grid ADE bound for partial tracks or
+a confidence interval. Source-level paired bootstrap intervals average
+the three seeds before resampling 14 source groups 3,000 times.
+
+\section{Matched Decisions and Capacity}
+Compare independent recipients, a shared forecast family, additive
+relative-path costs, and a joint graph cost on the same bank and
+proposal counts. The joint cost includes the cross term from changes
+in relative paths around an OLS4 anchor; it is not a collision or
+physical-safety objective. In the primary development comparison the
+four arms each propose 9,675 switches. Table~\ref{tab:matched} gives
+their observed risk passes and conservative utility versus OLS4.
+The direct paired joint-minus-additive lower contrast is $-0.061$
+percentage points with a source interval of $[-0.157,-0.006]$.
+This does not support a positive interaction contribution on the
+conservative trajectory objective.
+
+\begin{table}[t]
+\centering\small
+\caption{Matched proposed switches on exposed development.
+Gain is in percentage points on the common CV denominator.}
+\label{tab:matched}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Policy & Passes / 102 & Lower gain vs. OLS4 \\
+\midrule
+Independent & 4 & $-8.884$ \\
+Shared family & 1 & $-8.833$ \\
+Additive & 3 & $-8.505$ \\
+Joint & 3 & $-8.491$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To locate the bottleneck, freeze the forecasts, upper switch count
+per query, and original scoring rule. A separate hindsight solver
+may choose among the legal actions using labels. Relaxing the
+recipient roster while keeping the same forecast bank raises
+risk-feasible views from 77 to 99 and positive OLS4 views from
+39 to 51. This only describes what is possible in the finite bank.
+The three infeasible views repeat one recording. Its best distinct
+easy replacement has positive harm equal to 23.925\% of its CV
+reference in each seed, above the 2\% limit. No reordering of
+those candidates can supply the missing easy support.
+
+Next we fit a past-only shortlist on other development sources
+using membership in a feasible, positive recording solution as
+supervision. At the same eight slots per query it adds three
+positive OLS4 views over gain-only retrieval. The improvement
+is not conclusive at the source level. The retention comparison
+in Figure~\ref{fig:capacity} restricts the solver to the selected
+paths and shows losses after retrieval. An exact causal search
+changes one query at 72 matched gated switches, leaving four
+actual passes. Screening every assignment first produces 2,194
+switches and still four passes, while total-risk violations rise
+from 12 to 40. In an ungated matched comparison the relative
+trajectory improvement on observed pairs is not supported by
+the lower bound over missing pair steps.
+
+\paragraph{Small changes can add support without useful accuracy.}
+At the same 2,194 switches, a radius fitted from past CV backtests
+raises actual recording passes from four to 40, but sacrifices
+$0.04553$ points of lower utility relative to the original
+predictions and remains below OLS4. With the preregistered
+0.25-pixel minimum for applying the cap, none of the operating
+paths changes. In the hindsight bank, literal changes make all
+102 views risk-feasible; requiring the same minimum displacement
+restores the earlier 99. Neither variant adds a verified positive
+OLS4 view; three accuracy optimizations in each variant remain
+unresolved. The displacement floor is a sensitivity analysis,
+not a measured annotation resolution.
+
+\section{Limitations and Independent Evidence}
+These are exposed source-held-out experiments, not independent
+confirmation. A better shortlist, an optimal solver, and an
+apparently feasible predicted margin are distinct from actual
+recording-level error control. The current evidence does not
+justify replacing the baseline or a claim of metric geometry,
+physical safety, or a transferable world model.
+
+An independent evaluation protocol fixes separate DroneCrowd
+calibration and confirmation groups on the separate release
+of Wen et al.~\cite{wen}. This draft contains no
+external result. Confirmation is conditional on the preregistered
+calibration criteria; none of the exposed comparisons can be
+substituted for it.
+
+\section{Reproducibility}
+The evidence tables and vector figure are derived from verified
+scalar readouts. The experimental replay uses frozen source roles,
+predictions and original per-recording scores. Replaying aggregates
+does not reproduce upstream training or add independent evidence.
+The submission package is not yet complete.
+
+\section*{LLM Usage Statement}
+OpenAI Codex assisted code development, experimental checks,
+analysis, figure preparation, and manuscript drafting. The author
+is responsible for verifying the methods and claims.
+
+\begin{thebibliography}{5}
+\bibitem{schoeller}
+C. Sch\"oller, V. Aravantinos, F. Lay, and A. Knoll.
+What the constant velocity model can teach us about pedestrian
+motion prediction. \emph{IEEE Robotics and Automation Letters}, 2020.
+
+\bibitem{mao}
+A. Mao, M. Mohri, and Y. Zhong.
+Regression with multi-expert deferral. In \emph{ICML}, 2024.
+
+\bibitem{fan}
+Y. Fan, J. Wan, T. Han, A. J. Ma, W. Ouyang, and A. B. Chan.
+Video individual counting and tracking from moving drones:
+A benchmark and methods. \emph{arXiv:2601.12500}, 2026.
+
+\bibitem{eqmotion}
+C. Xu, R. T. Tan, Y. Tan, S. Chen, Y. G. Wang, X. Wang, and Y. Wang.
+EqMotion: Equivariant multi-agent motion prediction with invariant
+interaction reasoning. In \emph{CVPR}, 2023.
+
+\bibitem{wen}
+L. Wen et al. Detection, tracking, and counting meets drones in
+crowds: A benchmark. In \emph{CVPR}, 2021.
+\end{thebibliography}
+\end{document}

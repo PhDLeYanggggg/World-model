@@ -18,6 +18,11 @@ checks scheduling equivalence on exposed development data, not
 forecast performance or confirmation.
 The main PDF is unchanged.
 
+The [decision-first v11 extract](../evidence_manuscript_v11/README.md)
+consolidates the recent matched results, candidate capacity, case
+analysis and history-radius experiment in one CVPR-style draft.
+The fuller v10 manuscript remains available.
+
 The [whole-query capacity audit](../native_joint_slate_capacity_v1/README.md)
 shows that broader hindsight choice among the current fixed proposals
 cannot repair all recording views or guarantee improvement over OLS4.

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## History-Conditioned Forecast Radius
+
+At 2,194 identical interventions, literal clipping raises risk passes
+from 4 to 40 but reduces conservative utility by 0.04553 pp
+[-0.09475, -0.00917]. The preregistered 0.25-pixel sensitivity
+changes no selected paths. It leaves 99/102 hindsight-feasible views
+versus 102/102 for literal clipping, with no added verified positive
+OLS4 witnesses. [Scores and scope](outputs/publication_readiness_2026_09/native_history_radius_v1/README.md).
+The [v11 working extract](outputs/publication_readiness_2026_09/evidence_manuscript_v11/README.md)
+consolidates the matched decision evidence and vector figure.
+
 ## Recording Risk Mass And Missing Easy Support
 
 With 280 matched switches, fitting whole-recording masses passes

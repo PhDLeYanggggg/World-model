@@ -192,6 +192,13 @@ adds 23.925% of the CV reference error.
 [Risk fit](outputs/publication_readiness_2026_09/native_postsearch_mass_v1/README.md) |
 [Failure case](outputs/publication_readiness_2026_09/native_easy_support_certificate_v1/README.md).
 
+I used past motion to limit how far each forecast could move from CV.
+With all 2,194 interventions held fixed, the tiny changes raise risk
+passes from four to 40 but give up almost all of the gain over CV.
+Requiring a material displacement changes none of the operating paths.
+[Radius experiment](outputs/publication_readiness_2026_09/native_history_radius_v1/README.md) |
+[Decision-focused working draft](outputs/publication_readiness_2026_09/evidence_manuscript_v11/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
