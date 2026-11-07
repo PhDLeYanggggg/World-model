@@ -1,5 +1,8 @@
 # Decision Manuscript v17
 
+The [v18 draft](../evidence_manuscript_v18/README.md) adds the
+matched relative-path training objective.
+
 This six-page anonymous working draft adds the
 [fixed-recipient neighbor-context ablation](../native_neighbor_motion_adapter_v1/README.md)
 to [v16](../evidence_manuscript_v16/README.md). It distinguishes

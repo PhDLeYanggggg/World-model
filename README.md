@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I then trained the same neighbor model with and without a
+relative-path loss. It reduced pair error on observed steps,
+but the full-grid lower comparison was negative and the
+recording pass count did not change.
+[Matched training experiment](outputs/publication_readiness_2026_09/native_relative_path_training_v1/README.md).
+
 I compared ego motion, pooled neighbor motion and local relative
 features using the same switched people. Adding the local features
 did not help either conservative utility or relative-path accuracy

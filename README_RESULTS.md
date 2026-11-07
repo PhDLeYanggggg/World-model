@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Relative-Path Supervision At Fixed Recipients
+
+Six matched PyTorch fits compare individual ADE to the same
+objective plus relative-path loss. At 9,675 identical switch
+recipients, the added loss gives +0.044 px [+0.022, +0.069] on
+observed pair ADE, but -0.239 px [-0.607, -0.022] on the full-grid
+lower contrast. Conservative individual utility is -0.107 pp
+[-0.320, +0.018]. Both arms pass 5/102 recording views; neither
+meets the original operating rule.
+[Ablation and exact replay](outputs/publication_readiness_2026_09/native_relative_path_training_v1/README.md) |
+[v18 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v18/README.md).
+
 ## Neighbor Context At Fixed Recipients
 
 Nine source-separated PyTorch fits keep the same 9,675 switch
