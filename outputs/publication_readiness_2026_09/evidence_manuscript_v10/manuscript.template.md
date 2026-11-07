@@ -350,6 +350,8 @@ not success inferred from a favorable early prefix.
 
 {{ camera_update }}
 
+{{ dual_view_update }}
+
 ## 7. Failure Analysis and Limitations
 
 {{ actor_mechanism }}
@@ -379,9 +381,9 @@ labels still depend on $c_{\mathrm{future}}-c_0$. Different observed camera moti
 therefore collapse to the same core representation with different labels.
 This conventional information-loss example is not a new impossibility theorem
 or proof of the combined actor's real-data failure. The incomplete one-sided
-follow-up was stopped before outcome scoring. A replacement retains both
-native geometry and aligned node features; its new outcomes are not included
-while full fitting remains in progress.
+follow-up was stopped before outcome scoring. The replacement retains both
+native geometry and aligned node features, which repairs this representation
+defect without itself establishing a predictive or policy gain.
 
 The current evidence is source-excluded per pipeline but previously exposed
 globally. Exact replay establishes repeatability, not independent scientific

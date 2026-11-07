@@ -50,11 +50,15 @@ original bootstrap indices and negative outcomes; it is not complete training
 or prediction reproduction, independent confirmation or guaranteed anonymity.
 Full model-training reconstruction is still outstanding.
 
-The latest eight-page PDF also records the stopped one-sided information-loss
-diagnosis and the primary-literature scope recheck. Its replacement dual-view
-model is still training: no new dual-view outcome is included. All eight current
-rendered pages were visually inspected. Thirty-one focused checks pass; the
-full historical suite was not rerun. The frozen v9 sources and PDF are unchanged.
+The eight-page PDF records the stopped one-sided information-loss diagnosis,
+the literature recheck and the completed replacement dual-view experiment.
+Both registered dual-view screens fail despite exact twelve-bank/scalar replay.
+The whole-12 known contrasts are +0.828pp versus the matched native branch and
+-0.321pp versus the original actor; the completion lower intervals are entirely
+negative. Pages 1 through 5 are identical to the inspected previous render;
+changed pages 6 through 8 and the new source/training figure were inspected.
+Forty-three focused checks pass; the full historical suite was not rerun.
+The frozen v9 sources and PDF are unchanged.
 
 ## Evaluation Supplement
 
@@ -66,11 +70,12 @@ A separately documented existing full-grid calculation bounds every missing
 step. Elementary proofs, attainability examples and synthetic tests keep these
 quantities distinct without changing any registered metric or historical score.
 
-Nine new synthetic cases and seven manuscript checks pass (16 tests total).
-The three-page supplementary PDF compiles and every rendered page was inspected.
-All 15 active registered model/protocol dependency hashes remain unchanged.
-The new dual-view models remain unscored; their disk interruption recovered for
-exactly the remaining 65 updates in the tenth fit, with final RNG/draw parity.
+The synthetic checks and manuscript checks form part of the 43-test verified
+suite. The three-page supplementary PDF compiles and every rendered page was
+inspected. All 15 active registered model/protocol dependency hashes remain
+unchanged. The dual-view disk interruption recovered for exactly the remaining
+65 updates in the tenth fit, with final RNG/draw parity; that engineering
+success is separate from the failed predictive comparisons.
 
 ```sh
 .venv-pytorch/bin/python scripts/build_m3w_native_supplement.py

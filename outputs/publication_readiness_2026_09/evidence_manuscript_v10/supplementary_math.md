@@ -6,8 +6,8 @@ Elementary norm inequalities are not claimed as a new theorem. The native
 moving-drone task observes 8 steps and requests 12 at annotation stride 1 in
 image coordinates. This is not verified seconds, meters or physical safety.
 The original 2% recording contract, support requirements and undefined-reference
-rules remain unchanged. The dual-view experiment is incomplete after a disk
-guard interruption; its new outcomes have not been scored.
+rules remain unchanged. Dual-view outcome evidence is reported separately;
+this supplement changes no result or evidence status.
 
 ## 1. Available-Label Error Is Not Full-Grid Error
 
@@ -163,7 +163,7 @@ The interval describes variation of the reported source-level statistic under
 that resampling scheme. It does not turn globally exposed development sources
 into independent confirmation, adjust for project-wide adaptive development,
 prove unobserved complete errors, or supply three independent forecaster seeds.
-The new dual-view comparison remains unscored during resource recovery.
+The subsequent dual-view comparison retains its own frozen execution receipt.
 
 ## 6. Code and Reproduction Boundary
 
@@ -175,8 +175,9 @@ builder also records its own source and typesetting hashes. It does not alter
 registered model, training, split, feature or metric files.
 
 The portable aggregate package reproduces three completed analyses, not model
-training or fresh forecasts. The full dual-view matrix, its two complete refits,
-prediction freeze, scoring and replay are still owed. A compile or passing
+training or fresh forecasts. The separate dual-view report records its full
+matrix, two complete refits, prediction freeze, scoring and exact replay.
+A compile or passing
 synthetic test is not evidence of neural improvement, deployment or readiness
 to submit. Stage5C execution and SMC remain off.
 

@@ -1,5 +1,6 @@
 """Report the complete frozen native/observed-view node-encoder comparison."""
 import csv
+import hashlib
 import json
 from pathlib import Path
 import statistics
@@ -13,6 +14,14 @@ PRIVATE = ROOT/'data/stage_cvpr2027_experiments/moving_dual_view_actor_v1'
 def read(path): return json.loads(path.read_text())
 def fmt(x): return 'NA' if x is None else f'{x:+.4f}'
 def mean(values): return None if not values or any(x is None for x in values) else statistics.mean(values)
+
+
+def known_prefixes(a, contrast):
+    rows = [r['summary'] for r in a['sources'] if r['contrast'] == contrast]
+    if len(rows) != 14: raise ValueError('Every source is required for the diagnostic')
+    result = [mean([r[i]['paired_known_pp'] for r in rows]) for i in range(4)]
+    if any(x is None for x in result): raise ValueError('Do not average defined sources only')
+    return result
 
 
 def draw(a, fits):
@@ -47,6 +56,11 @@ def draw(a, fits):
 
 def main():
     a = read(PUBLIC/'analysis.json'); p, bundle = a['primary'], a['camera_bundle']
+    proof = read(PUBLIC/'replay_verification.json')
+    if (proof['analysis_sha256'] != hashlib.sha256((PUBLIC/'analysis.json').read_bytes()).hexdigest()
+            or proof['replay_exit_code_observed'] != 0 or proof['new_prediction_banks_exact'] != 12
+            or not proof['all_scalar_results_exact']):
+        raise ValueError('Report only the complete verified frozen readout')
     fits = [read(path) for path in sorted((PUBLIC/'fits').glob('*/*.json'))]
     t, v, c = [read(PUBLIC/name) for name in ('training.json', 'verification.json', 'control.json')]
     if (len(fits) != 12 or t['models'] != 12 or v['models'] != 2 or not v['full_refits_exact']
@@ -105,9 +119,10 @@ def main():
         'have3,029,060nominal/582,468trainable parameters,1,792extra node parameters.', '',
         'Real100+100and actual in-forward SIGTERM1+199both match continuous200.',
         'The immutable step1stop snapshot is preserved. Three recovery trajectories',
-        'add400updates beyond the prefix reused by its own treatment;planned',
-        'uninterrupted total60,400updates. Any repeated interrupted work must be',
-        'accounted separately. A partial-update failure retains a coherent earlier',
+        'add400updates beyond the prefix reused by its own treatment. The actual',
+        'total is60,400updates. The disk-reserve stop retained3935committed steps',
+        'and resumed for exactly65more;there was no budget reduction. A partial-',
+        'update failure retains a coherent earlier',
         'checkpoint;it never certifies an advanced incomplete sampler as committed.', '',
         'All twelve new prediction banks freeze before scoring and replay exactly;',
         'all scalar evidence replays exactly. Eighteen cached raw/old-both/camera-CV',
@@ -140,6 +155,26 @@ def main():
         'checks that the new branch is useful beyond the original forecaster.',
         'Both are necessary. No secondary result can replace a failed primary.',
         'A negative completion lower is not identification of unknown actual loss.', '',
+        '## Why The Two Comparisons Differ', '',
+        'Known-label contrasts balance queries and retain all fourteen sources. The',
+        'same-capacity native-node branch is itself '+fmt(known_prefixes(a, 'native_bundle')[-1])+'pp',
+        'against the original actor. Therefore beating that branch does not establish',
+        'a gain against the original. Camera-node versus original across 1/3/6/12',
+        'steps is '+', '.join(fmt(x) for x in known_prefixes(a, 'camera_bundle'))+'pp.',
+        'A favorable short prefix cannot substitute for the registered whole forecast.', '',
+        f'The whole-12 unknown-row disagreement allowance is {p["known_pp"]-p["completion_lower_pp"]:.4f}pp',
+        f'for camera/native and {bundle["known_pp"]-bundle["completion_lower_pp"]:.4f}pp for camera/original.',
+        'These are differences between existing known and lower contrasts, not',
+        'estimated errors on missing targets. Partial rows keep observed-step error.',
+        'The observed contrast against the original is reported separately, so a',
+        'failed comparison is not attributed solely to missing labels.', '',
+        f'Camera/native fold known means are {p["fold_known_means"]};',
+        f'camera/original fold means are {bundle["fold_known_means"]}.',
+        'The two fitted branches can differ even when a particular window has an',
+        'identity-imputed transform: their training data representations differed.',
+        'Active/inactive proxy strata are descriptive, not an identified causal',
+        'effect of camera availability.', '',
+        '## What The Repair Establishes', '',
         'Native geometry is retained,so the earlier one-sided information-erasure',
         'counterexample is repaired at the representation level. That is not proof',
         'that the proxy contains useful camera/scene semantics on real held sources.',
@@ -168,7 +203,7 @@ def main():
     commands = ['# 原始与对齐双视图轨迹模型复现', '',
         '需要已有 native 数据、过去图像变换代理和 pinned EqMotion。使用 arm64',
         '`.venv-pytorch`，CPU4/inter-op1/workers0。不要重复启动活跃进程。', '', '```sh']
-    for phase in ('admit', 'control --resume', 'train --resume', 'verify --resume', 'forecast', 'evaluate', 'replay'):
+    for phase in ('admit', 'pilot', 'control --resume', 'train --resume', 'verify --resume', 'forecast', 'evaluate', 'replay'):
         commands.append('.venv-pytorch/bin/python scripts/run_m3w_moving_dual_view.py '+phase)
     commands += ['.venv-pytorch/bin/python scripts/report_m3w_moving_dual_view.py', '```', '',
         '已完成pilot/evaluate收据不可覆盖；replay重算12个新预测及全部指标。',

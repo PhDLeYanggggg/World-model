@@ -79,6 +79,24 @@ Both complete4000update first-design refits reproduce model/optimizer/sampler/
 RNG/trace exactly. This is one full refit perarm,not twelve exact refits.
 The full60400update experiment budget is now executed without a reduced budget.
 Fresh12-bank inference startsPID2528;new outcomes still not scored.
+ForecastPID2528exits0 at04:49:22Z;all12new banks freeze before scoring.
+EvaluationPID3744exits0;separate replayPID3769exits0 at05:05:25Z after
+946.225707s,peak1,565,523,968B. All12new forecasts and every scalar reproduce
+exactly;the18cached old controls are hash/row-verified,not freshly inferred.
+**Both registered screens fail.** Camera/native known+0.827611pp,lower
+-4.978825pp[-7.691522,-2.332770],10/14positive sources;fold0known-0.121567pp.
+Camera/original known-0.320818pp,lower-5.995226pp[-8.460954,-3.530160],
+6/14positive sources. Native/original known-1.148429pp. Camera/original
+1/3/6/12known+1.948361/+0.248906/-0.059577/-0.320818pp:early gain is not
+whole-forecast gain. The unknown-row allowances are5.806435pp and5.674408pp;
+the original-model known contrast is already negative,not only missingness.
+Raw camera-node easy+harm>2%in33/34recordings;not a full policy certificate.
+No controller,deployment,new own-B/C/Hreadout,identity exception or changed
+risk rule. One seed,exposed A,8/12 stride1 image coordinates. Not independent
+confirmation or submission-ready.43focused checks pass10.92s;full historical
+suite not rerun. Eight-page paper and three-page supplement compiled and
+visually checked with their separate source bindings.
+[Completed comparison](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/README.md).
 
 ### Existing-Estimand Supplement: Derivations And Synthetic Verification
 

@@ -421,6 +421,31 @@ a training-population average or proof of underfitting. Past alignment
 and future-affine restoration remain a bundled intervention; their
 separate effects are not identified by this experiment.
 
+### 6.4 Additional Observed-View Node Features
+
+The replacement retains native geometry and adds aligned motion as
+per-node features. A capacity-matched control suppresses the camera
+transform. Both add 1,792 parameters, not a trajectory residual or
+future camera-restoration operator. Twelve full 4,000-update fits,
+one full shared-core control and two fixed-design full refits complete.
+All twelve new predictions and reported statistics replay exactly.
+
+### Table 4. Whole-12 dual-view contrasts on exposed donors
+
+| Comparison | Known (pp) | Lower (pp) | Exploratory interval for lower |
+|---|---:|---:|---|
+| Camera - native node | +0.828 | -4.979 | [-7.692, -2.333] |
+| Camera - original | -0.321 | -5.995 | [-8.461, -3.530] |
+
+The matched comparison has 10/14 positive known sources;
+the original-actor comparison has 6/14.
+Both comparisons must pass. The registered component screen is not supported.
+Raw known-easy positive harm exceeds 2% in 33 of 34 recordings;
+this is not a complete selected-policy certificate. The reported lower
+contrast bounds wholly unknown row contributions with the observed
+reference fixed, not the full-grid error of partially labelled rows.
+This is one forecaster seed and no new independent test or deployment.
+
 ## 7. Failure Analysis and Limitations
 
 Posthoc frozen-checkpoint diagnostics find all twelve final image projections nonzero (True). The largest known loss is source 067, where both arms have 0.000% and 0.000% clipped input elements, respectively. Thus neither an entirely inactive branch nor input clipping alone explains that case. These diagnostics are not retrained ablations or proof of a single causal failure mechanism.
@@ -450,9 +475,9 @@ labels still depend on $c_{\mathrm{future}}-c_0$. Different observed camera moti
 therefore collapse to the same core representation with different labels.
 This conventional information-loss example is not a new impossibility theorem
 or proof of the combined actor's real-data failure. The incomplete one-sided
-follow-up was stopped before outcome scoring. A replacement retains both
-native geometry and aligned node features; its new outcomes are not included
-while full fitting remains in progress.
+follow-up was stopped before outcome scoring. The replacement retains both
+native geometry and aligned node features, which repairs this representation
+defect without itself establishing a predictive or policy gain.
 
 The current evidence is source-excluded per pipeline but previously exposed
 globally. Exact replay establishes repeatability, not independent scientific

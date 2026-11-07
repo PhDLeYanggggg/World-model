@@ -277,6 +277,56 @@ def native_portable_update():
         'model-training/prediction reproduction.')
 
 
+def dual_view_update():
+    folder = HOME/'moving_dual_view_actor_v1'
+    path = folder/'analysis.json'
+    if not path.exists(): return ''
+    proof_path = folder/'replay_verification.json'
+    if not proof_path.exists():
+        raise ValueError('Dual-view outcomes require a completed bound exact replay')
+    proof = read(proof_path)
+    train, refit = [read(folder/name) for name in ('training.json', 'verification.json')]
+    if (proof['analysis_sha256'] != sha(path)
+            or proof['forecast_freeze_sha256'] != sha(folder/'forecast_freeze.json')
+            or proof['new_prediction_banks_exact'] != 12
+            or not proof['all_scalar_results_exact'] or proof['replay_exit_code_observed'] != 0
+            or train['models'] != 12 or train['steps_each'] != 4000
+            or refit['models'] != 2 or not refit['full_refits_exact']):
+        raise ValueError('Complete twelve-fit, two-refit, exact replay evidence required')
+    a = read(path); p, raw = a['primary'], a['camera_bundle']
+    if a['component_progression_screen_pass'] != (p['component_progression_screen_pass'] and raw['component_progression_screen_pass']):
+        raise ValueError('Both registered comparisons must determine progression')
+    lines = ['### 6.4 Additional Observed-View Node Features', '',
+        'The replacement retains native geometry and adds aligned motion as',
+        'per-node features. A capacity-matched control suppresses the camera',
+        'transform. Both add 1,792 parameters, not a trajectory residual or',
+        'future camera-restoration operator. Twelve full 4,000-update fits,',
+        'one full shared-core control and two fixed-design full refits complete.',
+        'All twelve new predictions and reported statistics replay exactly.', '',
+        '### Table 4. Whole-12 dual-view contrasts on exposed donors', '',
+        '| Comparison | Known (pp) | Lower (pp) | Exploratory interval for lower |',
+        '|---|---:|---:|---|']
+    for label, r in (('Camera - native node', p), ('Camera - original', raw)):
+        lo, hi = r['interval95']
+        lines.append(f'| {label} | {r["known_pp"]:+.3f} | {r["completion_lower_pp"]:+.3f} | [{lo:+.3f}, {hi:+.3f}] |')
+    for key in ('primary', 'camera_bundle'):
+        rows = [r for r in a['sources'] if r['contrast'] == key]
+        if len(rows) != 14 or sum(r['summary'][-1]['rows'] for r in rows) != 125540:
+            raise ValueError('All fourteen sources and all donor rows must be retained')
+    harm = [r['summary'][-1]['treatment']['known_easy_positive_harm_percent'] for r in a['recordings'] if r['contrast'] == 'primary']
+    if len(harm) != 34: raise ValueError('Retain all recordings in the raw actor diagnostic')
+    lines += ['', f'The matched comparison has {p["positive_known_sources"]}/14 positive known sources;',
+        f'the original-actor comparison has {raw["positive_known_sources"]}/14.',
+        'Both comparisons must pass. The registered component screen is '+
+        ('supported on exposed donors.' if a['component_progression_screen_pass'] else 'not supported.'),
+        f'Raw known-easy positive harm exceeds 2% in {sum(x is not None and x > 2 for x in harm)} of 34 recordings;',
+        'this is not a complete selected-policy certificate. The reported lower',
+        'contrast bounds wholly unknown row contributions with the observed',
+        'reference fixed, not the full-grid error of partially labelled rows.',
+        'This is one forecaster seed and no new independent test or deployment.']
+    return '\n'.join(lines)
+
+
 def figures(a):
     import matplotlib
     matplotlib.use('Agg')
@@ -322,7 +372,8 @@ def main():
         worst = max(v['known_easy_net_degradation'] for x in a['rows'] if x['arm'] == arm
             for v in x['policies']['joint_free']['recordings'].values() if v['known_easy_net_degradation'] is not None)
         table.append(f'| {name} | {r["utility"]["known"]["point"]:.3f} | {r["hard_gain_percent"]:.3f} | {r["easy_gain_percent"]:.3f} | {r["safety"]["supported_record_views"]}/72 | {100*worst:.2f} |')
-    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), camera_update=camera_update(), native_portable_update=native_portable_update(), motion_lower_short=f'{p["point"]:.3f}',
+    dual = dual_view_update()
+    values = dict(cost_table='\n'.join(table), actor_update=actor_update(), actor_table=actor_table(), actor_abstract=actor_abstract(), actor_mechanism=actor_mechanism(), camera_update=camera_update(), native_portable_update=native_portable_update(), dual_view_update=dual, motion_lower_short=f'{p["point"]:.3f}',
         motion_lower_long=f'{p["point"]:.6f}', motion_ci_short=f'[{p["interval95"][0]:.3f}, {p["interval95"][1]:.3f}]',
         motion_ci_long=f'[{p["interval95"][0]:.6f}, {p["interval95"][1]:.6f}]', motion_positive_sources=positive,
         motion_known_short=f'{m["utility"]["known"]["point"]:.3f}', motion_pass=s['supported_record_views'],
@@ -356,13 +407,19 @@ def main():
         ROOT/'src/evaluation/native_actor_portable.py', ROOT/'scripts/build_m3w_native_actor_reproduction.py',
         HOME/'moving_camera_factor_v1/design_stop.md', HOME/'moving_camera_factor_v1/stopped_training.json']
     reporting_sources = {str(path.relative_to(ROOT)): sha(path) for path in reporting_paths}
+    dual_paths = [HOME/'moving_dual_view_actor_v1'/name for name in ('registration_v2.json',
+        'analysis.json', 'training.json', 'verification.json', 'control.json', 'forecast_freeze.json',
+        'replay_verification.json', 'failure_analysis.md', 'resource_interruption_20261107.json',
+        'resource_resume_20261107.json')]
+    dual_sources = {str(path.relative_to(ROOT)): sha(path) for path in dual_paths} if dual else {}
     write_json(PUBLIC/'source_bindings.json', dict(result_source='fresh_prose_typesetting_of_cached_verified_scalar_evidence',
         fixed_sources=PINNED, template_sha256=sha(PUBLIC/'manuscript.template.md'), builder_sha256=sha(Path(__file__)),
         markdown_sha256=sha(PUBLIC/'manuscript.md'), tex_sha256=sha(PUBLIC/'manuscript.tex'), cvpr_style_sha256=sha(template),
         actor_outcomes_included=(HOME/'moving_visual_actor_v1/analysis.json').exists(),
         actor_sources=actor_sources,
         camera_outcomes_included=bool(values['camera_update']), camera_sources=camera_sources,
-        reporting_and_scope_sources=reporting_sources, new_dual_view_outcomes_included=False,
+        reporting_and_scope_sources=reporting_sources, new_dual_view_outcomes_included=bool(dual),
+        dual_view_sources=dual_sources,
         independent_confirmation=False, submission_ready=False, old_v9_sources_or_PDF_modified=False,
         stage5c_executed=False, smc_enabled=False))
     print('Native-stride working manuscript and private figures prepared; no new outcome scoring or submission claim.')

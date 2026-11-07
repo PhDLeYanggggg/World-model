@@ -11,6 +11,42 @@ Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
 ## Current Result
 
+I tested whether adding past-image alignment to each agent's history helps
+without replacing its native coordinates. The new model keeps both views;
+the matched control adds the same capacity without the camera transform.
+There is no forced future-camera restoration or trajectory residual decoder.
+
+| Whole-12 Comparison | Known-Label Gain Difference | Completion Lower | Source-Bootstrap Interval for Lower |
+|---|---:|---:|---:|
+| Observed-view node vs same-capacity native node | +0.828 pp | -4.979 pp | [-7.692, -2.333] pp |
+| Observed-view node vs original actor | -0.321 pp | -5.995 pp | [-8.461, -3.530] pp |
+
+**Neither required comparison passes.** The same-capacity control itself loses
+1.148 points against the original. The new model's gain against the original
+is +1.948 points at one step, but it does not persist over all twelve steps.
+Known-easy positive harm still exceeds 2% in 33 of 34 raw-actor recording
+diagnostics. This is not a complete selected-policy certificate. I retain the
+original model and evaluation rules, with no new controller or deployment.
+
+All twelve treatment fits completed 4,000 updates. The full shared-core raw
+control and both fixed-design refits match exactly. A disk guard saved a
+coherent step 3,935 checkpoint; the resumed model performed exactly the
+remaining 65 updates. All twelve new forecast banks and scalar results replay
+exactly. Eighteen existing controls are verified cache, not fresh inference.
+
+This is one forecaster seed on 125,540 previously exposed donor windows from
+14 source groups. I observe 8 steps and predict 12 at native stride 1 in image
+coordinates. The completion lower bounds wholly unknown rows with the observed
+reference fixed; it is not full-grid ADE for partial tracks. This does not
+establish independent confirmation, calibrated time/scale, true 3D, a
+foundation world model, or submission readiness.
+
+[Full experiment](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/README.md),
+[failure analysis](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/failure_analysis.md),
+[reproduction instructions](outputs/publication_readiness_2026_09/moving_dual_view_actor_v1/operation_zh.md).
+
+### Earlier Viewpoint Study
+
 I tested whether explicit viewpoint conditioning helps the trajectory network.
 Past-image motion aligns observed agent and neighbor histories to the current
 view. A fixed extrapolation restores predicted image coordinates. The network,
@@ -67,24 +103,8 @@ synthetic counterexample exposed information loss: aligned history alone can
 be identical under different camera motions while native future labels differ.
 Its recovery pilot and full original control passed, but only the first new
 model reached 2,160 updates. I do not report it as a completed experiment.
-The next repair must preserve both native and aligned history, rather than
-discarding camera information or forcing a fixed future transform.
+This is why the current replacement retains both native and aligned history.
 [Design diagnosis](outputs/publication_readiness_2026_09/moving_camera_factor_v1/design_stop.md).
-The replacement keeps native geometry and adds aligned motion as per-node
-features. Its matched control has the same extra parameters but no camera
-transform. Seven focused checks pass, including original-core update parity,
-retained two-view information and coherent interruption recovery. Real-data
-100+100 and mid-forward signal-stop recovery now both match continuous 200
-exactly. The full 4,000-update original-core control now also matches the shared
-model, active optimizer state, sampler/RNG and common loss trace exactly. Its
-two additional inactive optimizer entries are declared separately. All twelve
-full treatment models are complete, with original sampling/RNG checks intact.
-A disk-space guard stopped
-the tenth model at coherent update 3,935. When space recovered it resumed for
-exactly the remaining 65 updates, retaining final sampling/RNG parity. No budget
-or disk reserve was reduced. Both complete fixed-design treatment refits now
-match their originals exactly. The twelve new prediction banks are being
-generated before outcome comparison; usefulness is not established.
 
 The [evaluation supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v10/supplementary_math.md)
 now makes an important distinction explicit: available-label error and the
@@ -93,7 +113,7 @@ The derivations and synthetic checks explain the existing quantities without
 changing the evaluation contract or any historical score.
 
 A [standalone aggregate-evidence package](outputs/publication_readiness_2026_09/native_actor_reproduction_v1/README.md)
-now replays the three completed actor studies in a clean directory without
+replays the three earlier completed actor studies in a clean directory without
 Torch,network access or the project workspace. It preserves their negative
 results and distinct bootstrap seeds. This is reporting reproducibility,
 not independent validation or a complete model-training release.

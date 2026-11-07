@@ -112,3 +112,51 @@ def test_aggregate_reporting_artifact_never_becomes_full_model_reproduction(tmp_
     value['full_training_reproduction'] = True; path.write_text(json.dumps(value))
     with pytest.raises(ValueError, match='full model replication'):
         paper.native_portable_update()
+
+
+def dual_view_fixture(tmp_path, monkeypatch, with_replay=True):
+    monkeypatch.setattr(paper, 'HOME', tmp_path)
+    folder = tmp_path/'moving_dual_view_actor_v1'; folder.mkdir()
+    primary = dict(known_pp=.828, completion_lower_pp=-4.979, interval95=[-7.692, -2.333],
+        positive_known_sources=10, component_progression_screen_pass=False)
+    raw = dict(known_pp=-.321, completion_lower_pp=-5.995, interval95=[-8.461, -3.530],
+        positive_known_sources=6, component_progression_screen_pass=False)
+    a = dict(primary=primary, camera_bundle=raw, component_progression_screen_pass=False,
+        sources=[dict(contrast=c, summary=[dict(rows=8967+(i < 2))])
+            for c in ('primary', 'camera_bundle') for i in range(14)],
+        recordings=[dict(contrast='primary', summary=[dict(treatment=dict(known_easy_positive_harm_percent=3.))])
+            for _ in range(34)])
+    for name, value in {
+            'analysis.json': a, 'training.json': dict(models=12, steps_each=4000),
+            'verification.json': dict(models=2, full_refits_exact=True),
+            'forecast_freeze.json': dict(all_new_predictions_frozen_before_scoring=True)}.items():
+        (folder/name).write_text(json.dumps(value))
+    if with_replay:
+        (folder/'replay_verification.json').write_text(json.dumps(dict(
+            analysis_sha256=paper.sha(folder/'analysis.json'),
+            forecast_freeze_sha256=paper.sha(folder/'forecast_freeze.json'),
+            new_prediction_banks_exact=12, all_scalar_results_exact=True, replay_exit_code_observed=0)))
+    return folder, a
+
+
+def test_dual_view_requires_bound_completed_replay(tmp_path, monkeypatch):
+    dual_view_fixture(tmp_path, monkeypatch, with_replay=False)
+    with pytest.raises(ValueError, match='bound exact replay'):
+        paper.dual_view_update()
+
+
+def test_dual_view_preserves_both_required_contrasts(tmp_path, monkeypatch):
+    dual_view_fixture(tmp_path, monkeypatch)
+    text = paper.dual_view_update()
+    assert 'Camera - native node | +0.828 | -4.979' in text
+    assert 'Camera - original | -0.321 | -5.995' in text
+    assert 'Both comparisons must pass' in text and 'not supported' in text
+    assert 'not the full-grid error' in text
+
+
+def test_dual_view_rejects_changed_results_after_replay(tmp_path, monkeypatch):
+    folder, a = dual_view_fixture(tmp_path, monkeypatch)
+    a['camera_bundle']['known_pp'] = 1.
+    (folder/'analysis.json').write_text(json.dumps(a))
+    with pytest.raises(ValueError, match='exact replay evidence required'):
+        paper.dual_view_update()
