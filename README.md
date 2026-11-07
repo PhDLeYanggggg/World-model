@@ -840,9 +840,12 @@ known difference -1.804pp and paired lower -10.931pp [-17.826, -5.288].
 Its nonzero learned weights and unclipped worst source rule out a completely
 inactive branch or input clipping alone as sufficient explanations.
 [Earlier actor study](outputs/publication_readiness_2026_09/moving_visual_actor_v1/README.md).
-The [English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v10/README.md)
+The [English working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v20/README.md)
 keeps these native-stride results separate from older European stride-12 and
 SDD studies. It remains an evidence draft, not a submission-ready paper.
+The [companion supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v20/supplement_readout.md)
+explains how I distinguish observed utility, missing-label bounds and
+recording-level failures, with instructions to rebuild the tables.
 
 A one-sided operator ablation was stopped before outcome scoring after a
 synthetic counterexample exposed information loss: aligned history alone can

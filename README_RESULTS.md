@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Anonymous Decision Supplement
+
+The four-page companion to v20 brings the original risk definitions,
+matched controls, source influence and negative path studies together.
+The source archive rebuilds identically, and compilation from that
+archive matches all four page rasters. This adds no new predictive or
+independent external result.
+[Supplement and rebuild instructions](outputs/publication_readiness_2026_09/evidence_manuscript_v20/supplement_readout.md).
+
 ## Past-Only Prefix-Adaptive Velocity
 
 At 9,675 unchanged switches, adaptive per-agent weights improve

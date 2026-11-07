@@ -1,0 +1,106 @@
+\section{Query Gain and Recording Feasibility}
+\label{sec:affine-feasibility}
+The two frozen paths for each intervention recipient are an
+individual-motion forecast and a forecast trained with a
+relative-motion objective. Both differ from CV at the original
+switch recipients. Write their affine mixture as
+$p_i(\alpha_i)=a_i+\alpha_i(b_i-a_i)$, with $0\leq\alpha_i\leq1$.
+All other paths are fixed. A separate learned mixture adds
+debits for missing-label disagreement to the fitting objective;
+its median weight on the relative-motion path drops from
+\AlphaObserved{} to \AlphaCompletion{}, with no new recording
+passes. This is a fitted shrinkage result, not a feasibility
+bound.
+
+\paragraph{Query-local direction.}
+For each requested pair-step, let $D\alpha$ denote the
+relative-vector change from the individual path. With a
+co-observed residual $e$, the increase in pair error is
+$\|e+D\alpha\|-\|e\|$. With missing labels, charge
+$\|D\alpha\|$ instead. Their sum is convex in $\alpha$ and
+starts at zero. If a nonzero mixture improves this score,
+the one-sided derivative along its direction is negative
+by the secant inequality. Conversely, a negative derivative
+gives a finite improving mixture sufficiently close to zero.
+The original nonidentity recipients remain unchanged for
+sufficiently small steps. For at most two recipients, a
+nonnegative direction with unit coefficient sum has at
+most one free coordinate. We bracket its convex minimum
+and verify each reported positive witness by the original
+pair scorer, rather than count derivative signs alone.
+Shared weights yield \PairShared{} positive witnesses and
+separate weights \PairSeparate{} of \PairActive{} active
+query-seed views. The latter are repeated queries, not
+independent observations.
+
+\paragraph{A simultaneous recording lower bound.}
+With recipients fixed, the three recording reference masses
+are constants. On any selected row with future support let
+$c_i$ be its masked ADE; on a wholly unobserved selected row
+let $c_i$ be its maximum disagreement from CV. Each original
+risk numerator is a coordinatewise nondecreasing function
+of $c=(c_i)$. In particular, clipping the known increments
+at zero preserves monotonicity, as does the signed easy sum.
+Thus minimizing each convex scalar cost $c_i(\alpha_i)$
+separately simultaneously minimizes all three numerators
+in the relaxed box. If a resulting lower bound exceeds
+any allowance, the exact-nonidentity problem is infeasible.
+The converse requires a witness with the exact nonidentity
+mask and all three original checks re-scored. A missing
+positive denominator cannot be repaired by changing weights.
+
+Of \FeasibilityViews{} views, \FeasibilityUndefined{} lack
+selected easy reference, \FeasibilityExcluded{} exceed an
+allowance at the lower bound, and \FeasibilitySupported{}
+admit checked witnesses. In \FeasibilityUnknown{} views,
+the minimum disagreement of unobserved switches alone
+exceeds the easy allowance. A checked ray toward the
+query-local pair witnesses improves the conservative pair
+score relative to the individual minimum-risk anchor in
+\FeasibilityPair{} of the feasible views; \FeasibilityOLS{}
+beat OLS4. This is not a global pair optimum. It excludes
+this affine family at this recipient roster as a complete
+solution, not a different roster or different trajectories.
+
+\section{Past-Only Velocity Adaptation}
+\label{sec:prefix-motion}
+A second forecast basis uses anchored velocity slopes
+from the last two, four and six observed positions. We
+compare fixed mixture weights with two ways to adapt them
+using only the observation window. The adaptation fits each
+slope on an earlier prefix and measures its one- and
+two-step error against later positions that are already
+observed at the actual forecast origin. We use four
+pseudo-origins, favor recent one-step errors, divide by
+observed RMS displacement (with a pixel-scale floor),
+and multiply the prior weights by exponentiated negative
+errors. The agent arm uses its own weights; the query
+arm uses the mean across observed query members. Neither
+variant is tuned on future labels.
+
+The matched analysis replaces paths only at the original
+switch recipients and keeps the original switch if a new
+path would equal CV. The fixed, query and agent weights
+pass \PrefixPassFixed{}, \PrefixPassQuery{} and
+\PrefixPassAgent{} of \FeasibilityViews{} original risk
+checks; gain ranking passes \PrefixPassGain{}. The
+available-label gain over fixed weights does not persist
+under the conservative lower contrast, and the agent arm
+does not establish a gain over query-shared weighting.
+The whole-roster rows in Table~\ref{tab:prefix-velocity}
+evaluate standalone forecasts, not intervention policies.
+
+\begin{table}[!t]
+\centering\scriptsize
+\caption{Per-agent prefix adaptation vs. each comparator.
+ADE gain in points of observed CV reference, with 95\% source
+intervals. The matched rows preserve 9,675 genuine switches.}
+\label{tab:prefix-velocity}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Comparator & Available labels & Completion lower\\
+\midrule
+\PrefixRows
+\bottomrule
+\end{tabular}
+\end{table}
