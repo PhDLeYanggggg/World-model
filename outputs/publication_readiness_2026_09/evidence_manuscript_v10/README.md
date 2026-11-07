@@ -53,6 +53,12 @@ checked; the main PDF and the mathematical supplement are unchanged.
 Build its Markdown and TeX from the replay receipts with
 `.venv-pytorch/bin/python scripts/build_m3w_utility_tradeoff_appendix.py`.
 
+The [capacity diagnostic](../moving_record_joint_actions_v1/causal_ledger/prefix_capacity/readout.md)
+also has a separate, visually checked vector figure under the local
+`utility_tradeoff_build` directory. It contrasts four nested constraint
+sets and keeps unresolved solver results visible. It does not replace
+the failed learned-policy comparison or change the main manuscript.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

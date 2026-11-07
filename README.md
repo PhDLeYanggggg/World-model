@@ -272,6 +272,15 @@ screen. This checks training provenance, not external performance; I have
 not selected an external policy or scored the new archive.
 [Recording coverage](outputs/publication_readiness_2026_09/dronecrowd_controller_coverage_v1/README.md).
 
+To see whether the forecasts themselves were the main limitation, I
+computed what could be selected with hindsight under the original
+risk rules. The bank contains useful, admissible combinations in 101
+of 102 development views when the timing and number of switches may
+change. Fixing the old switch counts and applying the predicted budgets
+leaves far fewer. This points to the allocation and cost estimates,
+but does not show that the right actions are identifiable online.
+[Hindsight capacity](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/prefix_capacity/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

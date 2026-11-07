@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Capacity Under Fixed Counts And Predicted Risk Budgets
+
+Across all 102 development views, the frozen bank has 101 checked
+hindsight witnesses with free capped counts, 81 with the old counts
+fixed query by query, 62 when the terminal predicted budgets are
+also required, and 48 when every predicted prefix is constrained.
+The modes prove 0/20/36/40 infeasible; 1/1/4/14 remain unresolved.
+Every witness passes the original observed risk scorer and has
+positive paired completion-lower utility. This is a hindsight limit,
+not a deployable policy or equal-volume comparison for the free arm.
+[Results and recovery](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/prefix_capacity/readout.md).
+
 ## External Cost-Head Recording Coverage
 
 The direct cost and directional gain heads' 42 fitting cells use only
