@@ -14,6 +14,17 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Count-Preserving Joint Exchange
+
+The additive and joint scores held every query's switch count
+fixed and both retained 2/102 recording passes. Neither found a
+first-query non-loss rescue. Exact capacity in missing-reference
+views is 5/35 for the same-query exchange and 8/35 when one later
+withdrawal is also allowed at fixed recording count. This is a
+capacity result, not a learned gain. The original 2% and support
+rules are unchanged.
+[Experiment and capacity checks](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/atomic_swap/readout.md).
+
 ## Whole-Recording Rescue Supervision
 
 In 84 fresh Torch fits, whole-record rescue supervision picked

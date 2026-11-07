@@ -415,6 +415,13 @@ one existing switch would have passed. The learned policy did not
 make that joint decision, so I have not changed the operating model.
 [Whole-record supervision experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/record_rescue/readout.md).
 
+I also tested a same-query exchange that keeps the number of
+switched agents fixed. Neither learned score recovered a whole
+recording. The action set itself is limited: five of 35 missing
+references could be repaired in hindsight, or eight when the
+withdrawal could occur in a later query at the same recording count.
+[Count-preserving exchange experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/atomic_swap/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
