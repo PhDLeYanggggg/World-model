@@ -68,6 +68,12 @@ updates to4000,256000draws,original draw/factor/RNG parity intact.10/12complete,
 last two train. The old3935hash records its rolling checkpoint at interruption;
 it is not claimed an immutable snapshot after that same file advances.
 The resume and complete-design receipt preserve this distinction.
+At03:54:57Z,PID96461exits0 after2318.301627resume-phase seconds,
+peak1,938,685,952B. All12full4000fits complete with original draw/factor/RNG
+parity. No repeated partial update is required after the coherent3935stop.
+PID99198now performs two full first-design refits,one perarm,from scratch.
+The complete matrix is not yet a real predictive result;forecasts/scoring and
+separate replay remain not_run until both refits verify exactly.
 
 ### Existing-Estimand Supplement: Derivations And Synthetic Verification
 
