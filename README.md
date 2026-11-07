@@ -115,6 +115,13 @@ report where joint selection falls short, alongside the image ablation,
 the recording-level risk refits, and a large easy-case failure.
 [Working paper and reproduction](outputs/publication_readiness_2026_09/evidence_manuscript_v12/README.md).
 
+I checked whether any one source drives the relative-motion result.
+Joint selection improves observed pair error over independent selection
+in all 14 source averages, but the added pair term does not have the
+same support against the matched additive control. Its full-grid lower
+estimate stays negative whichever source I omit.
+[Risk definitions and source checks](outputs/publication_readiness_2026_09/evidence_manuscript_v12/supplement_readout.md).
+
 I have fixed the DroneCrowd study to 15 calibration groups and 30
 separate confirmation groups. The recordings stay with their entire
 exclusion group. This assigns roles; it does not report external

@@ -33,6 +33,18 @@ tectonic -X compile manuscript.tex
 联合对照，核对原始 2% 门槛和 3,000 次来源组自助抽样。两种操作
 都不会重训模型、重跑外部确认或解除数据封存。
 
+需要复核工作稿配套的风险公式、对照表及逐一删来源组结果时，回到
+项目根目录，用已验证的数值回放 ZIP 重建补充材料：
+
+~~~sh
+.venv-pytorch/bin/python scripts/build_m3w_decision_supplement_v12.py
+cd data/stage_cvpr2027_experiments/evidence_manuscript_v12/supplement
+tectonic -X compile supplement.tex
+~~~
+
+删组结果保留同一来源的全部三种子。它不是新置信区间，也不能用来
+删掉表现差的来源或修改确认规则。
+
 ## 3. 查看、恢复 DroneCrowd 本地校准
 
 ~~~sh

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source Influence And Decision Supplement
+
+On exposed development, joint beats independent selection on observed
+pair ADE in 14/14 source averages. Against the additive control, the
+observed omission range is -0.0002 to +0.0172 pixels and the full-grid
+lower omission range is -0.1725 to -0.0798 pixels. These are sensitivity
+ranges, not new confidence intervals. The [working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v12/supplement_readout.md)
+records the exact risk ratios and unchanged independent protocol.
+
 ## Integrated Decision Manuscript
 
 The four-page [v12 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v12/README.md)

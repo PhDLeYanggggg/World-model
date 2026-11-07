@@ -1,0 +1,234 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[review]{cvpr}
+\usepackage{times,amsmath,amssymb,booktabs}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=blue]{hyperref}
+\def\confName{CVPR}\def\confYear{2027}\def\PaperID{DRAFT}
+\title{When Should a Neural Forecast Replace a Motion Baseline?\\Working Supplement}
+\author{Anonymous}
+\input{supplement_values.tex}
+\begin{document}\maketitle
+
+\noindent\textbf{Scope.}
+This supplement reports exposed development evidence and explains the
+registered evaluation. There are no independent outcomes. The task uses
+eight observed positions and twelve requested steps at native annotation
+stride one. All trajectory distances are in image pixels.
+
+\section{Forecast Bank and Selection Controls}
+The bank contains six causal motion forecasts and three learned
+forecast families: fixed-head EqMotion, Past Context Transformer,
+and a self-kinematic forecast. CV is both fallback and the risk
+reference; OLS4 estimates slope from the last four positions and is
+an additional accuracy comparator. EqMotion supplies a geometric
+forecast architecture~\cite{eqmotion}; neither the adaptation nor
+our scoring is a reproduction of its published multimodal benchmark.
+
+For each candidate, a fixed ridge model estimates six quantities:
+signed gain, positive harm, easy positive harm, reference error,
+easy reference error, and the probability of a wholly unobserved
+future. It uses displacements, changes in velocity, query size,
+and forecast deviations from CV, all computable from past positions
+and forecast paths. The motion scale is one pixel plus 6.5 times
+the median norm of past displacements. Fitting averages the
+per-source sufficient statistics and uses a ridge penalty of
+0.002 except on the intercept. Scored development sources are
+excluded from their fits. The pooled fits used for transport do
+not use external labels.
+
+Independent and graph arms first nominate one option per agent.
+The shared-family control instead picks a single family for the
+same number of switches in a query. The graph uses the undirected
+union of four-nearest-neighbor links at the last observed position.
+The geometry cost averages relative-path change over forecast
+steps, divides squared deviations by the product of endpoint
+motion scales, and weights the edge by the inverse square root
+of the degree product. Its coefficient is 0.10. The additive
+arm drops the interaction cross term. Searching over agent
+pairs with nominated options is not unrestricted joint search
+over all candidate forecasts; the separate exact-search
+diagnostic expands that set. Only the screened arm can
+discard the proposal according to fitted gain, excess harm,
+and positive estimated easy reference. This local screen is
+not the outcome evaluator.
+
+\section{Recording Risk and Accuracy Are Different Estimands}
+Let $p_i$ and $b_i$ be the policy and CV paths. On a row
+with at least one labeled future step, $e_i$ is the mean
+Euclidean error over its available steps. Let $b_i^e=e_i(b)$
+and $h_i=[e_i(p)-b_i^e]_+$. A genuine switch has
+$d_i=\max_t\|p_{it}-b_{it}\|_2>0$. The easy subset is
+$E=\{i:0<b_i^e\leq 12.491607\}$ on observed rows;
+the hard subset uses $b_i^e>61.717885$. Both pixel cutoffs
+were fitted before the evaluation, not recalibrated on the
+scored development or external data.
+
+Within each recording let $S_K$ be switched rows with
+observed future support, $S_U$ switched rows without it, and
+$U=\sum_{i\in S_U}d_i$. The original three checks are
+\begin{align*}
+R_{\rm all} &= \frac{\sum_{i\in S_K} h_i+U}{\sum_{i\in S_K} b_i^e},\\
+R_{\rm easy} &= \frac{\sum_{i\in S_K\cap E}h_i+U}
+                     {\sum_{i\in S_K\cap E}b_i^e},\\
+R_{\rm signed} &= \frac{\sum_{i\in E}(e_i(p)-b_i^e)}
+                       {\sum_{i\in E}b_i^e}.
+\end{align*}
+The first two sums use unweighted selected rows. The last uses
+the whole observed easy reference. The same wholly unknown
+disagreement is charged in both positive-harm upper bounds.
+All denominators must be positive and all three ratios at most
+2\%. No switches or no selected easy reference is not a pass.
+For two selected rows with reference errors 1 and 100 and
+positive harms 0.03 and 0, the joint ratio is below 2\%;
+removing the second row increases it to 3\%. This illustrative
+counterexample is not a new risk rule or a data result.
+
+By contrast, paired accuracy gives each row weight $1/N_q$
+within its query of $N_q$ eligible agents. For policies $a$
+and $p$, sum the observed weighted gain $e_i(a)-e_i(p)$
+and divide by the same observed CV error mass. For wholly
+unobserved rows, subtract or add the weighted maximum
+disagreement between the two compared paths to bound that
+gain. Existing partial-row averages stay fixed; their missing
+steps are not imputed and the denominator is not completed.
+Thus this is a row-support completion envelope, not a
+complete-grid ADE bound for partially observed trajectories.
+
+Masses are merged within source and seed before forming each
+ratio. Seeds are then averaged within source, and sources
+are averaged equally. A paired bootstrap draws 14 sources
+with replacement 3,000 times. It is distinct from the
+completion envelope and does not correct for adaptive
+development on exposed sources.
+
+\begin{table*}[!t]
+\centering\small
+\caption{Exposed development transport rehearsal. All-risk refers to
+the completion upper ratio; undefined easy includes missing selected
+reference. Columns may overlap. Tail ADE is the largest available-label
+recording p95, in pixels. There are 102 recording-seed views
+from 34 recordings and three forecaster seeds.}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Policy & Switches & Pass & Undefined easy & All-risk $>2\%$ & Tail ADE\\
+\midrule
+\SuppRiskRows
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Relative-Path Error and Source Influence}
+A pair-step is observed only if both agents have a label at
+the same step. Across the three repeated views, \PairObservedSteps{}
+of \PairRequestedSteps{} requested pair-steps are observed.
+At the requested terminal step, the count is
+\PairObservedEndpoints{} of \PairRequestedEndpoints.
+
+For a pair $(i,j)$, compare each predicted relative vector to
+the observed relative vector. On an unobserved step, the
+absolute difference of the two errors is bounded by the
+norm of the difference between the predicted relative vectors.
+Sum the observed differences and the signed missing-step
+bounds, then divide by the number of requested pair-steps
+in that query. This uses a full pair grid, unlike the
+row-support completion envelope for trajectory utility.
+Query effects are averaged within source and seed, then
+averaged across seeds and sources. This is a geometric proxy,
+not a measured collision rate.
+
+Table~\ref{tab:source} recomputes each mean after dropping
+one source group. This is a descriptive influence check, not
+another confidence interval or a rule for excluding scenes.
+All three forecaster seeds remain together within each
+retained source. An unsupported source-seed metric would
+make that contrast unavailable rather than being silently
+discarded. Positive values favor joint selection.
+On observed pairs, joint beats independent in all 14
+source averages. That advantage does not survive the
+full-grid lower envelope. For joint versus additive,
+the observed sign can change under a single omission;
+the lower envelope remains negative under every omission.
+A negative lower envelope means that improvement is
+not established, not that every possible completion loses.
+
+\begin{table*}[!t]
+\centering\small
+\caption{Descriptive source influence for relative-path ADE.
+The range spans 14 leave-one-source-out means, in pixels.
+Positive counts use the seed-averaged values of the original
+14 source groups. CV and OLS4 are reference forecasts, not
+matched-count choices.}
+\label{tab:source}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+& \multicolumn{2}{c}{Observed gain} & \multicolumn{2}{c}{Full-grid lower gain}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Comparison & Positive / 14 & Omission range & Positive / 14 & Omission range\\
+\midrule
+\SuppSourceRows
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Prior Work and Claim Boundary}
+Multi-expert deferral already studies regression costs and
+choice of predictors~\cite{mao}; the contribution sought
+here is not the existence of a switch or an expert head.
+Selective regression can worsen performance within particular
+subgroups as coverage shrinks~\cite{shah}. Our positive-harm
+ratio on switched agents within a recording is different
+from subgroup prediction error. It also need not be monotone
+as the switch set shrinks. We do not claim conformal control:
+the expected-risk guarantee for bounded monotone
+losses~\cite{crc} does not establish our empirical per-recording
+checks on a new source. These distinctions motivate the
+matched controls; they do not establish a new theoretical
+guarantee or a strong forecast result.
+
+\section{Sealed Evaluation and Replay}
+The external protocol uses 15 calibration groups
+(40 recordings) and 30 separate confirmation groups
+(72 recordings). A calibration policy must switch at
+least once, pass all 120 recording-seed checks, and
+have a strictly positive paired lower-utility interval
+endpoint versus CV. Confirmation proceeds only after the
+winner and calibration replay are frozen. Its primary
+comparison requires a positive paired lower endpoint
+versus both CV and OLS4 and all 216 checks to pass.
+Equal-count controls isolate utility on the same active
+queries; an empty matched comparison remains undefined.
+Groups are exclusion units, not verified independent
+physical sites. No calibration or confirmation scores are
+reported here.
+
+The de-identified aggregate replay preserves all 14
+development source groups and three seeds. It reproduces
+two recording-risk tables and ten relative-path comparisons;
+the source-influence audit additionally checks its input
+contrasts against their frozen paired bootstrap results.
+This is not reproduction of upstream training or inference.
+No images, raw labels, weights, or future-generation
+executables are included in the review replay.
+
+\section*{LLM Usage Statement}
+OpenAI Codex assisted with experimental code, checks,
+and drafting. The author is responsible for the results
+and claims.
+
+\begin{thebibliography}{4}
+\bibitem{eqmotion} C. Xu, R. T. Tan, Y. Tan, S. Chen, Y. G. Wang,
+X. Wang, and Y. Wang. EqMotion: Equivariant multi-agent motion
+prediction with invariant interaction reasoning. In \emph{CVPR}, 2023.
+
+\bibitem{mao} A. Mao, M. Mohri, and Y. Zhong.
+Regression with multi-expert deferral. In \emph{ICML}, 2024.
+
+\bibitem{shah} A. Shah, Y. Bu, J. K. Lee, S. Das, R. Panda,
+P. Sattigeri, and G. W. Wornell. Selective regression under
+fairness criteria. In \emph{ICML}, 2022.
+
+\bibitem{crc} A. N. Angelopoulos, S. Bates, A. Fisch, L. Lei,
+and T. Schuster. Conformal risk control. In \emph{ICLR}, 2024.
+
+\end{thebibliography}
+\end{document}

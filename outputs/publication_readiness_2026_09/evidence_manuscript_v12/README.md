@@ -26,6 +26,7 @@ seconds. No true-3D or foundation-world-model claim is made.
 ## Build And Verification
 
 - [Local and CREATE instructions in Chinese](operation_zh.md).
+- [Working supplement and source-influence audit](supplement_readout.md).
 - [Aggregate replay instructions](../review_replay_v1/README.md).
 - The manuscript build checks SHA-256 bindings for the source extract, five
   replay-backed analyses, the image analysis and case, the template, and the
