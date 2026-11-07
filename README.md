@@ -47,6 +47,12 @@ foundation world model, or submission readiness.
 
 ### Which Forecasts To Change
 
+I also trained a model to propose at most four same-query exchanges per
+recording. After calibration, it did not add or lose any of the original
+15 passing views. It recovered an easy reference in one view without
+making that view pass. I kept the original roster.
+[Learned sparse exchanges](outputs/publication_readiness_2026_09/moving_sparse_quarter_exchange_v1/readout.md).
+
 I checked whether a smaller intervention could preserve the original
 utility and meet the same recording risk rules. In a hindsight-only test,
 one same-query exchange repaired 26 previously failing views without

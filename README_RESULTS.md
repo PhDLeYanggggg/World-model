@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned Sparse Quarter-Amplitude Exchange
+
+The four-exchange model fits on seven sources and selects on six, with
+the scored source excluded. The support-aware variant makes 19
+replacements and adds or loses no passing views: 15/102, as before.
+It reduces undefined easy references from 35 to 34 but raises total-risk
+violations from 39 to 41. Its paired lower gain versus the quarter roster
+is +0.00006 pp [-0.00224, +0.00242]. The unchanged original policy is kept.
+[Matched controls and paired transitions](outputs/publication_readiness_2026_09/moving_sparse_quarter_exchange_v1/readout.md).
+
 ## Sparse Quarter-Amplitude Exchange Capacity
 
 Exact single-exchange search repairs 26 previously failing views at

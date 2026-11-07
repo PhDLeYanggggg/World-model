@@ -4,6 +4,12 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [learned sparse exchange ablation](../moving_sparse_quarter_exchange_v1/readout.md)
+tests the capacity result with past-only inputs. Donor calibration leaves
+the original 15 passing views unchanged despite 19 replacements. The
+support term is not a demonstrated method improvement. This supplement
+record does not change the compiled main PDF.
+
 The [sparse quarter-amplitude capacity study](../moving_quarter_swap_capacity_v1/readout.md)
 separates candidate availability from learned ranking. A single same-query
 exchange with labels can repair 26 failing views at positive paired lower
