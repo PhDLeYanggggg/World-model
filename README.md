@@ -154,6 +154,12 @@ comparison. The simpler forecast added no new passing recording views
 when offered alongside the existing options, so I kept the policy unchanged.
 [Local forecast and matched controls](outputs/publication_readiness_2026_09/native_local_ols_proposal_v1/README.md).
 
+I then kept the query budget fixed and let the same forecast bank reach
+more agents. In hindsight, this raised feasible views from 77 to 99
+and views with positive conservative gain over OLS4 from 39 to 51.
+It gives me a more specific target for retrieval, not a new trained
+policy. [Fixed-budget recipient comparison](outputs/publication_readiness_2026_09/native_recipient_budget_capacity_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed

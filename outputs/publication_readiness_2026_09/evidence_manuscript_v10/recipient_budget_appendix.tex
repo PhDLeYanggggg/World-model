@@ -1,0 +1,60 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,booktabs}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\pagestyle{empty}
+\begin{document}
+{\Large\bfseries Recipient Access at a Fixed Query Budget}
+
+\textbf{Design.} Starting from twelve intact whole-query options,
+we relax the allowed switches in three steps: combine already
+offered recipient--path pairs, offer the full path bank to the same
+union of recipients, and offer that bank to every eligible query
+recipient. The original intervention limit $k_q$ stays fixed for
+each query $q$, but realized counts may be lower. The result diagnoses
+capacity on 34 exposed recordings in 14 source groups across three
+forecaster seeds (102 dependent views), with eight observed and
+twelve predicted annotation steps in native image pixels.
+
+\textbf{Optimization.} Let $z_{ia}$ indicate that recipient $i$ gets
+path $a$ rather than CV. Require $\sum_a z_{ia}\leq 1$ and
+$\sum_{i\in q,a}z_{ia}\leq k_q$. The recording's all/easy positive-harm
+constraints, signed easy cap and positive easy reference support are
+unchanged. We maximize the conservative difference from OLS4 with
+equal query weights. The lower bound for a wholly unobserved row
+charges maximum path disagreement from OLS4, and both risk caps
+charge disagreement from CV. These charges are distinct. Every
+feasible witness is independently checked by the original scorer.
+The solver sees development labels and is not a prediction method.
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Available decisions & Feasible & Positive lower gain & Infeasible \\
+\midrule
+Twelve intact options & 71 & 33 & 31 \\
+Recombine offered recipient--path pairs & 75 & 34 & 27 \\
+Full bank on the same recipients & 77 & 39 & 25 \\
+Full bank on all query recipients & 99 & 51 & 3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Interpretation.} Expanding recipients creates twelve positive
+views across five sources, more than recombining or changing paths
+on the original recipients. Yet 48 of the 99 feasible views have no
+positive conservative OLS4 optimum, and three remain infeasible
+despite available easy candidates. The matched-budget diagnosis
+supports investigating retrieval but does not demonstrate a
+deployable improvement, identify physical interaction benefits, or
+change the independent calibration protocol.
+
+\textbf{Solver follow-up.} The initial four-second cap leaves nine
+unresolved full-bank solves. On those nine, a longer cap and exact
+dominance pruning of unobserved actions recover proved optima.
+Discard an unobserved alternative if abstention has at least its
+utility, or another alternative on the same recipient weakly
+improves both CV radius and OLS4 radius. No view is unresolved in
+the final table.
+\end{document}

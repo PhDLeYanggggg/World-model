@@ -37,6 +37,14 @@ the OLS4 conservative comparison, but the matched neighbor ablation
 does not support a neighbor benefit, and the same-recipient capacity
 does not gain any feasible or positive OLS4 views.
 
+The [fixed-budget recipient appendix](recipient_budget_appendix.tex)
+then changes who is eligible, without raising the per-query cap.
+At the same path bank, full recipient access raises hindsight
+feasibility from 77 to 99 views and positive conservative OLS4
+capacity from 39 to 51. It does not resolve the learned decision
+problem or provide an independent result.
+[Detailed solver readout](../native_recipient_budget_capacity_v1/README.md).
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

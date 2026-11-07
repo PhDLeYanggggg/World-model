@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recipient Access At A Fixed Query Budget
+
+Recombining the original pairs, expanding paths on the same recipients,
+and then expanding recipients gives 75, 77 and 99 risk-feasible views
+out of 102. The corresponding conservative OLS4 positive counts are
+34, 39 and 51. The recipient step adds 12 positive views across five
+sources, but three remain infeasible and another 48 have nonpositive
+conservative OLS4 optima. This is hindsight capacity, not a learned pass.
+[Nested controls and exact refinement](outputs/publication_readiness_2026_09/native_recipient_budget_capacity_v1/README.md).
+
 ## Source-Separated Local OLS4 Proposal
 
 After 84 native PyTorch fits, donor-selected self and neighbor proposals
