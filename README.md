@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I have fixed the DroneCrowd study to 15 calibration groups and 30
+separate confirmation groups. The recordings stay with their entire
+exclusion group. This assigns roles; it does not report external
+predictions or open the confirmation labels.
+[Approved split and checks](outputs/publication_readiness_2026_09/dronecrowd_approved_roles_v2/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed
@@ -155,8 +161,8 @@ I checked the exact predictor bank against the existing DroneCrowd
 confirmation reservation, and rebuilt the reference cuts from the
 training annotations. The original nine neural checkpoints are covered.
 Using the matching producer fit gives a candidate cut pair of 12.492
-and 61.718 pixels, without reading DroneCrowd outcomes. The older
-whole-source reservation is unchanged.
+and 61.718 pixels, without reading DroneCrowd outcomes. This predictor
+audit predates the approved split.
 [Predictor and cut provenance](outputs/publication_readiness_2026_09/dronecrowd_exact_bank_v2/README.md).
 
 I built a standalone review replay for the development tables. It
@@ -176,10 +182,9 @@ forecast input schema. All 112 recordings pass the three-prefix check, without
 using future labels to select agents. The complete 5,376-pair screen against
 the prior development image roster finds no match at the frozen thresholds.
 The original release folders still have known internal overlap. I retain all
-45 conservative exclusion groups under the original whole-source reservation.
-The alternative split into 15 calibration groups and 30 confirmation groups
-has not been adopted. Image matching is not proof of independent physical
-sites, and neither check is an external prediction result.
+45 conservative exclusion groups in the approved calibration and confirmation
+roles. Image matching is not proof of independent physical sites, and neither
+check is an external prediction result.
 [Source screen and proposed roles](outputs/publication_readiness_2026_09/dronecrowd_cross_archive_v1/README.md) |
 [Input compatibility](outputs/publication_readiness_2026_09/dronecrowd_frozen_inputs_v1/README.md).
 

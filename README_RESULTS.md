@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Approved DroneCrowd Calibration And Confirmation Roles
+
+The approved, label-blind 15/30 split assigns 40 recordings to calibration
+and 72 to independent confirmation at exclusion-group level. The v2
+overlay supersedes the historical DroneCrowd reservation only; other
+sources and the original 2% rule are unchanged. Role verification did
+not run predictions or open outcomes for either split.
+[Approved manifest and preflight](outputs/publication_readiness_2026_09/dronecrowd_approved_roles_v2/README.md).
+
 ## Continuous Benefit And Harm Activation
 
 At 430 matched switches, the risk-adjusted score's paired lower utility

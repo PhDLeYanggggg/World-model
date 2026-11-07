@@ -4,6 +4,10 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [approved DroneCrowd allocation](../dronecrowd_approved_roles_v2/README.md)
+locks 15 groups for calibration and 30 distinct groups for confirmation.
+It is an input-only role decision, not an external result.
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and
