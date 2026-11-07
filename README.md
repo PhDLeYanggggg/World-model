@@ -422,6 +422,12 @@ references could be repaired in hindsight, or eight when the
 withdrawal could occur in a later query at the same recording count.
 [Count-preserving exchange experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/atomic_swap/readout.md).
 
+I let the model insert a forecast first and withdraw an original
+switch only when warranted. It made four insertions but never
+withdrew. None of those four was in a recording that lacked easy
+reference, so the experiment did not establish a withdrawal benefit.
+[Optional withdrawal experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/optional_withdrawal/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

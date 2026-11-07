@@ -14,6 +14,16 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Optional Causal Withdrawal
+
+After 84 fresh fits, the optional policy and matched insertion
+made the same four insertions and no withdrawals. They remained
+at 2/102 recording passes and increased signed-easy violations
+from eight to nine. None of the selected insertions was in a
+missing-reference view or repairable with a single withdrawal.
+The matched null does not measure withdrawal effectiveness.
+[Results and insertion audit](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/optional_withdrawal/readout.md).
+
 ## Count-Preserving Joint Exchange
 
 The additive and joint scores held every query's switch count
