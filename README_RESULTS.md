@@ -52,6 +52,19 @@ to the same two rows and amplitudes could add only +0.00672 pp on that
 lower metric. This does not establish better ranking or safety. No
 independent outcome access or deployment change. [Results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/readout.md).
 
+## Learning Whom To Switch Within A Query
+
+Eighty-four source-excluded fits compare a pointwise cost-adjusted ranker
+against training on within-query action differences. The original causal
+ledger supplies the same risk costs and counts; each arm makes 6,184
+switches. The centered ranker replaces 2,877 selected occurrences, but
+its primary completion lower is -0.02030 pp [-0.04727, +0.00018] versus
+pointwise. Both lose utility versus the original ledger. Both remove
+signed easy net degradation above 2%, but both retain 66 easy positive-harm
+violations, and each passes only 2/102 versus 3/102 originally. No pair
+consistency gain, independent readout or deployment change.
+[Design and results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/query_ranker/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

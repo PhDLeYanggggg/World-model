@@ -191,6 +191,14 @@ can see outcomes adds little by rearranging those amplitudes alone. I am
 keeping this result as a limit on that approach, not a model upgrade.
 [Incremental cost experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/bounded_bank/incremental/readout.md).
 
+I then trained the ranker on differences between candidates in the same
+frame, keeping the switch counts and predicted risk costs fixed. It chose
+different agents, but gained less than the original ledger. The two new
+rankers avoided large net losses on easy cases without controlling the
+size of individual error increases. I keep the original risk test
+and do not deploy either model.
+[Within-query ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/query_ranker/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
