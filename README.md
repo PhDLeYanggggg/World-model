@@ -109,6 +109,14 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I checked the exact predictor bank against the existing DroneCrowd
+confirmation reservation, and rebuilt the reference cuts from the
+training annotations. The original nine neural checkpoints are covered.
+Using the matching producer fit gives a candidate cut pair of 12.492
+and 61.718 pixels, without reading DroneCrowd outcomes. The older
+whole-source reservation is unchanged.
+[Predictor and cut provenance](outputs/publication_readiness_2026_09/dronecrowd_exact_bank_v2/README.md).
+
 I built a standalone review replay for the development tables. It
 recomputes recording-risk counts and source-group intervals from
 de-identified aggregate statistics without the training data,

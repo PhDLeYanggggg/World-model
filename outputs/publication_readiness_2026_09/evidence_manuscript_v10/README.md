@@ -4,6 +4,11 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [external candidate-bank audit](../dronecrowd_exact_bank_v2/README.md)
+reconciles the existing whole-source reservation and verifies the
+matching predictor and fitting-only cut provenance. It does not
+introduce external outcomes or change the compiled main PDF.
+
 The [standalone review replay](../review_replay_v1/README.md) checks
 the sparse-exchange and common-motion tables and all ten joint-path
 contrasts without raw data or model weights. It rebuilds aggregates

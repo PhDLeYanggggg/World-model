@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Exact External Candidate-Bank And Cut Provenance
+
+The existing whole-source registry reserves 112 DroneCrowd recordings
+for candidate confirmation. The later 15/30 proposal would move 40
+recordings to calibration; the zero-shot proposal preserves the
+reservation. The actual nine neural producer checkpoints verify, and
+the two historical cuts rebuild exactly from training annotations.
+The matching comparator fit gives a new candidate pair, 12.492 and
+61.718 pixels, from 69,746 fit rows. No external rule is yet frozen.
+[Role reconciliation and verified inputs](outputs/publication_readiness_2026_09/dronecrowd_exact_bank_v2/README.md).
+
 ## Standalone Development Review Replay
 
 A local, de-identified ZIP reproduces the complete sparse-exchange and
