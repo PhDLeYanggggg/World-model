@@ -4,6 +4,11 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [standalone review replay](../review_replay_v1/README.md) checks
+the sparse-exchange and common-motion tables and all ten joint-path
+contrasts without raw data or model weights. It rebuilds aggregates
+and intervals, not the models or an independent evaluation.
+
 The [common-motion ablation](../moving_common_motion_v1/readout.md)
 separates absolute error from pair geometry. A fixed uniform mixture
 improves OLS4's paired completion lower bound without changing any

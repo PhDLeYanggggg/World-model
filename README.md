@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I built a standalone review replay for the development tables. It
+recomputes recording-risk counts and source-group intervals from
+de-identified aggregate statistics without the training data,
+weights, or this repository.
+[Replay scope and instructions](outputs/publication_readiness_2026_09/review_replay_v1/README.md).
+
 I now use the same past-only inference entry point for the causal baselines,
 the kinematic model, and the learned comparators. It reproduces the
 kinematic model's full development forecasts across three seeds and the

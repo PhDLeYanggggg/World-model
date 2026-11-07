@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Standalone Development Review Replay
+
+A local, de-identified ZIP reproduces the complete sparse-exchange and
+common-motion recording tables and all ten joint-path contrasts. It
+uses the original scalar reducers and source-bootstrap grouping, without
+any paths, weights, raw data or Git metadata. This verifies numerical
+replay from derived statistics, not training or independent validation.
+[Bundle contents and clean-directory check](outputs/publication_readiness_2026_09/review_replay_v1/README.md).
+
 ## Common Motion At Fixed Relative Geometry
 
 A uniform mixture of OLS4, CV and self-kinematic query means improves
