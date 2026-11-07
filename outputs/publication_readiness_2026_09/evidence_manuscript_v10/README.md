@@ -93,6 +93,13 @@ ablation and its conservative utility loss. Both candidate banks still miss
 one required view. Eight pages, pages 1 through 6 pixel-identical to the last
 checked version and changed pages 7 and 8 inspected. Thirty focused tests pass.
 
+The missingness-aligned continuation adds three matched training runs. It
+reduces disagreement with causal CV on unknown rows, but the completion lower
+bound versus CV is -40.03 pp and the raw model passes 0 of 102 exposed views.
+The rules are unchanged and the model is not promoted. The revised draft
+compiles to eight pages; pages 7 and 8 were inspected, and 31 focused tests
+pass. The supplement TeX is byte-identical; only its source binding changed.
+
 ## Evaluation Supplement
 
 `supplementary_math.md` and its generated TeX give the exact scope of the

@@ -121,6 +121,13 @@ paired utility fell by 7.68 points and the remaining unsupported view did
 not recover. The new forecasts are research candidates, not a deployment.
 [Easy-aligned training experiment](outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/readout.md).
 
+I then trained against disagreement on wholly unobserved fitting rows. The
+new paths are closer to CV on the corresponding held slice, but their
+conservative utility is still negative, the original recording check passes
+0/102 views, and candidate coverage stays at 101/102. I do not retain this
+variant as a replacement.
+[Disagreement-aware training](outputs/publication_readiness_2026_09/moving_missingness_aligned_forecast_v1/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

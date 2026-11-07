@@ -121,6 +121,16 @@ oracle banks still support 101/102, not full support. All 753,240 A predictions
 freeze before scoring, and the scalar replay is exact. No promotion or changed
 2% rules. [Training and readout](outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/readout.md).
 
+## Training Against Wholly Unobserved Disagreement
+
+Three real matched continuations, 900 updates and 376,620 new held paths.
+Relative to easy-only, radius to CV falls 15.604 pp, but the direct paired
+completion lower is -22.399 pp [-45.471,-2.028]. New lower versus CV is
+-40.029 pp [-73.074,-11.273]. The original raw-path gate is 0/102 and the
+expanded bank ceiling is unchanged at 101/102. Controls are hash verified
+and not retrained; fresh scores replay exactly. No external outcome or
+change to deployment. [Training and readout](outputs/publication_readiness_2026_09/moving_missingness_aligned_forecast_v1/readout.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original

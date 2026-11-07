@@ -32,6 +32,8 @@ PINNED = {
     'moving_recording_bank_ceiling_v1/replay_execution.json': '4e9ebf07df53ff8bc2fffaae7c915d82b5e279c925f5c7df0bd2b8b44e997b3a',
     'moving_easy_aligned_forecast_v1/analysis.json': 'fddd5b29954f673b82191ecab83bdac2187bb72783cc66e45809a439a71c4426',
     'moving_easy_aligned_forecast_v1/replay_execution.json': '82f07bae672c62cf5a46d2d4be3580d2c550dd5127eb727fb45dde0664e0bbf5',
+    'moving_missingness_aligned_forecast_v1/analysis.json': 'c6e08b01a126cdd4fc8062d001f83dd7d38662acf976a8354a9950938cf81e44',
+    'moving_missingness_aligned_forecast_v1/replay_execution.json': 'bbaca7c39cea793b9e4294689aaba9040d929e68e73bf40795cf0eb5d45f29ce',
 }
 
 
@@ -476,11 +478,19 @@ def easy_forecast_update():
             or a['new_bank_feasible_views'] != dict(ade=101, easy_aligned=101)):
         raise ValueError('Keep the matched warm-training result separate from policy or external evidence')
     p = a['paired']; lo, hi = p['lower_pp']['interval95']
+    folder = HOME/'moving_missingness_aligned_forecast_v1'; path = folder/'analysis.json'
+    m = read(path); check = read(folder/'replay_execution.json')
+    if (check['analysis']['sha256'] != sha(path) or m['independent_confirmation']
+            or m['original_raw_risk_passes'] != 0 or m['new_bank_feasible_views'] != 101):
+        raise ValueError('Do not promote missingness training to a risk or external result')
+    cv = m['completion_lower_vs_CV']['point']
     return (
         'In a matched three-seed PCT continuation, an easy ADE excess loss '
         f'changes known easy positive harm by {p["easy_harm_increase_pp"]["point"]:+.2f} pp, '
         f'but the paired completion lower is {p["lower_pp"]["point"]:+.2f} pp [{lo:+.2f}, {hi:+.2f}]. '
-        'Neither new trajectory bank recovers the unsupported view.'
+        'Neither new trajectory bank recovers the unsupported view. An additional '
+        'unobserved-row agreement loss shrinks disagreement to CV, but the new '
+        f'completion lower versus CV is {cv:+.2f} pp and raw risk passes 0/102 views.'
     )
 
 
