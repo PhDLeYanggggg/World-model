@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Damped Speed And Turn Forecasts At Fixed Recipients
+
+Adding speed and turning shapes leaves 51/102 dual-reference
+capacity witnesses at the same 9,675 switches. Actual fixed-recipient
+substitution gives -1.920 pp [-4.772, -0.230] for speed versus gain
+ranking and -2.778 pp [-5.634, -0.895] for speed plus turn. A
+post-hoc equal-speed heading control still gives -0.859 pp
+[-1.910, -0.257] conservatively and -0.416 pp on available labels.
+The actual alternatives pass 0/102 original recording checks.
+[Matched results and replay](outputs/publication_readiness_2026_09/native_damped_motion_v1/README.md).
+
 ## Missing-Label Risk And Utility Debit Ablation
 
 With identical counts, the native bank verifies 51/102 under the

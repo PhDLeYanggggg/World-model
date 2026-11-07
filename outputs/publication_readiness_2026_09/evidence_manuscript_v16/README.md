@@ -7,6 +7,9 @@ and the [risk/utility debit ablation](../native_missing_debit_capacity_v1/README
 The original 2% rule, external split, confirmation access, and deployment
 status are unchanged. There are no independent outcomes in this draft.
 
+The subsequent [speed and turn comparison](../native_damped_motion_v1/README.md)
+is documented separately and does not change the frozen v16 files.
+
 ```sh
 out=data/stage_cvpr2027_experiments/evidence_manuscript_v16
 .venv-pytorch/bin/python scripts/build_m3w_decision_manuscript_v16.py \

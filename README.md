@@ -109,6 +109,11 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I tested whether extrapolating acceleration and turns could add
+useful paths without changing who gets switched. Neither bank
+extension added a positive view, and the matched speed and heading
+controls made the actual predictions worse. [Motion-shape test](outputs/publication_readiness_2026_09/native_damped_motion_v1/README.md).
+
 I separated the missing-label charge in the risk check from the
 charge in the gain comparison. In the most permissive diagnostic,
 15 additional views can pass, but 36 still fail. I keep the original
