@@ -21,9 +21,9 @@ np,torch,read,sha,once,artifact,checked,stable=(source.np,source.torch,bank.read
     bank.artifact,bank.parent.checked,source.stable)
 PUBLIC=bank.old.HOME/'moving_easy_aligned_forecast_v1'
 PRIVATE=ROOT/'data/stage_cvpr2027_experiments/moving_easy_aligned_forecast_v1'
-REG=PUBLIC/'registration.json';STEPS=300;SEEDS=(17,29,43);ARMS=('ade','easy_aligned')
+REG=PUBLIC/'registration_v2.json';STEPS=300;SEEDS=(17,29,43);ARMS=('ade','easy_aligned')
 FILES=(Path(__file__),ROOT/'src/world_model/m3w_easy_aligned_forecast.py',PUBLIC/'protocol.md',
-       ROOT/'tests/test_m3w_easy_aligned_forecast.py')
+       ROOT/'tests/test_m3w_easy_aligned_forecast.py',PUBLIC/'zero_support_repair.md')
 
 
 def registration():
@@ -35,7 +35,7 @@ def registration():
     parents=(bank.old.PARENTS[-2],bank.old.PARENTS[-1],bank.PUBLIC/'analysis.json',bank.REG,
         Path(prep.__file__),ROOT/'src/world_model/m3w_native_forecast.py',ROOT/'configs/m3w_moving_source_forecast_v1.json',
         bank.old.HOME/'moving_development_admission_v1/admission.json',
-        bank.old.HOME/'movingdronecrowd_intake_v1/analysis.json')
+        bank.old.HOME/'movingdronecrowd_intake_v1/analysis.json',PUBLIC/'registration.json')
     once(REG,stable(dict(files=[artifact(p) for p in FILES],parents=[artifact(p) for p in parents],
         jobs=jobs,arms=ARMS,steps=STEPS,lr=.0001,batch_size=64,lambda_easy=2.,original_2_percent_unchanged=True,
         external_outcomes=False,stage5c_executed=False,smc_enabled=False)))
@@ -45,10 +45,13 @@ def registration():
 def fitting_only(identity,beat):
     cfg=read(source.CONFIG); admission=prep.load_admission(ROOT,ROOT/cfg['admission'])
     structure=read(bank.old.HOME/'movingdronecrowd_intake_v1/analysis.json'); lookup={v['clip']:v for v in structure['recordings']}
-    fit_groups=set(identity['fit_groups']); cursor=0; chunks=[]
+    declared=set(identity['fit_groups']);fit_groups=set(identity['normalizers']); cursor=0; chunks=[]
+    empty=set(read(bank.old.PARENTS[-2])['structurally_empty_groups'])&declared
+    if fit_groups!=declared-empty:raise ValueError('Only the originally declared empty group can lack fitting rows')
     for node,v in sorted(admission['recordings'].items()):
         clip=lookup[v['clip']];n=clip['window_support']['obs8_pred12_native_stride1']['history_complete_agent_instances']
         start=cursor;cursor+=n
+        if v['exclusion_group'] in empty and n!=0:raise ValueError('Original empty group acquired rows')
         if v['exclusion_group'] not in fit_groups or n==0:continue
         path=ROOT/v['source_annotation_path'];prep.require_fit_record(admission,node,'fit',path)
         r=prep.mot_record(path.read_bytes(),v['clip'],range(1,clip['image_frames']+1));packet=[]
@@ -71,7 +74,8 @@ def fitting_only(identity,beat):
     from src.evaluation.m3w_native_metrics import native_errors
     cv,_=native_errors(data['geometry'][:,332:356].reshape(-1,12,2),data['target'],data['valid'],np.ones(len(data['ids'])))
     data['easy_cut']=float(np.quantile(cv[np.isfinite(cv)&(cv>0)],.25))
-    once(PUBLIC/'fit_population.json',dict(rows=len(cv),groups=sorted(fit_groups),recordings=data['recordings'],
+    once(PUBLIC/'fit_population.json',dict(rows=len(cv),groups=sorted(fit_groups),declared_groups=sorted(declared),
+        zero_support_groups=sorted(empty),recordings=data['recordings'],
         global_fit_ids_sha256=source.array_hash(data['ids']),geometry_sha256=source.array_hash(data['geometry']),
         target_sha256=source.array_hash(data['target']),valid_sha256=source.array_hash(data['valid']),
         fitting_easy_cut=data['easy_cut'],A_target_opened=False))
