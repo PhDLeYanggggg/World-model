@@ -109,6 +109,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I checked whether missing future labels explain why the imitated
+policy failed. In 98 of 102 views, an original 2% check already
+failed on observed labels. The missing-label bound makes the utility
+comparison uncertain, but it is not the main reason the recording
+checks fail. [Risk decomposition and supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v14/supplement_readout.md).
+
 I used feasible recording-level decisions to teach a past-only
 ranker. It more often chose the same person as the teacher, but
 that did not translate into safer decisions. At the same 9,675

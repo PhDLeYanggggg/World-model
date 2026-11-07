@@ -1,0 +1,58 @@
+\section{Why The Matched Recording Policies Fail}
+\label{sec:matched-risk}
+We replayed the matched-count development choices without changing
+models, labels, thresholds, or recording rules. An observed failure
+means that a defined ratio already exceeded 2\% before charging
+wholly unobserved switches, or that signed easy degradation exceeded
+2\%. A debit failure means that a defined positive-harm ratio first
+exceeds 2\% after charging disagreement on wholly unobserved rows.
+An undefined check has no positive reference denominator. We record
+each view once in Table~\ref{tab:frozen-risk}, giving observed failures
+precedence even when another check is debit-driven or undefined.
+For example, 98 of 102 full-bank student views have at least one
+observed failure. One has a debit failure only, and three fail only
+for undefined support. The missing-label debit widens the utility
+envelope but does not explain away most recording failures.
+
+\begin{table*}[!t]
+\centering\small
+\caption{Disjoint outcomes under the original recording checks.
+All matched rows use the same 9,675 genuine switches, with identical
+counts per query. The screened student is not a matched control.
+The five outcome columns sum to 102 within each row.}
+\label{tab:frozen-risk}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+& & & \multicolumn{5}{c}{Recording-seed views}\\
+\cmidrule(l){4-8}
+Policy & Switches & Unobserved & Pass & Observed fail & Debit only
+& Undefined only & Debit + undefined\\
+\midrule
+\FrozenRiskRows
+\bottomrule
+\end{tabular}
+
+\par\vspace{1em}
+\caption{Matched student utility relative to gain ranking, in
+percentage points of observed CV error mass. The completion
+envelope is a pair of point bounds, not a confidence interval.
+The omission range spans 14 lower-bound means, each dropping one
+source group after averaging the three seeds.}
+\label{tab:frozen-utility}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Policy & Available labels & Completion envelope & Positive lower / 14 & Lower omission range\\
+\midrule
+\FrozenUtilityRows
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The completion envelope in Table~\ref{tab:frozen-utility}
+straddles zero for both students. Their negative lower bounds
+persist under every single-source omission, but are not proof
+that every completion loses. The full-bank student makes 1,394
+switches without any future labels, versus 133 for gain ranking.
+Those counts are repeated forecast rows, not people or independent
+observations. They describe where each policy intervened; they
+do not identify the errors of the unlabeled forecasts.

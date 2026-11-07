@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Recording Failure Attribution
+
+A fresh audit of frozen development choices exactly replays the
+original scorer. For the full-bank student, 98/102 views fail at
+least one 2% check on observed labels alone, one fails only after
+the missing-label debit, and three are undefined only. Relative to
+gain ranking, the point completion envelope is [-16.607, +13.606]
+pp; the lower point bound stays negative in all 14 single-source
+omissions. The envelope is not a confidence interval. No external
+outcomes or thresholds were used. [Companion supplement and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v14/supplement_readout.md).
+
 ## Structured Imitation Of Feasible Recording Decisions
 
 42 source-excluded fits used recording-local feasible decisions as

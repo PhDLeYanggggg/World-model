@@ -13,9 +13,11 @@ The figure and evidence macros are bound to the audited
 [exact-count capacity](../native_exact_count_joint_capacity_v1/README.md),
 [risk-shortfall](../native_recipient_shortfall_v1/README.md) and
 [structured imitation](../native_structured_imitation_v1/README.md)
-results. The [v12 supplement](../evidence_manuscript_v12/supplement_readout.md)
-remains a separately verified companion for risk definitions and
-source influence. The [Chinese operation guide](../evidence_manuscript_v12/operation_zh.md)
+results. The [v14 companion supplement](supplement_readout.md) adds
+a decomposition of the original recording failures and of the
+uncertainty due to missing labels. It retains the risk definitions
+and source-influence checks from [v12](../evidence_manuscript_v12/supplement_readout.md).
+The [Chinese operation guide](../evidence_manuscript_v12/operation_zh.md)
 covers local and CREATE reproduction.
 
 ```sh
