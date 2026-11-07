@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Forecast Geometry At Fixed Recipients
+
+Adding OLS4 and a past-only common-translation forecast on the exact
+same recipients raises the hindsight ceiling from 61 to 71 feasible
+views and from 27 to 33 positive conservative OLS4 views. The six new
+positive views span three sources; 31 views remain infeasible and 38
+more have no positive lower gain. This is exposed development, not a
+learned decision rule or an independent result.
+[Experiment and supplement](outputs/publication_readiness_2026_09/native_slate_geometry_capacity_v1/README.md).
+
 ## Whole-Query Forecast Capacity
 
 On 102 exposed recording-seed views, a label-aware solver can meet the

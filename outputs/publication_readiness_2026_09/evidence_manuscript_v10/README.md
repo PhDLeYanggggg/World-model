@@ -24,6 +24,12 @@ cannot repair all recording views or guarantee improvement over OLS4.
 The vector figure separates infeasibility from feasible but nonpositive
 conservative utility. The result is on exposed development data only.
 
+The [matched-recipient geometry appendix](slate_geometry_appendix.tex)
+tests adding two forecast shapes without changing the per-query recipients.
+It expands the feasible set from 61 to 71 recording-seed views but does
+not establish a learned or independently confirmed improvement.
+[Registered readout](../native_slate_geometry_capacity_v1/README.md).
+
 The [activation appendix](activation_appendix.tex) compares matched
 support retrieval, direct feasibility ranking, event activation and
 continuous value/risk. It is generated from four replayed results and

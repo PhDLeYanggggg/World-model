@@ -140,6 +140,13 @@ slate was infeasible under the original risk rule in 41 views; only
 a limit of the tested options, not a result for a learned selector.
 [Capacity analysis](outputs/publication_readiness_2026_09/native_joint_slate_capacity_v1/README.md).
 
+I then kept the intervention recipients fixed and offered OLS4 and
+a shared-motion variant on those same agents. The label-aware capacity
+rose from 61 to 71 feasible views and from 27 to 33 with positive
+conservative gain over OLS4. This tells me the forecast choices matter,
+even with the same agents, but it is not a deployment result.
+[Matched-recipient experiment](outputs/publication_readiness_2026_09/native_slate_geometry_capacity_v1/README.md).
+
 I compared predicted benefit and harm magnitudes with the previous
 activation scores. At the same 430 switches, the risk-adjusted score
 did not reliably improve utility. The current-query version passed

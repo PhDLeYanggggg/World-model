@@ -1,0 +1,63 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,booktabs}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\pagestyle{empty}
+\begin{document}
+{\Large\bfseries Forecast Geometry at Fixed Intervention Recipients}
+
+\textbf{Question.} Is the absence of a reliable learned improvement
+explained only by deciding when and whom to switch, or does it also
+reflect the trajectories available for those agents? We measure a
+hindsight capacity limit for the latter. Our evaluation uses eight
+observed and twelve predicted annotation steps in native image pixels.
+The 102 views repeat 34 exposed recordings across three forecaster
+seeds, covering 14 sources; they are not independent trials.
+
+\textbf{Matched geometry.} Keep the four frozen whole-query choices.
+For each choice, add two alternatives on its same recipients: OLS4
+and a shifted OLS4. For query $q$ and forecast step $t$, the shift is
+\[
+  \Delta_{q,t} =
+  (\bar p^{\mathrm{CV}}_{q,t} + \bar p^{\mathrm{self}}_{q,t}
+    - 2\bar p^{\mathrm{OLS4}}_{q,t})/3 ,
+\]
+where each bar is over the original query roster. The shift preserves
+the OLS4 relative paths between recipients, not their paths relative
+to agents left at CV. An alternative with a no-op recipient is dropped
+to retain its exact intervention count.
+
+\textbf{Diagnostic objective.} In each recording, choose abstention
+or one intact option per query to maximize conservative ADE utility
+over fitting-selected OLS4. CV remains the reference and fallback.
+The original 2\% all/easy positive-harm caps, signed easy cap and
+positive easy reference support remain in force. Utility weights each
+query equally and charges path disagreement for wholly unknown
+outcomes. Every feasible solution is rechecked with the original risk
+scorer; all optimizations terminate with a verified optimum or proved
+infeasibility.
+
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Slate & Feasible & Infeasible & Positive lower gain vs. OLS4 \\
+\midrule
+Four frozen choices & 61 & 41 & 27 \\
+Plus same-recipient OLS4 & 70 & 32 & 32 \\
+Plus same-recipient shifted OLS4 & 68 & 34 & 32 \\
+Both additions & 71 & 31 & 33 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Interpretation.} Geometry alone changes the feasible set: the
+combined slate adds ten feasible views and six positive views across
+three sources. Among the 61 originally feasible views, the median
+increase in optimum lower gain is 0.236 percentage points, normalized
+by the same observed CV reference mass. The expanded bank still leaves
+31 views infeasible and 38 feasible with no positive lower gain. These
+are exact development-slate findings, not performance intervals, proof
+that an online policy can find the solutions, or independent evidence.
+The original policy and external calibration protocol are unchanged.
+\end{document}
