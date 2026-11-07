@@ -5,6 +5,10 @@ The existing DroneCrowd offline XML cache now connects to the unchanged native
 admission or new predictive result. I used three past prefixes from each of the
 112 recordings, selected by clip boundaries rather than future availability.
 
+The [later causal stream check](../m3w_causal_forecast_stream_v1/README.md)
+preserves these exact prefixes and replaces the rough full-schedule estimate
+with complete past-only packing and a real Torch recovery probe on development data.
+
 - All 336 input queries pass. They contain 48,362 currently visible agent
   instances and 48,183 with the eight contiguous past steps required by the
   existing model. All currently visible agents remain in the upstream inventory.

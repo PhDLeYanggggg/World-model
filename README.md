@@ -94,6 +94,13 @@ training recordings, so all 18 forecast controls now have source-screen
 coverage. This is not external accuracy or verified geographic independence.
 [Complete predictor coverage](outputs/publication_readiness_2026_09/dronecrowd_combined_forecaster_coverage_v1/README.md).
 
+I replaced the whole-track read intermediate with an eight-frame input slice.
+The full unassigned external input schedule now packs in a bounded stream:
+31,472 queries and 4,520,912 past-supported target rows. The six matched Torch
+predictors resume exactly on the older development probe. This verifies the
+evaluation inputs and recovery path, not new accuracy or safety.
+[Causal input stream](outputs/publication_readiness_2026_09/m3w_causal_forecast_stream_v1/README.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.

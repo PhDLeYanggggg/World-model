@@ -75,6 +75,17 @@ roles and results remain unassigned/unscored, not independent evidence.
 [Revision experiment](outputs/publication_readiness_2026_09/moving_support_anchored_cost_v1/readout.md) |
 [Source coverage](outputs/publication_readiness_2026_09/dronecrowd_combined_forecaster_coverage_v1/README.md).
 
+## Bounded Input And Resumable Forecast Stream
+
+I pack the same eight-frame causal inputs without copying an entire track.
+All 336 registered inputs are exact. The full 112-clip input scan completes
+31,472 queries and 4,520,912 target rows in 79.77 s; no dense cache or external
+forecast readout. A separate real Torch check uses six existing three-seed
+predictors on exposed A: 2,304 rows resume unchanged, 3,840 new probe rows
+match the old bank, 6,144 exact in total. CREATE read-only status remains
+unverified after a 60 s timeout. Independent evaluation is not run.
+[Input and resume evidence](outputs/publication_readiness_2026_09/m3w_causal_forecast_stream_v1/README.md).
+
 ## Analytic Pair Coupling On A Fixed Forecast Bank
 
 Fresh14deterministic ridge fits, source-excluded within each of six original
