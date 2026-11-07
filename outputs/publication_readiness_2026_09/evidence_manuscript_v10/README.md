@@ -4,6 +4,11 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [native inference rehearsal](../dronecrowd_native_inference_rehearsal_v1/README.md)
+documents the common prefix, comparator roster and exact three-seed
+kinematic replay. It is an engineering receipt; no external result or
+new accuracy claim is included in the compiled paper.
+
 The [matched-count allocation ablation](../moving_quarter_allocation_v1/readout.md)
 is a development result for the supplement. With identical candidate costs,
 per-query counts and quarter amplitude, adding a harm penalty cuts total-risk

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Inference Rehearsal For External Comparison
+
+Rebuilding the past-only prefix reproduces all 125,540 development input
+rows across 1,613 queries and 34 recordings. Exact forecast replay covers
+376,620 self-kinematic paths across three seeds and 18,432 original
+EqMotion/PCT probe paths across 18 checkpoints. The same entry point emits
+six causal baselines, including the CV reference and fitting-selected OLS4.
+This is engineering verification, not a new accuracy score or external result.
+[Input and checkpoint replay](outputs/publication_readiness_2026_09/dronecrowd_native_inference_rehearsal_v1/README.md).
+
 ## Dense Gain/Harm Allocation At Matched Query Counts
 
 With 6,952 interventions and quarter amplitude fixed, adding predicted harm

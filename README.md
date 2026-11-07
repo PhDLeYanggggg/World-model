@@ -81,6 +81,12 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I now use the same past-only inference entry point for the causal baselines,
+the kinematic model, and the learned comparators. It reproduces the
+kinematic model's full development forecasts across three seeds and the
+original probe batches for all 18 comparator checkpoints.
+[Inference replay and remaining external decisions](outputs/publication_readiness_2026_09/dronecrowd_native_inference_rehearsal_v1/README.md).
+
 I connected the cached DroneCrowd annotation prefixes to the existing 8/12
 forecast input schema. All 112 recordings pass the three-prefix check, without
 using future labels to select agents. The complete 5,376-pair screen against
