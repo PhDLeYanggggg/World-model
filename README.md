@@ -109,6 +109,14 @@ marginal cost estimation before a larger pair solver, not a deployment change.
 
 ### Independent Evaluation Preparation
 
+I also trained a screen that judges a whole proposed switch set rather than
+adding separate decisions. At nearly the same intervention count, it found
+21 locally feasible sets instead of 10, but only 4 of 102 recording-seed
+views passed the original rule. Every recording had easy-case reference
+error somewhere; in 24 views, none of the proposed switches reached it.
+I am keeping this as a development result, not a deployment claim.
+[Switch-set experiment and capacity audit](outputs/publication_readiness_2026_09/native_query_risk_critic_v1/README.md).
+
 I tested a new decision rule that only switches forecasts when the current
 query predicts a gain, low risk and a positive easy-case reference. In development,
 it reduced interventions from 9,675 to 90, but passed just 3 of 102

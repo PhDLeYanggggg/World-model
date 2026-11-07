@@ -4,6 +4,14 @@ This version separates the native MovingDroneCrowd++ observation8/prediction12
 task at stride1 from the earlier European stride12 study and historical SDD
 raw-frame studies. Their absolute errors and gains are not pooled.
 
+The [query switch-set critic](../native_query_risk_critic_v1/README.md)
+holds candidate proposals fixed and separates local feasibility from
+recording-level risk. It does not improve the registered support-prediction
+endpoint or pass the recording rule. A label-aware capacity check shows
+that 24/102 views lack easy support in the proposal roster, while 57 have
+a feasible single-query witness. This is supplemental development
+evidence; the main PDF is unchanged.
+
 The [native transport rehearsal](../dronecrowd_transport_candidate_v1/README.md)
 tests an updated intervention rule on exposed development sources, each
 excluded from its controller fit. Screening removes most interventions

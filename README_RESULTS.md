@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Switch-Set Risk Critic
+
+The query critic picks 21 locally feasible sets out of 44 accepted,
+versus 10/45 for the old gate. Easy-reference Brier score does not
+improve over the recalibrated-sum control (0.14933 vs 0.14724).
+The original recording gate still passes only 4/102 views.
+All 34 recordings have easy reference, but 24/102 views have none
+within any fixed joint proposal; 57/102 have a label-aware, single-query
+witness. This distinguishes candidate retrieval from deciding when to
+switch. The reserved external set remains unopened.
+[Nested source-excluded study](outputs/publication_readiness_2026_09/native_query_risk_critic_v1/README.md).
+
 ## Native Transport Candidate: Development Rehearsal
 
 Using the exact 8-observation / 12-prediction forecast bank, the risk
