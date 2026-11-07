@@ -65,6 +65,21 @@ violations, and each passes only 2/102 versus 3/102 originally. No pair
 consistency gain, independent readout or deployment change.
 [Design and results](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/query_ranker/readout.md).
 
+## Risk-Constrained Demonstrations
+
+The label-aware gain teacher and risk-constrained teacher agree on all
+4,825 active views; identical scores are not evidence of a safety
+mechanism. The repaired comparison fits causal proposal scores outside
+both donor and held source. Observed risk filters 32,297 of 61,849 active
+repeated donor views. In 102 evaluated recording views, with 6,184
+identical per-query switch counts, the constrained student gives a
+paired completion lower of -0.00528 pp [-0.01425, +0.00240] versus
+the matched utility-only student. Both pass 2/102 original views;
+64 easy risks exceed 2% and 36 remain undefined for each. The original
+ledger passes 3/102. No new independent results or deployment change.
+[Degenerate control](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/readout.md) |
+[Nested repair](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/nested/readout.md).
+
 ## Independent DroneCrowd Input Preparation
 
 Fresh native input bridge: 112 cached recordings,336 observed-prefix queries,

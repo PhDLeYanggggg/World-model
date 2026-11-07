@@ -199,6 +199,15 @@ size of individual error increases. I keep the original risk test
 and do not deploy either model.
 [Within-query ranking experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/query_ranker/readout.md).
 
+I also tried teaching the model from risk-constrained decisions. The
+first comparison was uninformative: a teacher that already knew future
+outcomes made the same choices with or without constraints. I replaced
+that oracle's utility ranking with causal proposals fitted outside the
+donor and evaluation sources. Risk screening changed over half of the
+training demonstrations, but the student still did not improve on held
+sources. Neither student meets the original risk requirements.
+[Constrained demonstrations](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/feasible_teacher/nested/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
