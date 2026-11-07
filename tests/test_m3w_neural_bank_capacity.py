@@ -1,6 +1,6 @@
 import pytest
 
-from scripts.audit_m3w_neural_bank_capacity import combine, ensure_nested, positive_state
+from scripts.audit_m3w_neural_bank_capacity import combine, ensure_nested, merge_expanded, positive_state
 
 
 def result(*, witness=None, upper=None, optimal=False, infeasible=False):
@@ -29,3 +29,10 @@ def test_causal_subset_cannot_outperform_upper_bound_of_superset():
     ensure_nested(result(witness=1.), result(witness=2., upper=2.))
     with pytest.raises(ValueError, match='Nested slate'):
         ensure_nested(result(witness=1.), result(upper=.1))
+
+
+def test_restricted_slate_contributes_only_a_witness():
+    refined = result(witness=2., upper=2., optimal=True)
+    initial = result(witness=1., upper=3.)
+    restricted = result(witness=.5, upper=.5, optimal=True)
+    assert merge_expanded(refined, initial, restricted)['upper_mass'] == 2.

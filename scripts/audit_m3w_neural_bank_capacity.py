@@ -15,8 +15,8 @@ from scripts import refine_m3w_recipient_budget_capacity as refine
 
 run, np, cal = prior.run, prior.np, prior.cal
 PUBLIC = prior.PUBLIC.parent/'native_neural_bank_ablation_v1'
-PRIVATE = prior.PRIVATE.parent/'native_neural_bank_ablation_v1'
-REG = PUBLIC/'registration.json'
+PRIVATE = prior.PRIVATE.parent/'native_neural_bank_ablation_v1'/'work_v2'
+REG = PUBLIC/'registration_v2.json'
 FILES = (Path(__file__), PUBLIC/'protocol.md', ROOT/'tests/test_m3w_neural_bank_capacity.py')
 ARMS = ('causal_only', 'native_with_learned', 'prior_expanded')
 LEARNED = ('eqmotion', 'pct', 'self')
@@ -34,7 +34,7 @@ def register():
     parents = (prior.REG, refine.REG, prior.PUBLIC/'execution.json', prior.PUBLIC/'refinement_execution.json',
                prior.PUBLIC/'analysis.json', prior.PUBLIC/'refinement.json',
                Path(prior.__file__), Path(refine.__file__), Path(prior.model.__file__),
-               Path(support.__file__), *FILES)
+               Path(support.__file__), PUBLIC/'registration.json', *FILES)
     run.once(REG, run.stable(dict(bindings=[run.artifact(p) for p in parents], roles='exposed_moving_A_only',
         arms=ARMS, causal=CAUSAL, learned=LEARNED, seeds=SEEDS, cuts=cut, solver_seconds=LIMITS,
         bootstrap_draws=3000, risk=.02, external_access=False)))
@@ -66,7 +66,7 @@ def old_cell(seed, recording):
         result = item['result']
         if not completed(result):
             raise ValueError('Prior expanded comparator is unresolved')
-        original['outcomes']['all_recipients'] = combine(
+        original['outcomes']['all_recipients'] = merge_expanded(
             result, previous, original['outcomes']['same_recipients'])
     return original
 
@@ -83,6 +83,11 @@ def combine(result, *previous):
             raise ValueError('Solver certificate contradicts a checked witness')
         out.update({k: witness[k] for k in ('feasible', 'positive', 'witness_mass')})
     return out
+
+
+def merge_expanded(refined, initial, restricted):
+    # The restricted slate contributes a witness, never an expanded upper bound.
+    return combine(refined, initial, dict(restricted, upper_mass=None))
 
 
 def ensure_nested(smaller, larger):
