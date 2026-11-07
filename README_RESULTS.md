@@ -14,6 +14,18 @@ The intervention remains model-side repair with fitting-only preprocessing
 and source-separated evidence. This decision does not open a new C/H test;
 the latest component experiments use already-exposed own-B records.
 
+## Gain And Risk Choice Within A Fixed Shortlist
+
+With the same eight family-diverse candidates, the gain-only and
+risk-penalized selectors both miss all positive supported winners in the
+first two queries of the 18 original zero-direct views. Six have a
+positive option in the shortlist. Complete observed passes remain
+2/102 for both calibrated arms. At matched queries and counts, the
+risk penalty changes paired lower utility by +0.00156 pp (95% source
+interval [-0.00688, +0.01348]). Direct useful-event selection recovers
+1/18 posthoc but loses full passes at matched coverage.
+[Experiment and appendix](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_cost/readout.md).
+
 ## Useful-Action Ranking And Shortlist Diversity
 
 84 matched Torch fits move the first-two-query flat top-eight recall

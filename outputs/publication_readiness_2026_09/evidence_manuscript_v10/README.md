@@ -83,6 +83,12 @@ local appendix figure `opening_rank_recall.pdf` also shows an
 eight-slot diversity control. Shortlist gains do not turn into
 calibrated policy gains; the main PDF is unchanged.
 
+The one-page [fixed-shortlist appendix](shortlist_appendix.md) brings
+bank availability, shortlist recall and final choice into one table.
+Its local PDF compiles and was visually checked. Rebuild its source
+with `.venv-pytorch/bin/python scripts/build_m3w_shortlist_appendix.py`.
+This adds a supporting negative result; the main PDF is unchanged.
+
 ## Files And Reproduction
 
 - `manuscript.template.md`: editable English narrative and formulas.

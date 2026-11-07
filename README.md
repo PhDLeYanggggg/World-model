@@ -308,6 +308,13 @@ calibrated policy. At the same eight-slot budget, a simple shortlist
 that retains different forecast families also found more useful
 choices. [Ranking and shortlist comparison](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_pair_rank/readout.md).
 
+I then fixed that family-diverse shortlist and compared final choice by
+predicted gain with choice after a predicted risk penalty. Neither
+calibrated policy added a full pass. The shortlist contained useful
+choices that neither selector picked, so I treat candidate availability
+and action choice as separate results.
+[Fixed shortlist experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/shortlist_cost/readout.md).
+
 ### Earlier Viewpoint Study
 
 I tested whether explicit viewpoint conditioning helps the trajectory network.
