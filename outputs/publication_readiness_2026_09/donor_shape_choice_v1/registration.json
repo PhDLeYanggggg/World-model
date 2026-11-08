@@ -1,0 +1,66 @@
+{
+  "arms": [
+    "anchor",
+    "prefix_match",
+    "gain_only",
+    "risk_aware",
+    "utility_oracle"
+  ],
+  "batch": 128,
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "budget": "fixed outer rows, query times and radii for every arm; oracle maximizes direct lower utility only",
+  "calibration": "double-excluded predictions on legal donor row/amplitude options, not frozen controller nominees; maximize donor macro lower gain with nonpositive macro changes in each risk numerator for guarded arm",
+  "code": {
+    "bytes": 10790,
+    "path": "scripts/run_m3w_donor_shape_choice.py",
+    "sha256": "398a530b8acb55c09a07d196ba08b01cab29660aedd7ff2df4f8eebf146ad1cd"
+  },
+  "confirmation_access": false,
+  "fitting": "site-balanced; each train row excludes its own site and every model-held site from retrieval and cuts",
+  "margins": [
+    0.0,
+    0.01,
+    0.025,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "model": {
+    "bytes": 1979,
+    "path": "src/world_model/m3w_donor_shape_choice.py",
+    "sha256": "45ca242556754d7992b0107c1fe9d77e83851a015cdd9f6a9c015dddbe63b82c"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "original_2pct": true,
+  "parent": {
+    "bytes": 53068,
+    "path": "outputs/publication_readiness_2026_09/donor_motion_shape_v1/analysis.json",
+    "sha256": "0386cec85e23c224b0033db56f142f82e8d1947222f99e169f2f526396f68347"
+  },
+  "penalties": [
+    1.0,
+    3.0
+  ],
+  "primary": "risk-aware minus prefix-match, direct lower utility and original full-roster joint passes",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 300,
+  "target": "lower paired gain vs original trajectory and three changes in original risk numerators",
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "workers": 0
+}

@@ -1,0 +1,61 @@
+\section{Trajectory Shape at Fixed Intervention Slots}
+
+We test whether a new trajectory shape can help without changing the
+intervention clock, recipient, or radius. We retrieve the eight nearest
+velocity histories from other OpenDD sites in a heading-aligned, past
+RMS-step normalized frame. We average their complete future deviations
+from constant velocity (CV), map the result into the recipient frame,
+and rescale it to the original peak displacement from CV. This is a
+candidate generator, not a novelty claim about forecast memory; for
+example, \href{https://openaccess.thecvf.com/content_CVPR_2020/html/Marchetti_MANTRA_Memory_Augmented_Networks_for_Multiple_Trajectory_Prediction_CVPR_2020_paper.html}{MANTRA}
+retrieves trajectory embeddings for multimodal prediction.
+
+The prefix control decides whether to use the new candidate by scoring
+forecast errors on suffixes of the eight observed steps. We fit
+\ShapeFits{} heads to predict the direct conservative gain over the
+original shape and changes in the three risk numerators. Inner fits
+exclude both the outer site and their inner validation site, and the
+retrieval bank and cuts for each fit row also exclude its source site.
+The gain rule and the risk-penalized rule select thresholds on these
+out-of-fold donor predictions. The latter requires nonpositive changes in
+all three donor-macro risk numerators on legal row/amplitude options;
+these proxy checks are not recording-level certification.
+
+\begin{table}[h]
+\centering
+\caption{OpenDD development at the same \ShapeEdits{} edit slots across
+\ShapeViews{} recording--seed views. Joint passes require the original
+risk rule and positive conservative gain over both CV and OLS4.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Chooser & Donor shapes & Risk & Joint \\
+\midrule
+Original & 0 & \ShapeAnchorSafety{} & \ShapeAnchorPass{} \\
+Prefix & \ShapePrefixChoices{} & \ShapePrefixSafety{} & \ShapePrefixPass{} \\
+Gain only & \ShapeGainChoices{} & \ShapeGainSafety{} & \ShapeGainPass{} \\
+Risk aware & \ShapeRiskChoices{} & \ShapeRiskSafety{} & \ShapeRiskPass{} \\
+Utility hindsight & \ShapeOracleChoices{} & \ShapeOracleSafety{} & \ShapeOraclePass{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The direct conservative gains over the prefix rule are
+\ShapeGainEffect{} for gain only and \ShapeRiskEffect{} for risk aware
+(3,000 site bootstrap draws after seed averaging). Neither improves
+utility reliably. The latter reverts to the original shape for all but
+\ShapeRiskChoices{} slots. The outcome-aware utility chooser reaches
+\ShapeOracleEffect{}, without optimizing the risk gate.
+
+Optimizing the lesser of the two conservative gains under the original
+risk gate, with outcomes known and the same two choices at each slot,
+qualifies at most \ShapeCapacity{} views. We check each witness with the
+original scorer. \ShapeUndefined{} views lack selected easy support
+(\ShapeNoEdit{} with no edit and \ShapeNoEasy{} with edited rows but no
+positive easy reference), \ShapeUtilityMissing{} cannot improve on both
+references even without risk constraints, and \ShapeRiskBlocks{} would
+improve without the risk constraints but cannot qualify. Neither a
+different shape nor a threshold repairs missing selected reference
+support at these fixed slots. This is a limit of this menu and
+assignment, not a bound on other recipients or trajectory families.
+No deployment decision or independent confirmation follows from it.

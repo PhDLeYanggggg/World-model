@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a model to choose between the two trajectory shapes without moving
+any intervention. It did not reliably improve on the past-only rule. Even
+with hindsight, the same intervention positions could qualify in at most
+157 of 606 recording views; 334 lacked the easy-reference support required
+by the risk test. [Shape selection and its limit](outputs/publication_readiness_2026_09/donor_shape_choice_v1/README.md).
+
 I tested whether past motion from another OpenDD site could improve the same
 trajectory edit. With the recipients, timing and displacement fixed, the
 new shapes increased the number of recording views that passed both risk and

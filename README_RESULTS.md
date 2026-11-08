@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned Shape Choice At Fixed Intervention Slots
+
+Nested OpenDD fitting held the 1,457 slots and radii fixed. Gain-only
+choice reached 95 joint passes versus 90 for prefix choice but lost
+-0.016 pp [-0.067, +0.023] on the direct conservative comparison.
+Risk-aware choice changed 15 shapes and reached 77 passes. Exact hindsight
+qualifies only 157/606 views, with 334 structurally undefined at those
+slots. Neither learned rule advances to external calibration.
+[Training, readout and capacity](outputs/publication_readiness_2026_09/donor_shape_choice_v1/README.md) |
+[Working supplement v82](outputs/publication_readiness_2026_09/evidence_manuscript_v82/README.md).
+
 ## Cross-Site Motion Shapes
 
 I replaced or extended the original trajectory shapes at the same 1,457
