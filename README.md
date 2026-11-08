@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a selector on the specific neural forecast's gain and harm,
+using forecasts produced without either the fitting row's site or the
+final evaluation site. At the same query budgets it did not reliably
+beat the difficulty rule or constant velocity. Even with outcomes
+known, the original risk rule limits this schedule to 88 of 606 views.
+[Candidate-specific experiment](outputs/publication_readiness_2026_09/opendd_candidate_advantage_v1/README.md).
+
 I separated the neural correction's gains on difficult tracks from its
 losses on easy tracks. The losses canceled the gains. A learned predictor
 of CV difficulty did not reliably beat a simple motion rule at the same

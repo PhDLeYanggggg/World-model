@@ -15,6 +15,7 @@ from src.reproduction import m3w_opendd_paired_replay as replay
 
 REPORTS = ROOT/"outputs/publication_readiness_2026_09"
 DEFAULT = ROOT/"data/stage_cvpr2027_experiments/opendd_candidate_replay_v1/anonymous_opendd_replay.zip"
+EXTENDED = ROOT/"data/stage_cvpr2027_experiments/opendd_candidate_replay_v2/anonymous_opendd_replay.zip"
 FIELDS = ("edits", "views", "undefined", "risk_pass", "dual_positive")
 README = """# Matched OpenDD Development Comparisons
 
@@ -68,7 +69,7 @@ def row(effects, policies):
     return dict(effects=effects, counts={k: {f: v[f] for f in FIELDS} for k, v in policies.items()})
 
 
-def collect():
+def collect(extended=False):
     studies, expected = {}, {}
     for name in ("donor_motion_shape_v1", "donor_shape_choice_v1", "opendd_feedback_recipient_v1"):
         a = read(name)
@@ -91,13 +92,57 @@ def collect():
         return row(effect, matched["policies"])
 
     studies[name], expected[name] = pack(a, lambda r: r, eq_row, effects, s["matched"])
+    if extended:
+        extend(studies, expected)
     return dict(studies=studies, risk_cap=.02, independent_confirmation=False), expected
 
 
-def build(out):
-    packet, expected = collect()
+def extend(studies, expected):
+    name = "opendd_component_guard_v1"
+    a = read(name)
+    s = a["summary"]
+    effects = {**s["raw_effects"], **s["matched_effects"]}
+    studies[name], expected[name] = pack(a, lambda r: r,
+        lambda r: row({**r["raw"]["effects"], **r["matched"]["effects"]}, r["matched"]["policies"]),
+        effects, s["matched"])
+
+    name = "opendd_hardness_gate_v1"
+    a = read(name)
+    s = a["summary"]
+    modes = ("raw", "slot")
+
+    def counts(r):
+        return {f"{k}_{a}": v for k in modes for a, v in r[k].items()}
+
+    studies[name], expected[name] = pack(a, lambda r: r, lambda r: row(r["effects"], counts(r)),
+                                         s["effects"], counts(s))
+
+    name = "opendd_candidate_advantage_v1"
+    a = read(name)
+    s = a["summary"]
+    studies[name], expected[name] = pack(a, lambda r: r, lambda r: row(r["effects"], r["metrics"]),
+                                         s["effects"], s["policies"])
+    f = REPORTS/name
+    cap = json.loads((f/"capacity.json").read_text())
+    if (cap["registration"] != sha(f/"capacity_registration.json") or not cap["outcome_aware_only"]
+            or cap["confirmation_access"] or not cap["original_2pct"]):
+        raise ValueError("Capacity must remain an outcome-aware development diagnostic")
+    keys = tuple(cap["summary"])
+    name = "matched_count_capacity"
+    studies[name] = [[dict(effects={}, counts={"status": {k: r["counts"].get(k, 0) for k in keys}})
+                       for r in sorted(v, key=lambda r: r["seed"])] for _, v in sorted(cap["by_site"].items())]
+    expected[name] = dict(effects={}, counts={"status": cap["summary"]})
+
+
+def build(out, extended=False):
+    packet, expected = collect(extended)
     replay.check(replay.recompute(packet), expected)
-    files = {"replay.py": Path(replay.__file__).read_bytes(), "README.md": README.encode(),
+    readme = README
+    if extended:
+        readme += ("\nThis extended archive also includes the direction guard, CV difficulty,\n"
+                   "candidate-specific advantage and outcome-aware exact-count capacity.\n"
+                   "Capacity is a label-aware diagnostic, not a causal policy.\n")
+    files = {"replay.py": Path(replay.__file__).read_bytes(), "README.md": readme.encode(),
              "requirements.txt": f"numpy=={np.__version__}\n".encode(),
              "statistics.json": encoded(packet), "expected.json": encoded(expected)}
     files["manifest.json"] = encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
@@ -114,6 +159,7 @@ def build(out):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--out", type=Path, default=DEFAULT)
+    p.add_argument("--out", type=Path)
+    p.add_argument("--extended", action="store_true")
     a = p.parse_args()
-    print(build(a.out), flush=True)
+    print(build(a.out or (EXTENDED if a.extended else DEFAULT), a.extended), flush=True)

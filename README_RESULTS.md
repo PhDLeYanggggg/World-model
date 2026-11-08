@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Double-Excluded Candidate Advantage
+
+63 trajectory producers and 21 selector fits, 60,900 updates.
+At 3,323 equal-count edits, learned gain/risk improves over CV difficulty
+by +0.093 pp [-0.364, +0.504] and reaches 9/606 joint passes versus 6.
+It does not beat CV reliably. Exact original-risk capacity is 88/606;
+217 views have no edits and 85 lack an eligible easy reference.
+[Experiment](outputs/publication_readiness_2026_09/opendd_candidate_advantage_v1/README.md) |
+[Anonymous replay v2](outputs/publication_readiness_2026_09/opendd_candidate_replay_v2/README.md) |
+[Supplement v85](outputs/publication_readiness_2026_09/evidence_manuscript_v85/README.md).
+
 ## OpenDD Hard-Slice Gain And Causal Difficulty
 
 Full ego correction contributes +2.435 pp on hard rows and -2.823 pp

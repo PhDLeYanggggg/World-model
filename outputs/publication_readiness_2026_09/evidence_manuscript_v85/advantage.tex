@@ -1,0 +1,72 @@
+\section{Candidate-Conditioned Gain With Double Exclusion}
+
+For a held site $h$, a selector training row from site $s$
+uses a comoving EqMotion trajectory from a producer fitted
+without either $s$ or $h$. One producer per unordered pair and
+seed generates forecasts for both sites, giving
+\AdvantageProducers{} producer fits. The evaluation trajectory
+uses the frozen producer trained without $h$. We fit
+\AdvantageHeads{} causal heads to predict missing-step lower gain
+against CV, all/easy/signed-easy risk excesses, and easy
+support. The gain readout sorts by predicted gain; the risk
+readout subtracts positive predicted excesses with fixed
+weights $2,4,1$. Neither readout fits a threshold on held sites.
+
+The hardness rule sets each query's count, and every readout
+uses the same raw trajectory bank and exact count in that
+query (\AdvantageEdits{} edits). The motion control ranks by
+observed CV/OLS4 disagreement. A label-aware utility rank
+optimizes gain alone at the same counts. Recipients and total
+displacement may differ; this is not a matched-radius test.
+
+\begin{table}[h]
+\centering
+\caption{Exposed OpenDD candidate-choice comparison over
+\AdvantageViews{} repeated recording--seed views. Joint passes
+require both original risk and positive lower gains against
+CV and OLS4. Undefined is not a pass.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Policy & Undefined & Risk & Joint \\
+\midrule
+CV & \AdvantageCvUndefined{} & \AdvantageCvRisk{} & \AdvantageCvJoint{} \\
+Hardness & \AdvantageHardnessUndefined{} & \AdvantageHardnessRisk{} & \AdvantageHardnessJoint{} \\
+Motion & \AdvantageMotionUndefined{} & \AdvantageMotionRisk{} & \AdvantageMotionJoint{} \\
+Gain & \AdvantageGainUndefined{} & \AdvantageGainRisk{} & \AdvantageGainJoint{} \\
+Gain and risk & \AdvantageRiskUndefined{} & \AdvantageRiskRisk{} & \AdvantageRiskJoint{} \\
+Utility hindsight & \AdvantageOracleUndefined{} & \AdvantageOracleRisk{} & \AdvantageOracleJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Direct paired lower effects versus hardness are
+\AdvantageGainEffect{} for gain and \AdvantageRiskEffect{} for
+the risk readout (3,000 site bootstrap draws after averaging
+seeds). The effects versus CV are \AdvantageGainCV{} and
+\AdvantageRiskCV{}, respectively. This separates ranking
+relative advantage from predicting baseline difficulty; the
+matched count itself is not selected by either new policy.
+
+With the same path bank and counts, an outcome-aware
+integer program maximizes the lesser of the two conservative
+gains subject to the original recording risk constraints.
+For the binary choice $z_i$, the fixed query count gives
+$\sum_{i\in q}z_i=k_q$. Positive selected easy reference
+also implies positive selected all-reference mass, so the
+two ratio constraints can be multiplied by their
+denominators and written as linear excess inequalities.
+The signed easy inequality uses the unchanged full-recording
+easy mass. Subtracting the unedited CV prediction's lower
+gain from each OLS4 term leaves an additive change plus a
+constant. Thus one common margin variable upper-bounded by
+both gains gives the maximin objective without relaxing
+either risk denominator.
+It finds \AdvantageCapacity{} qualifying views,
+with \AdvantageNoEdit{} no-edit views, \AdvantageNoEasy{} lacking
+eligible easy support, \AdvantageInfeasible{} risk-infeasible,
+\AdvantageNoDual{} without positive dual gain, and
+\AdvantageUnresolved{} unresolved. Positive witnesses reproduce
+in the original scorer. This is not a bound for other
+counts, query clocks, or forecast banks and is not evidence
+of external calibration or independent generalization.

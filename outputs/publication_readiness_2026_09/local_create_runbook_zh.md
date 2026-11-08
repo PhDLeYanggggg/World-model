@@ -1,5 +1,14 @@
 # M3W 本地与 CREATE 操作记录
 
+## 双重留出候选收益与原风险上限：2026-11-08
+
+本机原生 Torch 完成 63 个轨迹生产器、21 个选择头，共 60,900 步，
+约 15.8 分钟。四计算线程、零数据工作进程，每 100 步写检查点和心跳，
+原命令续跑。`--replay` 不更新模型。固定每个查询的切换次数，另算原
+2% 约束下的事后上限；未开独立确认组，无新增 CREATE 作业。
+[结果](opendd_candidate_advantage_v1/README.md) |
+[复现](opendd_candidate_advantage_v1/protocol_and_reproduction.md)。
+
 ## 轨迹分量归因与 CV 难度门控：2026-11-08
 
 复用已核验的 OpenDD 神经预测及固定预算，先重算纵向、侧向和等幅
