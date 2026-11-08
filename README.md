@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated a larger forecast bank from a larger intervention budget.
+More edits opened more feasible plans against OLS4 than seven extra
+forecast variants did. The learned risk screen did not recover that
+capacity: its observed gains were offset by missing-label uncertainty.
+[Pedestrian budget experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/budget_risk_v1/README.md).
+
 I tested one sparse edit per recording on the pedestrian development
 sources. The learned rank found more qualifying edits than the old
 gain rank at the same budget, but it did not close the gap to OLS4.

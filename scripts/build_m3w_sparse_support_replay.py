@@ -47,6 +47,10 @@ def build(out):
         groups.append(g)
     data = dict(groups=groups)
     expected = dict(**a["summary"], capacity=b["summary"], bridge=c["summary"])
+    package(out, data, expected)
+
+
+def package(out, data, expected):
     replay.verify(replay.aggregate(data), expected)
     files = {
         "README.md": b"Run python replay.py with the pinned NumPy version. This reconstructs counts "

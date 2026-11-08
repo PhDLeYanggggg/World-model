@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Pedestrian Candidate Bank Versus Query Budget
+
+In the 36 views where OLS4 is certified better than CV, exact
+known-improving capacity at query caps 1/4/8 is 0/8/15 with the
+original bank and 0/9/15 after seven causal variants are added.
+The causal cap-4 screen uses 12,235 matched edits, ties gain
+ranking at one joint pass, and loses -2.899 pp [-4.960, -1.211].
+Versus cap 1, it gains +0.237 pp on observed labels but incurs
+0.651 pp of disagreement debit, yielding -0.414 pp conservative
+utility. No promotion.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/budget_risk_v1/README.md) |
+[Manuscript v108](outputs/publication_readiness_2026_09/evidence_manuscript_v108/README.md).
+
 ## Sparse Intervention Across Pedestrian Sources
 
 On 34 recordings from 14 development sources (102 repeated seed
