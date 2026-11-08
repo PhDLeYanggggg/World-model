@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Same-Radius Forecast Shape and Learned Motion
+
+All arms use the same 1,457 recipients, intervention times and per-row
+peak radii. The expanded motion menu raises hindsight capacity from
+80 to 190 of 606 views. After 42 native Torch fits, the learned motion
+proxy gains +0.032 pp [+0.009, +0.055] over the linear edit and +0.078
+pp [+0.007, +0.177] over the old tangent shape at the same radii. It
+does not beat the observed-prefix control reliably; 334/606 easy-risk
+views remain undefined. No qualification or confirmation read.
+[Geometry](outputs/publication_readiness_2026_09/radius_matched_turn_menu_v1/README.md) |
+[Learning](outputs/publication_readiness_2026_09/shape_menu_value_v1/README.md) |
+[Working paper v70](outputs/publication_readiness_2026_09/evidence_manuscript_v70/README.md).
+
 ## Cross-Query Budget-Feasible Swap Ranking
 
 42 native Torch fits with frozen candidates and risk. At 1,457 exact

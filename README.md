@@ -356,6 +356,16 @@ regression in the retrospective match, but ranked fewer certain swaps
 correctly and lost forecast gain. It also cleared fewer checks online.
 [Cross-query swap study](outputs/publication_readiness_2026_09/recording_swap_rank_v1/README.md).
 
+I then changed the candidate trajectories while keeping every selected
+agent, prediction time and edit radius fixed. The wider motion menu
+increased hindsight capacity, and a learned trajectory proxy improved
+on the straight edit and a previous neural shape at the same radii.
+It did not establish an advantage over a simple prefix backtest and
+could not fix missing easy support.
+[Candidate geometry](outputs/publication_readiness_2026_09/radius_matched_turn_menu_v1/README.md) |
+[Learned shape choice](outputs/publication_readiness_2026_09/shape_menu_value_v1/README.md) |
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v70/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
