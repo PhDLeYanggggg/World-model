@@ -1,5 +1,6 @@
 import numpy as np
 
+from scripts.audit_m3w_opendd_exchange_headroom import exact_options
 from scripts.run_m3w_opendd_support_exchange import observed_numerators
 from src.evaluation.m3w_support_exchange import labels, pick, rollout
 
@@ -43,3 +44,18 @@ def test_training_action_deltas_match_the_original_harm_numerators():
         actual = observed_numerators(d,cv+a*(inc-cv),.2)-ref
         np.testing.assert_allclose(v[:,i,1:].sum(0),actual,atol=1e-13)
     assert v[2,0,0]<0 and v[2,1,0]<0
+
+
+def test_oracle_scores_realized_amplitude_not_endpoint_interpolation():
+    cv = np.zeros((2,12,2))
+    inc = cv+np.array([1.,2.])[:,None,None]
+    y = cv+np.array([.9,.7])[:,None,None]
+    valid = np.ones((2,12),dtype=bool)
+    d = dict(cv=cv,y=y,valid=valid)
+    i,j,a,score = exact_options(cv,inc,y,valid,2.)
+    ref = observed_numerators(d,.5*inc,2.)
+    for n in range(len(i)):
+        p = .5*inc
+        p[i[n]] += a[n]/np.sqrt(2.)
+        p[j[n]] -= a[n]/np.sqrt(2.)
+        np.testing.assert_allclose(score[n,1:],observed_numerators(d,p,2.)-ref,atol=1e-13)
