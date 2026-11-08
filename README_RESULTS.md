@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Matched Easy-Reference Support
+
+21 fresh event heads: AP 0.482 at prevalence 0.183. At exactly 14,035
+matched switches, the learned rule improves risk passes from 425 to 444,
+but a simpler reference-mass heuristic reaches 453 of 606. Undefined
+selected easy views drop from 75 to 48 or 47. Neither meets the complete
+recording rule. [Results](outputs/publication_readiness_2026_09/opendd_easy_support_v1/README.md) |
+[Updated supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v29/README.md).
+
 ## OpenDD Causal Recording-Prefix Allocation
 
 21 fresh heads on pair-excluded donor forecasts. Joint lower gain vs CV

@@ -79,6 +79,12 @@ original checks. At equal edit counts, joint geometry reduced a distance
 proxy relative to independent selection and lost trajectory accuracy.
 [Streaming allocation](outputs/publication_readiness_2026_09/opendd_prefix_risk_v1/README.md).
 
+I kept the switch counts fixed and tested whether the policy could retain
+easy references needed for the risk calculation. A simpler estimated
+reference-mass ratio worked better than my new classifier on recording
+passes. Neither satisfied the full recording requirement.
+[Matched easy-support comparison](outputs/publication_readiness_2026_09/opendd_easy_support_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did
