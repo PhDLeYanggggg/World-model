@@ -1,0 +1,52 @@
+{
+  "aggregation": "original query weights; combine recording masses per group; mean across seeds and groups",
+  "bootstrap_seed": 73107,
+  "code": {
+    "bytes": 10353,
+    "path": "scripts/audit_m3w_dronecrowd_perfect_switch_ceiling.py",
+    "sha256": "48ead82c4fe68f11716e5c93b9cea078d2166fbea4cdd1971cd2be1541154da8"
+  },
+  "confirmation_access": false,
+  "draws": 3000,
+  "hypothetical_caps": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "method": {
+    "bytes": 1938,
+    "path": "src/evaluation/m3w_perfect_switch_ceiling.py",
+    "sha256": "d7544372cb647f05beb040294c82c6cab772117eb1bb863bb918d1d9d0976e9a"
+  },
+  "oracle": "zero ADE on selected known rows; omit all risk constraints for the upper bound",
+  "original_cap": "effective joint changes per query and seed",
+  "parent": {
+    "calibration_counts": {
+      "eligible": 1757584,
+      "exclusion_groups": 15,
+      "largest_group_row_share": 0.18983331664375644,
+      "masked_neighbors": 14552,
+      "max_eligible_group_rows": 333648,
+      "min_eligible_group_rows": 12822,
+      "queries": 11240,
+      "recordings": 40,
+      "visible": 1772136,
+      "with_targets": 11240
+    },
+    "calibration_registration_sha256": "a34135e3a0cc5129f820b9e297a35dbe9da9e5151500f0589d8c23f03fb3bb2c",
+    "frozen_forecasts_sha256": "7d96cc62ee4194895b00beb55b7530340a7020f6c38e1e09f5ee3fff5481fb29",
+    "score_replay_sha256": "a11392a3f64d7b7b073d88ac028cd8c17fd497d060f78169f328cd4f4cdfd060"
+  },
+  "risk_rule_changed": false,
+  "scope": "outcome_aware_calibration_diagnostic_not_policy_selection",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "zero_harm_menu": "positive available-label gain, CV for all unknown rows, from OLS4 and frozen sparse actions"
+}

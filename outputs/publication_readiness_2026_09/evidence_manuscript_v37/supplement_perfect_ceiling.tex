@@ -1,0 +1,37 @@
+\section{An Upper Bound from Intervention Cardinality}
+Let $b_{qi}\geq0$ denote the CV error averaged over released future
+steps of target $i$ in query $q$. Set $b_{qi}=0$ for wholly unobserved
+targets. With at most $K_q$ replacements, the positive improvement
+in available-label ADE cannot exceed $\sum_{j=1}^{K_q}b_{q(j)}$,
+where the errors are ordered from largest to smallest. Divide by
+the requested target count of each query before aggregation. The
+unknown-disagreement debit and risk restrictions can only reduce
+the feasible conservative gain. This bound requires no assumption
+about candidate capacity or predictability. For a direct upper
+bound against OLS4 we subtract its observed gain and omit the
+nonnegative policy--OLS4 disagreement debit.
+
+\begin{table}[!t]
+\centering\scriptsize
+\caption{DroneCrowd calibration-only capacity diagnostic, points on
+observed CV error. Source-group bootstrap intervals average the
+three seeds first. The perfect and finite-menu rows use outcomes.}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Comparison & Point [95\% interval]\\
+\midrule
+\CeilingRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+At the actual joint cardinality, the perfect-switch ceiling is below
+the OLS4 conservative score in all 15 source groups. The dense OLS4
+reference has a different intervention count, so this is a capacity
+comparison rather than a matched-budget ranking. Without the cap,
+the outcome-aware finite-menu witness retains CV on wholly unknown
+rows and chooses only observed improvements. It passes the unchanged
+2\% rule in all 120 recording--seed views. This witness establishes
+feasibility with labels, not that an inference-time controller can
+predict which replacements to make. No new policy was selected and
+the 30 confirmation groups remain sealed.

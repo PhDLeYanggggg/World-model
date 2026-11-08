@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Perfect-Switch Ceiling
+
+Forty opened calibration recordings, no refit. Original-cap
+perfect-switch upper gain is +5.293 pp vs CV, below OLS4's +51.288
+in all 15 source groups. Direct upper vs OLS4 is -46.124
+[-51.760, -40.343]. Uncapped outcome-aware menu witness: +55.190 pp,
+120/120 original risk passes; not an inference policy.
+[Readout](outputs/publication_readiness_2026_09/dronecrowd_perfect_switch_ceiling_v1/README.md) |
+[Main and supplement v37](outputs/publication_readiness_2026_09/evidence_manuscript_v37/README.md).
+
 ## OpenDD Shared Labels Across Seeds
 
 No refit. Original per-seed lower scores reproduce. Seed-shared bounds

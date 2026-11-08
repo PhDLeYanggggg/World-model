@@ -43,6 +43,13 @@ pixels for ungated joint selection). I do not deploy the new policy.
 [Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md) |
 [Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
+I then checked whether the original two-switch budget could reach OLS4
+even with perfect predictions on the best recipients. Its upper bound
+was +5.29 points versus CV, well below OLS4's +51.29. Without that cap,
+the frozen candidates contain a zero-harm selection, but finding it
+requires knowing the future. [Capacity experiment](outputs/publication_readiness_2026_09/dronecrowd_perfect_switch_ceiling_v1/README.md) |
+[Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v37/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
