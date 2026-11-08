@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Leave-Location-Out Diagnostic
+
+42 fresh Torch fits, 7 held locations, 3 seeds, and 10,475 target rows in
+3,395 non-overlapping queries. Learned self-only beats count-matched
+hindcast by +4.334 points [+1.795, +7.154]. It does not beat CV, and the
+nearest-neighbor ablation is negative (-0.480 [-0.773, -0.154] vs self-only).
+Both learned arms worsen descriptive easy ADE on six sites; no deployment
+promotion or formal confirmation. Checkpoint readout replay is exact.
+[Protocol and results](outputs/publication_readiness_2026_09/opendd_location_diagnostic_v1/README.md).
+
 ## Independent Aerial Source Support
 
 Fresh structural intake and exact replay on the published AerialMPT and

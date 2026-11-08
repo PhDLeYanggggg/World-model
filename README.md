@@ -40,9 +40,14 @@ pixels for ungated joint selection). I do not deploy the new policy.
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more
-complete support, but two roundabouts account for most of it. I have not
-used either source to fit or score a model.
+complete support, but two roundabouts account for most of it.
 [Source audit](outputs/publication_readiness_2026_09/topdown_source_intake_v1/README.md).
+
+On OpenDD I trained a gain-and-harm selector with one roundabout held out
+at a time. It beat a matched history-based heuristic, but last-displacement
+CV was stronger than either learned selector. Adding nearest-neighbor
+history made the selection worse, and neither model protected easy cases.
+[OpenDD experiment](outputs/publication_readiness_2026_09/opendd_location_diagnostic_v1/README.md).
 
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
