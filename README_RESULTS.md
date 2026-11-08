@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## ACME Camera Prefix and Label Support
+
+Seven sites, 127 pixel-track files listed; seven downloaded samples yield
+1,202 disjoint stride-4 queries with 9,106/12,091 complete futures.
+On one Michigan video, 69 detections generate 26 forecasts without
+annotations, and the 16-frame cold prefix reproduces exactly. The direct
+frame/pixel check matches only 3/68 label points to detector boxes, so no
+forecast error or risk result is reported. SinD's original pipeline
+uses backward smoothing and remains unsuitable as a live-input substitute.
+[Results and replay](outputs/publication_readiness_2026_09/acme_prefix_intake_v1/README.md).
+
 ## Independent Source Qualification
 
 Four SinD city samples: 259 disjoint stride-4 queries, with complete

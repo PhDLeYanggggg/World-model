@@ -44,6 +44,13 @@ all 12 labels, versus 36.0% in Foggy Bottom. I am checking how the
 published positions were produced before using either release to test
 causal forecasts. [Source audit](outputs/publication_readiness_2026_09/independent_source_qualification_v1/README.md).
 
+I have since checked ACME's public release. Seven site samples give
+1,202 nonoverlapping 8-to-12 windows with consistent frame labels.
+I also reproduced a camera-only detector and tracker on one Michigan
+clip. Its published annotation points do not align reliably with the
+detector boxes under a direct frame-and-pixel match, so I have not scored
+those forecasts. [ACME audit](outputs/publication_readiness_2026_09/acme_prefix_intake_v1/README.md).
+
 I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
 new recordings. Its 5% blend failed to improve on CV or on a causal
 motion control at the same recipients and coefficient. It met the
