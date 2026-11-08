@@ -17,7 +17,10 @@ the safety checks. [Matched training experiment](outputs/publication_readiness_2
 For missing trajectory labels, I also tested how well two extrapolation
 centers cover positions I deliberately hid from released tracks. Anchored
 OLS4 covered more complete 12-step tails than a fixed-position center.
-[Missing-label stress test](outputs/publication_readiness_2026_09/native_completion_occlusion_v1/README.md).
+The ranking of joint and additive selection can still reverse under coherent
+completions around the new center.
+[Missing-label stress test](outputs/publication_readiness_2026_09/native_completion_occlusion_v1/README.md) |
+[Motion-centered rerun](outputs/publication_readiness_2026_09/native_motion_centered_completion_v1/README.md).
 
 ## Current Result
 

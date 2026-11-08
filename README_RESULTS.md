@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Motion-Centered Coherent Pair Ranking
+
+With anchored OLS4 instead of fixed terminal extension and the same 1x
+radius, feasible coherent completions still give opposite rankings:
+-0.0768 and +0.1151 image pixels. The observed term, switch budget,
+released coordinates and official 2% rule are unchanged. This strengthens
+the missing-label sensitivity conclusion, not the deployment claim.
+[Analysis and exact replay](outputs/publication_readiness_2026_09/native_motion_centered_completion_v1/README.md) |
+[v23 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v23/README.md).
+
 ## Stress Test of the Missing-Label Corridor
 
 On the same 4,026 artificially hidden twelve-step tails, anchored OLS4
