@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## ACME GMU Causal Association
+
+A second exposed camera, 12 nonoverlapping 8-to-12 windows. Original
+association recovered seven stable histories and failed the diagnostic
+floor. Past-only association recovered eight with the same detections.
+Five have full futures in four windows: CV ADE/FDE 79.44/125.05 and
+OLS4 63.19/124.56 image pixels. Not a population, deployment-risk or
+independent confirmation result.
+[Camera and motion comparison](outputs/publication_readiness_2026_09/acme_gmu_camera_v1/README.md).
+
 ## ACME Camera Support Failure
 
 Two segments of the exposed Michigan camera. The original detector returned

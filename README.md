@@ -58,6 +58,14 @@ past-only foreground method still recovered no verified 8-step pedestrian
 history across the two checked segments, so I did not use this camera to
 validate forecasts. [Camera repair experiment](outputs/publication_readiness_2026_09/acme_camera_repair_v1/README.md).
 
+At George Mason, a separate ACME camera yielded more usable histories.
+I kept the detections fixed and changed how tracks are linked using
+past motion; that recovered an eighth matched history. Five had all
+twelve future labels. OLS4 reduced average path error relative to CV
+on those five, but endpoint error hardly changed. This is an early
+camera diagnostic, not a cross-site result.
+[GMU readout](outputs/publication_readiness_2026_09/acme_gmu_camera_v1/README.md).
+
 I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
 new recordings. Its 5% blend failed to improve on CV or on a causal
 motion control at the same recipients and coefficient. It met the
