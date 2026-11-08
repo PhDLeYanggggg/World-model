@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a separate guard to predict when an early edit would erase
+the only easy reference. The guard reduced reference loss but did
+not beat the original policy. Even with hindsight, choosing from the
+same early proposals left little room to improve.
+[Reference-loss guard](outputs/publication_readiness_2026_09/opendd_reference_loss_v1/README.md).
+
 I kept the gain edit fixed and tested whether the model could identify
 support earlier. A local reference head never intervened. Training
 on whole-recording outcomes made it intervene, but some early edits

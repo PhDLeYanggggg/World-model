@@ -1,0 +1,35 @@
+\subsection{Explicit protection against reference loss}
+We keep the early proposal generator fixed and train the probability
+that an early action replaces the only existing easy reference without
+adding one. A factored score multiplies the predicted probability that
+the original support is unique by the conditional probability of no new
+reference. Both see the current candidate and observed prefix. They
+retain proposals below the 75th percentile of risk scores on donor
+proposals. A rejection leaves the original policy active. This percentile
+sets a development budget, not a calibrated risk bound.
+
+\begin{center}
+\begin{tabular}{lc}
+Arm & Edits / joint / undefined \\
+\hline
+Original & \RefLossOriginalCounts \\
+Frozen early policy & \RefLossFrozenCounts \\
+Direct loss guard & \RefLossDirectCounts \\
+Factored guard & \RefLossFactoredCounts \\
+Easy rank, direct-matched & \RefLossMatchedCounts \\
+Exact count, hindsight & \RefLossExactCounts \\
+No loss, up to count, hindsight & \RefLossNoLossCounts \\
+\end{tabular}
+\end{center}
+
+The direct guard keeps \RefLossAccepted{} of \RefLossProposed{}
+proposals. Reference losses decline from \RefLossBefore{} to
+\RefLossAfter{}, but the conservative utility difference versus the
+frozen early policy is \RefLossFrozenEffect{}. Against easy ranking
+matched separately on additions and replacements in each location
+and seed, it is \RefLossMatchedEffect{}. Intervals are paired by
+location. Even hindsight cannot fill \RefLossShortfall{} of the
+matched slots without losing a reference. With smaller budgets,
+the no-loss hindsight comparison adds only four joint passes
+over the original. It is an outcome-aware diagnostic, not a causal
+improvement. The 2\% recording rule is unchanged.

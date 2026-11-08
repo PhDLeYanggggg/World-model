@@ -1,0 +1,62 @@
+{
+  "arms": "direct loss probability and factored probability with conditional no-reference head",
+  "base": "frozen early advantage proposal, exact gain and early proposal paths",
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 14148,
+    "path": "scripts/run_m3w_opendd_reference_loss.py",
+    "sha256": "95bcc36eb9f435a5198a1ba075823203702403530007d01ab030849d072be1f6"
+  },
+  "confirmation_access": false,
+  "control": "retroactive same count per held location, seed and addition/replacement class by original easy score",
+  "gate": "keep if below donor in-sample proposal quantile; empty donor proposals reject all",
+  "keep_quantile": 0.75,
+  "model": {
+    "bytes": 1317,
+    "path": "src/world_model/m3w_opendd_reference_loss.py",
+    "sha256": "6d3ddfca3210cc5dd3fa9f2974332c9f79c0b1ffedda84f77decb25893d9662a"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 1998,
+      "path": "outputs/publication_readiness_2026_09/opendd_early_advantage_v1/registration.json",
+      "sha256": "39c6b8d194b3332cc44aba41280cbd22d46d41c688fe9b69825a7916ca0e134b"
+    },
+    {
+      "bytes": 66665,
+      "path": "outputs/publication_readiness_2026_09/opendd_early_advantage_v1/analysis.json",
+      "sha256": "107566e922b5416167fcf9bd12522575d9fa9efa204ffd8ba82a369d9a5b6cbc"
+    },
+    {
+      "bytes": 15162,
+      "path": "outputs/publication_readiness_2026_09/opendd_early_advantage_v1/head_freeze.json",
+      "sha256": "059815378686676c2b75fd3896df7d4f32018d41eab1ba715089d8a72a2da31b"
+    }
+  ],
+  "primary": "direct vs frozen and direct easy-matched; factorization diagnostic",
+  "refusal": "disable further supplemental proposals; original support can still fire",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "target": "remove original unique easy reference and add no new easy reference",
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "workers": 0
+}

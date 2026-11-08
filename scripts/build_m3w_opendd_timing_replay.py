@@ -29,6 +29,7 @@ BUDGET_RANK = OUT.parent.parent/"opendd_timing_replay_v13"/OUT.name
 PROTECTED_GAIN_REPLAY = OUT.parent.parent/"opendd_timing_replay_v14"/OUT.name
 GAIN_WAIT_REPLAY = OUT.parent.parent/"opendd_timing_replay_v15"/OUT.name
 EARLY_REFERENCE_REPLAY = OUT.parent.parent/"opendd_timing_replay_v16"/OUT.name
+REFERENCE_LOSS_REPLAY = OUT.parent.parent/"opendd_timing_replay_v17"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -52,6 +53,8 @@ PROTECTED_GAIN = "opendd_protected_gain_v1"
 GAIN_WAIT = "opendd_gain_wait_v1"
 EARLY_REFERENCE = "opendd_early_reference_v1"
 EARLY_ADVANTAGE = "opendd_early_advantage_v1"
+REFERENCE_LOSS = "opendd_reference_loss_v1"
+REFERENCE_LOSS_ORACLE = REFERENCE_LOSS+"_oracle"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -252,11 +255,26 @@ def capacity_table(studies, expected, a, key, field):
     expected[key] = dict(counts={field: {k: a["summary"].get(k, 0) for k in keys}}, effects={})
 
 
+def read_reference_loss_oracle():
+    p = legacy.REPORTS/REFERENCE_LOSS
+    r = json.loads((p/"oracle_registration.json").read_text())
+    a = json.loads((p/"oracle_analysis.json").read_text())
+    root = legacy.REPORTS.parents[1]
+    if (a["registration"] != legacy.sha(p/"oracle_registration.json")
+            or any(legacy.sha(root/z["path"]) != z["sha256"] for z in r["parents"])
+            or any(z["confirmation_access"] or not z["original_2pct"] or not z["outcome_aware_only"]
+                   for z in (r, a))):
+        raise ValueError("Require frozen outcome-aware reference-loss audit")
+    return a
+
+
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
           include_two=False, include_stop=False, include_admission=False, include_record=False,
           include_schedule=False, include_direction=False, include_clock=False, include_budget_rank=False,
-          include_protected_gain=False, include_gain_wait=False, include_early_reference=False):
+          include_protected_gain=False, include_gain_wait=False, include_early_reference=False,
+          include_reference_loss=False):
     studies, expected = {}, {}
+    include_early_reference = include_early_reference or include_reference_loss
     include_gain_wait = include_gain_wait or include_early_reference
     include_protected_gain = include_protected_gain or include_gain_wait
     include_budget_rank = include_budget_rank or include_protected_gain
@@ -300,10 +318,13 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (GAIN_WAIT,)
     if include_early_reference:
         names += (EARLY_REFERENCE, EARLY_ADVANTAGE)
+    if include_reference_loss:
+        names += (REFERENCE_LOSS, REFERENCE_LOSS_ORACLE)
     for name in names:
         a = (read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK
              else read_deadline() if name == DEADLINE
-             else read_attribution() if name == ATTRIBUTION else legacy.read(name))
+             else read_attribution() if name == ATTRIBUTION
+             else read_reference_loss_oracle() if name == REFERENCE_LOSS_ORACLE else legacy.read(name))
         s = a["summary"]
         fields = {k: {f: v[f] for f in legacy.FIELDS} for k, v in s["metrics"].items()}
         status = {} if name == SCHEDULE else s.get("capacity", {})
@@ -375,7 +396,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = next(p for enabled, p in ((include_early_reference, EARLY_REFERENCE_REPLAY),
+    out = next(p for enabled, p in ((include_reference_loss, REFERENCE_LOSS_REPLAY),
+        (include_early_reference, EARLY_REFERENCE_REPLAY),
         (include_gain_wait, GAIN_WAIT_REPLAY), (include_protected_gain, PROTECTED_GAIN_REPLAY),
         (include_budget_rank, BUDGET_RANK), (include_clock, DUAL_CLOCK),
         (include_direction, DUAL_DIRECTION),
@@ -411,8 +433,10 @@ if __name__ == "__main__":
     p.add_argument("--include-protected-gain", action="store_true")
     p.add_argument("--include-gain-wait", action="store_true")
     p.add_argument("--include-early-reference", action="store_true")
+    p.add_argument("--include-reference-loss", action="store_true")
     a = p.parse_args()
     build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
           a.include_two_reserves, a.include_support_stop, a.include_support_admission,
           a.include_record_support, a.include_support_schedule, a.include_dual_direction, a.include_dual_clock,
-          a.include_budget_rank, a.include_protected_gain, a.include_gain_wait, a.include_early_reference)
+          a.include_budget_rank, a.include_protected_gain, a.include_gain_wait, a.include_early_reference,
+          a.include_reference_loss)

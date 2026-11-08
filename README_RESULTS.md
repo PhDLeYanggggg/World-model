@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Reference-Loss Guard and Frozen-Menu Limit
+
+Direct and factored guards reduce old-reference losses from 19 to 13.
+They pass jointly on 134 and 135 of 606 views, versus 131 for all
+early proposals and 138 for the original. The direct-vs-easy
+comparison at matched addition/replacement counts is -0.00023 pp
+[-0.00092, +0.00030]. At those exact counts, hindsight can only
+reach 140. If fewer edits are allowed and all old references must
+be retained, it reaches 142. The proposal menu, not just the cutoff,
+limits this route.
+[Experiment](outputs/publication_readiness_2026_09/opendd_reference_loss_v1/README.md) |
+[Manuscript v104](outputs/publication_readiness_2026_09/evidence_manuscript_v104/README.md).
+
 ## Early Support at a Fixed Gain Clock
 
 Local feasible-reference heads make no new interventions. Recording
