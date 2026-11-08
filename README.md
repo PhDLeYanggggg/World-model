@@ -366,6 +366,13 @@ could not fix missing easy support.
 [Learned shape choice](outputs/publication_readiness_2026_09/shape_menu_value_v1/README.md) |
 [Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v70/README.md).
 
+I then kept the edit times, counts and radii fixed and changed which agents
+received them. With the outcomes known, more recordings could meet both the
+risk and accuracy checks. The causal policy did not recover that advantage,
+and over 250 recording-seed views had no eligible way to obtain an easy
+reference at those edit times. I kept the earlier policy unchanged.
+[Matched recipient experiment](outputs/publication_readiness_2026_09/recipient_slot_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

@@ -1,5 +1,26 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-11-08 固定预算的介入对象实验
+
+本轮在本机完成 21 个真实 Torch 拟合、16,800 次更新及零更新重放。
+使用原生 arm64、CPU 4 个计算线程、1 个 interop 线程、0 个 DataLoader
+worker。训练约 15 秒，重放约 7 秒，不需要新调度 CREATE 作业。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_recipient_slot.py
+.venv-pytorch/bin/python scripts/run_m3w_recipient_slot.py --replay
+.venv-pytorch/bin/python scripts/freeze_m3w_dronecrowd_calibration_roles.py verify
+```
+
+首条中断后原样重跑，从每 100 步保存的本地检查点恢复；查看实验私有
+目录内的 PID 心跳并确认原进程已退出后再运行。第二条不能产生新训练；
+第三条只验证划分凭证，不读取确认组标注。通过的 25 项相关测试不是
+独立确认。CREATE 旧记录只说明历史状态；本轮未读取队列或远程产物。
+当前连接命令以 [KCL CREATE 官方指南](https://docs.er.kcl.ac.uk/CREATE/hpc/access/)
+为准，恢复已配置账户连接后再只读核对已知作业与产物，不重复提交。
+
+[结果](recipient_slot_v1/README.md) | [补充材料](evidence_manuscript_v71/README.md)。
+
 ## 当前入口：2026-10-29 easy 训练约束完成，实际策略仍未通过
 
 用户已明确确认后续评价规则：完整策略覆盖所有要求场景、保持原定 2% 安全

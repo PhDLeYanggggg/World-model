@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Same-Budget Recipient Assignment
+
+At identical 1,457 edit times and slot radii, the label-aware assignment
+can clear 206/606 joint checks, versus 77 with frozen recipients. But at
+least 257 views have no eligible easy reference under these slots. After
+21 fresh Torch fits, the causal chronological coverage rule clears 65
+joint checks and leaves 354 views undefined versus 334 for the frozen
+control. Its direct effect is -0.060 pp [-0.175, +0.009]. No qualifying
+policy or independent confirmation read.
+[Experiment](outputs/publication_readiness_2026_09/recipient_slot_v1/README.md) |
+[Working supplement v71](outputs/publication_readiness_2026_09/evidence_manuscript_v71/README.md).
+
 ## Same-Radius Forecast Shape and Learned Motion
 
 All arms use the same 1,457 recipients, intervention times and per-row
