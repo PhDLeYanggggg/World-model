@@ -257,6 +257,12 @@ but the full policy still lost to the fixed tangent forecast and failed
 the original risk rule. I kept the deployment unchanged.
 [Road-map comparison](outputs/publication_readiness_2026_09/opendd_map_direction_v1/README.md).
 
+I then trained the same path chooser with no map, the correct map,
+or map features exchanged between agents observed at the same time.
+The correct map changed decisions, but it did not clearly improve on
+either control or on the fixed tangent forecast. I did not replace it.
+[Learned map comparison](outputs/publication_readiness_2026_09/opendd_map_path_value_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

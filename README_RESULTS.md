@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned OpenDD Road Context
+
+63 fresh native Torch fits, 31,500 updates, three seeds and seven held
+locations. At half radius correct map vs no-map is -0.0059 pp and vs
+wrong-map +0.0081 pp directly; both intervals cross zero. Correct map
+beats its own same-count shuffle (+0.0295 pp), but the paired difference
+in that shuffle advantage is not established. With weights fixed,
+swapping map alignment changes 7,162/24,801 choices without a clear
+utility gain for correct alignment. Correct map passes 527/606 and
+does not beat fixed tangent. No deployment or confirmation change.
+[Ablation](outputs/publication_readiness_2026_09/opendd_map_path_value_v1/README.md) |
+[Working supplement v57](outputs/publication_readiness_2026_09/evidence_manuscript_v57/README.md).
+
 ## OpenDD Static Road Context
 
 All seven road masks align with published coordinates; 26,472/30,075
