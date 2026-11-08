@@ -1,0 +1,78 @@
+{
+  "arms": [
+    "learned_probe",
+    "learned_motion",
+    "prefix_rule",
+    "random",
+    "oracle"
+  ],
+  "at_most_one_per_multi_agent_query": true,
+  "bootstrap": 3000,
+  "development_targets": false,
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 10842,
+      "path": "scripts/run_m3w_ols_anchor_retrieval.py",
+      "sha256": "1554f655dabb58277064d6a6413fc09a8eb0497f3bb22ca0857dd66bf6e83857"
+    },
+    {
+      "bytes": 2581,
+      "path": "src/world_model/m3w_ols_anchor_retrieval.py",
+      "sha256": "e7b110c9598ca11af415737f4bae7617b0c0d357d87f874dc66174396cc801fb"
+    },
+    {
+      "bytes": 1957,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_retrieval_v1/protocol.md",
+      "sha256": "a54dec3d865a491ee607593cc02d85ea5623f8ecce3d2a5da3e98beb988defee"
+    },
+    {
+      "bytes": 1260,
+      "path": "tests/test_m3w_ols_anchor_retrieval.py",
+      "sha256": "933916c8e9962ef64d603a4e0485dd8a488fe9d25cfe0c195ba8c6ebceb14816"
+    },
+    {
+      "bytes": 3259,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/registration.json",
+      "sha256": "7486e3ff296edbb17f420a621edef434bbfced2ac3d6e5caa183eae9b7b0c063"
+    },
+    {
+      "bytes": 2632,
+      "path": "src/world_model/m3w_ols_anchor_denoising.py",
+      "sha256": "bddc5e468f7d140913b0e842bd39f5be52d670df8a9c0e17d41764337941a3b0"
+    },
+    {
+      "bytes": 682,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/replay_execution.json",
+      "sha256": "9bd20018da5f1951ddf4364449b32c31512009bf3629645b3f6b6d56d407a3aa"
+    },
+    {
+      "bytes": 1837,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/capacity.json",
+      "sha256": "006984cb323599b0b26d4a8ad61fe1792e3f9277f029bc3586c1dc7f6927265c"
+    }
+  ],
+  "fit": [
+    "learned_probe",
+    "learned_motion"
+  ],
+  "fraction": 0.5,
+  "margin": 0.1,
+  "official_cv_rule_unchanged": true,
+  "primary": "learned_probe_vs_ols4_matched_query_counts",
+  "role": "leave_one_fitting_source_of_nine",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selection_or_threshold_search": false,
+  "settings": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 600,
+    "torch_threads": 2,
+    "workers": 0
+  }
+}
