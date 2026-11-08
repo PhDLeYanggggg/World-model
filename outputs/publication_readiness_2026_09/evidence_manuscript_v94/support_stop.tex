@@ -1,0 +1,42 @@
+\section{Bounded Support Stopping}
+
+We keep the first gain edits and the second-slot eligibility
+fixed. A credit becomes available at the first qualifying easy
+query, expires after the next two queries, and is never forced
+to release at the end of a recording. The continuation head uses
+only current features, query ordinal and credit age. Its
+training target compares immediate risk-adjusted utility
+against the best remaining training opportunity or abstention.
+Teachers exclude both donor and evaluation sites.
+The learned continuation policy delays 37 of 293 support
+edits. Against immediate release in the same recordings at
+matched usage and amplitude it gives \StopSupportMatched{} in
+conservative error reduction, and \StopSupportCV{} versus CV.
+Neither contrast establishes an improvement, and the full risk
+gate is unmet. The immediate policy without usage matching
+passes \StopSupportImmediateJoint{} views; continuation and its
+matched replay pass \StopSupportContinueJoint{} and
+\StopSupportReplayJoint{}, respectively.
+
+\begin{table}[h]
+\centering
+\caption{Outcome-aware capacity out of 606 views. Every column
+keeps the first edits, second-slot recordings, second edit count
+and amplitude fixed. Counts are not causal policy performance.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Queries & Top easy & All pred. easy & All legal \\
+\midrule
+Fixed release & \StopSupportFixedTop{} & \StopSupportFixedEasy{} & \StopSupportFixedLegal{} \\
+Release through +2 & \StopSupportTwoTop{} & \StopSupportTwoEasy{} & \StopSupportTwoLegal{} \\
+Release or later & \StopSupportLaterTop{} & \StopSupportLaterEasy{} & \StopSupportLaterLegal{} \\
+Any query & \StopSupportAnyTop{} & \StopSupportAnyEasy{} & \StopSupportAnyLegal{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Expanding the recipient menu within the frozen easy threshold
+changes little. Allowing all legal recipients raises capacity
+even without delaying a query. This suggests testing admission
+scores separately from waiting on these exposed development sites.

@@ -19,6 +19,7 @@ RECORDING = OUT.parent.parent/"opendd_timing_replay_v3"/OUT.name
 RESERVED = OUT.parent.parent/"opendd_timing_replay_v4"/OUT.name
 SHAPES = OUT.parent.parent/"opendd_timing_replay_v5"/OUT.name
 TWO_SLOTS = OUT.parent.parent/"opendd_timing_replay_v6"/OUT.name
+STOPPING = OUT.parent.parent/"opendd_timing_replay_v7"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -28,6 +29,7 @@ SHAPE = "opendd_reserve_shape_v1"
 SINGLE = "opendd_reserve_only_v1"
 TWO = "opendd_two_reserves_v1"
 TWO_RANK = "opendd_two_reserve_ranking_v1"
+STOP = "opendd_support_stop_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -93,9 +95,22 @@ def read_two(suffix, flag):
     return a
 
 
+def read_menu():
+    p = legacy.REPORTS/STOP
+    f = p/"menu_registration.json"
+    r = json.loads(f.read_text())
+    a = json.loads((p/"menu_capacity.json").read_text())
+    if (a["registration"] != legacy.sha(f) or r["parent"]["sha256"] != legacy.sha(p/"analysis.json")
+            or any(x["confirmation_access"] or not x["original_2pct"] or not x["outcome_aware_only"]
+                   for x in (r, a))):
+        raise ValueError("Require frozen development-only recipient menu")
+    return a
+
+
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
-          include_two=False):
+          include_two=False, include_stop=False):
     studies, expected = {}, {}
+    include_two = include_two or include_stop
     include_shape = include_shape or include_two
     include_reserve = include_reserve or include_shape
     names = ("opendd_release_credit_v1", "opendd_credit_value_v2", SLATE)
@@ -109,6 +124,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (SINGLE,)
     if include_two:
         names += (TWO, TWO_RANK)
+    if include_stop:
+        names += (STOP,)
     for name in names:
         a = read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK else legacy.read(name)
         s = a["summary"]
@@ -120,6 +137,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         support_rows = {(k, r["seed"]): r["groups"] for k, rows in support["by_site"].items() for r in rows} if support else {}
         timing = read_two("timing", "outcome_aware_only") if name == TWO else None
         timing_rows = {(k, r["seed"]): r["counts"] for k, rows in timing["by_site"].items() for r in rows} if timing else {}
+        menu = read_menu() if name == STOP else None
+        menu_rows = {(k, r["seed"]): r["counts"] for k, rows in menu["by_site"].items() for r in rows} if menu else {}
         scalars = dict(s["effects"])
         if name == SLATE:
             scalars["pair_relative"] = s["pair_relative"]
@@ -140,6 +159,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
                                   for k in values} for group, values in support["summary"].items()})
                 if timing:
                     counts["second_slot_timing"] = {k: timing_rows[site, r["seed"]].get(k, 0) for k in timing["summary"]}
+                if menu:
+                    counts.update({f"recipient_menu_{k}": v for k, v in menu_rows[site, r["seed"]].items()})
                 view.append(dict(effects=effect, counts=counts))
             cells.append(view)
         order = list(SLATE_ORDER if name == SLATE else sorted(scalars))
@@ -153,6 +174,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
             fields.update({f"extra_edit_{k}": value for k, value in support["summary"].items()})
         if timing:
             fields["second_slot_timing"] = timing["summary"]
+        if menu:
+            fields.update({f"recipient_menu_{k}": v for k, v in menu["summary"].items()})
         expected[name] = dict(counts=fields, effects={k: {f: v[f] for f in ("point", "interval95")} for k, v in scalars.items()})
     if include_shape:
         shape_tables(studies, expected)
@@ -168,7 +191,7 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = TWO_SLOTS if include_two else SHAPES if include_shape else RESERVED if include_reserve else RECORDING if include_teacher else EXTENDED if include_rank else OUT
+    out = STOPPING if include_stop else TWO_SLOTS if include_two else SHAPES if include_shape else RESERVED if include_reserve else RECORDING if include_teacher else EXTENDED if include_rank else OUT
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".pending")
     with ZipFile(tmp, "w") as z:
@@ -187,5 +210,7 @@ if __name__ == "__main__":
     p.add_argument("--include-reserve", action="store_true")
     p.add_argument("--include-reserve-shape", action="store_true")
     p.add_argument("--include-two-reserves", action="store_true")
+    p.add_argument("--include-support-stop", action="store_true")
     a = p.parse_args()
-    build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape, a.include_two_reserves)
+    build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
+          a.include_two_reserves, a.include_support_stop)

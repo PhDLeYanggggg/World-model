@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Bounded Support Timing
+
+A learned two-query wait used 293 support edits, 37 of them delayed.
+Against immediate use of the same budget in those recordings, the reduction
+was +0.00160 pp [-0.00017, +0.00503]. At fixed coverage and amplitude,
+the two-query hindsight ceiling was 168/606 with only the top easy
+track, or 226/606 with all legal tracks. The original recording-level
+risk gate remains unmet.
+[Experiment](outputs/publication_readiness_2026_09/opendd_support_stop_v1/README.md) |
+[Manuscript v94](outputs/publication_readiness_2026_09/evidence_manuscript_v94/README.md).
+
 ## Independent Gain and Support Slots
 
 At the same 943 edits, second-slot easy ranking passes 138/606

@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether holding a support edit for a later query helps. It did
+not reliably improve forecast error over spending the same budget
+immediately in those recordings. An offline analysis found room to improve both the timing
+and the choice of which track to edit.
+[Support timing experiment](outputs/publication_readiness_2026_09/opendd_support_stop_v1/README.md).
+
 I separated the gain edit from a second, smaller edit intended to
 recover reference support. At the same second-slot times, easy
 ranking passed more recordings than gain ranking but reduced
