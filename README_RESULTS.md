@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Timing The Same Neural Edit Credits
+
+At the same raw EqMotion bank and recording totals, delay of up to two
+or eight queries raises original-risk hindsight capacity from 88 to
+223 or 267 of 606. Value waiting gains +0.005 pp [-0.096, +0.096]
+against immediate spending of the same used credits; support waiting
+loses -0.383 pp [-0.832, +0.039]. No policy advances.
+[Experiment](outputs/publication_readiness_2026_09/opendd_release_credit_v1/README.md) |
+[Main and supplement v86](outputs/publication_readiness_2026_09/evidence_manuscript_v86/README.md).
+
 ## Double-Excluded Candidate Advantage
 
 63 trajectory producers and 21 selector fits, 60,900 updates.

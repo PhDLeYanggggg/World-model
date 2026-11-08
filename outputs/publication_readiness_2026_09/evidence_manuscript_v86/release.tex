@@ -1,0 +1,56 @@
+\section{Release Timing With The Frozen Neural Bank}
+
+We retain the raw comoving EqMotion paths and treat the
+hardness rule's count as a stream of released unit credits.
+No credit can be used before release or transferred across
+recordings. At a query we allow at most the current release
+plus one delayed edit, bounded by available legal rows.
+The diagnostic moves only the time at which a credit can
+be spent; the native prediction grid and original 2\% risk
+checks are unchanged.
+
+For release prefix $R_t$ and edit prefix $E_t$, spending
+all credits with a maximum delay $d$ requires
+$R_{t-d}\leq E_t\leq R_t$ and $E_T=R_T$, with negative
+indices interpreted as zero. These constraints are sufficient
+by matching spends to released credits in FIFO order.
+Adding them to the outcome-aware maximin risk program
+retains the same per-recording total and tests timing
+without changing the path bank. Zero, two and eight
+queries of delay qualify \NeuralCreditFixed{}, \NeuralCreditShort{}
+and \NeuralCreditLong{} of \NeuralCreditViews{} recording--seed views.
+The numbers lacking eligible easy reference at reachable
+queries are \NeuralCreditFixedNoEasy{}, \NeuralCreditShortNoEasy{} and
+\NeuralCreditLongNoEasy{}, with another \NeuralCreditNoRelease{} views
+receiving no credit in any arm. These are label-aware
+witnesses, not causal intervention counts.
+
+\begin{table}[h]
+\centering
+\caption{Same release stream, different causal timing.
+Matched replays spend the used credits at release time;
+they do not certify the full policies.}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Edits & Expire & Joint & Matched \\
+\midrule
+Immediate & \NeuralCreditNowEdits{} & 0 & \NeuralCreditNowJoint{} & -- \\
+Fixed wait & \NeuralCreditDelayEdits{} & \NeuralCreditDelayExpired{} & \NeuralCreditDelayJoint{} & \NeuralCreditDelayMatchedJoint{} \\
+Value wait & \NeuralCreditValueEdits{} & \NeuralCreditValueExpired{} & \NeuralCreditValueJoint{} & \NeuralCreditValueMatchedJoint{} \\
+Support wait & \NeuralCreditSupportEdits{} & \NeuralCreditSupportExpired{} & \NeuralCreditSupportJoint{} & \NeuralCreditSupportMatchedJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fixed rule holds a credit until at least the next query.
+The value rule defers a nonpositive predicted risk-adjusted
+value, and the support rule also waits for predicted easy
+support until it has accumulated sufficient estimated
+support. Their deadline is two queries, and an unused
+credit expires. Neither has access to the recording end.
+Against spending the same used credits immediately, direct
+lower utility changes by \NeuralCreditFixedEffect{},
+\NeuralCreditValueEffect{}, and \NeuralCreditSupportEffect{}.
+Higher hindsight capacity does not establish a causal
+timing improvement or qualify a policy for confirmation.
