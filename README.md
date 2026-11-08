@@ -50,6 +50,16 @@ the frozen candidates contain a zero-harm selection, but finding it
 requires knowing the future. [Capacity experiment](outputs/publication_readiness_2026_09/dronecrowd_perfect_switch_ceiling_v1/README.md) |
 [Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v37/README.md).
 
+I then let the model choose how far to move each prediction from CV
+toward OLS4. The learned gain rule still trailed OLS4. The initial
+risk search chose no changes; after I repaired the search, the policy
+passed 99 of 120 recording-seed checks. Assigning exactly the same
+blend strengths using a simple past-motion backtest passed 114 and
+gave slightly better forecasts. I kept the original 2% rule, did not
+select a deployment policy, and left the confirmation groups sealed.
+[Experiment and matched comparison](outputs/publication_readiness_2026_09/dense_motion_calibration_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v38/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have

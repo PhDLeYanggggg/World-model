@@ -1,0 +1,34 @@
+\section{Broader Motion and Predicted Risk Feasibility}
+On the same opened calibration roster, we fix both CV and OLS4 paths
+and learn normalized gain, positive harm and reference mass for four
+nonidentity interpolation levels. The heads use only eight observed
+positions and internal backtests. Three models fit on the original
+nine fitting groups, never on the calibration outcomes. An independent
+gain arm has no intervention count cap. A recording-level price ladder
+chooses a predicted feasible nonempty subset, or retains CV.
+
+\begin{table}[!t]
+\centering\small
+\caption{Broad motion on the opened calibration roster.
+Gain is lower gain relative to CV; passes use the original rule.}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Policy & Gain (pp) & Passes / 120\\
+\midrule
+\DenseRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+The price ladder selects no changes, although every view contains
+an individually feasible positive-gain action under the estimated
+moments. To repair the search without refitting, we select one such
+action per eligible row. Adding the per-row predicted constraints
+preserves the two ratios, with denominators still positive. All
+120 views now intervene, but only \DenseUnionPass{} pass on actual
+outcomes. The past-hindcast control assigns the same amplitude
+multiset in each query, but uses its own causal recipient order.
+The repaired learned choice is worse than that control
+(\DenseUnionMatched{} pp, 95\% source interval \DenseUnionCI).
+This isolates estimated feasibility from achieved safety and
+does not establish a deployable broad motion rule.

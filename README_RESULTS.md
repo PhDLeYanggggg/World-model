@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Broad Motion and Risk Search
+
+Three new fits on the original nine fitting groups; scores below reuse the
+40 opened calibration recordings. Independent learned selection gains
++47.228 pp vs CV, below full OLS4 (+51.288). The initial price search
+selects no changes despite a predicted feasible positive-gain singleton
+in every view. A label-free feasibility repair gains +0.813 pp and passes
+99/120 actual risk checks. A causal hindcast control with the exact same
+per-query blend counts gains +0.898 and passes 114/120. Paired repair
+minus control: -0.089 pp, source-group 95% CI [-0.133, -0.047]. No policy
+qualifies; the original 2% rule and 30 sealed groups are unchanged.
+[Readout and replay](outputs/publication_readiness_2026_09/dense_motion_calibration_v1/README.md) |
+[Main and supplement v38](outputs/publication_readiness_2026_09/evidence_manuscript_v38/README.md).
+
 ## DroneCrowd Perfect-Switch Ceiling
 
 Forty opened calibration recordings, no refit. Original-cap
