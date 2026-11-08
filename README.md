@@ -49,6 +49,12 @@ CV was stronger than either learned selector. Adding nearest-neighbor
 history made the selection worse, and neither model protected easy cases.
 [OpenDD experiment](outputs/publication_readiness_2026_09/opendd_location_diagnostic_v1/README.md).
 
+I then made CV the default on OpenDD and let the model abstain. A second
+reference and location-held calibration kept easy errors almost unchanged,
+but the model intervened too rarely to establish a gain over CV. A hindsight
+comparison showed that the same motion menu still had room for improvement.
+[CV-anchored follow-up](outputs/publication_readiness_2026_09/opendd_cv_abstention_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD CV-Anchored Abstention
+
+168 fresh Torch fits with nested location exclusion. The calibrated dual
+arm edits 44 of 10,122 forced-edit opportunities, with worst descriptive
+easy change +0.068%. Its gain vs CV is +0.010 pp [-0.001, +0.030]; the
+matched forced-count comparison does not show a dual-reference gain.
+A post-hoc outcome-aware lower-bound oracle finds +17.013 pp with no
+known-easy harm. No deployment promotion or independent confirmation.
+[Nested evaluation and controls](outputs/publication_readiness_2026_09/opendd_cv_abstention_v1/README.md).
+
 ## OpenDD Leave-Location-Out Diagnostic
 
 42 fresh Torch fits, 7 held locations, 3 seeds, and 10,475 target rows in
