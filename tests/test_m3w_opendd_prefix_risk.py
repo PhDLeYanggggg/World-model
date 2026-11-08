@@ -1,5 +1,6 @@
 import numpy as np
 
+from scripts.audit_m3w_opendd_prefix_transitions import transitions
 from src.evaluation.m3w_opendd_prefix_risk import choose, compression, walk
 
 
@@ -29,3 +30,15 @@ def test_joint_geometry_differs_from_sum_of_single_edits():
     new[:2,:,0] = 1.
     assert compression(origin,cv,new,(0,1))==0.
     assert compression(origin,cv,new,(0,))+compression(origin,cv,new,(1,))==1.
+
+
+def test_paired_flight_audit_keeps_support_loss_distinct_from_rescue():
+    cv = np.zeros((4,12,2))
+    y = cv.copy()
+    y[:,:,0] = np.array([.1,1.,.1,.1])[:,None]
+    candidate = cv.copy()
+    candidate[:,:,0] = np.array([.01,.01,.01,-.1])[:,None]
+    d = dict(cv=cv,y=y,valid=np.ones((4,12),dtype=bool),recordings=np.array(['a','a','b','b']))
+    masks = {a:np.array([False,True,True,False]) for a in ('local','prefix','joint')}
+    r = transitions(d,candidate,masks,.2,.8)['joint']
+    assert r['lost_pass']==r['lost_pass_undefined_easy']==r['rescued_pass']==1

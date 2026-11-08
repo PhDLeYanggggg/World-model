@@ -73,6 +73,12 @@ counts, but failed the recording-level risk checks. For some recordings
 the easy reference was absent; for others the selected changes were too
 costly. [Nested calibration](outputs/publication_readiness_2026_09/opendd_velocity_calibration_v1/README.md).
 
+I then let the selector reserve predicted risk as a recording unfolds.
+It reduced easy-case harm in aggregate, but fewer recordings passed the
+original checks. At equal edit counts, joint geometry reduced a distance
+proxy relative to independent selection and lost trajectory accuracy.
+[Streaming allocation](outputs/publication_readiness_2026_09/opendd_prefix_risk_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Causal Recording-Prefix Allocation
+
+21 fresh heads on pair-excluded donor forecasts. Joint lower gain vs CV
++0.236 pp [+0.158, +0.345], with 401/606 original risk passes versus
+450/606 for the fixed uniform blend. It rescues 36 and loses 85 passes;
+34 of the lost passes become undefined on selected easy reference. At
+matched query counts joint loses -0.117 pp [-0.176, -0.067] against
+independent utility. No deployment or confirmation.
+[Results and paired flight transitions](outputs/publication_readiness_2026_09/opendd_prefix_risk_v1/README.md).
+
 ## OpenDD Velocity Calibration and Recording Feasibility
 
 63 fresh inner fits and 21 hash-verified outer checkpoints. Nested uniform
