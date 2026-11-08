@@ -24,6 +24,7 @@ ADMISSION = OUT.parent.parent/"opendd_timing_replay_v8"/OUT.name
 RECORD_SUPPORT = OUT.parent.parent/"opendd_timing_replay_v9"/OUT.name
 SCHEDULE_SUPPORT = OUT.parent.parent/"opendd_timing_replay_v10"/OUT.name
 DUAL_DIRECTION = OUT.parent.parent/"opendd_timing_replay_v11"/OUT.name
+DUAL_CLOCK = OUT.parent.parent/"opendd_timing_replay_v12"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -39,6 +40,8 @@ RECORD = "opendd_record_support_v1"
 MONOTONE = "opendd_support_monotonicity_v1"
 SCHEDULE = "opendd_support_schedule_v1"
 DIRECTION = "opendd_dual_direction_v1"
+CLOCK = "opendd_dual_clock_v1"
+DEADLINE = CLOCK+"_deadline"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -180,10 +183,23 @@ def schedule_tables(studies, expected):
     expected[key] = dict(counts=counts, effects={})
 
 
+def read_deadline():
+    p = legacy.REPORTS/CLOCK
+    r = json.loads((p/"deadline_registration.json").read_text())
+    a = json.loads((p/"deadline_analysis.json").read_text())
+    root = legacy.REPORTS.parents[1]
+    if (a["registration"] != legacy.sha(p/"deadline_registration.json") or not r["no_new_training"]
+            or any(legacy.sha(root/z["path"]) != z["sha256"] for z in r["parents"])
+            or any(z["confirmation_access"] or not z["original_2pct"] for z in (r, a))):
+        raise ValueError("Require the verified no-refit deadline diagnostic")
+    return a
+
+
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
           include_two=False, include_stop=False, include_admission=False, include_record=False,
-          include_schedule=False, include_direction=False):
+          include_schedule=False, include_direction=False, include_clock=False):
     studies, expected = {}, {}
+    include_direction = include_direction or include_clock
     include_schedule = include_schedule or include_direction
     include_record = include_record or include_schedule
     include_admission = include_admission or include_record
@@ -212,8 +228,11 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (SCHEDULE,)
     if include_direction:
         names += (DIRECTION,)
+    if include_clock:
+        names += (CLOCK, DEADLINE)
     for name in names:
-        a = read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK else legacy.read(name)
+        a = (read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK
+             else read_deadline() if name == DEADLINE else legacy.read(name))
         s = a["summary"]
         fields = {k: {f: v[f] for f in legacy.FIELDS} for k, v in s["metrics"].items()}
         status = {} if name == SCHEDULE else s.get("capacity", {})
@@ -281,7 +300,7 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = next(p for enabled, p in ((include_direction, DUAL_DIRECTION),
+    out = next(p for enabled, p in ((include_clock, DUAL_CLOCK), (include_direction, DUAL_DIRECTION),
         (include_schedule, SCHEDULE_SUPPORT), (include_record, RECORD_SUPPORT),
         (include_admission, ADMISSION), (include_stop, STOPPING),
         (include_two, TWO_SLOTS), (include_shape, SHAPES), (include_reserve, RESERVED),
@@ -309,7 +328,8 @@ if __name__ == "__main__":
     p.add_argument("--include-record-support", action="store_true")
     p.add_argument("--include-support-schedule", action="store_true")
     p.add_argument("--include-dual-direction", action="store_true")
+    p.add_argument("--include-dual-clock", action="store_true")
     a = p.parse_args()
     build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
           a.include_two_reserves, a.include_support_stop, a.include_support_admission,
-          a.include_record_support, a.include_support_schedule, a.include_dual_direction)
+          a.include_record_support, a.include_support_schedule, a.include_dual_direction, a.include_dual_clock)

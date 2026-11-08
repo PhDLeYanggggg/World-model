@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let both edit slots move and trained a model to decide when to
+use them. It made fewer edits and lost to the earliest-use control
+at the same budget. An explicit deadline recovered coverage but
+did not recover an advantage over that control.
+[Two-role timing experiment](outputs/publication_readiness_2026_09/opendd_dual_clock_v1/README.md).
+
 I compared learning forecast directions against one motion baseline
 and against two. The two-baseline head did better than the CV-only
 head but did not improve on the original neural edits. Fixing the

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned Timing for Both Roles
+
+At 146 matched edits, continuation gives -0.00626 pp
+[-0.01925, +0.00048] and 16 joint passes versus 30 for matched
+early use. A fixed deadline restores 581 edits, but gives 75
+joint passes versus 81 at the same budget. Outcome-aware search
+at the original role counts verifies 428/606 views within the
+same nominated rows. No policy promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_dual_clock_v1/README.md) |
+[Manuscript v99](outputs/publication_readiness_2026_09/evidence_manuscript_v99/README.md).
+
 ## Matched-Radius Dual-Reference Direction
 
 At 943 matched edits, dual-reference versus CV-only gives +0.02306 pp
