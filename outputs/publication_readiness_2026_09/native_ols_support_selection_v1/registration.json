@@ -1,0 +1,86 @@
+{
+  "amplitudes": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "arms": [
+    "direct",
+    "factorized_ego",
+    "factorized_neighbor",
+    "factorized_constant",
+    "matched_direct",
+    "matched_factorized_ego",
+    "matched_factorized_constant",
+    "parent_ols_hindcast"
+  ],
+  "bootstrap": 3000,
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 15048,
+      "path": "scripts/run_m3w_ols_support_selection.py",
+      "sha256": "5274a3db641915858cde58fdf1a2b88239ff9c5d1c8d0e23a9cc8ed8840ee50e"
+    },
+    {
+      "bytes": 4506,
+      "path": "src/world_model/m3w_ols_support_selection.py",
+      "sha256": "f37fafcd19e913640919402b131ae9a0eec2b4538f865b5991bcfdbf79db8f0e"
+    },
+    {
+      "bytes": 2713,
+      "path": "outputs/publication_readiness_2026_09/native_ols_support_selection_v1/protocol.md",
+      "sha256": "a9ec101ac19f2e4acd91382270caba6f04b1507db847b4b638c9e9e08be6da14"
+    },
+    {
+      "bytes": 1837,
+      "path": "tests/test_m3w_ols_support_selection.py",
+      "sha256": "34aef180268d85166e628a6207d40032ec3e2bcb33a378838793d2a9842b1b74"
+    },
+    {
+      "bytes": 3595,
+      "path": "outputs/publication_readiness_2026_09/native_ols_replacement_v1/registration.json",
+      "sha256": "706c5d7ca0c0c5e2eb18d061c6d2228860f638bba4857a685c3b83929af2a584"
+    },
+    {
+      "bytes": 257,
+      "path": "outputs/publication_readiness_2026_09/native_ols_replacement_v1/infer_execution.json",
+      "sha256": "31600dce8b75a74eae561dfe1a5fc53a34b4b7c4ba860ce1c7d101f88da627ad"
+    },
+    {
+      "bytes": 276,
+      "path": "outputs/publication_readiness_2026_09/native_ols_replacement_amplitude_v1/replay_execution.json",
+      "sha256": "8ba46600c4078637a07d5d568d0ff0bedaa98ce42a80bf67a4b5f0590abf4ee7"
+    },
+    {
+      "bytes": 1864,
+      "path": "outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/fit_population.json",
+      "sha256": "834743f6e691b95ce6bf54665d99bcee12dde97789c5500c2dc735e167f935da"
+    },
+    {
+      "bytes": 4435,
+      "path": "src/world_model/m3w_ols_replacement.py",
+      "sha256": "5afcc914123a714f9154bb818bfebf801bb1b08fe255bd1a8c59c59e36362778"
+    }
+  ],
+  "fit_sources": 9,
+  "harm_weight": 1.0,
+  "mechanism": "factorized_neighbor_vs_matched_factorized_constant",
+  "no_development_selection": true,
+  "official_cv_rule_unchanged": true,
+  "primary": "factorized_neighbor_vs_history_ols4_velocity",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 600,
+    "torch_threads": 2,
+    "workers": 0
+  },
+  "threshold": 0.0
+}
