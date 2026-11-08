@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## New Source Structural Support
+
+Fresh publisher checks and exact replay. Three TUMDOT-ING samples have
+100,736 of 116,829 complete targets at stride 12 (86.23%), one campaign.
+Hannover has 19,047 of 23,541 (80.91%), one provisional site group. The
+33 station camera-day samples have only 2.61% complete future support;
+Aschaffenburg has no verified shared clock for the downloaded segments.
+No forecasting, role assignment, or DroneCrowd confirmation access.
+[Archive audit and reproduction](outputs/publication_readiness_2026_09/station_sharedspace_intake_v1/README.md).
+
 ## OpenDD Matched Easy-Reference Support
 
 21 fresh event heads: AP 0.482 at prevalence 0.183. At exactly 14,035

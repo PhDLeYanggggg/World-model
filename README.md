@@ -85,6 +85,12 @@ reference-mass ratio worked better than my new classifier on recording
 passes. Neither satisfied the full recording requirement.
 [Matched easy-support comparison](outputs/publication_readiness_2026_09/opendd_easy_support_v1/README.md).
 
+I also looked beyond OpenDD for better-labeled tracks. Three initial
+TUMDOT-ING recordings retain 86% complete future paths on the audited
+sampling grid. The railway archive is much larger, but its sampled
+tracks retain only about 3%. I have not scored either source.
+[New source audit](outputs/publication_readiness_2026_09/station_sharedspace_intake_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did
