@@ -1,0 +1,12 @@
+# Learning when to replace the strong OLS4 reference
+
+The completed frozen DroneCrowd calibration found OLS4 far more accurate than the CV-centered selector. This follow-up does not load calibration labels, forecasts or confirmation data. It tests a new supervised causal decision on the earlier nine fitting groups (69,746 rows), separate from all fourteen already exposed development groups. Eight observed positions, twelve predicted annotation steps, image pixels. No new official threshold or risk rule.
+
+All arms replace OLS4 from the same four causal actions: OLS3, OLS8, damped OLS4, and a bounded acceleration from the last three velocity increments. Regress expected signed gain and positive harm against a reference on observed steps; wholly unknown rows pay maximum disagreement. Scale labels by twelve times past RMS speed with a fixed floor. Fit a shared per-action MLP (600 AdamW updates, batches of 128, seeds 17/29/43). At each seed, all three learned arms have identical initialization and draws. No model or hyperparameter selection on development.
+
+- **OLS motion** fits OLS4-relative gain and harm using motion and candidate geometry only.
+- **OLS hindcast** adds observed-prefix pseudo-forecast errors: reconstruct the remainder of the eight observed positions from the first four, five, or six points. Use signed relative ADE against OLS4 and CV, positive OLS4 harm and the fraction of positive probes.
+- **CV hindcast** keeps the same features and learning budget but supervises gain and harm relative to CV, to test reference mismatch rather than a larger network.
+- **Hindcast rule** uses mean past OLS4-relative gain minus past OLS4 harm without learning.
+
+All arms choose by expected gain minus harm from a shared nonidentity action mask. Use exactly the same count per query: at most two and never all visible agents. Do not claim these forced switches are a deployment rule. Freeze choices before reading development targets. The primary contrast is the conservative individual ADE gain of OLS hindcast against unmodified OLS4, in points on the common known CV denominator. Secondary paired comparisons isolate the hindcast features and the choice of reference; bootstrap 3,000 paired source groups after averaging seeds. Separately report positive OLS4-relative harm and missing-row debit on switched recipients. Keep the original CV risk diagnostic unchanged and do not use it to approve an OLS4-floor model. No independent confirmation, Stage5C, SMC, metric or seconds claim.

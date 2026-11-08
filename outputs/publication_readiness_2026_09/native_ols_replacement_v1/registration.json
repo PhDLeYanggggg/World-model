@@ -1,0 +1,132 @@
+{
+  "arms": [
+    "cv_hindcast",
+    "ols_motion",
+    "ols_hindcast",
+    "hindcast_rule"
+  ],
+  "bootstrap": 3000,
+  "comparisons": {
+    "cv_hindcast_vs_constant_velocity_causal_fd": [
+      "constant_velocity_causal_fd",
+      "cv_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "cv_hindcast_vs_history_ols4_velocity": [
+      "history_ols4_velocity",
+      "cv_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "hindcast_rule_vs_constant_velocity_causal_fd": [
+      "constant_velocity_causal_fd",
+      "hindcast_rule",
+      "constant_velocity_causal_fd"
+    ],
+    "hindcast_rule_vs_history_ols4_velocity": [
+      "history_ols4_velocity",
+      "hindcast_rule",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_hindcast_vs_constant_velocity_causal_fd": [
+      "constant_velocity_causal_fd",
+      "ols_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_hindcast_vs_cv_hindcast": [
+      "cv_hindcast",
+      "ols_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_hindcast_vs_hindcast_rule": [
+      "hindcast_rule",
+      "ols_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_hindcast_vs_history_ols4_velocity": [
+      "history_ols4_velocity",
+      "ols_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_hindcast_vs_ols_motion": [
+      "ols_motion",
+      "ols_hindcast",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_motion_vs_constant_velocity_causal_fd": [
+      "constant_velocity_causal_fd",
+      "ols_motion",
+      "constant_velocity_causal_fd"
+    ],
+    "ols_motion_vs_history_ols4_velocity": [
+      "history_ols4_velocity",
+      "ols_motion",
+      "constant_velocity_causal_fd"
+    ]
+  },
+  "cut": {
+    "easy": 12.491606766896991,
+    "hard": 61.71788504054353
+  },
+  "dev_sources": 14,
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 13381,
+      "path": "scripts/run_m3w_ols_replacement.py",
+      "sha256": "fc102c7b2ace3db6d96fe0bf675a8a899756366a2930a3ac4a4c88a0d946232e"
+    },
+    {
+      "bytes": 4435,
+      "path": "src/world_model/m3w_ols_replacement.py",
+      "sha256": "5afcc914123a714f9154bb818bfebf801bb1b08fe255bd1a8c59c59e36362778"
+    },
+    {
+      "bytes": 2509,
+      "path": "outputs/publication_readiness_2026_09/native_ols_replacement_v1/protocol.md",
+      "sha256": "5cfe9e21e953948b9100bba28f031fd2c9e66f644b9c6d90d06872546d056672"
+    },
+    {
+      "bytes": 1421,
+      "path": "tests/test_m3w_ols_replacement.py",
+      "sha256": "5a984c962030760be86da7ddd282bca927ff9af2c8be75d433f1873ead6685d4"
+    },
+    {
+      "bytes": 2638,
+      "path": "outputs/publication_readiness_2026_09/native_dual_reference_forecast_v1/registration.json",
+      "sha256": "84767b2ecd3e5dfca1365c499b8734e9fb542031b733a055be90dcfe660e34df"
+    },
+    {
+      "bytes": 1864,
+      "path": "outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/fit_population.json",
+      "sha256": "834743f6e691b95ce6bf54665d99bcee12dde97789c5500c2dc735e167f935da"
+    },
+    {
+      "bytes": 7180,
+      "path": "src/evaluation/m3w_selection_forecast_readout.py",
+      "sha256": "930031d39affff45e63bba08b940ad34aaded2fca585c9fb72c0bc743c4f08ef"
+    }
+  ],
+  "fit_sources": 9,
+  "menu": [
+    "ols3",
+    "ols8",
+    "damped4",
+    "bounded_acceleration4"
+  ],
+  "model_selection": false,
+  "official_cv_rule_unchanged": true,
+  "primary": "ols_hindcast_vs_history_ols4_velocity",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 600,
+    "torch_threads": 2,
+    "workers": 0
+  }
+}
