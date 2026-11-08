@@ -60,6 +60,12 @@ per query. Short history backtests helped identify potential beneficiaries,
 but the learned choices still lost to OLS4. Even hindsight selection gained
 only 0.0504 points on the CV-normalized score at that budget.
 [Matched anchor selection](outputs/publication_readiness_2026_09/native_ols_anchor_retrieval_v1/README.md).
+I next changed the forecast itself, learning velocity adjustments from
+past neighbor motion. The near-neighbor model did not beat matched
+outer-neighbor or self-only controls on the full prediction grid. A
+simple fixed rule helped on visible labels, but its advantage did not
+survive accounting for every missing step.
+[Local velocity experiment](outputs/publication_readiness_2026_09/native_local_velocity_v1/README.md).
 
 ## Earlier Development Result
 

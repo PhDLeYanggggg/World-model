@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Local Velocity Forecasts
+
+Eighty-one fresh Torch fits compare near, matched outer and ego-only
+velocity forecasts. Near vs OLS4 is +0.0263 observed but -0.0184 full-grid
+lower points (95% CI [-0.0294, -0.0071]); the near arm also loses to both
+learned controls on the full-grid bound. A fixed rule scores +2.2415 on
+observed labels, but its full-grid lower estimate is -1.0209. A fixed
+return to OLS4 by step 12 moves that estimate to -0.2308
+[-0.9376, +0.4560], with no endpoint change or safety pass. The
+15/30 DroneCrowd roles, original rule and deployment are unchanged.
+[Design and results](outputs/publication_readiness_2026_09/native_local_velocity_v1/README.md).
+
 ## OLS4 Fixed-Anchor Selection
 
 Fifty-four fresh Torch fits test whether past-only prefix backtests can pick
