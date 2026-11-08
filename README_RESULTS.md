@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Sustained Turns and Exact One-Edit Capacity
+
+On exposed OpenDD, raw sustained turns lose to OLS4 by -31.100 pp
+[-50.978, -9.970]. With the same 1,457 edits and radii, adding the
+candidate loses -0.040 pp [-0.084, -0.006] against the anchor and
+passes 72 versus 77 joint checks. In 105 credit-starved views,
+finite-bank capacity rises from 30 to 39 with one new shape;
+exact arbitrary-path capacity is 57 at the legal radius and 60
+without a radius bound. No qualifying controller or confirmation.
+[Results and proof](outputs/publication_readiness_2026_09/sustained_turn_v2/README.md) |
+[Supplement v77](outputs/publication_readiness_2026_09/evidence_manuscript_v77/README.md).
+
 ## First-Credit Intervention
 
 With the original scores, paths and 2% rule, advancing the first credit

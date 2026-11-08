@@ -427,6 +427,13 @@ free choice of one candidate. The causal policy recovered three.
 [First-credit experiment](outputs/publication_readiness_2026_09/first_credit_v2/README.md) |
 [Working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v76/README.md).
 
+I also tested whether holding a turn longer improves those
+candidates. It worsened forecasts even at the same edit radii.
+An exact hindsight calculation shows that even unconstrained
+one-edit paths can pass in only 60 of the 105 credit-starved views.
+[Turn and one-edit capacity experiment](outputs/publication_readiness_2026_09/sustained_turn_v2/README.md) |
+[Working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v77/README.md).
+
 I also checked four historical CREATE jobs against the scheduler and
 matched the remote freeze manifest to my local copy. That confirms the
 archived run lineage; the earlier development result remains negative.
