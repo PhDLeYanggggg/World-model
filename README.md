@@ -310,6 +310,13 @@ hindsight ceiling fell to 276 of 606 recording-seed evaluations, so
 both where to intervene and what to change still matter.
 [Same-count swap study](outputs/publication_readiness_2026_09/matched_bridge_swaps_v1/README.md).
 
+I next trained a separate model to decide how many trajectories to edit.
+The recording-level teacher led to fewer edits under the same online
+budget, but it did not improve forecast gain. When I matched the exact
+number of edits per recording in a retrospective check, the simpler
+query-local model gave better gain. I kept the existing policy.
+[Recording-aware count study](outputs/publication_readiness_2026_09/recording_count_v2/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

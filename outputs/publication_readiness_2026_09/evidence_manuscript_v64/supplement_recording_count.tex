@@ -1,0 +1,24 @@
+\paragraph{Recording-aware count supervision.}
+We hold the additive recipient scorer fixed at evaluation and compare
+two heads for zero, one or two edits. The first learns a query-local
+proxy, the second a verified integer plan from an entire donor
+recording under the original risk constraints and an edit quota.
+Training menus and cutoffs exclude both the outer and donor locations.
+At inference, both heads share a causal token budget: accrue 0.2 per
+eligible query and store at most two. Across seven previously exposed
+OpenDD locations and three seeds, the local and recording heads make
+\RecordingCountLocalN{} and \RecordingCountRecordN{} edits, with
+\RecordingCountLocalPass{} and \RecordingCountRecordPass{} of
+\RecordingCountViews{} risk passes with positive gain against both
+references. The recording head leaves \RecordingCountUndefined{} views
+without an estimable easy risk. The direct contrast is
+\RecordingCountGap{} pp (95\% location-bootstrap interval
+[\RecordingCountGapLow{}, \RecordingCountGapHigh{}]). We also match
+exactly \RecordingCountMatchedN{} edits per arm in a retrospective,
+label-blind score allocation with nonzero counts in
+\RecordingCountMatchedViews{} views. This diagnostic sees all query
+histories in the recording but uses no outcome in matching. The matched
+gain is \RecordingCountMatched{} pp
+[\RecordingCountMatchLow{}, \RecordingCountMatchHigh{}]. The teacher
+reduces intervention, but does not improve forecast gain at equal
+counts or qualify under the original risk rule. No confirmation was read.

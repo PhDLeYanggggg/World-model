@@ -1,0 +1,50 @@
+{
+  "bank": 2.0,
+  "code": {
+    "bytes": 14649,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "7d174ace7a17794bcc25b6a6611c89be4610ab36ba147278dbc8cb9b67e62eaa"
+  },
+  "confirmation_access": false,
+  "count_steps": 500,
+  "fitting": "inner producer excludes both donor and outer; count head uses only donor labels",
+  "horizon": [
+    8,
+    12
+  ],
+  "model": {
+    "bytes": 3563,
+    "path": "src/world_model/m3w_recording_count.py",
+    "sha256": "5a73b8b367928eaa664fa209207053c8d33882b650cc45441ca42654ccc79bff"
+  },
+  "no_held_tuning": true,
+  "original_2pct": true,
+  "parent": [
+    {
+      "bytes": 54993,
+      "path": "outputs/publication_readiness_2026_09/matched_bridge_swaps_v1/analysis.json",
+      "sha256": "847830c0d561567bec374deb5a855bc7b6fcea94a0bfdaf1d1fe03da17f2d92a"
+    },
+    {
+      "bytes": 52800,
+      "path": "outputs/publication_readiness_2026_09/matched_bridge_swaps_v1/head_freeze.json",
+      "sha256": "bc71d61296c0528efbf92ed87086492cad5e018cb60ecd21970348912353fab8"
+    },
+    {
+      "bytes": 3712,
+      "path": "outputs/publication_readiness_2026_09/matched_bridge_swaps_v1/exact_matched_capacity.json",
+      "sha256": "429f1b97f17010527aaf18baa11497fed0aed7a57bd240ef8e0ba80314c9f0a9"
+    }
+  ],
+  "primary": "recording versus local at same streaming rate cap; realized counts need not match",
+  "rank_steps": 700,
+  "rate": 0.2,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "teacher": "integer two-reference maximin under original risk and aggregate count cap; omit unresolved",
+  "threads": 4,
+  "workers": 0
+}

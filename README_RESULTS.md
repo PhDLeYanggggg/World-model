@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recording-Aware Count Supervision
+
+105 native Torch fits: 63 pair-excluded rankers and 42 count heads.
+At the same online rate cap, recording supervision makes 780 edits and
+57/606 dual passes; query-local supervision makes 1,768 edits and 55/606.
+At exactly 780 edits per arm in the retrospective count-matched check,
+recording minus local gain is -0.076 pp (95% interval -0.165 to -0.009).
+The recording head did not qualify; the original risk rule and DroneCrowd
+seal are unchanged. [Report](outputs/publication_readiness_2026_09/recording_count_v2/README.md) |
+[Working supplement v64](outputs/publication_readiness_2026_09/evidence_manuscript_v64/README.md).
+
 ## Same-Count Bridge Swaps
 
 63 native Torch fits. Joint swap ranking gives +0.228 pp over frozen
