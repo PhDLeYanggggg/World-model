@@ -71,6 +71,10 @@ the extra harm weight let the model move and helped on complete tracks,
 but did not improve the conservative full-grid result. With one edit
 per query, hindsight choice still found some useful forecasts; random
 choice lost ground. [Matched loss experiment](outputs/publication_readiness_2026_09/native_velocity_objectives_v1/README.md).
+I trained the selector again with each evaluation source excluded from
+both training stages. Its learned choices did not improve on leaving
+OLS4 alone. Keeping those same choices and falling back to CV did not
+fix them either. [Nested selection experiment](outputs/publication_readiness_2026_09/native_nested_velocity_selection_v1/README.md).
 
 ## Earlier Development Result
 

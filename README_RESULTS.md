@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Nested Velocity Selection
+
+Across 108 fresh donor forecasters and 54 fresh selectors, the held
+source is excluded from both training stages; 27 outer forecasts are
+verified cache. At one edit per query, gain-plus-harm gives -0.1592
+full-grid points versus OLS4 (95% CI [-0.3386, +0.0013]), versus
+-0.0755 for minimum displacement and +1.0471 for hindsight.
+Keeping the same edits but using CV elsewhere gives -0.1707; a
+separately CV-ranked oracle gives +1.6843. There is no causal policy
+gain or new calibration. [Experiment and replay](outputs/publication_readiness_2026_09/native_nested_velocity_selection_v1/README.md).
+
 ## Velocity Loss and Forecast Headroom
 
 Eighty-one new Torch fits and 27 verified cached controls separate
