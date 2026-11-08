@@ -1,0 +1,107 @@
+{
+  "bootstrap": 3000,
+  "cfg": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 800,
+    "torch_threads": 4,
+    "workers": 0
+  },
+  "context": "disjoint matched halves of nearest8",
+  "contrasts": [
+    [
+      "near",
+      "ols4"
+    ],
+    [
+      "near",
+      "cv"
+    ],
+    [
+      "near",
+      "ego"
+    ],
+    [
+      "near",
+      "outer"
+    ],
+    [
+      "near",
+      "fixed_neighbor"
+    ],
+    [
+      "ego",
+      "ols4"
+    ],
+    [
+      "outer",
+      "ols4"
+    ],
+    [
+      "fixed_neighbor",
+      "ols4"
+    ],
+    [
+      "ols4",
+      "cv"
+    ]
+  ],
+  "development_targets": false,
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 12224,
+      "path": "scripts/run_m3w_local_velocity.py",
+      "sha256": "e8cc9f48a6b74b6debd3dac6d9994df160d4e3921c66df53aadbccb90a2c04f9"
+    },
+    {
+      "bytes": 4412,
+      "path": "src/world_model/m3w_local_velocity.py",
+      "sha256": "4c024fec28a63c52c938df61b1c1835ab92eb21b292779b8daa794271cb45100"
+    },
+    {
+      "bytes": 2435,
+      "path": "outputs/publication_readiness_2026_09/native_local_velocity_v1/protocol.md",
+      "sha256": "ccb0d4b8aa672b52b86bd2ee02de839f8c8d7ae992191550abb5cc64451c6053"
+    },
+    {
+      "bytes": 2043,
+      "path": "tests/test_m3w_local_velocity.py",
+      "sha256": "23ee12d46e20af0abcdcfd8ae082190217bbe341441735173ff2ac19d30e0bd6"
+    },
+    {
+      "bytes": 3259,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/registration.json",
+      "sha256": "7486e3ff296edbb17f420a621edef434bbfced2ac3d6e5caa183eae9b7b0c063"
+    },
+    {
+      "bytes": 11531,
+      "path": "scripts/run_m3w_ols_anchor_denoising.py",
+      "sha256": "b26e6717697e541b88c851b783812e71d284361c5747c5a03b8ad09e1c7d49ed"
+    },
+    {
+      "bytes": 270,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_retrieval_v1/replay_execution.json",
+      "sha256": "3efa88dd759db7edfebf3ecdbe1cf12203a034b6a819cfaaf6194f71e97dcc30"
+    }
+  ],
+  "fit_arms": [
+    "near",
+    "outer",
+    "ego"
+  ],
+  "no_metric_or_seconds": true,
+  "official_cv_rule_unchanged": true,
+  "primary": [
+    "near_vs_ols4",
+    "near_vs_ego",
+    "near_vs_outer"
+  ],
+  "role": "leave_one_fitting_source_out",
+  "seeds": [
+    17,
+    29,
+    43
+  ]
+}
