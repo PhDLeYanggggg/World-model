@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Expiry Pricing and Reviewer Replay
+
+21 fresh fits compare direct, mixture, priced and geometry-based
+readouts from the same head. The asymmetric price reduces mean expiry
+loss from -0.00013639 to -0.00000415 pp, with 11 expiries in either arm,
+but makes 23 moves versus 32. Direct effect against the direct readout
+is +0.000139 pp [-0.000140, +0.000557]; the price ties the anchor's
+77/606 joint passes. A standalone ZIP recomputes 32 paired intervals
+and recording counts across four timing studies. No qualification.
+[Pricing](outputs/publication_readiness_2026_09/expiry_pricing_v1/README.md) |
+[Supplement v75](outputs/publication_readiness_2026_09/evidence_manuscript_v75/README.md) |
+[Replay](outputs/publication_readiness_2026_09/deferral_review_replay_v1/README.md).
+
 ## Peer History and Wait Expiry
 
 63 fits compare self-only, aligned peers and wrong-focal same-query

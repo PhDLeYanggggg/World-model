@@ -401,6 +401,15 @@ giving up an immediate edit and failing to find a replacement in time.
 [Peer ablation and expiry replay](outputs/publication_readiness_2026_09/wait_peer_value_v1/README.md) |
 [Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v74/README.md).
 
+I separated the value of a successful wait from the cost of losing the
+original edit. The asymmetric cost reduced expiry loss substantially,
+but also made fewer useful moves and did not establish better overall
+performance. I kept the original policy. The accompanying offline
+replay recomputes the paired intervals without releasing trajectory data
+or checkpoints.
+[Expiry pricing](outputs/publication_readiness_2026_09/expiry_pricing_v1/README.md) |
+[Numerical replay](outputs/publication_readiness_2026_09/deferral_review_replay_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

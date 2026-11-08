@@ -1,5 +1,21 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-11-08 等待到期定价和离线复算
+
+本机 21 次原生 arm64 CPU Torch 拟合、16,800 更新约 31 秒；零更新
+重放约 25 秒。四计算线程、零 DataLoader 子进程，每 100 步保存
+检查点与心跳。原命令可继续中断的同一注册。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_expiry_pricing.py
+.venv-pytorch/bin/python scripts/run_m3w_expiry_pricing.py --replay
+.venv-pytorch/bin/python scripts/build_m3w_deferral_review.py --check
+```
+
+第三条在独立进程复算四组实验的 32 个配对区间，检查轻量 ZIP，
+不重新训练或评分，不需要 CREATE。仍没有独立确认成绩。
+[定价实验](expiry_pricing_v1/README.md) | [复算包](deferral_review_replay_v1/README.md)。
+
 ## 当前入口：2026-11-08 邻居信息与等待到期
 
 本机原生 arm64 CPU Torch 完成 63 次拟合、50,400 次更新，约 49 秒；
