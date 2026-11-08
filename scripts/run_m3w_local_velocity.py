@@ -20,7 +20,8 @@ from src.world_model import m3w_local_velocity as model
 base, run, prev, np, torch = parent.base, parent.run, parent.prev, parent.np, parent.torch
 PUBLIC = parent.PUBLIC.parent / "native_local_velocity_v1"
 PRIVATE = parent.PRIVATE.parent / PUBLIC.name
-REG = PUBLIC / "registration.json"
+ORIGINAL_REG = PUBLIC / "registration.json"
+REG = PUBLIC / "registration_v2.json"
 FILES = (Path(__file__), Path(model.__file__), PUBLIC / "protocol.md",
          ROOT / "tests/test_m3w_local_velocity.py")
 CFG = dict(batch=128, steps=800, checkpoint=100, lr=.001, torch_threads=4, workers=0)
@@ -34,12 +35,13 @@ def register():
     cut = parent.old.register()[0]
     prior = PUBLIC.parent / "native_ols_anchor_retrieval_v1"
     prev.receipt(prior, "replay")
-    bound = (*FILES, parent.REG, Path(parent.__file__), prior / "replay_execution.json")
+    bound = (*FILES, parent.REG, Path(parent.__file__), prior / "replay_execution.json", ORIGINAL_REG)
     run.once(REG, run.stable(dict(files=[run.artifact(f) for f in bound],
         cfg=CFG, seeds=prev.SEEDS, fit_arms=model.ARMS, contrasts=CONTRASTS, bootstrap=3000,
         primary=["near_vs_ols4", "near_vs_ego", "near_vs_outer"], context="disjoint matched halves of nearest8",
         role="leave_one_fitting_source_out", external_access=False, development_targets=False,
-        no_metric_or_seconds=True, official_cv_rule_unchanged=True)))
+        no_metric_or_seconds=True, official_cv_rule_unchanged=True,
+        amendment="Fix three-arm draw check before scoring; retain original checkpoint identity.")))
     return cut, jobs
 
 
@@ -102,7 +104,7 @@ def train(jobs, beat, resume):
             stats = []
             for j, arm in enumerate(model.ARMS):
                 x = tuple(map(torch.from_numpy, (ego, neighbors, masks[arm], basis, scale)))
-                identity = dict(seed=seed, arm=arm, held=str(held), registration=run.sha(REG),
+                identity = dict(seed=seed, arm=arm, held=str(held), registration=run.sha(ORIGINAL_REG),
                     train_ids=base.fit_source.source.array_hash(d["ids"][ix]))
                 net, ck, state = fit(x, y, f, valid, ix, groups, identity, beat, resume)
                 stats.append(state)
@@ -110,7 +112,8 @@ def train(jobs, beat, resume):
                     for at in np.array_split(out, max(1, (len(out)+1023)//1024)):
                         output[k, j, at] = net(*(a[at] for a in x)).numpy()
                 fits.append(dict(identity=identity, checkpoint=ck, held_rows=len(out)))
-            base.fit_source.source.exact(*stats)
+            for state in stats[1:]:
+                base.fit_source.source.exact(stats[0], state)
     if not np.isfinite(output).all() or len(fits) != 81:
         raise ValueError("Expected complete frozen held-source predictions")
     path = PRIVATE / "predictions.npz"
