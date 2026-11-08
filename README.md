@@ -271,6 +271,14 @@ bound. Missing-label charges alone prevented the original risk rule from
 passing. I did not use Hannover to tune a replacement policy.
 [Hannover transfer and capacity analysis](outputs/publication_readiness_2026_09/hannover_frozen_transfer_v1/README.md).
 
+I then let the audit skip individual edits and choose blends toward
+OLS4. With access to the future, the expanded bank could improve on
+both motion references under the original risk rule in more OpenDD
+views and all nine Hannover views. Clipping the new directions to the
+old radius unlocked none. This is headroom for a different policy,
+not a deployed model result.
+[Optional bridge and matched-radius control](outputs/publication_readiness_2026_09/optional_reference_bridge_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Optional CV-to-OLS4 Reference Bridge
+
+Hindsight integer optimization with original CV risk and direct
+full-grid gains vs CV and OLS4. OpenDD dual-positive witnesses increase
+from 513/606 to 564/606 when OLS4 bridges can exceed the half radius;
+Hannover increases from 0/9 to 9/9. Clipping all new arms at the old
+per-row radius adds zero witnesses on either roster. Optional edits
+restore Hannover risk feasibility alone in 9/9, not utility. Thirty
+OpenDD views still lack easy support. No inference, training, rule or
+deployment claim follows from these label-aware results.
+[Capacity readout](outputs/publication_readiness_2026_09/optional_reference_bridge_v1/README.md) |
+[Working supplement v59](outputs/publication_readiness_2026_09/evidence_manuscript_v59/README.md).
+
 ## Hannover Frozen Transfer
 
 First no-fit transfer on three publisher clips from one provisional
