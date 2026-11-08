@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested one sparse edit per recording on the pedestrian development
+sources. The learned rank found more qualifying edits than the old
+gain rank at the same budget, but it did not close the gap to OLS4.
+[Sparse pedestrian intervention](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/sparse_support_v1/README.md).
+
 I trained the support model to distinguish a new recording pass from
 the loss of an existing one. It rescued more recordings than the
 previous scoring rule but also broke more passes. Most opportunities

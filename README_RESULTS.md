@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Sparse Intervention Across Pedestrian Sources
+
+On 34 recordings from 14 development sources (102 repeated seed
+views), one edit at the first query gives 6 dual passes for the
+CV-support head versus 2 for gain ranking at 102 matched edits.
+Paired utility is +0.01980 pp [-0.04773, +0.11028]; the head remains
+9.81617 pp behind OLS4 in conservative comparison. All-query one-edit
+hindsight can beat CV with risk on 99 views, but both CV and OLS4 on
+only 30. A one-easy-anchor, zero-harm class reaches 48 without a
+recording cap, and 0/36 where OLS4 is certified better than CV.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/sparse_support_v1/README.md) |
+[Manuscript v107](outputs/publication_readiness_2026_09/evidence_manuscript_v107/README.md).
+
 ## Direct Recording Pass Supervision
 
 Net pass probability rescues 5 views and destroys 10, giving 133/606

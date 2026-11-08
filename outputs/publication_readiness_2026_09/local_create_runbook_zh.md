@@ -1,5 +1,14 @@
 # M3W 本地与 CREATE 操作记录
 
+## 行人开发集：单次编辑和 OLS4 差距：2026-11-08
+
+复用已核验的 14 个来源组、34 段录像和三套原预测候选。本机 arm64
+Torch 四线程、零加载进程，42 次拟合、21,000 次更新；每 100 步
+保存 checkpoint 和 heartbeat，零更新回放一致。单次同预算排名未
+胜过 OLS4；额外核查保留 easy 参考且零正伤害的编辑上限。未新增
+CREATE 任务，原 2% 和不可估规则不变，确认组仍封存。
+[命令和结果](moving_record_joint_actions_v1/causal_ledger/sparse_support_v1/README.md)。
+
 ## 直接预测录像通过状态变化：2026-11-08
 
 本机 arm64 Torch 四线程、零加载进程，21 次拟合、12,600 次更新；

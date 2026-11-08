@@ -1,0 +1,39 @@
+\subsection{Sparse intervention on pedestrian development}
+We retain the Moving A bank, 14 source groups and 34 recordings
+over three seeds (102 repeated views). The support head uses only
+the seven training sources of each frozen split. From CV, each
+learned arm and the old gain rank make one edit at the first
+legal query. The unchanged per-recording rule is applied; beating
+CV and beating both CV and OLS4 are distinct outcomes.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lc}
+Arm & Edits / CV joint / both joint\\
+\hline
+Gain rank & \SparseSupportGainCounts\\
+CV-support head & \SparseSupportCVHeadCounts\\
+Dual-support head & \SparseSupportDualHeadCounts\\
+First query, CV oracle & \SparseSupportFirstCVCounts\\
+First query, dual oracle & \SparseSupportFirstDualCounts\\
+Any query, CV oracle & \SparseSupportWindowCVCounts\\
+Any query, dual oracle & \SparseSupportWindowDualCounts\\
+\end{tabular}
+\end{center}
+
+The CV-support head gives \SparseSupportMatchedEffect{} in paired
+conservative utility versus gain ranking and \SparseSupportStrongEffect{}
+versus OLS4, with source-bootstrap intervals. The oracle uses
+at most one edit and may abstain, so its edit counts differ.
+The all-query safe class with at most one individually improving
+easy edit per query reaches only \SparseSupportEasyAll{} dual passes.
+Requiring one easy reference but also allowing other known
+CV-improving edits raises capacity to \SparseSupportBridgeEight{}
+at eight edits and \SparseSupportBridgeAll{} with no recording
+cap. It reaches \SparseSupportStrongBridge{} of the
+\SparseSupportStrong{} views where OLS4 is certified better
+than CV by the paired completion interval. These are exact bounds
+within the stated zero-positive-harm action classes, not bounds
+for every policy under 2\% risk. They do not establish a transferable
+intervention or use independent confirmation.
