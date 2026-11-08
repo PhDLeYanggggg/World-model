@@ -37,6 +37,13 @@ pixels for ungated joint selection). I do not deploy the new policy.
 [Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md) |
 [Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
+I also checked two public aerial datasets for a separate trajectory study.
+AerialMPT has dense annotations but only eight non-overlapping clips or
+segments with complete multi-agent 8-to-12 support. OpenDD has much more
+complete support, but two roundabouts account for most of it. I have not
+used either source to fit or score a model.
+[Source audit](outputs/publication_readiness_2026_09/topdown_source_intake_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Independent Aerial Source Support
+
+Fresh structural intake and exact replay on the published AerialMPT and
+OpenDD v3 archives. AerialMPT has eight non-overlapping complete 8-to-12
+multi-agent intervals in four provisional groups. OpenDD has 3,157,846
+complete pedestrian target windows across seven sites, but two sites account
+for 87.52%. No data roles assigned, models fitted or forecasts scored.
+The 30 DroneCrowd confirmation groups remain sealed under the original 2% rule.
+[Source audit and counts](outputs/publication_readiness_2026_09/topdown_source_intake_v1/README.md).
+
 ## Past-Pixel Motion And Conditional Gain
 
 1,344 past frames for the exact fit roster: 348 newly acquired and
