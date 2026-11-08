@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Signed Bridge Risk
+
+147 native Torch fits with nested, analytic-only donor calibration.
+Direct risk raises dual-positive passes from 4 to 37 of 606; residual
+calibration expands edits to 1,916 but gives only 36 dual-positive
+passes versus 98 at the same query counts for independent utility.
+Calibration admits 711 individually unsafe gain-positive bridges and
+still loses to tangent. Outcome-derived bridge-only risk gives 221/606
+as a diagnostic. No deployment or confirmation change.
+[Report](outputs/publication_readiness_2026_09/signed_bridge_risk_v1/README.md) |
+[Working supplement v61](outputs/publication_readiness_2026_09/evidence_manuscript_v61/README.md).
+
 ## Causal Reference Bridge Policy
 
 21 native Torch fits across seven held OpenDD locations and three seeds.

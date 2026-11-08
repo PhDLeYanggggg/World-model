@@ -1,0 +1,50 @@
+{
+  "batch": 128,
+  "both_risks_signed": true,
+  "calibration": "six leave-one-donor-location-out fits; analytic paths only; equal-location residual offsets",
+  "code": {
+    "bytes": 13150,
+    "path": "scripts/run_m3w_signed_bridge_risk.py",
+    "sha256": "12949b499ad8c2049d7699400f98830d8c09c0b5e828445e3c2d9b307208d6b0"
+  },
+  "confirmation_access": false,
+  "hold_gain_and_neural_risk_fixed": true,
+  "horizon": [
+    8,
+    12
+  ],
+  "only_opendd": true,
+  "original_2pct": true,
+  "parent": [
+    {
+      "bytes": 100296,
+      "path": "outputs/publication_readiness_2026_09/reference_bridge_policy_v1/analysis.json",
+      "sha256": "4b405799fbc61c30d749673dea6fbd080b493faef6865fafa203381ba2887919"
+    },
+    {
+      "bytes": 16662,
+      "path": "outputs/publication_readiness_2026_09/reference_bridge_policy_v1/head_freeze.json",
+      "sha256": "cd314c62b5bc5f8f312477e3a8ac6aa71516ac794ba2cccbfed2c42a68a66b3b"
+    },
+    {
+      "bytes": 9184,
+      "path": "outputs/publication_readiness_2026_09/reference_bridge_policy_v1/bottleneck.json",
+      "sha256": "77510985bc9cd7d50024830a559906f46c5d81bc7c8138c4d30b20bffee52d96"
+    }
+  ],
+  "primary": "direct and donor-calibrated bridge risk versus original at original recording rule",
+  "residual_quantile": 0.6,
+  "risk_model": {
+    "bytes": 1634,
+    "path": "src/world_model/m3w_signed_bridge_risk.py",
+    "sha256": "6fd2c6e92cd030dd9af1fd8501852445cd7b024ee62b2b39ba73150702d2ea22"
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "threads": 4,
+  "workers": 0
+}

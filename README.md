@@ -286,6 +286,13 @@ more useful edits; replacing predicted gain did not. I did not treat
 fallback as a safety pass or deploy the new policy.
 [Learned bridge and risk diagnosis](outputs/publication_readiness_2026_09/reference_bridge_policy_v1/README.md).
 
+I then trained the OLS4 bridge risk head to predict its margin to the
+existing risk boundary directly. It intervened more often, but the
+increase included too many incorrect approvals. It still lost to fixed
+tangent and passed fewer checks than the independent rule at the same
+switch count.
+[Direct risk and admission audit](outputs/publication_readiness_2026_09/signed_bridge_risk_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
