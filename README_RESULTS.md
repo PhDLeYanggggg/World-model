@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## TUMDOT Frozen Transfer at Matched Radii
+
+Fresh native Torch inference from frozen OpenDD checkpoints on nine
+previously exposed recordings (three seeds, one campaign); original
+transfer replayed exactly. At half radius, tangent vs incumbent is
++0.0173 pp directly, vs matched hindcast -0.1929 pp, and vs CV -0.0533 pp.
+At quarter radius all six arms pass 27/27 risk checks but none beats CV.
+At half radius, label-aware minimum-risk selection from the six paths
+passes and improves conservative CV utility in 27/27 views (+0.4245 pp).
+This diagnoses a path-selection gap, not independent confirmation or
+deployment. The original 2% rule and DroneCrowd 15/30 seal are unchanged.
+[Readout](outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/README.md) |
+[Working supplement v52](outputs/publication_readiness_2026_09/evidence_manuscript_v52/README.md).
+
 ## OpenDD Finite-Harm Continuation
 
 63 three-seed native Torch continuations at 30,075 matched edits.

@@ -221,6 +221,15 @@ motion control at the same recipients and coefficient. It met the
 original recording risk rule in only 19 of 27 recording-seed views.
 [Transfer test and failure analysis](outputs/publication_readiness_2026_09/tumdot_ing_frozen_transfer_v1/README.md).
 
+I revisited those same recordings with all methods editing the same
+trajectories by the same maximum displacement. The new neural direction
+slightly improved on my earlier model, but still lost to CV and to a
+past-motion backtest. Smaller edits passed all 27 recording-seed safety
+checks without improving on CV. Looking at the future showed that the
+available paths could have improved forecasts safely; the frozen model
+could not tell when to use them from past motion alone.
+[Matched transfer experiment](outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
@@ -313,7 +322,7 @@ passes. Neither satisfied the full recording requirement.
 I also looked beyond OpenDD for better-labeled tracks. Three initial
 TUMDOT-ING recordings retain 86% complete future paths on the audited
 sampling grid. The railway archive is much larger, but its sampled
-tracks retain only about 3%. I have not scored either source.
+tracks retain only about 3%. That intake did not score either source.
 [New source audit](outputs/publication_readiness_2026_09/station_sharedspace_intake_v1/README.md).
 
 I followed up by learning when to replace OLS4 from short backtests within
