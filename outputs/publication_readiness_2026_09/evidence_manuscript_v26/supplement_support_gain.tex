@@ -1,0 +1,46 @@
+\section{Observation Support Is Not Intervention Utility}
+We separate two learning problems on the held fitting sources:
+predicting if a released annotation will be available, and
+predicting whether an edit will lower error if it is available.
+For the first problem, \SupportGainObsFits\ matched fits add only
+past box, boundary and peer-visibility cues. This lowers the
+stepwise missing-label Brier score from \SupportGainMotionBrier\
+to \SupportGainQualityBrier. The factorized policy's full-grid
+gain over OLS4 is $\SupportGainQualityPolicy$ points, using the
+observed CV denominator. Availability is not physical occlusion.
+
+We then freeze the support predictions and fit only the conditional
+gain, training \SupportGainCondFits\ heads. The pointwise arm
+regresses normalized observed gain at each lead. The rank arm
+adds within-query pairs, contrasting two trajectories only on
+their jointly observed steps. Its inputs do not include future
+positions, support labels or the cached support probabilities.
+At scoring, all active arms change the same number of agents in
+each predicted-availability quartile within a query. These are
+equal predicted strata, not equal realized masks.
+
+\begin{table}[h]
+\centering\small
+\caption{Conditional gain comparisons, matched on predicted support.
+Direct full-grid lower gain and paired 95\% source intervals.}
+\label{tab:support-gain}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Contrast & Gain [95\% interval] \\
+\midrule
+Pointwise vs. support only & $\SupportGainPointSupport$ \\
+Rank vs. pointwise & $\SupportGainRankPoint$ \\
+Rank vs. OLS4 & $\SupportGainRankOLS$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Pointwise and ranked conditional gain errors are
+\SupportGainPointError\ and \SupportGainRankError\ versus
+\SupportGainMeanError\ for donor means. This is displacement-weighted
+error on labeled steps, not trajectory ADE. Improved regression
+does not guarantee a useful intervention at a matched budget.
+Unlike generic expert deferral~\cite{mao}, our readout charges
+unavailable trajectory steps and preserves support strata.
+We do not extend deferral consistency guarantees to this setting.
+No new calibration, confirmation or original risk pass is claimed.

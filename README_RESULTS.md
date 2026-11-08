@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Gain With Frozen Label Support
+
+54 fresh fits compare pointwise conditional gain with common-step
+ranking. Holding the same predicted-support strata and intervention
+counts, ranked gain gives +0.0403 full-grid points vs OLS4
+[-0.0686, +0.1384] and -0.0250 vs pointwise [-0.0517, -0.0039].
+Pointwise conditional error is 0.647 vs 0.717 for donor means, but its
+decision advantage over support only is not established. No original
+risk pass or external confirmation.
+[Experiment](outputs/publication_readiness_2026_09/native_conditional_gain_v1/README.md) |
+[Updated paper supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v26/README.md).
+
 ## Observation Quality and Stepwise Support
 
 108 fresh fits, nine held fitting sources, three seeds. Box features

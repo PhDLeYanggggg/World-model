@@ -108,6 +108,12 @@ much easier to predict across held sources. That improvement did not
 carry over to a reliable gain over OLS4 or the smallest-change control.
 [Observation-quality experiment](outputs/publication_readiness_2026_09/native_observability_v1/README.md).
 
+I froze those label-support estimates and trained only the gain head.
+Comparing agents on the steps both have labeled did not beat ordinary
+regression under matched support. I keep the support result separate
+from the unresolved forecast decision.
+[Conditional-gain experiment](outputs/publication_readiness_2026_09/native_conditional_gain_v1/README.md).
+
 ## Looking For Better Observed Scenes
 
 I audited two Waterloo drone sites before using them for forecasting.
