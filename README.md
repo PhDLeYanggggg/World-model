@@ -434,6 +434,14 @@ one-edit paths can pass in only 60 of the 105 credit-starved views.
 [Turn and one-edit capacity experiment](outputs/publication_readiness_2026_09/sustained_turn_v2/README.md) |
 [Working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v77/README.md).
 
+I then held the intervention count fixed at two and compared
+independent and joint choices from the same value model. The joint
+choice did not reliably reduce error and passed fewer of the
+recording checks. A second edit adds only two distinct feasible
+recordings to the short-roster hindsight comparison.
+[Matched two-edit experiment](outputs/publication_readiness_2026_09/two_edit_v1/README.md) |
+[Working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v78/README.md).
+
 I also checked four historical CREATE jobs against the scheduler and
 matched the remote freeze manifest to my local copy. That confirms the
 archived run lineage; the earlier development result remains negative.

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Two-Edit Choice
+
+On the same 105 credit-starved OpenDD views, exact finite-bank
+capacity rises from 30 to 36 with two edits; only six views have a
+same-query witness. With identical clocks and 744 edits per arm,
+joint versus independent conservative gain is +0.0045 pp
+[-0.0109, +0.0277], and joint passes fall from 48 to 44 of 606.
+The separation penalty provides no relative-path advantage.
+[Results and checkpoint replay](outputs/publication_readiness_2026_09/two_edit_v1/README.md) |
+[Supplement v78](outputs/publication_readiness_2026_09/evidence_manuscript_v78/README.md).
+
 ## Sustained Turns and Exact One-Edit Capacity
 
 On exposed OpenDD, raw sustained turns lose to OLS4 by -31.100 pp
