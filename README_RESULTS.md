@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Same-Count Bridge Swaps
+
+63 native Torch fits. Joint swap ranking gives +0.228 pp over frozen
+independent selection at exactly the same query counts (95% location
+interval -0.029 to +0.692); the estimate is +0.004 pp without the
+largest contributing location. The simpler additive ranker clears
+63/606 risk-and-gain checks versus 58/606 joint and 54/606 independent.
+Hindsight at the exact frozen counts verifies 276/606 versus 510/606
+with only a cap. Original rule and sealed confirmation unchanged.
+[Report](outputs/publication_readiness_2026_09/matched_bridge_swaps_v1/README.md) |
+[Working supplement v63](outputs/publication_readiness_2026_09/evidence_manuscript_v63/README.md).
+
 ## Calibration After Action Selection
 
 147 native Torch fits and a zero-update checkpoint replay on exposed OpenDD

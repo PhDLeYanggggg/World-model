@@ -1,0 +1,23 @@
+\paragraph{Learning swaps under exactly matched counts.}
+We freeze the previous hurdle's per-query counts and fit 63 native Torch
+heads on the same development locations over three seeds. Each training
+example compares two legal configurations at the same nonzero count.
+The training target combines local two-reference gain, signed CV-relative
+risk and an easy-support term, rather than claiming local risk equals the
+recording gate. Joint ranking adds a symmetric pair term to per-action
+values. With \MatchedSwapCount{} edits per arm, risk passes with gain
+over both references are \MatchedSwapIndependent{}/\MatchedSwapViews{}
+for independent utility, \MatchedSwapPointFit{} for joint point regression,
+\MatchedSwapAdditive{} for additive ranking and \MatchedSwapJoint{} for
+joint ranking. The joint direct gain over independent choice is
+\MatchedSwapEffect{} pp (location-bootstrap 95\% interval
+[\MatchedSwapLow{}, \MatchedSwapHigh{}]); omitting one two-recording
+location as a sensitivity check leaves \MatchedSwapWithout{} pp.
+We find no reliable benefit of the pair term. Label-aware optimization
+at the \emph{exact} frozen counts verifies \MatchedSwapCapacity{} cases
+with risk passes and dual gain, versus 510 on this recording-seed grid
+when only the count cap applies. At the frozen counts, \MatchedSwapNoEdit{}
+cases have no switches and \MatchedSwapNoEasy{} cannot reach a legal easy
+action despite having easy references. This is evidence of restrictions
+from both the frozen count allocation and the learned choices, not an
+independent confirmation or a safety claim.

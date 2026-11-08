@@ -302,6 +302,14 @@ and risk-feasible changes in 170 of 202 distinct recordings. The bank
 has room to improve; the learned ranking did not find it reliably.
 [Calibration and capacity study](outputs/publication_readiness_2026_09/selected_bridge_hurdle_v1/README.md).
 
+I then kept the number of changes per query fixed and trained the model
+to compare alternative recipients and amplitudes directly. Its average
+gain over independent choice was uncertain, and a simpler additive
+model cleared more recording checks. At those exact counts the
+hindsight ceiling fell to 276 of 606 recording-seed evaluations, so
+both where to intervene and what to change still matter.
+[Same-count swap study](outputs/publication_readiness_2026_09/matched_bridge_swaps_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
