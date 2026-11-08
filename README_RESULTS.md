@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## First-Credit Intervention
+
+With the original scores, paths and 2% rule, advancing the first credit
+raises joint passes from 77 to 95/606, but paired conservative utility
+is -0.020 pp [-0.100, +0.036]. A past-prefix restriction reaches 91 with
++0.010 pp [-0.005, +0.028]. Of 105 originally credit-starved views,
+three qualify causally; exact one-edit hindsight can qualify 15 with
+the frozen nominees and 30 with the full legal bank. No deployment
+or independent confirmation.
+[Readout and replay](outputs/publication_readiness_2026_09/first_credit_v2/README.md) |
+[Supplement v76](outputs/publication_readiness_2026_09/evidence_manuscript_v76/README.md).
+
 ## ACME Observation Coverage Repair
 
 Fresh ResNet50-FPN v2 detection on the same 24 windows raises stable

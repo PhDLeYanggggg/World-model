@@ -419,6 +419,14 @@ or checkpoints.
 [Expiry pricing](outputs/publication_readiness_2026_09/expiry_pricing_v1/README.md) |
 [Numerical replay](outputs/publication_readiness_2026_09/deferral_review_replay_v1/README.md).
 
+I then let the controller advance its first edit and repay it from
+later credit. It passed more development checks, but did not reliably
+reduce forecast error. In the 105 views without enough credit,
+only 30 could beat both baselines safely even with hindsight and a
+free choice of one candidate. The causal policy recovered three.
+[First-credit experiment](outputs/publication_readiness_2026_09/first_credit_v2/README.md) |
+[Working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v76/README.md).
+
 I also checked four historical CREATE jobs against the scheduler and
 matched the remote freeze manifest to my local copy. That confirms the
 archived run lineage; the earlier development result remains negative.
