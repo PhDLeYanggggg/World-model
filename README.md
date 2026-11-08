@@ -279,6 +279,13 @@ old radius unlocked none. This is headroom for a different policy,
 not a deployed model result.
 [Optional bridge and matched-radius control](outputs/publication_readiness_2026_09/optional_reference_bridge_v1/README.md).
 
+I trained a past-only model to use the expanded choices. It nearly
+always fell back to constant velocity. Holding the edit budget fixed,
+replacing the predicted risk with its hindsight value recovered many
+more useful edits; replacing predicted gain did not. I did not treat
+fallback as a safety pass or deploy the new policy.
+[Learned bridge and risk diagnosis](outputs/publication_readiness_2026_09/reference_bridge_policy_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal Reference Bridge Policy
+
+21 native Torch fits across seven held OpenDD locations and three seeds.
+Joint predicted risk selects 64 edits and yields 4/606 dual-positive risk
+passes; independent utility selects 10,898 edits with no clear gain vs
+CV. The exact oracle at the identical query cap verifies 561/606.
+Replacing only predicted risk by label-derived risk recovers 347/606;
+replacing only gain recovers 8/606. These are diagnostics, not deployment.
+The original risk screen and confirmation seal are unchanged.
+[Report](outputs/publication_readiness_2026_09/reference_bridge_policy_v1/README.md) |
+[Working supplement v60](outputs/publication_readiness_2026_09/evidence_manuscript_v60/README.md).
+
 ## Optional CV-to-OLS4 Reference Bridge
 
 Hindsight integer optimization with original CV risk and direct
