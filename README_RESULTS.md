@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Resolved Errors And Recipient Assignment
+
+63 Torch fits hold 1,457 slots and radii fixed. Identity-aligned earlier
+errors give +0.0067 pp [-0.0103, +0.0282] versus availability alone, but
+lose -0.0380 pp [-0.0982, -0.0006] to frozen recipients. Joint passes
+are 66 aligned, 67 availability, 67 wrong agent, and 77 frozen.
+Additional past recording context does not rescue this recipient rule.
+[Experiment and replay](outputs/publication_readiness_2026_09/opendd_feedback_recipient_v1/README.md).
+
 ## Learned Shape Choice At Fixed Intervention Slots
 
 Nested OpenDD fitting held the 1,457 slots and radii fixed. Gain-only

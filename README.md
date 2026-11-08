@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I also tested whether older forecasts, whose outcomes were already
+observable, could help choose who receives an edit. At the same edit
+times and radii, using the same pedestrian's older errors did not
+improve the recording-level result. The frozen recipients remain better.
+[Earlier-error experiment](outputs/publication_readiness_2026_09/opendd_feedback_recipient_v1/README.md).
+
 I trained a model to choose between the two trajectory shapes without moving
 any intervention. It did not reliably improve on the past-only rule. Even
 with hindsight, the same intervention positions could qualify in at most
