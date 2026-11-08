@@ -1,0 +1,3 @@
+# Reporting amendment for undefined slice support
+
+The original scoring command stopped before producing a result when a fitting source lacked an easy-ADE denominator. The companion reporter keeps the complete pre-existing training and forecast freeze and all registered definitions. Only undefined slice reporting changes: if any required source-seed cell lacks support, its source-macro interval and point are `null`, with support counts reported. Do not drop that cell, fill it with zero, change the easy cut, or repeat fitting. The full-cohort primary contrast still requires every source to have positive CV reference mass. This amendment uses no development or external outcomes.
