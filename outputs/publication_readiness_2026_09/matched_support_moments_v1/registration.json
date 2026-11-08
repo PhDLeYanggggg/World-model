@@ -1,0 +1,48 @@
+{
+  "batch_size": 96,
+  "budget_reference": {
+    "bytes": 41775,
+    "path": "outputs/publication_readiness_2026_09/recipient_release_capacity_v1/controls.json",
+    "sha256": "848271e0343e0a16943b36278979d7c91a00fff1fa81902f02100d7e6953fd88"
+  },
+  "calibration_access": false,
+  "checkpoint_every": 100,
+  "code": {
+    "bytes": 13458,
+    "path": "scripts/run_m3w_matched_support_moments.py",
+    "sha256": "d14ffe50aa2ba15ea530f79b6a8aba4fbcbbf6e30b0186abccefe94b2251b9ee"
+  },
+  "confirmation_access": false,
+  "controls": [
+    "marginal_gain",
+    "marginal_record",
+    "supervised_gain",
+    "supervised_record",
+    "supervised_query"
+  ],
+  "cpu_threads": 4,
+  "forced_counts_are_diagnostic_not_deployment": true,
+  "head": {
+    "bytes": 4309,
+    "path": "src/world_model/m3w_matched_support_moments.py",
+    "sha256": "e50c19bc20060f9ed4bf061c66f090a573d7b5ab479b126f028eab77c6d292ed"
+  },
+  "held_groups": "nine leave-source-out folds with fold-local training easy cut",
+  "input_source": {
+    "bytes": 9759,
+    "path": "scripts/run_m3w_recipient_release_crossfit.py",
+    "sha256": "971d0b40ec50ef4e29a0a5dc108d02f2db7582ce657b05456b81d8dbbffe92f6"
+  },
+  "lr": 0.001,
+  "primary": "supervised_record_vs_marginal_record_direct_conservative",
+  "prior": "bd94d518bf412aebb8da4ec485e9ecb74a118e74ea9cd6ae882046fb130adb3d",
+  "risk_budget": 0.02,
+  "risk_rule_changed": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "workers": 0
+}

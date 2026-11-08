@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched-Budget Conditional Risk Supervision
+
+54 Torch fits (nine held-source folds, three seeds, two paired
+objectives). All policies make 95,769 changes. Conditional vs marginal
+record risk ranking: -0.415 pp [-0.795,-0.081] direct conservative
+gain; both 0/72 actual risk passes. Easy reference overestimation
+falls from 61 to 46 views, but true reference plug-in still gives
+zero two-ratio passes. At fixed neural recipients, an exact
+hindsight risk-minimizing path assignment also gives 0/72.
+[Experiment and replay](outputs/publication_readiness_2026_09/matched_support_moments_v1/README.md) |
+[Working manuscript v43](outputs/publication_readiness_2026_09/evidence_manuscript_v43/README.md).
+
 ## Recipient and Budget Release
 
 Original fitting cohort only. Outcome-aware passes against both CV and

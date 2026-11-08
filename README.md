@@ -97,6 +97,15 @@ predictor still passed none, so this is not a deployment result.
 [Allocation and learned-risk comparison](outputs/publication_readiness_2026_09/recipient_release_capacity_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v42/README.md).
 
+I trained paired risk models at the same recording totals to check
+whether explicit easy-reference supervision helps. It made reference
+overestimation less frequent, but neither model passed the risk
+check. Holding their recipients fixed and choosing the best paths
+with hindsight still did not pass. The result points to the choice
+of recipients rather than another path swap.
+[Matched training and diagnosis](outputs/publication_readiness_2026_09/matched_support_moments_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v43/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have

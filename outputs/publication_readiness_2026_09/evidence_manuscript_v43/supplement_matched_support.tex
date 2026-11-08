@@ -1,0 +1,35 @@
+\section{Matched-Count Neural Risk Supervision}
+We fit 54 heads (nine source exclusions, three seeds, two losses)
+on the same ten paths, matching initialization and draws.
+The treatment supervises known/easy occurrence, conditional
+reference and bounded effects in addition to marginal moments.
+The training cutoff excludes the held group. Fixed recording
+totals, gain-only and fixed query counts are diagnostic controls.
+
+\begin{table}[!t]
+\centering\small
+\caption{Matched neural policies on 24 fitting recordings and
+three seeds, 95,769 changes per arm. Gain is conservative
+CV-relative points. All violation and pass counts are out of 72.}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Policy & Gain & All risk $>2\%$ & Pass\\
+\midrule
+\MatchSupportRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+Conditional versus marginal record allocation gives
+\MatchSupportDirect{} pp (95\% paired source interval
+\MatchSupportInterval). It overestimates selected easy reference
+in \MatchSupportConditionalOver{} rather than
+\MatchSupportMarginalOver{} views. Keeping actions fixed and
+substituting actual reference mass for the estimate yields no
+ratio passes. Neither is a causal counterfactual policy.
+
+At fixed recipients, minimum observed ADE and, on wholly missing
+rows, minimum maximum disagreement minimize both CV-relative risk
+numerators. Denominators do not change. This hindsight risk optimum
+passes \MatchSupportFixedRecipient/72 for the conditional record
+arm; it is not a dual-reference utility optimum.
