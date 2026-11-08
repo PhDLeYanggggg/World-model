@@ -1,0 +1,30 @@
+\paragraph{Feasible actions versus learnable utility.}
+Figure~\ref{fig:capacity-discrimination} separates the candidate menu,
+chronological credit and causal discrimination. All four hindsight
+arms use the same total quota and original risk. Chronological credits
+reduce feasible positive plans, but the strict menu still permits
+\DirectCountStrict{}/\DirectCountViews{} verified plans. A learned
+online count policy reaches \DirectCountCount{} under the same strict
+constraints. The gap is not removed by training on token-feasible plans
+(supplement). We then learn direct gains and risks for each nested
+action, keeping nominations, architecture and online budget fixed.
+The motion-only and peer models have gain AUROCs \DirectCountMotionAUC{}
+and \DirectCountPeerAUC{} and joint pass counts \DirectCountMotion{}
+and \DirectCountPeer{}, against \DirectCountProxy{} for a simple
+observed-prefix score. At exactly \DirectCountMatchedEdits{} edits in a
+retrospective match, the peer effect is \DirectCountGap{} pp
+[\DirectCountLow{}, \DirectCountHigh{}], and joint passes fall from
+\DirectCountMatchedMotion{} to \DirectCountMatchedPeer{}. The evidence
+does not show that the added context recovers the feasible capacity.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.9\textwidth]{capacity_discrimination.pdf}
+\caption{OpenDD development. (a) Four label-aware feasible plan counts
+and an online count controller. Full-menu results are shared across the
+three seeds; 606 views represent 202 distinct recordings. (b) The peer
+head compared with motion and an observed-prefix control. Error bars
+resample locations after averaging seeds. Exact realized count matching
+uses all histories in a recording but no labels, and is not online.}
+\label{fig:capacity-discrimination}
+\end{figure*}

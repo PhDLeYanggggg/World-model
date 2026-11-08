@@ -326,6 +326,14 @@ the existing policy.
 [Capacity audit](outputs/publication_readiness_2026_09/streaming_menu_capacity_v1/README.md) |
 [Teacher comparison](outputs/publication_readiness_2026_09/token_count_teacher_v1/README.md).
 
+I then learned the gain and harm of each candidate edit directly.
+Adding two nearby agents' histories did not improve the comparison
+at equal edit counts: the extra context gave fewer joint passes, and
+the forecast gain interval crossed zero. The main draft now shows both
+the feasible action capacity and the limits of learning to use it.
+[Direct value study](outputs/publication_readiness_2026_09/direct_count_value_v1/README.md) |
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v66/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

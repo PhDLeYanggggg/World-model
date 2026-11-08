@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Action Value and Peer Context
+
+42 native Torch fits on the frozen OpenDD menu. Motion and peer gain
+AUROCs are 0.657 and 0.637, respectively. At 1,126 matched edits per arm,
+motion and peers clear 54 and 34 of 606 joint checks; paired peer gain
+is +0.012 pp (95% location interval -0.031 to +0.081). Risk penalties do
+not improve pass counts over the corresponding gain-only controls.
+The updated main draft and figure distinguish hindsight feasibility from
+past-only prediction. [Report](outputs/publication_readiness_2026_09/direct_count_value_v1/README.md) |
+[Working paper v66](outputs/publication_readiness_2026_09/evidence_manuscript_v66/README.md).
+
 ## Streaming Capacity and Teacher Alignment
 
 The matched 2x2 hindsight audit verifies 423/606 with all legal actions
