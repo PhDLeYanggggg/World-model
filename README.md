@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a support edit should precede the gain edit.
+It did not help at the same budget. A separate analysis shows that
+changing both edit times creates much more room, and allowing
+simple motion directions adds options without larger displacements.
+[Schedule and forecast capacity](outputs/publication_readiness_2026_09/opendd_support_schedule_v1/README.md).
+
 I trained the second-edit selector on the outcome of both edits
 over a full recording. It reduced error slightly over easy
 ranking but did not beat the matched local-label control reliably,

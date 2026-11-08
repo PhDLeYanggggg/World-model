@@ -22,6 +22,7 @@ TWO_SLOTS = OUT.parent.parent/"opendd_timing_replay_v6"/OUT.name
 STOPPING = OUT.parent.parent/"opendd_timing_replay_v7"/OUT.name
 ADMISSION = OUT.parent.parent/"opendd_timing_replay_v8"/OUT.name
 RECORD_SUPPORT = OUT.parent.parent/"opendd_timing_replay_v9"/OUT.name
+SCHEDULE_SUPPORT = OUT.parent.parent/"opendd_timing_replay_v10"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -35,6 +36,7 @@ STOP = "opendd_support_stop_v1"
 ADMIT = "opendd_support_admission_v1"
 RECORD = "opendd_record_support_v1"
 MONOTONE = "opendd_support_monotonicity_v1"
+SCHEDULE = "opendd_support_schedule_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -141,9 +143,45 @@ def transition_tables(studies, expected):
     expected[MONOTONE] = dict(counts=count, effects={})
 
 
+def read_schedule_audit(name, registration):
+    p = legacy.REPORTS/SCHEDULE
+    f = p/f"{registration}.json"
+    r = json.loads(f.read_text())
+    a = json.loads((p/f"{name}.json").read_text())
+    lineage = r.get("parents", [r.get("parent")])
+    root = legacy.REPORTS.parents[1]
+    if (a["registration"] != legacy.sha(f) or lineage[0]["sha256"] != legacy.sha(p/"analysis.json")
+            or any(legacy.sha(root/x["path"]) != x["sha256"] for x in lineage)
+            or any(x["confirmation_access"] or not x["original_2pct"] or not x["outcome_aware_only"]
+                   for x in (r, a))):
+        raise ValueError("Require verified schedule capacity evidence")
+    return a
+
+
+def schedule_tables(studies, expected):
+    a = legacy.read(SCHEDULE)
+    b = read_schedule_audit("capacity_breakdown", "capacity_registration")
+    c = read_schedule_audit("shape_capacity", "shape_registration")
+    counts = dict(timing=a["summary"]["capacity"], **b["summary"], shapes=c["summary"])
+    groups = []
+    for site, rows in sorted(a["by_site"].items()):
+        sites = []
+        for r in sorted(rows, key=lambda z: z["seed"]):
+            lookup = lambda doc: next(z for z in doc["by_site"][site] if z["seed"] == r["seed"])
+            sources = dict(timing=r["capacity"], shapes=lookup(c)["counts"])
+            sources.update({k: v for k, v in lookup(b).items() if k in ("counts", "reasons")})
+            sites.append(dict(counts={k: {f: sources[k].get(f, 0) for f in keys} for k, keys in counts.items()},
+                              effects={}))
+        groups.append(sites)
+    key = SCHEDULE+"_exact"
+    studies[key] = dict(sites=groups, effect_order=[], sequential_draws=False)
+    expected[key] = dict(counts=counts, effects={})
+
+
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
-          include_two=False, include_stop=False, include_admission=False, include_record=False):
+          include_two=False, include_stop=False, include_admission=False, include_record=False, include_schedule=False):
     studies, expected = {}, {}
+    include_record = include_record or include_schedule
     include_admission = include_admission or include_record
     include_stop = include_stop or include_admission
     include_two = include_two or include_stop
@@ -166,11 +204,13 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (ADMIT,)
     if include_record:
         names += (RECORD,)
+    if include_schedule:
+        names += (SCHEDULE,)
     for name in names:
         a = read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK else legacy.read(name)
         s = a["summary"]
         fields = {k: {f: v[f] for f in legacy.FIELDS} for k, v in s["metrics"].items()}
-        status = s.get("capacity", {})
+        status = {} if name == SCHEDULE else s.get("capacity", {})
         clock = read_clock() if name == SLATE else None
         lookup = {(k, r["seed"]): r["capacity"] for k, rows in clock["by_site"].items() for r in rows} if clock else {}
         support = read_support() if name == TEACHER else None
@@ -221,6 +261,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         shape_tables(studies, expected)
     if include_record:
         transition_tables(studies, expected)
+    if include_schedule:
+        schedule_tables(studies, expected)
     replay.verify(replay.aggregate(studies), expected)
     files = {
         "replay.py": Path(replay.__file__).read_bytes(),
@@ -233,7 +275,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = next(p for enabled, p in ((include_record, RECORD_SUPPORT), (include_admission, ADMISSION), (include_stop, STOPPING),
+    out = next(p for enabled, p in ((include_schedule, SCHEDULE_SUPPORT), (include_record, RECORD_SUPPORT),
+        (include_admission, ADMISSION), (include_stop, STOPPING),
         (include_two, TWO_SLOTS), (include_shape, SHAPES), (include_reserve, RESERVED),
         (include_teacher, RECORDING), (include_rank, EXTENDED), (True, OUT)) if enabled)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -257,6 +300,8 @@ if __name__ == "__main__":
     p.add_argument("--include-support-stop", action="store_true")
     p.add_argument("--include-support-admission", action="store_true")
     p.add_argument("--include-record-support", action="store_true")
+    p.add_argument("--include-support-schedule", action="store_true")
     a = p.parse_args()
     build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
-          a.include_two_reserves, a.include_support_stop, a.include_support_admission, a.include_record_support)
+          a.include_two_reserves, a.include_support_stop, a.include_support_admission,
+          a.include_record_support, a.include_support_schedule)

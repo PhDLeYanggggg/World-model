@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Support-First Scheduling and Both-Role Capacity
+
+At 679 matched edits, support-first gives -0.01466 pp
+[-0.07269, +0.04923] and 100 joint passes versus 110 for
+matched early gain. At original role counts, freeing both times
+and recipients gives 473/606 hindsight witnesses (470 with
+support first), versus 255 with the first action fixed.
+At one action per role, extra same-radius analytic directions
+raise exact capacity from 485 to 518. No policy promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_support_schedule_v1/README.md) |
+[Manuscript v97](outputs/publication_readiness_2026_09/evidence_manuscript_v97/README.md).
+
 ## Whole-Recording Support Supervision
 
 With 943 matched edits, recording labels and observed first-edit
