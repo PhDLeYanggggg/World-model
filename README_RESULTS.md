@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD-Fit Matched Path Choice
+
+Six native Torch fits (three seeds, 3,000 updates) from site-excluded
+OpenDD candidate predictions. No TUMDOT training or calibration. At the
+matched half radius on exposed TUMDOT, the frozen full agreement rule
+loses -0.0618 pp vs CV, -0.1661 pp vs causal hindcast and -0.0712 pp
+directly vs its action-only ablation. It passes 21/27 vs 24/27 for
+matched hindcast. All failures are defined easy-risk violations at one
+intersection on two days; quarter radius passes but has no utility lift.
+No deployment change or independent confirmation.
+[Report](outputs/publication_readiness_2026_09/matched_path_choice_v1/README.md) |
+[Working supplement v53](outputs/publication_readiness_2026_09/evidence_manuscript_v53/README.md).
+
 ## TUMDOT Frozen Transfer at Matched Radii
 
 Fresh native Torch inference from frozen OpenDD checkpoints on nine

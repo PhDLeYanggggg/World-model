@@ -230,6 +230,14 @@ available paths could have improved forecasts safely; the frozen model
 could not tell when to use them from past motion alone.
 [Matched transfer experiment](outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/README.md).
 
+I trained a small model on OpenDD to choose among those six paths,
+then took it to the same TUMDOT recordings without fitting there. The
+model with explicit history did worse than its path-only version, and
+neither beat the simple motion baselines. At the larger matched radius,
+six checks failed on easy cases at one intersection. I kept the existing
+policy and left the independent DroneCrowd groups sealed.
+[Learned path-choice experiment](outputs/publication_readiness_2026_09/matched_path_choice_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

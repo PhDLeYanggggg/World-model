@@ -1,0 +1,23 @@
+\section{Learning to Choose Among the Matched Paths}
+Three seeds fit each of two shared utility heads on the same six
+OpenDD path families, with donor predictions from location-excluded
+models. The target is signed full-grid lower utility and positive
+observed easy harm per unit radius, with a pairwise cost term.
+The action-only head removes explicit history and CV displacement
+but retains the normalization of the path. The frozen agreement
+policy uses a candidate only when its utility and harm-penalized
+rankings agree and the latter score exceeds hindcast. It otherwise
+keeps hindcast at the same radius and recipient set. It is not
+a calibrated certificate.
+
+On the same exposed TUMDOT campaign at half radius, full agreement
+loses \PathChoiceCV{} points against CV, \PathChoiceHindcast{}
+against matched hindcast, and \PathChoiceAblation{} directly against
+action-only agreement. The original risk passes are \PathChoiceFull/27,
+\PathChoiceSimple/27 and \PathChoiceHand/27 for full, action-only and
+hindcast. The failures of the full head have defined easy risk and
+are concentrated at one intersection. No policy has both positive
+mean CV utility and all risk passes. Donor predictions use individual models while
+the target uses a frozen ensemble, so domain and ensemble effects
+are not isolated. This is a negative development transport result,
+not a new independent test.

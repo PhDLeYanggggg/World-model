@@ -1,0 +1,64 @@
+{
+  "batch": 128,
+  "checkpoint_every": 100,
+  "code": {
+    "bytes": 11282,
+    "path": "scripts/run_m3w_matched_path_choice.py",
+    "sha256": "01a98a89461af89b765b7ae62eb5e2d1f085ae2f42130757a8441f47cba0c2e7"
+  },
+  "confirmation_access": false,
+  "cpu_threads": 4,
+  "deployment": false,
+  "donor_sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "exposed_transport": "TUMDOT only after freezing all heads; never an independent test",
+  "fitting_arms": [
+    "full",
+    "action_only"
+  ],
+  "horizon": [
+    8,
+    12
+  ],
+  "matched_arms": [
+    "incumbent",
+    "hindcast",
+    "previous_shape",
+    "tangent",
+    "finite_guard",
+    "curvature_guard"
+  ],
+  "model": {
+    "bytes": 3822,
+    "path": "src/world_model/m3w_matched_path_choice.py",
+    "sha256": "20caea972505d35974c05b4207c614a47d74ea8934b495283e07461163732c77"
+  },
+  "num_workers": 0,
+  "objective": "normalized lower utility + easy harm + pairwise costs",
+  "original_2pct": true,
+  "previous": {
+    "bytes": 319265,
+    "path": "outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/analysis.json",
+    "sha256": "8442be183c8a999254107e82025d6851e593447134d5f6fe306ff54cec721f9e"
+  },
+  "primary": {
+    "arm": "full_agreement",
+    "fixed_fallback": "hindcast",
+    "radius": "half"
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "target_tuning": false,
+  "training": "OpenDD only; each row from its site-excluded producer"
+}
