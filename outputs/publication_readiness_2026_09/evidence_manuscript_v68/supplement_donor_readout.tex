@@ -1,0 +1,26 @@
+\paragraph{Donor-only calibration of action risk and gain.}
+We hold both the outer location and a calibration donor out of each
+factorized moment fit. For each training location in that fit, its
+nomination ranker also excludes itself. On predictions from the excluded
+donors, we fit the sign probability and conditional positive size of
+each risk component, with equal total donor weights. The soft policy
+penalizes their product. It gives \DonorReadoutMatched{} versus
+\DonorReadoutMatchedFactor{} of \DonorReadoutViews{} joint passes at
+matched realized counts, and \DonorReadoutOnline{} versus
+\DonorReadoutOnlineFactor{} online. At threshold 0.5 the easy-risk
+probability gives \DonorReadoutFpr{}\% false positives and
+\DonorReadoutRecall{}\% recall. Its Brier score is \DonorReadoutBrier{}
+versus \DonorReadoutPrior{} for donor prevalence. A separately fitted
+gain readout lowers error but loses \DonorReadoutGain{} pp to the causal
+prefix policy (95\% location interval [\DonorReadoutGainLow{},
+\DonorReadoutGainHigh{}]). No controller qualifies under the original
+rule; these locations are development evidence only.
+
+\paragraph{A recording ratio need not be monotone in a threshold.}
+Consider three easy nonidentity edits, each with reference error one and
+positive harm $0.03$, $0$, and $0.06$ in score order. Nested selected sets
+of sizes one, two and three have ratios $3\%$, $1.5\%$, and $3\%$.
+Only the middle set passes the original recording evaluator; selecting
+nothing is undefined. This example with complete labels shows why we do
+not infer monotone risk from a nested edit set or attach a monotone-loss
+conformal guarantee~\cite{crc} to the donor probability readout.

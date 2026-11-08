@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Donor-Only Risk and Gain Calibration
+
+168 fresh native Torch fits: triple-excluded nomination and pair-excluded
+moments, followed by 21 donor-only readouts. Soft calibrated risk gives
+75/606 vs 73 at exact matched counts, but 58 vs 63 online. The 0.5
+easy-risk sign rule has 0.65% false positives and 0.51% recall; Brier
+score is worse than the donor prevalence control. Gain calibration
+reduces MAE but loses -0.080 pp to the online prefix control
+[-0.150, -0.016]. No qualifying controller or confirmation read.
+[Report](outputs/publication_readiness_2026_09/donor_risk_readout_v1/README.md) |
+[Working supplement v68](outputs/publication_readiness_2026_09/evidence_manuscript_v68/README.md).
+
 ## Fixed-Count Attribution and Factorized Risk
 
 At 1,457 edits per arm, true gain, true risk and true support give 129,

@@ -343,6 +343,13 @@ overcalled positive easy risk. I did not change deployment.
 [Attribution](outputs/publication_readiness_2026_09/support_value_attribution_v1/README.md) |
 [Factorized risk](outputs/publication_readiness_2026_09/factorized_count_risk_v1/README.md).
 
+I then calibrated risk using predictions from locations excluded from
+both model fitting and candidate generation. Fewer false alarms at a
+fixed probability threshold came with almost no true easy-risk detections.
+The soft score cleared two more matched views but fewer online, and
+lower gain prediction error did not yield better decisions.
+[Donor-only calibration study](outputs/publication_readiness_2026_09/donor_risk_readout_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

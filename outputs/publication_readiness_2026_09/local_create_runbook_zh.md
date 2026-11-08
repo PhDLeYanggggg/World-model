@@ -2590,7 +2590,23 @@ MPS 检查需主机 Metal 访问权限。若沙箱返回 macOS 版本不支持�
 
 结果文件给出有限 loss/梯度、吞吐、内存和恢复后下一次 optimizer step 的参数差异。恢复检查通过不等于 12 小时稳定性保证。MPS 首次在受限沙箱中报了不适用的 macOS 版本错误；系统实际为 macOS 15.3.1，沙箱外真实 MPS 训练成功，不能把前一次错误归因于机器不支持 MPS。脚本不会悄悄切 CPU。
 
-## CREATE 现状
+## OpenDD 地点交叉校准复现（2026-11-08）
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_donor_risk_readout.py
+.venv-pytorch/bin/python scripts/run_m3w_donor_risk_readout.py --replay
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_donor_risk_readout.py
+```
+
+第一条需要已核验的 OpenDD 本地缓存及上一阶段检查点，读取范围不含
+DroneCrowd。用 arm64 Python、CPU 4 线程、零 DataLoader 子进程，
+每 100 步原子写检查点及 PID 心跳。中断后原命令重跑会从已保存的
+步数继续，不能改注册文件或覆盖旧角色。第二条拒绝神经网络续训，
+复现时重拟合小型 donor 校准器并核对整个冻结结果。详见
+[本轮报告](donor_risk_readout_v1/README.md)。本机完成约 2.5 分钟，
+因此未创建 CREATE 作业。旧的 CREATE 连接状态不代表当前队列状态。
+
+## CREATE 历史连接记录
 
 本轮只读 SSH 尝试到达 CREATE 入口，但返回 `Permission denied (publickey)`，入口同时提示门户 MFA。尚未读取 M3W 的远程目录、scheduler、partition 限制和历史产物，**没有提交新作业**。不能把认证错误解释为没有远程任务。具体 M3W 目录仍待用户确认。
 
