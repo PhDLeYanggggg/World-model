@@ -1,0 +1,46 @@
+\section{Training Against Missing-Step Disagreement}
+
+Unlike imputing missing history before prediction~\cite{trajimpute},
+we keep complete histories and address missing \emph{future} labels.
+For candidate $p$, reference $b$ and observed set $V$, let
+\[
+ R_b(p)=\sum_{t\in V}(\|p_t-y_t\|-\|b_t-y_t\|)
+       +\sum_{t\notin V}\|p_t-b_t\|.
+\]
+The second term is the supremum of excess Euclidean error over each
+unobserved target; the triangle inequality supplies the upper bound,
+and setting that target to $b_t$ attains it. It is not a pseudo-label,
+a bound on physical risk, or a distribution-free calibration
+guarantee~\cite{crc}.
+
+We fit the same ego-only comoving EqMotion adaptation under three
+objectives: observed error alone, mean CV completion regret, and the
+larger of the mean CV and OLS4 completion regrets within each batch.
+Regrets use a past-only scale. All arms see the same six training
+sites per held OpenDD location, batch draws (including rows without
+future labels), initialization, and updates. This gives 63 fits for
+seven exposed locations and three paired seeds. No labels or future
+masks are passed to the predictor at inference.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Loss & CV lower (pp) & Risk & Joint$^*$ \\
+\midrule
+Masked & \CompletionMasked \\
+CV & \CompletionCV \\
+Dual & \CompletionDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+CV lower and risk use the full predictions; Joint$^*$ counts risk
+and dual-reference gains after projecting to identical frozen edit
+slots and peak distances. Both count columns have denominator 606
+repeated views. The direct full-grid differences from masked training
+are \CompletionCVDirect\ and \CompletionDualDirect\ pp. Matching the
+masked control to each trained forecast's realized row peak gives
+\CompletionCVRadius\ and \CompletionDualRadius\ pp. Intervals
+resample seven locations after averaging seeds and describe this
+development comparison, not independent confirmation.

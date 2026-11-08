@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Missing-Step Forecast Training
+
+63 matched Torch fits (50,400 updates). CV completion gives +0.160
+pp [-1.843, +1.787] against CV, with 5/606 original risk passes.
+At identical per-row peaks, dual completion loses -0.933 pp
+[-1.656, -0.121] to masked training; the CV-only contrast is
+-0.451 pp [-0.881, +0.149]. At 1,457 original edits and peaks,
+masked/CV/dual obtain 87/88/80 joint passes versus 90 for the
+past-prefix control. No promotion or independent confirmation.
+[Training, replay, and same-peak control](outputs/publication_readiness_2026_09/opendd_completion_forecast_v1/README.md) |
+[Manuscript supplement v118](outputs/publication_readiness_2026_09/evidence_manuscript_v118/README.md).
+
 ## Hannover Shared Displacement Budget
 
 At the same total peak displacement as the frozen half-radius

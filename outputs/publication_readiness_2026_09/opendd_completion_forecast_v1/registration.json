@@ -1,0 +1,54 @@
+{
+  "architecture": {
+    "channels": 32,
+    "fixed_head": 0,
+    "hidden_nf": 32,
+    "history_steps": 8,
+    "layers": 2,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "arms": [
+    "masked",
+    "cv_completion",
+    "dual_completion"
+  ],
+  "batch": 32,
+  "code": {
+    "bytes": 11290,
+    "path": "scripts/run_m3w_opendd_completion_forecast.py",
+    "sha256": "19651a5486071dfef0f421645bd722940fc86e078a4ff875850b6f1e04b13d30"
+  },
+  "confirmation_access": false,
+  "loss": {
+    "bytes": 1278,
+    "path": "src/world_model/m3w_completion_forecast.py",
+    "sha256": "12ad87edc637ea19c25275478032cb86a61e399d42aef675c567de9d7b2cca9b"
+  },
+  "no_held_selection": true,
+  "original_2pct": true,
+  "parent": {
+    "bytes": 124234,
+    "path": "outputs/publication_readiness_2026_09/opendd_comoving_eqmotion_v1/analysis.json",
+    "sha256": "c52918b809b0b513c59fbea39a4191381323a165c3f61f0e5d1fd20838b76f0c"
+  },
+  "predictor": "comoving_ego",
+  "primary": "direct dual vs masked conservative full-grid gain plus absolute CV and OLS4 gain",
+  "protocol": "native obs8/pred12; all past-complete rows, including partial or absent futures",
+  "sampling": "same site-balanced train draws and init; held site excluded; scale from history",
+  "secondary": "CV debit only, observed accuracy and edit-radius shrinkage; same old fixed slots and peaks",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 800,
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "uncertainty": "3000 paired site bootstrap draws after averaging seeds",
+  "workers": 0
+}
