@@ -51,6 +51,13 @@ clip. Its published annotation points do not align reliably with the
 detector boxes under a direct frame-and-pixel match, so I have not scored
 those forecasts. [ACME audit](outputs/publication_readiness_2026_09/acme_prefix_intake_v1/README.md).
 
+On the Michigan clip, the frozen detector tracked a wall portrait and
+missed people farther down the blurred corridor. Filtering to the floor
+removed those persistent detections. Higher-resolution crops and a
+past-only foreground method still recovered no verified 8-step pedestrian
+history across the two checked segments, so I did not use this camera to
+validate forecasts. [Camera repair experiment](outputs/publication_readiness_2026_09/acme_camera_repair_v1/README.md).
+
 I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
 new recordings. Its 5% blend failed to improve on CV or on a causal
 motion control at the same recipients and coefficient. It met the

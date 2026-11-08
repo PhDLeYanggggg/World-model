@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## ACME Camera Support Failure
+
+Two segments of the exposed Michigan camera. The original detector returned
+51 eight-step histories but none matched one annotated identity throughout.
+The floor filter removed 32 detections per segment with no lost point
+matches. Distant crops did not improve matches; past-only foreground
+increased matches from 4/1 to 7/7 but still recovered no full history.
+No forecast scoring or independent site claim.
+[Repair readout](outputs/publication_readiness_2026_09/acme_camera_repair_v1/README.md).
+
 ## ACME Camera Prefix and Label Support
 
 Seven sites, 127 pixel-track files listed; seven downloaded samples yield
