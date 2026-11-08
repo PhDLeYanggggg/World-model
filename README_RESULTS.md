@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## TUMDOT Three-Reference Capacity and Joint Supervision
+
+At fixed half radius the exact outcome-aware solution passes the
+original risk rule and improves all three references on 27/27 views;
+mean minimum lower gain is +0.37572 pp. The prior guard's complete,
+partial and absent row contributions versus hindcast are +0.01782,
+-0.07102 and -0.00390 pp on a common full-roster denominator.
+A donor-only joint teacher loses -0.02184 pp [-0.08223, +0.01343]
+versus the matched local teacher, and -0.02030 pp [-0.05892, +0.00129]
+with both guards. No promotion or independent confirmation.
+[Attribution and exact solver](outputs/publication_readiness_2026_09/tumdot_three_reference_v1/README.md) |
+[Teacher experiment](outputs/publication_readiness_2026_09/tumdot_joint_teacher_v1/README.md) |
+[Manuscript v115](outputs/publication_readiness_2026_09/evidence_manuscript_v115/README.md).
+
 ## TUMDOT Matched Shape Selection
 
 Both trials exclude the held intersection and collection day from

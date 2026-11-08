@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether the TUMDOT forecast menu itself was limiting the
+selector. With outcomes available, all 27 half-radius views have a
+solution that beats three references and meets the risk rule.
+Training on those joint decisions still lost to training on each
+object separately. Most of the previous model's disagreement debit
+came from partially labeled tracks, not completely unlabeled tracks.
+[Three-reference audit and teacher comparison](outputs/publication_readiness_2026_09/tumdot_joint_teacher_v1/README.md).
+
 On TUMDOT, I kept the edited objects and displacement fixed and learned
 when to replace a past-motion forecast. The guarded model passed on
 more individual recordings, but its average conservative performance

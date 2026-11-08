@@ -1,0 +1,28 @@
+\subsection*{Missing steps and joint supervision on TUMDOT}
+The half-radius guarded selector's paired gain versus hindcast
+decomposes additively with the full CV denominator:
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\hline
+Future labels & Observed pp & Debit pp & Lower pp \\
+\hline
+Complete & \TumTeacherComplete \\
+Partial & \TumTeacherPartial \\
+Absent & \TumTeacherAbsent \\
+\hline
+\end{tabular}
+\end{center}
+
+An exact outcome-aware program chooses one path per edited row,
+maximizing the minimum paired lower gain against CV, OLS4 and
+hindcast under the unchanged risk contract. At half radius it
+passes on \TumTeacherPass/27 views; mean minimum gain is
+\TumTeacherOracle{} pp. A donor-only joint teacher uses these
+assignments as preference labels. Against local row-wise labels
+with the same network and training, the effect is
+\TumTeacherEffect{} (guarded: \TumTeacherGuard). Inference is
+still causal row-wise choice, not online oracle allocation. This
+development study has three intersections from one campaign.
