@@ -148,6 +148,14 @@ restriction, that two-person action set could not beat OLS4 in 19 of
 24 development recordings. The operating policy is unchanged.
 [Optional allocation study](outputs/publication_readiness_2026_09/optional_allocation_v2/README.md).
 
+I replaced the quarter-strength edits with a full-strength velocity
+forecast that learns how to weight the past observations. It beat a
+fixed robust fit on the development roster, but did not establish a
+gain over OLS4 or pass the risk rule. The two references already
+disagree on trajectories without future labels, so shrinking the
+model's deviations cannot remove most of the conservative debit.
+[Weighted velocity and reference disagreement](outputs/publication_readiness_2026_09/weighted_velocity_v1/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have

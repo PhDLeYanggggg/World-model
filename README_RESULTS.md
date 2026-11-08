@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Weighted Velocity and Irreducible Reference Disagreement
+
+54 native Torch fits, three seeds. At 95,769 matched edits, dual loss
+vs ADE is -0.255 pp [-0.565, -0.008]. Whole-roster dual vs fixed
+robust +3.383 pp [+0.602, +6.371], but vs OLS4 +0.069 pp
+[-2.821, +2.542]. No inner qualification or risk pass. The sum of
+missing-label debits is bounded below by CV/OLS4 disagreement:
+11.551 pp on this roster. The matched dual head is only 0.071 pp
+above the floor, and its optimistic two-gain sum is still -5.447 pp.
+Full candidate-bank expansion retains 24/72 hindsight witnesses and
+adds none; all cases resolved. No independent outcome access.
+[Study and replay](outputs/publication_readiness_2026_09/weighted_velocity_v1/README.md) |
+[Supplement v48](outputs/publication_readiness_2026_09/evidence_manuscript_v48/README.md).
+
 ## Optional Two-Person Allocation
 
 27 native Torch fits over three seeds. At 1,765 matched changes,
