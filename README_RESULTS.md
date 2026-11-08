@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## ACME Observation Coverage Repair
+
+Fresh ResNet50-FPN v2 detection on the same 24 windows raises stable
+histories from 8 to 10 at CMU and 1 to 9 at Miraikan. Both pass the
+existing camera-input floor; only 17 complete targets can be scored.
+CPU/MPS overlap supports the runtime change and the cached readout
+replays exactly. Neither neural forecasting nor deployment risk was
+evaluated on these exposed windows.
+[Results and replay](outputs/publication_readiness_2026_09/acme_detector_hybrid_v1/README.md).
+
 ## CREATE Historical Job Accounting
 
 Fresh read-only CREATE accounting confirms the four named recovery, join,

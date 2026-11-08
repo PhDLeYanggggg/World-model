@@ -217,6 +217,13 @@ at CMU or Miraikan. CMU had seven complete targets and OLS4 again beat
 CV on average path error; Miraikan did not have enough matched histories
 to score. [Frozen camera comparison](outputs/publication_readiness_2026_09/acme_held_camera_probe_v1/README.md).
 
+I kept those windows fixed and replaced the detector with a stronger
+pretrained model. Stable histories increased from 8 to 10 at CMU and
+from 1 to 9 at Miraikan, so both cameras now support a small baseline
+comparison. I have only 17 complete targets across the two cameras;
+I treat this as an input repair, not independent evidence for the
+forecasting policy. [Detector comparison](outputs/publication_readiness_2026_09/acme_detector_hybrid_v1/README.md).
+
 I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
 new recordings. Its 5% blend failed to improve on CV or on a causal
 motion control at the same recipients and coefficient. It met the
