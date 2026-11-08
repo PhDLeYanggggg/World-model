@@ -1,0 +1,78 @@
+{
+  "arms": [
+    "fixed_now",
+    "adaptive_now",
+    "fixed_queue",
+    "myopic_queue",
+    "adaptive_queue",
+    "no_geometry"
+  ],
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "candidates": [
+    "CV/OLS disagreement",
+    "large candidate change",
+    "small candidate change",
+    "observed turn",
+    "nearest observed neighbor"
+  ],
+  "code": {
+    "bytes": 17195,
+    "path": "scripts/run_m3w_opendd_slate_queue.py",
+    "sha256": "b2026d8888cfb0893897fd83a45a93a0ab31849c29cae28a581939261920bc56"
+  },
+  "confirmation_access": false,
+  "geometry": "relative rollout separation on selected-selected and selected-unselected edges, in past scales",
+  "matching": "same_clock matches exact query counts; same_credits_immediate matches FIFO IDs and per-recording counts",
+  "model": {
+    "bytes": 4590,
+    "path": "src/world_model/m3w_opendd_slate_queue.py",
+    "sha256": "9b259b028a9b8674df451cfb38ba7aa381611c29c6c2b40441a24387f545d6b8"
+  },
+  "models": [
+    "slate",
+    "geometry_ablated"
+  ],
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 53819,
+      "path": "outputs/publication_readiness_2026_09/opendd_credit_value_v2/analysis.json",
+      "sha256": "c9e42cdee14e1635fdb603f1d3279a572559805b323a856650588b1ead3f8143"
+    },
+    {
+      "bytes": 60903,
+      "path": "outputs/publication_readiness_2026_09/opendd_credit_value_v2/head_freeze.json",
+      "sha256": "be365263e49afae34115d5d246882132f9784207bef8cac9822f80e2e9806ab6"
+    },
+    {
+      "bytes": 7289,
+      "path": "outputs/publication_readiness_2026_09/opendd_credit_value_v2/prefix_capacity.json",
+      "sha256": "d3b2bf13eccc98a64bdad309522ef69e6b99f2b3e921a493b1fbb3043e0f023a"
+    },
+    {
+      "bytes": 708,
+      "path": "outputs/publication_readiness_2026_09/opendd_credit_value_v2/prefix_registration.json",
+      "sha256": "0adde175d18bbe36f81ebbedaaecbd26364fa99a3576b8ee32f46c78e359e253"
+    }
+  ],
+  "primary": "adaptive_queue vs fixed recipient prefix at identical realized query counts",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "targets": "myopic and hindsight continuation contrasts over legal slates; fixed old expiry and risk proxy",
+  "threads": 4,
+  "training": "all fitting candidate and release heads exclude outer site and donor site",
+  "workers": 0
+}

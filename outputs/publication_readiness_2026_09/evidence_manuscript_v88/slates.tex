@@ -1,0 +1,57 @@
+\section{Joint Choice of Recipient Slate and Edit Time}
+
+For each legal spend count, a causal menu offers up to
+five subsets, obtained from disagreement, large or small
+candidate change, observed turning, and nearby agents.
+The fixed-rank subset remains in the menu. For any subset
+of the same size, the queue transition is identical; thus
+the offline continuation is computed once per cardinality,
+and individual targets restore each subset's immediate
+return. The readout uses current and prior-query summaries,
+selected and unselected agents, and relative predicted
+separation on their edges. The latter is a forecast feature
+in local coordinates, not a physical safety claim.
+
+\begin{table}[h]
+\centering
+\caption{Causal edit selection on the frozen OpenDD bank.
+The fixed same-clock reference matches every realized count;
+the immediate reference matches used credits by recording.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Policy & Edits & Undefined & Joint \\
+\midrule
+Fixed immediate & \SlateQueueFixedNowEdits{} & \SlateQueueFixedNowUndefined{} & \SlateQueueFixedNowPass{} \\
+Adaptive immediate & \SlateQueueAdaptiveNowEdits{} & \SlateQueueAdaptiveNowUndefined{} & \SlateQueueAdaptiveNowPass{} \\
+Fixed queue & \SlateQueueFixedEdits{} & \SlateQueueFixedUndefined{} & \SlateQueueFixedPass{} \\
+Myopic adaptive queue & \SlateQueueCurrentEdits{} & \SlateQueueCurrentUndefined{} & \SlateQueueCurrentPass{} \\
+Joint recipient and time & \SlateQueueJointEdits{} & \SlateQueueJointUndefined{} & \SlateQueueJointPass{} \\
+Without relative geometry & \SlateQueueNoGeomEdits{} & \SlateQueueNoGeomUndefined{} & \SlateQueueNoGeomPass{} \\
+Fixed rank, same clock & \SlateQueueClockEdits{} & \SlateQueueClockUndefined{} & \SlateQueueClockPass{} \\
+Same used credits, immediate & \SlateQueueCreditsEdits{} & \SlateQueueCreditsUndefined{} & \SlateQueueCreditsPass{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The learned rule changes \SlateQueueChanged{} recipients relative
+to fixed rank at exactly the same query counts. Its paired
+lower effect is \SlateQueueMain{}; the relative trajectory
+effect is \SlateQueueRelative{}. The effect against immediate
+spending of the same realized credits is \SlateQueueImmediate{}.
+The full rule changes by \SlateQueueMyopic{} relative to the
+myopic adaptive queue (unequal edit counts) and does not beat
+the independently refitted no-geometry arm
+(\SlateQueueGeometry{}) or CV (\SlateQueueCV{}).
+
+At the original full per-recording totals, the outcome-aware
+menu reaches \SlateQueueNoDelay{} joint passes without delay
+and \SlateQueueTwoDelay{} with two-query delay. Separately,
+keeping the learned policy's exact realized count in every
+query, outcome-aware choice within the same menu reaches
+\SlateQueueClockCapacity{} versus the causal
+\SlateQueueJointPass{}. This second limit uses fewer
+credits and is not a nested subset of the full-budget
+limit. The residual gap at an identical clock cannot be
+attributed only to timing. It does not certify the causal
+ranker or the full recording roster.

@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared adaptive recipient sets with a fixed ranking at the same
+number of edits in each query. The adaptive sets widen the hindsight
+opportunity, but the learned rule does not improve forecast error at
+that matched clock. This keeps the focus on learning which edits help.
+[Joint recipient and timing experiment](outputs/publication_readiness_2026_09/opendd_slate_queue_v1/README.md).
+
 I tested whether learning to save an edit for a later query improves
 on scoring the current query alone. It did not reliably help. At the
 same budgets, fixing who gets edited first also cut the two-query

@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Joint Choice of Recipient Slate and Edit Time
+
+42 Torch fits and 21,000 updates, with zero-update replay. At the
+same realized query counts, adaptive recipients yield -0.008 pp
+[-0.085, +0.061] over fixed rank. The slate menu's two-query ceiling
+is 211/606 (fixed rank 84; arbitrary recipients 223). At the learned
+clock and counts, exact menu assignment gives 107/606 versus the
+learned 16/606. This leaves a recipient-ranking gap, not a deployment result.
+[Experiment](outputs/publication_readiness_2026_09/opendd_slate_queue_v1/README.md) |
+[Manuscript v88](outputs/publication_readiness_2026_09/evidence_manuscript_v88/README.md).
+
 ## Learning Continuation Value for Neural Edits
 
 84 local Torch fits, 33,600 updates, zero-update replay verified.
