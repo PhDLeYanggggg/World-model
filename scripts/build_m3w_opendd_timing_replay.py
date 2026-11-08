@@ -27,6 +27,7 @@ DUAL_DIRECTION = OUT.parent.parent/"opendd_timing_replay_v11"/OUT.name
 DUAL_CLOCK = OUT.parent.parent/"opendd_timing_replay_v12"/OUT.name
 BUDGET_RANK = OUT.parent.parent/"opendd_timing_replay_v13"/OUT.name
 PROTECTED_GAIN_REPLAY = OUT.parent.parent/"opendd_timing_replay_v14"/OUT.name
+GAIN_WAIT_REPLAY = OUT.parent.parent/"opendd_timing_replay_v15"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -47,6 +48,7 @@ DEADLINE = CLOCK+"_deadline"
 RANK_BUDGET = "opendd_budget_rank_v1"
 ATTRIBUTION = RANK_BUDGET+"_attribution"
 PROTECTED_GAIN = "opendd_protected_gain_v1"
+GAIN_WAIT = "opendd_gain_wait_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -225,21 +227,34 @@ def read_protected_clock():
     return a
 
 
-def protected_clock_tables(studies, expected):
-    a = read_protected_clock()
-    key = PROTECTED_GAIN+"_clock"
-    groups = [[dict(counts={"clock_capacity": r["counts"]}, effects={})
+def read_gain_wait_menu():
+    p = legacy.REPORTS/GAIN_WAIT
+    r = json.loads((p/"menu_registration.json").read_text())
+    a = json.loads((p/"menu_capacity.json").read_text())
+    root = legacy.REPORTS.parents[1]
+    if (a["registration"] != legacy.sha(p/"menu_registration.json")
+            or any(legacy.sha(root/z["path"]) != z["sha256"] for z in r["parents"])
+            or any(z["confirmation_access"] or not z["original_2pct"] or not z["outcome_aware_only"]
+                   for z in (r, a))):
+        raise ValueError("Require the frozen gain-wait menu attribution")
+    return a
+
+
+def capacity_table(studies, expected, a, key, field):
+    keys = set(a["summary"]).union(*(r["counts"] for rows in a["by_site"].values() for r in rows))
+    groups = [[dict(counts={field: {k: r["counts"].get(k, 0) for k in keys}}, effects={})
                for r in sorted(rows, key=lambda z: z["seed"])]
               for _, rows in sorted(a["by_site"].items())]
     studies[key] = dict(sites=groups, effect_order=[], sequential_draws=False)
-    expected[key] = dict(counts={"clock_capacity": a["summary"]}, effects={})
+    expected[key] = dict(counts={field: {k: a["summary"].get(k, 0) for k in keys}}, effects={})
 
 
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
           include_two=False, include_stop=False, include_admission=False, include_record=False,
           include_schedule=False, include_direction=False, include_clock=False, include_budget_rank=False,
-          include_protected_gain=False):
+          include_protected_gain=False, include_gain_wait=False):
     studies, expected = {}, {}
+    include_protected_gain = include_protected_gain or include_gain_wait
     include_budget_rank = include_budget_rank or include_protected_gain
     include_clock = include_clock or include_budget_rank
     include_direction = include_direction or include_clock
@@ -277,6 +292,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (RANK_BUDGET, ATTRIBUTION)
     if include_protected_gain:
         names += (PROTECTED_GAIN,)
+    if include_gain_wait:
+        names += (GAIN_WAIT,)
     for name in names:
         a = (read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK
              else read_deadline() if name == DEADLINE
@@ -337,7 +354,9 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
     if include_schedule:
         schedule_tables(studies, expected)
     if include_protected_gain:
-        protected_clock_tables(studies, expected)
+        capacity_table(studies, expected, read_protected_clock(), PROTECTED_GAIN+"_clock", "clock_capacity")
+    if include_gain_wait:
+        capacity_table(studies, expected, read_gain_wait_menu(), GAIN_WAIT+"_menu", "menu_capacity")
     replay.verify(replay.aggregate(studies), expected)
     files = {
         "replay.py": Path(replay.__file__).read_bytes(),
@@ -350,7 +369,7 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = next(p for enabled, p in ((include_protected_gain, PROTECTED_GAIN_REPLAY),
+    out = next(p for enabled, p in ((include_gain_wait, GAIN_WAIT_REPLAY), (include_protected_gain, PROTECTED_GAIN_REPLAY),
         (include_budget_rank, BUDGET_RANK), (include_clock, DUAL_CLOCK),
         (include_direction, DUAL_DIRECTION),
         (include_schedule, SCHEDULE_SUPPORT), (include_record, RECORD_SUPPORT),
@@ -383,8 +402,9 @@ if __name__ == "__main__":
     p.add_argument("--include-dual-clock", action="store_true")
     p.add_argument("--include-budget-rank", action="store_true")
     p.add_argument("--include-protected-gain", action="store_true")
+    p.add_argument("--include-gain-wait", action="store_true")
     a = p.parse_args()
     build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
           a.include_two_reserves, a.include_support_stop, a.include_support_admission,
           a.include_record_support, a.include_support_schedule, a.include_dual_direction, a.include_dual_clock,
-          a.include_budget_rank, a.include_protected_gain)
+          a.include_budget_rank, a.include_protected_gain, a.include_gain_wait)

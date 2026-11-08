@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a model to decide whether to make a gain edit now or wait for
+a later offer, without changing the support edit. It lost to the
+same-budget immediate control. In most expired waits, the original
+support edit never arrived or arrived too late.
+[Gain timing experiment](outputs/publication_readiness_2026_09/opendd_gain_wait_v1/README.md).
+
 I kept the support edit fixed and trained a model to change only the
 gain edit. It lost one previously defined easy reference instead of
 20 when the model could change the gain recipient at any time, but

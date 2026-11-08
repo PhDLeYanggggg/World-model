@@ -1,0 +1,69 @@
+{
+  "ablation": "retrain without observed support context and query-prefix summaries",
+  "action": "frozen gain ranking within that query; rescale down only to original gain radius",
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 15536,
+    "path": "scripts/run_m3w_opendd_gain_wait.py",
+    "sha256": "fc37ab2b52c0e6d2187412f88f9aea6a16386e330121b816e46db3b90fd3d7ab"
+  },
+  "confirmation_access": false,
+  "expiry": "keep only the original support edit",
+  "expiry_queries": 8,
+  "guard": "positive predicted conservative wait-minus-now utility; predicted deterioration and expiry logits both negative",
+  "model": {
+    "bytes": 1306,
+    "path": "src/world_model/m3w_opendd_gain_wait.py",
+    "sha256": "6e1977197dd3f5a21790c0240817735b0031bb1df329c8f9fce0a0a48d9aa88b"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "offer": "first later query with observed support and a non-support neural path of at least original gain radius",
+  "oracle": "two-policy label-aware ceiling, preserving original risk pass, joint pass and defined easy reference",
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 111808,
+      "path": "outputs/publication_readiness_2026_09/opendd_protected_gain_v1/analysis.json",
+      "sha256": "75850b39fdc672188da85730a2259a42eb3852ab1dfd8b0d13591dfdcefab5f8"
+    },
+    {
+      "bytes": 31935,
+      "path": "outputs/publication_readiness_2026_09/opendd_protected_gain_v1/head_freeze.json",
+      "sha256": "dbd907460228ce6d095ef87ea5ff446e85066ac2a6c331a5233721c544e643e1"
+    },
+    {
+      "bytes": 924,
+      "path": "outputs/publication_readiness_2026_09/opendd_protected_gain_v1/clock_registration.json",
+      "sha256": "7f9b8aa35f1ed96cbe290c602363c89afcd2fcf449503d815f650d0f3f932342"
+    },
+    {
+      "bytes": 5311,
+      "path": "outputs/publication_readiness_2026_09/opendd_protected_gain_v1/clock_capacity.json",
+      "sha256": "225f17d355ce1507e2258857e6a3fe76699fdb12b6db2e1f4d313816bce0a7ba"
+    }
+  ],
+  "primary": "guard vs immediate on the full cohort; realized-budget matched immediate is a retrospective control",
+  "release": "original gain trigger; support clock/recipient/path stays original including gain trigger bookkeeping",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "training": "outer and donor excluded upstream; wait targets use the realized causal first offer, not future maximum",
+  "workers": 0
+}

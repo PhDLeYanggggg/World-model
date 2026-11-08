@@ -1,0 +1,40 @@
+\subsection{Deferring the gain edit to the first eligible query}
+At the original gain trigger, a head predicts the realized utility
+difference between acting now and waiting up to eight query indices for
+the first radius-matched neural offer after support is observed.
+It also predicts whether waiting loses a defined reference, a risk pass,
+or a joint pass (one deterioration target), and whether it expires.
+The support edit is unchanged. The head sees the observed prefix only;
+its targets are the outcomes of the two causal policies, not the best
+later outcome. A recording with an expired gain retains only its original
+support edit. A retrospective immediate control uses the same realized
+gain and support counts per recording.
+
+\begin{center}
+\begin{tabular}{lc}
+Arm & Edits / joint / undefined \\
+\hline
+Original & \GainWaitOriginalCounts \\
+Guarded wait & \GainWaitGuardCounts \\
+Immediate, matched & \GainWaitMatchedCounts \\
+Guarded wait, anchor only & \GainWaitMaskedCounts \\
+\end{tabular}
+\end{center}
+
+The guarded head waits \GainWaitWaited{} times, with
+\GainWaitGuardExpired{} expiries. Its conservative utility differences
+are \GainWaitPrimaryEffect{} against the original and
+\GainWaitMatchedEffect{} against immediate use at the same realized
+budget. Observed context versus the retrained anchor-only guard gives
+\GainWaitContextEffect{} (paired location bootstrap).
+
+Under always waiting, \GainWaitExpired{} of \GainWaitReleases{} triggers
+expire: \GainWaitNever{} never observe a support edit,
+\GainWaitLate{} observe it too late, and \GainWaitRadius{} lack a
+radius-matched neural offer. An outcome-aware comparison of immediate
+and first eligible actions admits \GainWaitFirst{} views, compared with
+\GainWaitNeural{} when any neural offer is allowed in the same window,
+and \GainWaitExpanded{} when OLS4 and observed-prefix directions are
+also allowed. All ceilings preserve existing easy references. More
+directions can address some matching failures, but not absent support.
+No learned timing rule qualifies for deployment or independent confirmation.

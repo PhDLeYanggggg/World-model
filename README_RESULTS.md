@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Waiting for a Radius-Matched Gain Edit
+
+Across 606 OpenDD development views, the guarded policy waits 189 times,
+of which 102 expire. It passes jointly on 111 views, versus 124 at the
+same realized budget and 138 for the original. The matched utility
+effect is -0.01851 pp [-0.04515, -0.00201]. Of 385 expiries under always
+waiting, 257 lack support, 62 receive it after the deadline, and 66
+lack a radius match. The eight-query hindsight ceiling grows from
+174 to 238 with a broader action menu, not with a learned policy.
+[Experiment](outputs/publication_readiness_2026_09/opendd_gain_wait_v1/README.md) |
+[Manuscript v102](outputs/publication_readiness_2026_09/evidence_manuscript_v102/README.md).
+
 ## Protected Gain With a Fixed Support Edit
 
 At 943 matched edits, the protected head loses one easy reference,
