@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Candidate Recipient Ranking
+
+Eighty-one fresh fits compare pointwise and exact expected top-two
+gain, with a matched query-context arm. At the same two changes per
+query and quarter-amplitude forecasts, top-two gives -0.0672 full-grid
+points vs OLS4 [-0.1379, -0.0034], and -0.1351 in the direct contrast
+with pointwise [-0.2498, -0.0481]. The same source scores +0.0291
+when seen in training. Fixed-nomination hindsight at quarter amplitude
+is +0.5509; opening the entire expert menu at the same amplitude
+increases it to +1.0527. Neither result is a learned deployment gain.
+[Experiment, replay and generalization audit](outputs/publication_readiness_2026_09/native_recipient_top2_v1/README.md).
+
 ## Expert Gain, Harm and Joint Allocation
 
 Fifty-four fresh Torch fits hold out nine fitting sources across three

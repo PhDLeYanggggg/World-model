@@ -95,6 +95,13 @@ forecast score. Most of the gap to hindsight came from choosing
 which agents to change, not which forecast to use for them.
 [Expert allocation experiment](outputs/publication_readiness_2026_09/native_expert_risk_allocation_v1/README.md).
 
+I isolated that recipient choice by giving every agent one fixed
+candidate and training only the ranking. Optimizing the expected gain
+of two choices helped on sources seen during training, but not when I
+held a source out. I also separated the loss of available gain from
+restricting the candidate menu and shrinking the forecasts.
+[Fixed-candidate ranking](outputs/publication_readiness_2026_09/native_recipient_top2_v1/README.md).
+
 ## Looking For Better Observed Scenes
 
 I audited two Waterloo drone sites before using them for forecasting.
