@@ -334,6 +334,15 @@ the feasible action capacity and the limits of learning to use it.
 [Direct value study](outputs/publication_readiness_2026_09/direct_count_value_v1/README.md) |
 [Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v66/README.md).
 
+I then separated gain, harm and easy-reference support at the same
+recording edit counts. True harm improved more pass counts than true
+support, while true gain gave a clearer accuracy benefit. Estimating
+harm and reference mass separately improved the matched pass count
+from 60 to 73 of 606 views, but did not improve forecast utility and
+overcalled positive easy risk. I did not change deployment.
+[Attribution](outputs/publication_readiness_2026_09/support_value_attribution_v1/README.md) |
+[Factorized risk](outputs/publication_readiness_2026_09/factorized_count_risk_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

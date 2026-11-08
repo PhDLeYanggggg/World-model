@@ -1,0 +1,27 @@
+\paragraph{Separating gain, harm, and easy support at exact totals.}
+All matched arms use the online gain-only controller's exact realized
+totals (\FactorRiskEdits{} edits per arm), identical chronological
+credit constraints and the same fixed nominations. Replacing only
+gain, harm terms, or easy support by future-label values gives
+\FactorRiskGain{}, \FactorRiskRisk{} and \FactorRiskSupport{} joint
+passes versus \FactorRiskBase{}/\FactorRiskViews{} for learned motion.
+All true local terms give \FactorRiskAll{}; exact constrained hindsight
+verifies \FactorRiskGlobal{}. The matching sees the recording's query
+scores and is retrospective. A separate causal prefix-risk heuristic
+uses only the observed window and donor cutoffs; its online joint count
+is \FactorRiskPrefixRisk{}, versus \FactorRiskPrefix{} for prefix gain.
+
+\paragraph{Factorizing signed risk.}
+We train 21 new Torch heads to estimate occurrence and magnitude of
+nonnegative harm, reference mass, missing-label debit and easy benefit,
+then reconstruct signed risk under the original rule. Replacing only
+the risk part of the frozen score increases matched joint passes from
+\FactorRiskBase{} to \FactorRiskFactor{}, while direct conservative gain
+is \FactorRiskPoint{} pp (95\% location interval
+[\FactorRiskLow{}, \FactorRiskHigh{}]). The factorization has lower
+positive-tail magnitude error than the signed head, but its easy-risk
+sign false-positive rate is \FactorRiskFalsePositive{}\%, and a zero
+prediction has lower pooled absolute error. The benefit in recording
+pass counts does not establish usable risk calibration or improved
+forecast utility. These are exposed OpenDD data; confirmation remains
+sealed and the risk criterion is unchanged.

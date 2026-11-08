@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Count Attribution and Factorized Risk
+
+At 1,457 edits per arm, true gain, true risk and true support give 129,
+146 and 76/606 joint passes versus 60 for learned motion; all true local
+terms give 244 and exact hindsight gives 304. A causal prefix-risk
+control does not improve the online joint count. In 21 new Torch fits,
+replacing risk alone improves matched joint passes from 60 to 73, with
+direct gain -0.013 pp [-0.091, +0.057]. Easy-risk sign false positives
+are about 95%, so this does not qualify a controller.
+[Attribution](outputs/publication_readiness_2026_09/support_value_attribution_v1/README.md) |
+[Factorized risk](outputs/publication_readiness_2026_09/factorized_count_risk_v1/README.md) |
+[Working supplement v67](outputs/publication_readiness_2026_09/evidence_manuscript_v67/README.md).
+
 ## Direct Action Value and Peer Context
 
 42 native Torch fits on the frozen OpenDD menu. Motion and peer gain
