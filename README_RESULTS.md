@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Recipient Ranking at an Identical Clock
+
+42 Torch fits, 21,000 updates. The pairwise model beats fixed rank
+by +0.107 pp [+0.014, +0.225] at the same 2,280 edits; the harm
+guard yields +0.218 pp [+0.031, +0.540]. Neither beats a same-feature
+scalar control reliably. The guard versus CV is +0.004 pp
+[-0.211, +0.212] and only 16/606 views pass both gain and risk.
+No deployment or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/opendd_slate_rank_v1/README.md) |
+[Manuscript v89](outputs/publication_readiness_2026_09/evidence_manuscript_v89/README.md).
+
 ## Joint Choice of Recipient Slate and Edit Time
 
 42 Torch fits and 21,000 updates, with zero-update replay. At the

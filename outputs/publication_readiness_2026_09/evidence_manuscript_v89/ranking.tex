@@ -1,0 +1,48 @@
+\section{Direct Ranking at the Frozen Edit Clock}
+
+All arms retain \RankClockEdits{} edits at identical queries.
+The pairwise target is $\operatorname{sgn}(g)(|g|-b)_+$,
+where $g$ is observed gain difference and $b$ is the
+missing-step debit on changed recipients. The guard requires
+positive predicted gain and no increase in three predicted
+risk components; it is not a certificate. Fitting trajectories
+and release heads exclude donor and outer site. The scalar
+control uses the same examples and the earlier additive proxy.
+
+\begin{table}[h]
+\centering
+\caption{All \RankClockViews{} views at exactly matched query counts.
+The label-aware local oracle maximizes each query's lower
+gain over fixed rank without imposing joint recording risk.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Policy & Undefined & Risk & Joint \\
+\midrule
+Fixed rank & \RankClockFixedUndefined{} & \RankClockFixedRisk{} & \RankClockFixedJoint{} \\
+Prior joint model & \RankClockOldUndefined{} & \RankClockOldRisk{} & \RankClockOldJoint{} \\
+Scalar regression & \RankClockRegUndefined{} & \RankClockRegRisk{} & \RankClockRegJoint{} \\
+Pairwise & \RankClockPairUndefined{} & \RankClockPairRisk{} & \RankClockPairJoint{} \\
+Pairwise plus harm guard & \RankClockHarmUndefined{} & \RankClockHarmRisk{} & \RankClockHarmJoint{} \\
+Local oracle & \RankClockLocalUndefined{} & \RankClockLocalRisk{} & \RankClockLocalJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Direct lower gain over fixed rank is \RankClockPaired{} for
+pairwise training, \RankClockGuard{} with the harm guard,
+and \RankClockScalar{} for scalar regression. The direct
+comparison with scalar regression is \RankClockPairScalar{}
+for pairwise and \RankClockGuardScalar{} with the guard.
+Missing-step debits make these paired comparisons
+nonadditive. The guard's direct effect versus CV is
+\RankClockCV{}; error-mass weighting instead gives
+\RankClockWeightedCV{}. Removing the site with the largest
+guarded effect leaves \RankClockGuardWithoutHigh{} for
+the guard and \RankClockPairWithoutHigh{} for pairwise
+over fixed rank in a post-hoc sensitivity analysis.
+Neither beats CV or certifies the full roster. The local
+oracle yields \RankClockOracle{} over fixed rank, while
+even the exact original-risk optimum at this clock passes
+only \SlateQueueClockCapacity{} views. Thus the ranking
+and the support of the fixed clock remain separate limits.

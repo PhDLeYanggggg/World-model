@@ -1,0 +1,73 @@
+{
+  "all_arms_match_query_counts": true,
+  "arms": [
+    "fixed",
+    "old",
+    "scalar",
+    "paired",
+    "guarded",
+    "oracle_local"
+  ],
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 11994,
+    "path": "scripts/run_m3w_opendd_slate_rank.py",
+    "sha256": "7a051180015041480e8237e6719e5a0aedd71857eb5e36eceee8fe7170bddece"
+  },
+  "confirmation_access": false,
+  "donor_examples": "all pairs at counts reachable from current and two prior releases, with both donor and outer excluded from forecaster and release head",
+  "gain": "signed interval-separated pair advantage; ambiguous gain maps to zero",
+  "guard": "strict predicted gain and no predicted excess increases relative to same-count fixed rank",
+  "model": {
+    "bytes": 2315,
+    "path": "src/world_model/m3w_opendd_slate_rank.py",
+    "sha256": "f93ae20a8e06f2ff76a8ff1b021013fc2a91eca19f2f4c6d8c00058cb2d66288"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "oracle": "local lower utility against fixed; no joint safety implication",
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 87570,
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_queue_v1/analysis.json",
+      "sha256": "a751a4ea4ecdf2cd83d81d888e048b6627b606f2c78cc7564617101d27388b50"
+    },
+    {
+      "bytes": 31719,
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_queue_v1/head_freeze.json",
+      "sha256": "a396b5e78be1029fad3549fbb0235f6b75c7c8430a0163ea4058b19ae55cb105"
+    },
+    {
+      "bytes": 569,
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_queue_v1/clock_registration.json",
+      "sha256": "0aaeec7e056562427df25f93cea68efe94bdf8b99763f4d080543b6e7db88248"
+    },
+    {
+      "bytes": 7197,
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_queue_v1/clock_capacity.json",
+      "sha256": "927c4b117498b0e382332901559a58678a6d18dbf7d7aa383bf051ae397f144f"
+    }
+  ],
+  "primary": "paired vs fixed on exact frozen held clock",
+  "risks": [
+    "all_excess",
+    "easy_excess",
+    "easy_signed"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "threads": 4,
+  "workers": 0
+}

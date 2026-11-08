@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a pairwise ranker to choose recipient sets without changing
+when edits happen or how many are used. It improved over the fixed
+ranking on OpenDD, but not reliably over a learned regression control
+or constant velocity. The recording-level risk problem remains open.
+[Same-clock ranking results](outputs/publication_readiness_2026_09/opendd_slate_rank_v1/README.md).
+
 I compared adaptive recipient sets with a fixed ranking at the same
 number of edits in each query. The adaptive sets widen the hindsight
 opportunity, but the learned rule does not improve forecast error at
