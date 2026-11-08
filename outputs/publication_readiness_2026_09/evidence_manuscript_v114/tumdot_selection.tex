@@ -1,0 +1,30 @@
+\subsection*{Learned shape choice on TUMDOT development}
+I keep the same six directions, recipients and radii on nine exposed
+recordings from one campaign. Fitting excludes both the held
+intersection and day. The first trial predicts conservative CV
+gain; adding a short past backtest does not help its direct paired
+ablation. The follow-up predicts gain directly against the fixed
+hindcast, then guards against higher predicted all/easy harm.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\hline
+Half-radius rule & CV lower pp & Risk & Joint \\
+\hline
+Fixed hindcast & \TumSelectFixed \\
+CV target & \TumSelectCV \\
+Paired target & \TumSelectPair \\
+Paired, guarded & \TumSelectGuard \\
+\hline
+\end{tabular}
+\end{center}
+
+Joint means positive against CV and OLS4 with the original risk
+checks. The guarded arm improves the joint count but loses to
+hindcast directly: \TumSelectEffect. Intervals resample only
+three intersections and are descriptive. The outcome-aware
+witness reaches \TumSelectOracle{} pp against CV at 27/27
+joint passes. Quarter radius improves risk coverage, but no causal
+arm has positive average CV lower utility. This is not confirmation.

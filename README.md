@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+On TUMDOT, I kept the edited objects and displacement fixed and learned
+when to replace a past-motion forecast. The guarded model passed on
+more individual recordings, but its average conservative performance
+still lost to both constant velocity and the fixed past-motion rule.
+[TUMDOT matched selection](outputs/publication_readiness_2026_09/tumdot_incumbent_selector_v1/README.md).
+
 I fixed the first-edit opportunity and displacement, then compared
 learning to rank a whole query with scoring each candidate separately.
 Diversity helped recover some qualifying options in a shortlist.

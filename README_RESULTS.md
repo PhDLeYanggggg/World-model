@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## TUMDOT Matched Shape Selection
+
+Both trials exclude the held intersection and collection day from
+fitting. In the original half-radius budget, the CV-target model with
+past probes loses -0.13422 pp directly to the fixed hindcast despite
++0.00279 pp on observed steps. The follow-up learns the direct
+hindcast contrast and applies a harm guard: CV lower utility is
+-0.02273 pp, direct hindcast utility is -0.05710 pp, and joint
+CV/OLS4 plus risk passes increase from 3/27 to 9/27 at 24/27 risk passes.
+Quarter radius passes risk on all views but remains negative to CV.
+These are exposed development recordings from one campaign.
+[First fit](outputs/publication_readiness_2026_09/tumdot_matched_selector_v1/README.md) |
+[Paired target](outputs/publication_readiness_2026_09/tumdot_incumbent_selector_v1/README.md) |
+[Manuscript v114](outputs/publication_readiness_2026_09/evidence_manuscript_v114/README.md).
+
 ## First-Offer Ranking at Identical Edit Count and Radius
 
 At all 29 available first offers, pointwise and listwise Torch models

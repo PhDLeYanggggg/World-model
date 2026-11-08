@@ -1,0 +1,61 @@
+{
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 73107,
+    "unit": "3 intersections after seed/day averaging; descriptive"
+  },
+  "code": {
+    "bytes": 13143,
+    "path": "scripts/run_m3w_tumdot_matched_selector.py",
+    "sha256": "e54e2c5b3e7bfb139852301539ed8181d3a8efec8a1818290dcf1de6d7c2110f"
+  },
+  "confirmation_access": false,
+  "fit": "four donors excluding both held intersection and collection day; no held normalization or thresholds",
+  "model": {
+    "bytes": 3084,
+    "path": "src/world_model/m3w_tumdot_matched_selector.py",
+    "sha256": "fefc2aacffc00d5ce62e4cee3870f2cdeba030e88da94256bb2f4a4dbbe93b5d"
+  },
+  "objective": "per-step conservative CV gain and known all/easy positive harm, normalized by action radius",
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 1274,
+      "path": "outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/registration.json",
+      "sha256": "b9f4b01f47c1c97f8c2dce3c9c07ea2e181d1463fa70e589a68c352ba16d02be"
+    },
+    {
+      "bytes": 319265,
+      "path": "outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/analysis.json",
+      "sha256": "8442be183c8a999254107e82025d6851e593447134d5f6fe306ff54cec721f9e"
+    },
+    {
+      "bytes": 583,
+      "path": "outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/capacity_registration.json",
+      "sha256": "d3d7bd9c1eb0c721b419437568c0e05e7bcfeab96725a74354a94905207f710f"
+    },
+    {
+      "bytes": 175762,
+      "path": "outputs/publication_readiness_2026_09/tumdot_matched_finite_transfer_v1/capacity.json",
+      "sha256": "a07974c5dd25249e4f5b00cd1eff430852d14a314938ba9bcb863e49f4535ce5"
+    },
+    {
+      "bytes": 15435,
+      "path": "scripts/run_m3w_recording_count.py",
+      "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+    }
+  ],
+  "primary": "learned utility versus fixed hindcast at original half radius",
+  "rank_rule": "gain only; risk uses gain minus each nonnegative predicted harm; neither certifies the gate",
+  "roster": "same exposed 9 recordings x 3 producer seeds, one campaign",
+  "sampling": "uniform recordings then edited rows; all actions per sampled row",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sensitivity": "quarter radius scored on the same trained policy without refit",
+  "steps": 400,
+  "threads": 4,
+  "workers": 0
+}
