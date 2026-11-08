@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Forecast Direction and Recipient Capacity
+
+54 native Torch fits over three seeds; 95,769 matched edits with fixed
+waypoint radii. Ego minus unchanged quarter direction -0.587 pp
+[-1.282, -0.056]; neighbors minus ego -0.061 pp [-0.127, -0.013].
+All 0/72 actual risk passes and 0/27 inner qualifications per arm.
+At frozen recipients arbitrary hindsight directions pass only 4/24
+risk checks. At the same query counts, reassigning recipients and path
+identities verifies both-reference gains in 6/24 with quarter paths,
+10/24 with hindsight directions (one projected witness recovered);
+12 remain risk infeasible in both menus. No independent access.
+[Study](outputs/publication_readiness_2026_09/matched_direction_v2/README.md) |
+[Supplement v46](outputs/publication_readiness_2026_09/evidence_manuscript_v46/README.md).
+
 ## Query-Local Temporal Envelopes
 
 27 native Torch fits with three seeds. Learned versus flat timing at

@@ -1,0 +1,22 @@
+\section{Timing, Direction, and Recipient Capacity}
+Two matched development tests preserve 95769 interventions over 24
+recordings and three seeds. Learning a temporal envelope at the same
+per-row peak gives \MatchedGeoTiming{} against flat quarter scaling.
+Learning waypoint rotations at the same per-step radii gives
+\MatchedGeoEgo{} for ego-only versus flat; adding four past neighbors
+gives \MatchedGeoPeer{} versus ego-only. Intervals are paired 95\%
+source bootstraps. None of these policies qualifies on the inner
+calibration recordings.
+
+At the original recipients, hindsight ray projection for timing
+alone passes \MatchedGeoTimingPass/24 risk checks. Closest-point
+projection onto waypoint circles minimizes observed ADE and
+preserves the missing-label CV debit; direction alone passes
+\MatchedGeoDirectionPass/24. Releasing recipients and path identities,
+while preserving each query's count, verifies positive lower gains
+against both references under the original risk rule in
+\MatchedGeoFlatBoth/24 recordings for quarter paths and
+\MatchedGeoCircleBoth/24 for hindsight circles
+(\MatchedGeoFlatUnresolved{} and \MatchedGeoCircleUnresolved{}
+unresolved). The solver uses future labels, so these are capacity
+results, not forecasts or independent confirmation.
