@@ -17,10 +17,12 @@ def return_weight(t):
 def readout(jobs):
     d = exp.parent.data(jobs, lambda **_: None)
     q = exp.parent.old.fitting_layout(jobs[0]["identity"], d)
-    _, _, masks, _, s, paths = model.inputs(d["geometry"])
+    _, _, masks, _, _, paths = model.inputs(d["geometry"])
     target, valid = d["target"], d["valid"]
     ref = paths["ols4"]
     near = paths["fixed_neighbor"] - ref
+    ego_steps = np.diff(d["geometry"][:, :16].reshape(-1, 8, 2).astype(float), axis=1)
+    s = np.sqrt(np.square(ego_steps).sum(2).mean(1)).clip(.05)
     vel = np.diff(d["geometry"][:, 38:166].reshape(-1, 8, 8, 2).astype(float), axis=2)
     innovation = (vel[:, :, -1]-vel[:, :, -4])/3
 
