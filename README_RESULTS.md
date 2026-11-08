@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Past Sampling at Fixed Anchors
+
+Wide uniform minus recent: -1.737 pp [-3.354,-0.322] fitting and
++0.829 pp [+0.609,+1.067] opened, at identical labels and original
+recipient set. Two additional layouts show the same conservative
+direction reversal. None passes fitting risk; the opened passes are
+40/40 recent, 39/40 wide uniform, 38/40 each other wide layout.
+Even an outcome-aware stepwise convex-hull relaxation excludes all
+24 fitting recordings at fixed recipients and half-blend bank.
+[Experiment and replay](outputs/publication_readiness_2026_09/past_sampling_audit_v1/README.md) |
+[Working manuscript v41](outputs/publication_readiness_2026_09/evidence_manuscript_v41/README.md).
+
 ## Shared Correction and Risk Reversal
 
 Frozen recipients, per-row norm-matched direction control. Shared removal

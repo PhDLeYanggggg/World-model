@@ -1,0 +1,35 @@
+\section{Past Sampling at Fixed Forecast Anchors}
+All arms retain the same queries, future labels, CV and frozen
+half-blend recipients. We fit the alternative velocity to offsets
+$(-3,-2,-1,0)$, $(-6,-4,-2,0)$, $(-6,-5,-1,0)$, or every
+offset from $-6$ to $0$. Slopes use native index units and paths
+remain anchored at the latest position.
+
+\begin{table}[!t]
+\centering\small
+\caption{Direct conservative gain vs the recent fit (points)
+and original passes on 24 fitting / 40 opened recordings.}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+History & Fit & Opened & Passes\\
+\midrule
+\PastSampleRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 95\% paired source intervals for wide uniform versus recent
+are \PastSampleSource{} on fitting and \PastSampleTarget{} on
+opened recordings. This is sensitivity to past sampling, not a
+claim of matched physical time or a transfer remedy.
+
+We test an optimistic relaxation of the candidate family on fitting
+labels only. At each selected row and known future step, distance
+to the convex hull of the four paths lower-bounds any mixture's
+error, even allowing the mixture to vary with the step. For wholly
+missing rows, terminal CV-to-hull distance lower-bounds the maximum
+disagreement debit. Taking positive harm above CV and using the
+largest possible selected reference mass yields a risk lower bound.
+This excludes \PastSampleBlocked/\PastSampleFit{} recordings.
+It rules out reweighting these schedules at fixed recipients and
+half-blend amplitudes, not different candidate paths or recipients.

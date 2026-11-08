@@ -78,6 +78,15 @@ even among queries with similar levels of shared motion.
 [Same-norm comparison](outputs/publication_readiness_2026_09/shared_correction_audit_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v40/README.md).
 
+I then held each forecast and its target labels at the same time
+indices, changing only the past points used to estimate velocity.
+Wider histories helped on the opened DroneCrowd clips but hurt the
+conservative score on the fitting sources. Even with hindsight and
+arbitrary mixtures of the four fits, none of the 24 fitting recordings
+could pass at the same recipients and half-blend amplitudes.
+[Sampling and capacity experiment](outputs/publication_readiness_2026_09/past_sampling_audit_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v41/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
