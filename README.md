@@ -70,6 +70,13 @@ strong control. The joint rule did not improve on simpler selection
 at equal realized budget. None of these passed every recording.
 [Matched movement comparison](outputs/publication_readiness_2026_09/opendd_causal_amplitude_v1/README.md).
 
+I also tried moving the fixed-half budget between pedestrians without
+dropping any target. Both learned guards kept its recording passes,
+but neither reliably improved prediction. Knowing the future shows
+there are useful exchanges; the models did not reliably identify them
+from the past.
+[Marginal and direct exchange results](outputs/publication_readiness_2026_09/opendd_direct_exchange_v1/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more

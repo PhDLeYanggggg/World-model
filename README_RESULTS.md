@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Support-Preserving Exchange
+
+42 fresh heads across two experiments. At identical recipients and
+query-total realized radius, the marginal guard gains +0.0007 pp
+[-0.0011, +0.0032] and the direct guard -0.0019
+[-0.0054, +0.0015] versus fixed half. Both preserve 547/606 passes.
+Hindsight finds +0.082 pp at the same budget, but only 1,098 of
+2,493 direct-guard choices are both beneficial and risk-nonincreasing.
+No qualifying policy. [Results](outputs/publication_readiness_2026_09/opendd_direct_exchange_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v34/README.md).
+
 ## OpenDD Causal Recipient and Amplitude Allocation
 
 63 fresh nested heads and exact replay. At equal per-query edit counts

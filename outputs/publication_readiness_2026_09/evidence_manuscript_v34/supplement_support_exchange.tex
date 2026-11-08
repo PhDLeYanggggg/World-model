@@ -1,0 +1,40 @@
+\section{Conserving Recipients as Well as Motion}
+Starting at fixed half amplitude, we transfer radius between at most
+two targets per query. Neither becomes an identity edit. This keeps
+the selected reference denominators and query radius fixed, but may
+change the missing-label debit. We compare summing predicted marginal
+effects against predicting the exact pair action. Both predict and
+then optimize; neither implements the decision loss of \cite{spo}.
+Each uses 21 new heads and pair-excluded donor forecasts.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Rule & Gain (pp) & Exchanges & Passes \\
+\midrule
+Fixed half & --- & 0 & \ExchangeHalfPass \\
+Marginal guard & \ExchangeMarginalGain & \ExchangeMarginalActions & \ExchangeMarginalPass \\
+Direct utility & \ExchangeDirectGain & \ExchangeDirectActions & \ExchangeDirectPass \\
+Direct guard & \ExchangeGuardGain & \ExchangeGuardActions & \ExchangeGuardPass \\
+Direct event guard & \ExchangeEventGain & \ExchangeEventActions & \ExchangeEventPass \\
+Guarded hindsight & \ExchangeOracleGain & \ExchangeOracleActions & \ExchangeOraclePass \\
+\bottomrule
+\end{tabular}
+\caption{Lower gain vs.\ fixed half at identical query movement
+budgets. Exchanges and passes aggregate three seeds. Only the final
+row accesses future outcomes.}
+\label{tab:support-exchange}
+\end{table}
+
+Both risk guards preserve every fixed-half pass but neither establishes
+a positive conservative gain. The marginal matched-action comparison is
+undefined in four required views. Direct prediction does not resolve the
+choice problem: only \ExchangeActualGood{} of \ExchangeGuardActions{}
+selected actions are both beneficial and nonincreasing in all observed
+risk numerators. A fixed event threshold reduces exchange coverage to
+\ExchangeEventActions{} queries without proving gain. The hindsight
+envelope finds a beneficial risk-nonincreasing exchange in
+\ExchangeOracleActions{} queries, showing room in the menu rather
+than the ability to find useful actions from the past. Even hindsight
+cannot pass all 606 views. No new independent policy qualifies.
