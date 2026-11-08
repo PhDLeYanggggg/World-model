@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Time-Aligned Scene Context
+
+84 fresh fits and exact no-fit replay. Motor context gains +0.0029 pp
+against fixed half but -0.0007 [-0.0032, +0.0021] against pedestrian
+context and -0.0012 [-0.0035, +0.0008] against shuffled motor. Passes
+remain 547/606, with one gained and one lost. The revised seven-page
+main draft now includes the matched-movement and easy-support evidence.
+[Context](outputs/publication_readiness_2026_09/opendd_context_exchange_v1/README.md) |
+[Main and supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v35/README.md).
+
 ## OpenDD Support-Preserving Exchange
 
 42 fresh heads across two experiments. At identical recipients and

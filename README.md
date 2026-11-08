@@ -77,6 +77,13 @@ there are useful exchanges; the models did not reliably identify them
 from the past.
 [Marginal and direct exchange results](outputs/publication_readiness_2026_09/opendd_direct_exchange_v1/README.md).
 
+I then tested time-aligned traffic history against the same summaries
+reassigned within each query. Both gave tiny gains over fixed half, but
+aligned traffic did not beat the pedestrian-only or shuffled controls.
+I report this as a negative context ablation in the revised main draft.
+[Context experiment](outputs/publication_readiness_2026_09/opendd_context_exchange_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v35/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more

@@ -1,0 +1,34 @@
+\section{Time-Aligned Context and Negative Control}
+We reuse only the past eight position timestamps in the verified
+OpenDD context cache. Each recipient gets relative distance, bearing,
+availability, observed closing motion and a constant-relative-motion
+approach descriptor, from up to two pedestrians and two motor actors.
+There is no future availability indicator, released velocity, or
+test-site fitting. Motor context is present at the current step for
+\AuditMotor{} of 10,475 target windows.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Context & Gain (pp) & Exchanges & Passes \\
+\midrule
+Own only & \AuditOwnGain & \AuditOwnActions & \AuditOwnPass \\
+Pedestrians & \AuditPedGain & \AuditPedActions & \AuditPedPass \\
+Pedestrians + motor & \AuditMotorGain & \AuditMotorActions & \AuditMotorPass \\
+Shuffled motor & \AuditShuffleGain & \AuditShuffleActions & \AuditShufflePass \\
+\bottomrule
+\end{tabular}
+\caption{Four equal-width heads at the same fixed-half recipient
+support and query movement budget, 84 fresh fits. Gain is vs.\
+fixed half, which passes \AuditHalfPass/606. The shuffled arm
+retains query-level summaries but permutes motor attribution.}
+\label{tab:context-exchange}
+\end{table}
+
+Motor context vs.\ pedestrian context gives \AuditTraffic{} points
+\AuditTrafficCI{}; vs.\ shuffled motor it gives \AuditShuffleContrast{}
+points \AuditShuffleCI{}. This is a test of these inputs and action
+features, not evidence that interactions are generally absent.
+Risk pass counts do not replace the original all-recording rule.
+No independent confirmation is reported.

@@ -1,0 +1,49 @@
+\section{Separating Movement, Support, and Decision Quality}
+We stress-test the mechanism on a separate exposed OpenDD release
+\cite{opendd}, using a fixed eight-observation, twelve-prediction
+cohort. Seven held locations contain 10,475 target windows in
+3,395 nonoverlapping within-recording queries. Predictions and risks
+are scored in release coordinates, separately from image-pixel
+experiments. The development utility here debits each missing step
+by the two actual forecasts' disagreement; the recording risk
+definition is unchanged. Reported intervals resample locations
+after averaging three seeds, not individual windows.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Policy & Radius sum & Passes & Undefined \\
+\midrule
+Sparse joint & \AuditJointRadius & \AuditJointPass & \AuditJointUndefined \\
+Spread query budget & \AuditSpreadRadius & \AuditSpreadPass & \AuditSpreadUndefined \\
+Fixed half & \AuditHalfRadius & \AuditHalfPass & \AuditHalfUndefined \\
+\bottomrule
+\end{tabular}
+\caption{OpenDD development. Same query movement in the first two
+rows, with more recipients under spreading. Risk counts are out of
+606 recording--seed views, not independent scenes.}
+\label{tab:opendd-support}
+\end{table}
+
+Table~\ref{tab:opendd-support} demonstrates why risk changes cannot
+be attributed to motion amplitude alone. Spreading the same query
+movement is a post-hoc control: it restores selected easy reference
+and increases passes, but loses \AuditSpreadLoss{} points of paired
+lower utility. Matching the actual radius multiset and edit count
+instead gives no established utility advantage for joint selection
+over independent or additive selection. Fixed half is the simpler
+operating control; it still fails the complete recording requirement.
+
+At fixed half, a one-transfer menu conserves both recipients and
+query radius. The exact outcome-aware guarded envelope gains
+\AuditOracle{} points in this menu; the trained exact-pair guard
+gains \AuditPairGuard{} points and does not improve the risk count.
+This separates useful actions existing from a past-only policy
+finding them. The new context study keeps all motion budgets fixed:
+adding time-aligned motor history to pedestrian context changes
+lower utility by \AuditTraffic{} points (95\% interval
+\AuditTrafficCI{}). The time-aligned input also fails to improve on
+same-query shuffled traffic. A small gain against fixed half
+is therefore not evidence for actor-specific motor information.
+All OpenDD results remain development evidence.
