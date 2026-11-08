@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Streaming Capacity and Teacher Alignment
+
+The matched 2x2 hindsight audit verifies 423/606 with all legal actions
+and only a total quota, 369 with chronological credit, 383 with a fixed
+menu and total quota, and 330 with both restrictions. One strict case
+is unresolved. In 42 new Torch fits, exact-token supervision clears
+45/606 versus 46/606 for projected plans; direct gain is -0.070 pp
+(95% location interval -0.182 to +0.045). This is development evidence,
+not independent confirmation. [Capacity](outputs/publication_readiness_2026_09/streaming_menu_capacity_v1/README.md) |
+[Teacher](outputs/publication_readiness_2026_09/token_count_teacher_v1/README.md) |
+[Working supplement v65](outputs/publication_readiness_2026_09/evidence_manuscript_v65/README.md).
+
 ## Recording-Aware Count Supervision
 
 105 native Torch fits: 63 pair-excluded rankers and 42 count heads.

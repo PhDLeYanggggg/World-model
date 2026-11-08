@@ -317,6 +317,15 @@ number of edits per recording in a retrospective check, the simpler
 query-local model gave better gain. I kept the existing policy.
 [Recording-aware count study](outputs/publication_readiness_2026_09/recording_count_v2/README.md).
 
+I separated the limits of the nominated trajectories from the limits of
+when a policy can spend its edit budget. The strictest hindsight search
+still found useful, risk-feasible edits in 330 of 606 recording-seed
+views. Retraining on plans that obeyed the exact online budget did not
+improve held-location results over the projected-plan control. I kept
+the existing policy.
+[Capacity audit](outputs/publication_readiness_2026_09/streaming_menu_capacity_v1/README.md) |
+[Teacher comparison](outputs/publication_readiness_2026_09/token_count_teacher_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
