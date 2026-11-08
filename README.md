@@ -442,6 +442,13 @@ recordings to the short-roster hindsight comparison.
 [Matched two-edit experiment](outputs/publication_readiness_2026_09/two_edit_v1/README.md) |
 [Working supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v78/README.md).
 
+I also held the first edit fixed and moved the second into a later
+window. That worsened forecasts in the recordings with two edits in
+both schedules. Using the first score to inform the second choice,
+with both windows fixed, did not reliably improve accuracy.
+[Cross-window comparison](outputs/publication_readiness_2026_09/cross_query_edit_v2/README.md) |
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v79/README.md).
+
 I also checked four historical CREATE jobs against the scheduler and
 matched the remote freeze manifest to my local copy. That confirms the
 archived run lineage; the earlier development result remains negative.

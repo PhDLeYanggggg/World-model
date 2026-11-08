@@ -1,0 +1,56 @@
+{
+  "arms": [
+    "same",
+    "split_same_start",
+    "early_independent",
+    "early_joint"
+  ],
+  "bootstrap_draws": 3000,
+  "bootstrap_seed": 817,
+  "code": {
+    "bytes": 12995,
+    "path": "scripts/run_m3w_cross_query_edit.py",
+    "sha256": "8ee1b81fa4a74e2aec438f5a2357017b2e76282e30b6959237331a5bad6e4911"
+  },
+  "confirmation_access": false,
+  "full_roster_risk": true,
+  "joint": "sum predicted moments then apply the same risk penalties; both second choices use the first window scale",
+  "model": "unchanged held-location two-edit candidate value checkpoints",
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_label_or_roster_lookahead": true,
+  "no_training": true,
+  "oracle": "freeze the first edit; exact second edit at registered next query or any later eligible query; short roster only",
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 65929,
+      "path": "outputs/publication_readiness_2026_09/two_edit_v1/analysis.json",
+      "sha256": "68c78e5d5ddc17e6c2ef15bf8bebc6185475924e9bdda025c0aba8e5743a91a6"
+    },
+    {
+      "bytes": 14292,
+      "path": "outputs/publication_readiness_2026_09/two_edit_v1/head_freeze.json",
+      "sha256": "6a84b677cc408174698cba3d2f98c34e2dfb2e998881914ca1a64f7126fb5c7c"
+    },
+    {
+      "bytes": 436,
+      "path": "outputs/publication_readiness_2026_09/two_edit_v1/readout_repair_v2.json",
+      "sha256": "bd190dc19ee509bb25ab7df27a5356ca1e58ae705efb415b56fb07e291c1e092"
+    }
+  ],
+  "previous_mixed_scale_readout": {
+    "bytes": 61962,
+    "path": "outputs/publication_readiness_2026_09/cross_query_edit_v1/analysis.json",
+    "sha256": "5e53d3e10d773b68e837872abbc66aa6c221dfcaf906aad20ab55a0721bc0ea2"
+  },
+  "primary": "early joint minus early independent, identical first edit and first two legal query times",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "timing": "original simultaneous pair vs split with same first path, matched two-edit views only for direct timing effect"
+}

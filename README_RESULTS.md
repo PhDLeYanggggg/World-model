@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cross-Window Two-Edit Timing
+
+Moving only the second edit later loses -0.267 pp [-0.621, -0.028]
+on 357 matched two-edit views. With the first path and both clocks
+fixed, early joint vs independent gains +0.0033 pp [-0.0036, +0.0139]
+at 1,185 edits per arm and clears 89 versus 92 joint checks.
+With the first edit fixed, the short-roster second-edit ceiling is
+16 at the next eligible query and 19 at any later query. No
+deployment or confirmation.
+[Results and replay](outputs/publication_readiness_2026_09/cross_query_edit_v2/README.md) |
+[Main and supplement v79](outputs/publication_readiness_2026_09/evidence_manuscript_v79/README.md).
+
 ## Matched Two-Edit Choice
 
 On the same 105 credit-starved OpenDD views, exact finite-bank
