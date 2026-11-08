@@ -55,6 +55,11 @@ I also tested the forecast itself, separating its starting position from
 its velocity estimate. Fixed position smoothing was worse than OLS4, and
 the learned variant nearly reverted to it.
 [Forecast-anchor comparison](outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/README.md).
+I then held the correction size fixed and let each method pick one agent
+per query. Short history backtests helped identify potential beneficiaries,
+but the learned choices still lost to OLS4. Even hindsight selection gained
+only 0.0504 points on the CV-normalized score at that budget.
+[Matched anchor selection](outputs/publication_readiness_2026_09/native_ols_anchor_retrieval_v1/README.md).
 
 ## Earlier Development Result
 

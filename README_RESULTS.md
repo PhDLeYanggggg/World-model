@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OLS4 Fixed-Anchor Selection
+
+Fifty-four fresh Torch fits test whether past-only prefix backtests can pick
+one agent per query for a fixed OLS4 position correction. The probe loses
+0.0080 CV-normalized points versus OLS4 (95% source-bootstrap CI
+[-0.0140, -0.0023]), despite higher benefit-label average precision (0.394
+vs. 0.349 without the probe). The same-budget hindsight gain is only 0.0504
+points. No independent evaluation, change to the 2% rule, or deployment.
+[Results and exact replay](outputs/publication_readiness_2026_09/native_ols_anchor_retrieval_v1/README.md).
+
 ## OLS4 Forecast Anchor Denoising
 
 Fifty-four source-held fits isolate position from velocity. Fixed ramped
