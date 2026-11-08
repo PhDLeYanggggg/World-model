@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Recipient Direction Changes
+
+Of the geometry policy's -1.634 pp loss at matched query counts,
+-0.195 pp is the observed difference and 1.439 pp is the missing-label
+disagreement debit. Removing 4,770 forced fills still gives -1.344 pp.
+A new direction head keeps the recipients of all 12,235 edits and selects 2,149
+direction swaps, losing -0.113 pp [-0.232, -0.021] to the incumbent and
+-0.173 pp [-0.461, -0.002] to absolute-cost subtraction on the same swap
+queries. Outcome-aware directions gain +0.679 pp but jointly pass on
+only 2/102 repeated views. No promotion or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/incumbent_direction_v2/README.md) |
+[Manuscript v110](outputs/publication_readiness_2026_09/evidence_manuscript_v110/README.md).
+
 ## Pedestrian Observability at Matched Query Budgets
 
 Separating label availability from conditional trajectory cost and

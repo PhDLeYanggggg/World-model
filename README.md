@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I traced the pedestrian policy's loss to disagreement on tracks with no
+future labels, especially when it replaced the original recipients. Keeping
+those recipients and learning only which direction to change reduced the
+loss, but still did not improve the original rule.
+[Fixed-recipient experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/incumbent_direction_v2/README.md).
+
 I tested whether local crowd geometry could predict which future labels
 would be missing. It improved that prediction and steered edits away
 from unlabeled tracks, but the edited trajectories still lost to the

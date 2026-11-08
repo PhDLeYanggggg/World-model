@@ -1,0 +1,30 @@
+\subsection*{Fixed-recipient directions on pedestrian development}
+Geometry's observed contrast is \DirObserved{} points, with a
+further \DirDebit{}-point missing-label disagreement debit. Removing
+the original recipient is the largest component of the loss.
+I froze the edited tracks and trained an antisymmetric paired
+ADE head, allowing at most one direction swap per query. It
+weights exact path disagreement by predicted label missingness.
+The absolute-cost and no-debit controls match the swap queries.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\hline
+Policy & Swaps & Joint & Lower pp \\
+\hline
+Original & \DirOriginal \\
+Paired head & \DirDirect \\
+Absolute cost & \DirAbsolute \\
+No debit & \DirNoDebit \\
+Outcome-aware & \DirOracle \\
+\hline
+\end{tabular}
+\end{center}
+
+Lower utility is paired against the original screen. The paired
+head's source-bootstrap interval is \DirDirectCI. All arms keep
+the same recipients and 29 undefined-risk views. The outcome-aware
+utility maximizer is not an upper bound on risk-feasible passes.
+These are exposed development results, not confirmation.
