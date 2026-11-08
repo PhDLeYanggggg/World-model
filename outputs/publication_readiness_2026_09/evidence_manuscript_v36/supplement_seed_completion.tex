@@ -1,0 +1,46 @@
+\section{One Unknown Label Shared by Training Seeds}
+We revisit the frozen OpenDD scene-context comparison without refitting.
+For each missing target-step, let $a_s$ and $b_s$ be the reference and
+alternative forecasts under seed $s$, respectively. All three seeds
+refer to the same unknown coordinate $y$. For any permutation $\pi$,
+\[
+\left|\frac{1}{3}\sum_s
+  \left(\|a_s-y\|_2-\|b_s-y\|_2\right)\right|
+\leq \frac{1}{3}\sum_s\|a_s-b_{\pi(s)}\|_2 .
+\]
+Taking the least of six assignments yields an outer bound no wider
+than the diagonal pairing; it need not be sharp for distance-to-point
+functions. The observed term and fixed observed-CV normalization
+are unchanged. We verify each original per-seed lower score first.
+
+For an attainable sensitivity check, each incomplete target row takes
+its missing coordinates from a single entire template: CV, or one
+of the three seed paths of either compared policy. All released
+coordinates are preserved. The resulting completions are shared by
+seeds and score only the two policies in that comparison; the
+extremizing completions need not agree across comparisons. These
+templates are not inferred labels or physical trajectory constraints.
+
+\begin{table*}[t]
+\centering\small
+\caption{OpenDD development sensitivity. Gain in percentage points
+relative to the original observed CV mass. The outer interval
+is not a confidence interval. Template outcomes are attainable
+within the stated coordinate-completion class.}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Time-aligned motor vs. & Observed term & Seed-shared outer interval & Template outcomes \\
+\midrule
+\SeedCompletionRows
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Across \SeedCompletionMissing{} missing target-steps, the seed-shared
+assignment tightens both matched-context comparisons, but the point
+ranking still reverses under explicit completions. The positive
+observed terms do not identify the full-grid sign. The fixed-half
+contrast remains positive under this sensitivity and is not
+evidence that correct motor attribution adds value over both
+controls. The original 2\% risk results, development status and
+sealed confirmation are unchanged.

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Shared Labels Across Seeds
+
+No refit. Original per-seed lower scores reproduce. Seed-shared bounds
+still span zero for both direct motor-context contrasts, and explicit
+completions attain both signs. Gain relative to fixed half remains
+positive. The original risk result and confirmation roles are unchanged.
+[Readout](outputs/publication_readiness_2026_09/opendd_seed_shared_completion_v1/README.md) |
+[Main and supplement v36](outputs/publication_readiness_2026_09/evidence_manuscript_v36/README.md).
+
 ## ACME Held-Camera Observation Transfer
 
 Frozen detector and GMU association on 24 disjoint windows from two

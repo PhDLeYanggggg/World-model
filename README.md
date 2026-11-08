@@ -25,6 +25,12 @@ completions around the new center.
 [Missing-label stress test](outputs/publication_readiness_2026_09/native_completion_occlusion_v1/README.md) |
 [Motion-centered rerun](outputs/publication_readiness_2026_09/native_motion_centered_completion_v1/README.md).
 
+On OpenDD, I also required the three training seeds to share one
+unknown position at every missing target step. This tightened the
+error bounds, but the apparent advantage of time-aligned motor
+context over the pedestrian-only and shuffled controls could still
+reverse. [Shared-label comparison](outputs/publication_readiness_2026_09/opendd_seed_shared_completion_v1/README.md).
+
 ## DroneCrowd Calibration
 
 I tested the frozen policy on 40 DroneCrowd calibration recordings from
