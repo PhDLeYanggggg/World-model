@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I gave the support model more forecast directions without increasing
+the size of an edit. More useful actions existed, but the learned rule
+rarely selected them. The missed-opportunity audit found that the
+main problem was knowing when to act.
+[Matched support directions](outputs/publication_readiness_2026_09/opendd_support_directions_v1/README.md).
+
 I trained a separate guard to predict when an early edit would erase
 the only easy reference. The guard reduced reference loss but did
 not beat the original policy. Even with hindsight, choosing from the

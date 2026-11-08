@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Broader Support Directions and Missed Releases
+
+At fixed row and radius, analytic directions increase early-window
+hindsight capacity from 188 to 203 of 606 views. The learned expanded
+arm passes 132, versus 133 for the exact row/radius-matched neural
+direction and 138 for the original. Of 65 feasible views not passed
+by the original, 55 never trigger, 2 miss the query, 7 miss the
+direction, and 1 is recovered. Seven old joint passes are lost.
+The 55 non-releases miss the advantage cutoff, not the loss guard.
+[Experiment](outputs/publication_readiness_2026_09/opendd_support_directions_v1/README.md) |
+[Manuscript v105](outputs/publication_readiness_2026_09/evidence_manuscript_v105/README.md).
+
 ## Reference-Loss Guard and Frozen-Menu Limit
 
 Direct and factored guards reduce old-reference losses from 19 to 13.

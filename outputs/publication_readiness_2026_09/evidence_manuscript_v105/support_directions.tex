@@ -1,0 +1,37 @@
+\subsection{Expanded support directions at fixed radius}
+We augment the early support bank with OLS4 and an analytic family
+selected on observed prefixes. For each row, both must reach the
+native neural support radius without amplification. Gain is fixed.
+A donor-trained advantage and reference-loss head can release one
+candidate before or at gain, while the original support trigger
+has priority. The shape-only control replays exactly the learned
+support recipient, query, radius and count with the neural direction.
+
+\begin{center}
+\begin{tabular}{lc}
+Arm & Edits / joint / undefined \\
+\hline
+Original & \SupportDirOriginalCounts \\
+Retrained neural & \SupportDirNeuralCounts \\
+Expanded & \SupportDirExpandedCounts \\
+Neural at matched rows & \SupportDirMatchedCounts \\
+Neural, frozen trigger oracle & \SupportDirTriggerNeuralCounts \\
+Expanded, frozen trigger oracle & \SupportDirTriggerExpandedCounts \\
+Neural, early window oracle & \SupportDirWindowNeuralCounts \\
+Expanded, early window oracle & \SupportDirWindowExpandedCounts \\
+\end{tabular}
+\end{center}
+
+Conservative utility for expanded versus matched neural is
+\SupportDirMatchedEffect{}; versus the original it is
+\SupportDirOriginalEffect{}. Oracle rows preserve defined references,
+but may add support, so their counts do not establish an
+equal-budget causal gain. Of \SupportDirOpportunities{} previously
+failing views with an exact feasible action, \SupportDirNoRelease{}
+have no learned release (all feasible scores below the advantage
+gate), \SupportDirWrongQuery{} miss the query,
+\SupportDirWrongDirection{} select the wrong direction at a feasible
+recipient, and \SupportDirRealized{} is recovered. There are no
+recipient-only misses. The model also destroys \SupportDirDestroyed{}
+original joint passes. The observed menu helps in hindsight;
+the learned release policy does not pass the original rule.
