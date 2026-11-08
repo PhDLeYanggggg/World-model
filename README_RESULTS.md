@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## ACME Held-Camera Observation Transfer
+
+Frozen detector and GMU association on 24 disjoint windows from two
+unused cameras. Stable histories original/transport: CMU 8/8, Miraikan
+1/1. CMU scores seven complete targets across four windows, CV
+ADE/FDE 37.28/70.49 and OLS4 34.82/64.75 image pixels. Miraikan
+fails the support floor and is not scored. This is not M3W policy
+confirmation. [Comparison and replay](outputs/publication_readiness_2026_09/acme_held_camera_probe_v1/README.md).
+
 ## ACME GMU Causal Association
 
 A second exposed camera, 12 nonoverlapping 8-to-12 windows. Original

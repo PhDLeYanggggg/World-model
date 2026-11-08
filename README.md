@@ -66,6 +66,12 @@ on those five, but endpoint error hardly changed. This is an early
 camera diagnostic, not a cross-site result.
 [GMU readout](outputs/publication_readiness_2026_09/acme_gmu_camera_v1/README.md).
 
+I then ran the same detector and association code on two unused ACME
+cameras. The association change did not recover more stable histories
+at CMU or Miraikan. CMU had seven complete targets and OLS4 again beat
+CV on average path error; Miraikan did not have enough matched histories
+to score. [Frozen camera comparison](outputs/publication_readiness_2026_09/acme_held_camera_probe_v1/README.md).
+
 I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
 new recordings. Its 5% blend failed to improve on CV or on a causal
 motion control at the same recipients and coefficient. It met the
