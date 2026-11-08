@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## In-History Replay Motion Mixture
+
+Fresh native Torch training across 81 fits, three seeds and nine held
+fitting sources. Replay gives +1.771 available-label points vs OLS4 but
+-0.030 on the full-grid lower score (95% source interval [-0.687, +0.603]).
+Its direct conservative contrast with the matched history-only arm is
+-1.188 [-2.419, -0.244]. Available-label ADE/FDE improve from
+91.597/234.452 to 88.501/225.579 image pixels. Complete-window gains are
+offset by missing-step uncertainty; a finite-menu hindsight diagnostic
+finds +21.332 full-grid points, not attainable performance. Easy safety
+and independent confirmation are not established; no deployment change.
+[Experiment and replay](outputs/publication_readiness_2026_09/native_replay_motion_v1/README.md).
+
 ## Waterloo Map Alignment and Pedestrian Association
 
 On `DJI_0932`, fresh direct registration to a municipal orthophoto

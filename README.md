@@ -80,6 +80,13 @@ diagnostic gave a small gain over no edit, but did not establish an
 advantage over the matched simple controls or protect easy cases.
 [CV ranking experiment](outputs/publication_readiness_2026_09/native_cv_query_rank_v1/README.md).
 
+I also trained a mixture of five motion forecasts, using short backtests
+within each observed history to decide which forecasts to trust. It
+reduced error on available labels, but the advantage over OLS4 did not
+hold when every missing prediction step was counted. The comparison
+with the model without backtests leaves their additional value unproven.
+[Motion mixture and matched controls](outputs/publication_readiness_2026_09/native_replay_motion_v1/README.md).
+
 ## Looking For Better Observed Scenes
 
 I audited two Waterloo drone sites before using them for forecasting.
