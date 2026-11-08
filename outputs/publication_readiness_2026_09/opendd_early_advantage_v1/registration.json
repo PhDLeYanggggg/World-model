@@ -1,0 +1,60 @@
+{
+  "arms": "mass=recording utility plus feasibility transitions; incidence=utility-only; shared training",
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 9741,
+    "path": "scripts/run_m3w_opendd_early_advantage.py",
+    "sha256": "79c40873a48cbe75d541359cf3ff387265d9f7d98ece2d15dae13972ebc5cfc9"
+  },
+  "confirmation_access": false,
+  "donor_gate_in_sample": true,
+  "gate": "strictly above max(0, donor-record maximum-score 90th percentile); no held labels or scores",
+  "independent_calibration": false,
+  "model": {
+    "bytes": 1872,
+    "path": "src/world_model/m3w_opendd_early_reference.py",
+    "sha256": "01e8421e81d42c9d3a6a620906d302e516262259c35fe3d6fca550993e4e2f89"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 2349,
+      "path": "outputs/publication_readiness_2026_09/opendd_early_reference_v1/registration.json",
+      "sha256": "df5ed5accc0bb27e013dab4fc921b388101293251ce0190fe52d25de95efede3"
+    },
+    {
+      "bytes": 62525,
+      "path": "outputs/publication_readiness_2026_09/opendd_early_reference_v1/analysis.json",
+      "sha256": "dedfb48565c44d26d94ce362fc8d6ed4325ec6e0812ee741b83f9aff4e3443f4"
+    },
+    {
+      "bytes": 31837,
+      "path": "outputs/publication_readiness_2026_09/opendd_early_reference_v1/head_freeze.json",
+      "sha256": "9c28610892df985afc5d01077f69b2bec7a9bf60d9597d913bf67aa3fadcf7f8"
+    }
+  ],
+  "primary": "prospective recording advantage versus original and same-query, same-radius easy ranking",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "target": "replacement vs complete original: conservative utility plus joint/risk/reference transitions",
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "workers": 0
+}

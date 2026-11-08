@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept the gain edit fixed and tested whether the model could identify
+support earlier. A local reference head never intervened. Training
+on whole-recording outcomes made it intervene, but some early edits
+replaced later ones that supplied the only easy reference.
+[Early support experiments](outputs/publication_readiness_2026_09/opendd_early_reference_v1/README.md).
+
 I trained a model to decide whether to make a gain edit now or wait for
 a later offer, without changing the support edit. It lost to the
 same-budget immediate control. In most expired waits, the original

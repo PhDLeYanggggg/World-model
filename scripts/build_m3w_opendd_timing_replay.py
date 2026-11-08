@@ -28,6 +28,7 @@ DUAL_CLOCK = OUT.parent.parent/"opendd_timing_replay_v12"/OUT.name
 BUDGET_RANK = OUT.parent.parent/"opendd_timing_replay_v13"/OUT.name
 PROTECTED_GAIN_REPLAY = OUT.parent.parent/"opendd_timing_replay_v14"/OUT.name
 GAIN_WAIT_REPLAY = OUT.parent.parent/"opendd_timing_replay_v15"/OUT.name
+EARLY_REFERENCE_REPLAY = OUT.parent.parent/"opendd_timing_replay_v16"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -49,6 +50,8 @@ RANK_BUDGET = "opendd_budget_rank_v1"
 ATTRIBUTION = RANK_BUDGET+"_attribution"
 PROTECTED_GAIN = "opendd_protected_gain_v1"
 GAIN_WAIT = "opendd_gain_wait_v1"
+EARLY_REFERENCE = "opendd_early_reference_v1"
+EARLY_ADVANTAGE = "opendd_early_advantage_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -252,8 +255,9 @@ def capacity_table(studies, expected, a, key, field):
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
           include_two=False, include_stop=False, include_admission=False, include_record=False,
           include_schedule=False, include_direction=False, include_clock=False, include_budget_rank=False,
-          include_protected_gain=False, include_gain_wait=False):
+          include_protected_gain=False, include_gain_wait=False, include_early_reference=False):
     studies, expected = {}, {}
+    include_gain_wait = include_gain_wait or include_early_reference
     include_protected_gain = include_protected_gain or include_gain_wait
     include_budget_rank = include_budget_rank or include_protected_gain
     include_clock = include_clock or include_budget_rank
@@ -294,6 +298,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (PROTECTED_GAIN,)
     if include_gain_wait:
         names += (GAIN_WAIT,)
+    if include_early_reference:
+        names += (EARLY_REFERENCE, EARLY_ADVANTAGE)
     for name in names:
         a = (read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK
              else read_deadline() if name == DEADLINE
@@ -369,7 +375,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = next(p for enabled, p in ((include_gain_wait, GAIN_WAIT_REPLAY), (include_protected_gain, PROTECTED_GAIN_REPLAY),
+    out = next(p for enabled, p in ((include_early_reference, EARLY_REFERENCE_REPLAY),
+        (include_gain_wait, GAIN_WAIT_REPLAY), (include_protected_gain, PROTECTED_GAIN_REPLAY),
         (include_budget_rank, BUDGET_RANK), (include_clock, DUAL_CLOCK),
         (include_direction, DUAL_DIRECTION),
         (include_schedule, SCHEDULE_SUPPORT), (include_record, RECORD_SUPPORT),
@@ -403,8 +410,9 @@ if __name__ == "__main__":
     p.add_argument("--include-budget-rank", action="store_true")
     p.add_argument("--include-protected-gain", action="store_true")
     p.add_argument("--include-gain-wait", action="store_true")
+    p.add_argument("--include-early-reference", action="store_true")
     a = p.parse_args()
     build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
           a.include_two_reserves, a.include_support_stop, a.include_support_admission,
           a.include_record_support, a.include_support_schedule, a.include_dual_direction, a.include_dual_clock,
-          a.include_budget_rank, a.include_protected_gain, a.include_gain_wait)
+          a.include_budget_rank, a.include_protected_gain, a.include_gain_wait, a.include_early_reference)

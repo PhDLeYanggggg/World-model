@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Early Support at a Fixed Gain Clock
+
+Local feasible-reference heads make no new interventions. Recording
+advantage supervision adds 41 supports and advances 45, but loses 19
+previously defined references. It gives +0.00183 pp [+0.00007,
++0.00419] versus the original, while joint passes fall from 138 to
+131 of 606. The exact query/radius-matched easy ranking also passes
+131. The hindsight menu adds 50 joint passes, 22 requiring an extra
+edit; it is not a fixed-budget gain or a causal result.
+[Experiment](outputs/publication_readiness_2026_09/opendd_early_reference_v1/README.md) |
+[Manuscript v103](outputs/publication_readiness_2026_09/evidence_manuscript_v103/README.md).
+
 ## Waiting for a Radius-Matched Gain Edit
 
 Across 606 OpenDD development views, the guarded policy waits 189 times,
