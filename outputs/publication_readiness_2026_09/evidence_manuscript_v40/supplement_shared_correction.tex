@@ -1,0 +1,33 @@
+\section{Norm-Matched Shared Correction}
+The fitting and opened cohorts may differ in shared image-plane motion.
+For each query, let $v_i$ be the causal OLS4-minus-CV velocity.
+Keeping the frozen recipients, we subtract the mean $v_j$ among
+other agents with complete histories and cap the result at
+$\|v_i\|$. The matched arm keeps the original direction at the
+same norm, then both apply the same half blend. With no neighbor
+we retain the original correction. This is not camera-pose recovery.
+
+\begin{table}[!t]
+\centering\small
+\caption{Original risk checks on 24 fitting and 40 opened recordings.
+Gain is the opened conservative CV-relative gain in points.}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Policy & Fit & Opened & Gain\\
+\midrule
+\SharedCorrectionRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+Shared removal versus magnitude only is \SharedCorrectionDirect{} pp
+on the opened recordings (95\% source interval
+\SharedCorrectionInterval), and neither repairs fitting-domain risk.
+We also split queries at coherence $0.25$ and $0.75$, where coherence
+is the squared norm of mean $v_i$ divided by mean squared norm.
+On the two shared positive-reference bins (\SharedCorrectionCoverage\%
+of fitting selected reference mass), the known-risk gap decomposes
+into \SharedCorrectionWithin{} points within bins and
+\SharedCorrectionComposition{} points from different reference weights.
+The comparison is descriptive, conditional on the same frozen gate.
+It neither identifies camera motion nor establishes transfer.

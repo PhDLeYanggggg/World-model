@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Shared Correction and Risk Reversal
+
+Frozen recipients, per-row norm-matched direction control. Shared removal
+vs magnitude only is -0.464 pp [-0.661, -0.293] on opened DroneCrowd;
+39/40 original risk passes vs 40/40, and both 0/24 on fitting sources.
+Within the two overlapping coherence bins, -4.328 pp of the pooled
+known-risk gap is within bins and -0.336 pp from reference weights.
+Overlap covers 47.05% of fitting reference mass, not its high-coherence
+tail. No deployment or independent confirmation.
+[Experiment and replay](outputs/publication_readiness_2026_09/shared_correction_audit_v1/README.md) |
+[Working manuscript v40](outputs/publication_readiness_2026_09/evidence_manuscript_v40/README.md).
+
 ## DroneCrowd Standalone Hindcast
 
 Sixteen deterministic candidates, selected on nine fitting groups only;

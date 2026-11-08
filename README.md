@@ -70,6 +70,14 @@ full OLS4 still gave lower error on DroneCrowd. I have not deployed it.
 [Standalone comparison](outputs/publication_readiness_2026_09/standalone_hindcast_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v39/README.md).
 
+I tested whether removing shared motion from the velocity correction
+would explain that reversal. Holding both the recipients and correction
+lengths fixed, the new direction made forecasts worse on the opened
+DroneCrowd clips and did not fix fitting-source risk. The gap remained
+even among queries with similar levels of shared motion.
+[Same-norm comparison](outputs/publication_readiness_2026_09/shared_correction_audit_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v40/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
