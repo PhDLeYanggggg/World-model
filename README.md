@@ -67,6 +67,12 @@ locations, but increased easy-case error too much at one site. Adding
 past traffic context did not help in this comparison.
 [Direct forecast experiment](outputs/publication_readiness_2026_09/opendd_velocity_candidate_v1/README.md).
 
+I reduced the blend using only other locations. The resulting forecast
+still improved on CV and on two older forecasts at the same intervention
+counts, but failed the recording-level risk checks. For some recordings
+the easy reference was absent; for others the selected changes were too
+costly. [Nested calibration](outputs/publication_readiness_2026_09/opendd_velocity_calibration_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did

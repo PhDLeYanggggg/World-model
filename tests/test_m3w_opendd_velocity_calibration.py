@@ -1,6 +1,7 @@
 import numpy as np
 
 from src.evaluation.m3w_opendd_velocity_calibration import apply, pick, prepare
+from scripts.audit_m3w_opendd_velocity_flight_feasibility import disposition
 
 
 def test_common_support_and_path_agreement_bound():
@@ -25,3 +26,13 @@ def test_calibration_rejects_positive_harm_even_when_signed_change_is_small():
     rows = [trial(.025,1.,1.),trial(.05,1.,1.5),trial(.075,2.,2.01),trial(.1,2.,None)]
     assert pick(rows)==.025
     assert pick(rows[-2:]) is None
+
+
+def test_flight_feasibility_separates_undefined_and_actual_harm():
+    yes = np.array([True,True])
+    no = ~yes
+    ref = np.ones(2)
+    assert disposition(no,yes,ref,np.zeros(2))=='no_full_easy_reference'
+    assert disposition(yes,no,ref,np.zeros(2))=='no_eligible_easy_edit'
+    assert disposition(yes,yes,ref,np.array([.021,.025]))=='every_eligible_easy_edit_exceeds_budget'
+    assert disposition(yes,yes,ref,np.array([.021,.02]))=='hindsight_singleton_feasible'

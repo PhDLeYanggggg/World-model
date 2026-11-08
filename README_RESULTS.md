@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Velocity Calibration and Recording Feasibility
+
+63 fresh inner fits and 21 hash-verified outer checkpoints. Nested uniform
+gain vs CV +0.474 pp [+0.304, +0.735]; same recipients and coefficients vs
+old-bank hindcast +0.418 [+0.233, +0.660]. Original risk algebra passes
+450/606 flight-seed views. Of 156 failures, 112 admit a hindsight singleton,
+14 have no affordable easy edit from the frozen paths, and 30 have no
+full easy reference. No deployment or independent confirmation.
+[Full calibration and feasibility result](outputs/publication_readiness_2026_09/opendd_velocity_calibration_v1/README.md).
+
 ## OpenDD Direct Velocity Forecasts
 
 63 fresh fits and 5,132 targets with newly extracted past traffic context.
