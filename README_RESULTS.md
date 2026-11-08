@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Recording-Risk Training at Fixed Radius
+
+84 fresh fits and exact replay. Relative-harm training passes 476/606
+original risk views versus 455 for the incumbent, but loses -0.082 pp
+[-0.121, -0.051]. Non-canceling harm passes 480 and still loses utility.
+A same-roster, exact-radius hindsight bound leaves 30 undefined and
+20 above budget from the wholly unobserved debit alone. No replacement
+or confirmation. [Results](outputs/publication_readiness_2026_09/opendd_flight_shape_risk_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v32/README.md).
+
 ## OpenDD Shape Training at Exact Realized Radius
 
 84 fresh fits with pair-excluded training producers and exact replay.

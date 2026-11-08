@@ -1,0 +1,52 @@
+\section{Risk Optimization and Fixed-Radius Feasibility}
+We also replaced row minibatches with complete donor recordings and
+trained against the recorded risk ratios. The matched pointwise control
+uses the same sampler. Three alternatives penalize the existing 2\%
+budget, add excess easy harm over the incumbent, or disallow cancellation
+of per-target excess within the recording. This is a training penalty,
+not a held-out generalization guarantee for a data-dependent constraint
+\cite{cotter}. Held outcomes choose no weights or thresholds.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Training loss & Gain (pp) & Passes \\
+\midrule
+Pointwise & \FlightPointGain & \FlightPointPass \\
+Absolute 2\% budget & \FlightBudgetGain & \FlightBudgetPass \\
+Budget + relative harm & \FlightRelativeGain & \FlightRelativePass \\
+Budget + non-canceling harm & \FlightNoncancelGain & \FlightNoncancelPass \\
+\bottomrule
+\end{tabular}
+\caption{84 new fits on exposed OpenDD development. Conservative gain is
+relative to the incumbent at the same recipients and radii.
+The incumbent passes 455 of 606 recording--seed views.}
+\label{tab:flight-ratio-training}
+\end{table}
+
+The primary relative-harm arm recovers \FlightGained{} passes and loses
+\FlightLost{}, but its gain vs.\ the incumbent has interval
+\FlightInterval{}. Thus risk training moves the trade-off, without
+jointly improving risk and utility.
+
+\paragraph{Hindsight feasibility at the fixed budget.}
+For a target with $n>0$ observed future steps, let $d_t$ be its true
+distance from CV and $r$ the fixed maximum prediction departure.
+Allow arbitrary, independently chosen offsets at each step.
+Projection onto the radius-$r$ disk gives the optimal observed error
+except when all steps are known and no projected offset reaches $r$.
+Then imposing equality on the step with largest $d_t$ costs
+$(r-\max_t d_t)_+$. With a missing step, equality can be imposed there
+at no observed cost. The resulting minimal observed ADE is
+\[
+\frac{\sum_{t\ {\rm obs}}(d_t-r)_+
++\mathbf{1}\{n=12\}(r-\max_{t\ {\rm obs}} d_t)_+}{n}.
+\]
+The bound preserves all denominators and the wholly unknown debit.
+With no smoothness constraint, all three recording ratios are
+nondecreasing in per-target ADE. Therefore a failed bound excludes
+every path at those exact radii and recipients. Out of 606 views,
+\FlightUndefined{} are undefined and \FlightDebit{} fail from the
+unknown debit alone; \FlightFeasible{} remain hindsight-feasible.
+This bound uses outcomes and cannot select edits or certify deployment.

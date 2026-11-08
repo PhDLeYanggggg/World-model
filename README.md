@@ -56,6 +56,13 @@ to pass fewer recordings. Adding neighboring pedestrians' past
 tracks did not give a reliable gain.
 [Fixed-budget training and risk analysis](outputs/publication_readiness_2026_09/opendd_radius_shape_v1/README.md).
 
+I trained directly against the recording risk next. It passed more
+recordings but lost forecast accuracy against the previous model.
+Even a hindsight calculation could not pass every recording at the
+fixed intervention budget, which is why I am also testing where and
+how far to intervene.
+[Recording-loss experiment and bound](outputs/publication_readiness_2026_09/opendd_flight_shape_risk_v1/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more

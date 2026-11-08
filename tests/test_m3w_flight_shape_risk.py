@@ -1,8 +1,10 @@
+import numpy as np
 import pytest
 import torch
 
 from src.evaluation.m3w_selection_forecast_readout import policy
 from src.world_model.m3w_flight_shape_risk import penalty, quantities
+from scripts.audit_m3w_opendd_fixed_radius_feasibility import minimum_ade
 
 
 def test_budget_hinges_reproduce_original_scoring_with_unknown_debit():
@@ -40,3 +42,11 @@ def test_missing_evaluation_mass_does_not_divide_by_zero():
     p = penalty(a,a,a,torch.tensor(.05),torch.zeros(3,dtype=torch.bool),0.,0.,0.,'flight_relative')
     p.backward()
     assert p.item()==0 and torch.isfinite(a.grad).all()
+
+
+def test_fixed_radius_bound_includes_required_observed_witness():
+    residual = np.zeros((3,2,2))
+    residual[:,:,0] = [[.2,.3],[.2,np.nan],[1.2,.3]]
+    valid = np.isfinite(residual).all(2)
+    result = minimum_ade(residual,valid,np.ones(3))
+    np.testing.assert_allclose(result,[.35,0.,.1])
