@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Support-Aware OLS4 Selection
+
+Nine new fits separate conditional gain/harm from predicted missingness.
+The neighborhood support arm's conservative gain over OLS4 is -0.163
+points (95% CI [-0.409, +0.021]); at equal counts it also fails to improve
+the fixed-probability or direct control. The mask predictor reaches AUROC
+0.724, but 9,582 of 9,593 switches choose the minimum amplitude. Predicting
+support did not establish useful abstention. [Study and replay](outputs/publication_readiness_2026_09/native_ols_support_selection_v1/README.md).
+
 ## Learning Replacements Against OLS4
 
 Nine fresh Torch fits use the same 9,675 interventions per arm. OLS4-relative

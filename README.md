@@ -41,6 +41,9 @@ I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did
 not fix that. [OLS4 replacement study](outputs/publication_readiness_2026_09/native_ols_replacement_v1/README.md).
+Estimating which future labels would be available improved that prediction
+task, but did not improve replacement decisions at equal counts.
+[Support-aware selection](outputs/publication_readiness_2026_09/native_ols_support_selection_v1/README.md).
 
 ## Earlier Development Result
 
