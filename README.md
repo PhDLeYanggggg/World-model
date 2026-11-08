@@ -383,6 +383,16 @@ for one edit under the fixed budget; I report those as undefined, not safe.
 [Learned wait decision](outputs/publication_readiness_2026_09/release_wait_v1/README.md) |
 [Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v72/README.md).
 
+I also trained the wait decision on the actual recording schedule rather
+than treating each edit in isolation. This changed some training labels,
+but did not produce a reliable gain. With the future known, the same
+decoder could pass 138 checks instead of 77 by changing at most one
+decision per recording without dropping edits. The remaining problem
+is finding those changes from observed motion, not merely simulating
+the budget more faithfully.
+[Whole-recording experiment](outputs/publication_readiness_2026_09/ledger_wait_v2/README.md) |
+[Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v73/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

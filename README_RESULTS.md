@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Whole-Recording Deferral Supervision
+
+42 new Torch fits compare local and full-ledger wait labels on the same
+pair-excluded release states. The real scheduler changes 2,292/26,484
+targets and 623 gain signs. Risk-gated ledger versus local gain is
++0.0001 pp [-0.0022, +0.0022]; joint passes are 75 versus 73, below 77 for
+the anchor. A label-aware single-toggle audit of the actual decoder
+reaches 138/606 without dropping edits. No deployment or confirmation.
+[Experiment](outputs/publication_readiness_2026_09/ledger_wait_v2/README.md) |
+[Paper v73](outputs/publication_readiness_2026_09/evidence_manuscript_v73/README.md).
+
 ## Exact-Budget Timing and Learned Wait Value
 
 Under the unchanged streaming ledger and exact per-recording edit count

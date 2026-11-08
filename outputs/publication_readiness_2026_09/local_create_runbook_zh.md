@@ -1,5 +1,23 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-11-08 整段录像的等待训练
+
+本机原生 arm64 Torch、四计算线程、零 DataLoader 子进程。42 次拟合、
+33,600 次更新约 40 秒，零更新重放约 27 秒。每 100 步存检查点和
+PID 心跳。v1 在训练前因检查点元数据元组与 JSON 列表比较失败；
+v2 用已有的规范化加载器校验同一来源，不改数据划分或评价规则。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_ledger_wait.py
+.venv-pytorch/bin/python scripts/run_m3w_ledger_wait.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_ledger_wait_capacity.py
+```
+
+首条中断后可原样续跑；第二条验证冻结结果；第三条仅做已开放开发集
+的事后诊断，不能作为可部署成绩。32 项相关测试通过。没有新调度、
+部署或打开独立确认数据。
+[实验](ledger_wait_v2/README.md) | [论文 v73](evidence_manuscript_v73/README.md)。
+
 ## 当前入口：2026-11-08 同预算介入时机
 
 先复现原始时刻，再把每段录像已确定的介入次数和位移半径保持不变，
