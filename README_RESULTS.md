@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Expert Gain, Harm and Joint Allocation
+
+Fifty-four fresh Torch fits hold out nine fitting sources across three
+seeds. At exactly two changes per query, independent risk-adjusted
+selection gives -0.0444 full-grid points vs OLS4 [-0.1215, +0.0124]
+and -0.0659 vs minimum change [-0.1405, -0.0140]. Joint vs pair-additive
+gives -0.0020 [-0.0043, -0.0005], changing 11-19 of 1,176 queries per seed.
+The fixed-count hindsight margin separates into 2.3431 points for
+recipient choice and 0.9746 for expert choice. No risk or deployment pass.
+[Results and replay](outputs/publication_readiness_2026_09/native_expert_risk_allocation_v1/README.md) |
+[Updated supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v25/README.md).
+
 ## In-History Replay Motion Mixture
 
 Fresh native Torch training across 81 fits, three seeds and nine held

@@ -87,6 +87,14 @@ hold when every missing prediction step was counted. The comparison
 with the model without backtests leaves their additional value unproven.
 [Motion mixture and matched controls](outputs/publication_readiness_2026_09/native_replay_motion_v1/README.md).
 
+I then kept that forecast menu fixed and learned which two agents to
+change in each query. It did not outperform leaving OLS4 alone or
+prove better than choosing the smallest changes. The joint term
+reduced forecast-distance contraction but did not improve the paired
+forecast score. Most of the gap to hindsight came from choosing
+which agents to change, not which forecast to use for them.
+[Expert allocation experiment](outputs/publication_readiness_2026_09/native_expert_risk_allocation_v1/README.md).
+
 ## Looking For Better Observed Scenes
 
 I audited two Waterloo drone sites before using them for forecasting.

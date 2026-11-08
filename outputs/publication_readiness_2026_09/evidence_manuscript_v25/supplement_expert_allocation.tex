@@ -1,0 +1,50 @@
+\section{Expert Allocation Under Fixed Intervention Counts}
+We tested whether a different forecast family remedies the failure
+against OLS4. These are fitting-source development experiments, not
+new calibration or confirmation. Inputs are eight observed annotation
+steps; outcomes span the next twelve. The same nine held fitting
+sources and three seeds are used for all comparisons.
+
+The first experiment fits a bounded mixture of five motion forecasts.
+The replay arm uses errors on one- and two-step forecasts inside the
+observed history. The matched history arm keeps the trajectories,
+architecture and training draws, but removes those replay errors.
+Across \XAllocMotionFits\ fits, neither the OLS4 nor the matched
+history comparison establishes a full-grid gain from replay.
+
+The second experiment keeps those experts and their equal-weight
+pair averages fixed. We train \XAllocAllocFits\ gain and harm heads,
+excluding each evaluation source during fitting. All active controls
+make \XAllocSwitches\ changes per seed across \XAllocQueries\ queries.
+The joint choice uses the same one-action nomination per agent as
+its additive control, and substitutes the two-agent contraction for
+their separate contractions. It changes only \XAllocCountLow--\XAllocCountHigh\
+queries per seed relative to that control.
+
+\begin{table}[h]
+\centering\small
+\caption{Fitting-source comparisons. Full-grid lower gain in points
+on the observed CV denominator, with paired 95\% source intervals.}
+\label{tab:expert-allocation}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Comparison & Lower gain [95\% interval] \\
+\midrule
+Replay mixture vs. OLS4 & $\XAllocMotion$ \\
+Replay vs. history only & $\XAllocReplay$ \\
+Risk-adjusted vs. OLS4 & $\XAllocIndependent$ \\
+Risk-adjusted vs. minimum change & $\XAllocMinimum$ \\
+Joint vs. pair-additive & $\XAllocJoint$ \\
+Fixed-count hindsight vs. OLS4 & $\XAllocOracle$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The hindsight margin decomposes into \XAllocRecipient\ points lost
+by choosing the wrong recipients and \XAllocExpert\ lost by choosing
+the wrong experts for those recipients. Hindsight is not a model
+result. The joint penalty reduces its distance-contraction proxy
+without establishing forecast lift or physical safety. Equal counts
+control the number of changes, not their amplitudes. The original
+2\% recording rule is unchanged and not certified here. The held
+fitting sources do not replace the sealed external groups.
