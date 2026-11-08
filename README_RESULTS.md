@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recipient Feasibility and Query-Local Fallback
+
+54 matched Torch fits, one common path nominator and 95,769
+replacements per fixed-budget arm. Auxiliary recipient support vs
+prior recipients +1.589 pp [-2.733,+6.637], 0/72 actual passes.
+At fixed recipients hindsight paths recover one risk-only pass,
+not both references. The minimum predicted easy excess is positive
+at the matched quota in all 69 nonempty views. Query-local fallback
+has 286 changes, 6/72 passes, and negative conservative gain vs CV;
+both same-count rankings yield identical actions.
+[Experiment and replay](outputs/publication_readiness_2026_09/recipient_feasibility_v1/README.md) |
+[Working manuscript v44](outputs/publication_readiness_2026_09/evidence_manuscript_v44/README.md).
+
 ## Matched-Budget Conditional Risk Supervision
 
 54 Torch fits (nine held-source folds, three seeds, two paired

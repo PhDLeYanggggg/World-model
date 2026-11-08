@@ -106,6 +106,16 @@ of recipients rather than another path swap.
 [Matched training and diagnosis](outputs/publication_readiness_2026_09/matched_support_moments_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v43/README.md).
 
+I trained a second pair of models to estimate whether each person
+had any feasible replacement, keeping path nomination fixed.
+The accuracy contrast to the prior recipients was uncertain and
+none of the matched-budget arms passed. The predicted easy-risk
+constraint already excluded the original counts, so another search
+grid was not the answer. A query-local fallback rarely intervened
+and added no forecast gain.
+[Recipient feasibility](outputs/publication_readiness_2026_09/recipient_feasibility_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v44/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
