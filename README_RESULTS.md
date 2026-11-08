@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Held Fitting-Source OLS4 Calibration
+
+Fifty-four fresh fits produce scores on nine held fitting sources and three
+seeds. No threshold meets both the registered positive interval and seven-
+source criteria. In the neighborhood arm, nominations scoring 0.02 to 0.04
+average +0.0296 predicted gain-minus-harm, versus -0.0078 realized. The
+fallback branch leaves development outcomes unopened. [Ladder and replay](outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/README.md).
+
 ## Support-Aware OLS4 Selection
 
 Nine new fits separate conditional gain/harm from predicted missingness.

@@ -44,6 +44,9 @@ not fix that. [OLS4 replacement study](outputs/publication_readiness_2026_09/nat
 Estimating which future labels would be available improved that prediction
 task, but did not improve replacement decisions at equal counts.
 [Support-aware selection](outputs/publication_readiness_2026_09/native_ols_support_selection_v1/README.md).
+I checked the activation scores on held-out fitting sources. None of the
+predeclared thresholds showed sufficiently consistent gain to carry forward.
+[Source-held calibration](outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/README.md).
 
 ## Earlier Development Result
 
