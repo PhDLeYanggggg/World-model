@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Causal Recipient and Amplitude Allocation
+
+63 fresh nested heads and exact replay. At equal per-query edit counts
+and radius multisets, joint selection has no utility advantage over
+independent/additive controls. Spreading the same query movement
+raises original risk passes from 407 to 544/606; fixed half-scale
+passes 547. Neither alternative shape jointly improves utility and
+risk against the fixed half-scale control. No deployment.
+[Results](outputs/publication_readiness_2026_09/opendd_causal_amplitude_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v33/README.md).
+
 ## OpenDD Recording-Risk Training at Fixed Radius
 
 84 fresh fits and exact replay. Relative-harm training passes 476/606

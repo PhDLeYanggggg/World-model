@@ -63,6 +63,13 @@ fixed intervention budget, which is why I am also testing where and
 how far to intervene.
 [Recording-loss experiment and bound](outputs/publication_readiness_2026_09/opendd_flight_shape_risk_v1/README.md).
 
+I compared online allocation with spreading the same movement over
+more pedestrians. Spreading recovered many risk passes without
+increasing total movement, and a fixed half-amplitude rule was a
+strong control. The joint rule did not improve on simpler selection
+at equal realized budget. None of these passed every recording.
+[Matched movement comparison](outputs/publication_readiness_2026_09/opendd_causal_amplitude_v1/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more

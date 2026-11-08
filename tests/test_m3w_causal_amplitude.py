@@ -1,5 +1,6 @@
 import numpy as np
 
+from scripts.audit_m3w_opendd_amplitude_spread import spread
 from src.evaluation.m3w_causal_amplitude import (
     LEVELS, choose, geometry, labels, matched, prefix_features, reconstruct, rollout,
 )
@@ -70,3 +71,13 @@ def test_prefix_and_rollout_are_invariant_to_future_query_changes():
     q = rollout(cv,inc,h[:,-1],offsets,rec,x)
     for a in p:
         np.testing.assert_array_equal(p[a][:3],q[a][:3])
+
+
+def test_spread_matches_query_movement_but_can_use_more_recipients():
+    cv = np.zeros((4,12,2))
+    inc = cv+np.array([1.,3.,2.,4.])[:,None,None]
+    joint = cv.copy()
+    joint[1] = inc[1]
+    p = spread(cv,inc,joint,np.array([0,2,4]))
+    np.testing.assert_allclose(p[:2],inc[:2]*.75)
+    np.testing.assert_array_equal(p[2:],cv[2:])
