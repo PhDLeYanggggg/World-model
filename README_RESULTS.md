@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OLS4 Forecast Anchor Denoising
+
+Fifty-four source-held fits isolate position from velocity. Fixed ramped
+anchor loses 1.7454 conservative points to OLS4 in the whole-roster test;
+the learned coefficient nearly vanishes (median fraction 0.0147%). The
+best common amplitude is zero; the label-aware rowwise anchor diagnostic
+has 1.0436 points of headroom. One source has no easy denominator and the
+macro easy value is not estimable. [Results](outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/README.md).
+
 ## Geometrically Bounded OLS4 Gain
 
 Eighty-one fresh held-source fits test disagreement-normalized gain and

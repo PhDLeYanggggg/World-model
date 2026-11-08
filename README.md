@@ -51,6 +51,10 @@ Bounding the predicted gain by trajectory disagreement favored larger
 replacements. Matching their amplitudes reduced harm but still did not
 establish an advantage over direct prediction.
 [Bounded gain and amplitude controls](outputs/publication_readiness_2026_09/native_ols_bounded_gain_v1/README.md).
+I also tested the forecast itself, separating its starting position from
+its velocity estimate. Fixed position smoothing was worse than OLS4, and
+the learned variant nearly reverted to it.
+[Forecast-anchor comparison](outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/README.md).
 
 ## Earlier Development Result
 
