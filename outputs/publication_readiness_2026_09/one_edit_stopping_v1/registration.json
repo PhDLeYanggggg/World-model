@@ -1,0 +1,98 @@
+{
+  "batch": 128,
+  "clock": "at most one edit, no fallback edit at the last query, no final-length input",
+  "code": {
+    "bytes": 13039,
+    "path": "scripts/run_m3w_one_edit_stopping.py",
+    "sha256": "28e73685a1ebc51216f6a4972afe1c465ab3d3000f4b05e6b66ee98241b934fd"
+  },
+  "confirmation_access": false,
+  "donors": "for each held site and donor, predictions use a head fitted excluding both",
+  "grid": {
+    "delay_0": [
+      0,
+      0.0
+    ],
+    "delay_1": [
+      1,
+      0.0
+    ],
+    "delay_2": [
+      2,
+      0.0
+    ],
+    "delay_3": [
+      3,
+      0.0
+    ],
+    "delay_7": [
+      7,
+      0.0
+    ],
+    "threshold_0": [
+      0,
+      0.0
+    ],
+    "threshold_1": [
+      0,
+      0.05
+    ],
+    "threshold_2": [
+      0,
+      0.1
+    ],
+    "threshold_3": [
+      0,
+      0.2
+    ],
+    "threshold_4": [
+      0,
+      0.35
+    ],
+    "threshold_5": [
+      0,
+      0.5
+    ],
+    "threshold_6": [
+      0,
+      0.7
+    ],
+    "threshold_7": [
+      0,
+      0.85
+    ]
+  },
+  "model": {
+    "bytes": 1207,
+    "path": "src/world_model/m3w_first_edit_target.py",
+    "sha256": "cc9f84b09787b32fb60a68c8d747e5ce07e77281ea30bbab099c3a609d793974"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 85067,
+      "path": "outputs/publication_readiness_2026_09/first_edit_target_v1/analysis.json",
+      "sha256": "441e6fe6e6763537953930671a033bfa8fa6d3f03d86e67bab4d2816caa20ecc"
+    },
+    {
+      "bytes": 15058,
+      "path": "outputs/publication_readiness_2026_09/first_edit_target_v1/head_freeze.json",
+      "sha256": "43ea336e152d56c5a9900c631d551e3d89112c45feb323e9db281af7f63d5fc9"
+    }
+  ],
+  "primary": "learned stop vs donor-selected fixed delay, full roster and retrospectively matched utility",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selection": "pool three seeds; macro-average donor joint-pass rate, tie by CV gain then smaller grid index",
+  "steps": 400,
+  "threads": 4,
+  "train": "all eligible windows; sample source, recording, eligible query and candidate uniformly in sequence",
+  "workers": 0
+}

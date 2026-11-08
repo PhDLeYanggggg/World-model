@@ -457,6 +457,13 @@ is not forced to act in the first eligible window.
 [First-edit supervision](outputs/publication_readiness_2026_09/first_edit_target_v1/README.md) |
 [Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v80/README.md).
 
+I then tested whether an online rule could wait for a better first
+edit. It passed more recording checks but increased conservative
+error even when both policies made one edit. Requiring both donor
+criteria mostly sent the rule back to immediate editing.
+[One-edit stopping comparison](outputs/publication_readiness_2026_09/one_edit_stopping_v1/README.md) |
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v81/README.md).
+
 I also checked four historical CREATE jobs against the scheduler and
 matched the remote freeze manifest to my local copy. That confirms the
 archived run lineage; the earlier development result remains negative.

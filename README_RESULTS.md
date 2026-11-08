@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## One-Edit Online Stopping
+
+The donor-selected stop reaches 70/606 joint passes versus 63 for
+immediate and 60 for fixed delay. On the 580 views with one edit in
+both arms, it loses -0.417 pp [-1.035, -0.036] to immediate. A
+secondary donor guard preserves both selection criteria by reverting
+to immediate in six of seven folds; the held count stays at 63.
+No operating change or independent confirmation.
+[Training and replay](outputs/publication_readiness_2026_09/one_edit_stopping_v1/README.md) |
+[Main and supplement v81](outputs/publication_readiness_2026_09/evidence_manuscript_v81/README.md).
+
 ## Whole-Recording Supervision for the First Edit
 
 At the same 606 first-query edits, direct and factorized event

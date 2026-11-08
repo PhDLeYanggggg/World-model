@@ -1,0 +1,18 @@
+\paragraph{Donor-selected online stopping.}
+We fit \StopFits{} heads, including double-excluded fits that produce
+out-of-fold donor predictions for each held location. The threshold and
+fixed-delay alternatives use only the donor readouts. All policies use
+the same candidate bank and may make at most one edit. The learned stop
+passes \StopLearned{} of \StopViews{} joint checks versus
+\StopImmediate{} for immediate and \StopFixed{} for fixed delay, but
+its conservative forecast effect against immediate is \StopFull{}.
+On the \StopMatched{} views where both actually edit once, it is
+\StopEffect{}. On \StopFixedMatched{} views matched with fixed delay,
+it is \StopFixedEffect{}. Matching here is retrospective and utility-only.
+
+In a secondary diagnostic, a threshold must preserve both donor
+joint-pass rate and conservative CV gain. It returns to immediate
+in \StopFallback{} of seven folds. Held joint passes stay at
+\StopImmediate{} and the conservative effect is \StopGuard{}.
+No policy qualifies. The large exact timing ceiling is not evidence
+that these past-only scores identify the later feasible actions.
