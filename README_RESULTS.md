@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Geometrically Bounded OLS4 Gain
+
+Eighty-one fresh held-source fits test disagreement-normalized gain and
+feature ablations. At 6,583 matched switches the full bounded arm loses
+0.1114 conservative points to direct (95% CI [-0.3605, +0.0460]). Full
+amplitude contributes 69% of its harm. Matching amplitude counts lowers
+harm, but the paired lower contrast is still -0.0273 points. No new policy
+or external access. [Results and controls](outputs/publication_readiness_2026_09/native_ols_bounded_gain_v1/README.md).
+
 ## Held Fitting-Source OLS4 Calibration
 
 Fifty-four fresh fits produce scores on nine held fitting sources and three

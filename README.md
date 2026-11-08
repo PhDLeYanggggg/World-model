@@ -47,6 +47,10 @@ task, but did not improve replacement decisions at equal counts.
 I checked the activation scores on held-out fitting sources. None of the
 predeclared thresholds showed sufficiently consistent gain to carry forward.
 [Source-held calibration](outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/README.md).
+Bounding the predicted gain by trajectory disagreement favored larger
+replacements. Matching their amplitudes reduced harm but still did not
+establish an advantage over direct prediction.
+[Bounded gain and amplitude controls](outputs/publication_readiness_2026_09/native_ols_bounded_gain_v1/README.md).
 
 ## Earlier Development Result
 
