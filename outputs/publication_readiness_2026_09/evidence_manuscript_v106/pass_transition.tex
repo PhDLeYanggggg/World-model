@@ -1,0 +1,34 @@
+\subsection{Direct supervision of recording pass transitions}
+The frozen support menu is unchanged. We sample donor sites,
+recordings, and their candidate actions uniformly in that order.
+A head learns the unconditional probabilities of rescuing a
+previously failing recording, destroying an existing pass, and
+losing a defined reference. Net pass probability scores a
+candidate by the difference of the first two probabilities; the
+rescue-only readout omits destruction from ranking.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcc}
+Arm & Edits / joint / undef. & Rescue / destroy\\
+\hline
+Original & \PassTransOriginalCounts & \PassTransOriginalTransitions\\
+Frozen composite & \PassTransCompositeCounts & \PassTransCompositeTransitions\\
+Net pass & \PassTransTransitionCounts & \PassTransTransitionTransitions\\
+Rescue only & \PassTransRescueOnlyCounts & \PassTransRescueOnlyTransitions\\
+Count-matched & \PassTransMatchedCounts & \PassTransMatchedTransitions\\
+Same-row & \PassTransSameRowCounts & \PassTransSameRowTransitions\\
+\end{tabular}
+\end{center}
+
+The count-matched control retrospectively selects by the frozen
+composite scores, matching additions and replacements separately
+per site and seed. Net pass versus this control gives
+\PassTransMatchedEffect{} in conservative utility; versus the
+original it gives \PassTransOriginalEffect{}. It never releases on
+\PassTransNever{} of the \PassTransOpportunities{} feasible new
+views. One location contains \PassTransConcentrated{} of these
+opportunities and none is recovered there under held-location
+scoring. This concentration limits what can be inferred about
+generalization. No policy passes the original risk rule.

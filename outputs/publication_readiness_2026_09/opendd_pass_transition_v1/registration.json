@@ -1,0 +1,70 @@
+{
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 14522,
+    "path": "scripts/run_m3w_opendd_pass_transition.py",
+    "sha256": "985ca35b2630860d5a502b686cecc9b05641eb6133460ebf340c6d6f9a5f1247"
+  },
+  "confirmation_access": false,
+  "controls": "causal frozen composite; retrospective record-max composite at matched additions/replacements; same row composite direction",
+  "gate": "90th percentile of train-record maxima, floored at zero; not independent risk calibration",
+  "menu": "same expanded support directions and exact radius; same original gain and support priority",
+  "model": {
+    "bytes": 1024,
+    "path": "src/world_model/m3w_opendd_pass_transition.py",
+    "sha256": "db34758e4e182dc609a3bb5da989c9e5c3ecb1c85c59a7a30181705fd25b6c85"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 2633,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_directions_v1/registration.json",
+      "sha256": "dae61f9a717e7e261cf0b6255fe2f988c6a55c403a0304869ebe386c47928b54"
+    },
+    {
+      "bytes": 99856,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_directions_v1/analysis.json",
+      "sha256": "77eb2f5f05e85f0d0661b4d66d6918c96f294085b33fe38349219ab4dbc49c35"
+    },
+    {
+      "bytes": 32061,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_directions_v1/head_freeze.json",
+      "sha256": "99ec8222404231b7d0e2d3d9b5914686003be24430b280bfaf274c4004817f7b"
+    },
+    {
+      "bytes": 1070,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_directions_v1/attribution_registration.json",
+      "sha256": "f701704f2b20868e299654094105d9401432f9087057182904ff37745a7ff9ab"
+    },
+    {
+      "bytes": 8061,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_directions_v1/attribution_analysis.json",
+      "sha256": "1ecd2450ceff2c8f2fd4f52a94c17fe05798f71691e8a463cabb0b607cac295f"
+    }
+  ],
+  "readout": "P(rescue)-P(destroy); rescue-only ablation from same head; reference loss logit negative in both",
+  "sampling": "uniform donor site, recording, candidate",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 600,
+  "target": "explicit unconditional rescue, destruction and reference loss events; outcomes only in labels",
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "workers": 0
+}

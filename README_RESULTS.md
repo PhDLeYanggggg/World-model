@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Direct Recording Pass Supervision
+
+Net pass probability rescues 5 views and destroys 10, giving 133/606
+joint passes versus the original's 138. The count-matched composite
+control rescues 3, destroys 7, and gives 134/606. At 963 matched edits,
+the conservative utility effect is -0.00100 pp [-0.00180, -0.00020].
+The transition model never releases on 56/65 feasible new views.
+One location accounts for 45 of the 65 and is never rescued there
+under held-location scoring. No policy promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_pass_transition_v1/README.md) |
+[Manuscript v106](outputs/publication_readiness_2026_09/evidence_manuscript_v106/README.md).
+
 ## Broader Support Directions and Missed Releases
 
 At fixed row and radius, analytic directions increase early-window

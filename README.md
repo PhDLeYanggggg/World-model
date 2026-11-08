@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the support model to distinguish a new recording pass from
+the loss of an existing one. It rescued more recordings than the
+previous scoring rule but also broke more passes. Most opportunities
+were concentrated at one location, where the model recovered none.
+[Pass-transition experiment](outputs/publication_readiness_2026_09/opendd_pass_transition_v1/README.md).
+
 I gave the support model more forecast directions without increasing
 the size of an edit. More useful actions existed, but the learned rule
 rarely selected them. The missed-opportunity audit found that the
