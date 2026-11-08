@@ -1,0 +1,21 @@
+\section{Observed-Window Replay as a Path-Choice Signal}
+The frozen models forecast from prefixes of length 4, 5, 6 and 7,
+padded only before the prefix. Outcomes used to score each replay
+are already observed at the final origin. The final forecast uses
+the unchanged 8-to-12 path bank, recipients and radii. A second
+rule requires agreement between linear and stationary padding;
+disagreement returns matched hindcast at the same radius.
+
+At half radius on exposed OpenDD, linear replay improves over
+matched hindcast by \PrefixReplayHind{} percentage points, but its gain
+relative to fixed tangent is \PrefixReplayTangent{} points.
+Mean location-level pairwise concordance is \PrefixReplayRank\%.
+At the same counts per action within each recording and seed, exact
+permutation expectations give direct gains of \PrefixReplayShuffleLinear{}
+and \PrefixReplayShuffleAgree{} points for linear replay and padding
+agreement. Intervals resample locations after averaging seeds. The
+permutation comparison is about assignment utility, not a risk test.
+On the single exposed TUMDOT campaign both lose to CV
+(\PrefixReplayTumLinear{} and \PrefixReplayTumAgree{} points), and
+neither beats matched hindcast. The apparent OpenDD improvement over
+the weaker comparator is not evidence of useful individualized choice.

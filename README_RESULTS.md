@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Observed-Window Path Replay
+
+No-fit 4/5/6/7-step replay on the existing seven OpenDD locations and
+nine exposed TUMDOT recordings; recipients and peak offsets fixed.
+OpenDD linear replay gains +0.1736 pp over hindcast, loses -0.0962 pp
+to fixed tangent, and loses -0.0370 pp [-0.0584, -0.0202] directly to
+exact same-count shuffled assignment. Padding agreement has no clear
+shuffle advantage. Both policies lose to CV and hindcast on TUMDOT.
+No deployment, protocol or confirmation change.
+[Readout and matched count control](outputs/publication_readiness_2026_09/prefix_path_replay_v1/README.md) |
+[Working supplement v55](outputs/publication_readiness_2026_09/evidence_manuscript_v55/README.md).
+
 ## Source Ensemble Path Choice
 
 Six fresh native Torch fits on the same OpenDD recipients and radii.

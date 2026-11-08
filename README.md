@@ -244,6 +244,12 @@ history-based version still passed only 21 of 27 risk checks and lost
 to the motion baselines. I did not replace the current policy.
 [Matched averaging experiment](outputs/publication_readiness_2026_09/matched_path_ensemble_v1/README.md).
 
+I then asked whether shorter parts of the observed tracks could tell me
+which future direction to use. On OpenDD this beat the simple historical
+control, but assigning the same number of each path at random did better
+than the linear replay rule. The result did not carry over to TUMDOT.
+[History replay and matched-count comparison](outputs/publication_readiness_2026_09/prefix_path_replay_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
