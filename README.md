@@ -37,6 +37,13 @@ pixels for ungated joint selection). I do not deploy the new policy.
 [Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md) |
 [Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
+I checked four public SinD city samples and the Foggy Bottom pedestrian
+release for the same 8-step observation and 12-step prediction setup.
+On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
+all 12 labels, versus 36.0% in Foggy Bottom. I am checking how the
+published positions were produced before using either release to test
+causal forecasts. [Source audit](outputs/publication_readiness_2026_09/independent_source_qualification_v1/README.md).
+
 I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
 new recordings. Its 5% blend failed to improve on CV or on a causal
 motion control at the same recipients and coefficient. It met the

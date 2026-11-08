@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Independent Source Qualification
+
+Four SinD city samples: 259 disjoint stride-4 queries, with complete
+12-step labels for 627/708 history-eligible targets. Foggy Bottom:
+912 queries and 2,061/5,727 complete targets from a single linked
+campaign. Past-position provenance remains unresolved, so neither
+source was scored or assigned a confirmation role. The 2% rule and
+DroneCrowd confirmation seal are unchanged.
+[Audit and replay](outputs/publication_readiness_2026_09/independent_source_qualification_v1/README.md).
+
 ## OpenDD Time-Aligned Scene Context
 
 84 fresh fits and exact no-fit replay. Motor context gains +0.0029 pp
