@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Velocity Loss and Forecast Headroom
+
+Eighty-one new Torch fits and 27 verified cached controls separate
+missing-step debit from extra harm weighting. Removing only the harm
+weight raises median endpoint change from roughly 0.02 to 3–4 pixels
+and gains +1.2812 on fully labeled tracks against OLS4, but loses
+2.3779 on the conservative full grid. Dropping both loss terms increases
+the corresponding loss to 27.4540 points. At one edit on each of 1,171
+common queries, the latter has +1.0334 hindsight headroom but -0.6156
+with random allocation. No policy or independent evaluation changes.
+[Matched factorial and budgeted diagnostics](outputs/publication_readiness_2026_09/native_velocity_objectives_v1/README.md).
+
 ## Local Velocity Forecasts
 
 Eighty-one fresh Torch fits compare near, matched outer and ego-only
