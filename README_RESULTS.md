@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Small Support Exchanges at Identical Query Counts
+
+The outcome-aware exchange diagnostic keeps all original query counts
+and never increases displacement from CV for a replacement. It gives 31
+risk-feasible views, including 8 formerly undefined views, at at most one
+replacement per query. Only 12/102 views also improve against all three
+references, two formerly undefined, and none of the 36 strong-OLS4 views.
+Twelve undefined views had no original edits; five others had no legal
+exchange. The all-source joint-witness gain is +0.012 pp [0, +0.030].
+No new training or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/small_support_exchange_v1/README.md) |
+[Manuscript v111](outputs/publication_readiness_2026_09/evidence_manuscript_v111/README.md).
+
 ## Fixed-Recipient Direction Changes
 
 Of the geometry policy's -1.634 pp loss at matched query counts,

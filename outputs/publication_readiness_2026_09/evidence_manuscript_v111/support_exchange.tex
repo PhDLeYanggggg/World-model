@@ -1,0 +1,32 @@
+\subsection*{Same-query support exchange}
+I keep the exact incumbent query counts. A replacement must edit a
+known easy row in the same query and move at most as far from CV as
+the removed edit. The outcome-aware program checks the original risk
+rule and, for a joint witness, positive paired lower gain against
+the incumbent, CV, and OLS4. All witnesses are rescored.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\hline
+Cap & Risk & Undefined rescued & Joint & Strong joint \\
+\hline
+One/recording & \ExchangeOne \\
+One/query & \ExchangeQuery \\
+\hline
+\end{tabular}
+\end{center}
+
+Of \ExchangeUndefined{} undefined views, 12 have no original
+edits and five more have no admissible exchange. There are
+\ExchangeStrong{} strong-OLS4 views. Joint witnesses at one
+exchange per query yield \ExchangeEffect{} on the full roster
+with incumbent fallback, using 3,000 source resamples.
+
+\textbf{Support is not gain.} Dropping a wholly unlabeled edit
+with radius $r$ incurs debit $r$. Adding a known edit of radius
+$s$ gains at most $s$ by the reverse triangle inequality.
+With equal query weights and $s\le r$, its paired lower gain is
+nonpositive. This is a restriction on this exchange, not on
+other intervention menus or budgets.

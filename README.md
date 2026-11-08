@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a small change in who gets edited can restore easy-case
+risk support without adding edits. With outcomes available for diagnosis,
+it restored support in some recordings. It never restored support and
+improved on all references in a view where OLS4 was demonstrably stronger
+than constant velocity. In 12 undefined views the original policy made
+no edits, so there was nothing to exchange.
+[Small support exchange](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/small_support_exchange_v1/README.md).
+
 I traced the pedestrian policy's loss to disagreement on tracks with no
 future labels, especially when it replaced the original recipients. Keeping
 those recipients and learning only which direction to change reduced the
