@@ -250,6 +250,13 @@ control, but assigning the same number of each path at random did better
 than the linear replay rule. The result did not carry over to TUMDOT.
 [History replay and matched-count comparison](outputs/publication_readiness_2026_09/prefix_path_replay_v1/README.md).
 
+I also tested whether the published OpenDD road maps help choose a
+forecast. Continuing a pedestrian's recent motion relative to the road
+boundary gave a small gain over a shuffle within similar map conditions,
+but the full policy still lost to the fixed tangent forecast and failed
+the original risk rule. I kept the deployment unchanged.
+[Road-map comparison](outputs/publication_readiness_2026_09/opendd_map_direction_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

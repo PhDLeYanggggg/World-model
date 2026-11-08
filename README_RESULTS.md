@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Static Road Context
+
+All seven road masks align with published coordinates; 26,472/30,075
+edited row-seed cases have complete map support. At half radius, road
+distance continuation gains +0.1730 pp vs hindcast but loses -0.1776 pp
+to tangent and passes 536/606. Direct utility vs same-count shuffle is
++0.0033 pp [-0.0230, +0.0340] overall and +0.0308 pp [+0.0051, +0.0592]
+in the secondary map-state-conditioned shuffle. No deployment or
+independent confirmation change.
+[Road-map result](outputs/publication_readiness_2026_09/opendd_map_direction_v1/README.md) |
+[Working supplement v56](outputs/publication_readiness_2026_09/evidence_manuscript_v56/README.md).
+
 ## Observed-Window Path Replay
 
 No-fit 4/5/6/7-step replay on the existing seven OpenDD locations and
