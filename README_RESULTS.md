@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd Standalone Hindcast
+
+Sixteen deterministic candidates, selected on nine fitting groups only;
+leave-one-group-out risk passes 0/24. The frozen half-blend with
+three-origin agreement passes 40/40 opened calibration recordings,
+vs 35/40 for latest-origin rank at exactly the same count and amplitude
+in 11,240 queries. Direct conservative accuracy difference -0.062 pp
+[-0.688, +0.600]; full OLS4 still has lower error. Twenty-two fitting
+recordings violate risk even on observed labels alone. Not a deployment
+or independent confirmation; the original 2% rule remains unchanged.
+[Experiment and replay](outputs/publication_readiness_2026_09/standalone_hindcast_v1/README.md) |
+[Working manuscript v39](outputs/publication_readiness_2026_09/evidence_manuscript_v39/README.md).
+
 ## DroneCrowd Broad Motion and Risk Search
 
 Three new fits on the original nine fitting groups; scores below reuse the

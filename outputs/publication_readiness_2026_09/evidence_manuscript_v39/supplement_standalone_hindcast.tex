@@ -1,0 +1,33 @@
+\section{Independent Hindcast Control}
+We choose among four fixed CV--OLS4 blend strengths and four
+past-only evidence rules on the nine original fitting groups.
+For each candidate and four origins inside the observed prefix,
+we compare the candidate to CV on the remaining observed positions.
+Selection maximizes the worst group pass fraction, then the mean
+pass fraction, then conservative gain. Leave-one-group-out selection
+passes \HindOOFPass/\HindFitCount{} fitting recordings. The final
+choice blends halfway when at least three origins favor the blend
+and its mean gain is positive. It does not borrow learned counts.
+
+\begin{table}[!t]
+\centering\small
+\caption{Deterministic policies on 40 opened DroneCrowd recordings.
+Gain is conservative CV-relative gain; the matched arm uses the
+same per-query count and blend strength as the three-origin gate.}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Policy & Gain (pp) & Passes / 40\\
+\midrule
+\HindRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+The latest-origin ranking at matched counts passes fewer recordings.
+The direct conservative error contrast is \HindMatched{} pp,
+95\% source interval \HindMatchedCI. On the original fitting sources,
+\HindViolation/\HindFitCount{} recordings already violate the risk
+limit on observed labels, before any missing-label debit. An
+opened-domain pass is not evidence of a transferable guarantee.
+This deterministic comparison does not add training seeds or
+open confirmation.

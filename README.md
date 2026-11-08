@@ -60,6 +60,16 @@ select a deployment policy, and left the confirmation groups sealed.
 [Experiment and matched comparison](outputs/publication_readiness_2026_09/dense_motion_calibration_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v38/README.md).
 
+I also tested whether a past-motion backtest can choose whom to adjust
+without relying on the learned policy. It passed all 40 opened
+DroneCrowd recordings, compared with 35 when I held the number and
+strength of adjustments fixed but ranked people using only the latest
+backtest. The error difference between those two rules was uncertain.
+The same standalone rule failed on the original fitting sources, and
+full OLS4 still gave lower error on DroneCrowd. I have not deployed it.
+[Standalone comparison](outputs/publication_readiness_2026_09/standalone_hindcast_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v39/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
