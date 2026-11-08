@@ -1,5 +1,23 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-11-08 同预算介入时机
+
+先复现原始时刻，再把每段录像已确定的介入次数和位移半径保持不变，
+分别重算允许延后 2 次、8 次查询的事后可行空间。训练另用 21 个 arm64
+Torch 拟合，预测现在介入与等待之间的收益差。旧模型和分组没有重训。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_slot_timing.py
+.venv-pytorch/bin/python scripts/run_m3w_release_wait.py
+.venv-pytorch/bin/python scripts/run_m3w_release_wait.py --replay
+```
+
+本机完整求解约 16 秒，完整训练约 13 秒。第一条中断后原样重跑，复用
+已完成的录像求解；第二条从每 100 步的检查点恢复。零更新重放一致。
+无新 CREATE 作业、无独立确认标签访问、无策略部署。
+[时机](slot_timing_v1/README.md) | [训练](release_wait_v1/README.md) |
+[更新稿](evidence_manuscript_v72/README.md)。
+
 ## 当前入口：2026-11-08 固定预算的介入对象实验
 
 本轮在本机完成 21 个真实 Torch 拟合、16,800 次更新及零更新重放。

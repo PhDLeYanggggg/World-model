@@ -373,6 +373,16 @@ and over 250 recording-seed views had no eligible way to obtain an easy
 reference at those edit times. I kept the earlier policy unchanged.
 [Matched recipient experiment](outputs/publication_readiness_2026_09/recipient_slot_v1/README.md).
 
+I next kept each recording's edit count and displacement radii fixed but
+allowed edits to move to later queries. In hindsight, a two-query delay
+raised the joint witness count from 206 to 298. My real-time controller did
+not recover that gain, even when trained to compare waiting directly
+with the original edit. Some recordings could never earn enough credit
+for one edit under the fixed budget; I report those as undefined, not safe.
+[Timing experiment](outputs/publication_readiness_2026_09/slot_timing_v1/README.md) |
+[Learned wait decision](outputs/publication_readiness_2026_09/release_wait_v1/README.md) |
+[Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v72/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

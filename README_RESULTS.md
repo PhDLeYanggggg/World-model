@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Exact-Budget Timing and Learned Wait Value
+
+Under the unchanged streaming ledger and exact per-recording edit count
+and slot radii, label-aware capacity rises from 206/606 fixed to 298 with
+two-query delay, 324 with eight, and 338 with eight in either direction.
+Of 172 zero-edit views, 105 cannot accrue one edit credit. The causal
+release-value head trains for three seeds; its gain-and-risk policy
+passes 74/606 vs 77 for the anchor and loses -0.007 pp [-0.017, -0.001].
+No qualification or confirmation access.
+[Timing](outputs/publication_readiness_2026_09/slot_timing_v1/README.md) |
+[Training](outputs/publication_readiness_2026_09/release_wait_v1/README.md) |
+[Paper v72](outputs/publication_readiness_2026_09/evidence_manuscript_v72/README.md).
+
 ## Same-Budget Recipient Assignment
 
 At identical 1,457 edit times and slot radii, the label-aware assignment
