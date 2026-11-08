@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether local crowd geometry could predict which future labels
+would be missing. It improved that prediction and steered edits away
+from unlabeled tracks, but the edited trajectories still lost to the
+previous rule at the same budget. I kept the original policy.
+[Pedestrian observability experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/observability_v1/README.md).
+
 I separated a larger forecast bank from a larger intervention budget.
 More edits opened more feasible plans against OLS4 than seven extra
 forecast variants did. The learned risk screen did not recover that

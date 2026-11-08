@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Pedestrian Observability at Matched Query Budgets
+
+Separating label availability from conditional trajectory cost and
+adding past-only crowd geometry improves missingness Brier score
+from 0.03497 to 0.03348 (paired change -0.00149 [-0.00227, -0.00093]).
+At 12,235 matched edits, geometry edits 287 completely unlabeled
+rows versus 377 for the entangled screen, but loses -1.634 pp
+[-2.687, -0.659] in conservative utility. Both give one joint pass
+and two risk passes over 102 repeated views; neither passes jointly
+in the 36 views where OLS4 is certified stronger than CV.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/observability_v1/README.md) |
+[Manuscript v109](outputs/publication_readiness_2026_09/evidence_manuscript_v109/README.md).
+
 ## Pedestrian Candidate Bank Versus Query Budget
 
 In the 36 views where OLS4 is certified better than CV, exact

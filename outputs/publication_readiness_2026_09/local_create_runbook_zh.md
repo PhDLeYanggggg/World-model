@@ -1,5 +1,13 @@
 # M3W 本地与 CREATE 操作记录
 
+## 行人开发集：分离标注缺失和条件轨迹代价：2026-11-08
+
+本机 arm64 Torch 四线程、零加载进程，42 次拟合、21,000 次更新；
+每 100 步保存 checkpoint 和 heartbeat，零更新回放一致。逐查询匹配
+原策略的编辑次数。几何缺失预测更准，但保守效用仍下降。没有新增
+CREATE 作业或开启独立确认；原 2% 和不可估规则不变。
+[命令和结果](moving_record_joint_actions_v1/causal_ledger/observability_v1/README.md)。
+
 ## 行人候选库与查询编辑预算的对照：2026-11-08
 
 本机 arm64 Torch 四线程、零加载进程，42 次拟合、21,000 次更新。

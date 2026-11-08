@@ -1,0 +1,32 @@
+\subsection*{Pedestrian observability at matched query budgets}
+I model conditional cost and future label missingness separately.
+The geometry head adds relative position, neighbor distance, crowd
+size, and outward motion to motion features. Predicted missingness
+weights the action radius; predicted availability weights conditional
+cost. Future masks are labels only. Except for the free-budget arm,
+each policy matches the entangled screen's edit count at each query.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\hline
+Policy & Edits & Unlabeled & Joint & Risk \\
+\hline
+Entangled & \ObsEntangled \\
+Gain rank & \ObsGain \\
+No missingness & \ObsNoMissing \\
+Motion & \ObsMotion \\
+Geometry & \ObsGeometry \\
+Geometry, free & \ObsFree \\
+\hline
+\end{tabular}
+\end{center}
+
+Geometry improves missingness Brier score from \ObsMotionBrier{} to
+\ObsGeometryBrier{} (paired change \ObsBrierDifference). Despite
+fewer unlabeled edits, geometry loses to the entangled screen
+(\ObsEffect), as does its free-budget arm (\ObsFreeEffect).
+No arm jointly passes in the 36 views where OLS4 is certified
+better than CV. Intervals use 3,000 paired resamples of 14
+development sources after averaging seeds. No policy is promoted.
