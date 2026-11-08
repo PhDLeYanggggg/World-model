@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Hannover Shared Displacement Budget
+
+At the same total peak displacement as the frozen half-radius
+forecasts, or at twice that total, no Hannover recording-seed view
+can beat both CV and OLS4 using the optional frozen/OLS4 menu under
+the original risk rule (0/9 at each budget). Even a risk-free bound
+allowing arbitrary paths and all recipients is negative against
+OLS4 at twice the budget (-37.06 to -19.38 pp). The optimistic
+OLS4-only break-even needs 8.43 to 15.01 times the original total.
+This is a missing-label-conservative capacity result on three
+already examined clips, not an independent transfer or policy score.
+[Proof, audit, and reproduction](outputs/publication_readiness_2026_09/hannover_shared_radius_v1/README.md) |
+[Manuscript supplement v117](outputs/publication_readiness_2026_09/evidence_manuscript_v117/README.md).
+
 ## TUMDOT Same-Query Neighbor Context
 
 On the same 404 nonoverlapping queries, the guarded aligned model

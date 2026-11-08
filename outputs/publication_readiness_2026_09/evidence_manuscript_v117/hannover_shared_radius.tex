@@ -1,0 +1,48 @@
+\section{Shared Displacement Budget in Hannover}
+
+The earlier radius-matched comparison bounds each agent separately.
+Here we pool the frozen half-radius budget within each recording and
+seed. Let $c_{it}$ denote constant velocity, $o_{it}$ OLS4, $y_{it}$
+the annotated target, and $V_i$ the observed steps. At row radius $r$,
+the largest increase in lower utility against OLS4, relative to
+predicting $c_{it}$, is
+\begin{equation}
+  f_i(r)=
+  \sum_{t\in V_i}\min(r,\|c_{it}-y_{it}\|)
+  +\sum_{t\notin V_i}\min(r,\|c_{it}-o_{it}\|).
+\end{equation}
+The first term projects toward the target; the second projects toward
+OLS4 to reduce the missing-label disagreement debit. This relaxation
+permits independent directions at each step and imposes no risk
+constraints. The marginal returns of $f_i$ decrease at its sorted
+distance knots. Filling the segments from highest to lowest slope
+maximizes the sum under $\sum_i r_i\leq B$, where $B$ is the original
+sum of row peaks. This is an attainable optimum only for the
+label-aware, unconstrained-direction relaxation.
+
+The finite-bank comparison instead permits optional frozen forecasts
+and CV-to-OLS4 bridges on the original eligible recipients, with at
+most one path per row. It keeps the original risk and easy support
+rule, maximizes the smaller conservative gain against CV and OLS4,
+and prices each chosen path at its actual peak deviation from CV.
+Both objectives use observed CV error mass for normalization.
+
+\begin{center}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Budget & OLS4 upper (pp) & Maximin upper (pp) & Positive \\
+\midrule
+$B$ & \HannoverRadiusOriginal \\
+$2B$ & \HannoverRadiusDouble \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Even with arbitrary paths and all recipients, the optimistic OLS4
+break-even is \HannoverRadiusBreakEven\ times the original total.
+This is not an allowable intervention threshold. These ranges describe
+three exposed clips from one acquisition campaign across three frozen
+seeds; they are neither confidence intervals nor independent transfer
+estimates. Reallocation alone cannot close the conservative gap on
+this cohort. No new forecast policy is fitted or evaluated here.

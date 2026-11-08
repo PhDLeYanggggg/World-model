@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+On Hannover I checked whether spending the same total trajectory
+adjustment on different pedestrians could catch OLS4. It could not:
+even twice the original budget fell short in an optimistic calculation
+with arbitrary forecast directions. This was a diagnostic on previously
+examined recordings, not a new independent evaluation.
+[Hannover shared-budget audit](outputs/publication_readiness_2026_09/hannover_shared_radius_v1/README.md).
+
 I tested whether neighbors observed at the same time improve
 trajectory choice on TUMDOT. Even after matching how often the
 models changed the past-motion prediction, the model with correctly
