@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recording Risk Is Not Monotone in Edit Count
+
+On 345 fixed second-slot views, adding support moves 102 from undefined
+to pass and 17 from pass to over limit. Among the 91 paired views with
+defined selected-easy ratios, 17 cross above 2% and one crosses below.
+The original recording rule remains unchanged.
+[Exact transitions](outputs/publication_readiness_2026_09/opendd_support_monotonicity_v1/README.md).
+
 ## Fixed-Query Support Admission
 
 At 943 matched edits, learned gain beats easy ranking by +0.03710 pp

@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked what happens to risk when a second edit is added. It made
+some previously unscorable recordings pass and pushed others over the
+limit. More edits do not necessarily make the risk go up or down.
+[Recording risk transitions](outputs/publication_readiness_2026_09/opendd_support_monotonicity_v1/README.md).
+
 I trained a model to choose which track to edit without changing the
 number, timing, or size of the edits. Ranking for forecast gain
 reduced error but fewer recordings passed the joint rule. Adding a
