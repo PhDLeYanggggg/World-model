@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Direct Velocity Forecasts
+
+63 fresh fits and 5,132 targets with newly extracted past traffic context.
+The fixed self-only 25% blend gains +1.792 pp [+1.029, +2.873] vs CV,
+positive at all seven sites, but worst descriptive easy change is +5.24%.
+Adding observed motor context is negative (-8.308 pp [-14.274, -2.743]
+vs pedestrian context). No deployment or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/opendd_velocity_candidate_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v28/README.md).
+
 ## OpenDD Matched Query-Regret Training
 
 63 fresh fits across seven held locations. CV ranking vs pointwise at exact

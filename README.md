@@ -61,6 +61,12 @@ pointwise gain regression. Holding either the person or the candidate
 fixed exposed room for improvement in hindsight, but not a reliable
 learned gain. [Matched ranking and attribution](outputs/publication_readiness_2026_09/opendd_query_rank_v1/README.md).
 
+I then changed the forecast itself. A fixed blend of the self-history
+velocity model and CV improved forecast error at all seven OpenDD
+locations, but increased easy-case error too much at one site. Adding
+past traffic context did not help in this comparison.
+[Direct forecast experiment](outputs/publication_readiness_2026_09/opendd_velocity_candidate_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did

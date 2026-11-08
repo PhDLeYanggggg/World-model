@@ -1,0 +1,43 @@
+\clearpage
+\section{Training a New Forecast Instead of Reranking}
+On the same exposed OpenDD development cohort, we change the
+forecast itself. A heading-aligned network predicts three bounded
+velocity knots, interpolates them over twelve steps, and integrates
+from the last observed position. It is trained with observed trajectory
+error and a positive excess-error term relative to CV. The matched
+ablation adds up to two observed pedestrian histories and then up to
+two nearby motor-vehicle histories. Vehicle positions come only from
+the eight requested past timestamps, with no interpolation of missing
+input. There are \VelocityTrafficCount{} targets with observed local
+vehicle context. All arms have the same architecture and draws.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lp{.47\columnwidth}@{}}
+\toprule
+Forecast contrast & Lower gain, pp [95\% interval]\\
+\midrule
+Self-only vs CV, direct & \VelocitySelfDirect \\
+Self-only vs CV, 25\% blend & \VelocitySelfQuarter \\
+Pedestrian vs CV, 25\% blend & \VelocityPedQuarter \\
+Traffic vs CV, 25\% blend & \VelocityTrafficQuarter \\
+Traffic vs pedestrian & \VelocityTrafficVsPed \\
+\quad With vehicle support & \VelocityTrafficSupport \\
+Oracle, add self-only & \VelocityOracleAddSelf \\
+\bottomrule
+\end{tabular}
+\caption{New forecast candidates on the same OpenDD development cohort.
+The 25\% blend is fixed before scoring. Intervals resample the seven
+locations after averaging three seeds. The last row uses outcomes to
+select one edit per supported query for both menus.}
+\label{tab:opendd-velocity}
+\end{table}
+
+The fixed blend of self-only forecasts with CV improves conservative
+gain at all seven held locations. In contrast, the direct traffic
+ablation is negative even when nearby vehicles are observed. The
+self-only blend increases the worst descriptive easy ADE by
+\VelocityWorstEasy\%, so this is a candidate forecast, not a
+qualified intervention policy. OpenDD has informed development;
+the result does not change the original risk rule, open the independent
+confirmation split, or demonstrate multimodal generalization.
