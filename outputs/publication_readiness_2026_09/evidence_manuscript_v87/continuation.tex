@@ -1,0 +1,51 @@
+\section{Learning the Value of a Released Edit}
+
+Timing is not equivalent to changing the recipients.
+We fix the CV--OLS disagreement order at each query and let
+each action choose a prefix. A two-bin FIFO state records old
+credits; the current release is observed, but the end of the
+recording is not. On donors, backward dynamic programming
+labels the advantage of each spend count over spending zero,
+using an additive lower-gain proxy with positive risk costs and
+a motion-scaled penalty for expiry. This objective is not a
+certificate for the original recording-level constraints.
+The same head also predicts the immediate advantage without
+the continuation term. Candidate and release heads used on
+donors exclude both the fitting row's site and the outer site.
+
+\begin{table}[h]
+\centering
+\caption{Learned timing on the same frozen neural bank with
+a fixed causal recipient ranking. Joint passes use the
+unchanged recording-level risk and both lower gains.}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Edits & Unused & Undefined & Joint \\
+\midrule
+Immediate & \QueueValueNowEdits{} & 0 & \QueueValueNowUndefined{} & \QueueValueNowJoint{} \\
+Myopic & \QueueValueOneEdits{} & \QueueValueOneUnused{} & \QueueValueOneUndefined{} & \QueueValueOneJoint{} \\
+Continuation & \QueueValueTailEdits{} & \QueueValueTailUnused{} & \QueueValueTailUndefined{} & \QueueValueTailJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The continuation policy yields \QueueValueDifference{} versus
+the myopic arm and \QueueValueVersusCV{} versus CV.
+Against immediate use of the same realized credits, its effect
+is \QueueValueContinue{}; the myopic arm yields \QueueValueMyopic{}.
+Intervals resample sites after averaging seeds, not windows.
+Neither policy establishes a reliable gain or passes the
+full recording roster.
+
+To separate the action menu from learning, we also solve
+the exact label-aware problem under this fixed ranking:
+at most one prefix is chosen per query, its cardinality
+enters the original cumulative budget, and all credits
+must be spent. The original risk, support and dual-gain
+conditions hold for \QueueValueFixed{} (zero delay) and
+\QueueValueDelay{} (two queries) of \QueueValueViews{} views.
+Removing the fixed ranking raises the two-query ceiling to
+\NeuralCreditShort{}. The loss is attributable to the restricted
+action menu under this budget, not solely to timing estimation.
+Timing and recipient decisions remain coupled.

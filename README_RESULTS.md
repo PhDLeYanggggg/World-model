@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learning Continuation Value for Neural Edits
+
+84 local Torch fits, 33,600 updates, zero-update replay verified.
+Continuation is -0.015 pp [-0.081, +0.038] versus myopic use of
+the same release stream and +0.131 pp [-0.207, +0.711] versus
+immediate spending of the same realized credits. Both reach 14/606
+joint passes. Restricting each query to a fixed causal recipient rank
+reduces the exact two-query bound from 223 to 84/606. No advancement.
+[Experiment](outputs/publication_readiness_2026_09/opendd_credit_value_v2/README.md) |
+[Manuscript v87](outputs/publication_readiness_2026_09/evidence_manuscript_v87/README.md).
+
 ## Timing The Same Neural Edit Credits
 
 At the same raw EqMotion bank and recording totals, delay of up to two

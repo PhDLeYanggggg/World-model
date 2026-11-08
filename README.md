@@ -9,7 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
-I then asked whether the same neural edits would work better at different
+I tested whether learning to save an edit for a later query improves
+on scoring the current query alone. It did not reliably help. At the
+same budgets, fixing who gets edited first also cut the two-query
+hindsight ceiling from 223 to 84 of 606 views.
+[Learned timing and recipient limits](outputs/publication_readiness_2026_09/opendd_credit_value_v2/README.md).
+
+In an earlier experiment I asked whether the same neural edits would work better at different
 times. With the total fixed in each recording, letting edits move up to
 two queries later raises the hindsight ceiling from 88 to 223 of 606
 views. None of the past-only waiting rules reliably improves forecast

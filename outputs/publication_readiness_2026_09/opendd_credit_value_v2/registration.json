@@ -1,0 +1,61 @@
+{
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 13196,
+    "path": "scripts/run_m3w_opendd_credit_value.py",
+    "sha256": "1acc2b2ce170ceecd9e6e423ec421691add42eb0b371a4f738abb860071cd07e"
+  },
+  "confirmation_access": false,
+  "control": "same two-output network, no continuation at inference for myopic; match released credit IDs for direct utility",
+  "expiry": 0.05,
+  "features": "current ranked causal row summaries and lagged query summary; FIFO state; no outcomes or final length",
+  "fitting": "donor actions use candidate and release heads excluding both donor and outer site; no held fitting; donor cells with no discretionary actions are logged and omitted",
+  "model": {
+    "bytes": 3229,
+    "path": "src/world_model/m3w_opendd_credit_value.py",
+    "sha256": "112884023a1797532129bca0dbf91e5f257c420f09cabd58483519ee5ea8d39d"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 79669,
+      "path": "outputs/publication_readiness_2026_09/opendd_release_credit_v1/analysis.json",
+      "sha256": "d9dfeaac643e7cb62f6b018c4ede605f5d5a4d63c3d5ca294e0f5e4dc486eeca"
+    },
+    {
+      "bytes": 111368,
+      "path": "outputs/publication_readiness_2026_09/opendd_candidate_advantage_v1/producer_freeze.json",
+      "sha256": "7a5f2e9b504ff92dfbf1be98c3e1eaae76c863da0458d3d6fdd0e45c50c1757d"
+    },
+    {
+      "bytes": 14444,
+      "path": "outputs/publication_readiness_2026_09/opendd_hardness_gate_v1/head_freeze.json",
+      "sha256": "83d583b80ce1ddff7f7ed5daa6346bbdf43537636facd810e5335cb6f21387c1"
+    }
+  ],
+  "rank": "fixed causal CV/OLS disagreement for all new policies",
+  "reward": "lower CV gain minus positive all/easy/signed excess with weights 2/4/1; normalized by observed motion",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "target": "two action contrasts: immediate utility, and optimal offline continuation under the same FIFO clock",
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "workers": 0
+}
