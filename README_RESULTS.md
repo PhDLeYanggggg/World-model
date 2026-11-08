@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Past-Pixel Motion And Conditional Gain
+
+1,344 past frames for the exact fit roster: 348 newly acquired and
+996 hash-verified reused. Fresh background and local foreground
+measurements match all 69,746 rows; feature replay is exact. In 81
+new Torch fits, background vs no image gives -0.0408 full-grid
+points [-0.0621, -0.0208]; foreground vs background gives -0.0181
+[-0.0278, -0.0092]. The same predicted-support strata, candidates
+and counts are used. No original risk or independent evidence pass.
+[Results and figure reproduction](outputs/publication_readiness_2026_09/native_pixel_gain_v1/README.md).
+
 ## Conditional Gain With Frozen Label Support
 
 54 fresh fits compare pointwise conditional gain with common-step

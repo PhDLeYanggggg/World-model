@@ -114,6 +114,13 @@ regression under matched support. I keep the support result separate
 from the unresolved forecast decision.
 [Conditional-gain experiment](outputs/publication_readiness_2026_09/native_conditional_gain_v1/README.md).
 
+I tested whether the observed video could add what the trajectory
+history was missing. I aligned the complete past-frame set, measured
+both background and local pixel motion, and kept the forecasts and
+support budgets fixed. Neither image cue improved the matched
+intervention scores.
+[Past-pixel motion experiment](outputs/publication_readiness_2026_09/native_pixel_gain_v1/README.md).
+
 ## Looking For Better Observed Scenes
 
 I audited two Waterloo drone sites before using them for forecasting.
