@@ -393,6 +393,14 @@ the budget more faithfully.
 [Whole-recording experiment](outputs/publication_readiness_2026_09/ledger_wait_v2/README.md) |
 [Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v73/README.md).
 
+I then compared observed peer histories against self-only and
+wrong-focal histories from the same query. The correctly aligned peers
+did not reliably improve the decision. Replaying the same emitted
+edits showed that the full policy's loss came almost entirely from
+giving up an immediate edit and failing to find a replacement in time.
+[Peer ablation and expiry replay](outputs/publication_readiness_2026_09/wait_peer_value_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v74/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

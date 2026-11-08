@@ -1,5 +1,21 @@
 # M3W 本地与 CREATE 操作记录
 
+## 当前入口：2026-11-08 邻居信息与等待到期
+
+本机原生 arm64 CPU Torch 完成 63 次拟合、50,400 次更新，约 49 秒；
+零更新重放约 23 秒。四计算线程、零 DataLoader 子进程，每 100 步写
+检查点与心跳。当前规模不需要 CREATE，也没有重新读取远程队列。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_wait_peer_value.py
+.venv-pytorch/bin/python scripts/run_m3w_wait_peer_value.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_wait_peer_expiry.py
+```
+
+第一条中断后原样恢复；第三条只重放已开放开发集中的模型决策。
+34 项相关测试通过。原 2% 规则及 DroneCrowd 确认组未变。
+[实验](wait_peer_value_v1/README.md) | [补充材料 v74](evidence_manuscript_v74/README.md)。
+
 ## 当前入口：2026-11-08 整段录像的等待训练
 
 本机原生 arm64 Torch、四计算线程、零 DataLoader 子进程。42 次拟合、

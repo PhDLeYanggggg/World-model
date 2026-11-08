@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Peer History and Wait Expiry
+
+63 fits compare self-only, aligned peers and wrong-focal same-query
+peers. There are 132 exact joint-positive opportunities among 1,457
+offers, with 126 in two locations. Aligned-minus-self AP is -0.0139
+[-0.0500, +0.0088]. The aligned policy clears 76/606 versus 77 for the
+anchor; its -0.01262 pp effect decomposes into -0.00005 pp on moved
+slots and -0.01257 pp from expiry. No deployment or confirmation.
+[Experiment](outputs/publication_readiness_2026_09/wait_peer_value_v1/README.md) |
+[Supplement v74](outputs/publication_readiness_2026_09/evidence_manuscript_v74/README.md).
+
 ## Whole-Recording Deferral Supervision
 
 42 new Torch fits compare local and full-ledger wait labels on the same
