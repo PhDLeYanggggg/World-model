@@ -80,6 +80,16 @@ diagnostic gave a small gain over no edit, but did not establish an
 advantage over the matched simple controls or protect easy cases.
 [CV ranking experiment](outputs/publication_readiness_2026_09/native_cv_query_rank_v1/README.md).
 
+## Looking For Better Observed Scenes
+
+I audited two Waterloo drone sites before using them for forecasting.
+The trajectory exports provide substantial twelve-step support, but
+the site with the most complete longer windows also has many stationary
+histories. The released positions come from an offline export whose
+use of later frames has not been established. I keep these data out of
+the causal confirmation experiment.
+[Waterloo source audit](outputs/publication_readiness_2026_09/waterloo_annotations_v1/README.md).
+
 ## Earlier Development Result
 
 I tested whether adding past-image alignment to each agent's history helps

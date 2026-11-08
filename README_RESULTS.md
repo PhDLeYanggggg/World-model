@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Waterloo Trajectory Availability
+
+Fresh annotation-only intake at two publisher-documented drone sites:
+31 databases, 3,226,686 rows and 1,417 recording-local pedestrian
+tracks. At stride 12 there are 194,534 complete pedestrian windows at
+the crosswalk and 428,474 at the intersection; 23.08% of the latter have
+exactly stationary histories. The released coordinates came from an
+offline DataFromSky export; source-time causality is not verified. No
+model results, role assignment or change to the 15/30 confirmation split.
+[Exact counts and source evidence](outputs/publication_readiness_2026_09/waterloo_annotations_v1/README.md).
+
 ## CV Query Ranking
 
 One hundred and eight fresh fits cross the training reference with row
