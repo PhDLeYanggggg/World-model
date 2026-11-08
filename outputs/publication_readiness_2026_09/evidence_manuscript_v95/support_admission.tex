@@ -1,0 +1,35 @@
+\section{Admission at a Fixed Support Query}
+
+We train a candidate head on observed features and their difference
+from the frozen easy-ranked recipient. Separate outputs estimate lower
+gain against CV, a local feasible-support event, and excess loss.
+The guarded policy keeps the original recipient unless another
+improves predicted support with no worse predicted gain or harm.
+The estimates are not risk certificates. The first edit, second-slot
+queries, counts and amplitude match exactly.
+
+\begin{table}[h]
+\centering
+\caption{Recipient reranking on 606 development views. Each arm
+uses 943 edits; only the recipient of the support edit can change.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Second-slot rank & Changed & Undefined & Joint \\
+\midrule
+Frozen easy & 0 & \AdmitEasyUndefined{} & \AdmitEasyJoint{} \\
+Frozen gain & \AdmitMatchChanged{} & \AdmitMatchUndefined{} & \AdmitMatchJoint{} \\
+Learned gain & \AdmitGainChanged{} & \AdmitGainUndefined{} & \AdmitGainJoint{} \\
+Support, all legal & \AdmitWideChanged{} & \AdmitWideUndefined{} & \AdmitWideJoint{} \\
+Support, easy only & \AdmitNarrowChanged{} & \AdmitNarrowUndefined{} & \AdmitNarrowJoint{} \\
+Guarded support & \AdmitGuardChanged{} & \AdmitGuardUndefined{} & \AdmitGuardJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Learned gain yields \AdmitGainEffect{} against frozen easy but
+loses joint passes. Guarded support yields \AdmitGuardEffect{}
+without changing the joint count. Ranking all legal recipients
+for support uses \AdmitWideOutside{} recipients below the frozen
+easy threshold, yet loses joint passes. The local support surrogate
+does not recover the outcome-aware recording-level capacity.

@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a model to choose which track to edit without changing the
+number, timing, or size of the edits. Ranking for forecast gain
+reduced error but fewer recordings passed the joint rule. Adding a
+guard restored the pass count without a reliable error gain.
+[Fixed-query recipient experiment](outputs/publication_readiness_2026_09/opendd_support_admission_v1/README.md).
+
 I tested whether holding a support edit for a later query helps. It did
 not reliably improve forecast error over spending the same budget
 immediately in those recordings. An offline analysis found room to improve both the timing

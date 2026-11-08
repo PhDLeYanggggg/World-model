@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed-Query Support Admission
+
+At 943 matched edits, learned gain beats easy ranking by +0.03710 pp
+[+0.01181, +0.06489] but loses 28 joint passes. Guarded support yields
++0.00160 pp [-0.00019, +0.00499], with 138/606 joint passes in both
+arms. Widening the learned support menu loses ten passes. The original
+recording-level rule remains unmet; no policy is promoted.
+[Experiment](outputs/publication_readiness_2026_09/opendd_support_admission_v1/README.md) |
+[Manuscript v95](outputs/publication_readiness_2026_09/evidence_manuscript_v95/README.md).
+
 ## Bounded Support Timing
 
 A learned two-query wait used 293 support edits, 37 of them delayed.

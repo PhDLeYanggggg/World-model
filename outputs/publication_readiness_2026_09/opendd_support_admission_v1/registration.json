@@ -1,0 +1,69 @@
+{
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 11405,
+    "path": "scripts/run_m3w_opendd_support_admission.py",
+    "sha256": "c3ead2c2cca2d2e88b05d5104798df835d0d9d3391b88543772f795668d34adc"
+  },
+  "confirmation_access": false,
+  "controls": [
+    "gain",
+    "easy",
+    "matched_gain",
+    "local_gain",
+    "local_support",
+    "restricted_support",
+    "guarded_support"
+  ],
+  "features": "current causal candidate features, differences from current easy anchor, legal menu size",
+  "hard_rule_unchanged": true,
+  "matching": "first gain edit and second query, count, amplitude fixed; only recipient changes",
+  "model": {
+    "bytes": 1872,
+    "path": "src/world_model/m3w_opendd_support_admission.py",
+    "sha256": "3a78af8de14fc3ad701f970b93439c7a1d326141fbbabfacc92192fd7b28d6c8"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 80551,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_stop_v1/analysis.json",
+      "sha256": "0b153559b32590c910d4521e0d79b917869796cde7f8ad05007a73491ac37171"
+    },
+    {
+      "bytes": 751,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_stop_v1/menu_registration.json",
+      "sha256": "048388fe52f6dae74bc1a02a411e5857d40dfd3b0a3838709a6621ff5789464f"
+    },
+    {
+      "bytes": 13059,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_stop_v1/menu_capacity.json",
+      "sha256": "ca4b0054deefe86b1cc27d25d637a014e75c289e0da9d9e4efbd349b64394c78"
+    }
+  ],
+  "primary": "guarded support vs frozen easy at same query; needs positive lower utility and no reduction in joint counts",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "targets": "normalized conservative CV gain; local easy and risk-feasible positive event; normalized positive excess",
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "training": "all donor queries with an easy anchor, double-excluded forecast and easy head; no donor first-slot exclusion",
+  "workers": 0
+}
