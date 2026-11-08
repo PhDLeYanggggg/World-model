@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Shape Training at Exact Realized Radius
+
+84 fresh fits with pair-excluded training producers and exact replay.
+The primary arm gains +0.058 pp [+0.025, +0.102] vs the incumbent at
+identical recipients and radii, but passes 425/606 risk views vs 455.
+All 34 lost passes exceed the easy upper limit despite identical
+reference mass and unknown-label debit; four are recovered. Neighbor
+history has no reliable matched utility or relative-vector gain.
+[Results](outputs/publication_readiness_2026_09/opendd_radius_shape_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v31/README.md).
+
 ## OpenDD Forecast Training at Matched Intervention Size
 
 63 fresh fits; exact checkpoint replay. The easy-harm objective gives

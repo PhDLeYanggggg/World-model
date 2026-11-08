@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 import torch
 
+from scripts.audit_m3w_opendd_radius_risk import compare, transition
 from src.world_model.m3w_radius_shape import at_radius, neighbors, shape
 
 
@@ -34,3 +35,24 @@ def test_neighbor_history_uses_current_separation_and_respects_queries():
     np.testing.assert_array_equal(context[3, 0, 0], h[4])
     assert np.isnan(context[3, 0, 1]).all()
     assert np.isnan(context[:, 1]).all()
+
+
+def test_same_departure_and_labels_can_still_change_observed_harm():
+    cv = np.zeros((2, 12, 2))
+    y = cv.copy()
+    y[0, :, 0] = 1.
+    y[1] = np.nan
+    old = cv.copy()
+    old[0, :, 0] = .03
+    old[1, :, 0] = .005
+    d = dict(cv=cv,y=y,valid=np.isfinite(y).all(2),recordings=np.array(['clip']*2))
+    out, old_n, new_n = compare(d,old,-old,[2.,3.])
+    assert (old_n,new_n)==(1,0)
+    assert out['clip']['transition']=='lost_pass'
+    assert out['clip']['same_unknown_debit']==.005
+
+
+def test_attribution_does_not_promote_undefined_views():
+    record = dict(supported=False,completion_all_risk_upper=.01,
+                  completion_easy_risk_upper=None,known_easy_net_degradation=None)
+    assert transition(record,record)=='both_undefined'

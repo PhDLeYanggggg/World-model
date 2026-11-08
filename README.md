@@ -49,6 +49,13 @@ risk test. At equal realized displacement it still beat hindcast slightly
 and lost to my previous neural forecast, so I did not replace that model.
 [Training and matched-displacement comparison](outputs/publication_readiness_2026_09/opendd_hindcast_residual_v1/README.md).
 
+I then fixed the actual displacement budget inside training. The
+retrained forecast was slightly better than the previous neural model
+at every held OpenDD location, but it hurt enough easy trajectories
+to pass fewer recordings. Adding neighboring pedestrians' past
+tracks did not give a reliable gain.
+[Fixed-budget training and risk analysis](outputs/publication_readiness_2026_09/opendd_radius_shape_v1/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more
