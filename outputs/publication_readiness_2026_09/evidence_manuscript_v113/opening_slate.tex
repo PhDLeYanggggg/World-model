@@ -1,0 +1,27 @@
+\subsection*{First-offer slate recall and action ranking}
+I fix the first offer and its radius, and compare pointwise
+regression with the same head plus a listwise softmax loss.
+The two heads share training draws and initialization. Both fall
+back to the frozen rank in \SlateEmpty{} cells with no fitting
+offer. All opening arms make the same 29 edits.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\hline
+Rank & Flat 1 & Flat 8 & Row 8 & Dir. 8 & Row 16 \\
+\hline
+Frozen & \SlateFrozen \\
+Ridge & \SlateRidge \\
+Pointwise & \SlatePoint \\
+Listwise & \SlateList \\
+\hline
+\end{tabular}
+\end{center}
+
+Counts are views with a joint witness in the shortlist; the full
+menu covers \SlateAll. No policy selects a qualifying first
+action. Listwise minus pointwise conservative utility is
+\SlateEffect{} at matched count and radius. Shortlist coverage
+is not evidence of causal choice or risk control.

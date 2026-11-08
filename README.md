@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I fixed the first-edit opportunity and displacement, then compared
+learning to rank a whole query with scoring each candidate separately.
+Diversity helped recover some qualifying options in a shortlist.
+It did not make the top choice better, and the listwise
+model lost to its pointwise control.
+[First-offer ranking](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_slate_v2/README.md).
+
 I tested whether waiting to make the first edit helps when its size is
 fixed. At the same count and displacement, the learned timing rule
 did not beat acting immediately. A second opportunity did not increase

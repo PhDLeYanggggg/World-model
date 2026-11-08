@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## First-Offer Ranking at Identical Edit Count and Radius
+
+At all 29 available first offers, pointwise and listwise Torch models
+match the frozen and ridge controls' count and displacement. The
+listwise loss gives -0.00361 pp [-0.00644, -0.00112] versus pointwise.
+The full menu contains six joint witnesses but every top-one rank
+finds zero. Row-diverse ridge retrieves three at top 16 versus two
+flat; listwise top-eight diversity retrieves two versus one flat.
+Six of 42 cells have no fitting offer and use frozen ranking.
+No policy promotion or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/opening_slate_v2/README.md) |
+[Manuscript v113](outputs/publication_readiness_2026_09/evidence_manuscript_v113/README.md).
+
 ## First-Edit Timing at Identical Displacement
 
 On 102 repeated pedestrian development views, a source-held timing
