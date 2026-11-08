@@ -17,11 +17,12 @@ and 67/120 for pair-additive, but its conservative gain against OLS4 is
 
 ## Secondary DroneCrowd Forecast Diagnostics
 
-I fixed the available-label ADE/FDE and matched relative-path readout before
-the calibration outcome. The pair statistic reproduces the previous exposed
-development readout across 102 recording-seed views; this is an implementation
-check, not an external result. The primary rule and confirmation access are
-unchanged. [Protocol and usage](outputs/publication_readiness_2026_09/dronecrowd_forecast_diagnostics_v1/README.md).
+Full scoring and replay give available ADE/FDE 1.468/2.647 pixels for OLS4
+versus 2.984/5.446 for ungated joint. The lower matched pair gain is +0.082
+pixels over independent and +0.00084 over additive. The fixed hard cut admits
+67 agent windows and leaves 24/45 source-seed cells unsupported. The primary
+decision is unchanged. [Secondary readout](outputs/publication_readiness_2026_09/dronecrowd_forecast_diagnostics_v1/report.md) |
+[Updated manuscript and supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
 ## Pointwise Positive Harm Against Two References
 

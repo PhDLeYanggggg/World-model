@@ -17,7 +17,8 @@ the common denominator. OLS4 does not meet the per-view risk rule either.
 These are transport and calibration results, not a deployment claim.
 
 [Full decision table](readout/report.md) | [Machine-readable results](readout/readout.json) |
-[Exact replay receipt](replay_execution.json)
+[Exact replay receipt](replay_execution.json) | [Secondary accuracy and geometry](../dronecrowd_forecast_diagnostics_v1/report.md) |
+[v24 manuscript](../evidence_manuscript_v24/README.md)
 
 The [registered protocol](protocol.md) fixes the exact three-seed
 forecaster bank, causal comparators, development controller, four

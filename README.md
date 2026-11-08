@@ -32,8 +32,10 @@ I tested the frozen policy on 40 DroneCrowd calibration recordings from
 2% rule, so I kept the 30 confirmation groups sealed. At the same switch
 count, ungated joint selection passed 69 of 120 recording-seed views versus
 18 for independent selection, but only two more than pair-additive selection.
-OLS4 was much stronger on trajectory error. I do not deploy the new policy.
-[Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md).
+OLS4 was much stronger on trajectory error (ADE 1.468 vs. 2.984 image
+pixels for ungated joint selection). I do not deploy the new policy.
+[Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md) |
+[Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
 ## Earlier Development Result
 

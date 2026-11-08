@@ -1,0 +1,44 @@
+\section{Frozen Transfer to DroneCrowd Calibration}
+On the separate release of Wen et al.~\cite{wen}, we freeze the
+development controller and all forecasts for \DrCalQueries\ queries
+in 40 calibration recordings (15 exclusion groups) before
+reading outcomes. The prediction bank, CV thresholds, and original
+2\% rule are unchanged. Intervals use 3,000 paired source draws after
+averaging the three seeds. These are calibration groups, not
+verified independent physical sites.
+
+At the same \DrCalJointSwitch\ switches per arm, ungated joint selection
+has a conservative individual gain of $\DrCalJointIndependentGain$
+percentage points over independent selection, but only
+$\DrCalJointAdditiveGain$ over the additive pair cost. The
+full-grid lower relative-path gain is $\DrCalPairIndependent$ pixels
+versus independent and $\DrCalPairAdditive$ versus additive.
+Table~\ref{tab:dr-cal} separates those matched controls from gating.
+Joint is substantially worse than OLS4: $\DrCalJointOLSGain$ points
+on the observed CV denominator. OLS4 also fails the full risk rule.
+
+\begin{table}[t]
+\centering\small
+\caption{DroneCrowd calibration. Lower gain is in points on the
+observed CV denominator. Matched ungated controls have \DrCalJointSwitch\ switches each.}
+\label{tab:dr-cal}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Arm & Risk passes / 120 & Lower gain vs. CV \\
+\midrule
+OLS4 & \DrCalPassOLS & $\DrCalCvGainOLS$ \\
+Independent & \DrCalPassIndependent & $\DrCalCvGainIndependent$ \\
+Shared family & \DrCalPassScene & $\DrCalCvGainScene$ \\
+Pair-additive & \DrCalPassAdditive & $\DrCalCvGainAdditive$ \\
+Joint & \DrCalPassJoint & $\DrCalCvGainJoint$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four registered thresholds make \DrCalGateSwitch\ switches and pass
+\DrCalGatePass/120 checks. Easy risk is undefined in \DrCalGateUndefined\
+views. Their paired conservative CV gain is $\DrCalGateGain$ points,
+whose lower interval endpoint is exactly zero. No threshold qualifies,
+and all 72 confirmation recordings remain unopened. The matched
+benefit over independent selection therefore does not establish
+deployment or generalization.

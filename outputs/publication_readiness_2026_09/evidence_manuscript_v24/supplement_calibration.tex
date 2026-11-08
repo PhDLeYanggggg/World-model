@@ -1,0 +1,19 @@
+\paragraph{Calibration accuracy and support.}
+The frozen calibration roster contains \DrCalRows\ agent-window
+requests across \DrCalQueries\ queries, not independent samples.
+We average each agent's error on observed steps for ADE and use
+only observed step-12 endpoints for FDE. Query means are merged
+within source and seed before seed and source averaging.
+The CV, OLS4 and ungated joint ADEs are \DrCalAdeCV, \DrCalAdeOLS,
+and \DrCalAdeJoint\ pixels; their FDEs are \DrCalFdeCV, \DrCalFdeOLS,
+and \DrCalFdeJoint. Pair-additive ADE/FDE are \DrCalAdeAdditive/
+\DrCalFdeAdditive\ pixels. Only \DrCalHardRows\ rows meet the fixed
+hard criterion, and \DrCalHardMissing/45 source-seed cells have no
+hard ADE support. We do not report a macro hard result or retune
+the difficulty cut. Equal-count joint versus additive gives a
+full-grid lower pair gain of $\DrCalPairAdditive$ pixels; against
+independent it is $\DrCalPairIndependent$. Unobserved pair errors
+are bounded by disagreement, not replaced by zero. This is
+relative geometry under matched proposal counts, not physical
+safety. A calibration failure does not justify a second threshold
+search or access to confirmation.
