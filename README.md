@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I removed the original edits and kept at most one low-amplitude
+change per recording. It improves aggregate error over constant
+velocity on OpenDD, but still lacks enough recording-level support
+to qualify as a deployment policy.
+[Fixed shapes and sparse edits](outputs/publication_readiness_2026_09/opendd_reserve_shape_v1/README.md).
+
 I gave each recording one optional extra edit to see if the missing
 reference support could be recovered online. The simple easy rule
 increased the number of qualifying recordings but reduced forecast

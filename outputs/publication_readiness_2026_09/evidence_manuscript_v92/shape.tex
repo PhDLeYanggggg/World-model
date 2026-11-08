@@ -1,0 +1,41 @@
+\section{Fixed Shapes and the Reserve Alone}
+
+We freeze recipients and times. Neural, OLS4 and the
+past-prefix analytic path share their smallest peak radius,
+without amplification. At zero radius all retain the original
+edit. This matches \ShapeSlotGainMatched{}/\ShapeSlotGainSlots{} gain slots,
+\ShapeSlotEasyMatched{}/\ShapeSlotEasySlots{} easy slots, and
+\ShapeSlotIncumbentMatched{}/\ShapeSlotIncumbentSlots{} original slots.
+OLS4 against neural yields \ShapeSlotGainForward{} on gain
+slots, but the reverse lower contrast is \ShapeSlotGainReverse{}.
+Missing-step debits are symmetric and do not change sign
+when reversing the comparison. The reverse effects on the
+easy and original slots are \ShapeSlotEasyReverse{} and
+\ShapeSlotIncumbentReverse{}, respectively.
+
+\begin{table}[h]
+\centering
+\caption{Only the reserve is applied in the last four rows;
+all other predictions revert to CV. Joint passes still require
+the original recording risk and both positive lower gains.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Rule & Edits & Undefined & Joint \\
+\midrule
+Incumbent & \ShapeSlotOriginalEdits{} & \ShapeSlotOriginalUndefined{} & \ShapeSlotOriginalPass{} \\
+Incumbent plus gain reserve & \ShapeSlotFullEdits{} & \ShapeSlotFullUndefined{} & \ShapeSlotFullPass{} \\
+Reserve only, frozen rows & \ShapeSlotOnlyEdits{} & \ShapeSlotOnlyUndefined{} & \ShapeSlotOnlyPass{} \\
+Reserve only, no shadow & \ShapeSlotSimpleEdits{} & \ShapeSlotSimpleUndefined{} & \ShapeSlotSimplePass{} \\
+Reserve only, matched neural & \ShapeSlotNeuralEdits{} & \ShapeSlotNeuralUndefined{} & \ShapeSlotNeuralPass{} \\
+Reserve only, matched OLS4 & \ShapeSlotOLSEdits{} & \ShapeSlotOLSUndefined{} & \ShapeSlotOLSPass{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Removing incumbent edits but retaining their eligibility trace
+gives \ShapeSlotSingle{} over CV; without the trace it gives
+\ShapeSlotFree{} (error-mass weighted \ShapeSlotWeighted{}).
+The combined result is \ShapeSlotCombined{}. The sparse
+rule improves aggregate utility but fails full-roster risk
+on the exposed sites. The confirmation protocol is unchanged.

@@ -1,0 +1,75 @@
+{
+  "arms": [
+    "floor",
+    "neural_frozen",
+    "neural_matched",
+    "ols4_matched",
+    "hindcast_matched"
+  ],
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "candidate_bank": [
+    "ols4",
+    "ols3",
+    "ols8",
+    "damped4",
+    "bounded_acceleration4"
+  ],
+  "causal_hindcast_prefixes": [
+    4,
+    5,
+    6
+  ],
+  "clocks": [
+    "gain",
+    "easy",
+    "incumbent"
+  ],
+  "code": {
+    "bytes": 9339,
+    "path": "scripts/run_m3w_opendd_reserve_shape.py",
+    "sha256": "ada64be98051a1796051fb656e92a253b3c9eb19d6413401a65719b811c31e20"
+  },
+  "confirmation_access": false,
+  "incumbent_secondary": "all original edits, full neural radius before matching; no reserve",
+  "model": {
+    "bytes": 1421,
+    "path": "src/world_model/m3w_opendd_reserve_shape.py",
+    "sha256": "0bc35ddd1b7b3d44ead05e139bd0fa813b165d5ad6a09ac6188a7661176e2ab0"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_new_training": true,
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 90352,
+      "path": "outputs/publication_readiness_2026_09/opendd_reserve_v1/analysis.json",
+      "sha256": "ab3a4af254c331f45187f2a9b9f608f785d8468e2af6c925a0920b82fba687e8"
+    },
+    {
+      "bytes": 14948,
+      "path": "outputs/publication_readiness_2026_09/opendd_reserve_v1/head_freeze.json",
+      "sha256": "85201bb48456c156af129c7f2b13e1bc5575369d40566dfe66da6659c27124ec"
+    },
+    {
+      "bytes": 1331,
+      "path": "outputs/publication_readiness_2026_09/opendd_reserve_v1/absolute.json",
+      "sha256": "b92ccdaee70f5ec7887c132399eebb2b228b64efb800ef65cb798a6ff553c92f"
+    }
+  ],
+  "primary": "matched OLS4 versus neural at the frozen gain-clock rows and common peak radius",
+  "radius": "minimum native peak over frozen neural, OLS4 and selected analytic; no amplification",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "zero_radius": "retain the original neural on all matched arms, report coverage"
+}

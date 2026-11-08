@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Fixed Shapes and Sparse Intervention
+
+The causal one-edit policy without the incumbent improves over CV
+by +0.143 pp [+0.031, +0.241] on OpenDD development, with 64/606
+joint passes and 463 undefined. At 594/598 comparable gain slots,
+matched neural vs OLS4 is +0.078 pp [-0.007, +0.168]. Its lower
+gain is not the negation of the reverse contrast. No promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_reserve_shape_v1/README.md) |
+[Manuscript v92](outputs/publication_readiness_2026_09/evidence_manuscript_v92/README.md).
+
 ## A Causal One-Edit Reserve
 
 21 Torch fits, 10,500 updates. Easy-triggered extra edits raise joint
