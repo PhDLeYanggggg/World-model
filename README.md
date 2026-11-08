@@ -37,6 +37,11 @@ pixels for ungated joint selection). I do not deploy the new policy.
 [Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md) |
 [Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
+I followed up by learning when to replace OLS4 from short backtests within
+the observed history. The method helped on available labels but did not
+beat OLS4 conservatively. Shrinking all frozen replacements together did
+not fix that. [OLS4 replacement study](outputs/publication_readiness_2026_09/native_ols_replacement_v1/README.md).
+
 ## Earlier Development Result
 
 I tested whether adding past-image alignment to each agent's history helps

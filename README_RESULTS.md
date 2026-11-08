@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learning Replacements Against OLS4
+
+Nine fresh Torch fits use the same 9,675 interventions per arm. OLS4-relative
+training with past-only backtests improves observed gain over OLS4 by 0.333
+points, but conservative gain is -1.753 points (95% CI [-3.729, -0.491]).
+All four frozen direction sets have best common amplitude zero; a label-aware
+rowwise oracle still has 0.816 points for the OLS-hindcast arm. No change to
+the external result, official rule or confirmation access.
+[Training](outputs/publication_readiness_2026_09/native_ols_replacement_v1/README.md) |
+[Shrinkage diagnostic](outputs/publication_readiness_2026_09/native_ols_replacement_amplitude_v1/README.md).
+
 ## Completed DroneCrowd Calibration
 
 All 40 recordings and three seeds were scored and replayed. No threshold
