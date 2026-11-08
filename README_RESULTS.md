@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Calibration After Action Selection
+
+147 native Torch fits and a zero-update checkpoint replay on exposed OpenDD
+development locations. Adding easy-support prediction leaves 54/606
+dual-positive risk passes, tied with safety-only and same-count independent
+choice. The direct advantage over matched independent is +0.005 pp
+(95% location-bootstrap interval -0.004 to +0.019); gain vs CV is -0.192 pp.
+The exact same-bank, same-cap hindsight audit verifies 170/202 distinct
+recordings; ten have no easy support. No deployment change or confirmation
+read. [Report](outputs/publication_readiness_2026_09/selected_bridge_hurdle_v1/README.md) |
+[Working supplement v62](outputs/publication_readiness_2026_09/evidence_manuscript_v62/README.md).
+
 ## Direct Signed Bridge Risk
 
 147 native Torch fits with nested, analytic-only donor calibration.

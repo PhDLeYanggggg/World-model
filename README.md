@@ -293,6 +293,15 @@ tangent and passed fewer checks than the independent rule at the same
 switch count.
 [Direct risk and admission audit](outputs/publication_readiness_2026_09/signed_bridge_risk_v1/README.md).
 
+I next calibrated the actions that the policy actually chose, using
+separate development locations. Adding an easy-support score did not
+improve the result: both the joint policy and the independent rule at
+the same switch counts cleared 54 of 606 recording-seed evaluations.
+With the same candidates and edit cap, a hindsight search found useful
+and risk-feasible changes in 170 of 202 distinct recordings. The bank
+has room to improve; the learned ranking did not find it reliably.
+[Calibration and capacity study](outputs/publication_readiness_2026_09/selected_bridge_hurdle_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
