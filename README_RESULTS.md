@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## TUMDOT Same-Query Neighbor Context
+
+On the same 404 nonoverlapping queries, the guarded aligned model
+loses -0.04168 pp directly to the no-peer guard and -0.05478 pp to
+the permuted-peer guard at half radius. Matching every query's
+realized hindcast changes (1,091 per arm) reduces but does not
+remove the deficits: -0.01497 pp and -0.01677 pp respectively.
+All three intersections are negative in both matched contrasts.
+The guarded pair displacement diagnostic does not improve versus
+the no-peer control. No promotion or independent confirmation.
+[Peer ablation](outputs/publication_readiness_2026_09/tumdot_peer_choice_v1/README.md) |
+[Matched switches](outputs/publication_readiness_2026_09/tumdot_peer_budget_v1/README.md) |
+[Manuscript v116](outputs/publication_readiness_2026_09/evidence_manuscript_v116/README.md).
+
 ## TUMDOT Three-Reference Capacity and Joint Supervision
 
 At fixed half radius the exact outcome-aware solution passes the

@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether neighbors observed at the same time improve
+trajectory choice on TUMDOT. Even after matching how often the
+models changed the past-motion prediction, the model with correctly
+aligned neighbors lost to both the no-neighbor and shuffled controls.
+[TUMDOT neighbor comparison](outputs/publication_readiness_2026_09/tumdot_peer_choice_v1/README.md).
+
 I checked whether the TUMDOT forecast menu itself was limiting the
 selector. With outcomes available, all 27 half-radius views have a
 solution that beats three references and meets the risk rule.

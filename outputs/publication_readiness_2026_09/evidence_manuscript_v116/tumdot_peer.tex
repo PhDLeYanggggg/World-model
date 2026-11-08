@@ -1,0 +1,27 @@
+\subsection*{Same-query peer context on TUMDOT}
+I compare aligned peer history and predicted spacing against
+two retrained controls: zero peer inputs and cyclic reassignment
+within the current query. Paths, radii, labels, draws and training
+capacity match. The guards can change away from hindcast at
+different frequencies. For a shared-budget diagnostic, retain
+the minimum of the three counts in each query, or \TumPeerCount{}
+half-radius changes per arm.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\hline
+Aligned minus & Full pp & Match pp & Match interval \\
+\hline
+Blind & \TumPeerBlind \\
+Permuted & \TumPeerPermuted \\
+\hline
+\end{tabular}
+\end{center}
+
+These are direct paired conservative contrasts, not differences
+of scores against CV. Correct alignment does not help at matched
+counts in any of the three intersections. The original risk
+definition is unchanged; the intervals are descriptive because
+all views come from one exposed campaign.
