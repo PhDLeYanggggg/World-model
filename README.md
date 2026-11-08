@@ -156,6 +156,15 @@ disagree on trajectories without future labels, so shrinking the
 model's deviations cannot remove most of the conservative debit.
 [Weighted velocity and reference disagreement](outputs/publication_readiness_2026_09/weighted_velocity_v1/README.md).
 
+I checked the missing moving-drone labels against the publisher's
+release. The converter had not dropped any available observations;
+most of the disagreement cost comes from tracks with no later
+same-ID observation. I then refit the same model on the more densely
+labeled OpenDD cohort. It beat OLS4 there but lost to CV, which is the
+stronger reference on that cohort.
+[Raw-label audit](outputs/publication_readiness_2026_09/moving_future_support_v1/README.md) |
+[OpenDD refit](outputs/publication_readiness_2026_09/opendd_weighted_velocity_v1/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have

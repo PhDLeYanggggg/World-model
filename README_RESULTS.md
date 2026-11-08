@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Released Future Labels and OpenDD Control
+
+Independent raw CSV reconciliation of 836,952 fitting-step requests:
+685,547 known labels, 151,405 missing, 29,268 distinct missing keys,
+zero exact recoveries or alignment mismatches. No later same-ID record
+accounts for 99.33% of the 11.551 pp disagreement floor. On OpenDD, 42
+fresh location-held fits over three seeds use 10,475 existing windows
+and a 0.282 pp floor. Dual loss vs OLS4 +4.188 pp [+2.933, +5.278],
+vs CV -4.794 pp [-7.255, -2.039]; 0/606 risk passes. No change to
+roles, original risk rules or independent access.
+[Raw support](outputs/publication_readiness_2026_09/moving_future_support_v1/README.md) |
+[OpenDD refit](outputs/publication_readiness_2026_09/opendd_weighted_velocity_v1/README.md) |
+[Supplement v49](outputs/publication_readiness_2026_09/evidence_manuscript_v49/README.md).
+
 ## Weighted Velocity and Irreducible Reference Disagreement
 
 54 native Torch fits, three seeds. At 95,769 matched edits, dual loss
