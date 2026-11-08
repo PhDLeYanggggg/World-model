@@ -1,0 +1,53 @@
+\section{Baseline Difficulty and Candidate Advantage}
+
+The near-zero full-roster effect of the comoving ego predictor
+combines different effects on easy and hard rows. In the same
+OpenDD development folds, we define easy and hard using CV errors
+and cuts estimated on the other sites. They are outcome strata,
+not inference features. Contributions are normalized by the
+whole site's observed CV error mass, so they add rather than
+reporting percentages on different denominators.
+
+\begin{table}[h]
+\centering
+\caption{Additive lower gain contributions of the frozen neural
+forecast versus CV. Three seeds are averaged before the
+seven-site bootstrap.}
+\small
+\begin{tabular}{lrl}
+\toprule
+Stratum & Rows & Contribution [95\% interval] \\
+\midrule
+Easy & \DifficultyEasyRows{} & \DifficultyEasyEffect{} \\
+Hard & \DifficultyHardRows{} & \DifficultyHardEffect{} \\
+Other observed & \DifficultyOtherRows{} & \DifficultyOtherEffect{} \\
+Wholly unobserved & \DifficultyUnobservedRows{} & \DifficultyUnobservedEffect{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A sign guard splits the residual along and perpendicular to
+the last observed motion and keeps each component if it agrees
+with the corresponding OLS4-minus-CV displacement. Its direct
+lower effect versus the original neural direction at exactly
+the same rowwise peaks is \DifficultyDirection{}.
+At the \DifficultyEdits{} fixed slots it reaches
+\DifficultyGuard{} joint passes versus \DifficultyPrefix{} for
+the donor-prefix rule, with direct effect \DifficultyGuardMatched{}.
+The difference in counts does not establish improved utility.
+
+We separately train \DifficultyFits{} past-only heads to predict CV
+difficulty, not neural gain. The head obtains hard AUROC
+\DifficultyAUROC{} versus \DifficultyMotionAUC{} for normalized
+CV/OLS4 disagreement. Using the neural forecast when predicted hard
+probability is at least 0.50 and easy probability below 0.25 yields
+\DifficultyRawEdits{} switches. Against the same trajectory bank
+and switch count per query ranked by disagreement, its direct
+gain is \DifficultyGatedMotion{}; versus CV it is
+\DifficultyGatedCV{}. At the original radii and slots it changes
+\DifficultySwaps{} shapes, obtaining \DifficultyGate{} versus
+\DifficultyPrefix{} joint passes in \DifficultyViews{} views
+and a direct effect of \DifficultyGatedFixed{}.
+These controls distinguish predicting baseline error from
+predicting a specific replacement's advantage. Neither rule
+advances to external calibration.

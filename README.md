@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated the neural correction's gains on difficult tracks from its
+losses on easy tracks. The losses canceled the gains. A learned predictor
+of CV difficulty did not reliably beat a simple motion rule at the same
+switch counts, and it did not improve the fixed-budget policy.
+[Forecast error breakdown](outputs/publication_readiness_2026_09/opendd_component_guard_v1/README.md) |
+[Difficulty gate](outputs/publication_readiness_2026_09/opendd_hardness_gate_v1/README.md).
+
 I compared a compact EqMotion adaptation with two strong motion baselines
 on held-out OpenDD development locations. The ego-only model in a moving
 frame beat OLS4, but did not beat constant velocity. Adding the nearest

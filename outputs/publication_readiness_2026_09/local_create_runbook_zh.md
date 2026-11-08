@@ -1,5 +1,14 @@
 # M3W 本地与 CREATE 操作记录
 
+## 轨迹分量归因与 CV 难度门控：2026-11-08
+
+复用已核验的 OpenDD 神经预测及固定预算，先重算纵向、侧向和等幅
+对照；再本机训练 21 个难度头、8,400 步。四计算线程、零数据工作
+进程，每 100 步检查点和心跳；`--replay` 零更新复算。没有 CREATE
+新作业或独立确认组访问。
+[分量审计](opendd_component_guard_v1/README.md) |
+[难度门控](opendd_hardness_gate_v1/README.md)。
+
 ## 随动坐标 EqMotion 与匿名复算：2026-11-08
 
 本机 arm64 CPU Torch 完成 63 个模型、50,400 步，约 15.6 分钟。

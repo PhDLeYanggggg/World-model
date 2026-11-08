@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Hard-Slice Gain And Causal Difficulty
+
+Full ego correction contributes +2.435 pp on hard rows and -2.823 pp
+on easy rows. The direction guard loses -1.357 pp [-1.947, -0.874]
+to its per-row equal-peak control. At fixed slots it clears 92/606
+against 90 for the donor-prefix control, with no reliable utility gain.
+21 Torch difficulty heads show +0.070 pp [-0.275, +0.476] over the
+same-count motion control and lower fixed-slot passes from 90 to 84.
+No deployment, original rule change, or independent read.
+[Component audit](outputs/publication_readiness_2026_09/opendd_component_guard_v1/README.md) |
+[Difficulty gate](outputs/publication_readiness_2026_09/opendd_hardness_gate_v1/README.md) |
+[Supplement v84](outputs/publication_readiness_2026_09/evidence_manuscript_v84/README.md).
+
 ## OpenDD EqMotion In A Comoving Frame
 
 63 fresh fits over seven held-out locations and three seeds. Ego-only

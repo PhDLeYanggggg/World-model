@@ -1,0 +1,39 @@
+{
+  "axis": "last observed displacement, else first-to-last chord, else no guard",
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 9917,
+    "path": "scripts/run_m3w_opendd_component_guard.py",
+    "sha256": "2254a4d2919ab4d6280e708405224d80ac6a2bc9040d80c7cc2fb6bf970bc684"
+  },
+  "confirmation_access": false,
+  "guard": "retain whole longitudinal or lateral residual only if its terminal sign agrees with OLS4 minus CV",
+  "matched": "original query/recipient/radius; when a shape is zero, emit the original shape",
+  "model": {
+    "bytes": 2098,
+    "path": "src/world_model/m3w_opendd_component_guard.py",
+    "sha256": "3f06722625112e6ab3ee3722e788f2879a1b2e1169646ff6abfdddba7ceaf012"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_training": true,
+  "original_2pct": true,
+  "parent": {
+    "bytes": 124234,
+    "path": "outputs/publication_readiness_2026_09/opendd_comoving_eqmotion_v1/analysis.json",
+    "sha256": "c52918b809b0b513c59fbea39a4191381323a165c3f61f0e5d1fd20838b76f0c"
+  },
+  "primary": "direct missing-step lower utility: guard versus full direction at the same row peak",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "strata": "original donor easy/hard cuts; separate donor quartiles of observed normalized CV-to-OLS4 disagreement"
+}

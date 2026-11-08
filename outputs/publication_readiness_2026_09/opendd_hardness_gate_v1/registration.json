@@ -1,0 +1,46 @@
+{
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 9650,
+    "path": "scripts/run_m3w_opendd_hardness_gate.py",
+    "sha256": "c049d7d83c648c5d2a82c3be1b066c44eac27996b594a35f050f57588afbb574"
+  },
+  "confirmation_access": false,
+  "control": "same neural trajectory and per-query switch count; replace ranking with observed CV/OLS disagreement",
+  "fixed_slot_secondary": "switch donor-prefix shape to neural at same frozen slot radius if gate passes",
+  "model": {
+    "bytes": 1628,
+    "path": "src/world_model/m3w_opendd_hardness_gate.py",
+    "sha256": "1bbe492d5b7a4a55cd26cea4cae2bcac9bdc50efeddfbd6201ed31d5dffe294f"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "original_2pct": true,
+  "parent": {
+    "bytes": 324445,
+    "path": "outputs/publication_readiness_2026_09/opendd_component_guard_v1/analysis.json",
+    "sha256": "2df39b24d3c25c62bc6458d56b9923f8e7b6c3642232d6d7e7bb14cf5e650c96"
+  },
+  "policy": "hard probability >= .50 and easy probability < .25; fixed before evaluation, no threshold search",
+  "primary": "direct conservative gain vs matched count control and versus CV",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "training": "CV easy/other/hard targets only; exclude held site and exclude each fitting site's own labels from cut estimation",
+  "workers": 0
+}
