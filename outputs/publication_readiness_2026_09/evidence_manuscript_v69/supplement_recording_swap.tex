@@ -1,0 +1,25 @@
+\paragraph{Ranking exchanges that compete for a recording budget.}
+Prior work ranks feasible solutions for decision-focused
+learning~\cite{mandi2022rank}. We use this idea for forecast exchanges
+under partial labels. An exchange moves the same number of edits between
+two queries and must respect chronological credit. For observed gain
+difference $d$ and the summed forecast disagreement $u$ at missing steps,
+the triangle inequality bounds the difference by $[d-u,d+u]$. We use the
+signed margin $\operatorname{sgn}(d)\max(|d|-u,0)$ and omit ambiguous
+directions from the ranking loss. The point and swap heads share their
+architecture, point objective, candidate bank and frozen risk terms.
+Nominations and anchor scores for a donor exclude both that donor and
+the outer location.
+
+In 42 native Torch fits, swap ranking gives \CrossSwapMatchedRank{}
+versus \CrossSwapMatchedPoint{} joint passes at \CrossSwapEdits{} matched
+edits, compared with \CrossSwapMatchedFactor{} for frozen factorized
+risk (\CrossSwapViews{} recording--seed views). Its direct difference
+to point-only is \CrossSwapDiff{} pp (95\% location interval
+[\CrossSwapLow{}, \CrossSwapHigh{}]). Online passes are \CrossSwapOnlineRank{}
+versus \CrossSwapOnlinePoint{}. Of \CrossSwapPairN{} held pairs,
+\CrossSwapCert{}\% have an identifiable direction under the bound;
+concordance is \CrossSwapAccRank{}\% for the swap head and
+\CrossSwapAccPoint{}\% for point-only. The pairs are dependent. Neither
+the gain nor the ranking improves; missing directions alone do not
+explain this result. Confirmation remains unopened.

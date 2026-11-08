@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cross-Query Budget-Feasible Swap Ranking
+
+42 native Torch fits with frozen candidates and risk. At 1,457 exact
+matched edits, swap ranking increases joint passes from 60 to 70/606
+versus point regression but loses -0.026 pp [-0.045, -0.009]; frozen
+factorized risk still clears 73/606. Online joint passes fall from 62
+to 46. Certain swap concordance drops from 54.84% to 53.96%; only 6.61%
+of the held comparisons have an unidentifiable direction under the
+missing-label bound. No qualifying controller.
+[Report](outputs/publication_readiness_2026_09/recording_swap_rank_v1/README.md) |
+[Working supplement v69](outputs/publication_readiness_2026_09/evidence_manuscript_v69/README.md).
+
 ## Donor-Only Risk and Gain Calibration
 
 168 fresh native Torch fits: triple-excluded nomination and pair-excluded

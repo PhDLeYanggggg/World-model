@@ -350,6 +350,12 @@ The soft score cleared two more matched views but fewer online, and
 lower gain prediction error did not yield better decisions.
 [Donor-only calibration study](outputs/publication_readiness_2026_09/donor_risk_readout_v1/README.md).
 
+I also trained the model to compare edits that compete for the same
+recording budget. The swap loss cleared more joint checks than point
+regression in the retrospective match, but ranked fewer certain swaps
+correctly and lost forecast gain. It also cleared fewer checks online.
+[Cross-query swap study](outputs/publication_readiness_2026_09/recording_swap_rank_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
