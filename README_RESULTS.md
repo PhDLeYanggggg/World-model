@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched-Radius Dual-Reference Direction
+
+At 943 matched edits, dual-reference versus CV-only gives +0.02306 pp
+[+0.00063, +0.06124], shrinking to +0.00442 pp [-0.00070, +0.01084]
+when the largest site contribution is omitted. Frozen neural, CV-only,
+dual and guarded joint passes are 138, 128, 130 and 137 of 606.
+All keep 295 undefined. The fixed-row hindsight menu reaches 226.
+[Experiment](outputs/publication_readiness_2026_09/opendd_dual_direction_v1/README.md) |
+[Manuscript v98](outputs/publication_readiness_2026_09/evidence_manuscript_v98/README.md).
+
 ## Support-First Scheduling and Both-Role Capacity
 
 At 679 matched edits, support-first gives -0.01466 pp

@@ -23,6 +23,7 @@ STOPPING = OUT.parent.parent/"opendd_timing_replay_v7"/OUT.name
 ADMISSION = OUT.parent.parent/"opendd_timing_replay_v8"/OUT.name
 RECORD_SUPPORT = OUT.parent.parent/"opendd_timing_replay_v9"/OUT.name
 SCHEDULE_SUPPORT = OUT.parent.parent/"opendd_timing_replay_v10"/OUT.name
+DUAL_DIRECTION = OUT.parent.parent/"opendd_timing_replay_v11"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
@@ -37,6 +38,7 @@ ADMIT = "opendd_support_admission_v1"
 RECORD = "opendd_record_support_v1"
 MONOTONE = "opendd_support_monotonicity_v1"
 SCHEDULE = "opendd_support_schedule_v1"
+DIRECTION = "opendd_dual_direction_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -179,8 +181,10 @@ def schedule_tables(studies, expected):
 
 
 def build(include_rank=False, include_teacher=False, include_reserve=False, include_shape=False,
-          include_two=False, include_stop=False, include_admission=False, include_record=False, include_schedule=False):
+          include_two=False, include_stop=False, include_admission=False, include_record=False,
+          include_schedule=False, include_direction=False):
     studies, expected = {}, {}
+    include_schedule = include_schedule or include_direction
     include_record = include_record or include_schedule
     include_admission = include_admission or include_record
     include_stop = include_stop or include_admission
@@ -206,6 +210,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         names += (RECORD,)
     if include_schedule:
         names += (SCHEDULE,)
+    if include_direction:
+        names += (DIRECTION,)
     for name in names:
         a = read_factor() if name == FACTOR else read_two("ranking", "no_threshold_search") if name == TWO_RANK else legacy.read(name)
         s = a["summary"]
@@ -275,7 +281,8 @@ def build(include_rank=False, include_teacher=False, include_reserve=False, incl
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = next(p for enabled, p in ((include_schedule, SCHEDULE_SUPPORT), (include_record, RECORD_SUPPORT),
+    out = next(p for enabled, p in ((include_direction, DUAL_DIRECTION),
+        (include_schedule, SCHEDULE_SUPPORT), (include_record, RECORD_SUPPORT),
         (include_admission, ADMISSION), (include_stop, STOPPING),
         (include_two, TWO_SLOTS), (include_shape, SHAPES), (include_reserve, RESERVED),
         (include_teacher, RECORDING), (include_rank, EXTENDED), (True, OUT)) if enabled)
@@ -301,7 +308,8 @@ if __name__ == "__main__":
     p.add_argument("--include-support-admission", action="store_true")
     p.add_argument("--include-record-support", action="store_true")
     p.add_argument("--include-support-schedule", action="store_true")
+    p.add_argument("--include-dual-direction", action="store_true")
     a = p.parse_args()
     build(a.include_rank, a.include_record_teacher, a.include_reserve, a.include_reserve_shape,
           a.include_two_reserves, a.include_support_stop, a.include_support_admission,
-          a.include_record_support, a.include_support_schedule)
+          a.include_record_support, a.include_support_schedule, a.include_dual_direction)

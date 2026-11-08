@@ -1,0 +1,24 @@
+\section{Matched-Radius Dual-Reference Direction Selection}
+
+At the same 943 interventions, time, recipient and peak
+displacement are fixed. The neural shape is compared with
+OLS4 and an observed-prefix analytic shape. Two matched
+heads learn shape contrasts against the original neural edit:
+one uses CV alone, the other uses CV and OLS4 and maximizes
+the smaller predicted improvement. Both see double-excluded
+fitting forecasts, with no held-site threshold selection.
+
+The dual-reference lower contrast against the CV-only head is
+\DualDirPrimary{}, but against the frozen neural edit it is
+\DualDirFrozen{}. Removing the highest-contributing site gives
+\DualDirOmit{} for the primary contrast; a site sign-flip
+diagnostic gives $p=\DualDirSignP{}$ under symmetry.
+The CV-only and dual heads pass \DualDirCVPass{} and
+\DualDirDualPass{} views, respectively, versus
+\DualDirNeuralPass{} for the frozen neural rule.
+Predicted-risk guarding passes \DualDirGuardPass{}; joint
+choice at the \DualDirCoview{} co-observed role pairs yields
+the same predictions. The fixed-recipient hindsight shape
+menu admits \DualDirOraclePass{} witnesses. No shape can
+recover selected easy reference when the selected rows are
+held fixed. These are development results, not deployment evidence.

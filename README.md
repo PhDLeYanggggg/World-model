@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared learning forecast directions against one motion baseline
+and against two. The two-baseline head did better than the CV-only
+head but did not improve on the original neural edits. Fixing the
+edited tracks also left the same recordings without an easy reference.
+[Matched direction experiment](outputs/publication_readiness_2026_09/opendd_dual_direction_v1/README.md).
+
 I tested whether a support edit should precede the gain edit.
 It did not help at the same budget. A separate analysis shows that
 changing both edit times creates much more room, and allowing
