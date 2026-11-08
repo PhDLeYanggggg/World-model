@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Finite-Harm Continuation
+
+63 three-seed native Torch continuations at 30,075 matched edits.
+Finite harm recovers 21 passes and loses none vs frozen tangent
+(543/606 vs 522/606), but direct conservative gain vs equally
+continued tangent is -0.0927 pp [-0.1272, -0.0633]. Curvature adds
+no pass and loses -0.0016 pp [-0.0027, -0.0009] vs finite guard.
+Exact matched-radius risk optimum: 549/606 original menu, 551/606
+expanded menu, with 30 absent-easy and 25 defined failures.
+Neither deployment nor the original 2% rule changes.
+[Experiment](outputs/publication_readiness_2026_09/opendd_finite_guard_v1/README.md) |
+[Working supplement v51](outputs/publication_readiness_2026_09/evidence_manuscript_v51/README.md).
+
 ## OpenDD CV-Tangent Forecast Shape
 
 42 native Torch fits over three seeds. At 30,075 matched edits and

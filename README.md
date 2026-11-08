@@ -173,6 +173,13 @@ little utility and did not recover the missing easy references.
 [CV-tangent experiment](outputs/publication_readiness_2026_09/opendd_cv_tangent_v1/README.md) |
 [Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v50/README.md).
 
+I next trained the model to limit the easy-case error added by the
+actual finite edit. It recovered 21 recording-seed passes without
+losing any the tangent model passed, but gave up forecast accuracy.
+Even picking the best of the new paths with future labels could not
+close the gap at the same recipients and radii.
+[Finite-harm continuation](outputs/publication_readiness_2026_09/opendd_finite_guard_v1/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
