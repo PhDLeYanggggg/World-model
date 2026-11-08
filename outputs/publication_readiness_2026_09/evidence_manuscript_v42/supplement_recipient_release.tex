@@ -1,0 +1,45 @@
+\section{Releasing Recipients and Counts}
+We expand the fixed-recipient comparison on the 24 fitting
+recordings. First we allow any recipient, holding all original
+query counts and the same four half-blend paths. We next add
+four full-strength fits and two bounded trend paths. The trend
+uses the recent-minus-wide fitted velocity as an acceleration
+proxy, capping its lead-dependent correction by OLS4--CV distance.
+We separate fixed query counts, fixed recording totals, and
+unrestricted counts.
+
+\begin{table}[!t]
+\centering\small
+\caption{Hindsight capacity on 24 fitting recordings. Pass means
+positive conservative gains over both CV and OLS4 under the
+unchanged 2\% rule. Remaining columns separate risk infeasibility,
+negative utility upper bounds, and unresolved searches.}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Candidate bank, budget & Pass & Infeas. & Neg. & Unres.\\
+\midrule
+\ReleaseRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+The optimizer enforces at most one action per row, original
+positive-harm and signed easy constraints, and positive selected
+easy reference mass. It maximizes the smaller direct conservative
+gain against CV and OLS4. Every positive allocation is re-scored
+using the original paths and masks. We retain the solver's negative
+upper bounds separately from risk infeasibility. The fixed-total
+control gives \ReleaseCurvedTotal/24, and the free-count half bank
+gives \ReleaseHalfFree/24. Even the expanded free bank cannot pass
+\ReleaseNoEasy{} recordings with no easy reference at all.
+This is a path-availability and allocation diagnostic, not evidence
+of a learned policy or physical safety. No new cohort is opened.
+
+On the same bank we cross-fit gain and harm moments by ridge
+regression, leaving each source group out of its own predictor
+and its training easy threshold. A recording-level price grid
+proposes a joint action set under predicted risk inequalities.
+The original scoring rule still gives \ReleaseFitPass/24 passes,
+with a direct OLS4 conservative contrast of \ReleaseFitGain{} pp
+(95\% source interval \ReleaseFitCI). Predicted feasibility is not
+actual risk control. The oracle witnesses do not train this probe.

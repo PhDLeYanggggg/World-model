@@ -1,0 +1,1311 @@
+{
+  "calibration_access": false,
+  "capacity": {
+    "bytes": 58716,
+    "path": "outputs/publication_readiness_2026_09/recipient_release_capacity_v1/analysis.json",
+    "sha256": "a4249708918d331fe1e8fbbf219def40279ee23a15ba3a98770da64bf2ff27bb"
+  },
+  "code": {
+    "bytes": 5799,
+    "path": "scripts/audit_m3w_recipient_release_controls.py",
+    "sha256": "630841272b3306c0de0331d1d6d8cbb1a4b26adc87976537191d86df5f6130b9"
+  },
+  "confirmation_access": false,
+  "controls": [
+    "half_free",
+    "curved_total"
+  ],
+  "deployment": false,
+  "outcome_aware_only": true,
+  "paired_equal_source_bootstrap_pp": {
+    "curved_free_vs_curved_total": {
+      "interval95": [
+        0.0,
+        45.51587301587306
+      ],
+      "point": 20.105820105820104
+    },
+    "curved_free_vs_half_free": {
+      "interval95": [
+        0.0,
+        48.148148148148145
+      ],
+      "point": 23.28042328042328
+    },
+    "curved_total_vs_curved_exact": {
+      "interval95": [
+        0.0,
+        27.513227513227516
+      ],
+      "point": 11.64021164021164
+    },
+    "half_free_vs_half_exact": {
+      "interval95": [
+        0.0,
+        19.603174603174697
+      ],
+      "point": 8.465608465608463
+    }
+  },
+  "resamples": 3000,
+  "rows": [
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": null,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.00010647931118639696,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": null,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.00010647931118639696,
+          "upper_gain_mass": null
+        }
+      },
+      "recording": "moving_scene_12__1",
+      "source": "moving_source_component_049",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "risk_infeasible",
+        "curved_total": "risk_infeasible",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "risk_infeasible"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": true,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 2,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.0003367626552607615,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 0.0003367626552607615,
+          "upper_gain_mass": -257.461648530113
+        }
+      },
+      "recording": "moving_scene_18__1",
+      "source": "moving_source_component_055",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "risk_infeasible",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "negative_upper"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 1,
+          "status": "unresolved",
+          "tolerance_mass": 0.0008870616890337566,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 0.0008870616890337566,
+          "upper_gain_mass": -215.187106590543
+        }
+      },
+      "recording": "moving_scene_21__1",
+      "source": "moving_source_component_059",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "unresolved",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "negative_upper"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              1882.3668104295552,
+              764.7183013782835
+            ],
+            "reference": 4285.615848594829,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.011400545986715385,
+              "known_easy_risk": 0.0,
+              "rows": 1107,
+              "selected": 483,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 483
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0004285615848594829,
+          "upper_gain_mass": 764.7183013782848
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 0.0004285615848594829,
+          "upper_gain_mass": -64.4418377748774
+        }
+      },
+      "recording": "moving_scene_21__2",
+      "source": "moving_source_component_059",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "negative_upper"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 1,
+          "status": "unresolved",
+          "tolerance_mass": 0.0021351299792933226,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              7518.631969268871,
+              671.7103509428061
+            ],
+            "reference": 21351.299792933227,
+            "risk": {
+              "completion_all_risk_upper": 1.5046260795778431e-06,
+              "completion_easy_risk_upper": 0.009939316858224606,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.12288866788952024,
+              "known_easy_risk": 0.0,
+              "rows": 4785,
+              "selected": 3216,
+              "supported": true,
+              "unknown_selected": 1
+            },
+            "switched": 3216
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0021351299792933226,
+          "upper_gain_mass": 671.7103509428116
+        }
+      },
+      "recording": "moving_scene_21__3",
+      "source": "moving_source_component_059",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "unresolved",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 1,
+          "status": "unresolved",
+          "tolerance_mass": 0.0005952032541143141,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              1227.3041662317894,
+              701.4702977237844
+            ],
+            "reference": 5952.032541143141,
+            "risk": {
+              "completion_all_risk_upper": 0.0006922398849808557,
+              "completion_easy_risk_upper": 0.01998360883769071,
+              "known_all_risk": 5.706797062163595e-06,
+              "known_easy_net_degradation": -0.14368060840738614,
+              "known_easy_risk": 0.00013618318729517504,
+              "rows": 6555,
+              "selected": 4563,
+              "supported": true,
+              "unknown_selected": 3
+            },
+            "switched": 4563
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0005952032541143141,
+          "upper_gain_mass": 701.4730565571341
+        }
+      },
+      "recording": "moving_scene_22__1",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "unresolved",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              1560.7670969759388,
+              987.8053266789051
+            ],
+            "reference": 5183.714496481812,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.017714139292506453,
+              "known_easy_risk": 0.0,
+              "rows": 1598,
+              "selected": 813,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 813
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0005183714496481811,
+          "upper_gain_mass": 987.8053266789038
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              926.8454248635624,
+              353.88365456652843
+            ],
+            "reference": 5183.714496481812,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.05929248996228099,
+              "known_easy_risk": 0.0,
+              "rows": 1598,
+              "selected": 1046,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 1046
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0005183714496481811,
+          "upper_gain_mass": 353.8836545665283
+        }
+      },
+      "recording": "moving_scene_22__2",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              1576.7686244187685,
+              593.3511481612506
+            ],
+            "reference": 4882.381369322018,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.12292974251275264,
+              "known_easy_risk": 0.0,
+              "rows": 1744,
+              "selected": 1087,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 1087
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0004882381369322018,
+          "upper_gain_mass": 593.3511481612513
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 0.0004882381369322018,
+          "upper_gain_mass": -121.43397542148341
+        }
+      },
+      "recording": "moving_scene_22__3",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "negative_upper"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              2633.6942636687872,
+              701.3253209865154
+            ],
+            "reference": 6760.842868354495,
+            "risk": {
+              "completion_all_risk_upper": 0.00020318784249977,
+              "completion_easy_risk_upper": 0.004455696347677036,
+              "known_all_risk": 0.00020318784249977,
+              "known_easy_net_degradation": -0.1152455510481051,
+              "known_easy_risk": 0.004455696347677036,
+              "rows": 771,
+              "selected": 563,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 563
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0006760842868354495,
+          "upper_gain_mass": 701.3253209865156
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 0.0006760842868354495,
+          "upper_gain_mass": -525.2356430206072
+        }
+      },
+      "recording": "moving_scene_22__4",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "negative_upper"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              847.7739359407087,
+              650.7698201113285
+            ],
+            "reference": 2602.3884505764318,
+            "risk": {
+              "completion_all_risk_upper": 0.00033807311209117644,
+              "completion_easy_risk_upper": 0.00955925157669007,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.2020987168732329,
+              "known_easy_risk": 0.0,
+              "rows": 3174,
+              "selected": 1762,
+              "supported": true,
+              "unknown_selected": 1
+            },
+            "switched": 1762
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 1,
+          "status": "verified_both",
+          "tolerance_mass": 0.00026023884505764315,
+          "upper_gain_mass": 651.9969706892899
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              455.64947158622385,
+              262.95248555549307
+            ],
+            "reference": 2602.3884505764318,
+            "risk": {
+              "completion_all_risk_upper": 0.0009961748208795077,
+              "completion_easy_risk_upper": 0.019995832902372036,
+              "known_all_risk": 4.656698631326089e-06,
+              "known_easy_net_degradation": -0.16834158665283427,
+              "known_easy_risk": 9.22776737198517e-05,
+              "rows": 3174,
+              "selected": 2008,
+              "supported": true,
+              "unknown_selected": 4
+            },
+            "switched": 2008
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.00026023884505764315,
+          "upper_gain_mass": 262.9524855554931
+        }
+      },
+      "recording": "moving_scene_22__5",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              322.7285312735155,
+              183.69264344508403
+            ],
+            "reference": 941.6950160133733,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.06918091063815326,
+              "known_easy_risk": 0.0,
+              "rows": 565,
+              "selected": 259,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 259
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 9.416950160133733e-05,
+          "upper_gain_mass": 183.69264344508423
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              221.50911115182234,
+              83.37412647092128
+            ],
+            "reference": 941.6950160133733,
+            "risk": {
+              "completion_all_risk_upper": 0.0006255950934172276,
+              "completion_easy_risk_upper": 0.014260973251932279,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.1779711212684922,
+              "known_easy_risk": 0.0,
+              "rows": 565,
+              "selected": 442,
+              "supported": true,
+              "unknown_selected": 1
+            },
+            "switched": 442
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 9.416950160133733e-05,
+          "upper_gain_mass": 83.3741264709212
+        }
+      },
+      "recording": "moving_scene_22__6",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              2093.8406034828063,
+              526.8160496773457
+            ],
+            "reference": 6305.905154845821,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.0281476155399718,
+              "known_easy_risk": 0.0,
+              "rows": 1079,
+              "selected": 653,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 653
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0006305905154845821,
+          "upper_gain_mass": 526.8160496773462
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 0.0006305905154845821,
+          "upper_gain_mass": -426.25527965885686
+        }
+      },
+      "recording": "moving_scene_22__7",
+      "source": "moving_source_component_060",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "negative_upper"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              55.288021096386075,
+              69.39776609908397
+            ],
+            "reference": 700.1054496214286,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.01711053317015498,
+              "known_easy_risk": 0.0,
+              "rows": 3497,
+              "selected": 498,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 498
+          },
+          "infeasible": false,
+          "inherited": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 7.001054496214287e-05,
+          "upper_gain_mass": 55.28802109638607
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              19.39151495512124,
+              33.50125995781913
+            ],
+            "reference": 700.1054496214286,
+            "risk": {
+              "completion_all_risk_upper": 4.5636873156600235e-07,
+              "completion_easy_risk_upper": 5.818737427941618e-06,
+              "known_all_risk": 4.5636873156600235e-07,
+              "known_easy_net_degradation": -0.04811493351271865,
+              "known_easy_risk": 5.818737427941618e-06,
+              "rows": 3497,
+              "selected": 911,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 911
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 7.001054496214287e-05,
+          "upper_gain_mass": 19.391514955121263
+        }
+      },
+      "recording": "moving_scene_28__1",
+      "source": "moving_source_component_066",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              561.2129329831068,
+              648.7974467759077
+            ],
+            "reference": 3606.039947928746,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.0070066020238912455,
+              "known_easy_risk": 0.0,
+              "rows": 2496,
+              "selected": 448,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 448
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0003606039947928746,
+          "upper_gain_mass": 561.2129329831072
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              552.9945323546068,
+              640.5790461474078
+            ],
+            "reference": 3606.039947928746,
+            "risk": {
+              "completion_all_risk_upper": 0.0,
+              "completion_easy_risk_upper": 0.0,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.12771989782710347,
+              "known_easy_risk": 0.0,
+              "rows": 2496,
+              "selected": 1517,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 1517
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.0003606039947928746,
+          "upper_gain_mass": 552.9945323546073
+        }
+      },
+      "recording": "moving_scene_31__1",
+      "source": "moving_source_component_070",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              114.32315181819907,
+              66.31563081933744
+            ],
+            "reference": 320.18396377710417,
+            "risk": {
+              "completion_all_risk_upper": 0.004116467973639792,
+              "completion_easy_risk_upper": 0.019999850651076317,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.2745272998338431,
+              "known_easy_risk": 0.0,
+              "rows": 5510,
+              "selected": 2844,
+              "supported": true,
+              "unknown_selected": 3
+            },
+            "switched": 2844
+          },
+          "infeasible": false,
+          "inherited": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 1,
+          "status": "verified_both",
+          "tolerance_mass": 3.2018396377710417e-05,
+          "upper_gain_mass": 78.96539221658628
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              84.08280611990287,
+              37.0375025669674
+            ],
+            "reference": 320.18396377710417,
+            "risk": {
+              "completion_all_risk_upper": 0.004897531188068252,
+              "completion_easy_risk_upper": 0.019995229835548023,
+              "known_all_risk": 1.2387582337029835e-05,
+              "known_easy_net_degradation": -0.2609869323168808,
+              "known_easy_risk": 5.057498286874305e-05,
+              "rows": 5510,
+              "selected": 4376,
+              "supported": true,
+              "unknown_selected": 21
+            },
+            "switched": 4376
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 3.2018396377710417e-05,
+          "upper_gain_mass": 37.037502777432756
+        }
+      },
+      "recording": "moving_scene_34__1",
+      "source": "moving_source_component_073",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              182.99116500433996,
+              105.15012068128047
+            ],
+            "reference": 628.2955093173643,
+            "risk": {
+              "completion_all_risk_upper": 0.003539537709689163,
+              "completion_easy_risk_upper": 0.019998373633830092,
+              "known_all_risk": 0.003281821582383176,
+              "known_easy_net_degradation": -0.09253058850389002,
+              "known_easy_risk": 0.015012862350549135,
+              "rows": 6877,
+              "selected": 3076,
+              "supported": true,
+              "unknown_selected": 2
+            },
+            "switched": 3076
+          },
+          "infeasible": false,
+          "inherited": true,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 6.282955093173643e-05,
+          "upper_gain_mass": 105.15068398012576
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              149.4788956923559,
+              73.48549452121173
+            ],
+            "reference": 628.2955093173643,
+            "risk": {
+              "completion_all_risk_upper": 0.001924937765913652,
+              "completion_easy_risk_upper": 0.019992325767865905,
+              "known_all_risk": 6.697264594662528e-06,
+              "known_easy_net_degradation": -0.17489808747315372,
+              "known_easy_risk": 6.778532724677569e-05,
+              "rows": 6877,
+              "selected": 5017,
+              "supported": true,
+              "unknown_selected": 16
+            },
+            "switched": 5017
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 6.282955093173643e-05,
+          "upper_gain_mass": 73.48606307890492
+        }
+      },
+      "recording": "moving_scene_34__2",
+      "source": "moving_source_component_073",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              129.17768710895,
+              120.5241911242961
+            ],
+            "reference": 658.962939184989,
+            "risk": {
+              "completion_all_risk_upper": 0.003660734270569134,
+              "completion_easy_risk_upper": 0.018188258589988092,
+              "known_all_risk": 7.566609648409865e-05,
+              "known_easy_net_degradation": -0.2581911221957257,
+              "known_easy_risk": 0.00013921734583855332,
+              "rows": 8976,
+              "selected": 4849,
+              "supported": true,
+              "unknown_selected": 8
+            },
+            "switched": 4849
+          },
+          "infeasible": false,
+          "inherited": true,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 1,
+          "status": "verified_both",
+          "tolerance_mass": 6.58962939184989e-05,
+          "upper_gain_mass": 120.66549676547902
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              64.82699817272018,
+              57.29868395205171
+            ],
+            "reference": 658.962939184989,
+            "risk": {
+              "completion_all_risk_upper": 0.00519133246431617,
+              "completion_easy_risk_upper": 0.01999859433575291,
+              "known_all_risk": 2.5204653987402005e-05,
+              "known_easy_net_degradation": -0.17839571720439815,
+              "known_easy_risk": 9.706897705313263e-05,
+              "rows": 8976,
+              "selected": 5526,
+              "supported": true,
+              "unknown_selected": 8
+            },
+            "switched": 5526
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 6.58962939184989e-05,
+          "upper_gain_mass": 57.29906188792069
+        }
+      },
+      "recording": "moving_scene_34__3",
+      "source": "moving_source_component_073",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              177.94660866706798,
+              132.28398188327702
+            ],
+            "reference": 588.9831159133357,
+            "risk": {
+              "completion_all_risk_upper": 0.0005781715767405514,
+              "completion_easy_risk_upper": 0.019966695428459864,
+              "known_all_risk": 0.0,
+              "known_easy_net_degradation": -0.11643236861164828,
+              "known_easy_risk": 0.0,
+              "rows": 1765,
+              "selected": 834,
+              "supported": true,
+              "unknown_selected": 1
+            },
+            "switched": 834
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 5.889831159133357e-05,
+          "upper_gain_mass": 132.28455634022353
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              110.82950281480012,
+              66.24190968682385
+            ],
+            "reference": 588.9831159133357,
+            "risk": {
+              "completion_all_risk_upper": 0.0015882091025433693,
+              "completion_easy_risk_upper": 0.01999797594785458,
+              "known_all_risk": 5.275813811975152e-07,
+              "known_easy_net_degradation": -0.17082459101255248,
+              "known_easy_risk": 3.777598078886365e-06,
+              "rows": 1765,
+              "selected": 1265,
+              "supported": true,
+              "unknown_selected": 3
+            },
+            "switched": 1265
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 5.889831159133357e-05,
+          "upper_gain_mass": 66.24219734162891
+        }
+      },
+      "recording": "moving_scene_34__4",
+      "source": "moving_source_component_073",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "evidence": {
+            "gain_mass": [
+              196.8742955928425,
+              434.86401184797484
+            ],
+            "reference": 1838.7797853263542,
+            "risk": {
+              "completion_all_risk_upper": 0.0008832154025979981,
+              "completion_easy_risk_upper": 0.0009026526301769031,
+              "known_all_risk": 0.0008832154025979981,
+              "known_easy_net_degradation": -0.16086415134683807,
+              "known_easy_risk": 0.0009026526301769031,
+              "rows": 7727,
+              "selected": 2919,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 2919
+          },
+          "infeasible": false,
+          "inherited": true,
+          "solve_seconds_budget": 8.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.00018387797853263542,
+          "upper_gain_mass": 196.87429559284294
+        },
+        "half_free": {
+          "evidence": {
+            "gain_mass": [
+              91.52799723939228,
+              329.5177134945246
+            ],
+            "reference": 1838.7797853263542,
+            "risk": {
+              "completion_all_risk_upper": 2.6400859339477173e-06,
+              "completion_easy_risk_upper": 1.1529115384649896e-05,
+              "known_all_risk": 2.6400859339477173e-06,
+              "known_easy_net_degradation": -0.10764429716036404,
+              "known_easy_risk": 1.1529115384649896e-05,
+              "rows": 7727,
+              "selected": 3264,
+              "supported": true,
+              "unknown_selected": 0
+            },
+            "switched": 3264
+          },
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "verified_both",
+          "tolerance_mass": 0.00018387797853263542,
+          "upper_gain_mass": 91.52799723939209
+        }
+      },
+      "recording": "moving_scene_36__1",
+      "source": "moving_source_component_075",
+      "states": {
+        "curved_exact": "verified_both",
+        "curved_free": "verified_both",
+        "curved_total": "verified_both",
+        "full_exact": "verified_both",
+        "half_exact": "verified_both",
+        "half_free": "verified_both"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": null,
+          "status": "risk_infeasible",
+          "tolerance_mass": 6.77167644590416e-05,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": null,
+          "status": "risk_infeasible",
+          "tolerance_mass": 6.77167644590416e-05,
+          "upper_gain_mass": null
+        }
+      },
+      "recording": "moving_scene_9__1",
+      "source": "moving_source_component_090",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "risk_infeasible",
+        "curved_total": "risk_infeasible",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "risk_infeasible"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": null,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.0002666976790795645,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": null,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.0002666976790795645,
+          "upper_gain_mass": null
+        }
+      },
+      "recording": "moving_scene_9__2",
+      "source": "moving_source_component_090",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "risk_infeasible",
+        "curved_total": "risk_infeasible",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "risk_infeasible"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 2,
+          "status": "risk_infeasible",
+          "tolerance_mass": 4.5877854051125e-05,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 2,
+          "status": "risk_infeasible",
+          "tolerance_mass": 4.5877854051125e-05,
+          "upper_gain_mass": null
+        }
+      },
+      "recording": "moving_scene_9__3",
+      "source": "moving_source_component_090",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "risk_infeasible",
+        "curved_total": "risk_infeasible",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "risk_infeasible"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 2,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.0002680618631832225,
+          "upper_gain_mass": null
+        },
+        "half_free": {
+          "infeasible": true,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 2,
+          "status": "risk_infeasible",
+          "tolerance_mass": 0.0002680618631832225,
+          "upper_gain_mass": null
+        }
+      },
+      "recording": "moving_scene_9__4",
+      "source": "moving_source_component_090",
+      "states": {
+        "curved_exact": "risk_infeasible",
+        "curved_free": "risk_infeasible",
+        "curved_total": "risk_infeasible",
+        "full_exact": "risk_infeasible",
+        "half_exact": "risk_infeasible",
+        "half_free": "risk_infeasible"
+      }
+    },
+    {
+      "controls": {
+        "curved_total": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 7.810143904127454e-05,
+          "upper_gain_mass": -64.41959671164223
+        },
+        "half_free": {
+          "infeasible": false,
+          "solve_seconds_budget": 2.0,
+          "solver_status": 0,
+          "status": "negative_upper",
+          "tolerance_mass": 7.810143904127454e-05,
+          "upper_gain_mass": -80.28865452488249
+        }
+      },
+      "recording": "moving_scene_9__5",
+      "source": "moving_source_component_090",
+      "states": {
+        "curved_exact": "negative_upper",
+        "curved_free": "negative_upper",
+        "curved_total": "negative_upper",
+        "full_exact": "negative_upper",
+        "half_exact": "negative_upper",
+        "half_free": "negative_upper"
+      }
+    }
+  ],
+  "summary": {
+    "curved_exact": {
+      "negative_upper": 1,
+      "risk_infeasible": 15,
+      "unresolved": 0,
+      "verified_both": 8
+    },
+    "curved_free": {
+      "negative_upper": 1,
+      "risk_infeasible": 5,
+      "unresolved": 0,
+      "verified_both": 18
+    },
+    "curved_total": {
+      "negative_upper": 1,
+      "risk_infeasible": 6,
+      "unresolved": 3,
+      "verified_both": 14
+    },
+    "full_exact": {
+      "negative_upper": 1,
+      "risk_infeasible": 15,
+      "unresolved": 0,
+      "verified_both": 8
+    },
+    "half_exact": {
+      "negative_upper": 1,
+      "risk_infeasible": 15,
+      "unresolved": 0,
+      "verified_both": 8
+    },
+    "half_free": {
+      "negative_upper": 7,
+      "risk_infeasible": 5,
+      "unresolved": 0,
+      "verified_both": 12
+    }
+  },
+  "target_role": "original_fitting_only"
+}

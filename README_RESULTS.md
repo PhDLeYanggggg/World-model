@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recipient and Budget Release
+
+Original fitting cohort only. Outcome-aware passes against both CV and
+OLS4 under the original 2% rule: 8/24 at exact query counts, 14/24
+when redistributing each exact recording total (3 unresolved), and
+18/24 at free count with full-strength straight options. Curved
+options add no passes. Three recordings have no easy reference at all.
+Nine leave-source-out ridge fits with fold-local training cutoffs
+give 0/24 actual passes; joint vs OLS4 -11.025 pp [-20.031, -1.971].
+No deployment or confirmation.
+[Analysis and replay](outputs/publication_readiness_2026_09/recipient_release_capacity_v1/README.md) |
+[Working manuscript v42](outputs/publication_readiness_2026_09/evidence_manuscript_v42/README.md).
+
 ## Past Sampling at Fixed Anchors
 
 Wide uniform minus recent: -1.737 pp [-3.354,-0.322] fitting and

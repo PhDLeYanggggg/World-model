@@ -87,6 +87,16 @@ could pass at the same recipients and half-blend amplitudes.
 [Sampling and capacity experiment](outputs/publication_readiness_2026_09/past_sampling_audit_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v41/README.md).
 
+I tested whether the earlier failure was due to the paths or to who
+received them. With hindsight, changing recipients at the same
+per-window counts worked on 8 of 24 fitting recordings. Redistributing
+the same recording totals raised that to 14. With freely chosen
+counts, full-strength straight paths were sufficient to reach 18;
+curved paths added no passing recordings. My leave-source-out
+predictor still passed none, so this is not a deployment result.
+[Allocation and learned-risk comparison](outputs/publication_readiness_2026_09/recipient_release_capacity_v1/README.md) |
+[Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v42/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
