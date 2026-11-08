@@ -1,0 +1,66 @@
+{
+  "arms": [
+    "cv",
+    "gain",
+    "support_only",
+    "two_roles",
+    "two_gain_matched",
+    "two_roles_full_support",
+    "oracle_same_query"
+  ],
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 10824,
+    "path": "scripts/run_m3w_opendd_two_reserves.py",
+    "sha256": "4df93a91a2d2a8aa4e0a1ab37ef07d0712e51294ca10e30794be3428488ab06f"
+  },
+  "confirmation_access": false,
+  "development_budget_only": true,
+  "gain_amplitude": 0.25,
+  "max_slots_per_recording": 2,
+  "model": {
+    "bytes": 1160,
+    "path": "src/world_model/m3w_opendd_two_reserves.py",
+    "sha256": "8bcb96cb8cb4156280df577dcfdc4c0459090bc5e4ddf1bb3146da7016d1cfde"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_new_training": true,
+  "no_threshold_search": true,
+  "oracle": "outcome-aware recipient change only, same second query, amplitude and count",
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 1045,
+      "path": "outputs/publication_readiness_2026_09/opendd_reserve_only_v1/registration.json",
+      "sha256": "5e1295dba9062f1fa4ffeb93b1822b70648f4d6ab3d6d37f172dd8d6c46b7e0f"
+    },
+    {
+      "bytes": 67193,
+      "path": "outputs/publication_readiness_2026_09/opendd_reserve_only_v1/analysis.json",
+      "sha256": "6512b01f2dbf937ab73a1e24eb8e8392585c265b01371acb6e194eb7c1caf10e"
+    },
+    {
+      "bytes": 14948,
+      "path": "outputs/publication_readiness_2026_09/opendd_reserve_v1/head_freeze.json",
+      "sha256": "85201bb48456c156af129c7f2b13e1bc5575369d40566dfe66da6659c27124ec"
+    }
+  ],
+  "primary": "two roles vs a second gain-ranked recipient at exactly the same query and amplitude",
+  "same_query_order": "gain first then support; distinct rows; no terminal forcing",
+  "secondary": "preserve the frozen gain slot; full two-role policy versus CV",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "support_amplitude": 0.1,
+  "support_sensitivity_amplitude": 0.25,
+  "support_trigger": "frozen easy >= .5"
+}

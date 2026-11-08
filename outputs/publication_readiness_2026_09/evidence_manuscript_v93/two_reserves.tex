@@ -1,0 +1,42 @@
+\section{Independent Gain and Support Slots}
+
+The gain slot retains the one-edit policy. A distinct
+support slot at amplitude 0.10 uses the first query with
+an available recipient above the frozen easy threshold.
+The gain edit takes precedence on a shared query. The
+matched control uses the same support queries and amplitude,
+but ranks available recipients by gain. These are distinct
+development policies, not a change to the main risk rule.
+
+\begin{table}[h]
+\centering
+\caption{Second-slot comparisons on the same 606 views.
+The last row uses outcomes, not a causal policy.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Policy & Edits & Undefined & Joint \\
+\midrule
+Gain alone & \TwoSupportGainEdits{} & \TwoSupportGainUndefined{} & \TwoSupportGainPass{} \\
+Support alone & \TwoSupportSupportEdits{} & \TwoSupportSupportUndefined{} & \TwoSupportSupportPass{} \\
+Two roles & \TwoSupportRolesEdits{} & \TwoSupportRolesUndefined{} & \TwoSupportRolesPass{} \\
+Gain-ranked second, matched & \TwoSupportMatchEdits{} & \TwoSupportMatchUndefined{} & \TwoSupportMatchPass{} \\
+Support amplitude 0.25 & \TwoSupportBiggerEdits{} & \TwoSupportBiggerUndefined{} & \TwoSupportBiggerPass{} \\
+Gain rank within easy & \TwoSupportRerankEdits{} & \TwoSupportRerankUndefined{} & \TwoSupportRerankPass{} \\
+Outcome-aware at same query & \TwoSupportOracleEdits{} & \TwoSupportOracleUndefined{} & \TwoSupportOraclePass{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At the same query, selecting for easy support rather than
+gain yields \TwoSupportPrimary{} in lower utility. The
+gain-ranked policy yields \TwoSupportMatch{} versus CV;
+the two-role policy yields \TwoSupportRoles{}. Increasing
+only support amplitude yields \TwoSupportBigger{} versus
+the original two-role arm. Ranking gain within predicted
+easy gives \TwoSupportRerank{} versus easy rank.
+Neither causal strategy meets the recording risk roster.
+Moving only the second edit to any query in the same
+recording raises the outcome-aware count from
+\TwoSupportOraclePass{} to \TwoSupportAnyTime{}, an additional
+\TwoSupportExtraTime{} views with no budget increase.

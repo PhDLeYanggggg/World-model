@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated the gain edit from a second, smaller edit intended to
+recover reference support. At the same second-slot times, easy
+ranking passed more recordings than gain ranking but reduced
+forecast utility. Neither meets the full recording-level rule.
+[Two-slot comparison](outputs/publication_readiness_2026_09/opendd_two_reserves_v1/README.md).
+
 I removed the original edits and kept at most one low-amplitude
 change per recording. It improves aggregate error over constant
 velocity on OpenDD, but still lacks enough recording-level support

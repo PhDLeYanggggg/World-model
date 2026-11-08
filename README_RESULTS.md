@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Independent Gain and Support Slots
+
+At the same 943 edits, second-slot easy ranking passes 138/606
+versus 113/606 for gain ranking, with -0.034 pp [-0.054, -0.015]
+lower utility. Gain ranking improves +0.161 pp [+0.032, +0.275]
+over CV but fails full-roster risk. Reranking within easy is near
+zero; exact same-budget timing capacity is 255 versus 178 fixed.
+[Experiment](outputs/publication_readiness_2026_09/opendd_two_reserves_v1/README.md) |
+[Manuscript v93](outputs/publication_readiness_2026_09/evidence_manuscript_v93/README.md).
+
 ## Fixed Shapes and Sparse Intervention
 
 The causal one-edit policy without the incumbent improves over CV
