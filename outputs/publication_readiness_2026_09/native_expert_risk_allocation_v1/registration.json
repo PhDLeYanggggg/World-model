@@ -1,0 +1,83 @@
+{
+  "bootstrap": 3000,
+  "budget": 2,
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 13889,
+      "path": "scripts/run_m3w_expert_risk_allocation.py",
+      "sha256": "af9524a677ae3444597be77098f524f865429f0e3379c9e45c49bebb1c7a4a4b"
+    },
+    {
+      "bytes": 4596,
+      "path": "src/world_model/m3w_expert_risk_allocation.py",
+      "sha256": "e5d5bfc21b00971fd8fdc19a3df0ce71b4757a72d977ce428adbb181ab760999"
+    },
+    {
+      "bytes": 2592,
+      "path": "outputs/publication_readiness_2026_09/native_expert_risk_allocation_v1/protocol.md",
+      "sha256": "56ad7c60d44811110d775e727a4e0f5f32beafb3d4b281190b4656c80104ff1e"
+    },
+    {
+      "bytes": 1563,
+      "path": "tests/test_m3w_expert_risk_allocation.py",
+      "sha256": "90a502c6170b9f0d7a95b0782ab5394abc345cee92def2ae7c21ea35e7769124"
+    },
+    {
+      "bytes": 2662,
+      "path": "outputs/publication_readiness_2026_09/native_replay_motion_v1/registration.json",
+      "sha256": "7a1e7e93e395226faf2852727561d0cf4475a477bd86b2e0e597c8b2ab317cb1"
+    },
+    {
+      "bytes": 2088,
+      "path": "outputs/publication_readiness_2026_09/native_replay_motion_v1/headroom.json",
+      "sha256": "12bfcdaca38bd1fa0e1fc5577247fac59ddb3614eae1882261681849a4268b60"
+    },
+    {
+      "bytes": 264,
+      "path": "outputs/publication_readiness_2026_09/native_replay_motion_v1/replay_execution.json",
+      "sha256": "a9e580cba9286863012a738a2823c2f19ab9388a0b64dfda9d9009653cbbbaf8"
+    },
+    {
+      "bytes": 14322,
+      "path": "scripts/run_m3w_nested_velocity_selection.py",
+      "sha256": "860c53a9dc059ff5e59638e4047bea06a2df6800a0534f7133345dd5c1a5b4cd"
+    }
+  ],
+  "fits": [
+    "gain_only",
+    "risk_heads"
+  ],
+  "original_rule_unchanged": true,
+  "pair_penalty": 0.25,
+  "primary": [
+    [
+      "independent",
+      "ols4"
+    ],
+    [
+      "independent",
+      "minimum"
+    ],
+    [
+      "joint",
+      "pair_additive"
+    ]
+  ],
+  "scope": "leave_one_fitting_source_out",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "shortlist": 12,
+  "steps": 500,
+  "training": {
+    "batch": 128,
+    "checkpoint": 100,
+    "donor_steps": 800,
+    "lr": 0.001,
+    "selector_steps": 500,
+    "threads": 4
+  }
+}
