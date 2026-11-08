@@ -1,0 +1,64 @@
+{
+  "amplitude": 0.25,
+  "arms": [
+    "base",
+    "easy",
+    "gain",
+    "joint",
+    "easy_same_query",
+    "gain_same_query"
+  ],
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "budget": "separate development arm, primary fixed-budget results unchanged",
+  "code": {
+    "bytes": 12690,
+    "path": "scripts/run_m3w_opendd_reserve.py",
+    "sha256": "9a9194760ca347e3c7b6a282b65f551c7691f723750da9279151a446469281e4"
+  },
+  "confirmation_access": false,
+  "easy_probability": 0.5,
+  "joint_probability": 0.25,
+  "matching": "same_query arms use exactly the joint arm's recording, time, extra count and amplitude",
+  "model": {
+    "bytes": 1296,
+    "path": "src/world_model/m3w_opendd_reserve.py",
+    "sha256": "5493ac4a600c4608822d083ea4acf824d9b678a7ac29de0e23f3b06359039027"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 51161,
+      "path": "outputs/publication_readiness_2026_09/opendd_record_teacher_v1/analysis.json",
+      "sha256": "bf9af0a5f44324d1256d8be2c925e0c6b25922388966c597a2a36b0463e8cc4a"
+    },
+    {
+      "bytes": 894,
+      "path": "outputs/publication_readiness_2026_09/opendd_record_teacher_v1/support_registration.json",
+      "sha256": "ca284839973497577c62873247b3ff7435953a868595d9cf1eaf1ea7aff3b735"
+    },
+    {
+      "bytes": 9352,
+      "path": "outputs/publication_readiness_2026_09/opendd_record_teacher_v1/support_capacity.json",
+      "sha256": "f87482f81a47925d1b70ffcabf0a6d4c82e1ceb80d0d0af15a9fc6452bcc2a9d"
+    }
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "slot": "one extra available from the start of every recording; original edits not replaced; no terminal information",
+  "steps": 500,
+  "threads": 4,
+  "training": "cross-fitted candidate rows; predict lower CV gain, easy support and local easy/risk/positive event",
+  "workers": 0
+}

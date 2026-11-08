@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## A Causal One-Edit Reserve
+
+21 Torch fits, 10,500 updates. Easy-triggered extra edits raise joint
+passes from 16 to 68/606 but lose -0.038 pp [-0.103, -0.002] versus
+the incumbent. Gain triggering improves +0.141 pp [+0.036, +0.239]
+over the incumbent but not CV. The factorized arm reaches 47/606,
+with negligible matched utility over the easy recipient. No promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_reserve_v1/README.md) |
+[Manuscript v91](outputs/publication_readiness_2026_09/evidence_manuscript_v91/README.md).
+
 ## Feasible Recording Supervision and One-Edit Support
 
 42 Torch fits and 21,000 updates with exact held query-count matching.

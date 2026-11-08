@@ -16,9 +16,12 @@ from src.reproduction import m3w_opendd_timing_replay as replay
 OUT = legacy.EXTENDED.parent.parent/"opendd_timing_replay_v1"/"anonymous_opendd_timing.zip"
 EXTENDED = OUT.parent.parent/"opendd_timing_replay_v2"/OUT.name
 RECORDING = OUT.parent.parent/"opendd_timing_replay_v3"/OUT.name
+RESERVED = OUT.parent.parent/"opendd_timing_replay_v4"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
 TEACHER = "opendd_record_teacher_v1"
+RESERVE = "opendd_reserve_v1"
+FACTOR = "opendd_factorized_reserve_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -48,15 +51,28 @@ def read_support():
     return a
 
 
-def build(include_rank=False, include_teacher=False):
+def read_factor():
+    p = legacy.REPORTS/RESERVE
+    r = json.loads((p/"factor_registration.json").read_text())
+    a = json.loads((p/"factor_analysis.json").read_text())
+    if (a["registration"] != legacy.sha(p/"factor_registration.json")
+            or r["parent"]["sha256"] != legacy.sha(p/"analysis.json") or not r["no_new_thresholds"]
+            or any(z["confirmation_access"] or not z["original_2pct"] for z in (r, a))):
+        raise ValueError("Require frozen factorized reserve evidence")
+    return a
+
+
+def build(include_rank=False, include_teacher=False, include_reserve=False):
     studies, expected = {}, {}
     names = ("opendd_release_credit_v1", "opendd_credit_value_v2", SLATE)
-    if include_rank or include_teacher:
+    if include_rank or include_teacher or include_reserve:
         names += (RANK,)
-    if include_teacher:
+    if include_teacher or include_reserve:
         names += (TEACHER,)
+    if include_reserve:
+        names += (RESERVE, FACTOR)
     for name in names:
-        a = legacy.read(name)
+        a = read_factor() if name == FACTOR else legacy.read(name)
         s = a["summary"]
         fields = {k: {f: v[f] for f in legacy.FIELDS} for k, v in s["metrics"].items()}
         status = s.get("capacity", {})
@@ -106,7 +122,7 @@ def build(include_rank=False, include_teacher=False):
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = RECORDING if include_teacher else EXTENDED if include_rank else OUT
+    out = RESERVED if include_reserve else RECORDING if include_teacher else EXTENDED if include_rank else OUT
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".pending")
     with ZipFile(tmp, "w") as z:
@@ -122,5 +138,6 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--include-rank", action="store_true")
     p.add_argument("--include-record-teacher", action="store_true")
+    p.add_argument("--include-reserve", action="store_true")
     a = p.parse_args()
-    build(a.include_rank, a.include_record_teacher)
+    build(a.include_rank, a.include_record_teacher, a.include_reserve)

@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I gave each recording one optional extra edit to see if the missing
+reference support could be recovered online. The simple easy rule
+increased the number of qualifying recordings but reduced forecast
+utility. Predicting gain improved utility over the incumbent, not CV.
+[One-edit reserve experiment](outputs/publication_readiness_2026_09/opendd_reserve_v1/README.md).
+
 I tested whether learning from feasible whole-recording assignments
 helps at the same edit count. It improved some risk counts but lost
 forecast utility. A separate one-edit analysis found that missing

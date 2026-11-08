@@ -1,0 +1,47 @@
+\section{A Causal One-Edit Reserve}
+
+We make one optional additional slot available from
+the start of every recording, without altering incumbent
+edits. At the first qualifying query, the slot adds a
+quarter-amplitude neural change. The easy rule uses a
+frozen easy-probability head. The gain rule requires positive
+predicted lower gain. The joint rule also requires a
+predicted local support-and-gain event probability of at
+least 0.25. The factorized follow-up uses the original easy
+and gain thresholds jointly, with no retraining.
+
+\begin{table}[h]
+\centering
+\caption{Reserve rules on the same 606 recording--seed views.
+Same-query controls match the factorized arm's extra count,
+amplitude, recording and query exactly.}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Rule & Extra & Undefined & Risk & Joint \\
+\midrule
+Incumbent & 0 & \ReserveSlotBaseUndefined{} & \ReserveSlotBaseRisk{} & \ReserveSlotBasePass{} \\
+Easy & \ReserveSlotEasyExtra{} & \ReserveSlotEasyUndefined{} & \ReserveSlotEasyRisk{} & \ReserveSlotEasyPass{} \\
+Gain & \ReserveSlotGainExtra{} & \ReserveSlotGainUndefined{} & \ReserveSlotGainRisk{} & \ReserveSlotGainPass{} \\
+Joint & \ReserveSlotJointExtra{} & \ReserveSlotJointUndefined{} & \ReserveSlotJointRisk{} & \ReserveSlotJointPass{} \\
+Factorized & \ReserveSlotFactorExtra{} & \ReserveSlotFactorUndefined{} & \ReserveSlotFactorRisk{} & \ReserveSlotFactorPass{} \\
+Easy, same query & \ReserveSlotEasyMatchExtra{} & \ReserveSlotEasyMatchUndefined{} & \ReserveSlotEasyMatchRisk{} & \ReserveSlotEasyMatchPass{} \\
+Gain, same query & \ReserveSlotGainMatchExtra{} & \ReserveSlotGainMatchUndefined{} & \ReserveSlotGainMatchRisk{} & \ReserveSlotGainMatchPass{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The easy rule changes lower utility by \ReserveSlotEasyBase{}
+versus the incumbent. The gain rule improves it by
+\ReserveSlotGainBase{}, but versus CV gives \ReserveSlotGainCV{}.
+The joint rule changes it by \ReserveSlotJointBase{}.
+At identical reserve timing, factorization yields
+\ReserveSlotFactorEasy{} over the easy recipient and
+\ReserveSlotFactorGain{} over the gain recipient. The
+full factorized policy yields \ReserveSlotFactorCV{} versus
+CV. Post-hoc zero-edit views are not used to trigger the
+slot; the easy rule repairs \ReserveSlotZeroEasy{} of them
+and factorization \ReserveSlotZeroFactor{}.
+Improved support does not establish net utility or a
+full-roster pass. The original fixed-budget experiment
+and 2\% risk rule remain unchanged.
