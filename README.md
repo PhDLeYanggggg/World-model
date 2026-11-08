@@ -89,6 +89,12 @@ histories. The released positions come from an offline export whose
 use of later frames has not been established. I keep these data out of
 the causal confirmation experiment.
 [Waterloo source audit](outputs/publication_readiness_2026_09/waterloo_annotations_v1/README.md).
+On a separate Waterloo roundabout recording, I ran a detector and tracker
+directly from unannotated frames, and checked that stopping early gives
+the same past detections, track assignments and forecasts. A matching
+numbered release has trajectory labels, but it still needs image-to-label
+alignment before I can score it.
+[Raw-video prefix experiment](outputs/publication_readiness_2026_09/waterloo_raw_prefix_v1/README.md).
 
 ## Earlier Development Result
 

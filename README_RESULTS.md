@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Waterloo Raw-Video Prefix
+
+Fresh CPU inference on 64 sampled frames of an unannotated roundabout
+video gives 663 detections and 289 past-only forecast queries, 57 with
+the detector's person class. An independent process decodes just the first
+24 sampled frames and reproduces 99 query outputs exactly. The publisher's
+separate candidate pair `DJI_0932.MP4` and `932.db` has matching numbered
+metadata and timestamp cadence, but no verified pixel correspondence.
+No model accuracy or scientific role is assigned.
+[Engineering evidence and remaining label alignment](outputs/publication_readiness_2026_09/waterloo_raw_prefix_v1/README.md).
+
 ## Waterloo Trajectory Availability
 
 Fresh annotation-only intake at two publisher-documented drone sites:
