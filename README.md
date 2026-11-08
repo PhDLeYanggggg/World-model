@@ -165,6 +165,14 @@ stronger reference on that cohort.
 [Raw-label audit](outputs/publication_readiness_2026_09/moving_future_support_v1/README.md) |
 [OpenDD refit](outputs/publication_readiness_2026_09/opendd_weighted_velocity_v1/README.md).
 
+I then trained a small forecast edit against the direction of error
+change at CV. At the same recipients and displacement radii it beat
+the earlier learned shape, but fewer recordings passed the risk
+check. Keeping all edits while reallocating a smaller budget added
+little utility and did not recover the missing easy references.
+[CV-tangent experiment](outputs/publication_readiness_2026_09/opendd_cv_tangent_v1/README.md) |
+[Updated paper](outputs/publication_readiness_2026_09/evidence_manuscript_v50/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have

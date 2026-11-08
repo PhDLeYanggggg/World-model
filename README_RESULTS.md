@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD CV-Tangent Forecast Shape
+
+42 native Torch fits over three seeds. At 30,075 matched edits and
+per-row radii, tangent vs finite +0.0228 pp [+0.0066, +0.0458];
+vs earlier learned shape +0.0396 pp [+0.0198, +0.0574], with fewer
+passes (522/606 vs 542/606). A fixed CV fallback guard passes
+508/606, 41 undefined. At equal smaller per-query radius sums and
+unchanged recipients, confidence redistribution gives +0.0011 pp
+[+0.0005, +0.0017] vs uniform tangent and no new passes (560/606);
+30 views have no easy reference in the whole roster. No policy
+promotion, change to the original rule or independent access.
+[Experiment](outputs/publication_readiness_2026_09/opendd_cv_tangent_v1/README.md) |
+[Working manuscript v50](outputs/publication_readiness_2026_09/evidence_manuscript_v50/README.md).
+
 ## Released Future Labels and OpenDD Control
 
 Independent raw CSV reconciliation of 836,952 fitting-step requests:
