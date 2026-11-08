@@ -33,9 +33,11 @@ reverse. [Shared-label comparison](outputs/publication_readiness_2026_09/opendd_
 
 ## DroneCrowd Calibration
 
-I tested the frozen policy on 40 DroneCrowd calibration recordings from
-15 source groups. None of the four thresholds qualified under the original
-2% rule, so I kept the 30 confirmation groups sealed. At the same switch
+I assigned DroneCrowd by source group: 15 groups (40 recordings) for
+threshold calibration and 30 groups (72 recordings) for independent
+confirmation. I tested the frozen policy on calibration only. None of the
+four thresholds qualified under the original 2% rule, so I kept the
+confirmation groups sealed. At the same switch
 count, ungated joint selection passed 69 of 120 recording-seed views versus
 18 for independent selection, but only two more than pair-additive selection.
 OLS4 was much stronger on trajectory error (ADE 1.468 vs. 2.984 image
@@ -409,6 +411,11 @@ replay recomputes the paired intervals without releasing trajectory data
 or checkpoints.
 [Expiry pricing](outputs/publication_readiness_2026_09/expiry_pricing_v1/README.md) |
 [Numerical replay](outputs/publication_readiness_2026_09/deferral_review_replay_v1/README.md).
+
+I also checked four historical CREATE jobs against the scheduler and
+matched the remote freeze manifest to my local copy. That confirms the
+archived run lineage; the earlier development result remains negative.
+[CREATE verification](outputs/publication_readiness_2026_09/create_accounting_recovery_20261108/README.md).
 
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording

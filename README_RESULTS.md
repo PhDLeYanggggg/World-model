@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## CREATE Historical Job Accounting
+
+Fresh read-only CREATE accounting confirms the four named recovery, join,
+portability and freeze-verification jobs completed with exit 0:0. The
+remote and local freeze hashes match. The previously completed
+development readout remains negative; this is not a new scientific score.
+[Receipt](outputs/publication_readiness_2026_09/create_accounting_recovery_20261108/README.md).
+
+## DroneCrowd Role And Admission Recheck
+
+The approved split was reverified without accessing source outcomes:
+15 calibration groups (40 recordings) and 30 independent confirmation
+groups (72 recordings), at exclusion-group level. The admission check
+still rejects the frozen calibration result. The original 2% rule and
+the confirmation seal are unchanged.
+
 ## Expiry Pricing and Reviewer Replay
 
 21 fresh fits compare direct, mixture, priced and geometry-based
