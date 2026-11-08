@@ -1,0 +1,57 @@
+\section{A Better-Labeled Development Source}
+To separate missing-label effects from decision errors, we study
+the OpenDD v3 pedestrian tracks~\cite{opendd}.
+We use eight observations and twelve forecast samples at stride 12
+on its released timestamp grid, rather than the main experiment's
+stride-one image-pixel contract. Data are reported in publisher
+projected coordinates. The cohort has 10,475 pedestrian targets
+in 3,395 non-overlapping intervals from 202 flights, with 93.78\%
+complete future paths. All seven roundabouts are evaluated by
+location exclusion. They are not independent cities. This source
+had already informed development, and we do not use it as a new
+confirmation set.
+
+With CV fallback and five fixed causal alternatives, we fit three
+models: pointwise conservative gain regression, the same regression
+with expected within-query regret, and regret with extra OLS4 harm.
+The comparison shares the forecast menu, model size, draws, and
+exact intervention counts. In the two restricted menus, a past-only
+hindcast rule fixes either the candidate for each person or the
+person to edit. All 63 fits use the same budget, across three seeds
+and seven held locations.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lp{.47\columnwidth}@{}}
+\toprule
+Matched contrast & Lower gain, pp [95\% interval]\\
+\midrule
+CV regret vs CV & \OpenDDFullCV \\
+Dual regret vs CV & \OpenDDFullDual \\
+CV regret vs pointwise & \OpenDDFullRankVsPoint \\
+\quad Recipient only & \OpenDDRecipientRank \\
+\quad Candidate only & \OpenDDCandidateRank \\
+Dual vs CV at 20\% & \OpenDDLowDual \\
+\midrule
+Hindsight, unrestricted & \OpenDDFullOracle \\
+Hindsight, recipient only & \OpenDDRecipientOracle \\
+Hindsight, candidate only & \OpenDDCandidateOracle \\
+Hindsight at 20\% & \OpenDDLowOracle \\
+\bottomrule
+\end{tabular}
+\caption{OpenDD development diagnostic. Paired gains include every
+scheduled step, with missing steps debited by forecast disagreement,
+and are normalized by observed CV error. Intervals resample seven
+sites after averaging the three seeds. Hindsight rows use outcomes.}
+\label{tab:opendd-development}
+\end{table}
+
+Training for within-query regret does not establish a gain over
+pointwise regression. The dual-reference model at 20\% coverage
+limits the worst descriptive easy increase to \OpenDDLowDualEasy\%,
+but does not improve on CV. Positive hindsight values in both
+restricted menus suggest that either decision could improve, but
+not that the improvements are predictable with these inputs. This
+diagnostic neither tests joint multi-edit interaction nor relaxes
+the original per-recording risk rule. The external confirmation
+groups remain unopened.

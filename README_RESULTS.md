@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Matched Query-Regret Training
+
+63 fresh fits across seven held locations. CV ranking vs pointwise at exact
+counts: +0.054 pp [-1.409, +1.578]; dual ranking vs pointwise: -1.086
+[-1.956, -0.137]. At 20% coverage, dual ranking has worst descriptive easy
+change +1.73%, but no gain over CV (-0.012 [-0.129, +0.088]). The separate
+recipient/candidate controls and hindsight bounds are reported in the
+[experiment](outputs/publication_readiness_2026_09/opendd_query_rank_v1/README.md)
+and [supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v27/README.md).
+
 ## OpenDD CV-Anchored Abstention
 
 168 fresh Torch fits with nested location exclusion. The calibrated dual

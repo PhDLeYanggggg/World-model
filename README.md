@@ -55,6 +55,12 @@ but the model intervened too rarely to establish a gain over CV. A hindsight
 comparison showed that the same motion menu still had room for improvement.
 [CV-anchored follow-up](outputs/publication_readiness_2026_09/opendd_cv_abstention_v1/README.md).
 
+Next I held the motion forecasts and number of edits fixed and trained
+the models to rank edits within each query. The new loss did not beat
+pointwise gain regression. Holding either the person or the candidate
+fixed exposed room for improvement in hindsight, but not a reliable
+learned gain. [Matched ranking and attribution](outputs/publication_readiness_2026_09/opendd_query_rank_v1/README.md).
+
 I followed up by learning when to replace OLS4 from short backtests within
 the observed history. The method helped on available labels but did not
 beat OLS4 conservatively. Shrinking all frozen replacements together did
