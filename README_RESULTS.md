@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Hannover Frozen Transfer
+
+First no-fit transfer on three publisher clips from one provisional
+group: 1,171 targets, 960 complete futures. Tangent loses -0.3272 pp
+directly to matched hindcast at half radius. The half-radius six-path
+oracle gains +0.9578 pp vs CV; even the optimistic arbitrary-direction
+cap is +2.7188 pp (original radius +5.4077) vs OLS4's +6.3984 lower
+bound. At quarter radius wholly missing rows alone violate the 2%
+easy-risk limit in 9/9 views. No deployment, official split change or
+DroneCrowd confirmation.
+[Report](outputs/publication_readiness_2026_09/hannover_frozen_transfer_v1/README.md) |
+[Working supplement v58](outputs/publication_readiness_2026_09/evidence_manuscript_v58/README.md).
+
 ## Learned OpenDD Road Context
 
 63 fresh native Torch fits, 31,500 updates, three seeds and seven held

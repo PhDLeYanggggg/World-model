@@ -263,6 +263,14 @@ The correct map changed decisions, but it did not clearly improve on
 either control or on the fixed tangent forecast. I did not replace it.
 [Learned map comparison](outputs/publication_readiness_2026_09/opendd_map_path_value_v1/README.md).
 
+I tested the frozen OpenDD models on Hannover shared-space tracks for
+the first time. The small neural changes improved on constant velocity,
+but OLS4 was stronger on average. Even an optimistic calculation for
+the fixed CV-centered budget could not reach OLS4's aggregate lower
+bound. Missing-label charges alone prevented the original risk rule from
+passing. I did not use Hannover to tune a replacement policy.
+[Hannover transfer and capacity analysis](outputs/publication_readiness_2026_09/hannover_frozen_transfer_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly
