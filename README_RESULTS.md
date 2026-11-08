@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD EqMotion In A Comoving Frame
+
+63 fresh fits over seven held-out locations and three seeds. Ego-only
+comoving EqMotion beats OLS4 by +7.107 pp [+4.342, +9.894] but does not
+beat CV: -0.460 pp [-2.718, +1.647]. Adding peers loses -10.288 pp
+[-18.739, -3.270] against ego-only. At the same 1,457 slots and radii,
+the three neural shapes qualify 84, 76 and 85 of 606 views, below 90
+for the donor-prefix control. No promotion or confirmation.
+[Experiment](outputs/publication_readiness_2026_09/opendd_comoving_eqmotion_v1/README.md) |
+[Anonymous scalar replay](outputs/publication_readiness_2026_09/opendd_candidate_replay_v1/README.md) |
+[Supplement v83](outputs/publication_readiness_2026_09/evidence_manuscript_v83/README.md).
+
 ## Resolved Errors And Recipient Assignment
 
 63 Torch fits hold 1,457 slots and radii fixed. Identity-aligned earlier

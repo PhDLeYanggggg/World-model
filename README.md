@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared a compact EqMotion adaptation with two strong motion baselines
+on held-out OpenDD development locations. The ego-only model in a moving
+frame beat OLS4, but did not beat constant velocity. Adding the nearest
+neighbors hurt this version. The neural trajectories also did not improve
+on the donor-prefix control at the same budget.
+[Trajectory comparison](outputs/publication_readiness_2026_09/opendd_comoving_eqmotion_v1/README.md).
+
 I also tested whether older forecasts, whose outcomes were already
 observable, could help choose who receives an edit. At the same edit
 times and radii, using the same pedestrian's older errors did not

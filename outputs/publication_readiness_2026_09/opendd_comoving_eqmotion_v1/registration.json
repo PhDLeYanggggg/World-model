@@ -1,0 +1,84 @@
+{
+  "architecture": {
+    "channels": 32,
+    "fixed_head": 0,
+    "hidden_nf": 32,
+    "history_steps": 8,
+    "layers": 2,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "arms": [
+    "centered_peers",
+    "comoving_peers",
+    "comoving_ego"
+  ],
+  "author": {
+    "adapter_sha256": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "commit": "5aec2e0b61c511fa93a24138dd90da59a089084b",
+    "files_sha256": {
+      "LICENSE": "f1d3136868b8e8bd929d21257c3b9c6970e398a052d6a7b5ed02cfc72c49caf1",
+      "README.md": "aded869035346f0a84b7786209d26355fd33c223046ccf2c4d7c009babe336a2",
+      "eth_ucy/dataloader_diverse.py": "51bec703ecbde61c4e9d3d1a26e0e51fc13fb1331b126d8faff525219f3656f2",
+      "eth_ucy/gcl_t.py": "ca6856d408c99a8cd97184861a646a87406bf2b09ec1d37dd517bc71c80d2e06",
+      "eth_ucy/model_t.py": "5d31dd6c5144ec4715a006bf1c3e5e8753a71a2dd87dc4ab42b1b80b98a6cfcc",
+      "eth_ucy/preprocessor.py": "790a3e4ceb7e24e2feda6335b117662085ea260d726af5617bf9efc06c976938",
+      "eth_ucy/process_eth_data_diverse.py": "faf14a90298643e467f6a509c6cfb8bc98435dd72bb5938a9a78247e11fe0f7d",
+      "main_eth_diverse.py": "1dc93be49d4f632df4d865647f66b0bc70d55d784f59219faaf3ec12cb5c87ad"
+    },
+    "license": "MIT",
+    "manifest_sha256": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "repository": "https://github.com/MediaBrain-SJTU/EqMotion"
+  },
+  "batch": 32,
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "capacity": {
+    "bytes": 6854,
+    "path": "scripts/run_m3w_donor_shape_ceiling.py",
+    "sha256": "ce91c7eadf42d9833c1d06f53846568dca80299a4b20b76bae01e25135bbf246"
+  },
+  "ceiling": "two shapes (original, neural), exact original risk and both references at fixed slots",
+  "code": {
+    "bytes": 11484,
+    "path": "scripts/run_m3w_opendd_comoving_eqmotion.py",
+    "sha256": "9c3812d3c3a5949b4cf4b4f76a99d0eb3bade248d36db4b55084c7914d6a50e8"
+  },
+  "compare": "centered peers vs comoving peers, then remove peers while retaining common scale and capacity",
+  "confirmation_access": false,
+  "fit": "site-balanced observed-label training rows; common draws and normalized robust path loss",
+  "matched": "force matched neural shapes at the original slots/radii; retain original on zero neural offset",
+  "model": {
+    "bytes": 3591,
+    "path": "src/world_model/m3w_opendd_comoving_eqmotion.py",
+    "sha256": "a44bebec013e8f989f963ae646e2abab0cb84e48b5cfb1d11ef541be0994b615"
+  },
+  "model_selection": false,
+  "native_steps": [
+    8,
+    12
+  ],
+  "original_2pct": true,
+  "parent": {
+    "bytes": 95475,
+    "path": "outputs/publication_readiness_2026_09/donor_shape_choice_v1/analysis.json",
+    "sha256": "43497cb4a3c7d23bcec3017ff7873538c7e46aad7fa7bc519e1d655a309314c8"
+  },
+  "primary": "full-roster direct lower gain over CV and OLS4; comoving vs centered at identical budget",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 800,
+  "threads": 4,
+  "trainer": {
+    "bytes": 15435,
+    "path": "scripts/run_m3w_recording_count.py",
+    "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+  },
+  "workers": 0
+}

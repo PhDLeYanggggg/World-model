@@ -1,0 +1,60 @@
+\section{Forecasting in a Comoving Frame}
+
+To separate producer quality from choosing interventions, we fit
+a compact deterministic EqMotion adaptation~\cite{eqmotion} on seven
+OpenDD location-held folds with three seeds. No pretrained weights
+or future-dependent head selection are used. Each arm has a fixed
+head, two layers, width 32 and the same draws and loss
+(\MovingEqFits{} fits). Centered inputs subtract the focal final
+position. Comoving inputs use
+\(
+ r_{jt}=x_{jt}-x_{i0}-t v_i,
+ \quad v_i=x_{i0}-x_{i,-1}.
+\)
+We restore the focal CV path after predicting the departure.
+A common velocity boost cancels from the residual coordinates and
+reappears in the restored forecast. Current neighbor ordering and
+the focal-derived scale are unaffected. The no-peer arm masks
+the same three nearest-neighbor slots before prediction.
+
+\begin{table}[h]
+\centering
+\caption{Matched EqMotion study on exposed OpenDD. Complete-path ADE
+and available-endpoint FDE (local coordinate units) and joint passes are
+different comparisons. The last column is the outcome-aware
+two-shape capacity at the same slots, not a deployable result.}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Model & ADE & FDE & Joint & Capacity \\
+\midrule
+CV & \MovingEqCVADE{} & \MovingEqCVFDE{} & -- & -- \\
+OLS4 & \MovingEqOLSADE{} & \MovingEqOLSFDE{} & -- & -- \\
+Centered with peers & \MovingEqCenteredADE{} & \MovingEqCenteredFDE{} &
+\MovingEqCenteredPass{} & \MovingEqCenteredCapacity{} \\
+Comoving with peers & \MovingEqMovingADE{} & \MovingEqMovingFDE{} &
+\MovingEqMovingPass{} & \MovingEqMovingCapacity{} \\
+Comoving ego only & \MovingEqEgoADE{} & \MovingEqEgoFDE{} &
+\MovingEqEgoPass{} & \MovingEqEgoCapacity{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The comoving peer model changes the paired lower gain by
+\MovingEqFrameEffect{} versus the centered peer model and by
+\MovingEqPeerEffect{} versus the comoving ego model. The ego
+model beats OLS4 (\MovingEqEgoVsOLS{}), but not CV
+(\MovingEqEgoVsCV{}). These direct paired bounds charge
+missing-step disagreement and average seeds before the site
+bootstrap. The compact adaptation is not a reproduction of the
+published best-of-20 EqMotion benchmark.
+
+At \MovingEqEdits{} frozen slots, neural offsets are rescaled to
+the original peak displacement. Across \MovingEqViews{} views,
+the original shape has \MovingEqAnchorPass{} joint passes and the
+past-prefix donor control has \MovingEqPrefixPass{}. None of the
+projected neural shapes exceeds the latter. The direct utility effect
+of the ego-only shape is \MovingEqEgoMatched{} against the original.
+All arms leave \MovingEqUndefined{} views with undefined risk.
+These results do not support replacing CV or promoting a
+neural intervention policy.
