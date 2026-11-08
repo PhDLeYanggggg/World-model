@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the second-edit selector on the outcome of both edits
+over a full recording. It reduced error slightly over easy
+ranking but did not beat the matched local-label control reliably,
+and fewer recordings passed. I did not adopt it.
+[Whole-recording supervision](outputs/publication_readiness_2026_09/opendd_record_support_v1/README.md).
+
 I checked what happens to risk when a second edit is added. It made
 some previously unscorable recordings pass and pushed others over the
 limit. More edits do not necessarily make the risk go up or down.

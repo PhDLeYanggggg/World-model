@@ -1,0 +1,43 @@
+\section{Whole-Recording Support Supervision}
+
+We match both edit budgets and both amplitudes. The second query
+and first action stay fixed. The training event combines risk
+and conservative improvement against CV and OLS4 over the
+whole recording. The donor first-action scorer excludes the
+donor and evaluation site; its fitting trajectories additionally
+exclude each fitting site. The second-action head sees the first
+action only if it has already occurred or was chosen at the
+current query. A local-event control uses the same menus,
+observed features and model size. A second control masks the
+first action during both fitting and inference.
+
+\begin{table}[h]
+\centering
+\caption{Whole-recording supervision on the same 606 development
+views. The first action and second query are unchanged.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Rank & Changed & Undefined & Joint \\
+\midrule
+Frozen easy & 0 & \RecordSupportEasyUndefined{} & \RecordSupportEasyJoint{} \\
+Local event & \RecordSupportLocalChanged{} & \RecordSupportLocalUndefined{} & \RecordSupportLocalJoint{} \\
+Recording, no prefix & \RecordSupportNoPrefixChanged{} & \RecordSupportNoPrefixUndefined{} & \RecordSupportNoPrefixJoint{} \\
+Recording, with prefix & \RecordSupportPrefixChanged{} & \RecordSupportPrefixUndefined{} & \RecordSupportPrefixJoint{} \\
+Guarded recording & \RecordSupportGuardChanged{} & \RecordSupportGuardUndefined{} & \RecordSupportGuardJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full recording head changes conservative error reduction
+by \RecordSupportLabelEffect{} against the local-event control
+and by \RecordSupportContextEffect{} against the masked-prefix
+control. Guarded selection yields \RecordSupportGuardEffect{}
+against the frozen easy recipient.
+Separately, among the \RecordSupportAuditCount{} active second slots,
+adding the original support edit to the gain edit makes
+\RecordSupportNewPass{} undefined views pass but moves
+\RecordSupportLostPass{} passed views over the limit. When defined,
+the selected-easy ratio changes from $H/B$ to $(H+h)/(B+b)$.
+The sign depends on $hB-Hb$, so more edits do not imply
+monotone risk. Undefined ratios are never certified.

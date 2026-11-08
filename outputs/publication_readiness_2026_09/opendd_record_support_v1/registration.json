@@ -1,0 +1,51 @@
+{
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 14574,
+    "path": "scripts/run_m3w_opendd_record_support.py",
+    "sha256": "3f60367d4bdc61610e8b2cf455c697d7ab0b058a0d27a59b76d7a6e9d047fa5e"
+  },
+  "confirmation_access": false,
+  "donor_first_slot": "same model and threshold; fit excludes donor and outer site, all fitting forecasts triple excluded",
+  "features": "current observed menu plus optional first edit state; first edit hidden until its query",
+  "first_slot_steps": 500,
+  "guard": "same budget; replace easy only for better joint logit and non-worse predicted risk and conservative gain",
+  "matching": "keep both edit counts, first edit, second query, and both amplitudes frozen",
+  "model": {
+    "bytes": 2077,
+    "path": "src/world_model/m3w_opendd_record_support.py",
+    "sha256": "c1c49d0a69cf05329f8cb1db062066cd42d5281c484a1375f44ec9b45a66e58c"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 91004,
+      "path": "outputs/publication_readiness_2026_09/opendd_support_admission_v1/analysis.json",
+      "sha256": "c845a67217e1681f0a652ce27a7846b428941c542d71d2ab94f0c3e61a90b3ca"
+    },
+    {
+      "bytes": 240991,
+      "path": "outputs/publication_readiness_2026_09/opendd_nested_support_bank_v1/producer_freeze.json",
+      "sha256": "b77d6a72abb99b10f3811553205ed3d6968427cdc5acbf3fefe3bdffda1cb9ef"
+    }
+  ],
+  "primary": "record_prefix versus local_same_data at equal edit budgets; record_guard versus frozen easy",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "target": "whole-record risk and positive conservative gain against CV and OLS4; local arm uses same rows and features",
+  "threads": 4,
+  "workers": 0
+}

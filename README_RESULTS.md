@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Whole-Recording Support Supervision
+
+With 943 matched edits, recording labels and observed first-edit
+context give +0.00328 pp [-0.00154, +0.00896] against local labels.
+Versus the frozen easy policy, the same head gains +0.00498 pp
+[+0.00082, +0.01009] but reduces joint passes from 138 to 123 of 606.
+The guard drops to 120 passes. No promotion or independent readout.
+[Experiment](outputs/publication_readiness_2026_09/opendd_record_support_v1/README.md) |
+[Manuscript v96](outputs/publication_readiness_2026_09/evidence_manuscript_v96/README.md).
+
 ## Recording Risk Is Not Monotone in Edit Count
 
 On 345 fixed second-slot views, adding support moves 102 from undefined
