@@ -37,6 +37,12 @@ pixels for ungated joint selection). I do not deploy the new policy.
 [Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md) |
 [Working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v24/README.md).
 
+I took the frozen OpenDD forecaster to TUMDOT-ING without fitting on the
+new recordings. Its 5% blend failed to improve on CV or on a causal
+motion control at the same recipients and coefficient. It met the
+original recording risk rule in only 19 of 27 recording-seed views.
+[Transfer test and failure analysis](outputs/publication_readiness_2026_09/tumdot_ing_frozen_transfer_v1/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more

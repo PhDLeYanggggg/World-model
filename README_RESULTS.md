@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen OpenDD-to-TUMDOT-ING Transfer
+
+Fresh inference and exact replay, with 21 hash-verified OpenDD checkpoints.
+The 5% blend loses -0.242 pp to CV and -0.795 pp to matched past-only
+hindcast on nine files from one campaign. It is already behind matched
+hindcast on complete rows (-0.309 pp). The original 2% risk rule passes
+19/27 views; all eight failures exceed the easy upper bound. No deployment
+or DroneCrowd confirmation. [Readout and decomposition](outputs/publication_readiness_2026_09/tumdot_ing_frozen_transfer_v1/README.md).
+
 ## New Source Structural Support
 
 Fresh publisher checks and exact replay. Three TUMDOT-ING samples have
