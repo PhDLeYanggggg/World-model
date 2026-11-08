@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Query-Local Temporal Envelopes
+
+27 native Torch fits with three seeds. Learned versus flat timing at
+95,769 matched edits and identical per-row peak: -0.016 conservative pp
+[-0.425, +0.389]. Neither qualifies for inner calibration (0/27);
+both fixed-count arms pass 0/72. Later timing reduces all-risk violations
+from 45 to 30, without a full pass. A label-aware continuous relaxation
+minimizes observed ADE at the same recipients, rays and peaks; even
+this best-risk envelope passes only 4/24 distinct recordings. The result
+does not bound changed recipients, directions or peaks. No official
+calibration or confirmation access.
+[Study, capacity derivation and replay](outputs/publication_readiness_2026_09/query_temporal_envelope_v1/README.md).
+
 ## Nested Source-Disjoint Recipient Calibration
 
 27 native Torch fits, three seeds, nine disjoint 6/2/1 development

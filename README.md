@@ -124,6 +124,14 @@ five had risk-feasible actions in hindsight, but the scores could not
 find them. I have kept the DroneCrowd confirmation groups sealed.
 [Source-disjoint experiment](outputs/publication_readiness_2026_09/nested_recipient_calibration_v1/README.md).
 
+I also tested whether changing the timing of an edit helps when the
+recipient, direction, and maximum offset stay fixed. The learned
+timing did not beat uniform scaling. Even with future labels used to
+choose the best timing, only four of 24 development recordings could
+pass the original risk rule. That makes changing the recipients or
+candidate paths a better next test than tuning the timing again.
+[Matched timing experiment](outputs/publication_readiness_2026_09/query_temporal_envelope_v1/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
