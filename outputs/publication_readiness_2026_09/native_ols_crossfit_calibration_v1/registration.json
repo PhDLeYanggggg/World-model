@@ -1,0 +1,88 @@
+{
+  "arms": [
+    "direct",
+    "factorized_neighbor",
+    "factorized_constant"
+  ],
+  "bindings": [
+    {
+      "bytes": 16638,
+      "path": "scripts/run_m3w_ols_crossfit_calibration.py",
+      "sha256": "08bf0b826ccbb175667776f008338121e6c3f3b0e5cca8fa0a652c2c3b330d64"
+    },
+    {
+      "bytes": 2182,
+      "path": "src/evaluation/m3w_ols_crossfit_calibration.py",
+      "sha256": "f1f0b0b5ff22ea41a37c873926613626836351a99ac8a5d6734eff4bffdb5fe0"
+    },
+    {
+      "bytes": 2201,
+      "path": "outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/protocol.md",
+      "sha256": "a220c1b6eb9795e9aef45baf18f267938712aa3b7d756d0754e49067bdf8b810"
+    },
+    {
+      "bytes": 1324,
+      "path": "tests/test_m3w_ols_crossfit_calibration.py",
+      "sha256": "1c9ca276acf3a89f9207294a26f8ea67a8a0bebb26150427151112e8798a8190"
+    },
+    {
+      "bytes": 2589,
+      "path": "outputs/publication_readiness_2026_09/native_ols_support_selection_v1/registration.json",
+      "sha256": "91c2f849d8b4773e7cfca12eeb767046cf44c29829aa4747131923e7d12c3253"
+    },
+    {
+      "bytes": 4506,
+      "path": "src/world_model/m3w_ols_support_selection.py",
+      "sha256": "f37fafcd19e913640919402b131ae9a0eec2b4538f865b5991bcfdbf79db8f0e"
+    },
+    {
+      "bytes": 15048,
+      "path": "scripts/run_m3w_ols_support_selection.py",
+      "sha256": "5274a3db641915858cde58fdf1a2b88239ff9c5d1c8d0e23a9cc8ed8840ee50e"
+    },
+    {
+      "bytes": 264,
+      "path": "outputs/publication_readiness_2026_09/native_ols_support_selection_v1/train_execution.json",
+      "sha256": "db17dd11dae7f3dbc0e2e51136c8f1f068d58efd33e47847482a8385ec2a56a7"
+    },
+    {
+      "bytes": 264,
+      "path": "outputs/publication_readiness_2026_09/native_ols_support_selection_v1/infer_execution.json",
+      "sha256": "fecf355a732e57ab31ef03b98018fdc741368d2e23fb21246066e9c966e8226c"
+    },
+    {
+      "bytes": 272,
+      "path": "outputs/publication_readiness_2026_09/native_ols_support_selection_v1/replay_execution.json",
+      "sha256": "dc3e2cfa0855c1f92f7fc9bf8a453651748afca50f4a59e4cf91d2a353fb3ca0"
+    }
+  ],
+  "dev_only_after_oof_selection": true,
+  "external_access": false,
+  "fit_role": "leave_one_of_nine",
+  "min_positive_sources": 7,
+  "original_cv_rule_unchanged": true,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 600,
+    "torch_threads": 2,
+    "workers": 0
+  },
+  "skip_dev_if_all_abstain": true,
+  "source_bootstrap": 3000,
+  "thresholds": [
+    0.0,
+    0.0025,
+    0.005,
+    0.01,
+    0.02,
+    0.04,
+    0.08
+  ]
+}
