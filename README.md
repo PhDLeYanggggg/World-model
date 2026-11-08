@@ -116,6 +116,14 @@ and added no forecast gain.
 [Recipient feasibility](outputs/publication_readiness_2026_09/recipient_feasibility_v1/README.md) |
 [Updated manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v44/README.md).
 
+I then separated fitting, risk calibration, and scoring by source group.
+The new ranking did not beat the gain-only ranking at the same number of
+changes, and neither found a threshold that passed the 2% rule. Four of
+nine calibration splits had a recording with no easy examples; the other
+five had risk-feasible actions in hindsight, but the scores could not
+find them. I have kept the DroneCrowd confirmation groups sealed.
+[Source-disjoint experiment](outputs/publication_readiness_2026_09/nested_recipient_calibration_v1/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have

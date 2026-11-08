@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Nested Source-Disjoint Recipient Calibration
+
+27 native Torch fits, three seeds, nine disjoint 6/2/1 development
+splits. Neither ranker qualifies in any of 27 inner fold-seeds, even
+after an exact diagnostic sweep of 382,797 score levels. At 95,769
+matched switches, the support ranking changes conservative utility by
+-0.701 pp [-1.709, +0.381] relative to gain ranking. Both pass 0/72.
+Four inner splits have a recording with no easy examples; the other five
+admit risk-only hindsight allocations with the same nominees. The
+zero-switch calibrated comparison is not estimable. DroneCrowd 15/30
+roles, confirmation seal and the original 2% rule are unchanged.
+[Experiment](outputs/publication_readiness_2026_09/nested_recipient_calibration_v1/README.md) |
+[Working manuscript v45](outputs/publication_readiness_2026_09/evidence_manuscript_v45/README.md).
+
 ## Recipient Feasibility and Query-Local Fallback
 
 54 matched Torch fits, one common path nominator and 95,769
