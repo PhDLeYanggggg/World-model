@@ -13,6 +13,9 @@ I also tested whether training against both CV and OLS4 improves forecasts
 when the intervention budget and recipients are held fixed. The small gain on
 observed labels did not survive the conservative missing-label comparison or
 the safety checks. [Matched training experiment](outputs/publication_readiness_2026_09/native_dual_reference_forecast_v1/README.md).
+I then penalized error above the better reference on each training example.
+That changed the learning signal but still did not improve the conservative
+score or the safety checks. [Pointwise harm experiment](outputs/publication_readiness_2026_09/native_pointwise_reference_forecast_v1/README.md).
 
 For missing trajectory labels, I also tested how well two extrapolation
 centers cover positions I deliberately hid from released tracks. Anchored

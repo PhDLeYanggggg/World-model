@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Pointwise Positive Harm Against Two References
+
+Six fresh warm fits test a reference-dependent observed gradient at fixed
+recipients. Observed gain improves by 0.063 points, but the conservative
+difference is -0.043 points (95% CI [-0.177, +0.060]); 13/102 pointwise
+views pass the original risk rule versus 14/102 for CV continuation.
+[Result and replay](outputs/publication_readiness_2026_09/native_pointwise_reference_forecast_v1/README.md).
+
 ## Motion-Centered Coherent Pair Ranking
 
 With anchored OLS4 instead of fixed terminal extension and the same 1x
