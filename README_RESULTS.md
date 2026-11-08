@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## CV Query Ranking
+
+One hundred and eight fresh fits cross the training reference with row
+regression versus pairwise query ranking, using frozen nested proposals.
+The CV ranker gives +0.0507 full-grid points versus leaving CV alone
+[-0.1573, +0.3053]. At a fixed quarter amplitude it gives +0.0777
+[+0.0052, +0.1891], but worst supported known easy harm reaches 5.244%
+and the direct matched contrast versus minimum displacement is
++0.0047 [-0.0865, +0.1161]. No policy promoted, calibration reopened, or
+official rule changed. [Full results](outputs/publication_readiness_2026_09/native_cv_query_rank_v1/README.md).
+
 ## Nested Velocity Selection
 
 Across 108 fresh donor forecasters and 54 fresh selectors, the held

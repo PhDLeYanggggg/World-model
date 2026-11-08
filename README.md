@@ -75,6 +75,10 @@ I trained the selector again with each evaluation source excluded from
 both training stages. Its learned choices did not improve on leaving
 OLS4 alone. Keeping those same choices and falling back to CV did not
 fix them either. [Nested selection experiment](outputs/publication_readiness_2026_09/native_nested_velocity_selection_v1/README.md).
+I then trained the ranker against CV itself. A fixed quarter-amplitude
+diagnostic gave a small gain over no edit, but did not establish an
+advantage over the matched simple controls or protect easy cases.
+[CV ranking experiment](outputs/publication_readiness_2026_09/native_cv_query_rank_v1/README.md).
 
 ## Earlier Development Result
 
