@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Secondary DroneCrowd Forecast Diagnostics
+
+I fixed the available-label ADE/FDE and matched relative-path readout before
+the calibration outcome. The pair statistic reproduces the previous exposed
+development readout across 102 recording-seed views; this is an implementation
+check, not an external result. The primary rule and confirmation access are
+unchanged. [Protocol and usage](outputs/publication_readiness_2026_09/dronecrowd_forecast_diagnostics_v1/README.md).
+
 ## Pointwise Positive Harm Against Two References
 
 Six fresh warm fits test a reference-dependent observed gradient at fixed
