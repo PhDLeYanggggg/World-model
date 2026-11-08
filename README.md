@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether learning from feasible whole-recording assignments
+helps at the same edit count. It improved some risk counts but lost
+forecast utility. A separate one-edit analysis found that missing
+support can sometimes be repaired without changing the risk rule.
+[Recording-level supervision and support](outputs/publication_readiness_2026_09/opendd_record_teacher_v1/README.md).
+
 I trained a pairwise ranker to choose recipient sets without changing
 when edits happen or how many are used. It improved over the fixed
 ranking on OpenDD, but not reliably over a learned regression control

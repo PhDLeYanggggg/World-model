@@ -1,0 +1,50 @@
+\section{Recording Teacher and Missing Support}
+
+On donors, we solve the original recording risk problem
+at fixed immediate and one-query-delay counts. Both
+teachers use only recordings with a verified feasible
+witness and positive lower gains over CV and OLS4.
+The recording teacher selects its witnessed slate;
+the local teacher instead maximizes the query's lower
+gain over CV. They differ on \RecordingTeacherDisagrees{}
+of \RecordingTeacherChoices{} query examples from
+\RecordingTeacherDonorQualified{} donor clock views
+(repeated across folds). Both use the same donor features,
+with trajectories and release heads excluding donor and
+outer site, and all held edit counts are identical.
+
+\begin{table}[h]
+\centering
+\caption{Recording supervision at the frozen held clock.
+Both new teachers use the same donor inputs.}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Policy & Undefined & Risk & Joint \\
+\midrule
+Fixed & \RecordingTeacherFixedUndefined{} & \RecordingTeacherFixedRisk{} & \RecordingTeacherFixedJoint{} \\
+Scalar & \RecordingTeacherScalarUndefined{} & \RecordingTeacherScalarRisk{} & \RecordingTeacherScalarJoint{} \\
+Pairwise with harm guard & \RecordingTeacherGuardedUndefined{} & \RecordingTeacherGuardedRisk{} & \RecordingTeacherGuardedJoint{} \\
+Local teacher & \RecordingTeacherLocalUndefined{} & \RecordingTeacherLocalRisk{} & \RecordingTeacherLocalJoint{} \\
+Recording teacher & \RecordingTeacherRecordUndefined{} & \RecordingTeacherRecordRisk{} & \RecordingTeacherRecordJoint{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The recording teacher changes lower gain by
+\RecordingTeacherDirect{} versus the local teacher and
+\RecordingTeacherGuard{} versus the harm guard. It does
+not improve on CV (\RecordingTeacherCV{}).
+
+Separately, as an outcome-aware budget relaxation, we retain
+all existing edits and allow one extra recipient at any query,
+with a neural amplitude of 1, 0.5, or 0.25. The original
+scorer verifies a positive witness in
+\RecordingTeacherZeroQualified{}/\RecordingTeacherZeroTotal{}
+zero-edit views and
+\RecordingTeacherNoEasyQualified{}/\RecordingTeacherNoEasyTotal{}
+active views lacking reachable easy support. At full
+amplitude alone the corresponding counts are
+\RecordingTeacherZeroFull{} and \RecordingTeacherNoEasyFull{}.
+This diagnostic neither changes the main budget nor implies
+that the cohorts or helpful edits can be recognized causally.

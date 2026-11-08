@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Feasible Recording Supervision and One-Edit Support
+
+42 Torch fits and 21,000 updates with exact held query-count matching.
+Recording supervision loses -0.066 pp [-0.144, -0.002] versus the
+matched local teacher, with 15 rather than 10 joint passes (scalar
+control 20). A separate label-aware extra edit can repair 139/244
+zero-edit and 26/68 no-easy-support views without loosening 2%.
+It is a changed-budget diagnostic, not a deployable policy.
+[Experiment](outputs/publication_readiness_2026_09/opendd_record_teacher_v1/README.md) |
+[Manuscript v90](outputs/publication_readiness_2026_09/evidence_manuscript_v90/README.md).
+
 ## Direct Recipient Ranking at an Identical Clock
 
 42 Torch fits, 21,000 updates. The pairwise model beats fixed rank

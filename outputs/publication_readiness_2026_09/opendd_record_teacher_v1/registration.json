@@ -1,0 +1,55 @@
+{
+  "arms": [
+    "fixed",
+    "scalar",
+    "guarded",
+    "local_teacher",
+    "record_teacher"
+  ],
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 817,
+    "unit": "site after averaging seeds"
+  },
+  "code": {
+    "bytes": 12237,
+    "path": "scripts/run_m3w_opendd_record_teacher.py",
+    "sha256": "4f9c95e90bd4f69c12175b09e2c5adc120f28052968c337dc86a91b7796a9130"
+  },
+  "confirmation_access": false,
+  "matched_teacher": "same donor clocks, query options and examples; independent maximum lower CV gain in each query",
+  "model": {
+    "bytes": 1492,
+    "path": "src/world_model/m3w_opendd_record_teacher.py",
+    "sha256": "ef767c3f1d1a6319a2ca7ee5a467c2e0ced6737e1545357b142872169970e017"
+  },
+  "native_steps": [
+    8,
+    12
+  ],
+  "no_threshold_search": true,
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 66183,
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_rank_v1/analysis.json",
+      "sha256": "ca1749eba41b41e52f0fc321bbe4e1f621bf7d15c4048eb67bc2fc4494d2503c"
+    },
+    {
+      "bytes": 31498,
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_rank_v1/head_freeze.json",
+      "sha256": "5d219e136ea009b76bcc269ad4c36fa57cccec57b5525b8ed3d447639f52759b"
+    }
+  ],
+  "primary": "record teacher vs local teacher at every frozen held query count; original risk and gain separately",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 500,
+  "teacher": "only positive-dual-gain original-risk witnesses; no label for an unsupported donor clock",
+  "threads": 4,
+  "training": "fixed immediate and one-query-delay donor clocks, using release and trajectory heads excluding donor and outer site",
+  "workers": 0
+}

@@ -15,8 +15,10 @@ from src.reproduction import m3w_opendd_timing_replay as replay
 
 OUT = legacy.EXTENDED.parent.parent/"opendd_timing_replay_v1"/"anonymous_opendd_timing.zip"
 EXTENDED = OUT.parent.parent/"opendd_timing_replay_v2"/OUT.name
+RECORDING = OUT.parent.parent/"opendd_timing_replay_v3"/OUT.name
 SLATE = "opendd_slate_queue_v1"
 RANK = "opendd_slate_rank_v1"
+TEACHER = "opendd_record_teacher_v1"
 SLATE_ORDER = ("adaptive_queue_vs_cv", "adaptive_queue_vs_same_clock",
                "adaptive_queue_vs_same_credits_immediate", "adaptive_queue_vs_fixed_queue",
                "adaptive_queue_vs_no_geometry", "adaptive_queue_vs_myopic_queue",
@@ -34,16 +36,34 @@ def read_clock():
     return a
 
 
-def build(include_rank=False):
+def read_support():
+    p = legacy.REPORTS/TEACHER
+    r = json.loads((p/"support_registration.json").read_text())
+    a = json.loads((p/"support_capacity.json").read_text())
+    if (a["registration"] != legacy.sha(p/"support_registration.json") or not r["outcome_aware_only"]
+            or not a["outcome_aware_only"] or r["changes_main_budget"]
+            or r["parents"][0]["sha256"] != legacy.sha(p/"analysis.json")
+            or any(z["confirmation_access"] or not z["original_2pct"] for z in (r, a))):
+        raise ValueError("Require the frozen diagnostic-only support capacity")
+    return a
+
+
+def build(include_rank=False, include_teacher=False):
     studies, expected = {}, {}
     names = ("opendd_release_credit_v1", "opendd_credit_value_v2", SLATE)
-    for name in (*names, RANK) if include_rank else names:
+    if include_rank or include_teacher:
+        names += (RANK,)
+    if include_teacher:
+        names += (TEACHER,)
+    for name in names:
         a = legacy.read(name)
         s = a["summary"]
         fields = {k: {f: v[f] for f in legacy.FIELDS} for k, v in s["metrics"].items()}
         status = s.get("capacity", {})
         clock = read_clock() if name == SLATE else None
         lookup = {(k, r["seed"]): r["capacity"] for k, rows in clock["by_site"].items() for r in rows} if clock else {}
+        support = read_support() if name == TEACHER else None
+        support_rows = {(k, r["seed"]): r["groups"] for k, rows in support["by_site"].items() for r in rows} if support else {}
         scalars = dict(s["effects"])
         if name == SLATE:
             scalars["pair_relative"] = s["pair_relative"]
@@ -59,6 +79,9 @@ def build(include_rank=False):
                     counts[f"capacity_{delay}"] = {k: r["capacity"][delay].get(k, 0) for k in table}
                 if clock:
                     counts["same_clock_capacity"] = {k: lookup[site, r["seed"]].get(k, 0) for k in clock["summary"]}
+                if support:
+                    counts.update({f"extra_edit_{group}": {k: support_rows[site, r["seed"]][group].get(k, 0)
+                                  for k in values} for group, values in support["summary"].items()})
                 view.append(dict(effects=effect, counts=counts))
             cells.append(view)
         order = list(SLATE_ORDER if name == SLATE else sorted(scalars))
@@ -68,6 +91,8 @@ def build(include_rank=False):
         fields.update({f"capacity_{k}": v for k, v in status.items()})
         if clock:
             fields["same_clock_capacity"] = clock["summary"]
+        if support:
+            fields.update({f"extra_edit_{k}": value for k, value in support["summary"].items()})
         expected[name] = dict(counts=fields, effects={k: {f: v[f] for f in ("point", "interval95")} for k, v in scalars.items()})
     replay.verify(replay.aggregate(studies), expected)
     files = {
@@ -81,7 +106,7 @@ def build(include_rank=False):
         "expected.json": legacy.encoded(expected),
     }
     files["manifest.json"] = legacy.encoded({k: hashlib.sha256(v).hexdigest() for k, v in files.items()})
-    out = EXTENDED if include_rank else OUT
+    out = RECORDING if include_teacher else EXTENDED if include_rank else OUT
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".pending")
     with ZipFile(tmp, "w") as z:
@@ -96,4 +121,6 @@ def build(include_rank=False):
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--include-rank", action="store_true")
-    build(p.parse_args().include_rank)
+    p.add_argument("--include-record-teacher", action="store_true")
+    a = p.parse_args()
+    build(a.include_rank, a.include_record_teacher)
