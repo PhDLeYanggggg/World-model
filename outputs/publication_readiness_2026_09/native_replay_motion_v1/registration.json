@@ -1,0 +1,121 @@
+{
+  "arms": [
+    "replay",
+    "history",
+    "global_mix"
+  ],
+  "bootstrap": 3000,
+  "cfg": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 800,
+    "torch_threads": 4,
+    "workers": 0
+  },
+  "comparisons": [
+    [
+      "replay",
+      "ols4"
+    ],
+    [
+      "history",
+      "ols4"
+    ],
+    [
+      "global_mix",
+      "ols4"
+    ],
+    [
+      "cv",
+      "ols4"
+    ],
+    [
+      "ols8",
+      "ols4"
+    ],
+    [
+      "median",
+      "ols4"
+    ],
+    [
+      "bounded_trend",
+      "ols4"
+    ],
+    [
+      "replay",
+      "cv"
+    ],
+    [
+      "replay",
+      "history"
+    ],
+    [
+      "replay",
+      "global_mix"
+    ]
+  ],
+  "development_targets": false,
+  "experts": [
+    "ols4",
+    "fast",
+    "long",
+    "median",
+    "trend"
+  ],
+  "external_access": false,
+  "files": [
+    {
+      "bytes": 11715,
+      "path": "scripts/run_m3w_replay_motion.py",
+      "sha256": "c24de2e85950fe5843437ddb39f01f1a1369d8f3346eeca73ad6a456e621112e"
+    },
+    {
+      "bytes": 4237,
+      "path": "src/world_model/m3w_replay_motion.py",
+      "sha256": "f08cf52f8bb8941dd1e985645fdc8597db6c5c414ead3764e57767f29e74793a"
+    },
+    {
+      "bytes": 1867,
+      "path": "tests/test_m3w_replay_motion.py",
+      "sha256": "871d508e105800857a775296c4f3d80c998f63bea24b9f972a33c103f38099c1"
+    },
+    {
+      "bytes": 2361,
+      "path": "outputs/publication_readiness_2026_09/native_replay_motion_v1/protocol.md",
+      "sha256": "a2ca68278630508c68b5ce927921f27fa13792d33ef3c95abe3368e24cdd62bc"
+    },
+    {
+      "bytes": 3259,
+      "path": "outputs/publication_readiness_2026_09/native_ols_anchor_denoising_v1/registration.json",
+      "sha256": "7486e3ff296edbb17f420a621edef434bbfced2ac3d6e5caa183eae9b7b0c063"
+    },
+    {
+      "bytes": 11531,
+      "path": "scripts/run_m3w_ols_anchor_denoising.py",
+      "sha256": "b26e6717697e541b88c851b783812e71d284361c5747c5a03b8ad09e1c7d49ed"
+    },
+    {
+      "bytes": 4412,
+      "path": "src/world_model/m3w_local_velocity.py",
+      "sha256": "4c024fec28a63c52c938df61b1c1835ab92eb21b292779b8daa794271cb45100"
+    },
+    {
+      "bytes": 1864,
+      "path": "outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/fit_population.json",
+      "sha256": "834743f6e691b95ce6bf54665d99bcee12dde97789c5500c2dc735e167f935da"
+    },
+    {
+      "bytes": 270,
+      "path": "outputs/publication_readiness_2026_09/native_velocity_objectives_v1/replay_execution.json",
+      "sha256": "fe29b1b1d9236ae7f158e3cbaff77ae18f67fe2004eba9468839f0363c1a2472"
+    }
+  ],
+  "held_source": true,
+  "original_rule_unchanged": true,
+  "seeds": [
+    17,
+    29,
+    43
+  ]
+}
