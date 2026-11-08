@@ -238,6 +238,12 @@ six checks failed on easy cases at one intersection. I kept the existing
 policy and left the independent DroneCrowd groups sealed.
 [Learned path-choice experiment](outputs/publication_readiness_2026_09/matched_path_choice_v1/README.md).
 
+I also matched the training candidates to the averaging used at
+inference. Averaging changed which paths the model selected, but the
+history-based version still passed only 21 of 27 risk checks and lost
+to the motion baselines. I did not replace the current policy.
+[Matched averaging experiment](outputs/publication_readiness_2026_09/matched_path_ensemble_v1/README.md).
+
 On OpenDD I also retrained the forecast around the motion blend that the
 policy actually emits. It improved on hindcast, but failed the recording
 risk test. At equal realized displacement it still beat hindcast slightly

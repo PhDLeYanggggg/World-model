@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source Ensemble Path Choice
+
+Six fresh native Torch fits on the same OpenDD recipients and radii.
+Training now averages seven site-excluded producers; inference uses
+the unchanged TUMDOT path menu. At half radius the full agreement rule
+changes 488/4,368 choices, loses -0.0169 pp directly vs the single-fit
+control, and still passes 21/27. Action-only agreement gains +0.0024 pp
+directly but falls from 22 to 21 passes and still loses to both strong
+references. No deployment or confirmation status changes.
+[Report](outputs/publication_readiness_2026_09/matched_path_ensemble_v1/README.md) |
+[Working supplement v54](outputs/publication_readiness_2026_09/evidence_manuscript_v54/README.md).
+
 ## OpenDD-Fit Matched Path Choice
 
 Six native Torch fits (three seeds, 3,000 updates) from site-excluded
