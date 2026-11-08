@@ -1,5 +1,7 @@
 import torch
+import numpy as np
 
+from scripts.audit_m3w_opendd_hindcast_amplitude import constrain, radii
 from src.world_model.m3w_hindcast_residual import emitted, objective
 
 
@@ -33,3 +35,18 @@ def test_harm_penalty_cannot_cancel_against_easy_benefit_and_ignores_missing_tar
     torch.testing.assert_close(safe-completion, 4*sqrt_two/3)
     y[2] = torch.nan
     torch.testing.assert_close(objective(pred, cv, anchor, y, valid, easy, 'easy_guard'), safe)
+
+
+def test_common_radius_only_shrinks_and_preserves_direction_and_zero_support():
+    cv = np.zeros((2, 12, 2))
+    inc = cv.copy()
+    inc[1] = [1., 0.]
+    alt = cv.copy()
+    alt[1] = [0., 3.]
+    paths = dict(incumbent=inc, easy_guard=alt)
+    for mode in ('incumbent_cap', 'equal_displacement'):
+        out = constrain(paths, cv, mode)
+        r = radii(out, cv)
+        np.testing.assert_array_equal(r['incumbent'], [0., 1.])
+        np.testing.assert_array_equal(r['easy_guard'], [0., 1.])
+        np.testing.assert_array_equal(out['easy_guard'][1, 0], [0., 1.])

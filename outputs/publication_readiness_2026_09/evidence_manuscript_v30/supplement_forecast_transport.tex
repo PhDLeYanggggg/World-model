@@ -1,0 +1,46 @@
+\section{Forecast Training and Realized Intervention Size}
+The frozen OpenDD self-history forecaster did not transfer to the
+TUMDOT-ING diagnostic sample: nine recordings from one campaign, without
+target fitting. Its fixed 5\% blend has a lower gain of \TransportTumCV{}
+points vs.\ CV and \TransportTumMotion{} vs.\ same-recipient, same-coefficient
+hindcast. The complete-trajectory contrast vs.\ hindcast is
+\TransportTumComplete{} points, so missing labels do not fully explain the
+negative result. Only \TransportTumPass{} of 27 recording--seed views
+pass the original risk test. This is not independent confirmation.
+
+On exposed OpenDD development, we trained a bounded, heading-aligned
+velocity adjustment around the emitted hindcast blend. All arms use the
+same recipients. A missing-step disagreement term and a non-canceling
+positive-harm penalty against CV on easy rows address different aspects
+of forecast training. This is complementary to a learned reject option
+\cite{selectivenet}: we still emit a path when deferring, and compare
+paired error against that fallback. Unlike safe policy improvement for
+batch reinforcement learning \cite{spibb}, no guarantee about a
+controlled Markov process is implied by these comparisons.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Forecast & vs.\ CV & vs.\ incumbent & Passes \\
+\midrule
+Incumbent & \TransportIncCV & --- & \TransportIncPass \\
+Easy penalty & \TransportGuardCV & \TransportGuardInc & \TransportGuardPass \\
+Easy, incumbent cap & \TransportCapCV & \TransportCapInc & \TransportCapPass \\
+Easy, equal radius & \TransportEqualCV & \TransportEqualInc & \TransportEqualPass \\
+\bottomrule
+\end{tabular}
+\caption{Exposed OpenDD development, paired conservative gain in points
+and original risk passes out of 606 recording--seed views. The final
+two rows are post-hoc diagnostics. Their comparators are constrained
+using the same stated rule.}
+\label{tab:forecast-amplitude-transport}
+\end{table}
+
+The unrestricted adjustment beats hindcast, but incurs much larger
+realized movements and fails most recording risk tests. With equal
+maximum departure from CV per target, it still beats hindcast by
+\TransportEqualOld{} points, but loses to the incumbent. This separates
+some forecast-shape benefit over simple motion from the apparent benefit
+of larger interventions over the old neural forecast. No replacement
+qualifies; the safety rule is unchanged.

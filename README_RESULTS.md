@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD Forecast Training at Matched Intervention Size
+
+63 fresh fits; exact checkpoint replay. The easy-harm objective gives
++1.279 pp [+0.445, +2.185] against CV and +1.313 [+0.598, +2.130]
+against hindcast, but passes just 52/606 original risk views. After
+post-hoc equal-displacement matching, the new model is +0.094 pp
+against hindcast, -0.116 against the incumbent neural blend, and
+passes 527/606. No replacement or formal confirmation.
+[Results](outputs/publication_readiness_2026_09/opendd_hindcast_residual_v1/README.md) |
+[Supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v30/README.md).
+
 ## Frozen OpenDD-to-TUMDOT-ING Transfer
 
 Fresh inference and exact replay, with 21 hash-verified OpenDD checkpoints.

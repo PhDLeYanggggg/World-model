@@ -43,6 +43,12 @@ motion control at the same recipients and coefficient. It met the
 original recording risk rule in only 19 of 27 recording-seed views.
 [Transfer test and failure analysis](outputs/publication_readiness_2026_09/tumdot_ing_frozen_transfer_v1/README.md).
 
+On OpenDD I also retrained the forecast around the motion blend that the
+policy actually emits. It improved on hindcast, but failed the recording
+risk test. At equal realized displacement it still beat hindcast slightly
+and lost to my previous neural forecast, so I did not replace that model.
+[Training and matched-displacement comparison](outputs/publication_readiness_2026_09/opendd_hindcast_residual_v1/README.md).
+
 I also checked two public aerial datasets for a separate trajectory study.
 AerialMPT has dense annotations but only eight non-overlapping clips or
 segments with complete multi-agent 8-to-12 support. OpenDD has much more
