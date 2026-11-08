@@ -1,0 +1,33 @@
+\subsection*{Radius-matched first-edit timing}
+Before the first incumbent edit, allow one opening from the first
+two offers. The radius is a quarter of the median positive radius
+at the first offer and is fixed thereafter. The ranker is shared
+by the learned stop and earliest arms. The timing model predicts
+the next-offer advantage from the current offer only. Its donor
+labels use ranks fitted on other donors, and waiting can expire.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\hline
+Policy & Opens & Late & Risk & Joint \\
+\hline
+Incumbent & \OpeningIncumbent \\
+Frozen rank, first & \OpeningFrozen \\
+Learned rank, first & \OpeningFirst \\
+Always wait & \OpeningWait \\
+Learned stop & \OpeningLearned \\
+Matched first & \OpeningMatched \\
+\hline
+\end{tabular}
+\end{center}
+
+On all 102 views, the matched first-offer control opens only where
+the timing model opens; this is an offline utility control. The
+paired contrast is \OpeningEffect{} and \OpeningExpired{} waits
+expire in the actual policy. The original risk rule is unchanged.
+The outcome-aware first and two-offer menus both cover
+\OpeningBothJoint{} joint views; the learned top-one menu at
+either offer covers only \OpeningTop. This is a candidate-ranking
+failure, not evidence that a longer timing model would help.

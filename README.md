@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether waiting to make the first edit helps when its size is
+fixed. At the same count and displacement, the learned timing rule
+did not beat acting immediately. A second opportunity did not increase
+the number of recordings with a qualifying edit; the ranker still
+missed most of the qualifying actions already available.
+[First-edit timing](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/radius_opening_v1/README.md).
+
 I tested whether a small change in who gets edited can restore easy-case
 risk support without adding edits. With outcomes available for diagnosis,
 it restored support in some recordings. It never restored support and

@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## First-Edit Timing at Identical Displacement
+
+On 102 repeated pedestrian development views, a source-held timing
+model makes 25 openings and expires four waits. Against the earliest
+control at the same opening count and radius in each recording, the
+effect is -0.00006 pp [-0.00286, +0.00285]. It adds a single joint
+witness but does not beat the simpler always-wait control on that count.
+The outcome-aware menu has six joint views at the first offer and still
+six across two offers; the learned top-one menu recovers only one.
+No promotion or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_joint_actions_v1/causal_ledger/radius_opening_v1/README.md) |
+[Manuscript v112](outputs/publication_readiness_2026_09/evidence_manuscript_v112/README.md).
+
 ## Small Support Exchanges at Identical Query Counts
 
 The outcome-aware exchange diagnostic keeps all original query counts
