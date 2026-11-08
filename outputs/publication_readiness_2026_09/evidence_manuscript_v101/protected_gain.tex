@@ -1,0 +1,43 @@
+\subsection{Protecting the support edit}
+At the original 943 edits, we freeze the support recipient and path, as
+well as the gain query, count, and displacement radius. The protected
+head may change the gain direction, but it may change recipients only
+after the support edit is observed, including a co-observed query.
+We train on double-excluded proposals, comparing identical candidate
+menus with observed support context or with that context masked.
+Support was observed for \ProtectedGainSeen{} of \ProtectedGainQueries{}
+gain queries. No future trajectories are used at inference.
+
+\begin{center}
+\begin{tabular}{lc}
+Arm & Joint / risk pass / undefined \\
+\hline
+Original & \ProtectedGainOriginalCounts \\
+Unrestricted gain & \ProtectedGainGainCounts \\
+Protected gain & \ProtectedGainProtectedCounts \\
+Protected, context masked & \ProtectedGainMaskedCounts \\
+Protected, guarded & \ProtectedGainGuardCounts \\
+\end{tabular}
+\end{center}
+These are counts across 606 exposed recording-seed views. Recipient
+protection reduces losses of previously defined easy references from
+\ProtectedGainGainLost{} to \ProtectedGainProtectedLost{}, but does not
+eliminate them: the original gain recipient can be the only observed
+reference even when the support path is fixed. One reference was
+restored, so the aggregate undefined count conceals the turnover.
+The paired conservative utility effect versus the original is
+\ProtectedGainPrimaryEffect{}. The matched context effect is
+\ProtectedGainContextEffect{}. The guard makes \ProtectedGainGuardChanges{}
+direction changes and no recipient changes; its effect versus the
+original is \ProtectedGainGuardEffect{}. Intervals resample the
+seven locations, averaging the three seeds within each location.
+
+With future labels used only to compute a diagnostic ceiling, exact
+witnesses at the original gain query pass on \ProtectedGainCurrent{}
+views. Allowing that gain edit to wait, while holding the support path,
+gain radius and count fixed and preserving already defined references,
+raises this to \ProtectedGainDelayed{} (unrestricted delay:
+\ProtectedGainUnrestricted{}). The ceiling does not account for what
+an online policy can know about the remaining opportunity. Neither
+learned policy qualifies for confirmation; the per-recording 2\% rule
+and undefined-reference handling are unchanged.

@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Protected Gain With a Fixed Support Edit
+
+At 943 matched edits, the protected head loses one easy reference,
+versus 20 without the ordering constraint, but its utility effect
+versus the original is -0.04442 pp [-0.11633, -0.00350] and it
+passes 129/606 jointly versus 138/606. The guard passes 136/606.
+The hindsight ceiling with the support path fixed rises from
+185 to 283 if the gain edit can wait without losing existing
+references. No deployment change. The approved DroneCrowd split
+remains 15 calibration groups and 30 sealed confirmation groups.
+[Experiment](outputs/publication_readiness_2026_09/opendd_protected_gain_v1/README.md) |
+[Manuscript v101](outputs/publication_readiness_2026_09/evidence_manuscript_v101/README.md).
+
 ## Ranking at a Fixed Intervention Budget
 
 At 943 matched edits, rank versus point is -0.00010 pp

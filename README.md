@@ -9,6 +9,15 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept the support edit fixed and trained a model to change only the
+gain edit. It lost one previously defined easy reference instead of
+20 when the model could change the gain recipient at any time, but
+still did not beat the original policy. An analysis using future
+outcomes shows more room if the gain edit can wait.
+[Protected gain experiment](outputs/publication_readiness_2026_09/opendd_protected_gain_v1/README.md).
+For DroneCrowd I use 15 source groups for calibration and reserve 30
+for independent confirmation. The confirmation groups remain sealed.
+
 I held the intervention budget fixed and learned which tracks to
 edit. Relative-path features helped against a retrained ablation,
 but ranking did not beat the original policy. Changing recipients
