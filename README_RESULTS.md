@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Observation Quality and Stepwise Support
+
+108 fresh fits, nine held fitting sources, three seeds. Box features
+reduce missing-step Brier from 0.1603 to 0.0782 in the factorized arm
+(paired reduction 0.0821 [0.0603, 0.1129]; all nine sources).
+Missing-step AUROC/AUPRC rise from 0.718/0.478 to 0.913/0.834.
+At equal counts the policy gains +0.0462 full-grid points vs OLS4
+[-0.0984, +0.1905] and -0.0018 vs minimum change [-0.1466, +0.1558].
+Better availability prediction is not established trajectory gain;
+the original safety rule and independent confirmation are unchanged.
+[Results, prefix checks and support swaps](outputs/publication_readiness_2026_09/native_observability_v1/README.md).
+
 ## Fixed-Candidate Recipient Ranking
 
 Eighty-one fresh fits compare pointwise and exact expected top-two

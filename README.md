@@ -102,6 +102,12 @@ held a source out. I also separated the loss of available gain from
 restricting the candidate menu and shrinking the forecasts.
 [Fixed-candidate ranking](outputs/publication_readiness_2026_09/native_recipient_top2_v1/README.md).
 
+I then tested what the past bounding boxes could tell me that their
+centers could not. Box and boundary cues made future label availability
+much easier to predict across held sources. That improvement did not
+carry over to a reliable gain over OLS4 or the smallest-change control.
+[Observation-quality experiment](outputs/publication_readiness_2026_09/native_observability_v1/README.md).
+
 ## Looking For Better Observed Scenes
 
 I audited two Waterloo drone sites before using them for forecasting.
