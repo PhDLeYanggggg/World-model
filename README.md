@@ -91,10 +91,14 @@ the causal confirmation experiment.
 [Waterloo source audit](outputs/publication_readiness_2026_09/waterloo_annotations_v1/README.md).
 On a separate Waterloo roundabout recording, I ran a detector and tracker
 directly from unannotated frames, and checked that stopping early gives
-the same past detections, track assignments and forecasts. A matching
-numbered release has trajectory labels, but it still needs image-to-label
-alignment before I can score it.
+the same past detections, track assignments and forecasts.
 [Raw-video prefix experiment](outputs/publication_readiness_2026_09/waterloo_raw_prefix_v1/README.md).
+I then tried to align a matching video and annotation export with a
+municipal orthophoto. Registering each frame through the first frame
+worked over the short prefix, but not over most sampled keyframes.
+Finer detector tiles found more person-class boxes without recovering
+the labeled pedestrians. I am not using the recording for forecast scores.
+[Map alignment and detector comparison](outputs/publication_readiness_2026_09/waterloo_ortho_registration_v1/README.md).
 
 ## Earlier Development Result
 

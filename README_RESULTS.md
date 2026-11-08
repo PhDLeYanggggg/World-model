@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Waterloo Map Alignment and Pedestrian Association
+
+On `DJI_0932`, fresh direct registration to a municipal orthophoto
+passed held road controls on 7/19 sampled frames. A causal first-frame
+bridge passed 10/19, including 8/8 prefix frames but only 3/12 spaced
+keyframes. At identical early-frame geometry, fine detector tiles
+increased person-class detections from 10 to 76; both settings matched
+0/32 pedestrian label observations. There is no admitted forecast
+evaluation. The DroneCrowd 15/30 protocol and original 2% rule are unchanged.
+[Registration, exact readouts and limits](outputs/publication_readiness_2026_09/waterloo_ortho_registration_v1/README.md).
+
 ## Waterloo Raw-Video Prefix
 
 Fresh CPU inference on 64 sampled frames of an unannotated roundabout
