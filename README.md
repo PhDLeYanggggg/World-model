@@ -25,7 +25,17 @@ completions around the new center.
 [Missing-label stress test](outputs/publication_readiness_2026_09/native_completion_occlusion_v1/README.md) |
 [Motion-centered rerun](outputs/publication_readiness_2026_09/native_motion_centered_completion_v1/README.md).
 
-## Current Result
+## DroneCrowd Calibration
+
+I tested the frozen policy on 40 DroneCrowd calibration recordings from
+15 source groups. None of the four thresholds qualified under the original
+2% rule, so I kept the 30 confirmation groups sealed. At the same switch
+count, ungated joint selection passed 69 of 120 recording-seed views versus
+18 for independent selection, but only two more than pair-additive selection.
+OLS4 was much stronger on trajectory error. I do not deploy the new policy.
+[Calibration results](outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/readout/report.md).
+
+## Earlier Development Result
 
 I tested whether adding past-image alignment to each agent's history helps
 without replacing its native coordinates. The new model keeps both views;

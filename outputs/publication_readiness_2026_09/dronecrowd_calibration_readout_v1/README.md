@@ -1,8 +1,23 @@
 # DroneCrowd Calibration-Only Experiment
 
-**Launch status:** Past-only inference is running on the full approved
-calibration role. No calibration score is available at launch. The
-runner cannot access any of the 72 confirmation recordings.
+**Outcome:** Full inference, scoring and exact replay are complete.
+No threshold qualifies. All four switch 362 times across the three
+seeds, pass 7/120 recording-seed views and leave the easy risk undefined
+in 99 views. Conservative gain against CV is +0.0104 percentage points
+(95% source-bootstrap interval [0.0000, +0.0302]). The lower endpoint is
+exactly zero. None of the 72 confirmation recordings was opened.
+
+The ungated joint arm passed 69/120 views at the same 67,440 switches as
+independent (18/120), shared-scene (22/120), and pair-additive (67/120).
+The joint arm's conservative individual ADE gain is +1.315 points over
+independent [1.033, 1.636], but only +0.016 over pair-additive [0.010, 0.024].
+OLS4 alone is +51.288 points versus CV [46.487, 55.878]; joint is -49.780
+points versus OLS4 [-54.471, -44.945], using the observed CV error mass as
+the common denominator. OLS4 does not meet the per-view risk rule either.
+These are transport and calibration results, not a deployment claim.
+
+[Full decision table](readout/report.md) | [Machine-readable results](readout/readout.json) |
+[Exact replay receipt](replay_execution.json)
 
 The [registered protocol](protocol.md) fixes the exact three-seed
 forecaster bank, causal comparators, development controller, four
@@ -47,8 +62,8 @@ independent confirmation. No deployment, Stage5C execution or SMC.
 
 ## Verified Outcome Table
 
-Once the supervisor finishes all three phases, generate the decision
-table without reopening recordings or labels:
+After all three phases, regenerate the decision table without reopening
+recordings or labels:
 
 ~~~sh
 .venv-pytorch/bin/python scripts/report_m3w_dronecrowd_calibration.py
@@ -59,6 +74,5 @@ prediction freeze, and the matching score and replay receipts.
 It reports each threshold's risk passes, support, interventions and
 CV/OLS4 intervals separately, including disqualifying criteria.
 It will not generate a partial report or admit the confirmation run.
-At preparation time, 11 focused tests pass and the actual command
-refuses to render before completion. The fixture tests are not
-external results.
+The full local job completed in 6 h 25 min 36 s on the registered
+arm64 CPU configuration. No reduced roster or CREATE run was used.
