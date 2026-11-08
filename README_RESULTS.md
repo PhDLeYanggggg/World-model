@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Whole-Recording Supervision for the First Edit
+
+At the same 606 first-query edits, direct and factorized event
+readouts clear 67 and 74 joint checks versus 43 for their shared
+refit moment readout and 76 for the frozen control. Neither
+establishes better conservative forecast utility. Exact one-edit
+capacity is 120/606 at the first eligible query and 441/606 at any
+eligible query (15 to 30 on the 105 short views). No deployment
+or independent confirmation.
+[Results and replay](outputs/publication_readiness_2026_09/first_edit_target_v1/README.md) |
+[Main and supplement v80](outputs/publication_readiness_2026_09/evidence_manuscript_v80/README.md).
+
 ## Cross-Window Two-Edit Timing
 
 Moving only the second edit later loses -0.267 pp [-0.621, -0.028]

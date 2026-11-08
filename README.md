@@ -449,6 +449,14 @@ with both windows fixed, did not reliably improve accuracy.
 [Cross-window comparison](outputs/publication_readiness_2026_09/cross_query_edit_v2/README.md) |
 [Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v79/README.md).
 
+I trained a head to predict whether the first edit would pass the
+whole-recording check. It recovered passes relative to its own
+moment readout, but did not beat the frozen control. The same
+one-edit bank has much more hindsight capacity when the controller
+is not forced to act in the first eligible window.
+[First-edit supervision](outputs/publication_readiness_2026_09/first_edit_target_v1/README.md) |
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v80/README.md).
+
 I also checked four historical CREATE jobs against the scheduler and
 matched the remote freeze manifest to my local copy. That confirms the
 archived run lineage; the earlier development result remains negative.
