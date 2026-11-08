@@ -1,0 +1,7 @@
+# Is the frozen OLS4 replacement too large?
+
+The source-separated OLS4-relative ranker and its three matched controls have a negative conservative lower contrast at full amplitude. Keep their chosen recipients and forecast directions fixed. Evaluate `OLS4 + alpha * (selected - OLS4)` with `0 <= alpha <= 1`, on the same exposed development roster only. This uses labels as a diagnostic, not to propose a deployed alpha, and cannot update the frozen DroneCrowd calibration or open confirmation.
+
+On available steps, the error along an affine path is convex; the signed gain is concave. On wholly unobserved rows the disagreement debit is linear in alpha. Hence a nonpositive right derivative at zero rules out a positive conservative gain along a common positive amplitude. Compute that derivative and the best common scalar by bracketed slope search (32 iterations). Compute an optimistic, separate hindsight optimum per selected row to test whether any room remains when amplitude can depend on realized outcomes. The rowwise optimum may abstain on specific rows; it is not equal-count and is never a candidate policy.
+
+The primary result is the best common amplitude for the OLS-hindcast arm. The full-amplitude score must exactly reproduce its registered lower gain. Use the same query and source/seed weights and CV denominator as the parent. Report paired source intervals after seed averaging, conditional on the diagnostic. No change to candidates, official 2% rule, calibration, deployment, metric or seconds claims. No Stage5C or SMC.
