@@ -1,0 +1,73 @@
+{
+  "arms": [
+    "direct",
+    "bounded_full",
+    "bounded_no_hindcast",
+    "bounded_no_neighbors"
+  ],
+  "bindings": [
+    {
+      "bytes": 12516,
+      "path": "scripts/run_m3w_ols_bounded_gain.py",
+      "sha256": "430b27fdd540243aff092fbd2993354a460d9ee83767daa7807dc4a4f03464cc"
+    },
+    {
+      "bytes": 1236,
+      "path": "src/world_model/m3w_ols_bounded_gain.py",
+      "sha256": "f497f804d90ea006ebf62c121c57183ec78a25e36088c90941082e0fa6aaf82d"
+    },
+    {
+      "bytes": 1946,
+      "path": "outputs/publication_readiness_2026_09/native_ols_bounded_gain_v1/protocol.md",
+      "sha256": "117da800fbb92e3f5c270c8b3010b84753dfdece0f5266875c6d417c5d0341ae"
+    },
+    {
+      "bytes": 1374,
+      "path": "tests/test_m3w_ols_bounded_gain.py",
+      "sha256": "9cf3f630d4258878d5a5826e580caa98a185775f4f07e23d765e0ec35e480dec"
+    },
+    {
+      "bytes": 2619,
+      "path": "outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/registration.json",
+      "sha256": "098f5a73bbeda9183938ba9bbfcac37440c5679e5999a66f47ec413dd79831db"
+    },
+    {
+      "bytes": 16638,
+      "path": "scripts/run_m3w_ols_crossfit_calibration.py",
+      "sha256": "08bf0b826ccbb175667776f008338121e6c3f3b0e5cca8fa0a652c2c3b330d64"
+    },
+    {
+      "bytes": 264,
+      "path": "outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/oof_execution.json",
+      "sha256": "18a3a9484bfba8f8fcf9a59e1ef0a5188a58e82e8033bc8d7e065a0ec17c7b52"
+    },
+    {
+      "bytes": 275,
+      "path": "outputs/publication_readiness_2026_09/native_ols_crossfit_calibration_v1/replay_execution.json",
+      "sha256": "7bbcc7d466e086d93dd9d1e49c277560a263eabf2d15cda0cddc0deb13b6b5db"
+    }
+  ],
+  "bootstrap": 3000,
+  "development_targets": false,
+  "external_access": false,
+  "feature_controls": [
+    "bounded_no_hindcast",
+    "bounded_no_neighbors"
+  ],
+  "official_cv_rule_unchanged": true,
+  "primary": "bounded_full_vs_direct_matched_query_counts",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "settings": {
+    "batch": 128,
+    "checkpoint": 100,
+    "lr": 0.001,
+    "steps": 600,
+    "torch_threads": 2,
+    "workers": 0
+  },
+  "threshold_search": false
+}
