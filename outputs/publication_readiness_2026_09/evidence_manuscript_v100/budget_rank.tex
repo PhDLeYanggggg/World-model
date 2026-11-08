@@ -1,0 +1,25 @@
+\section{Ranking at a Fixed Intervention Budget}
+
+The original causal clock allocates both roles. At each
+released query, the model can change the recipients and
+directions, but not the number of edits or the per-role peak.
+Training regresses direct gain and missing-step debit relative
+to the original slate, plus recording-risk labels. The
+ranking term weights a preference only when its completion
+interval excludes zero. This uses the decision-focused
+ranking idea~\cite{mandi2022rank}, not a new general ranking loss.
+The geometry control retrains with four relative-path
+features masked.
+
+The direct lower contrast against point regression is
+\BudgetRankPrimaryEffect{}; against the original policy it is
+\BudgetRankOriginalEffect{}. Geometry improves the matched
+ablation contrast by \BudgetRankGeometryEffect{}. The original,
+point, rank, masked and guarded policies pass
+\BudgetRankOriginalJoint{}, \BudgetRankPointJoint{},
+\BudgetRankRankJoint{}, \BudgetRankMaskedJoint{} and
+\BudgetRankGuardJoint{} views, respectively. A frozen
+policy replay attributes all \BudgetRankLost{} lost and
+\BudgetRankNew{} new easy references to changed
+recipients, not shape-only changes. The risk rule is unchanged
+and no ranker qualifies for deployment.

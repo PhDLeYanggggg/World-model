@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I held the intervention budget fixed and learned which tracks to
+edit. Relative-path features helped against a retrained ablation,
+but ranking did not beat the original policy. Changing recipients
+explained the loss of easy-reference coverage.
+[Matched-budget ranking](outputs/publication_readiness_2026_09/opendd_budget_rank_v1/README.md).
+
 I let both edit slots move and trained a model to decide when to
 use them. It made fewer edits and lost to the earliest-use control
 at the same budget. An explicit deadline recovered coverage but

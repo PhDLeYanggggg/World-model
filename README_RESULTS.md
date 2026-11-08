@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Ranking at a Fixed Intervention Budget
+
+At 943 matched edits, rank versus point is -0.00010 pp
+[-0.00594, +0.00598]. Geometry versus its retrained ablation
+is +0.02707 pp [+0.00146, +0.05375], but rank loses joint
+passes versus the original (115 vs 138). The guarded head
+reaches 126. Changing recipients loses 47 easy references
+and restores 29; shape-only swaps leave estimability unchanged.
+[Experiment](outputs/publication_readiness_2026_09/opendd_budget_rank_v1/README.md) |
+[Manuscript v100](outputs/publication_readiness_2026_09/evidence_manuscript_v100/README.md).
+
 ## Learned Timing for Both Roles
 
 At 146 matched edits, continuation gives -0.00626 pp
