@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cross-Site Motion Shapes
+
+I replaced or extended the original trajectory shapes at the same 1,457
+edits. Adding a donor-matched shape to the causal prefix choice raised joint
+passes from 77 to 90 of 606 views, but the direct conservative gain against
+the original was -0.023 pp [-0.068, +0.006]. Short-recording hindsight
+capacity was 30 original, 42 with matched donors, and 39 with shuffled
+donors out of 105 repeated views. No promotion or confirmation readout.
+[Design, results and replay](outputs/publication_readiness_2026_09/donor_motion_shape_v1/README.md).
+
 ## One-Edit Online Stopping
 
 The donor-selected stop reaches 70/606 joint passes versus 63 for
