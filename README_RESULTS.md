@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Optional Two-Person Allocation
+
+27 native Torch fits over three seeds. At 1,765 matched changes,
+strict joint passes 24/72 vs 12/72 for priced ranking, but the direct
+conservative contrast is -0.0716 pp [-0.1224, -0.0271].
+None qualifies in 27 inner fold-seeds. Forced and optional allocation
+both admit 3/24 hindsight passes against both references at the same
+two-person cap. Ignoring risk and allowing arbitrary waypoint angles
+still leaves a negative OLS4 upper score in 19/24 at this cap and
+9/24 at the inherited caps. No independent outcome access.
+[Study](outputs/publication_readiness_2026_09/optional_allocation_v2/README.md) |
+[Supplement v47](outputs/publication_readiness_2026_09/evidence_manuscript_v47/README.md).
+
 ## Matched Forecast Direction and Recipient Capacity
 
 54 native Torch fits over three seeds; 95,769 matched edits with fixed

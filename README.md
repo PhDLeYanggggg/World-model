@@ -140,6 +140,14 @@ beat both references in ten of 24 recordings. That is room to improve
 the allocation, not evidence that the learned model can do it.
 [Direction and allocation study](outputs/publication_readiness_2026_09/matched_direction_v2/README.md).
 
+I also let the policy leave a query unchanged or edit at most two
+trajectories. At the same number of edits, joint choice passed more
+recording-level risk checks than a simple risk ranking, but lost
+conservative forecast utility. Even with hindsight and no risk
+restriction, that two-person action set could not beat OLS4 in 19 of
+24 development recordings. The operating policy is unchanged.
+[Optional allocation study](outputs/publication_readiness_2026_09/optional_allocation_v2/README.md).
+
 I checked four public SinD city samples and the Foggy Bottom pedestrian
 release for the same 8-step observation and 12-step prediction setup.
 On the roughly 0.4-second grid, 88.6% of the selected SinD targets have
