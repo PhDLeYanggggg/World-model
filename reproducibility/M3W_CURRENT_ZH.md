@@ -32,6 +32,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：车辆队列上的 EqMotion 对照
+
+先运行 `scripts/run_m3w_opendd_vehicle_eqmotion.py fit` 冻结三个种子的
+42 个模型，再运行同脚本的 `score`。任一阶段中断可用原命令继续。
+比较用相同队列、掩码、训练预算和 CV 偏移上限。
+[命令、配对结果和画图入口](../outputs/publication_readiness_2026_09/opendd_vehicle_eqmotion_v1/README.md)。
+
 ## OpenDD：固定预算下的 easy 支持重排序
 
 `scripts/run_m3w_opendd_support_rerank.py freeze` 复用已核验权重，先冻结

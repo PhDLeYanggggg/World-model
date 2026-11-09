@@ -7,10 +7,11 @@ or evidence status.
 
 ## OpenDD: a task-matched EqMotion vehicle control
 
-I train a fixed-output EqMotion adaptation on the existing vehicle
-folds, with and without observed neighbors. It shares the incumbent's
-training budget, objective and CV displacement bound.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_eqmotion_v1/protocol.md).
+At the same budget, both fixed-output EqMotion variants beat CV,
+but neither beats the existing vehicle completion model on the
+direct conservative comparison. Adding nearest neighbors also hurts
+observed error. I keep the original candidate and CV fallback.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_vehicle_eqmotion_v1/README.md).
 
 ## Offline evidence replay
 

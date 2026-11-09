@@ -7,6 +7,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 ROOT = Path(__file__).resolve().parents[1]
 READOUT = ROOT/'outputs/publication_readiness_2026_09/opendd_vehicle_eqmotion_v1/readout.json'
@@ -25,6 +26,7 @@ def panel(ax, rows, title):
     ax.set_yticks(range(len(rows)), labels=[name for name, _ in rows])
     ax.set_ylim(len(rows)-.4, -.6)
     ax.set_xlabel('Conservative gain (pp of observed CV error)')
+    ax.xaxis.set_major_locator(MaxNLocator(nbins=6))
     ax.set_title(title, loc='left', fontsize=11, fontweight='semibold', pad=9)
     ax.spines[['top', 'right', 'left']].set_visible(False)
     ax.tick_params(axis='y', length=0)
@@ -47,8 +49,8 @@ def render(path, data):
         ('Ego only vs incumbent', pairs['comoving_ego_minus_completion']['lower']),
         ('Neighbors vs ego only', pairs['comoving_peers_minus_comoving_ego']['lower']),
     ], '(b) Direct paired comparisons')
-    fig.subplots_adjust(left=.36, right=.97, top=.94, bottom=.17, hspace=.77)
-    fig.text(.36, .055, 'Circles: seven location means. Diamonds: macro means.\n'
+    fig.subplots_adjust(left=.36, right=.97, top=.94, bottom=.22, hspace=.77)
+    fig.text(.12, .048, 'Circles: seven location means. Diamonds: macro means.\n'
              'Bars: 95% paired location bootstrap intervals; three seeds per location.',
              fontsize=8.5, color='#39434c', va='bottom')
     path.parent.mkdir(parents=True, exist_ok=True)
