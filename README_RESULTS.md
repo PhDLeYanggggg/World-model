@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: projected reference improves on held development cities; relative refinement fails
+
+At the same budget, the frozen position projection qualifies 119/1,020
+held development views vs 89 for soft, with easy exceedances 152 vs
+171 and direct conservative trajectory gain +0.781 pp [0.079, 1.369].
+Relative refinement qualifies no additional views, loses 0.000140
+native units against matched individual supervision after missing-step
+debits, and makes no calibrated held release.
+[Held comparison, release rules and contrast attribution](outputs/publication_readiness_2026_09/av2_relative_projection_v1/README.md).
+
 ## AV2: learned directions improve reference qualification, not pair accuracy
 
 At identical recipients and per-step radii, frozen additive,

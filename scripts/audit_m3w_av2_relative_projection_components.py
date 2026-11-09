@@ -46,7 +46,7 @@ def main():
         if city in [f["identity"]["calibration"], *f["identity"]["donors"]] or any(data[n]["city"] != city for n in names):
             raise ValueError("Wrong held label roster")
         truth = run.prev.load_targets(src, data, names)
-        for (n, d, _, ix, digest, _), z, s in zip(
+        for (n, d, soft, ix, digest, _), z, s in zip(
                 run.inputs(data, parent, control["folds"][name], outer["folds"][name], "held"),
                 f["rows"]["held"], r["rows"], strict=True):
             if not n == z["clip"] == s["clip"] or z["hash"] != digest or z["edited"] != ix.tolist():
@@ -61,7 +61,10 @@ def main():
             if not np.isclose(pair[2], a["pair_vs_individual"], rtol=0., atol=1e-12) or (
                     trajectory is not None and not np.isclose(trajectory[2], a["vs_individual"], rtol=0., atol=1e-12)):
                 raise ValueError("Component identity failed")
-            rows.append(dict(city=city, clip=str(n), complete=bool(v.all()), pair=pair, trajectory=trajectory))
+            rows.append(dict(city=city, clip=str(n), complete=bool(v.all()), pair=pair, trajectory=trajectory,
+                reference_pair=pair_components(paths[0], soft, y, v),
+                reference_trajectory=run.timing.cost.audit.direct_trajectory(paths[0], soft, cv, y, v),
+                reference_qualification=int(s["arms"]["frozen_position"]["eligible"])-int(s["arms"]["soft"]["eligible"])))
     if len(rows) != summary["held"]["views"]:
         raise ValueError("Incorrect held count")
     stat = {k: {m: run.av.interval(rows, lambda r: r[k][i] if r[k] is not None else None)
@@ -72,6 +75,12 @@ def main():
             lambda r: r[k][2] if r[k] is not None else None) for k in ("pair", "trajectory")},
         used_for_selection=False, independent_confirmation=False, reserved_outcomes_opened=False)
     run.base.immutable(run.OUT/"contrast_attribution.json", out)
+    reference = {k: run.av.interval(rows, lambda r: r[k][2] if r[k] is not None else None)
+                 for k in ("reference_pair", "reference_trajectory")}
+    reference["reference_qualification"] = run.av.interval(rows, lambda r: r["reference_qualification"])
+    run.base.immutable(run.OUT/"frozen_reference_contrast.json", dict(source=study.artifact(path), result_source="fresh_run",
+        views=len(rows), frozen_position_minus_soft=reference, used_for_selection=False,
+        independent_confirmation=False, reserved_outcomes_opened=False))
     print(study.json.dumps(out, indent=2))
 
 

@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked the frozen AV2 position projection on held development
+cities. At the same edit budget it qualified on 119 views, up from
+89 for the additive reference, with fewer easy cases harmed.
+Training on relative trajectories did not improve it, and neither
+refinement produced a calibrated release.
+[Held reference and relative-loss comparison](outputs/publication_readiness_2026_09/av2_relative_projection_v1/README.md).
+
 I kept the two AV2 recipients and the size of every edit, and
 trained only the direction. The learned reference qualified on
 105 calibration views, up from 65, and hurt fewer easy cases.
