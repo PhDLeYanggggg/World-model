@@ -1,0 +1,60 @@
+{
+  "bindings": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_self_menu_v1/registration.json",
+      "sha256": "010428c0a2a89edb007abd1c477926d55d0eed9851d3683c61c8f755fa48ded8"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_self_menu_v1/freeze.json",
+      "sha256": "842990ac85cad8b2bc01ac66b6f9bf679973bc2745257b1d0d00a94496855b4e"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_self_menu_v1/readout.json",
+      "sha256": "c4d43191a6e5f15eae339417f67dbd99966a6fa40fb491c8b91d0ab7062fa400"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_exact_slot_headroom_v2/readout.json",
+      "sha256": "1241b77020c23a62e8f724408e64f8575e3ac1f63b00d5067f6e943e8e9a8f6b"
+    }
+  ],
+  "comparator": "original base-menu additive selection in both oracle arms",
+  "development_only": true,
+  "fixed_singletons": true,
+  "hindsight_only": true,
+  "implementation": [
+    {
+      "path": "scripts/audit_m3w_opendd_self_menu_capacity.py",
+      "sha256": "f04f8efb917eaebb1e836f8f4e1abad0311d6237a9d91e319863a1ef11ec4043"
+    },
+    {
+      "path": "scripts/audit_m3w_opendd_self_menu.py",
+      "sha256": "a0fcff6d71c3df3f4163bcd9eec2f2e48fe66f8aa2c3e45aae9ecad50c027907"
+    },
+    {
+      "path": "scripts/audit_m3w_exact_slot_headroom.py",
+      "sha256": "beb07cca99f958c3676668f4614cf504eb526a606d45a86bef328b00fdb71161"
+    },
+    {
+      "path": "src/evaluation/m3w_exact_slot_headroom.py",
+      "sha256": "0d2b0a2a8614b6cbd7c2cc536199f45b04e868cb3303a271c46682891f6f72b6"
+    }
+  ],
+  "no_new_training": true,
+  "original_2pct": true,
+  "positive_margin_pp": 1e-06,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "varied": "only add the causal, source-held self-history path at each already fixed slot"
+}

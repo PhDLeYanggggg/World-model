@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: a self-history path expands capacity, not realized passes
+
+With the same 3,690 exact slots, the expanded menu leaves the frozen joint
+selector at 34/606 dual passes and changes the additive count from 32 to 30.
+The expanded joint-minus-additive contrast is -0.02835 pp
+[-0.06526, +0.00230]. Holding single edits fixed, verified hindsight wins
+against the original additive control increase from 9 to 25 of 439.
+[Matched inference and capacity](outputs/publication_readiness_2026_09/opendd_self_menu_v1/README.md).
+
 ## OpenDD: little risk-feasible headroom at the realized budget
 
 The same 3,690 exact edit slots allow 194 of 439 estimable views to

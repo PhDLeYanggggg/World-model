@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I added a held-location self-history forecast to both OpenDD selectors at
+the same edit budget. The hindsight search found more usable choices, but
+the frozen joint selector still passed both accuracy and risk in 34 of 606
+views. [Expanded forecast menu](outputs/publication_readiness_2026_09/opendd_self_menu_v1/README.md).
+
 I asked how often an ideal reassignment could beat the independent policy
 with exactly the same paths and edit budget. Even with future labels, when
 only two-agent choices could change, I found nine wins in 439 estimable
