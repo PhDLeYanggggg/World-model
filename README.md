@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let the model keep the baseline when none of its edits looked useful.
+That reduced harm but also left too few paired edits to show a benefit
+over choosing agents individually. A hindsight check shows that better
+subsets exist among the original edits.
+[Abstention and matched release](outputs/publication_readiness_2026_09/opendd_optional_edits_v1/README.md).
+
 I tested whether separate harm predictions and a recording-level risk
 ledger could make the same number of edits safer. They did not.
 Keeping the original edited recipients preserved the easy reference,

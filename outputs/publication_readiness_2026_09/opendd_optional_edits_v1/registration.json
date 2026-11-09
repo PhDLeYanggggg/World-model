@@ -1,0 +1,60 @@
+{
+  "budget": "keep any subset of original peak slots; zero edits are allowed and not a safety pass",
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_optional_edits.py",
+      "sha256": "c3764ea05fd134603f7af2665f248e45050e01f90e40dcf56bdba203369da970"
+    },
+    {
+      "path": "src/world_model/m3w_causal_risk_moments.py",
+      "sha256": "8ea6798299766cf5991498a718044b447d4c7a6e7504de8ecfac04fb47c6091c"
+    },
+    {
+      "path": "scripts/run_m3w_opendd_slate_relative_gain.py",
+      "sha256": "54d1849e220c533070eca629fa79a37bd38065d149c3dbe8e33df6c0765c5d62"
+    }
+  ],
+  "comparison": "prefix releases by joint-individual utility; compare risk-eligible add and pair at same radii",
+  "forecast_steps": 12,
+  "independent_confirmation": false,
+  "observed_steps": 8,
+  "oracle": "subset of frozen parent trajectories; maximize min lower gain over CV/OLS4 under original risk",
+  "original_2pct": true,
+  "parents": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_risk_moments_v1/registration.json",
+      "sha256": "9560cacf0033c4bfe1753a5262a95c58e2f648cb18f737d75a2379cb50a30c3a"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_risk_moments_v1/freeze.json",
+      "sha256": "0e4f9e7c3e7b7625c606ebdcb61295fc7177beff49d6d3c8a5c4f0cbeaa8a756"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_risk_moments_v1/readout.json",
+      "sha256": "e47969a42faf91216c156b1f4458a6d1548f1af11f6dbeb17f261419fe6cd687"
+    }
+  ],
+  "release": "positive min of two predicted gain increments; three predicted excesses <= 0",
+  "roles": [
+    "cv",
+    "parent",
+    "local",
+    "prefix_additive",
+    "prefix_joint"
+  ],
+  "scope": "exposed development; no new training or threshold search; no realized feedback",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ]
+}

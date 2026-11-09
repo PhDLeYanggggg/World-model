@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: abstention reduces harm but does not establish joint gain
+
+Allowing CV fallback leaves 282 matched edits and reduces signed
+easy violations from 164 to three. Only 35/128 edited views meet all
+risk checks, and there are no strict pair gains against matched
+additive. A verified hindsight subset of the frozen parent admits
+positive dual gain under the original risks in 179 views.
+[Readout and exact subset comparison](outputs/publication_readiness_2026_09/opendd_optional_edits_v1/README.md).
+
 ## OpenDD: direct harm moments do not fix the mandatory edit budget
 
 At 3,690 fixed edits, the previous pair policy passes 47/439 recording

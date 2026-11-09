@@ -28,6 +28,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+允许退回 CV 后，保留 282 次配对介入，简单样本超限从 164 降至
+3 个视图，但同预算联合方案未获合格收益。事后可行子集仍有 179 个
+正收益视图。[因果放行、同预算对照和事后求解](../outputs/publication_readiness_2026_09/opendd_optional_edits_v1/README.md)。
+
 直接学习伤害和参考分母，再按录像前缀累积，未改善原风险通过率。
 保留原介入对象可以保持简单样本参考，但不能保证替换轨迹不增加误差。
 [重训、风险账本和对象对照](../outputs/publication_readiness_2026_09/opendd_risk_moments_v1/README.md)。
