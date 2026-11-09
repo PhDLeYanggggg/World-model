@@ -9,6 +9,15 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the risk model on the paths the forecaster actually
+proposes. Predicting a higher harm quantile reduced underestimation,
+but the worst easy cases got worse. I also checked what a perfect
+ranker could do: keeping the same number of edits, even the full
+path bank could not beat OLS4 in 45 of 72 development views. The
+next change is to learn how many forecasts to replace as well as
+which paths to use.
+[Selected-edit risk study](outputs/publication_readiness_2026_09/moving_cv_selected_harm_v1/README.md).
+
 I tested whether the model could learn how far to move a forecast
 instead of inheriting a fixed displacement limit. It predicted gain
 more accurately, but allocating the same total movement unevenly

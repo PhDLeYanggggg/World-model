@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Harm quantiles on nominated edits
+
+18 fits and 21,600 updates. At 48,915 matched edits, risk passes
+increase from 1/72 (parent) to 5/72 (median) and 7/72 (85th
+percentile), but worst known easy degradation rises from 6.31%
+to 26.96%. The tail arm loses 0.484 conservative pp against
+median [-0.867, -0.169]. Calibration 0/9. Exact, risk-free upper
+diagnostics rule out beating OLS4 in 68/72 views with one path,
+45/72 with the full bank at the same counts, and 0/72 with
+the full bank and free counts. No deployment or confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_selected_harm_v1/README.md) |
+[Manuscript v140](outputs/publication_readiness_2026_09/evidence_manuscript_v140/README.md).
+
 ## Learned edit magnitude under the original risk rule
 
 18 PyTorch fits, 25,200 updates, three seeds and three source-role

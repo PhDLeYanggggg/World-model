@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v139 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v140 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v140：对实际候选训练伤害分位数
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_selected_harm.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_selected_harm_capacity.py
+```
+
+先用冻结检查点重算，再算固定候选和固定改动数的事后上界。去掉
+`--replay` 可训练或续跑；先核对 PID 和心跳。两种训练各用同样样本，
+只改损失的分位数。在相同改动数下，高分位模型没有胜过中位数模型；
+全候选仍在 45/72 个视图无法胜过 OLS4，放开改动数后该项排除降为 0/72。
+后者不含风险约束，不是部署结果。[v140 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v140/README.md)。
 
 ## v139：学习改动幅度
 

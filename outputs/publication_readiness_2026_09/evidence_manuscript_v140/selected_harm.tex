@@ -1,0 +1,22 @@
+\section{Harm prediction for nominated edits}
+Each eligible row gets one fixed path: its frozen parent action or
+its best independent alternative. Two harm heads use identical
+gains and \SelectedHarmUpdates{} total fitting updates but different
+pinball quantiles (0.50 or 0.85). Both rerank \SelectedHarmEdits{}
+edits at matched query counts, not matched displacement.
+
+All-harm exceedance on parent nominations averages
+\SelectedHarmExceed{}\% by source. Risk passes for parent/median/tail are
+\SelectedHarmPasses{} out of 72; their worst known signed easy
+changes are \SelectedHarmWorst{}\%. The tail head loses
+\SelectedHarmParent{} conservative pp against the parent and
+\SelectedHarmMedian{} against the median head (3,000 paired source
+resamples). Calibration qualifies \SelectedHarmQual{}/9 cells.
+
+Ignoring risk, the exact lower-score maximum for one comparator
+adds the best $k$ row increments to the fallback intercept.
+At-most counts use positive increments only. Nonpositive OLS4
+bounds number \SelectedHarmCapacity{} out of 72: one path, analytic
+menu, and full menu (all at exact counts), then the full menu at
+at-most and free counts. These hindsight maxima do not establish
+joint feasibility against both comparators under the risk rule.
