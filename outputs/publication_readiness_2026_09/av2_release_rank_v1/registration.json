@@ -1,0 +1,52 @@
+{
+  "arms": [
+    "transferred_cost",
+    "actor_support",
+    "conditional_harm",
+    "strict_point",
+    "strict_rank"
+  ],
+  "batch": "equal donor weights; sample source queries before options; rivals from different scenarios in same donor",
+  "calibration": "same nonempty all-qualified threshold prefix as the parent",
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_release_rank.py",
+      "sha256": "604d860a92713626f141ad6d7a7476546c34b7aa470b1b90e5df5beeb882b5ca"
+    },
+    {
+      "path": "src/world_model/m3w_av2_release_rank.py",
+      "sha256": "32a0fb0e66f4bd3aa26bf447f3ff7b140e18ddd5fab5ecbee5003eede3e4ce79"
+    }
+  ],
+  "forecasts_frozen": true,
+  "hard_negatives": "half of rival slots prefer genuinely supported but not qualified, if available",
+  "independent_confirmation": false,
+  "motivation": {
+    "path": "outputs/publication_readiness_2026_09/av2_release_transport_v1/transport_audit.json",
+    "sha256": "fd9da05eb0e9feeeb59bf88c1cf81196c8c5c79ebb1688d107e0f31f64937131"
+  },
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_observed_harm_v1/summary.json",
+    "sha256": "e87fe1aa4a2c94dc56cbef1aa85fcd55b4ea443e303d503749a5785ed5f2c4ff"
+  },
+  "positive_pairs_per_donor": 8,
+  "primary": "paired fixed top five per held fold versus frozen actor-support and matched pointwise fit",
+  "rank_weights": {
+    "strict_point": 0.0,
+    "strict_rank": 1.0
+  },
+  "ranking": "BCE in both arms; rank arm adds softplus margin 1 against highest-scored sampled rival",
+  "reserved_outcomes_opened": false,
+  "rivals": 4,
+  "save_every": 50,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "target": "exact joint qualification: edited-easy support, original risk and both CV/OLS4 floors",
+  "threads": 4,
+  "workers": 0
+}
