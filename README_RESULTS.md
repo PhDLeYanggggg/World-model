@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: observed lag support does not yield useful joint forecasts
+
+Of 4,015 agent-window rows with an eligible neighbor, 769 pass the
+two-step observed-history check and only 99 matched edits are used
+across the three budgets. Adding own or peer lag leaves constrained
+full-grid capacity at 21/439. Peer lag loses relative accuracy on
+co-observed steps at each of the three locations where it replaces a
+forecast. [Experiment](outputs/publication_readiness_2026_09/opendd_peer_lag_v1/README.md).
+
 ## OpenDD: peer velocity does not reliably beat self-history
 
 At identical per-query budgets, verified full-grid relative gain under

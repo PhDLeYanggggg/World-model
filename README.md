@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I also required the neighbor to predict the target's motion in two
+already observed steps before using it. This left only 99 matched edits
+and did not improve the twelve-step pair forecast over own history.
+[Lagged neighbor test](outputs/publication_readiness_2026_09/opendd_peer_lag_v1/README.md).
+
 I tested whether a nearby agent's recent velocity adds more than another
 forecast based on the target's own history. With the same edit budget,
 both added a few useful choices in hindsight. The neighbor version did
