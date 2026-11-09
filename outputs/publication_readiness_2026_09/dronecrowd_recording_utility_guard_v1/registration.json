@@ -1,0 +1,41 @@
+{
+  "code": [
+    {
+      "bytes": 7115,
+      "path": "scripts/run_m3w_recording_utility_guard.py",
+      "sha256": "36622cda2f9e7d334fac73c334711bc907720a3d7f31892719e5bd5c11deccaf"
+    },
+    {
+      "bytes": 1804,
+      "path": "src/world_model/m3w_recording_utility_guard.py",
+      "sha256": "5cde8eca9ee07ea7eabc5732cac73f8e4b7352bd47b6b4839604622abac8c9ee"
+    }
+  ],
+  "confirmation_access": false,
+  "fit": "outer held-source ridge; inner held-source maximum overprediction for lower envelope",
+  "forecasts_changed": false,
+  "guard": "history-only risk point and log envelope unchanged; separately require positive OLS4 utility",
+  "methods": [
+    "constant",
+    "donor",
+    "history",
+    "combined"
+  ],
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 12109,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_recording_history_risk_v1/analysis.json",
+      "sha256": "993342e65a1bb69ab9a444270d2c94b544bf4846e61ad3ba22e675778809bb34"
+    },
+    {
+      "bytes": 804,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_recording_history_risk_v1/independent_gate.json",
+      "sha256": "0b98e18c0787aaf2eddef61e3bc0dcda0f74fd34fd6dfecd0d8d145e4be10bd3"
+    }
+  ],
+  "penalty": 0.1,
+  "primary": "combined vs donor ridge utility MAE, paired by source",
+  "target": "same twelve-step conservative OLS4 utility in CV-normalized percentage points",
+  "utility": "OLS4 error minus frozen independent error on the last four observed positions; fit paths on the first four; aggregate query means and normalize by CV error"
+}
