@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept the edit count and peak displacement fixed and
+changed when each edit acts. That gave the joint choice
+more ways to beat the original independent path with
+hindsight. The existing scorer did worse when given all
+the extra options.
+[Edit timing and candidate supply](outputs/publication_readiness_2026_09/av2_temporal_menu_v1/README.md).
+
 I trained a selector to predict the gains and risks that
 matter against the actual independent choice, rather than
 whether an edit looks good on its own. It picked up one more

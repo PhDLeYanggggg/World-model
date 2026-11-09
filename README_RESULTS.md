@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: timing variants expand candidate supply but not frozen selection
+
+At the original two peaks, timing variants raise the fixed-reference
+paired ceiling from 48 to 61 held views. The union has nine times as
+many assignments. Its frozen scorer chooses 50 eligible references
+versus 63 originally; no additional policy passes held calibration.
+[Exact-slot comparison](outputs/publication_readiness_2026_09/av2_temporal_menu_v1/README.md).
+
 ## AV2: matched margin targets improve one contrast, not release
 
 On 1,020 two-slot held views, only 63 independent choices

@@ -1,0 +1,36 @@
+{
+  "calibration": "standalone reference only; every nonempty score prefix must pass both motion floors and all original 2 percent risks",
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_temporal_menu.py",
+      "sha256": "6860079b1230b2db39ad11a73deb5a1283361d5eb6f6ec4467ceedce205e6401"
+    },
+    {
+      "path": "src/world_model/m3w_av2_temporal_menu.py",
+      "sha256": "0e128b8adda465cbd78566542c74ea5832bd15e64228d7124faf4d8e1b7c2ca9"
+    }
+  ],
+  "comparison": "same recipients available, same original two peaks, same CV and OLS4, same-size early and late replacement banks plus their union with the base bank",
+  "frozen_action": "identical additive checkpoint and score on each bank; no fitting, no threshold tuned on held cities",
+  "independent_confirmation": false,
+  "modes": [
+    "base",
+    "early",
+    "late",
+    "union"
+  ],
+  "no_new_fits": true,
+  "oracle": "fixed-reference pair capacity and flexible reference/two-path capacity, evaluated separately from frozen action scores",
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_margin_assignment_v2/summary.json",
+    "sha256": "caf4c717f1f158701553e7bc991843b07e8357adb7ace1927bfbe0e385c48674"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_margin_assignment_v2/freeze.json",
+    "sha256": "0139598082e4a25e27dac5aebf292220e703d122133c1d3555098ad2c22b6193"
+  },
+  "reserved_outcomes_opened": false,
+  "timing": "each CV-relative edit offset multiplied by a linear .25 to 1 window or its reverse, then restored to its own raw peak",
+  "units": "native coordinates, 8 observation steps and 12 forecast steps, city bootstrap after averaging seeds by scenario"
+}
