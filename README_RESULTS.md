@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Short review supplement
+
+I put the protocol, frozen WEPDTOF evaluation, and OpenDD vehicle
+controls in a five-page English companion. It keeps the original
+appendix intact and points to the local anonymous statistical replay.
+[Build and verification](outputs/publication_readiness_2026_09/compact_review_supplement_v1/README.md).
+
 ## OpenDD: learning when to replace the additive proposal
 
 I kept one or both additive recipients and trained two equally sized
