@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a vehicle selector with forecasts that excluded both the
+held location and the site supplying each training action. It made no
+edits: the predicted easy-risk constraint rejected every candidate,
+even though label-aware checks found useful choices in most recordings.
+[Matched vehicle selection](outputs/publication_readiness_2026_09/opendd_vehicle_matched_v1/README.md).
+
 I trained a vehicle-specific alternative to the pedestrian weights in
 the Songdo bank. It beats CV on the conservative OpenDD forecast score
 at all seven held locations, but using it on every vehicle almost

@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：双地点排除的车辆选择器
+
+运行 `.venv-pytorch/bin/python scripts/run_m3w_opendd_vehicle_matched.py freeze`
+生成不含目标地点和当前训练样本地点的候选，再运行 `score`。84 个训练有
+每 100 步检查点。三臂均零介入，等预算收益不可估；`scripts/diagnose_m3w_vehicle_matched.py`
+定位预测 easy 风险问题。事后找到的可行编辑不是模型结果，原 2% 不变。
+[详细结果和命令](../outputs/publication_readiness_2026_09/opendd_vehicle_matched_v1/README.md)。
+
 ## OpenDD：车辆专用候选预测器
 
 `.venv-pytorch/bin/python scripts/run_m3w_opendd_vehicle_residual.py` 依次运行

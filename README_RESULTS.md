@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: the easy-risk estimate rejects every action
+
+63 double-excluded forecasters and 21 value fits give zero interventions
+in all 1,500 views; the matched contrasts are not estimable. Of 1,187,471
+candidate actions, 112,029 pass predicted gain and all risk, but none
+passes predicted easy risk. A single hindsight edit can pass the
+unchanged scorer in 1,429/1,500 views. No deployment or external score.
+[Study and replay](outputs/publication_readiness_2026_09/opendd_vehicle_matched_v1/README.md).
+
 ## OpenDD vehicles: useful candidate, but replacing every forecast fails the risk gate
 
 42 fixed fits at seven locations and three seeds. Adding a missing-step
