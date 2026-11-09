@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked P-DESTRE for a new external forecasting study. Its video
+streams and eight-to-twelve-step labels are usable, but shared
+identities connect all 75 videos. I treat it as one linked source,
+not as 75 independent tests.
+[Video access and source audit](outputs/publication_readiness_2026_09/pdestre_source_intake_v1/README.md).
+
 I trained two AV2 scores to rank forecasts that pass both accuracy and
 risk. The new ranking loss did better than its own classifier when an
 easy reference was known, but it did not beat the existing score.

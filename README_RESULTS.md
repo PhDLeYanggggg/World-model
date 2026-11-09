@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## P-DESTRE: usable video and label support, one linked component
+
+75 video/annotation pairs indexed by byte range; one real 4K MP4
+decoded for eight frames. Native-frame 8/12 gives 5,113 nonoverlapping
+multi-agent windows with 54,354/59,323 complete targets. The stride-12
+diagnostic gives 2,191/3,686 complete targets. All 75 clips connect
+through shared published IDs, so no internal participant-disjoint
+calibration and confirmation roles were assigned.
+[Source and video audit](outputs/publication_readiness_2026_09/pdestre_source_intake_v1/README.md).
+
 ## AV2: joint-qualification ranking does not improve release
 
 At 90 matched selections, strict pointwise and rank fit qualify 14
