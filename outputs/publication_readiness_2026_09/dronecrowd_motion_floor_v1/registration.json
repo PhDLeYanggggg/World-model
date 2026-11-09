@@ -1,0 +1,53 @@
+{
+  "arms": [
+    "cv",
+    "ols4",
+    "median4",
+    "fitted_origin",
+    "pooled_origin",
+    "past_best",
+    "past_guarded"
+  ],
+  "bootstrap_draws": 3000,
+  "bootstrap_seed": 73107,
+  "code": [
+    {
+      "bytes": 11279,
+      "path": "scripts/run_m3w_dronecrowd_motion_floor.py",
+      "sha256": "379c9786b729cbad81887f0e90492057525e8c873f4b07f6d77183e6b0469c3d"
+    },
+    {
+      "bytes": 2109,
+      "path": "src/world_model/m3w_dronecrowd_motion_floor.py",
+      "sha256": "116331ed902e0036c754cf9e4231ac44298547c14c18f50b7c2865a4ac462ad0"
+    }
+  ],
+  "confirmation_access": false,
+  "coordinate": "image-space head-center pixels",
+  "evaluation": "unchanged CV-referenced per-recording risk plus paired accuracy versus CV and OLS4, native units",
+  "experiment": "full-scene forecast diagnostic, not a replacement of the original two-edit protocol",
+  "features": "complete exported prefix only; robust coordinatewise median of six recent pair slopes; last-point vs fitted intercept vs query-median intercept correction",
+  "forecast_steps": 12,
+  "independent_confirmation": false,
+  "no_training": true,
+  "observation_steps": 8,
+  "parent_forecast": {
+    "bytes": 16402,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_calibration_readout_v1/forecast_freeze.json",
+    "sha256": "7d96cc62ee4194895b00beb55b7530340a7020f6c38e1e09f5ee3fff5481fb29"
+  },
+  "risk_rule_changed": false,
+  "role": {
+    "bytes": 8933,
+    "path": "configs/m3w_dronecrowd_calibration_confirmation_v2.json",
+    "sha256": "caabb7504d6e1912d2fb3f8b8207d77b2be28c8897db280bbccf4d7168c1790a"
+  },
+  "sampling": "all original calibration queries and labels, no new exclusions",
+  "scope": "approved_15_calibration_groups_only",
+  "selection": "four one-step observed-prefix probes; lowest mean with OLS4 tie preference; guarded version also requires every observed probe to stay within 2 percent of CV",
+  "source": {
+    "bytes": 127289,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_perfect_switch_ceiling_v1/analysis.json",
+    "sha256": "7b3645011845152e471f2bee2603c06630dbbed6428f52b117386261873ce8d1"
+  }
+}
