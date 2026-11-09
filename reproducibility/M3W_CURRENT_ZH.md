@@ -50,6 +50,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+用训练地点的合格候选学习相对逐个对照的交互收益，再在前八候选中排序。141 个校准机会
+只有 42 个进入短名单，最终选中 22 个；评分地点未证明提升。
+[条件交互收益和候选检索诊断](../outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/README.md)。
+
 同窗难负例与排序损失提高了合格方案排第一的次数，但全网格交互误差
 相对逐个对照变差。两种新模型都没有找到可介入的校准阈值。
 [训练、同预算比较与目标审计](../outputs/publication_readiness_2026_09/opendd_pair_ranking_v1/README.md)。

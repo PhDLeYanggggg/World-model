@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: a feasibility shortlist removes useful pair alternatives
+
+Twenty-one donor-trained relative-gain heads compare directly with
+the same frozen feasibility order. Of 141 calibration opportunities,
+42 remain in the top eight and 22 are selected. Held capture falls
+from 21 to 20 of 150, and the full-grid paired effect does not
+establish a gain. No calibration breakpoint passes.
+[Conditional gain, direct contrasts and retrieval audit](outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/README.md).
+
 ## OpenDD: ranking improves local capture but not pair utility
 
 Across 42 fits, hard-negative mining and pairwise ranking raise held

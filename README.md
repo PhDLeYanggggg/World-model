@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained an interaction score specifically for feasible edits.
+The shortlist had already removed most of the useful pair choices:
+only 42 of 141 calibration opportunities survived the top-eight
+filter. The score helped within some of those shortlists, but not
+on the full held-location forecast grid.
+[Conditional interaction and shortlist audit](outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/README.md).
+
 I trained the selector to put feasible two-agent edits ahead of
 similar but infeasible edits. It found more locally valid choices,
 but its joint forecasts were worse on average than the matched
