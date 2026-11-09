@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Main paper: WEPDTOF attribution
+
+I added the source citation to the external-evaluation paragraph
+and rebuilt the anonymous eight-page draft. The figures, results
+and original source remain unchanged.
+[Build and checks](outputs/publication_readiness_2026_09/evidence_manuscript_v167_citation/README.md).
+
 ## Short review supplement
 
 I put the protocol, frozen WEPDTOF evaluation, and OpenDD vehicle
