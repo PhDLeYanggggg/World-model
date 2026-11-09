@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: conditional harm trades observed failures for unsupported views
+
+At 90 fixed selections, observed harm drops 39 to 24 while
+unsupported views rise 6 to 21 and qualification drops 31 to 28.
+Within the known-support diagnostic the 41-to-35 harm change
+is inconclusive. The combined score releases 17 with four passes
+and eight risk failures. The original risk rule is unchanged.
+[Risk calibration and matched support diagnosis](outputs/publication_readiness_2026_09/av2_observed_harm_v1/README.md).
+
 ## AV2: support estimation improves, but observed harm remains
 
 All-donor support training lowers Brier from 0.154 to 0.117. At

@@ -16,19 +16,25 @@ def main():
     f = study.read(study.checked(s["freeze"]))
     if f["registration"] != key or f["held_labels_used"] or s["reserved_outcomes_opened"]:
         raise ValueError("Require frozen scored development heads")
-    rows = []
+    rows, cells = [], []
     for name, ref in f["folds"].items():
         z = study.read(study.checked(ref))
         p = z["fit"]["observed_harm"]/z["fit"]["supported"]
         source = study.read(run.support.LOCAL/f"{name}.support.json")
         if source["parent"] != parent["folds"][name]:
             raise ValueError("Wrong support annotation")
-        for a, b in zip(z["rows"]["held"], source["cells"], strict=True):
+        metrics = list(run.support.prior.role_rows(z, parent["folds"][name], name, "held"))
+        supported = []
+        for a, b, m in zip(z["rows"]["held"], source["cells"], metrics, strict=True):
             if a["clip"] != b["clip"]:
                 raise ValueError("Wrong score alignment")
             if b["support"]:
                 rows.append(dict(clip=a["clip"], city=a["city"], p=a["harm_probability"], prior=p,
                                  y=b["cause"] == "observed_positive_harm"))
+                supported.append(dict(m, support=True, harm=b["cause"] == "observed_positive_harm"))
+        budget = min(5, len(supported))
+        if budget:
+            cells.append(dict(city=z["identity"]["held"], clip="known_support", n=budget, arms=run.cells(supported, budget)))
     if len(rows) != s["support_views"] or sum(r["y"] for r in rows) != s["observed_harm_views"]:
         raise ValueError("Wrong supported cohort")
     brier = lambda r, k: (r[k]-r["y"])**2
@@ -45,6 +51,9 @@ def main():
         used_for_selection=False, independent_confirmation=False, reserved_outcomes_opened=False,
         result_source="fresh_run", outcome_source="cached_verified")
     run.base.immutable(run.OUT/"conditional_calibration.json", d)
+    run.base.immutable(run.OUT/"supported_only_ranks.json", dict(source=study.artifact(path),
+        **run.summarize_cells(cells), known_support_is_outcome_only=True, used_for_selection=False,
+        independent_confirmation=False, reserved_outcomes_opened=False, result_source="fresh_run"))
     print(study.json.dumps(d, indent=2))
 
 
