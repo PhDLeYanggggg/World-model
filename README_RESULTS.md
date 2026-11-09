@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: observed history predicts utility separately from harm
+
+The combined utility model improves held-source gain MAE by 0.192 pp
+[0.127, 0.259] vs matched donor calibration; history alone is similar.
+Risk point plus lower utility selects 8/120 views from three sources,
+all jointly passing. Lower utility alone admits two risk failures;
+risk point with the old gain score passes 22/23, so the intersection
+also discards 14 qualifying views. This is development evidence only.
+[Separate checks and paired readout](outputs/publication_readiness_2026_09/dronecrowd_recording_utility_guard_v1/README.md).
+
 ## DroneCrowd: observed history improves risk prediction on fixed paths
 
 History-only risk MAE improves by 1.264 pp [0.845, 1.723] vs the matched

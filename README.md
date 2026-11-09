@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I then used observed motion to estimate benefit separately from
+harm. It improved gain prediction on the same independent forecasts.
+Using both checks removed the observed risk failures from the released
+set, but retained only eight views from three calibration sources.
+[Separate gain and harm checks](outputs/publication_readiness_2026_09/dronecrowd_recording_utility_guard_v1/README.md).
+
 I used the observed track itself to estimate harm. On the same
 frozen DroneCrowd forecasts, fitting the first four observations and
 checking against the next four predicted recording risk better than
