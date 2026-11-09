@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: paired qualification recovers more options, but no held release
+
+At the same 2,952 edits, the direct rank selects 9 of 48
+qualifying held views and the conditional rank selects 8,
+versus 5 for history and 3 for forecast cost. The primary
+full-grid pair result versus additive is -0.006183
+[-0.011437, -0.003040]. A single frozen ablation threshold
+triggers once on held development data and fails both arms.
+[Qualification and calibration failure audit](outputs/publication_readiness_2026_09/av2_paired_qualification_v1/README.md).
+
 ## AV2: forecast cost reranking does not resolve paired calibration
 
 At 2,952 matched edits, risk passes increase from 137 to 158

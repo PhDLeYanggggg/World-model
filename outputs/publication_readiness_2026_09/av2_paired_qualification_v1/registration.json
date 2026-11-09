@@ -1,0 +1,50 @@
+{
+  "ablations": [
+    "direct",
+    "query_weighted",
+    "conditional"
+  ],
+  "batch": 64,
+  "causal_features": "past history, geometry and comparison to the fixed additive path",
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_paired_qualification.py",
+      "sha256": "ba58e26189575b685c14776c3f5938b34aace16ab4b40b9bc7b14bc257c85efb"
+    },
+    {
+      "path": "src/world_model/m3w_av2_paired_qualification.py",
+      "sha256": "e16c9cf997baf1cbf46aa6ba94e9fa1e0c5cd3afda44e68fd78ca14c4b4828e6"
+    }
+  ],
+  "conditioning": "fit one relative head on all donor queries and one on eligible donors only",
+  "cutoff_audit": {
+    "path": "outputs/publication_readiness_2026_09/av2_forecast_cost_v2/calibration_capacity.json",
+    "sha256": "f697c0be1640f9ef8fea558b185b4a3ef38122936b60f073c22d06c6de293c95"
+  },
+  "independent_confirmation": false,
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_forecast_cost_v2/summary.json",
+    "sha256": "c72ff16cb027e6ab65fda7f0c350d7c97108591d19592c308658c0c3f2da4972"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_forecast_cost_v2/freeze.json",
+    "sha256": "8ced4158747dc0e3b47200007474d36bdb495c9f991897a1e1b295d066e0ee43"
+  },
+  "primary": "conditional",
+  "rank_pairs": 16,
+  "ranking": "same-query positive-negative logistic term plus weighted classification",
+  "release": "unchanged per-view exact both-arm calibration, every nonempty prefix",
+  "reserved_outcomes_opened": false,
+  "restriction": "an exact copy of the reference cannot yield strict pair gain; exclude it from new ranks",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "targets": "exact reference eligibility and candidate relative qualification, all donor-only",
+  "torch_threads": 4
+}

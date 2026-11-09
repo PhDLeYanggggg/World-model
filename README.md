@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated the decision to intervene in a scene from the
+choice of which agents to edit. This recovered more qualifying
+choices, but the one calibration threshold that passed did
+not transfer to its held city.
+[Paired qualification experiment](outputs/publication_readiness_2026_09/av2_paired_qualification_v1/README.md).
+
 I tried ranking those same choices by what they gain on
 observed steps, what they risk on missing steps, and how much
 they might hurt easy cases. More edits passed the risk checks,
