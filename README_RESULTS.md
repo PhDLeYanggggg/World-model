@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: eightfold source expansion does not stabilize calibration
+
+The publisher-train source grows from 128 to 1,024 UUIDs, with 896
+added scenarios scored under the same six city roles and 2,952
+matched edits. The expanded fit gains +0.281 pp over the small
+fit [-0.086, +0.673], but its calibrated policy releases no held
+edits. The small calibrated policy releases three views and fails
+the easy limit in one.
+[Matched data-scale experiment](outputs/publication_readiness_2026_09/av2_data_scale_v1/README.md).
+
 ## AV2: learning the additive control increases support, not qualified gain
 
 Seventy-two action fits and 18 nested-reference pair fits preserve

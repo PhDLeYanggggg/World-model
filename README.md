@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I expanded the Argoverse 2 development sample to 1,024 scenes.
+Training on more examples from the same cities helped average accuracy a little
+at the same budget, but did not make the risk-controlled edits
+reliable in held cities.
+[AV2 data-scale experiment](outputs/publication_readiness_2026_09/av2_data_scale_v1/README.md).
+
 I trained a new additive control instead of treating the old one
 as fixed. It found more edits with enough easy-case labels to score
 risk, but not more edits that passed both risk and accuracy.
