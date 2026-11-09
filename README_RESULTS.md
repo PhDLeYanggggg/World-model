@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Camera full-path selection: out-of-fold fitting and signed-risk repair
+
+42 held-site forecaster fits and six value/risk fits. Expanded raw
+paths admit hindsight witnesses in 3/3 pilot seed views; the
+donor-trained raw selector makes no edits. Joint and independent
+choose identical paths at matched count and displacement. Direct
+signed excess makes 9, 16 and 10 edits but none passes the original
+risk and two-reference utility checks. The pilot is one camera.
+[Experiment](outputs/publication_readiness_2026_09/camera_full_path_selection_v1/README.md) |
+[Working paper v163](outputs/publication_readiness_2026_09/evidence_manuscript_v163/README.md).
+
 ## Camera motion: matched noisy donor training and full-size actions
 
 Six 800-update fits on the same OpenDD donors. The noise spline

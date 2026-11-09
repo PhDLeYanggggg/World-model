@@ -1,11 +1,28 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-当前主文与补充材料为 [v162](../outputs/publication_readiness_2026_09/evidence_manuscript_v162/README.md)，
+当前主文与补充材料为 [v163](../outputs/publication_readiness_2026_09/evidence_manuscript_v163/README.md)，
 保留 v161 的灰阶制图样式。
 
 本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v163：完整轨迹的折外训练和相机选择
+
+```sh
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
+.venv-pytorch/bin/python scripts/run_m3w_full_path_selection.py freeze
+.venv-pytorch/bin/python scripts/run_m3w_full_path_selection.py score
+.venv-pytorch/bin/python scripts/audit_m3w_full_path_selection.py
+.venv-pytorch/bin/python scripts/run_m3w_full_path_signed_repair.py freeze
+.venv-pytorch/bin/python scripts/run_m3w_full_path_signed_repair.py score
+```
+
+每个 OpenDD 来源的预测由不含该来源的模型生成。选择器用这些预测和开发标签训练，
+只在已公开的 Convenience Store 相机上评分。第一轮价值头接口报错前已完成的
+14 个预测器继续使用，第二版登记保留了它们的身份。运行中断后可重跑
+`freeze`，从 100 步检查点继续；不需要重新训练已完成的模型。
+[实验与限制](../outputs/publication_readiness_2026_09/camera_full_path_selection_v1/README.md)。
 
 ## v162：相机轨迹的配对训练和可行性检验
 
