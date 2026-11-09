@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v149 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v150 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v150：OpenDD 固定介入下的双重留出样条选择
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/finalize_m3w_opendd_nested_spline_choice.py --replay
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_nested_spline_choice.py
+```
+
+去掉第一条的 `--replay` 可从优化器检查点续跑或拟合缺少的模型。需要 v149 的
+本地开发数据、冻结预测和固定介入凭证；v150 不重拟合外层预测生成器。用于
+校准的生成器和选择器同时排除外层地点及校准地点。各策略在相同的对象、时刻和
+峰值位移下比较；只在校准地点选规则，不读取 DroneCrowd 独立确认组。
+[v150 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v150/README.md)。
 
 ## v149：OpenDD 匹配训练预算与固定介入对照
 

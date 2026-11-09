@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a learned rule could choose the better path at the same
+OpenDD intervention locations. The risk-aware rule chose the spline only
+four times, and choosing jointly gave the same result as choosing each
+track independently. It did not beat the simpler rule based on past
+motion. I am checking whether the examples used for calibration match
+the intervention decisions the controller actually makes.
+[Nested selection experiment](outputs/publication_readiness_2026_09/opendd_nested_spline_choice_v2/README.md).
+
 I reran the velocity forecast on the better-labeled OpenDD roster,
 matching the training budget of an EqMotion control. It improved
 on constant velocity on average, but not reliably on every location.

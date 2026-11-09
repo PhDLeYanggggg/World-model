@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Nested risk-aware OpenDD spline selection
+
+168 fresh nested forecast fits and 84 selector fits, 168,000 updates.
+At 1,457 fixed slots, joint risk picks four splines and is identical to
+independent choice. Joint vs prefix: +0.008 conservative pp
+[-0.025, +0.059], 3,000 location resamples. Risk passes: 112 vs 124;
+dual passes: 77 vs 90. The 334 undefined easy references do not pass.
+Easy excess rules out 56/76 positive-gain joint calibration entries.
+No deployment change or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/opendd_nested_spline_choice_v2/README.md) |
+[Manuscript v150](outputs/publication_readiness_2026_09/evidence_manuscript_v150/README.md).
+
 ## Matched direct spline on OpenDD
 
 63 fresh fits, 50,400 updates at the matched ego EqMotion budget.

@@ -1,0 +1,48 @@
+\section{Nested risk-aware spline choice on OpenDD}
+We retain \NestedSplineEdits{} fixed slots and peak displacements and
+learn to choose between the analytic and spline shapes. In contrast to
+pointwise expert deferral~\cite{mao}, the joint decision prices predicted
+risk changes across up to two same-query slots. The head predicts
+conservative utility and changes in all, easy, and signed easy risk
+masses. Thresholds use only nested donor predictions from a deterministic
+two-recipient proxy roster. The outer controller's realized slots are
+unchanged. Proxy calibration constrains aggregate relative risk; it
+does not guarantee the original recording-level rule.
+
+Outer and calibration sites are excluded from fitting the corresponding
+selector and forecast generator. Candidate forecasts used to fit a
+selector also exclude the candidate's source site. The study trains
+\NestedSplineProducer{} nested generators and \NestedSplineSelector{}
+selector heads (\NestedSplineUpdates{} updates), and freezes outer
+predictions before scoring. The joint calibration chooses a nontrivial
+rule for \NestedSplineJointRules{} of seven outer folds.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Choice & Spline uses & Risk passes & Dual passes \\
+\midrule
+Original & \NestedSplineAnchorUses & \NestedSplineAnchorRisk & \NestedSplineAnchorDual \\
+Past prefix & --- & \NestedSplinePrefixRisk & \NestedSplinePrefixDual \\
+Forced spline & \NestedSplineForcedUses & \NestedSplineForcedRisk & \NestedSplineForcedDual \\
+Gain only & \NestedSplineGainUses & \NestedSplineGainRisk & \NestedSplineGainDual \\
+Independent risk & \NestedSplineIndependentUses & \NestedSplineIndependentRisk & \NestedSplineIndependentDual \\
+Joint risk & \NestedSplineJointUses & \NestedSplineJointRisk & \NestedSplineJointDual \\
+Joint, shared rule & \NestedSplineSharedUses & \NestedSplineSharedRisk & \NestedSplineSharedDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Risk and dual-reference pass counts are out of \NestedSplineViews{}
+recording--seed views; all arms have \NestedSplineUndefined{}
+undefined easy-reference views. The guarded policies both select
+only \NestedSplineJointUses{} spline paths and make identical choices;
+the shared-rule control therefore provides no evidence of a grouping
+advantage. Gain-only selection intervenes more often, but passes fewer
+risk and dual-reference checks than the prefix rule. The registered conservative contrast
+against past prefix is \NestedSplinePrimary{} pp. Joint against the
+original is \NestedSplineAgainstAnchor{} pp, and grouping alone at the
+independent rule is \NestedSplineGrouping{} pp. Intervals are paired
+location bootstraps, not repeated-window intervals. This is exposed
+development evidence; no deployment or confirmation is implied.
