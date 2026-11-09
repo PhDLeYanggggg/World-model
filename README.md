@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether joint forecast decisions improved on denser Argoverse 2
+annotations. At the same edit budget, joint selection still did not beat
+the per-agent choice, even when every future step was labelled. The
+hindsight comparison shows how rarely the current menu can improve
+pair accuracy without compromising other checks.
+[Argoverse 2 matched comparison](outputs/publication_readiness_2026_09/av2_native_trajectory_v1/README.md).
+
 On Okutama I separated background motion from trajectory motion using
 only the past images. Projecting the forecast back into the moving
 camera lowered error at labelled endpoints, but did not establish

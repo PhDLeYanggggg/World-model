@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Argoverse 2: denser labels do not recover a matched joint gain
+
+The publisher training sample contains 128 scenarios from six cities.
+Frozen joint selection loses 3.57 pp to CV across the full grid and
+does not beat matched additive on the 59 fully labelled rosters.
+At two matched edit slots, only five complete scenarios admit a
+strict hindsight win under both accuracy and risk; the learned policy
+finds none. No validation or test split was used.
+[Dataset, controls and statistics](outputs/publication_readiness_2026_09/av2_native_trajectory_v1/README.md).
+
 ## Okutama: past camera compensation helps observed endpoints
 
 On 33 fixed windows, causal reprojection lowers available endpoint
