@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## VisDrone-MOT: camera motion helps association, not whole-roster support
+
+On identical boxes in four reused training windows, camera compensation
+recovers 21 complete tracks versus 14 with last-box matching. Velocity
+alone recovers 11, and combining it with camera compensation recovers 14.
+Every arm is at 0/4 fully scored rosters. At most 50 of 76 complete reference
+tracks have an eligible box at every observed step, even without enforcing
+unique assignments. [Matched comparison and replay](outputs/publication_readiness_2026_09/visdrone_association_v1/README.md).
+
 ## VisDrone-MOT: reference coverage does not carry over to camera tracks
 
 Training-only byte-range intake recovers 191 multi-agent reference windows
