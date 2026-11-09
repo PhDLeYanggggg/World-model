@@ -1,0 +1,39 @@
+{
+  "batch": 128,
+  "calibration": "unchanged tests over exact nonempty breakpoints; maximize calibration coverage then prefer conditional",
+  "censored": "squared loss on gain for qualifying options and zero elsewhere; no probability multiplier",
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_supported_gain.py",
+      "sha256": "c1f5673dbe69372f0af5a1af1f2ce8224d834c64bbcc4ea8d882f1baff3314f6"
+    },
+    {
+      "path": "scripts/run_m3w_av2_pair_refit.py",
+      "sha256": "99cbee6da962a05e3b69a567265630e1716226cd71d8ecc2d81dd5a77922a4c2"
+    }
+  ],
+  "conditional": "squared loss only on qualifying options; p(strict) times conditional positive gain",
+  "cpu_threads": 4,
+  "data": "same 128 publisher-train scenarios, 8 observation / 12 prediction steps",
+  "diagnostics": "forced decisions and strict option retrieval are not releases",
+  "heads": "same MLP, weighted strict BCE and support BCE as parent; log-odds correction for weight 5",
+  "independent_confirmation": false,
+  "matches": "same four donors, one calibration city, one held city, three seeds, menu and reference",
+  "methods": [
+    "conditional",
+    "censored"
+  ],
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_pair_refit_v1/summary.json",
+    "sha256": "d51e4c739f60ac6872ad4fdb55cdd93ea77cfaf14eee63df802ece927cdb5f5e"
+  },
+  "previous_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_pair_refit_v1/freeze.json",
+    "sha256": "6626cf85c5bdc61301a61d3ed9aa2ef6bbc52b91f96750b1c00d059f51478551"
+  },
+  "reserved_outcomes_opened": false,
+  "steps": 320,
+  "workers": 0
+}

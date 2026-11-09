@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: supported-gain ranking recovers choices but not release
+
+Thirty-six fits compare conditional and censored gain at 459
+matched edits. Top-one strict capture rises from 0 to 3 for each
+target, but all 348 nonempty calibration breakpoints fail.
+Only 2/174 two-slot views admit both a qualifying joint action
+and the fixed additive control; the two-action hindsight ceiling
+is 57/174 with an unrestricted legal reference.
+[Supported targets and paired ceiling](outputs/publication_readiness_2026_09/av2_supported_gain_v1/README.md).
+
 ## AV2: denser labels do not rescue unconditional-gain ranking
 
 Eighteen city-excluded fits hold 459 edit peaks fixed. Forty-seven

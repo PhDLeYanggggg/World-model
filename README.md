@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I changed the AV2 selector to estimate gain only for qualifying
+edits. It found a few useful choices but still could not be
+calibrated. The matched comparison also exposed a problem with
+the fixed additive control: only two views could support both
+arms, versus 57 if either legal forecast could be chosen with
+hindsight.
+[Supported-gain experiment](outputs/publication_readiness_2026_09/av2_supported_gain_v1/README.md).
+
 I retrained pair selection on Argoverse 2 with a separate calibration
 city in each fold. Even with more complete labels, the refit missed
 all 47 useful held-city choices. The ranking audit showed why:
