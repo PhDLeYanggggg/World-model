@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried limiting how far a joint forecast could move from the additive
+control, at the same intervention budget. That reduced the penalty from
+missing labels, but it also removed most of the useful choices and made
+the direct forecast comparison worse.
+[Same-budget geometry experiment](outputs/publication_readiness_2026_09/opendd_relative_trust_v1/README.md).
+
 I used both feasibility and expected interaction gain to retrieve
 eight candidates. It brought back more good choices, but the selected
 predictions still did not improve the full-grid result. Most of the

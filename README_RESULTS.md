@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: smaller relative edits reduce debit but lose utility
+
+At the same 966 edit peaks, the half-cap reduces missing-step debit
+against additive by 58.4%, but retains feasible alternatives in just
+36 of the original 150 held opportunities. Direct full-grid pair gain
+is -0.011365 native units (95% interval [-0.023943, -0.002163]); none
+of 483 nonempty calibration breakpoints pass.
+[Geometry, capacity and direct contrasts](outputs/publication_readiness_2026_09/opendd_relative_trust_v1/README.md).
+
 ## OpenDD: joint retrieval increases recall without recovering utility
 
 At the same eight-candidate and 966-slot budgets, held shortlist
