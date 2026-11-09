@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Moving initial forecast: paired objectives and fixed-budget attribution
+
+18 fresh fits, 14,400 updates; frozen replay, zero updates. OLS4-only:
++1.792 available-label pp, -5.560 conservative pp [-13.028, -1.216].
+Dual-risk: -52.699 conservative pp [-94.282, -21.825]. No strict
+calibration option (0/9). At identical times, recipients and peak
+displacements, neither adds a dual pass to the old 2/72. Raw diagnostic
+upper-bound exclusions improve from 69 to 60/72 only at each plan's
+own budget. Development only; independent confirmation stays sealed.
+[Experiment](outputs/publication_readiness_2026_09/moving_dual_record_forecast_v1/README.md) |
+[Manuscript v155](outputs/publication_readiness_2026_09/evidence_manuscript_v155/README.md).
+
 ## OpenDD to Moving pass-transition transfer
 
 24 fresh OpenDD fits, 14,400 updates. No net added pass in OpenDD

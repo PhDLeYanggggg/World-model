@@ -1,8 +1,20 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v154 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v155 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v155：用双基线与录像风险训练初始预测
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_moving_dual_record_forecast.py --replay
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_moving_initial_matched_budget.py
+```
+
+去掉 `--replay` 可训练或从检查点续跑。需要 v154 使用的 Moving 冻结候选和旧样条
+检查点。每折分别使用拟合、校准和留出来源。第二条固定旧介入对象、时刻和峰值位移，
+只比较达到该位移的新方向；不使用这个结果重选策略。风险规则和独立确认边界不变。
+[v155 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v155/README.md)。
 
 ## v154：OpenDD 到 Moving 的决策迁移
 

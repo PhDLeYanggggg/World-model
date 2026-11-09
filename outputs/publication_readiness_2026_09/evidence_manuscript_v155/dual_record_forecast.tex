@@ -1,0 +1,67 @@
+\section{Training a stronger Moving initial forecast}
+We compare two objectives for the same CV-anchored velocity spline
+with a bounded amplitude. The control maximizes conservative gain
+against OLS4, debiting forecast disagreement at missing future steps.
+The second objective maximizes the worse of the CV- and OLS4-relative
+gains and penalizes positive excess over the original all, easy and
+signed CV risks, with a soft incentive for reference support.
+Each minibatch belongs to one fitting recording. The utility loss
+weights queries equally while the risk surrogate uses unweighted
+rows. This is a fixed training penalty with separate calibration
+sources~\cite{cotter}, not a constrained optimization or a coverage
+guarantee. Both models read only observed trajectories and their
+causal neighbors.
+
+We train \MovingInitialFits{} models for \MovingInitialUpdates{}
+updates, with three seeds and disjoint fitting, calibration and
+held sources per rotation. The \MovingInitialViews{} views represent
+\MovingInitialRecords{} recordings from \MovingInitialSources{}
+already used development sources, not independent test data.
+A strict choice must pass the unchanged 2\% rule in every
+calibration recording and give positive source-macro conservative
+gain against both references. A diagnostic choice ranks by joint
+passes, then by the smaller conservative gain. EqMotion and PCT are
+held-only controls because their existing calibration forecasts
+are not proven to exclude the outer held sources. We freeze all
+predictions before held scoring. No strict choice qualifies
+(\MovingInitialStrict{}/\MovingInitialCells{}); CV fallback
+does not turn undefined support into a pass.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrr}
+\toprule
+Initial plan & Risk & Dual & Matched dual \\
+\midrule
+Half-peak anchor & \MovingInitialAnchorRisk & \MovingInitialAnchorDual & \MovingInitialAnchorMatchedDual \\
+OLS4 objective & \MovingInitialOLSRisk & \MovingInitialOLSDual & \MovingInitialOLSMatchedDual \\
+Dual-risk objective & \MovingInitialRiskRisk & \MovingInitialRiskDual & \MovingInitialRiskMatchedDual \\
+Diagnostic choice & \MovingInitialScreenRisk & \MovingInitialScreenDual & \MovingInitialScreenMatchedDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+Columns count risk passes, joint risk and utility passes, and
+joint passes with the old budget, respectively.
+
+The OLS4 objective improves on OLS4 where labels are available
+(\MovingInitialOLSKnown{} pp), but loses with missing-step debits
+(\MovingInitialOLSLower{} pp). The dual-risk objective also loses
+after debits (\MovingInitialRiskLower{} pp); its smaller number
+of edited rows does not imply supported risk. Unmatched diagnostic
+paths narrow the relaxed single-query exclusion count from
+\MovingInitialAnchorUpper{} to \MovingInitialRawUpper{}/\MovingInitialViews{}
+views, but use their own intervention budget and do not add a dual pass.
+
+\paragraph{Fixed recipients and peaks.}
+An attribution audit locks all \MovingInitialEdits{} old edits,
+including their query times, recipients and individual peaks. We
+take the new direction only when it reaches that peak without
+amplification; otherwise the old path stays. Against the old anchor,
+the OLS4 objective gives \MovingInitialOLSMatched{} pp, the dual-risk
+objective gives \MovingInitialRiskMatched{} pp, and the diagnostic
+choice gives \MovingInitialScreenMatched{} pp in conservative gain.
+Brackets give 95\% intervals from \MovingInitialBootstrap{} paired
+source draws after averaging seeds. This does not establish a better
+direction at fixed budget or justify deployment. The original
+risk rule and the independent confirmation boundary are unchanged.

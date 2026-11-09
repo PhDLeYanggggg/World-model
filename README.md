@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained two versions of the same velocity forecaster to close the gap
+to OLS4. The one trained directly against OLS4 was more accurate where
+future positions were labeled, but lost once I accounted for missing
+labels. Adding recording-risk penalties did not fix that. At the same
+intervention times, recipients and displacement limits, neither model
+added a passing recording. I kept the current fallback.
+[Initial-forecast experiment](outputs/publication_readiness_2026_09/moving_dual_record_forecast_v1/README.md).
+
 I trained the decision head on OpenDD and tested it on a separate
 MovingDroneCrowd++ development set. It did not add a passing recording.
 Even allowing arbitrary paths in one query at the same displacement
