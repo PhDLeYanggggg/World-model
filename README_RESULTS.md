@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: score scale is not the only release problem
+
+Transferring the calibration count or fraction to the frozen held
+ranking does not rescue release. All seven calibration-enabled direct
+score directions contain a qualifying held proposal, but none has a
+fully qualifying top score group. The original 2% rule and CV fallback
+stay unchanged. [Matched audit](outputs/publication_readiness_2026_09/opendd_vehicle_release_transport_v1/README.md).
+
 ## OpenDD: a better ranking does not rescue release
 
 I froze both paths and refit the release score. Direct prediction
