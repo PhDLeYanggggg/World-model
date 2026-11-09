@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Risk-budgeted query proposals
+
+79,047 to 99,542 options. Under the unchanged rule, original,
+expanded and full-row menus verify 8/72, 11/72 and 27/72 hindsight
+views; 24 full-row searches unresolved. Integer continuation verifies
+both open expanded-menu cases. The frozen scorer takes 456 new
+options, but gains -0.027 conservative pp [-0.079, +0.0003] at
+the old counts and loses 0.379 pp to independent selection at
+matched expanded counts. Calibration 0/9; no deployment change.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_risk_frontier_v1/README.md) |
+[Manuscript v142](outputs/publication_readiness_2026_09/evidence_manuscript_v142/README.md).
+
 ## Learning variable-count scene decisions
 
 18 fits, 21,600 updates. Joint at 49,734 matched edits loses 0.322

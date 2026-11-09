@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v141 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v142 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v142：用预测风险预算生成整组候选
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_cv_risk_frontier.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_risk_frontier_integer.py
+.venv-pytorch/bin/python scripts/eval_m3w_cv_risk_frontier_transfer.py
+```
+
+前两条是事后容量诊断：8/72、11/72、27/72 分别是原菜单、扩展菜单、同路径库
+逐智能体自由组合的已验证数；后者另有 24 个未求解。第三条用冻结模型和独立的
+校准角色比较扩展前后，未得到可部署方案。两条长任务保留本机断点与心跳。
+[v142 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v142/README.md)。
 
 ## v141：让模型选择整组改动和数量
 

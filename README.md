@@ -9,6 +9,15 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I expanded the set of scene decisions by asking a solver to
+combine paths under different predicted risk budgets. With outcomes
+available, the wider set finds 11 valid views instead of eight.
+The same path bank can support at least 27 if choices are made
+per agent, so many useful combinations are still missing. The
+frozen model did not benefit from the extra options at matched
+counts. I am using this to guide what the next model learns.
+[Risk-budgeted options](outputs/publication_readiness_2026_09/moving_cv_risk_frontier_v1/README.md).
+
 I let the model decide how many forecasts to replace as well as
 which paths to use. It gained accuracy on labeled steps relative
 to keeping the old counts, but did not beat independent selection
