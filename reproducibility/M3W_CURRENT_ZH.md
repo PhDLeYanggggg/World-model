@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## Songdo：从冻结候选到正式评分
+
+`OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/rehearse_m3w_songdo_confirmation.py`
+用合成未来覆盖全部 200 个航次。正式入口先注册已批准的来源角色，再按
+协议校准或直接读取冻结阈值；相同协议重跑时从已完成航次接续。
+[角色、文件及命令](../outputs/publication_readiness_2026_09/songdo_confirmation_rehearsal_v1/README.md)。
+目前无正式登记和真实 Songdo 评分。
+
 ## Songdo：评分器演练（不读真实未来）
 
 `.venv-pytorch/bin/python scripts/verify_m3w_songdo_readout_contract.py`

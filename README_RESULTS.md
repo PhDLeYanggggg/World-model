@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: calibration and confirmation runner
+
+I keep the equal-budget comparison separate from the question of whether
+an edit is safe to release. The runner freezes the release rule before
+scoring confirmation flights and resumes from completed flight records.
+The rehearsal covered all 200 flights and 573 matched seed views with
+fabricated targets. There is no real Songdo result yet.
+[Protocol and reproduction](outputs/publication_readiness_2026_09/songdo_confirmation_rehearsal_v1/README.md).
+
 ## Songdo: score contract verified with fabricated futures
 
 The scorer replays 200 flights and 600 seed views with fabricated
