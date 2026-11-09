@@ -1,11 +1,25 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-当前主文与补充材料使用 [v161 制图版](../outputs/publication_readiness_2026_09/evidence_manuscript_v161/README.md)；
-只更新图表样式，不重算结果。
+当前主文与补充材料为 [v162](../outputs/publication_readiness_2026_09/evidence_manuscript_v162/README.md)，
+保留 v161 的灰阶制图样式。
 
 本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v162：相机轨迹的配对训练和可行性检验
+
+```sh
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
+.venv-pytorch/bin/python scripts/run_m3w_camera_noise_control.py freeze
+.venv-pytorch/bin/python scripts/run_m3w_camera_noise_control.py score
+.venv-pytorch/bin/python scripts/audit_m3w_camera_noise_capacity.py
+```
+
+使用 OpenDD 的 7 个开发来源训练。输入为此前冻结的三台开发相机历史。
+`freeze` 可从 100 步检查点恢复，先冻结全部预测，再用 `score` 评分。
+最后一条使用开发标签做事后优化，并不产生在线策略。不打开 WEPDTOF 的
+13 个外部组或 DroneCrowd 确认集。详见[实验记录](../outputs/publication_readiness_2026_09/camera_noise_control_v1/README.md)。
 
 ## v160：同预算下能否追上 OLS4
 

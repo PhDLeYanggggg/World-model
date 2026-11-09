@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Camera motion: matched noisy donor training and full-size actions
+
+Six 800-update fits on the same OpenDD donors. The noise spline
+beats OLS4 on the WEPDTOF pilot (+2.49 to +4.36 conservative pp)
+but fails the original easy-risk check (29.67% to 33.84%). GMU and
+CMU already lose on the known-step OLS4 contrast. The small radius
+still excludes all pilot menus. At the same per-query caps, full-size
+analytic actions have verified hindsight witnesses in 3/3 pilot
+seed views; adding both splines increases the verified gain by
+4.72 to 6.61 pp. No new causal selector or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/camera_noise_control_v1/README.md) |
+[Working paper v162](outputs/publication_readiness_2026_09/evidence_manuscript_v162/README.md).
+
 The [v161 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v161/README.md)
 redraws four figures for print. It changes no result.
 

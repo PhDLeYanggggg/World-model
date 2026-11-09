@@ -1,0 +1,45 @@
+\section{Noisy donor training and full-path capacity}
+We trained the same OLS4-anchored spline on clean or synthetically
+perturbed OpenDD histories, with paired donor batches, initialization
+and \CamNoiseUpdates{} total updates over both arms and three seeds.
+We added AR(1) noise to the eight observations and kept each
+absolute target unchanged. The perturbation does not simulate
+missing detections, identity errors or camera calibration.
+The three camera inputs below were previously exposed development
+clips. The 13 reserved WEPDTOF sources were not scored again.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Camera & Online & Stable match & Full future\\
+\midrule
+WEPDTOF & \CamNoiseWepOnline & \CamNoiseWepStable & \CamNoiseWepComplete\\
+GMU & \CamNoiseGmuOnline & \CamNoiseGmuStable & \CamNoiseGmuComplete\\
+CMU & \CamNoiseCmuOnline & \CamNoiseCmuStable & \CamNoiseCmuComplete\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The noise-trained spline gains \CamNoiseWepOlsLower{} pp against
+OLS4 on WEPDTOF after the missing-step debit. It is not consistently
+better than median pair slope (\CamNoiseWepMedianLower{} pp).
+Its easy positive-harm bound is \CamNoiseEasy\%, not a pass at 2\%.
+Even before the missing-step debit, the OLS4 contrast is negative
+at GMU (\CamNoiseGmuOlsKnown{} pp) and CMU
+(\CamNoiseCmuOlsKnown{} pp). Both cameras have only eight matched
+histories. We do not infer that unmatched histories are false
+detections or fit camera-specific risk cutoffs. These ranges are
+across donor seeds, not confidence intervals across sources.
+
+On the WEPDTOF pilot, hold each query's eligibility and count cap
+fixed. With the original radius, the expanded menu's risk-constrained
+upper bound is negative in \CamNoiseCapped{}/3 views. With each
+action at its full size, exact search verifies a plan meeting the
+unchanged risk and two-reference utility checks in
+\CamNoiseAnalytic{}/3 views for OLS4 and median slope alone and
+\CamNoiseSpline{}/3 after adding the two splines. The larger menu
+increases verified conservative gain against OLS4 by
+\CamNoiseExtra{} pp. These plans use future outcomes and only
+establish capacity under the changed action set. No causal
+selector for these larger actions has been evaluated.
