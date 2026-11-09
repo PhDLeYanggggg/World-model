@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pytest
 
+from scripts import audit_m3w_sdd_camera_class_support as class_support
 from scripts import audit_m3w_sdd_camera_confidence_utility as utility
 from scripts import audit_m3w_sdd_camera_motion as motion
 from scripts import audit_m3w_sdd_camera_coverage as coverage
@@ -158,3 +159,19 @@ def test_unknown_taxonomy_distinguishes_nonpedestrians_and_missing_outcomes():
     count, classes = unknown.reasons(window, labels, {10: 'Pedestrian', 11: 'Biker'})
     assert count == dict(scoring_complete=1, stable_nonpedestrian=1, never_matched_visible_label=1)
     assert classes == dict(Biker=1)
+
+
+def test_class_support_reserves_pedestrian_and_keeps_unknown_joint_track():
+    boxes = np.array([[0, 0, 6, 6], [20, 0, 26, 6], [40, 0, 46, 6]])
+    frames = [dict(frame=t, pixel_sha256=str(t), boxes=[[*b, .9, 1] for b in boxes]) for t in range(8)]
+    window = confidence.tracks(frames, .30)
+    labels = {t: {10: (boxes[0] + [1, 0, 1, 0], True), 11: (boxes[0], True),
+                  12: (boxes[1], False)} for t in range(20)}
+    classes = {10: 'Pedestrian', 11: 'Biker', 12: 'Skater'}
+    values, group = class_support.score_window(window, labels, classes, 'test_clip')
+    assert set(group) == {'Pedestrian', 'Skater'}
+    assert values[2].all(1).tolist() == [True, True, False]
+    assert class_support.window_support(values, group) == {
+        'online_at_least_two': 1, 'complete_at_least_one': 1, 'complete_at_least_two': 1,
+        'complete_all_online_at_least_two': 0, 'complete_at_least_two_classes': 1,
+    }

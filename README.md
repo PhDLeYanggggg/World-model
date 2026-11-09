@@ -24,6 +24,13 @@ That is a reason to check which agents the labels cover, not just
 to lower the detector threshold.
 [Confidence and label audit](outputs/publication_readiness_2026_09/sdd_camera_support_v1/confidence_bridge_v2/README.md).
 
+I scored cyclists and skaters separately without changing any
+forecast or pedestrian match. That recovered 65 complete futures
+on the bridged tracks. But only nine of the 44 windows with at
+least two online agents had complete labels for everyone. That
+limits what these clips can say about editing forecasts jointly.
+[Class and joint-label coverage](outputs/publication_readiness_2026_09/sdd_camera_support_v1/class_support_v2/README.md).
+
 I trained a model to imitate complete editing plans rather than
 predicting gain and harm separately. It made some useful choices
 on held OpenDD locations, but did not beat independent selection

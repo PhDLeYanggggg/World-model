@@ -41,6 +41,20 @@ py=.venv-pytorch/bin/python
 [完整结果](../outputs/publication_readiness_2026_09/sdd_camera_support_v1/confidence_bridge_v2/README.md)。
 这轮不改 2% 风险规则，也不使用预留的确认标签。
 
+## SDD：分类别评分与联合窗口覆盖
+
+使用同一批冻结检测结果，先锁定原有行人匹配，再给其他轨迹匹配
+骑车人、滑板者标注。补轨方案额外得到 65 条完整未来，但 44 个
+多智能体窗口中只有 9 个能给全部在线轨迹评分。补充类别不会改变
+行人指标，也不能把可评分子集当成整场景安全证据。
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 \
+  .venv-pytorch/bin/python scripts/audit_m3w_sdd_camera_class_support.py
+```
+
+[分类别结果](../outputs/publication_readiness_2026_09/sdd_camera_support_v1/class_support_v2/README.md)。
+
 ## v164：学习完整介入方案
 
 ```sh

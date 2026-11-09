@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## SDD: class-specific and joint-label coverage
+
+Without changing pedestrian matches, I recovered 57 complete cyclist
+and eight complete skater futures on the bridge. Support rises from
+two recordings in one scene to six recordings in three scenes when
+classes are pooled. Only 9 of 44 multi-agent windows have all online
+futures labeled. The OLS8 vs. OLS4 full-roster lower bound remains
+negative (-8.48 pp). No deployment changed.
+[Study and replay](outputs/publication_readiness_2026_09/sdd_camera_support_v1/class_support_v2/README.md).
+
 ## SDD: lower-confidence camera tracks
 
 On the same 92 development windows, adding anchored weak tracks

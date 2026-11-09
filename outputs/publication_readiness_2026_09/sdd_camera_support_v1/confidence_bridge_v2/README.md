@@ -25,6 +25,8 @@ and 36 never matched a visible label. The last group is unresolved,
 not a count of false detections. The audit explains the original
 denominator; it does not change the pedestrian scoring rule.
 [Class audit](../raster_registration/unknown_taxonomy.json).
+The [follow-up](../class_support_v2/README.md) scores the additional
+classes separately and counts fully labeled joint windows.
 
 ## How much useful support did the extra tracks add?
 
