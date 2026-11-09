@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: scene margin assignment finds support, not transferable release
+
+The primary has 503 edited-easy supported views versus 382
+for the fixed reference, but qualifies in 61 versus 63.
+Its frozen standalone thresholds qualify on 1 of 16 held
+releases. Correcting an unlabelled-actor propagation bug in
+the hindsight enumeration changes the pair ceiling from
+334 to 344; the fixed-reference count remains 48.
+[Margins, correction and held readout](outputs/publication_readiness_2026_09/av2_margin_assignment_v2/README.md).
+
 ## AV2: observed context leaves release unchanged; the reference limits capacity
 
 Thirty-six gate fits leave the candidate paths unchanged.

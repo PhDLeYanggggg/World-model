@@ -74,6 +74,13 @@ whether both forecasts pass the gain and harm criteria.
 
 ## Same Menu, Different Reference: Hindsight Capacity
 
+**Correction:** The [later replay](../av2_margin_assignment_v2/README.md)
+found that the old vectorized enumeration dropped views with
+a wholly unlabelled actor. The corrected ceilings are 382
+eligible-reference views and 344 pair views; fixed-reference
+and Palo Alto pair counts are unchanged. The table below
+preserves the original readout.
+
 I evaluated the exact same menu and peak budget with outcomes
 only to count possible references. The relaxed comparison
 requires both paths to meet the original accuracy and risk

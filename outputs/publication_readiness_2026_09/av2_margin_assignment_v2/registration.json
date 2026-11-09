@@ -1,0 +1,51 @@
+{
+  "action_terms": "CV and OLS full-grid lower gain increments, all/easy positive-harm excess, signed easy change",
+  "batch": 32,
+  "bootstrap": "3000 city draws after averaging seeds within scenario",
+  "calibration": "standalone reference diagnostic only: original dual-floor and all three 2% risk checks at every nonempty prefix",
+  "capacity": {
+    "path": "outputs/publication_readiness_2026_09/av2_observability_v2/reference_capacity.json",
+    "sha256": "332b95968289401aa5ea8febe0c25e4687e6bb0e73a2b92e8aa1176cc7c1e6aa"
+  },
+  "causal_input": "same old per-actor history and path features, no scene metadata or future masks",
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_margin_assignment.py",
+      "sha256": "363658566269ac5d8abc42b9e3f4177a503cace22979b0716318c63349a67f00"
+    },
+    {
+      "path": "src/world_model/m3w_av2_margin_assignment.py",
+      "sha256": "2a3645859f3304ba0d124f744d4aa32f625d87709ade6a0625ffa1da6b6e8644"
+    }
+  ],
+  "context_terms": "OLS fallback intercept, easy cap contribution and probability of edited-easy support",
+  "decoding": "same two recipients and peak budget constraint; point, heuristic or soft conjunction of exact-form margins",
+  "independent_confirmation": false,
+  "missing_actor_correction": "zero known error for wholly unlabelled actors, charge disagreement only if edited; replay scalar evaluator and legacy ceiling",
+  "modes": [
+    "fixed",
+    "point",
+    "heuristic",
+    "margins",
+    "supervised"
+  ],
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_observability_v2/summary.json",
+    "sha256": "34171d0774b6b90703661fd35f692a18f36f1e4c6e405658ec72b4e616219612"
+  },
+  "primary": "supervised",
+  "rank_pairs": 8,
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "temperature": 0.1,
+  "torch_threads": 4,
+  "training": "matched seeds, queries, regression and support loss; supervised adds donor exact-label conjunction and same-query ranking losses"
+}

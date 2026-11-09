@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the reference assignment against the same gain
+and risk terms used for evaluation. It found more edits with
+easy-case support, but the calibrated choices still failed
+on held cities. This also uncovered and corrected an
+undercount in the earlier hindsight bound.
+[Scene-margin assignment and missing-actor correction](outputs/publication_readiness_2026_09/av2_margin_assignment_v2/README.md).
+
 I tested whether the shorter tracks around a scene improve
 the intervention decision. They did not fix release. The
 same forecast menu does contain better references with
