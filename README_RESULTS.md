@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: recording-level calibration recovers four joint passes
+
+At the same query-level replacement counts, stronger risk prices improve
+the original risk pass count from 24 to 29/120 but reduce joint passes
+from 24 to zero. The menu adds one joint opportunity to the independent
+control with hindsight. Held-source median calibration selects 13 views,
+12 pass risk, and four pass both accuracy floors and risk. The residual
+envelope selects none. No confirmation or deployment.
+[Same-count prices, calibration and misses](outputs/publication_readiness_2026_09/dronecrowd_recording_risk_pool_v1/README.md).
+
 ## DroneCrowd: training directly on OLS4 gain does not recover menu headroom
 
 At 3,824,730 identical-count replacements over OLS4, the new target

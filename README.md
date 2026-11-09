@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested calibrating both risk ratios over a whole recording rather
+than requiring each query to pass on its own. Leaving out one source
+at a time, median calibration selected 13 views, of which four passed
+both accuracy floors and risk. A larger risk penalty added risk passes
+at the same replacement counts, but it lost the accuracy gains.
+[Recording-level calibration](outputs/publication_readiness_2026_09/dronecrowd_recording_risk_pool_v1/README.md).
+
 I started two DroneCrowd selectors from the same OLS4 forecast and
 changed only the gain target during training. Learning gain directly
 against OLS4 hurt at equal replacement counts, even though the same
