@@ -1,0 +1,70 @@
+{
+  "batch": 128,
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_slate_relative_gain.py",
+      "sha256": "54d1849e220c533070eca629fa79a37bd38065d149c3dbe8e33df6c0765c5d62"
+    },
+    {
+      "path": "src/world_model/m3w_slate_relative_gain.py",
+      "sha256": "48ab4b7794cfcf4118a2f20eb2e5585dade24bea16786b6d3d0542a981fb3c17"
+    },
+    {
+      "path": "src/world_model/m3w_slate_shared_menu.py",
+      "sha256": "99e04209eb20d3a15306338ffc4312097dd022d6235e177985f1682f97a6b2c8"
+    },
+    {
+      "path": "src/evaluation/m3w_interaction_frontier.py",
+      "sha256": "a6d5491def5b28f018eb58e3d0975daaeb1adfc624f3c7e93e1809412c1f885f"
+    }
+  ],
+  "comparisons": [
+    "additive",
+    "risk_joint",
+    "ols_proxy_joint",
+    "observed_joint",
+    "full_grid_joint"
+  ],
+  "development_only": true,
+  "donor_slots": "two distinct recipients drawn from legal nonzero path peaks; no future conditioning",
+  "donors": "outer- and donor-excluded candidate producer; no donor policy with outer exposure",
+  "forecast_steps": 12,
+  "independent_confirmation": false,
+  "loss": "equal smooth L1 for antisymmetric known grid gain and symmetric missing-grid debit",
+  "no_threshold_search": true,
+  "observed_steps": 8,
+  "original_2pct": true,
+  "pair_weight": 0.25,
+  "parents": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_turn_intervention_v1/registration.json",
+      "sha256": "079e2b1e981fab216d86f4ceae2dc449f992153d2741d32f15eb0fc34b964b4d"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_turn_intervention_v1/freeze.json",
+      "sha256": "bf112a2eddfe8a751190d14a372d995ee1016fa7128adf86006d66391cb1ce6b"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_turn_intervention_v1/readout.json",
+      "sha256": "e6cc091f623c947494a238953896a2c6d136bd3f432d8b245d9d27a898167823"
+    }
+  ],
+  "references": "OLS-nearest slate and a uniformly sampled legal slate at the same two peaks",
+  "sampled_slates_per_reference": 16,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "steps": 400
+}

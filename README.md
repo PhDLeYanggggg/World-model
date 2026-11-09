@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a score for the relative-motion gain of a complete replacement,
+then tested it at the same edit budget. It improved on my earlier joint
+rule, but I could not establish a conservative gain over choosing agents
+individually. Most risk failures were already visible in the observed labels.
+[Matched comparison and risk breakdown](outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/README.md).
+
 I added a turn forecast derived from observed motion and reran the
 matched-budget experiment. It raised the number of hindsight wins from
 21 to 50. The retrained joint policy produced three qualifying wins over

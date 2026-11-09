@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: direct relative-motion supervision helps the old joint rule
+
+At the same 3,690 slots, directly predicting full-slate gain improves the
+conservative pair result over risk-only joint selection, but its interval
+against additive selection spans zero. Only 47/439 edited views pass the
+original risk rule; 336 already exceed an observed harm check.
+[Training, held-location intervals and risk attribution](outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/README.md).
+
 ## OpenDD: better turn candidates do not solve selection
 
 At the same 3,690 edit slots and original 2% risk rule, the turn menu
