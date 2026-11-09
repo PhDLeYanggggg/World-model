@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: joint-qualification ranking does not improve release
+
+At 90 matched selections, strict pointwise and rank fit qualify 14
+and 15 versus actor support's 31. They select 52 and 53 unsupported
+views versus 6. With support known only in hindsight, qualification
+is 28, 34 and 33, respectively. The rank fit improves over its matched
+control on supported risk but does not beat the old score. Neither
+new fit has a nonempty calibration prefix or deploys.
+[Matched training, city intervals and support diagnosis](outputs/publication_readiness_2026_09/av2_release_rank_v1/README.md).
+
 ## AV2: calibration count transport does not recover qualifying forecasts
 
 The frozen conditional-harm score releases 17 with four passes.

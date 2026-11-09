@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained two AV2 scores to rank forecasts that pass both accuracy and
+risk. The new ranking loss did better than its own classifier when an
+easy reference was known, but it did not beat the existing score.
+Neither new model qualified for release on the calibration cities.
+[Direct qualification and ranking test](outputs/publication_readiness_2026_09/av2_release_rank_v1/README.md).
+
 I checked whether the AV2 release failures were just a threshold
 problem. At the same nine releases that passed calibration, only
 three of the highest-ranked forecasts passed on the held cities.

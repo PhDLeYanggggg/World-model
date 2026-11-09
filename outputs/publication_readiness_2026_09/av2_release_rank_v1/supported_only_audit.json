@@ -1,0 +1,378 @@
+{
+  "code": {
+    "path": "scripts/audit_m3w_av2_release_rank_support.py",
+    "sha256": "5e9ec23717dee109cd2cf09354f9cea3c024c1990fe7251d51e72027d87b807a"
+  },
+  "counts": {
+    "actor_support": {
+      "floor_fail": 46.0,
+      "observed_harm": 41.0,
+      "qualified": 33.0,
+      "risk_fail": 42.0,
+      "unsupported": 0.0
+    },
+    "conditional_harm": {
+      "floor_fail": 45.0,
+      "observed_harm": 35.0,
+      "qualified": 36.0,
+      "risk_fail": 35.0,
+      "unsupported": 0.0
+    },
+    "strict_point": {
+      "floor_fail": 46.0,
+      "observed_harm": 49.0,
+      "qualified": 28.0,
+      "risk_fail": 49.0,
+      "unsupported": 0.0
+    },
+    "strict_rank": {
+      "floor_fail": 44.0,
+      "observed_harm": 44.0,
+      "qualified": 34.0,
+      "risk_fail": 44.0,
+      "unsupported": 0.0
+    },
+    "transferred_cost": {
+      "floor_fail": 49.0,
+      "observed_harm": 39.0,
+      "qualified": 35.0,
+      "risk_fail": 39.0,
+      "unsupported": 0.0
+    }
+  },
+  "independent_confirmation": false,
+  "input": {
+    "path": "outputs/publication_readiness_2026_09/av2_release_rank_v1/summary.json",
+    "sha256": "f454af6397c4f7e0543ad929153020dbbd83c00da6df12aebdf8aba59cf958c2"
+  },
+  "known_support_is_outcome_only": true,
+  "matched_n": 90,
+  "paired_pp": {
+    "strict_point_minus_actor_support": {
+      "floor_fail": {
+        "ci95": [
+          -7.777777777777779,
+          7.777777777777779
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": -2.9605947323337506e-16
+      },
+      "observed_harm": {
+        "ci95": [
+          -8.888888888888888,
+          31.111111111111114
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 8.888888888888888
+      },
+      "qualified": {
+        "ci95": [
+          -20.0,
+          7.777777777777779
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": -5.555555555555556
+      },
+      "risk_fail": {
+        "ci95": [
+          -9.999999999999998,
+          31.11111111111111
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 7.777777777777779
+      },
+      "unsupported": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 0.0
+      }
+    },
+    "strict_rank_minus_actor_support": {
+      "floor_fail": {
+        "ci95": [
+          -10.0,
+          4.444444444444445
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": -2.222222222222222
+      },
+      "observed_harm": {
+        "ci95": [
+          -15.583333333333325,
+          27.777777777777782
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 3.333333333333334
+      },
+      "qualified": {
+        "ci95": [
+          -14.444444444444448,
+          15.583333333333435
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 1.1111111111111107
+      },
+      "risk_fail": {
+        "ci95": [
+          -16.666666666666668,
+          27.777777777777775
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 2.222222222222222
+      },
+      "unsupported": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 0.0
+      }
+    },
+    "strict_rank_minus_strict_point": {
+      "floor_fail": {
+        "ci95": [
+          -6.666666666666667,
+          2.2222222222222223
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": -2.2222222222222223
+      },
+      "observed_harm": {
+        "ci95": [
+          -8.88888888888889,
+          -2.2222222222222223
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": -5.555555555555556
+      },
+      "qualified": {
+        "ci95": [
+          0.0,
+          13.333333333333334
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 6.666666666666667
+      },
+      "risk_fail": {
+        "ci95": [
+          -8.88888888888889,
+          -2.2222222222222223
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": -5.555555555555556
+      },
+      "unsupported": {
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "cities": 6,
+        "resampling_unit": "city",
+        "site_mean": 0.0
+      }
+    }
+  },
+  "receipt_hashes": {
+    "austin_17": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/austin_17.held.score.json",
+        "sha256": "9fe7bc727ab2283e3ea576c2f6a0e0e486beeded1a408a4b6562fdc685a67ebc"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/austin_17.support.json",
+        "sha256": "92088e4414aa28b44d873455002e9b2c372cd3a87d5b4dcc3f2726961c96597c"
+      }
+    },
+    "austin_29": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/austin_29.held.score.json",
+        "sha256": "6bcfc642c5c235b8c55ce0fac03a1d9c5863e84d93d2e55a527e0a34abfbce60"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/austin_29.support.json",
+        "sha256": "8b4f873bc81dce99b3f5bc6744089f8c27ee23079e8ad83777c986ed0b991c23"
+      }
+    },
+    "austin_43": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/austin_43.held.score.json",
+        "sha256": "61355f75c695c25088cee1b1414f75911de73d8a399d83acfa2009afe956c11a"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/austin_43.support.json",
+        "sha256": "15d2c12eece7e8e2dcb826e165d0b226e35358805c4dd362877a01dd849a5f95"
+      }
+    },
+    "dearborn_17": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/dearborn_17.held.score.json",
+        "sha256": "e49cff96ebe0886e9094b1d8c1f7336b60c1f5da2d3bce74ca152dba5a120d5f"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/dearborn_17.support.json",
+        "sha256": "32d8f014059ac4a474581eeecbfc7e6c117cfed0e8b63c7b047bd838b7bfb75f"
+      }
+    },
+    "dearborn_29": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/dearborn_29.held.score.json",
+        "sha256": "450ad1efc21b80486df817d6191c5a74d7f5a2366a7c2918b82c740744be672e"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/dearborn_29.support.json",
+        "sha256": "d1650f33cfdd72bcebbe7c770459c1e67840a83d759d77e407d6724b44fa0cf1"
+      }
+    },
+    "dearborn_43": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/dearborn_43.held.score.json",
+        "sha256": "ede185ba36ed90d201ef22b5f42ee00c82337cc0ed410d46849cc405cf0ebffd"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/dearborn_43.support.json",
+        "sha256": "d68a67b8fe231783903bdccaf621758535e251d96a06c89fd4856011a35f30b3"
+      }
+    },
+    "miami_17": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/miami_17.held.score.json",
+        "sha256": "041fd146ee4d44ab670b2114010e19029fd563ef8d0df44d6c4b73baf1f915ff"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/miami_17.support.json",
+        "sha256": "9583344c6b0d6a83f599634a64d324465a4f3dc3d6583f7926b108d68b5971b5"
+      }
+    },
+    "miami_29": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/miami_29.held.score.json",
+        "sha256": "e5e674ddff82cafc4ab17f59febc6249a2e16dbd608552abf11044337a7c79c3"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/miami_29.support.json",
+        "sha256": "a7eec994945cf257bbdc5ea82f3f5008e70f7559805d676248b7d752984c5361"
+      }
+    },
+    "miami_43": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/miami_43.held.score.json",
+        "sha256": "3cffeba100b10b0ecd720c221c6f760c126a95d748fff488059ae6f4cd6c0079"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/miami_43.support.json",
+        "sha256": "139cc22bce1d537330b509da2f6116156b0051a4255433abbb1051c0d2a67e98"
+      }
+    },
+    "palo-alto_17": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/palo-alto_17.held.score.json",
+        "sha256": "af7dde8855c46bd048c748da5169d47ace83d18b2e75dde5bd2cab29d107b3d2"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/palo-alto_17.support.json",
+        "sha256": "6fbff4067e40e3cc8dd4e88909a4d5f31cf5cc24db633ba9e25134f7d1008fa4"
+      }
+    },
+    "palo-alto_29": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/palo-alto_29.held.score.json",
+        "sha256": "01bb66dd3e7ae6851fe25ea12d229692cb52cc9b2fd6a5004a2fc502c73ef126"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/palo-alto_29.support.json",
+        "sha256": "705b05a51bb79b47724f7ece765da4b494b79c3c733cb295c4ddd44095cdf579"
+      }
+    },
+    "palo-alto_43": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/palo-alto_43.held.score.json",
+        "sha256": "44b524bfaacf8cfa0f972e8b1a2ae9c4cc1f1d20bf06926ef5a807e0e71a0d0f"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/palo-alto_43.support.json",
+        "sha256": "7150d64573d00b36c8dc04442b2c2f48a763873b95ddd10ab2e7336d19e49215"
+      }
+    },
+    "pittsburgh_17": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/pittsburgh_17.held.score.json",
+        "sha256": "bc8a1704cb3fc099abe213f149ef224bd2b3c7bf10136cf76e54ec987f77ebe5"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/pittsburgh_17.support.json",
+        "sha256": "4089a0bbddf9669b87fed7b58d27acfd03b9cd80256bf6c88ad9f4ff051d278d"
+      }
+    },
+    "pittsburgh_29": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/pittsburgh_29.held.score.json",
+        "sha256": "9052938cbae69adcf6178e0e05f74122af052c5376bb64488cecf4be04e05046"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/pittsburgh_29.support.json",
+        "sha256": "16633fced8face8201e8a5950228661241a19734be7a86308da1e8f049fcb87e"
+      }
+    },
+    "pittsburgh_43": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/pittsburgh_43.held.score.json",
+        "sha256": "e973f15d99210d4ad49fc8ffd6d1b855ab54efd9e45ef3d4953c2b70819bb16d"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/pittsburgh_43.support.json",
+        "sha256": "44328db2eda55824e99b5214f9483cb0fad632972e01bae8fd1494c160270825"
+      }
+    },
+    "washington-dc_17": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/washington-dc_17.held.score.json",
+        "sha256": "4ed53d591d62958123f01e93c8e52ac3c114a7893e9999204f3c71dc64017831"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/washington-dc_17.support.json",
+        "sha256": "0d4466ffcb907880fa177031371ef463f663df357ffe856021becfba0a62c0b1"
+      }
+    },
+    "washington-dc_29": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/washington-dc_29.held.score.json",
+        "sha256": "3bcfb0836319f443abdef6991569630d4931978c9550112b0828652da01d9bb8"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/washington-dc_29.support.json",
+        "sha256": "07a2c3a933d6daafc90351b8bdc9b9ee5602a71cf416dad0bbf9c162afc11936"
+      }
+    },
+    "washington-dc_43": {
+      "outcome": {
+        "path": "data/stage_cvpr2027_experiments/av2_relative_projection_v1/washington-dc_43.held.score.json",
+        "sha256": "b80f70b687ad0b41d08bdb49223591dda51d56b96fb7f1eb7fc6c6ef4f8c4445"
+      },
+      "support": {
+        "path": "data/stage_cvpr2027_experiments/av2_projection_support_v1/washington-dc_43.support.json",
+        "sha256": "01e9e3bbbbf3c2c3efb97fafe982b35eb9ba7003533576683c9f23dcbab87497"
+      }
+    }
+  },
+  "reserved_outcomes_opened": false,
+  "result_source": "fresh_run",
+  "used_for_selection": false
+}
