@@ -1,0 +1,44 @@
+{
+  "arms": [
+    "anchor",
+    "fixed_actors",
+    "history_gain",
+    "history_support",
+    "history_joint"
+  ],
+  "capacities": [
+    "fixed_free",
+    "swap_free",
+    "reassign_free",
+    "reassign_transport",
+    "reassign_45"
+  ],
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_recipient_reassignment.py",
+      "sha256": "88ca499c820ebc4bccd118c74abfded9a3435159c65c2341beb2ed94365b6831"
+    },
+    {
+      "path": "src/world_model/m3w_av2_recipient_reassignment.py",
+      "sha256": "399f186436cfc4c0d29c2fc265c1d42270964f694ff0cba714b3acc0a3b35a71"
+    }
+  ],
+  "direction_ceiling": {
+    "path": "outputs/publication_readiness_2026_09/av2_steered_reference_v1/direction_ceiling.json",
+    "sha256": "135c42924677a254687d01a30c10f4170876558e1e96b0cfa10d35658ccd5c47"
+  },
+  "independent_confirmation": false,
+  "no_new_training": true,
+  "original_2pct": true,
+  "pair_weight": 0.5,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_steered_reference_v1/summary.json",
+    "sha256": "fbacb5bdf55b2f102f8bda119c9c34f9107b7bedf44a5c506cc0ecd826ecbc7e"
+  },
+  "primary": "exact recipient ceiling vs fixed and held standalone eligibility for support-constrained additive vs pair",
+  "reserved_outcomes_opened": false,
+  "scope": "same two profiles with unchanged radial magnitude at each step, and same candidate rows and label masks",
+  "selection": "past prefix replay: fixed recipients, unrestricted additive, predicted easy support, and same support plus pair term",
+  "support_cut": "positive CV prefix error within mean-step-scaled original cut on at least two prefixes",
+  "transport": "rotate a profile from its original actor's observed heading to the new actor's observed heading; no scale change"
+}
