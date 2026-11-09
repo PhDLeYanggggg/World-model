@@ -36,6 +36,12 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：更强的简单车辆运动对照
+
+`scripts/run_m3w_opendd_kinematic_blend.py fit` 用原训练地点和抽样行拟合
+四权重混合；同脚本的 `score` 与 CV、OLS4 和原车辆模型逐地点比较。
+简单混合没有超过 CV 的保守收益。[命令与完整结果](../outputs/publication_readiness_2026_09/opendd_kinematic_blend_v1/README.md)。
+
 ## OpenDD：分开学习已观测增益与缺失步扣减
 
 用 `scripts/run_m3w_opendd_pair_completion.py freeze` 训练并冻结同容量

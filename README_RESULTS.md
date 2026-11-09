@@ -9,7 +9,10 @@ or evidence status.
 
 I compare the existing vehicle model with four past-only kinematic
 paths and a four-weight completion-aware blend on the same
-location-held roster. [Protocol](outputs/publication_readiness_2026_09/opendd_kinematic_blend_v1/protocol.md).
+location-held roster. The blend improves available ADE but loses
+1.06 pp of conservative gain against CV; the vehicle model gains
+11.54 pp on the same data. CV remains the fallback.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_kinematic_blend_v1/README.md).
 
 ## OpenDD: vehicle controls and selection ablations
 
