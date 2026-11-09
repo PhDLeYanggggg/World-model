@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I carried the DroneCrowd history guard over to MovingDroneCrowd++
+without fitting on its outcomes. It did not transfer: the independent
+forecasts were close to OLS4 on accuracy, but none met the original
+risk checks. The guard made no releases.
+[MovingDroneCrowd++ transfer test](outputs/publication_readiness_2026_09/moving_history_guard_transfer_v1/README.md).
+
 I then used observed motion to estimate benefit separately from
 harm. It improved gain prediction on the same independent forecasts.
 Using both checks removed the observed risk failures from the released

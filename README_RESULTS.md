@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## MovingDroneCrowd++: the frozen DroneCrowd history guard does not transfer
+
+With no target fit, all guards abstain on 72 views from nine development
+sources. Forced independent predictions gain +0.079 pp [-1.063, +1.571]
+over OLS4 after the missing-label debit. All 72 exceed 2% all-sample
+risk; all 66 with defined easy risk exceed 2% there as well. The history
+calibration increases all-risk MAE rather than improving it.
+[Source-disjoint development transfer and attribution](outputs/publication_readiness_2026_09/moving_history_guard_transfer_v1/README.md).
+
 ## DroneCrowd: observed history predicts utility separately from harm
 
 The combined utility model improves held-source gain MAE by 0.192 pp
