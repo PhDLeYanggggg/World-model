@@ -1,0 +1,32 @@
+{
+  "calibration": "leave-one-source-out per-arm ridge with equal source weights; upper margin uses nested out-of-source residual maxima on the fitting groups",
+  "choices_changed": false,
+  "code": [
+    {
+      "bytes": 9116,
+      "path": "scripts/run_m3w_recording_history_risk.py",
+      "sha256": "4d0463e9d9fe7c3b23b6061b85d1450425fc75b3dc0af3cd19efa7438a73527f"
+    },
+    {
+      "bytes": 2625,
+      "path": "src/world_model/m3w_recording_history_risk.py",
+      "sha256": "687e82e8607bfa9a5c1faddbd25fe7c9487eecfd6b1011a0964a4d2e570283c3"
+    }
+  ],
+  "confirmation_access": false,
+  "gain_changed": false,
+  "original_2pct": true,
+  "parent": {
+    "bytes": 3600,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_recording_risk_pool_v1/analysis.json",
+    "sha256": "cf1a8beae0f488bf9dad3b47e618dd57c643976c0da5e76d8cd78bc772200843"
+  },
+  "penalty": 0.01,
+  "primary": "held-source risk MAE, combined vs donor-only same ridge; paired source bootstrap",
+  "proxy": "fit each analytic path on first four of eight observed positions; score last four; use the frozen full-history action identities and CV change masks; proxy easy cutoff scaled by 5/13",
+  "signals": [
+    "donor",
+    "history",
+    "combined"
+  ]
+}
