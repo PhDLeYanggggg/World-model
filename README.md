@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether separately enforcing support, risk and utility
+would make the AV2 assignments more reliable. The hard checks
+released eight views and only one passed. The learned checks
+released none, and their ranking was worse than the original
+cost even without a cutoff.
+[Separate assignment constraints](outputs/publication_readiness_2026_09/av2_assignment_constraints_v1/README.md).
+
 I trained assignment costs for the same two AV2 edits. Learning
 the separate costs found 89 qualifying views, compared with 63
 for the original assignment. Adding the learned interaction term

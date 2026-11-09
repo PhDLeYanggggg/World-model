@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: separate constraints do not fix the ranking
+
+At the same candidate budget, analytic constraints propose 47 views
+and release eight, of which one qualifies. The learned feasibility
+rule releases none. Its ungated top choice qualifies in 44 views
+vs 89 for the original soft cost (-4.489 pp, paired city 95% CI
+[-5.966, -2.956]); abstention is not the only failure.
+[Matched policies and frozen ranking audit](outputs/publication_readiness_2026_09/av2_assignment_constraints_v1/README.md).
+
 ## AV2: learning assignment costs recovers opportunities, but not safe release
 
 On the same 1,020 development views, forced qualification is 63 for
