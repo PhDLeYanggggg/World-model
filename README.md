@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained two models on edits that differ by one action and cross
+the recording's risk limit. Teaching the risk preference reduced
+the worst easy-case change relative to teaching accuracy alone,
+but neither passed more than one of 72 development checks at
+the same edit counts. I need the next model to account for the
+rest of the recording's plan when it judges an edit.
+[Matched risk-boundary experiment](outputs/publication_readiness_2026_09/moving_cv_risk_crossing_v1/README.md).
+
 I expanded the set of scene decisions by asking a solver to
 combine paths under different predicted risk budgets. With outcomes
 available, the wider set finds 11 valid views instead of eight.

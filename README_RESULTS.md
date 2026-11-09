@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Risk-boundary supervision at matched intervention counts
+
+390,223 fitting-only substitution pairs from 17 recordings;
+utility prefers the violating action in 68,329. 18 fits and
+25,200 updates. At 45,042 matched edits, risk supervision lowers
+worst known signed easy change from 48.80% to 23.59%, but both
+heads pass just 1/72 original checks. Risk loses 0.590 conservative
+pp to utility [-0.958, -0.246] and 0.858 pp to independent selection.
+Calibration 0/9. No deployment or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_risk_crossing_v1/README.md) |
+[Manuscript v143](outputs/publication_readiness_2026_09/evidence_manuscript_v143/README.md).
+
 ## Risk-budgeted query proposals
 
 79,047 to 99,542 options. Under the unchanged rule, original,
