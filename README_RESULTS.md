@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: joint versus additive on an identical path menu
+
+With the same path menu, 3,690 edits and exact per-query peak slots, the
+pair score changed 693 of 1,067 double-edit queries. Conservative gain
+over additive was -0.01003 percentage points (95% location bootstrap
+[-0.04651, +0.01356]); 34 versus 32 of 606 recording-seed views passed risk
+and beat both references. The result is held-location development evidence,
+not an independent confirmation or a reason to deploy the pair score.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/README.md).
+
 ## HT21: individual coverage is not whole-crowd coverage
 
 Across four publisher-train recordings, the released boxes support

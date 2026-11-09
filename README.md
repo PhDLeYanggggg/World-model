@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I gave the joint and independent selectors exactly the same forecast paths,
+edit counts and displacement limits on OpenDD. The pair score changed 693
+of 1,067 two-edit choices, but did not reliably reduce forecast error.
+[Shared-menu comparison](outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/README.md).
+
 I used the released HT21 detections to check how often a whole crowd can
 be scored. At adjacent frames, most individual histories had complete
 futures, but only 36 of 285 multi-agent windows had labels for every
