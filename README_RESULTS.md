@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Supplement navigation and pair-effect ablation
+
+I added an internal evidence guide and the direct pair-effect ablation to a
+separate local supplement. The original 50 pages render identically and
+their links are preserved. This is a document update, not a new result.
+[Build and checks](outputs/publication_readiness_2026_09/supplement_evidence_guide_v1/README.md).
+
 ## OpenDD: direct supervision of the two-edit effect
 
 Twenty-one new local heads learn the extra relative-displacement benefit

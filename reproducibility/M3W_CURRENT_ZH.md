@@ -4,6 +4,9 @@
 配套补充材料沿用 [v165](../outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md)。
 主文调整了摘要、引言和披露说明，没有改实验、图表或结论。
 
+本地另有带证据索引的补充材料版本：保留原 50 页，新增索引和一页成对
+消融。两份原 PDF 均未改动。[生成和验证说明](../outputs/publication_readiness_2026_09/supplement_evidence_guide_v1/README.md)。
+
 核对摘要里的核心数字可运行
 `.venv-pytorch/bin/python scripts/package_m3w_main_claims.py`。
 生成的本地压缩包内有 `verify.py`，解包后可离线运行，不需要仓库、
