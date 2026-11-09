@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: four unscored, equal-budget selection arms
+
+The OpenDD heads generate matched independent, additive, same-family
+and joint proposals for 191 flights in each of three seeds. All
+17 candidate source components have eligible flights. The largest
+real query reproduces all selections across 92,239 legal pairs.
+No future labels, fitted release threshold or formal role assignment.
+[Exact-search and replay](outputs/publication_readiness_2026_09/songdo_matched_proposals_v1/README.md).
+
 ## Songdo: complete first-day source and vehicle-bank preparation
 
 Twenty verified archives, 200 flights, 14,276 nonoverlapping windows

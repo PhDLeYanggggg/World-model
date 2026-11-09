@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## Songdo：等预算四组未评分候选
+
+运行 `.venv-pytorch/bin/python scripts/build_m3w_songdo_matched_proposals.py`，
+再运行 `scripts/verify_m3w_songdo_densest_proposal.py`。191 个航次、
+三个种子，四组固定同一窗口和两次等幅介入。最大窗口逐对复算一致。
+这一步不读未来标签、不校准、不分正式测试组。
+[比较与复现](../outputs/publication_readiness_2026_09/songdo_matched_proposals_v1/README.md)。
+
 ## Songdo：首日完整来源审计与未评分车辆预测
 
 依次运行 `.venv-pytorch/bin/python scripts/fetch_m3w_songdo_first_day.py`、

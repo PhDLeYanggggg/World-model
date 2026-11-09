@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I generated four matched two-edit proposals from the Songdo vehicle
+bank without opening future coordinates. The four rules use the same
+query, forecast choices and displacement radius. The largest query
+reproduced exactly under direct search.
+[Matched proposal preparation](outputs/publication_readiness_2026_09/songdo_matched_proposals_v1/README.md).
+
 I prepared the complete first day of Songdo for a new external test.
 It gives 14,276 nonoverlapping windows across 20 intersections, with
 source links checked before any split or scoring. I also generated
