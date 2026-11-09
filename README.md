@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I added a forecast that lets recently observed acceleration decay over
+time. At the same intervention budget it more than doubled the number
+of Argoverse 2 scenes with a feasible hindsight win. The frozen selector
+used some of the extra capacity, but still did not beat constant velocity
+or show a reliable joint gain across all scenes.
+[Acceleration and matched replay](outputs/publication_readiness_2026_09/av2_approach_menu_v1/README.md).
+
 I tested whether joint forecast decisions improved on denser Argoverse 2
 annotations. At the same edit budget, joint selection still did not beat
 the per-agent choice, even when every future step was labelled. The

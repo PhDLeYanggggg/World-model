@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Argoverse 2: decaying acceleration expands the fixed-slot menu
+
+The same complete two-slot sample goes from 5 to 13 strict hindsight
+scenes after adding own-history paths. Neighbor paths add none. Frozen
+joint replay narrows the CV deficit from −3.57 to −1.80 pp, but the
+all-scene matched pair interval crosses zero and no realized view
+passes pair, accuracy and risk together.
+[Candidate comparison and paired replay](outputs/publication_readiness_2026_09/av2_approach_menu_v1/README.md).
+
 ## Argoverse 2: denser labels do not recover a matched joint gain
 
 The publisher training sample contains 128 scenarios from six cities.

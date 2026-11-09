@@ -1,0 +1,67 @@
+{
+  "arms": {
+    "base": [
+      0,
+      1
+    ],
+    "combined": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "neighbor": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "own": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_approach_menu.py",
+      "sha256": "0400aee65ab4ada6c4b2e316c1089f739476d8d6471f06e1b784390ac9ae570a"
+    },
+    {
+      "path": "src/world_model/m3w_approach_candidate_paths.py",
+      "sha256": "9b13872ad5bf7cf606bece2141cfb7c6326e0352792ca1f8dd5ffd7aa994ab8f"
+    }
+  ],
+  "comparison": "identical parent radii, both motion floors and additive reference",
+  "exposed_development": true,
+  "no_training": true,
+  "no_tuning": true,
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_native_trajectory_v1/freeze.json",
+    "sha256": "56ed08e208968d198a3e1f28516863e0fa65453dd45e2e1a32fbe1dbfcbae9c2"
+  },
+  "parent_result": {
+    "path": "outputs/publication_readiness_2026_09/av2_native_trajectory_v1/readout.json",
+    "sha256": "c3c01d62305df0243d222e145c8688980a130cf3af71941751dd98f9cbbffea5"
+  },
+  "paths": [
+    "ols4",
+    "tapered_turn",
+    "decaying_acceleration",
+    "late_velocity_smoothing",
+    "approach_brake",
+    "approach_lateral"
+  ],
+  "primary_support": "all parent fully labelled two-slot scenarios, with each seed reported",
+  "producer": "closed-form last-step motion, own acceleration/smoothing, and pair closest approach",
+  "reserved_outcomes_opened": false,
+  "risk_checks": "same all harm / easy harm / signed easy <=.02; missing denominators fail",
+  "score": "exact positive pair gain subject to accuracy and risk; maximum over distinct recipients",
+  "source": {
+    "path": "external_data/Argoverse2_mf_train_source_audit/manifest.json",
+    "sha256": "1a27d6db00eabf3a3762bc554242ad14836fa35afb4596fa5a253d2504090118"
+  }
+}
