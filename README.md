@@ -70,6 +70,8 @@ velocity as the fallback. This is an external test of the policy, not
 validation of a deployable learned forecast.
 [Results and protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
 [Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v166/README.md).
+I also made a [small offline replay](outputs/publication_readiness_2026_09/main_claims_replay_v1/README.md)
+so the headline counts can be checked without downloading videos or models.
 
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector

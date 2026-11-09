@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Working paper: offline replay
+
+I checked the headline counts against the original frozen results:
+OpenDD 330/606 hindsight and 57/606 online, MovingDroneCrowd++
+67/72 nonpositive OLS4 bounds, and WEPDTOF 0/45 dual passes.
+[Aggregate replay](outputs/publication_readiness_2026_09/main_claims_replay_v1/README.md).
+This checks the reported arithmetic, not model training or deployment.
+
 ## SDD: class-specific and joint-label coverage
 
 Without changing pedestrian matches, I recovered 57 complete cyclist

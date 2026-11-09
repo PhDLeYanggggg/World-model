@@ -4,6 +4,12 @@
 配套补充材料沿用 [v165](../outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md)。
 主文调整了摘要、引言和披露说明，没有改实验、图表或结论。
 
+核对摘要里的核心数字可运行
+`.venv-pytorch/bin/python scripts/package_m3w_main_claims.py`。
+生成的本地压缩包内有 `verify.py`，解包后可离线运行，不需要仓库、
+视频或模型。它只复算冻结汇总，不重跑实验。
+[对应证据和命令](../outputs/publication_readiness_2026_09/main_claims_replay_v1/README.md)。
+
 本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
