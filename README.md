@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I asked how often an ideal reassignment could beat the independent policy
+with exactly the same paths and edit budget. Even with future labels, when
+only two-agent choices could change, I found nine wins in 439 estimable
+recording-seed views under the original risk and accuracy checks.
+[Exact-budget hindsight check](outputs/publication_readiness_2026_09/opendd_exact_slot_headroom_v2/README.md).
+
 I let fine-scale boxes fill gaps in existing VisDrone tracks without starting
 new ones. Complete matches rose from 21 to 24, but unmatched histories also
 rose from 38 to 75. I did not keep the change.

@@ -1,0 +1,63 @@
+{
+  "arms": [
+    "all_edits",
+    "two_edits_only"
+  ],
+  "code": [
+    {
+      "path": "scripts/audit_m3w_exact_slot_headroom.py",
+      "sha256": "beb07cca99f958c3676668f4614cf504eb526a606d45a86bef328b00fdb71161"
+    },
+    {
+      "path": "src/evaluation/m3w_exact_slot_headroom.py",
+      "sha256": "0d2b0a2a8614b6cbd7c2cc536199f45b04e868cb3303a271c46682891f6f72b6"
+    },
+    {
+      "path": "src/world_model/m3w_slate_shared_menu.py",
+      "sha256": "99e04209eb20d3a15306338ffc4312097dd022d6235e177985f1682f97a6b2c8"
+    },
+    {
+      "path": "src/evaluation/m3w_cv_anchor_budget.py",
+      "sha256": "d0f9657f272339f009fdadb13686f649865e687bd98bfcb4adb11572c3e9a5f3"
+    },
+    {
+      "path": "src/evaluation/m3w_selection_forecast_readout.py",
+      "sha256": "930031d39affff45e63bba08b940ad34aaded2fca585c9fb72c0bc743c4f08ef"
+    }
+  ],
+  "feasibility": "one edit per slot; distinct agents; dual CV and OLS4 lower gain; original three CV risks",
+  "objective": "paired missing-step lower utility versus exact-budget matched additive",
+  "original_2pct": true,
+  "parent": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/registration.json",
+      "sha256": "500806dc79e5416bf5c09a69fa22097210103056e3b06cf9609953626e1c7636"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/freeze.json",
+      "sha256": "c382acdf5c5f76c20b76022da62f367be9206122ed5ad12ca1df174decc6d81b"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/readout.json",
+      "sha256": "5d593871f0d6c7020465dba10ca7d8431a6938b371b5616dce2fcd3b408f8f73"
+    }
+  ],
+  "per_reference_tolerance_pp": 1e-06,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "solver_seconds_per_view": 2.0,
+  "two_edits_only": "singleton queries exactly match additive; only two-edit assignments may change",
+  "use": "hindsight development diagnostic, never policy training or independent evidence"
+}

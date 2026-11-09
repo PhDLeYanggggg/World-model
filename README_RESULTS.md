@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: little risk-feasible headroom at the realized budget
+
+The same 3,690 exact edit slots allow 194 of 439 estimable views to
+improve on the additive control in hindsight when risk and the two
+reference checks are removed and single edits are fixed. Reinstating
+the original conditions leaves nine wins from five recordings at two
+locations. The broader hindsight search that may also change single
+edits finds 26 wins. No new forecasts or independent scores.
+[Exact-slot diagnostic and replay](outputs/publication_readiness_2026_09/opendd_exact_slot_headroom_v2/README.md).
+
 ## VisDrone-MOT: continuation-only fusion still leaves the group unscored
 
 Giving coarse boxes priority and barring fine-only births recovers 22
