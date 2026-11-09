@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal CV-Anchored Selection: Registered Follow-Up
+
+The other archived producer folds trained on six and eight A sources, so I
+do not use them to build selector supervision. The new donor bank crossfits
+PCT and EqMotion entirely inside the nine fitting sources. The planned
+matched-count comparison isolates a learned nonadditive pair term from the
+same additive scores and candidate paths. This entry registers the design;
+it does not report a completed training or an independent result.
+[Donor protocol](outputs/publication_readiness_2026_09/moving_cv_joint_oof_v1/protocol.md) |
+[Selection protocol](outputs/publication_readiness_2026_09/moving_cv_joint_selector_v1/protocol.md).
+
 ## CV-Anchored Joint Feasibility With Frozen Neural Alternatives
 
 272 solver cells. At caps 8/32, the analytic menu verifies on 8/18 of
