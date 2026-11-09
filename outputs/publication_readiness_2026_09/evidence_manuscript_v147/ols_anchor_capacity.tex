@@ -1,0 +1,45 @@
+\section{OLS-anchored path capacity at fixed edit counts}
+We next hold each query's realized low-coverage intervention count fixed
+and replace the predicted budget constraints with the original observed
+recording checks for both path banks. The expanded bank adds nine causal
+paths: fitted-intercept corrections with two decay scales and two fitting
+windows, bounded longitudinal and lateral changes from two past motion
+blocks, and a combined path. The prescribed counts total \OLSMenuEdits{}
+edits and match query by query in the optimization. A feasible plan must beat both CV and
+OLS4 after subtracting per-step missing-label disagreement, with a common
+observed CV denominator. This per-step test is distinct from the
+wholly-unobserved-only accuracy diagnostic used in the early tables.
+
+\begin{center}
+\small
+\begin{tabular}{lrr}
+\toprule
+View status & Original & Expanded \\
+\midrule
+Verified positive & \OLSMenuOld & \OLSMenuExpanded \\
+Nonpositive upper bound & \OLSMenuOldBound & \OLSMenuNewBound \\
+Risk infeasible & \OLSMenuOldRisk & \OLSMenuNewRisk \\
+Undefined easy support & \OLSMenuOldSupport & \OLSMenuNewSupport \\
+No edits permitted & \OLSMenuEmpty & \OLSMenuEmpty \\
+Unresolved & \OLSMenuOldUnknown & \OLSMenuNewUnknown \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both arms use the same three-second LP and integer-solver limits. We
+replay every reported positive witness using the original risk scorer
+on the full recording. A timeout is not evidence of impossibility.
+The source-balanced witness-discovery difference is
+\OLSMenuEffect{} pp (3,000 source bootstrap resamples, nine groups).
+These \OLSMenuViews{} recording--seed views are exposed development
+diagnostics; no new model was trained and no independent outcomes
+were used.
+
+For the \OLSMenuExamined{} views with a nonpositive upper bound, we
+also compute a risk-free OLS4-relative upper bound, separately from
+the CV objective. At fixed query counts, only \OLSMenuQueryPositive{}
+views have a positive upper bound. Allowing any placement of the
+same number of edits within a recording makes the OLS4 upper bound
+positive in \OLSMenuReallocate{} previously excluded views, while
+\OLSMenuStillNegative{} still cannot beat OLS4. This relaxation is
+diagnostic: a positive bound does not certify a risk-compliant plan.

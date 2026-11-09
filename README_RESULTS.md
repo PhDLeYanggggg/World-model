@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OLS-anchored paths and placement of edits
+
+At 21,242 exact query-matched edits, nine new causal paths do not add
+an outcome-aware witness: both banks verify 10/72 views, with 36
+nonpositive upper bounds and two unresolved. All 36 remain below or
+equal to OLS4 at fixed query counts even without risk constraints.
+At the same recording totals, 8/36 gain positive upper bounds;
+28/36 still cannot beat OLS4. No calibration or deployment change.
+[Experiment](outputs/publication_readiness_2026_09/moving_ols_anchor_menu_v2/README.md) |
+[Manuscript v147](outputs/publication_readiness_2026_09/evidence_manuscript_v147/README.md).
+
 ## Learning gain at fixed edit counts and predicted risk
 
 18 fits and 25,200 updates at 21,242 query-matched edits. Direct and

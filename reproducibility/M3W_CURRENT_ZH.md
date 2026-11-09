@@ -1,8 +1,24 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v146 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v147 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v147：OLS 锚定路径的等改动数容量检验
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_ols_anchor_menu.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_ols_anchor_budget_location.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_cv*.py tests/test_m3w_ols_anchor_menu.py
+```
+
+去掉 `--replay` 可重新求解或续跑。需要 v146 的本地冻结决策和开发录像输入。
+原候选集与扩展候选集使用完全相同的每查询改动数和原录像级 2% 判据。候选轨迹
+只从过去生成，但求解看到了结果，因此这一步不是在线预测或模型训练。
+超时不计为不可行；中断的预处理试跑与正式结果分开保存。
+第二条只算去除风险约束后的 OLS4 上界：36 个已排除的视图中，即便保持录像总
+改动数、允许移动改动位置，28 个仍无法取得正上界。正式风险规则未改。
+[v147 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v147/README.md)。
 
 ## v146：固定预测风险与改动数，学习准确率收益
 

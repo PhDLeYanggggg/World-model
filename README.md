@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I added nine OLS-based paths to see whether a better motion forecast
+could help at the same edit counts. The new paths improved several
+plans in hindsight but did not add a recording that passed the
+original rule. In 28 of 36 excluded views, even allowing the same
+edits to move anywhere in the recording could not beat OLS4 in the
+best case. I am working on the forecast options before another ranker.
+[Path-bank experiment](outputs/publication_readiness_2026_09/moving_ols_anchor_menu_v2/README.md).
+
 I tried to recover the joint policy's lost accuracy without increasing
 its predicted risk or editing more tracks. Neither learned gain model
 improved the conservative score, and the worst easy cases got worse.
