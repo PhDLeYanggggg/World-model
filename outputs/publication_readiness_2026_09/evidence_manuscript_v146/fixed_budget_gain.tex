@@ -1,0 +1,44 @@
+\section*{Learning gain under fixed predicted risk and intervention counts}
+We retain the low-coverage component-risk joint policy as the incumbent. For
+each query we fix its exact edit count, keep each of its three predicted
+risk sums as an upper bound, and use its two predicted selected reference
+masses and frozen CV gain as lower bounds. We optimize OLS4-relative utility
+over the same motion paths with a linear relaxation and feasibility-checked
+rounding. The incumbent remains an option. The constraints are on predictions
+and do not certify actual risk.
+
+We compare direct gain regression with a factorized head that predicts
+masked observed benefit and adds a geometric missing-step debit weighted by
+estimated per-lead missingness. A no-fit control uses the OLS4 geometric term
+under complete missingness. The two learned arms use identical fitting
+samples and \FixedGainUpdates\ updates in total. The outcome-aware diagnostic
+uses the same solver only after causal choices are frozen. It measures
+attained capacity, not an oracle optimum. All arms in the table use
+\FixedGainEdits\ edits, matched exactly per query.
+
+\begin{center}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+Arm & vs. OLS4 & vs. incumbent & Pass \\
+\midrule
+Incumbent & \FixedGainAnchorOLS & --- & \FixedGainAnchorSafe \\
+Geometry & \FixedGainGeometryOLS & \FixedGainGeometryChange & \FixedGainGeometrySafe \\
+Direct & \FixedGainDirectOLS & \FixedGainDirectChange & \FixedGainDirectSafe \\
+Factorized & \FixedGainFactorOLS & \FixedGainFactorChange & \FixedGainFactorSafe \\
+Outcome-aware & \FixedGainHindsightOLS & \FixedGainHindsightChange & \FixedGainHindsightSafe \\
+\bottomrule
+\end{tabular}}
+\end{center}
+Cells give conservative gain in pp with 95\% intervals, and passes out of
+72 views. Worst signed easy degradation by row is \FixedGainAnchorEasy\%,
+\FixedGainGeometryEasy\%, \FixedGainDirectEasy\%, \FixedGainFactorEasy\%,
+and \FixedGainHindsightEasy\%. Intervals resample nine source groups after
+averaging seeds; the 72 recording-seed views are not independent.
+Over \FixedGainQueries\ active query-seed views, even the outcome-aware
+fractional relaxation gives an average upper increment of just
+\FixedGainCapacity\ pp on the OLS4 comparison. The bound applies only to
+these fixed counts, paths and predicted budgets. The original calibration rule
+qualified \FixedGainQualified/9 cells. These are exposed development results,
+not a new independent confirmation or a change to deployment.

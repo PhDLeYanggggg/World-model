@@ -1,8 +1,23 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v145 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v146 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v146：固定预测风险与改动数，学习准确率收益
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_fixed_budget_gain.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_fixed_budget_capacity.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_cv_fixed_budget_gain.py
+```
+
+去掉 `--replay` 可训练或从每 100 步的检查点续跑。需要 v145 已核验的
+本地检查点和冻结路径选择；Git 不保存权重和逐行决策。冻结每个查询的改动数、
+预测风险、参考支持和 CV 收益预算，比较直接收益回归、分解收益回归和几何对照。
+事后搜索与分数松弛上界只用于诊断，不参与策略选择。上界为平均 +0.0577 pp，
+不足以追平 OLS4。原校准通过 0/9，部署不变。
+[v146 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v146/README.md)。
 
 ## v145：拆分正向伤害、缺标和 easy 参考
 

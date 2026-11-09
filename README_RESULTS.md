@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learning gain at fixed edit counts and predicted risk
+
+18 fits and 25,200 updates at 21,242 query-matched edits. Direct and
+factorized gain models lost 0.0076 and 0.0022 conservative pp versus
+the low-coverage joint incumbent. Each passed 20/72 risk checks,
+but worst signed easy degradation rose from 12.48% to 19.92%.
+Even the outcome-aware fractional bound recovered at most 0.0577 pp
+on average against OLS4. Calibration 0/9; no deployment or confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_fixed_budget_gain_v1/README.md) |
+[Manuscript v146](outputs/publication_readiness_2026_09/evidence_manuscript_v146/README.md).
+
 ## Separate harm, missing debit, and reference support
 
 18 fits, 25,200 updates. Components lose 0.515 conservative pp

@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried to recover the joint policy's lost accuracy without increasing
+its predicted risk or editing more tracks. Neither learned gain model
+improved the conservative score, and the worst easy cases got worse.
+Even with future outcomes available, fractional choices could recover
+at most 0.058 percentage points against OLS4 on average. I kept the
+fallback and will revisit the paths and allocation constraints.
+[Fixed-budget experiment](outputs/publication_readiness_2026_09/moving_cv_fixed_budget_gain_v1/README.md).
+
 I separated predicted harm, missingness and easy reference
 support. That did not improve independent choices at the same
 counts. At lower, matched counts, joint selection passed more
