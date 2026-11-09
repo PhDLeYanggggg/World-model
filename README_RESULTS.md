@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: steering alone does not improve the initial forecast
+
+Thirty-six matched heads preserve both recipients and each step's
+offset norm. The original qualifies 63 views, versus 62 for each
+learned head. Guarded steering loses 1.128 pp to the original.
+Exact per-step hindsight ceilings are 85 at ±45 degrees and 176
+with free directions; only 382/1,020 views have edited easy support.
+[Matched training and directional ceilings](outputs/publication_readiness_2026_09/av2_steered_reference_v1/README.md).
+
 ## AV2: direction and timing complement each other at fixed displacement
 
 The equal-size banks yield 50 and 51 fixed-reference opportunities.

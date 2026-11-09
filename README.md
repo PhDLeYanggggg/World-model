@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained two ways to steer the original AV2 edits while keeping
+their recipients and every step's displacement fixed. Neither
+improved the original forecast. Even with hindsight and free
+directions, most views still cannot qualify; many have no edited
+easy reference at those recipients.
+[Steering and its exact ceiling](outputs/publication_readiness_2026_09/av2_steered_reference_v1/README.md).
+
 On AV2 I changed the direction of the same two edits without changing
 their displacement. Direction and timing found different useful
 alternatives, but neither passed release calibration. With both in

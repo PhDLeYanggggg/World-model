@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 
+from scripts.audit_m3w_av2_steered_reference_ceiling import best_direction
 from src.world_model.m3w_av2_steered_reference import MAX_ANGLE, Steer, label, objective, rotate
 
 
@@ -37,3 +38,15 @@ def test_unedited_agents_contribute_to_ols_floor_not_candidate_inputs():
     v[2] = False
     _, _, _, context = label(d, [0, 1], y, v, .2)
     np.testing.assert_allclose(context, [-12*np.sqrt(2.), 0.])
+
+
+def test_relaxed_rotation_optimizes_each_known_or_debited_step():
+    cv = np.zeros((1, 2, 2))
+    ols = np.array([[[0., -2.], [0., -3.]]])
+    y = -ols
+    a = np.array([[[1., 0.], [2., 0.]]])
+    v = np.array([[True, False]])
+    free = best_direction(cv, ols, a, y, v, np.pi)
+    bounded = best_direction(cv, ols, a, y, v, np.pi/4)
+    np.testing.assert_allclose(free, [[[0., 1.], [0., -2.]]], atol=1e-12)
+    np.testing.assert_allclose(bounded, [[[1., 1.], [2., -2.]]]/np.sqrt(2.))
