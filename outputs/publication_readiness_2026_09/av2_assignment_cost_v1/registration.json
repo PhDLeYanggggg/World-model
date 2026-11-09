@@ -1,0 +1,47 @@
+{
+  "arms": [
+    "anchor",
+    "history_support",
+    "history_joint",
+    "additive",
+    "joint"
+  ],
+  "bank": "same two transported per-step radial profiles as prior; no extra options or changed support rule",
+  "batch": 128,
+  "calibration": "largest original nonempty strict prefix on separate city, standalone vs both floors and matched joint vs additive reported separately",
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_assignment_cost.py",
+      "sha256": "aa068b7136c24b8a689227cadcc6a4c0025a963f7243bc966d5fc787b205c375"
+    },
+    {
+      "path": "src/world_model/m3w_av2_assignment_cost.py",
+      "sha256": "13a97c6a371290aaea4d685595ab8dcfd9f27f4c7bcd00f2754b0d5c05b314b0"
+    }
+  ],
+  "comparison": "both learned policies share every additive cost, support estimate and candidate; only joint uses predicted pair residual",
+  "independent_confirmation": false,
+  "num_workers": 0,
+  "objective": "donor-only dense two-floor gains, all/easy positive-harm excess, signed easy change, easy probability and reference mass; separate residual on the one relative edge touched by both edits",
+  "original_2pct": true,
+  "pair_weight": 0.5,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_recipient_reassignment_v1/summary.json",
+    "sha256": "ad90d71656221d8c143e629cd8082c4ef9ddb59a1c25e33f6892a1c2476e2c27"
+  },
+  "reserved_outcomes_opened": false,
+  "rules": [
+    "standalone_additive",
+    "standalone_joint",
+    "matched_joint"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "support_weight": 0.1,
+  "torch_threads": 4
+}
