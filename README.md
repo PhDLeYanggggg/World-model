@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated predicted harm, missingness and easy reference
+support. That did not improve independent choices at the same
+counts. At lower, matched counts, joint selection passed more
+risk checks than independent selection, but gave up forecast
+accuracy. The next question is whether I can recover that
+accuracy without giving back the risk improvement.
+[Risk-component experiment](outputs/publication_readiness_2026_09/moving_cv_risk_components_v1/README.md).
+
 I tried keeping a running estimate of the risk already taken in
 each recording. The state helped predict accuracy gains but did not
 improve the risk decision. Both the learned model and a direct

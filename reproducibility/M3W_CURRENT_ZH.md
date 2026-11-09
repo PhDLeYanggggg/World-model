@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v144 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v145 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v145：拆分正向伤害、缺标和 easy 参考
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_risk_components.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_risk_component_swaps.py
+.venv-pytorch/bin/python scripts/eval_m3w_cv_risk_component_low_count.py
+```
+
+首条从冻结检查点复算，去掉 `--replay` 可训练或续跑。第二条逐项替换风险估计；
+第三条把每个查询的改动数固定在联合策略的实际低覆盖度。直接独立、分项独立、
+分项联合分别通过 2/72、1/72、20/72，但联合没有保住保守准确率，校准 0/9。
+[v145 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v145/README.md)。
 
 ## v144：显式累积录像前缀状态
 

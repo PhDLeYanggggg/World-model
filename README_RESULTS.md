@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Separate harm, missing debit, and reference support
+
+18 fits, 25,200 updates. Components lose 0.515 conservative pp
+at 45,042 exact matched edits. At 21,242 exact matched edits,
+direct independent/component independent/component joint pass
+2/1/20 out of 72. Joint gains 14.42 source-balanced risk-pass pp
+[0.00, 31.75] but loses 0.507 conservative accuracy pp to
+component independent. Worst signed easy +12.48%, calibration
+0/9. This is a development tradeoff, not deployment evidence.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_risk_components_v1/README.md) |
+[Manuscript v145](outputs/publication_readiness_2026_09/evidence_manuscript_v145/README.md).
+
 ## Causal recording-prefix state
 
 18 fits, 25,200 updates. At 45,042 matched edits, prefix state loses
