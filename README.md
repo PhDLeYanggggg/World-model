@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared predicting the winning motion forecast with predicting how much
+it would help or hurt. With the same tracks and edit sizes, the cost model
+guessed the winner less often but made less costly mistakes on labeled
+steps. Splitting the cost into early and late parts did not help. Missing
+labels still prevent me from claiming a gain across the whole forecast.
+[Cost versus winner experiment](outputs/publication_readiness_2026_09/moving_motion_choice_cost_v1/README.md).
+
 I tested whether a short backtest inside the observed trajectory could
 tell a model which motion forecast to trust. It improved some observed
 errors, but the advantage nearly vanished at the same edit size. The

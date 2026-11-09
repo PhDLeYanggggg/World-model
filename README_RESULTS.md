@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Motion Choice: Cost Versus Order
+
+Nine matched Torch fits (9,000 updates), 376,464 identical edits across
+seeds. Pooled cost beats winner classification by +0.478 observed pp
+[+0.133, +0.902], but full-grid gain is bounded by [-2.308, +3.265].
+Lead-block cost versus pooled: -0.042 observed pp, -0.538 full-grid
+lower pp [-1.059, -0.186]. The winner hit rate falls with pooled cost
+while regret improves (1.464 to 1.372 px per labeled step). None pass
+the original 2% recording rule. The 30 independent groups remain sealed.
+[Protocol, results and replay](outputs/publication_readiness_2026_09/moving_motion_choice_cost_v1/README.md) |
+[Supplement v121](outputs/publication_readiness_2026_09/evidence_manuscript_v121/README.md).
+
 ## Past Backtests For Motion Expert Mixtures
 
 Nine matched fits, 9,000 updates. Prefix features give +1.635 observed

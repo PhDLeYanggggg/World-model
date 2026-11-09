@@ -1,0 +1,37 @@
+\section{Cost targets at fixed motion edits}
+\label{supp:motion-choice-cost}
+Winner labels penalize small and large mistakes alike. Following the general
+distinction between prediction and decision cost~\cite{spo}, we compare
+winner classification with squared regression of positive gain and positive
+harm relative to OLS4. We also test three four-lead cost blocks rather than
+one pooled target. The networks, inputs, seeds, update counts, edited tracks,
+and peak displacement from OLS4 are identical. Each edit uses one legal
+analytic direction shrunk to half the RMS past step, with at least two legal
+choices. This is a forced-choice diagnostic, not an admission policy.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Cost versus winner prediction at identical edits. Entries are gains
+in points of the same CV error mass. The bootstrap resamples 14 source groups,
+not individual windows. The full-grid column is a missing-label bound, not
+a sampling interval. The development recordings were previously examined.}
+\label{tab:motion-choice-cost}
+\begin{tabular}{lrrr}
+\toprule
+Contrast & Observed gain & Observed 95\% CI & Full-grid bounds \\
+\midrule
+Pooled cost vs. classification & \ChoiceCostPooledRank \\
+Lead-block cost vs. pooled cost & \ChoiceCostLeadPooled \\
+Pooled cost vs. unedited OLS4 & \ChoiceCostPooledOLS \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+In nine matched fits (three seeds), pooled cost predicted the exact known
+winner less often than classification (57.44\% vs. 58.09\%) but reduced
+observed regret (1.372 vs. 1.464 pixels per labeled step). Splitting cost by
+lead did not improve the pooled result. The missing-label bounds in
+Table~\ref{tab:motion-choice-cost} straddle zero; none of the edited arms
+passed the unchanged recording-level risk rule. No independent confirmation
+or deployment decision follows from this experiment.
