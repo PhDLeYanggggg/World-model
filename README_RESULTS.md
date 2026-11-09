@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: more feasible edits, but lower total utility
+
+At 9,000 matched edits per arm, learned recipient support increases
+dual passes from 1,114 to 1,647 versus the archived value rank, but
+loses -0.00380 pp on conservative CV gain (95% site interval -0.00596
+to -0.00176 pp). Only 18/57 held releases pass risk and both baselines;
+30 have no easy denominator. No promotion.
+[Matched study and replay](outputs/publication_readiness_2026_09/opendd_vehicle_support_rank_v1/README.md).
+
 ## OpenDD vehicles: separate support prediction fails held-site release
 
 The same 9,000 one-edit proposals give 1,114 risk-and-dual-utility passes

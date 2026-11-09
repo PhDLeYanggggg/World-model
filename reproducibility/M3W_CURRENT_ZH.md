@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：用过去轨迹预测 easy 参考
+
+`.venv-pytorch/bin/python scripts/run_m3w_vehicle_support_rank.py` 依次运行
+`freeze`、`score`，可复现 63 个训练和三臂对照。每臂 9,000 次等数量、
+等窗口、等半径介入。学习排序过风险和双基线的次数更多，但总收益降低；
+57 次留出介入只有 18 次通过，不替换 CV。不改变原 2% 或正式测试。
+[结果和命令](../outputs/publication_readiness_2026_09/opendd_vehicle_support_rank_v1/README.md)。
+
 ## OpenDD：把 easy 参考支持与风险大小拆开
 
 用 `.venv-pytorch/bin/python scripts/run_m3w_vehicle_easy_factor.py` 依次运行

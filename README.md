@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested what happens when I pick the vehicle for easy-reference
+support before choosing its forecast. The learned rank finds more
+qualifying edits at the same budget, but it gives up some total
+forecast gain and still fails the held-location release test.
+[Recipient ranking experiment](outputs/publication_readiness_2026_09/opendd_vehicle_support_rank_v1/README.md).
+
 I split the easy-risk model into two questions: whether an edit has an
 easy reference, and how much error it adds if that reference exists.
 At the same edit budget the difference was small. On held locations,
