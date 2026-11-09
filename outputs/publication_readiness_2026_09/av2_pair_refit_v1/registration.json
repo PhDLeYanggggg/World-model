@@ -1,0 +1,71 @@
+{
+  "batch": 128,
+  "calibration": "all nonempty score breakpoints; both released paths must pass original risk and dual reference checks, refit must improve over additive",
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_pair_refit.py",
+      "sha256": "99cbee6da962a05e3b69a567265630e1716226cd71d8ecc2d81dd5a77922a4c2"
+    },
+    {
+      "path": "src/world_model/m3w_slate_relative_gain.py",
+      "sha256": "48ab4b7794cfcf4118a2f20eb2e5585dade24bea16786b6d3d0542a981fb3c17"
+    },
+    {
+      "path": "scripts/audit_m3w_opendd_distinct_supported_slates.py",
+      "sha256": "99d40091099417f3a78b8bb798f8d7b87ab88bccbf9a0d276f2ca2a9aceba61e"
+    },
+    {
+      "path": "scripts/run_m3w_av2_approach_replay.py",
+      "sha256": "441d71b85c2e4f2719a4676bd17966e674bb798308abb40a5c96826d561bcabe"
+    }
+  ],
+  "cpu_threads": 4,
+  "future": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61
+  ],
+  "independent_confirmation": false,
+  "num_workers": 0,
+  "observation": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_approach_menu_v1/replay_readout.json",
+    "sha256": "67e68b24a229bebee76e53b307df8e843bba9c6440a5817027053e6789d9e900"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_approach_menu_v1/replay_freeze.json",
+    "sha256": "8750c3951711513a579746574357886a76acdf6650712533da282c62a14cb67e"
+  },
+  "reference": "cached verified expanded additive forecast and original two peaks; frozen singleton predictions",
+  "reserved_outcomes_opened": false,
+  "score": "predicted strict probability times positive predicted conservative pair gain; otherwise use frozen forecast",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "source_roles": "AV2 publisher train only; frozen OpenDD expanded forecast generators",
+  "split": "six development city folds; next sorted city calibrates, other four alone fit and define easy/hard",
+  "steps": 320,
+  "target": "full-grid pair lower gain, exact original risk and support, dual causal accuracy and additive noninferiority"
+}

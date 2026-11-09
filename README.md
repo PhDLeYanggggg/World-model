@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I retrained pair selection on Argoverse 2 with a separate calibration
+city in each fold. Even with more complete labels, the refit missed
+all 47 useful held-city choices. The ranking audit showed why:
+the gain estimate filtered out options that the feasibility head
+had put near the top.
+[AV2 refit and ranking audit](outputs/publication_readiness_2026_09/av2_pair_refit_v1/README.md).
+
 I tried limiting how far a joint forecast could move from the additive
 control, at the same intervention budget. That reduced the penalty from
 missing labels, but it also removed most of the useful choices and made

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: denser labels do not rescue unconditional-gain ranking
+
+Eighteen city-excluded fits hold 459 edit peaks fixed. Forty-seven
+held two-slot views have a strict feasible option, but neither
+the frozen nor refit selector captures one. The strict head puts a
+feasible option in the top five in 18 views; the full score does so
+in one. Direct lower gain is -0.008817 native units
+[-0.016804, -0.001610]; no nonempty threshold passes (0/32).
+[AV2 city-excluded refit](outputs/publication_readiness_2026_09/av2_pair_refit_v1/README.md).
+
 ## OpenDD: smaller relative edits reduce debit but lose utility
 
 At the same 966 edit peaks, the half-cap reduces missing-step debit
