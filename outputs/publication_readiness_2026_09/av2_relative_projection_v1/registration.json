@@ -1,0 +1,42 @@
+{
+  "arms": [
+    "soft",
+    "frozen_position",
+    "individual",
+    "relative"
+  ],
+  "batch": 32,
+  "budget": "same two recipients and per-step radii, same initial projected position path, three bounded angle knots",
+  "calibration": "original strict nonempty both-arm prefix; confidence from known history prefixes; no change means CV outside release",
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_relative_projection.py",
+      "sha256": "3aec6b5521f262f7cd5517db1686f24066dbbcf77d9506d89804574099cebb3c"
+    },
+    {
+      "path": "src/world_model/m3w_av2_relative_projection.py",
+      "sha256": "cbbc685abc656f9ff6b91a177e66fbb129f419241b4e8934a4938de3eda65a0e"
+    }
+  ],
+  "donors": "same city-excluded forecast radii and donor labels; raw backbone frozen",
+  "independent_confirmation": false,
+  "loss": "matched residual heads; only relative head adds known pair error and missing-step disagreement on every affected edge",
+  "max_angle": 0.7853981633974483,
+  "original_2pct": true,
+  "pair_weight": 0.75,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_projected_reference_v1/summary.json",
+    "sha256": "0c3ae87f52b4ea8ab28c26fd93012c8570cf23b50a7748cd00675e28790deaca"
+  },
+  "primary": "relative vs individual and frozen position on paired held development trajectories; strict calibrated release separate",
+  "reserved_outcomes_opened": false,
+  "save_every": 50,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 200,
+  "threads": 4,
+  "workers": 0
+}
