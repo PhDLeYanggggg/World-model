@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept the two AV2 recipients and the size of every edit, and
+trained only the direction. The learned reference qualified on
+105 calibration views, up from 65, and hurt fewer easy cases.
+Its relative-trajectory error still rose, so this is a better
+reference candidate, not a joint forecasting result.
+[Learned fixed-budget directions](outputs/publication_readiness_2026_09/av2_projected_reference_v1/README.md).
+
 I checked whether a better AV2 reference would make the two-edit
 comparison more useful. On the calibration cities, 234 views had
 a qualifying pair in hindsight, but the learned additive reference

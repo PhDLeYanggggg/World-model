@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: learned directions improve reference qualification, not pair accuracy
+
+At identical recipients and per-step radii, frozen additive,
+OLS4 projection, position-trained projection and risk-trained
+projection qualify on 65, 32, 105 and 97 calibration views. The
+position-trained arm reduces easy excess from 184 to 154, but its
+relative-trajectory gain vs additive is -0.00415 native units.
+Relaxed direction ceilings are 216 with fixed recipients and 500
+with reassignment. No new release.
+[Projected reference and geometry bounds](outputs/publication_readiness_2026_09/av2_projected_reference_v1/README.md).
+
 ## AV2: causal references leave most calibration opportunities unexposed
 
 The same two-edit bank admits a strict matched pair in 234/1,020
