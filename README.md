@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+On Okutama I separated background motion from trajectory motion using
+only the past images. Projecting the forecast back into the moving
+camera lowered error at labelled endpoints, but did not establish
+an improvement over the full grid.
+[Past-camera comparison](outputs/publication_readiness_2026_09/okutama_past_camera_v1/README.md).
+
 I tested the frozen OpenDD policy on a separate aerial dataset,
 Okutama-Action. Filtering out generated boxes exposed a coarser
 annotation cadence. On those keyframes the joint policy did not

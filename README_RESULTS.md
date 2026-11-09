@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Okutama: past camera compensation helps observed endpoints
+
+On 33 fixed windows, causal reprojection lowers available endpoint
+FDE by 60.88 px for CV. The conservative full-grid gain is
+-7.53 pp with an interval spanning zero, and there is no reliable
+conservative pair gain.
+[Camera ablation and missing-label attribution](outputs/publication_readiness_2026_09/okutama_past_camera_v1/README.md).
+
 ## Okutama: separate-source transfer on nongenerated keyframes
 
 The 33 training clips yield 91 windows with at least two complete
