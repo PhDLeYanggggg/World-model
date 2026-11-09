@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal velocity forecast versus OLS4
+
+27 Torch fits, 43,200 updates. The completion-trained spline gains
+4.21 observed pp [0.93, 7.64] versus OLS4 but loses 9.12 conservative
+pp. Validation-selected forecasts do not pass. Neighbors do not
+show lift in the matched ablation. Adding learned paths at 21,242
+query-matched edits leaves verified capacity at 10/72. Validation-frozen
+tail taper gives -0.04 conservative pp [-0.35, 0.34], 0/72 original
+risk passes. No deployment or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_causal_velocity_spline_v1/README.md) |
+[Manuscript v148](outputs/publication_readiness_2026_09/evidence_manuscript_v148/README.md).
+
 ## OLS-anchored paths and placement of edits
 
 At 21,242 exact query-matched edits, nine new causal paths do not add

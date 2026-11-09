@@ -1,0 +1,61 @@
+\section{Direct causal velocity forecast as a candidate generator}
+We train a bounded quadratic velocity profile and integrate it in a
+past-motion frame to produce twelve positions. At initialization the
+forecast equals OLS4. A seven-difference ego encoder is matched to the
+same architecture with up to four causal neighbors. A third arm adds
+the per-missing-step disagreement with OLS4 to the observed-error
+objective. The study uses \VelSplineFitCount{} fits and
+\VelSplineUpdates{} updates over three source-exclusive rotations
+and three seeds. No future positions, masks or scene identities enter
+inference. Selecting by the calibration-role observed gain chooses
+ego/peer/completion in \VelSplineSelectedChoices{} of nine cells.
+
+\begin{center}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+Forecast & Observed gain & Conservative gain \\
+\midrule
+Ego spline & \VelSplineEgoKnown & \VelSplineEgoLower \\
+Peer spline & \VelSplinePeersKnown & \VelSplinePeersLower \\
+Completion spline & \VelSplineCompletionKnown & \VelSplineCompletionLower \\
+Calibration-selected & \VelSplineSelectedKnown & \VelSplineSelectedLower \\
+OLS8 & \VelSplineLongOLSKnown & \VelSplineLongOLSLower \\
+Fixed-head EqMotion & \VelSplineEqMotionKnown & \VelSplineEqMotionLower \\
+Past Context Transformer & \VelSplinePCTKnown & \VelSplinePCTLower \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+Gains are CV-normalized points against OLS4, with 95\% paired
+source-group intervals. The frozen neural comparators use the same
+held rows but six fitting sources versus three for the spline; this
+is not a matched training-budget comparison or the published benchmark.
+The observed-step
+gain of the completion arm does not establish a positive lower bound:
+partially observed tracks debit \VelSplinePartialDebit{} points
+and wholly unobserved tracks debit \VelSplineMissingDebit{}.
+Matched peer inputs change observed accuracy by \VelSplinePeerAblation{}
+points; the calibration-selected arm changes observed pair-displacement
+error by \VelSplinePairSelected{} pixels relative to OLS4 (positive
+is better). We do not claim a causal benefit from neighbor context.
+
+Adding frozen spline paths at three amplitudes to the preceding menu,
+with \VelSplineCapacityEdits{} exact query-matched edits, changes verified
+outcome-aware capacity from \VelSplineOldCapacity{} to
+\VelSplineNewCapacity{} of \VelSplineViews{} views
+(\VelSplineCapacityDelta{} source-balanced pp). There are
+\VelSplineLearnedEdits{} learned-path actions among verified plans.
+This comparison measures candidate availability, not whether a
+past-only selector can recover those plans. No deployment rule changes,
+and no independent outcomes were opened.
+
+After the raw development readout, we also explore a smooth return to
+OLS4 in the final forecast steps. At identical per-trajectory total
+displacement from OLS4, the taper's direct paired conservative contrast
+against uniform shrinkage is \VelSplineTailMatched{} pp. Selecting on
+the calibration roles and allowing OLS4 fallback gives
+\VelSplineTailSelected{} pp versus OLS4 on held development and
+\VelSplineTailPasses{} original risk passes. The repair does not
+establish a gain or qualify for deployment.

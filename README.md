@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a forecaster that integrates a learned velocity curve.
+One version improves on OLS4 where future positions are labeled,
+but it does not beat OLS4 after accounting for missing positions.
+Its paths also do not add a verified plan at the same edit counts.
+Returning gradually to OLS4 narrows the gap without clearing it.
+[Velocity forecast experiment](outputs/publication_readiness_2026_09/moving_causal_velocity_spline_v1/README.md).
+
 I added nine OLS-based paths to see whether a better motion forecast
 could help at the same edit counts. The new paths improved several
 plans in hindsight but did not add a recording that passed the

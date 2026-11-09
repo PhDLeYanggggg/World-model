@@ -1,8 +1,25 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v147 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v148 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v148：直接训练因果速度预测器
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_causal_velocity_spline.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_causal_velocity_spline.py
+.venv-pytorch/bin/python scripts/audit_m3w_causal_spline_capacity.py
+.venv-pytorch/bin/python scripts/audit_m3w_spline_ols_tail.py
+```
+
+去掉第一条的 `--replay` 可从已有优化器检查点恢复或重新训练缺少的模型。
+需要原有开发角色、冻结神经对照，以及 v147 的本地容量凭证。第一条只在
+验证角色选版本，先冻结预测再评价；第二条分解已观测误差、未观测扣减和
+双人相对位移；第三条事后使用结果检验同改动数候选容量，不是在线选择器。
+第四条在 OLS4 周围匹配每条轨迹的总位移，在验证角色选择收缩方式；测试切片
+不参与选择。它属于看过开发结果后的探索，不是独立验证。
+[v148 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v148/README.md)。
 
 ## v147：OLS 锚定路径的等改动数容量检验
 
