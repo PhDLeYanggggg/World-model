@@ -1,0 +1,39 @@
+{
+  "arms": [
+    "soft",
+    "ols4_projection",
+    "raw_projection",
+    "guarded_projection"
+  ],
+  "batch": 32,
+  "budget": "frozen soft recipients and radial magnitude at every step; no added edits; full directional projection",
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_projected_reference.py",
+      "sha256": "b9d59d81f1a5d1ac6d2cfd035d282129a7888c8ec20cdedf2cf0637e9d8e8323"
+    },
+    {
+      "path": "src/world_model/m3w_av2_projected_reference.py",
+      "sha256": "b0428f2acbdb88bf46fcf167f0a738bf5ada34fd97acc09071c109e962fb60b8"
+    }
+  ],
+  "independent_confirmation": false,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_causal_reference_v1/summary.json",
+    "sha256": "3466182c00107b4e86b6e194b2f4d1575f96919950dc016afa83111504834339"
+  },
+  "primary": "standalone qualification, conservative trajectory and easy harm vs frozen soft; CV and OLS4 unedited",
+  "reserved_outcomes_opened": false,
+  "save_every": 50,
+  "scope": "donor training, calibration-only scoring, no held or reserved labels",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "threads": 4,
+  "training": "same initialization and minibatches; whole donor queries, sampled legal actor assignments; raw position objective vs raw + 0.5 projected ADE + 0.5 floor shortfall + 2.0 original risk excess",
+  "workers": 0
+}
