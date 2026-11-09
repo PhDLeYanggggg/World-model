@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried keeping a running estimate of the risk already taken in
+each recording. The state helped predict accuracy gains but did not
+improve the risk decision. Both the learned model and a direct
+arithmetic control lost at the same edit counts. I am focusing next
+on estimating easy-case harm and the support for that estimate.
+[Recording-prefix experiment](outputs/publication_readiness_2026_09/moving_cv_prefix_state_v1/README.md).
+
 I trained two models on edits that differ by one action and cross
 the recording's risk limit. Teaching the risk preference reduced
 the worst easy-case change relative to teaching accuracy alone,

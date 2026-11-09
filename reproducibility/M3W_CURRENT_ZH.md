@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v143 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v144 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v144：显式累积录像前缀状态
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_prefix_state.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_prefix_state.py
+.venv-pytorch/bin/python scripts/eval_m3w_cv_prefix_arithmetic.py
+```
+
+第一条从冻结权重重算，去掉 `--replay` 可训练或续跑。第二条诊断收益与伤害的预测
+误差。第三条不训练新模型，直接比较有无历史余额。相同改动数下，两个状态对照
+均无保守增益；学习组都只通过 3/72。确认组保持封存。
+[v144 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v144/README.md)。
 
 ## v143：用同改动数的边界样本训练
 

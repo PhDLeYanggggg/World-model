@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal recording-prefix state
+
+18 fits, 25,200 updates. At 45,042 matched edits, prefix state loses
+0.091 conservative pp vs masked inputs [-0.170, -0.034]; direct
+arithmetic loses 0.064 pp. Both learned arms pass 3/72; both exceed
+the positive easy-harm limit in 55 views. State improves gain MAE
+but worsens signed-easy MAE. Closed-loop feedback does not recover
+the loss. Calibration 0/9; no deployment or confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_prefix_state_v1/README.md) |
+[Manuscript v144](outputs/publication_readiness_2026_09/evidence_manuscript_v144/README.md).
+
 ## Risk-boundary supervision at matched intervention counts
 
 390,223 fitting-only substitution pairs from 17 recordings;
