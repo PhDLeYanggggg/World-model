@@ -36,6 +36,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：录像级匿名复现
+
+本地解压 `vehicle_recording_replay.zip` 后，运行
+`python -I -B -S verify.py`。复算原 2% 规则、校准阈值、留出放行数和
+地点区间，不用下载权重或轨迹。
+[构建、诊断与复现](../outputs/publication_readiness_2026_09/vehicle_recording_replay_v1/README.md)。
+
 ## 八页匿名正文候选
 
 v167 在独立副本里补了 WEPDTOF 引用，保留 v166 的实验和用户文字。

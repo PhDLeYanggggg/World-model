@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: the release score does not identify the best replacements
+
+The anonymous recording replay rebuilds the risk checks, calibration
+prefixes and paired intervals from scalar components. In the relative
+head, the five highest scores per held direction pass the risk checks
+4.23 pp less often than uniform picks in the same direction, and do
+not enrich full-condition wins. The forecast bank and CV fallback stay fixed.
+[Replay and ranking diagnostic](outputs/publication_readiness_2026_09/vehicle_recording_replay_v1/README.md).
+
 ## Main paper: WEPDTOF attribution
 
 I added the source citation to the external-evaluation paragraph
