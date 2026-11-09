@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## VisDrone-MOT: reference coverage does not carry over to camera tracks
+
+Training-only byte-range intake recovers 191 multi-agent reference windows
+across 47 clips at release-frame stride four. The fixed four-window camera
+pilot recovers 14 complete matches from 53 online histories, with 76 complete
+pedestrian references. Adding other-people labels recovers 17 complete matches,
+but neither scope covers all online tracks in any window. No forecast was scored.
+[Source, per-clip results and replay](outputs/publication_readiness_2026_09/visdrone_mot_train_intake_v1/README.md).
+
 ## KIT AIS: enough labeled tracks, not enough complete windows
 
 One of seven publisher-training clips reaches 20 release positions. Its

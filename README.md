@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked VisDrone-MOT as another source of aerial pedestrian tracks. At
+stride four, 191 training windows had at least two complete reference futures.
+In the four-window camera check, the tracker recovered 14 of 76 complete
+references and no window had labels for the entire online group.
+[VisDrone source and camera check](outputs/publication_readiness_2026_09/visdrone_mot_train_intake_v1/README.md).
+
 I checked KIT AIS as a source of aerial tracks. Only one training clip
 has enough released frames for the full window, and neither detection
 setting that emitted tracks recovered labels for the whole group.
