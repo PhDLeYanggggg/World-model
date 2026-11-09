@@ -26,6 +26,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：定位联合选择的失败
+
+`.venv-pytorch/bin/python scripts/diagnose_m3w_opendd_pair_disagreement.py`
+在原有开发集上复算三组等预算对照，拆出已观测增益、缺失步扣减和原 2%
+规则下的失败转换。无新增训练或外部标签访问。
+[结果与命令](../outputs/publication_readiness_2026_09/opendd_pair_disagreement_v1/README.md)。
+
 ## Songdo：从冻结候选到正式评分
 
 `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/rehearse_m3w_songdo_confirmation.py`

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: why the two-edit joint rule lost
+
+At the same budget, learned joint showed no clear advantage over
+additive on observed steps. Missing-step disagreement explains the negative
+conservative contrast, but joint also lost 708 additive passes by
+selecting edits with no easy reference denominator. It recovered 500
+in the other direction. Removing the same-family constraint reduced
+observed gain. I retain the negative result and CV fallback.
+[Matched attribution](outputs/publication_readiness_2026_09/opendd_pair_disagreement_v1/README.md).
+
 ## Songdo: calibration and confirmation runner
 
 I keep the equal-budget comparison separate from the question of whether
