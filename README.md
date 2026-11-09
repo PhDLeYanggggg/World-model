@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried training the pair score directly on what two edits add beyond
+editing each person alone. It recovered a small gain on labeled steps,
+but not a reliable gain when missing future labels were accounted for.
+[Direct pair-effect experiment](outputs/publication_readiness_2026_09/opendd_direct_pair_effect_v1/README.md).
+
 I gave the joint and independent selectors exactly the same forecast paths,
 edit counts and displacement limits on OpenDD. The pair score changed 693
 of 1,067 two-edit choices, but did not reliably reduce forecast error.

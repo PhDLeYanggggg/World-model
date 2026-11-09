@@ -1,0 +1,63 @@
+{
+  "batch": 128,
+  "bindings": [
+    {
+      "path": "outputs/publication_readiness_2026_09/source_excluded_slate_v1/registration.json",
+      "sha256": "8b677d2307d5a3607d3ebf062c55888e7695d9caeb325dcdd60489ab5a5c41d6"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/source_excluded_slate_v1/freeze.json",
+      "sha256": "8995c6502ee6a71703bae3773d936a91fbe3fe829dc1425f7121d0d164dc73f3"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/registration.json",
+      "sha256": "500806dc79e5416bf5c09a69fa22097210103056e3b06cf9609953626e1c7636"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_shared_menu_v1/freeze.json",
+      "sha256": "c382acdf5c5f76c20b76022da62f367be9206122ed5ad12ca1df174decc6d81b"
+    },
+    {
+      "path": "scripts/run_m3w_pair_effect.py",
+      "sha256": "530910f69e79c22c5dd6b79ebe2001423c38fcdef009d6be24854e1ec5ea21ae"
+    },
+    {
+      "path": "src/world_model/m3w_pair_effect.py",
+      "sha256": "bf5277b7ee39e61772323ed3fcec4da4623a409e8d9bcaf6d2e98b82c56de173"
+    },
+    {
+      "path": "src/world_model/m3w_slate_shared_menu.py",
+      "sha256": "99e04209eb20d3a15306338ffc4312097dd022d6235e177985f1682f97a6b2c8"
+    },
+    {
+      "path": "src/world_model/m3w_slate_imitation.py",
+      "sha256": "90a53ec70e33f339b2971ad6b290f80a9d431f6c017c72ccb270d237849b256d"
+    }
+  ],
+  "compute_threads": 4,
+  "donor_geometry": "sample a native edit pair from the observed prefix, then sample at its exact peaks",
+  "fit_sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "independent_confirmation": false,
+  "loss": "Huber beta .1",
+  "max_pairs_per_query": 16,
+  "min_common_steps": 4,
+  "original_2pct": true,
+  "score_weight_rule": "0.25 * donor unary sum std / donor normalized effect std; no threshold search",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 300,
+  "target": "E10 + E01 - E00 - E11 on co-observed steps, divided by mean past motion scale",
+  "unsupported_sources": "zero co-observed legal pair labels: absent from fit batches; retained for policy scoring",
+  "worker_processes": 0
+}

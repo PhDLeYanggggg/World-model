@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: direct supervision of the two-edit effect
+
+Twenty-one new local heads learn the extra relative-displacement benefit
+of combining edits, with the unary model and per-query budget fixed.
+Conservative gain versus additive is +0.00232 pp (95% location bootstrap
+[-0.00296, +0.01039]); the direct and imitation heads each have 34 dual
+passes of 606. Predicting zero beats the direct head in 14/15 supported
+held location-seed probes. No deployment change.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_direct_pair_effect_v1/README.md).
+
 ## OpenDD: joint versus additive on an identical path menu
 
 With the same path menu, 3,690 edits and exact per-query peak slots, the
