@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked how many edits the full bank actually needs. At a quarter
+of a recording's rows, it can still beat both references under the
+original rule in 38 of 72 hindsight views. Teaching a model from
+smaller feasible plans did not reproduce that gain. Much of the
+failure came from choosing the wrong trajectories to edit.
+[Edit budgets and teacher experiment](outputs/publication_readiness_2026_09/moving_cv_minimum_budget_v1/README.md).
+
 I separated the candidate menu from the number of edits it could
 make. Knowing the outcomes, the narrow menu could find valid plans
 in 5 of 72 views. The full bank recovered 19 at the same query

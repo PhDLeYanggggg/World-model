@@ -1,0 +1,57 @@
+\section{Certified edit budgets and minimum-edit supervision}
+We bound how many edits are needed, rather than treating the edit
+count of one feasible solution as a requirement. Write $A x\geq b$
+for the two conservative accuracy requirements, three risk limits
+and the easy-support requirement, with at most one action per row.
+For any nonnegative multiplier $\lambda$, a lower bound on the
+minimum edit count is
+\[
+ b^\top\lambda +
+ \sum_i \min\bigl(0,\min_a[1-A_{ia}^\top\lambda]\bigr).
+\]
+Deleting edits from a known feasible plan produces a verified upper
+bound only after rescoring the remaining plan. Among the 53 views
+with a full-bank witness, the median minimum lies between
+\EditCertMedLow\% and \EditCertMedHigh\% of rows.
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Budget & Verified & Excluded & Unsupported & Open \\
+\midrule
+5\% & \EditCertFive \\
+10\% & \EditCertTen \\
+25\% & \EditCertQuarterRow \\
+50\% & \EditCertHalf \\
+75\% & \EditCertThreeQuarters \\
+\bottomrule
+\end{tabular}
+\end{center}
+Budgets in this table apply to each entire recording. They do not
+imply that a query-local controller can allocate edits equally well.
+
+Separately, integer search reduces \EditCertTeachers{} verified
+analytic training-role plans from \EditCertOldTeacher{} to
+\EditCertNewTeacher{} edits. We train identical cost scorers on
+dual gain and risk targets, with or without an auxiliary action
+imitation loss from those plans. Both share the sampled inputs and
+optimizer budgets (\EditCertUpdates{} updates in total). The model
+uses only causal histories, query summaries, and forecast differences.
+At \EditCertMatches{} exactly matched query edits, adding imitation
+changes the conservative trajectory comparison by \EditCertMatch{}
+pp, the known-step comparison by \EditCertMatchKnown{} pp, and
+the conservative pair-distance contrast by \EditCertPair{} pixels
+(95\% paired source-bootstrap intervals).
+Risk pass counts (frozen, cost, teacher, matched teacher, guarded
+teacher) are \EditCertPasses{} out of \EditCertViews{}. Calibration
+qualifies \EditCertQual{} of nine cells. These are held development
+comparisons, not independent confirmation.
+
+Changing recipients accounts for \EditCertRecipientShare\% of the
+missing-step disagreement debit. Fixing recipients to the cost-only
+choices narrows the conservative deficit to \EditCertFixed{} pp.
+Clipping each replacement to its reference displacement narrows it
+further to \EditCertClipped{} pp, but it remains negative and does
+not qualify a policy. These two interventions are retrospective
+diagnostics, not validation-selected strategies.

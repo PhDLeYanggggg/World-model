@@ -1,8 +1,23 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v134 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v135 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v135：最小改动预算与教师模型
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_minimum_budget.py teacher --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_budget_certificates.py
+.venv-pytorch/bin/python scripts/train_m3w_cv_minimum_budget.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_minimum_budget_failures.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_minimum_budget_replay.py
+```
+
+教师与训练命令去掉 `--replay` 后可续跑；先检查本地心跳和 PID，勿启动重复进程。
+保持原规则时，25% 录像预算有 38/72 个事后见证。相同查询改动数的教师对照仍失败，
+校准 0/9。匿名 ZIP 在干净目录解压后以 NumPy 运行 `replay.py` 可复核标量表，
+不需要轨迹或权重。[v135 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v135/README.md)。
 
 ## v134：候选范围与查询改动数量的四组对照
 

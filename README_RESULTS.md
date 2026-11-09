@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Certified edit budgets and minimum-edit imitation
+
+At 5/10/25/50/75% recording budgets, verified full-bank witnesses:
+12/18/38/49/52 of 72. The median minimum among the 53 feasible
+views is bounded by 12.01% to 14.61%. Across 18 fresh PyTorch fits
+and 21,600 updates, minimum-edit imitation loses 14.054 paired
+lower pp [-24.242, -5.438] at 45,698 exact matched edits.
+Fixing recipients and clipping displacement narrows the deficit
+to -2.704 pp [-5.341, -0.609]. Calibration 0/9.
+[Results and replay](outputs/publication_readiness_2026_09/moving_cv_minimum_budget_v1/README.md) |
+[Manuscript v135](outputs/publication_readiness_2026_09/evidence_manuscript_v135/README.md).
+
 ## Candidate scope crossed with query budgets
 
 Verified hindsight witnesses on 72 development views: narrow/exact
