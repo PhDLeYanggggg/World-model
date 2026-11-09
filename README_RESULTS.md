@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: feasible-subset supervision does not fix admission
+
+The forced-feasibility label is more learnable than membership in one
+optimal subset. The students do not pass the risk checks reliably,
+and a comparison at the previous 282 slots finds no positive mean
+conservative interaction gain. This is not just a threshold failure.
+[Three-seed training and matched ranking](outputs/publication_readiness_2026_09/opendd_subset_student_v1/README.md).
+
 ## OpenDD: abstention reduces harm but does not establish joint gain
 
 Allowing CV fallback leaves 282 matched edits and reduces signed

@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained models to recognize edits that can belong to a beneficial,
+risk-feasible subset. The broader teacher labels were easier to predict,
+but did not improve the decisions at the same edit budget.
+[Teacher supervision and matched ranking](outputs/publication_readiness_2026_09/opendd_subset_student_v1/README.md).
+
 I let the model keep the baseline when none of its edits looked useful.
 That reduced harm but also left too few paired edits to show a benefit
 over choosing agents individually. A hindsight check shows that better

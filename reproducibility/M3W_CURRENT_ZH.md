@@ -28,6 +28,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+在三个种子、七个地点对比三种子集标签。强制可行标签有一定信号，
+但同样 282 个槽位的重排仍未改善保守交互收益。
+[教师、学生和同预算复算](../outputs/publication_readiness_2026_09/opendd_subset_student_v1/README.md)。
+
 允许退回 CV 后，保留 282 次配对介入，简单样本超限从 164 降至
 3 个视图，但同预算联合方案未获合格收益。事后可行子集仍有 179 个
 正收益视图。[因果放行、同预算对照和事后求解](../outputs/publication_readiness_2026_09/opendd_optional_edits_v1/README.md)。
