@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated learning when annotations are missing from learning
+which edits are worth making. Step-specific availability prediction
+improved its own score, but not the conservative forecast comparison
+at equal intervention counts. Penalizing underestimated easy harm
+helped more recordings pass while worsening the single worst one.
+[Missingness and easy-risk ablation](outputs/publication_readiness_2026_09/moving_cv_lead_risk_v1/README.md).
+
 I retrained the risk estimator to recognize which edits actually have
 easy reference support. It recovered far more of those opportunities,
 but the wider policy still missed the original risk requirement.

@@ -1,8 +1,24 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v131 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v132 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v132：逐步缺失概率、easy 风险和等位移对照
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_lead_risk.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_lead_risk_evidence.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_lead_disagreement.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_late_edit_taper.py
+```
+
+主实验四组逐查询匹配，均为 51,614 次改动。第一条仅复算冻结模型；如需新训或
+确认进程已退出后续跑，去掉 `--replay`。第二条生成匿名标量 ZIP，解压后运行
+`replay.py` 无需轨迹或 Torch。后两条复核缺失位移归因和等总位移对照；
+等总位移不等于等峰值，也不构成合格策略。逐步标注概率改善 Brier，不代表
+保守收益改善。校准仍为 0/9。
+[v132 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v132/README.md)。
 
 ## v131：有符号风险余量与等数量收益排序
 
@@ -178,6 +194,6 @@ PID 对应的进程确实退出，再用原命令去掉 `--replay`。训练每 1
 
 ## 构建论文
 
-参见 [v131 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v131/README.md)。
+参见 [v132 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v132/README.md)。
 主文、补充材料与生成图的命令均由对应的冻结读出生成。匿名复现只展示可公开的
 汇总量，不包含原始轨迹、视频、模型权重或本机路径。当前工作稿没有提交。

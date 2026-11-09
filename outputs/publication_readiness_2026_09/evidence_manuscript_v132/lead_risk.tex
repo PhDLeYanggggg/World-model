@@ -1,0 +1,32 @@
+\section{Lead-specific missingness and asymmetric easy risk}
+The learned utility combines a candidate's predicted observed gain
+with its exact missing-step geometric debit. We predict annotation
+availability for each of the 12 future steps from history. Replacing
+these probabilities with their per-row mean is a flat-visibility
+control that preserves the mean visible count. A second ablation
+triples the Huber weight on underestimates of observed easy excess.
+The risk head shares its initialization and draws with the earlier
+conditional head. The three new heads use \LeadRiskAblUpdates{} updates
+across the source rotations and seeds.
+
+The Brier reduction from lead-specific prediction is \LeadRiskAblBrier{}.
+At \LeadRiskAblEdits{} exact matched edits, the direct conservative
+utility contrast is \LeadRiskAblLead{} points with ordinary conditional
+risk and \LeadRiskAblTailLead{} with asymmetric risk. The asymmetric
+risk contrast at fixed lead-specific gain is \LeadRiskAblTail{}.
+Intervals use paired source bootstrap draws after averaging seeds.
+The asymmetric head increases recording passes from \LeadRiskAblBasePass{}
+to \LeadRiskAblTailPass{}/\LeadRiskAblViews{} and reduces known easy-risk
+violations from \LeadRiskAblBaseEasy{} to \LeadRiskAblTailEasy{}, but
+worst signed known easy degradation increases from
+\LeadRiskAblBaseWorst{}\% to \LeadRiskAblTailWorst{}\%.
+Calibration qualifies \LeadRiskAblQual{}/9 cells.
+
+Of the paired missing-step debit when using lead rather than flat
+probabilities, \LeadRiskAblLateShare{}\% is at steps 9--12. We therefore
+compare a fixed late taper with uniform scaling on the same recipients,
+matching the sum of displacements from CV for each edit. It is a
+secondary diagnostic on the already exposed fitting sources.
+Taper-minus-uniform conservative contrasts are \LeadRiskAblTaperCond{}
+and \LeadRiskAblTaperTail{} points under the two risk heads. Matching
+the sum of displacements does not match their peak or qualify a policy.

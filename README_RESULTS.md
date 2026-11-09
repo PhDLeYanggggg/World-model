@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Lead-Specific Missingness and Asymmetric Easy Risk
+
+27 fits, 27,000 updates, 51,614 exact matched edits. Lead prediction
+improves Brier by 0.01626 but gives -0.7673 paired lower pp
+[-1.8435, -0.1614] versus flat probabilities. Asymmetric easy risk
+raises passes from 7 to 13/72 and reduces known easy violations
+39 to 23, but worst known signed easy change grows from +25.90% to
++61.90%. Calibration 0/9. At equal per-recipient displacement, late
+taper has negative paired lower contrasts against uniform scaling.
+[Experiment and replay](outputs/publication_readiness_2026_09/moving_cv_lead_risk_v1/README.md) |
+[Manuscript v132](outputs/publication_readiness_2026_09/evidence_manuscript_v132/README.md).
+
 ## Conditional Signed Risk and Matched Query-Swap Gain
 
 27 fits, 27,000 updates. The conditional head recovers a true seed on
