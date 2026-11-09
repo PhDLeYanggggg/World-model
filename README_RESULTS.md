@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: observed-only inputs and cross-site linkage
+
+The split-neutral pack exports 81,000 agent histories in 1,992 windows.
+The 12-step label index is separate; future coordinates are not parsed.
+A and B have intersecting observed footprints even though sampled
+prefixes have no exact or near-synchronous repeats. Keep {A, B} together
+in any prospective grouping. No forecast scored or split assigned.
+[Pack and replay](outputs/publication_readiness_2026_09/songdo_prefix_pack_v1/README.md).
+
 ## Songdo: strong pair coverage, sparse complete rosters
 
 Four published intersection-day archives pass publisher checksums.

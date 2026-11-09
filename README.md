@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I built Songdo's eight-step inputs separately from its future label
+index. The A and B views share an observed footprint, so I keep them
+in the same provisional source group even though no sampled duplicate
+was found. [Input pack and source grouping](outputs/publication_readiness_2026_09/songdo_prefix_pack_v1/README.md).
+
 I checked Songdo Traffic as a new external source. Almost every eligible
 nonoverlapping window has a fully labelled vehicle pair, but only 124 of
 1,992 have complete futures for the whole observed roster. I kept those

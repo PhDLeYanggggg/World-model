@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## Songdo：观测输入包和来源关联
+
+用 `.venv-pytorch/bin/python scripts/build_m3w_songdo_prefix_pack.py` 导出
+1,992 个窗口、81,000 条过去轨迹。未来行号和可见掩码单独保存，不解析未来坐标。
+用 `scripts/audit_m3w_songdo_prefix_linkage.py` 检查来源：A 和 B 的观测范围
+重叠，前瞻性分组应把它们放在一起。未分配正式测试组或计算预测成绩。
+[详细复现](../outputs/publication_readiness_2026_09/songdo_prefix_pack_v1/README.md)。
+
 ## Songdo：外部成对标注与时钟审计
 
 按发布顺序取得最早日期的 A/B/C/E 四包。主规则下有 1,992 个非重叠的
