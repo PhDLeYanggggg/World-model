@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: source-excluded score training does not improve fixed position release
+
+At the same top-five count in each fold, the old transferred cost
+qualifies 31/90 and both new scores 15/90. Gain-risk releases five
+held views with zero passes and four risk failures. The frozen
+forecast and the original 2% checks are unchanged.
+[Matched risk, gain and release results](outputs/publication_readiness_2026_09/av2_projection_risk_v1/README.md).
+
 ## AV2: frozen position release still fails original risk rules
 
 The calibration-selected score releases 26/1,020 held development

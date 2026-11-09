@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a new AV2 release score on projections from models
+that had not seen the source they scored. At the same 90 held
+interventions it found 15 qualifying views, versus 31 for the
+old cost. None of its five calibrated releases passed.
+[Source-excluded release training](outputs/publication_readiness_2026_09/av2_projection_risk_v1/README.md).
+
 I then calibrated when to use the frozen AV2 position projection.
 Accounting for easy cases and predicted harm improved the confidence
 ranking, but the calibration-selected policy passed only 6 of its
