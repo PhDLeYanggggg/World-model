@@ -1,0 +1,56 @@
+{
+  "batch": 128,
+  "calibration": "unchanged strict both-arm 2% and dual-floor checks on every nonempty prefix; report incumbent-preserving substitution separately from original release with both arms CV outside prefix",
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_incumbent_timing.py",
+      "sha256": "f7c735c8692abdcc5b30e9bd98f7dee78cee8ad4b085ac64b5919f280c0b3f20"
+    },
+    {
+      "path": "src/world_model/m3w_av2_incumbent_timing.py",
+      "sha256": "ab223967eaad0770a5ad6390936c78c315c61d2cdcbe5b0c81f83cdbc4b5b3ab"
+    },
+    {
+      "path": "src/world_model/m3w_av2_forecast_cost.py",
+      "sha256": "95851eed1075ac3ba505b13d9c27f995e5c7e345f2df10fd448ade09d3d9eadd"
+    },
+    {
+      "path": "src/world_model/m3w_av2_history_replay.py",
+      "sha256": "90500eb24cf62856b99d76ed933c5f3cc35b8ae3853dadac3def85b47ea4c455"
+    },
+    {
+      "path": "src/world_model/m3w_av2_relative_margins.py",
+      "sha256": "f5ac5849e4998544317f362e5e791dd20c43d24cd77f94f180b8dc101170fe4a"
+    }
+  ],
+  "comparator": "fixed original independent path, same query/forecasters/edited actors; no reassignment or extra candidates",
+  "features": "relative path geometry, causal edit shapes and retrospective compatibility with the observed 8 steps",
+  "independent_confirmation": false,
+  "menu": "incumbent plus the 3-by-3 combinations of original, early and late timing at the incumbent's two recipients and peaks",
+  "modes": [
+    "replay",
+    "geometry",
+    "history"
+  ],
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_temporal_refit_v1/summary.json",
+    "sha256": "f2efae5bfa0ee93744a45f8a05de6fa8de85c371016d3a5a96b6b526651d33c8"
+  },
+  "previous_qualification": {
+    "path": "outputs/publication_readiness_2026_09/av2_relative_margins_v2/summary.json",
+    "sha256": "2c33be321405e957f45cfd7d87868ffe9010a0bcf98bcf1f8fc637e8707ed214"
+  },
+  "primary": "history",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "torch_threads": 4,
+  "training": "donor-only exact matched event and component margins; geometry-only and history replay share updates, equal architecture and sampled options; exclude candidate copies of incumbent"
+}

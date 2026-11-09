@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried changing only the timing of the original two edits.
+That kept most of the wider menu's opportunities without
+changing whom to edit. Replay retrieved more qualifying
+choices than the fitted heads, but could not be calibrated.
+[Timing-only substitutions](outputs/publication_readiness_2026_09/av2_incumbent_timing_v1/README.md).
+
 I retrained the timing scorer with a control that saw the
 same actions but not the new timing variants. The retrained
 model recovered more usable choices on the wider bank, but

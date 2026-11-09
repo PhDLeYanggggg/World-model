@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: timing-only substitutions retain most fixed-reference opportunities
+
+At fixed actors and peaks, timing changes retain 51 of 61
+opportunities from the full union. Replay selects 29 eligible
+alternatives before calibration; the learned heads select 24
+each. Replay cannot release, and the history head qualifies
+only one of five held releases. No deployment change.
+[Training, attribution and anonymous supplement](outputs/publication_readiness_2026_09/av2_incumbent_timing_v1/README.md).
+
 ## AV2: learning timing variants partly closes the ranking gap
 
 With the union bank fixed, matched temporal refitting raises

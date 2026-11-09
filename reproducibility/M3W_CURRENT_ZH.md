@@ -28,6 +28,11 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## Argoverse 2：完整标注下的同预算联合对照
 
+只改原两次介入的时间形状，保留宽候选库中 51/61 个事后机会。
+历史回放选到 29 个，学习头各 24 个；带历史的头放行 5 次只过 1 次。
+本地匿名 ZIP 有矢量图和离线复算，解压后运行 `python -I -B -S verify.py`。
+[完整对照、训练和打包命令](../outputs/publication_readiness_2026_09/av2_incumbent_timing_v1/README.md)。
+
 在同一合并候选库上比较匹配重训：见过时间变体后，合格逐人对照从 49
 增至 59，其中有合格联合替代的视图从 40 增至 54。主方案 3 次留出放行
 均失败，不部署。[训练、检查点和复现](../outputs/publication_readiness_2026_09/av2_temporal_refit_v1/README.md)。
