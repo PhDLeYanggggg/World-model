@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked what the joint selector changes when it has exactly the same
+forecast choices and edit budget as an additive selector. It often changes
+which people get an edit, but did not reliably improve relative motion.
+Even choosing among the three frozen outputs with hindsight adds only
+0.044 percentage points on the conservative score.
+[Matched-budget attribution](outputs/publication_readiness_2026_09/opendd_pair_attribution_v1/README.md).
+
 I used a second detector to test when a P-DESTRE track is reliable.
 Agreement did not beat simple confidence at the same track count.
 Averaging the two detectors' past positions did reduce relative

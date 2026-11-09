@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: a better gate has little room on the frozen pair outputs
+
+At 3,690 edits per arm, imitation changes the edited agents in 505 queries
+and the paths alone in 188; direct pair supervision changes 165 and 130.
+No relative-error attribution interval excludes zero. The matched
+three-output hindsight maximum is +0.04417 pp on the conservative score,
+before enforcing the 2% risk rule. I will not train another gate over
+these same paths. [Replay](outputs/publication_readiness_2026_09/opendd_pair_attribution_v1/README.md).
+
 ## P-DESTRE: agreement loses coverage; center averaging improves paired error
 
 At the same 79 retained histories, confidence, frame agreement
