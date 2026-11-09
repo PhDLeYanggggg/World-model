@@ -1,0 +1,67 @@
+{
+  "arms": [
+    "fixed_additive",
+    "fixed_joint",
+    "pooled_additive",
+    "pooled_joint"
+  ],
+  "code": [
+    {
+      "path": "scripts/audit_m3w_opendd_paired_window_budget.py",
+      "sha256": "4986e6838f488c68da362243e581f38d745468c4afad1621ce0e8ef756d55912"
+    },
+    {
+      "path": "src/world_model/m3w_paired_window_budget.py",
+      "sha256": "cd3eeba24dab876cda4d92d9f407f87f7ebcf123e0df878a762b247c3c74d046"
+    },
+    {
+      "path": "src/world_model/m3w_exact_slot_costs.py",
+      "sha256": "b5c5e7b1ff516104db70997718630b809a3879fc58cfd458576b730772844646"
+    },
+    {
+      "path": "scripts/train_m3w_opendd_expanded_costs.py",
+      "sha256": "aa34df1315ed9c19d595c6e9d34ffae22356db04631889d47eb3e09a171248d9"
+    },
+    {
+      "path": "scripts/audit_m3w_opendd_self_menu.py",
+      "sha256": "a0fcff6d71c3df3f4163bcd9eec2f2e48fe66f8aa2c3e45aae9ecad50c027907"
+    }
+  ],
+  "new_training": false,
+  "objective": "sum window predicted utility divided by visible-agent count",
+  "offline_diagnostic": true,
+  "original_2pct": true,
+  "pairing": "consecutive nonoverlapping queries within recording",
+  "parent": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/registration.json",
+      "sha256": "21095fd7873e0f16a89937082d4b1d9ac7c6c2943ff16f620d08387fe63af650"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/freeze.json",
+      "sha256": "c806291eb958b6b2a05aac801ec5742e0c7a94b96151168fd9918c11ee6c4663"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/readout.json",
+      "sha256": "c2757b41dc19f32d90afd48df89bc3664ec4cc17e5b7362b587183d9ff65e7eb"
+    }
+  ],
+  "preserve": "per pair exact multiset of displacement slots; at most two edits per window, one CV recipient",
+  "requires_later_observation_prefix": true,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "threshold_tuning": false,
+  "uses_future_labels_for_allocation": false
+}

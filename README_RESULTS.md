@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: adjacent-window budget reallocation reduces risk passes
+
+The same 3,690 exact slots can move inside pairs of nonoverlapping
+windows. Additive and joint dual passes fall from 32 each to 27 and 26.
+Both pooled arms lose 17 original risk passes; 12 of these in each arm
+lose the selected easy reference. The placement uses both observed
+prefixes, so it is an offline diagnostic.
+[Matched scores and risk attribution](outputs/publication_readiness_2026_09/opendd_paired_window_budget_v1/README.md).
+
 ## OpenDD: retraining costs does not uncover a joint advantage
 
 Twenty-one fresh donor-only cost heads, 8,400 updates, and 3,690 identical

@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I moved the same OpenDD edit slots between neighboring windows. The
+joint decoder moved slots in about half the edited pairs, but its risk
+and accuracy passes fell from 32 to 26.
+[Matched budget timing](outputs/publication_readiness_2026_09/opendd_paired_window_budget_v1/README.md).
+
 I retrained the gain and harm scores on the expanded OpenDD forecast menu.
 Joint and additive decisions used the same scores and budget, and each passed
 both accuracy and risk in 32 of 606 views.
