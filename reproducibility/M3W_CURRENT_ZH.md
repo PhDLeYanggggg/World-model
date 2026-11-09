@@ -50,6 +50,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+把衰减加速度带回 OpenDD，按七个地点、三个种子重训增益、伤害和
+easy 参考预测。风险参考更完整的介入门槛降低了覆盖，但未恢复同预算联合收益。
+[训练、继续运行与复算](../outputs/publication_readiness_2026_09/opendd_supported_acceleration_v1/README.md)。
+
 在三个种子、七个地点对比三种子集标签。强制可行标签有一定信号，
 但同样 282 个槽位的重排仍未改善保守交互收益。
 [教师、学生和同预算复算](../outputs/publication_readiness_2026_09/opendd_subset_student_v1/README.md)。

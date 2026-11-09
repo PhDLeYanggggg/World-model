@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: explicit support narrows intervention without recovering joint gain
+
+I refit gain, harm and easy-reference support at seven held locations
+for three seeds. An explicit support gate reduced missing edited-easy
+denominators from 56 to 36, but risk passes fell from 35 to 30.
+A stricter gate left only 40 edits at one location. No arm had a
+qualified matched pair gain.
+[Refit, matched controls and support diagnostics](outputs/publication_readiness_2026_09/opendd_supported_acceleration_v1/README.md).
+
 ## Argoverse 2: decaying acceleration expands the fixed-slot menu
 
 The same complete two-slot sample goes from 5 to 13 strict hindsight

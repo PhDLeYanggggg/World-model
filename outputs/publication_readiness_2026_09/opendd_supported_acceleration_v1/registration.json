@@ -1,0 +1,95 @@
+{
+  "batch": 128,
+  "calibrated_risk_guarantee": false,
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_supported_acceleration.py",
+      "sha256": "9198a5c5f3f6076a9d157ccc6d600caa759656cf993c60e10f59fcda88c410b2"
+    },
+    {
+      "path": "src/world_model/m3w_supported_acceleration_policy.py",
+      "sha256": "274ea7d6037aefe72ac6fa202f3302675fc18ef43b88a78ee6de37ed46d053cb"
+    },
+    {
+      "path": "src/world_model/m3w_approach_candidate_paths.py",
+      "sha256": "9b13872ad5bf7cf606bece2141cfb7c6326e0352792ca1f8dd5ffd7aa994ab8f"
+    }
+  ],
+  "cohorts": {
+    "rdb1": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb1_cohort.npz",
+      "sha256": "f7bf30f7da9930c9819a3a19b158c9a73a068c7f915856d000b0f083b5c2d960"
+    },
+    "rdb2": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb2_cohort.npz",
+      "sha256": "4b7e468f39e532382da3bbf51d2b4e7408e97450270b2fe78c5a302f3f7e7cf2"
+    },
+    "rdb3": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb3_cohort.npz",
+      "sha256": "bba73b4c6fe1912cf4bb76b67e824ba2142da7ab4e9cc3cb452869f4a460abad"
+    },
+    "rdb4": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb4_cohort.npz",
+      "sha256": "e488906abfed27a335cfdabbbd99b81d4a5f2c147604b6a5fe5f92ef6c849cd9"
+    },
+    "rdb5": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb5_cohort.npz",
+      "sha256": "db260f414f09d112b38153572a1266730058d6a6cb5364a32717e057cb095fe9"
+    },
+    "rdb6": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb6_cohort.npz",
+      "sha256": "6becbbcef0579c579539a45e79d5c2979be3b148349c11abeb197db2bf6550b3"
+    },
+    "rdb7": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb7_cohort.npz",
+      "sha256": "f13deeb6d2f1f16a4c56da119fd4f3933e23dacfd7953c6d4ed64cac90e12d56"
+    }
+  },
+  "donor_rule": "exclude held site; source self predictors and easy cuts exclude donor and held",
+  "fit": "two signed lower gains (Huber), six normalized risk moments (MSE), edited easy support (BCE)",
+  "gates": "chronological intersection of both arms' predicted constraints, evidence max across selected actors",
+  "horizon": 12,
+  "independent_confirmation": false,
+  "match": "forced exactly parent slots; optional common subset per query, same counts and peaks within pair",
+  "menu": "same parent trajectories plus only the decaying acceleration candidate",
+  "non_release": "return exact CV; no empty-coverage risk pass",
+  "observed": 8,
+  "original_2pct": true,
+  "parent_optional": {
+    "path": "outputs/publication_readiness_2026_09/opendd_optional_edits_v1/readout.json",
+    "sha256": "7c16233d651d8275022179915e512a2b993238278b64bf8500576821d9f337d1"
+  },
+  "parent_relative": {
+    "path": "outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/freeze.json",
+    "sha256": "e16a33f4a7c41b9b2e832298d415a6d4b4e53a1734bfe74968535eda485ee130"
+  },
+  "parent_turn": {
+    "path": "outputs/publication_readiness_2026_09/opendd_turn_intervention_v1/freeze.json",
+    "sha256": "bf112a2eddfe8a751190d14a372d995ee1016fa7128adf86006d66391cb1ce6b"
+  },
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "steps": 600,
+  "support_thresholds": {
+    "moments": 0.0,
+    "support25": 0.25,
+    "support50": 0.5
+  },
+  "threads": 4,
+  "threshold_selection": false,
+  "workers": 0
+}

@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether predicting the availability of an easy-case reference
+would make intervention safer after adding the acceleration path to
+OpenDD. It removed some unsupported edits, but also removed most of
+the opportunities to make a different joint decision.
+[Location-excluded refit and support checks](outputs/publication_readiness_2026_09/opendd_supported_acceleration_v1/README.md).
+
 I added a forecast that lets recently observed acceleration decay over
 time. At the same intervention budget it more than doubled the number
 of Argoverse 2 scenes with a feasible hindsight win. The frozen selector
