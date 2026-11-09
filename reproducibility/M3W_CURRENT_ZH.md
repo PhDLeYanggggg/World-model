@@ -13,6 +13,11 @@
 视频或模型。它只复算冻结汇总，不重跑实验。
 [对应证据和命令](../outputs/publication_readiness_2026_09/main_claims_replay_v1/README.md)。
 
+本地补充材料另有 54 页版本，末两页汇总固定预算的事后上限、重训、预算
+重排及 easy 参考支持。匿名 ZIP 解包后运行 `python -I -B -S verify.py`
+可复算表格和三个地点区间，不需数据、模型或仓库。
+[文件、生成命令和核验结果](../outputs/publication_readiness_2026_09/budget_addendum_v1/README.md)。
+
 WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定通过，而不读
 旧的通过标志，随后按原始来源组复算区间。解包后运行 `python verify.py`。
 [构建、结果和精确 bootstrap 检查](../outputs/publication_readiness_2026_09/wepdtof_scalar_replay_v1/README.md)。

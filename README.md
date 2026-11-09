@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I put the fixed-budget findings together in two supplement pages: what
+the menu permits in hindsight, what the selectors achieve, and what changes
+when the same budget moves between windows.
+[Supplementary tables and offline replay](outputs/publication_readiness_2026_09/budget_addendum_v1/README.md).
+
 I kept more of the easy reference when moving OpenDD's edit budget. That
 made risk easier to estimate, but it did not restore the original policy's
 accuracy or pass count.

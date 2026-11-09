@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Supplement: matched-budget results in two pages
+
+A separate local PDF copy now includes the OpenDD hindsight, refitting,
+timing and easy-support results. The first 52 pages render identically.
+The anonymous scalar archive verifies counts and three location intervals
+without the repository. [Build and checks](outputs/publication_readiness_2026_09/budget_addendum_v1/README.md).
+
 ## OpenDD: easy-reference protection restores support, not utility
 
 The trained guard raises defined selected easy reference from 282 to 305
