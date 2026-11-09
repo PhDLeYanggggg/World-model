@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: training directly on OLS4 gain does not recover menu headroom
+
+At 3,824,730 identical-count replacements over OLS4, the new target
+loses 0.529 pp [-0.954, -0.070] to CV-target training. The same menu
+and counts have +4.304 pp hindsight headroom, before risk. The joint rule
+makes no replacements. Its predicted constraints reject all queries;
+with labels, OLS4 passes both query-local ratios in 4,199/11,240.
+[Paired training, query risk and exact-count ceiling](outputs/publication_readiness_2026_09/dronecrowd_ols_relative_gain_v1/README.md).
+
 ## DroneCrowd: observation augmentation helps risk coverage, not the accuracy floor
 
 Across three donor-only seeds, at exactly the original edit counts per

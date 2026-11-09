@@ -1,5 +1,8 @@
 import numpy as np
+import pytest
 
+from scripts.audit_m3w_ols_relative_gain_ceiling import exact_count_upper
+from scripts.audit_m3w_ols_predicted_feasibility import relaxed_excess
 from src.world_model.m3w_ols_relative_gain import budgeted, decisions, paired_targets
 
 
@@ -41,3 +44,19 @@ def test_matched_counts_are_replacements_of_ols_not_cv():
     np.testing.assert_array_equal(x[:, 0], [1, 0])
     np.testing.assert_array_equal(x[:, 1], [0, 2])
     assert np.count_nonzero(x[:, 3]) == np.count_nonzero(x[:, 4])
+
+
+def test_exact_count_ceiling_keeps_forced_losses_and_excludes_unchanged_paths():
+    options = np.array([[3., 2.], [-np.inf, -.5], [-np.inf, -np.inf]])
+    np.testing.assert_array_equal(exact_count_upper(options, np.array([[0, 2], [1, 2]])),
+                                  [[0., 2.5], [3., 2.5]])
+    with pytest.raises(ValueError, match="Infeasible"):
+        exact_count_upper(options, np.array([3]))
+
+
+def test_relaxed_risk_bound_optimizes_each_constraint_separately():
+    changed = np.array([[True, True], [False, True]])
+    harm = np.array([[[.6, .1], [.1, .6]], [[99., 99.], [.3, .3]]])
+    baseline, lower = relaxed_excess(changed, harm, np.full((2, 2), 10.))
+    np.testing.assert_allclose(baseline, [.4, -.1])
+    np.testing.assert_allclose(lower, [-.1, -.1])

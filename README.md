@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I started two DroneCrowd selectors from the same OLS4 forecast and
+changed only the gain target during training. Learning gain directly
+against OLS4 hurt at equal replacement counts, even though the same
+forecast bank has room for improvement. The query risk head was too
+restrictive to select any replacements.
+[OLS4-relative gain comparison](outputs/publication_readiness_2026_09/dronecrowd_ols_relative_gain_v1/README.md).
+
 I tried scaling and perturbing the training tracks to bridge the
 motion mismatch between two drone datasets. At the same number of
 edits, neither version beat OLS4. The noisier training helped the
