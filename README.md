@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept the two AV2 displacement profiles but let them move to
+different actors. This raised the hindsight ceiling from 176 to
+505 views. The past-only rule recovered only 72 and lost accuracy
+against the original forecasts, so the added choices are not
+evidence that the selector is better.
+[Who receives the same two edits](outputs/publication_readiness_2026_09/av2_recipient_reassignment_v1/README.md).
+
 I trained two ways to steer the original AV2 edits while keeping
 their recipients and every step's displacement fixed. Neither
 improved the original forecast. Even with hindsight and free

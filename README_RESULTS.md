@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: changing recipients raises the ceiling, not forecast utility
+
+At the same two full displacement profiles, free-direction capacity
+rises from 176 to 505; the exact transported bank contains 317
+qualifying views. History-based pair selection raises standalone
+passes from 66 to 72 vs support-matched additive, with CI crossing
+zero, and loses 3.492 pp vs the original trajectory forecast.
+[Exact reassignment, matched controls and misses](outputs/publication_readiness_2026_09/av2_recipient_reassignment_v1/README.md).
+
 ## AV2: steering alone does not improve the initial forecast
 
 Thirty-six matched heads preserve both recipients and each step's
