@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested choosing two vehicle forecasts together under the same
+intervention budget as independent selection. It found more qualifying
+combinations, but did not improve paired conservative error or pass
+held-location release. Most recordings did have a qualifying pair in
+hindsight. [Matched two-edit study](outputs/publication_readiness_2026_09/opendd_vehicle_pair_support_v1/README.md).
+
 I tested what happens when I pick the vehicle for easy-reference
 support before choosing its forecast. The learned rank finds more
 qualifying edits at the same budget, but it gives up some total

@@ -26,6 +26,15 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：等预算的两车联合选择
+
+`.venv-pytorch/bin/python scripts/run_m3w_vehicle_pair_support.py` 依次运行
+`freeze`、`score`，再运行 `scripts/diagnose_m3w_vehicle_pair_support.py`。
+复用三种已有权重，不重训；三臂固定窗口和两次等幅介入。联合方案多找到
+85 个过关组合，但保守配对收益为负。事后在 8,062 / 8,874 个视图中验证
+有可行组合；该上限使用标签，不用来放行或调阈值。
+[结果和命令](../outputs/publication_readiness_2026_09/opendd_vehicle_pair_support_v1/README.md)。
+
 ## OpenDD：用过去轨迹预测 easy 参考
 
 `.venv-pytorch/bin/python scripts/run_m3w_vehicle_support_rank.py` 依次运行

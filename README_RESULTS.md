@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: joint two-edit choices leave most matched capacity unused
+
+At 17,748 equal-radius edits per arm, joint raises dual passes from
+1,894 to 1,979 of 8,874 versus independent. Its direct paired conservative
+trajectory contrast is -0.000738 pp (95% site interval -0.001424 to
+-0.000230); only 13 of 61 held releases pass both utility and risk.
+Hindsight verifies 8,062 feasible matched pairs, not a policy result.
+[Three arms, release and capacity](outputs/publication_readiness_2026_09/opendd_vehicle_pair_support_v1/README.md).
+
 ## OpenDD vehicles: more feasible edits, but lower total utility
 
 At 9,000 matched edits per arm, learned recipient support increases
