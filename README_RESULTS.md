@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: score contract verified with fabricated futures
+
+The scorer replays 200 flights and 600 seed views with fabricated
+targets, including 573 matched views. It verifies direct paired
+missing-step charges, native ADE/FDE, relative motion, unchanged
+2% checks and component-level resampling. Actual future indices
+and positions remain unopened. No scientific scores are reported.
+[Rehearsal and replay](outputs/publication_readiness_2026_09/songdo_readout_contract_v1/README.md).
+
 ## Songdo: four unscored, equal-budget selection arms
 
 The OpenDD heads generate matched independent, additive, same-family

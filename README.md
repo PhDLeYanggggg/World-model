@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I rehearsed the Songdo readout on all frozen proposals with fabricated
+future positions and missingness. It checks the equal edit budget,
+keeps pair and whole-roster metrics separate, and resamples source
+components rather than windows. I did not score real outcomes.
+[Readout verification](outputs/publication_readiness_2026_09/songdo_readout_contract_v1/README.md).
+
 I generated four matched two-edit proposals from the Songdo vehicle
 bank without opening future coordinates. The four rules use the same
 query, forecast choices and displacement radius. The largest query
