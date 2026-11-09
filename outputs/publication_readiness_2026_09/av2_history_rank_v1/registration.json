@@ -1,0 +1,44 @@
+{
+  "ablation": "same network, seed, training draws and loss; geometry supplies zeros for replay channels",
+  "batch": 128,
+  "calibration": "original both-arm qualification and conservative pair advantage over the unchanged additive; max coverage",
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_history_rank.py",
+      "sha256": "d1673939671ed1ab26a8bd132e4c968e05d5344517d94cfd22095e858d6a042a"
+    },
+    {
+      "path": "src/world_model/m3w_av2_history_replay.py",
+      "sha256": "90500eb24cf62856b99d76ed933c5f3cc35b8ae3853dadac3def85b47ea4c455"
+    },
+    {
+      "path": "scripts/run_m3w_av2_oof_selection.py",
+      "sha256": "dc34f6e0e7ff4306fc4fd22e4ec9686a54c25ecde3d177efd8b49114890db628"
+    }
+  ],
+  "cpu_threads": 4,
+  "data": "unchanged OOF candidates, six held cities, 896 added development scenarios, eight observed steps",
+  "history": "align final-origin deformation to prefixes 4/5/6/7 and compare on observed suffix; not a rolling EqMotion forecast",
+  "independent_confirmation": false,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_oof_selection_v1/summary.json",
+    "sha256": "e25c6cb71fcc82ddfa932a843b0f95a13a63a42288a5382da632d8b544611174"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_oof_selection_v1/freeze.json",
+    "sha256": "46b670b7bd6259b9b35e60a718d03657f389b48591a4bd85edb2788439d76d74"
+  },
+  "rank_pairs": 32,
+  "reference": "reuse parent learned additive and uniform decisions exactly",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "target": "absolute dual floor gain and original risk qualification; same-query sampled positive/negative ranking",
+  "workers": 0
+}

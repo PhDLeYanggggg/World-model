@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: observed history improves retrieval, but missing steps reverse the gain
+
+Thirty-six matched ranker fits keep the candidate and reference
+fixed. History recovers 5 of the 48 views where both arms can
+qualify, versus zero using geometry alone. Complete-scenario
+pair gain is +0.002075; full-grid direct pair gain is -0.003417.
+No nonempty calibration breakpoint passes.
+[History ablation and same-denominator attribution](outputs/publication_readiness_2026_09/av2_history_rank_v1/README.md).
+
 ## AV2: city-excluded neural candidates do not rescue joint selection
 
 Fifty-four nested EqMotion fits and 36 selector fits keep 2,952
