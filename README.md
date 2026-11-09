@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a model to imitate complete editing plans rather than
+predicting gain and harm separately. It made some useful choices
+on held OpenDD locations, but did not beat independent selection
+at the same count and displacement. On the fisheye camera it
+intervened more often and still failed the original risk checks.
+[Plan imitation study](outputs/publication_readiness_2026_09/source_excluded_slate_v1/README.md).
+
 I tested whether a model could pick the full-size forecasts
 that worked in hindsight. It stayed with constant velocity.
 Predicting risk directly made it intervene, but those choices
@@ -40,7 +47,7 @@ the accuracy comparison against both motion baselines. I kept constant
 velocity as the fallback. This is an external test of the policy, not
 validation of a deployable learned forecast.
 [Results and protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
-[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v163/README.md).
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v164/README.md).
 
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector

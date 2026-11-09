@@ -1,11 +1,25 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-当前主文与补充材料为 [v163](../outputs/publication_readiness_2026_09/evidence_manuscript_v163/README.md)，
+当前主文与补充材料为 [v164](../outputs/publication_readiness_2026_09/evidence_manuscript_v164/README.md)，
 保留 v161 的灰阶制图样式。
 
 本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v164：学习完整介入方案
+
+```sh
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
+.venv-pytorch/bin/python scripts/run_m3w_slate_imitation.py freeze
+.venv-pytorch/bin/python scripts/run_m3w_slate_imitation.py score
+.venv-pytorch/bin/python scripts/audit_m3w_slate_imitation.py
+```
+
+训练阶段只在训练录像内用未来标签找可行方案；模型输入仍只有过去和候选预测。
+OpenDD 用解析候选逐地点留出；相机用既有折外神经候选训练，只评分开发相机。
+`freeze` 可重跑续接检查点，`audit` 只读已有评分。
+[完整对照](../outputs/publication_readiness_2026_09/source_excluded_slate_v1/README.md)。
 
 ## v163：完整轨迹的折外训练和相机选择
 

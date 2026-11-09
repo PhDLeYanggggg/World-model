@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source-excluded full-plan imitation
+
+24 fits; 19,200 updates. Joint passes 34/606 held OpenDD
+recording-seed views versus 32/606 at exactly matched count and
+peak slots. Conservative paired utility is -0.022 pp
+[-0.070, +0.016] over six estimable locations. On one exposed
+camera it makes 63 edits across three seeds and passes 0/3.
+All edited camera futures are available; easy risk still fails.
+[Experiment](outputs/publication_readiness_2026_09/source_excluded_slate_v1/README.md) |
+[Working paper v164](outputs/publication_readiness_2026_09/evidence_manuscript_v164/README.md).
+
 ## Camera full-path selection: out-of-fold fitting and signed-risk repair
 
 42 held-site forecaster fits and six value/risk fits. Expanded raw
