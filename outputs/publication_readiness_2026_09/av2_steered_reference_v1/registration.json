@@ -1,0 +1,45 @@
+{
+  "arms": [
+    "anchor",
+    "ade",
+    "guarded"
+  ],
+  "batch": 64,
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_steered_reference.py",
+      "sha256": "6d8950987b866cfd8228ddb2fe12c24f48ac36fe3ee8775a9ed449331ddcc18b"
+    },
+    {
+      "path": "src/world_model/m3w_av2_steered_reference.py",
+      "sha256": "8b532f8c7f8c9d1777808f43c5b2ee21752814126f9dfa7813c100b4e9e69763"
+    }
+  ],
+  "geometry": "rotate each of the two exact incumbent edits by a smooth bounded angle; all step magnitudes unchanged",
+  "guarded_weights": {
+    "ade": 1.0,
+    "floors": 1.0,
+    "risk": 2.0
+  },
+  "independent_confirmation": false,
+  "knots": 3,
+  "label_roles": "train only on four donor cities, reconstruct donor incumbents out of their own city; held and calibration cities never fit",
+  "main": "held standalone eligibility on unchanged CV/OLS4 and original risk checks, guarded versus ADE; no release rule fit",
+  "max_angle_radians": 0.7853981633974483,
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_direction_menu_v1/summary.json",
+    "sha256": "b850fad7a0354587d33e44aab601653f32c18fe13794e281c8126f8b282cccc5"
+  },
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 300,
+  "torch_threads": 4,
+  "training": "same two independent recipient encoders, initial zero steering, batch draws and optimizer; compare valid-position ADE vs ADE plus both negative conservative gain and all/easy/signed risk excess"
+}
