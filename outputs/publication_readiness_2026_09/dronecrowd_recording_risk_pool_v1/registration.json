@@ -1,0 +1,49 @@
+{
+  "arms": [
+    "independent",
+    "price_1",
+    "price_4",
+    "price_16"
+  ],
+  "calibration": "leave out the entire source, fit per-arm additive risk corrections on the other 14 sources; compare raw, median of within-source medians, and maximum observed residual envelope",
+  "code": [
+    {
+      "bytes": 12019,
+      "path": "scripts/run_m3w_recording_risk_pool.py",
+      "sha256": "c9d49247e5a8f3da780f29561edeabd13696f058644998a9fbb62ede76d07039"
+    },
+    {
+      "bytes": 2594,
+      "path": "src/world_model/m3w_recording_risk_pool.py",
+      "sha256": "490fa13fef112f8729bd2f8c1721807555bfaabd73bec0804ad18b78a3b69523"
+    }
+  ],
+  "confirmation_access": false,
+  "counts": "same actual OLS4 replacements per query and seed as frozen CV-target independent choice",
+  "independent_confirmation": false,
+  "no_new_training": true,
+  "original_cv_2pct": true,
+  "original_sparse_protocol_unchanged": true,
+  "parent": {
+    "bytes": 22309,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_ols_relative_gain_v1/analysis.json",
+    "sha256": "00d9ada1790f76b8f11a7fcd923b1d5dc62a440abd5219d397bdaecd839db6f8"
+  },
+  "prices": [
+    0.0,
+    1.0,
+    4.0,
+    16.0
+  ],
+  "rules": [
+    "raw",
+    "source_median",
+    "source_envelope"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selection": "largest positive predicted OLS4 gain among arms below both projected risk limits, or abstain"
+}
