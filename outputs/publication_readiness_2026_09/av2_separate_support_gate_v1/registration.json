@@ -1,0 +1,39 @@
+{
+  "arms": [
+    "transferred_cost",
+    "actor_support",
+    "conditional_harm",
+    "gated_support",
+    "gated_harm",
+    "high_support_harm"
+  ],
+  "code": {
+    "path": "scripts/run_m3w_av2_separate_support_gate.py",
+    "sha256": "ca0cc52200f8965e304491dc10151ae50d40580644883a12998fb2c808c4ff31"
+  },
+  "independent_confirmation": false,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_observed_harm_v1/summary.json",
+    "sha256": "e87fe1aa4a2c94dc56cbef1aa85fcd55b4ea443e303d503749a5785ed5f2c4ff"
+  },
+  "primary": "fixed top five per fold at common retained count, then original calibration release",
+  "reserved_outcomes_opened": false,
+  "scope": "all forecasts, fitted scores and two-edit budget unchanged; no fitting or raw future reads",
+  "sensitivity": "0.75 support gate separately reported; never selected over the primary 0.50 gate",
+  "support_gates": {
+    "gated_harm": [
+      "conditional_harm",
+      0.5
+    ],
+    "gated_support": [
+      "actor_support",
+      0.5
+    ],
+    "high_support_harm": [
+      "conditional_harm",
+      0.75
+    ]
+  },
+  "threshold": "unchanged largest nonempty all-qualified confidence prefix among admitted calibration rows"
+}
