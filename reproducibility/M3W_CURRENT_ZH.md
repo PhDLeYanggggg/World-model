@@ -1,8 +1,20 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v140 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v141 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v141：让模型选择整组改动和数量
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_joint_count.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_joint_count_capacity.py
+```
+
+第一条从冻结检查点重算；去掉 `--replay` 可以训练或续跑。第二条在相同候选
+上做事后容量诊断。学到的联合策略在等改动数量下不如独立选择；放开数量把事后
+符合原规则的视图从 0/72 增至 8/72，但不能据此部署。
+[v141 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v141/README.md)。
 
 ## v140：对实际候选训练伤害分位数
 

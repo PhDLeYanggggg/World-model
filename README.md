@@ -9,6 +9,15 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let the model decide how many forecasts to replace as well as
+which paths to use. It gained accuracy on labeled steps relative
+to keeping the old counts, but did not beat independent selection
+at the same edit counts. With outcomes available, allowing the
+number of edits to vary recovered eight valid development views
+where the old counts recovered none. The next problem is generating
+more options that meet the same risk rule.
+[Variable-count experiment](outputs/publication_readiness_2026_09/moving_cv_joint_count_v1/README.md).
+
 I trained the risk model on the paths the forecaster actually
 proposes. Predicting a higher harm quantile reduced underestimation,
 but the worst easy cases got worse. I also checked what a perfect

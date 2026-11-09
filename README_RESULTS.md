@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learning variable-count scene decisions
+
+18 fits, 21,600 updates. Joint at 49,734 matched edits loses 0.322
+conservative pp versus independent selection [-0.660, -0.120].
+Free versus parent counts gains 1.021 pp on observed steps, but
+loses 0.508 conservative pp [-1.268, +0.126]. Pair features lose
+0.170 conservative pp at equal counts. Risk passes 3/72, worst
+known signed easy +126.59%, calibration 0/9. Outcome-aware risk
+checks verify 0/72 fixed-count and 8/72 variable-count menu views.
+No deployment or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_joint_count_v1/README.md) |
+[Manuscript v141](outputs/publication_readiness_2026_09/evidence_manuscript_v141/README.md).
+
 ## Harm quantiles on nominated edits
 
 18 fits and 21,600 updates. At 48,915 matched edits, risk passes
