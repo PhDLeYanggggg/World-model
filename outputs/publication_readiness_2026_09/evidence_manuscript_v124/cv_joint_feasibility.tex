@@ -1,0 +1,46 @@
+\section{Checked feasible combinations with frozen neural alternatives}
+\label{supp:cv-joint-feasibility}
+An upper bound that is positive does not establish a feasible combination.
+We therefore maximize the smaller of the CV and OLS4 paired lower gains,
+with an optional edit per row, a fixed cap per query, and all original
+CV-relative risk and support constraints. The action set is either the five
+analytic alternatives or their union with frozen source-excluded EqMotion
+and PCT. Untouched paths remain CV. We prune dominated actions only within
+the same row. An LP relaxation can prove a negative upper bound; otherwise
+an integer solver proposes a witness. Each positive witness is reconstructed
+as a trajectory array and checked by the original scorer.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Checked positive witnesses on exposed development recordings.
+The analytic menu is common to all three expanded-menu seeds. The last
+column excludes unresolved analytic cells. A cap is not a matched realized
+edit count or displacement.}
+\begin{tabular}{rrrr}
+\toprule
+Cap & Analytic /34 & Expanded /102 & Confirmed new /102 \\
+\midrule
+8 & \CVJointAnalyticEight & \CVJointExpandedEight & \CVJointNewEight \\
+32 & \CVJointAnalyticWide & \CVJointExpandedWide & \CVJointNewWide \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The expanded menu supplies feasible combinations that the analytic menu
+cannot express at the same count cap. This is capacity, not a causal
+selection result: the solver uses future outcomes, and a timeout does not
+establish infeasibility. No new training, calibration, or independent
+confirmation is performed.
+
+In a post-hoc diagnostic, we hold each confirmed new witness's recipients
+and individual peak edits fixed. We allow the analytic directions to shrink
+or extrapolate to those exact peaks. The analytic rematch reproduces a
+positive witness on \CVJointRematchEight{}/\CVJointNewEight{} views at cap
+eight and \CVJointRematchWide{}/\CVJointNewWide{} at cap 32. This indicates
+that the extra capacity is not solely a larger displacement allowance.
+However, the original expanded witnesses worsen observed pair-displacement
+error against OLS4 on the changed-query subset (gain
+\CVJointPairEight{} and \CVJointPairWide{} pixels). Thus marginal utility
+and original risk feasibility do not establish multi-agent geometry or
+collision safety; joint metrics address a separate requirement~\cite{jointmetrics}.

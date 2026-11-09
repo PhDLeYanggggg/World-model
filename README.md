@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I gave the same hindsight solver access to frozen neural forecasts as well
+as the motion baselines. At the same cap of eight edits per query it found
+new feasible choices on five development recordings. Most of those choices
+could not be reproduced by the analytic paths even at the exact same edits
+and displacement, but the selected forecasts still had worse pair geometry
+than OLS4. This is evidence about the menu, not a deployable selector.
+[Frozen neural choices](outputs/publication_readiness_2026_09/moving_cv_joint_feasibility_v1/README.md).
+
 I also tested the other starting point: keep CV on every untouched track.
 One edit per query is enough to improve CV in hindsight, but not enough to
 catch OLS4 on 30 of 34 recordings even with idealized edits. The five tested

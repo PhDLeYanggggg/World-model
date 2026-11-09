@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## CV-Anchored Joint Feasibility With Frozen Neural Alternatives
+
+272 solver cells. At caps 8/32, the analytic menu verifies on 8/18 of
+34 recordings; the expanded menu verifies 39/66 of 102 repeated views.
+It adds 15/12 confirmed views where analytic feasibility was ruled out,
+spanning 5/4 recordings and 4/3 sources. Same recipients and exact peaks
+allow an analytic rematch in only 1/15 and 3/12. The expanded witnesses
+still worsen observed pair displacement vs OLS4 (-0.619/-2.851 pixels).
+Original 2% rule unchanged; unresolved stays separate. Hindsight only.
+[Exact witness replay and shape diagnostic](outputs/publication_readiness_2026_09/moving_cv_joint_feasibility_v1/README.md) |
+[Manuscript v124](outputs/publication_readiness_2026_09/evidence_manuscript_v124/README.md).
+
 ## CV Starting Forecast: Edit-Budget Ceiling
 
 At one edit per query the analytic menu can improve CV by +2.823 full-grid
