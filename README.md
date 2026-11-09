@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a selector to predict the gains and risks that
+matter against the actual independent choice, rather than
+whether an edit looks good on its own. It picked up one more
+qualifying held choice than the matched classifier, but
+missed more than the earlier ranker and could not be released.
+[Matched relative margins](outputs/publication_readiness_2026_09/av2_relative_margins_v2/README.md).
+
 I separated whether an easy reference exists from how much
 the edit might hurt it. The estimates improved on supported
 scenes. One held edit passed on its own, but the matched

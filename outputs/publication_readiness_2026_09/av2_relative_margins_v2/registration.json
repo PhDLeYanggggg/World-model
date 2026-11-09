@@ -1,0 +1,47 @@
+{
+  "batch": 24,
+  "bootstrap": "3000 paired city draws after averaging seeds within scenario",
+  "calibration": "original exact both-arm qualification at every nonempty prefix, CV fallback for both arms",
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_relative_margins.py",
+      "sha256": "d8fe6198ca952de500b436329bc23bf5dc510061e79f5ce66aa3ee2e904e8066"
+    },
+    {
+      "path": "src/world_model/m3w_av2_relative_margins.py",
+      "sha256": "f5ac5849e4998544317f362e5e791dd20c43d24cd77f94f180b8dc101170fe4a"
+    }
+  ],
+  "correction": "legacy vectorized all-risk yielded NaN for a wholly missing actor; use zero known error and debit edited unknown actors, verify recovered labels against scalar risk checks and keep the legacy oracle as a separate replay",
+  "draws": "same scenes/options, initialization, optimizer and steps; one positive and one near-miss per query when present",
+  "independent_confirmation": false,
+  "inputs": "same past geometry as paired qualification, fixed additive reference plus option-reference feature differences",
+  "labels": "matched event, additive eligibility, candidate edited-easy support, and dense margins: relative pair and trajectory, minimum CV/OLS gain, minimum of the three unchanged risk margins (masked without edited easy support)",
+  "matching": "same EqMotion forecast bank, exact two edit magnitudes, fixed independent additive arm",
+  "modes": [
+    "binary",
+    "dense"
+  ],
+  "num_workers": 0,
+  "options_per_query": 8,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_paired_qualification_v1/summary.json",
+    "sha256": "834c2d019ded64eb5b652b45fba1494a9bc57d82c4ce5bf6687036e2e0530483"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_paired_qualification_v1/freeze.json",
+    "sha256": "d7801093a095b498176f5d1d785760136e97a5b4bdd667a2fad112da30a4b380"
+  },
+  "primary": "dense",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "temperature": 0.02,
+  "torch_threads": 4
+}

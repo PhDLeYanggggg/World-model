@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: matched margin targets improve one contrast, not release
+
+On 1,020 two-slot held views, only 63 independent choices
+qualify and 48 have a qualifying joint alternative. Top-1
+counts are 4 for matched binary training, 5 with dense
+margins, and 9 for the prior direct ranker. Dense does not
+release; the single binary release fails. The missing-actor
+fix makes the dense labels finite without changing the fixed
+reference capacity.
+[Training and audit](outputs/publication_readiness_2026_09/av2_relative_margins_v2/README.md).
+
 ## AV2: conditional easy estimates improve; the matched control still wins
 
 On the same supported choices, easy positive and signed
