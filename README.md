@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the same AV2 scoring model with and without a
+within-scene ranking loss. Neither version beat the additive
+cost. The exact audit explains why standalone counts are not
+enough: 317 views have a qualifying option, but only 47 offer
+a conservative interaction improvement when both arms qualify.
+[Within-scene ranking and its matched ceiling](outputs/publication_readiness_2026_09/av2_assignment_order_v2/README.md).
+
 I tested whether separately enforcing support, risk and utility
 would make the AV2 assignments more reliable. The hard checks
 released eight views and only one passed. The learned checks

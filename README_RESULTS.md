@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: within-scene ranking fails and the matched ceiling is 47
+
+The unchanged soft cost qualifies 89 views, pointwise 53, and listwise
+48. The latter two produce no qualifying held release. The bank has
+317 standalone opportunities and 212 conservative joint alternatives
+against soft, but only 47 satisfy both arms' eligibility on the same
+view. Pointwise and listwise realize six and three of those, respectively.
+[Matched learning and exact capacity](outputs/publication_readiness_2026_09/av2_assignment_order_v2/README.md).
+
 ## AV2: separate constraints do not fix the ranking
 
 At the same candidate budget, analytic constraints propose 47 views
