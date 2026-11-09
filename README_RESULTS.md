@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: direction and timing complement each other at fixed displacement
+
+The equal-size banks yield 50 and 51 fixed-reference opportunities.
+Their union gives 62 (+0.787 pp [0.251, 1.468] over timing) and
+31 qualifying replay choices, but no release. Only 63/1,020 original
+references are eligible, or 43/465 in the fully labeled subset.
+[Matched experiment and anonymous replay](outputs/publication_readiness_2026_09/av2_direction_menu_v1/README.md).
+
 ## MovingDroneCrowd++: the frozen DroneCrowd history guard does not transfer
 
 With no target fit, all guards abstain on 72 views from nine development

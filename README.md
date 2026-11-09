@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+On AV2 I changed the direction of the same two edits without changing
+their displacement. Direction and timing found different useful
+alternatives, but neither passed release calibration. With both in
+the bank, I found a qualifying alternative for almost every already
+eligible reference; most original forecasts were not eligible.
+[Matched direction and timing](outputs/publication_readiness_2026_09/av2_direction_menu_v1/README.md).
+
 I carried the DroneCrowd history guard over to MovingDroneCrowd++
 without fitting on its outcomes. It did not transfer: the independent
 forecasts were close to OLS4 on accuracy, but none met the original
