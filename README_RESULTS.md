@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Optional CV-Relative Edits and the Fixed-Nominee Bottleneck
+
+18 fits, 18,000 updates on disjoint fitting-source roles; 0/9 calibration
+configurations qualify. At 2,317 exact-count edits, fixed diagnostic
+screening gives 13/72 risk passes vs 1/72 for gain-only and 14/72 for
+joint screening; its direct lower utility contrast vs gain-only is
+-0.353 pp [-0.523, -0.182]. Hindsight withholding verifies 60/72 vs CV
+alone and 3/72 vs both CV and OLS4. Unpruned nominees give 6/72, and
+keeping OLS4 separately gives 15/72. No A or independent outcomes opened.
+[Experiment and replay](outputs/publication_readiness_2026_09/moving_cv_admission_v1/README.md) |
+[Manuscript v126](outputs/publication_readiness_2026_09/evidence_manuscript_v126/README.md).
+
 ## Causal Pair Coupling at Matched Query Counts
 
 18 source-excluded donor fits and six choice-head fits (18,000 updates).

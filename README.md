@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a model to screen edits for predicted harm and missing support.
+On held fitting sources, screening increased risk passes at the same edit
+count, but no calibration qualified. A separate hindsight check showed why
+the shortlist matters: retaining the OLS4 path as an option recovered
+combinations that withholding edits from the initial ranking could not.
+[Optional editing and shortlist diagnosis](outputs/publication_readiness_2026_09/moving_cv_admission_v1/README.md).
+
 I trained a new selector on forecasts from source-excluded fitting models.
 At the same number of edits, the learned pair term improved pair error on
 observed steps, but not the conservative full-trajectory score. Matching

@@ -1,6 +1,6 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v125 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v126 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
@@ -59,6 +59,18 @@ DataLoader 子进程。版本检查只确认环境，不代表训练已经跑通
 每个种子每个策略改动 12,896 条。相加对照与联合选择共享候选、权重和改动数，
 原风险通过均为 2/102。重放并不证明它通过安全要求。
 
+v126 的可选改动只在原拟合来源内部轮换训练、校准和留出三种用途。复跑不更新
+参数。后两个入口使用留出结果计算事后上限，不是部署方法：
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_admission.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_admission_capacity.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_admission_unpruned.py
+```
+
+9 个校准组合均找不到合格设置。保留 CV 不等于 2% 风险检查通过，因为未发生
+改动时，所需的参考量不可估。保留 OLS4 的 15/72 是事后可行性，不是模型实绩。
+
 需要完成中断的本机训练时，先看该实验私有目录中的 `heartbeat.json`，核对
 PID 对应的进程确实退出，再用原命令去掉 `--replay`。训练每 100 步原子保存
 模型、优化器与采样状态，身份或数据哈希不同会报错。不要删除有效检查点。
@@ -80,6 +92,6 @@ PID 对应的进程确实退出，再用原命令去掉 `--replay`。训练每 1
 
 ## 构建论文
 
-参见 [v125 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v125/README.md)。
+参见 [v126 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v126/README.md)。
 主文、补充材料与生成图的命令均由对应的冻结读出生成。匿名复现只展示可公开的
 汇总量，不包含原始轨迹、视频、模型权重或本机路径。当前工作稿没有提交。
