@@ -5,6 +5,9 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+The [v161 working manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v161/README.md)
+redraws four figures for print. It changes no result.
+
 ## WEPDTOF: camera-input action capacity on the exposed pilot
 
 At 23 edits and the original per-query peak radius, the best arbitrary-path
