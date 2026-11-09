@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I measured how much relative-motion error could improve with exactly
+the same OpenDD edits. Adding a held-source forecast increased the
+number of feasible hindsight wins from 9 to 21, but the refitted joint
+policy did not produce a corresponding conservative gain.
+[Interaction ceiling and learned comparison](outputs/publication_readiness_2026_09/opendd_expanded_interaction_frontier_v1/README.md).
+
 I checked whether PersonPath22 could supply an independent camera test.
 Three train/test pairs came from the same source video, and five known
 camera codes appeared on both sides. The first camera pilot also lacked

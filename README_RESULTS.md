@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: interaction capacity increases, learned gains do not
+
+At identical edit slots, the original and expanded menus permit 9 and
+21 conservative pair-relative wins with the original risk rule and
+unchanged individual accuracy constraints. The refitted joint arm
+has zero such gains over its matched additive control.
+[Exact bound and location intervals](outputs/publication_readiness_2026_09/opendd_expanded_interaction_frontier_v1/README.md).
+
 ## PersonPath22: clip split is not a scene split
 
 Three original MEVA videos and five documented camera codes cross the
