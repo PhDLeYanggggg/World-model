@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched direct spline on OpenDD
+
+63 fresh fits, 50,400 updates at the matched ego EqMotion budget.
+Comoving spline vs CV: +1.136 conservative pp [+0.004, +3.028]
+on seven exposed locations. Excluding the 12-window location in
+sensitivity analysis gives +0.241 [-0.101, +0.610]. Unconditional risk
+passes 11/606. At 1,457 fixed slots/radii, dual passes drop from
+77 to 71, though two-shape hindsight capacity reaches 170. No deployment.
+[Experiment](outputs/publication_readiness_2026_09/opendd_matched_spline_v1/README.md) |
+[Manuscript v149](outputs/publication_readiness_2026_09/evidence_manuscript_v149/README.md).
+
 ## Causal velocity forecast versus OLS4
 
 27 Torch fits, 43,200 updates. The completion-trained spline gains

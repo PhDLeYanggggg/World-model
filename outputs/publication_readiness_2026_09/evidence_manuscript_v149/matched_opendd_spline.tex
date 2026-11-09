@@ -1,0 +1,60 @@
+\section{Matched direct spline forecasting on OpenDD}
+To compare a more complete label roster, we reuse the exposed
+OpenDD pedestrian evaluation~\cite{opendd}: \OpenSplineRows{} windows
+from \OpenSplineRecordings{} recordings at \OpenSplineSites{} sites,
+including \OpenSplineComplete{} fully observed futures. We preserve
+eight observations and twelve requested steps at the original stride
+of twelve source samples. This is a different corpus and sampling
+interval from the moving-drone experiment, not a controlled
+missingness intervention.
+
+Each spline fits on the other six sites for each of three seeds,
+matching the frozen fixed-head ego EqMotion adaptation~\cite{eqmotion}
+on fitting sites, eligible draws, optimizer, robust loss and 800
+updates. The new study runs \OpenSplineFits{} fits
+(\OpenSplineUpdates{} updates). All three spline conditions use the
+same architecture without peers. We compare OLS4 and CV anchoring in
+the same centered representation, then change CV history to the
+focal comoving representation. The latter also changes the scale
+computed by the same past-only preprocessing. No held model selection
+or new calibration is performed.
+
+\begin{center}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+Forecast & ADE & FDE & Lower gain vs. CV \\
+\midrule
+CV & \OpenSplineCVADE & \OpenSplineCVFDE & --- \\
+OLS4 & \OpenSplineOLSADE & \OpenSplineOLSFDE & \OpenSplineOLSGain \\
+Ego EqMotion & \OpenSplineEqADE & \OpenSplineEqFDE & \OpenSplineEqGain \\
+OLS4 spline & \OpenSplineOLSSplineADE & \OpenSplineOLSSplineFDE & \OpenSplineOLSSplineGain \\
+CV spline & \OpenSplineCVSplineADE & \OpenSplineCVSplineFDE & \OpenSplineCVSplineGain \\
+Comoving spline & \OpenSplineMovingADE & \OpenSplineMovingFDE & \OpenSplineMovingGain \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+ADE pools complete tracks, FDE pools available endpoints, and errors
+use publisher coordinates. Gains are CV-normalized pp with 95\%
+paired location intervals after averaging seeds. The comoving versus
+centered CV spline contrast is \OpenSplineMovingCentered{} pp, and
+the comoving spline versus ego EqMotion contrast is \OpenSplineMovingEq{}
+pp. Under the original recording checks the comoving spline passes
+\OpenSplineRiskPasses{} of \OpenSplineRiskViews{} views, with worst
+signed easy degradation of \OpenSplineWorstEasy\%.
+This is development evidence, not an independent deployment result.
+Omitting the smallest location (\OpenSplineSmallComplete{} complete
+windows) in a sensitivity analysis gives \OpenSplineLeaveSmallest{}
+pp versus CV; the primary result retains all seven locations.
+
+Keeping \OpenSplineSlots{} intervention recipients, times and peak
+displacements identical changes the number of dual-reference passes
+from \OpenSplineOldDual{} to \OpenSplineSplineDual{} when the original
+shape is replaced by the comoving spline. The paired lower contrast is
+\OpenSplineSlotEffect{} pp. An outcome-aware choice between original and
+spline yields \OpenSplineSplineCapacity{} feasible views, compared to
+\OpenSplineEqCapacity{} for original plus ego EqMotion. Neither bank
+resolves the \OpenSplineUndefined{} views without selected easy
+reference. The two-choice capacity is not a causal result.

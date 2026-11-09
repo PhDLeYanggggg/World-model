@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I reran the velocity forecast on the better-labeled OpenDD roster,
+matching the training budget of an EqMotion control. It improved
+on constant velocity on average, but not reliably on every location.
+The new forecasts expanded what was possible with outcomes known;
+simply swapping them into the old intervention slots did not help.
+[Matched OpenDD study](outputs/publication_readiness_2026_09/opendd_matched_spline_v1/README.md).
+
 I trained a forecaster that integrates a learned velocity curve.
 One version improves on OLS4 where future positions are labeled,
 but it does not beat OLS4 after accounting for missing positions.

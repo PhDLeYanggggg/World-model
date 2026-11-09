@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v148 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v149 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v149：OpenDD 匹配训练预算与固定介入对照
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_opendd_matched_spline.py --replay
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_opendd_matched_spline_slots.py
+```
+
+去掉第一条的 `--replay` 可训练或续跑。需要现有 OpenDD 开发缓存、
+EqMotion 检查点和固定介入凭证。新旧模型均在六个地点拟合、留一地点，
+核对相同的抽样和更新数。第二条锁定介入对象、时刻和峰值位移，
+同时区分实际替换与事后有标签的候选容量。开发信号不等于部署通过。
+[v149 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v149/README.md)。
 
 ## v148：直接训练因果速度预测器
 
