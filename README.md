@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I used the observed track itself to estimate harm. On the same
+frozen DroneCrowd forecasts, fitting the first four observations and
+checking against the next four predicted recording risk better than
+the transferred model. A conservative follow-up selected views from
+two sources, where the independent forecasts outperformed the
+risk-priced replacements at the same counts.
+[Observed-history risk comparison](outputs/publication_readiness_2026_09/dronecrowd_recording_history_risk_v1/README.md).
+
 I tested calibrating both risk ratios over a whole recording rather
 than requiring each query to pass on its own. Leaving out one source
 at a time, median calibration selected 13 views, of which four passed

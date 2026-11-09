@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: observed history improves risk prediction on fixed paths
+
+History-only risk MAE improves by 1.264 pp [0.845, 1.723] vs the matched
+donor ridge. The point rule selects all 25 opportunities but also 11 risk
+failures. A log-scale residual envelope selects 18 views from two sources;
+18 pass risk and 11 pass both floors. Independent trajectories on the
+same views and counts pass all 18; the independent-only gate selects seven.
+[Frozen-path test, uncertainty and release control](outputs/publication_readiness_2026_09/dronecrowd_recording_history_risk_v1/README.md).
+
 ## DroneCrowd: recording-level calibration recovers four joint passes
 
 At the same query-level replacement counts, stronger risk prices improve
