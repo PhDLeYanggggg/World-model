@@ -50,6 +50,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+联合检索保留八个候选的预算，在评分地点找回更多合格候选，但没有证明
+全网格预测提升。按同一分母拆分可见，已标注贡献接近零，缺失扣减主导。
+[检索复现和缺失分解](../outputs/publication_readiness_2026_09/opendd_joint_retrieval_v1/README.md)。
+
 用训练地点的合格候选学习相对逐个对照的交互收益，再在前八候选中排序。141 个校准机会
 只有 42 个进入短名单，最终选中 22 个；评分地点未证明提升。
 [条件交互收益和候选检索诊断](../outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/README.md)。

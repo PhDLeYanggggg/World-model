@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: joint retrieval increases recall without recovering utility
+
+At the same eight-candidate and 966-slot budgets, held shortlist
+capture increases from 40 to 51 of 150 opportunities, but realized
+capture only increases from 20 to 22. Direct full-grid gain remains
+negative in point estimate, explained by the missing-step debit;
+no calibration threshold passes.
+[Matched retrieval and direct attribution](outputs/publication_readiness_2026_09/opendd_joint_retrieval_v1/README.md).
+
 ## OpenDD: a feasibility shortlist removes useful pair alternatives
 
 Twenty-one donor-trained relative-gain heads compare directly with

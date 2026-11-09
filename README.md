@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I used both feasibility and expected interaction gain to retrieve
+eight candidates. It brought back more good choices, but the selected
+predictions still did not improve the full-grid result. Most of the
+loss came from changed predictions where future pairs were unlabelled.
+[Matched shortlist and missing-label attribution](outputs/publication_readiness_2026_09/opendd_joint_retrieval_v1/README.md).
+
 I trained an interaction score specifically for feasible edits.
 The shortlist had already removed most of the useful pair choices:
 only 42 of 141 calibration opportunities survived the top-eight

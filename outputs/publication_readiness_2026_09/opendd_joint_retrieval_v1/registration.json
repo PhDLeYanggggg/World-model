@@ -1,0 +1,42 @@
+{
+  "arms": [
+    "feasibility8",
+    "joint8"
+  ],
+  "calibration": "unchanged grid, all original nonempty 2 percent tests for both arms",
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_joint_retrieval.py",
+      "sha256": "7ae99601d36a7c61a4383ddbac51e3abe229c342ced3d97461e5ea6ebf32f768"
+    },
+    {
+      "path": "scripts/run_m3w_opendd_conditional_pair_gain.py",
+      "sha256": "44d96fa4a37b55112fea2c4379225165d4457d3f19e03ad9ceade6a0ca3c7025"
+    },
+    {
+      "path": "scripts/report_m3w_conditional_pair_gain.py",
+      "sha256": "49c2dab6afe06d713108816cb1763ae783a33b486774dcb13dca42de143ca1ab"
+    }
+  ],
+  "final_ranking": "both choose highest positive predicted conservative pair gain; otherwise top feasibility",
+  "final_shortlist": 8,
+  "independent_confirmation": false,
+  "match": "same frozen weights, reference, legal assignment menu and per-query radii; more retrieval computation",
+  "new_training": false,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/summary.json",
+    "sha256": "4b91224a88d43b4c046736c759bd7ed09e223829d5257fe0cd7777fd1b5a9c3d"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/freeze.json",
+    "sha256": "50147b5e65bc42e8f282a23417a8731c19e3e14bde336fc6423fae3eb23fea2a"
+  },
+  "previous_shortlist_audit": {
+    "path": "outputs/publication_readiness_2026_09/opendd_conditional_pair_gain_v1/shortlist_audit.json",
+    "sha256": "0f7ef8ab99a68e9bfeb13777f8777bdc67ee504e3575f160868540b05d21b896"
+  },
+  "reserved_outcomes_opened": false,
+  "retain": 4,
+  "retrieval": "four highest feasibility then unused highest equal-weight average ranks of feasibility and full-grid relative gain"
+}
