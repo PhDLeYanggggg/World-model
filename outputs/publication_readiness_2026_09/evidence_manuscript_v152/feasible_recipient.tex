@@ -1,0 +1,44 @@
+\section{Learning from full-record feasible assignments}
+We permit a slot to move to a different visible agent at the same
+query and retain its peak displacement. Both a past-prefix analytic
+shape and a radius-matched spline are available at each legal edge.
+Training menus and spline candidates exclude both the donor and
+outer location. Two teachers maximize the smaller conservative gain
+against CV and OLS4; only one requires easy support and the original
+recording constraints. Infeasible or nonpositive cases teach the
+analytic anchor. The learned edge scores use the same pairwise
+imitation loss and distinct assignment at each query. This draws on
+optimization-based ranking~\cite{mandi2022rank} but does not
+differentiate through the solver or impose recording constraints at
+inference. We run \FeasibleRecipientFits{} fresh fits
+(\FeasibleRecipientUpdates{} updates) across seven locations and three seeds.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Policy & Undefined & Risk passes & Dual passes \\
+\midrule
+Analytic anchor & \FeasibleRecipientAnchorUndefined & \FeasibleRecipientAnchorRisk & \FeasibleRecipientAnchorDual \\
+Past-prefix substitution & \FeasibleRecipientPrefixUndefined & \FeasibleRecipientPrefixRisk & \FeasibleRecipientPrefixDual \\
+Gain teacher & \FeasibleRecipientGainUndefined & \FeasibleRecipientGainRisk & \FeasibleRecipientGainDual \\
+Risk teacher & \FeasibleRecipientRiskUndefined & \FeasibleRecipientRiskRisk & \FeasibleRecipientRiskDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every policy uses 1,457 slots across 606 recording--seed views.
+Risk versus gain teaching gives \FeasibleRecipientPrimary{} conservative
+percentage points, with 3,000 paired location resamples. Against
+past-prefix substitution the contrast is \FeasibleRecipientAgainstPrefix{}.
+The risk teacher helps relative to the gain teacher on some risk checks,
+but does not recover its accuracy or beat either fixed-recipient control.
+
+An outcome-aware solve with analytic paths alone qualifies
+\FeasibleRecipientAnalytic{} views; the same solve with both families
+qualifies \FeasibleRecipientBoth{}. The 78 additional views include
+76 at just two exposed locations. Fixing recipients and radii chosen
+by the risk-trained model leaves only \FeasibleRecipientChosen{}
+qualifiable views even with oracle shape selection. The full-menu
+capacity cannot be attributed to the online policy; it also cannot
+resolve missing selected easy support by re-scoring the same paths.

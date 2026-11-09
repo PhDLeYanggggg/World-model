@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let the model change who receives an edit while keeping its time and
+displacement fixed. Adding the spline expanded the number of feasible
+plans with outcomes known, but training on those plans did not beat the
+past-prefix rule. Fixing the learned recipients lost much of that
+potential even when I re-optimized path shape afterwards.
+[Recipient study](outputs/publication_readiness_2026_09/opendd_feasible_recipient_imitation_v1/README.md).
+
 I recalibrated the spline choice on the slots the controller actually
 uses. The guarded rule made no spline substitutions and did not pass
 more recordings. Only 55 of 1,402 edited queries had two slots, which

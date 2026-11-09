@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Full-record recipient imitation on OpenDD
+
+42 fresh fits, 25,200 updates, identical 1,457 outer slots and radii.
+Adding spline edges to analytic recipients increases hindsight capacity
+from 206 to 284/606. Risk imitation passes 76 views against 90 for past
+prefix and loses -0.019 conservative pp [-0.037, -0.003]. Re-solving
+shape at the risk student's recipients gives only 168 witnesses. No
+deployment promotion or independent confirmation.
+[Experiment](outputs/publication_readiness_2026_09/opendd_feasible_recipient_imitation_v1/README.md) |
+[Manuscript v152](outputs/publication_readiness_2026_09/evidence_manuscript_v152/README.md).
+
 ## OpenDD streaming-slot calibration
 
 63 fresh count fits, 44,100 updates. Both guarded calibrations keep the
