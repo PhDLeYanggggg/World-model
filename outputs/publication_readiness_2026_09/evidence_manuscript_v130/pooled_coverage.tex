@@ -1,0 +1,38 @@
+\section{Pooling predicted slack at broader coverage}
+We remove the query cap and allow all frozen causal proposals. In the
+current query, an action with predicted easy support and nonpositive
+all/easy excess starts the pool. Subsequent actions must fit both
+predicted budgets; no later queries are used. The observed recording
+rule is unchanged. The relaxed independent screen makes
+\CoveragePoolMarginalEdits{} edits and passes \CoveragePoolMarginalPass{}/\CoveragePoolViews{}
+views. The uncapped pooled rule makes \CoveragePoolEdits{} edits, passes
+\CoveragePoolPass{}/\CoveragePoolViews{}, and qualifies \CoveragePoolQual{}/9 calibration
+cells. Predicted risk constraints did not deliver broader coverage.
+
+The fitted head identifies a seed action in \CoveragePoolEstimatedDonor{}
+of \CoveragePoolQueries{} repeated query views; the corresponding label-aware
+count is \CoveragePoolTrueDonor{}. On true donor actions, the probability
+screen alone retains \CoveragePoolProbability{} queries, whereas the two
+predicted excess signs alone retain \CoveragePoolBothCosts{}.
+Replacing only predicted support and risk
+with their realized values expands coverage to \CoveragePoolRiskOnlyEdits{}
+edits, but its full-grid lower gain versus CV is \CoveragePoolTrueRiskCV{}
+percentage points. Replacing both risk and gain gives
+\CoveragePoolRiskGainEdits{} edits, \CoveragePoolTruePass{} risk passes,
+and conservative gains of \CoveragePoolTrueBothCV{} versus CV and
+\CoveragePoolTrueBothOLS{} versus OLS4. These are hindsight interventions
+into the decoder, not learned alternatives. All intervals are source
+bootstrap intervals after averaging the seeds.
+
+Initial joint hindsight optimization at the recording level verifies
+\CoveragePoolCapEight{}, \CoveragePoolCapWide{}, and \CoveragePoolUncappedInitial{} dual-reference
+witnesses out of \CoveragePoolViews{} at query caps eight, 32, and no cap,
+respectively. For unresolved uncapped views we evaluate a Lagrangian
+upper bound. A convex weighting combines the two gains, and nonnegative
+multipliers penalize the three risk excesses and the easy support
+constraint. The relaxed maximum separates into each agent's best path
+or zero for CV, making any dual feasible value an upper bound. After
+this continuation, \CoveragePoolUncapped{} views have verified witnesses and
+\CoveragePoolUnresolved{} are still unresolved.
+These calculations separate the availability of favorable paths from
+the ability to identify them without outcomes.

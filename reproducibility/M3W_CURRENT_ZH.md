@@ -1,8 +1,26 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v129 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v130 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v130：广覆盖策略与风险误判
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_pooled_coverage.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_pooled_support.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_pooled_support_funnel.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_pooled_coverage_capacity.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_uncapped_dual_certificate.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_pooled_coverage_replay.py
+```
+
+第一条使用本机冻结模型和预测复核选择；第二到第五条是标签可见的诊断，不能
+用来选正式策略。应得到 244 个无上限预测改动、校准 0/9，以及 53/72 个事后
+双基线可行视图。容量求解逐录像保存，恢复前核对运行目录的
+`capacity_heartbeat.json`、PID 及绑定哈希。最后一条生成只含匿名录像统计的
+本地 ZIP；解压后在 NumPy 环境运行 `replay.py` 可复核标量表，不需原始数据
+或 Torch，也不复现训练、邻居几何和求解器。
 
 ## v129：固定对象的候选轨迹与覆盖率下界
 
@@ -143,6 +161,6 @@ PID 对应的进程确实退出，再用原命令去掉 `--replay`。训练每 1
 
 ## 构建论文
 
-参见 [v126 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v126/README.md)。
+参见 [v130 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v130/README.md)。
 主文、补充材料与生成图的命令均由对应的冻结读出生成。匿名复现只展示可公开的
 汇总量，不包含原始轨迹、视频、模型权重或本机路径。当前工作稿没有提交。

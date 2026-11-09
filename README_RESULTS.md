@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Pooled Coverage and the Risk Prediction Gap
+
+Uncapped predicted pooling makes 244 edits and passes 5/72; relaxed
+independent screening makes 12,674 and passes 10/72. Calibration is
+0/9. Of 2,453 true-seed queries, the easy excess sign retains only 72
+on the actual seed action. Realized risk alone restores 148,073 edits
+but not a positive lower gain. Exact verification of primal witnesses
+after the uncapped dual continuation gives 53/72 dual-reference wins,
+13 excluded and six undefined. Hindsight only; no new training or
+independent readout.
+[Results and replay](outputs/publication_readiness_2026_09/moving_cv_pooled_coverage_v1/README.md) |
+[Manuscript v130](outputs/publication_readiness_2026_09/evidence_manuscript_v130/README.md).
+
 ## Lead-Dependent Path Mixtures and the Coverage Limit
 
 18 matched fits, 18,000 updates, 2,317 fixed recipients. Shared/lead

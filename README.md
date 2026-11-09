@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried sharing predicted risk slack across agents so the forecaster
+could intervene more often. The policy barely expanded coverage and
+still did not qualify. With outcomes available, the same full menu
+could beat both references under the original rule in 53 of 72
+views. The next question is how to identify those combinations
+before seeing the result.
+[Coverage and support diagnosis](outputs/publication_readiness_2026_09/moving_cv_pooled_coverage_v1/README.md).
+
 I trained two trajectory mixtures to see whether changing the path itself
 could recover the missing gains. Making the weights vary along the forecast
 did not improve the shared-weight control. More importantly, even perfect
