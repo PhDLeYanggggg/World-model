@@ -26,6 +26,17 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：真实车距的等容量消融
+
+`.venv-pytorch/bin/python scripts/run_m3w_vehicle_pair_geometry.py` 依次运行
+`freeze`、`score`。189 次训练比较去位置、打乱位置、真实位置，固定预算和
+原 2% 规则。真实位置未改善保守误差，保留 CV。
+[实验结果和命令](../outputs/publication_readiness_2026_09/opendd_vehicle_pair_geometry_v1/README.md)。
+
+Songdo 外部准备可运行 `.venv-pytorch/bin/python scripts/audit_m3w_songdo_publisher_footprints.py`。
+仅读官方目录和地图中心文件；20 个路口初筛为 17 个地图组，不评分、不分正式组。
+[来源初筛说明](../outputs/publication_readiness_2026_09/songdo_publisher_footprints_v1/README.md)。
+
 ## OpenDD：直接训练两车介入结果
 
 `.venv-pytorch/bin/python scripts/run_m3w_vehicle_pair_learning.py` 依次运行

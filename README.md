@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared true vehicle spacing with no spacing and shuffled spacing
+at identical model size and edit budget. True positions did not
+improve conservative trajectory or relative-motion gain.
+[Geometry ablation](outputs/publication_readiness_2026_09/opendd_vehicle_pair_geometry_v1/README.md).
+For a new external test, I screened Songdo's published map cutouts
+before reading any trajectories. [Source-overlap screen](outputs/publication_readiness_2026_09/songdo_publisher_footprints_v1/README.md).
+
 I trained the selector directly on two-edit outcomes. It found more
 feasible pairs than the earlier rule, but an additive model trained on
 the same labels found just as many. The joint model still did not

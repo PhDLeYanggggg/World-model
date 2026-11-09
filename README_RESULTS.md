@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: observed spacing does not improve matched selection
+
+189 equal-size fits at the same 17,748 edits per arm. Dual passes:
+3,059 motion-only, 2,964 permuted, and 2,890 true geometry. The true
+geometry minus motion conservative trajectory contrast is -0.001876 pp
+[-0.003060, -0.000970]. Only 29/82 geometry releases pass. No promotion.
+[Geometry study](outputs/publication_readiness_2026_09/opendd_vehicle_pair_geometry_v1/README.md).
+
+## Songdo: publisher geometry identifies three map overlaps
+
+Twenty road intersections on four dates. A/B, F/G and K/L cutouts
+overlap, giving 17 provisional map components, not independently
+verified trajectory groups. No trajectories, outcomes or split.
+[Publisher audit](outputs/publication_readiness_2026_09/songdo_publisher_footprints_v1/README.md).
+
 ## OpenDD vehicles: direct pair supervision improves pass count, not joint utility
 
 126 fits at 17,748 matched edits per arm. Dual passes are 1,979
