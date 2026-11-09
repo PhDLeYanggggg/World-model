@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v152 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v153 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v153：单查询替换的 easy 参考保护
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_opendd_counterfactual_support.py --replay
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_counterfactual_support.py
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_opendd_factored_counterfactual_support.py --replay
+```
+
+去掉 `--replay` 可训练或续跑。需要 v152 的匹配候选、流式介入与检查点。局部、整段
+和分解模型使用相同的介入时刻、数量和位移。中间命令是使用结果标签的事后上界，
+不是在线策略或独立确认。
+[v153 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v153/README.md)。
 
 ## v152：固定预算，学习整段可行的对象和形状分配
 

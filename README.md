@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a model could spot a replacement that would erase a
+recording's easy reference. Predicting loss for the whole recording
+did not beat judging the current query. Breaking the rare event into
+two parts helped preserve reference relative to direct prediction,
+but still did not improve the overall decision.
+[Reference-loss experiment](outputs/publication_readiness_2026_09/opendd_counterfactual_support_v1/README.md).
+
 I let the model change who receives an edit while keeping its time and
 displacement fixed. Adding the spline expanded the number of feasible
 plans with outcomes known, but training on those plans did not beat the

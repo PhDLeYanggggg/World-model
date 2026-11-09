@@ -1,0 +1,51 @@
+\section{Protecting reference under one query substitution}
+We replace at most one query plan per recording, without changing
+any query's edit count or slot radii. This makes the label for a
+candidate substitution conditional on a fixed remainder of the
+original plan. A local target records loss of selected easy
+reference in the query; a whole-record target also requires that
+no unchanged slot supplies it. Only training uses those outcomes.
+In \CFSupportFits{} matched fits, both heads estimate a conservative
+advantage over the anchor and differ only in the reference-loss
+label. The policy takes the first query with a positive predicted
+margin and estimated loss probability at most 0.20. This fixed
+threshold is not conformal risk control~\cite{crc} or a certificate
+of the original 2\% score.
+
+Because only 5.7\% of donor options lose the whole-record reference,
+we also train \CFSupportFactorFits{} follow-up models. They multiply
+the local loss probability by the probability of whole-record loss
+conditional on local loss. This arm reuses exposed development data;
+the gate and outcome scorer do not change.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Policy & Queries & Lost & Risk & Dual \\
+\midrule
+Past prefix & --- & \CFSupportPrefixLoss & \CFSupportPrefixRisk & \CFSupportPrefixDual \\
+Direct local & \CFSupportLocalReplaced & \CFSupportLocalLoss & \CFSupportLocalRisk & \CFSupportLocalDual \\
+Direct whole & \CFSupportWholeReplaced & \CFSupportWholeLoss & \CFSupportWholeRisk & \CFSupportWholeDual \\
+Factorized whole & \CFSupportFactorReplaced & \CFSupportFactorLoss & \CFSupportFactorRisk & \CFSupportFactorDual \\
+Same fit, local gate & \CFSupportFactorLocalReplaced & \CFSupportFactorLocalLoss & \CFSupportFactorLocalRisk & \CFSupportFactorLocalDual \\
+Factorized, matched gain & \CFSupportMatchedReplaced & \CFSupportMatchedLoss & \CFSupportMatchedRisk & \CFSupportMatchedDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All policies use 1,457 edits across 606 recording--seed views.
+Direct whole versus direct local is \CFSupportWholeLocal{} conservative
+pp; the factorized product versus its own local gate is
+\CFSupportFactorLocalContrast{} pp (95\% paired location intervals).
+The product protects some references relative to its same-query gain
+control, but does not increase dual passes. Direct local gains two
+dual passes over past prefix while passing fewer risk checks, with
+conservative utility \CFSupportLocalPrefix{} pp versus past prefix.
+
+With outcomes known, one substitution is enough for
+\CFSupportOracle{} views. The direct whole model fired on
+\CFSupportOffered{} queries where the menu had a qualifying option
+and picked one in \CFSupportHit{}. The gap is not solely a problem
+with the risk score at an already chosen query. Hindsight capacity
+does not change deployment or the independent confirmation status.

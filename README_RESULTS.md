@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Counterfactual reference loss on OpenDD
+
+63 fresh fits, 37,800 updates. At unchanged query counts and radii,
+direct whole-record loss gives 84 dual passes versus 92 for local.
+The factorized model drops 11 fewer references than direct whole
+but gives 86 dual passes versus 91 using its own local readout.
+One replacement with outcomes known can qualify 225/606; 143 of
+148 added witnesses are at two locations. No deployment promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_counterfactual_support_v1/README.md) |
+[Follow-up](outputs/publication_readiness_2026_09/opendd_factored_counterfactual_support_v1/README.md) |
+[Manuscript v153](outputs/publication_readiness_2026_09/evidence_manuscript_v153/README.md).
+
 ## Full-record recipient imitation on OpenDD
 
 42 fresh fits, 25,200 updates, identical 1,457 outer slots and radii.
