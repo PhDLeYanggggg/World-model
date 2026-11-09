@@ -1,0 +1,57 @@
+{
+  "batch": 96,
+  "calibration": "all distinct nonempty prefixes under original standalone dual-floor and three 2 percent tests",
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_temporal_refit.py",
+      "sha256": "18935cfa3d72a29b7aeb8b011df868511dae840e30ad55ba4d5edf18390d02c7"
+    },
+    {
+      "path": "scripts/run_m3w_av2_learned_reference.py",
+      "sha256": "b67174903b51941105f734834956f69471071c8d37318c73a2b9ffba144baaa4"
+    }
+  ],
+  "design": {
+    "base_on_union": [
+      "base",
+      "union"
+    ],
+    "refit_base": [
+      "base",
+      "base"
+    ],
+    "refit_union": [
+      "union",
+      "union"
+    ],
+    "union_on_base": [
+      "union",
+      "base"
+    ]
+  },
+  "donor_sampling": "same scenes and legal actions; one arm receives base, other replaces actions with uniformly drawn temporal shape",
+  "independent_confirmation": false,
+  "init": "same donor-only existing additive weights for both refits",
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_temporal_menu_v1/summary.json",
+    "sha256": "cd7f792d425adeb5040b5ab047af5c25a2e6d1ad584e0bda9099307cf7d3f4bd"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_temporal_menu_v1/freeze.json",
+    "sha256": "6821e231b3f30303e52f03b1370575c0ba21ea4a5857a1dd9bf6954528a1546a"
+  },
+  "primary": "refit_union",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selection": "unchanged independent scoring; both base and union decoding for each refit",
+  "steps": 320,
+  "torch_threads": 4,
+  "training": "same independent-action regression and edited easy loss; no joint labels or model"
+}

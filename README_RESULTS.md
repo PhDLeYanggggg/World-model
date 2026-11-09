@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: learning timing variants partly closes the ranking gap
+
+With the union bank fixed, matched temporal refitting raises
+eligible references from 49 to 59 and views with a qualifying
+alternative from 40 to 54. The primary's three calibrated held
+releases all fail, and forced conservative trajectory gain is
+-3.61 pp vs the original frozen reference.
+[Crossed training and decoding](outputs/publication_readiness_2026_09/av2_temporal_refit_v1/README.md).
+
 ## AV2: timing variants expand candidate supply but not frozen selection
 
 At the original two peaks, timing variants raise the fixed-reference
