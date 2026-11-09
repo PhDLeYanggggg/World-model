@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Past Backtests For Motion Expert Mixtures
+
+Nine matched fits, 9,000 updates. Prefix features give +1.635 observed
+pp but -7.313 full-grid lower pp against kinematics alone. Matching
+375,510 recipients and peaks reduces the observed gain to +0.012 pp;
+the lower contrast is -0.167 pp [-0.303, -0.062]. At lead 12, pairwise
+order agreement is 74.0%, yet the backtest winner loses 7.441 pp to
+OLS4 on the same complete targets. No original risk pass or promotion.
+[Experiment](outputs/publication_readiness_2026_09/moving_prefix_expert_mixture_v1/README.md) |
+[Supplement v120](outputs/publication_readiness_2026_09/evidence_manuscript_v120/README.md).
+
 ## DUT Stronger Motion Baseline At Identical Edits
 
 On 469 nonoverlapping queries, raw EqMotion gains +37.92% complete ADE

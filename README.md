@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a short backtest inside the observed trajectory could
+tell a model which motion forecast to trust. It improved some observed
+errors, but the advantage nearly vanished at the same edit size. The
+backtest still ranked most candidate pairs correctly at step 12, yet
+its chosen forecast lost to OLS4. I did not use it to replace the baseline.
+[Past-backtest experiment](outputs/publication_readiness_2026_09/moving_prefix_expert_mixture_v1/README.md).
+
 On DUT I checked the apparent EqMotion advantage against a stronger
 four-point motion baseline. OLS4 had lower error in both sites and all
 three seeds, including on the full earlier roster. At the same edited

@@ -1,5 +1,13 @@
 # M3W 本地与 CREATE 操作记录
 
+## MovingDroneCrowd++ 开发：历史内回测与运动预测混合
+
+本机 arm64 Torch 四线程、零加载进程，9 次拟合、9,000 次
+更新，每 100 步保存检查点与 heartbeat。按既有 9 个拟合组训练，
+冻结后再在 14 个开发组评分；零更新回放一致。等位移对照和
+分预测步诊断未证明可替换基线。未新增 CREATE 作业，原 2% 与
+DroneCrowd 确认封存不变。[命令和结果](moving_prefix_expert_mixture_v1/README.md)。
+
 ## DUT 开发：强运动基线和等幅对照
 
 本机 arm64 Torch 四线程、零加载进程；冻结三套 EqMotion

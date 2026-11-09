@@ -1,0 +1,79 @@
+{
+  "arms": [
+    "static",
+    "kinematic",
+    "prefix"
+  ],
+  "batch": 128,
+  "confirmation_access": false,
+  "control": "identical network, draws, initialization and step budget; zero feature blocks",
+  "eval": "all 34 exposed A recordings/14 groups, no tuning or horizon change",
+  "experts": [
+    "cv",
+    "ols4",
+    "ols8",
+    "damped_ols4",
+    "stable_turn",
+    "stationary"
+  ],
+  "files": [
+    {
+      "bytes": 10373,
+      "path": "scripts/run_m3w_prefix_expert_mixture.py",
+      "sha256": "1de84918d6bb2ab8dc4f35224a3669281fcaaf700994f16fe6904ea3edad38b2"
+    },
+    {
+      "bytes": 3891,
+      "path": "src/world_model/m3w_prefix_expert_mixture.py",
+      "sha256": "4ae79d3b421067df4a981ebf62e151caed06964cae04102f421122efa9d51e8c"
+    },
+    {
+      "bytes": 15435,
+      "path": "scripts/run_m3w_recording_count.py",
+      "sha256": "4653be13c1d6dd0a7814199afa86fe32fbc7bcf09a7771cc7f772bab270a4976"
+    }
+  ],
+  "fit": "same nine original fit groups; observed-step distance normalized by past speed",
+  "inputs": "eight positions only; prefix replay from observed prefixes 4..7 into observed suffix",
+  "original_2pct": true,
+  "parents": [
+    {
+      "bytes": 5712,
+      "path": "outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/registration.json",
+      "sha256": "edaddcb930a65b4abea9efe381dab3593f856183420bd7d96f01cf4a1ed8bfbf"
+    },
+    {
+      "bytes": 3355,
+      "path": "outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/forecast_freeze.json",
+      "sha256": "564714453316ad319ecb2a6099d3433ceea8e0508ef630dbb7aba5697a987396"
+    },
+    {
+      "bytes": 1308379,
+      "path": "outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/analysis.json",
+      "sha256": "09bfe6216781f6a0d4e14dc0bc408a07b09d892445f7b0ea58e914a6faa088d7"
+    },
+    {
+      "bytes": 3171,
+      "path": "outputs/publication_readiness_2026_09/moving_direct_kinematic_forecast_v1/replay_execution.json",
+      "sha256": "df6bed7065d8177142adec962bf633b8c582904e8a8211ba96a2fe8cd13c39ee"
+    },
+    {
+      "bytes": 1864,
+      "path": "outputs/publication_readiness_2026_09/moving_easy_aligned_forecast_v1/fit_population.json",
+      "sha256": "834743f6e691b95ce6bf54665d99bcee12dde97789c5500c2dc735e167f935da"
+    },
+    {
+      "bytes": 34582,
+      "path": "outputs/publication_readiness_2026_09/moving_recording_forecast_replay_v1/registration.json",
+      "sha256": "b883817de94cdca057e7e2505b39f2f56cd3ebbc0c783c39527e27bc48555a4b"
+    }
+  ],
+  "primary": "paired full-grid gain versus OLS4, CV and matched kinematic control",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 1000,
+  "train_only_selection": true
+}

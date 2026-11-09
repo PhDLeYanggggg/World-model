@@ -1,0 +1,58 @@
+\section{Does A Short Backtest Identify A Better Path?}
+
+Feature-based forecast averaging is established~\cite{fforma}.
+We test whether retrospective error inside just eight observed
+positions helps choose a twelve-step motion path. At prefix lengths
+four through seven, each expert predicts the remaining observed
+positions. Its errors relative to OLS4 become features of a
+whole-path convex mixture. Each arm uses the same six analytic
+paths, architecture, initialization and training draws. Zeroing
+the feature blocks gives static and kinematics-only controls.
+Nine fits use 69,746 targets from nine original fitting groups;
+the 125,540 exposed targets in 14 disjoint source groups are
+scored only after freezing all forecasts.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Prefix mixture versus & Known (pp) & Full-grid lower (pp) \\
+\midrule
+Kinematic mixture & \PrefixExpertRawKin \\
+OLS4 & \PrefixExpertRawOLS \\
+Kinematic, equal peak & \PrefixExpertMatchedKin \\
+OLS4, equal peak & \PrefixExpertMatchedOLS \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The equal-peak control preserves \PrefixExpertCount{} nonidentity
+edits across repeated seeds, with identical recipients and peak
+displacement from CV. The observed gain against the kinematic
+mixture mostly vanishes. None of the mixtures passes the original
+recording risk contract on any of the 102 repeated views.
+
+For \PrefixExpertComplete{} complete targets we also take the best
+expert by mean backtest error, without a learned mixture. Agreement
+is the sign agreement of nontied expert-pair errors. At each lead
+we compare that single prefix winner to OLS4 on the same targets.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Lead (annotation steps) & Agreement (\%) & Gain (pp) \\
+\midrule
+1 & \PrefixExpertOne \\
+4 & \PrefixExpertFour \\
+8 & \PrefixExpertEight \\
+12 & \PrefixExpertTwelve \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Agreement is higher at lead 12 than at lead 1, but the selected expert's cost
+advantage does not. Counting correct orderings does not weight
+the cost of a wrong choice. This is a diagnostic on the exposed
+roster, not a learned calibration rule, deployment result, or
+independent confirmation.
