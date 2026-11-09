@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: observed context leaves release unchanged; the reference limits capacity
+
+Thirty-six gate fits leave the candidate paths unchanged.
+All nonempty held releases fail. The original two-slot menu
+contains a qualifying pair in 334/1,020 views with hindsight,
+versus 48 with the fixed reference. In Palo Alto the counts
+are 16/54 versus 0/54. This is capacity, not a learned result.
+[Context ablation and exact capacity audit](outputs/publication_readiness_2026_09/av2_observability_v2/README.md).
+
 ## AV2: paired qualification recovers more options, but no held release
 
 At the same 2,952 edits, the direct rank selects 9 of 48

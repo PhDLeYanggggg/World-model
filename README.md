@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether the shorter tracks around a scene improve
+the intervention decision. They did not fix release. The
+same forecast menu does contain better references with
+hindsight, so the next question is whether I can learn
+to choose them using only observed motion.
+[Observed context and reference capacity](outputs/publication_readiness_2026_09/av2_observability_v2/README.md).
+
 I separated the decision to intervene in a scene from the
 choice of which agents to edit. This recovered more qualifying
 choices, but the one calibration threshold that passed did

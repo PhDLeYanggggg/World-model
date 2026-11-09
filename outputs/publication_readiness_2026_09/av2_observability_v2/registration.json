@@ -1,0 +1,79 @@
+{
+  "ablation": "same initialization, training draws and heads; mask context for motion control; direct and factored readouts share each fit",
+  "batch": 64,
+  "calibration": "original exact both-arm prefix, no threshold from held labels",
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_observability.py",
+      "sha256": "0e150fe9179830deddc132ef79b7b0028778af52e42446946e2f11f3c9f1b61e"
+    },
+    {
+      "path": "src/world_model/m3w_av2_observability.py",
+      "sha256": "60158a915e57eb238021e5bb8785a873bc30db5d244cfd14dcbea514c4b76f0d"
+    }
+  ],
+  "columns": [
+    "track_id",
+    "timestep",
+    "position_x",
+    "position_y",
+    "observed",
+    "city"
+  ],
+  "context": "observed-only neighbor histories including fragments outside the scored roster; no category, actor type, map or stored velocity",
+  "fixed_decision": "same paths and direct candidate score as prior run; only rerank scenes",
+  "forecast": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61
+  ],
+  "independent_confirmation": false,
+  "modes": [
+    "motion_direct",
+    "motion_factored",
+    "context_direct",
+    "context_factored",
+    "fixed_direct",
+    "fixed_query_weighted"
+  ],
+  "observation": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_paired_qualification_v1/summary.json",
+    "sha256": "834c2d019ded64eb5b652b45fba1494a9bc57d82c4ce5bf6687036e2e0530483"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_paired_qualification_v1/freeze.json",
+    "sha256": "d7801093a095b498176f5d1d785760136e97a5b4bdd667a2fad112da30a4b380"
+  },
+  "primary": "context_factored",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "supervision": "donor-only: edited easy support S, exact reference eligibility A, A conditional on S, per-actor future coverage and easy given any label",
+  "torch_threads": 4,
+  "workers": 0
+}
