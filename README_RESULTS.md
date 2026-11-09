@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Okutama: separate-source transfer on nongenerated keyframes
+
+The 33 training clips yield 91 windows with at least two complete
+futures at annotation stride ten, from 16 supported scenario groups
+at one facility. Frozen relative selection loses 3.15 pp to CV and
+does not establish a conservative gain over matched additive.
+[Annotation cadence, motion baselines and frozen transfer](outputs/publication_readiness_2026_09/okutama_label_histories_v1/README.md).
+
 ## OpenDD: feasible-subset supervision does not fix admission
 
 The forced-feasibility label is more learnable than membership in one

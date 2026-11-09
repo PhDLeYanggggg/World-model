@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested the frozen OpenDD policy on a separate aerial dataset,
+Okutama-Action. Filtering out generated boxes exposed a coarser
+annotation cadence. On those keyframes the joint policy did not
+beat constant velocity or establish a conservative pair gain.
+[Okutama source audit and transfer](outputs/publication_readiness_2026_09/okutama_label_histories_v1/README.md).
+
 I trained models to recognize edits that can belong to a beneficial,
 risk-feasible subset. The broader teacher labels were easier to predict,
 but did not improve the decisions at the same edit budget.
