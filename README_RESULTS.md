@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Candidate scope crossed with query budgets
+
+Verified hindsight witnesses on 72 development views: narrow/exact
+5, full/exact 19, narrow/free 5, full/free 53. Six full/exact and
+seven narrow/free views remain unresolved. In the full bank,
+relaxing counts increases the source-balanced verified rate by
+43.39 pp [17.46, 70.37]. The verified full/free plans edit a median
+89.24% of rows; this is not the minimum needed or a deployed rate.
+[Factorial audit and anonymous replay](outputs/publication_readiness_2026_09/moving_cv_budget_menu_factorial_v1/README.md) |
+[Manuscript v134](outputs/publication_readiness_2026_09/evidence_manuscript_v134/README.md).
+
 ## Whole-query feasible supervision
 
 27 fits and 27,000 updates at 54,748 edits per matched arm.

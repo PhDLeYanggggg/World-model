@@ -1,8 +1,22 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v133 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v134 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v134：候选范围与查询改动数量的四组对照
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_cv_budget_menu_factorial.py --replay
+.venv-pytorch/bin/python scripts/verify_m3w_cv_budget_menu_inclusion.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_budget_menu_replay.py
+```
+
+第一条核验本地求解见证；去掉 `--replay` 可以续跑缺失部分。第二条核验放宽
+限制后仍成立的见证，第三条生成匿名 ZIP。解压后只用 NumPy 运行
+`replay.py` 可复核四组计数和分组区间，不需要轨迹或权重。按窄/完整候选
+与固定/自由数量交叉，已验证计数是 5/19/5/53，另有 13 个条件内视图未决。
+这不是策略泛化结果。[v134 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v134/README.md)。
 
 ## v133：整组改动监督与固定配额容量
 

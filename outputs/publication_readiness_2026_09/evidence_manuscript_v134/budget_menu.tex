@@ -1,0 +1,37 @@
+\section{Crossing candidate scope and query budgets}
+We separate the small slate menu from its frozen count restriction
+on the same 24 development recordings and three seeds. With exact
+counts we use the previously fixed number of edits in every query.
+With relaxed counts the narrow arm can choose any length of the same
+five causal prefix rankings, the original slate, or no edits. The
+full bank can choose any legal path, at most one per agent, in either
+count condition. All four use the original CV risk and support rule
+and must beat CV and OLS4 on conservative full-grid utility.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Condition & Verified & Excluded & Unsupported & Open \\
+\midrule
+Narrow / exact & \CapacityNarrowExactStatus \\
+Full / exact & \CapacityFullExactStatus \\
+Narrow / relaxed & \CapacityNarrowRelaxedStatus \\
+Full / relaxed & \CapacityFullRelaxedStatus \\
+\bottomrule
+\end{tabular}
+\end{center}
+Each row has \CapacityViews{} recording--seed views. Exclusions are
+risk infeasibility or a negative conservative upper bound. When a
+solve is unresolved, a verified witness from a nested condition is
+carried forward only after rescoring it under the wider condition. With
+frozen counts, expanding the menu changes the source-balanced
+verified rate by \CapacityWidthFixed{} pp; relaxing counts within the
+narrow menu changes it by \CapacityBudgetNarrow{} pp. At relaxed
+counts, the full bank's change over the narrow menu is
+\CapacityWidthRelaxed{} pp. Within the full bank the effect of
+relaxing counts is \CapacityBudgetFull{} pp. Intervals are paired,
+3,000-draw source bootstrap intervals for verified witness rates,
+not intervals for unobserved capacity. The four comparisons describe
+retrospective feasible sets, not deployable estimators or risk guarantees.

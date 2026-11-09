@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated the candidate menu from the number of edits it could
+make. Knowing the outcomes, the narrow menu could find valid plans
+in 5 of 72 views. The full bank recovered 19 at the same query
+counts and 53 when counts were free. This identifies room for a
+better forecast decision, but it does not show the model can find
+those plans in advance.
+[Candidate scope and edit counts](outputs/publication_readiness_2026_09/moving_cv_budget_menu_factorial_v1/README.md).
+
 I trained a forecaster to rank whole groups of edits using examples
 that had passed the original recording-level rule. That supervision
 did not improve the conservative comparison at equal edit counts.
