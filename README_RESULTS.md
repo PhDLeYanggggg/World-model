@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Screening Order With Frozen Gain and Risk Heads
+
+At 2,317 exact-count edits, nominating first gives 13/72 original risk
+passes, adding full OLS4 gives 10/72, and screening the whole menu first
+gives 9/72. Coupled screening gives 11/72 and reduces worst signed easy
+change from +32.32% to +18.99% versus independent full screening, but its
+direct conservative utility contrast is -0.0389 pp [-0.1095, -0.0004].
+Calibration qualifies 0/9. No new training, deployment or independent readout.
+[Experiment and freeze](outputs/publication_readiness_2026_09/moving_cv_screen_order_v1/README.md).
+
 ## Optional CV-Relative Edits and the Fixed-Nominee Bottleneck
 
 18 fits, 18,000 updates on disjoint fitting-source roles; 0/9 calibration

@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether showing the risk model more candidate paths would recover
+some of the missed gains. Giving it the entire menu, or just keeping the OLS4
+alternative, reduced the worst easy-case regression at the same edit count.
+Fewer recordings met the full risk rule, though, and no setting qualified on
+calibration. I kept the existing fallback.
+[Screening-order experiment](outputs/publication_readiness_2026_09/moving_cv_screen_order_v1/README.md).
+
 I trained a model to screen edits for predicted harm and missing support.
 On held fitting sources, screening increased risk passes at the same edit
 count, but no calibration qualified. A separate hindsight check showed why
