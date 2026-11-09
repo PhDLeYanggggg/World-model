@@ -1,8 +1,25 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v126 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v127 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v127：先筛候选与成对排序
+
+有本机冻结的拟合来源数据、风险模型和来源隔离预测时，下面两个入口只用开发
+角色。第一个复算筛选顺序，第二个加载训练检查点并精确复算选择和评分，不更新
+参数。移除 `--replay` 会从现有检查点续跑，每 100 次更新保存一次；先检查
+`data/stage_cvpr2027_experiments/moving_cv_paired_nomination_v1/heartbeat.json`
+中的 PID 和训练步，再决定是否恢复。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_screen_order.py
+.venv-pytorch/bin/python scripts/run_m3w_cv_paired_nomination.py --replay
+```
+
+匹配预算为每组 2,317 次改动；两种排序都只通过 14/72 个录像视图，校准均为
+0/9。已知 easy 最差退化 0.84% 不等于完整 2% 风险门槛通过。论文构建命令见
+[v127 说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v127/README.md)。
 
 ## 本机环境
 

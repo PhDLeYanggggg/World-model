@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared learning a preference between two paths with predicting each
+path's value on its own. At the same edit count, the preference loss reduced
+the worst known easy regression from 32.11% to 0.84%, but did not improve
+the number of recordings that met the full risk rule or show a reliable
+utility gain. The calibration still rejected both policies.
+[Matched ranking experiment](outputs/publication_readiness_2026_09/moving_cv_paired_nomination_v1/README.md).
+
 I tested whether showing the risk model more candidate paths would recover
 some of the missed gains. Giving it the entire menu, or just keeping the OLS4
 alternative, reduced the worst easy-case regression at the same edit count.

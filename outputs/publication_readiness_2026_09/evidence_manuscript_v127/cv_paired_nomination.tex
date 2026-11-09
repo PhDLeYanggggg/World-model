@@ -1,0 +1,32 @@
+\section{Screening order and within-agent ranking}
+We held the prediction bank, risk screen, and query edit counts fixed on
+72 repeated views of 24 fitting recordings from nine source groups.
+The nominate-first arm passes \NominationNominateFirst{}/72 recording
+views, retaining OLS4 in addition passes \NominationAddBack{}/72, and
+screening the full menu first passes \NominationFullScreen{}/72.
+Pair coupling after full screening passes \NominationJoint{}/72.
+None of the full-screen calibration configurations qualify.
+
+We next refit two matched score heads per cell. Both regress paired
+CV-anchored bounds, with candidate displacement from CV and OLS4 in the
+input. The second also receives a weighted logistic preference loss
+between two paths for the same agent. A preference receives weight only
+when its advantage on known steps exceeds the sum of candidate
+separations on missing steps, so the signed preference holds for every
+completion of those missing positions. No preference is assigned to
+unresolved pairs. This objective changes the ranking, not risk
+eligibility or the interpretation of a missing reference.
+
+At 2,317 edits per arm, the pointwise and preference models pass
+\NominationPoint{}/72 and \NominationPaired{}/72. The direct conservative
+utility contrast is \NominationContrast{} percentage points (3,000
+source-group draws after averaging seeds). Worst known signed easy
+degradation falls from \NominationPointEasy{}\% to
+\NominationPairedEasy{}\%, but easy support is undefined in
+\NominationUndefinedEasy{} views and the all-view bound exceeds 2\%
+in \NominationAllOver{} views. Of \NominationSharedChanged{}
+path changes where both select the same recipient, preference gives
+\NominationSharedWins{} definite wins and \NominationSharedLosses{}
+definite losses; these are not independent trials. Calibration qualifies
+\NominationPointQual{}/9 and \NominationPairedQual{}/9 respectively.
+This controlled fitting-source comparison is not independent confirmation.

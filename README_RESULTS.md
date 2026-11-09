@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conservative Within-Agent Preference Loss
+
+18 matched fits, 18,000 updates. At 2,317 edits each, the pointwise and
+preference rankers both pass 14/72 views. Worst known signed easy change
+drops from +32.11% to +0.84%, but 38 preference views have no easy reference
+and 18 exceed the all-view harm bound. Direct preference-versus-pointwise
+lower utility is -0.0368 pp [-0.1060, +0.0072]; calibration qualifies 0/9 for
+either. No deployment or independent readout.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_paired_nomination_v1/README.md) |
+[Manuscript v127](outputs/publication_readiness_2026_09/evidence_manuscript_v127/README.md).
+
 ## Screening Order With Frozen Gain and Risk Heads
 
 At 2,317 exact-count edits, nominating first gives 13/72 original risk
