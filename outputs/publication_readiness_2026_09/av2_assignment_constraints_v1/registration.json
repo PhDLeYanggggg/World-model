@@ -1,0 +1,40 @@
+{
+  "analysis": "analytic and learned restrict the same bank, choose maximum predicted minimum two-floor gain",
+  "arms": [
+    "soft",
+    "analytic",
+    "learned"
+  ],
+  "batch": 128,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_assignment_constraints.py",
+      "sha256": "2b632bf9378d400d85962584cfe63147f44b4e1fd6e185a73a9cda94973b20db"
+    },
+    {
+      "path": "src/world_model/m3w_av2_assignment_constraints.py",
+      "sha256": "be4f2f6c6377c6817b34b83e0651b75e49e3fa842f2a58ba5e69710b331197fd"
+    }
+  ],
+  "independent_confirmation": false,
+  "no_proposal": "forced readout uses soft choice; release abstains to CV",
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_assignment_cost_v1/summary.json",
+    "sha256": "2d96533710062728d974c9c645edab31561f5dad264ef71a480515ff5aa1ce3a"
+  },
+  "primary": "learned feasibility constraints vs frozen soft cost, including same-release-set utility and failures",
+  "probability_cut": 0.5,
+  "reserved_outcomes_opened": false,
+  "save_every": 50,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "threads": 4,
+  "threshold": "unchanged original nonempty all-qualified confidence prefix on calibration city",
+  "training": "learn P(support), P(risk|support), P(utility|support,risk) with observed antecedent masking",
+  "workers": 0
+}
