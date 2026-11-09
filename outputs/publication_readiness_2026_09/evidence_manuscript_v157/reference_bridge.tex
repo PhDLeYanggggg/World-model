@@ -1,0 +1,54 @@
+\section{A reference bridge with predicted future-label support}
+The sum of the distances to CV and OLS4 is minimized at any
+point between their forecasts. We fit that interpolation by
+lead, optionally adding a bounded motion-frame spline offset.
+The offset is either gated by the mean label availability
+estimated on fitting sources, or by a probability predicted
+from past motion and current neighbors. A third arm has no
+offset. All arms have the same availability head and loss;
+the trajectory gradient is stopped at the probability gate.
+No realized future mask enters the model at inference.
+This predicts support for evaluating an intervention, unlike
+imputing a missing observed history~\cite{trajimpute}.
+Availability is not a proxy for physical presence.
+
+The training objective rewards conservative OLS4 gain and
+penalizes negative CV gain and excess CV recording risks,
+with the same separate calibration and exact evaluator.
+We fit \RefBridgeFits{} models for \RefBridgeUpdates{} updates
+across three source rotations and three seeds. We use
+\RefBridgeRecords{} exposed development recordings from
+\RefBridgeSources{} sources (\RefBridgeViews{} recording--seed views).
+Strict calibration chooses \RefBridgeSelected{}/\RefBridgeCells{}
+options. A failed screen returns CV without certifying its
+undefined edited support.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Forecast & ADE & Lower pp & Risk & Dual \\
+\midrule
+Earlier OLS objective & \RefBridgeEarlierADE & \RefBridgeEarlierLower & \RefBridgeEarlierRisk & \RefBridgeEarlierDual \\
+Bridge only & \RefBridgeLineADE & \RefBridgeLineLower & \RefBridgeLineRisk & \RefBridgeLineDual \\
+Lead mean & \RefBridgeMeanADE & \RefBridgeMeanLower & \RefBridgeMeanRisk & \RefBridgeMeanDual \\
+Causal support & \RefBridgeSupportADE & \RefBridgeSupportLower & \RefBridgeSupportRisk & \RefBridgeSupportDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+ADE uses available labels in pixels. Lower gain is relative
+to OLS4 with the observed CV denominator. The last two columns
+count original risk passes and joint risk/utility passes.
+
+The Brier scores for the learned gate and fitting mean are
+\RefBridgeSupportBrier{} and \RefBridgeMeanBrier{}, respectively
+(direct difference \RefBridgeBrierContrast{}). Against the
+mean gate, the learned gate's direct conservative change is
+\RefBridgeRawContrast{} pp before matching and
+\RefBridgeMatchedContrast{} pp after shrinking both forecasts
+to the smaller CV-relative peak on each row. The matched
+available-label change is \RefBridgeMatchedKnown{} pp. Brackets
+show paired source-bootstrap intervals. Shrinkage does not
+amplify either path; it is attribution on exposed data and does
+not choose a policy or open independent confirmation.

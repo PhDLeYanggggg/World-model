@@ -1,8 +1,19 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v156 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v157 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v157：预测每一步的标签可用性，再决定是否偏离基线
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/train_m3w_reference_bridge.py --replay
+```
+
+去掉 `--replay` 可训练或续跑。依赖 v155 的分折、冻结预测和原训练数据；
+单进程、4 个计算线程，三个对照使用相同训练抽样。阈值仅在校准来源筛选，
+同位移比较只用于解释留出开发结果，不用于重选模型。
+[v157 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v157/README.md)。
 
 ## v156：跨时刻分配同一个介入预算
 

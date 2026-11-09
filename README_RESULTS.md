@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Moving: CV–OLS4 reference bridge with predicted label availability
+
+27 fresh fits, 21,600 updates. Bridge-only passes 54/72 original risk
+checks but no joint checks; it stays 0.56 px from CV on average.
+Causal support vs training lead mean loses -1.233 conservative pp
+[-2.289, -0.464] at identical per-row peak. Brier contrast -0.0074
+[-0.0377, +0.0189]. No strict calibration option (0/9), deployment
+unchanged. Development evidence only.
+[Experiment](outputs/publication_readiness_2026_09/moving_reference_bridge_v1/README.md) |
+[Manuscript v157](outputs/publication_readiness_2026_09/evidence_manuscript_v157/README.md).
+
 ## Moving: pooling the same edit and peak budget across queries
 
 Fresh capacity audit, no new fits. With the original risk and the same

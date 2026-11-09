@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a forecast to stay between constant velocity and OLS4
+unless past motion suggested a useful correction. Staying close
+to constant velocity passed more risk checks, but it did not
+beat OLS4. At the same displacement, learning future label
+availability was worse than using the training-set average.
+[Reference-bridge study](outputs/publication_readiness_2026_09/moving_reference_bridge_v1/README.md).
+
 I let the same intervention budget move across an entire recording.
 With future outcomes known, this added one passing view, from 4 to
 5 of 72. In 67 views even arbitrary paths could not catch OLS4 under
