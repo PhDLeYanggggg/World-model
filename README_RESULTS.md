@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: EqMotion increases candidate capacity, not realized joint utility
+
+Eighteen matched public-family fits add one legal path family
+under 2,952 unchanged edits. The two-arm hindsight ceiling
+increases from 300 to 334 seed views, while the actual selected
+two-arm passes remain at two. On the same expanded menu, joint
+selection loses -0.003400 native units of conservative pair gain
+to scene-uniform selection [-0.004854, -0.001943].
+[EqMotion, additive, scene-uniform and joint comparison](outputs/publication_readiness_2026_09/av2_eqmotion_v1/README.md).
+
 ## AV2: eightfold source expansion does not stabilize calibration
 
 The publisher-train source grows from 128 to 1,024 UUIDs, with 896

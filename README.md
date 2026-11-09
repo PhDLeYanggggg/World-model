@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained an 8/12 EqMotion control on Argoverse 2 and added its
+forecasts to the same edit menu. It increased the number of
+usable combinations with hindsight. At the same intervention
+budget, the joint decoder did not benefit from those extra choices.
+[Public forecast and matched policies](outputs/publication_readiness_2026_09/av2_eqmotion_v1/README.md).
+
 I expanded the Argoverse 2 development sample to 1,024 scenes.
 Training on more examples from the same cities helped average accuracy a little
 at the same budget, but did not make the risk-controlled edits

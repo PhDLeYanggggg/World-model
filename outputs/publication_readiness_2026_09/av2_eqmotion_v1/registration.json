@@ -1,0 +1,78 @@
+{
+  "author": {
+    "adapter_sha256": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a",
+    "commit": "5aec2e0b61c511fa93a24138dd90da59a089084b",
+    "files_sha256": {
+      "LICENSE": "f1d3136868b8e8bd929d21257c3b9c6970e398a052d6a7b5ed02cfc72c49caf1",
+      "README.md": "aded869035346f0a84b7786209d26355fd33c223046ccf2c4d7c009babe336a2",
+      "eth_ucy/dataloader_diverse.py": "51bec703ecbde61c4e9d3d1a26e0e51fc13fb1331b126d8faff525219f3656f2",
+      "eth_ucy/gcl_t.py": "ca6856d408c99a8cd97184861a646a87406bf2b09ec1d37dd517bc71c80d2e06",
+      "eth_ucy/model_t.py": "5d31dd6c5144ec4715a006bf1c3e5e8753a71a2dd87dc4ab42b1b80b98a6cfcc",
+      "eth_ucy/preprocessor.py": "790a3e4ceb7e24e2feda6335b117662085ea260d726af5617bf9efc06c976938",
+      "eth_ucy/process_eth_data_diverse.py": "faf14a90298643e467f6a509c6cfb8bc98435dd72bb5938a9a78247e11fe0f7d",
+      "main_eth_diverse.py": "1dc93be49d4f632df4d865647f66b0bc70d55d784f59219faaf3ec12cb5c87ad"
+    },
+    "license": "MIT",
+    "manifest_sha256": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "repository": "https://github.com/MediaBrain-SJTU/EqMotion"
+  },
+  "batch": 32,
+  "calibration": "not run: forced public forecaster and candidate capacity only",
+  "capacity": "strict dual motion and 2 percent risks, noninferior trajectory and positive conservative pair gain; compare both menus against original additive and relaxed two-arm ceiling",
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_eqmotion.py",
+      "sha256": "e057a03fa9288733dee34b24139b2997bfb90fbdaa944c44a3fb4ecb75d296d7"
+    },
+    {
+      "path": "src/world_model/m3w_opendd_comoving_eqmotion.py",
+      "sha256": "a44bebec013e8f989f963ae646e2abab0cb84e48b5cfb1d11ef541be0994b615"
+    },
+    {
+      "path": "src/world_model/m3w_eqmotion_adapter.py",
+      "sha256": "f540a242a3a80e73599d9b34b08abfe03c7e9f860d9adce407282d6a57a2bc3a"
+    },
+    {
+      "path": "scripts/audit_m3w_av2_paired_release_capacity.py",
+      "sha256": "c845a82c7c4728b7e1dde12d46b43904c69cd176030dd1feac690d7a0c0183eb"
+    }
+  ],
+  "independent_confirmation": false,
+  "match": "add EqMotion as one family to each original menu; only original exact peak slots; same frozen additive and joint decoders",
+  "model": {
+    "channels": 32,
+    "fixed_head": 0,
+    "hidden_nf": 32,
+    "history_steps": 8,
+    "layers": 2,
+    "prediction_steps": 12,
+    "prune_unused_heads": true
+  },
+  "optimizer": "AdamW lr .001, masked robust normalized path loss, city-balanced actor batches",
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_data_scale_v1/summary.json",
+    "sha256": "8ae8b581db50dd75afefaca9e4d69172127c0d27b1a3e5900e9d82012f3521a3"
+  },
+  "previous_fit": {
+    "path": "outputs/publication_readiness_2026_09/av2_data_scale_v1/freeze.json",
+    "sha256": "8b8f265b15c9568d9f538453389c12ae0e133fa28c049fbf50109d540ed8747d"
+  },
+  "reserved_outcomes_opened": false,
+  "roles": "same four donor cities; calibration excluded; held scores on the same 896 added scenarios",
+  "scope": "same observed AV2 publisher train, 8/12, one deterministic author head trained from scratch",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "source_receipts": {
+    "path": "outputs/publication_readiness_2026_09/av2_data_scale_v1/inputs.json",
+    "sha256": "3f6bb914bf564b7463621714161f3df539a1260c0aead4c33c02be3a4806cb05"
+  },
+  "steps": 800,
+  "torch_threads": 4,
+  "variant": "centered_peers",
+  "workers": 0
+}
