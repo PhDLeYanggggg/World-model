@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## HT21: individual coverage is not whole-crowd coverage
+
+Across four publisher-train recordings, the released boxes support
+20,064 complete futures out of 20,702 online histories at raw stride 1.
+Only 36 of 285 multi-agent windows have a complete label for every
+online track. At raw stride 5 and 10, coverage is 2/57 and 0/22 windows.
+This is a source audit, not a new forecasting or confirmation result.
+[Counts and replay](outputs/publication_readiness_2026_09/ht21_detection_support_v1/README.md).
+
 ## AerialMPT: point detector and track stability
 
 The location-held-out point detector recovered 47–56 complete futures

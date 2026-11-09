@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I used the released HT21 detections to check how often a whole crowd can
+be scored. At adjacent frames, most individual histories had complete
+futures, but only 36 of 285 multi-agent windows had labels for every
+track. At stride 10 it was zero of 22. This matters when comparing a
+joint decision to individual choices on the same agents.
+[HT21 coverage audit](outputs/publication_readiness_2026_09/ht21_detection_support_v1/README.md).
+
 I checked the same aerial detector on AerialMPT. The source labels
 covered 415 complete trajectories in the four development windows,
 but the detector and tracker recovered only three. Even allowing
