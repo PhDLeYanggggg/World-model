@@ -1,0 +1,52 @@
+\section{Transport of pass-transition prediction}
+We test transfer of a decision head rather than adaptation of the
+trajectory predictor itself~\cite{xu2022transfer}. The action moves
+one existing edit to another person in the same query. The incoming
+path follows OLS4 at the outgoing peak radius; the count and the
+multiset of peaks are unchanged. A recording receives at most one
+exchange. A shared head predicts conservative gain and three outcomes:
+an added pass, a destroyed pass, or neither. It acts at the first
+query meeting the fixed predicted-gain and transition-margin rule.
+
+We fit \CrossDomainFits{} heads (\CrossDomainUpdates{} updates), all on
+OpenDD, with three seeds. Held OpenDD models exclude the evaluated
+source. The three pooled models use no MovingDroneCrowd++ outcomes
+for fitting or selection. Their target is the prior 24-recording,
+nine-source fitting-development roster under its frozen half-peak
+anchor, not Moving A or independent confirmation. Each domain retains
+its own conservative utility aggregation and recording evaluator.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Domain & Options & Old dual & Learned dual & Oracle dual \\
+\midrule
+OpenDD & \CrossDomainOpenOptions & \CrossDomainOpenAnchorDual & \CrossDomainOpenModelDual & \CrossDomainOpenOracleDual \\
+Moving & \CrossDomainMovingOptions & \CrossDomainMovingAnchorDual & \CrossDomainMovingModelDual & \CrossDomainMovingOracleDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The 606 OpenDD views contain \CrossDomainOpenRescues{} qualifying
+exchanges on previously failing views, but the learned head's nine
+rescues are offset by nine destroyed passes. The 72 Moving views
+offer no such exchange. The model makes \CrossDomainMovingModelSwaps{}
+exchanges but adds no pass. Its direct lower contrast against gain at
+the same query times is \CrossDomainMovingMatched{} pp (95\% paired
+source bootstrap); the interval describes development data only.
+
+\paragraph{Direction-free upper bound.}
+For a query with common weight $w_q$ and total CV-relative peak
+displacement $R_q$, replacing all trajectories in the query with
+arbitrary paths at the same total peak can change the OLS4-relative
+conservative gain by at most $2T w_q R_q$, with $T=12$ annotation
+steps. This follows from the reverse triangle inequality for the
+observed errors and the missing-step disagreement debit, then the
+sum of old and new peak displacements. Ignoring the risk constraints,
+maximizing the bound over all queries still excludes OLS4 gain in
+\CrossDomainExcluded{}/\CrossDomainViews{} Moving views. The median
+upper gain is \CrossDomainUpperMedian{} CV-normalized points. This
+does not rule out changing the forecast bank, more than one query,
+or a different budget. It does rule out explaining the observed
+failure solely by this particular shortlist or a bad transfer head.

@@ -1,8 +1,20 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v153 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v154 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v154：OpenDD 到 Moving 的决策迁移
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_cross_domain_pass_transition.py --replay
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_single_exchange_envelope.py
+```
+
+去掉 `--replay` 可训练或续跑。需要 OpenDD 的冻结介入和 Moving 原拟合来源的冻结方案，
+不读取 Moving A 或独立确认组。新模型只在 OpenDD 拟合。第一条固定每个查询的介入
+数和峰值位移；第二条忽略风险，估算保持单查询总位移时理论上能提升多少，仅用于解释失败。
+[v154 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v154/README.md)。
 
 ## v153：单查询替换的 easy 参考保护
 

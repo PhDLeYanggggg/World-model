@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the decision head on OpenDD and tested it on a separate
+MovingDroneCrowd++ development set. It did not add a passing recording.
+Even allowing arbitrary paths in one query at the same displacement
+budget could not beat OLS4 in 69 of 72 views. This is a limit of the
+current starting forecast and single-query budget, not just the ranker.
+[Cross-domain experiment](outputs/publication_readiness_2026_09/cross_domain_pass_transition_v1/README.md).
+
 I tested whether a model could spot a replacement that would erase a
 recording's easy reference. Predicting loss for the whole recording
 did not beat judging the current query. Breaking the rare event into

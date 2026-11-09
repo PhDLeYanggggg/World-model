@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD to Moving pass-transition transfer
+
+24 fresh OpenDD fits, 14,400 updates. No net added pass in OpenDD
+(77/606), or in Moving fitting-source development (2/72). None of
+57,285 Moving options rescues a view. Ignoring risk, arbitrary paths
+at the same total peak in one query cannot beat OLS4 in 69/72 views.
+This identifies a limit of the current anchor and action budget.
+[Experiment](outputs/publication_readiness_2026_09/cross_domain_pass_transition_v1/README.md) |
+[Manuscript v154](outputs/publication_readiness_2026_09/evidence_manuscript_v154/README.md).
+
 ## Counterfactual reference loss on OpenDD
 
 63 fresh fits, 37,800 updates. At unchanged query counts and radii,
