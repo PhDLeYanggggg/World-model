@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## P-DESTRE: geometry diagnostic restores camera pairs, not whole-roster coverage
+
+On 11 fixed camera windows, published height/width order gives no
+stable tracks for either frozen detector. With the same outputs and
+the size fields swapped, RAPiD and MobileNet recover 70/108 and
+61/184 online histories with complete matched futures, respectively.
+Neither has a completely scorable online roster (0/11). This is a
+one-source engineering diagnostic, not an independent forecast test.
+[Matched camera and schema results](outputs/publication_readiness_2026_09/pdestre_camera_support_v1/README.md).
+
 ## P-DESTRE: usable video and label support, one linked component
 
 75 video/annotation pairs indexed by byte range; one real 4K MP4

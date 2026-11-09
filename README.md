@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I ran two frozen detectors on real P-DESTRE video. The first scoring
+pass exposed a box-width/height discrepancy. Swapping those fields
+restored many reference matches without changing the camera output,
+but neither detector recovered a completely scorable online roster.
+[Camera and box-format comparison](outputs/publication_readiness_2026_09/pdestre_camera_support_v1/README.md).
+
 I checked P-DESTRE for a new external forecasting study. Its video
 streams and eight-to-twelve-step labels are usable, but shared
 identities connect all 75 videos. I treat it as one linked source,

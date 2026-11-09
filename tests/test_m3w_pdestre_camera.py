@@ -1,11 +1,13 @@
 import numpy as np
 
 from scripts import run_m3w_pdestre_camera as camera
+from scripts.audit_m3w_pdestre_box_order import swap_size
 
 
 def test_box_parser_honors_xy_height_width_and_ignores_unknown_id():
     rows = camera.labels(b"3,1,10,20,7,4,ignored\n3,-1,irrelevant\n4,1,11,20,7,4,unused\n", 3)
     np.testing.assert_array_equal(rows[0][1], [10, 20, 14, 27])
+    np.testing.assert_array_equal(swap_size(rows)[0][1], [10, 20, 17, 24])
     assert set(rows[0]) == {1}
     assert len(rows) == 20
 
