@@ -1,0 +1,31 @@
+\section{Causal pair coupling at matched query counts}
+\label{supp:cv-joint-selector}
+To test whether the wider menu can be used causally, we fit fresh donor
+forecasters inside the nine original fitting sources. Each of the
+\CVSelectorDonor{} donors excludes its target source groups and every A
+source. The shorter donor budget (\CVSelectorDonorSteps{} total updates)
+does not match the maturity of the frozen A models. The latter are not
+refit. Two cost heads per seed receive \CVSelectorHeadSteps{} total updates.
+For pair edges, the same predictor scores the joint edit and its two
+one-sided edits. The additive and coupled decoders share the one-sided
+scores and paths; only the latter uses the difference between joint
+and additive scores as a selection term. No A labels enter these choices.
+
+At \CVSelectorEdits{} matched edits per arm over three seeds, the direct
+coupled-minus-additive agent full-grid lower gain is \CVSelectorAgent{}
+CV-normalized points (95\% source-bootstrap interval). The corresponding
+paired-displacement lower gain is \CVSelectorPair{} pixels, despite an
+observed-only gain of \CVSelectorObservedPair{} pixels. Matching
+each query's total peak displacement without changing recipients gives
+\CVSelectorMatchedAgent{} points and \CVSelectorMatchedPair{} pixels.
+The agent lower contrast against independent ranking is
+\CVSelectorIndependentAgent{} points and against a common candidate
+family is \CVSelectorUniformAgent{} points.
+
+Original CV-relative risk passes are \CVSelectorJointRisk{}/102 for
+coupled, \CVSelectorAddRisk{}/102 for additive, and
+\CVSelectorIndependentRisk{}/102 for independent. The exact-count
+arms are forced comparisons, not operating policies with learned
+admission. Pair-displacement error is not a physical safety measure.
+These 34 exposed recordings and 14 source groups are not independent
+confirmation, and the original threshold and support rules are unchanged.

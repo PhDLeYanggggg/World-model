@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a new selector on forecasts from source-excluded fitting models.
+At the same number of edits, the learned pair term improved pair error on
+observed steps, but not the conservative full-trajectory score. Matching
+displacement did not change that result. I did not use it to replace CV.
+[Learned pair choice](outputs/publication_readiness_2026_09/moving_cv_joint_selector_v1/README.md).
+
 I gave the same hindsight solver access to frozen neural forecasts as well
 as the motion baselines. At the same cap of eight edits per query it found
 new feasible choices on five development recordings. Most of those choices

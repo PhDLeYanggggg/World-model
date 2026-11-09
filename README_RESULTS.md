@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Causal Pair Coupling at Matched Query Counts
+
+18 source-excluded donor fits and six choice-head fits (18,000 updates).
+Across 38,688 matched edits per arm, coupled vs additive observed pair
+gain is +0.209 px [+0.012, +0.536], but the agent and pair full-grid lower
+gains are -1.117 pp and -1.145 px. At equal query displacement they are
+-1.173 pp and -1.154 px. All four forced selectors pass the original
+risk rule in 2/102 views; no promotion or independent confirmation.
+[Experiment and replay](outputs/publication_readiness_2026_09/moving_cv_joint_selector_v1/README.md) |
+[Manuscript v125](outputs/publication_readiness_2026_09/evidence_manuscript_v125/README.md).
+
 ## Causal CV-Anchored Selection: Registered Follow-Up
 
 The other archived producer folds trained on six and eight A sources, so I
