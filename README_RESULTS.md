@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: a better ranking does not rescue release
+
+I froze both paths and refit the release score. Direct prediction
+of the full condition raises the top-five risk pass rate by 12.86 pp
+and the full pass rate by 2.06 pp versus the old score. With the
+original calibration, only 1 of 11 held replacements qualifies.
+The nested score releases none. I keep CV fallback.
+[Matched results](outputs/publication_readiness_2026_09/opendd_vehicle_fixed_release_v1/README.md).
+
 ## OpenDD: the release score does not identify the best replacements
 
 The anonymous recording replay rebuilds the risk checks, calibration
