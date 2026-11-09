@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: the transferred risk budget leaves too little coverage
+
+Three donor-only seeds predict twelve-step gain and harm.
+Gain-only transfer loses 1.384 pp to OLS4. The scene budget
+selects just 25 edits and its perfect-forecast upper bound is
+-51.417 pp vs OLS4. At the same counts, the gain-only allocation
+passes 12/120 risk views vs 9/120 for the scene rule; neither
+passes both accuracy floors and risk. Confirmation is unopened.
+[Transfer, input shift and exact-count bound](outputs/publication_readiness_2026_09/dronecrowd_full_scene_transfer_v1/README.md).
+
 ## DroneCrowd: a fitted origin beats OLS4 on accuracy, not risk
 
 Across the approved 15 calibration groups, the fitted origin

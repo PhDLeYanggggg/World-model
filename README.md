@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a gain and harm model on a separate moving-drone
+dataset and transferred it to DroneCrowd. Gain-only choices
+lost to OLS4, and the projected risk budget left too few
+edits to catch OLS4 even with perfect forecasts.
+[Source-separated full-scene transfer](outputs/publication_readiness_2026_09/dronecrowd_full_scene_transfer_v1/README.md).
+
 On DroneCrowd, keeping the OLS4 slope but moving the forecast
 origin to the fitted line improved accuracy in 14 of 15
 calibration groups. That did not solve the per-recording harm
