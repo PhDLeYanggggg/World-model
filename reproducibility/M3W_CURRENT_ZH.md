@@ -26,6 +26,15 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：把 easy 参考支持与风险大小拆开
+
+用 `.venv-pytorch/bin/python scripts/run_m3w_vehicle_easy_factor.py` 依次运行
+`freeze`、`score`，再运行 `scripts/diagnose_m3w_vehicle_easy_factor.py`。
+本机 arm64、4 线程，231 个训练，每 100 步保存检查点。拆分模型在留出地点
+放行 20 次，15 次缺少 easy 分母，其余 5 次通过。等介入次数的收益区间跨零，
+不改变回退策略。未开启独立确认标签。
+[结果和命令](../outputs/publication_readiness_2026_09/opendd_vehicle_easy_factor_v1/README.md)。
+
 ## OpenDD：双地点排除的车辆选择器
 
 运行 `.venv-pytorch/bin/python scripts/run_m3w_opendd_vehicle_matched.py freeze`

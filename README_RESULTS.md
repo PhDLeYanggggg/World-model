@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: separate support prediction fails held-site release
+
+The same 9,000 one-edit proposals give 1,114 risk-and-dual-utility passes
+with the factorized head versus 1,082 with direct estimation. The paired
+CV contrast is +0.00056 pp (95% site bootstrap interval -0.00019 to
++0.00149 pp). Only five of 20 factorized releases pass on held sites; the
+remaining 15 have no easy reference denominator. Neither model deploys.
+[Ablation and failure counts](outputs/publication_readiness_2026_09/opendd_vehicle_easy_factor_v1/README.md).
+
 ## OpenDD vehicles: the easy-risk estimate rejects every action
 
 63 double-excluded forecasters and 21 value fits give zero interventions

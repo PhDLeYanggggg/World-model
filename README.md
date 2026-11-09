@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I split the easy-risk model into two questions: whether an edit has an
+easy reference, and how much error it adds if that reference exists.
+At the same edit budget the difference was small. On held locations,
+15 of the 20 released edits had no easy reference, so I kept the original
+fallback. [Easy-reference ablation](outputs/publication_readiness_2026_09/opendd_vehicle_easy_factor_v1/README.md).
+
 I trained a vehicle selector with forecasts that excluded both the
 held location and the site supplying each training action. It made no
 edits: the predicted easy-risk constraint rejected every candidate,
