@@ -1,5 +1,11 @@
 # DUT Frozen-Chain Results and Limits
 
+**Follow-up, 9 November 2026.** The [OLS4 and matched-motion check](../dut_matched_motion_v1/README.md)
+adds a control absent from the original bank. On the full complete-label
+roster OLS4 gives lower ADE than raw EqMotion in all six site-seed views.
+The original gains relative to CV below are unchanged; they should not
+be read as gains over the stronger OLS4 reference.
+
 ## What Was Run
 
 The registered full readout completed, not a pilot: 27 recordings, two physical

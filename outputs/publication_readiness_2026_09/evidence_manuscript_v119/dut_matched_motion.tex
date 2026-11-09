@@ -1,0 +1,61 @@
+\section{DUT: Forecast Quality At Matched Displacement}
+
+The raw-annotation DUT diagnostic~\cite{dut} asks whether a neural
+forecast advantage persists after the frozen intervention decision.
+We keep the previously exposed 27 recordings at two physical sites,
+including the original quarantine of one other recording. A deterministic
+time-only schedule selects \DutMotionQueries{} disjoint eight-observation,
+twelve-prediction windows. Of \DutMotionTargets{} agent targets,
+\DutMotionComplete{} have complete futures. Future labels affect
+neither the roster nor the predictions. All three source-trained
+EqMotion seeds and bounded-fraction heads stay frozen.
+
+The raw comparison uses the full forecast. The strict policy uses
+the registered past-only guard. A separate comparison keeps its
+recipient and query times, and gives the damped and OLS4 directions
+the exact same peak deviation from CV as the neural path at each
+selected row. All three matched arms abstain together if either
+analytic direction is zero. The original guard nominates
+\DutMotionStrictCount{} edits and the comparison retains
+\DutMotionMatchedCount{}, across repeated seeds.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Direct contrast & Complete (\%) & Lower (pp) & Upper (pp) \\
+\midrule
+Raw vs. damped & \DutMotionRawDamp \\
+Raw vs. OLS4 & \DutMotionRawOLS \\
+Strict vs. damped & \DutMotionStrictDamp \\
+Strict vs. OLS4 & \DutMotionStrictOLS \\
+Matched vs. damped & \DutMotionMatchedDamp \\
+Matched vs. OLS4 & \DutMotionMatchedOLS \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Complete contrasts are relative complete-path ADE improvements.
+Lower and upper contrasts retain missing steps and use the common
+observed CV error mass. The matched damped lower score has a
+descriptive two-site interval of \DutMotionMatchedInterval{} pp;
+three seeds do not increase the independent site count. The worst
+site/seed known easy changes for raw and strict predictions are
+\DutMotionRawEasy\% and \DutMotionStrictEasy\%. For the matched
+neural, damped and OLS4 paths they are \DutMotionMatchedEasy\%,
+\DutMotionDampEasy\% and \DutMotionOLSEasy\%. Selected easy
+reference is undefined in all 81 matched recording--seed views,
+so zero signed easy change is not a supported risk pass. These
+diagnostics neither calibrate a new policy nor certify safety. No
+thresholds or models are selected on DUT.
+
+To rule out the disjoint-query schedule as an explanation, we
+recompute OLS4 on the historical \DutMotionFullTargets{}-target
+roster. Per-recording target counts, complete counts, known steps
+and native CV error sums agree with the frozen readout. On its
+\DutMotionFullComplete{} complete targets, OLS4 gives ADE/FDE
+\DutMotionFullOLSADE{}/\DutMotionFullOLSFDE{}, versus
+\DutMotionFullEqADE{}/\DutMotionFullEqFDE{} for the cached raw EqMotion
+scores. OLS4 wins \DutMotionFullWins{}/6 site--seed ADE views.
+This is a same-cohort complete-label comparison; no full-roster
+paired missing-label score is reconstructed from the old aggregates.

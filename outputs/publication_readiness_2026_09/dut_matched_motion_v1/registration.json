@@ -1,0 +1,57 @@
+{
+  "code": {
+    "path": "scripts/run_m3w_dut_matched_motion.py",
+    "sha256": "c3640ac09ad9ff0d64de381fc18ead8ca40b2ebcd2c8d832b65ebba4440b672e",
+    "bytes": 12865
+  },
+  "method": {
+    "path": "src/evaluation/m3w_dut_matched_motion.py",
+    "sha256": "b3b1f593ebfddb4b3cfeea7e8c1245fbc292eed8e8a7c4554985b1a8142ac9f0",
+    "bytes": 3497
+  },
+  "prior": {
+    "path": "outputs/publication_readiness_2026_09/dut_frozen_readout_v1/analysis.json",
+    "sha256": "2b07e5126510b6365f04934be34e6cc58526664be1464f3d1eca9555404799d2",
+    "bytes": 7488
+  },
+  "source": {
+    "path": "outputs/publication_readiness_2026_09/dut_frozen_readout_v1/manifest.json",
+    "sha256": "4764366b5082dfee6161bb45eb570ece085bd3b2ec41d7f3afe9759c5f830d7b",
+    "bytes": 174088
+  },
+  "query_rule": "first observed eligible time then skip to >= prior+20",
+  "input": "same raw eight-step target/peer prefix; all past-eligible targets",
+  "primary": "direct raw EqMotion vs previous strongest damped005 and OLS4 on complete futures and full grid",
+  "matched": "frozen strict nominations, common nonzero analytic directions, equal per-row peak from CV",
+  "split": "same two exposed physical sites; no new roles or primary protocol changes",
+  "controls": [
+    "constant_position",
+    "constant_velocity_causal_fd",
+    "damped_velocity_005",
+    "damped_velocity_010",
+    "damped_velocity_020",
+    "constant_acceleration_causal",
+    "constant_turn_rate",
+    "ols4"
+  ],
+  "easy_cut": 0.02349376610737637,
+  "hard_cut": 0.1679398244819204,
+  "inherited_easy_limit": 0.02,
+  "bootstrap": {
+    "draws": 3000,
+    "seed": 917,
+    "unit": "physical_site"
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "batch_queries": 16,
+  "torch_threads": 4,
+  "workers": 0,
+  "no_refit": true,
+  "no_target_tuning": true,
+  "original_2pct": true,
+  "confirmation_access": false
+}

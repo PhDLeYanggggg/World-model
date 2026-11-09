@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+On DUT I checked the apparent EqMotion advantage against a stronger
+four-point motion baseline. OLS4 had lower error in both sites and all
+three seeds, including on the full earlier roster. At the same edited
+objects and displacement, the neural direction still did not beat
+OLS4, even under the favorable bound for missing labels.
+[DUT matched-motion comparison](outputs/publication_readiness_2026_09/dut_matched_motion_v1/README.md).
+
 On OpenDD I tested whether penalizing missing-step disagreement during
 training produces a better forecast. Penalizing disagreement with
 constant velocity gave a small, uncertain gain against it. The two-reference

@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DUT Stronger Motion Baseline At Identical Edits
+
+On 469 nonoverlapping queries, raw EqMotion gains +37.92% complete ADE
+over damped CV but loses 15.21% relative to OLS4. At the same 1,978
+recipients and peak displacements, the direct EqMotion-minus-OLS4
+missing-label interval is [-0.759, -0.664] pp. All 81 selected easy
+references are undefined. The full historical 399,729 complete
+targets give OLS4/old EqMotion ADE 1.957/2.250; OLS4 wins all six
+site-seed views. No deployment or independent confirmation.
+[Matched forecasts and full baseline check](outputs/publication_readiness_2026_09/dut_matched_motion_v1/README.md) |
+[Manuscript v119](outputs/publication_readiness_2026_09/evidence_manuscript_v119/README.md).
+
 ## OpenDD Missing-Step Forecast Training
 
 63 matched Torch fits (50,400 updates). CV completion gives +0.160
