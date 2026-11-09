@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let the same intervention budget move across an entire recording.
+With future outcomes known, this added one passing view, from 4 to
+5 of 72. In 67 views even arbitrary paths could not catch OLS4 under
+that budget. The gap was much larger once missing future positions
+were accounted for. I kept the existing fallback.
+[Recording-budget study](outputs/publication_readiness_2026_09/moving_record_peak_allocation_v1/README.md).
+
 I trained two versions of the same velocity forecaster to close the gap
 to OLS4. The one trained directly against OLS4 was more accurate where
 future positions were labeled, but lost once I accounted for missing

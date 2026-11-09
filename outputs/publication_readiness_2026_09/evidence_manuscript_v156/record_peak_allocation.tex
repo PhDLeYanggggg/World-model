@@ -1,0 +1,65 @@
+\section{Pooling the Moving budget over an entire recording}
+We ask whether the single-query limitation is merely temporal.
+The experiment holds fixed the half-anchor count and sum of
+individual CV-relative peak displacements, either within each
+query or across the entire recording. These are ceilings, not
+requirements to spend. The base bank includes the old half-anchor,
+OLS4, OLS8, completion spline, EqMotion and PCT; the expanded
+bank adds the forecasts from the preceding section. Each non-anchor
+path is also interpolated from CV at fractions 0.10, 0.35 and 0.70.
+The same \RecordPeakRecords{} development recordings,
+\RecordPeakSources{} sources and \RecordPeakViews{} recording--seed
+views are used. No new predictors are fitted.
+
+\paragraph{An arbitrary-path upper bound.}
+Relative to starting at CV, an edit with peak radius $r_i$
+can improve any reference's observed-step gain by at most
+$\min(r_i,\|y_{it}-\mathrm{CV}_{it}\|_2)$. At a missing step,
+the reduction in disagreement debit is at most
+$\min(r_i,\|\mathrm{Ref}_{it}-\mathrm{CV}_{it}\|_2)$.
+For each reference separately these caps form a concave
+piecewise-linear function in $r_i$. The relaxed optimum under
+the sum-of-peaks constraint fills the segments in descending
+query-weighted slope. The two maxima need not be attained by
+the same paths. Neither count, trajectory shape nor recording
+risk is imposed in this upper bound. Even so, both timing
+budgets exclude positive OLS4 gain in
+\RecordPeakExcluded{}/\RecordPeakViews{} views. The median OLS4
+upper gain moves from \RecordPeakQueryMedian{} to
+\RecordPeakRecordMedian{} CV-normalized pp with pooling.
+
+On the \RecordPeakPositiveBudget{} views with nonzero original
+budgets, the median minimum peak mass for an OLS4 tie is
+\RecordPeakKnownMultiple{} times the old budget on available labels
+and \RecordPeakDebitedMultiple{} times after missing-step debits.
+This is a lower limit on the budget needed, not a proposal
+to use that budget. It does not show what the errors would
+have been if the missing positions were observed.
+
+\paragraph{Finite-menu witnesses.}
+We maximize the smaller of the two conservative gains with one
+path per row, both budget ceilings, and the unchanged all,
+easy and signed 2\% risk limits with nonempty reference support.
+The initial search uses a linear relaxation and an integer search
+with time limits. We recheck all \RecordPeakRechecked{} unresolved
+views by freeing fractional rows and nearby rows ranked by
+relaxation reduced costs. This restricted follow-up cannot prove
+infeasibility. Every listed witness is replayed through the original
+evaluator and the count and peak checks.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrr}
+\toprule
+Menu and budget & Verified & Unresolved \\
+\midrule
+Base, query & \RecordPeakBaseQueryVerified & \RecordPeakBaseQueryUnresolved \\
+Base, recording & \RecordPeakBaseRecordVerified & \RecordPeakBaseRecordUnresolved \\
+Expanded, query & \RecordPeakExpandedQueryVerified & \RecordPeakExpandedQueryUnresolved \\
+Expanded, recording & \RecordPeakExpandedRecordVerified & \RecordPeakExpandedRecordUnresolved \\
+\bottomrule
+\end{tabular}
+\end{center}
+These counts describe hindsight capacity, not the performance of an
+online policy. No held labels are used to revise a deployable model.

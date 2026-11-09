@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Moving: pooling the same edit and peak budget across queries
+
+Fresh capacity audit, no new fits. With the original risk and the same
+half-anchor ceilings, 4/72 views have verified query-fixed witnesses
+and 5/72 have recording-pooled witnesses. Expanded v155 paths add no
+passes. All three initial unresolved views were resolved by verified
+witnesses or the unchanged query-fixed upper bound. Even arbitrary
+paths cannot beat OLS4 in 67/72; the median break-even requirement on
+nonzero budgets is 18.71x with missing-step debit versus 1.02x on
+available labels. Hindsight on exposed development only.
+[Experiment](outputs/publication_readiness_2026_09/moving_record_peak_allocation_v1/README.md) |
+[Manuscript v156](outputs/publication_readiness_2026_09/evidence_manuscript_v156/README.md).
+
 ## Moving initial forecast: paired objectives and fixed-budget attribution
 
 18 fresh fits, 14,400 updates; frozen replay, zero updates. OLS4-only:
