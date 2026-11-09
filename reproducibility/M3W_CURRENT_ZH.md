@@ -20,6 +20,9 @@
 415 条完整参考未来只找回 3 条完整相机轨迹；换细切片无改善。
 允许跨切片尺度且忽略身份的检测覆盖上界仍只有 7 条（4 像素）。
 [数据位置、运行命令与逐录像结果](../outputs/publication_readiness_2026_09/aerialmpt_camera_prefix_v1/README.md)。
+后续地点留出训练使用三个种子，找回 47–56 条完整未来，但没有任何
+联合窗口的全部在线轨迹都可评分。阈值按校准地点的八步身份稳定性
+重选后全回退。[点检测训练与阈值复现](../outputs/publication_readiness_2026_09/aerialmpt_point_detector_v1/README.md)。
 
 ## SDD：相机坐标修复与全轨迹重算
 

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AerialMPT: point detector and track stability
+
+The location-held-out point detector recovered 47–56 complete futures
+over three seeds, up from three for the frozen box detector. Roughly
+92–97% of its emitted tracks had no scored future. No calibration fold
+and seed met the prespecified stable-history screen; the stricter
+guard abstained throughout.
+[Results and replay](outputs/publication_readiness_2026_09/aerialmpt_point_detector_v1/README.md).
+
 ## AerialMPT: dense annotations, sparse camera inputs
 
 The frozen detector recovers three of 415 complete reference

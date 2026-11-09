@@ -1,0 +1,76 @@
+{
+  "batch": 6,
+  "candidate_thresholds": [
+    0.1,
+    0.2,
+    0.35,
+    0.5,
+    0.65,
+    0.8,
+    0.9
+  ],
+  "code": "7d83ddd507f981156ce5c711c7f760d4c99baddceb74972668a4b7693d5aaf42",
+  "folds": {
+    "bauma": {
+      "calibrate": [
+        "marienplatz"
+      ],
+      "evaluate": [
+        "bauma2",
+        "bauma4"
+      ],
+      "fit": [
+        "oac",
+        "pasing1L",
+        "pasing1R"
+      ]
+    },
+    "marienplatz": {
+      "calibrate": [
+        "oac"
+      ],
+      "evaluate": [
+        "marienplatz"
+      ],
+      "fit": [
+        "bauma1",
+        "bauma2",
+        "bauma4",
+        "bauma5",
+        "pasing1L",
+        "pasing1R"
+      ]
+    },
+    "pasing": {
+      "calibrate": [
+        "bauma1",
+        "bauma2",
+        "bauma4",
+        "bauma5"
+      ],
+      "evaluate": [
+        "pasing1L"
+      ],
+      "fit": [
+        "marienplatz",
+        "oac"
+      ]
+    }
+  },
+  "input": "one RGB image, no neighboring frames or labels",
+  "no_publisher_test": true,
+  "old_readout": "e277395ebf7b9122d2eda259d9a5bb5cc90bebcbbdf77339b2ff4f893fe4f289",
+  "parent": "840a361fc6bd34ae3c3da4de0b81fd87dff4a14fe6aee4460d97822d494ec355",
+  "patch": 80,
+  "role": "publisher-train development cross-fitting",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 120,
+  "stride": 2,
+  "torch_threads": 4,
+  "validation_rule": "maximize 4px point F1 on separate donor location, tie to higher threshold",
+  "workers": 0
+}

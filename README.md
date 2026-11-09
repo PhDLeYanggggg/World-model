@@ -16,6 +16,10 @@ both tile scales and ignoring track identity, just seven had a
 detection near every observed position. This points to a detector
 coverage problem before the forecast policy can be tested.
 [AerialMPT camera experiment](outputs/publication_readiness_2026_09/aerialmpt_camera_prefix_v1/README.md).
+Training directly on point annotations recovered 47–56 complete
+histories across three seeds. Most emitted tracks still had no
+scored future, and none of the joint windows had labels for the
+whole online roster. [Point detector and threshold check](outputs/publication_readiness_2026_09/aerialmpt_point_detector_v1/README.md).
 
 I checked whether raw SDD video tracks could support risk learning.
 The reference annotations and decoded videos use different pixel rasters.
