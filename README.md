@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I also tested the other starting point: keep CV on every untouched track.
+One edit per query is enough to improve CV in hindsight, but not enough to
+catch OLS4 on 30 of 34 recordings even with idealized edits. The five tested
+motion alternatives have no positive ceiling over OLS4 at that budget under
+the relaxed risk constraints.
+[Edit-budget comparison](outputs/publication_readiness_2026_09/moving_cv_anchor_budget_v1/README.md) |
+[中文复现](reproducibility/M3W_CURRENT_ZH.md).
+
 I tested whether changing just one OLS4 forecast per query could meet my
 original risk rule. Even if I knew which track to fix, the harm left on the
 untouched tracks would still exceed the limit on all 34 development

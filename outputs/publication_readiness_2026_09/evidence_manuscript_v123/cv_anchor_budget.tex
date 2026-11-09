@@ -1,0 +1,48 @@
+\section{Edit capacity with CV as the starting forecast}
+\label{supp:cv-anchor-budget}
+The failure of sparse OLS4 editing does not imply that sparse CV editing
+can outperform OLS4. For each row and action, compute the increment in
+the query-weighted paired lower gain over leaving CV unchanged. The largest
+positive increment per row, sorted within query, gives an exact separate
+top-$k$ utility optimum for each reference in the finite menu. This is a
+hindsight capacity calculation. It does not constrain or certify any
+learned action rule.
+
+The arbitrary-path relaxation can place each edited prediction exactly at
+the target on known steps and exactly at the comparison forecast on missing
+steps. The latter minimizes the triangle-inequality debit. To tighten the
+finite-menu upper bound, let $g(x)$ be the additive gain and $r_a(x),r_e(x)$
+the original all and easy positive-harm budget excesses. Any feasible plan
+satisfies $r_a,r_e\leq 0$, so for nonnegative $\lambda_a,\lambda_e$,
+\[
+  g(x) \leq g(x)-\lambda_a r_a(x)-\lambda_e r_e(x).
+\]
+The right side still maximizes by top-$k$ per query. Minimizing those maxima
+over a fixed grid gives a valid ceiling, even after relaxing selected-
+reference support and signed easy. No multiplier is used for deployment.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Development recordings whose upper ceiling permits strictly
+positive paired lower gain vs. OLS4. A positive ceiling does not imply
+feasibility. The CV starting forecast is held fixed outside edited rows.}
+\label{tab:cv-anchor-budget}
+\begin{tabular}{rrrr}
+\toprule
+Cap & Any path & Finite menu & With relaxed risk \\
+\midrule
+\CVAnchorTable
+\bottomrule
+\end{tabular}
+\end{table}
+
+At cap one the CV-only menu optimum is \CVAnchorVsCV{} points against CV,
+yet even arbitrary edits give at most \CVAnchorArbitrary{} points against
+OLS4 on average. The finite-menu risk-relaxed ceiling is
+\CVAnchorTight{} points and no recording has a positive ceiling. Larger
+caps expand capacity, but removing the cap still leaves
+\CVAnchorUnlimitedFail{} recordings with a nonpositive risk-relaxed ceiling.
+Thus accuracy against CV and full-grid non-loss against OLS4 are distinct
+requirements. These results neither estimate missing labels nor certify a
+policy on independent scenes.

@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## CV Starting Forecast: Edit-Budget Ceiling
+
+At one edit per query the analytic menu can improve CV by +2.823 full-grid
+pp in hindsight, but arbitrary perfect edits cannot certify gain over OLS4
+on 30/34 exposed recordings (mean ceiling -28.175 pp). With the finite menu
+and a relaxation of the original all/easy positive-harm tests, 0/34 have a
+positive OLS4 ceiling (-33.670 pp). Even unlimited edits leave 6/34 with a
+nonpositive ceiling in that menu. No new model, independent confirmation,
+deployment, or change to the original rule.
+[Experiment and derivation](outputs/publication_readiness_2026_09/moving_cv_anchor_budget_v1/README.md) |
+[Manuscript v123](outputs/publication_readiness_2026_09/evidence_manuscript_v123/README.md).
+
 ## Source-Deletion Costs and the Sparse OLS4 Anchor
 
 27 matched refits, 27,000 updates, and 1,613 equal-radius edits per seed.
