@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: support estimation improves, but observed harm remains
+
+All-donor support training lowers Brier from 0.154 to 0.117. At
+the same 90 held views both old and new scores qualify 31; even
+the known-support substitution has 47 risk failures. Learned
+support releases 8, with 5 passes and 3 observed-harm failures.
+[Matched risk decomposition and figure](outputs/publication_readiness_2026_09/av2_projection_support_v1/README.md).
+
 ## AV2: selected-only training loses support without improving release
 
 At the same 4,776 donor queries, selected-only and uniform-one training

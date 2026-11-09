@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated having an easy reference from passing the harm check
+on AV2. The new head predicted reference support better, but
+found the same 31 qualifying views at a fixed count of 90. Even
+knowing support after the fact left 47 risk failures.
+[Support and conditional harm](outputs/publication_readiness_2026_09/av2_projection_support_v1/README.md).
+
 I checked whether the AV2 release score should train only on the
 candidate a model would actually choose. At equal training and
 intervention counts, the causal and random subsets each found 11
