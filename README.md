@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried ranking those same choices by what they gain on
+observed steps, what they risk on missing steps, and how much
+they might hurt easy cases. More edits passed the risk checks,
+but the joint result still lost to the fixed additive control.
+[Forecast cost and calibration audit](outputs/publication_readiness_2026_09/av2_forecast_cost_v2/README.md).
+
 I tested candidate shapes against the already observed part of
 the trajectory. That history signal brought back some choices
 that the geometry-only ranker missed. The gain was visible on

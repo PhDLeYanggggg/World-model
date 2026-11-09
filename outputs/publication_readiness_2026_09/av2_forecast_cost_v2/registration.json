@@ -1,0 +1,57 @@
+{
+  "ablations": [
+    "history",
+    "known",
+    "debit",
+    "debit_easy"
+  ],
+  "batch": 128,
+  "calibration": "original both-arm qualification and exact nonempty prefixes; never select the primary by held results",
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_forecast_cost.py",
+      "sha256": "dec7051b5d26f7c0f100bcaa6693aae26430260df07529b47668686180be7e96"
+    },
+    {
+      "path": "src/world_model/m3w_av2_forecast_cost.py",
+      "sha256": "95851eed1075ac3ba505b13d9c27f995e5c7e345f2df10fd448ade09d3d9eadd"
+    },
+    {
+      "path": "scripts/audit_m3w_av2_history_rank.py",
+      "sha256": "98868a518c8a866175435d5691353c4ad3fa84978184ba8df917011afb0638f9"
+    }
+  ],
+  "crossfit": "three donor cities for each nested additive model, EqMotion features and action cutoff; exclude recipient donor city, outer held and calibration",
+  "decision": "multiply the fixed history score by sigmoid(4*normalized gain) for trajectory and pair, and sigmoid(-4*normalized easy excess) in primary",
+  "evaluation_reference": "exact unchanged frozen outer additive predictions; 896 reused development scenarios",
+  "history": {
+    "path": "outputs/publication_readiness_2026_09/av2_history_rank_v1/summary.json",
+    "sha256": "f351e1d14f4d77d9c234fa436e857649c2a126cb22077e31952946892ae306f6"
+  },
+  "history_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_history_rank_v1/freeze.json",
+    "sha256": "dedb151673090cd1e99902c93a7a78697154262d27829e03afbcb2b1a004ae6a"
+  },
+  "independent_confirmation": false,
+  "inputs": "unchanged exact two-slot menu, frozen history score and causal relative geometry",
+  "original_2pct": true,
+  "primary": "debit_easy",
+  "reserved_outcomes_opened": false,
+  "scaling": "all trajectory/interaction steps count in denominators; train on target/bound",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "targets": [
+    "trajectory_known",
+    "trajectory_debit",
+    "pair_known",
+    "pair_debit",
+    "signed_easy_excess"
+  ],
+  "torch_threads": 4,
+  "workers": 0
+}

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: forecast cost reranking does not resolve paired calibration
+
+At 2,952 matched edits, risk passes increase from 137 to 158
+relative to the frozen history scorer. Direct full-grid pair
+gain versus additive is -0.004251 [-0.006211, -0.002479].
+The exact calibration menu has 44 opportunities (30 scenarios);
+the primary selects one and no nonempty prefix passes.
+[Matched cost ablation and calibration audit](outputs/publication_readiness_2026_09/av2_forecast_cost_v2/README.md).
+
 ## AV2: observed history improves retrieval, but missing steps reverse the gain
 
 Thirty-six matched ranker fits keep the candidate and reference
