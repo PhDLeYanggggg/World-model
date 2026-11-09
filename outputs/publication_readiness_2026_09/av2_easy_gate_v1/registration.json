@@ -1,0 +1,44 @@
+{
+  "batch": 64,
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_easy_gate.py",
+      "sha256": "655dbb34123b7eaca355ba3c204b0a9b11966cfdc247168278edaba4e0d49e0b"
+    },
+    {
+      "path": "src/world_model/m3w_av2_easy_gate.py",
+      "sha256": "8707ba72dfb7fd17afafac3bf19e5ff7a23e6e07ce395c54d7ea482a5b94089b"
+    }
+  ],
+  "comparisons": "prior independent selected veto; support-only reweight; direct easy joint event; factored event; support times conditional upper-tail score",
+  "fixed": "city-excluded training choices and outer upper choices, gain and overall harm; same exact calibration and 2%",
+  "independent_confirmation": false,
+  "modes": [
+    "prior",
+    "support",
+    "direct",
+    "factored",
+    "conditional_tail"
+  ],
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_selected_veto_v1/summary.json",
+    "sha256": "259a0ba22068e9c1c2f62c658d9d64fa80cf1b2103d7099f9d65a081febd98f0"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_selected_veto_v1/freeze.json",
+    "sha256": "f81fd0c264380b33a75ea16bee9ef5a41edf5be2c9c21d6c87c77c82c1cc3132"
+  },
+  "primary": "factored",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "targets": "edited-easy reference exists; exact positive/signed easy passes conditional on support; two harm excess quantiles trained only where support exists",
+  "torch_threads": 4
+}

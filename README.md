@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I separated whether an easy reference exists from how much
+the edit might hurt it. The estimates improved on supported
+scenes. One held edit passed on its own, but the matched
+independent choice was still better.
+[Easy support and matched release audit](outputs/publication_readiness_2026_09/av2_easy_gate_v1/README.md).
+
 I trained a separate veto on actions chosen by a ranker
 that had not seen the city. It improved overall harm
 coverage on fixed choices, but did not fix easy-case

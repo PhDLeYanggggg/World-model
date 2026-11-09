@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: conditional easy estimates improve; the matched control still wins
+
+On the same supported choices, easy positive and signed
+coverage increase by 13.36 and 12.72 city-balanced pp.
+The factored gate has one eligible held release out of three;
+it loses to the matched independent control on both
+conservative trajectory and pair error.
+[Support factorization and release audit](outputs/publication_readiness_2026_09/av2_easy_gate_v1/README.md).
+
 ## AV2: training the veto on selected actions improves one harm term
 
 Against an otherwise matched uniform-training veto, the
