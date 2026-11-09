@@ -1,0 +1,37 @@
+{
+  "arms": [
+    "risk_replay",
+    "trajectory_replay",
+    "transferred_cost",
+    "calibration_selected"
+  ],
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_position_release.py",
+      "sha256": "6eb151ca9d224b75f2ff3dd4d90fc5bef88251d91ef1a85c9994e6f2d17c1f00"
+    },
+    {
+      "path": "src/world_model/m3w_av2_position_release.py",
+      "sha256": "5c5c97d10d60d0fd7725db91e79f86e37c9e14f612be80a5880faa4bd1f23666"
+    }
+  ],
+  "forecasts_frozen": true,
+  "independent_confirmation": false,
+  "no_new_training": true,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_relative_projection_v1/summary.json",
+    "sha256": "e36f15bc941265867fe78d5a1e6155c74bf0689c0dbca2d12690d0a076a626a4"
+  },
+  "policy": "unchanged position projection on release, unchanged CV elsewhere",
+  "reads_raw_future": false,
+  "reserved_outcomes_opened": false,
+  "scores": "lower-quartile replay gain, same with original risk proxies and edited-easy support, and frozen donor cost confidence",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selected": "choose score with largest strictly qualifying calibration prefix; ties prefer risk replay, then trajectory replay",
+  "threshold": "unchanged largest nonempty all-qualified calibration prefix per rotation"
+}
