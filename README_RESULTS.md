@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: learning assignment costs recovers opportunities, but not safe release
+
+On the same 1,020 development views, forced qualification is 63 for
+the original, 89 for learned additive costs and 80 with a learned
+pair term. The strict joint comparison has zero calibrated held
+releases. Outcome-only substitutions improve additive qualification
+to 174 with known utility, 164 with known risk and 132 with known
+easy support (317 exact opportunities).
+[Training, paired uncertainty and component attribution](outputs/publication_readiness_2026_09/av2_assignment_cost_v1/README.md).
+
 ## AV2: changing recipients raises the ceiling, not forecast utility
 
 At the same two full displacement profiles, free-direction capacity

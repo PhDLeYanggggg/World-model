@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained assignment costs for the same two AV2 edits. Learning
+the separate costs found 89 qualifying views, compared with 63
+for the original assignment. Adding the learned interaction term
+reduced that to 80. Neither learned policy was reliable enough to
+release. Replacing one estimate at a time with the observed result
+showed more room to improve gain and risk than the interaction term.
+[Learned assignment costs](outputs/publication_readiness_2026_09/av2_assignment_cost_v1/README.md).
+
 I kept the two AV2 displacement profiles but let them move to
 different actors. This raised the hindsight ceiling from 176 to
 505 views. The past-only rule recovered only 72 and lost accuracy
