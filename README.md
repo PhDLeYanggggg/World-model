@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept more of the easy reference when moving OpenDD's edit budget. That
+made risk easier to estimate, but it did not restore the original policy's
+accuracy or pass count.
+[Easy-reference guard](outputs/publication_readiness_2026_09/opendd_easy_slot_support_v1/README.md).
+
 I moved the same OpenDD edit slots between neighboring windows. The
 joint decoder moved slots in about half the edited pairs, but its risk
 and accuracy passes fell from 32 to 26.

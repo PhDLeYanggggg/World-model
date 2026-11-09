@@ -1,0 +1,63 @@
+{
+  "arms": [
+    "fixed_additive",
+    "fixed_joint",
+    "pooled_additive",
+    "pooled_joint",
+    "guarded_additive",
+    "guarded_joint"
+  ],
+  "batch": 128,
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/train_m3w_easy_slot_support.py",
+      "sha256": "81196eac517f8defc075ca8a726a927b7658737eb8e9b8af07dc5552133e9cdb"
+    },
+    {
+      "path": "src/world_model/m3w_easy_slot_support.py",
+      "sha256": "0d8de5a80bb18bc756be6c7afb9a9de30a42af4419b5c257890c485c97971cab"
+    },
+    {
+      "path": "src/world_model/m3w_easy_reference_rank.py",
+      "sha256": "4e6e522c803a94bf9f9f22678517661dd392ebfdd0bdd7f65cea72f16720e6a6"
+    }
+  ],
+  "cpu_threads": 4,
+  "gate": "keep pooled pair only if predicted easy reference sum is no lower than fixed pair",
+  "independent_confirmation": false,
+  "labels": "known positive CV ADE below donor-only easy cut; conditional CV reference amount",
+  "offline_two_prefixes": true,
+  "original_2pct": true,
+  "parent": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_paired_window_budget_v1/freeze.json",
+      "sha256": "7a76a5330269828e959c2ed40fc273aa20521a1f0f637ade8c059e32b6b496e4"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_paired_window_budget_v1/readout.json",
+      "sha256": "bcd430a28947536ee2f588aac74fb7047fc37e34a232e534c11f948967584fb7"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_paired_window_budget_v1/risk_attribution.json",
+      "sha256": "4d68126cbd42e676bc8c9439ee8060fd221b9a2611331a1481b22a5bd07bd088"
+    }
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "threshold_tuning": false,
+  "updates": 200,
+  "workers": 0
+}

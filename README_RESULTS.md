@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: easy-reference protection restores support, not utility
+
+The trained guard raises defined selected easy reference from 282 to 305
+views for the pooled joint arm. It raises joint dual passes from 26 to 27,
+still below the fixed arm's 32. Conservative utility versus unguarded joint
+pooling falls by 0.19142 pp, with the location interval below zero.
+[Training, paired scores and replay](outputs/publication_readiness_2026_09/opendd_easy_slot_support_v1/README.md).
+
 ## OpenDD: adjacent-window budget reallocation reduces risk passes
 
 The same 3,690 exact slots can move inside pairs of nonoverlapping
