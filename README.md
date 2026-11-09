@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested choosing who to edit separately from choosing a path.
+Learning from many feasible plans did not help the first decision.
+The path ranker reduced the worst easy-case error, but shrinking
+the original paths explained most of the observed accuracy change.
+At the same displacement, the new path still lost on the
+conservative comparison. I kept the existing fallback.
+[Recipient and path experiment](outputs/publication_readiness_2026_09/moving_cv_recipient_path_v1/README.md).
+
 I checked how many edits the full bank actually needs. At a quarter
 of a recording's rows, it can still beat both references under the
 original rule in 38 of 72 hindsight views. Teaching a model from

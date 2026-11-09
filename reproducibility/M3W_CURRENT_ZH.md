@@ -1,8 +1,22 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v135 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v136 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v136：改动对象与路径分别学习
+
+```sh
+.venv-pytorch/bin/python scripts/build_m3w_cv_recipient_teachers.py
+.venv-pytorch/bin/python scripts/train_m3w_cv_recipient_path.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_recipient_radius.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_recipient_path_replay.py
+```
+
+第一条生成或复核训练来源里的 237 套可行方案。第二条固定权重重算；去掉
+`--replay` 可从检查点训练，先核对 PID 和心跳。第三条固定对象与峰值位移，
+第四条生成只需 NumPy 的匿名标量复算包。等位移保守差值应为 -1.133 pp，
+原规则校准 0/9。[v136 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v136/README.md)。
 
 ## v135：最小改动预算与教师模型
 

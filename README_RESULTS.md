@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Separate recipient and path choices
+
+237 verified train-only plans, 27 fits and 32,400 updates. At
+45,698 matched edits, soft recipient supervision loses 1.529
+paired lower pp [-2.829, -0.529] versus single-plan nomination.
+Paired path ranking lowers worst signed easy change from +291.50%
+to +84.37%, but at equal peak displacement it loses 1.133 lower
+pp [-2.318, -0.201] versus shrinkage. The full arm loses 3.394
+lower pp against the earlier frozen policy. Calibration 0/9.
+[Results and replay](outputs/publication_readiness_2026_09/moving_cv_recipient_path_v1/README.md) |
+[Manuscript v136](outputs/publication_readiness_2026_09/evidence_manuscript_v136/README.md).
+
 ## Certified edit budgets and minimum-edit imitation
 
 At 5/10/25/50/75% recording budgets, verified full-bank witnesses:

@@ -1,0 +1,36 @@
+\section{Recipient and bounded path decisions}
+The minimum-edit imitation loss treated one verified plan as the
+target. We derive fractional recipient labels from \FactorPathPlans{}
+distinct plans, all independently verified and drawn only from the
+training-role recordings. Two analytic seeds and nine deletion
+orders per seed define the family, not a distribution over all
+feasible plans. Recipient membership varies across these plans
+for \FactorPathAmbiguous{} agent windows. Single-plan and fractional
+targets share input samples, architecture and optimizer budgets.
+A separate within-agent action ranker learns conservative gain and
+risk from paired alternatives. It may not increase displacement
+relative to the frozen cost action for the same recipient.
+
+The 27 fits use \FactorPathUpdates{} optimizer updates across three
+seeds and three folds. All six ablations hold every query's edit
+count fixed, at \FactorPathEdits{} total edits per arm. With the
+same path rule, fractional versus single-plan nomination changes
+the conservative utility contrast by \FactorPathSoft{} pp. The
+within-recipient path rule reduces worst signed easy degradation
+from \FactorPathBaselineWorst\% to \FactorPathWorst\%, but its
+conservative contrast versus the old action is \FactorPathPair{} pp.
+The combined model versus the earlier frozen policy at its own
+edit count gives \FactorPathVersusFrozen{} pp. No calibration
+setting qualifies (\FactorPathQual{}/9).
+
+In a retrospective equal-radius control, we scale the old path
+increment to exactly the same per-recipient peak displacement as
+the learned path. The learned edits use \FactorPathRatio\% of the
+old aggregate radius. At equal radius, the learned direction has a
+small known-step contrast of \FactorPathShapeKnown{} pp, with worse
+full-grid lower contrast of \FactorPathShape{} pp. Worst signed
+easy degradation under shrinkage alone is \FactorPathRadiusWorst\%,
+so the path rule's easy effect is not entirely a shrinkage effect.
+Neither satisfies the original recording rule across calibration.
+Intervals are paired source bootstrap intervals; development and
+missing-step bounds do not constitute independent confirmation.
