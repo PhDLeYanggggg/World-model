@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained the selector to put feasible two-agent edits ahead of
+similar but infeasible edits. It found more locally valid choices,
+but its joint forecasts were worse on average than the matched
+additive control. The training target and the interaction metric
+were rewarding different decisions.
+[Within-window ranking experiment](outputs/publication_readiness_2026_09/opendd_pair_ranking_v1/README.md).
+
 I tried judging a two-agent edit as one decision, rather than releasing
 its parts separately. It did not survive calibration on separate OpenDD
 locations. There were viable pairs in the menu, but the model rarely

@@ -1,0 +1,119 @@
+{
+  "batch": 128,
+  "calibration_diagnostic": "all nonempty breakpoints after freeze, never applied to held",
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_pair_ranking.py",
+      "sha256": "fcb5e08d3d561cd0e6593c64f33e2b0cb21ae2255e644c1c0d92e17e5a1ab36b"
+    },
+    {
+      "path": "scripts/run_m3w_opendd_atomic_pair_admission.py",
+      "sha256": "4b5de4c3d8486a676cb89063c2adf00ee463b965ee5a46fb7dd4f64010cf2f6a"
+    },
+    {
+      "path": "scripts/audit_m3w_atomic_pair_calibration.py",
+      "sha256": "f33bac69c27d2495dd608383c7f6fddf8e87e26832b88f9d2c33c1f4e3276522"
+    }
+  ],
+  "independent_confirmation": false,
+  "loss": "shared natural BCE + 0.25 mined BCE; matched_rank additionally 0.5 pairwise logistic on strict feasibility logits",
+  "methods": [
+    "mined_bce",
+    "matched_rank"
+  ],
+  "mining": "donor only, up to four positives and two geometrically nearest negatives per positive; prefer negative with easy support",
+  "no_new_split": true,
+  "original_2pct": true,
+  "pair_batch": 32,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/opendd_atomic_pair_admission_v1/summary.json",
+    "sha256": "8e9f5751a0cf18f4401e46b210b026d23e5e4a83563a0565a6673ebe13ff7eb4"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/opendd_atomic_pair_admission_v1/freeze.json",
+    "sha256": "f3eea7c2fd960c5fbf6e358c92b7e23cee4eee06a80212f07a40d9145dc86721"
+  },
+  "reserved_outcomes_opened": false,
+  "roles": {
+    "rdb1": [
+      "rdb2",
+      [
+        "rdb3",
+        "rdb4",
+        "rdb5",
+        "rdb6",
+        "rdb7"
+      ]
+    ],
+    "rdb2": [
+      "rdb3",
+      [
+        "rdb1",
+        "rdb4",
+        "rdb5",
+        "rdb6",
+        "rdb7"
+      ]
+    ],
+    "rdb3": [
+      "rdb4",
+      [
+        "rdb1",
+        "rdb2",
+        "rdb5",
+        "rdb6",
+        "rdb7"
+      ]
+    ],
+    "rdb4": [
+      "rdb5",
+      [
+        "rdb1",
+        "rdb2",
+        "rdb3",
+        "rdb6",
+        "rdb7"
+      ]
+    ],
+    "rdb5": [
+      "rdb6",
+      [
+        "rdb1",
+        "rdb2",
+        "rdb3",
+        "rdb4",
+        "rdb7"
+      ]
+    ],
+    "rdb6": [
+      "rdb7",
+      [
+        "rdb1",
+        "rdb2",
+        "rdb3",
+        "rdb4",
+        "rdb5"
+      ]
+    ],
+    "rdb7": [
+      "rdb1",
+      [
+        "rdb2",
+        "rdb3",
+        "rdb4",
+        "rdb5",
+        "rdb6"
+      ]
+    ]
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selection": "same candidate menu, exact radii, thresholds and original recording criteria as parent",
+  "steps": 600,
+  "threads": 4,
+  "workers": 0
+}

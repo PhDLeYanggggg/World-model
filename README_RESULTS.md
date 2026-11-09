@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: ranking improves local capture but not pair utility
+
+Across 42 fits, hard-negative mining and pairwise ranking raise held
+first-choice capture from 11 to 19 and 27 of 180 feasible views.
+The full-grid joint effect worsens and all nonempty calibration
+breakpoints fail. In calibration, 144 views have a feasible slate
+that can also beat additive on pair error; ranking finds 15.
+[Matched ranking and target audit](outputs/publication_readiness_2026_09/opendd_pair_ranking_v1/README.md).
+
 ## OpenDD: whole-pair scoring fails separate-location calibration
 
 Twenty-one fits compare additive and joint scores at identical slot

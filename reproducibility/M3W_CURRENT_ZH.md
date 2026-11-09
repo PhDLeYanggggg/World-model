@@ -50,6 +50,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+同窗难负例与排序损失提高了合格方案排第一的次数，但全网格交互误差
+相对逐个对照变差。两种新模型都没有找到可介入的校准阈值。
+[训练、同预算比较与目标审计](../outputs/publication_readiness_2026_09/opendd_pair_ranking_v1/README.md)。
+
 把双介入作为一个决策重训 21 折，并用单独地点校准。483 个非空分数断点
 均未通过；候选池有合格方案，但模型大多没有把它排到第一。
 [整组准入训练和校准复算](../outputs/publication_readiness_2026_09/opendd_atomic_pair_admission_v1/README.md)。
