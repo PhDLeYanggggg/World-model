@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: signed relative-motion features
+
+With equal model size, training pairs and edit budgets, direction reduces
+held pair-target error on 11/15 probes versus magnitude alone, but beats
+zero on just 3/15. Conservative utility changes by +0.00008 pp
+[-0.00623, +0.00602]; both heads pass risk and beat both references in
+33/606 views. The small gain on observed pair geometry does not carry over
+to the primary conservative comparison.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_signed_pair_geometry_v1/README.md).
+
 ## Supplement navigation and pair-effect ablation
 
 I added an internal evidence guide and the direct pair-effect ablation to a

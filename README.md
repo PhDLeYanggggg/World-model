@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I added the direction of relative motion to the pair score. It helped predict
+the pair effect more often, but did not increase the number of recording-seed
+views that pass both risk and accuracy checks.
+[Directional ablation](outputs/publication_readiness_2026_09/opendd_signed_pair_geometry_v1/README.md).
+
 I tried training the pair score directly on what two edits add beyond
 editing each person alone. It recovered a small gain on labeled steps,
 but not a reliable gain when missing future labels were accounted for.
