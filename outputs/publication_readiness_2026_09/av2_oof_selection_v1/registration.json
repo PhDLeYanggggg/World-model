@@ -1,0 +1,139 @@
+{
+  "batch": 128,
+  "calibration": "same original 2 percent checks, dual gains and direct pair advantage over selected additive; choose greatest calibration coverage",
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_oof_selection.py",
+      "sha256": "dc34f6e0e7ff4306fc4fd22e4ec9686a54c25ecde3d177efd8b49114890db628"
+    },
+    {
+      "path": "src/world_model/m3w_av2_interaction_credit.py",
+      "sha256": "60fcc182c0e4017efd8a854d51bf49f79fde1c3ee2b0f51163358d0544bace3d"
+    },
+    {
+      "path": "scripts/run_m3w_av2_learned_reference.py",
+      "sha256": "b67174903b51941105f734834956f69471071c8d37318c73a2b9ffba144baaa4"
+    }
+  ],
+  "credit": "four-way paired error difference on edited recipients only; subtract twice the smaller edit distance on missing pair steps",
+  "heads": "shared independent action cost; shared slate qualification and conditional gain with or without nonadditive pair credit",
+  "independent_confirmation": false,
+  "nested": {
+    "path": "outputs/publication_readiness_2026_09/av2_eqmotion_oof_v1/freeze.json",
+    "sha256": "803207dd9b3ce338ee96fd0ccb3e4d7babf8027fc3005e5f5637656c1736cad7"
+  },
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_eqmotion_v1/freeze.json",
+    "sha256": "b7d161cdadd0d6f6e362ba52209eb1b4fe5730aff4c1acaec235c861f984960d"
+  },
+  "reserved_outcomes_opened": false,
+  "roles": {
+    "austin": {
+      "calibration": "dearborn",
+      "donors": [
+        "miami",
+        "palo-alto",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      "inner": {
+        "miami": "palo-alto+pittsburgh+washington-dc",
+        "palo-alto": "miami+pittsburgh+washington-dc",
+        "pittsburgh": "miami+palo-alto+washington-dc",
+        "washington-dc": "miami+palo-alto+pittsburgh"
+      }
+    },
+    "dearborn": {
+      "calibration": "miami",
+      "donors": [
+        "austin",
+        "palo-alto",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      "inner": {
+        "austin": "palo-alto+pittsburgh+washington-dc",
+        "palo-alto": "austin+pittsburgh+washington-dc",
+        "pittsburgh": "austin+palo-alto+washington-dc",
+        "washington-dc": "austin+palo-alto+pittsburgh"
+      }
+    },
+    "miami": {
+      "calibration": "palo-alto",
+      "donors": [
+        "austin",
+        "dearborn",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      "inner": {
+        "austin": "dearborn+pittsburgh+washington-dc",
+        "dearborn": "austin+pittsburgh+washington-dc",
+        "pittsburgh": "austin+dearborn+washington-dc",
+        "washington-dc": "austin+dearborn+pittsburgh"
+      }
+    },
+    "palo-alto": {
+      "calibration": "pittsburgh",
+      "donors": [
+        "austin",
+        "dearborn",
+        "miami",
+        "washington-dc"
+      ],
+      "inner": {
+        "austin": "dearborn+miami+washington-dc",
+        "dearborn": "austin+miami+washington-dc",
+        "miami": "austin+dearborn+washington-dc",
+        "washington-dc": "austin+dearborn+miami"
+      }
+    },
+    "pittsburgh": {
+      "calibration": "washington-dc",
+      "donors": [
+        "austin",
+        "dearborn",
+        "miami",
+        "palo-alto"
+      ],
+      "inner": {
+        "austin": "dearborn+miami+palo-alto",
+        "dearborn": "austin+miami+palo-alto",
+        "miami": "austin+dearborn+palo-alto",
+        "palo-alto": "austin+dearborn+miami"
+      }
+    },
+    "washington-dc": {
+      "calibration": "austin",
+      "donors": [
+        "dearborn",
+        "miami",
+        "palo-alto",
+        "pittsburgh"
+      ],
+      "inner": {
+        "dearborn": "miami+palo-alto+pittsburgh",
+        "miami": "dearborn+palo-alto+pittsburgh",
+        "palo-alto": "dearborn+miami+pittsburgh",
+        "pittsburgh": "dearborn+miami+palo-alto"
+      }
+    }
+  },
+  "same_menu_and_peaks": true,
+  "score": "probability of joint accuracy/risk qualification times conditional dual gain; add conditional interaction credit averaged over all roster pairs only in interaction arm",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "torch_threads": 4,
+  "training": "city-excluded EqMotion producer for every donor trajectory; calibration and held use the frozen four-donor producer",
+  "uniform": {
+    "path": "outputs/publication_readiness_2026_09/av2_eqmotion_v1/uniform_freeze.json",
+    "sha256": "a88b1effd21ae79bbf875855eca6119618fd5a672f9dd4b034bd33dff360d6d0"
+  }
+}

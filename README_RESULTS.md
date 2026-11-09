@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: city-excluded neural candidates do not rescue joint selection
+
+Fifty-four nested EqMotion fits and 36 selector fits keep 2,952
+matched edits. Refit additive improves risk passes from 110 to
+143, but the interaction term changes 217 choices without
+improving conservative pair gain against the same risk-only
+head (-0.000813, interval [-0.001694, -0.000200]).
+Neither arm passes any of 2,040 nonempty calibration breakpoints.
+[Nested forecasts, interaction bound and matched results](outputs/publication_readiness_2026_09/av2_oof_selection_v1/README.md).
+
 ## AV2: EqMotion increases candidate capacity, not realized joint utility
 
 Eighteen matched public-family fits add one legal path family

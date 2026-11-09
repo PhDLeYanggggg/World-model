@@ -1,0 +1,318 @@
+{
+  "batch": 32,
+  "checkpoint": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_eqmotion_oof.py",
+      "sha256": "c14fc47090c862cd66f90205833a26780659601232769232b26da02211525f90"
+    },
+    {
+      "path": "scripts/run_m3w_av2_eqmotion.py",
+      "sha256": "e057a03fa9288733dee34b24139b2997bfb90fbdaa944c44a3fb4ecb75d296d7"
+    },
+    {
+      "path": "src/world_model/m3w_opendd_comoving_eqmotion.py",
+      "sha256": "a44bebec013e8f989f963ae646e2abab0cb84e48b5cfb1d11ef541be0994b615"
+    }
+  ],
+  "independent_confirmation": false,
+  "inference": "only past context; fixed parent EqMotion for held inference",
+  "jobs": {
+    "austin+dearborn+miami": [
+      [
+        "austin",
+        "dearborn",
+        "miami"
+      ],
+      [
+        "palo-alto",
+        "washington-dc"
+      ]
+    ],
+    "austin+dearborn+palo-alto": [
+      [
+        "austin",
+        "dearborn",
+        "palo-alto"
+      ],
+      [
+        "miami"
+      ]
+    ],
+    "austin+dearborn+pittsburgh": [
+      [
+        "austin",
+        "dearborn",
+        "pittsburgh"
+      ],
+      [
+        "washington-dc"
+      ]
+    ],
+    "austin+dearborn+washington-dc": [
+      [
+        "austin",
+        "dearborn",
+        "washington-dc"
+      ],
+      [
+        "miami",
+        "pittsburgh"
+      ]
+    ],
+    "austin+miami+palo-alto": [
+      [
+        "austin",
+        "miami",
+        "palo-alto"
+      ],
+      [
+        "dearborn"
+      ]
+    ],
+    "austin+miami+washington-dc": [
+      [
+        "austin",
+        "miami",
+        "washington-dc"
+      ],
+      [
+        "dearborn"
+      ]
+    ],
+    "austin+palo-alto+pittsburgh": [
+      [
+        "austin",
+        "palo-alto",
+        "pittsburgh"
+      ],
+      [
+        "washington-dc"
+      ]
+    ],
+    "austin+palo-alto+washington-dc": [
+      [
+        "austin",
+        "palo-alto",
+        "washington-dc"
+      ],
+      [
+        "pittsburgh"
+      ]
+    ],
+    "austin+pittsburgh+washington-dc": [
+      [
+        "austin",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      [
+        "dearborn",
+        "palo-alto"
+      ]
+    ],
+    "dearborn+miami+palo-alto": [
+      [
+        "dearborn",
+        "miami",
+        "palo-alto"
+      ],
+      [
+        "austin",
+        "pittsburgh"
+      ]
+    ],
+    "dearborn+miami+pittsburgh": [
+      [
+        "dearborn",
+        "miami",
+        "pittsburgh"
+      ],
+      [
+        "palo-alto"
+      ]
+    ],
+    "dearborn+miami+washington-dc": [
+      [
+        "dearborn",
+        "miami",
+        "washington-dc"
+      ],
+      [
+        "austin"
+      ]
+    ],
+    "dearborn+palo-alto+pittsburgh": [
+      [
+        "dearborn",
+        "palo-alto",
+        "pittsburgh"
+      ],
+      [
+        "miami"
+      ]
+    ],
+    "dearborn+pittsburgh+washington-dc": [
+      [
+        "dearborn",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      [
+        "austin"
+      ]
+    ],
+    "miami+palo-alto+pittsburgh": [
+      [
+        "miami",
+        "palo-alto",
+        "pittsburgh"
+      ],
+      [
+        "dearborn",
+        "washington-dc"
+      ]
+    ],
+    "miami+palo-alto+washington-dc": [
+      [
+        "miami",
+        "palo-alto",
+        "washington-dc"
+      ],
+      [
+        "pittsburgh"
+      ]
+    ],
+    "miami+pittsburgh+washington-dc": [
+      [
+        "miami",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      [
+        "palo-alto"
+      ]
+    ],
+    "palo-alto+pittsburgh+washington-dc": [
+      [
+        "palo-alto",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      [
+        "austin",
+        "miami"
+      ]
+    ]
+  },
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_eqmotion_v1/summary.json",
+    "sha256": "6708ab7ff3d31ed0967af77045ce6ff06c4799696cba81adfa05b676aed0d58c"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_eqmotion_v1/freeze.json",
+    "sha256": "b7d161cdadd0d6f6e362ba52209eb1b4fe5730aff4c1acaec235c861f984960d"
+  },
+  "reserved_outcomes_opened": false,
+  "roles": {
+    "austin": {
+      "calibration": "dearborn",
+      "donors": [
+        "miami",
+        "palo-alto",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      "inner": {
+        "miami": "palo-alto+pittsburgh+washington-dc",
+        "palo-alto": "miami+pittsburgh+washington-dc",
+        "pittsburgh": "miami+palo-alto+washington-dc",
+        "washington-dc": "miami+palo-alto+pittsburgh"
+      }
+    },
+    "dearborn": {
+      "calibration": "miami",
+      "donors": [
+        "austin",
+        "palo-alto",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      "inner": {
+        "austin": "palo-alto+pittsburgh+washington-dc",
+        "palo-alto": "austin+pittsburgh+washington-dc",
+        "pittsburgh": "austin+palo-alto+washington-dc",
+        "washington-dc": "austin+palo-alto+pittsburgh"
+      }
+    },
+    "miami": {
+      "calibration": "palo-alto",
+      "donors": [
+        "austin",
+        "dearborn",
+        "pittsburgh",
+        "washington-dc"
+      ],
+      "inner": {
+        "austin": "dearborn+pittsburgh+washington-dc",
+        "dearborn": "austin+pittsburgh+washington-dc",
+        "pittsburgh": "austin+dearborn+washington-dc",
+        "washington-dc": "austin+dearborn+pittsburgh"
+      }
+    },
+    "palo-alto": {
+      "calibration": "pittsburgh",
+      "donors": [
+        "austin",
+        "dearborn",
+        "miami",
+        "washington-dc"
+      ],
+      "inner": {
+        "austin": "dearborn+miami+washington-dc",
+        "dearborn": "austin+miami+washington-dc",
+        "miami": "austin+dearborn+washington-dc",
+        "washington-dc": "austin+dearborn+miami"
+      }
+    },
+    "pittsburgh": {
+      "calibration": "washington-dc",
+      "donors": [
+        "austin",
+        "dearborn",
+        "miami",
+        "palo-alto"
+      ],
+      "inner": {
+        "austin": "dearborn+miami+palo-alto",
+        "dearborn": "austin+miami+palo-alto",
+        "miami": "austin+dearborn+palo-alto",
+        "palo-alto": "austin+dearborn+miami"
+      }
+    },
+    "washington-dc": {
+      "calibration": "austin",
+      "donors": [
+        "dearborn",
+        "miami",
+        "palo-alto",
+        "pittsburgh"
+      ],
+      "inner": {
+        "dearborn": "miami+palo-alto+pittsburgh",
+        "miami": "dearborn+palo-alto+pittsburgh",
+        "palo-alto": "dearborn+miami+pittsburgh",
+        "pittsburgh": "dearborn+miami+palo-alto"
+      }
+    }
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "selection": "no new candidate families, selection or risk-rule changes at this phase",
+  "steps": 800,
+  "training": "exact same K=1 centered EqMotion recipe; exclude each predicted donor plus both outer excluded cities"
+}

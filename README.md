@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I retrained the selector on neural forecasts from models that
+had not seen the predicted city. More additive edits passed
+the risk checks, but a separate score for the interaction
+between two edits did not improve the joint result.
+[City-excluded selection and interaction ablation](outputs/publication_readiness_2026_09/av2_oof_selection_v1/README.md).
+
 I trained an 8/12 EqMotion control on Argoverse 2 and added its
 forecasts to the same edit menu. It increased the number of
 usable combinations with hindsight. At the same intervention
