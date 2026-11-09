@@ -26,6 +26,15 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：直接训练两车介入结果
+
+`.venv-pytorch/bin/python scripts/run_m3w_vehicle_pair_learning.py` 依次运行
+`freeze`、`score`。126 个训练使用地点排除的预测器生成候选，两种头同标签、
+同预算。直接监督找到更多过关组合，但联合头没有胜过逐车相加的对照，继续回退 CV。
+另用 `.venv-pytorch/bin/python scripts/build_m3w_opendd_vehicle_observed_geometry.py`
+可复建同一窗口内的车辆相对位置，未加入本次训练。
+[结果和复现](../outputs/publication_readiness_2026_09/opendd_vehicle_pair_learning_v1/README.md)。
+
 ## OpenDD：等预算的两车联合选择
 
 `.venv-pytorch/bin/python scripts/run_m3w_vehicle_pair_support.py` 依次运行

@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: direct pair supervision improves pass count, not joint utility
+
+126 fits at 17,748 matched edits per arm. Dual passes are 1,979
+archived, 2,975 additive, 3,012 same family and 2,952 learned joint.
+Joint versus learned additive conservative trajectory gain is
+-0.00533 pp [-0.00916, -0.00241]. Only 29/66 joint releases pass.
+The [separate observed geometry export](outputs/publication_readiness_2026_09/opendd_vehicle_observed_geometry_v1/README.md)
+matches all 141,783 cohort rows and was not used in these fits.
+[Study and replay](outputs/publication_readiness_2026_09/opendd_vehicle_pair_learning_v1/README.md).
+
 ## OpenDD vehicles: joint two-edit choices leave most matched capacity unused
 
 At 17,748 equal-radius edits per arm, joint raises dual passes from
