@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## VisDrone-MOT: pooling detections adds coverage but not stable matches
+
+On the same 32 past images with the same camera transforms, coarse, fine,
+and pooled tiling recover 21, 24, and 21 complete tracks. Pooling raises
+the eligible reference ceiling from 50 to 65 of 76, but unmatched online
+histories increase from 38 to 85. No arm scores a full online roster.
+[Matched detector comparison](outputs/publication_readiness_2026_09/visdrone_detector_tiles_v1/README.md).
+
 ## VisDrone-MOT: camera motion helps association, not whole-roster support
 
 On identical boxes in four reused training windows, camera compensation

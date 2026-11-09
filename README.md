@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I ran two detector tile sizes on the same VisDrone images. Combining them
+gave 65 rather than 50 reference histories with a box at every step, but
+still recovered only 21 complete tracks. More boxes alone did not fix tracking.
+[Detector scale comparison](outputs/publication_readiness_2026_09/visdrone_detector_tiles_v1/README.md).
+
 I kept the same VisDrone detections and changed only how they were linked.
 Compensating for camera motion recovered 21 complete tracks instead of 14.
 It still did not give me a window where I could score the whole online group.
