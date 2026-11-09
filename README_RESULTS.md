@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: observation augmentation helps risk coverage, not the accuracy floor
+
+Across three donor-only seeds, at exactly the original edit counts per
+query, scale-only loses 0.551 pp to plain training. Scale plus noise adds
+0.450 pp [-0.117, +1.013], but still loses 0.932 pp to OLS4. The noise
+scene rule passes 88/120 original risk checks and zero joint checks.
+Even perfect forecasts at its counts cap gain at -50.179 pp vs OLS4.
+[Matched counts, input shift and coverage bound](outputs/publication_readiness_2026_09/dronecrowd_observation_augmentation_v1/README.md).
+
 ## DroneCrowd: the transferred risk budget leaves too little coverage
 
 Three donor-only seeds predict twelve-step gain and harm.
