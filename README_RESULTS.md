@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: testing easy-support reranking at the same edit budget
+
+I kept the two-edit forecasts fixed and added a past-only support
+score to the existing pair ranking, with a within-query shuffle as
+the negative control. [Protocol](outputs/publication_readiness_2026_09/opendd_support_rerank_v1/protocol.md).
+This is development evidence; Songdo is still unopened.
+
 ## OpenDD: why the two-edit joint rule lost
 
 At the same budget, learned joint showed no clear advantage over
