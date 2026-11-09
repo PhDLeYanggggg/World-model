@@ -1,0 +1,55 @@
+{
+  "architecture_and_sampler": "same as prior fit, same initial weights, same site and row draws and update count",
+  "arms": [
+    "plain_gain",
+    "scale_matched",
+    "noise_matched",
+    "scale_gain",
+    "noise_gain",
+    "noise_scene"
+  ],
+  "augmentation": "half of donor queries unchanged; otherwise factor 2**Uniform(-6,0) in shared query coordinates; same factor on history and clean future, add iid .5 px Gaussian noise only to observed history in noise arm; rebase labels to perturbed observed origin, preserve all masks",
+  "augmentation_randomness": "independent seed stream, same donor queries and factors in scale and noise fits; no target statistics used",
+  "batch": 192,
+  "checkpoint": 100,
+  "code": [
+    {
+      "bytes": 17920,
+      "path": "scripts/run_m3w_observation_augmentation_transfer.py",
+      "sha256": "b3fcd9d50ed313c64766a75c2f3a17a19247f1e207f9f6938021c2555b8659bd"
+    },
+    {
+      "bytes": 1307,
+      "path": "src/world_model/m3w_observation_augmentation.py",
+      "sha256": "efda9e9d809d44c7f0c230f591f19e60441774814a5c05fa3b05a07c7517f1e2"
+    }
+  ],
+  "confirmation_access": false,
+  "independent_confirmation": false,
+  "num_workers": 0,
+  "original_2pct": true,
+  "primary": "noise_matched minus plain_gain, exact original count per query",
+  "prior_freeze": {
+    "bytes": 42586,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_full_scene_transfer_v1/freeze.json",
+    "sha256": "356490c984e01b6d39903c6a7550de4521a34ed5cb40dce773932d8c749205ca"
+  },
+  "prior_training": {
+    "bytes": 4151,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_full_scene_transfer_v1/training.json",
+    "sha256": "384e25e88d24f193b8584b83da360bfc0229523087c92fe1816af00bef670d76"
+  },
+  "scope": "full-scene donor-only augmentation diagnostic; no new target roles, inference perturbation, or threshold tuning",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "source": {
+    "bytes": 11516,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_full_scene_transfer_v1/analysis.json",
+    "sha256": "172cb3c6322d98c913549a6a0470d790bb2699fc7e2b17447c686b42e2dde2b2"
+  },
+  "steps": 600,
+  "torch_threads": 4
+}
