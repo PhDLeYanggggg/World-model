@@ -1,8 +1,39 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v158 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档从 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v159：WEPDTOF 一次性外部检验
+
+Convenience Store 只用于开发；另外 13 个原始录像来源组的结果不用于选模型、
+阈值或对照。真实输入为每个窗口 8 帧，预测之后 12 个采样步；不换算成秒或米。
+沿用原 2% 规则，固定介入次数的比较只用于检验效用。空对照不可估，不计作安全通过。
+
+在具备 v158 的登记、相机与检测器资产，以及 OpenDD 七折样条模型和训练集预测缓存后，
+可按下列顺序在本机复现。`produce` 和 `train` 支持从现有检查点续跑，
+`verify` 单独重新推理首窗以核对一致性。
+
+```sh
+export OPENBLAS_NUM_THREADS=1
+py=.venv-pytorch/bin/python
+"$py" scripts/run_m3w_wepdtof_external_camera.py produce
+"$py" scripts/run_m3w_wepdtof_external_camera.py verify
+"$py" scripts/run_m3w_wepdtof_external_transfer.py train
+"$py" scripts/run_m3w_wepdtof_external_transfer.py pilot
+"$py" scripts/run_m3w_wepdtof_external_readout.py register
+"$py" scripts/run_m3w_wepdtof_external_transfer.py freeze
+"$py" scripts/run_m3w_wepdtof_external_readout.py freeze
+"$py" scripts/run_m3w_wepdtof_external_readout.py score
+"$py" scripts/audit_m3w_wepdtof_external_failures.py
+```
+
+不要使用 `run_m3w_wepdtof_external_transfer.py score`；正式入口是
+`run_m3w_wepdtof_external_readout.py score`。在已完成评分的工作区直接重跑后者，
+它只重放经冻结标识核对的逐录像汇总；无需也不允许重新打开标签。
+若只阅读或构建论文，不必运行评分，直接使用已提交的汇总。
+[实验与结果](../outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
+[v159 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v159/README.md)。
 
 ## v158：鱼眼相机输入与新来源
 

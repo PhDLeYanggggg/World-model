@@ -1,0 +1,49 @@
+\section{One-shot transfer on reserved WEPDTOF sources}
+We freeze the image plan, detector, camera tracks, and all forecast
+paths before opening outcomes from \WepExtSources{} reserved source
+groups. \WepExtFrames{} observed frames yield \WepExtOnline{} online
+histories in \WepExtSupportedWindows{}/\WepExtWindows{} windows.
+There are \WepExtMatched{} stable matches to \WepExtRef{} reference
+histories and \WepExtComplete{} complete futures.
+All \WepExtOnline{} online histories remain in the roster:
+\WepExtUnavailable{} lack observed futures, including unmatched
+camera tracks, and cannot furnish risk reference.
+These counts do not establish identity for unmatched detections.
+
+The centered spline is fitted on OpenDD only. Within each seed,
+its seven frozen site-excluded checkpoints are averaged and used
+with past-motion rescaling, not a metric calibration. The three
+new value heads see donor-only out-of-fold forecasts and run for
+\WepExtUpdates{} total updates. The original easy and hard
+positive-complete CV quantiles are computed only on the exposed
+WEPDTOF pilot (\WepExtEasy{} and \WepExtHard{} px). The pilot guard
+uses \WepExtGuard{}. A distinct fixed-count research comparison
+holds the forecast bank, count and sum of peak displacement equal
+within each query. It is not a deployable alternative.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Arm & vs CV & vs OLS4 & Risk & Joint \\
+\midrule
+CV & \WepExtCVCV & \WepExtCVOLS & \WepExtCVRisk & \WepExtCVDual \\
+OLS4 & \WepExtOLSCV & \WepExtOLSOLS & \WepExtOLSRisk & \WepExtOLSDual \\
+Direct spline & \WepExtSplineCV & \WepExtSplineOLS & \WepExtSplineRisk & \WepExtSplineDual \\
+Strict proposal & \WepExtStrictCV & \WepExtStrictOLS & \WepExtStrictRisk & \WepExtStrictDual \\
+Fixed-count joint & \WepExtFixedCV & \WepExtFixedOLS & \WepExtFixedRisk & \WepExtFixedDual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The gain columns are conservative CV-normalized points, conditional
+on estimable sources. The pass counts include all \WepExtViews{}
+recording--seed views and count neither abstention nor missing
+reference as a safety pass. The direct fixed-count joint contrast
+against independent choice is \WepExtFixedIndependent{} pp, against
+the common-family choice \WepExtFixedUniform{} pp, and against no
+pair penalty \WepExtFixedNoPair{} pp. Intervals resample the
+original videos after averaging clips and seeds. Empty matched
+controls are not estimable. The score is not a physical-safety
+measure and neither depth nor time calibration is inferred.

@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: completed one-shot external test
+
+One development source and 13 frozen test source groups (15 clips).
+Fresh inference processed 920 images in 115 windows; 92 produced
+forecasts. Of 431 online track-windows, 353 had stable past matches,
+347 had complete futures and 78 had no observed future.
+The strict rule made no edits. The fixed-count joint proposal made
+366 edits across three seeds and passed original risk on 4/45
+clip-seed views but passed both risk and two-baseline utility on 0/45.
+Its paired contrast versus equally budgeted independent choice was
+-0.045 conservative CV-normalized points (95% source bootstrap
+[-0.113, +0.012]; 10/13 estimable groups). The other three groups
+remain in the risk audit. The policy remains CV; not a safety pass.
+DroneCrowd confirmation was not accessed.
+[Experiment](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
+[Working paper v159](outputs/publication_readiness_2026_09/evidence_manuscript_v159/README.md).
+
 ## WEPDTOF: three-seed frozen comparison, before outcomes
 
 Three donor-only action heads, 2,400 updates on site-excluded OpenDD

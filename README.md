@@ -9,19 +9,22 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
-I froze the WEPDTOF external comparison before opening its outcomes.
-The learned joint rule made no intervention on the development
-camera, so the guarded policy still uses constant velocity. I will
-also compare fixed-count research proposals at the same displacement;
-that comparison cannot certify them for deployment.
-[Pre-outcome protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/protocol.md).
+I tested the frozen forecasting policy on 13 new WEPDTOF sources.
+The strict rule never intervened. When I forced the same number and
+size of edits for each method, joint selection did not beat independent
+selection, and no recording passed both the original risk check and
+the accuracy comparison against both motion baselines. I kept constant
+velocity as the fallback. This is an external test of the policy, not
+validation of a deployable learned forecast.
+[Results and protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v159/README.md).
 
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector
 increased stable matches from 22 to 57. On the same 20 targets, the
 better motion baseline changed when I used camera histories instead
-of edited annotation histories. I reserved the other sources for
-a frozen external test and have not scored them.
+of edited annotation histories. This pilot informed the protocol
+before I scored the other sources.
 [WEPDTOF pilot](outputs/publication_readiness_2026_09/wepdtof_source_probe_v1/README.md).
 
 I trained a forecast to stay between constant velocity and OLS4
