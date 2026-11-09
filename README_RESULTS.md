@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Working paper figures
+
+I separated the four outcomes in Figure 1 so each count can be read
+directly. The supplement keeps the point estimates and intervals on the
+same scale, with zero marked explicitly. Only the figures and captions
+changed. [Working paper v165](outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md).
+
 ## Source-excluded full-plan imitation
 
 24 fits; 19,200 updates. Joint passes 34/606 held OpenDD

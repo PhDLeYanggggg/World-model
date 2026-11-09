@@ -1,7 +1,7 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-当前主文与补充材料为 [v164](../outputs/publication_readiness_2026_09/evidence_manuscript_v164/README.md)，
-保留 v161 的灰阶制图样式。
+当前主文与补充材料为 [v165](../outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md)。
+本版重绘两张实际排入论文的图，只改图与图注，不改 v164 的实验与结论。
 
 本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组

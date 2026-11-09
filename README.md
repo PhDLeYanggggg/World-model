@@ -47,7 +47,7 @@ the accuracy comparison against both motion baselines. I kept constant
 velocity as the fallback. This is an external test of the policy, not
 validation of a deployable learned forecast.
 [Results and protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
-[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v164/README.md).
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md).
 
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector
