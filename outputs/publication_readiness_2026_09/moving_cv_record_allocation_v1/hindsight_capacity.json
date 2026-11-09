@@ -1,0 +1,57 @@
+{
+  "code": {
+    "bytes": 7978,
+    "path": "scripts/audit_m3w_cv_record_allocation_capacity.py",
+    "sha256": "7fc64ed3fddf0dfc179b6bbd4bd4c4315c9464c01370f8e91bf2dbeea44028ef"
+  },
+  "counts": {
+    "cv_only_query_exact": {
+      "nonpositive_bound": 4,
+      "risk_infeasible": 11,
+      "undefined_support": 31,
+      "verified": 26
+    },
+    "cv_only_record_exact": {
+      "risk_infeasible": 2,
+      "undefined_support": 31,
+      "verified": 39
+    },
+    "dual_query_exact": {
+      "nonpositive_bound": 30,
+      "risk_infeasible": 11,
+      "undefined_support": 31
+    },
+    "dual_record_exact": {
+      "nonpositive_bound": 36,
+      "risk_infeasible": 2,
+      "undefined_support": 31,
+      "verified": 3
+    }
+  },
+  "hindsight": true,
+  "independent_confirmation": false,
+  "original_2pct": true,
+  "parent": {
+    "bytes": 15805,
+    "path": "outputs/publication_readiness_2026_09/moving_cv_record_allocation_v1/readout.json",
+    "sha256": "708299b4c9c149f3cc0df5f18f0ee050266265a2f58dc763f80556065db78b76"
+  },
+  "seconds_per_solve": 1.5,
+  "transitions": {
+    "cv_only": {
+      "nonpositive_bound -> verified": 4,
+      "risk_infeasible -> risk_infeasible": 2,
+      "risk_infeasible -> verified": 9,
+      "undefined_support -> undefined_support": 31,
+      "verified -> verified": 26
+    },
+    "dual": {
+      "nonpositive_bound -> nonpositive_bound": 29,
+      "nonpositive_bound -> verified": 1,
+      "risk_infeasible -> nonpositive_bound": 7,
+      "risk_infeasible -> risk_infeasible": 2,
+      "risk_infeasible -> verified": 2,
+      "undefined_support -> undefined_support": 31
+    }
+  }
+}

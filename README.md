@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether it helps to spend the same number of edits at different
+points in a recording. Neither the retrospective reallocation nor the
+streaming policy improved the full risk result. Even with outcomes known,
+the fixed proposal menu could beat both motion references under the
+original risk rule in only three of 72 views when the timing was freed.
+[Recording allocation study](outputs/publication_readiness_2026_09/moving_cv_record_allocation_v1/README.md).
+
 I compared learning a preference between two paths with predicting each
 path's value on its own. At the same edit count, the preference loss reduced
 the worst known easy regression from 32.11% to 0.84%, but did not improve

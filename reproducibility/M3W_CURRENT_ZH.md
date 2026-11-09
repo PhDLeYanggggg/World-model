@@ -1,8 +1,24 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v127 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v128 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v128：录像级分配和因果额度结转
+
+用本机冻结候选和拟合来源重放。第一个入口会复核选择冻结和录像评分，第二个
+重算邻居相对位移误差，第三个复核标签可见的事后可行方案。离线重排需要整个
+录像的预测分数，不能冒充在线；第三个入口使用结果标签，不能用来选测试策略。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_record_allocation.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_record_allocation_geometry.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_record_allocation_capacity.py
+```
+
+同一录像预算合计 2,317 次；原分配、离线收益、离线风险惩罚分别通过
+14/72、4/72、9/72。在线校准 0/9。事后允许挪额度后，满足原规则且同时
+超过 CV 与 OLS4 的视图为 3/72。[v128 编译说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v128/README.md)。
 
 ## v127：先筛候选与成对排序
 

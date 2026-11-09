@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recording Allocation and Causal Credit Carry
+
+At 2,317 edits with exact recording counts, local allocation passes
+14/72 original risk checks versus 4/72 for offline gain and 9/72 for
+offline risk pricing. Causal carry spends 219 past credits; both streaming
+arms pass 6/72 and calibration qualifies 0/9. Hindsight verifies 26 to
+39/72 versus CV when timing is freed, but only 0 to 3/72 against both
+CV and OLS4. No new training, deployment or independent readout.
+[Report](outputs/publication_readiness_2026_09/moving_cv_record_allocation_v1/README.md) |
+[Manuscript v128](outputs/publication_readiness_2026_09/evidence_manuscript_v128/README.md).
+
 ## Conservative Within-Agent Preference Loss
 
 18 matched fits, 18,000 updates. At 2,317 edits each, the pointwise and

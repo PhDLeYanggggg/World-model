@@ -1,0 +1,31 @@
+\section{Does reallocating edit counts help?}
+The preceding experiment changes a single-agent trajectory preference.
+Here we fix one screened path per row, along with the trained scores.
+Offline reallocation keeps exactly the same count in each recording
+and the same query cap, but may use scores from later queries. It is
+not a deployable policy. At \AllocationEdits{} total edits, the local
+allocation passes \AllocationLocal{}/\AllocationViews{} risk checks,
+compared with \AllocationGain{} after gain-ranked reallocation and
+\AllocationRisk{} after risk-priced reallocation. Relative to the local
+allocation, the risk-priced conservative agent contrast is
+\AllocationRiskEffect{} percentage points and its conservative neighbor
+displacement contrast is \AllocationPairEffect{} pixels (paired 95\%
+source bootstrap intervals).
+
+In a separate causal comparison, the controller may use up to eight
+previously unused credits for four nonempty queries. The controller with
+carry spends \AllocationPastCredits{} such credits and uses
+\AllocationOnlineCarryEdits{} edits versus \AllocationOnlineLocalEdits{}
+without carry, so it is not an exact-count contrast. Its direct
+conservative gain is \AllocationCarryEffect{} points; each arm passes
+\AllocationOnlineCarry{} views. No streaming calibration cell qualifies.
+
+An exact-count hindsight solver on the same one-path-per-row menu and
+original risk rule verifies positive gain over CV in
+\AllocationCVQuery{} views at fixed query counts and
+\AllocationCVRecord{} at fixed recording counts. Requiring positive
+gain over both CV and OLS4 gives \AllocationDualQuery{} and
+\AllocationDualRecord{} respectively. The solver has access to outcomes
+and is not a forecaster. These counts do not rule out richer proposal
+menus, and the gap to OLS4 is not repaired by rearranging the existing
+edit budget alone.
