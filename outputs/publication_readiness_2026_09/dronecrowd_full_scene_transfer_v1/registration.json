@@ -1,0 +1,59 @@
+{
+  "batch": 192,
+  "calibration_labels_used_for_training_or_thresholds": false,
+  "checkpoint": 100,
+  "code": [
+    {
+      "bytes": 16986,
+      "path": "scripts/run_m3w_full_scene_harm_transfer.py",
+      "sha256": "0c347fbf860e03f214695aa6648851a56b983a9ccec28dccaa83264fb19cf87f"
+    },
+    {
+      "bytes": 5356,
+      "path": "src/world_model/m3w_full_scene_harm_transfer.py",
+      "sha256": "2cf21b4500b5662aba6bf73159bf50f084f9fedf80e5915685a50d8e24b11f36"
+    }
+  ],
+  "confirmation_access": false,
+  "controllers": "positive gain; individual predicted 2% gate; query-aggregate predicted 2% prefix; gain-only control inherits the exact number of interventions per query",
+  "forecast": 12,
+  "full_scene_diagnostic": true,
+  "independent_confirmation": false,
+  "num_workers": 0,
+  "objective": "signed 12-step available-ADE gain with unknown debit, positive harm and CV mass, conditional easy harm and easy CV mass; actor history scale only; supervised on donor outcomes",
+  "observations": 8,
+  "original_2pct": true,
+  "original_two_edit_protocol_changed": false,
+  "parents": [
+    {
+      "bytes": 14452,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_motion_floor_v1/analysis.json",
+      "sha256": "7c392ec2f563ecb3dbd2a007e1b4aa8f32c3ec9a3ffa94e945c8df603489abc7"
+    },
+    {
+      "bytes": 7067,
+      "path": "outputs/publication_readiness_2026_09/dronecrowd_controller_coverage_v1/analysis.json",
+      "sha256": "e41087d3a6fe522ef1bb361f701efbd271c6edea75fe364455c83085c4d40dfe"
+    },
+    {
+      "bytes": 7512,
+      "path": "outputs/publication_readiness_2026_09/moving_producer_crossfit_v1/population.json",
+      "sha256": "139d296e7c64157f73d1a3b616627879a80fb150ca7a199ef8bd2c78d8f3ce55"
+    },
+    {
+      "bytes": 8933,
+      "path": "configs/m3w_dronecrowd_calibration_confirmation_v2.json",
+      "sha256": "caabb7504d6e1912d2fb3f8b8207d77b2be28c8897db280bbccf4d7168c1790a"
+    }
+  ],
+  "proposal": "fixed CV, OLS4, median slope, fitted origin and pooled origin; same as prior diagnostic",
+  "scope": "existing_Moving_A_train_to_15_approved_DroneCrowd_calibration_groups",
+  "seed": [
+    17,
+    29,
+    43
+  ],
+  "source_groups": 14,
+  "steps": 600,
+  "torch_threads": 4
+}
