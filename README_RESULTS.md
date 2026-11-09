@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: retraining costs does not uncover a joint advantage
+
+Twenty-one fresh donor-only cost heads, 8,400 updates, and 3,690 identical
+edit slots per arm. Shared-head joint aggregation changes 256 of 1,067
+double-edit choices but gains -0.00138 pp over additive
+[-0.00742, +0.00361]. Both pass risk and both motion references in 32/606
+recording-seed views. [Matched training and replay](outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/README.md).
+
 ## OpenDD: a self-history path expands capacity, not realized passes
 
 With the same 3,690 exact slots, the expanded menu leaves the frozen joint

@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I retrained the gain and harm scores on the expanded OpenDD forecast menu.
+Joint and additive decisions used the same scores and budget, and each passed
+both accuracy and risk in 32 of 606 views.
+[Expanded-menu training](outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/README.md).
+
 I added a held-location self-history forecast to both OpenDD selectors at
 the same edit budget. The hindsight search found more usable choices, but
 the frozen joint selector still passed both accuracy and risk in 34 of 606
