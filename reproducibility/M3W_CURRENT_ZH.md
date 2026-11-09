@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v150 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v151 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v151：用控制器的实际介入做校准
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_opendd_stream_spline_calibration.py --replay
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_stream_spline_joint_opportunity.py
+```
+
+去掉 `--replay` 可续跑 63 个数量模型；每 100 步记录优化器检查点和心跳。
+需要 v150 的生成器和选择器、双/三重留出排序器以及冻结外层路径。第一条
+重现因果校准介入，保持外层对象、时刻、路径候选和半径不变。第二条只为
+容量诊断使用结果标签，不能当作可部署方法或独立确认。
+[v151 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v151/README.md)。
 
 ## v150：OpenDD 固定介入下的双重留出样条选择
 

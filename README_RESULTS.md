@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD streaming-slot calibration
+
+63 fresh count fits, 44,100 updates. Both guarded calibrations keep the
+analytic paths. Joint vs proxy: +0.010 conservative pp [0.000, +0.024],
+no extra passes. Joint vs past prefix: 77 vs 90 dual passes. Only 55 of
+1,402 edited queries contain two slots; a restricted two-shape oracle
+can qualify 80 views vs 170 when all slots can change. No promotion.
+[Experiment](outputs/publication_readiness_2026_09/opendd_stream_spline_calibration_v1/README.md) |
+[Manuscript v151](outputs/publication_readiness_2026_09/evidence_manuscript_v151/README.md).
+
 ## Nested risk-aware OpenDD spline selection
 
 168 fresh nested forecast fits and 84 selector fits, 168,000 updates.

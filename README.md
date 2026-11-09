@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I recalibrated the spline choice on the slots the controller actually
+uses. The guarded rule made no spline substitutions and did not pass
+more recordings. Only 55 of 1,402 edited queries had two slots, which
+helps explain why coupling the last shape choice changed so little.
+[Streaming calibration study](outputs/publication_readiness_2026_09/opendd_stream_spline_calibration_v1/README.md).
+
 I tested whether a learned rule could choose the better path at the same
 OpenDD intervention locations. The risk-aware rule chose the spline only
 four times, and choosing jointly gave the same result as choosing each
