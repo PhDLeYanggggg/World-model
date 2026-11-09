@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let fine-scale boxes fill gaps in existing VisDrone tracks without starting
+new ones. Complete matches rose from 21 to 24, but unmatched histories also
+rose from 38 to 75. I did not keep the change.
+[Track continuation experiment](outputs/publication_readiness_2026_09/visdrone_continuation_boxes_v1/README.md).
+
 I ran two detector tile sizes on the same VisDrone images. Combining them
 gave 65 rather than 50 reference histories with a box at every step, but
 still recovered only 21 complete tracks. More boxes alone did not fix tracking.

@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## VisDrone-MOT: continuation-only fusion still leaves the group unscored
+
+Giving coarse boxes priority and barring fine-only births recovers 22
+complete matches with a one-step bridge, 24 with repeated bridging, and
+21 without bridging. Unmatched histories are 65, 75, and 38 respectively;
+all arms have 0/4 fully supported rosters. No change to the camera input
+used for forecasting. [Matched replay](outputs/publication_readiness_2026_09/visdrone_continuation_boxes_v1/README.md).
+
 ## VisDrone-MOT: pooling detections adds coverage but not stable matches
 
 On the same 32 past images with the same camera transforms, coarse, fine,
