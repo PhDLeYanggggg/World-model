@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: learning the additive control increases support, not qualified gain
+
+Seventy-two action fits and 18 nested-reference pair fits preserve
+459 matched edits. Held edited-easy support increases from 32 to
+45 two-slot views relative to point selection, but just one learned
+reference passes both risk and dual accuracy. Joint re-ranking
+does not improve full-grid pair gain, and no nonempty threshold
+passes.
+[City-disjoint additive control and joint comparison](outputs/publication_readiness_2026_09/av2_learned_reference_v1/README.md).
+
 ## AV2: supported-gain ranking recovers choices but not release
 
 Thirty-six fits compare conditional and censored gain at 459

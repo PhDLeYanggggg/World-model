@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a new additive control instead of treating the old one
+as fixed. It found more edits with enough easy-case labels to score
+risk, but not more edits that passed both risk and accuracy.
+Joint re-ranking did not improve it at the same budget.
+[Learned additive and joint comparison](outputs/publication_readiness_2026_09/av2_learned_reference_v1/README.md).
+
 I changed the AV2 selector to estimate gain only for qualifying
 edits. It found a few useful choices but still could not be
 calibrated. The matched comparison also exposed a problem with

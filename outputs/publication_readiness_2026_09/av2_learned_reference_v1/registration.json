@@ -1,0 +1,62 @@
+{
+  "action": "per-action signed CV and OLS increments, all/easy excess and easy signed change; context-only easy probability",
+  "arms": [
+    "cv",
+    "ols4",
+    "fixed_additive",
+    "fixed_joint",
+    "point",
+    "support",
+    "joint",
+    "released"
+  ],
+  "auxiliary": "additive-only calibration is diagnostic and not joint release",
+  "ceiling": {
+    "path": "outputs/publication_readiness_2026_09/av2_supported_gain_v1/paired_release_capacity.json",
+    "sha256": "82e9b0b2aeb373360d8abcb357e5dd81ba15689eb193768f9f01287c6708d1c6"
+  },
+  "checkpoint_every": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_learned_reference.py",
+      "sha256": "b67174903b51941105f734834956f69471071c8d37318c73a2b9ffba144baaa4"
+    },
+    {
+      "path": "scripts/run_m3w_av2_pair_refit.py",
+      "sha256": "99cbee6da962a05e3b69a567265630e1716226cd71d8ecc2d81dd5a77922a4c2"
+    },
+    {
+      "path": "scripts/run_m3w_av2_supported_gain.py",
+      "sha256": "c1f5673dbe69372f0af5a1af1f2ce8224d834c64bbcc4ea8d882f1baff3314f6"
+    },
+    {
+      "path": "src/world_model/m3w_reference_bridge_policy.py",
+      "sha256": "91aff1f65a7854f46c5980b74230b0cca875cde25817c230054a27e190d177ae"
+    }
+  ],
+  "independent_confirmation": false,
+  "joint": "same top-eight support-ranked options; rank conditional qualifying pair gain relative to learned additive",
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_supported_gain_v1/summary.json",
+    "sha256": "2f64ed88bdbab23b2cce7561b0794987d9e23d58ca774126827c0b45ae8586bc"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_supported_gain_v1/freeze.json",
+    "sha256": "023de7cd9b3088d4191fcfa00f2cbd4db0f19f90471a21497aa09ace87729067"
+  },
+  "point": "sum mean predicted two-reference increments",
+  "release": "original two-arm dual reference and 2 percent checks at all nonempty calibration prefixes",
+  "reserved_outcomes_opened": false,
+  "roles": "four city donors, one calibration, one held; inner leave-donor-city-out reference for pair supervision",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "source": "same 128 AV2 train scenarios, native 8/12 grid and original exact peak slots",
+  "steps": 320,
+  "support": "prefer legal assignments with a predicted easy recipient (p>=.5) when available, rank by sum of risk-penalized increments",
+  "top": 8,
+  "torch_threads": 4,
+  "workers": 0
+}
