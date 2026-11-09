@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: one-sided harm estimates lose coverage after selection
+
+On the same 340 development scenarios, using the upper harm
+head to select the edit lowers paired city-balanced coverage
+by 6.77, 5.57 and 11.17 pp across the three harm terms.
+The upper head improves forced qualification from 61 to 75
+of 1,020 seed views, but no nonempty calibration passes.
+[Optimism audit and matched selection contrast](outputs/publication_readiness_2026_09/av2_harm_quantile_v1/README.md).
+
 ## AV2: scene margin assignment finds support, not transferable release
 
 The primary has 503 edited-easy supported views versus 382

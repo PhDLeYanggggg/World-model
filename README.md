@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I compared the same harm estimate on fixed choices and on
+choices it helped select. The estimate covered fewer actual
+outcomes after selection, even at the same edit budget.
+[Harm coverage before and after selection](outputs/publication_readiness_2026_09/av2_harm_quantile_v1/README.md).
+
 I trained the reference assignment against the same gain
 and risk terms used for evaluation. It found more edits with
 easy-case support, but the calibrated choices still failed

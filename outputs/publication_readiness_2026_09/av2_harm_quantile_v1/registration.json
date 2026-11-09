@@ -1,0 +1,50 @@
+{
+  "calibration": "standalone original dual-floor and three 2% risk checks, every distinct nonempty prefix",
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_harm_quantile.py",
+      "sha256": "3cbfddb3d8d3ddca978afd5e6f60678694fdf1f62321f29a6c5594b4c8484790"
+    },
+    {
+      "path": "src/world_model/m3w_av2_harm_quantile.py",
+      "sha256": "d7acfaf939c99940524e6889dc8be913df705b97cd35a753ddddafcc6558cd27"
+    }
+  ],
+  "donor_targets": "exact all/easy positive excess and signed easy excess of a complete slate; corrected missing actors",
+  "fixed": "frozen gain and support heads; same option menu, exact two slot radii, same fallback",
+  "harm_audit": {
+    "path": "outputs/publication_readiness_2026_09/av2_margin_assignment_v2/harm_margin_audit.json",
+    "sha256": "920996c6852424d9940f4bf65f1b9b2edc3121f7db9101132c252c5a4aa74431"
+  },
+  "independent_confirmation": false,
+  "modes": [
+    "prior",
+    "point",
+    "upper",
+    "frozen_upper"
+  ],
+  "num_workers": 0,
+  "options_per_scene": 16,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_margin_assignment_v2/summary.json",
+    "sha256": "caf4c717f1f158701553e7bc991843b07e8357adb7ace1927bfbe0e385c48674"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_margin_assignment_v2/freeze.json",
+    "sha256": "0139598082e4a25e27dac5aebf292220e703d122133c1d3555098ad2c22b6193"
+  },
+  "primary": "upper",
+  "quantile": 0.8,
+  "reserved_outcomes_opened": false,
+  "scenes_per_step": 8,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "torch_threads": 4,
+  "training": "uniform donor scenes and uniform legal options; Huber point head; nonnegative increment fit with detached point and pinball loss"
+}
