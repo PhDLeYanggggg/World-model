@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether the model could learn how far to move a forecast
+instead of inheriting a fixed displacement limit. It predicted gain
+more accurately, but allocating the same total movement unevenly
+did not improve the conservative result. I have not changed the
+fallback policy. For DroneCrowd, I use 15 source groups for
+calibration and keep 30 separate groups for independent confirmation.
+[Amplitude experiment](outputs/publication_readiness_2026_09/moving_cv_amplitude_response_v1/README.md).
+
 I let the model swap in new trajectories while keeping edit counts
 and displacement fixed. A simple geometric rule reduced the worst
 easy-case change but still failed calibration. Even allowing arbitrary

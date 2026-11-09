@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v138 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v139 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v139：学习改动幅度
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_amplitude_response.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_amplitude_response.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_amplitude_response_replay.py
+```
+
+第一条从冻结检查点复算，去掉 `--replay` 可训练或续跑；先核对 PID 和心跳。
+第二条比较曲线误差，区分已观测伤害和缺标带来的不确定性。第三条生成匿名标量
+复算 ZIP。等总峰值位移下，可见部分有 +0.071 pp，保守下界却是 -0.380 pp；
+校准 0/9，未开启确认组。[v139 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v139/README.md)。
 
 ## v138：同改动数和同峰值预算的对象交换
 

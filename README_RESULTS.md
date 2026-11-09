@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learned edit magnitude under the original risk rule
+
+18 PyTorch fits, 25,200 updates, three seeds and three source-role
+rotations. Shape constraints improve normalized gain MAE by 0.0090
+[0.0018, 0.0161], but lose 2.341 conservative pp at matched edit
+count and 0.380 pp at matched peak mass. The latter gains 0.071 pp
+on observed steps alone. The shape portfolio passes 1/72 original
+risk checks; ignoring missing-step uncertainty gives 15/72.
+Calibration 0/9. DroneCrowd remains 15 groups for calibration plus
+30 sealed independent groups; no deployment or confirmation.
+[Experiment and replay](outputs/publication_readiness_2026_09/moving_cv_amplitude_response_v1/README.md) |
+[Manuscript v139](outputs/publication_readiness_2026_09/evidence_manuscript_v139/README.md).
+
 ## Recipient exchange at matched peak displacement
 
 Nine fits, 12,600 updates, 54,748 edits per matched arm. Geometry

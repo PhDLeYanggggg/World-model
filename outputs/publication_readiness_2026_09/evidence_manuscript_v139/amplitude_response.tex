@@ -1,0 +1,39 @@
+\section{Learning how far to edit}
+The preceding bound motivates removing the inherited displacement cap.
+We train two response models on five fractions of a causal candidate path
+from the CV reference, using the same training draws and
+\AmplitudeStudyUpdates{} total updates. For a fixed path direction and
+label mask, the Euclidean error is convex in the edit fraction.
+The displacement debit on unknown future steps is linear for nonnegative
+fractions. These properties motivate monotone slopes for concave lower
+gain and convex harm and signed change. The second model predicts the
+same quantities directly at the five fractions. Both predict the
+reference masses separately. Neither sees future targets or masks at
+inference. Training and calibration use analytic candidate directions;
+the held development fold adds source-excluded neural directions.
+
+Across the nine held development sources, the shape constraint reduces
+normalized dual-gain MAE by \AmplitudeStudyGainError{} and signed easy
+MAE by \AmplitudeStudySignedError{} (3,000 paired source resamples).
+This better fit does not translate to better decisions. All effects below
+are paired completion-lower differences in percentage points with 95\%
+source-bootstrap intervals:
+\begin{itemize}
+  \item Shape versus direct independent ranking at the same edit
+  counts in each query: \AmplitudeStudyCount{}.
+  \item Shape query portfolio versus independent shape selection
+  at the same query counts: \AmplitudeStudyPortfolio{}.
+  \item Shape portfolio versus uniform amplitudes on identical rows
+  and rays, conserving the sum of peak displacement per query:
+  \AmplitudeStudyMass{}.
+\end{itemize}
+The shape portfolio makes \AmplitudeStudyEdits{} edits.
+It passes \AmplitudeStudyRisk{}/72 original risk checks, versus
+\AmplitudeStudyKnown{}/72 if missing-step uncertainty is ignored.
+Its worst known signed easy change is \AmplitudeStudyWorst{}\%;
+doubling the frozen edits instead gives \AmplitudeStudyBoostWorst{}\%.
+Its lower contrasts are \AmplitudeStudyCV{} against CV and
+\AmplitudeStudyOLS{} against OLS4. No calibration cell qualifies
+(\AmplitudeStudyQual{}/9); neither a larger amplitude nor a more
+accurate response model establishes an eligible policy.
+These are exposed development results, not external confirmation.
