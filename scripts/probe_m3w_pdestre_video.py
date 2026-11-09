@@ -28,10 +28,11 @@ def span(header, size):
 
 
 class MemberStream:
-    def __init__(self, member):
+    def __init__(self, member, max_transfer=MAX_TRANSFER):
         self.size = member["bytes"]
         self.start = member["offset"]
         self.transferred = 0
+        self.max_transfer = max_transfer
         self.lock = threading.Lock()
 
     def handler(self):
@@ -62,7 +63,7 @@ class MemberStream:
                     for offset in range(lo, hi+1, CHUNK):
                         n = min(hi+1-offset, CHUNK)
                         with stream.lock:
-                            if stream.transferred+n > MAX_TRANSFER:
+                            if stream.transferred+n > stream.max_transfer:
                                 raise ValueError("Smoke exceeded media transfer cap")
                             stream.transferred += n
                         self.wfile.write(audit.byte_range(stream.start+offset, n))
