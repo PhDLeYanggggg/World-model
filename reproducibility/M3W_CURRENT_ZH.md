@@ -1,8 +1,21 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档从 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v160：同预算下能否追上 OLS4
+
+```sh
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_wepdtof_camera_capacity.py
+OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/audit_m3w_wepdtof_camera_capacity.py --replay
+```
+
+只读取 Convenience Store 的冻结相机历史及开发标签，不读取其余 13 组。
+第一条从已有种子检查点续跑，第二条重新算上界并核对汇总。上界使用未来标签，
+不是模型预测；过去窗口内的滚动误差排序才是因果对照。两者都不更改原风险规则。
+[诊断报告](../outputs/publication_readiness_2026_09/wepdtof_camera_capacity_v1/README.md) |
+[v160 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v160/README.md)。
 
 ## v159：WEPDTOF 一次性外部检验
 

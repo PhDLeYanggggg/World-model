@@ -1,0 +1,35 @@
+\section{Can camera-based edits catch OLS4 at the frozen radius?}
+This diagnostic uses only the exposed Convenience Store camera.
+It keeps all \WepCapHistories{} online histories, per-query counts,
+eligibility and seed-specific radii of the fixed-count comparison.
+It does not re-use the thirteen external sources. Each seed has
+\WepCapEdits{} slots; the seeds are not independent cameras.
+
+For a selected row with radius $r_i$, the reduction in error from
+the CV path $c$ at a known step is at most
+$\min(r_i,\|c-y\|)$, by the triangle inequality and nonnegative
+error. At an unknown step the lower-bound gain versus CV is
+nonpositive. The increase in lower-bound gain versus OLS4 path $o$,
+relative to leaving the row at CV, is at most
+$\min(r_i,\|o-c\|)$ on that unknown step. For each reference we
+sum these bounds over steps, take the largest eligible weighted
+row gains up to each query's original count, add the unedited CV
+gain against that reference, and divide by the common known CV
+error mass. Each reference may favor different rows; this is an
+optimistic bound that does not enforce the original risk checks.
+
+Even the largest OLS4 upper bound across seeds is
+\mbox{\WepCapObserved{} pp} on known steps and \mbox{\WepCapConservative{} pp}
+after conservative scoring. This rules out ranker-only repair
+under these particular limits. At the same budget, we add four
+causal paths crossing OLS versus median pair slopes with raw
+versus fitted final position. A ranker using only rolling errors
+inside the prefix satisfies risk on \WepCapPrefixPass{}/3
+seed views but risk and both utility comparisons on
+\WepCapPrefixDual{}/3. The expanded finite menu has negative
+joint upper bounds in \WepCapExpandedExclusion{}/3.
+Without the small-edit constraint, a full median-slope
+forecast gains \WepCapMedianVsOLS{} pp against OLS4 but its
+easy risk upper bound is \WepCapMedianEasy\%, above 2\%.
+The constraint on action magnitude and the constraint on harm
+are distinct; neither result supports deployment.

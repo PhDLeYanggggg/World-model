@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: camera-input action capacity on the exposed pilot
+
+At 23 edits and the original per-query peak radius, the best arbitrary-path
+upper bound against OLS4 is -18.18 pp on known steps and -19.02 pp after
+the missing-label debit. The same-radius finite menu with four new linear
+paths is excluded under the original risk constraints in 3/3 donor
+seeds on this one camera. A past-only ranker passes risk on 3/3 but
+never beats both references. Direct median pair slope gains +3.03 pp
+against OLS4, with 22.89% easy risk upper bound versus a 2% limit.
+No change to deployment, no held-out re-scoring.
+[Development result](outputs/publication_readiness_2026_09/wepdtof_camera_capacity_v1/README.md) |
+[Working paper v160](outputs/publication_readiness_2026_09/evidence_manuscript_v160/README.md).
+
 ## WEPDTOF: completed one-shot external test
 
 One development source and 13 frozen test source groups (15 clips).

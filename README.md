@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether better ranking alone could rescue the small camera
+interventions. On the development camera, even hindsight cannot make
+edits of the original size beat OLS4. A robust velocity fit does beat
+OLS4 when it can change the whole forecast, but it exceeds the original
+easy-case risk limit. I have not changed the fallback.
+[Camera motion study](outputs/publication_readiness_2026_09/wepdtof_camera_capacity_v1/README.md).
+
 I tested the frozen forecasting policy on 13 new WEPDTOF sources.
 The strict rule never intervened. When I forced the same number and
 size of edits for each method, joint selection did not beat independent
@@ -17,7 +24,7 @@ the accuracy comparison against both motion baselines. I kept constant
 velocity as the fallback. This is an external test of the policy, not
 validation of a deployable learned forecast.
 [Results and protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
-[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v159/README.md).
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v160/README.md).
 
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector
