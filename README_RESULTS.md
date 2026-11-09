@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: better turn candidates do not solve selection
+
+At the same 3,690 edit slots and original 2% risk rule, the turn menu
+raises the strict full-grid hindsight count from 21 to 50. Twenty-one
+new fits produce three qualifying full-grid gains over the matched
+additive arm, with no reliable average benefit. Singleton forecasts
+are identical across arms.
+[Experiment and replay](outputs/publication_readiness_2026_09/opendd_turn_intervention_v1/README.md).
+
 ## OpenDD: interaction capacity increases, learned gains do not
 
 At identical edit slots, the original and expanded menus permit 9 and

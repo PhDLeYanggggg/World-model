@@ -1,0 +1,72 @@
+{
+  "bootstrap_draws": 3000,
+  "central_velocity_used": false,
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_turn_intervention.py",
+      "sha256": "c85dc96ae2d46384c6f7a37d7514e30fa1002c51eea2728380f7ee1b417ad948"
+    },
+    {
+      "path": "src/world_model/m3w_radius_matched_turn_menu.py",
+      "sha256": "38b6e5a2106e1b3ae281e1c872defb8bcebf080ec2f953d659281b09eea56754"
+    },
+    {
+      "path": "src/world_model/m3w_ols_replacement.py",
+      "sha256": "5afcc914123a714f9154bb818bfebf801bb1b08fe255bd1a8c59c59e36362778"
+    },
+    {
+      "path": "scripts/train_m3w_opendd_expanded_costs.py",
+      "sha256": "aa34df1315ed9c19d595c6e9d34ffae22356db04631889d47eb3e09a171248d9"
+    },
+    {
+      "path": "scripts/audit_m3w_opendd_expanded_interaction_frontier.py",
+      "sha256": "b1048825741b0f7ad6a3935699096d1dff5e1cb885017b9fa77ec467487f75e6"
+    },
+    {
+      "path": "scripts/report_m3w_opendd_interaction_effects.py",
+      "sha256": "49c03fb2404dc12409c2e1ae5e8c2b085a77eb34b9e6abbefe12da96693a85ae"
+    },
+    {
+      "path": "scripts/audit_m3w_exact_slot_headroom.py",
+      "sha256": "beb07cca99f958c3676668f4614cf504eb526a606d45a86bef328b00fdb71161"
+    }
+  ],
+  "development_only": true,
+  "forecast_steps": 12,
+  "goals_used": false,
+  "independent_confirmation": false,
+  "new_forecast": "registered tapered turn from the observed eight positions; no new thresholds",
+  "observed_steps": 8,
+  "original_2pct": true,
+  "parents": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/freeze.json",
+      "sha256": "c806291eb958b6b2a05aac801ec5742e0c7a94b96151168fd9918c11ee6c4663"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_expanded_interaction_frontier_v1/readout.json",
+      "sha256": "4a11fe363768b688ae644f7b0432bf78d0ae8ff17a6ac28b131a036e714c8bf3"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_expanded_costs_v1/registration.json",
+      "sha256": "21095fd7873e0f16a89937082d4b1d9ac7c6c2943ff16f620d08387fe63af650"
+    }
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "singleton": "original matched additive, identical in all four arms",
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "training": "same cost head, amplitudes, sampler, optimizer, steps and pair-excluded producer",
+  "updates_per_fold": 400
+}
