@@ -1,0 +1,45 @@
+{
+  "arms": [
+    "soft",
+    "pointwise",
+    "listwise"
+  ],
+  "calibration": "original nonempty all-qualified prefix on separate city, CV otherwise",
+  "checkpoint_every": 50,
+  "choice": "argmax score; positive monotone calibration score without probability floor",
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_assignment_order.py",
+      "sha256": "98713ac48b30767c856101004099be61ba9e068027dbec3b4af63ad1080a33f0"
+    },
+    {
+      "path": "src/world_model/m3w_av2_assignment_order.py",
+      "sha256": "c4569850dd0d695bb5fbfef541a2655c7f81d44f3f722c43a4cf02cb61037a6c"
+    }
+  ],
+  "fit": "matched network, initialization and city-balanced batches of whole donor queries; only listwise loss differs",
+  "independent_confirmation": false,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_assignment_constraints_v1/summary.json",
+    "sha256": "a9ba728a7fa45021da04015196a69f164e69d56c29234654cad46741d3c52fa5"
+  },
+  "parent_soft": {
+    "path": "outputs/publication_readiness_2026_09/av2_assignment_cost_v1/summary.json",
+    "sha256": "2d96533710062728d974c9c645edab31561f5dad264ef71a480515ff5aa1ce3a"
+  },
+  "primary": "paired held development eligibility, utility and release vs pointwise and frozen soft",
+  "queries_per_batch": 16,
+  "rank_weight": 0.5,
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 400,
+  "target": "exact support, two-floor and original risk conjunction takes priority; bounded gain and risk margins rank within each class",
+  "temperature": 0.25,
+  "threads": 4,
+  "workers": 0
+}
