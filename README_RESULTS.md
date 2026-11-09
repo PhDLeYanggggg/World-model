@@ -7,10 +7,12 @@ or evidence status.
 
 ## OpenDD: separating observed utility and missing-step cost
 
-I refit the two-edit selector with the same pair network, samples
-and budget. One arm learns conservative gains directly; the other
-learns observed gain and missing-step costs separately.
-[Prospective comparison](outputs/publication_readiness_2026_09/opendd_pair_completion_v1/protocol.md).
+At the same two-edit budget, learning the missing-step cost separately
+loses 0.002534 pp of conservative trajectory gain and 0.02073 native
+units of relative-motion gain versus the equal-capacity direct head.
+The factored head releases more, but fewer active directions qualify
+on every release. I retain CV fallback.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_pair_completion_v1/README.md).
 
 ## Songdo: two paths for external evaluation
 

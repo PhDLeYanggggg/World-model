@@ -32,6 +32,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：分开学习已观测增益与缺失步扣减
+
+用 `scripts/run_m3w_opendd_pair_completion.py freeze` 训练并冻结同容量
+直接模型和拆分模型，随后运行同脚本的 `score`。原两次介入、半径和风险
+检查保持不变；拆分方案没有改善保守配对收益。
+[完整复现和指标](../outputs/publication_readiness_2026_09/opendd_pair_completion_v1/README.md)。
+
 ## OpenDD：车辆队列上的 EqMotion 对照
 
 先运行 `scripts/run_m3w_opendd_vehicle_eqmotion.py fit` 冻结三个种子的
