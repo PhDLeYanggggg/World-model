@@ -59,6 +59,9 @@ I did not fit or calibrate a selector on these clips or change the
 original 2% rule. The next data task is to improve matched supervision
 across several development recordings before fitting a camera risk head.
 
+The [confidence and label audit](confidence_bridge_v2/README.md) tests
+one way to recover support without replacing the original tracks.
+
 ## Reproduce
 
 [Protocol](protocol.md) | [Full-roster readout](raster_registration/full_online_readout.json)

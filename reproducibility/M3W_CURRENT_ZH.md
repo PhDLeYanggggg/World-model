@@ -22,6 +22,25 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
 完整检测复现及权重位置见 [实验说明](../outputs/publication_readiness_2026_09/sdd_camera_support_v1/README.md)。
 这是开发数据诊断，不是独立确认、风险校准或秒与米的换算。
 
+## SDD：低置信度检测与轨迹标签
+
+保持 92 个开发窗口不变，用低置信度检测补足八帧历史，不替换原有预测。
+补轨后完整行人未来从 46 条增至 82 条，达到最低支持要求的录像从
+1 段增至 2 段，仍只在同一场景。原无评分的 80 条轨迹中，37 条
+稳定匹配骑车人或滑板者；它们没有被补计进行人指标。
+
+```sh
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
+py=.venv-pytorch/bin/python
+"$py" scripts/run_m3w_sdd_camera_confidence.py freeze
+"$py" scripts/run_m3w_sdd_camera_confidence.py audit
+"$py" scripts/audit_m3w_sdd_camera_unknown.py
+"$py" scripts/audit_m3w_sdd_camera_confidence_utility.py
+```
+
+[完整结果](../outputs/publication_readiness_2026_09/sdd_camera_support_v1/confidence_bridge_v2/README.md)。
+这轮不改 2% 风险规则，也不使用预留的确认标签。
+
 ## v164：学习完整介入方案
 
 ```sh

@@ -3,12 +3,15 @@ import json
 import numpy as np
 import pytest
 
+from scripts import audit_m3w_sdd_camera_confidence_utility as utility
 from scripts import audit_m3w_sdd_camera_motion as motion
 from scripts import audit_m3w_sdd_camera_coverage as coverage
 from scripts import audit_m3w_sdd_camera_full_roster as full
 from scripts import audit_m3w_sdd_camera_raster as raster
+from scripts import audit_m3w_sdd_camera_unknown as unknown
 from scripts import export_m3w_sdd_camera_donors as donors
 from scripts import run_m3w_sdd_camera_aerial as aerial
+from scripts import run_m3w_sdd_camera_confidence as confidence
 from scripts import run_m3w_sdd_camera_scale_probe as scale
 from scripts import run_m3w_sdd_camera_support as study
 
@@ -123,3 +126,35 @@ def test_unknown_rows_debit_gain_and_empty_reference_is_not_zero():
     d = full.readout(f, y, valid, weight)['contrasts']['ols4_vs_cv']
     assert d == dict(known_pp=100., lower_pp=-300., missing_debit_px=24.)
     assert full.readout(f, y, ~np.ones_like(valid), weight)['contrasts']['ols4_vs_cv']['lower_pp'] is None
+
+
+def test_confidence_bridge_preserves_strong_tracks_and_requires_anchors():
+    frames = [
+        dict(frame=t, pixel_sha256=str(t), boxes=[
+            [t, 0, t+6, 6, .9, 1],
+            [t, 20, t+6, 26, .9 if t in (0, 3, 7) else .2, 1],
+            [t, 40, t+6, 46, .9 if t in (0, 7) else .2, 1],
+        ]) for t in range(8)
+    ]
+    high, low = (confidence.tracks(frames, x) for x in (.30, .12))
+    added = confidence.bridge(high, low)
+    assert [len(w['forecasts']) for w in (high, low, added)] == [1, 3, 2]
+    assert added['forecasts'][0] == high['forecasts'][0]
+    assert added['forecasts'][1][1:] == low['forecasts'][1][1:]
+    assert all(len(f['rows']) == 2 for f in added['frames'])
+    values, matched = utility.roster(added, {})
+    assert values[0].shape == (2, 4, 12, 2)
+    assert values[3].tolist() == [.5, .5] and not values[2].any() and not matched
+    empty = confidence.tracks([dict(f, boxes=[]) for f in frames], .30)
+    assert utility.roster(empty, {})[0][0].shape == (0, 4, 12, 2)
+
+
+def test_unknown_taxonomy_distinguishes_nonpedestrians_and_missing_outcomes():
+    a, b, c = (np.array([x, 0, x+6, 6]) for x in (0, 20, 40))
+    boxes = [a, b, c]
+    frames = [dict(frame=t, rows=[[i, *box, .9, 1] for i, box in enumerate(boxes)]) for t in range(8)]
+    window = dict(start=0, frames=frames, forecasts=[[i, [], []] for i in range(3)])
+    labels = {t: {10: (a, True), **({11: (b, True)} if t < 8 else {})} for t in range(20)}
+    count, classes = unknown.reasons(window, labels, {10: 'Pedestrian', 11: 'Biker'})
+    assert count == dict(scoring_complete=1, stable_nonpedestrian=1, never_matched_visible_label=1)
+    assert classes == dict(Biker=1)

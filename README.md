@@ -16,6 +16,14 @@ from 126 online histories. Smoother velocity fits helped on known
 outcomes, but the improvement could not be established on all tracks.
 [Camera-track study](outputs/publication_readiness_2026_09/sdd_camera_support_v1/README.md).
 
+I tried using weaker detections to fill gaps in those same camera
+histories. This gave me 82 complete pedestrian futures instead of 46,
+but only two clips had enough matches, both in the same scene.
+Among the original unscored tracks, 37 matched cyclists or skaters.
+That is a reason to check which agents the labels cover, not just
+to lower the detector threshold.
+[Confidence and label audit](outputs/publication_readiness_2026_09/sdd_camera_support_v1/confidence_bridge_v2/README.md).
+
 I trained a model to imitate complete editing plans rather than
 predicting gain and harm separately. It made some useful choices
 on held OpenDD locations, but did not beat independent selection

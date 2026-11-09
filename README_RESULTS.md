@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## SDD: lower-confidence camera tracks
+
+On the same 92 development windows, adding anchored weak tracks
+raises complete pedestrian futures from 46 to 82, and unscored
+histories from 80 to 154. Adequate support remains in two clips
+from one scene. An unrestricted lower threshold yields 109 complete
+futures but leaves 312 unscored. The original roster includes 37
+stable matches to cyclists or skaters outside the pedestrian scoring
+rule. OLS8 vs. OLS4 improves by +3.66 pp on known bridge outcomes,
+but its full-roster lower bound is -22.10 pp. No risk policy was
+fitted or changed.
+[Results and replay](outputs/publication_readiness_2026_09/sdd_camera_support_v1/confidence_bridge_v2/README.md).
+
 ## SDD camera tracks
 
 The pixel-raster repair moves 3,045 out-of-raster annotation centers
