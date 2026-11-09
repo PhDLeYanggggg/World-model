@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## MOT20: more complete pairs, no full online roster
+
+Fixed camera windows and detector boxes. Causal transport increases complete
+pair windows from 6 to 10 of 13. Whole-roster support remains zero. On the
+35 complete transport histories, OLS4 FDE is 169.78 versus 206.56 image px for
+constant velocity. [Pilot and replay](outputs/publication_readiness_2026_09/mot20_camera_support_v1/README.md).
+
 ## ACME: camera-clock windows lack whole-scene reference coverage
 
 Across 24 new windows on two exposed cameras, two contained a stable

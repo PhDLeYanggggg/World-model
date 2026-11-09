@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried the same camera pipeline on a crowded MOT20 recording. Changing
+association recovered complete pairs in 10 of 13 windows instead of six.
+OLS4 beat constant velocity on the matched tracks, but no window had
+labels for the full online roster.
+[MOT20 pilot](outputs/publication_readiness_2026_09/mot20_camera_support_v1/README.md).
+
 I checked two ACME recordings at times selected from the camera clock, not
 from the annotations. All 24 windows had multiple online tracks, but only
 two had a complete labeled pair, and none covered the full online roster.
