@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I retrained the risk estimator to recognize which edits actually have
+easy reference support. It recovered far more of those opportunities,
+but the wider policy still missed the original risk requirement.
+At equal intervention counts, a new gain ranker helps on observed
+steps; the gain does not survive the missing-step bound.
+[Signed risk and matched gain](outputs/publication_readiness_2026_09/moving_cv_signed_coverage_v1/README.md).
+
 I tried sharing predicted risk slack across agents so the forecaster
 could intervene more often. The policy barely expanded coverage and
 still did not qualify. With outcomes available, the same full menu

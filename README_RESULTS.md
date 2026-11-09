@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Signed Risk and Matched Query-Swap Gain
+
+27 fits, 27,000 updates. The conditional head recovers a true seed on
+the same action in 1,843/2,453 views versus 72 with the frozen head.
+It makes 85,920 edits, passes 10/72 with frozen gain, and qualifies
+no calibrator. At 71,595 equal query-count edits, swap minus frozen
+gain is +0.2686 known pp [+0.0195, +0.6067], but -1.3641 full-grid
+lower pp [-2.9569, -0.3814]. Known easy harm already fails in 37
+views; missing debit rejects 12 more that pass observed checks.
+[Experiment](outputs/publication_readiness_2026_09/moving_cv_signed_coverage_v1/README.md) |
+[Manuscript v131](outputs/publication_readiness_2026_09/evidence_manuscript_v131/README.md).
+
 ## Pooled Coverage and the Risk Prediction Gap
 
 Uncapped predicted pooling makes 244 edits and passes 5/72; relaxed

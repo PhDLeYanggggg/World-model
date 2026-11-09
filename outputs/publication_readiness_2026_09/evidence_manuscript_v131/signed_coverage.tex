@@ -1,0 +1,48 @@
+\section{Signed excess and within-query gain retraining}
+The previous pooled policy could not detect most true easy seed actions.
+We refit two matched risk heads that directly supervise signed all/easy
+excess, rather than combining predicted positive harm and reference
+masses. The conditional version predicts a signed value only within
+the relevant observed subset, then adds the exact edit radius weighted
+by the predicted probability of wholly missing outcomes. A separate
+gain head regresses the two CV-anchored bounds and ranks proposed edits
+on different agents in the same query. A swap label is used only when
+the observed margin exceeds the joint missing-step displacement.
+The design uses \SignedCoverUpdates{} updates on fitting sources only.
+
+At the fixed predicted screen, frozen, direct, and conditional risk
+heads recover a true seed on the same action in \SignedCoverOldDonor{},
+\SignedCoverDirectDonor{}, and \SignedCoverConditionalDonor{} of
+\SignedCoverTrueDonor{} true-seed query views. With frozen gain the
+direct and conditional heads choose \SignedCoverDirectEdits{} and
+\SignedCoverConditionalEdits{} edits, passing \SignedCoverDirectPass{}
+and \SignedCoverConditionalPass{}/\SignedCoverViews{} recording views.
+Their lower contrasts against per-query count-matched gain controls
+are \SignedCoverDirectMatched{} and \SignedCoverConditionalMatched{}
+percentage points, respectively. Adding the swap gain head gives
+\SignedCoverDirectSwapPass{} and \SignedCoverConditionalSwapPass{} passes.
+Its conservative contrasts at the fixed risk readouts are
+\SignedCoverSwapOnDirect{} and \SignedCoverSwapOnConditional{} points
+(paired 95\% source bootstrap intervals). Those contrasts can change
+coverage and do not isolate the ranking loss from a new gain fit.
+Calibration qualifies \SignedCoverQual{}/9 cells.
+This is fitting-source evidence, not independent confirmation.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{signed_coverage_ablation.pdf}
+\caption{Support recognition improves, but positive effects on known
+labels do not survive the missing-step utility bound. Intervals are
+paired source bootstrap intervals. The dashed line marks all 2,453
+query views with a true seed action.}
+\end{figure}
+
+In a separate matched replay, both conditional-risk policies make
+\SignedCoverSwapMatchEdits{} edits with identical counts in every query.
+The swap ranker gives \SignedCoverSwapMatchKnown{} on known labels
+but \SignedCoverSwapMatchLower{} as its conservative contrast.
+Under the uncapped conditional-risk/frozen-gain policy,
+\SignedCoverKnownEasyOver{} recording views already exceed the easy
+positive-harm limit on known outcomes; the wholly unobserved debit
+rejects \SignedCoverMissingFlip{} additional views that otherwise pass
+all observed checks. The original recording rule retains both failures.

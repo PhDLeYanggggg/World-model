@@ -1,8 +1,25 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v130 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v131 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v131：有符号风险余量与等数量收益排序
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_signed_coverage.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_signed_matched_gain.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_signed_failures.py
+```
+
+第一条命令核对冻结检查点、重算预测和校准结果，不更新参数。首次训练或确认
+原进程已退出后续跑，去掉 `--replay`；每 100 步写入模型、优化器和采样状态。
+第二条用同一风险模型，在每个查询严格匹配介入数；第三条把已知 easy 伤害和
+缺失标签导致的额外失败分开，不能把“只看已知”当成通过原规则。
+
+条件风险模型在同一真实候选上识别 1,843/2,453 个机会，校准仍为 0/9。
+条件风险下，两种收益排序各改 71,595 条；应重现已知收益 +0.2686 pp 和
+保守下界差 −1.3641 pp。[v131 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v131/README.md)。
 
 ## v130：广覆盖策略与风险误判
 
@@ -161,6 +178,6 @@ PID 对应的进程确实退出，再用原命令去掉 `--replay`。训练每 1
 
 ## 构建论文
 
-参见 [v130 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v130/README.md)。
+参见 [v131 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v131/README.md)。
 主文、补充材料与生成图的命令均由对应的冻结读出生成。匿名复现只展示可公开的
 汇总量，不包含原始轨迹、视频、模型权重或本机路径。当前工作稿没有提交。
