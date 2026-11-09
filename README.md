@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I let the model swap in new trajectories while keeping edit counts
+and displacement fixed. A simple geometric rule reduced the worst
+easy-case change but still failed calibration. Even allowing arbitrary
+paths and pooling the same displacement across a recording could not
+beat OLS4 in 67 of 72 development views. Changing who gets edited is
+not enough at that displacement budget.
+[Recipient exchanges and displacement limits](outputs/publication_readiness_2026_09/moving_cv_matched_recipient_exchange_v1/README.md).
+
 I held the earlier model's choice of trajectories fixed and compared
 learned direction changes with simply shrinking the old paths.
 The learned changes did not improve the conservative score.

@@ -1,0 +1,72 @@
+\section{Recipient exchanges at matched peak mass}
+We permit one swap per query between an edited agent and a
+previously unedited agent. The incoming path follows OLS4 and is
+scaled down to the outgoing half-peak radius. Each query keeps
+exactly the same number of edits and sum of per-row peak radii.
+We compare a causal OLS4 geometry score with an exchange model
+trained on analytic pairs, with or without requiring predicted
+dual gains and non-increasing risk. Nine fits use
+\ExchangeMassUpdates{} updates across three seeds and three
+source-role rotations. The three exchange policies use the same
+shortlist and the same \ExchangeMassEdits{} total edits as the
+frozen half-peak anchor.
+
+The geometry, learned and guarded policies make
+\ExchangeMassGeometryCount{}, \ExchangeMassLearnedCount{} and
+\ExchangeMassGuardCount{} exchanges, respectively.
+Their paired conservative utility contrasts against no exchange
+are \ExchangeMassGeometryEffect{}, \ExchangeMassLearnedEffect{}
+and \ExchangeMassGuardEffect{} pp. Their paired distance
+contrasts are \ExchangeMassGeometryPair{}, \ExchangeMassLearnedPair{}
+and \ExchangeMassGuardPair{} pixels. Intervals use paired source
+resampling. Original recording risk passes are
+\ExchangeMassPasses{} out of 72 (anchor, geometry, learned, guard).
+The worst signed easy changes in that order are
+\ExchangeMassWorst\%. Calibration qualifies \ExchangeMassQual{}/9.
+
+Ignoring risk and maximizing each conservative gain separately
+over the same exchange menu excludes OLS4 gains in
+\ExchangeMassOLSLimit{} of 72 views. This bound does not
+establish that the remaining views admit a joint positive
+and risk-feasible choice. Unlike unrestricted recipient
+reallocation, it preserves the anchor query counts and peak
+mass and permits only one exchange in each query.
+No independent confirmation outcomes enter this comparison.
+
+We also relax the menu completely. Let $d_{it}$ be CV error on
+known steps and CV-to-OLS4 disagreement on missing steps. Giving
+row $i$ radius $r$ can improve the conservative OLS4 numerator
+by at most $g_i(r)=w_i\sum_t\min(r,d_{it})$. For total radius $B$
+and at most $K$ edits, any $\lambda\geq0$ gives the upper bound
+\[
+ \lambda B + \operatorname{TopK}_{i}\sup_{r\geq0}
+          \bigl(g_i(r)-\lambda r\bigr).
+\]
+Here $\operatorname{TopK}$ sums the $K$ largest row values.
+We minimize over a price grid and add the original CV-to-OLS4
+offset. Query-local budgets bind each query separately; recording
+pooling keeps only the total radius and count per recording.
+Both allow arbitrary pointwise paths and ignore risk.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Peak factor & Query fixed & Query free & Record fixed \\
+\midrule
+$0.5\times$ & \ExchangeMassHalfLimits \\
+$1\times$ & \ExchangeMassBaseLimits \\
+$2\times$ & \ExchangeMassDoubleLimits \\
+$4\times$ & \ExchangeMassFourLimits \\
+$8\times$ & \ExchangeMassEightLimits \\
+Unbounded & \ExchangeMassFreeLimits \\
+\bottomrule
+\end{tabular}
+\end{center}
+Each entry is the number of OLS4 gains ruled out of 72,
+relative to the half-peak anchor budget. Free query count removes
+the count restriction, not the radius constraint. Even after
+pooling the same total radius and count across queries, the bound
+rules out \ExchangeMassRecordExcluded{} views. This distinguishes
+the aggregate displacement bottleneck from candidate ordering.

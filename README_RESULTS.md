@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Recipient exchange at matched peak displacement
+
+Nine fits, 12,600 updates, 54,748 edits per matched arm. Geometry
+makes 2,382 exchanges, reduces worst known signed easy change from
+30.25% to 4.81%, and loses 0.041 conservative pp [-0.101, -0.006].
+Learned and gated arms also show no positive lower gain.
+Calibration 0/9. Even arbitrary paths with pooled recording radius
+and count exclude OLS4 gains in 67/72 at the same total peak budget.
+[Experiment and replay](outputs/publication_readiness_2026_09/moving_cv_matched_recipient_exchange_v1/README.md) |
+[Manuscript v138](outputs/publication_readiness_2026_09/evidence_manuscript_v138/README.md).
+
 ## Source support at fixed recipients and peak
 
 36 fits, 36,000 updates, 54,748 matched recipients. Uniform shrinkage

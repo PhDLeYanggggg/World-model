@@ -1,8 +1,22 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v137 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v138 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v138：同改动数和同峰值预算的对象交换
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_matched_exchange.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_exchange_peak_envelope.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_exchange_record_pool.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_matched_exchange_replay.py
+```
+
+训练脚本使用本机 arm64 环境和检查点；移除 `--replay` 可训练或续跑，先核对 PID。
+后两种预算诊断允许事后最有利的路径，不用于选阈值。同一录像总峰值预算下，
+任意换对象也应重现 67/72 个 OLS4 排除。最后一个命令生成匿名标量 ZIP，
+只用 NumPy 即可复算风险和收益表。[v138 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v138/README.md)。
 
 ## v137：固定对象、等位移和来源一致性
 
