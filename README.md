@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I generated unscored Songdo forecasts from past tracks alone. At a
+common radius I can compare additive, same-family and joint choices
+without counting the same pair twice. The new search agrees with the
+old implementation on the largest Songdo query.
+[Forecast bank and search check](outputs/publication_readiness_2026_09/songdo_candidate_bank_v1/README.md).
+
 I built Songdo's eight-step inputs separately from its future label
 index. The A and B views share an observed footprint, so I keep them
 in the same provisional source group even though no sampled duplicate

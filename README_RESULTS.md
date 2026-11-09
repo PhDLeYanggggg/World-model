@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: unscored candidate forecasts and equal-radius search
+
+All 21 donor checkpoint identities verify and their three seed ensembles
+run on 81,000 observed vehicle histories. The pedestrian-to-vehicle
+candidate is a stress control. The 107-agent query gives identical
+additive and joint choices with 46,670 rather than 93,340 pair evaluations
+at the largest seed budget. No future index or coordinate was opened.
+[Bank and replay](outputs/publication_readiness_2026_09/songdo_candidate_bank_v1/README.md).
+
 ## Songdo: observed-only inputs and cross-site linkage
 
 The split-neutral pack exports 81,000 agent histories in 1,992 windows.

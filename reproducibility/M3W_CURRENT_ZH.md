@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## Songdo：未评分候选轨迹与同半径搜索检查
+
+用 `.venv-pytorch/bin/python scripts/build_m3w_songdo_candidate_bank.py` 生成候选；
+再运行 `scripts/check_m3w_songdo_equal_radius_search.py`。21 个旧 OpenDD 行人
+权重经过核验，只作为车辆迁移压力对照。同半径匹配在 107 车窗口上与原枚举
+一致；不读取未来索引或坐标，不确定正式划分，也不报效果。
+[详细复现](../outputs/publication_readiness_2026_09/songdo_candidate_bank_v1/README.md)。
+
 ## Songdo：观测输入包和来源关联
 
 用 `.venv-pytorch/bin/python scripts/build_m3w_songdo_prefix_pack.py` 导出
