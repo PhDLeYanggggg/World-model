@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: causal references leave most calibration opportunities unexposed
+
+The same two-edit bank admits a strict matched pair in 234/1,020
+calibration views. The additive reference is ineligible on 179 of
+those and exposes 39. Guarded prefix replay raises 39 to 45 but
+loses 0.893 pp of conservative trajectory gain and raises observed
+easy excess from 184 to 247; no reference replaces the additive arm.
+[Calibration-only references and exact pairing](outputs/publication_readiness_2026_09/av2_causal_reference_v1/README.md).
+
 ## AV2: within-scene ranking fails and the matched ceiling is 47
 
 The unchanged soft cost qualifies 89 views, pointwise 53, and listwise

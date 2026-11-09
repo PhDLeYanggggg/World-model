@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether a better AV2 reference would make the two-edit
+comparison more useful. On the calibration cities, 234 views had
+a qualifying pair in hindsight, but the learned additive reference
+qualified on only 55 of those. A history guard made more pairs
+comparable but worsened the reference itself, so I did not keep it.
+[Causal reference and exact two-arm capacity](outputs/publication_readiness_2026_09/av2_causal_reference_v1/README.md).
+
 I trained the same AV2 scoring model with and without a
 within-scene ranking loss. Neither version beat the additive
 cost. The exact audit explains why standalone counts are not
