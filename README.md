@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked two ACME recordings at times selected from the camera clock, not
+from the annotations. All 24 windows had multiple online tracks, but only
+two had a complete labeled pair, and none covered the full online roster.
+[Camera coverage study](outputs/publication_readiness_2026_09/acme_camera_roster_v1/README.md).
+
 I put the fixed-budget findings together in two supplement pages: what
 the menu permits in hindsight, what the selectors achieve, and what changes
 when the same budget moves between windows.

@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## ACME: camera-clock windows lack whole-scene reference coverage
+
+Across 24 new windows on two exposed cameras, two contained a stable
+complete pair and none covered every online history. In 23 windows
+the reference count alone falls short of the online roster.
+[Coverage, attribution and replay](outputs/publication_readiness_2026_09/acme_camera_roster_v1/README.md).
+
 ## Supplement: matched-budget results in two pages
 
 A separate local PDF copy now includes the OpenDD hindsight, refitting,
