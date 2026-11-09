@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: learning when to replace the additive proposal
+
+I kept one or both additive recipients and trained two equally sized
+rankers on the same forecast bank. Adding relative targets raises the
+full-condition matched count from 373 to 408, but only one of 14
+calibrated replacements meets every held criterion. Available-step
+error improves against the matched head; conservative trajectory and
+relative-motion gains do not. I keep CV as the vehicle fallback.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_vehicle_anchor_rank_v1/README.md).
+
 ## OpenDD: exact interaction headroom at two edits
 
 The original CV/OLS4 oracle qualifies in 8,062 of 8,874 views.

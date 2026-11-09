@@ -36,6 +36,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：以加法策略为参照的排序实验
+
+`scripts/run_m3w_vehicle_anchor_rank.py freeze` 用本地原生 PyTorch
+训练并按地点冻结替换策略，中断可重跑同一命令续接检查点。然后运行
+`score` 和 `scripts/audit_m3w_vehicle_anchor_rank_paired.py`。
+按原 2% 条件，校准后的 14 个留出替换只有 1 个达到全部目标。
+[实验结果与完整命令](../outputs/publication_readiness_2026_09/opendd_vehicle_anchor_rank_v1/README.md)。
+
 ## OpenDD：相同两次介入的相对运动上界
 
 `scripts/diagnose_m3w_vehicle_relative_ceiling.py` 在冻结候选上穷举同预算

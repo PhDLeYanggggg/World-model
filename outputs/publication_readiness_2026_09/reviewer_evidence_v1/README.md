@@ -15,8 +15,10 @@ means, so the conclusions do not depend on the original 3,000 draws.
 
 The intervals enumerate all ordered seven-location resamples through
 their multiplicities. They are not exact population intervals, and
-they are not a substitute for independent confirmation. The observed
-contrast of joint vs additive still spans zero. The headline replay
+they are not a substitute for independent confirmation. The
+available-step joint-minus-additive interval does include zero
+(+0.000249 pp, [-0.000422, +0.000962]); the conservative interval
+in the table is strictly negative. The headline replay
 reproduces 330/606 hindsight and 57/606 causal OpenDD passes, 67/72
 nonpositive relaxed OLS4 bounds on MovingDroneCrowd++, and 0/45
 WEPDTOF dual passes. It preserves the unresolved OpenDD hindsight view.
