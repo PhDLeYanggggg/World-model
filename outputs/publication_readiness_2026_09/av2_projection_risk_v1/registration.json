@@ -1,0 +1,40 @@
+{
+  "arms": [
+    "transferred_cost",
+    "risk_replay",
+    "gain_only",
+    "gain_risk"
+  ],
+  "batch": 96,
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_projection_risk.py",
+      "sha256": "baecda5712a86be20f05745ac6141dc600b151b4762f0d29510d09f280fa5fa8"
+    },
+    {
+      "path": "src/world_model/m3w_av2_projection_risk.py",
+      "sha256": "8fed45bc1060e79873d9316b03f70638d952c292678ab015da6643fc65dba391"
+    }
+  ],
+  "confidence": "paired lower gain regressions plus exact support and conditional risk; gain-only uses the same gain outputs",
+  "dir_steps": 250,
+  "independent_confirmation": false,
+  "inner": "three other donor cities fit each direction model using frozen causal anchor radii; nested EqMotion and action reference supply the scored donor profiles, both exclude the donor being scored",
+  "original_2pct": true,
+  "outer": "fixed position forecasts unchanged; same original calibration prefix and held development scoring",
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_position_release_v1/summary.json",
+    "sha256": "b3d994953e5b61f51281f66f15676691c0421925da33f972bf88a0204a3365d7"
+  },
+  "ranking": "fixed top 1, 5, 10 within each fold, identical intervention count, no policy fitting",
+  "reserved_outcomes_opened": false,
+  "risk_steps": 400,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "threads": 4,
+  "workers": 0
+}
