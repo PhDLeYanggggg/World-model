@@ -13,6 +13,10 @@
 视频或模型。它只复算冻结汇总，不重跑实验。
 [对应证据和命令](../outputs/publication_readiness_2026_09/main_claims_replay_v1/README.md)。
 
+WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定通过，而不读
+旧的通过标志，随后按原始来源组复算区间。解包后运行 `python verify.py`。
+[构建、结果和精确 bootstrap 检查](../outputs/publication_readiness_2026_09/wepdtof_scalar_replay_v1/README.md)。
+
 本文档从 v160 的开发相机诊断和 v159 的一次性外部检验开始。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。

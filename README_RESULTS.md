@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: replay the decision without saved pass flags
+
+The offline verifier reconstructs the risk decisions from the three
+original ratios and recovers 0/45 joint dual passes. The exact source
+bootstrap gives [-0.11472, +0.01277] pp versus matched independent choice,
+consistent with the original 3,000-draw interval. This verifies scalar
+accounting without another read of the external labels.
+[Replay and results](outputs/publication_readiness_2026_09/wepdtof_scalar_replay_v1/README.md).
+
 ## OpenDD: signed relative-motion features
 
 With equal model size, training pairs and edit budgets, direction reduces
