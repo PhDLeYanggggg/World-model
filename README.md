@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+On DroneCrowd, keeping the OLS4 slope but moving the forecast
+origin to the fitted line improved accuracy in 14 of 15
+calibration groups. That did not solve the per-recording harm
+checks. A hindsight comparison shows that the same small
+forecast bank contains better choices than my past-only rule finds.
+[Full-scene motion controls](outputs/publication_readiness_2026_09/dronecrowd_motion_floor_v1/README.md).
+
 I kept the replay-selected forecasts fixed and separately
 estimated whether the original path qualifies and whether
 the replacement improves on it. This changed calibration

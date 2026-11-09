@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## DroneCrowd: a fitted origin beats OLS4 on accuracy, not risk
+
+Across the approved 15 calibration groups, the fitted origin
+adds +0.391 pp [0.247, 0.532] conservative gain vs OLS4.
+Only 8/40 recordings pass both floors and original risk.
+With hindsight the full-scene bank passes 40/40 and gains
++7.151 pp vs OLS4. Neither result replaces the sparse-budget
+protocol or opens confirmation.
+[Causal controls and zero-harm witness](outputs/publication_readiness_2026_09/dronecrowd_motion_floor_v1/README.md).
+
 ## AV2: separate reference and replacement scores do not transfer
 
 On 935 unchanged replay proposals, 57 have eligible references

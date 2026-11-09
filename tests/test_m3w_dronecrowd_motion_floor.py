@@ -1,6 +1,7 @@
 import numpy as np
 import pytest
 
+from scripts.audit_m3w_dronecrowd_motion_witness import witness
 from src.world_model import m3w_dronecrowd_motion_floor as model
 
 
@@ -37,3 +38,17 @@ def test_guard_reverts_if_cv_is_already_perfect_on_every_probe():
     h[:, -1, 0] = 20.
     c = model.coefficients(h)
     np.testing.assert_array_equal(c[:, -1], c[:, 0])
+
+
+def test_witness_selects_only_known_improvements():
+    cv = np.zeros((3, 12, 2))
+    y = cv.copy()
+    y[0, :, 0] = 2.
+    other = np.ones_like(y)
+    alt = y.copy()
+    alt[2] = 10.
+    mask = np.ones(y.shape[:2], bool)
+    mask[2] = False
+    p, kinds = witness(cv, other, [alt], y, mask)
+    np.testing.assert_array_equal(kinds, [2, 0, 0])
+    np.testing.assert_array_equal(p, y)
