@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Offline evidence replay
+
+The headline counts, external risk checks and matched-budget tables
+now run from one local archive. Exact empirical resampling over the
+seven OpenDD locations also reproduces the negative joint and
+support-reranking conclusions. This checks the reported statistics,
+not training or external confirmation.
+[Archive and replay](outputs/publication_readiness_2026_09/reviewer_evidence_v1/README.md).
+
 ## OpenDD: easy-support reranking did not improve the matched decision
 
 I added a frozen, past-only support score at the same two-edit budget.

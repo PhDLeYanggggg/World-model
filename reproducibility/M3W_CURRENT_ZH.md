@@ -7,7 +7,13 @@
 本地另有带证据索引的补充材料版本：保留原 50 页，新增索引和一页成对
 消融。两份原 PDF 均未改动。[生成和验证说明](../outputs/publication_readiness_2026_09/supplement_evidence_guide_v1/README.md)。
 
-核对摘要里的核心数字可运行
+一次核对主文数字、WEPDTOF 风险检查、固定预算表及最新 OpenDD 消融，
+运行 `.venv-pytorch/bin/python scripts/package_m3w_reviewer_evidence.py`。
+解压生成的 `reviewer_evidence.zip`，在解压目录运行
+`python -I -B -S verify.py`，无需仓库或第三方依赖。
+[适用范围和完整复现](../outputs/publication_readiness_2026_09/reviewer_evidence_v1/README.md)。
+
+单独核对摘要里的核心数字可运行
 `.venv-pytorch/bin/python scripts/package_m3w_main_claims.py`。
 生成的本地压缩包内有 `verify.py`，解包后可离线运行，不需要仓库、
 视频或模型。它只复算冻结汇总，不重跑实验。
