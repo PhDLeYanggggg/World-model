@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: a separate support gate does not fix release
+
+At the same 89 selections, the 0.50 gate changes unsupported views
+from 20 to 19 but leaves qualification at 28 and observed harm at 24.
+It leaves the exact held release set unchanged: 17 released, four
+qualified, eight risk failures. At the separate 86-view sensitivity
+budget, the 0.75 gate trades 11 fewer unsupported views for 11 more
+observed harms. No deployment change or independent confirmation.
+[Matched counts, paired city intervals and release replay](outputs/publication_readiness_2026_09/av2_separate_support_gate_v1/README.md).
+
 ## AV2: conditional harm trades observed failures for unsupported views
 
 At 90 fixed selections, observed harm drops 39 to 24 while

@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether requiring an easy reference before ranking would make
+the AV2 forecasts safer to release. The main gate did not change which
+forecasts were released. A stricter gate found more cases with a usable
+reference, but those cases brought back observed harm at the same
+intervention count. I did not keep either rule for deployment.
+[Matched support gate test](outputs/publication_readiness_2026_09/av2_separate_support_gate_v1/README.md).
+
 I trained a separate AV2 score for observed harm. At the same
 90 edits it found fewer observed failures, but shifted exactly
 as many choices to views without an easy reference. It did not
