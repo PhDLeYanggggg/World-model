@@ -1,0 +1,41 @@
+{
+  "batch": 32,
+  "calibration": "original standalone exact qualification and 2 percent checks on independent calibration city",
+  "checkpoint": 40,
+  "code": {
+    "path": "scripts/run_m3w_av2_selected_veto.py",
+    "sha256": "6edf5d00bcae434d7e877a9c2eb95dee381f5b1d3672303d975914cf0004b352"
+  },
+  "independent_confirmation": false,
+  "inference": "fixed outer upper choices and gain/support heads; veto may reorder scenes but cannot change selected paths",
+  "modes": [
+    "self",
+    "uniform",
+    "selected"
+  ],
+  "nested": "ranker, EqMotion producer and ranker cutoff exclude recipient donor city, outer calibration and held; inner ranker training uses that same three-city producer, in-sample for its own three cities",
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_harm_quantile_v1/summary.json",
+    "sha256": "306f73b3b0d9bf33a50125ba2456c319febc855c1d242687c5cf6697492294aa"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_harm_quantile_v1/freeze.json",
+    "sha256": "f26621626d790f847759e215c24672a8f294abe0ec2f8569624a2c3264a9b5c7"
+  },
+  "postselection": {
+    "path": "outputs/publication_readiness_2026_09/av2_harm_quantile_v1/postselection.json",
+    "sha256": "157c704e65266ac8aa7923fdc8a013e7092c418106153cff40c1a76bbbfd3748"
+  },
+  "primary": "selected",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "torch_threads": 4,
+  "veto": "same detached-point upper risk architecture, seed, donor scene draws and updates; selected uses one fixed inner argmax, uniform draws one menu option"
+}

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: training the veto on selected actions improves one harm term
+
+Against an otherwise matched uniform-training veto, the
+selected-training veto improves city-balanced overall harm
+coverage by 4.81 pp [0.26, 7.98]. Neither easy harm term
+improves clearly, and none of its three held interventions
+qualifies. The anonymous replay and figure are local.
+[City-excluded training and scalar verification](outputs/publication_readiness_2026_09/av2_selected_veto_v1/README.md).
+
 ## AV2: one-sided harm estimates lose coverage after selection
 
 On the same 340 development scenarios, using the upper harm
