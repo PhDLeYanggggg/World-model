@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: strong pair coverage, sparse complete rosters
+
+Four published intersection-day archives pass publisher checksums.
+On the primary reconstructed clock, 1,991 of 1,992 nonoverlapping
+queries have a complete visible pair; 124 have a complete roster.
+A separate clock-drift diagnostic recovers 458 additional queries at
+C without changing frame indices. No forecast scored and no split assigned.
+[Intake and replay](outputs/publication_readiness_2026_09/songdo_traffic_intake_v1/README.md).
+
 ## OpenDD: observed lag support does not yield useful joint forecasts
 
 Of 4,015 agent-window rows with an eligible neighbor, 769 pass the

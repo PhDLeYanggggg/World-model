@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked Songdo Traffic as a new external source. Almost every eligible
+nonoverlapping window has a fully labelled vehicle pair, but only 124 of
+1,992 have complete futures for the whole observed roster. I kept those
+two kinds of coverage separate and have not scored a forecasting policy.
+[Songdo source and clock audit](outputs/publication_readiness_2026_09/songdo_traffic_intake_v1/README.md).
+
 I also required the neighbor to predict the target's motion in two
 already observed steps before using it. This left only 99 matched edits
 and did not improve the twelve-step pair forecast over own history.
