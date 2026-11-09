@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source-Deletion Costs and the Sparse OLS4 Anchor
+
+27 matched refits, 27,000 updates, and 1,613 equal-radius edits per seed.
+Minimum versus mean source-deletion scoring gives +0.0149 observed pp
+[-0.0083, +0.0544] and a -0.1310 full-grid lower contrast
+[-0.1945, -0.0810]. No original risk pass. Even allowing one arbitrary
+hindsight edit per query, untouched OLS4 predictions already exceed the
+CV-relative 2% limit on 33/34 recordings for all and 33/34 for easy,
+with 34/34 in the union. This rules out that anchor and budget, not
+CV-anchored policies. Independent confirmation remains unopened.
+[Experiment and risk bound](outputs/publication_readiness_2026_09/moving_motion_cost_stability_v1/README.md) |
+[Manuscript v122](outputs/publication_readiness_2026_09/evidence_manuscript_v122/README.md).
+
 ## Motion Choice: Cost Versus Order
 
 Nine matched Torch fits (9,000 updates), 376,464 identical edits across

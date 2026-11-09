@@ -1,0 +1,29 @@
+\section{When a sparse edit budget cannot repair the anchor}
+\label{supp:sparse-anchor-risk}
+We compare the mean and minimum of nine leave-one-fitting-source-out cost
+heads, for three seeds. Both policies choose between the same two recipients
+per query, with the same peak edit relative to OLS4 and with directions fixed
+by the full-fit head. At 1,613 matched edits per seed, minimum scoring improves
+observed utility by \SparseKnown{} points (95\% source-bootstrap interval
+\SparseKnownCI{}) over mean scoring, but its full-grid lower contrast is
+\SparseLower{} points. Neither passes the original 2\% rule in any of the
+102 repeated recording views. The minimum of these dependent fits is a
+sensitivity score, not a calibrated uncertainty bound.
+
+We ask whether \emph{any} one-edit-per-query policy starting at OLS4 could
+pass the CV-relative rule on these recordings. For all or easy targets,
+let $h_i=(e_i^{\mathrm{OLS4}}-e_i^{\mathrm{CV}})_+$ on known rows in that
+subset and zero elsewhere. With arbitrary edits, the policy can eliminate
+at most $\max_{i\in q} h_i$ known harm in query $q$; adding further harm is
+unnecessary for this optimistic calculation. The actual risk denominator
+cannot exceed the known CV error mass $M$ over the whole subset. For $M>0$,
+an optimistic lower bound on the original positive-harm ratio is
+\[
+  \frac{\sum_i h_i-\sum_q\max_{i\in q} h_i}{M}.
+\]
+Unknown harm is set to zero, and all and easy can erase different rows. The
+bound exceeds 2\% on \SparseAll{}/\SparseN{} recordings for all targets,
+\SparseEasy{}/\SparseN{} for easy, and \SparseUnion{}/\SparseN{} for their
+union. This is a necessary-condition check for an OLS4 anchor at this budget,
+not a change to the safety rule. It shows why a strong accuracy comparator
+need not be a suitable deployment anchor. No independent outcomes were used.

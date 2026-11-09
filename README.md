@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether changing just one OLS4 forecast per query could meet my
+original risk rule. Even if I knew which track to fix, the harm left on the
+untouched tracks would still exceed the limit on all 34 development
+recordings. I keep OLS4 as an accuracy comparator; this sparse OLS4 policy
+is not a deployment candidate.
+[Matched edits and risk bound](outputs/publication_readiness_2026_09/moving_motion_cost_stability_v1/README.md).
+
 I compared predicting the winning motion forecast with predicting how much
 it would help or hurt. With the same tracks and edit sizes, the cost model
 guessed the winner less often but made less costly mistakes on labeled
