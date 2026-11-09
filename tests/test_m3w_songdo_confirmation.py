@@ -15,10 +15,17 @@ class Fixture:
 
     def __init__(self):
         self.calls = []
+        self.cutoff_calls = []
+        self.cuts_seen = []
         self.fail_once = None
+
+    def cutoff_errors(self, flight):
+        self.cutoff_calls.append(flight)
+        return [.2, .25, .3] if flight == 'a.csv' else [.25]
 
     def score(self, flight, spec, thresholds):
         self.calls.append((flight, thresholds is not None))
+        self.cuts_seen.append((spec.get('easy_cut'), spec.get('hard_cut')))
         if flight == self.fail_once:
             self.fail_once = None
             raise OSError('test interruption')
@@ -89,6 +96,60 @@ def test_zero_shot_cannot_fit_and_empty_release_is_not_certified(tmp_path):
     assert joint['no_edit_not_certified'] == 15
     assert joint['completion_lower_pp']['vs_cv']['point'] == 0.
     assert confirm['matched_seed_views'] == 15
+
+
+def test_calibration_estimates_cuts_from_approved_groups_only(tmp_path):
+    data, spec = Fixture(), specification()
+    spec.pop('easy_cut')
+    spec.pop('hard_cut')
+    spec['cutoff_rule'] = protocol.CALIBRATION_CUTOFF_RULE
+    runner.execute(tmp_path, 'register', spec, data)
+    with pytest.raises(FileNotFoundError, match='freeze.json'):
+        runner.execute(tmp_path, 'confirm', spec, data)
+    assert not data.cutoff_calls
+    frozen = runner.execute(tmp_path, 'calibrate', spec, data)
+    assert data.cutoff_calls == ['a.csv', 'a2.csv', 'b.csv']
+    assert frozen['easy_cut'] == frozen['hard_cut'] == .25
+    runner.execute(tmp_path, 'confirm', spec, data)
+    assert data.cutoff_calls == ['a.csv', 'a2.csv', 'b.csv']
+    assert data.cuts_seen == [(.25, .25)]*5
+    cuts = tmp_path/'calibration_cutoffs.json'
+    cuts.write_text(cuts.read_text()+'\n')
+    with pytest.raises(ValueError, match='Frozen file changed'):
+        runner.execute(tmp_path, 'confirm', spec, data)
+
+
+def test_matched_only_zero_shot_reports_utility_without_any_risk_pass(tmp_path):
+    data = Fixture()
+    spec = dict(mode='zero_shot', approval_reference='synthetic only',
+                site_roles={s: 'confirmation' for s in 'ABCD'}, cutoff_rule='not_used',
+                release={'method': 'matched_only'})
+    runner.execute(tmp_path, 'register', spec, data)
+    with pytest.raises(ValueError, match='No flights assigned to calibration'):
+        runner.execute(tmp_path, 'calibrate', spec, data)
+    out = runner.execute(tmp_path, 'confirm', spec, data)
+    assert out['risk_and_release'] == 'not_run_no_calibration'
+    assert 'released' not in out
+    assert out['matched_joint_minus']['additive']['lower_pp']['point'] == 0.
+    assert out['matched_native_metrics']['cv']['available_ade_native']['point'] == .25
+    assert out['matched_vs_cv']['joint']['lower_pp']['status'] == 'estimable'
+    assert data.cuts_seen == [(None, None)]*5 and not data.cutoff_calls
+
+
+def test_complete_cv_cutoff_excludes_zero_and_partial_rows():
+    cv = np.zeros((4, 12, 2))
+    y = cv.copy()
+    y[1:, :, 0] = np.array([.1, .3, .8])[:, None]
+    valid = np.ones((4, 12), dtype=bool)
+    valid[-1, -1] = False
+    y[~valid] = np.nan
+    x = protocol.positive_complete_cv_ade(cv, y, valid)
+    np.testing.assert_allclose(x, [.1, .3])
+    r = protocol.fit_native_cutoffs({'cal.csv': x, 'empty.csv': []})
+    assert r['easy_cut'] == pytest.approx(.15)
+    assert r['hard_cut'] == pytest.approx(.25)
+    with pytest.raises(ValueError, match='No complete positive'):
+        protocol.fit_native_cutoffs({'empty.csv': []})
 
 
 def test_selective_archive_parser_checks_original_identity_and_ignores_unselected_xy(tmp_path):

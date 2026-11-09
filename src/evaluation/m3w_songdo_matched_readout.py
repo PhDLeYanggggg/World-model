@@ -75,12 +75,13 @@ def matched_paths(cv, offsets, proposals):
     return bounds, result
 
 
-def score_flight(cv, ols, y, valid, offsets, proposals, *, easy_cut, hard_cut):
+def score_flight(cv, ols, y, valid, offsets, proposals, *, easy_cut=None, hard_cut=None):
+    with_risk = easy_cut is not None or hard_cut is not None
     if (cv.shape != ols.shape or cv.shape != y.shape or cv.ndim != 3 or cv.shape[1:] != (12, 2)
             or valid.shape != cv.shape[:2] or valid.dtype != bool or not np.isfinite(y[valid]).all()
             or not np.isfinite(cv).all() or not np.isfinite(ols).all() or offsets.ndim != 1
             or not len(offsets) or offsets[0] != 0 or offsets[-1] != len(cv) or np.any(np.diff(offsets) < 2)
-            or not (0 < easy_cut <= hard_cut < np.inf)):
+            or (with_risk and (easy_cut is None or hard_cut is None or not (0 < easy_cut <= hard_cut < np.inf)))):
         raise ValueError('Invalid aligned predictions, label mask, roster, or prespecified cutoffs')
     full, counts = coverage(valid, offsets)
     bounds, pred = matched_paths(cv, offsets, proposals)
@@ -91,17 +92,18 @@ def score_flight(cv, ols, y, valid, offsets, proposals, *, easy_cut, hard_cut):
         row = absolute(p, y, valid, full)
         row['vs_cv'] = compare(p, cv, y, valid, weight, cv_mass, bounds)
         if arm in pred:
-            r = policy(p, cv, cv, y, valid, np.repeat('flight', len(y)), easy_cut=easy_cut, hard_cut=hard_cut)
-            row['risk'] = r['recordings']['flight']
-            row['easy_known_gain_percent'] = r['subsets']['easy']['gain_percent']
-            row['hard_known_gain_percent'] = r['subsets']['hard']['gain_percent']
             row['vs_ols4'] = compare(p, ols, y, valid, weight, cv_mass, bounds)
             lo, hi = bounds
             changed = (p != cv).any(axis=(1, 2))
             row['intervention_rate'] = float(changed.mean())
             row['query_intervention_rate'] = float(changed[lo:hi].mean())
-            row['dual_pass'] = (row['risk']['supported'] and row['vs_cv']['lower_pp'] is not None
-                                and row['vs_cv']['lower_pp'] > 0. and row['vs_ols4']['lower_pp'] > 0.)
+            if with_risk:
+                r = policy(p, cv, cv, y, valid, np.repeat('flight', len(y)), easy_cut=easy_cut, hard_cut=hard_cut)
+                row['risk'] = r['recordings']['flight']
+                row['easy_known_gain_percent'] = r['subsets']['easy']['gain_percent']
+                row['hard_known_gain_percent'] = r['subsets']['hard']['gain_percent']
+                row['dual_pass'] = (row['risk']['supported'] and row['vs_cv']['lower_pp'] is not None
+                                    and row['vs_cv']['lower_pp'] > 0. and row['vs_ols4']['lower_pp'] > 0.)
         stats[arm] = row
     contrasts = {arm: compare(pred['joint'], pred[arm], y, valid, weight, cv_mass, bounds)
                  for arm in ARMS[:-1]} if pred else {}

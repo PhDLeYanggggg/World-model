@@ -54,3 +54,7 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
 ```
 
 Twenty-three related tests passed. [Hash-bound rehearsal receipt](receipt.json).
+
+The archived v1 receipt binds scorer code at commit `5627e7adf`.
+For the current two-path rehearsal see
+[v2](../songdo_protocol_paths_rehearsal_v2/README.md).

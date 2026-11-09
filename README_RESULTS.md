@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: two paths for external evaluation
+
+I rehearsed both options on the frozen forecast bank. The calibrated
+path uses 40 calibration flights and 160 confirmation flights. The
+zero-shot path uses 200 flights and evaluates matched utility only,
+without a release or risk claim. These are structural checks with
+fabricated futures, not Songdo results.
+[Options and reproduction](outputs/publication_readiness_2026_09/songdo_protocol_paths_rehearsal_v2/README.md).
+
 ## OpenDD: a task-matched EqMotion vehicle control
 
 At the same budget, both fixed-output EqMotion variants beat CV,

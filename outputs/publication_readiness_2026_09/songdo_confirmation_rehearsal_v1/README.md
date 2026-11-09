@@ -16,6 +16,10 @@ component before 3,000 component bootstrap draws.
 
 ## Reproduce without opening outcomes
 
+This receipt binds commit `7591dd019`. The current rehearsal command
+now verifies both prospective options and emits a separate
+[v2 receipt](../songdo_protocol_paths_rehearsal_v2/README.md).
+
 ```sh
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/rehearse_m3w_songdo_confirmation.py
 .venv-pytorch/bin/python -m pytest -q tests/test_m3w_songdo_confirmation.py tests/test_m3w_songdo_matched_readout.py tests/test_m3w_songdo_future_join.py
@@ -31,11 +35,14 @@ joined by actor, drone, visibility and timestamp.
 
 No production manifest or real future result exists for this run.
 The approved manifest must identify the approval, every site's role,
-the native-unit easy/hard cutoffs and the release rule. It cannot split
-linked sites. In calibrated mode, the tie-complete passing-score prefix
+the cutoff rule and the release rule. It cannot split linked sites.
+The current options, including a calibration-only cutoff estimator
+and a matched-only zero-shot mode, are described in the v2 report.
+In calibrated mode, the tie-complete passing-score prefix
 is fitted separately for each arm and seed using only calibration
-flights. In zero-shot mode, every threshold and its source must be
-declared in the manifest before any outcomes are opened.
+flights. Any zero-shot release threshold and its source must be
+declared in the manifest before any outcomes are opened; the matched-only
+mode does not release or claim risk support.
 
 ```sh
 .venv-pytorch/bin/python scripts/run_m3w_songdo_confirmation.py register --protocol /path/to/approved.json

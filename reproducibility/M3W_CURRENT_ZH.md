@@ -56,9 +56,9 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 ## Songdo：从冻结候选到正式评分
 
 `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/rehearse_m3w_songdo_confirmation.py`
-用合成未来覆盖全部 200 个航次。正式入口先注册已批准的来源角色，再按
-协议校准或直接读取冻结阈值；相同协议重跑时从已完成航次接续。
-[角色、文件及命令](../outputs/publication_readiness_2026_09/songdo_confirmation_rehearsal_v1/README.md)。
+用合成未来覆盖两条路径：40 航次校准、160 航次确认，或 200 航次零样本
+等预算效用评估。正式入口先注册已批准的来源角色；相同协议重跑时从已完成
+航次接续。[两种方案、文件及命令](../outputs/publication_readiness_2026_09/songdo_protocol_paths_rehearsal_v2/README.md)。
 目前无正式登记和真实 Songdo 评分。
 
 ## Songdo：评分器演练（不读真实未来）
