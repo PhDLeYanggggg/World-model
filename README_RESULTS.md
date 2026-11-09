@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## SDD camera tracks
+
+The pixel-raster repair moves 3,045 out-of-raster annotation centers
+back inside the video. Tiled aerial detection gives 46 complete matches
+out of 126 histories, with adequate support in one of 23 development clips.
+OLS8 gains +1.83 pp against OLS4 on known outcomes; the full-roster lower
+bound is -15.48 pp. No risk policy was fitted.
+[Study and replay](outputs/publication_readiness_2026_09/sdd_camera_support_v1/README.md).
+
+[Working manuscript v166](outputs/publication_readiness_2026_09/evidence_manuscript_v166/README.md)
+states the matched-budget comparison and the hindsight capacity test up front.
+No scores or figures changed in this manuscript revision.
+
 ## Working paper figures
 
 I separated the four outcomes in Figure 1 so each count can be read

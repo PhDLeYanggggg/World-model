@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether raw SDD video tracks could support risk learning.
+The reference annotations and decoded videos use different pixel rasters.
+After aligning them, the best detector recovered 46 complete matches
+from 126 online histories. Smoother velocity fits helped on known
+outcomes, but the improvement could not be established on all tracks.
+[Camera-track study](outputs/publication_readiness_2026_09/sdd_camera_support_v1/README.md).
+
 I trained a model to imitate complete editing plans rather than
 predicting gain and harm separately. It made some useful choices
 on held OpenDD locations, but did not beat independent selection
@@ -47,7 +54,7 @@ the accuracy comparison against both motion baselines. I kept constant
 velocity as the fallback. This is an external test of the policy, not
 validation of a deployable learned forecast.
 [Results and protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/README.md) |
-[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md).
+[Working paper](outputs/publication_readiness_2026_09/evidence_manuscript_v166/README.md).
 
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector

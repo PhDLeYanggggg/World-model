@@ -1,0 +1,444 @@
+{
+  "association": "per-frame Hungarian, IoU >= .10 and center distance <= half publisher box diagonal; retain identical pair in all eight past frames",
+  "code_sha256": {
+    "scripts/run_m3w_sdd_camera_support.py": "5ca3fe39831e7b8fa09eca8ec93c2ffb8acc2398541ba645a593ffceb646a469",
+    "scripts/run_m3w_waterloo_raw_prefix.py": "0b5d2220b3bb81bffb18645788ac5cb108ac5da8af88b2fc90d3c9d3b61cc845",
+    "scripts/run_m3w_wepdtof_rapid_probe.py": "4fa9fad3d285359a1aa94663727217248656e91c4578aeabbe2cd16d20832a9b",
+    "src/world_model/m3w_streaming_boxes.py": "bfa19875e4012844fb965092387e56bd26a8fa58422496a4d9801115ff9cb0c4"
+  },
+  "detector": {
+    "mobilenet": {
+      "checkpoint": "907ea3f91ff92242bc1baea8049276a3e76bca48ce7560bd268cc029f37977b5",
+      "confidence": 0.35,
+      "short_side": 512,
+      "tile_grid": [
+        4,
+        3
+      ],
+      "training": "Torchvision COCO weights"
+    },
+    "rapid": {
+      "checkpoint": "9da85a06000d66856c43c0b10629b35eedde09b0d91f5544478c6a4833a4813e",
+      "confidence": 0.3,
+      "short_side": 1024,
+      "training": "COCO + MW-R + HABBOF, no WEPDTOF per publisher",
+      "upstream_commit": "3e55294e0e419166bf152a15271c6b2fbd75b5cd"
+    }
+  },
+  "exposure": "existing development data",
+  "future": 12,
+  "minimum_development_support": ">=8 complete paired tracks across >=3 distinct windows per recording",
+  "observed": 8,
+  "raw_frame_stride": 1,
+  "role": "development qualification only, both Stage23 train roles",
+  "roster": "even mid-quantiles of disjoint 20-frame blocks with >=2 visible pedestrian IDs in all eight past frames; no future support filter",
+  "runtime": {
+    "architecture": "arm64",
+    "opencv": "4.14.0",
+    "torch": "2.12.0"
+  },
+  "safety_protocol_changed": false,
+  "seconds_verified": false,
+  "sources": [
+    {
+      "annotation_sha256": "58ec509091faa3e81f5d77c5ab43388ec3a8e7988f9a69952ac523c09799a2b4",
+      "clip_sha256": "88c1f9790cf21c20f6672827eaa15878a7ae7c8a066ff7fdba1dce1a5693f0ff",
+      "frame_count": 13335,
+      "raster": [
+        1080,
+        1416
+      ],
+      "scene": "bookstore",
+      "starts": [
+        1660,
+        4980,
+        8320,
+        11640
+      ],
+      "video": "video0"
+    },
+    {
+      "annotation_sha256": "df79665a804fde25688add98197a6416506b90fad148a8cfc10acd09ddeaab24",
+      "clip_sha256": "b11450401d14702fb46dce1604253d60b042c57695f33af27581db4290e3bdb1",
+      "frame_count": 14558,
+      "raster": [
+        1080,
+        1422
+      ],
+      "scene": "bookstore",
+      "starts": [
+        1760,
+        5280,
+        9260,
+        12780
+      ],
+      "video": "video1"
+    },
+    {
+      "annotation_sha256": "18a0f77bb6c0497f0dc9868131f25795204486a409f5913dc0fe002fd8687d7a",
+      "clip_sha256": "4d48002cd9d7cd8eb3cfd188bc3d1fa651fe8b64147ba4d9f192b20dc763f3c0",
+      "frame_count": 14558,
+      "raster": [
+        1080,
+        1422
+      ],
+      "scene": "bookstore",
+      "starts": [
+        1800,
+        5440,
+        9080,
+        12720
+      ],
+      "video": "video2"
+    },
+    {
+      "annotation_sha256": "456cc81d391067f2d6ca84966307230ee3496b8c370a954db0e73336e976749a",
+      "clip_sha256": "c7c08afdbe5e33829836c2f8469279daf1e419fb3d7374a7bbf465e2d7148fd7",
+      "frame_count": 14558,
+      "raster": [
+        1080,
+        1322
+      ],
+      "scene": "bookstore",
+      "starts": [
+        1780,
+        5360,
+        9160,
+        12740
+      ],
+      "video": "video3"
+    },
+    {
+      "annotation_sha256": "251be246444e3a7045ff972411a0fdd918016c20d061d6ceb258c5d62ca605a2",
+      "clip_sha256": "c68abeabe6bc88b4bb3c5a0adcffba2ef4aa095335adc4f53d2b46eccc5dbe9a",
+      "frame_count": 11966,
+      "raster": [
+        1080,
+        1956
+      ],
+      "scene": "coupa",
+      "starts": [
+        1480,
+        4480,
+        7460,
+        10460
+      ],
+      "video": "video0"
+    },
+    {
+      "annotation_sha256": "4b05e94a8a1cdcf8dea91ef22f2ffe8dc7101a5b73b4cf83aeaa1d06f68e0327",
+      "clip_sha256": "5997d31d384bde8326d38c2ff1df09d92c21c37f4ff87faf98f577c75dd11c88",
+      "frame_count": 11966,
+      "raster": [
+        1080,
+        1956
+      ],
+      "scene": "coupa",
+      "starts": [
+        2620,
+        5220,
+        7800,
+        10440
+      ],
+      "video": "video1"
+    },
+    {
+      "annotation_sha256": "f7b598bb4f19cc15dec0f63b2a46f9c3eed58457cb932c4841896f2a56a2898b",
+      "clip_sha256": "c60587461072712c990b9a6be03030a1feae4baa5bbeb10ad523233c1d5b27db",
+      "frame_count": 12721,
+      "raster": [
+        1080,
+        904
+      ],
+      "scene": "deathCircle",
+      "starts": [
+        1580,
+        4760,
+        7940,
+        11120
+      ],
+      "video": "video0"
+    },
+    {
+      "annotation_sha256": "3e54f06b06133fd1618216daec77218b6addda136ce099b83a81ac9b74627d39",
+      "clip_sha256": "73a927a84d193f1e937418cf5db795ae78720a3380298ea556091a4c13414339",
+      "frame_count": 14065,
+      "raster": [
+        1080,
+        796
+      ],
+      "scene": "deathCircle",
+      "starts": [
+        1740,
+        5260,
+        8780,
+        12300
+      ],
+      "video": "video1"
+    },
+    {
+      "annotation_sha256": "13e13609aac8fae98ffcee07275a0bb6860a0a3402f66009f1fa807d7712d74f",
+      "clip_sha256": "9e7ecb90e2a4f9091507a76bfb7cde442746e7ee04278989162ddfcb6de937ba",
+      "frame_count": 431,
+      "raster": [
+        1080,
+        792
+      ],
+      "scene": "deathCircle",
+      "starts": [
+        40,
+        140,
+        260,
+        360
+      ],
+      "video": "video2"
+    },
+    {
+      "annotation_sha256": "d40074700b88d63aa9c162c462311d8943a128e683bfe59d3f3d9d62ab42f096",
+      "clip_sha256": "c73b226e6eb6e0753893d8296c0c4c3fb7fdd51ab4f456889ab79176a6c6bbff",
+      "frame_count": 9006,
+      "raster": [
+        1080,
+        728
+      ],
+      "scene": "gates",
+      "starts": [
+        820,
+        2880,
+        4640,
+        8180
+      ],
+      "video": "video0"
+    },
+    {
+      "annotation_sha256": "2650aa68a65c772c6b76dc6e71f70399cd19009d4ee23e21f4ea206c2cb94d24",
+      "clip_sha256": "4b48c6ec1d9db8d487c2cfdf7bc24f3cdd0b36bbb539bc8842e37f1ab8f659b7",
+      "frame_count": 9006,
+      "raster": [
+        1080,
+        780
+      ],
+      "scene": "gates",
+      "starts": [
+        1120,
+        3360,
+        5620,
+        7860
+      ],
+      "video": "video1"
+    },
+    {
+      "annotation_sha256": "00a80fe546c83112ab15293caf3f4188edb943953026974aca14b11463ce59aa",
+      "clip_sha256": "c9e85f77ed3cc64b880be97fa58c4c4ef579b209f4a18923e0cc719749412dd4",
+      "frame_count": 9006,
+      "raster": [
+        1080,
+        728
+      ],
+      "scene": "gates",
+      "starts": [
+        940,
+        2860,
+        4860,
+        7240
+      ],
+      "video": "video2"
+    },
+    {
+      "annotation_sha256": "e113877ab2ab5585e6a28b95c28f74cf973bde8b1919bce5261d6d99e3630567",
+      "clip_sha256": "5a1895ce7eb7fc4419db006546f50e415fb8ed2aa4807148acd04f36a22b4650",
+      "frame_count": 9199,
+      "raster": [
+        1080,
+        772
+      ],
+      "scene": "gates",
+      "starts": [
+        940,
+        2840,
+        4740,
+        6640
+      ],
+      "video": "video3"
+    },
+    {
+      "annotation_sha256": "c52476669b3789d17af30e4f0e316351158e451c027cea0366bcde16cdece92b",
+      "clip_sha256": "4b2896b2e04415c2106b7a105982315eff2a171f1d1c84fea1e4488774998a1d",
+      "frame_count": 2202,
+      "raster": [
+        1080,
+        784
+      ],
+      "scene": "gates",
+      "starts": [
+        260,
+        820,
+        1360,
+        1920
+      ],
+      "video": "video4"
+    },
+    {
+      "annotation_sha256": "15d01aca774b672d4838f4b1364608bab27af75b1313ed63cc51b310cd3fa12d",
+      "clip_sha256": "61607d5b8607736f279f92b24f43efc7f25761aa792c1b912085f96d61a6e97e",
+      "frame_count": 11368,
+      "raster": [
+        1080,
+        816
+      ],
+      "scene": "hyang",
+      "starts": [
+        1420,
+        4260,
+        7100,
+        9940
+      ],
+      "video": "video0"
+    },
+    {
+      "annotation_sha256": "da09f7564c19226193f9350af5816c0eee1783a0af6c6718562140fff719c54a",
+      "clip_sha256": "45aa9d8bd8b4286f7114a291d3216ce2dd5f28aaab220fd6d9b4d59a88fe71f1",
+      "frame_count": 13438,
+      "raster": [
+        1080,
+        780
+      ],
+      "scene": "hyang",
+      "starts": [
+        1660,
+        5020,
+        8380,
+        11740
+      ],
+      "video": "video1"
+    },
+    {
+      "annotation_sha256": "632df686f7f7a0b127f452a3a7c5fb73167f72fa38269f71baa382f6be80a2b0",
+      "clip_sha256": "1101158282dfa7fe7077097ef67ea71912422f4a67ba95bdc080aa732cfeba9e",
+      "frame_count": 12272,
+      "raster": [
+        842,
+        1434
+      ],
+      "scene": "hyang",
+      "starts": [
+        1520,
+        4580,
+        7660,
+        10720
+      ],
+      "video": "video2"
+    },
+    {
+      "annotation_sha256": "be77ab6ee52e08194894e66e59d9f14dddfa8e714cc72e5a3bf746266e4aa5dc",
+      "clip_sha256": "e5e3d6c93fcc9ad10fee2946e2828cf55a294453b7cf78851db5300ac66bf2ae",
+      "frame_count": 12272,
+      "raster": [
+        742,
+        1434
+      ],
+      "scene": "hyang",
+      "starts": [
+        1520,
+        4580,
+        7660,
+        10720
+      ],
+      "video": "video3"
+    },
+    {
+      "annotation_sha256": "790c2f0b77ffab8c33aeb41751551fceec831d02b88fc39e742da8c46bd4f182",
+      "clip_sha256": "c552b45f3699e4c85e4c5483465d8901189802fa5d0d0230a0e3bfae099ac897",
+      "frame_count": 8057,
+      "raster": [
+        1080,
+        836
+      ],
+      "scene": "hyang",
+      "starts": [
+        1000,
+        3000,
+        5020,
+        7020
+      ],
+      "video": "video4"
+    },
+    {
+      "annotation_sha256": "878ac1ff6a5095e4e311f18405f1d091f4061c8b7feda701eb8ea91bac37cdb2",
+      "clip_sha256": "11bdee93e870aacfee3b884f9f13e7f49fc09684caa36ba3e98e584cb3e79ed5",
+      "frame_count": 10648,
+      "raster": [
+        1080,
+        788
+      ],
+      "scene": "hyang",
+      "starts": [
+        1320,
+        3980,
+        6640,
+        9300
+      ],
+      "video": "video5"
+    },
+    {
+      "annotation_sha256": "feb916722ca76a50631e3684b978df6b1a0fb5326992b2947b3145330ff40ba5",
+      "clip_sha256": "751169cde629595bb065658cd8b436c7860e1d80d8670bcaff6699601934d1bb",
+      "frame_count": 9928,
+      "raster": [
+        848,
+        1416
+      ],
+      "scene": "hyang",
+      "starts": [
+        1940,
+        4220,
+        6500,
+        8780
+      ],
+      "video": "video6"
+    },
+    {
+      "annotation_sha256": "9378f9697e7f7643dc0459f8872366ea621e84b1ca4a8ae739da8cb612fc019e",
+      "clip_sha256": "1fd7d89acf5f8ef206541ef8fdaa1f66d467ecd353e51f43bacf075d428f35a7",
+      "frame_count": 574,
+      "raster": [
+        1080,
+        808
+      ],
+      "scene": "hyang",
+      "starts": [
+        60,
+        200,
+        340,
+        480
+      ],
+      "video": "video7"
+    },
+    {
+      "annotation_sha256": "7261c56536f8ce77bee3b03a340e25c8949685a4a6f21b57ed3d51ff44a538d9",
+      "clip_sha256": "5ed6497a30db441e11f4a6aecb307f57b7033b9a06a503293da42550b6da1d11",
+      "frame_count": 574,
+      "raster": [
+        1080,
+        752
+      ],
+      "scene": "hyang",
+      "starts": [
+        60,
+        200,
+        340,
+        480
+      ],
+      "video": "video8"
+    }
+  ],
+  "spatial_unit": "pixel",
+  "split_sha256": {
+    "cross_scene_split.json": "3e1216c4804b94dd038b4323f9a3e7e23ed5d35a220853a5cd2389572a37f6dd",
+    "within_scene_video_split.json": "ac16d992df2e9d64236cc308df2b84748ca4fa55487dbedb862a4cc09d74be5d"
+  },
+  "test_reopened": false,
+  "torch_threads": 4,
+  "windows_per_recording_max": 4,
+  "workers": 0
+}
