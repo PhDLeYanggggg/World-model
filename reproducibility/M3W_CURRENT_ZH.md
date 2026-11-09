@@ -36,6 +36,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：相同两次介入的相对运动上界
+
+`scripts/diagnose_m3w_vehicle_relative_ceiling.py` 在冻结候选上穷举同预算
+组合，检查原风险规则、CV/OLS4 收益，以及相对加法方案的轨迹和相对运动。
+结果是使用未来标签的事后上界，不用于推理。
+[完整命令与来源区间](../outputs/publication_readiness_2026_09/opendd_vehicle_relative_ceiling_v1/README.md)。
+
 ## OpenDD：更强的简单车辆运动对照
 
 `scripts/run_m3w_opendd_kinematic_blend.py fit` 用原训练地点和抽样行拟合

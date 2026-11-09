@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: exact interaction headroom at two edits
+
+The original CV/OLS4 oracle qualifies in 8,062 of 8,874 views.
+Requiring no trajectory loss and better relative motion against the
+matched additive output leaves 1,708. A same-family pair suffices in
+1,640 of those; the learned joint rule realizes 242. These are
+development oracle and replay counts, not deployment evidence.
+[Exact diagnostic](outputs/publication_readiness_2026_09/opendd_vehicle_relative_ceiling_v1/README.md).
+
 ## OpenDD: stronger simple vehicle controls
 
 I compare the existing vehicle model with four past-only kinematic
