@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## KIT AIS: enough labeled tracks, not enough complete windows
+
+One of seven publisher-training clips reaches 20 release positions. Its
+0.799 s timestamp gap separates runs of 13 and 11 frames. Only 7 of 41
+online histories have complete labels with all detections retained, and
+no tested setting supports scoring an entire multi-agent roster.
+[Source audit and replay](outputs/publication_readiness_2026_09/kit_ais_source_audit_v1/README.md).
+
 ## WEPDTOF: replay the decision without saved pass flags
 
 The offline verifier reconstructs the risk decisions from the three

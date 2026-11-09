@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked KIT AIS as a source of aerial tracks. Only one training clip
+has enough released frames for the full window, and neither detection
+setting that emitted tracks recovered labels for the whole group.
+[KIT AIS intake](outputs/publication_readiness_2026_09/kit_ais_source_audit_v1/README.md).
+
 I added the direction of relative motion to the pair score. It helped predict
 the pair effect more often, but did not increase the number of recording-seed
 views that pass both risk and accuracy checks.
