@@ -5,6 +5,12 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: stronger simple vehicle controls
+
+I compare the existing vehicle model with four past-only kinematic
+paths and a four-weight completion-aware blend on the same
+location-held roster. [Protocol](outputs/publication_readiness_2026_09/opendd_kinematic_blend_v1/protocol.md).
+
 ## OpenDD: vehicle controls and selection ablations
 
 The same-cohort forecast comparison and the fixed-budget
