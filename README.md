@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I held the earlier model's choice of trajectories fixed and compared
+learned direction changes with simply shrinking the old paths.
+The learned changes did not improve the conservative score.
+Even arbitrary directions within the original radii could not
+beat the OLS4 reference in 67 of 72 development views. I need to
+improve which trajectories receive a correction, not only its shape.
+[Fixed-recipient experiment and upper bound](outputs/publication_readiness_2026_09/moving_cv_fixed_recipient_support_v1/README.md).
+
 I tested choosing who to edit separately from choosing a path.
 Learning from many feasible plans did not help the first decision.
 The path ranker reduced the worst easy-case error, but shrinking

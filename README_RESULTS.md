@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source support at fixed recipients and peak
+
+36 fits, 36,000 updates, 54,748 matched recipients. Uniform shrinkage
+and both learned half-peak arms pass 18/72 original risk checks.
+Pooled directions lose 0.088 paired lower pp [-0.209, -0.007];
+consensus changes only two actual paths. Calibration 0/9. The
+half-peak menu excludes 69/72 OLS4 gains even without risk;
+arbitrary paths exclude 67/72 at the original peak and 39/72
+with unbounded displacement on the fixed recipients.
+[Results and replay](outputs/publication_readiness_2026_09/moving_cv_fixed_recipient_support_v1/README.md) |
+[Manuscript v137](outputs/publication_readiness_2026_09/evidence_manuscript_v137/README.md).
+
 ## Separate recipient and path choices
 
 237 verified train-only plans, 27 fits and 32,400 updates. At

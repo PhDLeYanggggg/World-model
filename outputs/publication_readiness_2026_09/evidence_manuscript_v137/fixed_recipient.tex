@@ -1,0 +1,38 @@
+\section{Support for equal-peak changes on frozen recipients}
+We keep the earlier policy's recipients, halve its per-row peak
+displacement, and either shrink uniformly or choose another
+direction at the same peak. The pooled model and three separate
+train-source models estimate known benefit, missing disagreement,
+dual-reference increments, risk changes, and annotation support.
+All use random analytic training anchors. Source consensus changes
+direction only when every train-source model supports the change;
+this is a selection rule, not a formal risk guarantee.
+
+Across 36 fits (\FixedSupportUpdates{} updates), each held arm
+keeps \FixedSupportEdits{} recipients. Pooled and consensus
+change at least one path coordinate by more than $10^{-6}$ pixels
+on \FixedSupportPooled{} and \FixedSupportConsensus{} rows,
+respectively. The original
+risk pass counts (frozen, uniform, pooled, consensus) are
+\FixedSupportPasses{} out of 72. Relative to uniform shrinkage,
+the paired full-grid lower contrasts are \FixedSupportPoolEffect{}
+and \FixedSupportSupportEffect{} pp. The corresponding pair-distance
+lower contrasts are \FixedSupportPoolPair{} and
+\FixedSupportSupportPair{} pixels. Calibration qualifies
+\FixedSupportQual{} of nine cells. Intervals use paired
+source resampling.
+
+The exact menu's separable upper bound excludes OLS4 gains in
+\FixedSupportMenuExcluded{} views. For a wider bound, allow any
+point inside each selected row's CV-centered radius $r_i$ at every
+step, set $r_i=0$ on unedited rows, and ignore the risk constraints.
+For known steps the smallest error is
+$[\lVert y_{it}-c_{it}\rVert-r_i]_+$; for missing steps the
+smallest OLS4 disagreement is $[\lVert o_{it}-c_{it}\rVert-r_i]_+$.
+Summing with the same query weights yields an upper bound for the
+conservative OLS4 comparison. Even this wider envelope excludes
+\FixedSupportHalfExcluded{} views at half peak, \FixedSupportFullExcluded{}
+at full peak, and \FixedSupportFreeExcluded{} when selected rows
+are unconstrained. Positive values do not establish feasibility;
+they can use impossible paths or violate risk. This diagnoses
+recipient coverage and displacement, not independent confirmation.

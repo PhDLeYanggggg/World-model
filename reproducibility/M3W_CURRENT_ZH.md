@@ -1,8 +1,22 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v136 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v137 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v137：固定对象、等位移和来源一致性
+
+```sh
+.venv-pytorch/bin/python scripts/train_m3w_cv_fixed_recipient_support.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_fixed_recipient_envelope.py
+.venv-pytorch/bin/python scripts/build_m3w_cv_fixed_recipient_support_replay.py
+```
+
+第一条用冻结权重复算，去掉 `--replay` 可训练或续跑；先检查 PID 和心跳。
+第二条算允许任意路径的事后上界，不用它选择阈值。第三条生成匿名 NumPy
+标量复算 ZIP。54,748 个编辑对象固定，半幅策略均有 18/72 个风险通过，
+校准 0/9。任意路径在无位移限制时仍有 39/72 个视图无法胜过 OLS4。
+[v137 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v137/README.md)。
 
 ## v136：改动对象与路径分别学习
 
