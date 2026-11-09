@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## Songdo：首日完整来源审计与未评分车辆预测
+
+依次运行 `.venv-pytorch/bin/python scripts/fetch_m3w_songdo_first_day.py`、
+`scripts/audit_m3w_songdo_first_day.py`、`scripts/build_m3w_songdo_first_day_vehicle_bank.py`。
+20 个路口、200 个航次，逐航次保存输入与预测校验值。实际有 14,276 个不重叠
+窗口、17 个候选来源组。未来坐标和正式评分都没打开；协议确定后才分配正式角色。
+[步骤和核验结果](../outputs/publication_readiness_2026_09/songdo_first_day_v1/README.md)。
+
 ## OpenDD：真实车距的等容量消融
 
 `.venv-pytorch/bin/python scripts/run_m3w_vehicle_pair_geometry.py` 依次运行

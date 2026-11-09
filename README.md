@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I prepared the complete first day of Songdo for a new external test.
+It gives 14,276 nonoverlapping windows across 20 intersections, with
+source links checked before any split or scoring. I also generated
+the vehicle predictions without opening future coordinates.
+[First-day data and forecast bank](outputs/publication_readiness_2026_09/songdo_first_day_v1/README.md).
+
 I compared true vehicle spacing with no spacing and shuffled spacing
 at identical model size and edit budget. True positions did not
 improve conservative trajectory or relative-motion gain.

@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: complete first-day source and vehicle-bank preparation
+
+Twenty verified archives, 200 flights, 14,276 nonoverlapping windows
+and 628,902 histories. There are 14,245 windows with a complete pair,
+but only 1,179 with a complete whole roster. The three linked
+intersection pairs leave 17 candidate source components. All 21 donor
+vehicle models were verified; predictions exist but are not scored.
+[Coverage, source links and replay](outputs/publication_readiness_2026_09/songdo_first_day_v1/README.md).
+
 ## OpenDD vehicles: observed spacing does not improve matched selection
 
 189 equal-size fits at the same 17,748 edits per arm. Dual passes:
