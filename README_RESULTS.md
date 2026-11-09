@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## P-DESTRE: agreement loses coverage; center averaging improves paired error
+
+At the same 79 retained histories, confidence, frame agreement
+and same-partner agreement preserve 56, 53 and 52 complete targets.
+The latter has one complete retained subset, not a complete original
+roster. On its same 52 complete tracks, averaging observed centers
+reduces OLS4 pair-relative ADE from 28.656 to 25.549 px. This is a
+linked-source localization diagnostic, not a policy risk pass.
+[Equal-count selection and localization ablation](outputs/publication_readiness_2026_09/pdestre_track_agreement_v1/README.md).
+
 ## P-DESTRE: geometry diagnostic restores camera pairs, not whole-roster coverage
 
 On 11 fixed camera windows, published height/width order gives no
