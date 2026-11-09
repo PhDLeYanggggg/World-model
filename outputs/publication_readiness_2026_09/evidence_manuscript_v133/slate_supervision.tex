@@ -1,0 +1,34 @@
+\section{Recording-feasible supervision for whole queries}
+In each training role, we construct CV-anchored recording plans using
+analytic forecasts only. The original scorer verifies positive lower
+gain over CV and OLS4, the original positive-harm and signed-easy
+limits, and nonempty easy support. The three folds provide
+\SlateWitnessWitnesses{} verified recordings. Replacing exactly one
+query while keeping all other edits fixed creates counterfactual
+preferences: favor a feasible replacement, then maximize the smaller
+of the two conservative gains. A gain-only preference with the same
+additive architecture isolates the change in supervision. A nonlinear
+composition head additionally uses feature dispersion and causal
+neighbor geometry, so this is not a parameter-count-matched ablation.
+Teacher actions and future labels are not inference inputs.
+
+Across three seeds and three folds, the 27 fits use
+\SlateWitnessUpdates{} updates. The frozen control and the learned arms
+make \SlateWitnessEdits{} edits each, matched in every query. Their
+original risk pass counts (frozen, gain-only, feasible-additive,
+feasible-joint) are \SlateWitnessPasses{} out of \SlateWitnessViews{}.
+The paired full-grid lower contrast is \SlateWitnessFeasible{} pp for
+feasibility supervision and \SlateWitnessJoint{} pp for adding the
+joint composition head (95\% source-bootstrap intervals). The contrast
+is conservative under missing outcomes, not a point estimate of
+unobserved errors. No setting qualifies on calibration.
+
+A separate hindsight check uses a bounded mixed-integer solve,
+retaining one of the same six slates at
+each active query. It independently verifies \SlateWitnessFixedVerified{}
+recording--seed witnesses; \SlateWitnessFixedExcluded{} are excluded by
+the constraints or an upper bound, \SlateWitnessFixedUnknown{} lack
+support, and \SlateWitnessFixedUnresolved{} remain unresolved. The
+witnesses diagnose the frozen query budgets and menus and never choose a
+model or threshold. These are development experiments; no independent
+confirmation outcomes were opened.

@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a forecaster to rank whole groups of edits using examples
+that had passed the original recording-level rule. That supervision
+did not improve the conservative comparison at equal edit counts.
+A hindsight check found that the fixed query budgets and small
+menu left valid choices in only 5 of 72 views. I am keeping the
+existing fallback while I work on what the forecaster can choose.
+[Whole-query supervision and capacity](outputs/publication_readiness_2026_09/moving_cv_slate_supervision_v1/README.md).
+
 I separated learning when annotations are missing from learning
 which edits are worth making. Step-specific availability prediction
 improved its own score, but not the conservative forecast comparison

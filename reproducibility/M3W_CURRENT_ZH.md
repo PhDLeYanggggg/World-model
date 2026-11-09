@@ -1,8 +1,22 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v132 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v133 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v133：整组改动监督与固定配额容量
+
+```sh
+.venv-pytorch/bin/python scripts/build_m3w_cv_slate_teachers.py
+.venv-pytorch/bin/python scripts/run_m3w_cv_slate_supervision.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_fixed_slate_capacity.py
+```
+
+第一条只在各折训练来源内构造或核验整录像教师。第二条核验冻结权重、逐查询
+改动数量和结果，不更新参数；首次训练或确认旧进程已退出后续跑，去掉
+`--replay`。第三条只做事后诊断，固定每个查询的原改动数量，不参与模型或
+阈值选择。应复现 54,748 次等数量改动、校准 0/9、固定菜单可行 5/72。
+[v133 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v133/README.md)。
 
 ## v132：逐步缺失概率、easy 风险和等位移对照
 

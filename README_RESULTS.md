@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Whole-query feasible supervision
+
+27 fits and 27,000 updates at 54,748 edits per matched arm.
+Feasibility labels reduce the paired full-grid lower contrast by
+3.122 pp [-6.351, -0.817]; the extra joint head reduces it by
+8.566 pp [-17.322, -1.173] versus feasible-additive. Original risk
+passes are 14/2/4/8 of 72 (frozen/gain/feasible/joint). Calibration
+0/9. The same fixed menu and query counts admit only 5/72 verified
+hindsight witnesses, versus 53/72 in the earlier full uncapped menu.
+[Results and replay](outputs/publication_readiness_2026_09/moving_cv_slate_supervision_v1/README.md) |
+[Manuscript v133](outputs/publication_readiness_2026_09/evidence_manuscript_v133/README.md).
+
 ## Lead-Specific Missingness and Asymmetric Easy Risk
 
 27 fits, 27,000 updates, 51,614 exact matched edits. Lead prediction
