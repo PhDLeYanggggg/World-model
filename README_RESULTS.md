@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: calibration count transport does not recover qualifying forecasts
+
+The frozen conditional-harm score releases 17 with four passes.
+Matching the nine calibration slots within fold gives three passes
+against a count oracle of nine. Even with actual easy-reference
+support, its longest all-pass prefixes contain only 10 of 119
+qualifying fixed forecasts. The first supported blockers fail the
+CV/OLS4 floor on 15 views and risk on 11, with eight overlapping.
+[Count transport and ranking ceiling](outputs/publication_readiness_2026_09/av2_release_transport_v1/README.md).
+
 ## AV2: a separate support gate does not fix release
 
 At the same 89 selections, the 0.50 gate changes unsupported views
