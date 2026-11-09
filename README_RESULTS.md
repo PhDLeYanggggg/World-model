@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: separating observed utility and missing-step cost
+
+I refit the two-edit selector with the same pair network, samples
+and budget. One arm learns conservative gains directly; the other
+learns observed gain and missing-step costs separately.
+[Prospective comparison](outputs/publication_readiness_2026_09/opendd_pair_completion_v1/protocol.md).
+
 ## Songdo: two paths for external evaluation
 
 I rehearsed both options on the frozen forecast bank. The calibrated
