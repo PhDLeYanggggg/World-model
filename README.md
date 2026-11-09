@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tried judging a two-agent edit as one decision, rather than releasing
+its parts separately. It did not survive calibration on separate OpenDD
+locations. There were viable pairs in the menu, but the model rarely
+ranked them first.
+[Whole-pair admission experiment](outputs/publication_readiness_2026_09/opendd_atomic_pair_admission_v1/README.md).
+
 I checked whether better joint choices still existed after the gate
 released its edit slots. Under forced slots, 29 OpenDD recordings
 had more than one hindsight improvement that met the constraints.

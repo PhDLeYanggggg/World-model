@@ -50,6 +50,10 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## OpenDD：相同介入预算下的交互上界
 
+把双介入作为一个决策重训 21 折，并用单独地点校准。483 个非空分数断点
+均未通过；候选池有合格方案，但模型大多没有把它排到第一。
+[整组准入训练和校准复算](../outputs/publication_readiness_2026_09/opendd_atomic_pair_admission_v1/README.md)。
+
 精确求解后，固定强制槽位的 48 个录像种子视图（29 段录像）存在两种
 不同的合格联合选择。加 0.25 参考门槛后，这 48 个视图没有一个保留双介入。
 [约束、复算和求解命令](../outputs/publication_readiness_2026_09/opendd_distinct_supported_slates_v1/README.md)。

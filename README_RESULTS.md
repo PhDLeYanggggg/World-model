@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: whole-pair scoring fails separate-location calibration
+
+Twenty-one fits compare additive and joint scores at identical slot
+budgets. No calibration score threshold released a nonempty policy;
+all 483 nonempty score prefixes failed the calibration audit. Viable
+local slates exist in 174 calibration query-seed views, but the
+learned joint ranking selects one first in only 15.
+[Role-separated training, matched evaluation and calibration audit](outputs/publication_readiness_2026_09/opendd_atomic_pair_admission_v1/README.md).
+
 ## OpenDD: admission removes almost all jointly feasible decisions
 
 Exact fixed-slot solving finds at least two distinct qualified
