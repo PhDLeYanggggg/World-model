@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I then calibrated when to use the frozen AV2 position projection.
+Accounting for easy cases and predicted harm improved the confidence
+ranking, but the calibration-selected policy passed only 6 of its
+26 held releases. The better reference is not a deployable policy.
+[Fixed position release test](outputs/publication_readiness_2026_09/av2_position_release_v1/README.md).
+
 I checked the frozen AV2 position projection on held development
 cities. At the same edit budget it qualified on 119 views, up from
 89 for the additive reference, with fewer easy cases harmed.

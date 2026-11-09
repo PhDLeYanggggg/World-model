@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: frozen position release still fails original risk rules
+
+The calibration-selected score releases 26/1,020 held development
+views; only six pass, 18 fail risk and 11 exceed signed easy harm.
+Transferred costs give the highest held fold mean AP (0.443) but
+only three of six releases pass. The improved predictor stays
+fixed; the confidence score is the current bottleneck.
+[Matched confidence and release analysis](outputs/publication_readiness_2026_09/av2_position_release_v1/README.md).
+
 ## AV2: projected reference improves on held development cities; relative refinement fails
 
 At the same budget, the frozen position projection qualifies 119/1,020

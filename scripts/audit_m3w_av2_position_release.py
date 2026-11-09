@@ -31,20 +31,27 @@ def ranks(rows, arm):
 
 
 def main():
-    key, _, _, _, parent, _ = run.register()
+    key, _, _, _, parent, previous = run.register()
     p = run.OUT/"summary.json"
     s = run.study.read(p)
     f = run.study.read(run.study.checked(s["freeze"]))
     if f["registration"] != key or f["outcomes_read"] or s["raw_future_opened"] or s["reserved_outcomes_opened"]:
         raise ValueError("Require frozen confidence readout")
-    out = {}
+    out, verified = {}, {}
     for role in ("calibration", "held"):
         scores = {k: [] for k in run.model.ARMS}
+        receipts, replay = {}, []
         for name, ref in f["folds"].items():
             z = run.study.read(run.study.checked(ref))
             rows = list(run.role_rows(z, parent["folds"][name], name, role))
+            raw = run.prior.LOCAL/f"{name}.{role}.score.json"
+            receipts[name] = run.study.artifact(raw)
+            replay.extend(run.study.read(raw)["rows"])
             for k in scores:
                 scores[k].append(ranks(rows, k))
+        if run.prior.summarize(replay) != previous[role]["arms"]:
+            raise ValueError("Original outcome metrics did not replay")
+        verified[role] = receipts
         out[role] = {}
         for k, views in scores.items():
             defined = [r for r in views if r["ap"] is not None]
@@ -61,6 +68,8 @@ def main():
     run.base.immutable(run.OUT/"confidence_attribution.json", dict(source=run.study.artifact(p), **out,
         result_source="fresh_run", outcome_source="cached_verified", used_for_selection=False,
         independent_confirmation=False, reserved_outcomes_opened=False))
+    run.base.immutable(run.OUT/"outcome_lineage.json", dict(source=run.study.artifact(run.prior.OUT/"summary.json"),
+        original_metrics_replayed=True, receipts=verified, raw_future_opened=False, reserved_outcomes_opened=False))
     print(run.study.json.dumps(out, indent=2))
 
 
