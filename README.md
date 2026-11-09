@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether better joint choices still existed after the gate
+released its edit slots. Under forced slots, 29 OpenDD recordings
+had more than one hindsight improvement that met the constraints.
+After the support gate, only one did. The gate leaves too few
+two-agent decisions for a better ranker to make a difference.
+[Exact matched-slot audit](outputs/publication_readiness_2026_09/opendd_distinct_supported_slates_v1/README.md).
+
 I tested whether predicting the availability of an easy-case reference
 would make intervention safer after adding the acceleration path to
 OpenDD. It removed some unsupported edits, but also removed most of

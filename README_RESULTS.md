@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: admission removes almost all jointly feasible decisions
+
+Exact fixed-slot solving finds at least two distinct qualified
+assignments in 48 forced recording-seed views (29 recordings),
+versus one view after moment or 0.25 support admission and zero
+after 0.50 admission. In the 48 forced-positive views the 0.25 rule
+abstains on 32 and retains only singleton queries on 16.
+[Exact witnesses and paired admission breakdown](outputs/publication_readiness_2026_09/opendd_distinct_supported_slates_v1/README.md).
+
 ## OpenDD: explicit support narrows intervention without recovering joint gain
 
 I refit gain, harm and easy-reference support at seven held locations

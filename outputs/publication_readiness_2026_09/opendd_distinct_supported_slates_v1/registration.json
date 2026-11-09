@@ -1,0 +1,86 @@
+{
+  "arithmetic_accuracy_tolerance_pp": 1e-08,
+  "code": [
+    {
+      "path": "scripts/audit_m3w_opendd_distinct_supported_slates.py",
+      "sha256": "99d40091099417f3a78b8bb798f8d7b87ab88bccbf9a0d276f2ca2a9aceba61e"
+    },
+    {
+      "path": "src/evaluation/m3w_interaction_frontier.py",
+      "sha256": "a6d5491def5b28f018eb58e3d0975daaeb1adfc624f3c7e93e1809412c1f885f"
+    },
+    {
+      "path": "scripts/run_m3w_opendd_supported_acceleration.py",
+      "sha256": "9198a5c5f3f6076a9d157ccc6d600caa759656cf993c60e10f59fcda88c410b2"
+    }
+  ],
+  "cohorts": {
+    "rdb1": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb1_cohort.npz",
+      "sha256": "f7bf30f7da9930c9819a3a19b158c9a73a068c7f915856d000b0f083b5c2d960"
+    },
+    "rdb2": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb2_cohort.npz",
+      "sha256": "4b7e468f39e532382da3bbf51d2b4e7408e97450270b2fe78c5a302f3f7e7cf2"
+    },
+    "rdb3": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb3_cohort.npz",
+      "sha256": "bba73b4c6fe1912cf4bb76b67e824ba2142da7ab4e9cc3cb452869f4a460abad"
+    },
+    "rdb4": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb4_cohort.npz",
+      "sha256": "e488906abfed27a335cfdabbbd99b81d4a5f2c147604b6a5fe5f92ef6c849cd9"
+    },
+    "rdb5": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb5_cohort.npz",
+      "sha256": "db260f414f09d112b38153572a1266730058d6a6cb5364a32717e057cb095fe9"
+    },
+    "rdb6": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb6_cohort.npz",
+      "sha256": "6becbbcef0579c579539a45e79d5c2979be3b148349c11abeb197db2bf6550b3"
+    },
+    "rdb7": {
+      "path": "data/stage_cvpr2027_experiments/opendd_location_diagnostic_v1/rdb7_cohort.npz",
+      "sha256": "f13deeb6d2f1f16a4c56da119fd4f3933e23dacfd7953c6d4ed64cac90e12d56"
+    }
+  },
+  "eligibility": "gain over CV and OLS4, noninferior to frozen additive, three original 2 percent risks",
+  "fixed": "exact gate-released query, slot count and peak offset; retain frozen additive singletons",
+  "gain_epsilon_pp": 1e-08,
+  "hindsight_only": true,
+  "independent_confirmation": false,
+  "objective": "full-grid paired relative-position improvement with missing-step debit",
+  "original_2pct": true,
+  "pair_epsilon": 1e-10,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/opendd_supported_acceleration_v1/readout.json",
+    "sha256": "40dd9ab9ba46f5109e1a6366298d978dec88ceb5b1f7a575af1a8ebf6cc29a80"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/opendd_supported_acceleration_v1/freeze.json",
+    "sha256": "06ef2d69bd19fc5f30afde7bab8395c2a6abcd4c82a6f6773444c686d61eb19c"
+  },
+  "reserved_outcomes_opened": false,
+  "second": "exclude all locally equivalent first paths (1e-9 atol/rtol), not just candidate indices",
+  "seconds_per_solve": 2.0,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "variants": [
+    "forced",
+    "moments",
+    "support25",
+    "support50"
+  ]
+}
