@@ -51,3 +51,13 @@ def test_fixed_recipient_replacement_never_changes_singletons():
     np.testing.assert_array_equal(active_a, active_b)
     np.testing.assert_array_equal(a[2:], control[2:])
     np.testing.assert_array_equal(b[2:], control[2:])
+
+
+def test_summary_accepts_cached_rows_with_an_existing_record_id():
+    from scripts import run_m3w_opendd_peer_transient as run
+
+    old = dict(record='old', edits=0, state='no_edits', solve={})
+    new = dict(edits=0, state='no_edits', solve={})
+    rows = [dict(record=f'site:{i}', menus=dict(zip(run.ARMS, (old, new))),
+                 direct=None, new_slot_candidates=0, replacements=0) for i in range(2)]
+    assert all(x['records'] == 2 for x in run.summarize(rows)['menus'].values())

@@ -20,6 +20,8 @@ original, menu = parent.original, parent.menu
 OUT = parent.OUT.parent / 'opendd_peer_transient_v1'
 LOCAL = parent.LOCAL.parent / OUT.name
 ARMS = ('self_transient', 'peer_transient')
+FROZEN_ENTRYPOINT = dict(path='scripts/run_m3w_opendd_peer_transient.py',
+                         sha256='8ac4c6808682000bd1bb366b391c8d328ace4fc0cfb1fc36700f64577cc5c3d9')
 
 
 def register():
@@ -30,10 +32,12 @@ def register():
             or not before['original_2pct'] or before['reserved_outcomes_opened']):
         raise ValueError('Require the previously verified expanded-menu experiment')
     reg = OUT / 'registration.json'
+    if study.read(reg)['files'][0] != FROZEN_ENTRYPOINT:
+        raise ValueError('Unexpected pre-scoring entrypoint')
     base.immutable(reg, dict(cohorts=cohorts, reference=study.artifact(prior),
         source_frozen_paths=study.artifact(menu.OUT / 'freeze.json'), parent_weights=weights,
-        files=[study.artifact(Path(x)) for x in (__file__, model.__file__, original.__file__,
-                                                 parent.frontier.__file__, OUT / 'protocol.md')],
+        files=[FROZEN_ENTRYPOINT, *[study.artifact(Path(x)) for x in (model.__file__, original.__file__,
+                                                  parent.frontier.__file__, OUT / 'protocol.md')]],
         arms=ARMS, sites=original.SITES, seeds=original.SEEDS, history_steps=8, forecast_steps=12,
         min_cos=model.MIN_COS, half_life=model.HALF_LIFE, original_2pct=True,
         no_training=True, development_only=True, reserved_outcomes_opened=False))
@@ -132,7 +136,7 @@ def solve_record(z, y, valid, cut, old):
 
 
 def summarize(rows):
-    arms = {a: original.summary([dict(record=x['record'], **x['menus'][a]) for x in rows]) for a in ARMS}
+    arms = {a: original.summary([{**x['menus'][a], 'record': x['record']} for x in rows]) for a in ARMS}
     direct = [x['direct'] for x in rows if x['direct'] is not None]
     realized = {}
     for key in (*ARMS, 'peer_vs_self'):
@@ -191,6 +195,8 @@ def score(key, cohorts, before):
         return dict(sites=len(x), point=float(x.mean()), ci95=np.quantile(draws, [.025, .975]).tolist())
     result = dict(result_source='fresh_run', inputs='cached_verified', registration=key, freeze=study.artifact(fp),
         prior=before['totals'], totals=totals, sites=sites, checkpoints=receipts,
+        aggregation_repair=dict(pre_score_commit='5a7925afa', entrypoint=study.artifact(Path(__file__)),
+                                change='Use source-qualified record key for reused and new score rows'),
         realized_peer_vs_self=dict(accuracy=ci('accuracy_pp', 2), full_grid_pair=ci('pair_native', 1)),
         original_2pct=True, independent_confirmation=False, reserved_outcomes_opened=False,
         training=False, stage5c=False, smc=False, submission_ready=False)

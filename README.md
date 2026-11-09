@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a nearby agent's recent velocity adds more than another
+forecast based on the target's own history. With the same edit budget,
+both added a few useful choices in hindsight. The neighbor version did
+not reliably beat its self-history control when used without hindsight.
+[Matched neighbor forecast test](outputs/publication_readiness_2026_09/opendd_peer_transient_v1/README.md).
+
 I checked what the joint selector changes when it has exactly the same
 forecast choices and edit budget as an additive selector. It often changes
 which people get an edit, but did not reliably improve relative motion.

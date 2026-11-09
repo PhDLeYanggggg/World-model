@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: peer velocity does not reliably beat self-history
+
+At identical per-query budgets, verified full-grid relative gain under
+the original constraints is possible in 21/439 edited views with the
+prior menu, 26/439 after adding a self-history path, and 27/439 after
+adding the matched peer-history path. When applied to the same 1,038
+recipients without future labels, peer-minus-self accuracy and relative
+gain intervals both cross zero. No policy was selected or deployed.
+[Experiment](outputs/publication_readiness_2026_09/opendd_peer_transient_v1/README.md).
+
 ## OpenDD: a better gate has little room on the frozen pair outputs
 
 At 3,690 edits per arm, imitation changes the edited agents in 505 queries
