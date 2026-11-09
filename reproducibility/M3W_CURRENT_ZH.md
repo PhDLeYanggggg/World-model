@@ -26,6 +26,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：固定预算下的 easy 支持重排序
+
+`scripts/run_m3w_opendd_support_rerank.py freeze` 复用已核验权重，先冻结
+候选和校准阈值；同一脚本的 `score` 复算三个原对照并评价新规则。
+[完整命令与结果](../outputs/publication_readiness_2026_09/opendd_support_rerank_v1/README.md)。
+新规则未提高保守收益，不替代 CV。
+
 ## OpenDD：定位联合选择的失败
 
 `.venv-pytorch/bin/python scripts/diagnose_m3w_opendd_pair_disagreement.py`

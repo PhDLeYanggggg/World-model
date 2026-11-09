@@ -5,12 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## OpenDD: testing easy-support reranking at the same edit budget
+## OpenDD: easy-support reranking did not improve the matched decision
 
-I kept the two-edit forecasts fixed and added a past-only support
-score to the existing pair ranking, with a within-query shuffle as
-the negative control. [Protocol](outputs/publication_readiness_2026_09/opendd_support_rerank_v1/protocol.md).
-This is development evidence; Songdo is still unopened.
+I added a frozen, past-only support score at the same two-edit budget.
+Additive plus support lost 0.000690 pp of conservative trajectory
+utility versus additive and did not improve easy reference coverage.
+It also lost to the shuffled support control. Extra joint releases
+did not meet the original 2% rule across held views. CV remains the
+fallback; Songdo is still unopened.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_support_rerank_v1/README.md).
 
 ## OpenDD: why the two-edit joint rule lost
 
