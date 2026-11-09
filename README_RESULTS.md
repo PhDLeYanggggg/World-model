@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## PersonPath22: clip split is not a scene split
+
+Three original MEVA videos and five documented camera codes cross the
+published train/test split. On the fixed training-camera pilot, visible
+boxes raise framewise matches from 201 to 263 but leave just one
+complete stable history and zero full online rosters.
+[Data, timing and replay](outputs/publication_readiness_2026_09/personpath22_source_intake_v1/README.md).
+
 ## MOT20: more complete pairs, no full online roster
 
 Fixed camera windows and detector boxes. Causal transport increases complete

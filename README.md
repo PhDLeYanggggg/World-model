@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether PersonPath22 could supply an independent camera test.
+Three train/test pairs came from the same source video, and five known
+camera codes appeared on both sides. The first camera pilot also lacked
+the complete matches needed for a scene comparison.
+[Source and camera checks](outputs/publication_readiness_2026_09/personpath22_source_intake_v1/README.md).
+
 I tried the same camera pipeline on a crowded MOT20 recording. Changing
 association recovered complete pairs in 10 of 13 windows instead of six.
 OLS4 beat constant velocity on the matched tracks, but no window had
