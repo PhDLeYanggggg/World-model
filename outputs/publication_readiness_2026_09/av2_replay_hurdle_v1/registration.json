@@ -1,0 +1,44 @@
+{
+  "batch": 96,
+  "checkpoint": 40,
+  "code": [
+    {
+      "path": "scripts/run_m3w_av2_replay_hurdle.py",
+      "sha256": "18d6d292630fc6240bef3dff251e76fe1a56cd8c5e205b411d85b073df7ebbaa"
+    },
+    {
+      "path": "src/world_model/m3w_av2_replay_hurdle.py",
+      "sha256": "2c136c7f7703f540563d078981774161ca13b6be0654799937f22b9fda64d1ab"
+    }
+  ],
+  "independent_confirmation": false,
+  "modes": [
+    "replay",
+    "anchor_replay",
+    "direct",
+    "factored"
+  ],
+  "num_workers": 0,
+  "original_2pct": true,
+  "parent": {
+    "path": "outputs/publication_readiness_2026_09/av2_incumbent_timing_v1/summary.json",
+    "sha256": "f81e2af25132c8a5c36fbd5cc95ab206fe8aecd78eed9abf7a7a0bbdd7a80b71"
+  },
+  "parent_freeze": {
+    "path": "outputs/publication_readiness_2026_09/av2_incumbent_timing_v1/freeze.json",
+    "sha256": "259e880d1c5edaef05b4e24f975613b4098271354eb93c4124886ef1298495c2"
+  },
+  "paths": "fixed incumbent and positive-score retrospective replay's single replacement; no option reranking",
+  "primary": "factored",
+  "release": "every distinct nonempty calibration prefix under the original exact both-arm checks; both forecast arms use CV outside the prefix",
+  "reserved_outcomes_opened": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 320,
+  "supervision": "A = incumbent exact eligibility; J = matched qualification; J given A; conditional loss masked outside A, unweighted binary log losses",
+  "threads": 4,
+  "training": "donor replay decisions constructed with city-excluded additive and forecast checkpoints; outer calibration and held never used to fit or normalize"
+}

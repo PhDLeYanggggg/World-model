@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I kept the replay-selected forecasts fixed and separately
+estimated whether the original path qualifies and whether
+the replacement improves on it. This changed calibration
+coverage, but did not produce a passing held release.
+[Two prerequisites for a replacement](outputs/publication_readiness_2026_09/av2_replay_hurdle_v1/README.md).
+
 I tried changing only the timing of the original two edits.
 That kept most of the wider menu's opportunities without
 changing whom to edit. Replay retrieved more qualifying

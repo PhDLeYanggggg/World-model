@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: separate reference and replacement scores do not transfer
+
+On 935 unchanged replay proposals, 57 have eligible references
+and 29 have matched replacements. Factoring the release score
+allows five calibration selections, but the only held release
+fails. The 55-page local supplement copy includes the fixed-budget
+opportunity and release comparisons.
+[Fixed replay decision and supplement](outputs/publication_readiness_2026_09/av2_replay_hurdle_v1/README.md).
+
 ## AV2: timing-only substitutions retain most fixed-reference opportunities
 
 At fixed actors and peaks, timing changes retain 51 of 61
