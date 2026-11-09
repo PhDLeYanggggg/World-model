@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+车辆预测对照和同预算介入消融有独立两页英文补充稿。运行
+`scripts/build_m3w_vehicle_supplement.py` 从已冻结结果生成。
+[来源校验、输出及渲染命令](../outputs/publication_readiness_2026_09/vehicle_controls_supplement_v1/README.md)。
+
 当前主文为 [v166](../outputs/publication_readiness_2026_09/evidence_manuscript_v166/README.md)，
 配套补充材料沿用 [v165](../outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md)。
 主文调整了摘要、引言和披露说明，没有改实验、图表或结论。

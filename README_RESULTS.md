@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: vehicle controls and selection ablations
+
+The same-cohort forecast comparison and the fixed-budget
+intervention ablations are now summarized in two standalone pages.
+They retain the original location intervals and distinguish matched
+utility from release counts. [Evidence and build](outputs/publication_readiness_2026_09/vehicle_controls_supplement_v1/README.md).
+
 ## OpenDD: separating observed utility and missing-step cost
 
 At the same two-edit budget, learning the missing-step cost separately
