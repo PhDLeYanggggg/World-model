@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AerialMPT: dense annotations, sparse camera inputs
+
+The frozen detector recovers three of 415 complete reference
+futures on four publisher-training windows. Finer tiles recover
+none. Even with both grids and relaxed identity and one-to-one
+matching, only seven references have all eight detections within
+four pixels. No risk policy was fitted.
+[Camera experiment and replay](outputs/publication_readiness_2026_09/aerialmpt_camera_prefix_v1/README.md).
+
 ## Working paper: offline replay
 
 I checked the headline counts against the original frozen results:

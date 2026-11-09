@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked the same aerial detector on AerialMPT. The source labels
+covered 415 complete trajectories in the four development windows,
+but the detector and tracker recovered only three. Even allowing
+both tile scales and ignoring track identity, just seven had a
+detection near every observed position. This points to a detector
+coverage problem before the forecast policy can be tested.
+[AerialMPT camera experiment](outputs/publication_readiness_2026_09/aerialmpt_camera_prefix_v1/README.md).
+
 I checked whether raw SDD video tracks could support risk learning.
 The reference annotations and decoded videos use different pixel rasters.
 After aligning them, the best detector recovered 46 complete matches
