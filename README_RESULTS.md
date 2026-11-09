@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: a task-matched EqMotion vehicle control
+
+I train a fixed-output EqMotion adaptation on the existing vehicle
+folds, with and without observed neighbors. It shares the incumbent's
+training budget, objective and CV displacement bound.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_eqmotion_v1/protocol.md).
+
 ## Offline evidence replay
 
 The headline counts, external risk checks and matched-budget tables
