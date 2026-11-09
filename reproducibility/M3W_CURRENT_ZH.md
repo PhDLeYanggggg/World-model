@@ -1,8 +1,28 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v157 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v158 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v158：鱼眼相机输入与新来源
+
+```sh
+for phase in audit produce verify evaluate; do
+  OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_wepdtof_source_probe.py "$phase"
+done
+for phase in produce verify evaluate; do
+  OPENBLAS_NUM_THREADS=1 .venv-pytorch/bin/python scripts/run_m3w_wepdtof_rapid_probe.py "$phase"
+done
+.venv-pytorch/bin/python scripts/audit_m3w_wepdtof_input_contrast.py
+.venv-pytorch/bin/python scripts/freeze_m3w_wepdtof_external_roles.py
+.venv-pytorch/bin/python scripts/freeze_m3w_wepdtof_blind_camera_plan.py
+```
+
+下载地址、发布版本和权重哈希见实验登记。RAPiD 源码固定到
+`3e55294e0e419166bf152a15271c6b2fbd75b5cd`，本地需要
+`pycocotools==2.0.10`。每个相机窗口单独保存，可自动续跑。
+只有 Convenience Store 的几何标签被用于匹配和评分，另外 13 组只冻结角色和观察帧。
+[v158 构建](../outputs/publication_readiness_2026_09/evidence_manuscript_v158/README.md)。
 
 ## v157：预测每一步的标签可用性，再决定是否偏离基线
 

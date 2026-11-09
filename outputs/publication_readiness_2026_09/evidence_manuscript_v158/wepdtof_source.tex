@@ -1,0 +1,27 @@
+\section{Future source qualification on WEPDTOF}
+WEPDTOF~\cite{wepdtof} supplies \WepClips{} fisheye clips from
+\WepSources{} original videos. The two pairs of clips sharing a
+video are grouped together. We remove ambiguous identity/frame
+annotations (\WepAmbiguous{} keys) and retain \WepUnlisted{} images
+without annotation entries as unlabeled. At stride four on the
+released frame grid, \WepEligibleSources{} sources contribute
+\WepQueries{} nonoverlapping queries. Of \WepTargets{} targets
+with complete histories, \WepComplete{} (\WepCompleteRate{}\%)
+have all twelve future labels. History eligibility does not
+require future visibility. These are structural counts, not
+performance estimates or independent sample counts.
+
+For engineering, we freeze \WepWindows{} disjoint windows in one
+source using only the frame grid. The same online tracker consumes
+the current-frame MobileNet or RAPiD detections; it never sees
+reference tracks. CV and OLS4 trajectories freeze before the
+reference comparison. Of \WepRef{} labeled histories, the detector
+arms match \WepMobileHist{} and \WepRapidHist{} stable histories in
+\WepMobileWindows{} and \WepRapidWindows{} windows, respectively.
+Their overlap is \WepBothHist{} histories. \WepCommon{}
+The first window is cold-replayed in both arms. This is an input
+and baseline pilot on one source; no neural policy is calibrated
+or confirmed. The other \WepReserved{} source groups are reserved
+for a frozen one-shot transfer test and have no forecast readout.
+Neither physical calibration nor seconds-level
+timing is assumed for this release.

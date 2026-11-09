@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: new source support and matched camera inputs
+
+Fresh audit of 16 clips from 14 original sources: stride four retains
+1,065/1,093 complete futures. At identical pilot frames, RAPiD increases
+stable matches from 22/72 to 57/72. On 20 common targets OLS4 beats CV
+using camera histories, but CV wins using annotation histories.
+One source is development and the other 13 are frozen for one-shot
+evaluation, not yet scored. No neural or safety result.
+[Experiment](outputs/publication_readiness_2026_09/wepdtof_source_probe_v1/README.md) |
+[Manuscript v158](outputs/publication_readiness_2026_09/evidence_manuscript_v158/README.md).
+
 ## Moving: CV–OLS4 reference bridge with predicted label availability
 
 27 fresh fits, 21,600 updates. Bridge-only passes 54/72 original risk

@@ -9,6 +9,14 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether a new fisheye dataset could support a camera-based
+forecasting comparison. On the pilot camera, a fisheye detector
+increased stable matches from 22 to 57. On the same 20 targets, the
+better motion baseline changed when I used camera histories instead
+of edited annotation histories. I reserved the other sources for
+a frozen external test and have not scored them.
+[WEPDTOF pilot](outputs/publication_readiness_2026_09/wepdtof_source_probe_v1/README.md).
+
 I trained a forecast to stay between constant velocity and OLS4
 unless past motion suggested a useful correction. Staying close
 to constant velocity passed more risk checks, but it did not
