@@ -76,6 +76,11 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 
 ## Argoverse 2：完整标注下的同预算联合对照
 
+每场景只留一条因果选择或均匀抽取的投影，两个训练组各 4,776 条。同次数
+各命中 11/90，旧成本为 31/90。已生成匿名 ZIP，能离线复算匹配计数和
+46,656 个城市层配对 bootstrap 样本，不需要训练库或原始数据。
+[训练、评分、匿名复算和稿件文件核对](../outputs/publication_readiness_2026_09/av2_selected_projection_risk_v1/README.md)。
+
 用排除本来源的投影训练收益和风险打分。固定每折前五，旧成本命中 31/90，
 新打分只命中 15/90；正式校准后放行 5 个，0 个达标，4 个风险失败。
 [嵌套训练、来源核验、同次数对照与复现命令](../outputs/publication_readiness_2026_09/av2_projection_risk_v1/README.md)。

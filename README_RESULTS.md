@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## AV2: selected-only training loses support without improving release
+
+At the same 4,776 donor queries, selected-only and uniform-one training
+yield 11/90 qualifying held views each; the old cost gives 31/90.
+Edited-easy support in selected training drops from 44% to 24%.
+No causal-selected calibrated release; all six uniform releases fail.
+[Matched ablation and anonymous exact bootstrap replay](outputs/publication_readiness_2026_09/av2_selected_projection_risk_v1/README.md).
+
 ## AV2: source-excluded score training does not improve fixed position release
 
 At the same top-five count in each fold, the old transferred cost

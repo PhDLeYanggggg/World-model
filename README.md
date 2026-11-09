@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I checked whether the AV2 release score should train only on the
+candidate a model would actually choose. At equal training and
+intervention counts, the causal and random subsets each found 11
+qualifying views, versus 31 for the old cost. The causal subset
+also contained fewer easy cases to learn from.
+[Selected-path ablation and offline replay](outputs/publication_readiness_2026_09/av2_selected_projection_risk_v1/README.md).
+
 I trained a new AV2 release score on projections from models
 that had not seen the source they scored. At the same 90 held
 interventions it found 15 qualifying views, versus 31 for the
