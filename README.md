@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I froze the WEPDTOF external comparison before opening its outcomes.
+The learned joint rule made no intervention on the development
+camera, so the guarded policy still uses constant velocity. I will
+also compare fixed-count research proposals at the same displacement;
+that comparison cannot certify them for deployment.
+[Pre-outcome protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/protocol.md).
+
 I tested whether a new fisheye dataset could support a camera-based
 forecasting comparison. On the pilot camera, a fisheye detector
 increased stable matches from 22 to 57. On the same 20 targets, the

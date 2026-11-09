@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: three-seed frozen comparison, before outcomes
+
+Three donor-only action heads, 2,400 updates on site-excluded OpenDD
+forecasts. All abstain on the one WEPDTOF development camera; guarded
+CV remains. Fixed-count independent, scene-uniform and joint
+research controls are registered at equal per-query peak. No held
+outcome has been scored at this freeze.
+[Protocol](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/protocol.md) |
+[Matched comparison amendment](outputs/publication_readiness_2026_09/wepdtof_external_transfer_v1/readout_amendment.md).
+
 ## WEPDTOF: new source support and matched camera inputs
 
 Fresh audit of 16 clips from 14 original sources: stride four retains
