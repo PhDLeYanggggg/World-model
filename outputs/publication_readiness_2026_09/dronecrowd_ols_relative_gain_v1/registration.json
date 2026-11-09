@@ -1,0 +1,55 @@
+{
+  "arms": [
+    "cv_gain",
+    "ols_matched",
+    "ols_gain",
+    "ols_joint",
+    "ols_joint_matched",
+    "ols4"
+  ],
+  "batch": 192,
+  "calibration_labels_for_training_or_tuning": false,
+  "checkpoint": 100,
+  "code": [
+    {
+      "bytes": 15626,
+      "path": "scripts/run_m3w_ols_relative_gain.py",
+      "sha256": "361ba58835084240c7ebf3b31da03bf4e4fc6ee48918d749d22cb601f3295cdc"
+    },
+    {
+      "bytes": 2527,
+      "path": "src/world_model/m3w_ols_relative_gain.py",
+      "sha256": "36046eb1022564b6c134e409ae52ddb618ea317a1349087b2dfce173ca99283a"
+    }
+  ],
+  "confirmation_access": false,
+  "deployment": "OLS4 default for all diagnostic arms. Compare gain heads at exact CV-gain OLS-replacement counts, and joint vs independent at exact joint counts.",
+  "independent_confirmation": false,
+  "joint": "Search registered prices on predicted all/easy excess vs CV. Include unchanged OLS4 paths in every risk sum. No feasible forecast: retain OLS4 for diagnosis.",
+  "motivation": {
+    "bytes": 18627,
+    "path": "outputs/publication_readiness_2026_09/dronecrowd_observation_augmentation_v1/analysis.json",
+    "sha256": "b59f8a9c7f3ae556f765f6c1e28f65d3f9022dd1f3ff60537e4808ff20b18726"
+  },
+  "num_workers": 0,
+  "original_cv_2pct": true,
+  "original_sparse_protocol_unchanged": true,
+  "prices": [
+    0.0,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0
+  ],
+  "prior_registration": "a6ed2b3f198b4418252632b52b316666a2bfd99276b00c234de24d2a8a1a03d3",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 600,
+  "torch_threads": 4,
+  "training": "Same native donor features, initialization, batches, Huber gain and mean-harm losses. Only signed gain anchor changes."
+}
