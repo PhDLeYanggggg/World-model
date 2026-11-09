@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Lead-Dependent Path Mixtures and the Coverage Limit
+
+18 matched fits, 18,000 updates, 2,317 fixed recipients. Shared/lead
+weights pass 21/19 of 72 views versus 14 for the frozen paths, but
+both lose conservative utility and qualify 0/9 calibration cells.
+At matched peak displacement, lead minus shared is -0.0030 pp
+[-0.0071, +0.0012]. Addback stays at 3/72 dual-reference witnesses.
+Even unrestricted perfect paths at the exact recording counts and
+cap eight rule out 64/72 before the risk constraint. No promotion.
+[Experiment and bound](outputs/publication_readiness_2026_09/moving_cv_lead_mixture_v1/README.md) |
+[Manuscript v129](outputs/publication_readiness_2026_09/evidence_manuscript_v129/README.md).
+
 ## Recording Allocation and Causal Credit Carry
 
 At 2,317 edits with exact recording counts, local allocation passes

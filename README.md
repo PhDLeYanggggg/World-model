@@ -9,6 +9,13 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained two trajectory mixtures to see whether changing the path itself
+could recover the missing gains. Making the weights vary along the forecast
+did not improve the shared-weight control. More importantly, even perfect
+edits at the existing budget could not catch both motion references in 64
+of 72 views. This points to a coverage problem before another shape change.
+[Proposal and coverage study](outputs/publication_readiness_2026_09/moving_cv_lead_mixture_v1/README.md).
+
 I tested whether it helps to spend the same number of edits at different
 points in a recording. Neither the retrospective reallocation nor the
 streaming policy improved the full risk result. Even with outcomes known,

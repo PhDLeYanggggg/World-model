@@ -1,8 +1,26 @@
 # M3W 当前论文与关键实验：中文复现入口
 
-本文档对应 v128 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
+本文档对应 v129 研究稿。实验结果分三类：开发录像上的实测、使用未来标签的
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
+
+## v129：固定对象的候选轨迹与覆盖率下界
+
+在本机冻结的拟合来源数据、风险模型和来源隔离预测可用时运行。第一条命令
+加载两组模型检查点、验证预测并复算留出分数，不更新模型。另两条命令只做
+事后容量诊断，不用它们选正式策略。训练可去掉 `--replay` 续跑，每 100
+步写检查点；查看运行目录的 `heartbeat.json` 和 PID 确认进程状态。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_cv_lead_mixture.py --replay
+.venv-pytorch/bin/python scripts/audit_m3w_cv_lead_mixture_capacity.py
+.venv-pytorch/bin/python scripts/audit_m3w_cv_minimum_edit_count.py
+```
+
+应得到 2,317 个固定改动、两组校准均为 0/9、候选补入后仍只有 3/72 个
+事后双基线可行视图。忽略风险、授予完美预测的上界在原预算下排除 64/72。
+这不是调整原 2% 风险规则，也不允许解封确认集。
+[v129 编译说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v129/README.md)。
 
 ## v128：录像级分配和因果额度结转
 
