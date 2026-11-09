@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I trained a vehicle-specific alternative to the pedestrian weights in
+the Songdo bank. It beats CV on the conservative OpenDD forecast score
+at all seven held locations, but using it on every vehicle almost
+always fails the original risk rule. It is a candidate, not a replacement.
+[Vehicle forecast study](outputs/publication_readiness_2026_09/opendd_vehicle_residual_v1/README.md).
+
 I generated unscored Songdo forecasts from past tracks alone. At a
 common radius I can compare additive, same-family and joint choices
 without counting the same pair twice. The new search agrees with the

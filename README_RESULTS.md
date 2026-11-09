@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: useful candidate, but replacing every forecast fails the risk gate
+
+42 fixed fits at seven locations and three seeds. Adding a missing-step
+debit during training increases the CV-referenced conservative gain from
+6.52 to 11.54 pp; the latter is positive in all 21 site-seed comparisons.
+Only 14/1,500 full-policy views pass the original 2% check. The candidate
+does not replace CV and has not been scored on Songdo.
+[Study and replay](outputs/publication_readiness_2026_09/opendd_vehicle_residual_v1/README.md).
+
 ## Songdo: unscored candidate forecasts and equal-radius search
 
 All 21 donor checkpoint identities verify and their three seed ensembles

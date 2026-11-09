@@ -26,6 +26,14 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## OpenDD：车辆专用候选预测器
+
+`.venv-pytorch/bin/python scripts/run_m3w_opendd_vehicle_residual.py` 依次运行
+`extract`、`fit`、`score`。7 个留出地点、3 个种子、2 种损失，共 42 个训练；
+每 100 步可恢复。带缺失步扣减的训练相对 CV 保守改善 11.54 个百分点，
+但全量替换只有 14/1,500 通过原 2% 风险规则，不能部署。没打开 Songdo。
+[模型、消融与复现](../outputs/publication_readiness_2026_09/opendd_vehicle_residual_v1/README.md)。
+
 ## Songdo：未评分候选轨迹与同半径搜索检查
 
 用 `.venv-pytorch/bin/python scripts/build_m3w_songdo_candidate_bank.py` 生成候选；
