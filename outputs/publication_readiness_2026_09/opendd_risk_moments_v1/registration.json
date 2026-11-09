@@ -1,0 +1,78 @@
+{
+  "batch": 128,
+  "checkpoint_every": 50,
+  "code": [
+    {
+      "path": "scripts/run_m3w_opendd_risk_moments.py",
+      "sha256": "44aa099925899f2678ed38d297138d2d100a3fd6092f40fc5545cf9367942794"
+    },
+    {
+      "path": "src/world_model/m3w_causal_risk_moments.py",
+      "sha256": "8ea6798299766cf5991498a718044b447d4c7a6e7504de8ecfac04fb47c6091c"
+    },
+    {
+      "path": "src/world_model/m3w_reference_bridge_policy.py",
+      "sha256": "91aff1f65a7854f46c5980b74230b0cca875cde25817c230054a27e190d177ae"
+    },
+    {
+      "path": "src/evaluation/m3w_recording_risk_attribution.py",
+      "sha256": "9b003a49424f1a408da5be5e4c52caa99efc6fca6247f211d3eb093a7b9010ba"
+    },
+    {
+      "path": "scripts/run_m3w_opendd_slate_relative_gain.py",
+      "sha256": "54d1849e220c533070eca629fa79a37bd38065d149c3dbe8e33df6c0765c5d62"
+    }
+  ],
+  "development_only": true,
+  "fixed": "same menu, per-query edit counts and radii; prefix_two retains the original singleton",
+  "forecast_steps": 12,
+  "independent_confirmation": false,
+  "modes": [
+    "additive",
+    "pair_parent",
+    "soft",
+    "local",
+    "prefix",
+    "prefix_two"
+  ],
+  "observed_steps": 8,
+  "original_2pct": true,
+  "parents": [
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/registration.json",
+      "sha256": "cfe689f2db843ef85990017bceeb3427b8a6b086dd2d57a8939bf16b8416ff19"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/freeze.json",
+      "sha256": "e16a33f4a7c41b9b2e832298d415a6d4b4e53a1734bfe74968535eda485ee130"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/readout.json",
+      "sha256": "191665b495d2e3fb81b7edf70567e8873676ef250e83bbb9daa8bb20290cb509"
+    },
+    {
+      "path": "outputs/publication_readiness_2026_09/opendd_slate_relative_gain_v1/risk_attribution.json",
+      "sha256": "c6e851210a028c582e3bc0d42c834ac9f9fbf732efac4ce74f707443e379e25f"
+    }
+  ],
+  "prefix": "per-recording chronological predicted masses only; reset and no future queries",
+  "scale": "donor-only per-output RMS with 0.01 floor, site-balanced sampling",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "sites": [
+    "rdb1",
+    "rdb2",
+    "rdb3",
+    "rdb4",
+    "rdb5",
+    "rdb6",
+    "rdb7"
+  ],
+  "steps": 600,
+  "thresholds_tuned": false,
+  "train": "squared error for observed harm, easy harm, signed easy, CV/easy masses and unknown debit",
+  "utilities": "frozen two-reference gain and slate relative gain; not re-fit"
+}

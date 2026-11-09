@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: direct harm moments do not fix the mandatory edit budget
+
+At 3,690 fixed edits, the previous pair policy passes 47/439 recording
+views. New risk moment policies pass 21 to 41. Keeping recipients
+unchanged preserves easy-reference availability, but does not recover
+the previous risk pass count.
+[Three-seed readout and matched recipient replay](outputs/publication_readiness_2026_09/opendd_risk_moments_v1/README.md).
+
 ## OpenDD: direct relative-motion supervision helps the old joint rule
 
 At the same 3,690 slots, directly predicting full-slate gain improves the

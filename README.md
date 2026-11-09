@@ -9,6 +9,12 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+I tested whether separate harm predictions and a recording-level risk
+ledger could make the same number of edits safer. They did not.
+Keeping the original edited recipients preserved the easy reference,
+but changing their paths still lost some risk passes.
+[Risk ledger and recipient comparison](outputs/publication_readiness_2026_09/opendd_risk_moments_v1/README.md).
+
 I trained a score for the relative-motion gain of a complete replacement,
 then tested it at the same edit budget. It improved on my earlier joint
 rule, but I could not establish a conservative gain over choosing agents
