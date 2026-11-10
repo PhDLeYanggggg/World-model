@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: how much the frozen proposals differ
+
+I checked all saved two-edit proposals before opening outcomes. Joint
+selection changes the trajectories in 543/573 views versus independent
+selection, but only 88/573 versus the same-family control. A single
+edited query also limits the possible difference across the full flight.
+[Label-free contrast audit](outputs/publication_readiness_2026_09/songdo_contrast_support_v1/README.md).
+
 ## Camera history: the normalized refit improves utility, not release
 
 I repeated the nine fits with a motion floor learned only from donor

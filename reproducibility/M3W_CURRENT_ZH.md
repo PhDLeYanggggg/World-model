@@ -1,5 +1,10 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+Songdo 在评估之前可先跑 `scripts/audit_m3w_songdo_contrast_support.py`。
+它重查冻结的两次介入及相同位移预算，从预测本身计算可区分的轨迹和
+差异上界，不读取未来标签，也不指定划分。
+[结果和公式](../outputs/publication_readiness_2026_09/songdo_contrast_support_v1/README.md)。
+
 相机速度模型：在 arm64 `.venv-pytorch` 运行
 `scripts/run_m3w_camera_velocity_mixer.py`。使用 4 个计算线程、0 个
 数据加载进程；每 100 步写入检查点，重跑自动恢复。同批次对照修复
