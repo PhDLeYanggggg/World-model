@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: calibrate when to leave the baseline alone
+
+I used disjoint fitting, calibration and held locations to test
+whether a magnitude-aware swap can improve on the additive forecast
+without relaxing the original 2% recording checks.
+[Protocol](outputs/publication_readiness_2026_09/opendd_nested_swap_release_v1/protocol.md).
+
 ## OpenDD: separate observation support from swap gain
 
 Separating observation support from the effect on observed steps
