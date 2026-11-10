@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: match the path family used at training time
+
+I kept the original training draws and replaced a path with the
+learned family only where legal. The held nominees, edit budgets
+and scoring rules do not change. The comparison reuses the nested
+teachers and the two earlier losses.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_family_alignment_v1/protocol.md).
+
 ## OpenDD vehicles: predict whether the exact nominee will help
 
 I trained on the exact action from a source-excluded nominee.
