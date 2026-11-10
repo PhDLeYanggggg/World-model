@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens and Swiss roundabouts: match movement at every step
+
+I kept the edited vehicles and movement directions fixed, then matched
+departures from constant velocity at each of the twelve steps. All
+1,929 Athens and 7,431 Swiss matched views remain usable for this
+secondary comparison. The forecasts still differ, but these are
+geometric bounds, not accuracy results: no real futures were opened.
+The primary comparison and original 2% rule are unchanged.
+[Protocol and reproduction](outputs/publication_readiness_2026_09/external_step_budget_v1/README.md).
+
 ## OpenDD: complete-grid risk at the original movement budget
 
 I searched the same prefix menu with the original edit counts and
