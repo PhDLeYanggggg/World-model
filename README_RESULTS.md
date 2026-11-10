@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens: prepare matched proposals without opening futures
+
+I rebuilt the same 643 past-defined windows from numeric histories,
+ran the frozen three-seed vehicle forecasts, and prepared two equal-radius
+edits for each of four competing arms. On the largest candidate menu,
+the blockwise ranking returns the same choices and scores as the
+original search. No dates have been assigned to predictive roles and
+no forecast has been scored.
+[Inputs, exact search and replay](outputs/publication_readiness_2026_09/pneuma_prefix_pilot_v1/README.md).
+
 ## Athens: check an independent vehicle source before scoring
 
 I retrieved six pNEUMA files from the publisher archive and checked
