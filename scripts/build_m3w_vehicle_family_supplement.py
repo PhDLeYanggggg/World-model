@@ -20,10 +20,10 @@ DEST = bundle.LOCAL/'review_supplement_v15.zip'
 TEMPLATE = archive.ROOT/'reproducibility/opendd_vehicle_family_supplement'
 
 
-def panel(d, study=paper.STUDY):
+def panel(d, study=paper.STUDY, counts_key='scores'):
     freeze = json.loads((study/'freeze.json').read_text())
     effects = {f'{k}.{m}': v for k, r in d['paired'].items() for m, v in r.items()}
-    effects.update({f'{k}.{m}': v for k, r in d['ranking'].items() for m, v in r.items() if 'by_site' in v})
+    effects.update({f'{k}.{m}': v for k, r in d.get('ranking', {}).items() for m, v in r.items() if 'by_site' in v})
     local = paper.OUT.parent/study.name
     loc = []
     for s in sorted(next(iter(effects.values()))['by_site']):
@@ -39,7 +39,7 @@ def panel(d, study=paper.STUDY):
             rows.append(r)
         if len(rows) != 18:
             raise ValueError('Expected 18 directions per location')
-        counts = {f'{a}.{q}.{k}': sum(r['scores'][a][q][k] for r in rows) for a, v in d['counts'].items()
+        counts = {f'{a}.{q}.{k}': sum(r[counts_key][a][q].get(k, 0) for r in rows) for a, v in d['counts'].items()
                   for q, m in v.items() for k in m}
         counts.update({k: sum(r[k] for r in rows) for k in d['totals']})
         loc.append(dict(counts=counts, effects={k: r['by_site'][s] for k, r in effects.items()}))

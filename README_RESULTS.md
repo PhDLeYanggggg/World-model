@@ -5,14 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## OpenDD vehicles: freeze a three-angle reranking comparison
+## OpenDD vehicles: choosing among three angles at the same budget
 
-I trained two rerankers on the same three candidate angles, one to predict
-strict success and one to predict benefit and harm as well. I compare both
-with an OLS4 rule, first on the original intervention mask and then at the
-same intervention budget with a new ranking. The original 2% rule is
-unchanged; no new external outcome was opened.
-[Protocol and freeze](outputs/publication_readiness_2026_09/opendd_vehicle_shortlist_v1/protocol.md).
+I trained two rerankers on the same three candidate angles. On the original
+526 intervention views, the utility head moved strict successes from 54 to
+56, but the conservative trajectory gain did not improve. At the fixed
+15% quota it improved trajectory error slightly while worsening relative
+motion. The calibrated policy did not pass, so I kept the earlier policy.
+[Results and intervals](outputs/publication_readiness_2026_09/opendd_vehicle_shortlist_v1/README.md),
+[v187 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v187_shortlist/README.md),
+and [v17 anonymous replay](outputs/publication_readiness_2026_09/vehicle_shortlist_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: use the recipient policy when generating training actions
 
