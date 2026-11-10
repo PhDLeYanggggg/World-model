@@ -5,7 +5,7 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v7.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v8.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -13,6 +13,8 @@ v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数
 v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。
 v6 新增编辑交换界限：零交换 60、至多一次 178–183、不限次数 210–212，另复算三个描述性收益门槛。
 v7 保留这些界限，并将至多一次的范围精确收紧为 181；另复算同录像随机对照。
+v8 增加地图和邻居消融：在同样 101 次交换上复算正确对齐 47 个双通过、
+随机期望 51.21，以及对应的地点置信区间。主文仍为 v179。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -70,6 +72,10 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 排序器用 `scripts/run_m3w_opendd_one_exchange_ranker.py --replay` 复核；
 `scripts/audit_m3w_opendd_one_exchange_ranking.py` 穷举 7,198 个交换，复算同录像随机对照。
 不重新训练，不使用未打开的外部数据。[训练与读数](../outputs/publication_readiness_2026_09/opendd_one_exchange_ranker_v1/README.md)。
+
+地图和邻居对照用 `scripts/run_m3w_opendd_exchange_context.py --replay`；
+`scripts/audit_m3w_opendd_exchange_context_matched.py` 固定相同的交换视图并计算精确随机期望。
+[输入、训练和复算](../outputs/publication_readiness_2026_09/opendd_exchange_context_v1/README.md)。
 
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效

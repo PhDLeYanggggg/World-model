@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: do map and peer history improve exchange ranking?
+
+I held the exchange views fixed across arms. On the same 101 exchanges,
+aligned map and peer features give 47/606 dual passes, against an exact
+random expectation of 51.21. Their small advantage over misaligned
+features under different intervention rules disappears with matched
+swaps. I kept the original rule.
+[Experiment](outputs/publication_readiness_2026_09/opendd_exchange_context_v1/README.md)
+and [v8 anonymous replay](outputs/publication_readiness_2026_09/context_review_supplement_v1/README.md).
+
 ## OpenDD: can a model choose the right exchange?
 
 I scored all 7,198 legal single exchanges. At most one exchange can give
