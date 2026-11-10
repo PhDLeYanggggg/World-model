@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: test release scores with the two paths fixed
+
+At 2,196 matched recording views, adding predicted easy-reference support
+raises dual passes from 710 to 752, but the location interval crosses zero.
+The conservative trajectory and relative-motion contrasts are worse. I kept
+the original policy; predicting support is not enough to choose good edits.
+[Experiment](outputs/publication_readiness_2026_09/opendd_fixed_joint_release_v1/README.md) |
+[v204 draft and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v204_fixed_joint_release/README.md).
+
 ## Songdo: why the highest joint scores did not release
 
 For each of the three seeds, the highest joint score has no selected easy
