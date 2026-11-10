@@ -56,3 +56,14 @@ def test_exchange_frontier_keeps_witness_and_upper_counts_distinct():
     evidence['external_outcome_access'] = True
     with pytest.raises(ValueError, match='matched-budget development frontier'):
         candidate.revise_exchange_frontier(text, evidence)
+
+
+def test_exact_exchange_revision_retains_the_chance_control_scope():
+    evidence = json.loads(candidate.EXCHANGE_EVIDENCE.read_bytes())
+    text = 'First. Allowing at most one hindsight\nold range\nLearning does not close this gap: Last.'
+    out, markers = candidate.revise_exact_exchange(text, evidence)
+    assert out.startswith('First.') and out.endswith('Last.')
+    assert '181/606' in markers and 'same-view random exchange' in out
+    evidence['summary']['comparisons']['context_forced']['dual_rate_minus_random_pp']['ci95_pp'] = [1., 2.]
+    with pytest.raises(ValueError, match='Revisit the manuscript scope'):
+        candidate.revise_exact_exchange(text, evidence)

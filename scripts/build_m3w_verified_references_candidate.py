@@ -32,6 +32,9 @@ ABLATION_STUDIES = ('opendd_prefix_value_v1', 'opendd_equal_spend_preference_v1'
 FRONTIER_OUT = OUT.parent/'evidence_manuscript_v178_exchange_frontier'
 FRONTIER_RECEIPT = main.PUBLIC/'evidence_manuscript_v178_exchange_frontier/receipt.json'
 FRONTIER_EVIDENCE = main.PUBLIC/'opendd_exchange_frontier_v1/readout.json'
+EXCHANGE_OUT = OUT.parent/'evidence_manuscript_v179_exact_exchange'
+EXCHANGE_RECEIPT = main.PUBLIC/'evidence_manuscript_v179_exact_exchange/receipt.json'
+EXCHANGE_EVIDENCE = main.PUBLIC/'opendd_one_exchange_ranker_v1/ranking_diagnostic.json'
 ADDITIONS = ('graphabstention', 'crc', 'geotrax')
 BIB_END = r'\end{thebibliography}'
 EDITS = (
@@ -225,10 +228,35 @@ without the exchange limit. Learning does not close this gap:'''
     return source.replace(a, text, 1), (f"{one['positive'][0]}/606", f"{all_edits['0.10pp'][0]}/606")
 
 
-def build(destination, compiler, receipt, *, realized=False, motion=False, ablations=False, frontier=False):
-    if sum((realized, motion, ablations, frontier)) > 1:
+def revise_exact_exchange(source, row):
+    s = row['summary']
+    if (row['external_outcome_access'] or not row['original_2pct'] or not row['offline_matching']
+            or (s['views'], s['edits'], s['anchor_dual'], s['candidates']) != (606, 780, 60, 7198)):
+        raise ValueError('Expected the exhaustive matched exchange diagnostic')
+    cuts = 'Allowing at most one hindsight', 'Learning does not close this gap:'
+    if any(source.count(x) != 1 for x in cuts):
+        raise ValueError('Expected one matched one-exchange paragraph')
+    start, stop = map(source.index, cuts)
+    if start >= stop:
+        raise ValueError('Matched exchange results are out of order')
+    exact, arms = s['exact_frontier'], s['comparisons']
+    local = arms['context_guarded']['chosen_dual']
+    intervals = [a['dual_rate_minus_random_pp']['ci95_pp'] for a in arms.values()]
+    if any(not a <= 0. <= b for a, b in intervals):
+        raise ValueError('Revisit the manuscript scope for this chance contrast')
+    text = f'''Allowing one of 7,198 legal exchanges gives {exact['positive']}/606
+positive views; {exact['0.10pp']}/606 exceed 0.10 pp (109/606 unrestricted).
+A donor-trained ranker gives {local}/606, with no reliable gain over
+same-view random exchange.
+'''
+    return source[:start]+text+source[stop:], (f"{exact['positive']}/606", f"{exact['0.10pp']}/606", 'same-view random exchange')
+
+
+def build(destination, compiler, receipt, *, realized=False, motion=False, ablations=False, frontier=False, exact_exchange=False):
+    if sum((realized, motion, ablations, frontier, exact_exchange)) > 1:
         raise ValueError('Select one version')
-    origin = ABLATION_OUT if frontier else MOTION_OUT if ablations else REALIZED_OUT if motion else OUT if realized else PARENT
+    origin = (FRONTIER_OUT if exact_exchange else ABLATION_OUT if frontier else MOTION_OUT if ablations
+              else REALIZED_OUT if motion else OUT if realized else PARENT)
     parent = supplement.read_receipt(origin.name)
     inputs = {k: supplement.checked(origin/k, h) for k, h in parent['artifacts'].items()}
     with ZipFile(BytesIO(inputs['main_source.zip'])) as z:
@@ -239,7 +267,14 @@ def build(destination, compiler, receipt, *, realized=False, motion=False, ablat
         raise ValueError('Source archive does not contain the verified manuscript')
     prior_keys = scope.citation.used_citations(files)
     source = files['manuscript.tex'].decode('ascii')
-    if frontier:
+    if exact_exchange:
+        evidence = EXCHANGE_EVIDENCE.read_bytes()
+        row = json.loads(evidence)
+        if (row['rank_readout_sha256'] != main.digest(EXCHANGE_EVIDENCE.with_name('readout.json').read_bytes())
+                or row['frontier_registration_sha256'] != main.digest(FRONTIER_EVIDENCE.with_name('registration.json').read_bytes())):
+            raise ValueError('Exact exchange readout does not match the frozen runs')
+        result, markers = revise_exact_exchange(source, row)
+    elif frontier:
         evidence = FRONTIER_EVIDENCE.read_bytes()
         row = json.loads(evidence)
         if row['registration'] != main.digest(FRONTIER_EVIDENCE.with_name('registration.json').read_bytes()):
@@ -258,7 +293,7 @@ def build(destination, compiler, receipt, *, realized=False, motion=False, ablat
         result, markers = revise(source), ()
     files['manuscript.tex'] = result.encode('ascii')
     keys = scope.citation.used_citations(files)
-    added = () if realized or motion or ablations or frontier else ADDITIONS
+    added = () if realized or motion or ablations or frontier or exact_exchange else ADDITIONS
     if keys != sorted([*prior_keys, *added]):
         raise ValueError('The bibliography and citations changed unexpectedly')
     style = supplement.checked(scope.citation.main.DRAFT/'cvpr.sty', scope.citation.STYLE_SHA)
@@ -293,6 +328,8 @@ def build(destination, compiler, receipt, *, realized=False, motion=False, ablat
         result['decision_ablation_readouts_sha256'] = ablation_hashes
     if frontier:
         result['exchange_frontier_readout_sha256'] = main.digest(evidence)
+    if exact_exchange:
+        result['exact_exchange_readout_sha256'] = main.digest(evidence)
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
@@ -314,9 +351,12 @@ if __name__ == '__main__':
     v.add_argument('--count-motion', action='store_true')
     v.add_argument('--decision-ablations', action='store_true')
     v.add_argument('--exchange-frontier', action='store_true')
+    v.add_argument('--exact-exchange', action='store_true')
     a = p.parse_args()
-    dest, meta = ((FRONTIER_OUT, FRONTIER_RECEIPT) if a.exchange_frontier else (ABLATION_OUT, ABLATION_RECEIPT)
+    dest, meta = ((EXCHANGE_OUT, EXCHANGE_RECEIPT) if a.exact_exchange else (FRONTIER_OUT, FRONTIER_RECEIPT)
+                  if a.exchange_frontier else (ABLATION_OUT, ABLATION_RECEIPT)
                   if a.decision_ablations else (MOTION_OUT, MOTION_RECEIPT)
                   if a.count_motion else (REALIZED_OUT, REALIZED_RECEIPT) if a.realized_count else (OUT, RECEIPT))
     build(a.output or dest, a.compiler.resolve(), a.receipt or meta, realized=a.realized_count,
-          motion=a.count_motion, ablations=a.decision_ablations, frontier=a.exchange_frontier)
+          motion=a.count_motion, ablations=a.decision_ablations, frontier=a.exchange_frontier,
+          exact_exchange=a.exact_exchange)

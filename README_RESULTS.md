@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: can a model choose the right exchange?
+
+I scored all 7,198 legal single exchanges. At most one exchange can give
+181/606 dual passes in hindsight; 68 views clear a 0.10 pp gain floor.
+The learned guarded rule gives 55/606 versus 60 without exchanging, and
+neither guarded nor forced selection reliably beats matched chance.
+[Experiment](outputs/publication_readiness_2026_09/opendd_one_exchange_ranker_v1/README.md),
+[v179 manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v179_exact_exchange/README.md)
+and [v7 anonymous replay](outputs/publication_readiness_2026_09/exact_exchange_review_supplement_v1/README.md).
+
 ## OpenDD: how much does a single exchange recover?
 
 At the same edit count, movement caps and recording risk rule, allowing
