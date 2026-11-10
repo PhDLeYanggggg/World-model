@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: compare two plans at the same spend
+
+I trained the same network on two objectives using matched recording plans.
+Direct pairwise ranking passes the original risk checks in 95/606 views
+but beats both references in only 59. The frozen allocator passes both
+checks in 60, using the same 780 edits and per-recording movement caps.
+The ranking model is not a better release policy.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_equal_spend_preference_v1/README.md).
+
 ## OpenDD: learn gains and harm without changing the forecasts
 
 I fit gain-only and gain-and-risk heads over the same frozen paths, using
