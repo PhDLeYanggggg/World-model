@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 
+from scripts.audit_m3w_vehicle_nominee_anchor_shift import compare
 from src.world_model.m3w_vehicle_nominee_rank import WIDTH, budget_pair_loss, features
 
 
@@ -20,3 +21,16 @@ def test_budget_loss_has_only_within_source_pairs_and_hard_negative_gradient():
     budget_pair_loss(z, labels, groups).backward()
     assert z.grad[0] < 0 < z.grad[1]
     torch.testing.assert_close(z.grad[2:], torch.zeros(3))
+
+
+def test_input_only_family_audit_splits_ambiguous_path_mass():
+    menu = np.zeros((1, 2, 3, 2, 2))
+    menu[0, 0, 2] = 2.
+    menu[0, 1, 0] = 1.
+    menu[0, 1, 1] = 2.
+    menu[0, 1, 2] = 3.
+    frozen = np.stack([menu[0, 0, 0], menu[0, 1, 1]])[None]
+    result = compare(menu, np.ones((1, 2, 3), dtype=bool), frozen)
+    assert result['ambiguous'] == 1 and result['actual_same'] == .5
+    np.testing.assert_allclose(result['actual'], [.5, 1.5, 0.])
+    np.testing.assert_allclose(result['uniform'], [2/3, 2/3, 2/3])

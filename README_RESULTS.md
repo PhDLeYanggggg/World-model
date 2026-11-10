@@ -7,13 +7,17 @@ or evidence status.
 
 ## OpenDD vehicles: predict whether the exact nominee will help
 
-I built a nested set of forecast and angle heads so that a donor
-nominee never comes from a model trained on that donor or either
-downstream location. This allows the screen to learn whether the
-exact nominated action helps, rather than whether some other
-legal action would have helped. Both ranking heads and their
-calibration thresholds are frozen before the held readout.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_nominee_rank_v1/protocol.md).
+I trained on the exact action from a source-excluded nominee.
+With the same proposals and 526 rotations, pointwise training
+and budget ranking give 41 and 40 strict successes to the action
+margin's 54. Both learned heads pass the original risk checks
+more often, but that does not yield more useful changes. I kept
+the earlier policy. In the input-only audit, 98.34% of the
+policy's paths came from the learned family, versus 34.60%
+expected when sampling legal families uniformly.
+[Results and intervals](outputs/publication_readiness_2026_09/opendd_vehicle_nominee_rank_v1/README.md),
+[v184 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v184_nominee_rank/README.md),
+and [v14 anonymous replay](outputs/publication_readiness_2026_09/vehicle_nominee_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: separate the decision to rotate from the angle
 
