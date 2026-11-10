@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+[v173 候选稿](../outputs/publication_readiness_2026_09/evidence_manuscript_v173_songdo_menu/README.md)
+在 v172 基础上补充 Songdo 有限菜单的事后上界。只用 v3 匿名分数复算
+197/480 个合格视图及 +0.000257 pp 的保守增益上限，不重选阈值、不重开标签。
+
 [v3 匿名补充包](../outputs/publication_readiness_2026_09/focused_review_supplement_v1/README.md)
 与 v172 配套。解压后在目录内运行 `python3 -I -B -S verify.py`；无需联网、安装模型或读取原始轨迹。
 它复算 Moving 的三种上界、OpenDD 计数、WEPDTOF 两端区间以及 Songdo 的阈值和实际放行数。

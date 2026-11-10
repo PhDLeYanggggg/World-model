@@ -20,6 +20,9 @@ scope = prior.scope
 main, supplement = scope.main, scope.supplement
 DESTINATION = prior.DESTINATION.parent/'evidence_manuscript_v172_focused'
 RECEIPT = main.PUBLIC/'evidence_manuscript_v172_focused/receipt.json'
+MENU_DESTINATION = DESTINATION.parent/'evidence_manuscript_v173_songdo_menu'
+MENU_BUILD_RECEIPT = main.PUBLIC/'evidence_manuscript_v173_songdo_menu/receipt.json'
+MENU_EVIDENCE = main.PUBLIC/'songdo_frozen_menu_capacity_v1/receipt.json'
 BODY_START = r'\section{Forecast Replacement}'
 BODY_END = r'\section*{LLM Usage Statement}'
 BIB_START = '{\\small\n\\begin{thebibliography}'
@@ -65,7 +68,36 @@ def verified_values():
                 SongdoCVFDE=available('cv', 'fde'), SongdoOLSFDE=available('ols4', 'fde'))
 
 
-def check_render(raw, original):
+def add_menu_result(body, report):
+    if (report['views'] != 480 or report['source_components'] != 14 or not report['original_2pct_unchanged']
+            or report['test_threshold_selected'] or report['outcomes_reopened'] or report['learned_policy']):
+        raise ValueError('Expected only the frozen, post-hoc menu readout')
+    label = r'\section{Conclusion and Limitations}'
+    if body.count(label) != 1:
+        raise ValueError('Expected the unchanged conclusion boundary')
+    full = report['menu']['all']
+    n = full['dual_opportunity']['views']
+    value = full['conservative_cv_gain_ceiling_pp']['point']
+    extra = report['joint_added_to_other_arms']
+    extra_n = extra['additional_dual_opportunity']['views']
+    increment = extra['delta_of_conservative_cv_ceiling_pp']['point']
+    paragraph = rf'''\paragraph{{How much does the Songdo menu leave unused?}}
+A hindsight check chooses among the same four frozen proposals or
+keeps CV. At least one proposal meets the original risk and both
+utility checks in {n}/480 views. Choosing the best qualifying proposal
+could improve the source-averaged conservative CV score by at most
++{value:.6f} pp. Adding joint to the other three arms makes only
+{extra_n} additional views qualify and adds +{increment:.8f} pp to
+that ceiling. Thus calibration leaves useful options unused, but at
+this edit budget even perfect selection has little effect on the
+whole flight. These are outcome-aware bounds for the frozen finite
+menu, not a fitted policy or another confirmation test.
+
+'''
+    return body.replace(label, paragraph+label), (f'{n}/480', f'{value:.6f}', f'{increment:.8f}')
+
+
+def check_render(raw, original, extra_markers=()):
     def normalize(text):
         text = re.sub(r'(?m)^[ \t]*(?:CVPR(?:[ \t]+CVPR)?|CVPR 2027 Submission\..*|[0-9]{1,2})[ \t]*$', '', text)
         text = re.sub(r'(?m)[ \t]*[0-9]{3}$', '', text)
@@ -80,13 +112,13 @@ def check_render(raw, original):
     if statement(text) != statement(before):
         raise ValueError(f'Rendered disclosure changed: {statement(text)!r} != {statement(before)!r}')
     markers = ('Anonymous CVPR submission', '67/72', '36/72', '9/72', '330/606', '0/45', '0/480',
-               '1.373135', '1.603831', '3.416751', '3.808624', '0.000442', '0.01760')
+               '1.373135', '1.603831', '3.416751', '3.808624', '0.000442', '0.01760', *extra_markers)
     if any(x not in text for x in markers):
         raise ValueError(f'Missing rendered results: {[x for x in markers if x not in text]}')
     return pages
 
 
-def build(destination, compiler, body_path, receipt):
+def build(destination, compiler, body_path, receipt, *, menu_evidence=None):
     parent = supplement.read_receipt('evidence_manuscript_v171_completion')['artifacts']
     input_files = {k: supplement.checked(prior.DESTINATION/k, sha) for k, sha in parent.items()}
     keep = ('README.txt', 'decision_bottlenecks.pdf', 'capacity_discrimination.pdf', 'direct_count_values.tex',
@@ -97,7 +129,12 @@ def build(destination, compiler, body_path, receipt):
         files = {k: z.read(k) for k in keep}
     body = body_path.read_bytes()
     original = input_files['manuscript.tex'].decode()
-    revised = substitute_body(original, body.decode('ascii'))
+    body_text, markers = body.decode('ascii'), ()
+    menu_raw = None
+    if menu_evidence:
+        menu_raw = menu_evidence.read_bytes()
+        body_text, markers = add_menu_result(body_text, json.loads(menu_raw))
+    revised = substitute_body(original, body_text)
     if revised.count(BIB_START) != 1:
         raise ValueError('Expected one bibliography after the disclosure')
     revised = revised.replace(BODY_END, r'\begin{samepage}'+'\n'+BODY_END, 1).replace(
@@ -119,7 +156,7 @@ def build(destination, compiler, body_path, receipt):
                      (root/'manuscript.log').read_text()):
             raise ValueError('Unresolved citation/reference or overfull horizontal box')
         pdf = (root/'manuscript.pdf').read_bytes()
-        pages = check_render(pdf, input_files['manuscript.pdf'])
+        pages = check_render(pdf, input_files['manuscript.pdf'], markers)
         scope.citation.archive.encode(root/'main_source.zip', files)
         output = {'manuscript.tex': files['manuscript.tex'], 'manuscript.pdf': pdf,
                   'main_source.zip': (root/'main_source.zip').read_bytes()}
@@ -128,6 +165,8 @@ def build(destination, compiler, body_path, receipt):
                   title_abstract_llm_statement_and_references_preserved=True, original_risk_rule_unchanged=True,
                   result_source='fresh_manuscript_build_cached_verified_evidence', new_outcomes_read=False,
                   uploaded=False, submission_ready=False)
+    if menu_raw is not None:
+        result['songdo_frozen_menu_receipt_sha256'] = main.digest(menu_raw)
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
@@ -143,7 +182,11 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--compiler', type=Path, required=True)
     p.add_argument('--body', type=Path, default=DESTINATION/'focused_body.tex')
-    p.add_argument('--output', type=Path, default=DESTINATION)
-    p.add_argument('--receipt', type=Path, default=RECEIPT)
+    p.add_argument('--output', type=Path)
+    p.add_argument('--receipt', type=Path)
+    p.add_argument('--songdo-menu-capacity', action='store_true')
     a = p.parse_args()
-    build(a.output, a.compiler.resolve(), a.body, a.receipt)
+    output = a.output or (MENU_DESTINATION if a.songdo_menu_capacity else DESTINATION)
+    receipt = a.receipt or (MENU_BUILD_RECEIPT if a.songdo_menu_capacity else RECEIPT)
+    build(output, a.compiler.resolve(), a.body, receipt,
+          menu_evidence=MENU_EVIDENCE if a.songdo_menu_capacity else None)

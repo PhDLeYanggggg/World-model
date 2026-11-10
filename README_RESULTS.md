@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: selection leaves some qualifying proposals unused
+
+At the same two-edit budget, a label-aware search finds a qualifying
+proposal in 197/480 views, but its maximum conservative gain over CV
+is just +0.000257 pp. Adding the joint arm to the other three adds
+four qualifying views. The frozen joint rule still releases none.
+[Menu bounds and replay](outputs/publication_readiness_2026_09/songdo_frozen_menu_capacity_v1/README.md).
+
 ## Replaying the focused evidence together
 
 The updated anonymous archive replays all three Moving budget bounds,
