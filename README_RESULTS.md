@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: complete-grid risk at the original movement budget
+
+I searched the same prefix menu with the original edit counts and
+movement caps. Exact enumeration settles two numeric cases. The search
+finds 212 feasible views under the original rule and 210 under full-grid
+risk, versus 55 for the frozen scores under the stricter test. The
+current policy and external results are unchanged.
+[Analysis](outputs/publication_readiness_2026_09/opendd_full_grid_count_motion_v1/README.md) |
+[v212 draft and v46 replay](outputs/publication_readiness_2026_09/evidence_manuscript_v212_count_grid/README.md).
+
 ## Paper: separate missing-label risk from ranking error
 
 The main draft now gives the complete-grid risk test in closed form.

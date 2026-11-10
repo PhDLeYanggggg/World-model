@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v211 主文及 v45 匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v211_exchange_exposition/README.md)。
+当前候选：[v212 主文及 v46 匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v212_count_grid/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
@@ -13,13 +13,14 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机最新复现包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v45.zip`，配套阅读 PDF 沿用 v44。
+本机最新复现包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v46.zip`，配套阅读 PDF 沿用 v44。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
 v44 还应复算 OpenDD 完整十二步风险结果：事后上限 175，同出手位置的事后上限 98，
 学习排序器 44，同位置均匀选择期望 46.73，以及对应的地点配对区间。
 v45 另复算同位置、同训练预算的 53、48、47 个通过，以及五个地点配对区间。
+v46 应复算同数量、同位移预算下原规则 212、完整网格风险 210，以及冻结分数分配的 55 个通过。
 v43 的 WEPDTOF 校验继续保留：4 个联合方案在完整十二步下仍通过风险，其中 3 个不能同时超过两个基线。
 v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
 v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。
@@ -106,6 +107,10 @@ v210 的 [OpenDD 同预算十二步风险分析](../outputs/publication_readines
 用 `scripts/run_m3w_opendd_listwise_exchange.py fit` 保存 63 个模型与冻结选择，
 再运行同脚本 `score`。有完整检查点时，重跑 `fit` 应显示 `updates: 0`。
 新排序器未超过现有方案。主文 v211 纳入该对照，不改变原放行决定。
+
+v212 的 [同数量和位移预算的完整网格搜索](../outputs/publication_readiness_2026_09/opendd_full_grid_count_motion_v1/README.md)
+运行 `scripts/audit_m3w_opendd_full_grid_count_motion.py`。数值不确定的小案例由合法分配枚举收尾。
+逐录像检查点只在本地保存；同一命令重跑可验证原预算和可行方案。全程不重训或打开新标签。
 
 v200 的 WEPDTOF 回顾性实验运行 `scripts/audit_m3w_wepdtof_history_factorial.py`。
 这条命令读回已评分的 15 段 WEPDTOF 标注，核对三种子原 CV/OLS4 指标，
