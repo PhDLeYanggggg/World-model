@@ -29,6 +29,9 @@ MOTION_EVIDENCE = main.PUBLIC/'opendd_count_motion_v1/readout.json'
 ABLATION_OUT = OUT.parent/'evidence_manuscript_v177_decision_ablations'
 ABLATION_RECEIPT = main.PUBLIC/'evidence_manuscript_v177_decision_ablations/receipt.json'
 ABLATION_STUDIES = ('opendd_prefix_value_v1', 'opendd_equal_spend_preference_v1', 'opendd_risk_conditional_utility_v1')
+FRONTIER_OUT = OUT.parent/'evidence_manuscript_v178_exchange_frontier'
+FRONTIER_RECEIPT = main.PUBLIC/'evidence_manuscript_v178_exchange_frontier/receipt.json'
+FRONTIER_EVIDENCE = main.PUBLIC/'opendd_exchange_frontier_v1/readout.json'
 ADDITIONS = ('graphabstention', 'crc', 'geotrax')
 BIB_END = r'\end{thebibliography}'
 EDITS = (
@@ -203,10 +206,29 @@ frozen scores on dual passes in these development fits.'''
     return result, (*(f'{v}/606' for v in (*rows, a, b)), f"{abs(c['point_pp']):.5f}")
 
 
-def build(destination, compiler, receipt, *, realized=False, motion=False, ablations=False):
-    if sum((realized, motion, ablations)) > 1:
+def revise_exchange_frontier(source, row):
+    s = row['summary']
+    if (not row['hindsight_only'] or row['external_outcome_access'] or row['deployment_changed'] or not row['original_2pct']
+            or (s['views'], s['edits'], s['anchor_dual']) != (606, 780, 60)):
+        raise ValueError('Expected the matched-budget development frontier')
+    b = s['bounds']
+    show = lambda a: str(a[0]) if a[0] == a[1] else f'{a[0]}--{a[1]}'
+    one, all_edits = b['one'], b['unrestricted']
+    a = 'sequence, not an online policy.\nLearning does not close this gap:'
+    if source.count(a) != 1:
+        raise ValueError('Expected exactly one frozen matched-learning paragraph')
+    text = rf'''sequence, not an online policy. Allowing at most one hindsight
+exchange certifies {one['positive'][0]}/606 positive views (at most
+{one['positive'][1]}). Above 0.10 pp against both references, the one-exchange
+range is {show(one['0.10pp'])}/606 versus {show(all_edits['0.10pp'])}/606
+without the exchange limit. Learning does not close this gap:'''
+    return source.replace(a, text, 1), (f"{one['positive'][0]}/606", f"{all_edits['0.10pp'][0]}/606")
+
+
+def build(destination, compiler, receipt, *, realized=False, motion=False, ablations=False, frontier=False):
+    if sum((realized, motion, ablations, frontier)) > 1:
         raise ValueError('Select one version')
-    origin = MOTION_OUT if ablations else REALIZED_OUT if motion else OUT if realized else PARENT
+    origin = ABLATION_OUT if frontier else MOTION_OUT if ablations else REALIZED_OUT if motion else OUT if realized else PARENT
     parent = supplement.read_receipt(origin.name)
     inputs = {k: supplement.checked(origin/k, h) for k, h in parent['artifacts'].items()}
     with ZipFile(BytesIO(inputs['main_source.zip'])) as z:
@@ -217,7 +239,13 @@ def build(destination, compiler, receipt, *, realized=False, motion=False, ablat
         raise ValueError('Source archive does not contain the verified manuscript')
     prior_keys = scope.citation.used_citations(files)
     source = files['manuscript.tex'].decode('ascii')
-    if ablations:
+    if frontier:
+        evidence = FRONTIER_EVIDENCE.read_bytes()
+        row = json.loads(evidence)
+        if row['registration'] != main.digest(FRONTIER_EVIDENCE.with_name('registration.json').read_bytes()):
+            raise ValueError('Frontier readout does not match the frozen protocol')
+        result, markers = revise_exchange_frontier(source, row)
+    elif ablations:
         summaries, ablation_hashes = decision_ablation_inputs()
         result, markers = revise_decision_ablations(source, summaries)
     elif motion:
@@ -230,7 +258,7 @@ def build(destination, compiler, receipt, *, realized=False, motion=False, ablat
         result, markers = revise(source), ()
     files['manuscript.tex'] = result.encode('ascii')
     keys = scope.citation.used_citations(files)
-    added = () if realized or motion or ablations else ADDITIONS
+    added = () if realized or motion or ablations or frontier else ADDITIONS
     if keys != sorted([*prior_keys, *added]):
         raise ValueError('The bibliography and citations changed unexpectedly')
     style = supplement.checked(scope.citation.main.DRAFT/'cvpr.sty', scope.citation.STYLE_SHA)
@@ -263,6 +291,8 @@ def build(destination, compiler, receipt, *, realized=False, motion=False, ablat
         result['count_motion_diagnostic_sha256'] = main.digest(evidence)
     if ablations:
         result['decision_ablation_readouts_sha256'] = ablation_hashes
+    if frontier:
+        result['exchange_frontier_readout_sha256'] = main.digest(evidence)
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
@@ -283,8 +313,10 @@ if __name__ == '__main__':
     v.add_argument('--realized-count', action='store_true')
     v.add_argument('--count-motion', action='store_true')
     v.add_argument('--decision-ablations', action='store_true')
+    v.add_argument('--exchange-frontier', action='store_true')
     a = p.parse_args()
-    dest, meta = ((ABLATION_OUT, ABLATION_RECEIPT) if a.decision_ablations else (MOTION_OUT, MOTION_RECEIPT)
+    dest, meta = ((FRONTIER_OUT, FRONTIER_RECEIPT) if a.exchange_frontier else (ABLATION_OUT, ABLATION_RECEIPT)
+                  if a.decision_ablations else (MOTION_OUT, MOTION_RECEIPT)
                   if a.count_motion else (REALIZED_OUT, REALIZED_RECEIPT) if a.realized_count else (OUT, RECEIPT))
     build(a.output or dest, a.compiler.resolve(), a.receipt or meta, realized=a.realized_count,
-          motion=a.count_motion, ablations=a.decision_ablations)
+          motion=a.count_motion, ablations=a.decision_ablations, frontier=a.exchange_frontier)

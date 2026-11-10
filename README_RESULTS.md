@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: how much does a single exchange recover?
+
+At the same edit count, movement caps and recording risk rule, allowing
+one edit to move raises the verified count from 60 to 178/606. Only
+68--69 views can exceed 0.10 percentage points with one exchange, compared
+with 109 without that limit. This measures hindsight opportunity, not a
+new policy. [Results](outputs/publication_readiness_2026_09/opendd_exchange_frontier_v1/README.md),
+[v178 manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v178_exchange_frontier/README.md)
+and [v6 anonymous replay](outputs/publication_readiness_2026_09/frontier_review_supplement_v1/README.md).
+
 ## OpenDD: learn utility among risk-passing plans
 
 At the same 780 edits, adding utility comparisons between two risk-passing

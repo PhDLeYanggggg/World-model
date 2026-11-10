@@ -44,3 +44,15 @@ def test_decision_ablation_revision_uses_frozen_counts_and_places_figure_early()
     data[2]['arms']['conditional_utility']['edits'] += 1
     with pytest.raises(ValueError, match='same frozen comparison'):
         candidate.revise_decision_ablations(f'{section}\n{anchor}\n\n{figure}', data)
+
+
+def test_exchange_frontier_keeps_witness_and_upper_counts_distinct():
+    evidence = json.loads(candidate.FRONTIER_EVIDENCE.read_bytes())
+    text = 'First\nsequence, not an online policy.\nLearning does not close this gap: Last'
+    out, markers = candidate.revise_exchange_frontier(text, evidence)
+    assert out.startswith('First\n') and out.endswith('Last')
+    assert {'178/606', '109/606'} <= set(markers)
+    assert 'at most one hindsight' in out and '68--69/606' in out
+    evidence['external_outcome_access'] = True
+    with pytest.raises(ValueError, match='matched-budget development frontier'):
+        candidate.revise_exchange_frontier(text, evidence)

@@ -2,6 +2,9 @@
 
 当前主文与核心实验从 [中文短教程](M3W_PAPER_REPLAY_ZH.md) 开始；这里保留历次实验的长索引。
 
+[v178 单次编辑交换版](../outputs/publication_readiness_2026_09/evidence_manuscript_v178_exchange_frontier/README.md)
+区分在事后能找回的方案数和收益大小，保持原预算与风险口径，未引入新部署结果。
+
 [v177 等预算学习对照版](../outputs/publication_readiness_2026_09/evidence_manuscript_v177_decision_ablations/README.md)
 加入回归、分类、成对排序和风险内收益的同预算结果，未证明有优于旧策略的学习规则。
 
