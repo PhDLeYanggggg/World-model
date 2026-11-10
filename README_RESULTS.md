@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: can shared missing positions resolve the sign?
+
+I reran the fixed angle comparisons with one missing position shared
+across all its observed-neighbor pairs. The tighter construction did
+not reduce any bound on these data. More importantly, for direct versus
+anchor-difference supervision at 526 interventions, I found both positive
+and negative completions in 82 of the 83 views whose interval crosses
+zero. This is per-view ambiguity, not an aggregate sign reversal.
+[Audit](outputs/publication_readiness_2026_09/opendd_pair_coherent_bounds_v1/README.md)
+and [v21 replay](outputs/publication_readiness_2026_09/coherent_pair_review_supplement_v1/README.md).
+
 ## External evaluation: separate missing labels from source uncertainty
 
 I replotted the frozen WEPDTOF and Songdo comparisons. In WEPDTOF
