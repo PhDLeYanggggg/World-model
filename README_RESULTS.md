@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: separate trajectory and interaction gains
+
+I keep the original intervention masks and ask whether both learned
+utility heads agree before replacing the first angle. The unchanged
+utility selector and a trajectory-only rule are the matched controls.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_angle_agreement_v1/protocol.md).
+
 ## OpenDD vehicles: choosing among three angles at the same budget
 
 I trained two rerankers on the same three candidate angles. On the original
