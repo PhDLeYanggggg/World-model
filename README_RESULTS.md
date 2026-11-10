@@ -7,11 +7,13 @@ or evidence status.
 
 ## OpenDD: calibrate when to leave the baseline alone
 
-I used disjoint fitting, calibration and held locations to test
-whether a magnitude-aware swap can improve on the additive forecast
-without relaxing the original 2% recording checks.
-The calibration thresholds are now frozen for held scoring.
-[Protocol](outputs/publication_readiness_2026_09/opendd_nested_swap_release_v1/protocol.md).
+With disjoint fitting, calibration and held locations, the magnitude
+score releases nothing. The sign rule releases 32 and qualifies six;
+16 releases lack the selected-easy reference. I kept the policy
+unchanged rather than count abstention as a risk pass.
+[Results](outputs/publication_readiness_2026_09/opendd_nested_swap_release_v1/README.md),
+[v198 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v198_nested_swap_release/README.md),
+[v29 replay](outputs/publication_readiness_2026_09/nested_swap_release_review_supplement_v1/README.md).
 
 ## OpenDD: separate observation support from swap gain
 
