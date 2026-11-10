@@ -5,10 +5,12 @@
 
 ## 0. 接手快照：先分清已完成与尚未开始
 
-交接提交 `dd3dbfc38` 之后，用户继续了科研目标。第 12 节方案现已实现并登记为
-`opendd_nested_advantage_v1`，代码入口 `scripts/run_m3w_opendd_nested_advantage.py`，
-数据角色构建在 `scripts/m3w_nested_advantage_data.py`，模型在
-`src/world_model/m3w_nested_advantage.py`。39 项相关测试通过，训练尚未开始；
+交接提交 `dd3dbfc38` 之后，用户继续了科研目标。四组实验最初登记在
+`opendd_nested_advantage_v1`，但该路径出现另一份并行五组草案，训练前哈希检查中止，0 updates。
+保留草案不改，四组实验现单独登记为 `opendd_advantage_factorial_v1`。
+入口 `scripts/run_m3w_opendd_advantage_factorial.py`，数据角色构建
+`scripts/m3w_advantage_factorial_data.py`，模型 `src/world_model/m3w_advantage_factorial.py`。
+39 项相关测试通过，训练尚未开始；
 以下 10:53 快照保留为交接时状态，不覆盖此处最新续接。
 
 本次范围是 World/M3W 项目及它引用的本地、远端资产，不是整台电脑所有项目，也不是把原始数据和权重打包进一个文件。
@@ -583,7 +585,7 @@ f9daea2d0  新 producer / selector / choices 冻结，先于评分
 
 ## 12. 尚未实施的下一实验：相对收益与低容量嵌套验证
 
-状态：代码与协议已实现并登记为 **`opendd_nested_advantage_v1`**，39 项相关测试通过；训练与评分仍 **`not_run`**。新实验不属于上面已经完成的 121,800 updates，也不覆盖旧实验目录。正式配置见新实验 `protocol.md` 和 `registration.json`。
+状态：四组代码与协议已实现并单独登记为 **`opendd_advantage_factorial_v1`**，39 项相关测试通过；训练与评分仍 **`not_run`**。`opendd_nested_advantage_v1` 的并行五组草案未被覆盖，该路径的原四组注册因协议哈希冲突在训练前停止，见 `runtime_conflict.json`。两套方案不可混用。正式四组配置见独立目录的 `protocol.md` 和 `registration.json`。
 
 动机：最新模型在训练 donor 上能拟合，但所选动作在 held location 上严重高估；同时训练的 original-dual label 与 full-grid 主评价不同。还不能断定是特征不足、容量过大、目标错配或地点偏移中的哪一个。
 

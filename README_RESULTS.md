@@ -10,8 +10,10 @@ or evidence status.
 I registered four fixed comparisons: linear and small MLP heads, each learning
 absolute full-grid success or gain over keeping the current allocation.
 Inner validation excludes its location from every upstream producer as well
-as the selector. Training has not started; 39 focused tests pass.
-[Protocol](outputs/publication_readiness_2026_09/opendd_nested_advantage_v1/protocol.md).
+as the selector. A concurrent five-arm draft changed the initial protocol path;
+the hash check stopped before training. The four-arm experiment is isolated in
+its own directory, leaving that draft intact. 39 focused tests pass.
+[Protocol](outputs/publication_readiness_2026_09/opendd_advantage_factorial_v1/protocol.md).
 
 ## Project handoff and reproducibility map
 
