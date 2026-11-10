@@ -102,6 +102,13 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 `scripts/audit_m3w_opendd_exchange_angular_same_recipients.py`，分开核对缺失步扣减和原 780 个编辑对象。
 [训练和结果](../outputs/publication_readiness_2026_09/opendd_exchange_angular_head_v1/README.md)。
 
+固定原编辑对象，对照原方案损失可用
+`scripts/run_m3w_opendd_exchange_angular_incumbent.py --replay`；
+另用 `scripts/audit_m3w_opendd_angular_incumbent_oracle.py` 复算 13 个角度的事后效用上限。
+实际可保留原方向的模型用 `scripts/run_m3w_opendd_angular_choice.py --replay`：
+拆分模型应为 70 个双通过，但没有证实保守效用提升。
+[训练和检查点](../outputs/publication_readiness_2026_09/opendd_angular_choice_v1/README.md)。
+
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效
 检查点。恢复后先看 `heartbeat.json` 与实际日志，再核对结果及哈希。

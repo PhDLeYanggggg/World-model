@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: direct incumbent loss and the option to keep its direction
+
+At the same 780 recipients, weighting the worst donor losses improves
+the angular head's point estimate, but not the worst held location.
+An exact 13-angle hindsight choice has +0.0557 pp of utility and
+165 views above 0.10 pp. My learned angle selector can keep the
+original, yet rotates 693--710 edits and does not improve paired
+utility. I kept the incumbent. [Loss comparison](outputs/publication_readiness_2026_09/opendd_exchange_angular_incumbent_v1/README.md),
+[direction bound](outputs/publication_readiness_2026_09/opendd_angular_incumbent_oracle_v1/README.md),
+and [learned choice](outputs/publication_readiness_2026_09/opendd_angular_choice_v1/README.md).
+
 ## OpenDD: a learned direction improves pass counts at fixed displacement
 
 Changing direction without changing any step's displacement raises
