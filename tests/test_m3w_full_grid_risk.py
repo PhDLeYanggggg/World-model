@@ -91,3 +91,28 @@ def test_optional_easy_threshold_is_inclusive():
     y[0, :-2, 0] = 1.
     assert assess_easy(cv, p, y, v, easy_cut=1.)['optional_easy_tracks'] == 1
     assert assess_easy(cv, p, y, v, easy_cut=.999)['optional_easy_tracks'] == 0
+
+
+def test_general_edit_count_and_optional_row_upper_envelope():
+    cv = np.zeros((3, 12, 2))
+    p, y = cv.copy(), cv.copy()
+    p[..., 0] = .1
+    p[1, :, 0], p[2, :, 0] = .01, .5
+    y[..., 0] = .1
+    v = np.ones((3, 12), bool)
+    v[1:, -1] = False
+    r = assess_easy(cv, p, y, v, easy_cut=.2)
+    assert r['easy_support_guaranteed'] and r['optional_easy_tracks'] == 2
+    assert not r['selected_easy_pass_for_all']
+    assert assess_easy(cv[:1], p[:1], y[:1], v[:1], easy_cut=.2)['selected_easy_pass_for_all']
+    worst = np.where(v[..., None], y, cv)
+    worst[1, -1, 0] = 10.
+    exact = assess_easy(cv, p, worst, np.ones_like(v), easy_cut=.2)['easy_excess_supremum']
+    assert r['easy_excess_supremum'] == pytest.approx(exact)
+    assert assess(cv, p, worst, np.ones_like(v))['full_grid_upper'] <= assess(cv, p, y, v)['full_grid_upper']
+
+
+def test_no_edits_do_not_create_a_defined_risk():
+    x = np.zeros((0, 12, 2))
+    with pytest.raises(ValueError, match='Expected frozen edited tracks'):
+        assess_easy(x, x, x, np.zeros((0, 12), bool), easy_cut=1.)

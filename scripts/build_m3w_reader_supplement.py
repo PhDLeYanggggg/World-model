@@ -134,6 +134,13 @@ def render(d, case_pdf):
              'on the ten estimable sources. The fixed joint rule gives 0/45 dual passes. On Songdo, '
              f'the shared-seed upper endpoint is {s["shared_upper"]["point"]:+.6f} pp; its source '
              'interval includes zero. The observed sample and extrapolation to new sources are distinct.', y)
+    if 'wepdtof_grid' in d:
+        row = d['wepdtof_grid']['arms']['fixed_joint']
+        y = para(pdf, f'In WEPDTOF, {row["full_risk_pass"]} of {row["edited_views"]} edited joint views pass '
+                 'risk for every completion of the twelve steps. The favorable accuracy bound rules out '
+                 f'beating both motion references in {row["full_pass_utility_excluded"]} of those views '
+                 f'and {row["utility_excluded"]} of all {row["edited_views"]} edited views. '
+                 'The other cases are not thereby certified. This is a sensitivity analysis of the original readout.', y)
     if 'easy' in d:
         rows = check_easy(d['easy'], check_risk(d['risk']))
         support = d['easy']['results']

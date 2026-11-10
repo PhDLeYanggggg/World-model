@@ -4,15 +4,15 @@ import numpy as np
 
 
 def _terms(cv, proposal, target, valid):
-    if (cv.shape != proposal.shape or cv.shape != target.shape or cv.shape != (2, 12, 2)
-            or valid.shape != (2, 12) or valid.dtype != bool
+    if (cv.shape != proposal.shape or cv.shape != target.shape or cv.ndim != 3 or cv.shape[1:] != (12, 2)
+            or not len(cv) or valid.shape != cv.shape[:2] or valid.dtype != bool
             or not all(np.isfinite(x).all() for x in (cv, proposal, target[valid]))):
-        raise ValueError('Expected two frozen edited tracks and an aligned twelve-step mask')
+        raise ValueError('Expected frozen edited tracks and an aligned twelve-step mask')
     c = np.where(valid, np.linalg.norm(cv-target, axis=-1), 0.)
     p = np.where(valid, np.linalg.norm(proposal-target, axis=-1), 0.)
     distance = np.linalg.norm(proposal-cv, axis=-1)
     if np.any(distance.max(1) <= 0.):
-        raise ValueError('Expected two nonidentity edits')
+        raise ValueError('Expected nonidentity edits')
     return c, p, distance
 
 

@@ -31,6 +31,10 @@ does not change the approved rule or infer physically plausible futures.
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/audit_m3w_songdo_full_grid_easy_risk.py
 ```
 
+Run from the original code revision `1b84f8c18` for an exact receipt
+replay. The later WEPDTOF audit generalizes the same calculation beyond
+two edits and therefore changes the recorded code hash.
+
 `fresh_run`: the threshold-excess and support calculation, using the
 same already scored numeric labels. `cached_verified`: the frozen
 cutoff, forecasts, matched and actual release counts, and all-edited

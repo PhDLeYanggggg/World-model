@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: a risk pass is not an accuracy gain
+
+I applied the full twelve-step check to the frozen WEPDTOF forecasts.
+Four of 36 edited joint views pass risk under all missing-position
+completions. Even the optimistic accuracy bound rules out beating
+both motion references in three of those four. No arm has a guaranteed
+risk-and-utility pass, and the original release decision is unchanged.
+[Analysis](outputs/publication_readiness_2026_09/wepdtof_full_grid_risk_v1/README.md) |
+[v209 draft and v43 supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v209_cross_grid/README.md).
+
 ## Songdo: check whether easy membership can change
 
 I let missing positions change which edits qualify as easy, while
