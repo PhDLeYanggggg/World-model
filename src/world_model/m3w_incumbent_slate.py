@@ -10,6 +10,8 @@ def incumbent_targets(option_pass, transition, lengths):
     """Recover donor-only incumbent labels from archived outcome transitions."""
     if sum(lengths) != len(option_pass) or transition.shape != option_pass.shape:
         raise ValueError('Misaligned donor transitions')
+    if not lengths:
+        return option_pass.new_empty(0, dtype=torch.bool)
     anchors, offset = [], 0
     for n in lengths:
         if n < 1:

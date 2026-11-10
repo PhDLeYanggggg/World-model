@@ -144,10 +144,30 @@ def execute(phase, limit, beat):
     sources = [Path(__file__), Path(model.__file__), OUT/'protocol.md',
                prior.OUT/'registration.json', prior.OUT/'head_freeze.json', prior.OUT/'readout.json']
     path = OUT/'registration.json'
-    run.once(path, run.stable(dict(inputs=[run.artifact(p) for p in sources], threads=4, workers=0,
+    specification = dict(inputs=[run.artifact(p) for p in sources], threads=4, workers=0,
         steps=old.STEPS, batch_slates=prior.BATCH, arms=ARMS, models=MODELS, seeds=study.prior.SEEDS,
         forecast_steps=[8, 12], original_2pct=True, no_held_tuning=True,
-        new_external_outcome_access=False, independent_confirmation=False)))
+        new_external_outcome_access=False, independent_confirmation=False)
+    amendment = OUT/'runtime_amendment.json'
+    if path.exists() and run.read(path) != run.stable(specification):
+        original = run.read(path)
+        # Preserve valid checkpoints after the audited empty-donor handling repair.
+        expected = ('656f97d60655bb750839e9a736e00618cb32554181f969ead3b30d2cd55a0bda',
+                    '260e51c68b3f89434a08db3e6418cb95498f1cc790d8eba4283e8280b42229dc')
+        if (tuple(v['sha256'] for v in original['inputs'][:2]) != expected
+                or original['inputs'][2:] != specification['inputs'][2:]
+                or {k: v for k, v in original.items() if k != 'inputs'} !=
+                   run.stable({k: v for k, v in specification.items() if k != 'inputs'})):
+            raise ValueError('Only the documented empty-donor runtime repair is allowed')
+        if not amendment.exists() and (OUT/'head_freeze.json').exists():
+            raise ValueError('Cannot amend runtime after choice freeze')
+        run.once(amendment, run.stable(dict(original_registration=run.sha(path),
+            replacement_code=specification['inputs'][:2],
+            changes=['empty_donor_returns_empty_boolean_target', 'compare_normalized_registration_objects'],
+            completed_cells_before_repair=4, outcomes_scored_before_repair=False,
+            preserved_checkpoints=True, training_and_evaluation_rules_unchanged=True)))
+    else:
+        run.once(path, run.stable(specification))
     reg = run.sha(path)
     freeze = OUT/'head_freeze.json'
     result, cells, updates = {}, {}, 0
@@ -160,7 +180,8 @@ def execute(phase, limit, beat):
         maps = {s: exp.road.raster_for(s, assets[s])[0] for s in sites}
     else:
         saved = run.read(freeze)
-        if saved['registration'] != reg or saved['cells_count'] != 21:
+        if (saved['registration'] != reg or saved['cells_count'] != 21
+                or saved.get('runtime_amendment') != (run.sha(amendment) if amendment.exists() else None)):
             raise ValueError('Complete frozen choices required before scoring')
     for index, (args, ref) in enumerate(matched.context_cells()):
         if limit and index >= limit:
@@ -206,7 +227,8 @@ def execute(phase, limit, beat):
     if phase == 'fit':
         if len(cells) == 21:
             run.once(freeze, run.stable(dict(registration=reg, cells=cells, cells_count=21,
-                configured_updates=21*len(MODELS)*old.STEPS, outcome_scoring_this_phase=False)))
+                configured_updates=21*len(MODELS)*old.STEPS, outcome_scoring_this_phase=False,
+                runtime_amendment=run.sha(amendment) if amendment.exists() else None)))
         beat(phase='complete' if len(cells) == 21 else 'pilot_complete', cells=len(cells), updates=updates)
     else:
         if len(result) != 7 or any({r['seed'] for r in g} != {17, 29, 43} for g in result.values()):

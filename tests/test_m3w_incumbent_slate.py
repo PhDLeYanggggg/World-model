@@ -12,6 +12,11 @@ def test_incumbent_label_reconstruction_and_consistency():
         model.incumbent_targets(passed, event, [4])
 
 
+def test_empty_donor_preserves_an_empty_boolean_target():
+    y = model.incumbent_targets(torch.empty(0, dtype=torch.bool), torch.empty(0, dtype=torch.long), [])
+    assert y.shape == (0,) and y.dtype == torch.bool
+
+
 def test_anchor_contains_only_shared_past_context():
     x = torch.arange(34.).reshape(1, 2, 17)
     z = model.with_incumbent(x)
@@ -49,3 +54,26 @@ def test_optional_tie_keeps_incumbent_but_forced_still_exchanges():
     assert model.choices(torch.tensor([0., 1., 2.])) == {'forced': 2, 'optional': 2}
     with pytest.raises(ValueError, match='finite'):
         model.choices(torch.tensor([0., float('nan')]))
+
+
+def test_primary_requires_both_incumbent_and_same_mask_control(monkeypatch):
+    from scripts import run_m3w_opendd_incumbent_slate as runner
+
+    names = (*runner.FIELDS, 'rescued_full_grid', 'destroyed_full_grid')
+    def row():
+        arms = {arm: dict.fromkeys(names, 1.) for arm in runner.ARMS}
+        for arm, count in [('incumbent', 2.), ('aligned', 1.),
+                           ('pair_optional', 3.), ('pair_uniform_mask', 4.)]:
+            arms[arm].update(original=count, full_grid=count)
+        return dict(counts=dict(views=10, edits=4, eligible=2),
+                    switches=dict.fromkeys(runner.POLICIES, 2), arms=arms)
+
+    groups = {str(i): [row()] for i in range(7)}
+    reference = dict(counts=dict(views=70, edits=28, switched=14), arms={
+        k: {f: 7*groups['0'][0]['arms'][k][f] for f in runner.prior.FIELDS}
+        for k in ('incumbent', 'aligned')})
+    monkeypatch.setattr(runner.run, 'read', lambda _: dict(summary=reference))
+    result = runner.summarize(groups)
+    assert not result['primary_supported']
+    assert result['full_grid_contrasts']['pair_optional_minus_incumbent']['ci95_pp'] == [10., 10.]
+    assert result['full_grid_contrasts']['pair_optional_minus_pair_uniform_mask']['ci95_pp'] == [-10., -10.]

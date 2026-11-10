@@ -7,10 +7,12 @@ or evidence status.
 
 ## Learn when to keep an existing allocation
 
-The next OpenDD development control includes the incumbent allocation
-in each candidate slate. It compares pointwise and paired training
-without changing forecast counts, movement caps or the 2% rule.
-The design is fixed before its new choices are scored.
+I trained 42 OpenDD selection heads across seven locations and three
+seeds, including the unchanged allocation in each candidate slate.
+All choices are frozen before scoring. The study compares pointwise
+and paired training without changing forecast counts, movement caps
+or the 2% rule. Empty-donor handling and registration comparison were
+repaired before scoring; completed checkpoints were preserved.
 [Protocol](outputs/publication_readiness_2026_09/opendd_incumbent_slate_v1/protocol.md).
 
 ## Athens in the manuscript and anonymous replay
