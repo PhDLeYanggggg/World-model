@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: the 40/160 evaluation is registered
+
+I froze three calibration and fourteen confirmation source components
+before opening any futures. Four matched arms keep the same count and
+radius; the original 2% recording checks are unchanged.
+[Protocol](outputs/publication_readiness_2026_09/songdo_calibrated_20261110/protocol.md).
+
+## Paper: what the fixed-budget comparison adds
+
+I added direct attribution for loss-conditioned fallback and
+marginal-preserving planner controls. The paper's comparison is
+which actor forecasts to replace under the same count and movement
+budget, with missing labels kept in the analysis.
+[Prior work and verified draft](outputs/publication_readiness_2026_09/evidence_manuscript_v169_related_work/README.md).
+
 ## WEPDTOF: what the missing labels leave unresolved
 
 I recovered both endpoints of the joint-minus-independent comparison

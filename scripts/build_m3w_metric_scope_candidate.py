@@ -60,7 +60,7 @@ def revise(text):
     return changed
 
 
-def check_render(raw, original):
+def check_render(raw, original, *, extra_references=False, markers=()):
     def without_line_numbers(body):
         # The review template appends three-digit line counters to extracted text.
         body = re.sub(r'(?m)[ \t]*[0-9]{3}$', '', body)
@@ -68,32 +68,36 @@ def check_render(raw, original):
 
     text = without_line_numbers(supplement.check_pdf(raw, 8))
     missing = [x for x in ('Anonymous CVPR submission', 'OpenDD release coordinates',
-                           'each missing step', 'LLM Usage Statement') if x not in text]
+                           'each missing step', 'LLM Usage Statement', *markers) if x not in text]
     if missing:
         raise ValueError(f'The revised scope or disclosure did not render: {missing}')
     before = PdfReader(original)
     after = PdfReader(BytesIO(raw))
     a, b = (without_line_numbers('\n'.join(p.extract_text() for p in r.pages)).split('LLM Usage Statement', 1)[1]
             for r in (before, after))
+    if extra_references:
+        a, b = (t.split('References', 1)[0].strip() for t in (a, b))
     if a != b:
         raise ValueError('The rendered disclosure or bibliography changed')
 
 
-def build(destination, compiler, receipt):
+def build(destination, compiler, receipt, *, original=ORIGINAL, expected=None, revise_source=revise,
+          changed_paragraphs=len(SCOPE), added_citations=(), markers=()):
     prior = supplement.read_receipt('evidence_manuscript_v167_citation')
-    expected = prior['artifact_sha256']
-    inputs = {name: supplement.checked(ORIGINAL/name, sha) for name, sha in expected.items()}
-    with ZipFile(ORIGINAL/'main_source.zip') as z:
+    expected = expected if expected is not None else prior['artifact_sha256']
+    inputs = {name: supplement.checked(original/name, sha) for name, sha in expected.items()}
+    with ZipFile(original/'main_source.zip') as z:
         names = z.namelist()
         if len(set(names)) != len(names) or any(Path(n).name != n for n in names):
             raise ValueError('Unexpected original source-archive member')
         members = {n: z.read(n) for n in names}
     if members['manuscript.tex'] != inputs['manuscript.tex']:
         raise ValueError('Source archive differs from the verified manuscript')
+    keys = citation.used_citations(members)
     text = members['manuscript.tex'].decode()
-    members['manuscript.tex'] = revise(text).encode()
-    if len(citation.used_citations(members)) != prior['bibliography_entries']:
-        raise ValueError('The revised manuscript changed citations')
+    members['manuscript.tex'] = revise_source(text).encode()
+    if len(keys) != prior['bibliography_entries'] or citation.used_citations(members) != sorted([*keys, *added_citations]):
+        raise ValueError('The revised manuscript differs from the expected citation list')
     style = supplement.checked(citation.main.DRAFT/'cvpr.sty', prior['style_sha256'])
     with TemporaryDirectory(prefix='metric-scope-') as tmp:
         p = Path(tmp)
@@ -109,7 +113,8 @@ def build(destination, compiler, receipt):
             raise ValueError('Undefined reference or overfull horizontal box')
         citation.archive.encode(p/'main_source.zip', members)
         output = {k: (p/k).read_bytes() for k in ('manuscript.tex', 'manuscript.pdf', 'main_source.zip')}
-    check_render(output['manuscript.pdf'], ORIGINAL/'manuscript.pdf')
+    check_render(output['manuscript.pdf'], original/'manuscript.pdf',
+                 extra_references=bool(added_citations), markers=markers)
     for k, raw in output.items():
         if (destination/k).exists() and (destination/k).read_bytes() != raw:
             raise FileExistsError(f'Refusing to replace another candidate: {k}')
@@ -118,11 +123,15 @@ def build(destination, compiler, receipt):
         if not (destination/k).exists():
             with (destination/k).open('xb') as f:
                 f.write(raw)
-    result = dict(pages=8, source_paragraphs_changed=len(SCOPE), only_changed_archive_member='manuscript.tex',
+    result = dict(pages=8, source_paragraphs_changed=changed_paragraphs, only_changed_archive_member='manuscript.tex',
                   original_pdf_sha256=expected['manuscript.pdf'], original_source_zip_sha256=expected['main_source.zip'],
                   artifacts={k: main.digest(v) for k, v in output.items()},
-                  abstract_tables_references_and_llm_statement_source_unchanged=True,
                   original_risk_rule_unchanged=True, new_outcomes_read=False, uploaded=False, submission_ready=False)
+    if added_citations:
+        result.update(added_citations=list(added_citations), bibliography_entries=len(keys)+len(added_citations),
+                      original_abstract_tables_references_and_llm_statement_source_unchanged=True)
+    else:
+        result['abstract_tables_references_and_llm_statement_source_unchanged'] = True
     receipt.parent.mkdir(parents=True, exist_ok=True)
     raw = main.as_json(result)
     if receipt.exists() and receipt.read_bytes() != raw:

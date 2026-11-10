@@ -1,5 +1,8 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+另有 [v169 相关工作候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v169_related_work/README.md)，
+在 v168 基础上补两篇最接近的原始文献，不更改实验结果和披露说明。
+
 WEPDTOF 的缺失标签敏感性可用
 `scripts/audit_m3w_wepdtof_missing_label_interval.py` 从既有匿名汇总包复算。
 联合减独立的上下界跨零，不能从保守下界单独推断效应方向。
