@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Compare external evaluations at equal forecast movement
+
+The three external readouts now share one presentation. The
+matched comparisons do not establish a joint advantage, and
+the fixed proposals and actual releases are reported separately.
+[Cross-cohort comparison](outputs/publication_readiness_2026_09/external_budget_comparison_v1/README.md).
+
 ## Athens: repeat the comparison by acquisition date
 
 Joint and same-family replacement both beat constant velocity
