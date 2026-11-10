@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: neighbor input has opposite effects on relative paths
+
+On the same 500 recordings, neighbors lower available pair-relative ADE
+by 0.761 for Social-STGCNN but raise it by 0.825 for EqMotion. Bounds
+for the missing steps do not establish the sign of either effect. The
+completion-trained forecaster has the lowest available relative FDE,
+while EqMotion without neighbors has the lowest available relative ADE.
+This comparison does not change the release policy.
+[Results and reproduction](outputs/publication_readiness_2026_09/opendd_backbone_relative_v1/README.md) |
+[v214 draft and v48 replay](outputs/publication_readiness_2026_09/evidence_manuscript_v214_backbone_relative/README.md).
+
 ## Athens: run both controls with the original future join
 
 I combined the main comparison, recipient/path attribution and
