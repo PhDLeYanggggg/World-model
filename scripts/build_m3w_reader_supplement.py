@@ -125,6 +125,19 @@ def render(d, case_pdf):
              'span zero after dropping any one of the seven locations. The conservative criterion does not '
              'favor these switches; their unrestricted complete-label signs are not identified. The original '
              'edit budget, model seeds, and role assignments are unchanged.', y)
+    if 'opendd_exchange' in d:
+        from reproducibility.m3w_reader_supplement_exchange.verify import check_exchange
+
+        exchange = check_exchange(d['opendd_exchange'])
+        labels = ['Incumbent', 'Aligned ranker', 'Uniform on same mask', 'Hindsight on same mask', 'Hindsight keep or exchange']
+        y = table(pdf, [['OpenDD one exchange / 606', 'Original', 'Also full-grid', 'Also gain > 0.10 pp'],
+                        *[[label, *[f'{v:.2f}' if key == 'uniform' else f'{v:.0f}' for v in values]]
+                          for label, (key, values) in zip(labels, exchange.items(), strict=True)]],
+                  [205, 76, 95, 124], y)
+        y = para(pdf, 'The stricter column also requires the full-grid risk checks on page 3. All arms use the '
+                 'same forecast bank, 780 edits, and recording movement caps. The same-mask oracle can change which '
+                 'exchange is made, not where the aligned ranker intervenes. The uniform row is an expectation. '
+                 'The 606 views repeat 202 development recordings; they are not independent tests.', y)
     finish(pdf, 2, y)
 
     y = header(pdf, 'EXTERNAL EVIDENCE', 'Frozen comparisons and actual releases')

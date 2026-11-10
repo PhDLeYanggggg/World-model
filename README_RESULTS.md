@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: missing positions do not close the selection gap
+
+I replayed all 7,198 one-exchange options at the original count and
+movement caps. Adding the full-grid risk check leaves 175 of the 181
+views with a passing option. On the learned switch mask, hindsight
+finds 98 passes, the learned ranker finds 44, and uniform selection
+expects 46.73. I kept the policy and the original results unchanged.
+[Analysis](outputs/publication_readiness_2026_09/opendd_full_grid_exchange_v1/README.md) |
+[v210 draft and v44 supplement](outputs/publication_readiness_2026_09/evidence_manuscript_v210_exchange_grid/README.md).
+
 ## WEPDTOF: a risk pass is not an accuracy gain
 
 I applied the full twelve-step check to the frozen WEPDTOF forecasts.
