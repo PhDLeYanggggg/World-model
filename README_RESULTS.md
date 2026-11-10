@@ -7,11 +7,15 @@ or evidence status.
 
 ## OpenDD vehicles: match the path family used at training time
 
-I kept the original training draws and replaced a path with the
-learned family only where legal. The held nominees, edit budgets
-and scoring rules do not change. The comparison reuses the nested
-teachers and the two earlier losses.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_family_alignment_v1/protocol.md).
+I replaced the randomly drawn path family with the learned family
+where legal, keeping the same training draws. That raises the
+learned-family share from 34.84% to 96.90%. At the same 526 held
+rotations, strict passes move from 40 to 44 for budget ranking
+and from 41 to 35 for pointwise training. Neither beats original
+action margin's 54, so I kept the original policy.
+[Comparison and intervals](outputs/publication_readiness_2026_09/opendd_vehicle_family_alignment_v1/README.md),
+[v185 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v185_family_alignment/README.md),
+and [v15 anonymous replay](outputs/publication_readiness_2026_09/vehicle_family_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: predict whether the exact nominee will help
 
