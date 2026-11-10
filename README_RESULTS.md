@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: report both missing-label endpoints
+
+The three fixed-proposal comparisons have negative conservative endpoints
+but positive upper endpoints, even after dropping any one location.
+I condensed the ranking results into one table. The conservative criterion
+does not support switching; the unrestricted full-grid sign remains unknown.
+[Analysis](outputs/publication_readiness_2026_09/opendd_direct_completion_signs_v1/README.md) |
+[v207 draft and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v207_completion_signs/README.md).
+
 ## OpenDD: learn which forecast steps will be labeled
 
 An eight-step history head predicts missing labels and the resulting
