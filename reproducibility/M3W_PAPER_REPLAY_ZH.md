@@ -205,10 +205,14 @@ PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` �
 用 `scripts/rehearse_m3w_pneuma_confirmation.py` 可以在合成数据上复跑两种角色协议，
 用 `scripts/prepare_m3w_pneuma_donor_cuts.py` 可以核对纯 OpenDD 的候选难度切线。
 [实际读数前的验收记录](../outputs/publication_readiness_2026_09/pneuma_confirmation_rehearsal_v1/README.md)。
+另可用[真实预测包演练](../outputs/publication_readiness_2026_09/pneuma_real_packet_rehearsal_v1/README.md)
+在完全不读取真实未来的情况下，核对两种协议对真实数据规模的处理。
 
 [瑞士环岛备选数据](../outputs/publication_readiness_2026_09/swiss_roundabouts_source_intake_v1/README.md)
 有独立的下载、时钟分段、历史打包和匹配方案入口。每个录像或种子包可按原命令恢复。
 这里只验证预测准备，尚未运行正式评分。
+[瑞士评分演练](../outputs/publication_readiness_2026_09/swiss_roundabouts_readout_rehearsal_v1/README.md)
+保留双车窗口的恒速回退，不把缺失的同预算对照记成零效应或安全通过。
 
 ## 3. CREATE：先查已有作业，再决定是否提交
 

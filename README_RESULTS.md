@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Check external readouts at the frozen packet sizes
+
+I rehearsed both Athens date protocols on the actual frozen forecasts
+with fabricated outcomes. In the Swiss pilot I verified why 258 views
+are unmatched: each has two actors, below the existing three-actor
+menu minimum. The matched comparison excludes those views, while
+the risk check retains them at constant velocity.
+[Athens rehearsal](outputs/publication_readiness_2026_09/pneuma_real_packet_rehearsal_v1/README.md) |
+[Swiss rehearsal](outputs/publication_readiness_2026_09/swiss_roundabouts_readout_rehearsal_v1/README.md).
+Neither result uses real future positions.
+
 ## A second vehicle transfer cohort: Swiss roundabouts
 
 I checked all 18 released recordings and rebuilt 2,563 nonoverlapping

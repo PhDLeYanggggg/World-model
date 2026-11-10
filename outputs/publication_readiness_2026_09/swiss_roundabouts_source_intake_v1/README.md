@@ -57,8 +57,10 @@ The [matched proposal receipt](matched_receipt.json) freezes four arms:
 independent, additive, same-family and unrestricted joint. Each arm
 changes exactly two distinct recipients at the same maximum radius.
 Of 7,689 query-seed views, 7,431 have a legal pair for all four arms;
-258 have no common menu from the past-only forecasts and remain
-explicitly in the intake counts. Joint selects a different proposal
+258 have only two actors and fall below the inherited three-actor
+menu minimum. They remain in the full roster, as verified by the
+[readout rehearsal](../swiss_roundabouts_readout_rehearsal_v1/README.md).
+Joint selects a different proposal
 from independent, additive and same-family in 5,157, 5,074 and
 1,371 comparable views, respectively. That is proposal diversity, not
 accuracy or utility. The 54 local file-seed packets are resumable.
