@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: why the highest joint scores did not release
+
+For each of the three seeds, the highest joint score has no selected easy
+reference, even though lower scores pass the original risk checks. At the
+same 102-view budget on confirmation, ranking lowers measured violations
+but increases undefined risk; its dual-pass gain over uniform choice is
++0.95 pp [-3.10, +4.64]. I kept the original release rule.
+[Analysis](outputs/publication_readiness_2026_09/songdo_score_ranking_v1/README.md) |
+[v203 draft and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v203_songdo_score_ranking/README.md).
+
 ## OpenDD: put the matched backbones in the paper
 
 The main table now shows motion baselines, the completion-trained forecaster,

@@ -80,7 +80,7 @@ def diagnostic(evidence, frozen):
                 joint_added_to_other_arms=increment('all', 'without_joint'))
 
 
-def run(archive):
+def verified_archive(archive):
     receipt = json.loads((PUBLIC/'focused_review_supplement_v1/receipt.json').read_text())
     source = archive.read_bytes()
     digest = sha256(source).hexdigest()
@@ -100,8 +100,12 @@ def run(archive):
     if (frozen['actual_risk'] != receipt['songdo_actual_release'] or not published['no_fitting_on_confirmation']
             or any(frozen['matched_risk'][a] != published['matched'][a]['risk'] for a in old.ARMS)):
         raise ValueError('Archived scalars do not reproduce the frozen result')
-    return dict(**diagnostic(evidence, frozen), archive_sha256=digest,
-                songdo_scalar_sha256=sha256(data).hexdigest(),
+    return evidence, frozen, dict(archive_sha256=digest, songdo_scalar_sha256=sha256(data).hexdigest()), data
+
+
+def run(archive):
+    evidence, frozen, binding, _ = verified_archive(archive)
+    return dict(**diagnostic(evidence, frozen), **binding,
                 result_source='fresh_post_hoc_finite_menu_analysis_of_frozen_score_scalars',
                 original_2pct_unchanged=True, outcomes_reopened=False, test_threshold_selected=False,
                 new_confirmation=False, learned_policy=False, deployment_changed=False, submission_ready=False)
