@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: does the score beat a uniform legal allocation?
+
+At the same edit count and movement cap, uniform choice gives 49.29
+expected complete-grid passes, the frozen scores give 55, and hindsight
+finds 210. Giving each location equal weight, the frozen scores differ
+from uniform by -0.37 pp (95% interval [-1.82, +1.07]). The forecasts
+leave room for better choices, but the current score does not reliably
+find them. No external result changed.
+[Experiment](outputs/publication_readiness_2026_09/opendd_fixed_spend_uniform_v1/README.md) |
+[v213 draft and v47 replay](outputs/publication_readiness_2026_09/evidence_manuscript_v213_fixed_spend_uniform/README.md).
+
 ## Athens and Swiss roundabouts: match movement at every step
 
 I kept the edited vehicles and movement directions fixed, then matched
