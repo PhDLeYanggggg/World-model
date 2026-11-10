@@ -83,6 +83,12 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 同样的 101 次交换下为 49 个双通过，未超过随机期望 51.21。
 [检查点与训练命令](../outputs/publication_readiness_2026_09/opendd_exchange_risk_heads_v1/README.md)。
 
+运行 `scripts/audit_m3w_opendd_exchange_stability.py` 可复算保护交换两端的删段诊断：
+121 个可挽救视图中 93 个存在稳定交换。再运行
+`scripts/run_m3w_opendd_exchange_stability_head.py --replay` 和
+`scripts/audit_m3w_opendd_exchange_stability_forced.py`，分别复算固定 101 个交换视图和强制 296 个合法视图。
+两项都不重新训练；新监督没有可靠胜过同架构对照。
+
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效
 检查点。恢复后先看 `heartbeat.json` 与实际日志，再核对结果及哈希。

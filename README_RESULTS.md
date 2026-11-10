@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: many possible rescues survive a change in recording context
+
+Of 121 views with a legal rescue, 93 still have one after deleting
+each of three background blocks in turn and keeping the exchanged
+queries. Twenty-seven also clear both the utility and risk-reserve
+margins. Stability supervision reaches 52/606 dual passes at the
+original exchange views, versus 53 for the matched control. Forcing
+one swap on every eligible view gives 61 versus 59, with no reliable
+paired gain. [Stress test](outputs/publication_readiness_2026_09/opendd_exchange_stability_v1/README.md),
+[training](outputs/publication_readiness_2026_09/opendd_exchange_stability_head_v1/README.md),
+and [all-eligible comparison](outputs/publication_readiness_2026_09/opendd_exchange_stability_forced_v1/README.md).
+
 ## OpenDD: why the exchange ranker loses its hindsight advantage
 
 Of 121 views with a legal rescue, the frozen guard misses 77. On the
