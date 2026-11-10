@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens: check an independent vehicle source before scoring
+
+I retrieved six pNEUMA files from the publisher archive and checked
+past-selected 8/12 windows. At the ten-tick stride, 643 windows have
+93.11% pair-step field coverage, but only 20 have complete futures
+for the entire roster. Some drone views share a session or footprint.
+I have not used this source for training, calibration or prediction.
+[Source, coverage and replay](outputs/publication_readiness_2026_09/pneuma_source_intake_v1/README.md).
+
 ## OpenDD vehicles: train directly on the proposed replacement
 
 I trained two matched models on the same angle pairs. Direct comparison
