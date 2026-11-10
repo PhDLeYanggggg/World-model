@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: match movement at every forecast step
+
+I kept the original edited recipients and directions, then matched
+departures from constant velocity at each step. The joint-minus-independent
+envelope still spans zero, at [-0.04181, +0.01829] pp. Joint and additive
+are exactly identical in all 36 edited views, so their tie cannot
+isolate a benefit from the cross term. The original release is unchanged.
+[Results and replay](outputs/publication_readiness_2026_09/wepdtof_equal_step_v1/README.md) |
+[v217 manuscript and appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v217_wepdtof_equal_steps/README.md).
+
 ## Paper: put the controls in one readable appendix
 
 I separated feasibility, selection and frozen transfer in the

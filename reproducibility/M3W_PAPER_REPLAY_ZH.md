@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v216 主文、合并补充 PDF 和匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v216_integrated_reader/README.md)。
+当前候选：[v217 主文、合并补充 PDF 和匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v217_wepdtof_equal_steps/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
@@ -13,7 +13,7 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机交付目录为 `data/stage_cvpr2027_experiments/submission_admin/local_handoff_v216/`。
+本机交付目录为 `data/stage_cvpr2027_experiments/submission_admin/local_handoff_v217/`。
 其中 `paper.pdf`、`supplement.pdf` 和 `replay.zip` 由同一份 `manifest.json` 绑定。
 补充 PDF 已包含近期新增表格和等覆盖率图，不需要解压才能阅读。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
@@ -27,6 +27,7 @@ v47 再复算相同预算下均匀分配的期望 49.29，以及冻结分数相�
 v48 再复算同一批 OpenDD 车对的标签覆盖率、相对 ADE/FDE 和两种模型的邻车消融区间。
 v49 再复算 3,711 个完整窗口等覆盖率遮挡的偏差和地点区间；另附 `equal_coverage.pdf`。
 v216 交付包保留 v49 的核验链，并检查合并附录的表格值与原始汇总一致。
+v217 再复算 WEPDTOF 的逐步等位移对照：198 个介入查询、每组 366 次修改、10 个可估来源。
 v43 的 WEPDTOF 校验继续保留：4 个联合方案在完整十二步下仍通过风险，其中 3 个不能同时超过两个基线。
 v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
 v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。
