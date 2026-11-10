@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v201 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v201_songdo_step_budget/README.md)。
+当前候选：[v210 主文及 v44 匿名补充包](../outputs/publication_readiness_2026_09/evidence_manuscript_v210_exchange_grid/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
@@ -13,10 +13,13 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v33.zip`。
+本机最新补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v44.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
+v44 还应复算 OpenDD 完整十二步风险结果：事后上限 175，同出手位置的事后上限 98，
+学习排序器 44，同位置均匀选择期望 46.73，以及对应的地点配对区间。
+v43 的 WEPDTOF 校验继续保留：4 个联合方案在完整十二步下仍通过风险，其中 3 个不能同时超过两个基线。
 v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
 v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。
 v6 新增编辑交换界限：零交换 60、至多一次 178–183、不限次数 210–212，另复算三个描述性收益门槛。
@@ -93,6 +96,10 @@ env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/ru
 OpenDD 检查点复跑应完成全部 21 个地点×种子组合，终态 `complete`，且 `updates: 0`。
 它会读本机已经使用过的开发目标，但不会打开封存的 DroneCrowd 确认标签。
 Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就不能声称复跑成功。
+
+v210 的 [OpenDD 同预算十二步风险分析](../outputs/publication_readiness_2026_09/opendd_full_grid_exchange_v1/README.md)
+可运行 `scripts/audit_m3w_opendd_full_grid_exchange.py`。已有 21 个本地检查点时按同一命令复算汇总；
+缺少对应检查点时会从已核验的 OpenDD 资产重新评分。这里不重训，也不打开新外部数据。
 
 v200 的 WEPDTOF 回顾性实验运行 `scripts/audit_m3w_wepdtof_history_factorial.py`。
 这条命令读回已评分的 15 段 WEPDTOF 标注，核对三种子原 CV/OLS4 指标，

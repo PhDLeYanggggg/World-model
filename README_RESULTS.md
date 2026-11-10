@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: rank only the legal alternatives for each recording
+
+I froze three equal-training controls before scoring: pointwise,
+listwise with the original target, and listwise with the full-grid
+target. All will choose within the same 101 intervention views.
+[Design and frozen choices](outputs/publication_readiness_2026_09/opendd_listwise_exchange_v1/protocol.md).
+
 ## OpenDD: missing positions do not close the selection gap
 
 I replayed all 7,198 one-exchange options at the original count and
