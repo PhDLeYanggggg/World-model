@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+[v174 引用核对版](../outputs/publication_readiness_2026_09/evidence_manuscript_v174_verified_references/README.md)
+在 v173 基础上补齐 Songdo 数据论文，固定 MovingDroneCrowd++ 预印本版本，
+并区分结构化弃权和 conformal 风险控制。原实验、图表、摘要和披露均不变。
+
 [v173 候选稿](../outputs/publication_readiness_2026_09/evidence_manuscript_v173_songdo_menu/README.md)
 在 v172 基础上补充 Songdo 有限菜单的事后上界。只用 v3 匿名分数复算
 197/480 个合格视图及 +0.000257 pp 的保守增益上限，不重选阈值、不重开标签。

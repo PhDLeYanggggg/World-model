@@ -107,7 +107,7 @@ def check_render(raw, original, extra_markers=()):
     if not 4 <= pages <= 8:
         raise ValueError(f'Unexpected main draft length: {pages} pages')
     text = normalize(supplement.check_pdf(raw, pages))
-    before = normalize(supplement.check_pdf(original, 8))
+    before = normalize(supplement.check_pdf(original, len(PdfReader(BytesIO(original)).pages)))
     statement = lambda t: t.split('LLM Usage Statement', 1)[1].split('References', 1)[0].strip()
     if statement(text) != statement(before):
         raise ValueError(f'Rendered disclosure changed: {statement(text)!r} != {statement(before)!r}')

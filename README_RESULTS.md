@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Forecast replacement and neighboring work
+
+I checked the references against the proceedings, authors' records and
+dataset releases. The updated discussion distinguishes a replacement
+decision from whole-window abstention and conformal risk control. It
+also credits the Songdo trajectory extraction paper alongside the release.
+[Source checks](outputs/publication_readiness_2026_09/evidence_manuscript_v174_verified_references/README.md).
+
 ## Songdo: selection leaves some qualifying proposals unused
 
 At the same two-edit budget, a label-aware search finds a qualifying
