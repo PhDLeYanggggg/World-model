@@ -77,3 +77,14 @@ def test_primary_requires_both_incumbent_and_same_mask_control(monkeypatch):
     assert not result['primary_supported']
     assert result['full_grid_contrasts']['pair_optional_minus_incumbent']['ci95_pp'] == [10., 10.]
     assert result['full_grid_contrasts']['pair_optional_minus_pair_uniform_mask']['ci95_pp'] == [-10., -10.]
+
+
+def test_score_diagnostic_keeps_empty_support_unestimable():
+    from scripts.audit_m3w_incumbent_slate import probabilities
+
+    assert probabilities([]) == dict(n=0, status='not_estimable')
+    result = probabilities([(0., False), (1., True)])
+    assert result['n'] == 2 and result['brier'] == result['ece'] == 0.
+    assert result['bins'][-1]['bin'] == 9
+    wrong = probabilities([(1., False)])
+    assert wrong['brier'] == wrong['ece'] == 1.

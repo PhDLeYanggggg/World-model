@@ -8,12 +8,16 @@ or evidence status.
 ## Learn when to keep an existing allocation
 
 I trained 42 OpenDD selection heads across seven locations and three
-seeds, including the unchanged allocation in each candidate slate.
-All choices are frozen before scoring. The study compares pointwise
-and paired training without changing forecast counts, movement caps
-or the 2% rule. Empty-donor handling and registration comparison were
-repaired before scoring; completed checkpoints were preserved.
-[Protocol](outputs/publication_readiness_2026_09/opendd_incumbent_slate_v1/protocol.md).
+seeds, then scored their frozen choices. Including a keep option reached
+47 full-grid passes, below 55 for the unchanged allocation. The paired
+model also fell below uniform exchange on its own switch mask. Its
+scores undervalued keeping the incumbent, and the donor schedules did
+not match the learned allocations used at evaluation. The release
+policy and original 2% rule remain unchanged.
+[Results and diagnosis](outputs/publication_readiness_2026_09/opendd_incumbent_slate_v1/README.md).
+
+The current code, data, checkpoints, manuscript and continuation commands
+are indexed in [the Claude Code handoff](CLAUDE_HANDOFF.md).
 
 ## Athens in the manuscript and anonymous replay
 
