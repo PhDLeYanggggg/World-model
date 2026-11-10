@@ -9,6 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
+The latest experiment compares absolute and keep-relative selection under
+nested location validation. It did not improve on keeping the original
+allocation. [Current results](README_RESULTS.md) and the
+[project map](CLAUDE_HANDOFF.md) separate completed evidence from pending work.
+
 I rehearsed the Songdo readout on all frozen proposals with fabricated
 future positions and missingness. It checks the equal edit budget,
 keeps pair and whole-roster metrics separate, and resamples source

@@ -94,3 +94,27 @@ def test_unknown_solver_rows_are_bounded_not_counted_as_zero_gain():
                        dict(recordings=10, slates=4, no_exchange=5))
     assert r['unresolved_recordings'] == 1
     assert r['lower'] == 0. and r['upper'] == .2
+
+
+def test_relative_diagnostic_preserves_harm_and_is_not_a_probability():
+    from scripts.diagnose_m3w_advantage_factorial import observations, compact
+    scores = torch.tensor([[0., 2., 99.]])
+    y = torch.tensor([[True, False, True]])
+    valid = torch.tensor([[True, True, False]])
+    result = compact(observations(lambda x: x, 'linear_advantage', scores, y, valid),
+                     'linear_advantage')
+    assert result['destructions'] == 1 and result['rescues'] == 0
+    assert result['observed_gain_mean'] == -1. and result['predicted_gain_mean'] > 0
+    assert result['score_semantics'] == 'tanh_score_difference_not_a_probability'
+    assert 'uncalibrated_sigmoid_diagnostics' not in result
+
+
+def test_absolute_diagnostic_reports_chosen_outcome_without_certifying_score():
+    from scripts.diagnose_m3w_advantage_factorial import observations, compact
+    scores = torch.tensor([[0., 2.]])
+    y = torch.tensor([[False, True]])
+    valid = torch.ones_like(y)
+    result = compact(observations(lambda x: x, 'mlp_absolute', scores, y, valid),
+                     'mlp_absolute')
+    assert result['rescues'] == 1 and result['observed_gain_mean'] == 1.
+    assert result['uncalibrated_sigmoid_diagnostics']['chosen']['positive_rate'] == 1.

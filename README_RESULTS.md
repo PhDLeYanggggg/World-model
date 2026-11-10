@@ -7,24 +7,24 @@ or evidence status.
 
 ## Test keep-relative value with nested location validation
 
-I registered four fixed comparisons: linear and small MLP heads, each learning
-absolute full-grid success or gain over keeping the current allocation.
-Inner validation excludes its location from every upstream producer as well
-as the selector. A concurrent five-arm draft changed the initial protocol path;
-the hash check stopped before training. The four-arm experiment is isolated in
-its own directory, leaving that draft intact. All 546 models have completed
-260,400 updates: 210 upstream, 252 inner and 84 outer models. The 21 outer
-choice files are frozen, not yet scored. Author-approved selection uses net
-gain across all validation recordings; no-exchange views are not safety passes.
-The original 2% rule remains unchanged.
-[Protocol](outputs/publication_readiness_2026_09/opendd_advantage_factorial_v1/protocol.md).
+I trained the four registered linear/MLP and absolute/relative comparisons,
+including fully nested upstream producers: 546 models and 260,400 updates.
+The validation-selected policy reaches 48 full-grid passes, below the
+unchanged allocation's 55 and the previous paired selector's 52. It rescues
+7 views but destroys 14. The registered primary fails; deployment is unchanged.
+Selection uses net gain across all validation recordings. No-exchange views
+are not safety passes, and the original 2% rule is unchanged. The 27 targeted
+tests and frozen-choice replay passed; neither replaces the negative result.
+[Results and diagnosis](outputs/publication_readiness_2026_09/opendd_advantage_factorial_v1/README.md).
 
 ## Project handoff and reproducibility map
 
 The [project handoff](CLAUDE_HANDOFF.md) now maps the active code,
 local checkpoints, data caches, manuscript files and reproduction commands.
-It separates completed experiments from the next unrun design. Local artifact
-hashes were checked; this documentation update changes no result or policy.
+It now includes the completed factorial, outstanding manuscript/external
+tasks, and a local integrity manifest. Codex research is paused at the user's
+request; this handoff sync runs no new training or evaluation. Private data
+and weights remain local. `CLAUDE.md` points incoming work to that map.
 
 ## Match training allocations to the evaluated policy
 
