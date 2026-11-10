@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: learn which same-budget swaps qualify
+
+I trained separate outputs for expected gain and whether an edit meets
+the original risk and two-reference checks. The equal-count comparison
+keeps the 353 swap queries from the previous mean-loss rule. The new
+decisions are frozen for scoring.
+[Protocol](outputs/publication_readiness_2026_09/opendd_recipient_eligibility_v1/protocol.md).
+
 ## OpenDD: change the recipient, keep the edit budget
 
 I kept the same two edits per query and tested whether a learned rule
