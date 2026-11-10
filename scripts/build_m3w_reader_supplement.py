@@ -1,5 +1,6 @@
 """Build a standalone anonymous supplement paired with the verified main PDF."""
 
+import argparse
 from hashlib import sha256
 from io import BytesIO
 import json
@@ -16,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from reproducibility.focused_review_supplement.verify import run_replay, unpack
 from reproducibility.m3w_reader_supplement.verify import check_risk
+from reproducibility.m3w_reader_supplement_easy.verify import check_easy
 from scripts import build_m3w_vehicle_supplement as layout
 
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09'
@@ -132,15 +134,32 @@ def render(d, case_pdf):
              'on the ten estimable sources. The fixed joint rule gives 0/45 dual passes. On Songdo, '
              f'the shared-seed upper endpoint is {s["shared_upper"]["point"]:+.6f} pp; its source '
              'interval includes zero. The observed sample and extrapolation to new sources are distinct.', y)
-    y = table(pdf, [['Songdo arm', 'Original three checks / 480', 'Also passes full-grid all-edited', 'Actual releases'],
-                    *[[a.replace('_', ' ').capitalize(), *map(str, v)] for a, v in check_risk(d['risk']).items()]],
-              [102, 136, 169, 93], y)
+    if 'easy' in d:
+        rows = check_easy(d['easy'], check_risk(d['risk']))
+        support = d['easy']['results']
+        y = table(pdf, [['Songdo arm', 'Original pass / 480', 'Also full-grid pass', 'Easy support / 480', 'Actual releases'],
+                        *[[a.replace('_', ' ').capitalize(), str(v[0]), str(v[2]),
+                           str(support[a]['matched']['full_grid_easy_support']), str(v[-1])] for a, v in rows.items()]],
+                  [91, 99, 107, 110, 93], y)
+    else:
+        y = table(pdf, [['Songdo arm', 'Original three checks / 480', 'Also passes full-grid all-edited', 'Actual releases'],
+                        *[[a.replace('_', ' ').capitalize(), *map(str, v)] for a, v in check_risk(d['risk']).items()]],
+                  [102, 136, 169, 93], y)
     y = para(pdf, '<b>Full-grid sensitivity, not a replacement rule.</b> The original all-edited risk ratio '
              'uses mean observed-step errors per track and charges maximum disagreement on wholly unknown '
              'tracks. For the twelve-step diagnostic, sum deterioration over steps first, take its positive '
              'part per edited track, then divide by total edited CV error. A missing target at CV attains '
              'both minimum CV error and maximum deterioration. Thus it attains the worst-case ratio '
-             'whenever the observed denominator is positive. The easy subset and its rules are unchanged.', y)
+             'whenever the observed denominator is positive.'
+             + ('' if 'easy' in d else ' The easy subset and its rules are unchanged.'), y)
+    if 'easy' in d:
+        y = para(pdf, '<b>Easy membership can change with the missing points.</b> For each edited track, '
+                 'take the worst positive harm minus 2% of its CV error. Add all terms for complete '
+                 'easy tracks and only positive terms for incomplete tracks that can be easy. A missing '
+                 'point can instead move far enough from CV to make its track non-easy. A complete '
+                 'positive-error easy edit is needed to ensure the denominator is never empty. When it '
+                 'is present, the selected-easy positive-harm ratio also bounds whole-roster signed '
+                 'easy harm. The table requires both full-grid checks; the original release rule is unchanged.', y)
     y = para(pdf, 'All 15 actual independent-policy releases have complete edited labels. Five satisfy '
              'all three checks; four also improve over both motion references. Joint releases none. '
              'The sensitivity cannot turn a matched proposal or an abstention into an actual release.', y)
@@ -171,22 +190,42 @@ def as_json(v):
     return (json.dumps(v, sort_keys=True, indent=2, allow_nan=False)+'\n').encode()
 
 
-def main():
+def main(full_grid_easy=False):
     d, hashes = load()
     previous = json.loads((PUBLIC/MAIN/'review_receipt.json').read_bytes())
     checked(LOCAL/MAIN/'manuscript.pdf', previous['companion_pdf_sha256'])
-    old = checked(ADMIN/'review_supplement_v40.zip', previous['archive_sha256'])
+    out, template, version, risk_file = OUT, TEMPLATE, 41, 'risk.json'
+    risks = check_risk(d['risk'])
+    replay_key = 'full_grid_all_risk'
+    parent_hash = previous['archive_sha256']
+    if full_grid_easy:
+        out, template, version, risk_file = OUT.with_name('reader_supplement_v2'), TEMPLATE.with_name(
+            'm3w_reader_supplement_easy'), 42, 'easy_risk.json'
+        parent = json.loads((OUT/'receipt.json').read_bytes())
+        if parent['companion_pdf_sha256'] != previous['companion_pdf_sha256']:
+            raise ValueError('Supplements must share the exact main PDF')
+        parent_hash = parent['archive_sha256']
+        raw = (PUBLIC/'songdo_full_grid_easy_risk_v1/readout.json').read_bytes()
+        hashes['easy'] = digest(raw)
+        d['easy'] = json.loads(raw)
+        if d['easy']['binding']['all_risk_readout_sha256'] != hashes['risk']:
+            raise ValueError('Easy and all-edited readouts are not paired')
+        risks = check_easy(d['easy'], risks)
+        replay_key = 'full_grid_easy_risk'
+    old = checked(ADMIN/f'review_supplement_v{version-1}.zip', parent_hash)
     case = checked(LOCAL/'songdo_failure_cases_v1/failure_cases.pdf', d['cases']['figure_sha256'])
     pdf = render(d, case)
     reader = PdfReader(BytesIO(pdf))
     extracted = '\n'.join(p.extract_text() for p in reader.pages)
     if (len(reader.pages) != 4 or any(p.get('/Annots') for p in reader.pages)
             or PRIVATE.search(extracted) or PRIVATE.search(str(reader.metadata))
-            or any(x not in extracted for x in ('179', '176', 'Full-grid sensitivity', 'Incomplete future labels'))):
+            or any(x not in extracted for x in ('179', '176', 'Full-grid sensitivity', 'Incomplete future labels'))
+            or (full_grid_easy and any(x not in extracted for x in ('Easy membership', '229', '144')))):
         raise ValueError('Unexpected text, links or identity in the reader PDF')
-    parts = {k: (TEMPLATE/k).read_bytes() for k in ('README.md', 'verify.py')}
-    parts.update({'supplement.pdf': pdf, 'risk.json': as_json(d['risk']), 'prior_evidence.zip': old})
-    if PRIVATE.search(parts['risk.json'].decode()):
+    parts = {k: (template/k).read_bytes() for k in ('README.md', 'verify.py')}
+    parts.update({'supplement.pdf': pdf, risk_file: as_json(d['easy' if full_grid_easy else 'risk']),
+                  'prior_evidence.zip': old})
+    if PRIVATE.search(parts[risk_file].decode()):
         raise ValueError('Identifying content in risk readout')
     parts['manifest.json'] = as_json({k: digest(v) for k, v in parts.items()})
     payload = archive_bytes(parts)
@@ -197,15 +236,15 @@ def main():
         p = tmp/'review.zip'
         p.write_bytes(payload)
         unpack(p, tmp/'unpacked')
-        if run_replay(tmp/'unpacked')['full_grid_all_risk'] != check_risk(d['risk']):
+        if run_replay(tmp/'unpacked')[replay_key] != risks:
             raise ValueError('Risk table did not replay')
     receipt = dict(companion_pdf_sha256=previous['companion_pdf_sha256'], pdf_sha256=digest(pdf), pages=4,
-                   archive_sha256=digest(payload), prior_archive_sha256=previous['archive_sha256'],
+                   archive_sha256=digest(payload), prior_archive_sha256=parent_hash,
                    archive_bytes=len(payload), input_sha256=hashes, original_2pct=True, uploaded=False,
                    submission_ready=False, includes_raw_labels=False, includes_checkpoints=False)
-    OUT.mkdir(parents=True, exist_ok=True)
-    for p, raw in ((ADMIN/'review_supplement_v41.pdf', pdf), (ADMIN/'review_supplement_v41.zip', payload),
-                   (OUT/'receipt.json', as_json(receipt))):
+    out.mkdir(parents=True, exist_ok=True)
+    for p, raw in ((ADMIN/f'review_supplement_v{version}.pdf', pdf), (ADMIN/f'review_supplement_v{version}.zip', payload),
+                   (out/'receipt.json', as_json(receipt))):
         if p.exists() and p.read_bytes() != raw:
             raise FileExistsError('Refusing to overwrite a frozen supplement')
         if not p.exists():
@@ -215,4 +254,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--full-grid-easy', action='store_true', help='Include the full-grid easy sensitivity in v42')
+    main(parser.parse_args().full_grid_easy)

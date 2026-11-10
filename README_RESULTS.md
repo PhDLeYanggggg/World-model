@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: check whether easy membership can change
+
+I let missing positions change which edits qualify as easy, while
+keeping the original threshold fixed. The full-grid easy check removes
+none of the matched proposals that survived the all-edited check.
+Joint selection still guarantees an easy reference less often than
+independent selection: 144 versus 229 of 480 views. Actual releases
+are unchanged.
+[Calculation](outputs/publication_readiness_2026_09/songdo_full_grid_easy_risk_v1/README.md) |
+[Reader supplement v42](outputs/publication_readiness_2026_09/reader_supplement_v2/README.md).
+
 ## Songdo: check risk on all twelve forecast steps
 
 I kept the 40-flight calibration, 160-flight confirmation, and original
