@@ -5,6 +5,11 @@
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
 两地只跑过去轨迹推理与人工目标排演，可在批准正式划分前复现；不得把它写成真实外部精度。
+雅典的[单次读标注流程](../outputs/publication_readiness_2026_09/pneuma_recipient_attribution_v1/README.md)
+会把主结果和选人/选路归因绑定到同一个标注读取；两种正式协议都只做了人工目标排演。
+已评分的 Songdo 可另行运行 `scripts/audit_m3w_songdo_two_factor_bounds.py`，
+按 [两种顺序平均](../outputs/publication_readiness_2026_09/songdo_two_factor_bounds_v1/README.md)
+重算受介入对象和路径各自的贡献，不改变原放行判断。
 
 ## 1. 匿名补充包：只复算已冻结结果
 

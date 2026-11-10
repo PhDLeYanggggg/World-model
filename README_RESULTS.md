@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: decompose joint versus independent in both orders
+
+I averaged the two orders of changing recipients and changing paths.
+The observed Songdo gap is mainly recipient choice; the path term is
+small and positive, and both source intervals cross zero.
+[Songdo calculation](outputs/publication_readiness_2026_09/songdo_two_factor_bounds_v1/README.md) |
+[Athens single-pass readout rehearsal](outputs/publication_readiness_2026_09/pneuma_recipient_attribution_v1/README.md).
+The real Athens targets remain unopened.
+
 ## WEPDTOF: separate the last detection from its velocity
 
 On the same 353 matched track-windows, substituting the annotation
