@@ -10,9 +10,10 @@
 保留草案不改，四组实验现单独登记为 `opendd_advantage_factorial_v1`。
 入口 `scripts/run_m3w_opendd_advantage_factorial.py`，数据角色构建
 `scripts/m3w_advantage_factorial_data.py`，模型 `src/world_model/m3w_advantage_factorial.py`。
-105 个四重排除 ranker、105 个三重排除 count head 已完成 126,000 updates 并通过来源核验；
-内层四组选择器正在训练。作者已同意改用全部验证录像上的净收益进行内层选择，
-见新目录 `selection_amendment.md/json`；无交换不计安全通过，41 项相关测试通过。
+105 个四重排除 ranker、105 个三重排除 count head、252 个内层选择器和 84 个外层选择器
+均已训练完毕，共 260,400 updates；21 组外层选择已冻结，尚未评分。
+作者已同意改用全部验证录像上的净收益进行内层选择，见新目录
+`selection_amendment.md/json`；无交换不计安全通过。此前 41 项测试已通过，最新相关子集 25 项也通过。
 以下 10:53 快照保留为交接时状态，不覆盖此处最新续接。
 
 本次范围是 World/M3W 项目及它引用的本地、远端资产，不是整台电脑所有项目，也不是把原始数据和权重打包进一个文件。
@@ -585,9 +586,9 @@ f9daea2d0  新 producer / selector / choices 冻结，先于评分
 交接时没有留下已知需等待的本地 M3W 训练或评分任务。前序 PID 84281、84483、84642 和最新实验 PID 87216、87394、87503、88022、88323、88427 均有历史终态；此次按进程名检查未发现相关 Python 任务。PID 会复用，不能据此去终止当前同号进程。其他数据湖任务没有被取消或全面审计。
 研究总目标未完成；当前不是“投稿准备已完成”。这份交接的作用是让下一位协作者能继续实际工作，而不是从旧成功标题或旧会话记忆重新猜测项目状态。
 
-## 12. 尚未实施的下一实验：相对收益与低容量嵌套验证
+## 12. 当前实验：相对收益与低容量嵌套验证
 
-状态：四组实验 **`opendd_advantage_factorial_v1`** 已完成 126,000 producer updates，内层模型训练中；外层拟合/评分尚未运行。作者确认全部验证录像净收益作为内层选择指标，原协议与修订分别保留；41 项相关测试通过。`opendd_nested_advantage_v1` 的并行五组草案未被覆盖，该路径的原四组注册因协议哈希冲突在训练前停止，见 `runtime_conflict.json`。两套方案不可混用。
+状态：四组实验 **`opendd_advantage_factorial_v1`** 已完成全部 260,400 updates，21 组外层选择冻结，尚未评分。作者确认全部验证录像净收益作为内层选择指标，原协议与修订分别保留。`opendd_nested_advantage_v1` 的并行五组草案未被覆盖，该路径的原四组注册因协议哈希冲突在训练前停止，见 `runtime_conflict.json`。两套方案不可混用。
 
 动机：最新模型在训练 donor 上能拟合，但所选动作在 held location 上严重高估；同时训练的 original-dual label 与 full-grid 主评价不同。还不能断定是特征不足、容量过大、目标错配或地点偏移中的哪一个。
 
