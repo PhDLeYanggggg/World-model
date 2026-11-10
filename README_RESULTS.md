@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: what the missing labels leave unresolved
+
+I recovered both endpoints of the joint-minus-independent comparison
+from the frozen paired scores. Across the ten estimable sources the
+range is -0.0450 to +0.0176 pp before source resampling. The sign is
+not resolved, and the original 0/45 dual passes are unchanged.
+[Bounds and source sensitivity](outputs/publication_readiness_2026_09/wepdtof_missing_label_interval_v1/README.md).
+
 ## Paper: two missing-label scoring rules
 
 I made a separate eight-page candidate that distinguishes row-level
