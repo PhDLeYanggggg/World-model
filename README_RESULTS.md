@@ -7,11 +7,13 @@ or evidence status.
 
 ## OpenDD: separate observation support from swap gain
 
-I separated observation support from the gain or harm on observed
-steps. The held-location ranking screen passed. I froze a fixed-count
-allocation from the new scores to test whether the ranking gain helps
-at the original budget.
-[Allocation protocol](outputs/publication_readiness_2026_09/opendd_swap_support_allocation_v1/protocol.md).
+Separating observation support from the effect on observed steps
+improves relative sign-ranking AUC from 0.569 to 0.683. At the same
+353-swap budget the new scores find 55 and 54 qualifying swaps, versus
+68 for the opportunity control. I kept the existing policy.
+[Results](outputs/publication_readiness_2026_09/opendd_swap_support_v1/README.md),
+[v197 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v197_swap_support/README.md),
+[v28 replay](outputs/publication_readiness_2026_09/swap_support_review_supplement_v1/README.md).
 
 ## OpenDD: predict the value of the nominated swap
 
