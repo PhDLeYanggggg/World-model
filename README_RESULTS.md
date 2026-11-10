@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: separate the last detection from its velocity
+
+On the same 353 matched track-windows, substituting the annotation
+history lowers CV and OLS4 ADE by 7.44 and 4.45 pixels. Fitting a
+cleaner intercept from detections alone does not reliably beat the
+original OLS4. I kept the original references and release decision.
+[Results and reproduction](outputs/publication_readiness_2026_09/wepdtof_history_factorial_v1/README.md).
+[v200 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v200_wepdtof_history/README.md) |
+[v31 replay](outputs/publication_readiness_2026_09/wepdtof_history_review_supplement_v1/README.md).
+
 ## Athens and Swiss roundabouts: hold the edited vehicles fixed
 
 I froze the same nine recipient/path comparisons in two unscored

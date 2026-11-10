@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v199 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v199_easy_reference_release/README.md)。
+当前候选：[v200 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v200_wepdtof_history/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
@@ -8,7 +8,7 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v30.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v31.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -58,6 +58,8 @@ v28 配套 v197，复算可观测支持的排序提升、原预算下 68 / 55 / 
 v29 配套 v198，复算 126 个校准/留出/种子组合、放行数、旧对照和地点区间；空放行不是风险通过。
 v30 配套 v199，复算固定候选后的 32 / 58 / 2 次放行、6 / 9 / 0 次严格通过，
 以及 3,000 次地点配对重抽样。只复算汇总，不是重新训练或新外部确认。
+v31 配套 v200，复算 WEPDTOF 的 353 条匹配历史中，起点和速度对 ADE 的贡献，
+以及 OLS4 截距重估的 13 来源配对区间。原 v30 一并保留。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -82,6 +84,10 @@ env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/ru
 OpenDD 检查点复跑应完成全部 21 个地点×种子组合，终态 `complete`，且 `updates: 0`。
 它会读本机已经使用过的开发目标，但不会打开封存的 DroneCrowd 确认标签。
 Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就不能声称复跑成功。
+
+v200 的 WEPDTOF 回顾性实验运行 `scripts/audit_m3w_wepdtof_history_factorial.py`。
+这条命令读回已评分的 15 段 WEPDTOF 标注，核对三种子原 CV/OLS4 指标，
+再评分固定的历史替换对照。不是匿名汇总复算，也不会打开雅典、瑞士或 DroneCrowd 封存目标。
 
 v199 的 easy 参考实验依次运行
 `scripts/run_m3w_opendd_easy_reference_release.py freeze`、`calibrate`、`score`。
