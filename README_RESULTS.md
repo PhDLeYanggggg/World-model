@@ -5,13 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## OpenDD: interval-supervised replacement experiment
+## OpenDD: learning from an interval does not improve release
 
-I kept the existing angle candidates, recording masks and risk rule,
-and trained the same selector with an interval rather than a single
-worst-case target for relative motion. The three-seed predictions are
-frozen before the development comparison.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_interval_angle_v1/protocol.md).
+I retrained the selector using the range of relative-motion gains
+consistent with the available labels. At the primary 526-rotation
+budget, it found 20 qualifying alternatives before calibration
+versus 11 with the worst-case point target. It also proposed more
+changes. Calibration kept only two, and the strict pass count
+stayed at 54. I kept the incumbent.
+[Results and two-sided bounds](outputs/publication_readiness_2026_09/opendd_vehicle_interval_angle_v1/README.md).
 
 ## Athens: equal edit radius does not imply equal path changes
 
