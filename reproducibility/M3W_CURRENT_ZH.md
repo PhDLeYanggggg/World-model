@@ -1,12 +1,17 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+复算 MovingDroneCrowd++ 的任意轨迹上界：在本地解压
+`moving_peak_certificate.zip`，运行 `python -I -B -S verify.py`。
+录像内合并预算后，67/72 个开发视图仍无法超过 OLS4；这不是独立确认。
+[上界推导、构建与复算命令](../outputs/publication_readiness_2026_09/moving_peak_certificate_v1/README.md)。
+
 车辆预测对照和同预算介入消融有独立两页英文补充稿。运行
 `scripts/build_m3w_vehicle_supplement.py` 从已冻结结果生成。
 [来源校验、输出及渲染命令](../outputs/publication_readiness_2026_09/vehicle_controls_supplement_v1/README.md)。
 
-当前主文为 [v166](../outputs/publication_readiness_2026_09/evidence_manuscript_v166/README.md)，
+当前主文为 [v167](../outputs/publication_readiness_2026_09/evidence_manuscript_v167_citation/README.md)，
 配套补充材料沿用 [v165](../outputs/publication_readiness_2026_09/evidence_manuscript_v165/README.md)。
-主文调整了摘要、引言和披露说明，没有改实验、图表或结论。
+v167 只补了 WEPDTOF 来源引用，没有改实验、图表或结论。
 
 本地另有带证据索引的补充材料版本：保留原 50 页，新增索引和一页成对
 消融。两份原 PDF 均未改动。[生成和验证说明](../outputs/publication_readiness_2026_09/supplement_evidence_guide_v1/README.md)。

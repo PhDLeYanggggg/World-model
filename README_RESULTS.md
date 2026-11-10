@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## MovingDroneCrowd++: an offline check of the OLS4 limit
+
+I rebuilt the bound from aggregate query errors and edit budgets, without
+sharing tracks or model weights. Even allowing arbitrary paths and pooling
+the budget within each recording, 67 of 72 development views cannot beat
+OLS4 under the frozen comparison. This is a limit on that budgeted task,
+not a new external result. [Certificate and commands](outputs/publication_readiness_2026_09/moving_peak_certificate_v1/README.md).
+
 ## Songdo: accuracy and tail reporting from frozen score receipts
 
 I added matched and full-roster accuracy, worst-source error and
