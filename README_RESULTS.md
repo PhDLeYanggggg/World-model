@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: change the recipient, keep the edit budget
+
+I fitted two rules for transferring one of the original two edits to a
+different vehicle. The edit keeps its displacement at every step. One
+rule averages training losses across locations; the other puts more
+weight on locations it fits poorly. Both are frozen before the held
+readout. [Protocol](outputs/publication_readiness_2026_09/opendd_recipient_transport_v1/protocol.md).
+
 ## Songdo: compare the two path rules on the same recipients
 
 I rebuilt the independent and joint rules on each other's original
