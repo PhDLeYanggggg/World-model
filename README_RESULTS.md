@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: a learned direction improves pass counts at fixed displacement
+
+Changing direction without changing any step's displacement raises
+the exact one-exchange frontier from 181 to 216. My angular head
+raises dual passes from 60 to 80 on the all-eligible comparison, but
+loses conservative utility against keeping the incumbent. Holding
+the incumbent's 780 recipients fixed gives 77 rather than 60 passes;
+the direct utility interval still spans zero. This is a candidate
+improvement, not a release. [Direction menu](outputs/publication_readiness_2026_09/opendd_exchange_directions_v1/README.md),
+[training](outputs/publication_readiness_2026_09/opendd_exchange_angular_head_v1/README.md),
+[utility decomposition](outputs/publication_readiness_2026_09/opendd_exchange_angular_debit_v1/README.md),
+and [same-recipient comparison](outputs/publication_readiness_2026_09/opendd_exchange_angular_same_recipients_v1/README.md).
+
 ## OpenDD: timing versus the amount of forecast deviation
 
 I varied the timing of an edit while holding its recipient, endpoint
