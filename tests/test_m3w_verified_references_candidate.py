@@ -31,3 +31,16 @@ def test_movement_revision_keeps_only_offline_scope():
     evidence['confirmation_access'] = True
     with pytest.raises(ValueError, match='matched movement'):
         candidate.revise_motion(source, evidence)
+
+
+def test_decision_ablation_revision_uses_frozen_counts_and_places_figure_early():
+    figure = '\\begin{figure*}[t]\n\\label{fig:capacity-discrimination}\n\\end{figure*}\n\n'
+    section = '\\subsection{Available gains need not be found from the past}'
+    anchor = 'Reordering existing scores recovers little of the verified opportunity.'
+    data, _ = candidate.decision_ablation_inputs()
+    result, markers = candidate.revise_decision_ablations(f'First\n{section}\n{anchor}\n\n{figure}Last\n', data)
+    assert result.startswith(f'First\n{figure}{section}') and result.endswith('Last\n')
+    assert {'42/606', '54/606', '59/606', '55/606', '58/606'} <= set(markers)
+    data[2]['arms']['conditional_utility']['edits'] += 1
+    with pytest.raises(ValueError, match='same frozen comparison'):
+        candidate.revise_decision_ablations(f'{section}\n{anchor}\n\n{figure}', data)

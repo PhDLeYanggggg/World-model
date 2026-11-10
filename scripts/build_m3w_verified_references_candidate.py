@@ -26,6 +26,9 @@ REALIZED_EVIDENCE = main.PUBLIC/'opendd_realized_stream_capacity_v1/decompositio
 MOTION_OUT = OUT.parent/'evidence_manuscript_v176_count_motion'
 MOTION_RECEIPT = main.PUBLIC/'evidence_manuscript_v176_count_motion/receipt.json'
 MOTION_EVIDENCE = main.PUBLIC/'opendd_count_motion_v1/readout.json'
+ABLATION_OUT = OUT.parent/'evidence_manuscript_v177_decision_ablations'
+ABLATION_RECEIPT = main.PUBLIC/'evidence_manuscript_v177_decision_ablations/receipt.json'
+ABLATION_STUDIES = ('opendd_prefix_value_v1', 'opendd_equal_spend_preference_v1', 'opendd_risk_conditional_utility_v1')
 ADDITIONS = ('graphabstention', 'crc', 'geotrax')
 BIB_END = r'\end{thebibliography}'
 EDITS = (
@@ -153,10 +156,57 @@ Reordering existing scores recovers little of the verified opportunity.'''
     return source[:i]+paragraph+source[j:], (*counts.values(), f"{x['point_pp']:.2f}")
 
 
-def build(destination, compiler, receipt, *, realized=False, motion=False):
-    if realized and motion:
+def decision_ablation_inputs():
+    result, hashes = [], {}
+    for name in ABLATION_STUDIES:
+        directory = main.PUBLIC/name
+        raw = (directory/'readout.json').read_bytes()
+        row = json.loads(raw)
+        if (row.get('external_outcome_access', row.get('confirmation_access')) is not False
+                or row['deployment_changed'] or not row['original_2pct']
+                or row['registration'] != main.digest((directory/'registration.json').read_bytes())
+                or row['checkpoint_manifest'] != main.digest((directory/'head_freeze.json').read_bytes())):
+            raise ValueError('Decision ablation does not match a verified development fit: '+name)
+        result.append(row['summary'])
+        hashes[name] = main.digest(raw)
+    return result, hashes
+
+
+def revise_decision_ablations(source, summaries):
+    value, pair, conditional = summaries
+    groups = value['matched'], {k: pair[k] for k in ('frozen', 'pointwise', 'pairwise')}, conditional['arms']
+    if (any((v['views'], v['edits']) != (606, 780) for group in groups for v in group.values())
+            or any(g['frozen']['dual_positive'] != 60 for g in groups)
+            or pair['pairwise']['dual_positive'] != conditional['arms']['original_pairwise']['dual_positive']):
+        raise ValueError('Learning ablations must use the same frozen comparison and budget')
+    anchor = 'Reordering existing scores recovers little of the verified opportunity.'
+    if source.count(anchor) != 1:
+        raise ValueError('Expected exactly one matched-budget result paragraph')
+    n = lambda group, arm: group[arm]['dual_positive']
+    rows = n(value['matched'], 'joint_value'), n(pair, 'pointwise'), n(pair, 'pairwise')
+    a, b = (n(conditional['arms'], k) for k in ('conditional_utility', 'continued_pairwise'))
+    c = conditional['comparisons']['conditional_utility_minus_continued_pairwise']['conservative_gain_pp']
+    paragraph = rf'''Learning does not close this gap: at the same caps,
+gain-and-risk regression passes {rows[0]}/606 views; independent plan
+classification and pairwise ranking pass {rows[1]}/606 and {rows[2]}/606.
+Risk-conditional utility training passes {a}/606 versus {b}/606 for
+equal-update continuation without it (paired conservative gain
+{c['point_pp']:+.5f} pp, 95\% location interval
+[{c['ci95_pp'][0]:+.5f}, {c['ci95_pp'][1]:+.5f}]). None exceeds the
+frozen scores on dual passes in these development fits.'''
+    result = source.replace(anchor, paragraph, 1)
+    section = r'\subsection{Available gains need not be found from the past}'
+    figure = re.findall(r'\\begin\{figure\*\}\[t\](?:(?!\\end\{figure\*\}).)*\\label\{fig:capacity-discrimination\}.*?\\end\{figure\*\}\n\n', result, re.S)
+    if len(figure) != 1 or result.count(section) != 1:
+        raise ValueError('Expected one OpenDD figure and section')
+    result = result.replace(figure[0], '', 1).replace(section, figure[0]+section, 1)
+    return result, (*(f'{v}/606' for v in (*rows, a, b)), f"{abs(c['point_pp']):.5f}")
+
+
+def build(destination, compiler, receipt, *, realized=False, motion=False, ablations=False):
+    if sum((realized, motion, ablations)) > 1:
         raise ValueError('Select one version')
-    origin = REALIZED_OUT if motion else OUT if realized else PARENT
+    origin = MOTION_OUT if ablations else REALIZED_OUT if motion else OUT if realized else PARENT
     parent = supplement.read_receipt(origin.name)
     inputs = {k: supplement.checked(origin/k, h) for k, h in parent['artifacts'].items()}
     with ZipFile(BytesIO(inputs['main_source.zip'])) as z:
@@ -167,7 +217,10 @@ def build(destination, compiler, receipt, *, realized=False, motion=False):
         raise ValueError('Source archive does not contain the verified manuscript')
     prior_keys = scope.citation.used_citations(files)
     source = files['manuscript.tex'].decode('ascii')
-    if motion:
+    if ablations:
+        summaries, ablation_hashes = decision_ablation_inputs()
+        result, markers = revise_decision_ablations(source, summaries)
+    elif motion:
         evidence = MOTION_EVIDENCE.read_bytes()
         result, markers = revise_motion(source, json.loads(evidence))
     elif realized:
@@ -177,7 +230,7 @@ def build(destination, compiler, receipt, *, realized=False, motion=False):
         result, markers = revise(source), ()
     files['manuscript.tex'] = result.encode('ascii')
     keys = scope.citation.used_citations(files)
-    added = () if realized or motion else ADDITIONS
+    added = () if realized or motion or ablations else ADDITIONS
     if keys != sorted([*prior_keys, *added]):
         raise ValueError('The bibliography and citations changed unexpectedly')
     style = supplement.checked(scope.citation.main.DRAFT/'cvpr.sty', scope.citation.STYLE_SHA)
@@ -208,6 +261,8 @@ def build(destination, compiler, receipt, *, realized=False, motion=False):
         result['realized_count_diagnostic_sha256'] = main.digest(evidence)
     if motion:
         result['count_motion_diagnostic_sha256'] = main.digest(evidence)
+    if ablations:
+        result['decision_ablation_readouts_sha256'] = ablation_hashes
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
@@ -227,7 +282,9 @@ if __name__ == '__main__':
     v = p.add_mutually_exclusive_group()
     v.add_argument('--realized-count', action='store_true')
     v.add_argument('--count-motion', action='store_true')
+    v.add_argument('--decision-ablations', action='store_true')
     a = p.parse_args()
-    build(a.output or (MOTION_OUT if a.count_motion else REALIZED_OUT if a.realized_count else OUT),
-          a.compiler.resolve(), a.receipt or (MOTION_RECEIPT if a.count_motion else REALIZED_RECEIPT if a.realized_count else RECEIPT),
-          realized=a.realized_count, motion=a.count_motion)
+    dest, meta = ((ABLATION_OUT, ABLATION_RECEIPT) if a.decision_ablations else (MOTION_OUT, MOTION_RECEIPT)
+                  if a.count_motion else (REALIZED_OUT, REALIZED_RECEIPT) if a.realized_count else (OUT, RECEIPT))
+    build(a.output or dest, a.compiler.resolve(), a.receipt or meta, realized=a.realized_count,
+          motion=a.count_motion, ablations=a.decision_ablations)

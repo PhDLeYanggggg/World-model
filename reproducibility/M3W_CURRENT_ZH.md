@@ -2,6 +2,9 @@
 
 当前主文与核心实验从 [中文短教程](M3W_PAPER_REPLAY_ZH.md) 开始；这里保留历次实验的长索引。
 
+[v177 等预算学习对照版](../outputs/publication_readiness_2026_09/evidence_manuscript_v177_decision_ablations/README.md)
+加入回归、分类、成对排序和风险内收益的同预算结果，未证明有优于旧策略的学习规则。
+
 [v176 固定次数与位移上限版](../outputs/publication_readiness_2026_09/evidence_manuscript_v176_count_motion/README.md)
 增加每段录像的累计峰值位移约束。线上 57/606，事后只重排冻结分数 60/606，
 事后利用真实结果 210/606；仍是开发集诊断。

@@ -1,15 +1,16 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v176 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v176_count_motion/README.md)。
+当前候选：[v177 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v177_decision_ablations/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v4.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v5.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
 v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
+v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -54,6 +55,10 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 同样的 780 次编辑，旧分数 60、独立分类 54、成对排序 59 个双通过；
 排序增加了风险通过数，但没有增加同时满足收益和风险的方案。
 [完整对照与训练记录](../outputs/publication_readiness_2026_09/opendd_equal_spend_preference_v1/README.md)。
+
+风险内收益续训用 `scripts/run_m3w_opendd_risk_conditional_utility.py --replay`。
+普通续训 55/606、风险内收益续训 58/606、旧分数 60/606；每组仍是相同 780 次编辑。
+[训练与区间](../outputs/publication_readiness_2026_09/opendd_risk_conditional_utility_v1/README.md)。
 
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效

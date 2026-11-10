@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: learn utility among risk-passing plans
+
+At the same 780 edits, adding utility comparisons between two risk-passing
+plans gives 58/606 dual passes, versus 55 for equal-update continuation and
+60 for the frozen scores. The paired utility interval crosses zero.
+[Experiment](outputs/publication_readiness_2026_09/opendd_risk_conditional_utility_v1/README.md).
+The [v177 manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v177_decision_ablations/README.md)
+and [v5 anonymous replay](outputs/publication_readiness_2026_09/decision_review_supplement_v1/README.md)
+now report the full series of matched-budget learning controls.
+
 ## OpenDD: compare two plans at the same spend
 
 I trained the same network on two objectives using matched recording plans.
