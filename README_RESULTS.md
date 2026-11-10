@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: match count and cap movement
+
+With each recording's online edit count and total peak-displacement
+budget fixed, hindsight still finds 210/606 qualifying plans. The
+online rule passes 57/606. Reordering its frozen scores without labels,
+even with access to all query scores offline, reaches only 60/606.
+The large gap survives the tighter budget, but the score-only control
+does not show that a different scheduler would close it.
+[Results and replay](outputs/publication_readiness_2026_09/opendd_count_motion_v1/README.md)
+and [v176 manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v176_count_motion/README.md).
+
 ## OpenDD: fixing the number of edits actually made
 
 I held the online controller's edit count fixed for every recording and

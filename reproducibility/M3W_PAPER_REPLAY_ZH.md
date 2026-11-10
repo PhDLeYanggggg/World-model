@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v175 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v175_realized_count/README.md)。
+当前候选：[v176 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v176_count_motion/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
@@ -38,6 +38,11 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 [`audit_m3w_opendd_realized_stream_capacity.py` 和 `report_m3w_opendd_realized_stream_capacity.py`](../outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)。
 需要本机冻结权重和原先预算上限计算的逐录像记录；终态应有 606 个视图、780 次实际编辑，
 其中固定次数事后解 242 个通过，线上 57 个通过。这不是匿名 v3 包中的检查。
+
+随后运行 `scripts/audit_m3w_opendd_count_motion.py`，在每段录像固定编辑次数，
+同时限制累计峰值位移。事后重排分数 60/606、已知标签事后解 210/606；
+只重排分数不使用标签，但能看全段分数，因此不是线上部署。
+[数值与复跑](../outputs/publication_readiness_2026_09/opendd_count_motion_v1/README.md)。
 
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效

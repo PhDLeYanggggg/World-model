@@ -2,6 +2,10 @@
 
 当前主文与核心实验从 [中文短教程](M3W_PAPER_REPLAY_ZH.md) 开始；这里保留历次实验的长索引。
 
+[v176 固定次数与位移上限版](../outputs/publication_readiness_2026_09/evidence_manuscript_v176_count_motion/README.md)
+增加每段录像的累计峰值位移约束。线上 57/606，事后只重排冻结分数 60/606，
+事后利用真实结果 210/606；仍是开发集诊断。
+
 [v175 固定编辑次数版](../outputs/publication_readiness_2026_09/evidence_manuscript_v175_realized_count/README.md)
 在 v174 基础上补充 OpenDD 开发诊断：同一录像和种子花掉同样次数，线上 57/606，
 事后分配 242/606；330/606 是同一预算上限而非实际次数相同。

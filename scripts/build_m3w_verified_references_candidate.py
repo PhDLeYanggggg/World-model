@@ -23,6 +23,9 @@ RECEIPT = main.PUBLIC/'evidence_manuscript_v174_verified_references/receipt.json
 REALIZED_OUT = OUT.parent/'evidence_manuscript_v175_realized_count'
 REALIZED_RECEIPT = main.PUBLIC/'evidence_manuscript_v175_realized_count/receipt.json'
 REALIZED_EVIDENCE = main.PUBLIC/'opendd_realized_stream_capacity_v1/decomposition.json'
+MOTION_OUT = OUT.parent/'evidence_manuscript_v176_count_motion'
+MOTION_RECEIPT = main.PUBLIC/'evidence_manuscript_v176_count_motion/receipt.json'
+MOTION_EVIDENCE = main.PUBLIC/'opendd_count_motion_v1/readout.json'
 ADDITIONS = ('graphabstention', 'crc', 'geotrax')
 BIB_END = r'\end{thebibliography}'
 EDITS = (
@@ -118,8 +121,42 @@ does not establish an improvement by a past-only policy.'''
     return source.replace(anchor, anchor+paragraph, 1), (f"{s['exact_pass']}/{s['views']}", f"{x['point_pp']:.2f}")
 
 
-def build(destination, compiler, receipt, *, realized=False):
-    origin = OUT if realized else PARENT
+def revise_motion(source, data):
+    s = data['summary']
+    if (not data['original_2pct'] or data['confirmation_access'] or not data['no_training']
+            or (s['views'], s['edits'], s['online'], s['count_only']) != (606, 780, 57, 242)
+            or not s['online'] <= s['count_motion'] <= s['count_only'] or s['score_unresolved']):
+        raise ValueError('Expected the matched movement and score-allocation readout')
+    start = r'\paragraph{Fixing the number of edits actually spent.}'
+    end = 'does not establish an improvement by a past-only policy.'
+    if source.count(start) != 1 or source.count(end) != 1:
+        raise ValueError('Expected exactly one fixed-count paragraph to revise')
+    x = data['contrasts']['count_motion_minus_online']
+    y = data['contrasts']['score_plan_minus_online']
+    counts = {k: f"{s[k]}/{s['views']}" for k in ('count_motion', 'count_only', 'score_plan')}
+    paragraph = rf'''\paragraph{{Matching realized counts and movement.}}
+Fixing the online edit count in each recording and seed ({s['edits']}
+in total), with the same menu and chronological credits, leaves
+{counts['count_only']} verified hindsight plans versus 57/606 online.
+Capping the sum of edited agents' peak displacements from CV at the
+online total leaves {counts['count_motion']} (equal-location difference
+{x['point_pp']:+.2f} pp, 95\% location bootstrap
+[{x['ci95_pp'][0]:+.2f}, {x['ci95_pp'][1]:+.2f}]).
+Under both constraints, maximizing the frozen count-logit increments
+without labels yields {counts['score_plan']} ({y['point_pp']:+.2f} pp;
+95\% interval [{y['ci95_pp'][0]:.2f}, {y['ci95_pp'][1]:+.2f}]). This
+comparison uses the complete score sequence, not an online policy.
+Reordering existing scores recovers little of the verified opportunity.'''
+    i, j = source.index(start), source.index(end) + len(end)
+    if j <= i:
+        raise ValueError('Fixed-count paragraph is out of order')
+    return source[:i]+paragraph+source[j:], (*counts.values(), f"{x['point_pp']:.2f}")
+
+
+def build(destination, compiler, receipt, *, realized=False, motion=False):
+    if realized and motion:
+        raise ValueError('Select one version')
+    origin = REALIZED_OUT if motion else OUT if realized else PARENT
     parent = supplement.read_receipt(origin.name)
     inputs = {k: supplement.checked(origin/k, h) for k, h in parent['artifacts'].items()}
     with ZipFile(BytesIO(inputs['main_source.zip'])) as z:
@@ -130,14 +167,17 @@ def build(destination, compiler, receipt, *, realized=False):
         raise ValueError('Source archive does not contain the verified manuscript')
     prior_keys = scope.citation.used_citations(files)
     source = files['manuscript.tex'].decode('ascii')
-    if realized:
+    if motion:
+        evidence = MOTION_EVIDENCE.read_bytes()
+        result, markers = revise_motion(source, json.loads(evidence))
+    elif realized:
         evidence = REALIZED_EVIDENCE.read_bytes()
         result, markers = revise_realized(source, json.loads(evidence))
     else:
         result, markers = revise(source), ()
     files['manuscript.tex'] = result.encode('ascii')
     keys = scope.citation.used_citations(files)
-    added = () if realized else ADDITIONS
+    added = () if realized or motion else ADDITIONS
     if keys != sorted([*prior_keys, *added]):
         raise ValueError('The bibliography and citations changed unexpectedly')
     style = supplement.checked(scope.citation.main.DRAFT/'cvpr.sty', scope.citation.STYLE_SHA)
@@ -166,6 +206,8 @@ def build(destination, compiler, receipt, *, realized=False):
                   no_new_experiment=True, uploaded=False, submission_ready=False)
     if realized:
         result['realized_count_diagnostic_sha256'] = main.digest(evidence)
+    if motion:
+        result['count_motion_diagnostic_sha256'] = main.digest(evidence)
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
@@ -182,7 +224,10 @@ if __name__ == '__main__':
     p.add_argument('--compiler', type=Path, required=True)
     p.add_argument('--output', type=Path)
     p.add_argument('--receipt', type=Path)
-    p.add_argument('--realized-count', action='store_true')
+    v = p.add_mutually_exclusive_group()
+    v.add_argument('--realized-count', action='store_true')
+    v.add_argument('--count-motion', action='store_true')
     a = p.parse_args()
-    build(a.output or (REALIZED_OUT if a.realized_count else OUT), a.compiler.resolve(),
-          a.receipt or (REALIZED_RECEIPT if a.realized_count else RECEIPT), realized=a.realized_count)
+    build(a.output or (MOTION_OUT if a.count_motion else REALIZED_OUT if a.realized_count else OUT),
+          a.compiler.resolve(), a.receipt or (MOTION_RECEIPT if a.count_motion else REALIZED_RECEIPT if a.realized_count else RECEIPT),
+          realized=a.realized_count, motion=a.count_motion)
