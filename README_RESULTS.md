@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: freeze both path rules on the same recipients
+
+I rebuilt the independent and joint rules on each other's original
+recipient sets, using the same paths and displacement budget. Both
+original choices replay exactly in all 480 views. The crossed
+proposals are frozen before the retrospective score is computed.
+[Protocol](outputs/publication_readiness_2026_09/songdo_fixed_recipient_paths_v1/protocol.md).
+
 ## Songdo: separate whom to edit from how to edit
 
 I decomposed the original matched Songdo results by recipient overlap.
