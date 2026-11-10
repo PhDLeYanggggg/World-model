@@ -206,6 +206,10 @@ PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` �
 用 `scripts/prepare_m3w_pneuma_donor_cuts.py` 可以核对纯 OpenDD 的候选难度切线。
 [实际读数前的验收记录](../outputs/publication_readiness_2026_09/pneuma_confirmation_rehearsal_v1/README.md)。
 
+[瑞士环岛备选数据](../outputs/publication_readiness_2026_09/swiss_roundabouts_source_intake_v1/README.md)
+有独立的下载、时钟分段、历史打包和匹配方案入口。每个录像或种子包可按原命令恢复。
+这里只验证预测准备，尚未运行正式评分。
+
 ## 3. CREATE：先查已有作业，再决定是否提交
 
 主文这组复算在本机完成，不需重新排队。用既有获准的 CREATE 连接时，先检查

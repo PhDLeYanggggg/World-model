@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## A second vehicle transfer cohort: Swiss roundabouts
+
+I checked all 18 released recordings and rebuilt 2,563 nonoverlapping
+8/12 windows. Their past-only forecast bank supports 7,431 three-seed
+views with two matched edits per arm. I did not score them. The
+three sites come from one acquisition day, so the files are not
+independent evidence across days or cities.
+[Source, clock and forecast receipts](outputs/publication_readiness_2026_09/swiss_roundabouts_source_intake_v1/README.md).
+
 ## OpenDD: match the number of angle replacements
 
 The interval-trained selector proposed more changes, so I compared
