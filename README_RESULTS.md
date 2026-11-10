@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Paper: two missing-label scoring rules
+
+I made a separate eight-page candidate that distinguishes row-level
+missing-label charges from stepwise charges and names the observation
+coordinates for each benchmark. The earlier PDF, tables, numbers and
+disclosure remain unchanged. [Scope and verification](outputs/publication_readiness_2026_09/evidence_manuscript_v168_metric_scope/README.md).
+
 ## Songdo: how much the frozen proposals differ
 
 I checked all saved two-edit proposals before opening outcomes. Joint

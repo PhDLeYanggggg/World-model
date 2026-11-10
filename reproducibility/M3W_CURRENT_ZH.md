@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+另有 [v168 评分口径候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v168_metric_scope/README.md)，
+只澄清整条缺失与逐步缺失的扣分规则，以及各数据集坐标，不改已有 PDF、
+图表数字、补充材料或 LLM 声明。
+
 Songdo 在评估之前可先跑 `scripts/audit_m3w_songdo_contrast_support.py`。
 它重查冻结的两次介入及相同位移预算，从预测本身计算可区分的轨迹和
 差异上界，不读取未来标签，也不指定划分。
