@@ -7,10 +7,14 @@ or evidence status.
 
 ## OpenDD: choose when to swap at the same budget
 
-I trained a query-level opportunity score and froze one recipient
-choice per query. The matched comparison reallocates the previous
-353 swaps without increasing displacement spend.
-[Protocol](outputs/publication_readiness_2026_09/opendd_recipient_query_mask_v1/protocol.md).
+At the same 353 swaps and nearly the same movement spend, the query
+score finds 68 qualifying swaps versus 54 for the old query mask.
+The location interval crosses zero, relative-motion gain worsens,
+and the same fixed nominations permit 190 qualifying swaps in hindsight.
+I kept the original policy.
+[Results](outputs/publication_readiness_2026_09/opendd_recipient_query_mask_v1/README.md),
+[v195 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v195_recipient_query_mask/README.md),
+[v26 replay](outputs/publication_readiness_2026_09/recipient_query_mask_review_supplement_v1/README.md).
 
 ## OpenDD: learn which same-budget swaps qualify
 
