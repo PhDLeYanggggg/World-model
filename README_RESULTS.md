@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens: run both controls with the original future join
+
+I combined the main comparison, recipient/path attribution and
+step-matched utility control in one readout. It checks all 18 frozen
+packets before scoring and can rebuild the reports from completed
+member receipts. The rehearsal uses fabricated futures; no Athens
+result or role has been recorded. The original 2% rule is unchanged.
+[Readout and rehearsal](outputs/publication_readiness_2026_09/pneuma_single_readout_v1/README.md).
+
 ## OpenDD: does the score beat a uniform legal allocation?
 
 At the same edit count and movement cap, uniform choice gives 49.29
