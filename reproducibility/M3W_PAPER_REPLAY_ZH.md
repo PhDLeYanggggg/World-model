@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v182 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v182_action_value/README.md)。
+当前候选：[v183 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v183_recording_screen/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v12.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v13.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -22,8 +22,10 @@ v10 配套 v180，保留 v9 并加入独立的车辆开发对照：493 段录像
 这些车辆计数不与行人计数合并。
 v11 配套 v181，另复算真实车距修正和等模型邻车消融。以相同的 5,162 个旋转对象作比较，
 带邻车的角度选择仍未赢得保守轨迹收益。
-v12 另复算直接学习收益与伤害的对照。在同样 2,399 个旋转视图上，
+v12 配套 v182，另复算直接学习收益与伤害的对照。在同样 2,399 个旋转视图上，
 模型优于供体固定角度，但不如单车模型。
+v13 保留上述结果，另复算固定候选动作的录像筛选。在相同 526 次旋转预算下，
+原置信度与新筛选器分别兑现 54、41 个严格通过。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -64,6 +66,10 @@ v182 的直接动作收益模型使用 `scripts/run_m3w_vehicle_action_value.py 
 另用 `scripts/audit_m3w_vehicle_action_capture.py` 重算事后归因：
 1,393 个严格可改善视图中，未旋转、选错车辆、选错角度、兑现改善分别为 855、96、281、161。
 [训练、校准和归因](../outputs/publication_readiness_2026_09/opendd_vehicle_action_value_v1/README.md)。
+
+v183 的录像筛选使用 `scripts/run_m3w_vehicle_opportunity.py freeze` 和 `score`。
+它只改变哪些录像使用预先确定的动作，不改变旋转对象或角度。
+[训练、冻结、对照和置信区间](../outputs/publication_readiness_2026_09/opendd_vehicle_opportunity_v1/README.md)。
 
 要复算 v175 新增的 OpenDD 固定实际编辑次数诊断，用
 [`audit_m3w_opendd_realized_stream_capacity.py` 和 `report_m3w_opendd_realized_stream_capacity.py`](../outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)。

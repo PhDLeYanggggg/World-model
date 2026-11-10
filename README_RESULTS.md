@@ -7,11 +7,15 @@ or evidence status.
 
 ## OpenDD vehicles: separate the decision to rotate from the angle
 
-I kept one nominated rotation per recording and trained a separate
-model to recognize when the angle menu contains a useful change.
-The same forecast is compared under action confidence, the new score,
-and both together. The comparison holds the number of rotations fixed.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_opportunity_v1/protocol.md).
+I held the proposed rotation fixed and trained a recording score.
+It improves AUROC for finding any qualifying angle from 0.553 to
+0.641. At the same 526 rotations, though, the new score gives 41
+strict successes to the original margin's 54. Only 420 of 1,393
+feasible views have a qualifying fixed nominee at all. I kept
+the original policy.
+[Experiment and intervals](outputs/publication_readiness_2026_09/opendd_vehicle_opportunity_v1/README.md),
+[v183 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v183_recording_screen/README.md),
+and [v13 anonymous replay](outputs/publication_readiness_2026_09/vehicle_screen_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: learn when a direction change is worth making
 
