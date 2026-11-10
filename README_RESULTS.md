@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: calibration changes when to rotate, not which angle works
+
+I froze thresholds fitted across donor locations before scoring each
+outer location. The mean rule cuts 710 rotations to 198, but the
+learned angles still lose conservative utility. A donor-constant
+angle is better on exactly those rows. Random placement at the same
+recording counts recovers almost all that gain. No release changes.
+[Calibration](outputs/publication_readiness_2026_09/opendd_angular_calibration_v1/README.md),
+[matched controls](outputs/publication_readiness_2026_09/opendd_angular_calibration_mask_v1/README.md),
+and [v9 anonymous replay](outputs/publication_readiness_2026_09/angular_review_supplement_v1/README.md).
+
 ## OpenDD: direct incumbent loss and the option to keep its direction
 
 At the same 780 recipients, weighting the worst donor losses improves
