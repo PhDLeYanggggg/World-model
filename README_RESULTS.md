@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens: equal edit radius does not imply equal path changes
+
+Before scoring Athens, I measured the distance between the frozen
+forecasts. Joint and independent change different recipient sets in
+1,739 of 1,929 views, but the dense rosters limit how far full-scene ADE
+can move. Their date-level upper bounds are 0.00393 to 0.01107 in
+the pilot plane. These are limits on possible contrasts, not gains.
+[Proposal audit](outputs/publication_readiness_2026_09/pneuma_proposal_separation_v1/README.md).
+
 ## OpenDD: can shared missing positions resolve the sign?
 
 I reran the fixed angle comparisons with one missing position shared
