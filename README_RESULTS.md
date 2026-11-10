@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: use one missing position across seeds
+
+Matching predictions across the three seeds tightens the bounds without
+changing their signs in the scored sample. Joint still trails independent
+and additive there, but the source intervals for their upper endpoints
+cross zero. I kept the original release decision.
+[Analysis](outputs/publication_readiness_2026_09/songdo_shared_seed_completion_v1/README.md) |
+[v208 draft and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v208_shared_seed/README.md).
+
 ## OpenDD: report both missing-label endpoints
 
 The three fixed-proposal comparisons have negative conservative endpoints
