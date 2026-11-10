@@ -9,9 +9,11 @@ or evidence status.
 
 I trained 105 nested nominee producers, 63 recording count heads and 42
 selection heads to match donor allocation generation to the evaluated policy.
-All 21 location/seed choice sets are frozen. Scoring has not started; the
-previous negative result and external release policies remain unchanged.
-[Protocol](outputs/publication_readiness_2026_09/opendd_onpolicy_donors_v1/protocol.md).
+The paired selector reaches 52 full-grid passes, up from 47 but below the
+unchanged allocation's 55. Its advantage over own-mask uniform is unresolved.
+Training scores are well fitted; held-location choices remain overconfident.
+The registered hypothesis fails and the release policy is unchanged.
+[Results and diagnosis](outputs/publication_readiness_2026_09/opendd_onpolicy_donors_v1/README.md).
 
 ## Learn when to keep an existing allocation
 

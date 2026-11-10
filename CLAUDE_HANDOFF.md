@@ -3,6 +3,44 @@
 更新时间：2026-11-10，Europe/London。本文件是本机工作交接入口，不是论文或匿名补充材料。
 依据本地文件、Git、真实实验输出和本轮 CREATE 只读查询整理。未重新运行全部历史阶段。
 
+## 最新续接：已完成 policy-matched donor 实验
+
+以下更新发生在最初交接提交 `bd5134a30` 之后。此前第 6 节的
+incumbent-slate 结果仍保留，不被新结果替换；现在应先读本节。
+
+- 新代码：`scripts/run_m3w_opendd_onpolicy_donors.py`、
+  `src/world_model/m3w_onpolicy_donors.py`、
+  `scripts/audit_m3w_onpolicy_donors.py`、
+  `scripts/diagnose_m3w_onpolicy_gap.py`。
+- 新公开证据：`outputs/publication_readiness_2026_09/opendd_onpolicy_donors_v1/`。
+  重点读 `README.md`、`readout.json`、`audit.json`、`generalization_diagnostic.json`。
+- 私有权重/标签缓存：`data/stage_cvpr2027_experiments/opendd_onpolicy_donors_v1/`，约 107 MB，未提交。
+- `fresh_run`：105 个三重排除候选排序器、63 个双重排除 recording count head、
+  42 个选择头，共 121,800 updates。单机原生 arm64 CPU4、workers0 完成。
+  没有新增 CREATE 作业；本次续接没有再次查询远端任务。
+- `cached_verified`：原有候选、外层分配、101 个 eligible views、780 次 forecast edits
+  与旧结果一致。新 21 组模型选择做了零更新恢复，逐项重放一致。
+- 训练前登记提交 `25c4c42b7`，全部选择冻结提交 `f9daea2d0`，二者均早于本实验评分。
+- 结果：paired optional full-grid 47 → 52，但 incumbent 为 55；
+  own-mask uniform 为 49.1784，配对差的 95% CI 跨零。主假设仍失败，不部署。
+- 新 paired model 救回 10、破坏 13，切换 82/101。种子结果 17/20/15，
+  incumbent 为 19/17/19，不能挑 seed 29 宣称成功。
+- 训练内所选动作预测/实际原始通过率为 44.73%/45.18%；held location 为
+  67.20%/20.79%。训练任务能够拟合，跨地点评分泛化明显不足。
+  这不是已校准部署概率，也不是 full-grid 通过率。
+- 29 个相关测试通过，105/63 个模型和 315 个 teacher cache 的嵌套来源核验通过。
+  一个 teacher 求解未定、两个重复 donor view 的分配数值校验失败，按协议排除并保留记录。
+- `not_run`：新外部独立确认、新风险放行、论文 PDF/作者 Word 合并、Stage5C/SMC。
+  不把这个开发集点估计改善写成新的跨数据集成功。
+
+复现时依次运行 runner 的 `register`、`producers`、`fit`、`score`，再运行两个
+audit/diagnose 脚本；完整命令在新 README。已完成权重会恢复为零 updates。
+所有本轮训练、重放、评分、诊断进程均正常结束，没有任务需要接着等。
+
+下一优先项已经从“补 donor producer”变为：在 donor-held 验证中检查低容量的
+keep-versus-switch advantage 模型是否能同时改善排序和概率可靠性，再冻结新外层选择。
+不能根据这次 outer 结果直接挑 keep threshold。原 2% 规则与外部确认角色不变。
+
 ## 1. 先看这几条
 
 1. 项目根目录：`/Users/yangyue/Downloads/World`。下文相对路径均以此为根。
@@ -10,11 +48,11 @@
 3. 当前论文证据主线：`outputs/publication_readiness_2026_09/`。不要把早期 Stage37/43 的成功标题直接当作当前独立验证结论。
 4. 作者正在编辑 Word：`data/stage_cvpr2027_experiments/submission_admin/local_handoff_v218_color_figures/paper_editable.docx`。不要覆盖、自动合并或恢复作者删除的文件。
 5. 当前独立论文候选在 `data/stage_cvpr2027_experiments/submission_admin/local_handoff_v219_athens/`。它不等于作者 Word 的最新内容，也不等于已上传。
-6. 最新实际工作是 OpenDD incumbent-slate 实验：42 个真实 Torch 选择头已训练、冻结、评分和诊断。结果失败，未改变部署策略。
+6. 最新实际工作是上面的 policy-matched donor 实验；第 6 节记录其直接前序 incumbent-slate 实验。两轮主假设均未通过，没有改变部署策略。
 7. 仓库有约三千项与当前工作无关的暂存变更，主要是数据湖/WorldCore 及历史数据整理。不要 `git add .`、批量取消暂存、清理未跟踪文件或恢复整个工作树。
 8. 本轮训练和评分进程已正常退出，四个已登记 CREATE 作业也为 COMPLETED。不要因旧 heartbeat 文件仍存在就重启任务。
 
-建议阅读顺序：本文件 → `README_RESULTS.md` 顶部 → 最新实验 README → `reproducibility/M3W_PAPER_REPLAY_ZH.md` → v219 论文与来源核验。
+建议阅读顺序：本文件最新续接 → `README_RESULTS.md` 顶部 → 最新实验 README → `reproducibility/M3W_PAPER_REPLAY_ZH.md` → v219 论文与来源核验。
 `README.md` 和旧的 `continuation_handoff.md` 包含时间较早的状态，必须按日期和冻结文件核对，不能只读第一段判断现在进行到哪里。
 
 ## 2. 目标、当前结论与评价边界
@@ -386,13 +424,15 @@ b7c6a6c39  42 模型和选择冻结，先于评分
 
 ## 10. 现在最值得继续的工作
 
-### 优先级 1：修正 donor incumbent 与评估 policy 的分布差异
+### 优先级 1：修正 donor incumbent 与评估 policy 的分布差异（已完成本轮检验）
+
+此项现已实现、训练和评分，见本文件顶部最新续接。下面保留原问题背景。
 
 先读 `scripts/run_m3w_opendd_one_exchange_ranker.py` 的 `donor()`：目前训练 incumbent 由固定优先及随机 schedule 生成。再读 `scripts/run_m3w_opendd_exchange_context.py` 的 `evaluate()`：当前评估 anchor 来自冻结学习分配。
 最小实验应只改变 donor anchor 生成来源：用与评估一致的策略，在排除 donor 与 outer location 的 producer 上生成，然后比较旧生成方式。不要只调 keep threshold。
 
 关键依赖是 actor/teacher 的嵌套排除是否齐备。已有 rank heads 排除了两侧，不代表新的 allocation actor 也已经双重排除；缺失时补正确训练，不能复用见过 donor 或 held-site 的 actor 来制造 on-policy 改善。
-先核对旧实验是否已有等价实现，避免重复训练。这个新实验还没有实现或运行。
+已补正确嵌套训练。结果有点估计改善，但未超过 incumbent；不要重复执行为“未运行”。
 
 ### 优先级 2：分清选择效用与风险放行
 
@@ -412,7 +452,7 @@ b7c6a6c39  42 模型和选择冻结，先于评分
 1. 确认 cwd、branch、dirty/staged 状态；先看本文件和最新 README_RESULTS，不先跑全部阶段。
 2. 读取 `opendd_incumbent_slate_v1/{README.md,readout.json,failure_diagnostic.json}`，理解当前负结果。
 3. 确认本地 42 checkpoint 和 21 choices 存在，若需要验证只做原命令零更新 replay，不删除重训。
-4. 检查新 donor actor 的已有资产和训练排除角色，确定是否可以构造同策略训练分配。
+4. 读取新 policy-matched donor 的冻结与诊断，重点区分训练内拟合和 held-location 泛化；不要重复补已完成的 producer。
 5. 如果继续科研，新设计先写独立版本协议再运行，保留失败结果，不碰外部冻结阈值。
 6. 如果优先投稿，保护作者 Word，合并已冻结证据后重新渲染检查，最终由作者提交。
 
