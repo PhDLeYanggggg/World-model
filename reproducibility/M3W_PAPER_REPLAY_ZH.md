@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v195 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v195_recipient_query_mask/README.md)。
+当前候选：[v196 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v196_realized_swap_value/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v26.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v27.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -50,6 +50,7 @@ v24 配套 v193，固定被介入车辆，复算两种选路规则的差异，�
 v25 配套 v194，复算 OpenDD 固定 353 次换车的对照、145/2,624 的机会覆盖，
 以及按地点配对的轨迹收益区间。这里复算的是汇总，不是重新训练。
 v26 配套 v195，保留 v25，复算重新分配 353 次换车的比较、126 组预算和地点配对区间。
+v27 配套 v196，复算同一批候选换车的 68 / 47 / 43 次合格数、已观测相对收益与缺失标签界。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh

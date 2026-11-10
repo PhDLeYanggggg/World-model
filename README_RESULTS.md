@@ -7,10 +7,14 @@ or evidence status.
 
 ## OpenDD: predict the value of the nominated swap
 
-I trained separate estimates of the gains and costs of each proposed
-swap, including its changes to relative trajectories. I kept the same
-nominations and 353-swap budget to compare the two allocation scores.
-[Protocol](outputs/publication_readiness_2026_09/opendd_realized_swap_value_v1/protocol.md).
+I kept the same nominations and 353 swaps. Scoring individual value
+finds 47 qualifying swaps; adding relative value finds 43, versus 68
+for the previous opportunity score. The combined rule improves the
+observed relative contribution over opportunity ranking, but the
+missing-label bounds span both signs. I kept the existing policy.
+[Results](outputs/publication_readiness_2026_09/opendd_realized_swap_value_v1/README.md),
+[v196 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v196_realized_swap_value/README.md),
+[v27 replay](outputs/publication_readiness_2026_09/realized_swap_value_review_supplement_v1/README.md).
 
 ## OpenDD: choose when to swap at the same budget
 
