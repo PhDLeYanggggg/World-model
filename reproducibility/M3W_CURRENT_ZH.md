@@ -36,6 +36,13 @@ WEPDTOF 还有一份更细的离线复现包：从三个风险比例重新判定
 事后上界、独立确认。前两类都不能写成第三类。DroneCrowd 的 15 个校准来源组
 没有得到满足既定规则的策略，30 个独立确认来源组不用于以下命令。
 
+## Songdo：从已完成的确认记录生成扩展报告
+
+正式确认完成后，用 `scripts/report_m3w_songdo_secondary.py <运行目录>`
+复算主报告并列出 ADE/FDE、尾部、最差来源和回退分量。这一步不读原始标签，
+也不更改冻结阈值；未开放真实结果前只有合成演练。
+[完整命令](../outputs/publication_readiness_2026_09/songdo_secondary_rehearsal_v1/README.md)。
+
 ## OpenDD：用校准数量或比例替代绝对分数线
 
 `scripts/audit_m3w_vehicle_release_transport.py` 只读取冻结分数和录像级复现分量，

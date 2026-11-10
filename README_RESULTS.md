@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: accuracy and tail reporting from frozen score receipts
+
+I added matched and full-roster accuracy, worst-source error and
+release support reports without changing the primary scorer. Both
+prospective paths replay on frozen predictions with fabricated
+futures. This adds no Songdo result.
+[Reporting and rehearsal](outputs/publication_readiness_2026_09/songdo_secondary_rehearsal_v1/README.md).
+
 ## OpenDD: score scale is not the only release problem
 
 Transferring the calibration count or fraction to the frozen held
