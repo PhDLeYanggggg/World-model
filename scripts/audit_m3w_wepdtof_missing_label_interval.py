@@ -2,40 +2,20 @@
 
 from hashlib import sha256
 import json
-from math import isclose, isfinite
+from math import isclose
 from pathlib import Path
 import sys
 from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from reproducibility.focused_review_supplement.wepdtof_completion import CONTROLS, group_bounds
 from reproducibility.wepdtof_scalar_replay.verify import exact_interval, interval, mean
 
 PUBLIC = ROOT/'outputs/publication_readiness_2026_09'
 REPLAY = PUBLIC/'wepdtof_scalar_replay_v1/readout.json'
 ARCHIVE = ROOT/'data/stage_cvpr2027_experiments/submission_admin/wepdtof_scalar_replay.zip'
 OUT = PUBLIC/'wepdtof_missing_label_interval_v1/receipt.json'
-CONTROLS = ('fixed_independent', 'fixed_uniform', 'fixed_no_pair')
-
-
-def group_bounds(evidence, arm):
-    rows = []
-    for group in evidence['groups']:
-        views = [v['paired'][arm] for clip in group for v in clip]
-        if not views:
-            raise ValueError('Empty original source group')
-        for known, low in views:
-            if ((known is None) != (low is None) or (known is not None and (
-                    not (isfinite(known) and isfinite(low)) or low > known+1e-12))):
-                raise ValueError('Invalid archived contrast or missing-label debit')
-        if any(k is None for k, _ in views):
-            continue
-        known, low = (mean([v[i] for v in views]) for i in (0, 1))
-        # Reverse the sign of the unknown-step debit, not the observed error.
-        high = 2*known-low
-        rows.append((low, known, high))
-    return rows
-
 
 def verdict(low, high, tol=1e-12):
     if low > tol:

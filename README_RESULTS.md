@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Replaying the focused evidence together
+
+The updated anonymous archive replays all three Moving budget bounds,
+the OpenDD counts, the two-sided WEPDTOF interval and the Songdo release
+decisions. It needs only Python's standard library; the experiments and
+their outcomes are unchanged.
+[Contents and verification](outputs/publication_readiness_2026_09/focused_review_supplement_v1/README.md).
+
 ## Reading the forecast replacement results
 
 I put three questions in order: does the budget permit a gain, can a

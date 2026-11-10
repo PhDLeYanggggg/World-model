@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+[v3 匿名补充包](../outputs/publication_readiness_2026_09/focused_review_supplement_v1/README.md)
+与 v172 配套。解压后在目录内运行 `python3 -I -B -S verify.py`；无需联网、安装模型或读取原始轨迹。
+它复算 Moving 的三种上界、OpenDD 计数、WEPDTOF 两端区间以及 Songdo 的阈值和实际放行数。
+
 [v172 精简候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v172_focused/README.md)
 把正文按预算上限、因果选择、外部放行三步组织。全文 5 页，原题目、摘要和披露不动；
 v171 与现有匿名补充包保留。构建只读取本地已冻结汇总，不重跑或重新选模型。

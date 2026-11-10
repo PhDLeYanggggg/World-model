@@ -28,6 +28,6 @@ The command uses the local `focused_body.tex`, the hash-verified v171 archive,
 the original review style, and the tracked aggregate receipts. It checks the
 page count, citations, disclosure, selected numeric markers and PDF anonymity.
 See the [build receipt](receipt.json). The private draft PDF, source and archive
-are not in Git. The v2 anonymous review ZIP still replays the original and
-Songdo evidence. It does not yet replay the favorable-completion bound or
-include a revised reading guide for this draft.
+are not in Git. The [v3 anonymous review archive](../focused_review_supplement_v1/README.md)
+pairs with this draft and replays all three Moving bounds and the WEPDTOF
+completion interval as well as the earlier evidence.
