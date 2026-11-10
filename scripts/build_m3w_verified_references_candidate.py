@@ -20,6 +20,9 @@ main, supplement = focused.main, focused.supplement
 PARENT = focused.MENU_DESTINATION
 OUT = PARENT.parent/'evidence_manuscript_v174_verified_references'
 RECEIPT = main.PUBLIC/'evidence_manuscript_v174_verified_references/receipt.json'
+REALIZED_OUT = OUT.parent/'evidence_manuscript_v175_realized_count'
+REALIZED_RECEIPT = main.PUBLIC/'evidence_manuscript_v175_realized_count/receipt.json'
+REALIZED_EVIDENCE = main.PUBLIC/'opendd_realized_stream_capacity_v1/decomposition.json'
 ADDITIONS = ('graphabstention', 'crc', 'geotrax')
 BIB_END = r'\end{thebibliography}'
 EDITS = (
@@ -87,9 +90,38 @@ def revise(source):
     return result
 
 
-def build(destination, compiler, receipt):
-    parent = supplement.read_receipt('evidence_manuscript_v173_songdo_menu')
-    inputs = {k: supplement.checked(PARENT/k, h) for k, h in parent['artifacts'].items()}
+def revise_realized(source, data):
+    s = data['summary']
+    if (not data['original_2pct'] or data['confirmation_access'] or not data['hindsight_only']
+            or not data['no_fitting'] or (s['views'], s['edits'], s['online_pass'], s['broad_pass']) != (606, 780, 57, 330)):
+        raise ValueError('Expected the exact realized-count diagnostic for the archived development roster')
+    x = data['exact_minus_online']
+    c = data['changes']
+    anchor = 'not an online policy. The gain head and added\ncontext do not recover the missing headroom.'
+    paragraph = rf'''
+
+\paragraph{{Fixing the number of edits actually spent.}}
+The quota comparison permits different realized counts. We therefore
+require the hindsight solver to use the same number of edits as the
+online controller in each recording and seed ({s['edits']} in total),
+with the same nested menu and chronological token rule. It verifies
+{s['exact_pass']}/{s['views']} positive plans, versus {s['online_pass']}/{s['views']}
+online. The equal-location difference is +{x['point_pp']:.2f} pp
+(95\% location bootstrap [{x['ci95_pp'][0]:+.2f}, {x['ci95_pp'][1]:+.2f}]).
+Of the {s['broad_pass']-s['exact_pass']} quota-level witnesses excluded by the exact
+count, {c['quota_witness_lost_at_zero_actual_edits']} correspond to zero actual edits.
+The remaining gap at matched counts concerns where to spend edits in time,
+not how many to spend. It does not fix displacement across queries and
+does not establish an improvement by a past-only policy.'''
+    if source.count(anchor) != 1:
+        raise ValueError('Expected the unchanged OpenDD decision paragraph')
+    return source.replace(anchor, anchor+paragraph, 1), (f"{s['exact_pass']}/{s['views']}", f"{x['point_pp']:.2f}")
+
+
+def build(destination, compiler, receipt, *, realized=False):
+    origin = OUT if realized else PARENT
+    parent = supplement.read_receipt(origin.name)
+    inputs = {k: supplement.checked(origin/k, h) for k, h in parent['artifacts'].items()}
     with ZipFile(BytesIO(inputs['main_source.zip'])) as z:
         files = {k: z.read(k) for k in z.namelist()}
         if len(files) != len(z.namelist()) or any(Path(k).name != k for k in files):
@@ -97,9 +129,16 @@ def build(destination, compiler, receipt):
     if files['manuscript.tex'] != inputs['manuscript.tex']:
         raise ValueError('Source archive does not contain the verified manuscript')
     prior_keys = scope.citation.used_citations(files)
-    files['manuscript.tex'] = revise(files['manuscript.tex'].decode('ascii')).encode('ascii')
+    source = files['manuscript.tex'].decode('ascii')
+    if realized:
+        evidence = REALIZED_EVIDENCE.read_bytes()
+        result, markers = revise_realized(source, json.loads(evidence))
+    else:
+        result, markers = revise(source), ()
+    files['manuscript.tex'] = result.encode('ascii')
     keys = scope.citation.used_citations(files)
-    if keys != sorted([*prior_keys, *ADDITIONS]):
+    added = () if realized else ADDITIONS
+    if keys != sorted([*prior_keys, *added]):
         raise ValueError('The bibliography and citations changed unexpectedly')
     style = supplement.checked(scope.citation.main.DRAFT/'cvpr.sty', scope.citation.STYLE_SHA)
     with TemporaryDirectory(prefix='verified-references-') as temp:
@@ -116,15 +155,17 @@ def build(destination, compiler, receipt):
             raise ValueError('Unresolved citation/reference or overfull horizontal box')
         pdf = (root/'manuscript.pdf').read_bytes()
         pages = focused.check_render(pdf, inputs['manuscript.pdf'], (
-            '197/480', '0.000257', '0.00000472', '2601.12500v3', '2610.08322', '105205'))
+            '197/480', '0.000257', '0.00000472', '2601.12500v3', '2610.08322', '105205', *markers))
         scope.citation.archive.encode(root/'main_source.zip', files)
         output = {'manuscript.tex': files['manuscript.tex'], 'manuscript.pdf': pdf,
                   'main_source.zip': (root/'main_source.zip').read_bytes()}
-    result = dict(pages=pages, bibliography_entries=len(keys), added_citations=list(ADDITIONS),
+    result = dict(pages=pages, bibliography_entries=len(keys), added_citations=list(added),
                   only_changed_archive_member='manuscript.tex', prior_manuscript_sha256=parent['artifacts']['manuscript.pdf'],
                   artifacts={k: main.digest(v) for k, v in output.items()},
                   title_abstract_disclosure_and_experiments_unchanged=True, no_outcomes_opened=True,
                   no_new_experiment=True, uploaded=False, submission_ready=False)
+    if realized:
+        result['realized_count_diagnostic_sha256'] = main.digest(evidence)
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
@@ -139,7 +180,9 @@ def build(destination, compiler, receipt):
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--compiler', type=Path, required=True)
-    p.add_argument('--output', type=Path, default=OUT)
-    p.add_argument('--receipt', type=Path, default=RECEIPT)
+    p.add_argument('--output', type=Path)
+    p.add_argument('--receipt', type=Path)
+    p.add_argument('--realized-count', action='store_true')
     a = p.parse_args()
-    build(a.output, a.compiler.resolve(), a.receipt)
+    build(a.output or (REALIZED_OUT if a.realized_count else OUT), a.compiler.resolve(),
+          a.receipt or (REALIZED_RECEIPT if a.realized_count else RECEIPT), realized=a.realized_count)

@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: fixing the number of edits actually made
+
+I held the online controller's edit count fixed for every recording and
+seed, with the same candidate menu, chronological credits and 2% checks.
+The label-aware search found 242/606 qualifying plans, versus 57/606
+online, using the same 780 edits across the cohort. The equal-location
+difference was +17.41 percentage points (95% bootstrap: +7.73 to +28.84).
+This is evidence of room to improve edit allocation on development data,
+not a new policy result or a comparison at equal total displacement.
+[Analysis and replay](outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)
+and [v175 manuscript](outputs/publication_readiness_2026_09/evidence_manuscript_v175_realized_count/README.md).
+
 ## Which sources were available to each model?
 
 I checked the frozen checkpoint roles, query boundaries and external

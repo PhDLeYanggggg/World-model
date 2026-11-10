@@ -2,6 +2,10 @@
 
 当前主文与核心实验从 [中文短教程](M3W_PAPER_REPLAY_ZH.md) 开始；这里保留历次实验的长索引。
 
+[v175 固定编辑次数版](../outputs/publication_readiness_2026_09/evidence_manuscript_v175_realized_count/README.md)
+在 v174 基础上补充 OpenDD 开发诊断：同一录像和种子花掉同样次数，线上 57/606，
+事后分配 242/606；330/606 是同一预算上限而非实际次数相同。
+
 [v174 引用核对版](../outputs/publication_readiness_2026_09/evidence_manuscript_v174_verified_references/README.md)
 在 v173 基础上补齐 Songdo 数据论文，固定 MovingDroneCrowd++ 预印本版本，
 并区分结构化弃权和 conformal 风险控制。原实验、图表、摘要和披露均不变。
