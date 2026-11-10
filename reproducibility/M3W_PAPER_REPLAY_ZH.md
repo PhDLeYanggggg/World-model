@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v185 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v185_family_alignment/README.md)。
+当前候选：[v186 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v186_policy_anchors/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v15.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v16.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -27,7 +27,8 @@ v12 配套 v182，另复算直接学习收益与伤害的对照。在同样 2,39
 v13 配套 v183，保留上述结果并复算固定候选动作的录像筛选。在相同 526 次旋转预算下，
 原置信度与新筛选器分别兑现 54、41 个严格通过。
 v14 配套 v184，新增精确动作分类与预算排序，严格通过分别为 41、40。
-v15 新增路径族对齐，同样 526 次出手下对齐后的严格通过为 35、44。
+v15 配套 v185，新增路径族对齐，同样 526 次出手下对齐后的严格通过为 35、44。
+v16 另复算策略选车和前 3 候选的事后上限；同预算下的上限从 238 升至 329。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -82,6 +83,11 @@ v184 先运行 `scripts/fit_m3w_vehicle_nested_nominees.py` 核验或生成内�
 v185 使用 `scripts/run_m3w_vehicle_family_alignment.py freeze` 与 `score`。
 复用 v184 的嵌套权重、原始训练抽样和留出提名，不需要重新生成外部候选。
 [训练和对齐结果](../outputs/publication_readiness_2026_09/opendd_vehicle_family_alignment_v1/README.md)。
+
+v186 依次运行 `scripts/fit_m3w_vehicle_nested_additive.py`、
+`scripts/run_m3w_vehicle_policy_anchor.py freeze` 与 `score`。
+`scripts/audit_m3w_vehicle_nominee_topk.py` 只复算已冻结候选的事后上限，不训练新策略。
+[训练、配对结果和候选上限](../outputs/publication_readiness_2026_09/opendd_vehicle_policy_anchor_v1/README.md)。
 
 要复算 v175 新增的 OpenDD 固定实际编辑次数诊断，用
 [`audit_m3w_opendd_realized_stream_capacity.py` 和 `report_m3w_opendd_realized_stream_capacity.py`](../outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)。

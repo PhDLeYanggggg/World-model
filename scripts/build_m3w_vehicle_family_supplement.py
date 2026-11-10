@@ -20,11 +20,11 @@ DEST = bundle.LOCAL/'review_supplement_v15.zip'
 TEMPLATE = archive.ROOT/'reproducibility/opendd_vehicle_family_supplement'
 
 
-def panel(d):
-    freeze = json.loads((paper.STUDY/'freeze.json').read_text())
+def panel(d, study=paper.STUDY):
+    freeze = json.loads((study/'freeze.json').read_text())
     effects = {f'{k}.{m}': v for k, r in d['paired'].items() for m, v in r.items()}
     effects.update({f'{k}.{m}': v for k, r in d['ranking'].items() for m, v in r.items() if 'by_site' in v})
-    local = paper.OUT.parent/paper.STUDY.name
+    local = paper.OUT.parent/study.name
     loc = []
     for s in sorted(next(iter(effects.values()))['by_site']):
         rows = []

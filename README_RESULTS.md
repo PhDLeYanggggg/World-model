@@ -7,11 +7,15 @@ or evidence status.
 
 ## OpenDD vehicles: use the recipient policy when generating training actions
 
-I trained nested copies of the additive chooser. For each donor
-recording, the comparison holds the query, ordered path families
-and radius fixed while changing how the recipients are picked.
-Both arms use one training example per recording.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_policy_anchor_v1/protocol.md).
+I used a source-excluded copy of the additive chooser to pick
+training recipients, fixing query, path family and radius.
+At 526 rotations, pointwise training goes from 36 to 46 strict
+passes, but neither it nor budget ranking beats the original
+margin's 54. The candidate bank gives a clearer lead: keeping the
+first three angles raises strict support from 420 to 802 views.
+[Experiment and capacity](outputs/publication_readiness_2026_09/opendd_vehicle_policy_anchor_v1/README.md),
+[v186 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v186_policy_anchors/README.md),
+and [v16 anonymous replay](outputs/publication_readiness_2026_09/vehicle_policy_anchor_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: match the path family used at training time
 
