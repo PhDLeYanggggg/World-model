@@ -1,7 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
 独立结果已写入 [v170 主文候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v170_songdo/README.md)。
-主文仍为 8 页；原 v169 PDF 和补充材料保留不动。
+主文仍为 8 页；原 v169 PDF 和 v1 补充材料保留不动。
+另有 [v170 配套匿名补充包](../outputs/publication_readiness_2026_09/songdo_review_supplement_v1/README.md)，
+可离线复算 Songdo 校准阈值、三组配对对照、区间和实际放行数。
 
 Songdo 正式 40/160 已完成。主结果、原阈值和匿名汇总在
 [确认报告](../outputs/publication_readiness_2026_09/songdo_calibrated_20261110/README.md)。

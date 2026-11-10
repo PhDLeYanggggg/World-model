@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Supplement: replaying the Songdo confirmation
+
+The updated anonymous supplement pairs with the eight-page v170 draft.
+It reproduces the calibration thresholds, matched comparisons and release
+counts without reopening the trajectory labels. The joint policy released
+zero views; the replay does not change that result.
+[Replay instructions and checks](outputs/publication_readiness_2026_09/songdo_review_supplement_v1/README.md).
+
 ## Paper: the Songdo result is in a separate candidate
 
 I added the one-shot confirmation and its dataset citation to the
