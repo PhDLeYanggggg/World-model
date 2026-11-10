@@ -189,6 +189,9 @@ PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` �
 雅典 pNEUMA 的[只读准备与复现](../outputs/publication_readiness_2026_09/pneuma_prefix_pilot_v1/README.md)
 生成 643 个历史窗口的三种子预测，并固定每个对照两个等位移的候选动作。
 分块搜索与原搜索一致。此处不打开未来坐标、不计算准确度，也不决定正式划分。
+用 `scripts/rehearse_m3w_pneuma_confirmation.py` 可以在合成数据上复跑两种角色协议，
+用 `scripts/prepare_m3w_pneuma_donor_cuts.py` 可以核对纯 OpenDD 的候选难度切线。
+[实际读数前的验收记录](../outputs/publication_readiness_2026_09/pneuma_confirmation_rehearsal_v1/README.md)。
 
 ## 3. CREATE：先查已有作业，再决定是否提交
 
