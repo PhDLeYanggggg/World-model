@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: learn which forecast steps will be labeled
+
+An eight-step history head predicts missing labels and the resulting
+movement debit better than training-site averages. Using it to rerank the
+same proposals at the same count and movement budget makes conservative
+trajectory gain worse. I kept the original strategy.
+[Experiment](outputs/publication_readiness_2026_09/opendd_step_visibility_rank_v1/README.md) |
+[v206 draft and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v206_step_visibility/README.md).
+
 ## OpenDD: match movement as well as the number of edits
 
 I matched both movement budgets within 1% at the same 2,196 recording views
