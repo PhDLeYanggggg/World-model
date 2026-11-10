@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v193 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v193_songdo_fixed_paths/README.md)。
+当前候选：[v194 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v194_recipient_eligibility/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v24.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v25.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -47,6 +47,8 @@ v23 配套 v192，按 14 个来源组复算 Songdo 三类介入对象的误差�
 相加后严格复现原主结果。归档不含未来坐标、模型权重或原始录像。
 v24 配套 v193，固定被介入车辆，复算两种选路规则的差异，并核对两条交叉路径的
 已观测误差加总都回到原对照。这不是新独立测试。
+v25 配套 v194，复算 OpenDD 固定 353 次换车的对照、145/2,624 的机会覆盖，
+以及按地点配对的轨迹收益区间。这里复算的是汇总，不是重新训练。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh

@@ -7,11 +7,14 @@ or evidence status.
 
 ## OpenDD: learn which same-budget swaps qualify
 
-I trained separate outputs for expected gain and whether an edit meets
-the original risk and two-reference checks. The equal-count comparison
-keeps the 353 swap queries from the previous mean-loss rule. The new
-decisions are frozen for scoring.
-[Protocol](outputs/publication_readiness_2026_09/opendd_recipient_eligibility_v1/protocol.md).
+I held the 353 swap queries fixed and compared gain ranking with a
+separate prediction of risk and reference eligibility. The eligibility
+score reduced qualifying swaps from 54 to 20. Only 145 of the 2,624
+hindsight opportunities are in those 353 queries, so ranking alone
+cannot recover most of them. The existing policy is unchanged.
+[Results](outputs/publication_readiness_2026_09/opendd_recipient_eligibility_v1/README.md),
+[v194 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v194_recipient_eligibility/README.md),
+[v25 replay](outputs/publication_readiness_2026_09/recipient_eligibility_review_supplement_v1/README.md).
 
 ## OpenDD: change the recipient, keep the edit budget
 
