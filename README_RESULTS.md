@@ -7,11 +7,12 @@ or evidence status.
 
 ## OpenDD: change the recipient, keep the edit budget
 
-I fitted two rules for transferring one of the original two edits to a
-different vehicle. The edit keeps its displacement at every step. One
-rule averages training losses across locations; the other puts more
-weight on locations it fits poorly. Both are frozen before the held
-readout. [Protocol](outputs/publication_readiness_2026_09/opendd_recipient_transport_v1/protocol.md).
+I kept the same two edits per query and tested whether a learned rule
+could send one edit to a better vehicle. Neither the mean-loss nor the
+worst-source rule improved the frozen OpenDD control. The same edit
+menu has 2,624 helpful and risk-supported swaps in hindsight, but the
+rules found only 58 and 47. The bottleneck is identifying those cases,
+not adding more paths. [Results](outputs/publication_readiness_2026_09/opendd_recipient_transport_v1/README.md).
 
 ## Songdo: compare the two path rules on the same recipients
 
