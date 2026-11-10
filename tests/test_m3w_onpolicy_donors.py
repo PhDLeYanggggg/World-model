@@ -40,3 +40,23 @@ def test_unresolved_allocation_is_not_silently_replaced(monkeypatch):
 def test_aggregation_preserves_zeros_and_negative_differences():
     assert model.total_fields([{'a': -2, 'b': 0}, {'a': 1}], ['a', 'b', 'c']) == {
         'a': -1, 'b': 0, 'c': 0}
+
+
+def test_summary_keeps_empty_counts_and_requires_previous_policy_gain():
+    from scripts import run_m3w_opendd_onpolicy_donors as runner
+
+    fields = (*runner.previous.FIELDS, 'rescued_full_grid', 'destroyed_full_grid')
+    def row():
+        arms = {k: dict.fromkeys(fields, 0.) for k in runner.previous.ARMS}
+        for k in ('pair_optional', 'pair_forced', 'point_optional'):
+            arms[k]['full_grid'] = 1.
+        return dict(seed=17, counts=dict(views=10, edits=4, eligible=2),
+                    switches=dict.fromkeys(runner.previous.POLICIES, 1), arms=arms)
+    groups = {str(i): [row()] for i in range(7)}
+    reference = dict(summary=dict(counts=dict(views=70, edits=28, eligible=14),
+        arms={k: dict.fromkeys(fields, 0.) for k in runner.previous.CONTROLS}), by_location=groups)
+    result = runner.summarize(groups, reference)
+    assert result['arms']['incumbent']['material_full_grid'] == 0
+    assert result['contrasts']['incumbent']['ci95_pp'] == [10., 10.]
+    assert result['contrasts']['old_pair_optional']['ci95_pp'] == [0., 0.]
+    assert not result['primary_supported']

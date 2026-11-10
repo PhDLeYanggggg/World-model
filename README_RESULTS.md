@@ -7,11 +7,10 @@ or evidence status.
 
 ## Match training allocations to the evaluated policy
 
-The next controlled experiment changes how donor allocations are generated.
-It adds nested, location-excluded count producers while keeping the selector,
-training budget and evaluated actions fixed. The protocol is registered;
-training and outcome scoring have not started. The previous negative result
-and external release policies remain unchanged.
+I trained 105 nested nominee producers, 63 recording count heads and 42
+selection heads to match donor allocation generation to the evaluated policy.
+All 21 location/seed choice sets are frozen. Scoring has not started; the
+previous negative result and external release policies remain unchanged.
 [Protocol](outputs/publication_readiness_2026_09/opendd_onpolicy_donors_v1/protocol.md).
 
 ## Learn when to keep an existing allocation
