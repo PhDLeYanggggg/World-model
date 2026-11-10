@@ -12,7 +12,10 @@ absolute full-grid success or gain over keeping the current allocation.
 Inner validation excludes its location from every upstream producer as well
 as the selector. A concurrent five-arm draft changed the initial protocol path;
 the hash check stopped before training. The four-arm experiment is isolated in
-its own directory, leaving that draft intact. 39 focused tests pass.
+its own directory, leaving that draft intact. The 210 new upstream models have
+completed 126,000 updates and passed their lineage check. Inner training is
+running. Author-approved selection now uses net gain across all validation
+recordings; no-exchange views are not counted as safety passes. 41 tests pass.
 [Protocol](outputs/publication_readiness_2026_09/opendd_advantage_factorial_v1/protocol.md).
 
 ## Project handoff and reproducibility map

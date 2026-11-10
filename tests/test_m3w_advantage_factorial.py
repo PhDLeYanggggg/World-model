@@ -78,3 +78,19 @@ def test_summary_keeps_zero_controls_and_does_not_promote_zero_gain():
     assert result['arms']['incumbent']['risk_violation'] == 0
     assert result['contrasts']['inner_selected_minus_incumbent']['ci95_pp'] == [0., 0.]
     assert not result['primary_supported']
+
+
+def test_no_exchange_recordings_have_zero_gain_not_a_safety_pass():
+    from scripts.run_m3w_opendd_advantage_factorial import recording_gain
+    v = dict(slates=0, rescued=0, destroyed=0, gain_rate=None)
+    r = recording_gain(v, dict(recordings=3, slates=0, no_exchange=3))
+    assert r['lower'] == r['upper'] == 0. and r['exchange_slates'] == 0
+    assert 'risk_pass' not in r and 'full_grid_pass' not in r
+
+
+def test_unknown_solver_rows_are_bounded_not_counted_as_zero_gain():
+    from scripts.run_m3w_opendd_advantage_factorial import recording_gain
+    r = recording_gain(dict(slates=4, rescued=2, destroyed=1),
+                       dict(recordings=10, slates=4, no_exchange=5))
+    assert r['unresolved_recordings'] == 1
+    assert r['lower'] == 0. and r['upper'] == .2

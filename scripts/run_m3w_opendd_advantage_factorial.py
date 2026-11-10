@@ -38,14 +38,28 @@ def register():
              prior.OUT/'registration.json', prior.OUT/'producer_freeze.json', prior.OUT/'head_freeze.json',
              prior.OUT/'readout.json', prior.OUT/'generalization_diagnostic.json']
     path = OUT/'registration.json'
-    run.once(path, run.stable(dict(inputs=[run.artifact(p) for p in paths], parent_registration=key,
+    specification = run.stable(dict(inputs=[run.artifact(p) for p in paths], parent_registration=key,
         arms=ARMS, seeds=SEEDS, rank_models=105, count_models=105, inner_models=252, outer_models=84,
         rank_steps=700, count_steps=500, selector_steps=STEPS, batch_slates=32,
         normalization=dict(fit='valid_training_options_only', std_floor=.1, clip=8.),
         inner_selection='equal_validation_location_and_seed_mean_full_grid_gain; nonpositive_keep',
         fixed_tie_order=ARMS, original_2pct=True, outcome_role='exposed_development',
         new_external_outcome_access=False, no_outer_tuning=True, independent_confirmation=False,
-        threads=4, interop=1, workers=0)))
+        threads=4, interop=1, workers=0))
+    if path.exists() and run.read(path) != specification:
+        original = run.read(path)
+        amendment = run.read(OUT/'selection_amendment.json')
+        if (amendment['original_registration'] != run.sha(path)
+                or amendment['original_runner'] != original['inputs'][0]
+                or amendment['replacement_runner'] != specification['inputs'][0]
+                or original['inputs'][1:] != specification['inputs'][1:]
+                or {k: v for k, v in original.items() if k != 'inputs'} !=
+                   {k: v for k, v in specification.items() if k != 'inputs'}
+                or amendment['user_approved_total_recording_gain'] is not True):
+            raise ValueError('Only the approved validation-denominator amendment is allowed')
+        run.checked(amendment['protocol'])
+    else:
+        run.once(path, specification)
     return run.sha(path), context
 
 
@@ -140,6 +154,20 @@ def inner(reg, context, limit, beat):
     return dict(cells=len(cells), updates=updates, complete=True)
 
 
+def recording_gain(validation, audit):
+    """No exchange means zero utility difference, never a risk certificate."""
+    recordings = audit['recordings']
+    slates = validation['slates']
+    unknown = recordings-slates-audit.get('no_exchange', 0)
+    if recordings <= 0 or unknown < 0 or slates != audit['slates']:
+        raise ValueError('Invalid validation recording support')
+    gain = validation['rescued']-validation['destroyed']
+    # Failed solver checks are not zero outcomes: a binary pass difference lies in [-1, 1].
+    return dict(recordings=recordings, exchange_slates=slates, no_exchange=audit.get('no_exchange', 0),
+        unresolved_recordings=unknown, known_net_gain=gain,
+        lower=(gain-unknown)/recordings, upper=(gain+unknown)/recordings)
+
+
 def select(reg):
     frozen = run.read(OUT/'inner_freeze.json')
     if frozen['registration'] != reg or len(frozen['cells']) != 63:
@@ -158,15 +186,16 @@ def select(reg):
                 cells = [r for r in records if r['omitted'] == sorted((held, val_site))]
                 if {r['seed'] for r in cells} != set(SEEDS):
                     raise ValueError('Incomplete inner seed set')
-                rates = [r['validation'][held]['arms'][arm]['gain_rate'] for r in cells]
-                if any(v is None for v in rates):
-                    raise ValueError('Inner validation has no supported slates')
-                support[arm][val_site] = rates
+                bounds = [recording_gain(r['validation'][held]['arms'][arm],
+                                         r['validation'][held]['audit']) for r in cells]
+                rates = [v['lower'] for v in bounds]
+                support[arm][val_site] = bounds
                 values.append(float(np.mean(rates)))
             scores[arm] = float(np.mean(values))
         selection[held] = dict(selected=model.select_arm(scores), mean_gain=scores, per_validation_site=support)
     run.once(OUT/'selection.json', run.stable(dict(registration=reg, inner=run.artifact(OUT/'inner_freeze.json'),
-        choices=selection, outer_outcome_selection=False)))
+        choices=selection, outer_outcome_selection=False,
+        amendment=run.artifact(OUT/'selection_amendment.json'))))
     return selection
 
 
