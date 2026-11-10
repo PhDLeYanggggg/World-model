@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## WEPDTOF: the original edit budget limits forecast replacement
+
+I bounded what any path could improve at the original query counts and
+radii. In 30 of 36 edited views, even arbitrary paths cannot beat OLS4
+under the frozen conservative comparison. All four views that met the
+original risk checks are excluded even on observed steps. This is a
+post-hoc bound on the frozen external test, not a second test or a new
+policy. [Analysis and reproduction](outputs/publication_readiness_2026_09/wepdtof_frozen_capacity_v1/README.md).
+
 ## Anonymous supplementary bundle
 
 I put the reading guide, technical appendix, and two offline replays in

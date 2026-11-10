@@ -1,5 +1,10 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+WEPDTOF 失败诊断：用 `scripts/audit_m3w_wepdtof_frozen_capacity.py`
+复算原候选轨迹、位移预算和 OLS4 的差距，不再读标签。在 36 个有介入的
+视图中，30 个即使允许任意轨迹形状也无法在原预算内超过 OLS4。
+[推导和命令](../outputs/publication_readiness_2026_09/wepdtof_frozen_capacity_v1/README.md)。
+
 补充材料现有一个合并包 `review_supplement_v1.zip`。解压后先读
 `reading_guide.pdf`；长附录和两份离线复算包也在其中。在解压目录运行
 `python -I -B -S verify.py` 可一次复算两套证据。主文 PDF 单独保留，
