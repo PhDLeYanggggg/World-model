@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: interval-supervised replacement experiment
+
+I kept the existing angle candidates, recording masks and risk rule,
+and trained the same selector with an interval rather than a single
+worst-case target for relative motion. The three-seed predictions are
+frozen before the development comparison.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_interval_angle_v1/protocol.md).
+
 ## Athens: equal edit radius does not imply equal path changes
 
 Before scoring Athens, I measured the distance between the frozen

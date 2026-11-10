@@ -191,6 +191,11 @@ OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练�
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效
 检查点。恢复后先看 `heartbeat.json` 与实际日志，再核对结果及哈希。
 
+区间监督消融有单独的[预注册](../outputs/publication_readiness_2026_09/opendd_vehicle_interval_angle_v1/protocol.md)。
+使用相同的本机线程设置运行 `scripts/run_m3w_vehicle_interval_angle.py freeze`，
+中断后运行同一条命令继续。冻结文件与仓库中的版本一致后，再用 `score` 计算开发集对照；
+只用对侧地点定阈值，不能当作一次新的独立外部检验。
+
 雅典 pNEUMA 的[只读准备与复现](../outputs/publication_readiness_2026_09/pneuma_prefix_pilot_v1/README.md)
 生成 643 个历史窗口的三种子预测，并固定每个对照两个等位移的候选动作。
 分块搜索与原搜索一致。此处不打开未来坐标、不计算准确度，也不决定正式划分。
