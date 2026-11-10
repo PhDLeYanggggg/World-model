@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: learn when a direction change is worth making
+
+The previous forecasts cut average error but picked worse angles.
+I trained the next model on the difference between a candidate
+angle and keeping the existing path, separating gain from harm.
+The controls keep the same vehicles, query and displacement.
+[Registered comparison](outputs/publication_readiness_2026_09/opendd_vehicle_action_value_v1/protocol.md).
+
 ## OpenDD vehicles: check the actual spacing between actors
 
 I found that the earlier one-rotation rule weighted neighbors by
