@@ -5,10 +5,11 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v3.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v4.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
+v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -43,6 +44,11 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 同时限制累计峰值位移。事后重排分数 60/606、已知标签事后解 210/606；
 只重排分数不使用标签，但能看全段分数，因此不是线上部署。
 [数值与复跑](../outputs/publication_readiness_2026_09/opendd_count_motion_v1/README.md)。
+
+新训练的评分头用 `scripts/run_m3w_opendd_prefix_value.py --replay` 核对 42 个检查点，
+断点恢复时去掉 `--replay`。固定预算结果为旧头 60、只学增益 48、同一联合头不带惩罚 57、
+带惩罚 42。它没有通过开发对照，不能替换旧策略。
+[训练与负结果](../outputs/publication_readiness_2026_09/opendd_prefix_value_v1/README.md)。
 
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效

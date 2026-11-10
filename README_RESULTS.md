@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: learn gains and harm without changing the forecasts
+
+I fit gain-only and gain-and-risk heads over the same frozen paths, using
+three seeds and leaving each location out of fitting. At the same actual
+counts and movement caps, the risk-penalized head passes 42/606 views,
+against 57 without its penalty and 60 for the frozen scores. It is not a
+replacement for the frozen rule. [Results and replay](outputs/publication_readiness_2026_09/opendd_prefix_value_v1/README.md).
+The [v4 anonymous supplement](outputs/publication_readiness_2026_09/allocation_review_supplement_v1/README.md)
+replays both new allocation comparisons alongside the earlier evidence.
+
 ## OpenDD: match count and cap movement
 
 With each recording's online edit count and total peak-displacement
