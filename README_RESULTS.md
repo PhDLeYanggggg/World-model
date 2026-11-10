@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: match displacement at every prediction step
+
+I kept the two original edits and their directions, then matched
+departure from CV at every step. This retains 87.3% of the original
+total displacement. The joint-minus-independent lower estimate
+moves from -0.000442 to -0.000423 pp, with both source intervals
+crossing zero. The original release result is unchanged.
+[Sensitivity analysis](outputs/publication_readiness_2026_09/songdo_step_budget_v1/README.md).
+[v201 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v201_songdo_step_budget/README.md) |
+[v33 replay](outputs/publication_readiness_2026_09/songdo_step_budget_review_supplement_v1/README.md).
+
 ## OpenDD: run Social-STGCNN on the same forecast task
 
 I added a deterministic Social-STGCNN control using the same vehicle

@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v200 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v200_wepdtof_history/README.md)。
+当前候选：[v201 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v201_songdo_step_budget/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
@@ -13,7 +13,7 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v32.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v33.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -67,6 +67,8 @@ v31 配套 v200，复算 WEPDTOF 的 353 条匹配历史中，起点和速度对
 以及 OLS4 截距重估的 13 来源配对区间。原 v30 一并保留。
 v32 保持 v200 主文不变，新增 OpenDD 的 Social-STGCNN 确定性对照、与 EqMotion 的直接配对、
 匿名附录和 21 个地点×种子结果的复算。主文和补充包不需要访问具名项目仓库。
+v33 配套 v201，复算 Songdo 原峰值、缩小峰值、逐步等位移三种对照和 14 个来源的区间，
+完整保留 v32；不是新外部测试。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -99,6 +101,10 @@ v200 的 WEPDTOF 回顾性实验运行 `scripts/audit_m3w_wepdtof_history_factor
 OpenDD 的 [Social-STGCNN 复现步骤](../outputs/publication_readiness_2026_09/opendd_vehicle_stgcnn_v1/README.md)
 需要本机已核验的 OpenDD 缓存及原论文固定版本源码。先训练并冻结，再评分与配对；
 已有完整检查点时不重训，优化器和抽样状态每 100 步保存。
+
+v201 的 [Songdo 位移时间曲线对照](../outputs/publication_readiness_2026_09/songdo_step_budget_v1/README.md)
+用 `scripts/run_m3w_songdo_step_budget.py freeze` 和 `score` 复现。冻结阶段只读预测；
+评分只重用已经打开的确认航次，不重新校准或打开其他封存数据。
 
 v199 的 easy 参考实验依次运行
 `scripts/run_m3w_opendd_easy_reference_release.py freeze`、`calibrate`、`score`。
