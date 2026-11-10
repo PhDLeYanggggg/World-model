@@ -1,3 +1,5 @@
+from itertools import product
+
 import numpy as np
 import pytest
 
@@ -116,3 +118,23 @@ def test_no_edits_do_not_create_a_defined_risk():
     x = np.zeros((0, 12, 2))
     with pytest.raises(ValueError, match='Expected frozen edited tracks'):
         assess_easy(x, x, x, np.zeros((0, 12), bool), easy_cut=1.)
+
+
+def test_closed_form_matches_both_extreme_completions():
+    cv = np.zeros((3, 12, 2))
+    p, y = cv.copy(), cv.copy()
+    p[..., 0] = np.array([.04, .25, .02])[:, None]
+    y[..., 0] = np.array([.1, .12, .08])[:, None]
+    valid = np.ones((3, 12), bool)
+    valid[1, -1] = valid[2, -2] = False
+    all_excess, easy_excess = [], []
+    for a, b in product((0., .02, .25, 10.), repeat=2):
+        full = y.copy()
+        full[1, -1, 0], full[2, -2, 0] = a, b
+        base = np.linalg.norm(cv-full, axis=-1).sum(-1)
+        harm = np.maximum(np.linalg.norm(p-full, axis=-1).sum(-1)-base, 0.)
+        eligible = (0 < base) & (base <= 2.4)
+        all_excess.append(harm.sum()/base.sum())
+        easy_excess.append((harm[eligible]-.02*base[eligible]).sum())
+    assert assess(cv, p, y, valid)['full_grid_upper'] == pytest.approx(max(all_excess))
+    assert assess_easy(cv, p, y, valid, easy_cut=.2)['easy_excess_supremum'] == pytest.approx(max(easy_excess))

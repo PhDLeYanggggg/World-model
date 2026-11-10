@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Paper: separate missing-label risk from ranking error
+
+The main draft now gives the complete-grid risk test in closed form.
+The OpenDD figure shows what remains at the same edit budget and where
+the ranking gap appears across locations. The anonymous replay also
+recomputes the equal-training listwise comparison. No threshold or
+release decision changed.
+[v211 draft and v45 replay](outputs/publication_readiness_2026_09/evidence_manuscript_v211_exchange_exposition/README.md).
+
 ## OpenDD: rank only the legal alternatives for each recording
 
 On the same 101 intervention views, pointwise training gives 53
