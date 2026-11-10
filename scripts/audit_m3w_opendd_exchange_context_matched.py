@@ -79,7 +79,7 @@ def summarize(groups):
             r['arms']['aligned']['dual_positive']-r['arms'][k]['dual_positive'])/r['views'])) for k in CONTRASTS})
 
 
-def audit():
+def context_cells():
     reg, _, _, motion_key, cells, ranks, _, _, _, _, assets = exp.register()
     p = exp.OUT/'readout.json'
     score, fit = run.read(p), run.read(exp.OUT/'head_freeze.json')
@@ -87,7 +87,6 @@ def audit():
             or score['checkpoint_manifest'] != run.sha(exp.OUT/'head_freeze.json') or not score['original_2pct']):
         raise ValueError('Require the completed and verified context fit')
     sites = {s: parent.prior.prior.old.load_site(s) for s in parent.source.SITES}
-    groups = {}
     for s, d in sites.items():
         path = parent.prior.prior.old.source.prior.PRIVATE/f'{s}_cohort.npz'
         with np.load(path, allow_pickle=False) as z:
@@ -95,7 +94,6 @@ def audit():
         bank = parent.prior.analytic(d)
         raster = exp.road.raster_for(s, assets[s])[0]
         cut = np.quantile(np.concatenate([v['cut_samples'] for t, v in sites.items() if t != s]), [.25, .75])
-        groups[s] = []
         for cell in cells['by_site'][s]:
             seed = cell['seed']
             rank = exp.study.load(ranks['heads'][f'{s}/{seed}/additive_rank'],
@@ -108,12 +106,20 @@ def audit():
                 if m['identity']['held'] != s or s in m['identity']['train']:
                     raise ValueError('A score used held labels')
                 nets[k] = exp.study.load(m, lambda: model.ExchangeRanker(4*menu[0].shape[1]+9), before.STEPS)
-            row = evaluate(s, seed, motion_key, d, bank, menu, base_menu[0].shape[1], nets, cut)
             ref = next(r for r in score['by_site'][s] if r['seed'] == seed)
-            if (row['exchanged'] != ref['transitions']['aligned']['exchanged'] or any(
-                    row['arms']['aligned'][f] != ref['scores']['aligned'][f] for f in ('dual_positive', 'risk_pass', 'undefined'))):
-                raise ValueError('The pre-scoring aligned mask or predictions changed')
-            groups[s].append(dict(seed=seed, **row))
+            yield (s, seed, motion_key, d, bank, menu, base_menu[0].shape[1], nets, cut), ref
+
+
+def audit():
+    p = exp.OUT/'readout.json'
+    groups = {}
+    for inputs, ref in context_cells():
+        s, seed = inputs[:2]
+        row = evaluate(*inputs)
+        if (row['exchanged'] != ref['transitions']['aligned']['exchanged'] or any(
+                row['arms']['aligned'][f] != ref['scores']['aligned'][f] for f in ('dual_positive', 'risk_pass', 'undefined'))):
+            raise ValueError('The pre-scoring aligned mask or predictions changed')
+        groups.setdefault(s, []).append(dict(seed=seed, **row))
     out = dict(rank_readout_sha256=run.sha(p), summary=summarize(groups), by_site=groups, original_2pct=True,
                external_outcome_access=False, offline_matching=True, no_training=True,
                common_intervention_mask='guarded_aligned_history_features')

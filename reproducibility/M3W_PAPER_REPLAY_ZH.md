@@ -77,6 +77,12 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 `scripts/audit_m3w_opendd_exchange_context_matched.py` 固定相同的交换视图并计算精确随机期望。
 [输入、训练和复算](../outputs/publication_readiness_2026_09/opendd_exchange_context_v1/README.md)。
 
+在本地开发数据上，`scripts/audit_m3w_opendd_exchange_attrition.py` 区分漏出手与选错交换；
+可挽救 121 个，其中 77 个没有出手。随后用
+`scripts/run_m3w_opendd_exchange_risk_heads.py --replay` 核对显式风险监督对照：
+同样的 101 次交换下为 49 个双通过，未超过随机期望 51.21。
+[检查点与训练命令](../outputs/publication_readiness_2026_09/opendd_exchange_risk_heads_v1/README.md)。
+
 OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
 PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效
 检查点。恢复后先看 `heartbeat.json` 与实际日志，再核对结果及哈希。

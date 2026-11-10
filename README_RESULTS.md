@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: why the exchange ranker loses its hindsight advantage
+
+Of 121 views with a legal rescue, the frozen guard misses 77. On the
+other 44, the ranker chooses only five rescues; 37 of its 39 misses
+fail the risk checks or lack risk support. I trained a model to
+predict the risk stages separately. At the same exchange views it
+passes 49/606, compared with 48 for its equal-architecture control,
+51.21 expected by chance and 60 without exchanging. I kept the
+original rule. [Exact diagnosis](outputs/publication_readiness_2026_09/opendd_exchange_attrition_v1/README.md)
+and [risk supervision experiment](outputs/publication_readiness_2026_09/opendd_exchange_risk_heads_v1/README.md).
+
 ## OpenDD: do map and peer history improve exchange ranking?
 
 I held the exchange views fixed across arms. On the same 101 exchanges,
