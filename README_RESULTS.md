@@ -7,10 +7,12 @@ or evidence status.
 
 ## OpenDD: rank only the legal alternatives for each recording
 
-I froze three equal-training controls before scoring: pointwise,
-listwise with the original target, and listwise with the full-grid
-target. All will choose within the same 101 intervention views.
-[Design and frozen choices](outputs/publication_readiness_2026_09/opendd_listwise_exchange_v1/protocol.md).
+On the same 101 intervention views, pointwise training gives 53
+full-grid passes, listwise gives 48, and listwise with full-grid
+labels gives 47. The stricter labels do not improve on the original
+listwise target or same-mask uniform choice reliably. I kept the
+incumbent at 55 passes.
+[Experiment and reproduction](outputs/publication_readiness_2026_09/opendd_listwise_exchange_v1/README.md).
 
 ## OpenDD: missing positions do not close the selection gap
 

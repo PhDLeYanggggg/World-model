@@ -101,6 +101,11 @@ v210 的 [OpenDD 同预算十二步风险分析](../outputs/publication_readines
 可运行 `scripts/audit_m3w_opendd_full_grid_exchange.py`。已有 21 个本地检查点时按同一命令复算汇总；
 缺少对应检查点时会从已核验的 OpenDD 资产重新评分。这里不重训，也不打开新外部数据。
 
+后续 [同一录像候选列表训练](../outputs/publication_readiness_2026_09/opendd_listwise_exchange_v1/README.md)
+用 `scripts/run_m3w_opendd_listwise_exchange.py fit` 保存 63 个模型与冻结选择，
+再运行同脚本 `score`。有完整检查点时，重跑 `fit` 应显示 `updates: 0`。
+新排序器未超过现有方案，因此主文 v210 和补充包 v44 不变。
+
 v200 的 WEPDTOF 回顾性实验运行 `scripts/audit_m3w_wepdtof_history_factorial.py`。
 这条命令读回已评分的 15 段 WEPDTOF 标注，核对三种子原 CV/OLS4 指标，
 再评分固定的历史替换对照。不是匿名汇总复算，也不会打开雅典、瑞士或 DroneCrowd 封存目标。
