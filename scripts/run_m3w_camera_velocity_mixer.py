@@ -14,7 +14,7 @@ from scripts import run_m3w_camera_noise_control as old
 from src.world_model import m3w_camera_velocity_bank as velocity
 
 study, base, np, torch = old.study, old.base, old.np, old.torch
-OUT = study.OUT.parent/'camera_velocity_mixer_v1'
+OUT = study.OUT.parent/'camera_velocity_mixer_v2'
 LOCAL = study.PRIVATE.parent/OUT.name
 ARMS = ('clean', 'noise', 'noise_preserve')
 STEPS, BATCH = 800, 128
@@ -35,15 +35,24 @@ def register():
     registration = OUT/'registration.json'
     base.immutable(registration, dict(source=base.PILOT, arms=ARMS, seeds=study.SEEDS, steps=STEPS,
         batch=BATCH, threads=4, workers=0, exposures='open development pilot only; no model or threshold selected here',
+        loss_scale_floor_rule='q10 of positive RMS steps in original donor histories',
         assets=[study.artifact(p) for p in (Path(__file__), Path(velocity.__file__), Path(old.noise.__file__),
                  Path(old.__file__), old.OUT/'registration.json', control, cutpath, parent, OUT/'protocol.md')],
         donors=donor['donors'], held_outcomes_accessed=False, original_2pct=True))
     return base.sha(registration), donor['donors'], frozen['forecasts']['wepdtof'], windows, cut['cut_px']
 
 
-def fit(key, seed, arm, donors):
+def donor_scale_floor(donors):
+    steps = np.concatenate([velocity.features(h)[2] for h, _, _ in donors])
+    positive = steps[steps > 1e-8]
+    if not len(positive):
+        raise ValueError('At least one positive donor motion scale is required')
+    return float(np.quantile(positive, .10))
+
+
+def fit(key, seed, arm, donors, floor):
     path = LOCAL/f'{arm}_{seed}.pt'
-    identity = dict(registration=key, seed=seed, arm=arm)
+    identity = dict(registration=key, seed=seed, arm=arm, donor_loss_scale_floor=floor)
     torch.manual_seed(seed)
     net = velocity.VelocityMixer()
     opt = torch.optim.AdamW(net.parameters(), lr=.002)
@@ -65,6 +74,7 @@ def fit(key, seed, arm, donors):
         if arm != 'clean':
             h, y = old.noise.perturb(h, y, aug)
         x, v, scale = velocity.features(h)
+        scale = scale.clip(floor)
         v = torch.from_numpy((v/scale[:, None, None]).astype(np.float32))
         y = torch.from_numpy(np.where(valid[..., None], y/scale[:, None, None], 0.).astype(np.float32))
         predict, _ = net(torch.from_numpy(x), v)
@@ -90,6 +100,7 @@ def fit(key, seed, arm, donors):
 
 def forecast(key, donors, controls, h, q, ids):
     data = old.training_data(donors)
+    floor = donor_scale_floor(data)
     x, v, _ = velocity.features(h)
     t = np.arange(1., 13.)[None, :, None]
     forecasts, fits = {}, {}
@@ -103,7 +114,7 @@ def forecast(key, donors, controls, h, q, ids):
             for k in ('cv', 'ols4', 'median4'):
                 np.testing.assert_allclose(pred[k], z[k], rtol=1e-10, atol=1e-10)
         for arm in ARMS:
-            net, fits[f'{arm}_{seed}'] = fit(key, seed, arm, data)
+            net, fits[f'{arm}_{seed}'] = fit(key, seed, arm, data, floor)
             with torch.inference_mode():
                 _, w = net(torch.from_numpy(x), torch.from_numpy(v.astype(np.float32)))
             weight = w.numpy().astype(float)
@@ -126,7 +137,7 @@ def forecast(key, donors, controls, h, q, ids):
             np.savez(tmp, **pred)
             tmp.replace(p)
         forecasts[str(seed)] = study.artifact(p)
-    base.immutable(OUT/'freeze.json', dict(registration=key, forecasts=forecasts, fits=fits,
+    base.immutable(OUT/'freeze.json', dict(registration=key, forecasts=forecasts, fits=fits, donor_loss_scale_floor=floor,
         updates=STEPS*len(ARMS)*len(study.SEEDS), development_outcomes_not_read_during_fit=True,
         fixed_final_step=True, test_access=False))
 

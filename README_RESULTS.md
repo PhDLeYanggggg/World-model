@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Camera history: the normalized refit improves utility, not release
+
+I repeated the nine fits with a motion floor learned only from donor
+histories. The maximum logged batch loss falls from 771,838 to 2.21.
+With the easy penalty the refit improves conservative utility over
+OLS4 and median8 in all three seeds on the exposed camera. Median8
+still has lower ADE; no arm meets the original 2% risk checks.
+[Matched refit and checkpoints](outputs/publication_readiness_2026_09/camera_velocity_mixer_v2/README.md).
+
 ## Camera history: a velocity-only forecast check
 
 I trained nine matched velocity mixers on the existing OpenDD donors.

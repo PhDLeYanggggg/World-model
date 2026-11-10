@@ -1,5 +1,11 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+相机速度模型：在 arm64 `.venv-pytorch` 运行
+`scripts/run_m3w_camera_velocity_mixer.py`。使用 4 个计算线程、0 个
+数据加载进程；每 100 步写入检查点，重跑自动恢复。同批次对照修复
+静止历史的训练归一化，但开发相机上仍未通过 2% 门槛。
+[训练、恢复与结果](../outputs/publication_readiness_2026_09/camera_velocity_mixer_v2/README.md)。
+
 WEPDTOF 失败诊断：用 `scripts/audit_m3w_wepdtof_frozen_capacity.py`
 复算原候选轨迹、位移预算和 OLS4 的差距，不再读标签。在 36 个有介入的
 视图中，30 个即使允许任意轨迹形状也无法在原预算内超过 OLS4。

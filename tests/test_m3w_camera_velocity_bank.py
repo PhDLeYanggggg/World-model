@@ -3,6 +3,7 @@ import pytest
 import torch
 
 from src.world_model.m3w_camera_velocity_bank import VelocityMixer, features, loss
+from scripts.run_m3w_camera_velocity_mixer import donor_scale_floor
 
 
 def test_all_velocity_anchors_recover_constant_motion():
@@ -50,3 +51,11 @@ def test_guard_penalizes_harm_but_not_fully_masked_rows():
 def test_future_positions_cannot_extend_the_feature_input():
     with pytest.raises(ValueError, match='eight finite past positions'):
         features(np.ones((2, 20, 2)))
+
+
+def test_donor_loss_floor_ignores_future_targets_and_stationary_rows():
+    h = np.arange(8)[None, :, None] * np.array([[[0., 0.]], [[1., 0.]], [[2., 0.]]])
+    donor = [(h, np.zeros((3, 12, 2)), None)]
+    other = [(h, np.full((3, 12, 2), 1e8), None)]
+    assert donor_scale_floor(donor) == pytest.approx(1.1)
+    assert donor_scale_floor(other) == donor_scale_floor(donor)
