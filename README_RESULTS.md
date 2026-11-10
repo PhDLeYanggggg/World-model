@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: separate the decision to rotate from the angle
+
+I kept one nominated rotation per recording and trained a separate
+model to recognize when the angle menu contains a useful change.
+The same forecast is compared under action confidence, the new score,
+and both together. The comparison holds the number of rotations fixed.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_opportunity_v1/protocol.md).
+
 ## OpenDD vehicles: learn when a direction change is worth making
 
 I trained on the gain and harm of an angle change rather than future
