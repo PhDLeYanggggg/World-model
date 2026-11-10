@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## External evaluation: separate missing labels from source uncertainty
+
+I replotted the frozen WEPDTOF and Songdo comparisons. In WEPDTOF
+the missing labels can change the direction of the sample result.
+In Songdo even the favorable missing-label endpoint is negative
+in the observed components, but the source bootstrap crosses zero.
+Neither result changes the original release decision.
+[Readout](outputs/publication_readiness_2026_09/external_completion_panel_v1/README.md),
+[v190 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v190_external_bounds/README.md),
+and [v20 replay](outputs/publication_readiness_2026_09/external_completion_review_supplement_v1/README.md).
+
 ## Athens: rehearse the readout with fabricated futures
 
 I ran both date-role protocols on synthetic targets. The zero-shot

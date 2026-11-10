@@ -70,7 +70,8 @@ improves the forecast from the past.
                                                     f"{abs(d['point']):.4f}", f'{n} chosen actors')
 
 
-def build(destination, compiler, receipt, *, parent_dir=prior.EXCHANGE_OUT, read_inputs=inputs, revise_source=revise):
+def build(destination, compiler, receipt, *, parent_dir=prior.EXCHANGE_OUT, read_inputs=inputs, revise_source=revise,
+          extra_assets=None):
     parent = supplement.read_receipt(parent_dir.name)
     raw = {k: supplement.checked(parent_dir/k, v) for k, v in parent['artifacts'].items()}
     with ZipFile(BytesIO(raw['main_source.zip'])) as z:
@@ -84,6 +85,10 @@ def build(destination, compiler, receipt, *, parent_dir=prior.EXCHANGE_OUT, read
     rows, hashes = read_inputs()
     revised, markers = revise_source(original, rows)
     files['manuscript.tex'] = revised.encode('ascii')
+    extra_assets = extra_assets or {}
+    if set(extra_assets) & files.keys() or any(Path(k).name != k or not k.endswith('.pdf') for k in extra_assets):
+        raise ValueError('Extra assets must be new flat PDF members')
+    files.update(extra_assets)
     if scope.citation.used_citations(files) != citations:
         raise ValueError('Bibliography changed unexpectedly')
     style = supplement.checked(scope.citation.main.DRAFT/'cvpr.sty', scope.citation.STYLE_SHA)
@@ -106,6 +111,8 @@ def build(destination, compiler, receipt, *, parent_dir=prior.EXCHANGE_OUT, read
     result = dict(pages=pages, prior_manuscript_sha256=parent['artifacts']['manuscript.pdf'], source_readout_sha256=hashes,
         artifacts={k: main.digest(v) for k, v in output.items()}, only_changed_archive_member='manuscript.tex',
         title_abstract_disclosure_unchanged=True, external_outcomes_unchanged=True, uploaded=False, submission_ready=False)
+    if extra_assets:
+        result['added_archive_assets_sha256'] = {k: main.digest(v) for k, v in extra_assets.items()}
     deliver = {**{destination/k: v for k, v in output.items()}, receipt: main.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in deliver.items()):
         raise FileExistsError('Refusing to replace a different candidate artifact')
