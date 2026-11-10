@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: check risk on all twelve forecast steps
+
+I kept the 40-flight calibration, 160-flight confirmation, and original
+2% rule fixed. A separate worst-case check for missing steps preserves
+176 of the 179 independent matched proposals and 68 of the 69 joint
+matched proposals that passed all three original checks. These are not
+release counts: the frozen joint policy released nothing, and only five
+of the 15 actual independent releases passed all three original checks.
+[Risk analysis](outputs/publication_readiness_2026_09/songdo_full_grid_all_risk_v1/README.md) |
+[Reader supplement](outputs/publication_readiness_2026_09/reader_supplement_v1/README.md).
+
 ## Songdo: use one missing position across seeds
 
 Matching predictions across the three seeds tightens the bounds without
