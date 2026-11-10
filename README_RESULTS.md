@@ -7,10 +7,16 @@ or evidence status.
 
 ## OpenDD vehicles: separate trajectory and interaction gains
 
-I keep the original intervention masks and ask whether both learned
-utility heads agree before replacing the first angle. The unchanged
-utility selector and a trajectory-only rule are the matched controls.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_angle_agreement_v1/protocol.md).
+I kept the original intervention masks and required predicted
+trajectory and relative-motion improvements before changing the angle.
+At 526 rotations there were 66 qualifying alternatives in hindsight;
+the agreement rule found nine. Opposite-site calibration made one
+replacement and did not improve either measure. At the 15% budget,
+agreement improved trajectory error slightly but still worsened
+relative motion. I kept the original policy.
+[Results and intervals](outputs/publication_readiness_2026_09/opendd_vehicle_angle_agreement_v1/README.md),
+[v188 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v188_angle_agreement/README.md),
+and [v18 anonymous replay](outputs/publication_readiness_2026_09/vehicle_angle_agreement_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: choosing among three angles at the same budget
 
