@@ -7,10 +7,11 @@ or evidence status.
 
 ## OpenDD: separate observation support from swap gain
 
-I separated the share of the forecast change that can be scored from
-its gain or harm on observed steps. A matched feature ablation checks
-whether a rectangle built from past observations helps predict support.
-[Protocol](outputs/publication_readiness_2026_09/opendd_swap_support_v1/protocol.md).
+I separated observation support from the gain or harm on observed
+steps. The held-location ranking screen passed. I froze a fixed-count
+allocation from the new scores to test whether the ranking gain helps
+at the original budget.
+[Allocation protocol](outputs/publication_readiness_2026_09/opendd_swap_support_allocation_v1/protocol.md).
 
 ## OpenDD: predict the value of the nominated swap
 

@@ -33,3 +33,20 @@ def test_footprint_is_translation_invariant_and_uses_no_outcomes():
     x = model.footprint(h, o, cv, a, b)
     np.testing.assert_allclose(x, model.footprint(h, o+[4., 2.], cv, a, b), atol=1e-6)
     assert x.shape == (2, 9)
+
+
+def test_allocation_changes_only_the_mask_at_fixed_count_and_movement():
+    from scripts.run_m3w_opendd_swap_support_allocation import nominate
+
+    old = dict(actions=np.array([0, 1, 2, -1]), cost=np.array([1., 1., 1., 0.]),
+               budget_anchor=np.array([True, False, False, False]),
+               opportunity=np.array([True, False, False, False]))
+    scores = np.zeros((3, 2, 4))
+    scores[:, 0, 3] = [.6, .5, .3]
+    scores[:, 1, 3] = [.0, .6, 1.]
+    result, status = nominate(old, {'footprint': scores})
+    np.testing.assert_array_equal(result['actions'], old['actions'])
+    assert result['trajectory'].tolist() == [True, False, False, False]
+    assert result['joint'].sum() == 1
+    assert result['joint'].tolist() != result['trajectory'].tolist()
+    assert status['joint'] == 'optimal'
