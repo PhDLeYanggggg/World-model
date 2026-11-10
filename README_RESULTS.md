@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Paper: put the controls in one readable appendix
+
+I separated feasibility, selection and frozen transfer in the
+introduction. The appendix now puts the training recipe, the
+fixed-spend and equal-training controls, the relative trajectory
+table and the label-timing figure in one PDF. It preserves the
+external evidence and changes no result.
+[v216 manuscript and integrated reader](outputs/publication_readiness_2026_09/evidence_manuscript_v216_integrated_reader/README.md).
+
 ## OpenDD: equal coverage does not make missing labels equivalent
 
 I hid the first or last three steps of the same 3,711 complete queries.
