@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: separate observation support from swap gain
+
+I separated the share of the forecast change that can be scored from
+its gain or harm on observed steps. A matched feature ablation checks
+whether a rectangle built from past observations helps predict support.
+[Protocol](outputs/publication_readiness_2026_09/opendd_swap_support_v1/protocol.md).
+
 ## OpenDD: predict the value of the nominated swap
 
 I kept the same nominations and 353 swaps. Scoring individual value
