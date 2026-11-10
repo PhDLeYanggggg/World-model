@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: choose when to swap at the same budget
+
+I trained a query-level opportunity score and froze one recipient
+choice per query. The matched comparison reallocates the previous
+353 swaps without increasing displacement spend.
+[Protocol](outputs/publication_readiness_2026_09/opendd_recipient_query_mask_v1/protocol.md).
+
 ## OpenDD: learn which same-budget swaps qualify
 
 I held the 353 swap queries fixed and compared gain ranking with a
