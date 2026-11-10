@@ -23,12 +23,15 @@ def interval(values, digits=5):
     return '[' + ', '.join(f'{x:+.{digits}f}' for x in values) + ']'
 
 
-def render(result):
+def render(result, *, page_number=1, section=None):
     raw = BytesIO()
     pdf = canvas.Canvas(raw, pagesize=(612, 792), invariant=1)
     pdf.setAuthor('Anonymous')
     pdf.setTitle('External comparisons at matched intervention budgets')
-    y = style.para(pdf, 'External comparisons at matched intervention budgets',
+    title = 'External comparisons at matched intervention budgets'
+    if section:
+        title = f'{section}. {title}'
+    y = style.para(pdf, title,
                    742, size=16, lead=20, bold=True, space=12)
     y = style.para(pdf, 'Eight observed and twelve forecast steps per cohort. '
                   'The original comparisons match edit counts; WEPDTOF and Songdo '
@@ -68,7 +71,7 @@ def render(result):
     y = style.para(pdf, 'Data source: pNEUMA &ndash; open-traffic.epfl.ch. '
                   'Barmpounakis and Geroliminis (2020), doi:10.1016/j.trc.2019.11.023; '
                   'release doi:10.5281/zenodo.10491409.', y, size=9.5, lead=12)
-    style.finish(pdf, 1, y)
+    style.finish(pdf, page_number, y)
     pdf.save()
     content = raw.getvalue()
     pages = PdfReader(BytesIO(content)).pages

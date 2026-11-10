@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens in the manuscript and anonymous replay
+
+The new manuscript includes the four-date Athens result: a small
+gain over CV, but no established advantage over independent selection.
+The appendix now puts all three external comparisons in one place.
+The author's editable Word and previous files remain unchanged.
+[Manuscript, appendix and verification](outputs/publication_readiness_2026_09/evidence_manuscript_v219_athens_confirmation/README.md).
+
 ## Compare external evaluations at equal forecast movement
 
 The three external readouts now share one presentation. The

@@ -1,19 +1,22 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v218 主文、合并补充 PDF 和匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v218_wepdtof_penalty/README.md)。
+当前独立候选：[v219 主文、合并补充 PDF 和匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v219_athens_confirmation/README.md)。
+作者正在修改的 v218 Word 保持不动；v219 不会覆盖或自动合并作者修改。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
-另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
-两地只跑过去轨迹推理与人工目标排演，可在批准正式划分前复现；不得把它写成真实外部精度。
-雅典的[单次读标注流程](../outputs/publication_readiness_2026_09/pneuma_single_readout_v1/README.md)
-会在同一次读取中计算主结果、选人/选路归因和逐步等位移对照；两种正式协议都只做了人工目标排演。
+Athens 已按获批的四天零样本协议完成正式评分，见
+[冻结结果](../outputs/publication_readiness_2026_09/pneuma_confirmation_v1/README.md)。
+主结果、选人/选路归因和逐步等位移对照均已评分；没有 Athens 校准或部署放行测试。
+Swiss 的[原九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)
+仍不能借用 Athens 的评分状态。两个数据源不可混写为已完成。
 已评分的 Songdo 可另行运行 `scripts/audit_m3w_songdo_two_factor_bounds.py`，
 按 [两种顺序平均](../outputs/publication_readiness_2026_09/songdo_two_factor_bounds_v1/README.md)
 重算受介入对象和路径各自的贡献，不改变原放行判断。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机黑白排版交付目录为 `data/stage_cvpr2027_experiments/submission_admin/local_handoff_v218_serif/`。
+本机候选交付目录为 `data/stage_cvpr2027_experiments/submission_admin/local_handoff_v219_athens/`。
+正文与表格保持学术黑白排版，原代码生成图保留原色。
 其中 `paper.pdf`、`supplement.pdf` 和 `replay.zip` 由同一份 `manifest.json` 绑定。
 补充 PDF 已包含近期新增表格和等覆盖率图，不需要解压才能阅读。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
@@ -29,6 +32,10 @@ v49 再复算 3,711 个完整窗口等覆盖率遮挡的偏差和地点区间；
 v216 交付包保留 v49 的核验链，并检查合并附录的表格值与原始汇总一致。
 v217 再复算 WEPDTOF 的逐步等位移对照：198 个介入查询、每组 366 次修改、10 个可估来源。
 v218 修正 WEPDTOF 对照名，并复算冻结权重 0.10 不改变选择的原因；原效用数值不变。
+v219 新增 Athens 日期汇总和三外部域同预算对照。应看到联合方案对 CV 的缺失标签界
+[+0.02383, +0.08858] pp，对独立选择为 [-0.04427, +0.05304] pp；四日期都不能确定
+联合选择优于独立选择。还会重算逐步等位移敏感性的 3,000 次配对区间。
+包内的 `athens_release_evaluated: false` 必须保持 false，不能把固定提案检查写成部署放行。
 v43 的 WEPDTOF 校验继续保留：4 个联合方案在完整十二步下仍通过风险，其中 3 个不能同时超过两个基线。
 v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
 v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。
