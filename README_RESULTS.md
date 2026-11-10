@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: changing two directions did not beat independent choices
+
+I kept the same two vehicles and the same displacement at every
+prediction step across 493 development recordings. Of 1,431 views
+with a direction pair that passed both checks and improved relative
+motion in hindsight, 1,393 had a solution that rotated only one
+vehicle. Forcing both vehicles to rotate made the coupled rule worse
+than independent rotation. Letting the rule keep both original
+directions reduced intervention, but did not beat leaving them alone.
+This was a development comparison; no external result or release changed.
+[Two-vehicle test](outputs/publication_readiness_2026_09/opendd_vehicle_angular_pair_v1/README.md),
+[single-rotation control](outputs/publication_readiness_2026_09/opendd_vehicle_single_rotation_v1/README.md),
+[v180 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v180_vehicle_direction/README.md),
+and [v10 anonymous replay](outputs/publication_readiness_2026_09/vehicle_direction_review_supplement_v1/README.md).
+
 ## OpenDD: calibration changes when to rotate, not which angle works
 
 I froze thresholds fitted across donor locations before scoring each

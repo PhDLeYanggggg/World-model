@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v179 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v179_exact_exchange/README.md)。
+当前候选：[v180 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v180_vehicle_direction/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v9.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v10.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -15,8 +15,11 @@ v6 新增编辑交换界限：零交换 60、至多一次 178–183、不限次�
 v7 保留这些界限，并将至多一次的范围精确收紧为 181；另复算同录像随机对照。
 v8 增加地图和邻居消融：在同样 101 次交换上复算正确对齐 47 个双通过、
 随机期望 51.21，以及对应的地点置信区间。主文仍为 v179。
-v9 保留这些检查并加入六项方向对照：校准把旋转从 710 降到 198，
+v9 配套 v179，保留这些检查并加入六项方向对照：校准把旋转从 710 降到 198，
 固定角度在同一批对象上优于学习角度；同数量随机对象复现了大部分收益。
+v10 保留 v9 并加入独立的车辆开发对照：493 段录像的 8,874 个重复视图中，
+1,431 个事后有合格方向解且相对运动改善，1,393 个只转一辆就有解。
+这些车辆计数不与行人计数合并。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -41,6 +44,12 @@ env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/ru
 OpenDD 检查点复跑应完成全部 21 个地点×种子组合，终态 `complete`，且 `updates: 0`。
 它会读本机已经使用过的开发目标，但不会打开封存的 DroneCrowd 确认标签。
 Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就不能声称复跑成功。
+
+复算 v180 的车辆方向实验，依次运行
+`scripts/audit_m3w_vehicle_angular_pair.py` 和 `scripts/audit_m3w_vehicle_single_rotation.py`。
+两项沿用本机冻结的车辆双编辑记录，不重新训练或读外部确认标签。
+[双车对照](../outputs/publication_readiness_2026_09/opendd_vehicle_angular_pair_v1/README.md)、
+[同对象单旋转对照](../outputs/publication_readiness_2026_09/opendd_vehicle_single_rotation_v1/README.md)。
 
 要复算 v175 新增的 OpenDD 固定实际编辑次数诊断，用
 [`audit_m3w_opendd_realized_stream_capacity.py` 和 `report_m3w_opendd_realized_stream_capacity.py`](../outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)。
