@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: use the recipient policy when generating training actions
+
+I trained nested copies of the additive chooser. For each donor
+recording, the comparison holds the query, ordered path families
+and radius fixed while changing how the recipients are picked.
+Both arms use one training example per recording.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_policy_anchor_v1/protocol.md).
+
 ## OpenDD vehicles: match the path family used at training time
 
 I replaced the randomly drawn path family with the learned family
