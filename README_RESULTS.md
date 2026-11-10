@@ -7,11 +7,15 @@ or evidence status.
 
 ## OpenDD vehicles: train directly on the proposed replacement
 
-I fit two matched models on the same angle pairs. One predicts the
-difference of two anchor-based scores; the other is trained on a
-direct conservative comparison with the original angle. The original
-recording masks and 2% risk rule remain in place.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_pair_angle_v1/protocol.md).
+I trained two matched models on the same angle pairs. Direct comparison
+changed the positive relative-motion training label in 19% of pairs.
+At 526 rotations it produced 11 qualifying replacements out of 89,
+versus 22 out of 209 for the anchor-difference target. Calibration
+kept the original angle every time. The missing-label bounds span zero,
+so the negative lower bound is not proof of worse relative motion.
+[Results and bounds](outputs/publication_readiness_2026_09/opendd_vehicle_pair_angle_v1/README.md),
+[v189 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v189_pair_angle/README.md),
+and [v19 anonymous replay](outputs/publication_readiness_2026_09/vehicle_pair_angle_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: separate trajectory and interaction gains
 

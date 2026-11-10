@@ -29,3 +29,17 @@ def test_missing_target_can_reverse_proxy_sign():
     label[valid] = 0.
     y = targets(paths, label, valid, scale(paths), np.ones(4, dtype=bool))
     np.testing.assert_allclose(y[0, :4], [1., 1., -1/3, -1/3], atol=1e-7)
+
+
+def test_missing_pair_targets_widen_the_bound_not_the_observed_term():
+    from scripts.audit_m3w_vehicle_pair_angle_bounds import pair_bounds
+
+    before = np.zeros((2, 2, 2))
+    after = before.copy()
+    after[0, :, 0] = 1.
+    valid = np.array([[True, False], [True, True]])
+    target = np.zeros_like(before)
+    target[~valid] = np.nan
+    values, n = pair_bounds(after, before, target, valid)
+    np.testing.assert_allclose(values, [-1., 0., -.5, .5])
+    assert n == dict(changed=2, observed_changed=1)

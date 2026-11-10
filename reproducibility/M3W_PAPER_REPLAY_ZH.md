@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v188 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v188_angle_agreement/README.md)。
+当前候选：[v189 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v189_pair_angle/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v18.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v19.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -33,6 +33,8 @@ v17 固定原出手录像复算 54、50、55、56 个严格通过，事后上限
 固定 15% 预算下轨迹误差略改善，相对运动变差。校准后没有替换原策略。
 v18 另复算在原 526 次出手中，66 次有事后合格替代，预测一致规则选中九次，
 跨地点校准后换角一次，没有合格改善。出手录像未变。
+v19 另复算直接监督对同网络代理标签的对照：44,370 个训练对中，
+8,412 个相对运动的正收益标签不同；校准后无合格替换。包内同时核对缺失标签界限。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -100,6 +102,11 @@ v187 使用 `scripts/run_m3w_vehicle_shortlist.py freeze` 与 `score`，
 v188 使用 `scripts/run_m3w_vehicle_angle_agreement.py freeze` 与 `score`；
 这两条复用 v187 本机权重，不训练新模型。
 [规则、复跑和区间](../outputs/publication_readiness_2026_09/opendd_vehicle_angle_agreement_v1/README.md)。
+
+v189 使用 `scripts/run_m3w_vehicle_pair_angle.py freeze` 和 `score`。
+前者按已完成的方向和训练检查点恢复，后者复用已评分的方向；另用
+`scripts/audit_m3w_vehicle_pair_angle_bounds.py` 复算相对运动的两侧界限。
+[配对训练与复算](../outputs/publication_readiness_2026_09/opendd_vehicle_pair_angle_v1/README.md)。
 
 要复算 v175 新增的 OpenDD 固定实际编辑次数诊断，用
 [`audit_m3w_opendd_realized_stream_capacity.py` 和 `report_m3w_opendd_realized_stream_capacity.py`](../outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)。
