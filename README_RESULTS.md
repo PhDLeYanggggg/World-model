@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Match training allocations to the evaluated policy
+
+The next controlled experiment changes how donor allocations are generated.
+It adds nested, location-excluded count producers while keeping the selector,
+training budget and evaluated actions fixed. The protocol is registered;
+training and outcome scoring have not started. The previous negative result
+and external release policies remain unchanged.
+[Protocol](outputs/publication_readiness_2026_09/opendd_onpolicy_donors_v1/protocol.md).
+
 ## Learn when to keep an existing allocation
 
 I trained 42 OpenDD selection heads across seven locations and three
