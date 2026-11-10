@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: predict the value of the nominated swap
+
+I trained separate estimates of the gains and costs of each proposed
+swap, including its changes to relative trajectories. I kept the same
+nominations and 353-swap budget to compare the two allocation scores.
+[Protocol](outputs/publication_readiness_2026_09/opendd_realized_swap_value_v1/protocol.md).
+
 ## OpenDD: choose when to swap at the same budget
 
 At the same 353 swaps and nearly the same movement spend, the query
