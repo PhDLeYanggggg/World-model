@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: match the number of angle replacements
+
+The interval-trained selector proposed more changes, so I compared
+both selectors at exactly 78 replacements. It found 13 qualifying
+replacements versus 11 for the original loss and 14.0 expected
+from a random subset of its own proposals. The paired trajectory
+interval crosses zero. This separates proposal volume from ranking;
+the deployment decision is unchanged.
+[Readout](outputs/publication_readiness_2026_09/opendd_interval_matched_replacements_v1/README.md),
+[v191 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v191_equal_replacements/README.md),
+and [v22 replay](outputs/publication_readiness_2026_09/interval_match_review_supplement_v1/README.md).
+
 ## OpenDD: learning from an interval does not improve release
 
 I retrained the selector using the range of relative-motion gains
