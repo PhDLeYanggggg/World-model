@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: match movement as well as the number of edits
+
+I matched both movement budgets within 1% at the same 2,196 recording views
+per arm. Support-weighted ranking helps on observed steps, but the direct
+conservative contrast remains negative. Matching how much we move forecasts
+does not match the label coverage of that movement.
+[Experiment](outputs/publication_readiness_2026_09/opendd_fixed_joint_budget_v1/README.md) |
+[v205 draft and replay](outputs/publication_readiness_2026_09/evidence_manuscript_v205_fixed_joint_budget/README.md).
+
 ## OpenDD: test release scores with the two paths fixed
 
 At 2,196 matched recording views, adding predicted easy-reference support
