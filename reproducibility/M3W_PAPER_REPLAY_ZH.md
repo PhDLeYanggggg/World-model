@@ -1,0 +1,62 @@
+# M3W 论文：本机与 CREATE 复现入口
+
+当前候选：[v174 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v174_verified_references/README.md)。
+这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
+
+## 1. 匿名补充包：只复算已冻结结果
+
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v3.zip`。
+解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
+不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
+OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
+四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
+
+```sh
+python3 -I -B -S scripts/audit_m3w_songdo_frozen_menu_capacity.py
+```
+
+这不是重新推理或读标签；197/480 不是可部署成绩。
+
+## 2. 本机：来源核对与真实检查点复跑
+
+使用 Apple Silicon 原生 `.venv-pytorch/bin/python`。先核对解释器架构、Torch 和 NumPy；
+不要用 Rosetta 下的 x86_64 Conda。训练入口设 4 个 Torch 计算线程、单进程采样，
+不创建 DataLoader 子进程。若要换硬件或重建环境，先用冻结检查点跑通，再解释训练日志。
+
+```sh
+.venv-pytorch/bin/python -c 'import platform, torch, numpy; print(platform.machine(), torch.__version__, numpy.__version__)'
+env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/audit_m3w_paper_evidence_lineage.py
+env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/run_m3w_recording_count.py --replay
+```
+
+来源核对应找到 7 个 OpenDD 地点、202 段录像和 3,395 个录像内不重叠查询；
+OpenDD 检查点复跑应完成全部 21 个地点×种子组合，终态 `complete`，且 `updates: 0`。
+它会读本机已经使用过的开发目标，但不会打开封存的 DroneCrowd 确认标签。
+Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就不能声称复跑成功。
+
+OpenDD 入口每 100 步原子保存模型、优化器、采样状态和训练身份。仅在确认既有
+PID 退出、数据和注册文件一致后，才用原命令去掉 `--replay` 恢复训练；不要删除有效
+检查点。恢复后先看 `heartbeat.json` 与实际日志，再核对结果及哈希。
+
+## 3. CREATE：先查已有作业，再决定是否提交
+
+主文这组复算在本机完成，不需重新排队。用既有获准的 CREATE 连接时，先检查
+M3W 目录、配额和记录中的作业 ID。`squeue -u "$USER"` 查活动任务，
+`sacct -j <job_id> --format=JobID,State,ExitCode,Elapsed` 查终态。远程连接失败
+不是作业失败，不据此取消、重启或重复提交。历史四个任务的核对结果见
+[CREATE 回执](../outputs/publication_readiness_2026_09/create_accounting_recovery_20261108/README.md)，
+它不证明当前有空闲 GPU。
+
+仅对另一个确有需要、且划分和环境已冻结的 M3W 实验，在计算节点提交经核对的作业脚本。
+保留 job ID、输入哈希、环境、输出目录、日志与检查点。恢复时用同一训练身份和采样状态，
+先核对旧任务确实终止；`COMPLETED` 后仍需检查预测、训练步数、泄露边界和结果。
+现有 [CREATE 时序实验手册](../outputs/publication_readiness_2026_09/european_temporal_auxiliary_v1/create_reproduction_zh.md)
+给出已验证的项目路径、作业脚本和恢复示例，不是本轮的新提交命令。
+
+## 4. 判断结果能支持什么
+
+Moving 与 OpenDD 是开发证据；WEPDTOF 是冻结外部评价；Songdo 是同一采集日内的
+分组校准与确认；DroneCrowd 只报告校准。三种子是同一录像的重复运行。
+原 2% 是录像内风险条件，不是总体失败率；零放行不等于通过。保留原坐标与步数，
+不把结果写成秒级、米级或物理安全。论文和复现包的构建通过不等于确认了部署收益，
+也不等于已经提交。

@@ -1,5 +1,7 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+当前主文与核心实验从 [中文短教程](M3W_PAPER_REPLAY_ZH.md) 开始；这里保留历次实验的长索引。
+
 [v174 引用核对版](../outputs/publication_readiness_2026_09/evidence_manuscript_v174_verified_references/README.md)
 在 v173 基础上补齐 Songdo 数据论文，固定 MovingDroneCrowd++ 预印本版本，
 并区分结构化弃权和 conformal 风险控制。原实验、图表、摘要和披露均不变。
@@ -1486,6 +1488,6 @@ PID 对应的进程确实退出，再用原命令去掉 `--replay`。训练每 1
 
 ## 构建论文
 
-参见 [v132 构建与校验](../outputs/publication_readiness_2026_09/evidence_manuscript_v132/README.md)。
+当前构建见 [v174 核对版](../outputs/publication_readiness_2026_09/evidence_manuscript_v174_verified_references/README.md)。
 主文、补充材料与生成图的命令均由对应的冻结读出生成。匿名复现只展示可公开的
 汇总量，不包含原始轨迹、视频、模型权重或本机路径。当前工作稿没有提交。

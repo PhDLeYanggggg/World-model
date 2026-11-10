@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Which sources were available to each model?
+
+I checked the frozen checkpoint roles, query boundaries and external
+rosters behind the main comparisons. OpenDD's 3,395 queries do not
+overlap within recordings, and its outer held sites are excluded from
+count-head fitting and donor teachers. The checkpoint replay uses zero
+updates and recovers the recorded results. This does not turn exposed
+development data into an independent test.
+[Evidence roles and replay](outputs/publication_readiness_2026_09/paper_evidence_lineage_v1/README.md).
+
 ## Forecast replacement and neighboring work
 
 I checked the references against the proceedings, authors' records and
