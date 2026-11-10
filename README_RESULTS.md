@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Test keep-relative value with nested location validation
+
+I registered four fixed comparisons: linear and small MLP heads, each learning
+absolute full-grid success or gain over keeping the current allocation.
+Inner validation excludes its location from every upstream producer as well
+as the selector. Training has not started; 39 focused tests pass.
+[Protocol](outputs/publication_readiness_2026_09/opendd_nested_advantage_v1/protocol.md).
+
 ## Project handoff and reproducibility map
 
 The [project handoff](CLAUDE_HANDOFF.md) now maps the active code,
