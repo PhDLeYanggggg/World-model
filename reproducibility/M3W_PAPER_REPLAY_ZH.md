@@ -1,6 +1,6 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v214 主文及 v48 匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v214_backbone_relative/README.md)。
+当前候选：[v215 主文及 v49 匿名复现包](../outputs/publication_readiness_2026_09/evidence_manuscript_v215_pair_label_stress/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
@@ -13,7 +13,7 @@
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机最新复现包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v48.zip`，配套阅读 PDF 沿用 v44。
+本机最新复现包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v49.zip`，配套阅读 PDF 沿用 v44。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -23,6 +23,7 @@ v45 另复算同位置、同训练预算的 53、48、47 个通过，以及五�
 v46 应复算同数量、同位移预算下原规则 212、完整网格风险 210，以及冻结分数分配的 55 个通过。
 v47 再复算相同预算下均匀分配的期望 49.29，以及冻结分数相对均匀分配的地点配对区间。
 v48 再复算同一批 OpenDD 车对的标签覆盖率、相对 ADE/FDE 和两种模型的邻车消融区间。
+v49 再复算 3,711 个完整窗口等覆盖率遮挡的偏差和地点区间；另附 `equal_coverage.pdf`。
 v43 的 WEPDTOF 校验继续保留：4 个联合方案在完整十二步下仍通过风险，其中 3 个不能同时超过两个基线。
 v4 另复算固定次数和位移后 OpenDD 的 210、60、42 三个关键计数和地点区间。
 v5 保留这些结果，并复算成对偏好、等步数续训和风险内收益续训。

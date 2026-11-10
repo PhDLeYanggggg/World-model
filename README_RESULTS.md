@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: equal coverage does not make missing labels equivalent
+
+I hid the first or last three steps of the same 3,711 complete queries.
+EqMotion's observed neighbor gain is +0.035 versus -0.470, although
+both masks retain 75% of pair-steps. The complete-label gain is -0.209.
+The result separates label timing from coverage without changing
+predictions or any external outcome.
+[Experiment](outputs/publication_readiness_2026_09/opendd_pair_label_stress_v1/README.md) |
+[v215 draft, figure and v49 replay](outputs/publication_readiness_2026_09/evidence_manuscript_v215_pair_label_stress/README.md).
+
 ## OpenDD: neighbor input has opposite effects on relative paths
 
 On the same 500 recordings, neighbors lower available pair-relative ADE
