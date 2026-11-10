@@ -1,0 +1,78 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\begin{document}
+{\Large\bfseries Supplement: matched trajectory forecast controls}
+
+\section*{OpenDD development comparison}
+
+We compare deterministic forecasts on the same 141,783 past-eligible
+vehicle histories in 25,596 nonoverlapping queries and 500 recordings.
+Each query uses eight observations and twelve forecast steps. For each
+of seven held locations, all fitted models exclude that location and
+use three fixed seeds. The deterministic adaptations use the same
+completion loss, displacement cap relative to constant velocity (CV),
+comoving frame, and 400-update budget. The social arms use the nearest
+three observed vehicles; ego arms use only the focal history.
+
+\smallskip
+\begin{center}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Predictor & ADE & FDE & p95 ADE & CV gain (pp) & Risk passes\\
+\midrule
+%%MODEL_ROWS%%
+\bottomrule
+\end{tabular}
+\end{center}
+\smallskip
+
+Errors use available annotations and release coordinates. The gain
+column is the conservative completion contrast against CV, in percentage
+points on a common CV denominator. The risk column counts passes among
+1,500 repeated recording--seed views under the unchanged 2\% recording
+checks; a zero-edit forecast has no selected-risk denominator.
+
+\section*{Does neighbor context change the result?}
+
+%%NEIGHBOR_SENTENCE%%
+The missing-label debit is calculated directly from the distance
+between the two predictions, not by subtracting their separate lower
+scores against CV. This distinction also matters across backbones:
+
+\smallskip
+\begin{center}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Social-STGCNN minus EqMotion & Conservative gain (pp) & 95\% paired interval\\
+\midrule
+%%PAIR_ROWS%%
+\bottomrule
+\end{tabular}
+\end{center}
+\smallskip
+
+We average the three seeds within each held location and use 3,000
+paired resamples of the seven locations. The public cores are adapted
+to a single output, so these are controlled development comparisons,
+not the published pedestrian best-of-many results or evidence for
+deploying a new selector.
+
+\section*{Reproduction}
+
+The accompanying verify.py script recomputes estimates, risk counts,
+and intervals from anonymous scalar receipts. It requires Python
+3.10 or later and no datasets, checkpoints, or network. It verifies
+aggregation rather than training. The prior evidence archive is included
+unchanged.
+
+\textbf{Architecture references.}
+A. Mohamed, K. Qian, M. Elhoseiny, and C. Claudel.
+Social-STGCNN: A Social Spatio-Temporal Graph Convolutional Neural
+Network for Human Trajectory Prediction. CVPR, 14424--14432, 2020.
+C. Xu et al. EqMotion: Equivariant Multi-agent Motion Prediction with
+Invariant Interaction Reasoning. CVPR, 2023.
+\end{document}

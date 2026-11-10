@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: run Social-STGCNN on the same forecast task
+
+I added a deterministic Social-STGCNN control using the same vehicle
+queries, held locations and training budget as EqMotion. Neighbor
+context helps on observed steps but does not give a reliable conservative
+gain over the ego-only arm. Neither version beats the vehicle incumbent.
+[Results and reproduction](outputs/publication_readiness_2026_09/opendd_vehicle_stgcnn_v1/README.md).
+[Anonymous appendix and replay](outputs/publication_readiness_2026_09/vehicle_stgcnn_review_supplement_v1/README.md).
+
 ## Songdo: decompose joint versus independent in both orders
 
 I averaged the two orders of changing recipients and changing paths.
