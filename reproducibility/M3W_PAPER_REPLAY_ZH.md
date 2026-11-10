@@ -1,11 +1,11 @@
 # M3W 论文：本机与 CREATE 复现入口
 
-当前候选：[v180 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v180_vehicle_direction/README.md)。
+当前候选：[v181 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v181_vehicle_context/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
 ## 1. 匿名补充包：只复算已冻结结果
 
-本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v10.zip`。
+本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v11.zip`。
 解压到空目录，从该目录运行 `python3 -I -B -S verify.py`（Python 3.10 或更新版本）。
 不需要网络、权重或原始轨迹。应看到 Moving 三种上界排除数 67、36、9 / 72；
 OpenDD 330/606 对 57/606；WEPDTOF 0/45 同时通过风险和效用检查；Songdo 联合策略 0/480 放行。
@@ -17,9 +17,11 @@ v8 增加地图和邻居消融：在同样 101 次交换上复算正确对齐 47
 随机期望 51.21，以及对应的地点置信区间。主文仍为 v179。
 v9 配套 v179，保留这些检查并加入六项方向对照：校准把旋转从 710 降到 198，
 固定角度在同一批对象上优于学习角度；同数量随机对象复现了大部分收益。
-v10 保留 v9 并加入独立的车辆开发对照：493 段录像的 8,874 个重复视图中，
+v10 配套 v180，保留 v9 并加入独立的车辆开发对照：493 段录像的 8,874 个重复视图中，
 1,431 个事后有合格方向解且相对运动改善，1,393 个只转一辆就有解。
 这些车辆计数不与行人计数合并。
+v11 另复算真实车距修正和等模型邻车消融。以相同的 5,162 个旋转对象作比较，
+带邻车的角度选择仍未赢得保守轨迹收益。
 四种冻结方案中 197/480 事后有合格方案的补充分析，从项目根目录运行：
 
 ```sh
@@ -50,6 +52,11 @@ Git 里的轻量文件不含私有权重和原始数据。缺少冻结权重就�
 两项沿用本机冻结的车辆双编辑记录，不重新训练或读外部确认标签。
 [双车对照](../outputs/publication_readiness_2026_09/opendd_vehicle_angular_pair_v1/README.md)、
 [同对象单旋转对照](../outputs/publication_readiness_2026_09/opendd_vehicle_single_rotation_v1/README.md)。
+
+v181 的真实车距修正使用 `scripts/run_m3w_vehicle_direction_context.py freeze` 冻结所有选择，
+再用同脚本的 `score` 评分。需要本机已核验的车辆输入及坐标对齐文件。
+训练断点每 50 步保存；有完整冻结文件时只复核检查点和选择文件，不重训。
+[实验、命令及区间](../outputs/publication_readiness_2026_09/opendd_vehicle_direction_context_v1/README.md)。
 
 要复算 v175 新增的 OpenDD 固定实际编辑次数诊断，用
 [`audit_m3w_opendd_realized_stream_capacity.py` 和 `report_m3w_opendd_realized_stream_capacity.py`](../outputs/publication_readiness_2026_09/opendd_realized_stream_capacity_v1/README.md)。

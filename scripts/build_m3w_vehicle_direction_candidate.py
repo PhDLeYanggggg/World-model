@@ -70,9 +70,9 @@ improves the forecast from the past.
                                                     f"{abs(d['point']):.4f}", f'{n} chosen actors')
 
 
-def build(destination, compiler, receipt):
-    parent = supplement.read_receipt(prior.EXCHANGE_OUT.name)
-    raw = {k: supplement.checked(prior.EXCHANGE_OUT/k, v) for k, v in parent['artifacts'].items()}
+def build(destination, compiler, receipt, *, parent_dir=prior.EXCHANGE_OUT, read_inputs=inputs, revise_source=revise):
+    parent = supplement.read_receipt(parent_dir.name)
+    raw = {k: supplement.checked(parent_dir/k, v) for k, v in parent['artifacts'].items()}
     with ZipFile(BytesIO(raw['main_source.zip'])) as z:
         files = {k: z.read(k) for k in z.namelist()}
         if len(files) != len(z.namelist()) or any(Path(k).name != k for k in files):
@@ -81,8 +81,8 @@ def build(destination, compiler, receipt):
         raise ValueError('Parent archive and manuscript differ')
     original = files['manuscript.tex'].decode('ascii')
     citations = scope.citation.used_citations(files)
-    rows, hashes = inputs()
-    revised, markers = revise(original, rows)
+    rows, hashes = read_inputs()
+    revised, markers = revise_source(original, rows)
     files['manuscript.tex'] = revised.encode('ascii')
     if scope.citation.used_citations(files) != citations:
         raise ValueError('Bibliography changed unexpectedly')

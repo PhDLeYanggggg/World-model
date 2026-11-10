@@ -7,12 +7,16 @@ or evidence status.
 
 ## OpenDD vehicles: check the actual spacing between actors
 
-I found that the earlier one-rotation rule was weighting neighbors
-with positions already centered on each vehicle. I kept that run and
-registered a comparison with restored observed spacing, plus two
-equally sized motion models trained with and without neighbor inputs.
-The original two actors, displacement and risk checks stay fixed.
-[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_direction_context_v1/protocol.md).
+I found that the earlier one-rotation rule weighted neighbors by
+positions already centered on each vehicle. Using actual spacing
+leaves 2,962 views passing both references and the risk checks, versus
+2,975 without rotation. Two matched motion models reduce available-step
+ADE from 6.142 to about 4.99, but using them to pick angles hurts the
+decision. The neighbor-aware rule still loses when both rules rotate
+the same actor in each of 5,162 views. I kept the original output.
+[Experiment and intervals](outputs/publication_readiness_2026_09/opendd_vehicle_direction_context_v1/README.md),
+[v181 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v181_vehicle_context/README.md),
+and [v11 anonymous replay](outputs/publication_readiness_2026_09/vehicle_context_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: changing two directions did not beat independent choices
 
