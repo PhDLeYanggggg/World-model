@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## MovingDroneCrowd++: what the missing labels leave open
+
+I reran the budget bound on the same 72 development views. With the
+displacement budget pooled within each recording, the conservative score
+excludes 67 views, observed steps alone exclude 36, and even favorable
+missing labels leave 9 excluded. The 67-view result is about the scoring
+rule, not a claim about all possible futures.
+[Derivation and checks](outputs/publication_readiness_2026_09/moving_completion_envelope_v1/README.md).
+
 ## Supplement: replaying the Songdo confirmation
 
 The updated anonymous supplement pairs with the eight-page v170 draft.

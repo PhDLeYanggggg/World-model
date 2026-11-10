@@ -1,5 +1,10 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+另有 [v171 主文候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v171_completion/README.md)，
+只在正文补充 MovingDroneCrowd++ 三个位移预算上界；原 v170、摘要和披露声明均不改动。
+[开发集推导与复现](../outputs/publication_readiness_2026_09/moving_completion_envelope_v1/README.md)
+区分保守计分下排除 67/72、仅已标注步骤排除 36/72、最有利缺失标签仍排除 9/72。
+
 独立结果已写入 [v170 主文候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v170_songdo/README.md)。
 主文仍为 8 页；原 v169 PDF 和 v1 补充材料保留不动。
 另有 [v170 配套匿名补充包](../outputs/publication_readiness_2026_09/songdo_review_supplement_v1/README.md)，

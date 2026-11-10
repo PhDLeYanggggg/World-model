@@ -43,7 +43,7 @@ def aggregate(cv, ols, target, valid, query, radii):
                 missing_disagreement=float(w @ censored.sum(1)))
 
 
-def export():
+def export(*, aggregate_view=aggregate):
     reg, cells, _ = audit.register()
     files = {k: audit.OUT/k for k in ('readout.json', 'break_even.json')}
     parent, boundary = (old.read(p) for p in files.values())
@@ -78,7 +78,7 @@ def export():
             y, valid, query = (h[k][at] for k in ('target', 'valid', 'query'))
             _, _, budget = audit.budgets(cv, anchor[at], query)
             row = dict(recording=ids.setdefault(str(n), len(ids)), source=sources.setdefault(str(source), len(sources)),
-                       seed=i['seed'], **aggregate(cv, ols, y, valid, query, budget))
+                       seed=i['seed'], **aggregate_view(cv, ols, y, valid, query, budget))
             rows.append(row)
             expected.append((p, b))
     if len(rows) != len(original) or len(rows) != len(reference):
