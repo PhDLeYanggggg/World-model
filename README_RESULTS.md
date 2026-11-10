@@ -11,7 +11,8 @@ I built a nested set of forecast and angle heads so that a donor
 nominee never comes from a model trained on that donor or either
 downstream location. This allows the screen to learn whether the
 exact nominated action helps, rather than whether some other
-legal action would have helped.
+legal action would have helped. Both ranking heads and their
+calibration thresholds are frozen before the held readout.
 [Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_nominee_rank_v1/protocol.md).
 
 ## OpenDD vehicles: separate the decision to rotate from the angle
