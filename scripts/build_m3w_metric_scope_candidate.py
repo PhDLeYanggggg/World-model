@@ -82,7 +82,7 @@ def check_render(raw, original, *, extra_references=False, markers=()):
 
 
 def build(destination, compiler, receipt, *, original=ORIGINAL, expected=None, revise_source=revise,
-          changed_paragraphs=len(SCOPE), added_citations=(), markers=()):
+          changed_paragraphs=len(SCOPE), added_citations=(), markers=(), prior_citation_count=None):
     prior = supplement.read_receipt('evidence_manuscript_v167_citation')
     expected = expected if expected is not None else prior['artifact_sha256']
     inputs = {name: supplement.checked(original/name, sha) for name, sha in expected.items()}
@@ -96,7 +96,8 @@ def build(destination, compiler, receipt, *, original=ORIGINAL, expected=None, r
     keys = citation.used_citations(members)
     text = members['manuscript.tex'].decode()
     members['manuscript.tex'] = revise_source(text).encode()
-    if len(keys) != prior['bibliography_entries'] or citation.used_citations(members) != sorted([*keys, *added_citations]):
+    expected_count = prior['bibliography_entries'] if prior_citation_count is None else prior_citation_count
+    if len(keys) != expected_count or citation.used_citations(members) != sorted([*keys, *added_citations]):
         raise ValueError('The revised manuscript differs from the expected citation list')
     style = supplement.checked(citation.main.DRAFT/'cvpr.sty', prior['style_sha256'])
     with TemporaryDirectory(prefix='metric-scope-') as tmp:

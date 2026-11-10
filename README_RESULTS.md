@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Paper: the Songdo result is in a separate candidate
+
+I added the one-shot confirmation and its dataset citation to the
+limitations section. The main PDF remains eight pages. The title,
+abstract, tables, figures and disclosure are unchanged.
+[Build and checks](outputs/publication_readiness_2026_09/evidence_manuscript_v170_songdo/README.md).
+
 ## Songdo: source-disjoint confirmation completed
 
 I scored all 160 frozen confirmation flights in 14 linked source
