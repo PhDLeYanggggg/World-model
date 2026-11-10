@@ -1,7 +1,31 @@
 # M3W 项目交接：给 Claude Code
 
 更新时间：2026-11-10，Europe/London。本文件是本机工作交接入口，不是论文或匿名补充材料。
-依据本地文件、Git、真实实验输出和本轮 CREATE 只读查询整理。未重新运行全部历史阶段。
+依据本地文件、Git、实验日志和已有 CREATE 查询记录整理；本次交接刷新只做本地核查，没有新训练或新远端查询。未重新运行全部历史阶段。
+
+## 0. 接手快照：先分清已完成与尚未开始
+
+本次范围是 World/M3W 项目及它引用的本地、远端资产，不是整台电脑所有项目，也不是把原始数据和权重打包进一个文件。
+
+| 项目 | 2026-11-10 10:53 GMT 的核实状态 |
+| --- | --- |
+| 工作目录 | `/Users/yangyue/Downloads/World` |
+| 交接刷新前的代码版本 | `30a6e55c0d56cf344441971f8d77181f63bd97dc`；本地 HEAD 与远端 `origin/main` 一致 |
+| 最新完成实验 | `opendd_onpolicy_donors_v1`，训练、冻结、评分、诊断均已完成；主假设失败 |
+| 权重与缓存完整性 | 本次重新计算 SHA-256，1,113 个该实验本地产物与记录一致；这是完整性核查，不是重新训练或重新证明无泄露 |
+| 模型数量 | 42 个选择器 checkpoint、105 个排序器、63 个 recording count head；21 份冻结选择 |
+| 数据缓存 | 315 个 teacher NPZ、126 个 donor NPZ；不提交 GitHub |
+| 本地进程 | 本次未发现命令名匹配 `run_m3w/train_m3w/audit_m3w/diagnose_m3w` 的 Python 进程；不代表其他项目或远端没有任务 |
+| 运行环境 | `.venv-pytorch/bin/python`，arm64，Python 3.11.1，安装的 Torch 2.12.0；此次只查环境元信息，真实训练证据见既有 runtime 日志 |
+| 磁盘 | 可用约 28 GiB；现有 runner 保留至少 10 GiB，不能再无预算扩充缓存 |
+| 用户工作保护 | 3,019 项既有暂存变更，另有 README/state 未暂存差异；不要全量提交、清理或回滚 |
+| 作者文件 | 第 7 节 Word、paper、supplement、replay 的四个 SHA-256 本次再次匹配；均未修改 |
+| 下一实验 | 低容量/相对收益 + 嵌套地点验证仅为待实施方案，`not_run`；没有对应新训练结果 |
+
+本次交接工作只更新本文件、README 交接入口和 research state，不启动下一轮实验、不改变协议、不修改论文或投稿门户。
+本文件后续出现的训练次数、29 项测试和 CREATE 终态来自注明来源的已完成记录，不能描述为本次交接重新执行。
+
+**给 Claude Code 的第一条任务：**先核对本文件、最新实验 README 和本地冻结清单；确认哪些资产在本机，哪些只是远端历史记录。不要从 Stage37 的历史成功标题直接开始部署，也不要自动重跑所有 Stage。第 12 节给出具体尚未实施的续接点。
 
 ## 最新续接：已完成 policy-matched donor 实验
 
@@ -87,10 +111,10 @@ https://github.com/PhDLeYanggggg/World-model.git
 
 | 路径 | 用途与接手建议 |
 | --- | --- |
-| `src/world_model/` | 当前研究核心：预测、gain/harm、选择、联合分配、风险、数据适配与统计。626 个非缓存文件，按具体 runner 的 import 链阅读，不要全量扫进上下文。 |
-| `scripts/` | 当前实验入口、冻结、训练、评分、诊断、复现与论文构建；2,778 个文件。最近工作都在这里，不是根目录的旧 stage runner。 |
+| `src/world_model/` | 当前研究核心：预测、gain/harm、选择、联合分配、风险、数据适配与统计。627 个可检索非 pyc 文件，按具体 runner 的 import 链阅读，不要全量扫进上下文。 |
+| `scripts/` | 当前实验入口、冻结、训练、评分、诊断、复现与论文构建；2,781 个可检索非 pyc 文件。最近工作都在这里，不是根目录的旧 stage runner。 |
 | `configs/` | 424 个配置/作业文件；有些新小实验把固定参数放在 runner + protocol + registration 中，没有独立 YAML。 |
-| `tests/` | 2,121 个非缓存文件；包含多代研究和数据湖任务。本轮只跑了明确列出的 24 项相关测试，未声称全库通过。 |
+| `tests/` | 2,122 个可检索非 pyc 文件；包含多代研究和数据湖任务。最新已完成实验记录为 29 项相关测试通过，前序为 24 项；此次交接未重跑测试，未声称全库通过。 |
 | `reproducibility/` | 135 个文件；中文运行教程、匿名 replay 验证器、材料构建辅助。 |
 | `src/m3w/` | 初期 M3W 通用实现：dataset/models/train/eval/gates/evidence/token_schema；其中 `numpy_backend.py` 是旧替代路径，不能当成真实 Torch 训练。 |
 | `src/models/`, `src/models/jepa/`, `src/training/` | 早期阶段模型、JEPA、selector 与训练逻辑。 |
@@ -132,7 +156,29 @@ outputs/m3w_state_machine/
 | `/Users/yangyue/Downloads/World/external_data/OpenTraj` | <https://github.com/amiryanj/OpenTraj.git> |
 | `/Users/yangyue/Downloads/World/external_data/WEPDTOF_source_probe/RAPiD` | <https://github.com/duanzhiihao/RAPiD.git> |
 
-只在 external_data、experiments、worldcore 的三层深度内查了嵌套 `.git`；这不是整台电脑或全部第三方拷贝的穷尽清单。不修改第三方源码来美化基线结果，不把这些数据目录整体提交到主 GitHub。
+此次在 external_data、experiments、worldcore 的四层深度内核对了嵌套 `.git`；这不是整台电脑或全部第三方拷贝的穷尽清单。不修改第三方源码来美化基线结果，不把这些数据目录整体提交到主 GitHub。
+
+### 3.4 最新训练调用链：从哪里开始读代码
+
+以下文件均位于 `/Users/yangyue/Downloads/World/` 下。
+
+| 顺序与文件 | 关键职责 |
+| --- | --- |
+| `scripts/run_m3w_opendd_onpolicy_donors.py` | 当前入口。`register` 绑定代码/输入，`producers` 生成嵌套训练模型，`fit` 训练并冻结选择，`score` 才读取评价标签。 |
+| `src/world_model/m3w_onpolicy_donors.py` | `fit_roster` / `verify_role` 核对排除地点；`score_anchor` 只以分数、合法动作、数量和位移预算生成 incumbent，不接受未来标签。 |
+| `scripts/run_m3w_recording_count.py` | `fit` 保存网络、优化器、RNG、loss trace；`load` 检查 checkpoint；`menus` 产生候选；`labels` 为训练数据构建 teacher。 |
+| `scripts/run_m3w_matched_bridge_swaps.py` | 上游候选排序训练、因果候选库与配对特征。 |
+| `scripts/run_m3w_opendd_exchange_context.py` | `register` 校验上游来源；场景/交互 context 与特征选择。 |
+| `scripts/run_m3w_opendd_one_exchange_ranker.py` | recording/query 索引、合法交换特征与 `measure` 评分；评分函数不能搬进推理特征路径。 |
+| `scripts/run_m3w_opendd_listwise_exchange.py` | slate 的 padding、特征和冻结 eligible mask。 |
+| `src/world_model/m3w_incumbent_slate.py` | `ListRanker`、显式 keep 特征、pointwise/pairwise loss、forced/optional 决策。 |
+| `scripts/run_m3w_opendd_incumbent_slate.py` | 前序训练及当前沿用的选择/评价辅助；不是新的独立实验结果。 |
+| `scripts/audit_m3w_onpolicy_donors.py` | checkpoint 和嵌套数据角色检查、选择重放、失败切片。 |
+| `scripts/diagnose_m3w_onpolicy_gap.py` | 比较训练内与 held-location 的分数、校准误差和实际通过情况。 |
+
+数据流：观测历史与合法候选 → nominee ranker → recording count head → 固定预算 incumbent → 合法 keep/exchange slate → 选择器 → 冻结 choices → 独立评分函数读取标签 → 分地点 bootstrap 与风险检查。
+
+注意这些研究脚本大量沿用 `prior/parent/run/study` 别名，且部分路径是模块级 `PRIVATE/OUT` 常量。不要只看变量名猜来源，不要 monkey-patch 旧模块全局路径来覆盖冻结实验；扩展新版本时显式传入路径与角色。
 
 ## 4. 数据、特征、模型权重和结果在哪
 
@@ -150,6 +196,37 @@ data/stage_cvpr2027_experiments/<实验名>/
 不是每个实验都有以上全部文件，以它的 runner 和 README 为准。`run.checked`、`run.once`、registration 和 freeze 通常绑定具体文件哈希；不要直接修改冻结配置后覆盖旧输出。新科学设计用新版本目录。
 
 单独 clone GitHub **不能**恢复所有原始数据、权重和私有缓存。当前机器保留了这些资产。checkpoint 一般在各实验自己的 data 目录，不是一个通用 `best_model.pt` 可以代表所有结果。模型必须与其输入 schema、split、forecast bank 和冻结策略一起使用。
+
+最新实验的完整根目录：
+
+```text
+/Users/yangyue/Downloads/World/data/stage_cvpr2027_experiments/opendd_onpolicy_donors_v1/
+    rdb1_17_point.pt              # 地点 rdb1 留出、seed17、pointwise 选择头
+    rdb1_17_pair.pt               # 同一角色的 paired 选择头；不是可通用部署权重
+    rdb1_17_choices.json          # 已冻结的选择；其余地点/seed 同样命名
+    producers/rank_*.pt           # 105 个三重地点排除的候选排序器
+    producers/count_*.pt          # 63 个双重地点排除的数量预测头
+    teachers/*.npz               # 315 个 teacher 标签缓存及相邻 JSON 来源记录
+    donors/*.npz                 # 126 个训练 slate 缓存及相邻 JSON 来源记录
+    events_*.jsonl               # 每次调用的 PID、更新次数、内存与终态
+    heartbeat.json               # 最后心跳；不是进程仍然存活的证明
+    process.lock                 # 操作系统锁；文件存在本身不代表被占用
+
+/Users/yangyue/Downloads/World/outputs/publication_readiness_2026_09/opendd_onpolicy_donors_v1/
+    protocol.md                  # 冻结目标、比较对象和原 2% 规则
+    registration.json            # 输入/代码哈希与训练参数
+    producer_freeze.json         # producer 清单及来源
+    head_freeze.json             # 21 个地点/seed 单元、权重和 choices 哈希
+    readout.json                 # 冻结评分；不是用来再选模型的验证集
+    audit.json                   # 嵌套来源、重放、损失有限性等核查
+    generalization_diagnostic.json
+    runtime.json
+    README.md
+```
+
+加载最新选择头应沿用 runner 中的 `study.load` 和 `ListRanker`，检查 identity/hash，再通过与训练一致的 `with_incumbent` 特征构造调用；不要只 `torch.load` 后随意拼输入。checkpoint 内的 `trace` 是每 100 updates 记录的真实 loss，`step` 是更新次数；`net/opt/rng` 分别保存网络、优化器与随机状态。
+
+`outputs/final_model/`、`outputs/final_model_v1_1/` 和 `outputs/final_model_v1_2/README_FINAL_MODEL_V1_2_DIAGNOSTIC_ONLY.md` 是历史产物，不是最新 OpenDD 的发布包。`src/inference/final_world_model_inference.py` 与 `src/inference/stage17_selector_inference.py` 也属于旧接口；不能将“可调用”混同于已通过当前泛化与风险门槛。
 
 ### 4.2 SDD 历史数据链
 
@@ -230,7 +307,7 @@ external_data/pretrained/
 
 Athens：joint 对 CV 缺失标签包络为 `[+0.02383, +0.08858] pp`；joint 对 independent 为 `[-0.04427, +0.05304] pp`；逐步等位移后为 `[-0.03823, +0.04511] pp`。四天都是一个城市内日期，不是四个独立城市。区间、包络及固定提案/实际放行要分开写。
 
-## 6. 我最后实际做了什么：incumbent-slate 完整交接
+## 6. 直接前序工作：incumbent-slate 完整交接
 
 ### 6.1 核心文件
 
@@ -314,6 +391,41 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
 权重完整时 `fit` 应为 0 updates；它不是必须重新训练。`score` 重用 frozen choices，不选择新阈值。
 该冻结 scorer 的 Counter 聚合会省略零值键，读取时用 `.get(key, 0)`。它对当前非空、material-positive 对照已核验，不是空基准的通用 scorer；新版本如扩展到全零对照，要先修复并测试零值键处理，不偷偷改旧冻结结果。
 
+### 6.5 最新 policy-matched donor 的完整命令
+
+以下用于复现已完成的最新实验，不是接手时必须全部再跑。建议先读取公开 README 和 freeze；只有需要核实结果时才执行。已有 checkpoint 完整时训练阶段应恢复为零 updates；若缺失，则会实际补训，不能称纯只读检查。
+
+```bash
+cd /Users/yangyue/Downloads/World
+export LC_ALL=C OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
+.venv-pytorch/bin/python scripts/run_m3w_opendd_onpolicy_donors.py register
+.venv-pytorch/bin/python scripts/run_m3w_opendd_onpolicy_donors.py producers
+.venv-pytorch/bin/python scripts/run_m3w_opendd_onpolicy_donors.py fit
+.venv-pytorch/bin/python scripts/run_m3w_opendd_onpolicy_donors.py score
+.venv-pytorch/bin/python scripts/audit_m3w_onpolicy_donors.py
+.venv-pytorch/bin/python scripts/diagnose_m3w_onpolicy_gap.py
+.venv-pytorch/bin/python -m pytest -q \
+  tests/test_m3w_onpolicy_donors.py \
+  tests/test_m3w_incumbent_slate.py \
+  tests/test_m3w_exchange_listwise.py \
+  tests/test_m3w_exchange_risk_heads.py \
+  tests/test_m3w_exchange_attrition.py \
+  tests/test_m3w_opendd_full_grid_exchange.py \
+  tests/test_m3w_exchange_context.py \
+  tests/test_m3w_one_exchange_ranker.py
+```
+
+此 runner 不使用通用 `--resume`：重新运行同一阶段即按 identity 恢复。`--limit-producers N` 仅用于 producer pilot，不能把有限 pilot 当完整矩阵。出现注册或哈希不匹配时先诊断，不能删 registration、改哈希或跳过检查继续。
+
+### 6.6 避免混读数字
+
+- `606 views` 是 202 录像 × 3 seeds，不是 606 个独立场景；不把 seeds 作为独立统计单位。
+- `780 forecast edits` 是轨迹修改预算；`82/101 exchanges` 是重新分配动作，两者不是同一个计数。
+- `52 full-grid passes` 是满足评价条件的视图数，不是 FDE 改善 52%，也不是外部部署通过率。
+- 模型训练使用的 `original-dual` 二元标签与最终 `full-grid` 检查不同；这是下一轮要隔离验证的目标错配，不是已证实的唯一原因。
+- 最新 paired optional 的原始风险支持仍有 399 个 undefined view；不能将其记为零风险或全部安全。
+- oracle 是读取评价标签后求出的机会参考，不能当模型推理结果。训练内 ECE 很低也不能代替 held-location 校准。
+
 ## 7. 论文、Word、补充材料与匿名复现
 
 | 内容 | 绝对路径 |
@@ -332,7 +444,7 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4
 
 v219 主文 8 页、补充 11 页，先前已渲染检查。正文和表格黑白，代码生成图保持原始配色。主文 CVPR review PDF 有模板行号；Word 编辑版没有行号。不要为了“去 AI 味”捏造图或改实验数值。
 
-v219 已加入 Athens，但**本轮 incumbent-slate 负结果尚未整合进 PDF 或 replay.zip**，只是进入代码、结果记录和本交接文件。作者 Word 也没有自动合并 v219 新段落。
+v219 已加入 Athens，但**incumbent-slate 和最新 policy-matched donor 两轮负结果尚未整合进 PDF 或 replay.zip**，只是进入代码、结果记录和本交接文件。作者 Word 也没有自动合并 v219 新段落。
 
 交接时再次核对 SHA-256：
 
@@ -389,7 +501,7 @@ data/stage_cvpr2027_experiments/create_handoff_20260923/compute_handoff_20260927
 
 已登记 runtime：`/users/k24101830/m3w/easy_hurdle_runtime_v2/venv/bin/python`，本轮没有重建或重新验证该 runtime。受保护的另一个项目根是 `/users/k24101830/fully_synthetic_stepC_c4_v2`，不能把 M3W 依赖装进去或改它的作业。
 
-本轮 `sacct` 实际返回：
+此前 2026-11-10 的 `sacct` 查询记录返回如下；此次交接没有再次查询远端：
 
 | Job | State | Exit | Elapsed |
 | --- | --- | --- | --- |
@@ -411,9 +523,13 @@ data/stage_cvpr2027_experiments/create_handoff_20260923/compute_handoff_20260927
 cbefd91b4  v219 Athens 证据进入独立主文/补充/replay
 aceb591da  incumbent-slate 训练前协议
 b7c6a6c39  42 模型和选择冻结，先于评分
+bd5134a30  incumbent-slate 负结果、诊断与初版交接
+25c4c42b7  policy-matched donor 训练前登记
+f9daea2d0  新 producer / selector / choices 冻结，先于评分
+30a6e55c0  最新负结果、泛化诊断、README/state/交接更新
 ```
 
-本交接文件、最新失败 readout/diagnostic、24 项测试及 README/state 更新会作为单独限定范围提交。实际最新 commit 以 `git log -3 --oneline` 为准。
+以上均为已完成提交；交接刷新前已核对 `30a6e55c0` 在远端 main。本次只补充交接文档、README 入口和状态说明，实际后续 commit 以 `git log -3 --oneline` 为准。GitHub 存的是代码/轻量证据，不含本机 checkpoint。
 
 工作树不是干净状态。本轮检查到的数据湖相关暂存包括大量 A/D/AM，约三千项；这是已有用户/并行工作，不属于本轮实验。`research_state.json` 还有大量本轮无关差异。不要为了得到 clean tree 撤销它们。
 
@@ -442,7 +558,7 @@ b7c6a6c39  42 模型和选择冻结，先于评分
 
 先读取作者修改，不覆盖。v219 已补真实 Athens 结果；本轮新负结果可以在补充中加入紧凑消融，但不是必须为每个小实验增加主文篇幅。核心贡献应围绕可验证的研究问题、协议和实际结果，而不是模块堆叠。
 
-截止时间本轮核对官方网页：登记 2026-11-10 AoE、全文 2026-11-16 AoE、补充 2026-11-23 AoE。
+此前工作记录核对的官方日期为：登记 2026-11-10 AoE、全文 2026-11-16 AoE、补充 2026-11-23 AoE。此次交接没有重新查询官网；接手后安排投稿前应再查当前页面。
 来源：<https://cvpr.thecvf.com/Conferences/2027/Dates>。
 格式与声明要求：<https://cvpr.thecvf.com/Conferences/2027/AuthorGuidelines>。
 本轮没有检查 OpenReview 实时状态；不要把用户之前说已登记当作这轮门户核验。
@@ -450,11 +566,47 @@ b7c6a6c39  42 模型和选择冻结，先于评分
 ## 11. 接手后的最短工作清单
 
 1. 确认 cwd、branch、dirty/staged 状态；先看本文件和最新 README_RESULTS，不先跑全部阶段。
-2. 读取 `opendd_incumbent_slate_v1/{README.md,readout.json,failure_diagnostic.json}`，理解当前负结果。
-3. 确认本地 42 checkpoint 和 21 choices 存在，若需要验证只做原命令零更新 replay，不删除重训。
+2. 先读 `opendd_onpolicy_donors_v1/{README.md,readout.json,audit.json,generalization_diagnostic.json}`，再回溯 `opendd_incumbent_slate_v1`，理解两轮负结果。
+3. 确认最新实验 42 selector checkpoint、105 rank checkpoint、63 count checkpoint 和 21 choices 存在；需要验证时按原命令恢复，不删除重训。
 4. 读取新 policy-matched donor 的冻结与诊断，重点区分训练内拟合和 held-location 泛化；不要重复补已完成的 producer。
 5. 如果继续科研，新设计先写独立版本协议再运行，保留失败结果，不碰外部冻结阈值。
 6. 如果优先投稿，保护作者 Word，合并已冻结证据后重新渲染检查，最终由作者提交。
 
-交接时没有留下本轮需要等待的训练或评分任务。记录中的 PID 84281、84483、84642 已退出；本轮相关进程检查没有发现仍运行的 incumbent 训练/诊断进程。其他数据湖任务没有被取消或全面审计。
+交接时没有留下已知需等待的本地 M3W 训练或评分任务。前序 PID 84281、84483、84642 和最新实验 PID 87216、87394、87503、88022、88323、88427 均有历史终态；此次按进程名检查未发现相关 Python 任务。PID 会复用，不能据此去终止当前同号进程。其他数据湖任务没有被取消或全面审计。
 研究总目标未完成；当前不是“投稿准备已完成”。这份交接的作用是让下一位协作者能继续实际工作，而不是从旧成功标题或旧会话记忆重新猜测项目状态。
+
+## 12. 尚未实施的下一实验：相对收益与低容量嵌套验证
+
+状态：**`not_run`，尚未登记、实现、训练或评分**。这是待接手的研究设计，不属于上面已经完成的 121,800 updates。可用新版本名如 `opendd_nested_advantage_v1`，不能覆盖旧实验目录。
+
+动机：最新模型在训练 donor 上能拟合，但所选动作在 held location 上严重高估；同时训练的 original-dual label 与 full-grid 主评价不同。还不能断定是特征不足、容量过大、目标错配或地点偏移中的哪一个。
+
+建议最小对照：线性模型 / 小 MLP × 绝对 full-grid pass 预测 / 相对 keep 的 switch advantage。共享 causal 特征、训练地点标准化和固定预算；不要一次同时加入新场景特征、大模型、阈值搜索来模糊原因。归一化、loss、更新数、平局处理、内层模型选择规则均需在训练前固定。
+
+**关键是嵌套排除，而不是把旧训练包切成两个集合：**
+
+1. 对外层留出地点 H、内层验证地点 V，训练 donor D 的上游模型必须同时排除 H/V/D。
+2. 若该上游模型在另一个地点 T 上用 teacher 训练，产生 T 候选的 producer 还须排除 T，即 H/V/D/T。
+3. 不能用仅排除 H/D、实际见过 V 的旧 producer 给内层训练数据做特征，再声称 V 是干净验证集。
+4. 内层选定模型后，冻结全部外层地点/seed 的选择，再统一评分；不得根据外层结果回调 keep threshold。
+
+已有 105 个三重排除 ranker 可以按 identity/hash 复用；新增四重排除 ranker、三重排除 count head 等是否需要、数量多少，须依据新协议明确。不要把现有双重排除模型当作满足新内层排除要求。
+
+保持旧 outer 101 eligible views、780 edits、原 2% 规则及统计单位。若内层只能使用 all-available donor slates、不能复现 outer eligibility，明确记录这个群体差异。主比较仍应涵盖 incumbent、相同 switch mask 的 uniform 和旧 paired selector，不能仅报告最有利 seed 或模型。
+
+上一研究续接中已检查过、此次交接保留的相关先前实验：
+
+| 公开目录，均在 `outputs/publication_readiness_2026_09/` 下 | 已覆盖内容；不能重复宣称首次完成 |
+| --- | --- |
+| `opendd_candidate_advantage_v1/` | query/candidate 层面的 gain/harm；不是当前整段 allocation + keep 的同一任务 |
+| `opendd_slate_rank_v1/` | 成对排序与同 query recipient slate；不能把 pairwise loss 本身写成新方法 |
+| `opendd_nested_spline_choice_v2/` | 嵌套校准排除与选择；不是新的 policy-matched 整段 donor 设计 |
+| `opendd_credit_value_v2/` | credit/queue timing 与 advantage；预算时序和当前冻结 slate 不同 |
+
+交接后若用户先要求论文或调用说明，应优先处理新请求；本节不是无条件自动启动训练的指令。
+
+## 13. 交接成功的核对标准
+
+Claude Code 应能不依赖旧聊天，回答：当前实验是哪一个、主假设是否通过、代码与权重分别在哪里、如何恢复、什么数据仍未获准用于确认、作者正在改哪个 Word、哪些旧结论不能直接引用。
+
+本文件已覆盖主仓库、所核实的嵌套第三方仓库、远端项目位置、核心调用链、模型/数据/论文资产、历史路线、最新失败证据、恢复命令、用户约束和未实施方案。没有把私有数据或凭据复制进文档，也没有把历史记录伪写为本次新实验。

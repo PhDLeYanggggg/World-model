@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Project handoff and reproducibility map
+
+The [project handoff](CLAUDE_HANDOFF.md) now maps the active code,
+local checkpoints, data caches, manuscript files and reproduction commands.
+It separates completed experiments from the next unrun design. Local artifact
+hashes were checked; this documentation update changes no result or policy.
+
 ## Match training allocations to the evaluated policy
 
 I trained 105 nested nominee producers, 63 recording count heads and 42
