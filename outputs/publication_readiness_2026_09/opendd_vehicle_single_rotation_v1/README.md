@@ -32,6 +32,13 @@ scores or release decisions change.
 
 [Protocol](protocol.md) | [Grouped readout](readout.json)
 
+**Input correction.** The distance weights in this run came from
+agent-centered histories. Their final points are all zero, so the
+relative term averaged neighbors without actual spacing. The counts
+above remain valid for that rule; they are not a test of observed
+distance weighting. See the [registered spacing and neural-context
+comparison](../opendd_vehicle_direction_context_v1/protocol.md).
+
 ```sh
 env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=4 .venv-pytorch/bin/python scripts/audit_m3w_vehicle_single_rotation.py
 ```

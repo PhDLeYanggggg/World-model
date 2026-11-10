@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: check the actual spacing between actors
+
+I found that the earlier one-rotation rule was weighting neighbors
+with positions already centered on each vehicle. I kept that run and
+registered a comparison with restored observed spacing, plus two
+equally sized motion models trained with and without neighbor inputs.
+The original two actors, displacement and risk checks stay fixed.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_direction_context_v1/protocol.md).
+
 ## OpenDD vehicles: changing two directions did not beat independent choices
 
 I kept the same two vehicles and the same displacement at every
