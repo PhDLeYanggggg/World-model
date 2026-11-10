@@ -1,5 +1,10 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+补充材料现有一个合并包 `review_supplement_v1.zip`。解压后先读
+`reading_guide.pdf`；长附录和两份离线复算包也在其中。在解压目录运行
+`python -I -B -S verify.py` 可一次复算两套证据。主文 PDF 单独保留，
+所有 PDF 均未改动。[文件位置与核验](../outputs/publication_readiness_2026_09/combined_review_supplement_v1/README.md)。
+
 复算 MovingDroneCrowd++ 的任意轨迹上界：在本地解压
 `moving_peak_certificate.zip`，运行 `python -I -B -S verify.py`。
 录像内合并预算后，67/72 个开发视图仍无法超过 OLS4；这不是独立确认。

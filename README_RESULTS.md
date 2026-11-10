@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Anonymous supplementary bundle
+
+I put the reading guide, technical appendix, and two offline replays in
+one local bundle. The original PDFs are unchanged. An isolated replay
+checks the OpenDD, MovingDroneCrowd++ and WEPDTOF counts from the same
+evidence. [Bundle contents and verification](outputs/publication_readiness_2026_09/combined_review_supplement_v1/README.md).
+
 ## MovingDroneCrowd++: an offline check of the OLS4 limit
 
 I rebuilt the bound from aggregate query errors and edit budgets, without
