@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: inspect why two proposals disagree
+
+I rechecked three median cases from the 160 already scored flights. Changing
+the two recipients accounts for most of one loss; changing only the paths
+can also hurt. In the third case the observed gain is positive but its sign
+is unresolved once missing labels are accounted for. These are illustrations
+of the matched proposals, not new confirmation or a change to the 2% rule.
+[Cases and reproduction](outputs/publication_readiness_2026_09/songdo_failure_cases_v1/README.md).
+
 ## Songdo: match displacement at every prediction step
 
 I kept the two original edits and their directions, then matched
