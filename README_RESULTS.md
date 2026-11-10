@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: train directly on the proposed replacement
+
+I fit two matched models on the same angle pairs. One predicts the
+difference of two anchor-based scores; the other is trained on a
+direct conservative comparison with the original angle. The original
+recording masks and 2% risk rule remain in place.
+[Protocol](outputs/publication_readiness_2026_09/opendd_vehicle_pair_angle_v1/protocol.md).
+
 ## OpenDD vehicles: separate trajectory and interaction gains
 
 I kept the original intervention masks and required predicted
