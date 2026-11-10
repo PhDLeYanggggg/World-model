@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+Songdo 正式 40/160 已完成。主结果、原阈值和匿名汇总在
+[确认报告](../outputs/publication_readiness_2026_09/songdo_calibrated_20261110/README.md)。
+重算报告只运行 `scripts/export_m3w_songdo_confirmation.py`，不需要再次打开标签。
+
 另有 [v169 相关工作候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v169_related_work/README.md)，
 在 v168 基础上补两篇最接近的原始文献，不更改实验结果和披露说明。
 

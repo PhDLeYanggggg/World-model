@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: source-disjoint confirmation completed
+
+I scored all 160 frozen confirmation flights in 14 linked source
+components. At matched budgets, joint does not beat independent:
+-0.000442 pp, 95% source bootstrap [-0.001499, +0.000237].
+The calibrated joint rule falls back to CV in all 480 seed views.
+Only five of 15 independent releases pass the original risk checks.
+[Results and replay](outputs/publication_readiness_2026_09/songdo_calibrated_20261110/README.md).
+
 ## Songdo: the 40/160 evaluation is registered
 
 I froze three calibration and fourteen confirmation source components
