@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens: repeat the comparison by acquisition date
+
+Joint and same-family replacement both beat constant velocity
+at the lower missing-label bound on all four observed dates.
+Joint versus independent selection remains unresolved on every
+date, even after matching movement at each forecast step.
+[Date-level results](outputs/publication_readiness_2026_09/pneuma_date_robustness_v1/README.md).
+
 ## Manuscript editing copy
 
 The Word draft has editable tables and equations. The review PDF
