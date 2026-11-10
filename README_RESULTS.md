@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: timing versus the amount of forecast deviation
+
+I varied the timing of an edit while holding its recipient, endpoint
+and peak radius fixed. A late edit gives 51/606 dual passes versus
+47 for the original. A non-warped path with the same cumulative
+deviation gives 52. Redistributing deviation at exactly the original
+total takes the late arm back to 47. The expanded shape menu raises
+hindsight capacity from 181 to only 182. I kept the original rule.
+[Timing](outputs/publication_readiness_2026_09/opendd_exchange_phase_v1/README.md),
+[equal-total comparison](outputs/publication_readiness_2026_09/opendd_exchange_matched_amplitude_v1/README.md),
+and [amplitude control](outputs/publication_readiness_2026_09/opendd_exchange_amplitude_control_v1/README.md).
+
 ## OpenDD: many possible rescues survive a change in recording context
 
 Of 121 views with a legal rescue, 93 still have one after deleting
