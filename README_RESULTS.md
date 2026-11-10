@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Songdo: separate whom to edit from how to edit
+
+I decomposed the original matched Songdo results by recipient overlap.
+The joint rule's conservative gap against independent selection is
+almost entirely in vehicles chosen by only one arm. Its small gain
+against the same-family rule also comes from different recipients,
+not better paths on shared recipients. The original release decision
+does not change.
+[Readout](outputs/publication_readiness_2026_09/songdo_recipient_attribution_v1/README.md),
+[v192 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v192_songdo_attribution/README.md),
+and [v23 replay](outputs/publication_readiness_2026_09/songdo_attribution_review_supplement_v1/README.md).
+
 ## Check external readouts at the frozen packet sizes
 
 I rehearsed both Athens date protocols on the actual frozen forecasts
