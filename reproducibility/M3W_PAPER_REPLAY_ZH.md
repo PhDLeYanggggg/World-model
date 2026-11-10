@@ -3,6 +3,9 @@
 当前候选：[v199 主文构建说明](../outputs/publication_readiness_2026_09/evidence_manuscript_v199_easy_reference_release/README.md)。
 这份短教程区分匿名汇总复算、真实检查点复跑和重新训练。三者的证据范围不同。
 
+另有未评分的 [Athens / Swiss 九格对照](../outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md)：
+两地只跑过去轨迹推理与人工目标排演，可在批准正式划分前复现；不得把它写成真实外部精度。
+
 ## 1. 匿名补充包：只复算已冻结结果
 
 本机补充包为 `data/stage_cvpr2027_experiments/submission_admin/review_supplement_v30.zip`。

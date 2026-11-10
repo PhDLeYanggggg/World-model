@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens and Swiss roundabouts: hold the edited vehicles fixed
+
+I froze the same nine recipient/path comparisons in two unscored
+vehicle cohorts. The average possible ADE contrast between joint
+and additive ranking shrinks when they must edit the same vehicles.
+That identifies what the future test can distinguish, not which rule
+wins. [Protocol, geometry and replay](outputs/publication_readiness_2026_09/external_recipient_factorial_v1/README.md).
+
 ## OpenDD: can I tell when an easy reference is available?
 
 I kept the same proposed edits and learned to predict when the risk
