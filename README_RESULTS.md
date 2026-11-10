@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: put the matched backbones in the paper
+
+The main table now shows motion baselines, the completion-trained forecaster,
+EqMotion and Social-STGCNN on the same 500 recordings. Social-STGCNN with
+neighbors improves over its ego-only version on labeled steps, but its
+conservative gain is 16.66 pp below matched EqMotion. I condensed the
+selection ablations around what they test, without changing the outcome
+or release rule. [v202 draft and reproduction](outputs/publication_readiness_2026_09/evidence_manuscript_v202_focused_evidence/README.md).
+
 ## Songdo: inspect why two proposals disagree
 
 I rechecked three median cases from the 160 already scored flights. Changing
