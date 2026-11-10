@@ -1,5 +1,9 @@
 # M3W 当前论文与关键实验：中文复现入口
 
+[v172 精简候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v172_focused/README.md)
+把正文按预算上限、因果选择、外部放行三步组织。全文 5 页，原题目、摘要和披露不动；
+v171 与现有匿名补充包保留。构建只读取本地已冻结汇总，不重跑或重新选模型。
+
 另有 [v171 主文候选](../outputs/publication_readiness_2026_09/evidence_manuscript_v171_completion/README.md)，
 只在正文补充 MovingDroneCrowd++ 三个位移预算上界；原 v170、摘要和披露声明均不改动。
 [开发集推导与复现](../outputs/publication_readiness_2026_09/moving_completion_envelope_v1/README.md)

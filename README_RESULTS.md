@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Reading the forecast replacement results
+
+I put three questions in order: does the budget permit a gain, can a
+past-only rule find it, and do frozen releases satisfy the recording
+checks? The results differ: OpenDD leaves useful plans unused; Moving
+can be limited by the displacement budget; the external joint rules
+still do not qualify for deployment. The experiments did not change.
+[Evidence map](outputs/publication_readiness_2026_09/evidence_manuscript_v172_focused/README.md).
+
 ## MovingDroneCrowd++: what the missing labels leave open
 
 I reran the budget bound on the same 72 development views. With the
