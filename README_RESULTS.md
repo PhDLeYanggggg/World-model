@@ -7,11 +7,16 @@ or evidence status.
 
 ## OpenDD vehicles: learn when a direction change is worth making
 
-The previous forecasts cut average error but picked worse angles.
-I trained the next model on the difference between a candidate
-angle and keeping the existing path, separating gain from harm.
-The controls keep the same vehicles, query and displacement.
-[Registered comparison](outputs/publication_readiness_2026_09/opendd_vehicle_action_value_v1/protocol.md).
+I trained on the gain and harm of an angle change rather than future
+position. At the same 2,399 rotating views, the context model beats
+a fixed angle by 0.00239 pp, but trails the ego-only model and
+does not improve on keeping the original direction. In 1,393 views
+with a qualifying single rotation in hindsight, the context rule
+misses 855 by not rotating. It captures 161. The calibration check
+leaves too few reliable changes to replace the original policy.
+[Results and failure breakdown](outputs/publication_readiness_2026_09/opendd_vehicle_action_value_v1/README.md),
+[v182 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v182_action_value/README.md),
+and [v12 anonymous replay](outputs/publication_readiness_2026_09/vehicle_action_review_supplement_v1/README.md).
 
 ## OpenDD vehicles: check the actual spacing between actors
 

@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 
+from scripts.audit_m3w_vehicle_action_capture import partition
 from scripts import run_m3w_vehicle_action_value as runner
 from src.evaluation.m3w_interaction_frontier import pair_reduction
 from src.world_model import m3w_vehicle_action_value as model
@@ -68,3 +69,13 @@ def test_resume_matches_uninterrupted_action_fit(tmp_path, monkeypatch):
     monkeypatch.setattr(runner.old, 'LOCAL', full)
     for a, b in zip(resumed.parameters(), fit(6).parameters(), strict=True):
         torch.testing.assert_close(a, b, atol=0., rtol=0.)
+
+
+def test_capture_partition_distinguishes_recipient_and_angle():
+    wins = np.zeros((2, 12), dtype=bool)
+    assert partition(wins, (-1, -1)) == 'no_feasible_improvement'
+    wins[1, 4] = True
+    assert partition(wins, (-1, -1)) == 'no_rotation'
+    assert partition(wins, (0, 5)) == 'wrong_actor'
+    assert partition(wins, (1, 4)) == 'wrong_angle'
+    assert partition(wins, (1, 5)) == 'captured'
