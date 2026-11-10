@@ -5,13 +5,38 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Athens: four-date zero-shot comparison
+
+I scored all six members after freezing their roles. The matched
+joint proposal improves over unedited CV by at least +0.02383 pp
+on this sample. Its envelope against independent selection is
+[-0.04427, +0.05304] pp, so the joint advantage is not established.
+There was no Athens calibration or release test.
+[Results](outputs/publication_readiness_2026_09/pneuma_confirmation_v1/README.md).
+
+## Supplement: a monochrome serif version
+
+The appendix now uses numbered sections, thin table rules and
+grayscale figures. The main PDF and numerical replay are unchanged.
+[Build and replay](outputs/publication_readiness_2026_09/serif_supplement_v218/README.md).
+
+## WEPDTOF: why the pair penalty leaves the choices unchanged
+
+I replayed the frozen scores without opening labels. Of 198 edited
+queries, 30 have only one edit, 10 already minimize the pair penalty,
+and the remaining 158 cannot change winner at weight 0.10. The first
+possible crossover is 0.11013. The WEPDTOF control drops the whole
+penalty, not just the cross term; v218 corrects that description.
+[Diagnosis](outputs/publication_readiness_2026_09/wepdtof_penalty_breakpoint_v1/README.md) |
+[Corrected manuscript and appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v218_wepdtof_penalty/README.md).
+
 ## WEPDTOF: match movement at every forecast step
 
 I kept the original edited recipients and directions, then matched
 departures from constant velocity at each step. The joint-minus-independent
-envelope still spans zero, at [-0.04181, +0.01829] pp. Joint and additive
-are exactly identical in all 36 edited views, so their tie cannot
-isolate a benefit from the cross term. The original release is unchanged.
+envelope still spans zero, at [-0.04181, +0.01829] pp. Joint and the
+no-pair-penalty control are identical in all 36 edited views.
+The original release is unchanged.
 [Results and replay](outputs/publication_readiness_2026_09/wepdtof_equal_step_v1/README.md) |
 [v217 manuscript and appendix](outputs/publication_readiness_2026_09/evidence_manuscript_v217_wepdtof_equal_steps/README.md).
 

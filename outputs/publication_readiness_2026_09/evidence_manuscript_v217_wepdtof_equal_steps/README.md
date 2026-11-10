@@ -1,5 +1,9 @@
 # Manuscript v217: the equal-step WEPDTOF control
 
+Superseded by [v218](../evidence_manuscript_v218_wepdtof_penalty/README.md).
+The wording below is historical: WEPDTOF removed the entire pair
+penalty, not the cross term alone. All numerical values are unchanged.
+
 The external evaluation section now gives the joint-versus-independent
 completion envelope after matching every step and records that joint
 and additive outputs are identical in all 36 edited views. The reader

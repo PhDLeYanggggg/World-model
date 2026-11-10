@@ -22,10 +22,12 @@ on common labeled pair-steps, with a full-grid envelope of
 [-0.01248, +0.03643]. The envelope and the bootstrap answer
 different questions: unknown targets versus source composition.
 
-The joint and additive outputs are **exactly identical in all 36
-edited views**. Their zero contrast is not evidence that an
-interaction cross term never matters; the two arms make the same
-choices on this sample. Same-family comparisons, movement
+The joint and no-pair-penalty outputs are **exactly identical in all 36
+edited views**. WEPDTOF's control removes the entire pair penalty,
+not just a cross term. The two arms make the same choices on this
+sample; this does not establish the penalty's effect in other settings.
+[Frozen score diagnosis](../wepdtof_penalty_breakpoint_v1/README.md).
+Same-family comparisons, movement
 retention, and the uniformly smaller-peak control are in the
 [readout](readout.json). The smaller-peak control reproduces
 the original to rounding precision because the common peak
