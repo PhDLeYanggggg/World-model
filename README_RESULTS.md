@@ -5,6 +5,16 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD: can I tell when an easy reference is available?
+
+I kept the same proposed edits and learned to predict when the risk
+check would have an easy reference. The combined score qualifies 9 of
+58 releases versus 6 of 32 for sign alone. The paired conservative gain
+is worse and the release count is different, so I kept the original
+policy. [Results and reproduction](outputs/publication_readiness_2026_09/opendd_easy_reference_release_v1/README.md).
+[v199 draft](outputs/publication_readiness_2026_09/evidence_manuscript_v199_easy_reference_release/README.md) |
+[v30 replay](outputs/publication_readiness_2026_09/easy_reference_release_review_supplement_v1/README.md).
+
 ## OpenDD: calibrate when to leave the baseline alone
 
 With disjoint fitting, calibration and held locations, the magnitude
