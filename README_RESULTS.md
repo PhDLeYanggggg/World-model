@@ -5,6 +5,15 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## OpenDD vehicles: freeze a three-angle reranking comparison
+
+I trained two rerankers on the same three candidate angles, one to predict
+strict success and one to predict benefit and harm as well. I compare both
+with an OLS4 rule, first on the original intervention mask and then at the
+same intervention budget with a new ranking. The original 2% rule is
+unchanged; no new external outcome was opened.
+[Protocol and freeze](outputs/publication_readiness_2026_09/opendd_vehicle_shortlist_v1/protocol.md).
+
 ## OpenDD vehicles: use the recipient policy when generating training actions
 
 I used a source-excluded copy of the additive chooser to pick
