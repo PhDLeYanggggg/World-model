@@ -10,6 +10,7 @@ or evidence status.
 I used disjoint fitting, calibration and held locations to test
 whether a magnitude-aware swap can improve on the additive forecast
 without relaxing the original 2% recording checks.
+The calibration thresholds are now frozen for held scoring.
 [Protocol](outputs/publication_readiness_2026_09/opendd_nested_swap_release_v1/protocol.md).
 
 ## OpenDD: separate observation support from swap gain
