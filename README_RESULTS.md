@@ -5,6 +5,13 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Manuscript editing copy
+
+The Word draft has editable tables and equations. The review PDF
+retains the CVPR ruler. In the supplement, headings and tables
+are monochrome and the plots retain their original colors.
+[Export and format checks](outputs/publication_readiness_2026_09/serif_supplement_v218_color_figures/README.md).
+
 ## Athens: four-date zero-shot comparison
 
 I scored all six members after freezing their roles. The matched

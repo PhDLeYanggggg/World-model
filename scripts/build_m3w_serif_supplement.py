@@ -1,5 +1,6 @@
 """Re-typeset the verified supplement as a monochrome academic appendix."""
 
+import argparse
 from io import BytesIO
 import json
 from pathlib import Path
@@ -82,26 +83,27 @@ def finish(pdf, page, y):
     pdf.showPage()
 
 
-def figure_page(original, *, title, caption, page_no, top_crop, placed_top):
+def figure_page(original, *, title, caption, page_no, top_crop, placed_top, color_figures=False):
     # Preserve every plotted point and line; change only color and the page framing.
     source = PdfWriter()
     fig = source.add_page(original)
-    contents = fig.get_contents()
-    ops = []
-    for v, op in contents.operations:
-        if op in (b'rg', b'RG'):
-            r, g, b = map(float, v)
-            gray = .2126*r+.7152*g+.0722*b
-            if .13 < gray < .68:
-                if b > r+.08:
-                    gray = .23
-                elif r > b+.15:
-                    gray = .57
-            ops.append(([FloatObject(gray)], b'g' if op == b'rg' else b'G'))
-        else:
-            ops.append((v, op))
-    contents.operations = ops
-    fig.replace_contents(contents)
+    if not color_figures:
+        contents = fig.get_contents()
+        ops = []
+        for v, op in contents.operations:
+            if op in (b'rg', b'RG'):
+                r, g, b = map(float, v)
+                gray = .2126*r+.7152*g+.0722*b
+                if .13 < gray < .68:
+                    if b > r+.08:
+                        gray = .23
+                    elif r > b+.15:
+                        gray = .57
+                ops.append(([FloatObject(gray)], b'g' if op == b'rg' else b'G'))
+            else:
+                ops.append((v, op))
+        contents.operations = ops
+        fig.replace_contents(contents)
     fig.cropbox.top = top_crop
 
     base = BytesIO()
@@ -121,7 +123,9 @@ def read_pdf(raw):
     return PdfReader(BytesIO(raw))
 
 
-def run():
+def run(color_figures=False):
+    handoff = HANDOFF.with_name('local_handoff_v218_color_figures') if color_figures else HANDOFF
+    public = PUBLIC.with_name('serif_supplement_v218_color_figures') if color_figures else PUBLIC
     current = json.loads((corrected.PUBLIC/'review_receipt.json').read_bytes())
     old_supplement = reader.checked(corrected.HANDOFF/'supplement.pdf', current['reader_pdf_sha256'])
     paper = reader.checked(corrected.HANDOFF/'paper.pdf', current['companion_pdf_sha256'])
@@ -147,11 +151,12 @@ def run():
     p4 = figure_page(original.pages[3], title='S4. Three Songdo cases',
         caption='I and J indicate the independent and joint edit choices. Grey in the support grid '
                 'marks a missing target; the band on the right shows missing-label bounds.',
-        page_no=4, top_crop=float(original.pages[3].mediabox.height)*.925, placed_top=651)
+        page_no=4, top_crop=float(original.pages[3].mediabox.height)*.925, placed_top=651,
+        color_figures=color_figures)
     p8 = figure_page(original.pages[7], title='S8. Label timing at equal coverage',
         caption='OpenDD development, 3,711 originally complete queries. Points and intervals '
                 'compare masks with the same retained pair-step count.',
-        page_no=8, top_crop=680, placed_top=661)
+        page_no=8, top_crop=680, placed_top=661, color_figures=color_figures)
     v216_supplement = reader.checked(integrated.HANDOFF/'supplement.pdf', v216['reader_pdf_sha256'])
     end = read_pdf(corrected.append(v216_supplement, facts)).pages[-1]
     writer = PdfWriter()
@@ -186,8 +191,10 @@ def run():
     result = dict(files=manifest, pages=9, source_pdf_sha256=current['reader_pdf_sha256'],
                   figure_geometry_unchanged=True, primary_pdf_unchanged=True, llm_statement_unchanged=True,
                   reviewer_replay=result, input_hashes=inputs | hashes, uploaded=False)
-    targets = {**{HANDOFF/k: v for k, v in files.items()}, HANDOFF/'manifest.json': reader.as_json(manifest),
-               PUBLIC/'receipt.json': reader.as_json(result)}
+    if color_figures:
+        result['figure_color'] = 'original_source_palette'
+    targets = {**{handoff/k: v for k, v in files.items()}, handoff/'manifest.json': reader.as_json(manifest),
+               public/'receipt.json': reader.as_json(result)}
     if any(k.exists() and k.read_bytes() != v for k, v in targets.items()):
         raise FileExistsError('Refusing to replace a different serif handoff')
     for k, v in targets.items():
@@ -199,4 +206,6 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--color-figures', action='store_true', help='Retain the original plot colors')
+    run(parser.parse_args().color_figures)
