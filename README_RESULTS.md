@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Learn when to keep an existing allocation
+
+The next OpenDD development control includes the incumbent allocation
+in each candidate slate. It compares pointwise and paired training
+without changing forecast counts, movement caps or the 2% rule.
+The design is fixed before its new choices are scored.
+[Protocol](outputs/publication_readiness_2026_09/opendd_incumbent_slate_v1/protocol.md).
+
 ## Athens in the manuscript and anonymous replay
 
 The new manuscript includes the four-date Athens result: a small
