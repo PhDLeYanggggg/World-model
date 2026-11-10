@@ -5,6 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Camera history: a velocity-only forecast check
+
+I trained nine matched velocity mixers on the existing OpenDD donors.
+Noise training improves on OLS4 at the exposed camera, but the simple
+eight-step median slope is more accurate and no learned arm passes
+the original risk checks. The training logs also identify a near-zero
+normalization problem on stationary prefixes. [Results and loss traces](outputs/publication_readiness_2026_09/camera_velocity_mixer_v1/README.md).
+
 ## WEPDTOF: the original edit budget limits forecast replacement
 
 I bounded what any path could improve at the original query counts and
