@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Handoff snapshot: 11 November 2026
+
+The project map now includes the subsequent recording-level inference,
+in-location diagnostic, tolerance sensitivity, deferral control and ETH/UCY
+panel, together with the v221 manuscript and replay files. The ETH/UCY
+deferral rule improves on equal-edit random selection in all five scenes,
+but none of its registered operating points passes the original 2% rule.
+These are existing development results, not new external confirmation.
+[Current handoff and remaining work](CLAUDE_HANDOFF.md#15-2026-11-11-最终移交更新随后新增的产出).
+This update only synchronizes existing work for Claude; it launches no research.
+
 ## Test keep-relative value with nested location validation
 
 I trained the four registered linear/MLP and absolute/relative comparisons,

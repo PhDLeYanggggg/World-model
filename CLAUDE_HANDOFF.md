@@ -1,9 +1,13 @@
 # M3W 项目交接：给 Claude Code
 
-更新时间：2026-11-10，Europe/London。本文件是本机工作交接入口，不是论文或匿名补充材料。
+更新时间：2026-11-11，Europe/London。本文件是本机工作交接入口，不是论文或匿名补充材料。
 用户最新指令：Codex 不再继续研究任务，只把所有任务和已产出内容同步给 Claude。
-本次仅整理已有代码、结果和任务状态；没有新训练、新评分、新测试或远端查询。研究目标保持暂停。
+本次仅整理已有代码、结果和任务状态；没有新训练、新评分、新测试或远端作业查询。
+用户在交接中把长期目标重新设为 `active`；本轮工作范围仍仅为交接，不据此启动研究。
 根目录 `CLAUDE.md` 指向本文件。这里的“已完成”来自注明的产物，不表示 Claude 已阅读或确认接收。
+
+**当前先读第 15 节。** 第 0、12、14 节保留 11 月 10 日较早交接快照；随后已有并行工作产出，
+包括 ETH/UCY 新比较和 v221 论文，已在第 15 节补齐。本轮只核对并交接既有资产，不重新训练或评分。
 
 ## 0. 接手快照：先分清已完成与尚未开始
 
@@ -739,3 +743,76 @@ Claude Code 应能不依赖旧聊天，回答：当前实验是哪一个、主�
 
 仍缺的科学证据是：学得的联合策略在未参与调参的外部场景上稳定优于强对照，同时满足原定风险规则。
 这轮失败不能写成已达到投稿候选质量；也不能把“已同步给 Claude 的文件”写成 Claude 已核验研究结论。
+
+## 15. 2026-11-11 最终移交更新：随后新增的产出
+
+用户再次明确：Codex 停止研究任务，只同步所有任务和已产出内容给 Claude。
+长期目标先按停止要求暂停，随后用户重新设为 `active`；本轮未启动实验、训练、测试、论文重建或 CREATE 作业，未改作者 Word。
+本节取代前面快照中“最新实验”“最新论文”和“下一步尚未训练”的过时描述；旧证据保留原样。
+以下研究数字来自现有 README/readout，不是本轮 fresh_run。文件存在及哈希核查见
+`outputs/publication_readiness_2026_09/claude_handoff_20261111/manifest.json`，
+资产完整性不等于独立复现或重新完成 no-leakage 审计。
+
+### 15.1 新完成的任务与结论
+
+下面公开路径均在 `outputs/publication_readiness_2026_09/`，私有目录在
+`data/stage_cvpr2027_experiments/` 下使用相同名字。先读 README，再读 registration、freeze、readout。
+
+| 目录 | 已有产出与结论 | 边界 |
+| --- | --- | --- |
+| `opendd_recording_inference_v1/` | 从冻结逐录像结果重建四轮比较；606 个录像×种子视图、101 个可交换视图，其中 93 个在 rdb1。保持原分配 55，mask 内 oracle 100；factorial selected 48，相对保持的录像 bootstrap 差为 -7，CI [-16, 3]。 | 没有新训练；录像重采样以现有地点为条件，不能替代新地点泛化。原地点区间与新录像区间是不同统计证据，不覆盖旧失败。 |
+| `opendd_inlocation_learnability_v1/` | rdb1 录像级五折、三次重复、三种子；3,600 fits、1,440,000 updates。匹配训练量的内层选定策略平均 37 次通过，保持为 43，差 -6，CI [-11.7, -1.3]。同地点训练仍未恢复 oracle headroom。 | 单地点、已暴露开发集；不能由有限模型的失败证明所有 past-only 方法都不可能。 |
+| `opendd_tolerance_sensitivity_v1/` | 固定 7,198 个合法交换，描述性比较 1/2/5/10% 风险容忍度；各容忍度最佳冻结 selector 相对保持的区间均跨零。 | 未改变冻结预测和选择；正式规则仍为 2%，不得事后换门槛。 |
+| `opendd_deferral_rule_v1/` | 已发表 deferral surrogate 的本任务应用：126 fits、50,400 updates。线性 49 次通过，MLP 48，保持 55；差分别 -6 [-15, 2]、-7 [-16, 1]。四组旧模型重新拟合的选择一致。 | 不是原论文完整复现；既有报告合计 14 条 learned rules 没有证明优于保持。 |
+| `ethucy_replacement_panel_v1/` | 五场景留一、三种子、8 步观察/12 步预测；90 个 forecaster fits、150 个 selector fits，共 660,000 updates。deferral 在 5/5 场景优于同编辑数随机对照，场景平均相对 CV 收益 +2.32%；但登记阈值下均为 0/18 dual passes，校准点 0/15 场景×种子单元放行。 | ETH/UCY 早期已用于本项目，是已暴露开发数据，不是新独立外部确认。收益证据不能写成可部署成功；oracle 不是模型。 |
+
+ETH/UCY 完整窗口行数为 ETH 364、Hotel 1,197、Univ 24,334、Zara1 2,356、Zara2 5,910。
+该报告的单位说明、原始数据版本和 CV 复算在 `data_audit.json`、`gate.json`、`registration.json`；
+不能把其数据集特定单位说明外推为 SDD 的 metric/seconds 验证。
+两个神经预测器是单输出改写版本，不是 best-of-20；EqMotion 改写版仍弱于已发表确定性结果。
+上述新目录的协议记为本地训练前 hash 登记，而非训练前 Git 提交；现在提交交接也不能改写该历史。
+
+### 15.2 对应代码、训练资产和恢复入口
+
+| 任务 | 代码入口 |
+| --- | --- |
+| 录像级统计 | `scripts/run_m3w_opendd_recording_inference.py`、`scripts/report_m3w_opendd_recording_inference.py` |
+| 同地点可学习性 | `scripts/run_m3w_opendd_inlocation.py`、`scripts/report_m3w_opendd_inlocation.py` |
+| 风险敏感性 | `scripts/run_m3w_opendd_tolerance_sensitivity.py` |
+| Deferral 对照 | `scripts/run_m3w_opendd_deferral_rule.py`、`scripts/report_m3w_opendd_deferral_rule.py` |
+| ETH/UCY | `scripts/run_m3w_ethucy_panel.py`、`scripts/report_m3w_ethucy_panel.py`、`src/world_model/m3w_ethucy_panel.py` |
+| v221 正文/补充/复算包 | `scripts/build_m3w_benchmark_candidate.py`、`scripts/build_m3w_benchmark_supplement.py`、`scripts/build_m3w_benchmark_replay.py` |
+
+精确源码依赖和原始数据哈希在各 `registration.json`。权重、NPZ、逐行标签和训练日志仍在本地私有目录，
+不要上传；当前文件数和字节数记录在新 manifest。复现命令已有各 README，交接本身不执行它们。
+本次未确认其他 Claude 会话的运行状态，未取消或接管其进程。CREATE 状态仍是第 8 节的历史记录，未新查。
+
+### 15.3 当前论文交付位置
+
+最新独立候选目录：
+`data/stage_cvpr2027_experiments/submission_admin/local_handoff_v221_benchmark/`。
+
+- `paper_editable_v221.docx`：可编辑单栏 Word。
+- `paper_review_format.pdf`：投稿版式候选；既有 receipt 记载共 9 页、正文止于第 8 页。
+- `paper_latex_source.zip`：源文件包。
+- `supplement.pdf`、`supplement_addendum2_editable.docx`：补充材料及新增部分可编辑稿。
+- `replay_benchmark_and_deferral.zip`、`replay_exchange_learnability.zip`、`replay_frozen_scalars_v219.zip`：复算包。
+- `DELIVERY_NOTES_ZH.md`、`CHANGES_v220_to_v221_ZH.md`、`manifest.json`：交付说明、改动位置、校验值。
+
+源文件目录：`data/stage_cvpr2027_experiments/evidence_manuscript_v221_benchmark/`。
+构建 receipt：`outputs/publication_readiness_2026_09/evidence_manuscript_v221_benchmark/receipt.json`。
+这些文件已实际找到；本轮仅做 SHA-256 核对，未重新排版、渲染、执行复算包或核查投稿网站。
+作者自行修改的 `local_handoff_v218_color_figures/paper_editable.docx` 保持原位，不能被 v221 覆盖。
+作者文本合并、LLM 声明和最终提交仍由作者核实，不推断已上传或已完成投稿。
+
+### 15.4 剩余任务，移交但不执行
+
+1. **科学缺口**：ETH/UCY 有同预算选择效用，但无满足原 2% 规则的可部署策略；OpenDD learned exchange 仍不优于保持。既有数据属于开发证据，不能重新命名为独立确认。
+2. **新代码核查**：新并行结果已有冻结和报告，但本轮没有独立逐行审计。若作为主 claim，复核所有 upstream producer、训练、内层选择、校准的排除边界及单位说明；完整性一致不能替代这项核查。
+3. **作者合稿**：以作者正在修改的 Word 为准，按 v221 修改清单合并，不能直接覆盖；修改后再检验模板页数、图表、引用及披露。当前没有新增门户操作。
+4. **独立外部工作**：DroneCrowd 15/30 角色及未放行状态不变；WEPDTOF、Songdo、Athens 的旧结果见第 5 节。Swiss 等准备状态不能算完成评分。不要为交接打开新标签。
+5. **Git 与协作**：本轮只提交交接改动，不替其他会话提交其新增实验。同步前 HEAD 为交接提交 `38071b506`；完整工作树有大量并行暂存/未暂存文件，清洁 clone 不等于本机全部资产。
+6. **运行授权**：Codex 停止研究。Claude 后续是否继续，以用户给 Claude 的实际任务为准；此清单不是自动启动指令。Stage5C/SMC 仍禁止。
+
+交接完成的含义是共享工作区中入口、状态和文件位置可读取，并有安全的 Git 文档同步；
+没有 Claude 的直接已读回执，不声称它已经读取、执行或认可研究结论。

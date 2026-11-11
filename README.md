@@ -9,9 +9,11 @@ narrower: causal trajectory forecasting, learning intervention gain and harm,
 and deciding when a neural prediction should replace a physical baseline.
 Combining JEPA, Transformer and other modules is not, by itself, a contribution.
 
-The latest experiment compares absolute and keep-relative selection under
-nested location validation. It did not improve on keeping the original
-allocation. [Current results](README_RESULTS.md) and the
+Recent experiments compare replacement rules on OpenDD and ETH/UCY. On
+ETH/UCY, a deferral rule finds gains over equal-budget random selection in
+all five scenes, but does not meet the registered 2% risk requirement.
+The OpenDD rules still do not improve on keeping the original allocation.
+[Current results](README_RESULTS.md) and the
 [project map](CLAUDE_HANDOFF.md) separate completed evidence from pending work.
 
 I rehearsed the Songdo readout on all frozen proposals with fabricated
